@@ -33,7 +33,7 @@ class LocationResource extends XotBaseResource
     protected static ?int $navigationSort = 2;
 
     /**
-     * @return array<string, \Filament\Support\Components\Component>
+     * @return array<int, \Filament\Forms\Components\Component>
      */
     #[\Override]
     public static function getFormSchema(): array
