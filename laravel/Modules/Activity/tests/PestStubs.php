@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Testing\TestResponse;

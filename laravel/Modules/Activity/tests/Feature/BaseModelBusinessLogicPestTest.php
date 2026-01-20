@@ -14,12 +14,11 @@ use Modules\Xot\Traits\Updater;
 
 use function Safe\class_uses;
 
-
 uses(TestCase::class);
 
 beforeEach(function (): void {
     /* @phpstan-ignore-next-line property.notFound */
-    $this->model = new TestActivityModel();
+    $this->model = new TestActivityModel;
 });
 
 test('can create base model instance', function (): void {
@@ -93,6 +92,7 @@ test('has updater trait', function (): void {
     $traits = class_uses($model);
     if (in_array(Updater::class, $traits, true)) {
         expect($traits)->toContain(Updater::class);
+
         return;
     }
 
@@ -106,6 +106,7 @@ test('has has factory trait', function (): void {
     $traits = class_uses($model);
     if (in_array(HasFactory::class, $traits, true)) {
         expect($traits)->toContain(HasFactory::class);
+
         return;
     }
 
