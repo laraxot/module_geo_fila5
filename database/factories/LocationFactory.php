@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Geo\Models\Location;
 
 /**
- * Location Factory
+ * Location Factory.
  *
  * Factory for creating Location model instances for testing and seeding.
  *

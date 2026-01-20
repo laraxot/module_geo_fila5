@@ -58,7 +58,6 @@ use Modules\Tenant\Models\Traits\SushiToJson;
  *
  * @mixin \Eloquent
  */
-/** */
 class Comune extends BaseModel
 {
     use SushiToJson;
