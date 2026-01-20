@@ -8,13 +8,12 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Actions\Header;
 
-use Filament\Resources\Resource;
 use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 // Header actions must be an instance of Filament\Actions\Action, or Filament\Actions\ActionGroup.
 // use Filament\Tables\Actions\Action;
-use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Model;
+use Filament\Resources\Resource;
 use Illuminate\Support\Arr;
 use Modules\Progressioni\Actions\RefreshByYearAction;
 use Modules\Progressioni\Models\Progressioni;
@@ -34,10 +33,9 @@ class RicalcolaAction extends Action
             ->icon('fas-retweet')
             ->action(function (ListRecords $livewire): void {
                 $resource = $livewire->getResource();
-                /** @var class-string<Resource> $resource */
+                /** @var class-string<resource> $resource */
                 $modelClass = $resource::getModel();
                 /** @var class-string<Progressioni> $modelClass */
-                
                 $tableFilters = $livewire->tableFilters ?? [];
                 /** @var array<string, mixed> $tableFilters */
                 $year = Arr::get($tableFilters, 'anno.value');
