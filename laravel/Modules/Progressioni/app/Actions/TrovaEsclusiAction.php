@@ -7,8 +7,6 @@ namespace Modules\Progressioni\Actions;
 // use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Modules\Progressioni\Models\CriteriEsclusione;
@@ -88,7 +86,7 @@ class TrovaEsclusiAction
     }
 
     /**
-     * @param array{scheda: \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>} $params
+     * @param  array{scheda: \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>}  $params
      * @return array{ha_diritto: int, motivo: string}
      */
     public function criteriScheda(array $params, int $year): array

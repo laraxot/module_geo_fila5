@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Models\Traits;
 
-use Illuminate\Database\Schema\Blueprint;
 use Carbon\Carbon;
 use Error;
 use Exception;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\StabiDirigente;
 use Schema;
-use Webmozart\Assert\Assert;
 
 /**
  * Modules\Progressioni\Models\Traits\ProgressioniFunctionTrait.
@@ -30,8 +29,7 @@ trait ProgressioniFunctionTrait
     /**
      * Get option value with proper type conversion.
      *
-     * @param string $name Option name to retrieve
-     * @return int|array|string|Carbon|null
+     * @param  string  $name  Option name to retrieve
      */
     public function getOption(string $name): int|array|string|Carbon|null
     {
@@ -39,10 +37,10 @@ trait ProgressioniFunctionTrait
         if ($item === null) {
             return null;
         }
-        
+
         // Type guard for CriteriOption
         assert($item instanceof CriteriOption);
-        
+
         switch ($item->type) {
             case 'list':
                 assert(is_string($item->value));
@@ -91,26 +89,26 @@ trait ProgressioniFunctionTrait
     public function getListaTipoCodiceAspettative(): array
     {
         $assenze = isset($this->assenze) ? $this->assenze : [];
-        
+
         // Type guard for array structure
-        if (!is_array($assenze)) {
+        if (! is_array($assenze)) {
             return [];
         }
-        
+
         $lista_aspettative = collect($assenze)
             ->map(static function ($item): string {
                 // Type guard for array item structure
-                if (!is_array($item)) {
+                if (! is_array($item)) {
                     return '';
                 }
-                
-                $tipo = is_string($item['tipo'] ?? null) || is_numeric($item['tipo'] ?? null) 
-                    ? (string) ($item['tipo']) 
+
+                $tipo = is_string($item['tipo'] ?? null) || is_numeric($item['tipo'] ?? null)
+                    ? (string) ($item['tipo'])
                     : '';
-                $codice = is_string($item['codice'] ?? null) || is_numeric($item['codice'] ?? null) 
-                    ? (string) ($item['codice']) 
+                $codice = is_string($item['codice'] ?? null) || is_numeric($item['codice'] ?? null)
+                    ? (string) ($item['codice'])
                     : '';
-                    
+
                 return $tipo.'-'.$codice;
             })
             ->filter(static fn (string $item): bool => $item !== '')
@@ -119,6 +117,7 @@ trait ProgressioniFunctionTrait
 
         /** @var array<int, string> $result */
         $result = $lista_aspettative;
+
         return $result;
     }
 
@@ -353,16 +352,16 @@ trait ProgressioniFunctionTrait
     /**
      * Check exclusion list with date parsing.
      *
-     * @param array<string, mixed> $params Parameters including date ranges
+     * @param  array<string, mixed>  $params  Parameters including date ranges
      * @return array<int, mixed> [ha_diritto, motivo_arr]
      */
     public function checkListaAszTipCodEsclusoSubito(array $params): array
     {
         $ha_diritto = 1;
         $motivo_arr = [];
-        
+
         extract($params);
-        
+
         if (! isset($data_presenza_al)) {
             throw new Exception('data_presenza_al is not set');
         }
@@ -372,10 +371,10 @@ trait ProgressioniFunctionTrait
         }
 
         // Type guard for date parsing
-        if (!is_string($data_presenza_al)) {
+        if (! is_string($data_presenza_al)) {
             throw new Exception('data_presenza_al must be string');
         }
-        
+
         try {
             $asz_al = (int) Carbon::parse($data_presenza_al)->format('Ymd');
             $asz_dal = (int) Carbon::parse($data_presenza_al)->subDays(730)->format('Ymd');
@@ -388,16 +387,16 @@ trait ProgressioniFunctionTrait
         $tmp = $this->asz()->ofRangeDate($asz_dal, $asz_al)->select('asztip', 'aszcod')->distinct()->get()->toArray();
         /** @var Collection<int, string> $mappedItems */
         $mappedItems = collect($tmp)->map(static function (array $item): string {
-            $asztip = is_string($item['asztip'] ?? null) || is_numeric($item['asztip'] ?? null) 
-                ? (string) ($item['asztip']) 
+            $asztip = is_string($item['asztip'] ?? null) || is_numeric($item['asztip'] ?? null)
+                ? (string) ($item['asztip'])
                 : '';
-            $aszcod = is_string($item['aszcod'] ?? null) || is_numeric($item['aszcod'] ?? null) 
-                ? (string) ($item['aszcod']) 
+            $aszcod = is_string($item['aszcod'] ?? null) || is_numeric($item['aszcod'] ?? null)
+                ? (string) ($item['aszcod'])
                 : '';
 
             return $asztip.'-'.$aszcod;
         });
-        
+
         $explodedList = explode(',', (string) $lista_asz_tip_cod_escluso_subito);
         $tmp1 = $mappedItems->intersect($explodedList)->count();
 
@@ -510,16 +509,15 @@ trait ProgressioniFunctionTrait
     }
 
     public function listaCodiciAspettative(): string // shortcut
-    {
-        $assenze = $this->assenze ?? null;
-        if ($assenze === null || !method_exists($assenze, 'map')) {
+    {$assenze = $this->assenze ?? null;
+        if ($assenze === null || ! method_exists($assenze, 'map')) {
             return '';
         }
-        
+
         return $assenze->map(static function ($item): string {
             $tipo = isset($item->tipo) ? (string) $item->tipo : '';
             $codice = isset($item->codice) ? (string) $item->codice : '';
-            
+
             return $tipo.'-'.$codice;
         })->implode(',');
     }

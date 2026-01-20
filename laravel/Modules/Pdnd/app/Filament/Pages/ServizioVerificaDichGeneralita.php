@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 namespace Modules\Pdnd\Filament\Pages;
-use Modules\User\Models\User;
 
-use function Safe\preg_replace;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
@@ -23,7 +21,10 @@ use Modules\Pdnd\Services\Anpr\Services\C003\Models\Common\TipoLuogoEvento;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
+use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
+
+use function Safe\preg_replace;
 
 /**
  * @property Schema $pdndForm
@@ -99,7 +100,7 @@ class ServizioVerificaDichGeneralita extends XotBasePage implements HasForms
                 if (is_array($listaSoggetti) && isset($listaSoggetti[0]) && is_array($listaSoggetti[0])) {
                     $idAnprValue = $listaSoggetti[0]['id_anpr'] ?? 'N/A';
                 }
-                
+
                 $cleaned = preg_replace('/[^\w\s-]/', '', (string) $idAnprValue);
                 $this->idAnpr = $cleaned;
 
@@ -126,7 +127,7 @@ class ServizioVerificaDichGeneralita extends XotBasePage implements HasForms
                                 $risultatoVerificaValue = is_object($valore) && isset($valore->value) ? (string) $valore->value : (string) $valore;
                             }
                         }
-                        
+
                         $risultatoVerifica = $risultatoVerificaValue;
 
                         // Assicurati che sia una stringa semplice
@@ -172,10 +173,8 @@ class ServizioVerificaDichGeneralita extends XotBasePage implements HasForms
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
-
-
 
     private function createGeneralitaObject(): TipoGeneralita
     {
@@ -215,5 +214,4 @@ class ServizioVerificaDichGeneralita extends XotBasePage implements HasForms
             luogoNascita: $luogoNascitaObj
         );
     }
-
 }

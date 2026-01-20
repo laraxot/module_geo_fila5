@@ -20,19 +20,19 @@ declare(strict_types=1);
 
 namespace Modules\Pdnd\Services\Client;
 
-use function Safe\file_get_contents;
-use function Safe\json_decode;
-use function Safe\json_encode;
-use function Safe\curl_init;
-use function Safe\curl_setopt;
-use function Safe\curl_exec;
-use function Safe\curl_getinfo;
-use function Safe\fopen;
 use DateTime;
 use DateTimeZone;
 use Exception;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Str;
+
+use function Safe\curl_exec;
+use function Safe\curl_getinfo;
+use function Safe\curl_init;
+use function Safe\curl_setopt;
+use function Safe\file_get_contents;
+use function Safe\json_decode;
+use function Safe\json_encode;
 
 /**
  * Classe per interagire con l'API PDND (Piattaforma Digitale Nazionale dei Dati).
@@ -184,8 +184,9 @@ class PdndClient
     public function getApiUrl(): string
     {
         if ($this->apiUrl === null) {
-            throw new Exception("ApiUrl is not set");
+            throw new Exception('ApiUrl is not set');
         }
+
         return $this->apiUrl;
     }
 
@@ -197,16 +198,18 @@ class PdndClient
     public function getServiceAud(): string
     {
         if ($this->serviceAud === null) {
-            throw new Exception("ServiceAud is not set");
+            throw new Exception('ServiceAud is not set');
         }
+
         return $this->serviceAud;
     }
 
     public function getClientId(): string
     {
         if ($this->clientId === null) {
-            throw new Exception("ClientId is not set");
+            throw new Exception('ClientId is not set');
         }
+
         return $this->clientId;
     }
 
@@ -231,40 +234,45 @@ class PdndClient
     public function getKid(): string
     {
         if ($this->kid === null) {
-            throw new Exception("Kid is not set");
+            throw new Exception('Kid is not set');
         }
+
         return $this->kid;
     }
 
     public function getIssuer(): string
     {
         if ($this->issuer === null) {
-            throw new Exception("Issuer is not set");
+            throw new Exception('Issuer is not set');
         }
+
         return $this->issuer;
     }
 
     public function getPurposeId(): string
     {
         if ($this->purposeId === null) {
-            throw new Exception("PurposeId is not set");
+            throw new Exception('PurposeId is not set');
         }
+
         return $this->purposeId;
     }
 
     public function getPrivKeyPath(): string
     {
         if ($this->privKeyPath === null) {
-            throw new Exception("PrivKeyPath is not set");
+            throw new Exception('PrivKeyPath is not set');
         }
+
         return $this->privKeyPath;
     }
 
     public function getStatusUrl(): string
     {
         if ($this->statusUrl === null) {
-            throw new Exception("StatusUrl is not set");
+            throw new Exception('StatusUrl is not set');
         }
+
         return $this->statusUrl;
     }
 
@@ -837,7 +845,6 @@ class PdndClient
     }
 
     // -- Private functions --
-
 
     /**
      * Verifica che tutti i campi obbligatori siano stati impostati.

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Pdnd\Filament\Clusters\Test\Pages;
 
 use Exception;
-use function Safe\json_decode;
-use function Safe\json_encode;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
@@ -17,6 +15,9 @@ use Illuminate\Support\Facades\Log;
 use Modules\Notify\Filament\Clusters\Test;
 use Modules\Xot\Filament\Pages\XotBasePage;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
+
+use function Safe\json_decode;
+use function Safe\json_encode;
 
 /**
  * @property Schema $emailForm

@@ -8,9 +8,7 @@ use Modules\User\Models\User;
  */
 
 namespace Modules\Pdnd\Filament\Pages;
-use Modules\User\Models\User;
 
-use function Safe\preg_replace;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
@@ -22,7 +20,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\PdndClientService;
+use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
+
+use function Safe\preg_replace;
 
 /**
  * Class ServizioAccertamentoIdUnicoNazionalePagePROD.
@@ -123,6 +124,6 @@ class ServizioAccertamentoIdUnicoNazionalePagePROD extends XotBasePage implement
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
 }

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Pdnd\Filament\Clusters\Test\Pages;
 
 use Filament\Actions\Action;
-use Filament\Schemas\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -138,7 +138,7 @@ class GuzzleProxyPage extends XotBasePage
             $responseContent = null;
             if ($e->hasResponse()) {
                 $errorResponse = $e->getResponse();
-                if (null !== $errorResponse) {
+                if ($errorResponse !== null) {
                     $responseContent = $errorResponse->getBody()->getContents();
                 }
             }
@@ -157,6 +157,6 @@ class GuzzleProxyPage extends XotBasePage
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
 }

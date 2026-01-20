@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Modules\Pdnd\Filament\Pages;
 
 use Exception;
-use Throwable;
 use Filament\Actions\Action;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Log;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Modules\Xot\Filament\Pages\XotBasePage;
-use Modules\Pdnd\Services\PdndClientService;
-use Filament\Forms\Concerns\InteractsWithForms;
 use Modules\Pdnd\Services\Anpr\Services\C007\C007Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
+use Modules\Pdnd\Services\PdndClientService;
+use Modules\Xot\Filament\Pages\XotBasePage;
+use Throwable;
 
 /**
  * @property Schema $pdndForm
@@ -38,7 +38,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
      * Pattern regex per validazione codice fiscale italiano.
      */
     private const CODICE_FISCALE_REGEX = '/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/';
-    
+
     /**
      * Lunghezza standard del codice fiscale italiano.
      */
@@ -60,7 +60,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
                     ->regex(self::CODICE_FISCALE_REGEX)
                     ->maxLength(self::CODICE_FISCALE_LENGTH)
                     ->minLength(self::CODICE_FISCALE_LENGTH)
-                    ->rule('size:' . self::CODICE_FISCALE_LENGTH)
+                    ->rule('size:'.self::CODICE_FISCALE_LENGTH)
                     ->autocapitalize()
                     ->alphaNum()
                     ->validationMessages([
@@ -73,7 +73,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             ->statePath('pdndData');
     }
 
-     /**
+    /**
      * Gestisce l'invio del form ed esegue la verifica dell'esistenza in vita.
      */
     public function send(): void
@@ -93,7 +93,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             } else {
                 $this->handleVerificaFailed($risultatoC007Service);
             }
-
         } catch (Exception $e) {
             Log::error('Errore in send(): '.$e->getMessage());
             Notification::make()
@@ -103,8 +102,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
                 ->send();
         }
     }
-
-
 
     protected function getForms(): array
     {
@@ -121,7 +118,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         ];
     }
 
-
     /**
      * Crea un'istanza del servizio C007 configurato per l'ambiente di produzione.
      */
@@ -135,8 +131,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         return new C007Service($pdndClient);
     }
 
-
-      /**
+    /**
      * Verifica l'esistenza in vita tramite il servizio C007.
      */
     private function verificaEsistenzaInVita(string $codiceFiscale): array
@@ -158,15 +153,13 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         }
     }
 
-
-     /**
+    /**
      * Verifica se la risposta del servizio C007 indica un successo.
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
-
 
     /**
      * Gestisce il caso di verifica completata con successo.
@@ -214,7 +207,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         $this->notifyError('Errore nella ricerca', $errorMessage);
     }
 
-     /**
+    /**
      * Invia una notifica di successo.
      */
     private function notifySuccess(): void
@@ -239,7 +232,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             ->send();
     }
 
-
     /**
      * Resetta il risultato della verifica.
      */
@@ -254,8 +246,8 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
     private function validateCodiceFiscale(array $state): string
     {
         $codiceFiscale = $state['codiceFiscale'] ?? '';
-        
-        if (!is_string($codiceFiscale)) {
+
+        if (! is_string($codiceFiscale)) {
             throw new Exception('Codice fiscale non valido: deve essere una stringa');
         }
 
@@ -288,5 +280,4 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
 
         return implode("\n", $errorLines);
     }
-
 }

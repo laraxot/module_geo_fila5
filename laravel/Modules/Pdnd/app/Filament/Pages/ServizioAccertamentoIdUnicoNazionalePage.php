@@ -8,14 +8,11 @@ use Modules\User\Models\User;
  */
 
 namespace Modules\Pdnd\Filament\Pages;
-use Modules\User\Models\User;
 
 use Exception;
-use function Safe\preg_replace;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Components\Component;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
@@ -24,7 +21,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\PdndClientService;
+use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
+
+use function Safe\preg_replace;
 
 /**
  * Class ServizioAccertamentoIdUnicoNazionalePage.
@@ -129,6 +129,6 @@ class ServizioAccertamentoIdUnicoNazionalePage extends XotBasePage implements Ha
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
 }

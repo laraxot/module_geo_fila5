@@ -36,7 +36,7 @@ class RichiestaE002
             idOperazioneClient: (string) ($data['idOperazioneClient'] ?? ''),
             criteriRicerca: (isset($data['criteriRicerca']) && is_array($data['criteriRicerca']))
                 ? TipoCriteriRicercaE002::fromArray($data['criteriRicerca'])
-                : new TipoCriteriRicercaE002(),
+                : new TipoCriteriRicercaE002,
             verifica: (isset($data['verifica']) && is_array($data['verifica']))
                 ? TipoVerificaE002::fromArray($data['verifica'])
                 : null,

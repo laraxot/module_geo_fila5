@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 namespace Modules\Pdnd\Filament\Pages;
-use Modules\User\Models\User;
 
-use function Safe\preg_replace;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
@@ -18,7 +16,10 @@ use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C007\C007Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
+use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
+
+use function Safe\preg_replace;
 
 /**
  * @property Schema $pdndForm
@@ -129,6 +130,6 @@ class ServizioVerificaDichEsistenzaVita extends XotBasePage implements HasForms
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
 }

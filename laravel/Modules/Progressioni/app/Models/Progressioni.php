@@ -25,10 +25,7 @@ use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrYearRelationship;
-use Modules\Sigma\Models\Traits\SchedaTrait;
-use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
 /**
@@ -408,7 +405,6 @@ class Progressioni extends BaseScheda
 {
     use ConvertedTrait;
     use ProgressioniTrait;
-    
 
     // use EnteMatrRelationship;
     // use EnteMatrYearRelationship;
@@ -458,7 +454,7 @@ class Progressioni extends BaseScheda
         // -----------------
         'gg_integ_params',
         'gg_integ_params_asz',
-        'gg_esperienza_no_asz', //gg_cateco_posf_no_asz se non c'e' gg_integ_params
+        'gg_esperienza_no_asz', // gg_cateco_posf_no_asz se non c'e' gg_integ_params
 
     ];
 
@@ -490,7 +486,7 @@ class Progressioni extends BaseScheda
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            //->logAll()  // Traccia tutti i campi
+            // ->logAll()  // Traccia tutti i campi
             /*
             ->logExcept([
                 // Escludo attributi con accessor che chiamano $this->save()

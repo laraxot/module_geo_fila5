@@ -39,7 +39,6 @@ use function Safe\date;
  */
 trait ProgressioniRelationshipTrait
 {
-    
     /*
     public function categoriaPropro(): HasOne
     {
@@ -184,22 +183,23 @@ trait ProgressioniRelationshipTrait
         return $this->hasMany(StabiDirigente::class, 'anno', 'anno')
             ->pluck('nome_diri', 'id');
     }
-     /*
+
+    /*
     public function stabiDirigente(): HasOne
     {
-        $row = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
-            ->where('repar', $this->repar)
-            ->where('anno', $this->anno);
-        if ($row->first() === null) {
-            // $params = getRouteParameters();
-            // extract($params);
-            $tmp = StabiDirigente::firstOrCreate(['stabi' => $this->stabi, 'repar' => $this->repar, 'anno' => $this->anno]);
-            $row = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
-                ->where('repar', $this->repar)
-                ->where('anno', $this->anno);
-        }
+       $row = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
+           ->where('repar', $this->repar)
+           ->where('anno', $this->anno);
+       if ($row->first() === null) {
+           // $params = getRouteParameters();
+           // extract($params);
+           $tmp = StabiDirigente::firstOrCreate(['stabi' => $this->stabi, 'repar' => $this->repar, 'anno' => $this->anno]);
+           $row = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
+               ->where('repar', $this->repar)
+               ->where('anno', $this->anno);
+       }
 
-        return $row;
+       return $row;
     }
 */
     public function pesi(): HasOne
@@ -207,14 +207,15 @@ trait ProgressioniRelationshipTrait
         return $this->hasOne(Pesi::class, 'anno', 'anno')
             ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
     }
-/*
-    public function valutatore(): BelongsTo
-    {
-        // return $this->belongsTo(Valutatore::class);
-        return $this->belongsTo(StabiDirigente::class, 'valutatore_id', 'id');
-        // return $this->hasOne(StabiDirigente::class, 'id', 'valutatore_id');
-    }
-*/
+
+    /*
+        public function valutatore(): BelongsTo
+        {
+            // return $this->belongsTo(Valutatore::class);
+            return $this->belongsTo(StabiDirigente::class, 'valutatore_id', 'id');
+            // return $this->hasOne(StabiDirigente::class, 'id', 'valutatore_id');
+        }
+    */
     public function valutatoreDefault(): HasOne
     {
         return $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')

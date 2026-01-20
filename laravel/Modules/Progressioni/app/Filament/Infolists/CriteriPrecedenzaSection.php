@@ -27,7 +27,7 @@ class CriteriPrecedenzaSection extends Section
     {
         static::$year = $year;
 
-        return new static();
+        return new static;
     }
 
     /**

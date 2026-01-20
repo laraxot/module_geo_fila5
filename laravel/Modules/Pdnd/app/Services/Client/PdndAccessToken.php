@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Pdnd\Services\Client;
 
-use function Safe\curl_init;
-use function Safe\curl_setopt;
-use function Safe\curl_exec;
-use function Safe\curl_getinfo;
-use function Safe\json_decode;
-use function Safe\json_encode;
 use Exception;
 use Modules\Pdnd\Datas\PdndData;
+
+use function Safe\curl_exec;
+use function Safe\curl_getinfo;
+use function Safe\curl_init;
+use function Safe\curl_setopt;
+use function Safe\json_decode;
+use function Safe\json_encode;
 
 class PdndAccessToken
 {

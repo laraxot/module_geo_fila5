@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use Modules\Xot\Datas\XotData;
 use Filament\Facades\Filament;
 use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Livewire\Livewire;
 use Modules\Notify\Models\MailTemplate;
 use Modules\Progressioni\Filament\Resources\MailTemplateResource;
 use Modules\Progressioni\Filament\Resources\MailTemplateResource\Pages\ListMailTemplates;
+use Modules\Xot\Datas\XotData;
 
 use function Pest\Laravel\actingAs;
 

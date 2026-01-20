@@ -20,8 +20,8 @@ class RefreshByYearAction
     use QueueableAction;
 
     /**
-     * @param ProgressioniClass   $modelClass
-     * @param non-empty-string    $fieldname
+     * @param  ProgressioniClass  $modelClass
+     * @param  non-empty-string  $fieldname
      */
     public function execute(string $modelClass, string $fieldname, int|string $year): void
     {

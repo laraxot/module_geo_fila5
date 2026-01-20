@@ -56,7 +56,7 @@ class ImportCedDiffAction extends Action
 
                     return;
                 }
-                $import = new CedDiffImport();
+                $import = new CedDiffImport;
                 Excel::import($import, $filePath); // , null, \Maatwebsite\Excel\Excel::XLSX);
 
                 $columns = $import->getColumns();

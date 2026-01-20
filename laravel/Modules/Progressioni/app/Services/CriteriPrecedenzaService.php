@@ -7,7 +7,6 @@ namespace Modules\Progressioni\Services;
 use Illuminate\Support\Facades\Request;
 use Modules\Progressioni\Models\CriteriPrecedenza;
 
-
 class CriteriPrecedenzaService
 {
     /**
@@ -42,8 +41,8 @@ class CriteriPrecedenzaService
     /**
      * Get field names for a specific year.
      *
-     * @param int $year The year to get fields for
-     * @param bool $is_po Whether to include PO-specific fields
+     * @param  int  $year  The year to get fields for
+     * @param  bool  $is_po  Whether to include PO-specific fields
      * @return array<int, string> Array of field names
      */
     public static function getFieldsNamesYear(int $year, bool $is_po = false): array

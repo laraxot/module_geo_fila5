@@ -3,27 +3,28 @@
 declare(strict_types=1);
 
 namespace Modules\Pdnd\Filament\Pages;
-use Modules\User\Models\User;
 
-use function Safe\preg_replace;
 use Exception;
 use Filament\Actions\Action;
-use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
-use Modules\Xot\Filament\Pages\XotBasePage;
-use Modules\Pdnd\Services\PdndClientService;
-use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C003\C003Service;
-use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
-use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
+use Modules\Pdnd\Services\Anpr\Services\C003\Models\Common\TipoCodiceFiscale;
 use Modules\Pdnd\Services\Anpr\Services\C003\Models\Common\TipoGeneralita;
 use Modules\Pdnd\Services\Anpr\Services\C003\Models\Common\TipoLuogoEvento;
-use Modules\Pdnd\Services\Anpr\Services\C003\Models\Common\TipoCodiceFiscale;
+use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
+use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
+use Modules\Pdnd\Services\PdndClientService;
+use Modules\User\Models\User;
+use Modules\Xot\Filament\Pages\XotBasePage;
+
+use function Safe\preg_replace;
 
 /**
  * @property Schema $pdndForm
@@ -89,7 +90,6 @@ class ServizioVerificaDichGeneralitaPROD extends XotBasePage implements HasForms
             $c030Service = new C030Service(app()->make(PdndClientService::class, [
                 'ambiente' => 'prod',
             ]));
-            
 
             // dddx($c030Service);
             $cfRaw = $state['codiceFiscale'] ?? '';
@@ -104,7 +104,7 @@ class ServizioVerificaDichGeneralitaPROD extends XotBasePage implements HasForms
                 if (is_array($listaSoggetti) && isset($listaSoggetti[0]) && is_array($listaSoggetti[0])) {
                     $idAnprValue = $listaSoggetti[0]['id_anpr'] ?? 'N/A';
                 }
-                
+
                 $cleaned = preg_replace('/[^\w\s-]/', '', (string) $idAnprValue);
                 $this->idAnpr = $cleaned;
 
@@ -132,7 +132,7 @@ class ServizioVerificaDichGeneralitaPROD extends XotBasePage implements HasForms
                                 $risultatoVerificaValue = is_object($valore) && isset($valore->value) ? (string) $valore->value : (string) $valore;
                             }
                         }
-                        
+
                         $risultatoVerifica = $risultatoVerificaValue;
 
                         // Assicurati che sia una stringa semplice
@@ -217,7 +217,6 @@ class ServizioVerificaDichGeneralitaPROD extends XotBasePage implements HasForms
             return false;
         }
 
-        return $user->hasRole("super-admin");
+        return $user->hasRole('super-admin');
     }
-
 }

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Http\Middleware;
 
-use Nwidart\Modules\Module;
 use Exception;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Nwidart\Modules\Module;
 use Str;
 
 class FilamentMiddleware extends Middleware

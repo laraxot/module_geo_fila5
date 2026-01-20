@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Providers\Filament;
 
-use Override;
 use Filament\Panel;
 use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
+use Override;
 
 class AdminPanelProvider extends XotBasePanelProvider
 {

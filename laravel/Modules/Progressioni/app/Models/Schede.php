@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Models;
 
-use Illuminate\Database\Query\JoinClause;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Validation\Validator;
@@ -12,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Route;
 use InvalidArgumentException;
 use Modules\Performance\Models\Individuale;
@@ -495,7 +495,7 @@ class Schede extends BaseModel implements ProgressioneSchedaContract
 
         'gg_integ_params',
         'gg_integ_params_asz',
-        'gg_esperienza_no_asz', //gg_cateco_posf_no_asz se non c'e' gg_integ_params
+        'gg_esperienza_no_asz', // gg_cateco_posf_no_asz se non c'e' gg_integ_params
     ];
 
     /**
@@ -801,7 +801,6 @@ class Schede extends BaseModel implements ProgressioneSchedaContract
             // echo '<pre>'.$sql.'</pre>';
             $scheda_obj->getConnection()->statement($sql);
         }
-
     }
 
     public static function updateTotale(array $params): void
@@ -1174,9 +1173,8 @@ class Schede extends BaseModel implements ProgressioneSchedaContract
 
     /**
      * Calculate total days in office with proper return type.
-     * 
-     * @param mixed $data
-     * @return int|null
+     *
+     * @param  mixed  $data
      */
     public function ggInSedeTot($data): ?int
     {
