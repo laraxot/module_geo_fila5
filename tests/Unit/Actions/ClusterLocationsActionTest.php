@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\App;
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\ClusterLocationsAction;
 use Modules\Geo\Datas\LocationData;
@@ -23,7 +22,7 @@ it('clusters locations that are close together', function (): void {
     $mockDistanceCalculator->shouldReceive('execute')
         ->with($location1, $location2)
         ->andReturn(['distance' => ['value' => 100]]); // 100 meters (within 1km)
-    
+
     $mockDistanceCalculator->shouldReceive('execute')
         ->with($location1, $location3)
         ->andReturn(['distance' => ['value' => 150000]]); // 150km (much further than 1km)
@@ -61,7 +60,7 @@ it('throws exception when location is not LocationData', function (): void {
     $action = new ClusterLocationsAction($mockDistanceCalculator);
 
     $invalidLocations = [null, 'not a location', 123];
-    
+
     foreach ($invalidLocations as $invalidLocation) {
         expect(fn () => $action->execute([$invalidLocation]))
             ->toThrow(InvalidLocationException::class);
@@ -134,7 +133,7 @@ it('updates cluster centers correctly', function (): void {
     $clusters = $action->execute($locations, 5.0); // 5km max distance
 
     expect($clusters)->toHaveCount(1);
-    
+
     // The center should be the average of the two locations
     $center = $clusters[0]['center'];
     expect($center->latitude)->toBe(45.5); // average of 45 and 46

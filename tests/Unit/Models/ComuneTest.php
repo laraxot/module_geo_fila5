@@ -12,7 +12,7 @@ uses(TestCase::class);
 beforeEach(function (): void {
     // Clear any cached data before setting up test data
     Cache::forget('sushi_Comune_data');
-    
+
     // Crea un file JSON di test
     $this->testData = [
         [
@@ -40,12 +40,12 @@ beforeEach(function (): void {
     ];
 
     // Use the path that matches the SushiToJson trait's getJsonFile() method
-    $jsonPath = $this->app->make(\Modules\Tenant\Services\TenantService::class)->filePath('database/content/comuni.json');
+    $jsonPath = $this->app->make(Modules\Tenant\Services\TenantService::class)->filePath('database/content/comuni.json');
     $directory = dirname($jsonPath);
-    if (!File::exists($directory)) {
+    if (! File::exists($directory)) {
         File::makeDirectory($directory, 0755, true);
     }
-    
+
     File::put($jsonPath, json_encode($this->testData, JSON_PRETTY_PRINT));
 });
 
@@ -54,7 +54,7 @@ afterEach(function (): void {
     Cache::forget('sushi_Comune_data');
 
     // Rimuovi il file di test
-    $jsonPath = app(\Modules\Tenant\Services\TenantService::class)->filePath('database/content/comuni.json');
+    $jsonPath = app(Modules\Tenant\Services\TenantService::class)->filePath('database/content/comuni.json');
     File::delete($jsonPath);
 });
 
@@ -190,7 +190,7 @@ test('it can update an existing comune', function (): void {
         $comune->comune = 'Milano Centro';
         $comune->cap = '20121';
         $comune->save();
-        
+
         expect($comune->comune)->toBe('Milano Centro');
         expect($comune->cap)->toBe('20121');
     } else {
@@ -204,7 +204,7 @@ test('it can update an existing comune', function (): void {
             'lng' => 9.1900,
         ]);
         $comune->save();
-        
+
         expect($comune->comune)->toBe('Milano Centro');
         expect($comune->cap)->toBe('20121');
     }

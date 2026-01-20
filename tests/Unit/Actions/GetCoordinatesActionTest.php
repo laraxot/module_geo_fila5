@@ -368,5 +368,5 @@ it('handles invalid json response', function (): void {
     ]);
 
     // Act & Assert
-    expect(fn () => $this->action->execute($address))->toThrow(\Safe\Exceptions\JsonException::class);
+    expect(fn () => $this->action->execute($address))->toThrow(Safe\Exceptions\JsonException::class);
 });

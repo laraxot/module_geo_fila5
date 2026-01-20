@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Http;
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
 
@@ -22,7 +20,7 @@ it('has correct constants defined', function (): void {
     expect($reflection->hasConstant('GEOCODING_URL'))->toBeTrue();
     expect($reflection->hasConstant('DISTANCE_MATRIX_URL'))->toBeTrue();
     expect($reflection->hasConstant('ELEVATION_URL'))->toBeTrue();
-    
+
     // Test that the constants have the correct values
     expect($reflection->getConstant('GEOCODING_URL'))->toBe('https://maps.googleapis.com/maps/api/geocode/json');
     expect($reflection->getConstant('DISTANCE_MATRIX_URL'))->toBe('https://maps.googleapis.com/maps/api/distancematrix/json');

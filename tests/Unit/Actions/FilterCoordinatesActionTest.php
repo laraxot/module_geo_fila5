@@ -23,12 +23,12 @@ it('filters coordinates within radius correctly', function (): void {
 
     // Should return 2 coordinates (the center and the close one)
     expect($filtered)->toHaveCount(2);
-    
+
     // The first one should be the center point (distance 0)
     expect($filtered[0]['latitude'])->toBe(45.4642);
     expect($filtered[0]['longitude'])->toBe(9.1900);
     expect(abs($filtered[0]['distance'] - 0.0))->toBeLessThan(0.1);
-    
+
     // The second one should be the close point
     expect($filtered[1]['latitude'])->toBe(45.4700);
     expect($filtered[1]['longitude'])->toBe(9.2000);
@@ -79,10 +79,10 @@ it('throws exception for invalid center latitude', function (): void {
     ];
 
     expect(fn () => $this->action->execute($coordinates, 91, 9.1900, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Latitudine centrale non valida');
-        
+        ->toThrow(InvalidArgumentException::class, 'Latitudine centrale non valida');
+
     expect(fn () => $this->action->execute($coordinates, -91, 9.1900, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Latitudine centrale non valida');
+        ->toThrow(InvalidArgumentException::class, 'Latitudine centrale non valida');
 });
 
 it('throws exception for invalid center longitude', function (): void {
@@ -91,10 +91,10 @@ it('throws exception for invalid center longitude', function (): void {
     ];
 
     expect(fn () => $this->action->execute($coordinates, 45.4642, 181, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Longitudine centrale non valida');
-        
+        ->toThrow(InvalidArgumentException::class, 'Longitudine centrale non valida');
+
     expect(fn () => $this->action->execute($coordinates, 45.4642, -181, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Longitudine centrale non valida');
+        ->toThrow(InvalidArgumentException::class, 'Longitudine centrale non valida');
 });
 
 it('throws exception for invalid radius', function (): void {
@@ -103,10 +103,10 @@ it('throws exception for invalid radius', function (): void {
     ];
 
     expect(fn () => $this->action->execute($coordinates, 45.4642, 9.1900, 0))
-        ->toThrow(\InvalidArgumentException::class, 'Il raggio deve essere maggiore di 0');
-        
+        ->toThrow(InvalidArgumentException::class, 'Il raggio deve essere maggiore di 0');
+
     expect(fn () => $this->action->execute($coordinates, 45.4642, 9.1900, 30000))
-        ->toThrow(\InvalidArgumentException::class, 'Il raggio non può essere maggiore della circonferenza terrestre');
+        ->toThrow(InvalidArgumentException::class, 'Il raggio non può essere maggiore della circonferenza terrestre');
 });
 
 it('throws exception for invalid coordinate latitude', function (): void {
@@ -115,7 +115,7 @@ it('throws exception for invalid coordinate latitude', function (): void {
     ];
 
     expect(fn () => $this->action->execute($coordinates, 45.4642, 9.1900, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Latitudine non valida');
+        ->toThrow(InvalidArgumentException::class, 'Latitudine non valida');
 });
 
 it('throws exception for invalid coordinate longitude', function (): void {
@@ -124,7 +124,7 @@ it('throws exception for invalid coordinate longitude', function (): void {
     ];
 
     expect(fn () => $this->action->execute($coordinates, 45.4642, 9.1900, 10.0))
-        ->toThrow(\InvalidArgumentException::class, 'Longitudine non valida');
+        ->toThrow(InvalidArgumentException::class, 'Longitudine non valida');
 });
 
 it('sorts results by distance', function (): void {

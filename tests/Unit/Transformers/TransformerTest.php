@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(Modules\Geo\Tests\TestCase::class);
 
-use Modules\Geo\Transformers\GeoJsonResource;
 use Modules\Geo\Transformers\GeoJsonCollection;
+use Modules\Geo\Transformers\GeoJsonResource;
 
 test('GeoJsonResource can be instantiated', function () {
     expect(class_exists(GeoJsonResource::class))->toBeTrue();
-    
+
     // The GeoJsonResource likely needs a model instance to be instantiated
     // For now, just test that the class exists and check its methods
     expect(method_exists(GeoJsonResource::class, 'toArray'))->toBeTrue();
@@ -17,7 +17,7 @@ test('GeoJsonResource can be instantiated', function () {
 
 test('GeoJsonCollection can be instantiated', function () {
     expect(class_exists(GeoJsonCollection::class))->toBeTrue();
-    
+
     // Similarly, test that the class exists and check its methods
     expect(method_exists(GeoJsonCollection::class, 'toArray'))->toBeTrue();
 });

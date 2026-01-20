@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(Modules\Geo\Tests\TestCase::class);
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Geo\Models\Address;

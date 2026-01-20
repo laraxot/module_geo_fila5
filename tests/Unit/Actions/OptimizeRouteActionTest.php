@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Collection;
-use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\TestCase;
@@ -22,7 +21,7 @@ it('returns same locations when count is 2 or less', function (): void {
     $singleCollection = collect([$location1]);
     $calculateDistance = Mockery::mock('alias:CalculateDistanceActionMock1');
     $action = new OptimizeRouteAction($calculateDistance);
-    
+
     $result = $action->execute($singleCollection);
     expect($result)->toHaveCount(1);
     expect($result->first())->toBe($location1);
@@ -43,16 +42,16 @@ it('optimizes route for three locations', function (): void {
     $locations = collect([$locationA, $locationC, $locationB]); // Initial order: A, C, B
 
     $calculateDistance = Mockery::mock('alias:CalculateDistanceActionMock2');
-    
+
     // Mock distances: A to B is shorter than A to C
     $calculateDistance->shouldReceive('execute')
         ->with($locationA, $locationC)
         ->andReturn(['distance' => ['value' => 200000]]); // 200km
-    
+
     $calculateDistance->shouldReceive('execute')
         ->with($locationA, $locationB)
         ->andReturn(['distance' => ['value' => 1500]]); // 1.5km
-    
+
     $calculateDistance->shouldReceive('execute')
         ->with($locationB, $locationC)
         ->andReturn(['distance' => ['value' => 250000]]); // 250km
@@ -70,7 +69,7 @@ it('optimizes route for three locations', function (): void {
 it('handles empty collection', function (): void {
     $calculateDistance = Mockery::mock('alias:CalculateDistanceActionMock3');
     $action = new OptimizeRouteAction($calculateDistance);
-    
+
     $result = $action->execute(collect([]));
     expect($result)->toBeInstanceOf(Collection::class);
     expect($result->count())->toBe(0);
@@ -85,7 +84,7 @@ it('handles route optimization with multiple locations', function (): void {
     $locations = collect([$locationA, $locationD, $locationB, $locationC]); // A, D, B, C
 
     $calculateDistance = Mockery::mock('alias:CalculateDistanceActionMock4');
-    
+
     // Mock distances: each location is closer to the next in sequence
     $calculateDistance->shouldReceive('execute')
         ->with($locationA, $locationB)
@@ -143,7 +142,7 @@ it('correctly calculates nearest location', function (): void {
     $locations = collect([$locationA, $locationC, $locationB]);
 
     $calculateDistance = Mockery::mock('alias:CalculateDistanceActionMock6');
-    
+
     // A to B is closer than A to C
     $calculateDistance->shouldReceive('execute')
         ->with($locationA, $locationC)
