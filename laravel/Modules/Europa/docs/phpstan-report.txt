@@ -1,0 +1,6 @@
+Note: Using configuration file /var/www/_bases/base_ptvx_fila4_mono/laravel/phpstan.neon.
+  0/10 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%[1G[2K 10/10 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+
+ [OK] No errors                                                                                           
+

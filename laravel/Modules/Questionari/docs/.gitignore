@@ -1,0 +1,19 @@
+
+# Dependencies and packages
+/node_modules/
+/vendor/
+npm-debug.log
+
+# Build and compiled files
+/build_*/
+/source/assets/build/
+
+# Laravel specific
+.env
+
+# Backup files
+*.backup
+*.backup.*
+*.bak
+*.old
+*.old1

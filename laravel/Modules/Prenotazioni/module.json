@@ -1,0 +1,15 @@
+{
+    "name": "Prenotazioni",
+    "alias": "prenotazioni",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Prenotazioni\\Providers\\PrenotazioniServiceProvider",
+        "Modules\\Prenotazioni\\Providers\\Filament\\AdminPanelProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

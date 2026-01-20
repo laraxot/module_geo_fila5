@@ -1,0 +1,4 @@
+*.sqlite*
+
+# Backup files
+*.bak

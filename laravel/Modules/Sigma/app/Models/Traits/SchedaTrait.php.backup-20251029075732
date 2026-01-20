@@ -1,0 +1,2119 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Sigma\Models\Traits;
+
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Modules\Sigma\Datas\GgFilterData;
+use Modules\Sigma\Models\Integparam;
+use Modules\Sigma\Models\Qua00f;
+use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
+use Modules\Sigma\Models\Traits\Extras\MassExtra;
+use Modules\Sigma\Models\Traits\Mutators\CommonMutator;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrAnnoMutator;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
+use Modules\Sigma\Models\Traits\Mutators\EnteStabiMutator;
+use Modules\Sigma\Models\Traits\Mutators\SchedaMutator;
+use Modules\Sigma\Models\Traits\Relationships\CommonRelationship;
+use Modules\Sigma\Models\Traits\Relationships\EnteMatrAnnoRelationship;
+use Modules\Sigma\Models\Traits\Relationships\EnteMatrDateRangeRelationship;
+use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
+use Modules\Sigma\Models\Traits\Relationships\EnteStabiRelationship;
+use Modules\Sigma\Models\Traits\Relationships\TquRelationship;
+use Modules\Sigma\Models\Traits\Scopes\CommonScope;
+
+/**
+ * Modules\Sigma\Models\Traits\SigmaModelTrait.
+ *
+ * @property float $percparttime
+ * @property int   $giorni_parttimevert
+ * @property int   $giorni_presenza
+ */
+trait SchedaTrait
+{
+    use CommonMutator;
+    use CommonRelationship;
+    use CommonScope;
+    use EnteMatrAnnoMutator;
+    use EnteMatrAnnoRelationship;
+    use EnteMatrDateRangeMutator;
+    use EnteMatrDateRangeRelationship;
+    use EnteMatrMutator;
+    use EnteMatrRelationship;
+    use EnteStabiMutator;
+    use EnteStabiRelationship;
+    use FunctionExtra;
+    use MassExtra;
+    use SchedaMutator;
+    use TquRelationship;
+
+    // -------------
+    public function getGgCatecoPosfunNoAsz(): ?int
+    {
+        if (null == $this->gg_cateco_posfun) {
+            // dddx($this->getGgCatecoPosfun());
+        }
+        $value = intval($this->gg_cateco_posfun) - intval($this->gg_asz_cateco_posfun);
+
+        return $value;
+    }
+
+    public function getGgIntegParamsAszAttribute(?float $value): ?float
+    {
+        if (null != $value) {
+            return $value;
+        }
+        
+        // ✅ GUARD: Se il modello non ha PK, non possiamo salvare
+        if ($this->getKey() === null) {
+            return null;
+        }
+        
+        $dal = $this->integParams?->last()?->anv2kd; // 2023-01-01
+        if (null == $dal) {
+            return null;
+        }
+
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            // 'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $dal,
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = optional($this->anag)->ggAssenzaInSedeTot($data);
+        
+        // ✅ CORRETTO: Salviamo il valore calcolato (con guard sulla PK)
+        $this->attributes['gg_integ_params_asz'] = $value;
+        $this->save();
+
+        return $value;
+    }
+
+    public function getGgEsperienzaNoAszAttribute(?int $value): ?int
+    {
+        if (null != $value) {
+            return $value;
+        }
+
+        // ✅ GUARD: Se il modello non ha PK, non possiamo salvare
+        if ($this->getKey() === null) {
+            return null;
+        }
+
+        if (null != $this->gg_integ_params) {
+            $value = intval($this->gg_integ_params);
+            $value_asz = intval($this->gg_integ_params_asz);
+            $value_no_asz = $value - $value_asz;
+
+            // ✅ CORRETTO: Salviamo il valore calcolato (con guard sulla PK)
+            $this->attributes['gg_esperienza_no_asz'] = $value_no_asz;
+            $this->save();
+
+            return $value_no_asz;
+        }
+
+        $value = $this->gg_cateco_posfun_no_asz;
+
+        // ✅ CORRETTO: Salviamo il valore calcolato (con guard sulla PK)
+        $this->attributes['gg_esperienza_no_asz'] = $value;
+        $this->save();
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfunNoAszAttribute(?int $value): ?int
+    {
+        if (null != $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $value = $this->getGgCatecoPosfunNoAsz();
+        $fieldname = 'gg_cateco_posfun_no_asz';
+
+        /*
+        $table = $this->getTable();
+        $conn = $this->getConnection();
+
+        if (! \Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
+            \Schema::connection($conn->getName())->table($table, static function ($table) use ($fieldname): void {
+                $table->integer($fieldname)->nullable();
+            });
+        }
+        */
+        $this->$fieldname = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getPostTypeAttribute(?string $value): string
+    {
+        // *
+
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+
+        // */
+        /**
+         * @var array
+         */
+        $models = config('xra.model');
+        $post_type = collect($models)->search(static::class);
+        if (false === $post_type) {
+            $post_type = snake_case(class_basename($this));
+        }
+
+        if ('progressioni' === $post_type) {// tabella generica
+            if ($this->isPo()) {
+                $post_type = 'po';
+            } elseif ($this->isRegionale()) {
+                $post_type = 'regionale';
+            } else {
+                $post_type = 'dip';
+            }
+        }
+
+        if (null !== $this->getKey()) {
+            if (! \is_string($post_type)) {
+                throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            }
+
+            $this->post_type = $post_type;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+        }
+
+        return (string) $post_type;
+    }
+
+    public function getPosfunvalAttribute(?int $value): ?int // string or integer ?
+    {if (null !== $value && ! request()->input('refresh', 0)) {
+        return $value;
+    }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        $value = substr((string) $this->posfun, -1);
+        $value = (int) $value;
+
+        $this->posfunval = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getValutatoreTxtAttribute(?string $value): ?string
+    {
+        if (null === $value) {
+            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        }
+        if (request()->input('refresh', 0)) {
+            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        }
+
+        return $value;
+    }
+
+    public function getPosizioneAttribute(?int $_value): int
+    {
+        return $this->avversariCategoriaEco
+            ->where('punt_progressione_finale', '>', $this->punt_progressione_finale)
+            ->count();
+    }
+
+    public function getGgAttribute(?int $_value): ?int
+    {
+        /*
+        if (null != $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        */
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (201661 == $this->matr) {
+            dddx([
+                'gg_in_sede' => $this->gg_in_sede,
+                'gg_fuori_sede' => $this->gg_fuori_sede,
+            ]);
+        }
+        $value = $this->gg_in_sede + $this->gg_fuori_sede;
+
+        $this->gg = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAszAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $value = $this->gg_asz_in_sede + $this->gg_asz_fuori_sede;
+        // dddx([$this->gg_asz_in_sede, $this->gg_asz_fuori_sede]);
+        $this->gg_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgNoAszAttribute(?float $value): ?float
+    {
+        if (null !== $value && 0.0 != $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $value = $this->gg_in_sede_no_asz + $this->gg_fuori_sede_no_asz;
+        if (2039800 == $this->matr) {
+            dddx([
+                'gg_in_sede_no_asz' => $this->gg_in_sede_no_asz,
+                'gg_in_sede' => $this->gg_in_sede,
+                // 'gg_in_sede_asz' => $this->gg_in_sede_asz,
+                'gg_asz_in_sede' => $this->gg_asz_in_sede,
+                'gg_fuori_sede_no_asz' => $this->gg_fuori_sede_no_asz,
+                'gg_fuori_sede' => $this->gg_fuori_sede,
+                'gg_asz_fuori_sede' => $this->gg_asz_fuori_sede,
+            ]);
+        }
+
+        $this->gg_no_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgFuoriSedeNoAszAttribute(?float $value): ?float
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $value = $this->gg_fuori_sede - $this->gg_asz_fuori_sede - ($this->hh_asz_fuori_sede / 6);
+
+        $this->gg_fuori_sede_no_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getHhAszAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $value = $this->hh_asz_in_sede + $this->hh_asz_fuori_sede;
+        // dddx([$this->gg_asz_in_sede, $this->gg_asz_fuori_sede]);
+        $this->hh_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getHhAszInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+
+        $parz = [
+            // 'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+
+        $value = $this->anag?->hhAssenzaInSedeTot($parz);
+
+        // if (\in_array('hh_asz_in_sede',  $this->getFillable(), false)) {
+        $this->hh_asz_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return (int) $value;
+    }
+
+    public function getHhAszFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        // $categoria = optional($this->categoriaPropro);
+        // $criteri = $this->criteriEsclusione;
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            // 'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $value = optional($this->anag)->hhAssenzaFuoriSedeTot($parz);
+        if (\in_array('hh_asz_fuori_sede', $this->getFillable(), false)) {
+            $this->hh_asz_fuori_sede = $value;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+        }
+
+        return $value;
+    }
+
+    // ------------------------------------------------------------
+
+    public function getGgAszInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        // $categoria = optional($this->categoriaPropro);
+        // $criteri = $this->criteriEsclusione;
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            // 'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = optional($this->anag)->ggAssenzaInSedeTot($data);
+        // if (\in_array('gg_asz_in_sede',  $this->getFillable(), false)) {
+        $this->gg_asz_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return (int) $value;
+    }
+
+    public function getGgAszFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        // $categoria = optional($this->categoriaPropro);
+        // $criteri = $this->criteriEsclusione;
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            // 'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $value = optional($this->anag)->ggAssenzaFuoriSedeTot($parz);
+        if (\in_array('gg_asz_fuori_sede', $this->getFillable(), false)) {
+            $this->gg_asz_fuori_sede = $value;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+        }
+
+        return $value;
+    }
+
+    public function getGgAszCatecoAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        $value = $this->gg_asz_cateco_in_sede + $this->gg_asz_cateco_fuori_sede;
+        if (2160000 == $this->matr) {
+            dddx([
+                'gg_asz_cateco_in_sede' => $this->gg_asz_cateco_in_sede,
+                'gg_asz_cateco_fuori_sede' => $this->gg_asz_cateco_fuori_sede,
+            ]);
+        }
+        $this->gg_asz_cateco = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAszCatecoInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        // dddx($value);
+        $categoria = optional($this->categoriaPropro);
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            // 'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = optional($this->anag)->ggAssenzaInSedeTot($data);
+
+        $this->gg_asz_cateco_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAszCatecoPosfunInSede(): ?int
+    {
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        // dddx($value);
+        $categoria = optional($this->categoriaPropro);
+        $lista_aspettative = $this->getListaTipoCodiceAspettative();
+        // dddx($lista_aspettative);
+        $parz = [
+            'lista_propro' => $categoria->lista_propro,
+            'lista_tipo_codice' => $lista_aspettative,
+            'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = optional($this->anag)->ggAssenzaInSedeTot($data);
+
+        return intval($value);
+    }
+
+    public function getGgAszCatecoPosfunInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $this->gg_asz_cateco_posfun_in_sede = $this->getGgAszCatecoPosfunInSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoNoAszAttribute(?int $value): ?int
+    {
+        if (null != $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        $value = $this->gg_cateco - $this->gg_asz_cateco;
+        if (216000 == $this->matr) {
+            dddx([
+                'gg_cateco' => $this->gg_cateco,
+                'gg_asz_cateco' => $this->gg_asz_cateco,
+            ]);
+        }
+        $this->gg_cateco_no_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getPropro(): ?int
+    {
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->dal && is_numeric($this->anno)) {
+            $this->dal = $this->anno * 10000 + 101;
+        }
+        if (null == $this->al && is_numeric($this->anno)) {
+            $this->al = $this->anno * 10000 + 1231;
+        }
+        if (null == $this->qua2kd && is_numeric($this->anno)) {
+            $rows = Qua00f::where('ente', $this->ente)
+                ->where('matr', $this->matr)
+                ->get();
+            // ---
+        }
+
+        $value = $this->qua00f->where('qua2kd', $this->qua2kd)->first()?->propro;
+
+        return $value;
+    }
+
+    public function getProproAttribute(?int $value): ?int
+    {
+        if (null != $value || null == $this->getKey()) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        $this->propro = $this->getPropro();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfunInSedeNoAszAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $value = $this->gg_cateco_posfun_in_sede - $this->gg_asz_cateco_posfun; // in_sede
+        /*
+        dddx(
+            [
+                'gg_cateco_posfun_in_sede' => $this->gg_cateco_posfun_in_sede,
+                'gg_asz_cateco_posfun' => $this->gg_asz_cateco_posfun,
+                'value' => $value,
+            ]
+        );
+        */
+        $table = $this->getTable();
+        $conn = $this->getConnection();
+        $fieldname = 'gg_cateco_posfun_in_sede_no_asz';
+        if (! \Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
+            \Schema::connection($conn->getName())->table($table, static function ($table) use ($fieldname): void {
+                $table->integer($fieldname)->nullable();
+            });
+        }
+
+        $this->$fieldname = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfun(): ?int
+    {
+        // f($this->gg_cateco_posfun_in_sede==null){
+        //    dddx($this->getGgCatecoPosfunInSede());
+        // }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        $value = intval($this->gg_cateco_posfun_in_sede) + intval($this->gg_cateco_posfun_fuori_sede);
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfunAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $this->gg_cateco_posfun = $this->getGgCatecoPosfun();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoSupAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        // 730
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+        $value = $this->gg_cateco_sup_in_sede + $this->gg_cateco_sup_fuori_sede;
+        $this->addTableField(['name' => 'gg_cateco_sup', 'type' => 'integer']);
+        $this->gg_cateco_sup = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoSupInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $categoria = $this->categoriaPropro;
+
+        $parz = [
+            // 'lista_propro'=>$categoria->lista_propro,
+            // 'lista_propro_sup'=>$categoria->lista_propro_sup,
+            // 'posfun'=>$this->posfun,
+            'lista_propro' => $categoria->lista_propro_sup,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+
+        $value = $this->anag?->ggInSedeTot($data);
+
+        /*
+        $table=$this->getTable();
+        $conn=$this->getConnection();
+        $fieldname='gg_cateco_sup_in_sede';
+        if (!\Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
+            \Schema::connection($conn->getName())->table($table, function ($table) use($fieldname){
+                $table->integer($fieldname);
+            });
+        }
+        $this->addTableField(['name' => 'gg_cateco_sup_in_sede', 'type' => 'integer']);
+        */
+
+        $this->gg_cateco_sup_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoNoPosfunNoAszAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (2160000 == $this->matr) {
+            dddx([
+                'gg_cateco_no_asz' => $this->gg_cateco_no_asz,
+                'gg_cateco_posun_no_asz' => $this->gg_cateco_posfun_no_asz,
+            ]);
+        }
+        $value = $this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz;
+        $this->gg_cateco_no_posfun_no_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoInSede(): ?int
+    {
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $categoria = $this->categoriaPropro;
+        if (null == $categoria) {
+            return null;
+        }
+        // dddx($categoria->lista_propro);
+        // $criteri = $this->criteriEsclusione;
+        $parz = [
+            'lista_propro' => $categoria->lista_propro,
+            'lista_propro_sup' => $categoria->lista_propro_sup,
+            // 'posfun'=>$this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = $this->anag?->ggInSedeTot($data);
+
+        // $parz['value'] = $value;
+        // dddx($parz);
+        return $value;
+    }
+
+    public function getGgCatecoInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $this->gg_cateco_in_sede = $this->getGgCatecoInSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCateco(): ?int
+    {
+        $value = $this->gg_cateco_in_sede + $this->gg_cateco_fuori_sede;
+
+        return $value;
+    }
+
+    public function getGgCatecoAttribute(?int $value): ?int
+    {
+        if (null == $this->getKey()) {
+            return null;
+        }
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        $this->gg_cateco = $this->getGgCateco();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfunInSede(): ?int
+    {
+        $categoria = $this->categoriaPropro;
+        if (null == $categoria) {
+            dddx($this->getPropro());
+            dddx([
+                'scheda' => $this,
+                'propro' => $this->propro,
+                // 'categoriaPropro_sql' => $this->categoriaPropro()->ddRawSql()
+            ]);
+
+            return null;
+        }
+        $parz = [
+            'lista_propro' => $categoria->lista_propro,
+            // 'lista_propro_sup' => $categoria->lista_propro_sup,
+            'posfun' => $this->posfun,
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = $this->anag?->ggInSedeTot($data);
+
+        return $value;
+    }
+
+    public function getGgCatecoPosfunInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $this->gg_cateco_posfun_in_sede = $this->getGgCatecoPosfunInSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAszCatecoFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        // 730
+        $value = 0; // DA FARE !
+        $this->gg_asz_cateco_fuori_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAszCatecoPosfunFuoriSede(): ?int
+    {
+        $value = 0; // DA FARE !
+
+        return $value;
+    }
+
+    public function getGgAszCatecoPosfunFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        $this->gg_asz_cateco_posfun_fuori_sede = $this->getGgAszCatecoPosfunFuoriSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+        // 730
+        $categoria = optional($this->categoriaPropro);
+        // dddx($categoria->lista_propro);
+        // $criteri = $this->criteriEsclusione;
+        $value = optional($this->anag)->ggFuoriSedeTot(
+            [
+                // 'lista_propro'=>$categoria->lista_propro,
+                // 'lista_propro_sup'=>$categoria->lista_propro_sup,
+                'lista_propro' => $categoria->lista_propro_sup,
+                // 'posfun'=>$this->posfun,
+                'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+                'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+            ]
+        );
+        $this->addTableField(['name' => 'gg_cateco_sup_fuori_sede', 'type' => 'integer']);
+        $this->gg_cateco_sup_fuori_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgCatecoFuoriSede(): ?int
+    {
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+        $categoria = $this->categoriaPropro;
+        if (null == $categoria) {
+            return null;
+        }
+        // dddx($categoria->lista_propro);
+        // $criteri = $this->criteriEsclusione;
+        $value = $this->anag?->ggFuoriSedeTot(
+            [
+                'lista_propro' => $categoria->lista_propro,
+                'lista_propro_sup' => $categoria->lista_propro_sup,
+                // 'posfun'=>$this->posfun,
+                'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+                'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+            ]
+        );
+
+        return intval($value);
+    }
+
+    public function getGgCatecoFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value) {
+            return $value;
+        } // 730
+
+        $this->gg_cateco_fuori_sede = $this->getGgCatecoFuoriSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return intval($value);
+    }
+
+    public function getGgCatecoPosfunFuoriSede(): ?int
+    {
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $categoria = $this->categoriaPropro;
+        if (null == $categoria) {
+            return null;
+        }
+        $value = optional($this->anag)->ggFuoriSedeTot(
+            [
+                'lista_propro' => optional($categoria)->lista_propro,
+                'lista_propro_sup' => optional($categoria)->lista_propro_sup,
+                'posfun' => $this->posfun,
+                'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+                'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+            ]
+        );
+
+        return intval($value);
+    }
+
+    public function getGgCatecoPosfunFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        $this->gg_cateco_posfun_fuori_sede = $this->getGgCatecoPosfunFuoriSede();
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return (int) $value;
+    }
+
+    public function getGgAssenzaAnnoAttribute(?int $value): ?int // da capire se solo quelle "decurtate" o tutte
+    {if (null !== $value && ! request()->input('refresh', 0)) {
+        return $value;
+    }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+
+        // dddx($this->anno);
+        // dddx($this->criteriEsclusione->pluck('value', 'name')['data_presenza_al']);
+        // $data_presenza_al = ($this->criteriEsclusione->data_presenza_al);
+        // $anno = $data_presenza_al->year;
+        $anno = $this->anno;
+        $dal = $anno * 10000 + 101;
+        $al = $anno * 10000 + 1231;
+        $parz = [
+            'date_min' => Carbon::createFromDate($anno, 1, 1)->startOfDay(),
+            'date_max' => Carbon::createFromDate($anno, 12, 31)->endOfDay(),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = $this->anag?->ggAssenzaInSedeTot($data);
+        $this->gg_assenza_anno = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    /*
+    public function getGgAspettativePondFuorisedeAttribute(?int $value):?int {
+        echo ('ora si usano i gg_asz_cateco etc etc');
+
+        return $value;
+
+    public function getGgAspettativePondInsedeAttribute(?int $value):?int {
+        echo ('ora si usano i gg_asz_cateco etc etc');
+
+        return $value;
+    }
+    */
+
+    public function getGgAszCatecoPosfunAttribute(?int $_value): ?int
+    {
+        $value = $this->gg_asz_cateco_posfun_in_sede + $this->gg_asz_cateco_posfun_fuori_sede;
+
+        return (int) $value;
+    }
+
+    /*
+    * Trait method getCategoriaEcoAttribute has not been applied,
+    * because there are collisions with other trait methods
+    * on Modules\Progressioni\Models\Progressioni
+    */
+    /*
+    public function getCategoriaEcoAttribute($value) {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        $categoria_propro = $this->categoriaPropro;
+        $value = $categoria_propro->categoria;
+        $this->categoria_eco = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+    */
+
+    /* moved into Modules/Sigma/Models/Traits/Mutators/SchedaMutator.php
+     public function getPosizAttribute(?int $value): ?int {
+
+         if (null !== $value) {
+             return $value;
+         }
+
+         $qua00f = $this->qua00f;
+         if (null === $qua00f) {
+             dddx('errore');
+         }
+
+         if (1 !== $qua00f->count()) {
+             // dddx($qua00f);
+             $arr = collect($qua00f)->map(static fn ($item): array => ['propro' => $item->propro, 'posfun' => $item->posfun]);
+             // foreach($arr as $i){
+
+             // }
+             // dddx($arr->count());
+         }
+
+         $this->attributes['posiz'] = $qua00f->first()?->posiz;
+         // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+         return $this->attributes['posiz'];
+     }
+     */
+    /*
+    public function getPosizTxtAttribute($value) {
+       if (null !== $value) {
+           return $value;
+       }
+
+       $row = Codici::where('tipo', 19)->where('codice', $this->posiz)->first();
+       if (! \is_object($row)) {
+           return null;
+       }
+
+       $this->attributes['posiz_txt'] = $row->desc1;
+       // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+       return $this->attributes['posiz_txt'];
+    }
+    */
+
+    /*moved into Modules/Sigma/Models/Traits/Mutators/SchedaMutator.php
+    public function getDisci1Attribute(?int $value): ?int {
+        if (null != $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        $qua00f_curr = $this->qua00fDaterange->first();
+        if (! \is_object($qua00f_curr)) {
+            return null;
+        }
+
+        // Access to an undefined property Modules\Sigma\Models\Qua00f::$disci1.
+        // return $qua00f_curr->disci1;
+        $value = $qua00f_curr->attributes['disci1'];
+        $this->update(['disci1' => $value]);
+
+        return $value;
+    }
+    */
+    /*
+    public function getCategoriaEcovalAttribute(?string $value): ?string {
+
+        if (null != $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+
+        $categoria_propro = $this->categoriaPropro;
+        $value = $categoria_propro?->categoria;
+        // ⚠️ FIXED: Accessor must be read-only
+        $this->attributes['categoria_ecoval'] = $value;
+
+        return $value;
+    }
+    */
+
+    /**
+     * Undocumented function.
+     */
+    public function getAventiDirittoAttribute(mixed $_value)
+    {
+        $maxCatecoPosfun = $this->maxCatecoPosfun;
+        if (\is_object($maxCatecoPosfun)) {
+            return $maxCatecoPosfun->aventi_diritto;
+        }
+
+        echo '<h3>id :'.$this->id.'<br/>'.
+            'anno :'.$this->anno.'<br/>'.
+            'categoria_ecoval :'.$this->categoria_ecoval.'<br/>'.
+            'posfun :'.$this->posfunval.'</h3>';
+        dddx([$this->maxCatecoPosfun()->toSql()]);
+    }
+
+    /**
+     * Undocumented function.
+     */
+    public function getAventiDirittoEffAttribute(mixed $_value)
+    {
+        $maxCatecoPosfun = $this->maxCatecoPosfun;
+        if (\is_object($maxCatecoPosfun)) {
+            return $maxCatecoPosfun->aventi_diritto_eff;
+        }
+
+        echo '<h3>id :'.$this->id.'<br/>'.
+            'anno :'.$this->anno.'<br/>'.
+            'categoria_ecoval :'.$this->categoria_ecoval.'<br/>'.
+            'posfun :'.$this->posfunval.'</h3>';
+        dddx([$this->maxCatecoPosfun()->toSql()]);
+    }
+
+    public function getValoreDifferenzialeRapportatoPtAttribute(?float $value): ?float
+    {
+        if (null !== $value) {
+            return $value;
+        }
+
+        // ✅ Check: record deve esistere prima di save()
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+        $value = $this->costo_fascia_up * $this->ptime;
+        $this->valore_differenziale_rapportato_pt = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getPesoEsperienzaAcquisitaAttribute(?int $value): ?int
+    {
+        if (null !== $value) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->propro) {
+            return null;
+        }
+        $pesi = $this->pesi;
+        if (! \is_object($pesi)) {
+            return null;
+        }
+
+        return (int) $pesi->peso_esperienza_acquisita;
+    }
+
+    /*
+    public function getGgAttribute($value){
+        //update schede set gg=datediff(al,dal)+1 where anno=2016
+        return 5;
+    }
+    */
+
+    public function getTotalePondAttribute(?float $value): ?float
+    {
+        if (null !== $value) {
+            return $value;
+        }
+        if (null == $this->dal) {
+            return null;
+        }
+
+        $rows = new self();
+        $sql = 'update schede set gg=datediff(al,dal)+1 where anno="'.$this->anno.'" and matr="'.$this->matr.'"';
+        $rows->getConnection()->statement($sql);
+        $rows = $rows::where('matr', $this->matr)
+            ->where('anno', $this->anno)
+            ->where('totale', '>', 0)
+            ->get();
+        $tmp0 = 0;
+        $tmp1 = 0;
+        foreach ($rows as $row) {
+            $tmp0 += (float) $row->totale * (float) $row->gg;
+            $tmp1 += $row->gg;
+        }
+
+        if (0 === $tmp1) {
+            $ris = 0;
+        } else {
+            $ris = $tmp0 / $tmp1;
+        }
+
+        $this->totale_pond = $ris;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $ris;
+    }
+
+    public function puntProgressioneFinale(): float
+    {
+        $scheda_criteri = $this->schedaCriteri;
+
+        $tot = 0;
+        foreach ($scheda_criteri as $v) {
+            if (\is_string($v->field_name) /* && is_int($v->converted_in) */) {
+                $converted = $this->convertedIn($v->field_name, (int) $v->converted_in);
+                $converted_peso = $converted * $v->peso / 10;
+                $tot += $converted_peso;
+            /*--- 4 debug
+            if (20736 == $this->matr) {
+                echo '<hr>';
+                echo 'field_name :'.$v->field_name.'<br/>';
+                echo 'converted_in :'.$v->converted_in.'<br/>';
+                echo 'converted :'.$converted.'<br/>';
+                echo 'converted_peso :'.$converted_peso.'<br/>';
+                echo 'tot :'.$tot.'<br/>';
+                echo '</hr>';
+            }
+            */
+            } else {
+                // ci penso
+                dddx(
+                    [
+                        'field_name' => $v->field_name,
+                        'converted_in' => $v->converted_in,
+                        'v' => $v,
+                    ]
+                );
+            }
+        }
+
+        return $tot;
+    }
+
+    public function setPuntProgressioneFinaleAttribute(?float $_value): void
+    {
+        /*
+        $scheda_criteri=$this->schedaCriteri;
+        $tot=0;
+        foreach($scheda_criteri as $k=>$v){
+            $converted=$this->convertedIn($v->field_name,$v->converted_in);
+            $converted_peso=$converted*$v->peso/10;
+            $tot+=$converted_peso;
+        }
+
+        $this->attributes['punt_progressione_finale']=$tot.'';
+        */
+        $value = $this->puntProgressioneFinale();
+        $this->attributes['punt_progressione_finale'] = $value.'';
+    }
+
+    public function getPuntProgressioneFinaleAttribute(?float $value): ?float
+    {
+        $old_value = $value;
+        /*
+        //if($value!='') return $value;
+        $scheda_criteri=$this->schedaCriteri;
+        $tot=0;
+        foreach($scheda_criteri as $k=>$v){
+            $converted=$this->convertedIn($v->field_name,$v->converted_in);
+            $converted_peso=$converted*$v->peso/10;
+            $tot+=$converted_peso;
+        }
+
+        $value=$tot;
+        */
+        $value = $this->puntProgressioneFinale();
+        // dddx(['old_value' => $old_value, 'value' => $value]);
+        if ($old_value !== $value) {
+            // ✅ Check: record deve esistere prima di save()
+            if (null == $this->getKey()) {
+                return round($value, 3);
+            }
+
+            $this->punt_progressione_finale = $value;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+        }
+
+        return round($value, 3);
+    }
+
+    /**
+     * Accessor per valutatore_id con auto-assegnazione se mancante.
+     *
+     * ✅ Include check getKey() per prevenire save su record non persistiti.
+     */
+    public function getValutatoreIdAttribute(?int $value): ?int
+    {
+        if ($value > 100) {
+            // dddx($value);
+
+            return $value;
+        }
+
+        // ✅ Check: record deve esistere prima di save()
+        if (null == $this->getKey()) {
+            return $value;
+        }
+
+        // dddx($this->attributes['valutatore_id']);
+
+        $stabi_diri = $this->stabiDirigente;
+        if (! \is_object($stabi_diri)) {
+            return $value;
+        }
+
+        $valutatore_id = $stabi_diri->valutatore_id;
+        if (null !== $valutatore_id) {
+            $this->valutatore_id = $valutatore_id;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+            return (int) $valutatore_id;
+        }
+
+        $stabi_dirigente_class = Str::of(static::class)->beforeLast('\\')->append('\\StabiDirigente')->toString();
+        $stabi = $stabi_dirigente_class::firstOrCreate(
+            [
+                'anno' => $this->anno,
+                'stabi' => $this->stabi,
+                'repar' => 0,
+            ]
+        );
+        if (null === $stabi->valutatore_id) {
+            $stabi->valutatore_id = $stabi->id;
+            $stabi->save();
+        }
+
+        $this->valutatore_id = $stabi->valutatore_id;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return (int) $valutatore_id;
+
+        // dddx($stabi->valutatore_id);
+
+        /*
+        $stabi = StabiDirigente::where('anno', $this->anno)
+                        ->where('stabi', $this->stabi)
+                        ->where('repar', 0)
+                        ->first();
+        if (! is_object($stabi)) {
+            return null;
+        }
+        $valutatore_id = $stabi->valutatore_id;
+        if (null != $valutatore_id) {
+            $stabi_diri->valutatore_id = $valutatore_id;
+            $stabi_diri->save();
+            $this->valutatore_id = $valutatore_id;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+            return $valutatore_id;
+        }
+
+        return null;
+        */
+    }
+
+    public function getListaProproAttribute(?string $_value): ?string
+    {
+        return optional($this->categoriaPropro)->lista_propro;
+    }
+
+    public function getListaProproSupAttribute(?string $_value): ?string
+    {
+        return optional($this->categoriaPropro)->lista_propro_sup;
+    }
+
+    public function getPtimeAttribute(?float $value): ?float
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        if (null === $this->dal) {
+            return $value;
+        }
+
+        $table = $this->getTable();
+        $conn = $this->getConnection();
+        $fieldname = 'ptime';
+        if (! \Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
+            \Schema::connection($conn->getName())->table($table, static function ($table) use ($fieldname): void {
+                $table->decimal($fieldname, 10, 4);
+            });
+        }
+        $parz = ['date_min' => Carbon::createFromFormat('Ymd', (string) $this->dal), 'date_max' => Carbon::createFromFormat('Ymd', (string) $this->al)];
+
+        $data = GgFilterData::from($parz);
+        Qua00f::getCoalesceDateRange($data);
+        /*
+        COALESCE(sum(greatest(datediff(if(qua2ka=0 or qua2ka>20191231 ,20191231,qua2ka),if(qua2kd=0 or qua2kd<20190101 ,20190101,qua2kd))+1,0)),0)
+
+        dddx($select);
+        */
+
+        $dal = 'if(qua2kd>'.$this->dal.',qua2kd,'.$this->dal.')';
+        $al = 'if(qua2ka>'.$this->al.' or qua2ka=0,'.$this->al.',qua2ka)';
+        $perc = 'if(oree=0,36,oree)/if(oret=0,36,oret)';
+        $dur = 'greatest(datediff('.$al.','.$dal.')+1,0)';
+
+        $qua00f = $this->qua00f()
+            ->selectRaw('
+					if(oree=0,36,oree) as oree,
+  					if(oret=0,36,oret) as oret,
+  					'.$perc.' as perc,
+  					qua2kd,
+  					'.$dal.' as dal,
+  					qua2ka,
+  					'.$al.' as al,
+  					'.$dur.' as dur
+  				')
+            ->ofRangeDate($this->dal, $this->al)
+            ->get();
+
+        $gg_tot = 0;
+        $pond = 0;
+        foreach ($qua00f as $v) {
+            $pond += $v->perc * $v->dur;
+            $gg_tot += $v->dur;
+        }
+
+        $parz = [
+            'date_min' => Carbon::createFromFormat('Ymd', (string) $this->dal),
+            'date_max' => Carbon::createFromFormat('Ymd', (string) $this->al),
+            'lista_tipo_codice' => '505-97,',
+        ];
+        $data = GgFilterData::from($parz);
+
+        $gg_vert = $this->ggAssenzaInSedeTot($data);
+        if (($gg_tot - $gg_vert) == 0) {
+            return null;
+        }
+        $value = ($pond / ($gg_tot - $gg_vert));
+        $this->ptime = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    /*
+    INSERT INTO stipendio_tabellare (propro,posfun,euro_pond,ptime,euro,anno)
+(
+SELECT   distinct propro,substr(posfun,-1)*1 AS posfun
+,if(impseu=0,impoeu,impseu) AS euro_pond
+,if(oree=0,36,oree)/if(oret=0,36,oret) AS ptime
+,round(if(impseu=0,impoeu,impseu) / (if(oree=0,36,oree)/if(oret=0,36,oret)),3) AS euro
+,2019
+FROM generale.ced03f
+JOIN generale.qua00f
+ON ced03f.ente=qua00f.ente
+AND ced03f.smatr=qua00f.matr
+AND quaann=""
+AND (
+((sannli*10000)+(smesli*100)+sgiome BETWEEN qua2kd AND qua2ka )
+OR
+((sannli*10000)+(smesli*100)+sgiome >= qua2kd AND qua2ka=0 )
+)
+WHERE qua00f.ente=90
+AND svocfi=1200
+AND sannli=2019
+AND anno=0
+order BY propro,substr(posfun,-1)*1,if(oree=0,36,oree)/if(oret=0,36,oret)
+)
+    */
+    /*
+    public function getCostoFasciaUpAttribute(?float $value): ?float {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        $table = $this->getTable();
+        $conn = $this->getConnection();
+        $fieldname = 'costo_fascia_up';
+        if (! \Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
+            \Schema::connection($conn->getName())->table($table, static function ($table) use ($fieldname): void {
+                $table->decimal($fieldname, 10, 4);
+            });
+        }
+
+        $tmp = $this->stipendioTabellare;
+        // dddx($this->stipendioTabellare()->toSql());
+        $tmp1 = $this->stipendioTabellareUp;
+        if (\is_object($tmp1) && \is_object($tmp)) {
+            $value = ((float) $tmp1->euro - (float) $tmp->euro) * 13;
+            $this->costo_fascia_up = $value;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+            return $value;
+        }
+
+        // echo('<br/>non trovo ['.$this->propro.']['.($this->posfunval+1).'] in stipendia tabellare anno ['.$this->anno.']');
+        return 0;
+    }
+    */
+    public function getImportoStipendioAnnuoAttribute(?float $_value): ?float
+    {
+        $tmp = $this->stipendioTabellare;
+        if (! \is_object($tmp)) {
+            return null;
+        }
+
+        return (float) $tmp->importo_stipendio_annuo;
+    }
+
+    public function getGgInSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+        if (null == $this->qua2kd) {
+            return null;
+        }
+
+        $parz = [
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        $data = GgFilterData::from($parz);
+        $value = $this->anag?->ggInSedeTot($data);
+        /*
+        if (10405 == $this->matr) {
+            dddx($value);
+        }
+        //*/
+        $this->gg_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgInSedeNoAszAttribute(?float $_value): ?float
+    {
+        /*
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        */
+
+        if (2016600 == $this->matr) {
+            dddx([
+                'gg_in_sede' => $this->gg_in_sede,
+                'gg_asz_in_sede' => $this->gg_asz_in_sede,
+                'hh_asz_in_sede' => $this->hh_asz_in_sede,
+            ]);
+        }
+        $value = $this->gg_in_sede - $this->gg_asz_in_sede - ($this->hh_asz_in_sede / 6);
+        $this->gg_in_sede_no_asz = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgPresenzaAnnoAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        $data_presenza_al = $this->criteriOptionsArr('data_presenza_al');
+        if (null == $data_presenza_al) {
+            return null;
+        }
+        $anno = $data_presenza_al->year;
+        $dal = $anno * 10000 + 101;
+        $al = $anno * 10000 + 1231;
+        $parz = [
+            'date_min' => Carbon::createFromDate($anno, 1, 1)->startOfDay(),
+            'date_max' => Carbon::createFromDate($anno, 12, 31)->endOfDay(),
+        ];
+        $anag = $this->anag;
+        if (null === $anag) {
+            return null;
+        }
+        $data = GgFilterData::from($parz);
+        $value = $anag->ggInSedeTot($data);
+        $this->gg_presenza_anno = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function getGgAnnoAttribute(?int $value): ?int  // giorni effettiva prensenza per escludere i sempre assenti
+    {if (null !== $value && ! request()->input('refresh', false)) {
+        return $value;
+    }
+
+        // ⚠️ FIXED: Accessor must be read-only, calculate on-the-fly without save()
+        $value = $this->gg_presenza_anno - $this->gg_assenza_anno;
+
+        // Store in attributes without triggering save
+        $this->attributes['gg_anno'] = $value;
+
+        return $value;
+    }
+
+    public function getGgAszTipCodEsclusoSubitoAttribute(?int $_value): ?int
+    {
+        // gg_asz_tip_cod_escluso_subito
+        return null;
+    }
+
+    public function getGgFuoriSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        } // 417
+        // $criteri = $this->criteriEsclusione;
+        $parz = [
+            'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+            'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+        ];
+        if (! \is_object($this->anag)) {
+            return null;
+        }
+
+        $value = $this->anag->ggFuoriSedeTot($parz);
+        $this->gg_fuori_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return (int) $value;
+    }
+
+    public function getGgPosiz1InSedeAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+
+        if (null == $this->matr) {
+            return null;
+        }
+
+        if (null == $this->posiz1) {
+            return null;
+        }
+
+        if (! \is_object($this->anag)) {
+            return $value;
+        }
+
+        $value = $this->anag->ggInSedeTot(
+            [
+                'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+                'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+                'posiz' => '1',
+            ]
+        );
+        $this->gg_posiz_1_in_sede = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function funcYear(string $func, ?float $value): ?float
+    {
+        if (null != $value && ! request()->input('refresh', false)) {
+            return $value;
+        }
+        if (null == $this->matr) {
+            return null;
+        }
+
+        if (null == $this->qua2kd) {
+            return null;
+        }
+
+        $str0 = 'get';
+        $str1 = 'Attribute';
+        $name = substr($func, \strlen($str0), -\strlen($str1));
+        // $name=Str::snake($name);
+        $anno = substr($name, -4);
+        $name = substr($name, 0, -4);
+
+        // return $this->$name(['anno' => $anno]);
+
+        $res = $this->$name((int) $anno);
+
+        $fieldname = Str::snake($name).'_'.$anno;
+        $this->$fieldname = $res;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $res;
+    }
+
+    public function getPerfInd2030Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2029Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2028Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2027Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2026Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2025Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2024Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2023Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2022Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2021Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2020Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2019Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2018Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2017Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2016Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2015Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function getPerfInd2014Attribute(?float $value): ?float
+    {
+        return $this->funcYear(__FUNCTION__, $value);
+    }
+
+    public function perfIndMedia(): ?float
+    {
+        $data = [];
+        for ($i = 1; $i <= $this->n_perf_ind; ++$i) {
+            $anno = $this->anno - $i;
+            $ris = $this->perfInd($anno);
+            $field = 'perf_ind_'.$anno;
+            // $this->update([$field=>$ris]);
+            $this->{$field} = $ris;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+            if ($ris > 0.0) {
+                $data[$anno] = $ris;
+            }
+        }
+
+        if (0 == count($data)) {
+            $value = null;
+            $this->perf_ind_media = $value;
+            // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+            return $value;
+        }
+
+        $value = array_sum($data) / count($data);
+
+        return (float) $value;
+    }
+
+    public function getPerfIndMediaAttribute(?float $value): ?float
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return round($value, 2);
+        }
+
+        // ✅ GUARD: Se il modello non ha PK, non possiamo salvare
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $value = $this->perfIndMedia();
+
+        $this->perf_ind_media = $value;
+        // ✅ CORRETTO: Salviamo il valore calcolato (con guard sulla PK)
+        $this->save();
+
+        return $value;
+    }
+
+    public function getPerfIndCountLast3YearsAttribute(?int $value): ?int
+    {
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+
+        // ✅ Check: record deve esistere prima di save()
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        $value = $this->performanceIndividuale()
+            ->whereBetween('anno', [$this->anno - 3, $this->anno - 1])
+                // ->where('ha_diritto', '>', 0)
+            ->where('totale_punteggio', '>', 0)
+            ->get()
+            ->keyBy('anno')
+            ->count();
+
+        $this->perf_ind_count_last_3_years = $value;
+        // ⚠️ REMOVED: save() in accessor causes infinite loop (anti-pattern)
+
+        return $value;
+    }
+
+    public function excellencesCountLast3years(): int
+    {
+        $anno_range = [$this->anno - 3, $this->anno - 1];
+        $value = $this->performanceIndividuale()
+            ->whereBetween('anno', $anno_range)
+            // ->where('ha_diritto', '>', 0)
+            ->where('excellence', 1)
+            ->get()
+            ->keyBy('anno')
+            ->count();
+
+        return $value;
+    }
+
+    public function getExcellencesCountLast3yearsAttribute(?int $value): ?int
+    {
+        if (null != $value && ! request()->input('refresh', 0)) {
+            return $value;
+        }
+
+        $value = $this->excellencesCountLast3years();
+
+        $this->update(['excellences_count_last_3_years' => $value]);
+
+        return $value;
+    }
+
+    public function getCriteriOptions(): ?Collection
+    {
+        $res = $this->criteriOptions
+            ->keyBy('name')
+            ->map(function ($item) {
+                switch ($item->type) {
+                    case 'list':
+                        return explode(',', $item->value);
+                    case 'int':
+                        return intval($item->value);
+                    case 'date':
+                        return Carbon::parse($item->value);
+                }
+
+                return $item->value;
+            });
+
+        return $res;
+    }
+
+    public function getGgIntegParams(): ?int
+    {
+        $last_integ = Integparam::where('ente', $this->ente)
+            ->where('matr', $this->matr)
+            ->latest('anv2ka')
+            ->first();
+        if (null == $last_integ) {
+            return null;
+        }
+
+        $criteriOption = $this->getCriteriOptions();
+
+        $data_presenza_al = $criteriOption->get('data_presenza_al');
+        // aggiornare campo con il valore minimo ..
+        // dddx(['rows'=>$rows,'data_presenza_al'=>$data_presenza_al]);
+
+        $days = $last_integ->anv2kd->diffInDays($data_presenza_al, true);
+
+        return intval($days);
+    }
+
+    /**
+     * Get criteri options array.
+     */
+    public function criteriOptionsArr(string $name): mixed
+    {
+        $res = $this->criteriOptions->where('name', $name)->first();
+        if (isset($res->type) && 'date' === $res->type && isset($res->value) && null !== $res->value) {
+            $res->value = Carbon::parse($res->value);
+        }
+
+        return $res?->value;
+    }
+}

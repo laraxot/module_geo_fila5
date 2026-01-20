@@ -1,0 +1,15 @@
+{
+    "name": "MobilitaVolontaria",
+    "alias": "mobilitavolontaria",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\MobilitaVolontaria\\Providers\\MobilitaVolontariaServiceProvider",
+        "Modules\\MobilitaVolontaria\\Providers\\Filament\\AdminPanelProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,133 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^5.0",
+        "nwidart/laravel-modules": "*",
+        "predis/predis": "*",
+        "sentry/sentry-laravel": "*"
+    },
+    "require-comment": {
+        "barryvdh/laravel-dompdf": "*",
+        "filament/filament": "*",
+        "isprambiente/pdnd-client": "*",
+        "laravel/framework": "^12.3",
+        "laravel/passport": "^13.4",
+        "nunomaduro/phpinsights": "*",
+        "nwidart/laravel-modules": "*",
+        "phpmd/phpmd": "*",
+        
+        
+        "spatie/laravel-permission": "*",
+        "staudenmeir/eloquent-has-many-deep": "*",
+        "symfony/http-client": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }, 
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan boost:update --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --ansi"
+        ],
+        "go": [
+            "sudo chmod -R 777 ..",
+            "@php -d memory_limit=-1 composer.phar self-update",
+            "@php -d memory_limit=-1 composer.phar update -W",
+            "rm -rf resources/views/vendor",
+            "@php artisan vendor:publish --all",
+            "rm -rf ./app/View/Components/vendor",
+            "@php artisan filament:upgrade",
+            "@php artisan filament:optimize",
+            "@php artisan optimize",
+            "@php artisan route:clear",
+            "@php artisan livewire:publish --assets",
+            "@php artisan serve"
+        ],
+        "optimize": [
+            "@php artisan filament:upgrade",
+            "@php artisan filament:optimize",
+            "@php artisan optimize"
+        ],
+        "chmod": [
+            "sudo chmod 777 -R ."
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "Modules/Lang/packages/lara-zeus/spatie-translatable",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "ignore-duplicates": true,
+            "merge-dev": true,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-replace": true,
+            "merge-scripts": false
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "carthage-software/mago": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "carthage-software/mago": "^1.0.0-rc.4",
+        "driftingly/rector-laravel": "^2.1",
+        "filament/upgrade": "^5.0",
+        "larastan/larastan": "*",
+        "rector/rector": "^2.0"
+    }
+}

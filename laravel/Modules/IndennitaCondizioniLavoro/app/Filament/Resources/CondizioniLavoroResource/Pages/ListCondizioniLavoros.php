@@ -1,0 +1,190 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages;
+
+use Filament\Actions\Action;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Enums\RecordActionsPosition;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+use Modules\IndennitaCondizioniLavoro\Actions\MakePdf;
+use Modules\IndennitaCondizioniLavoro\Actions\Populate;
+use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
+use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
+use Modules\Ptv\Actions\FixValutatoreIdByAnno;
+use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Override;
+
+class ListCondizioniLavoros extends XotBaseListRecords
+{
+    protected static string $resource = CondizioniLavoroResource::class;
+
+    #[Override]
+    public function getTableColumns(): array
+    {
+        // Column types are inferred by Filament v4
+        return [
+            TextColumn::make('matr')->searchable(),
+            TextColumn::make('cognome')->searchable(),
+            TextColumn::make('nome')->searchable(),
+            TextColumn::make('stabi')->searchable(),
+            TextColumn::make('repar')->searchable(),
+            TextColumn::make('indennitaTipoDettaglio')
+                ->formatStateUsing(function (TextColumn $column) {
+                    $state = $column->getState();
+                    if (! $state instanceof Collection) {
+                        return '';
+                    }
+
+                    /** @var Collection $state */
+                    return $state->pluck('indennitaTipo.nome')->implode(','.PHP_EOL.PHP_EOL.'');
+                })
+                ->wrap()
+                ->tooltip(function (TextColumn $column): ?string {
+                    $state = $column->getState();
+                    if (! $state instanceof Collection) {
+                        return null;
+                    }
+
+                    /** @var Collection $state */
+                    return $state->map(function ($item): string {
+                        if (! is_object($item)) {
+                            return '';
+                        }
+
+                        // Type narrowing: ensure item has nome property
+                        $nome = isset($item->nome) && is_string($item->nome) ? $item->nome : '';
+                        $indennitaTipoNome = '';
+
+                        // Type narrowing: ensure indennitaTipo exists and is object
+                        if (isset($item->indennitaTipo) && is_object($item->indennitaTipo)) {
+                            $indennitaTipoNome = isset($item->indennitaTipo->nome) && is_string($item->indennitaTipo->nome) ? $item->indennitaTipo->nome : '';
+                        }
+
+                        return '['.$indennitaTipoNome.'] '.$nome;
+                    })->implode(' --------------------- ,'.PHP_EOL.PHP_EOL.'');
+                }),
+            TextColumn::make('quadrimestre')->searchable(),
+            TextColumn::make('anno')->searchable(),
+        ];
+    }
+
+    protected function getTableFiltersLayout(): FiltersLayout
+    {
+        return FiltersLayout::AboveContent;
+    }
+
+    protected function getTableActionsPosition(): RecordActionsPosition
+    {
+        return RecordActionsPosition::BeforeColumns;
+    }
+
+    #[Override]
+    protected function getHeaderActions(): array
+    {
+        return [
+            'exportPdf' => Action::make('exportPdf')
+                ->label('Pdf ')
+                ->icon('heroicon-s-document')
+                ->action(function (): void {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(MakePdf::class)->execute($data);
+                }),
+            'replicate' => Action::make('replicate')
+                ->label('')
+                ->icon('heroicon-o-clipboard-document-list')
+                ->tooltip('ricopia da quadrimentre precendente')
+                ->action(function (): void {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(ReplicateIndennita::class)->execute($data);
+                }),
+        ];
+    }
+
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return true;
+    }
+
+    #[Override]
+    public function getTableActions(): array
+    {
+        // Types are inferred by Filament v4
+        return [
+            'compila' => Action::make('compila')
+                ->label('Compila')
+                ->tooltip('compila')
+                ->iconButton()
+                ->icon('heroicon-m-pencil-square')
+                ->url(fn ($record): string => CondizioniLavoroResource::getUrl('compila', ['record' => $record])),
+
+            'edit' => EditAction::make()
+                ->iconButton()
+                ->tooltip('modifica'),
+        ];
+    }
+
+    #[Override]
+    public function getTableFilters(): array
+    {
+        return [
+            SelectFilter::make('anno/valutatore')
+                ->label('anno/valutatore')
+                ->schema([
+                    Select::make('anno')
+                        ->options([
+                            '2023' => '2023',
+                            '2024' => '2024',
+                            '2025' => '2025',
+                            '2026' => '2026',
+                        ])
+                        ->reactive(),
+                    Select::make('quadrimestre')
+                        ->options([
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                        ])
+                        ->reactive(),
+                    Select::make('valutatore_id')
+                        ->label('valutatore')
+                        ->options(static fn (callable $get, callable $set) => app(GetValutatoriOptionsByWhere::class)
+                            ->execute('IndennitaCondizioniLavoro', ['anno' => $get('anno'), 'quadrimestre' => $get('quadrimestre')])),
+                ])
+                ->query(static function (Builder $query, array $data): Builder {
+                    // Type narrowing: ensure data has required keys
+                    $anno = isset($data['anno']) && (is_int($data['anno']) || is_string($data['anno'])) ? $data['anno'] : null;
+                    if ($anno === null) {
+                        return $query->where('id', 0);
+                    }
+
+                    // Ensure data structure matches expected type (quadrimestre must be int|string, not null)
+                    $quadrimestre = isset($data['quadrimestre']) && (is_int($data['quadrimestre']) || is_string($data['quadrimestre'])) ? $data['quadrimestre'] : '1';
+                    $populateData = ['anno' => $anno, 'quadrimestre' => $quadrimestre];
+                    app(Populate::class)->execute($populateData);
+                    app(FixValutatoreIdByAnno::class)->execute('IndennitaCondizioniLavoro', 'CondizioniLavoro', $anno);
+
+                    $query = $query->where($data);
+
+                    if (! Auth::user()?->hasRole('super-admin')) {
+                        return $query->whereHas('indennitaTipoDettaglio');
+                    }
+
+                    return $query;
+                })->columns(4),
+        ];
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Mensa",
+    "alias": "mensa",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Mensa\\Providers\\MensaServiceProvider",
+        "Modules\\Mensa\\Providers\\Filament\\AdminPanelProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,164 @@
+[
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "activities",
+        "id": 126,
+        "updated_at": "2025-09-09T10:18:02.524662Z",
+        "created_at": "2025-09-09T10:18:02.524696Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "capital_percentages",
+        "id": 127,
+        "updated_at": "2025-09-09T10:18:02.529595Z",
+        "created_at": "2025-09-09T10:18:02.529612Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "default_activities",
+        "id": 128,
+        "updated_at": "2025-09-09T10:18:02.533140Z",
+        "created_at": "2025-09-09T10:18:02.533155Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "employees",
+        "id": 129,
+        "updated_at": "2025-09-09T10:18:02.538755Z",
+        "created_at": "2025-09-09T10:18:02.538777Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 130,
+        "updated_at": "2025-09-09T10:18:02.542082Z",
+        "created_at": "2025-09-09T10:18:02.542102Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "projects",
+        "id": 131,
+        "updated_at": "2025-09-09T10:18:02.545135Z",
+        "created_at": "2025-09-09T10:18:02.545156Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 132,
+        "updated_at": "2025-09-09T10:18:02.547956Z",
+        "created_at": "2025-09-09T10:18:02.547971Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 133,
+        "updated_at": "2025-09-09T10:18:02.550187Z",
+        "created_at": "2025-09-09T10:18:02.550203Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "activities",
+        "id": 134,
+        "updated_at": "2025-09-09T10:18:02.657586Z",
+        "created_at": "2025-09-09T10:18:02.657603Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "capital_percentages",
+        "id": 135,
+        "updated_at": "2025-09-09T10:18:02.659818Z",
+        "created_at": "2025-09-09T10:18:02.659831Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "default_activities",
+        "id": 136,
+        "updated_at": "2025-09-09T10:18:02.661860Z",
+        "created_at": "2025-09-09T10:18:02.661875Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "employees",
+        "id": 137,
+        "updated_at": "2025-09-09T10:18:02.663907Z",
+        "created_at": "2025-09-09T10:18:02.663923Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 138,
+        "updated_at": "2025-09-09T10:18:02.666081Z",
+        "created_at": "2025-09-09T10:18:02.666096Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "projects",
+        "id": 139,
+        "updated_at": "2025-09-09T10:18:02.668759Z",
+        "created_at": "2025-09-09T10:18:02.668774Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 140,
+        "updated_at": "2025-09-09T10:18:02.670856Z",
+        "created_at": "2025-09-09T10:18:02.670872Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "settlements",
+        "id": 141,
+        "updated_at": "2025-09-09T10:18:02.672986Z",
+        "created_at": "2025-09-09T10:18:02.673000Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "activities",
+        "id": 142,
+        "updated_at": "2025-09-09T10:18:25.522664Z",
+        "created_at": "2025-09-09T10:18:25.522697Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    },
+    {
+        "table_schema": "ptv_incentivi",
+        "table_name": "activities",
+        "id": 143,
+        "updated_at": "2025-09-09T10:18:54.994737Z",
+        "created_at": "2025-09-09T10:18:54.994769Z",
+        "updated_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00",
+        "created_by": "5e5d8e9e-3abf-49ce-83c7-21545ed70e00"
+    }
+]

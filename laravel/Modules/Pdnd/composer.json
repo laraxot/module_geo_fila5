@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/pdnd",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicola Storgato",
+            "email": "storgatonicola@provincia.treviso.it"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Pdnd\\Providers\\PdndServiceProvider",
+                "Modules\\Pdnd\\Providers\\Filament\\AdminPanelProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Pdnd\\": "app/",
+            "Modules\\Pdnd\\Database\\Factories\\": "database/factories/",
+            "Modules\\Pdnd\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

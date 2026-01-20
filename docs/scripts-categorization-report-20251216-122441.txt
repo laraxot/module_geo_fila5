@@ -1,0 +1,80 @@
+🐮 Super Mucca: Analisi Categorizzazione Script
+===============================================
+
+🔍 Cercando script .sh/.py nella root di bashscripts...
+   Script nella root: 103
+
+   \033[1;33mScript da categorizzare:\033[0m
+   - git_up_quick.sh
+     → Suggerita categoria: git
+   - update_namespaces.sh
+     → Suggerita categoria: maintenance
+   - fix_structure.sh
+     → Suggerita categoria: merge_conflicts
+   - check_trait_duplications.sh
+     → Suggerita categoria: maintenance
+   - resolve_git_conflict.sh
+     → Suggerita categoria: git
+   - git_push_subtrees.sh
+     → Suggerita categoria: git
+   - check_duplicate_translations.sh
+     → Suggerita categoria: translations
+   - fix_all_merge_conflicts_v4.sh
+     → Suggerita categoria: merge_conflicts
+   - composer_init.sh
+     → Suggerita categoria: composer
+   - fix_all_merge_conflicts_v3.sh
+     → Suggerita categoria: merge_conflicts
+   - fix_git_conflicts_current_change.sh
+     → Suggerita categoria: git
+   - fix_docs_naming.sh
+     → Suggerita categoria: merge_conflicts
+   - resolve_git_conflicts_current.sh
+     → Suggerita categoria: git
+   - git_pull_subtree.sh
+     → Suggerita categoria: git
+   - fix_docs_naming_violations.sh
+     → Suggerita categoria: merge_conflicts
+   - check_mysql_win.sh
+     → Suggerita categoria: mysql
+   - docs-refactoring-safe.sh
+     → Suggerita categoria: docs
+   - fix_conflicts_robust.sh
+     → Suggerita categoria: merge_conflicts
+   - fix_all_merge_conflicts.sh
+     → Suggerita categoria: merge_conflicts
+   - git_push_subtree.sh
+     → Suggerita categoria: git
+   - fix_translations.sh
+     → Suggerita categoria: merge_conflicts
+   - git_pull_org.sh
+     → Suggerita categoria: git
+   - verify_assets.sh
+     → Suggerita categoria: maintenance
+   - parse_gitmodules_ini.sh
+     → Suggerita categoria: git
+   - fix_all_merge_conflicts_v2.sh
+     → Suggerita categoria: merge_conflicts
+   - check_before_phpstan.sh
+     → Suggerita categoria: quality-assurance
+   - fix_git_conflicts_docs_old_v3.sh
+     → Suggerita categoria: git
+   - create_svg_structure.sh
+     → Suggerita categoria: maintenance
+   - resolve_git_conflicts.sh
+     → Suggerita categoria: git
+   - sync_to_disk.sh
+     → Suggerita categoria: backup
+   - backup.sh
+     → Suggerita categoria: backup
+   - fix_git_conflicts_current_change_v2.sh
+     → Suggerita categoria: git
+   - update_enums.sh
+     → Suggerita categoria: maintenance
+   - fix_git_conflicts_enhanced.sh
+     → Suggerita categoria: git
+   - git_prune.sh
+     → Suggerita categoria: git
+   - git_change_org.sh
+     → Suggerita categoria: git
+   - fix_navigation_translations.sh

@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pages;
+
+use Override;
+use Filament\Forms\Components\TextInput;
+use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\StabiDirigente;
+use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
+use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes as PtvListStabiDirigentes;
+use Filament\Actions\Action;
+
+class ListStabiDirigentes extends PtvListStabiDirigentes
+{
+    protected static string $resource = StabiDirigenteResource::class;
+
+    /**
+     * @return array<Action>
+     */
+    #[Override]
+    protected function getHeaderActions(): array
+    {
+        $actions = parent::getHeaderActions();
+        $actions['import_valutatori_'] = ImportValutatoriAction::make('import_valutatori_')
+        ->addFields([
+            'anno' => TextInput::make('anno'),
+            // 'quadrimestre' => TextInput::make('quadrimestre'),
+        ])->setStabiDirigenteModel(StabiDirigente::class)
+        ->setSchedaModel(IndennitaResponsabilita::class);
+
+        return $actions;
+    }
+}

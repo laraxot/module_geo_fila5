@@ -1,0 +1,100 @@
+🐮 Super Mucca: Analisi Naming File .md
+========================================
+
+📋 Cercando file .md in cartelle docs...
+   Trovati: 6863 file .md
+
+🔍 Analizzando file con date nel nome...
+   File con date: 125
+
+   \033[1;33mFile da rinominare (no date):\033[0m
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation-audit-completion-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/quality-improvements-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/correzioni-errori-sintassi-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation_audit_completion_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/riepilogo_correzioni_traduzioni_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation-refactor-complete-summary-2025-08-08.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/traduzioni_navigation_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation_files_update_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/riepilogo-correzioni-traduzioni-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/quality-analysis-2025-11-11.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation-files-update-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/enum-translation-pattern-implementation-2025-01-27.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/analysis-results-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/lang-service-translation-updates-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/traduzioni-navigation-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/correzioni-navigation-pattern-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/translation-errors-correction-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/docs/correzioni_errori_sintassi_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/translation-syntax-fixes-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/password-translation-completion-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan-fixes-gennaio-2025-complete.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/git_conflicts_resolution_2025_01_27.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan_fixes_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/migration-fix-tenants-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/baseuser-refactoring-completed-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan-fixes-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/fixes/base-classes-corrections-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/translation-city-field-refactor-2025-08-08.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/password_translation_completion_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/updates_2025_12.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/login-widget-translation-audit-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/roadmap-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/bug-fixes/parse-error-orphan-methods-2025-01-27.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/roadmap/2025-q4-roadmap.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan-dry-kiss-improvements-2025-10-17.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/quality-status-2025-11.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan-fixes-gennaio-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/git-conflicts-resolution-2025-01-27.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/dry-kiss-analysis-2025-12-02.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/phpstan-fixes-2025-10-01.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/dry-kiss-analysis-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/bugfix/git-conflicts-resolution-2025-12-16.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User/docs/bugfix/multiple-bugs-resolution-2025-12-16.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/quality-improvements-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/phpstan-fixes-january-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/roadmap-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/composer-update-fixes-2025-11-24.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/phpstan-fixes-gennaio-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/dry-kiss-analysis-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Notify/docs/code_fixes_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/QUALITY_IMPROVEMENTS_SUMMARY_2025_11_18.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/bugfix-session-2025-01-04.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/architecture_complete_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan_fixes_2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-level-10-dry-kiss-analysis-2025-10-17.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/code-quality-audit-2025-01-22.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/merge-conflict-resolution-2025-11-04.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-fixes-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/quality_improvements_summary_2025_11_18.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/git-conflicts-resolution-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-analysis-2025-11-18.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-patterns-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-comprehensive-fixes-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/consolidated/git-conflicts-resolution-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/consolidated/phpstan/phpstan-fixes-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/consolidated/phpstan/phpstan-fixes-gennaio-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/consolidated/git_conflicts_resolution_2025_01_06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/consolidated/lessons-learned-2025-08-25.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/dry-kiss-model-refactoring-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/magic-properties-summary-2025-11-17.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/roadmap-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/code-quality-audit-2025-01.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-session-nov2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/base-classes-additional-fix-2025-10-15.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/quality-tools-status-nov2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/project-best-practices-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-fixes-gennaio-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/normalization-report-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-fixes-summary-2025-08-18.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-victory-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-batch-nov2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/testing-phpstan-verification-2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/code-quality-improvements-summary-2025-11-11.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-fixes-2025-01-06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/docs-improvements-nov2025.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/code-quality-improvements-2025-01.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/git_conflicts_resolution_2025_01_06.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-action-plan-2025-11-18.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/lessons-learned-2025-08-25.md
+   - /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Xot/docs/phpstan-analysis-2025-08-18.md

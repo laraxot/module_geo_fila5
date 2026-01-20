@@ -1,0 +1,72 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "php",
+            "args": [
+                "./artisan",
+                "boost:mcp"
+            ]
+        },
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/var/www/_bases/base_ptvx_fila4_mono/laravel",
+                "/var/www/_bases/base_ptvx_fila4_mono/docs",
+                "/var/www/_bases/base_ptvx_fila4_mono/bashscripts"
+            ]
+        },
+        "memory": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory"
+            ]
+        },
+        "fetch": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-fetch"
+            ]
+        },
+        "sequential-thinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ]
+        },
+        "puppeteer": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@hisma/server-puppeteer"
+            ]
+        },
+        "mysql": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-mysql"
+            ],
+            "env": {
+                "MYSQL_HOST": "${DB_HOST}",
+                "MYSQL_PORT": "${DB_PORT}",
+                "MYSQL_USER": "${DB_USERNAME}",
+                "MYSQL_PASSWORD": "${DB_PASSWORD}",
+                "MYSQL_DATABASE": "${DB_DATABASE}"
+            }
+        },
+        "git": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-git",
+                "--repository",
+                "/var/www/_bases/base_ptvx_fila4_mono"
+            ]
+        }
+    }
+}

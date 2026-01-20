@@ -1,0 +1,104 @@
+includes:
+    #- ./phpstan-baseline.neon
+    - ./vendor/larastan/larastan/extension.neon
+    - ./vendor/nesbot/carbon/extension.neon
+    - ./vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - ./vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
+    - ./vendor/pestphp/pest/extension.neon
+
+parameters:
+
+    paths:
+        - Modules
+        #- Themes
+
+    level: 10
+
+    # memoryLimit: -1
+    ignoreErrors:
+        # -
+        #   message: '#PHPDoc tag @mixin contains unknown class Modules\\Badge\\Models\\IdeHelper(.*)+\.#'
+        # - '#No error to ignore is reported on line#'
+        - '#Static call to instance method Nwidart\\Modules\\Facades\\Module#'
+        - '#Unsafe usage of new static#'
+        - '#PHPDoc tag @mixin contains unknown class #'
+        - '#Static call to instance method Nwidart#'
+        - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#' # Ignora errori di cast da mixed a tipi specifici
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
+        - identifier: larastan.noEnvCallsOutsideOfConfig
+        - identifier: trait.unused 
+        - identifier: method.unused
+
+    excludePaths:
+        - ./*/vendor/*
+        - ./*/Tests/*
+        - ./*/tests/*
+        - ./*/build/*
+        - ./*/docs/*
+        - ./*/Main_files/*
+        - ./*/phpinsights.php
+        - ./*/rector.php
+        - ./*/*.blade.php
+        #- ./config/local/*/database.php
+        # Moduli in ordine alfabetico:
+        #- ./Modules/Activity/*
+        #- ./Modules/Badge/*
+        #- ./Modules/CertFisc/*
+        #- ./Modules/ContoAnnuale/*
+        #- ./Modules/DbForge/*
+        #- ./Modules/Europa/*
+        #- ./Modules/Gdpr/*
+        #- ./Modules/Inail/*
+        #- ./Modules/Incentivi/*
+        #- ./Modules/IndennitaCondizioniLavoro/*
+        #- ./Modules/IndennitaResponsabilita/*
+        #- ./Modules/Job/*
+        #- ./Modules/Lang/*
+        #- ./Modules/Legge104/*
+        #- ./Modules/Legge109/*
+        #- ./Modules/Media/*
+        #- ./Modules/Mensa/*
+        #- ./Modules/MobilitaVolontaria/*
+        #- ./Modules/Notify/*
+        #- ./Modules/Pdnd/*
+        #- ./Modules/Performance/*
+        #- ./Modules/Prenotazioni/*
+        #- ./Modules/PresenzeAssenze/*
+        #- ./Modules/Progressioni/*
+        #- ./Modules/Ptv/*
+        #- ./Modules/Questionari/*
+        #- ./Modules/Rating/*
+        #- ./Modules/Setting/*
+        #- ./Modules/Sigma/*
+        #- ./Modules/Sindacati/*
+        #- ./Modules/Tenant/*
+        #- ./Modules/UI/*
+        #- ./Modules/User/*
+        #- ./Modules/Xot/*
+
+    bootstrapFiles:
+        - ./phpstan_constants.php
+        - ./phpstan-bootstrap.php
+        # Removed OAuthenticatable stub - conflicts with real Passport interface
+        #- ./phpstan-stubs/OAuthenticatable.php
+        #- ./vendor/amenadiel/jpgraph/src/config.inc.php
+
+    scanFiles:
+        - ./Modules/Xot/Helpers/Helper.php
+
+    mixinExcludeClasses:
+        - ./Modules/Badge/Models
+        - IdeHelperTimbra
+
+    editorUrl: 'vscode://file/%%file%%:%%line%%'
+
+    tmpDir: /tmp/phpstan/
+    # Disable parallel processing to avoid memory issues
+
+    noUnnecessaryCollectionCall: false
+    checkUnusedViews: false
+    checkModelProperties: false
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false
+    checkOctaneCompatibility: false
