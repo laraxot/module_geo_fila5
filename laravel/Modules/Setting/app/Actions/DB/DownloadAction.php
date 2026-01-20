@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Process as LaravelProcess;
 use Illuminate\Support\Facades\Storage;
 use Modules\Xot\Actions\File\CreateDirectoryForFilenameAction;
 use Modules\Xot\Actions\File\FixPathAction;
-use RuntimeException;
 use Spatie\QueueableAction\QueueableAction;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -33,7 +32,7 @@ class DownloadAction
 
         // Type narrowing: ensure $db is array with required keys
         if (! is_array($db)) {
-            throw new RuntimeException("Database configuration for connection '{$connectionName}' is not an array");
+            throw new \RuntimeException("Database configuration for connection '{$connectionName}' is not an array");
         }
 
         $username = isset($db['username']) && is_string($db['username']) ? $db['username'] : '';

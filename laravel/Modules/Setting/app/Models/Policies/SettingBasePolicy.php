@@ -15,7 +15,7 @@ abstract class SettingBasePolicy
     public function before(ProfileContract $user, string $ability): ?bool
     {
         $xotData = XotData::make();
-        if ($user->hasRole('super-admin')/** @phpstan-ignore method.nonObject */) {
+        if ($user->hasRole('super-admin')/* @phpstan-ignore method.nonObject */) {
             return true;
         }
 

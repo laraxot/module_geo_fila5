@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Setting\Models;
 
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
@@ -16,16 +15,16 @@ use Sushi\Sushi;
  * @property string $name
  * @property string $driver
  * @property string $host
- * @property int $port
+ * @property int    $port
  * @property string $database
  * @property string $username
  * @property string $password
  * @property string $charset
  * @property string $collation
  * @property string $prefix
- * @property bool $strict
+ * @property bool   $strict
  * @property string $engine
- * @property array $options
+ * @property array  $options
  * @property string $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -123,7 +122,7 @@ class DatabaseConnection extends Model
             DB::connection('test_connection')->getPdo();
 
             return true;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             report($e);
 
             return false;
