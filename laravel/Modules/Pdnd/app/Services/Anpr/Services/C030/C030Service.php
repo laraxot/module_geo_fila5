@@ -6,7 +6,6 @@ declare(strict_types=1);
 
 namespace Modules\Pdnd\Services\Anpr\Services\C030;
 
-use function Safe\json_decode;
 use Exception;
 use Modules\Pdnd\Services\Anpr\Contracts\AnprServiceInterface;
 use Modules\Pdnd\Services\Anpr\Services\C030\Models\Request\RichiestaE002;
@@ -20,6 +19,8 @@ use Modules\Pdnd\Services\Anpr\Shared\Models\Common\TipoErroriAnomalia;
 use Modules\Pdnd\Services\Anpr\Shared\Traits\HasPdndClient;
 use Modules\Pdnd\Services\PdndClientService;
 use Override;
+
+use function Safe\json_decode;
 
 class C030Service implements AnprServiceInterface
 {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Pdnd\Services\Anpr\Services\C007;
 
-use function Safe\json_decode;
 use Exception;
 use Modules\Pdnd\Services\Anpr\Services\C007\Models\Common\TipoGeneralita;
 use Modules\Pdnd\Services\Anpr\Services\C007\Models\Request\RichiestaE002;
@@ -18,6 +17,8 @@ use Modules\Pdnd\Services\Anpr\Shared\Models\Common\TipoDatiNascitaE000;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Common\TipoErroriAnomalia;
 use Modules\Pdnd\Services\Anpr\Shared\Traits\HasPdndClient;
 use Modules\Pdnd\Services\PdndClientService;
+
+use function Safe\json_decode;
 
 class C007Service
 {
