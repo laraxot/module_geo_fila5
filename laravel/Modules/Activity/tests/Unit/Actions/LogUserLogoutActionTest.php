@@ -9,9 +9,9 @@ use Modules\User\Models\User;
 
 test('LogUserLogoutAction can be instantiated', function () {
     $user = User::factory()->make();
-    
+
     $action = new LogUserLogoutAction($user);
-    
+
     expect($action)->toBeObject()
         ->and($action->user)->toBe($user);
 });

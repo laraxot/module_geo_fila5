@@ -12,15 +12,16 @@ use Modules\User\Models\User;
 class LogModelUpdatedActionTestModel extends Model
 {
     protected $table = 'test_models';
+
     protected $fillable = ['name'];
 }
 
 test('LogModelUpdatedAction can be instantiated', function () {
-    $model = new LogModelUpdatedActionTestModel();
+    $model = new LogModelUpdatedActionTestModel;
     $user = User::factory()->make();
-    
+
     $action = new LogModelUpdatedAction($model, $user);
-    
+
     expect($action)->toBeObject()
         ->and($action->model)->toBe($model)
         ->and($action->user)->toBe($user);

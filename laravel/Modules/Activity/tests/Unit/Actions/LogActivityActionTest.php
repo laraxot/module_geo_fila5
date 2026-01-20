@@ -12,13 +12,14 @@ use Modules\User\Models\User;
 class LogActivityActionTestModel extends Model
 {
     protected $table = 'test_models';
+
     protected $fillable = ['name'];
 }
 
 test('LogActivityAction can be instantiated', function () {
-    $model = new LogActivityActionTestModel();
+    $model = new LogActivityActionTestModel;
     $user = User::factory()->make();
-    
+
     $action = new LogActivityAction(
         type: 'test_type',
         user: $user,
@@ -26,14 +27,14 @@ test('LogActivityAction can be instantiated', function () {
         properties: ['key' => 'value'],
         description: 'Test Description'
     );
-    
+
     expect($action)->toBeObject();
 });
 
 test('LogActivityAction can execute', function () {
     $model = new LogActivityActionTestModel(['name' => 'Test']);
     $user = User::factory()->create();
-    
+
     $action = new LogActivityAction(
         type: 'test_type',
         user: $user,
@@ -41,7 +42,7 @@ test('LogActivityAction can execute', function () {
         properties: ['key' => 'value'],
         description: 'Test Description'
     );
-    
+
     // Siccome LogActivityAction crea una attività, testiamo che l'execute non generi errori
     expect($action)->toBeObject();
 });

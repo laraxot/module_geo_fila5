@@ -3,27 +3,24 @@
 declare(strict_types=1);
 
 uses(\Modules\Activity\Tests\TestCase::class);
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Activity\Models\StoredEvent;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 
-use function Safe\class_uses;
-
 describe('StoredEvent Business Logic', function (): void {
     test('stored event has correct connection configured', function (): void {
-        $storedEvent = new StoredEvent();
+        $storedEvent = new StoredEvent;
 
         expect($storedEvent->getConnectionName())->toBe('activity');
     });
 
     test('stored event has correct table configured', function (): void {
-        $storedEvent = new StoredEvent();
+        $storedEvent = new StoredEvent;
 
         expect($storedEvent->getTable())->toBe('stored_events');
     });
 
     test('stored event has expected fillable fields for event sourcing', function (): void {
-        $storedEvent = new StoredEvent();
+        $storedEvent = new StoredEvent;
         $expectedFillable = [
             'id',
             'aggregate_uuid',

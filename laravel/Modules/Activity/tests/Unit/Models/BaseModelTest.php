@@ -10,11 +10,12 @@ use Modules\Activity\Models\BaseModel;
 class TestBaseModel extends BaseModel
 {
     protected $table = 'test_models';
+
     protected $fillable = ['name'];
 }
 
 test('BaseModel has correct connection', function () {
-    $model = new TestBaseModel();
+    $model = new TestBaseModel;
     $reflection = new \ReflectionClass($model);
     $property = $reflection->getProperty('connection');
     $property->setAccessible(true);
@@ -23,7 +24,7 @@ test('BaseModel has correct connection', function () {
 });
 
 test('BaseModel extends XotBaseModel', function () {
-    $model = new TestBaseModel();
-    
+    $model = new TestBaseModel;
+
     expect($model)->toBeInstanceOf(\Modules\Xot\Models\XotBaseModel::class);
 });

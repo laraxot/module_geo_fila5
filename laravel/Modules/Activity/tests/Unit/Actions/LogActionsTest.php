@@ -15,7 +15,7 @@ use Modules\User\Models\User;
 
 test('LogActivityAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'test@example.com', 'password' => 'password']);
-    
+
     $action = new LogActivityAction(
         type: 'test_event',
         user: $user,
@@ -23,9 +23,9 @@ test('LogActivityAction can execute', function () {
         properties: ['key' => 'value'],
         description: 'Test Description'
     );
-    
+
     $activity = $action->execute();
-    
+
     expect($activity)->toBeInstanceOf(Activity::class)
         ->and($activity->event)->toBe('test_event')
         ->and($activity->description)->toBe('Test Description');
@@ -33,7 +33,7 @@ test('LogActivityAction can execute', function () {
 
 test('LogActivityAction throws exception for empty type', function () {
     $this->expectException(\InvalidArgumentException::class);
-    
+
     new LogActivityAction(
         type: '',
         user: null,
@@ -45,22 +45,22 @@ test('LogActivityAction throws exception for empty type', function () {
 
 test('LogUserLoginAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'login@example.com', 'password' => 'password']);
-    
+
     $action = new LogUserLoginAction($user);
-    
+
     $activity = $action->execute();
-    
+
     expect($activity)->toBeInstanceOf(Activity::class)
         ->and($activity->event)->toBe('login');
 });
 
 test('LogUserLogoutAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'logout@example.com', 'password' => 'password']);
-    
+
     $action = new LogUserLogoutAction($user);
-    
+
     $activity = $action->execute();
-    
+
     expect($activity)->toBeInstanceOf(Activity::class)
         ->and($activity->event)->toBe('logout');
 });
@@ -68,11 +68,11 @@ test('LogUserLogoutAction can execute', function () {
 test('LogModelCreatedAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'created@example.com', 'password' => 'password']);
     $model = User::factory()->create(['name' => 'Subject User', 'email' => 'subject@example.com', 'password' => 'password']);
-    
+
     $action = new LogModelCreatedAction($model, $user);
-    
+
     $result = $action->execute();
-    
+
     expect($result)->toBeInstanceOf(Activity::class)
         ->and($result->event)->toBe('created');
 });
@@ -80,11 +80,11 @@ test('LogModelCreatedAction can execute', function () {
 test('LogModelUpdatedAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'updated@example.com', 'password' => 'password']);
     $model = User::factory()->create(['name' => 'Subject User', 'email' => 'subject2@example.com', 'password' => 'password']);
-    
+
     $action = new LogModelUpdatedAction($model, $user);
-    
+
     $result = $action->execute();
-    
+
     expect($result)->toBeInstanceOf(Activity::class)
         ->and($result->event)->toBe('updated');
 });
@@ -92,11 +92,11 @@ test('LogModelUpdatedAction can execute', function () {
 test('LogModelDeletedAction can execute', function () {
     $user = User::factory()->create(['name' => 'Test User', 'email' => 'deleted@example.com', 'password' => 'password']);
     $model = User::factory()->create(['name' => 'Subject User', 'email' => 'subject3@example.com', 'password' => 'password']);
-    
+
     $action = new LogModelDeletedAction($model, $user);
-    
+
     $result = $action->execute();
-    
+
     expect($result)->toBeInstanceOf(Activity::class)
         ->and($result->event)->toBe('deleted');
 });
