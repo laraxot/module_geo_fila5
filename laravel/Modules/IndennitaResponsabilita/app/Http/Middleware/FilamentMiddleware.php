@@ -36,8 +36,8 @@ class FilamentMiddleware extends Middleware
     }
 
     /**
-     * @param Request $request
-     * @param array<int, string> $guards
+     * @param  Request  $request
+     * @param  array<int, string>  $guards
      */
     protected function authenticate($request, array $guards): void
     {

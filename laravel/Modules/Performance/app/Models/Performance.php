@@ -6,33 +6,26 @@ namespace Modules\Performance\Models;
 
 // ---------- models -------
 // ----------traits ---
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
-use Modules\Sigma\Models\Anag;
+use Modules\Ptv\Models\BaseScheda;
 use Modules\Ptv\Models\Profile;
-use Modules\Xot\Traits\Updater;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
+use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00f;
+use Modules\Sigma\Models\Asz00k1;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Repart;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Tqu00f;
-use Modules\Sigma\Models\Asz00k1;
-use Modules\Ptv\Models\BaseScheda;
 use Modules\Sigma\Models\Wstr01lx;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Modules\Sigma\Models\Traits\SchedaTrait;
-use Modules\Sigma\Models\Traits\SigmaModelTrait;
-use Modules\Performance\Models\Traits\MutatorTrait;
+
 // ---- services ---
 // passare ad arrayservice
-use Modules\Performance\Models\Traits\FunctionTrait;
-use Modules\Ptv\Models\Traits\HasCriteriValutazione;
-use Modules\Performance\Models\Traits\RelationshipTrait;
-use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 
 // ------ ext models---
 /**
@@ -358,7 +351,6 @@ use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
  */
 class Performance extends BaseScheda
 {
-  
     /** @var string */
     protected $table = 'performance';
 

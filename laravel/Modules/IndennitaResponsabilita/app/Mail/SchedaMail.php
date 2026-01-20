@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Mail;
 
-use RuntimeException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
@@ -14,6 +13,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Modules\IndennitaResponsabilita\Actions\MakePdfByRecord;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita as Scheda;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SchedaMail extends Mailable
@@ -25,8 +25,6 @@ class SchedaMail extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @param Scheda $scheda
      */
     public function __construct(Scheda $scheda)
     {

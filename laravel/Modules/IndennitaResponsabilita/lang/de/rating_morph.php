@@ -70,5 +70,3 @@ return [
         'unauthorized' => 'Sie sind nicht berechtigt, diese Aktion auszuführen',
     ],
 ];
-
-

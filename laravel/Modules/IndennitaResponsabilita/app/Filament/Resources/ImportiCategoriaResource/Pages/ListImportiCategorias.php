@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\ImportiCategoriaResource\Pages;
 
-use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\IndennitaResponsabilita\Filament\Resources\ImportiCategoriaResource;
 use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
@@ -92,6 +89,4 @@ class ListImportiCategorias extends XotBaseListRecords
                 }),
         ];
     }
-
-   
 }

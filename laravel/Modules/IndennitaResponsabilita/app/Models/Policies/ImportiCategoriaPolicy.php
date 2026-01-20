@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models\Policies;
 
-use Override;
 use Modules\IndennitaResponsabilita\Models\ImportiCategoria as Post;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
+use Override;
 
 class ImportiCategoriaPolicy extends XotBasePolicy
 {

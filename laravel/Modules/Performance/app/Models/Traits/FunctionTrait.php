@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Models\Traits;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -46,8 +45,7 @@ trait FunctionTrait
     public function listaTipoCodiceAssenze(): array
     {
         /** @var array<int, string> */
-        return $this->codiciAssenze->map(static fn ($item): string => 
-            (is_string($item->tipo) ? $item->tipo : (string) $item->tipo).'-'.(is_string($item->codice) ? $item->codice : (string) $item->codice)
+        return $this->codiciAssenze->map(static fn ($item): string => (is_string($item->tipo) ? $item->tipo : (string) $item->tipo).'-'.(is_string($item->codice) ? $item->codice : (string) $item->codice)
         )->toArray();
     }
 
@@ -60,7 +58,6 @@ trait FunctionTrait
     {
         return $this->listaTipoCodiceAssenze();
     }
-
 
     // Rimosso hhAssenzaFuoriSedeTot per evitare conflitti con SchedaTrait
 
@@ -81,13 +78,11 @@ trait FunctionTrait
 
     /**
      * Get criteri options array.
-     *
-     * @param  string  $key
-     * @return mixed
      */
     public function criteriOptionsArr(string $key): mixed
     {
         $criteri = $this->criteriOptions->where('key', $key)->first();
+
         return $criteri?->value;
     }
 

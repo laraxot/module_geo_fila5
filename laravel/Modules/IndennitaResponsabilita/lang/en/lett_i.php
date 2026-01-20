@@ -94,4 +94,3 @@ return [
         'formatore_professionale' => 'Professional Trainer',
     ],
 ];
-

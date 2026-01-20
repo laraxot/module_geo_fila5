@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\LettIResource\Pages;
 
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Filters\SelectFilter;
-use Modules\IndennitaResponsabilita\Models\LettI;
-use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource;
+use Modules\IndennitaResponsabilita\Models\LettI;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListLettIs extends XotBaseListRecords
@@ -113,7 +113,4 @@ class ListLettIs extends XotBaseListRecords
             'formatore_professionale' => TernaryFilter::make('formatore_professionale'),
         ];
     }
-
-   
 }
-

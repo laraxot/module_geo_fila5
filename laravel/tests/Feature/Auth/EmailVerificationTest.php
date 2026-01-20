@@ -1,10 +1,9 @@
 <?php
 
-use Modules\User\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
+use Modules\Xot\Datas\XotData;
 
 test('email verification screen can be rendered', function () {
     $userClass = XotData::make()->getUserClass();

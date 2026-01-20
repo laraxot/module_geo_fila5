@@ -9,7 +9,6 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\Performance\Models\BaseIndividualeModel;
-use Modules\Performance\Models\Organizzativa;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -22,7 +21,6 @@ class GetHaDirittoMotivoAction
     public int $year;
 
     /**
-     * @param  BaseIndividualeModel  $model
      * @param  array<string, mixed>  $criteriEsclusione
      * @param  array<string, mixed>  $criteriOption
      * @return array{0:int,1:string}

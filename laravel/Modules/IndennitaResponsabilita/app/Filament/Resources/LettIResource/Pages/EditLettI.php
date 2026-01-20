@@ -11,4 +11,3 @@ class EditLettI extends XotBaseEditRecord
 {
     protected static string $resource = LettIResource::class;
 }
-

@@ -78,6 +78,3 @@ return [
         'description' => 'Personalbewertungs- und Ratingsystem',
     ],
 ];
-
-
-

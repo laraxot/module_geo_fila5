@@ -9,16 +9,13 @@ use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource\Pages\Edit
 use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource\Pages\ListRatings;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Rating\Filament\Resources\RatingResource as BaseRatingResource;
-use Override;
 
 class RatingResource extends BaseRatingResource
 {
     protected static string $resourceFile = __FILE__;
 
-    
     protected static ?string $model = Rating::class;
 
-    
     public static function getPages(): array
     {
         return [

@@ -137,6 +137,3 @@ return [
         'description' => 'Verwaltung der Verantwortungszulagen des Personals',
     ],
 ];
-
-
-

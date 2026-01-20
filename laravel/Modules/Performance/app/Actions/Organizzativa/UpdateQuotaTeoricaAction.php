@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Organizzativa;
 
-use Modules\Performance\Models\Organizzativa;
 use Modules\Performance\Models\Organizzativa as Schede;
 use Modules\Performance\Models\OrganizzativaCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;

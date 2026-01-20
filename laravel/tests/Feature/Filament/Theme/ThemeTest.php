@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Modules\User\Models\User;
 use Filament\Facades\Filament;
+use Modules\User\Models\User;
 
 use function Pest\Laravel\get;
 

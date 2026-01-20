@@ -9,7 +9,7 @@ return [
     'subtitle' => 'Performance & HR Management',
     'author' => 'Laraxot Team',
     'copyright' => '© 2025 PTVX. All rights reserved.',
-    
+
     'navigation' => [
         'name' => 'Meta Tag',
         'plural' => 'Meta Tags',
@@ -21,7 +21,7 @@ return [
         'sort' => '16',
         'icon' => 'xot-metatag',
     ],
-    
+
     'fields' => [
         'basic' => [
             'title' => [

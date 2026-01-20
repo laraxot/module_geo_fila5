@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models\Policies;
 
-use Override;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita as Post;
@@ -12,6 +11,7 @@ use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\User\Models\User;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
+use Override;
 
 class IndennitaResponsabilitaPolicy extends XotBasePolicy
 {

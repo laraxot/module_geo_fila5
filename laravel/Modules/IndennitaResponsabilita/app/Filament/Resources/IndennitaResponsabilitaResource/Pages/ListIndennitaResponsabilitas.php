@@ -4,53 +4,44 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
-use Override;
+use Filament\Actions;
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\BulkAction;
+use Filament\Forms\Components\Select;
+use Filament\Pages\Actions\CreateAction;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Tables;
-use Filament\Actions;
-use Filament\Tables\Table;
-use Illuminate\Support\Arr;
-use Filament\Actions\Action;
-use Filament\Actions\BulkAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\ActionGroup;
-use Illuminate\Support\Collection;
 use Filament\Tables\Columns\Column;
-use Illuminate\Support\Facades\Auth;
-use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Pages\Actions\CreateAction;
 use Filament\Tables\Enums\FiltersLayout;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Modules\Ptv\Actions\GetValutatoriOptions;
-use Modules\Ptv\Actions\PopulateByYearAction;
-use Modules\Ptv\Actions\FixValutatoreIdByAnno;
-use Modules\Xot\Filament\Actions\Table\PdfAction;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Ptv\Filament\Tables\Columns\RepColumn;
-use Modules\UI\Filament\Tables\Columns\GroupColumn;
-use Modules\IndennitaResponsabilita\Actions\MakePdf;
-use Modules\Ptv\Actions\Scheda\GetSentEmailListHtml;
-use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
-use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
-use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
-use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
-use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
-use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
-use Modules\IndennitaResponsabilita\Actions\MakePdfByRecord;
-use Modules\Ptv\Filament\Actions\Header\DeleteCessatiAction;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+// use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Gate;
 use Modules\Activity\Filament\Actions\ListLogActivitiesAction;
-use Modules\IndennitaResponsabilita\Actions\SendMailByRecords;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Actions\MakePdf;
+use Modules\IndennitaResponsabilita\Actions\MakePdfByRecord;
 use Modules\IndennitaResponsabilita\Filament\Exports\IndennitaResponsabilitaExporter;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
-use Illuminate\Support\Facades\Gate;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\Rating;
+use Modules\Ptv\Actions\FixValutatoreIdByAnno;
+use Modules\Ptv\Actions\GetValutatoriOptions;
+use Modules\Ptv\Actions\PopulateByYearAction;
+use Modules\Ptv\Actions\Scheda\GetSentEmailListHtml;
+use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Header\DeleteCessatiAction;
+use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
+use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
+use Modules\Ptv\Filament\Tables\Columns\RepColumn;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Override;
 
 class ListIndennitaResponsabilitas extends XotBaseListRecords
 {
@@ -106,10 +97,10 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         // Column types are inferred by Filament v4
         return [
             WorkerColumn::make('lavoratore'),
-            //RepColumn::make('rep'),
-            //'anno' => TextColumn::make('anno')->sortable()->searchable(),
+            // RepColumn::make('rep'),
+            // 'anno' => TextColumn::make('anno')->sortable()->searchable(),
             PeriodoColumn::make('periodo'),
-            //'sent_email_list' => TextColumn::make('sent_email_list')->html()->default(app(GetSentEmailListHtml::class)->execute(...)),
+            // 'sent_email_list' => TextColumn::make('sent_email_list')->html()->default(app(GetSentEmailListHtml::class)->execute(...)),
         ];
     }
 
@@ -119,23 +110,22 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
     #[Override]
     public function getTableBulkActions(): array
     {
-
         // dddx($this->tableFilters);
         /** @var array<string, mixed> $tableFilters */
         $tableFilters = $this->tableFilters ?? [];
-        
+
         /** @var array<string, mixed> $annoValutatoreFilter */
         $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
         /** @var int|string|null $anno */
         $anno = Arr::get($annoValutatoreFilter, 'anno');
-        
+
         /** @var non-falsy-string $tpl */
         $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
 
         return [
             'zip-schede' => ZipSchedeBulkAction::make('zip-schede'),
             'send-mail' => SendSchedeBulkAction::make('send-mail')->setTemplate($tpl),
-            
+
         ];
     }
 
@@ -151,27 +141,26 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
             'compila' => Action::make('compila')
                 ->icon('heroicon-m-pencil-square')
                 ->url(fn ($record): string => IndennitaResponsabilitaResource::getUrl('compila', ['record' => $record])),
-            'record-pdf1'=>RecordPdfAction::make('record-pdf1')->visible(fn($record): bool => Gate::allows('record-pdf',$record)),
+            'record-pdf1' => RecordPdfAction::make('record-pdf1')->visible(fn ($record): bool => Gate::allows('record-pdf', $record)),
             /*
             'record-pdf' => Action::make('record-pdf')
                 ->icon('heroicon-o-document')
                 // ->url( fn ($record): string => IndennitaResponsabilitaResource::getUrl('pdf', ['record' => $record])),
                 ->action(app(MakePdfByRecord::class)->execute(...))
                 ->visible(function ($record): bool {
-                    // @var IndennitaResponsabilita $record 
-                    // @var \Illuminate\Database\Eloquent\Collection<int, Rating>|null $ratings 
+                    // @var IndennitaResponsabilita $record
+                    // @var \Illuminate\Database\Eloquent\Collection<int, Rating>|null $ratings
                     $ratings = $record->ratings;
                     if (null === $ratings) {
                         return false;
                     }
-                    // @var float|int $sum 
+                    // @var float|int $sum
                     $sum = $ratings->sum('pivot.value');
 
                     return $sum > 0;
                 }),
             */
 
-            
             // Tables\Actions\EditAction::make(),
             // Action::make('activities')->url(fn ($record) => IndennitaResponsabilitaResource::getUrl('log-activity', ['record' => $record]))
             'log-activity' => ListLogActivitiesAction::make(),
@@ -221,31 +210,29 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
                         ->options(static function (Get $get): array {
                             /** @var int|string|null $anno */
                             $anno = $get('anno');
-                            
 
-                            $opts= app(GetValutatoriOptions::class)
+                            $opts = app(GetValutatoriOptions::class)
                                 ->execute('IndennitaResponsabilita', $anno);
-                            
+
                             return $opts;
                         }),
                 ])
 
                 ->query(static function (Builder $query, array $data) {
-                    if (null == $data['anno'] /* || null == $data['valutatore_id'] */) {
+                    if ($data['anno'] == null /* || null == $data['valutatore_id'] */) {
                         return $query->where('id', 0);
                     }
                     // Type narrowing: ensure $data is array<string, mixed>
-                    // @var array<string, mixed> $populateData 
+                    // @var array<string, mixed> $populateData
                     /*
                     app(PopulateByYearAction::class)->execute(IndennitaResponsabilita::class, 'anno', (int) $data['anno']);
-                    // -- riutilizzabile in performance, progressioni ... 
-                    // @var int|string|null $annoForFix 
+                    // -- riutilizzabile in performance, progressioni ...
+                    // @var int|string|null $annoForFix
                     $annoForFix = $data['anno'] ?? null;
                     app(FixValutatoreIdByAnno::class)->execute('IndennitaResponsabilita', 'IndennitaResponsabilita', $annoForFix);
                     */
                     $query = $query->where($data);
 
-                    
                     return $query;
                 })
 
@@ -272,12 +259,9 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         ];
     }
 
-    
-
     #[Override]
     public function getTableFiltersFormColumns(): int
     {
         return 2;
     }
-    
 }

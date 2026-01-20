@@ -68,4 +68,3 @@ return [
         'delete' => 'Record Deletion',
     ],
 ];
-

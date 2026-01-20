@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Auth;
 
-use Modules\User\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Volt\Volt;
+use Modules\User\Models\User;
 
 test('password can be updated', function () {
     $user = User::factory()->create();

@@ -29,7 +29,7 @@ class ShowMailSendedAt
         $html = '';
         // Use mailInviate() relation which returns HasMany<MyLog>
         $myLogs = $a->mailInviate()->where('act', 'sendMail')->get();
-        
+
         /** @var MyLog $row */
         foreach ($myLogs as $row) {
             $formattedDate = $row->updated_at?->format('Y-m-d H:i:s') ?? '';

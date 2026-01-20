@@ -10,6 +10,4 @@ use Modules\Ptv\Filament\Resources\MyLogResource as PtvMyLogResource;
 class MyLogResource extends PtvMyLogResource
 {
     protected static ?string $model = MyLog::class;
-
-
 }

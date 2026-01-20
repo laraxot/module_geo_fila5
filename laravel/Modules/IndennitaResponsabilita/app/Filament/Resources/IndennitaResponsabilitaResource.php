@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\CompilaIndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\SendMailIndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\ListSchedaLogActivities;
-use Override;
-use Illuminate\Support\Arr;
 use Filament\Forms\Components\TextInput;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Modules\Ptv\Filament\Forms\Components\SelectValutatore;
+use Illuminate\Support\Arr;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\CompilaIndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\ListSchedaLogActivities;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\SendMailIndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
+use Modules\IndennitaResponsabilita\Models\Rating;
+use Modules\Ptv\Filament\Forms\Components\SelectValutatore;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class IndennitaResponsabilitaResource extends XotBaseResource
 {
@@ -22,7 +20,6 @@ class IndennitaResponsabilitaResource extends XotBaseResource
 
     public static function getFormSchema(): array
     {
-        
         return [
             'matr' => TextInput::make('matr')->required(),
             'cognome' => TextInput::make('cognome')->required(),
@@ -36,10 +33,6 @@ class IndennitaResponsabilitaResource extends XotBaseResource
         ];
     }
 
-    
-    
-
-    
     public static function getPages(): array
     {
         return [
@@ -52,17 +45,17 @@ class IndennitaResponsabilitaResource extends XotBaseResource
 
     public static function getXlsFields(array $data): array
     {
-        $anno=Arr::get($data, 'anno/valutatore.anno',null);
-        if($anno==null){
+        $anno = Arr::get($data, 'anno/valutatore.anno', null);
+        if ($anno == null) {
             return [];
         }
-        //$ratings=Rating::withExtraAttributes(['anno' => $anno])->get();
+        // $ratings=Rating::withExtraAttributes(['anno' => $anno])->get();
 
         return [
             'matr',
             'cognome',
             'nome',
-            'email',/*
+            'email', /*
             'valutatore_id',
             'ratings.3',
             'ratings.3.value',

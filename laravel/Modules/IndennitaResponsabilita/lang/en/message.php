@@ -86,6 +86,3 @@ return [
         'description' => 'Message and communication management',
     ],
 ];
-
-
-

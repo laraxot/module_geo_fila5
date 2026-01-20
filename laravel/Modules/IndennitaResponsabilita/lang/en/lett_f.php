@@ -108,4 +108,3 @@ return [
         'auto_calculated' => 'Values automatically calculated based on scores',
     ],
 ];
-

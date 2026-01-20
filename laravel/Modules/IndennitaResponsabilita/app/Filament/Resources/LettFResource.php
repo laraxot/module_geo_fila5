@@ -4,21 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Component;
-use Filament\Resources\Pages\PageRegistration;
-use Override;
-use Filament\Forms; // Corrected Component import
-use Filament\Forms\Components\DatePicker; // Corrected Section import
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Filters\SelectFilter;
+use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Components\Component;
+// Corrected Component import
+use Filament\Schemas\Components\Grid; // Corrected Section import
+use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettFResource\Pages\CreateLettF;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettFResource\Pages\EditLettF;
@@ -26,6 +19,7 @@ use Modules\IndennitaResponsabilita\Filament\Resources\LettFResource\Pages\ListL
 use Modules\IndennitaResponsabilita\Filament\Resources\LettFResource\Pages\ViewLettF;
 use Modules\IndennitaResponsabilita\Models\LettF;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Override;
 
 class LettFResource extends XotBaseResource
 {
@@ -33,7 +27,7 @@ class LettFResource extends XotBaseResource
 
     protected static ?string $model = LettF::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?int $navigationSort = 2;
 

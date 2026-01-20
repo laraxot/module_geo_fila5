@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions;
 
-use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Collection;
+use InvalidArgumentException;
 use Modules\Performance\Models\BaseIndividualeModel;
 use Modules\Performance\Models\CriteriEsclusione;
 use Modules\Performance\Models\CriteriOption;
@@ -19,8 +19,6 @@ class UpdateHaDirittoAction
      * @template TModel of BaseIndividualeModel
      *
      * @param  class-string<TModel>  $modelClass
-     * @param  int|string  $year
-     * @param  string  $type
      */
     public function execute(string $modelClass, int|string $year, string $type = 'dip'): void
     {

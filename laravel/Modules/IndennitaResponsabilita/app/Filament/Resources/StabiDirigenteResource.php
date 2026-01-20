@@ -9,23 +9,19 @@ use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pa
 use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes;
 use Modules\IndennitaResponsabilita\Models\StabiDirigente;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteResource;
-use Override;
 
 class StabiDirigenteResource extends PtvStabiDirigenteResource
 {
     protected static string $resourceFile = __FILE__;
 
-    
     protected static ?string $model = StabiDirigente::class;
 
-    
     public static function getRelations(): array
     {
         return [
         ];
     }
 
-    
     public static function getPages(): array
     {
         return [

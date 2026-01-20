@@ -20,4 +20,3 @@ class ViewLettF extends XotBaseViewRecord
         return [];
     }
 }
-

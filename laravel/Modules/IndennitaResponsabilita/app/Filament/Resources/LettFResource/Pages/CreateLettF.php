@@ -11,4 +11,3 @@ class CreateLettF extends XotBaseCreateRecord
 {
     protected static string $resource = LettFResource::class;
 }
-

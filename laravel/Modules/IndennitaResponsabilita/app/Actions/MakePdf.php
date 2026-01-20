@@ -18,7 +18,7 @@ class MakePdf
     /**
      * Execute PDF generation for Indennita Responsabilita.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function execute(array $data): string|BinaryFileResponse
     {
@@ -41,8 +41,7 @@ class MakePdf
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array{0: int|null, 1: int|null}
      */
     private function resolveFilters(array $data): array
@@ -93,7 +92,7 @@ class MakePdf
     }
 
     /**
-     * @param Collection<int, IndennitaResponsabilita> $rows
+     * @param  Collection<int, IndennitaResponsabilita>  $rows
      */
     private function buildTitle(Collection $rows, ?int $anno): string
     {

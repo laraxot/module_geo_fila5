@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Override;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Component;
-use Filament\Resources\Pages\PageRegistration;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Components\Component;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\IndennitaResponsabilita\Filament\Resources\ImportiCategoriaResource\Pages\CreateImportiCategoria;
 use Modules\IndennitaResponsabilita\Filament\Resources\ImportiCategoriaResource\Pages\EditImportiCategoria;
 use Modules\IndennitaResponsabilita\Filament\Resources\ImportiCategoriaResource\Pages\ListImportiCategorias;
 use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Override;
 
 class ImportiCategoriaResource extends XotBaseResource
 {
@@ -25,7 +25,7 @@ class ImportiCategoriaResource extends XotBaseResource
 
     protected static ?string $model = ImportiCategoria::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-currency-euro';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-currency-euro';
 
     protected static ?int $navigationSort = 10;
 

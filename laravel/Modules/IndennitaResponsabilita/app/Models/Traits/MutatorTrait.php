@@ -23,12 +23,12 @@ trait MutatorTrait
     {
         // if(is_object($value)) return $value;
         // if($value!=null) return Carbon::parse($value);
-        
+
         // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
             return null;
         }
-        
+
         $dt = Carbon::create($this->anno, 1, 1, 0);
         $value = clone ($dt)->addQuarters($this->trimestre - 1);
         $this->dal = $value;
@@ -44,12 +44,12 @@ trait MutatorTrait
     {
         // if(is_object($value)) return $value;
         // if($value!=null) return Carbon::parse($value);
-        
+
         // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
             return null;
         }
-        
+
         $dt = Carbon::create($this->anno, 1, 1, 0);
         $value = clone ($dt)->addQuarters($this->trimestre)->subDay();
 
@@ -67,7 +67,7 @@ trait MutatorTrait
         if ($this->getKey() == null) {
             return null;
         }
-        
+
         // devo esplicitare quando e' stata aggiornata la tabella wstr01lx o non ha senso
         if (! Request::input('refresh', false)) {
             if ($value !== null && ! request()->input('refresh', false)) {
@@ -91,12 +91,12 @@ trait MutatorTrait
             ->where('wtdata', '<=', $al)
             ->get()->count();
         $this->gg_presenza_periodo = $gg;
-        
+
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $gg;
         }
-        
+
         $this->update([
             'gg_presenza_periodo' => $gg,
         ]);

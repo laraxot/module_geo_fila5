@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Override;
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\CreateMessage;
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\EditMessage;
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\ListMessages;
 use Modules\IndennitaResponsabilita\Models\Message;
 use Modules\Ptv\Filament\Resources\MessageResource as PtvMessageResource;
+use Override;
 
 class MessageResource extends PtvMessageResource
 {

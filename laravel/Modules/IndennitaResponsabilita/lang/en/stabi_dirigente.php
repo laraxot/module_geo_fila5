@@ -101,6 +101,3 @@ return [
         'description' => 'Facility and manager management',
     ],
 ];
-
-
-

@@ -94,9 +94,6 @@ trait RelationshipTrait
         // ->whereRaw('find_in_set('.$this->propro.',lista_propro)');
     }
 
-    /**
-     * @return HasMany
-     */
     // @phpstan-ignore-next-line
     public function otherWinnerRows(): HasMany
     {

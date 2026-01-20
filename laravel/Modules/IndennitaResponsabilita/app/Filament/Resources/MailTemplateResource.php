@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Resources\Pages\PageRegistration;
-use Filament\Schemas\Components\Section;
-use Modules\Sigma\Models\Integparam;
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Override;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Notify\Filament\Resources\MailTemplateResource as NotifyBaseMailTemplateResource;
 use Modules\Notify\Models\MailTemplate;
-use Illuminate\Database\Eloquent\Builder;
+use Override;
 
 /**
  * Resource per la gestione template email specifici del modulo Progressioni.
@@ -29,7 +22,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class MailTemplateResource extends NotifyBaseMailTemplateResource
 {
-
     /**
      * @return array<string, PageRegistration>
      */
@@ -38,7 +30,7 @@ class MailTemplateResource extends NotifyBaseMailTemplateResource
     {
         return [
             ...parent::getPages(),
-            //'index' => \Modules\Progressioni\Filament\Resources\MailTemplateResource\Pages\ListMailTemplates::route('/'),
+            // 'index' => \Modules\Progressioni\Filament\Resources\MailTemplateResource\Pages\ListMailTemplates::route('/'),
         ];
     }
 

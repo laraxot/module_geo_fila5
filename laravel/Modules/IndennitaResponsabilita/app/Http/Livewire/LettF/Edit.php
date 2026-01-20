@@ -9,11 +9,10 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Http\Livewire\LettF;
 
-use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
 use Modules\IndennitaResponsabilita\Models\LettF;
 use Modules\Xot\Actions\GetViewAction;
 
@@ -96,11 +95,11 @@ class Edit extends Component
         $coordinamento = $this->form_data['coordinamento'] ?? 0;
         /** @var float|int|string|null $responsabilita */
         $responsabilita = $this->form_data['responsabilita'] ?? 0;
-        
+
         $complessitaNum = is_numeric($complessita) ? (float) $complessita : 0.0;
         $coordinamentoNum = is_numeric($coordinamento) ? (float) $coordinamento : 0.0;
         $responsabilitaNum = is_numeric($responsabilita) ? (float) $responsabilita : 0.0;
-        
+
         return $complessitaNum + $coordinamentoNum + $responsabilitaNum;
     }
 
@@ -109,7 +108,7 @@ class Edit extends Component
         /** @var float|int|string|null $importiMax */
         $importiMax = $this->form_data['importi_max'] ?? 0;
         $importiMaxNum = is_numeric($importiMax) ? (float) $importiMax : 0.0;
-        
+
         return $this->totalePunteggioAttribuito() * $importiMaxNum / 100;
     }
 
@@ -118,7 +117,7 @@ class Edit extends Component
         /** @var float|int|string|null $importiMin */
         $importiMin = $this->form_data['importi_min'] ?? 0;
         $importiMinNum = is_numeric($importiMin) ? (float) $importiMin : 0.0;
-        
+
         if ($this->valoreEconomicoCalcolato() > $importiMinNum) {
             return $this->valoreEconomicoCalcolato();
         }
@@ -146,7 +145,7 @@ class Edit extends Component
         if ($alfStr === null) {
             return 0;
         }
-        
+
         // @phpstan-ignore-next-line
         $dalRaw = Carbon::createFromFormat($this->date_format, $dalfStr);
         if (! ($dalRaw instanceof Carbon)) {

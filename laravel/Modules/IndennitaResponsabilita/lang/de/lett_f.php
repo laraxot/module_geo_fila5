@@ -62,4 +62,3 @@ return [
         'auto_calculated' => 'Werte automatisch basierend auf Punkten berechnet',
     ],
 ];
-

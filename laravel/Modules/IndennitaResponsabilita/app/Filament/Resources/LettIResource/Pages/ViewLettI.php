@@ -20,4 +20,3 @@ class ViewLettI extends XotBaseViewRecord
         return [];
     }
 }
-

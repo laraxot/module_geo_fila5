@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models;
 
-use Validator;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -16,17 +15,18 @@ use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Codici;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Rep00f;
+use Validator;
 
 /**
- * @property Carbon|null           $dalf
- * @property Carbon|null           $alf
+ * @property Carbon|null $dalf
+ * @property Carbon|null $alf
  * @property ImportiCategoria|null $importi
  */
 class LettF extends BaseScheda
 {
     use FunctionTrait;
-    use RelationshipTrait;
     use HasRatingsTrait;
+    use RelationshipTrait;
 
     /** @var class-string */
     public static $logModel = MyLog::class;
@@ -99,7 +99,7 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function validate(array $data): void
     {
@@ -113,24 +113,24 @@ class LettF extends BaseScheda
             ->where('anno', $this->anno)
             ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
 
-        if (0 === $query->count()) {
+        if ($query->count() === 0) {
             $rowOld = ImportiCategoria::where('ente', $this->ente)
                 ->where('anno', $this->anno - 1)
                 ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
 
-            if (1 !== $rowOld->count()) {
+            if ($rowOld->count() !== 1) {
                 return null;
             }
 
             /** @var ImportiCategoria|null $firstRow */
             $firstRow = $rowOld->first();
-            if (null === $firstRow) {
+            if ($firstRow === null) {
                 return null;
             }
             $row = $firstRow->replicate();
             /** @var int|null $anno */
             $anno = $this->anno;
-            if (null !== $anno) {
+            if ($anno !== null) {
                 $row->anno = $anno;
             }
             $row->save();
@@ -146,10 +146,10 @@ class LettF extends BaseScheda
         /** @var int|null $anno */
         $anno = $this->anno ?? null;
         $query = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi');
-        if (null !== $repar) {
+        if ($repar !== null) {
             $query = $query->where('repar', $repar);
         }
-        if (null !== $anno) {
+        if ($anno !== null) {
             $query = $query->where('anno', $anno);
         }
 
@@ -167,7 +167,7 @@ class LettF extends BaseScheda
     {
         /** @var int|null $anno */
         $anno = $this->anno ?? null;
-        if (null === $anno) {
+        if ($anno === null) {
             return $this->hasMany(Rep00f::class, 'matr', 'matr')
                 ->where('ente', $this->ente)
                 ->whereRaw('repann=""')
@@ -182,11 +182,11 @@ class LettF extends BaseScheda
 
     public function Qua00f(): HasMany
     {
-        if (null === $this->dalf) {
+        if ($this->dalf === null) {
             $this->dalf = Carbon::createFromDate($this->anno, 1, 1);
         }
 
-        if (null === $this->alf) {
+        if ($this->alf === null) {
             $this->alf = Carbon::createFromDate($this->anno, 12, 31);
         }
 
@@ -209,7 +209,7 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param Carbon|string|null $value
+     * @param  Carbon|string|null  $value
      */
     public function setDalfAttribute($value): void
     {
@@ -224,7 +224,7 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param Carbon|string|null $value
+     * @param  Carbon|string|null  $value
      */
     public function setAlfAttribute($value): void
     {
@@ -239,7 +239,7 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param float|int|string|null $value
+     * @param  float|int|string|null  $value
      */
     public function getTotAttribute(mixed $value): float
     {
@@ -260,7 +260,7 @@ class LettF extends BaseScheda
         $valueFloat = is_numeric($valueNum) ? (float) $valueNum : 0.0;
         if ($newValue != $valueFloat) {
             // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if (null !== $this->getKey()) {
+            if ($this->getKey() !== null) {
                 $this->update(['tot' => $newValue]);
             }
         }
@@ -269,13 +269,13 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param float|int|string|null $value
+     * @param  float|int|string|null  $value
      */
     public function getValoreEconomicoCalcolatoAttribute(mixed $value): float
     {
         /** @var ImportiCategoria|null $importi */
         $importi = $this->importi;
-        if (null === $importi) {
+        if ($importi === null) {
             return 0.0;
         }
 
@@ -291,7 +291,7 @@ class LettF extends BaseScheda
         $valueFloat = is_numeric($valueNum) ? (float) $valueNum : 0.0;
         if ($newValue != $valueFloat) {
             // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if (null !== $this->getKey()) {
+            if ($this->getKey() !== null) {
                 $this->update(['valore_economico_calcolato' => $newValue]);
             }
         }
@@ -305,7 +305,7 @@ class LettF extends BaseScheda
         $alf = $this->alf;
         /** @var Carbon|null $dalf */
         $dalf = $this->dalf;
-        if (null === $alf || null === $dalf) {
+        if ($alf === null || $dalf === null) {
             return 0.0;
         }
         $gg = $alf->diffInDays($dalf, true) + 1;
@@ -316,13 +316,13 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param float|int|string|null $value
+     * @param  float|int|string|null  $value
      */
     public function getValoreEconomicoAttribuitoAttribute(mixed $value): float
     {
         /** @var ImportiCategoria|null $importi */
         $importi = $this->importi;
-        if (null === $importi) {
+        if ($importi === null) {
             return 0.0;
         }
 
@@ -335,7 +335,7 @@ class LettF extends BaseScheda
         $newValue = max($valueFloat, $importoMinNum);
         if ($newValue != $valueFloat) {
             // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if (null !== $this->getKey()) {
+            if ($this->getKey() !== null) {
                 $this->update(['valore_economico_attribuito' => $newValue]);
             }
         }
@@ -374,9 +374,10 @@ class LettF extends BaseScheda
 
         /** @var int|string|null $primaryKey */
         $primaryKey = $this->getKey();
-        if (null === $primaryKey) {
+        if ($primaryKey === null) {
             /** @var string|null $result */
             $result = $this->attributes['posiz_txt'] ?? $desc1;
+
             return is_string($result) ? $result : null;
         }
 
@@ -384,12 +385,13 @@ class LettF extends BaseScheda
 
         /** @var string|null $result */
         $result = $this->attributes['posiz_txt'] ?? $desc1;
+
         return is_string($result) ? $result : null;
     }
 
     public function getEmailAttribute(?string $value): ?string
     {
-        if (null !== $value && '' !== $value) {
+        if ($value !== null && $value !== '') {
             return $value;
         }
 
@@ -398,7 +400,7 @@ class LettF extends BaseScheda
         if ($anag instanceof Anag) {
             /** @var string|null $emailFromAnag */
             $emailFromAnag = $anag->email ?? null;
-            if (null !== $emailFromAnag && '' !== $emailFromAnag) {
+            if ($emailFromAnag !== null && $emailFromAnag !== '') {
                 $this->attributes['email'] = $emailFromAnag;
 
                 return $emailFromAnag;

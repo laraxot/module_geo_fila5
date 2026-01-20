@@ -1,8 +1,7 @@
 <?php
 
-use Modules\User\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
 use Livewire\Volt\Volt;
+use Modules\Xot\Datas\XotData;
 
 test('login screen can be rendered', function () {
     $response = $this->get('/login');

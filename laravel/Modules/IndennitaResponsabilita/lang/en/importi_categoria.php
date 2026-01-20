@@ -95,4 +95,3 @@ return [
         'saved' => 'Category amount saved successfully',
     ],
 ];
-

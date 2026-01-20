@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Modules\User\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\User;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;

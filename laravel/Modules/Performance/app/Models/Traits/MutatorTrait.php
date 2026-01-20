@@ -21,7 +21,7 @@ trait MutatorTrait
             return $value;
         }
         // */
-        
+
         // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
             return null;
@@ -62,7 +62,7 @@ trait MutatorTrait
         // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
         /** @var int|string|null $key */
         $key = $this->getKey();
-        if (null !== $key) {
+        if ($key !== null) {
             $this->update(['gg_assenza_dalal' => $int_value]);
         }
 
@@ -74,7 +74,7 @@ trait MutatorTrait
         if ($value !== null) {
             return $value;
         }
-        
+
         // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
             return null;
@@ -120,7 +120,7 @@ trait MutatorTrait
         // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
         /** @var int|string|null $key */
         $key = $this->getKey();
-        if (null === $key) {
+        if ($key === null) {
             return $float_value;
         }
 
@@ -210,7 +210,7 @@ trait MutatorTrait
                 $up = [];
                 foreach ($criteri_valutazione as $v) {
                     // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
-            $nomeField = is_object($v) && isset($v->nome) && is_string($v->nome) ? $v->nome : '';
+                    $nomeField = is_object($v) && isset($v->nome) && is_string($v->nome) ? $v->nome : '';
                     if ($nomeField === '') {
                         continue;
                     }
@@ -339,7 +339,7 @@ trait MutatorTrait
             $value = 'dip';
         }
         $this->type = $value;
-        
+
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() === null) {
             return $value;

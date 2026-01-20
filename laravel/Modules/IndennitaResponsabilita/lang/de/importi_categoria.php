@@ -83,4 +83,3 @@ return [
         'saved' => 'Kategoriebetrag erfolgreich gespeichert',
     ],
 ];
-

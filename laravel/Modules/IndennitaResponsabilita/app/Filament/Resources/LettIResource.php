@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Override;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Grid;
-use Filament\Resources\Pages\PageRegistration;
 use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\Component; // Added this line
-use Filament\Forms\Components\DatePicker; // Corrected Section import
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Components\Grid;
+// Added this line
+use Filament\Schemas\Components\Section; // Corrected Section import
 use Illuminate\Database\Eloquent\Builder;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource\Pages\CreateLettI;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource\Pages\EditLettI;
@@ -19,6 +18,7 @@ use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource\Pages\ListL
 use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource\Pages\ViewLettI;
 use Modules\IndennitaResponsabilita\Models\LettI;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Override;
 
 final class LettIResource extends XotBaseResource
 {
@@ -26,7 +26,7 @@ final class LettIResource extends XotBaseResource
 
     protected static ?string $model = LettI::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-check';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-check';
 
     protected static ?int $navigationSort = 3;
 

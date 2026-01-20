@@ -1,7 +1,7 @@
 <?php
 
-use Modules\User\Models\User;
 use Livewire\Volt\Volt;
+use Modules\User\Models\User;
 
 test('profile page is displayed', function () {
     $user = User::factory()->create();

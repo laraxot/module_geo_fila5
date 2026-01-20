@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\RatingResource\Pages;
 
-use Override;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Select;
@@ -17,6 +16,7 @@ use Illuminate\Support\Arr;
 use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Rating\Filament\Resources\RatingResource\Pages\ListRatings as BaseListRatings;
+use Override;
 
 class ListRatings extends BaseListRatings
 {
@@ -41,7 +41,7 @@ class ListRatings extends BaseListRatings
             ...$parentActions,
             'copy_from_last_year' => Action::make('copy_from_last_year')
                 ->action(function () use ($anno): void {
-                    if (null === $anno) {
+                    if ($anno === null) {
                         return;
                     }
                     /** @var int $annoInt */
@@ -64,7 +64,7 @@ class ListRatings extends BaseListRatings
                         /** @var Rating $rowCreated */
                         $rowCreated = $model::query()->firstOrCreate($data_where, $data);
 
-                        if (null !== $rowCreated->extra_attributes) {
+                        if ($rowCreated->extra_attributes !== null) {
                             $rowCreated->extra_attributes->set('anno', $annoInt);
                             $rowCreated->save();
                         }
@@ -113,7 +113,7 @@ class ListRatings extends BaseListRatings
                     /** @var Builder<Rating> $query */
                     /** @var int|string|null $anno */
                     $anno = $data['anno'] ?? null;
-                    if (null === $anno) {
+                    if ($anno === null) {
                         return $query;
                     }
 

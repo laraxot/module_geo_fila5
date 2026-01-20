@@ -11,4 +11,3 @@ class EditLettF extends XotBaseEditRecord
 {
     protected static string $resource = LettFResource::class;
 }
-

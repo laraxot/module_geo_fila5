@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace Modules\Performance\Models;
 
 // --- traits ---
-use Override;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Modules\Ptv\Models\BaseScheda;
 use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
@@ -25,162 +23,163 @@ use Modules\Sigma\Models\Repart;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Wstr01lx;
+use Override;
 
 /**
  * Modules\Performance\Models\Organizzativa.
  *
- * @property int                                 $id
- * @property string|null                         $type
- * @property int                                 $ente
- * @property int|null                            $matr
- * @property string|null                         $cognome
- * @property string|null                         $nome
- * @property string|null                         $email
- * @property int|null                            $stabi
- * @property int|null                            $repar
- * @property int|null                            $stabival
- * @property int|null                            $reparval
- * @property string|null                         $stabi_txt
- * @property string|null                         $repar_txt
- * @property int|null                            $disci
- * @property string|null                         $disci_txt
- * @property int|null                            $rep2kd
- * @property int|null                            $rep2ka
- * @property int|null                            $posiz
- * @property int|null                            $propro
- * @property int|null                            $posfun
- * @property string|null                         $categoria_eco
- * @property int|null                            $qua2kd
- * @property int|null                            $qua2ka
- * @property int|null                            $dal
- * @property int|null                            $al
- * @property int|null                            $anno
- * @property int|null                            $giornitempodet
- * @property int                                 $ha_diritto
- * @property string|null                         $motivo
- * @property string|null                         $esperienza_acquisita
- * @property string|null                         $risultati_ottenuti
- * @property string|null                         $arricchimento_professionale
- * @property string|null                         $impegno
- * @property string|null                         $qualita_prestazione
- * @property float|null                          $totale_punteggio
- * @property string|null                         $lista_auth
- * @property float|null                          $peso_esperienza_acquisita
- * @property float|null                          $peso_risultati_ottenuti
- * @property float|null                          $peso_arricchimento_professionale
- * @property float|null                          $peso_impegno
- * @property float|null                          $peso_qualita_prestazione
- * @property string|null                         $datemod
- * @property string|null                         $note
- * @property string|null                         $oree
- * @property string|null                         $oret
- * @property float|null                          $perc_parttime
- * @property string|null                         $perc_parttimepond
- * @property int|null                            $gg_parttimevert
- * @property string|null                         $ore_assenza
- * @property string|null                         $giorni_assenza
- * @property string|null                         $giorni_presenza
- * @property string|null                         $categ_coeff
- * @property string|null                         $quota_teorica
- * @property string|null                         $budget_assegnato
- * @property string|null                         $quota_effettiva
- * @property string|null                         $resti
- * @property string|null                         $resti_pond
- * @property string|null                         $importo_totale
- * @property string|null                         $gg_totale_sigma
- * @property string|null                         $gg_validi_sigma
- * @property string|null                         $gg_assenz_sigma
- * @property string|null                         $decurtazione_perc
- * @property int                                 $gg_tempo_determinato
- * @property int|null                            $gg_posiz_1_in_sede
- * @property int                                 $gg_assenza_anno
- * @property int                                 $gg_presenza_anno
- * @property int                                 $gg_ruolo
- * @property int|null                            $last_data_assunz
- * @property string|null                         $ore_assenza_anno
- * @property Carbon|null                         $created_at
- * @property Carbon|null                         $updated_at
- * @property string|null                         $created_by
- * @property string|null                         $updated_by
- * @property string|null                         $posiz_txt
- * @property int|null                            $clafun
- * @property int|null                            $disci1
- * @property string|null                         $disci1_txt
- * @property int|null                            $gg_assenza_dalal
- * @property float|null                          $hh_assenza_anno
- * @property float|null                          $hh_assenza_dalal
- * @property string|null                         $gg_parttimevert_anno
- * @property float|null                          $perc_parttimepond_anno
- * @property string|null                         $perc_parttimepond_dalal
- * @property string|null                         $gg_parttimevert_dalal
- * @property string|null                         $gg_presenza_dalal
- * @property string|null                         $perc_parttime_dalal
- * @property string|null                         $perc_parttime_anno
- * @property string|null                         $posizione_eco
- * @property float                               $gg_anno
- * @property float|null                          $tot                              Total value
- * @property Collection<int, Sto00f>             $Sto00fYear
- * @property int|null                            $sto00f_year_count
- * @property Collection<int, Ana02f>             $ana02f
- * @property int|null                            $ana02f_count
- * @property Ana10f|null                         $ana10f
- * @property Anag|null                           $anag
- * @property Collection<int, Asz00f>             $asz00f
- * @property int|null                            $asz00f_count
- * @property Collection<int, Asz00k1>            $asz00k1
- * @property int|null                            $asz00k1_count
- * @property Collection<int, Asz00k1>            $asz00k1Year
- * @property int|null                            $asz00k1_year_count
- * @property Collection<int, Individuale>        $cards
- * @property int|null                            $cards_count
+ * @property int $id
+ * @property string|null $type
+ * @property int $ente
+ * @property int|null $matr
+ * @property string|null $cognome
+ * @property string|null $nome
+ * @property string|null $email
+ * @property int|null $stabi
+ * @property int|null $repar
+ * @property int|null $stabival
+ * @property int|null $reparval
+ * @property string|null $stabi_txt
+ * @property string|null $repar_txt
+ * @property int|null $disci
+ * @property string|null $disci_txt
+ * @property int|null $rep2kd
+ * @property int|null $rep2ka
+ * @property int|null $posiz
+ * @property int|null $propro
+ * @property int|null $posfun
+ * @property string|null $categoria_eco
+ * @property int|null $qua2kd
+ * @property int|null $qua2ka
+ * @property int|null $dal
+ * @property int|null $al
+ * @property int|null $anno
+ * @property int|null $giornitempodet
+ * @property int $ha_diritto
+ * @property string|null $motivo
+ * @property string|null $esperienza_acquisita
+ * @property string|null $risultati_ottenuti
+ * @property string|null $arricchimento_professionale
+ * @property string|null $impegno
+ * @property string|null $qualita_prestazione
+ * @property float|null $totale_punteggio
+ * @property string|null $lista_auth
+ * @property float|null $peso_esperienza_acquisita
+ * @property float|null $peso_risultati_ottenuti
+ * @property float|null $peso_arricchimento_professionale
+ * @property float|null $peso_impegno
+ * @property float|null $peso_qualita_prestazione
+ * @property string|null $datemod
+ * @property string|null $note
+ * @property string|null $oree
+ * @property string|null $oret
+ * @property float|null $perc_parttime
+ * @property string|null $perc_parttimepond
+ * @property int|null $gg_parttimevert
+ * @property string|null $ore_assenza
+ * @property string|null $giorni_assenza
+ * @property string|null $giorni_presenza
+ * @property string|null $categ_coeff
+ * @property string|null $quota_teorica
+ * @property string|null $budget_assegnato
+ * @property string|null $quota_effettiva
+ * @property string|null $resti
+ * @property string|null $resti_pond
+ * @property string|null $importo_totale
+ * @property string|null $gg_totale_sigma
+ * @property string|null $gg_validi_sigma
+ * @property string|null $gg_assenz_sigma
+ * @property string|null $decurtazione_perc
+ * @property int $gg_tempo_determinato
+ * @property int|null $gg_posiz_1_in_sede
+ * @property int $gg_assenza_anno
+ * @property int $gg_presenza_anno
+ * @property int $gg_ruolo
+ * @property int|null $last_data_assunz
+ * @property string|null $ore_assenza_anno
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $posiz_txt
+ * @property int|null $clafun
+ * @property int|null $disci1
+ * @property string|null $disci1_txt
+ * @property int|null $gg_assenza_dalal
+ * @property float|null $hh_assenza_anno
+ * @property float|null $hh_assenza_dalal
+ * @property string|null $gg_parttimevert_anno
+ * @property float|null $perc_parttimepond_anno
+ * @property string|null $perc_parttimepond_dalal
+ * @property string|null $gg_parttimevert_dalal
+ * @property string|null $gg_presenza_dalal
+ * @property string|null $perc_parttime_dalal
+ * @property string|null $perc_parttime_anno
+ * @property string|null $posizione_eco
+ * @property float $gg_anno
+ * @property float|null $tot Total value
+ * @property Collection<int, Sto00f> $Sto00fYear
+ * @property int|null $sto00f_year_count
+ * @property Collection<int, Ana02f> $ana02f
+ * @property int|null $ana02f_count
+ * @property Ana10f|null $ana10f
+ * @property Anag|null $anag
+ * @property Collection<int, Asz00f> $asz00f
+ * @property int|null $asz00f_count
+ * @property Collection<int, Asz00k1> $asz00k1
+ * @property int|null $asz00k1_count
+ * @property Collection<int, Asz00k1> $asz00k1Year
+ * @property int|null $asz00k1_year_count
+ * @property Collection<int, Individuale> $cards
+ * @property int|null $cards_count
  * @property Collection<int, IndividualeAssenze> $codiciAssenze
- * @property int|null                            $codici_assenze_count
- * @property Collection<int, CriteriEsclusione>  $criteriEsclusione
- * @property int|null                            $criteri_esclusione_count
- * @property CriteriMaggiorazione|null           $criteriMaggiorazione
- * @property Collection<int, CriteriOption>      $criteriOptions
- * @property int|null                            $criteri_options_count
+ * @property int|null $codici_assenze_count
+ * @property Collection<int, CriteriEsclusione> $criteriEsclusione
+ * @property int|null $criteri_esclusione_count
+ * @property CriteriMaggiorazione|null $criteriMaggiorazione
+ * @property Collection<int, CriteriOption> $criteriOptions
+ * @property int|null $criteri_options_count
  * @property Collection<int, CriteriValutazione> $criteriValutazione
- * @property int|null                            $criteri_valutazione_count
- * @property mixed                               $codqua
- * @property mixed                               $cont
- * @property int|float                           $gg_p_time_vert_year
- * @property int|float                           $perc_p_time_daterange
- * @property int|float                           $perc_p_time_year
- * @property string|null                         $post_type
- * @property mixed                               $tipco
- * @property mixed                               $titolo_di_studio
- * @property Collection<int, MyLog>              $mailInviate
- * @property int|null                            $mail_inviate_count
- * @property Collection<int, MyLog>              $myLogs
- * @property int|null                            $my_logs_count
- * @property Collection<int, Option>             $options
- * @property int|null                            $options_count
- * @property Collection<int, Organizzativa>      $otherWinnerRows
- * @property int|null                            $other_winner_rows_count
- * @property IndividualePesi|null                $peso
- * @property IndividualePoPesi|null              $pesoPo
- * @property Collection<int, Qua00f>             $qua00f
- * @property int|null                            $qua00f_count
- * @property Collection<int, Qua00f>             $qua00fDaterange
- * @property int|null                            $qua00f_daterange_count
- * @property Collection<int, Qua00f>             $qua00fYear
- * @property int|null                            $qua00f_year_count
- * @property Collection<int, Qua03f>             $qua03f
- * @property int|null                            $qua03f_count
- * @property Collection<int, Rep00f>             $rep00f
- * @property int|null                            $rep00f_count
- * @property Collection<int, Repart>             $reparts
- * @property int|null                            $reparts_count
- * @property StabiDirigente|null                 $stabiDirigente
- * @property Collection<int, Sto00f>             $sto00f
- * @property int|null                            $sto00f_count
- * @property IndividualeTotStabi|null            $totStabi
- * @property Tqu00f|null                         $tqu00f
- * @property Collection<int, Wstr01lx>           $wstr01lx
- * @property int|null                            $wstr01lx_count
- * @property Collection<int, Wstr01lx>           $wstr01lxYear
- * @property int|null                            $wstr01lx_year_count
+ * @property int|null $criteri_valutazione_count
+ * @property mixed $codqua
+ * @property mixed $cont
+ * @property int|float $gg_p_time_vert_year
+ * @property int|float $perc_p_time_daterange
+ * @property int|float $perc_p_time_year
+ * @property string|null $post_type
+ * @property mixed $tipco
+ * @property mixed $titolo_di_studio
+ * @property Collection<int, MyLog> $mailInviate
+ * @property int|null $mail_inviate_count
+ * @property Collection<int, MyLog> $myLogs
+ * @property int|null $my_logs_count
+ * @property Collection<int, Option> $options
+ * @property int|null $options_count
+ * @property Collection<int, Organizzativa> $otherWinnerRows
+ * @property int|null $other_winner_rows_count
+ * @property IndividualePesi|null $peso
+ * @property IndividualePoPesi|null $pesoPo
+ * @property Collection<int, Qua00f> $qua00f
+ * @property int|null $qua00f_count
+ * @property Collection<int, Qua00f> $qua00fDaterange
+ * @property int|null $qua00f_daterange_count
+ * @property Collection<int, Qua00f> $qua00fYear
+ * @property int|null $qua00f_year_count
+ * @property Collection<int, Qua03f> $qua03f
+ * @property int|null $qua03f_count
+ * @property Collection<int, Rep00f> $rep00f
+ * @property int|null $rep00f_count
+ * @property Collection<int, Repart> $reparts
+ * @property int|null $reparts_count
+ * @property StabiDirigente|null $stabiDirigente
+ * @property Collection<int, Sto00f> $sto00f
+ * @property int|null $sto00f_count
+ * @property IndividualeTotStabi|null $totStabi
+ * @property Tqu00f|null $tqu00f
+ * @property Collection<int, Wstr01lx> $wstr01lx
+ * @property int|null $wstr01lx_count
+ * @property Collection<int, Wstr01lx> $wstr01lxYear
+ * @property int|null $wstr01lx_year_count
  *
  * @method static Builder|Organizzativa newModelQuery()
  * @method static Builder|Organizzativa newQuery()
@@ -282,85 +281,85 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|Organizzativa withDays(int $date_min, int $date_max)
  * @method static Builder|Organizzativa withTotPunt()
  *
- * @property int|null                            $valutatore_id
- * @property string|null                         $importo_totale_valutatore
- * @property string|null                         $resti_pond_valutatore
- * @property string|null                         $resti_pond_valutatore_id
- * @property string|null                         $importo_totale_valutatore_id
+ * @property int|null $valutatore_id
+ * @property string|null $importo_totale_valutatore
+ * @property string|null $resti_pond_valutatore
+ * @property string|null $resti_pond_valutatore_id
+ * @property string|null $importo_totale_valutatore_id
  * @property Collection<int, IndividualeAssenze> $assenze
- * @property int|null                            $assenze_count
- * @property Profile|null                        $creator
- * @property mixed                               $aventi_diritto
- * @property mixed                               $aventi_diritto_eff
- * @property string|null                         $categoria_ecoval
- * @property string|null                         $codice_fiscale
- * @property float|null                          $eta
- * @property int|null                            $excellences_count_last3years
- * @property int|null                            $gg_asz
- * @property int|null                            $gg_asz_cateco
- * @property int|null                            $gg_asz_cateco_fuori_sede
- * @property int|null                            $gg_asz_cateco_in_sede
- * @property int|null                            $gg_asz_cateco_posfun
- * @property int|null                            $gg_asz_cateco_posfun_fuori_sede
- * @property int|null                            $gg_asz_cateco_posfun_in_sede
- * @property int|null                            $gg_asz_fuori_sede
- * @property int|null                            $gg_asz_in_sede
- * @property int|null                            $gg_asz_tip_cod_escluso_subito
- * @property int|null                            $gg
- * @property int|null                            $gg_cateco
- * @property int|null                            $gg_cateco_fuori_sede
- * @property int|null                            $gg_cateco_in_sede
- * @property int|null                            $gg_cateco_no_asz
- * @property int|null                            $gg_cateco_no_posfun_no_asz
- * @property int|null                            $gg_cateco_posfun
- * @property int|null                            $gg_cateco_posfun_fuori_sede
- * @property int|null                            $gg_cateco_posfun_in_sede
- * @property int|null                            $gg_cateco_posfun_in_sede_no_asz
- * @property int|null                            $gg_cateco_posfun_no_asz
- * @property int|null                            $gg_cateco_sup
- * @property int|null                            $gg_cateco_sup_fuori_sede
- * @property int|null                            $gg_cateco_sup_in_sede
- * @property int|null                            $gg_fuori_sede
- * @property float|null                          $gg_fuori_sede_no_asz
- * @property int|null                            $gg_in_sede
- * @property float|null                          $gg_in_sede_no_asz
- * @property float|null                          $gg_no_asz
- * @property int|null                            $gg_posiz1_in_sede
- * @property int|null                            $hh_asz
- * @property int|null                            $hh_asz_fuori_sede
- * @property int|null                            $hh_asz_in_sede
- * @property float|null                          $importo_stipendio_annuo
- * @property string|null                         $inail
- * @property string|null                         $lista_propro
- * @property string|null                         $lista_propro_sup
- * @property float|null                          $perf_ind2014
- * @property float|null                          $perf_ind2015
- * @property float|null                          $perf_ind2016
- * @property float|null                          $perf_ind2017
- * @property float|null                          $perf_ind2018
- * @property float|null                          $perf_ind2019
- * @property float|null                          $perf_ind2020
- * @property float|null                          $perf_ind2021
- * @property float|null                          $perf_ind2022
- * @property float|null                          $perf_ind2023
- * @property float|null                          $perf_ind2024
- * @property float|null                          $perf_ind2025
- * @property float|null                          $perf_ind2026
- * @property float|null                          $perf_ind2027
- * @property float|null                          $perf_ind2028
- * @property float|null                          $perf_ind2029
- * @property float|null                          $perf_ind2030
- * @property int|null                            $perf_ind_count_last3_years
- * @property float|null                          $perf_ind_media
- * @property int                                 $posfunval
- * @property int                                 $posizione
- * @property float|null                          $ptime
- * @property float|null                          $punt_progressione_finale
- * @property string|null                         $sesso
- * @property float|null                          $totale_pond
- * @property float|null                          $valore_differenziale_rapportato_pt
- * @property string|null                         $valutatore_txt
- * @property Profile|null                        $updater
+ * @property int|null $assenze_count
+ * @property Profile|null $creator
+ * @property mixed $aventi_diritto
+ * @property mixed $aventi_diritto_eff
+ * @property string|null $categoria_ecoval
+ * @property string|null $codice_fiscale
+ * @property float|null $eta
+ * @property int|null $excellences_count_last3years
+ * @property int|null $gg_asz
+ * @property int|null $gg_asz_cateco
+ * @property int|null $gg_asz_cateco_fuori_sede
+ * @property int|null $gg_asz_cateco_in_sede
+ * @property int|null $gg_asz_cateco_posfun
+ * @property int|null $gg_asz_cateco_posfun_fuori_sede
+ * @property int|null $gg_asz_cateco_posfun_in_sede
+ * @property int|null $gg_asz_fuori_sede
+ * @property int|null $gg_asz_in_sede
+ * @property int|null $gg_asz_tip_cod_escluso_subito
+ * @property int|null $gg
+ * @property int|null $gg_cateco
+ * @property int|null $gg_cateco_fuori_sede
+ * @property int|null $gg_cateco_in_sede
+ * @property int|null $gg_cateco_no_asz
+ * @property int|null $gg_cateco_no_posfun_no_asz
+ * @property int|null $gg_cateco_posfun
+ * @property int|null $gg_cateco_posfun_fuori_sede
+ * @property int|null $gg_cateco_posfun_in_sede
+ * @property int|null $gg_cateco_posfun_in_sede_no_asz
+ * @property int|null $gg_cateco_posfun_no_asz
+ * @property int|null $gg_cateco_sup
+ * @property int|null $gg_cateco_sup_fuori_sede
+ * @property int|null $gg_cateco_sup_in_sede
+ * @property int|null $gg_fuori_sede
+ * @property float|null $gg_fuori_sede_no_asz
+ * @property int|null $gg_in_sede
+ * @property float|null $gg_in_sede_no_asz
+ * @property float|null $gg_no_asz
+ * @property int|null $gg_posiz1_in_sede
+ * @property int|null $hh_asz
+ * @property int|null $hh_asz_fuori_sede
+ * @property int|null $hh_asz_in_sede
+ * @property float|null $importo_stipendio_annuo
+ * @property string|null $inail
+ * @property string|null $lista_propro
+ * @property string|null $lista_propro_sup
+ * @property float|null $perf_ind2014
+ * @property float|null $perf_ind2015
+ * @property float|null $perf_ind2016
+ * @property float|null $perf_ind2017
+ * @property float|null $perf_ind2018
+ * @property float|null $perf_ind2019
+ * @property float|null $perf_ind2020
+ * @property float|null $perf_ind2021
+ * @property float|null $perf_ind2022
+ * @property float|null $perf_ind2023
+ * @property float|null $perf_ind2024
+ * @property float|null $perf_ind2025
+ * @property float|null $perf_ind2026
+ * @property float|null $perf_ind2027
+ * @property float|null $perf_ind2028
+ * @property float|null $perf_ind2029
+ * @property float|null $perf_ind2030
+ * @property int|null $perf_ind_count_last3_years
+ * @property float|null $perf_ind_media
+ * @property int $posfunval
+ * @property int $posizione
+ * @property float|null $ptime
+ * @property float|null $punt_progressione_finale
+ * @property string|null $sesso
+ * @property float|null $totale_pond
+ * @property float|null $valore_differenziale_rapportato_pt
+ * @property string|null $valutatore_txt
+ * @property Profile|null $updater
  *
  * @method static Builder<static>|Organizzativa ofEnte(int $ente)
  * @method static Builder<static>|Organizzativa ofFourMonthPeriod(int $fourMonthPeriod, int $year)

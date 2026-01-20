@@ -101,6 +101,3 @@ return [
         'description' => 'Verwaltung von Betriebsstätten und Leitern',
     ],
 ];
-
-
-

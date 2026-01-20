@@ -52,4 +52,3 @@ return [
         'readonly_warning' => 'Protokolle sind schreibgeschützt und können nicht geändert werden',
     ],
 ];
-

@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\LettFResource\Pages;
 
+use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Average;
 use Filament\Tables\Columns\Summarizers\Sum;
-use Filament\Tables\Filters\BaseFilter;
-use Override;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettFResource;
 use Modules\IndennitaResponsabilita\Models\LettF;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
@@ -116,4 +114,3 @@ class ListLettFs extends XotBaseListRecords
         ];
     }
 }
-

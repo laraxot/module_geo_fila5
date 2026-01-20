@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Emails;
 
-use Illuminate\Support\Collection;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Collection;
 use Modules\Cms\Services\PanelService as Panel;
 use Modules\IndennitaResponsabilita\Models\LettF;
 use Modules\Xot\Datas\PdfData;

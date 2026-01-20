@@ -19,7 +19,7 @@ return [
         'note' => [
             'description' => '',
             'helper_text' => '',
-            'label'=>'Compiti con Responsabilità Procedimentale di Coordinamento (minimo 2 addetti)',
+            'label' => 'Compiti con Responsabilità Procedimentale di Coordinamento (minimo 2 addetti)',
             'label1' => 'Descrivere meglio compiti che comportano la responsabilità',
             'placeholder' => '',
         ],

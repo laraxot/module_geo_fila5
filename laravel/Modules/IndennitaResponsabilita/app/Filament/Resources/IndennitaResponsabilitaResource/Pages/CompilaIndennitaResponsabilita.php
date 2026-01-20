@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Textarea;
-use Exception;
 use Carbon\Carbon;
+use Exception;
 use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Textarea;
+use Filament\Notifications\Notification;
 // use Filament\Pages\Page; //route not exists
 // use Filament\Pages\Contracts\HasFormActions;
 // use Filament\Resources\Pages\Concerns\HasRecordBreadcrumb;
-use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-// use Filament\Resources\Pages\Concerns\UsesResourceForm;
 use Filament\Pages\Actions;
+// use Filament\Resources\Pages\Concerns\UsesResourceForm;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
@@ -32,13 +31,14 @@ use Webmozart\Assert\Assert;
 
 /**
  * @property \Filament\Schemas\Schema $form
- * @property IndennitaResponsabilita  $record
+ * @property IndennitaResponsabilita $record
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
     /* implements HasFormActions */
     // use HasRecordBreadcrumb;
     use HasRelationManagers;
+
     // use UsesResourceForm;
     use InteractsWithRecord;
 

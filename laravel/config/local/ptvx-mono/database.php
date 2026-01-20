@@ -74,5 +74,4 @@ foreach ($dbs as $k => $v) {
 
 // echo '<pre>';print_r($def);echo '</pre>';
 
-
 return $def1;

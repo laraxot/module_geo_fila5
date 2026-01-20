@@ -86,6 +86,3 @@ return [
         'description' => 'Nachrichten- und Kommunikationsverwaltung',
     ],
 ];
-
-
-

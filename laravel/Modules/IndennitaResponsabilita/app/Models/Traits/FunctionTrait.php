@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models\Traits;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Arr;
 use Modules\IndennitaResponsabilita\Models\Message;
-use Modules\IndennitaResponsabilita\Models\Rating;
-
-use function Safe\date;
 
 trait FunctionTrait
 {
@@ -39,6 +34,4 @@ trait FunctionTrait
 
         return $message instanceof Message ? $message : null;
     }
-
-    
 }

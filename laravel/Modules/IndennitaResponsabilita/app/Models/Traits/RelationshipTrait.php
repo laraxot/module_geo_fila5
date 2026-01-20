@@ -8,13 +8,10 @@ namespace Modules\IndennitaResponsabilita\Models\Traits;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Message;
 use Modules\IndennitaResponsabilita\Models\MyLog;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\IndennitaResponsabilita\Models\RatingMorph;
 use Modules\Sigma\Models\Anag;
 
 use function Safe\date;
@@ -46,8 +43,7 @@ trait RelationshipTrait
             ->where('repar', $repar);
         // ->where('ha_diritto',1)
     }
-    
-    
+
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'anno', 'anno');
@@ -69,12 +65,12 @@ trait RelationshipTrait
     public function importi(): HasOne
     {
         $row = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')->where('anno', $this->anno)->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-        if (0 === $row->count()) {
+        if ($row->count() === 0) {
             $rowOld = ImportiCategoria::where('ente', $this->ente)
                 ->where('anno', $this->anno - 1)
                 ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-            if (1 !== $rowOld->count()) {
-                if (0 === $this->propro) {
+            if ($rowOld->count() !== 1) {
+                if ($this->propro === 0) {
                     return $row;
                 }
 
@@ -85,7 +81,7 @@ trait RelationshipTrait
             }
 
             $firstRow = $rowOld->first();
-            if (null !== $firstRow) {
+            if ($firstRow !== null) {
                 $newRow = $firstRow->replicate();
                 $newRow->anno = $this->anno;
                 $newRow->save();
@@ -103,7 +99,6 @@ trait RelationshipTrait
      * Note: This returns BelongsTo, but BaseScheda::anag() returns HasOne.
      * This is a known architectural issue documented in docs/anag-relationship-conflict-resolution.md
      *
-     * @return BelongsTo
      * @phpstan-ignore-next-line method.childReturnType - BelongsTo is semantically correct for child models
      */
     public function anag(): BelongsTo

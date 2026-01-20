@@ -16,7 +16,7 @@ class Populate
     /**
      * Populate Indennita Responsabilita records for a given year.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function execute(array $data): void
     {

@@ -195,6 +195,3 @@ return [
         'description' => 'Personnel responsibility allowance management',
     ],
 ];
-
-
-
