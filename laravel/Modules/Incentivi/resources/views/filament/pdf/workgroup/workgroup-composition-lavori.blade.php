@@ -3,11 +3,8 @@
 
     <div>
 
-        <img src="{{ public_path('assets/ptv/img/logo.png') }}">
-
-        <div style="text-align: right">
-            Treviso, {{ date('d-m-Y H:i:s', strtotime($project->updated_at)) }}
-        </div>
+        @include('ptv::pdf.header')
+        <br><br><br><br><br>
 
         <h4 style=""> OGGETTO: Individuazione del gruppo di lavoro relativo a {{ $project->oggetto }} </h4>
 
