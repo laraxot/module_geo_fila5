@@ -26,7 +26,7 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use ReflectionClass;
 use Webmozart\Assert\Assert;
 
-use function Safe\glob;
+// use function Safe\glob;
 
 /**
  * @method static string getUrl(string $name, array<string, mixed> $parameters = [], bool $isAbsolute = true)
@@ -223,7 +223,7 @@ abstract class XotBaseResource extends FilamentResource
             ->append('RelationManagers')
             ->toString();
 
-        $filesResult = glob($path.\DIRECTORY_SEPARATOR.'*RelationManager.php');
+        $filesResult = \glob($path.\DIRECTORY_SEPARATOR.'*RelationManager.php');
 
         // PHPStan: glob() with valid pattern returns array
         if ($filesResult === []) {

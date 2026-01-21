@@ -73,7 +73,6 @@
         "nunomaduro/collision": "^8.6",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",
-        
         "pestphp/pest-plugin-type-coverage": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
         "nunomaduro/phpinsights": "*"
@@ -82,7 +81,7 @@
         "pestphp/pest-plugin-laravel": "*",
         "spatie/laravel-error-solutions": "*"
     },
-    "repositories_comment": "",
+    "repositories_comment": "Local path packages (coolsam/panel-modules) moved to root composer.json for proper priority. DO NOT add Packagist here - it must remain non-canonical in root.",
     "repositories": [
         {
             "type": "path",
