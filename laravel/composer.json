@@ -83,15 +83,6 @@
             "sudo chmod 777 -R ."
         ]
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "Modules/Lang/packages/lara-zeus/spatie-translatable",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "extra": {
         "laravel": {
             "dont-discover": []
