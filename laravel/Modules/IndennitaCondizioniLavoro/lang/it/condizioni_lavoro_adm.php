@@ -93,6 +93,9 @@ return [
                 'label' => 'valutatore.nome_diri',
             ],
         ],
+        'anno-quadrimestre' => [
+            'label' => 'anno-quadrimestre',
+        ],
     ],
     'actions' => [
         'logout' => [
@@ -163,6 +166,11 @@ return [
         'cancel' => [
             'tooltip' => 'cancel',
             'icon' => 'cancel',
+        ],
+        'replicate' => [
+            'tooltip' => 'replicate',
+            'icon' => 'replicate',
+            'label' => 'replicate',
         ],
     ],
     'label' => 'condizioni lavoro adm',

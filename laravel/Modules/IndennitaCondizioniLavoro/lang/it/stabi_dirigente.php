@@ -140,10 +140,17 @@ return [
         ],
         'create' => [
             'tooltip' => 'create',
+            'icon' => 'create',
         ],
         'applyFilters' => [
             'tooltip' => 'applyFilters',
             'icon' => 'applyFilters',
+            'label' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'tooltip' => 'openFilters',
+            'icon' => 'openFilters',
+            'label' => 'openFilters',
         ],
     ],
     'label' => 'stabi dirigente',

@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages;
 
+use Filament\Tables;
 use Filament\Actions;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables;
+use Filament\Actions\DeleteBulkAction;
+use Modules\Ptv\Models\StabiDirigente;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource;
-use Modules\Ptv\Models\StabiDirigente;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListStabiDirigentes extends XotBaseListRecords
@@ -75,5 +76,30 @@ class ListStabiDirigentes extends XotBaseListRecords
     public function getEloquentQuery(): Builder
     {
         return StabiDirigenteResource::getEloquentQuery();
+    }
+
+     /**
+     * Undocumented function.
+     *
+     * @return array<\Filament\Tables\Filters\BaseFilter>
+     */
+    public function getTableFilters(): array
+    {
+        return [
+            SelectFilter::make('anno')
+                ->options([
+                    '2022' => '2022',
+                    '2023' => '2023',
+                    '2024' => '2024',
+                    '2025' => '2025',
+                    '2026' => '2026',
+                ])->query(static function (Builder $query, array $data): Builder {
+                    if (null == $data['value']) {
+                        return $query->where('id', 0);
+                    }
+
+                    return $query->where('anno', $data['value']);
+                }),
+        ];
     }
 }
