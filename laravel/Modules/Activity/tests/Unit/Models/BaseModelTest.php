@@ -6,16 +6,17 @@ uses(\Modules\Activity\Tests\TestCase::class);
 
 use Modules\Activity\Models\BaseModel;
 
-// Test per BaseModel - usiamo una classe concreta solo per test
-class TestBaseModel extends BaseModel
+function makeTestBaseModel(array $attributes = []): BaseModel
 {
-    protected $table = 'test_models';
+    return new class ($attributes) extends BaseModel {
+        protected $table = 'test_models';
 
-    protected $fillable = ['name'];
+        protected $fillable = ['name'];
+    };
 }
 
 test('BaseModel has correct connection', function () {
-    $model = new TestBaseModel;
+    $model = makeTestBaseModel();
     $reflection = new \ReflectionClass($model);
     $property = $reflection->getProperty('connection');
     $property->setAccessible(true);
@@ -24,7 +25,7 @@ test('BaseModel has correct connection', function () {
 });
 
 test('BaseModel extends XotBaseModel', function () {
-    $model = new TestBaseModel;
+    $model = makeTestBaseModel();
 
     expect($model)->toBeInstanceOf(\Modules\Xot\Models\XotBaseModel::class);
 });

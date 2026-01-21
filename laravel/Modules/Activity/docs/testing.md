@@ -18,6 +18,14 @@ Modules/Activity/tests/
 └── Pest.php
 ```
 
+### PSR-4 e classi di supporto
+
+Per evitare warning PSR-4 nei test:
+
+- Preferire classi anonime (`new class extends Model { ... }`) per modelli fittizi.
+- Se serve una classe nominata, metterla in un file dedicato con namespace `Modules\Activity\Tests\...` e nome file coerente con la classe.
+- Evitare classi “helper” nominate dentro i file `*Test.php` se non rispettano il mapping PSR-4.
+
 ### Test Files
 
 - **TestCase.php** - Base test case with database configuration
@@ -252,6 +260,7 @@ protected function createApplication()
 - Add backlinks to this file
 - Keep documentation consistent
 - Update troubleshooting guides
+- [Configurazione Modulo Activity](../../../../docs/activity/configurazione.md)
 
 ## Testing Resources
 

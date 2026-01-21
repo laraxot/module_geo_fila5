@@ -81,7 +81,7 @@
         "pestphp/pest-plugin-laravel": "*",
         "spatie/laravel-error-solutions": "*"
     },
-    "repositories_comment": "Local path packages (coolsam/panel-modules) moved to root composer.json for proper priority. DO NOT add Packagist here - it must remain non-canonical in root.",
+    "repositories_comment": "",
     "repositories": [
         {
             "type": "path",

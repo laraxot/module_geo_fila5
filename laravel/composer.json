@@ -23,11 +23,18 @@
         "nunomaduro/phpinsights": "*",
         "nwidart/laravel-modules": "*",
         "phpmd/phpmd": "*",
-        
-        
         "spatie/laravel-permission": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
         "symfony/http-client": "*"
+    },
+    "require-dev": {
+    },
+    "require-dev-comment": {
+        "carthage-software/mago": "^1.0.0-rc.4",
+        "driftingly/rector-laravel": "^2.1",
+        "filament/upgrade": "^5.0",
+        "larastan/larastan": "*",
+        "rector/rector": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -114,12 +121,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "carthage-software/mago": "^1.0.0-rc.4",
-        "driftingly/rector-laravel": "^2.1",
-        "filament/upgrade": "^5.0",
-        "larastan/larastan": "*",
-        "rector/rector": "^2.0"
-    }
+    "prefer-stable": true
 }

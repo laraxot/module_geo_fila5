@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogModelUpdatedAction;
 use Modules\User\Models\User;
 
-// Modello fittizio per testare LogModelUpdatedAction
-class LogModelUpdatedActionTestModel extends Model
+function makeLogModelUpdatedActionTestModel(array $attributes = []): Model
 {
-    protected $table = 'test_models';
+    return new class ($attributes) extends Model {
+        protected $table = 'test_models';
 
-    protected $fillable = ['name'];
+        protected $fillable = ['name'];
+    };
 }
 
 test('LogModelUpdatedAction can be instantiated', function () {
-    $model = new LogModelUpdatedActionTestModel;
+    $model = makeLogModelUpdatedActionTestModel();
     $user = User::factory()->make();
 
     $action = new LogModelUpdatedAction($model, $user);
