@@ -23,6 +23,7 @@ $mysql_def = [
 
 // connection name => database
 $dbs = [
+    'ptv' => 'ptv_lara',
     'badge' => 'badge',
     'conto_annuale' => 'conto_annuale',
     'prenotazioni' => 'appuntamenti',

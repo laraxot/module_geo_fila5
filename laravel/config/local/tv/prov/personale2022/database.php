@@ -23,6 +23,7 @@ $mysql_def = [
 
 // connection name => database
 $dbs = [
+    'ptv' => 'ptv_lara',
     'badge' => 'badge',
     'conto_annuale' => 'conto_annuale',
     'prenotazioni' => 'appuntamenti',
@@ -36,7 +37,7 @@ $dbs = [
     'mensa' => 'mensa',
     'menu' => 'menu',
     'indennita_condizioni_lavoro' => 'indennita_condizioni_lavoro',
-    'indennita_responsabilita' => 'indennita_responsabilita',
+    'indennita_responsabilita' => 'indennita_responsibilita',
     'legge_104' => 'legge104',
     'user' => 'ptv_user',
     'incentivi' => 'ptv_incentivi',

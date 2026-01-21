@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Common query scopes for Laraxot models.
  *
- * Implements the strategy documented in METODI_DUPLICATI_ANALISI.md
+ * Implements the strategy documented in analisi-metodi-duplicati.md
  * Found 100% identical in 5 models across modules.
  *
  * Add this trait to models that need these scopes.
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Builder;
  * MyModel::published()->get();
  * ```
  *
- * @see docs/METODI_DUPLICATI_ANALISI.md - Proposta 4: Model Traits
+ * @see docs/analisi-metodi-duplicati.md - Proposta 4: Model Traits
  */
 trait HasCommonScopes
 {

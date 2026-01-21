@@ -69,14 +69,9 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     public function registerDB(): void
     {
-        // Skip database purge/reconnect during testing to preserve test DB mappings
-        if ($this->app->environment('testing')) {
-            return;
-        }
-
         Schema::defaultStringLength(191);
 
-        if (Request::has('act') && Request::input('act') === 'migrate') {
+        if (! $this->app->environment('testing') && Request::has('act') && Request::input('act') === 'migrate') {
             DB::purge('mysql'); // Call to a member function prepare() on null
             DB::reconnect('mysql');
         }
@@ -120,10 +115,13 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $data = Arr::set($data, 'connections', $connections);
         Config::set('database', $data);
 
-        // Call to a member function prepare() on null
-        // Database connection [mysql] not configured.
-        DB::purge('mysql');
-        DB::reconnect();
+        // Skip purge/reconnect during testing to avoid connection issues
+        if (! $this->app->environment('testing')) {
+            // Call to a member function prepare() on null
+            // Database connection [mysql] not configured.
+            DB::purge('mysql');
+            DB::reconnect();
+        }
     }
 
     #[Override]

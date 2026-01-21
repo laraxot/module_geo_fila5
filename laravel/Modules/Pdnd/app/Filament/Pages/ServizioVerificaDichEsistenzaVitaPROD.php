@@ -85,7 +85,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             $state = $this->pdndForm->getState();
 
             $codiceFiscale = $this->validateCodiceFiscale($state);
-
             
             $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
 
@@ -142,6 +141,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             $c007Service = $this->createC007Service();
 
             $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
+            
 
             return $risultato;
         } catch (Throwable $e) {
@@ -160,6 +160,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
+        dd($risultato);
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
