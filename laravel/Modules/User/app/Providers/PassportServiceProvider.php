@@ -6,7 +6,7 @@ namespace Modules\User\Providers;
 
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\ServiceProvider;
+use Modules\Xot\Providers\XotBaseServiceProvider;
 use Laravel\Passport\Passport;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
@@ -21,7 +21,7 @@ use Webmozart\Assert\Assert;
  * Configura Laravel Passport per l'autenticazione OAuth2.
  * Utilizza la configurazione centralizzata da config/user/passport.php.
  */
-class PassportServiceProvider extends ServiceProvider
+class PassportServiceProvider extends XotBaseServiceProvider
 {
     /**
      * Register services.
@@ -100,13 +100,13 @@ class PassportServiceProvider extends ServiceProvider
         $clientModel = config('user.passport.client_model', OauthClient::class);
         Assert::stringNotEmpty($clientModel);
 
-        /* @var class-string<\Laravel\Passport\Token> $tokenModel */
+        /** @var class-string<\Laravel\Passport\Token> $tokenModel */
         Passport::useTokenModel($tokenModel);
-        /* @var class-string<\Laravel\Passport\RefreshToken> $refreshTokenModel */
+        /** @var class-string<\Laravel\Passport\RefreshToken> $refreshTokenModel */
         Passport::useRefreshTokenModel($refreshTokenModel);
-        /* @var class-string<\Laravel\Passport\AuthCode> $authCodeModel */
+        /** @var class-string<\Laravel\Passport\AuthCode> $authCodeModel */
         Passport::useAuthCodeModel($authCodeModel);
-        /* @var class-string<\Laravel\Passport\Client> $clientModel */
+        /** @var class-string<\Laravel\Passport\Client> $clientModel */
         Passport::useClientModel($clientModel);
 
         // @phpstan-ignore-next-line - method_exists check kept for backward compatibility with older Passport versions

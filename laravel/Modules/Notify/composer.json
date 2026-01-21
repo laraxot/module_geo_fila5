@@ -49,13 +49,15 @@
         "illuminate/contracts": "*",
         "illuminate/support": "*",
         "irazasyed/telegram-bot-sdk": "*",
-        "kreait/laravel-firebase": "*",
         "laravel-notification-channels/fcm": "*",
         "laravel-notification-channels/telegram": "*",
         "phpdocumentor/type-resolver": "*",
         "spatie/laravel-database-mail-templates": "^3.7",
         "symfony/http-client": "*",
         "symfony/postmark-mailer": "*"
+    },
+    "require_comment": {
+        "kreait/laravel-firebase": "*"
     },
     "repositories": [
         {
