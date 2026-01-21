@@ -86,8 +86,10 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
 
             $codiceFiscale = $this->validateCodiceFiscale($state);
 
+            
             $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
 
+            dd($risultatoC007Service);
             if ($this->isVerificaSuccessful($risultatoC007Service)) {
                 $this->handleVerificaSuccessful($risultatoC007Service);
             } else {
