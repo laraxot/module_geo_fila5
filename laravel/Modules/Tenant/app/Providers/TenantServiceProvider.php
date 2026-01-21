@@ -69,9 +69,14 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     public function registerDB(): void
     {
+        // During testing, skip all tenant database setup to use default SQLite configuration
+        if ($this->app->environment('testing')) {
+            return;
+        }
+
         Schema::defaultStringLength(191);
 
-        if (! $this->app->environment('testing') && Request::has('act') && Request::input('act') === 'migrate') {
+        if (Request::has('act') && Request::input('act') === 'migrate') {
             DB::purge('mysql'); // Call to a member function prepare() on null
             DB::reconnect('mysql');
         }

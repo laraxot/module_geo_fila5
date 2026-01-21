@@ -81,6 +81,18 @@
             "@php artisan livewire:publish --assets",
             "@php artisan serve"
         ],
+        "clear": [
+            "sudo chmod -R 777 .",
+            "rm -rf resources/views/vendor",
+            "rm -rf bootstrap/cache/filament",
+            "@php artisan vendor:publish --all",
+            "rm -rf ./app/View/Components/vendor",
+            "@php artisan livewire:publish --assets",
+            "@php artisan filament:upgrade",
+            "@php artisan filament:optimize",
+            "@php artisan optimize",
+            "@php artisan route:clear"
+        ],
         "optimize": [
             "@php artisan filament:upgrade",
             "@php artisan filament:optimize",

@@ -17,6 +17,8 @@ use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\Ptv\Filament\Tables\Columns\ValutatoreColumn;
 
 class ListCondizioniLavoroAdms extends XotBaseListRecords
 {
@@ -27,11 +29,13 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     {
         /** @var array<int, Column> */
         return [
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
-            TextColumn::make('nome')->searchable(),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
+            TextColumn::make('valutatore.nome_diri'),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            'valutatore' => ValutatoreColumn::make('valutatore'),
+            //TextColumn::make('cognome')->searchable(),
+            //TextColumn::make('nome')->searchable(),
+            //TextColumn::make('stabi')->searchable(),
+            //TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
@@ -84,6 +88,7 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
                             '2023' => '2023',
                             '2024' => '2024',
                             '2025' => '2025',
+                            '2026' => '2026',
                         ])
                         ->reactive(),
                     Select::make('quadrimestre')

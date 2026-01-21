@@ -21,3 +21,5 @@ require __DIR__.'/auth.php';
 */
 
 Route::get('/', fn () => redirect('/admin'));
+
+Route::get('home', fn () => redirect('/admin'))->name('home');

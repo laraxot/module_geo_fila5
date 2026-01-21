@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\MutatorTrait;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\RelationshipTrait;
 use Modules\Ptv\Models\Profile;
+use Modules\Ptv\Models\Traits\HasValutatore;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Anag;
@@ -194,6 +195,7 @@ use Modules\Sigma\Models\Wstr01lx;
 class CondizioniLavoro extends BaseModel
 {
     use EnteMatrMutator;
+    use HasValutatore;
     use MutatorTrait, RelationshipTrait, SigmaModelTrait {
         MutatorTrait::getFromFieldAttribute insteadof SigmaModelTrait;
         MutatorTrait::getToFieldAttribute insteadof SigmaModelTrait;
@@ -247,6 +249,7 @@ class CondizioniLavoro extends BaseModel
      */
     protected function casts(): array
     {
+        
         return [
             'dal' => 'datetime',
             'al' => 'datetime',

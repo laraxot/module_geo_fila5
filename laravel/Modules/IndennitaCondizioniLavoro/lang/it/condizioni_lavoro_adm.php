@@ -81,6 +81,18 @@ return [
         'anno/valutatore' => [
             'label' => 'anno/valutatore',
         ],
+        'lavoratore' => [
+            'label' => 'lavoratore',
+        ],
+        'valutatore' => [
+            'nome' => [
+                'label' => 'valutatore.nome',
+            ],
+            'label' => 'valutatore',
+            'nome_diri' => [
+                'label' => 'valutatore.nome_diri',
+            ],
+        ],
     ],
     'actions' => [
         'logout' => [
