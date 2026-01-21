@@ -13,7 +13,7 @@ use Filament\Tables\Columns\TextColumn;
  * Builder for common Filament table columns.
  *
  * Provides pre-configured column definitions to reduce boilerplate.
- * Implements the strategy documented in METODI_DUPLICATI_ANALISI.md
+ * Implements the strategy documented in analisi-metodi-duplicati.md
  *
  * Usage:
  * ```php
@@ -29,7 +29,7 @@ use Filament\Tables\Columns\TextColumn;
  * }
  * ```
  *
- * @see docs/METODI_DUPLICATI_ANALISI.md - Proposta 2: Column/Filter Builders
+ * @see docs/analisi-metodi-duplicati.md - Proposta 2: Column/Filter Builders
  */
 class ColumnBuilder
 {

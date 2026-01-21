@@ -65,42 +65,7 @@ class ListStabiDirigentes extends XotBaseListRecords
         ];
     }
 
-    /**
-     * Get the table actions definition.
-     *
-     * @return array<string, Actions\Action>
-     */
-    public function getTableActions(): array
-    {
-        return [
-            'view' => ViewAction::make(),
-            'edit' => EditAction::make(),
-        ];
-    }
-
-    /**
-     * Get the table bulk actions definition.
-     *
-     * @return array<string, Actions\BulkAction>
-     */
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
-
-    /**
-     * Get the header actions.
-     *
-     * @return array<string, Actions\Action>
-     */
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => Actions\CreateAction::make(),
-        ];
-    }
+    
 
     /**
      * Get the Eloquent query builder.

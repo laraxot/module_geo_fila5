@@ -25,10 +25,13 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication;
     use DatabaseTransactions;
 
-    protected function setUp(): void
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     */
+    protected function getEnvironmentSetUp($app): void
     {
-        parent::setUp();
-
         $dbName = 'file:memdb_activity_'.Str::random(10).'?mode=memory&cache=shared';
 
         $connections = [
@@ -53,9 +56,35 @@ abstract class TestCase extends BaseTestCase
         ];
 
         foreach ($connections as $conn) {
-            $this->app['config']->set("database.connections.{$conn}.driver", 'sqlite');
-            $this->app['config']->set("database.connections.{$conn}.database", $dbName);
+            $app['config']->set("database.connections.{$conn}.driver", 'sqlite');
+            $app['config']->set("database.connections.{$conn}.database", $dbName);
         }
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $connections = [
+            'sqlite',
+            'mysql',
+            'mariadb',
+            'pgsql',
+            'activity',
+            'cms',
+            'gdpr',
+            'geo',
+            'job',
+            'lang',
+            'media',
+            'meetup',
+            'notify',
+            'seo',
+            'tenant',
+            'ui',
+            'user',
+            'xot',
+        ];
 
         foreach ($connections as $conn) {
             DB::purge($conn);
