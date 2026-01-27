@@ -30,7 +30,7 @@ readonly class ClusterLocationsAction
         $clusters = [];
 
         foreach ($locations as $location) {
-            if (! ($location instanceof LocationData)) {
+            if (! $location instanceof LocationData) {
                 throw InvalidLocationException::invalidData();
             }
 

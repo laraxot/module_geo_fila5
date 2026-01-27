@@ -65,7 +65,7 @@ class RegionFactory extends Factory
      */
     public function northern(): static
     {
-        /**
+        /*
          * @param  array<string, mixed>  $attributes
          * @return array<string, mixed>
          */
@@ -98,7 +98,7 @@ class RegionFactory extends Factory
      */
     public function central(): static
     {
-        /**
+        /*
          * @param  array<string, mixed>  $attributes
          * @return array<string, mixed>
          */
@@ -129,7 +129,7 @@ class RegionFactory extends Factory
      */
     public function southern(): static
     {
-        /**
+        /*
          * @param  array<string, mixed>  $attributes
          * @return array<string, mixed>
          */
