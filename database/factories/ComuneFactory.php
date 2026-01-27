@@ -149,8 +149,8 @@ class ComuneFactory extends Factory
      */
     public function lombardia(): static
     {
-        /** 
-         * @param array<string, mixed> $attributes 
+        /*
+         * @param array<string, mixed> $attributes
          * @return array<string, mixed>
          */
         return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null) {
@@ -173,6 +173,7 @@ class ComuneFactory extends Factory
                 'provincia' => $comuneData['provincia'],
                 'cap' => $comuneData['cap'],
             ]);
+
             return $result;
         });
     }
@@ -182,8 +183,8 @@ class ComuneFactory extends Factory
      */
     public function emiliaRomagna(): static
     {
-        /** 
-         * @param array<string, mixed> $attributes 
+        /*
+         * @param array<string, mixed> $attributes
          * @return array<string, mixed>
          */
         return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null) {
@@ -211,6 +212,7 @@ class ComuneFactory extends Factory
                 'provincia' => $comuneData['provincia'],
                 'cap' => $comuneData['cap'],
             ]);
+
             return $result;
         });
     }

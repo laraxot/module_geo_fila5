@@ -6,8 +6,6 @@ namespace Modules\Geo\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Modules\Xot\Tests\CreatesApplication;
 
 /**
