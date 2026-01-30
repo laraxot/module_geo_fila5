@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Exceptions\DistanceCalculationException;
 
 /**
