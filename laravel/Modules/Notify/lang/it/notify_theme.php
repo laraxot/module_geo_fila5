@@ -134,9 +134,6 @@ return [
                 'cancel' => 'No, annulla',
             ],
         ],
-        'delete' => [
-            'tooltip' => 'delete',
-        ],
     ],
     'messages' => [
         'created' => [

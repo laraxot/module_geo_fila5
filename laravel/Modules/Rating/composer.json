@@ -1,19 +1,19 @@
 {
     "name": "laraxot/module_rating_fila3",
-    "description": "Rating module for the Laraxot ecosystem.",
-    "authors": [
-        {
-            "name": "Marco Sottana",
-            "email": "marco.sottana@gmail.com"
-        }
-    ],
+    "description": "",
+    "authors": [{
+        "name": "Marco Sottana",
+        "email": "marco.sottana@gmail.com"
+    }],
     "extra": {
         "laravel": {
             "providers": [
                 "Modules\\Rating\\Providers\\RatingServiceProvider",
                 "Modules\\Rating\\Providers\\Filament\\AdminPanelProvider"
             ],
-            "aliases": {}
+            "aliases": {
+
+            }
         }
     },
     "autoload": {
@@ -36,7 +36,8 @@
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "^6.1"
     },
-    "require-dev_comment": {},
+    "require-dev_comment": {
+    },
     "scripts": {
         "post-autoload-dump": [
             "@php vendor/bin/testbench package:discover --ansi"

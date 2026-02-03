@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
-// This file references SaluteOra models that do not exist in this project
 
+// This file references SaluteOra models that do not exist in this project
 namespace Modules\Notify\Actions;
 
 use Exception;
+use Modules\Notify\Models\Notification;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 // use Modules\SaluteOra\Models\Appointment;
+use Modules\Notify\Mail\AppointmentNotificationMail;
 // use Modules\SaluteOra\Models\Patient;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -18,15 +21,19 @@ class SendAppointmentNotificationAction
 
     /**
      * Numero massimo di tentativi per l'invio della notifica.
+     *
+     * @var int
      */
     public int $tries = 3;
 
     /**
      * Invia una notifica relativa a un appuntamento.
      *
-     * @param  mixed  $appointment  L'appuntamento a cui si riferisce la notifica
-     * @param  string  $type  Il tipo di notifica (confermato, annullato, promemoria, ecc.)
-     * @param  array<string, mixed>  $additionalData  Dati aggiuntivi per la notifica
+     * @param mixed $appointment L'appuntamento a cui si riferisce la notifica
+     * @param string $type Il tipo di notifica (confermato, annullato, promemoria, ecc.)
+     * @param array<string, mixed> $additionalData Dati aggiuntivi per la notifica
+     *
+     * @return bool
      */
     public function execute(
         mixed $appointment,
@@ -56,5 +63,22 @@ class SendAppointmentNotificationAction
             return false;
         }
     }
-
+    
+    /**
+     * Registra la notifica nel database.
+     *
+     * @param mixed $appointment
+     * @param mixed $patient
+     * @param string $type
+     */
+    private function recordNotification(
+        mixed $appointment,
+        mixed $patient,
+        string $type
+    ): void {
+        // This method is disabled due to missing Patient/Appointment models
+        Log::info('recordNotification method called but not implemented due to missing models', [
+            'type' => $type,
+        ]);
+    }
 }

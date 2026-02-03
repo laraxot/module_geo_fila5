@@ -60,11 +60,6 @@ final class Module extends BaseModel
     ];
 
     /**
-     * @var string|null
-     */
-    protected $connection = null;
-
-    /**
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array

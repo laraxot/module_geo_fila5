@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Models;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\NotificationType;
-use Modules\Notify\Tests\TestCase;
+use Tests\TestCase;
 
 class NotificationTypeTest extends TestCase
 {
-    // DatabaseTransactions is already used in the module TestCase
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
@@ -39,7 +40,7 @@ class NotificationTypeTest extends TestCase
     /** @test */
     public function it_has_correct_fillable_fields(): void
     {
-        $notificationType = new NotificationType;
+        $notificationType = new NotificationType();
 
         $expectedFillable = [
             'name',

@@ -25,6 +25,17 @@ class ListJobManagers extends XotBaseListRecords
      */
     #[Override]
     public function getTableColumns(): array
+    
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                ...array_map(
+                    fn($col) => is_object($col) ? $col : TextColumn::make($col),
+                    $this->getTableColumns()
+                )
+            ]);
+    }
     {
         return [
             'id' => TextColumn::make('id')

@@ -34,10 +34,10 @@ class MediaFactory extends Factory
         $extensions = ['jpg', 'png', 'pdf', 'doc'];
         $collections = ['default', 'avatars', 'documents'];
 
-        /** @var lowercase-string&non-falsy-string $fileName */
+        /** @var string $fileName */
         $fileName = 'file'.(string) random_int(1000, 9999);
 
-        /** @var lowercase-string&non-falsy-string $extension */
+        /** @var string $extension */
         $extension = $extensions[array_rand($extensions)];
 
         /** @var string $collectionName */

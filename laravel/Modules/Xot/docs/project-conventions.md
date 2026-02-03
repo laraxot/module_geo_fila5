@@ -42,6 +42,29 @@
    └── utils/            # Script utilities generici
    ```
 
+## Versionamento, Changelog e Roadmap
+
+### Automazione GitHub Actions
+
+Per mantenere coerenza tra repository root e moduli, i workflow di versionamento sono standardizzati:
+
+- **Versionamento (semantic-release)**: `../.github/workflows/tag-version.yml`
+- **Changelog da release**: `../.github/workflows/update-changelog.yml`
+- **Verifica roadmap**: `../.github/workflows/roadmap-check.yml`
+
+Nel repository root Laravel, gli stessi workflow sono allineati in:
+
+- `../../../.github/workflows/tag-version.yml`
+- `../../../.github/workflows/update-changelog.yml`
+- `../../../.github/workflows/roadmap-check.yml`
+
+### Configurazione semantic-release
+
+Ogni modulo include un file `.releaserc.json` con i plugin minimi per:
+- analisi commit,
+- generazione note di release,
+- pubblicazione release su GitHub.
+
 3. **Naming convention per script**
    - Nomi descrittivi in kebab-case
    - Prefisso per azione: `run-`, `fix-`, `check-`, `update-`

@@ -25,6 +25,7 @@ use Modules\Xot\Actions\ModelClass\CountAction;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use ReflectionClass;
 use Webmozart\Assert\Assert;
+use Filament\Tables\Table;
 
 // use function Safe\glob;
 
@@ -108,6 +109,50 @@ abstract class XotBaseResource extends FilamentResource
      * @return array<string, Component>
      */
     abstract public static function getFormSchema(): array;
+    
+    /**
+     * Get table columns for Filament v5 compatibility.
+     */
+    protected static function getTableColumnsForTable(): array
+    {
+        return [];
+    }
+    
+    /**
+     * Get table filters for Filament v5.
+     */
+    protected static function getTableFilters(): array
+    {
+        return [];
+    }
+    
+    /**
+     * Get table actions for Filament v5.
+     */
+    protected static function getTableActions(): array
+    {
+        return [];
+    }
+    
+    /**
+     * Get table bulk actions for Filament v5.
+     */
+    protected static function getTableBulkActions(): array
+    {
+        return [];
+    }
+    
+    /**
+     * Table method for Filament v5.
+     */
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns(static::getTableColumnsForTable())
+            ->filters(static::getTableFilters())
+            ->actions(static::getTableActions())
+            ->bulkActions(static::getTableBulkActions());
+    }
 
     final public static function form(Schema $schema): Schema
     {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Mail;
 
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -51,9 +51,8 @@ class AppointmentNotificationMail extends Mailable implements ShouldQueue
             default => 'Notifica Appuntamento',
         };
 
-        $appointmentId = is_object($appointment) && isset($appointment->id) ? $appointment->id : null;
-        if ($appointmentId !== null && $appointmentId !== '') {
-            $subject .= ' #'.(string) $appointmentId;
+        if (is_object($appointment) && isset($appointment->id) && $appointment->id) {
+            $subject .= ' #'.$appointment->id;
         }
 
         return new Envelope(

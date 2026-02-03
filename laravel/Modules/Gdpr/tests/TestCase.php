@@ -14,32 +14,27 @@ use Modules\Xot\Tests\CreatesApplication;
 /**
  * Base test case for Gdpr module.
  *
- * Uses MySQL from .env.testing.
+ * Uses MySQL from .env.testing (NOT SQLite).
  */
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use DatabaseTransactions;
 
-    protected static bool $migrated = false;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
-                '--force' => true,
-            ]);
-
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
-            self::$migrated = true;
-        }
+        $this->artisan('migrate', ['--database' => 'gdpr']);
+        $this->artisan('migrate', ['--database' => 'user']);
+        $this->artisan('migrate', ['--database' => 'xot']);
     }
 
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array<int, class-string>
+     */
     protected function getPackageProviders($app): array
     {
         return [

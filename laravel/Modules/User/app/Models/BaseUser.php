@@ -468,7 +468,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
      * NOTE: This method has been moved to trait HasSpatiePermission.
      * If you need role checking functionality, use the trait method instead.
      *
-     * @see HasSpatiePermission::hasRole()
+     * @see \Modules\User\Models\Traits\HasSpatiePermission::hasRole()
      */
     public function setPasswordAttribute(?string $value): void
     {
