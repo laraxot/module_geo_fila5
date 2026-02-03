@@ -56,3 +56,7 @@ class Project extends Model {
 **🔄 Ultimo aggiornamento**: 31 Gennaio 2026
 **📦 Versione**: 2.3.0
 **✅ PHPStan level 10**: Compliance nativa garantita
+
+## 🚀 Release su GitHub
+Le release sono basate su tag Git e possono includere release notes generate automaticamente.
+Workflow locale: `.github/workflows/release.yml`.

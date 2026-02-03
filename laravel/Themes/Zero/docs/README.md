@@ -43,3 +43,7 @@ Ricordare di documentare ogni variante o layout personalizzato nella cartella `d
 ## 🔁 CI & Semantic Versioning
 Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
 Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
+
+## 🚀 Release su GitHub
+Le release sono basate su tag Git e possono includere release notes generate automaticamente.
+Workflow locale: `.github/workflows/release.yml`.

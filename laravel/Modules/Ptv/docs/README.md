@@ -327,3 +327,7 @@ Proprietario - Provincia di Treviso
 **Ultimo aggiornamento:** 19 Novembre 2025  
 **Versione:** 1.0.0  
 **Stato:** ✅ Production Ready
+
+## 🚀 Release su GitHub
+Le release sono basate su tag Git e possono includere release notes generate automaticamente.
+Workflow locale: `.github/workflows/release.yml`.
