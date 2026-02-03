@@ -73,7 +73,6 @@
         "nunomaduro/collision": "^8.6",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",
-        
         "pestphp/pest-plugin-type-coverage": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
         "nunomaduro/phpinsights": "*"
@@ -82,6 +81,7 @@
         "pestphp/pest-plugin-laravel": "*",
         "spatie/laravel-error-solutions": "*"
     },
+    "repositories_comment": "",
     "repositories": [
         {
             "type": "path",
@@ -103,7 +103,6 @@
             "Modules\\Xot\\Database\\Factories\\": "database/factories/",
             "Modules\\Xot\\Database\\Seeders\\": "database/seeders/",
             "Coolsam\\FilamentModules\\": "packages/coolsam/panel-modules/src/"
-            
         },
         "psr-4_comment": {
             "Modules\\Xot\\Tests\\": "tests/"

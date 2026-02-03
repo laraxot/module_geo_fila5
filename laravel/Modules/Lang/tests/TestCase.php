@@ -67,7 +67,7 @@ abstract class TestCase extends BaseTestCase
             try {
                 $pdo = DB::connection($conn)->getPdo();
                 if ($pdo instanceof \PDO && method_exists($pdo, 'sqliteCreateFunction')) {
-                    $pdo->sqliteCreateFunction('md5', static fn (?string $value): ?string => $value === null ? null : md5($value));
+                    $pdo->sqliteCreateFunction('md5', static fn (?string $value): ?string => null === $value ? null : md5($value));
                     $pdo->sqliteCreateFunction('unhex', static fn (?string $value): ?string => $value);
                 }
             } catch (\Throwable) {
@@ -82,7 +82,8 @@ abstract class TestCase extends BaseTestCase
     /**
      * Get package providers.
      *
-     * @param  Application  $app
+     * @param Application $app
+     *
      * @return array<int, class-string>
      */
     protected function getPackageProviders($app): array

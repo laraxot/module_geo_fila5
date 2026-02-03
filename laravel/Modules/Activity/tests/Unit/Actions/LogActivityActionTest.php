@@ -4,20 +4,12 @@ declare(strict_types=1);
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogActivityAction;
+use Modules\Activity\Tests\Fixtures\LogActivityActionTestModel;
 use Modules\User\Models\User;
 
-// Modello fittizio per testare LogActivityAction
-class LogActivityActionTestModel extends Model
-{
-    protected $table = 'test_models';
-
-    protected $fillable = ['name'];
-}
-
 test('LogActivityAction can be instantiated', function () {
-    $model = new LogActivityActionTestModel;
+    $model = new LogActivityActionTestModel();
     $user = User::factory()->make();
 
     $action = new LogActivityAction(

@@ -1,7 +1,7 @@
 # PTVX AI Guidelines - DRY + KISS Documentation
 
-> **Version 3.2** - Phase 6 Stabilization Achievement
-> **Last Updated**: January 2026
+> **Version 3.3** - Agent Skills Integration & Docs Audit
+> **Last Updated**: February 2026
 
 ## 📚 Modular Documentation Structure
 
@@ -25,6 +25,7 @@ This documentation follows strict DRY (Don't Repeat Yourself) and KISS (Keep It 
 - [Laravel Boost](framework/laravel-boost.md) - Laravel optimizations
 - [Eloquent Properties](framework/eloquent-properties.md) - Model best practices ⚠️
 - [Schemaless Attributes](framework/schemaless-attributes.md) - Spatie schemaless ⚠️
+- [Agent Skills](.cursor/skills) - Cursor/Windsurf dynamic skills 🚀
 
 ## ✅ Quality Assurance
 - [Code Quality](quality/code-quality.md) - PHPStan, PHPMD, PHP Insights
@@ -301,8 +302,8 @@ laravel/script.sh
 
 ---
 
-**Version**: 3.2 (Phase 6 Stabilization Complete)  
-**Last Updated**: January 2026  
-**Files Reorganized**: 17 files  
-**Critical Rules**: 6 unbreakable rules reinforced  
-**Maintainability**: 🚀 Maximized with 100% PHPStan Level 10 compliance across all modules.
+**Version**: 3.3 (Agent Skills Integration & Docs Audit)  
+**Last Updated**: February 2026  
+**Files Reorganized**: 17+ files (Modular Docs flattening)  
+**Critical Rules**: 8 unbreakable rules reinforced + Hybrid Skill system  
+**Maintainability**: 🚀 Maximized with 100% PHPStan Level 10 compliance and dynamic Agent Skills.

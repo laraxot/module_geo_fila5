@@ -18,6 +18,52 @@ Modules/Activity/tests/
 └── Pest.php
 ```
 
+### PSR-4 e classi di supporto
+
+Per garantire piena conformità PSR-4 nei test:
+
+- **SEMPRE usare classi concrete** in file dedicati con namespace `Modules\Activity\Tests\Fixtures\...`
+- **MAI usare funzioni helper con classi anonime** nei file `*Test.php` (generano warning PSR-4)
+- **Esempio corretto**: Creare classi test in `tests/Fixtures/TestModels.php` con namespace `Modules\Activity\Tests\Fixtures`
+
+#### Esempio Implementazione Corretta
+
+**File**: `tests/Fixtures/TestModels.php`
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Activity\Tests\Fixtures;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Test model per testing.
+ * @internal
+ * @coversNothing
+ */
+class LogModelDeletedActionTestModel extends Model
+{
+    protected $table = 'test_models';
+    protected $fillable = ['name'];
+}
+```
+
+**File Test**: `tests/Unit/Actions/LogModelDeletedActionTest.php`
+```php
+<?php
+
+declare(strict_types=1);
+
+use Modules\Activity\Tests\Fixtures\LogModelDeletedActionTestModel;
+
+test('LogModelDeletedAction can be instantiated', function () {
+    $model = new LogModelDeletedActionTestModel();
+    // ... rest of test
+});
+```
+
 ### Test Files
 
 - **TestCase.php** - Base test case with database configuration
@@ -252,6 +298,7 @@ protected function createApplication()
 - Add backlinks to this file
 - Keep documentation consistent
 - Update troubleshooting guides
+- [Configurazione Modulo Activity](../../../../docs/activity/configurazione.md)
 
 ## Testing Resources
 
