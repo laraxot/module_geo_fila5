@@ -22,4 +22,4 @@ Ricordare di documentare ogni variante o layout personalizzato nella cartella `d
 - [Skills di progetto](../../../../.cursor/skills/)
 
 ## 🔁 CI & Semantic Versioning
-Il workflow di versionamento semantico è gestito a livello di moduli.
+Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
