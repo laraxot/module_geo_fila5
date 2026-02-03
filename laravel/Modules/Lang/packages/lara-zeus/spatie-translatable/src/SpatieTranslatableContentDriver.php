@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace LaraZeus\SpatieTranslatable;
 
 use Filament\Support\Contracts\TranslatableContentDriver;
@@ -44,7 +42,7 @@ class SpatieTranslatableContentDriver implements TranslatableContentDriver
             $record->getTranslatableAttributes() :
             [];
 
-        /* @var Model $record */
+        /** @var Model $record */
         $record->fill(Arr::except($data, $translatableAttributes));
 
         if (method_exists($record, 'setTranslation')) {

@@ -68,6 +68,18 @@ namespace Modules\<nome progetto>\App\Controllers;
 
 // CORRETTO
 namespace Modules\<nome progetto>\Controllers;
+namespace Modules\<nome modulo>\App\Controllers;
+
+// CORRETTO
+namespace Modules\<nome modulo>\Controllers;
+namespace Modules\<nome progetto>\App\Controllers;
+
+// CORRETTO
+namespace Modules\<nome progetto>\Controllers;
+namespace Modules\<nome modulo>\App\Controllers;
+
+// CORRETTO
+namespace Modules\<nome modulo>\Controllers;
 ```
 
 ## esempi corretti vs errati
@@ -79,6 +91,18 @@ namespace Modules\<nome progetto>\Models;
 namespace Modules\User\Services;
 namespace Modules\Tenant\Repositories;
 namespace Modules\<nome progetto>\Filament\Resources;
+namespace Modules\<nome modulo>\Models;
+namespace Modules\User\Services;
+namespace Modules\Tenant\Repositories;
+namespace Modules\<nome modulo>\Filament\Resources;
+namespace Modules\<nome progetto>\Models;
+namespace Modules\User\Services;
+namespace Modules\Tenant\Repositories;
+namespace Modules\<nome progetto>\Filament\Resources;
+namespace Modules\<nome modulo>\Models;
+namespace Modules\User\Services;
+namespace Modules\Tenant\Repositories;
+namespace Modules\<nome modulo>\Filament\Resources;
 ```
 
 ### errati ✗
@@ -88,6 +112,18 @@ namespace Modules\<nome progetto>\App\Models;           // errato: 'App' nel nam
 namespace Modules\User\App\Services;              // errato: 'App' nel namespace
 namespace Modules\Tenant\app\Repositories;        // errato: 'app' nel namespace
 namespace App\Modules\<nome progetto>\Controllers;      // errato: struttura completamente sbagliata
+namespace Modules\<nome modulo>\App\Models;           // errato: 'App' nel namespace
+namespace Modules\User\App\Services;              // errato: 'App' nel namespace
+namespace Modules\Tenant\app\Repositories;        // errato: 'app' nel namespace
+namespace App\Modules\<nome modulo>\Controllers;      // errato: struttura completamente sbagliata
+namespace Modules\<nome progetto>\App\Models;           // errato: 'App' nel namespace
+namespace Modules\User\App\Services;              // errato: 'App' nel namespace
+namespace Modules\Tenant\app\Repositories;        // errato: 'app' nel namespace
+namespace App\Modules\<nome progetto>\Controllers;      // errato: struttura completamente sbagliata
+namespace Modules\<nome modulo>\App\Models;           // errato: 'App' nel namespace
+namespace Modules\User\App\Services;              // errato: 'App' nel namespace
+namespace Modules\Tenant\app\Repositories;        // errato: 'app' nel namespace
+namespace App\Modules\<nome modulo>\Controllers;      // errato: struttura completamente sbagliata
 ```
 
 ## struttura fisica vs namespace
@@ -98,15 +134,123 @@ Anche se i file sono fisicamente collocati in una directory `app/`, il namespace
 
 ```
 Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome modulo>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
 Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome modulo>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome progetto>\Models;
+Percorso fisico:    /Modules/<nome progetto>/app/Models/Patient.php
+Namespace corretto: namespace Modules\<nome modulo>\Models;
 ```
 
 ### mappatura corretta percorso-namespace
 
 | percorso fisico | namespace corretto |
 |-----------------|--------------------|
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome modulo>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome modulo>\Filament\Resources` |
 | `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
 | `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome modulo>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome modulo>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome progetto>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome progetto>\Filament\Resources` |
+| `/Modules/<nome progetto>/app/Models/Patient.php` | `Modules\<nome modulo>\Models` |
+| `/Modules/<nome progetto>/app/Filament/Resources/PatientResource.php` | `Modules\<nome modulo>\Filament\Resources` |
 | `/Modules/Xot/app/Providers/XotServiceProvider.php` | `Modules\Xot\Providers` |
 
 ### struttura directory completa
@@ -123,6 +267,36 @@ Modules/
       Filament/
         Resources/
           PatientResource.php  // namespace Modules\<nome progetto>\Filament\Resources;
+  <nome progetto>/
+    app/                        // directory fisica
+      Console/
+        Commands/
+          ImportPatient.php     // namespace Modules\<nome modulo>\Console\Commands;
+      Models/
+        Patient.php            // namespace Modules\<nome modulo>\Models;
+      Filament/
+        Resources/
+          PatientResource.php  // namespace Modules\<nome modulo>\Filament\Resources;
+  <nome progetto>/
+    app/                        // directory fisica
+      Console/
+        Commands/
+          ImportPatient.php     // namespace Modules\<nome progetto>\Console\Commands;
+      Models/
+        Patient.php            // namespace Modules\<nome progetto>\Models;
+      Filament/
+        Resources/
+          PatientResource.php  // namespace Modules\<nome progetto>\Filament\Resources;
+  <nome progetto>/
+    app/                        // directory fisica
+      Console/
+        Commands/
+          ImportPatient.php     // namespace Modules\<nome modulo>\Console\Commands;
+      Models/
+        Patient.php            // namespace Modules\<nome modulo>\Models;
+      Filament/
+        Resources/
+          PatientResource.php  // namespace Modules\<nome modulo>\Filament\Resources;
 ```
 
 ## come verificare i namespace
@@ -140,6 +314,52 @@ Prima di committare un file, verifica sempre che:
 Utilizza phpstan per verificare automaticamente i namespace:
 
 ```bash
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
+php artisan phpstan:analyse --level=1 Modules/<nome progetto>
 php artisan phpstan:analyse --level=1 Modules/<nome progetto>
 ```
 
@@ -167,6 +387,18 @@ namespace Modules\<nome progetto>\App\Console\Commands;
 
 // CORRETTO ✓
 namespace Modules\<nome progetto>\Console\Commands;
+namespace Modules\<nome modulo>\App\Console\Commands;
+
+// CORRETTO ✓
+namespace Modules\<nome modulo>\Console\Commands;
+namespace Modules\<nome progetto>\App\Console\Commands;
+
+// CORRETTO ✓
+namespace Modules\<nome progetto>\Console\Commands;
+namespace Modules\<nome modulo>\App\Console\Commands;
+
+// CORRETTO ✓
+namespace Modules\<nome modulo>\Console\Commands;
 ```
 
 ### Conseguenze dell'Errore
@@ -182,6 +414,130 @@ namespace Modules\<nome progetto>\Console\Commands;
 Utilizzare grep per trovare tutti i file con namespace errato:
 
 ```bash
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
 grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
 ```
 

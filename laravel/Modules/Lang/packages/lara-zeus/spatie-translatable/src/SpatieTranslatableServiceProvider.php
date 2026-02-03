@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace LaraZeus\SpatieTranslatable;
 
 use Illuminate\Support\ServiceProvider;

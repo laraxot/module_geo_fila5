@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace LaraZeus\SpatieTranslatable\Resources\Concerns;
 
 use RuntimeException;
