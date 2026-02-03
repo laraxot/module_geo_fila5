@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_gdpr_fila3",
-    "description": "",
+    "description": "Gdpr module for the Laraxot ecosystem.",
     "homepage": "https://github.com/laraxot/module_gdpr_fila3.git",
     "license": "MIT",
     "authors": [

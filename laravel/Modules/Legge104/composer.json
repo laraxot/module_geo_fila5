@@ -1,6 +1,6 @@
 {
     "name": "provtv/module_sindacati_fila3",
-    "description": "",
+    "description": "Legge104 module for the Laraxot ecosystem.",
     "license": "MIT",
     "homepage": "https://github.com/provtv/module_sindacati_fila3.git",
     "authors": [
@@ -51,9 +51,7 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-               
-            ],
+            "providers": [],
             "aliases": {}
         }
     },

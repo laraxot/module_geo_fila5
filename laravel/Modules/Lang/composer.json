@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_lang_fila3",
-    "description": "",
+    "description": "Lang module for the Laraxot ecosystem.",
     "license": "MIT",
     "homepage": "https://github.com/laraxot/module_lang_fila3.git",
     "authors": [
@@ -15,9 +15,7 @@
         "rinvex/countries": "^9.1",
         "spatie/laravel-sluggable": "*"
     },
-    "require-comment": {
-        
-    },
+    "require-comment": {},
     "repositories": [
         {
             "type": "path",

@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_prenotazioni_fila3",
-    "description": "",
+    "description": "Prenotazioni module for the Laraxot ecosystem.",
     "license": "MIT",
     "homepage": "https://github.com/laraxot/module_prenotazioni_fila3.git",
     "authors": [

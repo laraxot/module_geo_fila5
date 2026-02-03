@@ -146,7 +146,16 @@ Il modulo Xot ha raggiunto la piena conformità PHPStan Level 10 senza compromes
 - Workflow locale del modulo: `.github/workflows/semantic-versioning.yml`
 - Scopo: tagging semantico del modulo quando serve rilasciare
  - Attestazione build provenance: step `actions/attest-build-provenance@v3`
+ - Workflow root progetto: `/.github/workflows/*.yml`
 
 ## 🚀 Release su GitHub
 Le release sono basate su tag Git e possono includere release notes generate automaticamente.
 Workflow locale: `.github/workflows/release.yml`.
+
+
+## 📄 License & Authors
+
+**Authors:**
+- marco sottana <marco.sottana@gmail.com>
+
+**License:** MIT

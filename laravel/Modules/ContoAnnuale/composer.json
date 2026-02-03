@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_contoannuale_fila3",
-    "description": "",
+    "description": "ContoAnnuale module for the Laraxot ecosystem.",
     "license": "MIT",
     "homepage": "https://github.com/laraxot/module_contoannuale_fila3.git",
     "authors": [
@@ -9,9 +9,7 @@
             "email": "marco.sottana@gmail.com"
         }
     ],
-    "require": {
-
-    },
+    "require": {},
     "require-dev": {},
     "repositories": [
         {

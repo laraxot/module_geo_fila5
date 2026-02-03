@@ -1,6 +1,6 @@
 {
     "name": "nwidart/pdnd",
-    "description": "",
+    "description": "Pdnd module for the Laraxot ecosystem.",
     "authors": [
         {
             "name": "Nicola Storgato",
@@ -13,9 +13,7 @@
                 "Modules\\Pdnd\\Providers\\PdndServiceProvider",
                 "Modules\\Pdnd\\Providers\\Filament\\AdminPanelProvider"
             ],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {

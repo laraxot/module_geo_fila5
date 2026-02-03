@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_activity_fila3",
-    "description": "",
+    "description": "Activity module for the Laraxot ecosystem.",
     "homepage": "https://github.com/laraxot/module_activity_fila3",
     "license": "MIT",
     "authors": [
@@ -32,7 +32,6 @@
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
-
     },
     "require": {
         "spatie/laravel-activitylog": "*",
@@ -86,5 +85,4 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
-    
 }
