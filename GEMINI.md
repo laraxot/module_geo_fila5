@@ -13,7 +13,9 @@ PTVX is a modular HR & Performance evaluation system built on Laravel + Filament
 - Follow module-per-module workflow: complete one module before moving to the next.
 - Use MCP tools when encountering file access limitations.
 - **Rule**: Every change MUST be verified with PHPStan lvl10, PHPMD, and PHPInsights.
-- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `CertFisc` → `_cert_fisc.code-workspace`).
+- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace`.
+- **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
+- **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
 
 ## Documentation Locations
 
