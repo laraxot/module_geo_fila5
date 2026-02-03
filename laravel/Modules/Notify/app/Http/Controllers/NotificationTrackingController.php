@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\Notify\Http\Controllers;
-
-use function Safe\base64_decode;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,14 +10,12 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Notify\Models\NotificationLog;
 
+use function Safe\base64_decode;
+
 class NotificationTrackingController extends Controller
 {
     /**
      * Traccia l'apertura di una notifica.
-     *
-     * @param Request $request
-     * @param string $id
-     * @return Response
      */
     public function trackOpen(Request $request, string $id): Response
     {
@@ -38,29 +35,34 @@ class NotificationTrackingController extends Controller
 
     /**
      * Traccia il click su un link in una notifica.
-     *
-     * @param Request $request
-     * @param string $id
-     * @return RedirectResponse
      */
     public function trackClick(Request $request, string $id): RedirectResponse
     {
         $log = NotificationLog::find($id);
-        $url = $request->get('url', '');
+        /** @var mixed $urlParam */
+        $urlParam = $request->get('url', '');
+        $url = is_string($urlParam) ? $urlParam : '';
 
         if ($log) {
             $log->markAsClicked();
 
             // Aggiorna i metadati con il link cliccato
-            $metadata = $log->data ?? [];
-            $metadata['clicked_links'] = array_merge(
-                $metadata['clicked_links'] ?? [],
-                [$url => now()->toIso8601String()]
-            );
+            $data = $log->data;
+            $metadata = is_array($data) ? $data : [];
+            $clickedLinks = isset($metadata['clicked_links']) && is_array($metadata['clicked_links'])
+                ? $metadata['clicked_links']
+                : [];
+
+            if ($url !== '') {
+                $clickedLinks[$url] = now()->toIso8601String();
+            }
+
+            /** @var array<string, mixed> $metadata */
+            $metadata['clicked_links'] = $clickedLinks;
             $log->update(['data' => $metadata]);
         }
 
         // Redirect all'URL originale
         return redirect()->away((string) $url);
     }
-} 
+}

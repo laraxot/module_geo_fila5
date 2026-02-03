@@ -135,3 +135,13 @@ Il modulo Xot ha raggiunto la piena conformità PHPStan Level 10 senza compromes
 - [Guida alla Risoluzione dei Conflitti Git](../../../bashscripts/docs/git-conflict-resolution-guide.md)
 - [Convenzioni sui Namespace](./namespace_conventions.md)
 - [Linee Guida per il Testing](./testing.md)
+
+## 🤖 **AI Development Tools & Skills**
+- [Claude Context (Laravel)](../../../CLAUDE.md)
+- [AI Agents Guide](../../../../AGENTS.md)
+- [Cursor Rules & Skills](../../../../.cursor/README.md)
+- [Skills di progetto](../../../../.cursor/skills/)
+
+## 🔁 **CI & Semantic Versioning**
+- Workflow locale del modulo: `.github/workflows/semantic-versioning.yml`
+- Scopo: tagging semantico del modulo quando serve rilasciare

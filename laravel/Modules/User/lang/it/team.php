@@ -101,8 +101,6 @@ return [
         ],
         'create' => [
             'label' => 'create',
-            'icon' => 'create',
-            'tooltip' => 'create',
         ],
         'logout' => [
             'icon' => 'logout',
@@ -173,21 +171,6 @@ return [
             'tooltip' => 'delete',
             'icon' => 'delete',
             'label' => 'delete',
-        ],
-        'view' => [
-            'label' => 'view',
-            'icon' => 'view',
-            'tooltip' => 'view',
-        ],
-        'edit' => [
-            'label' => 'edit',
-            'icon' => 'edit',
-            'tooltip' => 'edit',
-        ],
-        'layout' => [
-            'label' => 'layout',
-            'icon' => 'layout',
-            'tooltip' => 'layout',
         ],
     ],
     'plural' => [

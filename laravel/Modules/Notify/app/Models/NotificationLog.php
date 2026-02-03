@@ -82,6 +82,7 @@ final class NotificationLog extends BaseModel
         'sent_at',
         'delivered_at',
         'opened_at',
+        'clicked_at',
     ];
 
     /**
@@ -121,6 +122,26 @@ final class NotificationLog extends BaseModel
         NotificationLogStatusEnum $status,
     ): Builder {
         return $query->where('status', $status);
+    }
+
+    /**
+     * Segna il log come aperto (tracking apertura email).
+     */
+    public function markAsOpened(): void
+    {
+        if ($this->opened_at === null) {
+            $this->update(['opened_at' => now()]);
+        }
+    }
+
+    /**
+     * Segna il log come cliccato (tracking click su link).
+     */
+    public function markAsClicked(): void
+    {
+        if ($this->clicked_at === null) {
+            $this->update(['clicked_at' => now()]);
+        }
     }
 
     /**

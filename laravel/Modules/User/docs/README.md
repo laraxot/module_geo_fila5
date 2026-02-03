@@ -1185,7 +1185,13 @@ See [ROADMAP.md](./ROADMAP.md) for details.
 
 ### Project Documentation
 - [CLAUDE.md](../../../CLAUDE.md) - Project architecture
+- [AI Agents Guide](../../../../AGENTS.md)
+- [Cursor Rules & Skills](../../../../.cursor/README.md)
+- [Skills di progetto](../../../../.cursor/skills/)
 - [Security Guidelines](../../../docs/security.md)
+
+### CI & Semantic Versioning
+Workflow locale del modulo in `.github/workflows/semantic-versioning.yml`.
 
 ### External Resources
 - [Laravel Authentication](https://laravel.com/docs/12.x/authentication)

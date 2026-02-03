@@ -297,4 +297,5 @@ error_log
 .windsurf/
 public_html/fonts/
 laravel/Modules/*/resources/lang/
+laravel/Modules/*/_docs/
 
