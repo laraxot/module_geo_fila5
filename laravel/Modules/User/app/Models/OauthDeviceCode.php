@@ -13,12 +13,12 @@ use Illuminate\Support\Carbon;
  * ⚠️ NOTE: Laravel\Passport\DeviceCode does not exist in this Passport version.
  * Extending BaseModel instead. This model is rarely used (OAuth2 device flow).
  *
- * @property string $id
+ * @property string      $id
  * @property string|null $user_code
  * @property string|null $device_code
  * @property string|null $client_id
- * @property array|null $scopes
- * @property bool $revoked
+ * @property array|null  $scopes
+ * @property bool        $revoked
  * @property Carbon|null $expires_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at

@@ -23,11 +23,18 @@
         "nunomaduro/phpinsights": "*",
         "nwidart/laravel-modules": "*",
         "phpmd/phpmd": "*",
-        
-        
         "spatie/laravel-permission": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
         "symfony/http-client": "*"
+    },
+    "require-dev": {
+    },
+    "require-dev-comment": {
+        "carthage-software/mago": "^1.0.0-rc.4",
+        "driftingly/rector-laravel": "^2.1",
+        "filament/upgrade": "^5.0",
+        "larastan/larastan": "*",
+        "rector/rector": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -64,6 +71,7 @@
             "@php -d memory_limit=-1 composer.phar self-update",
             "@php -d memory_limit=-1 composer.phar update -W",
             "rm -rf resources/views/vendor",
+            "rm -rf bootstrap/cache/filament",
             "@php artisan vendor:publish --all",
             "rm -rf ./app/View/Components/vendor",
             "@php artisan filament:upgrade",
@@ -72,6 +80,18 @@
             "@php artisan route:clear",
             "@php artisan livewire:publish --assets",
             "@php artisan serve"
+        ],
+        "clear": [
+            "sudo chmod -R 777 .",
+            "rm -rf resources/views/vendor",
+            "rm -rf bootstrap/cache/filament",
+            "@php artisan vendor:publish --all",
+            "rm -rf ./app/View/Components/vendor",
+            "@php artisan livewire:publish --assets",
+            "@php artisan filament:upgrade",
+            "@php artisan filament:optimize",
+            "@php artisan optimize",
+            "@php artisan route:clear"
         ],
         "optimize": [
             "@php artisan filament:upgrade",
@@ -82,15 +102,6 @@
             "sudo chmod 777 -R ."
         ]
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "Modules/Lang/packages/lara-zeus/spatie-translatable",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "extra": {
         "laravel": {
             "dont-discover": []
@@ -122,12 +133,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "carthage-software/mago": "^1.0.0-rc.4",
-        "driftingly/rector-laravel": "^2.1",
-        "filament/upgrade": "^5.0",
-        "larastan/larastan": "*",
-        "rector/rector": "^2.0"
-    }
+    "prefer-stable": true
 }

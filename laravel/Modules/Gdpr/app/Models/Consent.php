@@ -14,24 +14,24 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Modules\Gdpr\Models\Consent.
  *
- * @property string $id
- * @property string|null $treatment_id
- * @property string|null $subject_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
- * @property string $user_type
- * @property string|null $user_id
- * @property string|null $type
- * @property string|null $accepted_at
+ * @property string               $id
+ * @property string|null          $treatment_id
+ * @property string|null          $subject_id
+ * @property Carbon|null          $created_at
+ * @property Carbon|null          $updated_at
+ * @property string|null          $updated_by
+ * @property string|null          $created_by
+ * @property Carbon|null          $deleted_at
+ * @property string|null          $deleted_by
+ * @property string               $user_type
+ * @property string|null          $user_id
+ * @property string|null          $type
+ * @property string|null          $accepted_at
  * @property ProfileContract|null $creator
- * @property Treatment|null $treatment
+ * @property Treatment|null       $treatment
  * @property ProfileContract|null $updater
  *
- * @method static ConsentFactory factory($count = null, $state = [])
+ * @method static ConsentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Consent newModelQuery()
  * @method static Builder<static>|Consent newQuery()
  * @method static Builder<static>|Consent query()

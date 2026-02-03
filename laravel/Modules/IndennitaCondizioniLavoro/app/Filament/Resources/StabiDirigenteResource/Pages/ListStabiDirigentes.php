@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource\Pages;
 
+use Override;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
+use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
+use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes as PtvListStabiDirigentes;
-use Override;
 
 class ListStabiDirigentes extends PtvListStabiDirigentes
 {
@@ -32,7 +36,7 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
     public function getTableFilters(): array
     {
         $fiters = parent::getTableFilters();
-        $fiters[] = SelectFilter::make('quadrimestre')
+        $fiters['quadrimestre'] = SelectFilter::make('quadrimestre')
             ->options([
                 '1' => '1',
                 '2' => '2',
@@ -41,5 +45,23 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
             ])->query(static fn (Builder $query, array $data): Builder => $query->when($data['value'], fn (Builder $query, $quadrimestre) => $query->where('quadrimestre', $quadrimestre)));
 
         return $fiters;
+    }
+
+
+     /**
+     * @return array<Action>
+     */
+    #[Override]
+    protected function getHeaderActions(): array
+    {
+        $actions = parent::getHeaderActions();
+        $actions['import_valutatori_'] = ImportValutatoriAction::make('import_valutatori_')
+            ->addFields([
+                'anno' => TextInput::make('anno'),
+                'quadrimestre' => TextInput::make('quadrimestre'),
+            ])->setStabiDirigenteModel(StabiDirigente::class)
+            ->setSchedaModel(CondizioniLavoro::class);
+
+        return $actions;
     }
 }

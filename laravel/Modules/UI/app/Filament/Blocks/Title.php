@@ -27,12 +27,12 @@ class Title // extends XotBaseBlock
                     'h4' => 'h4',
                 ])
                 ->afterStateHydrated(static function (TextInput $component, mixed $state): void {
-                    if ($state === null || $state === '') {
+                    if (null === $state || '' === $state) {
                         $component->state('h2');
                     }
                 }),
             Select::make('view')->options(is_array($options) ? $options : []),
         ])
-        ->columns($context === 'form' ? 2 : 1);
+        ->columns('form' === $context ? 2 : 1);
 }
 }

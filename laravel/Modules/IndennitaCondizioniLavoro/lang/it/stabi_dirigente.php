@@ -98,6 +98,7 @@ return [
         'delete' => [
             'icon' => 'delete',
             'label' => 'delete',
+            'tooltip' => 'delete',
         ],
         'edit' => [
             'icon' => 'edit',
@@ -115,13 +116,41 @@ return [
         'openColumnManager' => [
             'icon' => 'openColumnManager',
             'label' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
         ],
         'profile' => [
             'icon' => 'profile',
             'tooltip' => 'profile',
+            'label' => 'profile',
         ],
         'applyTableColumnManager' => [
             'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+            'label' => 'applyTableColumnManager',
+        ],
+        'resetFilters' => [
+            'tooltip' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'label' => 'resetFilters',
+        ],
+        'layout' => [
+            'tooltip' => 'layout',
+            'icon' => 'layout',
+            'label' => 'layout',
+        ],
+        'create' => [
+            'tooltip' => 'create',
+            'icon' => 'create',
+        ],
+        'applyFilters' => [
+            'tooltip' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'label' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'tooltip' => 'openFilters',
+            'icon' => 'openFilters',
+            'label' => 'openFilters',
         ],
     ],
     'label' => 'stabi dirigente',

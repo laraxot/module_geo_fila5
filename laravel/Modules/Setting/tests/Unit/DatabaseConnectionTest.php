@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Setting\Tests\Unit;
 
-use Exception;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Mockery;
 use Modules\Setting\Models\DatabaseConnection;
 use PDO;
 use Tests\TestCase;
@@ -17,9 +15,9 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il modello DatabaseConnection possa essere istanziato.
      */
-    public function test_database_connection_model_can_be_instantiated(): void
+    public function testDatabaseConnectionModelCanBeInstantiated(): void
     {
-        $connection = new DatabaseConnection;
+        $connection = new DatabaseConnection();
 
         $this->assertInstanceOf(DatabaseConnection::class, $connection);
     }
@@ -27,9 +25,9 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che i casts siano definiti correttamente.
      */
-    public function test_casts_are_configured_correctly(): void
+    public function testCastsAreConfiguredCorrectly(): void
     {
-        $connection = new DatabaseConnection;
+        $connection = new DatabaseConnection();
 
         $this->assertEquals([
             'port' => 'integer',
@@ -41,10 +39,10 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il metodo testConnection funzioni correttamente quando la connessione ha successo.
      */
-    public function test_test_connection_succeeds(): void
+    public function testTestConnectionSucceeds(): void
     {
         // Mock PDO instance
-        $pdoMock = Mockery::mock(PDO::class);
+        $pdoMock = \Mockery::mock(\PDO::class);
 
         // Mock DB facade
         DB::shouldReceive('connection')
@@ -59,7 +57,7 @@ class DatabaseConnectionTest extends TestCase
         // Mock Config facade
         Config::shouldReceive('set')
             ->once()
-            ->with('database.connections.test_connection', Mockery::type('array'))
+            ->with('database.connections.test_connection', \Mockery::type('array'))
             ->andReturnNull();
 
         $connection = new DatabaseConnection([
@@ -84,7 +82,7 @@ class DatabaseConnectionTest extends TestCase
     /**
      * Verifica che il metodo testConnection ritorni false quando la connessione fallisce.
      */
-    public function test_test_connection_fails(): void
+    public function testTestConnectionFails(): void
     {
         // Mock DB facade per simulare un errore di connessione
         DB::shouldReceive('connection')
@@ -94,12 +92,12 @@ class DatabaseConnectionTest extends TestCase
 
         DB::shouldReceive('getPdo')
             ->once()
-            ->andThrow(new Exception('Connection failed'));
+            ->andThrow(new \Exception('Connection failed'));
 
         // Mock Config facade
         Config::shouldReceive('set')
             ->once()
-            ->with('database.connections.test_connection', Mockery::type('array'))
+            ->with('database.connections.test_connection', \Mockery::type('array'))
             ->andReturnNull();
 
         $connection = new DatabaseConnection([
@@ -121,7 +119,7 @@ class DatabaseConnectionTest extends TestCase
      */
     protected function tearDown(): void
     {
-        Mockery::close();
+        \Mockery::close();
         parent::tearDown();
     }
 }

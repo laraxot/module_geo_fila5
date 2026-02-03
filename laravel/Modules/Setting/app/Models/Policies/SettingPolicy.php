@@ -14,7 +14,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function viewAny(ProfileContract $user): bool
     {
-        return $user->hasPermissionTo('setting.viewAny'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.viewAny'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -22,7 +22,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function view(ProfileContract $user, Setting $setting): bool
     {
-        return $user->hasPermissionTo('setting.view'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.view'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -30,7 +30,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function create(ProfileContract $user): bool
     {
-        return $user->hasPermissionTo('setting.create'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.create'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -38,7 +38,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function update(ProfileContract $user, Setting $setting): bool
     {
-        return $user->hasPermissionTo('setting.update'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.update'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -46,7 +46,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function delete(ProfileContract $user, Setting $setting): bool
     {
-        return $user->hasPermissionTo('setting.delete'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.delete'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -54,7 +54,7 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function restore(ProfileContract $user, Setting $setting): bool
     {
-        return $user->hasPermissionTo('setting.restore'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.restore'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -62,6 +62,6 @@ class SettingPolicy extends SettingBasePolicy
      */
     public function forceDelete(ProfileContract $user, Setting $setting): bool
     {
-        return $user->hasPermissionTo('setting.forceDelete'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('setting.forceDelete'); /* @phpstan-ignore method.nonObject */
     }
 }

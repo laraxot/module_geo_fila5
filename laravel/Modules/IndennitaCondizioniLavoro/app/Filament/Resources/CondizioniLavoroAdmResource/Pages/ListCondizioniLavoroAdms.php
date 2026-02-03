@@ -17,6 +17,12 @@ use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\Ptv\Filament\Tables\Columns\ValutatoreColumn;
+use Filament\Actions\Action;
+use Modules\IndennitaCondizioniLavoro\Actions\MakePdf;
+use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
+
 
 class ListCondizioniLavoroAdms extends XotBaseListRecords
 {
@@ -27,11 +33,12 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     {
         /** @var array<int, Column> */
         return [
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
-            TextColumn::make('nome')->searchable(),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            'valutatore' => ValutatoreColumn::make('valutatore'),
+            //TextColumn::make('cognome')->searchable(),
+            //TextColumn::make('nome')->searchable(),
+            //TextColumn::make('stabi')->searchable(),
+            //TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
@@ -84,6 +91,7 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
                             '2023' => '2023',
                             '2024' => '2024',
                             '2025' => '2025',
+                            '2026' => '2026',
                         ])
                         ->reactive(),
                     Select::make('quadrimestre')
@@ -115,6 +123,36 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
 
                     return $query;
                 })->columns(4),
+        ];
+    }
+
+
+    #[Override]
+    protected function getHeaderActions(): array
+    {
+        return [
+            ...parent::getHeaderActions(),
+            /*
+            'exportPdf' => Action::make('exportPdf')
+                ->label('Pdf ')
+                ->icon('heroicon-s-document')
+                ->action(function (): void {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(MakePdf::class)->execute($data);
+                }),
+            */
+            'replicate' => Action::make('replicate')
+                ->label('')
+                ->icon('heroicon-o-clipboard-document-list')
+                ->tooltip('ricopia da quadrimentre precendente')
+                ->action(function (): void {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+                    
+                    
+                    app(ReplicateIndennita::class)->execute($tableFilters);
+                }),
         ];
     }
 }

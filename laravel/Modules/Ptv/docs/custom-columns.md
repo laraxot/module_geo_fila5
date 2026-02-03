@@ -107,7 +107,6 @@ class CustomColumn extends GroupColumn
         $validatedColumns = array_values(array_filter($columns, static fn ($col): bool => $col instanceof Column));
         
         return parent::make($name)
-            ->label('Label')
             ->schema($validatedColumns)
             ->searchable($searchable);
     }
@@ -129,22 +128,10 @@ class CustomColumn extends GroupColumn
 ```php
 // Complex schema definition repeated in multiple places
 GroupColumn::make('lavoratore')->schema([
-    TextColumn::make('matr')
-        ->label('Matricola')
-        ->sortable()
-        ->searchable(),
-    TextColumn::make('cognome')
-        ->label('Cognome')
-        ->sortable()
-        ->searchable(),
-    TextColumn::make('nome')
-        ->label('Nome')
-        ->sortable()
-        ->searchable(),
-    TextColumn::make('email')
-        ->label('Email')
-        ->sortable()
-        ->searchable(),
+    TextColumn::make('matr')->sortable()->searchable(),
+    TextColumn::make('cognome')->sortable()->searchable(),
+    TextColumn::make('nome')->sortable()->searchable(),
+    TextColumn::make('email')->sortable()->searchable(),
 ]),
 ```
 
@@ -211,11 +198,27 @@ The pattern allows for easy creation of additional custom columns:
 
 ## Troubleshooting
 
-### PHPStan Issues
-If encountering PHPStan errors with `@phpstan-ignore-next-line` comments:
-- These are necessary because GroupColumn is final but needs to be extended
-- This is a known limitation of the current architecture
-- All columns pass PHPStan Level 10 with these annotations
+### Relational Fields in GroupColumn
+
+GroupColumn supporta la dot notation (es. `valutatore.nome_diri`) tramite `data_get()`.
+
+**Requisito**: la relazione deve essere caricata con **eager loading**:
+
+```php
+// Nel Resource
+public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()->with(['valutatore']);
+}
+```
+
+**Nota tecnica**: le colonne figlio non sono montate alla tabella Filament, quindi `$field->getState()` non funziona. La view usa `data_get($record, $name)` come fallback.
+
+**Alternative** per valori relazionali frequenti:
+1. **Accessor piatto** sul modello: `getNomeDiriAttribute()` → `TextColumn::make('nome_diri')`
+2. **TextColumn standard** fuori da GroupColumn (Filament risolve automaticamente la dot notation)
+
+Per dettagli completi: [GroupColumn Fix](../../UI/docs/group-column-fix.md)
 
 ### Performance Considerations
 - All columns are optimized with proper searchable arrays
@@ -223,8 +226,3 @@ If encountering PHPStan errors with `@phpstan-ignore-next-line` comments:
 - Consider column toggleability for large datasets
 
 ---
-
-**Created:** 4 December 2025  
-**Updated:** 4 December 2025  
-**Version:** 1.0.0  
-**Status:** ✅ Production Ready

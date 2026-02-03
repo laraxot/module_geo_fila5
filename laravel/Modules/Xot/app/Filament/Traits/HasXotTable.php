@@ -5,36 +5,37 @@ declare(strict_types=1);
 namespace Modules\Xot\Filament\Traits;
 
 use Exception;
+use Filament\Tables;
 use Filament\Actions;
+use Filament\Tables\Table;
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
-use Filament\Actions\AssociateAction;
-use Filament\Actions\AttachAction;
+use Webmozart\Assert\Assert;
 use Filament\Actions\BulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Actions\ActionGroup;
+use Filament\Widgets\TableWidget;
+use Filament\Actions\AttachAction;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DetachAction;
-use Filament\Actions\EditAction;
+use Filament\Actions\AssociateAction;
 use Filament\Actions\ReplicateAction;
-use Filament\Actions\ViewAction;
-use Filament\Notifications\Notification;
-use Filament\Tables;
-use Filament\Tables\Columns\Layout\Stack;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Enums\RecordActionsPosition;
-use Filament\Tables\Filters\BaseFilter;
-use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Table;
-use Filament\Widgets\TableWidget;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\UI\Enums\TableLayoutEnum;
-use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Notifications\Notification;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Columns\Layout\Stack;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Enums\RecordActionsPosition;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
-use Webmozart\Assert\Assert;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
 /**
  * Trait HasXotTable.
@@ -230,9 +231,12 @@ trait HasXotTable
         }
 
         $actions = [];
-        // $resource = $this->getResource();
+        // 
         $resource = $this;
-
+        if($resource instanceof XotBaseListRecords){
+           $resource = app($this->getResource()); 
+        }
+        
         // @phpstan-ignore-next-line function.alreadyNarrowedType
         if (method_exists($resource, 'canView')) {
             $actions['view'] = ViewAction::make()

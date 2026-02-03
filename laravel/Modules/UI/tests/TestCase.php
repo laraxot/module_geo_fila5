@@ -6,4 +6,6 @@ namespace Modules\UI\Tests;
 
 use Modules\Xot\Tests\TestCase as BaseTestCase;
 
-abstract class TestCase extends BaseTestCase {}
+abstract class TestCase extends BaseTestCase
+{
+}

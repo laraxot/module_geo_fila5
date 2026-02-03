@@ -96,6 +96,8 @@ return [
         ],
         'profile' => [
             'label' => 'profile',
+            'tooltip' => 'profile',
+            'icon' => 'profile',
         ],
     ],
     'messages' => [

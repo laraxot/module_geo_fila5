@@ -6,13 +6,13 @@ namespace Modules\User\Providers;
 
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthDeviceCode;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\User\Models\OauthToken;
+use Modules\Xot\Providers\XotBaseServiceProvider;
 use Webmozart\Assert\Assert;
 
 /**
@@ -21,7 +21,7 @@ use Webmozart\Assert\Assert;
  * Configura Laravel Passport per l'autenticazione OAuth2.
  * Utilizza la configurazione centralizzata da config/user/passport.php.
  */
-class PassportServiceProvider extends ServiceProvider
+class PassportServiceProvider extends XotBaseServiceProvider
 {
     /**
      * Register services.

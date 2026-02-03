@@ -76,7 +76,7 @@ class UserResource extends XotBaseResource
                     /** @var Carbon|null $createdAt */
                     $createdAt = $record->getAttribute('created_at');
 
-                    if ($createdAt === null) {
+                    if (null === $createdAt) {
                         return new HtmlString('&mdash;');
                     }
                     if ($createdAt instanceof CarbonInterface) {
@@ -124,20 +124,5 @@ class UserResource extends XotBaseResource
         return $xot->getUserClass();
     }
 
-    /**
-     * Get the relations available for the resource.
-     *
-     * @return array<int, class-string<RelationManager>>
-     */
-    #[\Override]
-    public static function getRelations(): array
-    {
-        return [
-            AuthenticationLogsRelationManager::class,
-            OauthTokensRelationManager::class,
-            SocialiteUsersRelationManager::class,
-            ClientsRelationManager::class,
-            TenantsRelationManager::class,
-        ];
-    }
+    
 }

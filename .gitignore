@@ -203,12 +203,12 @@ tmp*/
 .settings/
 
 ## Sublime
-*.sublime-workspace
-*.sublime-project
+#*.sublime-workspace
+#*.sublime-project
 
 ## Others
-*.code-workspace
-*.komodoproject
+#*.code-workspace
+#*.komodoproject
 *.tmproj
 
 # ───────────────────────────────────────────────────────

@@ -15,8 +15,8 @@ use Modules\Xot\Tests\CreatesApplication;
  * Uses dedicated testing.sqlite file to ensure connection sharing.
  *
  * @property \Modules\User\Models\Permission $permission
- * @property \Modules\User\Models\Role $role
- * @property \Modules\User\Models\Tenant $tenant
+ * @property \Modules\User\Models\Role       $role
+ * @property \Modules\User\Models\Tenant     $tenant
  */
 abstract class TestCase extends BaseTestCase
 {

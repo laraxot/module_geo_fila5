@@ -14,7 +14,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function viewAny(ProfileContract $user): bool
     {
-        return $user->hasPermissionTo('database_connection.viewAny'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.viewAny'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -22,7 +22,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function view(ProfileContract $user, DatabaseConnection $database_connection): bool
     {
-        return $user->hasPermissionTo('database_connection.view'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.view'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -30,7 +30,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function create(ProfileContract $user): bool
     {
-        return $user->hasPermissionTo('database_connection.create'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.create'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -38,7 +38,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function update(ProfileContract $user, DatabaseConnection $database_connection): bool
     {
-        return $user->hasPermissionTo('database_connection.update'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.update'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -46,7 +46,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function delete(ProfileContract $user, DatabaseConnection $database_connection): bool
     {
-        return $user->hasPermissionTo('database_connection.delete'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.delete'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -54,7 +54,7 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function restore(ProfileContract $user, DatabaseConnection $database_connection): bool
     {
-        return $user->hasPermissionTo('database_connection.restore'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.restore'); /* @phpstan-ignore method.nonObject */
     }
 
     /**
@@ -62,6 +62,6 @@ class DatabaseConnectionPolicy extends SettingBasePolicy
      */
     public function forceDelete(ProfileContract $user, DatabaseConnection $database_connection): bool
     {
-        return $user->hasPermissionTo('database_connection.forceDelete'); /** @phpstan-ignore method.nonObject */
+        return $user->hasPermissionTo('database_connection.forceDelete'); /* @phpstan-ignore method.nonObject */
     }
 }
