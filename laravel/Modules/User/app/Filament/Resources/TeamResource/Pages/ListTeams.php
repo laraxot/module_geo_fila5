@@ -17,6 +17,8 @@ class ListTeams extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
+            'id' => TextColumn::make('id')
+                ->sortable(),
             'name' => TextColumn::make('name')
                 ->searchable()
                 ->sortable()

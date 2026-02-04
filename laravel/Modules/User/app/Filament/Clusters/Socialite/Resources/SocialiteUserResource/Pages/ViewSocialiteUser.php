@@ -8,10 +8,8 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\User\Filament\Clusters\Socialite\Resources\SocialiteUserResource;
-use Modules\User\Filament\Clusters\Socialite\Resources\UserResource;
 use Modules\User\Models\SocialiteUser;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
@@ -36,15 +34,16 @@ class ViewSocialiteUser extends XotBaseViewRecord
                                         return null;
                                     }
 
-                                    $user = $record->user;
-                                    if (($user instanceof Model) && $user->exists) {
-                                        return UserResource::getUrl('view', ['record' => $user]);
-                                    }
-
                                     return null;
                                 }),
                             'provider' => TextEntry::make('provider')
-                                ->formatStateUsing(fn ($state): string => is_string($state) ? Str::title($state) : ''),
+                                ->formatStateUsing(static function (mixed $state): string {
+                                    if (! is_string($state)) {
+                                        return '';
+                                    }
+
+                                    return (string) Str::title($state);
+                                }),
                         ]),
 
                     'provider_grid' => Grid::make(2)

@@ -85,6 +85,9 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
     ],
     'actions' => [
         'import' => [
