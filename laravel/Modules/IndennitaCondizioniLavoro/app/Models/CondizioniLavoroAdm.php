@@ -230,8 +230,12 @@ class CondizioniLavoroAdm extends CondizioniLavoro
         if ($value !== null) {
             return $value;
         }
-
-        $dal_month = $this->dal->month;
+        
+        try{
+            $dal_month = $this->dal->month;
+        }catch(\ErrorException $e){
+            dddx($this->getAttribute('dal'));
+        }
         switch ($dal_month) {
             case 1:
                 $value = 1;

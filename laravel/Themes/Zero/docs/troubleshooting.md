@@ -139,6 +139,7 @@ const chart = new Chart(ctx, {
 
 ## Troubleshooting
 Common issues and solutions:
+- **Filament EditRecord fails with "Undefined property ...::$dal"**: See module notes: [IndennitaCondizioniLavoro - Undefined property `CondizioniLavoroAdm::$dal`](../../../Modules/IndennitaCondizioniLavoro/docs/undefined-property-dal.md)
 - **Chart not displaying**: Check file permissions and paths
 - **PDF generation failures**: Verify PDF library dependencies
 - **Performance issues**: Implement proper caching and queuing

@@ -4,25 +4,26 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages;
 
+use Override;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\Select;
+use Illuminate\Support\Collection;
 use Filament\Tables\Columns\Column;
+use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
+use Modules\Ptv\Actions\FixValutatoreIdByAnno;
+use Filament\Tables\Enums\RecordActionsPosition;
+use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\IndennitaCondizioniLavoro\Actions\MakePdf;
 use Modules\IndennitaCondizioniLavoro\Actions\Populate;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
-use Modules\Ptv\Actions\FixValutatoreIdByAnno;
-use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Override;
 
 class ListCondizioniLavoros extends XotBaseListRecords
 {
@@ -33,11 +34,12 @@ class ListCondizioniLavoros extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
-            TextColumn::make('nome')->searchable(),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            //TextColumn::make('matr')->searchable(),
+            //TextColumn::make('cognome')->searchable(),
+            //TextColumn::make('nome')->searchable(),
+            //TextColumn::make('stabi')->searchable(),
+            //TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();

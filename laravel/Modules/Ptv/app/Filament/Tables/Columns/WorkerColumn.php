@@ -28,8 +28,8 @@ class WorkerColumn extends GroupColumn
 
         // Pre-configure the schema with worker fields
         $this->schema([
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
+            TextColumn::make('matr'),
+            TextColumn::make('cognome'),
             TextColumn::make('nome'),
             TextColumn::make('email'),
         ])->searchable(['matr', 'cognome', 'nome', 'email']);
