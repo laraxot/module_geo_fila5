@@ -32,11 +32,9 @@ class CondizioniLavoroAdmResource extends XotBaseResource
     #[Override]
     public static function getFormSchema(): array
     {
-        // Types are inferred by Filament v4
         return [
             'lavoratore' => WorkerSection::make('lavoratore'),
-            
-            PeriodoSection::make('periodo')->add([
+            'periodo' => PeriodoSection::make('periodo')->add([
                 'quadrimestre' => TextInput::make('quadrimestre'),
             ]),
             'valutatore_id' => Select::make('valutatore_id')

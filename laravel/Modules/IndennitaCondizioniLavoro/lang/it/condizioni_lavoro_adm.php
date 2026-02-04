@@ -191,5 +191,9 @@ return [
             'heading' => 'periodo',
             'label' => 'periodo',
         ],
+        'lavoratore' => [
+            'heading' => 'lavoratore',
+            'label' => 'lavoratore',
+        ],
     ],
 ];
