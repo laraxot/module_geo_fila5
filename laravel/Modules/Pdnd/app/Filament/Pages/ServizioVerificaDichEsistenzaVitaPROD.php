@@ -88,7 +88,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             
             $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
 
-            dd($risultatoC007Service);
+            // dd($risultatoC007Service);
             if ($this->isVerificaSuccessful($risultatoC007Service)) {
                 $this->handleVerificaSuccessful($risultatoC007Service);
             } else {
@@ -140,8 +140,11 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         try {
             $c007Service = $this->createC007Service();
 
-            $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
+            // dddx($c007Service);
             
+            $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
+
+            // dddx($risultato);
 
             return $risultato;
         } catch (Throwable $e) {
@@ -160,7 +163,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
-        dd($risultato);
+        // dd($risultato);
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
