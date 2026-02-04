@@ -27,11 +27,21 @@ class ValutatoreColumn extends GroupColumn
         parent::setUp();
 
         // Pre-configure the schema with worker fields
-        $this->schema([
+        $this->schema($this->getSchema())->searchable($this->getSearchable());
+    }
+
+
+    public function getSchema():array{
+        return [
             TextColumn::make('valutatore_id'),
             TextColumn::make('valutatore.nome_diri'),
             TextColumn::make('valutatore.anno'),
             TextColumn::make('valutatore.quadrimestre'),
-        ])->searchable(['valutatore_id', 'valutatore.nome_diri', 'valutatore.anno', 'valutatore.quadrimestre']);
+        ];
+    }
+
+    public function getSearchable():array{
+        return [];
+        //return ['valutatore_id', 'valutatore.nome_diri', 'valutatore.anno', 'valutatore.quadrimestre'];
     }
 }
