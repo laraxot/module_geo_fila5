@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages;
 
-use Filament\Tables;
 use Filament\Actions;
-use Filament\Tables\Table;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Actions\DeleteBulkAction;
-use Modules\Ptv\Models\StabiDirigente;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource;
+use Modules\Ptv\Models\StabiDirigente;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListStabiDirigentes extends XotBaseListRecords
@@ -66,7 +65,42 @@ class ListStabiDirigentes extends XotBaseListRecords
         ];
     }
 
-    
+    /**
+     * Get the table actions definition.
+     *
+     * @return array<string, Actions\Action>
+     */
+    public function getTableActions(): array
+    {
+        return [
+            'view' => ViewAction::make(),
+            'edit' => EditAction::make(),
+        ];
+    }
+
+    /**
+     * Get the table bulk actions definition.
+     *
+     * @return array<string, Actions\BulkAction>
+     */
+    public function getTableBulkActions(): array
+    {
+        return [
+            'delete' => DeleteBulkAction::make(),
+        ];
+    }
+
+    /**
+     * Get the header actions.
+     *
+     * @return array<string, Actions\Action>
+     */
+    protected function getHeaderActions(): array
+    {
+        return [
+            'create' => Actions\CreateAction::make(),
+        ];
+    }
 
     /**
      * Get the Eloquent query builder.
@@ -76,30 +110,5 @@ class ListStabiDirigentes extends XotBaseListRecords
     public function getEloquentQuery(): Builder
     {
         return StabiDirigenteResource::getEloquentQuery();
-    }
-
-     /**
-     * Undocumented function.
-     *
-     * @return array<\Filament\Tables\Filters\BaseFilter>
-     */
-    public function getTableFilters(): array
-    {
-        return [
-            SelectFilter::make('anno')
-                ->options([
-                    '2022' => '2022',
-                    '2023' => '2023',
-                    '2024' => '2024',
-                    '2025' => '2025',
-                    '2026' => '2026',
-                ])->query(static function (Builder $query, array $data): Builder {
-                    if (null == $data['value']) {
-                        return $query->where('id', 0);
-                    }
-
-                    return $query->where('anno', $data['value']);
-                }),
-        ];
     }
 }

@@ -33,3 +33,12 @@ Per personalizzare:
 3. Eseguire `npm run build` (o `npm run dev`) per rigenerare gli asset
 
 Ricordare di documentare ogni variante o layout personalizzato nella cartella `docs/`.
+
+## 🤖 AI Development Tools & Skills
+- [Claude Context (Laravel)](../../../CLAUDE.md)
+- [AI Agents Guide](../../../../AGENTS.md)
+- [Cursor Rules & Skills](../../../../.cursor/README.md)
+- [Skills di progetto](../../../../.cursor/skills/)
+
+## 🔁 CI & Semantic Versioning
+Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.

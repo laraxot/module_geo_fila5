@@ -69,7 +69,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
     public function registerDB(): void
     {
-        // During testing, skip all tenant database setup to use default SQLite configuration
+        // Skip database purge/reconnect during testing to preserve test DB mappings
         if ($this->app->environment('testing')) {
             return;
         }
@@ -120,13 +120,10 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $data = Arr::set($data, 'connections', $connections);
         Config::set('database', $data);
 
-        // Skip purge/reconnect during testing to avoid connection issues
-        if (! $this->app->environment('testing')) {
-            // Call to a member function prepare() on null
-            // Database connection [mysql] not configured.
-            DB::purge('mysql');
-            DB::reconnect();
-        }
+        // Call to a member function prepare() on null
+        // Database connection [mysql] not configured.
+        DB::purge('mysql');
+        DB::reconnect();
     }
 
     #[Override]

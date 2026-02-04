@@ -1,28 +1,32 @@
-# Roadmap modulo Tenant
+# Tenant Module Roadmap
 
-## Stato generale
+"Espandersi senza confini: la scalabilità dell'isolamento."
 
-- **Completato**: 50%
-- **In corso**: 30%
-- **Da fare**: 20%
+## 🎯 Visione
+Rendere la configurazione dei Tenant completamente dinamica e basata su database, permettendo l'onboarding di nuovi clienti in pochi secondi senza dover modificare file di sistema o path di configurazione statici.
 
-## Roadmap operativa
+## 🏗️ Fasi di Sviluppo
 
-1. **Modelli mancanti e completamento schema** — **45%**
-   - Dettaglio: [`docs/roadmap/missing-models.md`](roadmap/missing-models.md)
-2. **Test skipped e copertura critica** — **35%**
-   - Dettaglio: [`docs/roadmap/test-coverage.md`](roadmap/test-coverage.md)
-3. **Consolidamento documentazione** — **25%**
-   - Dettaglio: [`docs/roadmap/documentation-consolidation.md`](roadmap/documentation-consolidation.md)
-4. **Isolamento tenant e configurazioni** — **40%**
-   - Dettaglio: [`docs/roadmap/tenant-isolation.md`](roadmap/tenant-isolation.md)
-5. **Performance e ottimizzazioni** — **30%**
-   - Dettaglio: [`docs/roadmap/performance-optimization.md`](roadmap/performance-optimization.md)
+### Fase 1: Stability & Standards (In Progress)
+- [x] PHPStan Level 10 Compliance.
+- [ ] Rimozione di tutti i file `EMPTY` (0-1 byte) nella cartella docs.
+- [ ] Implementazione del **Tenant Cluster** per l'amministrazione centralizzata.
+- [ ] Supporto completo per **Laravel 12 Service Providers** per la risoluzione tenant.
 
-## Collegamenti correlati
+### Fase 2: Dynamic Onboarding (Planned)
+- [ ] Creazione di una procedura "Wizard" in Filament per la creazione di nuovi Tenant.
+- [ ] Automazione delle migrazioni specifiche per tenant (Database Isolation).
+- [ ] Integrazione con **CloudStorage** per isolare anche gli asset (S3 buckets dinamici).
 
-- [`README.md`](README.md)
-- [`core-functionality.md`](core-functionality.md)
-- [`dependencies.md`](dependencies.md)
-- [`testing.md`](testing.md)
-- [`legacy-roadmap.md`](roadmap/legacy-roadmap.md)
+### Fase 3: Performance & AI (Future)
+- [ ] **AI-Based Resource Allocation**: Ottimizzazione del database in base all'uso dei Tenant.
+- [ ] **Cross-Tenant Analytics**: Report comparativi anonimizzati per il SuperAdmin.
+- [ ] **Zero-Downtime Migration**: Spostamento di tenant tra server diversi senza interruzioni.
+
+## ✅ Checklist Qualità
+- [x] PHPStan Level 10.
+- [ ] Isolamento dei dati verificato con test di unitari al 100%.
+- [ ] Zero dipendenze circolari tra Tenant e altri moduli core.
+
+---
+**Ultimo aggiornamento**: 31 Gennaio 2026

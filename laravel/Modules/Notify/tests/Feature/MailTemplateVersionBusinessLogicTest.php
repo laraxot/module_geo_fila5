@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Feature;
 
-use RuntimeException;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\MailTemplate;
 use Modules\Notify\Models\MailTemplateVersion;
-use Tests\TestCase;
+use Modules\Notify\Tests\TestCase;
+use RuntimeException;
 
 class MailTemplateVersionBusinessLogicTest extends TestCase
 {
-    use RefreshDatabase;
+    // DatabaseTransactions is already used in the module TestCase
 
     /** @test */
     public function it_can_create_mail_template_version_with_basic_information(): void
@@ -26,7 +25,7 @@ class MailTemplateVersionBusinessLogicTest extends TestCase
             'html_template' => '<!DOCTYPE html><html><body><h1>Conferma Appuntamento</h1><p>Gentile {{patient_name}}, il suo appuntamento è confermato per il {{appointment_date}}.</p></body></html>',
             'text_template' => 'Conferma Appuntamento\n\nGentile {{patient_name}}, il suo appuntamento è confermato per il {{appointment_date}}.',
             'version' => '2.0',
-            'created_by' => 'admin@' . config('app.domain', 'example.com'),
+            'created_by' => 'admin@'.config('app.domain', 'example.com'),
             'change_notes' => 'Aggiornamento design email e aggiunta variabile appointment_date',
         ];
 
@@ -38,7 +37,7 @@ class MailTemplateVersionBusinessLogicTest extends TestCase
             'mailable' => 'AppointmentConfirmation',
             'subject' => 'Conferma Appuntamento - Versione 2.0',
             'version' => '2.0',
-            'created_by' => 'admin@' . config('app.domain', 'example.com'),
+            'created_by' => 'admin@'.config('app.domain', 'example.com'),
             'change_notes' => 'Aggiornamento design email e aggiunta variabile appointment_date',
         ]);
 
@@ -112,12 +111,12 @@ class MailTemplateVersionBusinessLogicTest extends TestCase
         $version = MailTemplateVersion::factory()->create([
             'template_id' => $template->id,
             'version' => '1.5.2',
-            'created_by' => 'developer@' . config('app.domain', 'example.com'),
+            'created_by' => 'developer@'.config('app.domain', 'example.com'),
             'change_notes' => 'Correzione bug nella formattazione HTML e ottimizzazione per mobile',
         ]);
 
         $this->assertEquals('1.5.2', $version->version);
-        $this->assertEquals('developer@' . config('app.domain', 'example.com'), $version->created_by);
+        $this->assertEquals('developer@'.config('app.domain', 'example.com'), $version->created_by);
         $this->assertEquals(
             'Correzione bug nella formattazione HTML e ottimizzazione per mobile',
             $version->change_notes,
@@ -289,13 +288,13 @@ class MailTemplateVersionBusinessLogicTest extends TestCase
             $version = MailTemplateVersion::factory()->create([
                 'template_id' => $template->id,
                 'mailable' => $mailableClass,
-                'version' => '1.' . $index,
-                'subject' => 'Template per ' . $mailableClass,
-                'html_template' => '<p>Template per ' . $mailableClass . '</p>',
+                'version' => '1.'.$index,
+                'subject' => 'Template per '.$mailableClass,
+                'html_template' => '<p>Template per '.$mailableClass.'</p>',
             ]);
 
             $this->assertEquals($mailableClass, $version->mailable);
-            $this->assertEquals('Template per ' . $mailableClass, $version->subject);
+            $this->assertEquals('Template per '.$mailableClass, $version->subject);
         }
     }
 
@@ -400,6 +399,7 @@ class MailTemplateVersionBusinessLogicTest extends TestCase
     private function extractVariables(string $template): array
     {
         preg_match_all('/\{\{([^}]+)\}\}/', $template, $matches);
+
         return array_unique($matches[1] ?? []);
     }
 }

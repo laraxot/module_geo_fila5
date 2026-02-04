@@ -60,6 +60,11 @@ final class Module extends BaseModel
     ];
 
     /**
+     * @var string
+     */
+    protected $connection = 'xot';
+
+    /**
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array

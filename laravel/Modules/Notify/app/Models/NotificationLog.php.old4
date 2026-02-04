@@ -36,11 +36,7 @@ use Modules\Xot\Traits\Updater;
  */
 class NotificationLog extends Model
 {
-<<<<<<< HEAD
     use \Modules\Xot\Models\Traits\HasXotFactory;
-=======
-    use HasFactory;
->>>>>>> 82ae73b (.)
     use HasTenants;
     use Updater;
 

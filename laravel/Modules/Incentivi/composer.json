@@ -23,11 +23,6 @@
             "Modules\\Incentivi\\Database\\Seeders\\": "database/seeders/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Modules\\Incentivi\\Tests\\": "tests/"
-        }
-    },
     "require": {
         "spatie/laravel-pdf": "^1.5"
     },
