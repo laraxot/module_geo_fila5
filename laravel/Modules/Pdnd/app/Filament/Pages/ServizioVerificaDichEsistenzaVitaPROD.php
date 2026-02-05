@@ -69,9 +69,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
                     ])
                     ->required()
                     ->helperText('Inserire un codice fiscale italiano valido (16 caratteri)'),
-                TextInput::make('test')
-                    ->label('test')
-                    ->default(''),
             ])
             ->statePath('pdndData');
     }
