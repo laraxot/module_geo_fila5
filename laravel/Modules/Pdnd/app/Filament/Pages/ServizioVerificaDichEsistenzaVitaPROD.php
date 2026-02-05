@@ -69,6 +69,9 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
                     ])
                     ->required()
                     ->helperText('Inserire un codice fiscale italiano valido (16 caratteri)'),
+                TextInput::make('test')
+                    ->label('test')
+                    ->default(''),
             ])
             ->statePath('pdndData');
     }
@@ -209,6 +212,8 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
     private function handleVerificaFailed(array $risultatoC007Service): void
     {
         $errorMessage = $this->formatErrorBody($risultatoC007Service);
+
+        // dddx($errorMessage);
 
         $this->notifyError('Errore nella ricerca', $errorMessage);
     }
