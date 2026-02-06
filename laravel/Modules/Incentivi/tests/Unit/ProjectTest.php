@@ -6,15 +6,19 @@ namespace Modules\Incentivi\Tests\Unit;
 
 use Modules\Incentivi\Enums\ProjectStatus;
 use Modules\Incentivi\Models\Project;
+<<<<<<< HEAD
 use Modules\Incentivi\Models\Activity;
 use Modules\Incentivi\Models\CapitalPercentage;
 
+=======
+>>>>>>> 9f61b318 (feat: Aggiungi factory per il modello Project (da rivedere) e configura PHPUnit per i test)
 
 test('il model Project esiste ed è istanziabile', function () {
     $project = new Project();
     expect($project)->toBeInstanceOf(Project::class);
 });
 
+<<<<<<< HEAD
 test('il model Activity esiste ed è istanziabile', function () {
     $activity = new Activity();
     expect($activity)->toBeInstanceOf(Activity::class);
@@ -25,6 +29,8 @@ test('il model CapitalPercentage esiste ed è istanziabile', function () {
     expect($capitalPercentage)->toBeInstanceOf(CapitalPercentage::class);
 });
 
+=======
+>>>>>>> 9f61b318 (feat: Aggiungi factory per il modello Project (da rivedere) e configura PHPUnit per i test)
 // beforeEach(function () {
 //     $this->project = Project::factory()->create([
 //         'nome' => 'Progetto di Test',
