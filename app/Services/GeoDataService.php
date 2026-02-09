@@ -74,7 +74,8 @@ class GeoDataService
     /**
      * Ottiene le province di una regione.
      *
-     * @param  string  $regionCode  Codice della regione
+     * @param string $regionCode Codice della regione
+     *
      * @return Collection<int, array{name: string, code: string}>
      */
     public function getProvinces(string $regionCode): Collection
@@ -121,7 +122,8 @@ class GeoDataService
     /**
      * Ottiene le città di una provincia.
      *
-     * @param  string  $provinceCode  Codice della provincia
+     * @param string $provinceCode Codice della provincia
+     *
      * @return Collection<int, array{name: string, code: string}>
      */
     public function getCities(string $provinceCode): Collection
@@ -157,8 +159,8 @@ class GeoDataService
     /**
      * Ottiene il CAP di una città.
      *
-     * @param  string  $provinceCode  Codice della provincia
-     * @param  string  $cityCode  Codice della città
+     * @param string $provinceCode Codice della provincia
+     * @param string $cityCode     Codice della città
      */
     public function getCap(string $provinceCode, string $cityCode): ?string
     {
@@ -204,10 +206,9 @@ class GeoDataService
     /**
      * Carica i dati dal file JSON.
      *
+     * @throws \RuntimeException Se il file non esiste o non è valido
      *
      * @return Collection<int, array<string, mixed>>
-     *
-     * @throws \RuntimeException Se il file non esiste o non è valido
      */
     private function loadData(): Collection
     {
