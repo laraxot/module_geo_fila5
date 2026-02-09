@@ -27,7 +27,7 @@ class FetchCoordinatesAction
     /**
      * Ottiene le coordinate geografiche da un indirizzo.
      *
-     * @param string $address Indirizzo da geocodificare
+     * @param  string  $address  Indirizzo da geocodificare
      *
      * @throws GuzzleException
      * @throws \RuntimeException
