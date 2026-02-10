@@ -6,6 +6,9 @@ namespace Modules\Incentivi\Tests\Unit;
 
 use Modules\Incentivi\Enums\ProjectStatus;
 use Modules\Incentivi\Models\Project;
+use Modules\Incentivi\Models\Activity;
+use Modules\Incentivi\Models\CapitalPercentage;
+
 
 test('il model Project esiste ed è istanziabile', function () {
     $project = new Project();
@@ -15,6 +18,11 @@ test('il model Project esiste ed è istanziabile', function () {
 test('il model Activity esiste ed è istanziabile', function () {
     $activity = new Activity();
     expect($activity)->toBeInstanceOf(Activity::class);
+});
+
+test('il model CapitalPercentage esiste ed è istanziabile', function () {
+    $capitalPercentage = new CapitalPercentage();
+    expect($capitalPercentage)->toBeInstanceOf(CapitalPercentage::class);
 });
 
 // beforeEach(function () {
