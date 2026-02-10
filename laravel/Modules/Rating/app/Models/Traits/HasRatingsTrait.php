@@ -19,16 +19,21 @@ use Modules\Rating\Models\Rating;
  */
 trait HasRatingsTrait
 {
+
+    public function getRatingClass():string{
+        $rating_class = Str::of(static::class)
+            ->before('\Models\\')
+            ->append('\Models\Rating')
+            ->toString();
+        return $rating_class;
+    }
     /**
      * @return MorphToMany
      */
     public function ratings()
     {
-        // return $this->morphRelated(Rating::class);
-        $rating_class = Str::of(static::class)
-            ->before('\Models\\')
-            ->append('\Models\Rating')
-            ->toString();
+        
+        $rating_class = $this->getRatingClass();
 
         return $this->morphToManyX($rating_class, 'model');
     }
@@ -38,7 +43,7 @@ trait HasRatingsTrait
      */
     public function ratingObjectives()
     {
-        $related = Rating::class;
+        $related = $this->getRatingClass();
         $user_id = Auth::id();
 
         return $this->hasMany($related, 'related_type', 'post_type')
@@ -78,7 +83,7 @@ trait HasRatingsTrait
      */
     public function myRatings()
     {
-        return $this->morphRelated(Rating::class)
+        return $this->morphRelated($this->getRatingClass())
             ->wherePivot('user_id', Auth::id());
     }
 
@@ -145,13 +150,11 @@ trait HasRatingsTrait
      */
     public function getRatingsWhere(array $filters): Collection
     {
-        $rating_class = Str::of(static::class)
-            ->before('\Models\\')
-            ->append('\Models\Rating')
-            ->toString();
+        
 
         /** @var Builder $query */
         $query = $this->ratings();
+        
 
         foreach ($filters as $key => $value) {
             $query->where("extra_attributes->{$key}", $value);
@@ -161,6 +164,16 @@ trait HasRatingsTrait
         $result = $query->get();
 
         return $result;
+    }
+
+
+    public function syncRatingsWhere(array $where){
+        $ratings = app($this->getRatingClass())
+            ->withExtraAttributes($where)
+            ->get();
+        $rating_ids=$ratings->modelKeys();
+        $this->ratings()->sync($rating_ids);
+        return $this->ratings;
     }
 
     // */
@@ -207,10 +220,10 @@ trait HasRatingsTrait
         return $msg.$btn.$btn_iframe;
     }
 
-    /*
+    
     public function getRatingsRules(string $prefix, string $postfix): array
     {
-        $rows = Rating::withExtraAttributes()->get();
+        $rows = $this->ratings;
         $rules = $rows->pluck('rule.value', 'id')->toArray();
         $rules = Arr::prependKeysWith($rules, $prefix);
         $res = [];
@@ -223,10 +236,10 @@ trait HasRatingsTrait
         // $rules= Arr::appendKeysWith($rules,'.value');
         return $res;
     }
-
+    
     public function getRatingsValidationAttributes(string $prefix, string $postfix): array
     {
-        $rows = Rating::withExtraAttributes()->get();
+        $rows = $this->ratings;
         $res = [];
         foreach ($rows as $row) {
             $k1 = $prefix.$row->id.$postfix;
@@ -235,5 +248,5 @@ trait HasRatingsTrait
 
         return $res;
     }
-      */
+    
 }

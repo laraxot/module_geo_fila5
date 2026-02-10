@@ -97,6 +97,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         /** @var array<string, string> $rulesFromRatings */
         $rulesFromRatings = $record->getRatingsRules('form_data.ratings.', '.pivot.value');
+        
         Assert::isArray($rulesFromRatings, 'getRatingsRules must return array');
 
         // Convert string rules to array of strings
@@ -134,6 +135,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         /** @var array<string, string> $validationAttributes */
         $validationAttributes = $record->getRatingsValidationAttributes('form_data.ratings.', '.pivot.value');
+        
         Assert::isArray($validationAttributes, 'getRatingsValidationAttributes must return array');
 
         return $validationAttributes;
@@ -264,7 +266,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
         /** @var IndennitaResponsabilita $record */ // Added explicit cast
-        $ratings = $record->getRatingsWhere(['anno' => $record->anno]);
+        $ratings = $record->syncRatingsWhere(['anno' => $record->anno]);
+        
+        
         // Assert::isInstanceOf($ratings, \Illuminate\Database\Eloquent\Collection::class, 'getRatings must return Collection'); // Redundant
 
         /** @var array<string, mixed> $ratingsArray */

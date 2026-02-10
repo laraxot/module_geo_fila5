@@ -46,8 +46,15 @@
     </thead>
     <tbody>
         @foreach($form_data['ratings'] as $k=>$rating)
+        @php
+            if(!isset($rating['txt'])) {
+                continue;
+            }
+        @endphp
         <tr style="{{ $loop->index%2==0?'background:#eee':''}}">
             <td>
+             {{-- dddx($rating) --}}
+                
                 {!! $rating['txt'] ?? 'WIP' !!}
             </td>
             <td align="right">

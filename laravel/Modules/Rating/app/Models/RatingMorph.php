@@ -67,7 +67,6 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|RatingMorph whereReward($value)
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- * @property int    $has_yes_no
  * @property string $sum_credit_yes
  * @property string $sum_credit_no
  * @property int    $count_credit_yes
@@ -89,7 +88,6 @@ class RatingMorph extends BaseMorphPivot
         'id',
         'model_id', 'model_type',
         'rating_id',
-        'has_yes_no', // gia' detto che e' sbagliato qui
         'user_id',
         'note',
         'value',

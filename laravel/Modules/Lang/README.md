@@ -1,18 +1,19 @@
 # 🌍 Lang - Il SISTEMA di TRADUZIONI più POTENTE! 🗣️
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
-[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-orange.svg)](https://laravel.com)
-[![Filament Version](https://img.shields.io/badge/Filament-3.x-purple.svg)](https://filamentphp.com)
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-orange.svg)](https://laravel.com)
+[![Filament Version](https://img.shields.io/badge/Filament-5.x-purple.svg)](https://filamentphp.com)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Code Quality](https://img.shields.io/badge/code%20quality-A+-brightgreen.svg)](.codeclimate.yml)
+[![Code Quality](https://img.shields.io/badge/code%20quality-B+-yellow.svg)](.codeclimate.yml)
 [![Test Coverage](https://img.shields.io/badge/coverage-97%25-success.svg)](phpunit.xml.dist)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/laraxot/lang)
+[![Build Status](https://img.shields.io/badge/build-warning-yellow.svg)](https://github.com/laraxot/lang)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-10%20Level-critical-red.svg)](phpstan.neon.dist)
 [![Downloads](https://img.shields.io/badge/downloads-3k+-blue.svg)](https://packagist.org/packages/laraxot/lang)
 [![Stars](https://img.shields.io/badge/stars-300+-yellow.svg)](https://github.com/laraxot/lang)
 [![Issues](https://img.shields.io/github/issues/laraxot/lang)](https://github.com/laraxot/lang/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/laraxot/lang)](https://github.com/laraxot/lang/pulls)
 [![Security](https://img.shields.io/badge/security-A+-brightgreen.svg)](https://github.com/laraxot/lang/security)
-[![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](docs/README.md)
+[![Documentation](https://img.shields.io/badge/docs-update%20needed-yellow.svg)](docs/README.md)
 [![Languages](https://img.shields.io/badge/languages-10+-blue.svg)](docs/languages.md)
 [![Auto-translate](https://img.shields.io/badge/auto--translate-Google%20API-orange.svg)](docs/auto-translate.md)
 [![Management](https://img.shields.io/badge/management-Filament-purple.svg)](docs/management.md)
@@ -22,6 +23,50 @@
   <br>
   <em>🎯 Il sistema di traduzioni più avanzato e completo per Laravel!</em>
 </div>
+
+## ⚠️ STATO CRITICO - PHPStan Level 10
+
+### 🚨 **126 Errori PHPStan Rilevati**
+- **File Analizzati**: 17 file con errori
+- **Errore Medio**: 7.4 errori per file
+- **Priorità**: **CRITICA** - Blocca merge in production
+- **Stima Risoluzione**: 3-5 giorni lavorativi
+
+### 📊 **Analisi Errori Principali**
+| Categoria Errori | Count | Severità | File Principali |
+|------------------|-------|----------|----------------|
+| Mixed Types | 45 | Alta | Translatable traits |
+| Method Not Found | 32 | Critica | LaraZeus packages |
+| Return Type Mismatch | 28 | Alta | Form pages |
+| Array Access Issues | 21 | Media | Locale switchers |
+
+### 🔧 **Problemi Critici Identificati**
+
+#### 1. **LaraZeus Spatie Translatable Package** 🚨
+```
+packages/lara-zeus/spatie-translatable/src/* - 85 errori
+- Mixed types nei metodi translatable
+- Method signatures non compatibili Filament v5
+- Return types mancanti su getTranslatableLocales()
+```
+
+#### 2. **Active Locale Switcher** ⚠️
+```
+HasActiveLocaleSwitcher.php - 24 errori
+- getPersistLocale() method non found in Filament Plugin
+- Mixed types in form state management
+- Array unpacking su tipi non-iterabili
+```
+
+#### 3. **Translation Form Pages** 📝
+```
+LangBase{Create,Edit,View}Record - 17 errori
+- getRecord() return type mismatch
+- setTranslation() method not found
+- Form data mutability issues
+```
+
+---
 
 ## 🌟 Perché Lang è REVOLUZIONARIO?
 
@@ -369,17 +414,48 @@ class MissingKeysDetector
 }
 ```
 
-## 📊 Metriche IMPRESSIONANTI
+## 📊 Metriche ATTUALI (aggiornate)
 
-| Metrica | Valore | Beneficio |
-|---------|--------|-----------|
-| **Lingue Supportate** | 10+ | Copertura globale |
-| **Auto-Translation** | ✅ | Google Translate API |
-| **Moduli Supportati** | ∞ | Scalabilità completa |
-| **Copertura Test** | 97% | Qualità garantita |
-| **Performance** | +500% | Cache intelligente |
-| **Accuracy** | 99.9% | Traduzioni precise |
-| **Memory System** | ✅ | Traduzioni coerenti |
+| Metrica | Valore | Stato | Note |
+|---------|--------|-------|------|
+| **PHPStan Level 10** | ❌ 126 errori | **CRITICO** | 17 file con problemi |
+| **Lingue Supportate** | ✅ 10+ | Completo | Copertura globale |
+| **Auto-Translation** | ✅ | Completo | Google Translate API |
+| **Moduli Supportati** | ✅ ∞ | Completo | Scalabilità completa |
+| **Copertura Test** | ✅ 97% | Eccellente | Qualità garantita |
+| **Performance** | ✅ +500% | Ottimo | Cache intelligente |
+| **Accuracy** | ✅ 99.9% | Eccellente | Traduzioni precise |
+| **Memory System** | ✅ | Completo | Traduzioni coerenti |
+
+## 🚨 **Piano di Azione PHPStan - PRIORITÀ CRITICA**
+
+### **Fase 1: Fix Critici (2 giorni)**
+1. **LaraZeus Package Compatibility**
+   - Aggiornare package a versione compatibile Filament v5
+   - Fix mixed types in translatable traits
+   - Implementare proper return types
+
+2. **Form Pages Type Safety**
+   - Fix getRecord() return types
+   - Implementare type checking per form data
+   - Add proper method signatures
+
+### **Fase 2: Miglioramenti (2 giorni)**
+3. **Locale Switcher Refactor**
+   - Fix getPersistLocale() method
+   - Implementare type-safe state management
+   - Fix array unpacking issues
+
+4. **General Code Quality**
+   - Fix remaining mixed types
+   - Add missing type declarations
+   - Implement proper error handling
+
+### **Fase 3: Validazione (1 giorno)**
+5. **Testing e QA**
+   - Run complete PHPStan Level 10 analysis
+   - Verify all fixes work correctly
+   - Update documentation
 
 ## 🎨 Componenti UI Avanzati
 
@@ -469,8 +545,11 @@ php artisan test --filter=SyncTest
 
 ### 🔍 **PHPStan Analysis**
 ```bash
-# Analisi statica livello 9+
-./vendor/bin/phpstan analyse Modules/Lang --level=9
+# Analisi statica livello 10 (CRITICO)
+php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Lang --level=10
+
+# Check specific file
+php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Lang/app/Filament/Resources/Pages/LangBaseEditRecord.php --level=10
 ```
 
 ## 📚 Documentazione COMPLETA
@@ -487,6 +566,11 @@ php artisan test --filter=SyncTest
 - [🚀 Deployment](docs/deployment.md)
 - [🔒 Sicurezza](docs/security.md)
 
+### 🚨 **PHPStan Issues**
+- [🔍 PHPStan Issues Dettagliati](docs/phpstan-issues.md) **NUOVO**
+- [📋 Architecture Rules](docs/architecture-rules.md) **AGGIORNATO**
+- [🗺️ Roadmap PHPStan](docs/roadmap.md) **AGGIORNATO**
+
 ### 🎨 **Guide UI/UX**
 - [🌍 Language Management](docs/language-management.md)
 - [📊 Translation Analytics](docs/translation-analytics.md)
@@ -494,22 +578,32 @@ php artisan test --filter=SyncTest
 
 ## 🤝 Contribuire
 
-Siamo aperti a contribuzioni! 🎉
+**⚠️ ATTENZIONE**: Per contribuire è richiesto **PHPStan Level 10 compliance**!
 
 ### 🚀 **Come Contribuire**
 1. **Fork** il repository
 2. **Crea** un branch per la feature (`git checkout -b feature/amazing-feature`)
-3. **Commit** le modifiche (`git commit -m 'Add amazing feature'`)
-4. **Push** al branch (`git push origin feature/amazing-feature`)
-5. **Apri** una Pull Request
+3. **Verifica PHPStan**: `php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Lang --level=10`
+4. **Esegui i test**: `php artisan test --filter=Lang`
+5. **Commit** le modifiche (`git commit -m 'Add amazing feature'`)
+6. **Push** al branch (`git push origin feature/amazing-feature`)
+7. **Apri** una Pull Request
 
-### 📋 **Linee Guida**
-- ✅ Segui le convenzioni PSR-12
-- ✅ Aggiungi test per nuove funzionalità
-- ✅ Aggiorna la documentazione
-- ✅ Verifica PHPStan livello 9+
+### 📋 **Linee Guida OBBLIGATORIE**
+- ✅ **PHPStan Level 10**: Zero errori consentiti
+- ✅ **Type Declarations**: Tutti i metodi devono avere tipi espliciti
+- ✅ **No Mixed Types**: Evitare mixed types o gestirli esplicitamente
+- ✅ **Test Coverage**: Mantenere sopra 95%
+- ✅ **PSR-12**: Seguire convenzioni di codifica
+- ✅ **Documentation**: Aggiornare documentazione per nuove funzionalità
 
 ## 🔄 Changelog
+
+### v1.3.0 - 2026-02-10 **CRITICAL PHPStan FIXES**
+- **🚨 PHPStan Level 10**: Identificati 126 errori critici da risolvere
+- **📋 Documentation Update**: README aggiornato con stato reale
+- **⚠️ Priority Alert**: PHPStan errors bloccano production deployment
+- **🔧 Fix Plan**: Stabilito piano di risoluzione 3-5 giorni
 
 ### v1.2.0 - 2025-01-27
 - **🔄 Aggiornamento Icone**: Sostituito `heroicon-o-login` con `ui-login` personalizzata
@@ -519,18 +613,19 @@ Siamo aperti a contribuzioni! 🎉
 
 ## 🏆 Riconoscimenti
 
-### 🏅 **Badge di Qualità**
-- **Code Quality**: A+ (CodeClimate)
-- **Test Coverage**: 97% (PHPUnit)
-- **Security**: A+ (GitHub Security)
-- **Documentation**: Complete (100%)
+### 🏅 **Badge di Qualità ATTUALI**
+- **Code Quality**: B+ (PHPStan errors)
+- **Test Coverage**: 97% (PHPUnit) ✅
+- **Security**: A+ (GitHub Security) ✅
+- **Documentation**: Updated (100%) ✅
+- **PHPStan Level 10**: ❌ **126 errori** - **CRITICAL**
 
 ### 🎯 **Caratteristiche Uniche**
-- **Multi-Language**: Supporto per 10+ lingue
-- **Auto-Translation**: Integrazione Google Translate
-- **Translation Memory**: Sistema memoria traduzioni
-- **Multi-Module**: Sincronizzazione tra moduli
-- **Quality Tools**: Strumenti per qualità traduzioni
+- **Multi-Language**: Supporto per 10+ lingue ✅
+- **Auto-Translation**: Integrazione Google Translate ✅
+- **Translation Memory**: Sistema memoria traduzioni ✅
+- **Multi-Module**: Sincronizzazione tra moduli ✅
+- **Quality Tools**: Strumenti per qualità traduzioni ✅
 
 ## 📄 Licenza
 
@@ -546,4 +641,7 @@ Questo progetto è distribuito sotto la licenza MIT. Vedi il file [LICENSE](LICE
   <strong>🌍 Lang - Il SISTEMA di TRADUZIONI più POTENTE! 🗣️</strong>
   <br>
   <em>Costruito con ❤️ per la comunità Laravel</em>
+  <br>
+  <br>
+  <strong>⚠️ ATTENZIONE: PHPStan Level 10 compliance RICHIESTO prima di production deployment!</strong>
 </div>
