@@ -12,10 +12,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 /**
  * OAuth Personal Access Client model.
  *
- * <<<<<<< HEAD
- * =======
- *
- * >>>>>>> 024bfed1 (.)
  *
  * @property string           $uuid
  * @property string           $client_id
@@ -32,7 +28,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null      $created_by
  * @property int              $id
  * @property OauthClient|null $client
- *                                        <<<<<<< HEAD
  * @property string           $uuid
  *                                        =======
  * @property string           $uuid
