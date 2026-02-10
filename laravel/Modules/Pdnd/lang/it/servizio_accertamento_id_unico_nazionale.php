@@ -9,8 +9,6 @@ return [
     'actions' => [
         'pdndFormActions' => [
             'label' => 'Ricerca',
-            'tooltip' => 'pdndFormActions',
-            'icon' => 'pdndFormActions',
         ],
         'logout' => [
             'icon' => 'logout',

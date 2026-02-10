@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|Message newModelQuery()
  * @method static Builder|Message newQuery()
  * @method static Builder|Message query()
@@ -31,12 +32,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Message whereType($value)
  * @method static Builder|Message whereUpdatedAt($value)
  * @method static Builder|Message whereUpdatedBy($value)
+ *
  * @mixin Builder
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Progressioni\Database\Factories\MessageFactory factory($count = null, $state = [])
- * @mixin \Eloquent
  */
 class Message extends BaseModel
 {

@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $arr002
  * @property string|null $arr003
  * @property string|null $arr004
+ *
  * @method static Builder|Arr00ef newModelQuery()
  * @method static Builder|Arr00ef newQuery()
  * @method static Builder|Arr00ef query()
@@ -34,10 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Arr00ef whereId($value)
  * @method static Builder|Arr00ef whereMatr($value)
  * @method static Builder|Arr00ef whereTiparr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Arr00efFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Arr00ef extends BaseModel

@@ -110,6 +110,7 @@ ini_set('memory_limit', '1512M');
  * @property-read int|null $wstr01lx_count
  * @property-read Collection<int, Wstr01lx> $wstr01lxYear
  * @property-read int|null $wstr01lx_year_count
+ *
  * @method static Builder|Anag newModelQuery()
  * @method static Builder|Anag newQuery()
  * @method static Builder|Anag query()
@@ -173,9 +174,9 @@ ini_set('memory_limit', '1512M');
  * @method static Builder|Anag whereTiprec($value)
  * @method static Builder|Anag whereTitpro($value)
  * @method static Builder|Anag whereTitstu($value)
+ *
  * @property-read string|null $codice_fiscale
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
- * @property-read int|null $integ_params_count
+ *
  * @mixin \Eloquent
  */
 class Anag extends Model

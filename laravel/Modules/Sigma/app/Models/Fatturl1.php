@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $prochi
  * @property string|null $datall
  * @property string|null $proall
+ *
  * @method static Builder|Fatturl1 newModelQuery()
  * @method static Builder|Fatturl1 newQuery()
  * @method static Builder|Fatturl1 query()
@@ -52,10 +53,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Fatturl1 whereProchi($value)
  * @method static Builder|Fatturl1 wherePropri($value)
  * @method static Builder|Fatturl1 whereProric($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Fatturl1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Fatturl1 extends BaseModel

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $raanno
  * @property int $ramese
  * @property int $raminu
+ *
  * @method static Builder|Abbm00f newModelQuery()
  * @method static Builder|Abbm00f newQuery()
  * @method static Builder|Abbm00f query()
@@ -24,10 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Abbm00f whereRamatr($value)
  * @method static Builder|Abbm00f whereRamese($value)
  * @method static Builder|Abbm00f whereRaminu($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Abbm00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Abbm00f extends BaseModel

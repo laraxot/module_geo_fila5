@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $orasab
  * @property int|null $oradom
  * @property string|null $turann
+ *
  * @method static Builder|Turn0l1 newModelQuery()
  * @method static Builder|Turn0l1 newQuery()
  * @method static Builder|Turn0l1 query()
@@ -42,10 +43,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Turn0l1 whereTurdal($value)
  * @method static Builder|Turn0l1 whereTurora($value)
  * @method static Builder|Turn0l1 whereTurrap($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Turn0l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Turn0l1 extends BaseModel

@@ -49,6 +49,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $asz003
  * @property string|null $asz004
  * @property string|null $asz005
+ *
  * @method static Builder|Asz00k11 newModelQuery()
  * @method static Builder|Asz00k11 newQuery()
  * @method static Builder|Asz00k11 query()
@@ -92,10 +93,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asz00k11 whereEnte($value)
  * @method static Builder|Asz00k11 whereId($value)
  * @method static Builder|Asz00k11 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Asz00k11Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Asz00k11 extends BaseModel

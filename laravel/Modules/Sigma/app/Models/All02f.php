@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $impneg
  * @property string|null $imppr1
  * @property string|null $imppr2
+ *
  * @method static Builder|All02f newModelQuery()
  * @method static Builder|All02f newQuery()
  * @method static Builder|All02f query()
@@ -34,10 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|All02f whereKcodic($value)
  * @method static Builder|All02f whereKodreg($value)
  * @method static Builder|All02f whereKtipo($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\All02fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class All02f extends BaseModel

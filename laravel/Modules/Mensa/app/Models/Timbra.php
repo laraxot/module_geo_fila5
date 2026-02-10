@@ -68,6 +68,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $field52
  * @property string|null $field53
  * @property string|null $field54
+ *
  * @method static Builder|Timbra newModelQuery()
  * @method static Builder|Timbra newQuery()
  * @method static Builder|Timbra query()
@@ -127,9 +128,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|Timbra whereField8($value)
  * @method static Builder|Timbra whereField9($value)
  * @method static Builder|Timbra whereId($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Timbra extends Model

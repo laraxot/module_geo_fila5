@@ -158,7 +158,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
-        // dd($risultato);
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
@@ -204,8 +203,6 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
     private function handleVerificaFailed(array $risultatoC007Service): void
     {
         $errorMessage = $this->formatErrorBody($risultatoC007Service);
-
-        // dddx($errorMessage);
 
         $this->notifyError('Errore nella ricerca', $errorMessage);
     }

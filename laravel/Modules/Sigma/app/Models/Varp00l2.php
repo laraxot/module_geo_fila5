@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $progiu
  * @property string|null $prolet
  * @property string|null $proora
+ *
  * @method static Builder|Varp00l2 newModelQuery()
  * @method static Builder|Varp00l2 newQuery()
  * @method static Builder|Varp00l2 query()
@@ -28,10 +29,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Varp00l2 whereProlet($value)
  * @method static Builder|Varp00l2 wherePromat($value)
  * @method static Builder|Varp00l2 whereProora($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Varp00l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Varp00l2 extends BaseModel

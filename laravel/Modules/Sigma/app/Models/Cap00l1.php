@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $cappro
  * @property string|null $capseq
  * @property string|null $capast
+ *
  * @method static Builder|Cap00l1 newModelQuery()
  * @method static Builder|Cap00l1 newQuery()
  * @method static Builder|Cap00l1 query()
@@ -24,10 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cap00l1 whereCappro($value)
  * @method static Builder|Cap00l1 whereCapseq($value)
  * @method static Builder|Cap00l1 whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Cap00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cap00l1 extends BaseModel

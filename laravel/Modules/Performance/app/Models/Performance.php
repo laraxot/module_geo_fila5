@@ -184,6 +184,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property-read int|null $wstr01lx_count
  * @property-read Collection<int, Wstr01lx> $wstr01lxYear
  * @property-read int|null $wstr01lx_year_count
+ *
  * @method static Builder|Performance newModelQuery()
  * @method static Builder|Performance newQuery()
  * @method static Builder|Performance ofDate(int $date)
@@ -241,7 +242,9 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|Performance whereLang($value)
  * @method static Builder|Performance whereLastDataAssunz($value)
  * @method static Builder|Performance whereListaAuth($value)
+ *
  * @mixin Model
+ *
  * @property-read Profile|null $creator
  * @property-read mixed $aventi_diritto
  * @property-read mixed $aventi_diritto_eff
@@ -326,6 +329,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property-read mixed $stipendioTabellare
  * @property-read mixed $to_field
  * @property-read mixed $from_field
+ *
  * @method static Builder<static>|Performance ofEnte(int $ente)
  * @method static Builder<static>|Performance ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|Performance withDays(int $date_min, int $date_max)
@@ -342,20 +346,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method mixed ggAssenzaInSedeTot()
  * @method static Builder ofYear(int $year)
  * @method static Builder ofRangeDate(int $date_start, int $date_end)
- * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
- * @property-read int|null $activities_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
- * @property-read int|null $avversari_count
- * @property-read int|null $avversari_categoria_eco_count
- * @property-read Profile|null $deleter
- * @property-read float $gg_cateco_posfun_rapportato_max10_valutatore
- * @property-read int|null $gg_esperienza_no_asz
- * @property-read float|null $gg_integ_params_asz
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
- * @property-read int|null $integ_params_count
- * @property-read Collection<int, Performance> $performanceIndividuale
- * @property-read int|null $performance_individuale_count
- * @method static \Modules\Performance\Database\Factories\PerformanceFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Performance extends BaseScheda

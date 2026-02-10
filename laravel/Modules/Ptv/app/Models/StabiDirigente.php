@@ -18,10 +18,12 @@ use Modules\Sigma\Models\Repart;
  * @property string|null $nome_diri
  * @property string|null $nome_stabi
  * @property Repart|null $repart
+ *
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
  * @method static Builder|StabiDirigente query()
+ *
  * @property int $id
  * @property int|null $stabi
  * @property int|null $repar
@@ -37,6 +39,7 @@ use Modules\Sigma\Models\Repart;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|StabiDirigente whereAnno($value)
  * @method static Builder|StabiDirigente whereBudget($value)
  * @method static Builder|StabiDirigente whereCreatedAt($value)
@@ -54,11 +57,13 @@ use Modules\Sigma\Models\Repart;
  * @method static Builder|StabiDirigente whereUpdatedAt($value)
  * @method static Builder|StabiDirigente whereUpdatedBy($value)
  * @method static Builder|StabiDirigente whereValutatoreId($value)
+ *
  * @property Profile|null $creator
  * @property Profile|null $updater
  * @property int $n_diritto_excellence
+ *
  * @method static Builder<static>|StabiDirigente whereNDirittoExcellence($value)
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class StabiDirigente extends BaseModel

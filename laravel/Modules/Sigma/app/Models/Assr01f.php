@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $col18
  * @property string|null $col19
  * @property string|null $col20
+ *
  * @method static Builder|Assr01f newModelQuery()
  * @method static Builder|Assr01f newQuery()
  * @method static Builder|Assr01f query()
@@ -64,10 +65,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Assr01f whereId($value)
  * @method static Builder|Assr01f whereStrut($value)
  * @method static Builder|Assr01f whereTabe($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Assr01fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Assr01f extends BaseModel

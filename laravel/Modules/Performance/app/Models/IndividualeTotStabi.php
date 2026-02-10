@@ -34,6 +34,7 @@ use Override;
  * @property float $n_diritto_excellence
  * @property Collection<int, Individuale> $schede
  * @property int|null $schede_count
+ *
  * @method static Builder|IndividualeTotStabi newModelQuery()
  * @method static Builder|IndividualeTotStabi newQuery()
  * @method static Builder|IndividualeTotStabi query()
@@ -54,9 +55,10 @@ use Override;
  * @method static Builder|IndividualeTotStabi whereTotRestiMinPunteggio($value)
  * @method static Builder|IndividualeTotStabi whereUpdatedAt($value)
  * @method static Builder|IndividualeTotStabi whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class IndividualeTotStabi extends BaseModel

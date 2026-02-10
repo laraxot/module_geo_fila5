@@ -75,6 +75,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property Collection<int, Role> $roles
  * @property int|null $roles_count
  * @property UserContract|null $user
+ *
  * @method static ProfileFactory factory($count = null, $state = [])
  * @method static Builder|Profile newModelQuery()
  * @method static Builder|Profile newQuery()
@@ -125,6 +126,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static Builder|Profile whereUpdatedAt($value)
  * @method static Builder|Profile whereUpdatedBy($value)
  * @method static Builder|Profile whereUserId($value)
+ *
  * @property string|null $firstname
  * @property string|null $surname
  * @property SchemalessAttributes $extra
@@ -147,22 +149,22 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property Collection<int, Team> $teams
  * @property int|null $teams_count
  * @property string|null $user_name
+ *
  * @method static Builder|Profile whereFirstname($value)
  * @method static Builder|Profile whereSurname($value)
  * @method static Builder|Profile withExtraAttributes()
  * @method static Builder|Profile withoutPermission($permissions)
  * @method static Builder|Profile withoutRole($roles, $guard = null)
+ *
  * @property Carbon|null $deleted_at
+ *
  * @method static Builder|Profile whereDeletedAt($value)
+ *
  * @property Profile|null $creator
  * @property Profile|null $updater
+ *
  * @method static Builder|Profile whereExtra($value)
- * @property-read Profile|null $deleter
- * @method static Builder<static>|Profile childrenWith(array $relations)
- * @method static Builder<static>|Profile childrenWithCount(array $relations)
- * @method static Builder<static>|Profile onlyTrashed()
- * @method static Builder<static>|Profile withTrashed(bool $withTrashed = true)
- * @method static Builder<static>|Profile withoutTrashed()
+ *
  * @mixin \Eloquent
  */
 class Profile extends UserBaseProfile

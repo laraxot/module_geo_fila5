@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $orestr
  * @property string|null $congua
  * @property string|null $congeu
+ *
  * @method static Builder|Ced08l2 newModelQuery()
  * @method static Builder|Ced08l2 newQuery()
  * @method static Builder|Ced08l2 query()
@@ -36,10 +37,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced08l2 whereSmatr($value)
  * @method static Builder|Ced08l2 whereSvocfi($value)
  * @method static Builder|Ced08l2 whereTotale($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Ced08l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ced08l2 extends BaseModel

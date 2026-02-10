@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Appfa newModelQuery()
  * @method static Builder|Appfa newQuery()
  * @method static Builder|Appfa query()
+ *
  * @property int $id
  * @property string|null $ente
  * @property string|null $matr
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $note
  * @property string|null $nomeap
  * @property string|null $dataap
+ *
  * @method static Builder|Appfa whereCath($value)
  * @method static Builder|Appfa whereCatn($value)
  * @method static Builder|Appfa whereDataap($value)
@@ -50,10 +52,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Appfa whereTiptas($value)
  * @method static Builder|Appfa whereYome($value)
  * @method static Builder|Appfa whereYonome($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\AppfaFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Appfa extends BaseModel

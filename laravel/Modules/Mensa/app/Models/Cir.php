@@ -15,11 +15,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Cir newModelQuery()
  * @method static Builder|Cir newQuery()
  * @method static Builder|Cir query()
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property string|null $id
- * @property-read Profile|null $deleter
- * @method static Builder<static>|Cir whereId($value)
+ *
  * @mixin \Eloquent
  */
 class Cir extends BaseModel

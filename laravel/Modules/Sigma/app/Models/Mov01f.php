@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $mov003
  * @property int $mov004
  * @property int $mov005
+ *
  * @method static Builder|Mov01f newModelQuery()
  * @method static Builder|Mov01f newQuery()
  * @method static Builder|Mov01f query()
@@ -60,6 +61,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Mov01f whereMov005($value)
  * @method static Builder|Mov01f whereMov2kn($value)
  * @method static Builder|Mov01f whereMov2kz($value)
+ *
  * @mixin \Eloquent
  */
 class Mov01f extends Model

@@ -15,17 +15,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|ContributoCassa newModelQuery()
  * @method static Builder|ContributoCassa newQuery()
  * @method static Builder|ContributoCassa query()
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property string $id
- * @property string|null $cod
- * @property string|null $cassa
- * @property string $perc
- * @property-read Profile|null $deleter
- * @method static Builder<static>|ContributoCassa whereCassa($value)
- * @method static Builder<static>|ContributoCassa whereCod($value)
- * @method static Builder<static>|ContributoCassa whereId($value)
- * @method static Builder<static>|ContributoCassa wherePerc($value)
+ *
  * @mixin \Eloquent
  */
 class ContributoCassa extends BaseModel

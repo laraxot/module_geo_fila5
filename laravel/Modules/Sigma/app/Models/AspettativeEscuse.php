@@ -12,10 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|AspettativeEscuse newModelQuery()
  * @method static Builder|AspettativeEscuse newQuery()
  * @method static Builder|AspettativeEscuse query()
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\AspettativeEscuseFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class AspettativeEscuse extends BaseModel

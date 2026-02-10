@@ -25,6 +25,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static Builder|IndividualeCatCoeff newModelQuery()
  * @method static Builder|IndividualeCatCoeff newQuery()
  * @method static Builder|IndividualeCatCoeff query()
@@ -41,10 +42,11 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|IndividualeCatCoeff whereTotGiorniPtCoeff($value)
  * @method static Builder|IndividualeCatCoeff whereUpdatedAt($value)
  * @method static Builder|IndividualeCatCoeff whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
  * @property mixed $tot Dynamic property from selectRaw queries
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class IndividualeCatCoeff extends BaseModel

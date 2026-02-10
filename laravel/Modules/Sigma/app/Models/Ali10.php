@@ -49,6 +49,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $equip
  * @property string|null $seqxx
  * @property string|null $seqyy
+ *
  * @method static Builder|Ali10 newModelQuery()
  * @method static Builder|Ali10 newQuery()
  * @method static Builder|Ali10 query()
@@ -92,10 +93,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ali10 whereSess1($value)
  * @method static Builder|Ali10 whereStab($value)
  * @method static Builder|Ali10 whereTip1($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Ali10Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ali10 extends BaseModel

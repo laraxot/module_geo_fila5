@@ -54,6 +54,7 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @property int $asz005
  * @property-read Codici|null $codici
  * @property-read mixed $aszdescr
+ *
  * @method static Builder|Asz00f newModelQuery()
  * @method static Builder|Asz00f newQuery()
  * @method static Builder|Asz00f ofCodici($lista_codici)
@@ -105,13 +106,7 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder|Asz00f whereMatr($value)
  * @method static Builder|Asz00f withDays(int $date_min, int $date_max)
  * @method static Builder|Asz00f ofEnte(int $ente)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read string $from_field
- * @property-read string $to_field
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Asz00fFactory factory($count = null, $state = [])
- * @method static Builder<static>|Asz00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ *
  * @mixin \Eloquent
  */
 class Asz00f extends BaseModel

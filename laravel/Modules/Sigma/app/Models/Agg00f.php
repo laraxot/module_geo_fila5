@@ -67,6 +67,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $tce
  * @property string|null $tcdeu
  * @property string|null $tceeu
+ *
  * @method static Builder|Agg00f newModelQuery()
  * @method static Builder|Agg00f newQuery()
  * @method static Builder|Agg00f query()
@@ -128,10 +129,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Agg00f whereTle($value)
  * @method static Builder|Agg00f whereTleeu($value)
  * @method static Builder|Agg00f whereTmm($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Agg00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Agg00f extends BaseModel

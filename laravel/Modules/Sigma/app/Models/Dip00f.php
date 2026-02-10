@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $codqua
  * @property string|null $liv
  * @property string|null $qualif
+ *
  * @method static Builder|Dip00f newModelQuery()
  * @method static Builder|Dip00f newQuery()
  * @method static Builder|Dip00f query()
@@ -24,10 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dip00f wherePosfun($value)
  * @method static Builder|Dip00f wherePropro($value)
  * @method static Builder|Dip00f whereQualif($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Dip00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Dip00f extends BaseModel

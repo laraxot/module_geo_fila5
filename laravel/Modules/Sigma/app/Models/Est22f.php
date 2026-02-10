@@ -93,6 +93,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab22
  * @property string|null $mese22
  * @property string|null $ann22
+ *
  * @method static Builder|Est22f newModelQuery()
  * @method static Builder|Est22f newQuery()
  * @method static Builder|Est22f query()
@@ -180,10 +181,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est22f whereVoce8e($value)
  * @method static Builder|Est22f whereVocfoe($value)
  * @method static Builder|Est22f whereVocfoi($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Est22fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est22f extends BaseModel

@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mov003
  * @property string|null $mov004
  * @property string|null $mov005
+ *
  * @method static Builder|Mov04l1 newModelQuery()
  * @method static Builder|Mov04l1 newQuery()
  * @method static Builder|Mov04l1 query()
@@ -58,10 +59,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mov04l1 whereMov005($value)
  * @method static Builder|Mov04l1 whereMov2kn($value)
  * @method static Builder|Mov04l1 whereMov2kz($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Mov04l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Mov04l1 extends BaseModel

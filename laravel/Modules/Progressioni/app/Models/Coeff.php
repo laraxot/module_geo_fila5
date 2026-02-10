@@ -25,6 +25,7 @@ use Modules\Progressioni\Database\Factories\CoeffFactory;
  * @property string|null $created_ip
  * @property string|null $updated_ip
  * @property string|null $guid
+ *
  * @method static CoeffFactory factory($count = null, $state = [])
  * @method static Builder|Coeff newModelQuery()
  * @method static Builder|Coeff newQuery()
@@ -43,9 +44,7 @@ use Modules\Progressioni\Database\Factories\CoeffFactory;
  * @method static Builder|Coeff whereUpdatedBy($value)
  * @method static Builder|Coeff whereUpdatedIp($value)
  * @method static Builder|Coeff whereValue($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class Coeff extends BaseModel

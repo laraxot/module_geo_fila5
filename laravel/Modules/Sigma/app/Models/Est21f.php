@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab21
  * @property string|null $mese21
  * @property string|null $ann21
+ *
  * @method static Builder|Est21f newModelQuery()
  * @method static Builder|Est21f newQuery()
  * @method static Builder|Est21f query()
@@ -76,10 +77,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est21f whereVoce3c($value)
  * @method static Builder|Est21f whereVoce4c($value)
  * @method static Builder|Est21f whereVocfor($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Est21fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est21f extends BaseModel

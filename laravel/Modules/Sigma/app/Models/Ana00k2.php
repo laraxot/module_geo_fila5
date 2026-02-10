@@ -71,6 +71,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $comna2
  * @property string|null $comre2
  * @property string|null $comdo2
+ *
  * @method static Builder|Ana00k2 newModelQuery()
  * @method static Builder|Ana00k2 newQuery()
  * @method static Builder|Ana00k2 query()
@@ -136,10 +137,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana00k2 whereTitstu($value)
  * @method static Builder|Ana00k2 whereTopo($value)
  * @method static Builder|Ana00k2 whereTopod($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Ana00k2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ana00k2 extends BaseModel

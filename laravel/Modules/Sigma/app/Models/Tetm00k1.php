@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $asz003
  * @property string|null $asz004
  * @property string|null $asz005
+ *
  * @method static Builder|Tetm00k1 newModelQuery()
  * @method static Builder|Tetm00k1 newQuery()
  * @method static Builder|Tetm00k1 query()
@@ -52,10 +53,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Tetm00k1 whereTemdal($value)
  * @method static Builder|Tetm00k1 whereTemdur($value)
  * @method static Builder|Tetm00k1 whereTemrec($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Tetm00k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Tetm00k1 extends BaseModel

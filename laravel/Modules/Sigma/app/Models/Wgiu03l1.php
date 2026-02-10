@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $g3com7
  * @property string $g3impe
  * @property string $g3unmi
+ *
  * @method static Builder|Wgiu03l1 newModelQuery()
  * @method static Builder|Wgiu03l1 newQuery()
  * @method static Builder|Wgiu03l1 query()
@@ -62,6 +63,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Wgiu03l1 whereLecod1($value)
  * @method static Builder|Wgiu03l1 whereLecod2($value)
  * @method static Builder|Wgiu03l1 whereStdata($value)
+ *
  * @mixin \Eloquent
  */
 class Wgiu03l1 extends Model

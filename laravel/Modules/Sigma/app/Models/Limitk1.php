@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $lim003
  * @property string|null $lim004
  * @property string|null $lim005
+ *
  * @method static Builder|Limitk1 newModelQuery()
  * @method static Builder|Limitk1 newQuery()
  * @method static Builder|Limitk1 query()
@@ -62,10 +63,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Limitk1 whereLimt1($value)
  * @method static Builder|Limitk1 whereLimtip($value)
  * @method static Builder|Limitk1 whereLimum($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Limitk1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Limitk1 extends BaseModel

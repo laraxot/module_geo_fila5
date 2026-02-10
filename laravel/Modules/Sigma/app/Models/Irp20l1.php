@@ -47,6 +47,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $vuo1
  * @property string|null $vuo2
  * @property string|null $vuo3
+ *
  * @method static Builder|Irp20l1 newModelQuery()
  * @method static Builder|Irp20l1 newQuery()
  * @method static Builder|Irp20l1 query()
@@ -88,10 +89,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Irp20l1 whereVuo1($value)
  * @method static Builder|Irp20l1 whereVuo2($value)
  * @method static Builder|Irp20l1 whereVuo3($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Irp20l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Irp20l1 extends BaseModel

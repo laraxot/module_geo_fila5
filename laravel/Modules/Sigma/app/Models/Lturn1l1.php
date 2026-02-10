@@ -50,6 +50,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $fldate
  * @property int|null $fltime
  * @property string|null $fltipo
+ *
  * @method static Builder|Lturn1l1 newModelQuery()
  * @method static Builder|Lturn1l1 newQuery()
  * @method static Builder|Lturn1l1 query()
@@ -94,10 +95,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Lturn1l1 whereT1turn($value)
  * @method static Builder|Lturn1l1 whereTjob($value)
  * @method static Builder|Lturn1l1 whereUtente($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Lturn1l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Lturn1l1 extends BaseModel

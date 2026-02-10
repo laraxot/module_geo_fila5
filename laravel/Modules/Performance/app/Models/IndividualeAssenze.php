@@ -24,6 +24,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $updated_by
  * @property string|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|IndividualeAssenze newModelQuery()
  * @method static Builder|IndividualeAssenze newQuery()
  * @method static Builder|IndividualeAssenze query()
@@ -38,9 +39,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|IndividualeAssenze whereTipo($value)
  * @method static Builder|IndividualeAssenze whereUpdatedAt($value)
  * @method static Builder|IndividualeAssenze whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class IndividualeAssenze extends BaseModel

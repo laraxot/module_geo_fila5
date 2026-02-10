@@ -36,6 +36,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $qua003
  * @property string|null $qua004
  * @property string|null $qua005
+ *
  * @method static Builder|Qua02k1 newModelQuery()
  * @method static Builder|Qua02k1 newQuery()
  * @method static Builder|Qua02k1 query()
@@ -66,10 +67,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua02k1 whereS01($value)
  * @method static Builder|Qua02k1 whereS02($value)
  * @method static Builder|Qua02k1 whereS05($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Qua02k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Qua02k1 extends BaseModel

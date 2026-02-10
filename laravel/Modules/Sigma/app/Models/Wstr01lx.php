@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Date;
  * @property int $wtcom2
  * @property string $ixterm
  * @property-read Anag|null $anag
+ *
  * @method static Builder|Wstr01lx newModelQuery()
  * @method static Builder|Wstr01lx newQuery()
  * @method static Builder|Wstr01lx query()
@@ -61,6 +62,7 @@ use Illuminate\Support\Facades\Date;
  * @method static Builder|Wstr01lx whereWtteor($value)
  * @method static Builder|Wstr01lx whereWxorat($value)
  * @method static Builder|Wstr01lx whereWyorat($value)
+ *
  * @mixin \Eloquent
  */
 class Wstr01lx extends Model

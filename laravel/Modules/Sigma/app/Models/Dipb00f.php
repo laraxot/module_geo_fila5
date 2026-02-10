@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dbcom2
  * @property string|null $dbcom3
  * @property string|null $dbcom4
+ *
  * @method static Builder|Dipb00f newModelQuery()
  * @method static Builder|Dipb00f newQuery()
  * @method static Builder|Dipb00f query()
@@ -34,10 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dipb00f whereDbmatr($value)
  * @method static Builder|Dipb00f whereEnteap($value)
  * @method static Builder|Dipb00f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Dipb00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Dipb00f extends BaseModel

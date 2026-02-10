@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $desart
  * @property string|null $lib001
  * @property string|null $lib002
+ *
  * @method static Builder|Aliqu5l1 newModelQuery()
  * @method static Builder|Aliqu5l1 newQuery()
  * @method static Builder|Aliqu5l1 query()
@@ -68,10 +69,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Aliqu5l1 whereQ3voc1($value)
  * @method static Builder|Aliqu5l1 whereSstco1($value)
  * @method static Builder|Aliqu5l1 whereStrco1($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Aliqu5l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Aliqu5l1 extends BaseModel

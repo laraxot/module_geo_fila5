@@ -48,6 +48,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $cumuv3
  * @property string|null $cumuv4
  * @property string|null $irpann
+ *
  * @method static Builder|Irp11l1 newModelQuery()
  * @method static Builder|Irp11l1 newQuery()
  * @method static Builder|Irp11l1 query()
@@ -90,10 +91,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Irp11l1 whereRirap3($value)
  * @method static Builder|Irp11l1 whereRirapt($value)
  * @method static Builder|Irp11l1 whereRitadd($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Irp11l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Irp11l1 extends BaseModel

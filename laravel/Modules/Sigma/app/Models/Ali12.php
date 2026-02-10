@@ -77,6 +77,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $lib5
  * @property string|null $lib6
  * @property string|null $lib7
+ *
  * @method static Builder|Ali12 newModelQuery()
  * @method static Builder|Ali12 newQuery()
  * @method static Builder|Ali12 query()
@@ -148,10 +149,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ali12 whereRuolo($value)
  * @method static Builder|Ali12 whereStab($value)
  * @method static Builder|Ali12 whereTipco($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Ali12Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ali12 extends BaseModel

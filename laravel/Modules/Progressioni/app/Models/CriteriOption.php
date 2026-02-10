@@ -21,6 +21,7 @@ use Modules\Progressioni\Database\Factories\CriteriOptionFactory;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static CriteriOptionFactory factory($count = null, $state = [])
  * @method static Builder|CriteriOption newModelQuery()
  * @method static Builder|CriteriOption newQuery()
@@ -34,11 +35,7 @@ use Modules\Progressioni\Database\Factories\CriteriOptionFactory;
  * @method static Builder|CriteriOption whereUpdatedAt($value)
  * @method static Builder|CriteriOption whereUpdatedBy($value)
  * @method static Builder|CriteriOption whereValue($value)
- * @property string|null $note
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static Builder<static>|CriteriOption whereNote($value)
+ *
  * @mixin \Eloquent
  */
 class CriteriOption extends BaseModel

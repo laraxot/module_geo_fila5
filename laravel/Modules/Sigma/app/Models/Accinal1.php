@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $accann
  * @property int $accaa
  * @property int $accmm
+ *
  * @method static Builder|Accinal1 newModelQuery()
  * @method static Builder|Accinal1 newQuery()
  * @method static Builder|Accinal1 query()
@@ -30,10 +31,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Accinal1 whereImpeur($value)
  * @method static Builder|Accinal1 whereImpina($value)
  * @method static Builder|Accinal1 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Accinal1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Accinal1 extends BaseModel

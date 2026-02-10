@@ -24,6 +24,7 @@ use Modules\Xot\Traits\Updater;
  * @property float|null $min_gg_365
  * @property float|null $max_gg_365
  * @property float|null $decurtazione_perc
+ *
  * @method static Builder|IndividualeDecurtazioneAssenze newModelQuery()
  * @method static Builder|IndividualeDecurtazioneAssenze newQuery()
  * @method static Builder|IndividualeDecurtazioneAssenze query()
@@ -38,9 +39,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|IndividualeDecurtazioneAssenze whereMinPerc($value)
  * @method static Builder|IndividualeDecurtazioneAssenze whereUpdatedAt($value)
  * @method static Builder|IndividualeDecurtazioneAssenze whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class IndividualeDecurtazioneAssenze extends BaseModel

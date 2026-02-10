@@ -288,6 +288,7 @@ use RuntimeException;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
+ *
  * @method static SchedeFactory factory($count = null, $state = [])
  * @method static Builder|Schede newModelQuery()
  * @method static Builder|Schede newQuery()
@@ -416,78 +417,7 @@ use RuntimeException;
  * @method static Builder|Schede whereValutatoreId($value)
  * @method static Builder|Schede whereVincitore($value)
  * @method static Builder|Schede withDays(int $date_min, int $date_max)
- * @property int|null $gg_cateco
- * @property float|null $gg_no_asz
- * @property int|null $gg_cateco_no_posfun_no_asz
- * @property float|null $gg_fuori_sede_no_asz
- * @property int|null $gg_asz_cateco_in_sede
- * @property int|null $gg_asz_cateco_fuori_sede
- * @property int $gg_asz_cateco
- * @property int|null $gg_cateco_no_asz
- * @property numeric|null $perf_ind_2024
- * @property numeric|null $perf_ind_2025
- * @property numeric|null $perf_ind_2026
- * @property numeric|null $perf_ind_2027
- * @property numeric|null $perf_ind_2028
- * @property numeric|null $perf_ind_2029
- * @property numeric|null $perf_ind_2030
- * @property numeric $perf_ind_2022
- * @property numeric $perf_ind_-1
- * @property numeric $perf_ind_-2
- * @property numeric $perf_ind_-3
- * @property numeric $perf_ind_2023
- * @property string|null $refreshed_at
- * @property int|null $gg_integ_params
- * @property int|null $gg_esperienza_no_asz
- * @property float|null $gg_integ_params_asz
- * @property-read Collection<int, Asz00k1> $aszEff
- * @property-read int|null $asz_eff_count
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read string|null $codice_fiscale
- * @property-read string $from_field
- * @property-read int|null $gg_cateco_sup
- * @property-read int|null $gg_cateco_sup_fuori_sede
- * @property-read string|null $inail
- * @property-read float|null $perf_ind2025
- * @property-read float|null $perf_ind2026
- * @property-read float|null $perf_ind2027
- * @property-read float|null $perf_ind2028
- * @property-read float|null $perf_ind2029
- * @property-read float|null $perf_ind2030
- * @property-read string|null $sesso
- * @property-read string $to_field
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
- * @property-read int|null $integ_params_count
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static Builder<static>|Schede ofEnte(int $ente)
- * @method static Builder<static>|Schede ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- * @method static Builder<static>|Schede whereGgAszCateco($value)
- * @method static Builder<static>|Schede whereGgAszCatecoFuoriSede($value)
- * @method static Builder<static>|Schede whereGgAszCatecoInSede($value)
- * @method static Builder<static>|Schede whereGgAszInSede($value)
- * @method static Builder<static>|Schede whereGgCateco($value)
- * @method static Builder<static>|Schede whereGgCatecoNoAsz($value)
- * @method static Builder<static>|Schede whereGgCatecoNoPosfunNoAsz($value)
- * @method static Builder<static>|Schede whereGgEsperienzaNoAsz($value)
- * @method static Builder<static>|Schede whereGgFuoriSedeNoAsz($value)
- * @method static Builder<static>|Schede whereGgIntegParams($value)
- * @method static Builder<static>|Schede whereGgIntegParamsAsz($value)
- * @method static Builder<static>|Schede whereGgNoAsz($value)
- * @method static Builder<static>|Schede whereHhAszInSede($value)
- * @method static Builder<static>|Schede wherePerfInd1($value)
- * @method static Builder<static>|Schede wherePerfInd2($value)
- * @method static Builder<static>|Schede wherePerfInd2022($value)
- * @method static Builder<static>|Schede wherePerfInd2023($value)
- * @method static Builder<static>|Schede wherePerfInd2024($value)
- * @method static Builder<static>|Schede wherePerfInd2025($value)
- * @method static Builder<static>|Schede wherePerfInd2026($value)
- * @method static Builder<static>|Schede wherePerfInd2027($value)
- * @method static Builder<static>|Schede wherePerfInd2028($value)
- * @method static Builder<static>|Schede wherePerfInd2029($value)
- * @method static Builder<static>|Schede wherePerfInd2030($value)
- * @method static Builder<static>|Schede wherePerfInd3($value)
- * @method static Builder<static>|Schede whereRefreshedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Schede extends BaseModel implements ProgressioneSchedaContract

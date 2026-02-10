@@ -45,6 +45,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $t1com5
  * @property int $t1com6
  * @property int $t1com7
+ *
  * @method static Builder|Turn01lx newModelQuery()
  * @method static Builder|Turn01lx newQuery()
  * @method static Builder|Turn01lx query()
@@ -84,10 +85,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Turn01lx whereT1svil($value)
  * @method static Builder|Turn01lx whereT1teef($value)
  * @method static Builder|Turn01lx whereT1turn($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Turn01lxFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Turn01lx extends BaseModel

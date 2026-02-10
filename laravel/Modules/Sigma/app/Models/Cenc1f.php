@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $cdc001
  * @property string|null $cdc002
  * @property string|null $cdc003
+ *
  * @method static Builder|Cenc1f newModelQuery()
  * @method static Builder|Cenc1f newQuery()
  * @method static Builder|Cenc1f query()
@@ -40,10 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cenc1f whereCdcdel($value)
  * @method static Builder|Cenc1f whereEnte($value)
  * @method static Builder|Cenc1f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Cenc1fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cenc1f extends BaseModel

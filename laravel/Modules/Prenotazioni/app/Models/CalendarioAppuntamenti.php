@@ -29,6 +29,7 @@ use Modules\Ptv\Models\Profile;
  * @property Carbon|null $updated_at
  * @property string|null $deleted_by
  * @property string|null $deleted_at
+ *
  * @method static CalendarioAppuntamentiFactory factory($count = null, $state = [])
  * @method static Builder|CalendarioAppuntamenti newModelQuery()
  * @method static Builder|CalendarioAppuntamenti newQuery()
@@ -50,9 +51,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|CalendarioAppuntamenti whereNote($value)
  * @method static Builder|CalendarioAppuntamenti whereUpdatedAt($value)
  * @method static Builder|CalendarioAppuntamenti whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class CalendarioAppuntamenti extends BaseModel

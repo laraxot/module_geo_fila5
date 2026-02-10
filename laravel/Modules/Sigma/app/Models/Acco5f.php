@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $vocac5
  * @property int $datac5
  * @property int $impac5
+ *
  * @method static Builder|Acco5f newModelQuery()
  * @method static Builder|Acco5f newQuery()
  * @method static Builder|Acco5f query()
@@ -26,10 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Acco5f wherePro($value)
  * @method static Builder|Acco5f whereRap($value)
  * @method static Builder|Acco5f whereVocac5($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Acco5fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Acco5f extends BaseModel

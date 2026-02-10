@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mese
  * @property string|null $n_mand
  * @property string|null $atto
+ *
  * @method static Builder|Certificazioni newModelQuery()
  * @method static Builder|Certificazioni newQuery()
  * @method static Builder|Certificazioni query()
@@ -56,10 +57,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Certificazioni whereSommeNonSoggette($value)
  * @method static Builder|Certificazioni whereTipoDocumento($value)
  * @method static Builder|Certificazioni whereVia($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\CertificazioniFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Certificazioni extends BaseModel

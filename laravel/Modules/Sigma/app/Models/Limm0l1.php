@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $lmm003
  * @property string|null $lmm004
  * @property string|null $lmm005
+ *
  * @method static Builder|Limm0l1 newModelQuery()
  * @method static Builder|Limm0l1 newQuery()
  * @method static Builder|Limm0l1 query()
@@ -48,10 +49,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Limm0l1 whereLmm004($value)
  * @method static Builder|Limm0l1 whereLmm005($value)
  * @method static Builder|Limm0l1 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Limm0l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Limm0l1 extends BaseModel

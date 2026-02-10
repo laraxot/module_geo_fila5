@@ -72,6 +72,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $aspte
  * @property string $anaann
  * @property-read string|null $cognome
+ *
  * @method static Builder|Ana10f newModelQuery()
  * @method static Builder|Ana10f newQuery()
  * @method static Builder|Ana10f query()
@@ -135,6 +136,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Ana10f whereTiprec($value)
  * @method static Builder|Ana10f whereTitpro($value)
  * @method static Builder|Ana10f whereTitstu($value)
+ *
  * @mixin \Eloquent
  */
 class Ana10f extends Model

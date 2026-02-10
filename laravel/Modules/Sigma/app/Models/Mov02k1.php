@@ -48,6 +48,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mo2003
  * @property string|null $mo2004
  * @property string|null $mo2005
+ *
  * @method static Builder|Mov02k1 newModelQuery()
  * @method static Builder|Mov02k1 newQuery()
  * @method static Builder|Mov02k1 query()
@@ -90,10 +91,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mov02k1 whereMo2v10($value)
  * @method static Builder|Mov02k1 whereMo2v11($value)
  * @method static Builder|Mov02k1 whereMo2v12($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Mov02k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Mov02k1 extends BaseModel

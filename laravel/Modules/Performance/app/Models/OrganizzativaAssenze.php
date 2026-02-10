@@ -21,6 +21,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static Builder|OrganizzativaAssenze newModelQuery()
  * @method static Builder|OrganizzativaAssenze newQuery()
  * @method static Builder|OrganizzativaAssenze query()
@@ -33,9 +34,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|OrganizzativaAssenze whereTipo($value)
  * @method static Builder|OrganizzativaAssenze whereUpdatedAt($value)
  * @method static Builder|OrganizzativaAssenze whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class OrganizzativaAssenze extends BaseModel

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $banca
  * @property string|null $agenz
  * @property string|null $desban
+ *
  * @method static Builder|Bancheba newModelQuery()
  * @method static Builder|Bancheba newQuery()
  * @method static Builder|Bancheba query()
@@ -20,10 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Bancheba whereBanca($value)
  * @method static Builder|Bancheba whereDesban($value)
  * @method static Builder|Bancheba whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\BanchebaFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Bancheba extends BaseModel

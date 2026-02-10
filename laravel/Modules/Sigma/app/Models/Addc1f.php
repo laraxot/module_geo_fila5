@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $addim2
  * @property string|null $addim3
  * @property string|null $addfra
+ *
  * @method static Builder|Addc1f newModelQuery()
  * @method static Builder|Addc1f newQuery()
  * @method static Builder|Addc1f query()
@@ -30,10 +31,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Addc1f whereAddist($value)
  * @method static Builder|Addc1f whereAddper($value)
  * @method static Builder|Addc1f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Addc1fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Addc1f extends BaseModel

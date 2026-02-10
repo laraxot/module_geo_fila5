@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $tabco2
  * @property string|null $tabco3
  * @property string|null $tabco4
+ *
  * @method static Builder|Tabo00l2 newModelQuery()
  * @method static Builder|Tabo00l2 newQuery()
  * @method static Builder|Tabo00l2 query()
@@ -36,10 +37,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Tabo00l2 whereTabora($value)
  * @method static Builder|Tabo00l2 whereTabrep($value)
  * @method static Builder|Tabo00l2 whereTabsta($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Tabo00l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Tabo00l2 extends BaseModel

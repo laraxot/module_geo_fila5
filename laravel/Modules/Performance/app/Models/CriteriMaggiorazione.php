@@ -21,6 +21,7 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static Builder|CriteriMaggiorazione newModelQuery()
  * @method static Builder|CriteriMaggiorazione newQuery()
  * @method static Builder|CriteriMaggiorazione query()
@@ -33,9 +34,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|CriteriMaggiorazione whereMinValutazPerfInd($value)
  * @method static Builder|CriteriMaggiorazione whereUpdatedAt($value)
  * @method static Builder|CriteriMaggiorazione whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class CriteriMaggiorazione extends BaseModel

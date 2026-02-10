@@ -56,6 +56,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $q4003
  * @property string|null $q4004
  * @property string|null $q4005
+ *
  * @method static Builder|Qua04k2 newModelQuery()
  * @method static Builder|Qua04k2 newQuery()
  * @method static Builder|Qua04k2 query()
@@ -106,10 +107,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua04k2 whereQ4tia($value)
  * @method static Builder|Qua04k2 whereQ4tip($value)
  * @method static Builder|Qua04k2 whereQ4tipo($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Qua04k2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Qua04k2 extends BaseModel

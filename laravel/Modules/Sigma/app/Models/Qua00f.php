@@ -74,6 +74,7 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @property string $to_field
  * @property mixed $turno
  * @property Tqu00f|null $tqu00f
+ *
  * @method static Builder|Qua00f newModelQuery()
  * @method static Builder|Qua00f newQuery()
  * @method static Builder|Qua00f ofDate(int $date)
@@ -128,8 +129,7 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @method static Builder|Qua00f withDays(int $date_min, int $date_max)
  * @method static Builder|Qua00f withPercPtime()
  * @method static Builder|Qua00f ofEnte(int $ente)
- * @property-read int|null $ana02f_count
- * @method static Builder<static>|Qua00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ *
  * @mixin \Eloquent
  */
 class Qua00f extends Model

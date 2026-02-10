@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $g4com4
  * @property int|null $g4com5
  * @property string|null $g4com6
+ *
  * @method static Builder|Wgiu04f newModelQuery()
  * @method static Builder|Wgiu04f newQuery()
  * @method static Builder|Wgiu04f query()
@@ -40,10 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wgiu04f whereG4qtar($value)
  * @method static Builder|Wgiu04f whereG4sequ($value)
  * @method static Builder|Wgiu04f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Wgiu04fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Wgiu04f extends BaseModel

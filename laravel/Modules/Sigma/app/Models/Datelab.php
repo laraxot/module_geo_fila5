@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $eladal
  * @property string|null $elaal
  * @property string|null $testo
+ *
  * @method static Builder|Datelab newModelQuery()
  * @method static Builder|Datelab newQuery()
  * @method static Builder|Datelab query()
@@ -26,10 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Datelab wherePayann($value)
  * @method static Builder|Datelab wherePaymon($value)
  * @method static Builder|Datelab whereTesto($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\DatelabFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Datelab extends BaseModel

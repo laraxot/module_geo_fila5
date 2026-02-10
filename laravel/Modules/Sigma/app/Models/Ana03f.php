@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $ana037
  * @property string $ana038
  * @property string $ana039
+ *
  * @method static Builder|Ana03f newModelQuery()
  * @method static Builder|Ana03f newQuery()
  * @method static Builder|Ana03f query()
@@ -64,10 +65,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana03f whereMatr($value)
  * @method static Builder|Ana03f whereStatoe($value)
  * @method static Builder|Ana03f whereTelnum($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Ana03fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ana03f extends BaseModel

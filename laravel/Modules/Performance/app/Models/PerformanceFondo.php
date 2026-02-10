@@ -21,6 +21,7 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|PerformanceFondo newModelQuery()
  * @method static Builder|PerformanceFondo newQuery()
  * @method static Builder|PerformanceFondo query()
@@ -33,9 +34,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|PerformanceFondo whereQuotaOrganizzativa($value)
  * @method static Builder|PerformanceFondo whereUpdatedAt($value)
  * @method static Builder|PerformanceFondo whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class PerformanceFondo extends BaseModel

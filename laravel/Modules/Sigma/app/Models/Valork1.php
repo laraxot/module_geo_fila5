@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $VAL003
  * @property string|null $VAL004
  * @property string|null $VAL005
+ *
  * @method static Builder|Valork1 newModelQuery()
  * @method static Builder|Valork1 newQuery()
  * @method static Builder|Valork1 query()
@@ -50,10 +51,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Valork1 whereVALORA($value)
  * @method static Builder|Valork1 whereVALRAP($value)
  * @method static Builder|Valork1 whereVALS($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Valork1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Valork1 extends BaseModel

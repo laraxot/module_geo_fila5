@@ -179,6 +179,7 @@ use Parental\HasParent;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
+ *
  * @method static Builder|IndividualeDip newModelQuery()
  * @method static Builder|IndividualeDip newQuery()
  * @method static Builder|BaseIndividualeModel ofDate(int $date)
@@ -284,6 +285,7 @@ use Parental\HasParent;
  * @method static Builder|IndividualeDip whereUpdatedBy($value)
  * @method static Builder|BaseIndividualeModel withDays(int $date_min, int $date_max)
  * @method static Builder|BaseIndividualeModel withTotPunt()
+ *
  * @property int|null $assenze_aggiornate Flag per tracciamento aggiornamento assenze, vedi pipeline individuale
  * @property-read Profile|null $creator
  * @property-read Collection<int, CriteriValutazione> $criteriValutazioneOld
@@ -361,39 +363,11 @@ use Parental\HasParent;
  * @property-read string|null $valutatore_txt
  * @property-read Profile|null $updater
  * @property-read StabiDirigente|null $valutatore
+ *
  * @method static Builder<static>|IndividualeDip ofEnte(int $ente)
  * @method static Builder<static>|IndividualeDip ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|IndividualeDip whereAssenzeAggiornate($value)
- * @property string|null $scheda_type
- * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
- * @property-read int|null $activities_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
- * @property-read int|null $avversari_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversariCategoriaEco
- * @property-read int|null $avversari_categoria_eco_count
- * @property-read Profile|null $deleter
- * @property-read string $from_field
- * @property-read float $gg_cateco_posfun_rapportato_max10_valutatore
- * @property-read int|null $gg_esperienza_no_asz
- * @property-read float|null $gg_integ_params_asz
- * @property-read string $to_field
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
- * @property-read int|null $integ_params_count
- * @property-read IndividualeDip|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
- * @property-read int|null $performance_individuale_count
- * @property-read IndividualeDip|null $pesi
- * @property-read Collection<int, Qua00f> $qua00fYear
- * @property-read int|null $qua00f_year_count
- * @property-read IndividualeDip|null $stipendioTabellare
- * @method static Builder<static>|IndividualeDip childrenWith(array $relations)
- * @method static Builder<static>|IndividualeDip childrenWithCount(array $relations)
- * @method static \Modules\Performance\Database\Factories\IndividualeDipFactory factory($count = null, $state = [])
- * @method static Builder<static>|IndividualeDip whereCategoriaEcoval($value)
- * @method static Builder<static>|IndividualeDip wherePosfunval($value)
- * @method static Builder<static>|IndividualeDip whereTitoloDiStudio($value)
- * @method static Builder<static>|IndividualeDip whereType($value)
- * @method static Builder<static>|IndividualeDip whereValutatoreId($value)
+ *
  * @mixin \Eloquent
  */
 class IndividualeDip extends Individuale

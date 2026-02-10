@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dav003
  * @property string|null $dav004
  * @property string|null $dav005
+ *
  * @method static Builder|Dav00k1 newModelQuery()
  * @method static Builder|Dav00k1 newQuery()
  * @method static Builder|Dav00k1 query()
@@ -44,10 +45,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dav00k1 whereId($value)
  * @method static Builder|Dav00k1 whereMatr($value)
  * @method static Builder|Dav00k1 whereVoce($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Dav00k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Dav00k1 extends BaseModel

@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $pp95
  * @property string|null $pp94
  * @property string|null $pp93
+ *
  * @method static Builder|All00f newModelQuery()
  * @method static Builder|All00f newQuery()
  * @method static Builder|All00f query()
@@ -64,10 +65,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|All00f wherePp96($value)
  * @method static Builder|All00f wherePp98($value)
  * @method static Builder|All00f wherePp99($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\All00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class All00f extends BaseModel

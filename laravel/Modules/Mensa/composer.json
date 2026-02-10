@@ -1,6 +1,6 @@
 {
     "name": "laraxot/module_mensa_fila3",
-    "description": "Mensa module for the Laraxot ecosystem.",
+    "description": "",
     "license": "MIT",
     "homepage": "https://github.com/laraxot/module_mensa_fila3.git",
     "authors": [
@@ -9,7 +9,9 @@
             "email": "marco.sottana@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+
+    },
     "require-dev": {},
     "repositories": [
         {

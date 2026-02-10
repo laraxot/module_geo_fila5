@@ -24,6 +24,7 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static CriteriValutazioneFactory factory($count = null, $state = [])
  * @method static Builder|CriteriValutazione newModelQuery()
  * @method static Builder|CriteriValutazione newQuery()
@@ -40,9 +41,7 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|CriteriValutazione wherePostType($value)
  * @method static Builder|CriteriValutazione whereUpdatedAt($value)
  * @method static Builder|CriteriValutazione whereUpdatedBy($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class CriteriValutazione extends BaseModel

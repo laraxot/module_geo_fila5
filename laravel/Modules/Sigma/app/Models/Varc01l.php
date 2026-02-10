@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $vadel
  * @property string|null $vaoold
  * @property string|null $vaonew
+ *
  * @method static Builder|Varc01l newModelQuery()
  * @method static Builder|Varc01l newQuery()
  * @method static Builder|Varc01l query()
@@ -26,10 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Varc01l whereVamatr($value)
  * @method static Builder|Varc01l whereVaonew($value)
  * @method static Builder|Varc01l whereVaoold($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Varc01lFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Varc01l extends BaseModel

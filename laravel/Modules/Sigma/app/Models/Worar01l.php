@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $ordal
  * @property int|null $oral
  * @property string|null $wsc3b
+ *
  * @method static Builder|Worar01l newModelQuery()
  * @method static Builder|Worar01l newQuery()
  * @method static Builder|Worar01l query()
@@ -26,10 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Worar01l whereOrcodi($value)
  * @method static Builder|Worar01l whereOrdal($value)
  * @method static Builder|Worar01l whereWsc3b($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Worar01lFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Worar01l extends BaseModel

@@ -223,6 +223,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $gio66i
  * @property int $gio66r
  * @property string $sino19
+ *
  * @method static Builder|Acco4f newModelQuery()
  * @method static Builder|Acco4f newQuery()
  * @method static Builder|Acco4f query()
@@ -440,10 +441,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Acco4f whereTorcon($value)
  * @method static Builder|Acco4f whereTorriv($value)
  * @method static Builder|Acco4f whereTotcof($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Acco4fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Acco4f extends BaseModel

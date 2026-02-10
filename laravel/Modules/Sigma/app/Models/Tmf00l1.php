@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $tmfdes
  * @property string|null $tmfliv
  * @property string|null $tmfann
+ *
  * @method static Builder|Tmf00l1 newModelQuery()
  * @method static Builder|Tmf00l1 newQuery()
  * @method static Builder|Tmf00l1 query()
@@ -44,10 +45,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Tmf00l1 whereTmfimp($value)
  * @method static Builder|Tmf00l1 whereTmfliv($value)
  * @method static Builder|Tmf00l1 whereVocfis($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Tmf00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Tmf00l1 extends BaseModel

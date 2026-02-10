@@ -17,9 +17,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $matr Matricola
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
  * @method static Builder|Valutatore query()
+ *
  * @mixin \Eloquent
  */
 class Valutatore extends Model

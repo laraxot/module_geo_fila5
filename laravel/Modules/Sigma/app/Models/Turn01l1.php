@@ -47,6 +47,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $t1com5
  * @property int $t1com6
  * @property int $t1com7
+ *
  * @method static Builder|Turn01l1 newModelQuery()
  * @method static Builder|Turn01l1 newQuery()
  * @method static Builder|Turn01l1 query()
@@ -86,6 +87,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Turn01l1 whereT1svil($value)
  * @method static Builder|Turn01l1 whereT1teef($value)
  * @method static Builder|Turn01l1 whereT1turn($value)
+ *
  * @mixin \Eloquent
  */
 class Turn01l1 extends Model

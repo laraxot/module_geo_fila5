@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read int|null $qua00f_count
  * @property-read Collection<int, Turn01l1> $turn01l1
  * @property-read int|null $turn01l1_count
+ *
  * @method static Builder|Dipt00f newModelQuery()
  * @method static Builder|Dipt00f newQuery()
  * @method static Builder|Dipt00f query()
@@ -55,8 +56,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|Dipt00f whereDtturn($value)
  * @method static Builder|Dipt00f whereEnteap($value)
  * @method static Builder|Dipt00f whereId($value)
- * @property-read Collection<int, \Modules\Sigma\Models\Rep00f> $rep00f
- * @property-read int|null $rep00f_count
+ *
  * @mixin \Eloquent
  */
 class Dipt00f extends Model

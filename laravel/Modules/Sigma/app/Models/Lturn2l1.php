@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $fldate
  * @property int|null $fltime
  * @property string|null $fltipo
+ *
  * @method static Builder|Lturn2l1 newModelQuery()
  * @method static Builder|Lturn2l1 newQuery()
  * @method static Builder|Lturn2l1 query()
@@ -40,10 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Lturn2l1 whereT2stor($value)
  * @method static Builder|Lturn2l1 whereTjob($value)
  * @method static Builder|Lturn2l1 whereUtente($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Lturn2l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Lturn2l1 extends BaseModel

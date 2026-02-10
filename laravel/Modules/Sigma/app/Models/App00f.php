@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $anznv
  * @property string|null $anzdif
  * @property string|null $anzeur
+ *
  * @method static Builder|App00f newModelQuery()
  * @method static Builder|App00f newQuery()
  * @method static Builder|App00f query()
@@ -34,10 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|App00f whereEnte($value)
  * @method static Builder|App00f whereId($value)
  * @method static Builder|App00f whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\App00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class App00f extends BaseModel

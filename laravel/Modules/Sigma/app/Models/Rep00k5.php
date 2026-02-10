@@ -43,6 +43,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $rep003
  * @property string|null $rep004
  * @property string|null $rep005
+ *
  * @method static Builder|Rep00k5 newModelQuery()
  * @method static Builder|Rep00k5 newQuery()
  * @method static Builder|Rep00k5 query()
@@ -80,10 +81,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Rep00k5 whereRepre2($value)
  * @method static Builder|Rep00k5 whereRepst1($value)
  * @method static Builder|Rep00k5 whereRepst2($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @method static \Modules\Sigma\Database\Factories\Rep00k5Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Rep00k5 extends BaseModel

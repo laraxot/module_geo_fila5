@@ -11,10 +11,11 @@ use Override;
 
 /**
  * Modello per i totali aggregati per valutatore_id.
- * 
+ *
  * Regola: questo modello DEVE estendere il BaseModel locale (Modules\Performance\Models\BaseModel) e NON Modules\Xot\Models\BaseModel, secondo la nuova regola architetturale (vedi docs/organizzativa-models.md e Xot/docs/MIGRATION_BASE_RULES.md).
  *
  * @see https://github.com/laraxot/windsurf
+ *
  * @property int $id
  * @property int|null $valutatore_id
  * @property string|null $anno
@@ -34,6 +35,7 @@ use Override;
  * @property string|null $deleted_by
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|OrganizzativaTotValutatoreId newModelQuery()
  * @method static Builder<static>|OrganizzativaTotValutatoreId newQuery()
  * @method static Builder<static>|OrganizzativaTotValutatoreId query()
@@ -54,7 +56,7 @@ use Override;
  * @method static Builder<static>|OrganizzativaTotValutatoreId whereUpdatedAt($value)
  * @method static Builder<static>|OrganizzativaTotValutatoreId whereUpdatedBy($value)
  * @method static Builder<static>|OrganizzativaTotValutatoreId whereValutatoreId($value)
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class OrganizzativaTotValutatoreId extends BaseModel
