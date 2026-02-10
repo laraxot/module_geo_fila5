@@ -44,15 +44,15 @@ trait CreatesApplication
         // This ensures that when 'module:migrate' runs for all modules, their specific connections
         // (e.g. 'quaeris', 'notify') resolve to the main test database used by 'mysql'.
         $defaultConfig = $app['config']->get('database.connections.mysql');
-        
+
         $moduleConnections = [
             'user', 'notify', 'geo', 'media', 'job', 'xot',
             'activity', 'cms', 'gdpr', 'lang', 'meetup', 'seo', 'tenant',
-            'quaeris', 'limesurvey'
+            'quaeris', 'limesurvey',
         ];
 
         foreach ($moduleConnections as $connection) {
-             $app['config']->set("database.connections.{$connection}", $defaultConfig);
+            $app['config']->set("database.connections.{$connection}", $defaultConfig);
         }
 
         return $app;

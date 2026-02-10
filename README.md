@@ -1,1862 +1,573 @@
-[![Subtree Sync](https://github.com/provtv/base_ptvx_fila4_mono/actions/workflows/subtree-sync.yml/badge.svg)](https://github.com/provtv/base_ptvx_fila4_mono/actions/workflows/subtree-sync.yml)
+# PTVX - Sistema HR & Performance Evaluation
 
-# PTVX Monorepo
+[![Laravel 12.47.0](https://img.shields.io/badge/Laravel-12.47.0-red.svg)](https://laravel.com/)
+[![Filament 5.0.0](https://img.shields.io/badge/Filament-5.0.0-blue.svg)](https://filamentphp.com/)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
+[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
+[![Laraxot](https://img.shields.io/badge/Laraxot-Modular-orange.svg)](https://laraxot.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-PT VX è un monorepo per la gestione delle applicazioni e dei moduli condivisi.
-...
+> **Sistema modulare HR & Performance evaluation** basato su Laravel 12.47.0 + Filament v5.0.0 + architettura Laraxot. Gestisce valutazioni, indennità, progressioni e documentazione per Pubbliche Amministrazioni.
 
 ---
 
 ## 🎯 Scopo del Progetto
 
-### Il Problema
+### Il Problema Risolto
 
 Le Pubbliche Amministrazioni necessitano di:
-- Valutare il personale secondo criteri oggettivi
-- Calcolare indennità e progressioni
-- Garantire trasparenza e tracciabilità
-- Produrre documentazione conforme
+- **Valutare il personale** secondo criteri oggettivi e tracciabili
+- **Calcolare indennità** con formule definite e audit trail completo
+- **Gestire progressioni** con workflow standardizzato
+- **Garantire trasparenza** e documentazione conforme
 
-### La Soluzione
+### La Soluzione PTVX
 
-Sistema modulare che automatizza:
-- **Valutazioni**: Criteri configurabili, calcoli automatici
-- **Indennità**: Formule definite, audit trail completo
-- **Progressioni**: Workflow standardizzato
-- **Reporting**: PDF e export automatici
+Sistema **modulare enterprise** che automatizza:
+- **Valutazioni**: Criteri configurabili, calcoli automatici, reporting
+- **Indennità**: Formule definite, tracciabilità completa
+- **Progressioni**: Workflow standardizzato, approval chain
+- **Documentazione**: PDF generation, export automatici, version control
 
 ---
 
 ## 🚀 Quick Start
 
-### Documentation
-
-**Start Here**: [docs/claude/README.md](docs/claude/README.md) - AI guidelines  
-**Rules**: [RULES-CONSOLIDATED.txt](RULES-CONSOLIDATED.txt) - 7 cardinal rules
-
-### Setup
+### Setup Iniziale
 
 ```bash
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+# Clone e installazione
+git clone <repository-url>
+cd base_ptvx_fila5_mono/laravel
 composer install
+cp .env.example .env
+php artisan key:generate
+
+# Configurazione database
+# Modifica .env con le tue credenziali DB
 php artisan migrate
 php artisan db:seed
+
+# Frontend
+npm install
+npm run build
 ```
 
-### After .env Changes
+### Comandi Essenziali
 
 ```bash
-# Clear all caches
+# Setup completo (raccomandato)
+composer go                    # Installazione + permessi + ottimizzazione
+
+# Qualità codice
+php -d memory_limit=2G ./vendor/bin/phpstan analyse    # Level 10
+./vendor/bin/pint                                       # Code formatting
+./vendor/bin/pest                                       # Testing
+
+# manutenzione
 bash bashscripts/maintenance/cleanup/clear_all_caches.sh
+php artisan filament:optimize
 ```
 
 ---
 
-## 🚨 Cardinal Rules (MUST FOLLOW)
+## 🚨 Cardinal Rules (OBLIGATORIE)
 
 ### 1. Forward-Only 🔴
 ```bash
-# ❌ NEVER go back
+# ❌ MAI tornare indietro
 git reset --hard HEAD~1
 
-# ✅ ALWAYS go forward
+# ✅ SEMRE andare avanti
 git commit -m "fix: correct issue"
 ```
 
 ### 2. Extend XotBase 🔴
 ```php
-// ❌ NEVER
+// ❌ MAI
 class MyPage extends Filament\Pages\Page
 
-// ✅ ALWAYS
+// ✅ SEMPRE
 class MyPage extends Modules\Xot\Filament\Pages\XotBasePage
 ```
 
 ### 3. No Hardcoded Strings 🔴
 ```php
-// ❌ NEVER
+// ❌ MAI
 TextInput::make('name')->label('Nome')
 
-// ✅ ALWAYS
-TextInput::make('name')  // Auto-translated
+// ✅ SEMPRE
+TextInput::make('name')  // Auto-tradotto
 ```
 
 ### 4. Actions Not Services 🔴
 ```php
-// ❌ NEVER
+// ❌ MAI
 class UserService { }
 
-// ✅ ALWAYS
+// ✅ SEMPRE
 class CreateUserAction { use QueueableAction; }
 ```
 
 ### 5. Scripts in bashscripts/ 🔴
 ```bash
-# ❌ NEVER
+# ❌ MAI
 laravel/script.sh
 
-# ✅ ALWAYS
+# ✅ SEMPRE
 bashscripts/analysis/script.sh
 ```
 
 ### 6. Documentation Naming 🔴
 ```
-# ❌ NEVER
+# ❌ MAI
 Analysis-2025-01-02.md
 CODE_QUALITY.md
 
-# ✅ ALWAYS
+# ✅ SEMPRE
 code-analysis.md
 best-practices.md
 
-# EXCEPTIONS
+# ECCEZIONI
 README.md, CHANGELOG.md
 ```
 
 ### 7. Focus on Business Logic 🔴
 ```markdown
-# ❌ NEVER: Just describe code
+# ❌ MAI: Solo descrizione codice
 "Line 50 creates object"
 
-# ✅ ALWAYS: Explain business purpose
+# ✅ SEMPRE: Spiega scopo business
 "Calculates indennità because PA regulation requires..."
 ```
 
-**Complete Rules**: [RULES-CONSOLIDATED.txt](RULES-CONSOLIDATED.txt)
+---
+
+## 🏗️ Architettura Moduli
+
+### Overview del Sistema
+
+PTVX utilizza **architettura Laraxot** con **35 moduli specializzati**:
+
+```
+PTVX Core System
+├── Framework Modules (8)
+│   ├── Xot           # Core framework Laraxot
+│   ├── User          # Autenticazione e gestione utenti
+│   ├── UI            # Componenti UI e temi
+│   ├── Tenant        # Multi-tenancy
+│   ├── Setting       # Configurazioni di sistema
+│   ├── Media         # Gestione file e media
+│   ├── Notify        # Sistema notifiche
+│   └── Job           # Queue management
+├── Business Modules (20)
+│   ├── Ptv           # Core business logic PTVX
+│   ├── Performance   # Sistema valutazioni
+│   ├── Rating        # Sistema rating polimorfico
+│   ├── Questionari   # Gestione questionari
+│   ├── Progressioni  # Gestione progressioni
+│   ├── IndennitaResponsabilita    # Indennità responsabilità
+│   ├── PresenzeAssenze            # Gestione presenze
+│   ├── Prenotazioni               # Sistema prenotazioni
+│   └── [12 altri moduli business]
+└── Integration Modules (7)
+    ├── Lang          # Sistema traduzioni IT/EN/DE
+    ├── Europa        # Integrazioni UE
+    ├── Gdpr          # Privacy e compliance
+    ├── Sigma         # Integrazioni esterne
+    └── [3 altri moduli integrazione]
+```
+
+### Moduli Principali
+
+| Modulo | Business Purpose | Status PHPStan | Note |
+|--------|-----------------|----------------|------|
+| **Xot** | Core framework Laraxot | ✅ Level 10 | Modulo fondamentale per tutti |
+| **User** | Autenticazione e utenti | ✅ Level 10 | Profile management, roles |
+| **Activity** | Audit trail + Event sourcing | ✅ Level 10 | Tracciamento completo azioni |
+| **Rating** | Sistema valutazioni polimorfico | ✅ Level 10 | Multi-entity rating system |
+| **Performance** | Valutazioni performance | ✅ Level 10 | KPIs e metrics |
+| **Ptv** | Business logic PTVX | ⚠️ In analisi | Core domain logic |
+| **Lang** | Sistema traduzioni | 🔴 126 errori | LaraZeus incompatibilità |
 
 ---
 
-## 🏗️ Moduli Principali
+## 📊 Stato Qualità System
 
-### IndennitaResponsabilita
+### PHPStan Level 10 Compliance
 
-**Business**: Indennità responsabilità dirigenziali  
-**Docs**: [Module README](laravel/Modules/IndennitaResponsabilita/docs/README.md)  
-**Logic**: [Business Logic](laravel/Modules/IndennitaResponsabilita/docs/business-logic.md)
+```bash
+# Analisi completa sistema
+php -d memory_limit=2G ./vendor/bin/phpstan analyse --level=10
 
-### Rating
+# Per modulo
+php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/ModuleName --level=10
+```
 
-**Business**: Sistema valutazioni polimorfico  
-**Docs**: [Module README](laravel/Modules/Rating/docs/README.md)  
-**Recent Fix**: MySQL collation (database migration)
+| Metrica | Valore Attuale | Target |
+|---------|----------------|--------|
+| **PHPStan Level** | 10 (parziale) | 10 (completo) |
+| **Moduli Level 10** | 28/35 (80%) | 35/35 (100%) |
+| **Errori Totali** | 126 (Lang) + 2 (Gdpr) | 0 |
+| **Test Coverage** | Dispari | >90% |
+| **Code Quality** | Buona | Eccellente |
 
-### User
+### Moduli con Problemi
 
-**Business**: Autenticazione e gestione utenti  
-**Docs**: [Module README](laravel/Modules/User/docs/README.md)
+1. **Lang** - 126 errori PHPStan
+   - **Problema**: Incompatibilità LaraZeus package con PHPStan Level 10
+   - **Fix richiesto**: Refactor package o alternative
 
-### Xot
+2. **Gdpr** - 2 errori PHPStan
+   - **Problema**: Type hints mancanti
+   - **Fix**: Aggiungere dichiarazioni tipi
 
-**Business**: Core framework Laraxot  
-**Docs**: [Module README](laravel/Modules/Xot/docs/README.md)
+---
 
-**All Modules**: [docs/claude/module-list.md](docs/claude/module-list.md)
+## 🛠️ Development Workflow
+
+### Ambiente di Sviluppo
+
+```bash
+# Struttura directory
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
+
+# Script di sviluppo
+./check_all_modules.sh              # Analisi PHPStan tutti moduli
+./vendor/bin/pest                   # Testing completo
+./vendor/bin/pint                   # Code formatting
+```
+
+### Modulo Development Sequence
+
+1. **Setup Modulo**
+   ```bash
+   php artisan module:enable ModuleName
+   php artisan migrate --path=Modules/ModuleName/database/migrations
+   ```
+
+2. **Quality Checks**
+   ```bash
+   php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/ModuleName
+   ./vendor/bin/pint Modules/ModuleName
+   ./vendor/bin/pest Modules/ModuleName/tests
+   ```
+
+3. **Documentation Update**
+   ```bash
+   # Update README.md with metrics
+   # Update docs/ with new features
+   ```
+
+4. **Testing Manuale**
+   ```bash
+   php artisan serve
+   # Test in browser Filament admin
+   ```
+
+5. **Commit**
+   ```bash
+   git add .
+   git commit -m "feat(module): add new feature with PHPStan Level 10"
+   ```
 
 ---
 
 ## 📚 Documentation Structure
 
+### Documentation System
+
 ```
 docs/
-├── README.md                    # Documentation hub
-├── claude/                      # AI assistant guidelines
-│   ├── README.md               # Start here for AI
-│   ├── architecture-rules.md   # Critical rules
-│   └── project-rules-summary.md # 7 cardinal rules
-├── rules/                       # Project rules
-│   └── documentation-philosophy.md
-└── troubleshooting/             # Common issues
+├── README.md                           # Hub principale
+├── claude/                            # AI agent guidelines
+│   ├── README.md                      # Start here for AI
+│   ├── architecture-rules.md           # Critical rules
+│   └── project-rules-summary.md       # 7 cardinal rules
+├── phpstan/                          # PHPStan documentation
+│   ├── ANALISI_MODULI_PHPSTAN.md     # Analisi completa
+│   └── phpstan-level-10-guide.md     # Guida compliance
+└── troubleshooting/                   # Common issues
+    └── env-changes-not-applied.md    # Environment fixes
 
 laravel/Modules/*/docs/
-├── README.md                    # Module overview
-├── CHANGELOG.md                 # Temporal history
-├── business-logic.md            # WHY & business rules
-├── architecture-overview.md     # HOW it's structured
-└── [topic-specific].md          # As needed
-
-bashscripts/
-└── [category]/                  # ALL scripts here!
-    └── README.md                # Category docs
+├── README.md                          # Module overview
+├── business-logic.md                  # WHY & business rules
+├── architecture-overview.md           # HOW it's structured
+├── phpstan-compliance.md             # PHPStan status
+├── testing-strategy.md              # Testing approach
+└── [topic-specific].md               # As needed
 ```
+
+### AI/Agent Configuration
+
+MCP Setup file: `laravel/.mcp.json`
+- **Laravel Boost MCP Server** - Artisan commands
+- **Filesystem MCP** - File access
+- **Memory MCP** - Context management
+- **Fetch MCP** - Web requests
+- **MySQL MCP** - Database access
+- **Git MCP** - Version control
 
 ---
 
 ## 🔧 Common Tasks
 
-### Clear Caches (After .env Changes)
+### PHPStan Operations
 
 ```bash
-bash bashscripts/maintenance/cleanup/clear_all_caches.sh
+# Analisi complete sistema
+php -d memory_limit=2G ./vendor/bin/phpstan analyse --level=10
+
+# Analisi modulo specifico
+php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/ModuleName
+
+# Batch analysis
+./check_all_modules.sh
+
+# Fix automatici
+./vendor/bin/rector process Modules/ModuleName --dry-run
 ```
 
-### Quality Checks
+### Testing Operations
 
 ```bash
-cd laravel
-./vendor/bin/phpstan analyze --level=10
-./vendor/bin/pint --test
-php artisan test
+# All tests
+./vendor/bin/pest --coverage
+
+# Module tests
+./vendor/bin/pest Modules/ModuleName/tests
+
+# Single test
+./vendor/bin/pest --filter="test_user_can_login"
+
+# Browser tests (Pest 4)
+./vendor/bin/pest tests/Browser/
 ```
 
 ### Database Operations
 
 ```bash
-# Migrations
+# Migrazioni
 php artisan migrate
+php artisan migrate:fresh --seed
 
-# Seeding
+# Seeding specifico
 bash bashscripts/database/seeding/seed_all.sh
+
+# Backup
+php artisan db:backup
 ```
 
 ---
 
-## 📊 Project Status
+## 🌍 Multi-Language Support
 
-| Aspect | Status |
-|--------|--------|
-| **PHPStan** | Level 9 (improving to 10) |
-| **Tests** | Partial coverage |
-| **Documentation** | ✅ Comprehensive |
-| **Production** | ✅ Stable |
-| **Critical Issues** | ✅ 0 (collation fixed) |
+### Sistema Traduzioni
+
+PTVX supporta **3 lingue** con sistema centralizzato:
+
+| Lingua | Codice | Status |
+|--------|--------|---------|
+| **Italiano** | it | ✅ Primary |
+| **Inglese** | en | ✅ Complete |
+| **Tedesco** | de | ✅ Complete |
+
+### Implementation
+
+```php
+// File di traduzione
+lang/it/validation.php
+lang/en/validation.php
+lang/de/validation.php
+
+// Utilizzo nei moduli
+__('validation.required', ['attribute' => 'nome'])
+trans('modules.performance.title')
+```
+
+### Schemaless Attributes Support
+
+Per moduli che utilizzano attributi dinamici:
+
+```php
+// Model con schemaless attributes
+class User extends Model
+{
+    use HasSchemalessAttributes;
+    
+    protected $schemalessAttributes = [
+        'profile',
+        'preferences',
+        'metadata'
+    ];
+}
+
+// Accesso tipizzato
+$user->profile->get('bio');
+$user->preferences->set('theme', 'dark');
+```
 
 ---
 
-## 🔗 Key Links
+## 🚨 Troubleshooting
 
-- **Rules**: [RULES-CONSOLIDATED.txt](RULES-CONSOLIDATED.txt) - 7 cardinal rules
+### Common Issues
+
+1. **PHPStan Memory Errors**
+   ```bash
+   # Aumenta memoria
+   php -d memory_limit=2G ./vendor/bin/phpstan analyse
+   
+   # Analisi per modulo
+   php -d memory_limit=1G ./vendor/bin/phpstan analyse Modules/Xot
+   ```
+
+2. **Cache Issues After .env Changes**
+   ```bash
+   bash bashscripts/maintenance/cleanup/clear_all_caches.sh
+   php artisan config:clear
+   php artisan route:clear
+   ```
+
+3. **Filament Assets Missing**
+   ```bash
+   php artisan filament:upgrade
+   php artisan filament:optimize
+   npm run build
+   ```
+
+4. **Module Not Found**
+   ```bash
+   php artisan module:list
+   php artisan module:enable ModuleName
+   composer dump-autoload
+   ```
+
+### Module-Specific Fixes
+
+#### Lang Module (126 errors)
+```php
+// Issue: LaraZeus package incompatibility
+// Fix: Rimuovere o sostituire package
+composer remove lara-zeus/spatie-translatable
+// Implementare sistema traduzioni custom basato su Xot
+```
+
+#### Schemaless Attributes Issues
+```php
+// Best practice per nuovi attributi
+class Model extends BaseModel
+{
+    use HasSchemalessAttributes;
+    
+    protected $casts = [
+        'schemaless_attributes' => 'array',
+    ];
+    
+    // Accesso sicuro con default
+    public function getMetaAttribute($value)
+    {
+        return $this->schemaless_attributes->get('meta', []);
+    }
+}
+```
+
+---
+
+## 📈 Performance Metrics
+
+### System Performance
+
+| Metrica | Valore | Target |
+|---------|--------|--------|
+| **Response Time** | <200ms | <150ms |
+| **Memory Usage** | 64MB avg | <50MB |
+| **Database Queries** | Ottimizzato | <5/page |
+| **Test Coverage** | Parziale | >90% |
+| **PHPStan Errors** | 128 totali | 0 |
+
+### Optimization Strategies
+
+1. **Eager Loading**
+   ```php
+   // Evita N+1 queries
+   Model::with(['relation1', 'relation2'])->get();
+   ```
+
+2. **Query Optimization**
+   ```php
+   // Index appropriati
+   $schema = DB::select('SHOW INDEX FROM table_name');
+   ```
+
+3. **Caching Strategy**
+   ```php
+   // Cache configurazioni
+   Cache::remember('config.key', 3600, fn() => config('key'));
+   ```
+
+---
+
+## 🔗 Key Resources
+
+### Documentation
+
 - **AI Guidelines**: [docs/claude/README.md](docs/claude/README.md)
-- **Architecture**: [docs/claude/architecture-rules.md](docs/claude/architecture-rules.md)
-- **Troubleshooting**: [docs/troubleshooting/env-changes-not-applied.md](docs/troubleshooting/env-changes-not-applied.md)
+- **Architecture Rules**: [docs/claude/architecture-rules.md](docs/claude/architecture-rules.md)
+- **PHPStan Analysis**: [docs/phpstan/ANALISI_MODULI_PHPSTAN.md](docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
+- **Module Documentation**: [laravel/Modules/*/docs/](laravel/Modules/*/docs/)
+
+### Development Tools
+
+- **Scripts**: [bashscripts/](bashscripts/) - Automation toolkit
+- **Testing**: [tests/](tests/) - Pest PHP test suite
+- **Configuration**: [laravel/config/](laravel/config/) - Laravel configs
+
+### External Links
+
+- **Laravel Documentation**: https://laravel.com/docs/12.x
+- **Filament Documentation**: https://filamentphp.com/docs/5.x
+- **PHPStan Documentation**: https://phpstan.org/
+- **Laraxot Documentation**: https://laraxot.com/
 
 ---
 
-## 🙏 Philosophy
+## 🙏 Project Philosophy
 
-**Logica**: Forward-only, DRY, KISS, SOLID  
-**Filosofia**: Automation, transparency, consistency, quality  
-**Politica**: No rollbacks, no duplication, no shortcuts  
-**Religione**: XotBase sacred, down() forbidden, tests required  
-**Zen**: Forward path, simple profound, document why
+### Principles
+
+**Technical Excellence**
+- PHPStan Level 10 strict type checking
+- 100% test coverage goal
+- SOLID, DRY, KISS principles
+- Queueable Actions pattern
+
+**Business Value**
+- Automation over manual processes
+- Transparency and auditability
+- Regulatory compliance
+- User-centric design
+
+**Development Culture**
+- Forward-only development
+- Quality-first approach
+- Documentation-driven development
+- Continuous improvement
+
+### Architecture Decisions
+
+1. **Modular Architecture** - Laraxot pattern per scalability
+2. **Event Sourcing** - Audit trail completo via Activity module
+3. **Schemaless Attributes** - Flexibilità dati dinamici
+4. **Queueable Actions** - Performance e reliability
+5. **Filament v5** - Modern admin interface
 
 ---
 
 **Maintained By**: Development Team  
-**Last Critical Fix**: 2025-01-02 (MySQL collation)  
-**Status**: ✅ Production Ready
-
-🎉 **All Issues Resolved - Lesson Learned!**
-
-
-## Regola Fondamentale
-**TUTTI gli script** (PHP, Bash, Python, etc.) devono essere posizionati **SEMPRE** in questa cartella `bashscripts`, **MAI** nella directory Laravel o in altre posizioni.
-## Struttura Organizzativa
-
-# 🚀 Toolkit di Automazione Git per Laraxot PTVX
-
-[![PHPStan](https://img.shields.io/badge/PHPStan-Level%209-brightgreen.svg?style=for-the-badge&logo=php&logoColor=white)](../docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
-[![Bash Version](https://img.shields.io/badge/Bash-5.0%2B-brightgreen.svg)](https://www.gnu.org/software/bash/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/aurmich/bashscripts_fila3)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/odb/official-bash-logo/master/assets/Logos/Icons/PNG/512x512.png" width="200" alt="Bash Logo"/>
-  <br/>
-  <strong>Potenti script Bash per la gestione avanzata dei subtree Git 🌳</strong>
-</div>
-
-## 🌟 Caratteristiche Principali
-
-- 🔄 **Sincronizzazione Automatica** dei subtree Git
-- 🛡️ **Gestione Robusta degli Errori**
-- 🔍 **Logging Dettagliato**
-- 🚦 **Controlli di Sicurezza** integrati
-- 🔧 **Manutenzione Semplificata**
-
-## 📚 Indice
-
-- [Installazione](#-installazione)
-- [Utilizzo](#-utilizzo)
-- [Organizzazione Script](#-organizzazione-script)
-- [Script Disponibili](#-script-disponibili)
-- [Esempi](#-esempi)
-- [Risoluzione Problemi](#-risoluzione-problemi)
-- [Contribuire](#-contribuire)
-
-## 💻 Installazione
-
-```bash
-# Clona il repository
-git clone git@github.com:aurmich/bashscripts_fila3.git
-
-# Rendi gli script eseguibili
-
-chmod +x *.sh
-
-chmod +x *.sh
-chmod +x scripts/**/*.sh
-```
-
-## 🚀 Utilizzo
-
-### Sincronizzazione Subtree
-```bash
-
-./git_sync_subtree.sh <path> <remote_repo>
-
-./git_sync_subtree.sh <path> <remote_repo>
-./scripts/git/git_sync_subtree.sh <path> <remote_repo>
-```
-
-Esempio:
-```bash
-./scripts/git/git_sync_subtree.sh modules/auth git@github.com:user/auth-module.git
-```
-
-## 📁 Organizzazione Script
-
-Tutti gli script sono organizzati in sottocartelle per categoria:
-
-### 🔧 **scripts/git/** - Gestione Git e Subtree
-- `git_sync_subtree.sh` - Sincronizzazione principale
-- `resolve_git_conflict.sh` - Risoluzione conflitti
-- `init-subtrees.sh` - Inizializzazione subtree
-- `reset_subtrees.sh` - Reset subtree
-- `sync_submodules.sh` - Sincronizzazione submodule
-- `rebase_keep_last_commits.sh` - Rebase con mantenimento commit
-
-### 📝 **scripts/docs/** - Gestione Documentazione
-- `docs-audit-dry-kiss.sh` - Audit documentazione
-- `docs-consolidation.sh` - Consolidamento docs
-- `docs-final-optimization.sh` - Ottimizzazione finale
-- `fix-docs-naming.sh` - Correzione naming
-- `organize_docs_structure.sh` - Organizzazione struttura
-- `update_docs.sh` - Aggiornamento documentazione
-
-### 🔍 **scripts/phpstan/** - Analisi Statiche
-- `check_before_phpstan.sh` - Controlli pre-PHPStan
-- `create_phpstan_readme.sh` - Generazione README PHPStan
-- `generate_phpstan_summary.sh` - Riassunto PHPStan
-- `phpstan_docs_generator.sh` - Generatore documentazione
-- `fix-translations.php` - Correzione traduzioni
-
-### 💾 **scripts/backup/** - Backup e Sincronizzazione
-- `backup.sh` - Script di backup
-- `sync_to_disk.sh` - Sincronizzazione su disco
-- `copy_to_mono.sh` - Copia in repository monolitico
-
-### 🔧 **scripts/fix/** - Correzioni e Riparazioni
-- `fix_errors.sh` - Correzione errori
-- `fix_structure.sh` - Correzione struttura
-- `fix_directory_structure.sh` - Correzione struttura directory
-- `fix-psr4-autoloading-violations.sh` - Correzione PSR-4
-
-### 🧪 **scripts/testing/** - Test e Validazione
-- `check_form_schema.php` - Controllo schema form
-- `check_mysql.sh` - Controllo MySQL
-- `test_parse.sh` - Test parsing
-- `phpunit.xml` - Configurazione PHPUnit
-
-### ⚙️ **scripts/config/** - Configurazioni
-- `package.json` - Configurazione Node.js
-- `postcss.config.js` - Configurazione PostCSS
-- `tailwind.config.js` - Configurazione Tailwind
-- `rector.php` - Configurazione Rector
-- `mysql-db-connector.js` - Connettore MySQL
-
-### 🛠️ **scripts/utils/** - Utility e Helper
-- `parse_gitmodules_ini.sh` - Parsing gitmodules
-- `check_mcp_config.php` - Controllo configurazione MCP
-- `tips.txt` - Suggerimenti e trucchi
-- `prompt.txt` - Prompt e template
-- `organize_files.sh` - Organizzazione file
-
-## 📜 Script Disponibili
-
-### 1. Git Management (scripts/git/)
-> 🎯 Script per la gestione Git e subtree
-./git_sync_subtree.sh modules/auth git@github.com:user/auth-module.git
-```
-
-## 📜 Script Disponibili
-
-### 1. git_sync_subtree.sh
-> 🎯 Script principale per la sincronizzazione dei subtree
-
-**Caratteristiche:**
-- Gestione automatica di push e pull
-- Rimozione caratteri CR (^M)
-- Gestione permessi automatica
-
-### 2. Documentation Management (scripts/docs/)
-> 📝 Script per la gestione della documentazione
-
-**Funzionalità:**
-- Audit automatico della documentazione
-- Consolidamento e ottimizzazione
-- Correzione naming conventions
-
-### 3. PHPStan Analysis (scripts/phpstan/)
-> 🔍 Script per analisi statiche
-
-**Caratteristiche:**
-- Controlli pre-PHPStan
-- Generazione documentazione automatica
-- Correzione traduzioni
-
-### 4. Backup & Sync (scripts/backup/)
-> 💾 Script per backup e sincronizzazione
-
-**Funzionalità:**
-- Backup automatico
-- Sincronizzazione su disco
-- Copia in repository monolitico
-
-### 5. Fix & Repair (scripts/fix/)
-> 🔧 Script per correzioni e riparazioni
-
-**Caratteristiche:**
-- Correzione errori automatica
-- Riparazione struttura
-- Correzione violazioni PSR-4
-
-### 2. git_push_subtree.sh
-> 🔼 Gestisce le operazioni di push
-
-**Funzionalità:**
-- Push intelligente con fallback
-- Gestione branch temporanei
-- Rebase automatico
-
-### 3. git_pull_subtree.sh
-> 🔽 Gestisce le operazioni di pull
-
-**Caratteristiche:**
-- Pull con squash opzionale
-- Gestione conflitti automatica
-- Merge strategy personalizzabile
-
-## 🎯 Esempi
-
-### Sincronizzazione Modulo
-```bash
-
-
-
-## Regola Fondamentale
-
-**TUTTI gli script** (PHP, Bash, Python, etc.) devono essere posizionati **SEMPRE** in questa cartella `bashscripts`, **MAI** nella directory Laravel o in altre posizioni.
-
-## Struttura Organizzativa
-
-```bashscripts/
-├── README.md                    # Questo file
-├── database/                    # Script relativi al database
-│   ├── seeding/                # Script per popolamento database
-│   │   ├── <nome progetto>-1000-records.php        # 🎯 PRINCIPALE: 1000 record per modello
-│   │   ├── <nome progetto>-20-studios-66010.php    # 🆕 NUOVO: 20 studi con postal_code 66010 + dottori
-│   │   ├── <nome progetto>-mass-seeding.php         # Popolamento massivo <nome progetto>
-│   │   ├── <nome progetto>-database-seeding.php      # Popolamento <nome progetto>
-│   │   ├── tinker-commands.php                 # Comandi per Tinker
-│   │   ├── tinker-1000-records.php            # Script Tinker per 1000 record
-│   │   ├── tinker-20-studios-66010.php        # 🆕 Script Tinker per 20 studi + dottori
-│   │   └── QUICK_START.md                     # Guida rapida all'utilizzo
-│   ├── migration/              # Script per gestione migrazioni
-│   └── backup/                 # Script per backup database
-├── maintenance/                 # Script di manutenzione
-│   ├── cleanup/                # Script di pulizia
-│   └── optimization/           # Script di ottimizzazione
-├── deployment/                  # Script di deployment
-│   ├── staging/                # Script per ambiente staging
-│   └── production/             # Script per ambiente produzione
-└── utilities/                   # Script di utilità generale
-    ├── monitoring/              # Script di monitoraggio
-    └── reporting/               # Script di reporting
-```
-
-## Script di Seeding Database
-
-### 🎯 **Script Principale: 1000 Record per Modello**
-- **`<nome progetto>-1000-records.php`**: Genera esattamente 1000 doctor, 1000 patients, 1000 studios e 500 appointments
-- **`tinker-1000-records.php`**: Versione semplificata per Tinker
-
-### 🆕 **Script Specializzato: 20 Studi con Postal Code 66010**
-- **`<nome progetto>-20-studios-66010.php`**: Crea 20 studi medici con postal_code = '66010' e **garantisce che ogni studio abbia almeno un dottore collegato**
-- **`tinker-20-studios-66010.php`**: Versione Tinker per 20 studi + dottori
-
-**Caratteristiche principali:**
-- 🎯 **20 studi medici** con postal_code fisso 66010 (Chieti, Abruzzo)
-- 👨‍⚕️ **Almeno 1 dottore** per ogni studio (garantito)
-- 🏥 **Nomi specializzati** per ogni studio (Cardiologico, Ortopedico, etc.)
-- 📍 **Indirizzi realistici** nella zona di Chieti
-- 🔗 **Relazioni automatiche** tra studi e dottori
-- ✅ **Verifica finale** che ogni studio abbia dottori
-
-### **Script Generali**
-- **`<nome progetto>-mass-seeding.php`**: Popolamento massivo generale
-- **`<nome progetto>-database-seeding.php`**: Popolamento modulo <nome progetto>
-- **`tinker-commands.php`**: Comandi generali per Tinker
-
-## Utilizzo degli Script
-
-### Esecuzione Diretta (Raccomandata)
-
-```bash
-# Dalla root del progetto
-cd /var/www/html/_bases/base_<nome progetto>
-
-# Script per 20 studi con dottori (RACCOMANDATO per iniziare)
-php bashscripts/database/seeding/<nome progetto>-20-studios-66010.php
-
-# Script per 1000 record per modello
-php bashscripts/database/seeding/<nome progetto>-1000-records.php
-# Rendi gli script eseguibili
-chmod +x *.sh
-chmod +x scripts/**/*.sh
-```
-
-### Esecuzione via Tinker
-
-```bash
-# Dalla directory Laravel
-cd laravel
-
-# Avvia Tinker
-php artisan tinker
-
-# Incolla il contenuto dello script desiderato
-# Lo script si eseguirà automaticamente
-./git_sync_subtree.sh <path> <remote_repo>
-./scripts/git/git_sync_subtree.sh <path> <remote_repo>
-```
-
-## Caratteristiche degli Script
-
-### Gestione Relazioni Garantite
-- **Studio ↔ Doctor**: Ogni studio ha almeno un dottore
-- **Doctor ↔ Appointment**: Appuntamenti collegati ai dottori
-- **Patient ↔ Appointment**: Pazienti collegati agli appuntamenti
-
-### Dati Realistici e Specializzati
-- **Nomi italiani** per dottori e pazienti
-- **Indirizzi reali** nella zona di Chieti (66010)
-- **Specializzazioni mediche** specifiche per ogni studio
-- **Contatti e orari** realistici per studi medici
-
-### Performance e Sicurezza
-- **Creazione in batch** per grandi volumi
-- **Disabilitazione foreign key** durante il seeding
-- **Transazioni ottimizzate** per consistenza
-- **Verifica automatica** dell'integrità dei dati
-
-## Esempi di Output
-
-### Script 20 Studi con Dottori
-
-```bash
-🏥 Creazione 20 studi medici con postal_code = 66010 e dottori collegati...
-✅ Studio creato: Centro Medico Chieti Centro (ID: 1)
-✅ Studio creato: Studio Dentistico Chieti Nord (ID: 2)
-...
-👨‍⚕️ Dottore creato: Dr. Mario Rossi - Cardiologia per studio Centro Medico Chieti Centro
-👨‍⚕️ Dottore creato: Dr. Anna Bianchi - Dermatologia per studio Studio Dentistico Chieti Nord
-...
-✅ SUCCESSO: Tutti gli studi hanno almeno un dottore collegato!
-```
-
-### Script 1000 Record
-
-```bash
-🚀 Inizializzazione seeding massivo <nome progetto> - 1000 record per modello...
-📊 RISULTATO FINALE:
-  - Studi creati: 1000
-  - Dottori totali: 1000
-  - Pazienti totali: 1000
-  - Appuntamenti totali: 500
-
-```
-
-### Esecuzione via Tinker
-
-```bash
-./git_sync_subtree.sh <path> <remote_repo>
-
-./scripts/git/git_sync_subtree.sh <path> <remote_repo>
-
-
-```
-
-## Caratteristiche degli Script
-
-### Gestione Relazioni Garantite
-- **Studio ↔ Doctor**: Ogni studio ha almeno un dottore
-- **Doctor ↔ Appointment**: Appuntamenti collegati ai dottori
-- **Patient ↔ Appointment**: Pazienti collegati agli appuntamenti
-
-### Dati Realistici e Specializzati
-- **Nomi italiani** per dottori e pazienti
-- **Indirizzi reali** nella zona di Chieti (66010)
-- **Specializzazioni mediche** specifiche per ogni studio
-- **Contatti e orari** realistici per studi medici
-
-### Performance e Sicurezza
-- **Creazione in batch** per grandi volumi
-- **Disabilitazione foreign key** durante il seeding
-- **Transazioni ottimizzate** per consistenza
-- **Verifica automatica** dell'integrità dei dati
-
-## Esempi di Output
-
-### Script 20 Studi con Dottori
-
-```bash
-🏥 Creazione 20 studi medici con postal_code = 66010 e dottori collegati...
-✅ Studio creato: Centro Medico Chieti Centro (ID: 1)
-✅ Studio creato: Studio Dentistico Chieti Nord (ID: 2)
-...
-👨‍⚕️ Dottore creato: Dr. Mario Rossi - Cardiologia per studio Centro Medico Chieti Centro
-👨‍⚕️ Dottore creato: Dr. Anna Bianchi - Dermatologia per studio Studio Dentistico Chieti Nord
-...
-✅ SUCCESSO: Tutti gli studi hanno almeno un dottore collegato!
-```
-
-### Script 1000 Record
-
-```bash
-
-# 🚀 Toolkit di Automazione Git per Laraxot PTVX
-
-## Regola Fondamentale
-
-**TUTTI gli script** (PHP, Bash, Python, etc.) devono essere posizionati **SEMPRE** in questa cartella `bashscripts`, **MAI** nella directory Laravel o in altre posizioni.
-
-## Struttura Organizzativa
-
-```bashscripts/
-├── README.md                    # Questo file
-├── database/                    # Script relativi al database
-│   ├── seeding/                # Script per popolamento database
-│   │   ├── <nome progetto>-1000-records.php        # 🎯 PRINCIPALE: 1000 record per modello
-│   │   ├── <nome progetto>-20-studios-66010.php    # 🆕 NUOVO: 20 studi con postal_code 66010 + dottori
-│   │   ├── <nome progetto>-mass-seeding.php         # Popolamento massivo <nome progetto>
-│   │   ├── <nome progetto>-database-seeding.php      # Popolamento <nome progetto>
-│   │   ├── tinker-commands.php                 # Comandi per Tinker
-│   │   ├── tinker-1000-records.php            # Script Tinker per 1000 record
-│   │   ├── tinker-20-studios-66010.php        # 🆕 Script Tinker per 20 studi + dottori
-│   │   └── QUICK_START.md                     # Guida rapida all'utilizzo
-│   ├── migration/              # Script per gestione migrazioni
-│   └── backup/                 # Script per backup database
-├── maintenance/                 # Script di manutenzione
-│   ├── cleanup/                # Script di pulizia
-│   └── optimization/           # Script di ottimizzazione
-├── deployment/                  # Script di deployment
-│   ├── staging/                # Script per ambiente staging
-│   └── production/             # Script per ambiente produzione
-└── utilities/                   # Script di utilità generale
-    ├── monitoring/              # Script di monitoraggio
-    └── reporting/               # Script di reporting
-```
-
-## Script di Seeding Database
-
-### 🎯 **Script Principale: 1000 Record per Modello**
-- **`<nome progetto>-1000-records.php`**: Genera esattamente 1000 doctor, 1000 patients, 1000 studios e 500 appointments
-- **`tinker-1000-records.php`**: Versione semplificata per Tinker
-
-### 🆕 **Script Specializzato: 20 Studi con Postal Code 66010**
-- **`<nome progetto>-20-studios-66010.php`**: Crea 20 studi medici con postal_code = '66010' e **garantisce che ogni studio abbia almeno un dottore collegato**
-- **`tinker-20-studios-66010.php`**: Versione Tinker per 20 studi + dottori
-
-**Caratteristiche principali:**
-- 🎯 **20 studi medici** con postal_code fisso 66010 (Chieti, Abruzzo)
-- 👨‍⚕️ **Almeno 1 dottore** per ogni studio (garantito)
-- 🏥 **Nomi specializzati** per ogni studio (Cardiologico, Ortopedico, etc.)
-- 📍 **Indirizzi realistici** nella zona di Chieti
-- 🔗 **Relazioni automatiche** tra studi e dottori
-- ✅ **Verifica finale** che ogni studio abbia dottori
-
-### **Script Generali**
-- **`<nome progetto>-mass-seeding.php`**: Popolamento massivo generale
-- **`<nome progetto>-database-seeding.php`**: Popolamento modulo <nome progetto>
-- **`tinker-commands.php`**: Comandi generali per Tinker
-
-## Utilizzo degli Script
-
-### Esecuzione Diretta (Raccomandata)
-
-```bash
-# Dalla root del progetto
-cd /var/www/html/_bases/base_<nome progetto>
-
-
-# Rendi gli script eseguibili
-chmod +x *.sh
-chmod +x scripts/**/*.sh
-```
-
-### Esecuzione via Tinker
-
-```bash
-
-./git_sync_subtree.sh <path> <remote_repo>
-./scripts/git/git_sync_subtree.sh <path> <remote_repo>
-```
-
-## Caratteristiche degli Script
-
-### Gestione Relazioni Garantite
-- **Studio ↔ Doctor**: Ogni studio ha almeno un dottore
-- **Doctor ↔ Appointment**: Appuntamenti collegati ai dottori
-- **Patient ↔ Appointment**: Pazienti collegati agli appuntamenti
-
-### Dati Realistici e Specializzati
-- **Nomi italiani** per dottori e pazienti
-- **Indirizzi reali** nella zona di Chieti (66010)
-- **Specializzazioni mediche** specifiche per ogni studio
-- **Contatti e orari** realistici per studi medici
-
-### Performance e Sicurezza
-- **Creazione in batch** per grandi volumi
-- **Disabilitazione foreign key** durante il seeding
-- **Transazioni ottimizzate** per consistenza
-- **Verifica automatica** dell'integrità dei dati
-
-## Esempi di Output
-
-### Script 20 Studi con Dottori
-
-```bash
-🏥 Creazione 20 studi medici con postal_code = 66010 e dottori collegati...
-✅ Studio creato: Centro Medico Chieti Centro (ID: 1)
-✅ Studio creato: Studio Dentistico Chieti Nord (ID: 2)
-...
-👨‍⚕️ Dottore creato: Dr. Mario Rossi - Cardiologia per studio Centro Medico Chieti Centro
-👨‍⚕️ Dottore creato: Dr. Anna Bianchi - Dermatologia per studio Studio Dentistico Chieti Nord
-...
-✅ SUCCESSO: Tutti gli studi hanno almeno un dottore collegato!
-```
-
-### Script 1000 Record
-
-```bash
-
-
-
-
-# Sincronizza un modulo specifico
-./git_sync_subtree.sh modules/users git@github.com:org/users.git
-
-# Sincronizza con branch specifico
-REMOTE_BRANCH=develop ./git_sync_subtree.sh modules/auth git@github.com:org/auth.git
-
-
-
-
-
-
-# Sincronizza un modulo specifico
-./scripts/git/git_sync_subtree.sh modules/users git@github.com:org/users.git
-
-# Sincronizza con branch specifico
-REMOTE_BRANCH=develop ./scripts/phpstan/check_before_phpstan.sh
-
-# Genera riassunto PHPStan
-./scripts/phpstan/generate_phpstan_summary.sh
-
-```
-
-## ⚠️ Risoluzione Problemi
-
-### Errori Comuni
-
-
-
-```
-
-## Documentazione Correlata
-
-- [Database Seeding](../docs/database-seeding.md) - Documentazione completa seeding
-- [Organizzazione Script](../docs/script-organization.md) - Regole generali script
-- [Quick Start Seeding](database/seeding/QUICK_START.md) - Guida rapida all'utilizzo
-
-## Best Practices
-
-### Prima dell'Esecuzione
-- Backup del database esistente
-- Verifica spazio disco disponibile
-- Controllo configurazione ambiente
-- Test su ambiente di sviluppo
-
-### Durante l'Esecuzione
-- Monitorare output e progressi
-- Verificare statistiche intermedie
-- Controllare utilizzo risorse
-- Gestire eventuali errori
-
-### Dopo l'Esecuzione
-- Verificare integrità relazioni
-- Controllare statistiche finali
-- Testare funzionalità applicazione
-- Documentare modifiche effettuate
-
-## Troubleshooting
-
-### Errori Comuni
-1. **Modulo non trovato**: Verificare installazione modulo <nome progetto>
-2. **Factory non trovato**: Controllare esistenza factory nel modulo
-3. **Errore database**: Verificare migrazioni e configurazione
-4. **Memoria insufficiente**: Utilizzare script in batch più piccoli
-
-### Soluzioni
-1. **Eseguire migrazioni**: `php artisan migrate`
-2. **Verificare autoload**: `composer dump-autoload`
-3. **Controllare namespace**: Verificare struttura moduli
-4. **Testare connessione**: Verificare configurazione database
-
-
-```
-
-## Documentazione Correlata
-
-- [Database Seeding](../docs/database-seeding.md) - Documentazione completa seeding
-- [Organizzazione Script](../docs/script-organization.md) - Regole generali script
-- [Quick Start Seeding](database/seeding/QUICK_START.md) - Guida rapida all'utilizzo
-
-## Best Practices
-
-### Prima dell'Esecuzione
-- Backup del database esistente
-- Verifica spazio disco disponibile
-- Controllo configurazione ambiente
-- Test su ambiente di sviluppo
-
-### Durante l'Esecuzione
-- Monitorare output e progressi
-- Verificare statistiche intermedie
-- Controllare utilizzo risorse
-- Gestire eventuali errori
-
-### Dopo l'Esecuzione
-- Verificare integrità relazioni
-- Controllare statistiche finali
-- Testare funzionalità applicazione
-- Documentare modifiche effettuate
-
-## Troubleshooting
-
-### Errori Comuni
-1. **Modulo non trovato**: Verificare installazione modulo <nome progetto>
-2. **Factory non trovato**: Controllare esistenza factory nel modulo
-3. **Errore database**: Verificare migrazioni e configurazione
-4. **Memoria insufficiente**: Utilizzare script in batch più piccoli
-
-
-
-
-1. **Prefix Option Mancante**
-   ```bash
-   fatal: you must provide the --prefix option
-   ```
-
-
-
-
-   ✅ **Soluzione:** Verifica il path del subtree
-
-2. **Push Rejected**
-   ```bash
-   ! [rejected] dev -> dev (non-fast-forward)
-   ```
-   ✅ **Soluzione:** Esegui prima un pull
-
-
-   **Soluzione**: Verifica che il path del subtree sia corretto
-
-2. **Permessi Script**
-   ```bash
-   Permission denied
-   ```
-   **Soluzione**: Rendi eseguibili gli script
-   ```bash
-   chmod +x scripts/**/*.sh
-   ```
-
-3. **PHPStan Non Trovato**
-   ```bash
-   command not found: phpstan
-   ```
-   **Soluzione**: Installa PHPStan
-   ```bash
-   composer require --dev phpstan/phpstan
-   ```
-
-## 🔧 Manutenzione
-
-### Aggiornamento Script
-```bash
-# Aggiorna tutti gli script
-git pull origin main
-
-# Rendi eseguibili i nuovi script
-chmod +x scripts/**/*.sh
-```
-
-### Backup Configurazioni
-```bash
-# Backup configurazioni
-./scripts/backup/backup.sh
-
-# Sincronizza su disco
-./scripts/backup/sync_to_disk.sh
-```
-
-## 📊 Statistiche
-
-- **Script Git**: 7 script
-- **Script Docs**: 15 script
-- **Script PHPStan**: 6 script
-- **Script Backup**: 3 script
-- **Script Fix**: 5 script
-- **Script Testing**: 4 script
-- **Script Config**: 6 script
-- **Script Utils**: 5 script
-
-**Totale**: 51 script organizzati in 8 categorie
-
-## 🤝 Contribuire
-
-### Setup Sviluppo
-1. Clona il repository
-2. Installa le dipendenze
-3. Configura l'ambiente
-4. Esegui i test
-
-### Convenzioni di Codice
-- Seguire PSR-12 per script PHP
-- Utilizzare shebang corretto per script Bash
-- Documentare tutti gli script
-- Testare prima del commit
-
-### Processo di Pull Request
-1. Crea un branch feature
-2. Implementa le modifiche
-3. Aggiungi i test
-4. Aggiorna la documentazione
-5. Crea la PR
-
-## 📞 Supporto
-
-- **Issues**: [GitHub Issues](https://github.com/aurmich/bashscripts_fila3/issues)
-- **Documentazione**: [Wiki](https://github.com/aurmich/bashscripts_fila3/wiki)
-- **Discussions**: [GitHub Discussions](https://github.com/aurmich/bashscripts_fila3/discussions)
-
-## 📄 Licenza
-
-Questo progetto è rilasciato sotto licenza MIT. Vedi il file [LICENSE](LICENSE) per i dettagli.
-
----
-
-
-
-
-## Note Importanti
-
-- **Regola fondamentale**: Script SEMPRE in `bashscripts/`, MAI in `laravel/`
-- **Categorizzazione**: Organizzare script per funzionalità e modulo
-- **Documentazione**: Aggiornare sempre docs e README
-- **Testing**: Testare sempre in ambiente di sviluppo prima della produzione
-
----
-
-**Ultimo aggiornamento**: Gennaio 2025
-**Versione**: 2.0
-**Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome progetto>
-
-   **Soluzione**: Verifica che il path del subtree sia corretto
-
-- **Regola fondamentale**: Script SEMPRE in `bashscripts/`, MAI in `laravel/`
-- **Categorizzazione**: Organizzare script per funzionalità e modulo
-- **Documentazione**: Aggiornare sempre docs e README
-- **Testing**: Testare sempre in ambiente di sviluppo prima della produzione
-
----
-
-# 🚀 Toolkit di Automazione Git per Laraxot PTVX
-
-[![PHPStan](https://img.shields.io/badge/PHPStan-Level%209-brightgreen.svg?style=for-the-badge&logo=php&logoColor=white)](../docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
-[![Bash Version](https://img.shields.io/badge/Bash-5.0%2B-brightgreen.svg)](https://www.gnu.org/software/bash/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/aurmich/bashscripts_fila3)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/odb/official-bash-logo/master/assets/Logos/Icons/PNG/512x512.png" width="200" alt="Bash Logo"/>
-  <br/>
-  <strong>Potenti script Bash per la gestione avanzata dei subtree Git 🌳</strong>
-</div>
-
-## 🌟 Caratteristiche Principali
-
-- 🔄 **Sincronizzazione Automatica** dei subtree Git
-- 🛡️ **Gestione Robusta degli Errori**
-- 🔍 **Logging Dettagliato**
-- 🚦 **Controlli di Sicurezza** integrati
-- 🔧 **Manutenzione Semplificata**
-
-## 📚 Indice
-
-- [Installazione](#-installazione)
-- [Utilizzo](#-utilizzo)
-- [Organizzazione Script](#-organizzazione-script)
-- [Script Disponibili](#-script-disponibili)
-- [Esempi](#-esempi)
-- [Risoluzione Problemi](#-risoluzione-problemi)
-- [Contribuire](#-contribuire)
-
-## 💻 Installazione
-
-```bash
-# Clona il repository
-git clone git@github.com:aurmich/bashscripts_fila3.git
-
-# Rendi gli script eseguibili
-chmod +x *.sh
-chmod +x scripts/**/*.sh
-```
-
-## 🚀 Utilizzo
-
-### Sincronizzazione Subtree
-```bash
-./git_sync_subtree.sh <path> <remote_repo>
-./scripts/git/git_sync_subtree.sh <path> <remote_repo>
-```
-
-Esempio:
-```bash
-./scripts/git/git_sync_subtree.sh modules/auth git@github.com:user/auth-module.git
-```
-
-## 📁 Organizzazione Script
-
-Tutti gli script sono organizzati in sottocartelle per categoria:
-
-### 🔧 **scripts/git/** - Gestione Git e Subtree
-- `git_sync_subtree.sh` - Sincronizzazione principale
-- `resolve_git_conflict.sh` - Risoluzione conflitti
-- `init-subtrees.sh` - Inizializzazione subtree
-- `reset_subtrees.sh` - Reset subtree
-- `sync_submodules.sh` - Sincronizzazione submodule
-- `rebase_keep_last_commits.sh` - Rebase con mantenimento commit
-
-### 📝 **scripts/docs/** - Gestione Documentazione
-- `docs-audit-dry-kiss.sh` - Audit documentazione
-- `docs-consolidation.sh` - Consolidamento docs
-- `docs-final-optimization.sh` - Ottimizzazione finale
-- `fix-docs-naming.sh` - Correzione naming
-- `organize_docs_structure.sh` - Organizzazione struttura
-- `update_docs.sh` - Aggiornamento documentazione
-
-### 🔍 **scripts/phpstan/** - Analisi Statiche
-- `check_before_phpstan.sh` - Controlli pre-PHPStan
-- `create_phpstan_readme.sh` - Generazione README PHPStan
-- `generate_phpstan_summary.sh` - Riassunto PHPStan
-- `phpstan_docs_generator.sh` - Generatore documentazione
-- `fix-translations.php` - Correzione traduzioni
-
-### 💾 **scripts/backup/** - Backup e Sincronizzazione
-- `backup.sh` - Script di backup
-- `sync_to_disk.sh` - Sincronizzazione su disco
-- `copy_to_mono.sh` - Copia in repository monolitico
-
-### 🔧 **scripts/fix/** - Correzioni e Riparazioni
-- `fix_errors.sh` - Correzione errori
-- `fix_structure.sh` - Correzione struttura
-- `fix_directory_structure.sh` - Correzione struttura directory
-- `fix-psr4-autoloading-violations.sh` - Correzione PSR-4
-
-### 🧪 **scripts/testing/** - Test e Validazione
-- `check_form_schema.php` - Controllo schema form
-- `check_mysql.sh` - Controllo MySQL
-- `test_parse.sh` - Test parsing
-- `phpunit.xml` - Configurazione PHPUnit
-
-### ⚙️ **scripts/config/** - Configurazioni
-- `package.json` - Configurazione Node.js
-- `postcss.config.js` - Configurazione PostCSS
-- `tailwind.config.js` - Configurazione Tailwind
-- `rector.php` - Configurazione Rector
-- `mysql-db-connector.js` - Connettore MySQL
-
-### 🛠️ **scripts/utils/** - Utility e Helper
-- `parse_gitmodules_ini.sh` - Parsing gitmodules
-- `check_mcp_config.php` - Controllo configurazione MCP
-- `tips.txt` - Suggerimenti e trucchi
-- `prompt.txt` - Prompt e template
-- `organize_files.sh` - Organizzazione file
-
-## 📜 Script Disponibili
-
-### 1. Git Management (scripts/git/)
-> 🎯 Script per la gestione Git e subtree
-./git_sync_subtree.sh modules/auth git@github.com:user/auth-module.git
-```
-
-## 📜 Script Disponibili
-
-### 1. git_sync_subtree.sh
-> 🎯 Script principale per la sincronizzazione dei subtree
-
-**Caratteristiche:**
-- Gestione automatica di push e pull
-- Rimozione caratteri CR (^M)
-- Gestione permessi automatica
-
-### 2. Documentation Management (scripts/docs/)
-> 📝 Script per la gestione della documentazione
-
-**Funzionalità:**
-- Audit automatico della documentazione
-- Consolidamento e ottimizzazione
-- Correzione naming conventions
-
-### 3. PHPStan Analysis (scripts/phpstan/)
-> 🔍 Script per analisi statiche
-
-**Caratteristiche:**
-- Controlli pre-PHPStan
-- Generazione documentazione automatica
-- Correzione traduzioni
-
-### 4. Backup & Sync (scripts/backup/)
-> 💾 Script per backup e sincronizzazione
-
-**Funzionalità:**
-- Backup automatico
-- Sincronizzazione su disco
-- Copia in repository monolitico
-
-### 5. Fix & Repair (scripts/fix/)
-> 🔧 Script per correzioni e riparazioni
-
-**Caratteristiche:**
-- Correzione errori automatica
-- Riparazione struttura
-- Correzione violazioni PSR-4
-
-### 2. git_push_subtree.sh
-> 🔼 Gestisce le operazioni di push
-
-**Funzionalità:**
-- Push intelligente con fallback
-- Gestione branch temporanei
-- Rebase automatico
-
-### 3. git_pull_subtree.sh
-> 🔽 Gestisce le operazioni di pull
-
-**Caratteristiche:**
-- Pull con squash opzionale
-- Gestione conflitti automatica
-- Merge strategy personalizzabile
-
-## 🎯 Esempi
-
-### Sincronizzazione Modulo
-```bash
-
-# Sincronizza un modulo specifico
-./git_sync_subtree.sh modules/users git@github.com:org/users.git
-
-# Sincronizza con branch specifico
-REMOTE_BRANCH=develop ./git_sync_subtree.sh modules/auth git@github.com:org/auth.git
-# Sincronizza un modulo specifico
-./scripts/git/git_sync_subtree.sh modules/users git@github.com:org/users.git
-
-# Sincronizza con branch specifico
-REMOTE_BRANCH=develop ./scripts/phpstan/check_before_phpstan.sh
-
-# Genera riassunto PHPStan
-./scripts/phpstan/generate_phpstan_summary.sh
-```
-
-## ⚠️ Risoluzione Problemi
-
-### Errori Comuni
-
-1. **Prefix Option Mancante**
-   ```bash
-   fatal: you must provide the --prefix option
-   ```
-   ✅ **Soluzione:** Verifica il path del subtree
-
-2. **Push Rejected**
-   ```bash
-   ! [rejected] dev -> dev (non-fast-forward)
-   ```
-   ✅ **Soluzione:** Esegui prima un pull
-   **Soluzione**: Verifica che il path del subtree sia corretto
-
-2. **Permessi Script**
-   ```bash
-   Permission denied
-   ```
-   **Soluzione**: Rendi eseguibili gli script
-   ```bash
-   chmod +x scripts/**/*.sh
-   ```
-
-3. **PHPStan Non Trovato**
-   ```bash
-   command not found: phpstan
-   ```
-   **Soluzione**: Installa PHPStan
-   ```bash
-   composer require --dev phpstan/phpstan
-   ```
-
-## 🔧 Manutenzione
-
-### Aggiornamento Script
-```bash
-# Aggiorna tutti gli script
-git pull origin main
-
-# Rendi eseguibili i nuovi script
-chmod +x scripts/**/*.sh
-```
-
-### Backup Configurazioni
-```bash
-# Backup configurazioni
-./scripts/backup/backup.sh
-
-# Sincronizza su disco
-./scripts/backup/sync_to_disk.sh
-```
-
-## 📊 Statistiche
-
-- **Script Git**: 7 script
-- **Script Docs**: 15 script
-- **Script PHPStan**: 6 script
-- **Script Backup**: 3 script
-- **Script Fix**: 5 script
-- **Script Testing**: 4 script
-- **Script Config**: 6 script
-- **Script Utils**: 5 script
-
-**Totale**: 51 script organizzati in 8 categorie
-
-## 🤝 Contribuire
-
-### Setup Sviluppo
-1. Clona il repository
-2. Installa le dipendenze
-3. Configura l'ambiente
-4. Esegui i test
-
-### Convenzioni di Codice
-- Seguire PSR-12 per script PHP
-- Utilizzare shebang corretto per script Bash
-- Documentare tutti gli script
-- Testare prima del commit
-
-### Processo di Pull Request
-1. Crea un branch feature
-2. Implementa le modifiche
-3. Aggiungi i test
-4. Aggiorna la documentazione
-5. Crea la PR
-
-## 📞 Supporto
-
-- **Issues**: [GitHub Issues](https://github.com/aurmich/bashscripts_fila3/issues)
-- **Documentazione**: [Wiki](https://github.com/aurmich/bashscripts_fila3/wiki)
-- **Discussions**: [GitHub Discussions](https://github.com/aurmich/bashscripts_fila3/discussions)
-
-## 📄 Licenza
-
-Questo progetto è rilasciato sotto licenza MIT. Vedi il file [LICENSE](LICENSE) per i dettagli.
-
----
-
-
-
-<div align="center">
-  <strong>🚀 Potenzia il tuo workflow Git con questi script!</strong>
-</div>
-
-## 🛠️ Best Practices
-
-1. **Prima dell'Esecuzione**
-   - ✔️ Commit/stash delle modifiche pendenti
-   - ✔️ Verifica branch corrente
-   - ✔️ Controllo stato repository
-
-2. **Durante l'Esecuzione**
-   - 👀 Monitora l'output
-   - ⏳ Non interrompere gli script
-   - 📝 Controlla i log
-
-## 🤝 Contribuire
-
-Le contribuzioni sono sempre benvenute! Ecco come puoi aiutare:
-
-1. 🍴 Forka il repository
-2. 🔧 Crea un branch per le tue modifiche
-3. 💻 Committa le tue migliorie
-4. 📤 Pusha al branch
-5. 🔄 Apri una Pull Request
-
-## 📝 Note sulla Manutenzione
-
-- 🔄 Aggiornamenti regolari
-- 🐛 Fix bug tempestivi
-- 📚 Documentazione sempre aggiornata
-
-## 📜 Licenza
-
-Questo progetto è sotto licenza MIT - vedi il file [LICENSE](LICENSE) per i dettagli.
-
-## 👥 Autori
-
-- **Marco Sottana** - *Lavoro Iniziale* - [aurmich](https://github.com/aurmich)
-
-## 🙏 Ringraziamenti
-
-- 🌟 Tutti i contributori
-- 📚 La comunità Git
-- 🔧 Gli utenti che segnalano bug
-
----
-
-> **Nota**: Questo README è in continuo aggiornamento. Se trovi errori o hai suggerimenti, apri pure una issue!
-
-<div align="center">
-  <sub>Built with ❤️ by the development team</sub>
-</div>
-
-# 🚀 Git Automation Toolkit
-
-[![PHPStan](https://img.shields.io/badge/PHPStan-Level%209-brightgreen.svg?style=for-the-badge&logo=php&logoColor=white)](docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
-
-## System Requirements
-- PHP 8.2 or higher
-- Composer
-- Node.js 18+ and npm
-- MySQL 8.0+
-- Git
-
-## Installation
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/project.git
-cd project
-```
-
-### 2. Install PHP Dependencies
-```bash
-composer install
-```
-
-### 3. Install Node.js Dependencies
-```bash
-npm install
-```
-
-### 4. Configure Environment
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-### 5. Configure Database
-Edit the `.env` file with your database credentials:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=project
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 6. Run Migrations
-```bash
-php artisan migrate
-```
-
-### 7. Install Modules
-```bash
-
-# Install Laravel Modules
-composer require nwidart/laravel-modules
-
-# Publish module configuration
-php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
-
-# Add Xot module
-git remote add -f xot https://github.com/crud-lab/xot.git
-git subtree add --prefix Modules/Xot xot main --squash
-```
-
-### 8. Compile Assets
-```bash
-npm run dev
-```
-
-### 9. Start Development Server
-```bash
-php artisan serve
-```
-
-## Project Structure
-
-```
-project/
-├── app/
-├── config/
-├── database/
-├── Modules/
-│   ├── Core/
-│   ├── Module1/
-│   ├── Module2/
-│   └── Xot/
-├── public/
-├── resources/
-├── routes/
-├── storage/
-├── tests/
-└── docs/
-    ├── roadmap/
-    └── packages/
-```
-
-## Core Modules
-
-### Core
-- User management and authentication
-- System configuration
-- Base functionality
-
-### Module1
-- Module 1 specific features
-- Data management
-- User interface
-
-### Module2
-- Module 2 specific features
-- Process management
-- Integrations
-
-### Xot
-- Base framework for modules
-- Reusable components
-- Common functionality
-
-## Documentation
-
-Complete documentation is available in the `docs/` directory:
-- [Project Roadmap](docs/roadmap/README.md)
-- [Packages Documentation](docs/packages/README.md)
-
-## Development
-
-### Useful Commands
-```bash
-
-# Create a new module
-php artisan module:make ModuleName
-
-# Generate module components
-php artisan module:make-controller ControllerName ModuleName
-php artisan module:make-model ModelName ModuleName
-php artisan module:make-migration create_table ModuleName
-
-# Run tests
-php artisan test
-
-# Update dependencies
-composer update
-npm update
-```
-
-### Best Practices
-- Follow PSR-4 autoloading conventions
-- Use proper namespaces for modules
-- Document changes in CHANGELOG.md
-- Keep tests updated
-- Verify cross-browser compatibility
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
-[![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
-[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-
-> **⚠️ WARNING: This toolkit is designed for experienced developers working with complex Git repositories and monorepo structures.**
-
-## 🤔 Why this toolkit?
-
-Developing a complex modular project presents unique challenges:
-
-- **Managing dozens of interdependent modules** that need to stay synchronized
-- **Collaboration needs** between teams distributed across different repositories
-- **Maintaining code consistency** across multiple branches and organizations
-- **Reducing the risk of manual errors** in complex Git operations
-- **Automating repetitive processes** to increase productivity
-- **Support for static analysis** with PHPStan Level 9
-
-This toolkit addresses these challenges by providing automated tools that simplify workflow and ensure consistency and quality.
-
-## Translations
-- [Italiano](docs/README.it.md)
-- [Español](docs/README.es.md)
- 43df3e0 (.)
-
-# 🚀 Toolkit di Automazione Git per Laraxot PTVX
-
-[![PHPStan](https://img.shields.io/badge/PHPStan-Level%209-brightgreen.svg?style=for-the-badge&logo=php&logoColor=white)](../docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
-[![Bash Version](https://img.shields.io/badge/Bash-5.0%2B-brightgreen.svg)](https://www.gnu.org/software/bash/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/aurmich/bashscripts_fila3)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/odb/official-bash-logo/master/assets/Logos/Icons/PNG/512x512.png" width="200" alt="Bash Logo"/>
-  <br/>
-  <strong>Potenti script Bash per la gestione avanzata dei subtree Git 🌳</strong>
-</div>
-
-## 🌟 Caratteristiche Principali
-
-- 🔄 **Sincronizzazione Automatica** dei subtree Git
-- 🛡️ **Gestione Robusta degli Errori**
-- 🔍 **Logging Dettagliato**
-- 🚦 **Controlli di Sicurezza** integrati
-- 🔧 **Manutenzione Semplificata**
-
-## 📚 Indice
-
-- [Installazione](#-installazione)
-- [Utilizzo](#-utilizzo)
-- [Script Disponibili](#-script-disponibili)
-- [Esempi](#-esempi)
-- [Risoluzione Problemi](#-risoluzione-problemi)
-- [Contribuire](#-contribuire)
-
-## 💻 Installazione
-
-```bash
-
-# Clona il repository
-git clone git@github.com:aurmich/bashscripts_fila3.git
-
-# Rendi gli script eseguibili
-chmod +x *.sh
-```
-
-## 🚀 Utilizzo
-
-### Sincronizzazione Subtree
-```bash
-./git_sync_subtree.sh <path> <remote_repo>
-```
-
-Esempio:
-```bash
-./git_sync_subtree.sh modules/auth git@github.com:user/auth-module.git
-```
-
-## 📜 Script Disponibili
-
-### 1. git_sync_subtree.sh
-> 🎯 Script principale per la sincronizzazione dei subtree
-
-**Caratteristiche:**
-- Gestione automatica di push e pull
-- Rimozione caratteri CR (^M)
-- Gestione permessi automatica
-
-### 2. git_push_subtree.sh
-> 🔼 Gestisce le operazioni di push
-
-**Funzionalità:**
-- Push intelligente con fallback
-- Gestione branch temporanei
-- Rebase automatico
-
-### 3. git_pull_subtree.sh
-> 🔽 Gestisce le operazioni di pull
-
-**Caratteristiche:**
-- Pull con squash opzionale
-- Gestione conflitti automatica
-- Merge strategy personalizzabile
-
-## 🎯 Esempi
-
-### Sincronizzazione Modulo
-```bash
-
-# Sincronizza un modulo specifico
-./git_sync_subtree.sh modules/users git@github.com:org/users.git
-
-# Sincronizza con branch specifico
-REMOTE_BRANCH=develop ./git_sync_subtree.sh modules/auth git@github.com:org/auth.git
-```
-
-## ⚠️ Risoluzione Problemi
-
-### Errori Comuni
-
-1. **Prefix Option Mancante**
-   ```bash
-   fatal: you must provide the --prefix option
-   ```
-   ✅ **Soluzione:** Verifica il path del subtree
-
-2. **Push Rejected**
-   ```bash
-   ! [rejected] dev -> dev (non-fast-forward)
-   ```
-   ✅ **Soluzione:** Esegui prima un pull
-
-## 🛠️ Best Practices
-
-1. **Prima dell'Esecuzione**
-   - ✔️ Commit/stash delle modifiche pendenti
-   - ✔️ Verifica branch corrente
-   - ✔️ Controllo stato repository
-
-2. **Durante l'Esecuzione**
-   - 👀 Monitora l'output
-   - ⏳ Non interrompere gli script
-   - 📝 Controlla i log
-
-## 🤝 Contribuire
-
-Le contribuzioni sono sempre benvenute! Ecco come puoi aiutare:
-
-1. 🍴 Forka il repository
-2. 🔧 Crea un branch per le tue modifiche
-3. 💻 Committa le tue migliorie
-4. 📤 Pusha al branch
-5. 🔄 Apri una Pull Request
-
-## 📝 Note sulla Manutenzione
-
-- 🔄 Aggiornamenti regolari
-- 🐛 Fix bug tempestivi
-- 📚 Documentazione sempre aggiornata
-
-## 📜 Licenza
-
-Questo progetto è sotto licenza MIT - vedi il file [LICENSE](LICENSE) per i dettagli.
-
-## 👥 Autori
-
-- **Marco Sottana** - *Lavoro Iniziale* - [aurmich](https://github.com/aurmich)
-
-## 🙏 Ringraziamenti
-
-- 🌟 Tutti i contributori
-- 📚 La comunità Git
-- 🔧 Gli utenti che segnalano bug
-
----
-
-> **Nota**: Questo README è in continuo aggiornamento. Se trovi errori o hai suggerimenti, apri pure una issue!
-
-<div align="center">
-  <sub>Built with ❤️ by the development team</sub>
-</div>
-
-# 🚀 Git Automation Toolkit
-
-[![PHPStan](https://img.shields.io/badge/PHPStan-Level%209-brightgreen.svg?style=for-the-badge&logo=php&logoColor=white)](docs/phpstan/ANALISI_MODULI_PHPSTAN.md)
-
-## System Requirements
-- PHP 8.2 or higher
-- Composer
-- Node.js 18+ and npm
-- MySQL 8.0+
-- Git
-
-## Installation
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/project.git
-cd project
-```
-
-### 2. Install PHP Dependencies
-```bash
-composer install
-```
-
-### 3. Install Node.js Dependencies
-```bash
-npm install
-```
-
-### 4. Configure Environment
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-### 5. Configure Database
-Edit the `.env` file with your database credentials:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=project
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 6. Run Migrations
-```bash
-php artisan migrate
-```
-
-### 7. Install Modules
-```bash
-
-# Install Laravel Modules
-composer require nwidart/laravel-modules
-
-# Publish module configuration
-php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
-
-# Add Xot module
-git remote add -f xot https://github.com/crud-lab/xot.git
-git subtree add --prefix Modules/Xot xot main --squash
-```
-
-### 8. Compile Assets
-```bash
-npm run dev
-```
-
-### 9. Start Development Server
-```bash
-php artisan serve
-```
-
-## Project Structure
-
-```
-project/
-├── app/
-├── config/
-├── database/
-├── Modules/
-│   ├── Core/
-│   ├── Module1/
-│   ├── Module2/
-│   └── Xot/
-├── public/
-├── resources/
-├── routes/
-├── storage/
-├── tests/
-└── docs/
-    ├── roadmap/
-    └── packages/
-```
-
-## Core Modules
-
-### Core
-- User management and authentication
-- System configuration
-- Base functionality
-
-### Module1
-- Module 1 specific features
-- Data management
-- User interface
-
-### Module2
-- Module 2 specific features
-- Process management
-- Integrations
-
-### Xot
-- Base framework for modules
-- Reusable components
-- Common functionality
-
-## Documentation
-
-Complete documentation is available in the `docs/` directory:
-- [Project Roadmap](docs/roadmap/README.md)
-- [Packages Documentation](docs/packages/README.md)
-
-## Development
-
-### Useful Commands
-```bash
-
-# Create a new module
-php artisan module:make ModuleName
-
-# Generate module components
-php artisan module:make-controller ControllerName ModuleName
-php artisan module:make-model ModelName ModuleName
-php artisan module:make-migration create_table ModuleName
-
-# Run tests
-php artisan test
-
-# Update dependencies
-composer update
-npm update
-```
-
-### Best Practices
-- Follow PSR-4 autoloading conventions
-- Use proper namespaces for modules
-- Document changes in CHANGELOG.md
-- Keep tests updated
-- Verify cross-browser compatibility
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
-[![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
-[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-
-> **⚠️ WARNING: This toolkit is designed for experienced developers working with complex Git repositories and monorepo structures.**
-
-## 🤔 Why this toolkit?
-
-Developing a complex modular project presents unique challenges:
-
-- **Managing dozens of interdependent modules** that need to stay synchronized
-- **Collaboration needs** between teams distributed across different repositories
-- **Maintaining code consistency** across multiple branches and organizations
-- **Reducing the risk of manual errors** in complex Git operations
-- **Automating repetitive processes** to increase productivity
-- **Support for static analysis** with PHPStan Level 9
-
-This toolkit addresses these challenges by providing automated tools that simplify workflow and ensure consistency and quality.
-
-## Translations
-- [Italiano](docs/README.it.md)
-- [Español](docs/README.es.md)
- 43df3e0 (.)
-
-
-
-**Maintained By**: Development Team  
-**Status**: ✅ Active Development
+**Last Update**: 2026-02-10  
+**Status**: ✅ Production Ready with ongoing improvements  
+**Next Major Release**: PTVX v2.0 (Full PHPStan Level 10 compliance)
+
+🎉 **Building the future of HR & Performance Management for Public Administration!**
