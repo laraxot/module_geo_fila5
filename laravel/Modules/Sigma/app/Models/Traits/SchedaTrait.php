@@ -61,9 +61,9 @@ trait SchedaTrait
 
     protected function getGgIntegParamsAszAttribute(?float $value): ?float
     {
-        // Cache hit
-        if ($value != null) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_integ_params_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_integ_params_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -78,10 +78,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update (più efficiente per singolo campo)
-        $this->update([
-            'gg_integ_params_asz' => $value,
-        ]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_integ_params_asz', $value);
 
         return $value;
     }
@@ -95,9 +93,9 @@ trait SchedaTrait
      */
     protected function getGgEsperienzaNoAszAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value != null) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_esperienza_no_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_esperienza_no_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -112,8 +110,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_esperienza_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_esperienza_no_asz', $value);
 
         return $value;
     }
@@ -998,14 +996,12 @@ trait SchedaTrait
          * ]
          * );
          */
-        $table = $this->getTable();
-        $conn = $this->getConnection();
-        $fieldname = 'gg_cateco_posfun_in_sede_no_asz';
-        if (! Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-            Schema::connection($conn->getName())->table($table, static function (Blueprint $tableBlueprint) use ($fieldname): void {
-                $tableBlueprint->integer($fieldname)->nullable();
-            });
-        }
+        // DYNAMIC SCHEMA ALTERATION - FORBIDDEN!
+        // This code dynamically attempts to add a column if it doesn't exist.
+        // Schema alterations must always be handled via dedicated migration files.
+        // If 'gg_cateco_posfun_in_sede_no_asz' is a required column, create a migration for it.
+        // If it is a dynamic, schemaless attribute, consider using spatie/laravel-schemaless-attributes.
+
 
         // ✅ Check: record must exist before save()
         if ($this->getKey() == null) {
@@ -1075,7 +1071,12 @@ trait SchedaTrait
             return null;
         }
         $value = $this->gg_cateco_sup_in_sede + $this->gg_cateco_sup_fuori_sede;
-        $this->addTableField(['name' => 'gg_cateco_sup', 'type' => 'integer']);
+        // DYNAMIC SCHEMA ALTERATION - FORBIDDEN!
+        // This code dynamically attempts to add a column if it doesn't exist.
+        // Schema alterations must always be handled via dedicated migration files.
+        // If 'gg_cateco_sup' is a required column, create a migration for it.
+        // If it is a dynamic, schemaless attribute, consider using spatie/laravel-schemaless-attributes.
+
 
         // ✅ Check: record must exist before save()
         if ($this->getKey() == null) {

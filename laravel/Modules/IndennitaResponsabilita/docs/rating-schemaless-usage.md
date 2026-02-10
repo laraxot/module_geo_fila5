@@ -3,7 +3,7 @@
 **Module**: IndennitaResponsabilita  
 **Model**: Rating  
 **Package**: spatie/laravel-schemaless-attributes  
-**Last Updated**: 2025-01-02
+**Last Updated**: 2025-02-10
 
 ---
 
@@ -13,295 +13,330 @@ Il modello `Rating` utilizza il pacchetto Spatie Schemaless Attributes per gesti
 
 ---
 
-## 🔍 Current Implementation
+## 🔍 Correct Implementation
 
-### Model Setup
+### Model Setup (CORRECTED)
 
 ```php
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+<?php
 
-class Rating extends BaseModel
+declare(strict_types=1);
+
+namespace Modules\IndennitaResponsabilita\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
+use Modules\Rating\Enums\RuleEnum;
+use Modules\Rating\Models\Rating as BaseRatingModel;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes; // ✅ CORRECT import
+
+/**
+ * @property int $id
+ * @property string|null $title
+ * @property \Spatie\SchemalessAttributes\SchemalessAttributes|null $extra_attributes
+ * @property RuleEnum|null $rule
+ * @property bool|null $is_disabled
+ * @property bool|null $is_readonly
+ * @property int|null $order_column
+ * 
+ * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
+ */
+class Rating extends BaseRatingModel
+{
+    protected $connection = 'indennita_responsabilita';
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'extra_attributes' => SchemalessAttributes::class, // ✅ REQUIRED cast
+            'rule' => RuleEnum::class,
+            'is_disabled' => 'boolean',
+            'is_readonly' => 'boolean',
+        ];
+    }
+
+    /**
+     * Scope to query by extra attributes.
+     *
+     * @param Builder $query
+     * @param array<string, mixed>|string $attributes
+     * @param mixed $value
+     * @return Builder
+     */
+    public function scopeWithExtraAttributes(Builder $query, array|string $attributes = [], mixed $value = null): Builder
+    {
+        if (is_string($attributes) && $value !== null) {
+            // Single attribute with value: withExtraAttributes('anno', 2024)
+            return $query->where("extra_attributes->{$attributes}", $value);
+        }
+
+        if (is_array($attributes)) {
+            // Multiple attributes: withExtraAttributes(['anno' => 2024, 'type' => 'foo'])
+            foreach ($attributes as $key => $val) {
+                $query = $query->where("extra_attributes->{$key}", $val);
+            }
+        }
+
+        return $query;
+    }
+}
+```
+
+---
+
+## ⚠️ Common Errors to Avoid
+
+### 1. Wrong Import
+
+```php
+// ❌ WRONG - imports the SchemalessAttributes class itself
+use Spatie\SchemalessAttributes\SchemalessAttributes;
+
+// ✅ CORRECT - imports the Cast class
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+```
+
+### 2. Missing Casts Method
+
+```php
+// ❌ WRONG - relying on parent casts only
+class Rating extends BaseRatingModel
+{
+    protected $connection = 'indennita_responsabilita';
+}
+
+// ✅ CORRECT - defining own casts with schemaless cast
+class Rating extends BaseRatingModel
 {
     protected function casts(): array
     {
         return [
             'extra_attributes' => SchemalessAttributes::class,
+            // ... other casts
         ];
     }
-    
-    public function scopeWithExtraAttributes(Builder $query): Builder
-    {
-        return $this->extra_attributes->modelScope();
-    }
 }
 ```
 
-### Usage in CompilaIndennitaResponsabilita
-
-#### ✅ CORRECT Usage
+### 3. Incorrect PHPDoc for Property
 
 ```php
-// In getViewData() method (line 289) - CORRECTED in Rating model
-$rows = Rating::withExtraAttributes('anno', $anno)->get();
+// ❌ WRONG - using imported class name
+ * @property SchemalessAttributes|null $extra_attributes
 
-// Alternative (also correct)
-$rows = Rating::where('extra_attributes->anno', $anno)->get();
+// ✅ CORRECT - using fully qualified class name
+ * @property \Spatie\SchemalessAttributes\SchemalessAttributes|null $extra_attributes
 ```
-
-**Note**: The scope `withExtraAttributes()` now correctly implements parameter handling. Both patterns work correctly.
 
 ---
 
-## ⚠️ CRITICAL: Query Best Practices
+## ✅ CORRECT Usage Examples
 
-### DO's
+### Query by Single Attribute
 
 ```php
-// ✅ Query by anno attribute using scope
-$ratings = Rating::withExtraAttributes(['anno' => 2024])->get();
+// ✅ Using scope with single attribute
+$rows = Rating::withExtraAttributes('anno', 2024)->get();
 
-// ✅ Multiple conditions
-$ratings = Rating::withExtraAttributes([
+// ✅ Using scope with array syntax
+$rows = Rating::withExtraAttributes(['anno' => 2024])->get();
+
+// ✅ Using JSON path syntax (also valid)
+$rows = Rating::where('extra_attributes->anno', 2024)->get();
+```
+
+### Query by Multiple Attributes
+
+```php
+// ✅ Using scope with multiple attributes
+$rows = Rating::withExtraAttributes([
     'anno' => 2024,
-    'is_active' => true,
+    'type' => 'performance',
 ])->get();
 
-// ✅ Combine with regular queries
-$ratings = Rating::where('category', 'performance')
-    ->withExtraAttributes(['anno' => 2024])
-    ->orderBy('title')
+// Equivalent to:
+$rows = Rating::where('extra_attributes->anno', 2024)
+    ->where('extra_attributes->type', 'performance')
     ->get();
 ```
-
-### DON'Ts
-
-```php
-// ❌ NEVER use LIKE on JSON column (performance issue)
-$ratings = Rating::where('extra_attributes', 'LIKE', '%2024%')->get();
-
-// ❌ AVOID raw queries (use scope or JSON path instead)
-$ratings = Rating::whereRaw("extra_attributes->>'anno' = '2024'")->get();
-
-// Note: where('extra_attributes->key', $value) is CORRECT and acceptable
-```
-
----
-
-## 📊 Schema Documentation
-
-### Extra Attributes Structure
-
-```php
-/**
- * Rating extra_attributes schema:
- *
- * - anno: int - Anno di riferimento
- * - is_readonly: bool - Se il rating è readonly
- * - is_disabled: bool - Se il rating è disabilitato
- * - config: array - Configurazioni specifiche per anno
- *   - min_value: int
- *   - max_value: int
- *   - multiplier: float
- */
-```
-
-### Example Data
-
-```json
-{
-    "anno": 2024,
-    "is_readonly": false,
-    "is_disabled": false,
-    "config": {
-        "min_value": 0,
-        "max_value": 5,
-        "multiplier": 10.0
-    }
-}
-```
-
----
-
-## 🔧 Common Operations
 
 ### Setting Attributes
 
 ```php
-// Create new rating for specific year
-$rating = new Rating([
-    'title' => 'Complessità',
-    'description' => 'Valutazione complessità mansione',
-]);
+$rating = new Rating(['title' => 'Test']);
 
+// ✅ Set single attribute
 $rating->extra_attributes->anno = 2024;
-$rating->extra_attributes->is_readonly = false;
-$rating->extra_attributes->is_disabled = false;
-$rating->extra_attributes->config = [
-    'min_value' => 0,
-    'max_value' => 5,
-    'multiplier' => 10.0,
+
+// ✅ Set using array syntax
+$rating->extra_attributes['type'] = 'performance';
+
+// ✅ Set using set() method
+$rating->extra_attributes->set('config.multiplier', 10.0);
+
+// ✅ Replace all attributes
+$rating->extra_attributes = [
+    'anno' => 2024,
+    'type' => 'performance',
+    'config' => ['multiplier' => 10.0],
 ];
 
-$rating->save(); // IMPORTANT: Always save!
+// ⚠️ REQUIRED: Always save!
+$rating->save();
 ```
 
 ### Getting Attributes
 
 ```php
-// Get with default
-$anno = $rating->extra_attributes->get('anno', date('Y'));
-$isReadonly = $rating->extra_attributes->get('is_readonly', false);
-
-// Direct access (if exists)
+// ✅ Direct access (if exists)
 if (isset($rating->extra_attributes->anno)) {
     $anno = $rating->extra_attributes->anno;
 }
 
-// Nested access
+// ✅ Using get() with default
+$anno = $rating->extra_attributes->get('anno', date('Y'));
+
+// ✅ Array access
+$anno = $rating->extra_attributes['anno'];
+
+// ✅ Nested access with dot notation
 $multiplier = $rating->extra_attributes->get('config.multiplier', 1.0);
-```
-
-### Updating Attributes
-
-```php
-// Update specific attribute
-$rating->extra_attributes->set('anno', 2025);
-$rating->save();
-
-// Update multiple
-$rating->extra_attributes = [
-    'anno' => 2025,
-    'is_readonly' => true,
-    'config' => [
-        'min_value' => 0,
-        'max_value' => 10,
-        'multiplier' => 15.0,
-    ],
-];
-$rating->save();
 ```
 
 ---
 
 ## 🎯 Use Cases in IndennitaResponsabilita
 
-### 1. Year-Specific Ratings
+### 1. Year-Specific Ratings in CompilaIndennitaResponsabilita
 
 ```php
-// Get all ratings for current year
-$currentYearRatings = Rating::withExtraAttributes([
-    'anno' => now()->year,
-])->get();
+// In CompilaIndennitaResponsabilita::getViewData()
+$anno = $record->anno;
 
-// Get editable ratings for specific year
-$editableRatings = Rating::withExtraAttributes([
-    'anno' => 2024,
-    'is_readonly' => false,
-    'is_disabled' => false,
-])->get();
+// ✅ CORRECT: Query ratings for specific year
+$rows = Rating::withExtraAttributes('anno', $anno)
+    ->where('is_disabled', '!=', true)
+    ->where('is_readonly', '!=', true)
+    ->get();
+
+// ✅ CORRECT: Alternative syntax
+$rows = Rating::where('extra_attributes->anno', $anno)
+    ->where('is_disabled', '!=', true)
+    ->where('is_readonly', '!=', true)
+    ->get();
 ```
 
-### 2. Rating Configuration
+### 2. Filter in ListRatings
 
 ```php
-// Get rating with specific configuration
-public function getRatingMultiplier(Rating $rating): float
-{
-    return (float) $rating->extra_attributes->get('config.multiplier', 1.0);
-}
+// In ListRatings::getTableFilters()
+Filter::make('filter')
+    ->schema([
+        Select::make('anno')
+            ->options(self::getYears()),
+    ])
+    ->query(function (Builder $query, array $data): Builder {
+        $anno = $data['anno'] ?? null;
+        if ($anno === null) {
+            return $query;
+        }
 
-// Check if rating is editable
-public function isRatingEditable(Rating $rating): bool
-{
-    $isReadonly = $rating->extra_attributes->get('is_readonly', false);
-    $isDisabled = $rating->extra_attributes->get('is_disabled', false);
-    
-    return !$isReadonly && !$isDisabled;
-}
+        // ✅ CORRECT: Use scope for filtering
+        return $query->withExtraAttributes('anno', $anno);
+        
+        // Alternative (also valid):
+        // return $query->where('extra_attributes->anno', $anno);
+    }),
 ```
 
-### 3. Dynamic Rating Display
+### 3. Copy from Last Year Action
 
 ```php
-// In Blade view preparation
-protected function prepareRatingsForView(Collection $ratings): array
-{
-    return $ratings->map(function (Rating $rating) {
-        return [
-            'id' => $rating->id,
-            'title' => $rating->title,
-            'value' => $rating->pivot->value ?? 0,
-            'is_readonly' => $rating->extra_attributes->get('is_readonly', false),
-            'is_disabled' => $rating->extra_attributes->get('is_disabled', false),
-            'config' => $rating->extra_attributes->get('config', []),
-        ];
-    })->toArray();
-}
+// In ListRatings::getTableHeaderActions()
+Action::make('copy_from_last_year')
+    ->action(function () use ($anno): void {
+        $anno_prec = $anno - 1;
+        
+        // ✅ CORRECT: Query by extra_attributes
+        $rows = Rating::withExtraAttributes('anno', $anno_prec)->get();
+        
+        foreach ($rows as $row) {
+            $data = $row->toArray();
+            unset($data['id']);
+            
+            $rowCreated = Rating::query()->firstOrCreate(
+                ['title' => $data['title']],
+                $data
+            );
+            
+            // ✅ CORRECT: Update schemaless attribute
+            if ($rowCreated->extra_attributes !== null) {
+                $rowCreated->extra_attributes->set('anno', $anno);
+                $rowCreated->save(); // REQUIRED!
+            }
+        }
+    }),
 ```
 
 ---
 
-## 🧪 Testing
+## 📊 Schema Documentation
 
-### Unit Tests
+### Extra Attributes Structure for Rating
+
+```php
+/**
+ * Rating extra_attributes schema:
+ *
+ * - anno: int - Anno di riferimento (es. 2024, 2025)
+ * - type: string|null - Tipo di rating (es. 'performance', 'bonus')
+ * - config: array|null - Configurazioni specifiche per anno
+ *   - min_value: int - Valore minimo (default: 0)
+ *   - max_value: int - Valore massimo (default: 5)
+ *   - multiplier: float - Moltiplicatore per calcolo (default: 1.0)
+ */
+```
+
+---
+
+## 🧪 Testing Examples
 
 ```php
 /** @test */
-public function it_stores_year_specific_attributes(): void
+public function it_stores_year_in_extra_attributes(): void
 {
     $rating = Rating::factory()->create();
     
     $rating->extra_attributes->anno = 2024;
-    $rating->extra_attributes->is_readonly = false;
     $rating->save();
     
-    $rating = $rating->fresh();
+    $fresh = $rating->fresh();
     
-    $this->assertEquals(2024, $rating->extra_attributes->anno);
-    $this->assertFalse($rating->extra_attributes->is_readonly);
+    $this->assertEquals(2024, $fresh->extra_attributes->anno);
 }
 
 /** @test */
-public function it_queries_ratings_by_year(): void
+public function it_queries_by_year_using_scope(): void
 {
-    Rating::factory()->create(['extra_attributes' => ['anno' => 2024]]);
-    Rating::factory()->create(['extra_attributes' => ['anno' => 2023]]);
+    Rating::factory()->create([
+        'title' => 'Rating 2024',
+        'extra_attributes' => ['anno' => 2024],
+    ]);
     
-    $ratings2024 = Rating::withExtraAttributes(['anno' => 2024])->get();
+    Rating::factory()->create([
+        'title' => 'Rating 2023',
+        'extra_attributes' => ['anno' => 2023],
+    ]);
+    
+    $ratings2024 = Rating::withExtraAttributes('anno', 2024)->get();
     
     $this->assertCount(1, $ratings2024);
-    $this->assertEquals(2024, $ratings2024->first()->extra_attributes->anno);
-}
-```
-
----
-
-## 🚨 Migration Notes
-
-### Adding Schemaless Column
-
-```php
-// If not already present
-Schema::table('ratings', function (Blueprint $table) {
-    if (!Schema::hasColumn('ratings', 'extra_attributes')) {
-        $table->schemalessAttributes('extra_attributes');
-    }
-});
-```
-
-### Data Migration Example
-
-```php
-// Migrate old year column to schemaless
-$ratings = Rating::whereNull('extra_attributes')->get();
-
-foreach ($ratings as $rating) {
-    $rating->extra_attributes = [
-        'anno' => $rating->anno ?? now()->year,
-        'is_readonly' => false,
-        'is_disabled' => false,
-    ];
-    $rating->save();
+    $this->assertEquals('Rating 2024', $ratings2024->first()->title);
 }
 ```
 
@@ -309,48 +344,8 @@ foreach ($ratings as $rating) {
 
 ## 📚 Related Documentation
 
-### Internal Docs
-- [Xot Schemaless Attributes Guide](../../Xot/docs/spatie-schemaless-attributes-guide.md) - Complete guide
-- [Claude Schemaless Rules](../../../docs/claude/schemaless-attributes-rules.md) - Quick rules
-- [Code Quality Analysis](./code-quality-analysis.md) - Module analysis
-
-### Package Docs
 - [Spatie Package](https://github.com/spatie/laravel-schemaless-attributes)
 - [Laravel JSON Columns](https://laravel.com/docs/11.x/eloquent-mutators#array-and-json-casting)
-
----
-
-## ⚠️ Known Issues & Solutions
-
-### Issue 1: Query Returns Empty
-
-**Problem**: `Rating::where('extra_attributes->anno', 2024)->get()` returns empty
-
-**Solution**: Use scope instead
-```php
-Rating::withExtraAttributes(['anno' => 2024])->get()
-```
-
-### Issue 2: Attributes Not Persisting
-
-**Problem**: Changes to attributes are lost
-
-**Solution**: Always call `save()`
-```php
-$rating->extra_attributes->anno = 2024;
-$rating->save(); // REQUIRED
-```
-
-### Issue 3: Cast Not Working
-
-**Problem**: `Trying to get property of non-object`
-
-**Solution**: Ensure cast is defined
-```php
-protected function casts(): array {
-    return ['extra_attributes' => SchemalessAttributes::class];
-}
-```
 
 ---
 
@@ -358,18 +353,15 @@ protected function casts(): array {
 
 Before using schemaless attributes in Rating:
 
-- [ ] Cast defined in Model
-- [ ] Scope method implemented
-- [ ] Schema documented in PHPDoc
-- [ ] Accessor methods for common attributes
-- [ ] Always use `withExtraAttributes()` for queries
-- [ ] Always call `save()` after modifications
-- [ ] Tests cover schemaless functionality
+- [x] Import `Spatie\SchemalessAttributes\Casts\SchemalessAttributes` (NOT the class itself)
+- [x] Define `casts()` method with `extra_attributes => SchemalessAttributes::class`
+- [x] Implement `scopeWithExtraAttributes()` for querying
+- [x] Document property as `\Spatie\SchemalessAttributes\SchemalessAttributes|null`
+- [x] Always call `save()` after modifying attributes
+- [x] Use `where('extra_attributes->key', $value)` or `withExtraAttributes()` scope
 
 ---
 
 **Author**: Development Team  
-**Last Updated**: 2025-01-02  
-**Status**: ✅ Documented
-
-
+**Last Updated**: 2025-02-10  
+**Status**: ✅ Fixed and Verified

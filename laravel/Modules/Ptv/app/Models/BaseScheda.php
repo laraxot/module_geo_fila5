@@ -14,6 +14,8 @@ use Modules\Sigma\Models\Traits\SchedaTrait;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 
 /**
  * Modules\Ptv\Models\BaseScheda.
@@ -71,6 +73,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
     use LogsActivity;
+    use SchemalessAttributesTrait;
     /*
     use SchedaTrait, SigmaModelTrait {
         SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
@@ -257,6 +260,22 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     protected $table = 'schede';
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return array_merge(parent::casts(), [
+            'calculated_data' => SchemalessAttributes::class,
+        ]);
+    }
+
+    protected array $schemalessAttributes = [
+        'calculated_data',
+    ];
+
+    /**
      * Configurazione Activity Log con esclusione attributi problematici.
      *
      * PROBLEMA: SchedaTrait ha accessor che chiamano $this->save() causando
@@ -314,5 +333,13 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public function isRegionale(): bool
     {
         return (int) ($this->disci1 ?? 0) === 203;
+    }
+
+    /**
+     * Scope a query to include calculated_data.
+     */
+    public function scopeWithCalculatedData(): SchemalessAttributes
+    {
+        return $this->calculated_data;
     }
 }

@@ -266,7 +266,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
         /** @var IndennitaResponsabilita $record */ // Added explicit cast
-        $ratings = $record->syncRatingsWhere(['anno' => $record->anno]);
+        $ratings = $record->getRatingsWhere(['anno' => $record->anno]);
         
         
         // Assert::isInstanceOf($ratings, \Illuminate\Database\Eloquent\Collection::class, 'getRatings must return Collection'); // Redundant

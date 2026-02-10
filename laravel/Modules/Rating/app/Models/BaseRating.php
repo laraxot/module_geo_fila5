@@ -27,7 +27,7 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @method static Builder|Rating newModelQuery()
  * @method static Builder|Rating newQuery()
  * @method static Builder|Rating query()
- * @method static Builder|Rating withExtraAttributes()
+ * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
  *
  * @property int             $id
  * @property int             $user_id
@@ -76,6 +76,87 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  *
  * @mixin Eloquent
  */
-class Rating extends BaseRating
+abstract class BaseRating extends BaseModel implements HasMedia
 {
+    use InteractsWithMedia;
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'extra_attributes' => SchemalessAttributes::class,
+            'rule' => RuleEnum::class,
+            'is_disabled' => 'boolean',
+            'is_readonly' => 'boolean',
+        ];
+    }
+
+    protected $fillable = [
+        'id',
+        'extra_attributes',
+        'title',
+        'color',
+        'txt',
+        'rule',
+        'is_disabled',
+        'is_readonly',
+        'order_column',
+    ];
+
+    /**
+     * Scope to query by extra attributes.
+     *
+     * @param Builder $query
+     * @param array<string, mixed>|string $attributes
+     * @param mixed $value
+     * @return Builder
+     */
+    public function scopeWithExtraAttributes(Builder $query, array|string $attributes = [], mixed $value = null): Builder
+    {
+        if (is_string($attributes) && $value !== null) {
+            // Single attribute with value: withExtraAttributes('anno', 2024)
+            return $query->where("extra_attributes->{$attributes}", $value);
+        }
+
+        if (is_array($attributes)) {
+            // Multiple attributes: withExtraAttributes(['anno' => 2024, 'type' => 'foo'])
+            foreach ($attributes as $key => $val) {
+                $query = $query->where("extra_attributes->{$key}", $val);
+            }
+        }
+
+        return $query;
+    }
+
+    public function linkedTo(): MorphTo
+    {
+        return $this->morphTo('model');
+    }
+
+    /**
+     * Register the conversions that should be performed.
+     */
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        /*
+        $this
+            ->addMediaConversion('my-conversion')
+            ->greyscale()
+            ->quality(80)
+            ->withResponsiveImages();
+        */
+        $this->addMediaConversion('300x300')
+            ->width(300)
+            ->height(300);
+        $this->addMediaConversion('150x150')
+            ->width(151)
+            ->height(151);
+        $this->addMediaConversion('50x50')
+            ->width(150)
+            ->height(150);
+    }
 }

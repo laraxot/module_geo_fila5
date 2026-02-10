@@ -29,6 +29,7 @@
 - [x] Pulizia repository
 - [x] Gestione branch
 - [x] Struttura directory
+- [ ] Proposta di Refactoring: Attributi Calcolati con `spatie/laravel-schemaless-attributes` ([Vedi dettagli](./refactoring_proposal_schemaless_attributes.md))
 - [x] Verifica database
 
 ### 🔍 [Fase 3: Verifica](./roadmap/03_verification.md)
