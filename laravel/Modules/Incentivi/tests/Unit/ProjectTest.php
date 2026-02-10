@@ -20,6 +20,11 @@ test('il model Activity esiste ed è istanziabile', function () {
     expect($activity)->toBeInstanceOf(Activity::class);
 });
 
+test('il model CapitalPercentage esiste ed è istanziabile', function () {
+    $capitalPercentage = new CapitalPercentage();
+    expect($capitalPercentage)->toBeInstanceOf(CapitalPercentage::class);
+});
+
 // beforeEach(function () {
 //     $this->project = Project::factory()->create([
 //         'nome' => 'Progetto di Test',
