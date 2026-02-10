@@ -21,8 +21,6 @@ PTVX is a modular HR & Performance evaluation system built on Laravel + Filament
 - MCP configuration: `laravel/.mcp.json`
 - GitHub workflows: `.github/workflows/`
 
-<<<<<<< HEAD
-=======
 ## Agent Teams (Experimental - Opus 4.6)
 
 Agent Teams allows multiple Claude Code instances to work in parallel on different tasks within the same project.
@@ -62,7 +60,6 @@ claude --worktree
 - All PHPStan errors must be fixed (Level 10)
 - Coordinate via git to avoid file conflicts
 
->>>>>>> ac0ea089 (.)
 ## Links
 
 - [Claude Setup Guide](./.claude/docs/context.md)
@@ -71,7 +68,4 @@ claude --worktree
 - [PHPStan Guide](./.claude/docs/phpstan.md)
 - [Filament Guide](./.claude/docs/filament.md)
 - [MCP Guide](./.claude/docs/mcp.md)
-<<<<<<< HEAD
-=======
 - [Agent Teams Guide](./docs/agent-teams-guide.md)
->>>>>>> ac0ea089 (.)

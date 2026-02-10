@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Best Practices UI
 
 ## Principi Generali
@@ -239,7 +238,6 @@ class AdvancedForm extends Component
 - Esempi di utilizzo
 - Configurazioni disponibili
 - Breaking changes 
-=======
 # Best Practices per lo Sviluppo con PTVX
 
 ## Principi Fondamentali
@@ -262,4 +260,3 @@ class AdvancedForm extends Component
 ## Approfondimenti
 - [Filosofia di Sviluppo](./filosofia-sviluppo.md)
 - [Regole Critiche Laraxot](./regole-critiche.md)
->>>>>>> 30ec16d0f (feat(docs): riorganizzata documentazione AI tools in docs/ai/)

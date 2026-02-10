@@ -154,10 +154,7 @@ Anche se non hanno save(), alcuni accessor potrebbero beneficiare del pattern:
 - [Regola Globale Guard](../../Xot/docs/accessor-save-guard-global-rule.md)
 - [Audit Cross-Modules](../../Xot/docs/accessor-audit-cross-modules.md)
 - [Pattern Refactoring](../../Sigma/docs/accessor-refactoring-philosophy.md)
-<<<<<<< HEAD
 - [ErrorException: Undefined property `CondizioniLavoroAdm::$dal`](./undefined-property-dal.md)
-=======
->>>>>>> ac0ea089 (.)
 
 ---
 
