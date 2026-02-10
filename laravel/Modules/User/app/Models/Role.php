@@ -23,10 +23,6 @@ use Webmozart\Assert\Assert;
 /**
  * Modules\User\Models\Role.
  *
- * <<<<<<< HEAD
- * =======
- *
- * >>>>>>> 024bfed1 (.)
  *
  * @property int                                                                                      $id
  *                                                                                                                       =======
