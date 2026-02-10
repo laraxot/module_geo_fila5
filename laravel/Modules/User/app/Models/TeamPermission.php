@@ -11,7 +11,7 @@ use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Team Permission Model.
- * 
+ *
  * Represents a permission assigned to a user within a team context.
  *
  * @property string         $id
@@ -22,14 +22,19 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property \DateTime|null $updated_at
  * @property Team           $team
  * @property User           $user
+ *
  * @method static Builder<static>|TeamPermission newModelQuery()
  * @method static Builder<static>|TeamPermission newQuery()
  * @method static Builder<static>|TeamPermission query()
+ *
  * @mixin IdeHelperTeamPermission
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $deleter
  * @property ProfileContract|null $updater
+ *
  * @method static TeamPermissionFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class TeamPermission extends BaseModel

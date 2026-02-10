@@ -19,6 +19,7 @@ use Modules\Xot\Datas\XotData;
  *
  * @property EloquentCollection<int, Model&UserContract> $users
  * @property int|null                                    $users_count
+ *
  * @method static DeviceFactory  factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()
  * @method static Builder|Device newQuery()
@@ -40,6 +41,7 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
+ *
  * @property DeviceUser           $pivot
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
@@ -61,13 +63,13 @@ use Modules\Xot\Datas\XotData;
  * @property string|null          $updated_by
  * @property string|null          $created_by
  * @property string|null          $uuid
+ *
  * @method static Builder<static>|Device whereUuid($value)
+ *
  * @mixin IdeHelperDevice
+ *
  * @property ProfileContract|null $deleter
- * @property string|null $name
- * @property string|null $type
- * @method static Builder<static>|Device whereName($value)
- * @method static Builder<static>|Device whereType($value)
+ *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

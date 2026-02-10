@@ -17,7 +17,7 @@
 | Activity | 0 | 0 | ✅ Pulito | Nessun errore |
 | Geo | 0 | 0 | ✅ Pulito | Nessun errore |
 | Notify | 4 | 0 | ✅ Pulito | SendEmailPage.php corretto |
-| Meetup | 0 | 0 | ✅ Pulito | Nessun errore |
+| TechPlanner | 0 | 0 | ✅ Pulito | Nessun errore |
 | Media | 0 | 0 | ✅ Pulito | Nessun errore |
 | Job | 0 | 0 | ✅ Pulito | Nessun errore |
 | Tenant | 0 | 0 | ✅ Pulito | Nessun errore |

@@ -22,7 +22,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
 
 /**
  * User Profile Model.
- * 
+ *
  * Represents a user profile with relationships to devices, teams, and roles.
  *
  * @property int                                                       $id
@@ -65,6 +65,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @property ProfileContract|null                                      $updater
  * @property UserContract|null                                         $user
  * @property string|null                                               $user_name
+ *
  * @method static ProfileFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Profile newModelQuery()
  * @method static Builder<static>|Profile newQuery()
@@ -74,7 +75,9 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @method static Builder<static>|Profile withExtraAttributes()
  * @method static Builder<static>|Profile withoutPermission($permissions)
  * @method static Builder<static>|Profile withoutRole($roles, $guard = null)
+ *
  * @mixin IdeHelperProfile
+ *
  * @property string|null          $user_id
  * @property Carbon|null          $created_at
  * @property Carbon|null          $updated_at
@@ -83,6 +86,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @property Carbon|null          $deleted_at
  * @property string|null          $deleted_by
  * @property ProfileContract|null $deleter
+ *
  * @method static Builder<static>|Profile whereBio($value)
  * @method static Builder<static>|Profile whereCreatedAt($value)
  * @method static Builder<static>|Profile whereCreatedBy($value)
@@ -96,75 +100,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @method static Builder<static>|Profile whereUpdatedAt($value)
  * @method static Builder<static>|Profile whereUpdatedBy($value)
  * @method static Builder<static>|Profile whereUserId($value)
- * @property string|null $post_type
- * @property int|null $ente
- * @property int|null $matr
- * @property string|null $address
- * @property string|null $premise
- * @property string|null $premise_short
- * @property string|null $locality
- * @property string|null $locality_short
- * @property string|null $postal_town
- * @property string|null $postal_town_short
- * @property string|null $administrative_area_level_3
- * @property string|null $administrative_area_level_3_short
- * @property string|null $administrative_area_level_2
- * @property string|null $administrative_area_level_2_short
- * @property string|null $administrative_area_level_1
- * @property string|null $administrative_area_level_1_short
- * @property string|null $country
- * @property string|null $country_short
- * @property string|null $street_number
- * @property string|null $street_number_short
- * @property string|null $route
- * @property string|null $route_short
- * @property string|null $postal_code
- * @property string|null $postal_code_short
- * @property string|null $googleplace_url
- * @property string|null $googleplace_url_short
- * @property string|null $point_of_interest
- * @property string|null $point_of_interest_short
- * @property string|null $political
- * @property string|null $political_short
- * @property string|null $campground
- * @property string|null $campground_short
- * @method static Builder<static>|Profile childrenWith(array $relations)
- * @method static Builder<static>|Profile childrenWithCount(array $relations)
- * @method static Builder<static>|Profile onlyTrashed()
- * @method static Builder<static>|Profile whereAddress($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel1($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel1Short($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel2($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel2Short($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel3($value)
- * @method static Builder<static>|Profile whereAdministrativeAreaLevel3Short($value)
- * @method static Builder<static>|Profile whereCampground($value)
- * @method static Builder<static>|Profile whereCampgroundShort($value)
- * @method static Builder<static>|Profile whereCountry($value)
- * @method static Builder<static>|Profile whereCountryShort($value)
- * @method static Builder<static>|Profile whereEnte($value)
- * @method static Builder<static>|Profile whereGoogleplaceUrl($value)
- * @method static Builder<static>|Profile whereGoogleplaceUrlShort($value)
- * @method static Builder<static>|Profile whereLocality($value)
- * @method static Builder<static>|Profile whereLocalityShort($value)
- * @method static Builder<static>|Profile whereMatr($value)
- * @method static Builder<static>|Profile wherePointOfInterest($value)
- * @method static Builder<static>|Profile wherePointOfInterestShort($value)
- * @method static Builder<static>|Profile wherePolitical($value)
- * @method static Builder<static>|Profile wherePoliticalShort($value)
- * @method static Builder<static>|Profile wherePostType($value)
- * @method static Builder<static>|Profile wherePostalCode($value)
- * @method static Builder<static>|Profile wherePostalCodeShort($value)
- * @method static Builder<static>|Profile wherePostalTown($value)
- * @method static Builder<static>|Profile wherePostalTownShort($value)
- * @method static Builder<static>|Profile wherePremise($value)
- * @method static Builder<static>|Profile wherePremiseShort($value)
- * @method static Builder<static>|Profile whereRoute($value)
- * @method static Builder<static>|Profile whereRouteShort($value)
- * @method static Builder<static>|Profile whereStreetNumber($value)
- * @method static Builder<static>|Profile whereStreetNumberShort($value)
- * @method static Builder<static>|Profile withTrashed(bool $withTrashed = true)
- * @method static Builder<static>|Profile withoutTrashed()
+ *
  * @mixin \Eloquent
  */
 class Profile extends BaseProfile implements HasMedia

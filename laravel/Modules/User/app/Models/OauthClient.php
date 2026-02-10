@@ -40,6 +40,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property \Illuminate\Database\Eloquent\Model|null $owner
  * @property string|null                              $updated_by
  * @property string|null                              $created_by
+ *
  * @method static ClientFactory       factory($count = null, $state = [])
  * @method static Builder|OauthClient newModelQuery()
  * @method static Builder|OauthClient newQuery()
@@ -57,16 +58,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|OauthClient whereUserId($value)
  * @method static Builder|OauthClient whereCreatedBy($value)
  * @method static Builder|OauthClient whereUpdatedBy($value)
- * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
- * @property-read int|null $permissions_count
- * @property-read array $redirect_uris
- * @property-read Collection<int, \Modules\User\Models\Role> $roles
- * @property-read int|null $roles_count
- * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthClient existsIn(array $haystack)
- * @method static Builder<static>|OauthClient permission($permissions, $without = false)
- * @method static Builder<static>|OauthClient role($roles, $guard = null, $without = false)
- * @method static Builder<static>|OauthClient withoutPermission($permissions)
- * @method static Builder<static>|OauthClient withoutRole($roles, $guard = null)
+ *
  * @mixin \Eloquent
  */
 class OauthClient extends PassportClient implements AuthorizableContract

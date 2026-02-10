@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Carbon;
 use Modules\Media\Models\Media;
-use Modules\Gdpr\Models\Traits\HasGdpr;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -62,6 +61,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property int|null                                          $tenants_count
  * @property Collection<int, OauthAccessToken>                 $tokens
  * @property int|null                                          $tokens_count
+ *
  * @method static UserFactory          factory($count = null, $state = [])
  * @method static Builder|User         newModelQuery()
  * @method static Builder|User         newQuery()
@@ -89,6 +89,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|User         whereUpdatedBy($value)
  * @method static Builder|User         withoutPermission($permissions)
  * @method static Builder|User         withoutRole($roles, $guard = null)
+ *
  * @property string                         $last_name
  * @property Team|null                      $currentTeam
  * @property MediaCollection<int, Media>    $media
@@ -107,6 +108,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property string|null                    $moderation_data
  * @property string|null                    $certifications
  * @property string|null                    $type
+ *
  * @method static Builder<static>|User whereAddress($value)
  * @method static Builder<static>|User whereCertifications($value)
  * @method static Builder<static>|User whereCity($value)
@@ -118,50 +120,31 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|User whereState($value)
  * @method static Builder<static>|User whereStatus($value)
  * @method static Builder<static>|User whereType($value)
+ *
  * @mixin IdeHelperUser
+ *
  * @property string|null $facebook_id
+ *
  * @method static Builder<static>|User whereFacebookId($value)
+ *
  * @property User|null $creator
  * @property User|null $updater
  * @property User|null $user
- * @property string $surname
- * @property string|null $two_factor_secret
- * @property string|null $two_factor_recovery_codes
- * @property string|null $two_factor_confirmed_at
- * @property-read Collection<int, \Modules\Gdpr\Models\Consent> $activeConsents
- * @property-read int|null $active_consents_count
- * @property-read Collection<int, \Modules\Gdpr\Models\Consent> $consents
- * @property-read int|null $consents_count
- * @property-read Collection<int, \Modules\User\Models\OauthClient> $oauthApps
- * @property-read int|null $oauth_apps_count
- * @property-read Collection<int, \Modules\Gdpr\Models\Treatment> $treatments
- * @property-read int|null $treatments_count
- * @method static Builder<static>|User childrenWith(array $relations)
- * @method static Builder<static>|User childrenWithCount(array $relations)
- * @method static Builder<static>|User onlyTrashed()
- * @method static Builder<static>|User whereSurname($value)
- * @method static Builder<static>|User whereTwoFactorConfirmedAt($value)
- * @method static Builder<static>|User whereTwoFactorRecoveryCodes($value)
- * @method static Builder<static>|User whereTwoFactorSecret($value)
- * @method static Builder<static>|User withTrashed(bool $withTrashed = true)
- * @method static Builder<static>|User withoutTrashed()
+ *
  * @mixin \Eloquent
  */
 class User extends BaseUser
 {
-    use HasGdpr;
-
     /** @var string */
     public $connection = 'user';
 
     /** @var array<string, class-string> */
-
     protected $childTypes = [
-        'master_admin' => User::class,
-        'backoffice_user' => User::class,
-        'customer_user' => User::class,
-        'system' => User::class,
-        'technician' => User::class,
+        'master_admin' => self::class,
+        'backoffice_user' => self::class,
+        'customer_user' => self::class,
+        'system' => self::class,
+        'technician' => self::class,
     ];
 
     #[\Override]

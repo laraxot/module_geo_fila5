@@ -12,10 +12,12 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
+ *
  * @method static FeatureFactory  factory($count = null, $state = [])
  * @method static Builder|Feature newModelQuery()
  * @method static Builder|Feature newQuery()
  * @method static Builder|Feature query()
+ *
  * @property string      $id
  * @property string      $name
  * @property string      $scope
@@ -26,6 +28,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|Feature whereCreatedAt($value)
  * @method static Builder|Feature whereCreatedBy($value)
  * @method static Builder|Feature whereDeletedAt($value)
@@ -36,8 +39,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder|Feature whereUpdatedAt($value)
  * @method static Builder|Feature whereUpdatedBy($value)
  * @method static Builder|Feature whereValue($value)
+ *
  * @mixin IdeHelperFeature
+ *
  * @property ProfileContract|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Feature extends BaseModel

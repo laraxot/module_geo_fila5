@@ -4,9 +4,6 @@
 
 This guide explains how to use `chartjs-plugin-datalabels` with Filament v5 chart widgets in the **Zero theme** context.
 
-Reference sample:
-
-- [chartjs-plugin-datalabels – multiple labels sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)
 Reference samples:
 
 - [chartjs-plugin-datalabels – multiple labels sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)

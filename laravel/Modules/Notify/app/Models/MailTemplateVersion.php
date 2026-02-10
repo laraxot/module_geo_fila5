@@ -36,6 +36,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property-read int|null $media_count
  * @property-read MailTemplate|null $template
  * @property-read ProfileContract|null $updater
+ *
  * @method static MailTemplateVersionFactory factory($count = null, $state = [])
  * @method static Builder<static>|MailTemplateVersion newModelQuery()
  * @method static Builder<static>|MailTemplateVersion newQuery()
@@ -57,8 +58,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|MailTemplateVersion whereVersion($value)
  * @method static Builder<static>|MailTemplateVersion withTrashed()
  * @method static Builder<static>|MailTemplateVersion withoutTrashed()
+ *
  * @mixin IdeHelperMailTemplateVersion
+ *
  * @property-read ProfileContract|null $deleter
+ *
  * @mixin \Eloquent
  */
 class MailTemplateVersion extends BaseModel

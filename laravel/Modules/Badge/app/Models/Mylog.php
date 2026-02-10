@@ -15,9 +15,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Mylog newModelQuery()
  * @method static Builder|Mylog newQuery()
  * @method static Builder|Mylog query()
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Mylog extends BaseModel

@@ -35,11 +35,6 @@ abstract class XotBaseMigration extends LaravelMigration
         $this->model = $model;
     }
 
-    public function shouldRun(): bool
-    {
-        return true;
-    }
-
     /**
      * Get the model class based on the migration class name.
      */

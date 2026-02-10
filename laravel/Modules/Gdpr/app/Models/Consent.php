@@ -30,6 +30,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property Treatment|null       $treatment
  * @property ProfileContract|null $updater
+ *
  * @method static ConsentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Consent newModelQuery()
  * @method static Builder<static>|Consent newQuery()
@@ -47,7 +48,9 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Consent whereUpdatedBy($value)
  * @method static Builder<static>|Consent whereUserId($value)
  * @method static Builder<static>|Consent whereUserType($value)
+ *
  * @property ProfileContract|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Consent extends BaseModel
@@ -58,14 +61,7 @@ class Consent extends BaseModel
 
     public $incrementing = false;
 
-    public $fillable = [
-        'subject_id',
-        'treatment_id',
-        'user_id',
-        'user_type',
-        'type',
-        'accepted_at',
-    ];
+    public $fillable = ['subject_id', 'treatment_id'];
 
     public function treatment(): BelongsTo
     {
