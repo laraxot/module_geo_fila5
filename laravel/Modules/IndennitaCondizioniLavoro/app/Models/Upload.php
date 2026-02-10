@@ -22,6 +22,7 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $updated_by
  * @property int|null $quadrimestre
  * @property int|null $anno
+ *
  * @method static Builder|Upload newModelQuery()
  * @method static Builder|Upload newQuery()
  * @method static Builder|Upload query()
@@ -35,9 +36,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Upload whereUpdatedAt($value)
  * @method static Builder|Upload whereUpdatedBy($value)
  * @method static Builder|Upload whereUserId($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Upload extends BaseModel

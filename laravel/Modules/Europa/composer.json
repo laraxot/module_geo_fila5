@@ -1,6 +1,6 @@
 {
     "name": "provtv/module_europa_fila3",
-    "description": "Europa module for the Laraxot ecosystem.",
+    "description": "",
     "license": "MIT",
     "homepage": "https://github.com/provtv/module_europa_fila3.git",
     "authors": [
@@ -9,7 +9,9 @@
             "email": "marco.sottana@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+
+    },
     "require-dev": {},
     "repositories": [
         {

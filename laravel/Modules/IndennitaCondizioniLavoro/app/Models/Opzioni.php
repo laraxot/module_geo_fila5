@@ -17,6 +17,7 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $value
  * @property Carbon|null $updated_at
  * @property Carbon|null $created_at
+ *
  * @method static Builder|Opzioni newModelQuery()
  * @method static Builder|Opzioni newQuery()
  * @method static Builder|Opzioni query()
@@ -25,9 +26,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Opzioni whereName($value)
  * @method static Builder|Opzioni whereUpdatedAt($value)
  * @method static Builder|Opzioni whereValue($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Opzioni extends BaseModel

@@ -21,25 +21,23 @@ use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
-use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use Override;
 
 class ListCondizioniLavoros extends XotBaseListRecords
 {
     protected static string $resource = CondizioniLavoroResource::class;
 
-    #[\Override]
+    #[Override]
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
         return [
-            'lavoratore' => WorkerColumn::make('lavoratore'),
-            // TextColumn::make('matr')->searchable(),
-            // TextColumn::make('cognome')->searchable(),
-            // TextColumn::make('nome')->searchable(),
-            // TextColumn::make('stabi')->searchable(),
-            // TextColumn::make('repar')->searchable(),
+            TextColumn::make('matr')->searchable(),
+            TextColumn::make('cognome')->searchable(),
+            TextColumn::make('nome')->searchable(),
+            TextColumn::make('stabi')->searchable(),
+            TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
@@ -47,7 +45,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return '';
                     }
 
-                    /* @var Collection $state */
+                    /** @var Collection $state */
                     return $state->pluck('indennitaTipo.nome')->implode(','.PHP_EOL.PHP_EOL.'');
                 })
                 ->wrap()
@@ -57,7 +55,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return null;
                     }
 
-                    /* @var Collection $state */
+                    /** @var Collection $state */
                     return $state->map(function ($item): string {
                         if (! is_object($item)) {
                             return '';
@@ -90,17 +88,18 @@ class ListCondizioniLavoros extends XotBaseListRecords
         return RecordActionsPosition::BeforeColumns;
     }
 
-    #[\Override]
+    #[Override]
     protected function getHeaderActions(): array
     {
         return [
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): StreamedResponse {
+                ->action(function (): void {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-
-                    return app(MakePdf::class)->execute($tableFilters);
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(MakePdf::class)->execute($data);
                 }),
             'replicate' => Action::make('replicate')
                 ->label('')
@@ -108,7 +107,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
                 ->tooltip('ricopia da quadrimentre precendente')
                 ->action(function (): void {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    app(ReplicateIndennita::class)->execute($tableFilters);
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(ReplicateIndennita::class)->execute($data);
                 }),
         ];
     }
@@ -118,7 +119,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
         return true;
     }
 
-    #[\Override]
+    #[Override]
     public function getTableActions(): array
     {
         // Types are inferred by Filament v4
@@ -136,7 +137,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
         ];
     }
 
-    #[\Override]
+    #[Override]
     public function getTableFilters(): array
     {
         return [
@@ -166,7 +167,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                 ->query(static function (Builder $query, array $data): Builder {
                     // Type narrowing: ensure data has required keys
                     $anno = isset($data['anno']) && (is_int($data['anno']) || is_string($data['anno'])) ? $data['anno'] : null;
-                    if (null === $anno) {
+                    if ($anno === null) {
                         return $query->where('id', 0);
                     }
 

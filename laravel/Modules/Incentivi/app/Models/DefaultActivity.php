@@ -22,6 +22,7 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $created_by
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
+ *
  * @method static DefaultActivityFactory factory($count = null, $state = [])
  * @method static Builder|DefaultActivity newModelQuery()
  * @method static Builder|DefaultActivity newQuery()
@@ -36,13 +37,17 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|DefaultActivity whereTipo($value)
  * @method static Builder|DefaultActivity whereUpdatedAt($value)
  * @method static Builder|DefaultActivity whereUpdatedBy($value)
+ *
  * @property int $appartiene_a_liquidazione_a_fasi
  * @property string|null $liquidazione_fasi
+ *
  * @method static Builder<static>|DefaultActivity whereAppartieneALiquidazioneAFasi($value)
  * @method static Builder<static>|DefaultActivity whereLiquidazioneFasi($value)
+ *
  * @property int|null $phase_id
+ *
  * @method static Builder<static>|DefaultActivity wherePhaseId($value)
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class DefaultActivity extends BaseModel

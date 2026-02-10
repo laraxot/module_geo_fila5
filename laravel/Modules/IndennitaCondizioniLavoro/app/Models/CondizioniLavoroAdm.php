@@ -10,52 +10,54 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
+use Override;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroAdm.
  *
- * @property int                                     $id
- * @property int|null                                $ente
- * @property int|null                                $matr
- * @property string|null                             $email
- * @property string|null                             $cognome
- * @property string|null                             $nome
- * @property int|null                                $trimestre
- * @property int|null                                $stabi
- * @property string|null                             $stabi_txt
- * @property int|null                                $repar
- * @property string|null                             $repar_txt
- * @property int|null                                $propro
- * @property int|null                                $posfun
- * @property string|null                             $categoria_eco
- * @property int|null                                $posiz
- * @property string|null                             $posiz_txt
- * @property int|null                                $gg_presenza_anno
- * @property int|null                                $gg_presenza_periodo
- * @property int|null                                $gg_assenza_anno
- * @property string|null                             $hh_assenza_anno
- * @property int|null                                $gg_trasferte_anno
- * @property int|null                                $anno
- * @property int|null                                $rep2kd
- * @property int|null                                $rep2ka
- * @property int|null                                $qua2kd
- * @property int|null                                $qua2ka
- * @property \Illuminate\Support\Carbon|null         $dal
- * @property \Illuminate\Support\Carbon|null         $al
- * @property \Illuminate\Support\Carbon|null         $created_at
- * @property \Illuminate\Support\Carbon|null         $updated_at
- * @property string|null                             $created_by
- * @property string|null                             $updated_by
- * @property int                                     $disci1
- * @property string                                  $disci1_txt
- * @property int                                     $codqua
- * @property string                                  $codqua_txt
- * @property int                                     $tot_presenza_periodo_plus_no_timbr
- * @property string                                  $tot
- * @property int|null                                $valutatore_id
- * @property int|null                                $quadrimestre
- * @property Collection<int, IndennitaTipoDettaglio> $indennitaTipoDettaglio
- * @property int|null                                $indennita_tipo_dettaglio_count
+ * @property int $id
+ * @property int|null $ente
+ * @property int|null $matr
+ * @property string|null $email
+ * @property string|null $cognome
+ * @property string|null $nome
+ * @property int|null $trimestre
+ * @property int|null $stabi
+ * @property string|null $stabi_txt
+ * @property int|null $repar
+ * @property string|null $repar_txt
+ * @property int|null $propro
+ * @property int|null $posfun
+ * @property string|null $categoria_eco
+ * @property int|null $posiz
+ * @property string|null $posiz_txt
+ * @property int|null $gg_presenza_anno
+ * @property int|null $gg_presenza_periodo
+ * @property int|null $gg_assenza_anno
+ * @property string|null $hh_assenza_anno
+ * @property int|null $gg_trasferte_anno
+ * @property int|null $anno
+ * @property int|null $rep2kd
+ * @property int|null $rep2ka
+ * @property int|null $qua2kd
+ * @property int|null $qua2ka
+ * @property \Illuminate\Support\Carbon|null $dal
+ * @property \Illuminate\Support\Carbon|null $al
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property int $disci1
+ * @property string $disci1_txt
+ * @property int $codqua
+ * @property string $codqua_txt
+ * @property int $tot_presenza_periodo_plus_no_timbr
+ * @property string $tot
+ * @property int|null $valutatore_id
+ * @property int|null $quadrimestre
+ * @property-read Collection<int, IndennitaTipoDettaglio> $indennitaTipoDettaglio
+ * @property-read int|null $indennita_tipo_dettaglio_count
+ *
  * @method static Builder|CondizioniLavoroAdm newModelQuery()
  * @method static Builder|CondizioniLavoroAdm newQuery()
  * @method static Builder|CondizioniLavoroAdm ofDate(int $date)
@@ -105,68 +107,37 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder|CondizioniLavoroAdm whereUpdatedBy($value)
  * @method static Builder|CondizioniLavoroAdm whereValutatoreId($value)
  * @method static Builder|CondizioniLavoroAdm withDays(int $date_min, int $date_max)
- * @property Profile|null                                     $creator
- * @property mixed                                            $all_indennita_tipo
- * @property string|null                                      $codice_fiscale
- * @property string                                           $from_field
- * @property int|float                                        $gg_p_time_vert_year
- * @property mixed                                            $gg_parttimevert_anno
- * @property int|null                                         $gg_parttimevert
- * @property mixed                                            $gg_parttimevert_dalal
- * @property mixed                                            $gg_presenza_dalal
- * @property string|null                                      $inail
- * @property \Illuminate\Support\Collection                   $indennita_tipo_dettaglio_all
- * @property mixed                                            $last_data_assunz
- * @property int|float                                        $perc_p_time_daterange
- * @property int|float                                        $perc_p_time_year
- * @property mixed                                            $perc_parttime_anno
- * @property float|null                                       $perc_parttime
- * @property mixed                                            $perc_parttime_dalal
- * @property string|null                                      $sesso
- * @property string|null                                      $titolo_di_studio
- * @property string                                           $to_field
- * @property float|null                                       $tot_x_ptime
- * @property CondizioniLavoroIndennitaTipoDettaglioPivot|null $pivot
- * @property StabiDirigente|null                              $stabiDirigente
- * @property Collection<int, IndennitaTipoDettaglio>          $tipoDettaglio
- * @property int|null                                         $tipo_dettaglio_count
- * @property Profile|null                                     $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read mixed $all_indennita_tipo
+ * @property-read string|null $codice_fiscale
+ * @property-read string $from_field
+ * @property-read int|float $gg_p_time_vert_year
+ * @property-read mixed $gg_parttimevert_anno
+ * @property-read int|null $gg_parttimevert
+ * @property-read mixed $gg_parttimevert_dalal
+ * @property-read mixed $gg_presenza_dalal
+ * @property-read string|null $inail
+ * @property-read \Illuminate\Support\Collection $indennita_tipo_dettaglio_all
+ * @property-read mixed $last_data_assunz
+ * @property-read int|float $perc_p_time_daterange
+ * @property-read int|float $perc_p_time_year
+ * @property-read mixed $perc_parttime_anno
+ * @property-read float|null $perc_parttime
+ * @property-read mixed $perc_parttime_dalal
+ * @property-read string|null $sesso
+ * @property-read string|null $titolo_di_studio
+ * @property-read string $to_field
+ * @property-read float|null $tot_x_ptime
+ * @property-read CondizioniLavoroIndennitaTipoDettaglioPivot|null $pivot
+ * @property-read StabiDirigente|null $stabiDirigente
+ * @property-read Collection<int, IndennitaTipoDettaglio> $tipoDettaglio
+ * @property-read int|null $tipo_dettaglio_count
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|CondizioniLavoroAdm ofEnte(int $ente)
  * @method static Builder<static>|CondizioniLavoroAdm ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $Sto00fYear
- * @property-read int|null $sto00f_year_count
- * @property-read Collection<int, \Modules\Sigma\Models\Ana02f> $ana02f
- * @property-read int|null $ana02f_count
- * @property-read \Modules\Sigma\Models\Ana10f|null $ana10f
- * @property-read \Modules\Sigma\Models\Anag|null $anag
- * @property-read Collection<int, \Modules\Sigma\Models\Asz00f> $asz00f
- * @property-read int|null $asz00f_count
- * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1
- * @property-read int|null $asz00k1_count
- * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1Year
- * @property-read int|null $asz00k1_year_count
- * @property-read Profile|null $deleter
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
- * @property-read int|null $integ_params_count
- * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00f
- * @property-read int|null $qua00f_count
- * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00fDaterange
- * @property-read int|null $qua00f_daterange_count
- * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00fYear
- * @property-read int|null $qua00f_year_count
- * @property-read Collection<int, \Modules\Sigma\Models\Qua03f> $qua03f
- * @property-read int|null $qua03f_count
- * @property-read Collection<int, \Modules\Sigma\Models\Rep00f> $rep00f
- * @property-read int|null $rep00f_count
- * @property-read Collection<int, \Modules\Sigma\Models\Repart> $reparts
- * @property-read int|null $reparts_count
- * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $sto00f
- * @property-read int|null $sto00f_count
- * @property-read \Modules\IndennitaCondizioniLavoro\Models\StabiDirigente|null $valutatore
- * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lx
- * @property-read int|null $wstr01lx_count
- * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lxYear
- * @property-read int|null $wstr01lx_year_count
+ *
  * @mixin \Eloquent
  */
 class CondizioniLavoroAdm extends CondizioniLavoro
@@ -204,7 +175,7 @@ class CondizioniLavoroAdm extends CondizioniLavoro
     }
     */
     // --- relationships ---
-    #[\Override]
+    #[Override]
     public function indennitaTipoDettaglio(): BelongsToMany
     {
         $cross = 'condizioni_lavoro_x_indennita_tipo_dettaglio';
@@ -256,15 +227,11 @@ class CondizioniLavoroAdm extends CondizioniLavoro
     // --- mutators ---
     public function getTrimestreAttribute(?int $value): ?int
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
 
-        try {
-            $dal_month = $this->dal->month;
-        } catch (\ErrorException $e) {
-            dddx($this->getAttribute('dal'));
-        }
+        $dal_month = $this->dal->month;
         switch ($dal_month) {
             case 1:
                 $value = 1;
@@ -283,7 +250,7 @@ class CondizioniLavoroAdm extends CondizioniLavoro
 
         $this->trimestre = $value;
 
-        if (null === $this->getKey()) {
+        if ($this->getKey() === null) {
             return $value;
         }
 

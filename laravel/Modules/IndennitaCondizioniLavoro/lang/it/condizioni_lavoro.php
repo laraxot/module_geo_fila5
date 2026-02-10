@@ -105,9 +105,6 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
-        'lavoratore' => [
-            'label' => 'lavoratore',
-        ],
     ],
     'actions' => [
         'exportPdf' => [

@@ -43,6 +43,7 @@ use Modules\Ptv\Models\Traits\HasStabiDirigente;
  * @property Profile|null $creator
  * @property Profile|null $updater
  * @property Workgroup|null $workgroup
+ *
  * @method static ProjectFactory factory($count = null, $state = [])
  * @method static Builder|Project newModelQuery()
  * @method static Builder|Project newQuery()
@@ -67,6 +68,7 @@ use Modules\Ptv\Models\Traits\HasStabiDirigente;
  * @method static Builder|Project whereUpdatedAt($value)
  * @method static Builder|Project whereUpdatedBy($value)
  * @method static Builder|Project whereWorkgroupId($value)
+ *
  * @property string $settore
  * @property string $tipo_liquidazione
  * @property int|null $rup
@@ -75,28 +77,14 @@ use Modules\Ptv\Models\Traits\HasStabiDirigente;
  * @property int|null $employees_count
  * @property Collection<int, Settlement> $settlements
  * @property int|null $settlements_count
+ *
  * @method static Builder<static>|Project whereSettore($value)
  * @method static Builder<static>|Project whereTipoLiquidazione($value)
+ *
  * @property-read EmployeeProject|null $pivot
  * @property-read Collection<int, Phase> $phases
  * @property-read int|null $phases_count
- * @property string $ditta_nome
- * @property string $ditta_sede
- * @property string $ditta_partitaiva
- * @property numeric $ditta_oneri_sicurezza
- * @property string $ditta_trattativa
- * @property int $department_id
- * @property-read Profile|null $deleter
- * @property-read Collection<int, \Modules\Incentivi\Models\StabiDirigente> $stabiDirigente
- * @property-read int|null $stabi_dirigente_count
- * @method static Builder<static>|Project whereDec($value)
- * @method static Builder<static>|Project whereDepartmentId($value)
- * @method static Builder<static>|Project whereDittaNome($value)
- * @method static Builder<static>|Project whereDittaOneriSicurezza($value)
- * @method static Builder<static>|Project whereDittaPartitaiva($value)
- * @method static Builder<static>|Project whereDittaSede($value)
- * @method static Builder<static>|Project whereDittaTrattativa($value)
- * @method static Builder<static>|Project whereRup($value)
+ *
  * @mixin \Eloquent
  */
 class Project extends BaseModel

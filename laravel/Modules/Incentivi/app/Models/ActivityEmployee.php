@@ -22,6 +22,7 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $created_by
  * @property Profile|null $creator
  * @property Profile|null $updater
+ *
  * @method static Builder|ActivityEmployee newModelQuery()
  * @method static Builder|ActivityEmployee newQuery()
  * @method static Builder|ActivityEmployee query()
@@ -35,9 +36,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|ActivityEmployee whereProjectId($value)
  * @method static Builder|ActivityEmployee whereUpdatedAt($value)
  * @method static Builder|ActivityEmployee whereUpdatedBy($value)
+ *
  * @property-read Activity $activity
  * @property-read Employee $employee
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class ActivityEmployee extends BasePivot

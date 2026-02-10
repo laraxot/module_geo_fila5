@@ -35,9 +35,6 @@ return [
         ],
         'indennitaTipoDettaglio' => [
             'label' => 'indennitaTipoDettaglio',
-            'description' => 'indennitaTipoDettaglio',
-            'helper_text' => 'indennitaTipoDettaglio',
-            'placeholder' => 'indennitaTipoDettaglio',
         ],
         'quadrimestre' => [
             'label' => 'quadrimestre',
@@ -80,9 +77,6 @@ return [
         ],
         'valutatore_id' => [
             'label' => 'valutatore_id',
-            'description' => 'valutatore_id',
-            'helper_text' => 'valutatore_id',
-            'placeholder' => 'valutatore_id',
         ],
         'anno/valutatore' => [
             'label' => 'anno/valutatore',
@@ -172,28 +166,12 @@ return [
         'cancel' => [
             'tooltip' => 'cancel',
             'icon' => 'cancel',
-            'label' => 'cancel',
         ],
         'replicate' => [
             'tooltip' => 'replicate',
             'icon' => 'replicate',
             'label' => 'replicate',
         ],
-        'save' => [
-            'tooltip' => 'save',
-            'icon' => 'save',
-            'label' => 'save',
-        ],
     ],
     'label' => 'condizioni lavoro adm',
-    'sections' => [
-        'periodo' => [
-            'heading' => 'periodo',
-            'label' => 'periodo',
-        ],
-        'lavoratore' => [
-            'heading' => 'lavoratore',
-            'label' => 'lavoratore',
-        ],
-    ],
 ];

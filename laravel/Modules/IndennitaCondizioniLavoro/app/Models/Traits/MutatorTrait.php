@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\IndennitaCondizioniLavoro\Models\Traits;
 
 use Carbon\Carbon;
+use InvalidArgumentException;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrAnnoMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
@@ -41,50 +42,59 @@ trait MutatorTrait
         return 'al';
     }
 
-    public function getQuadrimestreDal(): Carbon
+    public function getDalAttribute(mixed $_value): Carbon
     {
-        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
+        // if(is_object($value)) return $value;
+        // if($value!=null) return Carbon::parse($value);
 
-        $startDate = Carbon::create($this->anno, $startMonth, 1)->startOfDay();
+        // ✅ Check: record deve esistere prima di save()
+        if ($this->getKey() == null) {
+            $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
+            $result = Carbon::create($anno, 1, 1, 0);
+            if ($result === null) {
+                throw new InvalidArgumentException('Invalid date creation');
+            }
 
-        return $startDate;
-    }
-
-    public function getQuadrimestreAl(): Carbon
-    {
-        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
-
-        $endDate = Carbon::create($this->anno, $startMonth, 1)
-        ->addMonths(4)
-        ->subDay()
-        ->endOfDay();
-
-        return $endDate;
-    }
-
-    /**
-     * @param string|Carbon|null $value
-     */
-    public function getDalAttribute($value): ?Carbon
-    {
-        if (null == $this->getKey()) {
-            return null;
+            return $result;
         }
-        $value = $this->getQuadrimestreDal();
+
+        $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
+        $dt = Carbon::create($anno, 1, 1, 0);
+        if ($dt === null) {
+            throw new InvalidArgumentException('Invalid date creation');
+        }
+        $value = clone ($dt)->addQuarters($this->trimestre - 1);
+
+        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // getKey() è già stato controllato sopra, quindi non può essere null qui
         $this->update(['dal' => $value]);
 
         return $value;
     }
 
-    /**
-     * @param string|Carbon|null $value
-     */
-    public function getAlAttribute($value): ?Carbon
+    public function getAlAttribute(mixed $_value): Carbon
     {
-        if (null == $this->getKey()) {
-            return null;
+        // if(is_object($value)) return $value;
+        // if($value!=null) return Carbon::parse($value);
+
+        // ✅ Check: record deve esistere prima di save()
+        if ($this->getKey() == null) {
+            $dt = Carbon::create($this->anno, 1, 1, 0);
+            if ($dt === null) {
+                throw new InvalidArgumentException('Invalid date creation');
+            }
+
+            return clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
         }
-        $value = $this->getQuadrimestreAl();
+
+        $dt = Carbon::create($this->anno, 1, 1, 0);
+        if ($dt === null) {
+            throw new InvalidArgumentException('Invalid date creation');
+        }
+        $value = clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
+
+        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // getKey() è già stato controllato sopra, quindi non può essere null qui
         $this->update(['al' => $value]);
 
         return $value;
@@ -93,7 +103,7 @@ trait MutatorTrait
     public function getGgPresenzaPeriodoAttribute(?int $_value): ?int
     {
         // ✅ Check: record deve esistere prima di save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 

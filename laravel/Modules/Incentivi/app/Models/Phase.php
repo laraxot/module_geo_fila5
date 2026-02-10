@@ -26,6 +26,7 @@ use Modules\Ptv\Models\Profile;
  * @property-read Project|null $project
  * @property-read Settlement|null $settlement
  * @property-read Profile|null $updater
+ *
  * @method static PhaseFactory factory($count = null, $state = [])
  * @method static Builder<static>|Phase newModelQuery()
  * @method static Builder<static>|Phase newQuery()
@@ -40,7 +41,7 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder<static>|Phase whereStartDate($value)
  * @method static Builder<static>|Phase whereUpdatedAt($value)
  * @method static Builder<static>|Phase whereUpdatedBy($value)
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Phase extends BaseModel

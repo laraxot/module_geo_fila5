@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string|null $note
  * @property-read CondizioniLavoro|null $condizioniLavoro
  * @property-read IndennitaTipoDettaglio|null $indennitaTipoDettaglio
+ *
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio newModelQuery()
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio newQuery()
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio query()
@@ -26,10 +27,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio whereId($value)
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio whereIndennitaTipoDettaglioId($value)
  * @method static Builder|CrossCondizioniLavoroIndennitaTipoDettaglio whereNote($value)
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static Builder<static>|CrossCondizioniLavoroIndennitaTipoDettaglio whereCreatedAt($value)
- * @method static Builder<static>|CrossCondizioniLavoroIndennitaTipoDettaglio whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class CrossCondizioniLavoroIndennitaTipoDettaglio extends BasePivot

@@ -1,6 +1,6 @@
 {
     "name": "provtv/module_incentivi_fila3",
-    "description": "Incentivi module for the Laraxot ecosystem.",
+    "description": "",
     "authors": [
         {
             "name": "Nicola Storgato",
@@ -13,7 +13,9 @@
                 "Modules\\Incentivi\\Providers\\IncentiviServiceProvider",
                 "Modules\\Incentivi\\Providers\\Filament\\AdminPanelProvider"
             ],
-            "aliases": {}
+            "aliases": {
+
+            }
         }
     },
     "autoload": {
@@ -25,6 +27,7 @@
     },
     "require": {
         "spatie/laravel-pdf": "^1.5"
+
     },
     "require_comment": {
         "provtv/filament-nested-resources": "*"
@@ -35,6 +38,7 @@
             "url": "./packages/sevendays-digital/filament-nested-resources",
             "canonical": false
         }
+
     ],
     "minimum-stability": "dev",
     "prefer-stable": true

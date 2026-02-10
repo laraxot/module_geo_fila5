@@ -30,6 +30,7 @@ use Modules\Ptv\Models\Profile;
  * @property int|null $employees_count
  * @property Project|null $project
  * @property Profile|null $updater
+ *
  * @method static ActivityFactory factory($count = null, $state = [])
  * @method static Builder|Activity newModelQuery()
  * @method static Builder|Activity newQuery()
@@ -45,14 +46,18 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Activity whereTipo($value)
  * @method static Builder|Activity whereUpdatedAt($value)
  * @method static Builder|Activity whereUpdatedBy($value)
+ *
  * @property int $appartiene_a_liquidazione_a_fasi
  * @property string|null $liquidazione_fasi
  * @property-read int|null $workgroup_id
+ *
  * @method static Builder<static>|Activity whereAppartieneALiquidazioneAFasi($value)
  * @method static Builder<static>|Activity whereLiquidazioneFasi($value)
+ *
  * @property int|null $phase_id
+ *
  * @method static Builder<static>|Activity wherePhaseId($value)
- * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Activity extends BaseModel

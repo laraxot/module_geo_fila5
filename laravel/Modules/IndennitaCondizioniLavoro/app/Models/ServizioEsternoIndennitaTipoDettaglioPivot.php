@@ -26,6 +26,7 @@ use Illuminate\Support\Carbon;
  * @property-read IndennitaTipoDettaglio|null $indennitaTipoDettaglio
  * @property-read ServizioEsterno|null $servizioEsterno
  * @property-read CondizioniLavoro|null $condizioniLavoro
+ *
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot newModelQuery()
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot newQuery()
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot query()
@@ -38,6 +39,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot whereServizioEsternoId($value)
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot whereUpdatedAt($value)
  * @method static Builder|ServizioEsternoIndennitaTipoDettaglioPivot whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class ServizioEsternoIndennitaTipoDettaglioPivot extends BasePivot
