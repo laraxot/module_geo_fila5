@@ -21,8 +21,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|OauthDeviceCode query()
  *
  * @mixin \Eloquent
- */
-class OauthDeviceCode extends BaseModel
+  */
+class  extends BaseModel
 class OauthDeviceCode extends PassportDeviceCode
 {
     /** @var string */

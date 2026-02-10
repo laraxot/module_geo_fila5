@@ -38,10 +38,12 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                 $tokens_count
  * @property UserContract|null                        $user
  * @property \Illuminate\Database\Eloquent\Model|null $owner
- *
- *
- *
+
     /** @var string */
+    protected $connection = 'user';
+class OauthClient extends PassportClient
+{
+ *
     protected $connection = 'user';
 
     /**

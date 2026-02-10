@@ -294,8 +294,6 @@ trait HasXotTable
                         ->iconButton()
                         ->tooltip((string) __('user::actions.detach'));
                 }
-            }
-        }
 
         return $actions;
     }

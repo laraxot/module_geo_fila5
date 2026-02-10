@@ -36,5 +36,8 @@ return [
             'placeholder' => 'Codice Fiscale',
             'label' => 'Codice Fiscale',
         ],
+        'test' => [
+            'description' => 'test',
+        ],
     ],
 ];
