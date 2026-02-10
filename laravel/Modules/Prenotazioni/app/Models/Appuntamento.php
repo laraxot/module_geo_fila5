@@ -27,7 +27,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $deleted_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static AppuntamentoFactory factory($count = null, $state = [])
  * @method static Builder|Appuntamento newModelQuery()
  * @method static Builder|Appuntamento newQuery()
@@ -47,10 +46,9 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Appuntamento whereNote($value)
  * @method static Builder|Appuntamento whereUpdatedAt($value)
  * @method static Builder|Appuntamento whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class Appuntamento extends BaseModel

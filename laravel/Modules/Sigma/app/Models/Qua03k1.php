@@ -60,7 +60,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $q3003
  * @property int|null $q3004
  * @property int|null $q3005
- *
  * @method static Builder|Qua03k1 newModelQuery()
  * @method static Builder|Qua03k1 newQuery()
  * @method static Builder|Qua03k1 query()
@@ -115,7 +114,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua03k1 whereQ3voc3($value)
  * @method static Builder|Qua03k1 whereQ3voc4($value)
  * @method static Builder|Qua03k1 whereQ3voc5($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Qua03k1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Qua03k1 extends BaseModel

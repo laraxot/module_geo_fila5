@@ -38,12 +38,51 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                 $tokens_count
  * @property UserContract|null                        $user
  * @property \Illuminate\Database\Eloquent\Model|null $owner
+ * @property string|null                              $updated_by
+ * @property string|null                              $created_by
+ * @method static ClientFactory       factory($count = null, $state = [])
+ * @method static Builder|OauthClient newModelQuery()
+ * @method static Builder|OauthClient newQuery()
+ * @method static Builder|OauthClient query()
+ * @method static Builder|OauthClient whereCreatedAt($value)
+ * @method static Builder|OauthClient whereId($value)
+ * @method static Builder|OauthClient whereName($value)
+ * @method static Builder|OauthClient wherePasswordClient($value)
+ * @method static Builder|OauthClient wherePersonalAccessClient($value)
+ * @method static Builder|OauthClient whereProvider($value)
+ * @method static Builder|OauthClient whereRedirect($value)
+ * @method static Builder|OauthClient whereRevoked($value)
+ * @method static Builder|OauthClient whereSecret($value)
+ * @method static Builder|OauthClient whereUpdatedAt($value)
+ * @method static Builder|OauthClient whereUserId($value)
+ * @method static Builder|OauthClient whereCreatedBy($value)
+ * @method static Builder|OauthClient whereUpdatedBy($value)
+ * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read array $redirect_uris
+ * @property-read Collection<int, \Modules\User\Models\Role> $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthClient existsIn(array $haystack)
+ * @method static Builder<static>|OauthClient permission($permissions, $without = false)
+ * @method static Builder<static>|OauthClient role($roles, $guard = null, $without = false)
+ * @method static Builder<static>|OauthClient withoutPermission($permissions)
+ * @method static Builder<static>|OauthClient withoutRole($roles, $guard = null)
+ * @mixin \Eloquent
+ */
+class OauthClient extends PassportClient implements AuthorizableContract
+{
+    use Authorizable;
+    use HasRoles;
+
+    /**
+     * The name of the guard for Spatie Permission.
+     * REQUIRED BY Spatie\Permission\Traits\HasRoles - MUST be public.
+     *
+     * @var string
+     */
+    public $guard_name = 'api';
 
     /** @var string */
-    protected $connection = 'user';
-class OauthClient extends PassportClient
-{
- *
     protected $connection = 'user';
 
     /**
@@ -103,11 +142,6 @@ class OauthClient extends PassportClient
         return false;
     }
 
-    /**
-     * Check if client has any of the given permissions.
-     *
-     * @param iterable<string> $permissions
-     */
     /**
      * Check if client has any of the given permissions.
      *

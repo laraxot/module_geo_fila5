@@ -26,7 +26,6 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property float|null $tot Total value
- *
  * @method static Builder|OrganizzativaCatCoeff newModelQuery()
  * @method static Builder|OrganizzativaCatCoeff newQuery()
  * @method static Builder|OrganizzativaCatCoeff query()
@@ -43,10 +42,9 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|OrganizzativaCatCoeff whereTotGiorniPtCoeff($value)
  * @method static Builder|OrganizzativaCatCoeff whereUpdatedAt($value)
  * @method static Builder|OrganizzativaCatCoeff whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class OrganizzativaCatCoeff extends BaseModel

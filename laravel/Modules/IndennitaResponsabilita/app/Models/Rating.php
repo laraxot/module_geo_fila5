@@ -32,7 +32,6 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property bool|null $is_disabled
  * @property bool|null $is_readonly
  * @property int|null $order_column
- *
  * @method static Builder|Rating newModelQuery()
  * @method static Builder|Rating newQuery()
  * @method static Builder|Rating query()
@@ -51,15 +50,13 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
  * @method static Builder|Rating withExtraAttributes(string|array $schemalessAttributes = [], mixed $value = null)
- *
  * @property-read Profile|null $creator
  * @property-read Model|\Eloquent $linkedTo
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  * @property-read Profile|null $updater
- *
  * @method static RatingFactory factory($count = null, $state = [])
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class Rating extends BaseRatingModel

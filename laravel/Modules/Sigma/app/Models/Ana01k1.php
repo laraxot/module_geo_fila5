@@ -28,7 +28,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $an3003
  * @property string|null $an4004
  * @property string|null $an5005
- *
  * @method static Builder|Ana01k1 newModelQuery()
  * @method static Builder|Ana01k1 newQuery()
  * @method static Builder|Ana01k1 query()
@@ -51,7 +50,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana01k1 whereMatr($value)
  * @method static Builder|Ana01k1 whereSeq($value)
  * @method static Builder|Ana01k1 whereTipm($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Ana01k1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Ana01k1 extends BaseModel

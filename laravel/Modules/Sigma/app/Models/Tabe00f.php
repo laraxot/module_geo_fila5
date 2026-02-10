@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $codtab
  * @property string|null $codice
  * @property string|null $field2
- *
  * @method static Builder|Tabe00f newModelQuery()
  * @method static Builder|Tabe00f newQuery()
  * @method static Builder|Tabe00f query()
@@ -21,7 +20,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Tabe00f whereCodtab($value)
  * @method static Builder|Tabe00f whereField2($value)
  * @method static Builder|Tabe00f whereId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Tabe00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Tabe00f extends BaseModel

@@ -14,7 +14,9 @@ use Modules\Legge104\Database\Factories\SchedeFactory;
  * @method static Builder|Schede newModelQuery()
  * @method static Builder|Schede newQuery()
  * @method static Builder|Schede query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Schede extends BaseModel

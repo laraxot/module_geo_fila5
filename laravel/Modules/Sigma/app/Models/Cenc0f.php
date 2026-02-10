@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ccsre
  * @property string|null $ccdes
  * @property string|null $ccann
- *
  * @method static Builder|Cenc0f newModelQuery()
  * @method static Builder|Cenc0f newQuery()
  * @method static Builder|Cenc0f query()
@@ -27,7 +26,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cenc0f whereCcsta($value)
  * @method static Builder|Cenc0f whereEnte($value)
  * @method static Builder|Cenc0f whereId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Cenc0fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Cenc0f extends BaseModel

@@ -12,7 +12,7 @@ use Override;
 
 /**
  * Modello aggregato per i totali individuali per valutatore_id.
- *
+ * 
  * Regola: questo modello DEVE estendere il BaseModel locale (Modules\Performance\Models\BaseModel) e NON Modules\Xot\Models\BaseModel, secondo la nuova regola architetturale (vedi docs/individuale-money-pipeline.md e Xot/docs/MIGRATION_BASE_RULES.md).
  *
  * @property int $id
@@ -40,7 +40,6 @@ use Override;
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
  * @property-read Valutatore|null $valutatore
- *
  * @method static Builder<static>|IndividualeTotValutatoreId newModelQuery()
  * @method static Builder<static>|IndividualeTotValutatoreId newQuery()
  * @method static Builder<static>|IndividualeTotValutatoreId query()
@@ -66,7 +65,7 @@ use Override;
  * @method static Builder<static>|IndividualeTotValutatoreId whereUpdatedAt($value)
  * @method static Builder<static>|IndividualeTotValutatoreId whereUpdatedBy($value)
  * @method static Builder<static>|IndividualeTotValutatoreId whereValutatoreId($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class IndividualeTotValutatoreId extends BaseModel

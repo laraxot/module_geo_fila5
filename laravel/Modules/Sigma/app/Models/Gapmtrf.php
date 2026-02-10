@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $qmatr
  * @property string|null $qdes1
  * @property string|null $qabi1
- *
  * @method static Builder|Gapmtrf newModelQuery()
  * @method static Builder|Gapmtrf newQuery()
  * @method static Builder|Gapmtrf query()
@@ -25,7 +24,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Gapmtrf whereQent1($value)
  * @method static Builder|Gapmtrf whereQmatr($value)
  * @method static Builder|Gapmtrf whereQtip1($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\GapmtrfFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Gapmtrf extends BaseModel

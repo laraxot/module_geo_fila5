@@ -48,7 +48,6 @@ use stdClass;
  * @property-read int|null $wstr01lx_count
  * @property-read Collection<int, Wstr02f> $wstr02f
  * @property-read int|null $wstr02f_count
- *
  * @method static Builder|Wmen00f newModelQuery()
  * @method static Builder|Wmen00f newQuery()
  * @method static Builder|Wmen00f query()
@@ -74,7 +73,6 @@ use stdClass;
  * @method static Builder|Wmen00f whereMnp3($value)
  * @method static Builder|Wmen00f whereMnp4($value)
  * @method static Builder|Wmen00f whereMntmen($value)
- *
  * @mixin \Eloquent
  */
 class Wmen00f extends Model

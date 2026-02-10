@@ -33,7 +33,6 @@ test('widget can be rendered', function () {
 
 ### XotData Mock Pattern (Obbligatorio)
 
-<<<<<<< HEAD
 ```php
 function mockXotData(): void
 {
@@ -49,9 +48,6 @@ function mockXotData(): void
     app()->instance(\Modules\Xot\Datas\XotData::class, $mockXotData);
 }
 ```
-=======
-
->>>>>>> ac0ea089 (.)
 
 ## 🚨 **Regole Architetturali Critiche**
 

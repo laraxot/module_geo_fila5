@@ -34,7 +34,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $p3flg2
  * @property string|null $p3com1
  * @property string|null $p3com2
- *
  * @method static Builder|Pro03f newModelQuery()
  * @method static Builder|Pro03f newQuery()
  * @method static Builder|Pro03f query()
@@ -63,7 +62,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Pro03f whereP3ind7($value)
  * @method static Builder|Pro03f whereP3matr($value)
  * @method static Builder|Pro03f whereP3reco($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Pro03fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Pro03f extends BaseModel

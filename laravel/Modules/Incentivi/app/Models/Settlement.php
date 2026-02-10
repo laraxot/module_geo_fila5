@@ -28,7 +28,6 @@ use Modules\Ptv\Models\Profile;
  * @property-read Model|\Eloquent|null $linkable
  * @property-read Project|null $project
  * @property-read Profile|null $updater
- *
  * @method static SettlementFactory factory($count = null, $state = [])
  * @method static Builder<static>|Settlement newModelQuery()
  * @method static Builder<static>|Settlement newQuery()
@@ -44,7 +43,7 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder<static>|Settlement whereTipologia($value)
  * @method static Builder<static>|Settlement whereUpdatedAt($value)
  * @method static Builder<static>|Settlement whereUpdatedBy($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class Settlement extends BaseModel

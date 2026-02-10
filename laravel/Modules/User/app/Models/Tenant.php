@@ -21,7 +21,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Tenant newModelQuery()
  * @method static Builder|Tenant newQuery()
  * @method static Builder|Tenant query()
- *
  * @property EloquentCollection<int, Model&UserContract> $members
  * @property int|null                                    $members_count
  * @property ProfileContract|null                        $creator
@@ -31,9 +30,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property TenantUser                                  $pivot
  * @property EloquentCollection<int, User>               $users
  * @property int|null                                    $users_count
- *
  * @mixin IdeHelperTenant
- *
  * @property string               $id
  * @property string               $name
  * @property string|null          $slug
@@ -44,7 +41,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property Carbon|null          $updated_at
  * @property Carbon|null          $deleted_at
  * @property ProfileContract|null $deleter
- *
  * @method static Builder<static>|Tenant whereCreatedAt($value)
  * @method static Builder<static>|Tenant whereDatabase($value)
  * @method static Builder<static>|Tenant whereDeletedAt($value)
@@ -54,7 +50,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|Tenant whereName($value)
  * @method static Builder<static>|Tenant whereSlug($value)
  * @method static Builder<static>|Tenant whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 class Tenant extends BaseTenant

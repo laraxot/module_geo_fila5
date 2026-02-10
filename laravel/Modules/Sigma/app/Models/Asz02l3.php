@@ -35,7 +35,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $as2004
  * @property string|null $as2005
  * @property string|null $as2ann
- *
  * @method static Builder|Asz02l3 newModelQuery()
  * @method static Builder|Asz02l3 newQuery()
  * @method static Builder|Asz02l3 query()
@@ -65,7 +64,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asz02l3 whereEnte($value)
  * @method static Builder|Asz02l3 whereId($value)
  * @method static Builder|Asz02l3 whereMatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Asz02l3Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Asz02l3 extends BaseModel

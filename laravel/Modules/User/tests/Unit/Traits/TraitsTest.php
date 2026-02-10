@@ -6,6 +6,16 @@ uses(Modules\User\Tests\TestCase::class);
 
 use Modules\User\Traits\PasswordValidationRules;
 
+// Create test class that uses the trait
+class TestClassWithPasswordValidationRules
+{
+    use PasswordValidationRules;
+}
+
+test('PasswordValidationRules trait can be used', function () {
+    expect(trait_exists(PasswordValidationRules::class))->toBeTrue();
+
+    try {
         $testClass = new TestClassWithPasswordValidationRules();
         // Check if the trait methods exist
         expect(method_exists($testClass, 'passwordRules'))->toBeTrue();

@@ -27,7 +27,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                    $roles_count
  * @property Collection<int, User>       $users
  * @property int|null                    $users_count
- *
  * @method static PermissionFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Permission newModelQuery()
  * @method static Builder<static>|Permission newQuery()
@@ -45,7 +44,9 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static Builder<static>|Permission withoutRole($roles, $guard = null)
  * @method static static                     firstOrCreate(array $attributes, array $values = [])
  * @method static static                     updateOrCreate(array $attributes, array $values = [])
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission

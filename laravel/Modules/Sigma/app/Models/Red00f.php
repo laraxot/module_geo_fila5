@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $redfam
  * @property string|null $reddip
  * @property string|null $flaga
- *
  * @method static Builder|Red00f newModelQuery()
  * @method static Builder|Red00f newQuery()
  * @method static Builder|Red00f query()
@@ -35,7 +34,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Red00f whereRedfam($value)
  * @method static Builder|Red00f whereStatoc($value)
  * @method static Builder|Red00f whereTipnuc($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Red00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Red00f extends BaseModel

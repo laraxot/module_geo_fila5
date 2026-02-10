@@ -72,9 +72,6 @@ Ultimo aggiornamento: 14 Maggio 2025
 
 # Indice Documentazione User
 
-<<<<<<< HEAD
-- [filament-best-practices.mdc](./filament-best-practices.mdc) — **Regola fondamentale:** chi estende XotBaseResource NON deve dichiarare $navigationGroup, $navigationLabel, né il metodo statico table(Table $table): Table. Seguire sempre questa regola per evitare errori di override e garantire coerenza tra i moduli.
-=======
 ## Best Practices e Convenzioni
 
 - [filament-best-practices.mdc](./filament-best-practices.mdc) — **Regola fondamentale:** chi estende XotBaseResource NON deve dichiarare $navigationGroup, $navigationLabel, né il metodo statico table(Table $table): Table. Seguire sempre questa regola per evitare errori di override e garantire coerenza tra i moduli.
@@ -83,4 +80,3 @@ Ultimo aggiornamento: 14 Maggio 2025
 
 - [Model Inheritance Analysis](./MODEL_INHERITANCE_ANALYSIS.md) — Analisi completa della gerarchia di ereditarietà dei modelli
 - [Model Inheritance Fixes](./MODEL_INHERITANCE_FIXES.md) — Riepilogo delle correzioni applicate ai modelli (15 Ottobre 2025)
->>>>>>> ac0ea089 (.)

@@ -269,7 +269,6 @@ use Spatie\Activitylog\LogOptions;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
- *
  * @method static ProgressioniFactory factory($count = null, $state = [])
  * @method static Builder|Progressioni newModelQuery()
  * @method static Builder|Progressioni newQuery()
@@ -398,7 +397,80 @@ use Spatie\Activitylog\LogOptions;
  * @method static Builder|Progressioni whereValutatoreId($value)
  * @method static Builder|Progressioni whereVincitore($value)
  * @method static Builder|Progressioni withDays(int $date_min, int $date_max)
- *
+ * @property int|null $gg_cateco
+ * @property float|null $gg_no_asz
+ * @property int|null $gg_cateco_no_posfun_no_asz
+ * @property float|null $gg_fuori_sede_no_asz
+ * @property int|null $gg_asz_cateco_in_sede
+ * @property int|null $gg_asz_cateco_fuori_sede
+ * @property int $gg_asz_cateco
+ * @property int|null $gg_cateco_no_asz
+ * @property numeric|null $perf_ind_2024
+ * @property numeric|null $perf_ind_2025
+ * @property numeric|null $perf_ind_2026
+ * @property numeric|null $perf_ind_2027
+ * @property numeric|null $perf_ind_2028
+ * @property numeric|null $perf_ind_2029
+ * @property numeric|null $perf_ind_2030
+ * @property numeric $perf_ind_2022
+ * @property numeric $perf_ind_-1
+ * @property numeric $perf_ind_-2
+ * @property numeric $perf_ind_-3
+ * @property numeric $perf_ind_2023
+ * @property Carbon|null $refreshed_at
+ * @property int|null $gg_integ_params
+ * @property int|null $gg_esperienza_no_asz
+ * @property float|null $gg_integ_params_asz
+ * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
+ * @property-read int|null $activities_count
+ * @property-read Collection<int, Asz00k1> $aszEff
+ * @property-read int|null $asz_eff_count
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read string|null $codice_fiscale
+ * @property-read string $from_field
+ * @property-read int|null $gg_cateco_sup
+ * @property-read int|null $gg_cateco_sup_fuori_sede
+ * @property-read string|null $inail
+ * @property-read float|null $perf_ind2025
+ * @property-read float|null $perf_ind2026
+ * @property-read float|null $perf_ind2027
+ * @property-read float|null $perf_ind2028
+ * @property-read float|null $perf_ind2029
+ * @property-read float|null $perf_ind2030
+ * @property-read string|null $sesso
+ * @property-read string $to_field
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Progressioni ofEnte(int $ente)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Progressioni ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ * @method static Builder<static>|Progressioni whereGgAszCateco($value)
+ * @method static Builder<static>|Progressioni whereGgAszCatecoFuoriSede($value)
+ * @method static Builder<static>|Progressioni whereGgAszCatecoInSede($value)
+ * @method static Builder<static>|Progressioni whereGgAszInSede($value)
+ * @method static Builder<static>|Progressioni whereGgCateco($value)
+ * @method static Builder<static>|Progressioni whereGgCatecoNoAsz($value)
+ * @method static Builder<static>|Progressioni whereGgCatecoNoPosfunNoAsz($value)
+ * @method static Builder<static>|Progressioni whereGgEsperienzaNoAsz($value)
+ * @method static Builder<static>|Progressioni whereGgFuoriSedeNoAsz($value)
+ * @method static Builder<static>|Progressioni whereGgIntegParams($value)
+ * @method static Builder<static>|Progressioni whereGgIntegParamsAsz($value)
+ * @method static Builder<static>|Progressioni whereGgNoAsz($value)
+ * @method static Builder<static>|Progressioni whereHhAszInSede($value)
+ * @method static Builder<static>|Progressioni wherePerfInd1($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2022($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2023($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2024($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2025($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2026($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2027($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2028($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2029($value)
+ * @method static Builder<static>|Progressioni wherePerfInd2030($value)
+ * @method static Builder<static>|Progressioni wherePerfInd3($value)
+ * @method static Builder<static>|Progressioni whereRefreshedAt($value)
  * @mixin \Eloquent
  */
 class Progressioni extends BaseScheda

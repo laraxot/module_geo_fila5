@@ -1,14 +1,8 @@
 # Correzione Estensioni Classi Base - Modulo User
 
-<<<<<<< HEAD
-**Data:** 15 Ottobre 2025  
-**Tipo:** Bug Fix / Refactoring Architetturale  
-**Severità:** Alta  
-=======
 **Data:** 15 Ottobre 2025
 **Tipo:** Bug Fix / Refactoring Architetturale
 **Severità:** Alta
->>>>>>> ac0ea089 (.)
 **Stato:** ✅ Completato
 
 ## Problema Identificato
@@ -131,11 +125,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Tenant extends Model
 {
     use HasXotFactory;
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> ac0ea089 (.)
     protected $connection = 'user';  // Ridondante
     protected $table = 'tenants';
 }
@@ -324,15 +314,7 @@ grep -r "extends Model" laravel/Modules/*/app/Models/*.php | grep -v "BaseModel\
 
 ---
 
-<<<<<<< HEAD
-**Autore:** AI Assistant  
-**Review:** Team Laraxot  
-**Deploy:** ✅ Ready for Production  
-**Breaking Changes:** Nessuna (backward compatible)
-
-=======
 **Autore:** AI Assistant
 **Review:** Team Laraxot
 **Deploy:** ✅ Ready for Production
 **Breaking Changes:** Nessuna (backward compatible)
->>>>>>> ac0ea089 (.)

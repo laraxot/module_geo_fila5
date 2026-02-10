@@ -21,16 +21,16 @@ class EditSchedule extends XotBaseEditRecord
 
     protected static string $resource = ScheduleResource::class;
 
-    #[Override]
-    protected function getFormSchema(): array
+    /**
+     * @return array<int, Component>
+     */
+    #[\Override]
+    public function getFormSchema(): array
     {
-        $schema = $this->getResource()::getFormSchema();
-        Assert::isArray($schema);
+        Assert::isArray($res = $this->getResource()::getFormSchema());
 
-        $components = array_values($schema);
-        Assert::allIsInstanceOf($components, Component::class);
-
-        return $components;
+        /** @var array<int, Component> $res */
+        return $res;
     }
 
     protected function onValidationError(ValidationException $exception): void

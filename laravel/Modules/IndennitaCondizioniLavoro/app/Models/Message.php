@@ -26,7 +26,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @property-read Collection<int, Message> $children
  * @property-read int|null $children_count
  * @property-read Message|null $parent
- *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Builder|Message breadthFirst()
  * @method static Builder|Message depthFirst()
@@ -54,7 +53,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Builder|Message whereUpdatedBy($value)
  * @method static Builder|Message withGlobalScopes(array $scopes)
  * @method static Builder|Message withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
- *
  * @property int|null $user_id
  * @property string|null $post_type
  * @property int|null $post_id
@@ -79,12 +77,13 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @property-read int|null $siblings_count
  * @property-read Collection<int, \Modules\IndennitaCondizioniLavoro\Models\Message> $siblingsAndSelf All the parent's children.
  * @property-read int|null $siblings_and_self_count
- *
  * @method static Builder<static>|Message doesntHaveChildren()
  * @method static Builder<static>|Message wherePostId($value)
  * @method static Builder<static>|Message wherePostType($value)
  * @method static Builder<static>|Message whereUserId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Message extends PtvMessageModel

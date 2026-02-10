@@ -23,12 +23,10 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  *
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra_attributes
  * @property RuleEnum                                          $rule
- *
  * @method static Builder|Rating newModelQuery()
  * @method static Builder|Rating newQuery()
  * @method static Builder|Rating query()
  * @method static Builder|Rating withExtraAttributes()
- *
  * @property int             $id
  * @property int             $user_id
  * @property float           $value
@@ -47,7 +45,6 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @property bool|null       $is_readonly
  * @property int|null        $order_column
  * @property Model|\Eloquent $linkedTo
- *
  * @method static Builder|Rating whereColor($value)
  * @method static Builder|Rating whereCreatedAt($value)
  * @method static Builder|Rating whereCreatedBy($value)
@@ -64,16 +61,12 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @method static Builder|Rating whereTxt($value)
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
- *
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
  * @property int|null                                          $media_count
  * @property ProfileContract|null                              $creator
  * @property ProfileContract|null                              $updater
- *
- * @mixin Eloquent
- *
  * @method static RatingFactory factory($count = null, $state = [])
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @mixin Eloquent
  */
 class Rating extends BaseModel implements HasMedia

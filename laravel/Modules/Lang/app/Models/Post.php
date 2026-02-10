@@ -56,7 +56,6 @@ use Spatie\Sluggable\SlugOptions;
  * @property ProfileContract|null         $creator
  * @property Model|\Eloquent|null         $linkable
  * @property ProfileContract|null         $updater
- *
  * @method static Builder<static>|Post newModelQuery()
  * @method static Builder<static>|Post newQuery()
  * @method static Builder<static>|Post query()
@@ -91,11 +90,8 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder<static>|Post whereUrlLang($value)
  * @method static Builder<static>|Post whereUserId($value)
  * @method static Builder<static>|Post whereViewsCount($value)
- *
  * @property ProfileContract|null $deleter
- *
  * @method static PostFactory factory($count = null, $state = [])
- *
  * @mixin Eloquent
  */
 class Post extends BaseModel

@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Tenant\Tests;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Application;
 use Modules\Tenant\Providers\TenantServiceProvider;
-use Modules\User\Providers\UserServiceProvider;
-use Modules\Xot\Providers\XotServiceProvider;
 use Modules\Xot\Tests\CreatesApplication;
+use Modules\Xot\Tests\TestCase as XotTestCase;
 
 /**
- * Base test case for Tenant module.
+ * Base test case for Tenant module tests.
  *
- * Uses MySQL from .env.testing.
+ * Uses MySQL from .env.testing (NOT SQLite). Single source of truth: .env.testing.
+ * Runs full migrate first, then module migrations.
+ *
+ * @property \Modules\Tenant\Models\TestSushiModel $model
+ * @property string $testDirectory
+ * @property string $testJsonPath
+ * @property \Closure $createTestData
  */
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends XotTestCase
 {
     use CreatesApplication;
-    use DatabaseTransactions;
 
     protected static bool $migrated = false;
 
@@ -28,24 +31,23 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
-                '--force' => true,
-            ]);
-
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
+            $this->artisan('migrate', ['--force' => true]);
             self::$migrated = true;
         }
+
+        $this->artisan('module:migrate', ['module' => 'Xot', '--force' => true]);
+        $this->artisan('module:migrate', ['module' => 'User', '--force' => true]);
+        $this->artisan('module:migrate', ['module' => 'Tenant', '--force' => true]);
     }
 
+    /**
+     * @param  Application  $app
+     * @return array<int, class-string>
+     */
     protected function getPackageProviders($app): array
     {
         return [
             TenantServiceProvider::class,
-            UserServiceProvider::class,
-            XotServiceProvider::class,
         ];
     }
 }

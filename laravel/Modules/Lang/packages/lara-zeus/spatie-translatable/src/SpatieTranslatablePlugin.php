@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaraZeus\SpatieTranslatable;
 
-use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
@@ -16,9 +15,11 @@ class SpatieTranslatablePlugin implements Plugin
 
     protected bool $persistLocale = false;
 
-    protected ?Closure $getLocaleLabelUsing = null;
+    protected ?\Closure $getLocaleLabelUsing = null;
 
-    final public function __construct() {}
+    final public function __construct()
+    {
+    }
 
     public static function make(): static
     {
@@ -30,9 +31,13 @@ class SpatieTranslatablePlugin implements Plugin
         return 'spatie-translatable';
     }
 
-    public function register(Panel $panel): void {}
+    public function register(Panel $panel): void
+    {
+    }
 
-    public function boot(Panel $panel): void {}
+    public function boot(Panel $panel): void
+    {
+    }
 
     public function getDefaultLocales(): ?array
     {
@@ -70,7 +75,7 @@ class SpatieTranslatablePlugin implements Plugin
         return $this;
     }
 
-    public function getLocaleLabelUsing(?Closure $callback): static
+    public function getLocaleLabelUsing(?\Closure $callback): static
     {
         $this->getLocaleLabelUsing = $callback;
 

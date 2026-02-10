@@ -85,7 +85,6 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property-read int|null $wstr01lx_count
  * @property-read Collection<int, Wstr01lx> $wstr01lxYear
  * @property-read int|null $wstr01lx_year_count
- *
  * @method static Builder|CondizioniLavoroRep newModelQuery()
  * @method static Builder|CondizioniLavoroRep newQuery()
  * @method static Builder|CondizioniLavoroRep ofDate(int $date)
@@ -129,7 +128,15 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|CondizioniLavoroRep whereRepst1($value)
  * @method static Builder|CondizioniLavoroRep whereRepst2($value)
  * @method static Builder|CondizioniLavoroRep withDays(int $date_min, int $date_max)
- *
+ * @property-read string|null $codice_fiscale
+ * @property-read string $from_field
+ * @property-read string|null $inail
+ * @property-read string|null $sesso
+ * @property-read string $to_field
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @method static Builder<static>|CondizioniLavoroRep ofEnte(int $ente)
+ * @method static Builder<static>|CondizioniLavoroRep ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @mixin \Eloquent
  */
 class CondizioniLavoroRep extends Model

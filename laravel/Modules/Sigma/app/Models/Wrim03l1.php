@@ -33,7 +33,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $r3flg2
  * @property string|null $r3com1
  * @property string|null $r3com2
- *
  * @method static Builder|Wrim03l1 newModelQuery()
  * @method static Builder|Wrim03l1 newQuery()
  * @method static Builder|Wrim03l1 query()
@@ -61,7 +60,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wrim03l1 whereR3matr($value)
  * @method static Builder|Wrim03l1 whereR3reco($value)
  * @method static Builder|Wrim03l1 whereStdata($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Wrim03l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Wrim03l1 extends BaseModel

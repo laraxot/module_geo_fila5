@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-uses(Modules\Activity\Tests\TestCase::class);
+namespace Modules\Activity\Tests\Unit\Actions;
+
+uses(\Modules\Activity\Tests\TestCase::class);
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogActivityAction;
@@ -28,12 +30,11 @@ test('LogActivityAction can be instantiated', function () {
 });
 
 test('LogActivityAction can execute', function () {
-    $modelClass = get_class(new class extends Model {
+    $model = new class(['name' => 'Test']) extends Model {
         protected $table = 'test_models';
 
         protected $fillable = ['name'];
-    });
-    $model = new $modelClass(['name' => 'Test']);
+    };
     $user = User::factory()->create();
 
     $action = new LogActivityAction(

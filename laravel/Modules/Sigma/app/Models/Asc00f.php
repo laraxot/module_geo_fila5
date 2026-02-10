@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $asscon
  * @property string|null $cont
  * @property string|null $voce
- *
  * @method static Builder|Asc00f newModelQuery()
  * @method static Builder|Asc00f newQuery()
  * @method static Builder|Asc00f query()
@@ -21,7 +20,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asc00f whereCont($value)
  * @method static Builder|Asc00f whereId($value)
  * @method static Builder|Asc00f whereVoce($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Asc00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Asc00f extends BaseModel

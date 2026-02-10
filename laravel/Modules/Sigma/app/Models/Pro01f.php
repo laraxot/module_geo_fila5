@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $utente
  * @property string|null $usta
  * @property string|null $urep
- *
  * @method static Builder|Pro01f newModelQuery()
  * @method static Builder|Pro01f newQuery()
  * @method static Builder|Pro01f query()
@@ -21,7 +20,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Pro01f whereUrep($value)
  * @method static Builder|Pro01f whereUsta($value)
  * @method static Builder|Pro01f whereUtente($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Pro01fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Pro01f extends BaseModel

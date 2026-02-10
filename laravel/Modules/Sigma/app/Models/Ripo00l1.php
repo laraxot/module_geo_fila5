@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ripfes
  * @property string|null $ripflg
  * @property string|null $ripann
- *
  * @method static Builder|Ripo00l1 newModelQuery()
  * @method static Builder|Ripo00l1 newQuery()
  * @method static Builder|Ripo00l1 query()
@@ -31,7 +30,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ripo00l1 whereRipfes($value)
  * @method static Builder|Ripo00l1 whereRipflg($value)
  * @method static Builder|Ripo00l1 whereRiprip($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Ripo00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Ripo00l1 extends BaseModel

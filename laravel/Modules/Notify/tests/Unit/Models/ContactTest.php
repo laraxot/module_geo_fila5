@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Models;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\Contact;
-use Modules\Notify\Tests\TestCase;
+use Tests\TestCase;
 
 class ContactTest extends TestCase
 {
-    // DatabaseTransactions is already used in the module TestCase
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
@@ -79,7 +80,7 @@ class ContactTest extends TestCase
     /** @test */
     public function it_has_correct_fillable_fields(): void
     {
-        $contact = new Contact();
+        $contact = new Contact;
 
         $expectedFillable = [
             'model_id',
@@ -101,7 +102,7 @@ class ContactTest extends TestCase
     /** @test */
     public function it_has_correct_casts(): void
     {
-        $contact = new Contact();
+        $contact = new Contact;
 
         $expectedCasts = [
             'id' => 'string',

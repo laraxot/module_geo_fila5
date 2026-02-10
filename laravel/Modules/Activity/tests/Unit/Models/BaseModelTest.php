@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-uses(Modules\Activity\Tests\TestCase::class);
+namespace Modules\Activity\Tests\Unit\Models;
+
+uses(\Modules\Activity\Tests\TestCase::class);
 
 use Modules\Activity\Models\BaseModel;
 
@@ -12,7 +14,7 @@ test('BaseModel has correct connection', function () {
 
         protected $fillable = ['name'];
     };
-    $reflection = new ReflectionClass($model);
+    $reflection = new \ReflectionClass($model);
     $property = $reflection->getProperty('connection');
     $property->setAccessible(true);
 
@@ -26,5 +28,5 @@ test('BaseModel extends XotBaseModel', function () {
         protected $fillable = ['name'];
     };
 
-    expect($model)->toBeInstanceOf(Modules\Xot\Models\XotBaseModel::class);
+    expect($model)->toBeInstanceOf(\Modules\Xot\Models\XotBaseModel::class);
 });

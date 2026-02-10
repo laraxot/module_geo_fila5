@@ -180,7 +180,6 @@ use Override;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
- *
  * @method static Builder|Organizzativa newModelQuery()
  * @method static Builder|Organizzativa newQuery()
  * @method static Builder|Organizzativa ofDate(int $date)
@@ -280,7 +279,6 @@ use Override;
  * @method static Builder|Organizzativa whereUpdatedBy($value)
  * @method static Builder|Organizzativa withDays(int $date_min, int $date_max)
  * @method static Builder|Organizzativa withTotPunt()
- *
  * @property int|null $valutatore_id
  * @property string|null $importo_totale_valutatore
  * @property string|null $resti_pond_valutatore
@@ -360,7 +358,6 @@ use Override;
  * @property float|null $valore_differenziale_rapportato_pt
  * @property string|null $valutatore_txt
  * @property Profile|null $updater
- *
  * @method static Builder<static>|Organizzativa ofEnte(int $ente)
  * @method static Builder<static>|Organizzativa ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|Organizzativa whereImportoTotaleValutatore($value)
@@ -368,7 +365,36 @@ use Override;
  * @method static Builder<static>|Organizzativa whereRestiPondValutatore($value)
  * @method static Builder<static>|Organizzativa whereRestiPondValutatoreId($value)
  * @method static Builder<static>|Organizzativa whereValutatoreId($value)
- *
+ * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
+ * @property-read int|null $activities_count
+ * @property-read Collection<int, Asz00k1> $asz
+ * @property-read int|null $asz_count
+ * @property-read Collection<int, Asz00k1> $aszEff
+ * @property-read int|null $asz_eff_count
+ * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read int|null $avversari_count
+ * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversariCategoriaEco
+ * @property-read int|null $avversari_categoria_eco_count
+ * @property-read Collection<int, \Modules\Performance\Models\CriteriValutazione> $criteriValutazioneOld
+ * @property-read int|null $criteri_valutazione_old_count
+ * @property-read Profile|null $deleter
+ * @property-read string $from_field
+ * @property-read float $gg_cateco_posfun_rapportato_max10_valutatore
+ * @property-read int|null $gg_esperienza_no_asz
+ * @property-read float|null $gg_integ_params_asz
+ * @property-read string $to_field
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read Organizzativa|null $maxCatecoPosfun
+ * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read int|null $performance_individuale_count
+ * @property-read Organizzativa|null $pesi
+ * @property-read Organizzativa|null $stipendioTabellare
+ * @property-read \Modules\Performance\Models\StabiDirigente|null $valutatore
+ * @method static \Modules\Performance\Database\Factories\OrganizzativaFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Organizzativa whereCategoriaEcoval($value)
+ * @method static Builder<static>|Organizzativa wherePosfunval($value)
+ * @method static Builder<static>|Organizzativa whereType($value)
  * @mixin \Eloquent
  */
 class Organizzativa extends BaseIndividualeModel

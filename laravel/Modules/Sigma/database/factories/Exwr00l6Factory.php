@@ -1,0 +1,22 @@
+<?php
+
+namespace Modules\Sigma\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class Exwr00l6Factory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     */
+    protected $model = \Modules\Sigma\Models\Exwr00l6::class;
+
+    /**
+     * Define the model's default state.
+     */
+    public function definition(): array
+    {
+        return [];
+    }
+}
+

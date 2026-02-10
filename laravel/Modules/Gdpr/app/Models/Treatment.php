@@ -29,7 +29,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null          $deleted_by
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
  * @method static TreatmentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Treatment newModelQuery()
  * @method static Builder<static>|Treatment newQuery()
@@ -48,9 +47,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Treatment whereUpdatedAt($value)
  * @method static Builder<static>|Treatment whereUpdatedBy($value)
  * @method static Builder<static>|Treatment whereWeight($value)
- *
  * @property ProfileContract|null $deleter
- *
  * @mixin \Eloquent
  */
 class Treatment extends BaseModel
@@ -60,5 +57,23 @@ class Treatment extends BaseModel
     // protected $table = 'treatment';
     public $incrementing = false;
 
-    protected $fillable = [''];
+    protected $fillable = [
+        'id',
+        'active',
+        'required',
+        'name',
+        'description',
+        'documentVersion',
+        'documentUrl',
+        'weight',
+    ];
+
+    protected $casts = [
+        'active' => 'boolean',
+        'required' => 'boolean',
+        'weight' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
 }

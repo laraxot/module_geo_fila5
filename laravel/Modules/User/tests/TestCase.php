@@ -11,8 +11,8 @@ use Modules\Xot\Tests\CreatesApplication;
 /**
  * Base test case for User module.
  *
- * Uses dedicated testing.sqlite file to ensure connection sharing.
- * Uses MySQL from .env.testing.
+ * Uses MySQL from .env.testing (NOT SQLite). Single source of truth: .env.testing.
+ * Runs full migrate first, then module migrations.
  *
  * @property \Modules\User\Models\Permission $permission
  * @property \Modules\User\Models\Role       $role
@@ -25,44 +25,23 @@ abstract class TestCase extends BaseTestCase
 
     protected static bool $migrated = false;
 
-    protected $connectionsToTransact = [
-        'mysql',
-        'user',
-        'notify',
-        'geo',
-        'media',
-        'job',
-        'xot',
-        'activity',
-        'cms',
-        'gdpr',
-        'lang',
-        'meetup',
-        'seo',
-        'tenant',
-    ];
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        config(['xra.pub_theme' => 'Meetup']);
-        config(['xra.main_module' => 'User']);
+        foreach (['user', 'xot', 'cms', 'geo'] as $connection) {
+            $driver = config("database.connections.{$connection}.driver");
+            if (! \is_string($driver) || '' === $driver) {
+                $this->markTestSkipped('Missing database connection: '.$connection.' (expected from .env.testing)');
+            }
 
-        \Modules\Xot\Datas\XotData::make()->update([
-            'pub_theme' => 'Meetup',
-            'main_module' => 'User',
-        ]);
+            if ('mysql' !== $driver) {
+                $this->markTestSkipped('Invalid DB driver for connection '.$connection.': '.$driver.' (expected mysql from .env.testing)');
+            }
+        }
 
         if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
-                '--force' => true,
-            ]);
-
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
+            $this->artisan('migrate', ['--force' => true]);
             self::$migrated = true;
         }
     }

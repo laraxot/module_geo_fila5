@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\NotificationTemplate;
 use Modules\Notify\Models\NotificationTemplateVersion;
-use Modules\Notify\Tests\TestCase;
 use RuntimeException;
+use Tests\TestCase;
 
 class NotificationTemplateVersionBusinessLogicTest extends TestCase
 {
-    // DatabaseTransactions is already used in the module TestCase
+    use RefreshDatabase;
 
     /** @test */
     public function it_can_create_template_version_with_basic_information(): void

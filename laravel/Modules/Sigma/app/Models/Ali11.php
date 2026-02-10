@@ -62,7 +62,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $lib5
  * @property string|null $lib6
  * @property string|null $lib7
- *
  * @method static Builder|Ali11 newModelQuery()
  * @method static Builder|Ali11 newQuery()
  * @method static Builder|Ali11 query()
@@ -119,7 +118,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ali11 whereRepa($value)
  * @method static Builder|Ali11 whereSess1($value)
  * @method static Builder|Ali11 whereStab($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Ali11Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Ali11 extends BaseModel

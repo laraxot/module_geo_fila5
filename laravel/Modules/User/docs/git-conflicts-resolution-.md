@@ -275,11 +275,7 @@ La risoluzione dei conflitti Git ha migliorato significativamente la stabilità 
 2. Verificare funzionalità critiche
 3. Aggiornare documentazione correlata
 4. Monitorare performance in produzione
-<<<<<<< HEAD
-5. Implementare test automatizzati 
-=======
 5. Implementare test automatizzati
->>>>>>> ac0ea089 (.)
 5. Implementare test automatizzati
 
 ## 🔥 **NUOVI CONFLITTI IDENTIFICATI - 2025-01-27 15:30**
@@ -287,11 +283,7 @@ La risoluzione dei conflitti Git ha migliorato significativamente la stabilità 
 ### **File con Conflitti Attivi:**
 1. `resources/views/pages/profile/edit.blade.php` - View profilo utente
 2. `resources/views/pages/genesis/power-ups.blade.php` - View gamification
-<<<<<<< HEAD
-3. `app/Filament/Widgets/Auth/ResetPasswordWidget.php` - Widget reset password  
-=======
 3. `app/Filament/Widgets/Auth/ResetPasswordWidget.php` - Widget reset password
->>>>>>> ac0ea089 (.)
 4. `app/Filament/Widgets/Auth/RegisterWidget.php` - Widget registrazione
 5. `app/Filament/Widgets/LogoutWidget.php` - Widget logout
 
@@ -310,18 +302,11 @@ La risoluzione dei conflitti Git ha migliorato significativamente la stabilità 
 
 ### **Post-Risoluzione TODO:**
 - [ ] Verificare funzionamento widget in contesto Filament panel
-<<<<<<< HEAD
-- [ ] Testare widget con direttiva @livewire nelle view Blade  
-=======
 - [ ] Testare widget con direttiva @livewire nelle view Blade
->>>>>>> ac0ea089 (.)
 - [ ] Validare traduzioni per tutti i widget
 - [ ] Aggiornare esempi in documentazione
 - [ ] Creare test di regressione per prevenire conflitti futuri
 
-<<<<<<< HEAD
---- 
-=======
 ---
 # Risoluzione Conflitti Git - Modulo User (2025-01-27)
 
@@ -633,4 +618,3 @@ La risoluzione dei conflitti Git ha migliorato significativamente la stabilità 
 - [ ] Creare test di regressione per prevenire conflitti futuri
 
 ---
->>>>>>> ac0ea089 (.)

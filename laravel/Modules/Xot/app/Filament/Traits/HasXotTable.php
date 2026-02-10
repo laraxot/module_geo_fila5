@@ -18,6 +18,23 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Tables;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Enums\RecordActionsPosition;
+use Filament\Tables\Filters\BaseFilter;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Table;
+use Filament\Widgets\TableWidget;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
+use Webmozart\Assert\Assert;
 
 /**
  * Trait HasXotTable.
@@ -25,10 +42,6 @@ use Filament\Notifications\Notification;
  * Provides enhanced table functionality with translations and optimized structure.
  *
  * @property TableLayoutEnum $layoutView
- *
- * @SuppressWarnings("PHPMD.StaticAccess")
- * @SuppressWarnings("PHPMD.CyclomaticComplexity")
- * @SuppressWarnings("PHPMD.NPathComplexity")
  */
 trait HasXotTable
 {
@@ -187,7 +200,6 @@ trait HasXotTable
         // Configurazioni opzionali personalizzabili
         $sortColumn = $this->getDefaultTableSortColumn();
         $sortDirection = $this->getDefaultTableSortDirection();
-        if (null !== $sortColumn && null !== $sortDirection) {
         if ($sortColumn !== null && $sortDirection !== null) {
             $table = $table->defaultSort($sortColumn, $sortDirection);
         }
@@ -235,31 +247,35 @@ trait HasXotTable
 
         $actions = [];
         $resource = $this;
-        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore-next-line instanceof.alwaysFalse (TableWidget returns early; ListRecords/RelationManager reach here) */
         if ($this instanceof ListRecords) {
             $resourceClass = $this->getResource();
-            // @phpstan-ignore-next-line staticMethod.alreadyNarrowedType
-            Assert::string($resourceClass);
-            $resource = app($resourceClass);
+            /** @phpstan-ignore-next-line function.alreadyNarrowedType (getResource returns class-string in ListRecords) */
+            if (is_string($resourceClass)) {
+                $resource = app($resourceClass);
+            }
         }
-        // @phpstan-ignore-next-line staticMethod.alreadyNarrowedType
-        Assert::object($resource);
 
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
+        /** @phpstan-ignore-next-line function.alreadyNarrowedType (TableWidget returns early; $resource is object here) */
+        if (! is_object($resource)) {
+            return $actions;
+        }
+
+        /** @phpstan-ignore-next-line function.alreadyNarrowedType (TableWidget returns early; resource is object with methods) */
         if (method_exists($resource, 'canView')) {
             $actions['view'] = ViewAction::make()
                 ->iconButton()
                 ->visible(fn (Model $record): bool => (bool) $resource->canView($record));
         }
 
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
+        /** @phpstan-ignore-next-line function.alreadyNarrowedType */
         if (method_exists($resource, 'canEdit')) {
             $actions['edit'] = EditAction::make()
                 ->iconButton()
                 ->visible(fn (Model $record): bool => (bool) $resource->canEdit($record));
         }
 
-        // @phpstan-ignore-next-line function.alreadyNarrowedType
+        /** @phpstan-ignore-next-line function.alreadyNarrowedType */
         if (method_exists($resource, 'canDelete')) {
             $actions['delete'] = DeleteAction::make()
                 ->iconButton()
@@ -294,6 +310,8 @@ trait HasXotTable
                         ->iconButton()
                         ->tooltip((string) __('user::actions.detach'));
                 }
+            }
+        }
 
         return $actions;
     }

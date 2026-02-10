@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Models;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\NotifyThemeable;
-use Modules\Notify\Tests\TestCase;
+use Tests\TestCase;
 
 class NotifyThemeableTest extends TestCase
 {
-    // DatabaseTransactions is already used in the module TestCase
+    use RefreshDatabase;
 
     protected function setUp(): void
     {

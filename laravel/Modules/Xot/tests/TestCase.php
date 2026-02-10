@@ -24,10 +24,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if (! self::$migrated) {
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
+            $this->artisan('migrate', ['--force' => true]);
             self::$migrated = true;
         }
     }

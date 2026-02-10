@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-uses(Modules\Activity\Tests\TestCase::class);
+namespace Modules\Activity\Tests\Unit\Actions;
+
+uses(\Modules\Activity\Tests\TestCase::class);
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogModelUpdatedAction;

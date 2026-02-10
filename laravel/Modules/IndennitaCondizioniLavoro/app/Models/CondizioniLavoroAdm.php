@@ -56,7 +56,6 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @property int|null                                $quadrimestre
  * @property Collection<int, IndennitaTipoDettaglio> $indennitaTipoDettaglio
  * @property int|null                                $indennita_tipo_dettaglio_count
- *
  * @method static Builder|CondizioniLavoroAdm newModelQuery()
  * @method static Builder|CondizioniLavoroAdm newQuery()
  * @method static Builder|CondizioniLavoroAdm ofDate(int $date)
@@ -106,7 +105,6 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder|CondizioniLavoroAdm whereUpdatedBy($value)
  * @method static Builder|CondizioniLavoroAdm whereValutatoreId($value)
  * @method static Builder|CondizioniLavoroAdm withDays(int $date_min, int $date_max)
- *
  * @property Profile|null                                     $creator
  * @property mixed                                            $all_indennita_tipo
  * @property string|null                                      $codice_fiscale
@@ -133,10 +131,42 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @property Collection<int, IndennitaTipoDettaglio>          $tipoDettaglio
  * @property int|null                                         $tipo_dettaglio_count
  * @property Profile|null                                     $updater
- *
  * @method static Builder<static>|CondizioniLavoroAdm ofEnte(int $ente)
  * @method static Builder<static>|CondizioniLavoroAdm ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- *
+ * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $Sto00fYear
+ * @property-read int|null $sto00f_year_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Ana02f> $ana02f
+ * @property-read int|null $ana02f_count
+ * @property-read \Modules\Sigma\Models\Ana10f|null $ana10f
+ * @property-read \Modules\Sigma\Models\Anag|null $anag
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00f> $asz00f
+ * @property-read int|null $asz00f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1
+ * @property-read int|null $asz00k1_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1Year
+ * @property-read int|null $asz00k1_year_count
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00f
+ * @property-read int|null $qua00f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00fDaterange
+ * @property-read int|null $qua00f_daterange_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Qua00f> $qua00fYear
+ * @property-read int|null $qua00f_year_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Qua03f> $qua03f
+ * @property-read int|null $qua03f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Rep00f> $rep00f
+ * @property-read int|null $rep00f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Repart> $reparts
+ * @property-read int|null $reparts_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $sto00f
+ * @property-read int|null $sto00f_count
+ * @property-read \Modules\IndennitaCondizioniLavoro\Models\StabiDirigente|null $valutatore
+ * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lx
+ * @property-read int|null $wstr01lx_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lxYear
+ * @property-read int|null $wstr01lx_year_count
  * @mixin \Eloquent
  */
 class CondizioniLavoroAdm extends CondizioniLavoro

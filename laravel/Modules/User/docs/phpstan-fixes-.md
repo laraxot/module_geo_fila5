@@ -2,17 +2,10 @@
 
 ## ⚠️ Stato: IN PROGRESS - 95 errori rimanenti
 
-<<<<<<< HEAD
-**Data correzione**: 1 Ottobre 2025  
-**Analizzati**: ~400 file  
-**Errori iniziali**: ~100+ (bloccavano analisi)  
-**Errori attuali**: 95  
-=======
 **Data correzione**: 1 Ottobre 2025
 **Analizzati**: ~400 file
 **Errori iniziali**: ~100+ (bloccavano analisi)
 **Errori attuali**: 95
->>>>>>> ac0ea089 (.)
 **Errori critici risolti**: 7 (syntax errors)
 
 ---
@@ -21,13 +14,8 @@
 
 ### 1. BaseUser.php - Rimozione Codice Orfano (CRITICO)
 
-<<<<<<< HEAD
-**File**: `app/Models/BaseUser.php`  
-**Linee**: 377-419  
-=======
 **File**: `app/Models/BaseUser.php`
 **Linee**: 377-419
->>>>>>> ac0ea089 (.)
 **Problema**: Blocchi di codice senza dichiarazione di metodo che causavano 7 errori di sintassi e bloccavano l'intera analisi PHPStan
 
 **Codice rimosso**:
@@ -48,24 +36,15 @@
 }
 ```
 
-<<<<<<< HEAD
-**Impatto**: 
-=======
 **Impatto**:
->>>>>>> ac0ea089 (.)
 - ✅ Eliminati 7 errori di sintassi
 - ✅ Sbloccata l'analisi PHPStan su TUTTI i moduli
 - ✅ Permesso il proseguimento delle correzioni
 
 ### 2. BaseUser.php - Aggiunta Metodi Teams e Tenants
 
-<<<<<<< HEAD
-**Data**: 1 Ottobre 2025 (sera)  
-**Autore**: Utente  
-=======
 **Data**: 1 Ottobre 2025 (sera)
 **Autore**: Utente
->>>>>>> ac0ea089 (.)
 
 Aggiunti metodi per gestione Teams e Tenants:
 
@@ -247,14 +226,6 @@ public function canAccessTenant(\Illuminate\Database\Eloquent\Model $tenant): bo
 
 ---
 
-<<<<<<< HEAD
-**Status**: ⚠️ IN PROGRESS  
-**PHPStan Level**: 9  
-**Prossima sessione**: 2 Ottobre 2025  
-**Obiettivo**: 0 errori User + Xot
-
-
-=======
 **Status**: ⚠️ IN PROGRESS
 **PHPStan Level**: 9
 **Prossima sessione**: 2 Ottobre 2025
@@ -674,4 +645,3 @@ public static function getFormSchema(): array
 - PHPStan Level 10: PASS
 - PHPMD: PASS
 - PHP Insights: PASS
->>>>>>> ac0ea089 (.)

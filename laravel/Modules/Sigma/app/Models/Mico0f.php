@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $impoeu
  * @property string|null $dal
  * @property string|null $al
- *
  * @method static Builder|Mico0f newModelQuery()
  * @method static Builder|Mico0f newQuery()
  * @method static Builder|Mico0f query()
@@ -29,7 +28,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mico0f whereImpoeu($value)
  * @method static Builder|Mico0f whereLivm($value)
  * @method static Builder|Mico0f whereTipoco($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Mico0fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Mico0f extends BaseModel

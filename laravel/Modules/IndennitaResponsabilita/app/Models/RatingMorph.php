@@ -27,7 +27,6 @@ use Modules\User\Models\User;
  * @property int|null $model_id
  * @property int|null $rating_id
  * @property-read Rating|null $rating
- *
  * @method static Builder|RatingMorph newModelQuery()
  * @method static Builder|RatingMorph newQuery()
  * @method static Builder|RatingMorph query()
@@ -42,7 +41,6 @@ use Modules\User\Models\User;
  * @method static Builder|RatingMorph whereUpdatedBy($value)
  * @method static Builder|RatingMorph whereUserId($value)
  * @method static Builder|RatingMorph whereValue($value)
- *
  * @property int $is_winner
  * @property string $reward
  * @property Carbon|null $deleted_at
@@ -52,12 +50,11 @@ use Modules\User\Models\User;
  * @property-read Profile|null $profile
  * @property-read Profile|null $updater
  * @property-read User|null $user
- *
  * @method static Builder<static>|RatingMorph whereDeletedAt($value)
  * @method static Builder<static>|RatingMorph whereDeletedBy($value)
  * @method static Builder<static>|RatingMorph whereIsWinner($value)
  * @method static Builder<static>|RatingMorph whereReward($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class RatingMorph extends PtvRatingMorphModel

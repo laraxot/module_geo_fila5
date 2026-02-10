@@ -32,7 +32,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- *
  * @method static MyLogFactory factory($count = null, $state = [])
  * @method static Builder|MyLog newModelQuery()
  * @method static Builder|MyLog newQuery()
@@ -56,15 +55,13 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|MyLog whereUpdatedAt($value)
  * @method static Builder|MyLog whereUpdatedBy($value)
  * @method static Builder|MyLog whereUpdatedIp($value)
- *
  * @property string|null $post_type
  * @property int|null $post_id
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|MyLog wherePostId($value)
  * @method static Builder<static>|MyLog wherePostType($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class MyLog extends PtvMyLogModel

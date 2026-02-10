@@ -67,7 +67,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ace
  * @property string|null $acdeu
  * @property string|null $aceeu
- *
  * @method static Builder|Agg01f newModelQuery()
  * @method static Builder|Agg01f newQuery()
  * @method static Builder|Agg01f query()
@@ -129,7 +128,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Agg01f whereEnte($value)
  * @method static Builder|Agg01f whereId($value)
  * @method static Builder|Agg01f whereMatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Agg01fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Agg01f extends BaseModel

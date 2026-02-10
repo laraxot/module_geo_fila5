@@ -6,6 +6,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\Profile;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
+use function Safe\file_put_contents;
+
+return new class extends XotBaseMigration {
+    protected ?string $model_class = Profile::class;
+
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
         $conn = $this->model->getConnectionName();
         $db = $this->getConn()->getConnection()->getDatabaseName();
         $exists = $this->tableExists();
