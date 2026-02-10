@@ -14,7 +14,11 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateImagesTable.
  */
+<<<<<<< HEAD
 return new class extends XotBaseMigration
+=======
+return new class() extends XotBaseMigration
+>>>>>>> ac0ea089 (.)
 {
     /**
      * i don't write table name, it take from Model, model is singular of this class wit.

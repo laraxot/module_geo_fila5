@@ -21,6 +21,10 @@ class HasOneAction
         Assert::isInstanceOf($rows = $relationDTO->rows, HasOne::class);
 
         if (! Arr::isAssoc($relationDTO->data) && \count($relationDTO->data) === 1) {
+<<<<<<< HEAD
+=======
+            /** @phpstan-ignore-next-line argument.unresolvableType */
+>>>>>>> ac0ea089 (.)
             $related_id = Arr::first($relationDTO->data);
             $related = $relationDTO->related->find($related_id);
             if (! ($related instanceof Model)) {

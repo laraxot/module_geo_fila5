@@ -53,7 +53,11 @@ class VerifyEmailController extends Controller
         }
 
         // Verificare che l'utente implementi l'interfaccia MustVerifyEmail
+<<<<<<< HEAD
         if (! ($user instanceof MustVerifyEmail)) {
+=======
+        if (! $user instanceof MustVerifyEmail) {
+>>>>>>> ac0ea089 (.)
             throw new \InvalidArgumentException('L\'utente deve implementare l\'interfaccia MustVerifyEmail');
         }
 

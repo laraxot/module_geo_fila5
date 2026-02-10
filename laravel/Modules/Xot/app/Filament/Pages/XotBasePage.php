@@ -293,7 +293,11 @@ abstract class XotBasePage extends FilamentPage implements HasForms
         }
 
         /** @var class-string<Model> $modelClass */
+<<<<<<< HEAD
         $instance = new $modelClass;
+=======
+        $instance = new $modelClass();
+>>>>>>> ac0ea089 (.)
         if (! ($instance instanceof Model)) {
             throw new LogicException("Class {$modelClass} must extend Eloquent Model");
         }

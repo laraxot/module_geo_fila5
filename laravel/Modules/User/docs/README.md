@@ -1185,8 +1185,19 @@ See [ROADMAP.md](./ROADMAP.md) for details.
 
 ### Project Documentation
 - [CLAUDE.md](../../../CLAUDE.md) - Project architecture
+<<<<<<< HEAD
 - [Security Guidelines](../../../docs/security.md)
 
+=======
+- [AI Agents Guide](../../../../AGENTS.md)
+- [Cursor Rules & Skills](../../../../.cursor/README.md)
+- [Skills di progetto](../../../../.cursor/skills/)
+- [Security Guidelines](../../../docs/security.md)
+
+### CI & Semantic Versioning
+Workflow locale del modulo in `.github/workflows/semantic-versioning.yml`.
+
+>>>>>>> ac0ea089 (.)
 ### External Resources
 - [Laravel Authentication](https://laravel.com/docs/12.x/authentication)
 - [Laravel Authorization](https://laravel.com/docs/12.x/authorization)
@@ -1202,3 +1213,15 @@ See [ROADMAP.md](./ROADMAP.md) for details.
 **PHPStan**: Level 10 ✅
 **Test Coverage**: 88%+ ✅
 **Security**: OWASP Compliant ✅
+<<<<<<< HEAD
+=======
+
+## 🚀 Release su GitHub
+Le release sono basate su tag Git e possono includere release notes generate automaticamente.
+Workflow locale: `.github/workflows/release.yml`.
+
+
+## 📄 License & Authors
+
+**License:** MIT
+>>>>>>> ac0ea089 (.)

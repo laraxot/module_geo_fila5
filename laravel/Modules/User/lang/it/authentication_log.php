@@ -15,6 +15,7 @@ return [
             'icon' => 'reorderRecords',
             'label' => 'reorderRecords',
         ],
+<<<<<<< HEAD
         'edit' => [
             'label' => 'edit',
             'icon' => 'edit',
@@ -91,4 +92,10 @@ return [
             'label' => 'created_at',
         ],
     ],
+=======
+    ],
+    'label' => '',
+    'plural_label' => '',
+    'fields' => [],
+>>>>>>> ac0ea089 (.)
 ];

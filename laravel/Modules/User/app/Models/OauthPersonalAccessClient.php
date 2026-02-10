@@ -12,11 +12,14 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 /**
  * OAuth Personal Access Client model.
  *
+<<<<<<< HEAD
  * <<<<<<< HEAD
  * =======
  *
  * >>>>>>> 024bfed1 (.)
  *
+=======
+>>>>>>> ac0ea089 (.)
  * @property string           $uuid
  * @property string           $client_id
  * @property Carbon|null      $created_at
@@ -24,6 +27,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null      $updated_by
  * @property string|null      $created_by
  * @property int              $id
+<<<<<<< HEAD
  * @property string           $uuid
  * @property string           $client_id
  * @property Carbon|null      $created_at
@@ -43,6 +47,8 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property string|null      $updated_by
  * @property string|null      $created_by
  * @property int              $id
+=======
+>>>>>>> ac0ea089 (.)
  * @property OauthClient|null $client
  *
  * @method static Builder|OauthPersonalAccessClient newModelQuery()

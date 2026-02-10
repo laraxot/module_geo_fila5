@@ -34,7 +34,11 @@ class LogoutController extends XotBaseController
         Assert::notNull($user = $request->user(), '['.__LINE__.']['.class_basename($this).']');
 
         // Verificare che l'utente implementi l'interfaccia UserContract
+<<<<<<< HEAD
         if (! ($user instanceof UserContract)) {
+=======
+        if (! $user instanceof UserContract) {
+>>>>>>> ac0ea089 (.)
             throw new \InvalidArgumentException('L\'utente deve implementare l\'interfaccia UserContract');
         }
 

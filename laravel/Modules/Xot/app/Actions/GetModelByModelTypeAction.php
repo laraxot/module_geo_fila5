@@ -30,7 +30,11 @@ class GetModelByModelTypeAction
         /** @var class-string<Model> $model_class */
         $model = $model_id !== null
             ? $model_class::query()->find($model_id)
+<<<<<<< HEAD
             : new $model_class;
+=======
+            : new $model_class();
+>>>>>>> ac0ea089 (.)
 
         if (! ($model instanceof Model)) {
             throw new Exception('['.__LINE__.']['.class_basename($this).']');

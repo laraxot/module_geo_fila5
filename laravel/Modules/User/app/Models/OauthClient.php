@@ -7,7 +7,10 @@ namespace Modules\User\Models;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+=======
+>>>>>>> ac0ea089 (.)
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Support\Carbon;
 use Laravel\Passport\Client as PassportClient;
@@ -39,6 +42,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                 $tokens_count
  * @property UserContract|null                        $user
  * @property \Illuminate\Database\Eloquent\Model|null $owner
+<<<<<<< HEAD
+=======
+ * @property string|null                              $updated_by
+ * @property string|null                              $created_by
+>>>>>>> ac0ea089 (.)
  *
  * @method static ClientFactory       factory($count = null, $state = [])
  * @method static Builder|OauthClient newModelQuery()
@@ -55,6 +63,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|OauthClient whereSecret($value)
  * @method static Builder|OauthClient whereUpdatedAt($value)
  * @method static Builder|OauthClient whereUserId($value)
+<<<<<<< HEAD
  *
  * @property string|null $updated_by
  * @property string|null $created_by
@@ -63,6 +72,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|OauthClient whereUpdatedBy($value)
  *
  * @mixin IdeHelperOauthClient
+=======
+ * @method static Builder|OauthClient whereCreatedBy($value)
+ * @method static Builder|OauthClient whereUpdatedBy($value)
+ *
+>>>>>>> ac0ea089 (.)
  * @mixin \Eloquent
  */
 class OauthClient extends PassportClient implements AuthorizableContract
@@ -77,6 +91,10 @@ class OauthClient extends PassportClient implements AuthorizableContract
      * @var string
      */
     public $guard_name = 'api';
+<<<<<<< HEAD
+=======
+
+>>>>>>> ac0ea089 (.)
     /** @var string */
     protected $connection = 'user';
 
@@ -142,11 +160,14 @@ class OauthClient extends PassportClient implements AuthorizableContract
      *
      * @param iterable<string> $permissions
      */
+<<<<<<< HEAD
     /**
      * Check if client has any of the given permissions.
      *
      * @param iterable<string> $permissions
      */
+=======
+>>>>>>> ac0ea089 (.)
     private function hasAnyPermission(iterable $permissions): bool
     {
         /** @var iterable<string> $permissions */

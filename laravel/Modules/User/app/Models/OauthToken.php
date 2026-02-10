@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+<<<<<<< HEAD
 // use Laravel\Passport\AccessToken as PassportAccessToken;
+=======
+>>>>>>> ac0ea089 (.)
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Laravel\Passport\Token as PassportToken;
@@ -13,6 +16,7 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Modules\User\Models\OauthAccessToken.
  *
+<<<<<<< HEAD
  * @property string            $id
  * @property string|null       $user_id
  * @property string            $client_id
@@ -34,6 +38,24 @@ use Modules\Xot\Contracts\UserContract;
  * @property Carbon|null       $expires_at
  * @property OauthClient|null  $client
  * @property UserContract|null $user
+=======
+ * @property string                 $id
+ * @property string|null            $user_id
+ * @property string                 $client_id
+ * @property string|null            $name
+ * @property array|null             $scopes
+ * @property bool                   $revoked
+ * @property Carbon|null            $created_at
+ * @property Carbon|null            $updated_at
+ * @property Carbon|null            $expires_at
+ * @property string|null            $updated_by
+ * @property string|null            $created_by
+ * @property string|null            $deleted_at
+ * @property string|null            $deleted_by
+ * @property OauthClient|null       $client
+ * @property UserContract|null      $user
+ * @property OauthRefreshToken|null $refreshToken
+>>>>>>> ac0ea089 (.)
  *
  * @method static Builder|OauthAccessToken newModelQuery()
  * @method static Builder|OauthAccessToken newQuery()
@@ -47,6 +69,7 @@ use Modules\Xot\Contracts\UserContract;
  * @method static Builder|OauthAccessToken whereScopes($value)
  * @method static Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static Builder|OauthAccessToken whereUserId($value)
+<<<<<<< HEAD
  *
  * @property OauthRefreshToken|null $refreshToken
  * @property string|null            $updated_by
@@ -72,12 +95,22 @@ use Modules\Xot\Contracts\UserContract;
  *                                                                                                       >>>>>>> 5aac2b68 (.)
  *
  * @mixin IdeHelperOauthAccessToken
+=======
+ * @method static Builder|OauthAccessToken whereCreatedBy($value)
+ * @method static Builder|OauthAccessToken whereDeletedAt($value)
+ * @method static Builder|OauthAccessToken whereDeletedBy($value)
+ * @method static Builder|OauthAccessToken whereUpdatedBy($value)
+ *
+>>>>>>> ac0ea089 (.)
  * @mixin \Eloquent
  */
 class OauthToken extends PassportToken
 {
     /** @var string */
     protected $connection = 'user';
+<<<<<<< HEAD
 
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
+=======
+>>>>>>> ac0ea089 (.)
 }

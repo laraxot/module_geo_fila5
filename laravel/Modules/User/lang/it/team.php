@@ -85,9 +85,12 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+<<<<<<< HEAD
         'id' => [
             'label' => 'id',
         ],
+=======
+>>>>>>> ac0ea089 (.)
     ],
     'actions' => [
         'import' => [
@@ -104,8 +107,11 @@ return [
         ],
         'create' => [
             'label' => 'create',
+<<<<<<< HEAD
             'icon' => 'create',
             'tooltip' => 'create',
+=======
+>>>>>>> ac0ea089 (.)
         ],
         'logout' => [
             'icon' => 'logout',
@@ -177,6 +183,7 @@ return [
             'icon' => 'delete',
             'label' => 'delete',
         ],
+<<<<<<< HEAD
         'view' => [
             'label' => 'view',
             'icon' => 'view',
@@ -192,6 +199,8 @@ return [
             'icon' => 'layout',
             'tooltip' => 'layout',
         ],
+=======
+>>>>>>> ac0ea089 (.)
     ],
     'plural' => [
         'model' => [

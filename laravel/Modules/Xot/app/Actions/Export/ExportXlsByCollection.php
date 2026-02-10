@@ -63,7 +63,11 @@ class ExportXlsByCollection
             $rows = Collection::make($rows->toArray());
         }
 
+<<<<<<< HEAD
         $spreadsheet = new Spreadsheet;
+=======
+        $spreadsheet = new Spreadsheet();
+>>>>>>> ac0ea089 (.)
         $sheet = $spreadsheet->getActiveSheet();
 
         $this->writeHeader($sheet, $fields);

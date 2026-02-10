@@ -105,9 +105,12 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+<<<<<<< HEAD
         'lavoratore' => [
             'label' => 'lavoratore',
         ],
+=======
+>>>>>>> ac0ea089 (.)
     ],
     'actions' => [
         'exportPdf' => [

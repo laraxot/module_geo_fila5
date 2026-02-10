@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+<<<<<<< HEAD
 // use SocialiteProviders\Manager\ServiceProvider as BaseSocialiteServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,4 +27,10 @@ class SocialiteServiceProvider extends ServiceProvider
     {
         // Register services when SocialiteProviders package is available
     }
+=======
+use SocialiteProviders\Manager\ServiceProvider as BaseSocialiteServiceProvider;
+
+class SocialiteServiceProvider extends BaseSocialiteServiceProvider
+{
+>>>>>>> ac0ea089 (.)
 }

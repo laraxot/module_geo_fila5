@@ -11,7 +11,11 @@ use Modules\Media\Tests\TestCase;
 uses(TestCase::class);
 
 beforeEach(function () {
+<<<<<<< HEAD
     $this->baseModel = new class extends BaseModel
+=======
+    $this->baseModel = new class() extends BaseModel
+>>>>>>> ac0ea089 (.)
     {
         protected $table = 'test_media_table';
     };

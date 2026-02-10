@@ -17,7 +17,11 @@ enum ServizioAnprEnum: string
         return match ($this) {
             self::C030 => 'C030-servizioAccertamentoIdUnicoNazionale/v1',
             self::C003 => 'C003-servizioVerificaDichGeneralita/v1',
+<<<<<<< HEAD
             self::C007 => 'C007-servizioVerificaDichEsistenzaVita/v1',
+=======
+            self::C007 => 'C007–servizioVerificaDichEsistenzaVita/v1',
+>>>>>>> ac0ea089 (.)
         };
     }
 

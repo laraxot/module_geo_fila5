@@ -34,6 +34,10 @@ class FilemanagerData extends Data
      */
     public static function make(): static
     {
+<<<<<<< HEAD
         return new static;
+=======
+        return new static();
+>>>>>>> ac0ea089 (.)
     }
 }

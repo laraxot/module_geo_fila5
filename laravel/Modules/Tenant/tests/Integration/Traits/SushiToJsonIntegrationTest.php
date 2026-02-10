@@ -18,7 +18,11 @@ uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function ()
     // Imposta il tenant corrente
     app('tenant')->setCurrent($this->tenant);
 
+<<<<<<< HEAD
     $this->model = new TestSushiModel;
+=======
+    $this->model = new TestSushiModel();
+>>>>>>> ac0ea089 (.)
     $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     // Pulisce eventuali file di test esistenti
@@ -167,9 +171,15 @@ it('manages file permissions correctly', function (): void {
 
 it('handles concurrent access safely', function (): void {
     // Simula accesso concorrente creando più istanze del modello
+<<<<<<< HEAD
     $model1 = new TestSushiModel;
     $model2 = new TestSushiModel;
     $model3 = new TestSushiModel;
+=======
+    $model1 = new TestSushiModel();
+    $model2 = new TestSushiModel();
+    $model3 = new TestSushiModel();
+>>>>>>> ac0ea089 (.)
 
     $testData1 = ['1' => ['id' => 1, 'name' => 'Concurrent Item 1']];
     $testData2 = ['2' => ['id' => 2, 'name' => 'Concurrent Item 2']];
@@ -325,7 +335,11 @@ it('works with different tenant configurations', function (): void {
     // Imposta il secondo tenant come corrente
     app('tenant')->setCurrent($secondTenant);
 
+<<<<<<< HEAD
     $secondModel = new TestSushiModel;
+=======
+    $secondModel = new TestSushiModel();
+>>>>>>> ac0ea089 (.)
     $secondJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     $testData = [

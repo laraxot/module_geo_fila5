@@ -11,7 +11,11 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
  *
  * Consolidated migration for mail_templates table following "1 Table = 1 Migration File" rule.
  */
+<<<<<<< HEAD
 return new class extends XotBaseMigration
+=======
+return new class() extends XotBaseMigration
+>>>>>>> ac0ea089 (.)
 {
     /**
      * Run the migrations.

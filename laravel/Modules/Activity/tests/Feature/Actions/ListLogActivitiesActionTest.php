@@ -25,7 +25,11 @@ test('action has correct configuration', function (): void {
 test('action generates a log-activity URL containing record key', function (): void {
     $action = ListLogActivitiesAction::make();
 
+<<<<<<< HEAD
     $resource = new class
+=======
+    $resource = new class()
+>>>>>>> ac0ea089 (.)
     {
         public static function getUrl(string $name, array $parameters = []): string
         {

@@ -56,5 +56,8 @@ class SendAppointmentNotificationAction
             return false;
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ac0ea089 (.)
 }

@@ -19,20 +19,32 @@ test('login listener is registered for login event', function () {
 })->skip('LoginListener is not registered in EventServiceProvider');
 
 test('login listener can be instantiated', function () {
+<<<<<<< HEAD
     $listener = new LoginListener;
+=======
+    $listener = new LoginListener();
+>>>>>>> ac0ea089 (.)
 
     expect($listener)->toBeInstanceOf(LoginListener::class);
 });
 
 test('login listener has handle method', function () {
+<<<<<<< HEAD
     $listener = new LoginListener;
+=======
+    $listener = new LoginListener();
+>>>>>>> ac0ea089 (.)
     $reflection = new ReflectionClass($listener);
 
     expect($reflection->hasMethod('handle'))->toBeTrue();
 });
 
 test('login listener handle method is callable', function () {
+<<<<<<< HEAD
     $listener = new LoginListener;
+=======
+    $listener = new LoginListener();
+>>>>>>> ac0ea089 (.)
 
     expect(fn () => $listener->handle())->not->toThrow(Exception::class);
 });

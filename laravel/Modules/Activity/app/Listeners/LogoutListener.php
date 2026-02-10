@@ -52,7 +52,11 @@ class LogoutListener
         // We use the Activity model directly as per the test expectations
         // The test expects 'event' column to be set to 'logout'
 
+<<<<<<< HEAD
         $activity = new Activity;
+=======
+        $activity = new Activity();
+>>>>>>> ac0ea089 (.)
         $activity->log_name = 'auth';
         $activity->description = 'User logged out'; // specific string not enforced but 'logout' must be contained
         $activity->event = 'logout';

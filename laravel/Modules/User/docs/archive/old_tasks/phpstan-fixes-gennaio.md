@@ -114,7 +114,10 @@ PHPStan aveva difficoltà nel riconoscere la sintassi method chaining e object i
 
 ### **Benefici**
 - ✅ **PHPStan level 10**: Compatibilità completa
+<<<<<<< HEAD
 >>>>>>> e4cd89fa (.)
+=======
+>>>>>>> ac0ea089 (.)
 - ✅ **Leggibilità**: Codice più esplicito e chiaro
 - ✅ **Type Safety**: Mantenuta con type hints espliciti
 - ✅ **Debugging**: Più facile identificare problemi
@@ -133,7 +136,11 @@ PHPStan aveva difficoltà nel riconoscere la sintassi method chaining e object i
 ### **Test Eseguiti**
 ```bash
 # Test PHPStan
+<<<<<<< HEAD
 ./vendor/bin/phpstan analyse Modules/User --level=9
+=======
+./vendor/bin/phpstan analyse Modules/User --level=10
+>>>>>>> ac0ea089 (.)
 # ✅ Nessun errore
 
 # Test funzionali
@@ -225,8 +232,13 @@ $subject = Lang::get('user::email.password_reset_subject');
 
 **🔄 Ultimo aggiornamento**: 27 Gennaio 2025  
 **📦 Versione**: 1.0  
+<<<<<<< HEAD
 **🐛 PHPStan Level**: 10 ✅  
 **🌐 Translation Standards**: IT/EN complete ✅  
 **🚀 Performance**: 95/100 score  
 **✨ Test Coverage**: 85% ✅
 >>>>>>> e4cd89fa (.)
+=======
+**🚀 Performance**: 95/100 score  
+**✨ Test Coverage**: 85% ✅
+>>>>>>> ac0ea089 (.)

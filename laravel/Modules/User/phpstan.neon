@@ -1,6 +1,10 @@
 includes:
     - ./phpstan-baseline.neon
+<<<<<<< HEAD
     - ./../../vendor/larastan/larastan/extension.neon
+=======
+    #- ./../../vendor/larastan/larastan/extension.neon
+>>>>>>> ac0ea089 (.)
     #- ./../../vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     #- ./vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
     #- ./vendor/symplify/phpstan-rules/config/collector-rules.neon
@@ -13,7 +17,39 @@ parameters:
     level: max
 
     paths:
+<<<<<<< HEAD
         - .
+=======
+        - ../../app
+        - ../../database
+        - ../../resources
+        - ../../config
+        - ../../lang
+        - ../../routes
+        - ../../tests
+        - ../../docs
+        - ../../vendor
+        - ../../bootstrap
+        - ../../storage
+        - ../../public
+        - ../../node_modules
+        - ../../Modules
+        - ../../Modules/Xot
+        - ../../Modules/User
+        - ../../Modules/User/app
+        - ../../Modules/User/database
+        - ../../Modules/User/tests
+        - ../../Modules/User/resources
+        - ../../Modules/User/config
+        - ../../Modules/User/lang
+        - ../../Modules/User/routes
+        - ../../Modules/User/docs
+        - ../../Modules/User/vendor
+        - ../../Modules/User/bootstrap
+        - ../../Modules/User/storage
+        - ../../Modules/User/public
+        - ../../Modules/User/node_modules
+>>>>>>> ac0ea089 (.)
     
           
 
@@ -30,7 +66,10 @@ parameters:
         - ./*/build/*
         - ./*/vendor/*
         - ./*/docs/*
+<<<<<<< HEAD
         - ./*/Tests/*
+=======
+>>>>>>> ac0ea089 (.)
         - ./*/_ide_helper.php
 
     bootstrapFiles:
@@ -55,4 +94,11 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkOctaneCompatibility: false
     checkModelProperties: false
+<<<<<<< HEAD
+=======
+    bootstrapFiles:
+        - ./phpstan_constants.php
+        - ../../vendor/autoload.php
+    bootstrapped: false
+>>>>>>> ac0ea089 (.)
 

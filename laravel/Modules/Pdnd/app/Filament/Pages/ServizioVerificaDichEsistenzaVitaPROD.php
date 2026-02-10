@@ -85,10 +85,16 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             $state = $this->pdndForm->getState();
 
             $codiceFiscale = $this->validateCodiceFiscale($state);
+<<<<<<< HEAD
             
             $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
 
             // dd($risultatoC007Service);
+=======
+
+            $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
+
+>>>>>>> ac0ea089 (.)
             if ($this->isVerificaSuccessful($risultatoC007Service)) {
                 $this->handleVerificaSuccessful($risultatoC007Service);
             } else {
@@ -140,12 +146,17 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
         try {
             $c007Service = $this->createC007Service();
 
+<<<<<<< HEAD
             // dddx($c007Service);
             
             $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
 
             // dddx($risultato);
 
+=======
+            $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
+
+>>>>>>> ac0ea089 (.)
             return $risultato;
         } catch (Throwable $e) {
             Log::error('Errore nel servizio C007', [
@@ -163,7 +174,10 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
+<<<<<<< HEAD
         // dd($risultato);
+=======
+>>>>>>> ac0ea089 (.)
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 

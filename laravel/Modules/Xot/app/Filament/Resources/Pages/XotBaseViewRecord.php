@@ -6,10 +6,17 @@ namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+<<<<<<< HEAD
 use Filament\Resources\Pages\ViewRecord as FilamentViewRecord;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
+=======
+use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
+use Filament\Resources\Pages\ViewRecord as FilamentViewRecord;
+use Filament\Schemas\Components\Component;
+use Filament\Schemas\Schema;
+>>>>>>> ac0ea089 (.)
 
 abstract class XotBaseViewRecord extends FilamentViewRecord
 {

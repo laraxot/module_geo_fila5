@@ -20,7 +20,11 @@ function tenantJsonPath(string $tenantName): string
 
 function makeTestSushiModelForPath(string $jsonPath): TestSushiModel
 {
+<<<<<<< HEAD
     $model = new class extends TestSushiModel
+=======
+    $model = new class() extends TestSushiModel
+>>>>>>> ac0ea089 (.)
     {
         public string $jsonPath = '';
 

@@ -71,7 +71,11 @@ class XotComposer
         $view->with('_theme', $this);
 
         if (class_exists('\Jenssegers\Agent\Agent')) {
+<<<<<<< HEAD
             $agent = new Agent;
+=======
+            $agent = new Agent();
+>>>>>>> ac0ea089 (.)
             $view->with('isMobile', $agent->isMobile());
             $view->with('isTablet', $agent->isTablet());
             $view->with('isDesktop', $agent->isDesktop());

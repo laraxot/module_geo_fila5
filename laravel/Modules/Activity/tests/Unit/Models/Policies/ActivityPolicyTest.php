@@ -10,7 +10,11 @@ use Modules\Activity\Models\Policies\SnapshotPolicy;
 use Modules\Activity\Models\Policies\StoredEventPolicy;
 
 test('ActivityPolicy can be instantiated', function () {
+<<<<<<< HEAD
     $policy = new ActivityPolicy;
+=======
+    $policy = new ActivityPolicy();
+>>>>>>> ac0ea089 (.)
 
     expect($policy)->toBeInstanceOf(ActivityPolicy::class);
 });
@@ -22,19 +26,31 @@ test('ActivityBasePolicy is an abstract class', function () {
 });
 
 test('SnapshotPolicy can be instantiated', function () {
+<<<<<<< HEAD
     $policy = new SnapshotPolicy;
+=======
+    $policy = new SnapshotPolicy();
+>>>>>>> ac0ea089 (.)
 
     expect($policy)->toBeInstanceOf(SnapshotPolicy::class);
 });
 
 test('StoredEventPolicy can be instantiated', function () {
+<<<<<<< HEAD
     $policy = new StoredEventPolicy;
+=======
+    $policy = new StoredEventPolicy();
+>>>>>>> ac0ea089 (.)
 
     expect($policy)->toBeInstanceOf(StoredEventPolicy::class);
 });
 
 test('ActivityPolicy has expected methods', function () {
+<<<<<<< HEAD
     $policy = new ActivityPolicy;
+=======
+    $policy = new ActivityPolicy();
+>>>>>>> ac0ea089 (.)
 
     // Check that expected methods exist
     expect(method_exists($policy, 'view'))->toBeTrue();
@@ -46,7 +62,11 @@ test('ActivityPolicy has expected methods', function () {
 });
 
 test('ActivityPolicy method signatures', function () {
+<<<<<<< HEAD
     $policy = new ActivityPolicy;
+=======
+    $policy = new ActivityPolicy();
+>>>>>>> ac0ea089 (.)
 
     // Test method reflection to ensure proper signatures
     $reflection = new \ReflectionClass($policy);

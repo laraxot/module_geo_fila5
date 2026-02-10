@@ -8,19 +8,31 @@ use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 
 describe('StoredEvent Business Logic', function (): void {
     test('stored event has correct connection configured', function (): void {
+<<<<<<< HEAD
         $storedEvent = new StoredEvent;
+=======
+        $storedEvent = new StoredEvent();
+>>>>>>> ac0ea089 (.)
 
         expect($storedEvent->getConnectionName())->toBe('activity');
     });
 
     test('stored event has correct table configured', function (): void {
+<<<<<<< HEAD
         $storedEvent = new StoredEvent;
+=======
+        $storedEvent = new StoredEvent();
+>>>>>>> ac0ea089 (.)
 
         expect($storedEvent->getTable())->toBe('stored_events');
     });
 
     test('stored event has expected fillable fields for event sourcing', function (): void {
+<<<<<<< HEAD
         $storedEvent = new StoredEvent;
+=======
+        $storedEvent = new StoredEvent();
+>>>>>>> ac0ea089 (.)
         $expectedFillable = [
             'id',
             'aggregate_uuid',

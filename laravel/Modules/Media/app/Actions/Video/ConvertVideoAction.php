@@ -28,7 +28,11 @@ class ConvertVideoAction
 
         $exportedMedia = $openedMedia->export();
 
+<<<<<<< HEAD
         $format = new X264;
+=======
+        $format = new X264();
+>>>>>>> ac0ea089 (.)
         $format->setKiloBitrate(1000);
 
         /** @phpstan-ignore-next-line - FFMpeg fluent API */

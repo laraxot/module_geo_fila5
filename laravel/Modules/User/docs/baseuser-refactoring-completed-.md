@@ -1,7 +1,12 @@
 # BaseUser Refactoring - Completato
 
+<<<<<<< HEAD
 **Data**: 15 Ottobre 2025  
 **File**: `Modules/User/app/Models/BaseUser.php`  
+=======
+**Data**: 15 Ottobre 2025
+**File**: `Modules/User/app/Models/BaseUser.php`
+>>>>>>> ac0ea089 (.)
 **Stato**: ✅ COMPLETATO
 
 ## Refactoring Eseguito
@@ -90,7 +95,11 @@ abstract class BaseUser extends Authenticatable implements ...
     use HasRoles;        // ✅ Fornisce: hasRole, assignRole, etc.
     use HasPermissions;  // ✅ Fornisce: hasPermissionTo, checkPermissionTo, etc.
     // ... altri traits
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> ac0ea089 (.)
     // ✅ Solo metodi specifici dell'app
     // ❌ Nessun metodo duplicato
     // ✅ 231 righe totali (era 406)
@@ -209,7 +218,11 @@ php artisan test --filter=SuperAdmin
 ## Problemi Risolti
 
 ### 1. Bug di Sicurezza ✅
+<<<<<<< HEAD
 **PRIMA**: Il parametro `$guard` veniva ignorato  
+=======
+**PRIMA**: Il parametro `$guard` veniva ignorato
+>>>>>>> ac0ea089 (.)
 **DOPO**: Guard correttamente gestito
 
 ```php
@@ -218,6 +231,7 @@ $user->hasRole('admin', 'api'); // ✅ Ora funziona correttamente
 ```
 
 ### 2. Performance ⚡
+<<<<<<< HEAD
 **PRIMA**: N+1 queries, nessun caching  
 **DOPO**: Eager loading automatico, cache integrata
 
@@ -227,6 +241,17 @@ $user->hasRole('admin', 'api'); // ✅ Ora funziona correttamente
 
 ### 4. Manutenibilità 📚
 **PRIMA**: Codice custom da mantenere  
+=======
+**PRIMA**: N+1 queries, nessun caching
+**DOPO**: Eager loading automatico, cache integrata
+
+### 3. Funzionalità ➕
+**PRIMA**: Features limitate
+**DOPO**: Tutte le features Spatie disponibili
+
+### 4. Manutenibilità 📚
+**PRIMA**: Codice custom da mantenere
+>>>>>>> ac0ea089 (.)
 **DOPO**: Trait mantenuto da Spatie
 
 ## Documentazione Collegata
@@ -328,6 +353,7 @@ Il refactoring di `BaseUser` è stato un **successo completo**:
 
 ## Principi Zen Applicati
 
+<<<<<<< HEAD
 > **"Il miglior codice è quello che non devi scrivere"**  
 > 175 righe eliminate = 175 potenziali bug in meno
 
@@ -335,11 +361,26 @@ Il refactoring di `BaseUser` è stato un **successo completo**:
 > Spatie ha fatto il lavoro pesante per noi
 
 > **"Semplicità è la massima sofisticazione"**  
+=======
+> **"Il miglior codice è quello che non devi scrivere"**
+> 175 righe eliminate = 175 potenziali bug in meno
+
+> **"Fidati degli esperti, usa le loro soluzioni"**
+> Spatie ha fatto il lavoro pesante per noi
+
+> **"Semplicità è la massima sofisticazione"**
+>>>>>>> ac0ea089 (.)
 > Codice semplice, pulito, mantenibile
 
 ---
 
+<<<<<<< HEAD
 **Status**: ✅ PRODUCTION READY  
 **Risk Level**: 🟢 LOW  
 **Confidence**: 💯 HIGH
 
+=======
+**Status**: ✅ PRODUCTION READY
+**Risk Level**: 🟢 LOW
+**Confidence**: 💯 HIGH
+>>>>>>> ac0ea089 (.)

@@ -108,7 +108,11 @@ class MyProfilePage extends XotBasePage
     {
         $user = Filament::auth()->user();
 
+<<<<<<< HEAD
         if (! ($user instanceof Model)) {
+=======
+        if (! $user instanceof Model) {
+>>>>>>> ac0ea089 (.)
             throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 

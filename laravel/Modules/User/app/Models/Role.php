@@ -9,9 +9,17 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+=======
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
+>>>>>>> ac0ea089 (.)
 use Modules\User\Database\Factories\RoleFactory;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Models\Traits\HasXotFactory;
@@ -23,6 +31,7 @@ use Webmozart\Assert\Assert;
 /**
  * Modules\User\Models\Role.
  *
+<<<<<<< HEAD
  * <<<<<<< HEAD
  * =======
  *
@@ -69,6 +78,25 @@ use Webmozart\Assert\Assert;
  * @property \Illuminate\Database\Eloquent\Collection<int, User>                                      $users
  * @property int|null                                                                                 $users_count
  *                                                                                                                       >>>>>>> 5aac2b68 (.)
+=======
+ * @property int                                                        $id
+ * @property string                                                     $uuid
+ * @property string|null                                                $team_id
+ * @property string                                                     $name
+ * @property string                                                     $guard_name
+ * @property string|null                                                $display_name
+ * @property string|null                                                $description
+ * @property Carbon|null                                                $created_at
+ * @property Carbon|null                                                $updated_at
+ * @property string|null                                                $updated_by
+ * @property string|null                                                $created_by
+ * @property Collection<int, Permission>                                $permissions
+ * @property int|null                                                   $permissions_count
+ * @property Team|null                                                  $team
+ * @property Collection<int, Model&\Modules\Xot\Contracts\UserContract> $users
+ * @property int|null                                                   $users_count
+ * @property PermissionRole|null                                        $pivot
+>>>>>>> ac0ea089 (.)
  *
  * @method static Builder|Role newModelQuery()
  * @method static Builder|Role newQuery()
@@ -79,6 +107,7 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereTeamId($value)
  * @method static Builder|Role whereUpdatedAt($value)
+<<<<<<< HEAD
  *
  * @property int $id
  *
@@ -110,6 +139,19 @@ use Webmozart\Assert\Assert;
  * @mixin \Eloquent
  *
  * @phpstan-ignore-next-line
+=======
+ * @method static Builder|Role whereId($value)
+ * @method static Builder|Role whereCreatedBy($value)
+ * @method static Builder|Role whereUpdatedBy($value)
+ * @method static Builder|Role withoutPermission($permissions)
+ * @method static Builder|Role whereDescription($value)
+ * @method static Builder|Role whereDisplayName($value)
+ * @method static RoleFactory  factory($count = null, $state = [])
+ * @method static static       firstOrCreate(array $attributes, array $values = [])
+ * @method static static       updateOrCreate(array $attributes, array $values = [])
+ *
+ * @mixin \Eloquent
+>>>>>>> ac0ea089 (.)
  */
 class Role extends SpatieRole
 {

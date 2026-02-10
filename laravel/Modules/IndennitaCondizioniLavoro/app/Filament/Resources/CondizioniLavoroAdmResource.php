@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources;
 
+<<<<<<< HEAD
 use Override;
 use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,11 @@ use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResourc
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\CreateCondizioniLavoro;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\CompilaCondizioniLavoro;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Widgets\CondizioniLavoroOverview;
+=======
+use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroAdm;
+use Modules\Xot\Filament\Resources\XotBaseResource;
+use Override;
+>>>>>>> ac0ea089 (.)
 
 class CondizioniLavoroAdmResource extends XotBaseResource
 {
@@ -32,6 +38,7 @@ class CondizioniLavoroAdmResource extends XotBaseResource
     #[Override]
     public static function getFormSchema(): array
     {
+<<<<<<< HEAD
         return [
             'lavoratore' => WorkerSection::make('lavoratore'),
             'periodo' => PeriodoSection::make('periodo')->add([
@@ -82,4 +89,11 @@ class CondizioniLavoroAdmResource extends XotBaseResource
     {
         return null;
     }
+=======
+        // Types are inferred by Filament v4
+        return [
+
+        ];
+    }
+>>>>>>> ac0ea089 (.)
 }

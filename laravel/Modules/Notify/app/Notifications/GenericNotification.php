@@ -73,7 +73,11 @@ class GenericNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable): MailMessage
     {
+<<<<<<< HEAD
         $mail = (new MailMessage)
+=======
+        $mail = (new MailMessage())
+>>>>>>> ac0ea089 (.)
             ->subject($this->title)
             ->greeting('Gentile '.$this->getRecipientName($notifiable))
             ->line($this->message);

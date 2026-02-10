@@ -19,7 +19,10 @@ class CloudFrontIconMediaColumn extends IconColumn
                 return $record->getFirstMedia($attachment);
             }
 
+<<<<<<< HEAD
             return null;
+=======
+>>>>>>> ac0ea089 (.)
         })
             ->icon('heroicon-o-document-text')
             ->color(function ($record) use ($attachment): string {

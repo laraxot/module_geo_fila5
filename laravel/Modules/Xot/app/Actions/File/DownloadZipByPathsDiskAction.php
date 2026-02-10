@@ -26,7 +26,11 @@ class DownloadZipByPathsDiskAction
         $zipPath = 'temp/'.$zipFileName;
 
         // Crea un file temporaneo per lo ZIP usando Storage
+<<<<<<< HEAD
         $zip = new ZipArchive;
+=======
+        $zip = new ZipArchive();
+>>>>>>> ac0ea089 (.)
         $tempFilePath = storage_path('app/'.$zipPath);
 
         // Assicurati che la directory temp esista

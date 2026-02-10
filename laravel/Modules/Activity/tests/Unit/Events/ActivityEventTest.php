@@ -7,13 +7,21 @@ uses(\Modules\Activity\Tests\TestCase::class);
 use Modules\Activity\Events\ActivityEvent;
 
 test('ActivityEvent can be instantiated', function () {
+<<<<<<< HEAD
     $event = new ActivityEvent;
+=======
+    $event = new ActivityEvent();
+>>>>>>> ac0ea089 (.)
 
     expect($event)->toBeObject();
 });
 
 test('ActivityEvent has expected properties', function () {
+<<<<<<< HEAD
     $event = new ActivityEvent;
+=======
+    $event = new ActivityEvent();
+>>>>>>> ac0ea089 (.)
 
     // Siccome ActivityEvent è una classe vuota, testiamo solo che possa essere istanziata
     expect($event)->toBeInstanceOf(\Illuminate\Foundation\Events\Dispatchable::class)

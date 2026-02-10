@@ -6,13 +6,20 @@ namespace Modules\User\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
+=======
+>>>>>>> ac0ea089 (.)
 use Modules\Xot\Tests\CreatesApplication;
 
 /**
  * Base test case for User module.
  *
+<<<<<<< HEAD
  * Uses dedicated testing.sqlite file to ensure connection sharing.
+=======
+ * Uses MySQL from .env.testing.
+>>>>>>> ac0ea089 (.)
  *
  * @property \Modules\User\Models\Permission $permission
  * @property \Modules\User\Models\Role       $role
@@ -54,6 +61,7 @@ abstract class TestCase extends BaseTestCase
             'main_module' => 'User',
         ]);
 
+<<<<<<< HEAD
         // Always run migrations for the volatile testing connection context
         // This ensures the testing.sqlite file (or memory DB) has the schema
         if (true) {
@@ -94,4 +102,18 @@ abstract class TestCase extends BaseTestCase
 
         return $app;
     }
+=======
+        if (! self::$migrated) {
+            $this->artisan('migrate:fresh', [
+                '--force' => true,
+            ]);
+
+            $this->artisan('module:migrate', [
+                '--force' => true,
+            ]);
+
+            self::$migrated = true;
+        }
+    }
+>>>>>>> ac0ea089 (.)
 }

@@ -2,12 +2,21 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Notify\Models\MailTemplate;
+=======
+use Illuminate\Contracts\Mail\Mailable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Notify\Models\MailTemplate;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Translatable\HasTranslations;
+>>>>>>> ac0ea089 (.)
 
 describe('MailTemplate Business Logic', function () {
     test('mail template extends spatie mail template', function () {

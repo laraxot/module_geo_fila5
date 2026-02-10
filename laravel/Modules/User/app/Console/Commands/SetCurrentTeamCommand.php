@@ -47,7 +47,11 @@ class SetCurrentTeamCommand extends Command
         $xot = XotData::make();
         $user = $xot->getUserByEmail($email);
 
+<<<<<<< HEAD
         if (! ($user instanceof Model)) {
+=======
+        if (! $user instanceof Model) {
+>>>>>>> ac0ea089 (.)
             $this->error('Utente non trovato o non valido!');
 
             return;

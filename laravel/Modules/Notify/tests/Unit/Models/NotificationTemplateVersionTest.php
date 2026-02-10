@@ -128,14 +128,22 @@ it('has media trait', function (): void {
 });
 
 it('has creator and updater relationships', function (): void {
+<<<<<<< HEAD
     $version = new NotificationTemplateVersion;
+=======
+    $version = new NotificationTemplateVersion();
+>>>>>>> ac0ea089 (.)
 
     expect(method_exists($version, 'creator'))->toBeTrue();
     expect(method_exists($version, 'updater'))->toBeTrue();
 });
 
 it('has media relationship', function (): void {
+<<<<<<< HEAD
     $version = new NotificationTemplateVersion;
+=======
+    $version = new NotificationTemplateVersion();
+>>>>>>> ac0ea089 (.)
 
     expect(method_exists($version, 'media'))->toBeTrue();
 });

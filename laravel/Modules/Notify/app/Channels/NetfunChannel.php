@@ -28,12 +28,20 @@ class NetfunChannel
     {
         // Ottieni il numero di telefono dal Notifiable
         if (! is_object($notifiable) || ! method_exists($notifiable, 'routeNotificationForNetfun')) {
+<<<<<<< HEAD
             return null;
+=======
+            return;
+>>>>>>> ac0ea089 (.)
         }
 
         $recipient = $notifiable->routeNotificationForNetfun($notification);
         if (! $recipient) {
+<<<<<<< HEAD
             return null;
+=======
+            return;
+>>>>>>> ac0ea089 (.)
         }
 
         // Ottieni il messaggio dalla notifica
