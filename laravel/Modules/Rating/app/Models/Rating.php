@@ -76,6 +76,75 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  *
  * @mixin Eloquent
  */
-class Rating extends BaseRating
+class Rating extends BaseModel implements HasMedia
 {
+    use InteractsWithMedia;
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'extra_attributes' => SchemalessAttributes::class,
+            'rule' => RuleEnum::class,
+            'is_disabled' => 'boolean',
+            'is_readonly' => 'boolean',
+        ];
+    }
+
+    protected $fillable = [
+        'id',
+        'extra_attributes',
+        'title',
+        'color',
+        'txt',
+        'rule',
+        'is_disabled',
+        'is_readonly',
+        'order_column',
+    ];
+
+    public function scopeWithExtraAttributes(Builder $query): Builder
+    {
+        // ✅ isset() invece di property_exists() - funziona per magic attributes (SchemalessAttributes cast)
+        if (isset($this->extra_attributes) && is_object($this->extra_attributes) && method_exists($this->extra_attributes, 'modelScope')) {
+            $result = $this->extra_attributes->modelScope();
+            if ($result instanceof Builder) {
+                return $result;
+            }
+        }
+
+        return $query;
+    }
+
+    public function linkedTo(): MorphTo
+    {
+        return $this->morphTo('model');
+    }
+
+    /**
+     * Register the conversions that should be performed.
+     */
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        /*
+        $this
+            ->addMediaConversion('my-conversion')
+            ->greyscale()
+            ->quality(80)
+            ->withResponsiveImages();
+        */
+        $this->addMediaConversion('300x300')
+            ->width(300)
+            ->height(300);
+        $this->addMediaConversion('150x150')
+            ->width(151)
+            ->height(151);
+        $this->addMediaConversion('50x50')
+            ->width(150)
+            ->height(150);
+    }
 }

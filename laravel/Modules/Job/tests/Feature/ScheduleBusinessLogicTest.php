@@ -10,7 +10,6 @@ use Modules\Job\Tests\TestCase;
 
 class ScheduleBusinessLogicTest extends TestCase
 {
-
     /** @test */
     public function it_can_create_schedule_with_basic_information(): void
     {
