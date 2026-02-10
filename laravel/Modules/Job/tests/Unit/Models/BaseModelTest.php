@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Job\Models\BaseModel;
 
 beforeEach(function () {
-<<<<<<< HEAD
     $this->baseModel = new class extends BaseModel
-=======
-    $this->baseModel = new class() extends BaseModel
->>>>>>> ac0ea089 (.)
     {
         protected $table = 'test_job_table';
     };

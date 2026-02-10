@@ -12,9 +12,5 @@ use Modules\Xot\Filament\Traits\HasXotTable;
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
-<<<<<<< HEAD
-    //use HasXotTable;
-=======
     // use HasXotTable;
->>>>>>> ac0ea089 (.)
 }

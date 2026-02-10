@@ -48,8 +48,4 @@ abstract class TestCase extends BaseTestCase
             XotServiceProvider::class,
         ];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ac0ea089 (.)

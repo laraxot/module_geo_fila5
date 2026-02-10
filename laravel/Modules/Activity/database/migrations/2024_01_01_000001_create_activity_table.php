@@ -6,12 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Activity\Models\Activity;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD
-return new class extends XotBaseMigration
-=======
-return new class() extends XotBaseMigration
->>>>>>> ac0ea089 (.)
-{
+return new class extends XotBaseMigration {
     // protected ?string $model_class = Activity::class;
     public function up(): void
     {

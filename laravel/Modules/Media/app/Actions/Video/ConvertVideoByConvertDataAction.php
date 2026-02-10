@@ -38,11 +38,7 @@ class ConvertVideoByConvertDataAction
         }
 
         // Instanziamo il formato prima di usarlo
-<<<<<<< HEAD
         $formatInstance = new $format;
-=======
-        $formatInstance = new $format();
->>>>>>> ac0ea089 (.)
 
         // @phpstan-ignore method.notFound
         FFMpeg::fromDisk($data->disk)

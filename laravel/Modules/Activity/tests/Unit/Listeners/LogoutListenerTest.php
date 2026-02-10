@@ -19,32 +19,20 @@ test('logout listener is registered for logout event', function () {
 })->skip('LogoutListener may not be registered in EventServiceProvider');
 
 test('logout listener can be instantiated', function () {
-<<<<<<< HEAD
-    $listener = new LogoutListener;
-=======
     $listener = new LogoutListener();
->>>>>>> ac0ea089 (.)
 
     expect($listener)->toBeInstanceOf(LogoutListener::class);
 });
 
 test('logout listener has handle method', function () {
-<<<<<<< HEAD
-    $listener = new LogoutListener;
-=======
     $listener = new LogoutListener();
->>>>>>> ac0ea089 (.)
     $reflection = new ReflectionClass($listener);
 
     expect($reflection->hasMethod('handle'))->toBeTrue();
 });
 
 test('logout listener handle method accepts logout event', function () {
-<<<<<<< HEAD
-    $listener = new LogoutListener;
-=======
     $listener = new LogoutListener();
->>>>>>> ac0ea089 (.)
     $reflection = new ReflectionClass($listener);
     $method = $reflection->getMethod('handle');
     $parameters = $method->getParameters();
@@ -56,11 +44,7 @@ test('logout listener handle method accepts logout event', function () {
 test('logout listener handles event without user gracefully', function () {
     $event = new Logout('web', null);
 
-<<<<<<< HEAD
-    $listener = new LogoutListener;
-=======
     $listener = new LogoutListener();
->>>>>>> ac0ea089 (.)
 
     expect(fn () => $listener->handle($event))->not->toThrow(Exception::class);
 });

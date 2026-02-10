@@ -6,20 +6,6 @@ namespace Modules\User\Providers;
 
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Gate;
-<<<<<<< HEAD
-=======
-use Illuminate\Support\ServiceProvider;
->>>>>>> ac0ea089 (.)
-use Laravel\Passport\Passport;
-use Modules\User\Models\OauthAuthCode;
-use Modules\User\Models\OauthClient;
-use Modules\User\Models\OauthDeviceCode;
-use Modules\User\Models\OauthRefreshToken;
-use Modules\User\Models\OauthToken;
-<<<<<<< HEAD
-use Modules\Xot\Providers\XotBaseServiceProvider;
-=======
->>>>>>> ac0ea089 (.)
 use Webmozart\Assert\Assert;
 
 /**
@@ -27,16 +13,13 @@ use Webmozart\Assert\Assert;
  *
  * Configura Laravel Passport per l'autenticazione OAuth2.
  * Utilizza la configurazione centralizzata da config/user/passport.php.
-<<<<<<< HEAD
  */
 class PassportServiceProvider extends XotBaseServiceProvider
-=======
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 class PassportServiceProvider extends ServiceProvider
->>>>>>> ac0ea089 (.)
 {
     /**
      * Register services.
@@ -100,36 +83,6 @@ class PassportServiceProvider extends ServiceProvider
     /**
      * Configura i modelli personalizzati.
      */
-<<<<<<< HEAD
-=======
-    /**
-     * Configura i modelli personalizzati.
-     */
->>>>>>> ac0ea089 (.)
-    protected function configureModels(): void
-    {
-        $models = config('user.passport.models', []);
-        Assert::isArray($models);
-
-        $tokenModel = $models['token'] ?? OauthToken::class;
-        Assert::stringNotEmpty($tokenModel);
-<<<<<<< HEAD
-        $refreshTokenModel = $models['refresh_token'] ?? OauthRefreshToken::class;
-        Assert::stringNotEmpty($refreshTokenModel);
-        $authCodeModel = $models['auth_code'] ?? OauthAuthCode::class;
-        Assert::stringNotEmpty($authCodeModel);
-
-        $clientModel = config('user.passport.client_model', OauthClient::class);
-        Assert::stringNotEmpty($clientModel);
-
-        /** @var class-string<\Laravel\Passport\Token> $tokenModel */
-        Passport::useTokenModel($tokenModel);
-        /** @var class-string<\Laravel\Passport\RefreshToken> $refreshTokenModel */
-        Passport::useRefreshTokenModel($refreshTokenModel);
-        /** @var class-string<\Laravel\Passport\AuthCode> $authCodeModel */
-        Passport::useAuthCodeModel($authCodeModel);
-        /** @var class-string<\Laravel\Passport\Client> $clientModel */
-=======
         Assert::subclassOf($tokenModel, \Laravel\Passport\Token::class);
 
         $refreshTokenModel = $models['refresh_token'] ?? OauthRefreshToken::class;
@@ -147,18 +100,13 @@ class PassportServiceProvider extends ServiceProvider
         Passport::useTokenModel($tokenModel);
         Passport::useRefreshTokenModel($refreshTokenModel);
         Passport::useAuthCodeModel($authCodeModel);
->>>>>>> ac0ea089 (.)
         Passport::useClientModel($clientModel);
 
         // @phpstan-ignore-next-line - method_exists check kept for backward compatibility with older Passport versions
         if (method_exists(Passport::class, 'useDeviceCodeModel')) {
             $deviceCodeModel = $models['device_code'] ?? OauthDeviceCode::class;
             Assert::stringNotEmpty($deviceCodeModel);
-<<<<<<< HEAD
-            /* @var class-string<\Laravel\Passport\DeviceCode> $deviceCodeModel */
-=======
             Assert::subclassOf($deviceCodeModel, \Laravel\Passport\DeviceCode::class);
->>>>>>> ac0ea089 (.)
             Passport::useDeviceCodeModel($deviceCodeModel);
         }
     }

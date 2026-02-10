@@ -8,11 +8,7 @@ use Modules\Job\Actions\GetTaskFrequenciesAction;
 
 describe('GetTaskFrequenciesAction Integration', function () {
     beforeEach(function () {
-<<<<<<< HEAD
         $this->action = new GetTaskFrequenciesAction;
-=======
-        $this->action = new GetTaskFrequenciesAction();
->>>>>>> ac0ea089 (.)
     });
 
     it('returns array when config exists', function () {

@@ -13,11 +13,7 @@ describe('GenericNotification getRecipientName', function (): void {
     it('prefers getFullName() when available', function (): void {
         $notification = new GenericNotification('Title', 'Message');
 
-<<<<<<< HEAD
-        $notifiable = new class
-=======
         $notifiable = new class()
->>>>>>> ac0ea089 (.)
         {
             public function getFullName(): string
             {
@@ -35,11 +31,7 @@ describe('GenericNotification getRecipientName', function (): void {
     it('uses Eloquent model full_name when present and non-empty', function (): void {
         $notification = new GenericNotification('Title', 'Message');
 
-<<<<<<< HEAD
-        $model = new class extends Model
-=======
         $model = new class() extends Model
->>>>>>> ac0ea089 (.)
         {
             protected $attributes = [
                 'full_name' => 'Jane Roe',
@@ -57,29 +49,17 @@ describe('GenericNotification getRecipientName', function (): void {
         $notification = new GenericNotification('Title', 'Message');
 
         // first_name present
-<<<<<<< HEAD
-        $model1 = new class extends Model
-=======
         $model1 = new class() extends Model
->>>>>>> ac0ea089 (.)
         {
             protected $attributes = ['first_name' => 'Alice'];
         };
         // name present
-<<<<<<< HEAD
-        $model2 = new class extends Model
-=======
         $model2 = new class() extends Model
->>>>>>> ac0ea089 (.)
         {
             protected $attributes = ['name' => 'Bob'];
         };
         // none present
-<<<<<<< HEAD
-        $model3 = new class extends Model
-=======
         $model3 = new class() extends Model
->>>>>>> ac0ea089 (.)
         {
             protected $attributes = [];
         };

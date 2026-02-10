@@ -2,37 +2,25 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Activity\Tests\TestCase::class);
+uses(Modules\Activity\Tests\TestCase::class);
 use Modules\Activity\Models\StoredEvent;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 
 describe('StoredEvent Business Logic', function (): void {
     test('stored event has correct connection configured', function (): void {
-<<<<<<< HEAD
-        $storedEvent = new StoredEvent;
-=======
         $storedEvent = new StoredEvent();
->>>>>>> ac0ea089 (.)
 
         expect($storedEvent->getConnectionName())->toBe('activity');
     });
 
     test('stored event has correct table configured', function (): void {
-<<<<<<< HEAD
-        $storedEvent = new StoredEvent;
-=======
         $storedEvent = new StoredEvent();
->>>>>>> ac0ea089 (.)
 
         expect($storedEvent->getTable())->toBe('stored_events');
     });
 
     test('stored event has expected fillable fields for event sourcing', function (): void {
-<<<<<<< HEAD
-        $storedEvent = new StoredEvent;
-=======
         $storedEvent = new StoredEvent();
->>>>>>> ac0ea089 (.)
         $expectedFillable = [
             'id',
             'aggregate_uuid',
@@ -64,7 +52,7 @@ describe('StoredEvent Business Logic', function (): void {
         // - whereAggregateRoot(string $uuid)
         // - whereEvent(string ...$eventClasses)
 
-        $reflection = new \ReflectionClass(StoredEvent::class);
+        $reflection = new ReflectionClass(StoredEvent::class);
         $docComment = $reflection->getDocComment();
 
         // Verify @method annotations exist for query builder methods

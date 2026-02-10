@@ -28,11 +28,7 @@ class GetDomainsArrayAction
 
     public function recurse(string $path): array
     {
-<<<<<<< HEAD
-        $filesystem = new Filesystem;
-=======
         $filesystem = new Filesystem();
->>>>>>> ac0ea089 (.)
         $directories = $filesystem->directories($path);
         $res = [];
         foreach ($directories as $dir) {

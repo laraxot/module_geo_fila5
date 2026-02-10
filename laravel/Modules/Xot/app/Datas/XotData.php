@@ -127,11 +127,7 @@ class XotData extends Data implements Wireable
     public function getUserByEmail(string $email): UserContract
     {
         $user_class = $this->getUserClass();
-<<<<<<< HEAD
-        $userInstance = new $user_class;
-=======
         $userInstance = new $user_class();
->>>>>>> ac0ea089 (.)
         if (! in_array('email', $userInstance->getFillable(), true)) {
             throw new Exception("Attribute 'email' not found in model ".$userInstance::class);
         }

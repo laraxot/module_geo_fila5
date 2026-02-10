@@ -58,16 +58,12 @@ class ExportXlsByCollection
      */
     public function executeWithSpreadsheet(Collection|EloquentCollection $rows, array $fields, string $filename): string
     {
-        // Converte EloquentCollection in Support\Collection se necessario
+// Converte EloquentCollection in Support\Collection se necessario
         if ($rows instanceof EloquentCollection) {
             $rows = Collection::make($rows->toArray());
         }
 
-<<<<<<< HEAD
-        $spreadsheet = new Spreadsheet;
-=======
         $spreadsheet = new Spreadsheet();
->>>>>>> ac0ea089 (.)
         $sheet = $spreadsheet->getActiveSheet();
 
         $this->writeHeader($sheet, $fields);

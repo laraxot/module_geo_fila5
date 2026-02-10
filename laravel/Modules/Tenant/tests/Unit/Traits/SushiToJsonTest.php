@@ -9,11 +9,7 @@ use Modules\Tenant\Models\TestSushiModel;
 use Modules\Tenant\Services\TenantService;
 
 uses(Tests\TestCase::class, DatabaseTransactions::class)->beforeEach(function () {
-<<<<<<< HEAD
-    $this->model = new TestSushiModel;
-=======
     $this->model = new TestSushiModel();
->>>>>>> ac0ea089 (.)
     $this->testJsonPath = TenantService::filePath('database/content/test_sushi.json');
 
     // Pulisce eventuali file di test esistenti
@@ -230,11 +226,7 @@ it('handles creating event correctly', function (): void {
     Auth::shouldReceive('id')->andReturn(456);
 
     // Crea un nuovo modello
-<<<<<<< HEAD
-    $newModel = new TestSushiModel;
-=======
     $newModel = new TestSushiModel();
->>>>>>> ac0ea089 (.)
     $newModel->name = 'New Item';
     $newModel->description = 'New Description';
 
@@ -275,11 +267,7 @@ it('handles updating event correctly', function (): void {
     Auth::shouldReceive('id')->andReturn(789);
 
     // Carica il modello esistente
-<<<<<<< HEAD
-    $existingModel = new TestSushiModel;
-=======
     $existingModel = new TestSushiModel();
->>>>>>> ac0ea089 (.)
     $existingModel->id = 1;
     $existingModel->name = 'Updated Name';
     $existingModel->description = 'Updated Description';
@@ -308,11 +296,7 @@ it('handles deleting event correctly', function (): void {
     File::put($this->testJsonPath, json_encode($testData, JSON_PRETTY_PRINT));
 
     // Carica il modello da eliminare
-<<<<<<< HEAD
-    $modelToDelete = new TestSushiModel;
-=======
     $modelToDelete = new TestSushiModel();
->>>>>>> ac0ea089 (.)
     $modelToDelete->id = 1;
 
     // Simula l'evento deleting

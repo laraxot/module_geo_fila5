@@ -6,27 +6,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\Profile;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD
-=======
-use function Safe\file_put_contents;
-
->>>>>>> ac0ea089 (.)
-return new class extends XotBaseMigration {
-    protected ?string $model_class = Profile::class;
-
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-<<<<<<< HEAD
-=======
         $conn = $this->model->getConnectionName();
         $db = $this->getConn()->getConnection()->getDatabaseName();
         $exists = $this->tableExists();
         file_put_contents(base_path('migration_debug.log'), "MIGRATING profiles | CONN: $conn | DB: $db | EXISTS: ".($exists ? 'YES' : 'NO')."\n", FILE_APPEND);
 
->>>>>>> ac0ea089 (.)
         // -- CREATE --
         $this->tableCreate(static function (Blueprint $table): void {
             $table->uuid('id')->primary();

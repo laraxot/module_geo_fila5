@@ -41,11 +41,7 @@ class SmsService
     public static function getInstance(): self
     {
         if (self::$instance === null) {
-<<<<<<< HEAD
-            self::$instance = new self;
-=======
             self::$instance = new self();
->>>>>>> ac0ea089 (.)
         }
 
         return self::$instance;

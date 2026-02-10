@@ -13,14 +13,8 @@ use Modules\User\Listeners\LoginListener;
 use Modules\User\Listeners\LogoutListener;
 use Modules\User\Listeners\OtherDeviceLogoutListener;
 use Modules\Xot\Providers\XotBaseEventServiceProvider;
-<<<<<<< HEAD
-
-// use SocialiteProviders\Auth0\Auth0ExtendSocialite;
-// use SocialiteProviders\Manager\SocialiteWasCalled;
-=======
 use SocialiteProviders\Auth0\Auth0ExtendSocialite;
 use SocialiteProviders\Manager\SocialiteWasCalled;
->>>>>>> ac0ea089 (.)
 
 class EventServiceProvider extends XotBaseEventServiceProvider
 {
@@ -38,15 +32,9 @@ class EventServiceProvider extends XotBaseEventServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-<<<<<<< HEAD
-        // SocialiteWasCalled::class => [
-        //     Auth0ExtendSocialite::class,
-        // ],
-=======
         SocialiteWasCalled::class => [
             Auth0ExtendSocialite::class,
         ],
->>>>>>> ac0ea089 (.)
         Login::class => [
             LoginListener::class,
         ],

@@ -57,11 +57,7 @@ class BuildMailMessageAction
         $viewParams['body_html'] = $bodyHtml;
         $viewParams['subject'] = $subject;
 
-<<<<<<< HEAD
         $email = (new MailMessage)
-=======
-        $email = (new MailMessage())
->>>>>>> ac0ea089 (.)
             ->from($fromAddress, $fromName)
             ->subject($subject)
             ->view($view_html, $viewParams);

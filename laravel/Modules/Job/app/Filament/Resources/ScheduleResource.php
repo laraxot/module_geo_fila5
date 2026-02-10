@@ -28,7 +28,6 @@ use Modules\Job\Filament\Resources\ScheduleResource\Pages\ViewSchedule;
 use Modules\Job\Models\Schedule;
 use Modules\Job\Rules\Corn;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Override;
 use Spatie\LaravelData\DataCollection;
 use Webmozart\Assert\Assert;
 
@@ -49,7 +48,7 @@ class ScheduleResource extends XotBaseResource
             ]);
     }
 
-    #[Override]
+    #[\Override]
     public static function getPages(): array
     {
         return [
@@ -60,7 +59,7 @@ class ScheduleResource extends XotBaseResource
         ];
     }
 
-    #[Override]
+    #[\Override]
     public static function getFormSchema(): array
     {
         static::$commands = app(GetCommandsAction::class)->execute();
@@ -126,11 +125,7 @@ class ScheduleResource extends XotBaseResource
                     ->reorderable(false),
                 TextInput::make('expression')
                     ->placeholder('* * * * *')
-<<<<<<< HEAD
-                    ->rules([new Corn])
-=======
                     ->rules([new Corn()])
->>>>>>> ac0ea089 (.)
                     ->required(),
                 TagsInput::make('environments')->placeholder(null),
                 TextInput::make('log_filename')->helperText(static::trans('messages.help-log-filename')),
@@ -149,11 +144,10 @@ class ScheduleResource extends XotBaseResource
         ];
     }
 
-    #[Override]
+    #[\Override]
     public static function getRelations(): array
     {
         return [
-
         ];
     }
 }

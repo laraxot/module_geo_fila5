@@ -310,11 +310,7 @@ it('media has factory', function (): void {
 });
 
 it('media has casts', function (): void {
-<<<<<<< HEAD
     $media = new Media;
-=======
-    $media = new Media();
->>>>>>> ac0ea089 (.)
 
     $expectedCasts = [
         'id' => 'string',

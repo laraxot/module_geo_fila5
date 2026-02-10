@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Activity\Listeners;
 
-use DateTimeInterface;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -32,11 +31,10 @@ class LogoutListener
         // Handle session duration if last_login_at is available
         // Assuming last_login_at is a Casted Carbon instance or string
         if (isset($event->user->last_login_at)) {
-            /** @var mixed $lastLoginRaw */
             $lastLoginRaw = $event->user->last_login_at;
 
             // Type narrowing for $lastLoginRaw
-            if (is_string($lastLoginRaw) || $lastLoginRaw instanceof DateTimeInterface) {
+            if (is_string($lastLoginRaw) || $lastLoginRaw instanceof \DateTimeInterface) {
                 /** @var Carbon $lastLogin */
                 $lastLogin = Carbon::parse($lastLoginRaw);
                 $properties['session_duration'] = abs(now()->diffInSeconds($lastLogin));
@@ -52,11 +50,7 @@ class LogoutListener
         // We use the Activity model directly as per the test expectations
         // The test expects 'event' column to be set to 'logout'
 
-<<<<<<< HEAD
-        $activity = new Activity;
-=======
         $activity = new Activity();
->>>>>>> ac0ea089 (.)
         $activity->log_name = 'auth';
         $activity->description = 'User logged out'; // specific string not enforced but 'logout' must be contained
         $activity->event = 'logout';

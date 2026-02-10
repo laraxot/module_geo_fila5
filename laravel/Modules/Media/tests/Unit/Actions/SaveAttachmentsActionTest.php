@@ -14,11 +14,7 @@ uses(Tests\TestCase::class)->beforeEach(function () {
 
 it('executes save attachments successfully', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     // Mock del record HasMedia
     $record = Mockery::mock(HasMedia::class);
@@ -53,11 +49,7 @@ it('executes save attachments successfully', function (): void {
 
 it('handles empty attachments', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
     $record->shouldReceive('update')->with([])->andReturn(true);
@@ -74,11 +66,7 @@ it('handles empty attachments', function (): void {
 
 it('skips nonexistent files', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
     $record->shouldReceive('update')->with([])->andReturn(true);
@@ -97,11 +85,7 @@ it('skips nonexistent files', function (): void {
 
 it('handles storage errors gracefully', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
     $record->shouldReceive('addMedia')->andThrow(new Exception('Storage error'));
@@ -120,11 +104,7 @@ it('handles storage errors gracefully', function (): void {
 
 it('uses correct disk', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
 
@@ -156,11 +136,7 @@ it('uses correct disk', function (): void {
 
 it('cleans up temp files', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
 
@@ -191,11 +167,7 @@ it('cleans up temp files', function (): void {
 
 it('handles multiple attachments', function (): void {
     // Arrange
-<<<<<<< HEAD
     $action = new SaveAttachmentsAction;
-=======
-    $action = new SaveAttachmentsAction();
->>>>>>> ac0ea089 (.)
 
     $record = Mockery::mock(HasMedia::class);
 

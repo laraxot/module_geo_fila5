@@ -1,10 +1,6 @@
 includes:
     - ./phpstan-baseline.neon
-<<<<<<< HEAD
     - ./../../vendor/larastan/larastan/extension.neon
-=======
-    #- ./../../vendor/larastan/larastan/extension.neon
->>>>>>> ac0ea089 (.)
     #- ./../../vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     #- ./vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
     #- ./vendor/symplify/phpstan-rules/config/collector-rules.neon
@@ -17,10 +13,7 @@ parameters:
     level: max
 
     paths:
-<<<<<<< HEAD
-        - .
-=======
-        - ../../app
+<<        - ../../app
         - ../../database
         - ../../resources
         - ../../config
@@ -48,8 +41,7 @@ parameters:
         - ../../Modules/User/bootstrap
         - ../../Modules/User/storage
         - ../../Modules/User/public
-        - ../../Modules/User/node_modules
->>>>>>> ac0ea089 (.)
+- ../../Modules/User/node_modules
     
           
 
@@ -66,10 +58,7 @@ parameters:
         - ./*/build/*
         - ./*/vendor/*
         - ./*/docs/*
-<<<<<<< HEAD
         - ./*/Tests/*
-=======
->>>>>>> ac0ea089 (.)
         - ./*/_ide_helper.php
 
     bootstrapFiles:
@@ -94,11 +83,4 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkOctaneCompatibility: false
     checkModelProperties: false
-<<<<<<< HEAD
-=======
-    bootstrapFiles:
-        - ./phpstan_constants.php
-        - ../../vendor/autoload.php
-    bootstrapped: false
->>>>>>> ac0ea089 (.)
 

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Xot\View\Composers;
 
-use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +26,7 @@ class XotComposer
     /**
      * Undocumented function.
      *
-     * @param  array<mixed|void>  $arguments
+     * @param array<mixed|void> $arguments
      */
     public function __call(string $name, array $arguments): mixed
     {
@@ -46,9 +45,7 @@ class XotComposer
         });
 
         if (! \is_object($module)) {
-            throw new Exception('Create a View\Composers\ThemeComposer.php inside a module with ['.
-                $name.
-                '] method');
+            throw new \Exception('Create a View\Composers\ThemeComposer.php inside a module with ['.$name.'] method');
         }
 
         Assert::isInstanceOf($module, LaravelModule::class, '['.__LINE__.']['.class_basename($this).']');
@@ -71,11 +68,7 @@ class XotComposer
         $view->with('_theme', $this);
 
         if (class_exists('\Jenssegers\Agent\Agent')) {
-<<<<<<< HEAD
-            $agent = new Agent;
-=======
             $agent = new Agent();
->>>>>>> ac0ea089 (.)
             $view->with('isMobile', $agent->isMobile());
             $view->with('isTablet', $agent->isTablet());
             $view->with('isDesktop', $agent->isDesktop());

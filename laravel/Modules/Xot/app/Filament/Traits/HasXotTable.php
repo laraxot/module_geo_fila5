@@ -18,30 +18,6 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
-<<<<<<< HEAD
-=======
-use Filament\Resources\Pages\ListRecords;
->>>>>>> ac0ea089 (.)
-use Filament\Tables;
-use Filament\Tables\Columns\Layout\Stack;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Enums\RecordActionsPosition;
-use Filament\Tables\Filters\BaseFilter;
-use Filament\Tables\Filters\TernaryFilter;
-use Filament\Tables\Table;
-use Filament\Widgets\TableWidget;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Modules\UI\Enums\TableLayoutEnum;
-use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
-use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
-use Webmozart\Assert\Assert;
-<<<<<<< HEAD
-use Filament\Resources\Pages\ListRecords;
-=======
->>>>>>> ac0ea089 (.)
 
 /**
  * Trait HasXotTable.
@@ -211,20 +187,13 @@ trait HasXotTable
         // Configurazioni opzionali personalizzabili
         $sortColumn = $this->getDefaultTableSortColumn();
         $sortDirection = $this->getDefaultTableSortDirection();
-<<<<<<< HEAD
         if (null !== $sortColumn && null !== $sortDirection) {
-=======
         if ($sortColumn !== null && $sortDirection !== null) {
->>>>>>> ac0ea089 (.)
             $table = $table->defaultSort($sortColumn, $sortDirection);
         }
 
         $pollInterval = $this->getTablePollInterval();
-<<<<<<< HEAD
-        if (null !== $pollInterval) {
-=======
         if ($pollInterval !== null) {
->>>>>>> ac0ea089 (.)
             $table = $table->poll($pollInterval);
         }
 
@@ -266,11 +235,7 @@ trait HasXotTable
 
         $actions = [];
         $resource = $this;
-<<<<<<< HEAD
-        // @phpstan-ignore-next-line instanceof.alwaysFalse
-=======
         /** @phpstan-ignore-next-line */
->>>>>>> ac0ea089 (.)
         if ($this instanceof ListRecords) {
             $resourceClass = $this->getResource();
             // @phpstan-ignore-next-line staticMethod.alreadyNarrowedType
@@ -358,16 +323,10 @@ trait HasXotTable
     /**
      * Get model class.
      *
-<<<<<<< HEAD
-     * @throws \Exception Se non viene trovata una classe modello valida
-     *
-     * @return class-string<Model>
-=======
      *
      * @return class-string<Model>
      *
      * @throws \Exception Se non viene trovata una classe modello valida
->>>>>>> ac0ea089 (.)
      */
     public function getModelClass(): string
     {

@@ -6,7 +6,7 @@ use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Filament\Actions\ListLogActivitiesAction;
 
-uses(\Modules\Activity\Tests\TestCase::class);
+uses(Modules\Activity\Tests\TestCase::class);
 
 test('action has correct default name', function (): void {
     expect(ListLogActivitiesAction::getDefaultName())->toBe('list_log_activities');
@@ -30,12 +30,7 @@ test('action is configured correctly', function (): void {
 test('action generates correct URL for activity log page', function (): void {
     $action = ListLogActivitiesAction::make();
 
-<<<<<<< HEAD
-    $resource = new class
-=======
-    $resource = new class()
->>>>>>> ac0ea089 (.)
-    {
+    $resource = new class {
         public static function getUrl(string $name, array $parameters = []): string
         {
             $record = $parameters['record'] ?? null;

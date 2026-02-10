@@ -24,11 +24,7 @@ class GetTreeOptionsByModelClassAction
     public function execute(string $class, Model|callable|null $_where = null): array
     {
         /** @var HasRecursiveRelationshipsContract $model */
-<<<<<<< HEAD
-        $model = new $class;
-=======
         $model = new $class();
->>>>>>> ac0ea089 (.)
 
         /** @var Collection<int, HasRecursiveRelationshipsContract> $collection */
         // @phpstan-ignore generics.notSubtype

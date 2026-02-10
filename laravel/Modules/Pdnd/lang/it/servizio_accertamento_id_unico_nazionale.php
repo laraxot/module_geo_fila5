@@ -9,11 +9,8 @@ return [
     'actions' => [
         'pdndFormActions' => [
             'label' => 'Ricerca',
-<<<<<<< HEAD
             'tooltip' => 'pdndFormActions',
             'icon' => 'pdndFormActions',
-=======
->>>>>>> ac0ea089 (.)
         ],
         'logout' => [
             'icon' => 'logout',

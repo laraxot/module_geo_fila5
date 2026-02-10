@@ -198,8 +198,5 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
             ->prepend($titleString.' - ')
             ->toString();
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> ac0ea089 (.)
 }

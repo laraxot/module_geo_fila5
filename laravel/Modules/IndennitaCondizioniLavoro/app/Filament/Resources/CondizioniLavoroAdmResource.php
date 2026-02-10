@@ -4,41 +4,26 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources;
 
-<<<<<<< HEAD
-use Override;
 use Filament\Forms\Components\Select;
-use Illuminate\Database\Eloquent\Model;
-// use Filament\Forms;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
+// use Filament\Forms;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Ptv\Actions\GetAllValutatoriOptions;
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Modules\Ptv\Filament\Forms\Components\WorkerFields;
-use Modules\Ptv\Filament\Forms\Components\WorkerSection;
-use Modules\Ptv\Filament\Forms\Components\PeriodoSection;
-use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
-use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroAdm;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\EditCondizioniLavoro;
-use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\ListCondizioniLavoros;
-use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\CreateCondizioniLavoro;
-use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages\CompilaCondizioniLavoro;
+use Illuminate\Database\Eloquent\Model;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Widgets\CondizioniLavoroOverview;
-=======
 use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroAdm;
+use Modules\Ptv\Actions\GetAllValutatoriOptions;
+use Modules\Ptv\Filament\Forms\Components\PeriodoSection;
+use Modules\Ptv\Filament\Forms\Components\WorkerSection;
+// use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Override;
->>>>>>> ac0ea089 (.)
 
 class CondizioniLavoroAdmResource extends XotBaseResource
 {
     protected static ?string $model = CondizioniLavoroAdm::class;
 
-    #[Override]
+    #[\Override]
     public static function getFormSchema(): array
     {
-<<<<<<< HEAD
         return [
             'lavoratore' => WorkerSection::make('lavoratore'),
             'periodo' => PeriodoSection::make('periodo')->add([
@@ -63,7 +48,7 @@ class CondizioniLavoroAdmResource extends XotBaseResource
                 ->getOptionLabelFromRecordUsing(function (Model $record): string {
                     // Type narrowing: ensure indennitaTipo exists and has nome
                     $indennitaTipo = isset($record->indennitaTipo) && is_object($record->indennitaTipo) ? $record->indennitaTipo : null;
-                    $nome = ($indennitaTipo !== null && isset($indennitaTipo->nome) && is_string($indennitaTipo->nome)) ? $indennitaTipo->nome : '';
+                    $nome = (null !== $indennitaTipo && isset($indennitaTipo->nome) && is_string($indennitaTipo->nome)) ? $indennitaTipo->nome : '';
 
                     // Type narrowing: ensure record properties exist
                     $recordNome = isset($record->nome) && is_string($record->nome) ? $record->nome : '';
@@ -82,18 +67,9 @@ class CondizioniLavoroAdmResource extends XotBaseResource
         ];
     }
 
-   
-
-    #[Override]
+    #[\Override]
     public static function getNavigationBadge(): ?string
     {
         return null;
     }
-=======
-        // Types are inferred by Filament v4
-        return [
-
-        ];
-    }
->>>>>>> ac0ea089 (.)
 }

@@ -96,10 +96,6 @@ class PdndClientService
         $this->client->setEnv('produzione');
         $this->client->setDebug(true);
         $this->client->setVerifySSL(false);
-<<<<<<< HEAD
-
-=======
->>>>>>> ac0ea089 (.)
     }
 
     /**
@@ -113,11 +109,8 @@ class PdndClientService
             // ottenimento nuovo ACCESS TOKEN
             $token = $this->client->requestToken();
 
-<<<<<<< HEAD
-=======
             // dddx($token);
 
->>>>>>> ac0ea089 (.)
             // chaimata API E-SERVICE
             /** @var array<string, mixed> $bodyArrayTyped */
             $bodyArrayTyped = $bodyArray;
@@ -142,11 +135,7 @@ class PdndClientService
      *
      * @return array<string, mixed>
      */
-<<<<<<< HEAD
-    public function callApiService(array $bodyArray = []): array
-=======
     public function callApiService(array $bodyArray = [], string $endpoint = ''): array
->>>>>>> ac0ea089 (.)
     {
         try {
             // ottenimento nuovo ACCESS TOKEN
@@ -157,11 +146,7 @@ class PdndClientService
             // chaimata API E-SERVICE
             /** @var array<string, mixed> $bodyArrayTyped */
             $bodyArrayTyped = $bodyArray;
-<<<<<<< HEAD
-            $response = $this->client->postApi($token, $bodyArrayTyped);
-=======
             $response = $this->client->postApi($token, $bodyArrayTyped, $endpoint);
->>>>>>> ac0ea089 (.)
 
             // dddx($response);
 

@@ -13,11 +13,7 @@ use Modules\Tenant\Models\BaseModel;
  * @property BaseModel $baseModel
  */
 beforeEach(function () {
-<<<<<<< HEAD
-    $this->baseModel = new class extends BaseModel
-=======
     $this->baseModel = new class() extends BaseModel
->>>>>>> ac0ea089 (.)
     {
         protected $table = 'test_tenant_table';
     };

@@ -5,29 +5,22 @@ declare(strict_types=1);
 namespace Modules\User\Tests\Feature;
 
 use Illuminate\Database\QueryException;
-<<<<<<< HEAD
-use Illuminate\Foundation\Testing\RefreshDatabase;
-=======
->>>>>>> ac0ea089 (.)
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Modules\User\Models\Permission;
 use Modules\User\Models\Profile;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
-<<<<<<< HEAD
 use Tests\TestCase;
 
 class UserManagementBusinessLogicTest extends TestCase
 {
     use RefreshDatabase;
 
-=======
 use Modules\User\Tests\TestCase;
 
 class UserManagementBusinessLogicTest extends TestCase
 {
->>>>>>> ac0ea089 (.)
     /** @test */
     public function itCanCreateUserWithProfile(): void
     {

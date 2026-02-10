@@ -2,19 +2,14 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Activity\Tests\TestCase::class);
+uses(Modules\Activity\Tests\TestCase::class);
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogModelDeletedAction;
 use Modules\User\Models\User;
 
 test('LogModelDeletedAction can be instantiated', function () {
-<<<<<<< HEAD
     $model = new class extends Model {
-=======
-    $model = new class() extends Model
-    {
->>>>>>> ac0ea089 (.)
         protected $table = 'test_models';
 
         protected $fillable = ['name'];

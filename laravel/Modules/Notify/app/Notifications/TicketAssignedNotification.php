@@ -28,11 +28,7 @@ class TicketAssignedNotification extends Notification
 
     public function toMail(mixed $notifiable): MailMessage
     {
-<<<<<<< HEAD
-        return (new MailMessage)
-=======
         return (new MailMessage())
->>>>>>> ac0ea089 (.)
             ->subject('New Ticket Assigned')
             ->line("A new ticket has been assigned to you by {$this->assignedBy->name}")
             ->action('View Ticket', url('/'));

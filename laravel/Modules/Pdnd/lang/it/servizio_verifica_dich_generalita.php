@@ -15,13 +15,10 @@ return [
             'label' => 'logout',
             'tooltip' => 'logout',
         ],
-<<<<<<< HEAD
         'profile' => [
             'tooltip' => 'profile',
             'icon' => 'profile',
         ],
-=======
->>>>>>> ac0ea089 (.)
     ],
     'fields' => [
         'codiceFiscale' => [

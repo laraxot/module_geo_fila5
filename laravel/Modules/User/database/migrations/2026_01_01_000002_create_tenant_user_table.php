@@ -5,25 +5,11 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD
-=======
-use function Safe\file_put_contents;
-
->>>>>>> ac0ea089 (.)
-return new class extends XotBaseMigration {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-<<<<<<< HEAD
-=======
         $conn = $this->getConn()->getConnection()->getName();
         $db = $this->getConn()->getConnection()->getDatabaseName();
         $exists = $this->tableExists();
         file_put_contents(base_path('migration_debug.log'), "MIGRATING tenant_user | CONN: $conn | DB: $db | EXISTS: ".($exists ? 'YES' : 'NO')."\n", FILE_APPEND);
 
->>>>>>> ac0ea089 (.)
         // -- CREATE --
         $this->tableCreate(static function (Blueprint $table): void {
             // $table->uuid('id')->primary();

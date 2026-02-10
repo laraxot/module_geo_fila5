@@ -18,11 +18,7 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     /* @phpstan-ignore-next-line property.notFound */
-<<<<<<< HEAD
-    $this->model = new TestActivityModel;
-=======
     $this->model = new TestActivityModel();
->>>>>>> ac0ea089 (.)
 });
 
 test('can create base model instance', function (): void {

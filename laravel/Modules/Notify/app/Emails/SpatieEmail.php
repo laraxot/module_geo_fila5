@@ -131,11 +131,7 @@ class SpatieEmail extends TemplateMailable
      */
     public function envelope(): Envelope
     {
-<<<<<<< HEAD
-        $envelope = new Envelope;
-=======
         $envelope = new Envelope();
->>>>>>> ac0ea089 (.)
 
         // Set the recipient if available
         if ($this->recipient) {

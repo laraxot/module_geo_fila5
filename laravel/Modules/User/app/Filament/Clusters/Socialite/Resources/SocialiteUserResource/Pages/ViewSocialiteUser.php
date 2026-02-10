@@ -8,15 +8,10 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
-<<<<<<< HEAD
-use Illuminate\Support\Str;
-use Modules\User\Filament\Clusters\Socialite\Resources\SocialiteUserResource;
-=======
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\User\Filament\Clusters\Socialite\Resources\SocialiteUserResource;
 use Modules\User\Filament\Resources\UserResource;
->>>>>>> ac0ea089 (.)
 use Modules\User\Models\SocialiteUser;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
@@ -41,18 +36,6 @@ class ViewSocialiteUser extends XotBaseViewRecord
                                         return null;
                                     }
 
-<<<<<<< HEAD
-                                    return null;
-                                }),
-                            'provider' => TextEntry::make('provider')
-                                ->formatStateUsing(static function (mixed $state): string {
-                                    if (! is_string($state)) {
-                                        return '';
-                                    }
-
-                                    return (string) Str::title($state);
-                                }),
-=======
                                     $user = $record->user;
                                     if (($user instanceof Model) && $user->exists) {
                                         return (string) UserResource::getUrl('view', ['record' => $user]);
@@ -62,7 +45,6 @@ class ViewSocialiteUser extends XotBaseViewRecord
                                 }),
                             'provider' => TextEntry::make('provider')
                                 ->formatStateUsing(fn ($state): string => is_string($state) ? Str::title($state) : ''),
->>>>>>> ac0ea089 (.)
                         ]),
 
                     'provider_grid' => Grid::make(2)
@@ -82,11 +64,7 @@ class ViewSocialiteUser extends XotBaseViewRecord
                                 ->copyable()
                                 ->copyMessage('Email copied'),
                             'avatar' => TextEntry::make('avatar')
-<<<<<<< HEAD
-                                ->url(fn ($state) => $state)
-=======
                                 ->url(fn (mixed $state): ?string => is_string($state) && '' !== $state ? $state : null)
->>>>>>> ac0ea089 (.)
                                 ->openUrlInNewTab(),
                         ]),
                 ])->columns(1),
