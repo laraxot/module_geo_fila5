@@ -12,6 +12,11 @@ test('il model Project esiste ed è istanziabile', function () {
     expect($project)->toBeInstanceOf(Project::class);
 });
 
+test('il model Activity esiste ed è istanziabile', function () {
+    $activity = new Activity();
+    expect($activity)->toBeInstanceOf(Activity::class);
+});
+
 // beforeEach(function () {
 //     $this->project = Project::factory()->create([
 //         'nome' => 'Progetto di Test',
