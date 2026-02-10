@@ -37,6 +37,7 @@
 - [x] Verifica MySQL
 - [x] Logging operazioni
 - [x] Analisi Output `php artisan ide-helper:models` (Rilevate anomalie e preparato piano di risoluzione)
+- [x] Analisi e Documentazione `spatie/laravel-schemaless-attributes` ([Vedi dettagli](./model-schemaless-attributes.md))
 
 ## 📅 Funzionalità in Sviluppo
 
