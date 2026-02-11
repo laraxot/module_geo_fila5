@@ -204,12 +204,24 @@ trait HasRatingsTrait
     public function getRatingsRules(string $prefix, string $postfix): array
     {
         $rows = $this->ratings;
-        $rules = $rows->pluck('rule.value', 'id')->toArray();
+        $rules = $rows->mapWithKeys(function ($row) {
+            $ruleValue = $row->rule instanceof \BackedEnum ? (string) $row->rule->value : (string) $row->rule;
+
+            return [$row->id => $ruleValue];
+        })->toArray();
+
         $rules = Arr::prependKeysWith($rules, $prefix);
         $res = [];
         foreach ($rules as $key => $ruleValue) {
             $keyWithPostfix = $key.$postfix;
-            $res[$keyWithPostfix] = (string) $ruleValue;
+            $ruleStr = (string) $ruleValue;
+
+            // ✅ Se la regola è numeric o integer, aggiungi nullable se non presente
+            if (Str::contains($ruleStr, ['numeric', 'integer']) && ! Str::contains($ruleStr, 'nullable')) {
+                $ruleStr = 'nullable|'.$ruleStr;
+            }
+
+            $res[$keyWithPostfix] = $ruleStr;
         }
 
         return $res;
