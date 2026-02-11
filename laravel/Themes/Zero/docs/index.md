@@ -160,4 +160,7 @@ Questa documentazione viene aggiornata regolarmente. Prima di apportare modifich
 - Vedi anche: [../../../docs/README.md](../../../docs/README.md)
 - Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
 
-*Ultimo aggiornamento: Gennaio 2025*
+*Ultimo aggiornamento: Febbraio 2025*
+- **Aggiunto**: Sistema di documentazione automatica moduli
+- **Integrato**: Refresh intelligente form reattivi
+- **Migliorato**: Sistema di tracking e audit trail

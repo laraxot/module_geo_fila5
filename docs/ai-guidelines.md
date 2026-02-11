@@ -214,6 +214,17 @@ protected function casts(): array {
 }
 ```
 
+### 🚨 **RULE #9: Idempotent Migrations**
+
+**È obbligatorio usare `XotBaseMigration` e garantire che le migrazioni siano ripetibili (idempotenti).**
+
+*   **EXTEND**: Usare sempre `class extends XotBaseMigration`.
+*   **MODEL**: Definire `protected ?string $model_class` per la connessione automatica.
+*   **IDEMPOTENCY**: Usare `tableUpdate()`/`tableCreate()` e verificare l'esistenza delle colonne con `hasColumn()`.
+*   **NO DROP**: Non usare `Schema::drop()` in additive migrations; sovrascrivere `down()` per rimuovere solo le colonne aggiunte.
+
+Vedi [Database Patterns](patterns/database.md) per lo standard completo.
+
 ## ⚠️ Critical Quick Rules
 
 ### NEVER Extend Filament Directly

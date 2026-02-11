@@ -1,19 +1,40 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+declare(strict_types=1);
 
-return new class extends Migration
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema; // Added
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+/**
+ * Migration for adding extra_attributes to indennita_responsabilita table.
+ * Uses Schemaless Attributes pattern for dynamic data storage.
+ *
+ * @see https://github.com/spatie/laravel-schemaless-attributes
+ * @see /Modules/IndennitaResponsabilita/docs/schemaless-attributes.md
+ */
+class AddExtraAttributesToIndennitaResponsabilitaTable extends XotBaseMigration // Changed to named class
 {
+    /** @var string|null Model class targeted by this migration */
+    protected ?string $model_class = IndennitaResponsabilita::class;
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('indennita_responsabilita', function (Blueprint $table) {
-            $table->json('calculated_data')->nullable()->after('updated_ip');
-        });
+        // -- UPDATE --
+        $this->tableUpdate(
+            function (Blueprint $table): void {
+                if (! $this->hasColumn('extra_attributes')) {
+                    // ✅ CORRETTO: Usa schemalessAttributes invece di json()
+                    // Questo permette di usare il pattern Schemaless Attributes di Spatie
+                    // @phpstan-ignore-next-line method.notFound
+                    $table->schemalessAttributes('extra_attributes');
+                }
+            }
+        );
     }
 
     /**
@@ -21,8 +42,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('indennita_responsabilita', function (Blueprint $table) {
-            $table->dropColumn('calculated_data');
+        Schema::table('indennita_responsabilita', function (Blueprint $table): void {
+            if (Schema::hasColumn('indennita_responsabilita', 'extra_attributes')) { // Use Schema::hasColumn for safety
+                $table->dropColumn('extra_attributes');
+            }
         });
     }
 };

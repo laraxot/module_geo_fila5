@@ -37,75 +37,7 @@
   {{ $this->form }}
 
 
-<table class="table-auto">
-    <thead>
-        <tr> 
-            <th>Descrizione</th> 
-            <th>Punti</th>
-        </tr>
-    </thead>
-    <tbody>
-        <pre>
-        {{ print_r($form_data) }}
-        </pre>
-        @foreach($form_data['ratings'] as $k=>$rating)
-        <tr style="{{ $loop->index%2==0?'background:#eee':''}}">
-            <td>
-                {!! $rating['txt'] ?? $rating['title'] ?? 'WIP' !!}
-            </td>
-            <td align="right">
-                
-                @php
-                    $rating_id=$rating['id'] ?? $k;
-                    $fieldname='ratings.'.$rating_id.'.pivot.value';
-                    if(!isset($rating['is_readonly'])) {
-                        $rating['is_readonly']=false;
-                    }
-                @endphp
-                {{-- $fieldname --}}
-                {{--  
-                <input type="number" step="1" 
-                    class="form-control" wire:model.live="form_data.{{$fieldname}}" {{ $rating['is_readonly']?'readonly':'' }} 
-                    style="{{ $rating['is_readonly']?'background-color:#eee':'' }}"
-                    />
-                --}}
-                @if ($rating['is_readonly'])
-                <x-filament::input.wrapper>
-                <x-filament::input
-                    type="text"
-                    wire:model.live="form_data.ratings.{{ $k }}.pivot.value"
-                    style="text-align:right;{{ $rating['is_readonly']?'background-color:#eee':'' }}"
-                    readonly
-                />
-                </x-filament::input.wrapper>
-                @else
-                <x-filament::input.wrapper>
-                <x-filament::input
-                    type="number"
-                    step="1" 
-                    wire:model.live="form_data.ratings.{{ $k }}.pivot.value"
-                    style="text-align:right;{{ $rating['is_readonly']?'background-color:#eee':'' }}"
-                />
-                </x-filament::input.wrapper>
-                @endif                
-            </td>
-        </tr>
-        @endforeach
-        
 
-
-    </tbody>
-    <tfoot>
-    {{--
-    <tr>
-        <td colspan="1" align="right"><b>Tot</b></td>
-        <td align="right"><b>{{ $form_data['tot_gg'] }}</b></td>
-        <td></td>
-        <td align="right"><b>@money($form_data['tot_euro'],'EUR')</b></td>
-    </tr>
-    --}}
-    </tfoot>
-</table>
 
 @if ($errors->any())
     <div class="text-danger-600 hover:text-danger-700">
