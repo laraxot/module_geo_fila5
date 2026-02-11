@@ -174,5 +174,8 @@ return [
             'heading' => 'Informazioni',
             'label' => 'Informazioni',
         ],
+        'tipo' => [
+            'heading' => 'tipo',
+        ],
     ],
 ];
