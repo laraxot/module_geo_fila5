@@ -336,10 +336,19 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     }
 
     /**
-     * Scope a query to include calculated_data.
+     * Scope a query to interact with calculated_data schemaless attribute.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<static> $query
+     * @return \Illuminate\Database\Eloquent\Builder<static>
+     * @see Modules/IndennitaResponsabilita/docs/schemaless-attributes.md#errore-5-tipo-di-ritorno-errato-per-scope-metodi-basescheda
      */
-    public function scopeWithCalculatedData(): SchemalessAttributes
+    public function scopeWithCalculatedData(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
     {
-        return $this->calculated_data;
+        // This scope should modify the query builder, not return the attribute directly.
+        // If the intention was to filter or add conditions based on calculated_data,
+        // that logic would go here.
+        // Example: return $query->where('calculated_data->some_key', 'some_value');
+
+        return $query; // Return the modified (or unmodified) query builder
     }
 }

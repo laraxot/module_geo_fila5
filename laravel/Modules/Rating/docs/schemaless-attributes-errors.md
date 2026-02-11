@@ -79,24 +79,19 @@ ma la colonna non esisteva nel database.
 
 **Fix**: Unificato con l'ereditarieta', ora la signature corretta e' in BaseRating.
 
-### 5. Deprecazione della Proprietà `$casts` per Schemaless Attributes
+### 5. Deprecazione della Proprietà `$casts` per Schemaless Attributes ✅ RISOLTO
 
-**Problema**: L'utilizzo della proprietà `protected $casts` è deprecato nelle versioni più recenti di Laravel. Sebbene funzioni ancora, il modello `BaseRating` dovrebbe adottare il metodo `protected function casts(): array` per definire i casts, inclusi `SchemalessAttributes`.
+**Problema**: L'utilizzo della proprietà `protected $casts` è deprecato nelle versioni più recenti di Laravel. Il modello `BaseRating` è stato aggiornato per adottare il metodo `protected function casts(): array` per definire i casts, inclusi `SchemalessAttributes`.
 
-**Fix Proposto**: Convertire la proprietà `$casts` nel metodo `casts()` come segue:
+**Fix Applicato**: La proprietà `$casts` è stata convertita nel metodo `casts()`.
 
 ```php
-// Old (deprecated)
-// protected $casts = [
-//     'extra_attributes' => \Spatie\SchemalessAttributes\Casts\SchemalessAttributes::class,
-// ];
-
-// New (recommended)
 protected function casts(): array
 {
-    return array_merge(parent::casts(), [
+    return [
         'extra_attributes' => \Spatie\SchemalessAttributes\Casts\SchemalessAttributes::class,
-    ]);
+        // Altri casts...
+    ];
 }
 ```
 

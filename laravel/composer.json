@@ -28,6 +28,7 @@
         "symfony/http-client": "*"
     },
     "require-dev": {
+        "nunomaduro/phpinsights": "^2.13"
     },
     "require-dev-comment": {
         "carthage-software/mago": "^1.0.0-rc.4",
