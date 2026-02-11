@@ -11,8 +11,6 @@ use Modules\Rating\Enums\RuleEnum;
 use Modules\Rating\Models\BaseRating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Rating\Models\Rating as BaseRatingModel;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 use Modules\IndennitaResponsabilita\Database\Factories\RatingFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
@@ -67,5 +65,7 @@ class Rating extends BaseRating
 {
     protected $connection = 'indennita_responsabilita'; // this will use the specified database connection
 
-    // Methods casts() and scopeWithExtraAttributes() are inherited from BaseRating
+    // DRY: casts(), scopeWithExtraAttributes(), $fillable ereditati da BaseRating
+    // @see Modules/Rating/docs/schemaless-attributes-errors.md
+    // @see Modules/IndennitaResponsabilita/docs/rating-schemaless-usage.md
 }

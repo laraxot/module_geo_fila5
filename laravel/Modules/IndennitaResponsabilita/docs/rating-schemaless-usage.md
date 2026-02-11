@@ -3,7 +3,7 @@
 **Module**: IndennitaResponsabilita  
 **Model**: Rating  
 **Package**: spatie/laravel-schemaless-attributes  
-**Last Updated**: 2025-02-10
+**Last Updated**: 2026-02-11
 
 ---
 
@@ -15,7 +15,7 @@ Il modello `Rating` utilizza il pacchetto Spatie Schemaless Attributes per gesti
 
 ## 🔍 Correct Implementation
 
-### Model Setup (CORRECTED)
+### Model Setup (CORRECTED - 2026-02-11)
 
 ```php
 <?php
@@ -24,68 +24,24 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Carbon;
-use Modules\Rating\Enums\RuleEnum;
-use Modules\Rating\Models\Rating as BaseRatingModel;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes; // ✅ CORRECT import
+use Modules\Rating\Models\BaseRating;
 
 /**
- * @property int $id
- * @property string|null $title
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes|null $extra_attributes
- * @property RuleEnum|null $rule
- * @property bool|null $is_disabled
- * @property bool|null $is_readonly
- * @property int|null $order_column
- * 
+ *
  * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
  */
-class Rating extends BaseRatingModel
+class Rating extends BaseRating
 {
     protected $connection = 'indennita_responsabilita';
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'extra_attributes' => SchemalessAttributes::class, // ✅ REQUIRED cast
-            'rule' => RuleEnum::class,
-            'is_disabled' => 'boolean',
-            'is_readonly' => 'boolean',
-        ];
-    }
-
-    /**
-     * Scope to query by extra attributes.
-     *
-     * @param Builder $query
-     * @param array<string, mixed>|string $attributes
-     * @param mixed $value
-     * @return Builder
-     */
-    public function scopeWithExtraAttributes(Builder $query, array|string $attributes = [], mixed $value = null): Builder
-    {
-        if (is_string($attributes) && $value !== null) {
-            // Single attribute with value: withExtraAttributes('anno', 2024)
-            return $query->where("extra_attributes->{$attributes}", $value);
-        }
-
-        if (is_array($attributes)) {
-            // Multiple attributes: withExtraAttributes(['anno' => 2024, 'type' => 'foo'])
-            foreach ($attributes as $key => $val) {
-                $query = $query->where("extra_attributes->{$key}", $val);
-            }
-        }
-
-        return $query;
-    }
+    // casts(), scopeWithExtraAttributes(), $fillable ereditati da BaseRating (DRY)
+    // Vedi: Modules/Rating/app/Models/BaseRating.php
 }
 ```
+
+**Pattern DRY+KISS**: Tutti i moduli che usano Rating devono estendere `BaseRating`,
+che fornisce casts, scope e fillable. Solo `$connection` va overridato.
 
 ---
 
@@ -101,24 +57,25 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 ```
 
-### 2. Missing Casts Method
+### 2. Ereditare casts() da BaseRating (DRY)
 
 ```php
-// ❌ WRONG - relying on parent casts only
-class Rating extends BaseRatingModel
+// ✅ CORRECT - BaseRating definisce casts() con SchemalessAttributes
+// Non serve override se i casts sono gli stessi
+class Rating extends BaseRating
 {
     protected $connection = 'indennita_responsabilita';
+    // casts() ereditato da BaseRating include extra_attributes => SchemalessAttributes::class
 }
 
-// ✅ CORRECT - defining own casts with schemaless cast
-class Rating extends BaseRatingModel
+// ✅ CORRECT - Override solo se servono casts aggiuntivi
+class Rating extends BaseRating
 {
     protected function casts(): array
     {
-        return [
-            'extra_attributes' => SchemalessAttributes::class,
-            // ... other casts
-        ];
+        return array_merge(parent::casts(), [
+            'custom_field' => 'json',
+        ]);
     }
 }
 ```
@@ -362,6 +319,7 @@ Before using schemaless attributes in Rating:
 
 ---
 
-**Author**: Development Team  
-**Last Updated**: 2025-02-10  
-**Status**: ✅ Fixed and Verified
+**Author**: Development Team
+**Last Updated**: 2026-02-11
+**Status**: Fixed - Rating ora estende BaseRating (DRY)
+**Errori documentati**: [Rating/docs/schemaless-attributes-errors.md](../../Rating/docs/schemaless-attributes-errors.md)
