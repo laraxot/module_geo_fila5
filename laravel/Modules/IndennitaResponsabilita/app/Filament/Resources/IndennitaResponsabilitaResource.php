@@ -4,43 +4,68 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Actions\Action;
+use Filament\Actions\StaticAction;
 use Illuminate\Support\Arr;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\CompilaIndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\ListSchedaLogActivities;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\SendMailIndennitaResponsabilita;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Ptv\Filament\Forms\Components\SelectValutatore;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
+/**
+ * Resource for IndennitaResponsabilita management.
+ */
 class IndennitaResponsabilitaResource extends XotBaseResource
 {
     protected static ?string $model = IndennitaResponsabilita::class;
 
-    public static function getFormSchema(): array
-    {
-        return [
-            'matr' => TextInput::make('matr')->required(),
-            'cognome' => TextInput::make('cognome')->required(),
-            'nome' => TextInput::make('nome')->required(),
-            'email' => TextInput::make('email')->email()->required(),
-            'valutatore_id' => SelectValutatore::make('valutatore_id')->where(function (IndennitaResponsabilita $record) {
-                return [
-                    'anno' => $record->anno,
-                ];
-            }),
-        ];
-    }
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function getPages(): array
     {
         return [
-            ...parent::getPages(),
-            'compila' => CompilaIndennitaResponsabilita::route('/{record}/compila'),
-            'send-mail' => SendMailIndennitaResponsabilita::route('/send/mail'),
-            'log-activity' => ListSchedaLogActivities::route('/{record}/activities'),
+            'index' => Pages\ListIndennitaResponsabilitas::route('/'),
+            'create' => Pages\CreateIndennitaResponsabilita::route('/create'),
+            'edit' => Pages\EditIndennitaResponsabilita::route('/{record}/edit'),
+            'view' => Pages\ViewIndennitaResponsabilita::route('/{record}'),
+            'compila' => Pages\CompilaIndennitaResponsabilita::route('/{record}/compila'),
         ];
+    }
+
+    public static function getFormSchema(): array
+    {
+        return [
+        ];
+    }
+
+    public static function getTableSchema(): array
+    {
+        return [
+        ];
+    }
+
+    public static function getActions(): array
+    {
+        return [
+            Action::make('downloadXls')
+                ->label(__('Download XLS'))
+                ->icon('heroicon-o-arrow-down-tray')
+                ->action(fn (array $data) => static::downloadXlsAction($data))
+                ->visible(fn (): bool => static::canDownloadXls()),
+        ];
+    }
+
+    public static function canDownloadXls(): bool
+    {
+        return Gate::allows('downloadXls', Auth::user());
+    }
+
+    public static function downloadXlsAction(array $data): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        // TODO: Implement Excel file generation logic
+        throw new \RuntimeException('downloadXlsAction not yet implemented');
     }
 
     public static function getXlsFields(array $data): array
