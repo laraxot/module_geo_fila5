@@ -5,22 +5,18 @@ declare(strict_types=1);
 namespace Modules\Gdpr\Filament\Widgets\Auth;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Grid;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
+use Modules\Gdpr\Actions\Consent\CollectGdprConsentsAction;
 use Modules\Gdpr\Actions\Registration\HandleRegistrationErrorAction;
 use Modules\Gdpr\Actions\Registration\HandleSuccessfulRegistrationAction;
-use Modules\Gdpr\Actions\Consent\CollectGdprConsentsAction;
-use Modules\Gdpr\Actions\Validation\ValidateUserDataAction;
-use Modules\Gdpr\Actions\Validation\ValidateGdprConsentAction;
 use Modules\Gdpr\Actions\SaveGdprConsentsAction;
-use Modules\Gdpr\Models\Consent;
-use Modules\Gdpr\Models\Treatment;
+use Modules\Gdpr\Actions\Validation\ValidateGdprConsentAction;
+use Modules\Gdpr\Actions\Validation\ValidateUserDataAction;
 use Modules\User\Actions\Activity\LogRegistrationAction;
 use Modules\User\Actions\User\CreateUserAction;
 use Modules\User\Datas\PasswordData;
@@ -34,8 +30,6 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  * Flat form design following modern signup UX best practices.
  * GDPR consents are Livewire public properties so the Blade view
  * can render custom HTML with clickable links to privacy/terms pages.
- *
- * @package Modules\Gdpr\Filament\Widgets\Auth
  */
 class RegisterWidget extends XotBaseWidget
 {
@@ -83,7 +77,7 @@ class RegisterWidget extends XotBaseWidget
                 ->required()
                 ->email()
                 ->maxLength(255)
-                //->unique(User::class, 'email')
+                // ->unique(User::class, 'email')
                 ->autocomplete('email')
                 ->placeholder(__('gdpr::register.fields.email.placeholder'))
                 ->helperText(__('gdpr::register.fields.email.helper_text')),
@@ -139,12 +133,6 @@ class RegisterWidget extends XotBaseWidget
         }
     }
 
-
-
-
-
-
-
     protected function logRegistrationAttempt(array $formData): void
     {
         $email = app(SafeStringCastAction::class)->execute($formData['email']);
@@ -156,8 +144,4 @@ class RegisterWidget extends XotBaseWidget
             'gdpr_consents' => app(CollectGdprConsentsAction::class)->execute($this->privacy_accepted, $this->terms_accepted, $this->marketing_consent),
         ]);
     }
-
-
-
-
 }

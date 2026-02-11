@@ -55,8 +55,8 @@ class CompilaIndennitaResponsabilita extends Page // Changed parent class
      */
     public function mount(int|string $record): void
     {
-        // InteractsWithRecord trait's mount method resolves $this->record and fills $this->form
-        parent::mount($record);
+        // Resolve record using the trait's method (parent::mount doesn't exist on Page)
+        $this->resolveRecord($record);
 
         $this->authorizeAccess();
 

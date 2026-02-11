@@ -505,13 +505,15 @@ class ZeroPanelProvider extends PanelProvider
 
 ### Documentazione Generale
 
-- [Guida Completa Chart Module](../../Modules/Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
-- [SimpleChartWidget con Sfondi](../../Modules/Quaeris/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+- [Guida Completa Chart Module](../../../Modules/Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
+- [QuestionChartAnswersChartWidget (doughnut/pie)](../../../Modules/Quaeris/docs/question-chart-answers-chart-widget.md) – implementazione doughnut con clip false, anchor/display, label+percentuale
+- [SimpleChartWidget con Sfondi](../../../Modules/Quaeris/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
 - [Filament 5.x Charts](https://filamentphp.com/docs/5.x/widgets/charts)
 
 ### Documentazione Ufficiale
 
 - [chartjs-plugin-datalabels - Multiple Labels](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)
+- [chartjs-plugin-datalabels - Doughnut (sorgente)](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md) / [Demo Doughnut](https://chartjs-plugin-datalabels.netlify.app/samples/charts/doughnut.html)
 
 ---
 
