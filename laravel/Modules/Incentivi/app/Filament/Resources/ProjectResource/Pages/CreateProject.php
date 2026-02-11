@@ -41,7 +41,7 @@ class CreateProject extends XotBaseCreateRecord
                 'nome' => $activity->nome,
                 'tipo' => $activity->tipo,
                 'quota_percentuale' => $activity->quota_percentuale,
-                'importo' => $componenteIncentivante * ($activity->quota_percentuale / 100),
+                'importo' => $incentiveComponent * ($activity->quota_percentuale / 100),
                 'anno_competenza' => $activity->anno_competenza,
                 'project_id' => isset($project->id) ? $project->id : null,
             ]);

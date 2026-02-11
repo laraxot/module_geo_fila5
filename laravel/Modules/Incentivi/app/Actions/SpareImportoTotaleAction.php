@@ -42,7 +42,7 @@ class SpareImportoTotaleAction
 
         $fondoAmount = $get('importo_effettivo_fondo');
         $fondoAmountFloat = is_numeric($fondoAmount) ? (float) $fondoAmount : 0.0;
-        $set('componente_incentivante', (float) (0.80 * $importoEffettivoFondoFloat));
-        $set('componente_innovazione', (float) (0.20 * $importoEffettivoFondoFloat));
+        $set('componente_incentivante', (float) (0.80 * $fondoAmountFloat));
+        $set('componente_innovazione', (float) (0.20 * $fondoAmountFloat));
     }
 }
