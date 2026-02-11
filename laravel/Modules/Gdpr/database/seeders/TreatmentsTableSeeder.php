@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\Gdpr\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Gdpr\Models\Treatment;
 
-class TreatmentsTableSeeder extends Seeder
+class TreatmentsTableSeeder extends \Illuminate\Database\Seeder
 {
     /**
      * Run the database seeds.
@@ -76,14 +77,14 @@ class TreatmentsTableSeeder extends Seeder
         ];
 
         foreach ($treatments as $treatment) {
-            Treatment::updateOrCreate(
+            Treatment::query()->updateOrCreate(
                 ['name' => $treatment['name']],
                 [
                     'description' => $treatment['description'],
                     'required' => $treatment['required'],
                     'active' => $treatment['active'],
                     'weight' => $treatment['weight'],
-                    'documentVersion' => $treatment['documentVersion'] ?? '1.0',
+                    'documentVersion' => $treatment['documentVersion'] ?? null ?? '1.0',
                 ]
             );
         }
