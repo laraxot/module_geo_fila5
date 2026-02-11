@@ -33,11 +33,6 @@
       "Modules\\Sigma\\Database\\Factories\\": "database/factories/",
       "Modules\\Sigma\\Database\\Seeders\\": "database/seeders/",
       "Modules\\Sigma\\Tests\\": "tests/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Sigma\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -65,5 +60,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Sigma\\Tests\\": "tests/"
+    }
+  }
 }

@@ -54,11 +54,6 @@
       "Modules\\Ptv\\": "app/",
       "Modules\\Ptv\\Database\\Factories\\": "database/factories/",
       "Modules\\Ptv\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Ptv\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -92,5 +87,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Ptv\\Tests\\": "tests/"
+    }
+  }
 }

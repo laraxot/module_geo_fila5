@@ -32,11 +32,6 @@
       "Modules\\Legge104\\": "app/",
       "Modules\\Legge104\\Database\\Factories\\": "database/factories/",
       "Modules\\Legge104\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Legge104\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -61,5 +56,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Legge104\\Tests\\": "tests/"
+    }
+  }
 }

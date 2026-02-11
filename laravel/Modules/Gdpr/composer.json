@@ -24,11 +24,6 @@
       "Modules\\Gdpr\\": "app/",
       "Modules\\Gdpr\\Database\\Factories\\": "database/factories/",
       "Modules\\Gdpr\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Gdpr\\Tests\\": "tests/"
-      }
     }
   },
   "autoload-dev": {

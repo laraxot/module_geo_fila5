@@ -27,9 +27,7 @@
         "staudenmeir/eloquent-has-many-deep": "*",
         "symfony/http-client": "*"
     },
-    "require-dev": {
-        "nunomaduro/phpinsights": "^2.13"
-    },
+    "require-dev": {},
     "require-dev-comment": {
         "carthage-software/mago": "^1.0.0-rc.4",
         "driftingly/rector-laravel": "^2.1",

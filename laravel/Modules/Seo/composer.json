@@ -24,11 +24,6 @@
       "Modules\\Seo\\": "app/",
       "Modules\\Seo\\Database\\Factories\\": "database/factories/",
       "Modules\\Seo\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Seo\\Tests\\": "tests/"
-      }
     }
   },
   "require_comment": {
@@ -65,6 +60,11 @@
     "allow-plugins": {
       "php-http/discovery": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Seo\\Tests\\": "tests/"
     }
   }
 }

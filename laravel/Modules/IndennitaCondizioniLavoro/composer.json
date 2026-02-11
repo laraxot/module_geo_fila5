@@ -33,11 +33,6 @@
       "Modules\\IndennitaCondizioniLavoro\\": "app/",
       "Modules\\IndennitaCondizioniLavoro\\Database\\Factories\\": "database/factories/",
       "Modules\\IndennitaCondizioniLavoro\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\IndennitaCondizioniLavoro\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -65,5 +60,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\IndennitaCondizioniLavoro\\Tests\\": "tests/"
+    }
+  }
 }

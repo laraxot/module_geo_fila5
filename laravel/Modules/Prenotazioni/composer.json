@@ -32,11 +32,6 @@
       "Modules\\Prenotazioni\\": "app/",
       "Modules\\Prenotazioni\\Database\\Factories\\": "database/factories/",
       "Modules\\Prenotazioni\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Prenotazioni\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -64,5 +59,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Prenotazioni\\Tests\\": "tests/"
+    }
+  }
 }

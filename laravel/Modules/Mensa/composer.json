@@ -30,11 +30,6 @@
       "Modules\\Mensa\\": "app/",
       "Modules\\Mensa\\Database\\Factories\\": "database/factories/",
       "Modules\\Mensa\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Mensa\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -62,5 +57,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Mensa\\Tests\\": "tests/"
+    }
+  }
 }

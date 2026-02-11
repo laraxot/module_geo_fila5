@@ -32,11 +32,6 @@
       "Modules\\MobilitaVolontaria\\": "app/",
       "Modules\\MobilitaVolontaria\\Database\\Factories\\": "database/factories/",
       "Modules\\MobilitaVolontaria\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\MobilitaVolontaria\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -64,5 +59,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\MobilitaVolontaria\\Tests\\": "tests/"
+    }
+  }
 }

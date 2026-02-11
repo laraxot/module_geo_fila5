@@ -30,11 +30,6 @@
       "Modules\\CertFisc\\": "app/",
       "Modules\\CertFisc\\Database\\Factories\\": "database/factories/",
       "Modules\\CertFisc\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\CertFisc\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -62,5 +57,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\CertFisc\\Tests\\": "tests/"
+    }
+  }
 }

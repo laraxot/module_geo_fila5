@@ -32,11 +32,6 @@
       "Modules\\Questionari\\": "app/",
       "Modules\\Questionari\\Database\\Factories\\": "database/factories/",
       "Modules\\Questionari\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Questionari\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -64,5 +59,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Questionari\\Tests\\": "tests/"
+    }
+  }
 }

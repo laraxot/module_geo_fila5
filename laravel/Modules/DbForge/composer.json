@@ -35,11 +35,6 @@
       "Modules\\DbForge\\": "app/",
       "Modules\\DbForge\\Database\\Factories\\": "database/factories/",
       "Modules\\DbForge\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\DbForge\\Tests\\": "tests/"
-      }
     }
   },
   "autoload-dev": {

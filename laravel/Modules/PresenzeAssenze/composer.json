@@ -32,11 +32,6 @@
       "Modules\\PresenzeAssenze\\": "app/",
       "Modules\\PresenzeAssenze\\Database\\Factories\\": "database/factories/",
       "Modules\\PresenzeAssenze\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\PresenzeAssenze\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -64,5 +59,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\PresenzeAssenze\\Tests\\": "tests/"
+    }
+  }
 }

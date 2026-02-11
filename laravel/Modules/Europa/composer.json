@@ -30,11 +30,6 @@
       "Modules\\Europa\\": "app/",
       "Modules\\Europa\\Database\\Factories\\": "database/factories/",
       "Modules\\Europa\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Europa\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -62,5 +57,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Europa\\Tests\\": "tests/"
+    }
+  }
 }

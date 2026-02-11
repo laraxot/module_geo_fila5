@@ -30,11 +30,6 @@
       "Modules\\IndennitaResponsabilita\\": "app/",
       "Modules\\IndennitaResponsabilita\\Database\\Factories\\": "database/factories/",
       "Modules\\IndennitaResponsabilita\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\IndennitaResponsabilita\\Tests\\": "tests/"
-      }
     }
   },
   "scripts": {
@@ -62,5 +57,10 @@
     }
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\IndennitaResponsabilita\\Tests\\": "tests/"
+    }
+  }
 }

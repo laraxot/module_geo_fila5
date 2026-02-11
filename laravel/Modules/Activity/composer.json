@@ -23,11 +23,6 @@
       "Modules\\Activity\\": "app/",
       "Modules\\Activity\\Database\\Factories\\": "database/factories/",
       "Modules\\Activity\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Activity\\Tests\\": "tests/"
-      }
     }
   },
   "autoload-dev": {

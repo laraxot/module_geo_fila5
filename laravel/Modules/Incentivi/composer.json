@@ -21,11 +21,6 @@
       "Modules\\Incentivi\\": "app/",
       "Modules\\Incentivi\\Database\\Factories\\": "database/factories/",
       "Modules\\Incentivi\\Database\\Seeders\\": "database/seeders/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Modules\\Incentivi\\Tests\\": "tests/"
-      }
     }
   },
   "require": {
@@ -42,5 +37,10 @@
     }
   ],
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\Incentivi\\Tests\\": "tests/"
+    }
+  }
 }
