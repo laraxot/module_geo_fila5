@@ -22,12 +22,14 @@
         "laravel/passport": "^13.4",
         "nunomaduro/phpinsights": "*",
         "nwidart/laravel-modules": "*",
-        "phpmd/phpmd": "*",
+
         "spatie/laravel-permission": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
         "symfony/http-client": "*"
     },
-    "require-dev": {},
+    "require-dev": {
+        "phpmd/phpmd": "^2.15"
+    },
     "require-dev-comment": {
         "carthage-software/mago": "^1.0.0-rc.4",
         "driftingly/rector-laravel": "^2.1",
