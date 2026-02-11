@@ -10,11 +10,9 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Filament\Resources\Pages\Page;
-use Filament\Schemas\Schema;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
-class SendMailIndennitaResponsabilita extends Page implements HasForms
+class SendMailIndennitaResponsabilita extends XotBasePage
 {
     // use HasRelationManagers;
     // use InteractsWithRecord;

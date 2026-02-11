@@ -9,21 +9,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
-use Filament\Pages\Page;
-use Filament\Schemas\Components\Component;
-use Filament\Schemas\Schema;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
-use League\Csv\Reader;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Models\StabiDirigente;
-use Modules\Sigma\Models\Ana10f;
-use Modules\Sigma\Models\Rep00f;
-use RuntimeException;
-use Throwable;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
-class UpdateDiriByCsv extends Page implements HasForms
+class UpdateDiriByCsv extends XotBasePage
 {
     use InteractsWithForms;
 

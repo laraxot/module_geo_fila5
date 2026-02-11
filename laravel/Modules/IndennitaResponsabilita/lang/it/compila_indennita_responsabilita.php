@@ -137,6 +137,9 @@ return [
             'icon' => 'profile',
             'label' => 'profile',
         ],
+        'back' => [
+            'tooltip' => 'back',
+        ],
     ],
     'title' => 'compila indennita responsabilita',
 ];

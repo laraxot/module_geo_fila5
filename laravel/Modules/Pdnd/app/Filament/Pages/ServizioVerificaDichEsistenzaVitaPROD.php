@@ -15,13 +15,12 @@ use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C007\C007Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
-use Filament\Pages\Page;
-use Throwable;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * @property Schema $pdndForm
  */
-class ServizioVerificaDichEsistenzaVitaPROD extends Page implements HasForms
+class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
 {
     use InteractsWithForms;
 

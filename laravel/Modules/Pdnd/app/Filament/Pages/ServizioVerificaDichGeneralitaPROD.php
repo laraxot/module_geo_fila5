@@ -22,14 +22,12 @@ use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
 use Modules\User\Models\User;
-use Filament\Pages\Page;
-
-use function Safe\preg_replace;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * @property Schema $pdndForm
  */
-class ServizioVerificaDichGeneralitaPROD extends Page implements HasForms
+class ServizioVerificaDichGeneralitaPROD extends XotBasePage
 {
     use InteractsWithForms;
 

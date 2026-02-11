@@ -11,19 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Filament\Resources\Pages\Page; // Changed parent class
-use Filament\Schemas\Components\Utilities\Get;
-use Filament\Schemas\Components\Utilities\Set;
-use Filament\Schemas\Schema;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Str;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Rating\Enums\RuleEnum; // Import RuleEnum
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
@@ -41,7 +29,7 @@ use Modules\Rating\Enums\RuleEnum; // Import RuleEnum
  * @property \Filament\Forms\Form $form
  * @property IndennitaResponsabilita $record
  */
-class CompilaIndennitaResponsabilita2 extends Page // Changed parent class
+class CompilaIndennitaResponsabilita2 extends XotBasePage
 {
     use HasRelationManagers;
     use InteractsWithRecord;

@@ -21,16 +21,14 @@ use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\PdndClientService;
 use Modules\User\Models\User;
-use Filament\Pages\Page;
-
-use function Safe\preg_replace;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * Class ServizioAccertamentoIdUnicoNazionalePagePROD.
  *
  * @property Schema $pdndForm
  */
-class ServizioAccertamentoIdUnicoNazionalePagePROD extends Page implements HasForms
+class ServizioAccertamentoIdUnicoNazionalePagePROD extends XotBasePage
 {
     use InteractsWithForms;
 

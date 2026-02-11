@@ -13,8 +13,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
 use Modules\Notify\Filament\Clusters\Test;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 
 use function Safe\json_decode;
@@ -23,9 +22,9 @@ use function Safe\json_encode;
 /**
  * @property Schema $emailForm
  */
-class CurlProxyPage extends Page implements HasForms, NavigationLabelTrait
+class CurlProxyPage extends XotBasePage
 {
-    // use NavigationLabelTrait;
+    use NavigationLabelTrait;
 
     // public ?array $data = [];
 
