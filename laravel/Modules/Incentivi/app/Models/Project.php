@@ -118,6 +118,7 @@ class Project extends BaseModel
         'ditta_partitaiva',
         'ditta_oneri_sicurezza',
         'ditta_trattativa',
+        'department_id',
     ];
 
     /**

@@ -54,6 +54,7 @@ class AssignTeamCommand extends Command
         $rows = multiselect(
             label: 'What teams',
             options: $opts,
+            default: $user->teams->pluck('id')->toArray(),
             required: true,
             scroll: 10,
             // validate: function (array $values) {
