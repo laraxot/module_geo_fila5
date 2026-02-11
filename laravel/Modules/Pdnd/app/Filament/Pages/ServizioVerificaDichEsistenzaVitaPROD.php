@@ -16,6 +16,7 @@ use Modules\Pdnd\Services\Anpr\Services\C007\C007Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
 use Modules\Xot\Filament\Pages\XotBasePage;
+use Throwable;
 
 /**
  * @property Schema $pdndForm
