@@ -70,6 +70,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property Collection<int, \Illuminate\Database\Eloquent\Model> $criteriOptions
  * @property int $n_perf_ind
  */
+// @see Modules/Xot/docs/spatie-schemaless-attributes.md
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
     use LogsActivity;
@@ -162,8 +163,8 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public function performanceIndividuale()
     {
         // This is a placeholder implementation - the actual relationship may vary
-        $performanceIndividualeClass = str_replace('Ptv\\', 'Performance\\', static::class);
-        $performanceIndividualeClass = str_replace('Models\\BaseScheda', 'Models\\Performance', $performanceIndividualeClass);
+        $perfClass = str_replace('Ptv\\', 'Performance\\', static::class);
+        $perfClass = str_replace('Models\\BaseScheda', 'Models\\Performance', $perfClass);
 
         // Defaulting to Performance model
         return $this->hasMany(Performance::class, 'matr', 'matr')
@@ -185,7 +186,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         }
 
         foreach ($rows as $row) {
-            $a = isset($row->totale_punteggio) ? $row->totale_punteggio : 0;
+            // $totale_punteggio = isset($row->totale_punteggio) ? $row->totale_punteggio : 0;
         }
 
         $tbl = 'performance_individuale';
