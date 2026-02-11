@@ -76,4 +76,16 @@ class StoredEvent extends SpatieStoredEvent
         'updated_by',
         'created_by',
     ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'event_properties' => 'array',
+            'meta_data' => SchemalessAttributes::class,
+        ];
+    }
 }
