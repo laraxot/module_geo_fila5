@@ -30,7 +30,7 @@ class IndennitaResponsabilitaResource extends XotBaseResource
             'create' => Pages\CreateIndennitaResponsabilita::route('/create'),
             'edit' => Pages\EditIndennitaResponsabilita::route('/{record}/edit'),
             'view' => Pages\ViewIndennitaResponsabilita::route('/{record}'),
-            'compila' => Pages\CompilaIndennitaResponsabilita::route('/{record}/compila'),
+            'compila' => Pages\CompilaIndennitaResponsabilita::getUrl('/{record}/compila'),
             'log-activity' => Pages\ListSchedaLogActivities::route('/{record}/log-activity'),
         ];
     }

@@ -11,7 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Modules\Xot\Filament\Pages\XotBasePage;
+use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -66,8 +66,8 @@ class CompilaIndennitaResponsabilita2 extends XotBasePage
      */
     public function mount(int|string $record): void
     {
-        // InteractsWithRecord trait's mount method resolves $this->record and fills $this->form
-        parent::mount($record);
+        // Resolve record manually (XotBasePage mount may interfere with form initialization)
+        $this->record = $this->resolveRecord($record);
 
         $this->authorizeAccess();
 
@@ -75,9 +75,9 @@ class CompilaIndennitaResponsabilita2 extends XotBasePage
 
         // Custom initialization for ratings, overriding default form fill for 'ratings' key
         $preparedFormData = $this->getPreparedFormData();
-        $this->form->fill($preparedFormData); // Fill the form with prepared data
+        $this->form->fill($preparedFormData);
 
-        $this->rules = $this->getRules(); // Initialize rules here
+        $this->rules = $this->getRules();
     }
 
     /**

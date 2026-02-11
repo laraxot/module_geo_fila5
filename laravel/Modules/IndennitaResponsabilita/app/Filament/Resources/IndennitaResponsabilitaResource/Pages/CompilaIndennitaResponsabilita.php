@@ -4,44 +4,222 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
-use Filament\Actions\Action;
+use Filament\Pages\Actions;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Utilities\Get;
-use Filament\Schemas\Components\Utilities\Set;
-use Illuminate\Support\Str;
-use Modules\IndennitaResponsabilita\Actions\PrepareCompilaDataAction;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Rating\Enums\RuleEnum;
-use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
-use Override;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
  *
- * Extends XotBaseEditRecord to inherit robust record handling.
+ * Uses the "Super Mucca" methodology: 
+ * - Study first, then implement with confidence
+ * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
+ * - Always document decisions in docs/
  *
  * @property IndennitaResponsabilita $record
+ * @property array<string, mixed> $data
  */
-final class CompilaIndennitaResponsabilita extends XotBaseEditRecord
+class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
 {
-    protected static string $resource = IndennitaResponsabilitaResource::class;
+    public static ?string $model = IndennitaResponsabilita::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
-    #[Override]
+    public ?string $previousUrl = null;
+
+    /**
+     * Mount page - resolves {record} from URL, authorizes, fills form.
+     */
     public function mount(int|string $record): void
     {
-        parent::mount($record);
+        /** @var IndennitaResponsabilita|null $resolved */
+        $resolved = IndennitaResponsabilita::find($record);
+        if ($resolved === null) {
+            abort(404);
+        }
+        
+        $this->record = $resolved;
 
-        // Fill form using dedicated action for ratings hydration
-        $preparedData = app(PrepareCompilaDataAction::class)->execute($this->record);
-        $this->form->fill($preparedData);
+        $this->authorizeAccess();
+
+        $this->previousUrl = (string) url()->previous();
+
+        // Fill form with initial data
+        $this->fillFormWithInitialData();
     }
+
+    /**
+     * Fill form with initial data from record.
+     */
+    protected function fillFormWithInitialData(): void
+    {
+        $this->form->fill([
+            'matr' => $this->record->matr,
+            'cognome' => $this->record->cognome,
+            'nome' => $this->record->nome,
+            'dal' => $this->record->dal,
+            'al' => $this->record->al,
+        ]);
+    }
+
+    /**
+     * Authorize access to this page.
+     */
+    protected function authorizeAccess(): void
+    {
+        Gate::authorize('update', $this->record);
+    }
+
+    /**
+     * Build form schema with readonly fields for ratings.
+     * Uses schemaless attributes for year filtering.
+     */
+    protected function getFormSchema(): array
+    {
+        return [
+            Section::make('Informazioni Generali')
+                ->schema([
+                    TextInput::make('matr')
+                        ->label('Matricola')
+                        ->disabled(),
+                    TextInput::make('cognome')
+                        ->label('Cognome')
+                        ->disabled(),
+                    TextInput::make('nome')
+                        ->label('Nome')
+                        ->disabled(),
+                ]),
+            
+            Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
+                ->schema($this->getRatingsSchema()),
+        ];
+    }
+
+    /**
+     * Get the form schema for ratings section.
+     *
+     * @return array<int, \Filament\Support\Components\Component>
+     */
+    protected function getRatingsSchema(): array
+    {
+        $ratings = $this->getRatingsForYear();
+        
+        $schema = [];
+        foreach ($ratings as $rating) {
+            $fieldname = 'ratings.'.$rating->id.'.pivot.value';
+            
+            $item = TextInput::make($fieldname)
+                ->label($rating->txt)
+                ->rules($rating->rules ?? '')
+                ->columns(2);
+
+            // Apply UI/UX improvements for read-only fields
+            if ((bool) ($rating->is_readonly ?? false)) {
+                $item->readOnly()
+                    ->extraInputAttributes([
+                        'class' => 'bg-gray-100 border-gray-300 text-gray-600 cursor-not-allowed hover:bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gray-300 transition-colors duration-200',
+                        'readonly' => true,
+                        'aria-readonly' => 'true',
+                    ]);
+            }
+
+            $schema[] = $item;
+        }
+
+        return $schema;
+    }
+
+    /**
+     * Get ratings for the current year using schemaless attributes.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection<int, Rating>
+     */
+    protected function getRatingsForYear(): \Illuminate\Database\Eloquent\Collection
+    {
+        // Use schemaless attributes for year filtering
+        return $this->record->ratings()
+            ->where('extra_attributes->anno', $this->record->anno)
+            ->get();
+    }
+
+    /**
+     * Get the form schema for the page.
+     */
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components($this->getFormSchema())
+            ->model($this->getModel())
+            ->statePath('data')
+            ->columns(2);
+    }
+
+    /**
+     * Get the form model.
+     */
+    public function getModel(): string
+    {
+        return static::$model ?? IndennitaResponsabilita::class;
+    }
+
+    /**
+     * Handle form submission.
+     */
+    public function save(): void
+    {
+        $this->validate();
+
+        $data = $this->form->getState();
+        
+        // Update record with form data
+        $this->record->update(collect($data)->only(['dal', 'al', 'note']));
+        
+        // Save ratings via pivot
+        $ratings = collect($this->data['ratings'] ?? []);
+        foreach ($ratings as $id => $ratingData) {
+            $value = $ratingData['pivot']['value'] ?? 0;
+            $this->record->ratings()->updateExistingPivot($id, ['value' => $value]);
+        }
+
+        Notification::make()
+            ->title('Dati salvati')
+            ->success()
+            ->send();
+    }
+
+    /**
+     * Navigate back to previous page.
+     */
+    public function back(): void
+    {
+        if ($this->previousUrl) {
+            $this->redirect($this->previousUrl);
+        } else {
+            // Fallback to resource index
+            $this->redirect('/indennitaresponsabilita/admin/indennita-responsabilitas');
+        }
+    }
+
+    /**
+     * Get page actions including back button.
+     */
+    protected function getActions(): array
+    {
+        return [
+            Actions\Action::make('back')
+                ->label('Indietro')
+                ->icon('heroicon-o-arrow-left')
+                ->action(fn (): void => $this->back()),
+        ];
+    }
+}
 
     /**
      * Get the form schema.
@@ -115,6 +293,8 @@ final class CompilaIndennitaResponsabilita extends XotBaseEditRecord
 
             $schema[] = $item;
         }
+
+        ray($schema);
 
         return $schema;
     }
