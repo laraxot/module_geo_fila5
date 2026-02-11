@@ -37,3 +37,5 @@ phpinsights non voglio che lo installi con composer, ma voglio che installi la v
 
 
 con git andiamo solo in avanti, non ripristiniamo MAI vecchie versioni , certo puoi andare a leggere e studiare le vecchie versioni, ma non devi mai ripristinare le vecchie versioni , capisci da solo il perche' poi aggiorna e studia le cartelle docs dentro i moduli e dentro i temi
+
+
