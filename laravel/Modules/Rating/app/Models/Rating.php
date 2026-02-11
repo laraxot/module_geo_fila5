@@ -11,10 +11,7 @@ use Illuminate\Support\Carbon;
 use Modules\Rating\Database\Factories\RatingFactory;
 use Modules\Rating\Enums\RuleEnum;
 use Modules\Xot\Contracts\ProfileContract;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * Modules\Rating\Models\Rating.
@@ -22,6 +19,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * Estende BaseRating per ereditare casts, fillable, scope e media conversions (DRY).
  *
  * @see \Modules\Rating\Models\BaseRating
+ * @see https://github.com/spatie/laravel-schemaless-attributes
  * @see /Modules/Rating/docs/schemaless-attributes-errors.md
  *
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra_attributes

@@ -23,3 +23,12 @@ controlla tutti i composer.json dentro la root di ogni modulo sotto il nodo "aut
             "Modules\\<Modulo>\\Tests\\": "tests/"
         }
     },
+
+
+studia https://github.com/nunomaduro/phpinsights  e installa la versione .phar , capisci da solo il perche' e avvisa anche gli altri agenti ai 
+
+dentro il file laravel/composer.json hai aggiunto 
+"require-dev": {
+        "nunomaduro/phpinsights": "^2.13"
+    },
+phpinsights non voglio che lo installi con composer, ma voglio che installi la versione standalone .phar 

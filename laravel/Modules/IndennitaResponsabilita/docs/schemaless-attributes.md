@@ -94,6 +94,40 @@ public function registerMediaConversions(?Media $media = null): void
 }
 ```
 
+### Errore 5: Tipo di Ritorno Errato per Scope Metodi (BaseScheda)
+
+#### 🚨 Problema
+Nel modello `Modules\Ptv\Models\BaseScheda.php`, il metodo `scopeWithCalculatedData()` ha un tipo di ritorno `SchemalessAttributes` quando invece dovrebbe essere `Builder`. I metodi scope in Laravel devono sempre ritornare un'istanza di `Illuminate\Database\Eloquent\Builder`.
+
+```php
+// ❌ ERRATO - Il tipo di ritorno dovrebbe essere Builder
+public function scopeWithCalculatedData(): SchemalessAttributes
+{
+    return $this->calculated_data;
+}
+```
+
+#### ✅ Soluzione Corretta
+Il metodo scope dovrebbe modificare la query builder e poi ritornarla, non ritornare direttamente l'attributo. Se l'intento è fornire accesso all'attributo, ciò dovrebbe avvenire tramite l'istanza del modello, non tramite uno scope.
+
+```php
+// ✅ CORRETTO - Modifica la query e ritorna Builder
+public function scopeWithCalculatedData(Builder $query): Builder
+{
+    // Esempio di come un scope potrebbe interagire con calculated_data
+    // Se lo scope deve filtrare o aggiungere condizioni basate su calculated_data,
+    // si farebbe qui. Ad esempio:
+    // return $query->where('calculated_data->some_key', 'some_value');
+
+    // Se l'intento era solo accedere all'attributo, lo scope non è il posto giusto.
+    // In questo caso, lo scope WithCalculatedData dovrebbe essere rimosso
+    // o reinterpretato per modificare la query.
+    return $query; // Ritorna la query builder modificata (o non modificata)
+}
+```
+
+---
+
 ## Architettura Corretta Schemaless Attributes
 
 ### Pattern per Modelli con Schemaless Attributes
