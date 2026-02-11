@@ -80,4 +80,18 @@ class Rating extends BaseRating
     // DRY: casts(), $fillable, scopeWithExtraAttributes(), linkedTo(), registerMediaConversions()
     // sono tutti ereditati da BaseRating.
     // @see Modules/Rating/docs/schemaless-attributes-errors.md
+
+    /**
+     * Get the slug options for the model.
+     *
+     * Required by the HasSlug trait from Spatie.
+     *
+     * @return \Spatie\Sluggable\SlugOptions
+     */
+    public function getSlugOptions(): \Spatie\Sluggable\SlugOptions
+    {
+        return \Spatie\Sluggable\SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 }

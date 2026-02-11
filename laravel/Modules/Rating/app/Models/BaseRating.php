@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Rating\Models;
 
-use Eloquent;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
@@ -30,62 +28,39 @@ use Spatie\Sluggable\SlugOptions;
  * @see /Modules/Rating/docs/schemaless-attributes-errors.md
  *
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra_attributes
- * @property RuleEnum                                          $rule
- *
- * @method static Builder|BaseRating newModelQuery()
- * @method static Builder|BaseRating newQuery()
- * @method static Builder|BaseRating query()
- * @method static Builder|BaseRating withExtraAttributes(array|string $attributes = [], mixed $value = null)
- *
- * @property int             $id
- * @property int             $user_id
- * @property float           $value
- * @property string|null     $related_type
- * @property string|null     $created_by
- * @property string|null     $updated_by
- * @property string|null     $deleted_by
- * @property Carbon|null     $created_at
- * @property Carbon|null     $updated_at
- * @property int|null        $post_id
- * @property string|null     $title
- * @property string|null     $color
- * @property string|null     $icon
- * @property string|null     $txt
- * @property bool|null       $is_disabled
- * @property bool|null       $is_readonly
- * @property int|null        $order_column
- * @property Model|\Eloquent $linkedTo
- *
- * @method static Builder|BaseRating whereColor($value)
- * @method static Builder|BaseRating whereCreatedAt($value)
- * @method static Builder|BaseRating whereCreatedBy($value)
- * @method static Builder|BaseRating whereDeletedBy($value)
- * @method static Builder|BaseRating whereIcon($value)
- * @method static Builder|BaseRating whereId($value)
- * @method static Builder|BaseRating whereIsDisabled($value)
- * @method static Builder|BaseRating whereIsReadonly($value)
- * @method static Builder|BaseRating whereOrderColumn($value)
- * @method static Builder|BaseRating wherePostId($value)
- * @method static Builder|BaseRating whereRelatedType($value)
- * @method static Builder|BaseRating whereRule($value)
- * @method static Builder|BaseRating whereTitle($value)
- * @method static Builder|BaseRating whereTxt($value)
- * @method static Builder|BaseRating whereUpdatedAt($value)
- * @method static Builder|BaseRating whereUpdatedBy($value)
- *
+ * @property RuleEnum $rule
+ * @property int $id
+ * @property int $user_id
+ * @property float $value
+ * @property string|null $related_type
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $deleted_by
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property int|null $post_id
+ * @property string|null $title
+ * @property string|null $color
+ * @property string|null $icon
+ * @property string|null $txt
+ * @property bool|null $is_disabled
+ * @property bool|null $is_readonly
+ * @property int|null $order_column
+ * @property Model $linkedTo
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
- * @property int|null                                          $media_count
- * @property ProfileContract|null                              $creator
- * @property ProfileContract|null                              $updater
- *
- * @mixin Eloquent
+ * @property int|null $media_count
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @method static RatingFactory factory($count = null, $state = [])
  */
 abstract class BaseRating extends BaseModel implements HasMedia
 {
+    use HasSlug;
     use InteractsWithMedia;
-     use HasSlug;
+
+    /** @use \Modules\Xot\Traits\HasSchemalessAttributes<BaseRating> */
+    use \Modules\Xot\Traits\HasSchemalessAttributes;
 
     /**
      * Get the attributes that should be cast.
@@ -127,33 +102,8 @@ abstract class BaseRating extends BaseModel implements HasMedia
     }
 
     /**
-     * Scope to query by extra attributes.
-     *
-     * @see https://github.com/spatie/laravel-schemaless-attributes
-     * @see /Modules/Rating/docs/schemaless-attributes-errors.md
-     *
-     * @param Builder<BaseRating>         $query
-     * @param array<string, mixed>|string $attributes
-     *
-     * @return Builder<BaseRating>
+     * @return MorphTo<Model, $this>
      */
-    public function scopeWithExtraAttributes(Builder $query, array|string $attributes = [], mixed $value = null): Builder
-    {
-        if (is_string($attributes) && null !== $value) {
-            // Single attribute with value: withExtraAttributes('anno', 2024)
-            return $query->where("extra_attributes->{$attributes}", $value);
-        }
-
-        if (is_array($attributes)) {
-            // Multiple attributes: withExtraAttributes(['anno' => 2024, 'type' => 'foo'])
-            foreach ($attributes as $key => $val) {
-                $query = $query->where("extra_attributes->{$key}", $val);
-            }
-        }
-
-        return $query;
-    }
-
     public function linkedTo(): MorphTo
     {
         return $this->morphTo('model');

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\PdndClientService;
 use Modules\User\Models\User;
-use Modules\Xot\Filament\Pages\XotBasePage;
+use Filament\Pages\Page;
 
 use function Safe\preg_replace;
 
@@ -30,7 +30,7 @@ use function Safe\preg_replace;
  *
  * @property Schema $pdndForm
  */
-class ServizioAccertamentoIdUnicoNazionalePagePROD extends XotBasePage implements HasForms
+class ServizioAccertamentoIdUnicoNazionalePagePROD extends Page implements HasForms
 {
     use InteractsWithForms;
 

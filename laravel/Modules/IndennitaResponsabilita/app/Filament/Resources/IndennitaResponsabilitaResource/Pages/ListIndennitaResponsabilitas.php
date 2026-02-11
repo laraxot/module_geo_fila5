@@ -163,7 +163,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
 
             // Tables\Actions\EditAction::make(),
             // Action::make('activities')->url(fn ($record) => IndennitaResponsabilitaResource::getUrl('log-activity', ['record' => $record]))
-            'log-activity' => ListLogActivitiesAction::make(),
+            // 'log-activity' => ListLogActivitiesAction::make(), // Temporarily disabled - route registration issue
         ];
     }
 
