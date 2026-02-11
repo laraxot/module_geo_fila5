@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,3 +19,4 @@ class OauthDeviceCodeFactory extends Factory
         return [];
     }
 }
+

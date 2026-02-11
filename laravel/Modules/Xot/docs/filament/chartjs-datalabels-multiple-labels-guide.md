@@ -106,8 +106,7 @@ protected function getOptions(): array
 
 ## Collegamenti
 
-- [Guida Completa Chart Module](../../Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md) (include riferimento ufficiale [Doughnut sample](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md))
-- [Simple08ChartWidget Doughnut (Quaeris)](../../Quaeris/docs/simple08chartwidget-doughnut-distribution.md)
+- [Guida Completa Chart Module](../../Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
 - [XotBaseChartWidget Documentation](../README.md)
 
 ---

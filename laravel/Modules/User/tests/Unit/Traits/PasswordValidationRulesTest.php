@@ -6,32 +6,27 @@ uses(Modules\User\Tests\TestCase::class);
 
 use Modules\User\Traits\PasswordValidationRules;
 
+// Create a test class that uses the trait
+class PasswordValidationRulesTestClass
+{
+    use PasswordValidationRules;
+
+    public function getPasswordRules()
+    {
+        return $this->passwordRules();
+    }
+}
+
 test('PasswordValidationRules trait can be used', function () {
-    $testClass = new class {
-        use PasswordValidationRules;
+    $testClass = new PasswordValidationRulesTestClass();
 
-        public function getPasswordRules()
-        {
-            return $this->passwordRules();
-        }
-    };
-
-    expect($testClass)->toBeObject();
+    expect($testClass)->toBeInstanceOf(PasswordValidationRulesTestClass::class);
 });
 
 test('PasswordValidationRules trait provides passwordRules method', function () {
-    $testClass = new class {
-        use PasswordValidationRules;
-
-        public function getPasswordRules()
-        {
-            return $this->passwordRules();
-        }
-    };
-
-    $className = get_class($testClass);
-
-    $mock = $this->getMockBuilder($className)
+    // Since the trait uses the Password rule which might not exist,
+    // we'll just test that the method exists and returns an array
+    $mock = $this->getMockBuilder(PasswordValidationRulesTestClass::class)
         ->onlyMethods(['passwordRules'])
         ->getMock();
 

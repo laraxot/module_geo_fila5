@@ -7,14 +7,13 @@ Diventare un identity provider completo (IdP) che supporta standard moderni come
 
 ## 🏗️ Fasi di Sviluppo
 
-### Fase 1: Stability & Security (Completed)
+### Fase 1: Stability & Security (In Progress)
 - [x] PHPStan Level 10 Compliance.
-- [x] Recursive documentation cleanup and standardization.
-- [x] GitHub Action automation for Quality Check and Releases.
-
-### Fase 2: Modern Identity (In Progress)
+- [ ] Rimozione definitiva dei 550+ file obsoleti.
 - [ ] Implementazione del **Security Cluster** in Filament v5.
 - [ ] Supporto completo per **Laravel 12 Authentication Features**.
+
+### Fase 2: Modern Identity (Planned)
 - [ ] Integrazione **WebAuthn** per login biometrici (TouchID, FaceID).
 - [ ] Socialite Cluster: aggiunta facile di nuovi provider OAuth (Google, Apple, etc.).
 - [ ] Sistema di "Impersonation" sicuro per il supporto tecnico (SuperAdmin).

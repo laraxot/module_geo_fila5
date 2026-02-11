@@ -84,7 +84,7 @@ class TreatmentsTableSeeder extends \Illuminate\Database\Seeder
                     'required' => $treatment['required'],
                     'active' => $treatment['active'],
                     'weight' => $treatment['weight'],
-                    'documentVersion' => $treatment['documentVersion'] ?? null ?? '1.0',
+                    'documentVersion' => (isset($treatment['documentVersion']) && $treatment['documentVersion'] !== null) ? $treatment['documentVersion'] : '1.0',
                 ]
             );
         }

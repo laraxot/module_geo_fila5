@@ -45,15 +45,19 @@
         </tr>
     </thead>
     <tbody>
+        <pre>
+        {{ print_r($form_data) }}
+        </pre>
         @foreach($form_data['ratings'] as $k=>$rating)
         <tr style="{{ $loop->index%2==0?'background:#eee':''}}">
             <td>
                 {!! $rating['txt'] ?? $rating['title'] ?? 'WIP' !!}
             </td>
             <td align="right">
-                {{-- $k --}}
+                
                 @php
-                    $fieldname='ratings.'.$k.'.pivot.value';
+                    $rating_id=$rating['id'] ?? $k;
+                    $fieldname='ratings.'.$rating_id.'.pivot.value';
                     if(!isset($rating['is_readonly'])) {
                         $rating['is_readonly']=false;
                     }

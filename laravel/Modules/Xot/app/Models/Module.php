@@ -60,9 +60,9 @@ final class Module extends BaseModel
     ];
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $connection = 'xot';
+    protected $connection = null;
 
     /**
      * @return array<int, array<string, mixed>>
