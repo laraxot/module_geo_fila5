@@ -176,18 +176,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function perfInd(int $anno): ?float
     {
-        // This is a placeholder implementation
-        try {
-            $rows = $this->performanceIndividuale()
-                ->where('anno', $anno)
-                ->get();
-        } catch (\Error $e) {
-            return 0.0;
-        }
 
-        foreach ($rows as $row) {
-            // $totale_punteggio = isset($row->totale_punteggio) ? $row->totale_punteggio : 0;
-        }
+
+
 
         $tbl = 'performance_individuale';
         $perf_ind = $this->performanceIndividuale()->selectRaw('( COALESCE(sum('.$tbl.'.totale_punteggio * (datediff('.$tbl.'.al,'.$tbl.'.dal)+1))/( sum(datediff('.$tbl.'.al,'.$tbl.'.dal)+1)  ),0) ) as perf_ind')
