@@ -6,11 +6,13 @@ namespace Modules\Incentivi\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Incentivi\Models\Activity;
+use Filament\Schemas\Components\Section;
 use Modules\Xot\Filament\Forms\Components\XotBaseSelect;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
@@ -29,14 +31,14 @@ class ActivityResource extends XotBaseResource
         return [
             'informazioni_group' => Group::make()
                 ->schema([
-                    XotBaseSection::make('Informazioni')
+                    Section::make('Informazioni')
                         ->schema([
                             'nome' => TextInput::make('nome')
                                 ->string()
                                 ->required()
                                 ->columnSpan(6)
                                 ->maxLength(255),
-                            'tipo' => XotBaseSelect::make('tipo')
+                            'tipo' => Select::make('tipo')
                                 ->required()
                                 ->columnSpan(1)
                                 ->options([
