@@ -47,7 +47,7 @@ class SendMailIndennitaResponsabilita extends XotBasePage
         // dddx('b');
     }
 
-    public function form(Schema $schema): Schema
+    public function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
     {
         return $schema
             ->components([

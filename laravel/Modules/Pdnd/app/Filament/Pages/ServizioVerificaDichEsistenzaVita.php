@@ -17,14 +17,14 @@ use Modules\Pdnd\Services\Anpr\Services\C007\C007Service;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\PdndClientService;
 use Modules\User\Models\User;
-use Filament\Pages\Page;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 use function Safe\preg_replace;
 
 /**
  * @property Schema $pdndForm
  */
-class ServizioVerificaDichEsistenzaVita extends Page implements HasForms
+class ServizioVerificaDichEsistenzaVita extends XotBasePage
 {
     use InteractsWithForms;
 
