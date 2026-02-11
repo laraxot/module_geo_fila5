@@ -35,6 +35,7 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 
 ### Personalizzazione
 - [Personalizzazione](./customization.md) - Guida alla personalizzazione del tema
+- [Readonly Field Styling](./readonly-field-styling.md) - Pattern UI/UX per campi readonly/calcolati
 - [Esempi](./examples.md) - Esempi pratici di personalizzazione
 - [Autenticazione](./authentication.md) - Componenti di autenticazione
 - [Esempi Autenticazione](./auth_examples.md) - Esempi di pagine di autenticazione

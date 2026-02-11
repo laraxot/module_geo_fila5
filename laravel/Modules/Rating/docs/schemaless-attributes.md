@@ -6,6 +6,22 @@ This document outlines the correct usage patterns for `spatie/laravel-schemaless
 
 The `Rating` module heavily utilizes schemaless attributes to store dynamic configurations for ratings, such as `anno` (year), and other specific settings that can vary.
 
+## 🚨 CRITICAL ARCHITECTURE RULE
+
+> [!CAUTION]
+> **NEVER** use `wherePivot('anno', ...)` to filter ratings by year.
+> 
+> The `anno` attribute is a schemaless property of the `Rating` model itself (stored in `extra_attributes`), **NOT** a column in the `rating_morph` pivot table. Applying `wherePivot` on it will fail or yield incorrect results.
+
+### Correct Relationship Filtering Pattern
+
+To get ratings for a specific year linked to a model:
+
+1.  **Filter Ratings first**: Find the `Rating` records for that year using `withExtraAttributes`.
+2.  **Match via relationship**: Use the Eloquent relationship on your model and filter by the retrieved Rating IDs (usually via `syncRatingsWhere` or manual ID matching).
+
+---
+
 ## ✅ Correct Usage Patterns
 
 As detailed in the main guide, all three patterns for using `withExtraAttributes()` are valid and correct:

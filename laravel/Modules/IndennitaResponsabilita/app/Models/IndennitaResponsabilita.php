@@ -48,6 +48,10 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property int|null $tipco
  * @property int|null $codqua
  * @property string|null $qualifica
+ * @property int|null $anno
+ * @property float|null $perc_p_time_year
+ * @property Carbon|null $dal
+ * @property Carbon|null $al
  * @property int|null $dalx
  * @property int|null $alx
  * @property string|null $dalf dal retribuzione

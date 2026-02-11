@@ -48,7 +48,7 @@ Prima di iniziare, assicurati di avere:
 
 ```bash
 # Verifica tema Zero
-ls -la /var/www/_bases/base_quaeris_fila5_mono/laravel/Themes/Zero
+ls -la Themes/Zero
 
 # Verifica Tailwind v4
 cd Themes/Zero
@@ -68,7 +68,7 @@ npm list tailwindcss
 
 ```bash
 # Verifica se Chart module ha già il plugin
-ls -la /var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/Chart/resources/js/filament-chart-js-plugins.js
+ls -la Modules/Chart/resources/js/filament-chart-js-plugins.js
 ```
 
 **Se il file esiste, il plugin è già registrato. Non è necessario installarlo nel tema.**
@@ -89,7 +89,7 @@ Per dettagli completi, vedere [chart-assets-centralization-rule.md](../../Module
 Se il tema Zero ha un **bundle Vite separato** e non usa il modulo Chart:
 
 ```bash
-cd /var/www/_bases/base_quaeris_fila5_mono/laravel/Themes/Zero
+cd Themes/Zero
 npm install chartjs-plugin-datalabels --save-dev
 ```
 

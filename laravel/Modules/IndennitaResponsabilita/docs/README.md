@@ -163,6 +163,7 @@ Il modulo utilizza il [Modulo Activity](../activity/docs/README.md) per tracciar
 ## Collegamenti
 
 ### Documentazione Tecnica
+- [Readonly Field Styling](./readonly-field-styling.md) - Pattern UI/UX per campi calcolati
 - [Struttura Traduzioni](./translations.md)
 - [Integrazione Activity Log](./activity-log-integration.md)
 - [Analisi Codice DRY/KISS/SOLID](./code-analysis-dry-kiss-solid.md)

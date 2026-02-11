@@ -30,6 +30,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property RuleEnum|null $rule
  * @property bool|null $is_disabled
  * @property bool|null $is_readonly
+ * @property int|null $anno
  * @property int|null $order_column
  *
  * @method static Builder|Rating newModelQuery()

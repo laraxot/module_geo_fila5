@@ -1,7 +1,13 @@
-# PTVX AI Guidelines - DRY + KISS Documentation
+# PTVX AI Guidelines - Super Mucca & Laraxot Zen
 
-> **Version 3.3** - Agent Skills Integration & Docs Audit
+> **Version 4.0** - Super Mucca Methodology Activation 🐄✨
 > **Last Updated**: February 2026
+
+## 🐄 Metodologia "Super Mucca" (Level 3 Confidence)
+- **Autonomia Totale**: L'Agente decide autonomamente ordine, priorità e pattern.
+- **Critical Reasoning**: "Litiga" con te stesso per trovare la soluzione migliore (Sintesi > Tesi).
+- **Proattività**: Migliora costantemente regole, documentazione e prompt.
+- **Deep Understanding**: Comprendi il "Perché" (Filosofia) prima del "Come" (Codice).
 
 ## 📚 Modular Documentation Structure
 
@@ -215,6 +221,17 @@ protected function casts(): array {
 ```
 
 ### 🚨 **RULE #9: Idempotent Migrations**
+...
+### 🚨 **RULE #10: Project-Agnostic Prompts**
+
+**Tutti i prompt in `bashscripts/tools/prompts` devono essere "Project-Agnostic".**
+
+*   **NO Hardcoding**: Non inserire nomi di progetto (es. PTVX), database specifici o path locali assoluti.
+*   **Placeholder**: Usa placeholder o descrizioni generiche per elementi specifici del progetto.
+*   **Focus Philosophy**: I prompt devono concentrarsi sul "Perché" e sulla "Filosofia" Laraxot (DRY, KISS, SOLID, ROBUST).
+*   **Self-Refining**: Ogni nuova scoperta architetturale deve essere astratta e integrata nei prompt esistenti per migliorare le performance future.
+
+Vedi [Analisi Miglioramento Prompt](analisi_miglioramento_prompt.md) per i dettagli tecnici.
 
 **È obbligatorio usare `XotBaseMigration` e garantire che le migrazioni siano ripetibili (idempotenti).**
 

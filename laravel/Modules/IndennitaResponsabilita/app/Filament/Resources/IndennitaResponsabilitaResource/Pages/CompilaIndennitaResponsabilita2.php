@@ -4,50 +4,53 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
-use Exception;
 use Carbon\Carbon;
-use Filament\Forms;
-use Filament\Pages\Actions;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Filament\Schemas\Schema;
-// use Filament\Pages\Page; //route not exists
-// use Filament\Pages\Contracts\HasFormActions;
-// use Filament\Resources\Pages\Concerns\HasRecordBreadcrumb;
-use Webmozart\Assert\Assert;
-// use Filament\Resources\Pages\Concerns\UsesResourceForm;
-use Filament\Facades\Filament;
-use Illuminate\Support\Facades\Gate;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\DatePicker;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Filament\Resources\Pages\Page; // Changed parent class
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\Rating;
+use Modules\Rating\Enums\RuleEnum; // Import RuleEnum
 
 /**
- * @property \Filament\Schemas\Schema $form
+ * Page for filling out Indennita Responsabilita ratings.
+ *
+ * Uses spatie/laravel-schemaless-attributes for anno filtering.
+ * Ratings are queried via withExtraAttributes(), NOT via wherePivot() —
+ * anno is stored in extra_attributes JSON.
+ *
+ * @see https://github.com/spatie/laravel-schemaless-attributes
+ * @see /Modules/IndennitaResponsabilita/docs/rating-hydration-pattern.md
+ * @see /Modules/IndennitaResponsabilita/docs/ui-ux-readonly-fields.md
+ * @see /Modules/Rating/docs/schemaless-attributes.md
+ *
+ * @property array<string, mixed> $data
+ * @property \Filament\Forms\Form $form
  * @property IndennitaResponsabilita $record
  */
-class CompilaIndennitaResponsabilita2 extends XotBasePage
+class CompilaIndennitaResponsabilita2 extends Page // Changed parent class
 {
-    /* implements HasFormActions */
-    // use HasRecordBreadcrumb;
     use HasRelationManagers;
-
-    // use UsesResourceForm;
     use InteractsWithRecord;
 
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
-    public array $form_data = [];
+    public array $form_data = []; // Kept this as it's used with statePath('form_data')
 
     /**
      * @var array<string, array<mixed>>
@@ -56,50 +59,186 @@ class CompilaIndennitaResponsabilita2 extends XotBasePage
 
     public ?string $previousUrl = null;
 
-    /*
-    public array $rules = [
-        'form_data.tot_gg' => 'numeric',
-        'form_data.tot_presenza_periodo_plus_no_timbr' => 'gte:form_data.tot_gg',
-        'form_data.tot_presenza_periodo_plus_no_timbr' => 'required',
-        'form_data.ratings.*.pivot.value' => 'numeric|between:0,5',
-    ];
-    */
-    
-    protected function getFormSchema(): array {
-        $schema= [
-            DatePicker::make('dal'),
-            DatePicker::make('al'),
-            Textarea::make('note')->columnSpanFull(),
+    /**
+     * Mount the page — resolves {record} from URL, authorizes, fills form.
+     *
+     * @param int|string $record
+     */
+    public function mount(int|string $record): void
+    {
+        // InteractsWithRecord trait's mount method resolves $this->record and fills $this->form
+        parent::mount($record);
+
+        $this->authorizeAccess();
+
+        $this->previousUrl = (string) url()->previous();
+
+        // Custom initialization for ratings, overriding default form fill for 'ratings' key
+        $preparedFormData = $this->getPreparedFormData();
+        $this->form->fill($preparedFormData); // Fill the form with prepared data
+
+        $this->rules = $this->getRules(); // Initialize rules here
+    }
+
+    /**
+     * Prepare initial form data including ratings and computed values.
+     *
+     * @return array<string, mixed>
+     */
+    protected function getPreparedFormData(): array
+    {
+        /** @var IndennitaResponsabilita $rec */
+        $rec = $this->record;
+        $modelData = $rec->attributesToArray();
+
+        // CRITICAL: Get ratings for the current year using schemaless attributes, not wherePivot.
+        // @see /Modules/IndennitaResponsabilita/docs/rating-hydration-pattern.md
+        // @see /docs/claude/schemaless-attributes.md
+        $ratingsForYear = Rating::withExtraAttributes(['anno' => $rec->anno])->get();
+
+        // Ensure these ratings are attached to the current record's pivot table.
+        // syncWithoutDetaching ensures existing pivot data (like 'value') is preserved.
+        $rec->ratings()->syncWithoutDetaching($ratingsForYear->pluck('id'));
+
+        // Get the fresh, hydrated relationship data for the current year's ratings,
+        // ensuring 'pivot' data (like 'value') is correctly loaded.
+        // Use wherePivotIn to filter by the relevant rating IDs for the year.
+        $hydratedRatings = $rec->ratings()->wherePivotIn('rating_id', $ratingsForYear->pluck('id'))->get();
+
+        /** @var array<int|string, array<string, mixed>> $ratingsKeyed */
+        $ratingsKeyed = $hydratedRatings->keyBy('id')->toArray();
+
+        // Pre-calculate initial totals for readonly fields
+        /** @var array<int, string> $readonlyTitles */
+        $readonlyTitles = ['tot', 'importo mensile calcolato', 'importo mensile attribuito', 'importo annuale attribuito'];
+
+        $tot = 0;
+        foreach ($ratingsKeyed as $rData) {
+            /** @var array{title?: string, pivot?: array{value?: mixed}} $rData */
+            if (! in_array((string) ($rData['title'] ?? ''), $readonlyTitles, true)) {
+                $tot += (int) ($rData['pivot']['value'] ?? 0);
+            }
+        }
+
+        $perc = (float) ($rec->perc_p_time_year ?? 1.0);
+        $importoMensileCalcolato = (float) $tot * 10.0;
+        $importoMensileAttribuito = $importoMensileCalcolato * $perc;
+        $importoAnnualeAttribuito = $importoMensileAttribuito * 12.0;
+
+        // Write computed values into the ratings data before fill
+        foreach ($ratingsKeyed as &$rData) {
+            /** @var array{title?: string, pivot: array{value: mixed}} $rData */
+            $title = (string) ($rData['title'] ?? '');
+            if ($title === 'tot') {
+                $rData['pivot']['value'] = $tot;
+            } elseif ($title === 'importo mensile calcolato') {
+                $rData['pivot']['value'] = $importoMensileCalcolato;
+            } elseif ($title === 'importo mensile attribuito') {
+                $rData['pivot']['value'] = $importoMensileAttribuito;
+            } elseif ($title === 'importo annuale attribuito') {
+                $rData['pivot']['value'] = $importoAnnualeAttribuito;
+            }
+        }
+        unset($rData);
+
+        $modelData['ratings'] = $ratingsKeyed;
+
+        $anno = isset($rec->anno) && is_int($rec->anno) ? $rec->anno : (int) date('Y');
+
+        if (! isset($modelData['dal'])) {
+            $modelData['dal'] = Carbon::parse((string) $anno.'-01-01');
+        }
+        if (is_string($modelData['dal'])) {
+            $dal = Carbon::parse($modelData['dal']);
+            if ($dal->year !== $anno) {
+                $dal = Carbon::parse((string) $anno.'-01-01');
+            }
+            $modelData['dal'] = $dal;
+        }
+
+        if (! isset($modelData['al'])) {
+            $modelData['al'] = Carbon::parse((string) $anno.'-12-31');
+        }
+
+        if (is_string($modelData['al'])) {
+            $al = Carbon::parse($modelData['al']);
+            if ($al->year !== $anno) {
+                $al = Carbon::parse((string) $anno.'-12-31');
+            }
+            $modelData['al'] = $al;
+        }
+
+        return $modelData;
+    }
+
+    /**
+     * Build the form schema.
+     *
+     * @return array<string, \Filament\Forms\Components\Component|\Filament\Schemas\Components\Component>
+     */
+    protected function getFormSchema(): array
+    {
+        $schema = [
+            'dal' => DatePicker::make('dal'),
+            'al' => DatePicker::make('al'),
+            'note' => Textarea::make('note')->columnSpanFull(),
         ];
+
         /** @var IndennitaResponsabilita $currRecord */
         $currRecord = $this->record;
-        $ratings = $currRecord->syncRatingsWhere(['anno' => $currRecord->anno]);
-        
-        
+        // CRITICAL: Get ratings for the current year using schemaless attributes, not wherePivot.
+        // @see /Modules/IndennitaResponsabilita/docs/rating-hydration-pattern.md
+        // @see /docs/claude/schemaless-attributes.md
+        $ratingsForYear = Rating::withExtraAttributes(['anno' => $currRecord->anno])->get();
+        $ratings = $currRecord->ratings()->wherePivotIn('rating_id', $ratingsForYear->pluck('id'))->get();
+
+
+        // Build readonly info: captured in closures via use()
+        /** @var array<int, array{title: string, path: string}> $readonlyFields */
+        $readonlyFields = [];
+        foreach ($ratings as $r) {
+            if ((bool) ($r->is_readonly ?? false)) {
+                $readonlyFields[] = [
+                    'title' => (string) $r->title,
+                    'path' => 'ratings.' . $r->id . '.pivot.value',
+                ];
+            }
+        }
+
         foreach ($ratings as $rating) {
-            $item = TextInput::make('ratings.' . $rating->id . '.pivot.value')
+            $fieldname = 'ratings.' . $rating->id . '.pivot.value';
+            $item = TextInput::make($fieldname)
                 ->label(strip_tags((string) $rating->txt))
                 ->columns(2);
 
             if ((bool) ($rating->is_readonly ?? false)) {
-                // Readonly computed field: no validation, value auto-calculated in getViewData()
+                // Readonly computed field: no validation needed, value is auto-calculated
+                // readOnly prevents user editing, recalculation is triggered by non-readonly fields via $set
                 $item->readOnly()
                     ->extraInputAttributes([
-                        'class' => 'bg-gray-100 dark:bg-gray-800 border-l-4 border-l-blue-400 dark:border-l-blue-500 text-blue-900 dark:text-blue-100 cursor-not-allowed',
+                        'class' => 'bg-gray-100 dark:bg-gray-800 border-l-4 border-l-blue-400 dark:border-l-blue-500 text-blue-900 dark:text-blue-100 cursor-not-allowed', // UI/UX improvement
                         'aria-readonly' => 'true',
-                    ]);
+                    ])
+                    ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating): void {
+                        $method = 'get' . Str::studly((string) $rating->title);
+                        if (method_exists($this, $method)) {
+                            /** @var mixed $result */
+                            $result = $this->$method($get, []); // Pass empty array for readonlyFields
+                            $component->state($result);
+                        }
+                    });
             } else {
-                // Editable field: apply RuleEnum validation + nullable
+                // Editable field: apply RuleEnum validation + nullable for empty states
                 // Rating.rule (singular) is cast to RuleEnum, NOT $rating->rules (plural)
-                $ruleStr = $rating->rule instanceof \BackedEnum
+                $ruleStr = $rating->rule instanceof RuleEnum
                     ? (string) $rating->rule->value
                     : '';
 
                 $item->numeric()
-                    ->nullable()
-                    ->reactive();
+                    ->nullable();
 
                 if ($ruleStr !== '') {
+                    // Apply enum rules, but skip 'numeric' and 'nullable' (already set above)
                     $filtered = collect(explode('|', $ruleStr))
                         ->reject(fn (string $r): bool => in_array($r, ['numeric', 'nullable'], true))
                         ->implode('|');
@@ -107,353 +246,112 @@ class CompilaIndennitaResponsabilita2 extends XotBasePage
                         $item->rules($filtered);
                     }
                 }
+
+                $item->live(onBlur: true)
+                    ->afterStateUpdated(function (Set $set, Get $get) use ($readonlyFields): void {
+                        $this->recalculateReadonlyFields($set, $get, $readonlyFields);
+                    });
             }
-            $schema[] = $item;
+
+            $schema[$fieldname] = $item;
         }
 
         return $schema;
     }
 
-    public function getTot(){
-        //dddx($this->form->getState());
-        return 15;
-    }
-
-    public function getImportoMensileCalcolato(){
-        return 15;
-    }
-
-    public function getImportoMensileAttribuito(){
-        return 15;
-    }
-
-    public function getImportoAnnualeAttribuito (){
-        return time();
-    }
-    
-    public function form(Schema $schema): Schema
+    /**
+     * Recalculate all readonly (computed) fields.
+     *
+     * @param array<int, array{title: string, path: string}> $readonlyFields
+     */
+    protected function recalculateReadonlyFields(Set $set, Get $get, array $readonlyFields): void
     {
-        return $schema
-            ->components($this->getFormSchema())->columns(2)
-            ->statePath('form_data');
+        foreach ($readonlyFields as $rf) {
+            $method = 'get' . Str::studly($rf['title']);
+            if (method_exists($this, $method)) {
+                $set($rf['path'], $this->$method($get, $readonlyFields));
+            }
+        }
     }
 
     /**
-     * @return array<string, array<string>>
+     * Sum of all non-readonly rating values.
+     *
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
-    public function getRules(): array
+    public function getTot(Get $get, array $readonlyFields = []): int
     {
-        /** @var IndennitaResponsabilita $record */
-        $record = $this->record;
-        // Assert::isInstanceOf($record, IndennitaResponsabilita::class, 'Record must be IndennitaResponsabilita'); // Removed redundant assertion
+        /** @var array<int|string, array{pivot: array{value: mixed}, title?: string}> $ratings */
+        $ratings = (array) ($get('ratings') ?? []);
 
-        /** @var array<string, string> $rulesFromRatings */
-        $rulesFromRatings = $record->getRatingsRules('form_data.ratings.', '.pivot.value');
-        
-        
-        Assert::isArray($rulesFromRatings, 'getRatingsRules must return array');
+        $excludePaths = array_column($readonlyFields, 'path'); // This is fine if $readonlyFields passed correctly.
 
-        // Convert string rules to array of strings
-        /** @var array<string, array<string>> $convertedRules */
-        $convertedRules = [];
-        foreach ($rulesFromRatings as $key => $ruleString) {
-            $convertedRules[$key] = explode('|', $ruleString); // Convert "rule1|rule2" to ["rule1", "rule2"]
+        $tot = 0;
+        foreach ($ratings as $id => $rating) {
+            $path = "ratings.{$id}.pivot.value"; // Full path in form state
+            // Check if this rating's path is one of the readonly fields' paths
+            if (in_array($path, $excludePaths, true)) {
+                continue;
+            }
+            $tot += (int) ($rating['pivot']['value'] ?? 0);
         }
 
-        $convertedRules['form_data.dal'] = ['date'];
-        $convertedRules['form_data.al'] = ['date'];
-        $convertedRules['form_data.note'] = ['nullable', 'string'];
-
-        return $convertedRules;
+        return $tot;
     }
 
-    public array $messages = [
-        // 'form_data.tot_presenza_periodo_plus_no_timbr.gte' => ':attribute: DEVONO ESSERE MAGGIORNI DELLA SOMMA DEI GIORNI DEI PERIODI',
-    ];
-
-    /*
-    public array $validationAttributes = [
-        // 'form_data.tot_presenza_periodo_plus_no_timbr' => 'Giorni Complessivi',
-        'form_data.ratings.3.pivot.value' => 'zibibbo',
-    ];
-    */
     /**
-     * @return array<string, string>
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
-    public function getValidationAttributes(): array
+    public function getImportoMensileCalcolato(Get $get, array $readonlyFields = []): float
     {
-        /** @var IndennitaResponsabilita $record */
-        $record = $this->record;
-        // Assert::isInstanceOf($record, IndennitaResponsabilita::class, 'Record must be IndennitaResponsabilita'); // Removed redundant assertion
-
-        /** @var array<string, string> $validationAttributes */
-        $validationAttributes = $record->getRatingsValidationAttributes('form_data.ratings.', '.pivot.value');
-        
-        Assert::isArray($validationAttributes, 'getRatingsValidationAttributes must return array');
-
-        return $validationAttributes;
+        return (float) $this->getTot($get, $readonlyFields) * 10.0;
     }
 
-    
-
-    /*
-    protected function getActions(): array {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }*/
-    public function mount(int|string|IndennitaResponsabilita $record): void
+    /**
+     * @param array<int, array{title: string, path: string}> $readonlyFields
+     */
+    public function getImportoMensileAttribuito(Get $get, array $readonlyFields = []): float
     {
-        $recordKey = is_int($record) || is_string($record) ? $record : $record->getKey();
-        Assert::notNull($recordKey, 'Record key must not be null');
+        $perc = (float) ($this->record->perc_p_time_year ?? 1.0);
 
-        /** @var int|string $recordKeyTyped */
-        $recordKeyTyped = is_int($recordKey) ? $recordKey : (string) $recordKey;
-        $resolvedRecord = $this->resolveRecord($recordKeyTyped);
-        Assert::isInstanceOf($resolvedRecord, IndennitaResponsabilita::class, 'Record must be IndennitaResponsabilita');
-        $this->record = $resolvedRecord;
-
-        $this->authorizeAccess();
-
-        $this->fillForm();
-
-        $this->previousUrl = url()->previous();
-        $this->view = $this->getView();
-
-        // $this->rules= $this->getRecord()->getRatingsRules('form_data.ratings.');
-        // $this->rules = $this->getRecord()->getRatingsRules('form_data.ratings.', '.pivot.value');
-        $this->rules = $this->getRules();
+        return $this->getImportoMensileCalcolato($get, $readonlyFields) * $perc;
     }
 
-    private function authorizeAccess(): void
+    /**
+     * @param array<int, array{title: string, path: string}> $readonlyFields
+     */
+    public function getImportoAnnualeAttribuito(Get $get, array $readonlyFields = []): float
     {
-        // static::authorizeResourceAccess(); // Temporarily disabled for debugging
-        // dddx(Filament::auth()->user());
-        // abort_unless(static::getResource()::canEdit($this->getRecord()), 403);
+        return (float) $this->getImportoMensileAttribuito($get, $readonlyFields) * 12.0;
+    }
+
+    protected function authorizeAccess(): void
+    {
         if (! Gate::allows('compila', $this->record)) {
             abort(403);
         }
     }
 
-    private function fillForm(): void
-    {
-        $this->callHook('beforeFill');
-
-        /** @var IndennitaResponsabilita $record */
-        $record = $this->record;
-
-        $data = $this->record->attributesToArray();
-        Assert::isArray($data, 'attributesToArray must return array');
-
-        $anno = isset($this->record->anno) && is_int($this->record->anno) ? $this->record->anno : (int) date('Y');
-
-        // dddx($this->getRecord());
-
-        if (! isset($data['dal'])) {
-            $data['dal'] = Carbon::parse((string) $anno.'-01-01');
-        }
-        if (is_string($data['dal'])) {
-            $dal = Carbon::parse($data['dal']);
-            if ($dal->year !== $anno) {
-                $dal = Carbon::parse((string) $anno.'-01-01');
-            }
-            $data['dal'] = $dal;
-        }
-
-        if (! isset($data['al'])) {
-            $data['al'] = Carbon::parse((string) $anno.'-12-31');
-        }
-
-        if (is_string($data['al'])) {
-            $al = Carbon::parse($data['al']);
-            if ($al->year !== $anno) {
-                $al = Carbon::parse((string) $anno.'-12-31');
-            }
-            $data['al'] = $al;
-        }
-
-        /*
-        if ($record->anno >= 2023) {
-            $q = $record->quadrimestre;
-            $dal = Carbon::parse($record->anno.'-01-01')->addMonths(4 * ($q - 1));
-            $al = Carbon::parse($record->anno.'-01-01')->addMonths(4 * $q)->subDays(1);
-            $res = tap($record)->update(['dal' => $dal, 'al' => $al]);
-            // dddx($res);
-        }
-        */
-        $data = $this->mutateFormDataBeforeFill($data);
-
-        /** @var array<string, mixed> $dataTyped */
-        $dataTyped = [];
-        foreach ($data as $key => $value) {
-            if (is_string($key)) {
-                $dataTyped[$key] = $value;
-            }
-        }
-
-        $this->form->fill($dataTyped);
-
-        $this->callHook('afterFill');
-
-        $record = $this->getRecord();
-        // Assert::isInstanceOf($record, IndennitaResponsabilita::class, 'Record must be IndennitaResponsabilita'); // Removed redundant assertion
-
-        /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
-        /** @var IndennitaResponsabilita $record */ // Added explicit cast
-        $ratings = $record->syncRatingsWhere(['anno' => $record->anno]);
-        
-        
-        // Assert::isInstanceOf($ratings, \Illuminate\Database\Eloquent\Collection::class, 'getRatings must return Collection'); // Redundant
-
-        /** @var array<string, mixed> $ratingsArray */
-        $ratingsArray = $ratings->toArray();
-        Assert::isArray($ratingsArray, 'toArray must return array');
-
-        $this->form_data['ratings'] = $ratingsArray;
-
-        // $this->form_data['dettaglio'] = $this->getRecord()->indennitaTipoDettaglio?->keyBy('id')->toArray();
-        // $this->form_data['tot_presenza_periodo_plus_no_timbr'] = $this->getRecord()->tot_presenza_periodo_plus_no_timbr;
-    }
-
-    protected function getViewData(): array
-    {
-        /*
-        $this->form_data['tot_gg'] = collect($this->form_data['dettaglio'])
-        ->filter(function ($item) {
-            // return is_numeric($item);
-            return true;
-        })
-        ->sum('pivot.gg');
-        */
-        /*
-        $this->form_data['tot_gg'] = collect($this->form_data['dettaglio'])
-              ->reduce(static fn ($tot_gg, $item): float|int => $tot_gg + (int) $item['pivot']['gg'], 0);
-        $this->form_data['tot_euro'] = collect($this->form_data['dettaglio'])
-            ->reduce(static fn ($tot_euro, $item): float|int => $tot_euro + ($item['euro_giorno'] * (int) $item['pivot']['gg']), 0);
-        */
-        /** @var IndennitaResponsabilita $record */
-        $record = $this->record;
-        $anno = $record->anno;
-
-        // Query per filtrare ratings per anno usando extra_attributes
-        $rows = Rating::query()
-            ->where('extra_attributes->anno', $anno)
-            ->get();
-
-        $tot = $rows
-            ->where('is_disabled', '!=', true)
-            ->where('is_readonly', '!=', true)
-            ->reduce(
-                function ($tot, $row) {
-                    $fieldname = 'ratings.'.$row->id.'.pivot.value';
-                    $value = Arr::get($this->form_data, $fieldname, 0);
-
-                    return $tot += (int) $value;
-                }, 0
-            );
-
-        $tot_id = $rows->firstWhere('title', 'tot')?->id;
-
-        Arr::set($this->form_data, 'ratings.'.$tot_id.'.pivot.value', $tot);
-        
-        
-        // --------------------------------------------------------------------------------------------------------
-        $imp_mese_calcolato_id = $rows->firstWhere('title', 'importo mensile calcolato')?->id;
-
-        $imp_mese_calcolato = $tot * 10;
-
-        Arr::set($this->form_data, 'ratings.'.$imp_mese_calcolato_id.'.pivot.value', $imp_mese_calcolato);
-        // ---------------------------------------------------------------------------------------------------------
-
-        $imp_mese_attribuito_id = $rows->firstWhere('title', 'importo mensile attribuito')?->id;
-
-        $imp_mese_attribuito = $imp_mese_calcolato * $record->perc_p_time_year;
-
-        Arr::set($this->form_data, 'ratings.'.$imp_mese_attribuito_id.'.pivot.value', $imp_mese_attribuito);
-        // -----------------------------------------------------------------------------------------------------------
-
-        $imp_anno_attribuito_id = $rows->firstWhere('title', 'importo annuale attribuito')?->id;
-        // dddx(get_class($record));
-        $anno = $record->anno;
-        /** @var IndennitaResponsabilita $record */
-        $record = $this->record; // Explicitly assign from $this->record
-        /** @var Carbon|string|null $dal */
-        $dal = $record->dal;
-        /** @var Carbon|string|null $al */
-        $al = $record->al;
-
-        // Handle $dal
-        if ($dal instanceof Carbon) {
-            // $dal is already a Carbon instance, do nothing
-        } elseif (is_string($dal)) {
-            $parsedDal = Carbon::parse($dal);
-            if ($parsedDal->year !== $anno) {
-                $dal = Carbon::parse((string) $anno.'-01-01');
-            } else {
-                $dal = $parsedDal;
-            }
-        } else { // $dal is null
-            $dal = Carbon::parse((string) $anno.'-01-01');
-        }
-
-        // Handle $al
-        if ($al instanceof Carbon) {
-            // $al is already a Carbon instance, do nothing
-        } elseif (is_string($al)) {
-            $parsedAl = Carbon::parse($al);
-            if ($parsedAl->year !== $anno) {
-                $al = Carbon::parse((string) $anno.'-12-31');
-            } else {
-                $al = $parsedAl;
-            }
-        } else { // $al is null
-            $al = Carbon::parse((string) $anno.'-12-31');
-        }
-
-        /** @var Carbon $finalDal */
-        $finalDal = $dal;
-        /** @var Carbon $finalAl */
-        $finalAl = $al;
-
-        $days = $finalDal->daysInYear;
-        $perc = ($finalDal->diffInDays($finalAl, true) + 1) / $days;
-
-        $imp_anno_attribuito = $imp_mese_attribuito * 12 * $perc;
-
-        Arr::set($this->form_data, 'ratings.'.$imp_anno_attribuito_id.'.pivot.value', $imp_anno_attribuito);
-
-        // $this->form_data['ratings.9.pivot.value']=99;
-        // dddx($this->form_data);
-        
-        // Return total to view for display
-        return ['tot' => $tot];
-    }
-
-    private function mutateFormDataBeforeFill(array $data): array
-    {
-        return $data;
-    }
-
     public function save(): void
     {
+        $this->form->validate();
+
         /** @var IndennitaResponsabilita $record */
         $record = $this->getRecord();
+        /** @var array<string, mixed> $state */
+        $state = $this->form->getState();
 
-        $rules = $this->getRules();
-
-        $validatedData = $this->validate($rules);
-
-        /** @var array<string, mixed> $up */
-        $up = collect($this->form_data)->only(['dal', 'al', 'note'])->toArray();
-
+        $up = (array) collect($state)->only(['dal', 'al', 'note'])->toArray();
         $record->update($up);
 
-        /** @var array<array{id: int, pivot: array{value: mixed}}> $ratingsData */
-        $ratingsData = $this->form_data['ratings'];
-        foreach ($ratingsData as $rating) {
-            $pivot_id = $rating['id'];
-            $pivot_data = collect($rating['pivot'])->only(['value'])->toArray();
-            $record->ratings()->updateExistingPivot($pivot_id, $pivot_data);
+        /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */
+        $ratingsData = (array) ($state['ratings'] ?? []);
+        foreach ($ratingsData as $id => $rating) {
+            /** @var BelongsToMany $ratingsRel */
+            $ratingsRel = $record->ratings();
+            $ratingsRel->updateExistingPivot($id, [
+                'value' => $rating['pivot']['value'] ?? 0,
+            ]);
         }
 
         Notification::make()
@@ -464,6 +362,6 @@ class CompilaIndennitaResponsabilita2 extends XotBasePage
 
     public function back(): void
     {
-        $this->redirect(static::$resource::getUrl('index'));
+        $this->redirect($this->previousUrl ?? static::$resource::getUrl('index'));
     }
 }
