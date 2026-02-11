@@ -11,6 +11,8 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Modules\Xot\Filament\Pages\XotBasePage;
+use Filament\Schemas\Schema;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 
 class SendMailIndennitaResponsabilita extends XotBasePage
 {
