@@ -104,7 +104,7 @@
 
         <br><br>
 
-        <p class="text-sm"> Treviso, {{ date('d-m-Y') }} </p>
+        <p class="text-sm"> Treviso, {{ date('d/m/Y') }} </p>
 
 
         <br><br>

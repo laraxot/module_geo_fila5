@@ -150,6 +150,7 @@ return [
         'logout' => [
             'icon' => 'logout',
             'tooltip' => 'logout',
+            'label' => 'logout',
         ],
     ],
     'messages' => [
