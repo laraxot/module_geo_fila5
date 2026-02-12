@@ -329,6 +329,10 @@ return [
         'profile' => [
             'tooltip' => 'profile',
             'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'createAnother' => [
+            'tooltip' => 'createAnother',
         ],
     ],
     'messages' => [

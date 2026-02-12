@@ -109,6 +109,7 @@ return [
         ],
         'profile' => [
             'tooltip' => 'profile',
+            'icon' => 'profile',
         ],
     ],
     'sections' => [
