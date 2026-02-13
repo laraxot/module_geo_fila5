@@ -1,6 +1,5 @@
 # PHPStan Level Max Errors Roadmap - Geo Module
 
-**Data**: 2026-01-12
 **Modulo**: Geo
 **Livello PHPStan**: max (Level 10)
 **Status**: 🚧 **REGRESSION DETECTED** (was 0 errors, now 8)

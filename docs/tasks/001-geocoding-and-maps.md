@@ -177,6 +177,5 @@ The Geo module needs robust geocoding capabilities, map integration, and locatio
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD
