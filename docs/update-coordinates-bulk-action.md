@@ -1,6 +1,5 @@
 # UpdateCoordinatesBulkAction - Azione Riutilizzabile per Aggiornamento Coordinate
 
-**Data**: 2025-01-27
 **Modulo**: Geo
 **Status**: ✅ **IMPLEMENTATO**
 
