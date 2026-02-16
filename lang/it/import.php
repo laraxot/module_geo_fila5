@@ -7,7 +7,7 @@ return [
         'file' => [
             'label' => 'File',
             'placeholder' => 'Seleziona il file da importare',
-            'help' => 'File da importare (CSV, Excel, GeoJSON, Shapefile)',
+            'help' => 'File da importare (CSV, Excel, GeoJSON, Shapefile]',
         ],
         'format' => [
             'label' => 'Formato',
@@ -100,10 +100,34 @@ return [
         'ascii' => 'ASCII',
     ],
     'delimiters' => [
-        'comma' => 'Virgola (,)',
-        'semicolon' => 'Punto e virgola (;)',
+        'comma' => 'Virgola (,]',
+        'semicolon' => 'Punto e virgola (;]',
         'tab' => 'Tab',
-        'pipe' => 'Pipe (|)',
+        'pipe' => 'Pipe (|]',
         'space' => 'Spazio',
+    ],
+    'label' => 'Import',
+    'plural_label' => 'Import (Plurale)',
+    'navigation' => [
+        'name' => 'Import',
+        'plural' => 'Import',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Import',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Import',
+        ],
+        'edit' => [
+            'label' => 'Modifica Import',
+        ],
+        'delete' => [
+            'label' => 'Elimina Import',
+        ],
     ],
 ];

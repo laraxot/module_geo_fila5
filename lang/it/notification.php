@@ -125,7 +125,7 @@ return [
         'mail' => 'Email',
         'database' => 'Database',
         'broadcast' => 'Broadcast',
-        'nexmo' => 'SMS (Nexmo)',
+        'nexmo' => 'SMS (Nexmo]',
         'slack' => 'Slack',
         'telegram' => 'Telegram',
         'push' => 'Push Notification',
@@ -149,5 +149,29 @@ return [
         'failed' => 'Fallita',
         'cancelled' => 'Annullata',
         'expired' => 'Scaduta',
+    ],
+    'label' => 'Notification',
+    'plural_label' => 'Notification (Plurale)',
+    'navigation' => [
+        'name' => 'Notification',
+        'plural' => 'Notification',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Notification',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Notification',
+        ],
+        'edit' => [
+            'label' => 'Modifica Notification',
+        ],
+        'delete' => [
+            'label' => 'Elimina Notification',
+        ],
     ],
 ];

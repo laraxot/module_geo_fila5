@@ -15,7 +15,7 @@ return [
             'help' => 'Valore da memorizzare in cache',
         ],
         'ttl' => [
-            'label' => 'TTL (Time To Live)',
+            'label' => 'TTL (Time To Live]',
             'placeholder' => 'Inserisci il tempo di vita in secondi',
             'help' => 'Tempo di vita dei dati in cache in secondi',
         ],
@@ -51,7 +51,7 @@ return [
         'value_required' => 'Il valore è obbligatorio',
         'ttl_numeric' => 'Il TTL deve essere numerico',
         'ttl_min' => 'Il TTL deve essere almeno 0',
-        'ttl_max' => 'Il TTL non può superare 86400 (24 ore)',
+        'ttl_max' => 'Il TTL non può superare 86400 (24 ore]',
         'driver_required' => 'Il driver è obbligatorio',
         'connection_required' => 'La connessione è obbligatoria',
         'prefix_invalid' => 'Il prefisso non è valido',
@@ -123,5 +123,29 @@ return [
         'memory_usage' => 'Uso memoria',
         'disk_usage' => 'Uso disco',
         'network_usage' => 'Uso rete',
+    ],
+    'label' => 'Cache',
+    'plural_label' => 'Cache (Plurale)',
+    'navigation' => [
+        'name' => 'Cache',
+        'plural' => 'Cache',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Cache',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Cache',
+        ],
+        'edit' => [
+            'label' => 'Modifica Cache',
+        ],
+        'delete' => [
+            'label' => 'Elimina Cache',
+        ],
     ],
 ];

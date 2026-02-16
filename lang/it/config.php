@@ -148,4 +148,28 @@ return [
         'csv' => 'CSV',
         'txt' => 'Testo',
     ],
+    'label' => 'Config',
+    'plural_label' => 'Config (Plurale)',
+    'navigation' => [
+        'name' => 'Config',
+        'plural' => 'Config',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Config',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Config',
+        ],
+        'edit' => [
+            'label' => 'Modifica Config',
+        ],
+        'delete' => [
+            'label' => 'Elimina Config',
+        ],
+    ],
 ];

@@ -168,10 +168,34 @@ return [
         'phone_code' => 'Prefisso telefonico',
     ],
     'filter_priorities' => [
-        '1' => 'Molto bassa',
-        '2' => 'Bassa',
-        '3' => 'Media',
-        '4' => 'Alta',
-        '5' => 'Molto alta',
+        1 => 'Molto bassa',
+        2 => 'Bassa',
+        3 => 'Media',
+        4 => 'Alta',
+        5 => 'Molto alta',
+    ],
+    'label' => 'Filters',
+    'plural_label' => 'Filters (Plurale)',
+    'navigation' => [
+        'name' => 'Filters',
+        'plural' => 'Filters',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Filters',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Filters',
+        ],
+        'edit' => [
+            'label' => 'Modifica Filters',
+        ],
+        'delete' => [
+            'label' => 'Elimina Filters',
+        ],
     ],
 ];

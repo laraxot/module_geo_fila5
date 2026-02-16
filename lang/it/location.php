@@ -37,4 +37,6 @@ return [
         'get_directions' => 'Ottieni Indicazioni',
         'copy_coordinates' => 'Copia Coordinate',
     ],
+    'label' => 'Location',
+    'plural_label' => 'Location (Plurale)',
 ];

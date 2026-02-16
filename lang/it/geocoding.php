@@ -52,4 +52,28 @@ return [
         'invalid_coordinates' => 'Coordinate geografiche non valide',
         'no_results_found' => 'Nessun risultato trovato',
     ],
+    'label' => 'Geocoding',
+    'plural_label' => 'Geocoding (Plurale)',
+    'navigation' => [
+        'name' => 'Geocoding',
+        'plural' => 'Geocoding',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Geocoding',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Geocoding',
+        ],
+        'edit' => [
+            'label' => 'Modifica Geocoding',
+        ],
+        'delete' => [
+            'label' => 'Elimina Geocoding',
+        ],
+    ],
 ];

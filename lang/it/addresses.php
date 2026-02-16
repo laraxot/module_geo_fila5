@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * Traduzioni per il componente AddressesField e gestione indirizzi.
- */
 return [
     'field' => [
         'label' => 'Indirizzi',
@@ -28,11 +25,11 @@ return [
         'name' => [
             'label' => 'Nome Indirizzo',
             'placeholder' => 'es. Sede Principale, Filiale Nord, Casa',
-            'help' => 'Nome identificativo per questo indirizzo (visibile solo con più indirizzi)',
+            'help' => 'Nome identificativo per questo indirizzo (visibile solo con più indirizzi]',
         ],
         'is_primary' => [
             'label' => 'Indirizzo Principale',
-            'help' => 'Designa questo come indirizzo principale (solo uno può essere principale)',
+            'help' => 'Designa questo come indirizzo principale (solo uno può essere principale]',
         ],
     ],
     'messages' => [
@@ -52,5 +49,29 @@ return [
         'name_visibility' => 'Il campo nome è visibile solo quando hai più di un indirizzo',
         'primary_exclusivity' => 'Impostando questo come principale, tutti gli altri diventeranno secondari',
         'single_primary' => 'Con un solo indirizzo, questo è automaticamente il principale',
+    ],
+    'label' => 'Addresses',
+    'plural_label' => 'Addresses (Plurale)',
+    'navigation' => [
+        'name' => 'Addresses',
+        'plural' => 'Addresses',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Addresses',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Addresses',
+        ],
+        'edit' => [
+            'label' => 'Modifica Addresses',
+        ],
+        'delete' => [
+            'label' => 'Elimina Addresses',
+        ],
     ],
 ];

@@ -129,4 +129,28 @@ return [
         'recent_searches' => 'Ricerche recenti',
         'related_searches' => 'Ricerche correlate',
     ],
+    'label' => 'Search',
+    'plural_label' => 'Search (Plurale)',
+    'navigation' => [
+        'name' => 'Search',
+        'plural' => 'Search',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Search',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Search',
+        ],
+        'edit' => [
+            'label' => 'Modifica Search',
+        ],
+        'delete' => [
+            'label' => 'Elimina Search',
+        ],
+    ],
 ];

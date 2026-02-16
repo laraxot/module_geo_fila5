@@ -12,7 +12,7 @@ return [
         'code' => [
             'label' => 'Codice',
             'placeholder' => 'Inserisci il codice ISO',
-            'help' => 'Codice ISO del paese (es. IT, US, DE)',
+            'help' => 'Codice ISO del paese (es. IT, US, DE]',
         ],
         'phone_code' => [
             'label' => 'Prefisso telefonico',
@@ -66,5 +66,29 @@ return [
         'country_deleted' => 'Paese eliminato con successo',
         'country_activated' => 'Paese attivato con successo',
         'country_deactivated' => 'Paese disattivato con successo',
+    ],
+    'label' => 'Country',
+    'plural_label' => 'Country (Plurale)',
+    'navigation' => [
+        'name' => 'Country',
+        'plural' => 'Country',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Country',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Country',
+        ],
+        'edit' => [
+            'label' => 'Modifica Country',
+        ],
+        'delete' => [
+            'label' => 'Elimina Country',
+        ],
     ],
 ];

@@ -77,13 +77,37 @@ return [
         'custom' => 'Personalizzato',
     ],
     'boundary_levels' => [
-        '0' => 'Paese',
-        '1' => 'Regione',
-        '2' => 'Provincia',
-        '3' => 'Comune',
-        '4' => 'Distretto',
-        '5' => 'Quartiere',
-        '6' => 'CAP',
-        '7' => 'Personalizzato',
+        0 => 'Paese',
+        1 => 'Regione',
+        2 => 'Provincia',
+        3 => 'Comune',
+        4 => 'Distretto',
+        5 => 'Quartiere',
+        6 => 'CAP',
+        7 => 'Personalizzato',
+    ],
+    'label' => 'Boundary',
+    'plural_label' => 'Boundary (Plurale)',
+    'navigation' => [
+        'name' => 'Boundary',
+        'plural' => 'Boundary',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Boundary',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Boundary',
+        ],
+        'edit' => [
+            'label' => 'Modifica Boundary',
+        ],
+        'delete' => [
+            'label' => 'Elimina Boundary',
+        ],
     ],
 ];

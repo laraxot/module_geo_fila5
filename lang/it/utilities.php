@@ -145,4 +145,28 @@ return [
         'gpx' => 'GPX',
         'shapefile' => 'Shapefile',
     ],
+    'label' => 'Utilities',
+    'plural_label' => 'Utilities (Plurale)',
+    'navigation' => [
+        'name' => 'Utilities',
+        'plural' => 'Utilities',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Utilities',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Utilities',
+        ],
+        'edit' => [
+            'label' => 'Modifica Utilities',
+        ],
+        'delete' => [
+            'label' => 'Elimina Utilities',
+        ],
+    ],
 ];

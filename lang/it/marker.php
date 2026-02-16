@@ -72,4 +72,28 @@ return [
         'park' => 'Parco',
         'custom' => 'Personalizzato',
     ],
+    'label' => 'Marker',
+    'plural_label' => 'Marker (Plurale)',
+    'navigation' => [
+        'name' => 'Marker',
+        'plural' => 'Marker',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Marker',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Marker',
+        ],
+        'edit' => [
+            'label' => 'Modifica Marker',
+        ],
+        'delete' => [
+            'label' => 'Elimina Marker',
+        ],
+    ],
 ];

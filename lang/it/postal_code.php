@@ -49,4 +49,28 @@ return [
         'postal_code_activated' => 'CAP attivato con successo',
         'postal_code_deactivated' => 'CAP disattivato con successo',
     ],
+    'label' => 'Postal Code',
+    'plural_label' => 'Postal Code (Plurale)',
+    'navigation' => [
+        'name' => 'Postal Code',
+        'plural' => 'Postal Code',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Postal Code',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Postal Code',
+        ],
+        'edit' => [
+            'label' => 'Modifica Postal Code',
+        ],
+        'delete' => [
+            'label' => 'Elimina Postal Code',
+        ],
+    ],
 ];

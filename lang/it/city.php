@@ -64,4 +64,28 @@ return [
         'geocoding_success' => 'Geocoding completato con successo',
         'geocoding_error' => 'Errore durante il geocoding',
     ],
+    'label' => 'City',
+    'plural_label' => 'City (Plurale)',
+    'navigation' => [
+        'name' => 'City',
+        'plural' => 'City',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'City',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea City',
+        ],
+        'edit' => [
+            'label' => 'Modifica City',
+        ],
+        'delete' => [
+            'label' => 'Elimina City',
+        ],
+    ],
 ];

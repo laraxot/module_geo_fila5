@@ -27,4 +27,6 @@ return [
         'saved' => 'Impostazioni salvate con successo',
         'error' => 'Errore durante il salvataggio delle impostazioni',
     ],
+    'label' => 'Setting Page',
+    'plural_label' => 'Setting Page (Plurale)',
 ];

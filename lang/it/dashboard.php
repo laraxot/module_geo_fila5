@@ -12,7 +12,7 @@ return [
         ],
         'label' => 'Dashboard',
         'sort' => 30,
-        'icon' => 'ui-dashboard', // Aggiornamento dell'icona della dashboard usando la nuova icona dashboard
+        'icon' => 'ui-dashboard',
     ],
     'widgets' => [
         'total_locations' => 'Totale Località',
@@ -24,5 +24,30 @@ return [
         'locations_by_type' => 'Località per Tipo',
         'places_by_category' => 'Luoghi per Categoria',
         'activity_timeline' => 'Timeline Attività',
+    ],
+    'label' => 'Dashboard',
+    'plural_label' => 'Dashboard (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Dashboard',
+        ],
+        'edit' => [
+            'label' => 'Modifica Dashboard',
+        ],
+        'delete' => [
+            'label' => 'Elimina Dashboard',
+        ],
     ],
 ];

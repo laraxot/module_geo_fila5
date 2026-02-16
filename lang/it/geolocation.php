@@ -82,4 +82,28 @@ return [
         'street' => 'Via',
         'building' => 'Edificio',
     ],
+    'label' => 'Geolocation',
+    'plural_label' => 'Geolocation (Plurale)',
+    'navigation' => [
+        'name' => 'Geolocation',
+        'plural' => 'Geolocation',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Geolocation',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Geolocation',
+        ],
+        'edit' => [
+            'label' => 'Modifica Geolocation',
+        ],
+        'delete' => [
+            'label' => 'Elimina Geolocation',
+        ],
+    ],
 ];

@@ -141,7 +141,7 @@ return [
         'type' => [
             'label' => 'Tipo',
             'placeholder' => 'Seleziona il tipo di indirizzo',
-            'help' => 'Tipo di indirizzo (casa, lavoro, ecc.)',
+            'help' => 'Tipo di indirizzo (casa, lavoro, ecc.]',
             'description' => 'Tipo di indirizzo',
             'helper_text' => '',
             'options' => [
@@ -400,4 +400,6 @@ return [
             'description' => 'postal_code',
         ],
     ],
+    'label' => 'Address',
+    'plural_label' => 'Address (Plurale)',
 ];

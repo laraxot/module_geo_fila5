@@ -94,4 +94,28 @@ return [
         'ft' => 'Piedi',
         'yd' => 'Iarde',
     ],
+    'label' => 'Area',
+    'plural_label' => 'Area (Plurale)',
+    'navigation' => [
+        'name' => 'Area',
+        'plural' => 'Area',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Area',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Area',
+        ],
+        'edit' => [
+            'label' => 'Modifica Area',
+        ],
+        'delete' => [
+            'label' => 'Elimina Area',
+        ],
+    ],
 ];
