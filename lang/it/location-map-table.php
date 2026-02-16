@@ -26,4 +26,18 @@ return [
         'edit_coordinates' => 'Modifica coordinate',
         'export' => 'Esporta dati',
     ],
+    'label' => 'Location Map Table',
+    'plural_label' => 'Location Map Table (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
 ];

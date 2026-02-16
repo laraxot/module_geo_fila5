@@ -188,4 +188,28 @@ return [
         'hmac_sha256' => 'HMAC-SHA256',
         'hmac_sha512' => 'HMAC-SHA512',
     ],
+    'label' => 'Webhook',
+    'plural_label' => 'Webhook (Plurale)',
+    'navigation' => [
+        'name' => 'Webhook',
+        'plural' => 'Webhook',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Webhook',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Webhook',
+        ],
+        'edit' => [
+            'label' => 'Modifica Webhook',
+        ],
+        'delete' => [
+            'label' => 'Elimina Webhook',
+        ],
+    ],
 ];

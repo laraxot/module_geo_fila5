@@ -19,7 +19,7 @@ return [
                 'name' => 'Mappa',
                 'group' => 'Geo',
                 'sort' => 10,
-                'icon' => 'ui-geo-map', // Questo è già corretto
+                'icon' => 'ui-geo-map',
                 'badge' => [
                     'color' => 'info',
                     'label' => 'Interattiva',
@@ -44,7 +44,7 @@ return [
                 'name' => 'Posizioni',
                 'group' => 'Geo',
                 'sort' => 20,
-                'icon' => 'ui-geo-location', // Questo è già corretto
+                'icon' => 'ui-geo-location',
                 'badge' => [
                     'color' => 'warning',
                     'label' => 'Da Verificare',
@@ -100,6 +100,31 @@ return [
             'category' => 'Categoria',
             'status' => 'Stato',
             'date_range' => 'Periodo',
+        ],
+    ],
+    'label' => 'Geo',
+    'plural_label' => 'Geo (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Geo',
+        ],
+        'edit' => [
+            'label' => 'Modifica Geo',
+        ],
+        'delete' => [
+            'label' => 'Elimina Geo',
         ],
     ],
 ];

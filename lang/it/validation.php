@@ -111,4 +111,28 @@ return [
         'skipped' => 'Validazione saltata',
         'pending' => 'Validazione in attesa',
     ],
+    'label' => 'Validation',
+    'plural_label' => 'Validation (Plurale)',
+    'navigation' => [
+        'name' => 'Validation',
+        'plural' => 'Validation',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Validation',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Validation',
+        ],
+        'edit' => [
+            'label' => 'Modifica Validation',
+        ],
+        'delete' => [
+            'label' => 'Elimina Validation',
+        ],
+    ],
 ];

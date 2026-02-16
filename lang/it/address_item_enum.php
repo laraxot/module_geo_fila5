@@ -107,7 +107,7 @@ return [
     ],
     'pec' => [
         'label' => 'PEC',
-        'description' => 'Indirizzo di posta elettronica certificata (PEC) associato all\'indirizzo',
+        'description' => 'Indirizzo di posta elettronica certificata (PEC] associato all\'indirizzo',
         'icon' => 'heroicon-o-shield-check',
         'color' => 'purple',
     ],
@@ -128,5 +128,41 @@ return [
         'description' => 'Note aggiuntive sull\'indirizzo',
         'icon' => 'heroicon-o-document-text',
         'color' => 'gray',
+    ],
+    'label' => 'Address Item Enum',
+    'plural_label' => 'Address Item Enum (Plurale)',
+    'navigation' => [
+        'name' => 'Address Item Enum',
+        'plural' => 'Address Item Enum',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Address Item Enum',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Address Item Enum',
+        ],
+        'edit' => [
+            'label' => 'Modifica Address Item Enum',
+        ],
+        'delete' => [
+            'label' => 'Elimina Address Item Enum',
+        ],
     ],
 ];

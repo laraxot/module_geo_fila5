@@ -185,4 +185,28 @@ return [
         'candlestick' => 'Candeliere',
         'waterfall' => 'Cascata',
     ],
+    'label' => 'Statistics',
+    'plural_label' => 'Statistics (Plurale)',
+    'navigation' => [
+        'name' => 'Statistics',
+        'plural' => 'Statistics',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Statistics',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Statistics',
+        ],
+        'edit' => [
+            'label' => 'Modifica Statistics',
+        ],
+        'delete' => [
+            'label' => 'Elimina Statistics',
+        ],
+    ],
 ];

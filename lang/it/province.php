@@ -12,7 +12,7 @@ return [
         'code' => [
             'label' => 'Sigla',
             'placeholder' => 'Inserisci la sigla della provincia',
-            'help' => 'Sigla della provincia (es. RM, MI, TO)',
+            'help' => 'Sigla della provincia (es. RM, MI, TO]',
         ],
         'region' => [
             'label' => 'Regione',
@@ -57,5 +57,29 @@ return [
         'province_deleted' => 'Provincia eliminata con successo',
         'province_activated' => 'Provincia attivata con successo',
         'province_deactivated' => 'Provincia disattivata con successo',
+    ],
+    'label' => 'Province',
+    'plural_label' => 'Province (Plurale)',
+    'navigation' => [
+        'name' => 'Province',
+        'plural' => 'Province',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Province',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Province',
+        ],
+        'edit' => [
+            'label' => 'Modifica Province',
+        ],
+        'delete' => [
+            'label' => 'Elimina Province',
+        ],
     ],
 ];

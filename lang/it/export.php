@@ -41,7 +41,7 @@ return [
         'sort_direction' => [
             'label' => 'Direzione ordinamento',
             'placeholder' => 'Seleziona la direzione',
-            'help' => 'Direzione dell\'ordinamento (crescente/decrescente)',
+            'help' => 'Direzione dell\'ordinamento (crescente/decrescente]',
         ],
         'limit' => [
             'label' => 'Limite',
@@ -101,10 +101,10 @@ return [
         'ascii' => 'ASCII',
     ],
     'delimiters' => [
-        'comma' => 'Virgola (,)',
-        'semicolon' => 'Punto e virgola (;)',
+        'comma' => 'Virgola (,]',
+        'semicolon' => 'Punto e virgola (;]',
         'tab' => 'Tab',
-        'pipe' => 'Pipe (|)',
+        'pipe' => 'Pipe (|]',
         'space' => 'Spazio',
     ],
     'compression_types' => [
@@ -117,5 +117,29 @@ return [
     'sort_directions' => [
         'asc' => 'Crescente',
         'desc' => 'Decrescente',
+    ],
+    'label' => 'Export',
+    'plural_label' => 'Export (Plurale)',
+    'navigation' => [
+        'name' => 'Export',
+        'plural' => 'Export',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Export',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Export',
+        ],
+        'edit' => [
+            'label' => 'Modifica Export',
+        ],
+        'delete' => [
+            'label' => 'Elimina Export',
+        ],
     ],
 ];

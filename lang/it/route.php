@@ -78,4 +78,28 @@ return [
         'ferries' => 'Traghetti',
         'indoor' => 'Indoor',
     ],
+    'label' => 'Route',
+    'plural_label' => 'Route (Plurale)',
+    'navigation' => [
+        'name' => 'Route',
+        'plural' => 'Route',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Route',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Route',
+        ],
+        'edit' => [
+            'label' => 'Modifica Route',
+        ],
+        'delete' => [
+            'label' => 'Elimina Route',
+        ],
+    ],
 ];

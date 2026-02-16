@@ -88,4 +88,28 @@ return [
         'feet' => 'Piedi',
         'nautical_miles' => 'Miglia nautiche',
     ],
+    'label' => 'Coordinates',
+    'plural_label' => 'Coordinates (Plurale)',
+    'navigation' => [
+        'name' => 'Coordinates',
+        'plural' => 'Coordinates',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Coordinates',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Coordinates',
+        ],
+        'edit' => [
+            'label' => 'Modifica Coordinates',
+        ],
+        'delete' => [
+            'label' => 'Elimina Coordinates',
+        ],
+    ],
 ];

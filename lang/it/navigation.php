@@ -252,4 +252,18 @@ return [
         'public' => 'Pubblico',
         'private' => 'Privato',
     ],
+    'label' => 'Navigation',
+    'plural_label' => 'Navigation (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+        ],
+    ],
 ];

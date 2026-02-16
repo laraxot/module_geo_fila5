@@ -74,4 +74,28 @@ return [
         'municipality_activated' => 'Comune attivato con successo',
         'municipality_deactivated' => 'Comune disattivato con successo',
     ],
+    'label' => 'Municipality',
+    'plural_label' => 'Municipality (Plurale)',
+    'navigation' => [
+        'name' => 'Municipality',
+        'plural' => 'Municipality',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Municipality',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Municipality',
+        ],
+        'edit' => [
+            'label' => 'Modifica Municipality',
+        ],
+        'delete' => [
+            'label' => 'Elimina Municipality',
+        ],
+    ],
 ];

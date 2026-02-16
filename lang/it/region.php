@@ -52,4 +52,28 @@ return [
         'region_activated' => 'Regione attivata con successo',
         'region_deactivated' => 'Regione disattivata con successo',
     ],
+    'label' => 'Region',
+    'plural_label' => 'Region (Plurale)',
+    'navigation' => [
+        'name' => 'Region',
+        'plural' => 'Region',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Region',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Region',
+        ],
+        'edit' => [
+            'label' => 'Modifica Region',
+        ],
+        'delete' => [
+            'label' => 'Elimina Region',
+        ],
+    ],
 ];

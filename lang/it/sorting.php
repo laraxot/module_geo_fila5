@@ -12,7 +12,7 @@ return [
         'direction' => [
             'label' => 'Direzione',
             'placeholder' => 'Seleziona la direzione dell\'ordinamento',
-            'help' => 'Direzione dell\'ordinamento (crescente/decrescente)',
+            'help' => 'Direzione dell\'ordinamento (crescente/decrescente]',
         ],
         'priority' => [
             'label' => 'Priorità',
@@ -125,10 +125,10 @@ return [
     'sorting_directions' => [
         'asc' => 'Crescente',
         'desc' => 'Decrescente',
-        'asc_nulls_first' => 'Crescente (nulli prima)',
-        'asc_nulls_last' => 'Crescente (nulli dopo)',
-        'desc_nulls_first' => 'Decrescente (nulli prima)',
-        'desc_nulls_last' => 'Decrescente (nulli dopo)',
+        'asc_nulls_first' => 'Crescente (nulli prima]',
+        'asc_nulls_last' => 'Crescente (nulli dopo]',
+        'desc_nulls_first' => 'Decrescente (nulli prima]',
+        'desc_nulls_last' => 'Decrescente (nulli dopo]',
     ],
     'nulls_positions' => [
         'first' => 'Prima',
@@ -136,11 +136,11 @@ return [
         'ignore' => 'Ignora',
     ],
     'sorting_priorities' => [
-        '1' => 'Molto bassa',
-        '2' => 'Bassa',
-        '3' => 'Media',
-        '4' => 'Alta',
-        '5' => 'Molto alta',
+        1 => 'Molto bassa',
+        2 => 'Bassa',
+        3 => 'Media',
+        4 => 'Alta',
+        5 => 'Molto alta',
     ],
     'sorting_types' => [
         'simple' => 'Semplice',
@@ -151,5 +151,29 @@ return [
         'numeric' => 'Numerico',
         'date' => 'Data',
         'boolean' => 'Booleano',
+    ],
+    'label' => 'Sorting',
+    'plural_label' => 'Sorting (Plurale)',
+    'navigation' => [
+        'name' => 'Sorting',
+        'plural' => 'Sorting',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Sorting',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Sorting',
+        ],
+        'edit' => [
+            'label' => 'Modifica Sorting',
+        ],
+        'delete' => [
+            'label' => 'Elimina Sorting',
+        ],
     ],
 ];

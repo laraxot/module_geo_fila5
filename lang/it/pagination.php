@@ -115,13 +115,13 @@ return [
         'offset' => 'Offset',
     ],
     'per_page_options' => [
-        '10' => '10 per pagina',
-        '25' => '25 per pagina',
-        '50' => '50 per pagina',
-        '100' => '100 per pagina',
-        '250' => '250 per pagina',
-        '500' => '500 per pagina',
-        '1000' => '1000 per pagina',
+        10 => '10 per pagina',
+        25 => '25 per pagina',
+        50 => '50 per pagina',
+        100 => '100 per pagina',
+        250 => '250 per pagina',
+        500 => '500 per pagina',
+        1000 => '1000 per pagina',
     ],
     'pagination_controls' => [
         'first' => 'Prima',
@@ -146,5 +146,29 @@ return [
         'results_info' => 'Risultati :from-:to di :total',
         'loading' => 'Caricamento...',
         'error' => 'Errore nel caricamento',
+    ],
+    'label' => 'Pagination',
+    'plural_label' => 'Pagination (Plurale)',
+    'navigation' => [
+        'name' => 'Pagination',
+        'plural' => 'Pagination',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Pagination',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Pagination',
+        ],
+        'edit' => [
+            'label' => 'Modifica Pagination',
+        ],
+        'delete' => [
+            'label' => 'Elimina Pagination',
+        ],
     ],
 ];

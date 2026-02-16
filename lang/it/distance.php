@@ -77,4 +77,28 @@ return [
         'ferries' => 'Traghetti',
         'indoor' => 'Indoor',
     ],
+    'label' => 'Distance',
+    'plural_label' => 'Distance (Plurale)',
+    'navigation' => [
+        'name' => 'Distance',
+        'plural' => 'Distance',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Distance',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Distance',
+        ],
+        'edit' => [
+            'label' => 'Modifica Distance',
+        ],
+        'delete' => [
+            'label' => 'Elimina Distance',
+        ],
+    ],
 ];

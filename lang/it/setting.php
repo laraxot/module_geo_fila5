@@ -12,7 +12,7 @@ return [
         ],
         'label' => 'Impostazioni',
         'sort' => 34,
-        'icon' => 'ui-settings', // Aggiornamento dell'icona delle impostazioni
+        'icon' => 'ui-settings',
     ],
     'fields' => [
         'default_map_provider' => 'Provider Mappa Predefinito',
@@ -41,5 +41,18 @@ return [
     'units' => [
         'metric' => 'Metrico',
         'imperial' => 'Imperiale',
+    ],
+    'label' => 'Setting',
+    'plural_label' => 'Setting (Plurale)',
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Setting',
+        ],
+        'edit' => [
+            'label' => 'Modifica Setting',
+        ],
+        'delete' => [
+            'label' => 'Elimina Setting',
+        ],
     ],
 ];

@@ -21,4 +21,6 @@ return [
         'coordinates_updated' => 'Coordinate aggiornate con successo',
         'invalid_coordinates' => 'Coordinate non valide',
     ],
+    'label' => 'Lat Lng',
+    'plural_label' => 'Lat Lng (Plurale)',
 ];

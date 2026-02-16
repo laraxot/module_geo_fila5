@@ -40,4 +40,6 @@ return [
         'share' => 'Condividi',
         'bookmark' => 'Salva',
     ],
+    'label' => 'Place',
+    'plural_label' => 'Place (Plurale)',
 ];

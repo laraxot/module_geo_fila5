@@ -43,4 +43,6 @@ return [
         'measure_distance' => 'Misura Distanza',
         'export' => 'Esporta',
     ],
+    'label' => 'Map',
+    'plural_label' => 'Map (Plurale)',
 ];
