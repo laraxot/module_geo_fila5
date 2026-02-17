@@ -96,8 +96,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $record = $this->getSpecificRecord();
         $data = $record->load('ratings')->attributesToArray();
         $data['ratings'] = [];
+        /** @var array<int|string, mixed> $ratings */
         $ratings = $record->ratings->pluck('pivot.value', 'id')->toArray();
         foreach ($ratings as $id => $value) {
+            /** @var int|string $id */
             $data['ratings'][$id]['pivot']['value'] = $value;
         }
 
@@ -149,18 +151,20 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     protected function getFormSchema(): array
     {
-        return [
-            DatePicker::make('dal'),
-            DatePicker::make('al'),
-            Textarea::make('note')->columnSpanFull(),
-            ...$this->getRatingsSchema(),
-        ];
+        return array_merge(
+            [
+                DatePicker::make('dal'),
+                DatePicker::make('al'),
+                Textarea::make('note')->columnSpanFull(),
+            ],
+            $this->getRatingsSchema()
+        );
     }
 
     /**
      * Get the form schema for ratings section.
      *
-     * @return array<int, mixed>
+     * @return array<int|string, \Filament\Schemas\Components\Component>
      */
     protected function getRatingsSchema(): array
     {
@@ -184,6 +188,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                     ->columns(2)
                     ->inlineLabel()
                     ->live(onBlur: true)
+                    ->helperText('')
                     ->rules((string) ($rating->rule->value ?? ''))
                     ->afterStateUpdated(function (Set $set, Get $get) use ($readonlyFields): void {
                         $this->recalculateReadonlyFields($set, $get, $readonlyFields);
