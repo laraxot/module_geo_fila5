@@ -197,9 +197,32 @@ When modifying code, **NEVER** simplify or replace domain-specific constructs:
        $tableFilters = $this->tableFilters ?? [];
        return app(MakePdf::class)->execute($tableFilters);
    })
+   // In blade: {{ $this->infolist }}
    ```
 
-4. **Options/Years** - Never remove options from Selects or Filters
+4. **Infolist for Read-Only Data** - Use Infolist for displaying read-only information instead of disabled form fields:
+   ```php
+   // WRONG - disabled form fields
+   TextInput::make('matr')->disabled(),
+   TextInput::make('cognome')->disabled(),
+   
+   // CORRECT - use Infolist with TextEntry
+   public function infolist(Infolist $infolist): Infolist
+   {
+       return $infolist
+           ->record($this->record)
+           ->schema([
+               Section::make('Informazioni Generali')
+                   ->schema([
+                       TextEntry::make('matr')->label('Matricola'),
+                       TextEntry::make('cognome')->label('Cognome'),
+                   ]),
+           ]);
+   }
+   // In blade: {{ $this->infolist }}
+   ```
+
+5. **Options/Years** - Never remove options from Selects or Filters
 5. **Actions** - Never delete getHeaderActions() or custom actions
 6. **Blade Includes** - Never replace @include with inline code
 7. **Traits** - Never remove traits from models

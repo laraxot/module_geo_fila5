@@ -31,6 +31,9 @@
 - **Usare le colonne personalizzate esistenti** (WorkerColumn, ValutatoreColumn, ecc.) invece di separare in TextColumns - le colonne personalizzate encapsulano la logica e mantengono DRY
 - **getTableColumns() deve avere array con chiavi stringa**: `'nome_colonna' => Column::make('nome_colonna')`
 - **Page con Blade view custom devono overridare getViewData()** per passare `$record` e `$data` alla view
+- **Per i campi di sola lettura, usare Infolist invece di form disabled**: separazione di responsabilità - Infolist per visualizzazione, Form per input editabili
+- **Implementare Infolist con HasInfolists trait**: `class Page extends XotBasePage implements HasInfolists { use InteractsWithInfolists; }`
+- **getInfolistSchema() deve avere chiavi stringa** come per getFormSchema()
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua

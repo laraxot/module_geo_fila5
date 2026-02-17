@@ -6,12 +6,12 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Infolists\Components\Section as InfolistSection;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
 use Filament\Infolists\Contracts\HasInfolists;
 use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -22,7 +22,6 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
-use Override;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
@@ -38,6 +37,8 @@ use Override;
 class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
 {
     use InteractsWithInfolists;
+    use InteractsWithRecord;
+
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
@@ -51,14 +52,11 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     public function mount(int|string $record): void
     {
-        /** @var IndennitaResponsabilita|null $resolved */
-        $resolved = IndennitaResponsabilita::find($record);
+        $this->record = $this->resolveRecord($record);
 
-        if (! $resolved instanceof IndennitaResponsabilita) {
+        if (! $this->record instanceof IndennitaResponsabilita) {
             abort(404);
         }
-
-        $this->record = $resolved;
 
         $this->authorizeAccess();
 
@@ -89,7 +87,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     }
 
     /**
-     * Infolist per visualizzare le Informazioni Generali in sola lettura.
+     * Infolist per visualizzare le Informazioni Generali e il Riepilogo in sola lettura.
      * Separazione di responsabilità: Infolist per view, Form per input editabili.
      */
     public function infolist(Infolist $infolist): Infolist
@@ -97,48 +95,44 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
         return $infolist
             ->record($this->record)
             ->schema([
-                InfolistSection::make('Informazioni Generali')
+                Section::make('Informazioni Generali')
                     ->columns(4)
                     ->schema([
-                        TextEntry::make('matr'),
-                        TextEntry::make('cognome'),
-                        TextEntry::make('nome'),
-                        TextEntry::make('perc_p_time_year')
+                        InfolistTextEntry::make('matr')
+                            ->label('Matricola'),
+                        InfolistTextEntry::make('cognome')
+                            ->label('Cognome'),
+                        InfolistTextEntry::make('nome')
+                            ->label('Nome'),
+                        InfolistTextEntry::make('perc_p_time_year')
+                            ->label('P.Time %')
                             ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
+                    ]),
+
+                InfolistSection::make('Riepilogo Calcoli')
+                    ->columns(4)
+                    ->schema([
+                        InfolistTextEntry::make('tot_score')
+                            ->label('Punteggio Totale'),
+                        InfolistTextEntry::make('mensile_calcolato')
+                            ->label('Mensile Calcolato'),
+                        TextEntry::make('mensile_attribuito')
+                            ->label('Mensile Attribuito'),
+                        TextEntry::make('annuale_attribuito')
+                            ->label('Annuale Attribuito'),
                     ]),
             ]);
     }
 
     /**
      * Build form schema SOLO per campi editabili.
-     * Le Informazioni Generali sono gestite dall'Infolist.
+     * Le Informazioni Generali e il Riepilogo sono gestiti dall'Infolist.
      */
     protected function getFormSchema(): array
     {
         return [
             Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
-
-            Section::make('Riepilogo Calcoli')
-                ->columns(4)
-                ->schema([
-                    TextInput::make('tot_score')
-                        ->label('Punteggio Totale')
-                        ->readOnly()
-                        ->extraInputAttributes(['class' => 'bg-gray-100 font-bold text-lg']),
-                    TextInput::make('mensile_calcolato')
-                        ->label('Mensile Calcolato')
-                        ->readOnly()
-                        ->extraInputAttributes(['class' => 'bg-gray-100']),
-                    TextInput::make('mensile_attribuito')
-                        ->label('Mensile Attribuito')
-                        ->readOnly()
-                        ->extraInputAttributes(['class' => 'bg-gray-100']),
-                    TextInput::make('annuale_attribuito')
-                        ->label('Annuale Attribuito')
-                        ->readOnly()
-                        ->extraInputAttributes(['class' => 'bg-gray-100']),
-                ]),
         ];
     }
 
