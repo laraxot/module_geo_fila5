@@ -26,6 +26,7 @@
 - **Usare i trait forniti** (InteractsWithRecord, InteractsWithForms, etc.)
 - **Usare $resource** per le Page che usano getUrl()
 - **I metodi protected nella classe base DEVONO essere protected anche nelle classi figlie** (non public) per compatibilità con Filament 5
+- **Usare le colonne personalizzate esistenti** (WorkerColumn, ValutatoreColumn, ecc.) invece di separare in TextColumns - le colonne personalizzate encapsulano la logica e mantengono DRY
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua
