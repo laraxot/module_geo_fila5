@@ -8,9 +8,8 @@ use Filament\Forms\Components\TextInput;
 // use Filament\Pages\Page;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Modules\Xot\Filament\Resources\Pages\XotBasePage;
-use Filament\Schemas\Schema;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 class SendMailIndennitaResponsabilita extends XotBasePage
 {

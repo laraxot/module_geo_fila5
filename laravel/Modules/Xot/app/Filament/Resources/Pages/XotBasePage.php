@@ -197,7 +197,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
     /**
      * Get the form schema for the page.
      *
-     * @return array<string, Component>
+     * @return array<int|string, Component>
      */
     protected function getFormSchema(): array
     {

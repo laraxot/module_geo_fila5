@@ -7,8 +7,8 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Gate;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 /**
@@ -18,6 +18,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 class CompilaIndennitaResponsabilitaSemplificata extends XotBasePage
 {
     protected static string $resource = IndennitaResponsabilitaResource::class;
+
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
     /**
@@ -52,7 +53,7 @@ class CompilaIndennitaResponsabilitaSemplificata extends XotBasePage
                         ->email()
                         ->required(),
                 ]),
-            
+
             Forms\Section::make('valutazione')
                 ->schema([
                     Forms\TextInput::make('responsabilita_di_spesa')
@@ -68,7 +69,7 @@ class CompilaIndennitaResponsabilitaSemplificata extends XotBasePage
                         ->numeric()
                         ->required(),
                 ]),
-            
+
             Forms\Section::make('note')
                 ->schema([
                     Forms\Textarea::make('note')
@@ -84,7 +85,7 @@ class CompilaIndennitaResponsabilitaSemplificata extends XotBasePage
     public function save(): void
     {
         $record = $this->getRecord();
-        
+
         // ✅ VALIDAZIONE SEMPLIFICATA
         $this->validate([
             'matr' => 'required|string|max:6',
@@ -101,7 +102,7 @@ class CompilaIndennitaResponsabilitaSemplificata extends XotBasePage
 
         // ✅ EVENTO PER LOGICA AUTOMATICA
         event(new DatiSalvati($record));
-        
+
         Notification::make()
             ->title('Indennità Salvate Correttamente')
             ->success()

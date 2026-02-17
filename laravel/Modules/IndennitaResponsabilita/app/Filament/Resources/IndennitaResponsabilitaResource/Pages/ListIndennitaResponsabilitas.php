@@ -66,7 +66,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
 
             'exportPdf' => Action::make('exportPdf')
                 ->icon('heroicon-s-document')
-                ->action(function (): StreamedResponse {
+                ->action(function (): BinaryFileResponse {
                     /** @var array<string, mixed> $tableFilters */
                     $tableFilters = $this->tableFilters ?? [];
 

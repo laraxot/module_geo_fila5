@@ -6,16 +6,18 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 /**
@@ -26,18 +28,20 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
  * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
  * - Always document decisions in docs/
  *
- * @property IndennitaResponsabilita $record
- * @property array<string, mixed>    $data
+ * @property IndennitaResponsabilita|Model|int|string|null $record
+ * @property array<string, mixed> $data
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
+    use InteractsWithRecord;
+
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
-    public IndennitaResponsabilita|Model|null $record = null;
+    public int|string $recordId = 0;
 
     public ?string $previousUrl = null;
 
@@ -46,19 +50,17 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
-        /** @var IndennitaResponsabilita|null $resolved */
-        $resolved = IndennitaResponsabilita::find($record);
-        if (null === $resolved) {
+        $this->recordId = $record;
+        $this->record = $this->resolveRecord($record);
+
+        if ($this->record === null) {
             abort(404);
         }
-
-        $this->record = $resolved;
 
         $this->authorizeAccess();
 
         $this->previousUrl = (string) url()->previous();
 
-        // Fill form with initial data
         $this->fillFormWithInitialData();
     }
 
@@ -92,6 +94,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         return [
             Section::make('Informazioni Generali')
+                ->columns(4)
                 ->schema([
                     TextInput::make('matr')
                         ->label('Matricola')
@@ -102,17 +105,42 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                     TextInput::make('nome')
                         ->label('Nome')
                         ->disabled(),
+                    TextInput::make('perc_p_time_year_display')
+                        ->label('P.Time %')
+                        ->formatStateUsing(fn (): string => number_format((float) ($this->record->perc_p_time_year ?? 0) * 100, 2).' %')
+                        ->disabled(),
                 ]),
 
             Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
+
+            Section::make('Riepilogo Calcoli')
+                ->columns(4)
+                ->schema([
+                    TextInput::make('tot_score')
+                        ->label('Punteggio Totale')
+                        ->readOnly()
+                        ->extraInputAttributes(['class' => 'bg-gray-100 font-bold text-lg']),
+                    TextInput::make('mensile_calcolato')
+                        ->label('Mensile Calcolato')
+                        ->readOnly()
+                        ->extraInputAttributes(['class' => 'bg-gray-100']),
+                    TextInput::make('mensile_attribuito')
+                        ->label('Mensile Attribuito')
+                        ->readOnly()
+                        ->extraInputAttributes(['class' => 'bg-gray-100']),
+                    TextInput::make('annuale_attribuito')
+                        ->label('Annuale Attribuito')
+                        ->readOnly()
+                        ->extraInputAttributes(['class' => 'bg-gray-100']),
+                ]),
         ];
     }
 
     /**
      * Get the form schema for ratings section.
      *
-     * @return array<int, \Filament\Forms\Components\Component>
+     * @return list<TextInput>
      */
     protected function getRatingsSchema(): array
     {
@@ -120,8 +148,15 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         $schema = [];
         /** @var array<int, array{title: string, path: string}> $readonlyFields */
-        $readonlyFields = []; // Needed for closure usage
+        $readonlyFields = [];
 
+        // Add summary fields to the reactivity tracker
+        $readonlyFields[] = ['title' => 'Tot', 'path' => 'tot_score'];
+        $readonlyFields[] = ['title' => 'ImportoMensileCalcolato', 'path' => 'mensile_calcolato'];
+        $readonlyFields[] = ['title' => 'ImportoMensileAttribuito', 'path' => 'mensile_attribuito'];
+        $readonlyFields[] = ['title' => 'ImportoAnnualeAttribuito', 'path' => 'annuale_attribuito'];
+
+        /** @var Rating $rating */
         foreach ($ratings as $rating) {
             $fieldname = 'ratings.'.$rating->id.'.pivot.value';
 
@@ -130,6 +165,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                 ->columns(2);
 
             if ((bool) ($rating->is_readonly ?? false)) {
+                $readonlyFields[] = [
+                    'title' => (string) $rating->title,
+                    'path' => $fieldname,
+                ];
                 $item->readOnly()
                     ->extraInputAttributes(['class' => 'bg-gray-100 cursor-not-allowed'])
                     ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating): void {
@@ -140,22 +179,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                         }
                     });
             } else {
-                // $ruleStr = $rating->rule instanceof RuleEnum ? (string) $rating->rule->value : '';
                 $item->numeric()->nullable();
 
-                /*
-                if ($ruleStr !== '') {
-                    $filtered = collect(explode('|', $ruleStr))
-                        ->reject(fn (string $r): bool => in_array($r, ['numeric', 'nullable'], true))
-                        ->implode('|');
-                    if ($filtered !== '') {
-                        $item->rules($filtered);
-                    }
-                }
-                */
-
                 $item->live(onBlur: true)
-                    ->afterStateUpdated(function (Set $set, Get $get) use ($readonlyFields): void {
+                    ->afterStateUpdated(function (Set $set, Get $get) use (&$readonlyFields): void {
                         $this->recalculateReadonlyFields($set, $get, $readonlyFields);
                     });
             }
@@ -169,14 +196,16 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     /**
      * Get ratings for the current year using schemaless attributes.
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, mixed>
+     * @return \Illuminate\Database\Eloquent\Collection<int, Rating>
      */
     protected function getRatingsForYear(): \Illuminate\Database\Eloquent\Collection
     {
-        // Use schemaless attributes for year filtering
-        return $this->record->ratings()
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
+        $ratings = $this->record->ratings()
             ->where('extra_attributes->anno', $this->record->anno)
             ->get();
+
+        return $ratings;
     }
 
     /**
@@ -200,7 +229,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param array<int, array{title: string, path: string}> $readonlyFields
+     * @param  array<int, array{title: string, path: string}>  $readonlyFields
      */
     protected function recalculateReadonlyFields(Set $set, Get $get, array $readonlyFields): void
     {
@@ -213,7 +242,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param array<int, array{title: string, path: string}> $readonlyFields
+     * @param  array<int, array{title: string, path: string}>  $readonlyFields
      */
     public function getTot(Get $get, array $readonlyFields = []): int
     {
@@ -235,7 +264,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param array<int, array{title: string, path: string}> $readonlyFields
+     * @param  array<int, array{title: string, path: string}>  $readonlyFields
      */
     public function getImportoMensileCalcolato(Get $get, array $readonlyFields = []): float
     {
@@ -243,7 +272,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param array<int, array{title: string, path: string}> $readonlyFields
+     * @param  array<int, array{title: string, path: string}>  $readonlyFields
      */
     public function getImportoMensileAttribuito(Get $get, array $readonlyFields = []): float
     {
@@ -253,7 +282,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param array<int, array{title: string, path: string}> $readonlyFields
+     * @param  array<int, array{title: string, path: string}>  $readonlyFields
      */
     public function getImportoAnnualeAttribuito(Get $get, array $readonlyFields = []): float
     {
@@ -267,6 +296,23 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         return [
             'back' => Action::make('back')
+                ->label('Back')
+                ->color('gray')
+                ->url(function (): string {
+                    $url = static::$resource::getUrl('index');
+
+                    return is_string($url) ? $url : '';
+                }),
+        ];
+    }
+
+    public function back(): \Illuminate\Http\RedirectResponse
+    {
+        /** @var string $url */
+        $url = static::$resource::getUrl('index');
+
+        return redirect()->to($url);
+    }
 
     public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
     {

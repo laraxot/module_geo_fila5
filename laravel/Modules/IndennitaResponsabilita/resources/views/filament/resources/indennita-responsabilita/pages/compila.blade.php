@@ -1,67 +1,37 @@
 <x-filament::page>
-<h3 class="fi-header-heading text-2xl ">{!! $this->record->msg('titolo') !!}</h3>
-
-<table class="table-auto">
-   <tbody>
-    <tr>
-        <td><b>Scheda ID:</b></td>
-        <td>[{{ $this->record->id }}]<br /></td>
-    </tr>
-    <tr>
-        <td><b>Lavoratore:</b></td>
-        <td> {{ $this->record->ente }}-{{ $this->record->matr }}] {{ $this->record->cognome }} {{ $this->record->nome }} </td>
-        
-    </tr>
-    <tr>
-        <td><b>Perc P Time Anno:</b> </td>
-        <td>{{ number_format($this->record->perc_p_time_year * 100, 2) }} % </td>
-    </tr>
-
-{{-- <b>giorni presenza anno</b>: {{ $this->record->gg_presenza_anno }}<br/> --}}
-{{--
-<tr><td><b>giorni presenza periodo:</b></td><td>{{ $this->record->gg_presenza_periodo }} 
-<input type="number" step="1" wire:model="form_data.tot_presenza_periodo_plus_no_timbr" />
-@error('form_data.tot_presenza_periodo_plus_no_timbr') <span class="text-danger-600 hover:text-danger-700">{{ $message }}</span> @enderror
-</td></tr>
-<tr><td><b>Dal</b></td><td> {{ $dal->format('d/m/Y') }} - <b>Al</b> {{ $al->format('d/m/Y') }} </td></tr>
-<tr><td><b>Perc P Time Anno:</b> </td><td>{{ number_format($this->record->perc_p_time_year * 100, 2) }} % </td></tr>
-<tr><td><b>Perc P Time intervallo di date:</b> </td><td>{{ number_format($this->record->perc_p_time_daterange * 100, 2) }} % </td></tr>
-{{--
-<tr><td><b>Qualifica:</b></td><td> {{ $this->record->codqua }}] {{ $this->record->codqua_txt }} </td></tr>
-<tr><td><b>Disciplina:</b> </td><td>{{ $this->record->disci1 }}]{{ $this->record->disci1_txt }} </td></tr>
---}}
-</table>
-{{--
-<x-filament::input.checkbox wire:model="isAdmin" />
---}}
-  {{ $this->form }}
-
-
-
-
-@if ($errors->any())
-    <div class="text-danger-600 hover:text-danger-700">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="fi-header">
+        <h3 class="fi-header-heading text-2xl font-bold tracking-tight text-gray-950 dark:text-white">
+            {!! $this->record->msg('titolo') !!}
+        </h3>
     </div>
-@endif
-<table>
-    <tr>
-        <td>
-            <x-filament::button type="button" wire:click="back()"> 
-                <x-heroicon-o-arrow-uturn-left /> Back 
-            </x-filament::button>
-        </td>
-        <td>
-            <x-filament::button type="button" form="authenticate" wire:click="save()">
-                <x-heroicon-o-arrow-up-circle />Salva
-            </x-filament::button>
-        </td>
-    </tr>
-</table>
-<h3 class="fi-header-heading text-2xl ">{!! $this->record->msg('legenda') !!}</h3>
 
+    <div class="space-y-6">
+        {{ $this->form }}
+
+        <div class="flex items-center gap-x-3">
+             <x-filament::button
+                color="gray"
+                tag="a"
+                :href="static::$resource::getUrl('index')"
+            >
+                Back
+            </x-filament::button>
+
+             <x-filament::button
+                type="button"
+                wire:click="save()"
+            >
+                Salva
+            </x-filament::button>
+        </div>
+
+        @if($this->record->msg('legenda'))
+             <div class="fi-section p-6 rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10">
+                <h3 class="text-lg font-medium tracking-tight text-gray-950 dark:text-white border-b pb-2 mb-4">Legenda</h3>
+                <div class="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {!! $this->record->msg('legenda') !!}
+                </div>
+            </div>
+        @endif
+    </div>
 </x-filament::page>
