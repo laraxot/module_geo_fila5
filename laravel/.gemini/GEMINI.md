@@ -30,6 +30,7 @@
 - **I metodi protected nella classe base DEVONO essere protected anche nelle classi figlie** (non public) per compatibilità con Filament 5
 - **Usare le colonne personalizzate esistenti** (WorkerColumn, ValutatoreColumn, ecc.) invece di separare in TextColumns - le colonne personalizzate encapsulano la logica e mantengono DRY
 - **getTableColumns() deve avere array con chiavi stringa**: `'nome_colonna' => Column::make('nome_colonna')`
+- **Page con Blade view custom devono overridare getViewData()** per passare `$record` e `$data` alla view
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua
