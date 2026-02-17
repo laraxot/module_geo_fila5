@@ -88,6 +88,21 @@ return [
 ];
 ```
 
+### Action Return Types - Actions che generano PDF/file devono restituire StreamedResponse:
+```php
+// ❌ ERRATO - return type void e senza return
+->action(function (): void {
+    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+    app(MakePdf::class)->execute($data);
+}),
+
+// ✅ CORRETTO - return type StreamedResponse e return
+->action(function (): StreamedResponse {
+    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+    return app(MakePdf::class)->execute($tableFilters);
+}),
+```
+
 ### Options/Years - MAI rimuovere opzioni
 ### Array Keys - MAI cambiare chiavi nominali in indici
 ### Actions - MAI cancellare getHeaderActions()
