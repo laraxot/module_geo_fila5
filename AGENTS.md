@@ -336,6 +336,54 @@ php artisan cache:clear
 - Ensure tests inherit from proper TestCase
 - Check module providers are registered
 
+### Common Filament Page Errors
+
+#### Typed static property Filament\Resources\Pages\Page::$resource must not be accessed before initialization
+
+This error occurs when a page class extending `Filament\Resources\Pages\Page` (or `XotBaseResourcePage`) does not define the `$resource` static property.
+
+**Fix**: Add the `$resource` property to the page class:
+```php
+protected static string $resource = YourResource::class;
+```
+
+**In XotBaseResourcePage**: Ensure the base class defines the property:
+```php
+protected static string $resource;
+```
+
+#### Type must be string (as in class Filament\Resources\Pages\Page)
+
+This error occurs when the `$resource` property is declared as nullable (`?string`) but the parent class requires it to be non-nullable.
+
+**Fix**: Ensure `$resource` is declared as `string` (not `?string`):
+```php
+protected static string $resource;  // CORRECT
+// protected static ?string $resource;  // WRONG
+```
+
+#### Type must be array (as in class XotBasePage)
+
+This error occurs when `$data` property type doesn't match the parent class.
+
+**Fix**: Ensure `$data` is declared consistently:
+```php
+public array $data = [];  // CORRECT in non-nullable context
+// public ?array $data = [];  // WRONG if parent is non-nullable
+```
+
+#### Error: Access level to Filament\Forms\Concerns\InteractsWithForms::getFormStatePath() must be public
+
+This error occurs when `getFormStatePath()` is defined as `protected` in XotBasePage but the parent Filament class requires it to be `public`.
+
+**Fix**: Ensure the method is public:
+```php
+public function getFormStatePath(): string
+{
+    return 'data';
+}
+```
+
 ## File Structure Reference
 
 ```

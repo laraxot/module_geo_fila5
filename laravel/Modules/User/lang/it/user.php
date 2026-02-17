@@ -473,6 +473,9 @@ return [
         'submit' => [
             'tooltip' => 'submit',
         ],
+        'createAnother' => [
+            'tooltip' => 'createAnother',
+        ],
     ],
     'messages' => [
         'created' => 'Utente creato con successo',

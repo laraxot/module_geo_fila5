@@ -7,8 +7,6 @@ namespace Modules\Pdnd\Filament\Pages;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +24,6 @@ use function Safe\preg_replace;
  */
 class ServizioVerificaDichEsistenzaVita extends XotBasePage
 {
-    use InteractsWithForms;
 
     /** @var array<string, mixed> */
     public array $pdndData = [];
