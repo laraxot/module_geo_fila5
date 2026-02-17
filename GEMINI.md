@@ -1,8 +1,17 @@
+# Gemini Added Memories
+- When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
+- NEVER use 'git remote set-url'. This command is reserved for the project owner only.
+- Always follow a forward-only Git workflow. Never revert or reset old versions; study logs for context.
+- When calling Spatie Queueable Actions, always use 'app(ActionClass::class)->execute()' instead of direct method calls like 'createPersonalAccessClient()'.
+- Avoid constructor Dependency Injection in Actions and Services. Prefer using the 'app()' container resolution (e.g., 'app(Dependency::class)') for dependencies.
+- CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
+- When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
+
 # Gemini Context
 
 ## Project Context
 
-PTVX is a modular HR & Performance evaluation system built on Laravel + Filament + Laraxot.
+PTVX is a modular HR & Performance evaluation system based on Laravel + Filament + Laraxot.
 
 ## Guidelines for Gemini
 

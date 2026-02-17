@@ -94,7 +94,7 @@ class ListProgressionis extends XotBaseListRecords
     }
 
     /**
-     * @return array<int, TextColumn|IconColumn|WorkerColumn|QuaColumn|RepartoColumn|GroupColumn>
+     * @return array<string, TextColumn|IconColumn|WorkerColumn|QuaColumn|RepartoColumn|GroupColumn>
      */
     #[\Override]
     public function getTableColumns(): array

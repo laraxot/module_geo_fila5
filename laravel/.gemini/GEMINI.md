@@ -19,6 +19,8 @@
 - **Usare `spatie/laravel-queueable-action`** con `app(NomeAzione::class)->execute()`
 - **NON usare `CreateClientAction::class)->createPersonalAccessClient()`** ma `->execute()`
 - Preferire helper functions alle dipendenze hard-coded
+- **Azioni che generano stream (PDF, download) devono restituire StreamedResponse**: `->action(function (): StreamedResponse { return app(MakePdf::class)->execute($params); })`
+- **NON wrappare i parametri in array `$data = ['key' => $value]`** - passare direttamente i parametri: `app(Azione::class)->execute($params)`
 
 ### 1.4 Architettura Filament
 - **Estendere SEMPRE le classi base Xot** (XotBaseResource, XotBasePage, XotBaseWidget)

@@ -21,7 +21,7 @@ class ListMyLogs extends XotBaseListRecords
     /**
      * Get the table columns definition.
      *
-     * @return array<int, Tables\Columns\Column>
+     * @return array<string, Tables\Columns\Column>
      */
     public function getTableColumns(): array
     {
