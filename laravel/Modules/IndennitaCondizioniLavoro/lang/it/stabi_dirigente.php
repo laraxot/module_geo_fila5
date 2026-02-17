@@ -103,10 +103,12 @@ return [
         'edit' => [
             'icon' => 'edit',
             'label' => 'edit',
+            'tooltip' => 'edit',
         ],
         'view' => [
             'icon' => 'view',
             'label' => 'view',
+            'tooltip' => 'view',
         ],
         'reorderRecords' => [
             'icon' => 'reorderRecords',
@@ -151,6 +153,10 @@ return [
             'tooltip' => 'openFilters',
             'icon' => 'openFilters',
             'label' => 'openFilters',
+        ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'icon' => 'cancel',
         ],
     ],
     'label' => 'stabi dirigente',
