@@ -154,6 +154,9 @@ return [
             'label' => 'Valutazioni Anno 2025',
             'heading' => 'Valutazioni Anno 2025',
         ],
+        'Riepilogo Calcoli' => [
+            'heading' => 'Riepilogo Calcoli',
+        ],
     ],
     'actions' => [
         'logout' => [

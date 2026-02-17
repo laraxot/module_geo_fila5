@@ -7,8 +7,6 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Concerns\InteractsWithInfolists;
-use Filament\Infolists\Contracts\HasInfolists;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
@@ -34,9 +32,8 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
  * @property IndennitaResponsabilita $record
  * @property array<string, mixed> $data
  */
-class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
+class CompilaIndennitaResponsabilita extends XotBasePage
 {
-    use InteractsWithInfolists;
     use InteractsWithRecord;
 
     protected static string $resource = IndennitaResponsabilitaResource::class;
@@ -113,15 +110,31 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
         return $schema
             ->record($this->getSpecificRecord())
             ->components([
-                TextEntry::make('matr')
-                    ->label('Matricola'),
-                TextEntry::make('cognome')
-                    ->label('Cognome'),
-                TextEntry::make('nome')
-                    ->label('Nome'),
-                TextEntry::make('perc_p_time_year')
-                    ->label('P.Time %')
-                    ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
+                Section::make('Informazioni Generali')
+                    ->columns(4)
+                    ->schema([
+                        TextEntry::make('matr')
+                            ->label('Matricola'),
+                        TextEntry::make('cognome')
+                            ->label('Cognome'),
+                        TextEntry::make('nome')
+                            ->label('Nome'),
+                        TextEntry::make('perc_p_time_year')
+                            ->label('P.Time %')
+                            ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
+                    ]),
+                Section::make('Riepilogo Calcoli')
+                    ->columns(4)
+                    ->schema([
+                        TextEntry::make('tot_score')
+                            ->label('Punteggio Totale'),
+                        TextEntry::make('mensile_calcolato')
+                            ->label('Mensile Calcolato'),
+                        TextEntry::make('mensile_attribuito')
+                            ->label('Mensile Attribuito'),
+                        TextEntry::make('annuale_attribuito')
+                            ->label('Annuale Attribuito'),
+                    ]),
             ]);
     }
 
