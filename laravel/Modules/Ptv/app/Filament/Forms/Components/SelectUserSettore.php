@@ -18,9 +18,13 @@ class SelectUserSettore extends XotBaseSelect
             if ($user === null) {
                 return [];
             }
-            $teams = $user->teams->pluck('name', 'id')->toArray();
+            $teams = $user->teams;
+            $data = [];
+            foreach ($teams as $team) {
+                $data[$team->id] = $team->name;
+            }
 
-            return $teams;
+            return $data;
         });
 
         // $this->native(false);

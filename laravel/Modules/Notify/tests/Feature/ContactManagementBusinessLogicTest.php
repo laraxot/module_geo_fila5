@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Models\Contact;
 use Modules\Notify\Models\ContactGroup;
-use Tests\TestCase;
+use Modules\Notify\Tests\TestCase;
 
 class ContactManagementBusinessLogicTest extends TestCase
 {
-    use RefreshDatabase;
+    // DatabaseTransactions is already used in the module TestCase
 
     /** @test */
     public function it_can_create_contact_with_basic_information(): void
@@ -145,7 +144,7 @@ class ContactManagementBusinessLogicTest extends TestCase
         $communicationHistory = [
             [
                 'type' => 'email',
-                'subject' => 'Benvenuto su ' . config('app.name', 'Our Platform'),
+                'subject' => 'Benvenuto su '.config('app.name', 'Our Platform'),
                 'sent_at' => now()->subDays(5)->toISOString(),
                 'status' => 'delivered',
                 'opened' => true,
@@ -173,7 +172,7 @@ class ContactManagementBusinessLogicTest extends TestCase
         $this->assertCount(2, $contact->fresh()->communication_history);
         $this->assertEquals('email', $contact->fresh()->communication_history[0]['type']);
         $this->assertEquals(
-            'Benvenuto su ' . config('app.name', 'Our Platform'),
+            'Benvenuto su '.config('app.name', 'Our Platform'),
             $contact->fresh()->communication_history[0]['subject'],
         );
         $this->assertEquals('sms', $contact->fresh()->communication_history[1]['type']);

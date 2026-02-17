@@ -72,6 +72,3 @@ public_html/
 .env.docker
 .env.latest
 node_modules/
-.devcontainer/
-.vscode
-_quaeris_fila4_mono.code-workspace

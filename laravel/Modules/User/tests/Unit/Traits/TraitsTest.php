@@ -6,15 +6,17 @@ uses(Modules\User\Tests\TestCase::class);
 
 use Modules\User\Traits\PasswordValidationRules;
 
+// Create test class that uses the trait
+class TestClassWithPasswordValidationRules
+{
+    use PasswordValidationRules;
+}
+
 test('PasswordValidationRules trait can be used', function () {
     expect(trait_exists(PasswordValidationRules::class))->toBeTrue();
 
     try {
-        // Create an anonymous class to test the trait
-        $testClass = new class {
-            use PasswordValidationRules;
-        };
-        
+        $testClass = new TestClassWithPasswordValidationRules();
         // Check if the trait methods exist
         expect(method_exists($testClass, 'passwordRules'))->toBeTrue();
     } catch (Exception $e) {
@@ -24,11 +26,7 @@ test('PasswordValidationRules trait can be used', function () {
 
 test('PasswordValidationRules has expected methods', function () {
     if (trait_exists(PasswordValidationRules::class)) {
-        // Create an anonymous class to test the trait
-        $testClass = new class {
-            use PasswordValidationRules;
-        };
-        
+        $testClass = new TestClassWithPasswordValidationRules();
         $hasMethod = method_exists($testClass, 'passwordRules');
         $hasMin = method_exists($testClass, 'passwordMinimum');
         $hasMixedCase = method_exists($testClass, 'passwordRequiresMixedCase');

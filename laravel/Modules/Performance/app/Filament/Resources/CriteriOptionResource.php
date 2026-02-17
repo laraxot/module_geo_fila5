@@ -91,7 +91,7 @@ class CriteriOptionResource extends XotBaseResource
         ];
     }
 
-    protected static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             EditAction::make(),
@@ -99,7 +99,7 @@ class CriteriOptionResource extends XotBaseResource
         ];
     }
 
-    protected static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),

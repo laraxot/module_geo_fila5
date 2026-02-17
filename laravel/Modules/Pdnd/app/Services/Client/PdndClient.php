@@ -535,33 +535,18 @@ class PdndClient
      * @param  array<string, mixed>  $bodyArray
      * @return array<string, mixed>
      */
-    public function postApi(string $token, array $bodyArray): array
+    public function postApi(string $token, array $bodyArray, string $endpoint = ''): array
     {
-        $url = $this->apiUrl ?? $this->getApiUrl();
+        $url = $endpoint ?: ($this->apiUrl ?? $this->getApiUrl());
 
         $bodyJson = json_encode($bodyArray, JSON_UNESCAPED_UNICODE);
         $encodedBody = base64_encode(hash('sha256', $bodyJson, true));
 
         // === 2. Carica la chiave privata ===
-        // $privateKeyPath = $this->getPrivKeyPath(); // Usa il percorso dalla configurazione
-        // $privateKey = file_get_contents($privateKeyPath);
-        // if (! $privateKey) {
-        //     throw new Exception("Impossibile leggere la chiave privata da: $privateKeyPath");
-        // }
-         try {
-            $privateKeyPath = $this->getPrivKeyPath();
-            
-            if (!file_exists($privateKeyPath)) {
-                throw new Exception("Il file della chiave privata non esiste: $privateKeyPath");
-            }
-            
-            $privateKey = file_get_contents($privateKeyPath);
-            
-        } catch (Exception $e) {
-            return response()->json([
-                'error' => true,
-                'message' => $e->getMessage()
-            ], 500);
+        $privateKeyPath = $this->getPrivKeyPath(); // Usa il percorso dalla configurazione
+        $privateKey = file_get_contents($privateKeyPath);
+        if (! $privateKey) {
+            throw new Exception("Impossibile leggere la chiave privata da: $privateKeyPath");
         }
 
         // === 3. Parametri comuni ===

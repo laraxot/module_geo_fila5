@@ -1,48 +1,28 @@
-# Regole per i Prompt
+# Regole per i prompt condivisi
 
-## Regola Universale
-I prompt condivisi (come quelli in bashscripts/prompts) devono essere una singola stringa continua, senza formattazione e senza a capo.
+## Regola universale
+I prompt condivisi devono essere **project-agnostic**:
+- niente nomi di progetto
+- niente percorsi assoluti
+- usare segnaposto e path relativi
 
-## Esempio
-```text
-Questo è un prompt corretto perché è una singola stringa continua senza formattazione e senza a capo. Tutto il contenuto è su una riga unica e non ci sono caratteri speciali o formattazione markdown.
-```
+## Formato
+- Markdown consentito.
+- Se un prompt richiede una singola riga (per limiti di tool), va indicato nel file stesso.
 
-## Non Fare
-```text
+## Contenuti obbligatori
+- Scopo del prompt.
+- Passi operativi sintetici.
+- Esempi con segnaposto (`<project_root>`, `<module>`, `<theme>`).
 
-# Questo è sbagliato
-- Perché usa formattazione markdown
-- Perché usa a capo
-- Perché usa elenchi puntati
-```
+## Da evitare
+- Link assoluti o path locali.
+- Esempi con nomi di progetto reali.
+- Dipendenze non documentate.
 
-## Applicazione
-Questa regola si applica a tutti i file in:
-- bashscripts/prompts/
-- Qualsiasi altro file di prompt condiviso
-
-## Organizzazione della Documentazione
-
-### Collocazione della documentazione del frontend
-La documentazione del frontend deve essere sempre inserita nella cartella `docs` del modulo `Cms`. Vedi [cms-link.md](./cms-link.md) per i collegamenti alla documentazione del frontend.
-
-### Collocazione della documentazione generica
-La documentazione generica deve essere sempre inserita nella cartella `docs` del modulo `Xot`.
-
-### Collocazione della documentazione dei componenti UI
-La documentazione dei componenti UI deve essere sempre inserita nella cartella `docs` del modulo `UI`. Vedi [ui-link.md](../UI/project_docs/README.md) per i dettagli.
-
-## Collegamenti Bidirezionali
-- [Documentazione Generale](./documentation.md)
-- [Regole del Progetto](./rules.md)
-- [Struttura dei Prompt](./prompts.md)
-- [Collegamenti al Modulo Cms](./cms-link.md)
-- [Collegamenti alla Root](../../../project_docs/prompts.md)
-
-## Collegamenti tra versioni di PROMPT_RULES.md
-* [PROMPT_RULES.md](../../../Xot/project_docs/PROMPT_RULES.md)
-* [PROMPT_RULES.md](../../../Xot/project_docs/rules/PROMPT_RULES.md)
-
-## Collegamenti tra versioni di prompt_rules.md
-* [prompt_rules.md](rules/prompt_rules.md)
+## Collegamenti
+- [struttura dei prompt](../prompts.md)
+- [organizzazione bashscripts](../bashscripts-organization-1.md)
+- [regole documentazione](./documentation-rules.md)
+- [prompts consolidati](./prompts.md)
+- [indice documentazione](../00-index.md)

@@ -33,9 +33,9 @@ class EventServiceProvider extends XotBaseEventServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        // SocialiteWasCalled::class => [
-        //     Auth0ExtendSocialite::class,
-        // ],
+        SocialiteWasCalled::class => [
+            Auth0ExtendSocialite::class,
+        ],
         Login::class => [
             LoginListener::class,
         ],

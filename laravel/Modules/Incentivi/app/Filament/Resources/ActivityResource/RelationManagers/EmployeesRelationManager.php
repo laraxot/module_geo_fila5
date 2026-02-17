@@ -80,6 +80,7 @@ class EmployeesRelationManager extends XotBaseRelationManager
                     },
                 ])
 
+
                 ->helperText(function (RelationManager $livewire): string {
                     $activity = $livewire->getOwnerRecord();
                     $totalExistingPercentage = ($activity instanceof Activity)

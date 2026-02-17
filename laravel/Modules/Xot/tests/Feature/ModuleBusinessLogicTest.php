@@ -6,7 +6,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Modules\Xot\Models\Module;
 
-uses(DatabaseTransactions::class);
+use Modules\Xot\Tests\TestCase;
+
+uses(TestCase::class);
 
 it('can create module', function () {
     // Arrange
@@ -28,7 +30,7 @@ it('can create module', function () {
         'slug' => 'test-module',
         'version' => '1.0.0',
         'enabled' => true,
-    ]);
+    ], 'sushi');
 
     $this->assertEquals('TestModule', $module->name);
     $this->assertEquals('test-module', $module->slug);
@@ -65,7 +67,7 @@ it('can update module version', function () {
     $this->assertDatabaseHas('modules', [
         'id' => $module->id,
         'version' => '2.0.0',
-    ]);
+    ], 'sushi');
 });
 
 it('can manage module dependencies', function () {
@@ -169,7 +171,7 @@ it('can validate module version format', function () {
         $this->assertDatabaseHas('modules', [
             'id' => $module->id,
             'version' => $version,
-        ]);
+        ], 'sushi');
     }
 });
 
@@ -188,7 +190,7 @@ it('can manage module installation date', function () {
     $this->assertDatabaseHas('modules', [
         'id' => $module->id,
         'installed_at' => $installationDate,
-    ]);
+    ], 'sushi');
 });
 
 it('can manage module update history', function () {

@@ -147,6 +147,3 @@ packages/temp/
 # END OF XOT .GITIGNORE
 # ==============================================
 lang/lang/
-_activity.code-workspace
-_docs
-CHANGELOG.MD

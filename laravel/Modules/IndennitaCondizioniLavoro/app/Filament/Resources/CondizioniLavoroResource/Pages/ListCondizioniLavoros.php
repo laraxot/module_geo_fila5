@@ -4,27 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource\Pages;
 
-use Override;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
-use Illuminate\Support\Collection;
-use Filament\Tables\Columns\Column;
-use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Ptv\Actions\FixValutatoreIdByAnno;
-use Filament\Tables\Enums\RecordActionsPosition;
-use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
-use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Modules\IndennitaCondizioniLavoro\Actions\MakePdf;
 use Modules\IndennitaCondizioniLavoro\Actions\Populate;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use Modules\Ptv\Actions\FixValutatoreIdByAnno;
+use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Override;
 
 class ListCondizioniLavoros extends XotBaseListRecords
 {
@@ -35,12 +33,11 @@ class ListCondizioniLavoros extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            'lavoratore' => WorkerColumn::make('lavoratore'),
-            //TextColumn::make('matr')->searchable(),
-            //TextColumn::make('cognome')->searchable(),
-            //TextColumn::make('nome')->searchable(),
-            //TextColumn::make('stabi')->searchable(),
-            //TextColumn::make('repar')->searchable(),
+            TextColumn::make('matr')->searchable(),
+            TextColumn::make('cognome')->searchable(),
+            TextColumn::make('nome')->searchable(),
+            TextColumn::make('stabi')->searchable(),
+            TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
@@ -98,9 +95,11 @@ class ListCondizioniLavoros extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): StreamedResponse {
+                ->action(function (): void {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    return app(MakePdf::class)->execute($tableFilters);
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(MakePdf::class)->execute($data);
                 }),
             'replicate' => Action::make('replicate')
                 ->label('')
@@ -108,7 +107,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
                 ->tooltip('ricopia da quadrimentre precendente')
                 ->action(function (): void {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    app(ReplicateIndennita::class)->execute($tableFilters);
+                    // Ensure array has required structure
+                    $data = ['anno/valutatore' => $tableFilters];
+                    app(ReplicateIndennita::class)->execute($data);
                 }),
         ];
     }
