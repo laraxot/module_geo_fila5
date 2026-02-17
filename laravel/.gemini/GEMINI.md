@@ -24,6 +24,8 @@
 - **Estendere SEMPRE le classi base Xot** (XotBaseResource, XotBasePage, XotBaseWidget)
 - **NON estendere direttamente** le classi Filament
 - **Usare i trait forniti** (InteractsWithRecord, InteractsWithForms, etc.)
+- **Usare $resource** per le Page che usano getUrl()
+- **I metodi protected nella classe base DEVONO essere protected anche nelle classi figlie** (non public) per compatibilità con Filament 5
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua
@@ -206,3 +208,19 @@ Quando si crea un'issue:
 ---
 
 *Ultimo aggiornamento: 2026-02-17*
+
+---
+
+## 7. DEBUG E TROUBLESHOOTING
+
+### 7.1 Errori di Boot Laravel
+Quando il sito non parte:
+1. `php -l file.php` - Verifica syntax PHP
+2. `composer dump-autoload` - Ricrea autoload
+3. `php artisan package:discover` - Scopri pacchetti
+4. `php artisan serve` - Testa server locale
+
+### 7.2 Errori Comuni
+- **ParseError**: Codice fuori dalla classe - verificare } di chiusura
+- **Access level conflict**: Metodi public che dovrebbero essere protected
+- **Typed static property**: Proprietà non inizializzata - definire sempre $resource
