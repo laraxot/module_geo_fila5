@@ -35,10 +35,10 @@ class ListCondizioniLavoros extends XotBaseListRecords
         // Column types are inferred by Filament v4
         // Use WorkerColumn for DRY - groups matr, cognome, nome
         return [
-            WorkerColumn::make('lavoratore'),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
-            TextColumn::make('indennitaTipoDettaglio')
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            'stabi' => TextColumn::make('stabi')->searchable(),
+            'repar' => TextColumn::make('repar')->searchable(),
+            'indennitaTipoDettaglio' => TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
                     if (! $state instanceof Collection) {
@@ -73,8 +73,8 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return '['.$indennitaTipoNome.'] '.$nome;
                     })->implode(' --------------------- ,'.PHP_EOL.PHP_EOL.'');
                 }),
-            TextColumn::make('quadrimestre')->searchable(),
-            TextColumn::make('anno')->searchable(),
+            'quadrimestre' => TextColumn::make('quadrimestre')->searchable(),
+            'anno' => TextColumn::make('anno')->searchable(),
         ];
     }
 
