@@ -156,6 +156,7 @@ return [
         ],
         'Riepilogo Calcoli' => [
             'heading' => 'Riepilogo Calcoli',
+            'label' => 'Riepilogo Calcoli',
         ],
     ],
     'actions' => [
