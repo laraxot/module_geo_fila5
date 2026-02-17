@@ -7,7 +7,6 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -28,20 +27,16 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
  * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
  * - Always document decisions in docs/
  *
- * @property IndennitaResponsabilita|Model|int|string|null $record
+ * @property IndennitaResponsabilita|Model|null $record
  * @property array<string, mixed> $data
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
-    use InteractsWithRecord;
-
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
-
-    public int|string $recordId = 0;
 
     public ?string $previousUrl = null;
 
@@ -50,12 +45,14 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
-        $this->recordId = $record;
-        $this->record = $this->resolveRecord($record);
+        /** @var IndennitaResponsabilita|null $resolved */
+        $resolved = IndennitaResponsabilita::find($record);
 
-        if ($this->record === null) {
+        if (! $resolved instanceof IndennitaResponsabilita) {
             abort(404);
         }
+
+        $this->record = $resolved;
 
         $this->authorizeAccess();
 
@@ -319,6 +316,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $this->form->validate();
         /** @var array<string, mixed> $state */
         $state = $this->form->getState();
+
+        if (! $this->record instanceof IndennitaResponsabilita) {
+            throw new \LogicException('Record is missing or invalid.');
+        }
 
         // Update record standard fields
         /** @var array<string, mixed> $dataToUpdate */
