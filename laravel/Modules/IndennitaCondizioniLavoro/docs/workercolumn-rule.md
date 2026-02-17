@@ -6,6 +6,18 @@
 
 La `WorkerColumn` è una colonna custom che raggruppa informazioni del lavoratore (matricola, cognome, nome, email) in un'unica colonna. Questo pattern è usato in tutto il progetto per mantenere coerenza e DRY.
 
+## ⚠️ IMPORTANTE: WorkerColumn è una GroupColumn, NON una relazione!
+
+**WorkerColumn estende `GroupColumn`** da `Modules\UI\Filament\Tables\Columns\GroupColumn`. Questo significa che:
+- Raggruppa campi dello **stesso record** (matr, cognome, nome, email)
+- Non è una relazione a un altro modello
+- È puramente un pattern UI/UX per DRY e KISS
+
+### Ereditarietà
+```
+WorkerColumn → GroupColumn → Column
+```
+
 ## Esempio Corretto
 
 ```php
@@ -29,9 +41,9 @@ public function getTableColumns(): array
 public function getTableColumns(): array
 {
     return [
-        TextColumn::make('matr')->searchable(),      // ❌
+        TextColumn::make('matr')->searchable(),      // ❌ Violazione DRY/KISS
         TextColumn::make('cognome')->searchable(),   // ❌
-        TextColumn::make('nome')->searchable(),      // ❌
+        TextColumn::make('nome')->searchable(),     // ❌
         // ...
     ];
 }
@@ -49,14 +61,15 @@ public function getTableColumns(): array
 
 - Sempre quando si deve mostrare informazioni del lavoratore in una tabella
 - In tutti i moduli che estendono XotBaseListRecords
-- Quando la risorsa ha una relazione con il modello User/Worker
+- Quando il record ha i campi matr, cognome, nome, email
 
 ## Location
 
 - **File**: `Modules/Ptv/app/Filament/Columns/WorkerColumn.php`
 - **Namespace**: `Modules\Ptv\Filament\Columns\WorkerColumn`
+- **Extends**: `Modules\UI\Filament\Tables\Columns\GroupColumn`
 
 ## Collegamenti
 
 - [WorkerColumn Source](../../../../../Ptv/app/Filament/Columns/WorkerColumn.php)
-- [Root Documentation](../../../../../../docs/FILAMENT-CUSTOM-COLUMNS.md)
+- [Root Documentation](../../../../../../docs/WORKERCOLUMN-RULE.md)
