@@ -34,23 +34,23 @@ class ListEmployees extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('matricola')
+            'matricola' => TextColumn::make('matricola')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('full_name')
+            'full_name' => TextColumn::make('full_name')
                 ->searchable(['nome', 'cognome'])
                 ->sortable(['nome', 'cognome']),
-            TextColumn::make('tipologia'),
-            TextColumn::make('sesso'),
-            TextColumn::make('codice_fiscale'),
-            TextColumn::make('posizione_inail'),
+            'tipologia' => TextColumn::make('tipologia'),
+            'sesso' => TextColumn::make('sesso'),
+            'codice_fiscale' => TextColumn::make('codice_fiscale'),
+            'posizione_inail' => TextColumn::make('posizione_inail'),
             /*
             Tables\Columns\TextColumn::make('tqu00f_desc1'),
             Tables\Columns\TextColumn::make('tqu00f_desc2'),
             */
-            GroupColumn::make('tqu00f')->schema([
-                TextColumn::make('tqu00f_desc1'),
-                TextColumn::make('tqu00f_desc2'),
+            'tqu00f' => GroupColumn::make('tqu00f')->schema([
+                'tqu00f_desc1' => TextColumn::make('tqu00f_desc1'),
+                'tqu00f_desc2' => TextColumn::make('tqu00f_desc2'),
             ]),
         ];
     }

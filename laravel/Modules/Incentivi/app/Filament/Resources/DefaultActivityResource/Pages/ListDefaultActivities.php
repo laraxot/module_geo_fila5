@@ -50,25 +50,25 @@ class ListDefaultActivities extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('nome')
+            'nome' => TextColumn::make('nome')
                 ->limit(50)
                 ->searchable(),
-            TextColumn::make('tipo')
+            'tipo' => TextColumn::make('tipo')
                 ->searchable(),
-            IconColumn::make('appartiene_a_liquidazione_a_fasi')
+            'appartiene_a_liquidazione_a_fasi' => IconColumn::make('appartiene_a_liquidazione_a_fasi')
                 // ->label('A fasi?')
                 ->boolean(),
-            TextColumn::make('liquidazione_fasi')
+            'liquidazione_fasi' => TextColumn::make('liquidazione_fasi')
                 // ->label('Fasi')
                 ->searchable(),
-            TextColumn::make('quota_percentuale')
+            'quota_percentuale' => TextColumn::make('quota_percentuale')
                 ->searchable(),
-            TextColumn::make('importo')
+            'importo' => TextColumn::make('importo')
                 ->money('EUR')
                 ->placeholder('DA ASSEGNARE'),
-            TextColumn::make('anno_competenza')
+            'anno_competenza' => TextColumn::make('anno_competenza')
                 ->searchable(),
-            TextColumn::make('quota_percentuale'),
+            'quota_percentuale' => TextColumn::make('quota_percentuale'),
         ];
     }
 

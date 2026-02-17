@@ -26,34 +26,34 @@ class ListMyLogs extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('id')
+            'id' => TextColumn::make('id')
                 ->sortable(),
 
-            TextColumn::make('tbl')
+            'tbl' => TextColumn::make('tbl')
                 ->searchable()
                 ->sortable(),
 
-            TextColumn::make('id_tbl')
+            'id_tbl' => TextColumn::make('id_tbl')
                 ->numeric()
                 ->sortable(),
 
-            TextColumn::make('note')
+            'note' => TextColumn::make('note')
                 ->searchable()
                 ->limit(50),
 
-            TextColumn::make('obj')
+            'obj' => TextColumn::make('obj')
                 ->searchable()
                 ->limit(30),
 
-            TextColumn::make('act')
+            'act' => TextColumn::make('act')
                 ->searchable()
                 ->sortable(),
 
-            TextColumn::make('created_at')
+            'created_at' => TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable(),
 
-            TextColumn::make('created_by')
+            'created_by' => TextColumn::make('created_by')
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: true),
         ];

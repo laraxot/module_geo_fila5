@@ -20,7 +20,7 @@ class ListSettlements extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('denominazione')
+            'denominazione' => TextColumn::make('denominazione')
                 // ->label('Denominazione')
                 ->searchable(),
             TextColumn::make('project.nome')
@@ -29,11 +29,11 @@ class ListSettlements extends XotBaseListRecords
             // Tables\Columns\TextColumn::make('tipologia')
             //     ->label('Tipo di liquidazione')
             //     ->searchable(),
-            TextColumn::make('created_at')
+            'created_at' => TextColumn::make('created_at')
                 // ->label('Creata')
                 ->dateTime()
                 ->sortable(),
-            TextColumn::make('updated_at')
+            'updated_at' => TextColumn::make('updated_at')
             // ->label('Aggiornata')
                 ->dateTime()
                 ->sortable(),

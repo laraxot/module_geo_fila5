@@ -52,18 +52,18 @@ class MyLogResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('id_tbl')
+            'id_tbl' => TextColumn::make('id_tbl')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tbl')
+            'tbl' => TextColumn::make('tbl')
                 ->searchable(),
-            TextColumn::make('id_approvaz')
+            'id_approvaz' => TextColumn::make('id_approvaz')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('datemod')
+            'datemod' => TextColumn::make('datemod')
                 ->dateTime()
                 ->sortable(),
-            TextColumn::make('handle')
+            'handle' => TextColumn::make('handle')
                 ->searchable(),
 
         ];

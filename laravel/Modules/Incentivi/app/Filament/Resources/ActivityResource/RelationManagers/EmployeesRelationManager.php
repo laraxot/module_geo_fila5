@@ -112,15 +112,15 @@ class EmployeesRelationManager extends XotBaseRelationManager
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('cognome'),
-            TextColumn::make('nome'),
-            TextColumn::make('percentuale_attivita_dipendente')
+            'cognome' => TextColumn::make('cognome'),
+            'nome' => TextColumn::make('nome'),
+            'percentuale_attivita_dipendente' => TextColumn::make('percentuale_attivita_dipendente')
                 // ->label('Percentuale attribuita')
                 ->suffix('%'),
             // ->summarize(Summarizer::make()
             //     ->label('Total')
             //     ->using(fn ($query): string => $query->count())),
-            TextColumn::make('importo_attivita_dipendente')
+            'importo_attivita_dipendente' => TextColumn::make('importo_attivita_dipendente')
                 // ->label('Importo attribuito')
                 ->suffix('€'),
         ];

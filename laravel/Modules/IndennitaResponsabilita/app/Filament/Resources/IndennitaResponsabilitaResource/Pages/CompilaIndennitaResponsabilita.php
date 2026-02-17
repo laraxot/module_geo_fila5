@@ -6,8 +6,8 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -282,7 +282,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $state = $this->form->getState();
 
         // Update record standard fields
-        $this->record->update(collect($state)->only(['dal', 'al', 'note'])->toArray());
+        /** @var array<string, mixed> $dataToUpdate */
+        $dataToUpdate = collect($state)->only(['dal', 'al', 'note'])->toArray();
+        $this->record->update($dataToUpdate);
 
         // Update pivot ratings
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */

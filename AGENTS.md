@@ -160,18 +160,31 @@ parameters:
 ### NEVER Simplify Domain Logic
 When modifying code, **NEVER** simplify or replace domain-specific constructs:
 
-1. **Custom Columns** - Use WorkerColumn for DRY/KISS (it's a GroupColumn, NOT a relationship):
+1. **Custom Columns** - Use WorkerColumn for DRY/KISS with string keys (it's a GroupColumn, NOT a relationship):
    ```php
-   // WRONG - repeating fields everywhere
-   TextColumn::make('matr')->searchable(),
-   TextColumn::make('cognito')->searchable(),
-   
-   // CORRECT - WorkerColumn groups common fields (DRY/KISS)
+   // WRONG - missing string key
    WorkerColumn::make('lavoratore'),
+   
+   // CORRECT - string key + WorkerColumn (DRY/KISS)
+   'lavoratore' => WorkerColumn::make('lavoratore'),
    ```
 
-2. **Options/Years** - Never remove options from Selects or Filters
-3. **Array Keys** - Never change named keys to indexed arrays
+2. **Array Keys in getTableColumns()** - Always use string keys:
+   ```php
+   // WRONG - no string keys
+   return [
+       WorkerColumn::make('lavoratore'),
+       TextColumn::make('nome'),
+   ];
+
+   // CORRECT - string keys required
+   return [
+       'lavoratore' => WorkerColumn::make('lavoratore'),
+       'nome' => TextColumn::make('nome'),
+   ];
+   ```
+
+3. **Options/Years** - Never remove options from Selects or Filters
 4. **Actions** - Never delete getHeaderActions() or custom actions
 5. **Blade Includes** - Never replace @include with inline code
 6. **Traits** - Never remove traits from models

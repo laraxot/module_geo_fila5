@@ -31,12 +31,12 @@ class ListMessages extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('id'),
-            TextColumn::make('parent_id'),
-            TextColumn::make('type'),
-            TextColumn::make('title'),
+            'id' => TextColumn::make('id'),
+            'parent_id' => TextColumn::make('parent_id'),
+            'type' => TextColumn::make('type'),
+            'title' => TextColumn::make('title'),
             // TextColumn::make('txt'),
-            TextColumn::make('anno'),
+            'anno' => TextColumn::make('anno'),
         ];
     }
 

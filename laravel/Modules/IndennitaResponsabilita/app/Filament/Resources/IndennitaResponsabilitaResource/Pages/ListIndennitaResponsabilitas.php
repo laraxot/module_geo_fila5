@@ -96,10 +96,10 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            WorkerColumn::make('lavoratore'),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
             // RepColumn::make('rep'),
             // 'anno' => TextColumn::make('anno')->sortable()->searchable(),
-            PeriodoColumn::make('periodo'),
+            'periodo' => PeriodoColumn::make('periodo'),
             // 'sent_email_list' => TextColumn::make('sent_email_list')->html()->default(app(GetSentEmailListHtml::class)->execute(...)),
         ];
     }

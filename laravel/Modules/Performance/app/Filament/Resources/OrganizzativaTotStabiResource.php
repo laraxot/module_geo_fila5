@@ -56,38 +56,38 @@ class OrganizzativaTotStabiResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('id')
+            'id' => TextColumn::make('id')
                 ->label('ID')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('stabi')
+            'stabi' => TextColumn::make('stabi')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_budget_assegnato')
+            'tot_budget_assegnato' => TextColumn::make('tot_budget_assegnato')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_budget_assegnato_min_punteggio')
+            'tot_budget_assegnato_min_punteggio' => TextColumn::make('tot_budget_assegnato_min_punteggio')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_quota_effettiva')
+            'tot_quota_effettiva' => TextColumn::make('tot_quota_effettiva')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_quota_effettiva_min_punteggio')
+            'tot_quota_effettiva_min_punteggio' => TextColumn::make('tot_quota_effettiva_min_punteggio')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_resti')
+            'tot_resti' => TextColumn::make('tot_resti')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_resti_min_punteggio')
+            'tot_resti_min_punteggio' => TextColumn::make('tot_resti_min_punteggio')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('delta')
+            'delta' => TextColumn::make('delta')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('delta_min_punteggio')
+            'delta_min_punteggio' => TextColumn::make('delta_min_punteggio')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
 

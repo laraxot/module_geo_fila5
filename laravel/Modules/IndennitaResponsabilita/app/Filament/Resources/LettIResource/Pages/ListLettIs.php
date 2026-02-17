@@ -27,7 +27,7 @@ class ListLettIs extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
-            WorkerColumn::make('lavoratore'),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
             
             'anno' => TextColumn::make('anno')
                 ->numeric()

@@ -16,5 +16,8 @@ return [
         'email' => [
             'label' => 'email',
         ],
+        'lavoratore' => [
+            'label' => 'lavoratore',
+        ],
     ],
 ];

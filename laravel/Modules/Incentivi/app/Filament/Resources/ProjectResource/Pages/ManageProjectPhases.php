@@ -63,22 +63,22 @@ class ManageProjectPhases extends XotBaseManageRelatedRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('name')
+            'name' => TextColumn::make('name')
                 ->label('Name')
                 ->sortable()
                 ->searchable(),
 
-            TextColumn::make('description')
+            'description' => TextColumn::make('description')
                 ->label('Description')
                 ->sortable()
                 ->searchable(),
 
-            TextColumn::make('start_date')
+            'start_date' => TextColumn::make('start_date')
                 ->label('Start Date')
                 ->dateTime('d/m/Y')
                 ->sortable(),
 
-            TextColumn::make('end_date')
+            'end_date' => TextColumn::make('end_date')
                 ->label('End Date')
                 ->dateTime('d/m/Y')
                 ->sortable(),

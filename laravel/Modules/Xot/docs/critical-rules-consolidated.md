@@ -62,19 +62,31 @@ return [
 
 ## 🔴 REGOLA DOMINIO: MAI SEMPLIFICARE
 
-### Custom Columns - Usare per DRY/KISS:
+### Custom Columns - Usare per DRY/KISS con chiavi stringa:
 ```php
-// ❌ ERRATO - Ripetere i campi ovunque
-TextColumn::make('matr')->searchable(),
-TextColumn::make('cognome')->searchable(),
-TextColumn::make('nome'),
-TextColumn::make('email'),
-
-// ✅ CORRETTO - WorkerColumn raggruppa i campi comuni (DRY/KISS)
+// ❌ ERRATO - manca la chiave stringa
 WorkerColumn::make('lavoratore'),
+
+// ✅ CORRETTO - chiave stringa + WorkerColumn (DRY/KISS)
+'lavoratore' => WorkerColumn::make('lavoratore'),
 ```
 
 **NOTA**: `WorkerColumn` NON è una relazione! È un `GroupColumn` che mostra campi raggruppati (matr, cognome, nome, email).
+
+### getTableColumns() - Array con chiavi stringa OBBLIGATORIO:
+```php
+// ❌ ERRATO - array senza chiavi
+return [
+    WorkerColumn::make('lavoratore'),
+    TextColumn::make('nome'),
+];
+
+// ✅ CORRETTO - array con chiavi stringa
+return [
+    'lavoratore' => WorkerColumn::make('lavoratore'),
+    'nome' => TextColumn::make('nome'),
+];
+```
 
 ### Options/Years - MAI rimuovere opzioni
 ### Array Keys - MAI cambiare chiavi nominali in indici

@@ -12,4 +12,4 @@ For strict coding standards, Filament extension rules, and PHPStan guidelines, p
 1.  **DRY & KISS**: Don't repeat yourself, keep it simple.
 2.  **Zero Errors**: PHPStan Level 10 compliance is mandatory.
 3.  **XotBase**: Always extend `XotBase` classes, never Filament classes directly.
-5.  **Specialized Components**: Never decompose specialized components (e.g., `WorkerColumn`) into primitive columns unless explicitly instructed.
+5.  **Specialized Components**: Never decompose specialized components (e.g., `WorkerColumn`) into primitive columns unless explicitly instructed. Always use explicit keys (e.g., `'lavoratore' => WorkerColumn::make(...)`).

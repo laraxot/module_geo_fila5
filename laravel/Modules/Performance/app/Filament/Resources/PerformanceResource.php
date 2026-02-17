@@ -221,70 +221,70 @@ class PerformanceResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('type')
+            'type' => TextColumn::make('type')
                 ->searchable(),
-            TextColumn::make('post_type')
+            'post_type' => TextColumn::make('post_type')
                 ->searchable(),
-            TextColumn::make('ente')
+            'ente' => TextColumn::make('ente')
                 ->numeric()
                 ->sortable(),
-            WorkerColumn::make('lavoratore'),
-            TextColumn::make('stabi')
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            'stabi' => TextColumn::make('stabi')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('repar')
+            'repar' => TextColumn::make('repar')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('stabival')
+            'stabival' => TextColumn::make('stabival')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('reparval')
+            'reparval' => TextColumn::make('reparval')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('stabi_txt')
+            'stabi_txt' => TextColumn::make('stabi_txt')
                 ->searchable(),
-            TextColumn::make('repar_txt')
+            'repar_txt' => TextColumn::make('repar_txt')
                 ->searchable(),
-            TextColumn::make('disci')
+            'disci' => TextColumn::make('disci')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('disci_txt')
+            'disci_txt' => TextColumn::make('disci_txt')
                 ->searchable(),
-            TextColumn::make('rep2kd')
+            'rep2kd' => TextColumn::make('rep2kd')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('rep2ka')
+            'rep2ka' => TextColumn::make('rep2ka')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('posiz')
+            'posiz' => TextColumn::make('posiz')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('propro')
+            'propro' => TextColumn::make('propro')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('posfun')
+            'posfun' => TextColumn::make('posfun')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('categoria_eco')
+            'categoria_eco' => TextColumn::make('categoria_eco')
                 ->searchable(),
-            TextColumn::make('qua2kd')
+            'qua2kd' => TextColumn::make('qua2kd')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('qua2ka')
+            'qua2ka' => TextColumn::make('qua2ka')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('dal')
+            'dal' => TextColumn::make('dal')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('al')
+            'al' => TextColumn::make('al')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
-            IconColumn::make('excellence')
+            'excellence' => IconColumn::make('excellence')
                 ->boolean(),
-            TextColumn::make('gg_anno')
+            'gg_anno' => TextColumn::make('gg_anno')
                 ->numeric()
                 ->sortable(),
 

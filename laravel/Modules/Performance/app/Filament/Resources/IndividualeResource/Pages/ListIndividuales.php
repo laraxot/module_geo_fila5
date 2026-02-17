@@ -140,8 +140,8 @@ class ListIndividuales extends XotBaseListRecords
         return [
             'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
             'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([
-                TextColumn::make('motivo')->searchable(),
-                TextColumn::make('mail_sended_at')
+                'motivo' => TextColumn::make('motivo')->searchable(),
+                'mail_sended_at' => TextColumn::make('mail_sended_at')
                     ->html()
                     ->default(app(ShowMailSendedAt::class)->execute(...)),
             ]),
