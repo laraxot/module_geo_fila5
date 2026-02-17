@@ -41,7 +41,8 @@ use Modules\Ptv\Filament\Tables\Columns\RepColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Override;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ListIndennitaResponsabilitas extends XotBaseListRecords
 {
@@ -65,7 +66,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
 
             'exportPdf' => Action::make('exportPdf')
                 ->icon('heroicon-s-document')
-                ->action(function (): BinaryFileResponse {
+                ->action(function (): StreamedResponse {
                     /** @var array<string, mixed> $tableFilters */
                     $tableFilters = $this->tableFilters ?? [];
 
