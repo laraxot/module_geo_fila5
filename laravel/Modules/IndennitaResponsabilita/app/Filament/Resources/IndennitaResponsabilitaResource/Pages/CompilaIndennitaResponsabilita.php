@@ -17,6 +17,7 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
+use LogicException;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
@@ -51,7 +52,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     public function mount(int|string $record): void
     {
-        $this->record = $this->resolveRecord($record);
+        /** @var IndennitaResponsabilita $resolvedRecord */
+        $resolvedRecord = $this->resolveRecord($record);
+        $this->record = $resolvedRecord;
 
         if (! $this->record instanceof IndennitaResponsabilita) {
             abort(404);
@@ -65,15 +68,30 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     }
 
     /**
+     * Type-safe record getter.
+     * Use explicit type narrowing for PHPStan Level 10.
+     */
+    public function getSpecificRecord(): IndennitaResponsabilita
+    {
+        $record = $this->record;
+        if (! $record instanceof IndennitaResponsabilita) {
+            throw new LogicException('Record must be an instance of IndennitaResponsabilita.');
+        }
+
+        return $record;
+    }
+
+    /**
      * Fill form with initial data from record.
      * Solo campi editabili, le informazioni generali sono in Infolist.
      */
     protected function fillFormWithInitialData(): void
     {
+        $record = $this->getSpecificRecord();
         // Solo campi editabili, le informazioni generali sono visualizzate via Infolist
         $this->form->fill([
-            'dal' => $this->record->dal,
-            'al' => $this->record->al,
+            'dal' => $record->dal,
+            'al' => $record->al,
         ]);
     }
 
@@ -82,7 +100,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     protected function authorizeAccess(): void
     {
-        Gate::authorize('update', $this->record);
+        Gate::authorize('update', $this->getSpecificRecord());
     }
 
     /**
@@ -93,11 +111,11 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     public function infolist(Schema $schema): Schema
     {
         return $schema
-            ->record($this->record)
+            ->record($this->getSpecificRecord())
             ->components([
                 Section::make('Informazioni Generali')
                     ->columns(4)
-                    ->components([
+                    ->schema([
                         TextEntry::make('matr')
                             ->label('Matricola'),
                         TextEntry::make('cognome')
@@ -108,18 +126,11 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
                             ->label('P.Time %')
                             ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
                     ]),
-
                 Section::make('Riepilogo Calcoli')
                     ->columns(4)
-                    ->components([
+                    ->schema([
                         TextEntry::make('tot_score')
                             ->label('Punteggio Totale'),
-                        TextEntry::make('mensile_calcolato')
-                            ->label('Mensile Calcolato'),
-                        TextEntry::make('mensile_attribuito')
-                            ->label('Mensile Attribuito'),
-                        TextEntry::make('annuale_attribuito')
-                            ->label('Annuale Attribuito'),
                     ]),
             ]);
     }
@@ -130,8 +141,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     protected function getFormSchema(): array
     {
+        $record = $this->getSpecificRecord();
+
         return [
-            Section::make('Valutazioni Anno '.($this->record?->anno ?? 2025))
+            Section::make('Valutazioni Anno '.($record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
         ];
     }
@@ -170,13 +183,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
                 ];
                 $item->readOnly()
                     ->extraInputAttributes(['class' => 'bg-gray-100 cursor-not-allowed'])
-                    ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating): void {
+                    ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating, $readonlyFields): void {
                         $method = 'get'.Str::studly((string) $rating->title);
                         if (method_exists($this, $method)) {
-                            $result = $this->$method($get, []);
-                            if ($result !== null) {
-                                $component->state($result);
-                            }
+                            // Fix type mismatch for method call
+                            $result = (string) $this->$method($get, $readonlyFields);
+                            $component->state($result);
                         }
                     });
             } else {
@@ -201,9 +213,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     protected function getRatingsForYear(): \Illuminate\Database\Eloquent\Collection
     {
+        $record = $this->getSpecificRecord();
         /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
-        $ratings = $this->record->ratings()
-            ->where('extra_attributes->anno', $this->record->anno)
+        $ratings = $record->ratings()
+            ->where('extra_attributes->anno', $record->anno)
             ->get();
 
         return $ratings;
@@ -272,7 +285,8 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
      */
     public function getImportoMensileAttribuito(Get $get, array $readonlyFields = []): float
     {
-        $perc = (float) ($this->record->perc_p_time_year ?? 1.0);
+        $record = $this->getSpecificRecord();
+        $perc = (float) ($record->perc_p_time_year ?? 1.0);
 
         return $this->getImportoMensileCalcolato($get, $readonlyFields) * $perc;
     }
@@ -316,17 +330,19 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
         /** @var array<string, mixed> $state */
         $state = $this->form->getState();
 
+        $record = $this->getSpecificRecord();
+
         // Update record standard fields
         /** @var array<string, mixed> $dataToUpdate */
         $dataToUpdate = collect($state)->only(['dal', 'al', 'note'])->toArray();
-        $this->record->update($dataToUpdate);
+        $record->update($dataToUpdate);
 
         // Update pivot ratings
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */
         $ratingsData = (array) ($state['ratings'] ?? []);
         foreach ($ratingsData as $id => $rating) {
             $value = $rating['pivot']['value'];
-            $this->record->ratings()->updateExistingPivot($id, [
+            $record->ratings()->updateExistingPivot($id, [
                 'value' => is_numeric($value) ? $value : 0,
             ]);
         }
