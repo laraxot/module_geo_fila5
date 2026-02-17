@@ -47,14 +47,19 @@ class ServizioVerificaDichGeneralita extends XotBasePage
                         ->schema(
                             [
                                 TextInput::make('codiceFiscale')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.codiceFiscale.label'))
                                     ->required(),
                                 TextInput::make('cognome')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.cognome.label'))
                                     ->required(),
                                 TextInput::make('nome')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.nome.label'))
                                     ->required(),
                                 TextInput::make('sesso')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.sesso.label'))
                                     ->required(),
                                 TextInput::make('dataNascita')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.dataNascita.label'))
                                     ->required(),
                             ]
                         ),
@@ -63,12 +68,16 @@ class ServizioVerificaDichGeneralita extends XotBasePage
                         ->schema(
                             [
                                 TextInput::make('nomeComune')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.nomeComune.label'))
                                     ->required(),
                                 TextInput::make('codiceIstat')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.codiceIstat.label'))
                                     ->required(),
                                 TextInput::make('siglaProvinciaIstat')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.siglaProvinciaIstat.label'))
                                     ->required(),
                                 TextInput::make('descrizioneLocalita')
+                                    ->label(__('pdnd::pages.servizio_verifica_dich_generalita.fields.descrizioneLocalita.label'))
                                     ->required(),
                             ]
                         ),
@@ -131,18 +140,18 @@ class ServizioVerificaDichGeneralita extends XotBasePage
                     }
 
                     Notification::make()
-                        ->title('Ricerca completata')
+                        ->title(__('pdnd::pages.servizio_verifica_dich_generalita.notifications.search_completed'))
                         ->success()
                         ->send();
                 } else {
-                    $this->idAnpr = 'Errore nella ricerca';
+                    $this->idAnpr = __('pdnd::pages.servizio_verifica_dich_generalita.notifications.search_error');
                 }
             } else {
-                $this->idAnpr = 'Errore nella ricerca';
+                $this->idAnpr = __('pdnd::pages.servizio_verifica_dich_generalita.notifications.search_error');
             }
         } catch (Exception $e) {
             Log::error('Errore in send(): '.$e->getMessage());
-            $this->idAnpr = 'Errore imprevisto';
+            $this->idAnpr = __('pdnd::pages.servizio_verifica_dich_generalita.notifications.unexpected_error');
         }
     }
 
@@ -157,6 +166,7 @@ class ServizioVerificaDichGeneralita extends XotBasePage
     {
         return [
             Action::make('pdndFormActions')
+                ->label(__('pdnd::pages.servizio_verifica_dich_generalita.actions.send'))
                 ->submit('pdndFormActions'),
         ];
     }

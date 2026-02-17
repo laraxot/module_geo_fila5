@@ -7,15 +7,53 @@ Tutte le traduzioni sono gestite automaticamente dal `LangServiceProvider` del m
 
 ## Struttura File di Traduzione
 
+### File di Traduzione per Pagine e Widget
+Per le pagine e i widget di Filament, le traduzioni devono essere contenute in un file `pages.php` all'interno della directory `lang/<locale>/` del modulo. Questo file deve seguire una struttura specifica per garantire la corretta risoluzione automatica delle traduzioni.
+
+**Struttura Completa (CRITICA) per Pagine e Widget:**
+```php
+<?php
+declare(strict_types=1);
+
+return [
+    'nome_pagina_o_widget' => [ // Chiave unica per la pagina/widget (es. 'servizio_verifica_dich_generalita')
+        'title' => 'Titolo della Pagina/Widget',
+        'description' => 'Descrizione del contenuto della Pagina/Widget',
+        'sections' => [
+            'info_generali' => [
+                'title' => 'Informazioni Generali',
+                'description' => 'Dettagli e impostazioni della sezione',
+            ],
+        ],
+        'fields' => [
+            'campo_esempio' => [
+                'label' => 'Etichetta Campo',
+                'placeholder' => 'Testo placeholder',
+                'help' => 'Testo di aiuto per il campo',
+                'tooltip' => 'Tooltip informativo',
+            ],
+        ],
+        'actions' => [
+            'save' => [
+                'label' => 'Salva',
+                'icon' => 'heroicon-o-check',
+                'tooltip' => 'Salva le modifiche',
+            ],
+        ],
+        'notifications' => [
+            'success' => 'Operazione completata con successo!',
+            'error' => 'Si è verificato un errore durante l\'operazione.',
+        ],
+    ],
+];
+```
+
+
 ### Posizionamento
 ```
 Modules/Pdnd/lang/it/
 ├── pdnd.php                                          # Traduzioni generali
-├── servizio_verifica_dich_generalita.php            # C003 test
-├── servizio_verifica_dich_generalita_p_r_o_d.php    # C003 prod
-├── servizio_accertamento_id_unico_nazionale.php     # C030 test
-├── servizio_accertamento_id_unico_nazionale_page_p_r_o_d.php  # C030 prod
-├── servizio_verifica_dich_esistenza_vita.php        # C007 test
+├── pages.php                                         # Traduzioni per Pagine e Widget Filament
 ├── guzzle_proxy.php                                  # Test Guzzle
 └── curl_proxy.php                                    # Test cURL
 ```
@@ -97,6 +135,21 @@ return [
             'tooltip' => 'Cancella i risultati del test',
             'icon' => 'heroicon-o-trash',
         ],
+    ],
+];
+```
+
+## Pattern per Notifications
+
+### Struttura Espansa per Notifiche
+```php
+return [
+    'notifications' => [
+        'success' => 'Operazione completata con successo!',
+        'error' => 'Si è verificato un errore!',
+        'search_completed' => 'Ricerca completata',
+        'search_error' => 'Errore nella ricerca',
+        'unexpected_error' => 'Errore imprevisto',
     ],
 ];
 ```

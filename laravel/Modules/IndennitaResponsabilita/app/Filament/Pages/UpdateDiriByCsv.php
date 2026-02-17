@@ -35,7 +35,7 @@ class UpdateDiriByCsv extends XotBasePage
     {
         return [
             FileUpload::make('csvFile')
-                ->label(__('indennitaresponsabilita::messages.upload_csv'))
+                ->label(__('indennitaresponsabilita::pages.update_diri_by_csv.fields.csvFile.label'))
                 ->acceptedFileTypes(['text/csv', 'text/plain'])
                 ->required()
                 ->columnSpan('full'),
@@ -57,7 +57,7 @@ class UpdateDiriByCsv extends XotBasePage
         // dddx($data);
 
         if (! is_array($data) || ! isset($data['csvFile'])) {
-            throw new RuntimeException('CSV file not provided');
+            throw new RuntimeException(__('indennitaresponsabilita::pages.update_diri_by_csv.notifications.csv_not_provided'));
         }
 
         try {
@@ -65,7 +65,7 @@ class UpdateDiriByCsv extends XotBasePage
             /** @var string $csvFile */
             $csvFile = $data['csvFile'] ?? '';
             if ($csvFile === '') {
-                throw new RuntimeException('CSV file path not provided');
+                throw new RuntimeException(__('indennitaresponsabilita::pages.update_diri_by_csv.notifications.path_not_provided'));
             }
             $path = Storage::disk('public')->path($csvFile);
             $records = $this->processCSV($path);
@@ -74,13 +74,13 @@ class UpdateDiriByCsv extends XotBasePage
             $this->updateDiri($records);
 
             Notification::make()
-                ->title(__('indennitaresponsabilita::messages.csv_processed'))
+                ->title(__('indennitaresponsabilita::pages.update_diri_by_csv.notifications.csv_processed'))
                 ->success()
                 ->send();
         } catch (Throwable $e) {
             // Handle errors and notify
             Notification::make()
-                ->title(__('indennitaresponsabilita::messages.error'))
+                ->title(__('indennitaresponsabilita::pages.update_diri_by_csv.notifications.error'))
                 ->danger()
                 ->body($e->getMessage())
                 ->send();
@@ -91,7 +91,7 @@ class UpdateDiriByCsv extends XotBasePage
     {
         $path = $file->storeAs('csv-uploads', $file->getClientOriginalName());
         if ($path === false) {
-            throw new RuntimeException('Failed to store uploaded file');
+            throw new RuntimeException(__('indennitaresponsabilita::pages.update_diri_by_csv.notifications.failed_to_store'));
         }
 
         return $path;
@@ -198,7 +198,7 @@ class UpdateDiriByCsv extends XotBasePage
     {
         return [
             Action::make('submit')
-                ->label(__('indennitaresponsabilita::messages.process_csv'))
+                ->label(__('indennitaresponsabilita::pages.update_diri_by_csv.actions.submit'))
                 ->action('submit'),
         ];
     }

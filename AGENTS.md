@@ -157,6 +157,27 @@ parameters:
 5. **Maintain PSR-4 autoloading**
 6. **ALWAYS use short array syntax `[]`** - never `array()`
 
+### NEVER Simplify Domain Logic
+When modifying code, **NEVER** simplify or replace domain-specific constructs:
+
+1. **Custom Columns** - Never replace `WorkerColumn`, `ValutatoreColumn`, etc. with `TextColumn`:
+   ```php
+   // WRONG
+   TextColumn::make('matr')->searchable(),
+   TextColumn::make('cognome')->searchable(),
+   
+   // CORRECT
+   WorkerColumn::make('lavoratore'),
+   ```
+
+2. **Options/Years** - Never remove options from Selects or Filters
+3. **Array Keys** - Never change named keys to indexed arrays
+4. **Actions** - Never delete getHeaderActions() or custom actions
+5. **Blade Includes** - Never replace @include with inline code
+6. **Traits** - Never remove traits from models
+
+**Golden Rule**: When in doubt, PRESERVE the existing code. Ask before simplifying.
+
 ### Filament v5 Best Practices
 - Use `XotBaseResource` instead of `Filament\Resources\Resource`
 - Implement `getFormSchema()` method in resources

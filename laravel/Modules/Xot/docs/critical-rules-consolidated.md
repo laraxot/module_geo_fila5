@@ -51,6 +51,7 @@ return [
 2. Modificare il sistema di gestione automatica delle connessioni
 3. Creare duplicati delle connessioni database
 4. Scrivere route() per le pagine nel front office (usare solo Folio)
+5. **Semplificare codice dominio-specifico** (vedi sotto)
 
 ### ✅ SEMPRE FARE SEMPRE:
 1. Lasciare `config/database.php` con solo la connessione base `mysql`
@@ -58,6 +59,26 @@ return [
 3. Usare `LaravelLocalization::localizeURL()` per le rotte localizzate
 4. Usare `route('logout')` solo per il logout (route di Laravel standard)
 5. MAI usare Livewire puro nel front office (solo widget di Filament)
+
+## 🔴 REGOLA DOMINIO: MAI SEMPLIFICARE
+
+### Custom Columns - MAI sostituire con TextColumn:
+```php
+// ❌ ERRATO
+TextColumn::make('matr')->searchable(),
+TextColumn::make('cognome')->searchable(),
+
+// ✅ CORRETTO
+WorkerColumn::make('lavoratore'),
+```
+
+### Options/Years - MAI rimuovere opzioni
+### Array Keys - MAI cambiare chiavi nominali in indici
+### Actions - MAI cancellare getHeaderActions()
+### Blade Includes - MAI sostituire @include con codice inline
+### Traits - MAI rimuovere traits dai modelli
+
+**REGOLA D'ORO**: In caso di dubbio, PRESERVARE il codice esistente. Chiedere prima di semplificare.
 6. MAI usare controller per le pagine pubbliche (solo Folio + Volt)
 
 ## 🔄 VERIFICA DELLA CONFIGURAZIONE
