@@ -40,26 +40,45 @@ public function getTableColumns(): array
 }
 ```
 
-## Perché è Importante
+## WorkerColumn - Cosa è Realmente
 
-### 1. DRY (Don't Repeat Yourself)
-La logica di visualizzazione è centralizzata nella colonna custom. Se cambia il formato, si modifica in un solo punto.
+**WorkerColumn è una GroupColumn, NON una relazione!**
 
-### 2. Coerenza UI/UX
-Tutte le tabelle mostrano le informazioni del lavoratore nello stesso modo, con lo stesso stile e layout.
+WorkerColumn estende `GroupColumn` da `Modules\UI\Filament\Tables\Columns\GroupColumn`. Questo significa che:
+- Raggruppa campi dello **stesso record** (matr, cognome, nome, email)
+- Non è una relazione a un altro modello
+- È puramente un pattern UI/UX per DRY e KISS
 
-### 3. Manutenibilità
-- Una modifica al formato del lavoratore richiede un cambiamento in un solo file
-- Non è necessario cercare e sostituire in tutte le risorse
-- Il codice è più pulito e leggibile
+### Ereditarietà
+```
+WorkerColumn → GroupColumn → Column
+```
 
-### 4. Performance
-- Una colonna invece di 3-4 riduce il carico di rendering
-- Meno query al database se la colonna ottimizza le relazioni
-- Migliore gestione del caching
+### Funzionamento
+```php
+// WorkerColumn mostra campi dello STESSO record:
+// - matr (dal record corrente)
+// - cognome (dal record corrente)  
+// - nome (dal record corrente)
+// - email (dal record corrente)
+```
 
-### 5. Type Safety
-La colonna custom può definire tipi precisi e validazioni specifiche per il dominio.
+### Vantaggi DRY + KISS
+- **DRY**: Definisco una volta come mostrare i dati del lavoratore, riutilizzo ovunque
+- **KISS**: Una colonna invece di 3-4, codice più pulito e leggibile
+- **Coerenza**: Stesso layout visivo in tutte le tabelle
+- **Manutenibilità**: Modifico il formato in un solo punto
+
+### Anti-pattern da Evitare
+```php
+// ❌ SBAGLIATO - Violazione DRY/KISS
+TextColumn::make('matr'),
+TextColumn::make('cognome'),
+TextColumn::make('nome'),
+
+// ✅ CORRETTO - DRY + KISS
+WorkerColumn::make('lavoratore'), // Raggruppa matr+cognome+nome+email
+```
 
 ## Altre Colonne Custom nel Progetto
 

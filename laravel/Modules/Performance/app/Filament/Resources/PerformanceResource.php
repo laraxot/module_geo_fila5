@@ -10,6 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Performance\Filament\Resources\PerformanceResource\Pages\CreatePerformance;
 use Modules\Performance\Filament\Resources\PerformanceResource\Pages\EditPerformance;
 use Modules\Performance\Filament\Resources\PerformanceResource\Pages\ListPerformances;
@@ -227,15 +228,7 @@ class PerformanceResource extends XotBaseResource
             TextColumn::make('ente')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('matr')
-                ->numeric()
-                ->sortable(),
-            TextColumn::make('cognome')
-                ->searchable(),
-            TextColumn::make('nome')
-                ->searchable(),
-            TextColumn::make('email')
-                ->searchable(),
+            WorkerColumn::make('lavoratore'),
             TextColumn::make('stabi')
                 ->numeric()
                 ->sortable(),

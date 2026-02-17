@@ -209,17 +209,16 @@ TextInput::make('codiceFiscale')
 ## File di Traduzione Attuali
 
 ### Verificati e Conformi
-- ✅ `pdnd.php` - Struttura espansa completa
-- ✅ `servizio_verifica_dich_generalita.php` - Struttura espansa completa
-- ✅ `servizio_accertamento_id_unico_nazionale.php` - Struttura espansa completa
-- ✅ `guzzle_proxy.php` - Struttura espansa completa
-- ✅ `curl_proxy.php` / `curl_proxy_page.php` / `consultazione_anagrafica.php` / `servizio_accertamento_generalita.php` - Etichette navigation localizzate (aggiornamento 19/11/2025)
+- ✅ `pdnd.php` - Struttura espansa completa per traduzioni generali del modulo.
+- ✅ `pages.php` - Contiene le traduzioni strutturate per tutte le Pagine e i Widget Filament del modulo.
+- ✅ `guzzle_proxy.php` - Struttura espansa completa.
+- ✅ `curl_proxy.php` / `curl_proxy_page.php` / `consultazione_anagrafica.php` / `servizio_accertamento_generalita.php` - Etichette navigation localizzate.
 
-### Da Aggiornare (se necessario)
-- Verificare completezza chiavi per tutti i campi usati
-- Aggiungere tooltip dove mancanti
-- Standardizzare format messaggi successo/errore
-- Mantenere sincronizzati `icon`, `group` e `label` con la tassonomia PDND ogni volta che si introduce un nuovo servizio
+### Da Aggiornare
+- Verificare completezza delle chiavi per tutti i campi e azioni utilizzati nelle Pagine e nei Widget.
+- Aggiungere `tooltip` dove mancanti.
+- Standardizzare il formato dei messaggi di successo/errore.
+- Mantenere sincronizzati `icon`, `group` e `label` con la tassonomia PDND ogni volta che si introduce un nuovo servizio o si aggiorna uno esistente.
 
 ## Checklist Traduzioni
 
@@ -282,5 +281,12 @@ Le traduzioni devono essere auto-esplicative senza dover vedere il codice.
 - [Best Practices Filament](./filament-best-practices.md)
 - [Regole Traduzioni Laraxot](../../Xot/docs/translations-best-practices.md)
 
-*Ultimo aggiornamento: 19 Novembre 2025*
+*Ultimo aggiornamento: 17 Febbraio 2026*
+
+### Modifiche Recenti
+
+- **Introduzione della Struttura per Pagine e Widget:** Aggiunta una sezione dedicata alla struttura obbligatoria dei file di traduzione `pages.php` per le Pagine e i Widget Filament, inclusi `title`, `description`, `sections`, `fields` e `actions`.
+- **Pattern per Notifiche:** Inserita una sezione specifica per la standardizzazione delle traduzioni delle notifiche.
+- **Aggiornamento Elenco File di Traduzione:** La sezione "File di Traduzione Attuali" è stata rivista per riflettere l'adozione del file `pages.php` e una maggiore chiarezza.
+
 

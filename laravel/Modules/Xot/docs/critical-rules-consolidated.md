@@ -62,15 +62,19 @@ return [
 
 ## 🔴 REGOLA DOMINIO: MAI SEMPLIFICARE
 
-### Custom Columns - MAI sostituire con TextColumn:
+### Custom Columns - Usare per DRY/KISS:
 ```php
-// ❌ ERRATO
+// ❌ ERRATO - Ripetere i campi ovunque
 TextColumn::make('matr')->searchable(),
 TextColumn::make('cognome')->searchable(),
+TextColumn::make('nome'),
+TextColumn::make('email'),
 
-// ✅ CORRETTO
+// ✅ CORRETTO - WorkerColumn raggruppa i campi comuni (DRY/KISS)
 WorkerColumn::make('lavoratore'),
 ```
+
+**NOTA**: `WorkerColumn` NON è una relazione! È un `GroupColumn` che mostra campi raggruppati (matr, cognome, nome, email).
 
 ### Options/Years - MAI rimuovere opzioni
 ### Array Keys - MAI cambiare chiavi nominali in indici

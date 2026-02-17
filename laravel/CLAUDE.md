@@ -119,13 +119,13 @@ protected function isAccessible(User $user, ?string $path = null): bool
 When modifying code, **NEVER** simplify or replace domain-specific constructs:
 
 ### 1. Custom Columns
-Never replace `WorkerColumn`, `ValutatoreColumn`, etc. with `TextColumn`:
+Use WorkerColumn for DRY/KISS (it's a GroupColumn, NOT a relationship):
 ```php
-// WRONG
+// WRONG - repeating fields everywhere
 TextColumn::make('matr')->searchable(),
 TextColumn::make('cognome')->searchable(),
 
-// CORRECT
+// CORRECT - WorkerColumn groups common fields (DRY/KISS)
 WorkerColumn::make('lavoratore'),
 ```
 

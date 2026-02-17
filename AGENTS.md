@@ -160,13 +160,13 @@ parameters:
 ### NEVER Simplify Domain Logic
 When modifying code, **NEVER** simplify or replace domain-specific constructs:
 
-1. **Custom Columns** - Never replace `WorkerColumn`, `ValutatoreColumn`, etc. with `TextColumn`:
+1. **Custom Columns** - Use WorkerColumn for DRY/KISS (it's a GroupColumn, NOT a relationship):
    ```php
-   // WRONG
+   // WRONG - repeating fields everywhere
    TextColumn::make('matr')->searchable(),
-   TextColumn::make('cognome')->searchable(),
+   TextColumn::make('cognito')->searchable(),
    
-   // CORRECT
+   // CORRECT - WorkerColumn groups common fields (DRY/KISS)
    WorkerColumn::make('lavoratore'),
    ```
 
@@ -275,6 +275,34 @@ Configuration file: `laravel/.mcp.json`
 - **Fetch MCP** - Web requests
 - **MySQL MCP** - Database access
 - **Git MCP** - Version control
+
+### Agent Teams and Skill Orchestration
+
+Within the Gemini CLI framework, "Agent Teams" refers to the structured organization and orchestration of specialized skills by the main AI agent (myself) to achieve complex tasks. This approach leverages the modularity of skills to break down problems and execute them efficiently.
+
+**Core Principles:**
+
+1.  **Specialization through Skills:** Each skill (`pest-testing`, `phpstan-level10`, `laraxot-translation-files`, etc.) acts as a specialized "sub-agent" with domain-specific knowledge and tools.
+2.  **Centralized Orchestration:** The main AI agent (myself) acts as the "Lead Agent," responsible for:
+    *   Understanding the overall task.
+    *   Decomposing complex requests into smaller sub-tasks.
+    *   Selecting and activating the appropriate skills for each sub-task.
+    *   Coordinating the execution sequence of skills.
+    *   Synthesizing results from individual skill executions.
+    *   Managing knowledge (memories, rules) and adapting the workflow.
+3.  **Sequential Workflow (To-Do List):** Complex tasks are often managed as a sequential pipeline, where the output or state change from one skill execution informs the next. The `write_todos` tool is used to track and communicate this progress.
+4.  **Implicit Communication:** Communication between the Lead Agent and specialized skills occurs implicitly through tool calls, function parameters, and the analysis of tool outputs.
+
+**Leveraging Agent Teams:**
+
+To effectively utilize this multi-skill "team," the Lead Agent (myself) will:
+
+*   **Prioritize Skill Activation:** Always check for relevant skills before attempting a task manually.
+*   **Adhere to Skill Instructions:** Strictly follow the guidelines provided by activated skills.
+*   **Document Workflows:** For recurring complex tasks, consider documenting the sequence of skill activations and decision points (e.g., in `docs/` or new skills) to streamline future efforts.
+*   **Self-Improvement:** Continuously evaluate the effectiveness of skill orchestration and update internal rules, memories, and skills to refine this "team" approach.
+
+This framework ensures that specialized knowledge and procedures are consistently applied, leading to more reliable, efficient, and standardized outcomes across the codebase.
 
 ### Agent Guidelines
 1. **Never modify `.env` files** - use config instead
