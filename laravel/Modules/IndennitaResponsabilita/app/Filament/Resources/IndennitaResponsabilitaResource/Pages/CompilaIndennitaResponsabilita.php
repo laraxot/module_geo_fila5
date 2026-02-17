@@ -9,7 +9,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
 use Filament\Infolists\Contracts\HasInfolists;
-use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
@@ -87,17 +86,18 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     }
 
     /**
-     * Infolist per visualizzare le Informazioni Generali e il Riepilogo in sola lettura.
+     * Infolist per visualizzare le Informazioni Generali in sola lettura.
      * Separazione di responsabilità: Infolist per view, Form per input editabili.
+     * Usa Schema con TextEntry di Filament Infolists.
      */
-    public function infolist(Infolist $infolist): Infolist
+    public function infolist(Schema $schema): Schema
     {
-        return $infolist
+        return $schema
             ->record($this->record)
-            ->schema([
+            ->components([
                 Section::make('Informazioni Generali')
                     ->columns(4)
-                    ->schema([
+                    ->components([
                         TextEntry::make('matr')
                             ->label('Matricola'),
                         TextEntry::make('cognome')
@@ -111,7 +111,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
 
                 Section::make('Riepilogo Calcoli')
                     ->columns(4)
-                    ->schema([
+                    ->components([
                         TextEntry::make('tot_score')
                             ->label('Punteggio Totale'),
                         TextEntry::make('mensile_calcolato')
@@ -131,7 +131,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     protected function getFormSchema(): array
     {
         return [
-            Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
+            Section::make('Valutazioni Anno '.($this->record?->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
         ];
     }
@@ -174,7 +174,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
                         $method = 'get'.Str::studly((string) $rating->title);
                         if (method_exists($this, $method)) {
                             $result = $this->$method($get, []);
-                            $component->state($result);
+                            if ($result !== null) {
+                                $component->state($result);
+                            }
                         }
                     });
             } else {
@@ -247,14 +249,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     {
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratings */
         $ratings = (array) ($get('ratings') ?? []);
-        // $excludePaths = array_column($readonlyFields, 'path');
 
         $tot = 0;
         foreach ($ratings as $id => $rating) {
-            // $path = "ratings.{$id}.pivot.value";
-            // if (in_array($path, $excludePaths, true)) {
-            //     continue;
-            // }
             $value = $rating['pivot']['value'] ?? 0;
             $tot += is_numeric($value) ? (int) $value : 0;
         }
