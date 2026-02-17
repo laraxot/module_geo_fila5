@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
 use Filament\Actions\Action;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -16,21 +14,19 @@ use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
-use Override;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
  *
- * Uses the "Super Mucca" methodology: 
+ * Uses the "Super Mucca" methodology:
  * - Study first, then implement with confidence
  * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
  * - Always document decisions in docs/
  *
  * @property IndennitaResponsabilita $record
- * @property array<string, mixed> $data
+ * @property array<string, mixed>    $data
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
@@ -47,10 +43,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         /** @var IndennitaResponsabilita|null $resolved */
         $resolved = IndennitaResponsabilita::find($record);
-        if ($resolved === null) {
+        if (null === $resolved) {
             abort(404);
         }
-        
+
         $this->record = $resolved;
 
         $this->authorizeAccess();
@@ -102,7 +98,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                         ->label('Nome')
                         ->disabled(),
                 ]),
-            
+
             Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
         ];
@@ -116,14 +112,14 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     protected function getRatingsSchema(): array
     {
         $ratings = $this->getRatingsForYear();
-        
+
         $schema = [];
         /** @var array<int, array{title: string, path: string}> $readonlyFields */
         $readonlyFields = []; // Needed for closure usage
 
         foreach ($ratings as $rating) {
             $fieldname = 'ratings.'.$rating->id.'.pivot.value';
-            
+
             $item = TextInput::make($fieldname)
                 ->label(strip_tags((string) ($rating->txt ?? $rating->title)))
                 ->columns(2);
@@ -134,7 +130,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                     ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating): void {
                         $method = 'get'.Str::studly((string) $rating->title);
                         if (method_exists($this, $method)) {
-                            /** @var mixed $result */
                             $result = $this->$method($get, []);
                             $component->state($result);
                         }
@@ -200,7 +195,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
     protected function recalculateReadonlyFields(Set $set, Get $get, array $readonlyFields): void
     {
@@ -213,7 +208,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
     public function getTot(Get $get, array $readonlyFields = []): int
     {
@@ -235,7 +230,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
     public function getImportoMensileCalcolato(Get $get, array $readonlyFields = []): float
     {
@@ -243,7 +238,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
     public function getImportoMensileAttribuito(Get $get, array $readonlyFields = []): float
     {
@@ -253,7 +248,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param array<int, array{title: string, path: string}> $readonlyFields
      */
     public function getImportoAnnualeAttribuito(Get $get, array $readonlyFields = []): float
     {
@@ -261,9 +256,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
+     * @return array<string, Action|\Filament\Actions\ActionGroup>
      */
-    #[Override]
+    #[\Override]
     protected function getHeaderActions(): array
     {
         return [
@@ -271,7 +266,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                 ->label('Back')
                 ->color('gray')
                 ->url(function (): string {
-                    /** @var mixed $url */
                     $url = static::$resource::getUrl('index');
 
                     return is_string($url) ? $url : '';
@@ -279,7 +273,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         ];
     }
 
-    #[Override]
     public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
     {
         $this->form->validate();
