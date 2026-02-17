@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 /**
@@ -30,6 +31,8 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
+    protected static string $resource = IndennitaResponsabilitaResource::class;
+
     public static ?string $model = IndennitaResponsabilita::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
@@ -258,7 +261,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     /**
      * @return array<string, Action|\Filament\Actions\ActionGroup>
      */
-    #[\Override]
     protected function getHeaderActions(): array
     {
         return [

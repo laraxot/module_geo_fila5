@@ -10,7 +10,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Modules\Xot\Filament\Pages\XotBasePage;
+use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 use Filament\Schemas\Schema;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 
