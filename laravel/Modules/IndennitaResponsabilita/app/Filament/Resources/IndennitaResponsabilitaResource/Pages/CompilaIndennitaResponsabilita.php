@@ -226,18 +226,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * Get the form schema for the page.
-     */
-    public function form(Schema $schema): Schema
-    {
-        return $schema
-            ->components($this->getFormSchema())
-            ->model($this->getModel())
-            ->statePath('data')
-            ->columns(2);
-    }
-
-    /**
      * Get the form model.
      */
     public function getModel(): string
