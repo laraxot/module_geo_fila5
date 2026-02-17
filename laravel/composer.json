@@ -81,7 +81,7 @@
             "@php artisan migrate --ansi"
         ],
         "go": [
-            "sudo chmod -R 777 ..",
+
             "@php -d memory_limit=-1 composer.phar self-update",
             "@php -d memory_limit=-1 composer.phar update -W",
             "rm -rf resources/views/vendor",

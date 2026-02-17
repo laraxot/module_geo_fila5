@@ -78,13 +78,12 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
                 ->type('number')
                 ->rules(['required', 'numeric'])
                 ->searchable(),
-            'quota_percentuale' => TextColumn::make('quota_percentuale')
+            'quota_percentuale_sum' => TextColumn::make('quota_percentuale')
                 ->summarize(Sum::make()->label('TOTALE %')),
-            'importo' => TextColumn::make('importo')
+            'importo_sum' => TextColumn::make('importo')
                 ->summarize(Sum::make()->label('TOTALE €')->money('EUR', decimalPlaces: 2)),
-            TextColumn::make('employees.full_name')
+            'employees.full_name' => TextColumn::make('employees.full_name')
                 ->placeholder('Nessun componente')
-                ->label('Componenti')
                 ->badge(),
         ];
     }
