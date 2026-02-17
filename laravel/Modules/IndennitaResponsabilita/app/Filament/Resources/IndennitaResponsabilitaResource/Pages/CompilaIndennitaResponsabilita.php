@@ -4,25 +4,26 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
-use LogicException;
-use Illuminate\Support\Str;
 use Filament\Actions\Action;
-use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\Gate;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\DatePicker;
 use Filament\Infolists\Components\TextEntry;
-use Illuminate\Database\Eloquent\Collection;
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use LogicException;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
@@ -38,6 +39,11 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 class CompilaIndennitaResponsabilita extends XotBasePage
 {
     use InteractsWithRecord;
+
+    /**
+     * Minimum number of criteria that must have a score > 0.
+     */
+    private const MIN_POSITIVE_RATINGS = 2;
 
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
@@ -88,12 +94,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     protected function fillFormWithInitialData(): void
     {
         $record = $this->getSpecificRecord();
-        $data=$record->load('ratings')->attributesToArray();
-        $ratings=$record->ratings->pluck('pivot.value','id')->toArray();
-        foreach($ratings as $id=>$value){
-            $data['ratings'][$id]['pivot']['value']=$value;
+        $data = $record->load('ratings')->attributesToArray();
+        $ratings = $record->ratings->pluck('pivot.value', 'id')->toArray();
+        foreach ($ratings as $id => $value) {
+            $data['ratings'][$id]['pivot']['value'] = $value;
         }
-        
+
         // Solo campi editabili, le informazioni generali sono visualizzate via Infolist
         $this->form->fill($data);
     }
@@ -139,8 +145,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     protected function getFormSchema(): array
     {
-        $record = $this->getSpecificRecord();
-
         return [
             DatePicker::make('dal'),
             DatePicker::make('al'),
@@ -152,62 +156,43 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     /**
      * Get the form schema for ratings section.
      *
-     * @return list<TextInput>
+     * @return array<int, mixed>
      */
     protected function getRatingsSchema(): array
     {
         $ratings = $this->getRatingsForYear();
-        $readonlyFields=$ratings->where('is_readonly', true);
+        /** @var Collection<int, Rating> $readonlyFields */
+        $readonlyFields = $ratings->where('is_readonly', true);
 
         $schema = [];
-        
-        
+
         /** @var Rating $rating */
         foreach ($ratings as $rating) {
             $fieldname = 'ratings.'.$rating->id.'.pivot.value';
-            $label=strip_tags((string) ($rating->txt ?? $rating->title));
-            $readOnly=(bool) ($rating->is_readonly ?? false);
-            if(!$readOnly){
-                //dddx($rating);
+            $label = strip_tags((string) ($rating->txt ?? $rating->title));
+            $readOnly = (bool) ($rating->is_readonly ?? false);
+
+            if (! $readOnly) {
                 $item = TextInput::make($fieldname)
                     ->label($label)
-                    ->numeric()->nullable()
+                    ->numeric()
+                    ->nullable()
                     ->columns(2)
                     ->inlineLabel()
                     ->live(onBlur: true)
-                    ->rules($rating->rule->value ?? '')
-                    ->helperText('')
+                    ->rules((string) ($rating->rule->value ?? ''))
                     ->afterStateUpdated(function (Set $set, Get $get) use ($readonlyFields): void {
                         $this->recalculateReadonlyFields($set, $get, $readonlyFields);
-                    });;
-            }
-
-       
-
-            if ($readOnly) {
-               
-                $item=TextEntry::make($fieldname)
-                        ->label($label)
-                        //->rules($rating->rule->value ?? '')
-                        ->inlineLabel();
-                /*
-                $item->readOnly()
-                    ->extraInputAttributes(['class' => 'bg-gray-100 cursor-not-allowed'])
-                    ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating, $readonlyFields): void {
-                        $method = 'get'.Str::studly((string) $rating->title);
-                        if (method_exists($this, $method)) {
-                            // Fix type mismatch for method call
-                            $result = (string) $this->$method($get, $readonlyFields);
-                            $component->state($result);
-                        }
                     });
-                */
-            } 
+            } else {
+                // Using TextEntry inside a form schema to display readonly values from pivot
+                $item = TextEntry::make($fieldname)
+                    ->label($label)
+                    ->inlineLabel();
+            }
 
             $schema[] = $item;
         }
-
-        
 
         return $schema;
     }
@@ -215,12 +200,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     /**
      * Get ratings for the current year using schemaless attributes.
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, Rating>
+     * @return Collection<int, Rating>
      */
-    protected function getRatingsForYear(): \Illuminate\Database\Eloquent\Collection
+    protected function getRatingsForYear(): Collection
     {
         $record = $this->getSpecificRecord();
-        /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
+        /** @var Collection<int, Rating> $ratings */
         $ratings = $record->ratings()
             ->where('extra_attributes->anno', $record->anno)
             ->get();
@@ -237,13 +222,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param  Collection<int, Rating>  $readonlyFields
      */
     protected function recalculateReadonlyFields(Set $set, Get $get, Collection $readonlyFields): void
     {
-        
         foreach ($readonlyFields as $rf) {
-            $method = 'get'.Str::studly($rf->title);
+            $method = 'get'.Str::studly((string) $rf->title);
             $fieldname = 'ratings.'.$rf->id.'.pivot.value';
             if (method_exists($this, $method)) {
                 $set($fieldname, $this->$method($get, $readonlyFields));
@@ -252,15 +236,15 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param  Collection<int, Rating>  $readonlyFields
      */
-    public function getTot(Get $get, Collection $readonlyFields ): int
+    public function getTot(Get $get, Collection $readonlyFields): int
     {
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratings */
         $ratings = (array) ($get('ratings') ?? []);
 
         $tot = 0;
-        foreach ($ratings as $id => $rating) {
+        foreach ($ratings as $rating) {
             $value = $rating['pivot']['value'] ?? 0;
             $tot += is_numeric($value) ? (int) $value : 0;
         }
@@ -269,15 +253,15 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param  Collection<int, Rating>  $readonlyFields
      */
-    public function getImportoMensileCalcolato(Get $get, Collection $readonlyFields ): float
+    public function getImportoMensileCalcolato(Get $get, Collection $readonlyFields): float
     {
         return (float) $this->getTot($get, $readonlyFields) * 10.0;
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param  Collection<int, Rating>  $readonlyFields
      */
     public function getImportoMensileAttribuito(Get $get, Collection $readonlyFields): float
     {
@@ -288,11 +272,11 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
+     * @param  Collection<int, Rating>  $readonlyFields
      */
     public function getImportoAnnualeAttribuito(Get $get, Collection $readonlyFields): float
     {
-        return (float) $this->getImportoMensileAttribuito($get, $readonlyFields) * 12.0;
+        return $this->getImportoMensileAttribuito($get, $readonlyFields) * 12.0;
     }
 
     /**
@@ -305,9 +289,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                 ->label('Back')
                 ->color('gray')
                 ->url(function (): string {
+                    /** @var string $url */
                     $url = static::$resource::getUrl('index');
 
-                    return is_string($url) ? $url : '';
+                    return $url;
                 }),
         ];
     }
@@ -322,23 +307,19 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
     public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
     {
-        //$rules = $this->getRules();
-        
-        //$validatedData = $this->validate($rules);
-        
-
-
-
         $this->form->validate();
+
         /** @var array<string, mixed> $state */
         $state = $this->form->getState();
-        $data=$this->data;
+
+        // Custom validation: At least 2 editable rating fields must have a value > 0
+        $this->ensureMinimumPositiveRatings($state);
 
         $record = $this->getSpecificRecord();
 
         // Update record standard fields
         /** @var array<string, mixed> $dataToUpdate */
-        $dataToUpdate = collect($data)->only(['dal', 'al', 'note'])->toArray();
+        $dataToUpdate = collect($this->data)->only(['dal', 'al', 'note'])->toArray();
         $record->update($dataToUpdate);
 
         // Update pivot ratings
@@ -353,6 +334,41 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         if ($shouldSendSavedNotification) {
             Notification::make()->title('Saved successfully')->success()->send();
+        }
+    }
+
+    /**
+     * Ensure that at least MIN_POSITIVE_RATINGS editable ratings have a value > 0.
+     *
+     * @param  array<string, mixed>  $state
+     *
+     * @throws ValidationException
+     */
+    protected function ensureMinimumPositiveRatings(array $state): void
+    {
+        /** @var Collection<int, Rating> $editableRatings */
+        $editableRatings = $this->getRatingsForYear()->where('is_readonly', false);
+        /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */
+        $ratingsData = (array) ($state['ratings'] ?? []);
+
+        $positiveCount = 0;
+        foreach ($editableRatings as $rating) {
+            $value = $ratingsData[$rating->id]['pivot']['value'] ?? 0;
+            if (is_numeric($value) && (float) $value > 0) {
+                $positiveCount++;
+            }
+        }
+
+        if ($positiveCount < self::MIN_POSITIVE_RATINGS) {
+            Notification::make()
+                ->title('Errore di Validazione')
+                ->body('Attenzione: come indicato nella legenda, è necessario compilare almeno '.self::MIN_POSITIVE_RATINGS.' criteri con punteggio superiore a 0.')
+                ->danger()
+                ->send();
+
+            throw ValidationException::withMessages([
+                'ratings' => 'Almeno '.self::MIN_POSITIVE_RATINGS.' criteri devono avere un punteggio superiore a 0.',
+            ]);
         }
     }
 }
