@@ -98,23 +98,23 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
                 Section::make('Informazioni Generali')
                     ->columns(4)
                     ->schema([
-                        InfolistTextEntry::make('matr')
+                        TextEntry::make('matr')
                             ->label('Matricola'),
-                        InfolistTextEntry::make('cognome')
+                        TextEntry::make('cognome')
                             ->label('Cognome'),
-                        InfolistTextEntry::make('nome')
+                        TextEntry::make('nome')
                             ->label('Nome'),
-                        InfolistTextEntry::make('perc_p_time_year')
+                        TextEntry::make('perc_p_time_year')
                             ->label('P.Time %')
                             ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
                     ]),
 
-                InfolistSection::make('Riepilogo Calcoli')
+                Section::make('Riepilogo Calcoli')
                     ->columns(4)
                     ->schema([
-                        InfolistTextEntry::make('tot_score')
+                        TextEntry::make('tot_score')
                             ->label('Punteggio Totale'),
-                        InfolistTextEntry::make('mensile_calcolato')
+                        TextEntry::make('mensile_calcolato')
                             ->label('Mensile Calcolato'),
                         TextEntry::make('mensile_attribuito')
                             ->label('Mensile Attribuito'),
