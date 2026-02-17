@@ -18,12 +18,18 @@ PTVX is a modular HR & Performance evaluation system built on Laravel + Filament
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
 - **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. Use `standardize_docs.py` to fix.
 - **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
+- **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
+- **Rule**: FILAMENT CUSTOM PAGES - Custom pages MUST extend `XotBase*` classes. Single-record edit pages follow the `$data` array + `form->fill()` + `form->getState()` pattern. See skill: `.agent/skills/filament-custom-pages/SKILL.md`.
+- **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
 
 ## Documentation Locations
 
 - Project docs: `docs/`
 - Module docs: `laravel/Modules/{Module}/docs/`
 - MCP configuration: `laravel/.mcp.json`
+- Agent skills: `.agent/skills/`
+- Agent workflows: `.agent/workflows/`
+- Agent teams: `.agent/agent-teams.md`
 
 ## Links
 
@@ -33,3 +39,4 @@ PTVX is a modular HR & Performance evaluation system built on Laravel + Filament
 - [PHPStan Guide](./.gemini/docs/phpstan.md)
 - [Filament Guide](./.gemini/docs/filament.md)
 - [MCP Guide](./.gemini/docs/mcp.md)
+- [Agent Teams](./.agent/agent-teams.md)

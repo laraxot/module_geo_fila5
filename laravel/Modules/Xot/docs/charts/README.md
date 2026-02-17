@@ -1,7 +1,6 @@
 # 📊 Xot Charts - Shared Actions & Utilities
 
 **Modulo**: Xot (Core)
-**Data**: 2025-12-09
 **Status**: ✅ Production Ready
 
 ---
@@ -711,4 +710,3 @@ it('exports chart to SVG successfully', function () {
 ---
 
 **Autore**: PTVX Development Team
-**Ultimo Aggiornamento**: 2025-12-09

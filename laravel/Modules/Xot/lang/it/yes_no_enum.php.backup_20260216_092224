@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'yes' => [
+        'label' => 'Sì',
+        'color' => 'success',
+        'icon' => 'fas-check',
+    ],
+    'no' => [
+        'label' => 'No',
+        'color' => 'warning',
+        'icon' => 'fas-times',
+    ],
+];

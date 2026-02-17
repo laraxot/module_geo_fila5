@@ -9,6 +9,7 @@ return [
             'placeholder' => 'key',
             'helper_text' => 'key',
             'description' => 'key',
+            'tooltip' => '',
         ],
         'data' => [
             'pippo' => [
@@ -16,15 +17,23 @@ return [
                 'helper_text' => 'data.pippo',
                 'placeholder' => 'data.pippo',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'pippo' => [
             'description' => 'pippo',
             'helper_text' => 'pippo',
             'placeholder' => 'pippo',
             'label' => 'pippo',
+            'tooltip' => '',
         ],
         'pluto' => [
             'description' => 'pluto',
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
         ],
         'snapshots' => [
             'fields' => [
@@ -37,6 +46,10 @@ return [
                     ],
                 ],
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'content' => [
             'snapshots' => [
@@ -396,6 +409,10 @@ return [
                     'description' => 'content.stats.no_show_rate',
                 ],
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -408,5 +425,18 @@ return [
         'lang' => [
             'label' => 'lang',
         ],
+    ],
+    'label' => 'Edit Translation File',
+    'plural_label' => 'Edit Translation File (Plurale)',
+    'navigation' => [
+        'name' => 'Edit Translation File',
+        'plural' => 'Edit Translation File',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Edit Translation File',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
     ],
 ];

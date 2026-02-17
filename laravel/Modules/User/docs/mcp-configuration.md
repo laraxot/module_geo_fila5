@@ -1,6 +1,6 @@
 # MCP Server Configuration - User Module
 
-**Last Updated**: 31 Gennaio 2026
+
 **Status**: ✅ Configured
 **MCP Servers**: Asana, ClickUp, Filesystem, Database, Redmine (Planned)
 
@@ -213,14 +213,14 @@ Map User module roadmap tasks to Asana:
 - [Asana MCP Configuration](../../../docs/mcp-asana-configuration.md)
 - [ClickUp MCP Configuration](../../../docs/mcp-clickup-configuration.md)
 - [Redmine MCP Configuration](../../../docs/mcp-redmine-configuration.md)
-- [User Module Roadmap](./roadmap-2026-01-31.md)
+- [User Module Roadmap](./roadmap-[DATE].md)
 
 ---
 
 ## 🔄 Updates
 
-- **2026-01-31**: Added ClickUp support
-- **2026-01-31**: Planned Redmine integration
+- **[DATE]**: Added ClickUp support
+- **[DATE]**: Planned Redmine integration
 - **Servers Active**: 4 (Asana, ClickUp, Filesystem, Database)
 
 ---

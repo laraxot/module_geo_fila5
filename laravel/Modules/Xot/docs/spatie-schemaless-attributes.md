@@ -1,7 +1,6 @@
 # spatie/laravel-schemaless-attributes — Central Reference
 
 **Package**: [`spatie/laravel-schemaless-attributes`](https://github.com/spatie/laravel-schemaless-attributes)
-**Version**: 2.x (Laravel 11+)
 **PHPStan**: Level 10 ✅
 
 ---

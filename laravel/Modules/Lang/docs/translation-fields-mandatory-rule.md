@@ -1,6 +1,5 @@
 # Regola Critica: Sezione "fields" Obbligatoria nelle Traduzioni
 
-**Data**: 2026-01-09  
 **Modulo**: Lang  
 **Status**: 🔴 **REGOLA CRITICA DOCUMENTATA**
 
@@ -108,10 +107,10 @@ return [
 ## 📚 Documentazione Correlata
 
 - [Translation Standards](../../Xot/docs/translation-standards.md)
-- [Job Module Error Documentation](../../Job/docs/translation-fields-critical-error-2026-01-09.md)
+- [Job Module Error Documentation](../../Job/docs/translation-fields-critical-error-[DATE].md)
 
 ---
 
 **Status**: 🔴 **REGOLA CRITICA - MAI VIOLARE**
 
-**Ultimo aggiornamento**: 2026-01-09
+**Ultimo aggiornamento**: [DATE]

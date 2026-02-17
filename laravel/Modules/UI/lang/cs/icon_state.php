@@ -10,6 +10,7 @@ return [
             'help' => 'Identifikační název prvku',
             'description' => 'Název objektu',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'Upravit název',
@@ -17,6 +18,7 @@ return [
             'help' => 'Upravit existující název',
             'description' => 'Akce pro úpravu názvu',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'Změnit stav',
@@ -24,6 +26,7 @@ return [
             'help' => 'Upravit aktuální stav',
             'description' => 'Akce pro změnu stavu',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'Stav',
@@ -31,6 +34,7 @@ return [
             'help' => 'Aktuální stav prvku',
             'description' => 'Aktuální systémová podmínka',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Zpráva',
@@ -38,6 +42,7 @@ return [
             'help' => 'Informativní zpráva',
             'description' => 'Text zprávy',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'messages' => [
@@ -50,5 +55,16 @@ return [
         'transition_error' => [
             'title' => 'Chyba přechodu',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

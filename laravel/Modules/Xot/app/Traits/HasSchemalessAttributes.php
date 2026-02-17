@@ -5,30 +5,48 @@ declare(strict_types=1);
 namespace Modules\Xot\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 /**
  * Trait per implementare Schemaless Attributes in modo consistente.
  *
  * Fornisce metodi standard per lavorare con extra_attributes
- * seguendo le best practices di Spatie e del progetto PTVX.
- *
- * @template TModel of \Illuminate\Database\Eloquent\Model
+ * seguendo le best practices di Spatie.
  *
  * @see https://github.com/spatie/laravel-schemaless-attributes
  */
 trait HasSchemalessAttributes
 {
     /**
-     * Scope per filtrare per attributi schemaless.
+     * Aggiunge extra_attributes al fillable.
      *
-     * @param  Builder<$this>  $query
-     * @return Builder<$this>
+     * @return array<string>
+     */
+    protected function schemalessFillable(): array
+    {
+        return array_merge($this->fillable, [
+            'extra_attributes',
+        ]);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function schemalessCasts(): array
+    {
+        return array_merge($this->casts ?? [], [
+            'extra_attributes' => SchemalessAttributes::class,
+        ]);
+    }
+
+    /**
+     * Scope per filtrare per attributi schemaless.
      */
     public function scopeWithExtraAttributes(Builder $query): Builder
     {
-        // ✅ isset() è sufficiente poiché il cast garantisce un oggetto SchemalessAttributes
-        if (isset($this->extra_attributes)) {
+        if (isset($this->extra_attributes) && is_object($this->extra_attributes)) {
             return $this->extra_attributes->modelScope();
         }
 
@@ -37,16 +55,10 @@ trait HasSchemalessAttributes
 
     /**
      * Scope per query specifiche su extra_attributes.
-     *
-     * @param  Builder<$this>  $query
-     * @return Builder<$this>
      */
     public function scopeWhereExtraAttribute(Builder $query, string $key, mixed $value): Builder
     {
-        /** @var Builder<$this> $res */
-        $res = $query->where("extra_attributes->{$key}", $value);
-
-        return $res;
+        return $query->where("extra_attributes->{$key}", $value);
     }
 
     /**
@@ -54,7 +66,7 @@ trait HasSchemalessAttributes
      */
     public function getExtraAttribute(string $key, mixed $default = null): mixed
     {
-        return $this->extra_attributes->get($key, $default);
+        return $this->extra_attributes?->get($key, $default) ?? $default;
     }
 
     /**
@@ -62,6 +74,10 @@ trait HasSchemalessAttributes
      */
     public function setExtraAttribute(string $key, mixed $value): void
     {
+        if (! $this->extra_attributes) {
+            $this->extra_attributes = new SchemalessAttributes;
+        }
+
         $this->extra_attributes->set($key, $value);
     }
 
@@ -72,10 +88,7 @@ trait HasSchemalessAttributes
      */
     public function getExtraAttributes(): array
     {
-        /** @var array<string, mixed> $res */
-        $res = $this->extra_attributes->all();
-
-        return $res;
+        return $this->extra_attributes?->all() ?? [];
     }
 
     /**
@@ -83,7 +96,7 @@ trait HasSchemalessAttributes
      */
     public function hasExtraAttribute(string $key): bool
     {
-        return $this->extra_attributes->has($key);
+        return $this->extra_attributes?->has($key) ?? false;
     }
 
     /**
@@ -92,5 +105,13 @@ trait HasSchemalessAttributes
     public function removeExtraAttribute(string $key): void
     {
         $this->extra_attributes->forget($key);
+    }
+
+    /**
+     * Sincronizza gli extra_attributes con il database.
+     */
+    public function syncExtraAttributes(): void
+    {
+        $this->save();
     }
 }

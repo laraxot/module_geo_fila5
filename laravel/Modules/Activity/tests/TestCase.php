@@ -10,48 +10,46 @@ use Modules\Activity\Providers\ActivityServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Providers\XotServiceProvider;
 use Modules\Xot\Tests\CreatesApplication;
-use Spatie\EventSourcing\StoredEvents\EventSubscriber;
-use Spatie\EventSourcing\StoredEvents\Repositories\EloquentStoredEventRepository;
 
 /**
  * Base test case for Activity module.
  *
  * Uses MySQL from .env.testing.
+ * All module connections are mapped by TenantServiceProvider.
  */
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use DatabaseTransactions;
 
-    protected static bool $migrated = false;
+    protected $connectionsToTransact = [
+        'mysql',
+        'user',
+    ];
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->app->bind(EventSubscriber::class, function (): EventSubscriber {
-            return new EventSubscriber(EloquentStoredEventRepository::class);
-        });
+        config(['xra.pub_theme' => 'Meetup']);
+        config(['xra.main_module' => 'User']);
 
-        if (! self::$migrated) {
-            $this->artisan('migrate:fresh', [
-                '--force' => true,
-            ]);
+        \Modules\Xot\Datas\XotData::make()->update([
+            'pub_theme' => 'Meetup',
+            'main_module' => 'User',
+        ]);
 
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
-
-            self::$migrated = true;
-        }
+        // NOTE: Migrations are NOT run in setUp()
+        // They must be run ONCE externally: php artisan migrate --env=testing
+        // DatabaseTransactions trait handles rollback automatically between tests
     }
 
     protected function getPackageProviders($app): array
     {
         return [
-            ActivityServiceProvider::class,
-            UserServiceProvider::class,
             XotServiceProvider::class,
+            UserServiceProvider::class,
+            ActivityServiceProvider::class,
         ];
     }
 }

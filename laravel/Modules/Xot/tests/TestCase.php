@@ -6,29 +6,44 @@ namespace Modules\Xot\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Modules\Xot\Providers\XotServiceProvider;
 
 /**
  * Base test case for Xot module.
  *
- * Uses MySQL from .env.testing (NOT SQLite).
+ * Uses MySQL from .env.testing.
+ * All module connections are mapped by TenantServiceProvider.
  */
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
     use DatabaseTransactions;
 
-    protected static bool $migrated = false;
+    protected $connectionsToTransact = [
+        'mysql',
+        'user',
+    ];
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        if (! self::$migrated) {
-            $this->artisan('module:migrate', [
-                '--force' => true,
-            ]);
+        config(['xra.pub_theme' => 'Meetup']);
+        config(['xra.main_module' => 'User']);
 
-            self::$migrated = true;
-        }
+        \Modules\Xot\Datas\XotData::make()->update([
+            'pub_theme' => 'Meetup',
+            'main_module' => 'User',
+        ]);
+
+        // NOTE: Migrations are NOT run in setUp()
+        // They must be run ONCE externally: php artisan migrate --env=testing
+        // DatabaseTransactions trait handles rollback automatically between tests
+    }
+
+    protected function getPackageProviders($app): array
+    {
+        return [
+            XotServiceProvider::class,
+        ];
     }
 }

@@ -1,147 +1,182 @@
-# 🏗️ **Xot Module** - Il Cuore del Framework Laraxot
+# Analisi PHPStan per Moduli Laravel
 
-[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
-[![Filament 4.x](https://img.shields.io/badge/Filament-4.x-blue.svg)](https://filamentphp.com/)
-[![PHP 8.3](https://img.shields.io/badge/PHP-8.3-blueviolet.svg)](https://www.php.net/)
-[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
-[![Modular Architecture](https://img.shields.io/badge/Architecture-Modular%20Monolith-yellow.svg)](https://martinfowler.com/articles/modular-monolith.html)
+Questa documentazione spiega come utilizzare gli script forniti per analizzare i moduli Laravel con PHPStan.
 
-> **🚀 Modulo Xot**: Framework base e cuore architetturale di Laraxot - fornisce classi base, traits, convenzioni e infrastruttura core per tutti i moduli dell'ecosistema.
+## Cos'è PHPStan?
 
-## 📋 **Panoramica**
+PHPStan è uno strumento di analisi statica per PHP che consente di rilevare errori di programmazione senza eseguire il codice. Supporta diversi livelli di analisi, da 0 (più permissivo) a 9 (più restrittivo).
 
-Il modulo **Xot** è il **framework base** di Laraxot PTVX, un ecosistema modulare basato su **Laravel 12** e **Filament 4**, progettato per applicazioni enterprise. Fornisce gli strumenti fondamentali e i pattern architetturali per garantire coerenza, estensibilità e manutenibilità in tutto il progetto.
+## Script disponibili
 
-### Principi Fondamentali
-- **Modularità**: Ogni funzionalità è organizzata in moduli indipendenti e autoconsistenti.
-- **Coerenza**: Adozione di una struttura uniforme, convenzioni di naming e best practice standardizzate.
-- **Estensibilità**: Progettato per facilitare l'aggiunta di nuovi moduli e l'espansione delle funzionalità esistenti.
-- **Manutenibilità**: Codice pulito, ben documentato e supportato da strumenti di analisi statica.
+Nel progetto sono disponibili due script per eseguire l'analisi PHPStan su tutti i moduli:
 
-## ⚡ **Architettura Core**
+1. `analyze_modules_phpstan.php` - Script PHP che esegue l'analisi e genera file JSON e MD con i risultati
+2. `analyze_modules_phpstan.sh` - Wrapper Bash per lo script PHP che fornisce un'interfaccia più user-friendly
 
-### 🏗️ **Base Classes Pattern**
-Tutti i componenti principali dei moduli devono estendere le classi base fornite da Xot per ereditare funzionalità comuni e garantire coerenza.
+## Prerequisiti
 
-```php
-// Esempio di una Resource Filament
-use Modules\Xot\Filament\Resources\XotBaseResource;
+- PHP 8.1 o superiore
+- PHPStan già installato (incluso nelle dipendenze Composer)
+- Permessi di scrittura nelle directory dei moduli
 
-class UserResource extends XotBaseResource
-{
-    protected static ?string $model = User::class;
+## Come eseguire l'analisi
 
-    // Il metodo table() e form() NON devono essere sovrascritti
-    // se non per aggiungere logica specifica, ma la base
-    // è già fornita da XotBaseResource.
-}
-```
+### Metodo 1: Utilizzando lo script Bash
 
-### 🔧 **Traits Ecosystem**
-Xot fornisce un ricco ecosistema di Trait per aggiungere funzionalità comuni ai modelli e ad altre classi.
-- **HasXotTable**: Aggiunge funzionalità avanzate alle tabelle Filament.
-- **HasUuid**: Gestisce automaticamente UUID come chiavi primarie.
-- **HasMedia**: Integra Spatie Media Library con convenzioni standard.
-- **HasStates**: Fornisce una gestione degli stati per i modelli.
-- **TransTrait**: Semplifica le traduzioni dinamiche.
+1. Navigare alla directory principale di Laravel
+2. Eseguire lo script bash:
 
-### 📦 **Service Provider Pattern**
-I Service Provider di ogni modulo estendono `XotBaseServiceProvider`, che automatizza la registrazione di:
-- Migrations, Views, Translations, e Config
-- Routes (web.php, api.php)
-- Filament Resources, Pages, e Widgets
-- Comandi Artisan e Policies
-
-## 🎯 **Funzionalità Principali**
-
-### ⚡ **Actions Framework**
-Un pattern standardizzato per incapsulare la business logic in classi riutilizzabili e testabili.
-```php
-use Modules\Xot\Actions\XotBaseAction;
-
-class CreateUserAction extends XotBaseAction
-{
-    public function execute(array $data): User
-    {
-        $user = User::create($data);
-        $this->logActivity('user.created', $user); // Logging automatico
-        event(new UserCreated($user)); // Dispatching eventi
-        return $user;
-    }
-}
-```
-
-### 🏷️ **Enums System**
-Le Enum di Xot implementano `XotBaseEnum`, che fornisce traduzioni automatiche e altri helper.
-```php
-use Modules\Xot\Enums\XotBaseEnum;
-
-enum UserStatus: string implements XotBaseEnum
-{
-    case ACTIVE = 'active';
-    case INACTIVE = 'inactive';
-
-    public function getLabel(): string
-    {
-        // Traduzione gestita centralmente
-        return __('xot::enums.user_status.'.$this->value);
-    }
-}
-```
-
-## 🛠️ **Sviluppo e Qualità**
-
-### Convenzioni
-- **Namespace**: I namespace dei moduli **NON** devono includere il segmento `app`.
-- **Tipizzazione Forte**: Utilizzo di `declare(strict_types=1);` e type hints rigorosi in tutto il codice.
-- **File di Traduzione**: Seguire la struttura espansa `['label' => '...', 'tooltip' => '...']`.
-
-### Strumenti di Qualità
-- **PHPStan**: Livello 10. La configurazione è in `phpstan.neon`.
-- **Pest**: Utilizzato per i test della business logic nei moduli core.
-- **Laravel Pint**: Formattazione del codice secondo lo standard PSR-12 e le convenzioni Laraxot.
-
-Esegui i controlli di qualità dalla root del progetto Laravel:
 ```bash
-./vendor/bin/phpstan analyse Modules/Xot --level=max
-./vendor/bin/pest Modules/Xot/tests
-./vendor/bin/pint
+cd /path/to/laravel
+./analyze_modules_phpstan.sh
 ```
 
-### 🏆 PHPStan Level 10 Compliance (Dicembre 2025)
+### Metodo 2: Utilizzando lo script PHP direttamente
 
-**Status**: ✅ **0 Errori** (16 → 0)
-**Approccio**: Fix, Don't Ignore
-**Baseline**: Nessuno
+1. Navigare alla directory principale di Laravel
+2. Eseguire lo script PHP:
 
-Il modulo Xot ha raggiunto la piena conformità PHPStan Level 10 senza compromessi:
-- Zero baseline entries
-- Nessuna modifica a phpstan.neon
-- Solo correzioni reali del codice
-- Type safety al 100%
+```bash
+cd /path/to/laravel
+php analyze_modules_phpstan.php
+```
 
-**Documentazione dettagliata**:
-- [PHPStan Patterns Dec 2025](./phpstan-patterns-dec-2025.md)
-- [PHPStan Level 10 Success](../../../docs/phpstan-level-10-success.md)
+## Output dell'analisi
 
-## 🗺️ **Roadmap**
-1.  **Consolidamento Documentazione**: Unificare e semplificare la documentazione di tutti i moduli (obiettivo: 500 → 120 file).
-2.  **Automazione Script di Merge**: Creare script per la gestione automatica dei conflitti comuni e la validazione pre-commit.
-3.  **Aumento Test Coverage**: Portare la copertura dei test per i moduli core sopra il 90%.
-4.  **Dashboard Health Check**: Introdurre una dashboard per monitorare lo stato di salute e la compliance di tutti i moduli.
+Per ogni modulo, gli script generano:
 
-## 🔗 **Link Utili**
-- [CHANGELOG](./CHANGELOG.md)
-- [Guida alla Risoluzione dei Conflitti Git](../../../bashscripts/docs/git-conflict-resolution-guide.md)
-- [Convenzioni sui Namespace](./namespace_conventions.md)
-- [Linee Guida per il Testing](./testing.md)
+- File JSON con i risultati dell'analisi: `Modules/[ModuleName]/project_docs/phpstan/level_[1-9].json`
+- File Markdown con suggerimenti per le correzioni: `Modules/[ModuleName]/project_docs/phpstan/correction.md`
 
-## 🤖 **AI Development Tools & Skills**
-- [Claude Context (Laravel)](../../../CLAUDE.md)
-- [AI Agents Guide](../../../../AGENTS.md)
-- [Cursor Rules & Skills](../../../../.cursor/README.md)
-- [Skills di progetto](../../../../.cursor/skills/)
+## Livelli di analisi
 
-## 🔁 **CI & Semantic Versioning**
-- Workflow locale del modulo: `.github/workflows/semantic-versioning.yml`
-- Scopo: tagging semantico del modulo quando serve rilasciare
+Lo script analizza ogni modulo con livelli di PHPStan incrementali da 1 fino a 9. Se l'analisi fallisce a un determinato livello, l'elaborazione per quel modulo si ferma e viene generato un report.
+
+Descrizione dei livelli:
+- **Livello 1**: Controlli di base (chiamate a funzioni/metodi non esistenti)
+- **Livello 2**: Controlli di tipo
+- **Livello 3**: Controlli su proprietà e metodi non esistenti
+- **Livello 4**: Type juggling e controlli più rigidi
+- **Livello 5**: Controlli sui dead code e sulle firme dei metodi
+- **Livello 6**: Controlli sulla compatibilità delle firme
+- **Livello 7**: Controlli sulle dichiarazioni di proprietà
+- **Livello 8**: Controlli più avanzati sui tipi di ritorno
+- **Livello 9**: Controlli più avanzati su array e parametri variadic
+
+## Come interpretare i risultati
+
+I file JSON contengono gli errori dettagliati rilevati da PHPStan, mentre i file Markdown (`correction.md`) forniscono suggerimenti per correggere gli errori.
+
+Per ogni errore, lo script suggerisce una possibile soluzione in base al tipo di problema rilevato.
+
+## Personalizzazione
+
+Se necessario, è possibile modificare gli script per:
+
+- Cambiare il livello massimo di analisi
+- Aggiungere ulteriori suggerimenti per tipi specifici di errori
+- Personalizzare il formato dell'output
+
+## Risoluzione problemi
+
+### PHPStan non trovato
+
+Assicurarsi che PHPStan sia correttamente installato eseguendo:
+
+```bash
+composer require --dev phpstan/phpstan
+```
+
+### Permessi di scrittura
+
+Se lo script non riesce a creare le directory o i file di output, verificare i permessi:
+
+```bash
+chmod -R 775 Modules/*/docs
+```
+
+### Memoria insufficiente
+
+Se PHPStan esaurisce la memoria durante l'analisi, è possibile aumentare il limite di memoria PHP:
+
+```bash
+php -d memory_limit=1G analyze_modules_phpstan.php
+```
+
+## Collegamenti tra versioni di README.md
+* [README.md](bashscripts/project_docs/README.md)
+* [README.md](bashscripts/project_docs/it/README.md)
+* [README.md](docs/laravel-app/phpstan/README.md)
+* [README.md](docs/laravel-app/README.md)
+* [README.md](docs/moduli/struttura/README.md)
+* [README.md](docs/moduli/README.md)
+* [README.md](docs/moduli/manutenzione/README.md)
+* [README.md](docs/moduli/core/README.md)
+* [README.md](docs/moduli/installati/README.md)
+* [README.md](docs/moduli/comandi/README.md)
+* [README.md](docs/phpstan/README.md)
+* [README.md](docs/README.md)
+* [README.md](docs/module-links/README.md)
+* [README.md](docs/troubleshooting/git-conflicts/README.md)
+* [README.md](docs/tecnico/laraxot/README.md)
+* [README.md](docs/modules/README.md)
+* [README.md](docs/conventions/README.md)
+* [README.md](docs/amministrazione/backup/README.md)
+* [README.md](docs/amministrazione/monitoraggio/README.md)
+* [README.md](docs/amministrazione/deployment/README.md)
+* [README.md](docs/translations/README.md)
+* [README.md](docs/roadmap/README.md)
+* [README.md](docs/ide/cursor/README.md)
+* [README.md](docs/implementazione/api/README.md)
+* [README.md](docs/implementazione/testing/README.md)
+* [README.md](docs/implementazione/pazienti/README.md)
+* [README.md](docs/implementazione/ui/README.md)
+* [README.md](docs/implementazione/dental/README.md)
+* [README.md](docs/implementazione/core/README.md)
+* [README.md](docs/implementazione/reporting/README.md)
+* [README.md](docs/implementazione/isee/README.md)
+* [README.md](docs/it/README.md)
+* [README.md](laravel/vendor/mockery/mockery/project_docs/README.md)
+* [README.md](../../../Chart/project_docs/README.md)
+* [README.md](../../../Reporting/project_docs/README.md)
+* [README.md](../../../Gdpr/project_docs/phpstan/README.md)
+* [README.md](../../../Gdpr/project_docs/README.md)
+* [README.md](../../../Notify/project_docs/phpstan/README.md)
+* [README.md](../../../Notify/project_docs/README.md)
+* [README.md](../../../Xot/project_docs/filament/README.md)
+* [README.md](../../../Xot/project_docs/phpstan/README.md)
+* [README.md](../../../Xot/project_docs/exceptions/README.md)
+* [README.md](../../../Xot/project_docs/README.md)
+* [README.md](../../../Xot/project_docs/standards/README.md)
+* [README.md](../../../Xot/project_docs/conventions/README.md)
+* [README.md](../../../Xot/project_docs/development/README.md)
+* [README.md](../../../Dental/project_docs/README.md)
+* [README.md](../../../User/project_docs/phpstan/README.md)
+* [README.md](../../../User/project_docs/README.md)
+* [README.md](../../../User/project_docs/README.md)
+* [README.md](../../../UI/project_docs/phpstan/README.md)
+* [README.md](../../../UI/project_docs/README.md)
+* [README.md](../../../UI/project_docs/standards/README.md)
+* [README.md](../../../UI/project_docs/themes/README.md)
+* [README.md](../../../UI/project_docs/components/README.md)
+* [README.md](../../../Lang/project_docs/phpstan/README.md)
+* [README.md](../../../Lang/project_docs/README.md)
+* [README.md](../../../Job/project_docs/phpstan/README.md)
+* [README.md](../../../Job/project_docs/README.md)
+* [README.md](../../../Media/project_docs/phpstan/README.md)
+* [README.md](../../../Media/project_docs/README.md)
+* [README.md](../../../Tenant/project_docs/phpstan/README.md)
+* [README.md](../../../Tenant/project_docs/README.md)
+* [README.md](../../../Activity/project_docs/phpstan/README.md)
+* [README.md](../../../Activity/project_docs/README.md)
+* [README.md](../../../Patient/project_docs/README.md)
+* [README.md](../../../Patient/project_docs/standards/README.md)
+* [README.md](../../../Patient/project_docs/value-objects/README.md)
+* [README.md](../../../Cms/project_docs/blocks/README.md)
+* [README.md](../../../Cms/project_docs/README.md)
+* [README.md](../../../Cms/project_docs/standards/README.md)
+* [README.md](../../../Cms/project_docs/content/README.md)
+* [README.md](../../../Cms/project_docs/frontoffice/README.md)
+* [README.md](../../../Cms/project_docs/components/README.md)
+* [README.md](../../../../Themes/Two/project_docs/README.md)
+* [README.md](../../../../Themes/One/project_docs/README.md)

@@ -6,7 +6,6 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-use Modules\User\Database\Factories\ProfileTeamFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -46,8 +45,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $deleter
  * @property Team|null            $team
  * @property User|null            $user
- *
- * @method static ProfileTeamFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */

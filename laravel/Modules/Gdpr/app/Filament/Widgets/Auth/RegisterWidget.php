@@ -4,23 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Filament\Widgets\Auth;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Grid;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Modules\Gdpr\Actions\Consent\CollectGdprConsentsAction;
-use Modules\Gdpr\Actions\Registration\HandleRegistrationErrorAction;
 use Modules\Gdpr\Actions\Registration\HandleSuccessfulRegistrationAction;
 use Modules\Gdpr\Actions\SaveGdprConsentsAction;
 use Modules\Gdpr\Actions\Validation\ValidateGdprConsentAction;
 use Modules\Gdpr\Actions\Validation\ValidateUserDataAction;
 use Modules\User\Actions\Activity\LogRegistrationAction;
 use Modules\User\Actions\User\CreateUserAction;
-use Modules\User\Datas\PasswordData;
-use Modules\User\Models\User;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
@@ -41,96 +35,74 @@ class RegisterWidget extends XotBaseWidget
 
     public bool $marketing_consent = false;
 
+    // Form fields for custom Blade view
+    #[Validate('required|string|min:2|max:255')]
+    public string $first_name = '';
+
+    #[Validate('required|string|min:2|max:255')]
+    public string $last_name = '';
+
+    #[Validate('required|email|max:255|unique:user.users,email')]
+    public string $email = '';
+
+    #[Validate('required|string')]
+    public string $password = '';
+
+    #[Validate('required|string|same:password')]
+    public string $password_confirmation = '';
+
+    public bool $show_password = false;
+
     public static function canView(): bool
     {
         return ! Auth::check();
     }
 
-    public function mount(): void
+    protected function getView(): string
     {
-        $this->form->fill([]);
+        return 'filament.widgets.auth.register';
     }
 
-    #[\Override]
     public function getFormSchema(): array
     {
-        return [
-            'name_grid' => Grid::make(2)->schema([
-                'first_name' => TextInput::make('first_name')
-                    ->required()
-                    ->string()
-                    ->minLength(2)
-                    ->maxLength(255)
-                    ->autocomplete('given-name')
-                    ->placeholder(__('gdpr::register.fields.first_name.placeholder'))
-                    ->helperText(__('gdpr::register.fields.first_name.helper_text')),
-                'last_name' => TextInput::make('last_name')
-                    ->required()
-                    ->string()
-                    ->minLength(2)
-                    ->maxLength(255)
-                    ->autocomplete('family-name')
-                    ->placeholder(__('gdpr::register.fields.last_name.placeholder'))
-                    ->helperText(__('gdpr::register.fields.last_name.helper_text')),
-            ]),
-            'email' => TextInput::make('email')
-                ->required()
-                ->email()
-                ->maxLength(255)
-                // ->unique(User::class, 'email')
-                ->autocomplete('email')
-                ->placeholder(__('gdpr::register.fields.email.placeholder'))
-                ->helperText(__('gdpr::register.fields.email.helper_text')),
-            'password' => TextInput::make('password')
-                ->password()
-                ->required()
-                ->rule(PasswordData::make()->getPasswordRule())
-                ->autocomplete('new-password')
-                ->revealable()
-                ->confirmed()
-                ->placeholder(__('gdpr::register.fields.password.placeholder'))
-                ->helperText(__('gdpr::register.fields.password.helper_text')),
-            'password_confirmation' => TextInput::make('password_confirmation')
-                ->password()
-                ->required()
-                ->string()
-                ->autocomplete('new-password')
-                ->revealable()
-                ->dehydrated(false)
-                ->same('password')
-                ->placeholder(__('gdpr::register.fields.password_confirmation.placeholder'))
-                ->helperText(__('gdpr::register.fields.password_confirmation.helper_text')),
-        ];
+        // Not used - custom Blade view handles form rendering
+        return [];
     }
 
     public function submit(): void
     {
-        try {
-            $formData = $this->form->getState();
-            app(ValidateGdprConsentAction::class)->execute(
-                $this->privacy_accepted,
-                $this->terms_accepted
-            );
+        // Validate form data using Livewire attributes
+        $this->validate();
 
-            $validatedData = app(ValidateUserDataAction::class)->execute($formData);
-            $this->logRegistrationAttempt($formData);
+        // Validate GDPR consents
+        app(ValidateGdprConsentAction::class)->execute(
+            $this->privacy_accepted,
+            $this->terms_accepted
+        );
 
-            $user = DB::transaction(function () use ($validatedData) {
-                $user = app(CreateUserAction::class)->execute($validatedData);
-                app(SaveGdprConsentsAction::class)->execute($user, app(CollectGdprConsentsAction::class)->execute($this->privacy_accepted, $this->terms_accepted, $this->marketing_consent));
-                app(LogRegistrationAction::class)->execute($user, [
-                    'gdpr_consents' => app(CollectGdprConsentsAction::class)->execute($this->privacy_accepted, $this->terms_accepted, $this->marketing_consent),
-                ]);
+        // Prepare form data
+        $formData = [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'password_confirmation' => $this->password_confirmation,
+        ];
 
-                return $user;
-            });
+        $validatedData = app(ValidateUserDataAction::class)->execute($formData);
+        $this->logRegistrationAttempt($formData);
 
-            app(HandleSuccessfulRegistrationAction::class)->execute($user, $this);
-        } catch (ValidationException $e) {
-            throw $e;
-        } catch (\Exception $e) {
-            app(HandleRegistrationErrorAction::class)->execute($e, $this);
-        }
+        $user = DB::connection('user')->transaction(function () use ($validatedData) {
+            $user = app(CreateUserAction::class)->execute($validatedData);
+            app(SaveGdprConsentsAction::class)->execute($user, app(CollectGdprConsentsAction::class)->execute($this->privacy_accepted, $this->terms_accepted, $this->marketing_consent));
+            app(LogRegistrationAction::class)->execute($user, [
+                'gdpr_consents' => app(CollectGdprConsentsAction::class)->execute($this->privacy_accepted, $this->terms_accepted, $this->marketing_consent),
+            ]);
+
+            return $user;
+        });
+
+        app(HandleSuccessfulRegistrationAction::class)->execute($user, $this);
     }
 
     protected function logRegistrationAttempt(array $formData): void

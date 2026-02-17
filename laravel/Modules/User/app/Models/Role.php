@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
-use Modules\User\Database\Factories\RoleFactory;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Models\Traits\RelationX;
@@ -58,7 +57,6 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Role withoutPermission($permissions)
  * @method static Builder|Role whereDescription($value)
  * @method static Builder|Role whereDisplayName($value)
- * @method static RoleFactory  factory($count = null, $state = [])
  * @method static static       firstOrCreate(array $attributes, array $values = [])
  * @method static static       updateOrCreate(array $attributes, array $values = [])
  *

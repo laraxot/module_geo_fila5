@@ -1,6 +1,5 @@
 # Passport vs Socialite - Distinzione Critica
 
-**Data**: 2025-01-22
 **Status**: ✅ Documentazione Critica
 **Scopo**: Chiarire la differenza fondamentale tra Laravel Passport e Laravel Socialite
 
@@ -94,6 +93,6 @@ find Modules/User/app/Filament/Resources -name "SocialProviderResource.php"
 
 ---
 
-**Ultimo aggiornamento**: 2025-01-22
+**Ultimo aggiornamento**: [DATE]
 **Versione**: 1.0.0
 **Status**: ✅ Documentazione Critica

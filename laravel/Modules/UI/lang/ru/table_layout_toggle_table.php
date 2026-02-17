@@ -23,6 +23,17 @@ return [
             'placeholder' => 'Выбрать тип макета',
             'tooltip' => 'Выбрать между списочным и сеточным представлением',
             'help' => 'Выберите подходящий тип макета для отображения данных',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

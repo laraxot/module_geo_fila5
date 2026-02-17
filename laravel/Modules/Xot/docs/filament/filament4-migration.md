@@ -1,6 +1,5 @@
 # Filament 5.x Migration Guide
 
-**Data**: 2026-01-30
 **Versione Attuale**: Filament 5.1.1
 
 > [!NOTE]
@@ -54,7 +53,6 @@ Chart.register(ChartDataLabels);
 
 *Ultimo aggiornamento: 2026-01-30*
 
-**Data**: 2026-01-30
 **Versione Attuale**: Filament 5.1.1
 
 > [!NOTE]
@@ -108,7 +106,6 @@ Chart.register(ChartDataLabels);
 
 *Ultimo aggiornamento: 2026-01-30*
 
-**Data**: 2026-01-30
 **Versione Attuale**: Filament 5.1.1
 
 > [!NOTE]

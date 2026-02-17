@@ -1,7 +1,6 @@
-# Rimozione Proprietà/Metodi Vietati da XotBaseResource - 2026-01-21
+# Rimozione Proprietà/Metodi Vietati da XotBaseResource - [DATE]
 
 **Status**: ✅ Completato  
-**Data**: 2026-01-21
 
 ## Violazioni Corrette
 

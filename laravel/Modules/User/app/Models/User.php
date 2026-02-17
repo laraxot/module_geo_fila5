@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Modules\Media\Models\Media;
-use Modules\User\Database\Factories\UserFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
@@ -64,7 +61,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property Collection<int, OauthAccessToken>                 $tokens
  * @property int|null                                          $tokens_count
  *
- * @method static UserFactory          factory($count = null, $state = [])
  * @method static Builder|User         newModelQuery()
  * @method static Builder|User         newQuery()
  * @method static Builder|User         permission($permissions, $without = false)
@@ -154,28 +150,5 @@ class User extends BaseUser
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
-    }
-
-    /**
-     * Give consent for a specific consent type.
-     *
-     * @param string $consentType
-     * @param array<string, mixed> $metadata
-     * @return void
-     */
-    public function giveConsent(string $consentType, array $metadata = []): void
-    {
-        // Create consent record
-        $consentData = [
-            'user_id' => $this->id,
-            'user_type' => static::class,
-            'type' => $consentType,
-            'accepted_at' => date('Y-m-d H:i:s'),
-            'created_by' => $this->id,
-            'updated_by' => $this->id,
-        ];
-
-        // Use DB to insert directly
-        \Illuminate\Support\Facades\DB::table('consents')->insert($consentData);
     }
 }

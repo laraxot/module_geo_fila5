@@ -18,6 +18,7 @@ class CreateUserAction
      */
     public function execute(array $data): User
     {
-        return User::create($data);
+        // Use app() to resolve the User model instance
+        return app(User::class)->create($data);
     }
 }

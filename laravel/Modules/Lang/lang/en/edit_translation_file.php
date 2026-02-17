@@ -90,6 +90,9 @@ return [
                 'helper_text' => 'Critical level setting',
                 'description' => 'Critical level description',
             ],
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'resources' => [
@@ -98,5 +101,9 @@ return [
                 'group' => 'Doctor Management',
             ],
         ],
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

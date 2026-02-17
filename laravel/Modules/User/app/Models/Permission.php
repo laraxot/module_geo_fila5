@@ -7,7 +7,6 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
-use Modules\User\Database\Factories\PermissionFactory;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Models\Traits\RelationX;
 use Modules\Xot\Traits\Updater;
@@ -28,7 +27,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property Collection<int, User>       $users
  * @property int|null                    $users_count
  *
- * @method static PermissionFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Permission newModelQuery()
  * @method static Builder<static>|Permission newQuery()
  * @method static Builder<static>|Permission permission($permissions, $without = false)

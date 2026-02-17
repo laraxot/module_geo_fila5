@@ -82,4 +82,8 @@ return [
         'breach_detected' => 'Violazione Rilevata',
         'policy_updated' => 'Policy Aggiornata',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
 ];

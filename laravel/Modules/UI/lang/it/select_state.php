@@ -10,6 +10,7 @@ return [
             'help' => 'Stato attuale della selezione',
             'description' => 'Stato selezionabile',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
@@ -17,6 +18,31 @@ return [
             'help' => 'Messaggio informativo per la selezione',
             'description' => 'Testo del messaggio',
             'helper_text' => '',
+            'tooltip' => '',
+        ],
+    ],
+    'label' => 'Select State',
+    'plural_label' => 'Select State (Plurale)',
+    'navigation' => [
+        'name' => 'Select State',
+        'plural' => 'Select State',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Select State',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Select State',
+        ],
+        'edit' => [
+            'label' => 'Modifica Select State',
+        ],
+        'delete' => [
+            'label' => 'Elimina Select State',
         ],
     ],
 ];

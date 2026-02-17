@@ -10,6 +10,7 @@ return [
             'help' => 'Nom d\'identification de l\'élément',
             'description' => 'Nom de l\'objet',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'Modifier le nom',
@@ -17,6 +18,7 @@ return [
             'help' => 'Modifier le nom existant',
             'description' => 'Action pour modifier le nom',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'Changer l\'état',
@@ -24,6 +26,7 @@ return [
             'help' => 'Modifier l\'état actuel',
             'description' => 'Action pour changer l\'état',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'État',
@@ -31,6 +34,7 @@ return [
             'help' => 'État actuel de l\'élément',
             'description' => 'Condition actuelle du système',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Message',
@@ -38,6 +42,7 @@ return [
             'help' => 'Message informatif',
             'description' => 'Texte du message',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'messages' => [
@@ -50,5 +55,16 @@ return [
         'transition_error' => [
             'title' => 'Erreur de transition',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

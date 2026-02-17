@@ -12,7 +12,7 @@
 
 2. **Nessuna data nel nome file**
    - ✅ CORRETTO: `phpstan-fixes.md`, `roadmap.md`
-   - ❌ SBAGLIATO: `phpstan-fixes-2025-10-10.md`, `ROADMAP_2025.md`
+   - ❌ SBAGLIATO: `phpstan-fixes-[DATE].md`, `ROADMAP_2025.md`
    - **Motivo**: Le date nei nomi file causano duplicazione, rendono difficile il refactoring e non riflettono lo stato corrente del documento
 
 3. **Usa trattini `-` per separare parole** (non underscore `_`)
@@ -236,6 +236,6 @@ find Modules -name "*.md" ! -name "README.md" -exec bash -c '
 
 ---
 
-**Last Updated**: 2025-10-11
+
 **Status**: ✅ ACTIVE STANDARD
 **Compliance**: MANDATORY for all modules and themes

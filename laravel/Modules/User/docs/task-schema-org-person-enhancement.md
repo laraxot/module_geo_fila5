@@ -1,6 +1,5 @@
-# Task: Schema.org Person Enhancement - 2026-02-10
+# Task: Schema.org Person Enhancement - [DATE]
 
-**Created**: 2026-02-10  
 **Module**: User  
 **Status**: Pending  
 **Priority**: Medium  
@@ -334,4 +333,3 @@ class UserResource extends JsonResource
 ---
 
 **Created by**: AI Assistant  
-**Last Updated**: 2026-02-10

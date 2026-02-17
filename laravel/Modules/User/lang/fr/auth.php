@@ -67,4 +67,17 @@ return [
         'international_transfers' => 'Les données personnelles ne sont pas transférées vers des pays tiers hors UE.',
         'automated_decisions' => 'Vos données ne font pas l\'objet de décisions automatisées sans intervention humaine.',
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

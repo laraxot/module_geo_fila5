@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Support\Carbon;
 use Laravel\Passport\Client as PassportClient;
-use Laravel\Passport\Database\Factories\ClientFactory;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 use Spatie\Permission\Traits\HasRoles;
@@ -41,7 +40,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null                              $updated_by
  * @property string|null                              $created_by
  *
- * @method static ClientFactory       factory($count = null, $state = [])
  * @method static Builder|OauthClient newModelQuery()
  * @method static Builder|OauthClient newQuery()
  * @method static Builder|OauthClient query()

@@ -14,4 +14,10 @@ return [
     'next' => 'Weiter',
     'confirm' => 'Bestätigen',
     'completed' => 'Abgeschlossen',
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

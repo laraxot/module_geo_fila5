@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions;
 
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Hashing\Hasher;
 use Modules\User\Models\User;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
@@ -15,13 +15,16 @@ use Spatie\QueueableAction\QueueableAction;
  * Segue il pattern Spatie QueueableAction per separazione responsabilità
  * e adherence ai principi Laraxot (DRY + KISS + SOLID + ROBUST).
  */
-class CreateUserAction extends QueueableAction
+class CreateUserAction
 {
-    /**
-     * Execute the action to create a new user.
-     *
-     * @param array<string, mixed> $data
-     */
+    use QueueableAction;
+
+    public function __construct(
+        private readonly Hasher $hasher,
+        private readonly User $userModel,
+    ) {
+    }
+
     public function execute(array $data): User
     {
         // Preparazione dati sicuri
@@ -29,7 +32,7 @@ class CreateUserAction extends QueueableAction
             'first_name' => app(SafeStringCastAction::class)->execute($data['first_name']),
             'last_name' => app(SafeStringCastAction::class)->execute($data['last_name']),
             'email' => app(SafeStringCastAction::class)->execute($data['email']),
-            'password' => Hash::make(
+            'password' => $this->hasher->make(
                 app(SafeStringCastAction::class)->execute($data['password'])
             ),
             'type' => 'customer_user',
@@ -38,7 +41,7 @@ class CreateUserAction extends QueueableAction
         ];
 
         // Creazione utente
-        $user = User::create($userData);
+        $user = $this->userModel->create($userData);
 
         // Activity logging (se necessario)
         activity('user')

@@ -294,7 +294,7 @@ abstract class XotBasePage extends Page implements HasForms
         }
 
         /** @var class-string<Model> $modelClass */
-        $instance = new $modelClass();
+        $instance = new $modelClass;
         if (! ($instance instanceof Model)) {
             throw new LogicException("Class {$modelClass} must extend Eloquent Model");
         }

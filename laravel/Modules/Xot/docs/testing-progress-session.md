@@ -1,6 +1,5 @@
-# Testing Fixes Progress - Sessione 2025-01-22
+# Testing Fixes Progress - Sessione [DATE]
 
-**Data**: 2025-01-22
 **Status**: In Progress
 **Principio Fondamentale**: Il sito funziona, quindi se un test fallisce è il test che sbaglia
 

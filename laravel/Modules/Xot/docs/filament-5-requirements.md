@@ -1,6 +1,6 @@
 # Filament 5.x Requirements & Configuration
 
-**Data Analisi**: 2026-01-30
+**Data Analisi**: [DATE]
 **Versione Filament**: 5.1.1
 **Documentazione Upstream**: https://filamentphp.com/docs/5.x/introduction/installation
 
@@ -69,4 +69,3 @@ Chart.register(ChartDataLabels);  // ❌ NON funziona
 
 ---
 
-**Ultimo Aggiornamento**: 2026-01-30

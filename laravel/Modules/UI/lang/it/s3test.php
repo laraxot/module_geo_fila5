@@ -13,11 +13,15 @@ return [
             'label' => 'File di Test',
             'placeholder' => 'Carica un file per testare S3',
             'helper_text' => 'Il file verrà caricato su S3 per testare la configurazione',
+            'tooltip' => '',
+            'description' => '',
         ],
         'debug_output' => [
             'label' => 'Risultati Debug',
             'placeholder' => 'I risultati dei test appariranno qui',
             'helper_text' => 'Output dettagliato dei test di configurazione AWS',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -35,7 +39,7 @@ return [
         ],
         'testPermissions' => [
             'label' => '🔒 Test Permessi',
-            'tooltip' => 'Testa i permessi S3 (ListBucket, PutObject, GetObject, DeleteObject)',
+            'tooltip' => 'Testa i permessi S3 (ListBucket, PutObject, GetObject, DeleteObject]',
             'success' => 'Permessi S3 testati con successo',
             'error' => 'Errore nel test dei permessi S3',
         ],
@@ -114,5 +118,18 @@ return [
     'email' => [
         'subject' => 'Test Email con Allegato S3',
         'body' => 'Questa è una email di test inviata dal sistema S3Test con allegato caricato su S3 e servito tramite CloudFront.',
+    ],
+    'label' => 'S3test',
+    'plural_label' => 'S3test (Plurale)',
+    'navigation' => [
+        'name' => 'S3test',
+        'plural' => 'S3test',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'S3test',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
     ],
 ];

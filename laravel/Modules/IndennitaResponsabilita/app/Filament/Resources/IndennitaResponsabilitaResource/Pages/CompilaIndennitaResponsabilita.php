@@ -5,28 +5,20 @@ declare(strict_types=1);
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
 use Filament\Pages\Actions;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
  *
- * Uses the "Super Mucca" methodology: 
- * - Study first, then implement with confidence
- * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
- * - Always document decisions in docs/
- *
  * @property IndennitaResponsabilita $record
  * @property array<string, mixed> $data
  */
-class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
+class CompilaIndennitaResponsabilita extends XotBasePage
 {
     public static ?string $model = IndennitaResponsabilita::class;
 
@@ -34,30 +26,19 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
 
     public ?string $previousUrl = null;
 
-    /**
-     * Mount page - resolves {record} from URL, authorizes, fills form.
-     */
     public function mount(int|string $record): void
     {
-        /** @var IndennitaResponsabilita|null $resolved */
         $resolved = IndennitaResponsabilita::find($record);
         if ($resolved === null) {
             abort(404);
         }
-        
+
         $this->record = $resolved;
-
         $this->authorizeAccess();
-
         $this->previousUrl = (string) url()->previous();
-
-        // Fill form with initial data
         $this->fillFormWithInitialData();
     }
 
-    /**
-     * Fill form with initial data from record.
-     */
     protected function fillFormWithInitialData(): void
     {
         $this->form->fill([
@@ -69,18 +50,11 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
         ]);
     }
 
-    /**
-     * Authorize access to this page.
-     */
     protected function authorizeAccess(): void
     {
         Gate::authorize('update', $this->record);
     }
 
-    /**
-     * Build form schema with readonly fields for ratings.
-     * Uses schemaless attributes for year filtering.
-     */
     protected function getFormSchema(): array
     {
         return [
@@ -96,37 +70,29 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
                         ->label('Nome')
                         ->disabled(),
                 ]),
-            
             Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
         ];
     }
 
-    /**
-     * Get the form schema for ratings section.
-     *
-     * @return array<int, \Filament\Support\Components\Component>
-     */
     protected function getRatingsSchema(): array
     {
         $ratings = $this->getRatingsForYear();
-        
+
         $schema = [];
         foreach ($ratings as $rating) {
             $fieldname = 'ratings.'.$rating->id.'.pivot.value';
-            
+
             $item = TextInput::make($fieldname)
                 ->label($rating->txt)
                 ->rules($rating->rules ?? '')
                 ->columns(2);
 
-            // Apply UI/UX improvements for read-only fields
             if ((bool) ($rating->is_readonly ?? false)) {
                 $item->readOnly()
                     ->extraInputAttributes([
-                        'class' => 'bg-gray-100 border-gray-300 text-gray-600 cursor-not-allowed hover:bg-gray-50 focus:bg-white focus:ring-2 focus:ring-gray-300 transition-colors duration-200',
+                        'class' => 'bg-gray-100 border-gray-300 text-gray-600 cursor-not-allowed',
                         'readonly' => true,
-                        'aria-readonly' => 'true',
                     ]);
             }
 
@@ -136,22 +102,13 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
         return $schema;
     }
 
-    /**
-     * Get ratings for the current year using schemaless attributes.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection<int, Rating>
-     */
     protected function getRatingsForYear(): \Illuminate\Database\Eloquent\Collection
     {
-        // Use schemaless attributes for year filtering
         return $this->record->ratings()
             ->where('extra_attributes->anno', $this->record->anno)
             ->get();
     }
 
-    /**
-     * Get the form schema for the page.
-     */
     public function form(Schema $schema): Schema
     {
         return $schema
@@ -161,27 +118,19 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
             ->columns(2);
     }
 
-    /**
-     * Get the form model.
-     */
     public function getModel(): string
     {
         return static::$model ?? IndennitaResponsabilita::class;
     }
 
-    /**
-     * Handle form submission.
-     */
     public function save(): void
     {
         $this->validate();
 
         $data = $this->form->getState();
-        
-        // Update record with form data
+
         $this->record->update(collect($data)->only(['dal', 'al', 'note']));
-        
-        // Save ratings via pivot
+
         $ratings = collect($this->data['ratings'] ?? []);
         foreach ($ratings as $id => $ratingData) {
             $value = $ratingData['pivot']['value'] ?? 0;
@@ -194,213 +143,22 @@ class CompilaIndennitaResponsabilita extends Filament\Pages\Actions
             ->send();
     }
 
-    /**
-     * Navigate back to previous page.
-     */
     public function back(): void
     {
         if ($this->previousUrl) {
             $this->redirect($this->previousUrl);
         } else {
-            // Fallback to resource index
             $this->redirect('/indennitaresponsabilita/admin/indennita-responsabilitas');
         }
     }
 
-    /**
-     * Get page actions including back button.
-     */
     protected function getActions(): array
     {
         return [
             Actions\Action::make('back')
                 ->label('Indietro')
                 ->icon('heroicon-o-arrow-left')
-                ->action(fn (): void => $this->back()),
+                ->action(function (): void { $this->back(); }),
         ];
-    }
-}
-
-    /**
-     * Get the form schema.
-     *
-     * @return array<int, \Filament\Support\Components\Component>
-     */
-    #[Override]
-    protected function getFormSchema(): array
-    {
-        $schema = [
-            DatePicker::make('dal'),
-            DatePicker::make('al'),
-            Textarea::make('note')->columnSpanFull(),
-        ];
-
-        // Get ratings for the year to build the dynamic form
-        // @var \Illuminate\Database\Eloquent\Builder<Rating> $ratingsQuery
-        /** @var \Illuminate\Database\Eloquent\Builder<Rating> $ratingsQuery */
-        $ratingsQuery = Rating::withExtraAttributes(['anno' => $this->record->anno]);
-        $ratingsForYear = $ratingsQuery->get();
-        // Hydrate from relationship to get pivot values
-        /** @var \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings */
-        $ratings = $this->record->ratings()->wherePivotIn('rating_id', $ratingsForYear->pluck('id'))->get();
-
-        /** @var array<int, array{title: string, path: string}> $readonlyFields */
-        $readonlyFields = [];
-        foreach ($ratings as $r) {
-            if ((bool) ($r->is_readonly ?? false)) {
-                $readonlyFields[] = [
-                    'title' => (string) $r->title,
-                    'path' => 'ratings.'.$r->id.'.pivot.value',
-                ];
-            }
-        }
-
-        foreach ($ratings as $rating) {
-            $fieldname = 'ratings.'.$rating->id.'.pivot.value';
-            $item = TextInput::make($fieldname)
-                ->label(strip_tags((string) $rating->txt))
-                ->columns(2);
-
-            if ((bool) ($rating->is_readonly ?? false)) {
-                $item->readOnly()
-                    ->extraInputAttributes(['class' => 'bg-gray-100 cursor-not-allowed'])
-                    ->afterStateHydrated(function (TextInput $component, Get $get) use ($rating): void {
-                        $method = 'get'.Str::studly((string) $rating->title);
-                        if (method_exists($this, $method)) {
-                            /** @var mixed $result */
-                            $result = $this->$method($get, []);
-                            $component->state($result);
-                        }
-                    });
-            } else {
-                $ruleStr = $rating->rule instanceof RuleEnum ? (string) $rating->rule->value : '';
-                $item->numeric()->nullable();
-
-                if ($ruleStr !== '') {
-                    $filtered = collect(explode('|', $ruleStr))
-                        ->reject(fn (string $r): bool => in_array($r, ['numeric', 'nullable'], true))
-                        ->implode('|');
-                    if ($filtered !== '') {
-                        $item->rules($filtered);
-                    }
-                }
-
-                $item->live(onBlur: true)
-                    ->afterStateUpdated(function (Set $set, Get $get) use ($readonlyFields): void {
-                        $this->recalculateReadonlyFields($set, $get, $readonlyFields);
-                    });
-            }
-
-            $schema[] = $item;
-        }
-
-        ray($schema);
-
-        return $schema;
-    }
-
-    /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
-     */
-    protected function recalculateReadonlyFields(Set $set, Get $get, array $readonlyFields): void
-    {
-        foreach ($readonlyFields as $rf) {
-            $method = 'get'.Str::studly($rf['title']);
-            if (method_exists($this, $method)) {
-                $set($rf['path'], $this->$method($get, $readonlyFields));
-            }
-        }
-    }
-
-    /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
-     */
-    public function getTot(Get $get, array $readonlyFields = []): int
-    {
-        /** @var array<int|string, array{pivot: array{value: mixed}}> $ratings */
-        $ratings = (array) ($get('ratings') ?? []);
-        $excludePaths = array_column($readonlyFields, 'path');
-
-        $tot = 0;
-        foreach ($ratings as $id => $rating) {
-            $path = "ratings.{$id}.pivot.value";
-            if (in_array($path, $excludePaths, true)) {
-                continue;
-            }
-            $value = $rating['pivot']['value'];
-            $tot += is_numeric($value) ? (int) $value : 0;
-        }
-
-        return $tot;
-    }
-
-    /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
-     */
-    public function getImportoMensileCalcolato(Get $get, array $readonlyFields = []): float
-    {
-        return (float) $this->getTot($get, $readonlyFields) * 10.0;
-    }
-
-    /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
-     */
-    public function getImportoMensileAttribuito(Get $get, array $readonlyFields = []): float
-    {
-        $perc = (float) ($this->record->perc_p_time_year ?? 1.0);
-
-        return $this->getImportoMensileCalcolato($get, $readonlyFields) * $perc;
-    }
-
-    /**
-     * @param  array<int, array{title: string, path: string}>  $readonlyFields
-     */
-    public function getImportoAnnualeAttribuito(Get $get, array $readonlyFields = []): float
-    {
-        return (float) $this->getImportoMensileAttribuito($get, $readonlyFields) * 12.0;
-    }
-
-    /**
-     * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'back' => Action::make('back')
-                ->label('Back')
-                ->color('gray')
-                ->url(function (): string {
-                    /** @var mixed $url */
-                    $url = static::$resource::getUrl('index');
-
-                    return is_string($url) ? $url : '';
-                }),
-        ];
-    }
-
-    #[Override]
-    public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
-    {
-        $this->form->validate();
-        /** @var array<string, mixed> $state */
-        $state = $this->form->getState();
-
-        // Update record standard fields
-        $this->record->update(collect($state)->only(['dal', 'al', 'note'])->toArray());
-
-        // Update pivot ratings
-        /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */
-        $ratingsData = (array) ($state['ratings'] ?? []);
-        foreach ($ratingsData as $id => $rating) {
-            $value = $rating['pivot']['value'];
-            $this->record->ratings()->updateExistingPivot($id, [
-                'value' => is_numeric($value) ? $value : 0,
-            ]);
-        }
-
-        if ($shouldSendSavedNotification) {
-            Notification::make()->title('Saved successfully')->success()->send();
-        }
     }
 }

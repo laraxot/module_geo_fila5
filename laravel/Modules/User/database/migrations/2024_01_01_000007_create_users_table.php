@@ -19,7 +19,7 @@ return new class extends XotBaseMigration {
         $this->tableCreate(static function (Blueprint $table): void {
             // $table->uuid('id')->primary();
             $table->string('id', 36)->primary();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
@@ -58,6 +58,14 @@ return new class extends XotBaseMigration {
 
             if (! $this->hasColumn('is_active')) {
                 $table->boolean('is_active')->default(true);
+            }
+
+            if (! $this->hasColumn('type')) {
+                $table->string('type')->default('customer_user')->after('is_active');
+            }
+
+            if (! $this->hasColumn('state')) {
+                $table->string('state')->default('active')->after('type');
             }
 
             if (! $this->hasColumn('is_otp')) {

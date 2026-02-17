@@ -197,6 +197,10 @@ Modules/ModuleName/
 
 ## 🔧 Code Quality Standards
 
+### 0. Short Array Syntax (CRITICAL)
+**ALWAYS** use short array syntax `[]` in all PHP files. **NEVER** use `array()`.
+Exception: `array()` may appear only in documentation/examples showing incorrect usage.
+
 ### 1. PHPStan Level 10
 All code must pass PHPStan Level 10:
 
@@ -280,6 +284,45 @@ Always consider impact on other modules:
 - Rating changes affect Performance, Progressioni
 - Xot changes affect all modules
 - Schemaless patterns must be consistent
+
+---
+
+## 🚀 Action Pattern (CRITICAL)
+
+### NEVER Use Constructor DI
+```php
+// ❌ WRONG - constructor DI
+public function __construct(
+    private readonly DatabaseManager $dbManager,
+    private readonly LoggerInterface $logger,
+) {}
+
+// ✅ CORRECT - Spatie QueueableAction + app() resolution
+app(CreateClientAction::class)->execute($data);
+```
+
+### Action Method Must Be `execute()`
+```php
+// ❌ WRONG - custom method name
+app(CreateClientAction::class)->createPersonalAccessClient();
+
+// ✅ CORRECT - always execute()
+app(CreateClientAction::class)->execute();
+```
+
+---
+
+## 📦 Composer & Module Dependencies
+
+### Package Installation Rules
+- **New packages → module `composer.json`**, NEVER in `laravel/composer.json`
+- Run `composer go` from `laravel/` to merge via wikimedia/composer-merge-plugin
+- Module composer.json gets merged automatically into root
+
+### Git Rules
+- NEVER run `git remote set-url` - only project owner does this
+- Git goes forward only - never restore old versions
+- Every error fix: git commit + GitHub issue + GitHub discussion
 
 ---
 

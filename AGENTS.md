@@ -144,12 +144,18 @@ parameters:
         - '#PHPDoc tag @mixin contains unknown class #'
 ```
 
+### PHP Code Style
+- **ALWAYS use short array syntax `[]`** - NEVER use `array()` in .php files
+- `array()` is only acceptable in documentation examples showing incorrect usage
+- This is enforced by PSR-12, Pint, and PHP-CS-Fixer
+
 ### Module Development Rules
 1. **Never extend Filament classes directly** - use XotBase* wrappers
 2. **No hardcoded translations** - use translation files
 3. **Prefer Actions over Services** (Spatie Queueable Action)
 4. **Follow module-per-module workflow**
 5. **Maintain PSR-4 autoloading**
+6. **ALWAYS use short array syntax `[]`** - never `array()`
 
 ### Filament v5 Best Practices
 - Use `XotBaseResource` instead of `Filament\Resources\Resource`
@@ -256,6 +262,14 @@ Configuration file: `laravel/.mcp.json`
 4. **All PHPStan errors must be fixed** - no ignored errors
 5. **Write tests for new functionality**
 6. **Follow existing naming conventions**
+7. **ALWAYS use short array syntax `[]`** - never `array()` in PHP files
+8. **Actions use `execute()` method** - call via `app(ActionClass::class)->execute()`
+9. **NEVER use constructor DI** - use `app()` container resolution instead
+10. **New packages in module `composer.json`** - never in `laravel/composer.json`
+11. **Run `composer go`** from `laravel/` after adding module dependencies
+12. **NEVER run `git remote set-url`** - only project owner does this
+13. **Git forward only** - never restore old versions, study logs but don't revert
+14. **Every error fix** must have: git commit + GitHub issue + GitHub discussion
 
 ## Essential Commands for Agents
 
