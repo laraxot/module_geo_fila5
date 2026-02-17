@@ -30,6 +30,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
 - **Rule**: FILAMENT CUSTOM PAGES - Custom pages MUST extend `XotBase*` classes. Single-record edit pages follow the `$data` array + `form->fill()` + `form->getState()` pattern. For type-safe record access, use a `getSpecificRecord()` helper with explicit `instanceof` narrowing. See skill: `.agent/skills/filament-custom-pages/SKILL.md`.
 - **Rule**: UNIFIED FORM PATTERN - Avoid manual Blade HTML on custom pages. Integrate header metadata and summary sections into a unified Filament form schema for better reactivity and consistency.
+- **Rule**: INFOLIST FOR METADATA - Use Filament Infolists for read-only metadata on custom pages. This separates visualization (Infolist) from active interaction (Form), adhering to KISS and semantic UI principles.
 - **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
 
 ## Documentation Locations

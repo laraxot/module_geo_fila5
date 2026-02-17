@@ -6,6 +6,8 @@
     </div>
 
     <div class="space-y-6">
+        {{ $this->infolist }}
+
         {{ $this->form }}
 
         <div class="flex items-center gap-x-3">

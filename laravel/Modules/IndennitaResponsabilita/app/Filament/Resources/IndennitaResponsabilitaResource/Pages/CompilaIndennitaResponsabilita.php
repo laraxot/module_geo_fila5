@@ -6,12 +6,16 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Concerns\InteractsWithInfolists;
+use Filament\Infolists\Contracts\HasInfolists;
+use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
@@ -31,8 +35,9 @@ use Override;
  * @property IndennitaResponsabilita $record
  * @property array<string, mixed> $data
  */
-class CompilaIndennitaResponsabilita extends XotBasePage
+class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
 {
+    use InteractsWithInfolists;
     protected static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
@@ -64,13 +69,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
     /**
      * Fill form with initial data from record.
+     * Solo campi editabili, le informazioni generali sono in Infolist.
      */
     protected function fillFormWithInitialData(): void
     {
+        // Solo campi editabili, le informazioni generali sono visualizzate via Infolist
         $this->form->fill([
-            'matr' => $this->record->matr,
-            'cognome' => $this->record->cognome,
-            'nome' => $this->record->nome,
             'dal' => $this->record->dal,
             'al' => $this->record->al,
         ]);
@@ -85,30 +89,33 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     }
 
     /**
-     * Build form schema with readonly fields for ratings.
-     * Uses schemaless attributes for year filtering.
+     * Infolist per visualizzare le Informazioni Generali in sola lettura.
+     * Separazione di responsabilità: Infolist per view, Form per input editabili.
+     */
+    public function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->record($this->record)
+            ->schema([
+                InfolistSection::make('Informazioni Generali')
+                    ->columns(4)
+                    ->schema([
+                        TextEntry::make('matr'),
+                        TextEntry::make('cognome'),
+                        TextEntry::make('nome'),
+                        TextEntry::make('perc_p_time_year')
+                            ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
+                    ]),
+            ]);
+    }
+
+    /**
+     * Build form schema SOLO per campi editabili.
+     * Le Informazioni Generali sono gestite dall'Infolist.
      */
     protected function getFormSchema(): array
     {
         return [
-            Section::make('Informazioni Generali')
-                ->columns(4)
-                ->schema([
-                    TextInput::make('matr')
-                        ->label('Matricola')
-                        ->disabled(),
-                    TextInput::make('cognome')
-                        ->label('Cognome')
-                        ->disabled(),
-                    TextInput::make('nome')
-                        ->label('Nome')
-                        ->disabled(),
-                    TextInput::make('perc_p_time_year_display')
-                        ->label('P.Time %')
-                        ->formatStateUsing(fn (): string => number_format((float) ($this->record->perc_p_time_year ?? 0) * 100, 2).' %')
-                        ->disabled(),
-                ]),
-
             Section::make('Valutazioni Anno '.($this->record->anno ?? 2025))
                 ->schema($this->getRatingsSchema()),
 
