@@ -184,10 +184,25 @@ When modifying code, **NEVER** simplify or replace domain-specific constructs:
    ];
    ```
 
-3. **Options/Years** - Never remove options from Selects or Filters
-4. **Actions** - Never delete getHeaderActions() or custom actions
-5. **Blade Includes** - Never replace @include with inline code
-6. **Traits** - Never remove traits from models
+3. **Action Return Types** - Actions that generate PDF/files must return StreamedResponse:
+   ```php
+   // WRONG - no return type, no return statement
+   ->action(function (): void {
+       $data = ['anno/valutatore' => $tableFilters];
+       app(MakePdf::class)->execute($data);
+   })
+
+   // CORRECT - explicit return type and return statement
+   ->action(function (): StreamedResponse {
+       $tableFilters = $this->tableFilters ?? [];
+       return app(MakePdf::class)->execute($tableFilters);
+   })
+   ```
+
+4. **Options/Years** - Never remove options from Selects or Filters
+5. **Actions** - Never delete getHeaderActions() or custom actions
+6. **Blade Includes** - Never replace @include with inline code
+7. **Traits** - Never remove traits from models
 
 **Golden Rule**: When in doubt, PRESERVE the existing code. Ask before simplifying.
 

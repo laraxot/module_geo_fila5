@@ -13,3 +13,4 @@ For strict coding standards, Filament extension rules, and PHPStan guidelines, p
 2.  **Zero Errors**: PHPStan Level 10 compliance is mandatory.
 3.  **XotBase**: Always extend `XotBase` classes, never Filament classes directly.
 5.  **Specialized Components**: Never decompose specialized components (e.g., `WorkerColumn`) into primitive columns unless explicitly instructed. Always use explicit keys (e.g., `'lavoratore' => WorkerColumn::make(...)`).
+6.  **Action Return Types**: Filament Actions that trigger downloads or return responses MUST explicitly declaring the return type (e.g., `function (): BinaryFileResponse`) and use the `return` keyword. Do not use `void` or implicit returns for actions that generate responses.
