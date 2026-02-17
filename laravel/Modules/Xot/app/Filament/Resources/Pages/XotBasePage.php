@@ -222,6 +222,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
     {
         return [
             'data' => $this->data,
+            'record' => $this->record ?? null,
         ];
     }
 }

@@ -115,6 +115,24 @@ return [
                 ],
             ],
         ],
+        'matr' => [
+            'label' => 'matr',
+            'placeholder' => 'matr',
+            'helper_text' => 'matr',
+            'description' => 'matr',
+        ],
+        'cognome' => [
+            'label' => 'cognome',
+            'placeholder' => 'cognome',
+            'helper_text' => 'cognome',
+            'description' => 'cognome',
+        ],
+        'nome' => [
+            'label' => 'nome',
+            'placeholder' => 'nome',
+            'helper_text' => 'nome',
+            'description' => 'nome',
+        ],
     ],
     'sections' => [
         'empty' => [
@@ -124,6 +142,14 @@ return [
         'Risultati' => [
             'heading' => 'Risultati',
             'label' => 'Risultati',
+        ],
+        'Informazioni Generali' => [
+            'label' => 'Informazioni Generali',
+            'heading' => 'Informazioni Generali',
+        ],
+        'Valutazioni Anno 2025' => [
+            'label' => 'Valutazioni Anno 2025',
+            'heading' => 'Valutazioni Anno 2025',
         ],
     ],
     'actions' => [
@@ -139,6 +165,8 @@ return [
         ],
         'back' => [
             'tooltip' => 'back',
+            'label' => 'back',
+            'icon' => 'back',
         ],
     ],
     'title' => 'compila indennita responsabilita',

@@ -80,8 +80,8 @@
             "@php artisan migrate --ansi"
         ],
         "go": [
-            "@php -d memory_limit=-1 composer.phar self-update",
-            "@php -d memory_limit=-1 composer.phar update -W",
+            "COMPOSER_PROCESS_TIMEOUT=1200 /usr/bin/php -d memory_limit=-1 composer.phar self-update",
+            "COMPOSER_PROCESS_TIMEOUT=1200 /usr/bin/php -d memory_limit=-1 composer.phar update -W",
             "rm -rf resources/views/vendor",
             "rm -rf bootstrap/cache/filament",
             "@php artisan vendor:publish --all",
@@ -92,7 +92,7 @@
             "@php artisan route:clear",
             "@php artisan livewire:publish --assets",
             "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:models",
+            "@php artisan ide-helper:models --no-interaction",
             "@php artisan serve"
         ],
         "clear": [

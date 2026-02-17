@@ -37,6 +37,8 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
+    public IndennitaResponsabilita|Model|null $record = null;
+
     public ?string $previousUrl = null;
 
     /**

@@ -332,6 +332,34 @@ To effectively utilize this multi-skill "team," the Lead Agent (myself) will:
 
 This framework ensures that specialized knowledge and procedures are consistently applied, leading to more reliable, efficient, and standardized outcomes across the codebase.
 
+### GitHub Interaction Strategy
+
+The Gemini CLI agent (myself) is configured to interact with the project's GitHub repository using the `gh` Command Line Interface (CLI) tool. This enables automated management of various GitHub entities to streamline development, tracking, and communication.
+
+**Key Principles:**
+
+1.  **`gh` CLI Exclusive Use:** All operations involving GitHub (Issues, Discussions, Wiki, Projects, etc.) are executed via the `gh` CLI, leveraging its authentication and capabilities.
+2.  **Automated Issue Creation:** Issues will be created automatically based on:
+    *   Identified bugs or deviations from project standards during code analysis.
+    *   Planned features or improvements derived from project goals.
+    *   Specific instructions from the user.
+3.  **Comprehensive Linking:** Newly created or relevant existing GitHub entities will be linked to foster a comprehensive project overview:
+    *   **Issues** will be linked to relevant **Discussions**, **Wiki** pages (for detailed documentation), and **Projects** (for workflow management).
+    *   **Commits** related to issue resolution will reference the issue number.
+4.  **Documentation Integration:** The creation and resolution of GitHub entities will be reflected in the project's internal `docs/` folders (both global and module/theme-specific) to maintain a consistent knowledge base.
+5.  **Transparent Resolution:** Each resolved issue will be accompanied by a clear explanation of *how* it was fixed and a corresponding `git commit` to maintain an auditable history.
+6.  **"gh_manager" Skill:** A dedicated internal skill (`github-manager`) encapsulates the procedural knowledge and commands for interacting with GitHub, ensuring consistent and compliant operations.
+
+**Workflow Summary:**
+
+1.  **Analyze & Identify:** Continuously analyze the codebase and project context to identify tasks, bugs, or areas for improvement.
+2.  **Check Existing GitHub Entities:** Before creating new ones, check for existing issues, discussions, or projects to avoid duplication.
+3.  **Draft Content:** Prepare titles, bodies, and labels for the GitHub entity (Issue, Discussion, etc.).
+4.  **Execute `gh` Command:** Use the `gh` CLI (via the `github-manager` skill) to create or modify the entity.
+5.  **Link & Relate:** Establish links between the newly created entity and other relevant GitHub components (Discussions, Wiki, Projects).
+6.  **Update Internal Docs:** Ensure internal `docs/` reflect the GitHub activity.
+7.  **Commit Changes (for code-related fixes):** When an issue leads to code changes, generate a clear commit message referencing the issue.
+
 ### Agent Guidelines
 1. **Never modify `.env` files** - use config instead
 2. **Respect module boundaries** - don't create cross-dependencies
