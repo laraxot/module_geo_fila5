@@ -267,15 +267,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         return [
             'back' => Action::make('back')
-                ->label('Back')
-                ->color('gray')
-                ->url(function (): string {
-                    $url = static::$resource::getUrl('index');
-
-                    return is_string($url) ? $url : '';
-                }),
-        ];
-    }
 
     public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
     {
