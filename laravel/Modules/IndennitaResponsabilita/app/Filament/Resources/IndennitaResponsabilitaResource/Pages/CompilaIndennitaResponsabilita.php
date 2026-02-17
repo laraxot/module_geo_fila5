@@ -106,32 +106,22 @@ class CompilaIndennitaResponsabilita extends XotBasePage implements HasInfolists
     /**
      * Infolist per visualizzare le Informazioni Generali in sola lettura.
      * Separazione di responsabilità: Infolist per view, Form per input editabili.
-     * Usa Schema con TextEntry di Filament Infolists.
+     * In Filament v5, infolist uses Schema but entries are from Infolists.
      */
     public function infolist(Schema $schema): Schema
     {
         return $schema
             ->record($this->getSpecificRecord())
             ->components([
-                Section::make('Informazioni Generali')
-                    ->columns(4)
-                    ->schema([
-                        TextEntry::make('matr')
-                            ->label('Matricola'),
-                        TextEntry::make('cognome')
-                            ->label('Cognome'),
-                        TextEntry::make('nome')
-                            ->label('Nome'),
-                        TextEntry::make('perc_p_time_year')
-                            ->label('P.Time %')
-                            ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
-                    ]),
-                Section::make('Riepilogo Calcoli')
-                    ->columns(4)
-                    ->schema([
-                        TextEntry::make('tot_score')
-                            ->label('Punteggio Totale'),
-                    ]),
+                TextEntry::make('matr')
+                    ->label('Matricola'),
+                TextEntry::make('cognome')
+                    ->label('Cognome'),
+                TextEntry::make('nome')
+                    ->label('Nome'),
+                TextEntry::make('perc_p_time_year')
+                    ->label('P.Time %')
+                    ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
             ]);
     }
 

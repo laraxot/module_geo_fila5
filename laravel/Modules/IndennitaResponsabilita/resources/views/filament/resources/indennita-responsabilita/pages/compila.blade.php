@@ -50,6 +50,8 @@
             </div>
         </div>
 
+        {{ $this->infolist  }}
+
         {{ $this->form }}
 
         <div class="flex items-center gap-x-3">
