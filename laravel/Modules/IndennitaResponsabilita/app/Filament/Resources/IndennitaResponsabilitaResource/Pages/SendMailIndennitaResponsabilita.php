@@ -6,8 +6,6 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabi
 
 use Filament\Forms\Components\TextInput;
 // use Filament\Pages\Page;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
@@ -18,7 +16,6 @@ class SendMailIndennitaResponsabilita extends XotBasePage
 {
     // use HasRelationManagers;
     // use InteractsWithRecord;
-    use InteractsWithForms;
 
     /** @var array<string, mixed> */
     public array $data = [];

@@ -125,7 +125,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
             ->columns(2);
     }
 
-    protected function getFormStatePath(): ?string
+    public function getFormStatePath(): string
     {
         return 'data';
     }

@@ -6,8 +6,6 @@ namespace Modules\IndennitaResponsabilita\Filament\Pages;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Schemas\Components\Component;
@@ -25,8 +23,6 @@ use Throwable;
 
 class UpdateDiriByCsv extends XotBasePage
 {
-    use InteractsWithForms;
-
     public array $data = [];
 
     protected string $view = 'indennitaresponsabilita::filament.pages.import-csv';
