@@ -95,6 +95,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         $record = $this->getSpecificRecord();
         $data = $record->load('ratings')->attributesToArray();
+        $data['ratings'] = [];
         $ratings = $record->ratings->pluck('pivot.value', 'id')->toArray();
         foreach ($ratings as $id => $value) {
             $data['ratings'][$id]['pivot']['value'] = $value;
@@ -142,6 +143,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     /**
      * Build form schema SOLO per campi editabili.
      * Le Informazioni Generali e il Riepilogo sono gestiti dall'Infolist.
+     */
+    /**
+     * @return array<int|string, \Filament\Schemas\Components\Component>
      */
     protected function getFormSchema(): array
     {
@@ -353,7 +357,8 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
         $positiveCount = 0;
         foreach ($editableRatings as $rating) {
-            $value = $ratingsData[$rating->id]['pivot']['value'] ?? 0;
+            $ratingId = (string) $rating->id;
+            $value = $ratingsData[$ratingId]['pivot']['value'] ?? 0;
             if (is_numeric($value) && (float) $value > 0) {
                 $positiveCount++;
             }
