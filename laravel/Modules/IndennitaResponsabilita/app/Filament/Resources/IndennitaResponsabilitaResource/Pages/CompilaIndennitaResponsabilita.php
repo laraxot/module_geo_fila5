@@ -18,6 +18,7 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
+use Override;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
