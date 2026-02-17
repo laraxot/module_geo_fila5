@@ -133,6 +133,9 @@ return [
             'helper_text' => 'nome',
             'description' => 'nome',
         ],
+        'annuale_attribuito' => [
+            'description' => 'annuale_attribuito',
+        ],
     ],
     'sections' => [
         'empty' => [

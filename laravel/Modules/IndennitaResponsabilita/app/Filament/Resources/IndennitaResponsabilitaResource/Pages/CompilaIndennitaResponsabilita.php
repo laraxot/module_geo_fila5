@@ -27,7 +27,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
  * - Follow Laraxot patterns (XotBase*, DRY+KISS+SOLID)
  * - Always document decisions in docs/
  *
- * @property IndennitaResponsabilita|Model|null $record
+ * @property IndennitaResponsabilita $record
  * @property array<string, mixed> $data
  */
 class CompilaIndennitaResponsabilita extends XotBasePage
@@ -316,10 +316,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $this->form->validate();
         /** @var array<string, mixed> $state */
         $state = $this->form->getState();
-
-        if (! $this->record instanceof IndennitaResponsabilita) {
-            throw new \LogicException('Record is missing or invalid.');
-        }
 
         // Update record standard fields
         /** @var array<string, mixed> $dataToUpdate */
