@@ -334,6 +334,16 @@ return [
         'createAnother' => [
             'tooltip' => 'createAnother',
         ],
+        'AttachActivityEmployeeAction' => [
+            'tooltip' => 'AttachActivityEmployeeAction',
+            'icon' => 'AttachActivityEmployeeAction',
+            'label' => 'AttachActivityEmployeeAction',
+        ],
+        'Collega Dipendente' => [
+            'tooltip' => 'Collega Dipendente',
+            'icon' => 'Collega Dipendente',
+            'label' => 'Collega Dipendente',
+        ],
     ],
     'messages' => [
         'validation' => [
