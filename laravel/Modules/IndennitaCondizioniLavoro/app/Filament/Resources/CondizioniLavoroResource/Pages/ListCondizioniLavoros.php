@@ -21,6 +21,7 @@ use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Ptv\Filament\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
@@ -32,10 +33,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
+        // Use WorkerColumn for DRY - groups matr, cognome, nome
         return [
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
-            TextColumn::make('nome')->searchable(),
+            WorkerColumn::make('lavoratore'),
             TextColumn::make('stabi')->searchable(),
             TextColumn::make('repar')->searchable(),
             TextColumn::make('indennitaTipoDettaglio')
