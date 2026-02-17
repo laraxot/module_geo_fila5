@@ -96,7 +96,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): StreamedResponse {
+                ->action(function (): \Illuminate\Http\StreamedResponse {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
                     return app(MakePdf::class)->execute($tableFilters);
                 }),
