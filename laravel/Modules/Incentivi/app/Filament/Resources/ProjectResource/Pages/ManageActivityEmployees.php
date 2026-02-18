@@ -10,7 +10,7 @@ use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Incentivi\Filament\Resources\ProjectResource;
 use Modules\Incentivi\Filament\Resources\ProjectResource\Pages;
-use Modules\Xot\Filament\Resources\XotBaseResource\Pages\XotBaseManageRelatedRecords;
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Override;
 
 class ManageActivityEmployees extends XotBaseManageRelatedRecords

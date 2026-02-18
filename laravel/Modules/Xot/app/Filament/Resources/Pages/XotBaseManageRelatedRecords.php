@@ -6,11 +6,15 @@ namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Modules\Xot\Filament\Traits\HasXotTable;
+use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 
 /**
  * ---
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
-    // use HasXotTable;
+    use HasXotTable;
+    use NavigationLabelTrait;
+
+    protected static string $recordTitleAttribute = 'name';
 }

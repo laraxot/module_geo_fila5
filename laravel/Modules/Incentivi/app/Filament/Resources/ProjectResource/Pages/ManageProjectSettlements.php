@@ -15,7 +15,7 @@ use Filament\Tables\Table;
 use Modules\Incentivi\Filament\Resources\ProjectResource;
 use Modules\Incentivi\Filament\Resources\ProjectResource\Actions\GeneratePDFProjectReportAction;
 use Modules\Incentivi\Models\Project;
-use Modules\Xot\Filament\Resources\XotBaseResource\Pages\XotBaseManageRelatedRecords;
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Override;
 
 class ManageProjectSettlements extends XotBaseManageRelatedRecords

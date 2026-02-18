@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Incentivi\Filament\Resources\ProjectResource\Pages;
 
 use Filament\Actions\DetachAction;
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\Summarizers\Summarizer;
@@ -17,7 +18,6 @@ use Modules\Incentivi\Filament\Resources\ProjectResource\Actions\Table\AttachSin
 use Modules\Incentivi\Models\Activity;
 use Modules\Incentivi\Models\Employee;
 use Modules\Incentivi\Models\Project;
-use Modules\Xot\Filament\Resources\XotBaseResource\Pages\XotBaseManageRelatedRecords;
 use Override;
 
 class ManageProjectEmployees extends XotBaseManageRelatedRecords
@@ -26,7 +26,7 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
 
     protected static string $relationship = 'employees';
 
-    protected static ?string $title = 'Dipendenti';
+    protected static string $recordTitleAttribute = 'nome';
 
     public function getTableActions(): array
     {

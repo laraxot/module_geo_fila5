@@ -155,6 +155,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
      */
     private function isVerificaSuccessful(array $risultato): bool
     {
+        // dd($risultato);
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
