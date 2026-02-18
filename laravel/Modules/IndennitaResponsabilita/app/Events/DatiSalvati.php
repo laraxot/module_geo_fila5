@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Events;
 
-use Illuminate\Foundation\Dispatchable;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 
 /**

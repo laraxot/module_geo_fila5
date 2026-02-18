@@ -39,6 +39,7 @@ use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
 use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Tables\Columns\RepColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\UI\Filament\Forms\Components\YearSelect;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
@@ -203,13 +204,16 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         return [
             'anno_valutatore' => SelectFilter::make('anno/valutatore')
                 ->schema([
-                    'anno' => Select::make('anno')
+                    'anno' => YearSelect::make('anno')
+                         /*
                         ->options([
                             // '2022' => '2022',
                             '2023' => '2023',
                             '2024' => '2024',
                             '2025' => '2025',
                         ])
+                            */
+                        ->range(-2, 0)
                         ->reactive(),
 
                     'valutatore_id' => Select::make('valutatore_id')
