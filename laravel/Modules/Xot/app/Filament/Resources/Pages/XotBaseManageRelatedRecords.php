@@ -23,7 +23,6 @@ use Modules\Xot\Filament\Traits\TransFuncTrait;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
-    use TransFuncTrait;
 
     // protected static string $resource;
     protected static string $recordTitleAttribute = 'name';
