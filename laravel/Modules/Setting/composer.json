@@ -1,14 +1,16 @@
 {
   "name": "laraxot/module_setting_fila3",
-  "description": "Settings and configuration management module for the Laraxot ecosystem.",
+  "description": "Settings and configuration management module for the Laraxot ecosystem: application preferences, feature toggles, and system parameters.",
   "keywords": [
     "laraxot",
     "laravel",
     "filament",
     "module_setting",
-    "setting",
+    "settings",
     "configuration",
-    "preferences"
+    "preferences",
+    "feature-toggles",
+    "system-parameters"
   ],
   "homepage": "https://github.com/laraxot/module_setting_fila3.git",
   "license": "MIT",
