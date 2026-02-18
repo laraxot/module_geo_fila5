@@ -24,7 +24,6 @@ use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ListCondizioniLavoros extends XotBaseListRecords
 {
@@ -96,7 +95,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): StreamedResponse {
+                ->action(function () {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
 
                     return app(MakePdf::class)->execute($tableFilters);

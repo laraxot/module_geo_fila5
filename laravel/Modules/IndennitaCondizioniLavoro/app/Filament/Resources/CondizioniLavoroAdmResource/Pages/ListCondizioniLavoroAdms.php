@@ -31,7 +31,7 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     #[Override]
     public function getTableColumns(): array
     {
-        /** @var array<int, Column> */
+        /** @var array{lavoratore: Column, valutatore: Column, indennitaTipoDettaglio: Column, quadrimestre: Column, anno: Column} */
         return [
             'lavoratore' => WorkerColumn::make('lavoratore'),
             'valutatore' => ValutatoreColumn::make('valutatore'),

@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource\Pages;
 use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteResource;
+use Override;
 
 class StabiDirigenteResource extends PtvStabiDirigenteResource
 {
