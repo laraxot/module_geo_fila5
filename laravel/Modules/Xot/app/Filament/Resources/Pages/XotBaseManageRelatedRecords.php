@@ -23,8 +23,6 @@ use Modules\Xot\Filament\Traits\TransFuncTrait;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
-    use InteractsWithForms;
-    use NavigationLabelTrait;
     use TransFuncTrait;
 
     // protected static string $resource;
