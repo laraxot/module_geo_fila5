@@ -21,6 +21,7 @@ use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
@@ -122,12 +123,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
     {
         // Types are inferred by Filament v4
         return [
-            'compila' => Action::make('compila')
-                ->label('Compila')
-                ->tooltip('compila')
-                ->iconButton()
-                ->icon('heroicon-m-pencil-square')
-                ->url(fn ($record): string => CondizioniLavoroResource::getUrl('compila', ['record' => $record])),
+            'compila' => CompilaAction::make(),
 
             'edit' => EditAction::make()
                 ->iconButton()

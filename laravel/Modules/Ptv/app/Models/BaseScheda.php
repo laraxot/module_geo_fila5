@@ -259,12 +259,12 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     protected function casts(): array
     {
         return array_merge(parent::casts(), [
-            'calculated_data' => SchemalessAttributes::class,
+            //'calculated_data' => SchemalessAttributes::class,
         ]);
     }
 
     protected array $schemalessAttributes = [
-        'calculated_data',
+        //'calculated_data',
     ];
 
     /**

@@ -15,22 +15,22 @@ class YearSelect extends XotBaseSelect
 
     public function past(int $years): static
     {
-        $this->pastYears = max(0, $years);
+        $this->pastYears = $years;
 
         return $this;
     }
 
     public function future(int $years): static
     {
-        $this->futureYears = max(0, $years);
+        $this->futureYears = $years;
 
         return $this;
     }
 
     public function range(int $past, int $future): static
     {
-        $this->pastYears = max(0, $past);
-        $this->futureYears = max(0, $future);
+        $this->pastYears = $past;
+        $this->futureYears = $future;
 
         return $this;
     }
@@ -39,7 +39,7 @@ class YearSelect extends XotBaseSelect
     {
         $currentYear = Carbon::now()->year;
 
-        $start = $currentYear - $this->pastYears;
+        $start = $currentYear + $this->pastYears;
         $end = $currentYear + $this->futureYears;
 
         if ($start > $end) {
@@ -54,14 +54,6 @@ class YearSelect extends XotBaseSelect
 
         return $years;
     }
-
-    /*
-    public static function make(string $name): static
-    {
-        return parent::make($name)
-            ->native(false) // opzionale: usa select Filament
-            ->updateOptions();
-    }*/
 
     protected function setUp(): void
     {
