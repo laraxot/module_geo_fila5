@@ -7,22 +7,32 @@ return [
         'id' => [
             'label' => 'ID',
             'tooltip' => 'Identificativo univoco dello snapshot',
+            'helper_text' => '',
+            'description' => '',
         ],
         'aggregate_uuid' => [
             'label' => 'UUID Aggregato',
             'tooltip' => 'Identificativo univoco dell\'aggregato',
+            'helper_text' => '',
+            'description' => '',
         ],
         'aggregate_version' => [
             'label' => 'Versione Aggregato',
             'tooltip' => 'Numero di versione dell\'aggregato',
+            'helper_text' => '',
+            'description' => '',
         ],
         'state' => [
             'label' => 'Stato',
             'tooltip' => 'Stato corrente dello snapshot',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Data Creazione',
             'tooltip' => 'Data e ora di creazione dello snapshot',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -46,4 +56,13 @@ return [
             'tooltip' => 'Filtra per stato',
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

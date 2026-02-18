@@ -13,26 +13,44 @@ return [
         'name' => [
             'label' => 'Nome',
             'helper' => 'Nome univoco del template',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject' => [
             'label' => 'Oggetto',
             'helper' => 'Oggetto della notifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'type' => [
             'label' => 'Tipo',
             'helper' => 'Tipo di notifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'body_text' => [
             'label' => 'Testo Semplice',
             'helper' => 'Versione testo semplice della notifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'body_html' => [
             'label' => 'HTML',
             'helper' => 'Versione HTML della notifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'preview_data' => [
             'label' => 'Dati di Anteprima',
             'helper' => 'Dati JSON per l\'anteprima',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'columns' => [
@@ -52,4 +70,6 @@ return [
             'push' => 'Notifica Push',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

@@ -10,6 +10,7 @@ return [
             'help' => 'Nome identificativo dell\'elemento',
             'description' => 'Nome dell\'oggetto',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'Modifica nome',
@@ -17,6 +18,7 @@ return [
             'help' => 'Modifica il nome esistente',
             'description' => 'Azione per modificare il nome',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'Cambia stato',
@@ -24,6 +26,7 @@ return [
             'help' => 'Modifica lo stato corrente',
             'description' => 'Azione per cambiare lo stato',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'Stato',
@@ -31,6 +34,7 @@ return [
             'help' => 'Stato attuale dell\'elemento',
             'description' => 'Condizione corrente del sistema',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
@@ -38,6 +42,7 @@ return [
             'help' => 'Messaggio informativo',
             'description' => 'Testo del messaggio',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'actions' => [
@@ -57,5 +62,18 @@ return [
         'transition_error' => [
             'title' => 'Errore durante la transizione',
         ],
+    ],
+    'label' => 'Icon State',
+    'plural_label' => 'Icon State (Plurale)',
+    'navigation' => [
+        'name' => 'Icon State',
+        'plural' => 'Icon State',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Icon State',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
     ],
 ];

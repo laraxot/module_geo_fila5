@@ -32,7 +32,7 @@ return [
     'exists' => 'La selezione per :attribute non è valida.',
     'file' => 'The :attribute must be a file.',
     'filled' => ':attribute è obbligatorio.',
-    'image' => ":attribute deve essere un'immagine.",
+    'image' => ':attribute deve essere un\'immagine.',
     'in' => 'La selezione per :attribute non è valida.',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer' => ':attribute deve essere un numero intero.',
@@ -126,6 +126,50 @@ return [
             'old_password' => 'Vecchia password',
             'new_password' => 'Nuova password',
             'new_password_confirmation' => 'Conferma nuova password',
+        ],
+    ],
+    'label' => 'Validation',
+    'plural_label' => 'Validation (Plurale)',
+    'navigation' => [
+        'name' => 'Validation',
+        'plural' => 'Validation',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Validation',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Validation',
+        ],
+        'edit' => [
+            'label' => 'Modifica Validation',
+        ],
+        'delete' => [
+            'label' => 'Elimina Validation',
         ],
     ],
 ];

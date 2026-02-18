@@ -15,21 +15,65 @@ return [
         'icon' => 'gdpr-treatment',
     ],
     'fields' => [
-        'name' => 'Nome Trattamento',
-        'purpose' => 'Finalità',
-        'legal_basis' => 'Base Giuridica',
-        'data_categories' => 'Categorie di Dati',
-        'retention_period' => 'Periodo di Conservazione',
-        'security_measures' => 'Misure di Sicurezza',
-        'data_transfers' => 'Trasferimenti Dati',
+        'name' => [
+            'label' => 'Nome Trattamento',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'purpose' => [
+            'label' => 'Finalità',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'legal_basis' => [
+            'label' => 'Base Giuridica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'data_categories' => [
+            'label' => 'Categorie di Dati',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'retention_period' => [
+            'label' => 'Periodo di Conservazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'security_measures' => [
+            'label' => 'Misure di Sicurezza',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'data_transfers' => [
+            'label' => 'Trasferimenti Dati',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'resetFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'legal_bases' => [
@@ -39,5 +83,18 @@ return [
         'vital_interests' => 'Interessi Vitali',
         'public_interest' => 'Interesse Pubblico',
         'legitimate_interests' => 'Interessi Legittimi',
+    ],
+    'label' => 'Treatment',
+    'plural_label' => 'Treatment (Plurale)',
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Treatment',
+        ],
+        'edit' => [
+            'label' => 'Modifica Treatment',
+        ],
+        'delete' => [
+            'label' => 'Elimina Treatment',
+        ],
     ],
 ];

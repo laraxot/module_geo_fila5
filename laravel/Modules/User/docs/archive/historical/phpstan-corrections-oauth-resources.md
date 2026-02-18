@@ -1,6 +1,5 @@
 # PHPStan Corrections - OAuth Resources
 
-**Data**: 2025-01-22
 **Status**: In Progress
 **Versione**: 1.0.0
 
@@ -108,4 +107,4 @@ TextColumn::make('name')
 
 ---
 
-*Ultimo aggiornamento: 2025-01-22*
+*Ultimo aggiornamento: [DATE]*

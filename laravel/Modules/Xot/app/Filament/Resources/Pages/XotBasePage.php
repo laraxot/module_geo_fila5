@@ -23,7 +23,7 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
  * following the architectural pattern of never extending Filament classes directly.
  *
  * @property ?string $model
- * @property ?array $data
+ * @property array<string, mixed> $data
  * @property Schema $form
  */
 abstract class XotBasePage extends FilamentPage implements HasForms
@@ -34,6 +34,8 @@ abstract class XotBasePage extends FilamentPage implements HasForms
 
     /**
      * The model class associated with this page, if any.
+     *
+     * @var class-string<Model>|null
      */
     public static ?string $model = null;
 
@@ -42,7 +44,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     /**
      * Get the view that should be used for the page.
@@ -66,6 +68,27 @@ abstract class XotBasePage extends FilamentPage implements HasForms
             );
 
         return $view->toString();
+    }
+
+    public function getViewTest(): string
+    {
+        $class = __CLASS__;
+        $module = Str::between($class, 'Modules\\', '\Filament');
+
+        $after = explode('\\', Str::after($class, '\Filament\\'));
+        $after[1] = Str::before($after[1], 'Resource');
+        $after[3] = Str::before($after[3], $after[1]);
+
+        $after = collect($after)->map(function ($item) {
+            return Str::kebab($item);
+            // return Str::snake($item);
+        })->implode('.');
+        $view = Str::lower($module).'::filament.'.$after;
+        if (! view()->exists($view)) {
+            throw new \Exception('view ['.$view.'] not Exists  !!');
+        }
+
+        return $view;
     }
 
     /**
@@ -97,7 +120,24 @@ abstract class XotBasePage extends FilamentPage implements HasForms
      */
     public function schema(Schema $schema): Schema
     {
-        return $schema->components($this->getFormSchema())->statePath('data');
+        return $schema->components($this->getFormSchema())
+            ->statePath('data')
+            ->columns(2);
+    }
+
+    public function getFormStatePath(): string
+    {
+        return 'data';
+    }
+
+    final public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components($this->getFormSchema())
+            ->model($this->getFormModel())
+            ->statePath($this->getFormStatePath())
+            ->operation($this->getFormContext())
+            ->columns(2);
     }
 
     /**
@@ -122,6 +162,26 @@ abstract class XotBasePage extends FilamentPage implements HasForms
     }
 
     /**
+     * Get the form model for the page.
+     * Filament compatibility method.
+     *
+     * @return class-string<Model>|null
+     */
+    protected function getFormModel(): Model|string|null
+    {
+        return static::$model;
+    }
+
+    /**
+     * Get the form context for the page.
+     * Filament compatibility method.
+     */
+    protected function getFormContext(): ?string
+    {
+        return 'edit';
+    }
+
+    /**
      * Get the resources associated with this page.
      *
      * @return Collection<int, string>
@@ -137,7 +197,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
     /**
      * Get the form schema for the page.
      *
-     * @return array<string, Component>
+     * @return array<int|string, Component>
      */
     protected function getFormSchema(): array
     {
@@ -162,6 +222,7 @@ abstract class XotBasePage extends FilamentPage implements HasForms
     {
         return [
             'data' => $this->data,
+            'record' => $this->record ?? null,
         ];
     }
 }

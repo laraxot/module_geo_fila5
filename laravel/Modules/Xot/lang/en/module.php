@@ -41,6 +41,9 @@ return [
                     'error' => 'Errore',
                 ],
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
         ],
         'details' => [
             'dependencies' => [
@@ -69,6 +72,10 @@ return [
                 'placeholder' => 'URL della documentazione',
                 'help' => 'Pagina web del modulo',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'system' => [
             'order' => [
@@ -84,6 +91,10 @@ return [
                 'label' => 'Namespace',
                 'help' => 'Namespace PHP del modulo',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'timestamps' => [
             'created_at' => [
@@ -94,6 +105,10 @@ return [
                 'label' => 'Ultimo Aggiornamento',
                 'help' => 'Data dell\'ultimo aggiornamento',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -174,4 +189,6 @@ return [
             'migrations_pending' => 'Ci sono migrazioni in sospeso',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

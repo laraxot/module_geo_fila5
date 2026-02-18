@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Struttura degli Script Bash
 
 ## Organizzazione delle Cartelle
@@ -135,7 +134,6 @@ bashscripts/
 * [structure.md](laravel/Modules/Cms/docs/themes/structure.md)
 * [structure.md](laravel/Modules/Cms/docs/components/structure.md)
 
-=======
 # Struttura del Progetto PTVX
 
 ## Organizzazione Generale
@@ -179,4 +177,3 @@ Module/
 ## Approfondimenti
 - Per dettagli specifici, consulta la documentazione di ciascun modulo
 - [Moduli Principali](./moduli-principali.md) per una panoramica completa
->>>>>>> 30ec16d0f (feat(docs): riorganizzata documentazione AI tools in docs/ai/)

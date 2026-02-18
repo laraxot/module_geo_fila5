@@ -28,15 +28,16 @@ Per documentazione dettagliata su tutti gli strumenti di qualità, consultare:
 
 - Code smells detection
 - Configurazione: `phpmd.ruleset.xml` nei moduli
-- Esecuzione standard (Composer): `./vendor/bin/phpmd path text phpmd.ruleset.xml`
-- Esecuzione alternativa (PHAR in root Laravel): `php phpmd.phar path text phpmd.ruleset.xml`
+- Esecuzione standard (Wrapper): `bash tools/phpmd.sh path text phpmd.ruleset.xml`
+- Esecuzione PHAR: `php tools/phpmd.phar path text phpmd.ruleset.xml`
 
 ### PHP Insights
 
 - Analisi architettura e complessità
 - Installato via Composer come dipendenza di progetto
 - Configurazione: `phpinsights.php` nei moduli
-- Esecuzione: `./vendor/bin/phpinsights analyse path`
+- Esecuzione (Wrapper): `bash tools/phpinsights.sh analyse path`
+- Esecuzione (Isolata): `php tools/phpinsights/vendor/bin/phpinsights analyse path`
 
 ### Rector Laravel
 

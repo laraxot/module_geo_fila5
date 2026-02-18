@@ -837,6 +837,25 @@ class MyFormRequest extends FormRequest
 
 ```
 
+
+### Gestione delle Dipendenze in composer.json dei Moduli
+
+#### 1. Version Constraints (Vincoli di Versione)
+- **Preferire Caret (`^`) o Tilde (`~`)**: Utilizzare `^1.0` (compatibile con 1.0.0 fino a <2.0.0) o `~1.2` (compatibile con 1.2.0 fino a <1.3.0) per dipendenze stabili. Questo assicura aggiornamenti di sicurezza e bugfix senza introdurre breaking changes.
+- **Evitare Asterisco (`*`)**: L'uso di `"*"` (accetta qualsiasi versione) è sconsigliato in ambienti di produzione e in moduli, poiché può portare a incompatibilità inaspettate con nuove versioni del pacchetto. Usare solo in fase di sviluppo iniziale e mai in un commit definitivo.
+- **`minimum-stability` e `prefer-stable`**: Impostare `minimum-stability: "dev"` e `prefer-stable: true` nel `composer.json` del modulo per permettere l'uso di dipendenze in sviluppo ma preferire versioni stabili quando disponibili.
+
+#### 2. Path Repositories (Repository di Percorso)
+- **Scopo**: I path repositories (`"type": "path"`) sono cruciali per lo sviluppo di moduli all'interno di un monorepo (come Laraxot). Permettono a Composer di localizzare i moduli dipendenti sul filesystem locale invece di scaricarli da Packagist.
+- **Configurazione**: Vanno definiti nella sezione `"repositories"` del `composer.json` del modulo e puntano al percorso relativo degli altri moduli (es. `"../Xot"`).
+- **Importanza**: Essenziali per testare le modifiche tra moduli senza dover pubblicare ogni aggiornamento.
+
+#### 3. Risoluzione dei Conflitti in composer.json
+- **Merge Selettivo**: In caso di conflitti, combinare il contenuto di entrambe le versioni (HEAD e incoming), privilegiando le definizioni più complete e funzionali.
+- **Priorità Funzionale**: Dare priorità alle dipendenze (`require`), ai `repositories` e agli `autoload` che garantiscono la funzionalità del modulo.
+- **Standard di Progetto**: Mantenere la coerenza con gli standard e le convenzioni di naming del progetto Laraxot.
+- **Verifica**: Dopo la risoluzione del conflitto, eseguire sempre `composer update --no-dev` (o `composer install` se non ci sono nuove dipendenze) e i test (`vendor/bin/pest`) per assicurarsi che il modulo sia ancora funzionale.
+
 ## XotBaseServiceProvider
 
 - Il `XotBaseServiceProvider` gestisce l'autoregistrazione degli SVG tramite il metodo `registerBladeIcons()`.

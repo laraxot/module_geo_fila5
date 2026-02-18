@@ -19,6 +19,9 @@ return [
             'label' => 'Nome',
             'placeholder' => 'Inserisci il nome del controllo',
             'help' => 'Nome identificativo del controllo di sistema',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'Stato',
@@ -30,18 +33,30 @@ return [
                 'critical' => 'Critico',
                 'unknown' => 'Sconosciuto',
             ],
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'last_check' => [
             'label' => 'Ultimo Controllo',
             'help' => 'Data e ora dell\'ultimo controllo effettuato',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'next_check' => [
             'label' => 'Prossimo Controllo',
             'help' => 'Data e ora del prossimo controllo programmato',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'details' => [
             'label' => 'Dettagli',
             'help' => 'Informazioni dettagliate sullo stato del controllo',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'type' => [
             'label' => 'Tipo',
@@ -58,6 +73,9 @@ return [
                 'logs' => 'Log',
                 'network' => 'Rete',
             ],
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'severity' => [
             'label' => 'Gravità',
@@ -68,6 +86,9 @@ return [
                 'high' => 'Alta',
                 'critical' => 'Critica',
             ],
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -157,4 +178,6 @@ return [
         ],
     ],
     'title' => 'health',
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

@@ -60,8 +60,18 @@ return [
         'placeholder' => 'Inserisci le sezioni',
     ],
     'fields' => [
-        'label' => 'Campi',
-        'placeholder' => 'Inserisci i campi',
+        'label' => [
+            'label' => 'Campi',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'placeholder' => [
+            'label' => 'Inserisci i campi',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
     ],
     'type' => [
         'label' => 'Tipo',
@@ -134,5 +144,29 @@ return [
         'label' => 'Test',
         'placeholder' => 'Inserisci valore test',
         'help' => 'Campo per test del sistema',
+    ],
+    'label' => 'Fields',
+    'plural_label' => 'Fields (Plurale)',
+    'navigation' => [
+        'name' => 'Fields',
+        'plural' => 'Fields',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Fields',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Fields',
+        ],
+        'edit' => [
+            'label' => 'Modifica Fields',
+        ],
+        'delete' => [
+            'label' => 'Elimina Fields',
+        ],
     ],
 ];

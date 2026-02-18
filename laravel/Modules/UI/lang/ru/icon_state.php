@@ -10,6 +10,7 @@ return [
             'help' => 'Идентифицирующее имя элемента',
             'description' => 'Имя объекта',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'Редактировать имя',
@@ -17,6 +18,7 @@ return [
             'help' => 'Изменить существующее имя',
             'description' => 'Действие для изменения имени',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'Изменить состояние',
@@ -24,6 +26,7 @@ return [
             'help' => 'Изменить текущее состояние',
             'description' => 'Действие для изменения состояния',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'Состояние',
@@ -31,6 +34,7 @@ return [
             'help' => 'Текущее состояние элемента',
             'description' => 'Текущее состояние системы',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Сообщение',
@@ -38,6 +42,7 @@ return [
             'help' => 'Информационное сообщение',
             'description' => 'Текст сообщения',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'messages' => [
@@ -50,5 +55,16 @@ return [
         'transition_error' => [
             'title' => 'Ошибка перехода',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

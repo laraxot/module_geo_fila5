@@ -144,12 +144,90 @@ parameters:
         - '#PHPDoc tag @mixin contains unknown class #'
 ```
 
+### PHP Code Style
+- **ALWAYS use short array syntax `[]`** - NEVER use `array()` in .php files
+- `array()` is only acceptable in documentation examples showing incorrect usage
+- This is enforced by PSR-12, Pint, and PHP-CS-Fixer
+
 ### Module Development Rules
 1. **Never extend Filament classes directly** - use XotBase* wrappers
 2. **No hardcoded translations** - use translation files
 3. **Prefer Actions over Services** (Spatie Queueable Action)
 4. **Follow module-per-module workflow**
 5. **Maintain PSR-4 autoloading**
+6. **ALWAYS use short array syntax `[]`** - never `array()`
+
+### NEVER Simplify Domain Logic
+When modifying code, **NEVER** simplify or replace domain-specific constructs:
+
+1. **Custom Columns** - Use WorkerColumn for DRY/KISS with string keys (it's a GroupColumn, NOT a relationship):
+   ```php
+   // WRONG - missing string key
+   WorkerColumn::make('lavoratore'),
+   
+   // CORRECT - string key + WorkerColumn (DRY/KISS)
+   'lavoratore' => WorkerColumn::make('lavoratore'),
+   ```
+
+2. **Array Keys in getTableColumns()** - Always use string keys:
+   ```php
+   // WRONG - no string keys
+   return [
+       WorkerColumn::make('lavoratore'),
+       TextColumn::make('nome'),
+   ];
+
+   // CORRECT - string keys required
+   return [
+       'lavoratore' => WorkerColumn::make('lavoratore'),
+       'nome' => TextColumn::make('nome'),
+   ];
+   ```
+
+3. **Action Return Types** - Actions that generate PDF/files must return StreamedResponse:
+   ```php
+   // WRONG - no return type, no return statement
+   ->action(function (): void {
+       $data = ['anno/valutatore' => $tableFilters];
+       app(MakePdf::class)->execute($data);
+   })
+
+   // CORRECT - explicit return type and return statement
+   ->action(function (): StreamedResponse {
+       $tableFilters = $this->tableFilters ?? [];
+       return app(MakePdf::class)->execute($tableFilters);
+   })
+   // In blade: {{ $this->infolist }}
+   ```
+
+4. **Infolist for Read-Only Data** - Use Infolist for displaying read-only information instead of disabled form fields:
+   ```php
+   // WRONG - disabled form fields
+   TextInput::make('matr')->disabled(),
+   TextInput::make('cognome')->disabled(),
+   
+   // CORRECT - use Infolist with TextEntry
+   public function infolist(Infolist $infolist): Infolist
+   {
+       return $infolist
+           ->record($this->record)
+           ->schema([
+               Section::make('Informazioni Generali')
+                   ->schema([
+                       TextEntry::make('matr')->label('Matricola'),
+                       TextEntry::make('cognome')->label('Cognome'),
+                   ]),
+           ]);
+   }
+   // In blade: {{ $this->infolist }}
+   ```
+
+5. **Options/Years** - Never remove options from Selects or Filters
+5. **Actions** - Never delete getHeaderActions() or custom actions
+6. **Blade Includes** - Never replace @include with inline code
+7. **Traits** - Never remove traits from models
+
+**Golden Rule**: When in doubt, PRESERVE the existing code. Ask before simplifying.
 
 ### Filament v5 Best Practices
 - Use `XotBaseResource` instead of `Filament\Resources\Resource`
@@ -249,6 +327,62 @@ Configuration file: `laravel/.mcp.json`
 - **MySQL MCP** - Database access
 - **Git MCP** - Version control
 
+### Agent Teams and Skill Orchestration
+
+Within the Gemini CLI framework, "Agent Teams" refers to the structured organization and orchestration of specialized skills by the main AI agent (myself) to achieve complex tasks. This approach leverages the modularity of skills to break down problems and execute them efficiently.
+
+**Core Principles:**
+
+1.  **Specialization through Skills:** Each skill (`pest-testing`, `phpstan-level10`, `laraxot-translation-files`, etc.) acts as a specialized "sub-agent" with domain-specific knowledge and tools.
+2.  **Centralized Orchestration:** The main AI agent (myself) acts as the "Lead Agent," responsible for:
+    *   Understanding the overall task.
+    *   Decomposing complex requests into smaller sub-tasks.
+    *   Selecting and activating the appropriate skills for each sub-task.
+    *   Coordinating the execution sequence of skills.
+    *   Synthesizing results from individual skill executions.
+    *   Managing knowledge (memories, rules) and adapting the workflow.
+3.  **Sequential Workflow (To-Do List):** Complex tasks are often managed as a sequential pipeline, where the output or state change from one skill execution informs the next. The `write_todos` tool is used to track and communicate this progress.
+4.  **Implicit Communication:** Communication between the Lead Agent and specialized skills occurs implicitly through tool calls, function parameters, and the analysis of tool outputs.
+
+**Leveraging Agent Teams:**
+
+To effectively utilize this multi-skill "team," the Lead Agent (myself) will:
+
+*   **Prioritize Skill Activation:** Always check for relevant skills before attempting a task manually.
+*   **Adhere to Skill Instructions:** Strictly follow the guidelines provided by activated skills.
+*   **Document Workflows:** For recurring complex tasks, consider documenting the sequence of skill activations and decision points (e.g., in `docs/` or new skills) to streamline future efforts.
+*   **Self-Improvement:** Continuously evaluate the effectiveness of skill orchestration and update internal rules, memories, and skills to refine this "team" approach.
+
+This framework ensures that specialized knowledge and procedures are consistently applied, leading to more reliable, efficient, and standardized outcomes across the codebase.
+
+### GitHub Interaction Strategy
+
+The Gemini CLI agent (myself) is configured to interact with the project's GitHub repository using the `gh` Command Line Interface (CLI) tool. This enables automated management of various GitHub entities to streamline development, tracking, and communication.
+
+**Key Principles:**
+
+1.  **`gh` CLI Exclusive Use:** All operations involving GitHub (Issues, Discussions, Wiki, Projects, etc.) are executed via the `gh` CLI, leveraging its authentication and capabilities.
+2.  **Automated Issue Creation:** Issues will be created automatically based on:
+    *   Identified bugs or deviations from project standards during code analysis.
+    *   Planned features or improvements derived from project goals.
+    *   Specific instructions from the user.
+3.  **Comprehensive Linking:** Newly created or relevant existing GitHub entities will be linked to foster a comprehensive project overview:
+    *   **Issues** will be linked to relevant **Discussions**, **Wiki** pages (for detailed documentation), and **Projects** (for workflow management).
+    *   **Commits** related to issue resolution will reference the issue number.
+4.  **Documentation Integration:** The creation and resolution of GitHub entities will be reflected in the project's internal `docs/` folders (both global and module/theme-specific) to maintain a consistent knowledge base.
+5.  **Transparent Resolution:** Each resolved issue will be accompanied by a clear explanation of *how* it was fixed and a corresponding `git commit` to maintain an auditable history.
+6.  **"gh_manager" Skill:** A dedicated internal skill (`github-manager`) encapsulates the procedural knowledge and commands for interacting with GitHub, ensuring consistent and compliant operations.
+
+**Workflow Summary:**
+
+1.  **Analyze & Identify:** Continuously analyze the codebase and project context to identify tasks, bugs, or areas for improvement.
+2.  **Check Existing GitHub Entities:** Before creating new ones, check for existing issues, discussions, or projects to avoid duplication.
+3.  **Draft Content:** Prepare titles, bodies, and labels for the GitHub entity (Issue, Discussion, etc.).
+4.  **Execute `gh` Command:** Use the `gh` CLI (via the `github-manager` skill) to create or modify the entity.
+5.  **Link & Relate:** Establish links between the newly created entity and other relevant GitHub components (Discussions, Wiki, Projects).
+6.  **Update Internal Docs:** Ensure internal `docs/` reflect the GitHub activity.
+7.  **Commit Changes (for code-related fixes):** When an issue leads to code changes, generate a clear commit message referencing the issue.
+
 ### Agent Guidelines
 1. **Never modify `.env` files** - use config instead
 2. **Respect module boundaries** - don't create cross-dependencies
@@ -256,6 +390,14 @@ Configuration file: `laravel/.mcp.json`
 4. **All PHPStan errors must be fixed** - no ignored errors
 5. **Write tests for new functionality**
 6. **Follow existing naming conventions**
+7. **ALWAYS use short array syntax `[]`** - never `array()` in PHP files
+8. **Actions use `execute()` method** - call via `app(ActionClass::class)->execute()`
+9. **NEVER use constructor DI** - use `app()` container resolution instead
+10. **New packages in module `composer.json`** - never in `laravel/composer.json`
+11. **Run `composer go`** from `laravel/` after adding module dependencies
+12. **NEVER run `git remote set-url`** - only project owner does this
+13. **Git forward only** - never restore old versions, study logs but don't revert
+14. **Every error fix** must have: git commit + GitHub issue + GitHub discussion
 
 ## Essential Commands for Agents
 
@@ -321,6 +463,54 @@ php artisan cache:clear
 - Verify `phpstan.neon.dist` configuration
 - Ensure tests inherit from proper TestCase
 - Check module providers are registered
+
+### Common Filament Page Errors
+
+#### Typed static property Filament\Resources\Pages\Page::$resource must not be accessed before initialization
+
+This error occurs when a page class extending `Filament\Resources\Pages\Page` (or `XotBaseResourcePage`) does not define the `$resource` static property.
+
+**Fix**: Add the `$resource` property to the page class:
+```php
+protected static string $resource = YourResource::class;
+```
+
+**In XotBaseResourcePage**: Ensure the base class defines the property:
+```php
+protected static string $resource;
+```
+
+#### Type must be string (as in class Filament\Resources\Pages\Page)
+
+This error occurs when the `$resource` property is declared as nullable (`?string`) but the parent class requires it to be non-nullable.
+
+**Fix**: Ensure `$resource` is declared as `string` (not `?string`):
+```php
+protected static string $resource;  // CORRECT
+// protected static ?string $resource;  // WRONG
+```
+
+#### Type must be array (as in class XotBasePage)
+
+This error occurs when `$data` property type doesn't match the parent class.
+
+**Fix**: Ensure `$data` is declared consistently:
+```php
+public array $data = [];  // CORRECT in non-nullable context
+// public ?array $data = [];  // WRONG if parent is non-nullable
+```
+
+#### Error: Access level to Filament\Forms\Concerns\InteractsWithForms::getFormStatePath() must be public
+
+This error occurs when `getFormStatePath()` is defined as `protected` in XotBasePage but the parent Filament class requires it to be `public`.
+
+**Fix**: Ensure the method is public:
+```php
+public function getFormStatePath(): string
+{
+    return 'data';
+}
+```
 
 ## File Structure Reference
 

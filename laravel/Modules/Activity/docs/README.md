@@ -6,7 +6,7 @@
 
 > **🚀 Modulo Activity**: Il sistema di "scatola nera" dell'applicazione. Traccia ogni azione utente, mutamento di stato e evento di dominio, fornendo una cronologia immutabile e analizzabile.
 
-## 📋 **Panoramica**
+## Contribution
 
 Il modulo **Activity** non è un semplice logger, ma un'infrastruttura completa per la conformità, la sicurezza e la business intelligence.
 

@@ -1,6 +1,5 @@
 # SendNotificationBulkAction - Implementazione Completa
 
-**Data**: 2025-01-18  
 **Status**: ✅ Implementazione completata e PHPStan Level 10 compliant  
 **Module**: Notify
 
@@ -323,6 +322,6 @@ Vedi: [Actions Calling Actions Pattern](./actions-calling-actions-pattern.md)
 
 ---
 
-**Ultimo aggiornamento**: 2025-01-18  
+**Ultimo aggiornamento**: [DATE]  
 **PHPStan Level**: ✅ 10  
 **Quality**: ✅ PHPMD, PHPInsights compliant

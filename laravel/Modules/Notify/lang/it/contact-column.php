@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * Traduzioni per ContactColumn - Colonna Filament per contatti
- *
- * File di traduzione per la colonna riutilizzabile ContactColumn
- * che utilizza ContactTypeEnum per il rendering centralizzato.
- *
- * @author Laraxot Team
- *
- * @version 1.0
- *
- * @since 2025-08-01
- */
 return [
     'label' => 'Contatti',
     'no_contacts' => 'Nessun contatto disponibile',
@@ -29,5 +17,48 @@ return [
         'contact_list' => 'Lista contatti',
         'contact_link' => 'Collegamento contatto',
         'no_contacts' => 'Nessun contatto disponibile',
+    ],
+    'plural_label' => 'Contact Column (Plurale)',
+    'navigation' => [
+        'name' => 'Contact Column',
+        'plural' => 'Contact Column',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Contact Column',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Contact Column',
+        ],
+        'edit' => [
+            'label' => 'Modifica Contact Column',
+        ],
+        'delete' => [
+            'label' => 'Elimina Contact Column',
+        ],
     ],
 ];

@@ -22,26 +22,26 @@ class ListProjects extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('nome')
+            'nome' => TextColumn::make('nome')
                 ->searchable()
                 ->limit(50)
                 ->wrap(),
-            TextColumn::make('tipo')
+            'tipo' => TextColumn::make('tipo')
                 ->searchable(),
             TextColumn::make('stabiDirigente.nome_stabi')
                 ->sortable(),
-            TextColumn::make('stato')
+            'stato' => TextColumn::make('stato')
                 ->badge()
                 ->sortable(),
-            TextColumn::make('data_aggiudicazione')
+            'data_aggiudicazione' => TextColumn::make('data_aggiudicazione')
                 ->dateTime('D, d M Y')
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('data_inizio_esecuzione')
+            'data_inizio_esecuzione' => TextColumn::make('data_inizio_esecuzione')
                 ->dateTime('D, d M Y')
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('data_fine_esecuzione')
+            'data_fine_esecuzione' => TextColumn::make('data_fine_esecuzione')
                 ->dateTime('D, d M Y')
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
@@ -51,26 +51,26 @@ class ListProjects extends XotBaseListRecords
             TextColumn::make('determina di aggiudicazione')
                 ->searchable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('percentuale_fondo')
+            'percentuale_fondo' => TextColumn::make('percentuale_fondo')
                 ->searchable()
                 ->suffix(' %'),
-            TextColumn::make('importo_totale')
+            'importo_totale' => TextColumn::make('importo_totale')
                 ->money('EUR')
                 ->searchable(),
-            TextColumn::make('importo_effettivo_fondo')
+            'importo_effettivo_fondo' => TextColumn::make('importo_effettivo_fondo')
                 ->money('EUR')
                 ->searchable(),
-            TextColumn::make('componente_incentivante')
+            'componente_incentivante' => TextColumn::make('componente_incentivante')
                 ->money('EUR')
                 ->searchable(),
-            TextColumn::make('componente_innovazione')
+            'componente_innovazione' => TextColumn::make('componente_innovazione')
                 ->money('EUR')
                 ->searchable(),
-            TextColumn::make('created_at')
+            'created_at' => TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('updated_at')
+            'updated_at' => TextColumn::make('updated_at')
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),

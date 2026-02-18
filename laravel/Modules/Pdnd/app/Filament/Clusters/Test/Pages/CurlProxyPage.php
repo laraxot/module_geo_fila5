@@ -24,7 +24,7 @@ use function Safe\json_encode;
  */
 class CurlProxyPage extends XotBasePage
 {
-    // use NavigationLabelTrait;
+    use NavigationLabelTrait;
 
     // public ?array $data = [];
 

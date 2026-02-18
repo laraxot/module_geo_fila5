@@ -1,6 +1,17 @@
 {
     "name": "laraxot/module_activity_fila3",
-    "description": "Activity module for the Laraxot ecosystem.",
+    "description": "Activity logging and event sourcing module for the Laraxot ecosystem: audit trail, user actions tracking, and CQRS event store.",
+    "keywords": [
+        "laraxot",
+        "laravel",
+        "filament",
+        "module_activity",
+        "activity-log",
+        "event-sourcing",
+        "audit-trail",
+        "cqrs",
+        "spatie-activitylog"
+    ],
     "homepage": "https://github.com/laraxot/module_activity_fila3",
     "license": "MIT",
     "authors": [
@@ -27,10 +38,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Activity\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+            "Modules\\Activity\\Tests\\": "tests/"
         }
     },
     "require": {

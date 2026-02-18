@@ -238,6 +238,5 @@ Activity data is being logged but there's no visualization or analytics. Users n
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

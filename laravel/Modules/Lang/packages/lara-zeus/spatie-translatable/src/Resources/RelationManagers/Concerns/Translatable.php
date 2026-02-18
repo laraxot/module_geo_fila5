@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaraZeus\SpatieTranslatable\Resources\RelationManagers\Concerns;
 
 use LaraZeus\SpatieTranslatable\Resources\Concerns\HasActiveLocaleSwitcher;
@@ -11,8 +13,8 @@ trait Translatable
     public function mountTranslatable(): void
     {
         if (
-            blank($this->activeLocale) ||
-            (! in_array($this->activeLocale, $this->getTranslatableLocales(), true))
+            blank($this->activeLocale)
+            || (! in_array($this->activeLocale, $this->getTranslatableLocales(), true))
         ) {
             $this->setActiveLocale();
         }

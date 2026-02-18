@@ -43,6 +43,7 @@ TextInput::make('anno') // Usa automaticamente indennitaresponsabilita::risorsa.
 5. **message.php** - Messaggi e comunicazioni
 6. **condizioni_lavoro.php** - Condizioni lavorative
 7. **compila_indennita_responsabilita.php** - Pagina compilazione
+8. **pages.php** - Pagine e Widget custom
 
 ### File Secondari
 
@@ -68,6 +69,52 @@ TextInput::make('anno') // Usa automaticamente indennitaresponsabilita::risorsa.
     'sort' => 91,                       // Ordinamento
     'icon' => 'heroicon-o-nome',        // Icona Heroicon o custom
 ],
+```
+
+### Struttura Standard per Pagine e Widget
+Per le pagine e i widget, oltre a `fields` e `actions`, è obbligatorio includere le seguenti chiavi: `title`, `description` e `sections`.
+
+**Struttura Completa (CRITICA):**
+```php
+<?php
+declare(strict_types=1);
+
+return [
+    'nome_pagina_o_widget' => [ // Chiave unica per la pagina/widget
+        'title' => 'Titolo della Pagina/Widget',
+        'description' => 'Descrizione del contenuto della Pagina/Widget',
+        'sections' => [
+            'info_generali' => [
+                'title' => 'Informazioni Generali',
+                'description' => 'Dettagli e impostazioni della sezione',
+            ],
+        ],
+        'fields' => [
+            'campo_esempio' => [
+                'label' => 'Etichetta Campo',
+                'placeholder' => 'Testo placeholder',
+                'help' => 'Testo di aiuto per il campo',
+                'tooltip' => 'Tooltip informativo',
+            ],
+        ],
+        'actions' => [
+            'save' => [
+                'label' => 'Salva',
+                'icon' => 'heroicon-o-check',
+                'tooltip' => 'Salva le modifiche',
+            ],
+            'cancel' => [
+                'label' => 'Annulla',
+                'icon' => 'heroicon-o-x-mark',
+                'tooltip' => 'Annulla le modifiche',
+            ],
+        ],
+        'notifications' => [
+            'success' => 'Operazione completata con successo!',
+            'error' => 'Si è verificato un errore durante l\'operazione.',
+        ],
+    ],
+];
 ```
 
 ### Fields - Struttura Completa
@@ -286,6 +333,7 @@ Directory: `Modules/IndennitaResponsabilita/lang/de/`
 - [ ] Navigation completa con icon, group, sort
 - [ ] Fields con label, placeholder, help, tooltip
 - [ ] Actions con label, icon, tooltip, success, error
+- [ ] Pagine/Widget con title, description, sections, fields, actions
 - [ ] Messages e validation
 - [ ] Traduzione presente in IT, EN, DE
 - [ ] Nessuna stringa hardcoded nei componenti
@@ -299,53 +347,18 @@ Directory: `Modules/IndennitaResponsabilita/lang/de/`
 
 ## Ultimo Aggiornamento
 
-Data: 2025-12-04
-Autore: iFlow CLI
-Versione: 1.1
+Data: 2026-02-17
+Autore: Gemini CLI
+Versione: 1.2
 
-### Modifiche Recenti (v1.1)
+### Modifiche Recenti (v1.2)
 
-#### Correzione Navigation .navigation Issues
-Sono state corrette le traduzioni con riferimenti `.navigation` non validi:
+#### Nuova Sezione: Struttura Traduzioni per Pagine e Widget
+Aggiunta una sezione dedicata alla struttura obbligatoria dei file di traduzione per le Pagine e i Widget di Filament, inclusi `title`, `description`, `sections`, `fields` e `actions`.
 
-1. **lett_i.php**: 
-   - ❌ `'icon' => 'lett i.navigation'` → ✅ `'icon' => 'heroicon-o-document-check'`
-   - ❌ `'group' => 'Indennità Responsabilità'` → ✅ `'group' => 'Indennità'`
+#### Aggiornamento File Principali e Checklist Traduzioni
+Il file `pages.php` è stato aggiunto all'elenco dei file di traduzione principali e la checklist di completezza è stata aggiornata per includere i requisiti per Pagine/Widget.
 
-2. **lett_f.php**:
-   - ❌ `'icon' => 'lett f.navigation'` → ✅ `'icon' => 'heroicon-o-document-text'`
-   - ❌ `'group' => 'Indennità Responsabilità'` → ✅ `'group' => 'Indennità'`
-
-3. **my_log.php**:
-   - ❌ `'icon' => 'my log.navigation'` → ✅ `'icon' => 'heroicon-o-document-text'`
-   - ❌ `'group' => 'Indennità Responsabilità'` → ✅ `'group' => 'Indennità'`
-
-4. **mail_template.php**:
-   - ❌ `'label' => 'mail template.navigation'` → ✅ `'label' => 'Template Email'`
-   - ❌ `'group' => 'mail template.navigation'` → ✅ `'group' => 'Indennità'`
-   - ❌ `'icon' => 'mail template.navigation'` → ✅ `'icon' => 'heroicon-o-envelope'`
-
-5. **importi_categoria.php**:
-   - ❌ `'group' => 'Indennità Responsabilità'` → ✅ `'group' => 'Indennità'`
-
-#### Pattern Laraxot Applicati
-- **Icone Heroicon**: Tutte le icone ora usano il formato `heroicon-o-nome` 
-- **Gruppi Semantic**: Gruppi di navigazione semplificati e coerenti
-- **Nomi Italiani**: Tutte le label in italiano corretto
-- **Niente Riferimenti Circolari**: Eliminati riferimenti `.navigation` non validi
-
-#### Qualità del Codice
-- ✅ PHPStan Livello 10: No errors
-- ✅ PHPMD: Nessuna violazione
-- ✅ PHPInsights: 98.8% qualità (solo warning lunghezza linee)
-- ✅ Pint: Formattazione conforme
-
-#### Filosofia Laraxot Rispettata
-1. **MAI usare ->label()** nei componenti Filament
-2. **Struttura espansa** per tutti i campi con label, placeholder, help, tooltip
-3. **Icone Heroicon** standard invece di riferimenti custom
-4. **Gruppi semanticamente coerenti** nel navigation
-5. **Nomi in italiano** per l'interfaccia utente
 
 
 

@@ -64,27 +64,26 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('nome')
+            'nome' => TextColumn::make('nome')
                 ->limit(70)
                 ->searchable(),
-            TextColumn::make('quota_percentuale')
+            'quota_percentuale' => TextColumn::make('quota_percentuale')
                 ->suffix('%')
                 ->searchable(),
-            TextColumn::make('importo')
+            'importo' => TextColumn::make('importo')
                 ->money('EUR', decimalPlaces: 2)
                 ->suffix('€ ')
                 ->placeholder('DA CALCOLARE'),
-            TextInputColumn::make('anno_competenza')
+            'anno_competenza' => TextInputColumn::make('anno_competenza')
                 ->type('number')
                 ->rules(['required', 'numeric'])
                 ->searchable(),
-            TextColumn::make('quota_percentuale')
+            'quota_percentuale_sum' => TextColumn::make('quota_percentuale')
                 ->summarize(Sum::make()->label('TOTALE %')),
-            TextColumn::make('importo')
+            'importo_sum' => TextColumn::make('importo')
                 ->summarize(Sum::make()->label('TOTALE €')->money('EUR', decimalPlaces: 2)),
-            TextColumn::make('employees.full_name')
+            'employees.full_name' => TextColumn::make('employees.full_name')
                 ->placeholder('Nessun componente')
-                ->label('Componenti')
                 ->badge(),
         ];
     }

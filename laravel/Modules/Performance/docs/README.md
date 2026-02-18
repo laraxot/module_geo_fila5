@@ -625,15 +625,3 @@ Module attualmente in sviluppo. Documentazione verrà ampliata in base alle nece
 **Ultimo aggiornamento**: Gennaio 2026  
 **Maintainer**: Sistema PTVX  
 **Status**: Active Development
-
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
-
-
-## 📄 License & Authors
-
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
-
-**License:** MIT

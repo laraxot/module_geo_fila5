@@ -23,6 +23,17 @@ return [
             'placeholder' => 'Selecteer indelingstype',
             'tooltip' => 'Kies tussen lijst- en rasterweergave',
             'help' => 'Kies het meest geschikte indelingstype om de gegevens weer te geven',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

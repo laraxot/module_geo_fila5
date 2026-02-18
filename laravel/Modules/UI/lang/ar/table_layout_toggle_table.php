@@ -23,6 +23,17 @@ return [
             'placeholder' => 'اختر نوع التخطيط',
             'tooltip' => 'اختر بين عرض القائمة وعرض الشبكة',
             'help' => 'اختر نوع التخطيط المناسب لعرض البيانات',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

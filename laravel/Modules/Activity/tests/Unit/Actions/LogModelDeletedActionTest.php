@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogModelDeletedAction;
-use Modules\Activity\Tests\Fixtures\LogModelDeletedActionTestModel;
 use Modules\User\Models\User;
 
 test('LogModelDeletedAction can be instantiated', function () {
-    $model = new LogModelDeletedActionTestModel();
+    $model = new class extends Model
+    {
+        protected $table = 'test_models';
+
+        protected $fillable = ['name'];
+    };
     $user = User::factory()->make();
 
     $action = new LogModelDeletedAction($model, $user);

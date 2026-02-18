@@ -1,6 +1,5 @@
 # Regola Critica: Cluster Passport - Solo Risorse OAuth/Passport
 
-**Data**: 2025-01-22
 **Status**: ✅ Regola Critica OBBLIGATORIA
 **Integrazione**: Architettura Filament Clusters
 
@@ -105,6 +104,6 @@ find Modules/User/app/Filament/Clusters/Passport/Resources -name "*Resource.php"
 
 ---
 
-**Ultimo aggiornamento**: 2025-01-22
+**Ultimo aggiornamento**: [DATE]
 **Versione**: 1.0.0
 **Status**: ✅ Regola Critica OBBLIGATORIA

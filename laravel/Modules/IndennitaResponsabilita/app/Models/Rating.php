@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Modules\IndennitaResponsabilita\Database\Factories\RatingFactory;
 use Modules\Media\Models\Media;
 use Modules\Ptv\Models\Profile;
 use Modules\Rating\Enums\RuleEnum;
-use Modules\Rating\Models\Rating as BaseRatingModel;
+use Modules\Rating\Models\BaseRating;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Modules\IndennitaResponsabilita\Database\Factories\RatingFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 /**
  * Modules\IndennitaResponsabilita\Models\Rating
@@ -27,10 +26,11 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @property SchemalessAttributes|null $extra_attributes
+ * @property \Spatie\SchemalessAttributes\SchemalessAttributes|null $extra_attributes
  * @property RuleEnum|null $rule
  * @property bool|null $is_disabled
  * @property bool|null $is_readonly
+ * @property int|null $anno
  * @property int|null $order_column
  *
  * @method static Builder|Rating newModelQuery()
@@ -50,7 +50,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static Builder|Rating whereTxt($value)
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
- * @method static Builder|Rating withExtraAttributes(string|array $schemalessAttributes = [], mixed $value = null)
+ * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
  *
  * @property-read Profile|null $creator
  * @property-read Model|\Eloquent $linkedTo
@@ -62,9 +62,11 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  *
  * @mixin \Eloquent
  */
-class Rating extends BaseRatingModel
+class Rating extends BaseRating
 {
     protected $connection = 'indennita_responsabilita'; // this will use the specified database connection
 
-    // -------------------------------------------------
+    // DRY: casts(), scopeWithExtraAttributes(), $fillable ereditati da BaseRating
+    // @see Modules/Rating/docs/schemaless-attributes-errors.md
+    // @see Modules/IndennitaResponsabilita/docs/rating-schemaless-usage.md
 }

@@ -19,6 +19,8 @@ return [
         'id' => [
             'label' => 'आईडी',
             'helper_text' => 'टेम्पलेट की विशिष्ट पहचान',
+            'tooltip' => '',
+            'description' => '',
         ],
         'mailable' => [
             'label' => 'मेलेबल क्लास',
@@ -26,6 +28,7 @@ return [
             'help' => 'ईमेल भेजने वाला PHP क्लास',
             'helper_text' => 'ईमेल भेजने का PHP क्लास',
             'description' => 'मेलेबल',
+            'tooltip' => '',
         ],
         'subject' => [
             'label' => 'विषय',
@@ -33,6 +36,7 @@ return [
             'help' => 'ईमेल में दिखाई देने वाला विषय',
             'helper_text' => 'ईमेल विषय',
             'description' => 'विषय',
+            'tooltip' => '',
         ],
         'html_template' => [
             'label' => 'HTML सामग्री',
@@ -40,6 +44,7 @@ return [
             'help' => 'HTML प्रारूप में ईमेल सामग्री',
             'helper_text' => 'ईमेल टेम्पलेट की HTML सामग्री',
             'description' => 'HTML टेम्पलेट',
+            'tooltip' => '',
         ],
         'text_template' => [
             'label' => 'पाठ सामग्री',
@@ -47,77 +52,116 @@ return [
             'help' => 'HTML का समर्थन नहीं करने वाले क्लाइंट्स के लिए पाठ संस्करण',
             'helper_text' => 'ईमेल टेम्पलेट का पाठ संस्करण',
             'description' => 'पाठ टेम्पलेट',
+            'tooltip' => '',
         ],
         'version' => [
             'label' => 'संस्करण',
             'help' => 'टेम्पलेट संस्करण संख्या',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'बनाया गया',
             'helper_text' => 'टेम्पलेट बनाने की तारीख',
+            'tooltip' => '',
+            'description' => '',
         ],
         'updated_at' => [
             'label' => 'अंतिम संशोधन',
             'helper_text' => 'टेम्पलेट अंतिम संशोधन की तारीख',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_email' => [
             'label' => 'प्रेषक ईमेल',
             'helper_text' => 'प्रेषक का ईमेल पता',
             'placeholder' => 'noreply@example.com',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_name' => [
             'label' => 'प्रेषक का नाम',
             'helper_text' => 'प्रदर्शित प्रेषक का नाम',
             'placeholder' => 'कंपनी का नाम',
+            'tooltip' => '',
+            'description' => '',
         ],
         'variables' => [
             'label' => 'उपलब्ध चर',
             'helper_text' => 'टेम्पलेट में उपयोग किए जा सकने वाले चरों की सूची',
             'placeholder' => 'उदा: {{name}}, {{email}}',
+            'tooltip' => '',
+            'description' => '',
         ],
         'is_markdown' => [
             'label' => 'मार्कडाउन उपयोग करें',
             'helper_text' => 'बताता है कि क्या टेम्पलेट मार्कडाउन वाक्य रचना का उपयोग करता है',
+            'tooltip' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'स्थिति',
             'helper_text' => 'टेम्पलेट की वर्तमान स्थिति',
+            'tooltip' => '',
+            'description' => '',
         ],
         'toggleColumns' => [
             'label' => 'कॉलम टॉगल करें',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'रिकॉर्ड पुनः क्रमित करें',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'फ़िल्टर रीसेट करें',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'applyFilters' => [
             'label' => 'फ़िल्टर लागू करें',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'openFilters' => [
             'label' => 'फ़िल्टर खोलें',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'layout' => [
             'label' => 'लेआउट',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'slug' => [
             'label' => 'स्लग',
             'description' => 'स्लग',
             'helper_text' => 'स्लग',
             'placeholder' => 'स्लग',
+            'tooltip' => '',
         ],
         'name' => [
             'description' => 'टेम्पलेट का नाम',
             'helper_text' => 'टेम्पलेट को पहचानने के लिए वर्णनात्मक नाम',
             'placeholder' => 'उदा: स्वागत, आदेश पुष्टि, पासवर्ड रीसेट',
             'label' => 'टेम्पलेट का नाम',
+            'tooltip' => '',
         ],
         'params' => [
             'label' => 'पैरामीटर्स',
             'helper_text' => 'टेम्पलेट में उपयोग किए जा सकने वाले पैरामीटर अल्पविराम से अलग करके दर्ज करें',
             'placeholder' => 'name, email, date, company',
             'description' => 'ईमेल टेम्पलेट के लिए उपलब्ध पैरामीटर्स',
+            'tooltip' => '',
         ],
     ],
     'filters' => [
@@ -247,4 +291,6 @@ return [
     'model' => [
         'label' => 'ईमेल टेम्पलेट',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

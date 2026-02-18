@@ -57,11 +57,11 @@ class ListSchedes extends XotBaseListRecords
         return [
             'id' => TextColumn::make('id')
                 ->sortable(),
-            GroupColumn::make('lavoratore')->schema([
-                TextColumn::make('matr')->searchable(),
-                TextColumn::make('cognome')->searchable(),
-                TextColumn::make('nome'),
-                TextColumn::make('email'),
+            'lavoratore' => GroupColumn::make('lavoratore')->schema([
+                'matr' => TextColumn::make('matr')->searchable(),
+                'cognome' => TextColumn::make('cognome')->searchable(),
+                'nome' => TextColumn::make('nome'),
+                'email' => TextColumn::make('email'),
             ])->searchable(['matr', 'cognome', 'nome', 'email']),
             /*
             'matr' => TextColumn::make('matr')
@@ -84,16 +84,16 @@ class ListSchedes extends XotBaseListRecords
                 ->wrap()
                 ->sortable(),
 
-            GroupColumn::make('qua')->schema([
+            'qua' => GroupColumn::make('qua')->schema([
                 // TextColumn::make('propro'),
                 // TextColumn::make('posfun'),
                 // TextColumn::make('categoria_eco'),
-                TextColumn::make('categoria_ecoval'),
-                TextColumn::make('posfunval'),
+                'categoria_ecoval' => TextColumn::make('categoria_ecoval'),
+                'posfunval' => TextColumn::make('posfunval'),
                 // TextColumn::make('posiz'),
                 // TextColumn::make('posiz_txt'),
-                TextColumn::make('disci1'),
-                TextColumn::make('disci1_txt'),
+                'disci1' => TextColumn::make('disci1'),
+                'disci1_txt' => TextColumn::make('disci1_txt'),
             ]),
             /*
             'categoria_ecoval' => TextColumn::make('categoria_ecoval')
@@ -109,11 +109,11 @@ class ListSchedes extends XotBaseListRecords
                 ->searchable()
                 ->sortable(),
             */
-            GroupColumn::make('rep')->schema([
-                TextColumn::make('stabi'),
-                TextColumn::make('stabi_txt'),
-                TextColumn::make('repar'),
-                TextColumn::make('repar_txt'),
+            'rep' => GroupColumn::make('rep')->schema([
+                'stabi' => TextColumn::make('stabi'),
+                'stabi_txt' => TextColumn::make('stabi_txt'),
+                'repar' => TextColumn::make('repar'),
+                'repar_txt' => TextColumn::make('repar_txt'),
             ]),
             /*
             'stabi' => TextColumn::make('stabi')
@@ -129,10 +129,10 @@ class ListSchedes extends XotBaseListRecords
                 ->searchable()
                 ->sortable(),
             */
-            GroupColumn::make('periodo')->schema([
-                TextColumn::make('dal'),
-                TextColumn::make('al'),
-                TextColumn::make('anno'),
+            'periodo' => GroupColumn::make('periodo')->schema([
+                'dal' => TextColumn::make('dal'),
+                'al' => TextColumn::make('al'),
+                'anno' => TextColumn::make('anno'),
             ]),
             /*
             'dal' => TextColumn::make('dal')

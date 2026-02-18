@@ -1,19 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaraZeus\SpatieTranslatable;
 
 use Filament\Support\Contracts\TranslatableContentDriver;
+
+use function Filament\Support\generate_search_column_expression;
+use function Filament\Support\generate_search_term_expression;
+
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-use function Filament\Support\generate_search_column_expression;
-use function Filament\Support\generate_search_term_expression;
-
 class SpatieTranslatableContentDriver implements TranslatableContentDriver
 {
-    public function __construct(protected string $activeLocale) {}
+    public function __construct(protected string $activeLocale)
+    {
+    }
 
     public function isAttributeTranslatable(string $model, string $attribute): bool
     {
@@ -28,11 +33,11 @@ class SpatieTranslatableContentDriver implements TranslatableContentDriver
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      */
     public function makeRecord(string $model, array $data): Model
     {
-        $record = new $model;
+        $record = new $model();
 
         if (method_exists($record, 'setLocale')) {
             $record->setLocale($this->activeLocale);
@@ -42,7 +47,7 @@ class SpatieTranslatableContentDriver implements TranslatableContentDriver
             $record->getTranslatableAttributes() :
             [];
 
-        /** @var Model $record */
+        /* @var Model $record */
         $record->fill(Arr::except($data, $translatableAttributes));
 
         if (method_exists($record, 'setTranslation')) {
@@ -64,7 +69,7 @@ class SpatieTranslatableContentDriver implements TranslatableContentDriver
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      */
     public function updateRecord(Model $record, array $data): Model
     {
@@ -108,7 +113,7 @@ class SpatieTranslatableContentDriver implements TranslatableContentDriver
             $attributes[$attribute] = $record->getTranslation(
                 $attribute,
                 $this->activeLocale,
-                useFallbackLocale: (new SpatieTranslatablePlugin)->getUseFallbackLocale()
+                useFallbackLocale: (new SpatieTranslatablePlugin())->getUseFallbackLocale()
             );
         }
 

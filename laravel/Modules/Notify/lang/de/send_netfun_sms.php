@@ -23,11 +23,15 @@ return [
             'label' => 'Destinatario',
             'placeholder' => 'Inserisci il numero di telefono',
             'helper_text' => 'Numero di telefono del destinatario',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'placeholder' => 'Scrivi il testo del messaggio',
             'helper_text' => 'Contenuto del messaggio SMS',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -43,4 +47,6 @@ return [
         'error' => 'Si è verificato un errore durante l\'invio del messaggio SMS',
         'confirmation' => 'Sei sicuro di voler inviare questo messaggio SMS?',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

@@ -259,6 +259,5 @@ Users need to be notified about important activities in the system (e.g., failed
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

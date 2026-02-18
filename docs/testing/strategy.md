@@ -317,7 +317,13 @@ test:
   coverage: '/Code Coverage: \d+\.\d+%/'
 ```
 
-## 7. Best Practices
+### 7.5 Gestione delle Migrazioni nel Testing
+- **Migrazione Globale**: Assicurarsi che l'ambiente di test (es. configurato tramite `.env.testing`) esegua le migrazioni del database una sola volta all'inizio della suite di test (es. `php artisan migrate`).
+- **Nessuna Migrazione Modulo-Specifica**: Evitare di chiamare `artisan('module:migrate')` o simili all'interno dei metodi `setUp()` dei `TestCase` per singoli moduli. La gestione delle migrazioni è centralizzata per l'intero ambiente di test.
+- **`DatabaseTransactions`**: Utilizzare il trait `Illuminate\Foundation\Testing\DatabaseTransactions` per garantire che ogni test venga eseguito all'interno di una transazione di database, che viene poi annullata alla fine del test, mantenendo un database pulito e prevedibile per ogni test senza doverlo migrare e rifare ogni volta.
+- **Configurazione `.env.testing`**: Il file `.env.testing` deve essere una copia fedele di `.env`, con l'unica differenza che i nomi dei database devono essere suffissi con `_test` per isolare l'ambiente di test.
+
+## 8. Best Practices
 
 ### 7.1 Organizzazione
 - Test per ogni classe

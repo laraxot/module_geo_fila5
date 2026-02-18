@@ -42,6 +42,7 @@ use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ListIndennitaResponsabilitas extends XotBaseListRecords
 {
@@ -62,10 +63,15 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         $filtersForUrl = $this->tableFilters;
 
         return [
+
             'exportPdf' => Action::make('exportPdf')
                 ->icon('heroicon-s-document')
-               // ->url(route('export.pdf', []))
-                ->action(fn () => app(MakePdf::class)->execute($filtersForPdf)),
+                ->action(function (): BinaryFileResponse {
+                    /** @var array<string, mixed> $tableFilters */
+                    $tableFilters = $this->tableFilters ?? [];
+
+                    return app(MakePdf::class)->execute($tableFilters);
+                }),
 
             'SendMail' => Action::make('SendMail')
                 ->icon('heroicon-o-paper-airplane')
@@ -96,10 +102,10 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            WorkerColumn::make('lavoratore'),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
             // RepColumn::make('rep'),
             // 'anno' => TextColumn::make('anno')->sortable()->searchable(),
-            PeriodoColumn::make('periodo'),
+            'periodo' => PeriodoColumn::make('periodo'),
             // 'sent_email_list' => TextColumn::make('sent_email_list')->html()->default(app(GetSentEmailListHtml::class)->execute(...)),
         ];
     }
@@ -163,7 +169,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
 
             // Tables\Actions\EditAction::make(),
             // Action::make('activities')->url(fn ($record) => IndennitaResponsabilitaResource::getUrl('log-activity', ['record' => $record]))
-            'log-activity' => ListLogActivitiesAction::make(),
+            // 'log-activity' => ListLogActivitiesAction::make(), // Temporarily disabled - route registration issue
         ];
     }
 

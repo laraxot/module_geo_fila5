@@ -14,4 +14,37 @@ return [
     'next' => 'Avanti',
     'confirm' => 'Conferma',
     'completed' => 'Completato',
+    'label' => 'Stepper',
+    'plural_label' => 'Stepper (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Stepper',
+        ],
+        'edit' => [
+            'label' => 'Modifica Stepper',
+        ],
+        'delete' => [
+            'label' => 'Elimina Stepper',
+        ],
+    ],
 ];

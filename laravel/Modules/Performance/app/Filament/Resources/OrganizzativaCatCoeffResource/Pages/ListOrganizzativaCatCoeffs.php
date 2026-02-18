@@ -35,15 +35,15 @@ class ListOrganizzativaCatCoeffs extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('lista_propro'),
-            TextColumn::make('coeff'),
-            TextColumn::make('descr'),
-            TextColumn::make('tot_giorni'),
-            TextColumn::make('tot_giorni_pt'),
-            TextColumn::make('tot_giorni_pt_coeff'),
-            TextColumn::make('quota_teorica'),
-            TextColumn::make('tot'),
-            TextColumn::make('anno'),
+            'lista_propro' => TextColumn::make('lista_propro'),
+            'coeff' => TextColumn::make('coeff'),
+            'descr' => TextColumn::make('descr'),
+            'tot_giorni' => TextColumn::make('tot_giorni'),
+            'tot_giorni_pt' => TextColumn::make('tot_giorni_pt'),
+            'tot_giorni_pt_coeff' => TextColumn::make('tot_giorni_pt_coeff'),
+            'quota_teorica' => TextColumn::make('quota_teorica'),
+            'tot' => TextColumn::make('tot'),
+            'anno' => TextColumn::make('anno'),
 
         ];
     }

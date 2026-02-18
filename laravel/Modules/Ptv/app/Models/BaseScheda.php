@@ -14,6 +14,8 @@ use Modules\Sigma\Models\Traits\SchedaTrait;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 
 /**
  * Modules\Ptv\Models\BaseScheda.
@@ -68,9 +70,11 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property Collection<int, \Illuminate\Database\Eloquent\Model> $criteriOptions
  * @property int $n_perf_ind
  */
+// @see Modules/Xot/docs/spatie-schemaless-attributes.md
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
     use LogsActivity;
+    use SchemalessAttributesTrait;
     /*
     use SchedaTrait, SigmaModelTrait {
         SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
@@ -159,8 +163,8 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public function performanceIndividuale()
     {
         // This is a placeholder implementation - the actual relationship may vary
-        $performanceIndividualeClass = str_replace('Ptv\\', 'Performance\\', static::class);
-        $performanceIndividualeClass = str_replace('Models\\BaseScheda', 'Models\\Performance', $performanceIndividualeClass);
+        $perfClass = str_replace('Ptv\\', 'Performance\\', static::class);
+        $perfClass = str_replace('Models\\BaseScheda', 'Models\\Performance', $perfClass);
 
         // Defaulting to Performance model
         return $this->hasMany(Performance::class, 'matr', 'matr')
@@ -172,18 +176,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function perfInd(int $anno): ?float
     {
-        // This is a placeholder implementation
-        try {
-            $rows = $this->performanceIndividuale()
-                ->where('anno', $anno)
-                ->get();
-        } catch (\Error $e) {
-            return 0.0;
-        }
 
-        foreach ($rows as $row) {
-            $a = isset($row->totale_punteggio) ? $row->totale_punteggio : 0;
-        }
+
+
 
         $tbl = 'performance_individuale';
         $perf_ind = $this->performanceIndividuale()->selectRaw('( COALESCE(sum('.$tbl.'.totale_punteggio * (datediff('.$tbl.'.al,'.$tbl.'.dal)+1))/( sum(datediff('.$tbl.'.al,'.$tbl.'.dal)+1)  ),0) ) as perf_ind')
@@ -257,6 +252,22 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     protected $table = 'schede';
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return array_merge(parent::casts(), [
+            'calculated_data' => SchemalessAttributes::class,
+        ]);
+    }
+
+    protected array $schemalessAttributes = [
+        'calculated_data',
+    ];
+
+    /**
      * Configurazione Activity Log con esclusione attributi problematici.
      *
      * PROBLEMA: SchedaTrait ha accessor che chiamano $this->save() causando
@@ -314,5 +325,22 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public function isRegionale(): bool
     {
         return (int) ($this->disci1 ?? 0) === 203;
+    }
+
+    /**
+     * Scope a query to interact with calculated_data schemaless attribute.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<static> $query
+     * @return \Illuminate\Database\Eloquent\Builder<static>
+     * @see Modules/IndennitaResponsabilita/docs/schemaless-attributes.md#errore-5-tipo-di-ritorno-errato-per-scope-metodi-basescheda
+     */
+    public function scopeWithCalculatedData(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
+    {
+        // This scope should modify the query builder, not return the attribute directly.
+        // If the intention was to filter or add conditions based on calculated_data,
+        // that logic would go here.
+        // Example: return $query->where('calculated_data->some_key', 'some_value');
+
+        return $query; // Return the modified (or unmodified) query builder
     }
 }

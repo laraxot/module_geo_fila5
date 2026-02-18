@@ -20,6 +20,9 @@ return [
     'fields' => [
         'device_token' => [
             'label' => 'Token Dispositivo',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'type' => [
             'label' => 'Tipo',
@@ -28,16 +31,27 @@ return [
                 'data' => 'Dati',
                 'both' => 'Entrambi',
             ],
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'title' => [
             'label' => 'Titolo',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'body' => [
             'label' => 'Contenuto',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'data' => [
             'label' => 'Dati Aggiuntivi',
             'description' => 'Dati in formato JSON da inviare con la notifica',
+            'tooltip' => '',
+            'helper_text' => '',
         ],
     ],
     'actions' => [
@@ -50,4 +64,6 @@ return [
             'label' => 'Anteprima',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

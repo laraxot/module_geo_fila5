@@ -16,12 +16,16 @@ return [
             'tooltip' => 'Nome del tema',
             'placeholder' => 'es: Tema Aziendale',
             'help' => 'Inserisci un nome descrittivo per il tema',
+            'helper_text' => '',
+            'description' => '',
         ],
         'description' => [
             'label' => 'Descrizione',
             'tooltip' => 'Descrizione del tema',
             'placeholder' => 'es: Tema standard per le comunicazioni aziendali',
             'help' => 'Breve descrizione dello scopo del tema',
+            'helper_text' => '',
+            'description' => '',
         ],
         'colors' => [
             'label' => 'Colori',
@@ -44,6 +48,8 @@ return [
                     'placeholder' => 'es: #F5A623',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'typography' => [
             'label' => 'Tipografia',
@@ -61,6 +67,8 @@ return [
                     'placeholder' => 'es: Helvetica, Arial, sans-serif',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'layout' => [
             'label' => 'Layout',
@@ -76,6 +84,8 @@ return [
                     'tooltip' => 'Stile del piè di pagina',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'assets' => [
             'label' => 'Risorse',
@@ -91,16 +101,22 @@ return [
                     'tooltip' => 'Immagine di sfondo',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'is_default' => [
             'label' => 'Predefinito',
             'tooltip' => 'Imposta come tema predefinito',
             'help' => 'Il tema predefinito verrà utilizzato per tutte le notifiche senza tema specifico',
+            'helper_text' => '',
+            'description' => '',
         ],
         'is_active' => [
             'label' => 'Attivo',
             'tooltip' => 'Stato di attivazione del tema',
             'help' => 'Solo i temi attivi possono essere utilizzati',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -164,4 +180,6 @@ return [
     'model' => [
         'label' => 'Tema Notifica',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

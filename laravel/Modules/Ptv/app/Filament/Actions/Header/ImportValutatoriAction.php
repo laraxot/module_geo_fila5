@@ -145,11 +145,9 @@ class ImportValutatoriAction extends Action
                 continue;
             }
 
-            //$email = trim((string) ($row['testo'] ?? ''));
+            $email = trim((string) ($row['testo'] ?? ''));
             // $dirigente = (string) ($row['dirigente'] ?? '');
             // $email = trim($dirigente);
-            $email = trim((string) ($row['dirigente'] ?? ''));
-            
 
             $ana02f = Ana02f::where('emaind', $email)->first();
             if ($ana02f == null) {

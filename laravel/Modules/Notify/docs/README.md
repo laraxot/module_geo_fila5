@@ -6,7 +6,7 @@
 
 > **🚀 Modulo Notify**: Il cuore pulsante delle comunicazioni dell'ecosistema Laraxot. Gestisce l'invio multicanale, la generazione di PDF on-the-fly e l'integrazione di template dinamici gestiti da database.
 
-## 📋 **Panoramica**
+## Panoramica
 
 Il modulo **Notify** centralizza tutta la logica di invio messaggi, garantendo che ogni comunicazione sia tracciata, sicura e facilmente personalizzabile tramite Admin Panel.
 
@@ -15,17 +15,17 @@ Il modulo **Notify** centralizza tutta la logica di invio messaggi, garantendo c
 - 📱 **Multi-Channel**: Gestione unificata di Email, SMS (via Netfun/Twilio), WhatsApp e notifiche Database.
 - 🎯 **Super Mucca Rules**: Uso intensivo di DTO e Smart Enums per la gestione dei canali.
 
-## ⚡ **Funzionalità Core**
+## 🧩 RecordNotification
 
-### 🧩 **RecordNotification**
 Un sistema di notifica generico che permette di inviare messaggi basati su record Eloquent con risoluzione automatica dei template tramite slug.
 
-### 📄 **Allegati Dinamici**
+## 📄 Allegati Dinamici
+
 Permette di allegare file PDF generati al volo senza scrittura su disco, migliorando le performance e la scalabilità.
 
-## 🚀 **Quick Start**
+## 🚀 Quick Start
 
-### 📦 **Invio Email Semplice**
+### Invio Email Semplice
 ```php
 use Modules\Notify\Notifications\RecordNotification;
 
@@ -33,7 +33,7 @@ $notify = new RecordNotification($record, 'welcome-email');
 $user->notify($notify);
 ```
 
-### 📎 **Invio con Allegati Binari**
+### Invio con Allegati Binari
 ```php
 $pdfContent = app(GetPdfContentByRecordAction::class)->execute($record);
 $attachments = [['data' => $pdfContent, 'as' => 'report.pdf', 'mime' => 'application/pdf']];
@@ -43,7 +43,7 @@ $notify = (new RecordNotification($record, 'report'))
 $user->notify($notify);
 ```
 
-## 📚 **Documentazione Completa**
+## 📚 Documentazione Completa
 
 - 📖 **[Indice Documentazione](./00-index.md)** - Mappa completa di tutti i pattern e componenti.
 - 🗺️ **[Roadmap](./roadmap.md)** - Evoluzione del modulo e prossimi step.
@@ -59,7 +59,6 @@ $user->notify($notify);
 ## 🚀 Release su GitHub
 Le release sono basate su tag Git e possono includere release notes generate automaticamente.
 Workflow locale: `.github/workflows/release.yml`.
-
 
 ## 📄 License & Authors
 

@@ -23,11 +23,15 @@ return [
             'label' => 'Titolo',
             'helper_text' => 'Titolo della notifica',
             'placeholder' => 'Inserisci il titolo',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'helper_text' => 'Contenuto della notifica',
             'placeholder' => 'Inserisci il messaggio',
+            'tooltip' => '',
+            'description' => '',
         ],
         'type' => [
             'label' => 'Tipo',
@@ -41,6 +45,8 @@ return [
                 'warning' => 'Attenzione',
                 'error' => 'Errore',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'Stato',
@@ -51,23 +57,33 @@ return [
                 'read' => 'Letta',
                 'archived' => 'Archiviata',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
         'recipient' => [
             'label' => 'Destinatario',
             'helper_text' => 'Utente destinatario della notifica',
             'placeholder' => 'Seleziona il destinatario',
+            'tooltip' => '',
+            'description' => '',
         ],
         'sent_at' => [
             'label' => 'Inviata il',
             'helper_text' => 'Data e ora di invio della notifica',
+            'tooltip' => '',
+            'description' => '',
         ],
         'read_at' => [
             'label' => 'Letta il',
             'helper_text' => 'Data e ora di lettura della notifica',
+            'tooltip' => '',
+            'description' => '',
         ],
         'archived_at' => [
             'label' => 'Archiviata il',
             'helper_text' => 'Data e ora di archiviazione della notifica',
+            'tooltip' => '',
+            'description' => '',
         ],
         'channel' => [
             'label' => 'Canale',
@@ -92,6 +108,7 @@ return [
                     'tooltip' => 'Invia tramite Telegram',
                 ],
             ],
+            'description' => '',
         ],
         'template' => [
             'label' => 'Template',
@@ -115,6 +132,7 @@ return [
                     'helper_text' => 'Usa {variable} per inserire valori dinamici',
                 ],
             ],
+            'description' => '',
         ],
         'schedule' => [
             'label' => 'Programmazione',
@@ -141,9 +159,13 @@ return [
                     'placeholder' => 'es: 14:30',
                 ],
             ],
+            'description' => '',
         ],
         'applyFilters' => [
             'label' => 'applyFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -202,4 +224,6 @@ return [
         'success' => 'Operazione completata con successo',
         'error' => 'Si è verificato un errore durante l\'operazione',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

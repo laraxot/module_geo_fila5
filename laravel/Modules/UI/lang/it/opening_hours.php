@@ -46,7 +46,7 @@ return [
         'afternoon_hours' => 'Orari del pomeriggio',
     ],
     'notes' => [
-        'format_hint' => 'Utilizzare il formato 24 ore (es. 14:30 per le 2:30 del pomeriggio)',
+        'format_hint' => 'Utilizzare il formato 24 ore (es. 14:30 per le 2:30 del pomeriggio]',
         'empty_hint' => 'Lasciare vuoto significa "chiuso"',
     ],
     'validation' => [
@@ -69,6 +69,50 @@ return [
             'opening_before_closing' => 'L\'orario di apertura del :session  :day deve essere precedente a quello di chiusura.',
             'morning' => 'mattino',
             'afternoon' => 'pomeriggio',
+        ],
+    ],
+    'label' => 'Opening Hours',
+    'plural_label' => 'Opening Hours (Plurale)',
+    'navigation' => [
+        'name' => 'Opening Hours',
+        'plural' => 'Opening Hours',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Opening Hours',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Opening Hours',
+        ],
+        'edit' => [
+            'label' => 'Modifica Opening Hours',
+        ],
+        'delete' => [
+            'label' => 'Elimina Opening Hours',
         ],
     ],
 ];

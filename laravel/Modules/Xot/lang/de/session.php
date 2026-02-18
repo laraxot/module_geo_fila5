@@ -25,6 +25,10 @@ return [
                 'placeholder' => 'Seleziona l\'utente',
                 'help' => 'Utente proprietario della sessione',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'connection' => [
             'ip_address' => [
@@ -39,6 +43,10 @@ return [
                 'label' => 'Posizione',
                 'help' => 'Localizzazione geografica approssimativa',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'data' => [
             'payload' => [
@@ -49,6 +57,10 @@ return [
                 'label' => 'Dimensione',
                 'help' => 'Dimensione dei dati in memoria',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'timing' => [
             'created_at' => [
@@ -63,6 +75,10 @@ return [
                 'label' => 'Scadenza',
                 'help' => 'Momento di scadenza previsto',
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -125,12 +141,12 @@ return [
             'label' => 'Durata Sessione',
             'help' => 'Tempo massimo di inattività',
             'options' => [
-                '120' => '2 ore',
-                '240' => '4 ore',
-                '480' => '8 ore',
-                '720' => '12 ore',
-                '1440' => '1 giorno',
-                '10080' => '1 settimana',
+                120 => '2 ore',
+                240 => '4 ore',
+                480 => '8 ore',
+                720 => '12 ore',
+                1440 => '1 giorno',
+                10080 => '1 settimana',
             ],
         ],
         'security' => [
@@ -169,4 +185,6 @@ return [
             ],
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

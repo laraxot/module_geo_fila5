@@ -49,4 +49,10 @@ return [
         'warning' => 'Attenzione',
         'critical' => 'Critico',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

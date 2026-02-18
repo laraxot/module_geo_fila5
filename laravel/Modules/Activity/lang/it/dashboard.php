@@ -49,4 +49,37 @@ return [
         'warning' => 'Attenzione',
         'critical' => 'Critico',
     ],
+    'label' => 'Dashboard',
+    'plural_label' => 'Dashboard (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Dashboard',
+        ],
+        'edit' => [
+            'label' => 'Modifica Dashboard',
+        ],
+        'delete' => [
+            'label' => 'Elimina Dashboard',
+        ],
+    ],
 ];

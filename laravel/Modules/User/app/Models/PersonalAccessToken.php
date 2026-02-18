@@ -26,6 +26,7 @@ class PersonalAccessToken extends Model
     use HasXotFactory;
 
     protected $connection = 'user';
+
     protected $table = 'personal_access_tokens';
 
     protected $fillable = [
@@ -38,9 +39,12 @@ class PersonalAccessToken extends Model
         'expires_at',
     ];
 
-    protected $casts = [
-        'abilities' => 'array',
-        'last_used_at' => 'datetime',
-        'expires_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'abilities' => 'array',
+            'last_used_at' => 'datetime',
+            'expires_at' => 'datetime',
+        ];
+    }
 }

@@ -39,7 +39,7 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
             //TextColumn::make('nome')->searchable(),
             //TextColumn::make('stabi')->searchable(),
             //TextColumn::make('repar')->searchable(),
-            TextColumn::make('indennitaTipoDettaglio')
+            'indennitaTipoDettaglio' => TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
                     if (! $state instanceof Collection) {
@@ -74,8 +74,8 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
                         return '['.$indennitaTipoNome.'] '.$nome;
                     })->implode(' --------------------- ,'.PHP_EOL.PHP_EOL.'');
                 }),
-            TextColumn::make('quadrimestre')->searchable(),
-            TextColumn::make('anno')->searchable(),
+            'quadrimestre' => TextColumn::make('quadrimestre')->searchable(),
+            'anno' => TextColumn::make('anno')->searchable(),
         ];
     }
 

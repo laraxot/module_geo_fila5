@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'f' => [
+        'label' => 'Donna',
+        'color' => 'danger',
+        'icon' => 'fas-female',
+    ],
+    'm' => [
+        'label' => 'Uomo',
+        'color' => 'info',
+        'icon' => 'fas-male',
+    ],
+];

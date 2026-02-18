@@ -12,8 +12,6 @@ namespace Modules\Pdnd\Filament\Pages;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -21,8 +19,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Services\Anpr\Services\C030\C030Service;
 use Modules\Pdnd\Services\PdndClientService;
-use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
+use Modules\User\Models\User;
 
 use function Safe\preg_replace;
 
@@ -31,9 +29,8 @@ use function Safe\preg_replace;
  *
  * @property Schema $pdndForm
  */
-class ServizioAccertamentoIdUnicoNazionalePage extends XotBasePage implements HasForms
+class ServizioAccertamentoIdUnicoNazionalePage extends XotBasePage
 {
-    use InteractsWithForms;
 
     /** @var array<string, mixed> */
     public array $pdndData = [];

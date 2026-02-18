@@ -19,6 +19,8 @@ return [
             'tooltip' => 'Nome identificativo del canale',
             'placeholder' => 'es: Email Marketing',
             'help' => 'Inserisci un nome univoco per identificare il canale',
+            'helper_text' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Driver',
@@ -50,6 +52,8 @@ return [
                     'tooltip' => 'Invio tramite webhook Slack',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'configuration' => [
             'label' => 'Configurazione',
@@ -126,16 +130,22 @@ return [
                     'placeholder' => 'es: https://hooks.slack.com/services/...',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'is_default' => [
             'label' => 'Predefinito',
             'tooltip' => 'Imposta come canale predefinito',
             'help' => 'Il canale predefinito verrà utilizzato quando non specificato diversamente',
+            'helper_text' => '',
+            'description' => '',
         ],
         'is_enabled' => [
             'label' => 'Abilitato',
             'tooltip' => 'Stato di attivazione del canale',
             'help' => 'Disabilita temporaneamente il canale senza eliminarlo',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -176,4 +186,6 @@ return [
             'message' => 'Impossibile inviare il messaggio di test: :error',
         ],
     ],
+    'label' => 'Channel',
+    'plural_label' => 'Channel (Plurale)',
 ];

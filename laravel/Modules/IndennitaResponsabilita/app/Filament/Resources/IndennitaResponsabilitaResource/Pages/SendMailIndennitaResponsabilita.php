@@ -5,20 +5,13 @@ declare(strict_types=1);
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
 use Filament\Forms\Components\TextInput;
-// use Filament\Pages\Page;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Resources\Pages\Concerns\HasRelationManagers;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-use Filament\Resources\Pages\Page;
-use Filament\Schemas\Schema;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
+use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
-class SendMailIndennitaResponsabilita extends Page implements HasForms
+class SendMailIndennitaResponsabilita extends XotBasePage
 {
     // use HasRelationManagers;
     // use InteractsWithRecord;
-    use InteractsWithForms;
 
     /** @var array<string, mixed> */
     public array $data = [];
@@ -47,13 +40,14 @@ class SendMailIndennitaResponsabilita extends Page implements HasForms
         // dddx('b');
     }
 
-    public function form(Schema $schema): Schema
+    /**
+     * @return array<int, \Filament\Schemas\Components\Component>
+     */
+    protected function getFormSchema(): array
     {
-        return $schema
-            ->components([
-                TextInput::make('name')
-                    ->required(),
-            ])
-            ->statePath('data');
+        return [
+            TextInput::make('name')
+                ->required(),
+        ];
     }
 }

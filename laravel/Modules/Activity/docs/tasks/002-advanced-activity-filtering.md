@@ -192,6 +192,5 @@ The current activity filtering is basic and limited. Users need powerful search 
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

@@ -194,6 +194,5 @@ The Activity module currently has basic activity logging but lacks a proper cate
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

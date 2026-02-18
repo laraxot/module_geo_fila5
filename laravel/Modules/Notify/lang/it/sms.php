@@ -22,17 +22,23 @@ return [
         'to' => [
             'label' => 'Numero di telefono',
             'placeholder' => 'Inserisci il numero di telefono',
-            'helper_text' => 'Inserisci il numero di telefono con prefisso internazionale (es. +39)',
+            'helper_text' => 'Inserisci il numero di telefono con prefisso internazionale (es. +39]',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'placeholder' => 'Inserisci il messaggio',
             'helper_text' => 'Il messaggio non può superare i 160 caratteri',
+            'tooltip' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Provider SMS',
             'placeholder' => 'Seleziona il provider SMS',
             'helper_text' => 'Seleziona il provider SMS da utilizzare',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'drivers' => [
@@ -52,4 +58,6 @@ return [
         'success' => 'SMS inviato con successo',
         'error' => 'Si è verificato un errore durante l\'invio dell\'SMS',
     ],
+    'label' => 'Sms',
+    'plural_label' => 'Sms (Plurale)',
 ];

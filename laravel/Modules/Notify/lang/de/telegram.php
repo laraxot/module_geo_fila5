@@ -23,11 +23,15 @@ return [
             'label' => 'ID Chat',
             'placeholder' => 'Inserisci l\'ID della chat',
             'helper_text' => 'ID della chat Telegram a cui inviare il messaggio',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'placeholder' => 'Inserisci il messaggio',
             'helper_text' => 'Testo del messaggio da inviare',
+            'tooltip' => '',
+            'description' => '',
         ],
         'parse_mode' => [
             'label' => 'Formato',
@@ -38,11 +42,15 @@ return [
                 'html' => 'HTML',
                 'markdown' => 'Markdown',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Provider Telegram',
             'placeholder' => 'Seleziona il provider Telegram',
             'helper_text' => 'Seleziona il provider Telegram da utilizzare',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'drivers' => [
@@ -58,4 +66,6 @@ return [
         'success' => 'Messaggio Telegram inviato con successo',
         'error' => 'Si è verificato un errore durante l\'invio del messaggio Telegram',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

@@ -62,46 +62,44 @@ $ratings = Rating::where('extra_attributes->anno', '>=', 2024)
 
 ## 🔍 Come Funziona Internamente
 
-### Il Meccanismo di Laravel Scopes
+### Il Meccanismo in `BaseRating.php`
 
 Quando chiami un metodo statico come `Rating::withExtraAttributes()`:
 
-1. **Laravel cerca**: `scopeWithExtraAttributes()` nel modello
-2. **Converte**: `Rating::withExtraAttributes('anno', 2025)`
-   → `Rating::scopeWithExtraAttributes($query, 'anno', 2025)`
-3. **Passa tutti i parametri** al metodo scope
-
-### L'Implementazione in Rating.php
+1.  **Laravel cerca**: `scopeWithExtraAttributes()` nel modello
+2.  **Passa tutti i parametri** al metodo scope
+3.  **L'implementazione in `BaseRating.php` gestisce direttamente i parametri**:
 
 ```php
-/**
- * @param Builder<static> $query
- * @param string|array<string, mixed> $schemalessAttributes
- * @param mixed $value
- * @param string|null $operator
- * @return Builder<static>
- */
 public function scopeWithExtraAttributes(
     Builder $query,
-    string|array $schemalessAttributes = [],
+    string|array $attributes = [],
     mixed $value = null,
-    ?string $operator = null,
 ): Builder {
-    // Delegates to Spatie\SchemalessAttributes\SchemalessAttributes::modelScope(),
-    // which inspects the full argument list via debug_backtrace().
-    return $this->extra_attributes->modelScope();
+    if (is_string($attributes) && null !== $value) {
+        // Single attribute with value: withExtraAttributes('anno', 2024)
+        return $query->where("extra_attributes->{$attributes}", $value);
+    }
+
+    if (is_array($attributes)) {
+        // Multiple attributes: withExtraAttributes(['anno' => 2024, 'type' => 'foo'])
+        foreach ($attributes as $key => $val) {
+            $query = $query->where("extra_attributes->{$key}", $val);
+        }
+    }
+
+    return $query;
 }
 ```
 
 **IMPORTANTE**:
-- Il metodo **ACCETTA** i parametri (`$schemalessAttributes`, `$value`, `$operator`)
-- Non li usa direttamente nel corpo del metodo
-- Delega a `modelScope()` che usa `debug_backtrace()` per ispezionare l'intera lista di argomenti
-- Questo è un pattern avanzato di Spatie per gestire parametri in modo dinamico
+- Il metodo **ACCETTA** i parametri (`$attributes`, `$value`)
+- Li usa **direttamente** nel corpo del metodo per costruire la query.
+- **Non delega a `modelScope()` né usa `debug_backtrace()`** in questa implementazione specifica del progetto PTVX.
 
 ---
 
-## 🚨 PHPStan False Positive
+## 🚨 PHPStan False Positive (e perché non sempre lo è qui)
 
 ### Il Problema
 
@@ -112,19 +110,19 @@ Static method Illuminate\Database\Eloquent\Builder<Modules\IndennitaResponsabili
 invoked with 2 parameters, 0 required.
 ```
 
-### Perché è un False Positive
+### Perché può ancora essere un "False Positive" o un errore di configurazione
 
-1. **PHPStan non capisce** il pattern Laravel scope magic methods
-2. **Non vede** la signature completa di `scopeWithExtraAttributes()` con i parametri
-3. **Analisi statica** non può tracciare `debug_backtrace()` usato da Spatie
+1.  **PHPStan non sempre comprende** il pattern Laravel scope magic methods.
+2.  **Non vede** la signature completa di `scopeWithExtraAttributes()` con i parametri *senza una corretta configurazione o PHPDoc*.
+3.  A differenza dell'implementazione generica di Spatie che usa `debug_backtrace()`, l'implementazione in PTVX `BaseRating` **gestisce direttamente i parametri**. Quindi, l'errore non è dovuto al `debug_backtrace()`, ma più probabilmente a una mancata risoluzione della signature del metodo da parte di PHPStan.
 
-### Soluzione: PHPDoc Annotation
+### Soluzione: PHPDoc Annotation e Laravel IDE Helper (RACCOMANDATO)
 
-Il modello Rating.php ha la corretta annotazione PHPDoc:
+Il modello `Rating.php` (e `BaseRating.php`) dovrebbe avere la corretta annotazione PHPDoc:
 
 ```php
 /**
- * @method static Builder|Rating withExtraAttributes(string|array $schemalessAttributes = [], mixed $value = null)
+ * @method static Builder|Rating withExtraAttributes(string|array $attributes = [], mixed $value = null)
  */
 class Rating extends BaseModel
 {
@@ -133,28 +131,11 @@ class Rating extends BaseModel
 ```
 
 **Questa annotazione**:
-- ✅ Dichiara la signature corretta del metodo
-- ✅ Permette agli IDE di auto-completare
-- ⚠️ Ma PHPStan potrebbe ancora segnalare false positive
+- ✅ Dichiara la signature corretta del metodo.
+- ✅ Permette agli IDE di auto-completare.
+- ✅ Aiuta PHPStan a risolvere la signature del metodo, riducendo i falsi positivi.
 
-### Fix per PHPStan
-
-**Opzione 1: Supprimere il Singolo Errore**
-
-```php
-// @phpstan-ignore-next-line arguments.count
-$ratings = Rating::withExtraAttributes('anno', $anno)->get();
-```
-
-**Opzione 2: Aggiungere a phpstan.neon**
-
-```yaml
-parameters:
-    ignoreErrors:
-        - '#Static method.*withExtraAttributes\(\) invoked with .* parameters, 0 required#'
-```
-
-**Opzione 3: Laravel IDE Helper (RACCOMANDATO)**
+**Laravel IDE Helper (RACCOMANDATO)**
 
 ```bash
 php artisan ide-helper:models --write

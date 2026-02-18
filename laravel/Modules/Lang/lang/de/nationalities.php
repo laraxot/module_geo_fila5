@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 return [
-    // Europa
     'it' => 'Italiener',
     'fr' => 'Franzose',
     'de' => 'Deutscher',
@@ -48,7 +47,6 @@ return [
     'ge' => 'Georgier',
     'am' => 'Armenier',
     'az' => 'Aserbaidschaner',
-    // Amerika
     'us' => 'Amerikaner',
     'ca' => 'Kanadier',
     'mx' => 'Mexikaner',
@@ -91,7 +89,6 @@ return [
     'kn' => 'Kittitianer',
     'dm' => 'Dominikaner',
     'bs' => 'Bahamaer',
-    // Asien
     'cn' => 'Chinese',
     'jp' => 'Japaner',
     'kr' => 'Südkoreaner',
@@ -136,7 +133,6 @@ return [
     'kg' => 'Kirgise',
     'tj' => 'Tadschike',
     'tm' => 'Turkmen',
-    // Afrika
     'eg' => 'Ägypter',
     'ly' => 'Libyer',
     'tn' => 'Tunesier',
@@ -191,7 +187,6 @@ return [
     'ao' => 'Angolaner',
     'aq' => 'Antarktiker',
     'zr' => 'Zairer',
-    // Ozeanien
     'au' => 'Australier',
     'ax' => 'Åländer',
     'nz' => 'Neuseeländer',
@@ -209,7 +204,6 @@ return [
     'pw' => 'Palauer',
     'fm' => 'Mikronesier',
     'mh' => 'Marshaller',
-    // Andere
     'xk' => 'Kosovare',
     'va' => 'Vatikaner',
     'sm' => 'San-Marinese',
@@ -262,4 +256,17 @@ return [
     'mp' => 'Nördliche Marianer',
     'um' => 'US-Außengebiete',
     'eh' => 'Westsahara',
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

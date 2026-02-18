@@ -12,6 +12,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Modules\IndennitaResponsabilita\Filament\Resources\LettIResource;
 use Modules\IndennitaResponsabilita\Models\LettI;
+use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListLettIs extends XotBaseListRecords
@@ -26,18 +27,8 @@ class ListLettIs extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
-            'matr' => TextColumn::make('matr')
-                ->searchable()
-                ->sortable(),
-
-            'cognome' => TextColumn::make('cognome')
-                ->searchable()
-                ->sortable(),
-
-            'nome' => TextColumn::make('nome')
-                ->searchable()
-                ->sortable(),
-
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            
             'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),

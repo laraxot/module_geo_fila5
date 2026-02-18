@@ -53,24 +53,24 @@ class OrganizzativaCatCoeffResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('lista_propro')
+            'lista_propro' => TextColumn::make('lista_propro')
                 ->searchable(),
-            TextColumn::make('coeff')
+            'coeff' => TextColumn::make('coeff')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_giorni')
+            'tot_giorni' => TextColumn::make('tot_giorni')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_giorni_pt')
+            'tot_giorni_pt' => TextColumn::make('tot_giorni_pt')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('tot_giorni_pt_coeff')
+            'tot_giorni_pt_coeff' => TextColumn::make('tot_giorni_pt_coeff')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('quota_teorica')
+            'quota_teorica' => TextColumn::make('quota_teorica')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
 

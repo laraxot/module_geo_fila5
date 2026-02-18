@@ -55,13 +55,13 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('id'),
-            TextColumn::make('name'),
-            TextColumn::make('field_name'),
-            TextColumn::make('op'),
-            TextColumn::make('value'),
-            TextColumn::make('type'),
-            TextColumn::make('anno'),
+            'id' => TextColumn::make('id'),
+            'name' => TextColumn::make('name'),
+            'field_name' => TextColumn::make('field_name'),
+            'op' => TextColumn::make('op'),
+            'value' => TextColumn::make('value'),
+            'type' => TextColumn::make('type'),
+            'anno' => TextColumn::make('anno'),
         ];
     }
 

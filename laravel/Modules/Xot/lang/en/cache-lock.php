@@ -19,16 +19,25 @@ return [
             'label' => 'Chiave',
             'placeholder' => 'Inserisci la chiave del lock',
             'help' => 'Identificativo univoco del lock in cache',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'owner' => [
             'label' => 'Proprietario',
             'placeholder' => 'Identificativo del proprietario',
             'help' => 'Identificativo del processo che detiene il lock',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'expiration' => [
             'label' => 'Scadenza',
             'placeholder' => 'Timestamp di scadenza',
             'help' => 'Momento in cui il lock scadrà automaticamente',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -75,4 +84,6 @@ return [
             'lock_extended' => 'Durata del lock estesa',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

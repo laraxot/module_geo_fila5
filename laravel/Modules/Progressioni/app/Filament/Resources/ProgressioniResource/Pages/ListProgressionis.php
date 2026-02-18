@@ -94,21 +94,21 @@ class ListProgressionis extends XotBaseListRecords
     }
 
     /**
-     * @return array<int, TextColumn|IconColumn|WorkerColumn|QuaColumn|RepartoColumn|GroupColumn>
+     * @return array<string, TextColumn|IconColumn|WorkerColumn|QuaColumn|RepartoColumn|GroupColumn>
      */
     #[\Override]
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('id'),
-            TextColumn::make('cognome')->toggleable(isToggledHiddenByDefault: true)->searchable(),
-            TextColumn::make('matr')->toggleable(isToggledHiddenByDefault: true)->searchable(),
+            'id' => TextColumn::make('id'),
+            'cognome' => TextColumn::make('cognome')->toggleable(isToggledHiddenByDefault: true)->searchable(),
+            'matr' => TextColumn::make('matr')->toggleable(isToggledHiddenByDefault: true)->searchable(),
 
-            IconColumn::make('ha_diritto')
+            'ha_diritto' => IconColumn::make('ha_diritto')
                 ->default(false)
                 ->boolean(),
 
-            TextColumn::make('motivo')
+            'motivo' => TextColumn::make('motivo')
                 // ->searchable() //diventa troppo lento
                 ->wrap(),
             /* --------------------------- TROPPE QUERY ---------------------------- */
@@ -120,9 +120,9 @@ class ListProgressionis extends XotBaseListRecords
             // ->formatStateUsing(fn (string $state) => dddx($state)),
 
             /*
-                GroupColumn::make('diritto')->schema([
+                'diritto' => GroupColumn::make('diritto')->schema([
                     //Tables\Columns\TextColumn::make('ha_diritto'),
-                    IconColumn::make('ha_diritto')
+                    'ha_diritto' => IconColumn::make('ha_diritto')
                         ->default(false)
                         ->boolean(),
                     Tables\Columns\TextColumn::make('motivo')
@@ -133,20 +133,20 @@ class ListProgressionis extends XotBaseListRecords
                         //->separator(','),
                 ]),
                 */
-            WorkerColumn::make('lavoratore'),
-            GroupColumn::make('criteri')->schema([
-                TextColumn::make('gg'),
-                TextColumn::make('gg_no_asz'),
-                TextColumn::make('gg_asz'),
-                TextColumn::make('gg_cateco_no_posfun_no_asz'),
-                TextColumn::make('eta'),
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            'criteri' => GroupColumn::make('criteri')->schema([
+                'gg' => TextColumn::make('gg'),
+                'gg_no_asz' => TextColumn::make('gg_no_asz'),
+                'gg_asz' => TextColumn::make('gg_asz'),
+                'gg_cateco_no_posfun_no_asz' => TextColumn::make('gg_cateco_no_posfun_no_asz'),
+                'eta' => TextColumn::make('eta'),
             ]),
-            QuaColumn::make('qualifica'),
-            RepartoColumn::make('reparto'),
-            GroupColumn::make('periodo')->schema([
-                TextColumn::make('dal'),
-                TextColumn::make('al'),
-                TextColumn::make('anno'),
+            'qualifica' => QuaColumn::make('qualifica'),
+            'reparto' => RepartoColumn::make('reparto'),
+            'periodo' => GroupColumn::make('periodo')->schema([
+                'dal' => TextColumn::make('dal'),
+                'al' => TextColumn::make('al'),
+                'anno' => TextColumn::make('anno'),
             ]),
         ];
     }

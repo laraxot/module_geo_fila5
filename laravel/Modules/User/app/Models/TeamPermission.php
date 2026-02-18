@@ -6,7 +6,6 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\User\Database\Factories\TeamPermissionFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -32,8 +31,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $deleter
  * @property ProfileContract|null $updater
- *
- * @method static TeamPermissionFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */

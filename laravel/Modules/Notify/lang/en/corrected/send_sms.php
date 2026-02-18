@@ -12,11 +12,15 @@ return [
             'label' => 'Recipient',
             'placeholder' => 'Enter phone number',
             'helper_text' => 'Enter phone number with international prefix (e.g. +1)',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Message',
             'placeholder' => 'Enter message text',
             'helper_text' => 'Message cannot exceed 160 characters',
+            'tooltip' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Provider',
@@ -30,6 +34,8 @@ return [
                 'gammu' => 'Gammu',
                 'netfun' => 'Netfun',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -42,4 +48,6 @@ return [
         'success' => 'SMS sent successfully',
         'error' => 'Error sending SMS: :error',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

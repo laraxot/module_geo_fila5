@@ -263,7 +263,7 @@ return [
             'generic' => 'Si è verificato un errore durante il reset della password. Riprova più tardi.',
             'possible_causes' => 'Possibili cause:',
             'causes' => [
-                'expired_token' => 'Il link di reset è scaduto (valido per 60 minuti)',
+                'expired_token' => 'Il link di reset è scaduto (valido per 60 minuti]',
                 'invalid_email' => 'L\'indirizzo email non corrisponde a nessun account',
                 'already_used' => 'Il link di reset è già stato utilizzato',
             ],
@@ -277,9 +277,48 @@ return [
         'token' => 'Il token di reset password non è valido.',
         'user' => 'Non riusciamo a trovare un utente con questo indirizzo email.',
     ],
-    'navigation' => [],
-    'label' => '',
-    'plural_label' => '',
-    'fields' => [],
-    'actions' => [],
+    'navigation' => [
+        'name' => 'Auth',
+        'plural' => 'Auth',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Auth',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'label' => 'Auth',
+    'plural_label' => 'Auth (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Auth',
+        ],
+        'edit' => [
+            'label' => 'Modifica Auth',
+        ],
+        'delete' => [
+            'label' => 'Elimina Auth',
+        ],
+    ],
 ];
