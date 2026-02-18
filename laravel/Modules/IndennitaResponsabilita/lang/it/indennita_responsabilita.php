@@ -226,6 +226,15 @@ return [
         'periodo' => [
             'label' => 'periodo',
         ],
+        'valutatore' => [
+            'label' => 'valutatore',
+            'placeholder' => 'valutatore',
+            'helper_text' => 'valutatore',
+            'description' => 'valutatore',
+        ],
+        'anno_valutatore' => [
+            'label' => 'anno_valutatore',
+        ],
     ],
     'actions' => [
         'create' => [

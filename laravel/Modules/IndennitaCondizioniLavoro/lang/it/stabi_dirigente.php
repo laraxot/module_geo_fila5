@@ -21,6 +21,9 @@ return [
         ],
         'quadrimestre' => [
             'label' => 'quadrimestre',
+            'description' => 'quadrimestre',
+            'helper_text' => 'quadrimestre',
+            'placeholder' => 'quadrimestre',
         ],
         'anno' => [
             'label' => 'anno',
@@ -143,6 +146,7 @@ return [
         'create' => [
             'tooltip' => 'create',
             'icon' => 'create',
+            'label' => 'create',
         ],
         'applyFilters' => [
             'tooltip' => 'applyFilters',
@@ -157,6 +161,12 @@ return [
         'cancel' => [
             'tooltip' => 'cancel',
             'icon' => 'cancel',
+            'label' => 'cancel',
+        ],
+        'save' => [
+            'tooltip' => 'save',
+            'icon' => 'save',
+            'label' => 'save',
         ],
     ],
     'label' => 'stabi dirigente',

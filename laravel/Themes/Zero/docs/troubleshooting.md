@@ -139,10 +139,12 @@ const chart = new Chart(ctx, {
 
 ## Troubleshooting
 Common issues and solutions:
+- **Filament download action does nothing**: verify the action returns a response and pass `$tableFilters` directly (no wrapper): [IndennitaCondizioniLavoro rule](../../../Modules/IndennitaCondizioniLavoro/docs/action-return-type-rule.md)
 - **Chart not displaying**: Check file permissions and paths
 - **PDF generation failures**: Verify PDF library dependencies
 - **Performance issues**: Implement proper caching and queuing
 - **Filter not applying**: Validate filter data format
+- **Action filters**: Pass raw table filters (no wrapper keys) if the action normalizes input
 - **JpGraph not found**: Verify installation and autoloader configuration
 - **Memory issues**: Optimize chart dimensions and implement Redis caching
 - **Chart generation failures**: Check file permissions and directory creation

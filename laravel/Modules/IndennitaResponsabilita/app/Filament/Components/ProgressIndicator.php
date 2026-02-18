@@ -9,15 +9,18 @@ use Illuminate\Contracts\View\View;
 
 /**
  * Componente per indicatore visivo di progresso form.
- * 
+ *
  * Fornisce feedback visivo immediato sullo stato delle operazioni
  * con colori contestuali e animazioni appropriate.
  */
 class ProgressIndicator extends Component
 {
     public string $step;
+
     public string $status; // 'loading', 'validating', 'completed', 'error'
+
     public string $message;
+
     public bool $showIcon;
 
     public function __construct(
@@ -37,7 +40,7 @@ class ProgressIndicator extends Component
      */
     protected function getBackgroundColor(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'loading' => 'bg-blue-100 dark:bg-blue-900/20',
             'validating' => 'bg-yellow-100 dark:bg-yellow-900/20',
             'completed' => 'bg-green-100 dark:bg-green-900/20',
@@ -51,7 +54,7 @@ class ProgressIndicator extends Component
      */
     protected function getTextColor(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'loading' => 'text-blue-900 dark:text-blue-100',
             'validating' => 'text-yellow-900 dark:text-yellow-100',
             'completed' => 'text-green-900 dark:text-green-100',
@@ -65,7 +68,7 @@ class ProgressIndicator extends Component
      */
     protected function getIcon(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'loading' => '⏳',
             'validating' => '🔍',
             'completed' => '✅',
@@ -79,7 +82,7 @@ class ProgressIndicator extends Component
      */
     protected function getDefaultMessage(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'loading' => 'Caricamento dati...',
             'validating' => 'Verificando validità...',
             'completed' => 'Operazione completata con successo',
@@ -96,7 +99,7 @@ class ProgressIndicator extends Component
         if (empty($this->message)) {
             return $this->getDefaultMessage();
         }
-        
+
         return $this->message;
     }
 

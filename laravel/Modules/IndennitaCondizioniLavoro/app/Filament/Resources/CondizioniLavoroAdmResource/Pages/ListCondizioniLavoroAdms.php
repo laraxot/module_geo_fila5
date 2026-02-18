@@ -31,7 +31,7 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     #[Override]
     public function getTableColumns(): array
     {
-        /** @var array<int, Column> */
+        /** @var array{lavoratore: Column, valutatore: Column, indennitaTipoDettaglio: Column, quadrimestre: Column, anno: Column} */
         return [
             'lavoratore' => WorkerColumn::make('lavoratore'),
             'valutatore' => ValutatoreColumn::make('valutatore'),
@@ -136,11 +136,9 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): void {
+                ->action(function () {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    // Ensure array has required structure
-                    $data = ['anno/valutatore' => $tableFilters];
-                    app(MakePdf::class)->execute($data);
+                    return app(MakePdf::class)->execute($tableFilters);
                 }),
             */
             'replicate' => Action::make('replicate')

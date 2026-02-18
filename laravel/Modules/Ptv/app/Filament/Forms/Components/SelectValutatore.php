@@ -55,7 +55,9 @@ class SelectValutatore extends XotBaseSelect
 
         $this->options(function () use ($valutatore) {
             $data = [];
-            $rows = $valutatore::where($this->getWhere())->get();
+            $rows = $valutatore::where($this->getWhere())
+                ->whereRaw('valutatore_id = id')
+                ->get();
             foreach ($rows as $row) {
                 /** @var \Modules\Ptv\Models\StabiDirigente $row */
                 $data[$row->id] = $row->id.']'.$row->nome_diri; // . implode('-',$this->getWhere());

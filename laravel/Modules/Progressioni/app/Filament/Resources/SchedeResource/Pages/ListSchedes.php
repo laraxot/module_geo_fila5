@@ -26,6 +26,7 @@ use Modules\Progressioni\Models\Schede;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Actions\Filament\Actions\CopyFromLastYearButton;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
@@ -207,13 +208,7 @@ class ListSchedes extends XotBaseListRecords
         return [
             // Tables\Actions\ViewAction::make(),
 
-            'compila' => Action::make('compila')
-                ->label('')
-                ->tooltip('Compila scheda')
-                ->icon('heroicon-m-pencil-square')
-                ->iconButton()
-                ->url(fn (Schede $record): string => SchedeResource::getUrl('compila', ['record' => $record]))
-
+            'compila' => CompilaAction::make()
                 ->visible(function (Schede $record): bool {
                     // @var bool|null $haDiritto
                     return (int) $record->ha_diritto > 0;

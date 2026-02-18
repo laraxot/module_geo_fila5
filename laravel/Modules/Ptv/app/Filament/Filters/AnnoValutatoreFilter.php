@@ -60,10 +60,11 @@ class AnnoValutatoreFilter extends Filter
                 }),
 
             // TernaryFilter::make('is_admin'),
-
+            /*
             Select::make('ha_diritto')
                 ->label('diritto ?')
                 ->options([null => 'Tutti', '0' => 'no', '1' => 'si']),
+                */
         ])
             ->query(static function (Builder $query, array $data) {
                 if ($data['anno'] == null) {

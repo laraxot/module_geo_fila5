@@ -30,6 +30,9 @@ return [
         'name' => 'Nome',
     ],
     'actions' => [
+        'compila' => [
+            'label' => 'Compila',
+        ],
         'enable' => [
             'cta' => 'Attiva',
         ],

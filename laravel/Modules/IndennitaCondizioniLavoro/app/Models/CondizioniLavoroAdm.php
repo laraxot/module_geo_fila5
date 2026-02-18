@@ -200,6 +200,10 @@ class CondizioniLavoroAdm extends CondizioniLavoro
             ->ofQuarter($this->trimestre, $this->anno)
             ->get();
         */
+        if (! ($this->dal instanceof Carbon) || ! ($this->al instanceof Carbon)) {
+            return 0;
+        }
+
         $dal = $this->dal->format('Ymd');
         $al = $this->al->format('Ymd');
 
@@ -223,41 +227,4 @@ class CondizioniLavoroAdm extends CondizioniLavoro
         return $query->whereRaw($sql);
     }
     */
-
-    // --- mutators ---
-    public function getTrimestreAttribute(?int $value): ?int
-    {
-        if ($value !== null) {
-            return $value;
-        }
-
-        $dal_month = $this->dal->month;
-        switch ($dal_month) {
-            case 1:
-                $value = 1;
-                break;
-            case 4:
-                $value = 2;
-                break;
-            case 7:
-                $value = 3;
-                break;
-            case 10:
-                $value = 4;
-                break;
-                // default:$value = ''; break;
-        }
-
-        $this->trimestre = $value;
-
-        if ($this->getKey() === null) {
-            return $value;
-        }
-
-        $this->update([
-            'trimestre' => $value,
-        ]);
-
-        return $value;
-    }
 }

@@ -6,12 +6,12 @@ e' sbagliato !
                     app(MakePdf::class)->execute($data);
                 }),
 
-corretto: 
+corretto:
 
 ->action(function (): StreamedResponse {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
                     return app(MakePdf::class)->execute($tableFilters);
                 }),
 
-
-devi capire da solo il perche' ! trovare la regola e poi aggiornare le cartelle docs dentro i moduli e dentro i temi e poi aggiorna anche le tue rules, le tue memories e le tue skills e anche quelle degli altri agenti ai
+Motivo: `$tableFilters` è già indicizzato per chiave filtro (es. `anno/valutatore`), quindi
+non va incapsulato di nuovo in `['anno/valutatore' => $tableFilters]`.

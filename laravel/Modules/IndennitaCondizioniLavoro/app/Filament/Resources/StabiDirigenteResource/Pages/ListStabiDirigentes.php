@@ -14,6 +14,7 @@ use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
 use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes as PtvListStabiDirigentes;
+use Filament\Actions\Action;
 
 class ListStabiDirigentes extends PtvListStabiDirigentes
 {
@@ -48,8 +49,8 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
     }
 
 
-     /**
-     * @return array<Action>
+    /**
+     * @return array<string, Action>
      */
     #[Override]
     protected function getHeaderActions(): array

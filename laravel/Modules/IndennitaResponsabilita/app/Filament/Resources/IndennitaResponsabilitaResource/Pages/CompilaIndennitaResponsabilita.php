@@ -4,26 +4,28 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages;
 
+use LogicException;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Filament\Actions\Action;
-use Filament\Forms\Components\DatePicker;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Notifications\Notification;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\DatePicker;
+use Filament\Infolists\Components\TextEntry;
+use Illuminate\Database\Eloquent\Collection;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-use Filament\Schemas\Schema;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use LogicException;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
+use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 
 /**
  * Page for filling out Indennita Responsabilita ratings.
@@ -53,6 +55,8 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
     public ?string $previousUrl = null;
 
+    
+
     /**
      * Mount page - resolves {record} from URL, authorizes, fills form.
      */
@@ -60,6 +64,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);
+        $resolvedRecord->syncRatingsWhere(['anno' => $resolvedRecord->anno]);
         $this->record = $resolvedRecord;
 
         if (! $this->record instanceof IndennitaResponsabilita) {
@@ -96,15 +101,22 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $record = $this->getSpecificRecord();
         $data = $record->load('ratings')->attributesToArray();
         $data['ratings'] = [];
+        if(Carbon::parse($data['dal'])->year != $record->anno){
+            $data['dal'] = Carbon::parse($record->anno.'-01-01');
+        }
+        if(Carbon::parse($data['al'])->year != $record->anno){
+            $data['al'] = Carbon::parse($record->anno.'-12-31');
+        }
         /** @var array<int|string, mixed> $ratings */
         $ratings = $record->ratings->pluck('pivot.value', 'id')->toArray();
         foreach ($ratings as $id => $value) {
             /** @var int|string $id */
             $data['ratings'][$id]['pivot']['value'] = $value;
         }
-
+        $this->data=$data;
         // Solo campi editabili, le informazioni generali sono visualizzate via Infolist
         $this->form->fill($data);
+        
     }
 
     /**
@@ -112,7 +124,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     protected function authorizeAccess(): void
     {
-        Gate::authorize('update', $this->getSpecificRecord());
+        Gate::authorize('compila', $this->getSpecificRecord());
     }
 
     /**
@@ -139,7 +151,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                             ->label('P.Time %')
                             ->formatStateUsing(fn (?float $state): string => number_format(($state ?? 0) * 100, 2).' %'),
                     ]),
-            ]);
+            ])->statePath('data');
     }
 
     /**
@@ -168,7 +180,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     protected function getRatingsSchema(): array
     {
-        $ratings = $this->getRatingsForYear();
+        $ratings = $this->record->ratings;
         /** @var Collection<int, Rating> $readonlyFields */
         $readonlyFields = $ratings->where('is_readonly', true);
 
@@ -194,10 +206,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                         $this->recalculateReadonlyFields($set, $get, $readonlyFields);
                     });
             } else {
+                
                 // Using TextEntry inside a form schema to display readonly values from pivot
                 $item = TextEntry::make($fieldname)
                     ->label($label)
-                    ->inlineLabel();
+                    ->inlineLabel()
+                    ->default(Arr::get($this->data,$fieldname,0));
             }
 
             $schema[] = $item;
@@ -239,7 +253,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
             $method = 'get'.Str::studly((string) $rf->title);
             $fieldname = 'ratings.'.$rf->id.'.pivot.value';
             if (method_exists($this, $method)) {
-                $set($fieldname, $this->$method($get, $readonlyFields));
+                $res=$this->$method($get, $readonlyFields);
+                Arr::set($this->data, $fieldname, $res);
+                $set($fieldname, $res);
             }
         }
     }
@@ -251,12 +267,22 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     {
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratings */
         $ratings = (array) ($get('ratings') ?? []);
-
+        $tot = 0;
+        $ratings_rows = $this->record->ratings;
+        /** @var Collection<int, Rating> $readonlyFields */
+        $valueFields = $ratings_rows->where('is_readonly', false);
+        foreach ($valueFields as $valueField) {
+            $fieldname = 'ratings.'.$valueField->id.'.pivot.value';
+            $value = $get($fieldname) ?? 0;
+            $tot += is_numeric($value) ? (int) $value : 0;
+        }
+        /*
         $tot = 0;
         foreach ($ratings as $rating) {
             $value = $rating['pivot']['value'] ?? 0;
             $tot += is_numeric($value) ? (int) $value : 0;
         }
+        */
 
         return $tot;
     }
@@ -331,9 +357,13 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         $dataToUpdate = collect($this->data)->only(['dal', 'al', 'note'])->toArray();
         $record->update($dataToUpdate);
 
+
         // Update pivot ratings
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratingsData */
-        $ratingsData = (array) ($state['ratings'] ?? []);
+        //$ratingsData = (array) ($state['ratings'] ?? []);
+        $ratingsData = (array) ($this->data['ratings'] ?? []);
+        
+        
         foreach ($ratingsData as $id => $rating) {
             $value = $rating['pivot']['value'];
             $record->ratings()->updateExistingPivot($id, [

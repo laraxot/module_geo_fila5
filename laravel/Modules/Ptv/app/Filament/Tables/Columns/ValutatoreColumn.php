@@ -25,13 +25,14 @@ class ValutatoreColumn extends GroupColumn
     protected function setUp(): void
     {
         parent::setUp();
-
+        // $searchable = ['valutatore_id', 'valutatore.nome_diri', 'valutatore.anno', 'valutatore.quadrimestre'];
+        $searchable = [];
         // Pre-configure the schema with worker fields
         $this->schema([
             TextColumn::make('valutatore_id'),
             TextColumn::make('valutatore.nome_diri'),
             TextColumn::make('valutatore.anno'),
             TextColumn::make('valutatore.quadrimestre'),
-        ])->searchable(['valutatore_id', 'valutatore.nome_diri', 'valutatore.anno', 'valutatore.quadrimestre']);
+        ])->searchable($searchable);
     }
 }

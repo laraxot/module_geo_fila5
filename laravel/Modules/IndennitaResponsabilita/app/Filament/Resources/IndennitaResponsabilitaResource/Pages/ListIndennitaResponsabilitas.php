@@ -8,18 +8,15 @@ use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkAction;
-use Filament\Forms\Components\Select;
 use Filament\Pages\Actions\CreateAction;
-use Filament\Schemas\Components\Utilities\Get;
 use Filament\Tables;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+// use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Gate;
 use Modules\Activity\Filament\Actions\ListLogActivitiesAction;
 use Modules\IndennitaResponsabilita\Actions\MakePdf;
@@ -28,14 +25,13 @@ use Modules\IndennitaResponsabilita\Filament\Exports\IndennitaResponsabilitaExpo
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\Ptv\Actions\FixValutatoreIdByAnno;
-use Modules\Ptv\Actions\GetValutatoriOptions;
-use Modules\Ptv\Actions\PopulateByYearAction;
 use Modules\Ptv\Actions\Scheda\GetSentEmailListHtml;
 use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
 use Modules\Ptv\Filament\Actions\Header\DeleteCessatiAction;
+use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
+use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
 use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Tables\Columns\RepColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
@@ -144,9 +140,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         return [
             // Tables\Actions\ViewAction::make(),
             ...parent::getTableActions(),
-            'compila' => Action::make('compila')
-                ->icon('heroicon-m-pencil-square')
-                ->url(fn ($record): string => IndennitaResponsabilitaResource::getUrl('compila', ['record' => $record])),
+            'compila' => CompilaAction::make(),
             'record-pdf1' => RecordPdfAction::make('record-pdf1')->visible(fn ($record): bool => Gate::allows('record-pdf', $record)),
             /*
             'record-pdf' => Action::make('record-pdf')
@@ -194,54 +188,10 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         return true;
     }
     */
-    /**
-     * @return array<string, SelectFilter|TernaryFilter>
-     */
-    #[Override]
     public function getTableFilters(): array
     {
         return [
-            'anno_valutatore' => SelectFilter::make('anno/valutatore')
-                ->schema([
-                    'anno' => Select::make('anno')
-                        ->options([
-                            // '2022' => '2022',
-                            '2023' => '2023',
-                            '2024' => '2024',
-                            '2025' => '2025',
-                        ])
-                        ->reactive(),
-
-                    'valutatore_id' => Select::make('valutatore_id')
-                        ->options(static function (Get $get): array {
-                            /** @var int|string|null $anno */
-                            $anno = $get('anno');
-
-                            $opts = app(GetValutatoriOptions::class)
-                                ->execute('IndennitaResponsabilita', $anno);
-
-                            return $opts;
-                        }),
-                ])
-
-                ->query(static function (Builder $query, array $data) {
-                    if ($data['anno'] == null /* || null == $data['valutatore_id'] */) {
-                        return $query->where('id', 0);
-                    }
-                    // Type narrowing: ensure $data is array<string, mixed>
-                    // @var array<string, mixed> $populateData
-                    /*
-                    app(PopulateByYearAction::class)->execute(IndennitaResponsabilita::class, 'anno', (int) $data['anno']);
-                    // -- riutilizzabile in performance, progressioni ...
-                    // @var int|string|null $annoForFix
-                    $annoForFix = $data['anno'] ?? null;
-                    app(FixValutatoreIdByAnno::class)->execute('IndennitaResponsabilita', 'IndennitaResponsabilita', $annoForFix);
-                    */
-                    $query = $query->where($data);
-
-                    return $query;
-                })
-
+            'anno_valutatore' => AnnoValutatoreFilter::make('anno_valutatore')
                 ->columns(2),
             'is_compiled' => TernaryFilter::make('is_compiled')
                 ->columns(2)

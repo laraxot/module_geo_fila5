@@ -42,59 +42,68 @@ trait MutatorTrait
         return 'al';
     }
 
-    public function getDalAttribute(mixed $_value): Carbon
+    public function getQuadrimestreDal(): Carbon
     {
-        // if(is_object($value)) return $value;
-        // if($value!=null) return Carbon::parse($value);
+        $annoRaw = $this->anno ?? null;
+        $quadrimestreRaw = $this->quadrimestre ?? null;
 
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
-            $result = Carbon::create($anno, 1, 1, 0);
-            if ($result === null) {
-                throw new InvalidArgumentException('Invalid date creation');
-            }
+        $anno = is_int($annoRaw) || is_string($annoRaw) ? (int) $annoRaw : (int) date('Y');
+        $quadrimestre = is_int($quadrimestreRaw) || is_string($quadrimestreRaw) ? (int) $quadrimestreRaw : 1;
 
-            return $result;
-        }
+        $startMonth = 1 + (($quadrimestre - 1) * 4);
 
-        $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
-        $dt = Carbon::create($anno, 1, 1, 0);
-        if ($dt === null) {
+        $startDate = Carbon::create($anno, $startMonth, 1);
+        if (! $startDate instanceof Carbon) {
             throw new InvalidArgumentException('Invalid date creation');
         }
-        $value = clone ($dt)->addQuarters($this->trimestre - 1);
 
-        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        // getKey() è già stato controllato sopra, quindi non può essere null qui
+        return $startDate->startOfDay();
+    }
+
+    public function getQuadrimestreAl(): Carbon
+    {
+        $annoRaw = $this->anno ?? null;
+        $quadrimestreRaw = $this->quadrimestre ?? null;
+
+        $anno = is_int($annoRaw) || is_string($annoRaw) ? (int) $annoRaw : (int) date('Y');
+        $quadrimestre = is_int($quadrimestreRaw) || is_string($quadrimestreRaw) ? (int) $quadrimestreRaw : 1;
+
+        $startMonth = 1 + (($quadrimestre - 1) * 4);
+
+        $startDate = Carbon::create($anno, $startMonth, 1);
+        if (! $startDate instanceof Carbon) {
+            throw new InvalidArgumentException('Invalid date creation');
+        }
+
+        return $startDate
+            ->addMonths(4)
+            ->subDay()
+            ->endOfDay();
+    }
+
+    /**
+     * @param  string|Carbon|null  $value
+     */
+    public function getDalAttribute($value): ?Carbon
+    {
+        if ($this->getKey() == null) {
+            return null;
+        }
+        $value = $this->getQuadrimestreDal();
         $this->update(['dal' => $value]);
 
         return $value;
     }
 
-    public function getAlAttribute(mixed $_value): Carbon
+    /**
+     * @param  string|Carbon|null  $value
+     */
+    public function getAlAttribute($value): ?Carbon
     {
-        // if(is_object($value)) return $value;
-        // if($value!=null) return Carbon::parse($value);
-
-        // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
-            $dt = Carbon::create($this->anno, 1, 1, 0);
-            if ($dt === null) {
-                throw new InvalidArgumentException('Invalid date creation');
-            }
-
-            return clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
+            return null;
         }
-
-        $dt = Carbon::create($this->anno, 1, 1, 0);
-        if ($dt === null) {
-            throw new InvalidArgumentException('Invalid date creation');
-        }
-        $value = clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
-
-        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        // getKey() è già stato controllato sopra, quindi non può essere null qui
+        $value = $this->getQuadrimestreAl();
         $this->update(['al' => $value]);
 
         return $value;
@@ -123,11 +132,18 @@ trait MutatorTrait
         */
         $dal = $this->dal;
         $al = $this->al;
-        if ($this->anno >= 2023) {
-            $q = $this->quadrimestre;
-            $dal = Carbon::parse($this->anno.'-01-01')->addMonths(4 * ($q - 1));
-            $al = Carbon::parse($this->anno.'-01-01')->addMonths(4 * $q)->subDays(1);
+        $anno = is_int($this->anno) || is_string($this->anno) ? (int) $this->anno : null;
+        if ($anno !== null && $anno >= 2023) {
+            $q = is_int($this->quadrimestre) || is_string($this->quadrimestre) ? (int) $this->quadrimestre : null;
+            if ($q !== null) {
+                $dal = Carbon::parse($anno.'-01-01')->addMonths(4 * ($q - 1));
+                $al = Carbon::parse($anno.'-01-01')->addMonths(4 * $q)->subDays(1);
+            }
             // dddx(['dal'=>$dal,'al'=>$al,'q'=>$q,'anno'=>$this->anno,'this'=>$this]);
+        }
+
+        if (! ($dal instanceof Carbon) || ! ($al instanceof Carbon)) {
+            return 0;
         }
 
         $dal = (int) $dal->format('Ymd');
