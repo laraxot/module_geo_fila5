@@ -135,7 +135,7 @@ class PdndClientService
      *
      * @return array<string, mixed>
      */
-    public function callApiService(array $bodyArray = [], string $endpoint = ''): array
+    public function callApiService(array $bodyArray = []): array
     {
         try {
             // ottenimento nuovo ACCESS TOKEN
@@ -146,7 +146,7 @@ class PdndClientService
             // chaimata API E-SERVICE
             /** @var array<string, mixed> $bodyArrayTyped */
             $bodyArrayTyped = $bodyArray;
-            $response = $this->client->postApi($token, $bodyArrayTyped, $endpoint);
+            $response = $this->client->postApi($token, $bodyArrayTyped);
 
             // dddx($response);
 

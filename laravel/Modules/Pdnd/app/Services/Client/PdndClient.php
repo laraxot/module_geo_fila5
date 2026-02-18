@@ -535,9 +535,9 @@ class PdndClient
      * @param  array<string, mixed>  $bodyArray
      * @return array<string, mixed>
      */
-    public function postApi(string $token, array $bodyArray, string $endpoint = ''): array
+    public function postApi(string $token, array $bodyArray): array
     {
-        $url = $endpoint ?: ($this->apiUrl ?? $this->getApiUrl());
+        $url = $this->apiUrl ?? $this->getApiUrl();
 
         $bodyJson = json_encode($bodyArray, JSON_UNESCAPED_UNICODE);
         $encodedBody = base64_encode(hash('sha256', $bodyJson, true));

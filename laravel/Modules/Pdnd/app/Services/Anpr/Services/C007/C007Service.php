@@ -36,10 +36,10 @@ class C007Service
      */
     public function verificaDichiarazioneE002(RichiestaE002 $richiesta): array
     {
+        // dddx($this->pdndClient);
         try {
             $response = $this->pdndClient->callApiService(
-                $richiesta->toArray(),
-                $this->pdndClient->getApiUrl()
+                $richiesta->toArray()
             );
 
             // dddx($response);
