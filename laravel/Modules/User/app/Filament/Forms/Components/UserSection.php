@@ -6,17 +6,20 @@ declare(strict_types=1);
  * @see https://coderflex.com/blog/create-advanced-filters-with-filament
  */
 
-namespace Modules\Ptv\Filament\Forms\Components;
+
+
+namespace Modules\User\Filament\Forms\Components;
+
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 
-class WorkerSection extends Section
+class UserSection extends Section
 {
     public static function getDefaultName(): ?string
     {
-        return 'worker';
+        return 'user';
     }
 
     protected function setUp(): void
@@ -27,10 +30,9 @@ class WorkerSection extends Section
             Grid::make(4)->schema([
                 TextInput::make('ente'),
                 TextInput::make('matr'),
-                TextInput::make('cognome'),
-                TextInput::make('nome'),
+                TextInput::make('first_name'),
+                TextInput::make('last_name'),
                 TextInput::make('email'),
-
             ]),
         ]);
     }

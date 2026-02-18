@@ -200,13 +200,15 @@ Tables\Actions\BulkAction::make('send_emails')
 ```php
 use Tests\TestCase;
 use Modules\Ptv\Actions\Scheda\SendMailByRecord;
+use Modules\Xot\Datas\XotData;
 
 class SendMailByRecordTest extends TestCase
 {
     /** @test */
     public function it_sends_email_with_pdf_attachment(): void
     {
-        $user = User::factory()->create();
+        $userClass = XotData::make()->getUserClass();
+        $user = $userClass::factory()->create();
         $scheda = Scheda::factory()->create();
         
         $this->actingAs($user);

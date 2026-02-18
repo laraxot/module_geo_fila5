@@ -1,25 +1,25 @@
 # Filament Resources nel Modulo Ptv
 
-**Versione**: 2.0 - Filament v4
-**Data**: 2025-12-10
-**Filament Version**: v4.x (aggiornamento completato)
+**Versione**: 3.0 - Filament v5
+**Data**: 2026-02-18
+**Filament Version**: v5.x (aggiornamento completato)
 
 ---
 
-## 🚀 Upgrade Filament v4 - Status PTV
+## 🚀 Upgrade Filament v5 - Status PTV
 
 ### ✅ Cambiamenti Applicati
-- **ViewMyLog migliorato**: Rimosso `->label()` hardcoded per conformità v4
+- **ViewMyLog migliorato**: Rimosso `->label()` hardcoded per conformità v5
 - **Schema infolist aggiornato**: Uso corretto `Filament\Schemas\Components`
 - **Traduzioni automatiche**: Nessun metodo manuale per label/tooltip
-- **Type hints**: Migliorati per compatibilità v4
+- **Type hints**: Migliorati per compatibilità v5
 
 ### 🔄 Compatibilità Moduli Figli
 - **IndennitaResponsabilita**: Eredita `MyLogResource` da PTV
 - **Altri moduli**: Possono beneficiare automaticamente degli upgrade
 
 ### 📋 Checklist Upgrade PTV
-- [x] ViewMyLog conforme v4 (no hardcoded labels)
+- [x] ViewMyLog conforme v5 (no hardcoded labels)
 - [x] Schema infolist aggiornato
 - [x] Test funzionalità post-upgrade
 - [ ] Verifica impatto moduli ereditanti
@@ -64,6 +64,23 @@ Il modulo Ptv è configurato come modulo di destinazione per la generazione auto
 - Nessun uso di `->label()` (traduzioni automatiche)
 
 **Utilizzo**: Tracciamento automatico delle operazioni critiche nel sistema PTV.
+
+### UserResource
+
+**Modello**: configurato tramite `XotData::make()->getUserClass()`  
+**Scopo**: gestione utenti per il modulo PTV  
+**Pagine**: `ListUsers`, `CreateUser`, `EditUser`  
+**Status**: ✅ Implementato e conforme LARAXOT
+
+**Campi Principali**:
+- `name` - Nome utente
+- `email` - Email utente
+- `password` - Password (hashing automatico)
+
+**Caratteristiche**:
+- Estende `XotBaseResource` (conforme LARAXOT)
+- Pagine basate su `XotBase*` (no classi Filament dirette)
+- Nessun uso di `->label()` (traduzioni automatiche)
 
 ## Comandi Disponibili
 

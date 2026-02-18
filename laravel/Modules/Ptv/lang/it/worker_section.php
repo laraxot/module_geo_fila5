@@ -28,5 +28,11 @@ return [
             'helper_text' => 'email',
             'description' => 'email',
         ],
+        'ente' => [
+            'label' => 'ente',
+            'placeholder' => 'ente',
+            'helper_text' => 'ente',
+            'description' => 'ente',
+        ],
     ],
 ];

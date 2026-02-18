@@ -41,7 +41,6 @@ Ricordare di documentare ogni variante o layout personalizzato nella cartella `d
 - [Skills di progetto](../../../../.cursor/skills/)
 
 ## 🔁 CI & Semantic Versioning
-<<<<<<< .merge_file_chk5uh
 Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
 Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
 Workflow root progetto: `/.github/workflows/*.yml`.
@@ -50,13 +49,9 @@ Workflow root progetto: `/.github/workflows/*.yml`.
 Le release sono basate su tag Git e possono includere release notes generate automaticamente.
 Workflow locale: `.github/workflows/release.yml`.
 
-
 ## 📄 License & Authors
 
 **Authors:**
 - Marco Sottana <marco.sottana@gmail.com>
 
 **License:** MIT
-=======
-Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
->>>>>>> .merge_file_3tJXzW

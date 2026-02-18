@@ -11,22 +11,18 @@ namespace Modules\User\Filament\Resources;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Schemas\Components\Section;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\HtmlString;
-use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\AuthenticationLogsRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\ClientsRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\OauthTokensRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\SocialiteUsersRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\TenantsRelationManager;
-use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Modules\Xot\Datas\XotData;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\Placeholder;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\User\Filament\Forms\Components\UserSection;
+use Modules\Ptv\Filament\Forms\Components\WorkerSection;
+use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
+use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 
 class UserResource extends XotBaseResource
 {
@@ -46,9 +42,10 @@ class UserResource extends XotBaseResource
     public static function getFormSchema(): array
     {
         return [
+            'worker' => UserSection::make('worker'),
             'section01' => Section::make([
                 'name' => TextInput::make('name')->required(),
-                'email' => TextInput::make('email')->required()->unique(ignoreRecord: true),
+                // 'email' => TextInput::make('email')->required()->unique(ignoreRecord: true),
                 'password' => TextInput::make('password')
                     ->password()
                     ->dehydrateStateUsing(function ($state): ?string {
@@ -76,7 +73,7 @@ class UserResource extends XotBaseResource
                     /** @var Carbon|null $createdAt */
                     $createdAt = $record->getAttribute('created_at');
 
-                    if (null === $createdAt) {
+                    if ($createdAt === null) {
                         return new HtmlString('&mdash;');
                     }
                     if ($createdAt instanceof CarbonInterface) {
@@ -123,6 +120,4 @@ class UserResource extends XotBaseResource
         /* @var class-string<Model> */
         return $xot->getUserClass();
     }
-
-    
 }
