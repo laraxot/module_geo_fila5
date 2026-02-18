@@ -17,7 +17,7 @@ use Filament\Tables\Columns\TextInputColumn;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Incentivi\Filament\Resources\ActivityResource;
 use Modules\Incentivi\Filament\Resources\ProjectResource;
-use Modules\Xot\Filament\Resources\XotBaseResource\Pages\XotBaseManageRelatedRecords;
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Override;
 
 class ManageProjectActivities extends XotBaseManageRelatedRecords
@@ -26,7 +26,7 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
 
     protected static string $relationship = 'activities';
 
-    protected static ?string $title = 'Attività';
+    protected static string $recordTitleAttribute = 'nome';
 
     public function getFormSchema(): array
     {
@@ -56,6 +56,9 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
             //     ->disabled(),
         ];
     }
+
+
+
 
     /**
      * @return array<Column>
