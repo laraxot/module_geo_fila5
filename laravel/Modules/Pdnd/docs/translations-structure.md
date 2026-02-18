@@ -7,15 +7,53 @@ Tutte le traduzioni sono gestite automaticamente dal `LangServiceProvider` del m
 
 ## Struttura File di Traduzione
 
+### File di Traduzione per Pagine e Widget
+Per le pagine e i widget di Filament, le traduzioni devono essere contenute in un file `pages.php` all'interno della directory `lang/<locale>/` del modulo. Questo file deve seguire una struttura specifica per garantire la corretta risoluzione automatica delle traduzioni.
+
+**Struttura Completa (CRITICA) per Pagine e Widget:**
+```php
+<?php
+declare(strict_types=1);
+
+return [
+    'nome_pagina_o_widget' => [ // Chiave unica per la pagina/widget (es. 'servizio_verifica_dich_generalita')
+        'title' => 'Titolo della Pagina/Widget',
+        'description' => 'Descrizione del contenuto della Pagina/Widget',
+        'sections' => [
+            'info_generali' => [
+                'title' => 'Informazioni Generali',
+                'description' => 'Dettagli e impostazioni della sezione',
+            ],
+        ],
+        'fields' => [
+            'campo_esempio' => [
+                'label' => 'Etichetta Campo',
+                'placeholder' => 'Testo placeholder',
+                'help' => 'Testo di aiuto per il campo',
+                'tooltip' => 'Tooltip informativo',
+            ],
+        ],
+        'actions' => [
+            'save' => [
+                'label' => 'Salva',
+                'icon' => 'heroicon-o-check',
+                'tooltip' => 'Salva le modifiche',
+            ],
+        ],
+        'notifications' => [
+            'success' => 'Operazione completata con successo!',
+            'error' => 'Si è verificato un errore durante l\'operazione.',
+        ],
+    ],
+];
+```
+
+
 ### Posizionamento
 ```
 Modules/Pdnd/lang/it/
 ├── pdnd.php                                          # Traduzioni generali
-├── servizio_verifica_dich_generalita.php            # C003 test
-├── servizio_verifica_dich_generalita_p_r_o_d.php    # C003 prod
-├── servizio_accertamento_id_unico_nazionale.php     # C030 test
-├── servizio_accertamento_id_unico_nazionale_page_p_r_o_d.php  # C030 prod
-├── servizio_verifica_dich_esistenza_vita.php        # C007 test
+├── pages.php                                         # Traduzioni per Pagine e Widget Filament
 ├── guzzle_proxy.php                                  # Test Guzzle
 └── curl_proxy.php                                    # Test cURL
 ```
@@ -101,6 +139,21 @@ return [
 ];
 ```
 
+## Pattern per Notifications
+
+### Struttura Espansa per Notifiche
+```php
+return [
+    'notifications' => [
+        'success' => 'Operazione completata con successo!',
+        'error' => 'Si è verificato un errore!',
+        'search_completed' => 'Ricerca completata',
+        'search_error' => 'Errore nella ricerca',
+        'unexpected_error' => 'Errore imprevisto',
+    ],
+];
+```
+
 ## Convenzioni di Naming
 
 ### File di Traduzione
@@ -156,17 +209,16 @@ TextInput::make('codiceFiscale')
 ## File di Traduzione Attuali
 
 ### Verificati e Conformi
-- ✅ `pdnd.php` - Struttura espansa completa
-- ✅ `servizio_verifica_dich_generalita.php` - Struttura espansa completa
-- ✅ `servizio_accertamento_id_unico_nazionale.php` - Struttura espansa completa
-- ✅ `guzzle_proxy.php` - Struttura espansa completa
-- ✅ `curl_proxy.php` / `curl_proxy_page.php` / `consultazione_anagrafica.php` / `servizio_accertamento_generalita.php` - Etichette navigation localizzate (aggiornamento 19/11/2025)
+- ✅ `pdnd.php` - Struttura espansa completa per traduzioni generali del modulo.
+- ✅ `pages.php` - Contiene le traduzioni strutturate per tutte le Pagine e i Widget Filament del modulo.
+- ✅ `guzzle_proxy.php` - Struttura espansa completa.
+- ✅ `curl_proxy.php` / `curl_proxy_page.php` / `consultazione_anagrafica.php` / `servizio_accertamento_generalita.php` - Etichette navigation localizzate.
 
-### Da Aggiornare (se necessario)
-- Verificare completezza chiavi per tutti i campi usati
-- Aggiungere tooltip dove mancanti
-- Standardizzare format messaggi successo/errore
-- Mantenere sincronizzati `icon`, `group` e `label` con la tassonomia PDND ogni volta che si introduce un nuovo servizio
+### Da Aggiornare
+- Verificare completezza delle chiavi per tutti i campi e azioni utilizzati nelle Pagine e nei Widget.
+- Aggiungere `tooltip` dove mancanti.
+- Standardizzare il formato dei messaggi di successo/errore.
+- Mantenere sincronizzati `icon`, `group` e `label` con la tassonomia PDND ogni volta che si introduce un nuovo servizio o si aggiorna uno esistente.
 
 ## Checklist Traduzioni
 
@@ -229,5 +281,12 @@ Le traduzioni devono essere auto-esplicative senza dover vedere il codice.
 - [Best Practices Filament](./filament-best-practices.md)
 - [Regole Traduzioni Laraxot](../../Xot/docs/translations-best-practices.md)
 
-*Ultimo aggiornamento: 19 Novembre 2025*
+*Ultimo aggiornamento: 17 Febbraio 2026*
+
+### Modifiche Recenti
+
+- **Introduzione della Struttura per Pagine e Widget:** Aggiunta una sezione dedicata alla struttura obbligatoria dei file di traduzione `pages.php` per le Pagine e i Widget Filament, inclusi `title`, `description`, `sections`, `fields` e `actions`.
+- **Pattern per Notifiche:** Inserita una sezione specifica per la standardizzazione delle traduzioni delle notifiche.
+- **Aggiornamento Elenco File di Traduzione:** La sezione "File di Traduzione Attuali" è stata rivista per riflettere l'adozione del file `pages.php` e una maggiore chiarezza.
+
 

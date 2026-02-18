@@ -1,19 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'breadcrumb' => 'Log',
-
     'title' => 'Log entity ":record"',
-
     'default_datetime_format' => 'j.n.Y H:i:s',
-
     'table' => [
         'field' => 'Pole',
         'old' => 'Původní',
         'new' => 'Nové',
         'restore' => 'Obnovit',
     ],
-
     'events' => [
         'updated' => 'Upraveno',
         'created' => 'Vytvořeno',
@@ -21,5 +19,18 @@ return [
         'restored' => 'Obnoveno',
         'restore_successful' => 'Úspěšně obnoveno',
         'restore_failed' => 'Obnovení selhalo',
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
     ],
 ];

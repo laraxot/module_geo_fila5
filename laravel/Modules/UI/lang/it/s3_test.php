@@ -15,30 +15,35 @@ return [
             'placeholder' => 'Inserisci email destinatario',
             'helper_text' => '',
             'description' => 'Indirizzo email del destinatario',
+            'tooltip' => '',
         ],
         'subject' => [
             'label' => 'Oggetto',
             'placeholder' => 'Inserisci oggetto email',
             'helper_text' => '',
             'description' => 'Oggetto dell\'email di test',
+            'tooltip' => '',
         ],
         'body_html' => [
             'label' => 'Corpo HTML',
             'placeholder' => 'Inserisci contenuto HTML',
             'helper_text' => '',
             'description' => 'Contenuto HTML dell\'email',
+            'tooltip' => '',
         ],
         'attachment' => [
             'description' => 'Allegato per il test S3',
             'helper_text' => '',
             'placeholder' => 'Seleziona file da allegare',
             'label' => 'Allegato',
+            'tooltip' => '',
         ],
         'debug_output' => [
             'description' => 'Output di debug per i test',
             'helper_text' => '',
             'placeholder' => 'Output debug',
             'label' => 'Debug Output',
+            'tooltip' => '',
         ],
     ],
     'actions' => [
@@ -95,4 +100,6 @@ return [
             'tooltip' => 'Testa operazioni sui file S3',
         ],
     ],
+    'label' => 'S3 Test',
+    'plural_label' => 'S3 Test (Plurale)',
 ];

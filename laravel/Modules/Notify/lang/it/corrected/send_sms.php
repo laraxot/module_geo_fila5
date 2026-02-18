@@ -12,11 +12,15 @@ return [
             'label' => 'Destinatario',
             'placeholder' => 'Inserisci numero di telefono',
             'helper_text' => 'Inserisci il numero con prefisso internazionale (es. +39)',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'placeholder' => 'Inserisci testo del messaggio',
             'helper_text' => 'Il messaggio non può superare i 160 caratteri',
+            'tooltip' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Provider',
@@ -30,6 +34,8 @@ return [
                 'gammu' => 'Gammu',
                 'netfun' => 'Netfun',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -42,4 +48,6 @@ return [
         'success' => 'SMS inviato con successo',
         'error' => 'Errore nell\'invio dell\'SMS: :error',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

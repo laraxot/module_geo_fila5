@@ -13,6 +13,9 @@ Per personalizzare:
 2. Modificare gli stili in `resources/css/`
 3. Eseguire `npm run build` (o `npm run dev`) per rigenerare gli asset
 
+## UI/UX Patterns
+- [Readonly Field Styling](./readonly-field-styling.md) - Pattern per campi readonly/calcolati nei form Filament
+
 Ricordare di documentare ogni variante o layout personalizzato nella cartella `docs/`.
 
 ## 🤖 AI Development Tools & Skills

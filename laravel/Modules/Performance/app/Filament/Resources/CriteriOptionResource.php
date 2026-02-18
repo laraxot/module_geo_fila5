@@ -67,23 +67,23 @@ class CriteriOptionResource extends XotBaseResource
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('name')
+            'name' => TextColumn::make('name')
 
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('field_name')
+            'field_name' => TextColumn::make('field_name')
 
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('op')
+            'op' => TextColumn::make('op')
 
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('value')
+            'value' => TextColumn::make('value')
 
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
 
                 ->numeric()
                 ->sortable(),

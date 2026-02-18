@@ -31,19 +31,19 @@ class ListDatabaseConnections extends ListRecords
     protected function getTableColumns(): array
     {
         return [
-            TextColumn::make('name')
+            'name' => TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('driver')
+            'driver' => TextColumn::make('driver')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('host')
+            'host' => TextColumn::make('host')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('database')
+            'database' => TextColumn::make('database')
                 ->searchable()
                 ->sortable(),
-            TextColumn::make('status')
+            'status' => TextColumn::make('status')
                 ->badge()
                 ->color(fn (string $state): string => match ($state) {
                     'active' => 'success',

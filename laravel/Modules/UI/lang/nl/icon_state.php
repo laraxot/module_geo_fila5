@@ -10,6 +10,7 @@ return [
             'help' => 'Identificerende naam van het element',
             'description' => 'Objectnaam',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'Naam bewerken',
@@ -17,6 +18,7 @@ return [
             'help' => 'Bestaande naam wijzigen',
             'description' => 'Actie om de naam te wijzigen',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'Status wijzigen',
@@ -24,6 +26,7 @@ return [
             'help' => 'Huidige status wijzigen',
             'description' => 'Actie om de status te wijzigen',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'Status',
@@ -31,6 +34,7 @@ return [
             'help' => 'Huidige status van het element',
             'description' => 'Huidige systeemconditie',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Bericht',
@@ -38,6 +42,7 @@ return [
             'help' => 'Informatief bericht',
             'description' => 'Berichttekst',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'messages' => [
@@ -50,5 +55,16 @@ return [
         'transition_error' => [
             'title' => 'Overgangsfout',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

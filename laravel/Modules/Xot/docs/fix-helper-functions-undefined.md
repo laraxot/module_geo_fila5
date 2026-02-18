@@ -440,7 +440,6 @@ Docs: aggiornata documentazione Xot e Tenant
 
 ## 🔄 Fix Aggiuntivo: getModuleModels() durante package:discover
 
-**Data**: Gennaio 2025
 **Problema**: Anche dopo aver aggiunto le helper functions, `getModuleModels()` causava ancora errori durante `package:discover`.
 
 **Causa**: Le helper functions sono caricate tramite `"files": ["Helpers/Helper.php"]` in `composer.json`, ma durante `package:discover` l'ordine di autoload non è garantito.

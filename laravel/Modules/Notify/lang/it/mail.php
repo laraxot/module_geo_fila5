@@ -59,4 +59,48 @@ return [
             'deleted' => 'Template email eliminato con successo',
         ],
     ],
+    'label' => 'Mail',
+    'plural_label' => 'Mail (Plurale)',
+    'navigation' => [
+        'name' => 'Mail',
+        'plural' => 'Mail',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Mail',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Mail',
+        ],
+        'edit' => [
+            'label' => 'Modifica Mail',
+        ],
+        'delete' => [
+            'label' => 'Elimina Mail',
+        ],
+    ],
 ];

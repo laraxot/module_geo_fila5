@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'label' => 'Invio Email (AWS)',
+        'label' => 'Invio Email (AWS]',
         'group' => 'Notifiche',
         'icon' => 'heroicon-o-envelope',
         'color' => 'primary',
@@ -20,26 +20,41 @@ return [
             'label' => 'Destinatario Email',
             'placeholder' => 'Inserisci indirizzo email destinatario',
             'help' => 'Indirizzo email del destinatario principale del messaggio',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject' => [
             'label' => 'Oggetto Email',
             'placeholder' => 'Inserisci l\'oggetto del messaggio',
             'help' => 'Testo che apparirà come oggetto dell\'email ricevuta',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'body_html' => [
             'label' => 'Corpo HTML',
             'placeholder' => 'Inserisci il contenuto HTML dell\'email',
             'help' => 'Contenuto formattato in HTML per email con layout avanzato',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'template' => [
             'label' => 'Template Email',
             'placeholder' => 'Seleziona un template predefinito',
             'help' => 'Template predefinito da utilizzare per la formattazione dell\'email',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'add_attachments' => [
             'label' => 'Allegati Email',
             'placeholder' => 'Carica file da allegare al messaggio',
             'help' => 'File allegati che verranno inviati insieme all\'email',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -65,4 +80,6 @@ return [
         'queue' => 'Email aggiunta alla coda di invio',
         'failed' => 'Invio email fallito',
     ],
+    'label' => 'Send Aws Email',
+    'plural_label' => 'Send Aws Email (Plurale)',
 ];

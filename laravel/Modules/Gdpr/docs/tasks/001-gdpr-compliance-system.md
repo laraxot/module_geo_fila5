@@ -294,6 +294,5 @@ The Gdpr module needs full GDPR compliance features including user consent track
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

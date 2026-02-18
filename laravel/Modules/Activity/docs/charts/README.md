@@ -1,7 +1,6 @@
 # 📊 Activity Charts - Filament Widget Integration
 
 **Modulo**: Activity
-**Data**: 2025-12-09
 **Versione Filament**: 4.x
 **Status**: ✅ Production Ready
 
@@ -765,4 +764,3 @@ it('exports chart to SVG', function () {
 ---
 
 **Autore**: PTVX Development Team
-**Ultimo Aggiornamento**: 2025-12-09

@@ -13,11 +13,15 @@ return [
             'label' => 'Test Datei',
             'placeholder' => 'Datei hochladen um S3 zu testen',
             'helper_text' => 'Datei wird zu S3 hochgeladen um die Konfiguration zu testen',
+            'tooltip' => '',
+            'description' => '',
         ],
         'debug_output' => [
             'label' => 'Debug Ergebnisse',
             'placeholder' => 'Test Ergebnisse erscheinen hier',
             'helper_text' => 'Detaillierte Ausgabe der AWS Konfigurationstests',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -77,4 +81,13 @@ return [
         'complete' => '✅ Vollständig',
         'incomplete' => '❌ Unvollständig',
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

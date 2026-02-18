@@ -19,6 +19,9 @@ return [
             'label' => 'ID',
             'help' => 'Identificativo unico dell\'evento archiviato',
             'validation' => 'required|integer|min:1',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'event_class' => [
             'label' => 'Classe Evento',
@@ -28,6 +31,7 @@ return [
             'searchable' => true,
             'helper_text' => 'event_class',
             'description' => 'event_class',
+            'tooltip' => '',
         ],
         'event_properties' => [
             'label' => 'Proprietà Evento',
@@ -38,6 +42,7 @@ return [
             'format' => 'json',
             'helper_text' => 'event_properties',
             'description' => 'event_properties',
+            'tooltip' => '',
         ],
         'aggregate_uuid' => [
             'label' => 'UUID Aggregato',
@@ -47,6 +52,7 @@ return [
             'searchable' => true,
             'helper_text' => 'aggregate_uuid',
             'description' => 'aggregate_uuid',
+            'tooltip' => '',
         ],
         'aggregate_version' => [
             'label' => 'Versione Aggregato',
@@ -56,12 +62,16 @@ return [
             'sortable' => true,
             'helper_text' => 'aggregate_version',
             'description' => 'aggregate_version',
+            'tooltip' => '',
         ],
         'event_version' => [
             'label' => 'Versione Evento',
             'placeholder' => 'Versione dell\'evento',
             'help' => 'Numero di versione del formato evento',
             'validation' => 'nullable|string|max:20',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'meta_data' => [
             'label' => 'Metadata',
@@ -72,6 +82,7 @@ return [
             'format' => 'json',
             'helper_text' => 'meta_data',
             'description' => 'meta_data',
+            'tooltip' => '',
         ],
         'created_at' => [
             'label' => 'Data Creazione',
@@ -82,6 +93,7 @@ return [
             'sortable' => true,
             'helper_text' => 'created_at',
             'description' => 'created_at',
+            'tooltip' => '',
         ],
         'created_by' => [
             'label' => 'Creato Da',
@@ -89,12 +101,18 @@ return [
             'help' => 'Utente che ha generato l\'evento',
             'validation' => 'nullable|integer|exists:users,id',
             'searchable' => true,
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'updated_by' => [
             'label' => 'Aggiornato Da',
             'placeholder' => 'Utente aggiornatore',
             'help' => 'Utente che ha aggiornato l\'evento',
             'validation' => 'nullable|integer|exists:users,id',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'stream_name' => [
             'label' => 'Nome Stream',
@@ -102,6 +120,9 @@ return [
             'help' => 'Identificativo del flusso a cui appartiene l\'evento',
             'validation' => 'nullable|string|max:255',
             'searchable' => true,
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'stream_position' => [
             'label' => 'Posizione Stream',
@@ -109,11 +130,17 @@ return [
             'help' => 'Posizione sequenziale dell\'evento nel flusso',
             'validation' => 'nullable|integer|min:0',
             'sortable' => true,
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'toggleColumns' => [
             'label' => 'Mostra/Nascondi Colonne',
             'placeholder' => '',
             'help' => 'Configura la visibilità delle colonne nella tabella',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'filters' => [
@@ -305,19 +332,19 @@ return [
     'pagination' => [
         'per_page' => 50,
         'options' => [
-            25,
-            50,
-            100,
-            200,
+            0 => 25,
+            1 => 50,
+            2 => 100,
+            3 => 200,
         ],
         'simple' => false,
     ],
     'cache' => [
         'ttl' => 600,
         'tags' => [
-            'stored_events',
-            'event_sourcing',
-            'monitoring',
+            0 => 'stored_events',
+            1 => 'event_sourcing',
+            2 => 'monitoring',
         ],
     ],
     'event_sourcing' => [
@@ -336,4 +363,6 @@ return [
         'performance_tracking' => true,
         'audit_trail' => true,
     ],
+    'label' => 'Stored Event',
+    'plural_label' => 'Stored Event (Plurale)',
 ];

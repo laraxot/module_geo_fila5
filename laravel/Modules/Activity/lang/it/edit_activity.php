@@ -25,16 +25,25 @@ return [
             'label' => 'Descrizione',
             'placeholder' => 'Inserisci descrizione',
             'help' => 'Descrizione dettagliata dell\'attività',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'properties' => [
             'label' => 'Proprietà',
             'placeholder' => 'Inserisci proprietà',
             'help' => 'Proprietà aggiuntive in formato JSON',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'metadata' => [
             'label' => 'Metadata',
             'placeholder' => 'Inserisci metadata',
             'help' => 'Informazioni metadata aggiuntive',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'messages' => [
@@ -46,5 +55,18 @@ return [
         'description.required' => 'La descrizione è obbligatoria',
         'description.max' => 'La descrizione non può superare :max caratteri',
         'properties.json' => 'Le proprietà devono essere un JSON valido',
+    ],
+    'label' => 'Edit Activity',
+    'plural_label' => 'Edit Activity (Plurale)',
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Edit Activity',
+        ],
+        'edit' => [
+            'label' => 'Modifica Edit Activity',
+        ],
+        'delete' => [
+            'label' => 'Elimina Edit Activity',
+        ],
     ],
 ];

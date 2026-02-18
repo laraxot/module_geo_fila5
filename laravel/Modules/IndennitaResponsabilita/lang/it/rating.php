@@ -67,6 +67,9 @@ return [
             'tooltip' => 'Timestamp ultimo aggiornamento',
             'helper_text' => '',
         ],
+        'anno' => [
+            'description' => 'anno',
+        ],
     ],
     'actions' => [
         'create' => [
@@ -113,6 +116,7 @@ return [
         'layout' => [
             'tooltip' => 'layout',
             'icon' => 'layout',
+            'label' => 'layout',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -161,6 +165,8 @@ return [
         ],
         'copy_from_last_year' => [
             'tooltip' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'label' => 'copy_from_last_year',
         ],
     ],
     'messages' => [

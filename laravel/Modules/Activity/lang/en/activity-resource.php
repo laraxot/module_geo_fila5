@@ -7,30 +7,44 @@ return [
         'id' => [
             'label' => 'ID',
             'tooltip' => 'Unique identifier of the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'description' => [
             'label' => 'Description',
             'tooltip' => 'Description of the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject_type' => [
             'label' => 'Subject Type',
             'tooltip' => 'Type of entity subject to the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject_id' => [
             'label' => 'Subject ID',
             'tooltip' => 'Identifier of the entity subject to the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'causer_type' => [
             'label' => 'Causer Type',
             'tooltip' => 'Type of entity that caused the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'causer_id' => [
             'label' => 'Causer ID',
             'tooltip' => 'Identifier of the entity that caused the activity',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Created At',
             'tooltip' => 'Date and time when the activity was created',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -82,4 +96,13 @@ return [
             ],
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

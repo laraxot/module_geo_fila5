@@ -4,9 +4,10 @@
 
 This guide explains how to use `chartjs-plugin-datalabels` with Filament v5 chart widgets in the **Zero theme** context.
 
-Reference sample:
+Reference samples:
 
 - [chartjs-plugin-datalabels – multiple labels sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)
+- [chartjs-plugin-datalabels – Doughnut (sorgente)](https://github.com/chartjs/chartjs-plugin-datalabels/blob/master/docs/samples/charts/doughnut.md) / [Demo Doughnut](https://chartjs-plugin-datalabels.netlify.app/samples/charts/doughnut.html) – per grafici radiali (anchor, display, formatter globale)
 
 ## Golden rules (Filament v5)
 

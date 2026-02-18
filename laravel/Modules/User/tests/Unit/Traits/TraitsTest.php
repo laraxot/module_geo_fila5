@@ -16,7 +16,9 @@ test('PasswordValidationRules trait can be used', function () {
     expect(trait_exists(PasswordValidationRules::class))->toBeTrue();
 
     try {
-        $testClass = new TestClassWithPasswordValidationRules();
+        $testClass = new class {
+            use PasswordValidationRules;
+        };
         // Check if the trait methods exist
         expect(method_exists($testClass, 'passwordRules'))->toBeTrue();
     } catch (Exception $e) {
@@ -26,7 +28,9 @@ test('PasswordValidationRules trait can be used', function () {
 
 test('PasswordValidationRules has expected methods', function () {
     if (trait_exists(PasswordValidationRules::class)) {
-        $testClass = new TestClassWithPasswordValidationRules();
+        $testClass = new class {
+            use PasswordValidationRules;
+        };
         $hasMethod = method_exists($testClass, 'passwordRules');
         $hasMin = method_exists($testClass, 'passwordMinimum');
         $hasMixedCase = method_exists($testClass, 'passwordRequiresMixedCase');

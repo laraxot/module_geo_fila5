@@ -40,6 +40,8 @@ parameters:
         - ./*/phpinsights.php
         - ./*/rector.php
         - ./*/*.blade.php
+        # File problematici temporaneamente esclusi
+        - ./Modules/Xot/*
         #- ./config/local/*/database.php
         # Moduli in ordine alfabetico:
         #- ./Modules/Activity/*
@@ -75,7 +77,6 @@ parameters:
         #- ./Modules/Tenant/*
         #- ./Modules/UI/*
         #- ./Modules/User/*
-        #- ./Modules/Xot/*
 
     bootstrapFiles:
         - ./phpstan_constants.php

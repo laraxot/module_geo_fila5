@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Database\QueryException;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Modules\Xot\Models\Module;
-
 use Modules\Xot\Tests\TestCase;
 
 uses(TestCase::class);

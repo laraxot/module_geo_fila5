@@ -19,6 +19,8 @@ return [
         'id' => [
             'label' => 'ID',
             'helper_text' => 'Identificativo univoco del template',
+            'tooltip' => '',
+            'description' => '',
         ],
         'mailable' => [
             'label' => 'Mailable Class',
@@ -26,6 +28,7 @@ return [
             'help' => 'The PHP class that handles email sending',
             'helper_text' => 'Classe PHP che gestisce l\'invio dell\'email',
             'description' => 'mailable',
+            'tooltip' => '',
         ],
         'subject' => [
             'label' => 'Subject',
@@ -33,6 +36,7 @@ return [
             'help' => 'The subject that will appear in the email',
             'helper_text' => 'Oggetto dell\'email',
             'description' => 'subject',
+            'tooltip' => '',
         ],
         'html_template' => [
             'label' => 'HTML Content',
@@ -40,6 +44,7 @@ return [
             'help' => 'The email content in HTML format',
             'helper_text' => 'Contenuto HTML del template email',
             'description' => 'html_template',
+            'tooltip' => '',
         ],
         'text_template' => [
             'label' => 'Text Content',
@@ -47,77 +52,116 @@ return [
             'help' => 'Text version of the email for clients that don\'t support HTML',
             'helper_text' => 'Versione testuale del template email',
             'description' => 'text_template',
+            'tooltip' => '',
         ],
         'version' => [
             'label' => 'Version',
             'help' => 'Template version number',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Created At',
             'helper_text' => 'Data di creazione del template',
+            'tooltip' => '',
+            'description' => '',
         ],
         'updated_at' => [
             'label' => 'Last Modified',
             'helper_text' => 'Data dell\'ultima modifica del template',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_email' => [
             'label' => 'Email mittente',
             'helper_text' => 'Indirizzo email del mittente',
             'placeholder' => 'noreply@example.com',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_name' => [
             'label' => 'Nome mittente',
             'helper_text' => 'Nome visualizzato del mittente',
             'placeholder' => 'Nome Azienda',
+            'tooltip' => '',
+            'description' => '',
         ],
         'variables' => [
             'label' => 'Variabili disponibili',
             'helper_text' => 'Elenco delle variabili che possono essere utilizzate nel template',
             'placeholder' => 'es: {{name}}, {{email}}',
+            'tooltip' => '',
+            'description' => '',
         ],
         'is_markdown' => [
             'label' => 'Usa Markdown',
             'helper_text' => 'Indica se il template utilizza la sintassi Markdown',
+            'tooltip' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'Stato',
             'helper_text' => 'Stato attuale del template',
+            'tooltip' => '',
+            'description' => '',
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'resetFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'applyFilters' => [
             'label' => 'applyFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'openFilters' => [
             'label' => 'openFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'layout' => [
             'label' => 'layout',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'slug' => [
             'label' => 'slug',
             'description' => 'slug',
             'helper_text' => 'slug',
             'placeholder' => 'slug',
+            'tooltip' => '',
         ],
         'name' => [
             'description' => 'Nome del template',
             'helper_text' => 'Nome descrittivo per identificare il template',
             'placeholder' => 'Es: Benvenuto, Conferma ordine, Reset password',
             'label' => 'Nome Template',
+            'tooltip' => '',
         ],
         'params' => [
             'label' => 'Parametri',
             'helper_text' => 'Inserisci i parametri separati da virgola che possono essere utilizzati nel template',
             'placeholder' => 'name, email, date, company',
             'description' => 'Parametri disponibili per il template email',
+            'tooltip' => '',
         ],
     ],
     'filters' => [
@@ -251,4 +295,6 @@ return [
     'model' => [
         'label' => 'mail template.model',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

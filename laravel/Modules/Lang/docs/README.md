@@ -1,30 +1,23 @@
-https://github.com/dimsav/laravel-translatable
+# Module Documentation
 
-https://github.com/Astrotomic/laravel-translatable !!
+This directory contains the documentation for the Lang module.
 
-https://github.com/spatie/laravel-translatable
+## Purpose
 
-https://blog.quickadminpanel.com/10-best-laravel-packages-for-multi-language-translations/
+The purpose of this documentation is to provide comprehensive information about the Lang's functionality, architecture, and usage. It aims to:
+- Explain key features and their implementation details.
+- Guide developers on how to use, extend, and maintain the module.
+- Ensure consistency with Laraxot architectural principles and coding standards.
 
-## Collegamenti tra versioni di readme.md
-* [readme.md](../../../Gdpr/docs/readme.md)
-* [readme.md](../../../UI/docs/readme.md)
-* [readme.md](../../../Lang/docs/readme.md)
-* [readme.md](../../../Activity/docs/readme.md)
-* [readme.md](../../../Cms/docs/readme.md)
+## Structure
 
-## Extra risorse da _docs
+- `README.md`: This overview file.
+- Other Markdown files will detail specific aspects of the module, such as:
+    - `installation.md`
+    - `usage.md`
+    - `architecture.md`
+    - `troubleshooting.md`
 
-(Nessun nuovo link da aggiungere: i link di _docs/readme.txt sono già presenti in questo file)
+## Contribution
 
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
-
-
-## 📄 License & Authors
-
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
-
-**License:** MIT
+Developers are encouraged to contribute to this documentation to keep it accurate and up-to-date.

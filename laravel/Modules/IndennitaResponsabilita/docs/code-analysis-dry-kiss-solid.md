@@ -12,25 +12,23 @@ Analisi approfondita del modulo IndennitaResponsabilita con identificazione di v
 
 ## 🔴 VIOLAZIONI CRITICHE
 
-### 1. Spatie SchemalessAttributes - Uso ERRATO
+### 1. ~~Spatie SchemalessAttributes - Uso ERRATO~~ ✅ RISOLTO
 
-**File:** `CompilaIndennitaResponsabilita.php:289`, `FunctionTrait.php:56,83,112`
+**Status:** ✅ FIX APPLICATO — `Rating.php` ora estende `BaseRating` (DRY)
 
-**Problema:**
+**Problema originale:**
+`Rating.php` aveva un `scopeWithExtraAttributes()` che usava `$this->extra_attributes->modelScope()` ignorando i parametri.
+
+**Fix applicato:**
+`Rating.php` ora estende `BaseRating`, che implementa correttamente lo scope con filtri JSON path.
+
 ```php
-// ❌ ERRATO - withExtraAttributes() NON accetta parametri di filtro
+// ✅ CORRETTO - Entrambi funzionano ora
 $rows = Rating::withExtraAttributes('anno', $anno)->get();
-```
-
-**Il metodo `scopeWithExtraAttributes()` in Rating.php ritorna solo `$this->extra_attributes->modelScope()` IGNORANDO completamente i parametri passati!**
-
-**Soluzione CORRETTA:**
-```php
-// ✅ CORRETTO - Usare where() con JSON path
 $rows = Rating::where('extra_attributes->anno', $anno)->get();
 ```
 
-**Impact:** Query non filtrano correttamente, restituendo TUTTI i record invece di quelli dell'anno.
+**Riferimento:** [Rating Schemaless Errors](../../../Rating/docs/schemaless-attributes-errors.md) | [Xot Central Guide](../../../Xot/docs/spatie-schemaless-attributes.md)
 
 ---
 

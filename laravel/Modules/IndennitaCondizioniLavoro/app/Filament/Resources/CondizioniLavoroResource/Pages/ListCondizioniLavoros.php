@@ -15,12 +15,14 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\StreamedResponse;
 use Modules\IndennitaCondizioniLavoro\Actions\MakePdf;
 use Modules\IndennitaCondizioniLavoro\Actions\Populate;
 use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroResource;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptionsByWhere;
+use Modules\Ptv\Filament\Columns\WorkerColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
@@ -32,13 +34,12 @@ class ListCondizioniLavoros extends XotBaseListRecords
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
+        // Use WorkerColumn for DRY - groups matr, cognome, nome
         return [
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('cognome')->searchable(),
-            TextColumn::make('nome')->searchable(),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
-            TextColumn::make('indennitaTipoDettaglio')
+            'lavoratore' => WorkerColumn::make('lavoratore'),
+            //'stabi' => TextColumn::make('stabi')->searchable(),
+            //'repar' => TextColumn::make('repar')->searchable(),
+            'indennitaTipoDettaglio' => TextColumn::make('indennitaTipoDettaglio')
                 ->formatStateUsing(function (TextColumn $column) {
                     $state = $column->getState();
                     if (! $state instanceof Collection) {
@@ -73,8 +74,8 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return '['.$indennitaTipoNome.'] '.$nome;
                     })->implode(' --------------------- ,'.PHP_EOL.PHP_EOL.'');
                 }),
-            TextColumn::make('quadrimestre')->searchable(),
-            TextColumn::make('anno')->searchable(),
+            'quadrimestre' => TextColumn::make('quadrimestre')->searchable(),
+            'anno' => TextColumn::make('anno')->searchable(),
         ];
     }
 
@@ -95,7 +96,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): void {
+                ->action(function (): \Illuminate\Http\StreamedResponse {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
                     // Ensure array has required structure
                     $data = ['anno/valutatore' => $tableFilters];

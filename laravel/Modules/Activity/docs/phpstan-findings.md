@@ -1,6 +1,5 @@
 # PHPStan Findings - Activity Module
 
-**Data**: 2025-10-10
 **Livello**: MAX (9)
 **Status**: ✅ MODELS CORRETTI
 
@@ -85,4 +84,4 @@ Rimuovere @mixin per classi IdeHelper* generate da ide-helper package (non esist
 
 ---
 
-**Aggiornato**: 2025-10-10T10:54:56+02:00
+**Aggiornato**: [DATE]T10:54:56+02:00

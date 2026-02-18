@@ -7,8 +7,6 @@ namespace Modules\Pdnd\Filament\Pages;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Log;
@@ -21,9 +19,8 @@ use Throwable;
 /**
  * @property Schema $pdndForm
  */
-class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasForms
+class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
 {
-    use InteractsWithForms;
 
     /** @var array<string, mixed> */
     public array $pdndData = [];
@@ -85,7 +82,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage implements HasFo
             $state = $this->pdndForm->getState();
 
             $codiceFiscale = $this->validateCodiceFiscale($state);
-            
+
             $risultatoC007Service = $this->verificaEsistenzaInVita($codiceFiscale);
 
             if ($this->isVerificaSuccessful($risultatoC007Service)) {

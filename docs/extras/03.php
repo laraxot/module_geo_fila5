@@ -34,7 +34,7 @@ $fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
 $history_count = intval(trim(fgets(STDIN)));
 
-$history = array();
+$history = [];
 
 for ($i = 0; $i < $history_count; $i++) {
     $history_item = rtrim(fgets(STDIN), "\r\n");

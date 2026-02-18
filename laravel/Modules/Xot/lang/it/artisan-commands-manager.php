@@ -54,4 +54,37 @@ return [
         'disabled' => 'Non è possibile eseguire altri comandi mentre un comando è in esecuzione.',
         'scroll' => 'L\'output si aggiorna automaticamente e scorre verso il basso.',
     ],
+    'label' => 'Artisan Commands Manager',
+    'plural_label' => 'Artisan Commands Manager (Plurale)',
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Artisan Commands Manager',
+        ],
+        'edit' => [
+            'label' => 'Modifica Artisan Commands Manager',
+        ],
+        'delete' => [
+            'label' => 'Elimina Artisan Commands Manager',
+        ],
+    ],
 ];

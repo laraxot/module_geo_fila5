@@ -1,6 +1,5 @@
 # Widget View Resolution - Risoluzione Automatica vs Manuale
 
-**Data**: 2025-01-27
 **Status**: ✅ RISOLTO
 **Problema**: `XotBaseWidget` sovrascriveva view definite manualmente
 
@@ -179,4 +178,4 @@ class MyWidget extends XotBaseWidget
 
 ---
 
-*Documento creato il 2025-01-27 durante la risoluzione del bug "View not found: timeclock"*
+*Documento creato il [DATE] durante la risoluzione del bug "View not found: timeclock"*

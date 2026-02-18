@@ -52,4 +52,48 @@ return [
         'hex_color' => '#6b7280',
         'description' => 'Note di contatto',
     ],
+    'label' => 'Contact Type Enum',
+    'plural_label' => 'Contact Type Enum (Plurale)',
+    'navigation' => [
+        'name' => 'Contact Type Enum',
+        'plural' => 'Contact Type Enum',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Contact Type Enum',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Contact Type Enum',
+        ],
+        'edit' => [
+            'label' => 'Modifica Contact Type Enum',
+        ],
+        'delete' => [
+            'label' => 'Elimina Contact Type Enum',
+        ],
+    ],
 ];

@@ -16,7 +16,7 @@ return [
         'description' => 'Piattaforma cloud per comunicazioni con API robuste e documentazione completa',
     ],
     'nexmo' => [
-        'label' => 'Nexmo (Vonage)',
+        'label' => 'Nexmo (Vonage]',
         'color' => 'warning',
         'icon' => 'heroicon-o-globe-alt',
         'description' => 'Provider globale per SMS e comunicazioni con copertura internazionale',
@@ -44,5 +44,49 @@ return [
         'color' => 'gray',
         'icon' => 'heroicon-o-truck',
         'description' => 'Provider italiano per servizi di telecomunicazioni e SMS',
+    ],
+    'label' => 'Sms Driver Enum',
+    'plural_label' => 'Sms Driver Enum (Plurale)',
+    'navigation' => [
+        'name' => 'Sms Driver Enum',
+        'plural' => 'Sms Driver Enum',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Sms Driver Enum',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Sms Driver Enum',
+        ],
+        'edit' => [
+            'label' => 'Modifica Sms Driver Enum',
+        ],
+        'delete' => [
+            'label' => 'Elimina Sms Driver Enum',
+        ],
     ],
 ];

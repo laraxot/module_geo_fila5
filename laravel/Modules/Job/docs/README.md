@@ -22,7 +22,7 @@ Il modulo **Job** trasforma il background processing in un asset strategico per 
 Non serve toccare il file `crontab`. Ogni task è definibile via database e gestibile tramite l'interfaccia Filament.
 
 ### 🧘 **Philosophical Design**
-"Un job ben scritto non si accorge di essere in background". Il modulo garantisce che l'ambiente di esecuzione sia coerente e traccabile.
+"Un job ben scritto non si accorge di essere in background". Il modulo garantisce che l'ambiente di esecuzione sia coerente e tracciabile.
 
 ## 🚀 **Quick Start**
 

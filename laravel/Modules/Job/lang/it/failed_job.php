@@ -25,35 +25,87 @@ return [
     'fields' => [
         'id' => [
             'label' => 'ID',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'uuid' => [
             'label' => 'UUID',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'connection' => [
             'label' => 'Connessione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'queue' => [
             'label' => 'Coda',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'payload' => [
             'label' => 'Payload',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'exception' => [
             'label' => 'Eccezione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'failed_at' => [
             'label' => 'Fallito il',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
-        'attempts' => 'Tentativi',
-        'max_attempts' => 'Tentativi Massimi',
-        'status' => 'Stato',
-        'created_at' => 'Creato il',
-        'updated_at' => 'Aggiornato il',
+        'attempts' => [
+            'label' => 'Tentativi',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'max_attempts' => [
+            'label' => 'Tentativi Massimi',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'status' => [
+            'label' => 'Stato',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Creato il',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Aggiornato il',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -169,4 +221,5 @@ return [
         'icon' => 'job-failed-job',
     ],
     'label' => 'failed job',
+    'plural_label' => 'Failed Job (Plurale)',
 ];

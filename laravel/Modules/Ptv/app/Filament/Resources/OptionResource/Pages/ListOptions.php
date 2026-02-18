@@ -36,7 +36,7 @@ class ListOptions extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('id')
+            'id' => TextColumn::make('id')
                 ->numeric()
                 ->sortable(),
             /*
@@ -44,7 +44,7 @@ class ListOptions extends XotBaseListRecords
                     ->type('number')
                     ->sortable(),
                 */
-            SelectColumn::make('parent_id')->options(function ($record) {
+            'parent_id' => SelectColumn::make('parent_id')->options(function ($record) {
                 // Type narrowing: ensure record is object with properties
                 if (! is_object($record)) {
                     return [];
@@ -83,18 +83,18 @@ class ListOptions extends XotBaseListRecords
 
                 return $opts;
             }),
-            TextColumn::make('option_type')
+            'option_type' => TextColumn::make('option_type')
                 ->searchable(),
-            TextColumn::make('name')
+            'name' => TextColumn::make('name')
                 ->searchable(),
-            TextColumn::make('value')
+            'value' => TextColumn::make('value')
                 ->searchable()
                 ->wrap(),
-            TextColumn::make('txt')
+            'txt' => TextColumn::make('txt')
                 ->searchable()
                 ->wrap()
                 ->html(),
-            TextColumn::make('txt1')
+            'txt1' => TextColumn::make('txt1')
                 ->searchable()
                 ->wrap()
                 ->html(),
@@ -108,7 +108,7 @@ class ListOptions extends XotBaseListRecords
                     ->numeric()
                     ->sortable(),
                 */
-            TextColumn::make('year')
+            'year' => TextColumn::make('year')
                 ->numeric()
                 ->sortable(),
         ];

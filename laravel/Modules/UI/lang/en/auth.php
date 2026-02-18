@@ -60,4 +60,10 @@ return [
         'profile' => 'Profile',
         'settings' => 'Settings',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

@@ -10,6 +10,7 @@ return [
             'help' => 'Aktueller Zustand der Auswahl',
             'description' => 'Auswählbarer Zustand',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'Nachricht',
@@ -17,6 +18,18 @@ return [
             'help' => 'Informative Nachricht für die Auswahl',
             'description' => 'Nachrichtentext',
             'helper_text' => '',
+            'tooltip' => '',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

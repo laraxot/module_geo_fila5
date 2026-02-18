@@ -7,7 +7,6 @@ namespace Modules\Gdpr\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Support\Carbon;
-use Modules\Gdpr\Database\Factories\TreatmentFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -30,7 +29,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
- * @method static TreatmentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Treatment newModelQuery()
  * @method static Builder<static>|Treatment newQuery()
  * @method static Builder<static>|Treatment query()
@@ -60,5 +58,14 @@ class Treatment extends BaseModel
     // protected $table = 'treatment';
     public $incrementing = false;
 
-    protected $fillable = [''];
+    protected $fillable = [
+        'id',
+        'active',
+        'required',
+        'name',
+        'description',
+        'documentVersion',
+        'documentUrl',
+        'weight',
+    ];
 }

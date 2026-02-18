@@ -1,6 +1,6 @@
-# ListLogActivities UI/UX Improvements - 2025-12-04
+# ListLogActivities UI/UX Improvements - [DATE]
 
-## Data Intervento: 2025-12-04
+## Data Intervento: [DATE]
 
 ## Obiettivo
 
@@ -293,6 +293,5 @@ PASS: 2 files formattati correttamente
 ---
 
 **Autore**: iFlow CLI
-**Data**: 2025-12-04
 **Versione**: 1.0
 **Status**: ✅ Production Ready

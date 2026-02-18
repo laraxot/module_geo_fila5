@@ -7,4 +7,10 @@ return [
         'label' => 'Invio Push Notification',
         'group' => 'Notifiche',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

@@ -1,7 +1,6 @@
 # REGOLA CRITICA: MySQL Only per Testing - Nessun SQLite
 
 **Status**: ✅ REGOLA ASSOLUTA - NESSUNA ECCEZIONE  
-**Data**: 2026-01-21  
 **Priorità**: MASSIMA
 
 ## 🚨 Principio Fondamentale
@@ -9,6 +8,77 @@
 > **Il file `.env.testing` è la fonte unica di verità per la configurazione dei test.**
 > 
 > **SQLite è VIETATO per i test. SEMPRE e SOLO MySQL con suffisso "_test".**
+
+## 🚨 REGOLA FONDAMENTALE: .env.testing è COPIA CARBONE del .env
+
+### Principio
+Il file `.env.testing` deve essere una copia esatta del `.env` con **una sola modifica**: il suffisso `_test` aggiunto ai nomi dei database definiti nel `.env`.
+
+### Esempio Corretto
+```bash
+# .env (produzione/sviluppo)
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelpizza_data
+DB_USERNAME=marco
+DB_PASSWORD=marco
+
+DB_DATABASE_USER=laravelpizza_user
+DB_USERNAME_USER=marco
+DB_PASSWORD_USER=marco
+```
+
+```bash
+# .env.testing (test) - SOLO suffisso _test ai database del .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelpizza_data_test
+DB_USERNAME=marco
+DB_PASSWORD=marco
+
+DB_DATABASE_USER=laravelpizza_user_test
+DB_USERNAME_USER=marco
+DB_PASSWORD_USER=marco
+```
+
+### ❌ MAI FARE QUESTO (ERRORI GRAVI)
+```bash
+# ❌ SBAGLIATO - Inventare database che NON esistono nel .env
+NOTIFY_DB_DATABASE=laravelpizza_data_test
+GEO_DB_DATABASE=laravelpizza_data_test
+MEDIA_DB_DATABASE=laravelpizza_data_test
+
+# ❌ SBAGLIATO - Cambiare struttura connessioni
+DB_CONNECTION=user
+
+# ❌ SBAGLIATO - Usare database diversi da quelli nel .env
+DB_DATABASE=laravelpizza_notify_test
+```
+
+### ❌ REGOLA CRITICA: config/database.php
+
+**NON aggiungere mai connessioni separate per modulo nel database.php principale!**
+
+Le connessioni per i moduli (notify, geo, media, etc.) vengono create **automaticamente** dal `TenantServiceProvider`.
+
+```php
+// ❌ SBAGLIATO - Non fare mai questo nel database.php
+'notify' => [
+    'driver' => 'mysql',
+    'database' => env('NOTIFY_DB_DATABASE', 'laravelpizza_notify_test'),
+    ...
+],
+'geo' => [
+    'driver' => 'mysql',
+    'database' => env('GEO_DB_DATABASE', 'laravelpizza_geo_test'),
+    ...
+],
+
+// ✅ CORRETTO - Solo connessioni base + user
+// Le connessioni modulo sono create automaticamente da TenantServiceProvider
+```
 
 ## Regole Assolute
 
@@ -79,41 +149,61 @@ use Modules\Xot\Tests\CreatesApplication;
 /**
  * Base test case for ModuleName module.
  *
- * Uses MySQL from .env.testing (NOT SQLite).
- * Database names must have "_test" suffix (es: quaeris_data_test).
- * The .env.testing file is the single source of truth - NEVER override database configuration.
+ * Uses MySQL from .env.testing.
+ * All module connections are mapped dynamically by TenantServiceProvider.
+ * Migrations must be run ONCE externally: php artisan migrate --env=testing
+ * DatabaseTransactions handles rollback between tests.
  */
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use DatabaseTransactions;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+    /**
+     * MUST include every connection used by this module's models.
+     * Even though module connections point to the same MySQL server,
+     * they are SEPARATE PDO handles with INDEPENDENT transaction scopes.
+     * Without listing the module's connection, writes are NEVER rolled back.
+     *
+     * @var array<int, string>
+     */
+    protected $connectionsToTransact = [
+        'mysql',
+        '{module_snake}',  // MUST match $connection in module's models
+        'user',            // Include if tests use User models
+    ];
 
-        // Set cache driver to array for testing (required for Sushi models)
-        $this->app['config']->set('cache.default', 'array');
-
-        // ✅ CORRETTO: Rispetta .env.testing - NON forzare SQLite
-        // Il file .env.testing è la fonte unica di verità per la configurazione database
-        // NON sovrascrivere mai la configurazione database da .env.testing
-        // Database test DEVONO avere suffisso "_test" (es: quaeris_data_test)
-
-        $this->artisan('module:migrate', ['module' => 'Xot', '--force' => true]);
-        $this->artisan('module:migrate', ['module' => 'User', '--force' => true]);
-        $this->artisan('module:migrate', ['module' => 'ModuleName', '--force' => true]);
-    }
+    // NO setUp() with migrations - NOT NEEDED
+    // Run migrations manually BEFORE running tests:
+    // php artisan migrate --env=testing
 }
 ```
 
-## TestCase Pattern VIETATO
+> **NOTA**: Prima di lanciare i test, eseguire manualmente:
+> ```bash
+> php artisan migrate --env=testing
+> ```
+> Questo crea tutte le tabelle una volta sola. `DatabaseTransactions` gestisce il rollback tra i test.
+
+## ❌ TestCase Pattern VIETATO
 
 ```php
 // ❌ ASSOLUTAMENTE VIETATO - MAI FARE QUESTO
 protected function setUp(): void
 {
     parent::setUp();
+
+    // ❌ VIETATO: migrate:fresh - ridondante
+    $this->artisan('migrate:fresh', ['--force' => true]);
+
+    // ❌ VIETATO: --force non necessario nei test
+    $this->artisan('module:migrate', ['--force' => true]);
+
+    // ❌ VIETATO: Controllo if ridondante
+    if (! self::$migrated) {
+        $this->artisan('module:migrate');
+        self::$migrated = true;
+    }
 
     // ❌ VIETATO: Forzare SQLite
     config(['database.default' => 'sqlite']);
@@ -130,18 +220,25 @@ protected function setUp(): void
 
 ## Motivazione
 
-1. **Coerenza**: Stesso dialetto SQL in test e produzione
-2. **Affidabilità**: Test realistici che predicono comportamento produzione
-3. **Sicurezza**: Evita bug che si manifestano solo in produzione
-4. **Fonte Unica di Verità**: `.env.testing` definisce tutto, non sovrascrivere
+1. **Semplicità**: Una sola chiamata a `module:migrate`
+2. **No force**: Laravel gestisce automaticamente i test
+3. **No if**: Ogni test esegue le migrations - DatabaseTransactions gestisce il rollback
+4. **Coerenza**: Stesso dialetto SQL in test e produzione
+5. **Affidabilità**: Test realistici che predicono comportamento produzione
+6. **Fonte Unica di Verità**: `.env.testing` definisce tutto, non sovrascrivere
 
 ## Checklist per TestCase
 
+- [ ] TestCase NON usa `migrate:fresh`
+- [ ] TestCase NON usa `--force`
+- [ ] TestCase NON usa `if (! self::$migrated)`
+- [ ] TestCase NON usa `$this->artisan('module:migrate')` nel setUp()
+- [ ] TestCase usa `$connectionsToTransact` con la connessione del modulo (OBBLIGATORIO)
 - [ ] TestCase NON forza SQLite
 - [ ] TestCase NON sovrascrive configurazione database
 - [ ] TestCase rispetta `.env.testing`
-- [ ] Database test hanno suffisso "_test"
-- [ ] Commenti PHPDoc menzionano "MySQL from .env.testing (NOT SQLite)"
+- [ ] TestCase ha solo `CreatesApplication` e `DatabaseTransactions` come trait
+- [ ] Migrazioni eseguite manualmente PRIMA di lanciare i test: `php artisan migrate --env=testing`
 
 ## Riferimenti
 

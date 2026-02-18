@@ -1,6 +1,5 @@
 # Gdpr Module - PHPStan PHPDoc & Migration Errors Resolution Roadmap
 
-**Data**: 2026-01-13
 **Stato**: 🟡 In Attesa di Implementazione
 **Priorità**: ALTA (16 errori PHPDoc + 3 errori Migration)
 **Metodologia**: Super Mucca - Analisi Profonda della Causa Radice
@@ -420,7 +419,7 @@ Prima di committare le modifiche, verificare:
 
 | Data | Autore | Modifiche |
 |------|--------|-----------|
-| 2026-01-13 | Claude Sonnet 4.5 | Creazione roadmap iniziale con analisi approfondita |
+| [DATE] | Claude Sonnet 4.5 | Creazione roadmap iniziale con analisi approfondita |
 
 ---
 

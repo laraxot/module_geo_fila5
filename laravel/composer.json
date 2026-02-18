@@ -28,6 +28,20 @@
         "symfony/http-client": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.14",
+        "barryvdh/laravel-ide-helper": "^3.2",
+        "fakerphp/faker": "^1.24",
+        "larastan/larastan": "*",
+        "laravel/boost": "^2.0",
+        "laravel/pint": "^1.18",
+        "laravel/sail": "^1.41",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "orchestra/testbench": "*",
+        "pestphp/pest": "*",
+        "pestphp/pest-plugin-type-coverage": "*",
+        "thecodingmachine/phpstan-safe-rule": "*",
+        "nunomaduro/phpinsights": "*"
     },
     "require-dev-comment": {
         "carthage-software/mago": "^1.0.0-rc.4",
@@ -55,8 +69,7 @@
             "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan boost:update --ansi"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -67,19 +80,18 @@
             "@php artisan migrate --ansi"
         ],
         "go": [
-            "sudo chmod -R 777 ..",
-            "@php -d memory_limit=-1 composer.phar self-update",
-            "@php -d memory_limit=-1 composer.phar update -W",
             "rm -rf resources/views/vendor",
             "rm -rf bootstrap/cache/filament",
-            "@php artisan vendor:publish --all",
+            "/usr/bin/php artisan vendor:publish --all",
             "rm -rf ./app/View/Components/vendor",
-            "@php artisan filament:upgrade",
-            "@php artisan filament:optimize",
-            "@php artisan optimize",
-            "@php artisan route:clear",
-            "@php artisan livewire:publish --assets",
-            "@php artisan serve"
+            "/usr/bin/php artisan filament:upgrade",
+            "/usr/bin/php artisan filament:optimize",
+            "/usr/bin/php artisan optimize",
+            "/usr/bin/php artisan route:clear",
+            "/usr/bin/php artisan livewire:publish --assets",
+            "/usr/bin/php artisan ide-helper:generate",
+            "/usr/bin/php artisan ide-helper:models --no-interaction",
+            "/usr/bin/php artisan serve"
         ],
         "clear": [
             "sudo chmod -R 777 .",

@@ -56,31 +56,31 @@ class ListIndividualeAdms extends XotBaseListRecords
             'motivo' => TextColumn::make('motivo')
                 ->searchable(),
             'soldi_group' => GroupColumn::make('soldi')->schema([
-                TextColumn::make('importo_totale'),
-                TextColumn::make('resti'),
-                TextColumn::make('resti_pond'),
-                TextColumn::make('budget_assegnato'),
-                TextColumn::make('quota_effettiva'),
+                'importo_totale' => TextColumn::make('importo_totale'),
+                'resti' => TextColumn::make('resti'),
+                'resti_pond' => TextColumn::make('resti_pond'),
+                'budget_assegnato' => TextColumn::make('budget_assegnato'),
+                'quota_effettiva' => TextColumn::make('quota_effettiva'),
 
             ]),
 
-            LavoratoreColumn::make('lavoratore'),
+            'lavoratore' => LavoratoreColumn::make('lavoratore'),
             'info_group' => GroupColumn::make('info')->schema([
-                TextColumn::make('perc_parttimepond_dalal'),
-                TextColumn::make('gg_presenza_dalal'),
-                TextColumn::make('gg_assenza_dalal'),
-                TextColumn::make('hh_assenza_dalal'),
-                TextColumn::make('quota_teorica'),
-                TextColumn::make('budget_assegnato'),
-                TextColumn::make('quota_effettiva'),
-                TextColumn::make('resti'),
-                TextColumn::make('resti_pond'),
-                TextColumn::make('importo_totale'),
+                'perc_parttimepond_dalal' => TextColumn::make('perc_parttimepond_dalal'),
+                'gg_presenza_dalal' => TextColumn::make('gg_presenza_dalal'),
+                'gg_assenza_dalal' => TextColumn::make('gg_assenza_dalal'),
+                'hh_assenza_dalal' => TextColumn::make('hh_assenza_dalal'),
+                'quota_teorica' => TextColumn::make('quota_teorica'),
+                'budget_assegnato' => TextColumn::make('budget_assegnato'),
+                'quota_effettiva' => TextColumn::make('quota_effettiva'),
+                'resti' => TextColumn::make('resti'),
+                'resti_pond' => TextColumn::make('resti_pond'),
+                'importo_totale' => TextColumn::make('importo_totale'),
             ]),
 
-            QualificaColumn::make('qualifica'),
-            RepartoColumn::make('reparto'),
-            PeriodoColumn::make('periodo'),
+            'qualifica' => QualificaColumn::make('qualifica'),
+            'reparto' => RepartoColumn::make('reparto'),
+            'periodo' => PeriodoColumn::make('periodo'),
         ];
     }
 

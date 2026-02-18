@@ -20,30 +20,48 @@ return [
             'placeholder' => 'model_type',
             'helper_text' => 'model_type',
             'description' => 'model_type',
+            'tooltip' => '',
         ],
         'model_id' => [
             'label' => 'model_id',
             'placeholder' => 'model_id',
             'helper_text' => 'model_id',
             'description' => 'model_id',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'state',
             'placeholder' => 'state',
             'helper_text' => 'state',
             'description' => 'state',
+            'tooltip' => '',
         ],
         'created_by_type' => [
             'label' => 'created_by_type',
             'placeholder' => 'created_by_type',
             'helper_text' => 'created_by_type',
             'description' => 'created_by_type',
+            'tooltip' => '',
         ],
         'created_by_id' => [
             'label' => 'created_by_id',
             'placeholder' => 'created_by_id',
             'helper_text' => 'created_by_id',
             'description' => 'created_by_id',
+            'tooltip' => '',
+        ],
+    ],
+    'label' => 'Snapshot',
+    'plural_label' => 'Snapshot (Plurale)',
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Snapshot',
+        ],
+        'edit' => [
+            'label' => 'Modifica Snapshot',
+        ],
+        'delete' => [
+            'label' => 'Elimina Snapshot',
         ],
     ],
 ];

@@ -10,6 +10,7 @@ return [
             'help' => 'اسم تعريف العنصر',
             'description' => 'اسم الكائن',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'edit-name' => [
             'label' => 'تعديل الاسم',
@@ -17,6 +18,7 @@ return [
             'help' => 'تعديل الاسم الموجود',
             'description' => 'إجراء لتعديل الاسم',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'change-state' => [
             'label' => 'تغيير الحالة',
@@ -24,6 +26,7 @@ return [
             'help' => 'تعديل الحالة الحالية',
             'description' => 'إجراء لتغيير الحالة',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'state' => [
             'label' => 'الحالة',
@@ -31,6 +34,7 @@ return [
             'help' => 'الحالة الحالية للعنصر',
             'description' => 'حالة النظام الحالية',
             'helper_text' => '',
+            'tooltip' => '',
         ],
         'message' => [
             'label' => 'الرسالة',
@@ -38,6 +42,7 @@ return [
             'help' => 'رسالة إعلامية',
             'description' => 'نص الرسالة',
             'helper_text' => '',
+            'tooltip' => '',
         ],
     ],
     'messages' => [
@@ -50,5 +55,16 @@ return [
         'transition_error' => [
             'title' => 'خطأ في الانتقال',
         ],
+    ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'actions' => [
     ],
 ];

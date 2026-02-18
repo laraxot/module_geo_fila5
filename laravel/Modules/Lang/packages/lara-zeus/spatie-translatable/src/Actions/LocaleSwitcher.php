@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaraZeus\SpatieTranslatable\Actions;
 
 use Filament\Actions\SelectAction;

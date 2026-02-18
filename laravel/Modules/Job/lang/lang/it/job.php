@@ -3,9 +3,6 @@
 declare(strict_types=1);
 
 return [
-    // ==============================================
-    // NAVIGATION & STRUCTURE
-    // ==============================================
     'navigation' => [
         'label' => 'Job',
         'plural_label' => 'Job',
@@ -14,22 +11,17 @@ return [
         'sort' => 50,
         'badge' => 'Gestione processi in background',
     ],
-    // ==============================================
-    // MODEL INFORMATION
-    // ==============================================
     'model' => [
         'label' => 'Job',
         'plural' => 'Job',
         'description' => 'Processi in background e code di elaborazione',
     ],
-    // ==============================================
-    // FIELDS - STRUTTURA ESPANSA OBBLIGATORIA
-    // ==============================================
     'fields' => [
         'id' => [
             'label' => 'ID',
             'tooltip' => 'Identificativo univoco del job',
             'helper_text' => 'Identificativo numerico univoco del job nel sistema',
+            'description' => '',
         ],
         'queue' => [
             'label' => 'Coda',
@@ -37,6 +29,7 @@ return [
             'tooltip' => 'Nome della coda di elaborazione',
             'helper_text' => 'Coda specifica in cui il job è stato accodato per l\'elaborazione',
             'help' => 'Specifica la coda di priorità per l\'elaborazione',
+            'description' => '',
         ],
         'payload' => [
             'label' => 'Payload',
@@ -44,6 +37,7 @@ return [
             'tooltip' => 'Dati e parametri del job',
             'helper_text' => 'Informazioni e dati specifici necessari per l\'esecuzione del job',
             'help' => 'Contiene i dati serializzati necessari per l\'esecuzione',
+            'description' => '',
         ],
         'attempts' => [
             'label' => 'Tentativi',
@@ -51,11 +45,13 @@ return [
             'tooltip' => 'Numero di tentativi di esecuzione',
             'helper_text' => 'Numero di volte che il job è stato tentato di eseguire',
             'help' => 'Indica quante volte il job ha tentato l\'esecuzione',
+            'description' => '',
         ],
         'reserved_at' => [
             'label' => 'Riservato alle',
             'tooltip' => 'Data di riserva del job',
             'helper_text' => 'Data e ora in cui il job è stato riservato per l\'esecuzione',
+            'description' => '',
         ],
         'available_at' => [
             'label' => 'Disponibile alle',
@@ -63,21 +59,21 @@ return [
             'tooltip' => 'Data di disponibilità per l\'esecuzione',
             'helper_text' => 'Data e ora in cui il job diventa disponibile per l\'esecuzione',
             'help' => 'Specifica quando il job può essere elaborato',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Data Creazione',
             'tooltip' => 'Data di creazione del job',
             'helper_text' => 'Data e ora in cui il job è stato creato nel sistema',
+            'description' => '',
         ],
         'updated_at' => [
             'label' => 'Ultima Modifica',
             'tooltip' => 'Data dell\'ultima modifica',
             'helper_text' => 'Data e ora dell\'ultimo aggiornamento del job',
+            'description' => '',
         ],
     ],
-    // ==============================================
-    // ACTIONS - STRUTTURA ESPANSA OBBLIGATORIA
-    // ==============================================
     'actions' => [
         'create' => [
             'label' => 'Nuovo Job',
@@ -185,9 +181,6 @@ return [
             ],
         ],
     ],
-    // ==============================================
-    // SECTIONS - ORGANIZZAZIONE FORM
-    // ==============================================
     'sections' => [
         'basic_info' => [
             'label' => 'Informazioni Base',
@@ -205,9 +198,6 @@ return [
             'icon' => 'heroicon-o-document-text',
         ],
     ],
-    // ==============================================
-    // FILTERS - RICERCA E FILTRI
-    // ==============================================
     'filters' => [
         'queue' => [
             'label' => 'Coda',
@@ -231,9 +221,6 @@ return [
             'placeholder' => 'Seleziona il periodo',
         ],
     ],
-    // ==============================================
-    // MESSAGES - FEEDBACK UTENTE
-    // ==============================================
     'messages' => [
         'empty_state' => 'Nessun job trovato',
         'search_placeholder' => 'Cerca job...',
@@ -250,9 +237,6 @@ return [
         'error_permission' => 'Non hai i permessi per eseguire questa azione.',
         'success_operation' => 'Operazione completata con successo',
     ],
-    // ==============================================
-    // VALIDATION - MESSAGGI DI VALIDAZIONE
-    // ==============================================
     'validation' => [
         'queue_required' => 'La coda è obbligatoria',
         'payload_required' => 'Il payload è obbligatorio',
@@ -261,18 +245,12 @@ return [
         'available_at_required' => 'La data di disponibilità è obbligatoria',
         'available_at_after' => 'La data di disponibilità deve essere futura',
     ],
-    // ==============================================
-    // DESCRIPTIONS - DESCRIZIONI CONTESTUALI
-    // ==============================================
     'descriptions' => [
         'job_purpose' => 'Gestione dei processi in background e code di elaborazione',
         'queue_system' => 'Sistema di code per l\'elaborazione asincrona dei task',
         'retry_mechanism' => 'Meccanismo di ri-tentativo per job falliti',
         'monitoring' => 'Monitoraggio dello stato e delle performance dei job',
     ],
-    // ==============================================
-    // OPTIONS - OPZIONI E VALORI PREDEFINITI
-    // ==============================================
     'options' => [
         'queues' => [
             'default' => 'Default',
@@ -294,4 +272,6 @@ return [
             'low' => 'Bassa',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

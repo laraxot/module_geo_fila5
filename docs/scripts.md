@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🚀 Script Bash di <nome progetto>: La Tua Guida Definitiva
 
 ## 📋 Indice
@@ -446,7 +445,6 @@ Per problemi o domande:
 - Email: support@<nome progetto>.it
 - Telefono: +39 123 456 7890
 - Ticket: https://support.<nome progetto>.it
-=======
 # Script e Automazione
 
 Documentazione completa degli script di automazione in `bashscripts/`.
@@ -1150,4 +1148,3 @@ fi
 - [Development](development.md)
 - [Code Quality](code-quality.md)
 - [Bash Best Practices](https://google.github.io/styleguide/shellguide.html)
->>>>>>> 17c8cb453 (feat(prompts): migliorati tutti i prompt principali e configurati MCP)

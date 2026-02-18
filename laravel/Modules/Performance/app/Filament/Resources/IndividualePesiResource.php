@@ -60,35 +60,35 @@ class IndividualePesiResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('type')
+            'type' => TextColumn::make('type')
                 ->searchable()
                 ->badge(),
-            TextColumn::make('lista_propro')
+            'lista_propro' => TextColumn::make('lista_propro')
                 ->wrapHeader()
                 ->searchable(),
-            TextColumn::make('descr')
+            'descr' => TextColumn::make('descr')
                 ->searchable(),
-            TextColumn::make('peso_esperienza_acquisita')
+            'peso_esperienza_acquisita' => TextColumn::make('peso_esperienza_acquisita')
                 ->wrapHeader()
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('peso_risultati_ottenuti')
+            'peso_risultati_ottenuti' => TextColumn::make('peso_risultati_ottenuti')
                 ->wrapHeader()
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('peso_arricchimento_professionale')
+            'peso_arricchimento_professionale' => TextColumn::make('peso_arricchimento_professionale')
                 ->wrapHeader()
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('peso_impegno')
+            'peso_impegno' => TextColumn::make('peso_impegno')
                 ->wrapHeader()
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('peso_qualita_prestazione')
+            'peso_qualita_prestazione' => TextColumn::make('peso_qualita_prestazione')
                 ->wrapHeader()
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
 

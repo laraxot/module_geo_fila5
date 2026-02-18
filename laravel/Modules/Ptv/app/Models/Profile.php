@@ -167,6 +167,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  *
  * @mixin \Eloquent
  */
+// @see Modules/Xot/docs/spatie-schemaless-attributes.md
 class Profile extends UserBaseProfile
 {
     /** @var string */
@@ -187,6 +188,7 @@ class Profile extends UserBaseProfile
         return [
             'user_id' => 'string',
             'data' => 'array',
+            'extra' => \Spatie\SchemalessAttributes\Casts\SchemalessAttributes::class,
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',

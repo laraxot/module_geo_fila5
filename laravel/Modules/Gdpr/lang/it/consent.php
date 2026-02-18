@@ -15,20 +15,59 @@ return [
         'icon' => 'gdpr-consent',
     ],
     'fields' => [
-        'user' => 'Utente',
-        'type' => 'Tipo Consenso',
-        'status' => 'Stato',
-        'date' => 'Data',
-        'ip_address' => 'Indirizzo IP',
-        'notes' => 'Note',
+        'user' => [
+            'label' => 'Utente',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'type' => [
+            'label' => 'Tipo Consenso',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'status' => [
+            'label' => 'Stato',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'date' => [
+            'label' => 'Data',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'ip_address' => [
+            'label' => 'Indirizzo IP',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'notes' => [
+            'label' => 'Note',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'resetFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'statuses' => [
@@ -43,4 +82,6 @@ return [
         'withdraw' => 'Revoca',
         'renew' => 'Rinnova',
     ],
+    'label' => 'Consent',
+    'plural_label' => 'Consent (Plurale)',
 ];

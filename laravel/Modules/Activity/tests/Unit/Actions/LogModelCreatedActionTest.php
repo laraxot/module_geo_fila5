@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Actions\LogModelCreatedAction;
-use Modules\Activity\Tests\Fixtures\LogModelCreatedActionTestModel;
 use Modules\User\Models\User;
 
 test('LogModelCreatedAction can be instantiated', function () {
-    $model = new LogModelCreatedActionTestModel();
+    $model = new class extends Model
+    {
+        protected $table = 'test_models';
+
+        protected $fillable = ['name'];
+    };
     $user = User::factory()->make();
 
     $action = new LogModelCreatedAction($model, $user);
@@ -20,7 +25,13 @@ test('LogModelCreatedAction can be instantiated', function () {
 });
 
 test('LogModelCreatedAction can execute', function () {
-    $model = new LogModelCreatedActionTestModel(['name' => 'Test']);
+    $modelClass = get_class(new class extends Model
+    {
+        protected $table = 'test_models';
+
+        protected $fillable = ['name'];
+    });
+    $model = new $modelClass(['name' => 'Test']);
     $user = User::factory()->create();
 
     $action = new LogModelCreatedAction($model, $user);

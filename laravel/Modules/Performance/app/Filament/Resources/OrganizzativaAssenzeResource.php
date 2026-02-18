@@ -45,13 +45,13 @@ class OrganizzativaAssenzeResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('tipo')
+            'tipo' => TextColumn::make('tipo')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('codice')
+            'codice' => TextColumn::make('codice')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
 

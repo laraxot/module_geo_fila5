@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 return [
     'months' => [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
+        0 => 'January',
+        1 => 'February',
+        2 => 'March',
+        3 => 'April',
+        4 => 'May',
+        5 => 'June',
+        6 => 'July',
+        7 => 'August',
+        8 => 'September',
+        9 => 'October',
+        10 => 'November',
+        11 => 'December',
     ],
     'days_short' => [
         'mon' => 'Mon',
@@ -45,4 +45,10 @@ return [
     ],
     'no_dates_available' => 'No dates available',
     'selected_date' => 'Selected date',
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

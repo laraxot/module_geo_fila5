@@ -14,4 +14,10 @@ return [
         'sort' => '63',
         'icon' => 'activity-snapshot-animated',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

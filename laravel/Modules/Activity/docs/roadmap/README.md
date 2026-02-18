@@ -6,7 +6,6 @@ The Activity module provides comprehensive audit trail and event sourcing capabi
 
 ## 📋 Current Status
 
-**Version**: 1.0.0  
 **Maturity**: Production Ready  
 **PHPStan Level**: 10 ✅  
 **Test Coverage**: 85%+

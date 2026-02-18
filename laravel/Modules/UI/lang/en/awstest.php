@@ -13,16 +13,22 @@ return [
             'label' => 'CloudFront Distribution URL',
             'placeholder' => 'Enter CloudFront URL',
             'helper_text' => 'URL of the configured CloudFront distribution',
+            'tooltip' => '',
+            'description' => '',
         ],
         'iam_user' => [
             'label' => 'IAM User/Role',
             'placeholder' => 'Enter IAM user',
             'helper_text' => 'IAM user or role used for AWS access',
+            'tooltip' => '',
+            'description' => '',
         ],
         'aws_config' => [
             'label' => 'AWS Configuration',
             'placeholder' => 'Current AWS configuration',
             'helper_text' => 'Overview of current AWS configuration',
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -127,4 +133,13 @@ return [
         'full_diagnostic_completed' => 'Full diagnostic completed',
         'check_cloudfront_settings' => 'Check CloudFront settings in config',
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

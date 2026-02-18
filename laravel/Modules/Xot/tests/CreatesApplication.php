@@ -26,9 +26,6 @@ trait CreatesApplication
         // Explicitly set the base path before requiring bootstrap/app.php
         $_ENV['APP_BASE_PATH'] = $basePath;
 
-        // Explicitly set the base path before requiring bootstrap/app.php
-        $_ENV['APP_BASE_PATH'] = $basePath;
-
         $app = require $basePath.'/bootstrap/app.php';
 
         // Bind essential paths if they are not correctly resolved
@@ -40,20 +37,10 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
         $app->boot(); // Ensure all service providers are booted
 
-        // Map all module connections to the default MySQL connection.
-        // This ensures that when 'module:migrate' runs for all modules, their specific connections
-        // (e.g. 'quaeris', 'notify') resolve to the main test database used by 'mysql'.
-        $defaultConfig = $app['config']->get('database.connections.mysql');
-        
-        $moduleConnections = [
-            'user', 'notify', 'geo', 'media', 'job', 'xot',
-            'activity', 'cms', 'gdpr', 'lang', 'meetup', 'seo', 'tenant',
-            'quaeris', 'limesurvey'
-        ];
-
-        foreach ($moduleConnections as $connection) {
-             $app['config']->set("database.connections.{$connection}", $defaultConfig);
-        }
+        // CRITICAL: DO NOT force database connections!
+        // TenantServiceProvider automatically configures module connections
+        // by reading DB_DATABASE from .env.testing
+        // Forcing connections here destroys the dynamic configuration system
 
         return $app;
     }

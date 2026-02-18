@@ -18,18 +18,30 @@ return [
         'resource_type' => [
             'label' => 'Tipo Risorsa',
             'help' => 'Tipo di risorsa attività',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resource_id' => [
             'label' => 'ID Risorsa',
             'help' => 'Identificativo della risorsa',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'activity_count' => [
             'label' => 'Numero Attività',
             'help' => 'Numero di attività associate',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'last_activity' => [
             'label' => 'Ultima Attività',
             'help' => 'Data e ora dell\'ultima attività',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -46,4 +58,6 @@ return [
         'no_resources' => 'Nessuna risorsa trovata',
         'resource_exported' => 'Risorsa esportata con successo',
     ],
+    'label' => 'Activity Resource',
+    'plural_label' => 'Activity Resource (Plurale)',
 ];

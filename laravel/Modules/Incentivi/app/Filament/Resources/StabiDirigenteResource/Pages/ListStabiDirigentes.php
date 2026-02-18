@@ -28,17 +28,17 @@ class ListStabiDirigentes extends XotBaseListRecords
     {
         // Column types are inferred by Filament v4
         return [
-            TextColumn::make('id'),
-            TextColumn::make('valutatore_id'),
-            TextColumn::make('stabi')->searchable(),
-            TextColumn::make('repar')->searchable(),
-            TextColumn::make('nome_stabi')->searchable(),
+            'id' => TextColumn::make('id'),
+            'valutatore_id' => TextColumn::make('valutatore_id'),
+            'stabi' => TextColumn::make('stabi')->searchable(),
+            'repar' => TextColumn::make('repar')->searchable(),
+            'nome_stabi' => TextColumn::make('nome_stabi')->searchable(),
             // Tables\Columns\TextColumn::make('ente')->searchable(),
-            TextColumn::make('matr')->searchable(),
-            TextColumn::make('nome_diri')->searchable(),
-            TextColumn::make('nome_diri_plus')->searchable(),
+            'matr' => TextColumn::make('matr')->searchable(),
+            'nome_diri' => TextColumn::make('nome_diri')->searchable(),
+            'nome_diri_plus' => TextColumn::make('nome_diri_plus')->searchable(),
             // TextColumn::make('email')->searchable(),
-            TextColumn::make('anno'),
+            'anno' => TextColumn::make('anno'),
         ];
     }
 

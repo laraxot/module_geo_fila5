@@ -257,7 +257,7 @@ To use the widget in a Blade view:
 - [Official Saade FullCalendar Documentation](https://github.com/saade/filament-fullcalendar)
 - [FullCalendar.io Documentation](https://fullcalendar.io/docs)
 
-*Last updated: June 2025*
+*
 # FullCalendar Component for Filament
 
 ## Introduction
@@ -517,4 +517,4 @@ To use the widget in a Blade view:
 - [Official Saade FullCalendar Documentation](https://github.com/saade/filament-fullcalendar)
 - [FullCalendar.io Documentation](https://fullcalendar.io/docs)
 
-*Last updated: June 2025*
+*

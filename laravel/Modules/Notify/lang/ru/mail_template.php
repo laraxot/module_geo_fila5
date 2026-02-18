@@ -19,6 +19,8 @@ return [
         'id' => [
             'label' => 'ID',
             'helper_text' => 'Уникальный идентификатор шаблона',
+            'tooltip' => '',
+            'description' => '',
         ],
         'mailable' => [
             'label' => 'Класс Mailable',
@@ -26,6 +28,7 @@ return [
             'help' => 'PHP класс, который обрабатывает отправку email',
             'helper_text' => 'PHP класс, управляющий отправкой email',
             'description' => 'mailable',
+            'tooltip' => '',
         ],
         'subject' => [
             'label' => 'Тема',
@@ -33,6 +36,7 @@ return [
             'help' => 'Тема, которая появится в письме',
             'helper_text' => 'Тема письма',
             'description' => 'subject',
+            'tooltip' => '',
         ],
         'html_template' => [
             'label' => 'HTML содержимое',
@@ -40,6 +44,7 @@ return [
             'help' => 'Содержимое письма в формате HTML',
             'helper_text' => 'HTML содержимое email шаблона',
             'description' => 'html_template',
+            'tooltip' => '',
         ],
         'text_template' => [
             'label' => 'Текстовое содержимое',
@@ -47,77 +52,116 @@ return [
             'help' => 'Текстовая версия письма для клиентов, не поддерживающих HTML',
             'helper_text' => 'Текстовая версия email шаблона',
             'description' => 'text_template',
+            'tooltip' => '',
         ],
         'version' => [
             'label' => 'Версия',
             'help' => 'Номер версии шаблона',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Создано',
             'helper_text' => 'Дата создания шаблона',
+            'tooltip' => '',
+            'description' => '',
         ],
         'updated_at' => [
             'label' => 'Последнее изменение',
             'helper_text' => 'Дата последнего изменения шаблона',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_email' => [
             'label' => 'Email отправителя',
             'helper_text' => 'Адрес электронной почты отправителя',
             'placeholder' => 'noreply@example.com',
+            'tooltip' => '',
+            'description' => '',
         ],
         'from_name' => [
             'label' => 'Имя отправителя',
             'helper_text' => 'Отображаемое имя отправителя',
             'placeholder' => 'Название компании',
+            'tooltip' => '',
+            'description' => '',
         ],
         'variables' => [
             'label' => 'Доступные переменные',
             'helper_text' => 'Список переменных, которые можно использовать в шаблоне',
             'placeholder' => 'напр: {{name}}, {{email}}',
+            'tooltip' => '',
+            'description' => '',
         ],
         'is_markdown' => [
             'label' => 'Использовать Markdown',
             'helper_text' => 'Указывает, использует ли шаблон синтаксис Markdown',
+            'tooltip' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'Статус',
             'helper_text' => 'Текущий статус шаблона',
+            'tooltip' => '',
+            'description' => '',
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'resetFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'applyFilters' => [
             'label' => 'applyFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'openFilters' => [
             'label' => 'openFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'layout' => [
             'label' => 'layout',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'slug' => [
             'label' => 'slug',
             'description' => 'slug',
             'helper_text' => 'slug',
             'placeholder' => 'slug',
+            'tooltip' => '',
         ],
         'name' => [
             'description' => 'Название шаблона',
             'helper_text' => 'Описательное имя для идентификации шаблона',
             'placeholder' => 'Напр: Добро пожаловать, Подтверждение заказа, Сброс пароля',
             'label' => 'Название шаблона',
+            'tooltip' => '',
         ],
         'params' => [
             'label' => 'Параметры',
             'helper_text' => 'Введите параметры, разделенные запятыми, которые можно использовать в шаблоне',
             'placeholder' => 'name, email, date, company',
             'description' => 'Доступные параметры для email шаблона',
+            'tooltip' => '',
         ],
     ],
     'filters' => [
@@ -247,4 +291,6 @@ return [
     'model' => [
         'label' => 'email шаблон',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

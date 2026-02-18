@@ -61,9 +61,9 @@ trait SchedaTrait
 
     protected function getGgIntegParamsAszAttribute(?float $value): ?float
     {
-        // Cache hit
-        if ($value != null) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_integ_params_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_integ_params_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -78,10 +78,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update (più efficiente per singolo campo)
-        $this->update([
-            'gg_integ_params_asz' => $value,
-        ]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_integ_params_asz', $value);
 
         return $value;
     }
@@ -95,9 +93,9 @@ trait SchedaTrait
      */
     protected function getGgEsperienzaNoAszAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value != null) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_esperienza_no_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_esperienza_no_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -112,17 +110,21 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_esperienza_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_esperienza_no_asz', $value);
 
         return $value;
     }
 
     protected function getGgCatecoPosfunNoAszAttribute(?int $value): ?int
     {
-        if ($value != null && ! request()->input('refresh', 0)) {
-            return $value;
+        $fieldname = 'gg_cateco_posfun_no_asz';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get($fieldname);
         }
+        
         if ($this->getKey() == null) {
             return null;
         }
@@ -136,31 +138,20 @@ trait SchedaTrait
         }
 
         $value = $this->getGgCatecoPosfunNoAsz();
-        $fieldname = 'gg_cateco_posfun_no_asz';
 
-        /*
-         * $table = $this->getTable();
-         * $conn = $this->getConnection();
-         *
-         * if (! \Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-         * \Schema::connection($conn->getName())->table($table, static function (Blueprint $tableBlueprint) use ($fieldname): void {
-         * $table->integer($fieldname)->nullable();
-         * });
-         * }
-         */
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update([$fieldname => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
 
     protected function getPostTypeAttribute(?string $value): string
     {
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('post_type') && ! request()->input('refresh', 0)) {
+            return (string) $this->calculated_data->get('post_type');
+        }
+
         // *
 
         if ($value !== null && ! request()->input('refresh', 0)) {
@@ -197,8 +188,8 @@ trait SchedaTrait
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['post_type' => $post_type]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('post_type', $post_type);
 
         return $post_type;
     }
@@ -229,9 +220,9 @@ trait SchedaTrait
      */
     protected function getPosfunvalAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('posfunval') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('posfunval');
         }
 
         // Guard: record deve esistere
@@ -246,22 +237,29 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['posfunval' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('posfunval', $value);
 
         return $value;
     }
 
     protected function getValutatoreTxtAttribute(?string $value): ?string
     {
-        if ($value === null) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
-        }
-        if (request()->input('refresh', 0)) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('valutatore_txt') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('valutatore_txt');
         }
 
-        return $value;
+        if ($value === null) {
+            $calculated_value = $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        } else {
+            $calculated_value = $value;
+        }
+        
+        // Store in schemaless attributes
+        $this->calculated_data->set('valutatore_txt', $calculated_value);
+
+        return $calculated_value;
     }
 
     protected function getPosizioneAttribute(?int $_value): int
@@ -292,6 +290,11 @@ trait SchedaTrait
      */
     protected function getGgAttribute(?int $_value): ?int
     {
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg');
+        }
+
         // Guard: dipendenze devono esistere
         if ($this->getKey() == null) {
             return null;
@@ -314,8 +317,8 @@ trait SchedaTrait
         // Delega calcolo al metodo helper puro
         $value = $this->getGg();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg', $value);
 
         return $value;
     }
@@ -329,9 +332,9 @@ trait SchedaTrait
      */
     protected function getGgAszAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -346,8 +349,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_asz', $value);
 
         return $value;
     }
@@ -361,9 +364,9 @@ trait SchedaTrait
      */
     protected function getGgNoAszAttribute(?float $value): ?float
     {
-        // Cache hit (accetta anche 0.0 come valore valido con refresh)
-        if ($value !== null && $value !== 0.0 && ! request()->input('refresh', false)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_no_asz') && $this->calculated_data->get('gg_no_asz') !== null && $this->calculated_data->get('gg_no_asz') !== 0.0 && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_no_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -374,25 +377,27 @@ trait SchedaTrait
         // Delega calcolo al metodo puro
         $value = $this->getGgNoAsz();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_no_asz', $value);
 
         return $value;
     }
 
     protected function getGgFuoriSedeNoAszAttribute(?float $value): ?float
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_fuori_sede_no_asz') && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_fuori_sede_no_asz');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
 
         $value = $this->gg_fuori_sede - $this->gg_asz_fuori_sede - ($this->hh_asz_fuori_sede / 6);
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_fuori_sede_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_fuori_sede_no_asz', $value);
 
         return $value;
     }
@@ -406,9 +411,9 @@ trait SchedaTrait
      */
     protected function getHhAszAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('hh_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('hh_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -423,17 +428,19 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['hh_asz' => (int) $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('hh_asz', (int) $value);
 
         return (int) $value;
     }
 
     protected function getHhAszInSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('hh_asz_in_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('hh_asz_in_sede');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -465,17 +472,19 @@ trait SchedaTrait
             return $value;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['hh_asz_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('hh_asz_in_sede', $value);
 
         return (int) $value;
     }
 
     protected function getHhAszFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('hh_asz_fuori_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('hh_asz_fuori_sede');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -507,8 +516,8 @@ trait SchedaTrait
                 return (int) $value;
             }
 
-            // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            $this->update(['hh_asz_fuori_sede' => $value]);
+            // Store in schemaless attributes
+            $this->calculated_data->set('hh_asz_fuori_sede', $value);
         }
 
         return (int) $value;
@@ -562,9 +571,9 @@ trait SchedaTrait
      */
     protected function getGgAszInSedeAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz_in_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz_in_sede');
         }
 
         // Guard: record deve avere PK per salvare
@@ -579,8 +588,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_asz_in_sede', $value);
 
         return (int) $value;
     }
@@ -707,9 +716,9 @@ trait SchedaTrait
      */
     protected function getGgAszFuoriSedeAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz_fuori_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz_fuori_sede');
         }
 
         // Guard: record deve avere PK per salvare
@@ -725,8 +734,8 @@ trait SchedaTrait
         }
 
         if (\in_array('gg_asz_fuori_sede', $this->getFillable(), false)) {
-            // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            $this->update(['gg_asz_fuori_sede' => $value]);
+            // Store in schemaless attributes
+            $this->calculated_data->set('gg_asz_fuori_sede', $value);
         }
 
         return (int) $value;
@@ -753,9 +762,9 @@ trait SchedaTrait
      */
     protected function getGgAszCatecoAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz_cateco') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz_cateco');
         }
 
         // Guard: record deve avere PK per salvare
@@ -773,8 +782,8 @@ trait SchedaTrait
             ]);
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_cateco' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_asz_cateco', $value);
 
         return $value;
     }
@@ -830,9 +839,9 @@ trait SchedaTrait
      */
     protected function getGgAszCatecoInSedeAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz_cateco_in_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz_cateco_in_sede');
         }
 
         // Guard: record deve avere PK per salvare
@@ -847,8 +856,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_cateco_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_asz_cateco_in_sede', $value);
 
         return $value;
     }
@@ -889,17 +898,19 @@ trait SchedaTrait
 
     protected function getGgAszCatecoPosfunInSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_asz_cateco_posfun_in_sede') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_asz_cateco_posfun_in_sede');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
 
         $value = $this->getGgAszCatecoPosfunInSede();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_cateco_posfun_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_asz_cateco_posfun_in_sede', $value);
 
         return $value;
     }
@@ -913,9 +924,9 @@ trait SchedaTrait
      */
     protected function getGgCatecoNoAszAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value != null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_no_asz') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_cateco_no_asz');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -926,8 +937,8 @@ trait SchedaTrait
         // Delega calcolo al metodo puro
         $value = $this->getGgCatecoNoAsz();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_no_asz', $value);
 
         return $value;
     }
@@ -957,8 +968,9 @@ trait SchedaTrait
 
     protected function getProproAttribute(?int $value): ?int
     {
-        if ($value != null) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('propro') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('propro');
         }
 
         if ($this->getKey() == null) {
@@ -967,17 +979,21 @@ trait SchedaTrait
 
         $value = $this->getPropro();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['propro' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('propro', $value);
 
         return $value;
     }
 
     protected function getGgCatecoPosfunInSedeNoAszAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        $fieldname = 'gg_cateco_posfun_in_sede_no_asz';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get($fieldname);
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -998,22 +1014,8 @@ trait SchedaTrait
          * ]
          * );
          */
-        $table = $this->getTable();
-        $conn = $this->getConnection();
-        $fieldname = 'gg_cateco_posfun_in_sede_no_asz';
-        if (! Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-            Schema::connection($conn->getName())->table($table, static function (Blueprint $tableBlueprint) use ($fieldname): void {
-                $tableBlueprint->integer($fieldname)->nullable();
-            });
-        }
-
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update([$fieldname => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
@@ -1032,9 +1034,11 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_posfun') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_cateco_posfun');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -1050,17 +1054,21 @@ trait SchedaTrait
 
         $value = $this->getGgCatecoPosfun();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_posfun' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_posfun', $value);
 
         return $value;
     }
 
     protected function getGgCatecoSupAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_cateco_sup';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -1075,24 +1083,25 @@ trait SchedaTrait
             return null;
         }
         $value = $this->gg_cateco_sup_in_sede + $this->gg_cateco_sup_fuori_sede;
-        $this->addTableField(['name' => 'gg_cateco_sup', 'type' => 'integer']);
+        // DYNAMIC SCHEMA ALTERATION - FORBIDDEN!
+        // This code dynamically attempts to add a column if it doesn't exist.
+        // Schema alterations must always be handled via dedicated migration files.
+        // If 'gg_cateco_sup' is a required column, create a migration for it.
+        // If it is a dynamic, schemaless attribute, consider using spatie/laravel-schemaless-attributes.
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_sup' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
 
     protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_sup_in_sede') && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_cateco_sup_in_sede');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -1115,34 +1124,21 @@ trait SchedaTrait
 
         $value = $this->anag?->ggInSedeTot($data);
 
-        /*
-         * $table=$this->getTable();
-         * $conn=$this->getConnection();
-         * $fieldname='gg_cateco_sup_in_sede';
-         * if (!\Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-         * \Schema::connection($conn->getName())->table($table, function ($table) use($fieldname){
-         * $table->integer($fieldname);
-         * });
-         * }
-         * $this->addTableField(['name' => 'gg_cateco_sup_in_sede', 'type' => 'integer']);
-         */
-
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_sup_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_sup_in_sede', $value);
 
         return $value;
     }
 
     protected function getGgCatecoNoPosfunNoAszAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_cateco_no_posfun_no_asz';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -1154,13 +1150,8 @@ trait SchedaTrait
         }
         $value = $this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz;
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_no_posfun_no_asz' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
@@ -1196,17 +1187,19 @@ trait SchedaTrait
 
     protected function getGgCatecoInSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_in_sede') && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_cateco_in_sede');
         }
+
         if ($this->getKey() == null) {
             return null;
         }
 
         $value = $this->getGgCatecoInSede();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_in_sede', $value);
 
         return $value;
     }
@@ -1218,17 +1211,19 @@ trait SchedaTrait
 
     protected function getGgCatecoAttribute(?int $value): ?int
     {
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco') && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_cateco');
+        }
+
         if ($this->getKey() == null) {
             return null;
         }
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
-        }
-
+        
         $value = $this->getGgCateco();
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco', $value);
 
         return $value;
     }
@@ -1260,9 +1255,11 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunInSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_posfun_in_sede') && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get('gg_cateco_posfun_in_sede');
         }
+
         if ($this->matr == null) {
             return null;
         }
@@ -1272,32 +1269,26 @@ trait SchedaTrait
 
         $value = $this->getGgCatecoPosfunInSede();
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_posfun_in_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_posfun_in_sede', $value);
 
         return $value;
     }
 
     protected function getGgAszCatecoFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_asz_cateco_fuori_sede';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
+
         // 730
         $value = 0; // DA FARE !
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_cateco_fuori_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
@@ -1311,28 +1302,30 @@ trait SchedaTrait
 
     protected function getGgAszCatecoPosfunFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_asz_cateco_posfun_fuori_sede';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
 
         $value = $this->getGgAszCatecoPosfunFuoriSede();
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_asz_cateco_posfun_fuori_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
 
     protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_cateco_sup_fuori_sede';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
+
         if ($this->matr == null) {
             return null;
         }
@@ -1357,15 +1350,14 @@ trait SchedaTrait
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
-        $this->addTableField(['name' => 'gg_cateco_sup_fuori_sede', 'type' => 'integer']);
+        // DYNAMIC SCHEMA ALTERATION - FORBIDDEN!
+        // This code dynamically attempts to add a column if it doesn't exist.
+        // Schema alterations must always be handled via dedicated migration files.
+        // If 'gg_cateco_sup_fuori_sede' is a required column, create a migration for it.
+        // If it is a dynamic, schemaless attribute, consider using spatie/laravel-schemaless-attributes.
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_sup_fuori_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return $value;
     }
@@ -1397,19 +1389,15 @@ trait SchedaTrait
 
     protected function getGgCatecoFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null) {
-            return $value;
-        } // 730
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_cateco_fuori_sede') && $value !== null) { // value check for initial value
+            return $this->calculated_data->get('gg_cateco_fuori_sede');
+        }
 
         $value = $this->getGgCatecoFuoriSede();
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_fuori_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_cateco_fuori_sede', $value);
 
         return intval($value);
     }
@@ -1443,19 +1431,17 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunFuoriSedeAttribute(?int $value): ?int
     {
-        if ($value !== null && ! request()->input('refresh', false)) {
-            return $value;
+        $fieldname = 'gg_cateco_posfun_fuori_sede';
+
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', false)) {
+            return $this->calculated_data->get($fieldname);
         }
 
         $value = $this->getGgCatecoPosfunFuoriSede();
 
-        // ✅ Check: record must exist before save()
-        if ($this->getKey() == null) {
-            return $value;
-        }
-
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_cateco_posfun_fuori_sede' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set($fieldname, $value);
 
         return (int) $value;
     }
@@ -1469,9 +1455,9 @@ trait SchedaTrait
      */
     protected function getGgAssenzaAnnoAttribute(?int $value): ?int
     {
-        // Cache hit
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('gg_assenza_anno') && ! request()->input('refresh', 0)) {
+            return $this->calculated_data->get('gg_assenza_anno');
         }
 
         // Guard: modello deve avere PK per salvare
@@ -1486,8 +1472,8 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['gg_assenza_anno' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('gg_assenza_anno', $value);
 
         return $value;
     }
@@ -1847,30 +1833,17 @@ trait SchedaTrait
 
     protected function getPuntProgressioneFinaleAttribute(?float $value): ?float
     {
-        $old_value = $value;
-        /*
-         * //if($value!='') return $value;
-         * $scheda_criteri=$this->schedaCriteri;
-         * $tot=0;
-         * foreach($scheda_criteri as $k=>$v){
-         * $converted=$this->convertedIn($v->field_name,$v->converted_in);
-         * $converted_peso=$converted*$v->peso/10;
-         * $tot+=$converted_peso;
-         * }
-         *
-         * $value=$tot;
-         */
-        $value = $this->puntProgressioneFinale();
-        // dddx(['old_value' => $old_value, 'value' => $value]);
-        if ($old_value !== $value) {
-            // ✅ Check: record deve esistere prima di save()
-            if ($this->getKey() == null) {
-                return round($value, 3);
-            }
-
-            // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            $this->update(['punt_progressione_finale' => $value]);
+        $old_value = $value; // This old value was probably for debugging or comparison, now it's less relevant for persistence
+        
+        // Check if value exists in schemaless attributes and is not being refreshed
+        if ($this->calculated_data->has('punt_progressione_finale') && ! request()->input('refresh', 0) && ($old_value === $this->calculated_data->get('punt_progressione_finale'))) {
+            return $this->calculated_data->get('punt_progressione_finale');
         }
+
+        $value = $this->puntProgressioneFinale();
+
+        // Store in schemaless attributes
+        $this->calculated_data->set('punt_progressione_finale', $value);
 
         return round($value, 3);
     }
@@ -1937,8 +1910,9 @@ trait SchedaTrait
     protected function getValutatoreIdAttribute(?int $value): ?int
     {
         // Cache hit: se già assegnato (value > 100), usa quello
-        if ($value > 100) {
-            return $value;
+        // Check if value exists in schemaless attributes
+        if ($this->calculated_data->has('valutatore_id') && ($this->calculated_data->get('valutatore_id') > 100 || ! request()->input('refresh', 0))) {
+            return $this->calculated_data->get('valutatore_id');
         }
 
         // Guard: record deve esistere prima di save()
@@ -1953,32 +1927,10 @@ trait SchedaTrait
             return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        $this->update(['valutatore_id' => $value]);
+        // Store in schemaless attributes
+        $this->calculated_data->set('valutatore_id', $value);
 
         return $value;
-
-        // dddx($this->valutatore_id);
-        /*
-         * $stabi = StabiDirigente::where('anno', $this->anno)
-         * ->where('stabi', $this->stabi)
-         * ->where('repar', 0)
-         * ->first();
-         * if (! is_object($stabi)) {
-         * return null;
-         * }
-         * $valutatore_id = $stabi->valutatore_id;
-         * if (null != $valutatore_id) {
-         * $stabi_diri->valutatore_id = $valutatore_id;
-         * $stabi_diri->save();
-         * $this->valutatore_id = $valutatore_id;
-         * $this->save();
-         *
-         * return $valutatore_id;
-         * }
-         *
-         * return null;
-         */
     }
 
     protected function getListaProproAttribute(?string $_value): ?string

@@ -1,6 +1,5 @@
 # Fix Visibilità Metodi HasXotTable - 2026-01-27
 
-**Data**: 2026-01-27  
 **Status**: ✅ Risolto  
 **Errore**: `Access level to Filament\Tables\Concerns\InteractsWithTable::getTableActions() must be public (as in class Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords)`
 

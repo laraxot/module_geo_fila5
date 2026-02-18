@@ -51,22 +51,22 @@ class IndividualeDecurtazioneAssenzeResource extends XotBaseResource
     public static function getTableColumns(): array
     {
         return [
-            TextColumn::make('anno')
+            'anno' => TextColumn::make('anno')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('min_perc')
+            'min_perc' => TextColumn::make('min_perc')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('max_perc')
+            'max_perc' => TextColumn::make('max_perc')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('min_gg_365')
+            'min_gg_365' => TextColumn::make('min_gg_365')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('max_gg_365')
+            'max_gg_365' => TextColumn::make('max_gg_365')
                 ->numeric()
                 ->sortable(),
-            TextColumn::make('decurtazione_perc')
+            'decurtazione_perc' => TextColumn::make('decurtazione_perc')
                 ->numeric()
                 ->sortable(),
 

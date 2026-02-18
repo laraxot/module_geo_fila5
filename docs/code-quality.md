@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Script di Verifica della Qualità del Codice
 
 Questa documentazione descrive gli script utilizzati per verificare e migliorare la qualità del codice nel progetto.
@@ -95,7 +94,6 @@ docs/
 ## PHPStan
 
 Per mantenere alta la qualità del codice, utilizziamo PHPStan per l'analisi statica. 
-=======
 # Qualità del Codice
 
 Standard e strumenti per garantire qualità elevata del codice in PTVX.
@@ -718,4 +716,3 @@ Prima di ogni commit:
 - [Architettura](architecture.md)
 - [Testing Best Practices](https://pestphp.com/docs/plugins/laravel)
 - [PHPStan Rules](https://phpstan.org/user-guide/rule-levels)
->>>>>>> 17c8cb453 (feat(prompts): migliorati tutti i prompt principali e configurati MCP)

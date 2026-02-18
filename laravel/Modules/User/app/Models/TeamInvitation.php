@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\User\Contracts\TeamContract;
-use Modules\User\Database\Factories\TeamInvitationFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
@@ -26,7 +25,6 @@ use Modules\Xot\Datas\XotData;
  * @property Team|null         $team
  * @property TeamContract|null $team
  *
- * @method static TeamInvitationFactory  factory($count = null, $state = [])
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
  * @method static Builder|TeamInvitation query()

@@ -7,30 +7,44 @@ return [
         'id' => [
             'label' => 'ID',
             'tooltip' => 'Identificativo univoco dell\'attività999',
+            'helper_text' => '',
+            'description' => '',
         ],
         'description' => [
             'label' => 'Descrizione',
             'tooltip' => 'Descrizione dell\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject_type' => [
             'label' => 'Tipo Soggetto',
             'tooltip' => 'Tipo di entità soggetta all\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
         'subject_id' => [
             'label' => 'ID Soggetto',
             'tooltip' => 'Identificativo dell\'entità soggetta all\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
         'causer_type' => [
             'label' => 'Tipo Autore',
             'tooltip' => 'Tipo di entità che ha causato l\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
         'causer_id' => [
             'label' => 'ID Autore',
             'tooltip' => 'Identificativo dell\'entità che ha causato l\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
         'created_at' => [
             'label' => 'Data Creazione',
             'tooltip' => 'Data e ora di creazione dell\'attività',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -82,4 +96,13 @@ return [
             ],
         ],
     ],
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

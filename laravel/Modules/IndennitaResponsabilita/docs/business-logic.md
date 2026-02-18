@@ -94,6 +94,7 @@ Importo Attribuito × 12 × (giorni/365) = Importo Annuale
 **Business Rules**:
 - Solo valutatore autorizzato può compilare
 - Punteggi devono essere 0-5
+- **Validazione Minima**: Almeno 2 criteri devono avere un punteggio > 0 (come da legenda)
 - Calcoli automatici non modificabili
 - Salvataggio tracciato
 

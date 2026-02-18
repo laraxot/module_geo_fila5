@@ -14,11 +14,36 @@ return [
         ],
     ],
     'fields' => [
-        'name' => 'Nome Area',
-        'parent' => 'Settore di appartenenza',
-        'parent.name' => 'Settore di appartenenza',
-        'parent_name' => 'Settore di appartenenza',
-        'assets' => 'Quantità di asset',
+        'name' => [
+            'label' => 'Nome Area',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'parent' => [
+            'label' => 'Settore di appartenenza',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'parent.name' => [
+            'label' => 'Settore di appartenenza',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'parent_name' => [
+            'label' => 'Settore di appartenenza',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'assets' => [
+            'label' => 'Quantità di asset',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
     ],
     'actions' => [
         'import' => [
@@ -36,4 +61,6 @@ return [
             ],
         ],
     ],
+    'label' => 'Send Email Parameters',
+    'plural_label' => 'Send Email Parameters (Plurale)',
 ];

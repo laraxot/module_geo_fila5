@@ -12,11 +12,15 @@ return [
             'label' => 'Empfänger',
             'placeholder' => 'Telefonnummer eingeben',
             'helper_text' => 'Telefonnummer mit internationaler Vorwahl eingeben (z.B. +49)',
+            'tooltip' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Nachricht',
             'placeholder' => 'Nachrichtentext eingeben',
             'helper_text' => 'Nachricht darf 160 Zeichen nicht überschreiten',
+            'tooltip' => '',
+            'description' => '',
         ],
         'driver' => [
             'label' => 'Anbieter',
@@ -30,6 +34,8 @@ return [
                 'gammu' => 'Gammu',
                 'netfun' => 'Netfun',
             ],
+            'tooltip' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -42,4 +48,6 @@ return [
         'success' => 'SMS erfolgreich gesendet',
         'error' => 'Fehler beim Senden der SMS: :error',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

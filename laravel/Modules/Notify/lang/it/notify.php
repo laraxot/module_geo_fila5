@@ -7,8 +7,8 @@ return [
         'name' => 'Notifica',
     ],
     'navigation' => [
-        'name' => 'Notifica', // Nome singolare
-        'plural' => 'Notifiche', // Nome plurale
+        'name' => 'Notifica',
+        'plural' => 'Notifiche',
         'group' => 'Sistema',
         'label' => 'Notifiche',
         'icon' => 'notify-bell-animated',
@@ -20,12 +20,16 @@ return [
             'tooltip' => 'Titolo della notifica',
             'placeholder' => 'es: Aggiornamento sistema',
             'help' => 'Inserisci un titolo chiaro e conciso',
+            'helper_text' => '',
+            'description' => '',
         ],
         'message' => [
             'label' => 'Messaggio',
             'tooltip' => 'Contenuto della notifica',
             'placeholder' => 'es: Il sistema verrà aggiornato alle ore...',
             'help' => 'Inserisci il messaggio completo della notifica',
+            'helper_text' => '',
+            'description' => '',
         ],
         'type' => [
             'label' => 'Tipo',
@@ -56,6 +60,8 @@ return [
                     'tooltip' => 'Errori e problemi',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'status' => [
             'label' => 'Stato',
@@ -74,24 +80,34 @@ return [
                     'tooltip' => 'Notifica spostata nell\'archivio',
                 ],
             ],
+            'helper_text' => '',
+            'description' => '',
         ],
         'recipient' => [
             'label' => 'Destinatario',
             'tooltip' => 'Utente o gruppo destinatario della notifica',
             'placeholder' => 'es: mario.rossi@example.com',
             'help' => 'Seleziona uno o più destinatari',
+            'helper_text' => '',
+            'description' => '',
         ],
         'sent_at' => [
             'label' => 'Inviata il',
             'tooltip' => 'Data e ora di invio della notifica',
+            'helper_text' => '',
+            'description' => '',
         ],
         'read_at' => [
             'label' => 'Letta il',
             'tooltip' => 'Data e ora di lettura della notifica',
+            'helper_text' => '',
+            'description' => '',
         ],
         'archived_at' => [
             'label' => 'Archiviata il',
             'tooltip' => 'Data e ora di archiviazione della notifica',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -250,7 +266,7 @@ return [
             ],
             'attachments' => [
                 'label' => 'Allegati',
-                'helper' => 'Allegati alla notifica (max 5 file, 5MB ciascuno)',
+                'helper' => 'Allegati alla notifica (max 5 file, 5MB ciascuno]',
             ],
         ],
         'preview' => [
@@ -267,4 +283,6 @@ return [
             'push' => 'Notifica Push',
         ],
     ],
+    'label' => 'Notify',
+    'plural_label' => 'Notify (Plurale)',
 ];
