@@ -137,7 +137,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
             $c007Service = $this->createC007Service();
 
             $risultato = $c007Service->cercaPerCodiceFiscale($codiceFiscale);
-
+            
             return $risultato;
         } catch (Throwable $e) {
             Log::error('Errore nel servizio C007', [
