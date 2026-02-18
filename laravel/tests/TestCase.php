@@ -3,11 +3,11 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
+/**
+ * MAI USARE RefreshDatabase
+ */
 abstract class TestCase extends BaseTestCase
 {
-    use RefreshDatabase;
-    
     //
 }

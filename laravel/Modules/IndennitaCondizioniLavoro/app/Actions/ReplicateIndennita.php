@@ -14,15 +14,15 @@ class ReplicateIndennita
     use QueueableAction;
 
     /**
-     * @param  array{'anno/valutatore': array<string, mixed>}  $data
+     * @param  array<string, mixed>  $data
      */
     public function execute(array $data): void
     {
-        if (! isset($data['anno/valutatore']) || ! is_array($data['anno/valutatore'])) {
-            throw new InvalidArgumentException('Parametro "anno/valutatore" mancante o non valido.');
+        $input = $data['anno/valutatore'] ?? $data;
+        if (! is_array($input)) {
+            throw new InvalidArgumentException('Parametro filtri non valido.');
         }
 
-        $input = $data['anno/valutatore'];
         $anno = isset($input['anno']) ? (int) $input['anno'] : null;
         $quadrimestre = isset($input['quadrimestre']) ? (int) $input['quadrimestre'] : null;
 

@@ -505,6 +505,18 @@ I metodi `getTableColumns`, `getFormSchema`, `getTableBulkActions`, `getTableAct
 
 ---
 
+## Download Actions (PDF/Excel) e `tableFilters`
+
+- Le Action Filament che generano un file per download devono **restituire** la response (`StreamedResponse` / `StreamedResponse` compatibile) dalla closure `->action()`.
+- Quando si passano filtri di tabella a una Action (es. `$this->tableFilters`), passare **direttamente** l'array dei filtri.
+- Evitare anti-pattern di wrapping `['anno/valutatore' => $tableFilters]`: la normalizzazione va gestita dentro l'Action.
+
+Esempio completo nel modulo:
+
+- `Modules/IndennitaCondizioniLavoro/docs/action-return-type-rule.md`
+
+---
+
 ## 🚫 Eloquent Magic Properties - REGOLA CRITICA
 
 ### Regola Assoluta: Mai usare `property_exists()` con modelli Eloquent

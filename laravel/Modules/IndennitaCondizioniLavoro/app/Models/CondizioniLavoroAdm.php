@@ -223,41 +223,4 @@ class CondizioniLavoroAdm extends CondizioniLavoro
         return $query->whereRaw($sql);
     }
     */
-
-    // --- mutators ---
-    public function getTrimestreAttribute(?int $value): ?int
-    {
-        if ($value !== null) {
-            return $value;
-        }
-
-        $dal_month = $this->dal->month;
-        switch ($dal_month) {
-            case 1:
-                $value = 1;
-                break;
-            case 4:
-                $value = 2;
-                break;
-            case 7:
-                $value = 3;
-                break;
-            case 10:
-                $value = 4;
-                break;
-                // default:$value = ''; break;
-        }
-
-        $this->trimestre = $value;
-
-        if ($this->getKey() === null) {
-            return $value;
-        }
-
-        $this->update([
-            'trimestre' => $value,
-        ]);
-
-        return $value;
-    }
 }

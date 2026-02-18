@@ -9,7 +9,7 @@ use Modules\Incentivi\Tests\TestCase;
 | Test Case
 |--------------------------------------------------------------------------
 |
-| Il TestCase per il modulo Incentivi usa RefreshDatabase per isolamento
+| MAI USARE RefreshDatabase
 | dei dati tra i test. Viene usato per i test Feature e Unit.
 |
 */
@@ -51,6 +51,7 @@ function createProject(array $attributes = []): \Modules\Incentivi\Models\Projec
 {
     $project = \Modules\Incentivi\Models\Project::factory()->create($attributes);
     assert($project instanceof \Modules\Incentivi\Models\Project);
+
     return $project;
 }
 
@@ -58,6 +59,7 @@ function createActivity(array $attributes = []): \Modules\Incentivi\Models\Activ
 {
     $activity = \Modules\Incentivi\Models\Activity::factory()->create($attributes);
     assert($activity instanceof \Modules\Incentivi\Models\Activity);
+
     return $activity;
 }
 
@@ -65,5 +67,6 @@ function createEmployee(array $attributes = []): \Modules\Incentivi\Models\Emplo
 {
     $employee = \Modules\Incentivi\Models\Employee::factory()->create($attributes);
     assert($employee instanceof \Modules\Incentivi\Models\Employee);
+
     return $employee;
 }

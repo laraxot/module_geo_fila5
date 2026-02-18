@@ -15,4 +15,5 @@ Relazioni: vedi anche [`wire-model-input-reactivity.md`](./wire-model-input-reac
 ## ReplicateIndennita action (2025-11-12)
 - **Problema**: l’azione prendeva l’array `anno/valutatore` così com’era, sottraendo valori a chiavi `mixed` e lasciando PHPStan segnalare errori aritmetici e di offset.
 - **Soluzione**: validazione dell’input, cast esplicito a interi e ricostruzione dei filtri `$filters = ['anno' => ..., 'quadrimestre' => ...]` prima di interrogare `CondizioniLavoro`. La logica sul quadrimestre precedente è stata resa esplicita e l’operazione di `sync` esegue il clone solo quando necessario.
+- **Nota**: l’action riceve direttamente i filtri della tabella (`$tableFilters`) e non un wrapper tipo `['anno/valutatore' => $tableFilters]`, perché la normalizzazione avviene all’interno dell’action.
 - **Effetti**: niente più operazioni aritmetiche su `mixed`, query builder tipizzato e notifica finale con messaggio coerente.

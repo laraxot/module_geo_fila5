@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\IndennitaCondizioniLavoro\Models\Traits;
 
 use Carbon\Carbon;
-use InvalidArgumentException;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrAnnoMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
@@ -42,59 +41,50 @@ trait MutatorTrait
         return 'al';
     }
 
-    public function getDalAttribute(mixed $_value): Carbon
+    public function getQuadrimestreDal(): Carbon
     {
-        // if(is_object($value)) return $value;
-        // if($value!=null) return Carbon::parse($value);
+        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
 
-        // ✅ Check: record deve esistere prima di save()
+        $startDate = Carbon::create($this->anno, $startMonth, 1)->startOfDay();
+
+        return $startDate;
+    }
+
+    public function getQuadrimestreAl(): Carbon
+    {
+        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
+
+        $endDate = Carbon::create($this->anno, $startMonth, 1)
+            ->addMonths(4)
+            ->subDay()
+            ->endOfDay();
+
+        return $endDate;
+    }
+
+    /**
+     * @param  string|Carbon|null  $value
+     */
+    public function getDalAttribute($value): ?Carbon
+    {
         if ($this->getKey() == null) {
-            $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
-            $result = Carbon::create($anno, 1, 1, 0);
-            if ($result === null) {
-                throw new InvalidArgumentException('Invalid date creation');
-            }
-
-            return $result;
+            return null;
         }
-
-        $anno = isset($this->anno) && is_int($this->anno) ? $this->anno : (int) date('Y');
-        $dt = Carbon::create($anno, 1, 1, 0);
-        if ($dt === null) {
-            throw new InvalidArgumentException('Invalid date creation');
-        }
-        $value = clone ($dt)->addQuarters($this->trimestre - 1);
-
-        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        // getKey() è già stato controllato sopra, quindi non può essere null qui
+        $value = $this->getQuadrimestreDal();
         $this->update(['dal' => $value]);
 
         return $value;
     }
 
-    public function getAlAttribute(mixed $_value): Carbon
+    /**
+     * @param  string|Carbon|null  $value
+     */
+    public function getAlAttribute($value): ?Carbon
     {
-        // if(is_object($value)) return $value;
-        // if($value!=null) return Carbon::parse($value);
-
-        // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
-            $dt = Carbon::create($this->anno, 1, 1, 0);
-            if ($dt === null) {
-                throw new InvalidArgumentException('Invalid date creation');
-            }
-
-            return clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
+            return null;
         }
-
-        $dt = Carbon::create($this->anno, 1, 1, 0);
-        if ($dt === null) {
-            throw new InvalidArgumentException('Invalid date creation');
-        }
-        $value = clone ($dt)->addQuarters($this->trimestre ?? 0)->subDay();
-
-        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        // getKey() è già stato controllato sopra, quindi non può essere null qui
+        $value = $this->getQuadrimestreAl();
         $this->update(['al' => $value]);
 
         return $value;

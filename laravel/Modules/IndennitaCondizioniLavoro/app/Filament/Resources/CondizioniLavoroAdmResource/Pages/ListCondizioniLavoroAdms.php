@@ -136,11 +136,9 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
             'exportPdf' => Action::make('exportPdf')
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
-                ->action(function (): void {
+                ->action(function () {
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    // Ensure array has required structure
-                    $data = ['anno/valutatore' => $tableFilters];
-                    app(MakePdf::class)->execute($data);
+                    return app(MakePdf::class)->execute($tableFilters);
                 }),
             */
             'replicate' => Action::make('replicate')
