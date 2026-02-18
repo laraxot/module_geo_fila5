@@ -6,7 +6,7 @@ namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Modules\Xot\Filament\Traits\HasXotTable;
-use Modules\Xot\Filament\Traits\NavigationLabelTrait;
+use Modules\Xot\Filament\Traits\TransFuncTrait;
 
 /**
  * ---
@@ -14,7 +14,12 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
-    use NavigationLabelTrait;
+    use TransFuncTrait;
 
     protected static string $recordTitleAttribute = 'name';
+
+    public static function getNavigationLabel(): string
+    {
+        return static::transFunc(__FUNCTION__);
+    }
 }
