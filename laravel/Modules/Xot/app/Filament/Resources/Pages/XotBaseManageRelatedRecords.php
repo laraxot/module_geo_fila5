@@ -11,6 +11,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Traits\HasXotTable;
+use Modules\Xot\Filament\Traits\TransFuncTrait;
 
 /**
  * Base page per la gestione dei record correlati con tabella standard Xot.
@@ -18,6 +19,7 @@ use Modules\Xot\Filament\Traits\HasXotTable;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
+    use TransFuncTrait;
 
     // protected static string $resource;
     protected static string $recordTitleAttribute = 'name';
