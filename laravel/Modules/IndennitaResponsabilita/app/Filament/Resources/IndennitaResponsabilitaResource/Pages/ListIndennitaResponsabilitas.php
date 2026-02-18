@@ -205,14 +205,6 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
             'anno_valutatore' => SelectFilter::make('anno/valutatore')
                 ->schema([
                     'anno' => YearSelect::make('anno')
-                         /*
-                        ->options([
-                            // '2022' => '2022',
-                            '2023' => '2023',
-                            '2024' => '2024',
-                            '2025' => '2025',
-                        ])
-                            */
                         ->range(-2, 0)
                         ->reactive(),
 

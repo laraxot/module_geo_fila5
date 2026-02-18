@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseSelect;
 
 class YearSelect extends XotBaseSelect
 {
-    protected int $pastYears = 2;
+    protected int $pastYears = -2;
 
     protected int $futureYears = 0;
 

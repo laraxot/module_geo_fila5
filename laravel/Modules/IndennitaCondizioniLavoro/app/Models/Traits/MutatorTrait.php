@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\IndennitaCondizioniLavoro\Models\Traits;
 
 use Carbon\Carbon;
+use InvalidArgumentException;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrAnnoMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
@@ -43,23 +44,41 @@ trait MutatorTrait
 
     public function getQuadrimestreDal(): Carbon
     {
-        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
+        $annoRaw = $this->anno ?? null;
+        $quadrimestreRaw = $this->quadrimestre ?? null;
 
-        $startDate = Carbon::create($this->anno, $startMonth, 1)->startOfDay();
+        $anno = is_int($annoRaw) || is_string($annoRaw) ? (int) $annoRaw : (int) date('Y');
+        $quadrimestre = is_int($quadrimestreRaw) || is_string($quadrimestreRaw) ? (int) $quadrimestreRaw : 1;
 
-        return $startDate;
+        $startMonth = 1 + (($quadrimestre - 1) * 4);
+
+        $startDate = Carbon::create($anno, $startMonth, 1);
+        if (! $startDate instanceof Carbon) {
+            throw new InvalidArgumentException('Invalid date creation');
+        }
+
+        return $startDate->startOfDay();
     }
 
     public function getQuadrimestreAl(): Carbon
     {
-        $startMonth = 1 + (($this->quadrimestre - 1) * 4);
+        $annoRaw = $this->anno ?? null;
+        $quadrimestreRaw = $this->quadrimestre ?? null;
 
-        $endDate = Carbon::create($this->anno, $startMonth, 1)
+        $anno = is_int($annoRaw) || is_string($annoRaw) ? (int) $annoRaw : (int) date('Y');
+        $quadrimestre = is_int($quadrimestreRaw) || is_string($quadrimestreRaw) ? (int) $quadrimestreRaw : 1;
+
+        $startMonth = 1 + (($quadrimestre - 1) * 4);
+
+        $startDate = Carbon::create($anno, $startMonth, 1);
+        if (! $startDate instanceof Carbon) {
+            throw new InvalidArgumentException('Invalid date creation');
+        }
+
+        return $startDate
             ->addMonths(4)
             ->subDay()
             ->endOfDay();
-
-        return $endDate;
     }
 
     /**
@@ -113,11 +132,18 @@ trait MutatorTrait
         */
         $dal = $this->dal;
         $al = $this->al;
-        if ($this->anno >= 2023) {
-            $q = $this->quadrimestre;
-            $dal = Carbon::parse($this->anno.'-01-01')->addMonths(4 * ($q - 1));
-            $al = Carbon::parse($this->anno.'-01-01')->addMonths(4 * $q)->subDays(1);
+        $anno = is_int($this->anno) || is_string($this->anno) ? (int) $this->anno : null;
+        if ($anno !== null && $anno >= 2023) {
+            $q = is_int($this->quadrimestre) || is_string($this->quadrimestre) ? (int) $this->quadrimestre : null;
+            if ($q !== null) {
+                $dal = Carbon::parse($anno.'-01-01')->addMonths(4 * ($q - 1));
+                $al = Carbon::parse($anno.'-01-01')->addMonths(4 * $q)->subDays(1);
+            }
             // dddx(['dal'=>$dal,'al'=>$al,'q'=>$q,'anno'=>$this->anno,'this'=>$this]);
+        }
+
+        if (! ($dal instanceof Carbon) || ! ($al instanceof Carbon)) {
+            return 0;
         }
 
         $dal = (int) $dal->format('Ymd');

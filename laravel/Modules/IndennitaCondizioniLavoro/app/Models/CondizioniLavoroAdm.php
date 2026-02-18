@@ -200,6 +200,10 @@ class CondizioniLavoroAdm extends CondizioniLavoro
             ->ofQuarter($this->trimestre, $this->anno)
             ->get();
         */
+        if (! ($this->dal instanceof Carbon) || ! ($this->al instanceof Carbon)) {
+            return 0;
+        }
+
         $dal = $this->dal->format('Ymd');
         $al = $this->al->format('Ymd');
 
