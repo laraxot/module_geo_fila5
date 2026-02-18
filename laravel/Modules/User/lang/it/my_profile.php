@@ -42,6 +42,18 @@ return [
             'description' => 'passwordConfirmation',
             'tooltip' => '',
         ],
+        'current_password' => [
+            'label' => 'current_password',
+            'placeholder' => 'current_password',
+            'helper_text' => 'current_password',
+            'description' => 'current_password',
+        ],
+        'password_confirmation' => [
+            'label' => 'password_confirmation',
+            'placeholder' => 'password_confirmation',
+            'helper_text' => 'password_confirmation',
+            'description' => 'password_confirmation',
+        ],
     ],
     'actions' => [
         'updateProfileAction' => [

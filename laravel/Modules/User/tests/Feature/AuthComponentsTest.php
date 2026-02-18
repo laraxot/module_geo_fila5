@@ -97,21 +97,12 @@ describe('User Profile Components Tests', function (): void {
         }
 
         Illuminate\Support\Facades\Route::get('/test-auth', function () {
-            return 'Authenticated User: '.auth()->id();
+            return 'Authenticated User: '.(string) auth()->id();
         });
 
-        $debugResponse = actingAs($user, 'web')->get('/test-auth');
-        dump($debugResponse->content());
-
+        /** @var Illuminate\Contracts\Auth\Authenticatable $user */
         $response = actingAs($user, 'web')->get('/it/profile/edit');
 
-        if (302 === $response->status()) {
-            dump('Redirecting to: '.$response->headers->get('Location'));
-            dump('User ID: '.$user->id);
-            dump('Auth Check before request: '.(auth()->check() ? 'Yes' : 'No'));
-        }
-
-        /* @phpstan-ignore-next-line method.nonObject */
         $response->assertStatus(200);
     });
 });

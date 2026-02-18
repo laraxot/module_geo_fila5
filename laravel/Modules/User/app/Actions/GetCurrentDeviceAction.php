@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions;
 
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Jenssegers\Agent\Agent;
 use Modules\User\Models\Device;
 use Spatie\QueueableAction\QueueableAction;
