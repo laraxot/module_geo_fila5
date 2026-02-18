@@ -6,7 +6,6 @@ namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Modules\Xot\Filament\Traits\HasXotTable;
-use Modules\Xot\Filament\Traits\TransFuncTrait;
 
 /**
  * ---
@@ -14,7 +13,6 @@ use Modules\Xot\Filament\Traits\TransFuncTrait;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
-    use TransFuncTrait;
 
     protected static string $recordTitleAttribute = 'name';
 
