@@ -285,6 +285,7 @@ return [
         'attach' => [
             'tooltip' => 'attach',
             'icon' => 'attach',
+            'label' => 'attach',
         ],
         'attachAnother' => [
             'tooltip' => 'attachAnother',
