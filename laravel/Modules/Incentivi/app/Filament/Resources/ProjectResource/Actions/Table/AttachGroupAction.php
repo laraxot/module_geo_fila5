@@ -6,6 +6,7 @@ namespace Modules\Incentivi\Filament\Resources\ProjectResource\Actions\Table;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Contracts\HasTable;
 use Illuminate\Database\Eloquent\Model;
@@ -34,6 +35,7 @@ class AttachGroupAction extends Action
                     ->required(),
             ])
             ->after(function (Action $action, array $data, HasTable $livewire) {
+
                 /** @var Workgroup|null $workgroup */
                 $workgroup = Workgroup::find($data['workgroup_id']);
 
@@ -49,10 +51,36 @@ class AttachGroupAction extends Action
                 }
 
                 // Collega tutti gli Employee del Workgroup selezionato al Project corrente
-                $employees = $workgroup->employees; // Using documented relationship from @property-read in Workgroup model
-                $employees->each(function (Employee $employee) use ($project) {
-                    $employee->projects()->attach($project->id);
-                });
+                // $employees = $workgroup->employees;
+                // $employees->each(function (Employee $employee) use ($project) {
+                //     $employee->projects()->attach($project->id);
+                // });
+
+                $employees = $workgroup->employees;
+                $employeeIds = $employees->pluck('id')->toArray();
+
+                $alreadyAttached = $project->employees()
+                    ->whereIn('employee_id', $employeeIds)
+                    ->pluck('employee_id')
+                    ->toArray();
+
+                $newIds = array_diff($employeeIds, $alreadyAttached);
+
+                if (! empty($newIds)) {
+                    $project->employees()->syncWithoutDetaching($newIds);
+                }
+
+                if (! empty($alreadyAttached)) {
+                    Notification::make()
+                        ->title(count($alreadyAttached) . ' dipendente/i risultano già associati al progetto.')
+                        ->body('I dipendenti già associati a questo progetto non sono stati duplicati. Quelli invece non ancora presenti sono stati aggiunti con successo.')
+                        ->persistent()
+                        ->success()
+                        ->send();
+                }
+
+
+
             });
     }
 

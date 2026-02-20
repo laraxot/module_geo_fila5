@@ -11,6 +11,7 @@ use Filament\Tables\Contracts\HasTable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Incentivi\Models\Employee;
 use Modules\Incentivi\Models\Project;
+use Filament\Notifications\Notification;
 
 class AttachSingleEmployeeAction extends Action
 {
@@ -47,7 +48,15 @@ class AttachSingleEmployeeAction extends Action
                     return;
                 }
 
-                // Using documented relationship from @property-read in Employee model
+                if ($employee->projects()->where('project_id', $project->id)->exists()) {
+                    Notification::make()
+                        ->title('Attenzione')
+                        ->body('Il Dipendente selezionato è già associato a questo Progetto.')
+                        ->warning()
+                        ->send();
+                    return;
+                }
+
                 $employee->projects()->attach($project->id);
             });
     }
