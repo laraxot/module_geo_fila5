@@ -16,14 +16,14 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
  *
- *
  * @property ProfileContract|null $deleter
  *
  * @method static CountyFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
- * @property \Modules\Xot\Contracts\ProfileContract|null $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @method static \Modules\Geo\Database\Factories\CountyFactory factory($count = null, $state = [])
  * @method static Builder<static>|County                        newModelQuery()
