@@ -15,16 +15,13 @@ Su filesystem case-sensitive (Linux) non possono esistere file con nomi che diff
 - ✅ `GenerateDbDocumentationCommandTest.pest.php`
 - ❌ `generatedbdocumentationcommandtest.pest.php` (vietato - lowercase)
 
-## File Duplicati Trovati e Cancellati
+## File Duplicati Trovati e Rinominati (.old)
 
-| File Cancellato (lowercase) | File Mantenuto (PascalCase) | Percorso |
-|----------------------------|------------------------------|----------|
-| `generatedbdocumentationcommandtest.pest.php` | `GenerateDbDocumentationCommandTest.pest.php` | `laravel/Modules/Xot/tests/Unit/Console/Commands/` |
-| `fixstructuretest.pest.php` | `FixStructureTest.pest.php` | `laravel/Modules/Xot/tests/Feature/` |
-| `emailtemplatestest.php` | `EmailTemplatesTest.php` | `laravel/Modules/Notify/tests/Feature/` |
-| `jsoncomponentstest.php` | `JsonComponentsTest.php` | `laravel/Modules/Notify/tests/Feature/` |
-| `domaintest.php` | *(da rinominare a `DomainTest.php`)* | `laravel/Modules/Tenant/Tests/Unit/` |
-| `pest.php` | `Pest.php` | `laravel/Modules/Xot/tests/` |
+| File Rinominato (lowercase/duplicato) | File Mantenuto (PascalCase) | Percorso |
+|----------------------------------------|------------------------------|----------|
+| `metatagdatatest.php.old` | `MetatagDataTest.php` | `laravel/Modules/Xot/tests/Unit/` |
+| `hasxottabletest.test.old` | `HasXotTableTest.php` | `laravel/Modules/Xot/tests/Unit/` |
+| `HasXotTableTest.test.old` | `HasXotTableTest.php` | `laravel/Modules/Xot/tests/Unit/` |
 
 ## Comando di Verifica
 
@@ -45,17 +42,19 @@ find ./laravel -type f -name "*test*.php" -o -name "*Test*.php" | grep -v vendor
 
 ---
 
-**Stato**: In corso 🚧  
-**File rimossi**: 6
+**Stato**: Completato ✅  
+**File rinominati con `.old`**: 3
 
-## Altri percorsi con potenziali duplicati
+## Nota sulla Procedura
 
-L'analisi con `git ls-files` ha individuato altri percorsi che presentano lo stesso problema di case-sensitivity (stesso path logico, differenze solo di maiuscole/minuscole).  
-L'elenco dettagliato e aggiornato dei casi aperti è mantenuto in:
+Invece di cancellare i file duplicati, è preferibile **rinominarli aggiungendo `.old`** per:
+1. **Backup di sicurezza** - Possibilità di ripristino se necessario
+2. **Audit trail** - Tracciamento delle modifiche
+3. **Verifica** - Controllo che il file PascalCase funzioni correttamente prima della rimozione definitiva
 
-- `laravel/docs/file-duplicates-case-sensitivity.md`
+Per rimuovere definitivamente i file `.old` dopo il periodo di verifica:
 
-Per ogni nuovo conflitto individuato:
-
-- aggiungere la coppia specifica in questa tabella, indicando chiaramente quale file viene mantenuto
-- aggiornare anche la documentazione del modulo interessato nella sua cartella `docs`
+```bash
+# Trova e rimuovi tutti i file .old
+find ./laravel -type f -name "*.old" -exec rm {} \;
+```
