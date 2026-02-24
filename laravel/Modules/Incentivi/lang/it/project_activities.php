@@ -289,6 +289,7 @@ return [
         ],
         'attachAnother' => [
             'tooltip' => 'attachAnother',
+            'icon' => 'attachAnother',
         ],
     ],
     'messages' => [

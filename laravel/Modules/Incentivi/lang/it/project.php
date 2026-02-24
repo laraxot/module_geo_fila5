@@ -454,6 +454,11 @@ return [
             'icon' => 'submit',
             'label' => 'submit',
         ],
+        'createAnother' => [
+            'tooltip' => 'createAnother',
+            'icon' => 'createAnother',
+            'label' => 'createAnother',
+        ],
     ],
     'messages' => [
         'validation' => [

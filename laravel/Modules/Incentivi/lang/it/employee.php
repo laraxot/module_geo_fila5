@@ -344,6 +344,9 @@ return [
             'icon' => 'Collega Dipendente',
             'label' => 'Collega Dipendente',
         ],
+        'layout' => [
+            'tooltip' => 'layout',
+        ],
     ],
     'messages' => [
         'validation' => [
