@@ -13,7 +13,7 @@ Modulo per la gestione del conto annuale (bilancio/rendiconto annuale) nel conte
 
 ### Fase 2: Funzionalità Core (Planned)
 - [ ] CRUD conto annuale
-- [ ] Integrazione con moduli correlati (IndennitaResponsabilita, Ptv)
+- [ ] Integrazione con moduli correlati (se presenti)
 - [ ] Export/Report
 
 ### Fase 3: Integrazione (Future)
