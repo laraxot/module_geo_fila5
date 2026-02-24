@@ -19,3 +19,5 @@
 ### Xot Module
 - `Modules/Xot/tests/Feature/FixStructureTest.php` ✓ (CORRETTO)
 - `Modules/Xot/tests/Feature/FixStructureTest.pest.php` ✓ (OK - estensione diversa)
+ - `Modules/Xot/tests/Pest.php` ✓ (CORRETTO - file di bootstrap Pest)
+ - `Modules/Xot/tests/pest.php` ✗ (RIMOSSO - duplicato case-sensitive del file di bootstrap)

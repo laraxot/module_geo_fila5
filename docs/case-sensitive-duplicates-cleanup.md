@@ -24,6 +24,7 @@ Su filesystem case-sensitive (Linux) non possono esistere file con nomi che diff
 | `emailtemplatestest.php` | `EmailTemplatesTest.php` | `laravel/Modules/Notify/tests/Feature/` |
 | `jsoncomponentstest.php` | `JsonComponentsTest.php` | `laravel/Modules/Notify/tests/Feature/` |
 | `domaintest.php` | *(da rinominare a `DomainTest.php`)* | `laravel/Modules/Tenant/Tests/Unit/` |
+| `pest.php` | `Pest.php` | `laravel/Modules/Xot/tests/` |
 
 ## Comando di Verifica
 
@@ -44,5 +45,17 @@ find ./laravel -type f -name "*test*.php" -o -name "*Test*.php" | grep -v vendor
 
 ---
 
-**Stato**: Completato ✅  
-**File rimossi**: 5
+**Stato**: In corso 🚧  
+**File rimossi**: 6
+
+## Altri percorsi con potenziali duplicati
+
+L'analisi con `git ls-files` ha individuato altri percorsi che presentano lo stesso problema di case-sensitivity (stesso path logico, differenze solo di maiuscole/minuscole).  
+L'elenco dettagliato e aggiornato dei casi aperti è mantenuto in:
+
+- `laravel/docs/file-duplicates-case-sensitivity.md`
+
+Per ogni nuovo conflitto individuato:
+
+- aggiungere la coppia specifica in questa tabella, indicando chiaramente quale file viene mantenuto
+- aggiornare anche la documentazione del modulo interessato nella sua cartella `docs`
