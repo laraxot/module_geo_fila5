@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 
-// This file references SaluteOra models that do not exist in this project
+// This file references Appointment/Patient models from optional modules
 namespace Modules\Notify\Actions;
 
 use Exception;
 use Modules\Notify\Models\Notification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-// use Modules\SaluteOra\Models\Appointment;
+// use Modules\<ModuloConAppuntamenti>\Models\Appointment;
 use Modules\Notify\Mail\AppointmentNotificationMail;
-// use Modules\SaluteOra\Models\Patient;
+// use Modules\<ModuloConAppuntamenti>\Models\Patient;
 use Spatie\QueueableAction\QueueableAction;
 
 class SendAppointmentNotificationAction

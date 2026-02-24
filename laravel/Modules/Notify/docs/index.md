@@ -67,12 +67,12 @@ Questo documento serve come indice centrale per il modulo Notify, fornendo una g
 - **Configurazione**: Offre opzioni di configurazione flessibili per diversi provider di notifica
 
 ## Collegamenti Correlati
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
 - [Documentazione Generale PTV](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
 - [Collegamenti Documentazione](../../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../../docs/documentation_standards.md)
 - [Modulo Xot](../../xot/docs/readme.md)

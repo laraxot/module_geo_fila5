@@ -18,7 +18,7 @@ Modulo per la gestione della valutazione delle performance: schede, organizzativ
 - [ ] Report e PDF
 
 ### Fase 3: Integrazione (Future)
-- [ ] Integrazione Ptv/Quaeris
+- [ ] Integrazione con moduli survey/grafici (se presenti)
 - [ ] Traduzioni it/en complete
 - [ ] Documentazione completa
 

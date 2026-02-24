@@ -80,7 +80,7 @@ class ListContacts extends XotBaseListRecords
 ### Comando Artisan
 
 ```bash
-php artisan make:filament-resource Contact --nested --module=Quaeris
+php artisan make:filament-resource Contact --nested --module=ModuloEsempio
 ```
 
 Questo comando crea automaticamente:
@@ -253,9 +253,9 @@ protected static ?string $relatedResource = ContactResource::class;
 
 ## Opportunità di Nesting per Moduli
 
-### Modulo Quaeris
+### Moduli con nested resources
 
-Vedi: [Modules/Quaeris/docs/filament-nesting-opportunities.md](../../quaeris/docs/filament-nesting-opportunities.md)
+Vedi: [Filament Nesting Best Practices](../filament-nesting-best-practices.md)
 
 **Opportunità**:
 - Contact → Nested di SurveyPdf
@@ -363,7 +363,7 @@ Filament 5.x gestisce automaticamente i breadcrumbs per nested resources. Non se
 ## Collegamenti
 
 - [Filament 5.x Nesting Documentation](https://filamentphp.com/docs/5.x/resources/nesting)
-- [Quaeris Nesting Opportunities](../../quaeris/docs/filament-nesting-opportunities.md)
+- [Filament Nesting Best Practices](../filament-nesting-best-practices.md)
 - [Limesurvey Nesting Opportunities](../../limesurvey/docs/filament-nesting-opportunities.md)
 - [Cms Nesting Opportunities](../../cms/docs/filament-nesting-opportunities.md)
 - [User Nesting Opportunities](../../user/docs/filament-nesting-opportunities.md)

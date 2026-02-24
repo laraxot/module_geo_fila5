@@ -6,7 +6,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 LOG_FILE="$BASE_DIR/docs/refactoring/radical-docs-refactor.log"
 
 echo "=== REFACTOR RADICALE DOCUMENTAZIONE DRY + KISS ===" | tee -a "$LOG_FILE"

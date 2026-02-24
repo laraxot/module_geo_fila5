@@ -9,9 +9,9 @@
 ### ❌ ERRATO: Percorsi Assoluti
 
 ```markdown
-[Convenzioni di Naming per le Interfacce](/var/www/html/saluteora/laravel/modules/notify/docs/interface_naming_convention.md)
-[Chiarimento sulla Struttura delle Interfacce](/var/www/html/saluteora/laravel/modules/notify/docs/interface_structure_clarification.md)
-[Architettura dei Contratti](/var/www/html/saluteora/laravel/modules/notify/docs/contracts_architecture.md)
+[Convenzioni di Naming per le Interfacce](/var/www/html/ptvx/laravel/modules/notify/docs/interface_naming_convention.md)
+[Chiarimento sulla Struttura delle Interfacce](/var/www/html/ptvx/laravel/modules/notify/docs/interface_structure_clarification.md)
+[Architettura dei Contratti](/var/www/html/ptvx/laravel/modules/notify/docs/contracts_architecture.md)
 ```
 
 ### ✅ CORRETTO: Percorsi Relativi
@@ -34,7 +34,7 @@ Per collegamenti a documenti in altre directory:
 1. **Portabilità**: I percorsi relativi funzionano indipendentemente dalla posizione di installazione del progetto
 2. **Compatibilità tra ambienti**: I percorsi assoluti potrebbero non funzionare in ambienti diversi
 3. **Manutenibilità**: I percorsi relativi sono più facili da mantenere quando la struttura del progetto cambia
-4. **Standard del progetto**: SaluteOra segue lo standard di utilizzare percorsi relativi in tutti i documenti Markdown
+4. **Standard del progetto**: Laraxot segue lo standard di utilizzare percorsi relativi in tutti i documenti Markdown
 
 ## Regole per i Collegamenti Relativi
 

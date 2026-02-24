@@ -17,7 +17,7 @@ Modulo per la gestione di questionari e survey: creazione, distribuzione, compil
 - [ ] Analisi risultati e report
 
 ### Fase 3: Integrazione (Future)
-- [ ] Integrazione con Quaeris/LimeSurvey se presente
+- [ ] Integrazione con moduli survey/LimeSurvey (se presenti)
 - [ ] Test coverage
 - [ ] Traduzioni it/en complete
 

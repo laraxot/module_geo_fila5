@@ -6,7 +6,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 LOG_FILE="$BASE_DIR/docs/refactoring/markdown-cleanup.log"
 
 echo "=== PULIZIA DUPLICAZIONI MARKDOWN ===" | tee -a "$LOG_FILE"

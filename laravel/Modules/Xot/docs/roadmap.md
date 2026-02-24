@@ -1,6 +1,6 @@
 # Xot Module Roadmap
 
-"Il motore che muove l'universo Quaeris."
+"Il motore dell'ecosistema Laraxot."
 
 ## Visione
 

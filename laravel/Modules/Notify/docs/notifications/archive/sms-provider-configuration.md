@@ -1,7 +1,7 @@
 # Configurazione Provider SMS per le Notifiche 
 
 Questa documentazione descrive le opzioni disponibili per l'integrazione di servizi SMS nei sistemi di notifica di <nome progetto>, con focus sui diversi provider e sulla loro configurazione.
-Questa documentazione descrive le opzioni disponibili per l'integrazione di servizi SMS nei sistemi di notifica di SaluteOra, con focus sui diversi provider e sulla loro configurazione.
+Questa documentazione descrive le opzioni disponibili per l'integrazione di servizi SMS nei sistemi di notifica di Laraxot, con focus sui diversi provider e sulla loro configurazione.
 
 ## Indice
 
@@ -108,7 +108,7 @@ composer require laravel-notification-channels/vonage
 VONAGE_KEY=abcd1234
 VONAGE_SECRET=xyz789...
 VONAGE_SMS_FROM=<nome progetto>
-VONAGE_SMS_FROM=SaluteOra
+VONAGE_SMS_FROM=Laraxot
 ```
 
 ### Implementazione Notifica

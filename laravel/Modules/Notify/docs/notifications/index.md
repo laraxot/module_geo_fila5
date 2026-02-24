@@ -3,7 +3,7 @@
 ## Collegamenti Correlati
 - [Indice Documentazione Notify](../index.md)
 - [README Modulo Notify](../readme.md)
-- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../../docs/readme.md)
 - [Collegamenti Documentazione](../../../../../docs/collegamenti-documentazione.md)
 
 ## Guida Implementazione
@@ -32,7 +32,7 @@
 - [Canale Telegram](../telegram_channel.md) - Documentazione del canale Telegram
 
 ## Note Importanti
-- SaluteOra utilizza il pattern Factory per la creazione delle azioni di invio messaggi
+- Laraxot utilizza il pattern Factory per la creazione delle azioni di invio messaggi
 - Il sistema si basa su Queueable Actions (spatie/laravel-queueable-action) e non su Service Pattern
 - Le azioni specifiche per provider devono implementare l'interfaccia comune corrispondente
 - I DTO standardizzati vengono utilizzati come ponte tra il sistema e i provider specifici

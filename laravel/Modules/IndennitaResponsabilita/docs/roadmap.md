@@ -96,7 +96,7 @@ Dettaglio: [refactoring-action-plan](refactoring-action-plan.md)
 
 ### Fase 3: Integrazione e Ottimizzazione (Future)
 
-- [ ] Integrazione con Performance/Quaeris
+- [ ] Integrazione con moduli valutazione/survey (se presenti)
 - [ ] Reportistica avanzata
 - [ ] Performance form reattivo (lazy load ratings)
 - [ ] Traduzioni it/en/de complete — [translations](translations.md)

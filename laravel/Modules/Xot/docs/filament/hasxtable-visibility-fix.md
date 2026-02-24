@@ -64,8 +64,8 @@ protected function getTableEmptyStateActions(): array
    - Aggiunta sezione "Errore InteractsWithTable"
    - Aggiornata data ultimo aggiornamento
 
-3. **`Modules/Quaeris/docs/question-chart-implementation-guide.md`**
-   - Aggiunta nota critica sulla visibilità dei metodi `getTable*()`
+3. **Moduli che implementano nested resources con HasXotTable**
+   - Nota critica sulla visibilità dei metodi `getTable*()`
 
 ## Pattern Corretto
 
@@ -119,7 +119,7 @@ Dopo la correzione, l'errore non dovrebbe più verificarsi:
 
 ```bash
 # Test accesso pagina
-curl http://quaeris.local/quaeris/admin/ats/survey-pdfs/16/question-charts/226
+curl http://app.local/admin/your-resource/16/related/226
 # ✅ Dovrebbe funzionare senza errori
 ```
 

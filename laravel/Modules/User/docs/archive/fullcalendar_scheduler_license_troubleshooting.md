@@ -187,7 +187,7 @@ return [
 ```php
 <?php
 
-namespace Modules\SaluteOra\app\Providers\Filament;
+namespace Modules\Laraxot\app\Providers\Filament;
 
 use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 
@@ -234,7 +234,7 @@ class AdminPanelProvider extends XotBasePanelProvider
                 'resourceTimeGrid',
             ],
             
-            // Configurazioni specifiche per SaluteOra
+            // Configurazioni specifiche per Laraxot
             'locale' => 'it',
             'timezone' => 'Europe/Rome',
             'firstDay' => 1,
@@ -316,7 +316,7 @@ class FullCalendarDebug extends Command
 }
 ```
 
-## Best Practices per SaluteOra
+## Best Practices per Laraxot
 
 ### 1. Sicurezza Licenza
 ```php
@@ -409,7 +409,7 @@ const calendarOptions = {
 
 ## Conclusioni
 
-La gestione delle licenze FullCalendar Scheduler richiede attenzione particolare, specialmente in ambienti di produzione sanitari come SaluteOra. Seguire questa guida garantisce una configurazione corretta e la risoluzione dei problemi più comuni.
+La gestione delle licenze FullCalendar Scheduler richiede attenzione particolare, specialmente in ambienti di produzione sanitari come Laraxot. Seguire questa guida garantisce una configurazione corretta e la risoluzione dei problemi più comuni.
 
 **Punti Chiave:**
 1. **Licenza obbligatoria** per uso commerciale in produzione

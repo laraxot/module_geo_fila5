@@ -19,7 +19,7 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 - **Integrazione Filament**: Compatibilità completa con i componenti Filament
 
 ## Collegamenti Correlati
-- [Documentazione Generale SaluteOra](../../../docs/README.md)
+- [Documentazione Generale Progetto](../../../docs/README.md)
 - [Collegamenti Documentazione](../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../docs/DOCUMENTATION_STANDARDS.md)
 - [Modulo UI](../../Modules/UI/docs/README.md)

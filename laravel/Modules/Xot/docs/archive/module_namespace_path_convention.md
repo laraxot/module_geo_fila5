@@ -9,13 +9,13 @@ uno degli errori più comuni è la confusione tra il namespace nel codice php e 
 i file dei moduli devono sempre seguire questa struttura:
 
 ```
-/var/www/html/base_saluteora/laravel/Modules/{NomeModulo}/app/{Tipo}/...
+/var/www/html/base_ptvx/laravel/Modules/{NomeModulo}/app/{Tipo}/...
 ```
 
 per esempio:
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Filament/Resources/...`
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Models/...`
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Http/Controllers/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Filament/Resources/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Models/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Http/Controllers/...`
 
 ### namespace corretto
 
@@ -26,16 +26,16 @@ namespace Modules\{NomeModulo}\{Tipo}\...;
 ```
 
 per esempio:
-- `namespace Modules\SaluteOra\Filament\Resources;`
-- `namespace Modules\SaluteOra\Models;`
-- `namespace Modules\SaluteOra\Http\Controllers;`
+- `namespace Modules\ModuloEsempio\Filament\Resources;`
+- `namespace Modules\ModuloEsempio\Models;`
+- `namespace Modules\ModuloEsempio\Http\Controllers;`
 
 ## errore comune
 
 spesso si confonde il percorso fisico con il namespace, cercando file in:
 
 ```
-/var/www/html/base_saluteora/laravel/Modules/{NomeModulo}/{Tipo}/...
+/var/www/html/base_ptvx/laravel/Modules/{NomeModulo}/{Tipo}/...
 ```
 
 questo è **errato** perché omette la directory `app/` nel percorso fisico.
@@ -49,8 +49,8 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 | namespace | percorso fisico |
 |-----------|----------------|
-| `Modules\SaluteOra\Filament\Resources\DoctorResource` | `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Filament/Resources/DoctorResource.php` |
-| `Modules\User\Models\User` | `/var/www/html/base_saluteora/laravel/Modules/User/app/Models/User.php` |
+| `Modules\ModuloEsempio\Filament\Resources\DoctorResource` | `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Filament/Resources/DoctorResource.php` |
+| `Modules\User\Models\User` | `/var/www/html/base_ptvx/laravel/Modules/User/app/Models/User.php` |
 
 ## come evitare l'errore
 
@@ -60,5 +60,5 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 ## linkback
 
-- [convenzioni di codice](/var/www/html/base_saluteora/laravel/docs/conventions.md)
-- [struttura progetto](/var/www/html/base_saluteora/laravel/docs/project-structure.md)
+- [convenzioni di codice](/var/www/html/base_ptvx/laravel/docs/conventions.md)
+- [struttura progetto](/var/www/html/base_ptvx/laravel/docs/project-structure.md)

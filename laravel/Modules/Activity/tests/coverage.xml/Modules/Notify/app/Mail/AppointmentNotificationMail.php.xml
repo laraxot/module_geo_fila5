@@ -82,7 +82,7 @@
       </line>
       <line no="14"/>
       <line no="15">
-        <token name="T_COMMENT">// use Modules\SaluteOra\Models\Appointment;</token>
+        <token name="T_COMMENT">// use Modules\Laraxot\Models\Appointment;</token>
       </line>
       <line no="16"/>
       <line no="17">

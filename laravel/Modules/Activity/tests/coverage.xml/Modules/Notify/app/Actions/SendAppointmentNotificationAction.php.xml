@@ -31,7 +31,7 @@
       <line no="4"/>
       <line no="5"/>
       <line no="6">
-        <token name="T_COMMENT">// This file references SaluteOra models that do not exist in this project</token>
+        <token name="T_COMMENT">// This file references Laraxot models that do not exist in this project</token>
       </line>
       <line no="7">
         <token name="T_NAMESPACE">namespace</token>
@@ -65,7 +65,7 @@
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="13">
-        <token name="T_COMMENT">// use Modules\SaluteOra\Models\Appointment;</token>
+        <token name="T_COMMENT">// use Modules\Laraxot\Models\Appointment;</token>
       </line>
       <line no="14">
         <token name="T_USE">use</token>
@@ -74,7 +74,7 @@
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="15">
-        <token name="T_COMMENT">// use Modules\SaluteOra\Models\Patient;</token>
+        <token name="T_COMMENT">// use Modules\Laraxot\Models\Patient;</token>
       </line>
       <line no="16">
         <token name="T_USE">use</token>

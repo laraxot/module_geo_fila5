@@ -87,7 +87,7 @@ protected function getTablePollInterval(): ?string
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\Chart\Filament\Widgets;
 
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 
@@ -227,12 +227,10 @@ MyTableWidget::make([
 **⚠️ IMPORTANTE**: Le proprietà `protected` o `private` **NON** vengono inizializzate da `make()`.
 
 Per documentazione completa, vedere:
-- [Widget Property Initialization Pattern](../../../modules/quaeris/docs/widget-property-initialization-pattern.md)
+- [Widget Table Configuration](widget-table-configuration.md)
 
 ## Riferimenti
 
-- [HasXotTable Trait](../../../modules/xot/docs/filament/xot-table.md)
-- [No Table Override Rule](../../../modules/xot/docs/filament/no-table-override.md)
-- [Widget Table Method Final Analysis](../../../modules/quaeris/docs/widget-table-method-final-analysis.md)
-- [Widget Property Initialization Pattern](../../../modules/quaeris/docs/widget-property-initialization-pattern.md)
+- [HasXotTable Trait](xot-table.md)
+- [No Table Override Rule](no-table-override.md)
 

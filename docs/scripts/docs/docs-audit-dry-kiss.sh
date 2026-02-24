@@ -6,7 +6,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 LARAVEL_DIR="$BASE_DIR/laravel"
 DOCS_ROOT="$BASE_DIR/docs"
 AUDIT_LOG="$BASE_DIR/docs/refactoring/audit-dry-kiss-$(date +%Y%m%d-%H%M).log"
@@ -127,7 +127,7 @@ analyze_complexity() {
         depth=$(echo "$dir" | grep -o "/" | wc -l)
         relative_path=${dir#$BASE_DIR/}
         
-        if [ "$depth" -gt 6 ]; then  # Considerando /var/www/html/_bases/base_saluteora come base
+        if [ "$depth" -gt 6 ]; then  # Considerando /var/www/html/_bases/base_ptvx come base
             log "   ⚠️  STRUTTURA TROPPO PROFONDA: $relative_path (livelli: $depth)"
             VIOLATIONS_KISS=$((VIOLATIONS_KISS + 1))
         fi
@@ -165,7 +165,7 @@ cat > "$BASE_DIR/bashscripts/fix-docs-naming.sh" << 'EOF'
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 
 echo "🔧 Correzione automatica naming convention docs..."
 

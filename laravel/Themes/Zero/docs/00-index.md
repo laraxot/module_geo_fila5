@@ -25,7 +25,7 @@
 
 - [Cms Module](../../Modules/Cms/docs/README.md)
 - [UI Module](../../Modules/UI/docs/README.md)
-- [Doughnut Center Labels Guide](../../Modules/Quaeris/docs/chartjs-doughnut-center-label-guide.md)
+- [Chart.js Datalabels Multiple Labels Guide](../../Modules/Xot/docs/filament/chartjs-datalabels-multiple-labels-guide.md)
 - [Claude Context (Laravel)](../../CLAUDE.md)
 - [AI Agents Guide](../../../AGENTS.md)
 - [Cursor Rules & Skills](../../../.cursor/README.md)

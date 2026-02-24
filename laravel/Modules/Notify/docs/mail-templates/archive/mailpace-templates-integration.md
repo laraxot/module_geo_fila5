@@ -2,7 +2,7 @@
 
 ## Panoramica
 
-Questo documento descrive l'integrazione dei template email [mailpace/templates](https://github.com/mailpace/templates) nel modulo Notify di SaluteOra. Questi template offrono un design moderno basato su TailwindCSS con supporto nativo per la modalità scura.
+Questo documento descrive l'integrazione dei template email [mailpace/templates](https://github.com/mailpace/templates) nel modulo Notify di Laraxot. Questi template offrono un design moderno basato su TailwindCSS con supporto nativo per la modalità scura.
 
 ## Template Disponibili
 
@@ -28,7 +28,7 @@ MailPace offre i seguenti template transazionali:
 ### Struttura della Directory
 
 ```
-/var/www/html/saluteora/laravel/Modules/Notify/resources/mail-layouts/
+/var/www/html/ptvx/laravel/Modules/Notify/resources/mail-layouts/
 ├── default.html       # Layout base per la maggior parte delle email
 ├── main.html          # Alternativa semplificata
 ├── marketing.html     # Layout ottimizzato per email marketing
@@ -89,7 +89,7 @@ $mailTemplate->send($user->email, [
 1. **Mantieni la Struttura Base** - Non modificare la struttura HTML base per garantire compatibilità
 2. **Usa Variabili** - Utilizza variabili Blade per contenuti dinamici
 3. **Test Cross-Client** - Testa i template su diversi client email
-4. **Segui le Convenzioni di Branding** - Usa i colori e font definiti per SaluteOra
+4. **Segui le Convenzioni di Branding** - Usa i colori e font definiti per Laraxot
 
 ## Riferimenti
 

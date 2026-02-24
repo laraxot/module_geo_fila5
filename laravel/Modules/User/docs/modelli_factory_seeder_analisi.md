@@ -182,7 +182,7 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 - [Jetstream Integration](./jetstream_integration.md)
 
 ### Moduli Collegati
-- [SaluteOra Module](../../saluteora/docs/modelli_factory_seeder_analisi.md)
+- [ModuloEsempio Module](../../modulo/docs/modelli_factory_seeder_analisi.md)
 - [Tenant Module](../../tenant/docs/modelli_factory_seeder_analisi.md)
 - [Notify Module](../../notify/docs/modelli_factory_seeder_analisi.md)
 
