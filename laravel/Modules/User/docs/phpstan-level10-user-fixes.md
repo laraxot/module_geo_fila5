@@ -314,6 +314,6 @@ Il modulo User è ora **completamente compliant** con PHPStan Level 10. I patter
 ## 📋 Riferimento Incrociato
 
 - **Xot Module**: Vedi `Modules/Xot/docs/phpstan-level10-xot-fixes.md` per pattern di base
-- **Quaeris Module**: Vedi `Modules/Quaeris/docs/phpstan-level10-quaeris-fixes.md` per pattern simili
+- **healthcare_app Module**: Vedi `Modules/healthcare_app/docs/phpstan-level10-healthcare_app-fixes.md` per pattern simili
 
 **Status**: ✅ **COMPLETATO** - Pronto per production con type safety massima.

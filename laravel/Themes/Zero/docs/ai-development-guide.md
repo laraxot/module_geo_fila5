@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide explains how to leverage AI assistants (Claude Code, Cursor, Windsurf) when developing with the **Zero Theme** in the Quaeris Fila4 Mono project.
+This guide explains how to leverage AI assistants (Claude Code, Cursor, Windsurf) when developing with the **Zero Theme** in the healthcare_app Fila4 Mono project.
 
 Zero is a flexible, modern Laravel theme system built on Filament 4, Livewire 3, and Volt. Understanding how to configure AI assistants for theme development ensures faster, more consistent development.
 
@@ -652,6 +652,6 @@ Consider creating a custom MCP server for Zero theme operations:
 **Version**: 1.0
 **Last Updated**: December 23, 2025
 **Theme**: Zero
-**Maintainer**: Quaeris Team
+**Maintainer**: healthcare_app Team
 
-*This guide is part of the Quaeris documentation standard for AI-assisted development.*
+*This guide is part of the healthcare_app documentation standard for AI-assisted development.*

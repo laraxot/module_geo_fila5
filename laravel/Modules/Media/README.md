@@ -179,7 +179,7 @@ php artisan media:convert-video {media_id}
 
 ```
 Media <── Cms       (allegati pagine/sezioni)
-Media <── Quaeris   (allegati survey, immagini report)
+Media <── healthcare_app   (allegati survey, immagini report)
 Media <── User      (avatar, documenti utente)
 Media <── Notify    (allegati email)
 Media ──> CloudStorage (storage S3/CloudFront)

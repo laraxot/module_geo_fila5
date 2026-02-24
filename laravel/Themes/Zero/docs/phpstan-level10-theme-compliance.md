@@ -164,7 +164,7 @@ Tratta le collections con type safety:
 ### 1. DashboardFilterData Pattern
 
 ```php
-// Pattern da Quaeris/DashboardFilterData.php
+// Pattern da healthcare_app/DashboardFilterData.php
 foreach ($components as $k => $component) {
     if (! $component instanceof Component) {
         continue;
@@ -177,7 +177,7 @@ foreach ($components as $k => $component) {
 ### 2. QueryExport Pattern
 
 ```php
-// Pattern da Quaeris/QueryExport.php
+// Pattern da healthcare_app/QueryExport.php
 $processed = $collection->mapWithKeys(
     static function (int|string $value, int $key): array {
         return [(string) $value => $value];
@@ -235,7 +235,7 @@ $merged = array_merge($this->data ?? [], $data);
 ## 📚 Riferimenti Incrociati
 
 - **Xot Module**: `Modules/Xot/docs/phpstan-level10-xot-fixes.md`
-- **Quaeris Module**: `Modules/Quaeris/docs/phpstan-level10-quaeris-fixes.md`
+- **healthcare_app Module**: `Modules/healthcare_app/docs/phpstan-level10-healthcare_app-fixes.md`
 - **User Module**: `Modules/User/docs/phpstan-level10-user-fixes.md`
 
 ## 🚀 Prossimi Passi

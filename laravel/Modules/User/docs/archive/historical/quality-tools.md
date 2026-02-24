@@ -54,7 +54,7 @@
 
 3. **Property Declaration** (Code Quality)
    - Proprietà con prefisso underscore (non conforme):
-     - `Quaeris/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
+     - `healthcare_app/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
      - `Xot/app/Services/ModuleService.php:23` (`$_instance`)
      - `Xot/app/Traits/HasCsrfToken.php:15` (`$_token`)
    - **Soluzione**: Rimuovere prefisso underscore, usare visibilità appropriata

@@ -1,8 +1,8 @@
-# Guida Completa al Nesting di Filament - Quaeris Fila5 Mono
+# Guida Completa al Nesting di Filament - healthcare_app Fila5 Mono
 
 ## 📖 Introduzione
 
-Il nesting di Filament è una potente funzionalità che permette di gestire relazioni complesse tra modelli attraverso un'interfaccia tabbed integrata. In Quaeris Fila5 Mono, questa funzionalità è implementata attraverso il pattern **XotBaseRelationManager**.
+Il nesting di Filament è una potente funzionalità che permette di gestire relazioni complesse tra modelli attraverso un'interfaccia tabbed integrata. In healthcare_app Fila5 Mono, questa funzionalità è implementata attraverso il pattern **XotBaseRelationManager**.
 
 ### 🎯 Obiettivi della Guida
 
@@ -11,7 +11,7 @@ Il nesting di Filament è una potente funzionalità che permette di gestire rela
 - Applicare best practices per performance e sicurezza
 - Identificare opportunità di nesting nei moduli esistenti
 
-## 🏗️ Architettura del Nesting in Quaeris
+## 🏗️ Architettura del Nesting in healthcare_app
 
 ### 1. **XotBaseRelationManager - Il Fondamento**
 
@@ -59,9 +59,9 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
 Il framework risolve automaticamente le Resource basandosi sul namespace:
 
 ```
-Modules\Quaeris\Filament\Resources\CustomerResource\RelationManagers\SurveyPdfsRelationManager
+Modules\healthcare_app\Filament\Resources\CustomerResource\RelationManagers\SurveyPdfsRelationManager
                     ↓                    ↓                         ↓
-                 Modules            Quaeris          CustomerResource
+                 Modules            healthcare_app          CustomerResource
 ```
 
 ## 📋 Tipi di Nesting Implementati
@@ -70,7 +70,7 @@ Modules\Quaeris\Filament\Resources\CustomerResource\RelationManagers\SurveyPdfsR
 
 **File Structure:**
 ```
-Modules/Quaeris/
+Modules/healthcare_app/
 ├── app/Filament/Resources/
 │   ├── CustomerResource.php
 │   └── CustomerResource/
@@ -741,7 +741,7 @@ class ChildPolicy
 
 ### Project-Specific Resources
 - XotBaseRelationManager (`Modules/Xot/`)
-- Existing examples in `Quaeris/` and `User/` modules
+- Existing examples in `healthcare_app/` and `User/` modules
 - Policy examples in `Modules/*/app/Policies/`
 
 ### Community Examples

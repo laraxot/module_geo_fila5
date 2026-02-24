@@ -18,7 +18,7 @@
 
 ```php
 // ❌ VIETATO - Non creare mai classi Service
-namespace Modules\Quaeris\Services\Charts;
+namespace Modules\healthcare_app\Services\Charts;
 
 class ChartService
 {
@@ -61,7 +61,7 @@ class UserService
 
 ```php
 // ✅ CORRETTO - Usa sempre Actions
-namespace Modules\Quaeris\Actions\Chart;
+namespace Modules\healthcare_app\Actions\Chart;
 
 use Spatie\QueueableAction\QueueableAction;
 
@@ -161,7 +161,7 @@ class [ActionName]Action
 
 **❌ PRIMA (Service)**:
 ```php
-namespace Modules\Quaeris\Services\Charts;
+namespace Modules\healthcare_app\Services\Charts;
 
 class ChartService
 {
@@ -182,12 +182,12 @@ class ChartService
 
 **✅ DOPO (Actions)**:
 ```php
-// Modules/Quaeris/Actions/Chart/GenerateChartAction.php
-namespace Modules\Quaeris\Actions\Chart;
+// Modules/healthcare_app/Actions/Chart/GenerateChartAction.php
+namespace Modules\healthcare_app\Actions\Chart;
 
 use Spatie\QueueableAction\QueueableAction;
-use Modules\Quaeris\Models\Chart;
-use Modules\Quaeris\Actions\Chart\ProcessChartAction;
+use Modules\healthcare_app\Models\Chart;
+use Modules\healthcare_app\Actions\Chart\ProcessChartAction;
 
 class GenerateChartAction
 {
@@ -201,11 +201,11 @@ class GenerateChartAction
     }
 }
 
-// Modules/Quaeris/Actions/Chart/ProcessChartAction.php
-namespace Modules\Quaeris\Actions\Chart;
+// Modules/healthcare_app/Actions/Chart/ProcessChartAction.php
+namespace Modules\healthcare_app\Actions\Chart;
 
 use Spatie\QueueableAction\QueueableAction;
-use Modules\Quaeris\Models\Chart;
+use Modules\healthcare_app\Models\Chart;
 
 class ProcessChartAction
 {
@@ -254,7 +254,7 @@ I Chart Widgets sperimentali spesso usano dati demo statici. **NON creare Servic
 
 ```php
 // ❌ MAI FARE - ChartService per dati demo
-namespace Modules\Quaeris\Services;
+namespace Modules\healthcare_app\Services;
 
 class ChartService
 {
@@ -283,7 +283,7 @@ class Simple02ChartWidget extends XotBaseChartWidget
 
 ```php
 // ✅ CORRETTO - Widget completamente self-contained
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
 
 use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
@@ -323,7 +323,7 @@ class Simple02ChartWidget extends XotBaseChartWidget
 
 ### 28 Gennaio 2026 - ChartService Eliminato
 
-**Problema**: `Modules\Quaeris\Services\ChartService` causava errori "Cannot call constructor" nei widget Simple05, Simple06, Simple11, Simple13, Simple20.
+**Problema**: `Modules\healthcare_app\Services\ChartService` causava errori "Cannot call constructor" nei widget Simple05, Simple06, Simple11, Simple13, Simple20.
 
 **Causa**:
 - Il Service non era correttamente autoloadato da Composer

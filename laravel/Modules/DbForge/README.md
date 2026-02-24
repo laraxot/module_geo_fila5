@@ -75,7 +75,7 @@ app(SchemaGuardAction::class)->execute('user');
 // Monitora differenze tra schema fisico e codice
 // Utile dopo aggiornamenti, merge di branch, o migrazioni mancanti
 
-$diff = app(SchemaGuardAction::class)->execute('quaeris');
+$diff = app(SchemaGuardAction::class)->execute('healthcare_app');
 // [
 //     'missing_in_code' => ['new_column_added_manually'],
 //     'missing_in_db' => ['column_in_migration_not_migrated'],
@@ -89,7 +89,7 @@ $diff = app(SchemaGuardAction::class)->execute('quaeris');
 
 ```
 DbForge ──> Limesurvey (reverse engineering tabelle lime_*)
-DbForge ──> Quaeris    (generazione modelli survey)
+DbForge ──> healthcare_app    (generazione modelli survey)
 DbForge ──> Xot        (estende XotBaseMigration)
 ```
 

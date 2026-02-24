@@ -200,7 +200,7 @@ Modules/
 │   │   ├── Feature/
 │   │   └── Unit/
 │   └── app/
-└── Quaeris/
+└── healthcare_app/
     ├── tests/
     │   ├── Feature/
     │   └── Unit/

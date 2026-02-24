@@ -1,6 +1,6 @@
 # Xot Module Roadmap
 
-"Il motore che muove l'universo Quaeris."
+"Il motore che muove l'universo healthcare_app."
 
 ## 🎯 Visione
 Consolidare Xot come un framework "Zero-Config" per Laravel 12, dove ogni nuovo modulo eredita automaticamente sicurezza, internazionalizzazione, gestione temi e performance di alto livello tramite una semplice estensione di classi base.

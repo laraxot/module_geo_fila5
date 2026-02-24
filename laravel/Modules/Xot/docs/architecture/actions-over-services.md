@@ -134,7 +134,7 @@ I widget devono essere completamente autonomi:
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
 
 use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
@@ -169,6 +169,6 @@ class SimpleChartWidget extends XotBaseChartWidget
 
 ### Riferimenti
 
-- [Chart Widget Best Practices (Quaeris)](../../../quaeris/docs/chart-widget-best-practices.md)
+- [Chart Widget Best Practices (healthcare_app)](../../../healthcare_app/docs/chart-widget-best-practices.md)
 - [Critical No Services Rule](../critical-no-services-rule.md)
 ```

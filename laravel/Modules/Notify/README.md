@@ -191,7 +191,7 @@ app(SendEmailAction::class)->execute(
 ## Integrazione con altri moduli
 
 ```
-Notify <── Quaeris    (inviti survey, report PDF via email)
+Notify <── healthcare_app    (inviti survey, report PDF via email)
 Notify <── Meetup     (inviti eventi, reminder, conferme)
 Notify <── User       (welcome email, reset password)
 Notify <── Activity   (notifiche su eventi tracciati)

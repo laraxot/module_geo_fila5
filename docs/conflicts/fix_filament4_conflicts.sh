@@ -38,4 +38,4 @@ process_file() {
 }
 
 # Trova tutti i file PHP con conflitti
-find /var/www/_bases/base_quaeris_fila4_mono/laravel/Modules -name "*.php" -type f | while read -r file; do
+find /var/www/_bases/base_healthcare_app_fila4_mono/laravel/Modules -name "*.php" -type f | while read -r file; do

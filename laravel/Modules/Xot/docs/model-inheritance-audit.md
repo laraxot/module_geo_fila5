@@ -147,7 +147,7 @@ class TemporaryUpload extends BaseModel implements HasMedia  // ✅
 
 ---
 
-#### Quaeris
+#### healthcare_app
 **BaseModel**: ❌ Estende direttamente `Model` invece di `XotBaseModel`
 
 **Modelli da correggere**:
@@ -204,7 +204,7 @@ class TestSushiModel extends BaseModel  // ✅
 - ❌ Cms
 - ❌ Chart
 - ❌ Geo
-- ❌ Quaeris
+- ❌ healthcare_app
 
 **Totale**: 4/13 moduli (31%)
 
@@ -220,8 +220,8 @@ class TestSushiModel extends BaseModel  // ✅
 | Job | `TaskComment.php` | Estende `Model` invece di `BaseModel` |
 | Lang | `BaseModelLang.php` | Estende `Model` invece di `BaseModel` |
 | Media | `TemporaryUpload.php` | Estende `Model` invece di `BaseModel` |
-| Quaeris | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
-| Quaeris | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+| healthcare_app | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
+| healthcare_app | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
 | Tenant | `TestSushiModel.php` | Estende `Model` invece di `BaseModel` |
 
 **Totale**: 11 file da correggere
@@ -237,7 +237,7 @@ class TestSushiModel extends BaseModel  // ✅
 
 ### 🔴 Alta Priorità
 1. **Cms** - BaseModel e Conf (modulo core per contenuti)
-2. **Quaeris** - BaseModel e ContactSimple (modulo specifico del progetto)
+2. **healthcare_app** - BaseModel e ContactSimple (modulo specifico del progetto)
 
 ### 🟡 Media Priorità
 3. **Chart** - BaseModel
@@ -272,7 +272,7 @@ done
 
 1. ✅ **User** - Completato (15 Ottobre 2025)
 2. ⏳ **Cms** - Da correggere (BaseModel + Conf)
-3. ⏳ **Quaeris** - Da correggere (BaseModel + ContactSimple)
+3. ⏳ **healthcare_app** - Da correggere (BaseModel + ContactSimple)
 4. ⏳ **Chart** - Da correggere (BaseModel)
 5. ⏳ **Geo** - Da correggere (BaseModel + GeoNamesCap)
 6. ⏳ **Job** - Da correggere (TaskComment)
@@ -294,7 +294,7 @@ done
 Questi modelli possono comunque estendere `BaseModel` senza problemi.
 
 #### Modelli con HasMedia
-- `Quaeris/BaseModel.php` - Implementa `HasMedia`
+- `healthcare_app/BaseModel.php` - Implementa `HasMedia`
 - `Media/TemporaryUpload.php` - Implementa `HasMedia`
 
 `XotBaseModel` è compatibile con `HasMedia` di Spatie.
@@ -465,7 +465,7 @@ class TemporaryUpload extends BaseModel implements HasMedia  // ✅
 
 ---
 
-#### Quaeris
+#### healthcare_app
 **BaseModel**: ❌ Estende direttamente `Model` invece di `XotBaseModel`
 
 **Modelli da correggere**:
@@ -522,7 +522,7 @@ class TestSushiModel extends BaseModel  // ✅
 - ❌ Cms
 - ❌ Chart
 - ❌ Geo
-- ❌ Quaeris
+- ❌ healthcare_app
 
 **Totale**: 4/13 moduli (31%)
 
@@ -538,8 +538,8 @@ class TestSushiModel extends BaseModel  // ✅
 | Job | `TaskComment.php` | Estende `Model` invece di `BaseModel` |
 | Lang | `BaseModelLang.php` | Estende `Model` invece di `BaseModel` |
 | Media | `TemporaryUpload.php` | Estende `Model` invece di `BaseModel` |
-| Quaeris | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
-| Quaeris | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+| healthcare_app | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
+| healthcare_app | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
 | Tenant | `TestSushiModel.php` | Estende `Model` invece di `BaseModel` |
 
 **Totale**: 11 file da correggere
@@ -555,7 +555,7 @@ class TestSushiModel extends BaseModel  // ✅
 
 ### 🔴 Alta Priorità
 1. **Cms** - BaseModel e Conf (modulo core per contenuti)
-2. **Quaeris** - BaseModel e ContactSimple (modulo specifico del progetto)
+2. **healthcare_app** - BaseModel e ContactSimple (modulo specifico del progetto)
 
 ### 🟡 Media Priorità
 3. **Chart** - BaseModel
@@ -590,7 +590,7 @@ done
 
 1. ✅ **User** - Completato (15 Ottobre 2025)
 2. ⏳ **Cms** - Da correggere (BaseModel + Conf)
-3. ⏳ **Quaeris** - Da correggere (BaseModel + ContactSimple)
+3. ⏳ **healthcare_app** - Da correggere (BaseModel + ContactSimple)
 4. ⏳ **Chart** - Da correggere (BaseModel)
 5. ⏳ **Geo** - Da correggere (BaseModel + GeoNamesCap)
 6. ⏳ **Job** - Da correggere (TaskComment)
@@ -612,7 +612,7 @@ done
 Questi modelli possono comunque estendere `BaseModel` senza problemi.
 
 #### Modelli con HasMedia
-- `Quaeris/BaseModel.php` - Implementa `HasMedia`
+- `healthcare_app/BaseModel.php` - Implementa `HasMedia`
 - `Media/TemporaryUpload.php` - Implementa `HasMedia`
 
 `XotBaseModel` è compatibile con `HasMedia` di Spatie.

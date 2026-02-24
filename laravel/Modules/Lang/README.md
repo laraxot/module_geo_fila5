@@ -22,7 +22,7 @@ TextInput::make('name');
 // -> Risolve automaticamente da: {locale}/{module}::field.name.label
 
 // Sincronizzazione traduzioni
-app(SyncTranslationsAction::class)->execute('Quaeris', ['it', 'en', 'de']);
+app(SyncTranslationsAction::class)->execute('healthcare_app', ['it', 'en', 'de']);
 
 // Modelli traducibili
 $survey->setTranslation('title', 'it', 'Questionario Soddisfazione');
@@ -127,7 +127,7 @@ Il modulo include un package locale (`Modules/Lang/packages/lara-zeus/spatie-tra
 
 ```
 Lang ──> Tutti i moduli (auto-risoluzione traduzioni)
-Lang ──> Quaeris    (titoli survey, etichette chart)
+Lang ──> healthcare_app    (titoli survey, etichette chart)
 Lang ──> Limesurvey (traduzioni domande/risposte)
 Lang ──> Cms        (contenuto pagine multilingua)
 Lang ──> Meetup     (eventi multilingua)

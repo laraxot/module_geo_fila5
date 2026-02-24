@@ -126,14 +126,14 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-        'quaeris' => [
+        'healthcare_app' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             // 'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
-            'database' => env('DB_DATABASE_QUAERIS', 'forge26'),
-            'username' => env('DB_USERNAME_QUAERIS', 'forge27'),
-            'password' => env('DB_PASSWORD_QUAERIS', ''),
+            'database' => env('DB_DATABASE_healthcare_app', 'forge26'),
+            'username' => env('DB_USERNAME_healthcare_app', 'forge27'),
+            'password' => env('DB_PASSWORD_healthcare_app', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',

@@ -14,7 +14,7 @@ MODULES=(
   "Limesurvey"
   "Media"
   "Notify"
-  "Quaeris"
+  "healthcare_app"
   "Setting"
   "Tenant"
   "Theme"

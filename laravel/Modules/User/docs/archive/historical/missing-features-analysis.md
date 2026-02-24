@@ -107,7 +107,7 @@ Il modulo **User** fornisce:
    - Mapping permessi
 
 2. **LimeParticipant** - Partecipanti survey
-   - Integrazione con Contact model Quaeris
+   - Integrazione con Contact model healthcare_app
    - Gestione partecipanti centralizzata
    - Attributi personalizzati
 
@@ -155,7 +155,7 @@ Nessuna funzionalità critica mancante - il modulo User è ben implementato
 
 ## Collegamenti
 
-- [Modulo Quaeris](../quaeris/docs/readme.md)
+- [Modulo healthcare_app](../healthcare_app/docs/readme.md)
 - [Modulo Limesurvey](../limesurvey/docs/readme.md)
 - [User README](./readme.md)
 

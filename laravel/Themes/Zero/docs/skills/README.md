@@ -2,7 +2,7 @@
 
 ## Panoramica
 
-Questo documento fornisce informazioni sulle skills disponibili per il tema Zero del progetto Quaeris Fila5 Mono. Le skills sono strumenti potenti che permettono agli agenti AI di specializzarsi in specifiche aree del tema e migliorare significativamente la produttività nello sviluppo frontend.
+Questo documento fornisce informazioni sulle skills disponibili per il tema Zero del progetto healthcare_app Fila5 Mono. Le skills sono strumenti potenti che permettono agli agenti AI di specializzarsi in specifiche aree del tema e migliorare significativamente la produttività nello sviluppo frontend.
 
 ## Skills Disponibili
 

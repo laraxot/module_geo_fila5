@@ -167,7 +167,7 @@ Modules/
 │   │   ├── migrations/
 │   │   └── seeders/
 │   └── app/
-└── Quaeris/
+└── healthcare_app/
     ├── database/
     │   ├── factories/
     │   ├── migrations/

@@ -506,8 +506,8 @@ class ZeroPanelProvider extends PanelProvider
 ### Documentazione Generale
 
 - [Guida Completa Chart Module](../../../Modules/Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
-- [QuestionChartAnswersChartWidget (doughnut/pie)](../../../Modules/Quaeris/docs/question-chart-answers-chart-widget.md) – implementazione doughnut con clip false, anchor/display, label+percentuale
-- [SimpleChartWidget con Sfondi](../../../Modules/Quaeris/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+- [QuestionChartAnswersChartWidget (doughnut/pie)](../../../Modules/healthcare_app/docs/question-chart-answers-chart-widget.md) – implementazione doughnut con clip false, anchor/display, label+percentuale
+- [SimpleChartWidget con Sfondi](../../../Modules/healthcare_app/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
 - [Filament 5.x Charts](https://filamentphp.com/docs/5.x/widgets/charts)
 
 ### Documentazione Ufficiale
@@ -519,4 +519,4 @@ class ZeroPanelProvider extends PanelProvider
 
 **Versione:** 1.0  
 **Ultimo Aggiornamento:** Gennaio 2026  
-**Mantenuto da:** Quaeris Development Team
+**Mantenuto da:** healthcare_app Development Team

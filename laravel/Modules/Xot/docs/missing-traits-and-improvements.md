@@ -693,8 +693,8 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
-// QuaerisService.php
-class QuaerisService
+// healthcare_appService.php
+class healthcare_appService
 {
     use SingletonTrait;
 
@@ -1167,8 +1167,8 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
-// QuaerisService.php
-class QuaerisService
+// healthcare_appService.php
+class healthcare_appService
 {
     use SingletonTrait;
 

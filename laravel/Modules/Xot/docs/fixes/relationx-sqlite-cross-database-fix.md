@@ -90,11 +90,11 @@ echo $tenants->count(); // ✅ Output: 1
 
 ## Problema Risolto
 
-**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: quaeris_data.customer_user`
+**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: healthcare_app_data.customer_user`
 
 ## Causa Radice
 
-Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`quaeris_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
+Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`healthcare_app_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
 
 ## Soluzione Implementata
 
@@ -132,7 +132,7 @@ if ($pivotDbName !== $dbName || $relatedDbName !== $dbName) {
 - ✅ Multi-tenancy cross-database
 
 ### Moduli Affetti
-- **Quaeris Module**: Customer-User relationships
+- **healthcare_app Module**: Customer-User relationships
 - **User Module**: HasTenants trait functionality
 - **Tutti i moduli**: che usano `belongsToManyX` con database separati
 
@@ -160,7 +160,7 @@ echo $tenants->count(); // ✅ Output: 1
 
 ## Riferimenti
 
-- [Customer User Fix Summary](../../quaeris/docs/customer_user_fix_summary.md)
+- [Customer User Fix Summary](../../healthcare_app/docs/customer_user_fix_summary.md)
 - [Cross Database Relations](../../user/docs/cross_database_relations_issue.md)
 - [Multi-Tenant Architecture](../architecture/multi_tenant_design.md)
 

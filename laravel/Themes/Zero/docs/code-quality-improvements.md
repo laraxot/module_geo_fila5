@@ -13,17 +13,17 @@ This document summarizes the code quality improvements made to the Zero theme, f
 ### Fixed Files
 
 #### Theme Extras
-1. **add_multiple_contact_VivaServizi_manager_quaeris_it.php**
+1. **add_multiple_contact_VivaServizi_manager_healthcare_app_it.php**
    - Added Safe imports for curl functions (curl_init, curl_setopt, curl_exec, curl_close, curl_setopt_array)
    - Added Safe import for json_decode
    - Added Safe import for ini_set
 
-2. **add_contact_quaerisf3_local.php**
+2. **add_contact_healthcare_appf3_local.php**
    - Added Safe imports for curl functions
    - Added Safe import for json_decode
    - Added Safe import for ini_set
 
-3. **add_multiple_contact_ATS_manager_quaeris_it.php**
+3. **add_multiple_contact_ATS_manager_healthcare_app_it.php**
    - Added Safe imports for curl functions
    - Added Safe import for json_decode
    - Added Safe import for ini_set

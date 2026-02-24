@@ -136,7 +136,7 @@ Filament Dashboard (9 Resource + 4 Widget)
 
 // Crea uno schedule
 Schedule::create([
-    'command' => 'quaeris:generate-reports',
+    'command' => 'healthcare_app:generate-reports',
     'frequency_id' => Frequency::DAILY,
     'parameters' => json_encode(['--tenant' => 'acme']),
     'is_active' => true,
@@ -188,7 +188,7 @@ FailedImportRow::create([
 ## Integrazione con altri moduli
 
 ```
-Job <── Quaeris    (generazione PDF, export survey)
+Job <── healthcare_app    (generazione PDF, export survey)
 Job <── Notify     (invio email/SMS massivo)
 Job <── Limesurvey (import/export risposte)
 Job <── Activity   (pulizia log, aggregazione)

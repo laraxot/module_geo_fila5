@@ -177,7 +177,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-        'database.connections.activity.database' => 'quaeris_data_test',
+        'database.connections.activity.database' => 'healthcare_app_data_test',
     ]);
     
     return $app;

@@ -1,24 +1,24 @@
-# Analisi del Nesting Reale nel Progetto Quaeris Fila5 Mono
+# Analisi del Nesting Reale nel Progetto healthcare_app Fila5 Mono
 
 ## 📊 Analisi Completa delle Implementazioni Esistenti
 
-### 🎯 Modulo Quaeris - Implementazioni Real
+### 🎯 Modulo healthcare_app - Implementazioni Real
 
 #### 1. **Customer → SurveyPdfs RelationManager**
 
-**File:** `Modules/Quaeris/app/Filament/Resources/CustomerResource/RelationManagers/SurveyPdfsRelationManager.php`
+**File:** `Modules/healthcare_app/app/Filament/Resources/CustomerResource/RelationManagers/SurveyPdfsRelationManager.php`
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources\CustomerResource\RelationManagers;
+namespace Modules\healthcare_app\Filament\Resources\CustomerResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-use Modules\Quaeris\Filament\Resources\SurveyPdfResource;
+use Modules\healthcare_app\Filament\Resources\SurveyPdfResource;
 
 class SurveyPdfsRelationManager extends RelationManager
 {
@@ -53,7 +53,7 @@ class SurveyPdfsRelationManager extends RelationManager
 
 **Model Relationship Corrispondente:**
 ```php
-// Modules/Quaeris/app/Models/Customer.php
+// Modules/healthcare_app/app/Models/Customer.php
 public function surveyPdfs(): HasMany
 {
     return $this->hasMany(SurveyPdf::class);
@@ -62,14 +62,14 @@ public function surveyPdfs(): HasMany
 
 #### 2. **SurveyPdf → QuestionCharts RelationManager**
 
-**File:** `Modules/Quaeris/app/Filament/Resources/SurveyPdfResource/RelationManagers/QuestionChartsRelationManager.php`
+**File:** `Modules/healthcare_app/app/Filament/Resources/SurveyPdfResource/RelationManagers/QuestionChartsRelationManager.php`
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources\SurveyPdfResource\RelationManagers;
+namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\RelationManagers;
 
 use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
@@ -96,15 +96,15 @@ use Modules\Chart\Actions\Chart\GetFontFamilyOptions;
 use Modules\Chart\Actions\Chart\GetFontStyleOptions;
 use Modules\Chart\Actions\Chart\GetTypeOptions;
 use Modules\Limesurvey\Models\SurveyResponse;
-use Modules\Quaeris\Actions\QuestionChart\GetQuestionOptionsBySurveyId;
-use Modules\Quaeris\Actions\QuestionChart\MakeImgByQuestionChartModel2Action;
-use Modules\Quaeris\Actions\SurveyPdf\ExportTypeAction;
-use Modules\Quaeris\Datas\AnswersFilterData;
-use Modules\Quaeris\Exports\AlertExport;
-use Modules\Quaeris\Exports\EmailsExport;
-use Modules\Quaeris\Filament\Resources\QuestionChartResource;
-use Modules\Quaeris\Models\QuestionChart;
-use Modules\Quaeris\Models\SurveyPdf;
+use Modules\healthcare_app\Actions\QuestionChart\GetQuestionOptionsBySurveyId;
+use Modules\healthcare_app\Actions\QuestionChart\MakeImgByQuestionChartModel2Action;
+use Modules\healthcare_app\Actions\SurveyPdf\ExportTypeAction;
+use Modules\healthcare_app\Datas\AnswersFilterData;
+use Modules\healthcare_app\Exports\AlertExport;
+use Modules\healthcare_app\Exports\EmailsExport;
+use Modules\healthcare_app\Filament\Resources\QuestionChartResource;
+use Modules\healthcare_app\Models\QuestionChart;
+use Modules\healthcare_app\Models\SurveyPdf;
 use function Safe\date;
 use Webmozart\Assert\Assert;
 
@@ -316,7 +316,7 @@ class QuestionChartsRelationManager extends RelationManager
 
 **Model Relationships Corrispondenti:**
 ```php
-// Modules/Quaeris/app/Models/SurveyPdf.php
+// Modules/healthcare_app/app/Models/SurveyPdf.php
 public function questionCharts(): HasMany
 {
     return $this->hasMany(QuestionChart::class);
@@ -567,7 +567,7 @@ BulkAction::make('regen-imgs')
 ## 📊 Metriche di Utilizzo Correnti
 
 ### Moduli con Nesting Implementato:
-- ✅ **Quaeris**: 2 RelationManagers (Customer→SurveyPdfs, SurveyPdf→QuestionCharts)
+- ✅ **healthcare_app**: 2 RelationManagers (Customer→SurveyPdfs, SurveyPdf→QuestionCharts)
 - ✅ **User**: 1+ RelationManagers (User→Roles con XotBase)
 
 ### Moduli senza Nesting (opportunità):

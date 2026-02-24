@@ -23,7 +23,7 @@ In Laraxot è fondamentale comprendere la differenza tra le configurazioni di am
 
 ### Database
 - `DB_CONNECTION=mysql`: Usa MySQL per i test
-- Database con suffisso "_test" (es. `quaeris_data_test`, `quaeris_user_test`)
+- Database con suffisso "_test" (es. `healthcare_app_data_test`, `healthcare_app_user_test`)
 - **MAI** usare SQLite per i test, nemmeno per convenienza
 
 ### Motivazione

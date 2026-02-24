@@ -8,18 +8,18 @@ Analisi completa dell'architettura dei modelli Eloquent nel monorepo Laravel con
 
 - **Violazioni critiche trovate**: 5
 - **Linee di codice eliminate**: ~200+
-- **Moduli interessati**: 4 (Geo, Cms, Quaeris, User)
+- **Moduli interessati**: 4 (Geo, Cms, healthcare_app, User)
 - **Impatto**: Riduzione drastica della duplicazione, miglioramento della manutenibilità
 
 ---
 
 ## Problemi Identificati e Risolti
 
-### 1. ❌ Quaeris\Models\BaseModel estendeva Model invece di XotBaseModel
+### 1. ❌ healthcare_app\Models\BaseModel estendeva Model invece di XotBaseModel
 
 **Prima** (VIOLAZIONE CRITICA):
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,7 +33,7 @@ abstract class BaseModel extends Model
 
     public $incrementing = true;
     public $timestamps = true;
-    protected $connection = 'quaeris';
+    protected $connection = 'healthcare_app';
     protected $casts = ['published_at' => 'datetime', ...];
     protected $primaryKey = 'id';
     protected $hidden = [];
@@ -47,7 +47,7 @@ abstract class BaseModel extends Model
 
 **Dopo** (✅ DRY & KISS):
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
 
 use Modules\Xot\Models\XotBaseModel;
 
@@ -57,7 +57,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
     use HasExtraTrait;
     use InteractsWithMedia;
 
-    protected $connection = 'quaeris';
+    protected $connection = 'healthcare_app';
     protected $with = ['extra'];
 }
 ```
@@ -342,7 +342,7 @@ BaseModel → BaseModelLang → Post
 
 | Modulo | Classe | Righe Prima | Righe Dopo | Riduzione |
 |--------|--------|-------------|------------|-----------|
-| Quaeris | BaseModel | 66 | 20 | -70% |
+| healthcare_app | BaseModel | 66 | 20 | -70% |
 | Geo | BasePivot | 59 | 8 | -86% |
 | Geo | BaseMorphPivot | 67 | 8 | -88% |
 | Cms | BasePivot | 60 | 8 | -87% |
