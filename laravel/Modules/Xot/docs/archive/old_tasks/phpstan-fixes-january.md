@@ -195,7 +195,7 @@ public function getModels(): array
 ## 📚 **Riferimenti**
 
 ### **Documentazione Correlata**
-- [README.md Modulo Xot](./README.md)
+- [README.md Modulo Xot](./readme.md)
 - [Service Architecture](./service-architecture.md)
 - [Best Practices](./best-practices.md)
 
@@ -388,19 +388,16 @@ public function getAllColors(): array
 - [Exception Handler Types](exceptions/exception-handler-types.md)
 - [PHPStan Level 10 Guide](phpstan_livello10_linee_guida.md)
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 ## Collegamenti Correlati
 - [Architettura Modulo Xot](./architecture.md)
@@ -606,7 +603,7 @@ public function getModels(): array
 ## 📚 **Riferimenti**
 
 ### **Documentazione Correlata**
-- [README.md Modulo Xot](./README.md)
+- [README.md Modulo Xot](./readme.md)
 - [Service Architecture](./service-architecture.md)
 - [Best Practices](./best-practices.md)
 
@@ -807,25 +804,21 @@ public function getAllColors(): array
 - [Exception Handler Types](exceptions/exception-handler-types.md)
 - [PHPStan Level 10 Guide](phpstan_livello10_linee_guida.md)
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 ## Collegamenti Correlati
 - [Architettura Modulo Xot](./architecture.md)
@@ -1024,7 +1017,7 @@ public function getModels(): array
 ## 📚 **Riferimenti**
 
 ### **Documentazione Correlata**
-- [README.md Modulo Xot](./README.md)
+- [README.md Modulo Xot](./readme.md)
 - [Service Architecture](./service-architecture.md)
 - [Best Practices](./best-practices.md)
 
@@ -1058,7 +1051,6 @@ public function getModels(): array
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 
 
@@ -1071,6 +1063,5 @@ public function getModels(): array
 
 
 
-*Ultimo aggiornamento: Gennaio 2025* 
 
 

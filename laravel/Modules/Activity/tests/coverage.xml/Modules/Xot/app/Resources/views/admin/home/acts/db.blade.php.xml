@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="db.blade.php" path="/Modules/Xot/app/Resources/views/admin/home/acts" hash="617e740cc1776a6ce06b114ee2a703d08e3a1e0a">
+    <totals>
+      <lines total="47" comments="0" code="47" executable="37" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">@extends('adm_theme::layouts.app')</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">@section('content')</token>
+      </line>
+      <line no="8"/>
+      <line no="9">
+        <token name="T_INLINE_HTML">&lt;form action="{{ Request::fullUrl() }}" method="POST" enctype="multipart/form-data"&gt;</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">                @csrf</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">    &lt;input type="text" name="search" class="form-control"&gt;</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">    &lt;button class="btn btn-primary"&gt;search&lt;/button&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">&lt;/form&gt;</token>
+      </line>
+      <line no="14"/>
+      <line no="15">
+        <token name="T_INLINE_HTML">&lt;table class="table table-bordered"&gt;</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">    &lt;tr&gt;</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">        &lt;th&gt;Table name&lt;/th&gt;</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">        &lt;th&gt;Fields&lt;/th&gt;</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">    &lt;/tr&gt;</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">    @foreach ($rows as $row)</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">        &lt;tr&gt;</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">            &lt;td&gt;{{ $row['name'] }}</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">                &lt;br/&gt;model exists ?</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">                @if ($model_service-&gt;modelExistsByTableName($row['name']))</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">                &lt;b style="color:darkgreen"&gt;SI&lt;/b&gt;</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">                @else</token>
+      </line>
+      <line no="27">
+        <token name="T_INLINE_HTML">                &lt;b style="color:darkred"&gt;NO&lt;/b&gt;</token>
+      </line>
+      <line no="28">
+        <token name="T_INLINE_HTML">                @endif</token>
+      </line>
+      <line no="29"/>
+      <line no="30">
+        <token name="T_INLINE_HTML">            &lt;/td&gt;</token>
+      </line>
+      <line no="31">
+        <token name="T_INLINE_HTML">            &lt;td&gt;</token>
+      </line>
+      <line no="32">
+        <token name="T_INLINE_HTML">                &lt;table  class="table table-bordered"&gt;</token>
+      </line>
+      <line no="33">
+        <token name="T_INLINE_HTML">                    &lt;tr&gt;</token>
+      </line>
+      <line no="34">
+        <token name="T_INLINE_HTML">                        &lt;th&gt;Field Name&lt;/th&gt;</token>
+      </line>
+      <line no="35">
+        <token name="T_INLINE_HTML">                        &lt;th&gt;Field Type&lt;/th&gt;</token>
+      </line>
+      <line no="36">
+        <token name="T_INLINE_HTML">                    &lt;/tr&gt;</token>
+      </line>
+      <line no="37">
+        <token name="T_INLINE_HTML">                    @foreach ($row['fields'] as $field)</token>
+      </line>
+      <line no="38">
+        <token name="T_INLINE_HTML">                        &lt;tr&gt;&lt;td&gt;{{ $field['name'] }}&lt;/td&gt;&lt;td&gt;{{ $field['type'] }}&lt;/td&gt;&lt;/tr&gt;</token>
+      </line>
+      <line no="39">
+        <token name="T_INLINE_HTML">                    @endforeach</token>
+      </line>
+      <line no="40">
+        <token name="T_INLINE_HTML">                &lt;/table&gt;</token>
+      </line>
+      <line no="41">
+        <token name="T_INLINE_HTML">            &lt;/td&gt;</token>
+      </line>
+      <line no="42">
+        <token name="T_INLINE_HTML">        &lt;/tr&gt;</token>
+      </line>
+      <line no="43">
+        <token name="T_INLINE_HTML">    @endforeach</token>
+      </line>
+      <line no="44">
+        <token name="T_INLINE_HTML">&lt;/table&gt;</token>
+      </line>
+      <line no="45"/>
+      <line no="46">
+        <token name="T_INLINE_HTML">@endsection</token>
+      </line>
+      <line no="47"/>
+    </source>
+  </file>
+</phpunit>

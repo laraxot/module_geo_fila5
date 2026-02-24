@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="CacheLock.php" path="/Modules/Xot/app/Models" hash="6af37588e7960a7266ce020f6bc931c6269af5f9">
+    <totals>
+      <lines total="41" comments="22" code="19" executable="0" executed="0" percent="0"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\Xot\Models\CacheLock" start="32" executable="0" executed="0" crap="0">
+      <namespace name="Modules\Xot\Models"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Builder</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Contracts\ProfileContract</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Database\Factories\CacheLockFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="12">
+        <token name="T_DOC_COMMENT"> * Modules\Xot\Models\CacheLock.</token>
+      </line>
+      <line no="13">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT"> * @property string $key</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT"> * @property string $owner</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> * @property int $expiration</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT"> * @method static CacheLockFactory factory($count = null, $state = [])</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock newModelQuery()</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock newQuery()</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock query()</token>
+      </line>
+      <line no="22">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock whereExpiration($value)</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock whereKey($value)</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|CacheLock whereOwner($value)</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT"> * @property-read ProfileContract|null $creator</token>
+      </line>
+      <line no="27">
+        <token name="T_DOC_COMMENT"> * @property-read ProfileContract|null $deleter</token>
+      </line>
+      <line no="28">
+        <token name="T_DOC_COMMENT"> * @property-read ProfileContract|null $updater</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT"> * @mixin \Eloquent</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="32">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CacheLock</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">BaseModel</token>
+      </line>
+      <line no="33">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** @var list&lt;string&gt; */</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$fillable</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'key'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'owner'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'expiration'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="40">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="41"/>
+    </source>
+  </file>
+</phpunit>

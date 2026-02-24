@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="multi.blade.php" path="/Modules/Xot/app/Resources/views/livewire/rate" hash="cf48ceb7a54c014bf90e6e8dafdc586c65056fa9">
+    <totals>
+      <lines total="28" comments="0" code="28" executable="20" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;div&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">    @component('ui::components.modal.simple', ['guid' =&gt; $modal_guid, 'title' =&gt; $modal_title])</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">        @slot('content')</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">            @if (session()-&gt;has('message'))</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">                &lt;div class="alert alert-success" style="margin-top:30px;"&gt;x</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">                    {{ session('message') }}</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">            @endif</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">            @foreach ($goals as $goal)</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">                @livewire('rate.single', ['model' =&gt; $model, 'goal' =&gt; $goal])</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">            @endforeach</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">        @endslot</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">        @slot('btns')</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">            &lt;button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-dismiss="modal"&gt;Close&lt;/button&gt;</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">        @endslot</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">    @endcomponent</token>
+      </line>
+      <line no="22"/>
+      <line no="23">
+        <token name="T_INLINE_HTML">    &lt;button data-toggle="modal" data-target="#{{ $modal_guid }}" class="btn btn-primary mb-2"&gt;</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">        Vota &lt;i class="fas fa-star"&gt;&lt;/i&gt;</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">    &lt;/button&gt;</token>
+      </line>
+      <line no="26"/>
+      <line no="27">
+        <token name="T_INLINE_HTML">&lt;/div&gt;</token>
+      </line>
+      <line no="28"/>
+    </source>
+  </file>
+</phpunit>

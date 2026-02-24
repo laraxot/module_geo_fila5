@@ -1,11 +1,10 @@
 # 📚 **Indice Documentazione Modulo Activity**
 
-**Last Update**: 31 Gennaio 2026
 **Status**: ✅ PHPStan Level 10 Compliant
 **Module Version**: 2.3.0
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./README.md) - Panoramica completa e Quick Start.
+1. [README.md](./readme.md) - Panoramica completa e Quick Start.
 2. [roadmap.md](./roadmap.md) - Visione evolutiva e task aperti.
 3. [philosophy.md](./philosophy.md) - I principi dell'Audit Trail e dell'Event Sourcing.
 
@@ -25,9 +24,9 @@
 - 🧹 **[PHPMD Fixes](./phpmd-fixes.md)** - Risoluzione dei problemi di complessità cicromatica.
 
 ## 🔗 **Moduli Correlati**
-- [Xot](../../Xot/docs/README.md) - Core framework.
-- [Tenant](../../Tenant/docs/README.md) - Isolamento dati per tenant.
-- [User](../../User/docs/README.md) - Autenticazione e causer activity.
+- [Xot](../../xot/docs/readme.md) - Core framework.
+- [Tenant](../../tenant/docs/readme.md) - Isolamento dati per tenant.
+- [User](../../user/docs/readme.md) - Autenticazione e causer activity.
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

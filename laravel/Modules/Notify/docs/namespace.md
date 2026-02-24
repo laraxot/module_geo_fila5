@@ -25,11 +25,10 @@ namespace Modules\Notify\Console\Commands;
   - Namespace: `Modules\Notify\Console\Commands`
 
 ## Collegamenti e Regole Generali
-- Questa regola è valida per tutti i moduli: vedi [Xot Namespace Rules](../../Xot/docs/NAMESPACE_RULES.md)
+- Questa regola è valida per tutti i moduli: vedi [Xot Namespace Rules](../../xot/docs/namespace_rules.md)
 - Collegamento alla documentazione generale: [Regole Namespace Moduli - Root Docs](../../../docs/namespace-moduli.md)
 
 ---
 
-**Ultimo aggiornamento:** [DATE]
 
 **Link bidirezionale:** Aggiornare anche la root docs e la docs di Xot per riferimenti e cross-link.

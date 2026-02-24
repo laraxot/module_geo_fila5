@@ -1,0 +1,502 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Activity.php" path="/Modules/Activity/app/Models" hash="3862afafce445291ee570d8569244562febcbe3f">
+    <totals>
+      <lines total="135" comments="103" code="32" executable="0" executed="0" percent="0"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\Activity\Models\Activity" start="106" executable="0" executed="0" crap="0">
+      <namespace name="Modules\Activity\Models"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Activity\Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Builder</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Model</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Carbon</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Collection</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Activity\Database\Factories\ActivityFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Models\Traits\HasXotFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="13">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Spatie\Activitylog\Models\Activity</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SpatieActivity</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14"/>
+      <line no="15">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> * Class Activity.</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT"> * This class extends the BaseActivity model to represent activities in the application.</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT"> * @property int $id</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT"> * @property string|null $log_name</token>
+      </line>
+      <line no="22">
+        <token name="T_DOC_COMMENT"> * @property string $description</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT"> * @property string|null $subject_type</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT"> * @property int|null $subject_id</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT"> * @property string|null $causer_type</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT"> * @property string|null $causer_id</token>
+      </line>
+      <line no="27">
+        <token name="T_DOC_COMMENT"> * @property array&lt;string, mixed&gt;|Collection&lt;array-key, mixed&gt;|null $properties</token>
+      </line>
+      <line no="28">
+        <token name="T_DOC_COMMENT"> * @property string|null $batch_uuid</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT"> * @property string|null $event</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $created_at</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $updated_at</token>
+      </line>
+      <line no="32">
+        <token name="T_DOC_COMMENT"> * @property string|null $updated_by</token>
+      </line>
+      <line no="33">
+        <token name="T_DOC_COMMENT"> * @property string|null $created_by</token>
+      </line>
+      <line no="34">
+        <token name="T_DOC_COMMENT"> * @property string|null $deleted_at</token>
+      </line>
+      <line no="35">
+        <token name="T_DOC_COMMENT"> * @property string|null $deleted_by</token>
+      </line>
+      <line no="36">
+        <token name="T_DOC_COMMENT"> * @property-read Model|null $causer</token>
+      </line>
+      <line no="37">
+        <token name="T_DOC_COMMENT"> * @property-read Collection $changes</token>
+      </line>
+      <line no="38">
+        <token name="T_DOC_COMMENT"> * @property-read Model|null $subject</token>
+      </line>
+      <line no="39">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="40">
+        <token name="T_DOC_COMMENT"> * @method static ActivityFactory factory($count = null, $state = [])</token>
+      </line>
+      <line no="41">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity forBatch(string $batchUuid)</token>
+      </line>
+      <line no="42">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity forEvent(string $event)</token>
+      </line>
+      <line no="43">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity forSubject(Model $subject)</token>
+      </line>
+      <line no="44">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity hasBatch()</token>
+      </line>
+      <line no="45">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity inLog(...$logNames)</token>
+      </line>
+      <line no="46">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity newModelQuery()</token>
+      </line>
+      <line no="47">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity newQuery()</token>
+      </line>
+      <line no="48">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity query()</token>
+      </line>
+      <line no="49">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereBatchUuid($value)</token>
+      </line>
+      <line no="50">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereCauserId($value)</token>
+      </line>
+      <line no="51">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereCauserType($value)</token>
+      </line>
+      <line no="52">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereCreatedAt($value)</token>
+      </line>
+      <line no="53">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereCreatedBy($value)</token>
+      </line>
+      <line no="54">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereDeletedAt($value)</token>
+      </line>
+      <line no="55">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereDeletedBy($value)</token>
+      </line>
+      <line no="56">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereDescription($value)</token>
+      </line>
+      <line no="57">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereEvent($value)</token>
+      </line>
+      <line no="58">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereId($value)</token>
+      </line>
+      <line no="59">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereLogName($value)</token>
+      </line>
+      <line no="60">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereProperties($value)</token>
+      </line>
+      <line no="61">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereSubjectId($value)</token>
+      </line>
+      <line no="62">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereSubjectType($value)</token>
+      </line>
+      <line no="63">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereUpdatedAt($value)</token>
+      </line>
+      <line no="64">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereUpdatedBy($value)</token>
+      </line>
+      <line no="65">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity where($column, $operator = null, $value = null, $boolean = 'and')</token>
+      </line>
+      <line no="66">
+        <token name="T_DOC_COMMENT"> * @method static Activity create(array $attributes = [])</token>
+      </line>
+      <line no="67">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity clone()</token>
+      </line>
+      <line no="68">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity selectRaw(string $expression)</token>
+      </line>
+      <line no="69">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereDate(string $column, string $operator, mixed $value = null)</token>
+      </line>
+      <line no="70">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereBetween(string $column, array $values)</token>
+      </line>
+      <line no="71">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereMonth(string $column, string $operator, mixed $value = null)</token>
+      </line>
+      <line no="72">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereYear(string $column, string $operator, mixed $value = null)</token>
+      </line>
+      <line no="73">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity latest(string $column = 'created_at')</token>
+      </line>
+      <line no="74">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity limit(int $value)</token>
+      </line>
+      <line no="75">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity with(array|string $relations)</token>
+      </line>
+      <line no="76">
+        <token name="T_DOC_COMMENT"> * @method static int sum(string $column)</token>
+      </line>
+      <line no="77">
+        <token name="T_DOC_COMMENT"> * @method static Collection&lt;int, static&gt;|Builder&lt;static&gt;|Activity get(array|string $columns = ['*'])</token>
+      </line>
+      <line no="78">
+        <token name="T_DOC_COMMENT"> * @method static static|null first(array|string $columns = ['*'])</token>
+      </line>
+      <line no="79">
+        <token name="T_DOC_COMMENT"> * @method static static find(mixed $id, array|string $columns = ['*'])</token>
+      </line>
+      <line no="80">
+        <token name="T_DOC_COMMENT"> * @method static static|null firstWhere(string $column, mixed $operator = null, mixed $value = null)</token>
+      </line>
+      <line no="81">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity orderBy(string $column, string $direction = 'asc')</token>
+      </line>
+      <line no="82">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity groupBy(array|string $groups)</token>
+      </line>
+      <line no="83">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity having(string $column, string $operator, mixed $value)</token>
+      </line>
+      <line no="84">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity orWhere(string $column, mixed $operator = null, mixed $value = null)</token>
+      </line>
+      <line no="85">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereIn(string $column, array $values)</token>
+      </line>
+      <line no="86">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereNotIn(string $column, array $values)</token>
+      </line>
+      <line no="87">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereNull(string $column)</token>
+      </line>
+      <line no="88">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity whereNotNull(string $column)</token>
+      </line>
+      <line no="89">
+        <token name="T_DOC_COMMENT"> * @method static int count(string $columns = '*')</token>
+      </line>
+      <line no="90">
+        <token name="T_DOC_COMMENT"> * @method static Collection&lt;int, mixed&gt; pluck(string $column, string|null $key = null)</token>
+      </line>
+      <line no="91">
+        <token name="T_DOC_COMMENT"> * @method static mixed max(string $column)</token>
+      </line>
+      <line no="92">
+        <token name="T_DOC_COMMENT"> * @method static mixed min(string $column)</token>
+      </line>
+      <line no="93">
+        <token name="T_DOC_COMMENT"> * @method static mixed avg(string $column)</token>
+      </line>
+      <line no="94">
+        <token name="T_DOC_COMMENT"> * @method static int sum(string $column)</token>
+      </line>
+      <line no="95">
+        <token name="T_DOC_COMMENT"> * @method static bool exists()</token>
+      </line>
+      <line no="96">
+        <token name="T_DOC_COMMENT"> * @method static bool doesntExist()</token>
+      </line>
+      <line no="97">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity distinct()</token>
+      </line>
+      <line no="98">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity join(string $table, string $first, string $operator = null, string $second = null)</token>
+      </line>
+      <line no="99">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity leftJoin(string $table, string $first, string $operator = null, string $second = null)</token>
+      </line>
+      <line no="100">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity rightJoin(string $table, string $first, string $operator = null, string $second = null)</token>
+      </line>
+      <line no="101">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity crossJoin(string $table)</token>
+      </line>
+      <line no="102">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Activity causedBy(Model $causer)</token>
+      </line>
+      <line no="103">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="104">
+        <token name="T_DOC_COMMENT"> * @mixin \Eloquent</token>
+      </line>
+      <line no="105">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="106">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Activity</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SpatieActivity</token>
+      </line>
+      <line no="107">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="108">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">HasXotFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="109"/>
+      <line no="110">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$connection</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'activity'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="111"/>
+      <line no="112">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** @var list&lt;string&gt; */</token>
+      </line>
+      <line no="113">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$fillable</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="114">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="115">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'log_name'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="116">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'description'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="117">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'subject_type'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="118">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'event'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="119">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'subject_id'</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="120">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'causer_type'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COMMENT">// Added</token>
+      </line>
+      <line no="121">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'causer_id'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE">   </token>
+        <token name="T_COMMENT">// Added</token>
+      </line>
+      <line no="122">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'properties'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COMMENT">// Added</token>
+      </line>
+      <line no="123">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="124"/>
+      <line no="125">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// NOTE</token>
+      </line>
+      <line no="126">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// ----</token>
+      </line>
+      <line no="127">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// We intentionally do not override static query helper methods here</token>
+      </line>
+      <line no="128">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// (query, whereDate, whereMonth, whereYear, whereBetween, selectRaw,</token>
+      </line>
+      <line no="129">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// latest, limit, with, count, clone). The underlying</token>
+      </line>
+      <line no="130">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Spatie\Activitylog\Models\Activity base model already exposes the</token>
+      </line>
+      <line no="131">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// appropriate fluent Eloquent API, and PHPStan understands these via</token>
+      </line>
+      <line no="132">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// the @method annotations declared in this PHPDoc. Keeping only the</token>
+      </line>
+      <line no="133">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// annotations avoids return.type conflicts while preserving behaviour.</token>
+      </line>
+      <line no="134">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="135"/>
+    </source>
+  </file>
+</phpunit>

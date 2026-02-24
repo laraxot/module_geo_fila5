@@ -341,4 +341,3 @@ La ContactColumn ora:
 - ✅ Mostra correttamente le icone
 - ✅ Mostra solo i contatti del record specifico
 
-*Ultimo aggiornamento: [DATE]* 

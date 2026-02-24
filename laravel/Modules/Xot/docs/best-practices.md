@@ -757,13 +757,12 @@ public function createModel(array $data): MioModello
 
 ## 🔗 **Collegamenti e Riferimenti**
 
-- [**README.md**](README.md) - Documentazione principale del modulo
+- [**README.md**](readme.md) - Documentazione principale del modulo
 - [**Architettura**](architecture.md) - Architettura del modulo Xot
 - [**Best Practices Globali**](../docs/best-practices.md) - Best practices globali
 
 ---
 
-*Ultimo aggiornamento: giugno 2025 - Versione 2.0.0*
 # Best Practices per Laraxot
 
 ## Riferimenti al modello User

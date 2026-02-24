@@ -1387,7 +1387,7 @@ Stack trace:
 #125 /var/www/_bases/base_quaeris_fila4_mono/laravel/vendor/bin/pest(119): include('...')
 #126 {main}
 
-Next Illuminate\View\ViewException: Unable to resolve dependency [Parameter #0 [ <required> string $type ]] in class Modules\User\Filament\Widgets\RegistrationWidget (View: /var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/User/resources/views/pages/auth/register.blade.php) in /var/www/_bases/base_quaeris_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:198
+Next Illuminate\View\ViewException: Unable to resolve dependency [Parameter #0 [ <required> string $type ]] in class Modules\User\Filament\Widgets\RegistrationWidget (View: /var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/User/resources/views/auth/register.blade.php) in /var/www/_bases/base_quaeris_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:198
 Stack trace:
 #0 /var/www/_bases/base_quaeris_fila4_mono/laravel/vendor/livewire/livewire/src/Mechanisms/ExtendBlade/ExtendedCompilerEngine.php(58): Illuminate\View\Engines\CompilerEngine->handleViewException()
 #1 /var/www/_bases/base_quaeris_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(59): Livewire\Mechanisms\ExtendBlade\ExtendedCompilerEngine->handleViewException()
@@ -1502,7 +1502,7 @@ Stack trace:
 
 ----------------------------------------------------------------------------------
 
-Unable to resolve dependency [Parameter #0 [ <required> string $type ]] in class Modules\User\Filament\Widgets\RegistrationWidget (View: /var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/User/resources/views/pages/auth/register.blade.php)
+Unable to resolve dependency [Parameter #0 [ <required> string $type ]] in class Modules\User\Filament\Widgets\RegistrationWidget (View: /var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/User/resources/views/auth/register.blade.php)
 
   at Modules/User/tests/Feature/AuthComponentsTest.php:38
      34▕     test('register page loads correctly', function (): void {

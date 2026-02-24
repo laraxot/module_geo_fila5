@@ -225,7 +225,6 @@ php artisan notify:benchmark
 - [Piano Implementazione](../../../docs/module_reusability_implementation_plan.md)
 - [Script Controllo](../../../bashscripts/check_module_reusability.sh)
 
-*Ultimo aggiornamento: gennaio 2025*
 # Raccomandazioni di Ottimizzazione - Modulo Notify
 
 ## 🎯 Stato Attuale e Problemi Critici
@@ -457,4 +456,3 @@ php artisan notify:benchmark
 - [Piano Implementazione](../../../docs/module_reusability_implementation_plan.md)
 - [Script Controllo](../../../bashscripts/check_module_reusability.sh)
 
-*Ultimo aggiornamento: gennaio 2025*

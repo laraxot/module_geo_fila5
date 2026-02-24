@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="index.blade.php" path="/Modules/Xot/app/Resources/views/sitemap" hash="af59410a6f51aacda71cc752bce8968168c68e64">
+    <totals>
+      <lines total="16" comments="0" code="16" executable="11" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_ECHO">echo</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;'</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">    @foreach ($rows as $item)</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">        &lt;url&gt;</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">            &lt;loc&gt;{{ url(Panel::make()-&gt;get($item-&gt;linkable)-&gt;url()) }}&lt;/loc&gt;</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">            &lt;lastmod&gt;{{ $item-&gt;updated_at-&gt;tz('UTC')-&gt;toAtomString() }}&lt;/lastmod&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">            &lt;changefreq&gt;weekly&lt;/changefreq&gt;</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">            &lt;priority&gt;0.9&lt;/priority&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">        &lt;/url&gt;</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">    @endforeach</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">&lt;/urlset&gt;</token>
+      </line>
+      <line no="16"/>
+    </source>
+  </file>
+</phpunit>

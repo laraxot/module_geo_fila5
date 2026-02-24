@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="OverlookWidget.php" path="/Modules/UI/app/Filament/Widgets" hash="88709ae282581954ac9593b9d4c16a521f1e9c31">
+    <totals>
+      <lines total="61" comments="32" code="29" executable="1" executed="0" percent="0.00"/>
+      <methods count="1" tested="0" percent="0.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\UI\Filament\Widgets\OverlookWidget" start="13" executable="1" executed="0" crap="2">
+      <namespace name="Modules\UI\Filament\Widgets"/>
+      <method name="getFormSchema" signature="getFormSchema(): array" start="36" end="39" crap="2" executable="1" executed="0" coverage="0"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="6">
+        <token name="T_DOC_COMMENT"> * @see https://github.com/awcodes/overlook/blob/2.x/src/Widgets/OverlookWidget.php</token>
+      </line>
+      <line no="7">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="8"/>
+      <line no="9">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\UI\Filament\Widgets</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Filament\Widgets\XotBaseWidget</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_FINAL">final</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">OverlookWidget</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">XotBaseWidget</token>
+      </line>
+      <line no="14">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$icon</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'heroicon-o-envelope'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16"/>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$title</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18"/>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">/*</token>
+      </line>
+      <line no="20">
+        <token name="T_COMMENT">     * public array $grid = [</token>
+      </line>
+      <line no="21">
+        <token name="T_COMMENT">     * 'default' =&gt; 6,</token>
+      </line>
+      <line no="22">
+        <token name="T_COMMENT">     * 'sm' =&gt; 6,</token>
+      </line>
+      <line no="23">
+        <token name="T_COMMENT">     * 'md' =&gt; 6,</token>
+      </line>
+      <line no="24">
+        <token name="T_COMMENT">     * 'lg' =&gt; 6,</token>
+      </line>
+      <line no="25">
+        <token name="T_COMMENT">     * 'xl' =&gt; 6,</token>
+      </line>
+      <line no="26">
+        <token name="T_COMMENT">     * '2xl' =&gt; null,</token>
+      </line>
+      <line no="27">
+        <token name="T_COMMENT">     * ];</token>
+      </line>
+      <line no="28">
+        <token name="T_COMMENT">     */</token>
+      </line>
+      <line no="29"/>
+      <line no="30">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$stats</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="31"/>
+      <line no="32">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$view</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'ui::filament.widgets.overlook'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="33"/>
+      <line no="34">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">int</token>
+        <token name="T_PIPE">|</token>
+        <token name="T_STRING">string</token>
+        <token name="T_PIPE">|</token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$columnSpan</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="35"/>
+      <line no="36">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getFormSchema</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="40"/>
+      <line no="41">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">/*</token>
+      </line>
+      <line no="42">
+        <token name="T_COMMENT">     * public function mount(array $filter): void</token>
+      </line>
+      <line no="43">
+        <token name="T_COMMENT">     * {</token>
+      </line>
+      <line no="44">
+        <token name="T_COMMENT">     * $this-&gt;filter = $filter;</token>
+      </line>
+      <line no="45">
+        <token name="T_COMMENT">     *</token>
+      </line>
+      <line no="46">
+        <token name="T_COMMENT">     * $this-&gt;data = $this-&gt;getData();</token>
+      </line>
+      <line no="47">
+        <token name="T_COMMENT">     * // dddx($this-&gt;data);</token>
+      </line>
+      <line no="48">
+        <token name="T_COMMENT">     * if (empty($this-&gt;grid)) {</token>
+      </line>
+      <line no="49">
+        <token name="T_COMMENT">     * $this-&gt;grid = [</token>
+      </line>
+      <line no="50">
+        <token name="T_COMMENT">     * 'default' =&gt; 2,</token>
+      </line>
+      <line no="51">
+        <token name="T_COMMENT">     * 'sm' =&gt; 2,</token>
+      </line>
+      <line no="52">
+        <token name="T_COMMENT">     * 'md' =&gt; 3,</token>
+      </line>
+      <line no="53">
+        <token name="T_COMMENT">     * 'lg' =&gt; 3,</token>
+      </line>
+      <line no="54">
+        <token name="T_COMMENT">     * 'xl' =&gt; 3,</token>
+      </line>
+      <line no="55">
+        <token name="T_COMMENT">     * '2xl' =&gt; null,</token>
+      </line>
+      <line no="56">
+        <token name="T_COMMENT">     * ];</token>
+      </line>
+      <line no="57">
+        <token name="T_COMMENT">     * }</token>
+      </line>
+      <line no="58">
+        <token name="T_COMMENT">     * }</token>
+      </line>
+      <line no="59">
+        <token name="T_COMMENT">     */</token>
+      </line>
+      <line no="60">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="61"/>
+    </source>
+  </file>
+</phpunit>

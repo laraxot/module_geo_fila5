@@ -298,9 +298,10 @@ error_log
 public_html/fonts/
 laravel/Modules/*/resources/lang/
 laravel/Modules/*/_docs/
-.github.backup-20260203_121016/
+.github.backup-*/
 
 .github.backup-*/
 /templates/
 laravel/nunomaduro-phpinsights-ae780a9/
 laravel/phpinsights-standalone
+coverage.xml/

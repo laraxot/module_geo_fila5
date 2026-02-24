@@ -2,6 +2,17 @@
 
 **Stack**: Laravel 12 | Filament v5 | Pest v4 | PHPStan Level 10 | PHP 8.3+
 
+## Regola Fondamentale
+
+**Leggi → Ragiona → Studia → Aggiorna Docs → Migliora**
+
+Prima di modificare qualsiasi file:
+1. **Leggi** il file attentamente
+2. **Ragiona** sul contesto e le implicazioni
+3. **Studia** il codice esistente e le convenzioni
+4. **Aggiorna** i docs nelle cartelle dei moduli e dei temi
+5. **Migliora** il codice seguendo le convenzioni del progetto
+
 ## Quick Commands
 
 ### Testing (run single test)
@@ -65,6 +76,9 @@ array('key' => 'value');
 - Methods: `camelCase` (e.g., `getUserById`)
 - Variables: `camelCase` (e.g., `$userName`)
 - Enum keys: `TitleCase` (e.g., `FavoritePerson`)
+- **Test Files: `PascalCase` matching class name** (e.g., `GenerateDbDocumentationCommandTest.pest.php`)
+- **NON devono esistere file duplicati** con nomi che differiscono solo per case (case-sensitive su filesystem Linux)
+- **NON usare date nei nomi dei file .md** (es. usare `redundancy-fixes.md` invece di `redundancy-fixes-january-2026.md`)
 
 ### Type Safety
 ```php
@@ -130,6 +144,23 @@ Modules/{ModuleName}/
 3. Never commit secrets/keys
 4. Use `search-docs` tool before coding (Laravel ecosystem)
 5. Never use `property_exists()` on Eloquent models
+
+## Quality Checks (obbligatori dopo ogni modifica)
+
+Dopo ogni modifica al codice, eseguire SEMPRE:
+
+```bash
+# PHPStan (Level 10 - obbligatorio, tutti gli errori devono essere risolti)
+php -d memory_limit=2G ./vendor/bin/phpstan analyse
+
+# PHPMD (PHP Mess Detector)
+./vendor/bin/phpmd . text phpmd.xml --exclude vendor,node_modules,bootstrap,caches
+
+# PHPInsights
+./vendor/bin/phpinsights -v --no-interaction
+```
+
+Tutti gli errori di PHPStan, PHPMD e PHPInsights devono essere risolti prima di considerare completata la modifica.
 
 ## Testing Patterns
 

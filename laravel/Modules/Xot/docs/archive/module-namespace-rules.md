@@ -19,11 +19,9 @@
 - Test che verifica la presenza di tutte le chiavi di traduzione.
 
 ## Collegamenti
-Ultimo aggiornamento: maggio 2025.
 - [docs root](../../../../project_docs/actions.md)
-- [docs Lang](../../Lang/project_docs/filament-label.md)
+- [docs Lang](../../lang/project_docs/filament-label.md)
 
-Ultimo aggiornamento: maggio 2025.
 # Regola generale: Label e traduzioni in Filament
 
 ## Regola
@@ -46,6 +44,5 @@ Ultimo aggiornamento: maggio 2025.
 
 ## Collegamenti
 - [docs root](../../../../docs/actions.md)
-- [docs Lang](../../Lang/docs/filament-label.md)
+- [docs Lang](../../lang/docs/filament-label.md)
 
-Ultimo aggiornamento: maggio 2025.

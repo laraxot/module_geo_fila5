@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="manage_lang_module.blade.php" path="/Modules/Xot/app/Resources/views/livewire" hash="9fb725ce4e2e39d1900db44593fb5c60838067d9">
+    <totals>
+      <lines total="30" comments="0" code="30" executable="24" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;div&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">    &lt;table class="table"&gt;</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">        &lt;thead&gt;</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">            &lt;tr&gt;</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">                &lt;th&gt;Name&lt;/th&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">                &lt;th&gt;Size&lt;/th&gt;</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">                &lt;th&gt;&lt;/th&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">            &lt;/tr&gt;</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">        &lt;/thead&gt;</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">        &lt;tbody&gt;</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">            @foreach ($files as $file)</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">                &lt;tr&gt;</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">                    &lt;td&gt;{{ $file-&gt;getFilenameWithoutExtension() }}&lt;/td&gt;</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">                    &lt;td&gt;{{ $file-&gt;getSize() }}&lt;/td&gt;</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">                    &lt;td&gt;&lt;button wire:click="edit('{{ $file-&gt;getFilenameWithoutExtension() }}')"</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">                            class="btn btn-primary"&gt;Modifica&lt;/button&gt;&lt;/td&gt;</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">                &lt;/tr&gt;</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">            @endforeach</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">        &lt;tbody&gt;</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">    &lt;/table&gt;</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">    {{--  da mettere il nuovo modal</token>
+      </line>
+      <line no="27">
+        <token name="T_INLINE_HTML">    &lt;livewire:modal.form_array data="test" bodyView="xot::livewire.manage_lang_module.edit" /&gt;</token>
+      </line>
+      <line no="28">
+        <token name="T_INLINE_HTML">    --}}</token>
+      </line>
+      <line no="29">
+        <token name="T_INLINE_HTML">&lt;/div&gt;</token>
+      </line>
+      <line no="30"/>
+    </source>
+  </file>
+</phpunit>

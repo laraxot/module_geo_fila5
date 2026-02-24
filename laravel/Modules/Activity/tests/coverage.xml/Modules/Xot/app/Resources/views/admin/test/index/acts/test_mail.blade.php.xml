@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="test_mail.blade.php" path="/Modules/Xot/app/Resources/views/admin/test/index/acts" hash="bdf74731bc833dfe5476d177b6618bddeca7d18c">
+    <totals>
+      <lines total="38" comments="0" code="38" executable="29" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">@extends('adm_theme::layouts.app')</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">@section('content')</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">    WIP</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">    {{--</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">    &lt;form method="POST" action="{!! \Request::fullUrl() !!}"&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">        @csrf</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">        @method('POST')</token>
+      </line>
+      <line no="13"/>
+      <line no="14">
+        <token name="T_INLINE_HTML">        {!! Theme::inputHtml([</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">        'field' =&gt; (object) [</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">        'type' =&gt; 'text',</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">        'name' =&gt; 'to',</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">        ],</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">        ]) !!}</token>
+      </line>
+      <line no="20"/>
+      <line no="21">
+        <token name="T_INLINE_HTML">        {!! Theme::inputHtml([</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">        'field' =&gt; (object) [</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">        'type' =&gt; 'text',</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">        'name' =&gt; 'subject',</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">        ],</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">        ]) !!}</token>
+      </line>
+      <line no="27"/>
+      <line no="28">
+        <token name="T_INLINE_HTML">        {!! Theme::inputHtml([</token>
+      </line>
+      <line no="29">
+        <token name="T_INLINE_HTML">        'field' =&gt; (object) [</token>
+      </line>
+      <line no="30">
+        <token name="T_INLINE_HTML">        'type' =&gt; 'wysiwyg',</token>
+      </line>
+      <line no="31">
+        <token name="T_INLINE_HTML">        'name' =&gt; 'body',</token>
+      </line>
+      <line no="32">
+        <token name="T_INLINE_HTML">        ],</token>
+      </line>
+      <line no="33">
+        <token name="T_INLINE_HTML">        ]) !!}</token>
+      </line>
+      <line no="34">
+        <token name="T_INLINE_HTML">        &lt;button type="submit" class="btn btn-primary"&gt;Test !&lt;/button&gt;</token>
+      </line>
+      <line no="35">
+        <token name="T_INLINE_HTML">    &lt;/form&gt;</token>
+      </line>
+      <line no="36">
+        <token name="T_INLINE_HTML">    --}}</token>
+      </line>
+      <line no="37">
+        <token name="T_INLINE_HTML">@endsection</token>
+      </line>
+      <line no="38"/>
+    </source>
+  </file>
+</phpunit>

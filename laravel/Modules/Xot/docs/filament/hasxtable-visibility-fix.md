@@ -135,4 +135,3 @@ curl http://quaeris.local/quaeris/admin/ats/survey-pdfs/16/question-charts/226
 2. **Compatibilità Filament**: I trait di Filament (`InteractsWithTable`) hanno requisiti specifici di visibilità
 3. **Documentazione**: La documentazione esistente (`widget-method-visibility-rules.md`) era corretta ma non era stata applicata al trait base
 
-*Ultimo aggiornamento: 2026-01-27*

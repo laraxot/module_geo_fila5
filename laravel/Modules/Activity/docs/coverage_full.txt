@@ -2622,10 +2622,10 @@
   Xot/app/Resources/views/factory-generator/class-factory.blade [90m.......[39m [32m100.0%[39m  
   Xot/app/Resources/views/factory-generator/method-factory.blade [90m........[39m [31m0.0%[39m  
   Xot/app/Resources/views/filament/infolists/components/file-content.… [90m..[39m [31m0.0%[39m  
-  Xot/app/Resources/views/filament/pages/dashboard.blade [90m................[39m [31m0.0%[39m  
-  Xot/app/Resources/views/filament/pages/env.blade [90m......................[39m [31m0.0%[39m  
-  Xot/app/Resources/views/filament/pages/health.blade [90m...................[39m [31m0.0%[39m  
-  Xot/app/Resources/views/filament/pages/metatag.blade [90m..................[39m [31m0.0%[39m  
+  Xot/app/Resources/views/filament/dashboard.blade [90m................[39m [31m0.0%[39m  
+  Xot/app/Resources/views/filament/env.blade [90m......................[39m [31m0.0%[39m  
+  Xot/app/Resources/views/filament/health.blade [90m...................[39m [31m0.0%[39m  
+  Xot/app/Resources/views/filament/metatag.blade [90m..................[39m [31m0.0%[39m  
   Xot/app/Resources/views/filament/widgets/clock.blade [90m..................[39m [31m0.0%[39m  
   Xot/app/Resources/views/filament/widgets/env.blade [90m....................[39m [31m0.0%[39m  
   Xot/app/Resources/views/home/index/acts/artisan.blade [90m.................[39m [31m0.0%[39m  
