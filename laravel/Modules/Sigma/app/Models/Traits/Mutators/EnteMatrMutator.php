@@ -28,9 +28,11 @@ trait EnteMatrMutator
         if (\in_array('ente', $this->getFillable(), false)) {
             $this->ente = $value;
 
-            // Guard: modello deve avere PK per salvare
+            // Guard: modello deve avere PK per salvare ed evitare loop con Activity Log
             if ($this->getKey() != null) {
-                $this->update(['ente' => $value]);
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['ente' => $value]);
+                });
             }
         }
 
@@ -55,7 +57,9 @@ trait EnteMatrMutator
 
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() != null) {
-            $this->update(['cognome' => $value]);
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['cognome' => $value]);
+            });
         }
 
         return (string) ($value ?? '').' ';
@@ -81,7 +85,11 @@ trait EnteMatrMutator
         /** @var object{emaind: string|null} $ana02f */
         $value = $ana02f->emaind;
         if (\in_array('email', $this->getFillable(), false)) {
-            $this->update(['email' => $value]);
+            if ($this->getKey() != null) {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['email' => $value]);
+                });
+            }
         }
 
         return $value;
@@ -107,7 +115,11 @@ trait EnteMatrMutator
         /** @var object{sesso: string|null} $ana02f */
         $value = Str::of((string) $ana02f->sesso)->lower()->toString();
         if (\in_array('sesso', $this->getFillable(), false)) {
-            $this->update(['sesso' => $value]);
+            if ($this->getKey() != null) {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['sesso' => $value]);
+                });
+            }
         }
 
         return $value;
@@ -133,7 +145,11 @@ trait EnteMatrMutator
         /** @var object{codfis: string|null} $ana02f */
         $value = $ana02f->codfis;
         if (\in_array('codfis', $this->getFillable(), false)) {
-            $this->update(['codfis' => $value]);
+            if ($this->getKey() != null) {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['codfis' => $value]);
+                });
+            }
         }
 
         return $value;
@@ -159,7 +175,11 @@ trait EnteMatrMutator
         /** @var object{inail: string|null} $ana02f */
         $value = $ana02f->inail;
         if (\in_array('inail', $this->getFillable(), false)) {
-            $this->update(['inail' => $value]);
+            if ($this->getKey() != null) {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['inail' => $value]);
+                });
+            }
         }
 
         return $value;
@@ -185,7 +205,9 @@ trait EnteMatrMutator
 
             // Guard: modello deve avere PK per salvare
             if ($this->getKey() != null) {
-                $this->update(['nome' => $value]);
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['nome' => $value]);
+                });
             }
         }
 
@@ -223,7 +245,11 @@ trait EnteMatrMutator
         // $this->save();
         // dddx($this->attributes);
         // dddx($this->getFillable());
-        $this->update([$fieldname => $value]);
+        if ($this->getKey() != null) {
+            static::withoutEvents(function () use ($fieldname, $value): void {
+                $this->update([$fieldname => $value]);
+            });
+        }
 
         return $value;
     }
@@ -251,7 +277,11 @@ trait EnteMatrMutator
         // $value = Carbon::parse($value); //meglio usare interi..
         // if ($this->attributes['last_data_assunz'] !== $value && '' !== $value) {
         if (\in_array('last_data_assunz', $this->getFillable(), false)) {
-            $res = tap($this)->update(['last_data_assunz' => $value]);
+            if ($this->getKey() != null) {
+                static::withoutEvents(function () use ($value): void {
+                    tap($this)->update(['last_data_assunz' => $value]);
+                });
+            }
         } else {
             dddx('[last_data_assunz] not in fillable in class ['.static::class.']');
         }

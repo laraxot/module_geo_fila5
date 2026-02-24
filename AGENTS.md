@@ -78,7 +78,11 @@ array('key' => 'value');
 - Enum keys: `TitleCase` (e.g., `FavoritePerson`)
 - **Test Files: `PascalCase` matching class name** (e.g., `GenerateDbDocumentationCommandTest.pest.php`)
 - **NON devono esistere file duplicati** con nomi che differiscono solo per case (case-sensitive su filesystem Linux)
-- **NON usare date nei nomi dei file .md** (es. usare `redundancy-fixes.md` invece di `redundancy-fixes-january-2026.md`)
+  - Duplicati lowercase: rinominare aggiungendo `.old` — `git mv foo.php foo.php.old`
+- **Docs `.md`: NIENTE DATE nel nome** — nomi descrittivi basati sull'argomento
+  - WRONG: `redundancy-fixes-january-2026.md`, `phpstan-fixes-2025-10.md`
+  - CORRECT: `redundancy-fixes.md`, `phpstan-fixes.md`
+  - Eccezione: migration files DEVONO avere timestamp (`2024_01_01_000000_create_table.php`)
 
 ### Type Safety
 ```php
