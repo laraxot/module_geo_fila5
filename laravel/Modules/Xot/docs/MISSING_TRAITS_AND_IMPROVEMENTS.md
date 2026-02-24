@@ -69,8 +69,13 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
+<<<<<<< HEAD
 // ExternalProjectService.php
 class ExternalProjectService
+=======
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 {
     use SingletonTrait;
     
@@ -543,8 +548,13 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
+<<<<<<< HEAD
 // ExternalProjectService.php
 class ExternalProjectService
+=======
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 {
     use SingletonTrait;
     

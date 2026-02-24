@@ -97,7 +97,7 @@ $dbName = 'file:memdb_test_'.Str::random(10).'?mode=memory&cache=shared';
 // ✅ CORRETTO - Usa sempre MySQL da .env.testing
 // Il file .env.testing definisce:
 // DB_CONNECTION=mysql
-// DB_DATABASE=quaeris_data_test  (suffisso "_test" obbligatorio)
+// DB_DATABASE=ptvx_data_test  (suffisso "_test" obbligatorio)
 // DB_HOST=127.0.0.1
 // DB_PORT=3306
 
@@ -108,9 +108,9 @@ $dbName = 'file:memdb_test_'.Str::random(10).'?mode=memory&cache=shared';
 ### 3. Pattern Database Test
 ```bash
 # Schema: {nome_database_produzione}_test
-PRODUZIONE: quaeris_data    → TEST: quaeris_data_test
-PRODUZIONE: quaeris_user    → TEST: quaeris_user_test  
-PRODUZIONE: quaeris_survey  → TEST: quaeris_survey_test
+PRODUZIONE: ptvx_data    → TEST: ptvx_data_test
+PRODUZIONE: ptvx_user    → TEST: ptvx_user_test  
+PRODUZIONE: ptvx_survey  → TEST: ptvx_survey_test
 
 # Pattern: {nome}_test - SEMPRE e SOLO _test
 ```
@@ -124,7 +124,7 @@ APP_DEBUG=true
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=quaeris_data_test          # Suffisso "_test" obbligatorio
+DB_DATABASE=ptvx_data_test          # Suffisso "_test" obbligatorio
 DB_USERNAME=marco
 DB_PASSWORD=marco
 

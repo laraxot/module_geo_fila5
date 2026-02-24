@@ -165,7 +165,11 @@ Illuminate\Database\Eloquent\Relations\MorphPivot
 Per verificare che non ci siano più modelli che estendono direttamente `Model`:
 
 ```bash
+<<<<<<< HEAD
 cd /var/www/_bases/base_app_fila4_mono/laravel/Modules/User
+=======
+cd /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 grep -r "extends Model" app/Models/ --include="*.php" | grep -v "BaseModel\|BasePivot\|BaseMorphPivot"
 ```
 
@@ -174,7 +178,11 @@ grep -r "extends Model" app/Models/ --include="*.php" | grep -v "BaseModel\|Base
 Dopo le modifiche, eseguire:
 
 ```bash
+<<<<<<< HEAD
 cd /var/www/_bases/base_app_fila4_mono/laravel/Modules/User
+=======
+cd /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/User
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ./vendor/bin/phpstan analyse --memory-limit=2G
 ```
 

@@ -400,7 +400,7 @@ try {
 // config/modulo_esempio.php
 return [
     'database' => [
-        'connection' => env('QUAERIS_DB_CONNECTION', 'modulo_esempio'),
+        'connection' => env('PTVX_DB_CONNECTION', 'modulo_esempio'),
     ],
     'limesurvey' => [
         'api' => [

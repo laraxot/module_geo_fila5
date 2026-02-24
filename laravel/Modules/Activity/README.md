@@ -167,7 +167,11 @@ class Order extends BaseModel
 
 ```
 Activity <── User      (login/logout events, user actions)
+<<<<<<< HEAD
 Activity <── Survey    (survey CRUD, dashboard actions)
+=======
+Activity <── ModuloEsempio   (survey CRUD, dashboard actions)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 Activity <── Cms       (page/content modifications)
 Activity <── Media     (file upload/delete tracking)
 Activity <── Tenant    (multi-tenant audit isolation)

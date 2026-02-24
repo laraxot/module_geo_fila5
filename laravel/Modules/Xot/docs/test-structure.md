@@ -200,7 +200,7 @@ Modules/
 │   │   ├── Feature/
 │   │   └── Unit/
 │   └── app/
-└── Quaeris/
+└── ModuloEsempio/
     ├── tests/
     │   ├── Feature/
     │   └── Unit/

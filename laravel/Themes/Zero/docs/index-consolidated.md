@@ -124,7 +124,7 @@ Theme development roadmap.
 ## Related Modules
 
 - **Limesurvey Module** (`../../laravel/Modules/Limesurvey/docs/`) - Survey data integration
-- **Quaeris Module** (`../../laravel/Modules/Quaeris/docs/`) - Dashboard and reporting
+- **ModuloEsempio Module** (`../../laravel/Modules/ModuloEsempio/docs/`) - Dashboard and reporting
 - **Chart Module** (`../../laravel/Modules/Chart/docs/`) - Chart generation
 
 ## File Organization

@@ -138,7 +138,7 @@ cd init
 
 ```
 # In Cursor/Windsurf/Cline
-Analizza gli errori PHPStan in Modules/Quaeris e suggerisci correzioni seguendo le regole in .windsurf/rules/
+Analizza gli errori PHPStan in Modules/ModuloEsempio e suggerisci correzioni seguendo le regole in .windsurf/rules/
 ```
 
 ### 2. Refactoring Modulo
@@ -174,7 +174,7 @@ iflow
 
 ```
 # Con memory + sequential-thinking
-Analizza l'architettura del modulo Quaeris:
+Analizza l'architettura del modulo ModuloEsempio:
 1. Identifica pattern utilizzati
 2. Documenta dipendenze
 3. Suggerisci miglioramenti

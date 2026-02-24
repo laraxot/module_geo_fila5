@@ -69,7 +69,11 @@ interface UserContract extends
 > - `@property \Illuminate\Database\Eloquent\Collection<int, UserRole> $roles`
 > - `@property \Illuminate\Database\Eloquent\Collection<int, TeamContract> $teams`
 >
+<<<<<<< HEAD
 > Questo consente a PHPStan level 10 di riconoscere correttamente i magic attribute Eloquent quando i moduli (es. User, ExternalProject) lavorano solo contro il contratto Xot.
+=======
+> Questo consente a PHPStan level 10 di riconoscere correttamente i magic attribute Eloquent quando i moduli (es. User, ModuloEsempio) lavorano solo contro il contratto Xot.
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 ### 2. ProfileContract
 **File**: `app/Contracts/ProfileContract.php`

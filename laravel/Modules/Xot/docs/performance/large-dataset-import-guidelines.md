@@ -64,7 +64,11 @@ try {
 
 ## Module-Specific Considerations
 
+<<<<<<< HEAD
 ### ExternalProject Module
+=======
+### ModuloEsempio Module
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - Optimize survey contact imports
 - Implement JSON payload persistence
 - Use queue-based processing for contact operations

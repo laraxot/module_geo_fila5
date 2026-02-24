@@ -3,7 +3,7 @@
 # Script per eseguire PHPStan su tutti i moduli Laravel
 
 # Vai alla directory Laravel
-cd /var/www/html/_bases/base_quaeris_fila3_mono/laravel
+cd /var/www/html/_bases/base_ptvx_fila3_mono/laravel
 
 # Ottieni tutti i moduli
 MODULES=($(ls -d Modules/*/ | cut -d'/' -f2))

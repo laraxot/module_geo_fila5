@@ -52,7 +52,7 @@ Themes/[ThemeName]/
 │   │   ├── components/
 │   │   ├── layouts/
 │   │   └── pages/
-├── _quaeris_fila4_mono.code-workspace
+├── _ptvx_fila4_mono.code-workspace
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js

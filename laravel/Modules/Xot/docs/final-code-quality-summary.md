@@ -64,7 +64,11 @@ if (property_exists($stateObject, 'name')) {
 - **Xot**: Base engine with 50+ base classes, 20+ service providers, 15+ traits
 - **User**: Authentication with advanced features
 - **Cms**: Content management system
+<<<<<<< HEAD
 - **ExternalProject**: Main application module
+=======
+- **ModuloEsempio**: Main application module
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **UI**: Shared UI components
 - **Activity**: Activity tracking and logging
 - **Tenant**: Multi-tenancy support

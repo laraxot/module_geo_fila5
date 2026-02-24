@@ -59,7 +59,7 @@ Script da spostare:
 - `fix_all_merge_conflicts_v3.sh`
 - `fix_all_merge_conflicts_v4.sh`
 - `fix_conflicts.sh`
-- `fix_conflicts_quaeris.sh`
+- `fix_conflicts_ptvx.sh`
 - `fix_conflicts_robust.sh`
 - `fix_conflicts_simple.sh`
 - `fix_git_conflicts_*.sh` (tutti i fix_git_conflicts_*.sh)

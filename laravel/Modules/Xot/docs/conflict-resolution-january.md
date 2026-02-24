@@ -9,8 +9,8 @@
 - **Issue**: Presence of multiple `.backup` files polluting the codebase.
 - **Resolution**: Deleted the following files:
     - `Modules/Chart/app/Actions/JpGraph/V1/LineSubQuestionAction.php.backup`
-    - `Modules/Quaeris/app/Filament/Widgets/BaseTableWidget.php.backup`
-    - `Modules/Quaeris/app/Datas/AlertDashboardFilterData.php.backup`
-    - `Modules/Quaeris/app/Datas/DashboardFilterData.php.backup`
+    - `Modules/ModuloEsempio/app/Filament/Widgets/BaseTableWidget.php.backup`
+    - `Modules/ModuloEsempio/app/Datas/AlertDashboardFilterData.php.backup`
+    - `Modules/ModuloEsempio/app/Datas/DashboardFilterData.php.backup`
     - `Modules/Xot/tests/Unit/metatagdatatest.php.backup`
     - `Modules/Xot/tests/pest.php.backup`

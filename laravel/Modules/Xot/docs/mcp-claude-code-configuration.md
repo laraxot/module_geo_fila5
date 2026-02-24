@@ -2,7 +2,11 @@
 
 ## Panoramica
 
+<<<<<<< HEAD
 Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto.
+=======
+Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto ModuloEsempio Fila4 Mono.
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 ## Prerequisiti
 
@@ -17,7 +21,11 @@ Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida desc
 Permette l'accesso ai file del progetto.
 
 ```bash
+<<<<<<< HEAD
 claude mcp add --transport http filesystem http://localhost:8000/mcp/filesystem
+=======
+claude mcp add --transport http filesystem-ptvx http://localhost:8000/mcp/filesystem
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ```
 
 **Nota**: Richiede un server MCP HTTP in esecuzione. Per sviluppo locale, utilizzare server STDIO invece.
@@ -27,7 +35,7 @@ claude mcp add --transport http filesystem http://localhost:8000/mcp/filesystem
 Permette chiamate HTTP e API.
 
 ```bash
-claude mcp add --transport http fetch-quaeris http://localhost:8000/mcp/fetch
+claude mcp add --transport http fetch-ptvx http://localhost:8000/mcp/fetch
 ```
 
 ### 3. Memory Server
@@ -35,7 +43,7 @@ claude mcp add --transport http fetch-quaeris http://localhost:8000/mcp/fetch
 Memoria temporanea per contesto tra richieste.
 
 ```bash
-claude mcp add --transport http memory-quaeris http://localhost:8000/mcp/memory
+claude mcp add --transport http memory-ptvx http://localhost:8000/mcp/memory
 ```
 
 ### 4. MySQL Server
@@ -43,7 +51,7 @@ claude mcp add --transport http memory-quaeris http://localhost:8000/mcp/memory
 Interazione con database MySQL.
 
 ```bash
-claude mcp add --transport http mysql-quaeris http://localhost:8000/mcp/mysql
+claude mcp add --transport http mysql-ptvx http://localhost:8000/mcp/mysql
 ```
 
 **Variabili d'ambiente richieste**:
@@ -58,7 +66,7 @@ claude mcp add --transport http mysql-quaeris http://localhost:8000/mcp/mysql
 Analisi codice e ottimizzazione.
 
 ```bash
-claude mcp add --transport http sequential-thinking-quaeris http://localhost:8000/mcp/sequential-thinking
+claude mcp add --transport http sequential-thinking-ptvx http://localhost:8000/mcp/sequential-thinking
 ```
 
 ## Configurazione con Server STDIO (Raccomandato)
@@ -68,13 +76,13 @@ Per sviluppo locale, è preferibile utilizzare server STDIO invece di HTTP:
 ### Filesystem con STDIO
 
 ```bash
-claude mcp add filesystem-quaeris npx -y @modelcontextprotocol/server-filesystem server-memory
+claude mcp add filesystem-ptvx npx -y @modelcontextprotocol/server-filesystem server-memory
 ```
 
 ### MySQL con STDIO
 
 ```bash
-claude mcp add mysql-quaeris npx -y @modelcontextprotocol/server-mysql
+claude mcp add mysql-ptvx npx -y @modelcontextprotocol/server-mysql
 ```
 
 **Con variabili d'ambiente**:
@@ -85,7 +93,7 @@ export DB_USERNAME=your_username
 export DB_PASSWORD=your_password
 export DB_DATABASE=your_database
 
-claude mcp add mysql-quaeris npx -y @modelcontextprotocol/server-mysql
+claude mcp add mysql-ptvx npx -y @modelcontextprotocol/server-mysql
 ```
 
 ## Gestione Server
@@ -99,13 +107,13 @@ claude mcp list
 ### Rimozione Server
 
 ```bash
-claude mcp remove filesystem-quaeris
+claude mcp remove filesystem-ptvx
 ```
 
 ### Test Connessione
 
 ```bash
-claude mcp test filesystem-quaeris
+claude mcp test filesystem-ptvx
 ```
 
 ## Configurazione Avanzata
@@ -116,7 +124,7 @@ Per server MCP personalizzati, creare uno script wrapper:
 
 ```bash
 #!/bin/bash
-# ~/bin/mcp-mysql-quaeris.sh
+# ~/bin/mcp-mysql-ptvx.sh
 
 export MYSQL_HOST="${DB_HOST:-localhost}"
 export MYSQL_PORT="${DB_PORT:-3306}"
@@ -130,8 +138,8 @@ exec npx -y @modelcontextprotocol/server-mysql
 Poi aggiungere il server:
 
 ```bash
-chmod +x ~/bin/mcp-mysql-quaeris.sh
-claude mcp add mysql-quaeris ~/bin/mcp-mysql-quaeris.sh
+chmod +x ~/bin/mcp-mysql-ptvx.sh
+claude mcp add mysql-ptvx ~/bin/mcp-mysql-ptvx.sh
 ```
 
 ## Troubleshooting

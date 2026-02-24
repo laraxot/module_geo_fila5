@@ -73,7 +73,7 @@ If you need callbacks, always use `RawJs`.
 
 For a minimal, production-ready example showing 2 labels per bar, see:
 
-**`Modules/Quaeris/Filament/Widgets/SimpleChartWidget.php`**
+**`Modules/ModuloEsempio/Filament/Widgets/SimpleChartWidget.php`**
 
 ```php
 protected function getOptions(): RawJs

@@ -167,7 +167,11 @@ Modules/
 │   │   ├── migrations/
 │   │   └── seeders/
 │   └── app/
+<<<<<<< HEAD
 └── ExternalProject/
+=======
+└── ModuloEsempio/
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
     ├── database/
     │   ├── factories/
     │   ├── migrations/

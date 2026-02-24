@@ -280,7 +280,11 @@ $roles = Socialite::driver('microsoft')->user()->getRoles();
 ],
 ```
 
+<<<<<<< HEAD
 ## Regole per ExternalProject Fila5
+=======
+## Regole per ModuloEsempio Fila5
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 ### 1. Usare Filament Socialite Plugin
 - Installare `dutchcodingcompany/filament-socialite`

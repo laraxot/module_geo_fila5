@@ -271,7 +271,11 @@ if (isset($record->email)) {
 - User/Filament/Resources/BaseProfileResource
 - User/Filament/Resources/UserResource
 - Media/Filament/Resources (3 file)
+<<<<<<< HEAD
 - ExternalProject/Filament (2 file)
+=======
+- ModuloEsempio/Filament (2 file)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 **Impact**: Alto (UI user-facing)
 **Risk**: Medio (bugs visibili)
@@ -399,7 +403,11 @@ if (method_exists($record, 'getUrl')) {
 | Xot | 12 | High | Alta |
 | User | 5 | Critical | Media |
 | Media | 3 | High | Bassa |
+<<<<<<< HEAD
 | ExternalProject | 2 | Medium | Bassa |
+=======
+| ModuloEsempio | 2 | Medium | Bassa |
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 | Others | 52 (docs) | Low | Zero |
 
 ### Estimated Effort

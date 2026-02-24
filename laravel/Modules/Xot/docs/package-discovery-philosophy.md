@@ -339,7 +339,11 @@ The command discovered these categories:
 **Module Packages**:
 - Xot → XotServiceProvider + AdminPanelProvider
 - User → UserServiceProvider + AdminPanelProvider + PassportServiceProvider
+<<<<<<< HEAD
 - Activity, Tenant, UI, Geo, Media, Notify, Chart, Lang, Cms, Job, Gdpr, DbForge, CloudStorage, Limesurvey, ExternalProject
+=======
+- Activity, Tenant, UI, Geo, Media, Notify, Chart, Lang, Cms, Job, Gdpr, DbForge, CloudStorage, Limesurvey, ModuloEsempio
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 **Supporting Libraries**:
 - Blade icons, Carbon, Excel, Debugbar, IDE Helper, PHPInsights

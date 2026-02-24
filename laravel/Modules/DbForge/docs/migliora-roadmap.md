@@ -1,8 +1,8 @@
-# Migliora Roadmap - Guida Completa al Nesting di Filament in Quaeris Fila5 Mono
+# Migliora Roadmap - Guida Completa al Nesting di Filament in ModuloEsempio Fila5 Mono
 
 ## 📋 Panoramica del Nesting nel Progetto
 
-Questo documento analizza in profondità l'implementazione del nesting di Filament nel progetto Quaeris Fila5 Mono, identificando i moduli che utilizzano già questa funzionalità e quelli che potrebbero beneficiarne.
+Questo documento analizza in profondità l'implementazione del nesting di Filament nel progetto ModuloEsempio Fila5 Mono, identificando i moduli che utilizzano già questa funzionalità e quelli che potrebbero beneficiarne.
 
 ### 🏗️ Architettura Base Xot
 
@@ -16,7 +16,7 @@ Il progetto utilizza **XotBaseRelationManager** come base per tutti i RelationMa
 
 ### ✅ Moduli che Già Utilizzano il Nesting
 
-#### 1. **Modulo Quaeris** - Implementazione Completa
+#### 1. **Modulo ModuloEsempio** - Implementazione Completa
 
 **Relazioni Implementate:**
 - **Customer → SurveyPdfs** (HasMany)
@@ -483,7 +483,7 @@ class QuestionChartsRelationManager extends XotBaseRelationManager
 
 ### Pattern del Progetto
 - XotBaseRelationManager (`Modules/Xot/`)
-- Esempi esistenti in `Quaeris/` e `User/`
+- Esempi esistenti in `ModuloEsempio/` e `User/`
 
 ### Best Practices
 - Sempre estendere XotBaseRelationManager

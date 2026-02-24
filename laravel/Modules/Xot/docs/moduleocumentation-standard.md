@@ -116,7 +116,11 @@ public function createUser(array $data): User
 - Document permission and role systems
 - Include social login integration guides
 
+<<<<<<< HEAD
 ### ExternalProject Module
+=======
+### ModuloEsempio Module
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 - Document survey management workflows
 - Document reporting and analytics features

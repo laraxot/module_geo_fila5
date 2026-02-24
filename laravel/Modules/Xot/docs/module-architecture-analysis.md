@@ -36,7 +36,11 @@
 - Multi-tenant aware models
 - Social authentication integration
 
+<<<<<<< HEAD
 #### 3. **ExternalProject Module - Business Core**
+=======
+#### 3. **ModuloEsempio Module - Business Core**
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 **Role**: Survey management, reporting, analytics
 **Priority**: 0 (Standard priority)
 **Dependencies**: Xot, User, Geo, Media
@@ -228,7 +232,11 @@
 #### 15. **Limesurvey Module - External Integration**
 **Role**: Limesurvey integration, survey synchronization
 **Priority**: 0 (Standard priority)
+<<<<<<< HEAD
 **Dependencies**: Xot, ExternalProject
+=======
+**Dependencies**: Xot, ModuloEsempio
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 **Key Components**:
 - `LimeSurvey`, `LimeQuestion` models
@@ -276,7 +284,11 @@
 Xot (Foundation)
 ├── User (Security)
 │   └── Tenant (Multi-tenancy)
+<<<<<<< HEAD
 ├── ExternalProject (Business Core)
+=======
+├── ModuloEsempio (Business Core)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 │   ├── Geo (Locations)
 │   ├── Media (Files)
 │   └── Limesurvey (External Integration)
@@ -385,7 +397,11 @@ public function register(): void
 #### ⚠️ Needs Attention
 - **Cms**: Mixed file structure issues
 - **UI**: Mixed test structure issues
+<<<<<<< HEAD
 - **ExternalProject**: Missing module.json description
+=======
+- **ModuloEsempio**: Missing module.json description
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 #### 🔧 Technical Debt
 - **Translation consistency**: Some .navigation placeholders
@@ -396,7 +412,11 @@ public function register(): void
 
 #### High-Usage Modules
 - **User**: Authentication checks on every request
+<<<<<<< HEAD
 - **ExternalProject**: Survey processing and reporting
+=======
+- **ModuloEsempio**: Survey processing and reporting
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **Media**: File uploads and conversions
 - **Job**: Background processing
 

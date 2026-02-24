@@ -38,7 +38,11 @@ This document summarizes the systematic code quality improvements made across th
 - **Documentation**: ✅ Created comprehensive README
 - **Features**: Multi-cloud provider support with advanced security
 
+<<<<<<< HEAD
 #### 📊 ExternalProject Module
+=======
+#### 📊 ModuloEsempio Module
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **Documentation**: ✅ Created comprehensive README
 - **Features**: Advanced survey management with PDF reports and charts
 
@@ -60,7 +64,11 @@ This document summarizes the systematic code quality improvements made across th
 - **Limesurvey** - External system integration
 
 #### ➕ New README Files Created
+<<<<<<< HEAD
 - **ExternalProject** - Survey management system
+=======
+- **ModuloEsempio** - Survey management system
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **CloudStorage** - Multi-cloud file storage system
 
 ### 🎨 Themes Documentation
@@ -118,7 +126,11 @@ This document summarizes the systematic code quality improvements made across th
 ### ✅ Completed
 - ✅ All modules analyzed with PHPStan Level 10
 - ✅ Geo module PHPInsights score improved from 75% to 99%
+<<<<<<< HEAD
 - ✅ Missing README files created for ExternalProject and CloudStorage
+=======
+- ✅ Missing README files created for ModuloEsempio and CloudStorage
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - ✅ Comprehensive documentation review completed
 - ✅ Architecture improvements implemented
 

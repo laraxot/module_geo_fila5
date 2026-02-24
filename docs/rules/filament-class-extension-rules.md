@@ -411,7 +411,11 @@ class DashboardPage extends XotBasePage
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;

@@ -175,7 +175,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-        'database.connections.ui.database' => 'quaeris_data_test',
+        'database.connections.ui.database' => 'ptvx_data_test',
     ]);
     
     return $app;

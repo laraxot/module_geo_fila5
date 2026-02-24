@@ -175,7 +175,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-        'database.connections.gdpr.database' => 'quaeris_data_test',
+        'database.connections.gdpr.database' => 'ptvx_data_test',
     ]);
     
     return $app;

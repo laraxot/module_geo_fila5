@@ -216,6 +216,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                     ->label($label)
                     ->inlineLabel()
                     ->default(Arr::get($this->data,$fieldname,0));
+                if(Str::contains($label, 'Importo')){
+                    $item->money('EUR');
+                }
             }
 
             $schema[] = $item;

@@ -59,7 +59,11 @@ The Lang module provides comprehensive localization and translation management:
 ## Integration with Other Modules
 - **User**: User language preferences
 - **Cms**: Multi-language content
+<<<<<<< HEAD
 - **ExternalProject**: Survey translation
+=======
+- **ModuloEsempio**: Survey translation
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **Limesurvey**: Question translation
 - **Xot**: Base localization infrastructure
 - **Filament**: Translation management interface

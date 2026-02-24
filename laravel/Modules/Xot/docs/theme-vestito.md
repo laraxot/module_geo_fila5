@@ -52,7 +52,11 @@ Themes/[ThemeName]/
 │   │   ├── components/
 │   │   ├── layouts/
 │   │   └── pages/
+<<<<<<< HEAD
 ├── _app_fila4_mono.code-workspace
+=======
+├── _ptvx_fila4_mono.code-workspace
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js

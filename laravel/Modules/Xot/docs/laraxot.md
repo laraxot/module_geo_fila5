@@ -28,7 +28,11 @@
 ```
 Xot (Core Engine)
 ├── User (Authentication & Authorization)
+<<<<<<< HEAD
 ├── ExternalProject (Core Business Logic - Surveys)
+=======
+├── ModuloEsempio (Core Business Logic - Surveys)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ├── Cms (Content Management)
 ├── Media (File Management)
 ├── Geo (Location Services)
@@ -108,7 +112,11 @@ TextInput::make('name');
 - **Power**: Controls access to all resources
 - **Responsibility**: Security and permissions
 
+<<<<<<< HEAD
 #### 3. **ExternalProject Module (The Economy)**
+=======
+#### 3. **ModuloEsempio Module (The Economy)**
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - **Role**: Core business logic, surveys, reporting
 - **Power**: Main revenue-generating functionality
 - **Responsibility**: Business operations

@@ -20,10 +20,17 @@ class MyPage extends XotBaseViewRecord
 ### 2. **Struttura Namespace Corretta**
 ```php
 // ✅ CORRETTO
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
 
 // ❌ SBAGLIATO
 namespace Modules\ExternalProject\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+=======
+namespace Modules\ModuloEsempio\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+
+// ❌ SBAGLIATO
+namespace Modules\ModuloEsempio\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ```
 
 ### 3. **Uso di Schema invece di Form**
@@ -69,7 +76,11 @@ class MyWidget extends Widget implements HasForms
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+=======
+namespace Modules\ModuloEsempio\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
@@ -92,7 +103,11 @@ class ViewQuestionChart extends XotBaseViewRecord
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
@@ -157,10 +172,17 @@ public function getFormSchema(): array
 ### 3. **Namespace Errati**
 ```php
 // ❌ SBAGLIATO
+<<<<<<< HEAD
 namespace Modules\ExternalProject\App\Filament\Widgets;
 
 // ✅ CORRETTO
 namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\App\Filament\Widgets;
+
+// ✅ CORRETTO
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 ```
 
 ## 🔧 Implementazione Corretta
@@ -171,12 +193,20 @@ namespace Modules\ExternalProject\Filament\Widgets;
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+=======
+namespace Modules\ModuloEsempio\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
+<<<<<<< HEAD
 use Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+=======
+use Modules\ModuloEsempio\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 class ViewQuestionChart extends XotBaseViewRecord
 {
@@ -220,7 +250,11 @@ class ViewQuestionChart extends XotBaseViewRecord
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;

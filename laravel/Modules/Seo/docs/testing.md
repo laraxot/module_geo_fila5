@@ -179,7 +179,11 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
+<<<<<<< HEAD
         'database.connections.seo.database' => 'app_data_test',
+=======
+        'database.connections.seo.database' => 'ptvx_data_test',
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
     ]);
     
     return $app;

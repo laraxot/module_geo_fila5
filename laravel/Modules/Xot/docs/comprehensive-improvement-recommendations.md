@@ -759,7 +759,11 @@ class ConnectionManagerService
     public static function getConnectionForModule(string $module): string
     {
         return match($module) {
+<<<<<<< HEAD
             'ExternalProject' => 'quaeris',
+=======
+            'ModuloEsempio' => 'ptvx',
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
             'User' => 'user',
             'Notify' => 'notify',
             default => 'mysql'
@@ -842,14 +846,22 @@ class ContactValidationService
 **Solution**: Strategy pattern con interfaces
 
 ```php
+<<<<<<< HEAD
 // Modules/ExternalProject/Contracts/ChartRendererContract.php
+=======
+// Modules/ModuloEsempio/Contracts/ChartRendererContract.php
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 interface ChartRendererContract
 {
     public function supports(string $type): bool;
     public function render(array $data, array $config): string;
 }
 
+<<<<<<< HEAD
 // Modules/ExternalProject/Services/Chart/Renderers/PieChartRenderer.php
+=======
+// Modules/ModuloEsempio/Services/Chart/Renderers/PieChartRenderer.php
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 class PieChartRenderer implements ChartRendererContract
 {
     public function supports(string $type): bool
@@ -1015,7 +1027,11 @@ $contacts = Contact::forContext('dashboard')->get(); // Optimized loading
 **Solution**: Chunking e memory management
 
 ```php
+<<<<<<< HEAD
 // Modules/ExternalProject/Services/BulkProcessingService.php
+=======
+// Modules/ModuloEsempio/Services/BulkProcessingService.php
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 class BulkProcessingService
 {
     public function processLargeDataset(\Closure $processor, Builder $query, int $chunkSize = 1000): void

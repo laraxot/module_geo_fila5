@@ -14,7 +14,7 @@ MODULES=(
   "Limesurvey"
   "Media"
   "Notify"
-  "Quaeris"
+  "ModuloEsempio"
   "Setting"
   "Tenant"
   "Theme"

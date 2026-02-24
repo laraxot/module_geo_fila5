@@ -194,7 +194,11 @@ $token = $user->createToken('test');
 
 ### **Phase 3: System Verification (Next)**
 - [ ] Test LimeSurvey integration with UUIDs
+<<<<<<< HEAD
 - [ ] Verify ExternalProject contact token generation
+=======
+- [ ] Verify ModuloEsempio contact token generation
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - [ ] Test all authentication flows
 - [ ] Performance testing
 
@@ -267,7 +271,11 @@ $token = $user->createToken('test');
 - [ ] Users can authenticate across tenants
 - [ ] API authentication works
 - [ ] LimeSurvey integration functional
+<<<<<<< HEAD
 - [ ] ExternalProject survey workflows operational
+=======
+- [ ] ModuloEsempio survey workflows operational
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 
 ### **Philosophical Success** (Super Mucca)
 - [ ] Code is DRY (no duplicate UUID logic)

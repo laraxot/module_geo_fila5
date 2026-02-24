@@ -36,7 +36,7 @@
 - Multi-tenant aware models
 - Social authentication integration
 
-#### 3. **Quaeris Module - Business Core**
+#### 3. **ModuloEsempio Module - Business Core**
 **Role**: Survey management, reporting, analytics
 **Priority**: 0 (Standard priority)
 **Dependencies**: Xot, User, Geo, Media
@@ -228,7 +228,7 @@
 #### 15. **Limesurvey Module - External Integration**
 **Role**: Limesurvey integration, survey synchronization
 **Priority**: 0 (Standard priority)
-**Dependencies**: Xot, Quaeris
+**Dependencies**: Xot, ModuloEsempio
 
 **Key Components**:
 - `LimeSurvey`, `LimeQuestion` models
@@ -276,7 +276,7 @@
 Xot (Foundation)
 ├── User (Security)
 │   └── Tenant (Multi-tenancy)
-├── Quaeris (Business Core)
+├── ModuloEsempio (Business Core)
 │   ├── Geo (Locations)
 │   ├── Media (Files)
 │   └── Limesurvey (External Integration)
@@ -385,7 +385,7 @@ public function register(): void
 #### ⚠️ Needs Attention
 - **Cms**: Mixed file structure issues
 - **UI**: Mixed test structure issues
-- **Quaeris**: Missing module.json description
+- **ModuloEsempio**: Missing module.json description
 
 #### 🔧 Technical Debt
 - **Translation consistency**: Some .navigation placeholders
@@ -396,7 +396,7 @@ public function register(): void
 
 #### High-Usage Modules
 - **User**: Authentication checks on every request
-- **Quaeris**: Survey processing and reporting
+- **ModuloEsempio**: Survey processing and reporting
 - **Media**: File uploads and conversions
 - **Job**: Background processing
 

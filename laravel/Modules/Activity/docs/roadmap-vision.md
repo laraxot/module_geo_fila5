@@ -497,7 +497,7 @@ class User extends BaseUser
     }
 }
 
-// Integration with Quaeris module
+// Integration with ModuloEsempio module
 class Survey extends BaseModel
 {
     public function publish()

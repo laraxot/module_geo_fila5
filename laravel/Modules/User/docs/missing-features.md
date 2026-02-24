@@ -107,7 +107,11 @@ Il modulo **User** fornisce:
    - Mapping permessi
 
 2. **LimeParticipant** - Partecipanti survey
+<<<<<<< HEAD
    - Integrazione con Contact model ExternalProject
+=======
+   - Integrazione con Contact model ModuloEsempio
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
    - Gestione partecipanti centralizzata
    - Attributi personalizzati
 
@@ -155,7 +159,11 @@ Nessuna funzionalità critica mancante - il modulo User è ben implementato
 
 ## Collegamenti
 
+<<<<<<< HEAD
 - [Modulo ExternalProject](../quaeris/docs/readme.md)
+=======
+- [Modulo ModuloEsempio](../ptvx/docs/readme.md)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - [Modulo Limesurvey](../limesurvey/docs/readme.md)
 - [User README](./readme.md)
 

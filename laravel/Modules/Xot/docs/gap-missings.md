@@ -5,7 +5,11 @@
 ### 1. **Missing Module Documentation**
 
 #### Modules Without README.md
+<<<<<<< HEAD
 - [ ] **ExternalProject** - Core business module needs comprehensive documentation
+=======
+- [ ] **ModuloEsempio** - Core business module needs comprehensive documentation
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - [ ] **Limesurvey** - External integration documentation missing
 - [ ] **CloudStorage** - Cloud service integration patterns undocumented
 - [ ] **DbForge** - Database tools documentation incomplete
@@ -228,7 +232,11 @@ php artisan laraxot:make:resource CustomerResource --module=CustomerManagement
 ### Phase 1: Critical Gaps (High Priority)
 
 #### 1.1 Module Documentation (Weeks 1-2)
+<<<<<<< HEAD
 - [ ] Create comprehensive README.md for ExternalProject module
+=======
+- [ ] Create comprehensive README.md for ModuloEsempio module
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 - [ ] Document Limesurvey integration patterns
 - [ ] Create CloudStorage service documentation
 - [ ] Complete DbForge database tools documentation
