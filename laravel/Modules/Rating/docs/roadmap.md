@@ -2,7 +2,7 @@
 
 ## Visione
 
-Modulo per la gestione dei criteri di valutazione e dei punteggi: HasRatingsTrait, pivot value, integrazione con IndennitaResponsabilita e Ptv.
+Modulo agnostico per la gestione dei criteri di valutazione e dei punteggi: HasRatingsTrait, pivot value, calcoli dinamici. Utilizzabile in qualsiasi progetto Laravel con moduli che richiedono valutazioni e scoring.
 
 ## Fasi di Sviluppo
 
