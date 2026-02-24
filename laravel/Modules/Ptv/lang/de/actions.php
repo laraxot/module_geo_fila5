@@ -35,9 +35,7 @@ return [
         ],
         'copy_from_last_year' => 'Aus dem Vorjahr kopieren',
         'merge_double_row_cateco_yea' => 'Doppelte Zeilen zusammenführen',
-        'populate_year' => [
-            'default' => 'Jahr auffüllen',
-        ],
+        'populate_year' => 'Jahr auffüllen',
         'trova_esclusi' => [
             'label' => 'Ausgeschlossene finden',
         ],
@@ -86,6 +84,7 @@ return [
             'records_found' => ':count Datensätze gefunden',
             'no_records_found' => 'Keine Datensätze gefunden',
             'more_records' => 'und :count weitere Datensätze...',
+            'modal_title' => 'Cessati-Datensätze löschen',
             'modal_heading' => 'Cessati-Datensätze löschen',
             'modal_description' => 'Löschen Sie die Datensätze die in Indennità Responsabilità aber nicht in Rep00f für das ausgewählte Jahr existieren',
             'confirm_delete' => 'Datensätze löschen',

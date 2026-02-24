@@ -35,9 +35,7 @@ return [
         ],
         'copy_from_last_year' => 'Copia da anno precedente',
         'merge_double_row_cateco_yea' => 'Unisci righe duplicate',
-        'populate_year' => [
-            'default' => 'Popola anno',
-        ],
+        'populate_year' => 'Popola anno',
         'trova_esclusi' => [
             'label' => 'Trova Esclusi',
         ],
@@ -86,6 +84,7 @@ return [
             'records_found' => ':count record trovati',
             'no_records_found' => 'Nessun record trovato',
             'more_records' => 'e altri :count record...',
+            'modal_title' => 'Cancella Record Cessati',
             'modal_heading' => 'Cancella Record Cessati',
             'modal_description' => 'Cancella i record presenti in Indennità Responsabilità ma non in Rep00f per l\'anno selezionato',
             'confirm_delete' => 'Cancella Record',

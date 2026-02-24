@@ -114,6 +114,7 @@ public function getUsers(): Collection
 - Extend `XotBaseResource` (not Filament Resource directly)
 - Use `getFormSchema()` method
 - Use translation keys, never hardcoded strings
+- **Translation files must have at least Italian and English** (create both `lang/it/` and `lang/en/` files)
 - String keys required in `getTableColumns()`:
 ```php
 return [

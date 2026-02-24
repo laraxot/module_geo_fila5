@@ -35,9 +35,7 @@ return [
         ],
         'copy_from_last_year' => 'Copy from previous year',
         'merge_double_row_cateco_yea' => 'Merge duplicate rows',
-        'populate_year' => [
-            'default' => 'Populate year',
-        ],
+        'populate_year' => 'Populate year',
         'trova_esclusi' => [
             'label' => 'Find Excluded',
         ],
@@ -86,6 +84,7 @@ return [
             'records_found' => ':count records found',
             'no_records_found' => 'No records found',
             'more_records' => 'and :count more records...',
+            'modal_title' => 'Delete Cessati Records',
             'modal_heading' => 'Delete Cessati Records',
             'modal_description' => 'Delete records that exist in Indennità Responsabilità but not in Rep00f for the selected year',
             'confirm_delete' => 'Delete Records',
