@@ -15,7 +15,11 @@
     "Tag": true,
     "Trade": true,
     "Media": true,
+<<<<<<< .merge_file_E7Ascr
     "healthcare_app": true,
+=======
+    "ModuloEsempio": true,
+>>>>>>> .merge_file_1EsnJV
     "Smarty": true,
     "Lang": true,
     "Notify": true,

@@ -51,6 +51,18 @@ Questa regola si applica a:
 - Scrittura di test
 - Qualsiasi modifica al codice sorgente
 
+## Naming Conventions (OBBLIGATORIE)
+
+1. **NON usare date nei nomi dei file .md**
+   - Usare `redundancy-fixes.md` invece di `redundancy-fixes-january-2026.md`
+
+2. **NON devono esistere file duplicati** con nomi che differiscono solo per case (case-sensitive su filesystem Linux)
+   - Esempio errato: `FixStructureTest.php` + `fixstructuretest.php`
+   - Esempio corretto: solo `FixStructureTest.php`
+
+3. **Test Files: PascalCase matching class name**
+   - Esempio: `GenerateDbDocumentationCommandTest.pest.php`
+
 ## Tool Utili
 
 - `glob` - Trova file per pattern

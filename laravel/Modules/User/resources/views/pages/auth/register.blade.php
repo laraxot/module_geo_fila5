@@ -46,7 +46,7 @@ name('register');
             <div class="space-y-10">
                 <div class="text-center space-y-6">
                     <a href="{{ \LaravelLocalization::localizeUrl('/') }}" class="inline-block group" aria-label="{{ config('app.name') }}">
-                        <x-pub_theme::ui.logo class="h-16 w-auto md:h-20 transition-transform duration-300 group-hover:scale-110" />
+                        <x-ui.logo class="h-16 w-auto md:h-20 transition-transform duration-300 group-hover:scale-110" />
                     </a>
 
                     <div class="space-y-3">

@@ -1,10 +1,18 @@
 # Risoluzione Conflitti di Merge 
 
-# Risoluzione Conflitti di Merge in SaluteOra
+<<<<<<< HEAD
+# Risoluzione Conflitti di Merge in progetto
 
 ## Problema
 
-Durante lo sviluppo del progetto SaluteOra, sono stati identificati diversi file con conflitti di merge non risolti. Questi conflitti erano indicati dalla presenza di marcatori  nel codice sorgente. I conflitti non risolti impedivano la corretta esecuzione del codice e causavano errori durante l'analisi statica con PHPStan.
+Durante lo sviluppo del progetto progetto, sono stati identificati diversi file con conflitti di merge non risolti. Questi conflitti erano indicati dalla presenza di marcatori  nel codice sorgente. I conflitti non risolti impedivano la corretta esecuzione del codice e causavano errori durante l'analisi statica con PHPStan.
+=======
+# Risoluzione Conflitti di Merge in healthcare_app
+
+## Problema
+
+Durante lo sviluppo del progetto healthcare_app, sono stati identificati diversi file con conflitti di merge non risolti. Questi conflitti erano indicati dalla presenza di marcatori  nel codice sorgente. I conflitti non risolti impedivano la corretta esecuzione del codice e causavano errori durante l'analisi statica con PHPStan.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 I file principali con conflitti erano:
 - `Modules/Xot/app/Datas/MetatagData.php`

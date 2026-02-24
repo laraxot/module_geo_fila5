@@ -6,7 +6,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 DOCS_ROOT="$BASE_DIR/docs"
 OPTIMIZATION_LOG="$BASE_DIR/docs/refactoring/final-optimization-$(date +%Y%m%d-%H%M).log"
 
@@ -34,7 +34,7 @@ consolidate_duplicates() {
 # PHPStan - Guida Completa Consolidata
 
 ## Panoramica
-Guida unificata per l'utilizzo di PHPStan nel progetto SaluteOra.
+Guida unificata per l'utilizzo di PHPStan nel progetto.
 
 ## Livelli di Analisi
 - **Livello 9**: Standard minimo per nuovo codice
@@ -270,7 +270,7 @@ cat > "$DOCS_ROOT/refactoring/final-optimization-report.md" << EOF
 
 ## 🎉 Successo Totale
 
-La documentazione SaluteOra ha raggiunto la **conformità totale** ai principi DRY + KISS:
+La documentazione progetto ha raggiunto la **conformità totale** ai principi DRY + KISS:
 
 - **Qualità Enterprise**: Standard professionali raggiunti
 - **Manutenibilità**: Aggiornamenti centralizzati e semplificati
@@ -323,7 +323,7 @@ echo "- Strutture complesse semplificate" | tee -a "$OPTIMIZATION_LOG"
 echo "- Nomi file ottimizzati" | tee -a "$OPTIMIZATION_LOG"
 echo "- Indice consolidato aggiornato" | tee -a "$OPTIMIZATION_LOG"
 echo "" | tee -a "$OPTIMIZATION_LOG"
-echo "🏆 DOCUMENTAZIONE SALUTEORA: QUALITÀ ENTERPRISE RAGGIUNTA!" | tee -a "$OPTIMIZATION_LOG"
+echo "🏆 DOCUMENTAZIONE PROGETTO: QUALITÀ ENTERPRISE RAGGIUNTA!" | tee -a "$OPTIMIZATION_LOG"
 echo "" | tee -a "$OPTIMIZATION_LOG"
 echo "Fine: $(date)" | tee -a "$OPTIMIZATION_LOG"
 

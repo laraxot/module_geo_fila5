@@ -1,8 +1,16 @@
+<<<<<<< .merge_file_dLytz2
 # Guida Completa al Nesting di Filament - healthcare_app Fila5 Mono
 
 ## 📖 Introduzione
 
 Il nesting di Filament è una potente funzionalità che permette di gestire relazioni complesse tra modelli attraverso un'interfaccia tabbed integrata. In healthcare_app Fila5 Mono, questa funzionalità è implementata attraverso il pattern **XotBaseRelationManager**.
+=======
+# Guida Completa al Nesting di Filament - ModuloEsempio Fila5 Mono
+
+## 📖 Introduzione
+
+Il nesting di Filament è una potente funzionalità che permette di gestire relazioni complesse tra modelli attraverso un'interfaccia tabbed integrata. In ModuloEsempio Fila5 Mono, questa funzionalità è implementata attraverso il pattern **XotBaseRelationManager**.
+>>>>>>> .merge_file_0Dv1OJ
 
 ### 🎯 Obiettivi della Guida
 
@@ -11,7 +19,11 @@ Il nesting di Filament è una potente funzionalità che permette di gestire rela
 - Applicare best practices per performance e sicurezza
 - Identificare opportunità di nesting nei moduli esistenti
 
+<<<<<<< .merge_file_dLytz2
 ## 🏗️ Architettura del Nesting in healthcare_app
+=======
+## 🏗️ Architettura del Nesting in ModuloEsempio
+>>>>>>> .merge_file_0Dv1OJ
 
 ### 1. **XotBaseRelationManager - Il Fondamento**
 
@@ -59,9 +71,15 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
 Il framework risolve automaticamente le Resource basandosi sul namespace:
 
 ```
+<<<<<<< .merge_file_dLytz2
 Modules\healthcare_app\Filament\Resources\CustomerResource\RelationManagers\SurveyPdfsRelationManager
                     ↓                    ↓                         ↓
                  Modules            healthcare_app          CustomerResource
+=======
+Modules\ModuloEsempio\Filament\Resources\CustomerResource\RelationManagers\SurveyPdfsRelationManager
+                    ↓                    ↓                         ↓
+                 Modules            ModuloEsempio          CustomerResource
+>>>>>>> .merge_file_0Dv1OJ
 ```
 
 ## 📋 Tipi di Nesting Implementati
@@ -70,7 +88,11 @@ Modules\healthcare_app\Filament\Resources\CustomerResource\RelationManagers\Surv
 
 **File Structure:**
 ```
+<<<<<<< .merge_file_dLytz2
 Modules/healthcare_app/
+=======
+Modules/ModuloEsempio/
+>>>>>>> .merge_file_0Dv1OJ
 ├── app/Filament/Resources/
 │   ├── CustomerResource.php
 │   └── CustomerResource/
@@ -741,7 +763,11 @@ class ChildPolicy
 
 ### Project-Specific Resources
 - XotBaseRelationManager (`Modules/Xot/`)
+<<<<<<< .merge_file_dLytz2
 - Existing examples in `healthcare_app/` and `User/` modules
+=======
+- Existing examples in `ModuloEsempio/` and `User/` modules
+>>>>>>> .merge_file_0Dv1OJ
 - Policy examples in `Modules/*/app/Policies/`
 
 ### Community Examples

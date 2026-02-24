@@ -71,7 +71,15 @@ class MyTableWidget extends XotBaseTableWidget
 
 declare(strict_types=1);
 
+<<<<<<< .merge_file_AECJKY
 namespace Modules\healthcare_app\Filament\Widgets;
+=======
+<<<<<<< HEAD
+namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_LhzKTD
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -127,7 +135,15 @@ class QuestionChartFilterWidget extends XotBaseWidget
 
 declare(strict_types=1);
 
+<<<<<<< .merge_file_AECJKY
 namespace Modules\healthcare_app\Filament\Widgets;
+=======
+<<<<<<< HEAD
+namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_LhzKTD
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -204,7 +220,15 @@ class QuestionChartDataWidget extends XotBaseTableWidget
 
 declare(strict_types=1);
 
+<<<<<<< .merge_file_AECJKY
 namespace Modules\healthcare_app\Filament\Widgets;
+=======
+<<<<<<< HEAD
+namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_LhzKTD
 
 use Filament\Widgets\ChartWidget;
 use Modules\Xot\Filament\Widgets\XotBaseWidget;

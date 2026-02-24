@@ -197,6 +197,12 @@ return [
         'email' => [
             'label' => 'email',
         ],
+        'rep' => [
+            'label' => 'rep',
+        ],
+        'diri' => [
+            'label' => 'diri',
+        ],
     ],
     'actions' => [
         'create' => [

@@ -19,12 +19,7 @@ class ListMessages extends XotBaseListRecords
 
     protected static string $resource = MessageResource::class;
 
-    protected function getActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+    
 
     #[Override]
     public function getTableColumns(): array
@@ -49,6 +44,7 @@ class ListMessages extends XotBaseListRecords
                     '2023' => '2023',
                     '2024' => '2024',
                     '2025' => '2025',
+                    '2026' => '2026',
                 ]),
         ];
     }

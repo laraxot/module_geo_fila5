@@ -8,7 +8,11 @@
 
 ## Panoramica
 
+<<<<<<< .merge_file_zK1GcR
 Il tema **Zero** è il tema baseline di healthcare_app, implementando la filosofia "Vestito" di Laraxot. Zero fornisce presentazione visiva minimale, lasciando che la logica business rimanga completamente nei moduli.
+=======
+Il tema **Zero** è il tema baseline di ModuloEsempio, implementando la filosofia "Vestito" di Laraxot. Zero fornisce presentazione visiva minimale, lasciando che la logica business rimanga completamente nei moduli.
+>>>>>>> .merge_file_MMgKye
 
 ## Filosofia "Vestito"
 
@@ -127,7 +131,11 @@ Themes forniscono strutture layout:
 <html>
 <head>
     <meta charset="utf-8">
+<<<<<<< .merge_file_zK1GcR
     <title>@yield('title', 'healthcare_app')</title>
+=======
+    <title>@yield('title', 'ModuloEsempio')</title>
+>>>>>>> .merge_file_MMgKye
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -365,7 +373,11 @@ Il pattern "Vestito" incarna diversi valori core:
 
 ## Integrazione con Moduli
 
+<<<<<<< .merge_file_zK1GcR
 ### healthcare_app Module
+=======
+### ModuloEsempio Module
+>>>>>>> .merge_file_MMgKye
 
 Zero theme fornisce presentazione per:
 - SurveyPdf resources

@@ -16,7 +16,11 @@ Cannot make non static method Filament\Pages\BasePage::getView() static in class
 ```
 
 ```
-Access level to Modules\SaluteOra\Filament\Resources\AppointmentWorkflowResource\Pages\WorkflowAppointment::getFormActionsAlignment() must be public (as in class Filament\Pages\BasePage)
+<<<<<<< HEAD
+Access level to Modules\ModuloEsempio\Filament\Resources\AppointmentWorkflowResource\Pages\WorkflowAppointment::getFormActionsAlignment() must be public (as in class Filament\Pages\BasePage)
+=======
+Access level to Modules\healthcare_app\Filament\Resources\AppointmentWorkflowResource\Pages\WorkflowAppointment::getFormActionsAlignment() must be public (as in class Filament\Pages\BasePage)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 esempio di errore:
@@ -123,5 +127,10 @@ $returnType = $parentMethod->getReturnType();
 
 ## collegamento ad altre risorse
 
-- [regole di ereditarietà in php](/var/www/html/base_saluteora/laravel/docs/standards/php-inheritance-rules.md)
-- [estensione pattern filament](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+<<<<<<< HEAD
+- [regole di ereditarietà in php](/var/www/html/base_ptvx/laravel/docs/standards/php-inheritance-rules.md)
+- [estensione pattern filament](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+=======
+- [regole di ereditarietà in php](/var/www/html/base_healthcare_app/laravel/docs/standards/php-inheritance-rules.md)
+- [estensione pattern filament](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)

@@ -6,7 +6,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 LARAVEL_DIR="$BASE_DIR/laravel"
 DOCS_ROOT="$BASE_DIR/docs"
 LOG_FILE="$BASE_DIR/docs/refactoring/consolidation.log"
@@ -190,7 +190,7 @@ log "✅ Template base creato"
 log "FASE 7: Generazione indice consolidato"
 
 cat > "$DOCS_ROOT/index.md" << 'EOF'
-# Indice Documentazione SaluteOra
+# Indice Documentazione Progetto
 
 ## 🎯 Navigazione Rapida
 
@@ -207,7 +207,7 @@ cat > "$DOCS_ROOT/index.md" << 'EOF'
 ### Moduli
 - [Panoramica](modules/overview.md)
 - [Xot](modules/xot/)
-- [SaluteOra](modules/saluteora/)
+- [Moduli](modules/ptvx/)
 - [UI](modules/ui/)
 
 ### Guide

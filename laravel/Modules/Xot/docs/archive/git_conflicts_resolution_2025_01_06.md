@@ -3,7 +3,11 @@
 ## Data: 2025-01-06
 
 ## Contesto
-Sono stati identificati e risolti conflitti Git in diversi file del progetto SaluteOra, coinvolgendo moduli Geo, User e tema Two.
+<<<<<<< HEAD
+Sono stati identificati e risolti conflitti Git in diversi file del progetto progetto, coinvolgendo moduli Geo, User e tema Two.
+=======
+Sono stati identificati e risolti conflitti Git in diversi file del progetto healthcare_app, coinvolgendo moduli Geo, User e tema Two.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## File Corretti
 

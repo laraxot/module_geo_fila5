@@ -9,13 +9,23 @@ uno degli errori più comuni è la confusione tra il namespace nel codice php e 
 i file dei moduli devono sempre seguire questa struttura:
 
 ```
-/var/www/html/base_saluteora/laravel/Modules/{NomeModulo}/app/{Tipo}/...
+<<<<<<< HEAD
+/var/www/html/base_ptvx/laravel/Modules/{NomeModulo}/app/{Tipo}/...
 ```
 
 per esempio:
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Filament/Resources/...`
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Models/...`
-- `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Http/Controllers/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Filament/Resources/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Models/...`
+- `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Http/Controllers/...`
+=======
+/var/www/html/base_healthcare_app/laravel/Modules/{NomeModulo}/app/{Tipo}/...
+```
+
+per esempio:
+- `/var/www/html/base_healthcare_app/laravel/Modules/healthcare_app/app/Filament/Resources/...`
+- `/var/www/html/base_healthcare_app/laravel/Modules/healthcare_app/app/Models/...`
+- `/var/www/html/base_healthcare_app/laravel/Modules/healthcare_app/app/Http/Controllers/...`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ### namespace corretto
 
@@ -26,16 +36,26 @@ namespace Modules\{NomeModulo}\{Tipo}\...;
 ```
 
 per esempio:
-- `namespace Modules\SaluteOra\Filament\Resources;`
-- `namespace Modules\SaluteOra\Models;`
-- `namespace Modules\SaluteOra\Http\Controllers;`
+<<<<<<< HEAD
+- `namespace Modules\ModuloEsempio\Filament\Resources;`
+- `namespace Modules\ModuloEsempio\Models;`
+- `namespace Modules\ModuloEsempio\Http\Controllers;`
+=======
+- `namespace Modules\healthcare_app\Filament\Resources;`
+- `namespace Modules\healthcare_app\Models;`
+- `namespace Modules\healthcare_app\Http\Controllers;`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## errore comune
 
 spesso si confonde il percorso fisico con il namespace, cercando file in:
 
 ```
-/var/www/html/base_saluteora/laravel/Modules/{NomeModulo}/{Tipo}/...
+<<<<<<< HEAD
+/var/www/html/base_ptvx/laravel/Modules/{NomeModulo}/{Tipo}/...
+=======
+/var/www/html/base_healthcare_app/laravel/Modules/{NomeModulo}/{Tipo}/...
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 questo è **errato** perché omette la directory `app/` nel percorso fisico.
@@ -49,8 +69,13 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 | namespace | percorso fisico |
 |-----------|----------------|
-| `Modules\SaluteOra\Filament\Resources\DoctorResource` | `/var/www/html/base_saluteora/laravel/Modules/SaluteOra/app/Filament/Resources/DoctorResource.php` |
-| `Modules\User\Models\User` | `/var/www/html/base_saluteora/laravel/Modules/User/app/Models/User.php` |
+<<<<<<< HEAD
+| `Modules\ModuloEsempio\Filament\Resources\DoctorResource` | `/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/app/Filament/Resources/DoctorResource.php` |
+| `Modules\User\Models\User` | `/var/www/html/base_ptvx/laravel/Modules/User/app/Models/User.php` |
+=======
+| `Modules\healthcare_app\Filament\Resources\DoctorResource` | `/var/www/html/base_healthcare_app/laravel/Modules/healthcare_app/app/Filament/Resources/DoctorResource.php` |
+| `Modules\User\Models\User` | `/var/www/html/base_healthcare_app/laravel/Modules/User/app/Models/User.php` |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## come evitare l'errore
 
@@ -60,5 +85,10 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 ## linkback
 
-- [convenzioni di codice](/var/www/html/base_saluteora/laravel/docs/conventions.md)
-- [struttura progetto](/var/www/html/base_saluteora/laravel/docs/project-structure.md)
+<<<<<<< HEAD
+- [convenzioni di codice](/var/www/html/base_ptvx/laravel/docs/conventions.md)
+- [struttura progetto](/var/www/html/base_ptvx/laravel/docs/project-structure.md)
+=======
+- [convenzioni di codice](/var/www/html/base_healthcare_app/laravel/docs/conventions.md)
+- [struttura progetto](/var/www/html/base_healthcare_app/laravel/docs/project-structure.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)

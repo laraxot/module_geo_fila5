@@ -11,7 +11,11 @@ Trovati 4 errori al livello 7.
 
 ## Errori e suggerimenti
 
-### File: `/var/www/html/saluteora/laravel/Modules/Xot/app/Actions/Export/ExportXlsByView.php`
+<<<<<<< HEAD
+### File: `/var/www/html/ptvx/laravel/Modules/Xot/app/Actions/Export/ExportXlsByView.php`
+=======
+### File: `/var/www/html/healthcare_app/laravel/Modules/Xot/app/Actions/Export/ExportXlsByView.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 #### Linea 40: Syntax error, unexpected T_SR on line 40
 
@@ -29,7 +33,11 @@ Trovati 4 errori al livello 7.
 - Le variabili siano inizializzate prima dell'uso
 - I nomi di metodi e proprietà siano corretti
 
-### File: `/var/www/html/saluteora/laravel/Modules/Xot/app/Actions/View/GetViewByClassAction.php`
+<<<<<<< HEAD
+### File: `/var/www/html/ptvx/laravel/Modules/Xot/app/Actions/View/GetViewByClassAction.php`
+=======
+### File: `/var/www/html/healthcare_app/laravel/Modules/Xot/app/Actions/View/GetViewByClassAction.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 #### Linea 47: Syntax error, unexpected T_SR on line 47
 

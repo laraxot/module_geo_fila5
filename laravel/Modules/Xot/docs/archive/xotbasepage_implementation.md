@@ -6,7 +6,11 @@ la classe `XotBasePage` è una classe base astratta per tutte le pagine filament
 ## struttura
 la classe `XotBasePage` estende `Filament\Pages\Page` e si trova in:
 ```
-/var/www/html/base_saluteora/laravel/Modules/Xot/app/Filament/Pages/XotBasePage.php
+<<<<<<< HEAD
+/var/www/html/base_ptvx/laravel/Modules/Xot/app/Filament/Pages/XotBasePage.php
+=======
+/var/www/html/base_healthcare_app/laravel/Modules/Xot/app/Filament/Pages/XotBasePage.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 ## namespace
@@ -69,7 +73,11 @@ class SettingsPage extends XotBasePage
 ## esempio completo
 
 ```php
-namespace Modules\SaluteOra\Filament\Pages;
+<<<<<<< HEAD
+namespace Modules\ModuloEsempio\Filament\Pages;
+=======
+namespace Modules\healthcare_app\Filament\Pages;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Modules\Xot\Filament\Pages\XotBasePage;
 use Filament\Forms\Components\TextInput;
@@ -79,7 +87,11 @@ class DashboardSettings extends XotBasePage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog';
     
-    protected static string $view = 'saluteora::filament.pages.dashboard-settings';
+<<<<<<< HEAD
+    protected static string $view = 'modulo::filament.pages.dashboard-settings';
+=======
+    protected static string $view = 'healthcare_app::filament.pages.dashboard-settings';
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
     
     protected function getFormFields(): array
     {
@@ -172,8 +184,13 @@ class DashboardSettingsPolicy
 - wizard personalizzati
 
 ## collegamento ad altre documentazioni
-- [pattern di estensione filament](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/filament_extension_pattern.md)
-- [best practices filament](/var/www/html/base_saluteora/laravel/Modules/SaluteOra/docs/filament-best-practices.md)
+<<<<<<< HEAD
+- [pattern di estensione filament](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+- [best practices filament](/var/www/html/base_ptvx/laravel/Modules/ModuloEsempio/docs/filament-best-practices.md)
+=======
+- [pattern di estensione filament](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+- [best practices filament](/var/www/html/base_healthcare_app/laravel/Modules/healthcare_app/docs/filament-best-practices.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## ATTENZIONE: errori critici da evitare
 - NON dichiarare mai abstract getFormSchema() in XotBasePage: la classe base Filament lo implementa già. Fornire sempre una implementazione di default (array vuoto).

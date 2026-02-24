@@ -277,6 +277,20 @@ return [
         'submit' => [
             'tooltip' => 'submit',
         ],
+        'layout' => [
+            'tooltip' => 'layout',
+            'icon' => 'layout',
+            'label' => 'layout',
+        ],
+        'attach' => [
+            'tooltip' => 'attach',
+            'icon' => 'attach',
+            'label' => 'attach',
+        ],
+        'attachAnother' => [
+            'tooltip' => 'attachAnother',
+            'icon' => 'attachAnother',
+        ],
     ],
     'messages' => [
         'validation' => [

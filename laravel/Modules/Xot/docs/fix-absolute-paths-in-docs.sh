@@ -5,7 +5,11 @@
 set -e
 
 DOCS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+<<<<<<< .merge_file_5aFH9o
 PROJECT_ROOT="/var/www/_bases/base_healthcare_app_fila4_mono"
+=======
+PROJECT_ROOT="/var/www/_bases/base_ptvx_fila4_mono"
+>>>>>>> .merge_file_G9qEpw
 
 echo "🔍 Analisi link assoluti in: $DOCS_DIR"
 echo ""

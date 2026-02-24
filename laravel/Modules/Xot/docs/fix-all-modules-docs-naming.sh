@@ -4,7 +4,11 @@
 
 set -e
 
+<<<<<<< .merge_file_OEGd5k
 MODULES_DIR="/var/www/_bases/base_healthcare_app_fila4_mono/laravel/Modules"
+=======
+MODULES_DIR="/var/www/_bases/base_ptvx_fila4_mono/laravel/Modules"
+>>>>>>> .merge_file_YN8ZW1
 
 echo "🔍 Correzione Naming Conventions - Tutti i Moduli"
 echo "================================================"
@@ -51,7 +55,11 @@ tar -czf "$BACKUP_FILE" */docs/ 2>/dev/null || true
 echo ""
 
 # Processa ogni modulo
+<<<<<<< .merge_file_OEGd5k
 for module in Activity AI Blog Chart CloudStorage Cms Comment DbForge Fixcity Gdpr Geo Job Lang Limesurvey Media Notify healthcare_app Rating Seo Tenant UI User Xot; do
+=======
+for module in Activity AI Blog Chart CloudStorage Cms Comment DbForge Fixcity Gdpr Geo Job Lang Limesurvey Media Notify ModuloEsempio Rating Seo Tenant UI User Xot; do
+>>>>>>> .merge_file_YN8ZW1
     if [ ! -d "$MODULES_DIR/$module/docs" ]; then
         continue
     fi

@@ -39,7 +39,11 @@ function mockXotData(): void
     $mockXotData = \Mockery::mock(\Modules\Xot\Datas\XotData::class)->makePartial();
     
     $mockXotData->shouldReceive('getUserClass')
-        ->andReturn(\Modules\SaluteOra\Models\User::class);
+<<<<<<< HEAD
+        ->andReturn(\Modules\ModuloEsempio\Models\User::class);
+=======
+        ->andReturn(\Modules\healthcare_app\Models\User::class);
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
         
     $mockXotData->shouldReceive('make')
         ->andReturn($mockXotData);

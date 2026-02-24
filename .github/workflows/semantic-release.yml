@@ -77,7 +77,11 @@ jobs:
           ## 🚀 Release v${{ steps.calculate-version.outputs.version-string }}
           
           ### 📋 Summary
+<<<<<<< .merge_file_SrtlW7
           This release includes important updates and improvements across the healthcare_app Fila5 Mono platform.
+=======
+          This release includes important updates and improvements across the PTVX platform.
+>>>>>>> .merge_file_S8pXwT
           
           ### ✨ Features
           EOF
@@ -107,7 +111,11 @@ jobs:
           EOF
           
           # Extract module-specific changes
+<<<<<<< .merge_file_SrtlW7
           for module in Activity Chart CloudStorage Cms DbForge Gdpr Geo Job Lang Limesurvey Media Notify healthcare_app Tenant UI User Xot; do
+=======
+          for module in Activity Chart CloudStorage Cms DbForge Gdpr Geo Job Lang Limesurvey Media Notify Ptv Tenant UI User Xot; do
+>>>>>>> .merge_file_S8pXwT
             MODULE_CHANGES=$(git log $COMMIT_RANGE --pretty=format:"%h %s" | grep -i "$module" | wc -l)
             if [ "$MODULE_CHANGES" -gt 0 ]; then
               echo " - **$module**: $MODULE_CHANGES changes" >> CHANGELOG_BODY.md
@@ -173,7 +181,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+<<<<<<< .merge_file_SrtlW7
         module: [Activity, Chart, CloudStorage, Cms, DbForge, Gdpr, Geo, Job, Lang, Limesurvey, Media, Notify, healthcare_app, Tenant, UI, User, Xot]
+=======
+        module: [Activity, Chart, CloudStorage, Cms, DbForge, Gdpr, Geo, Job, Lang, Limesurvey, Media, Notify, Ptv, Tenant, UI, User, Xot]
+>>>>>>> .merge_file_S8pXwT
       fail-fast: false
     
     steps:

@@ -8,7 +8,7 @@ set -e
 echo "🔍 Fixing docs naming convention violations..."
 
 # Navigate to the base directory
-cd /var/www/html/_bases/base_saluteora
+cd /var/www/html/_bases/base_ptvx
 
 # Function to rename files with uppercase letters to lowercase
 fix_docs_naming() {

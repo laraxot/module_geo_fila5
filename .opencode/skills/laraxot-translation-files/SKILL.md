@@ -54,3 +54,15 @@ return [
 ```
 
 > **IMPORTANTE**: La chiave `navigation.label` (con punto) è obbligatoria. Non usare `navigation_label` (con underscore).
+
+## Regola: Traduzioni minime obbligatorie
+
+**ogni file di traduzione deve avere almeno 2 lingue:**
+- Italiano (`lang/it/`)
+- Inglese (`lang/en/`)
+
+Opzionale: Tedesco (`lang/de/`) se il progetto lo richiede.
+
+Se crei un nuovo file di traduzione (es. `lang/it/actions.php`), **devi** creare anche:
+- `lang/en/actions.php` (traduzione inglese)
+- (opzionale) `lang/de/actions.php` (traduzione tedesca)

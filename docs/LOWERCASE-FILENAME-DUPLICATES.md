@@ -3,32 +3,41 @@
 > **Regola**: I file PHP devono usare PascalCase (PSR-4). Quando esiste sia la versione PascalCase
 > che quella lowercase, il file lowercase è **SBAGLIATO** e va cancellato.
 >
-> Generato: 2026-02-24
+> Ultimo aggiornamento: scansione completa `laravel/Modules` — tutti i file `app/` e `tests/`
 
 ---
 
 ## Priorità ALTA — File PHP (classi, test)
 
 ### Gdpr Module
-| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) |
-|---|---|
-| `tests/Feature/conflictresolutiontest.php` | `tests/Feature/ConflictResolutionTest.php` |
+| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `tests/Feature/conflictresolutiontest.php` | `tests/Feature/ConflictResolutionTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Media Module
-| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) |
-|---|---|
-| `tests/Filament/Resources/mediaconvertresourcetest.php` | `tests/Filament/Resources/MediaConvertResourceTest.php` *(da verificare)* |
+| File lowercase | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `tests/Filament/Resources/mediaconvertresourcetest.php` | `tests/Filament/Resources/MediaConvertResourceTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Tenant Module
-| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) |
-|---|---|
-| `tests/Unit/domaintest.php` | `tests/Unit/DomainTest.php` *(da verificare)* |
+| File lowercase | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `tests/Unit/domaintest.php` | `tests/Unit/DomainTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Xot Module
-| File lowercase (DA CANCELLARE) | Note |
+| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `app/Http/Http/Controllers/xotbasecontroller.php` | `app/Http/Http/Controllers/XotBaseController.php` | CONFERMATO su filesystem |
+| `tests/Unit/metatagdatatest.php` | `tests/Unit/MetatagDataTest.php` | CONFERMATO su filesystem |
+| `tests/pest.php` | `tests/Pest.php` | CONFERMATO su filesystem |
+
+### Legge104 Module
+| File (da valutare) | Note |
 |---|---|
-| `app/Http/Http/Controllers/xotbasecontroller.php` | Verificare se esiste `XotBaseController.php` |
-| `tests/Unit/metatagdatatest.php` | Verificare se esiste `MetaTagDataTest.php` |
+| `app/docs/bootstrap.php` | File di configurazione docs dentro `app/` — posizione non standard |
+| `app/docs/config.php` | File di configurazione docs dentro `app/` — posizione non standard |
+| `app/docs/config.production.php` | File di configurazione docs dentro `app/` — posizione non standard |
+| `app/docs/navigation.php` | File di configurazione docs dentro `app/` — posizione non standard |
 
 ### Performance Module
 | File lowercase (DA CANCELLARE) | Note |
@@ -56,8 +65,8 @@ Tutti nel modulo **Notify** — probabilmente generati da agenti AI come backup 
 | `app/Models/notificationlog.php.up` | `app/Models/NotificationLog.php` |
 | `app/Models/notificationtemplateversion.php.up` | `app/Models/NotificationTemplateVersion.php` |
 | `app/Filament/Resources/notificationtemplateresource.php.up` | `app/Filament/Resources/NotificationTemplateResource.php` |
-| `app/Filament/Resources/MailTemplateResource/RelationManagers/versionsrelationmanager.php.up` | `...VersionsRelationManager.php` |
-| `app/Filament/Resources/MailTemplateResource/RelationManagers/logsrelationmanager.php.up` | `...LogsRelationManager.php` |
+| `app/Filament/Resources/MailTemplateResource/RelationManagers/versionsrelationmanager.php.up` | `...VersionsRelationManager.php` | Rinominato in `.old` su filesystem |
+| `app/Filament/Resources/MailTemplateResource/RelationManagers/logsrelationmanager.php.up` | `...LogsRelationManager.php` | Rinominato in `.old` su filesystem |
 
 ---
 

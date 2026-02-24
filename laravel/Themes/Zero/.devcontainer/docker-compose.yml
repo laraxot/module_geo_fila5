@@ -16,7 +16,11 @@ services:
     networks:
       - app-network
     extra_hosts:
+<<<<<<< .merge_file_nFFCMt
       - "healthcare_app.local:127.0.0.1"
+=======
+      - "ptvx.local:127.0.0.1"
+>>>>>>> .merge_file_S42Guu
 
   db:
     image: mysql:8

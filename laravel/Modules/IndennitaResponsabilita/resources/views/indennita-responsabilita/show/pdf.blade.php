@@ -39,7 +39,16 @@
                     @foreach($row->ratings as $rating)
                         <tr>
                             <td> {!! $rating->txt !!} </td>
-                            <td  align="right"><b>{{ $rating->pivot->value }}</b></td>
+
+                            <td  align="right">
+                            
+                            
+                            @if(Str::contains($rating->txt, 'Importo'))
+                                <b>@money($rating->pivot->value * 100,'EUR')</b>
+                            @else
+                                <b>{{ $rating->pivot->value }}</b>
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     

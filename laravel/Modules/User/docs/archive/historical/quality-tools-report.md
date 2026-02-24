@@ -54,7 +54,15 @@
 
 3. **Property Declaration** (Code Quality)
    - Proprietà con prefisso underscore (non conforme):
+<<<<<<< .merge_file_obagNG
      - `healthcare_app/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
+=======
+<<<<<<< HEAD
+     - `ExternalProject/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
+=======
+     - `ModuloEsempio/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_S1kb9q
      - `Xot/app/Services/ModuleService.php:23` (`$_instance`)
      - `Xot/app/Traits/HasCsrfToken.php:15` (`$_token`)
    - **Soluzione**: Rimuovere prefisso underscore, usare visibilità appropriata

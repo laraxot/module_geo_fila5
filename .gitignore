@@ -304,3 +304,4 @@ laravel/Modules/*/_docs/
 /templates/
 laravel/nunomaduro-phpinsights-ae780a9/
 laravel/phpinsights-standalone
+coverage.xml/

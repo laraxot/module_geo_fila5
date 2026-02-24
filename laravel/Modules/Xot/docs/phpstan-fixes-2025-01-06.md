@@ -30,7 +30,11 @@
 **Soluzione**:
 - Aggiunto cast esplicito `@var array<string, mixed>` al risultato
 
-### 4. SaluteOra/app/States/Appointment/ReportPending.php
+<<<<<<< HEAD
+### 4. ModuloEsempio/app/States/Appointment/ReportPending.php
+=======
+### 4. healthcare_app/app/States/Appointment/ReportPending.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 **Problema**: Linea 27 - Tipo di ritorno errato
 - Metodo doveva restituire `array<string, Component>` ma restituiva `array<int|string, Component>`

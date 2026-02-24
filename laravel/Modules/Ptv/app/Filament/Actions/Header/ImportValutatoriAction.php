@@ -145,10 +145,11 @@ class ImportValutatoriAction extends Action
                 continue;
             }
 
-            $email = trim((string) ($row['testo'] ?? ''));
+            //$email = trim((string) ($row['testo'] ?? ''));
+            $email = trim((string) ($row['dirigente'] ?? ''));
             // $dirigente = (string) ($row['dirigente'] ?? '');
             // $email = trim($dirigente);
-
+            
             $ana02f = Ana02f::where('emaind', $email)->first();
             if ($ana02f == null) {
                 Notification::make()
@@ -228,7 +229,11 @@ class ImportValutatoriAction extends Action
             $schedaWhereAttributes = array_merge($where, ['matr' => $matricola]);
             /** @var array<string, mixed> $schedaCreateAttributes */
             $schedaCreateAttributes = ['valutatore_id' => $valutatore_id];
-            $cond = $schedaModelClass::updateOrCreate($schedaWhereAttributes, $schedaCreateAttributes);
+            $model=app($schedaModelClass)->disableLogging();
+            $schedaModelClass::withoutEvents(function () use ($model, $schedaWhereAttributes, $schedaCreateAttributes) : void {
+                    $model->updateOrCreate($schedaWhereAttributes, $schedaCreateAttributes);
+                });
+            //$cond = 
 
             // dddx($cond);
         }

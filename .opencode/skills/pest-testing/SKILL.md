@@ -8,6 +8,23 @@ description: Gestione completa testing con Pest PHP per progetti Laravel/Laraxot
 ## Scopo
 Skill completa per gestire testing con Pest PHP in architettura Laraxot,包括 unit test, feature test, browser test e dataset patterns.
 
+## TDD: Red-Green-Refactor Cycle
+
+TDD (Test-Driven Development) segue un ciclo di 3 fasi:
+
+1. **🔴 RED** - Scrivi un test che fallisce
+2. **🟢 GREEN** - Scrivi il minimo codice per far passare il test
+3. **🔵 REFACTOR** - Migliora il codice mantenendo i test verdi
+
+### Perché TDD?
+- Qualità codice superiore
+- Bug catturati in anticipo
+- Documentazione eseguibile
+- Refactoring sicuro
+- Feedback immediato
+
+---
+
 ## Quando Usare
 - Scrivere nuovi test per moduli
 - Debugging test falliti
@@ -15,6 +32,84 @@ Skill completa per gestire testing con Pest PHP in architettura Laraxot,包括 u
 - Test patterns per repository/service layer
 - Testing business logic complessa
 - CI/CD testing pipeline
+
+---
+
+## TDD Workflow Patterns
+
+### 1️⃣ Red Phase (Failing Test)
+```php
+// Prima di scrivere codice, scrivi il test che fallisce
+it('can create a task with valid data', function () {
+    // Arrange
+    $user = User::factory()->create();
+    
+    // Act - usa il codice come se esistesse già
+    $response = $this->actingAs($user)
+        ->postJson('/api/tasks', [
+            'title' => 'Test Task',
+            'description' => 'Test Description',
+        ]);
+    
+    // Assert
+    $response->assertStatus(201);
+    $this->assertDatabaseHas('tasks', [
+        'title' => 'Test Task',
+    ]);
+});
+```
+
+### 2️⃣ Green Phase (Make it Pass)
+```php
+// Scrivi il MINIMO codice per far passare il test
+// NON ottimizzare ancora, fallo solo passare
+
+class TaskController extends Controller
+{
+    public function store(Request $request): JsonResponse
+    {
+        Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user()->id,
+        ]);
+        
+        return response()->json(['status' => 'created'], 201);
+    }
+}
+```
+
+### 3️⃣ Refactor Phase (Improve Code)
+```php
+// Ora migliora il codice mantenendo i test verdi
+// Estrai validazione, refactorizza, ottimizza
+
+class StoreTaskRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ];
+    }
+}
+
+class TaskController extends Controller
+{
+    public function store(StoreTaskRequest $request): JsonResponse
+    {
+        $task = Task::create([
+            ...$request->validated(),
+            'user_id' => $request->user()->id,
+        ]);
+        
+        return response()->json([
+            'data' => new TaskResource($task)
+        ], 201);
+    }
+}
+```
 
 ---
 
@@ -439,6 +534,109 @@ php artisan db:seed --class="${MODULE}Seeder"
 php artisan make:factory ${MODULE}TestFactory --model=Modules\\${MODULE}\\Models\\${MODULE}
 
 echo "✅ Test data generated for $MODULE"
+```
+
+---
+
+## TDD Best Practices
+
+### AAA Pattern (Arrange-Act-Assert)
+```php
+it('creates a task and assigns to user', function () {
+    // Arrange - prepara i dati
+    $user = User::factory()->create();
+    $taskData = [
+        'title' => 'Complete Laravel TDD',
+        'description' => 'Write a comprehensive guide',
+    ];
+    
+    // Act - esegui l'azione
+    $response = $this->actingAs($user)
+        ->postJson('/api/tasks', $taskData);
+    
+    // Assert - verifica il risultato
+    $response->assertStatus(201);
+    expect($response->json('data.title'))->toBe('Complete Laravel TDD');
+});
+```
+
+### Test Naming
+```php
+// ❌ NO - nome troppo generico
+it('test_create', function () { });
+
+// ✅ SÌ - nome descrittivo
+it('creates a task with valid data and assigns it to the authenticated user', function () { });
+it('validates required title when creating a task', function () { });
+it('cannot create task without authentication', function () { });
+```
+
+### Edge Cases & Sad Paths
+```php
+describe('Task Validation', function () {
+    it('rejects tasks with past due dates', function () {
+        $user = User::factory()->create();
+        
+        $response = $this->actingAs($user)
+            ->postJson('/api/tasks', [
+                'title' => 'Test',
+                'due_date' => '2020-01-01',
+            ]);
+        
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['due_date']);
+    });
+    
+    it('handles extremely long task titles gracefully', function () {
+        $user = User::factory()->create();
+        
+        $response = $this->actingAs($user)
+            ->postJson('/api/tasks', [
+                'title' => str_repeat('a', 300),
+            ]);
+        
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['title']);
+    });
+});
+```
+
+### Factory States
+```php
+// database/factories/TaskFactory.php
+class TaskFactory extends Factory
+{
+    public function definition(): array
+    {
+        return [
+            'title' => $this->faker->sentence(4),
+            'status' => 'pending',
+            'priority' => 'medium',
+            'user_id' => User::factory(),
+        ];
+    }
+    
+    public function completed(): static
+    {
+        return $this->state(fn () => ['status' => 'completed']);
+    }
+    
+    public function highPriority(): static
+    {
+        return $this->state(fn () => ['priority' => 'high']);
+    }
+    
+    public function overdue(): static
+    {
+        return $this->state(fn () => [
+            'due_date' => now()->subDays(5),
+        ]);
+    }
+}
+
+// Usage
+$completedTask = Task::factory()->completed()->create();
+$urgentTask = Task::factory()->highPriority()->overdue()->create();
 ```
 
 ---

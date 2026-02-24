@@ -67,12 +67,21 @@ Questo documento serve come indice centrale per il modulo Notify, fornendo una g
 - **Configurazione**: Offre opzioni di configurazione flessibili per diversi provider di notifica
 
 ## Collegamenti Correlati
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
+<<<<<<< HEAD
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
 - [Documentazione Generale PTV](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
-- [Documentazione Generale SaluteOra](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+- [Documentazione Generale Laraxot](../../../../docs/readme.md)
+=======
+- [Documentazione Generale healthcare_app](../../../../docs/readme.md)
+- [Documentazione Generale PTV](../../../../docs/readme.md)
+- [Documentazione Generale healthcare_app](../../../../docs/readme.md)
+- [Documentazione Generale healthcare_app](../../../../docs/readme.md)
+- [Documentazione Generale healthcare_app](../../../../docs/readme.md)
+- [Documentazione Generale healthcare_app](../../../../docs/readme.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - [Collegamenti Documentazione](../../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../../docs/documentation_standards.md)
 - [Modulo Xot](../../xot/docs/readme.md)

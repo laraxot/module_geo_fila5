@@ -69,8 +69,18 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
+<<<<<<< .merge_file_GBwCkF
 // healthcare_appService.php
 class healthcare_appService
+=======
+<<<<<<< HEAD
+// ExternalProjectService.php
+class ExternalProjectService
+=======
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_3hC19u
 {
     use SingletonTrait;
     
@@ -543,8 +553,18 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
+<<<<<<< .merge_file_GBwCkF
 // healthcare_appService.php
 class healthcare_appService
+=======
+<<<<<<< HEAD
+// ExternalProjectService.php
+class ExternalProjectService
+=======
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_3hC19u
 {
     use SingletonTrait;
     

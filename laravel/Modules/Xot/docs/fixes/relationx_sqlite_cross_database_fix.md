@@ -3,16 +3,40 @@
 ## Problema Risolto
 
 **Data**: 26 Settembre 2025  
+<<<<<<< .merge_file_g7HPQZ
 **Errore**: `SQLSTATE[HY000]: General error: 1 no such table: healthcare_app_data.customer_user`
 
 ## Causa Radice
 
 Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`healthcare_app_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
+=======
+<<<<<<< HEAD
+**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: modulo_data.customer_user`
+
+## Causa Radice
+
+Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`modulo_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
+=======
+**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: app_data.customer_user`
+
+## Causa Radice
+
+Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`app_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_ONefXY
 
 ## Soluzione Implementata
 
 ### File Modificato
+<<<<<<< .merge_file_g7HPQZ
 `/var/www/_bases/base_healthcare_app_fila4_mono/laravel/Modules/Xot/app/Models/Traits/RelationX.php`
+=======
+<<<<<<< HEAD
+`/var/www/_bases/base_progetto/laravel/Modules/Xot/app/Models/Traits/RelationX.php`
+=======
+`/var/www/_bases/base_app_fila4_mono/laravel/Modules/Xot/app/Models/Traits/RelationX.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_ONefXY
 
 ### Correzione Applicata
 Righe 51-59, aggiunto controllo del driver database:
@@ -45,7 +69,15 @@ if ($pivotDbName !== $dbName || $relatedDbName !== $dbName) {
 - ✅ Multi-tenancy cross-database
 
 ### Moduli Affetti
+<<<<<<< .merge_file_g7HPQZ
 - **healthcare_app Module**: Customer-User relationships
+=======
+<<<<<<< HEAD
+- **Modulo con database separato**: Customer-User relationships
+=======
+- **ExternalProject Module**: Customer-User relationships
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_ONefXY
 - **User Module**: HasTenants trait functionality
 - **Tutti i moduli**: che usano `belongsToManyX` con database separati
 
@@ -73,7 +105,15 @@ echo $tenants->count(); // ✅ Output: 1
 
 ## Riferimenti
 
+<<<<<<< .merge_file_g7HPQZ
 - [Customer User Fix Summary](../../healthcare_app/docs/customer_user_fix_summary.md)
+=======
+<<<<<<< HEAD
+- [Customer User Fix Summary](../filament/relationx-sqlite-cross-database-fix.md)
+=======
+- [Customer User Fix Summary](../../ExternalProject/docs/customer_user_fix_summary.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_ONefXY
 - [Cross Database Relations](../../User/docs/cross_database_relations_issue.md)
 - [Multi-Tenant Architecture](../architecture/multi_tenant_design.md)
 

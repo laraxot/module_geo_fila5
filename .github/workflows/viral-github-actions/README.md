@@ -1,8 +1,16 @@
+<<<<<<< .merge_file_9M3OY6
 # 🚀 GitHub Actions per la Viralità del Progetto healthcare_app Fila5 Mono
 
 ## 📋 Sommario delle Azioni Virali
 
 Questo documento descrive le GitHub Actions complete per promuovere il progetto healthcare_app Fila5 Mono attraverso strategie di viral marketing automation.
+=======
+# 🚀 GitHub Actions per la Viralità del Progetto PTVX
+
+## 📋 Sommario delle Azioni Virali
+
+Questo documento descrive le GitHub Actions complete per promuovere il progetto PTVX attraverso strategie di viral marketing automation.
+>>>>>>> .merge_file_hYqVvu
 
 ---
 
@@ -43,7 +51,11 @@ jobs:
         uses: ./.github/actions/twitter-post@v1
         with:
           content: generated-viral-content.md
+<<<<<<< .merge_file_9M3OY6
           hashtags: "PHP,Laravel,OpenSource,healthcare_app"
+=======
+          hashtags: "PHP,Laravel,OpenSource,PTVX"
+>>>>>>> .merge_file_hYqVvu
           
       - name: 💼 LinkedIn Professional Post
         uses: ./.github/actions/linkedin-post@v1
@@ -72,7 +84,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+<<<<<<< .merge_file_9M3OY6
         module: [Lang,User,Seo,healthcare_app,Chart,Xot,Job,Meetup,Limesurvey,UI,Geo,Tenant,Cms,Media,Notify,Gdpr,Activity,DbForge,CloudStorage]
+=======
+        module: [Lang,User,Seo,PTVX,Chart,Xot,Job,Meetup,Limesurvey,UI,Geo,Tenant,Cms,Media,Notify,Gdpr,Activity,DbForge,CloudStorage]
+>>>>>>> .merge_file_hYqVvu
         
     steps:
       - name: 📊 PHPStan Level 10 Check
@@ -120,7 +136,11 @@ jobs:
         uses: ./.github/actions/smart-response@v1
         with:
           classification: ${{ steps.classify.outputs.type }}
+<<<<<<< .merge_file_9M3OY6
           context: healthcare_app-project
+=======
+          context: ptvx-project
+>>>>>>> .merge_file_hYqVvu
           
       - name: 📢 Contextual Reply
         uses: ./.github/actions/contextual-reply@v1
@@ -165,7 +185,11 @@ jobs:
         uses: ./.github/actions/create-visuals@v1
         with:
           type: infographic,screenshot,demo
+<<<<<<< .merge_file_9M3OY6
           branding: healthcare_app
+=======
+          branding: ptvx
+>>>>>>> .merge_file_hYqVvu
           
       - name: 🚀 Multi-Platform Distribution
         uses: ./.github/actions/distribute-content@v1
@@ -318,14 +342,22 @@ gh secret set DISCORD_WEBHOOK_URL "your-discord-webhook"
 npm install -g @actions/core twitter-api-client linkedin-api-client
 
 # Setup workflow permissions
+<<<<<<< .merge_file_9M3OY6
 gh api repos/healthcare_app/fila5-mono/actions/permissions/set \
+=======
+gh api repos/ptvx/ptvx/actions/permissions/set \
+>>>>>>> .merge_file_hYqVvu
   --add "issues:write,contents:write,pull-requests:write"
 ```
 
 ### Comandi di Setup Rapido
 ```bash
 # Clonare e installare le azioni virali
+<<<<<<< .merge_file_9M3OY6
 git clone https://github.com/healthcare_app/fila5-mono.git
+=======
+git clone https://github.com/ptvx/ptvx.git
+>>>>>>> .merge_file_hYqVvu
 cd fila5-mono
 cp -r .github/workflows-viral/* .github/workflows/
 git add .github/workflows/
@@ -431,4 +463,8 @@ jobs:
 
 ---
 
+<<<<<<< .merge_file_9M3OY6
 **Nota:** Queste azioni sono progettate per essere **modulari e riutilizzabili**. Ogni workflow può essere eseguito indipendentemente o combinato con altri per massimizzare l'impatto virale del progetto healthcare_app Fila5 Mono.
+=======
+**Nota:** Queste azioni sono progettate per essere **modulari e riutilizzabili**. Ogni workflow può essere eseguito indipendentemente o combinato con altri per massimizzare l'impatto virale del progetto PTVX.
+>>>>>>> .merge_file_hYqVvu

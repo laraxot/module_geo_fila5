@@ -63,6 +63,12 @@ Questo errore indica che un metodo è stato erroneamente definito come statico q
 
 ## Collegamenti
 
-- [Documentazione Filament](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/filament/filament_best_practices.md)
-- [XotBasePage](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/filament/pages/xotbasepage.md)
-- [Linee Guida per l'Ereditarietà](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/filament/filament_inheritance_guidelines.md)
+<<<<<<< HEAD
+- [Documentazione Filament](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/filament/filament_best_practices.md)
+- [XotBasePage](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/filament/pages/xotbasepage.md)
+- [Linee Guida per l'Ereditarietà](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/filament/filament_inheritance_guidelines.md)
+=======
+- [Documentazione Filament](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/filament/filament_best_practices.md)
+- [XotBasePage](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/filament/pages/xotbasepage.md)
+- [Linee Guida per l'Ereditarietà](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/filament/filament_inheritance_guidelines.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)

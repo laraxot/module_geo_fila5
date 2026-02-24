@@ -82,5 +82,10 @@ namespace Modules\ModuleName\App\Console\Commands;
 
 ## Collegamenti
 
-- [Convenzioni di Namespace](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/namespace_conventions.md)
-- [Struttura Moduli](/var/www/html/base_saluteora/laravel/Modules/Xot/docs/module_structure.md)
+<<<<<<< HEAD
+- [Convenzioni di Namespace](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/namespace_conventions.md)
+- [Struttura Moduli](/var/www/html/base_ptvx/laravel/Modules/Xot/docs/module_structure.md)
+=======
+- [Convenzioni di Namespace](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/namespace_conventions.md)
+- [Struttura Moduli](/var/www/html/base_healthcare_app/laravel/Modules/Xot/docs/module_structure.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)

@@ -45,8 +45,18 @@
   ──────────────────────────────────────────────────────────────────────────────────────  
    FAILED  Modules\Lang\tests\Unit\Actions\ReadTranslationFileActionTest > `ReadTransl…   
   Failed asserting that exception of type "Error" matches expected exception "Exception". Message was: "Call to undefined method Illuminate\Container\Container::storagePath()" at
+<<<<<<< .merge_file_RzoSI7
 /var/www/_bases/base_healthcare_app_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:933
 /var/www/_bases/base_healthcare_app_fila4_mono/laravel/Modules/Lang/tests/Unit/Actions/ReadTranslationFileActionTest.php:58
+=======
+<<<<<<< HEAD
+/var/www/_bases/base_app_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:933
+/var/www/_bases/base_app_fila4_mono/laravel/Modules/Lang/tests/Unit/Actions/ReadTranslationFileActionTest.php:58
+=======
+/var/www/_bases/base_ptvx_fila4_mono/laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:933
+/var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Lang/tests/Unit/Actions/ReadTranslationFileActionTest.php:58
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_dMhxQK
 .
 
   ──────────────────────────────────────────────────────────────────────────────────────  

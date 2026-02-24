@@ -20,6 +20,10 @@ Create comprehensive tests following PTVX testing conventions.
 - **Every change must have corresponding tests**
 - **Cannot remove test files without explicit approval**
 - Run minimum: `php artisan test --compact [file]`
+- **Follow TDD Red-Green-Refactor cycle**:
+  1. Scrivi test che fallisce (RED)
+  2. Scrivi codice minimo per far passare test (GREEN)
+  3. Refactor del codice mantenendo test verdi (REFACTOR)
 
 ## Test Location
 

@@ -2,7 +2,11 @@
 
 ## 🚨 REGOLA CRITICA RISPETTATA 🚨
 
-**NON è stato modificato** `/var/www/html/_bases/base_saluteora/laravel/phpstan.neon`
+<<<<<<< HEAD
+**NON è stato modificato** `/var/www/html/_bases/base_ptvx/laravel/phpstan.neon`
+=======
+**NON è stato modificato** `/var/www/html/_bases/base_healthcare_app/laravel/phpstan.neon`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## Analisi Completa
 
