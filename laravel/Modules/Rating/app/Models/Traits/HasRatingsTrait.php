@@ -162,8 +162,12 @@ trait HasRatingsTrait
         $ratings = app($this->getRatingClass())
             ->withExtraAttributes($where)
             ->get();
+<<<<<<< HEAD
         
         
+=======
+        //dddx([$where,$ratings]);
+>>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)
         $rating_ids = $ratings->modelKeys();
         $this->ratings()->sync($rating_ids);
 

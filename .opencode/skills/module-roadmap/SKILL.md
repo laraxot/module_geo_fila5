@@ -18,6 +18,7 @@ Maintain and update roadmaps for module development tracking.
 ## Roadmap Location
 
 `laravel/Modules/{Module}/docs/roadmap.md`
+`laravel/Themes/{Theme}/docs/roadmap.md`
 
 ## Template
 

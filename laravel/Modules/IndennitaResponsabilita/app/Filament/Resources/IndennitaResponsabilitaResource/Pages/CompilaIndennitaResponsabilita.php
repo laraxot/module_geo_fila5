@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Filament\Actions\Action;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -62,6 +64,10 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
+<<<<<<< HEAD
+=======
+        Log::debug('CompilaIndennitaResponsabilita mount called with record: '.$record);
+>>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)
         
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);

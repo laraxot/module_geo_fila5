@@ -1,5 +1,34 @@
 # Roadmap tema One
 
+## 🧪 Testing e TDD
+
+### Principi TDD
+- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
+- **Test Coverage**: Minimo 80% per componenti theme
+
+### Struttura Test
+```
+Themes/One/tests/
+├── Unit/
+│   └── Components/
+├── Feature/
+│   └── Blade/
+├── Browser/
+│   └── NavigationTest.php
+├── Pest.php
+└── TestCase.php
+```
+
+### Best Practices
+- [ ] Browser test per navigazione
+- [ ] Test componenti Blade
+- [ ] Visual regression testing
+
+### Comandi
+```bash
+./vendor/bin/pest Themes/One/tests --coverage --min=80
+```
+
 ## Stato generale
 
 - **Completato**: 50%

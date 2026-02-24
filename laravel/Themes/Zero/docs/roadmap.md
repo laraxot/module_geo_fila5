@@ -5,6 +5,42 @@
 **Status**: Theme infrastructure with basic styling
 **Dependencies**: Xot (core framework), UI (components), all modules (visual integration)
 
+## 🧪 Testing e TDD
+
+### Principi TDD
+- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
+- **Test Coverage**: Minimo 80% per componenti theme
+
+### Struttura Test
+```
+Themes/Zero/tests/
+├── Unit/
+│   └── Components/
+│       └── {Component}Test.php
+├── Feature/
+│   └── Blade/
+│       └── {View}Test.php
+├── Browser/
+│   └── ThemeNavigationTest.php
+├── Pest.php
+└── TestCase.php
+```
+
+### Best Practices
+- [ ] Browser test per navigazione theme
+- [ ] Test componenti Blade
+- [ ] Test reattività JavaScript
+- [ ] Visual regression testing
+
+### Comandi
+```bash
+# Test theme
+./vendor/bin/pest Themes/Zero/tests
+
+# Test con coverage
+./vendor/bin/pest Themes/Zero/tests --coverage --min=80
+```
+
 ## Current State Analysis
 
 ### ✅ Completed Components
