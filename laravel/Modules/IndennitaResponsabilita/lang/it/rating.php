@@ -69,15 +69,9 @@ return [
         ],
         'anno' => [
             'description' => 'anno',
-<<<<<<< HEAD
             'label' => 'anno',
             'placeholder' => 'anno',
             'helper_text' => 'anno',
-=======
-            'helper_text' => 'anno',
-            'label' => 'anno',
-            'placeholder' => 'anno',
->>>>>>> 34028fb4d (.)
         ],
         'rule' => [
             'label' => 'rule',

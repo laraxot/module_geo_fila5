@@ -120,26 +120,16 @@ return [
             'tooltip' => 'Add a new message type',
             'modal' => [
                 'heading' => 'Create New Message Type',
-<<<<<<< HEAD
                 'description' => 'Enter the name of the new message type. It will automatically be converted to slug format.',
-=======
-                'description' => 'Enter the name of the new message type. It will be automatically converted to slug format.',
->>>>>>> b1571732d (feat: enhance RatingResource and language files for improved functionality and localization)
                 'confirm' => 'Create Type',
                 'cancel' => 'Cancel',
             ],
             'fields' => [
                 'new_type' => [
                     'label' => 'Type Name',
-<<<<<<< HEAD
                     'placeholder' => 'e.g. Important Notification',
                     'tooltip' => 'Name of the new message type',
                     'helper_text' => 'Enter the type name. It will automatically be converted to slug format (e.g. "important_notification")',
-=======
-                    'placeholder' => 'e.g. Important Notice',
-                    'tooltip' => 'Name of the new message type',
-                    'helper_text' => 'Enter the type name. It will be automatically converted to slug format (e.g. "important_notice")',
->>>>>>> b1571732d (feat: enhance RatingResource and language files for improved functionality and localization)
                     'help' => 'The name will be converted to slug format for database storage',
                 ],
             ],
