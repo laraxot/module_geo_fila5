@@ -124,12 +124,12 @@ readonly class CalculateTravelTimeAction
         }
 
         return new TravelTimeData(
-            duration_seconds: $element['duration']['value'],
-            duration_in_traffic_seconds: $element['duration_in_traffic']['value'] ?? $element['duration']['value'],
-            distance_meters: $element['distance']['value'],
-            formatted_duration: $element['duration']['text'],
-            formatted_distance: $element['distance']['text'],
-            status: $data['status'],
+            duration_seconds: (int) ($element['duration']['value'] ?? 0),
+            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
+            distance_meters: (int) ($element['distance']['value'] ?? 0),
+            formatted_duration: (string) ($element['duration']['text'] ?? ''),
+            formatted_distance: (string) ($element['distance']['text'] ?? ''),
+            status: (string) ($data['status'] ?? 'ERROR'),
         );
     }
 }
