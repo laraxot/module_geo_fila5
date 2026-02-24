@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\RatingResource\Pages;
 
+use Override;
+use Illuminate\Support\Arr;
 use Filament\Actions\Action;
+use Illuminate\Support\Carbon;
 use Filament\Actions\ActionGroup;
-use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Arr;
-use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource;
 use Modules\IndennitaResponsabilita\Models\Rating;
+use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource;
 use Modules\Rating\Filament\Resources\RatingResource\Pages\ListRatings as BaseListRatings;
-use Override;
 
 class ListRatings extends BaseListRatings
 {
@@ -128,10 +129,12 @@ class ListRatings extends BaseListRatings
      */
     protected static function getYears(): array
     {
-        return [
-            2023 => '2023',
-            2024 => '2024',
-            2025 => '2025',
-        ];
+        $currentYear = Carbon::now()->year;
+        $years = [];
+        for ($year = $currentYear; $year >= $currentYear-2; $year--) {
+            $years[$year] = (string) $year;
+        }
+        return $years;
+       
     }
 }

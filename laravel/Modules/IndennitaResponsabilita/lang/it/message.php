@@ -114,6 +114,24 @@ return [
             'tooltip' => 'Timestamp ultimo aggiornamento',
             'helper_text' => '',
         ],
+        'parent_id' => [
+            'label' => 'parent_id',
+        ],
+        'type' => [
+            'label' => 'type',
+        ],
+        'title' => [
+            'label' => 'title',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'value' => [
+            'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
+        ],
     ],
     'actions' => [
         'create' => [
@@ -214,6 +232,23 @@ return [
         ],
         'applyFilters' => [
             'tooltip' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'label' => 'applyFilters',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
         ],
     ],
     'messages' => [
