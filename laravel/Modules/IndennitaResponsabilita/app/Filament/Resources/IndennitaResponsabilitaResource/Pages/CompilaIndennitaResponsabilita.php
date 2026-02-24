@@ -62,11 +62,16 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
+<<<<<<< HEAD
         ddx('Sono nel mount, record: '.$record);
+=======
+        dddx($record);
+>>>>>>> f4bfa0540 (refactor: remove CompilaIndennitaResponsabilitaSemplificata page and add debug output in CompilaIndennitaResponsabilita)
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);
         $resolvedRecord->syncRatingsWhere(['anno' => $resolvedRecord->anno]);
         $this->record = $resolvedRecord;
+        
 
         if (! $this->record instanceof IndennitaResponsabilita) {
             abort(404);
