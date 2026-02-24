@@ -8,18 +8,30 @@ Analisi completa dell'architettura dei modelli Eloquent nel monorepo Laravel con
 
 - **Violazioni critiche trovate**: 5
 - **Linee di codice eliminate**: ~200+
+<<<<<<< HEAD
 - **Moduli interessati**: 4 (Geo, Cms, ModuloEsempio, User)
+=======
+- **Moduli interessati**: 4 (Geo, Cms, ExternalProject, User)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - **Impatto**: Riduzione drastica della duplicazione, miglioramento della manutenibilità
 
 ---
 
 ## Problemi Identificati e Risolti
 
+<<<<<<< HEAD
 ### 1. ❌ ModuloEsempio\Models\BaseModel estendeva Model invece di XotBaseModel
 
 **Prima** (VIOLAZIONE CRITICA):
 ```php
 namespace Modules\ModuloEsempio\Models;
+=======
+### 1. ❌ ExternalProject\Models\BaseModel estendeva Model invece di XotBaseModel
+
+**Prima** (VIOLAZIONE CRITICA):
+```php
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,7 +59,11 @@ abstract class BaseModel extends Model
 
 **Dopo** (✅ DRY & KISS):
 ```php
+<<<<<<< HEAD
 namespace Modules\ModuloEsempio\Models;
+=======
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Modules\Xot\Models\XotBaseModel;
 
@@ -342,7 +358,11 @@ BaseModel → BaseModelLang → Post
 
 | Modulo | Classe | Righe Prima | Righe Dopo | Riduzione |
 |--------|--------|-------------|------------|-----------|
+<<<<<<< HEAD
 | ModuloEsempio | BaseModel | 66 | 20 | -70% |
+=======
+| ExternalProject | BaseModel | 66 | 20 | -70% |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | Geo | BasePivot | 59 | 8 | -86% |
 | Geo | BaseMorphPivot | 67 | 8 | -88% |
 | Cms | BasePivot | 60 | 8 | -87% |

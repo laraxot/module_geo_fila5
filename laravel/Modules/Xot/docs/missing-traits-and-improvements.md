@@ -693,8 +693,13 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
+<<<<<<< HEAD
 // ModuloEsempioService.php
 class ModuloEsempioService
+=======
+// ExternalProjectService.php
+class ExternalProjectService
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 {
     use SingletonTrait;
 
@@ -1167,8 +1172,13 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
+<<<<<<< HEAD
 // ModuloEsempioService.php
 class ModuloEsempioService
+=======
+// ExternalProjectService.php
+class ExternalProjectService
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 {
     use SingletonTrait;
 

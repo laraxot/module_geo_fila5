@@ -759,7 +759,7 @@ class ConnectionManagerService
     public static function getConnectionForModule(string $module): string
     {
         return match($module) {
-            'Quaeris' => 'quaeris',
+            'ExternalProject' => 'quaeris',
             'User' => 'user',
             'Notify' => 'notify',
             default => 'mysql'
@@ -842,14 +842,14 @@ class ContactValidationService
 **Solution**: Strategy pattern con interfaces
 
 ```php
-// Modules/Quaeris/Contracts/ChartRendererContract.php
+// Modules/ExternalProject/Contracts/ChartRendererContract.php
 interface ChartRendererContract
 {
     public function supports(string $type): bool;
     public function render(array $data, array $config): string;
 }
 
-// Modules/Quaeris/Services/Chart/Renderers/PieChartRenderer.php
+// Modules/ExternalProject/Services/Chart/Renderers/PieChartRenderer.php
 class PieChartRenderer implements ChartRendererContract
 {
     public function supports(string $type): bool
@@ -1015,7 +1015,7 @@ $contacts = Contact::forContext('dashboard')->get(); // Optimized loading
 **Solution**: Chunking e memory management
 
 ```php
-// Modules/Quaeris/Services/BulkProcessingService.php
+// Modules/ExternalProject/Services/BulkProcessingService.php
 class BulkProcessingService
 {
     public function processLargeDataset(\Closure $processor, Builder $query, int $chunkSize = 1000): void

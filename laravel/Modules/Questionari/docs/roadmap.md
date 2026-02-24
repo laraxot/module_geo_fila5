@@ -17,7 +17,11 @@ Modulo per la gestione di questionari e survey: creazione, distribuzione, compil
 - [ ] Analisi risultati e report
 
 ### Fase 3: Integrazione (Future)
+<<<<<<< HEAD
 - [ ] Integrazione con moduli survey/LimeSurvey (se presenti)
+=======
+- [ ] Integrazione con moduli survey esterni se presenti
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - [ ] Test coverage
 - [ ] Traduzioni it/en complete
 

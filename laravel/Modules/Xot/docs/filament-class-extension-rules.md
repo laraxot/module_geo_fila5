@@ -673,7 +673,11 @@ class DashboardPage extends XotBasePage
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace Modules\Chart\Filament\Widgets;
+=======
+namespace Modules\ExternalProject\Filament\Widgets;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;

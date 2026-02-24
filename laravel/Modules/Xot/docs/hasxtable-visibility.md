@@ -64,8 +64,13 @@ protected function getTableEmptyStateActions(): array
    - Aggiunta sezione "Errore InteractsWithTable"
    - Aggiornata data ultimo aggiornamento
 
+<<<<<<< HEAD
 3. **Moduli che implementano nested resources con HasXotTable**
    - Nota critica sulla visibilità dei metodi `getTable*()`
+=======
+3. **`Modules/ExternalProject/docs/question-chart-implementation-guide.md`**
+   - Aggiunta nota critica sulla visibilità dei metodi `getTable*()`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## Pattern Corretto
 

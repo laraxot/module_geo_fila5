@@ -291,7 +291,7 @@ Il sistema PTVX è composto da **35 moduli indipendenti** organizzati per area f
 | **LU** | Location utilities | ✅ Attivo |
 | **Media** | Media library manager | ✅ Attivo |
 | **Notify** | Sistema notifiche | ✅ Attivo |
-| **Quaeris** | Sistema query builder | ✅ Attivo |
+| **ExternalProject** | Sistema query builder | ✅ Attivo |
 | **Seo** | SEO optimization | ✅ Attivo |
 | **Shop** | E-commerce platform | ✅ Attivo |
 | **Tenant** | Multi-tenancy core | ✅ Attivo |

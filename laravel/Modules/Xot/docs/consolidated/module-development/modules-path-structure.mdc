@@ -18,6 +18,7 @@ Tutti i file di risorsa (Resource), enum e pages dei moduli Laravel devono esser
 Tutti i file di risorsa (Resource), enum e pages dei moduli Laravel devono essere posizionati in `Modules/<NomeModulo>/app/` e **mai** direttamente nella root del modulo o in sottocartelle come `Filament/Resources/` o `Enums/` fuori da `app/`.
 
 ## Esempio corretto
+<<<<<<< HEAD
 - Modules/ModuloEsempio/app/Filament/Resources/UserResource.php
 - Modules/ModuloEsempio/app/Filament/Resources/UserResource/Pages/CreateUser.php
 - Modules/ModuloEsempio/app/Enums/UserType.php
@@ -26,6 +27,16 @@ Tutti i file di risorsa (Resource), enum e pages dei moduli Laravel devono esser
 ## Esempio errato
 - Modules/ModuloEsempio/Filament/Resources/UserResource.php
 - Modules/ModuloEsempio/Enums/UserType.php
+=======
+- Modules/healthcare_app/app/Filament/Resources/UserResource.php
+- Modules/healthcare_app/app/Filament/Resources/UserResource/Pages/CreateUser.php
+- Modules/healthcare_app/app/Enums/UserType.php
+- Modules/healthcare_app/app/Enums/UserState.php
+
+## Esempio errato
+- Modules/healthcare_app/Filament/Resources/UserResource.php
+- Modules/healthcare_app/Enums/UserType.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 Questa regola garantisce coerenza, manutenibilità e rispetto delle convenzioni PSR-4 e delle best practice del progetto.
 
@@ -82,7 +93,11 @@ class User extends Model {
 
 ## Docs collegate
 - [.windsurf/rules/model-states.mdc](../../../.windsurf/rules/model-states.mdc)
+<<<<<<< HEAD
 - [no-labels rule](../../../../../../.cursor/rules/no-filament-labels.mdc)
+=======
+- [healthcare_app/docs/uso-label-filament.mdc](../../healthcare_app/docs/uso-label-filament.mdc)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - https://github.com/spatie/laravel-model-states
 
 ---
@@ -112,10 +127,17 @@ class User extends Model {
 - https://github.com/spatie/laravel-model-states
 
 
+<<<<<<< HEAD
 - [no-labels rule](../../../../../../.cursor/rules/no-filament-labels.mdc)
 - https://github.com/spatie/laravel-model-states
 
 [← Torna a Xot docs](../../README.md)
+=======
+- [healthcare_app/docs/uso-label-filament.mdc](../../healthcare_app/docs/uso-label-filament.mdc)
+- https://github.com/spatie/laravel-model-states
+
+[← Torna a healthcare_app/docs](../../healthcare_app/docs/uso-label-filament.mdc)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 # Regola sui Path dei File di Codice nei Moduli Laravel
 
@@ -136,10 +158,17 @@ Tutti i file di codice (Actions, Models, Controllers, ecc.) dei moduli Laravel D
 ### Esempio
 ```php
 // Corretto
+<<<<<<< HEAD
 Modules/ModuloEsempio/app/Actions/Patient/Calendar/FetchEventsAction.php
 
 // Errato
 Modules/ModuloEsempio/Actions/Patient/Calendar/FetchEventsAction.php
+=======
+Modules/healthcare_app/app/Actions/Patient/Calendar/FetchEventsAction.php
+
+// Errato
+Modules/healthcare_app/Actions/Patient/Calendar/FetchEventsAction.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 ## Collegamenti
@@ -166,7 +195,11 @@ final class FetchEventsAction
 ```
 
 
+<<<<<<< HEAD
 Vedi anche: [create-action SKILL](../../../../.cursor/skills/create-action/SKILL.md)
+=======
+Vedi anche: [healthcare_app/docs/queueable-actions-guide.md](../../healthcare_app/docs/queueable-actions-guide.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 # Regola Namespace per Actions
 
@@ -177,9 +210,18 @@ Motivazione: PSR-4, autoload Composer, coerenza, manutenzione.
 Esempio:
 ```php
 // Corretto
+<<<<<<< HEAD
 namespace Modules\ModuloEsempio\Actions\Patient\Calendar;
 // Errato
 namespace Modules\ModuloEsempio\App\Actions\Patient\Calendar;
 ```
 
 Vedi anche: [module structure](../module-structure.md)
+=======
+namespace Modules\healthcare_app\Actions\Patient\Calendar;
+// Errato
+namespace Modules\healthcare_app\App\Actions\Patient\Calendar;
+```
+
+Vedi anche: healthcare_app/docs/directory-structure.md
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)

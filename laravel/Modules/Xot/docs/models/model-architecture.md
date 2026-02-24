@@ -65,7 +65,11 @@ Tutti i modelli devono estendere una delle classi base appropriate:
 │ Livello 3: Concrete Models                                 │
 │ - Modules/User/Models/Tenant                                │
 │ - Modules/User/Models/TeamUser                              │
+<<<<<<< HEAD
 │ - Modules/ModuloEsempio/Models/Contact                            │
+=======
+│ - Modules/ExternalProject/Models/Contact                            │
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 │                                                             │
 │ Implementano: Business logic, Relationships, Scopes         │
 └─────────────────────────────────────────────────────────────┘
@@ -190,7 +194,11 @@ abstract class BaseMorphPivot extends XotBaseMorphPivot
 
 **Scopo**:
 - Definire la connection specifica del modulo
+<<<<<<< HEAD
 - Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ModuloEsempio)
+=======
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ExternalProject)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Configurare casts specifici del modulo
 - Configurare eager loading predefinito (`$with`)
 
@@ -231,7 +239,11 @@ class Tenant extends BaseModel
 
 **Esempi**:
 - `Modules/User/Models/Tenant.php`
+<<<<<<< HEAD
 - `Modules/ModuloEsempio/Models/Contact.php`
+=======
+- `Modules/ExternalProject/Models/Contact.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - `Modules/Cms/Models/Page.php`
 - `Modules/Geo/Models/GeoNamesCap.php`
 
@@ -347,7 +359,11 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
+<<<<<<< HEAD
 - Namespace: `Modules\ModuloEsempio\Models\*` → Connection: `modulo_esempio`
+=======
+- Namespace: `Modules\ExternalProject\Models\*` → Connection: `quaeris`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
 **Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
@@ -547,10 +563,17 @@ class ModelHasRole extends BaseMorphPivot
 }
 ```
 
+<<<<<<< HEAD
 ### Esempio 4: BaseModel con Traits Specifici (ModuloEsempio Module)
 
 ```php
 namespace Modules\ModuloEsempio\Models;
+=======
+### Esempio 4: BaseModel con Traits Specifici (ExternalProject Module)
+
+```php
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Modules\Xot\Models\XotBaseModel;
 use Modules\Xot\Contracts\ModelContract;
@@ -560,7 +583,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
+<<<<<<< HEAD
  * Base Model per ModuloEsempio module.
+=======
+ * Base Model per ExternalProject module.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -583,7 +610,11 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
 Poi i modelli concreti ereditano tutto:
 
 ```php
+<<<<<<< HEAD
 namespace Modules\ModuloEsempio\Models;
+=======
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 class Contact extends BaseModel
 {
@@ -643,7 +674,11 @@ protected $connection = 'user';  // ← Già ereditato da BaseModel
 
 ```php
 // ✅ CORRETTO - Aggiungere traits specifici in BaseModel
+<<<<<<< HEAD
 // Modules/ModuloEsempio/Models/BaseModel.php
+=======
+// Modules/ExternalProject/Models/BaseModel.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 use InteractsWithMedia;
 use HasExtraTrait;
 
@@ -867,7 +902,11 @@ Tutti i modelli devono estendere una delle classi base appropriate:
 │ Livello 3: Concrete Models                                 │
 │ - Modules/User/Models/Tenant                                │
 │ - Modules/User/Models/TeamUser                              │
+<<<<<<< HEAD
 │ - Modules/ModuloEsempio/Models/Contact                            │
+=======
+│ - Modules/ExternalProject/Models/Contact                            │
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 │                                                             │
 │ Implementano: Business logic, Relationships, Scopes         │
 └─────────────────────────────────────────────────────────────┘
@@ -992,7 +1031,11 @@ abstract class BaseMorphPivot extends XotBaseMorphPivot
 
 **Scopo**:
 - Definire la connection specifica del modulo
+<<<<<<< HEAD
 - Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ModuloEsempio)
+=======
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ExternalProject)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Configurare casts specifici del modulo
 - Configurare eager loading predefinito (`$with`)
 
@@ -1033,7 +1076,11 @@ class Tenant extends BaseModel
 
 **Esempi**:
 - `Modules/User/Models/Tenant.php`
+<<<<<<< HEAD
 - `Modules/ModuloEsempio/Models/Contact.php`
+=======
+- `Modules/ExternalProject/Models/Contact.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - `Modules/Cms/Models/Page.php`
 - `Modules/Geo/Models/GeoNamesCap.php`
 
@@ -1149,7 +1196,11 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
+<<<<<<< HEAD
 - Namespace: `Modules\ModuloEsempio\Models\*` → Connection: `modulo_esempio`
+=======
+- Namespace: `Modules\ExternalProject\Models\*` → Connection: `quaeris`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
 **Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
@@ -1349,10 +1400,17 @@ class ModelHasRole extends BaseMorphPivot
 }
 ```
 
+<<<<<<< HEAD
 ### Esempio 4: BaseModel con Traits Specifici (ModuloEsempio Module)
 
 ```php
 namespace Modules\ModuloEsempio\Models;
+=======
+### Esempio 4: BaseModel con Traits Specifici (ExternalProject Module)
+
+```php
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 use Modules\Xot\Models\XotBaseModel;
 use Modules\Xot\Contracts\ModelContract;
@@ -1362,7 +1420,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
+<<<<<<< HEAD
  * Base Model per ModuloEsempio module.
+=======
+ * Base Model per ExternalProject module.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -1385,7 +1447,11 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
 Poi i modelli concreti ereditano tutto:
 
 ```php
+<<<<<<< HEAD
 namespace Modules\ModuloEsempio\Models;
+=======
+namespace Modules\ExternalProject\Models;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 class Contact extends BaseModel
 {
@@ -1445,7 +1511,11 @@ protected $connection = 'user';  // ← Già ereditato da BaseModel
 
 ```php
 // ✅ CORRETTO - Aggiungere traits specifici in BaseModel
+<<<<<<< HEAD
 // Modules/ModuloEsempio/Models/BaseModel.php
+=======
+// Modules/ExternalProject/Models/BaseModel.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 use InteractsWithMedia;
 use HasExtraTrait;
 

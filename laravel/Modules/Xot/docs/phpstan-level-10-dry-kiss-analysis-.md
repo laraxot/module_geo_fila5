@@ -68,7 +68,11 @@ find Modules -type f -name "*.php" -exec sed -i 's/Modules\\Fixcity\\Models\\Pro
 
 #### Problema 2: ⚠️ Type hints mancanti in Contact model
 
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/Contact.php` (809 righe!)
+=======
+**File**: `Modules/ExternalProject/app/Models/Contact.php` (809 righe!)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 **Errori PHPStan Level 10**:
 ```
@@ -106,7 +110,11 @@ if ($body_html === null) { ... }
 |--------|--------------|-----------------|--------|
 | User | 16 | 0 | ✅ |
 | Xot | 16 | 0 | ✅ |
+<<<<<<< HEAD
 | ModuloEsempio | 21+ | 21 | ⚠️ Necessita refactoring Contact |
+=======
+| ExternalProject | 21+ | 21 | ⚠️ Necessita refactoring Contact |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | Gdpr | 6 | 0 | ✅ |
 | Notify | 8 | 0 | ✅ |
 
@@ -149,7 +157,11 @@ class Notification extends BaseModel // Eredita $connection = 'user'
 
 **Fix applicato**:
 - User module: 7 file (Notification, SocialiteUser, OauthAccessToken, AuthenticationLog, BaseTeamUser, Membership, TenantUser)
+<<<<<<< HEAD
 - ModuloEsempio module: 5 file (Contact, ContactSimple, PdfStyle, QuestionChart, SurveyPdf)
+=======
+- ExternalProject module: 5 file (Contact, ContactSimple, PdfStyle, QuestionChart, SurveyPdf)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Altri moduli: ~51 file
 
 **Comando usato**:
@@ -289,7 +301,11 @@ protected function casts(): array
 
 ### Violazione KISS #1: ❌ Contact.php - Complessità elevata (CRITICA)
 
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/Contact.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/Contact.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 **Righe**: 809 (!!!)
 **Metodi**: 40+
 
@@ -350,7 +366,11 @@ Contact.php (809 lines) →
 
 ### Violazione KISS #2: ❌ QuestionChart.php - Complessità alta
 
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/QuestionChart.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/QuestionChart.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 **Righe**: 882 (!)
 
 **Stesso problema di Contact.php**
@@ -432,13 +452,21 @@ find Modules -type f -name "*.php" -exec sed -i 's/Modules\\Fixcity\\Models\\Pro
 
 **Moduli fixati**:
 - **User**: 7 modelli
+<<<<<<< HEAD
 - **ModuloEsempio**: 5 modelli
+=======
+- **ExternalProject**: 5 modelli
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - **Notify**: ~8 modelli
 - **Altri**: ~43 modelli
 
 **Esempio comando**:
 ```bash
+<<<<<<< HEAD
 cd Modules/ModuloEsempio/app/Models
+=======
+cd Modules/ExternalProject/app/Models
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 for f in *.php; do
   if grep -q "extends BaseModel" "$f"; then
     sed -i '/^[[:space:]]*protected \$connection = /d' "$f"
@@ -457,7 +485,11 @@ done
 
 **Comando**:
 ```bash
+<<<<<<< HEAD
 vendor/bin/pint Modules/User/app/Models Modules/ModuloEsempio/app/Models --quiet
+=======
+vendor/bin/pint Modules/User/app/Models Modules/ExternalProject/app/Models --quiet
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Risultato**:
@@ -869,13 +901,21 @@ $activeUsers = User::active()->get(); // ✅ Works!
 ```bash
 ./vendor/bin/phpstan analyse Modules/User/app/Models --level=10
 ./vendor/bin/phpstan analyse Modules/Xot/app/Models --level=10
+<<<<<<< HEAD
 ./vendor/bin/phpstan analyse Modules/ModuloEsempio/app/Models --level=10
+=======
+./vendor/bin/phpstan analyse Modules/ExternalProject/app/Models --level=10
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Results**:
 - User: ✅ 0 errors (dopo fix)
 - Xot: ✅ 0 errors (dopo fix)
+<<<<<<< HEAD
 - ModuloEsempio: ⚠️ 21 errors (Contact.php - needs refactoring)
+=======
+- ExternalProject: ⚠️ 21 errors (Contact.php - needs refactoring)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ### Manual Code Review
 

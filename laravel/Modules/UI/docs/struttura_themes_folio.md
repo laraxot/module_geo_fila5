@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Struttura Themes e Folio in Laraxot
+=======
+# Struttura Themes e Folio in healthcare_app
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## ⚠️ ATTENZIONE CRITICA
 
@@ -8,7 +12,11 @@
 
 ## Struttura del Progetto
 
+<<<<<<< HEAD
 Il progetto Laraxot utilizza un sistema di **Themes** che modifica la struttura standard di Laravel Folio:
+=======
+Il progetto healthcare_app utilizza un sistema di **Themes** che modifica la struttura standard di Laravel Folio:
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```
 /laravel/

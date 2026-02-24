@@ -167,7 +167,7 @@ Modules/
 │   │   ├── migrations/
 │   │   └── seeders/
 │   └── app/
-└── Quaeris/
+└── ExternalProject/
     ├── database/
     │   ├── factories/
     │   ├── migrations/

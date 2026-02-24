@@ -31,7 +31,11 @@
       <line no="4"/>
       <line no="5"/>
       <line no="6">
+<<<<<<< HEAD
         <token name="T_COMMENT">// This file references Laraxot models that do not exist in this project</token>
+=======
+        <token name="T_COMMENT">// This file references healthcare_app models that do not exist in this project</token>
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
       </line>
       <line no="7">
         <token name="T_NAMESPACE">namespace</token>
@@ -65,7 +69,11 @@
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="13">
+<<<<<<< HEAD
         <token name="T_COMMENT">// use Modules\Laraxot\Models\Appointment;</token>
+=======
+        <token name="T_COMMENT">// use Modules\healthcare_app\Models\Appointment;</token>
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
       </line>
       <line no="14">
         <token name="T_USE">use</token>
@@ -74,7 +82,11 @@
         <token name="T_SEMICOLON">;</token>
       </line>
       <line no="15">
+<<<<<<< HEAD
         <token name="T_COMMENT">// use Modules\Laraxot\Models\Patient;</token>
+=======
+        <token name="T_COMMENT">// use Modules\healthcare_app\Models\Patient;</token>
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
       </line>
       <line no="16">
         <token name="T_USE">use</token>

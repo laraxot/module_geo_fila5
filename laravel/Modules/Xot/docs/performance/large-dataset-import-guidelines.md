@@ -64,7 +64,7 @@ try {
 
 ## Module-Specific Considerations
 
-### Quaeris Module
+### ExternalProject Module
 - Optimize survey contact imports
 - Implement JSON payload persistence
 - Use queue-based processing for contact operations

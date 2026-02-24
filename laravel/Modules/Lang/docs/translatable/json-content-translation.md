@@ -77,8 +77,8 @@ Ogni file JSON può contenere sezioni traducibili seguendo questo pattern:
 ```json
 {
     "title": {
-        "it": "Area Dottore - Quaeris",
-        "en": "Doctor Area - Quaeris"
+        "it": "Area Dottore - ExternalProject",
+        "en": "Doctor Area - ExternalProject"
     },
     "content_blocks": {
         "it": [

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Performance Module Roadmap
 
 ## Visione
@@ -32,48 +33,14 @@ Modulo per la gestione della valutazione delle performance: schede, organizzativ
 
 **Ultimo aggiornamento**: Febbraio 2026
 =======
+=======
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 # Performance Module - Roadmap
 
 ## Overview
 **Purpose**: Performance evaluation and management system for employee assessments
 **Status**: Active Development
 **Dependencies**: Xot (core), User (authentication), Rating (evaluation criteria)
-
-## 🧪 Testing e TDD
-
-### Principi TDD
-- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
-- **AAA Pattern**: Arrange → Act → Assert
-- **Test Coverage**: Minimo 80%
-
-### Struttura Test
-```
-Modules/Performance/tests/
-├── Unit/
-│   ├── Actions/
-│   ├── Models/
-│   └── Services/
-├── Feature/
-│   ├── Filament/
-│   └── Pages/
-├── Pest.php
-└── TestCase.php
-```
-
-### Best Practices
-- [ ] Usare `RefreshDatabase` per test database
-- [ ] Fake servizi esterni
-- [ ] Test naming descrittivo
-- [ ] Dataset per multiple scenarios
-
-### Comandi
-```bash
-# Test modulo
-./vendor/bin/pest Modules/Performance/tests
-
-# Test con coverage
-./vendor/bin/pest Modules/Performance/tests --coverage --min=80
-```
 
 ## Current State
 
@@ -155,4 +122,3 @@ Modules/Performance/tests/
 **Last Updated**: 2026-02-24
 **Maintainer**: Team Laraxot
 **Status**: Active Development
->>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)

@@ -15,7 +15,7 @@ This guide provides a comprehensive overview of chart generation and PDF integra
 
 ### Key Components
 - **Chart Module**: Contains chart generation and styling logic
-- **Quaeris Module**: Handles survey data and PDF generation
+- **ExternalProject Module**: Handles survey data and PDF generation
 - **Xot Module**: Provides core services including HTML to PDF conversion
 - **JpGraph Library**: Server-side chart generation
 - **Chart.js**: Client-side chart visualization

@@ -107,11 +107,19 @@ Le classi base XotBase già implementano la maggior parte delle funzionalità ne
 Per verificare che tutte le pagine di risorse seguano questo pattern:
 
 ```bash
+<<<<<<< HEAD
 find /var/www/html/ptvx/laravel/Modules -type f -name "*.php" -path "*/Filament/Resources/*/Pages/*" -exec grep -l "extends.*\\\\Filament\\\\Resources\\\\Pages" {} \;
+=======
+find /var/www/html/healthcare_app/laravel/Modules -type f -name "*.php" -path "*/Filament/Resources/*/Pages/*" -exec grep -l "extends.*\\\\Filament\\\\Resources\\\\Pages" {} \;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 ## Riferimenti
 
 - [Filament Resources Documentation](https://filamentphp.com/docs/3.x/panels/resources/getting-started)
+<<<<<<< HEAD
 - [Laraxot XotBase Architecture](./filament_xot_architecture.md)
+=======
+- [healthcare_app XotBase Architecture](./filament_xot_architecture.md)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - [Pattern Architetturali in Laravel](https://laravel.com/docs/architecture)

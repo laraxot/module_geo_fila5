@@ -18,7 +18,11 @@ This skill ensures that all documentation within the project follows the strict 
 NEVER use absolute paths in `.md` files. Always use relative paths to ensure portability across environments and repository subtrees.
 
 ### 3. Project Neutrality Principle
+<<<<<<< HEAD
 MAI utilizzare il nome specifico del progetto (es. "Laraxot", "PTVX") nella documentazione dei moduli. I moduli devono rimanere concettualmente indipendenti.
+=======
+MAI utilizzare il nome specifico del progetto (es. "healthcare_app", "PTVX") nella documentazione dei moduli. I moduli devono rimanere concettualmente indipendenti.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - **Corretto**: "il sistema", "l'applicazione", "questo modulo".
 - **Errato**: Nomi di progetti, domini specifici, nomi di organizzazioni.
 

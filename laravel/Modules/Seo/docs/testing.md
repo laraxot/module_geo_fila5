@@ -179,7 +179,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-        'database.connections.seo.database' => 'quaeris_data_test',
+        'database.connections.seo.database' => 'app_data_test',
     ]);
     
     return $app;

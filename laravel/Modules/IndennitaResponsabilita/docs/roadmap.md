@@ -1,23 +1,8 @@
-<<<<<<< HEAD
-# IndennitaResponsabilita Module Roadmap
+# IndennitaResponsabilita Module - Roadmap
 
 ## Visione
 
-Sistema di valutazione e calcolo indennità dirigenziali per PA: criteri configurabili, calcolo automatico, audit trail e documentazione PDF.
-
-**Business Logic**: [business-logic](business-logic.md) — PERCHÉ e COME funziona
-
-## Fasi di Sviluppo
-
-### Fase 1: Stabilizzazione (In Progress)
-=======
-# IndennitaResponsabilita Module - Roadmap
->>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)
-
-## Overview
-**Purpose**: Gestione indennità di responsabilità per dipendenti pubblici
-**Status**: Active Development
-**Dependencies**: Xot (core), Rating (criteri valutazione), User (autenticazione)
+Sistema modulare per la gestione di indennità con criteri configurabili, calcolo automatico e validazione. Progettato per essere riutilizzabile in diversi contesti (PA, aziende private, etc.).
 
 ## 🧪 Testing e TDD
 
@@ -42,9 +27,6 @@ Modules/IndennitaResponsabilita/tests/
 └── TestCase.php
 ```
 
-### Test Esistenti
-- [x] `CompilaIndennitaResponsabilitaTest` - Test pagina compilazione
-
 ### Best Practices
 - [ ] Usare `RefreshDatabase` per test database
 - [ ] Fake servizi esterni (Notification)
@@ -64,6 +46,7 @@ Modules/IndennitaResponsabilita/tests/
 
 ### ✅ Completed
 - [x] PHPStan Level 10 Compliance
+<<<<<<< HEAD
 <<<<<<< HEAD
 - [x] Compila Page Systematization (Unified Form + Live Summary)
 - [x] Validazione criteri minimi (2+ con punteggio > 0) — [minimum-positive-ratings-validation](minimum-positive-ratings-validation.md)
@@ -139,8 +122,10 @@ Dettaglio: [refactoring-action-plan](refactoring-action-plan.md)
 
 **Ultimo aggiornamento**: Febbraio 2026
 =======
+=======
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - [x] Compila Page con form unificato
-- [x] Sistema validazione criteri minimi (2+ ratings > 0)
+- [x] Sistema validazione criteri
 - [x] Traduzioni IT/EN/DE
 
 ### 🔄 In Progress
@@ -166,8 +151,16 @@ Dettaglio: [refactoring-action-plan](refactoring-action-plan.md)
 - [ ] Dashboard analitiche
 - [ ] Reportistica
 
+## Dipendenze Opzionali
+
+Il modulo può integrarsi (se presenti) con:
+- **Rating**: Criteri di valutazione
+- **Activity**: Audit trail
+- **User**: Autenticazione
+
+Queste sono dipendenze opzionali - il modulo funziona anche senza di esse.
+
 ---
 
 **Last Updated**: 2026-02-24
 **Status**: Active Development
->>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)

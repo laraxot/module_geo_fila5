@@ -3,16 +3,26 @@
 declare(strict_types=1);
 
 
+<<<<<<< HEAD
 // This file references Appointment/Patient models from optional modules
+=======
+// This file references healthcare_app models that do not exist in this project
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 namespace Modules\Notify\Actions;
 
 use Exception;
 use Modules\Notify\Models\Notification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+<<<<<<< HEAD
 // use Modules\<ModuloConAppuntamenti>\Models\Appointment;
 use Modules\Notify\Mail\AppointmentNotificationMail;
 // use Modules\<ModuloConAppuntamenti>\Models\Patient;
+=======
+// use Modules\healthcare_app\Models\Appointment;
+use Modules\Notify\Mail\AppointmentNotificationMail;
+// use Modules\healthcare_app\Models\Patient;
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 use Spatie\QueueableAction\QueueableAction;
 
 class SendAppointmentNotificationAction

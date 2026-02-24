@@ -147,7 +147,11 @@ class TemporaryUpload extends BaseModel implements HasMedia  // ✅
 
 ---
 
+<<<<<<< HEAD
 #### ModuloEsempio
+=======
+#### ExternalProject
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 **BaseModel**: ❌ Estende direttamente `Model` invece di `XotBaseModel`
 
 **Modelli da correggere**:
@@ -204,7 +208,11 @@ class TestSushiModel extends BaseModel  // ✅
 - ❌ Cms
 - ❌ Chart
 - ❌ Geo
+<<<<<<< HEAD
 - ❌ ModuloEsempio
+=======
+- ❌ ExternalProject
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 **Totale**: 4/13 moduli (31%)
 
@@ -220,8 +228,13 @@ class TestSushiModel extends BaseModel  // ✅
 | Job | `TaskComment.php` | Estende `Model` invece di `BaseModel` |
 | Lang | `BaseModelLang.php` | Estende `Model` invece di `BaseModel` |
 | Media | `TemporaryUpload.php` | Estende `Model` invece di `BaseModel` |
+<<<<<<< HEAD
 | ModuloEsempio | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
 | ModuloEsempio | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+=======
+| ExternalProject | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
+| ExternalProject | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | Tenant | `TestSushiModel.php` | Estende `Model` invece di `BaseModel` |
 
 **Totale**: 11 file da correggere
@@ -237,7 +250,11 @@ class TestSushiModel extends BaseModel  // ✅
 
 ### 🔴 Alta Priorità
 1. **Cms** - BaseModel e Conf (modulo core per contenuti)
+<<<<<<< HEAD
 2. **ModuloEsempio** - BaseModel e ContactSimple (modulo specifico del progetto)
+=======
+2. **ExternalProject** - BaseModel e ContactSimple (modulo specifico del progetto)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ### 🟡 Media Priorità
 3. **Chart** - BaseModel
@@ -272,7 +289,11 @@ done
 
 1. ✅ **User** - Completato (15 Ottobre 2025)
 2. ⏳ **Cms** - Da correggere (BaseModel + Conf)
+<<<<<<< HEAD
 3. ⏳ **ModuloEsempio** - Da correggere (BaseModel + ContactSimple)
+=======
+3. ⏳ **ExternalProject** - Da correggere (BaseModel + ContactSimple)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 4. ⏳ **Chart** - Da correggere (BaseModel)
 5. ⏳ **Geo** - Da correggere (BaseModel + GeoNamesCap)
 6. ⏳ **Job** - Da correggere (TaskComment)
@@ -294,7 +315,11 @@ done
 Questi modelli possono comunque estendere `BaseModel` senza problemi.
 
 #### Modelli con HasMedia
+<<<<<<< HEAD
 - `ModuloEsempio/BaseModel.php` - Implementa `HasMedia`
+=======
+- `ExternalProject/BaseModel.php` - Implementa `HasMedia`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - `Media/TemporaryUpload.php` - Implementa `HasMedia`
 
 `XotBaseModel` è compatibile con `HasMedia` di Spatie.
@@ -465,7 +490,11 @@ class TemporaryUpload extends BaseModel implements HasMedia  // ✅
 
 ---
 
+<<<<<<< HEAD
 #### ModuloEsempio
+=======
+#### ExternalProject
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 **BaseModel**: ❌ Estende direttamente `Model` invece di `XotBaseModel`
 
 **Modelli da correggere**:
@@ -522,7 +551,11 @@ class TestSushiModel extends BaseModel  // ✅
 - ❌ Cms
 - ❌ Chart
 - ❌ Geo
+<<<<<<< HEAD
 - ❌ ModuloEsempio
+=======
+- ❌ ExternalProject
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 **Totale**: 4/13 moduli (31%)
 
@@ -538,8 +571,13 @@ class TestSushiModel extends BaseModel  // ✅
 | Job | `TaskComment.php` | Estende `Model` invece di `BaseModel` |
 | Lang | `BaseModelLang.php` | Estende `Model` invece di `BaseModel` |
 | Media | `TemporaryUpload.php` | Estende `Model` invece di `BaseModel` |
+<<<<<<< HEAD
 | ModuloEsempio | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
 | ModuloEsempio | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+=======
+| ExternalProject | `BaseModel.php` | Estende `Model` invece di `XotBaseModel` |
+| ExternalProject | `ContactSimple.php` | Estende `Model` invece di `BaseModel` |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | Tenant | `TestSushiModel.php` | Estende `Model` invece di `BaseModel` |
 
 **Totale**: 11 file da correggere
@@ -555,7 +593,11 @@ class TestSushiModel extends BaseModel  // ✅
 
 ### 🔴 Alta Priorità
 1. **Cms** - BaseModel e Conf (modulo core per contenuti)
+<<<<<<< HEAD
 2. **ModuloEsempio** - BaseModel e ContactSimple (modulo specifico del progetto)
+=======
+2. **ExternalProject** - BaseModel e ContactSimple (modulo specifico del progetto)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ### 🟡 Media Priorità
 3. **Chart** - BaseModel
@@ -590,7 +632,11 @@ done
 
 1. ✅ **User** - Completato (15 Ottobre 2025)
 2. ⏳ **Cms** - Da correggere (BaseModel + Conf)
+<<<<<<< HEAD
 3. ⏳ **ModuloEsempio** - Da correggere (BaseModel + ContactSimple)
+=======
+3. ⏳ **ExternalProject** - Da correggere (BaseModel + ContactSimple)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 4. ⏳ **Chart** - Da correggere (BaseModel)
 5. ⏳ **Geo** - Da correggere (BaseModel + GeoNamesCap)
 6. ⏳ **Job** - Da correggere (TaskComment)
@@ -612,7 +658,11 @@ done
 Questi modelli possono comunque estendere `BaseModel` senza problemi.
 
 #### Modelli con HasMedia
+<<<<<<< HEAD
 - `ModuloEsempio/BaseModel.php` - Implementa `HasMedia`
+=======
+- `ExternalProject/BaseModel.php` - Implementa `HasMedia`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - `Media/TemporaryUpload.php` - Implementa `HasMedia`
 
 `XotBaseModel` è compatibile con `HasMedia` di Spatie.

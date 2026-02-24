@@ -167,7 +167,7 @@ class Order extends BaseModel
 
 ```
 Activity <── User      (login/logout events, user actions)
-Activity <── Quaeris   (survey CRUD, dashboard actions)
+Activity <── Survey    (survey CRUD, dashboard actions)
 Activity <── Cms       (page/content modifications)
 Activity <── Media     (file upload/delete tracking)
 Activity <── Tenant    (multi-tenant audit isolation)

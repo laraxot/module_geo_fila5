@@ -52,7 +52,11 @@ $user->hasAttribute('name');  // true
 | **Tenant** | 1 | 9 | ~3 min |
 | **Lang** | 1 | 2 | ~1 min |
 | **DbForge** | 1 | 1 | ~1 min |
+<<<<<<< HEAD
 | **ModuloEsempio** | 1 | 1 | ~2 min |
+=======
+| **ExternalProject** | 1 | 1 | ~2 min |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | **Xot** | 0 | 0 (solo in commenti) | ~1 min |
 | **TOTALE** | **28** | **72** | **~36 min** |
 
@@ -67,7 +71,11 @@ $user->hasAttribute('name');  // true
 ✅ Tenant:  0 errori (già perfetto)
 ✅ Lang:    0 errori
 ✅ DbForge: 0 errori
+<<<<<<< HEAD
 ✅ ModuloEsempio: 0 errori su file modificato
+=======
+✅ ExternalProject: 0 errori su file modificato
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ⚠️  Xot:     4 errori pre-esistenti (non property_exists)
 ```
 
@@ -234,7 +242,11 @@ if (isset($graph->yaxis) && is_object($graph->yaxis)) {
 ### DbForge (1 file)
 1. `Console/Commands/SearchTextInDbCommand.php` - dynamic table property ✅
 
+<<<<<<< HEAD
 ### ModuloEsempio (1 file)
+=======
+### ExternalProject (1 file)
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 1. `Filament/Resources/.../ViewQuestionChartVisualizationWidget.php` - livewire property ✅
 
 ---
@@ -302,7 +314,11 @@ if (isset($media->file_name)) {
 | **Tenant** | ✅ 0 errori | ⚠️ OK | ✅ OK |
 | **Lang** | ✅ 0 errori | ⚠️ OK | ✅ OK |
 | **DbForge** | ✅ 0 errori | ⚠️ OK | ✅ OK |
+<<<<<<< HEAD
 | **ModuloEsempio** | ⚠️ 64 errori* | - | - |
+=======
+| **ExternalProject** | ⚠️ 64 errori* | - | - |
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 | **Xot** | ⚠️ 4 errori* | - | - |
 
 \* Errori pre-esistenti non correlati a property_exists
@@ -554,7 +570,11 @@ Ogni modulo ha ora:
 
 ### 1. Moduli Rimanenti con Errori
 
+<<<<<<< HEAD
 **ModuloEsempio** (64 errori):
+=======
+**ExternalProject** (64 errori):
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 - Errori pre-esistenti non correlati a property_exists
 - Richiedono intervento separato per type hints
 - Priorità media

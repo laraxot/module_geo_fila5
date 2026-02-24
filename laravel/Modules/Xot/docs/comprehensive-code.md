@@ -449,24 +449,40 @@ Analisi sistematica di tutti i moduli del progetto per identificare violazioni d
 ### 1. Violazioni DRY - Duplicazioni di Codice
 
 #### Singleton Pattern Duplicato
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Services/LimeJsonService.php`, `Modules/ModuloEsempio/app/Services/ModuloEsempioService.php`
+=======
+**File**: `Modules/ExternalProject/app/Services/LimeJsonService.php`, `Modules/ExternalProject/app/Services/ExternalProjectService.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 // DUPLICATO in LimeJsonService.php
 private static ?self $instance = null;
 public static function getInstance(): self
 {
+<<<<<<< HEAD
     if (! self::$instance instanceof \Modules\ModuloEsempio\Services\LimeJsonService) {
+=======
+    if (! self::$instance instanceof \Modules\ExternalProject\Services\LimeJsonService) {
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
         self::$instance = new self();
     }
     return self::$instance;
 }
 
+<<<<<<< HEAD
 // DUPLICATO in ModuloEsempioService.php
 private static ?self $instance = null;
 public static function getInstance(): self
 {
     if (! self::$instance instanceof \Modules\ModuloEsempio\Services\ModuloEsempioService) {
+=======
+// DUPLICATO in ExternalProjectService.php
+private static ?self $instance = null;
+public static function getInstance(): self
+{
+    if (! self::$instance instanceof \Modules\ExternalProject\Services\ExternalProjectService) {
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
         self::$instance = new self();
     }
     return self::$instance;
@@ -476,13 +492,21 @@ public static function getInstance(): self
 **Soluzione**: Creare trait `SingletonTrait` in `Modules/Xot/app/Traits/SingletonTrait.php`
 
 #### Connection Hardcoded Duplicata
+<<<<<<< HEAD
 **Problema**: `protected $connection = 'modulo_esempio';` ripetuto in tutti i modelli ModuloEsempio
+=======
+**Problema**: `protected $connection = 'quaeris';` ripetuto in tutti i modelli ExternalProject
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 **Soluzione**: Centralizzare in BaseModel o configurazione
 
 ### 2. Violazioni SOLID
 
 #### Single Responsibility Principle Violato
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/BaseModel.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/BaseModel.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 abstract class BaseModel extends Model implements ModelContract, HasMedia
@@ -530,7 +554,11 @@ abstract class BaseUser extends Authenticatable implements
 ### 3. N+1 Query Problems
 
 #### Customer Model - Lazy Loading
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/Customer.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/Customer.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 public function surveyPdfsActive()
@@ -543,7 +571,11 @@ public function surveyPdfsActive()
 **Soluzione**: Usare query builder o eager loading
 
 #### AlertWidget - Query Complessa
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Filament/Widgets/AlertWidget.php`
+=======
+**File**: `Modules/ExternalProject/app/Filament/Widgets/AlertWidget.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
@@ -566,7 +598,11 @@ return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
 ### 4. Violazioni KISS - Complessità Eccessiva
 
 #### QuestionChart Model - Metodi Complessi
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/QuestionChart.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/QuestionChart.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 public function participants(): CustomRelation
@@ -593,7 +629,11 @@ public function participants(): CustomRelation
 ### 5. Gestione Errori Inadeguata
 
 #### SendInviteAction - Catch Vuoti
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Actions/SendInviteAction.php`
+=======
+**File**: `Modules/ExternalProject/app/Actions/SendInviteAction.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 try {
@@ -613,7 +653,11 @@ try {
 ### 1. Filament Resources - Pattern Duplicati
 
 #### Schema Duplicato
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Filament/Resources/ContactResource.php`, `CustomerResource.php`
+=======
+**File**: `Modules/ExternalProject/app/Filament/Resources/ContactResource.php`, `CustomerResource.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ```php
 // ContactResource.php
@@ -662,9 +706,15 @@ public function customer(): HasOneThrough
 **File**: Tutti i ServiceProvider dei moduli
 
 ```php
+<<<<<<< HEAD
 class ModuloEsempioServiceProvider extends XotBaseServiceProvider
 {
     public string $name = 'ModuloEsempio';
+=======
+class ExternalProjectServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ExternalProject';
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
     protected string $module_dir = __DIR__;
     protected string $module_ns = __NAMESPACE__;
@@ -764,7 +814,11 @@ trait SingletonTrait
 ```
 
 #### B. Separare BaseModel Responsibilities
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Models/BaseModel.php`
+=======
+**File**: `Modules/ExternalProject/app/Models/BaseModel.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```php
 abstract class BaseModel extends Model implements ModelContract
 {
@@ -777,7 +831,11 @@ abstract class BaseModel extends Model implements ModelContract
 ```
 
 #### C. Implementare Repository Pattern
+<<<<<<< HEAD
 **File**: `Modules/ModuloEsempio/app/Repositories/SurveyFlipResponseRepository.php`
+=======
+**File**: `Modules/ExternalProject/app/Repositories/SurveyFlipResponseRepository.php`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```php
 class SurveyFlipResponseRepository
 {
