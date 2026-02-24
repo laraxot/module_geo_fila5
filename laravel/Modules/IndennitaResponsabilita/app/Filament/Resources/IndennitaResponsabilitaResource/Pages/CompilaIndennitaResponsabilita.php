@@ -62,6 +62,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
+        ddx('Sono nel mount, record: '.$record);
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);
         $resolvedRecord->syncRatingsWhere(['anno' => $resolvedRecord->anno]);
