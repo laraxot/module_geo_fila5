@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="master.blade.php" path="/Modules/Xot/app/Resources/views/layouts" hash="ab89771535082c1b544c268b2efa07a582473a7f">
+    <totals>
+      <lines total="25" comments="0" code="25" executable="16" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;!DOCTYPE html&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">&lt;html lang="en"&gt;</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">    &lt;head&gt;</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">        &lt;meta charset="utf-8"&gt;</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">        &lt;title&gt;Module Xot&lt;/title&gt;</token>
+      </line>
+      <line no="13"/>
+      <line no="14">
+        <token name="T_INLINE_HTML">       {{-- Laravel Mix - CSS File --}}</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">       {{-- &lt;link rel="stylesheet" href="{{ mix('css/xot.css') }}"&gt; --}}</token>
+      </line>
+      <line no="16"/>
+      <line no="17">
+        <token name="T_INLINE_HTML">    &lt;/head&gt;</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">    &lt;body&gt;</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">        @yield('content')</token>
+      </line>
+      <line no="20"/>
+      <line no="21">
+        <token name="T_INLINE_HTML">        {{-- Laravel Mix - JS File --}}</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">        {{-- &lt;script src="{{ mix('js/xot.js') }}"&gt;&lt;/script&gt; --}}</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">    &lt;/body&gt;</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+      </line>
+      <line no="25"/>
+    </source>
+  </file>
+</phpunit>

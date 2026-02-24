@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="ModelWithStatusContract.php" path="/Modules/Xot/app/Contracts" hash="d14df623c097a2b8f06e4a360ce5a5e3830ed4b5">
+    <totals>
+      <lines total="62" comments="40" code="22" executable="0" executed="0" percent="0"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Contracts</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Collection</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Model</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Relations\BelongsTo</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Relations\MorphMany</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Carbon</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Spatie\ModelStatus\Status</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="13"/>
+      <line no="14">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT"> * Modules\Xot\Contracts\ModelWithStatusContract.</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> * @property int $id</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT"> * @property int|null $user_id</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT"> * @property string|null $post_type</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $created_at</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $updated_at</token>
+      </line>
+      <line no="22">
+        <token name="T_DOC_COMMENT"> * @property string|null $created_by</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT"> * @property string|null $updated_by</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT"> * @property string|null $title</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT"> * @property PivotContract|null $pivot</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT"> * @property string $tennant_name</token>
+      </line>
+      <line no="27">
+        <token name="T_DOC_COMMENT"> * @property UserContract|null $user</token>
+      </line>
+      <line no="28">
+        <token name="T_DOC_COMMENT"> * @property string $status</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT"> * @property Collection|array&lt;Status&gt; $statuses</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT"> * @property int|null $statuses_count</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="32">
+        <token name="T_DOC_COMMENT"> * @method mixed getKey()</token>
+      </line>
+      <line no="33">
+        <token name="T_DOC_COMMENT"> * @method string getRouteKey()</token>
+      </line>
+      <line no="34">
+        <token name="T_DOC_COMMENT"> * @method string getRouteKeyName()</token>
+      </line>
+      <line no="35">
+        <token name="T_DOC_COMMENT"> * @method string getTable()</token>
+      </line>
+      <line no="36">
+        <token name="T_DOC_COMMENT"> * @method mixed with($array)</token>
+      </line>
+      <line no="37">
+        <token name="T_DOC_COMMENT"> * @method array getFillable()</token>
+      </line>
+      <line no="38">
+        <token name="T_DOC_COMMENT"> * @method mixed fill($array)</token>
+      </line>
+      <line no="39">
+        <token name="T_DOC_COMMENT"> * @method mixed getConnection()</token>
+      </line>
+      <line no="40">
+        <token name="T_DOC_COMMENT"> * @method mixed update($params)</token>
+      </line>
+      <line no="41">
+        <token name="T_DOC_COMMENT"> * @method mixed delete()</token>
+      </line>
+      <line no="42">
+        <token name="T_DOC_COMMENT"> * @method mixed detach($params)</token>
+      </line>
+      <line no="43">
+        <token name="T_DOC_COMMENT"> * @method mixed attach($params)</token>
+      </line>
+      <line no="44">
+        <token name="T_DOC_COMMENT"> * @method mixed save($params)</token>
+      </line>
+      <line no="45">
+        <token name="T_DOC_COMMENT"> * @method array treeLabel()</token>
+      </line>
+      <line no="46">
+        <token name="T_DOC_COMMENT"> * @method array treeSons()</token>
+      </line>
+      <line no="47">
+        <token name="T_DOC_COMMENT"> * @method array toArray()</token>
+      </line>
+      <line no="48">
+        <token name="T_DOC_COMMENT"> * @method BelongsTo user()</token>
+      </line>
+      <line no="49">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="50">
+        <token name="T_DOC_COMMENT"> * @phpstan-require-extends Model</token>
+      </line>
+      <line no="51">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="52">
+        <token name="T_DOC_COMMENT"> * @mixin \Eloquent</token>
+      </line>
+      <line no="53">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="54">
+        <token name="T_INTERFACE">interface</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ModelWithStatusContract</token>
+      </line>
+      <line no="55">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="56">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">statuses</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">MorphMany</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="57"/>
+      <line no="58">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">status</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_STRING">Status</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="59"/>
+      <line no="60">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setStatus</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$reason</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">self</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="61">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="62"/>
+    </source>
+  </file>
+</phpunit>

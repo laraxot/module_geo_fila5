@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
+
 namespace Modules\Notify\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Notify\Models\MailTemplateVersion;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MailTemplateVersionFactory extends Factory
 {

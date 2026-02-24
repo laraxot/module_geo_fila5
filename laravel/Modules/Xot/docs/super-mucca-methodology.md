@@ -1,6 +1,4 @@
 # 🐃 **Metodologia Super Mucca: AI-Native Edition**
-<<<<<<< .merge_file_47N62a
-=======
 
 **Ultimo aggiornamento**: 31 Gennaio 2026  
 **Filosofia**: DRY + KISS + SOLID + ROBUST
@@ -38,7 +36,6 @@ L'AI deve usare strumenti di validazione per assicurarsi che i link tra i docume
 ---
 *Documentazione conforme agli standard Laraxot - L'eccellenza è un'abitudine.*
 # 🐄 Metodologia "Super Mucca"
->>>>>>> .merge_file_DBHwgE
 
 **Ultimo aggiornamento**: 31 Gennaio 2026  
 **Filosofia**: DRY + KISS + SOLID + ROBUST
@@ -75,8 +72,6 @@ L'AI deve usare strumenti di validazione per assicurarsi che i link tra i docume
 
 ---
 *Documentazione conforme agli standard Laraxot - L'eccellenza è un'abitudine.*
-<<<<<<< .merge_file_47N62a
-=======
 # 🐄 Metodologia "Super Mucca"
 
 **Ultimo aggiornamento**: 31 Gennaio 2026  
@@ -114,4 +109,3 @@ L'AI deve usare strumenti di validazione per assicurarsi che i link tra i docume
 
 ---
 *Documentazione conforme agli standard Laraxot - L'eccellenza è un'abitudine.*
->>>>>>> .merge_file_DBHwgE

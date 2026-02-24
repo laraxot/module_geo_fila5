@@ -132,5 +132,4 @@ Components/ → components/
 
 ---
 
-*Ultimo aggiornamento: [DATE]*
 *Stato: ATTIVO - REGOLA CRITICA*

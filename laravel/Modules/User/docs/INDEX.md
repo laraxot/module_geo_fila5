@@ -46,6 +46,8 @@ This document serves as the central index for the User module, providing guidanc
 - Update this index if new features or significant changes are introduced to the User module.
 
 ## Links to Related Documentation
+- [Composer Dependencies](./composer-dependencies.md) - Dipendenze OAuth/login in Modules/User/composer.json (mai nel root)
+- [Auth Social Login Translations](./auth-social-login-translations.md) - Traduzioni e UI pulsanti social (Google, GitHub, Microsoft)
 - [BaseUser Model](./BaseUser.md)
 - [Authentication Pages Implementation](./AUTH_PAGES_IMPLEMENTATION.md)
 - [Profile Management](./PROFILE_MANAGEMENT.md)

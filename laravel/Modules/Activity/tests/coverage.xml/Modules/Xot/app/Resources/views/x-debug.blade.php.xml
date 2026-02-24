@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="x-debug.blade.php" path="/Modules/Xot/app/Resources/views" hash="a5b8c49fb7a0ee311af3b1020674eba921080780">
+    <totals>
+      <lines total="22" comments="0" code="22" executable="14" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;div&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">    @php</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">     if (! extension_loaded('xdebug')) {</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">            throw new RuntimeException('XDebug must be installed to use this function');</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">        }</token>
+      </line>
+      <line no="11"/>
+      <line no="12">
+        <token name="T_INLINE_HTML">        xdebug_set_filter(</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">            XDEBUG_FILTER_TRACING,</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">            XDEBUG_PATH_EXCLUDE,</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">            [LARAVEL_DIR.'/vendor/']</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">            // [__DIR__.'/../../vendor/']</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">        );</token>
+      </line>
+      <line no="18"/>
+      <line no="19">
+        <token name="T_INLINE_HTML">        xdebug_print_function_stack();</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">    @endphp</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">&lt;/div&gt;</token>
+      </line>
+      <line no="22"/>
+    </source>
+  </file>
+</phpunit>

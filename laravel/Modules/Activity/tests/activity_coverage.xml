@@ -67294,7 +67294,7 @@
       <line num="10" type="stmt" count="0"/>
       <metrics loc="11" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="5" coveredelements="0"/>
     </file>
-    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/pages/dashboard.blade.php">
+    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/dashboard.blade.php">
       <line num="6" type="stmt" count="0"/>
       <line num="7" type="stmt" count="0"/>
       <line num="8" type="stmt" count="0"/>
@@ -67307,7 +67307,7 @@
       <line num="16" type="stmt" count="0"/>
       <metrics loc="17" ncloc="17" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/pages/env.blade.php">
+    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/env.blade.php">
       <line num="6" type="stmt" count="0"/>
       <line num="7" type="stmt" count="0"/>
       <line num="8" type="stmt" count="0"/>
@@ -67318,7 +67318,7 @@
       <line num="14" type="stmt" count="0"/>
       <metrics loc="15" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="8" coveredelements="0"/>
     </file>
-    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/pages/health.blade.php">
+    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/health.blade.php">
       <line num="6" type="stmt" count="0"/>
       <line num="9" type="stmt" count="0"/>
       <line num="10" type="stmt" count="0"/>
@@ -67330,7 +67330,7 @@
       <line num="17" type="stmt" count="0"/>
       <metrics loc="18" ncloc="18" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="9" coveredelements="0"/>
     </file>
-    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/pages/metatag.blade.php">
+    <file name="/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Resources/views/filament/metatag.blade.php">
       <line num="6" type="stmt" count="0"/>
       <line num="7" type="stmt" count="0"/>
       <line num="8" type="stmt" count="0"/>

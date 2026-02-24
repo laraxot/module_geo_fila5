@@ -358,4 +358,3 @@ public function table(Table $table): Table
 4. **Documentare** l'utilizzo
 5. **Aggiornare** le regole e memorie
 
-*Ultimo aggiornamento: [DATE]* 

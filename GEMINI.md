@@ -18,6 +18,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Do not extend Filament classes directly in application modules: use `XotBase*` wrappers.
 - Translations must not be hardcoded in Filament components.
 - Prefer Actions (e.g. Spatie Queueable Action) over Services.
+- **CRITICAL RULE**: Before modifying ANY file, the mandatory sequence is: 1. **Read** the file; 2. **Reason**; 3. **Study** the context; 4. **Update and improve** the `docs/` folders within modules and themes. Only after these steps can code modifications begin.
 - Use PHPStan Level 10 approach: "Fix, Don't Ignore" - all 34 modules are now 100% compliant.
 - Follow module-per-module workflow: complete one module before moving to the next.
 - Use MCP tools when encountering file access limitations.

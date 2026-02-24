@@ -9,6 +9,7 @@ Diventare un identity provider completo (IdP) che supporta standard moderni come
 
 ### Fase 1: Stability & Security (In Progress)
 - [x] PHPStan Level 10 Compliance.
+- [x] Standardizzazione del pattern ID (autoincrement) e UUID per i profili.
 - [ ] Rimozione definitiva dei 550+ file obsoleti.
 - [ ] Implementazione del **Security Cluster** in Filament v5.
 - [ ] Supporto completo per **Laravel 12 Authentication Features**.

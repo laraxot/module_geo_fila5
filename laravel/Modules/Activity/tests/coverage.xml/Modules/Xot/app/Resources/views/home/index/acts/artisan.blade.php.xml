@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="artisan.blade.php" path="/Modules/Xot/app/Resources/views/home/index/acts" hash="436afa328db2eb29a8ef39b85ed34da9cc1c051c">
+    <totals>
+      <lines total="7" comments="0" code="7" executable="1" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">artisan</token>
+      </line>
+      <line no="7"/>
+    </source>
+  </file>
+</phpunit>

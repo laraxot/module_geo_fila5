@@ -19,8 +19,6 @@ class VersionsRelationManager extends RelationManager
     public function form(Form $form): Form
     public function form(Form $form): Form
     public function form(Form $form): Form
-    public function form(Form $form): Form
-    public function form(Form $form): Form
     public function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
     public function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
     public function form(Form $form): Form

@@ -319,4 +319,3 @@ Questi miglioramenti garantiscono:
 
 ---
 
-*Ultimo aggiornamento: [DATE]*

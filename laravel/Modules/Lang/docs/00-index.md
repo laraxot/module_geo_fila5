@@ -1,11 +1,10 @@
 # 📚 **Indice Documentazione Modulo Lang**
 
-**Last Update**: 31 Gennaio 2026
 **Status**: ✅ PHPStan Level 10 Compliant
 **Module Version**: 1.5.0
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./README.md) - Panoramica del sistema di internazionalizzazione.
+1. [README.md](./readme.md) - Panoramica del sistema di internazionalizzazione.
 2. [roadmap.md](./roadmap.md) - Evoluzione 2026: Traduzioni AI e centralizzazione.
 3. [philosophy.md](./philosophy.md) - La lingua come infrastruttura: filosofia Laraxot.
 
@@ -32,8 +31,8 @@
 - 🗑️ **[Cleanup Plan](./docs-naming-convention-fix.md)** - Rimozione dei 260+ file obsoleti.
 
 ## 🔗 **Moduli Correlati**
-- [Xot](../../Xot/docs/README.md) - Base framework e classi `XotBaseChartWidget`.
-- [UI](../../UI/docs/README.md) - Componenti Blade e Filament che consumano le traduzioni.
+- [Xot](../../xot/docs/readme.md) - Base framework e classi `XotBaseChartWidget`.
+- [UI](../../ui/docs/readme.md) - Componenti Blade e Filament che consumano le traduzioni.
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

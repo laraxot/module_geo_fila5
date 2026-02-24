@@ -309,12 +309,11 @@ public function it_sends_email_with_generated_pdf(): void
 - [Laravel Notifications](https://laravel.com/docs/notifications)
 
 ### Moduli
-- [Ptv - Complete Guide](../../Ptv/docs/pdf-email-attachments-complete-guide.md)
-- [Notify - Email System](../../Notify/docs/README.md)
+- [Ptv - Complete Guide](../../ptv/docs/pdf-email-attachments-complete-guide.md)
+- [Notify - Email System](../../notify/docs/readme.md)
 
 ---
 
-**Ultimo aggiornamento:** 2025-01-22
 **Versione:** 1.0.0
 **Stato:** ✅ Production Ready
 **PHPStan Level:** 10

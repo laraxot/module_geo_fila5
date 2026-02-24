@@ -4,8 +4,8 @@
 
 - [Pattern Comuni Progetto](../../../../docs/phpstan/pattern-comuni.md)
 - [Lezioni Apprese](../../../../docs/phpstan/lezioni-apprese-2025-10-10.md)
-- [Activity Best Practices](../../Activity/docs/phpstan/best-practices.md)
-- [Blog Best Practices](../../Blog/docs/phpstan/best-practices.md)
+- [Activity Best Practices](../../activity/docs/phpstan/best-practices.md)
+- [Blog Best Practices](../../blog/docs/phpstan/best-practices.md)
 
 ---
 
@@ -15,7 +15,6 @@
 =======
 ## Status: ✅ FULLY COMPLIANT
 
-**Analysis Date:** September 22, 2025
 **PHPStan Level:** 9 (Maximum)
 **Files Analyzed:** 759
 **Errors Found:** 0

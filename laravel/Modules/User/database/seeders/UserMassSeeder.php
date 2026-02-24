@@ -6,8 +6,6 @@ namespace Modules\User\Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Seeder;
 use Modules\User\Models\AuthenticationLog;
 use Modules\User\Models\Device;
@@ -17,7 +15,6 @@ use Modules\User\Models\Role;
 use Modules\User\Models\SocialProvider;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
-use Webmozart\Assert\Assert;
 
 /**
  * Seeder per creare grandi quantità di dati per il modulo User.
@@ -203,16 +200,30 @@ class UserMassSeeder extends Seeder
         $this->command->info('👤 Creazione utenti con profili completi...');
 
         // Crea 200 utenti generici
-        /** @var Factory<User> $factory */
-        $factory = User::factory();
-        $factory
+        $users = User::factory()
             ->count(200)
             ->create([
                 'email_verified_at' => Carbon::now(),
                 'created_at' => Carbon::now()->subDays(rand(1, 365)),
             ]);
 
-        $this->command->info('✅ Creati 200 utenti con profili');
+        // Crea profili per tutti gli utenti
+        foreach ($users as $user) {
+            Profile::factory()->create([
+                'user_id' => $user->id,
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at,
+            ]);
+        }
+
+        // Assegna ruoli casuali
+        $roles = Role::all();
+        foreach ($users as $user) {
+            $randomRole = $roles->random();
+            $user->assignRole($randomRole);
+        }
+
+        $this->command->info('✅ Creati '.$users->count().' utenti con profili completi');
     }
 
     /**
@@ -222,14 +233,14 @@ class UserMassSeeder extends Seeder
     {
         $this->command->info('📝 Creazione log di autenticazione...');
 
-        // TODO: Implement authentication logs factory
-        // AuthenticationLog::factory()
-        //     ->count(1000)
-        //     ->create([
-        //         'created_at' => Carbon::now()->subDays(rand(1, 30)),
-        //     ]);
+        // Crea 1000 log di autenticazione
+        $logs = AuthenticationLog::factory()
+            ->count(1000)
+            ->create([
+                'created_at' => Carbon::now()->subDays(rand(1, 30)),
+            ]);
 
-        $this->command->info('✅ Log di autenticazione creati (placeholder)');
+        $this->command->info('✅ Creati '.$logs->count().' log di autenticazione');
     }
 
     /**
@@ -239,14 +250,14 @@ class UserMassSeeder extends Seeder
     {
         $this->command->info('📱 Creazione dispositivi utente...');
 
-        // TODO: Implement user devices factory
-        // UserDevice::factory()
-        //     ->count(500)
-        //     ->create([
-        //         'created_at' => Carbon::now()->subDays(rand(1, 90)),
-        //     ]);
+        // Crea 500 dispositivi
+        $devices = Device::factory()
+            ->count(500)
+            ->create([
+                'created_at' => Carbon::now()->subDays(rand(1, 90)),
+            ]);
 
-        $this->command->info('✅ Dispositivi utente creati (placeholder)');
+        $this->command->info('✅ Creati '.$devices->count().' dispositivi utente');
     }
 
     /**
@@ -256,14 +267,14 @@ class UserMassSeeder extends Seeder
     {
         $this->command->info('🔗 Creazione provider social...');
 
-        // TODO: Implement social providers factory
-        // SocialProvider::factory()
-        //     ->count(100)
-        //     ->create([
-        //         'created_at' => Carbon::now()->subDays(rand(1, 180)),
-        //     ]);
+        // Crea 100 provider social
+        $providers = SocialProvider::factory()
+            ->count(100)
+            ->create([
+                'created_at' => Carbon::now()->subDays(rand(1, 180)),
+            ]);
 
-        $this->command->info('✅ Provider social creati (placeholder)');
+        $this->command->info('✅ Creati '.$providers->count().' provider social');
     }
 
     /**
@@ -276,13 +287,8 @@ class UserMassSeeder extends Seeder
 
         try {
             // Conta utenti
-            $usersQuery = User::query();
-            Assert::isInstanceOf($usersQuery, Builder::class);
-            $totalUsers = $usersQuery->count();
-
-            $verifiedUsersQuery = User::query()->whereNotNull('email_verified_at');
-            Assert::isInstanceOf($verifiedUsersQuery, Builder::class);
-            $verifiedUsers = $verifiedUsersQuery->count();
+            $totalUsers = User::count();
+            $verifiedUsers = User::whereNotNull('email_verified_at')->count();
 
             $this->command->info('│ 👥 Utenti totali:           '.
             str_pad((string) $totalUsers, 6, ' ', STR_PAD_LEFT).
@@ -292,26 +298,16 @@ class UserMassSeeder extends Seeder
                 ' │');
 
             // Conta profili
-            $profilesQuery = Profile::query();
-            Assert::isInstanceOf($profilesQuery, Builder::class);
-            $totalProfiles = $profilesQuery->count();
+            $totalProfiles = Profile::count();
 
             $this->command->info('│ 👤 Profili totali:          '.
             str_pad((string) $totalProfiles, 6, ' ', STR_PAD_LEFT).
                 ' │');
 
             // Conta ruoli e permessi
-            $rolesQuery = Role::query();
-            Assert::isInstanceOf($rolesQuery, Builder::class);
-            $totalRoles = $rolesQuery->count();
-
-            $permissionsQuery = Permission::query();
-            Assert::isInstanceOf($permissionsQuery, Builder::class);
-            $totalPermissions = $permissionsQuery->count();
-
-            $teamsQuery = Team::query();
-            Assert::isInstanceOf($teamsQuery, Builder::class);
-            $totalTeams = $teamsQuery->count();
+            $totalRoles = Role::count();
+            $totalPermissions = Permission::count();
+            $totalTeams = Team::count();
 
             $this->command->info('│ 🔐 Ruoli:                  '.
             str_pad((string) $totalRoles, 6, ' ', STR_PAD_LEFT).
@@ -324,17 +320,9 @@ class UserMassSeeder extends Seeder
                 ' │');
 
             // Conta log e dispositivi
-            $logsQuery = AuthenticationLog::query();
-            Assert::isInstanceOf($logsQuery, Builder::class);
-            $totalLogs = $logsQuery->count();
-
-            $devicesQuery = Device::query();
-            Assert::isInstanceOf($devicesQuery, Builder::class);
-            $totalDevices = $devicesQuery->count();
-
-            $providersQuery = SocialProvider::query();
-            Assert::isInstanceOf($providersQuery, Builder::class);
-            $totalProviders = $providersQuery->count();
+            $totalLogs = AuthenticationLog::count();
+            $totalDevices = Device::count();
+            $totalProviders = SocialProvider::count();
 
             $this->command->info('│ 📝 Log autenticazione:      '.
             str_pad((string) $totalLogs, 6, ' ', STR_PAD_LEFT).

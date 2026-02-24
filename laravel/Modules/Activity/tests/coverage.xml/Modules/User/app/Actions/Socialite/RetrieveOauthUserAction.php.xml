@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="RetrieveOauthUserAction.php" path="/Modules/User/app/Actions/Socialite" hash="c2959a2806add1de8cb23cff8590e9bcb466fbea">
+    <totals>
+      <lines total="79" comments="37" code="42" executable="6" executed="0" percent="0.00"/>
+      <methods count="3" tested="0" percent="0.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\User\Actions\Socialite\RetrieveOauthUserAction" start="19" executable="6" executed="0" crap="20">
+      <namespace name="Modules\User\Actions\Socialite"/>
+      <method name="__construct" signature="__construct(Dispatcher $eventDispatcher)" start="23" end="26" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="execute" signature="execute(string $provider): ?SocialiteUserContract" start="31" end="42" crap="6" executable="4" executed="0" coverage="0"/>
+      <method name="handleInvalidStateException" signature="handleInvalidStateException(InvalidStateException $exception): void" start="44" end="47" crap="2" executable="1" executed="0" coverage="0"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="4">
+        <token name="T_DOC_COMMENT"> * @see https://github.com/DutchCodingCompany/filament-socialite</token>
+      </line>
+      <line no="5">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8"/>
+      <line no="9">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\User\Actions\Socialite</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Contracts\Events\Dispatcher</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Laravel\Socialite\Contracts\User</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SocialiteUserContract</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="13">
+        <token name="T_COMMENT">// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;</token>
+      </line>
+      <line no="14">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Laravel\Socialite\Facades\Socialite</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="15">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Laravel\Socialite\Two\InvalidStateException</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\User\Events\InvalidState</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="17">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Spatie\QueueableAction\QueueableAction</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="18"/>
+      <line no="19">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">RetrieveOauthUserAction</token>
+      </line>
+      <line no="20">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">QueueableAction</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="22"/>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_READONLY">readonly</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Dispatcher</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$eventDispatcher</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="27"/>
+      <line no="28">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT">     * Execute the action.</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">execute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$provider</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_STRING">SocialiteUserContract</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Socialite</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">driver</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$provider</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">user</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="35"/>
+      <line no="36">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// SocialiteProviders\Manager\OAuth2\User</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">InvalidStateException</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">handleInvalidStateException</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="40"/>
+      <line no="41">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="42">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="43"/>
+      <line no="44">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">handleInvalidStateException</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">InvalidStateException</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$exception</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">void</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">eventDispatcher</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">dispatch</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">InvalidState</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$exception</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="48">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="49"/>
+      <line no="50">
+        <token name="T_COMMENT">/*</token>
+      </line>
+      <line no="51">
+        <token name="T_COMMENT"> * +id: "auth0|6491ce20f1ac1401362d154f"</token>
+      </line>
+      <line no="52">
+        <token name="T_COMMENT"> * +nickname: "m.sottana"</token>
+      </line>
+      <line no="53">
+        <token name="T_COMMENT"> * +name: " "</token>
+      </line>
+      <line no="54">
+        <token name="T_COMMENT"> * +email: "m.sottana@egeatech.com"</token>
+      </line>
+      <line no="55">
+        <token name="T_COMMENT"> * +avatar: null</token>
+      </line>
+      <line no="56">
+        <token name="T_COMMENT"> * +user: array:7 [▼</token>
+      </line>
+      <line no="57">
+        <token name="T_COMMENT"> * "sub" =&gt; "auth0|6491ce20f1ac1401362d154f"</token>
+      </line>
+      <line no="58">
+        <token name="T_COMMENT"> * "nickname" =&gt; "m.sottana"</token>
+      </line>
+      <line no="59">
+        <token name="T_COMMENT"> * "name" =&gt; "m.sottana@egeatech.com"</token>
+      </line>
+      <line no="60">
+        <token name="T_COMMENT"> * "picture" =&gt; "https://s.gravatar.com/avatar/fb389ec0c8beecb7640aab7fde6df190?s=480&amp;r=pg&amp;d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fm.png"</token>
+      </line>
+      <line no="61">
+        <token name="T_COMMENT"> * "updated_at" =&gt; "2023-09-19T14:09:05.783Z"</token>
+      </line>
+      <line no="62">
+        <token name="T_COMMENT"> * "email" =&gt; "m.sottana@egeatech.com"</token>
+      </line>
+      <line no="63">
+        <token name="T_COMMENT"> * "email_verified" =&gt; true</token>
+      </line>
+      <line no="64">
+        <token name="T_COMMENT"> * ]</token>
+      </line>
+      <line no="65">
+        <token name="T_COMMENT"> * +attributes: array:5 [▶]</token>
+      </line>
+      <line no="66">
+        <token name="T_COMMENT"> * +token: "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9kZXYtemxpcHV5MG4udXMuYXV0aDAuY29tLyJ9..Q-y0xn-QuXY84JvO.Xrov3EjXErMRjuB3L9ESLFiXJCQEE6Utm7BEQJdG1XgZy ▶"</token>
+      </line>
+      <line no="67">
+        <token name="T_COMMENT"> * +refreshToken: null</token>
+      </line>
+      <line no="68">
+        <token name="T_COMMENT"> * +expiresIn: 86400</token>
+      </line>
+      <line no="69">
+        <token name="T_COMMENT"> * +approvedScopes: null</token>
+      </line>
+      <line no="70">
+        <token name="T_COMMENT"> * +accessTokenResponseBody: array:5 [▼</token>
+      </line>
+      <line no="71">
+        <token name="T_COMMENT"> * "access_token" =&gt; "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9kZXYtemxpcHV5MG4udXMuYXV0aDAuY29tLyJ9..Q-y0xn-QuXY84JvO.Xrov3EjXErMRjuB3L9ESLFiXJCQEE6Utm7BEQJdG1XgZy ▶"</token>
+      </line>
+      <line no="72">
+        <token name="T_COMMENT"> * "id_token" =&gt; "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtCN3VpMkRBbzJzNVZVRHVrOUFTaiJ9.eyJuaWNrbmFtZSI6Im0uc290dGFuYSIsIm5hbWUiOiJtLnNvdHRhbmFAZWdlYXRlY2guY29tIiwicGljdHV ▶"</token>
+      </line>
+      <line no="73">
+        <token name="T_COMMENT"> * "scope" =&gt; "openid profile email"</token>
+      </line>
+      <line no="74">
+        <token name="T_COMMENT"> * "expires_in" =&gt; 86400</token>
+      </line>
+      <line no="75">
+        <token name="T_COMMENT"> * "token_type" =&gt; "Bearer"</token>
+      </line>
+      <line no="76">
+        <token name="T_COMMENT"> * ]</token>
+      </line>
+      <line no="77">
+        <token name="T_COMMENT"> * }</token>
+      </line>
+      <line no="78">
+        <token name="T_COMMENT"> */</token>
+      </line>
+      <line no="79"/>
+    </source>
+  </file>
+</phpunit>

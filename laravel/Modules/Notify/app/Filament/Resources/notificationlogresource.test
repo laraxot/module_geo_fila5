@@ -30,6 +30,57 @@ class NotificationLogResource extends XotBaseResource
     /**
      * {@inheritdoc}
      */
+    public static function form(Forms\Form $form): Forms\Form
+    {
+        return $form
+            ->schema([
+                Forms\Components\Section::make('Dettagli Notifica')
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label('Titolo')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpan(2),
+                            
+                        Forms\Components\Textarea::make('content')
+                            ->label('Contenuto')
+                            ->required()
+                            ->columnSpan(2),
+                            
+                        Forms\Components\TagsInput::make('channels')
+                            ->label('Canali')
+                            ->required()
+                            ->columnSpan(1),
+                            
+                        Forms\Components\Select::make('status')
+                            ->label('Stato')
+                            ->options([
+                                'sent' => 'Inviata',
+                                'failed' => 'Fallita',
+                                'pending' => 'In attesa',
+                            ])
+                            ->required()
+                            ->searchable()
+                            ->columnSpan(1),
+                            
+                        Forms\Components\Textarea::make('error')
+                            ->label('Errore')
+                            ->columnSpan(2)
+                            ->visible(fn (Forms\Get $get): bool => $get('status') === 'failed'),
+                            
+                        Forms\Components\KeyValue::make('data')
+                            ->label('Dati')
+                            ->columnSpan(2),
+                    ])
+                    ->columns(2),
+            ]);
+    }
+    
+
+    
+    /**
+     * {@inheritdoc}
+     */
     public static function infolist(Infolists\Infolist $infolist): Infolists\Infolist
     {
         return $infolist
