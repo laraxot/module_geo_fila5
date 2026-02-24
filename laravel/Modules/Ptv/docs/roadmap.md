@@ -8,23 +8,60 @@ Modulo core PTV (Piano di Valutazione): gestione schede valutazione, valutatori,
 ## Fasi di Sviluppo
 
 ### Fase 1: Stabilizzazione (Planned)
+
 - [ ] PHPStan Level 10 Compliance
-- [ ] Allineamento traduzioni ptv::actions.*
+- [x] Allineamento traduzioni ptv::actions.* (compila, delete_cessati, populate_year, etc.)
 - [ ] Test Coverage improvement
+- [ ] Creare lang/de/actions.php se modulo multilingua
 
 ### Fase 2: Funzionalità (Planned)
-- [ ] CompilaAction e header actions
-- [ ] Filtri anno/valutatore
-- [ ] Export e report
+
+- [ ] **CompilaAction** — routing a pagina compila per resource
+- [ ] **Header Actions**:
+  - [ ] PopulateYearAction
+  - [ ] CopyFromLastYearAction
+  - [ ] TrovaEsclusiAction
+  - [ ] MergeDoubleRowCatecoYearAction
+  - [ ] DeleteCessatiAction (modal, GetCessatiRecords)
+- [ ] **Filtri**: AnnoValutatoreFilter, anno/valutatore
+- [ ] **Export e report**: XLS, PDF
 
 ### Fase 3: Integrazione (Future)
-- [ ] Integrazione Sigma/Progressioni
-- [ ] Documentazione completa
+
+- [ ] Integrazione Sigma (SchedaTrait, Wmen00f)
+- [ ] Integrazione Progressioni
+- [ ] Documentazione completa in docs/
+
+## Technical Debt
+
+| Area | Stato | Target |
+|------|-------|--------|
+| PHPStan | Da verificare | Level 10 |
+| Traduzioni | it, en | + de se necessario |
+| DeleteCessatiAction | Hardcoded anni (2023-2025) | Anni dinamici da config |
+| FillOutTheFormAction | URL compila da verificare | Routing corretto |
+
+## Dipendenze
+
+- **IndennitaResponsabilita**: Compila page, IndennitaResponsabilitaResource
+- **IndennitaCondizioniLavoro**: CondizioniLavoro, StabiDirigente
+- **Rating**: HasRatingsTrait, Rating model
+- **Sigma**: Dati anagrafici, SchedaTrait
+
+## File Chiave
+
+- `app/Filament/Actions/Scheda/CompilaAction.php`
+- `app/Filament/Actions/Header/DeleteCessatiAction.php`
+- `app/Filament/Actions/Header/PopulateYearAction.php`
+- `app/Filament/Actions/Header/CopyFromLastYearAction.php`
+- `app/Filament/Actions/Header/TrovaEsclusiAction.php`
+- `app/Filament/Actions/Header/MergeDoubleRowCatecoYearAction.php`
+- `lang/it/actions.php`, `lang/en/actions.php`
 
 ## Checklist Qualità
 
 - [ ] PHPStan Level 10
-- [ ] Traduzioni it/en complete
+- [x] Traduzioni it/en complete
 - [ ] Test coverage
 - [ ] Documentazione in docs/
 

@@ -224,10 +224,30 @@ Zero/
 - [ ] 80%+ test coverage
 
 ## Next Steps
+
 1. Begin Phase 1 with responsive design system
 2. Implement complete component library
 3. Add customization features
 4. Optimize performance
+
+## Componenti UI Tema
+
+- `resources/views/components/ui/logo.blade.php` — logo (pub_theme::ui.logo)
+- `resources/views/components/layouts/app.blade.php`
+- `resources/views/components/layouts/main.blade.php`
+- `resources/views/filament/widgets/auth/login.blade.php`
+- `resources/views/pages/auth/login.blade.php`
+
+## Dipendenze
+
+- **Xot**: Framework base, pub_theme resolution
+- **UI**: Componenti condivisi
+- **Chart**: Asset Chart.js (se widget grafici)
+
+## Collegamenti
+
+- [theme-documentation](theme-documentation.md)
+- [themes-system-complete-guide](themes-system-complete-guide.md)
 
 ---
 

@@ -14,7 +14,6 @@ use Flowframe\Trend\Trend;
 // use Filament\Widgets\Concerns\InteractsWithPageFilters; // Temporaneamente commentato per evitare conflitti trait in Filament 4.x
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 use Modules\User\Models\AuthenticationLog;
 use Webmozart\Assert\Assert;
 
@@ -48,7 +47,7 @@ class UsersChartWidget extends ChartWidget implements HasActions, HasForms
         return Action::make('test')
             ->requiresConfirmation()
             ->action(function (array $arguments): void {
-                Log::debug('Test action called', $arguments);
+                // Test action - no logging
             });
     }
 

@@ -91,12 +91,6 @@ class GenerateFormByFileAction
         // Otteniamo i metodi della classe risorsa
         $resourceMethods = get_class_methods($resourceInstance);
 
-        Log::debug('GenerateFormByFileAction', [
-            'line' => __LINE__,
-            'method' => __METHOD__,
-            'fillable' => $fillable,
-        ]);
-
         // Contiamo gli input aggiunti
         $inputCount = 0;
         foreach ($fillable as $field) {

@@ -342,8 +342,6 @@ class LettI extends BaseScheda
 
     public function setDaliAliAttribute(mixed $value): never
     {
-        Log::debug('LettI value', ['value' => $value]);
-
         throw new LogicException('Cannot set dali_ali attribute directly. This is a computed property.');
     }
 

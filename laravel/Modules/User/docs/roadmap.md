@@ -72,10 +72,32 @@ Modules/User/tests/
 - [ ] **Anomaly Detection**: Rilevamento di tentativi di login sospetti basati su pattern comportamentali.
 - [ ] **Dynamic Permissions**: L'AI suggerisce i permessi minimi necessari in base all'uso effettivo dell'utente.
 
-## ✅ Checklist Qualità
-- [x] PHPStan Level 10.
-- [ ] 100% test coverage sui flussi critici di Auth.
-- [ ] Auditing delle chiavi segrete e dei token (Passport/Sanctum).
+## Technical Debt
+
+| Area | Stato | Target |
+|------|-------|--------|
+| File obsoleti | 550+ | 0 |
+| Security Cluster | Da implementare | Filament v5 Cluster |
+| Test Auth | Parziale | 100% flussi critici |
+| Passport/Sanctum | In uso | Auditing token |
+
+## Dipendenze
+
+- **Xot**: XotBaseResource, XotBasePage
+- **Gdpr**: Consensi registrazione
+- **Tenant**: Multi-tenant (se attivo)
+
+## Collegamenti
+
+- [README](README.md)
+- [Login Widget Conversion](login-widget-conversion.md)
+- [Namespace Conventions](namespace-conventions.md)
+
+## Checklist Qualità
+
+- [x] PHPStan Level 10
+- [ ] 100% test coverage sui flussi critici di Auth
+- [ ] Auditing delle chiavi segrete e dei token (Passport/Sanctum)
 
 ---
 
