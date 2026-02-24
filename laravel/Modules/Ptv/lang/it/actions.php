@@ -33,6 +33,17 @@ return [
         'compila' => [
             'label' => 'Compila',
         ],
+        'copy_from_last_year' => 'Copia da anno precedente',
+        'merge_double_row_cateco_yea' => 'Unisci righe duplicate',
+        'populate_year' => [
+            'default' => 'Popola anno',
+        ],
+        'trova_esclusi' => [
+            'label' => 'Trova Esclusi',
+        ],
+        'fill_out_the_form' => 'compila',
+        'showing_records' => 'Visualizzati :count record di :total',
+        'showing_limited_results' => 'Risultati limitati. Usa i filtri per raffinare la ricerca.',
         'enable' => [
             'cta' => 'Attiva',
         ],

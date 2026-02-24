@@ -33,6 +33,17 @@ return [
         'compila' => [
             'label' => 'Fill out',
         ],
+        'copy_from_last_year' => 'Copy from previous year',
+        'merge_double_row_cateco_yea' => 'Merge duplicate rows',
+        'populate_year' => [
+            'default' => 'Populate year',
+        ],
+        'trova_esclusi' => [
+            'label' => 'Find Excluded',
+        ],
+        'fill_out_the_form' => 'fill out',
+        'showing_records' => 'Showing :count records of :total',
+        'showing_limited_results' => 'Limited results. Use filters to refine your search.',
         'enable' => [
             'cta' => 'Enable',
         ],
