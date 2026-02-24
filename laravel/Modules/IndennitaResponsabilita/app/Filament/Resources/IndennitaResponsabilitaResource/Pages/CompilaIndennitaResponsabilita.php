@@ -64,10 +64,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
-<<<<<<< HEAD
-=======
-        Log::debug('CompilaIndennitaResponsabilita mount called with record: '.$record);
->>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)
         
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);
