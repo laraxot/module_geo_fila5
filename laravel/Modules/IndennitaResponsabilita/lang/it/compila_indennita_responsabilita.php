@@ -47,20 +47,20 @@ return [
             3 => [
                 'pivot' => [
                     'value' => [
-                        'description' => 'ratings.3.pivot.value',
-                        'helper_text' => 'ratings.3.pivot.value',
-                        'placeholder' => 'ratings.3.pivot.value',
-                        'label' => 'ratings.3.pivot.value',
+                        'description' => '',
+                        'helper_text' => '',
+                        'placeholder' => '',
+                        'label' => 'Autonomia operativa',
                     ],
                 ],
             ],
             4 => [
                 'pivot' => [
                     'value' => [
-                        'description' => 'ratings.4.pivot.value',
-                        'helper_text' => 'ratings.4.pivot.value',
-                        'placeholder' => 'ratings.4.pivot.value',
-                        'label' => 'ratings.4.pivot.value',
+                        'description' => '',
+                        'helper_text' => '',
+                        'placeholder' => '',
+                        'label' => 'Grado di responsabilità istruttoria e/ di processo',
                     ],
                 ],
             ],
@@ -87,30 +87,30 @@ return [
             7 => [
                 'pivot' => [
                     'value' => [
-                        'description' => 'ratings.7.pivot.value',
-                        'helper_text' => 'ratings.7.pivot.value',
-                        'placeholder' => 'ratings.7.pivot.value',
-                        'label' => 'ratings.7.pivot.value',
+                        'description' => '',
+                        'helper_text' => '',
+                        'placeholder' => '',
+                        'label' => 'Responsabilità concorso/supporto alle decisioni del Dirigente/Responsabile',
                     ],
                 ],
             ],
             6 => [
                 'pivot' => [
                     'value' => [
-                        'description' => 'ratings.6.pivot.value',
-                        'helper_text' => 'ratings.6.pivot.value',
-                        'placeholder' => 'ratings.6.pivot.value',
-                        'label' => 'ratings.6.pivot.value',
+                        'description' => '',
+                        'helper_text' => '',
+                        'placeholder' => '',
+                        'label' => 'Grado di responsabilità realizzazione piani e programmi di attività',
                     ],
                 ],
             ],
             5 => [
                 'pivot' => [
                     'value' => [
-                        'description' => 'ratings.5.pivot.value',
-                        'helper_text' => 'ratings.5.pivot.value',
-                        'placeholder' => 'ratings.5.pivot.value',
-                        'label' => 'ratings.5.pivot.value',
+                        'description' => '',
+                        'helper_text' => '',
+                        'placeholder' => '',
+                        'label' => 'Grado di responsabilità di spesa',
                     ],
                 ],
             ],
