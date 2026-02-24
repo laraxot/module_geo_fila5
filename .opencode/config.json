@@ -97,6 +97,11 @@
       "name": "Leggi → Ragiona → Studia → Aggiorna Docs",
       "description": "Regola fondamentale: Prima di modificare qualsiasi file, leggilo attentamente, poi ragiona sul contesto, studia il codice esistente, infine aggiorna i docs nei moduli e nei temi",
       "file": "./opencode/skills/leggi-ragiona-studia-docs/SKILL.md"
+    },
+    "tdd-laravel": {
+      "name": "TDD Laravel con Pest",
+      "description": "Test-Driven Development Red-Green-Refactor per Laravel. Ciclo TDD, best practices, modular testing",
+      "file": "./opencode/skills/tdd-laravel/SKILL.md"
     }
   },
   "mcpServers": {

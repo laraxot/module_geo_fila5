@@ -15,14 +15,14 @@
 | `tests/Feature/conflictresolutiontest.php` | `tests/Feature/ConflictResolutionTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Media Module
-| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) |
-|---|---|
-| `tests/Filament/Resources/mediaconvertresourcetest.php` | `tests/Filament/Resources/MediaConvertResourceTest.php` *(da verificare)* |
+| File lowercase | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `tests/Filament/Resources/mediaconvertresourcetest.php` | `tests/Filament/Resources/MediaConvertResourceTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Tenant Module
-| File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) |
-|---|---|
-| `tests/Unit/domaintest.php` | `tests/Unit/DomainTest.php` *(da verificare)* |
+| File lowercase | File PascalCase (CORRETTO) | Stato |
+|---|---|---|
+| `tests/Unit/domaintest.php` | `tests/Unit/DomainTest.php` | Rinominato in `.old` su filesystem — rimuovere da git |
 
 ### Xot Module
 | File lowercase (DA CANCELLARE) | File PascalCase (CORRETTO) | Stato |

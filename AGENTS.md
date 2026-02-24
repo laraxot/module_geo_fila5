@@ -144,7 +144,7 @@ Modules/{ModuleName}/
 ## Critical Rules
 
 1. All PHPStan errors must be fixed (no ignored errors)
-2. Write tests for all new functionality
+2. Write tests for all new functionality (follow TDD Red-Green-Refactor)
 3. Never commit secrets/keys
 4. Use `search-docs` tool before coding (Laravel ecosystem)
 5. Never use `property_exists()` on Eloquent models
@@ -168,11 +168,22 @@ Tutti gli errori di PHPStan, PHPMD e PHPInsights devono essere risolti prima di 
 
 ## Testing Patterns
 
+Vedi [docs/tdd-guide.md](docs/tdd-guide.md) per guida completa TDD.
+
+### Pattern AAA (Arrange-Act-Assert)
+
 ```php
 // Pest test
-it('creates user', function () {
-    $user = User::factory()->create();
+it('creates user successfully', function () {
+    // ARRANGE: Setup
+    $data = UserData::factory()->make();
+    
+    // ACT: Execute
+    $user = CreateUserAction::execute($data);
+    
+    // ASSERT: Verify
     expect($user)->toBeInstanceOf(User::class);
+    expect($user->name)->toBe($data->name);
 });
 
 // Filament test
@@ -181,6 +192,12 @@ Livewire::test(CreateUser::class)
     ->call('create')
     ->assertNotified();
 ```
+
+### Test Naming Convention
+
+- **File**: `PascalCase` matching class name (e.g., `GenerateDbDocumentationCommandTest.pest.php`)
+- **Metodi**: `it('description')` o `test('description')`
+- **Struttura**: AAA (Arrange-Act-Assert)
 
 ## MCP Tools (Laravel Boost)
 - `search-docs` - Laravel ecosystem docs
