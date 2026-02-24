@@ -26,17 +26,10 @@
       }
     },
     "laravel-boost": {
-<<<<<<< .merge_file_h0gCdK
-      "command": "/var/www/_bases/base_healthcare_app_fila5_mono/bashscripts/mcp/laravel-boost-wrapper.sh",
+      "command": "./bashscripts/mcp/laravel-boost-wrapper.sh",
       "args": [],
       "env": {
-        "LARAVEL_PROJECT_ROOT": "/var/www/_bases/base_healthcare_app_fila5_mono/laravel"
-=======
-      "command": "/var/www/_bases/base_ptvx_fila5_mono/bashscripts/mcp/laravel-boost-wrapper.sh",
-      "args": [],
-      "env": {
-        "LARAVEL_PROJECT_ROOT": "/var/www/_bases/base_ptvx_fila5_mono/laravel"
->>>>>>> .merge_file_q2LWtm
+        "LARAVEL_PROJECT_ROOT": "./laravel"
       }
     },
     "fetch": {

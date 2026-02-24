@@ -47,17 +47,10 @@
         "args": ["-y", "@assistant-ui/mcp-docs-server"]
     },
     "laravel-boost": {
-<<<<<<< .merge_file_thJMq3
-      "command": "/var/www/_bases/base_healthcare_app_fila5_mono/bashscripts/mcp/laravel-boost-wrapper.sh",
+      "command": "./bashscripts/mcp/laravel-boost-wrapper.sh",
       "args": [],
       "env": {
-        "LARAVEL_PROJECT_ROOT": "/var/www/_bases/base_healthcare_app_fila5_mono/laravel"
-=======
-      "command": "/var/www/_bases/base_ptvx_fila5_mono/bashscripts/mcp/laravel-boost-wrapper.sh",
-      "args": [],
-      "env": {
-        "LARAVEL_PROJECT_ROOT": "/var/www/_bases/base_ptvx_fila5_mono/laravel"
->>>>>>> .merge_file_PspZ5H
+        "LARAVEL_PROJECT_ROOT": "./laravel"
       }
     }
   }

@@ -49,17 +49,10 @@ class DbForgeMigrationFactory extends Factory
             'created_by' => $this->faker->optional()->numberBetween(1, 100),
             'executed_at' => $this->faker->optional()->dateTimeBetween('-1 year', 'now'),
             'metadata' => [
-<<<<<<< .merge_file_JnHwb0
-                'module' => $this->faker->randomElement(['User', 'Cms', 'healthcare_app', 'Xot', 'DbForge']),
-                'description' => $this->faker->sentence(),
-                'version' => $this->faker->semver(),
-                'dependencies' => $this->faker->optional()->randomElements(['User', 'Cms', 'healthcare_app', 'Xot'], $this->faker->numberBetween(0, 3)),
-=======
                 'module' => $this->faker->randomElement(['User', 'Cms', 'ModuloEsempio', 'Xot', 'DbForge']),
                 'description' => $this->faker->sentence(),
                 'version' => $this->faker->semver(),
                 'dependencies' => $this->faker->optional()->randomElements(['User', 'Cms', 'ModuloEsempio', 'Xot'], $this->faker->numberBetween(0, 3)),
->>>>>>> .merge_file_cLfxfO
                 'checksum' => $this->faker->sha1(),
             ],
             'settings' => [
