@@ -145,6 +145,7 @@ Modules/{ModuleName}/
 ## Critical Rules
 
 1. All PHPStan errors must be fixed (no ignored errors)
+2. **NEVER use Log::debug()** — use Log::info/warning/error for production logging. For temporary debugging use dd() and remove before commit. See [no-log-debug](.cursor/rules/no-log-debug.mdc)
 2. Write tests for all new functionality (follow TDD Red-Green-Refactor)
 3. Never commit secrets/keys
 4. Use `search-docs` tool before coding (Laravel ecosystem)

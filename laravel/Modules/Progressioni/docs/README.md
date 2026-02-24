@@ -158,7 +158,7 @@ Per risorse che estendono `LangBaseResource`:
 
 ### 4. Debug Pulito
 - ❌ Evitare `dd()` e commenti `// dd(...)` dentro i model o nelle view legacy: generano blocchi durante le attach action e rompono i log.
-- ✅ Usare `\Log::debug()` o activity log per investigare problemi; se il debug non serve più va rimosso.
+- ✅ NON usare Log::debug(). Per investigare problemi usare activity log o dd() in sviluppo (rimuovere prima del commit).
 - ✅ Dal 19/11/2025 tutte le occorrenze `// dd(...)` in `Schede` e nelle viste `admin_test` sono state eliminate.
 
 ## Collegamenti
