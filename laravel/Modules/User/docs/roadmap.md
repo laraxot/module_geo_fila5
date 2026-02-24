@@ -31,7 +31,7 @@ Diventare un identity provider completo (IdP) che supporta standard moderni come
 
 ---
 
-**Ultimo aggiornamento**: 31 Gennaio 2026
+**Ultimo aggiornamento**: Febbraio 2026
 **Versione**: 1.0.0
 **Maintainer**: User Module Team
 **Status**: 🚧 In Development (70% completo)

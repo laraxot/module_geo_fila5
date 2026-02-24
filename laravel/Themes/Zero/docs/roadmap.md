@@ -195,6 +195,6 @@ Zero/
 
 ---
 
-**Last Updated**: 2026-01-02  
+**Ultimo aggiornamento**: Febbraio 2026  
 **Maintainer**: Team Laraxot  
 **Status**: Active Development

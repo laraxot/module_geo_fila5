@@ -30,4 +30,4 @@ Consolidare Xot come un framework "Zero-Config" per Laravel 12, dove ogni nuovo 
 
 ---
 
-**Ultimo aggiornamento**: 31 Gennaio 2026
+**Ultimo aggiornamento**: Febbraio 2026

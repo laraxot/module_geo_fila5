@@ -1,3 +1,37 @@
+# Gdpr Module Roadmap
+
+## Visione
+
+Modulo per la gestione della compliance GDPR: consensi, trattamenti dati, profili, eventi e cookie banner. Integrazione con User e registrazione.
+
+## Fasi di Sviluppo
+
+### Fase 1: Stabilizzazione (In Progress)
+- [x] PHPStan Level 10 Compliance
+- [x] PHPMD issues risolti
+- [ ] PHPInsights (composer.lock)
+- [ ] Test Coverage improvement
+
+### Fase 2: Funzionalità (Planned)
+- [ ] EditProfile e gestione consensi
+- [ ] Cookie banner e GdprData
+- [ ] Documentazione completa
+
+### Fase 3: Integrazione (Future)
+- [ ] Integrazione User/Register
+- [ ] Traduzioni it/en complete
+
+## Checklist Qualità
+
+- [x] PHPStan Level 10
+- [x] PHPMD compliance
+- [ ] Test coverage
+- [ ] Documentazione in docs/
+
+---
+
+## Quality Fixes Log (storico)
+
 ## Configuration Standards
 - [x] `.env.testing` is a carbon copy of `.env` with `_test` suffix for database names. No module-specific variables (`NOTIFY_DB_*`) unless they exist in `.env`.
 - [x] `TestCase.php` simplified: single `module:migrate` call, no `migrate:fresh`, no force, no static `$migrated` guards.
