@@ -1,358 +1,491 @@
 ---
 name: content-strategy
-description: When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions "content strategy," "what should I write about," "content ideas," "blog strategy," "topic clusters," or "content planning." For writing individual pieces, see copywriting. For SEO-specific audits, see seo-audit.
-metadata:
-  version: 1.0.0
+description: Content marketing strategy with brand voice, editorial calendar, and content frameworks. Use for blog planning, content creation pipelines, and brand consistency. Based on alirezarezvani/claude-skills.
+version: 1.0.0
+category: marketing
+last_updated: 2026-02-03
+source: https://github.com/alirezarezvani/claude-skills
+related_skills:
+  - seo-optimizer
+  - social-media
+  - brand-guidelines
+capabilities: []
+requires: []
+see_also: []
 ---
 
-# Content Strategy
+# Content Strategy Skill
 
-You are a content strategist. Your goal is to help plan content that drives traffic, builds authority, and generates leads by being either searchable, shareable, or both.
+## Overview
 
-## Before Planning
+This skill provides comprehensive content marketing capabilities including brand voice development, editorial calendar management, and multi-platform content creation. Designed for B2B technical companies targeting engineering decision-makers.
 
-**Check for product marketing context first:**
-If `.claude/product-marketing-context.md` exists, read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+## Quick Start
 
-Gather this context (ask if not provided):
+1. **Define brand voice** - Analyze existing content, establish guidelines
+2. **Plan content calendar** - Map topics to funnel stages
+3. **Create content** - Use templates and frameworks
+4. **Optimize for SEO** - Apply SEO scoring
+5. **Distribute** - Repurpose across platforms
 
-### 1. Business Context
-- What does the company do?
-- Who is the ideal customer?
-- What's the primary goal for content? (traffic, leads, brand awareness, thought leadership)
-- What problems does your product solve?
+## When to Use
 
-### 2. Customer Research
-- What questions do customers ask before buying?
-- What objections come up in sales calls?
-- What topics appear repeatedly in support tickets?
-- What language do customers use to describe their problems?
+- Establishing brand voice guidelines
+- Planning editorial calendars
+- Creating blog posts and articles
+- Developing case studies
+- Building content pipelines
+- Repurposing content across channels
 
-### 3. Current State
-- Do you have existing content? What's working?
-- What resources do you have? (writers, budget, time)
-- What content formats can you produce? (written, video, audio)
+## Brand Voice Framework
 
-### 4. Competitive Landscape
-- Who are your main competitors?
-- What content gaps exist in your market?
+### Voice Attributes
 
----
+Define 3-5 core attributes:
 
-## Searchable vs Shareable
+| Attribute | Description | Example |
+|-----------|-------------|---------|
+| Authoritative | Expert, confident, knowledgeable | "Our analysis shows..." |
+| Technical | Precise, accurate, detailed | "Using DNV-RP-C203 methodology..." |
+| Approachable | Clear, helpful, accessible | "Let's break this down..." |
+| Innovative | Forward-thinking, modern | "AI-native engineering enables..." |
 
-Every piece of content must be searchable, shareable, or both. Prioritize in that order—search traffic is the foundation.
+### Voice Consistency Checklist
 
-**Searchable content** captures existing demand. Optimized for people actively looking for answers.
+- [ ] Consistent terminology across pages
+- [ ] Same level of technical depth
+- [ ] Unified tone (professional but approachable)
+- [ ] Consistent formatting patterns
+- [ ] Aligned messaging themes
 
-**Shareable content** creates demand. Spreads ideas and gets people talking.
+### Brand Voice Analysis
 
-### When Writing Searchable Content
+```markdown
+## Voice Analysis Template
 
-- Target a specific keyword or question
-- Match search intent exactly—answer what the searcher wants
-- Use clear titles that match search queries
-- Structure with headings that mirror search patterns
-- Place keywords in title, headings, first paragraph, URL
-- Provide comprehensive coverage (don't leave questions unanswered)
-- Include data, examples, and links to authoritative sources
-- Optimize for AI/LLM discovery: clear positioning, structured content, brand consistency across the web
+### Content Analyzed
+- [List of pages/posts analyzed]
 
-### When Writing Shareable Content
+### Current Voice Profile
+- Formality: [1-10 scale]
+- Technical depth: [1-10 scale]
+- Personality: [descriptors]
+- Tone: [descriptors]
 
-- Lead with a novel insight, original data, or counterintuitive take
-- Challenge conventional wisdom with well-reasoned arguments
-- Tell stories that make people feel something
-- Create content people want to share to look smart or help others
-- Connect to current trends or emerging problems
-- Share vulnerable, honest experiences others can learn from
-
----
-
-## Content Types
-
-### Searchable Content Types
-
-**Use-Case Content**
-Formula: [persona] + [use-case]. Targets long-tail keywords.
-- "Project management for designers"
-- "Task tracking for developers"
-- "Client collaboration for freelancers"
-
-**Hub and Spoke**
-Hub = comprehensive overview. Spokes = related subtopics.
-```
-/topic (hub)
-├── /topic/subtopic-1 (spoke)
-├── /topic/subtopic-2 (spoke)
-└── /topic/subtopic-3 (spoke)
-```
-Create hub first, then build spokes. Interlink strategically.
-
-**Note:** Most content works fine under `/blog`. Only use dedicated hub/spoke URL structures for major topics with layered depth (e.g., Atlassian's `/agile` guide). For typical blog posts, `/blog/post-title` is sufficient.
-
-**Template Libraries**
-High-intent keywords + product adoption.
-- Target searches like "marketing plan template"
-- Provide immediate standalone value
-- Show how product enhances the template
-
-### Shareable Content Types
-
-**Thought Leadership**
-- Articulate concepts everyone feels but hasn't named
-- Challenge conventional wisdom with evidence
-- Share vulnerable, honest experiences
-
-**Data-Driven Content**
-- Product data analysis (anonymized insights)
-- Public data analysis (uncover patterns)
-- Original research (run experiments, share results)
-
-**Expert Roundups**
-15-30 experts answering one specific question. Built-in distribution.
-
-**Case Studies**
-Structure: Challenge → Solution → Results → Key learnings
-
-**Meta Content**
-Behind-the-scenes transparency. "How We Got Our First $5k MRR," "Why We Chose Debt Over VC."
-
-For programmatic content at scale, see **programmatic-seo** skill.
-
----
-
-## Content Pillars and Topic Clusters
-
-Content pillars are the 3-5 core topics your brand will own. Each pillar spawns a cluster of related content.
-
-Most of the time, all content can live under `/blog` with good internal linking between related posts. Dedicated pillar pages with custom URL structures (like `/guides/topic`) are only needed when you're building comprehensive resources with multiple layers of depth.
-
-### How to Identify Pillars
-
-1. **Product-led**: What problems does your product solve?
-2. **Audience-led**: What does your ICP need to learn?
-3. **Search-led**: What topics have volume in your space?
-4. **Competitor-led**: What are competitors ranking for?
-
-### Pillar Structure
-
-```
-Pillar Topic (Hub)
-├── Subtopic Cluster 1
-│   ├── Article A
-│   ├── Article B
-│   └── Article C
-├── Subtopic Cluster 2
-│   ├── Article D
-│   ├── Article E
-│   └── Article F
-└── Subtopic Cluster 3
-    ├── Article G
-    ├── Article H
-    └── Article I
+### Recommendations
+- Strengthen: [aspects to emphasize]
+- Reduce: [aspects to minimize]
+- Add: [missing elements]
 ```
 
-### Pillar Criteria
+## Content Pillar Strategy
 
-Good pillars should:
-- Align with your product/service
-- Match what your audience cares about
-- Have search volume and/or social interest
-- Be broad enough for many subtopics
+### 40/25/25/10 Content Mix
 
----
+| Type | Percentage | Purpose | Examples |
+|------|------------|---------|----------|
+| Educational | 40% | Build authority | Tutorials, guides, how-tos |
+| Thought Leadership | 25% | Establish expertise | Industry insights, trends |
+| Case Studies | 25% | Prove capability | Project showcases, results |
+| Company News | 10% | Build connection | Updates, announcements |
 
-## Keyword Research by Buyer Stage
+### Content Pillars for AceEngineer
 
-Map topics to the buyer's journey using proven keyword modifiers:
+```
+Pillar 1: AI-Native Engineering
+├── Machine learning in structural analysis
+├── Automation with Python
+├── Digital twins and simulation
 
-### Awareness Stage
-Modifiers: "what is," "how to," "guide to," "introduction to"
+Pillar 2: Offshore Engineering Excellence
+├── Fatigue analysis methodologies
+├── Subsea structural design
+├── Platform engineering
 
-Example: If customers ask about project management basics:
-- "What is Agile Project Management"
-- "Guide to Sprint Planning"
-- "How to Run a Standup Meeting"
+Pillar 3: Open Source & Transparency
+├── Code repositories
+├── Methodology documentation
+├── Tool tutorials
 
-### Consideration Stage
-Modifiers: "best," "top," "vs," "alternatives," "comparison"
+Pillar 4: Industry Standards
+├── DNV compliance
+├── API standards
+├── Best practices
+```
 
-Example: If customers evaluate multiple tools:
-- "Best Project Management Tools for Remote Teams"
-- "Asana vs Trello vs Monday"
-- "Basecamp Alternatives"
+## Editorial Calendar
 
-### Decision Stage
-Modifiers: "pricing," "reviews," "demo," "trial," "buy"
+### Monthly Planning Template
 
-Example: If pricing comes up in sales calls:
-- "Project Management Tool Pricing Comparison"
-- "How to Choose the Right Plan"
-- "[Product] Reviews"
+```markdown
+## Month: [Month Year]
 
-### Implementation Stage
-Modifiers: "templates," "examples," "tutorial," "how to use," "setup"
+### Theme: [Monthly Focus]
 
-Example: If support tickets show implementation struggles:
-- "Project Template Library"
-- "Step-by-Step Setup Tutorial"
-- "How to Use [Feature]"
+### Week 1
+- Blog: [Title] - [Pillar] - [Funnel Stage]
+- Social: [Distribution plan]
 
----
+### Week 2
+- Case Study: [Title] - [Client/Project]
+- Social: [Distribution plan]
 
-## Content Ideation Sources
+### Week 3
+- Blog: [Title] - [Pillar] - [Funnel Stage]
+- Calculator/Tool: [If applicable]
 
-### 1. Keyword Data
+### Week 4
+- Thought Leadership: [Title]
+- Newsletter: [Monthly roundup]
 
-If user provides keyword exports (Ahrefs, SEMrush, GSC), analyze for:
-- Topic clusters (group related keywords)
-- Buyer stage (awareness/consideration/decision/implementation)
-- Search intent (informational, commercial, transactional)
-- Quick wins (low competition + decent volume + high relevance)
-- Content gaps (keywords competitors rank for that you don't)
+### Metrics to Track
+- [ ] Published on schedule
+- [ ] SEO scores >75
+- [ ] Social engagement
+- [ ] Traffic attribution
+```
 
-Output as prioritized table:
-| Keyword | Volume | Difficulty | Buyer Stage | Content Type | Priority |
+### Content Cadence Targets
 
-### 2. Call Transcripts
+| Content Type | Frequency | Owner |
+|--------------|-----------|-------|
+| Blog posts | 2-4/month | Marketing |
+| Case studies | 1-2/month | Technical + Marketing |
+| Calculators | 1/quarter | Engineering |
+| Videos | 1/month | Marketing |
+| Newsletter | 1/month | Marketing |
 
-If user provides sales or customer call transcripts, extract:
-- Questions asked → FAQ content or blog posts
-- Pain points → problems in their own words
-- Objections → content to address proactively
-- Language patterns → exact phrases to use (voice of customer)
-- Competitor mentions → what they compared you to
+## Content Templates
 
-Output content ideas with supporting quotes.
+### Blog Post Structure
 
-### 3. Survey Responses
+```markdown
+# [Title with Primary Keyword]
 
-If user provides survey data, mine for:
-- Open-ended responses (topics and language)
-- Common themes (30%+ mention = high priority)
-- Resource requests (what they wish existed)
-- Content preferences (formats they want)
+**Reading time:** X minutes
+**Published:** [Date]
+**Author:** [Name]
 
-### 4. Forum Research
+## Introduction (100-150 words)
+- Hook with problem/question
+- Why this matters
+- What reader will learn
 
-Use web search to find content ideas:
+## Section 1: [H2 with Keyword]
+[300-500 words]
+- Key point 1
+- Key point 2
+- Supporting evidence
 
-**Reddit:** `site:reddit.com [topic]`
-- Top posts in relevant subreddits
-- Questions and frustrations in comments
-- Upvoted answers (validates what resonates)
+## Section 2: [H2 with Related Keyword]
+[300-500 words]
+[Include visual: diagram, chart, or image]
 
-**Quora:** `site:quora.com [topic]`
-- Most-followed questions
-- Highly upvoted answers
+## Section 3: [H2 - Practical Application]
+[300-500 words]
+- Step-by-step guidance
+- Code examples if relevant
+- Real-world application
 
-**Other:** Indie Hackers, Hacker News, Product Hunt, industry Slack/Discord
-
-Extract: FAQs, misconceptions, debates, problems being solved, terminology used.
-
-### 5. Competitor Analysis
-
-Use web search to analyze competitor content:
-
-**Find their content:** `site:competitor.com/blog`
-
-**Analyze:**
-- Top-performing posts (comments, shares)
-- Topics covered repeatedly
-- Gaps they haven't covered
-- Case studies (customer problems, use cases, results)
-- Content structure (pillars, categories, formats)
-
-**Identify opportunities:**
-- Topics you can cover better
-- Angles they're missing
-- Outdated content to improve on
-
-### 6. Sales and Support Input
-
-Extract from customer-facing teams:
-- Common objections
-- Repeated questions
-- Support ticket patterns
-- Success stories
-- Feature requests and underlying problems
+## Conclusion (100-150 words)
+- Summary of key points
+- Call to action
+- Related resources
 
 ---
+**Related Posts:**
+- [Link 1]
+- [Link 2]
 
-## Prioritizing Content Ideas
+**Tags:** [tag1], [tag2], [tag3]
+```
 
-Score each idea on four factors:
+### Case Study Structure
 
-### 1. Customer Impact (40%)
-- How frequently did this topic come up in research?
-- What percentage of customers face this challenge?
-- How emotionally charged was this pain point?
-- What's the potential LTV of customers with this need?
+```markdown
+# [Project Name]: [Result/Outcome]
 
-### 2. Content-Market Fit (30%)
-- Does this align with problems your product solves?
-- Can you offer unique insights from customer research?
-- Do you have customer stories to support this?
-- Will this naturally lead to product interest?
+## Challenge
+- Client context
+- Problem statement
+- Constraints and requirements
 
-### 3. Search Potential (20%)
-- What's the monthly search volume?
-- How competitive is this topic?
-- Are there related long-tail opportunities?
-- Is search interest growing or declining?
+## Solution
+- Approach taken
+- Technologies/methods used
+- Key innovations
 
-### 4. Resource Requirements (10%)
-- Do you have expertise to create authoritative content?
-- What additional research is needed?
-- What assets (graphics, data, examples) will you need?
+## Implementation
+- Process overview
+- Technical details
+- Challenges overcome
 
-### Scoring Template
+## Results
+- Quantified outcomes
+- Client testimonial
+- Business impact
 
-| Idea | Customer Impact (40%) | Content-Market Fit (30%) | Search Potential (20%) | Resources (10%) | Total |
-|------|----------------------|-------------------------|----------------------|-----------------|-------|
-| Topic A | 8 | 9 | 7 | 6 | 8.0 |
-| Topic B | 6 | 7 | 9 | 8 | 7.1 |
-
----
-
-## Output Format
-
-When creating a content strategy, provide:
-
-### 1. Content Pillars
-- 3-5 pillars with rationale
-- Subtopic clusters for each pillar
-- How pillars connect to product
-
-### 2. Priority Topics
-For each recommended piece:
-- Topic/title
-- Searchable, shareable, or both
-- Content type (use-case, hub/spoke, thought leadership, etc.)
-- Target keyword and buyer stage
-- Why this topic (customer research backing)
-
-### 3. Topic Cluster Map
-Visual or structured representation of how content interconnects.
+## Key Takeaways
+- Lessons learned
+- Applicable insights
+- Related services
 
 ---
+**Project Details:**
+- Industry: [sector]
+- Duration: [timeframe]
+- Technologies: [tools/methods]
+```
 
-## Task-Specific Questions
+## Content Repurposing Matrix
 
-1. What patterns emerge from your last 10 customer conversations?
-2. What questions keep coming up in sales calls?
-3. Where are competitors' content efforts falling short?
-4. What unique insights from customer research aren't being shared elsewhere?
-5. Which existing content drives the most conversions, and why?
+| Original Content | LinkedIn | Twitter | Newsletter | Video |
+|------------------|----------|---------|------------|-------|
+| Blog Post | Key insights (3-5 bullets) | Thread (5-10 tweets) | Summary + link | Explainer |
+| Case Study | Results highlight | Before/after visual | Featured story | Walkthrough |
+| Calculator | Tutorial post | Tips thread | How-to guide | Demo |
+| Whitepaper | Chapter summaries | Quote graphics | Serialized | Webinar |
 
----
+## Content Quality Checklist
+
+### Before Publishing
+
+- [ ] Primary keyword in title, H1, first 100 words
+- [ ] Meta description written (150-160 chars)
+- [ ] All images have alt text
+- [ ] Internal links added (2-5 per post)
+- [ ] External links to authoritative sources
+- [ ] Proofread for grammar/spelling
+- [ ] Mobile preview checked
+- [ ] SEO score >75
+
+### Technical Content Specific
+
+- [ ] Code examples tested and working
+- [ ] Technical accuracy verified
+- [ ] Industry standards cited correctly
+- [ ] Assumptions clearly stated
+- [ ] Limitations acknowledged
+
+## Best Practices
+
+### Do
+
+1. Start with keyword research
+2. Match content to funnel stage
+3. Maintain consistent publishing schedule
+4. Repurpose across channels
+5. Update old content regularly
+6. Include clear CTAs
+
+### Don't
+
+1. Publish without SEO optimization
+2. Ignore analytics and feedback
+3. Create content without strategy
+4. Forget mobile readers
+5. Skip the editing process
+6. Neglect content promotion
+
+## Error Handling
+
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Low engagement | Wrong audience/topic | Review keyword research, adjust |
+| Inconsistent voice | Multiple writers | Create style guide, templates |
+| Missed deadlines | Overcommitment | Reduce cadence, batch create |
+| Poor SEO performance | Technical issues | Audit and fix on-page SEO |
+
+## Metrics
+
+| Metric | Target | Frequency |
+|--------|--------|-----------|
+| Publishing cadence | 100% on schedule | Weekly |
+| SEO score | >75/100 | Per piece |
+| Time on page | >3 minutes | Monthly |
+| Social shares | >20 per post | Monthly |
+| Conversion rate | >2% | Monthly |
+
+## Content Type Templates (Additional)
+
+### Landing Page Structure
+- **Headline** -- primary benefit in under 10 words
+- **Subheadline** -- elaborates on the headline with supporting context
+- **Hero section** -- headline, subheadline, primary CTA, supporting image or video
+- **Value propositions** -- 3-4 benefit-driven sections with icons or images
+- **Social proof** -- testimonials, logos, stats, case study snippets
+- **Objection handling** -- FAQ or trust signals
+- **Final CTA** -- repeat the primary call to action
+
+### Press Release Structure
+- **Headline** -- factual, newsworthy, under 80 characters
+- **Dateline** -- city, state, date
+- **Lead paragraph** -- who, what, when, where, why in 2-3 sentences
+- **Body paragraphs** -- supporting details, quotes, context
+- **Boilerplate** -- company description (standardized)
+- **Media contact** -- name, email, phone
+
+## Writing Best Practices by Channel
+
+### Blog
+- Write at an 8th-grade reading level for broad audiences
+- Use short paragraphs (2-4 sentences)
+- Include subheadings every 200-300 words
+- Use bullet points and numbered lists
+- Write in active voice
+- Front-load key information in each section
+
+### Social Media
+- **LinkedIn**: professional but human, personal stories perform well, 1,300 characters sweet spot
+- **Twitter/X**: concise and punchy, strong opening words, threads for longer narratives
+- **Instagram**: visual-first captions, storytelling hooks, hashtags in first comment
+- **Facebook**: conversational tone, questions drive comments
+
+### Email
+- One primary CTA per email
+- Keep body copy scannable
+- Mobile-first design
+- Test everything: subject lines, send times, CTA copy, layout
+
+### Web (Landing Pages, Product Pages)
+- Lead with benefits, not features
+- Use "you" language
+- Every section should answer "so what?"
+- Reduce friction near CTAs
+
+## Headline and Hook Formulas
+
+### Headline Formulas
+- **How to [achieve result] [without common obstacle]**
+- **[Number] [adjective] ways to [achieve result]**
+- **Why [common belief] is wrong (and what to do instead)**
+- **The [adjective] guide to [topic]**
+- **[Do this], not [that]**
+
+### Hook Formulas (Opening Lines)
+- **Surprising statistic**
+- **Contrarian statement**
+- **Question**
+- **Scenario**
+- **Bold claim**
+- **Story opening**
+
+## Call-to-Action Best Practices
+
+### CTA Principles
+- Use action verbs: "Get", "Start", "Download", "Join", "Try", "See"
+- Be specific about what happens next
+- Create urgency when genuine
+- Reduce risk: "No credit card required", "Cancel anytime"
+- One primary CTA per page or email
+
+## SEO Fundamentals for Content
+
+### Keyword Strategy
+- One primary keyword and 2-3 secondary keywords per piece
+- Use the primary keyword in: headline, first paragraph, one subheading, meta description, URL slug
+- Do not keyword-stuff -- write for humans first
+
+### On-Page SEO Checklist
+- Title tag: under 60 characters, includes primary keyword
+- Meta description: under 160 characters
+- URL slug: short, descriptive, includes primary keyword
+- H1: one per page
+- Image alt text: descriptive, includes keyword where relevant
+- Internal links: 2-3 links to related content
+- External links: 1-2 links to authoritative sources
+
+## Voice Attributes
+
+### Common Voice Attribute Pairs
+
+| Spectrum | One End | Other End |
+|----------|---------|-----------|
+| Formality | Formal, institutional | Casual, conversational |
+| Authority | Expert, authoritative | Peer-level, collaborative |
+| Emotion | Warm, empathetic | Direct, matter-of-fact |
+| Complexity | Technical, precise | Simple, accessible |
+| Energy | Bold, energetic | Calm, measured |
+| Humor | Playful, witty | Serious, earnest |
+| Innovation | Cutting-edge, forward-looking | Established, proven |
+
+### Defining an Attribute
+
+**[Attribute name]**
+- **We are**: [what this means in practice]
+- **We are not**: [common misinterpretation to avoid]
+- **This sounds like**: [example sentence demonstrating the attribute]
+- **This does NOT sound like**: [example sentence violating the attribute]
+
+## Tone Adaptation Across Channels and Contexts
+
+The brand voice stays consistent, but tone adapts to context.
+
+### Tone by Channel
+
+| Channel | Tone Adaptation |
+|---------|----------------|
+| Blog | Informative, conversational, educational |
+| Social media (LinkedIn) | Professional, thought-provoking, concise |
+| Social media (Twitter/X) | Punchy, direct, sometimes witty |
+| Email marketing | Personal, helpful, action-oriented |
+| Sales collateral | Confident, benefit-driven, specific |
+| Support/Help docs | Clear, patient, step-by-step |
+| Press release | Formal, factual, newsworthy |
+| Error messages | Empathetic, helpful, blame-free |
+
+### Tone by Situation
+
+| Situation | Tone Adaptation |
+|-----------|----------------|
+| Product launch | Excited, confident, forward-looking |
+| Incident or outage | Transparent, empathetic, accountable |
+| Customer success story | Celebratory, specific, crediting the customer |
+| Thought leadership | Authoritative, nuanced, evidence-based |
+| Bad news | Honest, respectful, solution-oriented |
+
+### Tone Adaptation Rule
+The voice attributes remain fixed. Tone dials them up or down based on context.
+
+## Terminology Management
+
+### Preferred Terms
+
+| Use This | Not This | Notes |
+|----------|----------|-------|
+| sign up (verb) | signup (verb) | "signup" is the noun form |
+| log in (verb) | login (verb) | "login" is the noun/adjective form |
+| set up (verb) | setup (verb) | "setup" is the noun/adjective form |
+| email | e-mail | No hyphen |
+| website | web site | One word |
+
+### Inclusive Language
+- Use gender-neutral language
+- Avoid ableist language
+- Use person-first language where appropriate
+- Avoid culturally specific idioms that may not translate
+- Use "simple" or "straightforward" instead of "easy"
+
+### Industry Jargon Management
+- Define which technical terms the audience understands without explanation
+- List jargon that should always be defined or replaced
+- Specify which acronyms need to be spelled out on first use
 
 ## Related Skills
 
-- **copywriting**: For writing individual content pieces
-- **seo-audit**: For technical SEO and on-page optimization
-- **ai-seo**: For optimizing content for AI search engines and getting cited by LLMs
-- **programmatic-seo**: For scaled content generation
-- **email-sequence**: For email-based content
-- **social-content**: For social media content
+- [seo-optimizer](../seo-optimizer/SKILL.md) - SEO optimization
+- [social-media](../social-media/SKILL.md) - Social distribution
+- [brand-guidelines](../../communication/brand-guidelines/SKILL.md) - Brand consistency
+- [brand-voice](../brand-voice/SKILL.md) - Brand voice and style guide
+
+## Sources
+
+- Original: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) (2026-01-19)
+- Enriched: [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (2026-02-03)
+
+---
+
+## Version History
+
+- **1.1.0** (2026-02-03): Merged content type templates, writing best practices, headline formulas, CTA best practices, SEO fundamentals, voice attributes, tone adaptation, and terminology management from anthropics/knowledge-work-plugins
+- **1.0.0** (2026-01-19): Initial release adapted from alirezarezvani/claude-skills
