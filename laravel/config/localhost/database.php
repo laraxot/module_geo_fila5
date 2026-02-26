@@ -126,24 +126,14 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-<<<<<<< .merge_file_yGxpCD
-        'healthcare_app' => [
-=======
         'ptvx' => [
->>>>>>> .merge_file_hDJDjS
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             // 'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
-<<<<<<< .merge_file_yGxpCD
-            'database' => env('DB_DATABASE_healthcare_app', 'forge26'),
-            'username' => env('DB_USERNAME_healthcare_app', 'forge27'),
-            'password' => env('DB_PASSWORD_healthcare_app', ''),
-=======
             'database' => env('DB_DATABASE_PTVX', 'forge26'),
             'username' => env('DB_USERNAME_PTVX', 'forge27'),
             'password' => env('DB_PASSWORD_PTVX', ''),
->>>>>>> .merge_file_hDJDjS
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
