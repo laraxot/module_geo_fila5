@@ -310,3 +310,5 @@ coverage.xml/
 .continue/
 .codebuddy/
 bashscripts/ai/.codeium/windsurf/
+.codebuddy/
+.continue/
