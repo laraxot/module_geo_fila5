@@ -14,8 +14,9 @@
 ## Riferimenti Vietati
 
 ### Nomi di Progetti
+- `Quaeris` - Progetto esterno
+- `Fila5` - Progetto esterno
 - `ExternalProject` - Progetto esterno
-- `Fila5` - Progetto esterno (se non è il progetto corrente)
 - `healthcare_app` - Progetto esterno
 - Qualsiasi altro nome progetto-specifico
 
@@ -86,7 +87,7 @@ Vedi implementazione in Customer::class per dettagli.
 ```markdown
 # Configurazione
 
-Imposta `BASE_URL=https://quaeris.it` nel file .env
+Imposta `BASE_URL=https://altro-progetto.it` nel file .env
 ```
 
 ## Eccezioni Consentite
@@ -111,7 +112,7 @@ class Performance extends BaseModel
 
 ## Checklist
 
-- [ ] Nessun nome progetto esterno (ExternalProject, Fila5, healthcare_app, ecc.)
+- [ ] Nessun nome progetto esterno (Quaeris, ExternalProject, Fila5, healthcare_app, ecc.)
 - [ ] Nessun riferimento a moduli che non esistono nel progetto corrente
 - [ ] Nessuna URL o path di progetti esterni
 - [ ] Esempi usano nomi generici (`MioModulo`, `MioModello`)

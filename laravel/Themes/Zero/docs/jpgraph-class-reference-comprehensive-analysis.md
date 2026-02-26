@@ -414,7 +414,11 @@ $graph->Stroke();
 - **API Reference**: https://jpgraph.net/doc/
 - **FAQ**: https://jpgraph.net/doc/faq.html
 
+<<<<<<< .merge_file_pJ783w
+## 🔄 **Integrazione con healthcare_app**
+=======
 ## 🔄 **Integrazione con ModuloEsempio**
+>>>>>>> .merge_file_p17MPd
 
 ### **Pattern di Integrazione**
 ```php

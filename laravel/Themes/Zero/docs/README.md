@@ -9,8 +9,13 @@ Questa cartella contiene documentazione interna per il tema Zero.
 Durante l'analisi del progetto con PHPStan, sono stati identificati e risolti i seguenti problemi relativi al tema Zero:
 
 1. **Configurazione del Database**:
+<<<<<<< .merge_file_XF97gD
+   - **Problema**: Il database `healthcare_app_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
+   - **Soluzione**: È stato creato il database `healthcare_app_data` per consentire il corretto funzionamento dell'applicazione.
+=======
    - **Problema**: Il database `ptvx_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
    - **Soluzione**: È stato creato il database `ptvx_data` per consentire il corretto funzionamento dell'applicazione.
+>>>>>>> .merge_file_VZ4qWz
 
 2. **Aggiornamento del File .env**:
    - **Problema**: Il file `.env` conteneva configurazioni obsolete o mancanti.

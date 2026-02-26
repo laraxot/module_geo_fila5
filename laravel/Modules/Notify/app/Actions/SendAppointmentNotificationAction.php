@@ -2,27 +2,14 @@
 
 declare(strict_types=1);
 
+// This file references SaluteOra models that do not exist in this project
 
-<<<<<<< HEAD
-// This file references Appointment/Patient models from optional modules
-=======
-// This file references healthcare_app models that do not exist in this project
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 namespace Modules\Notify\Actions;
 
 use Exception;
-use Modules\Notify\Models\Notification;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-<<<<<<< HEAD
-// use Modules\<ModuloConAppuntamenti>\Models\Appointment;
-use Modules\Notify\Mail\AppointmentNotificationMail;
-// use Modules\<ModuloConAppuntamenti>\Models\Patient;
-=======
-// use Modules\healthcare_app\Models\Appointment;
-use Modules\Notify\Mail\AppointmentNotificationMail;
-// use Modules\healthcare_app\Models\Patient;
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+// use Modules\SaluteOra\Models\Appointment;
+// use Modules\SaluteOra\Models\Patient;
 use Spatie\QueueableAction\QueueableAction;
 
 class SendAppointmentNotificationAction
@@ -31,19 +18,15 @@ class SendAppointmentNotificationAction
 
     /**
      * Numero massimo di tentativi per l'invio della notifica.
-     *
-     * @var int
      */
     public int $tries = 3;
 
     /**
      * Invia una notifica relativa a un appuntamento.
      *
-     * @param mixed $appointment L'appuntamento a cui si riferisce la notifica
-     * @param string $type Il tipo di notifica (confermato, annullato, promemoria, ecc.)
-     * @param array<string, mixed> $additionalData Dati aggiuntivi per la notifica
-     *
-     * @return bool
+     * @param  mixed  $appointment  L'appuntamento a cui si riferisce la notifica
+     * @param  string  $type  Il tipo di notifica (confermato, annullato, promemoria, ecc.)
+     * @param  array<string, mixed>  $additionalData  Dati aggiuntivi per la notifica
      */
     public function execute(
         mixed $appointment,
@@ -73,22 +56,5 @@ class SendAppointmentNotificationAction
             return false;
         }
     }
-    
-    /**
-     * Registra la notifica nel database.
-     *
-     * @param mixed $appointment
-     * @param mixed $patient
-     * @param string $type
-     */
-    private function recordNotification(
-        mixed $appointment,
-        mixed $patient,
-        string $type
-    ): void {
-        // This method is disabled due to missing Patient/Appointment models
-        Log::info('recordNotification method called but not implemented due to missing models', [
-            'type' => $type,
-        ]);
-    }
+
 }

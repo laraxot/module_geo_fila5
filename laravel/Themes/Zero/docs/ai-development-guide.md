@@ -2,7 +2,11 @@
 
 ## Overview
 
+<<<<<<< .merge_file_81hOYo
+This guide explains how to leverage AI assistants (Claude Code, Cursor, Windsurf) when developing with the **Zero Theme** in the healthcare_app Fila4 Mono project.
+=======
 This guide explains how to leverage AI assistants (Claude Code, Cursor, Windsurf) when developing with the **Zero Theme** in the ModuloEsempio Fila4 Mono project.
+>>>>>>> .merge_file_IinPBV
 
 Zero is a flexible, modern Laravel theme system built on Filament 4, Livewire 3, and Volt. Understanding how to configure AI assistants for theme development ensures faster, more consistent development.
 
@@ -652,6 +656,12 @@ Consider creating a custom MCP server for Zero theme operations:
 **Version**: 1.0
 **Last Updated**: December 23, 2025
 **Theme**: Zero
+<<<<<<< .merge_file_81hOYo
+**Maintainer**: healthcare_app Team
+
+*This guide is part of the healthcare_app documentation standard for AI-assisted development.*
+=======
 **Maintainer**: ModuloEsempio Team
 
 *This guide is part of the ModuloEsempio documentation standard for AI-assisted development.*
+>>>>>>> .merge_file_IinPBV

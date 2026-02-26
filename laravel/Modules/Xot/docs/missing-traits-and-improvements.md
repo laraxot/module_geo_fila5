@@ -693,6 +693,10 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
+<<<<<<< .merge_file_DivG4C
+// healthcare_appService.php
+class healthcare_appService
+=======
 <<<<<<< HEAD
 // ModuloEsempioService.php
 class ModuloEsempioService
@@ -700,6 +704,7 @@ class ModuloEsempioService
 // ExternalProjectService.php
 class ExternalProjectService
 >>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 
@@ -1172,6 +1177,10 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
+<<<<<<< .merge_file_DivG4C
+// healthcare_appService.php
+class healthcare_appService
+=======
 <<<<<<< HEAD
 // ModuloEsempioService.php
 class ModuloEsempioService
@@ -1179,6 +1188,7 @@ class ModuloEsempioService
 // ExternalProjectService.php
 class ExternalProjectService
 >>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+>>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 

@@ -177,3 +177,4 @@ Prima di modificare la configurazione SMS, verificare che:
 
 ---
 
+*Ultimo aggiornamento: [DATE]*

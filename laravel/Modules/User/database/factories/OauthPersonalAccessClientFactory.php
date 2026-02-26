@@ -20,7 +20,7 @@ class OauthPersonalAccessClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'client_id' => OauthClient::factory()->personalAccess(),
+            'client_id' => OauthClient::factory()->asPersonalAccessTokenClient()->create()->id,
         ];
     }
 }

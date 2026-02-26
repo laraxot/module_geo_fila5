@@ -59,7 +59,11 @@ Script da spostare:
 - `fix_all_merge_conflicts_v3.sh`
 - `fix_all_merge_conflicts_v4.sh`
 - `fix_conflicts.sh`
+<<<<<<< .merge_file_M6wwDy
+- `fix_conflicts_healthcare_app.sh`
+=======
 - `fix_conflicts_ptvx.sh`
+>>>>>>> .merge_file_o5yoyy
 - `fix_conflicts_robust.sh`
 - `fix_conflicts_simple.sh`
 - `fix_git_conflicts_*.sh` (tutti i fix_git_conflicts_*.sh)

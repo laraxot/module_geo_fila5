@@ -506,8 +506,13 @@ class ZeroPanelProvider extends PanelProvider
 ### Documentazione Generale
 
 - [Guida Completa Chart Module](../../../Modules/Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
+<<<<<<< .merge_file_kHj8aX
+- [QuestionChartAnswersChartWidget (doughnut/pie)](../../../Modules/healthcare_app/docs/question-chart-answers-chart-widget.md) – implementazione doughnut con clip false, anchor/display, label+percentuale
+- [SimpleChartWidget con Sfondi](../../../Modules/healthcare_app/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+=======
 - [QuestionChartAnswersChartWidget (doughnut/pie)](../../../Modules/ModuloEsempio/docs/question-chart-answers-chart-widget.md) – implementazione doughnut con clip false, anchor/display, label+percentuale
 - [SimpleChartWidget con Sfondi](../../../Modules/ModuloEsempio/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+>>>>>>> .merge_file_Yk4phN
 - [Filament 5.x Charts](https://filamentphp.com/docs/5.x/widgets/charts)
 
 ### Documentazione Ufficiale
@@ -519,4 +524,8 @@ class ZeroPanelProvider extends PanelProvider
 
 **Versione:** 1.0  
 **Ultimo Aggiornamento:** Gennaio 2026  
+<<<<<<< .merge_file_kHj8aX
+**Mantenuto da:** healthcare_app Development Team
+=======
 **Mantenuto da:** ModuloEsempio Development Team
+>>>>>>> .merge_file_Yk4phN

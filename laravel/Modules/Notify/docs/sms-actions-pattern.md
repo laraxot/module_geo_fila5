@@ -251,3 +251,4 @@ Seguire questo pattern garantisce:
 
 ---
 
+*Ultimo aggiornamento: [DATE]*

@@ -85,19 +85,20 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @property string|null          $deleted_by
  * @property ProfileContract|null $deleter
  *
- * @method static Builder<static>|Profile whereBio($value)
- * @method static Builder<static>|Profile whereCreatedAt($value)
- * @method static Builder<static>|Profile whereCreatedBy($value)
- * @method static Builder<static>|Profile whereDeletedAt($value)
- * @method static Builder<static>|Profile whereDeletedBy($value)
- * @method static Builder<static>|Profile whereEmail($value)
- * @method static Builder<static>|Profile whereFirstName($value)
- * @method static Builder<static>|Profile whereId($value)
- * @method static Builder<static>|Profile whereLastName($value)
- * @method static Builder<static>|Profile wherePhone($value)
- * @method static Builder<static>|Profile whereUpdatedAt($value)
- * @method static Builder<static>|Profile whereUpdatedBy($value)
- * @method static Builder<static>|Profile whereUserId($value)
+ * @method static Builder<static>|Profile                         whereBio($value)
+ * @method static Builder<static>|Profile                         whereCreatedAt($value)
+ * @method static Builder<static>|Profile                         whereCreatedBy($value)
+ * @method static Builder<static>|Profile                         whereDeletedAt($value)
+ * @method static Builder<static>|Profile                         whereDeletedBy($value)
+ * @method static Builder<static>|Profile                         whereEmail($value)
+ * @method static Builder<static>|Profile                         whereFirstName($value)
+ * @method static Builder<static>|Profile                         whereId($value)
+ * @method static Builder<static>|Profile                         whereLastName($value)
+ * @method static Builder<static>|Profile                         wherePhone($value)
+ * @method static Builder<static>|Profile                         whereUpdatedAt($value)
+ * @method static Builder<static>|Profile                         whereUpdatedBy($value)
+ * @method static Builder<static>|Profile                         whereUserId($value)
+ * @method static \Modules\User\Database\Factories\ProfileFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */

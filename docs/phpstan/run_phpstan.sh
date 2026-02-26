@@ -3,7 +3,11 @@
 # Script per eseguire PHPStan su tutti i moduli Laravel
 
 # Vai alla directory Laravel
+<<<<<<< .merge_file_Hs00n1
+cd /var/www/html/_bases/base_healthcare_app_fila3_mono/laravel
+=======
 cd /var/www/html/_bases/base_ptvx_fila3_mono/laravel
+>>>>>>> .merge_file_DBs5Ig
 
 # Ottieni tutti i moduli
 MODULES=($(ls -d Modules/*/ | cut -d'/' -f2))

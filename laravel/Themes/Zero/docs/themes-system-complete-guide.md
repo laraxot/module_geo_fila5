@@ -259,13 +259,21 @@ namespace Themes\Zero\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
+<<<<<<< .merge_file_Db191X
+use Modules\healthcare_app\Models\SurveyPdf;
+=======
 use Modules\ModuloEsempio\Models\SurveyPdf;
+>>>>>>> .merge_file_RzKuwA
 
 /**
  * SurveyCard: Visualizzazione survey card
  * 
  * NOTA: Solo presentazione, nessuna logica business
+<<<<<<< .merge_file_Db191X
+ * La logica sta nei moduli healthcare_app
+=======
  * La logica sta nei moduli ModuloEsempio
+>>>>>>> .merge_file_RzKuwA
  */
 class SurveyCard extends Component
 {
@@ -387,12 +395,20 @@ class SurveyCard extends Component
     <!-- Actions (se richieste) -->
     @if($showActions)
         <div class="flex justify-end space-x-2">
+<<<<<<< .merge_file_Db191X
+            <a href="{{ route('filament.healthcare_app::admin.resources.survey-pdfs.view', ['record' => $survey->id]) }}" 
+=======
             <a href="{{ route('filament.ptvx::admin.resources.survey-pdfs.view', ['record' => $survey->id]) }}" 
+>>>>>>> .merge_file_RzKuwA
                class="inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Visualizza
             </a>
             
+<<<<<<< .merge_file_Db191X
+            <a href="{{ route('filament.healthcare_app::admin.resources.survey-pdfs.edit', ['record' => $survey->id]) }}" 
+=======
             <a href="{{ route('filament.ptvx::admin.resources.survey-pdfs.edit', ['record' => $survey->id]) }}" 
+>>>>>>> .merge_file_RzKuwA
                class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Modifica
             </a>

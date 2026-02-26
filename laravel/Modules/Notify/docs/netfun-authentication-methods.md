@@ -70,3 +70,4 @@ public function send($notifiable, Notification $notification)
 
 ---
 
+*Ultimo aggiornamento: [DATE]*

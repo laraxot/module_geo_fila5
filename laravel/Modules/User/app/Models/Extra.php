@@ -46,6 +46,8 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\ExtraFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 final class Extra extends BaseExtra

@@ -14,7 +14,11 @@ MODULES=(
   "Limesurvey"
   "Media"
   "Notify"
+<<<<<<< .merge_file_ttUDHb
+  "healthcare_app"
+=======
   "ModuloEsempio"
+>>>>>>> .merge_file_6i9agr
   "Setting"
   "Tenant"
   "Theme"

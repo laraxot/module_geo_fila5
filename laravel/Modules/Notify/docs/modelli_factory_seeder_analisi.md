@@ -211,11 +211,7 @@ Tutti i modelli attivi hanno le factory corrispondenti.
 ### Integrazione Business Logic
 
 #### <nome progetto> Integration
-<<<<<<< HEAD
-#### Laraxot Integration
-=======
-#### healthcare_app Integration
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+#### SaluteOra Integration
 - **Appointment Reminders**: Promemoria appuntamenti
 - **Report Notifications**: Notifiche nuovi referti
 - **Emergency Alerts**: Allerte mediche urgenti
@@ -265,14 +261,10 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 
 ### Moduli Collegati
 - [<nome progetto> Module](../../<nome progetto>/docs/modelli_factory_seeder_analisi.md) - Notifiche mediche
-<<<<<<< HEAD
-- [Laraxot Module](../../ptvx/docs/modelli_factory_seeder_analisi.md) - Notifiche mediche
-=======
-- [healthcare_app Module](../../healthcare_app/docs/modelli_factory_seeder_analisi.md) - Notifiche mediche
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
-- [User Module](../../user/docs/modelli_factory_seeder_analisi.md) - Notifiche utente
-- [Media Module](../../media/docs/modelli_factory_seeder_analisi.md) - Allegati notifiche
-- [Lang Module](../../lang/docs/modelli_factory_seeder_analisi.md) - Localizzazione
+- [SaluteOra Module](../../SaluteOra/docs/modelli_factory_seeder_analisi.md) - Notifiche mediche
+- [User Module](../../User/docs/modelli_factory_seeder_analisi.md) - Notifiche utente
+- [Media Module](../../Media/docs/modelli_factory_seeder_analisi.md) - Allegati notifiche
+- [Lang Module](../../Lang/docs/modelli_factory_seeder_analisi.md) - Localizzazione
 
 ### Servizi Esterni
 - [Mailgun](https://www.mailgun.com/) - Email delivery service
@@ -280,5 +272,6 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 - [Twilio](https://www.twilio.com/) - SMS service
 - [Firebase](https://firebase.google.com/) - Push notifications
 
+*Ultimo aggiornamento: Gennaio 2025*
 *Analisi completa di 10 modelli attivi, 4 file backup da rimuovere*
 *Sistema notifiche multi-canale completo*

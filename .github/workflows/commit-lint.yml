@@ -74,7 +74,11 @@ jobs:
                   'Limesurvey',
                   'Media',
                   'Notify',
+<<<<<<< .merge_file_IDrzQs
+                  'healthcare_app',
+=======
                   'Ptv',
+>>>>>>> .merge_file_94DB48
                   'Tenant',
                   'UI',
                   'User',
@@ -142,7 +146,11 @@ jobs:
               - \`module\`: Module-specific changes
               
               ### Available Scopes:
+<<<<<<< .merge_file_IDrzQs
+              \`Activity\`, \`Chart\`, \`CloudStorage\`, \`Cms\`, \`DbForge\`, \`Gdpr\`, \`Geo\`, \`Job\`, \`Lang\`, \`Limesurvey\`, \`Media\`, \`Notify\`, \`healthcare_app\`, \`Tenant\`, \`UI\`, \`User\`, \`Xot\`, \`core\`, \`deps\`, \`config\`
+=======
               \`Activity\`, \`Chart\`, \`CloudStorage\`, \`Cms\`, \`DbForge\`, \`Gdpr\`, \`Geo\`, \`Job\`, \`Lang\`, \`Limesurvey\`, \`Media\`, \`Notify\`, \`Ptv\`, \`Tenant\`, \`UI\`, \`User\`, \`Xot\`, \`core\`, \`deps\`, \`config\`
+>>>>>>> .merge_file_94DB48
               
               ### Examples:
               - \`feat(User): add authentication API\`

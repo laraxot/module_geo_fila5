@@ -207,4 +207,5 @@ public function toDatabase($notifiable): array
 }
 ```
 
+*Ultimo aggiornamento: Giugno 2025*
 *File corretto: GenericNotification.php*

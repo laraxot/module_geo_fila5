@@ -2,11 +2,8 @@
 
 ## Panoramica
 
-<<<<<<< HEAD
-Questo documento fornisce una panoramica completa dello stato attuale dell'implementazione delle traduzioni nel modulo Notify, identificando le convenzioni in uso, le discrepanze con le convenzioni generali di Laraxot e le azioni necessarie per garantire la coerenza.
-=======
-Questo documento fornisce una panoramica completa dello stato attuale dell'implementazione delle traduzioni nel modulo Notify, identificando le convenzioni in uso, le discrepanze con le convenzioni generali di healthcare_app e le azioni necessarie per garantire la coerenza.
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+Questo documento fornisce una panoramica completa dello stato attuale dell'implementazione delle traduzioni nel modulo Notify, identificando le convenzioni in uso, le discrepanze con le convenzioni generali di  e le azioni necessarie per garantire la coerenza.
+Questo documento fornisce una panoramica completa dello stato attuale dell'implementazione delle traduzioni nel modulo Notify, identificando le convenzioni in uso, le discrepanze con le convenzioni generali di <nome progetto> e le azioni necessarie per garantire la coerenza.
 
 ## Convenzioni Attuali nel Modulo Notify
 
@@ -47,11 +44,8 @@ return [
 
 ## Discrepanza con le Convenzioni Generali
 
-<<<<<<< HEAD
-Esiste una discrepanza tra le convenzioni utilizzate nel modulo Notify e le convenzioni generali di Laraxot:
-=======
-Esiste una discrepanza tra le convenzioni utilizzate nel modulo Notify e le convenzioni generali di healthcare_app:
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+Esiste una discrepanza tra le convenzioni utilizzate nel modulo Notify e le convenzioni generali di :
+Esiste una discrepanza tra le convenzioni utilizzate nel modulo Notify e le convenzioni generali di <nome progetto>:
 
 1. **Convenzioni Generali (Modules/Lang/docs/TRANSLATION_KEYS_RULES.md)**:
    - Struttura gerarchica espansa senza chiavi come `.navigation`
@@ -128,7 +122,7 @@ Per garantire la coerenza futura, si raccomanda di:
 
 ## Collegamenti Correlati
 
-- [Convenzioni di Traduzione nel Modulo Notify](./translation_conventions.md)
-- [Chiarimento sulle Convenzioni di Traduzione](./translation_conventions_clarification.md)
-- [Regole Generali per le Chiavi di Traduzione](../../lang/docs/translation_keys_rules.md)
-- [Best Practices per le Chiavi di Traduzione](../../lang/docs/translation_keys_best_practices.md)
+- [Convenzioni di Traduzione nel Modulo Notify](./TRANSLATION_CONVENTIONS.md)
+- [Chiarimento sulle Convenzioni di Traduzione](./TRANSLATION_CONVENTIONS_CLARIFICATION.md)
+- [Regole Generali per le Chiavi di Traduzione](../../Lang/docs/TRANSLATION_KEYS_RULES.md)
+- [Best Practices per le Chiavi di Traduzione](../../Lang/docs/TRANSLATION_KEYS_BEST_PRACTICES.md)
