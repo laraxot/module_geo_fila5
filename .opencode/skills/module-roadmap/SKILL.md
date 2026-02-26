@@ -82,6 +82,14 @@ Maintain and update roadmaps for module development tracking.
 3. **Track metrics** - PHPStan error count, test coverage
 4. **Date everything** - Every entry should have a date
 5. **Keep history** - Move completed items to "Recently Completed", don't delete
+6. **NEVER reference external modules or projects** - Roadmaps must be project-agnostic
+   - ❌ DON'T: "Integrazione con Quaeris/LimeSurvey"
+   - ❌ DON'T: "Richiede il modulo Ptv"
+   - ✅ DO: "Integrazione con moduli valutazione (se presenti)"
+   - ✅ DO: "Dipendenze opzionali: Rating, Activity"
+7. **Use optional dependencies** - Reference other modules as "(se presente)" or "(if present)"
+8. **NO merge conflict markers** - Never leave `<<<<<<< HEAD`, `=======`, `>>>>>>>` in docs
+9. **NO project-specific URLs** - Don't reference external domains like `quaeris.it`
 
 ## After Updating
 

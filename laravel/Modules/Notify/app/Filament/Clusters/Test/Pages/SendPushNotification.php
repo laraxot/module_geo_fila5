@@ -179,7 +179,8 @@ class SendPushNotification extends XotBasePage
         // Verifichiamo che deviceToken sia una stringa non vuota (per soddisfare il tipo non-empty-string)
         Assert::stringNotEmpty($deviceToken, 'Il token del dispositivo non può essere vuoto');
 
-        $message = CloudMessage::withTarget('token', $deviceToken)
+        $message = CloudMessage::new()
+            ->withToken($deviceToken)
             ->withHighestPossiblePriority()
             ->withData($messageData);
 

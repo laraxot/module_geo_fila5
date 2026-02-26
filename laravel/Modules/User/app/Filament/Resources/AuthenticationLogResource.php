@@ -20,6 +20,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\User\Filament\Resources\AuthenticationLogResource\Pages\ListAuthenticationLogs;
 use Modules\User\Filament\Resources\AuthenticationLogResource\Pages\ViewAuthenticationLog;
@@ -49,7 +50,7 @@ class AuthenticationLogResource extends XotBaseResource
                     ->sortable()
                     ->url(function (AuthenticationLog $record): ?string {
                         $authenticatable = $record->authenticatable;
-                        if (null !== $authenticatable && $authenticatable->exists) {
+                        if ($authenticatable instanceof Model) {
                             return UserResource::getUrl('view', ['record' => $authenticatable]);
                         }
 
@@ -124,7 +125,7 @@ class AuthenticationLogResource extends XotBaseResource
                     ->icon('heroicon-o-user')
                     ->url(function (AuthenticationLog $record): ?string {
                         $authenticatable = $record->authenticatable;
-                        if (null !== $authenticatable && $authenticatable->exists) {
+                        if ($authenticatable instanceof Model) {
                             return UserResource::getUrl('view', ['record' => $authenticatable]);
                         }
 
@@ -133,7 +134,7 @@ class AuthenticationLogResource extends XotBaseResource
                     ->visible(function (AuthenticationLog $record): bool {
                         $authenticatable = $record->authenticatable;
 
-                        return null !== $authenticatable && $authenticatable->exists;
+                        return $authenticatable instanceof Model;
                     }),
                 DeleteAction::make(),
             ])

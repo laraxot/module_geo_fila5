@@ -1,80 +1,14 @@
-<<<<<<< HEAD
-# Ptv Module Roadmap
+# Ptv Module - Roadmap
 
 ## Visione
 
-Modulo core PTV (Piano di Valutazione): gestione schede valutazione, valutatori, criteri, anni e integrazione con IndennitaResponsabilita e IndennitaCondizioniLavoro.
-
-## Fasi di Sviluppo
-
-### Fase 1: Stabilizzazione (Planned)
-
-- [ ] PHPStan Level 10 Compliance
-- [x] Allineamento traduzioni ptv::actions.* (compila, delete_cessati, populate_year, etc.)
-- [ ] Test Coverage improvement
-- [ ] Creare lang/de/actions.php se modulo multilingua
-
-### Fase 2: Funzionalità (Planned)
-
-- [ ] **CompilaAction** — routing a pagina compila per resource
-- [ ] **Header Actions**:
-  - [ ] PopulateYearAction
-  - [ ] CopyFromLastYearAction
-  - [ ] TrovaEsclusiAction
-  - [ ] MergeDoubleRowCatecoYearAction
-  - [ ] DeleteCessatiAction (modal, GetCessatiRecords)
-- [ ] **Filtri**: AnnoValutatoreFilter, anno/valutatore
-- [ ] **Export e report**: XLS, PDF
-
-### Fase 3: Integrazione (Future)
-
-- [ ] Integrazione Sigma (SchedaTrait, Wmen00f)
-- [ ] Integrazione Progressioni
-- [ ] Documentazione completa in docs/
-
-## Technical Debt
-
-| Area | Stato | Target |
-|------|-------|--------|
-| PHPStan | Da verificare | Level 10 |
-| Traduzioni | it, en | + de se necessario |
-| DeleteCessatiAction | Hardcoded anni (2023-2025) | Anni dinamici da config |
-| FillOutTheFormAction | URL compila da verificare | Routing corretto |
-
-## Dipendenze
-
-- **IndennitaResponsabilita**: Compila page, IndennitaResponsabilitaResource
-- **IndennitaCondizioniLavoro**: CondizioniLavoro, StabiDirigente
-- **Rating**: HasRatingsTrait, Rating model
-- **Sigma**: Dati anagrafici, SchedaTrait
-
-## File Chiave
-
-- `app/Filament/Actions/Scheda/CompilaAction.php`
-- `app/Filament/Actions/Header/DeleteCessatiAction.php`
-- `app/Filament/Actions/Header/PopulateYearAction.php`
-- `app/Filament/Actions/Header/CopyFromLastYearAction.php`
-- `app/Filament/Actions/Header/TrovaEsclusiAction.php`
-- `app/Filament/Actions/Header/MergeDoubleRowCatecoYearAction.php`
-- `lang/it/actions.php`, `lang/en/actions.php`
-
-## Checklist Qualità
-
-- [ ] PHPStan Level 10
-- [x] Traduzioni it/en complete
-- [ ] Test coverage
-- [ ] Documentazione in docs/
-
----
-
-**Ultimo aggiornamento**: Febbraio 2026
-=======
-# Ptv Module - Roadmap
+Modulo per la gestione del ciclo di valutazione del personale: schede valutazione, valutatori, criteri e anni.
+Progettato per essere agnostico e riutilizzabile in diversi contesti (PA, aziende private).
 
 ## Overview
-**Purpose**: Personnel evaluation and assessment management system (Personale - Valutazione - Tracciamento)
+**Purpose**: Personnel evaluation and assessment management system
 **Status**: Active Development
-**Dependencies**: Xot (core), User (authentication), Rating (evaluation criteria)
+**Dependencies**: Xot (core), User (authentication)
 
 ## 🧪 Testing e TDD
 
@@ -99,9 +33,6 @@ Modules/Ptv/tests/
 └── TestCase.php
 ```
 
-### Test Esistenti
-- [x] `CompilaIndennitaResponsabilitaTest` - Test pagina compilazione
-
 ### Best Practices
 - [ ] Usare `RefreshDatabase` per test database
 - [ ] Fake servizi esterni (Mail, Queue)
@@ -121,8 +52,8 @@ Modules/Ptv/tests/
 
 ### ✅ Completed
 - [x] Base Filament resources for personnel evaluation
-- [x] Database schema for Ptv tracking
-- [x] Integration with Rating module
+- [x] Database schema for tracking
+- [x] Integration with Rating module (se presente)
 - [x] Basic CRUD operations
 - [x] Translation files (IT, EN, DE)
 
@@ -130,16 +61,14 @@ Modules/Ptv/tests/
 - [ ] PHPStan Level 10 compliance
 - [ ] Test coverage improvement
 - [ ] Advanced filtering and reporting
-- [ ] Stabi dirigente management
 
-### ❌ Pending
-- [ ] Ptv analytics and insights
-- [ ] Automated Ptv reports
-- [ ] Ptv history tracking
-- [ ] Multi-year Ptv comparison
-- [ ] Ptv export (PDF, Excel)
-- [ ] Ptv notifications
-- [ ] Integration with other HR modules
+### ❌ ] Analytics and insights Pending
+- [
+- [ ] Automated reports
+- [ ] History tracking
+- [ ] Multi-year comparison
+- [ ] Export (PDF, Excel)
+- [ ] Notifications
 
 ## Roadmap
 
@@ -154,15 +83,14 @@ Modules/Ptv/tests/
 ### Phase 2: Core Features (Q1-Q2 2026)
 **Priority**: High
 **Tasks**:
-- [ ] Stabi dirigente management
 - [ ] Advanced filtering and search
-- [ ] Ptv history view
-- [ ] Bulk operations for evaluations
+- [ ] History view
+- [ ] Bulk operations
 
 ### Phase 3: Reporting & Analytics (Q2 2026)
 **Priority**: Medium
 **Tasks**:
-- [ ] Ptv reports
+- [ ] Reports
 - [ ] Analytics and insights
 - [ ] Export functionality (PDF, Excel)
 - [ ] Scheduled reports
@@ -171,9 +99,17 @@ Modules/Ptv/tests/
 **Priority**: Medium
 **Tasks**:
 - [ ] Integration with User module
-- [ ] Integration with Performance module
-- [ ] Integration with other HR modules
+- [ ] Integration with other modules (se presenti)
 - [ ] API endpoints for external systems
+
+## Dipendenze Opzionali
+
+Il modulo può integrarsi (se presenti) con:
+- **Rating**: Criteri di valutazione
+- **Activity**: Audit trail
+- **User**: Autenticazione
+
+Queste sono dipendenze opzionali - il modulo funziona anche senza di esse.
 
 ## Technical Debt
 - [ ] PHPStan Level 10 compliance
@@ -181,15 +117,10 @@ Modules/Ptv/tests/
 - [ ] Documentation completion
 - [ ] Refactoring legacy code
 
-## Dependencies
-- Xot: Core framework functionality
-- User: User management and authentication
-- Rating: Evaluation criteria and scoring
-
 ## Success Criteria
 - [ ] PHPStan Level 10 compliance
 - [ ] 80%+ test coverage
-- [ ] Complete Ptv dashboard
+- [ ] Complete dashboard
 - [ ] Export functionality working
 - [ ] Full documentation
 - [ ] All translations complete (IT, EN, DE)
@@ -197,6 +128,4 @@ Modules/Ptv/tests/
 ---
 
 **Last Updated**: 2026-02-24
-**Maintainer**: Team Laraxot
 **Status**: Active Development
->>>>>>> a779533d (docs: expand module roadmaps with detailed phases, testing structure, and TDD guidelines)

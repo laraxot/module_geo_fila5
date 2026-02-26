@@ -1,10 +1,7 @@
 # Pattern di Estensione per Componenti Filament 
 
-<<<<<<< HEAD
-Questo documento definisce il pattern di estensione standardizzato per i componenti Filament nel sistema Laraxot, con particolare attenzione al principio di non estendere mai direttamente le classi Filament.
-=======
-Questo documento definisce il pattern di estensione standardizzato per i componenti Filament nel sistema healthcare_app, con particolare attenzione al principio di non estendere mai direttamente le classi Filament.
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+Questo documento definisce il pattern di estensione standardizzato per i componenti Filament nel sistema , con particolare attenzione al principio di non estendere mai direttamente le classi Filament.
+Questo documento definisce il pattern di estensione standardizzato per i componenti Filament nel sistema <nome progetto>, con particolare attenzione al principio di non estendere mai direttamente le classi Filament.
 
 ## Regola Fondamentale
 
@@ -24,11 +21,8 @@ Questo documento definisce il pattern di estensione standardizzato per i compone
 
 ## Motivazione
 
-<<<<<<< HEAD
-1. **Personalizzazione Centralizzata**: Le classi XotBase forniscono funzionalità e comportamenti personalizzati specifici per Laraxot, mantenendo la coerenza in tutta l'applicazione.
-=======
-1. **Personalizzazione Centralizzata**: Le classi XotBase forniscono funzionalità e comportamenti personalizzati specifici per healthcare_app, mantenendo la coerenza in tutta l'applicazione.
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+1. **Personalizzazione Centralizzata**: Le classi XotBase forniscono funzionalità e comportamenti personalizzati specifici per , mantenendo la coerenza in tutta l'applicazione.
+1. **Personalizzazione Centralizzata**: Le classi XotBase forniscono funzionalità e comportamenti personalizzati specifici per <nome progetto>, mantenendo la coerenza in tutta l'applicazione.
 
 2. **Aggiornamenti Semplificati**: Quando Filament viene aggiornato, è possibile adattare solo le classi XotBase senza dover modificare tutte le implementazioni concrete.
 
@@ -54,7 +48,7 @@ Quando si estende `XotBaseResource`, è importante seguire queste regole per evi
 Queste proprietà e metodi sono già configurati in `XotBaseResource` per garantire coerenza e centralizzazione della logica. Ridefinirli può portare a comportamenti imprevisti e aumentare la complessità del codice.
 
 **Collegamenti correlati**:
-- [Linee Guida XotBaseResource](../modules/patient/docs/xot-base-resource-guidelines.md)
+- [Linee Guida XotBaseResource](../Modules/Patient/docs/xot-base-resource-guidelines.md)
 
 ## Esempio di Implementazione Corretta
 
@@ -98,11 +92,8 @@ class SendSmsPage extends Page implements HasForms // ❌ ERRORE
 
 ### 1. Personalizzazione Centralizzata
 
-<<<<<<< HEAD
-Le classi XotBase possono implementare comportamenti specifici per Laraxot, come:
-=======
-Le classi XotBase possono implementare comportamenti specifici per healthcare_app, come:
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+Le classi XotBase possono implementare comportamenti specifici per , come:
+Le classi XotBase possono implementare comportamenti specifici per <nome progetto>, come:
 - Gestione multilingua avanzata
 - Integrazione con il sistema di permessi personalizzato
 - Logging e auditing specifici

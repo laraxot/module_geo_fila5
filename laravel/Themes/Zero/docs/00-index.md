@@ -9,6 +9,9 @@
 ### 🎯 Essential Reading
 1. [README.md](./README.md) - Theme overview
 
+### ⚠️ Anti-Patterns da Evitare
+- **[QuestionChartAnswersTripleChartWidget](../../Modules/docs/anti-pattern-question-chart-answers-triple-widget.md)** — Perché i widget "multi-chart" vanno evitati (vedi [filament-chart-integration.md](./filament-chart-integration.md) sezione Anti-Patterns).
+
 ### 🎨 Theme Characteristics
 - **Style**: Ultra-minimalist
 - **Target**: Lightweight applications
