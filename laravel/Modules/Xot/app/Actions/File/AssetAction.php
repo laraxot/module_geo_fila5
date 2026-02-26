@@ -97,12 +97,14 @@ class AssetAction
     private function resolveModuleAsset(string $originalPath, string $ns, string $ns_after): string
     {
         $module_path = app(GetModulePathAction::class)->execute($ns);
+        
 
         if (Str::endsWith($module_path, '/')) {
             $module_path = Str::beforeLast($module_path, '/');
         }
 
         $filename_from = app(FixPathAction::class)->execute($module_path.'/resources/'.$ns_after);
+        
 
         if (! File::exists($filename_from)) {
             if (isRunningTestBench()) {
@@ -110,14 +112,18 @@ class AssetAction
             }
             throw new Exception('file ['.$filename_from.'] not Exists , path ['.$originalPath.']');
         }
-
+        
         $assetPath = 'assets/'.$ns.'/'.$ns_after;
         $filename_to = app(FixPathAction::class)->execute(public_path($assetPath));
+        
 
         $forceCopy = app()->environment() !== 'production';
         $this->copyAsset($filename_from, $filename_to, $assetPath, $forceCopy);
-
-        $asset = Str::replace(url(''), '', asset($assetPath));
+        
+        $asset=asset($assetPath);
+        $asset = Str::replace(url(''), '', $asset);
+        $asset = Str::replace(url('',[],true), '', $asset);
+       
         Assert::string($asset, '['.__LINE__.']['.class_basename(static::class).']');
 
         return $asset;

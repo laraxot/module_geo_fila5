@@ -1,15 +1,10 @@
 @include('ptv::pdf.css01')
 <page>
-   
+    {{--
+    @include('ptv::pdf.intestazione')
+    --}}
     <img src="{{ base_path('Modules/Ptv/resources/img/Logo-Provincia-orizzontale-neg.png') }}" style="height:50px" />
-    <table>
-        <tr>
-            <td>
-                <h3>Indennita Responsabilita anno {{ $row->anno }}</h3>
-            </td>
-            <td>{{ $row->note }}</td>
-        </tr>
-    </table>
+    <h3>{{ $title }}</h3>
     <br/><br/>
     <table>
         <colgroup>
@@ -21,12 +16,13 @@
         <tr>
             <th>Matr</th>
             <th>Cognome Nome</th>
+            
             <th>dettaglio</th>
         </tr>
         </thead>
         <tbody>
-    
-        <tr >
+    @foreach($rows as $row)
+        <tr class="{{ $loop->index %2 ==0?'light':''}}">
             <td style="border-bottom: solid 1px #ababab;">
                 {{ $row->matr }}
             </td>
@@ -44,20 +40,22 @@
                     
                     @foreach($row->ratings as $rating)
                         <tr>
-                            <td> {!! $rating->txt !!} </td>
+                            <td> {{$rating->title}} </td>
                             <td  align="right"><b>{{ $rating->pivot->value }}</b></td>
                         </tr>
                     @endforeach
                     
 
                 </table>
+                <br/>
+                <b>{{  $row->note }}</b>
             </td>
            
         </tr>
-    
+    @endforeach
     </tbody>
     </table>
     
-    @include('ptv::pdf.firma')
+    @include('ptv::pdf.firma',['firma' => $row->valutatore?->nome_diri])
     
 </page>

@@ -16,7 +16,6 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Gate;
 use Modules\Activity\Filament\Actions\ListLogActivitiesAction;
 use Modules\IndennitaResponsabilita\Actions\MakePdf;
@@ -35,6 +34,7 @@ use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
 use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Tables\Columns\RepColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\Xot\Filament\Actions\Header\ExportPdfAction;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
@@ -59,16 +59,16 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         $filtersForUrl = $this->tableFilters;
 
         return [
-
+            /*
             'exportPdf' => Action::make('exportPdf')
                 ->icon('heroicon-s-document')
                 ->action(function (): BinaryFileResponse {
-                    /** @var array<string, mixed> $tableFilters */
+                    // @var array<string, mixed> $tableFilters 
                     $tableFilters = $this->tableFilters ?? [];
 
                     return app(MakePdf::class)->execute($tableFilters);
                 }),
-
+            */
             'SendMail' => Action::make('SendMail')
                 ->icon('heroicon-o-paper-airplane')
                 ->url(fn () => IndennitaResponsabilitaResource::getUrl('send-mail', $filtersForUrl ?? []))
@@ -87,6 +87,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
             */
             'exportXls' => ExportXlsAction::make('exportXls'),
             // ->exportOnlyFiltered(),
+            'exportPdf1' => ExportPdfAction::make('exportPdf1'),
         ];
     }
 
