@@ -26,6 +26,31 @@
       "sourceType": "github",
       "computedHash": "b3d61eac3dcb6553c5fdb1f379c7d6864f37d4c0217f9dd4aea478eb172bf329"
     },
+    "clean-architecture": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "computedHash": "c5b5d297c11b1bbf38195f8fb3c55fce4cffaa32b6ed06ec944b38cae6b3ae5c"
+    },
+    "clean-code": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "32a71fa274b777a2f4c341fad4a05b5caaa5a1095c4e2f3dd174d5226d552d8f"
+    },
+    "clean-code-principles": {
+      "source": "asyrafhussin/agent-skills",
+      "sourceType": "github",
+      "computedHash": "2349d11b7828f485215902d7193c62adf8e8f400daacd80db33469eecf82b8bb"
+    },
+    "code-refactoring": {
+      "source": "skillcreatorai/ai-agent-skills",
+      "sourceType": "github",
+      "computedHash": "6f19dccc896d729e152f34c4486d8f0fb38a694b8fbeaf002a8e4cf5380896da"
+    },
+    "code-refactoring-tech-debt": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "18a6fa9a6facbb57d1c18b72c8a2d09b3363db00c6a3fc0d406932f7f7238e74"
+    },
     "cold-email": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
@@ -101,6 +126,11 @@
       "sourceType": "github",
       "computedHash": "fe2dee2b0d171f93c3c574130de1b699530911b8397e0982881bc95bd0bd90d0"
     },
+    "phpstan-fixer": {
+      "source": "marcelorodrigo/agent-skills",
+      "sourceType": "github",
+      "computedHash": "64647a121a500929facd10220be7cef133b17153c7e11909fd83aa1234e26d56"
+    },
     "popup-cro": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
@@ -145,6 +175,16 @@
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
       "computedHash": "aaffbb6e301984ac94feb67f4eae29ad1936ecd1992e97db59dd03528ef20fd8"
+    },
+    "solid-principles": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "computedHash": "302fc51ca42b1a002d100f4a344c5ffeeb7a46afb1bd54cf1c18ada7cb932577"
+    },
+    "static-code-analysis": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "computedHash": "b1aaf1eaf67961488499507208e0f1b5c5b9ccfe2371245f5aec1e03445c385b"
     }
   }
 }

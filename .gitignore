@@ -307,3 +307,5 @@ laravel/phpinsights-standalone
 coverage.xml/
 .opencode/
 .opencode/
+.continue/
+.codebuddy/
