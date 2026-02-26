@@ -200,16 +200,18 @@ class UserMassSeeder extends Seeder
         $this->command->info('👤 Creazione utenti con profili completi...');
 
         // Crea 200 utenti generici
-        $users = User::factory()
-            ->count(200)
-            ->create([
-                'email_verified_at' => Carbon::now(),
-                'created_at' => Carbon::now()->subDays(rand(1, 365)),
-            ]);
+        $userFactory = \Modules\User\Database\Factories\UserFactory::new();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, User> $users */
+        $users = $userFactory->count(200)->create([
+            'email_verified_at' => Carbon::now(),
+            'created_at' => Carbon::now()->subDays(rand(1, 365)),
+        ]);
 
         // Crea profili per tutti gli utenti
+        $profileFactory = \Modules\User\Database\Factories\ProfileFactory::new();
         foreach ($users as $user) {
-            Profile::factory()->create([
+            // @phpstan-ignore-next-line
+            $profileFactory->create([
                 'user_id' => $user->id,
                 'created_at' => $user->created_at,
                 'updated_at' => $user->updated_at,
@@ -217,6 +219,7 @@ class UserMassSeeder extends Seeder
         }
 
         // Assegna ruoli casuali
+        /** @var \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles */
         $roles = Role::all();
         foreach ($users as $user) {
             $randomRole = $roles->random();
@@ -234,11 +237,11 @@ class UserMassSeeder extends Seeder
         $this->command->info('📝 Creazione log di autenticazione...');
 
         // Crea 1000 log di autenticazione
-        $logs = AuthenticationLog::factory()
-            ->count(1000)
-            ->create([
-                'created_at' => Carbon::now()->subDays(rand(1, 30)),
-            ]);
+        $logFactory = \Modules\User\Database\Factories\AuthenticationLogFactory::new();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, AuthenticationLog> $logs */
+        $logs = $logFactory->count(1000)->create([
+            'created_at' => Carbon::now()->subDays(rand(1, 30)),
+        ]);
 
         $this->command->info('✅ Creati '.$logs->count().' log di autenticazione');
     }
@@ -251,8 +254,9 @@ class UserMassSeeder extends Seeder
         $this->command->info('📱 Creazione dispositivi utente...');
 
         // Crea 500 dispositivi
-        $devices = Device::factory()
-            ->count(500)
+        $deviceFactory = \Modules\User\Database\Factories\DeviceFactory::new();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Device> $devices */
+        $devices = $deviceFactory->count(500)
             ->create([
                 'created_at' => Carbon::now()->subDays(rand(1, 90)),
             ]);
@@ -268,11 +272,11 @@ class UserMassSeeder extends Seeder
         $this->command->info('🔗 Creazione provider social...');
 
         // Crea 100 provider social
-        $providers = SocialProvider::factory()
-            ->count(100)
-            ->create([
-                'created_at' => Carbon::now()->subDays(rand(1, 180)),
-            ]);
+        $providerFactory = \Modules\User\Database\Factories\SocialProviderFactory::new();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, SocialProvider> $providers */
+        $providers = $providerFactory->count(100)->create([
+            'created_at' => Carbon::now()->subDays(rand(1, 180)),
+        ]);
 
         $this->command->info('✅ Creati '.$providers->count().' provider social');
     }

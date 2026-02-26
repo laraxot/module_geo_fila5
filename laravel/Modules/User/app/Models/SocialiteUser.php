@@ -60,6 +60,8 @@ use Modules\Xot\Datas\XotData;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\SocialiteUserFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

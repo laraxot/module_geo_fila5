@@ -55,6 +55,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\AuthenticationLogFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class AuthenticationLog extends BaseModel

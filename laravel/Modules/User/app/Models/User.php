@@ -129,6 +129,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property User|null $updater
  * @property User|null $user
  *
+ * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class User extends BaseUser

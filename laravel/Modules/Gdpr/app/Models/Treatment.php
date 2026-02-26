@@ -49,6 +49,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\Gdpr\Database\Factories\TreatmentFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Treatment extends BaseModel

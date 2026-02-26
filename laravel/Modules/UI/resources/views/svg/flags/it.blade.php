@@ -10,3 +10,9 @@ declare(strict_types=1);
          <path fill="#ce2b37" d="M426.7 0H640v480H426.7z"/>
     </g>
 </svg>
+</svg>
+</svg>
+</svg>
+</svg>
+</svg>
+</svg>

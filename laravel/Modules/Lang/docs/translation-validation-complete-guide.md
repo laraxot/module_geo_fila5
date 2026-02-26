@@ -185,7 +185,7 @@ php docs/obbligatorio-audit-script.php
 
 ## Status Progetto <nome progetto>
 
-### ✅ Validazioni Completate (2025-08-08)
+### ✅ Validazioni Completate ([DATE])
 
 1. **Helper Text Normalizzazione**: ✅ CONFORME
    - Nessun helper_text uguale alla chiave padre
@@ -232,9 +232,9 @@ php docs/obbligatorio-audit-script.php
 - [Riepilogo Finale Refactor](translation-refactor-complete-summary.md)
 
 ### Documentazione Moduli
-- [User Module - City Field Refactor](../Modules/User/docs/translation-city-field-refactor-2025-08-08.md)
-- [<nome progetto> Module - Refactor Summary](../Modules/<nome progetto>/docs/translation-refactor-summary-2025-08-08.md)
-- [Geo Module - Helper Text Fix](../Modules/Geo/docs/helper-text-normalization-fix.md)
+- [User Module - City Field Refactor](../modules/user/docs/translation-city-field-refactor-[date].md)
+- [<nome progetto> Module - Refactor Summary](../modules/<nome progetto>/docs/translation-refactor-summary-[date].md)
+- [Geo Module - Helper Text Fix](../modules/geo/docs/helper-text-normalization-fix.md)
 
 ### Script e Tool
 - [Helper Text Audit Script](helper-text-audit-script.php)

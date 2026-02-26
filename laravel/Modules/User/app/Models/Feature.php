@@ -42,6 +42,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\FeatureFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Feature extends BaseModel

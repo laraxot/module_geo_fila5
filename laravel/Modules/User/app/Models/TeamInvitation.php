@@ -53,6 +53,14 @@ use Modules\Xot\Datas\XotData;
  * @mixin IdeHelperTeamInvitation
  *
  * @property ProfileContract|null $deleter
+ * @property Carbon|null          $accepted_at
+ * @property Carbon|null          $declined_at
+ * @property string|null          $user_id
+ *
+ * @method static \Modules\User\Database\Factories\TeamInvitationFactory factory($count = null, $state = [])
+ * @method static Builder<static>|TeamInvitation                         whereAcceptedAt($value)
+ * @method static Builder<static>|TeamInvitation                         whereDeclinedAt($value)
+ * @method static Builder<static>|TeamInvitation                         whereUserId($value)
  *
  * @mixin \Eloquent
  */

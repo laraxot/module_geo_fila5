@@ -45,6 +45,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

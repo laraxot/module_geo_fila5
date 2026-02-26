@@ -67,6 +67,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseTeam

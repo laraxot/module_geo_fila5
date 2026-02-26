@@ -56,6 +56,8 @@ use function Safe\json_encode;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\Gdpr\Database\Factories\EventFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Event extends BaseModel
