@@ -1,4 +1,5 @@
 {
+    "_comment": "Project-agnostic MCP config. Paths use ${PWD} = project root at launch time.",
     "mcpServers": {
         "laravel-boost": {
             "command": "php",
@@ -12,9 +13,9 @@
             "args": [
                 "-y",
                 "@modelcontextprotocol/server-filesystem",
-                "/var/www/_bases/base_ptvx_fila4_mono/laravel",
-                "/var/www/_bases/base_ptvx_fila4_mono/docs",
-                "/var/www/_bases/base_ptvx_fila4_mono/bashscripts"
+                "${PWD}/laravel",
+                "${PWD}/docs",
+                "${PWD}/bashscripts"
             ]
         },
         "memory": {
@@ -36,6 +37,13 @@
             "args": [
                 "-y",
                 "@modelcontextprotocol/server-sequential-thinking"
+            ]
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@context7/mcp-server"
             ]
         },
         "puppeteer": {
@@ -65,7 +73,7 @@
                 "-y",
                 "@modelcontextprotocol/server-git",
                 "--repository",
-                "/var/www/_bases/base_ptvx_fila4_mono"
+                "${PWD}"
             ]
         }
     }

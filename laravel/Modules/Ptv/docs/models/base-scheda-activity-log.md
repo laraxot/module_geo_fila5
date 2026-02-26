@@ -233,6 +233,27 @@ Model::withoutEvents(fn() => $model->update([...]));
 $model->update([...]);
 ```
 
+### Accessor/Mutator che persistono valori derivati
+
+Alcuni modelli che estendono `BaseScheda` (es. quelli che usano i trait di Sigma come `EnteMatrMutator`) calcolano valori derivati e li salvano in modo automatico dentro gli accessor/mutator, per motivi di performance (cache dei calcoli).
+
+Per evitare interazioni pericolose con Activity Log:
+
+- **usare sempre una guard su PK** negli accessor/mutator che salvano:
+
+  ```php
+  if ($this->getKey() == null) {
+      return $value; // calcolato ma non persistito per record non ancora salvati
+  }
+  ```
+
+- se il salvataggio avviene **durante** la lettura degli attributi (es. dentro `getXxxAttribute()`), usare in casi mirati `static::withoutEvents(...)` per evitare che gli eventi Eloquent innestino di nuovo Activity Log mentre sta serializzando il modello.
+
+Questo pattern è documentato in:
+
+- `Modules/Activity/docs/errori/attributerawvalues-null-firstorcreate.md`
+- `Modules/Sigma/docs/troubleshooting.md`
+
 ## Testing
 
 I test per BaseScheda Activity Log sono in:

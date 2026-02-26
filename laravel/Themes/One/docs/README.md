@@ -24,6 +24,16 @@ Ricordare di documentare ogni variante o layout personalizzato nella cartella `d
 - [Cursor Rules & Skills](../../../../.cursor/README.md)
 - [Skills di progetto](../../../../.cursor/skills/)
 
+### Metodo di lavoro (BMAD + Laraxot)
+
+Per le attività sul tema One si segue un flusso coerente con il metodo BMAD e le regole Laraxot:
+
+1. **Analisi**: chiarire scopo della modifica (business logic, pagina, utente finale).
+2. **Design leggero**: scegliere la soluzione UI/UX più semplice che riusa pattern e componenti esistenti.
+3. **Implementazione**: applicare cambiamenti minimi, leggibili, coerenti con Tailwind e i layout del tema.
+4. **Verifica**: controllare resa visiva (anche responsive) ed eseguire i comandi di build/lint necessari.
+5. **Documentazione**: aggiornare/creare (se manca) la pagina `docs` pertinente descrivendo scopo, decisioni e impatti.
+
 ## 🔁 CI & Semantic Versioning
 Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
 Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
