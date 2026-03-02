@@ -7,29 +7,29 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Modules\Geo\Database\Factories\ComuneFactory;
+use Modules\Tenant\Contracts\SushiToJsonContract;
+use Modules\Tenant\Models\Traits\SushiToJson;
+use Modules\Xot\Contracts\ProfileContract;
 
 use function Safe\file_get_contents;
 use function Safe\file_put_contents;
 use function Safe\json_decode;
 use function Safe\json_encode;
 use function Safe\mkdir;
-use Modules\Tenant\Contracts\SushiToJsonContract;
-use Modules\Tenant\Models\Traits\SushiToJson;
-use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Modello per i comuni italiani con Sushi.
- * 
+ *
  * Implementa il pattern Facade per fornire un'interfaccia unificata a tutti i dati geografici:
  * regioni, province, città, CAP, codici ISTAT, ecc.
  * Tutti i dati sono estratti da file JSON e gestiti tramite Sushi.
  *
  * @method string getJsonFile()
- * @method array loadExistingData()
+ * @method array  loadExistingData()
  * @method string authId()
- * @method void ensureDirectoryExists()
- * @method void saveToJson()
- * @method int findRowIndexById(int $id)
+ * @method void   ensureDirectoryExists()
+ * @method void   saveToJson()
+ * @method int    findRowIndexById(int $id)
  *
  * @property string|null                  $nome
  * @property float|null                   $codice
@@ -50,6 +50,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null                  $updated_by
  * @property ProfileContract|null         $creator
  * @property ProfileContract|null         $updater
+ *
  * @method static Builder<static>|Comune newModelQuery()
  * @method static Builder<static>|Comune newQuery()
  * @method static Builder<static>|Comune query()
@@ -70,21 +71,26 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Comune whereUpdatedAt($value)
  * @method static Builder<static>|Comune whereUpdatedBy($value)
  * @method static Builder<static>|Comune whereZona($value)
+ *
  * @property ProfileContract|null $deleter
+ *
  * @method static ComuneFactory factory($count = null, $state = [])
- * @property int|null $altitudine
+ *
+ * @property int|null    $altitudine
  * @property string|null $codice_catastale
- * @property float|null $lat
- * @property float|null $lng
+ * @property float|null  $lat
+ * @property float|null  $lng
  * @property string|null $sigla_provincia
- * @property float|null $superficie
+ * @property float|null  $superficie
  * @property string|null $zona_altimetrica
+ *
  * @method static Builder<static>|Comune whereAltitudine($value)
  * @method static Builder<static>|Comune whereLat($value)
  * @method static Builder<static>|Comune whereLng($value)
  * @method static Builder<static>|Comune whereSiglaProvincia($value)
  * @method static Builder<static>|Comune whereSuperficie($value)
  * @method static Builder<static>|Comune whereZonaAltimetrica($value)
+ *
  * @mixin \Eloquent
  */
 class Comune extends BaseModel implements SushiToJsonContract
@@ -148,7 +154,8 @@ class Comune extends BaseModel implements SushiToJsonContract
             if (! is_array($data)) {
                 return [];
             }
-            /** @var array<int, array<string, mixed>> $data */
+
+            /* @var array<int, array<string, mixed>> $data */
             return $data;
         } catch (\Throwable) {
             return [];
@@ -187,6 +194,7 @@ class Comune extends BaseModel implements SushiToJsonContract
                 return (int) $index;
             }
         }
+
         return null;
     }
 
