@@ -36,41 +36,39 @@ Users need:
 - Specialized branding for one-off landing pages.
 - Non-standard UI patterns that break the design system.
 
-## 5. Functional Requirements
-### FR-001: Component Library
-- **Priority**: Must-have
-- **Description**: Provide a complete set of reusable UI components.
-- **Acceptance Criteria**: Components are documented and follow thematic styles.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Responsive Navigation
-- **Priority**: Must-have
-- **Description**: Sidebar and topbar that adapt to any screen size.
-- **Acceptance Criteria**: Touch-friendly on mobile, space-efficient on desktop.
+### P0: Design Foundation (Must-have)
+- **FR-001: Component Library**: Provide a complete set of reusable UI components based on Tailwind CSS 4.0.
+- **FR-002: Responsive Navigation**: Fully adaptive layouts (Admin, Sidebar, Front) with mobile-first navigation.
+- **FR-005: Theme Base**: Core abstractions for theme registration and component slot management.
 
-### FR-003: Thematic Styling
-- **Priority**: Should-have
-- **Description**: Centralized CSS variables for easy "re-skinning".
-- **Acceptance Criteria**: Change primary brand color in one place to update the whole UI.
+### P1: UI/UX Experience (Important)
+- **FR-003: Thematic Styling**: Centralized design tokens (colors, spacing, typography) for rapid customization.
+- **FR-006: Dark Mode**: Native support for dark and light modes with optimized color contrast.
 
-### FR-004: Performance Optimization
-- **Priority**: Must-have
-- **Description**: Minimal CSS/JS bundle size.
-- **Acceptance Criteria**: Google Lighthouse score > 90 for performance and accessibility.
+### P2: Advanced Polish (Nice-to-have)
+- **FR-004: Performance Optimization**: Minimal CSS/JS bundle sizes and optimized asset delivery.
+- **FR-007: Adaptive UI**: Context-aware UI patterns that respond to user intent or screen density.
 
-## 6. Design Tokens & Design System
-- **Primary Color**: Professional Deep Blue / Indigo.
-- **Secondary Color**: Slate / Gray for neutral backgrounds.
-- **Typography**: Modern Sans-serif (e.g., Inter, Montserrat, or Outfit).
-- **Icons**: Heroicons or Lucide.
+## 6. Design Tokens & Accessibility
 
-## 7. Technical Architecture
-### Technologies
-- **CSS**: Tailwind CSS 4.0+.
-- **JS**: Alpine.js for micro-interactions.
-- **Templates**: Laravel Blade.
-### Integration Points
-- Acts as the default view layer for all PTVX modules.
-- Extends and styles Filament's default UI.
+### Design Tokens
+- **Primary Color**: Semantic tokens for brand identity (e.g., `--color-brand-primary`).
+- **Typography**: Responsive font scales for enhanced readability on all devices.
+- **Spacing**: Grid-based spacing system for consistent layout alignment.
+
+### Accessibility (A11Y)
+- **WCAG 2.1 AA Compliance**: Standard for all base components.
+- **Inclusive Design**: ARIA labels, keyboard navigation, and neurodiversity-friendly patterns.
+- **Dark Mode by Default**: Prioritize dark mode implementation to reduce eye strain and power consumption.
+
+## 7. Technical Architecture & Interoperability
+
+### Agnostic Theme Design
+- **Module Agnosticism**: Zero theme MUST be capable of rendering any module's UI without hardcoded dependencies.
+- **Design System Integration**: Linked to Figma tokens for single-source-of-truth design.
+- **Sustainable UI**: Vector-based assets and efficient rendering paths.
 
 ## 8. User Experience
 - "Glassmorphism" effects for a premium feel.
