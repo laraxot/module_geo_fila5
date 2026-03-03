@@ -4,7 +4,7 @@
 `XotBaseManageRelatedRecords` is designed to provide a high-level, standardized interface for managing relationships in Filament. It follows the "Super Mucca" methodology of deep abstraction and explicit translation.
 
 ### Core Tenets
-- **Zero-Config Localization**: Labels must NEVER be hardcoded. Use `TransTrait` and `static::transFunc` for automatic key generation.
+- **Zero-Config Localization**: Labels, placeholders, and helper texts must NEVER be set via `->label()`, `->placeholder()`, or `->helperText()`. The system handles them automatically if the key exists in the `lang` files.
 - **Iconic Consistency**: Every action and column should have a visual marker. Users process icons faster than text.
 - **Relative Time Context**: Dates are data, but "time ago" is information. Use relative formatting for timestamps.
 - **Agnostic Structure**: The base class must remain pure of domain logic, providing only the structural "skeletal" support for relations.
