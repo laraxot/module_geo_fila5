@@ -1,11 +1,16 @@
 # Gemini Added Memories
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
+- PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
+- PRD STRUCTURE: A standard PRD must include: Executive Summary, Target Personas (including Internal Developers), Functional Requirements, Service Interface (The Contract), System Architecture & Dependencies, Non-Functional Requirements (SLA, Observability, Security), and Release Criteria.
+- PRD FOR MODULAR SYSTEMS: Focus on Service Boundaries (Domain-Driven Design), Data Ownership (Source of Truth), and "Contract-First" requirements (API/Event schemas).
 - NEVER use 'git remote set-url'. This command is reserved for the project owner only.
 - Always follow a forward-only Git workflow. Never revert or reset old versions; study logs for context.
 - When calling Spatie Queueable Actions, always use 'app(ActionClass::class)->execute()' instead of direct method calls like 'createPersonalAccessClient()'.
 - Avoid constructor Dependency Injection in Actions and Services. Prefer using the 'app()' container resolution (e.g., 'app(Dependency::class)') for dependencies.
 - CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
 - When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
+- LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
+- YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context
 
