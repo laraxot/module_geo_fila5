@@ -1,77 +1,36 @@
-# Activity - Product Requirements Document (PRD)
+# PRD - Activity Module
 
-> **Version**: 1.0.0
-> **Last Updated**: 2026-03-03
-> **Status**: Approved
-> **Owner**: Activity Module Team
+## 1. Executive Summary
+The Activity module is responsible for tracking and logging all system actions, audit trails, and user interactions across the PTVX platform. It provides a centralized repository for observability and compliance.
 
-## 1. Purpose & Vision
-The Activity module provides a comprehensive **audit trail and event sourcing infrastructure** for the PTVX platform. It tracks every user action and domain event using `spatie/laravel-activitylog` and `spatie/laravel-event-sourcing`, exposing data through specialized Filament resources.
+## 2. Target Personas
+- **System Administrators:** Monitor system health and audit logs.
+- **Security Officers:** Review access logs for compliance and security investigations.
+- **Internal Developers:** Integrate activity logging into other modules.
 
-## 2. Problem Statement
-Enterprise HR systems require:
-- Full traceability of user and system actions for compliance and security.
-- Event sourcing capability to reconstruct system state at any point in time.
-- Centralized audit logs for administrators and compliance officers.
-- GDPR compliance through tracking of sensitive data operations.
+## 3. Functional Requirements
+- Log user actions (create, update, delete).
+- Track system events (login, logout, errors).
+- Search and filter activity logs by module, user, and date.
+- Retention policy management for logs.
 
-## 3. Target Users
-| User | Role | Needs |
-|------|------|-------|
-| **System Admin** | Auditor | Investigate anomalies, monitor system-wide changes. |
-| **Compliance Officer** | Auditor | Generate audit reports, verify data integrity. |
-| **Developer** | Builder | Replay stored events to debug or reconstruct state. |
+## 4. Service Interface (The Contract)
+- **API Endpoints:**
+  - `POST /api/activity/log`: Submit a new activity entry.
+  - `GET /api/activity/search`: Retrieve filtered logs.
+- **Events:**
+  - `ActivityLogged`: Dispatched whenever a new activity is recorded.
 
-## 4. Scope
-### In Scope
-- Automatic tracking of Eloquent model changes (Create/Update/Delete).
-- Custom event logging (emails, PDFs, exports).
-- Domain event storage with versioning and aggregate state.
-- Aggregate state snapshots for optimized replay.
-- Filament resources for Activity, Stored Events, and Snapshots.
+## 5. System Architecture & Dependencies
+- **Data Ownership:** Owns the `activities` table.
+- **Downstream Dependencies:** Depends on the `User` module for user identification.
 
-### Out of Scope
-- Public-facing activity feeds.
-- Real-time notification delivery (Notify module).
+## 6. Non-Functional Requirements
+- **Performance:** Logging must be asynchronous to avoid blocking main requests.
+- **Observability:** Must expose metrics for logging rate and failure rate.
+- **Security:** Logs must be immutable and access-controlled.
 
-## 5. Functional Requirements (Prioritized)
-
-### P0: Core Audit & Events (Must-have)
-- **FR-001: Automatic Eloquent Logging**: Traceability for all models via the `LogsActivity` trait.
-- **FR-003: Domain Event Storage**: Maintain a history of domain events in the `stored_events` table with versioning.
-- **FR-005: Activity Dashboard**: Searchable and filterable Filament resource for all activity logs.
-
-### P1: System Reliability (Important)
-- **FR-004: State Snapshots**: Capture snapshots of aggregate state to optimize event replay performance.
-- **FR-008: Shared Action Interface**: `ListLogActivitiesAction` for cross-module integration in Filament resources.
-
-### P2: Advanced Compliance (Nice-to-have)
-- **FR-009: Retention Policies**: Automated cleanup of old logs according to GDPR requirements.
-- **FR-010: Audit Export**: CSV/Excel export of activity logs for external auditors.
-
-## 6. Non-Functional Requirements & Agnostic Design
-
-### Agnostic Design Principles
-- **Cross-Cutting Service**: Activity acts as a passive observer; it MUST NOT depend on domain-specific modules.
-- **Interoperability**: Provides standardized traits and actions that any module can use to enable logging.
-- **Isolation**: Uses a dedicated `activity` database connection to ensure audit logs do not impact primary database performance.
-
-### Performance & Safety
-- **NFR-001: Performance**: Minimal overhead on model operations through asynchronous logging where possible.
-- **NFR-002: Type Safety**: 100% PHPStan Level 10 compliance.
-- **NFR-003: Data Integrity**: Event sourcing ensures that the current state can always be mathematically verified from the event stream.
-
-## 7. Technical Architecture
-### Dependencies
-- **Xot**: Base classes.
-- **Spatie Activitylog**: Core logging engine.
-- **Spatie Event Sourcing**: Event stream management.
-### Data Model
-- `activity_log`, `stored_events`, `snapshots`.
-
-## 8. Success Metrics & KPIs
-| Metric | Target | Measurement |
-|--------|--------|-------------|
-| Log Coverage | 100% | Audit of critical domain models. |
-| Replay Accuracy | 100% | Integrity check of event stream vs current state. |
-| PHPStan Compliance | Level 10 | Static analysis result. |
+## 7. Release Criteria
+- 100% PHPStan Level 10 compliance.
+- Test coverage > 80% for logging logic.
+- API documentation completed.
