@@ -6,8 +6,11 @@ namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Actions\Action;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Filament\Actions\CreateAction;
+=======
+>>>>>>> ae1fc62a (.)
 use Filament\Infolists\Components\Component as InfolistComponent;
 >>>>>>> 4a379824 (.)
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
