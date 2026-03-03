@@ -5418,6 +5418,14774 @@ This project has domain-specific skills available. You MUST activate the relevan
 - `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
 - `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
 - `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `vercel-composition-patterns` — React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `vercel-react-best-practices` — React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `vercel-react-native-skills` — React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `web-design-guidelines` — Review UI code for Web Interface Guidelines compliance. Use when asked to &quot;review my UI&quot;, &quot;check accessibility&quot;, &quot;audit design&quot;, &quot;review UX&quot;, or &quot;check my site against best practices&quot;.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `vercel-composition-patterns` — React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `vercel-react-best-practices` — React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `vercel-react-native-skills` — React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `web-design-guidelines` — Review UI code for Web Interface Guidelines compliance. Use when asked to &quot;review my UI&quot;, &quot;check accessibility&quot;, &quot;audit design&quot;, &quot;review UX&quot;, or &quot;check my site against best practices&quot;.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `vercel-composition-patterns` — React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `vercel-react-best-practices` — React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `vercel-react-native-skills` — React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `web-design-guidelines` — Review UI code for Web Interface Guidelines compliance. Use when asked to &quot;review my UI&quot;, &quot;check accessibility&quot;, &quot;audit design&quot;, &quot;review UX&quot;, or &quot;check my site against best practices&quot;.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `vercel-composition-patterns` — React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `vercel-react-best-practices` — React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `vercel-react-native-skills` — React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `web-design-guidelines` — Review UI code for Web Interface Guidelines compliance. Use when asked to &quot;review my UI&quot;, &quot;check accessibility&quot;, &quot;audit design&quot;, &quot;review UX&quot;, or &quot;check my site against best practices&quot;.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
+- `angular-architect` — Use when building Angular 17+ applications with standalone components or signals. Invoke for enterprise apps, RxJS patterns, NgRx state management, performance optimization, advanced routing.
+- `api-designer` — Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.
+- `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
+- `architecture-designer` — Use when designing new system architecture, reviewing existing designs, or making architectural decisions. Invoke for system design, architecture review, design patterns, ADRs, scalability planning.
+- `atlassian-mcp` — Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol.
+- `chaos-engineer` — Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems.
+- `cli-developer` — Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions.
+- `cloud-architect` — Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.
+- `code-documenter` — Use when adding docstrings, creating API documentation, or building documentation sites. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, tutorials, user guides.
+- `code-reviewer` — Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions.
+- `cpp-pro` — Use when building C++ applications requiring modern C++20/23 features, template metaprogramming, or high-performance systems. Invoke for concepts, ranges, coroutines, SIMD optimization, memory management.
+- `csharp-developer` — Use when building C# applications with .NET 8+, ASP.NET Core APIs, or Blazor web apps. Invoke for Entity Framework Core, minimal APIs, async patterns, CQRS with MediatR.
+
+- `database-optimizer` — Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution.
+- `debugging-wizard` — Use when investigating errors, analyzing stack traces, or finding root causes of unexpected behavior. Invoke for error investigation, troubleshooting, log analysis, root cause analysis.
+- `devops-engineer` — Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
+- `django-expert` — Use when building Django web applications or REST APIs with Django REST Framework. Invoke for Django models, ORM optimization, DRF serializers, viewsets, authentication with JWT.
+- `dotnet-core-expert` — Use when building .NET 8 applications with minimal APIs, clean architecture, or cloud-native microservices. Invoke for Entity Framework Core, CQRS with MediatR, JWT authentication, AOT compilation.
+- `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
+- `embedded-systems` — Use when developing firmware for microcontrollers, implementing RTOS applications, or optimizing power consumption. Invoke for STM32, ESP32, FreeRTOS, bare-metal, power optimization, real-time systems.
+- `fastapi-expert` — Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.
+- `feature-forge` — Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs.
+- `fine-tuning-expert` — Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation.
+- `flutter-expert` — Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization.
+- `fullstack-guardian` — Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work.
+- `game-developer` — Use when building game systems, implementing Unity/Unreal features, or optimizing game performance. Invoke for Unity, Unreal, game patterns, ECS, physics, networking, performance optimization.
+- `golang-pro` — Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration.
+- `graphql-architect` — Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.
+- `java-architect` — Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.
+- `javascript-pro` — Use when building JavaScript applications with modern ES2023+ features, async patterns, or Node.js development. Invoke for vanilla JavaScript, browser APIs, performance optimization, module systems.
+- `kotlin-specialist` — Use when building Kotlin applications requiring coroutines, multiplatform development, or Android with Compose. Invoke for Flow API, KMP projects, Ktor servers, DSL design, sealed classes.
+- `kubernetes-specialist` — Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization.
+- `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
+- `laravel-best-practices` — Laravel 12 conventions and best practices. Use when creating controllers, models, migrations, validation, services, or structuring Laravel applications. Triggers on tasks involving Laravel architecture, Eloquent, database, API development, or PHP patterns.
+- `laravel-expert` — Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+).
+- `laravel-inertia-react` — Laravel + Inertia.js + React integration patterns. Use when building Inertia page components, handling forms with useForm, managing shared data, or implementing persistent layouts. Triggers on tasks involving Inertia.js, page props, form handling, or Laravel React integration.
+- `laravel-multi-tenancy` — Multi-tenant application architecture patterns. Use when working with multi-tenant systems, tenant isolation, or when user mentions multi-tenancy, tenants, tenant scoping, tenant isolation, multi-tenant.
+- `laravel-quality` — Code quality tooling with PHPStan, Pint, and strict types. Use when working with code quality, static analysis, formatting, or when user mentions PHPStan, Pint, quality, static analysis, type safety, code style, linting.
+- `laravel-specialist` — Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.
+- `laravel-tdd` — Test-Driven Development specifically for Laravel applications using Pest PHP. Use when implementing any Laravel feature or bugfix - write the test first, watch it fail, write minimal code to pass.
+- `laravel-testing` — Comprehensive testing patterns with Pest. Use when working with tests, testing patterns, or when user mentions testing, tests, Pest, PHPUnit, mocking, factories, test patterns.
+- `legacy-modernizer` — Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades.
+- `mcp-developer` — Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions.
+- `microservices-architect` — Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing.
+- `ml-pipeline` — Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems.
+- `monitoring-expert` — Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning.
+- `nestjs-expert` — Use when building NestJS applications requiring modular architecture, dependency injection, or TypeScript backend development. Invoke for modules, controllers, services, DTOs, guards, interceptors, TypeORM/Prisma.
+- `nextjs-developer` — Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke for full-stack features, performance optimization, SEO implementation, production deployment.
+- `pandas-pro` — Use when working with pandas DataFrames, data cleaning, aggregation, merging, or time series analysis. Invoke for data manipulation, missing value handling, groupby operations, or performance optimization.
+- `php-best-practices` — PHP 8.5+ modern patterns, PSR standards, and SOLID principles. Use when reviewing PHP code, checking type safety, auditing code quality, or ensuring PHP best practices. Triggers on &quot;review PHP&quot;, &quot;check PHP code&quot;, &quot;audit PHP&quot;, or &quot;PHP best practices&quot;.
+- `php-mcp-server-generator` — Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK
+- `php-pro` — Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.
+- `playwright-expert` — Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing.
+- `postgres-pro` — Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.
+- `prompt-engineer` — Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
+- `python-pro` — Use when building Python 3.11+ applications requiring type safety, async programming, or production-grade patterns. Invoke for type hints, pytest, async/await, dataclasses, mypy configuration.
+- `rag-architect` — Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+- `rails-expert` — Use when building Rails 7+ web applications with Hotwire, real-time features, or background job processing. Invoke for Active Record optimization, Turbo Frames/Streams, Action Cable, Sidekiq.
+- `react-expert` — Use when building React 18+ applications requiring component architecture, hooks patterns, or state management. Invoke for Server Components, performance optimization, Suspense boundaries, React 19 features.
+- `react-native-expert` — Use when building cross-platform mobile applications with React Native or Expo. Invoke for navigation patterns, platform-specific code, native modules, FlatList optimization.
+- `rust-engineer` — Use when building Rust applications requiring memory safety, systems programming, or zero-cost abstractions. Invoke for ownership patterns, lifetimes, traits, async/await with tokio.
+- `salesforce-developer` — Use when developing Salesforce applications, Apex code, Lightning Web Components, SOQL queries, triggers, integrations, or CRM customizations. Invoke for governor limits, bulk processing, platform events, Salesforce DX.
+- `secure-code-guardian` — Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention.
+- `security-reviewer` — Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews.
+- `shadcn-vue` — shadcn-vue for Vue/Nuxt with Reka UI components and Tailwind. Use for accessible UI, Auto Form, data tables, charts, dark mode, MCP server setup, or encountering component imports, Reka UI errors.
+- `shopify-expert` — Use when building Shopify themes, apps, custom storefronts, or e-commerce solutions. Invoke for Liquid templating, Storefront API, app development, checkout customization, Shopify Plus features.
+- `spark-engineer` — Use when building Apache Spark applications, distributed data processing pipelines, or optimizing big data workloads. Invoke for DataFrame API, Spark SQL, RDD operations, performance tuning, streaming analytics.
+- `spec-miner` — Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features.
+- `spring-boot-engineer` — Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration.
+- `sql-pro` — Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.
+- `sre-engineer` — Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning.
+- `swift-expert` — Use when building iOS/macOS applications with Swift 5.9+, SwiftUI, or async/await concurrency. Invoke for protocol-oriented programming, SwiftUI state management, actors, server-side Swift.
+- `terraform-engineer` — Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development, state management, provider configuration, multi-environment workflows, infrastructure testing.
+- `test-master` — Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing.
+- `the-fool` — Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil&#039;s advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+- `typescript-pro` — Use when building TypeScript applications requiring advanced type systems, generics, or full-stack type safety. Invoke for type guards, utility types, tRPC integration, monorepo setup.
+- `vue-expert` — Use when building Vue 3 applications with Composition API, Nuxt 3, or Quasar. Invoke for Pinia, TypeScript, PWA, Capacitor mobile apps, Vite configuration.
+- `vue-expert-js` — Use when building Vue 3 applications with JavaScript only (no TypeScript). Invoke for JSDoc typing, vanilla JS composables, .mjs modules.
+- `websocket-engineer` — Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.
+- `wordpress-pro` — Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.
+
+## Conventions
+
+- You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
+- Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
+- Check for existing components to reuse before writing a new one.
+
+## Verification Scripts
+
+- Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
+
+## Application Structure & Architecture
+
+- Stick to existing directory structure; don't create new base folders without approval.
+- Do not change the application's dependencies without approval.
+
+## Frontend Bundling
+
+- If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+
+## Documentation Files
+
+- You must only create documentation files if explicitly requested by the user.
+
+## Replies
+
+- Be concise in your explanations - focus on what's important rather than explaining obvious details.
+
+=== boost rules ===
+
+# Laravel Boost
+
+- Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
+
+## Artisan
+
+- Use the `list-artisan-commands` tool when you need to call an Artisan command to double-check the available parameters.
+
+## URLs
+
+- Whenever you share a project URL with the user, you should use the `get-absolute-url` tool to ensure you're using the correct scheme, domain/IP, and port.
+
+## Tinker / Debugging
+
+- You should use the `tinker` tool when you need to execute PHP to debug code or query Eloquent models directly.
+- Use the `database-query` tool when you only need to read from the database.
+- Use the `database-schema` tool to inspect table structure before writing migrations or models.
+
+## Reading Browser Logs With the `browser-logs` Tool
+
+- You can read browser logs, errors, and exceptions using the `browser-logs` tool from Boost.
+- Only recent browser logs will be useful - ignore old logs.
+
+## Searching Documentation (Critically Important)
+
+- Boost comes with a powerful `search-docs` tool you should use before trying other approaches when working with Laravel or Laravel ecosystem packages. This tool automatically passes a list of installed packages and their versions to the remote Boost API, so it returns only version-specific documentation for the user's circumstance. You should pass an array of packages to filter on if you know you need docs for particular packages.
+- Search the documentation before making code changes to ensure we are taking the correct approach.
+- Use multiple, broad, simple, topic-based queries at once. For example: `['rate limiting', 'routing rate limiting', 'routing']`. The most relevant results will be returned first.
+- Do not add package names to queries; package information is already shared. For example, use `test resource table`, not `filament 4 test resource table`.
+
+### Available Search Syntax
+
+1. Simple Word Searches with auto-stemming - query=authentication - finds 'authenticate' and 'auth'.
+2. Multiple Words (AND Logic) - query=rate limit - finds knowledge containing both "rate" AND "limit".
+3. Quoted Phrases (Exact Position) - query="infinite scroll" - words must be adjacent and in that order.
+4. Mixed Queries - query=middleware "rate limit" - "middleware" AND exact phrase "rate limit".
+5. Multiple Queries - queries=["authentication", "middleware"] - ANY of these terms.
+
+=== php rules ===
+
+# PHP
+
+- Always use curly braces for control structures, even for single-line bodies.
+
+## Constructors
+
+- Use PHP 8 constructor property promotion in `__construct()`.
+    - `public function __construct(public GitHub $github) { }`
+- Do not allow empty `__construct()` methods with zero parameters unless the constructor is private.
+
+## Type Declarations
+
+- Always use explicit return type declarations for methods and functions.
+- Use appropriate PHP type hints for method parameters.
+
+<!-- Explicit Return Types and Method Params -->
+```php
+protected function isAccessible(User $user, ?string $path = null): bool
+{
+    ...
+}
+```
+
+## Enums
+
+- Typically, keys in an Enum should be TitleCase. For example: `FavoritePerson`, `BestLake`, `Monthly`.
+
+## Comments
+
+- Prefer PHPDoc blocks over inline comments. Never use comments within the code itself unless the logic is exceptionally complex.
+
+## PHPDoc Blocks
+
+- Add useful array shape type definitions when appropriate.
+
+=== tests rules ===
+
+# Test Enforcement
+
+- Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
+- Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
+
+=== folio/core rules ===
+
+# Laravel Folio
+
+- Laravel Folio is a powerful page-based router that simplifies routing in Laravel applications.
+- Routes are generated automatically by creating Blade templates in `resources/views/pages`.
+- IMPORTANT: Activate 'folio-routing' when working with Folio, pages, routes, route parameters, model binding, middleware, or `resources/views/pages`.
+
+=== laravel/core rules ===
+
+# Do Things the Laravel Way
+
+- Use `php artisan make:` commands to create new files (i.e. migrations, controllers, models, etc.). You can list available Artisan commands using the `list-artisan-commands` tool.
+- If you're creating a generic PHP class, use `php artisan make:class`.
+- Pass `--no-interaction` to all Artisan commands to ensure they work without user input. You should also pass the correct `--options` to ensure correct behavior.
+
+## Database
+
+- Always use proper Eloquent relationship methods with return type hints. Prefer relationship methods over raw queries or manual joins.
+- Use Eloquent models and relationships before suggesting raw database queries.
+- Avoid `DB::`; prefer `Model::query()`. Generate code that leverages Laravel's ORM capabilities rather than bypassing them.
+- Generate code that prevents N+1 query problems by using eager loading.
+- Use Laravel's query builder for very complex database operations.
+
+### Model Creation
+
+- When creating new models, create useful factories and seeders for them too. Ask the user if they need any other things, using `list-artisan-commands` to check the available options to `php artisan make:model`.
+
+### APIs & Eloquent Resources
+
+- For APIs, default to using Eloquent API Resources and API versioning unless existing API routes do not, then you should follow existing application convention.
+
+## Controllers & Validation
+
+- Always create Form Request classes for validation rather than inline validation in controllers. Include both validation rules and custom error messages.
+- Check sibling Form Requests to see if the application uses array or string based validation rules.
+
+## Authentication & Authorization
+
+- Use Laravel's built-in authentication and authorization features (gates, policies, Sanctum, etc.).
+
+## URL Generation
+
+- When generating links to other pages, prefer named routes and the `route()` function.
+
+## Queues
+
+- Use queued jobs for time-consuming operations with the `ShouldQueue` interface.
+
+## Configuration
+
+- Use environment variables only in configuration files - never use the `env()` function directly outside of config files. Always use `config('app.name')`, not `env('APP_NAME')`.
+
+## Testing
+
+- When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
+- Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
+- When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+
+## Vite Error
+
+- If you receive an "Illuminate\Foundation\ViteException: Unable to locate file in Vite manifest" error, you can run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
+
+=== laravel/v12 rules ===
+
+# Laravel 12
+
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Laravel documentation and updated code examples.
+- This project upgraded from Laravel 10 without migrating to the new streamlined Laravel file structure.
+- This is perfectly fine and recommended by Laravel. Follow the existing structure from Laravel 10. We do not need to migrate to the new Laravel structure unless the user explicitly requests it.
+
+## Laravel 10 Structure
+
+- Middleware typically lives in `app/Http/Middleware/` and service providers in `app/Providers/`.
+- There is no `bootstrap/app.php` application configuration in a Laravel 10 structure:
+    - Middleware registration happens in `app/Http/Kernel.php`
+    - Exception handling is in `app/Exceptions/Handler.php`
+    - Console commands and schedule register in `app/Console/Kernel.php`
+    - Rate limits likely exist in `RouteServiceProvider` or `app/Http/Kernel.php`
+
+## Database
+
+- When modifying a column, the migration must include all of the attributes that were previously defined on the column. Otherwise, they will be dropped and lost.
+- Laravel 12 allows limiting eagerly loaded records natively, without external packages: `$query->latest()->limit(10);`.
+
+### Models
+
+- Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== pennant/core rules ===
+
+# Laravel Pennant
+
+- This application uses Laravel Pennant for feature flag management, providing a flexible system for controlling feature availability across different organizations and user types.
+- IMPORTANT: Always use `search-docs` tool for version-specific Pennant documentation and updated code examples.
+- IMPORTANT: Activate `pennant-development` every time you're working with a Pennant or feature-flag-related task.
+
+=== fluxui-free/core rules ===
+
+# Flux UI Free
+
+- Flux UI is the official Livewire component library. This project uses the free edition, which includes all free components and variants but not Pro components.
+- Use `<flux:*>` components when available; they are the recommended way to build Livewire interfaces.
+- IMPORTANT: Activate `fluxui-development` when working with Flux UI components.
+
+=== volt/core rules ===
+
+# Livewire Volt
+
+- Single-file Livewire components: PHP logic and Blade templates in one file.
+- Always check existing Volt components to determine functional vs class-based style.
+- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
+- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
+
+=== pint/core rules ===
+
+# Laravel Pint Code Formatter
+
+- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
+
+=== pest/core rules ===
+
+## Pest
+
+- This project uses Pest for testing. Create tests: `php artisan make:test --pest {name}`.
+- Run tests: `php artisan test --compact` or filter: `php artisan test --compact --filter=testName`.
+- Do NOT delete tests without approval.
+- CRITICAL: ALWAYS use `search-docs` tool for version-specific Pest documentation and updated code examples.
+- IMPORTANT: Activate `pest-testing` every time you're working with a Pest or testing-related task.
+
+=== tailwindcss/core rules ===
+
+# Tailwind CSS
+
+- Always use existing Tailwind conventions; check project patterns before adding new ones.
+- IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
+- IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
+</laravel-boost-guidelines>
+
+=== .ai/laraxot-core rules ===
+
+# LARAXOT PTVX Core Guidelines
+
+**Stack**: Laravel 11.45.2 | PHP 8.4.10 | Filament 3.x | Pest 3.8.3 | PHPStan Level 10 (maximum strictness) | MySQL
+
+## Module Architecture
+
+```
+Modules/{ModuleName}/
+├── app/{Actions,Models,Filament,Http}/
+├── docs/README.md
+├── tests/{Feature,Unit}/
+└── lang/{de,en,it}/
+```
+
+**Rules**:
+- Every module extends `XotBaseServiceProvider`
+- Business logic in Action classes: `Get*Action`, `Create*Action`
+- Models extend `XotBaseModel` with strict typing
+- Required: `docs/README.md` per module
+
+## Models
+
+```php
+<?php
+declare(strict_types=1);
+
+class Entity extends XotBaseModel 
+{
+    protected $fillable = ['name'];
+    protected $casts = ['is_active' => 'boolean'];
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+**Rules**: Strict types, proper return types, PHPDoc blocks, use casts() method
+
+## Filament Resources
+
+```php
+class EntityResource extends XotBaseResource
+{
+    protected static ?string $model = Entity::class;
+    
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')->required(),
+        ];
+    }
+}
+```
+
+**Rules**: Extend `XotBaseResource`, use static schemas, follow naming conventions
+
+## Testing (Pest)
+
+```php
+test('entity can be created', function () {
+    $entity = Entity::factory()->create();
+    expect($entity)->toBeInstanceOf(Entity::class);
+});
+
+// Filament
+livewire(ListEntities::class)
+    ->assertCanSeeTableRecords($entities);
+
+// Volt
+Volt::test('component')
+    ->set('name', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+```
+
+**Required**: Test all actions, resources, components. Use factories, not manual data.
+
+## Migrations
+
+```php
+<?php
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+return new class extends XotBaseMigration {
+    public function up(): void
+    {
+        $this->tableCreate('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+};
+```
+
+**Rules**: Extend `XotBaseMigration`, use `tableCreate()`, proper indexes
+
+## Actions Pattern
+
+```php
+<?php
+declare(strict_types=1);
+
+class GetEntityByIdAction
+{
+    use QueueableAction;
+    
+    public function execute(int $id): ?Entity
+    {
+        return Entity::find($id);
+    }
+}
+```
+
+**Rules**: Single responsibility, proper typing, use QueueableAction when needed
+
+## Service Providers
+
+```php
+class ModuleServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'ModuleName';
+    protected string $module_dir = __DIR__;
+    protected string $module_ns = __NAMESPACE__;
+    
+    public function bootCallback(): void
+    {
+        $this->loadModuleViewsFrom();
+        $this->registerModuleCommands();
+    }
+}
+```
+
+**Rules**: Use inheritance, auto-discovery patterns, minimal custom logic
+
+## Quality Standards
+
+**PHPStan**: Level 10 (maximum strictness) required
+```bash
+vendor/bin/phpstan analyse  # Level 10 configured in phpstan.neon
+
+```
+
+**Pint**: PSR-12 formatting
+```bash
+vendor/bin/pint
+```
+
+**Pest**: 80%+ test coverage
+```bash
+php artisan test --coverage
+```
+
+## Translations
+
+- **Structure**: `lang/{de,en,it}/[feature].php`
+- **Keys**: Descriptive, no abbreviations: `user_profile_updated`
+- **Pluralization**: Use Laravel's `trans_choice()`
+- **Cross-module**: Link with `lang-link.md` files
+
+## Laravel Boost Integration
+
+**Essential Tools**:
+- `search-docs` - Always use first for documentation
+- `application-info` - Get current app state
+- `database-query` - Read-only SQL queries
+- `tinker` - Execute PHP in app context
+
+**Workflow**: search-docs → understand → implement → test
+
+## Security
+
+- Never commit secrets/keys
+- Use `config()` not `env()` outside config files  
+- Validate all inputs
+- Use Laravel's built-in auth/authorization
+- Implement proper CSRF protection
+
+## Performance
+
+- Use Eloquent relationships, avoid N+1 queries
+- Eager loading: `->with(['relation'])`
+- Queue time-consuming tasks: `ShouldQueue`
+- Cache frequent queries
+- Optimize database indexes
+
+## Common Commands
+
+```bash
+
+# Module
+
+php artisan module:make ModuleName
+
+# Tests  
+
+php artisan test --filter="test_name"
+php artisan test Modules/ModuleName/tests/
+
+# Quality
+
+vendor/bin/pint
+vendor/bin/phpstan analyse
+php artisan test --coverage
+
+# Laravel Boost
+
+php artisan boost:install
+```
+
+## Documentation Rules
+
+**Required per module**:
+- `docs/README.md` - Module overview
+- Code-level PHPDoc for all public methods
+- API documentation for endpoints
+- Translation documentation for complex keys
+
+**Style**: Clear, concise, examples-focused. Use emoji for visual hierarchy.
+
+---
+**Quick Rule**: If it's repeated in 2+ places, create an Action. If it's complex, document it. If it's not tested, it's broken.
+
+=== .ai/eloquent_property_exists rules ===
+
+# ERRORE CRITICO: MAI USARE property_exists() CON MODELLI ELOQUENT
+
+## Problema Identificato
+
+L'uso di `property_exists()` con modelli Laravel Eloquent è un errore critico che può causare comportamenti imprevedibili e bug difficili da tracciare.
+
+## Perché è un Errore
+
+I modelli Eloquent utilizzano proprietà magiche (`__get()` e `__set()`) per accedere agli attributi del database:
+
+- Gli attributi del database **NON** sono proprietà PHP reali del modello
+- `property_exists($model, 'attributo')` restituirà **SEMPRE `false`** per attributi del database
+- Questo porta a logica applicativa errata e comportamenti imprevedibili
+- Causa problemi di analisi statica con PHPStan
+
+## Alternative Corrette e Sicure
+
+### 1. Per verificare se un attributo è impostato
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'attributo')) { ... }
+
+// ✅ CORRETTO
+if (isset($model->attributo)) { ... }
+```
+
+### 2. Per verificare se una colonna esiste nel database
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'colonna')) { ... }
+
+// ✅ CORRETTO
+if (array_key_exists('colonna', $model->getAttributes())) { ... }
+```
+
+### 3. Per verificare se esiste un accessor
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'nome_completo')) { ... }
+
+// ✅ CORRETTO
+if ($model->hasGetMutator('nome_completo')) { ... }
+```
+
+### 4. Per verificare se esiste l'ID o chiave primaria
+
+```php
+// ❌ ERRATO
+if (property_exists($model, 'id') && $model->id) { ... }
+
+// ✅ CORRETTO
+if ($model instanceof Model && $model->getKey() !== null) { ... }
+```
+
+### 5. Per confrontare istanze di modelli
+
+```php
+// ❌ ERRATO
+if (property_exists($modelA, 'id') && property_exists($modelB, 'id') && $modelA->id === $modelB->id) { ... }
+
+// ✅ CORRETTO
+if ($modelA instanceof Model && $modelB instanceof Model && $modelA->is($modelB)) { ... }
+```
+
+## Altri Metodi Utili di Laravel
+
+- `$model->getAttribute('attributo')` - Ottiene un attributo in modo sicuro (null se non esiste)
+- `$model->hasAttribute('attributo')` - Verifica se un attributo esiste
+- `$model->getAttributes()` - Ottiene tutti gli attributi come array
+- `$model->getKey()` - Ottiene il valore della chiave primaria
+- `$model->is($otherModel)` - Confronta due istanze di modello
+- `$model->exists` - Verifica se il modello esiste nel database
+
+## Casi Particolari
+
+- Per gestire relazioni: usa `$model->relationLoaded('relation')` o `$model->getRelation('relation')`
+- Per verificare se un model è di un certo tipo: usa `$model instanceof ModelClass`
+- Per verificare enum e altri tipi speciali: verifica il tipo esplicito con `$model->getAttribute('type') instanceof \BackedEnum`
+
+## Impatto dell'Errore
+
+L'uso di `property_exists()` su modelli Eloquent può portare a:
+- Condizioni che non si attivano mai (false negativo)
+- Accessi a proprietà inesistenti (null pointer)
+- Bug difficili da debuggare
+- Comportamento inconsistente tra ambienti
+
+Tutti i casi di `property_exists()` su modelli Eloquent devono essere sostituiti con le alternative sicure sopra elencate.
+
+=== .ai/model_properties rules ===
+
+# model properties handling guide
+
+## critical restriction: never use property_exists() for magic properties
+
+### the problem
+
+laravel eloquent models use magic methods (`__get()` and `__set()`) to handle dynamic properties like relationships, accessors, and attributes. the `property_exists()` function will return `false` for these magic properties because they don't exist as real class properties.
+
+### incorrect usage
+
+```php
+// ❌ absolutely wrong - will return false for magic properties
+if (property_exists($user, 'posts')) {
+    // this will never execute for relationship properties
+    return $user->posts;
+}
+
+// ❌ wrong for accessors
+if (property_exists($user, 'full_name')) {
+    // full_name might be an accessor, but property_exists returns false
+    return $user->full_name;
+}
+```
+
+### correct usage
+
+```php
+// ✅ always use isset() for magic properties
+if (isset($user->posts)) {
+    // correctly checks if posts relationship is loaded or accessible
+    return $user->posts;
+}
+
+// ✅ for accessors and attributes
+if (isset($user->full_name)) {
+    // correctly handles both real and magic properties
+    return $user->full_name;
+}
+
+// ✅ alternative: check if relationship is loaded
+if ($user->relationLoaded('posts')) {
+    // specifically for relationships
+    return $user->posts;
+}
+```
+
+## when to use property_exists (rare cases)
+
+### only for real class properties
+
+```php
+// ✅ correct usage - checking for actual class properties
+if (property_exists($user, 'fillable')) {
+    // $fillable is a real class property
+    return $user->fillable;
+}
+
+// ✅ checking for base model properties
+if (property_exists($user, 'connection')) {
+    // $connection is a real property in eloquent model
+    return $user->connection;
+}
+```
+
+### never for model data attributes
+
+```php
+// ❌ never do this - attributes are magic properties
+if (property_exists($user, 'email')) {
+    // $email is a magic attribute, property_exists returns false
+    return $user->email;
+}
+
+// ✅ always use isset() for attributes
+if (isset($user->email)) {
+    // correctly handles both set and unset attributes
+    return $user->email;
+}
+```
+
+## practical examples
+
+### checking relationship existence
+
+```php
+// ❌ wrong - property_exists doesn't work for relationships
+public function hasPosts(User $user): bool
+{
+    return property_exists($user, 'posts'); // always false
+}
+
+// ✅ correct - use isset() or relationship methods
+public function hasPosts(User $user): bool
+{
+    return isset($user->posts) && $user->posts->isNotEmpty();
+}
+
+// ✅ better - use relationship method
+public function hasPosts(User $user): bool
+{
+    return $user->posts()->exists();
+}
+```
+
+### checking accessor availability
+
+```php
+// ❌ wrong - property_exists doesn't work for accessors
+public function getFullName(User $user): ?string
+{
+    if (property_exists($user, 'full_name')) {
+        return $user->full_name; // never executes
+    }
+    return null;
+}
+
+// ✅ correct - use isset() for accessors
+public function getFullName(User $user): ?string
+{
+    if (isset($user->full_name)) {
+        return $user->full_name;
+    }
+    return null;
+}
+
+// ✅ alternative - check if accessor method exists
+public function getFullName(User $user): ?string
+{
+    if (method_exists($user, 'getFullNameAttribute')) {
+        return $user->full_name;
+    }
+    return null;
+}
+```
+
+## phpstan considerations
+
+### false positives
+
+phpstan might report errors when using `isset()` on magic properties, but this is the correct approach. you can suppress these warnings when necessary:
+
+```php
+// phpstan might complain about undefined property
+if (isset($user->posts)) { // @phpstan-ignore-line
+    return $user->posts;
+}
+
+// better: add property to phpdoc
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
+ */
+class User extends Model
+{
+    // ...
+}
+```
+
+## testing considerations
+
+### unit testing property checks
+
+```php
+// test that isset() works correctly
+public function test_user_has_posts_relationship(): void
+{
+    $user = User::factory()->create();
+    
+    // initially not set
+    $this->assertFalse(isset($user->posts));
+    
+    // load relationship
+    $user->load('posts');
+    
+    // now should be set
+    $this->assertTrue(isset($user->posts));
+}
+
+// test that property_exists works only for real properties
+public function test_property_exists_only_real_properties(): void
+{
+    $user = new User();
+    
+    // real properties
+    $this->assertTrue(property_exists($user, 'fillable'));
+    $this->assertTrue(property_exists($user, 'connection'));
+    
+    // magic properties (always false)
+    $this->assertFalse(property_exists($user, 'email'));
+    $this->assertFalse(property_exists($user, 'posts'));
+}
+```
+
+## summary
+
+### always use isset() for:
+
+- model attributes (database columns)
+- relationship properties
+- accessors (computed properties)
+- any magic property provided by eloquent
+
+### only use property_exists() for:
+
+- real class properties defined in the class
+- base eloquent model properties
+- infrastructure properties (connection, table, etc.)
+
+### never use property_exists() for:
+
+- database attributes
+- relationships
+- accessors
+- any property that might be handled by __get()/__set()
+
+this rule is critical for maintaining correct behavior in laravel applications and avoiding subtle bugs caused by incorrect property existence checks.
+
+=== .ai/patterns rules ===
+
+# PATTERNS.md - Pattern Architetturali PTVX
+
+> **CENTRALIZZAZIONE PATTERN**: Tutti i pattern architetturali in un unico file per massima riusabilità e coerenza.
+
+## 🏗️ **PATTERN ARCHITETTURALI**
+
+### Repository Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Repositories;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\NomeModulo\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findById(int $id): ?User;
+    public function findByEmail(string $email): ?User;
+    public function create(array $data): User;
+    public function update(User $user, array $data): User;
+    public function delete(User $user): bool;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function findByRole(string $role): Collection;
+}
+
+class UserRepository implements UserRepositoryInterface
+{
+    public function __construct(
+        private readonly User $model
+    ) {}
+    
+    public function findById(int $id): ?User
+    {
+        return $this->model->find($id);
+    }
+    
+    public function findByEmail(string $email): ?User
+    {
+        return $this->model->where('email', $email)->first();
+    }
+    
+    public function create(array $data): User
+    {
+        return $this->model->create($data);
+    }
+    
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user->fresh();
+    }
+    
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
+    
+    public function paginate(int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->model->with(['profile', 'roles'])->paginate($perPage);
+    }
+    
+    public function findByRole(string $role): Collection
+    {
+        return $this->model->whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role);
+        })->get();
+    }
+}
+```
+
+### Service Layer Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Events\Dispatcher;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Exceptions\UserNotFoundException;
+
+class UserService
+{
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly RoleService $roleService,
+        private readonly Dispatcher $dispatcher
+    ) {}
+    
+    public function createUserWithRole(UserData $userData, string $roleName): User
+    {
+        // Verifica ruolo esistente
+        $role = $this->roleService->findByName($roleName);
+        if (!$role) {
+            throw new RoleNotFoundException("Role {$roleName} not found");
+        }
+        
+        // Creazione utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Assegnazione ruolo
+        $user->roles()->attach($role->id);
+        
+        // Dispatch evento
+        $this->dispatcher->dispatch(new UserCreatedEvent($user));
+        
+        return $user;
+    }
+    
+    public function updateUserProfile(int $userId, ProfileData $profileData): User
+    {
+        $user = $this->userRepository->findById($userId);
+        if (!$user) {
+            throw new UserNotFoundException("User {$userId} not found");
+        }
+        
+        // Aggiornamento profilo
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData->toArray()
+        );
+        
+        return $user->load('profile');
+    }
+}
+```
+
+### Action Pattern (Spatie QueueableActions)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Actions;
+
+use Spatie\QueueableAction\QueueableAction;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Modules\NomeModulo\Data\UserData;
+use Modules\NomeModulo\Repositories\UserRepositoryInterface;
+use Modules\NomeModulo\Notifications\UserCreatedNotification;
+
+class CreateUserAction implements ShouldQueue
+{
+    use QueueableAction;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+    
+    public function __construct(
+        private readonly UserRepositoryInterface $userRepository
+    ) {}
+    
+    public function execute(UserData $userData, bool $sendNotification = true): User
+    {
+        // Elabora i dati dell'utente
+        $user = $this->userRepository->create($userData->toArray());
+        
+        // Notifica il completamento se richiesto
+        if ($sendNotification) {
+            $user->notify(new UserCreatedNotification($user));
+        }
+        
+        return $user;
+    }
+}
+```
+
+### Data Transfer Object Pattern (Spatie Laravel Data)
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Data;
+
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Attributes\Validation\Required;
+use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\StringType;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+
+class UserData extends Data
+{
+    public function __construct(
+        #[Required, StringType]
+        public readonly string $name,
+        
+        #[Required, Email]
+        public readonly string $email,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $created_at = null,
+        
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public readonly ?\DateTimeInterface $updated_at = null,
+        
+        public readonly ?int $id = null,
+    ) {
+    }
+    
+    /**
+     * Crea un nuovo UserData da un modello User.
+     */
+    public static function fromModel(\Modules\NomeModulo\Models\User $user): self
+    {
+        return new self(
+            name: $user->name,
+            email: $user->email,
+            created_at: $user->created_at,
+            updated_at: $user->updated_at,
+            id: $user->id,
+        );
+    }
+    
+    /**
+     * Crea un'istanza del modello User da questo Data Object.
+     */
+    public function toModel(): \Modules\NomeModulo\Models\User
+    {
+        $user = $this->id
+            ? \Modules\NomeModulo\Models\User::findOrFail($this->id)
+            : new \Modules\NomeModulo\Models\User();
+            
+        $user->name = $this->name;
+        $user->email = $this->email;
+        
+        return $user;
+    }
+}
+```
+
+## 🎨 **FILAMENT PATTERN**
+
+### Custom Action Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Actions;
+
+use Filament\Actions\Action;
+use Filament\Support\Colors\Color;
+use Filament\Forms;
+use Modules\NomeModulo\Actions\ApproveUserAction;
+
+class ApproveUserAction extends Action
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        $this->label(__('nomemodulo::actions.approve.label'))
+            ->icon('heroicon-o-check-circle')
+            ->color(Color::GREEN)
+            ->requiresConfirmation()
+            ->modalHeading(__('nomemodulo::actions.approve.modal.heading'))
+            ->modalDescription(__('nomemodulo::actions.approve.modal.description'))
+            ->modalSubmitActionLabel(__('nomemodulo::actions.approve.modal.confirm'))
+            ->form([
+                Forms\Components\Textarea::make('note')
+                    ->label(__('nomemodulo::actions.approve.fields.note.label'))
+                    ->placeholder(__('nomemodulo::actions.approve.fields.note.placeholder'))
+                    ->rows(3),
+            ])
+            ->action(function (array $data, $record): void {
+                app(ApproveUserAction::class)->execute($record, $data['note'] ?? null);
+            })
+            ->successNotificationTitle(__('nomemodulo::actions.approve.notifications.success'));
+    }
+}
+```
+
+### Custom Widget Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Widgets;
+
+use Modules\UI\Filament\Widgets\BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+use Modules\NomeModulo\Models\User;
+
+class UserStatsWidget extends BaseWidget
+{
+    protected static ?bool $isLazy = true;
+    protected static ?string $pollingInterval = null;
+    
+    protected function getStats(): array
+    {
+        return [
+            Stat::make(
+                __('nomemodulo::widgets.stats.total_users.label'),
+                User::count()
+            )
+                ->description(__('nomemodulo::widgets.stats.total_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-up')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.active_users.label'),
+                User::where('is_active', true)->count()
+            )
+                ->description(__('nomemodulo::widgets.stats.active_users.description'))
+                ->descriptionIcon('heroicon-m-arrow-trending-down')
+                ->color('danger'),
+
+            Stat::make(
+                __('nomemodulo::widgets.stats.new_users.label'),
+                fn (): string => number_format(
+                    (User::where('created_at', '>=', now()->subWeek())->count() / User::count()) * 100
+                ) . '%'
+            )
+                ->description(__('nomemodulo::widgets.stats.new_users.description'))
+                ->color('warning'),
+        ];
+    }
+}
+```
+
+### Custom Page Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Filament\Pages;
+
+use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
+use Modules\NomeModulo\Models\User;
+
+class UserDashboard extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string $view = 'nomemodulo::filament.pages.user-dashboard';
+    protected static ?string $title = null;
+    
+    protected function getTitle(): string
+    {
+        return __('nomemodulo::pages.user_dashboard.title');
+    }
+    
+    protected function getViewData(): array
+    {
+        return [
+            'totalUsers' => User::count(),
+            'activeUsers' => User::where('is_active', true)->count(),
+            'recentUsers' => User::latest()->limit(5)->get(),
+        ];
+    }
+    
+    public function render(): View
+    {
+        return view(
+            static::$view,
+            $this->getViewData()
+        );
+    }
+}
+```
+
+## 🔄 **LARAVEL PATTERN**
+
+### Event Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Events;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+
+class UserCreatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user
+    ) {}
+}
+
+class UserUpdatedEvent
+{
+    use Dispatchable, SerializesModels;
+    
+    public function __construct(
+        public readonly User $user,
+        public readonly array $changes
+    ) {}
+}
+```
+
+### Listener Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Modules\NomeModulo\Events\UserCreatedEvent;
+use Modules\NomeModulo\Notifications\WelcomeNotification;
+
+class SendWelcomeNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(UserCreatedEvent $event): void
+    {
+        $event->user->notify(new WelcomeNotification($event->user));
+    }
+}
+```
+
+### Notification Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\NomeModulo\Models\User;
+
+class WelcomeNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+    
+    public function __construct(
+        private readonly User $user
+    ) {}
+    
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+    
+    public function toMail($notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(__('nomemodulo::notifications.welcome.subject'))
+            ->greeting(__('nomemodulo::notifications.welcome.greeting', ['name' => $this->user->name]))
+            ->line(__('nomemodulo::notifications.welcome.message'))
+            ->action(__('nomemodulo::notifications.welcome.action'), route('dashboard'));
+    }
+    
+    public function toArray($notifiable): array
+    {
+        return [
+            'user_id' => $this->user->id,
+            'message' => __('nomemodulo::notifications.welcome.database_message'),
+        ];
+    }
+}
+```
+
+### Policy Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Models\Post;
+
+class PostPolicy
+{
+    use HandlesAuthorization;
+    
+    public function viewAny(User $user): bool
+    {
+        return $user->hasPermissionTo('view posts');
+    }
+    
+    public function view(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('view posts') || $user->id === $post->user_id;
+    }
+    
+    public function create(User $user): bool
+    {
+        return $user->hasPermissionTo('create posts');
+    }
+    
+    public function update(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('edit posts') || $user->id === $post->user_id;
+    }
+    
+    public function delete(User $user, Post $post): bool
+    {
+        return $user->hasPermissionTo('delete posts') || $user->id === $post->user_id;
+    }
+}
+```
+
+## 🔧 **UTILITY PATTERN**
+
+### Cache Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Services;
+
+use Illuminate\Support\Facades\Cache;
+use Modules\NomeModulo\Models\User;
+
+class UserCacheService
+{
+    private const CACHE_TTL = 3600; // 1 ora
+    private const CACHE_PREFIX = 'users';
+    
+    public function getUserById(int $id): ?User
+    {
+        $cacheKey = $this->getCacheKey('user', $id);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($id) {
+            return User::find($id);
+        });
+    }
+    
+    public function getUsersByRole(string $role): Collection
+    {
+        $cacheKey = $this->getCacheKey('role', $role);
+        
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($role) {
+            return User::whereHas('roles', function ($query) use ($role) {
+                $query->where('name', $role);
+            })->get();
+        });
+    }
+    
+    public function clearUserCache(int $userId): void
+    {
+        Cache::forget($this->getCacheKey('user', $userId));
+        Cache::forget($this->getCacheKey('role', 'all'));
+    }
+    
+    private function getCacheKey(string $type, mixed $identifier): string
+    {
+        return self::CACHE_PREFIX . ":{$type}:{$identifier}";
+    }
+}
+```
+
+### Queue Pattern
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Modules\NomeModulo\Models\User;
+use Modules\NomeModulo\Services\EmailService;
+
+class SendBulkEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public function __construct(
+        private readonly array $userIds,
+        private readonly string $subject,
+        private readonly string $message
+    ) {}
+    
+    public function handle(EmailService $emailService): void
+    {
+        $users = User::whereIn('id', $this->userIds)->get();
+        
+        foreach ($users as $user) {
+            $emailService->sendEmail($user, $this->subject, $this->message);
+        }
+    }
+    
+    public function tags(): array
+    {
+        return ['bulk-email', 'users'];
+    }
+}
+```
+
+## 📋 **CHECKLIST PATTERN**
+
+### Repository Pattern
+
+- [ ] Interface definita con metodi chiari
+- [ ] Implementazione con tipizzazione rigorosa
+- [ ] Metodi per operazioni CRUD base
+- [ ] Metodi per query complesse
+- [ ] Eager loading per relazioni
+
+### Service Pattern
+
+- [ ] Logica di business centralizzata
+- [ ] Dependency injection per repository
+- [ ] Gestione eventi e notifiche
+- [ ] Validazione e gestione errori
+- [ ] Transazioni database quando necessario
+
+### Action Pattern
+
+- [ ] Estende Spatie QueueableAction
+- [ ] Metodo execute con tipizzazione
+- [ ] Gestione errori appropriata
+- [ ] Notifiche quando necessario
+- [ ] Possibilità di accodamento
+
+### Data Pattern
+
+- [ ] Estende Spatie Laravel Data
+- [ ] Attributi di validazione appropriati
+- [ ] Metodi fromModel e toModel
+- [ ] Tipizzazione rigorosa
+- [ ] Immutabilità garantita
+
+### Filament Pattern
+
+- [ ] Estende classi base Xot
+- [ ] Metodi get*Schema implementati
+- [ ] Traduzioni tramite file (no ->label())
+- [ ] Azioni personalizzate in setUp()
+- [ ] Testing appropriato
+
+---
+
+**Ultimo aggiornamento**: Giugno 2025  
+**Versione**: 2.0 (Refactor DRY + KISS)  
+**File**: PATTERNS.md - Pattern architetturali centralizzati
+
+=== .ai/phpstan-cheat rules ===
+
+# PHPStan Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Basic analysis (Level 10 - configured in phpstan.neon)
+
+vendor/bin/phpstan analyse
+
+# Specific paths
+
+vendor/bin/phpstan analyse app/ Modules/
+
+# Generate baseline (ignore current errors)
+
+vendor/bin/phpstan analyse --generate-baseline
+
+# Clear cache
+
+vendor/bin/phpstan clear-result-cache
+
+# Memory optimization
+
+vendor/bin/phpstan analyse --memory-limit=2G
+```
+
+## Common Error Fixes
+
+```php
+// ❌ Mixed return type
+public function getData()
+{
+    return $this->data ?? [];
+}
+
+// ✅ Explicit return type
+public function getData(): array
+{
+    return $this->data ?? [];
+}
+
+// ❌ Missing null check
+public function process(User $user)
+{
+    return $user->profile->name;
+}
+
+// ✅ Safe navigation
+public function process(User $user): ?string
+{
+    return $user->profile?->name;
+}
+
+// ❌ Array shape unknown
+public function config(): array
+{
+    return config('app');
+}
+
+// ✅ Array shape documented
+/**
+ * @return array{name: string, version: string}
+ */
+public function config(): array
+{
+    return config('app');
+}
+```
+
+## Type Declarations
+
+```php
+// Property types
+public string $name;
+public ?User $user = null;
+public Collection $items;
+
+// Method parameters
+public function process(int $id, ?string $name = null): bool
+
+// Array shapes
+/**
+ * @param array{id: int, name: string} $data
+ */
+public function handle(array $data): void
+
+// Generics
+/**
+ * @return Collection<int, User>
+ */
+public function getUsers(): Collection
+```
+
+## Laravel-Specific Patterns
+
+```php
+// Model relationships
+public function user(): BelongsTo
+{
+    return $this->belongsTo(User::class);
+}
+
+// Factory declarations
+/**
+ * @extends Factory<User>
+ */
+class UserFactory extends Factory
+
+// Service container
+public function __construct(
+    protected UserService $userService
+) {}
+
+// Request validation
+/**
+ * @return array<string, mixed>
+ */
+public function rules(): array
+```
+
+## Configuration
+
+```php
+
+# phpstan.neon
+
+parameters:
+    level: 10
+    paths:
+        - app
+        - Modules
+    ignoreErrors:
+        - '#Dynamic property#'
+    
+    laravel:
+        mixins:
+            - eloquent
+```
+
+## Module-Specific Rules
+
+- Each module must pass Level 10 (maximum strictness)
+- No `@phpstan-ignore-line` without justification
+- Document all array shapes in complex returns
+- Use strict property types for all new classes
+
+=== .ai/testing-cheat rules ===
+
+# Testing Cheat Sheet
+
+## Quick Commands
+
+```bash
+
+# Run all tests
+
+php artisan test
+
+# Run specific test
+
+php artisan test --filter="test_name"
+
+# Run module tests
+
+php artisan test Modules/ModuleName/tests/
+
+# Coverage report
+
+php artisan test --coverage
+
+# Parallel execution
+
+php artisan test --parallel
+```
+
+## Test Patterns
+
+```php
+// Basic test
+test('description', function () {
+    expect($result)->toBe($expected);
+});
+
+// Model test
+test('model works', function () {
+    $model = Model::factory()->create();
+    expect($model)->toBeInstanceOf(Model::class);
+});
+
+// Filament test
+livewire(ListResources::class)
+    ->assertCanSeeTableRecords($records);
+
+// Volt test  
+Volt::test('component')
+    ->set('property', 'value')
+    ->call('method')
+    ->assertHasNoErrors();
+
+// API test
+$this->postJson('/api/endpoint', $data)
+    ->assertSuccessful()
+    ->assertJson(['status' => 'success']);
+```
+
+## Essential Assertions
+
+```php
+expect($value)
+    ->toBe($expected)           // Exact match
+    ->toEqual($expected)        // Loose match
+    ->toBeTrue()               // Boolean true
+    ->toBeNull()               // Null check
+    ->toBeInstanceOf(Class::class)  // Type check
+    ->toHaveCount(3)           // Collection count
+    ->toContain($item)         // Array/collection contains
+```
+
+## Database Testing
+
+```php
+// Factory usage
+User::factory()->create(['name' => 'John']);
+User::factory()->count(5)->create();
+User::factory()->admin()->create();
+
+// Database assertions
+assertDatabaseHas(User::class, ['name' => 'John']);
+assertDatabaseMissing(User::class, ['name' => 'Jane']);
+```
+
+## Module Test Setup
+
+```php
+// Modules/ModuleName/tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('migrate:fresh');
+    }
+}
+```
+
+=== foundation rules ===
+
+# Laravel Boost Guidelines
+
+The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
+
+## Foundational Context
+
+This application is a Laravel application and its main Laravel ecosystems package & versions are below. You are an expert with them all. Ensure you abide by these specific packages & versions.
+
+- php - 8.3.30
+- filament/filament (FILAMENT) - v5
+- laravel/folio (FOLIO) - v1
+- laravel/framework (LARAVEL) - v12
+- laravel/passport (PASSPORT) - v13
+- laravel/pennant (PENNANT) - v1
+- laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
+- laravel/socialite (SOCIALITE) - v5
+- livewire/flux (FLUXUI_FREE) - v2
+- livewire/livewire (LIVEWIRE) - v4
+- livewire/volt (VOLT) - v1
+- larastan/larastan (LARASTAN) - v3
+- laravel/boost (BOOST) - v2
+- laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
+- laravel/pint (PINT) - v1
+- laravel/sail (SAIL) - v1
+- pestphp/pest (PEST) - v4
+- phpunit/phpunit (PHPUNIT) - v12
+- tailwindcss (TAILWINDCSS) - v3
+
+## Skills Activation
+
+This project has domain-specific skills available. You MUST activate the relevant skill whenever you work in that domain—don't wait until you're stuck.
+
+- `folio-routing` — Creates file-based routes with Laravel Folio. Activates when creating new pages, setting up routes, working with route parameters or model binding, adding middleware to pages, working with resources/views/pages; or when the user mentions Folio, pages, file-based routing, page routes, or creating a new page for a URL path.
+- `pennant-development` — Manages feature flags with Laravel Pennant. Activates when creating, checking, or toggling feature flags; showing or hiding features conditionally; implementing A/B testing; working with @feature directive; or when the user mentions feature flags, feature toggles, Pennant, conditional features, rollouts, or gradually enabling features.
+- `fluxui-development` — Develops UIs with Flux UI Free components. Activates when creating buttons, forms, modals, inputs, dropdowns, checkboxes, or UI components; replacing HTML form elements with Flux; working with flux: components; or when the user mentions Flux, component library, UI components, form fields, or asks about available Flux components.
+- `volt-development` — Develops single-file Livewire components with Volt. Activates when creating Volt components, converting Livewire to Volt, working with @volt directive, functional or class-based Volt APIs; or when the user mentions Volt, single-file components, functional Livewire, or inline component logic in Blade files.
+- `pest-testing` — Tests applications using the Pest 4 PHP framework. Activates when writing tests, creating unit or feature tests, adding assertions, testing Livewire components, browser testing, debugging test failures, working with datasets or mocking; or when the user mentions test, spec, TDD, expects, assertion, coverage, or needs to verify functionality works.
+- `tailwindcss-development` — Styles applications using Tailwind CSS v3 utilities. Activates when adding styles, restyling components, working with gradients, spacing, layout, flex, grid, responsive design, dark mode, colors, typography, or borders; or when the user mentions CSS, styling, classes, Tailwind, restyle, hero section, cards, buttons, or any visual/UI changes.
 - `api-resource-patterns` — Best practices for Laravel API Resources including resource transformation, collection handling, conditional attributes, and relationship loading.
 - `eloquent-best-practices` — Best practices for Laravel Eloquent ORM including query optimization, relationship management, and avoiding common pitfalls like N+1 queries.
 - `laravel-11-12-app-guidelines` — Guidelines and workflow for working on Laravel 11 or Laravel 12 applications across common stacks (API-only or full-stack), including optional Docker Compose/Sail, Inertia + React, Livewire, Vue, Blade, Tailwind v4, Fortify, Wayfinder, PHPUnit, Pint, and Laravel Boost MCP tools. Use when implementing features, fixing bugs, or making UI/backend changes while following project-specific instructions (AGENTS.md, docs/).
