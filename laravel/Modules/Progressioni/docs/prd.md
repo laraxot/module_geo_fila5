@@ -35,31 +35,32 @@ Managing career progression manually is error-prone because:
 - Performance evaluation itself (delegated to Performance module).
 - Disciplinary actions (delegated to specialized module).
 
-## 5. Functional Requirements
-### FR-001: Cycle Definition
-- **Priority**: Must-have
-- **Description**: Define the parameters for a new career progression cycle (year, available budget, eligible roles).
-- **Acceptance Criteria**: Admin can define the required number of years in current profile as a filter.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Automatic Scoring
-- **Priority**: Must-have
-- **Description**: Aggregate scores from `Performance` module and seniority data from `User` module.
-- **Acceptance Criteria**: Scored results are auditable and show the breakdown of the total points.
+### P0: Advancement Lifecycle (Must-have)
+- **FR-001: Progression Cycle Definition**: Define parameters for career advancement calls (budget, eligibility roles, seniority filters).
+- **FR-002: Automated Merit Scoring**: Aggregate and calculate scores from `Performance` history and `User` seniority data.
+- **FR-003: Ranking Engine (Graduatorie)**: Generate auditable ranking lists applying complex tie-breaking rules (seniority, age).
 
-### FR-003: Ranking Generation
-- **Priority**: Must-have
-- **Description**: Sort eligible employees by score, applying tie-breaking rules (seniority, age, etc.).
-- **Acceptance Criteria**: Correct generation of a list with an "assigned" vs "not assigned" flag based on budget.
+### P1: Compliance & Review (Important)
+- **FR-004: Objection Management Workflow**: Interface for employees to contest ranking positions and for HR to document reviews.
+- **FR-006: Salary Step Integration**: Map successful progressions to specific salary steps (gradini) for payroll export.
 
-### FR-004: Objection Management
-- **Priority**: Should-have
-- **Description**: Allow employees to contest their ranking position within a certain timeframe.
-- **Acceptance Criteria**: Workflow for logging, reviewing, and responding to objections.
+### P2: Advanced Career Path (Nice-to-have)
+- **FR-005: Multi-year Simulation**: Forecast the budgetary impact of various progression scenarios over multiple years.
+- **FR-007: AI Eligibility Screening**: Proactive identification of employees approaching eligibility milestones for career growth.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Objectivity**: All scoring must be derived from system data to avoid bias.
-- **NFR-002: Transparency**: Employees can see their score breakdown.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Merit Engine**: Progressioni provides the scoring logic; it MUST NOT contain hardcoded career rules (which are defined in each "Call").
+- **Interoperability**: Deeply integrated with `Performance` for scores and `User` for seniority; results are consumed by `Sigma` for payroll.
+- **Independence**: The progression cycle is managed as a standalone legal procedure, decoupled from daily HR operations.
+
+### Performance & Safety
+- **NFR-001: Objectivity**: 100% derivation of scores from system-verified data to eliminate manual bias.
+- **NFR-002: Transparency**: Visibility for employees into their individual score breakdown and ranking position.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

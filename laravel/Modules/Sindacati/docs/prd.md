@@ -38,31 +38,32 @@ The organization needs:
 - Union internal voting/balloting.
 - Legal representation in disputes.
 
-## 5. Functional Requirements
-### FR-001: Union Registry
-- **Priority**: Must-have
-- **Description**: Create and manage the list of available unions and their bank details.
-- **Acceptance Criteria**: Admin can define the fee calculation rules per union.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Membership (Delega) Management
-- **Priority**: Must-have
-- **Description**: Link employees to a union with starting and ending dates.
-- **Acceptance Criteria**: Includes digital attachment of the signed membership form.
+### P0: Membership Lifecycle (Must-have)
+- **FR-001: Labor Union Registry**: Management of certified unions, bank details, and fee calculation rules (fixed/percentage).
+- **FR-002: Membership Management (Deleghe)**: Record and track employee union affiliations with start/end dates and digital form storage.
+- **FR-003: Monthly Fee Calculation**: Automated calculation of union dues for export to the `Sigma` payroll system.
 
-### FR-003: Fee Calculation
-- **Priority**: Must-have
-- **Description**: Calculate the monthly fee based on the union's rules and the employee's salary.
-- **Acceptance Criteria**: Accurate export format for the Sigma payroll system.
+### P1: Operational Compliance (Important)
+- **FR-004: Revocation Workflow**: Formal process for membership cancellation with automatic adjustment for next payroll cycle.
+- **FR-005: Union Contribution Reporting**: Generation of periodic reports for unions detailing collected contributions per member.
 
-### FR-004: Revocation Workflow
-- **Priority**: Should-have
-- **Description**: Formal process to record and process a membership cancellation.
-- **Acceptance Criteria**: Automatic alignment with payroll to stop deductions from a specific date.
+### P2: Advanced Relations (Nice-to-have)
+- **FR-006: Digital Enrollment**: Paperless membership registration with integrated digital signature.
+- **FR-007: AI Financial Matching**: Automated reconciliation of payroll deductions against union-provided contribution reports.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Privacy**: Membership data is sensitive (trade union affiliation).
-- **NFR-002: Accuracy**: Exact matching of deductions with union reports.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Union Proxy**: Sindacati provides the administrative framework; it MUST NOT contain organizational-specific union preferences.
+- **Interoperability**: Consumes employee data from `User` and communicates deductions to `Sigma` for payroll.
+- **Independence**: Union membership logic is decoupled from performance or career evaluations.
+
+### Performance & Safety
+- **NFR-001: Data Privacy**: Membership data is treated with high confidentiality (trade union affiliation).
+- **NFR-002: Calculation Accuracy**: Precise calculation of fees to ensure compliance with union agreements.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

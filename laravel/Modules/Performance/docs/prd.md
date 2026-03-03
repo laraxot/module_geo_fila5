@@ -39,31 +39,33 @@ The organization needs:
 - Recruitment and Onboarding.
 - Training management (delegated to specialized LMS integration).
 
-## 5. Functional Requirements
-### FR-001: Cycle Management
-- **Priority**: Must-have
-- **Description**: Create and manage annual or periodic performance cycles.
-- **Acceptance Criteria**: Definition of start/end dates and the specific template to use.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Evaluation Workflow
-- **Priority**: Must-have
-- **Description**: Orchestrate the evaluation process through various stages.
-- **Acceptance Criteria**: Logic to transition from self-assessment to manager review.
+### P0: Evaluation Core (Must-have)
+- **FR-001: Evaluation Cycle Lifecycle**: Manage the start, end, and transition of periodic evaluation cycles.
+- **FR-002: Multi-step Workflow Orchestration**: Execute the evaluation path from self-assessment through manager review to final validation (OIV).
+- **FR-003: Objective & KPI Tracking (OKR)**: Set and monitor measurable objectives with weights and results.
 
-### FR-003: Objective Setting
-- **Priority**: Must-have
-- **Description**: Managers and employees can define specific, measurable objectives.
-- **Acceptance Criteria**: Objectives have weights, targets, and result fields.
+### P1: Competency & Reporting (Important)
+- **FR-004: Standardized PDF Reporting**: Generate comprehensive, professional performance reports for employees and managers.
+- **FR-005: Competency Mapping**: Register and evaluate specific skills and soft-skills as part of the evaluation process.
+- **FR-006: Incentive Linkage**: Direct export of final scores to the `Incentivi` module for bonus calculation.
 
-### FR-004: Final Reporting (PDF/Dashboard)
-- **Priority**: Should-have
-- **Description**: Generate a complete performance report for the employee.
-- **Acceptance Criteria**: Professional PDF output using the `GeneratePdfAction`.
+### P2: Advanced Merito-cracy (Nice-to-have)
+- **FR-007: AI Performance Insights**: Automated detection of performance trends and potential skill gaps.
+- **FR-008: Career Path Planning**: Suggestions for internal career growth based on evaluation history and skill competency.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Fairness**: Evaluation logic must be transparent and objective.
-- **NFR-002: Confidentiality**: Evaluation content is highly sensitive.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Evaluation Engine**: Performance provides the orchestration logic; it MUST NOT contain hardcoded evaluation criteria (delegated to `Rating`).
+- **Interoperability**: Consumes employee hierarchy and profiles from `User`; results are consumed by `Incentivi` and `Progressioni`.
+- **Independence**: The cycle and workflow engine is abstracted from the specific organizational structure.
+
+### Performance & Safety
+- **NFR-001: Objectivity**: Mandatory audit trail for all score modifications to ensure fairness.
+- **NFR-002: Confidentiality**: Strict encryption and role-based access for sensitive evaluation content.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

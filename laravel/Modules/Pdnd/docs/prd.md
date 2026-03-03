@@ -34,31 +34,32 @@ The PTVX system must:
 - Direct user interface for public citizens.
 - Non-PDND specialized integrations.
 
-## 5. Functional Requirements
-### FR-001: PDND Handshake
-- **Priority**: Must-have
-- **Description**: Automatically handle the complex PDND authentication process.
-- **Acceptance Criteria**: Successful retrieval of an access voucher using local certificates.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: ANPR Integration
-- **Priority**: Must-have
-- **Description**: Verify and fetch employee registry data from the national population registry.
-- **Acceptance Criteria**: Retrieve a valid ANPR response for a given Tax Code (Codice Fiscale).
+### P0: National Interoperability (Must-have)
+- **FR-001: PDND Security Handshake**: Automate JWT/JWS signing and voucher retrieval using local PKI certificates.
+- **FR-002: ANPR Service Integration**: Securely verify and fetch official registry data from the National Population Register.
+- **FR-003: PKI Certificate Lifecycle**: Secure management, rotation, and usage of PDND-specific certificates.
 
-### FR-003: Certificate Management
-- **Priority**: Must-have
-- **Description**: Securely manage the lifecycle of PDND certificates.
-- **Acceptance Criteria**: Ability to upload, rotate, and use certificates for signing.
+### P1: Compliance & Governance (Important)
+- **FR-004: Transaction Audit Log**: Searchable history of every national interoperability request and response for legal compliance.
+- **FR-005: E-Service Registry**: Management of active national services and their respective access vouchers.
 
-### FR-004: Transaction Auditing
-- **Priority**: Should-have
-- **Description**: Log every outgoing PDND request and incoming response.
-- **Acceptance Criteria**: Detailed searchable logs including error codes.
+### P2: Advanced Digital Citizen (Nice-to-have)
+- **FR-006: Automated Data Reconciliation**: Proactive detection of discrepancies between local employee data and ANPR records.
+- **FR-007: AI Identity Matching**: Enhanced matching algorithms for complex or incomplete national registry queries.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Security**: No storage of private keys in plain text. Use of Hardware Security Modules (HSM) if possible, or advanced encryption.
-- **NFR-002: Performance**: Interoperability calls should be efficient and non-blocking.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Proxy**: Pdnd acts as a technical proxy for national data; it MUST NOT contain domain-specific logic.
+- **Interoperability**: Provides standardized Service objects for other modules (e.g., User) to consume national APIs without knowing the PDND internals.
+- **Independence**: The interoperability layer is abstracted from the specific PA e-service being consumed.
+
+### Performance & Safety
+- **NFR-001: Security**: 100% encryption of private keys; no plain-text storage of sensitive PKI material.
+- **NFR-002: Reliability**: Asynchronous execution of national interoperability calls to prevent UI blocking during external downtime.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

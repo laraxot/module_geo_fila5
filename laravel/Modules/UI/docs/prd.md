@@ -40,41 +40,33 @@ Without a centralized UI module:
 - Authentication UI (User module)
 - Language switching UI (Lang module)
 
-## 5. Functional Requirements
+## 5. Functional Requirements (Prioritized)
 
-### FR-001: Component Library
-- **Priority**: Must-have
-- **Description**: Blade/Livewire components for common UI patterns (cards, tables, forms, modals)
-- **Acceptance Criteria**: Components render consistently across themes
+### P0: Component Framework (Must-have)
+- **FR-001: design System Component Library**: Standardized Blade/Livewire components for common patterns (cards, tables, forms, modals).
+- **FR-002: Dynamic Field Options Engine**: Management of dropdown/select options configurable via the `FieldOption` model.
+- **FR-005: Theme Base Integration**: Core logic for component slot management and theme-aware rendering.
 
-### FR-002: Dynamic Field Options
-- **Priority**: Must-have
-- **Description**: `FieldOption` model provides dropdown/select options configurable by admin
-- **Acceptance Criteria**: Form fields can dynamically load options from `FieldOption`
+### P1: Content Orchestration (Important)
+- **FR-003: Categorization System**: Hierarchical `Category` and `Collection` models for organizing cross-module content.
+- **FR-004: User Context Data Action**: `GetUserDataAction` to provide secure, context-aware information for UI components.
 
-### FR-003: Categorization System
-- **Priority**: Should-have
-- **Description**: `Category` and `Collection` models for organizing content
-- **Acceptance Criteria**: Any module can categorize its entities using UI's category system
+### P2: Advanced Experience (Nice-to-have)
+- **FR-006: Interactive Component Storybook**: Built-in documentation and preview interface for all system components.
+- **FR-007: AI Layout Assistance**: Automated suggestions for optimal form layout and field grouping.
 
-### FR-004: User Context Data
-- **Priority**: Should-have
-- **Description**: `GetUserDataAction` provides current user context for UI rendering
-- **Acceptance Criteria**: Components can access user data without direct User module coupling
+## 6. Non-Functional Requirements & Agnostic Design
 
-## 6. Non-Functional Requirements
+### Agnostic Design Principles
+- **Global Design Provider**: UI provides the visual language; it MUST NOT contain any module-specific business logic.
+- **Interoperability**: Provides a standardized component set that any module can consume to ensure a consistent Look & Feel.
+- **Agnostic Logic**: Components are stateless where possible, relying on the consuming module for data context.
 
-### NFR-001: Performance
-- Components render < 20ms
-- Lazy-loadable component registration
-
-### NFR-002: Accessibility
-- WCAG 2.1 AA compliance for all components
-- Keyboard navigation support
-
-### NFR-003: Responsiveness
-- Mobile-first responsive design
-- Support for desktop, tablet, and mobile viewports
+### Performance & Safety
+- **NFR-001: Rendering Performance**: Components MUST render < 20ms through optimized templates and lazy loading.
+- **NFR-002: Accessibility**: 100% WCAG 2.1 AA compliance mandatory for all base components.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
+ Maryland
 
 ## 7. Technical Architecture
 

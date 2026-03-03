@@ -35,31 +35,32 @@ Managing internal transfers is complex because:
 - Mandatory/forced transfers (delegated to regular HR management).
 - External recruitment (delegated to specialized Recruitment module).
 
-## 5. Functional Requirements
-### FR-001: Mobility Announcements
-- **Priority**: Should-have
-- **Description**: Public list of roles or units open to internal mobility.
-- **Acceptance Criteria**: Admin can define requirements and deadlines for each announcement.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Request Submission
-- **Priority**: Must-have
-- **Description**: Secure form for employees to submit their transfer requests.
-- **Acceptance Criteria**: Includes reason, destination unit, and supporting files.
+### P0: Mobility Lifecycle (Must-have)
+- **FR-002: Request Submission Engine**: Secure form for employees to submit transfer requests with reasons and supporting files.
+- **FR-003: Integrated Approval Workflow**: Multi-step approval process between current and destination unit managers.
+- **FR-005: Eligibility Verification**: Automated check of eligibility based on job profile, time-in-role, and contract type.
 
-### FR-003: Approval Workflow
-- **Priority**: Must-have
-- **Description**: Multi-step approval from both current and destination unit managers.
-- **Acceptance Criteria**: Automated notifications to all involved stakeholders.
+### P1: Opportunity Management (Important)
+- **FR-001: Mobility Announcements Board**: Public listing of internal roles or units open to mobility with defined deadlines.
+- **FR-006: Official Transfer Documentation**: Automated generation of official transfer orders and hand-off records.
 
-### FR-004: Ranking & Comparison
-- **Priority**: Could-have
-- **Description**: Evaluate multiple applicants for the same mobility slot based on defined criteria.
-- **Acceptance Criteria**: Uses a scoring logic (potentially integrated with Rating module).
+### P2: Advanced Talent Sourcing (Nice-to-have)
+- **FR-004: Merit-based Ranking**: Evaluation and scoring of multiple applicants for the same slot using `Rating` criteria.
+- **FR-007: Skill-Gap Analysis**: AI-driven assessment of how a transfer would impact the skill balance of departure and destination units.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Fairness**: Every applicant must be treated according to objective criteria.
-- **NFR-002: Confidentiality**: Transfer requests should be private until a certain stage in the process.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Workflow**: MobilitaVolontaria MUST support various organizational approval chains through configurable workflow definitions.
+- **Interoperability**: Consumes employee profiles from `User` and updates the unit association upon final approval.
+- **Independence**: Mobility logic is managed as a standalone process, not hardcoded into the core organizational chart.
+
+### Performance & Safety
+- **NFR-001: Fairness**: Enforcement of objective criteria for all applicants to ensure merit-based decisions.
+- **NFR-002: Confidentiality**: Strict privacy for transfer requests until the formal approval stage.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

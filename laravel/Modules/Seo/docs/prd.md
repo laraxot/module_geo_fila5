@@ -35,31 +35,32 @@ Web applications need:
 - Keyword ranking tracking (delegated to external tools like Ahrefs/Semrush).
 - Content quality analysis (AI-assisted features are future phase).
 
-## 5. Functional Requirements
-### FR-001: Metadata Management
-- **Priority**: Must-have
-- **Description**: Assign custom titles, descriptions, and keywords to routes or resources.
-- **Acceptance Criteria**: Admin can edit SEO data for any public entity via Filament.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Social Optimization
-- **Priority**: Must-have
-- **Description**: Define social share images and specific descriptions.
-- **Acceptance Criteria**: Correct tags appear in Facebook/Twitter debuggers.
+### P0: Metadata Foundation (Must-have)
+- **FR-001: Dynamic Metadata Management**: Assign and edit custom titles, descriptions, and keywords for any route or Eloquent resource via Filament.
+- **FR-002: Social Graph Optimization**: Centralized management of OpenGraph and Twitter card metadata, including share images and specific descriptions.
+- **FR-005: Header Injection Logic**: Standardized Blade components to inject optimized SEO tags into the `<head>` section of any theme.
 
-### FR-003: Dynamic Sitemap
-- **Priority**: Should-have
-- **Description**: Automatically include all public resources in a searchable sitemap.
-- **Acceptance Criteria**: Sitemap is valid and updated when content changes.
+### P1: Indexing & Crawling (Important)
+- **FR-003: Dynamic Sitemap Engine**: Automated generation of XML sitemaps including all public-facing module resources.
+- **FR-004: Robots.txt Control**: Administrative interface to manage `robots.txt` content and crawling directives.
 
-### FR-004: Robots.txt Management
-- **Priority**: Should-have
-- **Description**: Edit the robots.txt file content via the admin panel.
-- **Acceptance Criteria**: Changes are immediately reflected at `domain.com/robots.txt`.
+### P2: Advanced Visibility (Nice-to-have)
+- **FR-006: Schema.org Structured Data**: Automated generation of JSON-LD structured data for personnel, organizations, and events.
+- **FR-007: AI Metadata Suggestions**: Automated generation of SEO titles and descriptions based on page content analysis.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Performance**: Metadata generation must add < 1ms to page load.
-- **NFR-002: Standards Compliance**: Accurate implementation of Schema.org and OG protocols.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic SEO Service**: Seo provides the metadata delivery layer; it MUST NOT be aware of the specific business domain of the pages it tags.
+- **Interoperability**: Provides a polymorphic relationship that allows ANY model in ANY module to become "SEO-enabled" by attaching the SEO trait.
+- **Independence**: Metadata generation is decoupled from the content creation lifecycle to avoid performance overhead.
+
+### Performance & Safety
+- **NFR-001: Performance**: Metadata resolution and injection MUST add < 1ms to the total page load time.
+- **NFR-002: Standards Compliance**: Strict adherence to current OpenGraph, Twitter, and Schema.org protocols.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies
