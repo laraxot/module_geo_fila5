@@ -30,9 +30,10 @@ class EditProject extends XotBaseEditRecord
 
             // Array of actions
             'pdf_group' => ActionGroup::make([
-                GeneratePDFWorkgroupCompositionAction::make(),
+                // GeneratePDFWorkgroupCompositionAction::make(),
                 GeneratePDFProjectReportAction::make()
-                    ->visible(fn (): bool => Auth::user() !== null && Auth::user()->hasRole('super-admin')),
+                    // ->visible(fn (): bool => Auth::user() !== null && Auth::user()->hasRole('super-admin'))
+                    ,
             ])
                 ->label('SCARICA PDF')
                 ->icon('heroicon-m-ellipsis-vertical')

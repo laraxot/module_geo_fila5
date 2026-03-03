@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Override;
+use Modules\Xot\Filament\Traits\TransFuncTrait;
 
 /**
  * ---.
@@ -21,8 +22,6 @@ use Override;
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
-    use InteractsWithForms;
-    use NavigationLabelTrait;
 
     // protected static string $resource;
     protected static string $recordTitleAttribute = 'name';

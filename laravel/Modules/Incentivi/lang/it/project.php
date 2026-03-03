@@ -445,9 +445,9 @@ return [
             'label' => 'Log Attività',
         ],
         'GeneratePDFProjectReportAction' => [
-            'tooltip' => 'GeneratePDFProjectReportAction',
             'icon' => 'GeneratePDFProjectReportAction',
-            'label' => 'GeneratePDFProjectReportAction',
+            'label' => 'Report Progetto',
+            'tooltip' => 'Scarica Report Progetto',
         ],
         'submit' => [
             'tooltip' => 'submit',
