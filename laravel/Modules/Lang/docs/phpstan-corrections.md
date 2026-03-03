@@ -3,12 +3,12 @@
 ## Panoramica
 Questo documento registra le correzioni PHPStan implementate nel modulo Lang.
 
-**Ultimo aggiornamento**: [DATE]
+**Ultimo aggiornamento**: 2025-01-27
 **Status PHPStan Level 10**: ✅ **PASSED** - 0 errori
 
 ## Correzioni Implementate
 
-### Post.php - Doppio Import PostFactory ([DATE])
+### Post.php - Doppio Import PostFactory (2025-01-27)
 
 **Problema**: Doppio import di `PostFactory` causava conflitto di namespace
 ```php

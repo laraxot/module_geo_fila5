@@ -1,5 +1,34 @@
 # Roadmap tema One
 
+## 🧪 Testing e TDD
+
+### Principi TDD
+- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
+- **Test Coverage**: Minimo 80% per componenti theme
+
+### Struttura Test
+```
+Themes/One/tests/
+├── Unit/
+│   └── Components/
+├── Feature/
+│   └── Blade/
+├── Browser/
+│   └── NavigationTest.php
+├── Pest.php
+└── TestCase.php
+```
+
+### Best Practices
+- [ ] Browser test per navigazione
+- [ ] Test componenti Blade
+- [ ] Visual regression testing
+
+### Comandi
+```bash
+./vendor/bin/pest Themes/One/tests --coverage --min=80
+```
+
 ## Stato generale
 
 - **Completato**: 50%
@@ -17,12 +46,16 @@
 4. **Namespace e convenzioni tema** — **70%**
    - Dettaglio: [`docs/roadmap/namespace-conventions.md`](roadmap/namespace-conventions.md)
 5. **Consolidamento documentazione** — **40%**
-   - Dettaglio: [`docs/roadmap/documentation-consolidation.md`](roadmap/documentation-consolidation.md)
+   - Dettaglio: [roadmap/documentation-consolidation](roadmap/documentation-consolidation.md)
 
 ## Collegamenti correlati
 
-- [`README.md`](README.md)
+- [README](README.md)
 - [`theme-analysis.md`](theme-analysis.md)
 - [`charts-integration.md`](charts-integration.md)
 - [`html2pdf-integration.md`](html2pdf-integration.md)
-- [`code-quality-tools.md`](code-quality-tools.md)
+- [code-quality-tools](code-quality-tools.md)
+
+---
+
+**Ultimo aggiornamento**: Febbraio 2026

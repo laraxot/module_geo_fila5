@@ -227,4 +227,4 @@ Prima di ogni commit, verificare:
 - [TableLayoutEnum Guide](../laravel/Modules/UI/docs/table-layout-enum-complete-guide.md)
 
 ## Ultimo Aggiornamento
-[DATE] - Regola critica per enum translation pattern
+2025-01-27 - Regola critica per enum translation pattern

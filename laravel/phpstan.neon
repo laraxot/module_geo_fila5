@@ -12,7 +12,7 @@ parameters:
         - Modules
         #- Themes
 
-    level: 10
+    level: max
 
     # memoryLimit: -1
     ignoreErrors:
@@ -40,8 +40,7 @@ parameters:
         - ./*/phpinsights.php
         - ./*/rector.php
         - ./*/*.blade.php
-        # File problematici temporaneamente esclusi
-        - ./Modules/Xot/*
+        #- ./Modules/Xot/*
         #- ./config/local/*/database.php
         # Moduli in ordine alfabetico:
         #- ./Modules/Activity/*

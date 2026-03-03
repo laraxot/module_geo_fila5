@@ -1,5 +1,6 @@
 # Pattern: Actions che chiamano altre Actions
 
+**Data**: 2025-01-18  
 **Modulo**: Notify  
 **Status**: ✅ Pattern consolidato
 

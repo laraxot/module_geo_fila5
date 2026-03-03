@@ -55,6 +55,8 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\DeviceUserFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

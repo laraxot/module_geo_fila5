@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Illuminate\Support\Str;
 use Modules\Xot\Actions\Blade\RegisterBladeComponentsAction;
 use Modules\Xot\Actions\File\GetComponentsAction;
@@ -22,7 +22,7 @@ use Webmozart\Assert\Assert;
 /**
  * Class XotBaseServiceProvider.
  */
-abstract class XotBaseServiceProvider extends ServiceProvider
+abstract class XotBaseServiceProvider extends LaravelServiceProvider
 {
     use PathNamespace;
 

@@ -61,7 +61,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
      *
      * @return array<Component>
      */
-    public function getFormSchema(): array
+    protected function getFormSchema(): array
     {
         return [];
     }
@@ -198,5 +198,4 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
             ->prepend($titleString.' - ')
             ->toString();
     }
-
 }

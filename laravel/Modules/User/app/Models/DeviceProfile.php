@@ -27,6 +27,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\DeviceProfileFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class DeviceProfile extends DeviceUser

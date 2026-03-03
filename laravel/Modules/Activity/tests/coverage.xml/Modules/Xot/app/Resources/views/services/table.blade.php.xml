@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="table.blade.php" path="/Modules/Xot/app/Resources/views/services" hash="e496cf7fbc248804767a1985c04025783cb837ea">
+    <totals>
+      <lines total="15" comments="0" code="15" executable="9" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;table border="1" class="table table-bordered"&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">@foreach ($rows as $row)</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">    &lt;tr&gt;</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">        @foreach ($row as $cell)</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">            &lt;td&gt;{{ is_string($cell)?$cell:'--NOT STRING--' }}&lt;/td&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">        @endforeach</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">    &lt;/td&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">@endforeach</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">&lt;/table&gt;</token>
+      </line>
+      <line no="15"/>
+    </source>
+  </file>
+</phpunit>

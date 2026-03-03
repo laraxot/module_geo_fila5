@@ -87,14 +87,13 @@ Se incontri errori come `name is empty on [Modules\NomeModulo\Providers\RouteSer
 - Questa regola si applica a **tutti** i moduli (Notify, Cms, Xot, ecc.), **inclusi i modelli**.
 - Evitare l'uso di proprietà deprecate come `protected $casts` nei modelli: preferire override tramite metodo `casts()`.
 - Per esempi specifici, vedere la documentazione nei singoli moduli:
-  - [Patient: Regole Modelli](../../Patient/docs/models.md)
-  - [Notify Namespace Rules](../../Notify/docs/NAMESPACE_RULES.md)
+  - [Patient: Regole Modelli](../../patient/docs/models.md)
+  - [Notify Namespace Rules](../../notify/docs/namespace_rules.md)
 
 ## Collegamenti
 - [Regole Namespace Moduli - Root Docs](../../../docs/namespace-moduli.md)
 
 ---
 
-**Ultimo aggiornamento:** 2025-05-13
 
 **Link bidirezionale:** Aggiornare anche la root docs e la docs dei moduli coinvolti.

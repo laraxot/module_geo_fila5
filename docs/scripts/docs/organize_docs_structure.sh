@@ -5,7 +5,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 LOG_FILE="$BASE_DIR/docs/docs_organization_log.txt"
 
 echo "=== INIZIO ORGANIZZAZIONE DOCS $(date) ===" > "$LOG_FILE"
@@ -93,7 +93,7 @@ find_content_duplicates "$BASE_DIR/docs"
 find_naming_variants "$BASE_DIR/docs"
 
 # Module docs
-for module in Xot SaluteOra User UI Tenant; do
+for module in Xot Ptv User UI Tenant; do
     module_docs="$BASE_DIR/laravel/Modules/$module/docs"
     if [ -d "$module_docs" ]; then
         log_action "Analizzando modulo: $module"
@@ -107,7 +107,7 @@ log_action "=== CONSOLIDAMENTO DUPLICATI ==="
 # Consolida duplicati
 consolidate_duplicates "$BASE_DIR/docs"
 
-for module in Xot SaluteOra User UI Tenant; do
+for module in Xot Ptv User UI Tenant; do
     module_docs="$BASE_DIR/laravel/Modules/$module/docs"
     if [ -d "$module_docs" ]; then
         consolidate_duplicates "$module_docs"

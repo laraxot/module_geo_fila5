@@ -19,6 +19,13 @@ use Modules\Sigma\Models\Codici;
  */
 trait EnteMatrMutator
 {
+    /**
+     * Guard against recursive updates from accessors.
+     * Prevents "attributeRawValues null" crash with spatie/activitylog:
+     * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     */
+    private static bool $isUpdatingFromAccessor = false;
+
     protected function getEnteAttribute(?int $value): ?int
     {
         if ($value !== null) {
@@ -28,9 +35,15 @@ trait EnteMatrMutator
         if (\in_array('ente', $this->getFillable(), false)) {
             $this->ente = $value;
 
-            // Guard: modello deve avere PK per salvare
-            if ($this->getKey() != null) {
-                $this->update(['ente' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['ente' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
             }
         }
 
@@ -45,17 +58,21 @@ trait EnteMatrMutator
 
         $anag = $this->ana10f;
         if (! \is_object($anag)) {
-            // $this->ana10f()->ddRawSql();
-
             return '---';
         }
 
         // $anag è già verificato come oggetto sopra, non può essere null
         $value = $anag->getAttribute('cognome');
 
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() != null) {
-            $this->update(['cognome' => $value]);
+        if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['cognome' => $value]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
         }
 
         return (string) ($value ?? '').' ';
@@ -81,7 +98,16 @@ trait EnteMatrMutator
         /** @var object{emaind: string|null} $ana02f */
         $value = $ana02f->emaind;
         if (\in_array('email', $this->getFillable(), false)) {
-            $this->update(['email' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['email' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return $value;
@@ -107,7 +133,16 @@ trait EnteMatrMutator
         /** @var object{sesso: string|null} $ana02f */
         $value = Str::of((string) $ana02f->sesso)->lower()->toString();
         if (\in_array('sesso', $this->getFillable(), false)) {
-            $this->update(['sesso' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['sesso' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return $value;
@@ -133,7 +168,16 @@ trait EnteMatrMutator
         /** @var object{codfis: string|null} $ana02f */
         $value = $ana02f->codfis;
         if (\in_array('codfis', $this->getFillable(), false)) {
-            $this->update(['codfis' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['codfis' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return $value;
@@ -159,7 +203,16 @@ trait EnteMatrMutator
         /** @var object{inail: string|null} $ana02f */
         $value = $ana02f->inail;
         if (\in_array('inail', $this->getFillable(), false)) {
-            $this->update(['inail' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['inail' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return $value;
@@ -183,9 +236,15 @@ trait EnteMatrMutator
         if (\in_array('nome', $this->getFillable(), false)) {
             $this->nome = $value;
 
-            // Guard: modello deve avere PK per salvare
-            if ($this->getKey() != null) {
-                $this->update(['nome' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['nome' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
             }
         }
 
@@ -219,39 +278,41 @@ trait EnteMatrMutator
             });
         }
 
-        // $this->$fieldname=$value;
-        // $this->save();
-        // dddx($this->attributes);
-        // dddx($this->getFillable());
-        $this->update([$fieldname => $value]);
+        if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($fieldname, $value): void {
+                    $this->update([$fieldname => $value]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
+        }
 
         return $value;
     }
 
     protected function getLastDataAssunzAttribute(mixed $_value): ?string
     {
-        /*
-         * if (null !== $value) {
-         * return $value;
-         * }
-         */
-
         $row = $this->sto00f()->orderBy('st2kas', 'desc')->first();
 
         if (! \is_object($row)) {
-            /*
-             * echo ('<h3>Aggiornare Tabella [Sto00f]
-             * e controllare ente [' . $this->ente . '] matr [' . $this->matr . ']</h3>');
-             * //*/
             return null;
         }
 
         /** @var object{st2kas: string|int|null} $row */
         $value = $row->st2kas;
-        // $value = Carbon::parse($value); //meglio usare interi..
-        // if ($this->attributes['last_data_assunz'] !== $value && '' !== $value) {
         if (\in_array('last_data_assunz', $this->getFillable(), false)) {
-            $res = tap($this)->update(['last_data_assunz' => $value]);
+            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        tap($this)->update(['last_data_assunz' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         } else {
             dddx('[last_data_assunz] not in fillable in class ['.static::class.']');
         }

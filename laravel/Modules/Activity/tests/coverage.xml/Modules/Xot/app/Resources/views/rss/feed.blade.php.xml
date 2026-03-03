@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="feed.blade.php" path="/Modules/Xot/app/Resources/views/rss" hash="c5ec13d8706e21e49400cbf6d03e05f8e4c24eff">
+    <totals>
+      <lines total="32" comments="0" code="32" executable="27" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">@php</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">'&lt;?phpxml version="1.0" encoding="UTF-8"?&gt;'.PHP_EOL</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">@endphp</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">&lt;rss version="2.0"&gt;</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">    &lt;channel&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">        &lt;title&gt;&lt;![CDATA[ {{ config('metatag.title') }} ]]&gt;&lt;/title&gt;</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">        &lt;link&gt;&lt;![CDATA[ {{ url('/') }} ]]&gt;&lt;/link&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">        &lt;description&gt;&lt;![CDATA[ {{ config('metatag.description') }} ]]&gt;&lt;/description&gt;</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">        &lt;language&gt;{{ $lang }}&lt;/language&gt;</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">        &lt;pubDate&gt;{{ now() }}&lt;/pubDate&gt;</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">        @foreach ($items as $item)</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">            &lt;item&gt;</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">                &lt;title&gt;&lt;![CDATA[{{ $item-&gt;title }}]]&gt;&lt;/title&gt;</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">                &lt;subtitle&gt;&lt;![CDATA[{{ $item-&gt;subtitle }}]]&gt;&lt;/subtitle&gt;</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">                {{-- guid o cosa? --}}</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">                &lt;link&gt; {{ url(Panel::make()-&gt;get($item)-&gt;url()) }} &lt;/link&gt;</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">                &lt;description&gt;&lt;![CDATA[{!! $item-&gt;txt !!}]]&gt;&lt;/description&gt;</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">                {{-- in category post_type? oppure togliamo il tag? oppure cosa?--}}</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">                &lt;category&gt;{{ $item-&gt;post_type }}&lt;/category&gt;</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">                &lt;author&gt;&lt;![CDATA[{{ $item-&gt;created_by }}]]&gt;&lt;/author&gt;</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">                {{-- guid o id?? --}}</token>
+      </line>
+      <line no="27">
+        <token name="T_INLINE_HTML">                &lt;guid&gt;{{ $item-&gt; }}&lt;/guid&gt;</token>
+      </line>
+      <line no="28">
+        <token name="T_INLINE_HTML">                &lt;pubDate&gt;{{ $item-&gt;created_at-&gt;toRssString() }}&lt;/pubDate&gt;</token>
+      </line>
+      <line no="29">
+        <token name="T_INLINE_HTML">            &lt;/item&gt;</token>
+      </line>
+      <line no="30">
+        <token name="T_INLINE_HTML">        @endforeach</token>
+      </line>
+      <line no="31">
+        <token name="T_INLINE_HTML">    &lt;/channel&gt;</token>
+      </line>
+      <line no="32">
+        <token name="T_INLINE_HTML">&lt;/rss&gt;</token>
+      </line>
+    </source>
+  </file>
+</phpunit>

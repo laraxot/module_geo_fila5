@@ -13,11 +13,5 @@ class ListMessages extends PtvListMessages
 {
     protected static string $resource = MessageResource::class;
 
-    #[Override]
-    protected function getActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+    
 }

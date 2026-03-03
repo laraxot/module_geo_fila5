@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="OauthRefreshToken.php" path="/Modules/User/app/Models" hash="34ff8cce6c6bb8291569d1bd4fc551ebc7b2b27f">
+    <totals>
+      <lines total="42" comments="26" code="16" executable="0" executed="0" percent="0"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\User\Models\OauthRefreshToken" start="33" executable="0" executed="0" crap="0">
+      <namespace name="Modules\User\Models"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\User\Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Builder</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Carbon</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Laravel\Passport\RefreshToken</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">PassportRefreshToken</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10"/>
+      <line no="11">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="12">
+        <token name="T_DOC_COMMENT"> * Modules\User\Models\OauthRefreshToken.</token>
+      </line>
+      <line no="13">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT"> * @property OauthAccessToken|null $accessToken</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken newModelQuery()</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken newQuery()</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken query()</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT"> * @property string      $id</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT"> * @property string      $access_token_id</token>
+      </line>
+      <line no="22">
+        <token name="T_DOC_COMMENT"> * @property bool        $revoked</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $expires_at</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken whereAccessTokenId($value)</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken whereExpiresAt($value)</token>
+      </line>
+      <line no="27">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken whereId($value)</token>
+      </line>
+      <line no="28">
+        <token name="T_DOC_COMMENT"> * @method static Builder|OauthRefreshToken whereRevoked($value)</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT"> * @mixin IdeHelperOauthRefreshToken</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT"> * @mixin \Eloquent</token>
+      </line>
+      <line no="32">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="33">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">OauthRefreshToken</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">PassportRefreshToken</token>
+      </line>
+      <line no="34">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">/*</token>
+      </line>
+      <line no="36">
+        <token name="T_COMMENT">     * @var string</token>
+      </line>
+      <line no="37">
+        <token name="T_COMMENT">     */</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$connection</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="39"/>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// protected $fillable = ['id', 'access_token_id', 'revoked', 'expires_at'];</token>
+      </line>
+      <line no="41">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="42"/>
+    </source>
+  </file>
+</phpunit>

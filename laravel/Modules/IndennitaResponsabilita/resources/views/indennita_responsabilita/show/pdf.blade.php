@@ -7,7 +7,7 @@
             <td>
                 <h3>Indennita Responsabilita anno {{ $row->anno }}</h3>
             </td>
-            <td>A{{ $row->note }}</td>
+            <td>{{ $row->note }}</td>
         </tr>
     </table>
     <br/><br/>

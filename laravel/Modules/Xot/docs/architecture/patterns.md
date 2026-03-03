@@ -81,9 +81,9 @@ Elenco di pratiche da evitare nello sviluppo.
 - Tight Coupling
 
 ## Collegamenti tra versioni di patterns.md
-* [patterns.md](../../../Xot/docs/en/patterns.md)
-* [patterns.md](../../../Xot/docs/it/patterns.md)
-* [patterns.md](../../../Xot/docs/architecture/patterns.md)
+* [patterns.md](../../../xot/docs/en/patterns.md)
+* [patterns.md](../../../xot/docs/it/patterns.md)
+* [patterns.md](../../../xot/docs/architecture/patterns.md)
 
 ### Versione Incoming
 
@@ -91,37 +91,65 @@ Elenco di pratiche da evitare nello sviluppo.
 
 ## Clean Architecture
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/clean_architecture.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/clean_architecture.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/clean_architecture.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Clean Code
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/clean_code.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/clean_code.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/clean_code.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Command Bus
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/command_bus.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/command_bus.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/command_bus.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Repositories
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/repositories.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/repositories.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/repositories.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Contracts
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/contracts.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/contracts.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/contracts.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Presenters
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/presenter.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/presenter.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/presenter.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ## Bad Practices to Avoid
 ```txt
-${cat /mnt/f/var/www/quaeris/laravel/Modules/Xot/_docs/bad_practices.txt}
+<<<<<<< .merge_file_t7Fgct
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/bad_practices.txt}
+=======
+${cat /mnt/f/var/www/ptvx/laravel/Modules/Xot/_docs/bad_practices.txt}
+>>>>>>> .merge_file_2ngrml
 ```
 
 ---

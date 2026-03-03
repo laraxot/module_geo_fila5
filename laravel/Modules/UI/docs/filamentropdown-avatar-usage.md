@@ -1,8 +1,8 @@
 # Utilizzo dei Componenti Filament Dropdown e Avatar 
 
 ## Collegamenti correlati
-- [README modulo UI](/laravel/Modules/UI/docs/README.md)
-- [Utilizzo Componenti Filament](/laravel/Modules/UI/docs/FILAMENT_COMPONENTS_USAGE.md)
+- [README modulo UI](/laravel/modules/ui/docs/readme.md)
+- [Utilizzo Componenti Filament](/laravel/modules/ui/docs/filament_components_usage.md)
 - [Architettura Modulare](/docs/architettura-modulare.md)
 - [Collegamenti Documentazione](/docs/collegamenti-documentazione.md)
 
@@ -200,7 +200,11 @@ $this->mount(function () {
 
 ## Gestione delle Traduzioni
 
-Le traduzioni per il dropdown utente sono definite nei file di traduzione di Laravel sotto il namespace `auth.user_dropdown`. È importante seguire lo standard di SaluteOra per le traduzioni, utilizzando sempre le chiavi di traduzione appropriate e mantenendo la coerenza tra le diverse lingue.
+<<<<<<< HEAD
+Le traduzioni per il dropdown utente sono definite nei file di traduzione di Laravel sotto il namespace `auth.user_dropdown`. È importante seguire lo standard di Laraxot per le traduzioni, utilizzando sempre le chiavi di traduzione appropriate e mantenendo la coerenza tra le diverse lingue.
+=======
+Le traduzioni per il dropdown utente sono definite nei file di traduzione di Laravel sotto il namespace `auth.user_dropdown`. È importante seguire lo standard di healthcare_app per le traduzioni, utilizzando sempre le chiavi di traduzione appropriate e mantenendo la coerenza tra le diverse lingue.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ### Struttura delle Traduzioni
 

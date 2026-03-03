@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Filament\Actions\Action;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -62,10 +64,12 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function mount(int|string $record): void
     {
+        
         /** @var IndennitaResponsabilita $resolvedRecord */
         $resolvedRecord = $this->resolveRecord($record);
         $resolvedRecord->syncRatingsWhere(['anno' => $resolvedRecord->anno]);
         $this->record = $resolvedRecord;
+        
 
         if (! $this->record instanceof IndennitaResponsabilita) {
             abort(404);
@@ -212,6 +216,9 @@ class CompilaIndennitaResponsabilita extends XotBasePage
                     ->label($label)
                     ->inlineLabel()
                     ->default(Arr::get($this->data,$fieldname,0));
+                if(Str::contains($label, 'Importo')){
+                    $item->money('EUR');
+                }
             }
 
             $schema[] = $item;

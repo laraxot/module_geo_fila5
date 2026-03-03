@@ -66,23 +66,22 @@ protected function getHeaderActions(): array
 - `docs/phpstan-level7-guide.md` – guida completa allineata al livello 7
 - `docs/phpstan/guida_filament_table_actions.md` – best practice sulle azioni Filament
 
-> Ultimo aggiornamento: Gennaio 2025 — Stato: ✅ Completato (0 errori)
 
 ---
 
 ## Collegamenti tra versioni di lang-link.md
 
-- [lang-link.md](../../../Chart/docs/lang-link.md)
-- [lang-link.md](../../../Reporting/docs/lang-link.md)
-- [lang-link.md](../../../Gdpr/docs/lang-link.md)
-- [lang-link.md](../../../Notify/docs/lang-link.md)
-- [lang-link.md](../../../Xot/docs/lang-link.md)
-- [lang-link.md](../../../Dental/docs/lang-link.md)
-- [lang-link.md](../../../User/docs/lang-link.md)
-- [lang-link.md](../../../UI/docs/lang-link.md)
-- [lang-link.md](../../../Job/docs/lang-link.md)
-- [lang-link.md](../../../Media/docs/lang-link.md)
-- [lang-link.md](../../../Tenant/docs/lang-link.md)
-- [lang-link.md](../../../Activity/docs/lang-link.md)
-- [lang-link.md](../../../Patient/docs/lang-link.md)
-- [lang-link.md](../../../Cms/docs/lang-link.md)
+- [lang-link.md](../../../chart/docs/lang-link.md)
+- [lang-link.md](../../../reporting/docs/lang-link.md)
+- [lang-link.md](../../../gdpr/docs/lang-link.md)
+- [lang-link.md](../../../notify/docs/lang-link.md)
+- [lang-link.md](../../../xot/docs/lang-link.md)
+- [lang-link.md](../../../dental/docs/lang-link.md)
+- [lang-link.md](../../../user/docs/lang-link.md)
+- [lang-link.md](../../../ui/docs/lang-link.md)
+- [lang-link.md](../../../job/docs/lang-link.md)
+- [lang-link.md](../../../media/docs/lang-link.md)
+- [lang-link.md](../../../tenant/docs/lang-link.md)
+- [lang-link.md](../../../activity/docs/lang-link.md)
+- [lang-link.md](../../../patient/docs/lang-link.md)
+- [lang-link.md](../../../cms/docs/lang-link.md)

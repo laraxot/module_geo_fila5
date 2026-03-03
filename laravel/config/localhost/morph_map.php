@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 return [
-    'customer' => 'Modules\Quaeris\Models\Customer',
-    'home' => 'Modules\Quaeris\Models\Home',
+    'customer' => 'Modules\ModuloEsempio\Models\Customer',
+    'home' => 'Modules\ModuloEsempio\Models\Home',
     'mixed_chart' => 'Modules\Chart\Models\MixedChart',
-    'profile' => 'Modules\Quaeris\Models\Profile',
-    'question_chart' => 'Modules\Quaeris\Models\QuestionChart',
+    'profile' => 'Modules\ModuloEsempio\Models\Profile',
+    'question_chart' => 'Modules\ModuloEsempio\Models\QuestionChart',
     'user' => 'Modules\User\Models\User',
-    'survey_pdf' => 'Modules\Quaeris\Models\SurveyPdf',
+    'survey_pdf' => 'Modules\ModuloEsempio\Models\SurveyPdf',
     'article' => 'Modules\Blog\Models\Article',
 
 ];

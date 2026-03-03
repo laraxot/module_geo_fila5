@@ -1,11 +1,10 @@
 # 📚 **Indice Documentazione Modulo Gdpr**
 
-**Last Update**: 31 Gennaio 2026
 **Status**: ✅ PHPStan Level 10 Compliant
 **Module Version**: 2.3.0
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./README.md) - Panoramica completa e Business Logic dei consensi.
+1. [README.md](./readme.md) - Panoramica completa e Business Logic dei consensi.
 2. [roadmap.md](./roadmap.md) - Qualità del codice e obiettivi di conformità.
 3. [philosophy.md](./philosophy.md) - Privacy by Design e Commandment della compliance.
 
@@ -24,9 +23,9 @@
 - 🧹 **[PHPMD Analysis](./phpmd-report.txt)** - Risoluzione della complessità nei modelli di privacy.
 
 ## 🔗 **Moduli Correlati**
-- [User](../../User/docs/README.md) - Soggetti dei consensi.
-- [Activity](../../Activity/docs/README.md) - Log di sistema integrato.
-- [Xot](../../Xot/docs/README.md) - Base framework e trait UUID.
+- [User](../../user/docs/readme.md) - Soggetti dei consensi.
+- [Activity](../../activity/docs/readme.md) - Log di sistema integrato.
+- [Xot](../../xot/docs/readme.md) - Base framework e trait UUID.
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

@@ -176,11 +176,10 @@ return [
 
 ## 🔗 Collegamenti
 
-- [**README Modulo UI**](../README.md)
+- [**README Modulo UI**](../readme.md)
 - [**Sistema Layout**](../layout/layout-system.md)
 - [**Gestione Asset**](../assets/asset-management.md)
 - [**Personalizzazioni Filament**](../filament/filament-customizations.md)
 
 ---
 
-*Ultimo aggiornamento: giugno 2025*

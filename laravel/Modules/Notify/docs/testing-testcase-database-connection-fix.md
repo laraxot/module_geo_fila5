@@ -1,5 +1,6 @@
 # Fix: Notify TestCase - Database Connection Configuration
 
+**Data**: 2025-01-22
 **Problema**: Test Notify falliscono con InvalidArgumentException per database connection 'notify'
 **Principio**: Il sito funziona, quindi il test deve riflettere il comportamento reale
 

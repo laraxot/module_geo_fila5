@@ -113,17 +113,20 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
         $notificationData = $this->data->data;
 
         /**
-         * @var array<non-empty-string, string|Stringable>
+         * @var array<non-empty-string, string> $data
          */
         $data = [];
 
         // Ensure each key is a non-empty string and each value is string or Stringable (Assicuriamoci che ogni chiave sia una stringa non vuota e ogni valore sia string o Stringable)
         foreach ($notificationData as $key => $value) {
             if (is_string($key) && $key !== '' && (is_string($value) || $value instanceof Stringable)) {
-                $data[$key] = $value;
+                $data[$key] = $value instanceof Stringable ? $value->toString() : $value;
             }
         }
 
-        return CloudMessage::new()->withHighestPossiblePriority()->withData($data);
+        /** @var CloudMessage $message */
+        $message = CloudMessage::new()->withHighestPossiblePriority()->withData($data);
+
+        return $message;
     }
 }

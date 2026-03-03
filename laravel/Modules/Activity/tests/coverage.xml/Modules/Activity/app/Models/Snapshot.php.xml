@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Snapshot.php" path="/Modules/Activity/app/Models" hash="440f8657860a38df793141a99f6a29a5240e2b70">
+    <totals>
+      <lines total="51" comments="30" code="21" executable="0" executed="0" percent="0"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Modules\Activity\Models\Snapshot" start="41" executable="0" executed="0" crap="0">
+      <namespace name="Modules\Activity\Models"/>
+    </class>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Activity\Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6"/>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Database\Eloquent\Builder</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Illuminate\Support\Carbon</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Activity\Database\Factories\SnapshotFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Modules\Xot\Models\Traits\HasXotFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Spatie\EventSourcing\Snapshots\EloquentSnapshot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_AS">as</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SpatieSnapshot</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT"> * Modules\Activity\Models\Snapshot.</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT"> * @property int $id</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT"> * @property string $aggregate_uuid</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT"> * @property int $aggregate_version</token>
+      </line>
+      <line no="19">
+        <token name="T_DOC_COMMENT"> * @property array&lt;array-key, mixed&gt; $state</token>
+      </line>
+      <line no="20">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $created_at</token>
+      </line>
+      <line no="21">
+        <token name="T_DOC_COMMENT"> * @property Carbon|null $updated_at</token>
+      </line>
+      <line no="22">
+        <token name="T_DOC_COMMENT"> * @property string|null $updated_by</token>
+      </line>
+      <line no="23">
+        <token name="T_DOC_COMMENT"> * @property string|null $created_by</token>
+      </line>
+      <line no="24">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="25">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot newModelQuery()</token>
+      </line>
+      <line no="26">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot newQuery()</token>
+      </line>
+      <line no="27">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot query()</token>
+      </line>
+      <line no="28">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot uuid(string $uuid)</token>
+      </line>
+      <line no="29">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereAggregateUuid($value)</token>
+      </line>
+      <line no="30">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereAggregateVersion($value)</token>
+      </line>
+      <line no="31">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereCreatedAt($value)</token>
+      </line>
+      <line no="32">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereCreatedBy($value)</token>
+      </line>
+      <line no="33">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereId($value)</token>
+      </line>
+      <line no="34">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereState($value)</token>
+      </line>
+      <line no="35">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereUpdatedAt($value)</token>
+      </line>
+      <line no="36">
+        <token name="T_DOC_COMMENT"> * @method static Builder&lt;static&gt;|Snapshot whereUpdatedBy($value)</token>
+      </line>
+      <line no="37">
+        <token name="T_DOC_COMMENT"> * @method static SnapshotFactory factory($count = null, $state = [])</token>
+      </line>
+      <line no="38">
+        <token name="T_DOC_COMMENT"> *</token>
+      </line>
+      <line no="39">
+        <token name="T_DOC_COMMENT"> * @mixin \Eloquent</token>
+      </line>
+      <line no="40">
+        <token name="T_DOC_COMMENT"> */</token>
+      </line>
+      <line no="41">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Snapshot</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXTENDS">extends</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">SpatieSnapshot</token>
+      </line>
+      <line no="42">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">HasXotFactory</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="44"/>
+      <line no="45">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** @var string */</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$connection</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'activity'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="47"/>
+      <line no="48">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** @var list&lt;string&gt; */</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$fillable</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'aggregate_uuid'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'aggregate_version'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'state'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'created_at'</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'updated_at'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="50">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="51"/>
+    </source>
+  </file>
+</phpunit>

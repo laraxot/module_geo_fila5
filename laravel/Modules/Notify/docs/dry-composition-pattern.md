@@ -1,5 +1,6 @@
 # Pattern DRY: Composizione Actions Bulk → Single
 
+**Data**: 2025-01-18  
 **Modulo**: Notify  
 **Status**: ✅ Pattern consolidato
 

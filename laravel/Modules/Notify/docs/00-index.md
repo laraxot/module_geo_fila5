@@ -1,11 +1,10 @@
 # 📚 **Indice Documentazione Modulo Notify**
 
-**Last Update**: 31 Gennaio 2026
 **Status**: ✅ PHPStan Level 10 Compliant
 **Module Version**: 2.1.0
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./README.md) - Panoramica completa e Quick Start.
+1. [README.md](./readme.md) - Panoramica completa e Quick Start.
 2. [roadmap.md](./roadmap.md) - Evoluzione 2026: Multi-channel API e AI Templates.
 3. [philosophy.md](./philosophy.md) - "Essere Connessi": filosofia delle notifiche in tempo reale.
 
@@ -16,6 +15,7 @@
 - 🧱 **[Base Templates](./base-templates.md)** - Struttura HTML responsive per messaggi transazionali.
 
 ## ⚙️ **Configurazione Avanzata**
+- 📦 **[Composer Dependencies](./composer-dependencies.md)** - Firebase, FCM, Telegram: package nel modulo Notify, mai nel root.
 - 🛠️ **[Channel Provider](./provider-actions-architecture.md)** - Come estendere il modulo con nuovi driver.
 - 🏷️ **[Acronym Naming](./acronym-naming-conventions.md)** - Standard per la denominazione dei driver e canali.
 - 🔄 **[Queue Management](./monitoring.md)** - Monitoraggio delle code e dei fallback.
@@ -29,8 +29,8 @@
 - 🛡️ **[Security Analysis](./security-analysis.md)** - Protezione dei webhook dei provider (es. WhatsApp).
 
 ## 🔗 **Moduli Correlati**
-- [Xot](../../Xot/docs/README.md) - Dispatcher centrale.
-- [User](../../User/docs/README.md) - Definizione dei destinatari e preferenze.
+- [Xot](../../xot/docs/readme.md) - Dispatcher centrale.
+- [User](../../user/docs/readme.md) - Definizione dei destinatari e preferenze.
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

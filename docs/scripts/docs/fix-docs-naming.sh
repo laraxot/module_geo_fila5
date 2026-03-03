@@ -3,7 +3,7 @@
 
 set -e
 
-BASE_DIR="/var/www/html/_bases/base_saluteora"
+BASE_DIR="/var/www/html/_bases/base_ptvx"
 
 echo "🔧 Correzione automatica naming convention docs..."
 

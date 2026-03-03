@@ -18,6 +18,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Do not extend Filament classes directly in application modules: use `XotBase*` wrappers.
 - Translations must not be hardcoded in Filament components.
 - Prefer Actions (e.g. Spatie Queueable Action) over Services.
+- **CRITICAL RULE**: Before modifying ANY file, the mandatory sequence is: 1. **Read** the file; 2. **Reason**; 3. **Study** the context; 4. **Update and improve** the `docs/` folders within modules and themes. Only after these steps can code modifications begin.
 - Use PHPStan Level 10 approach: "Fix, Don't Ignore" - all 34 modules are now 100% compliant.
 - Follow module-per-module workflow: complete one module before moving to the next.
 - Use MCP tools when encountering file access limitations.
@@ -25,7 +26,8 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace`.
 - **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
-- **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. Use `standardize_docs.py` to fix.
+- **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
+- **Rule**: CASE-INSENSITIVE DUPLICATES - It is strictly forbidden to have files that differ only by case (e.g., `lowercase.php` and `CamelCase.php`). The incorrect version (usually the all-lowercase one) must be deleted immediately.
 - **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
 - **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
 - **Rule**: FILAMENT CUSTOM PAGES - Custom pages MUST extend `XotBase*` classes. Single-record edit pages follow the `$data` array + `form->fill()` + `form->getState()` pattern. For type-safe record access, use a `getSpecificRecord()` helper with explicit `instanceof` narrowing. See skill: `.agent/skills/filament-custom-pages/SKILL.md`.

@@ -1,6 +1,35 @@
-# Roadmap for Incentivi Module
+# Incentivi Module Roadmap
 
-## PHPMD Issues
+## Visione
+
+Modulo per la gestione degli incentivi: progetti, attività, dipendenti, workgroup, capital percentages e liquidazioni.
+
+## Fasi di Sviluppo
+
+### Fase 1: Stabilizzazione (In Progress)
+- [x] PHPStan Level 10 Compliance
+- [ ] PHPMD issues (LongVariable, CyclomaticComplexity, etc.)
+- [ ] Test Coverage improvement
+
+### Fase 2: Refactoring (Planned)
+- [ ] Riduzione complessità UpdateProjectActivitiesAction
+- [ ] Refactoring EmployeesRelationManager
+- [ ] Documentazione completa
+
+### Fase 3: Integrazione (Future)
+- [ ] Integrazione con moduli HR
+- [ ] Traduzioni it/en complete
+
+## Checklist Qualità
+
+- [x] PHPStan Level 10
+- [ ] PHPMD compliance
+- [ ] Test coverage
+- [ ] Documentazione in docs/
+
+---
+
+## PHPMD Issues (dettaglio)
 
 ### LongVariable
 - [ ] `app/Actions/SpareImportoTotaleAction.php:43`: Avoid excessively long variable names like `$importoEffettivoFondo`. Keep variable name length under 20.

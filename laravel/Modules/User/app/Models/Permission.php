@@ -44,6 +44,12 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static static                     firstOrCreate(array $attributes, array $values = [])
  * @method static static                     updateOrCreate(array $attributes, array $values = [])
  *
+ * @property \Modules\Meetup\Models\Profile|null $creator
+ * @property \Modules\Meetup\Models\Profile|null $deleter
+ * @property \Modules\Meetup\Models\Profile|null $updater
+ *
+ * @method static \Modules\User\Database\Factories\PermissionFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission

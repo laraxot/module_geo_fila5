@@ -164,14 +164,14 @@ class MetatagData extends Data implements Wireable
      */
     public function getBrandLogo(): string
     {
-        try {
+        
+        //try {
             /** @var string $path */
             $path = app(AssetAction::class)->execute($this->logo_header);
-
             return asset($path);
-        } catch (Throwable $e) {
-            return asset($this->logo_header);
-        }
+        //} catch (Throwable $e) {
+       //     return asset($this->logo_header);
+       // }
     }
 
     public function getBrandLogoPath(): string

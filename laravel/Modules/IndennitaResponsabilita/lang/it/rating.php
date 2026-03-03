@@ -69,6 +69,29 @@ return [
         ],
         'anno' => [
             'description' => 'anno',
+            'label' => 'anno',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+        ],
+        'rule' => [
+            'label' => 'rule',
+        ],
+        'is_disabled' => [
+            'label' => 'is_disabled',
+        ],
+        'is_readonly' => [
+            'label' => 'is_readonly',
+        ],
+        'extra_attributes' => [
+            'type' => [
+                'label' => 'extra_attributes.type',
+            ],
+            'anno' => [
+                'label' => 'extra_attributes.anno',
+            ],
+        ],
+        'filter' => [
+            'label' => 'filter',
         ],
     ],
     'actions' => [

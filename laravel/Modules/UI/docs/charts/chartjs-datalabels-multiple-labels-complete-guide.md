@@ -6,7 +6,7 @@
 **Livello:** Guida "a prova di stupido" - passo dopo passo
 
 > **Riferimento Ufficiale:** [chartjs-plugin-datalabels - Multiple Labels Sample](https://chartjs-plugin-datalabels.netlify.app/samples/advanced/multiple-labels.html)  
-> **Guida Generale:** [Guida Completa Chart Module](../../Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
+> **Guida Generale:** [Guida Completa Chart Module](../../chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
 
 ---
 
@@ -32,7 +32,7 @@ Questa guida è specifica per l'uso di **multiple labels** con `chartjs-plugin-d
 - Le configurazioni devono rispettare le linee guida AGID (se applicabili)
 
 **Per la guida completa generale, vedere:**
-- [Guida Completa Chart Module](../../Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
+- [Guida Completa Chart Module](../../chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
 
 ---
 
@@ -80,7 +80,7 @@ Nel progetto, il plugin `chartjs-plugin-datalabels` è **già registrato nel mod
 - **KISS**: Configurazione semplice e centralizzata
 - **Coerenza**: Tutti i moduli ereditano automaticamente gli asset chart
 
-Per dettagli completi, vedere [chart-assets-centralization-rule.md](../../Chart/docs/chart-assets-centralization-rule.md).
+Per dettagli completi, vedere [chart-assets-centralization-rule.md](../../chart/docs/chart-assets-centralization-rule.md).
 
 ### Se Usi un Panel Separato per UI
 
@@ -88,7 +88,11 @@ Se il modulo UI ha un **panel Filament separato**, devi:
 
 1. **Installa il plugin:**
    ```bash
-   cd /var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/UI
+<<<<<<< .merge_file_HRpsYw
+   cd /var/www/_bases/base_healthcare_app_fila5_mono/laravel/Modules/UI
+=======
+   cd /var/www/_bases/base_ptvx_fila5_mono/laravel/Modules/UI
+>>>>>>> .merge_file_7N3tl0
    npm install chartjs-plugin-datalabels --save-dev
    ```
 
@@ -574,13 +578,17 @@ protected function getOptions(): array
 ### Documentazione Modulo UI
 
 - [Filament Chart.js Guide](./filament-chart-js-guide.md)
-- [UI Components Documentation](../components/README.md)
+- [UI Components Documentation](../components/readme.md)
 
 ### Documentazione Generale
 
-- [Guida Completa Chart Module](../../Chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
-- [Filament 5.x Installation Guide](../../Chart/docs/filament-5-installation-guide.md)
-- [SimpleChartWidget con Sfondi](../../Quaeris/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+- [Guida Completa Chart Module](../../chart/docs/chartjs-datalabels-multiple-labels-complete-guide.md)
+- [Filament 5.x Installation Guide](../../chart/docs/filament-5-installation-guide.md)
+<<<<<<< .merge_file_HRpsYw
+- [SimpleChartWidget con Sfondi](../../healthcare_app/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+=======
+- [SimpleChartWidget con Sfondi](../../ptvx/docs/simplechartwidget-labels-backgrounds.md) - ⭐ Esempio completo con sfondi ottimizzati per UI/UX
+>>>>>>> .merge_file_7N3tl0
 
 ### Documentazione Ufficiale
 
@@ -591,4 +599,8 @@ protected function getOptions(): array
 
 **Versione:** 1.0  
 **Ultimo Aggiornamento:** Gennaio 2026  
-**Mantenuto da:** Quaeris Development Team
+<<<<<<< .merge_file_HRpsYw
+**Mantenuto da:** healthcare_app Development Team
+=======
+**Mantenuto da:** ModuloEsempio Development Team
+>>>>>>> .merge_file_7N3tl0

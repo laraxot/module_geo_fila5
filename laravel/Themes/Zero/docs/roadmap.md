@@ -5,6 +5,42 @@
 **Status**: Theme infrastructure with basic styling
 **Dependencies**: Xot (core framework), UI (components), all modules (visual integration)
 
+## 🧪 Testing e TDD
+
+### Principi TDD
+- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
+- **Test Coverage**: Minimo 80% per componenti theme
+
+### Struttura Test
+```
+Themes/Zero/tests/
+├── Unit/
+│   └── Components/
+│       └── {Component}Test.php
+├── Feature/
+│   └── Blade/
+│       └── {View}Test.php
+├── Browser/
+│   └── ThemeNavigationTest.php
+├── Pest.php
+└── TestCase.php
+```
+
+### Best Practices
+- [ ] Browser test per navigazione theme
+- [ ] Test componenti Blade
+- [ ] Test reattività JavaScript
+- [ ] Visual regression testing
+
+### Comandi
+```bash
+# Test theme
+./vendor/bin/pest Themes/Zero/tests
+
+# Test con coverage
+./vendor/bin/pest Themes/Zero/tests --coverage --min=80
+```
+
 ## Current State Analysis
 
 ### ✅ Completed Components
@@ -188,13 +224,33 @@ Zero/
 - [ ] 80%+ test coverage
 
 ## Next Steps
+
 1. Begin Phase 1 with responsive design system
 2. Implement complete component library
 3. Add customization features
 4. Optimize performance
 
+## Componenti UI Tema
+
+- `resources/views/components/ui/logo.blade.php` — logo (pub_theme::ui.logo)
+- `resources/views/components/layouts/app.blade.php`
+- `resources/views/components/layouts/main.blade.php`
+- `resources/views/filament/widgets/auth/login.blade.php`
+- `resources/views/pages/auth/login.blade.php`
+
+## Dipendenze
+
+- **Xot**: Framework base, pub_theme resolution
+- **UI**: Componenti condivisi
+- **Chart**: Asset Chart.js (se widget grafici)
+
+## Collegamenti
+
+- [theme-documentation](theme-documentation.md)
+- [themes-system-complete-guide](themes-system-complete-guide.md)
+
 ---
 
-**Last Updated**: 2026-01-02  
+**Ultimo aggiornamento**: Febbraio 2026  
 **Maintainer**: Team Laraxot  
 **Status**: Active Development

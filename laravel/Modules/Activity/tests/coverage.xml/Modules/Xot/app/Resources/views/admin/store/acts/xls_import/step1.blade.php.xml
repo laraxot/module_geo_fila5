@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="step1.blade.php" path="/Modules/Xot/app/Resources/views/admin/store/acts/xls_import" hash="dfc17f1c27a78dfe7030ecf4458b4023af1726b8">
+    <totals>
+      <lines total="31" comments="0" code="31" executable="23" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">@extends('adm_theme::layouts.app')</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">@section('content')</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">PASSO 1</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">{!! $data_html !!}</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">&lt;form action="{{ Request::fullUrlWithQuery(['step' =&gt; 2]) }}" method="POST" enctype="multipart/form-data"&gt;</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">    @csrf</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">    &lt;div class="row"&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">    @foreach ($head as $v)</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">        &lt;div class="col"&gt;</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">        {{ $v }}</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">        &lt;select name="key[{{ $v }}]" class="form-select custom-select form-input" &gt;</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">            &lt;option value=""&gt;---&lt;/option&gt;</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">            @foreach ($fillable as $vf)</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">                &lt;option value="{{ $vf }}"&gt;{{ $vf }}&lt;/option&gt;</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">            @endforeach</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">        &lt;/select&gt;</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">    @endforeach</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">    &lt;/div&gt;</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">    &lt;br/&gt;</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">    &lt;button class="btn btn-success"&gt;Import!&lt;/button&gt;</token>
+      </line>
+      <line no="27">
+        <token name="T_INLINE_HTML">&lt;/form&gt;</token>
+      </line>
+      <line no="28"/>
+      <line no="29"/>
+      <line no="30">
+        <token name="T_INLINE_HTML">@endsection</token>
+      </line>
+      <line no="31"/>
+    </source>
+  </file>
+</phpunit>

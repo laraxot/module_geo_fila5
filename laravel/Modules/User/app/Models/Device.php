@@ -68,6 +68,8 @@ use Modules\Xot\Datas\XotData;
  *
  * @property ProfileContract|null $deleter
  *
+ * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

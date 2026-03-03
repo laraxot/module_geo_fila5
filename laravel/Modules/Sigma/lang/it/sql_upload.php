@@ -55,6 +55,11 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
         ],
     ],
     'messages' => [

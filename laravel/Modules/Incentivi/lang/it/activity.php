@@ -168,6 +168,14 @@ return [
             'icon' => 'openFilters',
             'label' => 'openFilters',
         ],
+        'edit' => [
+            'tooltip' => 'edit',
+            'icon' => 'edit',
+            'label' => 'edit',
+        ],
+        'submit' => [
+            'tooltip' => 'submit',
+        ],
     ],
     'sections' => [
         'Informazioni' => [

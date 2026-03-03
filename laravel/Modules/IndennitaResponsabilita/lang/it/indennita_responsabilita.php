@@ -440,6 +440,11 @@ return [
             'icon' => 'record-pdf1',
             'label' => 'record-pdf1',
         ],
+        'exportPdf1' => [
+            'tooltip' => 'exportPdf1',
+            'icon' => 'exportPdf1',
+            'label' => 'exportPdf1',
+        ],
     ],
     'messages' => [
         'created' => 'Indennità creata con successo',

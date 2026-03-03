@@ -1,6 +1,5 @@
 # Rule: File-generating Action closures MUST return StreamedResponse
 
-## Date: February 2026
 
 ## Rule
 
@@ -59,6 +58,6 @@ use Illuminate\Http\StreamedResponse;
 
 ## Links
 
-- [IndennitaCondizioniLavoro action-return-type-rule](../../IndennitaCondizioniLavoro/docs/action-return-type-rule.md)
+- [IndennitaCondizioniLavoro action-return-type-rule](../../indennitacondizionilavoro/docs/action-return-type-rule.md)
 - [Consolidated actions pattern](consolidated/actions-pattern.md)
 - [Filament best practices](../../../.windsurf/rules/filament-best-practices.md)

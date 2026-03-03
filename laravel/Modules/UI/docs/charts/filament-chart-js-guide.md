@@ -98,7 +98,7 @@ protected function getOptions(): array
 ## 4. Professional Configuration (Standards 2026)
 
 To achieve a premium "SaaS" look, configure your `getOptions()` to control fonts, layouts, and tooltips.
-See the **[LimeSurvey Professional Charts Guide](../../../Limesurvey/docs/professional-charts-and-pdfs.md)** for the detailed specification on:
+See the **[LimeSurvey Professional Charts Guide](../../../limesurvey/docs/professional-charts-and-pdfs.md)** for the detailed specification on:
 -   Font consistency (Inter/Roboto).
 -   Legend positioning.
 -   Gridline reduction (Data-Ink Ratio).
@@ -106,7 +106,11 @@ See the **[LimeSurvey Professional Charts Guide](../../../Limesurvey/docs/profes
 ## 5. PDF Reporting Strategy
 
 **Do NOT** use `dompdf` or client-side canvas capture for charts.
-The architectural standard for Quaeris is **Spatie Laravel PDF** (a wrapper around Browsershot).
+<<<<<<< .merge_file_MKcxnJ
+The architectural standard for healthcare_app is **Spatie Laravel PDF** (a wrapper around Browsershot).
+=======
+The architectural standard for ModuloEsempio is **Spatie Laravel PDF** (a wrapper around Browsershot).
+>>>>>>> .merge_file_Pc197j
 
 **Pattern:** "Shadow Report Views"
 1.  Create a dedicated Blade view for the report (linear layout).
@@ -116,5 +120,5 @@ The architectural standard for Quaeris is **Spatie Laravel PDF** (a wrapper arou
 
 ---
 **See Also**:
--   [Dashboard Best Practices](../../../Limesurvey/docs/dashboard-best-practices.md)
--   [Professional Charts & PDF Guide](../../../Limesurvey/docs/professional-charts-and-pdfs.md)
+-   [Dashboard Best Practices](../../../limesurvey/docs/dashboard-best-practices.md)
+-   [Professional Charts & PDF Guide](../../../limesurvey/docs/professional-charts-and-pdfs.md)

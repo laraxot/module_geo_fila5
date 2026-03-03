@@ -411,7 +411,15 @@ class DashboardPage extends XotBasePage
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+<<<<<<< .merge_file_Uy05NL
+namespace Modules\healthcare_app\Filament\Widgets;
+=======
+<<<<<<< HEAD
+namespace Modules\ExternalProject\Filament\Widgets;
+=======
+namespace Modules\ModuloEsempio\Filament\Widgets;
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> .merge_file_LLVJgf
 
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;

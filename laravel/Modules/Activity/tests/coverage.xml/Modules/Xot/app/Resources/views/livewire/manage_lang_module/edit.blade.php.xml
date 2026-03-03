@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="edit.blade.php" path="/Modules/Xot/app/Resources/views/livewire/manage_lang_module" hash="e0839e680ebc405b8c2e7dc26c2c1008b459b626">
+    <totals>
+      <lines total="30" comments="0" code="30" executable="22" executed="0" percent="0.00"/>
+      <methods count="0" tested="0" percent="0"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="0" tested="0" percent="0"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <coverage/>
+    <source xmlns="https://schema.phpunit.de/coverage/1.0">
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_DECLARE">declare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">strict_types</token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_LNUMBER">1</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="4"/>
+      <line no="5">
+        <token name="T_CLOSE_TAG">?&gt;</token>
+      </line>
+      <line no="6">
+        <token name="T_INLINE_HTML">&lt;div&gt;</token>
+      </line>
+      <line no="7">
+        <token name="T_INLINE_HTML">    @php</token>
+      </line>
+      <line no="8">
+        <token name="T_INLINE_HTML">        if (!isset($prefix)) {</token>
+      </line>
+      <line no="9">
+        <token name="T_INLINE_HTML">            $prefix = '';</token>
+      </line>
+      <line no="10">
+        <token name="T_INLINE_HTML">        }</token>
+      </line>
+      <line no="11">
+        <token name="T_INLINE_HTML">    @endphp</token>
+      </line>
+      <line no="12">
+        <token name="T_INLINE_HTML">    &lt;table class="table table-bordered table-striped table-hover table-sm"&gt;</token>
+      </line>
+      <line no="13">
+        <token name="T_INLINE_HTML">        @foreach ($form_data as $k =&gt; $v)</token>
+      </line>
+      <line no="14">
+        <token name="T_INLINE_HTML">            &lt;tr&gt;</token>
+      </line>
+      <line no="15">
+        <token name="T_INLINE_HTML">                &lt;td&gt;{{ $k }}&lt;/td&gt;</token>
+      </line>
+      <line no="16">
+        <token name="T_INLINE_HTML">                &lt;td&gt; {{-- &lt;input type="text" wire:model="form_data.{{ $k }}" /&gt; --}}</token>
+      </line>
+      <line no="17">
+        <token name="T_INLINE_HTML">                    @if (is_array($v))</token>
+      </line>
+      <line no="18">
+        <token name="T_INLINE_HTML">                        @include('xot::livewire.manage_lang_module.edit',['form_data'=&gt;$v,'prefix'=&gt;$prefix.'.'.$k])</token>
+      </line>
+      <line no="19">
+        <token name="T_INLINE_HTML">                    @else</token>
+      </line>
+      <line no="20">
+        <token name="T_INLINE_HTML">                        &lt;input type="text" wire:model="form_data{{ $prefix }}.{{ $k }}"</token>
+      </line>
+      <line no="21">
+        <token name="T_INLINE_HTML">                            class="form-control" /&gt;</token>
+      </line>
+      <line no="22">
+        <token name="T_INLINE_HTML">                    @endif</token>
+      </line>
+      <line no="23">
+        <token name="T_INLINE_HTML">                &lt;/td&gt;</token>
+      </line>
+      <line no="24">
+        <token name="T_INLINE_HTML">            &lt;/tr&gt;</token>
+      </line>
+      <line no="25">
+        <token name="T_INLINE_HTML">        @endforeach</token>
+      </line>
+      <line no="26">
+        <token name="T_INLINE_HTML">    &lt;/table&gt;</token>
+      </line>
+      <line no="27"/>
+      <line no="28"/>
+      <line no="29">
+        <token name="T_INLINE_HTML">&lt;/div&gt;</token>
+      </line>
+      <line no="30"/>
+    </source>
+  </file>
+</phpunit>
