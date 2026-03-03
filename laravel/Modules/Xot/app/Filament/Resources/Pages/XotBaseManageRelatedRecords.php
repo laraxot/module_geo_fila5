@@ -108,7 +108,9 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     public function getTableHeaderActions(): array
     {
         return [
-            'create' => CreateAction::make()->label('Crea Nuovo')->disableCreateAnother(),
+            'create' => CreateAction::make()
+            ->label('Crea Nuovo')
+            ->disableCreateAnother(),
         ];
     }
 
