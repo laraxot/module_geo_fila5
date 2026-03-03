@@ -4,7 +4,7 @@
     @include('ptv::pdf.intestazione')
     --}}
     <img src="{{ base_path('Modules/Ptv/resources/img/Logo-Provincia-orizzontale-neg.png') }}" style="height:50px" />
-    <h3>{{ $title }}</h3>
+    <h3> @if(isset($rows[0])) {{ $rows[0]->valutatore?->nome_stabi }} <br/> @endif {{ $title }}</h3>
     <br/><br/>
     <table>
         <colgroup>
@@ -41,7 +41,13 @@
                     @foreach($row->ratings as $rating)
                         <tr>
                             <td> {{$rating->title}} </td>
-                            <td  align="right"><b>{{ $rating->pivot->value }}</b></td>
+                            <td  align="right">
+                             @if(Str::contains($rating->txt, 'Importo'))
+                                <b>@money($rating->pivot->value * 100,'EUR')</b>
+                            @else
+                                <b>{{ $rating->pivot->value }}</b>
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     
