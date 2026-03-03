@@ -34,38 +34,39 @@ Some organizations or specific modules require:
 - Core theme logic (reused from Zero foundation).
 - Support for legacy non-responsive browsers.
 
-## 5. Functional Requirements
-### FR-001: Advanced Dashboards
-- **Priority**: Must-have
-- **Description**: Complex grid layouts for rich data visualization.
-- **Acceptance Criteria**: Seamless integration with the Statistiche module widgets.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Custom Branding Engine
-- **Priority**: Should-have
-- **Description**: Ability to apply client-specific logos and palettes through the `Setting` module.
-- **Acceptance Criteria**: Dynamic update of the UI based on tenant configuration.
+### P0: Premium Identity (Must-have)
+- **FR-001: Advanced Dashboards**: Complex grid layouts for rich data visualization, integrated with `XotBaseWidget`.
+- **FR-004: Full Interactivity**: Deep use of Alpine.js and Livewire for client-side reactivity and seamless state management.
+- **FR-005: Tenant-Specific Branding**: Engine to apply client-specific logos and palettes through the `Setting` and `Tenant` modules.
 
-### FR-003: Micro-Interaction Library
-- **Priority**: Should-have
-- **Description**: Richer set of animations than the default theme.
-- **Acceptance Criteria**: Enhances "perceived performance" and user engagement.
+### P1: UX & Engagement (Important)
+- **FR-003: Micro-Interaction Library**: Rich set of animations and transitions to enhance "perceived performance" and user engagement.
+- **FR-006: High-Density Layouts**: Specialized layouts for data-heavy administrative tasks with clear information hierarchy.
 
-### FR-004: Full Interactivity
-- **Priority**: Must-have
-- **Description**: Deep use of Alpine.js for client-side reactivity.
+### P2: Customization & Scale (Nice-to-have)
+- **FR-007: Visual Theme Editor**: Administrative interface for real-time visual theme customization.
+- **FR-008: Adaptive UX flows**: Dynamic interface adjustments based on user role or task complexity.
 
-## 6. Design Tokens & Design System
-- **Focus**: High data density with premium aesthetics.
-- **Shadows/Depth**: Increased use of depth to separate UI layers.
-- **Color Palette**: Vibrant, multi-color support for different categories/units.
+## 6. Design Tokens & Accessibility
 
-## 7. Technical Architecture
-### Technologies
-- **Base**: Zero theme base.
-- **Styling**: Tailwind CSS JIT.
-- **Interactivity**: Alpine.js / Livewire.
-### Integration Points
-- Optionally selected per Tenant or User Group.
+### Design Tokens (Premium)
+- **Depth & Shadows**: Extended shadow scales and glassmorphism tokens for clear UI layering.
+- **Vibrant Palette**: Multi-color support for semantic categorization of organizational units and data types.
+- **Data-Centric Typography**: Font pairings optimized for numeric clarity and high-density tables.
+
+### Accessibility (A11Y)
+- **WCAG 2.1 AA+ Compliance**: Enhanced focus on high-contrast modes and screen reader optimization for complex dashboards.
+- **Cognitive Inclusion**: Use of motion-reduction tokens and clear visual cues for complex navigation paths.
+- **Dark Mode Excellence**: Premium dark mode implementation with carefully balanced contrast for prolonged data analysis sessions.
+
+## 7. Technical Architecture & Interoperability
+
+### Agnostic & Scalable Design
+- **Base Reuse**: One theme MUST maximize the reuse of `Zero` core components through variant-based styling (BEM or utility-first patterns).
+- **Interoperability**: Provides a premium view layer for any Laraxot module without requiring module-specific theme code.
+- **Sustainable UI**: High performance maintained despite increased visual complexity through efficient asset orchestration.
 
 ## 8. User Experience
 - App-like navigation feel.
