@@ -27,7 +27,6 @@ use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static CriteriEsclusioneFactory factory($count = null, $state = [])
  * @method static Builder|CriteriEsclusione newModelQuery()
  * @method static Builder|CriteriEsclusione newQuery()
@@ -43,12 +42,11 @@ use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
  * @method static Builder|CriteriEsclusione whereUpdatedAt($value)
  * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
  * @method static Builder|CriteriEsclusione whereValue($value)
- *
  * @property Profile|null $creator
  * @property \Illuminate\Database\Eloquent\Collection<int, CriteriOption> $criteriOptions
  * @property int|null $criteri_options_count
  * @property Profile|null $updater
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract

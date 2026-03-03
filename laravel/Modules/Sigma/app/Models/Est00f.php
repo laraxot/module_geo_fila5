@@ -42,7 +42,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dafa2
  * @property string|null $tiprap
  * @property string|null $codatt
- *
  * @method static Builder|Est00f newModelQuery()
  * @method static Builder|Est00f newQuery()
  * @method static Builder|Est00f query()
@@ -79,7 +78,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est00f whereVo01($value)
  * @method static Builder|Est00f whereVo02($value)
  * @method static Builder|Est00f whereVo03($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Est00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Est00f extends BaseModel

@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mdcom3
  * @property string|null $mdcom4
  * @property string|null $mdcom5
- *
  * @method static Builder|Mdis00l1 newModelQuery()
  * @method static Builder|Mdis00l1 newQuery()
  * @method static Builder|Mdis00l1 query()
@@ -45,7 +44,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mdis00l1 whereMdflg1($value)
  * @method static Builder|Mdis00l1 whereMdindi($value)
  * @method static Builder|Mdis00l1 whereMdmatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Mdis00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Mdis00l1 extends BaseModel

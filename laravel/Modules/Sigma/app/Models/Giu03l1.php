@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $g3flg1
  * @property string|null $g3com1
  * @property int|null $g3com2
- *
  * @method static Builder|Giu03l1 newModelQuery()
  * @method static Builder|Giu03l1 newQuery()
  * @method static Builder|Giu03l1 query()
@@ -47,7 +46,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Giu03l1 whereLecod1($value)
  * @method static Builder|Giu03l1 whereLecod2($value)
  * @method static Builder|Giu03l1 whereStdata($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Giu03l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Giu03l1 extends BaseModel

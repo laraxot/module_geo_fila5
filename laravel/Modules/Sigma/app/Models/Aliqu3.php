@@ -51,7 +51,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $quli
  * @property string|null $pt1
  * @property string|null $pt2
- *
  * @method static Builder|Aliqu3 newModelQuery()
  * @method static Builder|Aliqu3 newQuery()
  * @method static Builder|Aliqu3 query()
@@ -97,7 +96,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Aliqu3 whereSess1($value)
  * @method static Builder|Aliqu3 whereStab($value)
  * @method static Builder|Aliqu3 whereTip1($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Aliqu3Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Aliqu3 extends BaseModel

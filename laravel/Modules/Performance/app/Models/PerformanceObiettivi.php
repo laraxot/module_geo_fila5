@@ -21,11 +21,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $updated_at
  * @property-read Performance $performance
  * @property-read CriteriValutazione $criteri
- *
  * @method static Builder<static>|PerformanceObiettivi newModelQuery()
  * @method static Builder<static>|PerformanceObiettivi newQuery()
  * @method static Builder<static>|PerformanceObiettivi query()
- *
  * @mixin \Eloquent
  */
 class PerformanceObiettivi extends Model

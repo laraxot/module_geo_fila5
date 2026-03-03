@@ -26,7 +26,6 @@ use function Safe\date;
  * @property Carbon|null $updated_at
  * @property-read Collection<int, IndennitaTipoDettaglio> $dettaglio
  * @property-read int|null $dettaglio_count
- *
  * @method static Builder|IndennitaTipo newModelQuery()
  * @method static Builder|IndennitaTipo newQuery()
  * @method static Builder|IndennitaTipo query()
@@ -37,10 +36,10 @@ use function Safe\date;
  * @method static Builder|IndennitaTipo whereSvocfi($value)
  * @method static Builder|IndennitaTipo whereUpdatedAt($value)
  * @method static Builder|IndennitaTipo whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
+ * @property-read string $description
  * @mixin \Eloquent
  */
 class IndennitaTipo extends BaseModel

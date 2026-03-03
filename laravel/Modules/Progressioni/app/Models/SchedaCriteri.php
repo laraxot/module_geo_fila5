@@ -26,7 +26,6 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @property string|null $updated_by
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static SchedaCriteriFactory factory($count = null, $state = [])
  * @method static Builder|SchedaCriteri newModelQuery()
  * @method static Builder|SchedaCriteri newQuery()
@@ -50,8 +49,15 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder|SchedaCriteri whereUpdatedAt($value)
  * @method static Builder|SchedaCriteri whereUpdatedBy($value)
  * @method static Builder|SchedaCriteri withDays(int $date_min, int $date_max)
- *
  * @mixin Builder
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read string $from_field
+ * @property-read string $to_field
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static Builder<static>|SchedaCriteri ofEnte(int $ente)
+ * @method static Builder<static>|SchedaCriteri ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ * @mixin \Eloquent
  */
 class SchedaCriteri extends BaseModel
 {

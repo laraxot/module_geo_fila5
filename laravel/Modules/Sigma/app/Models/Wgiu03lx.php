@@ -33,7 +33,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $g3com7
  * @property string|null $g3impe
  * @property string|null $g3unmi
- *
  * @method static Builder|Wgiu03lx newModelQuery()
  * @method static Builder|Wgiu03lx newQuery()
  * @method static Builder|Wgiu03lx query()
@@ -61,7 +60,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wgiu03lx whereLecod1($value)
  * @method static Builder|Wgiu03lx whereLecod2($value)
  * @method static Builder|Wgiu03lx whereStdata($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Wgiu03lxFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Wgiu03lx extends BaseModel

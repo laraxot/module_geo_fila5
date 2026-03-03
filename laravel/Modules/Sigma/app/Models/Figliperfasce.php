@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $irpper
  * @property string|null $irpinv
  * @property string|null $irptip
- *
  * @method static Builder|Figliperfasce newModelQuery()
  * @method static Builder|Figliperfasce newQuery()
  * @method static Builder|Figliperfasce query()
@@ -37,7 +36,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Figliperfasce whereIrptip($value)
  * @method static Builder|Figliperfasce whereMatr($value)
  * @method static Builder|Figliperfasce whereNome($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\FigliperfasceFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Figliperfasce extends BaseModel

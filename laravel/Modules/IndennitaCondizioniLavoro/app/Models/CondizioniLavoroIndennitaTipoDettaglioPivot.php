@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read int|float $tot
  * @property-read int|float $tot_x_ptime
  * @property-read IndennitaTipoDettaglio|null $indennitaTipoDettaglio
- *
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot newModelQuery()
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot newQuery()
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot query()
@@ -29,7 +28,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot whereId($value)
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot whereIndennitaTipoDettaglioId($value)
  * @method static Builder|CondizioniLavoroIndennitaTipoDettaglioPivot whereNote($value)
- *
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static Builder<static>|CondizioniLavoroIndennitaTipoDettaglioPivot whereCreatedAt($value)
+ * @method static Builder<static>|CondizioniLavoroIndennitaTipoDettaglioPivot whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class CondizioniLavoroIndennitaTipoDettaglioPivot extends BasePivot

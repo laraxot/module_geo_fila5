@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $acpimp
  * @property string|null $acpeur
  * @property string|null $acpann
- *
  * @method static Builder|Acp00l1 newModelQuery()
  * @method static Builder|Acp00l1 newQuery()
  * @method static Builder|Acp00l1 query()
@@ -41,7 +40,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Acp00l1 whereEnte($value)
  * @method static Builder|Acp00l1 whereId($value)
  * @method static Builder|Acp00l1 whereMatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Acp00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Acp00l1 extends BaseModel

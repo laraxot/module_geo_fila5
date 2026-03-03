@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $repar
  * @property string|null $dest1
  * @property string|null $dest2
- *
  * @method static Builder|Repart1l newModelQuery()
  * @method static Builder|Repart1l newQuery()
  * @method static Builder|Repart1l query()
@@ -25,7 +24,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repart1l whereId($value)
  * @method static Builder|Repart1l whereRepar($value)
  * @method static Builder|Repart1l whereStabi($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Repart1lFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Repart1l extends BaseModel

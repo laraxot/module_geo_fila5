@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $accann
  * @property int $accaa
  * @property int $accmm
- *
  * @method static Builder|Accina newModelQuery()
  * @method static Builder|Accina newQuery()
  * @method static Builder|Accina query()
@@ -31,7 +30,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Accina whereImpeur($value)
  * @method static Builder|Accina whereImpina($value)
  * @method static Builder|Accina whereMatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AccinaFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Accina extends BaseModel

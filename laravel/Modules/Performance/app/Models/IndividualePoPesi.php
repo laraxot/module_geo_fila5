@@ -30,13 +30,10 @@ use Illuminate\Support\Carbon;
  * @property-read IndividualeRegionale|null $individualeRegionale
  * @property-read Organizzativa|null $organizzativa
  * @property-read Performance|null $performance
- *
  * @mixin Model
- *
  * @method static Builder<static>|IndividualePoPesi newModelQuery()
  * @method static Builder<static>|IndividualePoPesi newQuery()
  * @method static Builder<static>|IndividualePoPesi query()
- *
  * @mixin \Eloquent
  */
 class IndividualePoPesi extends Model

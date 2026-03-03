@@ -23,7 +23,6 @@ use Modules\Ptv\Models\Profile;
  * @property-read Employee|null $employee
  * @property-read Project|null $project
  * @property-read Workgroup|null $workgroup
- *
  * @method static Builder|EmployeeWorkgroup newModelQuery()
  * @method static Builder|EmployeeWorkgroup newQuery()
  * @method static Builder|EmployeeWorkgroup query()
@@ -35,7 +34,7 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|EmployeeWorkgroup whereUpdatedAt($value)
  * @method static Builder|EmployeeWorkgroup whereUpdatedBy($value)
  * @method static Builder|EmployeeWorkgroup whereWorkgroupId($value)
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class EmployeeWorkgroup extends BasePivot

@@ -25,7 +25,6 @@ use Modules\Ptv\Models\Profile;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|CriteriValutazione newModelQuery()
  * @method static Builder|CriteriValutazione newQuery()
  * @method static Builder|CriteriValutazione query()
@@ -41,13 +40,11 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|CriteriValutazione wherePostType($value)
  * @method static Builder|CriteriValutazione whereUpdatedAt($value)
  * @method static Builder|CriteriValutazione whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static CriteriValutazioneFactory factory($count = null, $state = [])
  * @method static Builder<static>|CriteriValutazione ordered(string $direction = 'asc')
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class CriteriValutazione extends PtvCriteriValutazione

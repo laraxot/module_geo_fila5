@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $desc2
  * @property string|null $liv
  * @property string|null $tqann
- *
  * @method static Builder|Tqu00l1 newModelQuery()
  * @method static Builder|Tqu00l1 newQuery()
  * @method static Builder|Tqu00l1 query()
@@ -39,7 +38,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Tqu00l1 whereRuolo($value)
  * @method static Builder|Tqu00l1 whereTipco($value)
  * @method static Builder|Tqu00l1 whereTqann($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Tqu00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Tqu00l1 extends BaseModel

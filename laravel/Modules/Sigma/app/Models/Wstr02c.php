@@ -33,7 +33,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $rimdis
  * @property int $rimlav
  * @property int $rimdif
- *
  * @method static Builder|Wstr02c newModelQuery()
  * @method static Builder|Wstr02c newQuery()
  * @method static Builder|Wstr02c query()
@@ -61,7 +60,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wstr02c whereW2orau($value)
  * @method static Builder|Wstr02c whereW2pesg($value)
  * @method static Builder|Wstr02c whereW2turn($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Wstr02cFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Wstr02c extends BaseModel

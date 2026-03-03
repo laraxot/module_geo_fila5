@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $wnmatr
  * @property string|null $wncom1
  * @property string|null $wncom2
- *
  * @method static Builder|Wcon00l1 newModelQuery()
  * @method static Builder|Wcon00l1 newQuery()
  * @method static Builder|Wcon00l1 query()
@@ -25,7 +24,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wcon00l1 whereWncom2($value)
  * @method static Builder|Wcon00l1 whereWndtda($value)
  * @method static Builder|Wcon00l1 whereWnmatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Wcon00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Wcon00l1 extends BaseModel

@@ -20,7 +20,6 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|CriteriOption newModelQuery()
  * @method static Builder|CriteriOption newQuery()
  * @method static Builder|CriteriOption query()
@@ -32,12 +31,10 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|CriteriOption whereUpdatedAt($value)
  * @method static Builder|CriteriOption whereUpdatedBy($value)
  * @method static Builder|CriteriOption whereValue($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static CriteriOptionFactory factory($count = null, $state = [])
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @mixin \Eloquent
  */
 class CriteriOption extends BaseModel

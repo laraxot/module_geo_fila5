@@ -46,7 +46,6 @@ use Webmozart\Assert\Assert;
  * @property-read Repart|null $repart
  * @property-read Collection<int, Schede> $schede
  * @property-read int|null $schede_count
- *
  * @method static mixed factory($count = null, $state = [])
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
@@ -73,12 +72,16 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Valutatore whereUpdatedBy($value)
  * @method static Builder|Valutatore whereUpdatedIp($value)
  * @method static Builder|Valutatore whereValutatoreId($value)
- *
  * @property int $n_diritto_excellence
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|Valutatore whereNDirittoExcellence($value)
+ * @property string|null $post_type
+ * @property int|null $post_id
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @method static Builder<static>|Valutatore wherePostId($value)
+ * @method static Builder<static>|Valutatore wherePostType($value)
+ * @mixin \Eloquent
  */
 class Valutatore extends BaseModel
 {

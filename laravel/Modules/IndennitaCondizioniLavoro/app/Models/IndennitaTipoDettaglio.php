@@ -28,7 +28,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $created_by
  * @property-read IndennitaTipo|null $indennitaTipo
  * @property-read CondizioniLavoroIndennitaTipoDettaglioPivot|null $pivot
- *
  * @method static Builder|IndennitaTipoDettaglio newModelQuery()
  * @method static Builder|IndennitaTipoDettaglio newQuery()
  * @method static Builder|IndennitaTipoDettaglio query()
@@ -46,10 +45,9 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|IndennitaTipoDettaglio whereOnlyDisci1($value)
  * @method static Builder|IndennitaTipoDettaglio whereUpdatedAt($value)
  * @method static Builder|IndennitaTipoDettaglio whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class IndennitaTipoDettaglio extends BaseModel

@@ -47,7 +47,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  * @property int $disci1
- *
  * @method static FoodTicketFactory factory($count = null, $state = [])
  * @method static Builder|FoodTicket newModelQuery()
  * @method static Builder|FoodTicket newQuery()
@@ -87,10 +86,9 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|FoodTicket whereUpdatedWmen00fAt($value)
  * @method static Builder|FoodTicket whereUpdatedWstr01lxAt($value)
  * @method static Builder|FoodTicket whereUpdatedWstr02fAt($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class FoodTicket extends BaseModel

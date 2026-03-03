@@ -27,6 +27,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
 - **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
+- **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
 - **Rule**: CASE-INSENSITIVE DUPLICATES - It is strictly forbidden to have files that differ only by case (e.g., `lowercase.php` and `CamelCase.php`). The incorrect version (usually the all-lowercase one) must be deleted immediately.
 - **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
 - **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.

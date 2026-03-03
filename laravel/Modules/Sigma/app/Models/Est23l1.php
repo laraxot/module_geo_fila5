@@ -38,7 +38,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab23
  * @property string|null $mese23
  * @property string|null $ann23
- *
  * @method static Builder|Est23l1 newModelQuery()
  * @method static Builder|Est23l1 newQuery()
  * @method static Builder|Est23l1 query()
@@ -71,7 +70,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est23l1 whereVoce2s($value)
  * @method static Builder|Est23l1 whereVoce3s($value)
  * @method static Builder|Est23l1 whereVoce4s($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Est23l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Est23l1 extends BaseModel
