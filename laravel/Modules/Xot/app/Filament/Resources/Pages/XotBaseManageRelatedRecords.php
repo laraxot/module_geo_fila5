@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Actions\Action;
+<<<<<<< HEAD
+=======
+use Filament\Actions\CreateAction;
+use Filament\Infolists\Components\Component as InfolistComponent;
+>>>>>>> 4a379824 (.)
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
@@ -31,7 +36,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 
     public function getRecordTitle(): string
     {
-        $value = $this->getRecord()->{static::$recordTitleAttribute};
+        $value = $this->getRecord()->getAttribute(static::$recordTitleAttribute);
 
         return is_string($value) ? $value : (string) ($value ?? '');
     }
@@ -56,7 +61,11 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
      * Get the infolist schema.
      * This can be used to display metadata of the owner record.
      *
+<<<<<<< HEAD
      * @return array<int, Component>
+=======
+     * @return array<int, InfolistComponent>
+>>>>>>> 4a379824 (.)
      */
     public function getInfolistSchema(): array
     {
