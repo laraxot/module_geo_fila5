@@ -4,21 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Resources\Pages;
 
-use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
-use Modules\Xot\Filament\Traits\HasXotTable;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
-use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Override;
-use Modules\Xot\Filament\Traits\TransFuncTrait;
+use Modules\Xot\Filament\Traits\HasXotTable;
 
 /**
- * ---
+ * Base page per la gestione dei record correlati con tabella standard Xot.
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
@@ -26,14 +21,6 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 
     // protected static string $resource;
     protected static string $recordTitleAttribute = 'name';
-
-    /**
-     * Restituisce il gruppo di navigazione (override opzionale).
-     */
-    public static function getNavigationGroup(): string
-    {
-        return '';
-    }
 
     /**
      * Restituisce il titolo della pagina.
@@ -53,7 +40,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     /**
      * Restituisce lo schema del form per i record correlati.
      *
-     * @return array<\Filament\Schemas\Components\Component>
+     * @return array<Component>
      */
     // abstract public static function getFormSchema(): array;
 
@@ -84,37 +71,34 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
      *
      * @return array<string, TextColumn>
      */
-    #[Override]
+    #[\Override]
     public function getTableColumns(): array
     {
         return [
-            'id' => TextColumn::make('id')->label('ID')->sortable(),
+            'id' => TextColumn::make('id')
+                ->sortable(),
             'name' => TextColumn::make('name')
-                ->label('Nome')
                 ->searchable()
                 ->sortable(),
             'created_at' => TextColumn::make('created_at')
-                ->label('Data Creazione')
                 ->dateTime('d/m/Y H:i')
                 ->sortable(),
         ];
     }
 
     /**
-     * Definisce le azioni dell'intestazione della tabella.
-     * Questo metodo può essere sovrascritto nelle classi figlie.
+     * Azioni header della pagina (non della tabella).
+     *
+     * Per le pagine ManageRelatedRecords il default è vuoto: la creazione
+     * avviene tramite le azioni della tabella (`getTableHeaderActions()` del trait HasXotTable).
+     *
+     * Le classi figlie possono sovrascrivere questo metodo per aggiungere
+     * azioni di pagina (es. export, report PDF).
      *
      * @return array<string, Action>
      */
-    public function getTableHeaderActions(): array
+    protected function getHeaderActions(): array
     {
-        return [
-            'create' => CreateAction::make()->label('Crea Nuovo')->disableCreateAnother(),
-        ];
-    }
-
-    public static function getNavigationLabel(): string
-    {
-        return static::transFunc(__FUNCTION__);
+        return [];
     }
 }

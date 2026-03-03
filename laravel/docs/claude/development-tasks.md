@@ -402,7 +402,7 @@ echo "✅ Production deployment completed!"
 echo "🏗️ Initial PTVX Development Setup"
 
 # Clone repository
-git clone git@github.com:provtv/base_ptv_fila4_mono.git laravel
+git clone git@github.com:provtv/base_ptv_fila5_mono.git laravel
 cd laravel
 
 # Install dependencies

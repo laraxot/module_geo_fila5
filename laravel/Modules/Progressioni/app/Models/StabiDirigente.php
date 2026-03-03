@@ -42,7 +42,6 @@ use Modules\Sigma\Models\Repart;
  * @property-read Repart|null $repart
  * @property-read Collection<int, Schede> $schede
  * @property-read int|null $schede_count
- *
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
@@ -69,7 +68,9 @@ use Modules\Sigma\Models\Repart;
  * @method static Builder|StabiDirigente whereUpdatedBy($value)
  * @method static Builder|StabiDirigente whereUpdatedIp($value)
  * @method static Builder|StabiDirigente whereValutatoreId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class StabiDirigente extends PtvStabiDirigenteModel

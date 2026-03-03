@@ -71,7 +71,6 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @property int|null $qua00f_count
  * @property Collection<int, Qua00f> $qua00fsimple
  * @property int|null $qua00fsimple_count
- *
  * @method static Builder|Asz00k1 newModelQuery()
  * @method static Builder|Asz00k1 newQuery()
  * @method static Builder|Asz00k1 ofCodici($lista_codici)
@@ -125,7 +124,7 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @method static Builder|Asz00k1 whereMatr($value)
  * @method static Builder|Asz00k1 withDays(int $date_min, int $date_max)
  * @method static Builder|Asz00k1 ofEnte(int $ente)
- *
+ * @method static Builder<static>|Asz00k1 ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @mixin \Eloquent
  */
 class Asz00k1 extends Model

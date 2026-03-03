@@ -17,7 +17,7 @@ After changing values in `.env` file (like `DB_HOST`, `DB_PASSWORD`, etc.), the 
 ### Solution 1: Clear Laravel Caches (ALWAYS DO THIS FIRST)
 
 ```bash
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Clear all caches
 php artisan config:clear    # Configuration cache
@@ -71,7 +71,7 @@ sudo systemctl status php8.3-fpm
 ### Solution 4: Restart Queue Workers
 
 ```bash
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Restart queue workers
 php artisan queue:restart
@@ -110,7 +110,7 @@ sudo systemctl status nginx  # or apache2
 
 ```bash
 # View DB_HOST in .env
-grep "DB_HOST" /var/www/_bases/base_ptvx_fila4_mono/laravel/.env
+grep "DB_HOST" /var/www/_bases/base_ptvx_fila5_mono/laravel/.env
 
 # Expected: Your new value
 ```
@@ -147,13 +147,13 @@ try {
 Create this script for quick cleanup:
 
 ```bash
-# /var/www/_bases/base_ptvx_fila4_mono/bashscripts/maintenance/cleanup/clear_all_caches.sh
+# /var/www/_bases/base_ptvx_fila5_mono/bashscripts/maintenance/cleanup/clear_all_caches.sh
 
 #!/bin/bash
 
 echo "🔄 Clearing all Laravel caches..."
 
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Clear Laravel caches
 php artisan config:clear
@@ -174,7 +174,7 @@ echo "📝 Remember to restart PHP-FPM if needed: sudo systemctl restart php8.3-
 
 **Usage**:
 ```bash
-bash /var/www/_bases/base_ptvx_fila4_mono/bashscripts/maintenance/cleanup/clear_all_caches.sh
+bash /var/www/_bases/base_ptvx_fila5_mono/bashscripts/maintenance/cleanup/clear_all_caches.sh
 ```
 
 ---
@@ -185,7 +185,7 @@ bash /var/www/_bases/base_ptvx_fila4_mono/bashscripts/maintenance/cleanup/clear_
 
 ```bash
 # Check you edited the correct file
-ls -la /var/www/_bases/base_ptvx_fila4_mono/laravel/.env
+ls -la /var/www/_bases/base_ptvx_fila5_mono/laravel/.env
 
 # Not .env.example!
 # Not in a different directory!

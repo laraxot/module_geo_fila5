@@ -71,7 +71,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $datdal
  * @property string|null $datal
  * @property string|null $anaann
- *
  * @method static Builder|Ana20l11 newModelQuery()
  * @method static Builder|Ana20l11 newQuery()
  * @method static Builder|Ana20l11 query()
@@ -137,7 +136,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana20l11 whereTiprec($value)
  * @method static Builder|Ana20l11 whereTitpro($value)
  * @method static Builder|Ana20l11 whereTitstu($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Ana20l11Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Ana20l11 extends BaseModel

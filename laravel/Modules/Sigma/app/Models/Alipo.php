@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alipo newModelQuery()
  * @method static Builder|Alipo newQuery()
  * @method static Builder|Alipo query()
- *
  * @property int $id
  * @property string|null $ente
  * @property string|null $matr
@@ -47,7 +46,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $diff
  * @property string|null $flagat
  * @property string|null $flagx
- *
  * @method static Builder|Alipo whereAssu1($value)
  * @method static Builder|Alipo whereCodqua($value)
  * @method static Builder|Alipo whereCodu($value)
@@ -82,7 +80,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alipo whereV4110($value)
  * @method static Builder|Alipo whereV4400($value)
  * @method static Builder|Alipo whereV4410($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AlipoFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Alipo extends BaseModel

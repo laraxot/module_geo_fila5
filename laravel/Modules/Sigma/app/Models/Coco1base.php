@@ -89,7 +89,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $data_inizio
  * @property string|null $data_fine
  * @property string|null $flag_di_annullamento
- *
  * @method static Builder|Coco1base newModelQuery()
  * @method static Builder|Coco1base newQuery()
  * @method static Builder|Coco1base query()
@@ -173,7 +172,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Coco1base whereTotaleVoceSalvato($value)
  * @method static Builder|Coco1base whereTotaleVoceSalvatoInEuro($value)
  * @method static Builder|Coco1base whereVoceRetributiva($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Coco1baseFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Coco1base extends BaseModel

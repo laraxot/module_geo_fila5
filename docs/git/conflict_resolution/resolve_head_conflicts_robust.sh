@@ -19,7 +19,7 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 # Configurazione
-BASE_DIR="/var/www/_bases/base_techplanner_fila4_mono"
+BASE_DIR="/var/www/_bases/base_techplanner_fila5_mono"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 LOG_FILE="${BASE_DIR}/bashscripts/logs/resolve_head_conflicts_robust_${TIMESTAMP}.log"
 

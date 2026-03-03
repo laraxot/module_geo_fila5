@@ -87,7 +87,7 @@
 
 ### 5. ✅ MCP Servers Configurati
 
-**File**: `~/.cursor/mcp.json` aggiornato per `base_ptvx_fila4_mono`
+**File**: `~/.cursor/mcp.json` aggiornato per `base_ptvx_fila5_mono`
 
 **Server attivi**:
 1. laravel-boost (path aggiornato)
@@ -114,7 +114,7 @@
 
 **Scopo**: Analizza tutti i moduli con PHPStan Level 10, genera report
 
-**Output**: `/var/www/_bases/base_ptvx_fila4_mono/report.md`
+**Output**: `/var/www/_bases/base_ptvx_fila5_mono/report.md`
 
 **Docs**: `bashscripts/docs/phpstan-all-modules.md`
 
@@ -190,7 +190,7 @@
 
 2. **Applica migrazione collation**:
    ```bash
-   cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+   cd /var/www/_bases/base_ptvx_fila5_mono/laravel
    php artisan migrate
    ```
 
@@ -205,7 +205,7 @@ Script in esecuzione: `bashscripts/quality-assurance/phpstan_all_modules.sh`
 
 **Monitor progress**:
 ```bash
-tail -f /var/www/_bases/base_ptvx_fila4_mono/report.md
+tail -f /var/www/_bases/base_ptvx_fila5_mono/report.md
 ```
 
 **Tempo stimato**: 30-60 minuti per 34 moduli

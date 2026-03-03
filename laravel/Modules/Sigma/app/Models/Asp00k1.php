@@ -31,7 +31,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $asp003
  * @property string|null $asp004
  * @property string|null $asp005
- *
  * @method static Builder|Asp00k1 newModelQuery()
  * @method static Builder|Asp00k1 newQuery()
  * @method static Builder|Asp00k1 query()
@@ -57,7 +56,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asp00k1 whereMatr($value)
  * @method static Builder|Asp00k1 whereNumrid($value)
  * @method static Builder|Asp00k1 whereTipasp($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Asp00k1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Asp00k1 extends BaseModel

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
+use Modules\Tenant\Contracts\SushiToJsonContract;
 use Modules\Tenant\Database\Factories\TestSushiModelFactory;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Tenant\Services\TenantService;
@@ -42,7 +43,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property-read ProfileContract|null $updater
  * @mixin \Eloquent
  */
-class TestSushiModel extends BaseModel
+class TestSushiModel extends BaseModel implements SushiToJsonContract
 {
     use HasXotFactory;
     use SushiToJson;

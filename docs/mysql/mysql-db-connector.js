@@ -17,7 +17,7 @@ const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
 
 // Percorsi
-const PROJECT_DIR = '/var/www/html/_bases/base_predict_fila3_mono';
+const PROJECT_DIR = '/var/www/html/_bases/base_predict_fila5_mono';
 const LARAVEL_DIR = path.join(PROJECT_DIR, 'laravel');
 const ENV_FILE = path.join(LARAVEL_DIR, '.env');
 

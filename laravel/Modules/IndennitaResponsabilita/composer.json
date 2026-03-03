@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_indennitaresponsabilita_fila3",
+  "name": "laraxot/module_indennitaresponsabilita_fila5",
   "description": "Responsibility allowances module for the Laraxot ecosystem: position-based bonuses, role compensation, and management allowances.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_indennitaresponsabilita_fila3.git",
+  "homepage": "https://github.com/laraxot/module_indennitaresponsabilita_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

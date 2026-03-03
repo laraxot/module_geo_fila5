@@ -18,7 +18,7 @@
 
 **Verification Commands**:
 ```bash
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Rating Model
 ./vendor/bin/phpstan analyze Modules/Rating/app/Models/Rating.php --level=10

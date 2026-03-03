@@ -28,7 +28,7 @@ BACKUP=false
 CUSTOM_DIRECTORY=""
 
 # Directory di lavoro
-PROJECT_ROOT="/var/www/_bases/base_predict_fila4_mono"
+PROJECT_ROOT="/var/www/_bases/base_predict_fila5_mono"
 
 # Funzione per logging
 log() {

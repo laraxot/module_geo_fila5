@@ -7,7 +7,7 @@ Data: 2025-04-23 19:09:56
 - **Namespace principale**: Modules\\Setting
 Modules\\Setting\\Database\\Factories
 Modules\\Setting\\Database\\Seeders
-- **Pacchetto Composer**: laraxot/module_setting_fila3
+- **Pacchetto Composer**: laraxot/module_setting_fila5
 Marco Sottana
 - **Dipendenze**: filament/spatie-laravel-media-library-plugin * filament/spatie-laravel-settings-plugin * repositories type path url ../Xot type path url ../Tenant type path url ../UI scripts 
 - **Totale file PHP**: 35

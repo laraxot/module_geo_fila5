@@ -75,7 +75,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $titstu
  * @property string|null $codstu
  * @property string|null $destit
- *
  * @method static Builder|Alianz newModelQuery()
  * @method static Builder|Alianz newQuery()
  * @method static Builder|Alianz query()
@@ -145,7 +144,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alianz whereStabStabilimento($value)
  * @method static Builder|Alianz whereTip1($value)
  * @method static Builder|Alianz whereTitstu($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AlianzFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Alianz extends BaseModel

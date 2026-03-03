@@ -97,7 +97,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $descrizione_livello_7
  * @property string|null $livello_8
  * @property string|null $descrizione_livello_8
- *
  * @method static Builder|Alipro newModelQuery()
  * @method static Builder|Alipro newQuery()
  * @method static Builder|Alipro query()
@@ -189,7 +188,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alipro whereRuolo($value)
  * @method static Builder|Alipro whereSesso($value)
  * @method static Builder|Alipro whereToponomastica($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AliproFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Alipro extends BaseModel

@@ -28,7 +28,6 @@ use Modules\Sigma\Models\Asz00f;
  * @property Carbon|null $updated_at
  * @property Collection<int, Asz00f> $asz00fs
  * @property int|null $asz00fs_count
- *
  * @method static AssenzeFactory factory($count = null, $state = [])
  * @method static Builder|Assenze newModelQuery()
  * @method static Builder|Assenze newQuery()
@@ -44,7 +43,9 @@ use Modules\Sigma\Models\Asz00f;
  * @method static Builder|Assenze whereUmi($value)
  * @method static Builder|Assenze whereUpdatedAt($value)
  * @method static Builder|Assenze whereUpdatedBy($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Assenze extends BaseModel

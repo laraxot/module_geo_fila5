@@ -56,7 +56,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int|null $qua004
  * @property int|null $qua005
  * @property-read Tqu00f|null $Tqu00f
- *
  * @method static Builder|Qua00k1 newModelQuery()
  * @method static Builder|Qua00k1 newQuery()
  * @method static Builder|Qua00k1 query()
@@ -102,7 +101,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|Qua00k1 whereSropro($value)
  * @method static Builder|Qua00k1 whereSuolo($value)
  * @method static Builder|Qua00k1 whereTipco($value)
- *
  * @mixin \Eloquent
  */
 class Qua00k1 extends Model

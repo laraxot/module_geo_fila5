@@ -27,7 +27,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- *
  * @method static Builder|ImportiCategoria newModelQuery()
  * @method static Builder|ImportiCategoria newQuery()
  * @method static Builder|ImportiCategoria query()
@@ -47,10 +46,10 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|ImportiCategoria whereUpdatedAt($value)
  * @method static Builder|ImportiCategoria whereUpdatedBy($value)
  * @method static Builder|ImportiCategoria whereUpdatedIp($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
+ * @method static \Modules\IndennitaResponsabilita\Database\Factories\ImportiCategoriaFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class ImportiCategoria extends BaseModel

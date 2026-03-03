@@ -3,7 +3,7 @@
 # Script per aggiornare tutti i .gitignore dei moduli al prototipo standardizzato
 # Data: 3 Gennaio 2025
 
-cd /var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules
+cd /var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules
 
 # Prototipo standardizzato
 GITIGNORE_CONTENT='# Dependencies and packages

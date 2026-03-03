@@ -1,6 +1,6 @@
-git subtree pull -P bashscripts git@github.com:aurmich/bashscripts_fila3.git dev
+git subtree pull -P bashscripts git@github.com:aurmich/bashscripts_fila5.git dev
 git subtree split -P bashscripts -b  bashscripts-temp
-git fetch git@github.com:aurmich/bashscripts_fila3.git dev
+git fetch git@github.com:aurmich/bashscripts_fila5.git dev
 git subtree merge --prefix=bashscripts bashscripts-temp --squash
 - Can't squash-merge: 'bashscripts' was never added.
 git subtree merge --prefix=bashscripts bashscripts-temp

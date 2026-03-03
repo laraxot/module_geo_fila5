@@ -44,7 +44,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $qua013
  * @property int|null $qua014
  * @property int|null $qua015
- *
  * @method static Builder|Qua01k1 newModelQuery()
  * @method static Builder|Qua01k1 newQuery()
  * @method static Builder|Qua01k1 query()
@@ -83,7 +82,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua01k1 whereQua014($value)
  * @method static Builder|Qua01k1 whereQua015($value)
  * @method static Builder|Qua01k1 whereTipsca($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Qua01k1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Qua01k1 extends BaseModel

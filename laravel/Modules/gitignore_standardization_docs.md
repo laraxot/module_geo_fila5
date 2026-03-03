@@ -7,7 +7,7 @@
 
 ## 📊 **Panoramica**
 
-Documentazione completa della standardizzazione dei file `.gitignore` per tutti i moduli Laravel nel progetto base_ptvx_fila3_mono.
+Documentazione completa della standardizzazione dei file `.gitignore` per tutti i moduli Laravel nel progetto base_ptvx_fila5_mono.
 
 ## 🎯 **Obiettivi Raggiunti**
 

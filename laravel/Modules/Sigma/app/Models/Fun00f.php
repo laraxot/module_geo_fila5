@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $propro
  * @property int|null $posfun
  * @property string|null $despro
- *
  * @method static Builder|Fun00f newModelQuery()
  * @method static Builder|Fun00f newQuery()
  * @method static Builder|Fun00f query()
@@ -21,7 +20,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Fun00f whereId($value)
  * @method static Builder|Fun00f wherePosfun($value)
  * @method static Builder|Fun00f wherePropro($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Fun00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Fun00f extends BaseModel

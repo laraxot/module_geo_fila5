@@ -10,12 +10,14 @@ use Illuminate\Database\Eloquent\Builder;
  * Modules\Sigma\Models\Acp00f.
  *
  * @property int $id
- *
  * @method static Builder|Acp00f newModelQuery()
  * @method static Builder|Acp00f newQuery()
  * @method static Builder|Acp00f query()
  * @method static Builder|Acp00f whereId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Acp00fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Acp00f extends BaseModel

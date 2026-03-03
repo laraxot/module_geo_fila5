@@ -21,13 +21,10 @@ use Illuminate\Support\Carbon;
  * @property Carbon $updated_at
  * @property-read Performance $performance
  * @property-read CriteriValutazione $criteri
- *
  * @mixin Model
- *
  * @method static Builder<static>|PerformanceComportamenti newModelQuery()
  * @method static Builder<static>|PerformanceComportamenti newQuery()
  * @method static Builder<static>|PerformanceComportamenti query()
- *
  * @mixin \Eloquent
  */
 class PerformanceComportamenti extends Model

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alidatum newModelQuery()
  * @method static Builder|Alidatum newQuery()
  * @method static Builder|Alidatum query()
- *
  * @property int $id
  * @property string|null $ente
  * @property string|null $matr
@@ -101,7 +100,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dliv7
  * @property string|null $cliv8
  * @property string|null $dliv8
- *
  * @method static Builder|Alidatum whereAss($value)
  * @method static Builder|Alidatum whereCa1($value)
  * @method static Builder|Alidatum whereCa1d($value)
@@ -190,7 +188,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alidatum whereTit($value)
  * @method static Builder|Alidatum whereTopr($value)
  * @method static Builder|Alidatum whereViar($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AlidatumFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Alidatum extends BaseModel

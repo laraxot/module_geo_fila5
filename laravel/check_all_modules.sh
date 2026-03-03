@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 modules=(
     "ContoAnnuale" "DbForge" "Europa" "Gdpr" "Inail" "Incentivi"

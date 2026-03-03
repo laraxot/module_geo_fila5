@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $addper
  * @property int $adddal
  * @property int $addal
- *
  * @method static Builder|Addc0f newModelQuery()
  * @method static Builder|Addc0f newQuery()
  * @method static Builder|Addc0f query()
@@ -23,7 +22,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Addc0f whereAddist($value)
  * @method static Builder|Addc0f whereAddper($value)
  * @method static Builder|Addc0f whereId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Addc0fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Addc0f extends BaseModel

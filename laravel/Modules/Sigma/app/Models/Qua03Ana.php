@@ -12,7 +12,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua03Ana newModelQuery()
  * @method static Builder|Qua03Ana newQuery()
  * @method static Builder|Qua03Ana query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Qua03AnaFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Qua03Ana extends BaseModel

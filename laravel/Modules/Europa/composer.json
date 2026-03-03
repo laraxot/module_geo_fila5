@@ -1,5 +1,5 @@
 {
-  "name": "provtv/module_europa_fila3",
+  "name": "provtv/module_europa_fila5",
   "description": "European funds and projects management module for the Laraxot ecosystem: EU funding programs, PNRR, and structural funds tracking.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "public-administration"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/provtv/module_europa_fila3.git",
+  "homepage": "https://github.com/provtv/module_europa_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

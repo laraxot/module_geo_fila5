@@ -18,7 +18,7 @@ Model Context Protocol (MCP) permette a Gemini Code Assist di interagire con str
     "laravel-boost": {
       "command": "php",
       "args": [
-        "/var/www/_bases/base_ptvx_fila4_mono/laravel/artisan",
+        "/var/www/_bases/base_ptvx_fila5_mono/laravel/artisan",
         "boost:mcp"
       ]
     },
@@ -27,9 +27,9 @@ Model Context Protocol (MCP) permette a Gemini Code Assist di interagire con str
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/var/www/_bases/base_ptvx_fila4_mono/laravel",
-        "/var/www/_bases/base_ptvx_fila4_mono/docs",
-        "/var/www/_bases/base_ptvx_fila4_mono/bashscripts"
+        "/var/www/_bases/base_ptvx_fila5_mono/laravel",
+        "/var/www/_bases/base_ptvx_fila5_mono/docs",
+        "/var/www/_bases/base_ptvx_fila5_mono/bashscripts"
       ]
     },
     "memory": {
@@ -73,7 +73,7 @@ Model Context Protocol (MCP) permette a Gemini Code Assist di interagire con str
         "-y",
         "@modelcontextprotocol/server-git",
         "--repository",
-        "/var/www/_bases/base_ptvx_fila4_mono"
+        "/var/www/_bases/base_ptvx_fila5_mono"
       ]
     }
   }

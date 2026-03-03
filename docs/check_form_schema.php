@@ -49,7 +49,7 @@ function findXotBaseResourceClasses($directory)
     return $results;
 }
 
-$directory = '/var/www/html/base_techplanner_fila3/laravel';
+$directory = '/var/www/html/base_techplanner_fila5/laravel';
 $results = findXotBaseResourceClasses($directory);
 
 // Generate report
@@ -74,4 +74,4 @@ $logContent = date('Y-m-d H:i:s')." - Form Schema Check\n";
 $logContent .= 'Total classes checked: '.count($results)."\n";
 $logContent .= 'Classes missing getFormSchema: '.count($missingFormSchema)."\n\n";
 
-file_put_contents('/var/www/html/base_techplanner_fila3/docs/documentation_update.log', $logContent, FILE_APPEND);
+file_put_contents('/var/www/html/base_techplanner_fila5/docs/documentation_update.log', $logContent, FILE_APPEND);

@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $re2001
  * @property string|null $re2002
  * @property string|null $re2003
- *
  * @method static Builder|Rep02f newModelQuery()
  * @method static Builder|Rep02f newQuery()
  * @method static Builder|Rep02f query()
@@ -37,7 +36,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Rep02f whereRe2al($value)
  * @method static Builder|Rep02f whereRe2dal($value)
  * @method static Builder|Rep02f whereRe2not($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Rep02fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Rep02f extends BaseModel

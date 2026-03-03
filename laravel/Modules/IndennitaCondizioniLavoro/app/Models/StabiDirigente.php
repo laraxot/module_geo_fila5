@@ -36,7 +36,6 @@ use Modules\Sigma\Models\Repart;
  * @property string|null $budget
  * @property int|null $valutatore_id
  * @property-read Repart|null $repart
- *
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
@@ -61,13 +60,15 @@ use Modules\Sigma\Models\Repart;
  * @method static Builder|StabiDirigente whereUpdatedBy($value)
  * @method static Builder|StabiDirigente whereUpdatedIp($value)
  * @method static Builder|StabiDirigente whereValutatoreId($value)
- *
  * @property int $n_diritto_excellence
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|StabiDirigente whereNDirittoExcellence($value)
- *
+ * @property int|null $quadrimestre
+ * @property string|null $email
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|StabiDirigente whereEmail($value)
+ * @method static Builder<static>|StabiDirigente whereQuadrimestre($value)
  * @mixin \Eloquent
  */
 class StabiDirigente extends PtvStabiDirigenteModel

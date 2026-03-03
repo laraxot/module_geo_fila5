@@ -6,9 +6,9 @@
 set -euo pipefail
 
 # Configurazione
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila3_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
 PHPSTAN_BIN="./vendor/bin/phpstan"
-DOCS_PHPSTAN_DIR="/var/www/html/_bases/base_predict_fila3_mono/docs/phpstan"
+DOCS_PHPSTAN_DIR="/var/www/html/_bases/base_predict_fila5_mono/docs/phpstan"
 MAX_ERRORS=100
 MEMORY_LIMIT="2G"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")

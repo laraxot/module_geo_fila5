@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_mensa_fila3",
+  "name": "laraxot/module_mensa_fila5",
   "description": "Company cafeteria and meal voucher management module for the Laraxot ecosystem: meal bookings, vouchers, and dietary preferences.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_mensa_fila3.git",
+  "homepage": "https://github.com/laraxot/module_mensa_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

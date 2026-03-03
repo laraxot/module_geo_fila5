@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dsdt
  * @property string|null $dsdi
  * @property string|null $dsnp
- *
  * @method static Builder|Cor08f newModelQuery()
  * @method static Builder|Cor08f newQuery()
  * @method static Builder|Cor08f query()
@@ -43,7 +42,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cor08f whereRiga($value)
  * @method static Builder|Cor08f whereTesto($value)
  * @method static Builder|Cor08f whereTiprec($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Cor08fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Cor08f extends BaseModel

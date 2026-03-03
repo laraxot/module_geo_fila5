@@ -1,11 +1,16 @@
 # Gemini Added Memories
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
+- PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
+- PRD STRUCTURE: A standard PRD must include: Executive Summary, Target Personas (including Internal Developers), Functional Requirements, Service Interface (The Contract), System Architecture & Dependencies, Non-Functional Requirements (SLA, Observability, Security), and Release Criteria.
+- PRD FOR MODULAR SYSTEMS: Focus on Service Boundaries (Domain-Driven Design), Data Ownership (Source of Truth), and "Contract-First" requirements (API/Event schemas).
 - NEVER use 'git remote set-url'. This command is reserved for the project owner only.
 - Always follow a forward-only Git workflow. Never revert or reset old versions; study logs for context.
 - When calling Spatie Queueable Actions, always use 'app(ActionClass::class)->execute()' instead of direct method calls like 'createPersonalAccessClient()'.
 - Avoid constructor Dependency Injection in Actions and Services. Prefer using the 'app()' container resolution (e.g., 'app(Dependency::class)') for dependencies.
 - CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
 - When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
+- LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
+- YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context
 
@@ -27,6 +32,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
 - **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
+- **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
 - **Rule**: CASE-INSENSITIVE DUPLICATES - It is strictly forbidden to have files that differ only by case (e.g., `lowercase.php` and `CamelCase.php`). The incorrect version (usually the all-lowercase one) must be deleted immediately.
 - **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
 - **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.

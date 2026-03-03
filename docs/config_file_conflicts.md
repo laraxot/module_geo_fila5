@@ -1668,10 +1668,10 @@ I seguenti file di configurazione sono stati recentemente risolti:
 
 
 
-- [Risoluzione Conflitti Git](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/git_conflicts_resolution.md)
-- [Script di Risoluzione Automatica](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/fix_all_git_conflicts.md)
-- [Conflitti Merge Risolti Xot](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
-- [Gestione della Configurazione](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/config.md)
+- [Risoluzione Conflitti Git](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/git_conflicts_resolution.md)
+- [Script di Risoluzione Automatica](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/fix_all_git_conflicts.md)
+- [Conflitti Merge Risolti Xot](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
+- [Gestione della Configurazione](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/config.md)
 - [Documentazione sulla Risoluzione dei Conflitti Bash](CONFLICT_RESOLUTION_BASH.md)
 
 
@@ -1888,10 +1888,10 @@ I seguenti file di configurazione sono stati recentemente risolti:
 
 
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md) 
-- [Risoluzione Conflitti Git](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/git_conflicts_resolution.md)
-- [Script di Risoluzione Automatica](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/fix_all_git_conflicts.md)
-- [Conflitti Merge Risolti Xot](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
-- [Gestione della Configurazione](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/config.md)
+- [Risoluzione Conflitti Git](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/git_conflicts_resolution.md)
+- [Script di Risoluzione Automatica](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/fix_all_git_conflicts.md)
+- [Conflitti Merge Risolti Xot](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
+- [Gestione della Configurazione](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/config.md)
 
 - [Documentazione sulla Risoluzione dei Conflitti Bash](conflict-resolution-bash.md)
 - [Documentazione Generale sulla Risoluzione dei Conflitti](scripts-conflict-resolution.md) 

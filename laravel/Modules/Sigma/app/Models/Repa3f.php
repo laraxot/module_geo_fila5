@@ -42,7 +42,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $rdesc
  * @property string|null $rdatai
  * @property string|null $rdataf
- *
  * @method static Builder|Repa3f newModelQuery()
  * @method static Builder|Repa3f newQuery()
  * @method static Builder|Repa3f query()
@@ -79,7 +78,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repa3f whereStabi($value)
  * @method static Builder|Repa3f whereStrcod($value)
  * @method static Builder|Repa3f whereTipcod($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Repa3fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Repa3f extends BaseModel

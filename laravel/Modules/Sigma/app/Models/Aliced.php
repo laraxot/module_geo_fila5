@@ -34,7 +34,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $clafun
  * @property int|null $flagcf
  * @property int|null $cedist
- *
  * @method static Builder|Aliced newModelQuery()
  * @method static Builder|Aliced newQuery()
  * @method static Builder|Aliced query()
@@ -63,7 +62,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Aliced whereSvocfi($value)
  * @method static Builder|Aliced whereTotale($value)
  * @method static Builder|Aliced whereTotsav($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\AlicedFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Aliced extends BaseModel

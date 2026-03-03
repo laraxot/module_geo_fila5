@@ -5,7 +5,7 @@
 PHPStan è configurato per essere eseguito dalla cartella principale del progetto Laravel:
 
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3/laravel
+cd /var/www/html/_bases/base_ptvx_fila5/laravel
 ```
 
 ## Esecuzione

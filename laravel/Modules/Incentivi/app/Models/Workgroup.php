@@ -24,7 +24,6 @@ use Modules\Ptv\Models\Profile;
  * @property-read Collection<int, Project> $projects
  * @property-read int|null $projects_count
  * @property-read Profile|null $updater
- *
  * @method static WorkgroupFactory factory($count = null, $state = [])
  * @method static Builder|Workgroup newModelQuery()
  * @method static Builder|Workgroup newQuery()
@@ -35,9 +34,8 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Workgroup whereId($value)
  * @method static Builder|Workgroup whereUpdatedAt($value)
  * @method static Builder|Workgroup whereUpdatedBy($value)
- *
  * @property-read EmployeeWorkgroup|null $pivot
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class Workgroup extends BaseModel

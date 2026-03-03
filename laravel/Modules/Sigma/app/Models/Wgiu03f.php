@@ -39,7 +39,6 @@ use Illuminate\Support\Facades\Date;
  * @property string $g3impe
  * @property string $g3unmi
  * @property-read Codici|null $codici
- *
  * @method static Builder|Wgiu03f newModelQuery()
  * @method static Builder|Wgiu03f newQuery()
  * @method static Builder|Wgiu03f query()
@@ -67,7 +66,6 @@ use Illuminate\Support\Facades\Date;
  * @method static Builder|Wgiu03f whereLecod1($value)
  * @method static Builder|Wgiu03f whereLecod2($value)
  * @method static Builder|Wgiu03f whereStdata($value)
- *
  * @mixin \Eloquent
  */
 class Wgiu03f extends Model

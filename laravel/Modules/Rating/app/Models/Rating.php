@@ -71,9 +71,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property ProfileContract|null                              $creator
  * @property ProfileContract|null                              $updater
  *
- * @mixin Eloquent
- *
  * @method static RatingFactory factory($count = null, $state = [])
+ *
+ * @property \Modules\Ptv\Models\Profile|null $deleter
+ *
+ * @mixin Eloquent
  */
 class Rating extends BaseRating
 {

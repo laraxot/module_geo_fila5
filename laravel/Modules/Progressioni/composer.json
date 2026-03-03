@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_progressioni_fila3",
+  "name": "laraxot/module_progressioni_fila5",
   "description": "Career progression management module for the Laraxot ecosystem: promotions, salary advancements, and professional development tracking.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_progressioni_fila3.git",
+  "homepage": "https://github.com/laraxot/module_progressioni_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

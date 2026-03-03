@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Script di gestione dei server MCP per base_predict_fila3_mono
+# Script di gestione dei server MCP per base_predict_fila5_mono
 # Versione 2.0 - Supporto per server MySQL personalizzato
 # Autore: Cascade AI Assistant
 # Data: 2025-05-13
 
-PROJECT_DIR="/var/www/html/_bases/base_predict_fila3_mono"
+PROJECT_DIR="/var/www/html/_bases/base_predict_fila5_mono"
 LOGS_DIR="$PROJECT_DIR/storage/logs/mcp"
 MYSQL_CONNECTOR="$PROJECT_DIR/scripts/mysql-db-connector.js"
 
@@ -15,7 +15,7 @@ chmod -R 777 "$LOGS_DIR"
 
 # Funzione per mostrare l'aiuto
 show_help() {
-    echo "Utilizzo: /var/www/html/_bases/base_predict_fila3_mono/bashscripts/mcp/mcp-manager-v2.sh [comando] [server]"
+    echo "Utilizzo: /var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/mcp-manager-v2.sh [comando] [server]"
     echo ""
     echo "Comandi disponibili:"
     echo "  start [server]    - Avvia uno o tutti i server MCP"
@@ -37,9 +37,9 @@ show_help() {
     echo "  all                - Tutti i server (default se non specificato)"
     echo ""
     echo "Esempi:"
-    echo "  /var/www/html/_bases/base_predict_fila3_mono/bashscripts/mcp/mcp-manager-v2.sh start mysql    - Avvia il server MCP MySQL"
-    echo "  /var/www/html/_bases/base_predict_fila3_mono/bashscripts/mcp/mcp-manager-v2.sh start          - Avvia tutti i server MCP"
-    echo "  /var/www/html/_bases/base_predict_fila3_mono/bashscripts/mcp/mcp-manager-v2.sh status         - Mostra lo stato di tutti i server MCP"
+    echo "  /var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/mcp-manager-v2.sh start mysql    - Avvia il server MCP MySQL"
+    echo "  /var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/mcp-manager-v2.sh start          - Avvia tutti i server MCP"
+    echo "  /var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/mcp-manager-v2.sh status         - Mostra lo stato di tutti i server MCP"
 }
 
 # Funzione per ottenere il PID di un server MCP

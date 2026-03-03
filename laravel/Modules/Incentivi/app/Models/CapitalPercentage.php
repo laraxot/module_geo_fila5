@@ -20,7 +20,6 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $created_by
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static CapitalPercentageFactory factory($count = null, $state = [])
  * @method static Builder|CapitalPercentage newModelQuery()
  * @method static Builder|CapitalPercentage newQuery()
@@ -33,7 +32,13 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|CapitalPercentage whereUpdatedAt($value)
  * @method static Builder|CapitalPercentage whereUpdatedBy($value)
  * @method static Builder|CapitalPercentage whereValore($value)
- *
+ * @property string $tipologia
+ * @property numeric $da
+ * @property numeric $a
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|CapitalPercentage whereA($value)
+ * @method static Builder<static>|CapitalPercentage whereDa($value)
+ * @method static Builder<static>|CapitalPercentage whereTipologia($value)
  * @mixin \Eloquent
  */
 class CapitalPercentage extends BaseModel

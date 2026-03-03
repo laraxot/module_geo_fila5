@@ -51,6 +51,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|Setting  whereNotNull((string|Expression) $columns)
  * @method static int                      count(string $columns = '*')
  *
+ * @property \Modules\Ptv\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Setting extends BaseModel implements HasMedia

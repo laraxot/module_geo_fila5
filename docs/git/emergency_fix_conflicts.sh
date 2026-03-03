@@ -30,7 +30,7 @@ warning() {
 }
 
 # Directory di lavoro
-WORK_DIR="${1:-/var/www/_bases/base_predict_fila4_mono}"
+WORK_DIR="${1:-/var/www/_bases/base_predict_fila5_mono}"
 
 # Verifica che la directory esista
 if [ ! -d "$WORK_DIR" ]; then
