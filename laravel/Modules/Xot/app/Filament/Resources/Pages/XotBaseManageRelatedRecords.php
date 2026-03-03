@@ -32,9 +32,34 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 
     public function getRecordTitle(): string
     {
-        $value = $this->record->{static::$recordTitleAttribute};
+        $value = $this->getRecord()->{static::$recordTitleAttribute};
 
         return (string) $value;
+    }
+
+    /**
+     * Get the navigation label.
+     */
+    public static function getNavigationLabel(): string
+    {
+        return static::transFunc(__FUNCTION__);
+    }
+
+    /**
+     * Get the navigation badge.
+     */
+    public static function getNavigationBadge(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Get the infolist schema.
+     * This can be used to display metadata of the owner record.
+     */
+    public function getInfolistSchema(): array
+    {
+        return [];
     }
 
     /**
@@ -76,12 +101,16 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     {
         return [
             'id' => TextColumn::make('id')
+                ->icon('heroicon-o-hashtag')
+                ->iconColor('gray')
                 ->sortable(),
             'name' => TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
             'created_at' => TextColumn::make('created_at')
                 ->dateTime('d/m/Y H:i')
+                ->since()
+                ->color('gray')
                 ->sortable(),
         ];
     }

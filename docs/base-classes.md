@@ -141,6 +141,37 @@ class PolizzaConvenzioneController extends XotBaseController
 - Gestione errori standardizzata
 - Risposte JSON predefinite
 
+## XotBaseManageRelatedRecords
+
+Classe base per la gestione dei record correlati (nested resources).
+
+### Caratteristiche Principali
+
+```php
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
+
+class ManageProjectPhases extends XotBaseManageRelatedRecords
+{
+    protected static string $resource = ProjectResource::class;
+    protected static string $relationship = 'phases';
+
+    public function getTableColumns(): array
+    {
+        return [
+            'name' => TextColumn::make('name')->searchable(),
+            'status' => BadgeColumn::make('status'),
+        ];
+    }
+}
+```
+
+### Funzionalità Ereditate
+
+- Integrazione automatica con `HasXotTable`
+- Gestione automatica del titolo e label di navigazione
+- Supporto per `getInfolistSchema()` per metadati dell'owner
+- Hook per azioni di associazione/attacco (`shouldShowAssociateAction()`, ecc.)
+
 ## Best Practices
 
 1. **Estensione Classi Base**
