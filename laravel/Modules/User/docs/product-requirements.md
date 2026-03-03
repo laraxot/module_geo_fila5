@@ -321,7 +321,265 @@ model_has_permissions
 
 ---
 
-## 12. Changelog
+## 12. Specifiche Tecniche Dettagliate
+
+### 12.1 API Endpoints
+
+#### Authentication
+| Method | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| POST | /api/auth/login | Login email/password | No |
+| POST | /api/auth/logout | Logout | Yes (Token) |
+| POST | /api/auth/refresh | Refresh token | Yes (Token) |
+| POST | /api/auth/forgot-password | Reset password request | No |
+| POST | /api/auth/reset-password | Reset password | No |
+| POST | /api/auth/oauth/{provider} | Redirect OAuth | No |
+| GET | /api/auth/oauth/{provider}/callback | OAuth callback | No |
+
+#### User Management
+| Method | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| GET | /api/users | Lista utenti | admin |
+| POST | /api/users | Crea utente | admin |
+| GET | /api/users/{id} | Dettaglio utente | admin |
+| PUT | /api/users/{id} | Modifica utente | admin/user |
+| DELETE | /api/users/{id} | Elimina utente | admin |
+| GET | /api/users/me | Profilo corrente | user |
+
+#### Roles & Permissions
+| Method | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| GET | /api/roles | Lista ruoli | admin |
+| POST | /api/roles | Crea ruolo | admin |
+| PUT | /api/roles/{id} | Modifica ruolo | admin |
+| DELETE | /api/roles/{id} | Elimina ruolo | admin |
+| GET | /api/permissions | Lista permessi | admin |
+| POST | /api/users/{id}/roles | Assegna ruolo | admin |
+| DELETE | /api/users/{id}/roles/{role_id} | Rimuovi ruolo | admin |
+
+#### Two-Factor Authentication
+| Method | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| POST | /api/2fa/enable | Abilita 2FA | user |
+| POST | /api/2fa/disable | Disabilita 2FA | user |
+| POST | /api/2fa/verify | Verifica codice | user |
+| POST | /api/2fa/backup-codes | Genera backup codes | user |
+
+#### Teams
+| Method | Endpoint | Descrizione | Auth |
+|--------|----------|-------------|------|
+| GET | /api/teams | Lista team | user |
+| POST | /api/teams | Crea team | user |
+| GET | /api/teams/{id} | Dettaglio team | team member |
+| PUT | /api/teams/{id} | Modifica team | team admin |
+| DELETE | /api/teams/{id} | Elimina team | team owner |
+| POST | /api/teams/{id}/invite | Invita membro | team admin |
+| DELETE | /api/teams/{id}/members/{user_id} | Rimuovi membro | team admin |
+
+### 12.2 Specifiche di Sicurezza
+
+#### Requisiti Password
+- Minimo 8 caratteri
+- Almeno una lettera maiuscola
+- Almeno una lettera minuscola
+- Almeno un numero
+- Almeno un carattere speciale
+- Max tentativi: 5 (lockout 15 minuti)
+
+#### Session Management
+- Durata sessione: 120 minuti (configurabile)
+- Remember me: 30 giorni
+- Timeout inactivity: 30 minuti
+- Max sessioni simultanee: 3
+
+#### Token OAuth
+- Access token: 60 minuti
+- Refresh token: 60 giorni
+- Refresh automatico: abilitato
+
+#### Protezioni
+- Rate limiting: 10 richieste/minuto
+- CSRF: Always enabled
+- XSS Protection: Content Security Policy
+- SQL Injection: Eloquent parameter binding
+
+### 12.3 Performance Benchmarks
+
+| Operazione | Target | Maximum |
+|------------|--------|---------|
+| Login | <200ms | 500ms |
+| Logout | <50ms | 100ms |
+| Get user | <100ms | 200ms |
+| List users (paginated) | <500ms | 1s |
+| Role check | <10ms | 50ms |
+| OAuth redirect | <100ms | 300ms |
+
+### 12.4 Testing Strategy
+
+#### Unit Tests
+- User model validation
+- Password hashing/verification
+- Role permission logic
+- Token generation
+
+#### Feature Tests
+- Login flow
+- Password reset flow
+- OAuth flow (mock)
+- Role assignment
+- Team management
+
+#### Browser Tests
+- Login form submission
+- 2FA setup flow
+- Profile editing
+
+#### Coverage Target
+- User model: >90%
+- Services: >80%
+- Controllers: >70%
+- Overall: >70%
+
+### 12.5 Strategia Migrazione
+
+#### Fase 1: Setup
+1. Installare modulo User
+2. Configurare Passport
+3. Impostare provider OAuth
+
+#### Fase 2: Migrazione Dati
+1. Esportare utenti esistenti
+2. Importare in nuovo schema
+3. Verificare password hash
+
+#### Fase 3: Switch
+1. Aggiornare routes
+2. Aggiornare middleware
+3. Monitorare errori
+
+#### Fase 4: Cleanup
+1. Rimuovere vecchie tabelle
+2. Rimuovere vecchie librerie
+3. Documentare cambiamenti
+
+### 12.6 Criteri di Accettazione
+
+#### Autenticazione
+- [ ] Utente può registrarsi con email/password
+- [ ] Utente può fare login
+- [ ] Utente può fare logout
+- [ ] Utente può resettare password
+- [ ] Sessione scade dopo inactivity
+- [ ] Rate limiting funziona
+
+#### OAuth
+- [ ] Login Microsoft funziona
+- [ ] Login Google funziona
+- [ ] Login GitHub funziona
+- [ ] Token viene refreshato automaticamente
+- [ ] Logout revoca token
+
+#### Autorizzazione
+- [ ] Admin può creare ruoli
+- [ ] Admin può assegnare ruoli
+- [ ] @can directive funziona
+- [ ] Middleware blocca accesso
+
+#### 2FA
+- [ ] Utente può abilitare 2FA
+- [ ] QR code viene visualizzato
+- [ ] Verifica TOTP funziona
+- [ ] Backup codes funzionano
+
+#### Team
+- [ ] Utente può creare team
+- [ ] Invito viene inviato
+- [ ] Membro può essere rimosso
+- [ ] Ruoli team funzionano
+
+---
+
+## 13. UI/UX Specifications
+
+### 13.1 Pagine Filament
+
+#### Login Page
+- Email input con validazione
+- Password input con toggle visibility
+- "Remember me" checkbox
+- "Forgot password" link
+- Login button
+- OAuth buttons (Microsoft, Google, GitHub)
+
+#### Registration Page
+- Name input
+- Email input
+- Password input con strength indicator
+- Confirm password
+- Terms checkbox
+- Register button
+
+#### Profile Page
+- Avatar upload
+- Name edit
+- Email edit
+- Password change
+- 2FA enable/disable
+- Connected accounts
+
+#### User Management (Admin)
+- Table con search, filter, sort
+- Bulk actions
+- Create/Edit modal
+- Delete confirmation
+- Role assignment inline
+
+#### Role Management (Admin)
+- Role list
+- Permission matrix
+- Create/Edit role
+- Assign users to role
+
+### 13.2 Comportamenti
+
+#### Form Validation
+- Real-time validation
+- Error messages sotto campo
+- Loading state durante submit
+
+#### Feedback
+- Success toast dopo operazione
+- Error toast per fallimenti
+- Loading spinner durante API call
+
+#### Navigazione
+- Breadcrumbs
+- Back button
+- Keyboard shortcuts
+
+---
+
+## 14. Monitoraggio e Alert
+
+### 14.1 Metriche da Tracciare
+
+| Metrica | Soglia Warning | Soglia Critical |
+|---------|----------------|-----------------|
+| Failed logins | >10/min | >50/min |
+| Password resets | >20/min | >100/min |
+| OAuth errors | >5/min | >20/min |
+| 2FA failures | >5/min | >20/min |
+| Session timeout | >100/min | >500/min |
+
+### 14.2 Alert Channels
+
+- Email: Admin team
+- Slack: #security-alerts
+- PagerDuty: Critical only
+
+---
+
+## 15. Changelog
 
 | Version | Data | Autore | Modifiche |
 |---------|------|--------|------------|
