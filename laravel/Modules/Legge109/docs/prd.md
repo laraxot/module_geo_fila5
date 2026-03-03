@@ -34,31 +34,31 @@ The HR department needs to:
 - General recruitment (delegated to a dedicated Recruitment or User module).
 - Physical workplace adaptations (delegated to Safety/Inail).
 
-## 5. Functional Requirements
-### FR-001: Quota Management
-- **Priority**: Must-have
-- **Description**: Calculate and monitor the required percentage of mandatory hirings based on total workforce.
-- **Acceptance Criteria**: Visual dashboard showing actual vs required hiring count.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Benefit Tracking
-- **Priority**: Should-have
-- **Description**: Record and track specific social security and fiscal benefits per employee.
-- **Acceptance Criteria**: Integration with the payroll logic for correct relief application.
+### P0: Quota Compliance (Must-have)
+- **FR-001: Mandatory Hiring Quota Engine**: Calculate and monitor required percentages for protected categories based on total workforce.
+- **FR-003: Eligibility Registry**: Track and verify why an employee belongs to a subsidized or protected category with supporting documentation.
 
-### FR-003: Eligibility Registry
-- **Priority**: Must-have
-- **Description**: Track why an employee belongs to a specific protected or subsidized category.
-- **Acceptance Criteria**: Includes documentation proof and validity period.
+### P1: Fiscal & Social Benefits (Important)
+- **FR-002: Social Security Relief Tracking**: Record and monitor specific fiscal and social security reliefs associated with Legge 109 contracts.
+- **FR-004: Mandatory Reporting**: Generate periodic reports on hiring quotas as required by the Ministry of Labor.
 
-### FR-004: Regulatory Reporting
-- **Priority**: Should-have
-- **Description**: Generate periodic reports on hiring quotas as required by the Ministry of Labor.
-- **Acceptance Criteria**: Output matches official government templates.
+### P2: Talent Integration (Nice-to-have)
+- **FR-005: Onboarding Optimization**: Automated identification of candidates for quota-based positions during the recruitment process.
+- **FR-006: Compliance Forecasting**: Predictive analysis of workforce changes and their impact on future mandatory hiring quotas.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Accuracy**: Precise calculation of workforce percentages including part-time adjustment.
-- **NFR-002: Privacy**: Sensitive treatment of data related to protected categories.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Compliance Logic**: Legge109 provides the quota engine; it MUST NOT contain organizational-specific hiring policies beyond regulatory requirements.
+- **Interoperability**: Consumes workforce data from `User` and communicates reliefs to `Sigma` for payroll.
+- **Isolation**: Protected category flags and related data are encapsulated with restricted access.
+
+### Performance & Safety
+- **NFR-001: Accuracy**: Precise calculation of workforce percentages including part-time and contract-type adjustments.
+- **NFR-002: Privacy**: 100% adherence to privacy regulations regarding sensitive protected category information.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

@@ -34,31 +34,32 @@ Applications need:
 - Large scale video streaming (delegated to external services like YouTube/Vimeo).
 - File editing (except simple image transformations).
 
-## 5. Functional Requirements
-### FR-001: Model-Media Association
-- **Priority**: Must-have
-- **Description**: Ability to attach any file to any Eloquent model.
-- **Acceptance Criteria**: Simply adding a trait to a model enables media support.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Automated Image Conversion
-- **Priority**: Should-have
-- **Description**: Create thumbnails and various sizes automatically on upload.
-- **Acceptance Criteria**: Defined conversions are processed in background jobs.
+### P0: Digital Asset Management (Must-have)
+- **FR-001: Model-Media Association**: Ability to attach any file type to any Eloquent model via a standardized trait.
+- **FR-003: Secure Storage Engine**: Support for private/restricted storage with tokenized access for sensitive documents.
+- **FR-005: Flexible Uploads**: Multi-file, drag-and-drop upload components for the Filament admin panel.
 
-### FR-003: Secure Storage
-- **Priority**: Must-have
-- **Description**: Support for private storage with tokenized access.
-- **Acceptance Criteria**: Sensitive documents are not accessible via public URL.
+### P1: Asset Processing (Important)
+- **FR-002: Automated Conversions**: Image resizing, optimization, and format conversion (thumbnails, responsive sets) in background jobs.
+- **FR-004: Cloud Storage Integration**: Support for Local, S3, and other cloud filesystems via Laravel's storage abstraction.
 
-### FR-004: Responsive Images
-- **Priority**: Should-have
-- **Description**: Generate `srcset` for images to improve front-end performance.
-- **Acceptance Criteria**: UI components automatically use optimized sizes.
+### P2: Advanced Media (Nice-to-have)
+- **FR-006: Visual Asset Browser**: Media library interface for browsing, searching, and reusing existing assets across the platform.
+- **FR-007: AI Content Analysis**: Automated tagging, OCR for documents, and NSFW detection for uploaded media.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Scalability**: Support cloud storage (S3) for large volumes.
-- **NFR-002: Performance**: Image processing must not block the main thread.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Global Asset Provider**: Media provides a unified storage service; it MUST NOT contain domain-specific logic.
+- **Interoperability**: Provides an easy-to-use API for every other module to handle files without touching filesystem logic.
+- **Storage Agnosticism**: Abstracts the underlying storage provider (S3 vs Local), ensuring portability.
+
+### Performance & Safety
+- **NFR-001: Performance**: Offload all heavy media processing (image optimization, video analysis) to background queues.
+- **NFR-002: Security**: Mandatory validation of file types and sizes; virus scanning for all uploads.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

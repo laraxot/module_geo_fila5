@@ -36,31 +36,32 @@ Managing EU projects is difficult because of:
 - General external CRM features.
 - Actual bank transfers (delegated to finance systems).
 
-## 5. Functional Requirements
-### FR-001: Project Lifecycle
-- **Priority**: Must-have
-- **Description**: Track a project from "Draft" -> "Submitted" -> "Approved" -> "Execution" -> "Completed".
-- **Acceptance Criteria**: State machine for project statuses.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Attendance Tracking
-- **Priority**: Must-have
-- **Description**: Record attendance for workshops, meetings, and activities.
-- **Acceptance Criteria**: Generate attendance sheets and signed proof.
+### P0: Grant Compliance (Must-have)
+- **FR-001: Project Lifecycle Management**: Track EU projects through a state machine from "Draft" to "Completed".
+- **FR-002: Evidence Repository**: Centralized document storage linked to projects and tasks for auditing purposes.
+- **FR-005: Participant Tracking**: Record and manage participant lists and attendance for EU-funded activities.
 
-### FR-003: Milestone Tracking
-- **Priority**: Should-have
-- **Description**: Monitor deadlines and deliverables established in the Grant Agreement.
-- **Acceptance Criteria**: Notifications for upcoming or missed milestones.
+### P1: Financial Oversight (Important)
+- **FR-003: Milestone Monitoring**: Real-time tracking of deadlines and deliverables established in the Grant Agreement.
+- **FR-006: Budget Allocation**: Track budget items and expenses against grant-defined categories.
 
-### FR-004: Document Evidence
-- **Priority**: Must-have
-- **Description**: Attach files to specific projects or tasks for auditing purposes.
-- **Acceptance Criteria**: Integrated with Media module with project-specific tagging.
+### P2: Advanced Reporting (Nice-to-have)
+- **FR-004: Automated EU Reporting**: Generate financial and activity reports according to specific EU institution templates.
+- **FR-007: Partner Collaboration**: Portal for external project partners to submit evidence and reports.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Auditability**: Every change must be traceable back to a user.
-- **NFR-002: Document Persistence**: Ensure long-term storage of evidence (e.g., 7-10 years).
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Institution Agnosticism**: Europa MUST support various EU funding bodies (Erasmus+, Horizon, ESF) through configurable templates.
+- **Interoperability**: Integrates with `Media` for evidence storage and `Notify` for deadline alerts.
+- **Independent Tracking**: Project milestones and budgets are managed independently of the host organization's internal accounting.
+
+### Performance & Safety
+- **NFR-001: Auditability**: Full audit trail of every modification to project data or evidence.
+- **NFR-002: Persistence**: Long-term storage of evidence (10 years) guaranteed through media management.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

@@ -34,31 +34,32 @@ The HR and Safety departments must:
 - Health & Safety risk assessments (DVR) - delegated to specialized safety software.
 - Physical medical treatment (hospital-bound).
 
-## 5. Functional Requirements
-### FR-001: Accident Recording
-- **Priority**: Must-have
-- **Description**: Detailed form to record where, when, and how an accident occurred.
-- **Acceptance Criteria**: Includes employee, date, description, and involved body parts.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Insurance Registry (PAT)
-- **Priority**: Must-have
-- **Description**: Manage the list of INAIL insurance positions relevant to the company.
-- **Acceptance Criteria**: Admin can assign a PAT to a specific organizational unit or employee.
+### P0: Incident Compliance (Must-have)
+- **FR-001: Accident Recording**: Detailed lifecycle management of workplace incidents (Infortunio).
+- **FR-002: Insurance Registry (PAT)**: Manage and assign INAIL insurance position codes to organizational units or employees.
+- **FR-003: Deadline Monitoring**: High-priority tracking of the 48-hour mandatory communication deadline for accident reports.
 
-### FR-003: Deadline Monitoring
-- **Priority**: Must-have
-- **Description**: Track the 48-hour deadline for mandatory communication.
-- **Acceptance Criteria**: High-priority alert in the admin dashboard for unsubmitted reports.
+### P1: Operational Safety (Important)
+- **FR-004: Official Report Generation**: Automated generation of official INAIL accident reports in PDF format.
+- **FR-005: Workplace History**: Historical record of safety incidents categorized by unit and employee.
 
-### FR-004: Report Generation
-- **Priority**: Should-have
-- **Description**: Generate the official INAIL accident report PDF.
-- **Acceptance Criteria**: Output matches current official templates.
+### P2: Digital Integration (Nice-to-have)
+- **FR-006: Digital Transmission**: Integration with INAIL APIs for direct electronic submission of accident reports.
+- **FR-007: AI Safety Analysis**: Predictive analysis of high-risk units based on accident history.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Confidentiality**: Strict access control over sensitive medical/incident data.
-- **NFR-002: Timing**: Reliability in calculating reporting deadlines.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Regulatory Engine**: Inail MUST support periodic regulatory template updates without breaking the core incident logic.
+- **Interoperability**: Integrates with `User` for employee context and `Notify` for deadline alerts.
+- **Independence**: Incident records are kept separate from general performance or HR evaluations.
+
+### Performance & Safety
+- **NFR-001: Confidentiality**: Strict access control for sensitive medical/safety data.
+- **NFR-002: Reliability**: Zero-tolerance for delayed notifications due to legal penalties.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

@@ -34,31 +34,32 @@ The HR department must:
 - Medical evaluation of disability (delegated to national health authorities - ASL/INPS).
 - General sick leave management (delegated to regular HR processes).
 
-## 5. Functional Requirements
-### FR-001: Entitlement Registry
-- **Priority**: Must-have
-- **Description**: Record an employee's right to Law 104 benefits, including the specific person they care for.
-- **Acceptance Criteria**: Requires certificate validation and validity dates.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Balance Tracking
-- **Priority**: Must-have
-- **Description**: Track used vs remaining hours/days of leave for each month/year.
-- **Acceptance Criteria**: Real-time integration with attendance records.
+### P0: Entitlement Management (Must-have)
+- **FR-001: Benefit Registry**: Record eligibility for Law 104 benefits with certificate validation and validity dates.
+- **FR-002: Leave Balance Tracking**: Real-time monitoring of used vs remaining hours/days for each period.
+- **FR-004: Secure Certification Storage**: Encrypted storage of medical documents using the `Media` module.
 
-### FR-003: Expiration Alerts
-- **Priority**: Should-have
-- **Description**: Notify HR and the employee when a medical certificate is approaching its expiration date.
-- **Acceptance Criteria**: Automated notifications 30/60 days before expiration.
+### P1: Operational Compliance (Important)
+- **FR-003: Proactive Expiration Alerts**: Automated notifications for HR and employees when certificates are approaching expiration.
+- **FR-005: Attendance Integration**: Hard validation in the `PresenzeAssenze` module to prevent over-usage of specific Law 104 codes.
 
-### FR-004: Document Management
-- **Priority**: Must-have
-- **Description**: Securely store digital copies of relevant certifications.
-- **Acceptance Criteria**: Integrated with Media module with high encryption/restricted access.
+### P2: Process Innovation (Nice-to-have)
+- **FR-006: Self-Service Renewal**: Employee interface for uploading renewal documentation and tracking approval status.
+- **FR-007: AI Document Verification**: Automatic data extraction and preliminary verification of uploaded medical certificates.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Data Protection**: High sensitivity of records (special categories of personal data).
-- **NFR-002: Legal Compliance**: Strict adherence to Law 104/92 regulatory updates.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Logic**: Legge104 provides the entitlement engine; it MUST NOT contain organizational-specific HR policies beyond legal mandates.
+- **Interoperability**: Consumes employee data from `User` and integrates with `PresenzeAssenze` for leave consumption.
+- **Isolation**: Sensitive medical/disability data is encapsulated with high-security access controls.
+
+### Performance & Safety
+- **NFR-001: Data Protection**: 100% encryption and restricted access for all documents containing special categories of data.
+- **NFR-002: Reliability**: Accurate calculation of monthly/annual benefit balances according to current INPS guidelines.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

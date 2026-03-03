@@ -34,31 +34,32 @@ The HR and Accounting departments need to:
 - Direct payroll processing (delegated to Sigma/Payroll).
 - Financial accounting (delegated to specialized finance software).
 
-## 5. Functional Requirements
-### FR-001: Data Aggregation
-- **Priority**: Must-have
-- **Description**: Pull data from payroll and attendance modules for the whole fiscal year.
-- **Acceptance Criteria**: Data is correctly grouped by cost category and personnel role.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Table Generation
-- **Priority**: Must-have
-- **Description**: Populate standardized reporting tables (T1, T2, etc. as defined by national rules).
-- **Acceptance Criteria**: Values match payroll totals exactly.
+### P0: Regulatory Reporting (Must-have)
+- **FR-001: Data Aggregation Engine**: Aggregate personnel cost and head-count data for the entire fiscal year.
+- **FR-002: Mandatory Table Generation**: Automated population of standardized national tables (T1, T2, etc.) for PA reporting.
+- **FR-004: Compliant Exports**: Export finalized reports in mandated PDF/Excel formats with precise traceability.
 
-### FR-003: Validation Checks
-- **Priority**: Should-have
-- **Description**: Automated consistency checks across different reporting tables.
-- **Acceptance Criteria**: System flags discrepancies for administrator review.
+### P1: Data Integrity (Important)
+- **FR-003: Validation Checks**: Cross-table consistency verification to identify and flag accounting discrepancies.
+- **FR-005: Multi-Subsystem Sync**: Integration with payroll (Sigma) and attendance modules for raw data collection.
 
-### FR-004: PDF/Excel Export
-- **Priority**: Must-have
-- **Description**: Export finalized reports in mandated formats.
-- **Acceptance Criteria**: Professional and compliant document output.
+### P2: Advanced Analysis (Nice-to-have)
+- **FR-006: Trend Analysis**: Year-over-year cost comparison and dashboard visualization.
+- **FR-007: Proactive Budgeting**: Forecasting personnel costs based on current Conto Annuale data.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Accuracy**: Calculation must be error-free with complete traceability.
-- **NFR-002: Performance**: Support processing of thousands of records for a full year.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Report-Centric Design**: ContoAnnuale MUST remain a reporting module; it does not contain the logic for payroll calculation.
+- **Interoperability**: Consumes standardized data from Sigma and Attendance through Xot-mediated interfaces.
+- **Agnostic Logic**: Reporting rules are abstracted from specific organizational entities.
+
+### Performance & Safety
+- **NFR-001: Accuracy**: 100% calculation accuracy with complete traceability back to source records.
+- **NFR-002: Performance**: Support processing of thousands of records for a full year without timeouts.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

@@ -34,31 +34,31 @@ The PTVX HR system needs:
 - Physical printing firmware (delegated to printer drivers).
 - Direct access control hardware communication (delegated to specialized middleware).
 
-## 5. Functional Requirements
-### FR-001: Badge Issuance
-- **Priority**: Must-have
-- **Description**: Register a new physical badge for an employee with a unique identifier.
-- **Acceptance Criteria**: Admin can assign a badge ID to a specific User profile.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Status Tracking
-- **Priority**: Must-have
-- **Description**: Update and track the status of a badge over time.
-- **Acceptance Criteria**: History of status changes is maintained for audit.
+### P0: Badge Lifecycle (Must-have)
+- **FR-001: Badge Issuance**: Register physical badges with unique IDs linked to User profiles.
+- **FR-002: Status Tracking**: Comprehensive history of badge status changes (Active, Inactive, Stolen, Expired).
 
-### FR-003: Badge Printing Preparation
-- **Priority**: Should-have
-- **Description**: Generate a print-ready metadata file or PDF for the physical badge.
-- **Acceptance Criteria**: Includes employee photo, name, and ID in standardized format.
+### P1: Operational Efficiency (Important)
+- **FR-003: Printing Preparation**: Generate print-ready metadata or PDFs with employee photos and identifiers.
+- **FR-004: Multi-type Support**: Categories for employees, contractors, and visitors with specific metadata requirements.
 
-### FR-004: Multi-type Support
-- **Priority**: Should-have
-- **Description**: Support for different categories of badges with different permissions.
-- **Acceptance Criteria**: Each badge type can have custom metadata fields.
+### P2: Advanced Integration (Nice-to-have)
+- **FR-005: Access Middleware**: Proxy API for synchronizing with physical access control systems.
+- **FR-006: Self-Service Portal**: Employee interface to report lost badges and request replacements.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Uniqueness**: Every badge identifier must be globally unique within the system.
-- **NFR-002: Auditability**: Any status change must be recorded for security auditing.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Hardware Agnosticism**: Badge module MUST remain independent of any specific printer or reader hardware vendor.
+- **Interoperability**: Provides status data to Security and HR modules via standardized interfaces.
+- **Isolation**: Badge-specific data remains encapsulated; it does not modify the core User schema.
+
+### Performance & Safety
+- **NFR-001: Uniqueness**: Global uniqueness constraint for badge identifiers.
+- **NFR-002: Auditability**: Every status change must be recorded for security compliance.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

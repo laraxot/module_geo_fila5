@@ -34,31 +34,32 @@ The HR department needs to:
 - Detailed tax calculation (delegated to Payroll/Sigma system).
 - E-filing directly to the Tax Bureau (delegated to specialized fiscal software).
 
-## 5. Functional Requirements
-### FR-001: Batch Generation
-- **Priority**: Must-have
-- **Description**: Generate hundreds of PDFs simultaneously from source data.
-- **Acceptance Criteria**: Uses `GeneratePdfAction` via worker queues.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Secure Delivery
-- **Priority**: Must-have
-- **Description**: Notify users and provide a secure, authenticated link for download.
-- **Acceptance Criteria**: Links are for authenticated users only, logged at download.
+### P0: Fiscal Compliance (Must-have)
+- **FR-001: Batch PDF Generation**: Simultaneous generation of thousands of fiscal certificates from source data using worker queues.
+- **FR-002: Secure Document Delivery**: Authenticated download system for employees to retrieve their certificates.
+- **FR-003: Multi-Year Archiving**: Secure storage and indexing of certifications across different fiscal years.
 
-### FR-003: Versioning Support
-- **Priority**: Should-have
-- **Description**: Handle different certificate formats for different fiscal years.
-- **Acceptance Criteria**: Documents are categorized and archived by year.
+### P1: Process Automation (Important)
+- **FR-004: Delivery Tracking**: Audit trail showing when a certificate was generated, emailed, and downloaded.
+- **FR-006: Versioned Templates**: Support for annual changes in fiscal form formats mandated by tax authorities.
 
-### FR-004: Delivery Status
-- **Priority**: Should-have
-- **Description**: Track whether a certificate was generated, emailed, and downloaded.
-- **Acceptance Criteria**: Admin panel shows "Download status" for each document.
+### P2: Digital Transformation (Nice-to-have)
+- **FR-005: Digital Signature**: Integrated support for legally binding digital signatures on generated documents.
+- **FR-007: AI Data Validation**: Automated anomaly detection in source data before document generation.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Confidentiality**: Strict access control on fiscal files.
-- **NFR-002: Scalability**: Handle high load during the fiscal season (Feb-Mar).
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Data Sourcing**: CertFisc MUST consume standardized data structures; it does not directly query legacy payroll databases.
+- **Interoperability**: Uses the `Xot` module's `GeneratePdfAction` and `Notify` module for delivery.
+- **Independent Life-cycle**: Documents are stored as static PDF assets, ensuring readability even if the underlying source data changes.
+
+### Performance & Safety
+- **NFR-001: Confidentiality**: Strict encryption of fiscal documents at rest and in transit.
+- **NFR-002: Scalability**: Capability to handle peak loads (5000+ PDFs/hour) during fiscal season.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

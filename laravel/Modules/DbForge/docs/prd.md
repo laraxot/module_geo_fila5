@@ -34,31 +34,32 @@ Developer productivity is hampered by:
 - Database backups and restoration (delegated to standard Laravel/Spatie tools).
 - Designing new database schemas (use migrations instead).
 
-## 5. Functional Requirements
-### FR-001: Schema Inspection
-- **Priority**: Must-have
-- **Description**: Inspect existing database tables and retrieve detailed information about columns, types, and indexes.
-- **Acceptance Criteria**: Admin can view detailed schema info for any connected database in Filament.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Model Generation
-- **Priority**: Must-have
-- **Description**: Generate a complete `XotBaseModel` file from an existing table.
-- **Acceptance Criteria**: Generated models include correct property annotations and relation suggestions.
+### P0: Developer Scaffolding (Must-have)
+- **FR-001: Schema Inspection**: Retrieve detailed information about columns, types, and indexes from any connected database.
+- **FR-002: Automatic Model Generation**: Generate `XotBaseModel` files from existing tables, including property annotations and relation suggestions.
+- **FR-003: Filament Resource Scaffolding**: Generate `XotBaseResource` and associated pages from models/tables.
 
-### FR-003: Filament Scaffolding
-- **Priority**: Should-have
-- **Description**: Generate a basic `XotBaseResource` and associated pages from a model/table.
-- **Acceptance Criteria**: Generated resource follows Laraxot architectural principles.
+### P1: Maintenance & QA (Important)
+- **FR-004: Sync Verification**: Identify discrepancies between database schema and application artifacts.
+- **FR-006: DB Manipulation Utils**: Standardized tools for database cleanup and inspection in multi-tenant environments.
 
-### FR-004: Test Generation
-- **Priority**: Could-have
-- **Description**: Generate basic Pest feature tests for a given database table or resource.
-- **Acceptance Criteria**: Generated tests can be run immediately and cover basic CRUD operations.
+### P2: Advanced Productivity (Nice-to-have)
+- **FR-005: Automatic Test Generation**: Generate basic Pest feature tests for a given database table or resource.
+- **FR-007: AI-Driven Mapping**: AI suggestions for complex relationship mapping and type casting.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Safety**: Scaffolding must not overwrite existing files without explicit user confirmation.
-- **NFR-002: Accuracy**: Mapping between SQL types and PHP types must be precise.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance for all utilities.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Developer-Only Service**: DbForge MUST NOT have any runtime dependencies on domain modules.
+- **Interoperability**: Interacts with any database connection managed by the `Setting` module.
+- **Independence**: Generation logic is abstracted from specific database vendors (MySQL, PostgreSQL).
+
+### Performance & Safety
+- **NFR-001: Safety**: Scaffolding MUST NOT overwrite existing code without explicit user confirmation.
+- **NFR-002: Precision**: Accurate mapping between SQL types and PHP/Filament types.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance for all utilities.
 
 ## 7. Technical Architecture
 ### Dependencies
