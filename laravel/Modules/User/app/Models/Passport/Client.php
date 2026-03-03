@@ -8,7 +8,6 @@ use Laravel\Passport\Client as PassportClient;
 
 /**
  * Custom Passport Client model to fix compatibility issues with Laravel 12.
- * 
  *
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAuthCode> $authCodes
  * @property int|null                                                                          $auth_codes_count
@@ -20,13 +19,14 @@ use Laravel\Passport\Client as PassportClient;
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthToken>    $tokens
  * @property int|null                                                                          $tokens_count
  * @property \Modules\User\Models\User|null                                                    $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client existsIn(array $haystack)
  * @method static \Laravel\Passport\Database\Factories\ClientFactory   factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client query()
- * 
-   * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAuthCode> $authCodes
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAuthCode> $authCodes
  * @property int|null                                                                          $auth_codes_count
  * @property array                                                                             $grant_types
  * @property \Illuminate\Foundation\Auth\User                                                  $owner
@@ -36,12 +36,14 @@ use Laravel\Passport\Client as PassportClient;
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthToken>    $tokens
  * @property int|null                                                                          $tokens_count
  * @property \Modules\User\Models\User|null                                                    $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client existsIn(array $haystack)
  * @method static \Laravel\Passport\Database\Factories\ClientFactory   factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client query()
  *                                                                                                         >>>>>>> da38c10 (.)
+ *
  * @mixin \Eloquent
  */
 class Client extends PassportClient
