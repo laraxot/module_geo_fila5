@@ -37,31 +37,33 @@ The organization needs:
 - Physical clocking hardware production.
 - Direct payroll payment (delegated to Sigma).
 
-## 5. Functional Requirements
-### FR-001: Clocking Registration
-- **Priority**: Must-have
-- **Description**: Capture and store daily entry and exit events.
-- **Acceptance Criteria**: Support for web-based, mobile, and physical terminal imports.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Leave Workflow
-- **Priority**: Must-have
-- **Description**: Multi-level approval process for vacation and sick leave requests.
-- **Acceptance Criteria**: Automated notifications and real-time balance updates upon approval.
+### P0: Time Tracking Core (Must-have)
+- **FR-001: Clocking Event Management**: Capture and store daily entry/exit events (timbrature) via web, mobile, or terminal.
+- **FR-002: Leave & Absence Workflow**: Multi-level approval process for vacation, sick leave, and special permits.
+- **FR-003: Work Hour Calculation**: Automated calculation of net hours, overtime, and night shifts based on assigned schedules.
 
-### FR-003: Hour Calculation
-- **Priority**: Must-have
-- **Description**: Calculate net work hours based on clocking times and assigned schedules.
-- **Acceptance Criteria**: Precise handling of rounding rules and tolerance periods.
+### P1: Compliance & Payroll (Important)
+- **FR-004: Overtime Authorization**: Workflow for formal authorization of extra hours to be exported to payroll.
+- **FR-005: Multi-tenant Shift Management**: Define and assign complex working shifts (Turni) and periodic schedules.
+- **FR-006: External Terminal Integration**: Standardized bridge for importing data from physical clocking hardware.
 
-### FR-004: Overtime Authorization
-- **Priority**: Should-have
-- **Description**: Separate workflow for authorizing extra hours worked.
-- **Acceptance Criteria**: Only authorized overtime is exported to payroll.
+### P2: Advanced Workforce Planning (Nice-to-have)
+- **FR-007: Visual Shift Planner**: Interactive drag-and-drop interface for managing departmental rotations.
+- **FR-008: AI Absence Prediction**: Predictive modeling of absence trends to optimize workforce capacity.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Availability**: High uptime for the clocking interface.
-- **NFR-002: Integrity**: Clocking logs must be immutable and audit-trailed.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Terminal Agnosticism**: PresenzeAssenze MUST remain independent of specific physical clocking hardware vendors.
+- **Interoperability**: Provides crucial hour and absence feeds to `Sigma` for payroll and `Performance` for evaluation context.
+- **Independent Rules**: Calculation rules (rounding, tolerances) are configurable and independent of the core attendance logic.
+
+### Performance & Safety
+- **NFR-001: Availability**: High-uptime requirement for the entry/exit registration interface.
+- **NFR-002: Auditability**: Every modification to a clocking event must be immutable and fully audit-trailed.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

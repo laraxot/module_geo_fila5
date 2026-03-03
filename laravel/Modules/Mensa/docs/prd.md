@@ -36,31 +36,32 @@ The organization needs to:
 - Detailed kitchen inventory (delegated to specialized catering software).
 - Direct POS/payment terminal communication (delegated to specialized middleware).
 
-## 5. Functional Requirements
-### FR-001: Meal Registration
-- **Priority**: Must-have
-- **Description**: Record when and where an employee consumes a meal.
-- **Acceptance Criteria**: Compatible with badge-based or app-based meal registration.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Voucher Management
-- **Priority**: Must-have
-- **Description**: Track and manage the entitlement and distribution of meal vouchers.
-- **Acceptance Criteria**: Configurable rules for voucher entitlement (e.g., sessions of 6+ hours).
+### P0: Meal Tracking & Entitlement (Must-have)
+- **FR-001: Meal Registration**: Capture daily meal consumption events via badge-based or app-based identification.
+- **FR-002: Voucher Management (Buoni Pasto)**: Automated entitlement tracking based on worked hours and session duration.
+- **FR-005: Consumption History**: Immutable record of all meal events for employee and administrator review.
 
-### FR-003: Cost Contribution
-- **Priority**: Should-have
-- **Description**: Track the portion of the meal cost paid by the employee vs the company.
-- **Acceptance Criteria**: Integration with payroll system (Sigma) for monthly deductions.
+### P1: Operational Billing (Important)
+- **FR-003: Cost Contribution Tracking**: Manage the cost-sharing split between employee and company for payroll deductions.
+- **FR-006: Provider Coordination**: Dashboard for managing cooking centers and service provider performance.
 
-### FR-004: Cooking Center Coordination
-- **Priority**: Could-have
-- **Description**: Manage information about different cooking centers and providers.
-- **Acceptance Criteria**: Reports of meal counts sent to each provider daily.
+### P2: Advanced Catering (Nice-to-have)
+- **FR-004: Meal Booking**: Advance booking system for specialized meals or events.
+- **FR-007: AI Nutritional Feedback**: Optional nutritional analysis of consumed meals based on provider menus.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Real-time update**: Meal consumption data should be visible within the day.
-- **NFR-002: Scalability**: Support processing of thousands of meal registrations daily.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Terminal Agnosticism**: Mensa MUST remain independent of specific canteen terminal hardware vendors.
+- **Interoperability**: Consumes attendance data from `PresenzeAssenze` and identification from `Badge`; results are consumed by `Sigma` for payroll.
+- **Isolation**: Canteen management logic is decoupled from general HR evaluations.
+
+### Performance & Safety
+- **NFR-001: Scalability**: Capability to handle peak lunch-hour loads (thousands of registrations in 60 mins).
+- **NFR-002: Integrity**: Spot-check tools to verify badge ownership via photos from the `User` profile.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

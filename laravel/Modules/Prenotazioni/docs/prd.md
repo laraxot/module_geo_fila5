@@ -35,31 +35,32 @@ The organization needs:
 - Full-scale public ticketing (delegated to specialized citizens-portal).
 - Logistics/Cleaning scheduling.
 
-## 5. Functional Requirements
-### FR-001: Resource/Service Definition
-- **Priority**: Must-have
-- **Description**: Create bookable services (e.g., HR advice) or resources (e.g., Desk 5).
-- **Acceptance Criteria**: Each service defines slot duration and availability rules.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Dynamic Calendar
-- **Priority**: Must-have
-- **Description**: Visual calendar for managing and viewing bookings.
-- **Acceptance Criteria**: Integration with Filament's calendar patterns.
+### P0: Reservation Core (Must-have)
+- **FR-001: Resource & Service Definition**: Create bookable services (HR advice, medical checks) and physical resources (desks, rooms) with availability rules.
+- **FR-002: Dynamic Calendar Interface**: Integrated visual calendar for managing and viewing bookings in real-time.
+- **FR-005: Concurrency Control**: Real-time locking mechanism to prevent double bookings across all channels.
 
-### FR-003: Check-in/Completion
-- **Priority**: Should-have
-- **Description**: Mark an appointment as "Completed" or "No-show".
-- **Acceptance Criteria**: Status history tracked per reservation.
+### P1: Operational Management (Important)
+- **FR-003: Check-in & Lifecycle Tracking**: Tools for operators to mark appointments as "Completed", "No-show", or "Cancelled".
+- **FR-004: Automated Reminders**: Email and SMS notifications for upcoming reservations using the `Notify` module.
 
-### FR-004: Automated Notifications
-- **Priority**: Should-have
-- **Description**: Email/SMS reminders for upcoming appointments.
-- **Acceptance Criteria**: Uses the Notify module with customizable triggers.
+### P2: Advanced Logistics (Nice-to-have)
+- **FR-006: Visual Resource Mapping**: Interactive maps for desk and room selection during the booking process.
+- **FR-007: AI Availability Optimization**: Predictive suggestions for resource allocation based on historical booking trends.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Consistency**: Real-time locking to prevent double bookings.
-- **NFR-002: Scalability**: Support high concurrency during heavy booking periods.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Resource Agnosticism**: Prenotazioni MUST NOT be limited to specific assets; it provides a generic booking engine for any entity.
+- **Interoperability**: Consumes user profiles from `User` and provides availability data to other modules (e.g., Performance for evaluation slots).
+- **Independence**: The scheduling engine is abstracted from the specific business domain of the reservation.
+
+### Performance & Safety
+- **NFR-001: Data Consistency**: Guaranteed zero double-booking rate through database-level constraints.
+- **NFR-002: Scalability**: Support for high-concurrency booking during organizational deadlines.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

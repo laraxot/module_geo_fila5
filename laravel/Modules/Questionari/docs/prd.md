@@ -37,31 +37,33 @@ Organizations need:
 - Real-time polling/voting (requires a dedicated Live Voting module).
 - External survey provider hosting (this is a native tool).
 
-## 5. Functional Requirements
-### FR-001: Questionnaire Builder
-- **Priority**: Must-have
-- **Description**: Drag-and-drop or structured UI to build questions and sections.
-- **Acceptance Criteria**: Survey designers can create complex multi-page questionnaires.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Response collection
-- **Priority**: Must-have
-- **Description**: Public or private landing page for respondents to provide answers.
-- **Acceptance Criteria**: Mobile-friendly, supports session saving for long questionnaires.
+### P0: Survey Engine (Must-have)
+- **FR-001: Structural Questionnaire Builder**: Multilingual builder for sections and questions with diverse types (MCQ, Scale, Matrix).
+- **FR-002: Secure Response Collection**: Mobile-friendly landing pages for data entry with session persistence.
+- **FR-005: Conditional Logic**: Support for Skip/Show logic based on respondent answers.
 
-### FR-003: Data Visualization
-- **Priority**: Should-have
-- **Description**: Integrated charts for each question type to see trends at a glance.
-- **Acceptance Criteria**: Real-time updates as new responses arrive.
+### P1: Data Insights (Important)
+- **FR-003: Real-time Data Visualization**: Integrated trend charts (Pie, Bar) for each question type within the admin panel.
+- **FR-004: Anonymous Participation**: Support for verified anonymous surveys where respondent identity is decoupled from answers.
+- **FR-006: Target Audience Management**: Distribution lists and authenticated link generation.
 
-### FR-004: Anonymous Surveys
-- **Priority**: Should-have
-- **Description**: Support for completely anonymous surveys for sensitive HR topics.
-- **Acceptance Criteria**: Respondent identity is not stored or linked to answers.
+### P2: Advanced Feedback (Nice-to-have)
+- **FR-007: Automated PDF Summaries**: Generate comprehensive executive summaries of survey results.
+- **FR-008: AI Sentiment Analysis**: Qualitative analysis of open-text responses to detect overarching emotional trends.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Performance**: Loading a long survey must be efficient.
-- **NFR-002: Integrity**: Protection against multiple submissions from the same user if configured.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Generic Feedback Tool**: Questionari provides the collection engine; it MUST NOT be tied to any specific business domain.
+- **Interoperability**: Can be embedded into other modules (e.g., Performance self-assessment) through standardized components.
+- **Isolation**: Survey responses are stored independently of the core user data to maintain anonymity when required.
+
+### Performance & Safety
+- **NFR-001: Performance**: Optimized loading for long, complex questionnaires with many assets.
+- **NFR-002: Integrity**: Robust protection against multiple submissions and data loss via auto-save drafts.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

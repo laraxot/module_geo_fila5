@@ -35,31 +35,32 @@ Applications need to:
 - Marketing email campaigns (delegated to external services like Mailchimp).
 - Direct chat/messaging system (requires a dedicated Chat module).
 
-## 5. Functional Requirements
-### FR-001: Multi-Channel Delivery
-- **Priority**: Must-have
-- **Description**: Send notifications via Email, Database, and SMS.
-- **Acceptance Criteria**: Single notification can be sent to multiple channels simultaneously.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Notification History
-- **Priority**: Should-have
-- **Description**: Track all notifications sent to a user for auditing.
-- **Acceptance Criteria**: Admin can view notification status (sent, failed, read).
+### P0: Communication Core (Must-have)
+- **FR-001: Multi-Channel Delivery Engine**: Send notifications via Email, Database, and SMS using Laravel's Notification system.
+- **FR-004: Localized Templates**: Support for customizable, localized notification templates with dynamic variable injection.
+- **FR-005: Async Orchestration**: Offload all notification delivery to background queues via the `Job` module.
 
-### FR-003: User Preferences
-- **Priority**: Should-have
-- **Description**: Users can choose which notifications they receive and through which channels.
-- **Acceptance Criteria**: Preferences are respected by the delivery engine.
+### P1: Engagement & Auditing (Important)
+- **FR-002: Notification Audit Trail**: Centralized history of all sent notifications, including status (sent, failed, read) and delivery attempts.
+- **FR-003: Granular User Preferences**: Interface for users to manage their opt-in/opt-out settings per notification type and channel.
 
-### FR-004: Templated Notifications
-- **Priority**: Must-have
-- **Description**: Support for customizable templates for various notification types.
-- **Acceptance Criteria**: Templates support dynamic variables and localization.
+### P2: Advanced Connectivity (Nice-to-have)
+- **FR-006: Instant Messenger Integration**: Support for Slack, Microsoft Teams, and Telegram notification channels.
+- **FR-007: AI Notification Optimization**: Predictive analysis to suggest the best time and channel for each notification type to maximize engagement.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Reliability**: Retries for failed notification deliveries.
-- **NFR-002: Performance**: Non-blocking delivery via queues.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Global Communication Service**: Notify provides the transport layer; it MUST NOT contain the business logic of the alerts it carries.
+- **Interoperability**: Provides a standardized API for all other modules to trigger notifications without knowing the delivery details.
+- **Channel Agnosticism**: Abstracts the underlying provider (SMTP, AWS SES, Twilio), allowing for seamless provider switching.
+
+### Performance & Safety
+- **NFR-001: Reliability**: Mandatory retry logic for failed deliveries with exponential backoff.
+- **NFR-002: Scalability**: Capability to handle burst notification loads (e.g., thousands of emails during fiscal season).
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

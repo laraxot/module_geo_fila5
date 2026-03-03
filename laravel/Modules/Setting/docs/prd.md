@@ -35,31 +35,32 @@ Managing a multi-module, multi-tenant system requires:
 - Environment-sensitive credentials (must remain in `.env`).
 - Large data storage (use database tables or files).
 
-## 5. Functional Requirements
-### FR-001: Dynamic Configuration
-- **Priority**: Must-have
-- **Description**: Read and write settings to the database instead of static config files.
-- **Acceptance Criteria**: Setting values are cached for performance.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Hierarchical Settings
-- **Priority**: Should-have
-- **Description**: Support for global -> module -> tenant hierarchy.
-- **Acceptance Criteria**: More specific settings override more general ones.
+### P0: Dynamic Configuration Core (Must-have)
+- **FR-001: Database-Backed Key-Value Store**: Manage application and module parameters without code deployment.
+- **FR-003: Hierarchical Settings Framework**: Support for Global -> Module -> Tenant settings overrides.
+- **FR-005: Type-Safe Parameters**: Cast and validate configuration values based on type (string, boolean, integer, JSON).
 
-### FR-003: Setting Types
-- **Priority**: Must-have
-- **Description**: Support for various data types (string, boolean, integer, JSON).
-- **Acceptance Criteria**: Proper casting and validation based on type.
+### P1: Infrastructure Integration (Important)
+- **FR-004: Connection Management Engine**: Define and register database connections dynamically for other modules to consume.
+- **FR-006: Admin Configuration UI**: Centralized Filament-based interface for all module settings.
 
-### FR-004: Connection Management
-- **Priority**: Should-have
-- **Description**: Ability to manage database connections dynamically.
-- **Acceptance Criteria**: Connections are registered and usable in the system.
+### P2: Operational Scale (Nice-to-have)
+- **FR-007: Settings Change Auditing**: Detailed log of who changed what configuration and when, using the `Activity` module.
+- **FR-008: AI Config Optimization**: Suggestions for optimal configuration values based on system usage and performance trends.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Efficiency**: Settings must be cached to avoid excessive DB queries.
-- **NFR-002: Security**: Sensitive setting values should be encrypted.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Config Provider**: Setting provides the data store; it MUST NOT be aware of the business meaning of the settings it stores.
+- **Interoperability**: Provides a unified `setting()` helper or service for all modules to access their configurations.
+- **Independent Scoping**: Supports multi-tenant context independently of the module being configured.
+
+### Performance & Safety
+- **NFR-001: Extreme Efficiency**: Config retrieval MUST be < 1ms through aggressive caching and per-request memoization.
+- **NFR-002: Security**: Sensitive configuration values (e.g., API keys) MUST be encrypted at rest.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

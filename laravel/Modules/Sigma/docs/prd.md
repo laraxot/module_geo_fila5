@@ -34,31 +34,32 @@ The PTVX platform must:
 - Developing new features inside the legacy system (read/sync only).
 - Directly modifying legacy table schemas.
 
-## 5. Functional Requirements
-### FR-001: Legacy Data Access
-- **Priority**: Must-have
-- **Description**: Provide 1000+ Eloquent models for Sigma database tables.
-- **Acceptance Criteria**: Developers can query `Sigma\Models\Ana00f` just like any other model.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Mass Normalization
-- **Priority**: Must-have
-- **Description**: Actions to fix common legacy data issues (upper/lowercase names, malformed codes).
-- **Acceptance Criteria**: `MassUpdateCognomeNomeAction` and similar normalize data for better display.
+### P0: Legacy Bridge (Must-have)
+- **FR-001: Extensive Legacy Model Registry**: Support for 1000+ Eloquent models representing Sigma legacy tables with dedicated connection.
+- **FR-002: Mass Data Normalization Engine**: Centralized actions for mass fixing common legacy data issues (e.g., casing, malformed codes).
+- **FR-005: Mapping Infrastructure**: Link legacy Sigma codes (organizational, personal) to modern Laraxot entities.
 
-### FR-003: WebService Bridge
-- **Priority**: Should-have
-- **Description**: Capability to fetch legacy data through a specialized WebService if direct DB access isn't available.
-- **Acceptance Criteria**: Unified model API regardless of underlying driver.
+### P1: Data Integrity & Sync (Important)
+- **FR-003: Remote WebService Proxy**: Capability to fetch and update legacy data through a specialized WebService bridge.
+- **FR-004: Recursive State Diffing**: Identification and reporting of discrepancies between Laraxot state and Sigma legacy state.
 
-### FR-004: Recursive Diffing
-- **Priority**: Should-have
-- **Description**: Identify differences between Laraxot state and Sigma legacy state.
-- **Acceptance Criteria**: `DiffAssocRecursiveAction` reports discrepancies precisely.
+### P2: Transition Intelligence (Nice-to-have)
+- **FR-006: Automated Drift Detection**: Continuous monitoring for data inconsistencies between systems with proactive alerts.
+- **FR-007: AI Data Cleansing**: Heuristic suggestions for mapping and normalizing ambiguous legacy records.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Cold Storage Efficiency**: Models must be lightweight since there are 1000+ of them.
-- **NFR-002: Performance**: Large sync operations must be memory-efficient.
-- **NFR-003: Compatibility**: Supports legacy database charset and collation.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Proxy Layer**: Sigma provides the technical access to legacy data; it MUST NOT contain modern HR or performance business logic.
+- **Interoperability**: Provides a standardized Model layer that all domain modules (Performance, Progressioni) consume for initial seeding and ongoing synchronization.
+- **Data Isolation**: Legacy Sigma models are namespaced under `Sigma\Models` to avoid collisions with modern domain models.
+
+### Performance & Safety
+- **NFR-001: Infrastructure Efficiency**: Models must be extremely lightweight to avoid overhead during the registration of 1000+ classes.
+- **NFR-002: Memory Management**: Use of database cursors and chunked processing for large-scale data sync and normalization.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies
