@@ -11,7 +11,18 @@ Questa guida definisce come implementare correttamente le pagine di gestione dei
 Il trait `HasXotTable` implementa già il metodo `table(Table $table)`. Salvo casi eccezionali, non deve essere sovrascritto. La personalizzazione deve avvenire tramite gli hook specifici.
 
 ### B. Riutilizzo delle Colonne
-Se la tabella dei record correlati deve mostrare le stesse colonne della pagina List principale della risorsa correlata, è consigliabile esporre un metodo statico nella pagina List (es. `get[Model]TableColumns`) e chiamarlo in `getTableColumns()`.
+Se la tabella dei record correlati deve mostrare le stesse colonne della pagina List principale della risorsa correlata, **non** creare wrapper statici aggiuntivi.
+
+Utilizzare invece direttamente l'istanza della pagina List tramite il container:
+
+```php
+public function getTableColumns(): array {
+    /** @var ListCharts $page */
+    $page = app(ListCharts::class);
+
+    return $page->getTableColumns();
+}
+```
 
 ### C. Azioni di Intestazione (Header Actions)
 Invece di creare manualmente `CreateAction` o `AssociateAction` in `getTableHeaderActions()`, utilizzare i flag di controllo:
