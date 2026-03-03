@@ -27,7 +27,6 @@ use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
  * @property string|null $updated_by
  * @property-read Collection<int, Schede> $schede
  * @property-read int|null $schede_count
- *
  * @method static MaxCatecoPosfunAnnoFactory factory($count = null, $state = [])
  * @method static Builder|MaxCatecoPosfunAnno newModelQuery()
  * @method static Builder|MaxCatecoPosfunAnno newQuery()
@@ -44,7 +43,9 @@ use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
  * @method static Builder|MaxCatecoPosfunAnno wherePosfun($value)
  * @method static Builder|MaxCatecoPosfunAnno whereUpdatedAt($value)
  * @method static Builder|MaxCatecoPosfunAnno whereUpdatedBy($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class MaxCatecoPosfunAnno extends BaseModel

@@ -38,7 +38,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $cc1
  * @property string|null $cc2
  * @property string|null $cc3
- *
  * @method static Builder|Cor04l7 newModelQuery()
  * @method static Builder|Cor04l7 newQuery()
  * @method static Builder|Cor04l7 query()
@@ -71,7 +70,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cor04l7 whereTipcod($value)
  * @method static Builder|Cor04l7 whereTipmc($value)
  * @method static Builder|Cor04l7 whereTipod($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Cor04l7Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Cor04l7 extends BaseModel

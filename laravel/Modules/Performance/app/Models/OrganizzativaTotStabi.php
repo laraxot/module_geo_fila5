@@ -25,7 +25,6 @@ use Modules\Xot\Traits\Updater;
  * @property int|null $anno
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static Builder|OrganizzativaTotStabi newModelQuery()
  * @method static Builder|OrganizzativaTotStabi newQuery()
  * @method static Builder|OrganizzativaTotStabi query()
@@ -42,10 +41,13 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|OrganizzativaTotStabi whereTotResti($value)
  * @method static Builder|OrganizzativaTotStabi whereTotRestiMinPunteggio($value)
  * @method static Builder|OrganizzativaTotStabi whereUpdatedAt($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|OrganizzativaTotStabi whereCreatedBy($value)
+ * @method static Builder<static>|OrganizzativaTotStabi whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class OrganizzativaTotStabi extends BaseModel

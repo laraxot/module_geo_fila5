@@ -32,7 +32,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property bool|null $is_readonly
  * @property int|null $anno
  * @property int|null $order_column
- *
  * @method static Builder|Rating newModelQuery()
  * @method static Builder|Rating newQuery()
  * @method static Builder|Rating query()
@@ -51,15 +50,15 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
  * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
- *
  * @property-read Profile|null $creator
  * @property-read Model|\Eloquent $linkedTo
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  * @property-read Profile|null $updater
- *
  * @method static RatingFactory factory($count = null, $state = [])
- *
+ * @property string|null $slug
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|Rating whereSlug($value)
  * @mixin \Eloquent
  */
 class Rating extends BaseRating

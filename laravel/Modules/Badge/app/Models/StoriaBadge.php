@@ -15,10 +15,31 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|StoriaBadge newModelQuery()
  * @method static Builder|StoriaBadge newQuery()
  * @method static Builder|StoriaBadge query()
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property int $id
+ * @property int|null $ente
+ * @property int|null $matricola
+ * @property string|null $cognome
+ * @property string|null $nome
+ * @property string|null $badge
+ * @property string|null $data
+ * @property string|null $note
+ * @property int|null $last_stato
+ * @property string|null $handle
+ * @property string|null $datemod
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|StoriaBadge whereBadge($value)
+ * @method static Builder<static>|StoriaBadge whereCognome($value)
+ * @method static Builder<static>|StoriaBadge whereData($value)
+ * @method static Builder<static>|StoriaBadge whereDatemod($value)
+ * @method static Builder<static>|StoriaBadge whereEnte($value)
+ * @method static Builder<static>|StoriaBadge whereHandle($value)
+ * @method static Builder<static>|StoriaBadge whereId($value)
+ * @method static Builder<static>|StoriaBadge whereLastStato($value)
+ * @method static Builder<static>|StoriaBadge whereMatricola($value)
+ * @method static Builder<static>|StoriaBadge whereNome($value)
+ * @method static Builder<static>|StoriaBadge whereNote($value)
  * @mixin \Eloquent
  */
 class StoriaBadge extends BaseModel

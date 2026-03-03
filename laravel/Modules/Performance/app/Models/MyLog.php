@@ -24,7 +24,6 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|MyLog newModelQuery()
  * @method static Builder|MyLog newQuery()
  * @method static Builder|MyLog query()
@@ -40,19 +39,21 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|MyLog whereTbl($value)
  * @method static Builder|MyLog whereUpdatedAt($value)
  * @method static Builder|MyLog whereUpdatedBy($value)
- *
  * @property string|null $obj
  * @property string|null $act
  * @property string|null $post_type
  * @property int|null $post_id
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|MyLog whereAct($value)
  * @method static Builder<static>|MyLog whereObj($value)
  * @method static Builder<static>|MyLog wherePostId($value)
  * @method static Builder<static>|MyLog wherePostType($value)
- *
+ * @property int|null $model_id
+ * @property string|null $model_type
+ * @property-read Profile|null $deleter
+ * @method static Builder<static>|MyLog whereModelId($value)
+ * @method static Builder<static>|MyLog whereModelType($value)
  * @mixin \Eloquent
  */
 class MyLog extends BaseModel

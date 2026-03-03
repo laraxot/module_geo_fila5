@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dtcom2
  * @property string|null $dtcom3
  * @property string|null $dtcom4
- *
  * @method static Builder|Dipt00l1 newModelQuery()
  * @method static Builder|Dipt00l1 newQuery()
  * @method static Builder|Dipt00l1 query()
@@ -35,7 +34,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dipt00l1 whereDtturn($value)
  * @method static Builder|Dipt00l1 whereEnteap($value)
  * @method static Builder|Dipt00l1 whereId($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Dipt00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Dipt00l1 extends BaseModel

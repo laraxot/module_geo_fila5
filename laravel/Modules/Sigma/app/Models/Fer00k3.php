@@ -38,7 +38,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $fer003
  * @property string|null $fer004
  * @property string|null $fer005
- *
  * @method static Builder|Fer00k3 newModelQuery()
  * @method static Builder|Fer00k3 newQuery()
  * @method static Builder|Fer00k3 query()
@@ -71,7 +70,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Fer00k3 whereFerum($value)
  * @method static Builder|Fer00k3 whereId($value)
  * @method static Builder|Fer00k3 whereMatr($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Fer00k3Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Fer00k3 extends BaseModel

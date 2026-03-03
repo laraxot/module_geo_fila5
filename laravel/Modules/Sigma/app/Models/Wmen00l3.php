@@ -30,7 +30,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mntmen
  * @property string|null $mncom2
  * @property string|null $mncom3
- *
  * @method static Builder|Wmen00l3 newModelQuery()
  * @method static Builder|Wmen00l3 newQuery()
  * @method static Builder|Wmen00l3 query()
@@ -55,7 +54,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wmen00l3 whereMnp3($value)
  * @method static Builder|Wmen00l3 whereMnp4($value)
  * @method static Builder|Wmen00l3 whereMntmen($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Wmen00l3Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Wmen00l3 extends BaseModel

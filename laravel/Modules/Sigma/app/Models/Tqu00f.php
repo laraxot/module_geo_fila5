@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $desc2
  * @property string|null $liv
  * @property string|null $tqann
- *
  * @method static Builder|Tqu00f newModelQuery()
  * @method static Builder|Tqu00f newQuery()
  * @method static Builder|Tqu00f query()
@@ -41,7 +40,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Tqu00f whereRuolo($value)
  * @method static Builder|Tqu00f whereTipco($value)
  * @method static Builder|Tqu00f whereTqann($value)
- *
  * @mixin \Eloquent
  */
 class Tqu00f extends Model

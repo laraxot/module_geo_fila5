@@ -103,7 +103,6 @@ use RuntimeException;
  * @property Collection<int, Rating> $ratings
  * @property int|null $ratings_count
  * @property StabiDirigente|null $stabiDirigente
- *
  * @method static Builder|LettI newModelQuery()
  * @method static Builder|LettI newQuery()
  * @method static Builder|LettI ofDate(int $date)
@@ -174,14 +173,163 @@ use RuntimeException;
  * @method static Builder|LettI whereValoreEconomicoCalcolato($value)
  * @method static Builder|LettI whereValutatoreId($value)
  * @method static Builder|LettI withDays(int $date_min, int $date_max)
- *
  * @property Profile|null $creator
  * @property RatingMorph|null $pivot
  * @property Profile|null $updater
- *
  * @method static Builder<static>|LettI ofEnte(int $ente)
  * @method static Builder<static>|LettI ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- *
+ * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $Sto00fYear
+ * @property-read int|null $sto00f_year_count
+ * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
+ * @property-read int|null $activities_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Ana02f> $ana02f
+ * @property-read int|null $ana02f_count
+ * @property-read \Modules\Sigma\Models\Ana10f|null $ana10f
+ * @property-read Anag|null $anag
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00f> $asz00f
+ * @property-read int|null $asz00f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1
+ * @property-read int|null $asz00k1_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1Year
+ * @property-read int|null $asz00k1_year_count
+ * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read int|null $avversari_count
+ * @property-read Collection<int, LettI> $avversariCategoriaEco
+ * @property-read int|null $avversari_categoria_eco_count
+ * @property-read Collection<int, LettI> $criteriOptions
+ * @property-read int|null $criteri_options_count
+ * @property-read Profile|null $deleter
+ * @property-read int|null $aventi_diritto
+ * @property-read int|null $aventi_diritto_eff
+ * @property-read string|null $categoria_ecoval
+ * @property-read string|null $codice_fiscale
+ * @property-read mixed|null $cont
+ * @property-read string|null $disci1_txt
+ * @property-read float|null $eta
+ * @property-read int|null $excellences_count_last3years
+ * @property-read string $from_field
+ * @property-read int|null $gg_anno
+ * @property-read int|null $gg_assenza_anno
+ * @property-read int|null $gg_asz
+ * @property-read int $gg_asz_cateco
+ * @property-read int|null $gg_asz_cateco_fuori_sede
+ * @property-read int|null $gg_asz_cateco_in_sede
+ * @property-read int|null $gg_asz_cateco_posfun
+ * @property-read int|null $gg_asz_cateco_posfun_fuori_sede
+ * @property-read int|null $gg_asz_cateco_posfun_in_sede
+ * @property-read int|null $gg_asz_fuori_sede
+ * @property-read int|null $gg_asz_in_sede
+ * @property-read int|null $gg_asz_tip_cod_escluso_subito
+ * @property-read int $gg
+ * @property-read int|null $gg_cateco
+ * @property-read int|null $gg_cateco_fuori_sede
+ * @property-read int|null $gg_cateco_in_sede
+ * @property-read int|null $gg_cateco_no_asz
+ * @property-read int|null $gg_cateco_no_posfun_no_asz
+ * @property-read int|null $gg_cateco_posfun
+ * @property-read int|null $gg_cateco_posfun_fuori_sede
+ * @property-read int|null $gg_cateco_posfun_in_sede
+ * @property-read int|null $gg_cateco_posfun_in_sede_no_asz
+ * @property-read int|null $gg_cateco_posfun_no_asz
+ * @property-read float $gg_cateco_posfun_rapportato_max10_valutatore
+ * @property-read int|null $gg_cateco_sup
+ * @property-read int|null $gg_cateco_sup_fuori_sede
+ * @property-read int|null $gg_cateco_sup_in_sede
+ * @property-read int|null $gg_esperienza_no_asz
+ * @property-read int|null $gg_fuori_sede
+ * @property-read float|null $gg_fuori_sede_no_asz
+ * @property-read int|null $gg_in_sede
+ * @property-read float $gg_in_sede_no_asz
+ * @property-read float|null $gg_integ_params_asz
+ * @property-read float|null $gg_no_asz
+ * @property-read int|float $gg_p_time_vert_year
+ * @property-read float|null $gg_parttimevert_anno
+ * @property-read int|null $gg_parttimevert
+ * @property-read float|null $gg_parttimevert_dalal
+ * @property-read int|null $gg_posiz1_in_sede
+ * @property-read int|null $gg_presenza_anno
+ * @property-read int $gg_presenza_dalal
+ * @property-read int|null $hh_asz
+ * @property-read int|null $hh_asz_fuori_sede
+ * @property-read int|null $hh_asz_in_sede
+ * @property-read float|null $importo_stipendio_annuo
+ * @property-read string|null $inail
+ * @property-read string|null $last_data_assunz
+ * @property-read string|null $lista_propro
+ * @property-read string|null $lista_propro_sup
+ * @property-read Collection $my_rating
+ * @property-read int|float $perc_p_time_daterange
+ * @property-read int|float $perc_p_time_year
+ * @property-read float|null $perc_parttime_anno
+ * @property-read float|null $perc_parttime
+ * @property-read float|null $perc_parttime_dalal
+ * @property-read float|null $perc_parttimepond_anno
+ * @property-read float|null $perc_parttimepond_dalal
+ * @property-read float|null $perf_ind2014
+ * @property-read float|null $perf_ind2015
+ * @property-read float|null $perf_ind2016
+ * @property-read float|null $perf_ind2017
+ * @property-read float|null $perf_ind2018
+ * @property-read float|null $perf_ind2019
+ * @property-read float|null $perf_ind2020
+ * @property-read float|null $perf_ind2021
+ * @property-read float|null $perf_ind2022
+ * @property-read float|null $perf_ind2023
+ * @property-read float|null $perf_ind2024
+ * @property-read float|null $perf_ind2025
+ * @property-read float|null $perf_ind2026
+ * @property-read float|null $perf_ind2027
+ * @property-read float|null $perf_ind2028
+ * @property-read float|null $perf_ind2029
+ * @property-read float|null $perf_ind2030
+ * @property-read int|null $perf_ind_count_last3_years
+ * @property-read float|null $perf_ind_media
+ * @property-read int|null $peso_esperienza_acquisita
+ * @property-read int|null $posfunval
+ * @property-read int $posizione
+ * @property-read string|null $posizione_eco
+ * @property-read string $post_type
+ * @property-read float|null $ptime
+ * @property float|null $punt_progressione_finale
+ * @property-read float|null $ratings_avg
+ * @property-read string|null $sesso
+ * @property-read string|null $titolo_di_studio
+ * @property-read string $to_field
+ * @property-read float $totale_pond
+ * @property-read float|null $valore_differenziale_rapportato_pt
+ * @property-read string|null $valutatore_txt
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read LettI|null $maxCatecoPosfun
+ * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read int|null $performance_individuale_count
+ * @property-read LettI|null $pesi
+ * @property-read Collection<int, Qua00f> $qua00f
+ * @property-read int|null $qua00f_count
+ * @property-read Collection<int, Qua00f> $qua00fDaterange
+ * @property-read int|null $qua00f_daterange_count
+ * @property-read Collection<int, Qua00f> $qua00fYear
+ * @property-read int|null $qua00f_year_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Qua03f> $qua03f
+ * @property-read int|null $qua03f_count
+ * @property-read Collection<int, \Modules\IndennitaResponsabilita\Models\Rating> $ratingObjectives
+ * @property-read int|null $rating_objectives_count
+ * @property-read Collection<int, Rep00f> $rep00f
+ * @property-read int|null $rep00f_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Repart> $reparts
+ * @property-read int|null $reparts_count
+ * @property-read LettI|null $stipendioTabellare
+ * @property-read Collection<int, \Modules\Sigma\Models\Sto00f> $sto00f
+ * @property-read int|null $sto00f_count
+ * @property-read \Modules\Sigma\Models\Tqu00f|null $tqu00f
+ * @property-read \Modules\IndennitaResponsabilita\Models\StabiDirigente|null $valutatore
+ * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lx
+ * @property-read int|null $wstr01lx_count
+ * @property-read Collection<int, \Modules\Sigma\Models\Wstr01lx> $wstr01lxYear
+ * @property-read int|null $wstr01lx_year_count
+ * @method static \Modules\IndennitaResponsabilita\Database\Factories\LettIFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|LettI withCalculatedData()
+ * @method static Builder<static>|LettI withRating()
  * @mixin \Eloquent
  */
 class LettI extends BaseScheda

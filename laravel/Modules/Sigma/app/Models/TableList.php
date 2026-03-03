@@ -9,6 +9,14 @@ namespace Modules\Sigma\Models;
  *
  * @property int $id
  * @property string $tbl
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\TableListFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList query()
+ * @mixin \Eloquent
  */
 class TableList extends BaseModel
 {

@@ -24,7 +24,6 @@ use Modules\Progressioni\Database\Factories\CriteriPrecedenzaFactory;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static CriteriPrecedenzaFactory factory($count = null, $state = [])
  * @method static Builder|CriteriPrecedenza newModelQuery()
  * @method static Builder|CriteriPrecedenza newQuery()
@@ -42,7 +41,9 @@ use Modules\Progressioni\Database\Factories\CriteriPrecedenzaFactory;
  * @method static Builder|CriteriPrecedenza wherePostType($value)
  * @method static Builder|CriteriPrecedenza whereUpdatedAt($value)
  * @method static Builder|CriteriPrecedenza whereUpdatedBy($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class CriteriPrecedenza extends BaseModel

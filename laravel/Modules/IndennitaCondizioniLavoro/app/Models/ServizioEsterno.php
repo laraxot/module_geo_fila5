@@ -123,7 +123,6 @@ use Modules\Trasferte\Models\FuoriSedeDip;
  * @property-read int|null $wstr01lx_count
  * @property-read Collection<int, Wstr01lx> $wstr01lxYear
  * @property-read int|null $wstr01lx_year_count
- *
  * @method static Builder|ServizioEsterno newModelQuery()
  * @method static Builder|ServizioEsterno newQuery()
  * @method static Builder|ServizioEsterno ofDate(int $date)
@@ -173,16 +172,18 @@ use Modules\Trasferte\Models\FuoriSedeDip;
  * @method static Builder|ServizioEsterno whereUpdatedBy($value)
  * @method static Builder|ServizioEsterno whereValutatoreId($value)
  * @method static Builder|ServizioEsterno withDays(int $date_min, int $date_max)
- *
  * @property-read Profile|null $creator
  * @property-read string|null $codice_fiscale
  * @property-read string|null $inail
  * @property-read string|null $sesso
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|ServizioEsterno ofEnte(int $ente)
  * @method static Builder<static>|ServizioEsterno ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- *
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read Collection<int, Rep00f> $reparts
+ * @property-read int|null $reparts_count
  * @mixin \Eloquent
  */
 class ServizioEsterno extends BaseModel

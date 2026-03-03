@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $qrepa
  * @property string|null $qdes1
  * @property string|null $qabi1
- *
  * @method static Builder|Gapstaf newModelQuery()
  * @method static Builder|Gapstaf newQuery()
  * @method static Builder|Gapstaf query()
@@ -27,7 +26,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Gapstaf whereQrepa($value)
  * @method static Builder|Gapstaf whereQstab($value)
  * @method static Builder|Gapstaf whereQtip1($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\GapstafFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Gapstaf extends BaseModel

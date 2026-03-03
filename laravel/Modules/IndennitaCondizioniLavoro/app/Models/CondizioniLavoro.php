@@ -129,7 +129,6 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
- *
  * @method static Builder|CondizioniLavoro newModelQuery()
  * @method static Builder|CondizioniLavoro newQuery()
  * @method static Builder|CondizioniLavoro ofDate(int $date)
@@ -179,17 +178,18 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|CondizioniLavoro whereUpdatedBy($value)
  * @method static Builder|CondizioniLavoro whereValutatoreId($value)
  * @method static Builder|CondizioniLavoro withDays(int $date_min, int $date_max)
- *
  * @property-read Profile|null $creator
  * @property-read string|null $codice_fiscale
  * @property-read string|null $inail
  * @property-read string|null $sesso
  * @property-read CondizioniLavoroIndennitaTipoDettaglioPivot|null $pivot
  * @property-read Profile|null $updater
- *
  * @method static Builder<static>|CondizioniLavoro ofEnte(int $ente)
  * @method static Builder<static>|CondizioniLavoro ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- *
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read int|null $integ_params_count
+ * @property-read \Modules\IndennitaCondizioniLavoro\Models\StabiDirigente|null $valutatore
  * @mixin \Eloquent
  */
 class CondizioniLavoro extends BaseModel

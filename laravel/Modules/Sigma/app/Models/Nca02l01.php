@@ -32,7 +32,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $pro
  * @property string|null $pos
  * @property string|null $liv
- *
  * @method static Builder|Nca02l01 newModelQuery()
  * @method static Builder|Nca02l01 newQuery()
  * @method static Builder|Nca02l01 query()
@@ -59,7 +58,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Nca02l01 whereTotc3($value)
  * @method static Builder|Nca02l01 whereTotc4($value)
  * @method static Builder|Nca02l01 whereTotc5($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Nca02l01Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Nca02l01 extends BaseModel

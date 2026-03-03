@@ -22,7 +22,6 @@ use Modules\Xot\Traits\Updater;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|CriteriEsclusione newModelQuery()
  * @method static Builder|CriteriEsclusione newQuery()
  * @method static Builder|CriteriEsclusione query()
@@ -36,10 +35,9 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder|CriteriEsclusione whereUpdatedAt($value)
  * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
  * @method static Builder|CriteriEsclusione whereValue($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends BaseModel

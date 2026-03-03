@@ -51,7 +51,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $qua00k1_count
  * @property-read Collection<int, Rep00f> $rep00f
  * @property-read int|null $rep00f_count
- *
  * @method static Builder|Sto00f newModelQuery()
  * @method static Builder|Sto00f newQuery()
  * @method static Builder|Sto00f query()
@@ -85,7 +84,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Sto00f whereTipdim($value)
  * @method static Builder|Sto00f whereTipoprovvass($value)
  * @method static Builder|Sto00f whereTipoprovvdi($value)
- *
  * @mixin \Eloquent
  */
 class Sto00f extends Model

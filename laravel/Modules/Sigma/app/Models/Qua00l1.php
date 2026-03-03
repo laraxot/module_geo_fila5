@@ -41,7 +41,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $oret
  * @property string|null $aapens
  * @property string|null $quaann
- *
  * @method static Builder|Qua00l1 newModelQuery()
  * @method static Builder|Qua00l1 newQuery()
  * @method static Builder|Qua00l1 query()
@@ -77,7 +76,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua00l1 whereSropro($value)
  * @method static Builder|Qua00l1 whereSuolo($value)
  * @method static Builder|Qua00l1 whereTipco($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Qua00l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Qua00l1 extends BaseModel

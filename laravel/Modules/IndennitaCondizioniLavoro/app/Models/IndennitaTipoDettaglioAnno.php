@@ -30,7 +30,6 @@ use Route;
  * @property string|null $created_by
  * @property-read array $indennita_tipo_opts
  * @property-read IndennitaTipo|null $indennitaTipo
- *
  * @method static Builder|IndennitaTipoDettaglioAnno newModelQuery()
  * @method static Builder|IndennitaTipoDettaglioAnno newQuery()
  * @method static Builder|IndennitaTipoDettaglioAnno query()
@@ -48,10 +47,9 @@ use Route;
  * @method static Builder|IndennitaTipoDettaglioAnno whereOnlyDisci1($value)
  * @method static Builder|IndennitaTipoDettaglioAnno whereUpdatedAt($value)
  * @method static Builder|IndennitaTipoDettaglioAnno whereUpdatedBy($value)
- *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- *
+ * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
 class IndennitaTipoDettaglioAnno extends BaseModel

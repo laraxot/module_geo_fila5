@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $r2pro
  * @property string|null $r2limi
  * @property string|null $r2ecez
- *
  * @method static Builder|Arr02f newModelQuery()
  * @method static Builder|Arr02f newQuery()
  * @method static Builder|Arr02f query()
@@ -25,7 +24,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Arr02f whereR2limi($value)
  * @method static Builder|Arr02f whereR2matr($value)
  * @method static Builder|Arr02f whereR2pro($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Arr02fFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Arr02f extends BaseModel

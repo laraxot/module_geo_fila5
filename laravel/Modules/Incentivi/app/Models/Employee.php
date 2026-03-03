@@ -37,7 +37,6 @@ use Override;
  * @property string $tipologia
  * @property EmployeeWorkgroup|ActivityEmployee|null $pivot
  * @property string|null $full_name
- *
  * @method static EmployeeFactory factory($count = null, $state = [])
  * @method static Builder|Employee newModelQuery()
  * @method static Builder|Employee newQuery()
@@ -55,12 +54,15 @@ use Override;
  * @method static Builder|Employee whereUpdatedBy($value)
  * @method static Builder<static>|Employee ofWorkgroupId(int $workgroup_id)
  * @method static Builder<static>|Employee whereTipologia($value)
- *
  * @property-read string|null $tqu00f_desc1
  * @property-read string|null $tqu00f_desc2
  * @property-read Collection<int, Project> $projects
  * @property-read int|null $projects_count
- *
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, Qua00f> $qua00f
+ * @property-read int|null $qua00f_count
+ * @method static Builder<static>|Employee whereTqu00fDesc1($value)
+ * @method static Builder<static>|Employee whereTqu00fDesc2($value)
  * @mixin \Eloquent
  */
 class Employee extends BaseModel

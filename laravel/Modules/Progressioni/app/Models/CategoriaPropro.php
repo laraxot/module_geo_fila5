@@ -21,7 +21,6 @@ use Modules\Progressioni\Database\Factories\CategoriaProproFactory;
  * @property string|null $updated_by
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static CategoriaProproFactory factory($count = null, $state = [])
  * @method static Builder|CategoriaPropro newModelQuery()
  * @method static Builder|CategoriaPropro newQuery()
@@ -36,7 +35,9 @@ use Modules\Progressioni\Database\Factories\CategoriaProproFactory;
  * @method static Builder|CategoriaPropro wherePosti($value)
  * @method static Builder|CategoriaPropro whereUpdatedAt($value)
  * @method static Builder|CategoriaPropro whereUpdatedBy($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class CategoriaPropro extends BaseModel

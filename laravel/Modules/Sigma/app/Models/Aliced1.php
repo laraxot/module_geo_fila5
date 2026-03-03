@@ -31,7 +31,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $desret
  * @property int|null $tipret
  * @property string|null $import
- *
  * @method static Builder|Aliced1 newModelQuery()
  * @method static Builder|Aliced1 newQuery()
  * @method static Builder|Aliced1 query()
@@ -57,7 +56,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Aliced1 whereRuo($value)
  * @method static Builder|Aliced1 whereTipret($value)
  * @method static Builder|Aliced1 whereVoce($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Aliced1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Aliced1 extends BaseModel

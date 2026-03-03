@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $T2RIPP
  * @property string|null $T2COM1
  * @property string|null $T2COM2
- *
  * @method static Builder|Turn02l1 newModelQuery()
  * @method static Builder|Turn02l1 newQuery()
  * @method static Builder|Turn02l1 query()
@@ -31,7 +30,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Turn02l1 whereT2RIPP($value)
  * @method static Builder|Turn02l1 whereT2SEQU($value)
  * @method static Builder|Turn02l1 whereT2STOR($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @method static \Modules\Sigma\Database\Factories\Turn02l1Factory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Turn02l1 extends BaseModel
