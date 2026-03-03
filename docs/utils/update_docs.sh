@@ -4,7 +4,7 @@
 # Helps maintain documentation consistency and track changes
 
 # Configuration
-DOCS_DIR="/var/www/html/base_techplanner_fila3/docs"
+DOCS_DIR="/var/www/html/base_techplanner_fila5/docs"
 LOG_FILE="$DOCS_DIR/documentation_update.log"
 
 # Function to log documentation updates

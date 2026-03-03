@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_performance_fila3",
+  "name": "laraxot/module_performance_fila5",
   "description": "Performance evaluation and HR assessment module for the Laraxot ecosystem: employee reviews, KPI tracking, and competency evaluation.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_performance_fila3.git",
+  "homepage": "https://github.com/laraxot/module_performance_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

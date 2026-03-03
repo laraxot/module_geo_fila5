@@ -448,7 +448,7 @@ public function scopeWithExtraAttributes(
 
 ```bash
 # PHPStan Level 10
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 ./vendor/bin/phpstan analyze Modules/Rating/app/Models/Rating.php --level=10
 ./vendor/bin/phpstan analyze Modules/IndennitaResponsabilita/.../Compila...php --level=10
 

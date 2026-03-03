@@ -1,29 +1,34 @@
 # Roadmap Modulo Activity
 
-## 🎯 Visione
-Evolvere il sistema di audit trail e logging verso un'analisi proattiva (AI-driven) e una visualizzazione dei dati granulare ed efficiente, mantenendo la conformità nativa a PHPStan Level 10.
+Questa pagina funge da indice della roadmap del modulo `Activity`.  
+I contenuti di dettaglio sono organizzati in sotto-documenti dedicati nella cartella `docs/roadmap/`.
 
-## 🏗️ Fasi di Sviluppo
+## Mappa dei documenti di roadmap
 
-### Fase 1: Qualità e Pulizia (In Corso)
-- [x] PHPStan Level 10 Compliance (Modulo di Riferimento).
-- [ ] Rimozione sistematica dei file duplicati e obsoleti.
-- [ ] Automazione delle GitHub Actions per il controllo qualità.
-- [ ] Consolidamento della guida agli eventi di dominio.
+- **Visione e obiettivi**  
+  Vedi `docs/roadmap/vision.md` per:
+  - il ruolo del modulo come centro dell’audit trail;
+  - obiettivi di business (security audit, accountability);
+  - obiettivi tecnici (modulo di riferimento per la qualità).
 
-### Fase 2: Enterprise UI (Pianificato)
-- [ ] Implementazione del **Cluster Observability** per Filament:
-    - Risorsa per gli Activity Logs.
-    - Dashboard di performance.
-    - Pagina di Security Audit.
+- **Fasi di sviluppo**  
+  Vedi `docs/roadmap/phases.md` per:
+  - stato attuale delle attività di qualità e pulizia;
+  - piani per UI di observability in Filament;
+  - evoluzioni future verso analytics e AI.
 
-### Fase 3: Analytics Evolute e AI (Futuro)
-- [ ] **AI Anomaly Detection**: Identificazione automatica di pattern anomali o accessi sospetti.
-- [ ] Integrazione con strumenti di analisi per monitoraggio proattivo delle operazioni critiche.
+- **Checklist qualità**  
+  Vedi `docs/roadmap/quality.md` per:
+  - criteri di qualità del codice e dell’architettura;
+  - requisiti di testing;
+  - aspetti di osservabilità e reporting.
 
-## ✅ Checklist Qualità
-- [x] PHPStan Level 10.
-- [ ] Copertura Test (Pest) > 90%.
-- [ ] Documentazione centralizzata in `docs/`.
-- [ ] Zero Static Access (dove possibile).
-- [x] Migrazioni activity_log allineate a XotBaseMigration (vedi [standard migrazioni](../Xot/docs/migrations-consolidated.md)).
+- **Criteri di accettazione**  
+  Vedi `docs/roadmap/acceptance-criteria.md` per criteri verificabili per Fase 1, 2 e 3.
+
+- **Dipendenze e confini**  
+  Vedi `docs/roadmap/dependencies.md` per dipendenze in ingresso/uscita e resilienza del logging.
+
+- **Metriche**  
+  Vedi `docs/roadmap/metrics.md` per obiettivi numerici e verifica.
+

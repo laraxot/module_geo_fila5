@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_prenotazioni_fila3",
+  "name": "laraxot/module_prenotazioni_fila5",
   "description": "Booking and reservation management module for the Laraxot ecosystem: room booking, resource scheduling, and appointment management.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_prenotazioni_fila3.git",
+  "homepage": "https://github.com/laraxot/module_prenotazioni_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

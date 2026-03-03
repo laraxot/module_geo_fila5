@@ -5,7 +5,7 @@ Modulo dedicato alla gestione di alcune configurazioni
 Dentro la cartella laravel/Modules
 
 ```bash
-git submodule add https://github.com/laraxot/module_setting_fila3.git Setting
+git submodule add https://github.com/laraxot/module_setting_fila5.git Setting
 ```
 
 ## Verificare che il modulo sia attivo

@@ -8,7 +8,7 @@ The `sync-remote-repo.yml` workflow allows running the synchronization process d
 
 ## Prerequisites
 
-- **Bashscripts repository**: before executing `sync_remote_repo.sh` inside GitHub Actions you must clone `https://github.com/laraxot/bashscripts_fila4` into the `bashscripts` directory. Questo repo è privato ma è nella stessa organizzazione del presente progetto, quindi il `GITHUB_TOKEN` del workflow (con permesso `contents: write` e SSO abilitato) può già effettuare il checkout. Configurare un PAT dedicato (`BASHSCRIPTS_PAT`) solo se il `GITHUB_TOKEN` perde visibilità in futuro.
+- **Bashscripts repository**: before executing `sync_remote_repo.sh` inside GitHub Actions you must clone `https://github.com/laraxot/bashscripts_fila5` into the `bashscripts` directory. Questo repo è privato ma è nella stessa organizzazione del presente progetto, quindi il `GITHUB_TOKEN` del workflow (con permesso `contents: write` e SSO abilitato) può già effettuare il checkout. Configurare un PAT dedicato (`BASHSCRIPTS_PAT`) solo se il `GITHUB_TOKEN` perde visibilità in futuro.
 - **Verification tools**: every time the workflow is touched you must run automated checks (e.g. `actionlint`, `act`, or an MCP that wraps them) to ensure syntax and runtime prerequisites are satisfied. Document tooling updates in both root docs and module docs so every agent follows the same rule.
 
 ## Features
@@ -64,7 +64,7 @@ jobs:
       - name: Checkout bashscripts
         uses: actions/checkout@v4
         with:
-          repository: laraxot/bashscripts_fila4
+          repository: laraxot/bashscripts_fila5
           token: ${{ secrets.GITHUB_TOKEN }}
           path: bashscripts
 

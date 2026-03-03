@@ -265,14 +265,14 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 
 ```bash
 # View summaries
-cat /var/www/_bases/base_ptvx_fila4_mono/QUICK-SUMMARY.txt
-cat /var/www/_bases/base_ptvx_fila4_mono/DOCUMENTATION-MAP.txt
+cat /var/www/_bases/base_ptvx_fila5_mono/QUICK-SUMMARY.txt
+cat /var/www/_bases/base_ptvx_fila5_mono/DOCUMENTATION-MAP.txt
 
 # Start documentation
-less /var/www/_bases/base_ptvx_fila4_mono/docs/START-HERE.md
+less /var/www/_bases/base_ptvx_fila5_mono/docs/START-HERE.md
 
 # Critical fixes
-less /var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md
+less /var/www/_bases/base_ptvx_fila5_mono/laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md
 ```
 
 ---

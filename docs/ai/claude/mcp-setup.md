@@ -27,9 +27,9 @@ Model Context Protocol (MCP) è uno standard aperto che permette a Claude Code d
             "args": [
                 "-y",
                 "@modelcontextprotocol/server-filesystem",
-                "/var/www/_bases/base_ptvx_fila4_mono/laravel",
-                "/var/www/_bases/base_ptvx_fila4_mono/docs",
-                "/var/www/_bases/base_ptvx_fila4_mono/bashscripts"
+                "/var/www/_bases/base_ptvx_fila5_mono/laravel",
+                "/var/www/_bases/base_ptvx_fila5_mono/docs",
+                "/var/www/_bases/base_ptvx_fila5_mono/bashscripts"
             ]
         },
         "memory": {
@@ -80,7 +80,7 @@ Model Context Protocol (MCP) è uno standard aperto che permette a Claude Code d
                 "-y",
                 "@modelcontextprotocol/server-git",
                 "--repository",
-                "/var/www/_bases/base_ptvx_fila4_mono"
+                "/var/www/_bases/base_ptvx_fila5_mono"
             ]
         }
     }
@@ -106,9 +106,9 @@ Model Context Protocol (MCP) è uno standard aperto che permette a Claude Code d
 **Scopo**: Accesso sicuro a file e directory del progetto
 
 **Path configurati**:
-- `/var/www/_bases/base_ptvx_fila4_mono/laravel` - Codice Laravel
-- `/var/www/_bases/base_ptvx_fila4_mono/docs` - Documentazione
-- `/var/www/_bases/base_ptvx_fila4_mono/bashscripts` - Script e tool
+- `/var/www/_bases/base_ptvx_fila5_mono/laravel` - Codice Laravel
+- `/var/www/_bases/base_ptvx_fila5_mono/docs` - Documentazione
+- `/var/www/_bases/base_ptvx_fila5_mono/bashscripts` - Script e tool
 
 **Uso**: Fallback quando file sono bloccati o non accessibili con tool standard
 
@@ -175,7 +175,7 @@ Model Context Protocol (MCP) è uno standard aperto che permette a Claude Code d
 
 **Scopo**: Operazioni Git sul repository
 
-**Path**: `/var/www/_bases/base_ptvx_fila4_mono`
+**Path**: `/var/www/_bases/base_ptvx_fila5_mono`
 
 **Uso**: Analisi commit, gestione branch, verifica modifiche, storia progetto
 
@@ -244,8 +244,8 @@ chmod 600 laravel/.mcp.json
 
 ### Filesystem Access Denied
 
-1. Verifica path esistono: `ls -la /var/www/_bases/base_ptvx_fila4_mono/laravel`
-2. Controlla permessi directory: `chmod 755 /var/www/_bases/base_ptvx_fila4_mono`
+1. Verifica path esistono: `ls -la /var/www/_bases/base_ptvx_fila5_mono/laravel`
+2. Controlla permessi directory: `chmod 755 /var/www/_bases/base_ptvx_fila5_mono`
 3. Verifica utente ha accesso
 
 ---

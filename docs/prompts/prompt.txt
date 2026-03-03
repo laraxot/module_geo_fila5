@@ -2,7 +2,7 @@
 
 ## DOCUMENTAZIONE
 - Consulta SEMPRE le cartelle docs prima di ogni azione
-- Mai includere percorsi assoluti specifici (es. base_*_fila3)
+- Mai includere percorsi assoluti specifici (es. base_*_fila5)
 - Aggiorna e studia la cartella "docs" più vicina prima di implementare soluzioni
 - La documentazione non deve essere una replica del codice
 
@@ -20,7 +20,7 @@
 - Filament: `Modules\*\Filament` (non `Modules\*\app\Filament`)
 - Percorso corretto: `Modules\Xot\Filament\Resources\Pages\XotBaseListRecords`
 - Ogni modulo ha il suo composer.json - analizzalo per path e namespace corretti
-- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila3/laravel/Modules/User/app/Models/User.php`
+- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila5/laravel/Modules/User/app/Models/User.php`
   namespace: `Modules\User\Models`
 
 
@@ -163,7 +163,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 
 ## DOCUMENTAZIONE
 - Consulta SEMPRE le cartelle docs prima di ogni azione
-- Mai includere percorsi assoluti specifici (es. base_*_fila3)
+- Mai includere percorsi assoluti specifici (es. base_*_fila5)
 - Aggiorna e studia la cartella "docs" più vicina prima di implementare soluzioni
 - La documentazione non deve essere una replica del codice
 
@@ -181,7 +181,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 - Filament: `Modules\*\Filament` (non `Modules\*\app\Filament`)
 - Percorso corretto: `Modules\Xot\Filament\Resources\Pages\XotBaseListRecords`
 - Ogni modulo ha il suo composer.json - analizzalo per path e namespace corretti
-- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila3/laravel/Modules/User/app/Models/User.php`
+- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila5/laravel/Modules/User/app/Models/User.php`
   namespace: `Modules\User\Models`
 
 
@@ -320,7 +320,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 
 ## DOCUMENTAZIONE
 - Consulta SEMPRE le cartelle docs prima di ogni azione
-- Mai includere percorsi assoluti specifici (es. base_*_fila3)
+- Mai includere percorsi assoluti specifici (es. base_*_fila5)
 - Aggiorna e studia la cartella "docs" più vicina prima di implementare soluzioni
 - La documentazione non deve essere una replica del codice
 
@@ -338,7 +338,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 - Filament: `Modules\*\Filament` (non `Modules\*\app\Filament`)
 - Percorso corretto: `Modules\Xot\Filament\Resources\Pages\XotBaseListRecords`
 - Ogni modulo ha il suo composer.json - analizzalo per path e namespace corretti
-- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila3/laravel/Modules/User/app/Models/User.php`
+- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila5/laravel/Modules/User/app/Models/User.php`
   namespace: `Modules\User\Models`
 
 
@@ -615,7 +615,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 
 ## DOCUMENTAZIONE
 - Consulta SEMPRE le cartelle docs prima di ogni azione
-- Mai includere percorsi assoluti specifici (es. base_*_fila3)
+- Mai includere percorsi assoluti specifici (es. base_*_fila5)
 - Aggiorna e studia la cartella "docs" più vicina prima di implementare soluzioni
 - La documentazione non deve essere una replica del codice
 
@@ -633,7 +633,7 @@ non voglio  ->label(   le label son gestite tramite langserviceprovider coi file
 - Filament: `Modules\*\Filament` (non `Modules\*\app\Filament`)
 - Percorso corretto: `Modules\Xot\Filament\Resources\Pages\XotBaseListRecords`
 - Ogni modulo ha il suo composer.json - analizzalo per path e namespace corretti
-- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila3/laravel/Modules/User/app/Models/User.php`
+- Esempio: User path: `/var/www/html/exa/base_orisbroker_fila5/laravel/Modules/User/app/Models/User.php`
   namespace: `Modules\User\Models`
 
 

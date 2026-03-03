@@ -211,7 +211,7 @@ public function scopeWithExtraAttributes(
 
 ```bash
 # Vai alla directory Laravel
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # PHPStan Level 10
 ./vendor/bin/phpstan analyze Modules/IndennitaResponsabilita --level=10

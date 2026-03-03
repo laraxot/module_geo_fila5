@@ -564,11 +564,11 @@ Per pulire un repository con molti conflitti non risolti:
 
 ## Collegamenti Bidirezionali
 
-- [Gestione dei Conflitti Git](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/git_conflicts_resolution.md)
-- [Risoluzione Automatica dei Conflitti](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/fix_all_git_conflicts.md)
-- [Conflitti nei File di Configurazione](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/config_file_conflicts.md)
-- [Convenzioni di Namespace](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/NAMESPACE-CONVENTIONS.md)
-- [Risoluzione Conflitti nei Moduli](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
+- [Gestione dei Conflitti Git](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/git_conflicts_resolution.md)
+- [Risoluzione Automatica dei Conflitti](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/fix_all_git_conflicts.md)
+- [Conflitti nei File di Configurazione](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/config_file_conflicts.md)
+- [Convenzioni di Namespace](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/NAMESPACE-CONVENTIONS.md)
+- [Risoluzione Conflitti nei Moduli](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/conflitti_merge_risolti.md)
 
 
 

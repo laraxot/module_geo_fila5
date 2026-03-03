@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_inail_fila3",
+  "name": "laraxot/module_inail_fila5",
   "description": "INAIL workplace insurance module for the Laraxot ecosystem: work injuries, occupational diseases, and insurance claims management.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_inail_fila3.git",
+  "homepage": "https://github.com/laraxot/module_inail_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

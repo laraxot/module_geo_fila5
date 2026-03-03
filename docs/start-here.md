@@ -202,7 +202,7 @@ class MyPage extends Modules\Xot\Filament\Pages\XotBasePage { }
 
 ```bash
 # Navigation
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Quality Checks
 ./vendor/bin/phpstan analyze --level=10

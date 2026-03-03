@@ -19,11 +19,11 @@ The `sync-remote-repo.yml` workflow should be removed. Its functionality has bee
 1.  Delete the file `.github/workflows/sync-remote-repo.yml`.
 2.  Ensure that the `subtree-sync.yml` workflow is correctly configured and working.
 
-## Error: `fatal: repository 'https://github.com/laraxot/bashscripts_fila4.git/' not found` and `Error: Input required and not supplied: token`
+## Error: `fatal: repository 'https://github.com/laraxot/bashscripts_fila5.git/' not found` and `Error: Input required and not supplied: token`
 
 ### Context
 
-This error occurs when a GitHub Actions workflow attempts to clone a private repository (e.g., `laraxot/bashscripts_fila4`) without proper authentication. The logs indicate that the repository cannot be found, and a token is required but not supplied.
+This error occurs when a GitHub Actions workflow attempts to clone a private repository (e.g., `laraxot/bashscripts_fila5`) without proper authentication. The logs indicate that the repository cannot be found, and a token is required but not supplied.
 
 ### Problem
 
@@ -35,7 +35,7 @@ Provide a `token` to the `actions/checkout` step when cloning private repositori
 
 ### Steps to Resolve
 
-1.  **Identify the step cloning the private repository:** In this case, it's likely within the `subtree-sync.yml` workflow, specifically when trying to access `laraxot/bashscripts_fila4`.
+1.  **Identify the step cloning the private repository:** In this case, it's likely within the `subtree-sync.yml` workflow, specifically when trying to access `laraxot/bashscripts_fila5`.
 2.  **Add `token` to `actions/checkout`:** Modify the `actions/checkout` step (or the part of the script that clones the private repository) to include `token: ${{ secrets.GITHUB_TOKEN }}`.
 
     Example:
@@ -43,11 +43,11 @@ Provide a `token` to the `actions/checkout` step when cloning private repositori
     - name: Checkout private repository
       uses: actions/checkout@v4
       with:
-        repository: laraxot/bashscripts_fila4
+        repository: laraxot/bashscripts_fila5
         path: bashscripts
         token: ${{ secrets.GITHUB_TOKEN }} # Add this line
     ```
-    If `laraxot/bashscripts_fila4` is not owned by the same user/organization as the current repository, you might need a PAT with `repo` scope, stored as a secret (e.g., `secrets.PRIVATE_REPO_PAT`).
+    If `laraxot/bashscripts_fila5` is not owned by the same user/organization as the current repository, you might need a PAT with `repo` scope, stored as a secret (e.g., `secrets.PRIVATE_REPO_PAT`).
 
 3.  **Ensure `GITHUB_TOKEN` permissions:** Verify that the `GITHUB_TOKEN` has `contents: read` permission for the repository containing the workflow. If it's a cross-repository access, ensure the PAT has sufficient permissions on the private repository.
 
@@ -55,18 +55,18 @@ Provide a `token` to the `actions/checkout` step when cloning private repositori
 
 ### Context
 
-This error occurs when `actions/checkout@v4` attempts to determine the default branch of a private repository (e.g., `laraxot/bashscripts_fila4`) but receives a "Not Found" response from the GitHub API. This typically means the provided `token` does not have the necessary permissions to access the repository's metadata.
+This error occurs when `actions/checkout@v4` attempts to determine the default branch of a private repository (e.g., `laraxot/bashscripts_fila5`) but receives a "Not Found" response from the GitHub API. This typically means the provided `token` does not have the necessary permissions to access the repository's metadata.
 
 ### Problem
 
-The `GITHUB_TOKEN` (or any provided token) lacks the scope to read private repositories, especially if the repository being checked out (`laraxot/bashscripts_fila4`) is in a different organization or is truly private and not accessible via the default token's permissions for the workflow's repository.
+The `GITHUB_TOKEN` (or any provided token) lacks the scope to read private repositories, especially if the repository being checked out (`laraxot/bashscripts_fila5`) is in a different organization or is truly private and not accessible via the default token's permissions for the workflow's repository.
 
 ### Solution
 
 Ensure the token used for `actions/checkout` has sufficient permissions.
 
 1.  **For `GITHUB_TOKEN`:**
-    *   If `laraxot/bashscripts_fila4` is within the *same organization* as the main repository running the workflow, ensure the workflow's permissions are explicitly set to allow `contents: read`.
+    *   If `laraxot/bashscripts_fila5` is within the *same organization* as the main repository running the workflow, ensure the workflow's permissions are explicitly set to allow `contents: read`.
     *   Add:
         ```yaml
         permissions:
@@ -75,14 +75,14 @@ Ensure the token used for `actions/checkout` has sufficient permissions.
         at the top-level of the job or workflow.
 
 2.  **For cross-repository private access (different organization or highly restricted):**
-    *   A Personal Access Token (PAT) is often required. Create a PAT with `repo` scope (or `contents: read` for fine-grained tokens) on the account that has access to `laraxot/bashscripts_fila4`.
+    *   A Personal Access Token (PAT) is often required. Create a PAT with `repo` scope (or `contents: read` for fine-grained tokens) on the account that has access to `laraxot/bashscripts_fila5`.
     *   Store this PAT as a GitHub Secret (e.g., `ACTIONS_PAT`) in the repository running the workflow.
     *   Use this secret in the `actions/checkout` step:
         ```yaml
         - name: Checkout private repository
           uses: actions/checkout@v4
           with:
-            repository: laraxot/bashscripts_fila4
+            repository: laraxot/bashscripts_fila5
             path: bashscripts
             token: ${{ secrets.ACTIONS_PAT }} # Use the PAT secret
         ```

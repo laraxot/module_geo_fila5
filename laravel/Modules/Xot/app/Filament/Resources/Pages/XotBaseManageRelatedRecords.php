@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Resources\Pages;
 
-use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
-use Modules\Xot\Filament\Traits\HasXotTable;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Filament\Traits\HasXotTable;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Override;
 use Modules\Xot\Filament\Traits\TransFuncTrait;
 
 /**
- * ---
+ * ---.
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
@@ -53,7 +52,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     /**
      * Restituisce lo schema del form per i record correlati.
      *
-     * @return array<\Filament\Schemas\Components\Component>
+     * @return array<Component>
      */
     // abstract public static function getFormSchema(): array;
 
@@ -84,7 +83,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
      *
      * @return array<string, TextColumn>
      */
-    #[Override]
+    #[\Override]
     public function getTableColumns(): array
     {
         return [

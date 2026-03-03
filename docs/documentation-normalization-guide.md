@@ -197,12 +197,12 @@ Riferimento a [testing.md](testing.md)
 
 ### Normalizzazione Nomi
 ```bash
-/var/www/_bases/base_ptvx_fila4_mono/bashscripts/normalize_docs_naming.sh
+/var/www/_bases/base_ptvx_fila5_mono/bashscripts/normalize_docs_naming.sh
 ```
 
 ### Analisi Duplicati
 ```bash
-/var/www/_bases/base_ptvx_fila4_mono/bashscripts/analyze_docs_duplicates.sh
+/var/www/_bases/base_ptvx_fila5_mono/bashscripts/analyze_docs_duplicates.sh
 ```
 
 ## Note Importanti

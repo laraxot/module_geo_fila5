@@ -195,18 +195,18 @@ Modules/Lang/docs/
 
 ### Script Creati
 
-1. `/var/www/_bases/base_ptvx_fila4_mono/bashscripts/normalize_docs_naming.sh`
+1. `/var/www/_bases/base_ptvx_fila5_mono/bashscripts/normalize_docs_naming.sh`
    - Normalizza nomi file secondo convenzioni
 
-2. `/var/www/_bases/base_ptvx_fila4_mono/bashscripts/analyze_docs_duplicates.sh`
+2. `/var/www/_bases/base_ptvx_fila5_mono/bashscripts/analyze_docs_duplicates.sh`
    - Identifica file duplicati per modulo
 
 ### Documenti Guida
 
-1. `/var/www/_bases/base_ptvx_fila4_mono/docs/documentation-normalization-guide.md`
+1. `/var/www/_bases/base_ptvx_fila5_mono/docs/documentation-normalization-guide.md`
    - Guida completa al processo di normalizzazione
 
-2. `/var/www/_bases/base_ptvx_fila4_mono/docs/documentation-audit-report.md`
+2. `/var/www/_bases/base_ptvx_fila5_mono/docs/documentation-audit-report.md`
    - Questo documento
 
 ## Prossimi Passi Immediati

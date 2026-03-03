@@ -5,7 +5,7 @@
 
 set -e
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila3_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
 VIOLATIONS_FOUND=0
 
 echo "🔍 Verifica convenzione naming lowercase per directory docs..."

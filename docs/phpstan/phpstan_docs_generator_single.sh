@@ -22,7 +22,7 @@ fi
 MODULE_NAME="$1"
 
 # Directory base Laravel
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila3_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
 # Directory del modulo
 MODULE_PATH="${LARAVEL_DIR}/Modules/${MODULE_NAME}"
 
@@ -140,7 +140,7 @@ for LEVEL in "${LEVELS[@]}"; do
         echo "3. Considerare l'aggiunta di test unitari per verificare il comportamento corretto" >> "$OUTPUT_FILE"
         echo "4. Aggiornare la documentazione del codice con annotazioni PHPDoc complete" >> "$OUTPUT_FILE"
         echo "5. Valutare l'utilizzo di classi di tipo dedicate (DTO) per strutture dati complesse" >> "$OUTPUT_FILE"
-        echo "6. Seguire le linee guida di tipizzazione nel documento 'Regole Windsurf per base_predict_fila3_mono'" >> "$OUTPUT_FILE"
+        echo "6. Seguire le linee guida di tipizzazione nel documento 'Regole Windsurf per base_predict_fila5_mono'" >> "$OUTPUT_FILE"
     fi
     
     echo "  Documentazione salvata in: $OUTPUT_FILE"

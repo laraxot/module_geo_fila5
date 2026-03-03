@@ -128,16 +128,16 @@ bashscripts/
 
 ### ❌ **PRIMA (Scorretto)**
 ```bash
-/var/www/html/_bases/base_ptvx_fila3_mono/fix_remaining_gitignore.sh
-/var/www/html/_bases/base_ptvx_fila3_mono/update_gitignore.sh
-/var/www/html/_bases/base_ptvx_fila3_mono/laravel/cleanup_script.sh
+/var/www/html/_bases/base_ptvx_fila5_mono/fix_remaining_gitignore.sh
+/var/www/html/_bases/base_ptvx_fila5_mono/update_gitignore.sh
+/var/www/html/_bases/base_ptvx_fila5_mono/laravel/cleanup_script.sh
 ```
 
 ### ✅ **DOPO (Corretto)**
 ```bash
-/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/git/gitignore/fix_remaining_gitignore.sh
-/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/git/gitignore/update_gitignore.sh  
-/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/maintenance/cleanup_script.sh
+/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/git/gitignore/fix_remaining_gitignore.sh
+/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/git/gitignore/update_gitignore.sh  
+/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/maintenance/cleanup_script.sh
 ```
 
 ## 🗂️ **Struttura Moduli**
@@ -276,8 +276,8 @@ find ./bashscripts -name "*.sh" ! -executable -ls
 
 ### 📞 **Riferimenti**
 
-- **Struttura principale**: `/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/`
-- **Moduli specifici**: `/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/[ModuleName]/bashscripts/`
+- **Struttura principale**: `/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/`
+- **Moduli specifici**: `/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/[ModuleName]/bashscripts/`
 - **Documentazione**: Ogni categoria ha il proprio README.md
 - **Best practices**: Seguire sempre header standard e naming convention
 

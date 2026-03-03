@@ -7,7 +7,7 @@
 
 set -e
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila3_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
 LOG_FILE="$PROJECT_ROOT/bashscripts/docs-naming-audit.log"
 VIOLATIONS_FILE="$PROJECT_ROOT/bashscripts/docs-naming-violations.txt"
 
@@ -20,7 +20,7 @@ NC='\033[0m' # No Color
 
 echo -e "${BLUE}=== AUDIT CONVENZIONI NAMING CARTELLE DOCS ===${NC}"
 echo "Data: $(date)"
-echo "Progetto: base_techplanner_fila3_mono"
+echo "Progetto: base_techplanner_fila5_mono"
 echo "Log: $LOG_FILE"
 echo ""
 

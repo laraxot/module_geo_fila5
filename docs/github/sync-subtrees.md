@@ -21,7 +21,7 @@ To add a new subtree, you need to edit the `gitmodules.ini` file and add a new e
 ```ini
 [submodule "laravel/Modules/NewModule"]
     path = laravel/Modules/NewModule
-    url = git@github.com:provtv/module_newmodule_fila4.git
+    url = git@github.com:provtv/module_newmodule_fila5.git
 ```
 
 The action will automatically pick up the new subtree and add it to the repository on the next run.

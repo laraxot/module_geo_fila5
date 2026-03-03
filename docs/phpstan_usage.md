@@ -28,7 +28,7 @@ phpstan analyse
 ✅ **Corretto**:
 ```bash
 # Entrare nella directory laravel
-cd /var/www/html/_bases/base_ptvx_fila3/laravel
+cd /var/www/html/_bases/base_ptvx_fila5/laravel
 
 # Chiamare phpstan con il percorso vendor/bin/
 ./vendor/bin/phpstan analyse Modules/NomeModulo --level=9

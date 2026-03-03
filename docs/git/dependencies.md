@@ -9,14 +9,14 @@ It is typically a submodule, but due to potential "zombie submodule" issues in t
 ### Resolution in CI
 In GitHub Actions (e.g., `sync-remote-repo.yml`), we use `actions/checkout` to explicitly clone the private `bashscripts` repository using a Personal Access Token (PAT).
 
-**Repository**: `provtv/bashscripts_fila4` (Private)
+**Repository**: `provtv/bashscripts_fila5` (Private)
 
 ### Example Workflow Step
 ```yaml
       - name: Checkout bashscripts
         uses: actions/checkout@v4
         with:
-          repository: laraxot/bashscripts_fila4
+          repository: laraxot/bashscripts_fila5
           token: ${{ secrets.BASHSCRIPTS_PAT }}
           path: bashscripts
           sparse-checkout: |
@@ -24,4 +24,4 @@ In GitHub Actions (e.g., `sync-remote-repo.yml`), we use `actions/checkout` to e
 ```
 
 ### Secrets Required
-- `BASHSCRIPTS_PAT`: A Personal Access Token with access to the private `laraxot/bashscripts_fila4` repository.
+- `BASHSCRIPTS_PAT`: A Personal Access Token with access to the private `laraxot/bashscripts_fila5` repository.

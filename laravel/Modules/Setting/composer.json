@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_setting_fila3",
+  "name": "laraxot/module_setting_fila5",
   "description": "Settings and configuration management module for the Laraxot ecosystem: application preferences, feature toggles, and system parameters.",
   "keywords": [
     "laraxot",
@@ -12,7 +12,7 @@
     "feature-toggles",
     "system-parameters"
   ],
-  "homepage": "https://github.com/laraxot/module_setting_fila3.git",
+  "homepage": "https://github.com/laraxot/module_setting_fila5.git",
   "license": "MIT",
   "authors": [
     {

@@ -11,7 +11,7 @@
 **TUTTI gli script** (.sh, .php, .py, .js, etc.) DEVONO essere posizionati in:
 
 ```
-/var/www/_bases/base_ptvx_fila4_mono/bashscripts/{categoria}/
+/var/www/_bases/base_ptvx_fila5_mono/bashscripts/{categoria}/
 ```
 
 **MAI** in:
@@ -58,10 +58,10 @@ Cosa fa lo script?
 
 ```bash
 # Crea script
-nano /var/www/_bases/base_ptvx_fila4_mono/bashscripts/analysis/my_script.sh
+nano /var/www/_bases/base_ptvx_fila5_mono/bashscripts/analysis/my_script.sh
 
 # Rendi eseguibile
-chmod +x /var/www/_bases/base_ptvx_fila4_mono/bashscripts/analysis/my_script.sh
+chmod +x /var/www/_bases/base_ptvx_fila5_mono/bashscripts/analysis/my_script.sh
 ```
 
 ### 3. Documenta

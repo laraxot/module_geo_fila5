@@ -1,5 +1,5 @@
 {
-  "name": "provtv/module_ptv_fila3",
+  "name": "provtv/module_ptv_fila5",
   "description": "Modulo PTV principale per portale HR e gestione integrata risorse umane nel contesto Laraxot.",
   "keywords": [
     "laraxot",
@@ -11,7 +11,7 @@
     "portale",
     "risorse-umane"
   ],
-  "homepage": "https://github.com/provtv/module_ptv_fila3.git",
+  "homepage": "https://github.com/provtv/module_ptv_fila5.git",
   "license": "MIT",
   "authors": [
     {

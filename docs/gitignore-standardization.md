@@ -2,7 +2,7 @@
 
 ## Panoramica
 
-Questo documento descrive la standardizzazione del file `.gitignore` per la cartella `bashscripts` del progetto base_techplanner_fila3_mono.
+Questo documento descrive la standardizzazione del file `.gitignore` per la cartella `bashscripts` del progetto base_techplanner_fila5_mono.
 
 ## Problema Risolto
 
@@ -130,9 +130,9 @@ Per aggiungere nuove categorie di file da ignorare:
 
 ## Collegamenti
 
-- [Template .gitignore](/var/www/_bases/base_techplanner_fila3_mono/bashscripts/.gitignore)
-- [Documentazione Git](/var/www/_bases/base_techplanner_fila3_mono/docs/git-best-practices.md)
-- [Standardizzazione Moduli](/var/www/_bases/base_techplanner_fila3_mono/laravel/Modules/.gitignore_template)
+- [Template .gitignore](/var/www/_bases/base_techplanner_fila5_mono/bashscripts/.gitignore)
+- [Documentazione Git](/var/www/_bases/base_techplanner_fila5_mono/docs/git-best-practices.md)
+- [Standardizzazione Moduli](/var/www/_bases/base_techplanner_fila5_mono/laravel/Modules/.gitignore_template)
 
 ## Ultimo Aggiornamento
 
@@ -142,4 +142,4 @@ Per aggiungere nuove categorie di file da ignorare:
 
 ---
 
-*Questo documento fa parte del processo di standardizzazione del progetto base_techplanner_fila3_mono.*
+*Questo documento fa parte del processo di standardizzazione del progetto base_techplanner_fila5_mono.*

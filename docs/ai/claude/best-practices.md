@@ -177,7 +177,7 @@ Step 4: Verifica con PHPStan
 
 **✅ CORRETTO**:
 ```json
-"args": ["/var/www/_bases/base_ptvx_fila4_mono/laravel"]
+"args": ["/var/www/_bases/base_ptvx_fila5_mono/laravel"]
 ```
 
 ---

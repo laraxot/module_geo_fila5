@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_indennitacondizionilavoro_fila3",
+  "name": "laraxot/module_indennitacondizionilavoro_fila5",
   "description": "Work conditions allowances module for the Laraxot ecosystem: hazard pay, shift differentials, and special work conditions compensation.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_indennitacondizionilavoro_fila3.git",
+  "homepage": "https://github.com/laraxot/module_indennitacondizionilavoro_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

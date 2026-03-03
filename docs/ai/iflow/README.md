@@ -38,7 +38,7 @@ iFlow CLI è un assistente AI per terminale sviluppato da team affiliato Alibaba
 
 1. **Installa iFlow CLI**: Vedi [Installazione](./installation.md)
 2. **Configura MCP**: Vedi [Setup MCP](./mcp-setup.md)
-3. **Apri progetto**: `cd /var/www/_bases/base_ptvx_fila4_mono/laravel`
+3. **Apri progetto**: `cd /var/www/_bases/base_ptvx_fila5_mono/laravel`
 4. **Inizia**: `iflow` e descrivi il tuo task
 
 ---

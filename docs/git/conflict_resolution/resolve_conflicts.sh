@@ -30,9 +30,9 @@ for file in $CONFLICT_FILES; do
     # Risolvi conflitti comuni
     
     # Aggiorna path specifici per FixCity
-    sed -i 's|/var/www/html/ptvx|/var/www/html/_bases/base_fixcity_fila4_mono|g' "$file"
-    sed -i 's|/var/www/html/_bases/base_ptvx_fila3_mono|/var/www/html/_bases/base_fixcity_fila4_mono|g' "$file"
-    sed -i 's|base_ptvx_fila3_mono|base_fixcity_fila4_mono|g' "$file"
+    sed -i 's|/var/www/html/ptvx|/var/www/html/_bases/base_fixcity_fila5_mono|g' "$file"
+    sed -i 's|/var/www/html/_bases/base_ptvx_fila5_mono|/var/www/html/_bases/base_fixcity_fila5_mono|g' "$file"
+    sed -i 's|base_ptvx_fila5_mono|base_fixcity_fila5_mono|g' "$file"
     sed -i 's|ptvx|fixcity|g' "$file"
     
     # Rimuovi righe duplicate

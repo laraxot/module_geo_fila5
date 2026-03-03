@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_legge109_fila3",
+  "name": "laraxot/module_legge109_fila5",
   "description": "Law 109 public works and procurement module for the Laraxot ecosystem: incentive fees, technical staff compensation, and project management.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_legge109_fila3.git",
+  "homepage": "https://github.com/laraxot/module_legge109_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

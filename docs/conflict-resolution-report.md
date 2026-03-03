@@ -81,7 +81,7 @@ BashScripts Fila3 è un **toolkit di automazione Git** per progetti Laravel con 
 ### composer.json
 ```json
 {
-    "name": "laraxot/bashscripts_fila3",
+    "name": "laraxot/bashscripts_fila5",
     "description": "Script di utilità per la gestione dei repository Git, Toolkit di automazione Git per progetti Laravel",
     "type": "library",
     "license": "MIT",
@@ -161,7 +161,7 @@ Script bash per risolvere automaticamente i conflitti Git rimanenti:
 
 1. **Eseguire lo script di automazione**:
    ```bash
-   cd /var/www/_bases/base_techplanner_fila3_mono/bashscripts
+   cd /var/www/_bases/base_techplanner_fila5_mono/bashscripts
    ./scripts/fix_git_conflicts.sh
    ```
 

@@ -14,7 +14,7 @@ echo "🎯 Obiettivo: Risolvere tutti i conflitti Git prendendo incoming changes
 echo ""
 
 # Directory di lavoro
-PROJECT_ROOT="/var/www/_bases/base_techplanner_fila3_mono"
+PROJECT_ROOT="/var/www/_bases/base_techplanner_fila5_mono"
 LARAVEL_ROOT="$PROJECT_ROOT/laravel"
 
 # Verifica che siamo nella directory corretta

@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_badge_fila3",
+  "name": "laraxot/module_badge_fila5",
   "description": "Employee badge and ID card management module for the Laraxot ecosystem: physical badges, access credentials, and card issuance.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_badge_fila3.git",
+  "homepage": "https://github.com/laraxot/module_badge_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

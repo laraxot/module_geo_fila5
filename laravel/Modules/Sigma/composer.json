@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_sigma_fila3",
+  "name": "laraxot/module_sigma_fila5",
   "description": "Sigma HR system integration module for the Laraxot ecosystem: data import/export, payroll sync, and external HR software interoperability.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "interoperability"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_sigma_fila3.git",
+  "homepage": "https://github.com/laraxot/module_sigma_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

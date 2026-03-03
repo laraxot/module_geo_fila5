@@ -15,7 +15,7 @@ class GetViewByModelClassAction
     /**
      * ---.
      */
-    public function execute(string $model_class, string $suffix = ''): string
+    public function execute(string $model_class, string $suffix): string
     {
         $module = app(GetModuleNameByModelClassAction::class)->execute($model_class);
         $module_low = Str::of($module)->lower()->toString();

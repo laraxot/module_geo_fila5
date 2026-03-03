@@ -231,7 +231,7 @@ SOLUZIONE: sudo chmod 777 -R .
 
 
 
-PROBLEMA: include(/var/www/html/base_ptv_fila3/laravel/vendor/composer/../../Modules/UI/app/Providers/UIServiceProvider.php): Failed to open stream: No such file or directory
+PROBLEMA: include(/var/www/html/base_ptv_fila5/laravel/vendor/composer/../../Modules/UI/app/Providers/UIServiceProvider.php): Failed to open stream: No such file or directory
 SOLUZIONE: togliere _old dalle varie cartelle all'interno del modulo
 
 
@@ -296,7 +296,7 @@ sudo update-alternatives --config php
 cd <dir>
 git init
 git checkout -b dev
-git remote add origin git@github.com:provtv/module_user_fila3.git
+git remote add origin git@github.com:provtv/module_user_fila5.git
 git fetch --all
 git add -A
 git commit -am .
@@ -316,7 +316,7 @@ SOLUZIONE: sudo chmod 777 -R .
 
 
 
-PROBLEMA: include(/var/www/html/base_ptv_fila3/laravel/vendor/composer/../../Modules/UI/app/Providers/UIServiceProvider.php): Failed to open stream: No such file or directory
+PROBLEMA: include(/var/www/html/base_ptv_fila5/laravel/vendor/composer/../../Modules/UI/app/Providers/UIServiceProvider.php): Failed to open stream: No such file or directory
 SOLUZIONE: togliere _old dalle varie cartelle all'interno del modulo
 
 

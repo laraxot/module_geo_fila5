@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_questionari_fila3",
+  "name": "laraxot/module_questionari_fila5",
   "description": "Questionnaires and surveys module for the Laraxot ecosystem: LimeSurvey integration, data collection, employee feedback, and evaluations.",
   "keywords": [
     "laraxot",
@@ -14,7 +14,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_questionari_fila3.git",
+  "homepage": "https://github.com/laraxot/module_questionari_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

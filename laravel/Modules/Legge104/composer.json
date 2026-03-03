@@ -1,5 +1,5 @@
 {
-  "name": "provtv/module_legge104_fila3",
+  "name": "provtv/module_legge104_fila5",
   "description": "Law 104/92 disability leave management module for the Laraxot ecosystem: caregiver permits, disability benefits, and leave tracking.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/provtv/module_legge104_fila3.git",
+  "homepage": "https://github.com/provtv/module_legge104_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

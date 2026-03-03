@@ -3,7 +3,7 @@
 # Script per correggere i moduli .gitignore rimasti non conformi
 # Data: 3 Gennaio 2025
 
-cd /var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules
+cd /var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules
 
 # Prototipo standardizzato completo
 GITIGNORE_CONTENT='# Dependencies and packages

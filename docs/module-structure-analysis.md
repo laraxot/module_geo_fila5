@@ -215,7 +215,7 @@ bashscripts/
 
 1. **Run naming fixes**:
    ```bash
-   cd /var/www/_bases/base_ptvx_fila4_mono
+   cd /var/www/_bases/base_ptvx_fila5_mono
    ./bashscripts/docs/fix-all-docs-naming.sh --dry-run
    # Review output
    ./bashscripts/docs/fix-all-docs-naming.sh

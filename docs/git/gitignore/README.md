@@ -9,7 +9,7 @@ Questa cartella contiene script per la gestione e standardizzazione dei file `.g
 
 **Utilizzo**:
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3_mono
+cd /var/www/html/_bases/base_ptvx_fila5_mono
 ./bashscripts/git/gitignore/update_gitignore.sh
 ```
 
@@ -24,7 +24,7 @@ cd /var/www/html/_bases/base_ptvx_fila3_mono
 
 **Utilizzo**:
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3_mono
+cd /var/www/html/_bases/base_ptvx_fila5_mono
 ./bashscripts/git/gitignore/fix_remaining_gitignore.sh
 ```
 
@@ -70,7 +70,7 @@ Il prototipo standardizzato è documentato in:
 Per verificare la conformità di tutti i moduli:
 
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules
+cd /var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules
 
 # Verifica pattern critici
 for module in */; do

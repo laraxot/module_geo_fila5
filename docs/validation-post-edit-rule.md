@@ -12,7 +12,7 @@
 
 ```bash
 # Dopo ogni modifica di file PHP
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # 1. PHPStan livello 10
 ./vendor/bin/phpstan analyze [file-path] --level=10 --memory-limit=2G
@@ -47,7 +47,7 @@ php artisan insights [file-path] --min-quality=90 --min-complexity=90 --min-arch
 È disponibile lo script `validate-modified-files.php` per validare tutti i file modificati in batch:
 
 ```bash
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 php validate-modified-files.php
 ```
 

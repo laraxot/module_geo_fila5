@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory base
-BASE_DIR="/var/www/html/_bases/base_ptvx_fila3_mono"
+BASE_DIR="/var/www/html/_bases/base_ptvx_fila5_mono"
 
 # Funzione per aggiornare un singolo file .gitignore
 update_gitignore() {

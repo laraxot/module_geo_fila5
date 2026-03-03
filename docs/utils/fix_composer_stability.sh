@@ -3,7 +3,7 @@
 # Script to properly set minimum-stability to "dev" in all composer.json files
 # Uses jq for proper JSON manipulation
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila3_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
 UPDATED_COUNT=0
 ALREADY_SET_COUNT=0
 ADDED_COUNT=0

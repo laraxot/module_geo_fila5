@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directory base Laravel
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila3_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
 # Directory base dei moduli
 MODULES_DIR="${LARAVEL_DIR}/Modules"
 # File di output
@@ -36,7 +36,7 @@ Questo report fornisce una panoramica dello stato dell'analisi statica del codic
 
 ## Obiettivi di Qualità
 
-Secondo le "Regole Windsurf per base_predict_fila3_mono", gli obiettivi per l'analisi PHPStan sono:
+Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'analisi PHPStan sono:
 
 - Iniziare dal livello 1 per i nuovi moduli
 - Assicurarsi che tutto il codice passi almeno il livello 5
@@ -187,7 +187,7 @@ In base all'analisi, si consiglia di intervenire sui moduli nel seguente ordine:
 ## Collegamenti Utili
 
 - [Documentazione PHPStan](https://phpstan.org/user-guide/getting-started)
-- [Regole Windsurf per base_predict_fila3_mono](../docs/regole_windsurf.md)
+- [Regole Windsurf per base_predict_fila5_mono](../docs/regole_windsurf.md)
 - [Principi e Filosofia dello Sviluppo Software](../docs/principi_sviluppo.md)
 EOL
 

@@ -7,11 +7,11 @@ Lo script `analyze_modules.sh` esegue l'analisi PHPStan su tutti i moduli Larave
 
 
 
-`/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/analyze_modules.sh`
+`/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/analyze_modules.sh`
 
 ## Utilizzo
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3_mono
+cd /var/www/html/_bases/base_ptvx_fila5_mono
 
 
 `/var/www/html/ptvx/bashscripts/analyze_modules.sh`
@@ -21,11 +21,11 @@ cd /var/www/html/_bases/base_ptvx_fila3_mono
 cd /var/www/html/ptvx
 
 
-`/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/analyze_modules.sh`
+`/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/analyze_modules.sh`
 
 ## Utilizzo
 ```bash
-cd /var/www/html/_bases/base_ptvx_fila3_mono
+cd /var/www/html/_bases/base_ptvx_fila5_mono
 
 
 
@@ -60,27 +60,27 @@ Modules/<NomeModulo>/docs/phpstan/
 - Configurazione PHPStan in `laravel/phpstan.neon`
 
 ## Variabili di Ambiente
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 - `BASE_DIR`: Directory base del progetto (`/var/www/html/ptvx/laravel`)
 
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 
 
 - `BASE_DIR`: Directory base del progetto (`/var/www/html/ptvx/laravel`)
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 
 - `BASE_DIR`: Directory base del progetto (`/var/www/html/ptvx/laravel`)
 
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 
 
 
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 - `BASE_DIR`: Directory base del progetto (`/var/www/html/ptvx/laravel`)
-- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila3_mono/laravel`)
+- `BASE_DIR`: Directory base del progetto (`/var/www/html/_bases/base_ptvx_fila5_mono/laravel`)
 - `MODULES_DIR`: Directory dei moduli (`$BASE_DIR/Modules`)
 - `LEVELS`: Array dei livelli PHPStan da analizzare
 
@@ -305,10 +305,10 @@ jobs:
 ```
 
 ## Collegamenti Bidirezionali
-- [Configurazione PHPStan](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/docs/phpstan.md)
-- [Struttura dei Moduli](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/MODULE-STRUCTURE.md)
-- [Best Practices PHPStan](/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules/Xot/docs/PHPSTAN-LEVEL9-GUIDE.md)
-- [Script di Automazione](/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts/docs/scripts.md)
+- [Configurazione PHPStan](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/docs/phpstan.md)
+- [Struttura dei Moduli](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/MODULE-STRUCTURE.md)
+- [Best Practices PHPStan](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/PHPSTAN-LEVEL9-GUIDE.md)
+- [Script di Automazione](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/scripts.md)
    - Configurazione PHPStan errata 
 
 
