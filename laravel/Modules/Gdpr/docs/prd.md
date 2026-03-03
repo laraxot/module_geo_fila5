@@ -36,31 +36,32 @@ Applications need to:
 - Legal advice (software is a tool, not a service).
 - Physical security auditing.
 
-## 5. Functional Requirements
-### FR-001: Consent Tracking
-- **Priority**: Must-have
-- **Description**: Track user consent for specific processing (marketing, third-party sharing, etc.).
-- **Acceptance Criteria**: Consents are recorded with a timestamp, IP, and version of the policy.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Dynamic Policy Management
-- **Priority**: Must-have
-- **Description**: Admin UI to update privacy and cookie policies.
-- **Acceptance Criteria**: Users are prompted to re-accept when policies change significantly.
+### P0: Core Compliance (Must-have)
+- **FR-001: Explicit Consent Management**: Track user choices for each processing activity with timestamp, IP, and policy version.
+- **FR-002: Dynamic Policy Versions**: Manage and archive different versions of privacy and cookie policies, ensuring re-acceptance when required.
+- **FR-006: Cookie Consent Engine**: Centralized engine to manage cookie banners and block/allow scripts based on user choice.
 
-### FR-003: User Data Rights
-- **Priority**: Should-have
-- **Description**: Interface for users to download their data (JSON/PDF) or request account deletion.
-- **Acceptance Criteria**: Requests are either automated or forwarded to an administrator.
+### P1: Data Subject Rights (Important)
+- **FR-003: User Data Access & Portability**: Provide tools for users to download their personal data in standardized formats (JSON/PDF).
+- **FR-005: Right to Erasure**: Automated or workflow-based handling of account deletion and data scrubbing requests.
 
-### FR-004: ROPA
-- **Priority**: Should-have
-- **Description**: Document internal data processing activities for regulatory audit.
-- **Acceptance Criteria**: Admin can add, edit, and categorize data treatments.
+### P2: Compliance Oversight (Nice-to-have)
+- **FR-004: Record of Processing Activities (ROPA)**: Comprehensive internal catalog of all data processing activities for regulatory audit.
+- **FR-007: AI Privacy Review**: Automated detection of PII in models or logs to suggest new processing activities.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Auditability**: Every consent change must be logged and untamperable.
-- **NFR-002: Transparency**: Simple language for users to understand data usage.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Privacy Shield**: Gdpr acts as a shield for all other modules; it MUST NOT contain any business-specific logic.
+- **Interoperability**: Provides standardized traits and middleware for all modules to enforce consent checks.
+- **Isolation**: GDPR-specific records are encapsulated, and data exports are handled via temporary, secure interfaces.
+
+### Performance & Safety
+- **NFR-001: Immutability**: Consents MUST be stored in an immutable way (e.g., using the `Activity` audit trail).
+- **NFR-002: Transparency**: Clear, simple language required for all policy documents.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

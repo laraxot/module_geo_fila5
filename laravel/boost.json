@@ -5,5 +5,17 @@
         "cursor",
         "phpstorm"
     ],
-    "guidelines": []
+    "guidelines": true,
+    "herd_mcp": false,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "sail": false,
+    "skills": [
+        "folio-routing",
+        "pennant-development",
+        "fluxui-development",
+        "volt-development",
+        "pest-testing",
+        "tailwindcss-development"
+    ]
 }

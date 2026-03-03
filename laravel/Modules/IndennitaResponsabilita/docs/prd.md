@@ -35,31 +35,32 @@ Organizations need to:
 - Evaluation of individual performance (delegated to Performance module).
 - Core payroll processing (delegated to Sigma).
 
-## 5. Functional Requirements
-### FR-001: Position Registry
-- **Priority**: Must-have
-- **Description**: Define specific positions of responsibility within the organization.
-- **Acceptance Criteria**: Positions are linked to organizational units and job profiles.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Responsibility Evaluation
-- **Priority**: Must-have
-- **Description**: Guide evaluators through a series of weighted criteria to determine the position's "point value".
-- **Acceptance Criteria**: Uses a structured scoring system with predefined options.
+### P0: Position & Allowance Management (Must-have)
+- **FR-001: Position Registry (Incarichi)**: Define and manage specific positions of responsibility within the organization, linked to units and job profiles.
+- **FR-002: Structured Evaluation**: Weighted criteria engine to determine the "point value" of each position.
+- **FR-003: Monetary Calculation**: Convert evaluation points into monetary amounts according to current value tables with pro-rata support.
 
-### FR-003: Allowance Calculation
-- **Priority**: Must-have
-- **Description**: Convert evaluation points into monetary amounts according to current value tables.
-- **Acceptance Criteria**: Support for proportional calculation (pro-rata) based on period dates.
+### P1: Operational Workflow (Important)
+- **FR-005: Multi-Year Cycle Management**: Support for copying and adjusting positions across different fiscal years.
+- **FR-006: Approval Workflow**: Multi-step validation and approval for position evaluations and final allowance assignments.
 
-### FR-004: TDD & Validation
-- **Priority**: Should-have
-- **Description**: Strong test-driven validation for the complex calculation logic.
-- **Acceptance Criteria**: Minimum 80% test coverage for calculation actions.
+### P2: Advanced Governance (Nice-to-have)
+- **FR-004: Automated TDD Validation**: Comprehensive test suite to verify complex calculation logic against edge cases.
+- **FR-007: AI Position Matching**: Suggestions for position point values based on historical data of similar roles.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Justification**: Every allowance requires a documented justification in the system.
-- **NFR-002: Budget Control**: Ensure the sum of allowances does not exceed the total allocated fund for the year.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Logic**: IndennitaResponsabilita provides the evaluation framework; it does NOT contain hardcoded organizational structures.
+- **Interoperability**: Consumes unit data from `Xot` and employee data from `User`; results are consumed by `Sigma` for payroll.
+- **Independence**: Position evaluation is decoupled from the specific individual holding the position.
+
+### Performance & Safety
+- **NFR-001: Justification**: Mandatory documented justification for every assigned allowance.
+- **NFR-002: Budget Control**: Real-time validation to ensure total allowances stay within the allocated fund.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

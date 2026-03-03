@@ -35,31 +35,32 @@ The payroll and HR process needs to:
 - Time tracking of exact hours in specific conditions (delegated to PresenzeAssenze).
 - Physical risk assessment (delegated to Inail or specialized safety software).
 
-## 5. Functional Requirements
-### FR-001: Allowance Definition
-- **Priority**: Must-have
-- **Description**: Define different types of allowances (hardship, hazard, etc.) with their base rates.
-- **Acceptance Criteria**: Admin can create and version allowance types.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Condition Evaluation
-- **Priority**: Must-have
-- **Description**: Form-based evaluation of an employee's working conditions against defined criteria.
-- **Acceptance Criteria**: Uses a structured survey/rating pattern to determine eligibility.
+### P0: Allowance Management (Must-have)
+- **FR-001: Condition Registry**: Define and version different working conditions (hardship, hazard, risk) with related allowance types and rates.
+- **FR-002: Eligibility Evaluation**: Form-based evaluation of employees working conditions against structured criteria using the `Rating` module.
+- **FR-003: Automated Calculation**: High-precision calculation of allowance amounts based on evaluation results and employment context.
 
-### FR-003: Automated Calculation
-- **Priority**: Must-have
-- **Description**: Calculate the gross allowance amount based on evaluation results and employment data.
-- **Acceptance Criteria**: Results are auditable and exportable.
+### P1: Compliance & Traceability (Important)
+- **FR-004: Criteria Mapping**: Direct integration with `CriteriValutazione` and `CriteriOption` resources for structured scoring.
+- **FR-005: Audit Proof**: Immutable history of evaluations and final calculations to provide evidence during labor audits.
 
-### FR-004: Criteria Management
-- **Priority**: Should-have
-- **Description**: Manage complex evaluation criteria through a unified interface.
-- **Acceptance Criteria**: Integration with `CriteriValutazione` and `CriteriOption` resources.
+### P2: Advanced Policy (Nice-to-have)
+- **FR-006: Proactive Condition Monitoring**: Dashboards to identify and track organizational units with high-hardship conditions.
+- **FR-007: AI Risk Correlation**: Correlation analysis between working conditions and safety incidents (integrated with Inail).
 
-## 6. Non-Functional Requirements
-- **NFR-001: Traceability**: Every evaluation leading to an allowance must be historical and immutable once finalized.
-- **NFR-002: Accuracy**: Calculations must precisely follow contractual formulas.
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Logic**: IndennitaCondizioniLavoro MUST NOT contain hardcoded labor contracts; all rates and rules are configurable via criteria.
+- **Interoperability**: Consumes unit and employee data from `Xot` and `User`; results are consumed by `Sigma` for payroll.
+- **Separation of Concerns**: Evaluation of *conditions* is separate from the evaluation of *individual performance*.
+
+### Performance & Safety
+- **NFR-001: Precision**: 100% calculation accuracy according to configured contractual formulas.
+- **NFR-002: Immutable Audit**: Every final evaluation is historical and cannot be modified without a new version.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

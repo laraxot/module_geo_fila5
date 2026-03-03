@@ -37,31 +37,32 @@ Organizations need to:
 - Detailed time tracking (delegated to PresenzeAssenze or Job).
 - Core payroll processing (delegated to Sigma).
 
-## 5. Functional Requirements
-### FR-001: Project Definition
-- **Priority**: Must-have
-- **Description**: Create incentive projects with specific start/end dates and funding pools.
-- **Acceptance Criteria**: Admin can define the project scope and total incentive amount.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Workgroup Coordination
-- **Priority**: Must-have
-- **Description**: Group participants into workgroups within a project for easier management.
-- **Acceptance Criteria**: Workgroups have defined leads and participant lists.
+### P0: Incentive Lifecycle (Must-have)
+- **FR-001: Project & Workgroup Definition**: Create incentive projects with funding pools and assign employees to workgroups.
+- **FR-003: Capital Percentage Allocation**: Assign a specific percentage of the incentive pool to each participant with real-time budget validation.
+- **FR-005: Liquidation Management**: Track incentive amounts through "Calculated", "Approved", and "Liquidated" statuses.
 
-### FR-003: Percentage Allocation
-- **Priority**: Must-have
-- **Description**: Assign a specific percentage of the incentive pool to each participant.
-- **Acceptance Criteria**: Total percentage within a workgroup or project must not exceed 100%.
+### P1: Operational Coordination (Important)
+- **FR-002: Role-based Assignment**: Define specific roles (Coordinator, Participant, Auditor) within each incentive project.
+- **FR-004: Funding Source Mapping**: Link incentive projects to specific internal or external funding sources for accounting.
 
-### FR-004: Liquidation Workflow
-- **Priority**: Should-have
-- **Description**: Mark incentive amounts as "Calculated", "Approved", and "Liquidated".
-- **Acceptance Criteria**: Audit trail for each status change.
+### P2: Advanced Reward Systems (Nice-to-have)
+- **FR-006: Performance-Linked Allocation**: Automated percentage calculation based on performance scores from the `Performance` and `Rating` modules.
+- **FR-007: AI Budget Simulation**: Simulate various incentive distribution scenarios to optimize budget allocation.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Auditability**: Every allocation change must be logged.
-- **NFR-002: Precision**: Financial calculations must maintain high decimal precision (e.g., 4 decimals).
-- **NFR-003: Type Safety**: PHPStan Level 10 compliance.
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Logic**: Incentivi provides the calculation engine; it does not contain the business logic for performance evaluation (delegated to Performance).
+- **Interoperability**: Consumes user data from `User` and communicates with `Sigma` for final liquidation.
+- **Independent Scoping**: Incentive projects and workgroups can be defined independently of the organizational chart.
+
+### Performance & Safety
+- **NFR-001: Precision**: Financial calculations must maintain 4-decimal precision for all allocations.
+- **NFR-002: Auditability**: Full history of every percentage change and liquidation status.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

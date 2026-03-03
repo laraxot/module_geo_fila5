@@ -33,26 +33,32 @@ Modern enterprise systems need to:
 - Specific business logic of the tasks being run (these belong in respective modules).
 - Scheduled tasks (delegated to Laravel's scheduler).
 
-## 5. Functional Requirements
-### FR-001: Background Action Execution
-- **Priority**: Must-have
-- **Description**: Allow any action to be executed asynchronously via Laravel queues.
-- **Acceptance Criteria**: Actions can be dispatched with simple syntax, supporting serialization.
+## 5. Functional Requirements (Prioritized)
 
-### FR-002: Job Monitoring
-- **Priority**: Should-have
-- **Description**: Dashboard to view pending, running, and failed jobs.
-- **Acceptance Criteria**: Admin can view job status and retry failed jobs easily.
+### P0: Async Infrastructure (Must-have)
+- **FR-001: Background Action Execution**: Allow any action to be executed asynchronously via Laravel queues with a standardized `QueueableAction` trait.
+- **FR-003: Multi-tenant Context Persistence**: Ensure jobs are executed within the correct tenant context by preserving the Tenant ID.
+- **FR-004: Reliable Queue Configuration**: Standardized queue driver configuration (Redis/Database) for all Laraxot modules.
 
-### FR-003: Multi-tenant Queues
-- **Priority**: Must-have
-- **Description**: Ensure jobs are executed within the correct tenant context.
-- **Acceptance Criteria**: Tenant ID is preserved and applied when a job is processed.
+### P1: Monitoring & Observability (Important)
+- **FR-002: Job Management Dashboard**: Admin interface to view pending, running, and failed jobs with retry/cancel capabilities.
+- **FR-005: Failure Notification**: Automated alerts for critical background job failures.
 
-## 6. Non-Functional Requirements
-- **NFR-001: Reliability**: Zero job loss under normal operation.
-- **NFR-002: Observability**: Clear logs for job failures.
-- **NFR-003: Performance**: Minimal overhead for dispatching jobs.
+### P2: Advanced Resilience (Nice-to-have)
+- **FR-006: Dynamic Scaling**: Auto-scaling of queue workers based on queue depth and task priority.
+- **FR-007: AI Job Optimization**: Predictive analysis to suggest better queue prioritization and worker allocation.
+
+## 6. Non-Functional Requirements & Agnostic Design
+
+### Agnostic Design Principles
+- **Agnostic Task Engine**: Job provides the execution layer; it MUST NOT contain the business logic of the background tasks.
+- **Interoperability**: Provides a unified dispatch interface (Spatie Queueable Action) for all other modules.
+- **Independence**: Queue monitoring is agnostic of the specific task being processed.
+
+### Performance & Safety
+- **NFR-001: Reliability**: Zero job loss under normal operation through database-backed or persistent Redis queues.
+- **NFR-002: Observability**: Clear, searchable logs for job execution and failures.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 ### Dependencies

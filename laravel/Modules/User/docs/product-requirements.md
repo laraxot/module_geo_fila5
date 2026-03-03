@@ -579,7 +579,483 @@ model_has_permissions
 
 ---
 
-## 15. Changelog
+## 15. Compliance e Regolamentazioni
+
+### 15.1 Mappatura Requisiti GDPR
+
+| Requisito | Articolo GDPR | Implementazione |
+|-----------|---------------|----------------|
+| Minimizzazione dati | Art. 5(1)(c) | Solo dati necessari raccolti |
+| Consenso | Art. 7 | Opt-in esplicito |
+| Diritti interessato | Art. 15-22 | Export/delete automatici |
+| Sicurezza | Art. 32 | Encryption, 2FA, audit log |
+| Notifica violazioni | Art. 33 | Procedura incident response |
+| Privacy by design | Art. 25 | Default privacy settings |
+
+### 15.2 Audit Trail Requirements
+
+#### Eventi da Tracciare
+| Evento | Dati Registrati | Retention |
+|--------|-----------------|-----------|
+| Login success | user_id, timestamp, IP, device | 2 anni |
+| Login failed | email, timestamp, IP, reason | 1 anno |
+| Password change | user_id, timestamp, IP | 2 anni |
+| 2FA enabled/disabled | user_id, timestamp, IP | 2 anni |
+| Role assignment | user_id, role_id, assigned_by, timestamp | 3 anni |
+| Permission change | user_id, permission, changed_by, timestamp | 3 anni |
+| OAuth connection | user_id, provider, timestamp | 2 anni |
+| Account deletion | user_id, deleted_by, timestamp, reason | 3 anni |
+
+#### Accesso Audit Log
+- Solo admin con ruolo 'audit_viewer'
+- Export solo in formato CSV/PDF con firma digitale
+- Retention minima 3 anni
+
+### 15.3 Data Protection Measures
+
+#### Crittografia
+| Dato | Metodo | Chiave |
+|------|--------|--------|
+| Password | bcrypt cost 12 | N/A (salt automatico) |
+| Token API | AES-256 | Laravel APP_KEY |
+| 2FA secret | AES-256 | Vault dedicato |
+| Recovery codes | bcrypt | N/A |
+| Session | Encrypted cookie | Laravel session key |
+
+#### Trasmissione
+- TLS 1.3 obbligatorio
+- HSTS con max-age 31536000
+- Certificate pinning per OAuth
+
+### 15.4 Consent Management
+
+#### Categorie Consenso
+| Categoria | Descrizione | Default |
+|-----------|--------------|---------|
+| essential | Funzionamento base | always_on |
+| analytics | Statistiche utilizzo | off |
+| marketing | Comunicazioni promozionali | off |
+| third_party | Condivisione con terzi | off |
+
+#### Lifecycle Consenso
+```
+1. First visit → Banner mostro categorie
+2. User selects → Save preference in cookie + DB
+3. Return visit → Load from DB, sync with cookie
+4. Preference change → Update both cookie + DB, log event
+5. Consent withdrawal → Same as 4, notify admin
+```
+
+---
+
+## 16. Integrazioni Estese
+
+### 16.1 OAuth Provider Comparison
+
+#### Microsoft Azure AD
+| Criterio | Valutazione | Note |
+|----------|-------------|-------|
+| Setup complexity | Medio | Richiede Azure portal |
+| User attributes | Eccellente | full graph API |
+| SSO support | Eccellente | Enterprise SSO |
+| MFA support | Eccellente | Conditional Access |
+| Pricing | Freemium | 50k MAU free |
+| Compliance | SOC2, ISO27001 | Healthcare ready |
+
+#### Google
+| Criterio | Valutazione | Note |
+|----------|-------------|-------|
+| Setup complexity | Basso | Google Cloud Console |
+| User attributes | Buono | Limited profile data |
+| SSO support | Eccellente | Google Workspace |
+| MFA support | Eccellente | 2FA built-in |
+| Pricing | Freemium | Unlimited users |
+| Compliance | SOC2, ISO27001 | |
+
+#### GitHub
+| Criterio | Valutazione | Note |
+|----------|-------------|-------|
+| Setup complexity | Basso | OAuth app settings |
+| User attributes | Medio | Basic profile only |
+| SSO support | No | Solo OAuth |
+| MFA support | Yes | 2FA support |
+| Pricing | Free | |
+| Compliance | SOC2 | |
+
+### 16.2 Integrazione HRIS (Human Resource Information System)
+
+#### Scenari di Integrazione
+```
+HRIS → User Module
+    │
+    ├── Employee creation → Auto-provisioning account
+    ├── Employee termination → Auto-disable account
+    ├── Role change → Update permissions
+    └── Department change → Update team membership
+```
+
+#### API HRIS
+```php
+// Webhook handler per HRIS events
+class HrisWebhookController extends Controller
+{
+    public function handleEmployeeCreated(Request $request): Response
+    {
+        $employee = $request->validate([
+            'employee_id' => 'required|string',
+            'email' => 'required|email',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'department' => 'required|string',
+            'role' => 'required|string',
+            'start_date' => 'required|date',
+        ]);
+        
+        $user = User::createFromHris($employee);
+        
+        return response()->json(['user_id' => $user->id]);
+    }
+    
+    public function handleEmployeeTerminated(Request $request): Response
+    {
+        $employee = $request->validate([
+            'employee_id' => 'required|string',
+            'termination_date' => 'required|date',
+            'reason' => 'required|string',
+        ]);
+        
+        $user = User::findByEmployeeId($employee['employee_id']);
+        $user->disableAccount($employee);
+        
+        return response()->json(['status' => 'success']);
+    }
+}
+```
+
+### 16.3 Integrazione SIEM (Security Information and Event Management)
+
+#### Eventi da Inviare al SIEM
+```php
+// Log format per SIEM
+[
+    "timestamp" => "2026-03-03T10:30:00Z",
+    "event_type" => "authentication.login",
+    "severity" => "info",
+    "user" => [
+        "id" => 12345,
+        "email" => "user@example.com",
+        "employee_id" => "EMP001"
+    ],
+    "source" => [
+        "ip" => "192.168.1.100",
+        "user_agent" => "Mozilla/5.0...",
+        "geo_location" => "IT,45.4642,9.1900"
+    ],
+    "outcome" => [
+        "status" => "success",
+        "reason" => null
+    ],
+    "context" => [
+        "tenant_id" => 1,
+        "auth_method" => "password",
+        "mfa_used" => false
+    ]
+]
+```
+
+#### Integrazione con SIEM
+- Supportato: Splunk, Elastic SIEM, Microsoft Sentinel, IBM QRadar
+- Transport: syslog (UDP/TCP), HTTP webhook
+- Buffer: 1000 eventi o 5 secondi
+
+---
+
+## 17. Capacity Planning e Scalabilità
+
+### 17.1 Modelli di Carico
+
+#### Utenti Concurrent
+| Scenario | Utenti | Sessioni | Note |
+|---------|--------|----------|------|
+| Small | 100 | 50 | Piccolo ente |
+| Medium | 1,000 | 500 | Ente medio |
+| Large | 10,000 | 5,000 | Grande ente |
+| Enterprise | 50,000 | 25,000 | Multi-tenant |
+
+### 17.2 Risorse Necessarie
+
+| Componente | Small | Medium | Large | Enterprise |
+|------------|-------|--------|-------|------------|
+| Web Server | 1x 2CPU | 2x 2CPU | 4x 4CPU | 8x 4CPU |
+| Memory | 2GB | 4GB | 8GB | 16GB |
+| Database | 1x Standard | 1x Standard | 2x Performance | 3x Performance |
+| Redis | 1x Basic | 1x Standard | 2x Standard | 3x Performance |
+| Load Balancer | Included | Included | Application LB | Application LB |
+
+### 17.3 Auto-scaling Rules
+
+```yaml
+# Scaling triggers
+scale_up:
+  - metric: cpu_usage
+    operator: ">"
+    threshold: 70%
+    duration: 5m
+  
+  - metric: request_latency_p99
+    operator: ">"
+    threshold: 500ms
+    duration: 3m
+  
+  - metric: active_sessions
+    operator: ">"
+    threshold: 80%_capacity
+
+scale_down:
+  - metric: cpu_usage
+    operator: "<"
+    threshold: 30%
+    duration: 15m
+```
+
+### 17.4 Database Optimization
+
+#### Indici Necessari
+```sql
+-- Users table
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_tenant_id ON users(tenant_id);
+CREATE INDEX idx_users_employee_id ON users(employee_id);
+CREATE INDEX idx_users_status ON users(status);
+
+-- Sessions table
+CREATE INDEX idx_sessions_user_id ON sessions(user_id);
+CREATE INDEX idx_sessions_expires ON sessions(expires_at);
+
+-- Password reset tokens
+CREATE INDEX idx_password_resets_email ON password_resets(email);
+CREATE INDEX idx_password_resets_token ON password_resets(token);
+```
+
+#### Query Optimization
+- User lookup: usa indici, cache result
+- Role check: cache per 5 minuti
+- Pagination: cursor-based per grandi dataset
+
+---
+
+## 18. Disaster Recovery e Business Continuity
+
+### 18.1 RPO (Recovery Point Objective)
+
+| Dato | RPO | Note |
+|------|-----|------|
+| User accounts | 0 | Critico |
+| Password hashes | 0 | Critico |
+| Sessions | 15 min | Cache |
+| Audit logs | 1 ora | Compliance |
+| OAuth tokens | 0 | Critico |
+| Role assignments | 0 | Critico |
+
+### 18.2 RTO (Recovery Time Objective)
+
+| Componente | RTO | Priorità |
+|------------|-----|----------|
+| Authentication | 1 ora | P1 - Critico |
+| User management | 4 ore | P2 - Alta |
+| Password reset | 1 ora | P1 - Critico |
+| Reporting | 24 ore | P3 - Media |
+
+### 18.3 Backup Strategy
+
+#### Frequenza Backup
+| Tipo | Frequenza | Retention |
+|------|-----------|-----------|
+| Database full | Giornaliero | 30 giorni |
+| Database incremental | Orario | 7 giorni |
+| File storage | Giornaliero | 30 giorni |
+| Config files | Ogni deploy | 90 giorni |
+| Encryption keys | Settimanale | 1 anno |
+
+#### Backup Verification
+- Test restore mensile
+- Verifica integrità con checksum
+- Documentazione procedure
+
+### 18.4 Failover Procedure
+
+```
+Incident Detectato
+    ↓
+Valutazione Severità (P1-P4)
+    ↓
+Notifica On-Call
+    ↓
+├─ P1/P2: Escalation immediata
+└─ P3/P4: Business hours
+    ↓
+Isolamento problema
+    ↓
+├─ Fix disponibile? → Apply fix → Verify → Close
+└─ Fix non disponibile? → Rollback/Failover → Monitor
+    ↓
+Post-Incident Review (entro 48h)
+```
+
+### 18.5 Rollback Strategy
+
+| Scenario | Rollback Procedure | Tempo Stimato |
+|----------|---------------------|---------------|
+| Code deploy | git revert + deploy | 15 min |
+| Config change | Restore from backup | 5 min |
+| Database migration | Run down migration | 10 min |
+| OAuth provider change | Switch provider | 30 min |
+
+---
+
+## 19. Incident Response
+
+### 19.1 Severity Levels
+
+| Level | Definizione | Esempio | Response Time |
+|-------|-------------|---------|---------------|
+| P1 - Critical | Servizio non funzionante | Login impossibile | 15 min |
+| P2 - High | Funzionalità degradata | 2FA non funziona | 1 ora |
+| P3 - Medium | Impatto limitato | Notifiche lente | 4 ore |
+| P4 - Low | Nessun impatto | UI cosmetic issue | 24 ore |
+
+### 19.2 Communication Plan
+
+| Stakeholder | P1 | P2 | P3 | P4 |
+|-------------|----|----|----|----|
+| Internal team | Immediate | 1 ora | Daily | Weekly |
+| Affected users | Within 1 ora | Within 4 ore | Next update | N/A |
+| Management | Immediate | Daily summary | Weekly | N/A |
+
+### 19.3 Post-Incident Activities
+
+1. **Within 24 hours**: Initial timeline documented
+2. **Within 48 hours**: Root cause analysis complete
+3. **Within 1 week**: Prevention measures identified
+4. **Within 2 weeks**: Prevention measures implemented
+
+---
+
+## 20. Acceptance Criteria Dettagliati
+
+### 20.1 Autenticazione - Test Completi
+
+#### Login Email/Password
+- [ ] Utente può registrarsi con validazione email
+- [ ] Utente può fare login con credenziali corrette
+- [ ] Utente riceve errore con credenziali errate
+- [ ] Account viene bloccato dopo 5 tentativi falliti
+- [ ] Blocco si resetta dopo 15 minuti
+- [ ] "Remember me" estende sessione a 30 giorni
+- [ ] Sessione scade per inactivity dopo 30 minuti
+- [ ] Logout invalida sessione corrente
+
+#### Password Reset
+- [ ] Utente può richiedere reset con email
+- [ ] Email di reset arriva entro 5 minuti
+- [ ] Link reset expires dopo 60 minuti
+- [ ] Nuova password deve rispettare requisiti
+- [ ] Vecchia password non può essere riutilizzata (ultime 5)
+- [ ] Notifica all'utente se password cambiata
+
+#### OAuth
+- [ ] Redirect a provider corretto
+- [ ] Autorizzazione richiede solo permessi necessari
+- [ ] Callback processa token correttamente
+- [ ] Utente viene creato/aggiornato con dati provider
+- [ ] Token viene refreshato automaticamente
+- [ ] Refresh token failure handling funziona
+
+### 20.2 Autorizzazione - Test Completi
+
+#### Roles
+- [ ] Admin può creare ruolo con nome e permessi
+- [ ] Admin può modificare ruolo esistente
+- [ ] Admin può eliminare ruolo (con conferma)
+- [ ] Ruolo eliminato rimuove da tutti gli utenti
+- [ ] @can directive controlla accesso correttamente
+- [ ] @role directive funziona per ruoli multipli
+- [ ] Middleware nega accesso senza ruolo richiesto
+
+#### Permissions
+- [ ] Permessi possono essere creati/modificati/eliminati
+- [ ] Permessi possono essere assegnati a ruoli
+- [ ] Permessi possono essere assegnati direttamente a utenti
+- [ ] Permessi ruolo + diretti si sommano
+- [ ] Permission gate in Laravel funziona
+
+### 20.3 Two-Factor Authentication - Test Completi
+
+#### Setup
+- [ ] Utente può iniziare setup 2FA
+- [ ] QR code viene generato correttamente
+- [ ] Utente può scansionare con app authenticator
+- [ ] Codice TOTP viene verificato correttamente
+- [ ] Backup codes vengono generati (10 codici)
+- [ ] Backup codes sono univoci e validi
+
+#### Uso
+- [ ] Login richiede 2FA quando abilitato
+- [ ] Codice TOTP accettato una volta sola
+- [ ] Clock drift di ±30 secondi tollerato
+- [ ] Backup code può essere usato una volta
+- [ ] 2FA può essere disabilitato con password
+
+### 20.4 Team Management - Test Completi
+
+- [ ] Owner può creare team
+- [ ] Owner può impostare altri membri come admin
+- [ ] Membro può invitare altri utenti
+- [ ] Invito scade dopo 7 giorni
+- [ ] Membro può essere rimosso da admin
+- [ ] Owner può abbandonare (trasferendo ownership)
+- [ ] Team eliminato rimuove membership
+
+### 20.5 Performance Test Suite
+
+```php
+// tests/Performance/AuthPerformanceTest.php
+
+it('login responds within 200ms', function () {
+    $this->stopTime();
+    
+    $response = $this->post('/login', [
+        'email' => 'user@example.com',
+        'password' => 'password',
+    ]);
+    
+    $duration = $this->startTime();
+    expect($duration)->toBeLessThan(200); // ms
+});
+
+it('handles 100 concurrent logins', function () {
+    $attempts = 100;
+    
+    $this->markTestSkippedIfRedisNotAvailable();
+    
+    $futures = [];
+    for ($i = 0; $i < $attempts; $i++) {
+        $futures[] = $this->async->post('/login', [
+            'email' => "user{$i}@example.com",
+            'password' => 'password',
+        ]);
+    }
+    
+    $results = collect($futures)->map(fn($f) => $f->wait());
+    
+    expect($results->filter(fn($r) => $r->getStatusCode() === 200))
+        ->toHaveCount($attempts);
+});
+```
+
+---
+
+## 21. Changelog
 
 | Version | Data | Autore | Modifiche |
 |---------|------|--------|------------|

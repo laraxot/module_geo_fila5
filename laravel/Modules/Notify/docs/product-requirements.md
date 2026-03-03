@@ -274,3 +274,288 @@ Channel Resolver (canale preferito)
 | Template | Modello di notifica riutilizzabile |
 | Preference | Impostazione utente per notifiche |
 | DLQ | Dead Letter Queue per retry falliti |
+
+---
+
+## 11. Specifiche Tecniche Dettagliate
+
+### 11.1 Channel Resolver
+
+```php
+// Priority order configurabile
+// 1. User preference
+// 2. Template default
+// 3. Fallback hierarchy: email > sms > push
+```
+
+### 11.2 API Endpoints
+
+#### Notifications
+| Method | Endpoint | Descrizione |
+|--------|----------|-------------|
+| POST | /api/notifications/send | Invia notifica |
+| POST | /api/notifications/send-batch | Invia batch |
+| GET | /api/notifications/{id} | Dettaglio |
+| GET | /api/notifications | Lista |
+
+#### Templates
+| Method | Endpoint | Descrizione |
+|--------|----------|-------------|
+| GET | /api/notifications/templates | Lista templates |
+| POST | /api/notifications/templates | Crea template |
+| PUT | /api/notifications/templates/{id} | Modifica |
+| DELETE | /api/notifications/templates/{id} | Elimina |
+| GET | /api/notifications/templates/{id}/preview | Preview |
+
+#### Preferences
+| Method | Endpoint | Descrizione |
+|--------|----------|-------------|
+| GET | /api/notifications/preferences | Get preferenze |
+| PUT | /api/notifications/preferences | Update preferenze |
+
+### 11.3 Notifiche Laravel Integration
+
+```php
+// Uso semplice
+use Modules\Notify\Notifications\GenericNotification;
+
+$user->notify(new GenericNotification([
+    'title' => 'Titolo',
+    'body' => 'Corpo messaggio',
+    'channel' => 'email', // opzionale
+]));
+
+// Con canale specifico
+$user->notifyVia('sms')->notify(new GenericNotification($data));
+
+// Con template
+$user->notifyUsingTemplate('welcome', [
+    'name' => $user->name,
+]);
+```
+
+### 11.4 Template Syntax
+
+```
+// Variabili
+Ciao {{name}}, benvenuto in {{app_name}}!
+
+// Condizionali
+{{#if has_discount}}
+Il tuo sconto: {{discount}}%
+{{/if}}
+
+// Cicli
+{{#each orders}}
+- Ordine #{{number}}: {{total}}€
+{{/each}}
+
+// Link
+<a href="{{action_url}}">Clicca qui</a>
+```
+
+### 11.5 Configurazione Provider
+
+#### Email (Mailgun)
+```php
+// config/services.php
+'mailgun' => [
+    'domain' => env('MAILGUN_DOMAIN'),
+    'secret' => env('MAILGUN_SECRET'),
+    'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+]
+```
+
+#### SMS (AWS SNS)
+```php
+'sns' => [
+    'key' => env('AWS_ACCESS_KEY_ID'),
+    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+    'region' => env('AWS_DEFAULT_REGION', 'eu-west-1'),
+    'sender_id' => env('SNS_SENDER_ID'),
+]
+```
+
+#### WhatsApp
+```php
+'whatsapp' => [
+    'phone_number_id' => env('WHATSAPP_PHONE_NUMBER_ID'),
+    'access_token' => env('WHATSAPP_ACCESS_TOKEN'),
+]
+```
+
+#### Telegram
+```php
+'telegram' => [
+    'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+    'webhook_url' => env('TELEGRAM_WEBHOOK_URL'),
+]
+```
+
+#### Firebase
+```php
+'firebase' => [
+    'credentials' => storage_path('firebase-credentials.json'),
+]
+```
+
+### 11.6 Retry Strategy
+
+| Attempt | Delay | Action |
+|---------|-------|--------|
+| 1 | 0 | First try |
+| 2 | 1 min | Retry |
+| 3 | 5 min | Retry |
+| 4 | 30 min | Retry |
+| 5 | 2 ore | Retry |
+| 6+ | DLQ | Move to dead letter |
+
+### 11.7 Queue Configuration
+
+```php
+// config/queue.php
+'connections' => [
+    'redis' => [
+        'driver' => 'redis',
+        'queue' => 'notifications',
+        'retry_after' => 90,
+    ],
+],
+
+// Job property
+class SendNotificationJob implements ShouldQueue
+{
+    public int $tries = 6;
+    public int $backoff = [1, 5, 30, 120, 7200];
+    public int $maxExceptions = 3;
+    public function failed(\Throwable $exception): void
+    {
+        // Move to DLQ for investigation
+    }
+}
+```
+
+---
+
+## 12. Database Schema
+
+```php
+// notifications
+Schema::create('notifications_log', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('tenant_id')->nullable();
+    $table->foreignId('user_id');
+    $table->string('channel'); // email, sms, whatsapp, telegram, fcm
+    $table->string('type'); // notification class
+    $table->string('subject')->nullable();
+    $table->text('body');
+    $table->string('status'); // pending, sent, failed
+    $table->text('error')->nullable();
+    $table->json('metadata')->nullable();
+    $table->timestamp('sent_at')->nullable();
+    $table->timestamps();
+});
+
+// notification_templates
+Schema::create('notification_templates', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('tenant_id')->nullable();
+    $table->string('name');
+    $table->string('channel');
+    $table->text('subject')->nullable();
+    $table->text('body');
+    $table->json('variables');
+    $table->boolean('is_active')->default(true);
+    $table->timestamps();
+});
+
+// user_notification_preferences
+Schema::create('user_notification_preferences', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('user_id');
+    $table->string('notification_type');
+    $table->string('preferred_channel')->nullable();
+    $table->boolean('enabled')->default(true);
+    $table->json('quiet_hours')->nullable(); // {"start": "22:00", "end": "07:00"}
+    $table->timestamps();
+});
+```
+
+---
+
+## 13. Testing Strategy
+
+### 13.1 Test Coverage
+
+| Componente | Target |
+|------------|--------|
+| Channel Resolver | >90% |
+| Template Renderer | >90% |
+| Preference Manager | >80% |
+| Queue Jobs | >80% |
+| Overall | >70% |
+
+### 13.2 Test Cases
+
+#### Channel Tests
+- [ ] Email sent via correct driver
+- [ ] SMS truncated for long messages
+- [ ] WhatsApp template renders correctly
+- [ ] Telegram keyboard works
+- [ ] FCM reaches device
+
+#### Template Tests
+- [ ] Variables replaced correctly
+- [ ] Conditionals work
+- [ ] Loops work
+- [ ] HTML renders safely
+
+#### Preference Tests
+- [ ] Preference saved correctly
+- [ ] Quiet hours respected
+- [ ] Channel fallback works
+
+#### Retry Tests
+- [ ] Failed notification retried
+- [ ] DLQ receives exhausted attempts
+- [ ] Backoff timing correct
+
+---
+
+## 14. Criteri di Accettazione
+
+### Email
+- [ ] Notifica inviata con driver corretto
+- [ ] Template HTML rendered
+- [ ] Variabili sostituite
+- [ ] Tracking apertura funziona
+- [ ] Batching funziona
+
+### SMS
+- [ ] SMS inviato a numero corretto
+- [ ] Messaggio lungo splittato
+- [ ] Status delivery ricevuto
+
+### WhatsApp
+- [ ] Template message inviato
+- [ ] Media allegato
+- [ ] Session message funziona
+
+### Telegram
+- [ ] Messaggio inviato
+- [ ] Inline keyboard funziona
+- [ ] Webhook updates processati
+
+### FCM
+- [ ] Push reaches device
+- [ ] Topic subscription works
+- [ ] Data payload received
+
+### Preference
+- [ ] Utente può cambiare preferenza
+- [ ] Quiet hours rispettato
+- [ ] Fallback canale funziona
+
+### Performance
+- [ ] Send <100ms per email sync
+- [ ] Batch 1000 email <60s
