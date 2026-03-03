@@ -39,37 +39,32 @@ Enterprise SaaS and multi-entity deployments require:
 - Billing/payment processing (external systems)
 - Per-tenant database separation (uses row-level isolation)
 
-## 5. Functional Requirements
+## 5. Functional Requirements (Prioritized)
 
-### FR-001: Tenant Management
-- **Priority**: Must-have
-- **Description**: Full CRUD for tenants with admin panel via `DomainResource`
-- **Acceptance Criteria**: Super admin can create, update, delete tenants
+### P0: Multi-Tenancy Foundation (Must-have)
+- **FR-001: Tenant Lifecycle**: Full CRUD for tenants and organizations through the `DomainResource`.
+- **FR-002: Domain-to-Tenant Mapping**: Resolve tenant context from custom domains (`Domain`, `TenantDomain`) for white-label deployments.
+- **FR-005: Data Isolation**: Enforce row-level tenant isolation across all models extending `XotBaseModel`.
 
-### FR-002: Domain Mapping
-- **Priority**: Must-have
-- **Description**: Map custom domains to tenants for white-label deployments
-- **Acceptance Criteria**: Accessing a mapped domain resolves to correct tenant context
+### P1: Tenant Configuration (Important)
+- **FR-003: Dynamic Settings**: Per-tenant configuration using schemaless attributes (`TenantSetting`) for overriding system defaults.
+- **FR-006: Tenant Identification**: Standardized `GetTenantNameAction` for cross-module tenant awareness and path generation.
 
-### FR-003: Tenant Settings
-- **Priority**: Should-have
-- **Description**: Per-tenant configuration using schemaless attributes
-- **Acceptance Criteria**: Each tenant can override default settings
+### P2: Subscription & Monetization (Nice-to-have)
+- **FR-004: Feature Gating**: Restrict access to module features based on `TenantSubscription` tiers and entitlements.
+- **FR-007: Tenant Analytics**: Centralized dashboard for monitoring tenant usage and health.
 
-### FR-004: Subscription Management
-- **Priority**: Could-have
-- **Description**: Feature-gated access based on subscription tier
-- **Acceptance Criteria**: Tenant features restricted by subscription level
+## 6. Non-Functional Requirements & Agnostic Design
 
-## 6. Non-Functional Requirements
+### Agnostic Design Principles
+- **Infrastructure Provider**: Tenant provides the context for all other modules; it MUST NOT contain domain-specific logic.
+- **Interoperability**: Exposes tenant context through a unified API/Action, allowing any module to become "tenant-aware" without direct dependencies.
+- **Isolation**: Tenant resolution is handled at the middleware layer, keeping business logic clean of multi-tenancy concerns.
 
-### NFR-001: Data Isolation
-- Row-level tenant isolation enforced at model layer
-- No cross-tenant data leakage
-
-### NFR-002: Performance
-- Tenant resolution < 10ms per request
-- Efficient query scoping without N+1
+### Performance & Safety
+- **NFR-001: Resolution Speed**: Tenant resolution < 10ms per request through aggressive caching.
+- **NFR-002: Security**: Zero-leakage data isolation verified through automated multi-tenant test suites.
+- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
 
 ## 7. Technical Architecture
 
