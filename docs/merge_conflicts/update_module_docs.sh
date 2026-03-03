@@ -34,7 +34,7 @@ log() {
 # Funzione per verificare e creare la struttura di documentazione standard
 create_standard_doc_structure() {
   local module_name=$1
-  local docs_dir="/var/www/_bases/base_predict_fila4_mono/laravel/Modules/$module_name/docs"
+  local docs_dir="/var/www/_bases/base_predict_fila5_mono/laravel/Modules/$module_name/docs"
   
   # Crea la directory docs se non esiste
   if [ ! -d "$docs_dir" ]; then
@@ -87,7 +87,7 @@ EOF
 # Funzione per aggiornare la documentazione di un modulo
 update_module_documentation() {
   local module_name=$1
-  local module_dir="/var/www/_bases/base_predict_fila4_mono/laravel/Modules/$module_name"
+  local module_dir="/var/www/_bases/base_predict_fila5_mono/laravel/Modules/$module_name"
   local docs_dir="$module_dir/docs"
   
   log "INFO" "Aggiornamento documentazione per il modulo $module_name..."
@@ -271,7 +271,7 @@ EOF
 
 # Funzione per aggiornare la documentazione di tutti i moduli
 update_all_modules_documentation() {
-  local modules_dir="/var/www/_bases/base_predict_fila4_mono/laravel/Modules"
+  local modules_dir="/var/www/_bases/base_predict_fila5_mono/laravel/Modules"
   local modules=$(find "$modules_dir" -maxdepth 1 -type d -not -path "$modules_dir" | sort)
   
   log "INFO" "Aggiornamento documentazione per tutti i moduli..."

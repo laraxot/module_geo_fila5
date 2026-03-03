@@ -22,7 +22,7 @@ iFlow CLI supporta MCP tramite configurazione in `~/.iflow/settings.json` o `./.
     "laravel-boost": {
       "command": "php",
       "args": [
-        "/var/www/_bases/base_ptvx_fila4_mono/laravel/artisan",
+        "/var/www/_bases/base_ptvx_fila5_mono/laravel/artisan",
         "boost:mcp"
       ]
     },
@@ -31,9 +31,9 @@ iFlow CLI supporta MCP tramite configurazione in `~/.iflow/settings.json` o `./.
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/var/www/_bases/base_ptvx_fila4_mono/laravel",
-        "/var/www/_bases/base_ptvx_fila4_mono/docs",
-        "/var/www/_bases/base_ptvx_fila4_mono/bashscripts"
+        "/var/www/_bases/base_ptvx_fila5_mono/laravel",
+        "/var/www/_bases/base_ptvx_fila5_mono/docs",
+        "/var/www/_bases/base_ptvx_fila5_mono/bashscripts"
       ]
     },
     "memory": {
@@ -77,7 +77,7 @@ iFlow CLI supporta MCP tramite configurazione in `~/.iflow/settings.json` o `./.
         "-y",
         "@modelcontextprotocol/server-git",
         "--repository",
-        "/var/www/_bases/base_ptvx_fila4_mono"
+        "/var/www/_bases/base_ptvx_fila5_mono"
       ]
     }
   }

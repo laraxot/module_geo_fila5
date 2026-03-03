@@ -5,7 +5,7 @@
 # Data: 2025-09-22
 
 # Directory di base del progetto
-BASE_DIR="/var/www/_bases/base_predict_fila4_mono"
+BASE_DIR="/var/www/_bases/base_predict_fila5_mono"
 SCRIPTS_DIR="$BASE_DIR/bashscripts/merge_conflicts"
 
 # Verifica che la directory degli script esista

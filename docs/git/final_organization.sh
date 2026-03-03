@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory base
-BASH_DIR="/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts"
+BASH_DIR="/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts"
 
 # Funzione per determinare la categoria del file
 get_category() {

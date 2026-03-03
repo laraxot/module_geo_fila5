@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_contoannuale_fila3",
+  "name": "laraxot/module_contoannuale_fila5",
   "description": "Annual financial report (Conto Annuale) module for the Laraxot ecosystem: public administration HR cost reporting to RGS/MEF.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "mef"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_contoannuale_fila3.git",
+  "homepage": "https://github.com/laraxot/module_contoannuale_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

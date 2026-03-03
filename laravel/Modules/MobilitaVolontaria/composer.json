@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_mobilitavolontaria_fila3",
+  "name": "laraxot/module_mobilitavolontaria_fila5",
   "description": "Voluntary employee mobility module for the Laraxot ecosystem: transfer requests, inter-agency mobility, and relocation management.",
   "keywords": [
     "laraxot",
@@ -13,7 +13,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_mobilitavolontaria_fila3.git",
+  "homepage": "https://github.com/laraxot/module_mobilitavolontaria_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

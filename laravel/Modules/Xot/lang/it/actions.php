@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 return [
     'export_xls' => 'Esporta Dati',
-    'export_pdf' => [
-        'tooltip' => 'Esporta in PDF',
-    ],
     'label' => 'Actions',
     'plural_label' => 'Actions (Plurale)',
     'navigation' => [

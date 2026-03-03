@@ -69,57 +69,32 @@ $pdf = app(ContentPdfAction::class)->execute(
 
 ---
 
-### 3. DownloadPdfByViewAction ⭐ EXPORT LIST
+### 3. StreamDownloadPdfAction
 
-**Scopo:** Genera PDF da una view Blade e restituisce download response. Usato da ExportPdfAction per export da ListRecords.
+**Scopo:** Genera PDF e restituisce download response
 
 **Input:**
-- `string $view` - Nome view (es. `indennita-responsabilita::indennita_responsabilita.index.pdf`)
-- `array $viewParams` - Dati per la view (es. `['rows' => $rows]`)
-- `string|null $filename` - Nome file download (opzionale, derivato dalla view se assente)
+- `Model $record` - Record Eloquent
+- `string|null $filename` - Nome file download
 
 **Output:**
 - `StreamedResponse` - Response download HTTP
 
 **Uso:**
 ```php
-// Da ExportPdfAction (ListRecords)
-$view = app(GetViewByModelClassAction::class)->execute($modelClass) . '.index.pdf';
-$viewParams = ['rows' => $rows];
+// In Controller
+public function downloadPdf($id)
+{
+    $record = Model::findOrFail($id);
 
-return app(DownloadPdfByViewAction::class)->execute($view, $viewParams, $filename);
-```
-
-**Convenzione view:** `{module}::{model_snake}.index.pdf` (es. `indennita-responsabilita::indennita_responsabilita.index.pdf`)
-
----
-
-### 4. StreamDownloadPdfAction
-
-**Scopo:** Genera PDF da HTML o view e restituisce download response (low-level)
-
-**Input:**
-- `string|null $html` - HTML diretto
-- `string|null $view` - Nome vista Blade
-- `array|null $data` - Dati per vista
-- `string $filename` - Nome file download
-
-**Output:**
-- `StreamedResponse` - Response download HTTP
-
-**Uso:**
-```php
-return app(StreamDownloadPdfAction::class)->execute(
-    html: null,
-    view: 'module::custom.pdf',
-    data: ['rows' => $rows],
-    filename: 'report.pdf'
-);
+    return app(StreamDownloadPdfAction::class)->execute($record);
+    // → Download automatico PDF
+}
 ```
 
 ---
 
-### 5. PdfByHtmlAction
+### 4. PdfByHtmlAction
 
 **Scopo:** Genera PDF da HTML con diverse modalità output
 
@@ -165,16 +140,10 @@ ContentPdfAction (Custom HTML/View)
     ├─► HTML diretto o view rendering
     └─► generatePdfContent()       # spipu/html2pdf
 
-DownloadPdfByViewAction (Export ListRecords)
-    │
-    ├─► GetViewByModelClassAction (convenzione .index.pdf)
-    ├─► StreamDownloadPdfAction
-    └─► StreamedResponse
-
 StreamDownloadPdfAction (Direct Download)
     │
-    ├─► view()->render() o HTML diretto
-    └─► Html2Pdf → StreamedResponse
+    ├─► GetPdfContentByRecordAction
+    └─► StreamedResponse
 
 PdfByHtmlAction (Multi-Output)
     │

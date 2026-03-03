@@ -1,4 +1,4 @@
-# PHPStan Code Quality Guide - base_ptvx_fila4_mono
+# PHPStan Code Quality Guide - base_ptvx_fila5_mono
 
 **Principi**: DRY + KISS + SOLID + Robust  
 **Stack**: Laravel 12 + Filament 4 + PHP 8.3 + Laraxot  
@@ -29,7 +29,7 @@
 
 ```bash
 # Analisi PHPStan completa
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 ./vendor/bin/phpstan analyse Modules --memory-limit=-1
 
 # Analisi singolo modulo

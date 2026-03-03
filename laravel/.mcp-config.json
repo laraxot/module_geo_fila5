@@ -27,10 +27,10 @@
     "code-runner"
   ],
   "project_paths": {
-    "root": "/var/www/html/_bases/base_ptvx_fila3_mono/laravel",
-    "modules": "/var/www/html/_bases/base_ptvx_fila3_mono/laravel/Modules",
-    "config": "/var/www/html/_bases/base_ptvx_fila3_mono/laravel/config",
-    "tests": "/var/www/html/_bases/base_ptvx_fila3_mono/laravel/tests",
-    "scripts": "/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts"
+    "root": "/var/www/html/_bases/base_ptvx_fila5_mono/laravel",
+    "modules": "/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules",
+    "config": "/var/www/html/_bases/base_ptvx_fila5_mono/laravel/config",
+    "tests": "/var/www/html/_bases/base_ptvx_fila5_mono/laravel/tests",
+    "scripts": "/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts"
   }
 }

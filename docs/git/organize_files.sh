@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory base
-BASE_DIR="/var/www/html/_bases/base_ptvx_fila3_mono/bashscripts"
+BASE_DIR="/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts"
 DOCS_DIR="$BASE_DIR/docs"
 
 # Crea le sottocartelle per i file .sh

@@ -10,7 +10,7 @@ declare(strict_types=1);
  * delegare a un metodo helper puro.
  */
 
-$file = '/var/www/_bases/base_ptvx_fila4_mono/laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php';
+$file = '/var/www/_bases/base_ptvx_fila5_mono/laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php';
 
 if (!file_exists($file)) {
     echo "❌ File not found: $file\n";

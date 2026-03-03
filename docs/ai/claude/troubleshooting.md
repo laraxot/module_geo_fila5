@@ -23,7 +23,7 @@
 3. **Verifica path**:
    ```bash
    # Controlla che path in .mcp.json esistano
-   ls -la /var/www/_bases/base_ptvx_fila4_mono/laravel
+   ls -la /var/www/_bases/base_ptvx_fila5_mono/laravel
    ```
 
 4. **Check logs**:
@@ -75,13 +75,13 @@
 
 1. **Verifica path esistono**:
    ```bash
-   ls -la /var/www/_bases/base_ptvx_fila4_mono/laravel
+   ls -la /var/www/_bases/base_ptvx_fila5_mono/laravel
    ```
 
 2. **Controlla permessi directory**:
    ```bash
-   chmod 755 /var/www/_bases/base_ptvx_fila4_mono
-   chmod -R 755 /var/www/_bases/base_ptvx_fila4_mono/laravel
+   chmod 755 /var/www/_bases/base_ptvx_fila5_mono
+   chmod -R 755 /var/www/_bases/base_ptvx_fila5_mono/laravel
    ```
 
 3. **Verifica utente**:
@@ -92,7 +92,7 @@
 
 4. **Test accesso manuale**:
    ```bash
-   cat /var/www/_bases/base_ptvx_fila4_mono/laravel/composer.json
+   cat /var/www/_bases/base_ptvx_fila5_mono/laravel/composer.json
    ```
 
 ---
@@ -147,12 +147,12 @@
 
 1. **Verifica path repository**:
    ```bash
-   ls -la /var/www/_bases/base_ptvx_fila4_mono/.git
+   ls -la /var/www/_bases/base_ptvx_fila5_mono/.git
    ```
 
 2. **Test git manuale**:
    ```bash
-   cd /var/www/_bases/base_ptvx_fila4_mono
+   cd /var/www/_bases/base_ptvx_fila5_mono
    git status
    ```
 
@@ -164,7 +164,7 @@
        "-y",
        "@modelcontextprotocol/server-git",
        "--repository",
-       "/var/www/_bases/base_ptvx_fila4_mono"  // Path assoluto corretto
+       "/var/www/_bases/base_ptvx_fila5_mono"  // Path assoluto corretto
      ]
    }
    ```
@@ -187,7 +187,7 @@ export MCP_DEBUG=true
 
 ```bash
 # Test filesystem
-npx -y @modelcontextprotocol/server-filesystem /var/www/_bases/base_ptvx_fila4_mono/laravel
+npx -y @modelcontextprotocol/server-filesystem /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Test memory
 npx -y @modelcontextprotocol/server-memory

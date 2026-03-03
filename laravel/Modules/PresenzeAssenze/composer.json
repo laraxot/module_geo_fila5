@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_presenzeassenze_fila3",
+  "name": "laraxot/module_presenzeassenze_fila5",
   "description": "Attendance and absence management module for the Laraxot ecosystem: clock-in/out, leave requests, permits, and time tracking.",
   "keywords": [
     "laraxot",
@@ -14,7 +14,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_presenzeassenze_fila3.git",
+  "homepage": "https://github.com/laraxot/module_presenzeassenze_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

@@ -1011,7 +1011,6 @@ See [ROADMAP.md](./roadmap.md) for details.
 ---
 
 **Module**: User (Authentication & Authorization)
-**Version**: 2.5.0
 **Framework**: Laravel 12 + Filament 4
 **PHPStan**: Level 10 ✅
 **Test Coverage**: 88%+ ✅

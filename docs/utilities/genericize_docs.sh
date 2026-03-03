@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory base
-BASE_DIR="/var/www/html/_bases/base_ptvx_fila3_mono"
+BASE_DIR="/var/www/html/_bases/base_ptvx_fila5_mono"
 DOCS_DIR="$BASE_DIR/docs"
 
 # Funzione per sostituire i riferimenti specifici
@@ -19,7 +19,7 @@ replace_specific_refs() {
     sed -i 's/PTVX/<nome progetto>/gi' "$file"
     
     # Sostituisci anche i riferimenti nei percorsi
-    sed -i 's/base_ptvx_fila3_mono/base_<nome progetto>/gi' "$file"
+    sed -i 's/base_ptvx_fila5_mono/base_<nome progetto>/gi' "$file"
     
     # Sostituisci i riferimenti nei link
     sed -i 's/laraxot\/module_ptvx/laraxot\/module_<nome progetto>/gi' "$file"

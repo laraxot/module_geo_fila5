@@ -98,7 +98,7 @@
 **File**: `~/.cursor/mcp.json`
 
 **Server attivi**:
-1. ✅ laravel-boost (base_ptvx_fila4_mono)
+1. ✅ laravel-boost (base_ptvx_fila5_mono)
 2. ✅ filesystem (/laravel scope)
 3. ✅ playwright (browser testing)
 4. ✅ puppeteer (browser automation)
@@ -356,7 +356,7 @@ Plus migrazione per convertire tabella a `utf8mb4_unicode_ci`.
 
 2. **Applica migrazione collation**:
    ```bash
-   cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+   cd /var/www/_bases/base_ptvx_fila5_mono/laravel
    php artisan migrate
    ```
 

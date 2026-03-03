@@ -1,5 +1,5 @@
 {
-  "name": "laraxot/module_sindacati_fila3",
+  "name": "laraxot/module_sindacati_fila5",
   "description": "Trade unions and labor relations module for the Laraxot ecosystem: RSU/RSA management, union negotiations, and employee representation.",
   "keywords": [
     "laraxot",
@@ -14,7 +14,7 @@
     "hr"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/laraxot/module_sindacati_fila3.git",
+  "homepage": "https://github.com/laraxot/module_sindacati_fila5.git",
   "authors": [
     {
       "name": "Marco Sottana",

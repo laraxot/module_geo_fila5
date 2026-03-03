@@ -7,7 +7,7 @@ echo "🔧 Risoluzione automatica duplicati critici..."
 echo ""
 
 # Directory di lavoro
-PROJECT_ROOT="/var/www/_bases/base_fixcity_fila4_mono"
+PROJECT_ROOT="/var/www/_bases/base_fixcity_fila5_mono"
 cd "$PROJECT_ROOT"
 
 # Contatore

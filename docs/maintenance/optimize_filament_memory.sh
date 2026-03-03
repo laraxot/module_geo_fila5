@@ -6,7 +6,7 @@
 echo "🚀 Ottimizzazione memoria Filament v4"
 echo "====================================="
 
-PROJECT_DIR="/var/www/_bases/base_techplanner_fila3_mono/laravel"
+PROJECT_DIR="/var/www/_bases/base_techplanner_fila5_mono/laravel"
 
 # 1. Aumenta memory limit per PHP
 echo "📈 Aumentando memory limit PHP..."

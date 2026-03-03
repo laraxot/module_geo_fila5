@@ -6,7 +6,7 @@
 
 ```bash
 # Execute from Laravel directory
-cd /var/www/_bases/base_ptvx_fila4_mono/laravel
+cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 
 # Full analysis
 ./vendor/bin/phpstan analyse --level=10 --memory-limit=2G

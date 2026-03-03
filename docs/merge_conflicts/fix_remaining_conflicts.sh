@@ -18,7 +18,7 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color
 
 # Directory di base
-BASE_DIR="/var/www/_bases/base_predict_fila4_mono"
+BASE_DIR="/var/www/_bases/base_predict_fila5_mono"
 
 # Log file
 LOG_DIR="${BASE_DIR}/bashscripts/merge_conflicts/logs"

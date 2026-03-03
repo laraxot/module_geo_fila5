@@ -16,7 +16,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-WORK_DIR="/var/www/_bases/base_techplanner_fila3_mono/laravel"
+WORK_DIR="/var/www/_bases/base_techplanner_fila5_mono/laravel"
 cd "$WORK_DIR"
 
 echo -e "${BLUE}Directory di lavoro: ${WORK_DIR}${NC}"

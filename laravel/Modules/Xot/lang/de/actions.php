@@ -3,10 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'export_xls' => 'Daten exportieren',
-    'export_pdf' => [
-        'tooltip' => 'Als PDF exportieren',
-    ],
+    'export_xls' => 'Esporta Dati',
     'navigation' => [
         'label' => 'Missing Navigation Label',
         'plural_label' => 'Missing Navigation Plural Label',

@@ -70,7 +70,7 @@
 - Tutti i file Markdown sono ben formattati
 
 ### 3. **Controllo Path Aggiornati**
-- Tutti i path ora puntano a `/var/www/html/_bases/base_fixcity_fila4_mono`
+- Tutti i path ora puntano a `/var/www/html/_bases/base_fixcity_fila5_mono`
 - Rimosse referenze a progetti precedenti (ptvx, <nome progetto>)
 - Aggiornati i nomi dei progetti
 
