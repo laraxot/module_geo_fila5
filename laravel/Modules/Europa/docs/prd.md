@@ -1,108 +1,34 @@
-# Europa - Product Requirements Document (PRD)
+# PRD - Europa Module
 
-> **Version**: 1.0.0
-> **Last Updated**: 2026-03-03
-> **Status**: Approved
-> **Owner**: Europa Module Team
+## 1. Executive Summary
+The Europa module manages data and reporting requirements for European projects and certifications, focusing on compliance with EU regulations.
 
-## 1. Purpose & Vision
-The Europa module manages **European Union funded projects and grants** for the PTVX platform. It tracks project milestones, budgets, participants, and documentation, ensuring that EU funded activities meet the strict reporting and auditing requirements of European institutions.
+## 2. Target Personas
+- **Project Managers:** Track and manage European funding and projects.
+- **Compliance Officers:** Verify data against EU requirements.
+- **Auditors:** Review European project documentation.
 
-## 2. Problem Statement
-Managing EU projects is difficult because of:
-- Complex multi-partner budget tracking.
-- Strict requirement for time-reporting and evidence of activities.
-- Frequent audits requiring all documentation and participant lists.
-- Specific KPIs and milestones established at project start.
+## 3. Functional Requirements
+- Manage and track European funding data.
+- Generate specialized reports for EU projects.
+- Store European-specific documentation and certifications.
+- Ensure data privacy compliance for EU regulations.
 
-## 3. Target Users
-| User | Role | Needs |
-|------|------|-------|
-| **Project Manager** | EU Project Lead | Track progress, manage budget, coordinate partners. |
-| **Financial Officer** | Grant Admin | Verify expenses, generate financial statements. |
-| **Participant** | End User | Register for activities, submit time reports. |
-| **EU Auditor** | Auditor | Browse all documents and proof of work for a project. |
+## 4. Service Interface (The Contract)
+- **API Endpoints:**
+  - `GET /api/europa/projects`: List available European projects.
+  - `GET /api/europa/report/{project_id}`: Generate an EU report.
+- **Events:**
+  - `EuropaProjectUpdated`: Dispatched when project data changes.
 
-## 4. Scope
-### In Scope
-- EU Project entity and lifecycle management.
-- Budget allocation and tracking.
-- Milestone and task management.
-- Participant registration and attendance tracking.
-- Centralized document repository for grant evidence.
-- Reporting engine for EU templates.
+## 5. System Architecture & Dependencies
+- **Data Ownership:** Owns project data and EU certification records.
+- **Downstream Dependencies:** Depends on `User` and `Xot` modules.
 
-### Out of Scope
-- General external CRM features.
-- Actual bank transfers (delegated to finance systems).
+## 6. Non-Functional Requirements
+- **Security:** High-level encryption for international project data.
+- **Observability:** Logging of access to sensitive project data.
 
-## 5. Functional Requirements (Prioritized)
-
-### P0: Grant Compliance (Must-have)
-- **FR-001: Project Lifecycle Management**: Track EU projects through a state machine from "Draft" to "Completed".
-- **FR-002: Evidence Repository**: Centralized document storage linked to projects and tasks for auditing purposes.
-- **FR-005: Participant Tracking**: Record and manage participant lists and attendance for EU-funded activities.
-
-### P1: Financial Oversight (Important)
-- **FR-003: Milestone Monitoring**: Real-time tracking of deadlines and deliverables established in the Grant Agreement.
-- **FR-006: Budget Allocation**: Track budget items and expenses against grant-defined categories.
-
-### P2: Advanced Reporting (Nice-to-have)
-- **FR-004: Automated EU Reporting**: Generate financial and activity reports according to specific EU institution templates.
-- **FR-007: Partner Collaboration**: Portal for external project partners to submit evidence and reports.
-
-## 6. Non-Functional Requirements & Agnostic Design
-
-### Agnostic Design Principles
-- **Institution Agnosticism**: Europa MUST support various EU funding bodies (Erasmus+, Horizon, ESF) through configurable templates.
-- **Interoperability**: Integrates with `Media` for evidence storage and `Notify` for deadline alerts.
-- **Independent Tracking**: Project milestones and budgets are managed independently of the host organization's internal accounting.
-
-### Performance & Safety
-- **NFR-001: Auditability**: Full audit trail of every modification to project data or evidence.
-- **NFR-002: Persistence**: Long-term storage of evidence (10 years) guaranteed through media management.
-- **NFR-003: Type Safety**: 100% PHPStan Level 10 compliance.
-
-## 7. Technical Architecture
-### Dependencies
-- **Xot**: Base framework.
-- **Media**: For document management.
-- **Notify**: For milestone alerts.
-### Data Model
-- Projects, Milestones, Participants, Budget items.
-
-## 8. User Experience
-- Dedicated dashboard with project progress (e.g., progress bars, timeline).
-- Simple interface for participants to sign-in to events.
-
-## 9. Success Metrics & KPIs
-| Metric | Target | Measurement |
-|--------|--------|-------------|
-| Audit Failure Rate | 0% | Successful project closures. |
-| Milestone Adherence | > 95% | Ratio of on-time milestones. |
-| PHPStan Compliance | Level 10 | Static analysis. |
-
-## 10. Risks & Assumptions
-### Assumptions
-- Projects follow standard EU grant structures.
-- Users provide data in a timely manner.
-### Risks
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Missing evidence for audit | Critical | System alerts for tasks without attached documents. |
-| Budget overspend | High | Real-time budget tracking vs expenses. |
-
-## 11. Dependencies & Constraints
-- Must adhere to current EU General Financial Regulations.
-
-## 12. Release Plan
-### Phase 1: Core Tracking (Stable)
-- Project and milestone CRUD. ✅
-- Basic participant list. ✅
-- PHPStan Level 10 compliance. ✅
-### Phase 2: Financial Reporting (Planned)
-- Advanced budget tracking.
-- Automatic generation of EU financial reports.
-
-## 13. References
-- [roadmap.md](roadmap.md)
+## 7. Release Criteria
+- PHPStan Level 10 compliance.
+- Accurate reporting according to EU standards.

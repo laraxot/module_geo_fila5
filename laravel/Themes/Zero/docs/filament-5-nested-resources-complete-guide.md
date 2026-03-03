@@ -392,6 +392,26 @@ class CreateLesson extends CreateRecord
 }
 ```
 
+## 🧩 Integrazione con XotBaseManageRelatedRecords (Laraxot PTVX)
+
+Nel contesto PTVX, le pagine `ManageRelatedRecords` non sono pagine Filament “grezze”, ma estendono sempre la base Laraxot:
+
+```php
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
+
+class ManageCourseLessons extends XotBaseManageRelatedRecords
+{
+    protected static string $resource = CourseResource::class;
+    protected static string $relationship = 'lessons';
+}
+```
+
+- **Tabella**: è costruita da `HasXotTable`, con colonne e azioni standard Laraxot.
+- **UI/Theme**: il tema Zero può assumere una toolbar, layout e pulsanti coerenti per tutte le pagine di gestione record correlati.
+- **Best practice**: non usare `->label()` nelle colonne/azioni; le label arrivano dal sistema di traduzione modulare.
+
+Per dettagli completi sul pattern, vedere anche `../../../Modules/Xot/docs/filament/xotbase-manage-related-records.md`.
+
 ### **2. Pattern per la Validazione**
 
 ```php

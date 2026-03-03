@@ -54,6 +54,7 @@ Modules/IndennitaResponsabilita/tests/
 ### 🔄 In Progress
 - [ ] Test Coverage miglioramento
 - [ ] Refactoring page class
+- [ ] Migration to New Master-Detail pattern for related records (see [architecture/related-records-refactor.md](architecture/related-records-refactor.md))
 
 ### ❌ Pending
 - [ ] Analytics dashboard
