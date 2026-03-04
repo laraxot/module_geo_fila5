@@ -3,7 +3,8 @@
 
     <div>
 
-        <img src="{{ public_path('assets/ptv/img/logo.png') }}">
+        @include('ptv::pdf.header')
+        <br><br><br><br><br>
 
         <h4 style=""> OGGETTO: Individuazione del gruppo di lavoro relativo a {{ $project->oggetto }} </h4>
 
@@ -113,7 +114,7 @@
 
 <page>
 
-<h3> <strong> CALCOLO FONDO INCENTIVANTE {{ $project->tipo }}</strong> </h3>
+        <h3> <strong> CALCOLO FONDO INCENTIVANTE {{ $project->tipo }}</strong> </h3>
         <p class="text-sm"> In conformità con l'ex articolo 45, D.LGS 36/2023 e in applicazione del regolamento
             approvato il 23/08/24. Protocollo 43254/2024 </p>
 
@@ -124,30 +125,30 @@
                 <col style="width: 20%" />
 
                 <tr>
-                    <th>Macroattività</th>
-                    <th>%</th>
-                    <th>Importo</th>
+                    <th style="font-size: 16px; height: 30px">Macroattività</th>
+                    <th style="font-size: 16px; height: 30px">%</th>
+                    <th style="font-size: 16px; height: 30px">Importo</th>
                 </tr>
 
                 <tr class="h-10">
-                    <td>Importo dei lavori a base d'asta (art.5 comma 2).</td>
+                    <td style="font-size: 12px; height: 30px">Importo dei lavori a base d'asta (art.5 comma 2).</td>
                     <td>/</td>
-                    <td>{{ $project->importo_totale }} €</td>
+                    <td style="font-size: 12px; height: 30px">{{ $project->importo_totale }} €</td>
                 </tr>
                 <tr class="h-10">
-                    <td>Percentuale effettiva del fondo in base all'importo (art.5 comma 1).</td>
-                    <td>{{ $project->percentuale_fondo }}</td>
-                    <td>{{ $project->importo_effettivo_fondo }} €</td>
+                    <td style="font-size: 12px; height: 30px">Percentuale effettiva del fondo in base all'importo (art.5 comma 1).</td>
+                    <td style="font-size: 12px; height: 30px">{{ $project->percentuale_fondo }}</td>
+                    <td style="font-size: 12px; height: 30px">{{ $project->importo_effettivo_fondo }} €</td>
                 </tr>
                 <tr class="h-10">
-                    <td>Fondo per l'innovazione</td>
-                    <td>20</td>
-                    <td>{{ $project->componente_innovazione }} €</td>
+                    <td style="font-size: 12px; height: 30px">Fondo per l'innovazione</td>
+                    <td style="font-size: 12px; height: 30px">20</td>
+                    <td style="font-size: 12px; height: 30px">{{ $project->componente_innovazione }} €</td>
                 </tr>
                 <tr class="h-10">
-                    <td>Componente Incentivante (art.4 comma 2)</td>
-                    <td>80</td>
-                    <td>{{ $project->componente_incentivante }} €</td>
+                    <td style="font-size: 12px; height: 30px">Componente Incentivante (art.4 comma 2)</td>
+                    <td style="font-size: 12px; height: 30px">80</td>
+                    <td style="font-size: 12px; height: 30px">{{ $project->componente_incentivante }} €</td>
                 </tr>
 
             </table>
@@ -161,18 +162,18 @@
                 <col style="width: 12%" />
 
                 <tr>
-                    <th>Descrizione</th>
-                    <th>%</th>
-                    <th>Importo</th>
-                    <th>Anno competenza</th>
+                    <th style="font-size: 16px; height: 30px">Descrizione</th>
+                    <th style="font-size: 16px; height: 30px">%</th>
+                    <th style="font-size: 16px; height: 30px">Importo</th>
+                    <th style="font-size: 14px; height: 30px">Anno competenza</th>
                 </tr>
 
                  @foreach ($activities as $activity)
                     <tr class="h-10">
-                        <td>{{ $activity->nome }}</td>
-                        <td>{{ $activity->quota_percentuale }}</td>
-                        <td>{{ $activity->importo }} €</td>
-                        <td>{{ $activity->anno_competenza }}</td>
+                        <td style="font-size: 12px; height: 30px">{{ $activity->nome }}</td>
+                        <td style="font-size: 12px; height: 30px">{{ $activity->quota_percentuale }}</td>
+                        <td style="font-size: 12px; height: 30px">{{ $activity->importo }} €</td>
+                        <td style="font-size: 12px; height: 30px">{{ $activity->anno_competenza }}</td>
                     </tr>
                 @endforeach
 
@@ -189,34 +190,48 @@
 <h3> <strong> FASE AGGIUDICAZIONE </strong> </h3>
         <div class="pt-4">
             @foreach ($project->activities as $activity)
-                <h4><strong>{{ $activity->nome }}</strong></h4>
-                <table class="morpion" style="width:100%;border:1px solid gray;">
-                    
-                    <col style="width: 20%;font-size: 10px" class="col1" />
-                    <col style="width: 20%" />
-                    <col style="width: 20%" />
-                    <col style="width: 15%" />
-                    <col style="width: 20%" />
+                <h4>
+                    <strong>{{ $activity->nome }} </strong>
+                    @if ($activity->employees->count() == 0)
+                        (ATTIVITÀ NON SVOLTA)
+                    @endif
+                </h4>
 
-                    <tr class="h-10 text-left">
-                        <th>Matricola</th>
-                        <th class="pr-4">Cognome</th>
-                        <th class="pr-2">Nome</th>
-                        <th class="pr-2">Percentuale</th>
-                        <th>Importo</th>
-                    </tr>
+                @if ($activity->employees->count() !== 0)
+                    <table class="morpion" style="width:100%;border:1px solid gray;">
+                        
+                        <col style="width: 20%;font-size: 10px" class="col1" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                        <col style="width: 15%" />
+                        <col style="width: 20%" />
 
-                    @foreach ($activity->employees as $employee)
-                        <tr class="h-10">
-                            <td>{{ $employee->matricola }}</td>
-                            <td>{{ $employee->cognome }}</td>
-                            <td>{{ $employee->nome }}</td>
-                            <td>{{ $employee->pivot->percentuale_attivita_dipendente }} %</td>
-                            <td>{{ $employee->pivot->importo_attivita_dipendente }} €</td>
+                        <tr class="h-10 text-left">
+                            <th>Matricola</th>
+                            <th class="pr-4">Cognome</th>
+                            <th class="pr-2">Nome</th>
+                            <th class="pr-2">Percentuale</th>
+                            <th>Importo</th>
                         </tr>
-                    @endforeach
 
-                </table>
+                        @foreach ($activity->employees as $employee)
+                            <tr class="h-10">
+                                <td>
+                                    {{ $employee->matricola }} 
+                                    @if ($employee->tipologia === 'E')
+                                        (CONSULENTE ESTERNO)
+                                    @endif
+                                </td>
+                                <td>{{ $employee->cognome }}</td>
+                                <td>{{ $employee->nome }}</td>
+                                <td>{{ $employee->pivot->percentuale_attivita_dipendente }} %</td>
+                                <td>{{ $employee->pivot->importo_attivita_dipendente }} €</td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+                @endif
+
                 <br><br>
             @endforeach
         </div>
@@ -340,6 +355,8 @@
 
 </page> --}}
 
+
+<br><br><br><br>
 
 <p class="text-sm"> Treviso, {{ date('d-m-Y') }} </p>
 

@@ -257,6 +257,11 @@ return [
             'icon' => 'submit',
             'label' => 'submit',
         ],
+        'AttachEsternoAction' => [
+            'tooltip' => 'AttachEsternoAction',
+            'icon' => 'AttachEsternoAction',
+            'label' => 'AttachEsternoAction',
+        ],
     ],
     'messages' => [
         'validation' => [
