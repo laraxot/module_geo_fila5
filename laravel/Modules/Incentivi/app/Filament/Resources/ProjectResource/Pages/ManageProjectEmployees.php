@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Incentivi\Filament\Resources\ProjectResource\Pages;
 
 use Filament\Actions\DetachAction;
-use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\Summarizers\Summarizer;
@@ -13,11 +12,13 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Modules\Incentivi\Filament\Resources\ProjectResource;
+use Modules\Incentivi\Filament\Resources\ProjectResource\Actions\Table\AttachEsternoAction;
 use Modules\Incentivi\Filament\Resources\ProjectResource\Actions\Table\AttachGroupAction;
 use Modules\Incentivi\Filament\Resources\ProjectResource\Actions\Table\AttachSingleEmployeeAction;
 use Modules\Incentivi\Models\Activity;
 use Modules\Incentivi\Models\Employee;
 use Modules\Incentivi\Models\Project;
+use Modules\Xot\Filament\Resources\Pages\XotBaseManageRelatedRecords;
 use Override;
 
 class ManageProjectEmployees extends XotBaseManageRelatedRecords
@@ -60,6 +61,7 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
             // ...parent::getTableHeaderActions(),
             'AttachSingleEmployeeAction' => AttachSingleEmployeeAction::make('AttachSingleEmployeeAction'),
             'AttachGroupAction' => AttachGroupAction::make('AttachGroupAction'),
+            'AttachEsternoAction' => AttachEsternoAction::make('AttachEsternoAction'),
         ];
     }
 

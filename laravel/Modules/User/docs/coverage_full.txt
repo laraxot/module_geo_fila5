@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_pulrCF
 
    FAIL  Modules\User\tests\Feature\AuthComponentsTest
   ⨯ Auth Components Tests → auth components exist and work correctly     0.41s  
@@ -13049,3 +13050,5 @@ Database connection [ptvx] not configured.
   Tests:    321 failed, 2 risky, 4 skipped, 413 passed (1126 assertions)
   Duration: 170.56s
 
+=======
+>>>>>>> .merge_file_wkFJqg

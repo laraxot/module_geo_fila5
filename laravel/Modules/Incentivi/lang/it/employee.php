@@ -333,6 +333,8 @@ return [
         ],
         'createAnother' => [
             'tooltip' => 'createAnother',
+            'label' => 'createAnother',
+            'icon' => 'createAnother',
         ],
         'AttachActivityEmployeeAction' => [
             'tooltip' => 'AttachActivityEmployeeAction',
