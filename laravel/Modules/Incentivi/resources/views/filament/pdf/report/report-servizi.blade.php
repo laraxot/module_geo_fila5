@@ -196,38 +196,42 @@
                         (ATTIVITÀ NON SVOLTA)
                     @endif
                 </h4>
-                <table class="morpion" style="width:100%;border:1px solid gray;">
-                    
-                    <col style="width: 20%;font-size: 10px" class="col1" />
-                    <col style="width: 20%" />
-                    <col style="width: 20%" />
-                    <col style="width: 15%" />
-                    <col style="width: 20%" />
 
-                    <tr class="h-10 text-left">
-                        <th>Matricola</th>
-                        <th class="pr-4">Cognome</th>
-                        <th class="pr-2">Nome</th>
-                        <th class="pr-2">Percentuale</th>
-                        <th>Importo</th>
-                    </tr>
+                @if ($activity->employees->count() !== 0)
+                    <table class="morpion" style="width:100%;border:1px solid gray;">
+                        
+                        <col style="width: 20%;font-size: 10px" class="col1" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                        <col style="width: 15%" />
+                        <col style="width: 20%" />
 
-                    @foreach ($activity->employees as $employee)
-                        <tr class="h-10">
-                            <td>
-                                {{ $employee->matricola }} 
-                                @if ($employee->tipologia === 'E')
-                                    (CONSULENTE ESTERNO)
-                                @endif
-                            </td>
-                            <td>{{ $employee->cognome }}</td>
-                            <td>{{ $employee->nome }}</td>
-                            <td>{{ $employee->pivot->percentuale_attivita_dipendente }} %</td>
-                            <td>{{ $employee->pivot->importo_attivita_dipendente }} €</td>
+                        <tr class="h-10 text-left">
+                            <th>Matricola</th>
+                            <th class="pr-4">Cognome</th>
+                            <th class="pr-2">Nome</th>
+                            <th class="pr-2">Percentuale</th>
+                            <th>Importo</th>
                         </tr>
-                    @endforeach
 
-                </table>
+                        @foreach ($activity->employees as $employee)
+                            <tr class="h-10">
+                                <td>
+                                    {{ $employee->matricola }} 
+                                    @if ($employee->tipologia === 'E')
+                                        (CONSULENTE ESTERNO)
+                                    @endif
+                                </td>
+                                <td>{{ $employee->cognome }}</td>
+                                <td>{{ $employee->nome }}</td>
+                                <td>{{ $employee->pivot->percentuale_attivita_dipendente }} %</td>
+                                <td>{{ $employee->pivot->importo_attivita_dipendente }} €</td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+                @endif
+                
                 <br><br>
             @endforeach
         </div>
