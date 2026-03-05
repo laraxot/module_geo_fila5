@@ -35,7 +35,7 @@ it('executes without throwing error for basic call', function (): void {
     $result = $action->execute('Test Address');
 
     // Depending on configured services it may return null or a valid AddressData.
-    if ($result !== null) {
+    if (null !== $result) {
         expect($result)->toBeInstanceOf(Modules\Geo\Datas\AddressData::class);
     }
 
