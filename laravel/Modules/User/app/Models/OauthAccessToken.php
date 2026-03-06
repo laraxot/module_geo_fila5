@@ -59,7 +59,6 @@ use Modules\Xot\Contracts\UserContract;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
  *                                                                                                                   >>>>>>> da38c10 (.)
  * @method static \Modules\User\Database\Factories\OauthAccessTokenFactory       factory($count = null, $state = [])
-
  *
  * @mixin \Eloquent
  */

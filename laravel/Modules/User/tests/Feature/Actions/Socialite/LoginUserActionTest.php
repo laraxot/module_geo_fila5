@@ -120,7 +120,6 @@ describe('LoginUserAction', function (): void {
         $response = app(LoginUserAction::class)->execute($socialiteUser);
 
         expect($response)->toBeInstanceOf(RedirectResponse::class);
-
     });
 
     test('handles null user assertion gracefully', function (): void {
