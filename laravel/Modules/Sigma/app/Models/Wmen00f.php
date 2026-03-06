@@ -137,7 +137,7 @@ class Wmen00f extends Model
     /**
      * Parse mndata attribute to Carbon instance.
      */
-    protected function getMndataAttribute(string|Carbon|null $value): Carbon
+    protected function getMndataAttribute(mixed $value): Carbon
     {
         if ($value === null) {
             return now();
@@ -147,13 +147,17 @@ class Wmen00f extends Model
             return Date::parse($value);
         }
 
-        return $value;
+        if ($value instanceof Carbon) {
+            return $value;
+        }
+
+        return now();
     }
 
     /**
      * Build Carbon time from raw HHmm string combined with mndata date.
      */
-    protected function getMnoratAttribute(Carbon|string|null $value): Carbon
+    protected function getMnoratAttribute(mixed $value): Carbon
     {
         if ($value === null) {
             return now();
@@ -169,7 +173,11 @@ class Wmen00f extends Model
             return Date::parse($dateStr.' '.$hh.':'.$mm);
         }
 
-        return $value;
+        if ($value instanceof Carbon) {
+            return $value;
+        }
+
+        return now();
     }
 
     /**
