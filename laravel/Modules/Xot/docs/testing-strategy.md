@@ -151,6 +151,7 @@ DB_PORT=3306
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 DB_DATABASE=<nome progetto>_data_test
 =======
 DB_DATABASE=laravelpizza_data_test
@@ -161,6 +162,9 @@ DB_DATABASE=<nome progetto>_data_test
 =======
 DB_DATABASE=laravelpizza_data_test
 >>>>>>> a038b0f2 (.)
+=======
+DB_DATABASE=<nome progetto>_data_test
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 DB_USERNAME=root
 DB_PASSWORD=
 ```
