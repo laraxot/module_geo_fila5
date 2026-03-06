@@ -120,15 +120,6 @@ describe('LoginUserAction', function (): void {
         $response = app(LoginUserAction::class)->execute($socialiteUser);
 
         expect($response)->toBeInstanceOf(RedirectResponse::class);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        expect($response->getTargetUrl())->toContain('<nome progetto>');
-=======
-        expect($response->getTargetUrl())->toContain('laravelpizza');
->>>>>>> a038b0f2 (.)
-=======
-        expect($response->getTargetUrl())->toContain('<nome progetto>');
->>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
     });
 
     test('handles null user assertion gracefully', function (): void {
