@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< .merge_file_pulrCF
 
    FAIL  Modules\User\tests\Feature\AuthComponentsTest
@@ -13052,3 +13053,5 @@ Database connection [ptvx] not configured.
 
 =======
 >>>>>>> .merge_file_wkFJqg
+=======
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)

@@ -25,7 +25,7 @@ PROCESSED_FILES=0
 SKIPPED_FILES=0
 
 # Directory di lavoro
-WORK_DIR="/var/www/_bases/base_techplanner_fila5_mono/laravel"
+WORK_DIR="/var/www/_bases/base_<nome progetto>_fila5_mono/laravel"
 
 echo -e "${BLUE}Directory di lavoro: ${WORK_DIR}${NC}"
 echo ""

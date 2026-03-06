@@ -31,7 +31,7 @@
 
 ### 1. Missing README.md (CRITICAL - Fix Today)
 
-**Location**: `/var/www/_bases/base_laravelpizza/laravel/Modules/Seo/`
+**Location**: `/var/www/_bases/base_<nome progetto>/laravel/Modules/Seo/`
 
 **Issue**: README.md file completely missing
 
@@ -45,7 +45,7 @@
 
 ### 2. No Test Suite (CRITICAL - Fix This Week)
 
-**Location**: `/var/www/_bases/base_laravelpizza/laravel/Modules/Seo/tests/`
+**Location**: `/var/www/_bases/base_<nome progetto>/laravel/Modules/Seo/tests/`
 
 **Issue**: Only .gitkeep files exist, no actual tests
 

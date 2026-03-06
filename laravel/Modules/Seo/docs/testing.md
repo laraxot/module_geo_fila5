@@ -186,7 +186,7 @@ protected function createApplication()
         'database.connections.seo.database' => 'app_data_test',
 =======
         'database.connections.seo.database' => 'ptvx_data_test',
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_s1xQlq
     ]);
     

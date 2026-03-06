@@ -161,7 +161,7 @@ Script bash per risolvere automaticamente i conflitti Git rimanenti:
 
 1. **Eseguire lo script di automazione**:
    ```bash
-   cd /var/www/_bases/base_techplanner_fila5_mono/bashscripts
+   cd /var/www/_bases/base_<nome progetto>_fila5_mono/bashscripts
    ./scripts/fix_git_conflicts.sh
    ```
 

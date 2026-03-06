@@ -25,7 +25,7 @@ PROCESSED_FILES=0
 SKIPPED_FILES=0
 COMPLEX_CONFLICTS=0
 
-WORK_DIR="/var/www/_bases/base_techplanner_fila5_mono/laravel"
+WORK_DIR="/var/www/_bases/base_<nome progetto>_fila5_mono/laravel"
 
 # Funzione per processare conflitti complessi
 process_complex_file() {

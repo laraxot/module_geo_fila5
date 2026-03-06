@@ -32,9 +32,9 @@ XotBaseResource Classes Form Schema Check
 
 ❌ 3 classes missing getFormSchema method:
 
-- UserResource in /var/www/html/base_techplanner_fila5/laravel/Modules/User/Http/Resources/UserResource.php
-- ProfileResource in /var/www/html/base_techplanner_fila5/laravel/Modules/Profile/Http/Resources/ProfileResource.php
-- EventResource in /var/www/html/base_techplanner_fila5/laravel/Modules/Event/Http/Resources/EventResource.php
+- UserResource in /var/www/html/base_<nome progetto>_fila5/laravel/Modules/User/Http/Resources/UserResource.php
+- ProfileResource in /var/www/html/base_<nome progetto>_fila5/laravel/Modules/Profile/Http/Resources/ProfileResource.php
+- EventResource in /var/www/html/base_<nome progetto>_fila5/laravel/Modules/Event/Http/Resources/EventResource.php
 ```
 
 ### Risoluzione Conflitti Applicata

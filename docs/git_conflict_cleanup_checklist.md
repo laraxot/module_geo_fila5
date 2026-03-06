@@ -19,39 +19,39 @@ Questo file contiene l'elenco di tutti i file che contengono marcatori di confli
 ## File con conflitti Git da risolvere
 
 ### Bashscripts - Utils
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/utils/scripts_conflict_resolution.md` (linea 390)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/utils/resolve_conflicts.sh` (linea 48, 109) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/utils/scripts_conflict_resolution.md` (linea 390)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/utils/resolve_conflicts.sh` (linea 48, 109) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
 
 ### Bashscripts - Quality Assurance  
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/quality-assurance/code_quality.md` (linee 227, 286, 293)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/quality-assurance/code_quality.md` (linee 227, 286, 293)
 
 ### Bashscripts - Git Management
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git-management/git_conflicts_resolution.md` (linea 165)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git-management/git_scripts.md` (linee 180, 230, 232)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git-management/resolve_git_conflict.sh` (linea 53) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git-management/git_subtree_conflicts.md` (linee 646, 779, 781)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git-management/git_conflicts_resolution.md` (linea 165)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git-management/git_scripts.md` (linee 180, 230, 232)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git-management/resolve_git_conflict.sh` (linea 53) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git-management/git_subtree_conflicts.md` (linee 646, 779, 781)
 
 ### Bashscripts - Root Level
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/resolve_git_conflict.sh` (linea 53) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/resolve_git_conflict.sh` (linea 53) - *Nota: contiene riferimenti a marcatori, potrebbe essere codice valido*
 
 ### Bashscripts - Git Folder
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git/git_subtree_conflicts.md` (linee 646, 779, 781)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git/git_scripts.md` (linee 180, 230, 232)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/git/git_conflicts_resolution.md` (linea 165)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git/git_subtree_conflicts.md` (linee 646, 779, 781)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git/git_scripts.md` (linee 180, 230, 232)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/git/git_conflicts_resolution.md` (linea 165)
 
 ### Bashscripts - Docs Folder
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/git_conflicts_resolution.md` (linea 165)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/git_scripts.md` (linee 180, 230, 232)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/config_file_conflicts.md` (linee 440, 541, 548)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/files_configuration.md` (linee 397, 478, 480)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/code_quality.md` (linee 227, 286, 293)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/git_subtree_conflicts.md` (linee 646, 779, 781)
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs/scripts_conflict_resolution.md` (linea 390)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/git_conflicts_resolution.md` (linea 165)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/git_scripts.md` (linee 180, 230, 232)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/config_file_conflicts.md` (linee 440, 541, 548)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/files_configuration.md` (linee 397, 478, 480)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/code_quality.md` (linee 227, 286, 293)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/git_subtree_conflicts.md` (linee 646, 779, 781)
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs/scripts_conflict_resolution.md` (linea 390)
 
 ### Laravel - Modules
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Notify/docs/send_email_translation_fix.md` (linea 6) - *Nota: contiene riferimenti a marcatori, potrebbe essere documentazione*
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Media/docs/phpstan_level10_fixes.md` (linea 86) - *Nota: contiene riferimenti a marcatori, potrebbe essere documentazione*
-- [ ] `/var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php` (linee 115, 123) - **PRIORITÀ ALTA: File PHP con conflitti**
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Notify/docs/send_email_translation_fix.md` (linea 6) - *Nota: contiene riferimenti a marcatori, potrebbe essere documentazione*
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Media/docs/phpstan_level10_fixes.md` (linea 86) - *Nota: contiene riferimenti a marcatori, potrebbe essere documentazione*
+- [ ] `/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php` (linee 115, 123) - **PRIORITÀ ALTA: File PHP con conflitti**
 
 ## Statistiche
 - **Totale file**: 23 file unici

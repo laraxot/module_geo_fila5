@@ -20,7 +20,7 @@ Avoid ad-hoc layouts. Use the following structure:
 - **Mailable**: The Mailable class controls the layout and view via `DetermineSeasonalContentViewPathAction`.
 
 ## Content Management (JSON-Driven)
-- Create `.json` files in `config/local/laravelpizza/database/content/pages/` to define new content pages.
+- Create `.json` files in `config/local/<nome progetto>/database/content/pages/` to define new content pages.
 - Avoid creating new Blade files for simple content; use the generic `[slug].blade.php` with the `x-page` component.
 
 ## Frontend Assets

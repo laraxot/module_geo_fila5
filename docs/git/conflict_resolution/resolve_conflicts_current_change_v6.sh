@@ -30,7 +30,7 @@ readonly BOLD='\033[1m'
 readonly NC='\033[0m' # No Color
 
 # Directory di base
-readonly BASE_DIR="/var/www/_bases/base_techplanner_fila5_mono"
+readonly BASE_DIR="/var/www/_bases/base_<nome progetto>_fila5_mono"
 readonly SCRIPT_DIR="${BASE_DIR}/bashscripts"
 
 # Configurazione

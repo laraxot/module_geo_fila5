@@ -4,7 +4,7 @@
 # CRITICAL RULE: In docs directories, only README.md can have uppercase letters
 # All other files and folders must be lowercase
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 RENAMED_COUNT=0
 SKIPPED_COUNT=0
 ERROR_COUNT=0

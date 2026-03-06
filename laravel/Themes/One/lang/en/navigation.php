@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     'main' => 'Main navigation',
-    'site_title' => 'TechPlanner',
+    'site_title' => '<nome progetto>',
     'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contact',

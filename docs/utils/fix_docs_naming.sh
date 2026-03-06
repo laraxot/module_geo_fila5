@@ -53,7 +53,7 @@ process_directory() {
 echo "🔍 Finding all docs directories..."
 
 # Trova tutte le cartelle docs
-docs_dirs=$(find /var/www/html/_bases/base_techplanner_fila5_mono -type d -name "docs" 2>/dev/null | grep -v vendor | grep -v node_modules)
+docs_dirs=$(find /var/www/html/_bases/base_<nome progetto>_fila5_mono -type d -name "docs" 2>/dev/null | grep -v vendor | grep -v node_modules)
 
 # Processa ogni directory
 for dir in $docs_dirs; do

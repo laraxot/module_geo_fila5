@@ -40,7 +40,7 @@
 | 9 | **ExternalProject** | 13 | 0 | 10 | ✨ Illuminato |
 =======
 | 9 | **ModuloEsempio** | 13 | 0 | 10 | ✨ Illuminato |
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_kf6vny
 
 ### 📈 Metriche dell'Illuminazione
@@ -99,7 +99,7 @@ Codice perfetto
 **Moduli**: Cms, ExternalProject
 =======
 **Moduli**: Cms, ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_kf6vny
 
 **Insegnamento**:
@@ -140,7 +140,7 @@ if (is_array($value)) { /* ... */ }  // Dopo filter che garantisce array
 **Modulo**: ExternalProject
 =======
 **Modulo**: ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_kf6vny
 
 **Insegnamento**:
@@ -261,7 +261,7 @@ Level 10 → 🏔️ Nirvana
             └─ Job, ExternalProject
 =======
             └─ Job, ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_kf6vny
 
 Level 9  → ⛰️  Illuminazione
@@ -294,7 +294,7 @@ Level 0  → 🏕️  Campo Base
 2. **`Modules/ExternalProject/docs/phpstan-enlightenment.md`**
 =======
 2. **`Modules/ModuloEsempio/docs/phpstan-enlightenment.md`**
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_kf6vny
    - Filosofia del modulo
    - I 4 Pilastri

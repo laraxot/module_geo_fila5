@@ -400,7 +400,7 @@ Sanitize chart data in theme views:
 **Non usare questo approccio.** La soluzione corretta è **3 widget separati** nella griglia della pagina Filament.
 
 - [Anti-Pattern completo](../../Modules/docs/anti-pattern-question-chart-answers-triple-widget.md)
-- [Anti-Pattern Quaeris](../../Modules/Quaeris/docs/anti-pattern-triple-chart-widget.md)
+- [Anti-Pattern <nome progetto>](../../Modules/<nome progetto>/docs/anti-pattern-triple-chart-widget.md)
 
 ## Testing the Integration
 
