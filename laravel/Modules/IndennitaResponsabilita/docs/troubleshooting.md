@@ -1,5 +1,12 @@
 # Troubleshooting - Modulo IndennitaResponsabilita
 
+## Fatal Error Filament su `$record` (InteractsWithRecord)
+
+- Sintomo: errore fatale "define the same property ($record) ... definition differs and is considered incompatible".
+- Causa: la pagina ridefinisce `$record` gia dichiarata dalla trait Filament `InteractsWithRecord`.
+- Fix: rimuovere la proprieta duplicata e usare getter tipizzato.
+- Dettagli: [Filament `InteractsWithRecord` - Conflitto su proprieta `$record`](./filament-interactswithrecord-record-conflict.md)
+
 ## Errori Comuni PHPStan
 
 ### 1. Constructor Return Types

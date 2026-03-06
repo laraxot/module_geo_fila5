@@ -58,11 +58,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     public ?string $previousUrl = null;
 
     /**
-     * The current record - public for Blade view access.
-     */
-    public IndennitaResponsabilita|null $record = null;
-
-    /**
      * Form data holder.
      *
      * @var array<string, mixed>
@@ -98,7 +93,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     public function getSpecificRecord(): IndennitaResponsabilita
     {
-        $record = $this->record;
+        $record = $this->getRecord();
         if (! $record instanceof IndennitaResponsabilita) {
             throw new LogicException('Record must be an instance of IndennitaResponsabilita.');
         }
@@ -113,21 +108,23 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     protected function fillFormWithInitialData(): void
     {
         $record = $this->getSpecificRecord();
+        /** @var array<string, mixed> $data */
         $data = $record->load('ratings')->attributesToArray();
         $data['ratings'] = [];
-        if(Carbon::parse($data['dal'])->year != $record->anno){
+        $dal = $data['dal'] ?? null;
+        if (Carbon::parse(is_scalar($dal) ? (string) $dal : null)->year !== $record->anno) {
             $data['dal'] = Carbon::parse($record->anno.'-01-01');
         }
-        if(Carbon::parse($data['al'])->year != $record->anno){
+        $al = $data['al'] ?? null;
+        if (Carbon::parse(is_scalar($al) ? (string) $al : null)->year !== $record->anno) {
             $data['al'] = Carbon::parse($record->anno.'-12-31');
         }
         /** @var array<int|string, mixed> $ratings */
         $ratings = $record->ratings->pluck('pivot.value', 'id')->toArray();
         foreach ($ratings as $id => $value) {
-            /** @var int|string $id */
-            $data['ratings'][$id]['pivot']['value'] = $value;
+            $data['ratings'][(string) $id]['pivot']['value'] = $value;
         }
-        $this->data=$data;
+        $this->data = $data;
         // Solo campi editabili, le informazioni generali sono visualizzate via Infolist
         $this->form->fill($data);
         
@@ -194,7 +191,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     protected function getRatingsSchema(): array
     {
-        $ratings = $this->record->ratings;
+        $ratings = $this->getSpecificRecord()->ratings;
         /** @var Collection<int, Rating> $readonlyFields */
         $readonlyFields = $ratings->where('is_readonly', true);
 
@@ -271,7 +268,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
             $fieldname = 'ratings.'.$rf->id.'.pivot.value';
             if (method_exists($this, $method)) {
                 $res=$this->$method($get, $readonlyFields);
-                Arr::set($this->data, $fieldname, $res);
                 $set($fieldname, $res);
             }
         }
@@ -285,7 +281,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
         /** @var array<int|string, array{pivot: array{value: mixed}}> $ratings */
         $ratings = (array) ($get('ratings') ?? []);
         $tot = 0;
-        $ratings_rows = $this->record->ratings;
+        $ratings_rows = $this->getSpecificRecord()->ratings;
         /** @var Collection<int, Rating> $readonlyFields */
         $valueFields = $ratings_rows->where('is_readonly', false);
         foreach ($valueFields as $valueField) {
