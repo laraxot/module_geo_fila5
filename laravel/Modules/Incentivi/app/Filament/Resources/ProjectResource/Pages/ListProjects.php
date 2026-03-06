@@ -85,4 +85,10 @@ class ListProjects extends XotBaseListRecords
             // 'log' => ListLogActivitiesAction::make(),
         ];
     }
+
+    #[Override]
+    public function getHeaderActions(): array
+    {        
+        return [];
+    }
 }
