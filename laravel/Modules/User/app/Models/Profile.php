@@ -174,6 +174,18 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @method static Builder<static>|Profile whereStreetNumberShort($value)
  * @method static Builder<static>|Profile whereTimezone($value)
  *
+ * @property string|null $type
+ * @property string|null $birth_date
+ * @property string|null $gender
+ * @property bool        $is_active
+ *
+ * @method static Builder<static>|Profile whereBirthDate($value)
+ * @method static Builder<static>|Profile whereExtra($value)
+ * @method static Builder<static>|Profile whereGender($value)
+ * @method static Builder<static>|Profile whereIsActive($value)
+ * @method static Builder<static>|Profile whereType($value)
+ * @method static Builder<static>|Profile whereUserName($value)
+ *
  * @mixin \Eloquent
  */
 class Profile extends BaseProfile implements HasMedia

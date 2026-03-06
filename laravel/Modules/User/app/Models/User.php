@@ -145,6 +145,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|User whereTwoFactorRecoveryCodes($value)
  * @method static Builder<static>|User whereTwoFactorSecret($value)
  *
+ * @property string|null $uuid
+ *
+ * @method static Builder<static>|User whereUuid($value)
+ *
  * @mixin \Eloquent
  */
 class User extends BaseUser

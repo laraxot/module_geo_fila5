@@ -83,6 +83,7 @@ class GetPdfContentByRecordActionTest extends TestCase
         // Arrange - Create a mock model with performance fields
         $record = new class extends Model {
             protected $table = 'test_performance';
+
             protected $fillable = ['id', 'matr', 'cognome', 'nome'];
 
             public function getKey()

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Gdpr\Tests\Feature;
+uses(Modules\Gdpr\Tests\TestCase::class);
 
 it('can render registration page', function (): void {
     $response = $this->get('/en/auth/register');

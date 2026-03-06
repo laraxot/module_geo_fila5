@@ -1,9 +1,9 @@
 # PHPStan Code Quality Guide - Laraxot
 
-**Ultimo aggiornamento**: [DATE]
+**
 **Principi**: DRY + KISS + SOLID + Robust
 **Stack**: Laravel 12 + Filament 4 + PHP 8.3 + Laraxot
-**Ultimo aggiornamento**: [DATE]  
+**
 **Principi**: DRY + KISS + SOLID + Robust  
 **Stack**: Laravel 12 + Filament 4 + PHP 8.3 + Laraxot  
 **Obiettivo**: 0 errori PHPStan Level 10 + Complexity < 10 + Quality > 80%
@@ -44,7 +44,7 @@
 - **Complexity target**: Ogni metodo < 10 cyclomatic complexity
 - **Function length**: Ogni metodo < 20 righe (target), max 50 righe
 - **Workflow modulo per modulo**: Lavora un modulo alla volta, completa tutti gli errori, poi passa al successivo
-- **Mixed solo come ultima spiaggia**: Evita `mixed` quando possibile - usa union types, type narrowing, generics
+- **Mixed solo come ultima spiaggia**: Usare `mixed` SOLO come ultima spiaggia. Preferire union types, generics, interfacce, type narrowing. Regola: `.cursor/rules/mixed-type-last-resort.mdc`
 - **Contracts**: Se errori nei contracts, probabilmente è il contratto da cambiare (soprattutto con trait vendor)
 - **NO Controller**: Backoffice = Filament, Frontoffice = Folio + Volt
 - **NO Services**: Usa Spatie Queueable Actions

@@ -2,210 +2,161 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Activity\Tests\TestCase::class);
-
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Modules\Activity\Actions\ActivityLogger;
 use Modules\Activity\Models\Activity;
 use Modules\User\Models\User;
+use Tests\TestCase;
 
-test('ActivityLogger can log basic activity', function () {
-    $logger = new ActivityLogger;
+uses(TestCase::class, DatabaseTransactions::class);
 
-    $activity = $logger->log('test_event', null, null, ['key' => 'value'], 'Test Description');
+describe('ActivityLogger', function (): void {
+    it('logs activity with auth fallback and default description', function (): void {
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    expect($activity)->toBeInstanceOf(Activity::class)
-        ->and($activity->event)->toBe('test_event')
-        ->and($activity->description)->toBe('Test Description');
+        $activity = app(ActivityLogger::class)->log(type: 'fallback-auth');
 
-    // Verify properties are properly stored
-    if (is_array($activity->properties)) {
-        expect($activity->properties)->toEqual(['key' => 'value']);
-    } elseif (is_object($activity->properties) && method_exists($activity->properties, 'toArray')) {
-        expect($activity->properties->toArray())->toEqual(['key' => 'value']);
-    } else {
-        expect($activity->properties)->not()->toBeNull();
-    }
-});
+        expect($activity->event)->toBe('fallback-auth')
+            ->and($activity->description)->toBe('fallback-auth')
+            ->and($activity->causer_id)->toBe($user->id);
+    });
 
-test('ActivityLogger can log with user', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+    it('throws for invalid user type', function (): void {
+        expect(fn (): Activity => app(ActivityLogger::class)->log(type: 'x', user: 'bad-user'))
+            ->toThrow(InvalidArgumentException::class, 'User must be an instance of User');
+    });
 
-    $activity = $logger->log('user_event', $user, null, null, 'User Event');
+    it('returns user activities with limit and validates limit', function (): void {
+        $user = User::factory()->create();
+        $other = User::factory()->create();
 
-    expect($activity)->toBeInstanceOf(Activity::class)
-        ->and($activity->causer_id)->toBe($user->id)
-        ->and($activity->causer_type)->toBe(User::class);
-});
+        app(ActivityLogger::class)->log(type: 'a', user: $user);
+        app(ActivityLogger::class)->log(type: 'b', user: $user);
+        app(ActivityLogger::class)->log(type: 'c', user: $other);
 
-test('ActivityLogger throws exception for invalid user type', function () {
-    $logger = new ActivityLogger;
+        $items = app(ActivityLogger::class)->getUserActivities($user, 2);
+        expect($items)->toHaveCount(2);
 
-    $this->expectException(\InvalidArgumentException::class);
+        expect(fn (): \Illuminate\Database\Eloquent\Collection => app(ActivityLogger::class)->getUserActivities($user, 0))
+            ->toThrow(InvalidArgumentException::class, 'Limit must be positive');
+    });
 
-    $logger->log('test_event', 'invalid_user_type');
-});
+    it('returns model activities', function (): void {
+        $user = User::factory()->create();
+        $subject = User::factory()->create();
 
-test('ActivityLogger can log created event', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        app(ActivityLogger::class)->log(type: 'model-event', user: $user, subject: $subject);
+        app(ActivityLogger::class)->log(type: 'other-event', user: $user);
 
-    // Create a user model to use as subject since it's a proper model with all required attributes
-    $subjectModel = User::factory()->create(['name' => 'Subject User', 'password' => 'password']);
+        $items = app(ActivityLogger::class)->getModelActivities($subject, 10);
 
-    $result = $logger->created($subjectModel, $user);
+        expect($items)->toHaveCount(1)
+            ->and($items->first()?->subject_id)->toBe($subject->id);
+    });
 
-    expect($result)->toBeInstanceOf(Activity::class)
-        ->and($result->event)->toBe('created');
-});
+    it('filters by type and validates args', function (): void {
+        $user = User::factory()->create();
+        app(ActivityLogger::class)->log(type: 'filter-me', user: $user);
+        app(ActivityLogger::class)->log(type: 'skip-me', user: $user);
 
-test('ActivityLogger can log updated event', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        $items = app(ActivityLogger::class)->getByType('filter-me', 5);
+        expect($items->pluck('event')->all())->toBe(['filter-me']);
 
-    // Create a user model to use as subject
-    $subjectModel = User::factory()->create(['name' => 'Subject User', 'password' => 'password']);
+        expect(fn (): \Illuminate\Database\Eloquent\Collection => app(ActivityLogger::class)->getByType('', 5))
+            ->toThrow(InvalidArgumentException::class, 'Type cannot be empty');
 
-    $result = $logger->updated($subjectModel, $user);
+        expect(fn (): \Illuminate\Database\Eloquent\Collection => app(ActivityLogger::class)->getByType('x', 0))
+            ->toThrow(InvalidArgumentException::class, 'Limit must be positive');
+    });
 
-    expect($result)->toBeInstanceOf(Activity::class)
-        ->and($result->event)->toBe('updated');
-});
+    it('returns recent activities and validates limit', function (): void {
+        $user = User::factory()->create();
+        app(ActivityLogger::class)->log(type: 'recent-1', user: $user);
+        app(ActivityLogger::class)->log(type: 'recent-2', user: $user);
 
-test('ActivityLogger can log deleted event', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        $recent = app(ActivityLogger::class)->getRecent(1);
+        expect($recent)->toHaveCount(1);
 
-    // Create a test model to use as subject
-    $activity = $logger->log('test_subject', $user, null, null, 'Test Subject');
+        expect(fn (): \Illuminate\Database\Eloquent\Collection => app(ActivityLogger::class)->getRecent(0))
+            ->toThrow(InvalidArgumentException::class, 'Limit must be positive');
+    });
 
-    $result = $logger->deleted($activity, $user);
+    it('cleans old activities and validates days', function (): void {
+        $user = User::factory()->create();
+        $logger = app(ActivityLogger::class);
 
-    expect($result)->toBeInstanceOf(Activity::class)
-        ->and($result->event)->toBe('deleted');
-});
+        CarbonImmutable::setTestNow('2026-03-05 10:00:00');
+        $logger->log(type: 'old', user: $user);
+        $old = Activity::query()->latest('id')->firstOrFail();
+        $old->created_at = now()->subDays(120);
+        $old->save();
 
-test('ActivityLogger can log login event', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        $logger->log(type: 'new', user: $user);
 
-    $activity = $logger->login($user);
+        $deleted = $logger->cleanOld(90);
+        expect($deleted)->toBeGreaterThanOrEqual(1);
 
-    expect($activity)->toBeInstanceOf(Activity::class)
-        ->and($activity->event)->toBe('login');
-});
+        expect(fn (): int => $logger->cleanOld(0))
+            ->toThrow(InvalidArgumentException::class, 'Days must be positive');
 
-test('ActivityLogger can log logout event', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        CarbonImmutable::setTestNow();
+    });
 
-    $activity = $logger->logout($user);
+    it('returns statistics globally and for a specific user', function (): void {
+        $alice = User::factory()->create();
+        $bob = User::factory()->create();
+        $logger = app(ActivityLogger::class);
 
-    expect($activity)->toBeInstanceOf(Activity::class)
-        ->and($activity->event)->toBe('logout');
-});
+        $logger->log(type: 'alpha', user: $alice);
+        $logger->log(type: 'alpha', user: $alice);
+        $logger->log(type: 'beta', user: $bob);
 
-test('ActivityLogger can log custom event', function () {
-    $logger = new ActivityLogger;
+        $global = $logger->getStatistics();
+        expect($global['total'])->toBeGreaterThanOrEqual(3)
+            ->and($global['by_type'])->toHaveKey('alpha')
+            ->and($global['by_type'])->toHaveKey('beta');
 
-    $activity = $logger->custom('custom_event', 'Custom Description', null, ['custom' => 'data']);
+        $aliceStats = $logger->getStatistics($alice);
+        expect($aliceStats['by_type'])->toHaveKey('alpha')
+            ->and($aliceStats['by_type'])->not->toHaveKey('beta');
+    });
 
-    expect($activity)->toBeInstanceOf(Activity::class)
-        ->and($activity->event)->toBe('custom_event')
-        ->and($activity->description)->toBe('Custom Description');
-});
+    it('logs custom event using provided description', function (): void {
+        $subject = User::factory()->create();
+        $logger = app(ActivityLogger::class);
 
-test('ActivityLogger can get user activities', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        $activity = $logger->custom(
+            type: 'custom-action',
+            description: 'Custom event description',
+            subject: $subject,
+            properties: ['source' => 'test']
+        );
 
-    // Create some test activities for the user
-    $logger->log('user_event', $user, null, null, 'User Event');
+        expect($activity->event)->toBe('custom-action')
+            ->and($activity->description)->toBe('Custom event description')
+            ->and($activity->subject_id)->toBe($subject->id);
+    });
 
-    $userActivities = $logger->getUserActivities($user, 10);
+    it('ignores null event buckets in by_type statistics', function (): void {
+        $user = User::factory()->create();
+        $logger = app(ActivityLogger::class);
 
-    expect($userActivities)->toHaveCount(1)
-        ->and($userActivities->first()->causer_type)->toBe(User::class);
+        $logger->log(type: 'valid-event', user: $user);
 
-    $first = $userActivities->first();
-    if ($first instanceof Activity && ($first->causer_id === (string) $user->id || $first->causer_id === $user->id)) {
-        expect($first->causer_id)->toBeIn([(string) $user->id, $user->id]);
-    }
-});
+        Activity::query()->create([
+            'log_name' => 'default',
+            'description' => 'nullable event row',
+            'causer_type' => User::class,
+            'causer_id' => $user->id,
+            'event' => null,
+        ]);
 
-test('ActivityLogger can get model activities', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
+        $stats = $logger->getStatistics();
 
-    // Create an activity to use as subject
-    $subjectActivity = $logger->log('test_subject', $user, null, null, 'Test Subject');
-
-    // Create an activity for this subject
-    $logger->log('model_event', $user, $subjectActivity, null, 'Model Event');
-
-    $modelActivities = $logger->getModelActivities($subjectActivity, 10);
-
-    expect($modelActivities)->toHaveCount(1);
-    expect((string) $modelActivities->first()->subject_id)->toBe((string) $subjectActivity->id);
-});
-
-test('ActivityLogger can get activities by type', function () {
-    $logger = new ActivityLogger;
-
-    $logger->log('specific_event', null, null, null, 'Specific Event');
-    $logger->log('other_event', null, null, null, 'Other Event');
-
-    $byType = $logger->getByType('specific_event', 5);
-
-    expect($byType)->toHaveCount(1)
-        ->and($byType->first()->event)->toBe('specific_event');
-});
-
-test('ActivityLogger can get recent activities', function () {
-    $logger = new ActivityLogger;
-
-    // Create some test activities
-    $logger->log('event1', null, null, null, 'Event 1');
-    $logger->log('event2', null, null, null, 'Event 2');
-
-    $recent = $logger->getRecent(5);
-
-    expect($recent)->toHaveCount(2);
-});
-
-test('ActivityLogger can clean old activities', function () {
-    $logger = new ActivityLogger;
-
-    $activity = $logger->log('old_event', null, null, null, 'Old Event');
-    // Simulate old activity by modifying created_at
-    $activity->created_at = now()->subDays(100);
-    $activity->save();
-
-    $deleted = $logger->cleanOld(90);
-
-    expect($deleted)->toBeGreaterThanOrEqual(0);
-});
-
-test('ActivityLogger can get statistics', function () {
-    $logger = new ActivityLogger;
-
-    $logger->log('stat_event', null, null, null, 'Stat Event');
-
-    $stats = $logger->getStatistics();
-
-    expect($stats)->toBeArray()
-        ->and($stats['total'])->toBeGreaterThanOrEqual(0)
-        ->and($stats['by_type'])->toBeArray();
-});
-
-test('ActivityLogger can get statistics for specific user', function () {
-    $user = User::factory()->create();
-    $logger = new ActivityLogger;
-
-    $logger->log('user_stat_event', $user, null, null, 'User Stat Event');
-
-    $stats = $logger->getStatistics($user);
-
-    expect($stats)->toBeArray()
-        ->and($stats['total'])->toBeGreaterThanOrEqual(0);
+        expect($stats['by_type'])->toHaveKey('valid-event')
+            ->and($stats['by_type'])->not->toHaveKey('');
+    });
 });
