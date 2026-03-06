@@ -9,42 +9,50 @@ use Modules\Incentivi\Actions\UpdateActivitiesEmployeesAction;
 use Modules\Incentivi\Actions\UpdateProjectActivitiesAction;
 use Modules\Incentivi\Models\Project;
 
-class IncentiviIntegrationPivotStub extends Model
+function makeIncentiviIntegrationPivotStub(): Model
 {
-    public array $lastUpdated = [];
+    return new class extends Model {
+        public array $lastUpdated = [];
 
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->lastUpdated = $attributes;
+        public function update(array $attributes = [], array $options = []): bool
+        {
+            $this->lastUpdated = $attributes;
 
-        return true;
-    }
+            return true;
+        }
+    };
 }
 
-class IncentiviIntegrationEmployeeStub extends Model
+function makeIncentiviIntegrationEmployeeStub(mixed $pivot = null): Model
 {
-    public mixed $pivot = null;
+    $employee = new class extends Model {
+        public mixed $pivot = null;
+    };
+    $employee->pivot = $pivot;
+
+    return $employee;
 }
 
-class IncentiviIntegrationActivityStub extends Model
+function makeIncentiviIntegrationActivityStub(): Model
 {
-    public array $lastUpdated = [];
+    return new class extends Model {
+        public array $lastUpdated = [];
 
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->lastUpdated = $attributes;
+        public function update(array $attributes = [], array $options = []): bool
+        {
+            $this->lastUpdated = $attributes;
 
-        return true;
-    }
+            return true;
+        }
+    };
 }
 
 it('runs project to activity to employee amount propagation workflow', function (): void {
-    $pivot = new IncentiviIntegrationPivotStub();
-    $employee = new IncentiviIntegrationEmployeeStub();
-    $employee->pivot = $pivot;
+    $pivot = makeIncentiviIntegrationPivotStub();
+    $employee = makeIncentiviIntegrationEmployeeStub($pivot);
     $employee->pivot->percentuale_attivita_dipendente = 50;
 
-    $activity = new IncentiviIntegrationActivityStub();
+    $activity = makeIncentiviIntegrationActivityStub();
     $activity->quota_percentuale = 20;
     $activity->setRelation('employees', collect([$employee]));
 
@@ -57,7 +65,8 @@ it('runs project to activity to employee amount propagation workflow', function 
     expect($activity->lastUpdated['importo'])->toBe(200.0)
         ->and($pivot->lastUpdated['importo_attivita_dipendente'])->toBe(100.0);
 
-    $record = new class extends Model {};
+    $record = new class extends Model {
+    };
     $record->importo_totale = 500;
     $record->setRelation('employees', collect([$employee]));
 

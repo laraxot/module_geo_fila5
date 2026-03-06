@@ -190,6 +190,11 @@ class StabiDirigente extends BaseModel
         // *
         /* @phpstan-ignore-next-line */
         if (empty($value) && $this->stabi !== '' && random_int(1, 10) > 8) {
+            // Avoid malformed SQL when model is partially hydrated (e.g. ide-helper reflection).
+            if (! is_int($this->anno) || $this->anno <= 0) {
+                return $value;
+            }
+
             $conn = $this->getConnection();
             $sql = 'select concat(conome," ",nome) as nome_diri from generale.ana10f where matr=(
                 select matr from generale.qua00f where (

@@ -178,6 +178,15 @@ Tutti gli errori di PHPStan, PHPMD e PHPInsights devono essere risolti prima di 
 
 Vedi [docs/tdd-guide.md](docs/tdd-guide.md) per guida completa TDD.
 
+### Regola Assoluta DB Test
+
+Nei test è **sempre vietato** usare:
+- `RefreshDatabase`
+- `php artisan migrate:fresh`
+- `php artisan migrate --force`
+
+Per isolamento test usare approcci non distruttivi (es. transazioni/fixture mirate) senza reset totale schema.
+
 ### Pattern AAA (Arrange-Act-Assert)
 
 ```php
