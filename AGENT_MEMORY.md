@@ -361,3 +361,13 @@ app(CreateClientAction::class)->execute();
 **Update Date**: 2026-02-11  
 **Scope**: Development standards for PTVX Fila5 Mono  
 **Priority**: High - Maintain consistency across modules
+
+---
+
+## 🧠 Session Notes (2026-03-06)
+
+- GitHub Projects CLI currently blocked by token scope: `read:project` missing (`gh project list --owner provtv` fails).
+- For PHPMD use project-local PHAR (`phpmd.phar` / `tools/phpmd.phar`) and avoid composer package install.
+- Never use `RefreshDatabase`, `migrate:fresh`, or `migrate --force` in tests.
+- Keep issue comments linked to central discussion for shared agent learning:
+  `https://github.com/provtv/base_ptv_fila5_mono/discussions/18`.
