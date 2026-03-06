@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Modules\Xot\Filament\Resources\Pages;
 
 use Filament\Actions\Action;
+<<<<<<< .merge_file_SPC4KR
 use Filament\Actions\CreateAction;
 use Filament\Infolists\Components\Component as InfolistComponent;
+=======
+>>>>>>> .merge_file_5zIQtd
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
@@ -66,18 +69,10 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     }
 
     /**
-     * Restituisce lo schema del form per i record correlati.
-     *
-     * @return array<Component>
-     */
-    // abstract public static function getFormSchema(): array;
-
-    /**
      * Configura lo schema per i record correlati.
      */
     public function schema(Schema $schema): Schema
     {
-        // getFormSchema() sempre ritorna array per definizione
         $formSchema = $this->getFormSchema();
 
         return $schema->components($formSchema);

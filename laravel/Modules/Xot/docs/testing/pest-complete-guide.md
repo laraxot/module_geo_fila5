@@ -423,7 +423,15 @@ services:
       MYSQL_ROOT_PASSWORD: password
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       MYSQL_DATABASE: <nome progetto>_data_test
+=======
+      MYSQL_DATABASE: laravelpizza_data_test
+>>>>>>> a038b0f2 (.)
+=======
+      MYSQL_DATABASE: <nome progetto>_data_test
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 =======
       MYSQL_DATABASE: laravelpizza_data_test
 >>>>>>> a038b0f2 (.)
@@ -438,8 +446,18 @@ steps:
     run: |
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_data_test;"
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_user_test;"
+=======
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_data_test;"
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_user_test;"
+>>>>>>> a038b0f2 (.)
+=======
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_data_test;"
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_user_test;"
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 =======
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_data_test;"
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_user_test;"
@@ -460,8 +478,18 @@ steps:
     env:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       DB_DATABASE: <nome progetto>_data_test
       DB_DATABASE_USER: <nome progetto>_user_test
+=======
+      DB_DATABASE: laravelpizza_data_test
+      DB_DATABASE_USER: laravelpizza_user_test
+>>>>>>> a038b0f2 (.)
+=======
+      DB_DATABASE: <nome progetto>_data_test
+      DB_DATABASE_USER: <nome progetto>_user_test
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 =======
       DB_DATABASE: laravelpizza_data_test
       DB_DATABASE_USER: laravelpizza_user_test
@@ -513,7 +541,15 @@ php artisan migrate --env=testing --force
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=<nome progetto>_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+=======
+Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=laravelpizza_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+>>>>>>> a038b0f2 (.)
+=======
+Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=<nome progetto>_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 =======
 Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=laravelpizza_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
 >>>>>>> a038b0f2 (.)
