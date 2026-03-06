@@ -1,7 +1,7 @@
 # AI Agent Memory - Project Patterns & Best Practices
 
 **Project**: PTVX Fila5 Mono  
-**Last Updated**: 2026-02-11  
+**Last Updated**: 2026-03-06  
 **Scope**: Development patterns, coding standards, architecture
 
 ---
@@ -102,6 +102,12 @@ Use XotBaseResource wrappers for consistency.
 
 ### 3. Form Components
 Use Filament components with proper wire:model binding.
+
+### 4. `InteractsWithRecord` Property Rule
+When a Filament page uses `Filament\Resources\Pages\Concerns\InteractsWithRecord`:
+- Never redeclare `$record` in the page class.
+- Use `getRecord()` from the trait and add a typed narrowing getter (for example `getSpecificRecord(): ModuleModel`) if needed.
+- Redeclaring `$record` with a narrower type causes a PHP 8.3 fatal trait composition error.
 
 ---
 
