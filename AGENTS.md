@@ -159,12 +159,18 @@ Dopo ogni modifica al codice, eseguire SEMPRE:
 # PHPStan (Level 10 - obbligatorio, tutti gli errori devono essere risolti)
 php -d memory_limit=2G ./vendor/bin/phpstan analyse
 
-# PHPMD (PHP Mess Detector)
-./vendor/bin/phpmd . text phpmd.xml --exclude vendor,node_modules,bootstrap,caches
+# PHPMD (PHP Mess Detector) via PHAR (senza dipendenze Composer)
+bash bashscripts/quality/ensure_phpmd_phar.sh
+bash laravel/tools/phpmd.sh laravel text phpmd.xml --exclude vendor,node_modules,bootstrap,caches
 
 # PHPInsights
 ./vendor/bin/phpinsights -v --no-interaction
 ```
+
+Regola permanente PHPMD:
+- usare sempre `bash laravel/tools/phpmd.sh ...` (wrapper PHAR)
+- se manca, installarlo con `bash bashscripts/quality/ensure_phpmd_phar.sh`
+- non aggiungere `phpmd/phpmd` in `composer.json`
 
 Tutti gli errori di PHPStan, PHPMD e PHPInsights devono essere risolti prima di considerare completata la modifica.
 
