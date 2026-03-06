@@ -148,7 +148,11 @@ The `TestCase` sets up:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
+<<<<<<< HEAD
 DB_DATABASE=<nome progetto>_data_test
+=======
+DB_DATABASE=laravelpizza_data_test
+>>>>>>> a038b0f2 (.)
 DB_USERNAME=root
 DB_PASSWORD=
 ```

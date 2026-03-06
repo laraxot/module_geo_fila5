@@ -7,12 +7,15 @@ namespace Modules\Xot\Filament\Resources\Pages;
 use Filament\Actions\Action;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Filament\Actions\CreateAction;
 =======
 >>>>>>> ae1fc62a (.)
 use Filament\Infolists\Components\Component as InfolistComponent;
 >>>>>>> 4a379824 (.)
+=======
+>>>>>>> a038b0f2 (.)
 use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecords;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
@@ -65,10 +68,14 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
      * This can be used to display metadata of the owner record.
      *
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @return array<int, Component>
 =======
      * @return array<int, InfolistComponent>
 >>>>>>> 4a379824 (.)
+=======
+     * @return array<int, Component>
+>>>>>>> a038b0f2 (.)
      */
     public function getInfolistSchema(): array
     {

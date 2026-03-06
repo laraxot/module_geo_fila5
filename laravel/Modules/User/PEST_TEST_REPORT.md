@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
+=======
+# LaravelPizza User Module - Pest Test Implementation Report
+
+## Executive Summary
+
+Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in LaravelPizza. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
+>>>>>>> a038b0f2 (.)
 
 ### Test Results
 - **Total Tests Created**: 32

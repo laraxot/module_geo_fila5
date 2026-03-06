@@ -142,7 +142,11 @@ abstract class TestCase extends BaseTestCase
 
 ### Never Use `migrate:fresh` in Tests (CRITICAL)
 
+<<<<<<< HEAD
 `migrate:fresh` **drops ALL tables** in the target database. In a shared test database (like `<nome progetto>_data_test`) this destroys data for ALL modules and causes cascading failures across the entire test suite.
+=======
+`migrate:fresh` **drops ALL tables** in the target database. In a shared test database (like `laravelpizza_data_test`) this destroys data for ALL modules and causes cascading failures across the entire test suite.
+>>>>>>> a038b0f2 (.)
 
 **Rule**: Never call `artisan('migrate:fresh', ...)` inside a test. If a test does this, mark it with `$this->markTestSkipped(...)`.
 

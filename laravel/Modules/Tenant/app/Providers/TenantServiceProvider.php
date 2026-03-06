@@ -128,12 +128,20 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $testConnections = [];
             
             // Create test connection for main database
+<<<<<<< HEAD
             $testConnections['<nome progetto>_data_test'] = [
+=======
+            $testConnections['laravelpizza_data_test'] = [
+>>>>>>> a038b0f2 (.)
                 'driver' => 'mysql',
                 'url' => env('DB_URL'),
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'port' => env('DB_PORT', '3306'),
+<<<<<<< HEAD
                 'database' => '<nome progetto>_data_test',
+=======
+                'database' => 'laravelpizza_data_test',
+>>>>>>> a038b0f2 (.)
                 'username' => env('DB_USERNAME', 'root'),
                 'password' => env('DB_PASSWORD', ''),
                 'unix_socket' => env('DB_SOCKET', ''),
@@ -150,12 +158,20 @@ class TenantServiceProvider extends XotBaseServiceProvider
             ];
             
             // Create test connection for user database
+<<<<<<< HEAD
             $testConnections['<nome progetto>_user_test'] = [
+=======
+            $testConnections['laravelpizza_user_test'] = [
+>>>>>>> a038b0f2 (.)
                 'driver' => 'mysql',
                 'url' => env('DB_URL'),
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'port' => env('DB_PORT', '3306'),
+<<<<<<< HEAD
                 'database' => '<nome progetto>_user_test',
+=======
+                'database' => 'laravelpizza_user_test',
+>>>>>>> a038b0f2 (.)
                 'username' => env('DB_USERNAME_USER', 'root'),
                 'password' => env('DB_PASSWORD_USER', ''),
                 'unix_socket' => env('DB_SOCKET', ''),

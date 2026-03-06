@@ -421,15 +421,24 @@ services:
     image: mysql:8.0
     env:
       MYSQL_ROOT_PASSWORD: password
+<<<<<<< HEAD
       MYSQL_DATABASE: <nome progetto>_data_test
+=======
+      MYSQL_DATABASE: laravelpizza_data_test
+>>>>>>> a038b0f2 (.)
     ports:
       - 3306:3306
 
 steps:
   - name: Create test databases
     run: |
+<<<<<<< HEAD
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_data_test;"
       mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_user_test;"
+=======
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_data_test;"
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_user_test;"
+>>>>>>> a038b0f2 (.)
 
   - name: Setup Environment
     working-directory: laravel
@@ -440,8 +449,13 @@ steps:
   - name: Run Migrations (NEVER migrate:fresh)
     working-directory: laravel
     env:
+<<<<<<< HEAD
       DB_DATABASE: <nome progetto>_data_test
       DB_DATABASE_USER: <nome progetto>_user_test
+=======
+      DB_DATABASE: laravelpizza_data_test
+      DB_DATABASE_USER: laravelpizza_user_test
+>>>>>>> a038b0f2 (.)
       DB_USERNAME: root
       DB_PASSWORD: password
     run: php artisan migrate --env=testing --force
@@ -483,7 +497,11 @@ php artisan migrate --env=testing --force
 
 ## Correzione nota: MySQL, non SQLite
 
+<<<<<<< HEAD
 Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=<nome progetto>_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+=======
+Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=laravelpizza_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+>>>>>>> a038b0f2 (.)
 
 ## Conclusione
 

@@ -327,5 +327,9 @@ Per **<nome progetto>** la separazione attuale ha senso perché:
 
 ---
 
+<<<<<<< HEAD
 *Documento generato per <nome progetto> - Analisi User vs Profile Pattern*
+=======
+*Documento generato per LaravelPizza - Analisi User vs Profile Pattern*
+>>>>>>> a038b0f2 (.)
 *

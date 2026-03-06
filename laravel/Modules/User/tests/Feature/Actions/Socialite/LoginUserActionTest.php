@@ -120,7 +120,11 @@ describe('LoginUserAction', function (): void {
         $response = app(LoginUserAction::class)->execute($socialiteUser);
 
         expect($response)->toBeInstanceOf(RedirectResponse::class);
+<<<<<<< HEAD
         expect($response->getTargetUrl())->toContain('<nome progetto>');
+=======
+        expect($response->getTargetUrl())->toContain('laravelpizza');
+>>>>>>> a038b0f2 (.)
     });
 
     test('handles null user assertion gracefully', function (): void {

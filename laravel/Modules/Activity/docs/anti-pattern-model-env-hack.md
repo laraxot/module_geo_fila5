@@ -68,7 +68,11 @@ class TestCase extends XotBaseTestCase
 <phpunit>
     <php>
         <env name="DB_CONNECTION" value="mysql"/>
+<<<<<<< HEAD
         <env name="DB_DATABASE" value="<nome progetto>_test"/>
+=======
+        <env name="DB_DATABASE" value="laravelpizza_test"/>
+>>>>>>> a038b0f2 (.)
     </php>
 </phpunit>
 ```
