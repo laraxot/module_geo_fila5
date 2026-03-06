@@ -421,15 +421,15 @@ services:
     image: mysql:8.0
     env:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: laravelpizza_data_test
+      MYSQL_DATABASE: <nome progetto>_data_test
     ports:
       - 3306:3306
 
 steps:
   - name: Create test databases
     run: |
-      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_data_test;"
-      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS laravelpizza_user_test;"
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_data_test;"
+      mysql -h 127.0.0.1 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS <nome progetto>_user_test;"
 
   - name: Setup Environment
     working-directory: laravel
@@ -440,8 +440,8 @@ steps:
   - name: Run Migrations (NEVER migrate:fresh)
     working-directory: laravel
     env:
-      DB_DATABASE: laravelpizza_data_test
-      DB_DATABASE_USER: laravelpizza_user_test
+      DB_DATABASE: <nome progetto>_data_test
+      DB_DATABASE_USER: <nome progetto>_user_test
       DB_USERNAME: root
       DB_PASSWORD: password
     run: php artisan migrate --env=testing --force
@@ -483,7 +483,7 @@ php artisan migrate --env=testing --force
 
 ## Correzione nota: MySQL, non SQLite
 
-Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=laravelpizza_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
+Questo progetto usa **MySQL** per i test (non SQLite in-memory), per garantire parità con la produzione. Il file `.env.testing` configura `DB_CONNECTION=mysql` con `DB_DATABASE=<nome progetto>_data_test`. I TestCase dei moduli usano `DatabaseTransactions` per isolare senza distruggere il DB.
 
 ## Conclusione
 

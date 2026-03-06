@@ -12,7 +12,7 @@ PEST_FILES=(
     "Modules/Lang/tests/Pest.php"
     "Modules/Media/tests/Pest.php"
     "Modules/Notify/tests/Pest.php"
-    "Modules/TechPlanner/tests/Pest.php"
+    "Modules/<nome progetto>/tests/Pest.php"
     "Modules/Tenant/tests/Pest.php"
     "Modules/UI/tests/Pest.php"
     "Modules/Xot/tests/Pest.php"

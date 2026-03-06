@@ -23,7 +23,7 @@ php artisan migrate --env=testing
 Esito:
 - `SQLSTATE[HY000] [2002] Unknown error while connecting`
 - connessione `mysql` su `127.0.0.1:3306`
-- database target `laravelpizza_data_test`
+- database target `<nome progetto>_data_test`
 
 Conclusione:
 - blocco infrastrutturale: MySQL testing non raggiungibile nell'ambiente attuale.
@@ -33,7 +33,7 @@ Conclusione:
 Comando:
 
 ```bash
-DB_CONNECTION=sqlite DB_DATABASE=/var/www/_bases/base_laravelpizza/laravel/database/testing.sqlite php artisan migrate --env=testing
+DB_CONNECTION=sqlite DB_DATABASE=/var/www/_bases/base_<nome progetto>/laravel/database/testing.sqlite php artisan migrate --env=testing
 ```
 
 Esito:
@@ -65,7 +65,7 @@ Conclusione:
 
 ## Riferimenti Tecnici
 
-- `config/local/laravelpizza/database.php` (sqlite usa `database_path(env('DB_DATABASE', 'db_data').'.sqlite')`)
+- `config/local/<nome progetto>/database.php` (sqlite usa `database_path(env('DB_DATABASE', 'db_data').'.sqlite')`)
 - `Modules/Xot/app/Database/Migrations/XotBaseMigration.php` (`timestamps()` aggiunge anche `user_id`, `updated_by`, `created_by`)
 - `Modules/Meetup/database/migrations/2025_01_01_000008_create_event_user_table.php` (definisce già `user_id` prima di `timestamps()`)
 

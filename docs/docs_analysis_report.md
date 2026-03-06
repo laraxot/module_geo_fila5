@@ -14,8 +14,8 @@ This report analyzes all documentation in the project to identify:
 ## Analysis Results
 
 
-### base_techplanner_fila5_mono Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/docs
+### base_<nome progetto>_fila5_mono Module
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/docs
 - **Total files**: 51
 - **README files**: 1
 - **Index files**: 0
@@ -26,7 +26,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: README.md
 
 ### bashscripts Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/bashscripts/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/docs
 - **Total files**: 71
 - **README files**: 5
 - **Index files**: 0
@@ -41,7 +41,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: scripts.md
 
 ### Chart Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Chart/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Chart/docs
 - **Total files**: 46
 - **README files**: 2
 - **Index files**: 0
@@ -58,7 +58,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: first_blog_post.md
 
 ### FormBuilder Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/FormBuilder/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/FormBuilder/docs
 - **Total files**: 24
 - **README files**: 2
 - **Index files**: 0
@@ -71,7 +71,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: README.md
 
 ### Tenant Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Tenant/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Tenant/docs
 - **Total files**: 56
 - **README files**: 2
 - **Index files**: 0
@@ -93,7 +93,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: README.md
 
 ### Geo Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Geo/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Geo/docs
 - **Total files**: 97
 - **README files**: 1
 - **Index files**: 0
@@ -116,7 +116,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: phpstan_fixes.md
 
 ### Gdpr Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Gdpr/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Gdpr/docs
 - **Total files**: 67
 - **README files**: 3
 - **Index files**: 0
@@ -145,7 +145,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: privacy.md
 
 ### Lang Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Lang/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Lang/docs
 - **Total files**: 127
 - **README files**: 3
 - **Index files**: 1
@@ -180,7 +180,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: laravel_localization.md
 
 ### Cms Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Cms/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Cms/docs
 - **Total files**: 293
 - **README files**: 8
 - **Index files**: 4
@@ -269,14 +269,14 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: 404.md
 
 ### Cms Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Cms/app/Console/Commands/stubs/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Cms/app/Console/Commands/stubs/docs
 - **Total files**: 0
 - **README files**: 0
 - **Index files**: 0
 
 
 ### Media Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Media/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Media/docs
 - **Total files**: 67
 - **README files**: 3
 - **Index files**: 0
@@ -308,7 +308,7 @@ This report analyzes all documentation in the project to identify:
 - **Short file**: _competitors.md (53 bytes)
 
 ### Xot Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Xot/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Xot/docs
 - **Total files**: 500
 - **README files**: 10
 - **Index files**: 3
@@ -487,14 +487,14 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: best_practices.md
 
 ### Xot Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Xot/docs/roadmap/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Xot/docs/roadmap/docs
 - **Total files**: 1
 - **README files**: 0
 - **Index files**: 0
 
 
 ### Notify Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Notify/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Notify/docs
 - **Total files**: 336
 - **README files**: 5
 - **Index files**: 4
@@ -582,7 +582,7 @@ This report analyzes all documentation in the project to identify:
 - **Short file**: _todo.md (65 bytes)
 
 ### DbForge Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/DbForge/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/DbForge/docs
 - **Total files**: 8
 - **README files**: 2
 - **Index files**: 0
@@ -592,7 +592,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: README.md
 
 ### UI Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/UI/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/UI/docs
 - **Total files**: 170
 - **README files**: 7
 - **Index files**: 0
@@ -639,7 +639,7 @@ This report analyzes all documentation in the project to identify:
 - **Short file**: altro.md (10 bytes)
 
 ### User Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/User/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/User/docs
 - **Total files**: 219
 - **README files**: 5
 - **Index files**: 1
@@ -704,7 +704,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: edit-user-widget.md
 
 ### User Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/User/resources/views/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/User/resources/views/docs
 - **Total files**: 6
 - **README files**: 1
 - **Index files**: 0
@@ -712,7 +712,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: folio.md
 
 ### Activity Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Activity/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Activity/docs
 - **Total files**: 169
 - **README files**: 6
 - **Index files**: 3
@@ -805,7 +805,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: filament.md
 
 ### Job Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Job/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Job/docs
 - **Total files**: 48
 - **README files**: 2
 - **Index files**: 7
@@ -826,7 +826,7 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: performance.md
 
 ### Job Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Job/docs/build_local/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Modules/Job/docs/build_local/docs
 - **Total files**: 0
 - **README files**: 0
 - **Index files**: 5
@@ -834,7 +834,7 @@ This report analyzes all documentation in the project to identify:
 - **Issue**: Multiple index files detected
 
 ### Sixteen Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Themes/Sixteen/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Themes/Sixteen/docs
 - **Total files**: 4
 - **README files**: 0
 - **Index files**: 0
@@ -842,7 +842,7 @@ This report analyzes all documentation in the project to identify:
 - **Short file**: repositories.md (88 bytes)
 
 ### One Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Themes/One/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Themes/One/docs
 - **Total files**: 65
 - **README files**: 1
 - **Index files**: 2
@@ -873,14 +873,14 @@ This report analyzes all documentation in the project to identify:
 - **Potential duplicate**: best_practices.md
 
 ### Two Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Themes/Two/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Themes/Two/docs
 - **Total files**: 1
 - **README files**: 1
 - **Index files**: 0
 
 
 ### Zero Module
-- **Path**: /var/www/html/_bases/base_techplanner_fila5_mono/laravel/Themes/Zero/docs
+- **Path**: /var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/Themes/Zero/docs
 - **Total files**: 8
 - **README files**: 1
 - **Index files**: 0

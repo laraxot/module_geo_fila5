@@ -22,7 +22,7 @@
 - [ ] Schema.org EventReservation per pagine/conferme prenotazione (se esistono nel flusso)
 - [ ] Schema.org EducationEvent per eventi formativi (workshop/corsi)
 - [ ] Schema.org attendee (non `attendees`, che è superseded) e distinzione con `participant` (Action)
-- [ ] Schema.org Organization per LaravelPizza
+- [ ] Schema.org Organization per <nome progetto>
 - [ ] Schema.org Person per speaker
 - [ ] Schema.org Place per venue
 - [ ] Schema.org FoodEstablishment + Offer + DeliveryChargeSpecification (per delivery) quando applicabile

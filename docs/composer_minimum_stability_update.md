@@ -39,7 +39,7 @@ I seguenti file avevano già `"minimum-stability": "dev"`:
 - `laravel/Modules/Lang/composer.json`
 - `laravel/Modules/Cms/composer.json`
 - `laravel/Modules/Media/composer.json`
-- `laravel/Modules/TechPlanner/composer.json`
+- `laravel/Modules/<nome progetto>/composer.json`
 - `laravel/Modules/Notify/composer.json`
 - `laravel/Modules/DbForge/composer.json`
 - `laravel/Modules/User/composer.json`

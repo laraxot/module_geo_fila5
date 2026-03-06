@@ -3,7 +3,7 @@
 # Script to analyze docs structure and identify DRY/KISS improvements
 # Respects DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 ANALYSIS_OUTPUT="/tmp/docs_analysis.md"
 
 echo "📚 Analyzing docs structure for DRY and KISS improvements..."

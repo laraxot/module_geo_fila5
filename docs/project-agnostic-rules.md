@@ -14,7 +14,7 @@
 ## Riferimenti Vietati
 
 ### Nomi di Progetti
-- `Quaeris` - Progetto esterno
+- `<nome progetto>` - Progetto esterno
 - `Fila5` - Progetto esterno
 - `ExternalProject` - Progetto esterno
 - `healthcare_app` - Progetto esterno
@@ -112,7 +112,7 @@ class Performance extends BaseModel
 
 ## Checklist
 
-- [ ] Nessun nome progetto esterno (Quaeris, ExternalProject, Fila5, healthcare_app, ecc.)
+- [ ] Nessun nome progetto esterno (<nome progetto>, ExternalProject, Fila5, healthcare_app, ecc.)
 - [ ] Nessun riferimento a moduli che non esistono nel progetto corrente
 - [ ] Nessuna URL o path di progetti esterni
 - [ ] Esempi usano nomi generici (`MioModulo`, `MioModello`)

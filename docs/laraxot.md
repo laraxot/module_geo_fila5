@@ -1051,7 +1051,7 @@ return new AddressData(
 #### Widget Issues
 - Percorsi viste non corretti
   - Soluzione: Spostare in `resources/views/filament/widgets/`
-  - Aggiornare percorsi a `techplanner::filament.widgets.*`
+  - Aggiornare percorsi a `<nome progetto>::filament.widgets.*`
 
 #### XotBaseListRecords Issues
 - Access level methods
@@ -8533,7 +8533,7 @@ protected function getHeaderWidgets(): array
 // In ClientMapWidget.php
 class ClientMapWidget extends Widget
 {
-    protected static string $view = 'techplanner::filament.widgets.map';
+    protected static string $view = '<nome progetto>::filament.widgets.map';
 
     public function getViewData(): array
     {
@@ -8594,7 +8594,7 @@ protected function getHeaderWidgets(): array
 class ClientMapWidget extends Widget
 {
     // Definizione della vista
-    protected static string $view = 'techplanner::filament.widgets.map';
+    protected static string $view = '<nome progetto>::filament.widgets.map';
 
     // Metodo per fornire dati alla vista
     public function getViewData(): array
@@ -8755,7 +8755,7 @@ use Filament\Widgets\Widget;
 #[Reactive]
 class ClientMapWidget extends Widget
 {
-    protected static string $view = 'techplanner::filament.widgets.map';
+    protected static string $view = '<nome progetto>::filament.widgets.map';
 
     public function getViewData(): array
     {

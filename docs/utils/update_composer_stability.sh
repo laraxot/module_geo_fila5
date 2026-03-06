@@ -3,7 +3,7 @@
 # Script to update minimum-stability to "dev" in all composer.json files
 # Excludes vendor directories
 
-PROJECT_ROOT="/var/www/html/_bases/base_techplanner_fila5_mono"
+PROJECT_ROOT="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 UPDATED_COUNT=0
 ALREADY_SET_COUNT=0
 ADDED_COUNT=0

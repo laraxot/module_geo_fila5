@@ -7,7 +7,7 @@ La cartella `bashscripts` contiene 225 file con conflitti Git che devono essere 
 ## Business Logic Identificata
 
 ### Scopo del Progetto
-Il progetto è un sistema di gestione "TechPlanner" basato su Laravel con architettura modulare che include:
+Il progetto è un sistema di gestione "<nome progetto>" basato su Laravel con architettura modulare che include:
 
 1. **Moduli Laravel**: Sistema modulare con moduli indipendenti
 2. **Script di Automazione**: Script bash per automazione di processi di sviluppo
@@ -162,4 +162,4 @@ Risolvere prima i file di configurazione critici:
 
 ## Conclusione
 
-La risoluzione manuale dei 225 conflitti richiederà tempo e attenzione, ma è necessaria per preservare la funzionalità e l'integrità del progetto TechPlanner. Seguendo questa strategia sistematica, sarà possibile risolvere tutti i conflitti mantenendo la business logic e la funzionalità del sistema.
+La risoluzione manuale dei 225 conflitti richiederà tempo e attenzione, ma è necessaria per preservare la funzionalità e l'integrità del progetto <nome progetto>. Seguendo questa strategia sistematica, sarà possibile risolvere tutti i conflitti mantenendo la business logic e la funzionalità del sistema.

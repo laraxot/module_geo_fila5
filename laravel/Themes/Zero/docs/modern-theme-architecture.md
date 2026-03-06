@@ -14,7 +14,7 @@ Il tema favorisce l'uso di Livewire Volt per i componenti UI del frontend.
 ## 3. Flux UI Integration
 Zero integra Flux UI per componenti base (button, modals, inputs) garantendo:
 - Accessibilità WCAG out-of-the-box.
-- Stile coerente con il brand Quaeris.
+- Stile coerente con il brand <nome progetto>.
 
 ## 4. Visualizzazione Dati & Grafici
 Per i dashboard, Zero utilizza:

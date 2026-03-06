@@ -298,7 +298,7 @@ Il sistema PTVX è composto da **35 moduli indipendenti** organizzati per area f
 | **ExternalProject** | Sistema query builder | ✅ Attivo |
 =======
 | **ModuloEsempio** | Sistema query builder | ✅ Attivo |
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_9pZPlP
 | **Seo** | SEO optimization | ✅ Attivo |
 | **Shop** | E-commerce platform | ✅ Attivo |
