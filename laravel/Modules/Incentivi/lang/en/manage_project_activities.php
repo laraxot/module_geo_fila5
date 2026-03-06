@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 return [
-    'title' => 'Activities',
-    'navigation_label' => 'Activities',
-    'heading' => 'Activities',
-    'breadcrumb' => 'Activities',
-    'label' => 'Activities',
-    'plural_label' => 'Activities',
+    'title' => 'Attività',
+    'navigation_label' => 'Attività',
+    'heading' => 'Attività',
+    'breadcrumb' => 'Attività',
+    'label' => 'Attività',
+    'plural_label' => 'Attività',
 ];
