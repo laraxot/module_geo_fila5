@@ -129,19 +129,27 @@ class TenantServiceProvider extends XotBaseServiceProvider
             
             // Create test connection for main database
 <<<<<<< HEAD
+<<<<<<< HEAD
             $testConnections['<nome progetto>_data_test'] = [
 =======
             $testConnections['laravelpizza_data_test'] = [
 >>>>>>> a038b0f2 (.)
+=======
+            $testConnections['<nome progetto>_data_test'] = [
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
                 'driver' => 'mysql',
                 'url' => env('DB_URL'),
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'port' => env('DB_PORT', '3306'),
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'database' => '<nome progetto>_data_test',
 =======
                 'database' => 'laravelpizza_data_test',
 >>>>>>> a038b0f2 (.)
+=======
+                'database' => '<nome progetto>_data_test',
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
                 'username' => env('DB_USERNAME', 'root'),
                 'password' => env('DB_PASSWORD', ''),
                 'unix_socket' => env('DB_SOCKET', ''),
@@ -159,19 +167,27 @@ class TenantServiceProvider extends XotBaseServiceProvider
             
             // Create test connection for user database
 <<<<<<< HEAD
+<<<<<<< HEAD
             $testConnections['<nome progetto>_user_test'] = [
 =======
             $testConnections['laravelpizza_user_test'] = [
 >>>>>>> a038b0f2 (.)
+=======
+            $testConnections['<nome progetto>_user_test'] = [
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
                 'driver' => 'mysql',
                 'url' => env('DB_URL'),
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'port' => env('DB_PORT', '3306'),
 <<<<<<< HEAD
+<<<<<<< HEAD
                 'database' => '<nome progetto>_user_test',
 =======
                 'database' => 'laravelpizza_user_test',
 >>>>>>> a038b0f2 (.)
+=======
+                'database' => '<nome progetto>_user_test',
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
                 'username' => env('DB_USERNAME_USER', 'root'),
                 'password' => env('DB_PASSWORD_USER', ''),
                 'unix_socket' => env('DB_SOCKET', ''),

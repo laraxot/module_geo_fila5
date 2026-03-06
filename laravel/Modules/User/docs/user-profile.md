@@ -328,8 +328,12 @@ Per **<nome progetto>** la separazione attuale ha senso perché:
 ---
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 *Documento generato per <nome progetto> - Analisi User vs Profile Pattern*
 =======
 *Documento generato per LaravelPizza - Analisi User vs Profile Pattern*
 >>>>>>> a038b0f2 (.)
+=======
+*Documento generato per <nome progetto> - Analisi User vs Profile Pattern*
+>>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
 *
