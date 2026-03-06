@@ -64,4 +64,43 @@ class OauthAccessToken extends PassportToken
     protected $connection = 'user';
 
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
+
+    /**
+     * Get the user associated with this access token.
+     * Override Passport's user() to handle null provider gracefully.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        $provider = $this->getTokenGuardProvider();
+
+        if ($provider === null) {
+            return $this->belongsTo(
+                config('auth.guards.api.provider') ?? \Modules\User\Models\User::class,
+                'user_id'
+            );
+        }
+
+        return $this->belongsTo(
+            config("auth.providers.{$provider}.model", \Modules\User\Models\User::class),
+            'user_id'
+        );
+    }
+
+    /**
+     * Get the token guard provider.
+     *
+     * @return string|null
+     */
+    protected function getTokenGuardProvider(): ?string
+    {
+        foreach (config('auth.guards', []) as $guard => $config) {
+            if (($config['driver'] ?? null) === 'passport') {
+                return $config['provider'] ?? null;
+            }
+        }
+
+        return null;
+    }
 }
