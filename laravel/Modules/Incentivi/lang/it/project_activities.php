@@ -290,6 +290,7 @@ return [
         'attachAnother' => [
             'tooltip' => 'attachAnother',
             'icon' => 'attachAnother',
+            'label' => 'attachAnother',
         ],
     ],
     'messages' => [
