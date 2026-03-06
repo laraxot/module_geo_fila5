@@ -60,7 +60,12 @@ use Modules\Xot\Contracts\UserContract;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
  *                                                                                                                   >>>>>>> da38c10 (.)
  * @method static \Modules\User\Database\Factories\OauthAccessTokenFactory       factory($count = null, $state = [])
+<<<<<<< .merge_file_J7jH1K
 <<<<<<< .merge_file_qww8aN
+=======
+<<<<<<< HEAD
+>>>>>>> a038b0f2 (.)
+>>>>>>> .merge_file_8KhnGD
 =======
 >>>>>>> a038b0f2 (.)
 >>>>>>> .merge_file_xb3Yle
@@ -75,6 +80,7 @@ class OauthAccessToken extends PassportToken
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
 
     /**
+<<<<<<< .merge_file_J7jH1K
 <<<<<<< .merge_file_qww8aN
      * Create a new factory instance for the model.
      */
@@ -82,6 +88,9 @@ class OauthAccessToken extends PassportToken
     {
         return \Modules\User\Database\Factories\OauthAccessTokenFactory::new();
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> .merge_file_8KhnGD
      * Get the user associated with this access token.
      * Override Passport's user() to handle null provider gracefully.
      *
@@ -118,6 +127,16 @@ class OauthAccessToken extends PassportToken
         }
 
         return null;
+<<<<<<< .merge_file_J7jH1K
 >>>>>>> .merge_file_xb3Yle
+=======
+=======
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): \Modules\User\Database\Factories\OauthAccessTokenFactory
+    {
+        return \Modules\User\Database\Factories\OauthAccessTokenFactory::new();
+>>>>>>> a038b0f2 (.)
+>>>>>>> .merge_file_8KhnGD
     }
 }
