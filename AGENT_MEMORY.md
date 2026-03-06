@@ -224,6 +224,12 @@ Use Pint for code formatting:
 ### 3. Pest Testing
 Write tests with Pest:
 
+### 4. PHPMD via PHAR Only
+- Do not use `./vendor/bin/phpmd`.
+- Do not add `phpmd/phpmd` to `composer.json`.
+- Always run PHPMD via `bash laravel/tools/phpmd.sh ...`.
+- If missing, ensure/install with `bash bashscripts/quality/ensure_phpmd_phar.sh`.
+
 ```php
 test('rating_validation_works', function () {
     $record = createTestRecord();
