@@ -30,7 +30,7 @@ trait CreatesApplication
         // and all module connections (activity, user, etc.) use laravelpizza_data_test
         $envTesting = $basePath.'/.env.testing';
         if (file_exists($envTesting)) {
-            $dotenv = \Dotenv\Dotenv::createImmutable($basePath, '.env.testing', true);
+            $dotenv = \Dotenv\Dotenv::createMutable($basePath, '.env.testing');
             $dotenv->safeLoad();
         }
 
@@ -45,10 +45,11 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
         $app->boot(); // Ensure all service providers are booted
 
-        // CRITICAL: DO NOT force database connections!
-        // TenantServiceProvider automatically configures module connections
-        // by reading DB_DATABASE from .env.testing
-        // Forcing connections here destroys the dynamic configuration system
+        // CRITICAL: Force purge of connections to ensure they pick up the
+        // test database configuration from .env.testing mapped by TenantServiceProvider
+        \Illuminate\Support\Facades\DB::purge('mysql');
+        \Illuminate\Support\Facades\DB::purge('activity');
+        \Illuminate\Support\Facades\DB::purge('user');
 
         return $app;
     }

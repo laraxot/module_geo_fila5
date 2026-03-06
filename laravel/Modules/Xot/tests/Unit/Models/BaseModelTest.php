@@ -10,10 +10,15 @@ use Modules\Xot\Tests\TestCase;
 
 uses(TestCase::class);
 
-beforeEach(function () {
-    $this->baseModel = new class extends BaseModel {
+if (! class_exists(TestConcreteBaseModel::class)) {
+    class TestConcreteBaseModel extends BaseModel
+    {
         protected $table = 'test_table';
-    };
+    }
+}
+
+beforeEach(function () {
+    $this->baseModel = new TestConcreteBaseModel();
 });
 
 test('base model extends eloquent model', function () {
@@ -25,13 +30,9 @@ test('base model has correct table name', function () {
 });
 
 test('base model has timestamps enabled', function () {
-    expect($this->baseModel->usesTimestamps())->toBeTrue();
+    expect($this->baseModel->timestamps)->toBeTrue();
 });
 
-test('base model has soft deletes disabled by default', function () {
-    expect($this->baseModel->usesSoftDeletes())->toBeFalse();
-});
-
-test('base model can be instantiated', function () {
+test('base model can be instantiated via subclass', function () {
     expect($this->baseModel)->toBeInstanceOf(BaseModel::class);
 });

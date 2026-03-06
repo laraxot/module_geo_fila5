@@ -2,35 +2,43 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Notify\Tests\TestCase::class);
+namespace Modules\Notify\Tests\Unit\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Models\BaseModel;
+use Modules\Notify\Tests\TestCase;
 
-beforeEach(function () {
-    $this->baseModel = new class extends BaseModel
+uses(TestCase::class);
+
+test('base model is abstract and uses notify connection', function () {
+    $reflection = new \ReflectionClass(BaseModel::class);
+
+    expect($reflection->isAbstract())->toBeTrue();
+
+    $connection = $reflection->getProperty('connection');
+    $connection->setAccessible(true);
+
+    expect($connection->getDefaultValue())->toBe('notify');
+});
+
+test('base model default casts include audit and datetime fields', function () {
+    $model = new class extends BaseModel
     {
-        protected $table = 'test_notify_table';
+        protected $table = 'notify_base_model_test';
+
+        public function exposeCasts(): array
+        {
+            return $this->casts();
+        }
     };
-});
 
-test('base model extends eloquent model', function () {
-    expect($this->baseModel)->toBeInstanceOf(Model::class);
-});
+    $casts = $model->exposeCasts();
 
-test('base model has correct table name', function () {
-    expect($this->baseModel->getTable())->toBe('test_notify_table');
-});
-
-test('base model can be instantiated', function () {
-    expect($this->baseModel)->toBeInstanceOf(BaseModel::class);
-});
-
-test('base model has proper inheritance chain', function () {
-    expect($this->baseModel)->toBeInstanceOf(BaseModel::class);
-    expect($this->baseModel)->toBeInstanceOf(Model::class);
-});
-
-test('base model has timestamps enabled', function () {
-    expect($this->baseModel->usesTimestamps())->toBeTrue();
+    expect($casts)->toHaveKey('id')
+        ->and($casts)->toHaveKey('uuid')
+        ->and($casts)->toHaveKey('created_at')
+        ->and($casts)->toHaveKey('updated_at')
+        ->and($casts)->toHaveKey('deleted_at')
+        ->and($casts)->toHaveKey('created_by')
+        ->and($casts)->toHaveKey('updated_by')
+        ->and($casts)->toHaveKey('deleted_by');
 });

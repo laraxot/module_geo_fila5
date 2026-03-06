@@ -522,6 +522,32 @@ return [
             'helper_text' => 'receipt',
             'description' => 'receipt',
         ],
+        'file1' => [
+            'jpg' => [
+                'label' => 'file1.jpg',
+                'placeholder' => 'file1.jpg',
+                'helper_text' => 'file1.jpg',
+                'description' => 'file1.jpg',
+            ],
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
+        'appointment_date' => [
+            'label' => 'appointment_date',
+            'placeholder' => 'appointment_date',
+            'helper_text' => 'appointment_date',
+            'description' => 'appointment_date',
+        ],
+        'contact' => [
+            'label' => 'contact',
+        ],
     ],
     'actions' => [
         'authenticate' => [
@@ -583,6 +609,21 @@ return [
             'label' => 'update_coordinates',
             'icon' => 'update_coordinates',
             'tooltip' => 'update_coordinates',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'SendRecordsNotificationBulkAction' => [
+            'label' => 'SendRecordsNotificationBulkAction',
+            'icon' => 'SendRecordsNotificationBulkAction',
+            'tooltip' => 'SendRecordsNotificationBulkAction',
         ],
     ],
     'sections' => [

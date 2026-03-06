@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace Modules\Activity\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Modules\Activity\Providers\ActivityServiceProvider;
-use Modules\User\Providers\UserServiceProvider;
-use Modules\Xot\Providers\XotServiceProvider;
-use Modules\Xot\Tests\CreatesApplication;
+use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
  * Base test case for Activity module.
@@ -17,26 +13,18 @@ use Modules\Xot\Tests\CreatesApplication;
  * Uses MySQL from .env.testing (carbon copy of .env with _test DB names).
  * All module connections are mapped dynamically by TenantServiceProvider.
  * Migrations must be run ONCE externally: php artisan migrate --env=testing
- * DatabaseTransactions handles rollback between tests.
+ * DB lifecycle is managed by dedicated integration tests/configuration.
  */
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends XotBaseTestCase
 {
-    use CreatesApplication;
     use DatabaseTransactions;
 
     /**
-     * Connections to wrap in transactions for automatic rollback.
-     * MANDATORY: must include every connection used by this module's models.
-     * Activity models use $connection = 'activity' (separate PDO handle).
-     * Without this, Activity data is NEVER rolled back between tests.
+     * The database connections that should have transactions rolled back.
      *
      * @var array<int, string>
      */
-    protected $connectionsToTransact = [
-        'mysql',
-        'activity',
-        'user',
-    ];
+    protected array $connectionsToTransact = ['mysql', 'activity', 'user'];
 
     /**
      * @return array<int, class-string>
@@ -44,9 +32,30 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            XotServiceProvider::class,
-            UserServiceProvider::class,
-            ActivityServiceProvider::class,
+            \Modules\Xot\Providers\XotServiceProvider::class,
+            \Modules\User\Providers\UserServiceProvider::class,
+            \Modules\Activity\Providers\ActivityServiceProvider::class,
         ];
+    }
+
+    /**
+     * Define environment setup.
+     */
+    protected function defineEnvironment($app): void
+    {
+        // Use mysql for Activity to ensure test DB has the table
+        $app['config']->set('activitylog.database_connection', 'mysql');
+    }
+
+    /**
+     * Setup the test environment.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Reset the model to ensure it uses the correct connection
+        // This is needed because Activity has $connection = 'activity' by default
+        $this->app->forgetInstance(\Modules\Activity\Models\Activity::class);
     }
 }

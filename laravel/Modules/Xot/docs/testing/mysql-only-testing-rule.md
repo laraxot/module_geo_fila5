@@ -114,6 +114,27 @@ PRODUZIONE: laravelpizza_user    → TEST: laravelpizza_user_test
 # Pattern: {nome}_test - SEMPRE e SOLO _test
 ```
 
+### 4. ❌ Vietato: Logica di connessione dentro i Model
+
+```php
+// ❌ SBAGLIATO - Non mettere mai env() / app()->environment() nei Model
+class Activity extends SpatieActivity
+{
+    // ❌ Cambiare connessione in base all'ambiente rompe TenantServiceProvider
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (app()->environment('testing')) {
+            $this->connection = config('database.default');
+        }
+    }
+}
+
+// ✅ CORRETTO - La connessione si configura nei file di config/env
+// config/activitylog.php + ACTIVITY_LOGGER_DB_CONNECTION in phpunit.xml / .env(.testing)
+```
+
 ## Configurazione .env.testing
 
 ```env
@@ -265,5 +286,5 @@ protected function setUp(): void
 - [MySQL Testing Only Rule](../../../../.cursor/rules/mysql-testing-only.mdc)
 
 **Versione**: 1.0  
-**Ultimo aggiornamento**: 2026-01-21  
+**
 **Status**: REGOLA ASSOLUTA - NESSUNA ECCEZIONE
