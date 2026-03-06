@@ -40,6 +40,7 @@ $dbs = [
     'indennita_responsabilita' => 'indennita_responsabilita',
     'legge_104' => 'legge104',
     'mobilita_volontaria' => 'mobilita_volontaria',
+    'dbforge' => 'dbforge',
     'user' => 'ptv_user',
     'incentivi' => 'ptv_incentivi',
 ];

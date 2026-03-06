@@ -55,9 +55,15 @@ use Modules\Xot\Contracts\UserContract;
  * @mixin IdeHelperOauthAccessToken
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
+<<<<<<< HEAD
+=======
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
  *                                                                                                                   >>>>>>> da38c10 (.)
  * @method static \Modules\User\Database\Factories\OauthAccessTokenFactory       factory($count = null, $state = [])
+<<<<<<< .merge_file_qww8aN
+=======
+>>>>>>> a038b0f2 (.)
+>>>>>>> .merge_file_xb3Yle
  *
  * @mixin \Eloquent
  */
@@ -69,10 +75,49 @@ class OauthAccessToken extends PassportToken
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
 
     /**
+<<<<<<< .merge_file_qww8aN
      * Create a new factory instance for the model.
      */
     protected static function newFactory(): \Modules\User\Database\Factories\OauthAccessTokenFactory
     {
         return \Modules\User\Database\Factories\OauthAccessTokenFactory::new();
+=======
+     * Get the user associated with this access token.
+     * Override Passport's user() to handle null provider gracefully.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        $provider = $this->getTokenGuardProvider();
+
+        if ($provider === null) {
+            return $this->belongsTo(
+                config('auth.guards.api.provider') ?? \Modules\User\Models\User::class,
+                'user_id'
+            );
+        }
+
+        return $this->belongsTo(
+            config("auth.providers.{$provider}.model", \Modules\User\Models\User::class),
+            'user_id'
+        );
+    }
+
+    /**
+     * Get the token guard provider.
+     *
+     * @return string|null
+     */
+    protected function getTokenGuardProvider(): ?string
+    {
+        foreach (config('auth.guards', []) as $guard => $config) {
+            if (($config['driver'] ?? null) === 'passport') {
+                return $config['provider'] ?? null;
+            }
+        }
+
+        return null;
+>>>>>>> .merge_file_xb3Yle
     }
 }

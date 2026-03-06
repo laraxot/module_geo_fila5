@@ -71,17 +71,21 @@ class DatabaseConnection extends Model
         /** @var array<string, mixed>|mixed $connections */
         $connections = config('database.connections');
 
-        if (! is_array($connections)) {
+        if (! is_array($connections) || empty($connections)) {
             return [];
         }
 
-        return Arr::map(
-            $connections,
-            fn (array $value, string $key): array => [
+        $rows = [];
+        foreach ($connections as $key => $value) {
+            if (! is_array($value)) {
+                continue;
+            }
+
+            $rows[] = [
                 'id' => $key,
                 'name' => $key,
-                'driver' => $value['driver'],
-                'database' => $value['database'],
+                'driver' => $value['driver'] ?? 'mysql',
+                'database' => $value['database'] ?? '',
                 'host' => $value['host'] ?? null,
                 'port' => $value['port'] ?? null,
                 'username' => $value['username'] ?? null,
@@ -91,10 +95,12 @@ class DatabaseConnection extends Model
                 'prefix' => $value['prefix'] ?? '',
                 'strict' => $value['strict'] ?? true,
                 'engine' => $value['engine'] ?? 'InnoDB',
-                'options' => $value['options'] ?? [],
+                'options' => is_array($value['options'] ?? null) ? $value['options'] : [],
                 'status' => 'active',
-            ]
-        );
+            ];
+        }
+
+        return $rows;
     }
 
     public function testConnection(): bool

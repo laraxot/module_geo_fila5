@@ -57,7 +57,17 @@ class CompilaIndennitaResponsabilita extends XotBasePage
 
     public ?string $previousUrl = null;
 
-    
+    /**
+     * The current record - public for Blade view access.
+     */
+    public IndennitaResponsabilita|null $record = null;
+
+    /**
+     * Form data holder.
+     *
+     * @var array<string, mixed>
+     */
+    public array $data = [];
 
     /**
      * Mount page - resolves {record} from URL, authorizes, fills form.
