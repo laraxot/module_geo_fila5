@@ -8,51 +8,60 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Incentivi\Actions\UpdateProjectActivitiesAction;
 use Modules\Incentivi\Models\Project;
 
-class UpdateProjectActivitiesPivotStub extends Model
+function makeUpdateProjectPivotStub(): Model
 {
-    public array $lastUpdated = [];
+    return new class extends Model {
+        public array $lastUpdated = [];
 
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->lastUpdated = $attributes;
+        public function update(array $attributes = [], array $options = []): bool
+        {
+            $this->lastUpdated = $attributes;
 
-        return true;
-    }
+            return true;
+        }
+    };
 }
 
-class UpdateProjectActivitiesEmployeeStub extends Model
+function makeUpdateProjectEmployeeStub(mixed $pivot = null): Model
 {
-    public mixed $pivot = null;
+    $employee = new class extends Model {
+        public mixed $pivot = null;
+    };
+    $employee->pivot = $pivot;
+
+    return $employee;
 }
 
-class UpdateProjectActivitiesActivityStub extends Model
+function makeUpdateProjectActivityStub(): Model
 {
-    public array $lastUpdated = [];
+    return new class extends Model {
+        public array $lastUpdated = [];
 
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->lastUpdated = $attributes;
+        public function update(array $attributes = [], array $options = []): bool
+        {
+            $this->lastUpdated = $attributes;
 
-        return true;
-    }
+            return true;
+        }
+    };
 }
 
 it('returns early for null and non-project records', function (): void {
     $action = app(UpdateProjectActivitiesAction::class);
 
     $action->execute(null);
-    $action->execute(new class extends Model {});
+    $action->execute(new class extends Model {
+    });
 
     expect(true)->toBeTrue();
 });
 
 it('updates activities and employee pivots from project incentive component', function (): void {
-    $pivot = new UpdateProjectActivitiesPivotStub();
-    $employee = new UpdateProjectActivitiesEmployeeStub();
-    $employee->pivot = $pivot;
+    $pivot = makeUpdateProjectPivotStub();
+    $employee = makeUpdateProjectEmployeeStub($pivot);
     $employee->pivot->percentuale_attivita_dipendente = 40;
 
-    $activity = new UpdateProjectActivitiesActivityStub();
+    $activity = makeUpdateProjectActivityStub();
     $activity->quota_percentuale = 50;
     $activity->setRelation('employees', collect([$employee]));
 

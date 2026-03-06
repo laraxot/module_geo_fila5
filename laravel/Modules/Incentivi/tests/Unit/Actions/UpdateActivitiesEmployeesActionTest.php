@@ -7,25 +7,34 @@ namespace Modules\Incentivi\Tests\Unit\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Incentivi\Actions\UpdateActivitiesEmployeesAction;
 
-class UpdateActivitiesEmployeesPivotStub extends Model
+function makeUpdateActivitiesPivotStub(): Model
 {
-    public array $lastUpdated = [];
+    return new class extends Model {
+        public array $lastUpdated = [];
 
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->lastUpdated = $attributes;
+        public function update(array $attributes = [], array $options = []): bool
+        {
+            $this->lastUpdated = $attributes;
 
-        return true;
-    }
+            return true;
+        }
+    };
 }
 
-class UpdateActivitiesEmployeesEmployeeStub extends Model
+function makeUpdateActivitiesEmployeeStub(mixed $pivot = null): Model
 {
-    public mixed $pivot = null;
+    $employee = new class extends Model {
+        public mixed $pivot = null;
+    };
+    $employee->pivot = $pivot;
+
+    return $employee;
 }
 
-class UpdateActivitiesEmployeesRecordStub extends Model
+function makeUpdateActivitiesRecordStub(): Model
 {
+    return new class extends Model {
+    };
 }
 
 it('returns early when record is null', function (): void {
@@ -37,12 +46,11 @@ it('returns early when record is null', function (): void {
 });
 
 it('updates employee pivot amount using importo_totale', function (): void {
-    $pivot = new UpdateActivitiesEmployeesPivotStub();
-    $employee = new UpdateActivitiesEmployeesEmployeeStub();
-    $employee->pivot = $pivot;
+    $pivot = makeUpdateActivitiesPivotStub();
+    $employee = makeUpdateActivitiesEmployeeStub($pivot);
     $employee->pivot->percentuale_attivita_dipendente = 25;
 
-    $record = new UpdateActivitiesEmployeesRecordStub();
+    $record = makeUpdateActivitiesRecordStub();
     $record->importo_totale = 1000;
     $record->setRelation('employees', collect([$employee]));
 
@@ -52,15 +60,13 @@ it('updates employee pivot amount using importo_totale', function (): void {
 });
 
 it('falls back to importo field and skips invalid pivots', function (): void {
-    $validPivot = new UpdateActivitiesEmployeesPivotStub();
-    $validEmployee = new UpdateActivitiesEmployeesEmployeeStub();
-    $validEmployee->pivot = $validPivot;
+    $validPivot = makeUpdateActivitiesPivotStub();
+    $validEmployee = makeUpdateActivitiesEmployeeStub($validPivot);
     $validEmployee->pivot->percentuale_attivita_dipendente = 50;
 
-    $invalidEmployee = new UpdateActivitiesEmployeesEmployeeStub();
-    $invalidEmployee->pivot = null;
+    $invalidEmployee = makeUpdateActivitiesEmployeeStub(null);
 
-    $record = new UpdateActivitiesEmployeesRecordStub();
+    $record = makeUpdateActivitiesRecordStub();
     $record->importo = 300;
     $record->setRelation('employees', collect([$validEmployee, $invalidEmployee]));
 

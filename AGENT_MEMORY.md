@@ -230,6 +230,12 @@ Write tests with Pest:
 - Always run PHPMD via `bash laravel/tools/phpmd.sh ...`.
 - If missing, ensure/install with `bash bashscripts/quality/ensure_phpmd_phar.sh`.
 
+### 5. Testing DB Safety Rule
+- Never use `RefreshDatabase` in project tests.
+- Never run `migrate:fresh` from test flows.
+- Never run `migrate --force` from test flows.
+- Prefer non-destructive isolation patterns (transactional tests and targeted setup).
+
 ```php
 test('rating_validation_works', function () {
     $record = createTestRecord();

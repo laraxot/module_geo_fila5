@@ -4,6 +4,12 @@ This directory contains the Incentivi module test suite, including unit, Filamen
 
 ## Quick Start
 
+### Mandatory DB Safety Rule
+Never use:
+- `RefreshDatabase`
+- `migrate:fresh`
+- `migrate --force`
+
 ### Run All Tests
 ```bash
 cd laravel
