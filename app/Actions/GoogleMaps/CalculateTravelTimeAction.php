@@ -9,10 +9,9 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\TravelTimeData;
+use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
-
-use Webmozart\Assert\Assert;
 
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
@@ -26,8 +25,7 @@ readonly class CalculateTravelTimeAction
 
     public function __construct(
         private Client $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
@@ -61,7 +59,7 @@ readonly class CalculateTravelTimeAction
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
         $apiKey = config('services.google.maps_api_key');
-        if (! is_string($apiKey) || '' === trim($apiKey)) {
+        if (! is_string($apiKey) || trim($apiKey) === '') {
             throw new \RuntimeException('Google Maps API key not configured');
         }
         Assert::notSame(
@@ -126,7 +124,7 @@ readonly class CalculateTravelTimeAction
         }
 
         $elementStatus = (string) ($element['status'] ?? 'OK');
-        if ('OK' !== $elementStatus) {
+        if ($elementStatus !== 'OK') {
             return TravelTimeData::error('NO_ROUTE');
         }
 
