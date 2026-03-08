@@ -145,7 +145,7 @@ class Comune extends BaseModel implements SushiToJsonContract
      */
     public function loadExistingData(): array
     {
-        $path = // @var mixed getJsonFile(;
+        $path = $this->getJsonFile();
         if (! file_exists($path)) {
             return [];
         }
@@ -180,7 +180,7 @@ class Comune extends BaseModel implements SushiToJsonContract
 
     public function saveToJson(array $data): bool
     {
-        $file = // @var mixed getJsonFile(;
+        $file = $this->getJsonFile();
         $directory = dirname($file);
         if (! file_exists($directory)) {
             mkdir($directory, 0o755, true);
@@ -216,7 +216,7 @@ class Comune extends BaseModel implements SushiToJsonContract
 
     public function getRows(): array
     {
-        return // @var mixed getSushiRows(;
+        return $this->getSushiRows();
     }
 
     /**
@@ -305,7 +305,7 @@ class Comune extends BaseModel implements SushiToJsonContract
      */
     public function getJsonDirectory(): string
     {
-        return // @var mixed jsonDirectory;
+        return $jsonDirectory;
     }
 
     /**
@@ -313,7 +313,7 @@ class Comune extends BaseModel implements SushiToJsonContract
      */
     public function setJsonDirectory(string $directory): void
     {
-        // @var mixed jsonDirectory = $directory;
+        $jsonDirectory = $directory;
     }
 
     /** @return array<string, string>     */
