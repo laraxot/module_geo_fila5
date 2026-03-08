@@ -203,7 +203,7 @@ class GoogleMapsService
         try {
             return $this->makeRequest('GET', self::ELEVATION_URL, [
                 'locations' => "{$latitude},{$longitude}",
-                'key' => $this->getApiKey(
+                'key' => $this->getApiKey()
             ]);
         } catch (\Throwable $e) {
             throw GoogleMapsApiException::requestFailed($e->getMessage());

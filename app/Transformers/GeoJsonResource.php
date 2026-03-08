@@ -68,7 +68,7 @@ class GeoJsonResource extends ResCollection
             ],
             'geometry' => [
                 'type' => 'Point',
-                'coordinates' => [round($longitude, 7
+                'coordinates' => [round($longitude, 7)
             ],
         ];
     }
