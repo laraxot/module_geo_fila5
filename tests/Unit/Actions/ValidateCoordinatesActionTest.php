@@ -5,7 +5,13 @@ declare(strict_types=1);
 use Modules\Geo\Actions\ValidateCoordinatesAction;
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->action = new ValidateCoordinatesAction();
+||||||| 6161e129d
+    $this->action = new ValidateCoordinatesAction;
+=======
     // @var mixed action = new ValidateCoordinatesAction(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('validates valid coordinates correctly', function (): void {

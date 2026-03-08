@@ -10,8 +10,18 @@ use Modules\Geo\Actions\Nominatim\LookupPlaceAction;
 use Modules\Geo\Datas\LocationData;
 
 beforeEach(function (): void {
+<<<<<<< HEAD
+    /* @phpstan-ignore-next-line method.nonObject */
+    $this->mockClient = $this->mock(Client::class);
+    $this->action = new LookupPlaceAction();
+||||||| 6161e129d
+    /* @phpstan-ignore-next-line method.nonObject */
+    $this->mockClient = $this->mock(Client::class);
+    $this->action = new LookupPlaceAction;
+=======
     // @var mixed mockClient = Mockery::mock(Client::class;
     // @var mixed action = new LookupPlaceAction(;
+>>>>>>> feature/ralph-loop-implementation
 
     // Replace the client instance with our mock
     /** @phpstan-ignore-next-line property.notFound */
@@ -96,7 +106,13 @@ test('lookup place action uses correct user agent header', function (): void {
             /* @phpstan-ignore-next-line offsetAccess.nonOffsetAccessible */
             return isset($options['headers']['User-Agent'])
                    /* @phpstan-ignore-next-line offsetAccess.nonOffsetAccessible */
+<<<<<<< HEAD
+                   && '<main module>/1.0' === $options['headers']['User-Agent'];
+||||||| 6161e129d
+                   && $options['headers']['User-Agent'] === '<main module>/1.0';
+=======
                    && 'Xot/1.0' === $options['headers']['User-Agent'];
+>>>>>>> feature/ralph-loop-implementation
         })
         ->andReturn($mockResponse);
 

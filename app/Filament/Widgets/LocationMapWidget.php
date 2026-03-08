@@ -59,7 +59,14 @@ class LocationMapWidget extends Widget
      */
     public function getMarkers(): array
     {
+<<<<<<< HEAD
+        return $this->getPlaces()
+||||||| 6161e129d
+        return $this->getPlaces()
+            ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
+=======
         return // @var mixed getPlaces(
+>>>>>>> feature/ralph-loop-implementation
             ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
             ->map(function (Place $place): array {
                 $marker = [
@@ -70,7 +77,14 @@ class LocationMapWidget extends Widget
                     'title' => (string) ($place->name ?? 'Unnamed Place'),
                 ];
 
+<<<<<<< HEAD
+                $icon = $this->getMarkerIcon($place);
+||||||| 6161e129d
+                $icon = $this->getMarkerIcon($place);
+                if ($icon !== null) {
+=======
                 $icon = // @var mixed getMarkerIcon($place;
+>>>>>>> feature/ralph-loop-implementation
                 if (null !== $icon) {
                     $marker['icon'] = $icon;
                 }

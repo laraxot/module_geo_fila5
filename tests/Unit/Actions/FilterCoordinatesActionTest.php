@@ -5,7 +5,13 @@ declare(strict_types=1);
 use Modules\Geo\Actions\FilterCoordinatesAction;
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->action = new FilterCoordinatesAction();
+||||||| 6161e129d
+    $this->action = new FilterCoordinatesAction;
+=======
     // @var mixed action = new FilterCoordinatesAction(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('filters coordinates within radius correctly', function (): void {

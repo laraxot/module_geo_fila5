@@ -45,7 +45,14 @@ class OSMMapWidget extends Widget
                     'content' => // @var mixed getInfoWindowContent($place
                 ];
 
+<<<<<<< HEAD
+                $icon = $this->getMarkerIcon($place);
+||||||| 6161e129d
+                $icon = $this->getMarkerIcon($place);
+                if ($icon !== null) {
+=======
                 $icon = // @var mixed getMarkerIcon($place;
+>>>>>>> feature/ralph-loop-implementation
                 if (null !== $icon) {
                     $marker['icon'] = $icon;
                 }

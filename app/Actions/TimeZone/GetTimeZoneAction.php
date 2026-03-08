@@ -23,8 +23,16 @@ class GetTimeZoneAction
 
     public function __construct(?string $apiKey = null)
     {
+<<<<<<< HEAD
+        $this->client = new Client();
+        $this->apiKey = $apiKey;
+||||||| 6161e129d
+        $this->client = new Client;
+        $this->apiKey = $apiKey;
+=======
         // @var mixed client = new Client(;
         // @var mixed apiKey = $apiKey;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

@@ -21,7 +21,13 @@ class FetchIPLocationAction
 
     public function __construct(?Client $client = null)
     {
+<<<<<<< HEAD
+        $this->client = new Client();
+||||||| 6161e129d
+        $this->client = new Client;
+=======
         // @var mixed client = $client ?? new Client(;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

@@ -218,12 +218,28 @@ class Address extends BaseModel
     public function getFullAddressAttribute(): string
     {
         $parts = array_filter([
+<<<<<<< HEAD
+            is_string($this->route) && is_string($this->street_number) ? $this->route.('' !== $this->street_number ? ' '.$this->street_number : '') : null,
+            $this->locality,
+            $this->administrative_area_level_3, // Provincia
+            $this->administrative_area_level_2, // Regione
+            $this->postal_code,
+            $this->country,
+||||||| 6161e129d
+            is_string($this->route) && is_string($this->street_number) ? $this->route.($this->street_number !== '' ? ' '.$this->street_number : '') : null,
+            $this->locality,
+            $this->administrative_area_level_3, // Provincia
+            $this->administrative_area_level_2, // Regione
+            $this->postal_code,
+            $this->country,
+=======
             is_string(// @var mixed route
             // @var mixed locality,
             // @var mixed administrative_area_level_3, // Provincia
             // @var mixed administrative_area_level_2, // Regione
             // @var mixed postal_code,
             // @var mixed country,
+>>>>>>> feature/ralph-loop-implementation
         ], function ($part): bool {
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {

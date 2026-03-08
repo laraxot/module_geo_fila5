@@ -28,7 +28,14 @@ class SushiSeeder extends Seeder
         $data = json_decode(File::get($path), true);
 
         if (JSON_ERROR_NONE !== json_last_error()) {
+<<<<<<< HEAD
+            $this->command->error('Errore nel parsing del file JSON: '.json_last_error_msg());
+||||||| 6161e129d
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->command->error('Errore nel parsing del file JSON: '.json_last_error_msg());
+=======
             // @var mixed command->error('Errore nel parsing del file JSON: '.json_last_error_msg(;
+>>>>>>> feature/ralph-loop-implementation
 
             return;
         }

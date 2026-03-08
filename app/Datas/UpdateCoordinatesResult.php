@@ -41,7 +41,13 @@ class UpdateCoordinatesResult extends Data
      */
     public function isCompleteSuccess(): bool
     {
+<<<<<<< HEAD
+        return 0 === $this->failureCount && $this->successCount > 0;
+||||||| 6161e129d
+        return $this->failureCount === 0 && $this->successCount > 0;
+=======
         return 0 === // @var mixed failureCount && $this->successCount > 0;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**
@@ -49,7 +55,13 @@ class UpdateCoordinatesResult extends Data
      */
     public function isCompleteFailure(): bool
     {
+<<<<<<< HEAD
+        return 0 === $this->successCount && $this->totalProcessed > 0;
+||||||| 6161e129d
+        return $this->successCount === 0 && $this->totalProcessed > 0;
+=======
         return 0 === // @var mixed successCount && $this->totalProcessed > 0;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**
@@ -57,7 +69,13 @@ class UpdateCoordinatesResult extends Data
      */
     public function getSuccessRate(): float
     {
+<<<<<<< HEAD
+        if (0 === $this->totalProcessed) {
+||||||| 6161e129d
+        if ($this->totalProcessed === 0) {
+=======
         if (0 === // @var mixed totalProcessed
+>>>>>>> feature/ralph-loop-implementation
             return 0.0;
         }
 

@@ -24,8 +24,16 @@ class SearchPlacesAction
 
     public function __construct(string $userAgent)
     {
+<<<<<<< HEAD
+        $this->client = new Client();
+        $this->userAgent = $userAgent.' Application';
+||||||| 6161e129d
+        $this->client = new Client;
+        $this->userAgent = $userAgent.' Application';
+=======
         // @var mixed client = new Client(;
         // @var mixed userAgent = $userAgent.' Application';
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

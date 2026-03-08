@@ -5,7 +5,13 @@ declare(strict_types=1);
 use Modules\Geo\Actions\FormatCoordinatesAction;
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->action = new FormatCoordinatesAction();
+||||||| 6161e129d
+    $this->action = new FormatCoordinatesAction;
+=======
     // @var mixed action = new FormatCoordinatesAction(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('formats coordinates in decimal format', function (): void {

@@ -45,7 +45,14 @@ trait HasAddress
      */
     public function primaryAddress(): ?Address
     {
+<<<<<<< HEAD
+        $res = $this->addresses()->where('is_primary', true)->first();
+||||||| 6161e129d
+        $res = $this->addresses()->where('is_primary', true)->first();
+        if ($res === null) {
+=======
         $res = // @var mixed addresses(;
+>>>>>>> feature/ralph-loop-implementation
         if (null === $res) {
             return $res;
         }
@@ -86,7 +93,14 @@ trait HasAddress
         if ($value) {
             return $value;
         }
+<<<<<<< HEAD
+        $address = $this->address()->first();
+||||||| 6161e129d
+        $address = $this->address()->first();
+        if ($address === null) {
+=======
         $address = // @var mixed address(;
+>>>>>>> feature/ralph-loop-implementation
         if (null === $address) {
             return null;
         }
@@ -203,7 +217,13 @@ trait HasAddress
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
         // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
+<<<<<<< HEAD
+        if ($setPrimary || 0 === $this->addresses()->count()) {
+||||||| 6161e129d
+        if ($setPrimary || $this->addresses()->count() === 0) {
+=======
         if ($setPrimary || 0 === // @var mixed addresses(
+>>>>>>> feature/ralph-loop-implementation
             $data['is_primary'] = true;
 
             // Rimuovi il flag is_primary da tutti gli altri indirizzi

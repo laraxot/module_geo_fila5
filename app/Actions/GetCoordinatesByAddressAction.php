@@ -126,7 +126,14 @@ class GetCoordinatesByAddressAction
 
         $data = // @var mixed getBingResponse($address, $apiKey;
 
+<<<<<<< HEAD
+        $coordinates = $this->extractBingCoordinates($data);
+||||||| 6161e129d
+        $coordinates = $this->extractBingCoordinates($data);
+        if ($coordinates === null) {
+=======
         $coordinates = // @var mixed extractBingCoordinates($data;
+>>>>>>> feature/ralph-loop-implementation
         if (null === $coordinates) {
             return null;
         }

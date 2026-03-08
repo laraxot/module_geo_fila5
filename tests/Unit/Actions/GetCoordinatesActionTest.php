@@ -11,7 +11,13 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->action = new GetCoordinatesAction();
+||||||| 6161e129d
+    $this->action = new GetCoordinatesAction;
+=======
     // @var mixed action = new GetCoordinatesAction(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('returns coordinates for valid address', function (): void {

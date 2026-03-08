@@ -5,7 +5,13 @@ declare(strict_types=1);
 use Modules\Geo\Services\GoogleMapsService;
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->service = new GoogleMapsService();
+||||||| 6161e129d
+    $this->service = new GoogleMapsService;
+=======
     // @var mixed service = new GoogleMapsService(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('can be instantiated', function (): void {

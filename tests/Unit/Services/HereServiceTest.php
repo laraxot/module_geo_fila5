@@ -5,7 +5,13 @@ declare(strict_types=1);
 use Modules\Geo\Services\HereService;
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->service = new HereService();
+||||||| 6161e129d
+    $this->service = new HereService;
+=======
     // @var mixed service = new HereService(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('has correct base URL', function (): void {

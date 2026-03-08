@@ -51,7 +51,13 @@ class GeoDataService
      */
     public function __construct()
     {
+<<<<<<< HEAD
+        $this->validator = new GeoDataValidator();
+||||||| 6161e129d
+        $this->validator = new GeoDataValidator;
+=======
         // @var mixed validator = new GeoDataValidator(;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

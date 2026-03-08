@@ -21,7 +21,13 @@ class FetchCoordinatesAction
 
     public function __construct()
     {
+<<<<<<< HEAD
+        $this->client = new Client();
+||||||| 6161e129d
+        $this->client = new Client;
+=======
         // @var mixed client = new Client(;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

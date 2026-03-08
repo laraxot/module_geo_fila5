@@ -58,7 +58,13 @@ class LocationWidget extends XotBaseWidget
      */
     public function __construct()
     {
+<<<<<<< HEAD
+        $this->locationForm = new LocationForm();
+||||||| 6161e129d
+        $this->locationForm = new LocationForm;
+=======
         // @var mixed locationForm = new LocationForm(;
+>>>>>>> feature/ralph-loop-implementation
     }
 
     /**

@@ -8,7 +8,13 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 beforeEach(function () {
+<<<<<<< HEAD
+    $this->action = new GetAddressDataFromFullAddressAction();
+||||||| 6161e129d
+    $this->action = new GetAddressDataFromFullAddressAction;
+=======
     // @var mixed action = new GetAddressDataFromFullAddressAction(;
+>>>>>>> feature/ralph-loop-implementation
 });
 
 it('returns AddressData when first service succeeds', function (): void {

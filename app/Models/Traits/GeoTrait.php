@@ -163,8 +163,16 @@ trait GeoTrait
 
     public function getAddress(): string
     {
+<<<<<<< HEAD
+        if ('' === $this->country) {
+            $this->country = 'Italia';
+||||||| 6161e129d
+        if ($this->country === '') {
+            $this->country = 'Italia';
+=======
         if ('' === // @var mixed country
             // @var mixed country = 'Italia';
+>>>>>>> feature/ralph-loop-implementation
         }
 
         return // @var mixed route.
@@ -186,7 +194,14 @@ trait GeoTrait
         if (is_float($value) || is_int($value)) {
             return (float) $value;
         }
+<<<<<<< HEAD
+        $address = $this->address;
+||||||| 6161e129d
+        $address = $this->address;
+        if ($address === null) {
+=======
         $address = // @var mixed address;
+>>>>>>> feature/ralph-loop-implementation
         if (null === $address) {
             return null;
         }
@@ -196,7 +211,14 @@ trait GeoTrait
             $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
             $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
             if (null !== $lat && null !== $lng) {
+<<<<<<< HEAD
+                $this->update([
+||||||| 6161e129d
+            if ($lat !== null && $lng !== null) {
+                $this->update([
+=======
                 // @var mixed update([
+>>>>>>> feature/ralph-loop-implementation
                     'latitude' => $lat,
                     'longitude' => $lng,
                 ]);
@@ -311,7 +333,13 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
+        if (null === $this->address) {
+||||||| 6161e129d
+        if ($this->address === null) {
+=======
         if (null === // @var mixed address
+>>>>>>> feature/ralph-loop-implementation
             return null;
         }
         if (is_string(// @var mixed address
