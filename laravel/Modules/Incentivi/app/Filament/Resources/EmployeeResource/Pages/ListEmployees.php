@@ -41,7 +41,7 @@ class ListEmployees extends XotBaseListRecords
                 ->searchable(['nome', 'cognome'])
                 ->sortable(['nome', 'cognome']),
             'tipologia' => TextColumn::make('tipologia'),
-            'sesso' => TextColumn::make('sesso'),
+            // 'sesso' => TextColumn::make('sesso'),
             'codice_fiscale' => TextColumn::make('codice_fiscale'),
             'posizione_inail' => TextColumn::make('posizione_inail'),
             /*
@@ -67,4 +67,5 @@ class ListEmployees extends XotBaseListRecords
             // ...parent::getTableActions(),
         ];
     }
+    
 }

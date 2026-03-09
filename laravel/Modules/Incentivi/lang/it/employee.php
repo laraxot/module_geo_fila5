@@ -221,6 +221,8 @@ return [
             'label' => 'Nuovo Dipendente',
             'success' => 'Dipendente creato con successo',
             'error' => 'Errore durante la creazione',
+            'tooltip' => 'create',
+            'icon' => 'create',
         ],
         'update' => [
             'label' => 'Modifica',
@@ -252,6 +254,8 @@ return [
         ],
         'Carica/Aggiorna Dipendenti' => [
             'label' => 'Carica/Aggiorna Dipendenti',
+            'tooltip' => 'Carica/Aggiorna Dipendenti',
+            'icon' => 'Carica/Aggiorna Dipendenti',
         ],
         'logout' => [
             'label' => 'logout',
@@ -348,6 +352,8 @@ return [
         ],
         'layout' => [
             'tooltip' => 'layout',
+            'icon' => 'layout',
+            'label' => 'layout',
         ],
     ],
     'messages' => [
