@@ -22,12 +22,7 @@ class GeocodingData extends Data
         public readonly ?string $country,
         public readonly ?string $postal_code,
         public readonly ?string $error = null,
-<<<<<<< HEAD
-||||||| 6161e129d
-    ) {}
-=======
         public readonly ?string $status = null,
->>>>>>> feature/ralph-loop-implementation
     ) {
     }
 
