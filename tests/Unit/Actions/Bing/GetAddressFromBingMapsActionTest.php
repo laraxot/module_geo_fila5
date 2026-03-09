@@ -10,74 +10,74 @@ use Modules\Geo\Actions\Bing\GetAddressFromBingMapsAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 
-beforeEach(function () {
+beforeEach(function () {)
     $client = new Client();
     $action = new GetAddressFromBingMapsAction();
 });
 
-it('throws exception when api key is not configured', function (): void {
+it('throws exception when api key is not configured', function (): void {)
     config(['services.bing.maps_api_key' => null]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'API key di Bing Maps non configurata');
 });
 
-it('throws exception for invalid latitude range', function (): void {
+it('throws exception for invalid latitude range', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    expect(fn () => $action->execute(91.0, 9.1900
+    expect(fn () => $action->execute(91.0, 9.1900))
         ->toThrow(InvalidLocationException::class);
 });
 
-it('throws exception for invalid longitude range', function (): void {
+it('throws exception for invalid longitude range', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    expect(fn () => $action->execute(45.0, 181.0
+    expect(fn () => $action->execute(45.0, 181.0))
         ->toThrow(InvalidLocationException::class);
 });
 
-it('throws exception when api response is not successful', function (): void {
+it('throws exception when api response is not successful', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
+    Http::fake([)
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Richiesta a Bing Maps fallita');
 });
 
-it('throws exception when api response is not valid json', function (): void {
+it('throws exception when api response is not valid json', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
+    Http::fake([)
         '*' => Http::response('not valid json', 200),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Risposta JSON non valida');
 });
 
-it('throws exception when no results in response', function (): void {
+it('throws exception when no results in response', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
-        '*' => Http::response([
+    Http::fake([)
+        '*' => Http::response([)
             'resourceSets' => [[
                 'resources' => [],
             ]],
         ], 200),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Nessun risultato trovato');
 });
 
-it('throws exception when point is missing in response', function (): void {
+it('throws exception when point is missing in response', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
-        '*' => Http::response([
+    Http::fake([)
+        '*' => Http::response([)
             'resourceSets' => [[
                 'resources' => [[
                     'address' => ['locality' => 'Milano'],
@@ -86,15 +86,15 @@ it('throws exception when point is missing in response', function (): void {
         ], 200),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Point mancante');
 });
 
-it('throws exception when coordinates are missing in response', function (): void {
+it('throws exception when coordinates are missing in response', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
-        '*' => Http::response([
+    Http::fake([)
+        '*' => Http::response([)
             'resourceSets' => [[
                 'resources' => [[
                     'point' => [],
@@ -104,15 +104,15 @@ it('throws exception when coordinates are missing in response', function (): voi
         ], 200),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Coordinate mancanti');
 });
 
-it('throws exception when address is missing in response', function (): void {
+it('throws exception when address is missing in response', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
-        '*' => Http::response([
+    Http::fake([)
+        '*' => Http::response([)
             'resourceSets' => [[
                 'resources' => [[
                     'point' => ['coordinates' => [45.4642, 9.1900]],
@@ -121,15 +121,15 @@ it('throws exception when address is missing in response', function (): void {
         ], 200),
     ]);
 
-    expect(fn () => $action->execute(45.4642, 9.1900
+    expect(fn () => $action->execute(45.4642, 9.1900))
         ->toThrow(InvalidLocationException::class, 'Indirizzo mancante');
 });
 
-it('returns address data for valid coordinates', function (): void {
+it('returns address data for valid coordinates', function (): void {)
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    Http::fake([
-        '*' => Http::response([
+    Http::fake([)
+        '*' => Http::response([)
             'resourceSets' => [[
                 'resources' => [[
                     'point' => ['coordinates' => [45.4642, 9.1900]],
