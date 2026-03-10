@@ -173,7 +173,7 @@ Aggiornate le annotazioni `@property` per riflettere i tipi post-mutator:
 - **BaseIndividualeModel**: `codqua` int→string, `cont`/`tipco` int→mixed
 - **Performance**: `codqua` int→string, `cont`/`tipco` int→mixed  
 - **Organizzativa**: Già corrette (mixed)
-- **Progressioni/Schede**: Già corrette (mixed)
+- **Progressioni/Scheda**: Già corrette (mixed)
 
 ## Impatti sui Moduli Collegati
 

@@ -8,9 +8,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
-* Class CreateXotSchedeTable
+* Class CreateXotSchedaTable
 */
-class CreateXotSchedeTable extends XotBaseMigration {
+class CreateXotSchedaTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *

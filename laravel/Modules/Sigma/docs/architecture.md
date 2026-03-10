@@ -208,7 +208,7 @@ Sigma è utilizzato da:
    - Estende `SchedaTrait`
    - Gestisce schede progressioni PTV
 
-2. **Progressioni** (`Modules\Progressioni\Models\Schede`)
+2. **Progressioni** (`Modules\Progressioni\Models\Scheda`)
    - Estende `SchedaTrait`
    - Gestisce schede progressioni carriera
 

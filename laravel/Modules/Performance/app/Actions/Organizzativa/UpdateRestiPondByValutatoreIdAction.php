@@ -22,9 +22,9 @@ class UpdateRestiPondByValutatoreIdAction
     use QueueableAction;
 
     /**
-     * Il modello Schede per le query.
+     * Il modello Scheda per le query.
      */
-    protected Schede $model;
+    protected Scheda $model;
 
     /**
      * Il modello TotValutatoreId per le query.
@@ -34,10 +34,10 @@ class UpdateRestiPondByValutatoreIdAction
     /**
      * Costruttore.
      *
-     * @param  Schede  $schedeModel  Il modello Schede
+     * @param  Scheda  $schedeModel  Il modello Scheda
      * @param  TotValutatoreId  $totValutatoreIdModel  Il modello TotValutatoreId
      */
-    public function __construct(Schede $schedeModel, TotValutatoreId $totValutatoreIdModel)
+    public function __construct(Scheda $schedeModel, TotValutatoreId $totValutatoreIdModel)
     {
         $this->model = $schedeModel;
         $this->totValutatoreIdModel = $totValutatoreIdModel;

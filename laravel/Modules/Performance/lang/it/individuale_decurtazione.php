@@ -8,7 +8,7 @@ return [
         'name' => 'individuale_decurtazione',
         'plural' => 'individuale_decurtazione',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
         ],
     ],
     'fields' => [

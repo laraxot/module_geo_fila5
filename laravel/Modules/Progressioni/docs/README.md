@@ -9,7 +9,7 @@ Il modulo **Progressioni** gestisce le schede di valutazione e la logica di prog
 1. I model PHP sono singolari (`Scheda`, non `Schede`).
 2. Le tabelle restano plurali (`schede`).
 3. Le risorse Filament puntano sempre al model singolare.
-4. Dopo rename di model o file class-based va sempre rigenerato l'autoload Composer prima di eseguire `ide-helper`, altrimenti possono restare classmap stale verso path rimossi come `app/Models/Schede.php`.
+4. Dopo rename di model o file class-based va sempre rigenerato l'autoload Composer prima di eseguire `ide-helper`, altrimenti possono restare classmap stale verso path rimossi come `app/Models/Scheda.php`.
 
 ## Documenti Da Leggere Prima Di Modificare
 

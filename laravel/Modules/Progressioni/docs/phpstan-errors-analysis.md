@@ -52,7 +52,7 @@ public function execute(string $modelClass, string $fieldname, int|string $year)
 - `app/Actions/RefreshByYearAction.php` (11 errori)
 - `app/Actions/TrovaEsclusiAction.php` (25 errori)
 - `app/Models/Traits/ConvertedTrait.php` (14 errori)
-- `app/Models/Schede.php` (10+ errori)
+- `app/Models/Scheda.php` (10+ errori)
 
 ### 2. Return Type Inconsistencies (40+ Errori)
 

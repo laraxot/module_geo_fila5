@@ -69,7 +69,7 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
         return $this->hasMany($modelClass, 'anno', 'anno');
     }
 
-    public function getSchedeCollection(): EloquentCollection
+    public function getSchedaCollection(): EloquentCollection
     {
         return $this->schede()->get();
     }

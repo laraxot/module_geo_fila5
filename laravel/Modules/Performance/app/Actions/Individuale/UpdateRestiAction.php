@@ -32,16 +32,16 @@ class UpdateRestiAction
     use QueueableAction;
 
     /**
-     * Il modello Schede per le query.
+     * Il modello Scheda per le query.
      */
-    protected Schede $model;
+    protected Scheda $model;
 
     /**
      * Costruttore.
      *
-     * @param  Schede  $schedeModel  Il modello Schede
+     * @param  Scheda  $schedeModel  Il modello Scheda
      */
-    public function __construct(Schede $schedeModel)
+    public function __construct(Scheda $schedeModel)
     {
         $this->model = $schedeModel;
     }

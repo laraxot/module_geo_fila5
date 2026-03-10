@@ -24,7 +24,7 @@ use Modules\Performance\Filament\Resources\IndividualeResource;
 use Modules\Performance\Models\Individuale;
 use Modules\Performance\Models\Organizzativa;
 use Modules\Performance\Models\StabiDirigente;
-use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Ptv\Filament\Actions\Header\PopulateYearAction;
 use Modules\Ptv\Filament\Columns\LavoratoreColumn;
@@ -204,7 +204,7 @@ class ListIndividuales extends XotBaseListRecords
     {
         return [
             'send_mail' => SendMailBulkAction::make('send_mail'),
-            'zip_schede' => ZipSchedeBulkAction::make('zip_schede'),
+            'zip_schede' => ZipSchedaBulkAction::make('zip_schede'),
         ];
     }
 

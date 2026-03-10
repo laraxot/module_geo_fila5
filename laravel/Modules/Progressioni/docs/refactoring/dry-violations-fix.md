@@ -288,13 +288,13 @@ public function getActivitylogOptions(): LogOptions
 ### Verificare Modelli Simili
 
 **Checklist**:
-- [ ] `Modules/Progressioni/app/Models/Schede.php` - ✅ **VERIFICATO**: Ha stessa duplicazione
+- [ ] `Modules/Progressioni/app/Models/Scheda.php` - ✅ **VERIFICATO**: Ha stessa duplicazione
 - [ ] Altri modelli che estendono `BaseScheda`
 - [ ] Modelli con trait multipli
 
 ### Schede.php
 
-**File**: `Modules/Progressioni/app/Models/Schede.php` (righe 426-435)
+**File**: `Modules/Progressioni/app/Models/Scheda.php` (righe 426-435)
 
 Ha **stessa duplicazione** di trait resolution. Applicare stesso fix:
 

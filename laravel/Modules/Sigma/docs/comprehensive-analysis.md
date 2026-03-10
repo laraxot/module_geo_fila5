@@ -148,11 +148,11 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 **Utilizzo Principale**: Il modello `Schede` del modulo Progressioni utilizza `SchedaTrait` e `SigmaModelTrait` per la gestione delle progressioni di carriera.
 
-**File Chiave**: `Modules/Progressioni/app/Models/Schede.php`
+**File Chiave**: `Modules/Progressioni/app/Models/Scheda.php`
 
 **Pattern di Utilizzo**:
 ```php
-class Schede extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseModel implements ProgressioneSchedaContract
 {
     use ConvertedTrait;
     use ProgressioniTrait;

@@ -29,7 +29,7 @@ class SendSchedaBulkAction extends BulkAction
     {
         parent::setUp();
 
-        $this->label('Invia Schede via Mail')
+        $this->label('Invia Scheda via Mail')
             ->tooltip('Invia il PDF generato tramite email')
             ->icon('heroicon-o-paper-airplane')
             ->action(function ($livewire, $action, $records): void {

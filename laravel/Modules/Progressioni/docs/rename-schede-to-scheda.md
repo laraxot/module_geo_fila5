@@ -12,7 +12,7 @@ Following Laravel conventions and general OOP best practices, Model names should
 ## Changes Completed (2026-03-10)
 
 ### Core Files
-1. **Model File**: Renamed `app/Models/Schede.php` → `app/Models/Scheda.php`
+1. **Model File**: Renamed `app/Models/Scheda.php` → `app/Models/Scheda.php`
 2. **Class Name**: Updated class name from `Schede` to `Scheda`
 3. **Factory**: Renamed `database/factories/SchedeFactory.php` → `database/factories/SchedaFactory.php`
 4. **Policy**: Renamed `app/Models/Policies/SchedePolicy.php` → `app/Models/Policies/SchedaPolicy.php`

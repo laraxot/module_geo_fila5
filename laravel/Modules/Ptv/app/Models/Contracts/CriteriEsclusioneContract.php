@@ -52,7 +52,7 @@ interface CriteriEsclusioneContract
     /**
      * Ottiene la collezione iterabile delle schede per la verifica criteri.
      */
-    public function getSchedeCollection(): Collection;
+    public function getSchedaCollection(): Collection;
 
     /**
      * Ottiene la collezione delle opzioni dei criteri.

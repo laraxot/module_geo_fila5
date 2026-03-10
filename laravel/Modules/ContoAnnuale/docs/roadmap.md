@@ -7,7 +7,7 @@ Modulo per la gestione del conto annuale (bilancio/rendiconto annuale) nel conte
 ## Fasi di Sviluppo
 
 ### Fase 1: Stabilizzazione (Planned)
-- [ ] PHPStan Level 10 Compliance
+- [x] PHPStan Level 10 Compliance
 - [ ] Allineamento a XotBaseResource e pattern Laraxot
 - [ ] Documentazione modulo completa
 
@@ -22,7 +22,7 @@ Modulo per la gestione del conto annuale (bilancio/rendiconto annuale) nel conte
 
 ## Checklist Qualità
 
-- [ ] PHPStan Level 10
+- [x] PHPStan Level 10
 - [ ] Estensione XotBaseResource
 - [ ] Traduzioni in lang/it e lang/en
 - [ ] Documentazione in docs/
