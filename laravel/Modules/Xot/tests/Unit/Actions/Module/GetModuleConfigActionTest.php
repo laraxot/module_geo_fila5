@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\Module;
+
 use Modules\Xot\Actions\Module\GetModuleConfigAction;
 use Modules\Xot\Actions\Module\GetModulePathByGeneratorAction;
-use Tests\TestCase;
-
-uses(TestCase::class);
 
 it('returns config array from module config file', function (): void {
     $tempDir = sys_get_temp_dir().'/xot_modcfg_'.uniqid('', true);

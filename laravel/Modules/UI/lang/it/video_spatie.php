@@ -16,7 +16,6 @@ return [
             'description' => 'video',
             'helper_text' => 'video',
             'tooltip' => '',
-            'placeholder' => 'video',
         ],
         'caption' => [
             'label' => 'caption',

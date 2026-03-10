@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Module\GetModuleConfigAction;
 use Modules\Xot\Actions\Module\GetModuleNameByClassAction;
 use Modules\Xot\Actions\Module\GetModulePathByGeneratorAction;
-use Tests\TestCase;
-
-uses(TestCase::class);
 
 test('get module name by class action works', function () {
     $action = app(GetModuleNameByClassAction::class);
@@ -21,7 +18,7 @@ test('get module config action works', function () {
     $path = tempnam(sys_get_temp_dir(), 'test_module_config');
     unlink($path);
     mkdir($path);
-    File::put($path.'/test.php', "<?php return ['a' => 1];");
+    File::put($path.'/test.php', "return ['a' => 1]);");
 
     $this->mock(GetModulePathByGeneratorAction::class)
         ->shouldReceive('execute')

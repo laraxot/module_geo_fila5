@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Unit\Widgets;
+
 uses(Modules\UI\Tests\TestCase::class);
 
 use Filament\Forms\Components\DateTimePicker;
@@ -61,29 +63,14 @@ describe('UserCalendarWidget Form Schema', function () {
         $grid = $formSchema[1];
         expect($grid)->toBeInstanceOf(Grid::class);
 
-        $reflection = new ReflectionClass($grid);
-        $property = $reflection->getProperty('childComponents');
-        $property->setAccessible(true);
-        $gridSchema = $property->getValue($grid);
-
+        $gridSchema = $grid->getChildComponents();
         expect($gridSchema)->toBeArray();
+        expect($gridSchema)->toHaveCount(2);
 
-        $gridValues = array_values($gridSchema);
-        if (isset($gridSchema['default']) && is_array($gridSchema['default'])) {
-            $gridValues = array_values($gridSchema['default']);
-        } elseif (($gridValues[0] ?? null) instanceof Closure) {
-            /** @var array<int, mixed> $resolved */
-            $resolved = $gridValues[0]();
-            $gridValues = array_values($resolved);
-        }
+        expect($gridSchema[0])->toBeInstanceOf(DateTimePicker::class);
+        expect($gridSchema[1])->toBeInstanceOf(DateTimePicker::class);
 
-        expect($gridValues)->not->toBeEmpty();
-        expect($gridValues[0])->toBeInstanceOf(DateTimePicker::class);
-        expect($gridValues[0]->getName())->toBe('starts_at');
-
-        if (isset($gridValues[1])) {
-            expect($gridValues[1])->toBeInstanceOf(DateTimePicker::class);
-            expect($gridValues[1]->getName())->toBe('ends_at');
-        }
+        expect($gridSchema[0]->getName())->toBe('starts_at');
+        expect($gridSchema[1]->getName())->toBe('ends_at');
     });
 });

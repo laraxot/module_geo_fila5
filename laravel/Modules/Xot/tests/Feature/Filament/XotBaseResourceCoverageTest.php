@@ -10,9 +10,6 @@ use Modules\Media\Actions\GetAttachmentsSchemaAction;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Actions\ModelClass\CountAction;
 use Modules\Xot\Tests\Fixtures\Filament\Resources\ProbeResource;
-use Tests\TestCase;
-
-uses(TestCase::class);
 
 it('covers model resolution and model cache', function (): void {
     ProbeResource::resetModelCache();
@@ -137,7 +134,7 @@ it('covers get attachments schema branches', function (): void {
     expect($resourceNoAttachments::getAttachmentsSchema())->toBe([]);
 
     if (! class_exists('Modules\\Xot\\Tests\\Fixtures\\Models\\ProbeBadAttachments')) {
-        eval('namespace Modules\\Xot\\Tests\\Fixtures\\Models; class ProbeBadAttachments extends \\Illuminate\\Database\\Eloquent\\Model { public static function getAttachments(): string { return "invalid"; } }');
+        eval(' class ProbeBadAttachments extends \\Illuminate\\Database\\Eloquent\\Model { public static function getAttachments(): string { return "invalid"; } }');
     }
 
     $resourceBadAttachments = new class extends \Modules\Xot\Filament\Resources\XotBaseResource {
@@ -152,7 +149,7 @@ it('covers get attachments schema branches', function (): void {
     expect($resourceBadAttachments::getAttachmentsSchema())->toBe([]);
 
     if (! class_exists('Modules\\Xot\\Tests\\Fixtures\\Models\\ProbeGoodAttachments')) {
-        eval('namespace Modules\\Xot\\Tests\\Fixtures\\Models; class ProbeGoodAttachments extends \\Illuminate\\Database\\Eloquent\\Model { public static function getAttachments(): array { return ["one", 7, "two"]; } }');
+        eval(' class ProbeGoodAttachments extends \\Illuminate\\Database\\Eloquent\\Model { public static function getAttachments(): array { return ["one", 7, "two"]; } }');
     }
 
     app()->instance(GetAttachmentsSchemaAction::class, new class {

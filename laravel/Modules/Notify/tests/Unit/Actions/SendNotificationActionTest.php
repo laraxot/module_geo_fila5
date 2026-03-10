@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Notify\Tests\Unit\Actions;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Notifications\Notifiable;
@@ -15,21 +17,24 @@ use Modules\Notify\Tests\TestCase;
 
 uses(TestCase::class);
 
-class DummySendNotificationRecipient extends Model
+function makeDummySendNotificationRecipient(array $attributes = []): Model
 {
-    use Notifiable;
-
-    protected $guarded = [];
-
-    public function routeNotificationForMail(): string
+    return new class($attributes) extends Model
     {
-        return (string) ($this->getAttribute('email') ?? 'recipient@example.test');
-    }
+        use Notifiable;
 
-    public function routeNotificationForSms(): string
-    {
-        return (string) ($this->getAttribute('phone') ?? '3331234567');
-    }
+        protected $guarded = [];
+
+        public function routeNotificationForMail(): string
+        {
+            return (string) $this->getAttribute('email');
+        }
+
+        public function routeNotificationForSms(): string
+        {
+            return (string) $this->getAttribute('phone');
+        }
+    };
 }
 
 beforeEach(function (): void {
@@ -61,7 +66,7 @@ beforeEach(function (): void {
 });
 
 test('send notification action throws when template is missing', function (): void {
-    $recipient = new DummySendNotificationRecipient(['email' => 'user@example.test']);
+    $recipient = makeDummySendNotificationRecipient(['email' => 'user@example.test']);
 
     app(SendNotificationAction::class)->execute($recipient, 'missing-template');
 })->throws(Exception::class);
@@ -81,7 +86,7 @@ test('send notification action returns false when template should not send', fun
         'type' => 'email',
     ]);
 
-    $recipient = new DummySendNotificationRecipient(['email' => 'user@example.test']);
+    $recipient = makeDummySendNotificationRecipient(['email' => 'user@example.test']);
 
     $result = app(SendNotificationAction::class)->execute($recipient, 'welcome-template', ['send' => false]);
 
@@ -103,7 +108,7 @@ test('send notification action dispatches database notification from template ch
         'type' => 'email',
     ]);
 
-    $recipient = new DummySendNotificationRecipient(['email' => 'user@example.test']);
+    $recipient = makeDummySendNotificationRecipient(['email' => 'user@example.test']);
 
     Notification::fake();
 

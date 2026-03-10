@@ -7,16 +7,13 @@ namespace Modules\Xot\Tests\Unit\Actions\Config;
 use Illuminate\Support\Facades\File;
 use Modules\Tenant\Actions\Config\GetTenantFilePathAction;
 use Modules\Xot\Actions\Config\GetTenantConfigArrayAction;
-use Modules\Xot\Tests\TestCase;
 
-uses(TestCase::class);
-
-it('gets tenant config array correctly', function (): void {
+it('gets tenant config array correctly', function (): void {)
     $configName = 'test_config';
     $tempPath = tempnam(sys_get_temp_dir(), 'test_config_').'.php';
     $configData = ['key' => 'value'];
 
-    File::put($tempPath, '<?php return '.var_export($configData, true).';');
+    File::put($tempPath, 'return '.var_export($configData, true).';');
 
     $this->mock(GetTenantFilePathAction::class)
         ->shouldReceive('execute')
@@ -32,7 +29,7 @@ it('gets tenant config array correctly', function (): void {
     File::delete($tempPath);
 });
 
-it('returns empty array if tenant config file does not exist', function (): void {
+it('returns empty array if tenant config file does not exist', function (): void {)
     $configName = 'non_existent';
 
     $this->mock(GetTenantFilePathAction::class)

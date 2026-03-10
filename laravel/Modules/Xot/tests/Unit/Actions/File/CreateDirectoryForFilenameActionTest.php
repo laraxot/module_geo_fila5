@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\File;
+
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\File\CreateDirectoryForFilenameAction;
-use Modules\Xot\Tests\TestCase;
-
-uses(TestCase::class);
 
 beforeEach(function (): void {
     $this->action = app(CreateDirectoryForFilenameAction::class);
-    $this->tempDir = sys_get_temp_dir().'/xot_createdir_test_'.uniqid();
+    $this->tempDir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'test_create_dir_'.uniqid();
+    if (! File::isDirectory($this->tempDir)) {
+        File::makeDirectory($this->tempDir, 0755, true);
+    }
 });
 
 afterEach(function (): void {

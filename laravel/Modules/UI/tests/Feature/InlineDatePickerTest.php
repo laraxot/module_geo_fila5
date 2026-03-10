@@ -2,15 +2,21 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Feature;
+
+use Carbon\Exceptions\InvalidFormatException;
+use Filament\Forms\Components\Field;
+use Filament\Forms\Forms\Components\InlineDatePicker;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
-use Modules\UI\Filament\Forms\Components\InlineDatePicker;
 use Tests\TestCase;
 
 uses(TestCase::class);
 
 test('it can be instantiated', function (): void {
     $component = InlineDatePicker::make('test');
+    expect($component)->toBeInstanceOf(Field::class);
     expect($component)->toBeInstanceOf(InlineDatePicker::class);
 });
 
@@ -63,10 +69,12 @@ test('it respects locale in calendar data', function (): void {
 });
 
 test('it can be used in a form', function (): void {
-    $component = InlineDatePicker::make('appointment_date')->enabledDates(['2025-06-15']);
+    $form = Schema::make()->components([
+        InlineDatePicker::make('appointment_date')->enabledDates(['2025-06-15']),
+    ]);
 
-    expect($component)->toBeInstanceOf(InlineDatePicker::class);
-    expect($component->getEnabledDates()->toArray())->toBe(['2025-06-15']);
+    expect($form->getComponents())->toHaveCount(1);
+    expect($form->getComponent('appointment_date'))->toBeInstanceOf(InlineDatePicker::class);
 });
 
 test('it handles empty enabled dates', function (): void {
@@ -79,8 +87,7 @@ test('it handles empty enabled dates', function (): void {
 
 test('it throws on invalid enabled dates input', function (): void {
     $component = InlineDatePicker::make('test')->enabledDates(['invalid-date']);
-    expect($component->getEnabledDates())->toBeInstanceOf(Collection::class);
-    expect($component->getEnabledDates()->isEmpty())->toBeTrue();
+    expect($component->getEnabledDates()->toArray(...))->toThrow(InvalidFormatException::class);
 });
 
 test('it handles different date formats', function (): void {
@@ -93,7 +100,7 @@ test('it handles different date formats', function (): void {
 test('it handles time portion gracefully', function (): void {
     $component = InlineDatePicker::make('test')->enabledDates(['2025-06-15']);
 
-    expect($component->isDateEnabled('2025-06-15'))->toBeTrue();
+    expect($component->isDateEnabled('2025-06-15 14:30:00'))->toBeTrue();
 });
 
 test('it uses carbon for localization', function (): void {
@@ -139,7 +146,7 @@ test('it handles enabled dates correctly', function (): void {
 test('it is dry no code duplication', function (): void {
     // Verifica che non ci sia duplicazione di logica tra PHP e JavaScript
     $viewContent = file_get_contents(base_path(
-        'Modules/UI/resources/views/filament/forms/components/inline-date-picker.blade.php',
+        'laravel/Modules/UI/resources/views/filament/forms/components/inline-date-picker.blade.php',
     ));
 
     // Assert: Nessun JavaScript complesso per navigazione
@@ -147,8 +154,8 @@ test('it is dry no code duplication', function (): void {
     expect($viewContent)->not->toContain('generateCalendarForMonth');
 
     // Assert: Solo chiamate wire:click server-side
-    expect($viewContent)->toContain('wire:click="previousMonth()"');
-    expect($viewContent)->toContain('wire:click="nextMonth()"');
+    expect($viewContent)->toContain('wire:click="previousMonth"');
+    expect($viewContent)->toContain('wire:click="nextMonth"');
 });
 
 test('it is kiss simple and clear', function (): void {

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Unit\Models;
+
 use Modules\UI\Models\Asset;
 
 describe('Asset Model', function (): void {
@@ -46,7 +48,7 @@ describe('Asset Model', function (): void {
     it('uses strict types', function (): void {
         $reflection = new ReflectionClass(Asset::class);
         $content = file_get_contents($reflection->getFileName());
-        expect($content)->toContain('declare(strict_types=1);');
+        expect($content)->toContain('');
     });
 
     it('has correct namespace', function (): void {

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Unit\Datas;
+
 uses(Modules\UI\Tests\TestCase::class);
 
 use Modules\UI\Data\UserData as DataUserData;

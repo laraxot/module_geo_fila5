@@ -59,7 +59,7 @@ class DatabaseSchemaExporterCommand extends Command
             return 1;
         }
 
-        $this->info('Trovate '.count($tables).' tabelle.');
+        $this->info('Trovate '.count($tables));
 
         // Inizializza l'array che conterrà tutte le informazioni
         $databaseSchema = [
@@ -68,7 +68,7 @@ class DatabaseSchemaExporterCommand extends Command
             'tables' => [],
         ];
 
-        $progressBar = $this->output->createProgressBar(count($tables));
+        $progressBar = $output->createProgressBar(count($tables));
         $progressBar->start();
 
         foreach ($tables as $table) {

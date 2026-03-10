@@ -95,8 +95,8 @@ function dddx(mixed $params): string
 ## 📚 Documentazione
 
 ### Scripts Creati
-- `bashscripts/analysis/analyze-module-quality.sh` - Analisi singolo modulo
-- `bashscripts/analysis/analyze-all-modules.sh` - Analisi tutti i moduli
+- `Xot/bashscripts/analyze-module-quality.sh` - Analisi singolo modulo
+- `Xot/bashscripts/analyze-all-modules.sh` - Analisi tutti i moduli
 
 ### Documenti Aggiornati
 - `Xot/docs/code-quality-audit-2025-01.md` - Audit generale
@@ -118,4 +118,4 @@ function dddx(mixed $params): string
 - La documentazione viene aggiornata costantemente durante l'analisi
 - Le regole e best practices sono in `.cursor/rules/` e `.windsurf/rules/`
 
-*
+*Ultimo aggiornamento: 2025-01-22*
