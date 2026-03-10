@@ -175,7 +175,7 @@ use RuntimeException;
  * @property int|null $ana02f_count
  * @property Ana10f|null $ana10f
  * @property Anag|null $anag
- * @property Collection<int, Assenze> $assenze
+ * @property Collection<int, Assenza> $assenze
  * @property int|null $assenze_count
  * @property Collection<int, Asz00k1> $asz
  * @property int|null $asz_count

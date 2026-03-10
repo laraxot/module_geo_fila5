@@ -34,6 +34,7 @@
 - **Per i campi di sola lettura, usare Infolist invece di form disabled**: separazione di responsabilità - Infolist per visualizzazione, Form per input editabili
 - **Implementare Infolist con HasInfolists trait**: `class Page extends XotBasePage implements HasInfolists { use InteractsWithInfolists; }`
 - **getInfolistSchema() deve avere chiavi stringa** come per getFormSchema()
+- **Nomenclatura Modelli (Rule #12)**: I modelli Eloquent DEVONO essere sempre nominati al SINGOLARE (es: `Scheda` invece di `Schede`). Seguire rigorosamente gli standard di Laravel per assicurare compatibilità con le convenzioni di Laraxot.
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua
@@ -221,7 +222,10 @@ Quando si crea un'issue:
 
 ---
 
-*Ultimo aggiornamento: 2026-02-17*
+*Ultimo aggiornamento: 2026-03-10*
+
+### 8. CRITICAL UPDATES
+- **Standardizzazione Modelli**: Il modello `Schede` nel modulo `Progressioni` è stato rinominato in `Scheda`. Tutte le reference plurali sono state migrate al singolare.
 
 ---
 

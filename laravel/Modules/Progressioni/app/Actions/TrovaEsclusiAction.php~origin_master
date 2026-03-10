@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 // -------- models -----------
 use Modules\Progressioni\Models\CriteriEsclusione;
 use Modules\Progressioni\Models\CriteriOption;
-use Modules\Progressioni\Models\Progressioni as Schede;
+use Modules\Progressioni\Models\Progressioni as Scheda;
 
 // -------- services --------
 // use Modules\Xot\Services\ArrayService;

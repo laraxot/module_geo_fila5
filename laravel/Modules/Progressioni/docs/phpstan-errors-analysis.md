@@ -112,7 +112,7 @@ public static function getFormSchema(): array<string, \Filament\Forms\Components
 // ❌ ERRATO: Property access su mixed
 public function execute(int $year): string
 {
-    $schede = Schede::where('anno', $year)->get();
+    $schede = Scheda::where('anno', $year)->get();
     foreach ($schede as $scheda) {
         $scheda->motivo = $motivo; // ❌ Cannot access property on mixed
         $scheda->ha_diritto = $ha_diritto; // ❌ Cannot access property on mixed
@@ -150,7 +150,7 @@ public function execute(int $year): string
 
 ### Avanzamento – Tipizzazione `getFormSchema()` (Novembre 2025)
 
-- ✅ Risorse aggiornate: CriteriOption, CriteriPrecedenza, CriteriValutazione, EsclusiExtra, Integparam, MaxCatecoPosfunAnno, MyLog, Pesi, Progressioni, SchedaCriteri, Schede, StabiDirigente, StipendioTabellare, Valutatore.
+- ✅ Risorse aggiornate: CriteriOption, CriteriPrecedenza, CriteriValutazione, EsclusiExtra, Integparam, MaxCatecoPosfunAnno, MyLog, Pesi, Progressioni, SchedaCriteri, Scheda, StabiDirigente, StipendioTabellare, Valutatore.
 - ✅ Tutti i `getFormSchema()` ora restituiscono `array<string, Component>`; ogni componente è referenziato tramite chiave descrittiva e le `Section` hanno schemi interni tipizzati.
 - ✅ Nel panel amministrativo i form risultano più prevedibili perché Filament riceve sempre componenti dichiarati esplicitamente (niente array numerici).
 - 🔜 Prossima milestone: applicare lo stesso principio alle Infolist e alle Filament Actions che ancora operano con `mixed`.
@@ -304,7 +304,7 @@ public static function getFormSchema(): array
 ### 3. Filament Resources
 - ✅ **ProgressioniResource**: Tipizzati tutti i `$record` nelle closure come `Progressioni`, corretto accesso a proprietà `$anno` e `$excellences_count_last_3_years`
 - ✅ **ListProgressionis**: Tipizzato `$anno` nella closure `options()` con annotazione appropriata
-- ✅ **ListSchedes**: Tipizzati `$record` come `Schede`, corretto array shape per `Populate::execute()`, tipizzato `$anno` nella concatenazione
+- ✅ **ListSchedes**: Tipizzati `$record` come `Scheda`, corretto array shape per `Populate::execute()`, tipizzato `$anno` nella concatenazione
 - ✅ **CompilaScheda**: Tipizzato `$form_data` come `array<string, mixed>`, corretto `redirect()` con tipizzazione appropriata
 - ✅ **ListIntegparams**: Corretto casting di `$state` per `Carbon::parse()` con validazione appropriata
 

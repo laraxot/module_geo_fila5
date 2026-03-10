@@ -22,14 +22,8 @@ Following Laravel conventions and general OOP best practices, Model names should
 6. **Class References**: Updated all `Schede::` → `Scheda::`
 7. **PHPDoc**: Updated all `@property Collection<int, Schede>` → `@property Collection<int, Scheda>`
 8. **Type Hints**: Updated all method signatures referencing `Schede $model` → `Scheda $model`
-9. **Blade Views**: Updated all view files referencing the model
-10. **Translations**: Updated language files
-
-### Statistics
-- **Files Modified**: 133 files
-- **Total Replacements**: 626 matches
-- **Module Affected**: Progressioni
-- **Cross-Module Impact**: Performance, Sigma (imports and references)
+9. **Filament Resource Path**: Renamed support path `Filament/Resources/SchedeResource/*` → `Filament/Resources/SchedaResource/*`
+10. **Cross-Module Alignment**: Applied same singular rule in `Modules/Legge104` (`Scheda`, `SchedaFactory`)
 
 ## Verification
 - ✅ All `use` statements updated
@@ -37,8 +31,8 @@ Following Laravel conventions and general OOP best practices, Model names should
 - ✅ All PHPDoc annotations updated
 - ✅ All type hints updated
 - ✅ Factory and Policy renamed
-- ✅ Blade views updated
-- ✅ Translation files updated
+- ✅ Filament resource namespace/path updated
+- ✅ Legge104 aligned on singular model naming
 
 ## Related Documentation
 - [Model Naming Convention](../../../../docs/MODEL_NAMING_CONVENTION.md)

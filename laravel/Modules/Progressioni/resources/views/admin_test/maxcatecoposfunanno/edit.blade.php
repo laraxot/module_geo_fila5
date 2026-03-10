@@ -5,7 +5,7 @@ nds('adm_theme::layouts.app')
 
 {{ $row->cateco }} - {{ $row->posfun }}
 @php
-	$rows=$row->schede();
+	$rows=$row->scheda();
 	//echo '<pre>';print_r($rows->toSql());echo '</pre>';
 	//echo '<pre>';print_r($rows->get());echo '</pre>';
 @endphp

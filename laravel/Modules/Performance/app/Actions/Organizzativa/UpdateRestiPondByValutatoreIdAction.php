@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Organizzativa;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Performance\Models\Organizzativa as Schede;
+use Modules\Performance\Models\Organizzativa as Scheda;
 use Modules\Performance\Models\OrganizzativaTotValutatoreId as TotValutatoreId;
 use Spatie\QueueableAction\QueueableAction;
 

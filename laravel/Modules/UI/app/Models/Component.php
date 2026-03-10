@@ -34,6 +34,37 @@ use Modules\UI\Database\Factories\ComponentFactory;
  * @property-read \Modules\Ptv\Models\Profile|null $creator
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property string|null $type
+ * @property string|null $config
+ * @property bool $supports_lazy_loading
+ * @property float|null $lazy_loading_threshold
+ * @property string|null $cache_strategy
+ * @property int|null $cache_duration
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @method static Builder<static>|Component whereCacheDuration($value)
+ * @method static Builder<static>|Component whereCacheStrategy($value)
+ * @method static Builder<static>|Component whereCacheTtl($value)
+ * @method static Builder<static>|Component whereConfig($value)
+ * @method static Builder<static>|Component whereCreatedAt($value)
+ * @method static Builder<static>|Component whereCreatedBy($value)
+ * @method static Builder<static>|Component whereDataSchema($value)
+ * @method static Builder<static>|Component whereDependencies($value)
+ * @method static Builder<static>|Component whereId($value)
+ * @method static Builder<static>|Component whereIsActive($value)
+ * @method static Builder<static>|Component whereIsCacheable($value)
+ * @method static Builder<static>|Component whereLazyLoadingThreshold($value)
+ * @method static Builder<static>|Component whereName($value)
+ * @method static Builder<static>|Component whereResponsiveBreakpoints($value)
+ * @method static Builder<static>|Component whereSupportsLazyLoading($value)
+ * @method static Builder<static>|Component whereTemplate($value)
+ * @method static Builder<static>|Component whereThemeId($value)
+ * @method static Builder<static>|Component whereType($value)
+ * @method static Builder<static>|Component whereUpdatedAt($value)
+ * @method static Builder<static>|Component whereUpdatedBy($value)
+ * @method static Builder<static>|Component whereValidationRules($value)
+ * @method static Builder<static>|Component whereVersion($value)
+ * @method static Builder<static>|Component whereViewPath($value)
  * @mixin \Eloquent
  */
 class Component extends BaseModel

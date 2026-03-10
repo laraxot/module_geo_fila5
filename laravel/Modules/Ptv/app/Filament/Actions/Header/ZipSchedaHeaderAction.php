@@ -15,18 +15,18 @@ use Filament\Notifications\Notification;
 use Illuminate\Support\Arr;
 use Modules\Xot\Actions\ModelClass\CopyFromLastYearAction as CopyFromLastYearByFieldnameAction;
 
-class ZipSchedeHeaderAction extends Action
+class ZipSchedaHeaderAction extends Action
 {
     public static function getDefaultName(): ?string
     {
-        return 'zip_scehde';
+        return 'zip_scheda';
     }
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->label('')
-            ->tooltip('Zip Schede')
+            ->tooltip('Zip Scheda')
             ->icon('heroicon-o-document-duplicate')
             ->action(function ($livewire, $record, $action) {
                 dddx('a');

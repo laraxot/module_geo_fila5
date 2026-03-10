@@ -40,11 +40,11 @@ use Webmozart\Assert\Assert;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, Schede> $benificiariProgressione
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, Schede> $schede
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
  * @property-read int|null $schede_count
  * @method static mixed factory($count = null, $state = [])
  * @method static Builder|Valutatore newModelQuery()
@@ -130,11 +130,12 @@ class Valutatore extends BaseModel
     {
         $schedeClass = Str::of(static::class)
             ->beforeLast('\\')
-            ->append('\\Schede')
+            ->append('\\Scheda')
             ->toString();
+        $modelClass = class_exists($schedeClass) ? $schedeClass : Scheda::class;
 
         /** @phpstan-ignore-next-line */
-        return $this->hasMany($schedeClass, 'valutatore_id', 'id');
+        return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
     public function boss(): hasOne

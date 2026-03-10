@@ -9,7 +9,7 @@ use Filament\Notifications\Notification as FilamentNotification;
 use Modules\Ptv\Actions\Scheda\SendMailByRecord;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 
-class SendSchedeBulkAction extends BulkAction
+class SendSchedaBulkAction extends BulkAction
 {
     public string $template = 'schede';
 

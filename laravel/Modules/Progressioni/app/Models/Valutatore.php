@@ -38,11 +38,11 @@ use Webmozart\Assert\Assert;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, Scheda> $benificiariProgressione
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, Scheda> $schede
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
  * @property-read int|null $schede_count
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()

@@ -8,7 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendSchedeNotification extends Notification
+class SendSchedaNotification extends Notification
 {
     use Queueable;
 

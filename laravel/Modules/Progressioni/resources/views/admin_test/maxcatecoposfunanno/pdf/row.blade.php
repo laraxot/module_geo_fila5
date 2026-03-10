@@ -6,7 +6,7 @@ ude($view.'.style')
 <h3 style="text-align:center;">{!! trans('progressioni::MaxCatecoPosfunAnno.riga2') !!}</h3>
 <h5 style="text-align:center;">{!! trans('progressioni::MaxCatecoPosfunAnno.riga3') !!}</h5>
 @php
-	$rows=$row->schede();
+	$rows=$row->scheda();
 	$rows0=$rows->distinct()->where('ha_diritto',1)->orderBy('totale_pond','desc')->where('totale','>',0)->groupBy('matr');
 @endphp
 <b>

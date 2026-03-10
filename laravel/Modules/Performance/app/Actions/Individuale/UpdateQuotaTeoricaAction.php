@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Individuale;
 
 use Modules\Performance\Models\Individuale;
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Modules\Performance\Models\IndividualeCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;

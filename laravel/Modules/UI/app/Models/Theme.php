@@ -38,6 +38,18 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Theme whereName($value)
  * @method static Builder<static>|Theme whereIsActive($value)
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @method static Builder<static>|Theme whereCompiledPath($value)
+ * @method static Builder<static>|Theme whereConfig($value)
+ * @method static Builder<static>|Theme whereCreatedAt($value)
+ * @method static Builder<static>|Theme whereCreatedBy($value)
+ * @method static Builder<static>|Theme whereDeletedAt($value)
+ * @method static Builder<static>|Theme whereDeletedBy($value)
+ * @method static Builder<static>|Theme whereDescription($value)
+ * @method static Builder<static>|Theme whereNeedsCompilation($value)
+ * @method static Builder<static>|Theme whereParentId($value)
+ * @method static Builder<static>|Theme whereSourcePath($value)
+ * @method static Builder<static>|Theme whereUpdatedAt($value)
+ * @method static Builder<static>|Theme whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class Theme extends BaseModel

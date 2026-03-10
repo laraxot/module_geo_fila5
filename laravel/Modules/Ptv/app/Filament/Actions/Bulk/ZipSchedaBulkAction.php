@@ -17,18 +17,18 @@ use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Xot\Actions\Pdf\GetPdfContentByRecordAction;
 use ZipArchive;
 
-class ZipSchedeBulkAction extends BulkAction
+class ZipSchedaBulkAction extends BulkAction
 {
     public static function getDefaultName(): ?string
     {
-        return 'zip_scehde';
+        return 'zip_scheda';
     }
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->label('')
-            ->tooltip('Zip Schede')
+            ->tooltip('Zip Scheda')
             ->icon('fas-file-zipper')
             ->action(function ($livewire, $action, $records) {
                 /** @var object{tableFilters?: array<string, mixed>} $livewire */

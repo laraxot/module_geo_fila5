@@ -6,7 +6,7 @@ namespace Modules\Performance\Actions\Organizzativa;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Modules\Performance\Models\Organizzativa as Schede;
+use Modules\Performance\Models\Organizzativa as Scheda;
 use Spatie\QueueableAction\QueueableAction;
 
 /**

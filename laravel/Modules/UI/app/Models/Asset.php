@@ -30,6 +30,27 @@ use Modules\UI\Database\Factories\AssetFactory;
  * @property-read \Modules\Ptv\Models\Profile|null $creator
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property string $disk
+ * @property string|null $extension
+ * @property int|null $size
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @method static Builder<static>|Asset whereCreatedAt($value)
+ * @method static Builder<static>|Asset whereCreatedBy($value)
+ * @method static Builder<static>|Asset whereDisk($value)
+ * @method static Builder<static>|Asset whereExtension($value)
+ * @method static Builder<static>|Asset whereId($value)
+ * @method static Builder<static>|Asset whereIsCompressed($value)
+ * @method static Builder<static>|Asset whereIsMinified($value)
+ * @method static Builder<static>|Asset whereName($value)
+ * @method static Builder<static>|Asset whereOrder($value)
+ * @method static Builder<static>|Asset wherePath($value)
+ * @method static Builder<static>|Asset whereShouldBundle($value)
+ * @method static Builder<static>|Asset whereSize($value)
+ * @method static Builder<static>|Asset whereThemeId($value)
+ * @method static Builder<static>|Asset whereType($value)
+ * @method static Builder<static>|Asset whereUpdatedAt($value)
+ * @method static Builder<static>|Asset whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class Asset extends BaseModel
