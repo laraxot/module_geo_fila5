@@ -14,7 +14,9 @@ use Modules\MobilitaVolontaria\Database\Factories\DichiarazioneFactory;
  * @method static Builder|Dichiarazione newModelQuery()
  * @method static Builder|Dichiarazione newQuery()
  * @method static Builder|Dichiarazione query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Dichiarazione extends BaseModel

@@ -113,34 +113,7 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
-        'db_forge' => [
-            'driver' => env('DB_FORGE_DRIVER', 'mysql'),
-            'url' => env('DB_FORGE_URL'),
-            'host' => env('DB_FORGE_HOST', env('DB_HOST', '127.0.0.1')),
-            'port' => env('DB_FORGE_PORT', env('DB_PORT', '3306')),
-            'database' => env('DB_FORGE_DATABASE', 'dbforge'),
-            'username' => env('DB_FORGE_USERNAME', env('DB_USERNAME', 'root')),
-            'password' => env('DB_FORGE_PASSWORD', env('DB_PASSWORD', '')),
-            'charset' => env('DB_FORGE_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_FORGE_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-        ],
-
-        'mobilita_volontaria' => [
-            'driver' => env('DB_MOBILITA_DRIVER', 'mysql'),
-            'url' => env('DB_MOBILITA_URL'),
-            'host' => env('DB_MOBILITA_HOST', env('DB_HOST', '127.0.0.1')),
-            'port' => env('DB_MOBILITA_PORT', env('DB_PORT', '3306')),
-            'database' => env('DB_MOBILITA_DATABASE', 'mobilita_volontaria'),
-            'username' => env('DB_MOBILITA_USERNAME', env('DB_USERNAME', 'root')),
-            'password' => env('DB_MOBILITA_PASSWORD', env('DB_PASSWORD', '')),
-            'charset' => env('DB_MOBILITA_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_MOBILITA_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-        ],
-
+       
     ],
 
     /*

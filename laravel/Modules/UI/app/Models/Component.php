@@ -27,12 +27,13 @@ use Modules\UI\Database\Factories\ComponentFactory;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Theme       $theme
- *
  * @method static ComponentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Component newModelQuery()
  * @method static Builder<static>|Component newQuery()
  * @method static Builder<static>|Component query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Component extends BaseModel

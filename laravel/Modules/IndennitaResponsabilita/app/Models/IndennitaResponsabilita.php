@@ -345,6 +345,8 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder<static>|IndennitaResponsabilita whereNote($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|IndennitaResponsabilita withCalculatedData()
  * @method static Builder<static>|IndennitaResponsabilita withRating()
+ * @property-read \Modules\IndennitaResponsabilita\Models\ImportiCategoria|null $importo
+ * @property-read \Modules\Progressioni\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class IndennitaResponsabilita extends BaseScheda

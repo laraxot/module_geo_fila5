@@ -6,7 +6,7 @@ Il modulo **Mensa** fa parte dell'ecosistema Laraxot PTVX.
 
 ## Scopo
 
-Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
+Gestisce le funzionalità specifiche del dominio Mensa.
 
 ## Struttura
 
@@ -24,21 +24,12 @@ Mensa/
 ## Dipendenze
 
 - [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/) (se usa autenticazione)
-- [Tenant Module](../Tenant/docs/) (se multi-tenant)
+- [User Module](../User/docs/)
 
 ## Collegamenti
 
 - [Documentazione Root](../../../docs/MENSA_MODULE.md)
-- [Regole Architecture](../Xot/docs/architecture/)
 
 ## Backlinks
 
-- [Indice Moduli](../README.md)
-
-## TODO
-
-- [ ] Completare descrizione funzionalità
-- [ ] Documentare modelli principali
-- [ ] Documentare risorse Filament
-- [ ] Aggiungere esempi codice
+- [Moduli correlati](../README.md)

@@ -217,6 +217,8 @@ use Validator;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LettF withCalculatedData()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LettF withDays(int $date_min, int $date_max)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LettF withRating()
+ * @property-read \Modules\IndennitaResponsabilita\Models\ImportiCategoria|null $importo
+ * @property-read \Modules\Progressioni\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class LettF extends BaseScheda
@@ -304,37 +306,12 @@ class LettF extends BaseScheda
         $validator->validate();
     }
 
+    /* REMOVED: Redundant with RelationshipTrait and fixed to avoid SQL errors during static analysis.
     public function importi(): ?HasOne
     {
-        $query = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')
-            ->where('anno', $this->anno)
-            ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-
-        if ($query->count() === 0) {
-            $rowOld = ImportiCategoria::where('ente', $this->ente)
-                ->where('anno', $this->anno - 1)
-                ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-
-            if ($rowOld->count() !== 1) {
-                return null;
-            }
-
-            /** @var ImportiCategoria|null $firstRow */
-            $firstRow = $rowOld->first();
-            if ($firstRow === null) {
-                return null;
-            }
-            $row = $firstRow->replicate();
-            /** @var int|null $anno */
-            $anno = $this->anno;
-            if ($anno !== null) {
-                $row->anno = $anno;
-            }
-            $row->save();
-        }
-
-        return $query;
+        ...
     }
+    */
 
     public function stabiDirigente(): HasOne
     {

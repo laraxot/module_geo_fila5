@@ -103,6 +103,8 @@ use Modules\User\Models\BaseUser;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedBy($value)
  * @method static Builder<static>|User withoutPermission($permissions)
  * @method static Builder<static>|User withoutRole($roles, ?string $guard = null)
+ * @property string|null $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUuid($value)
  * @mixin \Eloquent
  */
 class User extends BaseUser

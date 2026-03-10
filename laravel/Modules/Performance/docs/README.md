@@ -2,43 +2,41 @@
 
 ## Overview
 
-Il modulo **Performance** fa parte dell'ecosistema Laraxot PTVX.
+Il modulo **Performance** gestisce la valutazione delle performance del personale.
 
-## Scopo
+## Funzionalità
 
-Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
+- Valutazioni individuali
+- Valutazioni di gruppo
+- Reportistica performance
+- Workflow approvazione
 
-## Struttura
+## Modelli Principali
 
+```php
+// Valutazione individuale
+Performance\Models\PerformanceIndividuale
+
+// Valutazione gruppo
+Performance\Models\PerformanceGruppo
+
+// Totale valutatore
+Performance\Models\OrganizzativaTotValutatoreId
 ```
-Performance/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
-├── docs/
-├── lang/
-└── resources/
-```
 
-## Dipendenze
+## Filament Resources
 
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/) (se usa autenticazione)
-- [Tenant Module](../Tenant/docs/) (se multi-tenant)
+- PerformanceIndividualeResource
+- PerformanceGruppoResource
+- OrganizzativaResource
 
 ## Collegamenti
 
 - [Documentazione Root](../../../docs/PERFORMANCE_MODULE.md)
-- [Regole Architecture](../Xot/docs/architecture/)
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/)
 
 ## Backlinks
 
-- [Indice Moduli](../README.md)
-
-## TODO
-
-- [ ] Completare descrizione funzionalità
-- [ ] Documentare modelli principali
-- [ ] Documentare risorse Filament
-- [ ] Aggiungere esempi codice
+- [Valutazioni](./valutazioni/)
+- [Report](./report/)

@@ -128,7 +128,10 @@ class Valutatore extends BaseModel
 
     public function schede(): HasMany
     {
-        $schedeClass = Str::of(self::class)->append('\Models\Schede')->toString();
+        $schedeClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Schede')
+            ->toString();
 
         /** @phpstan-ignore-next-line */
         return $this->hasMany($schedeClass, 'valutatore_id', 'id');

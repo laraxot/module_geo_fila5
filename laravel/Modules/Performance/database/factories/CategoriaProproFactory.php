@@ -1,18 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Modules\Notify\Database\Factories;
+namespace Modules\Performance\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Notify\Models\MailTemplateLog;
 
-class MailTemplateLogFactory extends Factory
+class CategoriaProproFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = MailTemplateLog::class;
+    protected $model = \Modules\Performance\Models\CategoriaPropro::class;
 
     /**
      * Define the model's default state.
@@ -22,3 +19,4 @@ class MailTemplateLogFactory extends Factory
         return [];
     }
 }
+

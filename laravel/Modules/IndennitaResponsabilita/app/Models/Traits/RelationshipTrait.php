@@ -12,6 +12,7 @@ use Modules\IndennitaResponsabilita\Models\ImportiCategoria;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Message;
 use Modules\IndennitaResponsabilita\Models\MyLog;
+use Modules\Progressioni\Models\CategoriaPropro;
 use Modules\Sigma\Models\Anag;
 
 use function Safe\date;
@@ -64,31 +65,43 @@ trait RelationshipTrait
 
     public function importi(): HasOne
     {
-        $row = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')->where('anno', $this->anno)->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-        if ($row->count() === 0) {
+        $anno = $this->anno ?? date('Y');
+        $propro = $this->propro ?? 0;
+
+        return $this->hasOne(ImportiCategoria::class, 'ente', 'ente')
+            ->where('anno', $anno)
+            ->whereRaw('find_in_set("'.$propro.'",lista_propro)');
+    }
+
+    public function categoriaPropro(): HasOne
+    {
+        $anno = $this->anno ?? date('Y');
+        $matr = $this->matr ?? 0;
+
+        return $this->hasOne(CategoriaPropro::class, 'anno', 'anno')
+            ->where('anno', $anno)
+            ->where('matr', $matr);
+    }
+
+    /**
+     * Get or create the importo for this category.
+     */
+    public function getImportoAttribute(): ?ImportiCategoria
+    {
+        $row = $this->importi;
+        if ($row === null) {
             $rowOld = ImportiCategoria::where('ente', $this->ente)
                 ->where('anno', $this->anno - 1)
-                ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
-            if ($rowOld->count() !== 1) {
-                if ($this->propro === 0) {
-                    return $row;
-                }
+                ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)')
+                ->first();
 
-                echo '<h3>['.$this->anno.']['.$this->propro.']['.__LINE__.']['.__FILE__.']</h3>';
-
-                // dddx([$rowOld->get(), 'qualcosa e\' andato storto ['.__LINE__.']['.__FILE__.']]);
-                return $row;
-            }
-
-            $firstRow = $rowOld->first();
-            if ($firstRow !== null) {
-                $newRow = $firstRow->replicate();
+            if ($rowOld !== null) {
+                $newRow = $rowOld->replicate();
                 $newRow->anno = $this->anno;
                 $newRow->save();
+
+                return $newRow;
             }
-            $row = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')
-                ->where('anno', $this->anno)
-                ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
         }
 
         return $row;
