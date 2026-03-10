@@ -196,6 +196,7 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
         ],
     ],
     'messages' => [
