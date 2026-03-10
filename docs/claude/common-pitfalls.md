@@ -4,7 +4,7 @@
 
 ### NEVER Use property_exists() with Eloquent Models
 
-**This is a CRITICAL ERROR that causes unpredictable behavior.**
+**This is a CRITICAL ERROR that causes un<nome progetto>able behavior.**
 
 #### ❌ Anti-Pattern (Never Do This)
 ```php
@@ -61,7 +61,7 @@ if (method_exists($user, 'getFullName')) {
 - **Lazy loading**: Relationships and some properties don't exist until accessed
 - **Accessors/Mutators**: Computed properties may not be detected correctly
 - **Magic properties**: Laravel uses `__get()` and `__set()` for property access
-- **Unpredictable behavior**: Can cause difficult-to-debug bugs and unexpected behavior
+- **Un<nome progetto>able behavior**: Can cause difficult-to-debug bugs and unexpected behavior
 
 ## 🚫 Other Common Pitfalls
 

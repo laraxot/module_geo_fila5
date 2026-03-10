@@ -50,7 +50,7 @@ if (isset($model->email)) { ... }
 $value = $model->email ?? 'default@example.com';
 ```
 
-**Why:** Eloquent uses magic methods (`__get`/`__set`) and `property_exists()` doesn't detect dynamic properties, causing unpredictable bugs.
+**Why:** Eloquent uses magic methods (`__get`/`__set`) and `property_exists()` doesn't detect dynamic properties, causing un<nome progetto>able bugs.
 
 ## 4. NEVER Use Services - Always Use Actions
 

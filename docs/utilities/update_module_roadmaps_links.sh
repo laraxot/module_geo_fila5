@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 echo -e "${YELLOW}Aggiornamento collegamenti bidirezionali nelle roadmap dei moduli...${NC}"
 
 # Directory base
-BASE_DIR="/var/www/html/_bases/base_predict_fila5_mono"
+BASE_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 MAIN_ROADMAP="${BASE_DIR}/docs/roadmap.md"
 
 # Funzione per aggiungere link alla roadmap principale

@@ -73,7 +73,7 @@ This section contains proven patterns and solutions for common development chall
 - **Testability**: Isolated, focused units
 
 ### Developer Experience
-- **Consistency**: Predictable code patterns
+- **Consistency**: <nome progetto>able code patterns
 - **Productivity**: Faster development with proven solutions
 - **Onboarding**: Easier for new developers to understand
 

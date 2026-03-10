@@ -1,325 +1,94 @@
-# 🛠️ Compiled files and binaries
-*.jar
-*.phar
-dump.rdb
+# =============================================================================
+# .gitignore - Laraxot PTVX Project
+# =============================================================================
+# ATTENZIONE: Questo file DEVE rimanere organizzato per categorie.
+# Non aggiungere pattern duplicati - verificare prima di modificare.
+# =============================================================================
 
-# 📝 Temporary and editor files
-*.swp
-*.cache
-*.log
-*.log.*
-.php_cs.cache
-.php-cs-fixer.cache
-.phpintel
+# -----------------------------------------------------------------------------
+# 1. SISTEMA OPERATIVO - File di sistema e metadata
+# -----------------------------------------------------------------------------
 .DS_Store
-.git-rewrite
-*:Zone.Identifier
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.lnk
 
-# 📦 Package management
-node_modules/
-package-lock.json
-
-# 🔒 File Locks (AI Agent coordination - NEVER commit)
-# Pattern: <filename>.lock per prevenire editing concorrente
-# Documentazione: .cursor/rules/file-locking-mandatory.mdc
-*.lock
-
-# 🌍 Laravel specific
-laravel/storage/
-laravel/storage/*
-laravel/storage/cookie.txt
-laravel/composer
-laravel/_ide_helper.php
-laravel/_ide_helper_models.php
-laravel/.php_cs.cache
-laravel/build/
-laravel/database/migrations/
-laravel/vite-module-loader.js
-laravel/stubs/
-
-# 📂 Laravel vendor resources
-laravel/resources/lang/vendor/
-laravel/resources/views/vendor/
-laravel/app/View/Components/vendor/
-
-# 🎨 Public assets and generated files
-public_html/storage/
-public_html/storage/*
-public_html/themes/
-public_html/css/
-public_html/js/
-public_html/vendor/
-
-# 🔄 Misc
-/cache/*
-bashscripts/
-*.zip
-*.old
-laravel/Modules/Predict/
-*.old
-public_html/plugins/
-/vendor
-*.lock
-/build
-*.cache
-*.phar
-.git-blame-ignore-revs
-.git-rewrite
-.php-cs-fixer.cache
-*.phar
-*.cache
-package-lock.json
-.git-rewrite/
-node_modules
-.git-blame-ignore-revs
-.git-blame-ignore-revs
-node_modules
-vendor
-.git-blame-ignore-revs
-build/
-vendor/
-build/
-node_modules
-cache/*
-.git-blame-ignore-revs
-.php-cs-fixer.cache
-build
-*.exe
-*:Zone.Identifier
-
-# Backup files
-*.bak
-bootstrap/cache/*
-laravel/bootstrap/cache/*
-laravel/config/local/tv/prov/personale2022/database/content/information_schema_tables.json
-
-.git-hooks/
-laravel/Modules/User/lang/lang/
-public_html/material/
-public_html/material/
-laravel/bootstrap/cache/*
-/.backup_*
-laravel/bootstrap/cache/modules.php
-laravel/config/local/tv/prov/personale2022/database/content/information_schema_tables.json
-laravel/config/local/tv/prov/personale2022/database/content/information_schema_tables.json
-laravel/config/local/ptvx/database/content/information_schema_tables.json
-laravel/Themes/Zero/extras/
-# ───────────────────────────────────────────────────────
-# Sistema operativo / File nascosti e metadata
-# ───────────────────────────────────────────────────────
+# Linux/Unix
 .fuse_hidden*
-.fuse_hidden**.lock
+.directory
+
+# Windows
+*:Zone.Identifier
 *.Zone.Identifier
 **/*.Zone.Identifier
-*:Zone.Identifier
-.DS_Store                 # macOS metadata
-Thumbs.db                 # Windows thumbnail cache
-ehthumbs.db
-desktop.ini
 
-# ───────────────────────────────────────────────────────
-# File temporanei, cache e log
-# ───────────────────────────────────────────────────────
-*.cache
-*.log
-*.tmp
-*.swp
-*.swo
-*.bak
-*.orig
-*.old
-*.old1
-*.old2
-*_old
-*.rej
-~$*
-*.tmp.*
-~*.*
-.git-rewrite
-.php-cs-fixer.cache
-.git-blame-ignore-revs
-
-# ───────────────────────────────────────────────────────
-# Dipendenze e pacchetti
-# ───────────────────────────────────────────────────────
-
-## Node.js
-node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-## PHP / Composer
-vendor/
-composer.lock
-*.phar
-
-# ───────────────────────────────────────────────────────
-# Build, dist e output
-# ───────────────────────────────────────────────────────
-build/
-dist/
-out/
-coverage/
-/cache/
-tmp/
-tmp*/
-
-# ───────────────────────────────────────────────────────
-# Eseguibili e binari
-# ───────────────────────────────────────────────────────
-*.exe
-*.out
-*.app
-*.dll
-*.so
-*.dylib
-*.lock
-
-# ───────────────────────────────────────────────────────
-# Configurazioni e ambienti locali
-# ───────────────────────────────────────────────────────
-.env
-.env.*
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# ───────────────────────────────────────────────────────
-# IDE / Editor config e workspace
-# ───────────────────────────────────────────────────────
-
-## VSCode
+# -----------------------------------------------------------------------------
+# 2. EDITOR & IDE - Configurazioni locali
+# -----------------------------------------------------------------------------
+# VSCode
 .vscode/
+.vscode-test/
 .history/
 
-## JetBrains (PhpStorm, WebStorm, etc.)
+# JetBrains (PhpStorm, WebStorm, IntelliJ)
 .idea/
+*.iml
+*.iws
 
-## Eclipse
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse
 .project
 .classpath
 .settings/
 
-## Sublime
-#*.sublime-workspace
-#*.sublime-project
+# Vim/Neovim
+*.swp
+*.swo
+*.swn
+*~
+.~*
 
-## Others
-#*.code-workspace
-#*.komodoproject
+# Emacs
+*~
+\#*\#
+\.\#*
+
+# Altri editor
 *.tmproj
 
-# ───────────────────────────────────────────────────────
-# Test output
-# ───────────────────────────────────────────────────────
-junit.xml
-test-output/
-.nyc_output/
-coverage/
-
-# ───────────────────────────────────────────────────────
-# Backup files e temporary
-# ───────────────────────────────────────────────────────
-*.backup
-*.backup.*
-backups/
-logs/
-*.conflict
-*.merge
-*.rebase
-
-# ───────────────────────────────────────────────────────
-# Database files
-# ───────────────────────────────────────────────────────
-*.sqlite
-*.sqlite3
-*.db
-*.sql
-
-# ───────────────────────────────────────────────────────
-# Archive files
-# ───────────────────────────────────────────────────────
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
-*.gz
-# File di sistema
-.DS_Store
-Thumbs.db
-
-# File di test
-test*.php
-
-* - Copia.php
-
-# File temporanei
-*.tmp
-*.temp
-*.bak
-*.swp
-
-# File di log
-*.log
-error_log
-
-# File di ambiente
-.env
-!.env.example
-!.env.testing
-
-# File di cache
-.phpunit.result.cache
-*.cache
-
-# File di IDE
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-*.phar
-.git-blame-ignore-revs
-*:Zone.Identifier
-/.env
-
+# -----------------------------------------------------------------------------
+# 3. AI AGENTS & COPILOT - Directory di contesto AI (NON committare)
+# -----------------------------------------------------------------------------
+# Directory contesto AI - vedi regola: .cursor/rules/file-locking-mandatory.mdc
 .ai/
 .ai-context/
-.claude/
-.clauderules/
-.cursor/
-.gemini/
-.iflow/
-.junie/
-.windsurf/
-public_html/fonts/
-laravel/Modules/*/resources/lang/
-laravel/Modules/*/_docs/
-.github.backup-*/
-
-.github.backup-*/
-/templates/
-laravel/nunomaduro-phpinsights-ae780a9/
-laravel/phpinsights-standalone
-coverage.xml/
-.opencode/
-.continue/
-.codebuddy/
-bashscripts/ai/.codeium/windsurf/
-.codebuddy/
-.continue/
-skills/
 .aider/
-.amazonq/
+.agent/
+.agent.*/
+.agents/
+.agents.*/
 .amq/
+.amazonq/
+.antigravity/
+.antigravity.*/
 .augment/
 .bolt/
+.claude/
+.clauderules/
 .clawdbot/
+.cline/
+.cline.*/
+.clinerules/
+.clinerules.*/
 .codebuddy/
-.codegpt/
 .codex/
 .cody/
 .commandcode/
@@ -328,55 +97,271 @@ skills/
 .devcontainer/
 .devin/
 .factory/
+.gemini/
+.github~HEAD/
+.grok/
 .goose/
+.iflow/
+.junie/
 .kilocode/
 .kiro/
 .lovable/
 .mcpjam/
 .mux/
 .neovate/
+.opencode/
+.opencode.*/
 .openhands/
+.phpive/
 .pi/
 .playcode/
 .qoder/
 .qwen/
+.ralph/
 .replit/
 .roo/
 .tabby/
 .tabnine/
 .trae/
 .vercel/
-.zencoder/
-.agent/
-.agent.*/
-.agents/
-.agents.*/
-.ai/
-.ai-context/
-.antigravity/
-.antigravity.*/
-.claude/
-.clauderules/
-.cline/
-.cline.*/
-.clinerules/
-.clinerules.*/
-.codebuddy/
-.codex/
-.continue/
-.cursor/
-.cursorrules/
-.cursorrules.*/
-.gemini/
-.github~HEAD/
-.grok/
-.iflow/
-.junie/
-.opencode/
-.opencode.*/
-.phpive/
-.ralph/
 .vscode/
 .windsurf/
 .zai/
 .zai.*/
+.zencoder/
+
+# Skill files AI locali
+skills/
+skill/
+
+# -----------------------------------------------------------------------------
+# 4. LOCK FILES - File di coordinamento (AI Agent)
+# Pattern: <filename>.lock per prevenire editing concorrente
+# -----------------------------------------------------------------------------
+*.lock
+!composer.lock
+!package-lock.json
+!yarn.lock
+!pnpm-lock.yaml
+
+# -----------------------------------------------------------------------------
+# 5. AMBIENTE & CONFIGURAZIONI LOCALI
+# -----------------------------------------------------------------------------
+# Environment files
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+!.env.testing
+
+# -----------------------------------------------------------------------------
+# 6. PHP / COMPOSER - Dipendenze e cache
+# -----------------------------------------------------------------------------
+/vendor/
+vendor/
+composer.phar
+*.phar
+
+# PHP CS Fixer
+.php_cs.cache
+.php-cs-fixer.cache
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache/
+
+# PHPStorm helpers
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# Laravel build
+laravel/build/
+laravel/_ide_helper.php
+laravel/_ide_helper_models.php
+laravel/.php_cs.cache
+laravel/.php-cs-fixer.cache
+
+# -----------------------------------------------------------------------------
+# 7. NODE.JS / NPM - Dipendenze e lock files
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------------------------------------------------------------------
+# 8. LARAVEL SPECIFICO
+# -----------------------------------------------------------------------------
+# Storage e cache
+laravel/storage/
+laravel/storage/*
+laravel/storage/cookie.txt
+laravel/bootstrap/cache/*
+laravel/bootstrap/cache/modules.php
+laravel/stubs/
+
+# Vendor resources (auto-generated)
+laravel/resources/lang/vendor/
+laravel/resources/views/vendor/
+laravel/app/View/Components/vendor/
+laravel/lang/vendor/
+
+# Build artifacts
+laravel/vite-module-loader.js
+laravel/public/build/
+laravel/public/hot
+
+# Local config
+laravel/config/local/
+
+# -----------------------------------------------------------------------------
+# 9. TEMI - Themes/Zero specific
+# -----------------------------------------------------------------------------
+public_html/storage/
+public_html/storage/*
+public_html/themes/
+public_html/css/
+public_html/js/
+public_html/vendor/
+public_html/plugins/
+public_html/fonts/
+public_html/material/
+
+# Extras
+laravel/Themes/Zero/extras/
+
+# -----------------------------------------------------------------------------
+# 10. MODULI - Moduli specifici
+# -----------------------------------------------------------------------------
+# Moduli deprecati o locali
+laravel/Modules/Predict/
+
+# Language auto-generated
+laravel/Modules/*/resources/lang/
+laravel/Modules/*/lang/lang/
+
+# Docs private
+laravel/Modules/*/_docs/
+
+# -----------------------------------------------------------------------------
+# 11. ASSETS & BUILD OUTPUT
+# -----------------------------------------------------------------------------
+/public/build
+/public/hot
+/public/storage
+/public_html/build
+
+# Build directories
+build/
+dist/
+out/
+
+# Cache
+/cache/
+cache/*
+tmp/
+tmp*/
+
+# -----------------------------------------------------------------------------
+# 12. LOG & TEMP
+# -----------------------------------------------------------------------------
+*.log
+*.log.*
+error_log
+logs/
+
+# Temp files
+*.tmp
+*.temp
+*.tmp.*
+
+# -----------------------------------------------------------------------------
+# 13. BACKUP & ARCHIVI
+# -----------------------------------------------------------------------------
+*.bak
+*.backup
+*.backup.*
+backups/
+*.old
+*.old1
+*.old2
+*_old
+*.orig
+*.rej
+
+# Archivi
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.gz
+
+# Git specific
+.git-rewrite/
+.git-rewrite
+.git-blame-ignore-revs
+*.conflict
+*.merge
+*.rebase
+
+# -----------------------------------------------------------------------------
+# 14. DATABASE FILES
+# -----------------------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# -----------------------------------------------------------------------------
+# 15. TEST & COVERAGE
+# -----------------------------------------------------------------------------
+coverage/
+coverage.xml/
+.nyc_output/
+junit.xml
+test-output/
+
+# -----------------------------------------------------------------------------
+# 16. BINARY & ESEGUIBILI
+# -----------------------------------------------------------------------------
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+*.jar
+
+# -----------------------------------------------------------------------------
+# 17. FILE SPECIFICI PROGETTO
+# -----------------------------------------------------------------------------
+# Backup GitHub
+.github.backup-*/
+
+# Templates
+/templates/
+
+# Configurazioni locali
+laravel/config/local/tv/prov/personale2022/database/content/information_schema_tables.json
+laravel/config/local/ptvx/database/content/information_schema_tables.json
+
+# File di test
+* - Copia.php
+test*.php
+
+# Scripts bash locali
+bashscripts/
+
+# Altri
+laravel/nunomaduro-phpinsights-ae780a9/
+laravel/phpinsights-standalone
+dump.rdb
+
+# =============================================================================
+# FINE .gitignore
+# =============================================================================

@@ -24,7 +24,7 @@ LOGS_DIR="$HOME/.cursor/mcp_logs"
 mkdir -p "$LOGS_DIR"
 
 # MySQL MCP Script
-MYSQL_SCRIPT="/var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/start-mysql-mcp.sh"
+MYSQL_SCRIPT="/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/mcp/start-mysql-mcp.sh"
 
 if [ ! -f "$MYSQL_SCRIPT" ]; then
     echo -e "${RED}Error: MySQL MCP script not found at $MYSQL_SCRIPT${NC}"
@@ -47,7 +47,7 @@ cat > "$TMP_SCRIPT" << 'EOF'
 #!/bin/bash
 
 # Fixed MySQL MCP Startup Script
-PROJECT_DIR="/var/www/html/_bases/base_predict_fila5_mono"
+PROJECT_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 LOGS_DIR="$PROJECT_DIR/storage/logs/mcp"
 CONNECTOR_SCRIPT="$PROJECT_DIR/bashscripts/mcp/mysql-db-connector.js"
 

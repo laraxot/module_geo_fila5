@@ -61,7 +61,7 @@
      - `ExternalProject/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
 =======
      - `ModuloEsempio/app/Datas/LimeAnswerData.php:15` (`$_group_by`)
->>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
 >>>>>>> .merge_file_S1kb9q
      - `Xot/app/Services/ModuleService.php:23` (`$_instance`)
      - `Xot/app/Traits/HasCsrfToken.php:15` (`$_token`)

@@ -36,7 +36,7 @@ This document describes how the Zero theme integrates LimeSurvey survey charts i
 ```
 Survey Data (LimeSurvey)
     ↓
-Quaeris Module (Dashboard + PDF orchestration)
+<nome progetto> Module (Dashboard + PDF orchestration)
     ↓
 JpGraph (PNG Generation)
     ↓
@@ -56,13 +56,13 @@ PDF Download
 | Module/Theme | Responsibility |
 |--------------|----------------|
 | **Limesurvey** | Database access, models, question types |
-| **Quaeris** | Business logic, chart widgets orchestration, PDF generation |
+| **<nome progetto>** | Business logic, chart widgets orchestration, PDF generation |
 | **Chart** | JpGraph actions, Chart.js plugins, asset registration |
 | **Zero Theme** | PDF templates, styling, Blade components |
 
 ### Theme Does NOT
 
-- Generate chart images (that's Quaeris/Chart actions)
+- Generate chart images (that's <nome progetto>/Chart actions)
 - Register Chart.js plugins (that's Chart module)
 - Query LimeSurvey database (that's Limesurvey module)
 

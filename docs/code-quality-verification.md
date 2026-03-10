@@ -172,7 +172,7 @@ After scope fix:
 | Long Variables | 🟡 LOW | 🟡 LOW | Week 3 |
 | Short Variables | 🟡 LOW | 🟡 LOW | Week 3 |
 
-### Refactoring Impact Prediction
+### Refactoring Impact <nome progetto>ion
 
 **Before Refactoring**:
 - Class Complexity: 55

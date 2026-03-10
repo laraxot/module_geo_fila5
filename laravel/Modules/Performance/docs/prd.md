@@ -107,7 +107,7 @@ The organization needs:
 - Cycle management and mult-step evaluations. ✅
 - PHPStan Level 10 compliance. ✅
 ### Phase 2: Advanced Analytics (Planned)
-- Predictive analytics for performance trends.
+- <nome progetto>ive analytics for performance trends.
 - Career path suggestions based on evaluated skill gaps.
 
 ## 13. References

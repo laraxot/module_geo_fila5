@@ -15,7 +15,7 @@ NC='\033[0m'
 
 # Directory di test
 TEST_DIR="/tmp/git_conflict_simple_test_$$"
-SCRIPT_PATH="/var/www/_bases/base_predict_fila5_mono/bashscripts/git/resolve_head_conflicts.sh"
+SCRIPT_PATH="/var/www/_bases/base_<nome progetto>_fila5_mono/bashscripts/git/resolve_head_conflicts.sh"
 
 # Funzione per logging
 log() {
