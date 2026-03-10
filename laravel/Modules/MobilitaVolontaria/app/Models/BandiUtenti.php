@@ -14,7 +14,9 @@ use Modules\MobilitaVolontaria\Database\Factories\BandiUtentiFactory;
  * @method static Builder|BandiUtenti newModelQuery()
  * @method static Builder|BandiUtenti newQuery()
  * @method static Builder|BandiUtenti query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class BandiUtenti extends BaseModel

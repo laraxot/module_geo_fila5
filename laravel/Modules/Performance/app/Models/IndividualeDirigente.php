@@ -399,6 +399,7 @@ use Parental\HasParent;
  * @method static Builder<static>|IndividualeDirigente whereType($value)
  * @method static Builder<static>|IndividualeDirigente whereValutatoreId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|IndividualeDirigente withCalculatedData()
+ * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class IndividualeDirigente extends Individuale

@@ -396,6 +396,7 @@ use Override;
  * @method static Builder<static>|Organizzativa wherePosfunval($value)
  * @method static Builder<static>|Organizzativa whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Organizzativa withCalculatedData()
+ * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class Organizzativa extends BaseIndividualeModel

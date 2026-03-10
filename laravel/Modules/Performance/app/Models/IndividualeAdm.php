@@ -395,6 +395,7 @@ use Modules\Xot\Traits\Updater;
  * @method static Builder<static>|IndividualeAdm whereType($value)
  * @method static Builder<static>|IndividualeAdm whereValutatoreId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|IndividualeAdm withCalculatedData()
+ * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class IndividualeAdm extends BaseIndividualeModel

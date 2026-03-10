@@ -30,7 +30,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property Theme|null           $parent
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
  * @method static ThemeFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Theme newModelQuery()
  * @method static Builder<static>|Theme newQuery()
@@ -38,7 +37,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Theme whereId($value)
  * @method static Builder<static>|Theme whereName($value)
  * @method static Builder<static>|Theme whereIsActive($value)
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @mixin \Eloquent
  */
 class Theme extends BaseModel

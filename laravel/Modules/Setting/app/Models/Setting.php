@@ -27,7 +27,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property Carbon|null                 $updated_at
  * @property MediaCollection<int, Media> $media
  * @property int|null                    $media_count
- *
  * @method static SettingFactory  factory($count = null, $state = [])
  * @method static Builder|Setting newModelQuery()
  * @method static Builder|Setting newQuery()
@@ -39,10 +38,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Setting whereName($value)
  * @method static Builder|Setting wherePayload($value)
  * @method static Builder|Setting whereUpdatedAt($value)
- *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
  * @method static Setting|null             first()
  * @method static Collection<int, Setting> get()
  * @method static Setting                  create(array $attributes = [])
@@ -50,9 +47,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|Setting  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Setting  whereNotNull((string|Expression) $columns)
  * @method static int                      count(string $columns = '*')
- *
  * @property \Modules\Ptv\Models\Profile|null $deleter
- *
  * @mixin \Eloquent
  */
 class Setting extends BaseModel implements HasMedia

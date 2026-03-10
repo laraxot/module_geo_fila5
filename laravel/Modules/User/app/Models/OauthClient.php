@@ -39,7 +39,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property \Illuminate\Database\Eloquent\Model|null $owner
  * @property string|null                              $updated_by
  * @property string|null                              $created_by
- *
  * @method static Builder|OauthClient newModelQuery()
  * @method static Builder|OauthClient newQuery()
  * @method static Builder|OauthClient query()
@@ -56,7 +55,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|OauthClient whereUserId($value)
  * @method static Builder|OauthClient whereCreatedBy($value)
  * @method static Builder|OauthClient whereUpdatedBy($value)
- *
  * @property string|null                 $owner_type
  * @property string|null                 $owner_id
  * @property array                       $redirect_uris
@@ -64,7 +62,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                    $permissions_count
  * @property Collection<int, Role>       $roles
  * @property int|null                    $roles_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthClient existsIn(array $haystack)
  * @method static \Laravel\Passport\Database\Factories\ClientFactory        factory($count = null, $state = [])
  * @method static Builder<static>|OauthClient                               permission($permissions, bool $without = false)
@@ -75,7 +72,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder<static>|OauthClient                               whereRedirectUris($value)
  * @method static Builder<static>|OauthClient                               withoutPermission($permissions)
  * @method static Builder<static>|OauthClient                               withoutRole($roles, ?string $guard = null)
- *
  * @mixin \Eloquent
  */
 class OauthClient extends PassportClient implements AuthorizableContract

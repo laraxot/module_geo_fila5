@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo;
+use Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\MutatorTrait;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\RelationshipTrait;
 use Modules\Ptv\Models\Profile;
@@ -184,6 +186,9 @@ use Modules\Trasferte\Models\FuoriSedeDip;
  * @property-read int|null $integ_params_count
  * @property-read Collection<int, Rep00f> $reparts
  * @property-read int|null $reparts_count
+ * @property-read \Modules\IndennitaCondizioniLavoro\Models\ServizioEsternoIndennitaTipoDettaglioPivot|null $pivot
+ * @property-read Collection<int, ServizioEsterno> $trasferte
+ * @property-read int|null $trasferte_count
  * @mixin \Eloquent
  */
 class ServizioEsterno extends BaseModel
@@ -227,30 +232,37 @@ class ServizioEsterno extends BaseModel
 
     public function trasferte(): HasMany
     {
-        // @phpstan-ignore-next-line
-        return $this->hasMany(FuoriSedeDip::class, 'matr', 'matr')
+        $relatedClass = 'Modules\Trasferte\Models\FuoriSedeDip';
+        if (! class_exists($relatedClass)) {
+            // Return a dummy relation or handle it safely for ide-helper
+            return $this->hasMany(self::class, 'id', 'id')->whereRaw('1=0');
+        }
+
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> $relatedClass */
+        return $this->hasMany($relatedClass, 'matr', 'matr')
             ->where('ente', $this->ente);
     }
 
     public function indennitaTipoDettaglio(): BelongsToMany
     {
         $cross = 'servizio_esterno_x_indennita_tipo_dettaglio';
-        $pivot_fields = 'gg';
+        $pivot_fields = ['gg'];
 
-        return $this->belongsToManyX(IndennitaTipoDettaglio::class, $cross)
+        return $this->belongsToMany(IndennitaTipoDettaglio::class, $cross)
             ->using(ServizioEsternoIndennitaTipoDettaglioPivot::class)
-            ->withPivot($pivot_fields);
+            ->withPivot($pivot_fields)
+            ->withTimestamps();
     }
 
     public function tipoDettaglio(): BelongsToMany
     {
-        // return $this->hasMany(CondizioniLavoroIndennitaTipoDettaglioPivot::class);
         $cross = 'servizio_esterno_x_indennita_tipo_dettaglio';
         $pivot_fields = ['gg'];
 
-        return $this->belongsToManyX(IndennitaTipoDettaglio::class, $cross)
+        return $this->belongsToMany(IndennitaTipoDettaglio::class, $cross)
             ->using(ServizioEsternoIndennitaTipoDettaglioPivot::class)
-            ->withPivot($pivot_fields);
+            ->withPivot($pivot_fields)
+            ->withTimestamps();
     }
 
     // -------- mutators ------------

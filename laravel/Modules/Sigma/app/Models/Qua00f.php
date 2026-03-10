@@ -130,6 +130,8 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @method static Builder|Qua00f ofEnte(int $ente)
  * @property-read int|null $ana02f_count
  * @method static Builder<static>|Qua00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ * @property-read Collection<int, \Modules\Sigma\Models\Rep00f> $rep00f
+ * @property-read int|null $rep00f_count
  * @mixin \Eloquent
  */
 class Qua00f extends Model

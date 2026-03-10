@@ -330,6 +330,9 @@ use RuntimeException;
  * @method static \Modules\IndennitaResponsabilita\Database\Factories\LettIFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|LettI withCalculatedData()
  * @method static Builder<static>|LettI withRating()
+ * @property-read \Modules\IndennitaResponsabilita\Models\ImportiCategoria|null $importo
+ * @property-read \Modules\Progressioni\Models\CategoriaPropro|null $categoriaPropro
+ * @property-read \Modules\IndennitaResponsabilita\Models\ImportiCategoria|null $importi
  * @mixin \Eloquent
  */
 class LettI extends BaseScheda
@@ -376,36 +379,12 @@ class LettI extends BaseScheda
     }
 
     // --------- relationship ----------
+    /* REMOVED: Redundant with RelationshipTrait and fixed to avoid SQL errors during static analysis.
     public function importi(): ?object
     {
-        $row = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')->where('anno', $this->anno)->whereRaw('find_in_set('.$this->propro.',lista_propro)');
-        if ($row->count() === 0) {
-            $rowOld = ImportiCategoria::where('ente', $this->ente)
-                ->where('anno', $this->anno - 1)
-                ->whereRaw('find_in_set('.$this->propro.',lista_propro)');
-            if ($rowOld->count() !== 1) {
-                Log::error("qualcosa e' andato storto [".__LINE__.']['.__FILE__.']');
-            }
-
-            /** @var ImportiCategoria|null $firstRow */
-            $firstRow = $rowOld->first();
-            if ($firstRow === null) {
-                return null;
-            }
-            $row = $firstRow->replicate();
-            /** @var int|null $anno */
-            $anno = $this->anno;
-            if ($anno !== null) {
-                $row->anno = $anno;
-            }
-            $row->save();
-            $row = $this->hasOne(ImportiCategoria::class, 'ente', 'ente')
-                ->where('anno', $this->anno)
-                ->whereRaw('find_in_set('.$this->propro.',lista_propro)');
-        }
-
-        return $row;
+        ...
     }
+    */
 
     /*
     public function anag(): HasOne {

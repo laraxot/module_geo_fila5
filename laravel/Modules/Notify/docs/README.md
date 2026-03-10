@@ -2,43 +2,41 @@
 
 ## Overview
 
-Il modulo **Notify** fa parte dell'ecosistema Laraxot PTVX.
+Il modulo **Notify** gestisce il sistema di notifiche dell'applicazione.
 
-## Scopo
+## Funzionalità
 
-Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
+- Mail notifications
+- Database notifications
+- Template management
+- Queue integration
 
-## Struttura
+## Modelli Principali
 
+```php
+// Mail Template
+Notify\Models\MailTemplate
+
+// Mail Template Version
+Notify\Models\MailTemplateVersion
+
+// Notification
+Notify\Models\Notification
 ```
-Notify/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
-├── docs/
-├── lang/
-└── resources/
+
+## Trait
+
+```php
+use Modules\Notify\Models\Traits\HasNotify;
 ```
-
-## Dipendenze
-
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/) (se usa autenticazione)
-- [Tenant Module](../Tenant/docs/) (se multi-tenant)
 
 ## Collegamenti
 
 - [Documentazione Root](../../../docs/NOTIFY_MODULE.md)
-- [Regole Architecture](../Xot/docs/architecture/)
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/)
 
 ## Backlinks
 
-- [Indice Moduli](../README.md)
-
-## TODO
-
-- [ ] Completare descrizione funzionalità
-- [ ] Documentare modelli principali
-- [ ] Documentare risorse Filament
-- [ ] Aggiungere esempi codice
+- [Filament Resources](./filament/)
+- [PHPStan Config](./phpstan/)

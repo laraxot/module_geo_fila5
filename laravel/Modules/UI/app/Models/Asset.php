@@ -23,12 +23,13 @@ use Modules\UI\Database\Factories\AssetFactory;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Theme       $theme
- *
  * @method static AssetFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Asset newModelQuery()
  * @method static Builder<static>|Asset newQuery()
  * @method static Builder<static>|Asset query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class Asset extends BaseModel

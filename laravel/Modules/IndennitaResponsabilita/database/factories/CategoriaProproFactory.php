@@ -1,18 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Modules\Notify\Database\Factories;
+namespace Modules\IndennitaResponsabilita\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Notify\Models\NotificationTemplateVersion;
 
-class NotificationTemplateVersionFactory extends Factory
+class CategoriaProproFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = NotificationTemplateVersion::class;
+    protected $model = \Modules\IndennitaResponsabilita\Models\CategoriaPropro::class;
 
     /**
      * Define the model's default state.
@@ -22,3 +19,4 @@ class NotificationTemplateVersionFactory extends Factory
         return [];
     }
 }
+

@@ -2,43 +2,43 @@
 
 ## Overview
 
-Il modulo **Sigma** fa parte dell'ecosistema Laraxot PTVX.
+Il modulo **Sigma** gestisce l'integrazione con il sistema esterno Sigma.
 
-## Scopo
+## Funzionalità
 
-Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
+- API integration
+- Data synchronization
+- Webhook handling
+- Import/Export dati
 
-## Struttura
+## Configurazione
 
+```php
+// Configurazione Sigma
+'sigma' => [
+    'api_url' => env('SIGMA_API_URL'),
+    'api_key' => env('SIGMA_API_KEY'),
+    'timeout' => 30,
+]
 ```
-Sigma/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
-├── docs/
-├── lang/
-└── resources/
+
+## Services
+
+```php
+// Sigma API client
+Sigma\Services\SigmaClient
+
+// Data sync
+Sigma\Services\DataSynchronizer
 ```
-
-## Dipendenze
-
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/) (se usa autenticazione)
-- [Tenant Module](../Tenant/docs/) (se multi-tenant)
 
 ## Collegamenti
 
 - [Documentazione Root](../../../docs/SIGMA_MODULE.md)
-- [Regole Architecture](../Xot/docs/architecture/)
+- [Xot Base](../Xot/docs/)
+- [Notify Module](../Notify/docs/)
 
 ## Backlinks
 
-- [Indice Moduli](../README.md)
-
-## TODO
-
-- [ ] Completare descrizione funzionalità
-- [ ] Documentare modelli principali
-- [ ] Documentare risorse Filament
-- [ ] Aggiungere esempi codice
+- [API Integration](./api/)
+- [Sync Config](./sync/)
