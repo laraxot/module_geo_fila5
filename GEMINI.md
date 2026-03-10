@@ -10,6 +10,8 @@
 - CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
 - When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
 - LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
+- **Rule**: PHPSTAN LEVEL 10 DYNAMIC RELATIONSHIPS - When defining dynamic Eloquent relationships (like `scheda()` in `Ptv` module), always resolve the model class string with a fallback to the base model (e.g., `Modules\Progressioni\Models\Scheda`) and use `Webmozart\Assert\Assert::classExists($modelClass)` for type narrowing.
+- **Rule**: ISSUE & DISCUSSION COORDINATION - Track all PHPStan Level 10 fixes via module-specific GitHub Issues (IDs #85-100) and link them to the central coordination Discussion #84. Every commit must reference the relevant issue.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context

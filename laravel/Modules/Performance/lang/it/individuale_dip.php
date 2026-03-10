@@ -198,6 +198,9 @@ return [
             'icon' => 'logout',
             'label' => 'logout',
         ],
+        'profile' => [
+            'tooltip' => 'profile',
+        ],
     ],
     'messages' => [
         'validation' => [
