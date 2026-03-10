@@ -99,7 +99,7 @@ class StabiDirigente extends BaseModel
             ->where('ente', 90);
     }
 
-    public function schedas(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -114,7 +114,7 @@ class StabiDirigente extends BaseModel
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->schedas()->where('benificiario_progressione', 1);
+        return $this->schede()->where('benificiario_progressione', 1);
     }
 
     // --- mutators --
