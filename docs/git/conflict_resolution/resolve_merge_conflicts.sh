@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directory di base
-BASE_DIR="/var/www/_bases/base_predict_fila5_mono"
+BASE_DIR="/var/www/_bases/base_<nome progetto>_fila5_mono"
 
 # Log file
 LOG_FILE="${BASE_DIR}/bashscripts/resolve_conflicts_$(date +%Y%m%d_%H%M%S).log"

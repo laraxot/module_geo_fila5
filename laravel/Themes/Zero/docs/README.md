@@ -1,31 +1,40 @@
-# Zero Theme Docs
+# Tema Zero - Documentazione
 
-Documentazione tecnica del tema `Zero` (layout, componenti, integrazione Filament e linee guida UI).
+## Overview
 
-## Stato Attuale (snapshot 2026-03-07)
-
-- Documenti markdown in `docs/`: **69**
-- File docs con marker di merge rilevati: **22 file** / **168 marker**
-- Priorita: bonifica conflitti e consolidamento indice
-
-## Uso consigliato
-
-- partire da [00-index.md](00-index.md)
-- usare [architecture.md](architecture.md) e [modern-theme-architecture.md](modern-theme-architecture.md) come riferimenti principali
-- trattare i documenti con conflitti come **non affidabili** finche non bonificati
-
-## Audit e piano
-
-- report confidenza: [docs-confidence-audit-2026-03-07.md](docs-confidence-audit-2026-03-07.md)
+Il tema **Zero** è il tema principale di default per l'applicazione Laraxot PTVX.
 
 ## Struttura
 
-- `resources/views/` — layout e componenti blade del tema
-- `lang/` — traduzioni specifiche tema
-- `docs/` — linee guida, roadmap, troubleshooting
+```
+Zero/
+├── app/
+│   ├── Http/
+│   ├── View/
+│   └── ...
+├── config/
+├── docs/
+├── lang/
+├── resources/
+│   ├── views/
+│   └── svg/
+└── routes/
+```
 
-## Regole
+## Configurazione
 
-- nessun marker di merge nei file finali
-- evitare duplicazioni tra `index.md`, `index-consolidated.md`, `00-index.md`
-- ogni modifica ai componenti principali deve aggiornare almeno un documento canonico
+### Regole Fondamentali
+
+1. **PHPStan**: Configurazione centralizzata in `laravel/phpstan.neon`
+2. **Output files**: `phpstan*.json` ignorati (NON committare)
+3. **Namespace**: `Themes\Zero\`
+
+## Collegamenti
+
+- [PHPStan Docs](./phpstan.md)
+- [Configurazione Root](../../../docs/THEME_ZERO.md)
+
+## Backlinks
+
+- [Xot Module](../../Modules/Xot/docs/)
+- [UI Module](../../Modules/UI/docs/)

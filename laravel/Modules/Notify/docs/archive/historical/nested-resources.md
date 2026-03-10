@@ -66,13 +66,13 @@ The Notify module provides a comprehensive notification system for the Laraxot s
 **Justification:** Group notification logs by tenant for multi-tenant monitoring and compliance.
 
 ### 7. Customer Communication History
-**Parent Resource:** CustomerResource (from Quaeris module)
+**Parent Resource:** CustomerResource (from <nome progetto> module)
 **Child Resource:** NotificationLogResource
 **Relationship:** Customer-related notifications (via contacts/surveys)
 **Justification:** Track all communication with customers across different channels for relationship management.
 
 ### 8. Survey Communication Logs
-**Parent Resource:** SurveyPdfResource (from Quaeris module)
+**Parent Resource:** SurveyPdfResource (from <nome progetto> module)
 **Child Resource:** NotificationLogResource
 **Relationship:** Survey-related notifications (via survey contacts)
 **Justification:** Monitor all communication related to specific surveys for better survey management.
@@ -179,7 +179,7 @@ Following the documented approach in `Modules/UI/docs/filament/nested-resource.m
 - Optimize queries for common notification log patterns
 
 ### 4. Integration with Other Modules
-- Handle relationships with Quaeris module (surveys and contacts)
+- Handle relationships with <nome progetto> module (surveys and contacts)
 - Coordinate with User module for recipient management
 - Integrate with Tenant module for multi-tenant operations
 
@@ -204,13 +204,13 @@ Following the documented approach in `Modules/UI/docs/filament/nested-resource.m
 
 ### 1. Intelligent Notification Management
 - Automated personalization based on recipient history
-- Predictive analytics for engagement optimization
+- <nome progetto>ive analytics for engagement optimization
 - Machine learning-based content optimization
 
 ### 2. Advanced Communication Analytics
 - Cross-channel engagement tracking
 - Behavioral analytics for recipients
-- Predictive delivery timing optimization
+- <nome progetto>ive delivery timing optimization
 
 ### 3. Cross-module Communication Integration
 - Unified communication history across modules

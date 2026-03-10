@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Script di gestione dei server MCP per base_predict_fila5_mono
+# Script di gestione dei server MCP per base_<nome progetto>_fila5_mono
 # Autore: Cascade AI Assistant
 # Data: 2025-05-13
 
-PROJECT_DIR="/var/www/html/_bases/base_predict_fila5_mono"
+PROJECT_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 LOGS_DIR="$PROJECT_DIR/storage/logs/mcp"
 
 # Crea la directory dei log se non esiste

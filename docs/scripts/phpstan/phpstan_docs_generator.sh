@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directory base Laravel
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel"
 # Directory base dei moduli
 MODULES_DIR="${LARAVEL_DIR}/Modules"
 
@@ -130,7 +130,7 @@ for MODULE_PATH in $MODULES_DIR/*; do
                 echo "3. Considerare l'aggiunta di test unitari per verificare il comportamento corretto" >> "$OUTPUT_FILE"
                 echo "4. Aggiornare la documentazione del codice con annotazioni PHPDoc complete" >> "$OUTPUT_FILE"
                 echo "5. Valutare l'utilizzo di classi di tipo dedicate (DTO) per strutture dati complesse" >> "$OUTPUT_FILE"
-                echo "6. Seguire le linee guida di tipizzazione nel documento 'Regole Windsurf per base_predict_fila5_mono'" >> "$OUTPUT_FILE"
+                echo "6. Seguire le linee guida di tipizzazione nel documento 'Regole Windsurf per base_<nome progetto>_fila5_mono'" >> "$OUTPUT_FILE"
             fi
             
             echo "  Documentazione salvata in: $OUTPUT_FILE"

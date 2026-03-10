@@ -10,7 +10,7 @@ Based on a recent comprehensive review of module documentation, particularly foc
     *   **PHP-CS-Fixer / Pint:** For consistent code formatting.
     All modules are expected to integrate and actively utilize composer scripts (`analyse`, `test`, `format`) for these tools. Our existing skills (`phpstan-level10`, `pest-testing`, `pint-format`, `laraxot-core`) are explicitly confirmed as essential for these tasks.
 
-3.  **Standardized Module Directory Structure:** Maintain a consistent and predictable directory structure across all modules, including standardizing paths for `app/Actions`, `app/Filament`, `app/Models`, `app/Providers`, and `tests/`. This promotes maintainability and easier navigation.
+3.  **Standardized Module Directory Structure:** Maintain a consistent and <nome progetto>able directory structure across all modules, including standardizing paths for `app/Actions`, `app/Filament`, `app/Models`, `app/Providers`, and `tests/`. This promotes maintainability and easier navigation.
 
 4.  **Event Sourcing Patterns (for relevant modules):** For modules implementing event sourcing, strictly follow the established architectural components: Event Store, Aggregate, Projector, Reactor, and Snapshot. Adhere to the defined directory structure within `app/` (e.g., `Aggregates/`, `Projectors/`).
 

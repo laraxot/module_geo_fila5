@@ -1,62 +1,41 @@
-<<<<<<< HEAD:laravel/Modules/User/PEST_TEST_REPORT.md
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e3956292 (.):laravel/Modules/User/pest-test-report.md
+
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
-<<<<<<< HEAD:laravel/Modules/User/PEST_TEST_REPORT.md
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
-=======
-=======
->>>>>>> a038b0f2 (.)
-=======
->>>>>>> a038b0f2 (.)
-=======
+
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios. (.)
->>>>>>> e3956292 (.):laravel/Modules/User/pest-test-report.md
+
 # LaravelPizza User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in LaravelPizza. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
-<<<<<<< HEAD:laravel/Modules/User/PEST_TEST_REPORT.md
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> a038b0f2 (.)
-=======
+
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
->>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
-=======
->>>>>>> a038b0f2 (.)
-=======
+
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
->>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
-=======
->>>>>>> a038b0f2 (.)
-=======
+
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
->>>>>>> 9daa1718 (refactor: update project references to use `<nome progetto>` in various documentation and configuration files)
-=======
->>>>>>> e3956292 (.):laravel/Modules/User/pest-test-report.md
+
+# <nome progetto> User Module - Pest Test Implementation Report
+
+## Executive Summary
+
+Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
 
 ### Test Results
 - **Total Tests Created**: 32

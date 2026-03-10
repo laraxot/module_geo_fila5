@@ -4,7 +4,7 @@
 # Autore: Cascade AI Assistant
 # Data: 2025-05-13
 
-PROJECT_DIR="/var/www/html/_bases/base_predict_fila5_mono"
+PROJECT_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono"
 LOGS_DIR="$PROJECT_DIR/storage/logs/mcp"
 CONNECTOR_SCRIPT="$PROJECT_DIR/scripts/mysql-db-connector.js"
 

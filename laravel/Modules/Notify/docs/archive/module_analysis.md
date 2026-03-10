@@ -190,9 +190,9 @@ class SurveyCompleted extends Notification
 ### 🟢 MEDIE (Priorità Bassa)
 1. **AI-Powered Features**
    - No smart notification timing
-   - Missing optimal send time prediction
+   - Missing optimal send time <nome progetto>ion
    - No content personalization
-   - Missing engagement prediction
+   - Missing engagement <nome progetto>ion
 
 2. **Advanced Integrations**
    - No third-party service integrations
@@ -288,7 +288,7 @@ NotificationService::broadcast(new SystemMaintenance(
 ### Fase 3: Intelligence & Personalization (3-4 settimane)
 - [ ] AI-powered optimal timing
 - [ ] Content personalization
-- [ ] Engagement prediction
+- [ ] Engagement <nome progetto>ion
 - [ ] Smart notification routing
 
 ### Fase 4: Enterprise Features (3-4 settimane)

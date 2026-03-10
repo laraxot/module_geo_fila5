@@ -1,52 +1,40 @@
-# Documentazione del Tema One
+# Tema One - Documentazione
 
-Questa cartella contiene documentazione interna per il tema One.
+## Overview
 
-## Struttura e Personalizzazione
-- `app/`: componenti PHP e Blade specifici del tema
-- `resources/`: viste, CSS e JS basati su Tailwind + Vite
-- `public/`: asset compilati
-- `lang/`: file di traduzione dedicati
+Il tema **One** è un tema alternativo per l'applicazione Laraxot PTVX.
 
-Per personalizzare:
-1. Aggiornare componenti/layout in `resources/views/`
-2. Modificare gli stili in `resources/css/`
-3. Eseguire `npm run build` (o `npm run dev`) per rigenerare gli asset
+## Scopo
 
-## UI/UX Patterns
-- [Readonly Field Styling](./readonly-field-styling.md) - Pattern per campi readonly/calcolati nei form Filament
+Fornisce un'interfaccia utente alternativa con layout e stili diversi dal tema Zero.
 
-Ricordare di documentare ogni variante o layout personalizzato nella cartella `docs/`.
+## Struttura
 
-## 🤖 AI Development Tools & Skills
-- [Claude Context (Laravel)](../../../CLAUDE.md)
-- [AI Agents Guide](../../../../AGENTS.md)
-- [Cursor Rules & Skills](../../../../.cursor/README.md)
-- [Skills di progetto](../../../../.cursor/skills/)
+```
+One/
+├── app/
+├── config/
+├── docs/
+├── lang/
+├── resources/
+│   └── views/
+└── routes/
+```
 
-### Metodo di lavoro (BMAD + Laraxot)
+## Utilizzo
 
-Per le attività sul tema One si segue un flusso coerente con il metodo BMAD e le regole Laraxot:
+Per attivare il tema One, configurare nel file `.env`:
 
-1. **Analisi**: chiarire scopo della modifica (business logic, pagina, utente finale).
-2. **Design leggero**: scegliere la soluzione UI/UX più semplice che riusa pattern e componenti esistenti.
-3. **Implementazione**: applicare cambiamenti minimi, leggibili, coerenti con Tailwind e i layout del tema.
-4. **Verifica**: controllare resa visiva (anche responsive) ed eseguire i comandi di build/lint necessari.
-5. **Documentazione**: aggiornare/creare (se manca) la pagina `docs` pertinente descrivendo scopo, decisioni e impatti.
+```env
+ACTIVE_THEME=one
+```
 
-## 🔁 CI & Semantic Versioning
-Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
-Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
-Workflow root progetto: `/.github/workflows/*.yml`.
+## Collegamenti
 
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
+- [Tema Zero](../Zero/docs/) - Tema principale
+- [Configurazione Root](../../../docs/THEME_ONE.md)
 
+## Backlinks
 
-## 📄 License & Authors
-
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
-
-**License:** MIT
+- [Xot Module](../../Modules/Xot/docs/)
+- [UI Module](../../Modules/UI/docs/)

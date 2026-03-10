@@ -2240,7 +2240,7 @@ Using `property_exists()` on Eloquent models is a critical error because:
 - Eloquent models use magic properties via `__get()` and `__set()`
 - Database fields are NOT real PHP properties
 - `property_exists()` always returns `false` for database fields
-- This leads to incorrect logic and unpredictable behavior
+- This leads to incorrect logic and un<nome progetto>able behavior
 
 ### Correct Alternatives
 
@@ -2364,7 +2364,7 @@ $this->assertTrue(property_exists($model, 'field_name')); // Always fails
 
 Using `property_exists()` on Eloquent models causes:
 - Broken validation logic
-- Unpredictable application behavior
+- Un<nome progetto>able application behavior
 - Runtime errors that are difficult to trace
 - Violation of Laravel/Eloquent best practices
 - False negative results in all cases

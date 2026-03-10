@@ -94,7 +94,7 @@ laravel/app/View/Components/vendor/
 
 # Moduli / cache specifiche
 laravel/bootstrap/cache/modules.php
-laravel/Modules/Predict/
+laravel/Modules/<nome progetto>/
 laravel/Modules/User/lang/lang/
 
 # Config DB locali (auto-generati)

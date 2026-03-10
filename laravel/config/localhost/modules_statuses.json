@@ -27,7 +27,7 @@
     "Seo": true,
     "User": true,
     "Activity": true,
-    "Predict": true,
+    "<nome progetto>": true,
     "BarberShop": true,
     "Booking": true,
     "Gdpr": true,

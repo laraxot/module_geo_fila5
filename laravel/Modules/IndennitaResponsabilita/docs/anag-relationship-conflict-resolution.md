@@ -154,7 +154,7 @@ trait AnagRelationshipFactory
 - 🔄 **Reduced code duplication** - Trait now works for both child and parent models
 - 🔄 **Improved maintainability** - No need for per-module renames/aliases
 - 🔄 **Better architectural consistency** - Relationship semantics encoded once in Sigma
-- 🔄 **Enhanced developer experience** - Predictable inheritance without FatalErrors
+- 🔄 **Enhanced developer experience** - <nome progetto>able inheritance without FatalErrors
 
 ## Files Modified
 

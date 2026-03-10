@@ -48,7 +48,7 @@ The organization needs:
 
 ### P2: Advanced Logistics (Nice-to-have)
 - **FR-006: Visual Resource Mapping**: Interactive maps for desk and room selection during the booking process.
-- **FR-007: AI Availability Optimization**: Predictive suggestions for resource allocation based on historical booking trends.
+- **FR-007: AI Availability Optimization**: <nome progetto>ive suggestions for resource allocation based on historical booking trends.
 
 ## 6. Non-Functional Requirements & Agnostic Design
 

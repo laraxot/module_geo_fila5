@@ -10,7 +10,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directory base Laravel
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel"
 # Directory base dei moduli
 MODULES_DIR="${LARAVEL_DIR}/Modules"
 
@@ -63,7 +63,7 @@ for MODULE_PATH in $MODULES_DIR/*; do
         echo "" >> "$README_FILE"
         echo "## Obiettivi di Qualità" >> "$README_FILE"
         echo "" >> "$README_FILE"
-        echo "Secondo le 'Regole Windsurf per base_predict_fila5_mono', gli obiettivi per l'analisi PHPStan sono:" >> "$README_FILE"
+        echo "Secondo le 'Regole Windsurf per base_<nome progetto>_fila5_mono', gli obiettivi per l'analisi PHPStan sono:" >> "$README_FILE"
         echo "" >> "$README_FILE"
         echo "- Iniziare dal livello 1 per i nuovi moduli" >> "$README_FILE"
         echo "- Assicurarsi che tutto il codice passi almeno il livello 5" >> "$README_FILE"
