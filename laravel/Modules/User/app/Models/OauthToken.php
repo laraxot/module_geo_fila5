@@ -10,7 +10,7 @@ use Laravel\Passport\Token as PassportToken;
 use Modules\Xot\Contracts\UserContract;
 
 /**
- * Modules\User\Models\OauthToken.
+ * Modules\User\Models\OauthAccessToken.
  *
  * @property string                 $id
  * @property string|null            $user_id
@@ -28,25 +28,23 @@ use Modules\Xot\Contracts\UserContract;
  * @property OauthClient|null       $client
  * @property UserContract|null      $user
  * @property OauthRefreshToken|null $refreshToken
- *
- * @method static Builder|OauthToken newModelQuery()
- * @method static Builder|OauthToken newQuery()
- * @method static Builder|OauthToken query()
- * @method static Builder|OauthToken whereClientId($value)
- * @method static Builder|OauthToken whereCreatedAt($value)
- * @method static Builder|OauthToken whereExpiresAt($value)
- * @method static Builder|OauthToken whereId($value)
- * @method static Builder|OauthToken whereName($value)
- * @method static Builder|OauthToken whereRevoked($value)
- * @method static Builder|OauthToken whereScopes($value)
- * @method static Builder|OauthToken whereUpdatedAt($value)
- * @method static Builder|OauthToken whereUserId($value)
- * @method static Builder|OauthToken whereCreatedBy($value)
- * @method static Builder|OauthToken whereDeletedAt($value)
- * @method static Builder|OauthToken whereDeletedBy($value)
- * @method static Builder|OauthToken whereUpdatedBy($value)
+ * @method static Builder|OauthAccessToken                                 newModelQuery()
+ * @method static Builder|OauthAccessToken                                 newQuery()
+ * @method static Builder|OauthAccessToken                                 query()
+ * @method static Builder|OauthAccessToken                                 whereClientId($value)
+ * @method static Builder|OauthAccessToken                                 whereCreatedAt($value)
+ * @method static Builder|OauthAccessToken                                 whereExpiresAt($value)
+ * @method static Builder|OauthAccessToken                                 whereId($value)
+ * @method static Builder|OauthAccessToken                                 whereName($value)
+ * @method static Builder|OauthAccessToken                                 whereRevoked($value)
+ * @method static Builder|OauthAccessToken                                 whereScopes($value)
+ * @method static Builder|OauthAccessToken                                 whereUpdatedAt($value)
+ * @method static Builder|OauthAccessToken                                 whereUserId($value)
+ * @method static Builder|OauthAccessToken                                 whereCreatedBy($value)
+ * @method static Builder|OauthAccessToken                                 whereDeletedAt($value)
+ * @method static Builder|OauthAccessToken                                 whereDeletedBy($value)
+ * @method static Builder|OauthAccessToken                                 whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthToken existsIn(array $haystack)
- *
  * @mixin \Eloquent
  */
 class OauthToken extends PassportToken
@@ -55,39 +53,19 @@ class OauthToken extends PassportToken
     protected $connection = 'user';
 
     /**
-     * Get the user associated with this token.
-     * Override Passport's user() to handle null provider gracefully.
+     * Get the user that the access token belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        $provider = $this->getTokenGuardProvider();
-
-        if ($provider === null) {
-            return $this->belongsTo(
-                config('auth.guards.api.provider') ?? \Modules\User\Models\User::class,
-                'user_id'
-            );
+        /** @var string|null $userModel */
+        $userModel = config('auth.providers.users.model');
+        if ($userModel === null) {
+            // Fallback to a safe default or return an empty relation
+            return $this->belongsTo(self::class, 'id', 'id')->whereRaw('1=0');
         }
 
-        return $this->belongsTo(
-            config("auth.providers.{$provider}.model", \Modules\User\Models\User::class),
-            'user_id'
-        );
-    }
-
-    /**
-     * Get the token guard provider.
-     *
-     * @return string|null
-     */
-    protected function getTokenGuardProvider(): ?string
-    {
-        foreach (config('auth.guards', []) as $guard => $config) {
-            if (($config['driver'] ?? null) === 'passport') {
-                return $config['provider'] ?? null;
-            }
-        }
-
-        return null;
+        return $this->belongsTo($userModel, 'user_id');
     }
 }

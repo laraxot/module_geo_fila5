@@ -228,13 +228,13 @@ Following the documented approach in `Modules/UI/docs/filament/nested-resource.m
 
 ### 1. Intelligent Notification Management
 - Automated personalization based on recipient history
-- Predictive analytics for engagement optimization
+- <nome progetto>ive analytics for engagement optimization
 - Machine learning-based content optimization
 
 ### 2. Advanced Communication Analytics
 - Cross-channel engagement tracking
 - Behavioral analytics for recipients
-- Predictive delivery timing optimization
+- <nome progetto>ive delivery timing optimization
 
 ### 3. Cross-module Communication Integration
 - Unified communication history across modules

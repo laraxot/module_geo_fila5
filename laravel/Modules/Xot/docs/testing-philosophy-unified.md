@@ -47,7 +47,7 @@ $this->app['config']->set('database.connections.testing', [
 
 ### Position C (WINNER): "Fix the contradiction!"
 - **Argument**: The problem isn't MySQL vs SQLite - it's that `.env.testing` is IGNORED
-- **Pro**: Respects configuration, DRY, KISS, predictable
+- **Pro**: Respects configuration, DRY, KISS, <nome progetto>able
 - **Con**: Requires refactoring all TestCase files
 
 ## The Zen Solution
@@ -58,7 +58,7 @@ $this->app['config']->set('database.connections.testing', [
 
 ### Why This Wins
 
-1. **Predictability**: Developers expect `.env.testing` to work
+1. **<nome progetto>ability**: Developers expect `.env.testing` to work
 2. **DRY**: Single source of truth for test configuration
 3. **KISS**: Simple - just use the config that's already there
 4. **Flexibility**: Want SQLite? Change `.env.testing`. Want MySQL? Change `.env.testing`

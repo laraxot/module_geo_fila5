@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\Config;
+
 use Modules\Xot\Actions\Config\GetTenantConfigArrayAction;
 use Modules\Xot\Actions\Config\GetTenantConfigPathAction;
-use Tests\TestCase;
-
-uses(TestCase::class);
 
 it('returns empty array when tenant config file does not exist', function (): void {
     $pathAction = Mockery::mock(GetTenantConfigPathAction::class);

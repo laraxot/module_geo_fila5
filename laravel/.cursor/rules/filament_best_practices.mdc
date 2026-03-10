@@ -1,0 +1,74 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Regola RelationManager custom: estensione XotBaseRelationManager
+
+Tutti i RelationManager custom dei moduli Laraxot/PTVX devono estendere **sempre**
+
+```php
+use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
+
+class MyRelationManager extends XotBaseRelationManager
+{
+    // ...
+}
+```
+
+Mai estendere direttamente `Filament\Resources\RelationManagers\RelationManager`.
+
+**Motivazione:**
+- Centralizza la logica tabellare e di form custom
+- Garantisce coerenza, DRY, aggiornabilità e riduce errori/duplicazioni
+- Permette override solo per personalizzazioni reali (es. campi extra nel form di attach)
+
+**Pattern corretto:**
+- Usa solo `getFormSchema()` per i form custom
+- Personalizza solo ciò che serve davvero (es. azioni, headerActions, ecc.)
+- Non ridefinire metodi già gestiti dalla base
+
+**Anti-pattern:**
+- Estendere direttamente la classe Filament
+- Duplicare metodi standard già gestiti dalla base
+- Usare `form()` invece di `getFormSchema()`
+
+**Checklist:**
+- [x] Tutti i RelationManager custom estendono XotBaseRelationManager
+- [x] Nessun override inutile di metodi base
+- [x] Solo personalizzazioni reali
+- [x] Documentazione aggiornata
+
+**Backlink:**
+- [Best practices Xot](mdc:../../Modules/Xot/docs/filament-best-practices.md)
+- [Root FILAMENT-BEST-PRACTICES.md](mdc:../../docs/FILAMENT-BEST-PRACTICES.md)
+
+# ⚠️ Regola fondamentale: NIENTE ->label(), ->helperText(), ->modalHeading() nei componenti Filament
+
+**Tutte le label, help text e heading DEVONO essere gestite solo tramite la struttura espansa delle traduzioni.**
+
+## Motivazione
+- Coerenza, localizzazione automatica, manutenibilità, rispetto delle regole Laraxot/Xot
+- Evita errori, duplicazioni e stringhe hardcoded
+
+## Pattern corretto
+```php
+TextInput::make('role')->required()
+```
+
+## Anti-pattern (da evitare)
+```php
+TextInput::make('role')->label('Ruolo') // ❌ VIETATO
+TextInput::make('role')->helperText('Testo di aiuto') // ❌ VIETATO
+EditAction::make()->modalHeading('Modifica') // ❌ VIETATO
+```
+
+## Checklist
+- [ ] Nessun ->label(), ->helperText(), ->modalHeading() nei componenti Filament
+- [ ] Tutte le label e testi solo tramite traduzioni espanse
+- [ ] Aggiorna sempre la struttura delle traduzioni se serve
+
+## Backlink
+- [Xot/docs/filament-best-practices.md](../../Modules/Xot/docs/filament-best-practices.md)
+- [User/docs/README.md](../../Modules/User/docs/README.md)
+- [docs/FILAMENT-BEST-PRACTICES.md](../../docs/FILAMENT-BEST-PRACTICES.md)

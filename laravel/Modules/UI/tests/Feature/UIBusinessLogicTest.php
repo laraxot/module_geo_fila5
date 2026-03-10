@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Feature;
+
 uses(Modules\UI\Tests\TestCase::class);
 
 use Illuminate\Support\Facades\File;
@@ -42,12 +44,12 @@ describe('UI Business Logic Integration', function () {
 
             // Verifica che solo un tema possa essere attivo per volta
             $activeThemes = Theme::where('is_active', true)->get();
-            expect($activeThemes->count())->toBeGreaterThanOrEqual(1); // Test theme
+            expect($activeThemes)->toHaveCount(2); // Default + Test
 
             // Disattivazione tema precedente
             $this->theme->update(['is_active' => false]);
             $activeThemes = Theme::where('is_active', true)->get();
-            expect($activeThemes->count())->toBeGreaterThan(0);
+            expect($activeThemes)->toHaveCount(1);
         });
 
         it('enforces theme configuration validation', function () {
@@ -81,8 +83,7 @@ describe('UI Business Logic Integration', function () {
 
             // Verifica relazione di ereditarietà
             expect($childTheme->parent_id)->toBe($parentTheme->id);
-            expect($childTheme->parent)->not->toBeNull();
-            expect($childTheme->parent?->id)->toBe($parentTheme->id);
+            expect($childTheme->parent)->toBe($parentTheme);
 
             // Verifica che il tema figlio erediti le configurazioni del padre
             $parentConfig = $parentTheme->config ?? [];
@@ -332,19 +333,16 @@ describe('UI Business Logic Integration', function () {
                     'type' => 'css',
                 ]);
 
-            $themeAssets = Asset::query()->where('theme_id', $theme->id)->get();
-            $themeAssetsCount = Asset::query()->where('theme_id', $theme->id)->count();
-
             // Verifica che il tema abbia asset da compilare
-            expect($themeAssetsCount)->toBeGreaterThanOrEqual(3);
+            expect($theme->assets)->toHaveCount(3);
 
             // Verifica che tutti gli asset siano dello stesso tipo
-            foreach ($themeAssets as $asset) {
+            foreach ($theme->assets as $asset) {
                 expect($asset->type)->toBe('css');
             }
 
             // Verifica che gli asset appartengano al tema corretto
-            foreach ($themeAssets as $asset) {
+            foreach ($theme->assets as $asset) {
                 expect($asset->theme_id)->toBe($theme->id);
             }
         });
@@ -437,16 +435,14 @@ describe('UI Business Logic Integration', function () {
             expect($component->responsive_breakpoints['tablet'])->toContain('min-width');
             expect($component->responsive_breakpoints['desktop'])->toContain('min-width');
 
-            // Verifica ordine logico nel formato media-query
-            // Note: breakpoint values might be serialized as strings
-            $mobileBreakpoint = $component->responsive_breakpoints['mobile'] ?? '';
-            $tabletBreakpoint = $component->responsive_breakpoints['tablet'] ?? '';
-            $desktopBreakpoint = $component->responsive_breakpoints['desktop'] ?? '';
+            // Verifica che i breakpoint siano ordinati correttamente
+            $mobileMax = (int) preg_replace('/[^0-9]/', '', $component->responsive_breakpoints['mobile']);
+            $tabletMin = (int) preg_replace('/[^0-9]/', '', $component->responsive_breakpoints['tablet']);
+            $tabletMax = (int) preg_replace('/[^0-9]/', '', $component->responsive_breakpoints['tablet']);
+            $desktopMin = (int) preg_replace('/[^0-9]/', '', $component->responsive_breakpoints['desktop']);
 
-            expect($mobileBreakpoint)->toContain('768px');
-            expect($tabletBreakpoint)->toContain('769px');
-            expect($tabletBreakpoint)->toContain('1024px');
-            expect($desktopBreakpoint)->toContain('1025px');
+            expect($mobileMax)->toBeLessThan($tabletMin);
+            expect($tabletMax)->toBeLessThan($desktopMin);
         });
     });
 

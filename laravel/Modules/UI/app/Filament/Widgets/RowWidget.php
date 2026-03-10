@@ -11,7 +11,7 @@ namespace Modules\UI\Filament\Widgets;
 use Filament\Schemas\Components\Component;
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
-class RowWidget extends XotBaseWidget
+abstract class RowWidget extends XotBaseWidget
 {
     public array $grid = [];
 

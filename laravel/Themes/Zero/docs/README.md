@@ -1,62 +1,40 @@
-# Documentazione del Tema Zero
+# Tema Zero - Documentazione
 
-Questa cartella contiene documentazione interna per il tema Zero.
+## Overview
 
-## Correzioni Apportate
+Il tema **Zero** è il tema principale di default per l'applicazione Laraxot PTVX.
 
-### Problemi di Configurazione PHPStan
+## Struttura
 
-Durante l'analisi del progetto con PHPStan, sono stati identificati e risolti i seguenti problemi relativi al tema Zero:
+```
+Zero/
+├── app/
+│   ├── Http/
+│   ├── View/
+│   └── ...
+├── config/
+├── docs/
+├── lang/
+├── resources/
+│   ├── views/
+│   └── svg/
+└── routes/
+```
 
-1. **Configurazione del Database**:
-<<<<<<< .merge_file_XF97gD
-   - **Problema**: Il database `healthcare_app_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
-   - **Soluzione**: È stato creato il database `healthcare_app_data` per consentire il corretto funzionamento dell'applicazione.
-=======
-   - **Problema**: Il database `ptvx_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
-   - **Soluzione**: È stato creato il database `ptvx_data` per consentire il corretto funzionamento dell'applicazione.
->>>>>>> .merge_file_VZ4qWz
+## Configurazione
 
-2. **Aggiornamento del File .env**:
-   - **Problema**: Il file `.env` conteneva configurazioni obsolete o mancanti.
-   - **Soluzione**: Il file `.env` è stato aggiornato con le configurazioni corrette per il database e altri parametri necessari.
+### Regole Fondamentali
 
-3. **Abilitazione dei Moduli Necessari**:
-   - **Problema**: Alcuni moduli richiesti per il corretto funzionamento dell'applicazione erano disabilitati.
-   - **Soluzione**: Sono stati abilitati i moduli `Cms` e `Geo` per garantire il corretto caricamento delle dipendenze.
+1. **PHPStan**: Configurazione centralizzata in `laravel/phpstan.neon`
+2. **Output files**: `phpstan*.json` ignorati (NON committare)
+3. **Namespace**: `Themes\Zero\`
 
-## Struttura e Personalizzazione
+## Collegamenti
 
-- `app/`: componenti PHP e Blade specifici del tema
-- `resources/`: viste, CSS e JS basati su Tailwind + Vite
-- `public/`: asset compilati
-- `lang/`: file di traduzione dedicati
+- [PHPStan Docs](./phpstan.md)
+- [Configurazione Root](../../../docs/THEME_ZERO.md)
 
-Per personalizzare:
-1. Aggiornare componenti/layout in `resources/views/`
-2. Modificare gli stili in `resources/css/`
-3. Eseguire `npm run build` (o `npm run dev`) per rigenerare gli asset
+## Backlinks
 
-Ricordare di documentare ogni variante o layout personalizzato nella cartella `docs/`.
-
-## 🤖 AI Development Tools & Skills
-- [Claude Context (Laravel)](../../../CLAUDE.md)
-- [AI Agents Guide](../../../../AGENTS.md)
-- [Cursor Rules & Skills](../../../../.cursor/README.md)
-- [Skills di progetto](../../../../.cursor/skills/)
-
-## 🔁 CI & Semantic Versioning
-Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
-Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
-Workflow root progetto: `/.github/workflows/*.yml`.
-
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
-
-## 📄 License & Authors
-
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
-
-**License:** MIT
+- [Xot Module](../../Modules/Xot/docs/)
+- [UI Module](../../Modules/UI/docs/)

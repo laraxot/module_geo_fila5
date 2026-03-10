@@ -514,7 +514,7 @@ jobs:
 **Status**: 🔴 **169 errors** requiring systematic fixes
 **Next Review**: 2025-12-23 (1 week)
 **Owner**: Tech Lead + Module Owners
-**
+**Last Updated**: 2025-12-16
 
 ---
 
@@ -770,7 +770,7 @@ test('it can create and manage tenants', function (): void {
 
 ---
 
-**
+**Ultimo aggiornamento**: 2025-01-27
 **Status**: Implementazione in corso - 51% errori risolti (594 → 289, -305 errori)
 
 ---
@@ -791,7 +791,7 @@ test('it can create and manage tenants', function (): void {
 - ✅ **check-all-modules.sh** - Controllo batch tutti i moduli
 
 ### Path Corretti
-- ✅ **mysql-db-connector.js** - Path corretto a `base_<nome progetto>_fila5_mono`
+- ✅ **mysql-db-connector.js** - Path corretto a `base_techplanner_fila5_mono`
 
 ---
 

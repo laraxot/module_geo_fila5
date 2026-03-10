@@ -226,7 +226,7 @@ p + p {
 }
 ```
 
-### 3.2 Predictable (Level A)
+### 3.2 <nome progetto>able (Level A)
 
 #### Consistent Navigation
 ```html

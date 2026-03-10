@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Pages;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Support\Enums\IconPosition;
@@ -47,7 +48,7 @@ class ArtisanCommandsManager extends XotBasePage
 
         try {
             app(ExecuteArtisanCommandAction::class)->execute($command);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Notification::make()
                 ->title((string) __('xot::artisan-commands-manager.notifications.error'))
                 ->body($e->getMessage())

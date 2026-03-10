@@ -45,14 +45,14 @@ class DbForgeMigrationFactory extends Factory
             'migration_path' => 'database/migrations/'.$dateMonth.'/'.$word3.'_'.$word4.'_'.$dateTimestamp.'.php',
             'migration_type' => $this->faker->randomElement(['create', 'update', 'delete', 'modify', 'seed']),
             'status' => $this->faker->randomElement(['pending', 'running', 'completed', 'failed', 'rolled_back']),
-            'batch' => $this->faker->optional()->numberBetween(1, 100),
-            'created_by' => $this->faker->optional()->numberBetween(1, 100),
-            'executed_at' => $this->faker->optional()->dateTimeBetween('-1 year', 'now'),
+            'batch' => (string) $this->faker->optional()->randomNumber(),
+            'created_by' => (int) $this->faker->optional()->randomNumber(),
+            'executed_at' => $this->faker->optional()->dateTime(),
             'metadata' => [
                 'module' => $this->faker->randomElement(['User', 'Cms', 'ModuloEsempio', 'Xot', 'DbForge']),
                 'description' => $this->faker->sentence(),
                 'version' => $this->faker->semver(),
-                'dependencies' => $this->faker->optional()->randomElements(['User', 'Cms', 'ModuloEsempio', 'Xot'], $this->faker->numberBetween(0, 3)),
+                'dependencies' => $this->faker->optional()->words(3),
                 'checksum' => $this->faker->sha1(),
             ],
             'settings' => [
@@ -125,7 +125,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function createMigration(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -145,7 +145,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function update(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -164,7 +164,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function delete(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -186,7 +186,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function modify(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -206,7 +206,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function seed(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -226,7 +226,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function forModule(string $module): static
     {
-        return $this->state(function (array $attributes) use ($module): array {
+        return $this->state(function (array $attributes) use ($module) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -244,7 +244,7 @@ class DbForgeMigrationFactory extends Factory
     public function withBatch(int $batch): static
     {
         return $this->state(fn (array $attributes) => [
-            'batch' => $batch,
+            'batch' => (string) $batch,
         ]);
     }
 
@@ -265,7 +265,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function withSettings(array $settings): static
     {
-        return $this->state(function (array $attributes) use ($settings): array {
+        return $this->state(function (array $attributes) use ($settings) {
             /** @var array<string, mixed> $existingSettings */
             $existingSettings = is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [];
             /** @var array<string, mixed> $settingsArray */
@@ -284,7 +284,7 @@ class DbForgeMigrationFactory extends Factory
      */
     public function withMetadata(array $metadata): static
     {
-        return $this->state(function (array $attributes) use ($metadata): array {
+        return $this->state(function (array $attributes) use ($metadata) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
             /** @var array<string, mixed> $metadataArray */

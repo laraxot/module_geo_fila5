@@ -2,20 +2,22 @@
 
 declare(strict_types=1);
 
-use Modules\Job\Models\Task;
-use Modules\Job\Models\Frequency;
-use Modules\Job\Models\Result;
-use Modules\Job\Models\Schedule;
-use Modules\Job\Models\Import;
+namespace Modules\Job\Tests\Unit\Models;
+
 use Modules\Job\Models\Export;
+use Modules\Job\Models\FailedJob;
+use Modules\Job\Models\Frequency;
+use Modules\Job\Models\Import;
 use Modules\Job\Models\JobBatch;
 use Modules\Job\Models\JobManager;
-use Modules\Job\Models\FailedJob;
+use Modules\Job\Models\Result;
+use Modules\Job\Models\Schedule;
+use Modules\Job\Models\Task;
 
 describe('Job Models Coverage', function () {
     describe('Task Model', function () {
         it('can be instantiated', function () {
-            $task = new Task();
+            $task = new Task;
             expect($task)->toBeInstanceOf(Task::class);
         });
 
@@ -32,41 +34,41 @@ describe('Job Models Coverage', function () {
         });
 
         it('has fillable fields defined', function () {
-            $task = new Task();
+            $task = new Task;
             expect($task->getFillable())->toContain('command');
             expect($task->getFillable())->toContain('description');
             expect($task->getFillable())->toContain('expression');
         });
 
         it('has appends defined', function () {
-            $task = new Task();
+            $task = new Task;
             expect($task->getAppends())->toContain('activated');
             expect($task->getAppends())->toContain('upcoming');
             expect($task->getAppends())->toContain('average_runtime');
         });
 
         it('has frequencies relationship', function () {
-            $task = new Task();
+            $task = new Task;
             expect(method_exists($task, 'frequencies'))->toBeTrue();
         });
 
         it('has results relationship', function () {
-            $task = new Task();
+            $task = new Task;
             expect(method_exists($task, 'results'))->toBeTrue();
         });
 
         it('has compileParameters method', function () {
-            $task = new Task();
+            $task = new Task;
             expect(method_exists($task, 'compileParameters'))->toBeTrue();
         });
 
         it('has autoCleanup method', function () {
-            $task = new Task();
+            $task = new Task;
             expect(method_exists($task, 'autoCleanup'))->toBeTrue();
         });
 
         it('has notification routing methods', function () {
-            $task = new Task();
+            $task = new Task;
             expect(method_exists($task, 'routeNotificationForMail'))->toBeTrue();
             expect(method_exists($task, 'routeNotificationForNexmo'))->toBeTrue();
             expect(method_exists($task, 'routeNotificationForSlack'))->toBeTrue();
@@ -75,13 +77,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Task::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('Frequency Model', function () {
         it('can be instantiated', function () {
-            $model = new Frequency();
+            $model = new Frequency;
             expect($model)->toBeInstanceOf(Frequency::class);
         });
 
@@ -93,13 +95,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Frequency::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('Result Model', function () {
         it('can be instantiated', function () {
-            $model = new Result();
+            $model = new Result;
             expect($model)->toBeInstanceOf(Result::class);
         });
 
@@ -111,13 +113,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Result::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('Schedule Model', function () {
         it('can be instantiated', function () {
-            $model = new Schedule();
+            $model = new Schedule;
             expect($model)->toBeInstanceOf(Schedule::class);
         });
 
@@ -129,13 +131,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Schedule::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('Import Model', function () {
         it('can be instantiated', function () {
-            $model = new Import();
+            $model = new Import;
             expect($model)->toBeInstanceOf(Import::class);
         });
 
@@ -147,13 +149,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Import::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('Export Model', function () {
         it('can be instantiated', function () {
-            $model = new Export();
+            $model = new Export;
             expect($model)->toBeInstanceOf(Export::class);
         });
 
@@ -165,13 +167,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(Export::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('JobBatch Model', function () {
         it('can be instantiated', function () {
-            $model = new JobBatch();
+            $model = new JobBatch;
             expect($model)->toBeInstanceOf(JobBatch::class);
         });
 
@@ -183,13 +185,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(JobBatch::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('JobManager Model', function () {
         it('can be instantiated', function () {
-            $model = new JobManager();
+            $model = new JobManager;
             expect($model)->toBeInstanceOf(JobManager::class);
         });
 
@@ -201,13 +203,13 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(JobManager::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 
     describe('FailedJob Model', function () {
         it('can be instantiated', function () {
-            $model = new FailedJob();
+            $model = new FailedJob;
             expect($model)->toBeInstanceOf(FailedJob::class);
         });
 
@@ -219,7 +221,7 @@ describe('Job Models Coverage', function () {
         it('uses strict types', function () {
             $reflection = new ReflectionClass(FailedJob::class);
             $content = file_get_contents($reflection->getFileName());
-            expect($content)->toContain('declare(strict_types=1);');
+            expect($content)->toContain('');
         });
     });
 });

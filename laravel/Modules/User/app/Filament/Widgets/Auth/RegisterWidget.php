@@ -11,7 +11,6 @@ use Filament\Schemas\Components\Section;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Modules\User\Models\User;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
@@ -128,7 +127,7 @@ class RegisterWidget extends XotBaseWidget
             'password' => Hash::make(
                 app(SafeStringCastAction::class)->execute($data['password']),
             ),
-            'type' => 'customer_user',
+            'type' => 'standard',
             'state' => 'pending',
             'email_verified_at' => null,
         ];

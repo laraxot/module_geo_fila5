@@ -256,25 +256,25 @@ composer dump-autoload
 ### Conflitto in Service Provider:
 ```php
 // PRIMA (conflitto)
-public string $name = 'predict';
-public string $name = 'Predict';
+public string $name = '<nome progetto>';
+public string $name = '<nome progetto>';
 
 // DOPO (risolto seguendo convenzioni)
-public string $name = 'Predict'; // PascalCase per nome modulo
+public string $name = '<nome progetto>'; // PascalCase per nome modulo
 ```
 
 ### Conflitto in Resource Filament:
 ```php
 // PRIMA (conflitto)
 use Filament\Resources\Resource;
-class PredictResource extends Resource
+class <nome progetto>Resource extends Resource
 use Modules\Xot\Filament\Resources\XotBaseResource;
-class PredictResource extends XotBaseResource
+class <nome progetto>Resource extends XotBaseResource
 
 // DOPO (risolto seguendo regole progetto)
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class PredictResource extends XotBaseResource // Sempre estendere XotBase
+class <nome progetto>Resource extends XotBaseResource // Sempre estendere XotBase
 ```
 
 ### Conflitto in traduzione:

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 uses(Modules\Gdpr\Tests\TestCase::class);
 
+uses(Modules\Gdpr\Tests\TestCase::class);
+
 use Modules\Gdpr\Models\Profile;
 use Modules\Gdpr\Models\Treatment;
 

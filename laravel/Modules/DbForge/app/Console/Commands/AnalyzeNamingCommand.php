@@ -112,9 +112,9 @@ class AnalyzeNamingCommand extends Command
             $this->info(' - Suggerimento: Creare una migrazione per rinominare le colonne non conformi');
             $this->line('   Esempio:');
             $this->line('   ```php');
-            $this->line("   Schema::table('table_name', function (Blueprint \$table) {");
-            $this->line("       \$table->renameColumn('name', 'first_name');");
-            $this->line("       \$table->renameColumn('surname', 'last_name');");
+            $this->line("   Schema::table('table_name', function (Blueprint \$table)));
+            $this->line("       \$table->renameColumn('name', 'first_name'));");
+            $this->line("       \$table->renameColumn('surname', 'last_name'));");
             $this->line('   });');
             $this->line('   ```');
         } else {
@@ -182,7 +182,7 @@ class AnalyzeNamingCommand extends Command
 
                 foreach ($issues as $issue) {
                     /** @var array{field: string, location: string, issue: string, correct: string} $issue */
-                    $this->line('       - Campo: '.$issue['field'].' ('.$issue['location'].')');
+                    $this->line('       - Campo: '.$issue['field'].' ('.$issue['location'].'));
                     $this->line('         Problema: '.$issue['issue']);
                     $this->line('         Correzione suggerita: '.$issue['correct']);
                 }
@@ -320,9 +320,9 @@ class AnalyzeNamingCommand extends Command
         $issues = [];
 
         foreach ($columns as $column) {
-            foreach ($this->namingConventions as $rule) {
+            foreach ($namingConventions as $rule)
                 /** @var array{incorrect: list<string>, correct: list<string>, message: string} $rule */
-                $issues = array_merge($issues, $this->evaluateColumnAgainstRule($column, $rule));
+                $issues = array_merge($issues, $evaluateColumnAgainstRule($column, $rule));
             }
         }
 
@@ -338,7 +338,7 @@ class AnalyzeNamingCommand extends Command
         $issues = [];
 
         foreach ($rule['incorrect'] as $incorrect) {
-            if ($this->isRegexPattern($incorrect)) {
+            if ($isRegexPattern($incorrect))
                 if (preg_match($incorrect, $column) === 1) {
                     $issues[] = $this->makeTableIssue($column, $rule['message'], $this->getCorrectFieldPattern($column, $rule));
                 }
@@ -361,19 +361,19 @@ class AnalyzeNamingCommand extends Command
     {
         $issues = [];
 
-        foreach ($this->namingConventions as $rule) {
+        foreach ($namingConventions as $rule)
             $incorrectFields = $rule['incorrect'];
             $message = $rule['message'];
 
             foreach ($incorrectFields as $incorrect) {
-                if ($this->isRegexPattern($incorrect)) {
+                if ($isRegexPattern($incorrect))
                     continue;
                 }
 
                 $fillableMatches = [];
                 if (preg_match('/protected\s+\$fillable\s*=\s*\[(.*?)\]/s', $content, $fillableMatches) === 1) {
                     $fillableBody = (string) ($fillableMatches[1] ?? '');
-                    if ($this->stringContainsField($fillableBody, $incorrect)) {
+                    if ($stringContainsField($fillableBody, $incorrect))
                         $issues[] = $this->makeModelIssue($incorrect, 'fillable', $message, $this->getCorrectField($incorrect, $rule));
                     }
                 }
@@ -381,7 +381,7 @@ class AnalyzeNamingCommand extends Command
                 $castsMatches = [];
                 if (preg_match('/protected\s+\$casts\s*=\s*\[(.*?)\]/s', $content, $castsMatches) === 1) {
                     $castsBody = (string) ($castsMatches[1] ?? '');
-                    if ($this->stringContainsField($castsBody, $incorrect)) {
+                    if ($stringContainsField($castsBody, $incorrect))
                         $issues[] = $this->makeModelIssue($incorrect, 'casts', $message, $this->getCorrectField($incorrect, $rule));
                     }
                 }
@@ -405,12 +405,12 @@ class AnalyzeNamingCommand extends Command
     {
         $issues = [];
 
-        foreach ($this->namingConventions as $rule) {
+        foreach ($namingConventions as $rule)
             $incorrectFields = $rule['incorrect'];
             $message = $rule['message'];
 
             foreach ($incorrectFields as $incorrect) {
-                if ($this->isRegexPattern($incorrect)) {
+                if ($isRegexPattern($incorrect))
                     continue;
                 }
 
@@ -420,7 +420,7 @@ class AnalyzeNamingCommand extends Command
                     '/\$request\s*->\s*'.preg_quote($incorrect, '/').'/m',
                 ];
 
-                if ($this->matchesAnyPattern($content, $patterns)) {
+                if ($matchesAnyPattern($content, $patterns))
                     $issues[] = $this->makeModelIssue($incorrect, 'controller', $message, $this->getCorrectField($incorrect, $rule));
                 }
             }

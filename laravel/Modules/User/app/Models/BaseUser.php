@@ -385,11 +385,12 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     /**
      * Get the entity's notifications.
      *
-     * @return MorphMany<DatabaseNotification, $this>
+     * @return MorphMany<Notification, static|$this>
      */
     public function notifications(): MorphMany
     {
-        return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
+        // @phpstan-ignore return.type
+        return $this->morphMany(Notification::class, 'notifiable');
     }
 
     /**

@@ -138,6 +138,8 @@ use stdClass;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @method static Builder<static>|Rep00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Qua00f> $qua00f
+ * @property-read int|null $qua00f_count
  * @mixin \Eloquent
  */
 class Rep00f extends Model

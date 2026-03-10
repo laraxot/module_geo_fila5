@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Xot\States\Transitions;
 
+use BackedEnum;
 use Filament\Notifications\Notification as FilamentNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
@@ -12,6 +13,7 @@ use Modules\Notify\Datas\RecordNotificationData;
 use Modules\Notify\Notifications\RecordNotification;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\ModelStates\Transition;
+use TypeError;
 use Webmozart\Assert\InvalidArgumentException;
 
 abstract class XotBaseTransition extends Transition
@@ -19,8 +21,7 @@ abstract class XotBaseTransition extends Transition
     public function __construct(
         public Model $record,
         public ?string $message = '',
-    ) {
-    }
+    ) {}
 
     public function handle(): Model
     {
@@ -75,7 +76,7 @@ abstract class XotBaseTransition extends Transition
     public function getNotificationSlug(UserContract $recipient): string
     {
         $typeEnum = $recipient->type;
-        $type = $typeEnum instanceof \BackedEnum ? (string) $typeEnum->value : 'unknown';
+        $type = $typeEnum instanceof BackedEnum ? (string) $typeEnum->value : 'unknown';
 
         $slug =
             class_basename($this->record).
@@ -89,7 +90,7 @@ abstract class XotBaseTransition extends Transition
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function sendRecipientNotification(RecordNotificationData $recipient, array $data): void
     {
@@ -112,7 +113,7 @@ abstract class XotBaseTransition extends Transition
 
         try {
             Notification::route($recipient->getChannel(), $recipient->getRoute())->notify($notify);
-        } catch (\TypeError|InvalidArgumentException $e) {
+        } catch (TypeError|InvalidArgumentException $e) {
             $message = 'channel :['.$recipient->getChannel().'] error: ['.$e->getMessage().']';
             FilamentNotification::make()
                 ->title('Error')

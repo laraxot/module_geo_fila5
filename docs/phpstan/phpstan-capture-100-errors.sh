@@ -152,7 +152,7 @@ arsort(\$file_errors);
 \$top_files = array_slice(\$file_errors, 0, 20, true);
 
 foreach (\$top_files as \$file => \$errors) {
-    \$short_file = str_replace('/var/www/html/_bases/base_predict_fila5_mono/laravel/', '', \$file);
+    \$short_file = str_replace('/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel/', '', \$file);
     echo \"- **\$short_file**: \$errors errori\n\";
 }
 " >> "$SUMMARY_FILE"

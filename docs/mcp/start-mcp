@@ -76,7 +76,7 @@ else
 fi
 
 # Start MySQL MCP server (if available)
-MYSQL_SCRIPT="/var/www/html/_bases/base_predict_fila5_mono/bashscripts/mcp/start-mysql-mcp.sh"
+MYSQL_SCRIPT="/var/www/html/_bases/base_<nome progetto>_fila5_mono/bashscripts/mcp/start-mysql-mcp.sh"
 if [ -f "$MYSQL_SCRIPT" ]; then
     echo -e "${CYAN}🛢️ Starting MySQL MCP server...${NC}"
     

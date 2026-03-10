@@ -51,7 +51,7 @@ The organization needs:
 
 ### P2: Advanced Workforce Planning (Nice-to-have)
 - **FR-007: Visual Shift Planner**: Interactive drag-and-drop interface for managing departmental rotations.
-- **FR-008: AI Absence Prediction**: Predictive modeling of absence trends to optimize workforce capacity.
+- **FR-008: AI Absence <nome progetto>ion**: <nome progetto>ive modeling of absence trends to optimize workforce capacity.
 
 ## 6. Non-Functional Requirements & Agnostic Design
 
@@ -106,7 +106,7 @@ The organization needs:
 - PHPStan Level 10 compliance. ✅
 ### Phase 2: Advanced Scheduling (Planned)
 - Fully visual Shift Planner.
-- Predictive leave planning based on historical trends.
+- <nome progetto>ive leave planning based on historical trends.
 
 ## 13. References
 - [roadmap.md](roadmap.md)

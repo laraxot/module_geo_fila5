@@ -38,19 +38,19 @@ class DbForgeBackupFactory extends Factory
         return [
             'backup_name' => $backupPrefix.'_'.$dateTime,
             'backup_path' => '/backups/database/'.$dateMonth.'/'.$dateTime.'_'.($word !== '' ? $word : 'backup').'.sql',
-            'backup_size' => $this->faker->numberBetween(1024 * 1024, 1024 * 1024 * 1024), // 1MB to 1GB
+            'backup_size' => $this->faker->numberBetween(1024 * 1024, 1024 * 1024 * 1024),
             'backup_type' => $this->faker->randomElement(['full', 'incremental', 'selective']),
             'status' => $this->faker->randomElement(['pending', 'running', 'completed', 'failed']),
             'retention_days' => $this->faker->randomElement([7, 14, 30, 60, 90, 180, 365]),
-            'created_by' => $this->faker->optional()->numberBetween(1, 100),
-            'completed_at' => $this->faker->optional()->dateTimeBetween('-1 month', 'now'),
+            'created_by' => (int) $this->faker->optional()->randomNumber(),
+            'completed_at' => $this->faker->optional()->dateTime(),
             'metadata' => [
                 'compression' => $this->faker->randomElement(['none', 'gzip', 'bzip2', 'lz4']),
                 'encryption' => $this->faker->boolean(20),
                 'checksum' => $this->faker->sha1(),
                 'version' => $this->faker->semver(),
                 'tables_included' => $this->faker->randomElements(['users', 'posts', 'comments', 'orders', 'products'], $this->faker->numberBetween(1, 5)),
-                'tables_excluded' => $this->faker->optional()->randomElements(['logs', 'temp_data', 'cache'], $this->faker->numberBetween(0, 3)),
+                'tables_excluded' => $this->faker->optional()->words(3),
             ],
             'settings' => [
                 'include_structure' => true,
@@ -114,13 +114,13 @@ class DbForgeBackupFactory extends Factory
      */
     public function full(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingSettings */
             $existingSettings = is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [];
 
             return [
                 'backup_type' => 'full',
-                'backup_size' => $this->faker->numberBetween(100 * 1024 * 1024, 1024 * 1024 * 1024), // 100MB to 1GB
+                'backup_size' => $this->faker->numberBetween(100 * 1024 * 1024, 1024 * 1024 * 1024),
                 'settings' => array_merge(
                     $existingSettings,
                     [
@@ -141,13 +141,13 @@ class DbForgeBackupFactory extends Factory
      */
     public function incremental(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
                 'backup_type' => 'incremental',
-                'backup_size' => $this->faker->numberBetween(10 * 1024 * 1024, 100 * 1024 * 1024), // 10MB to 100MB
+                'backup_size' => $this->faker->numberBetween(10 * 1024 * 1024, 100 * 1024 * 1024),
                 'metadata' => array_merge(
                     $existingMetadata,
                     [
@@ -164,13 +164,13 @@ class DbForgeBackupFactory extends Factory
      */
     public function selective(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
                 'backup_type' => 'selective',
-                'backup_size' => $this->faker->numberBetween(1 * 1024 * 1024, 50 * 1024 * 1024), // 1MB to 50MB
+                'backup_size' => $this->faker->numberBetween(1 * 1024 * 1024, 50 * 1024 * 1024),
                 'metadata' => array_merge($existingMetadata, [
                     'tables_included' => $this->faker->randomElements(['users', 'posts', 'comments'], $this->faker->numberBetween(1, 3)),
                     'tables_excluded' => $this->faker->randomElements(['logs', 'temp_data', 'cache', 'sessions'], $this->faker->numberBetween(1, 4)),
@@ -184,7 +184,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function daily(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -204,7 +204,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function weekly(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -225,7 +225,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function monthly(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -246,7 +246,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function compressed(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -264,7 +264,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function encrypted(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
@@ -283,14 +283,14 @@ class DbForgeBackupFactory extends Factory
      */
     public function large(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'backup_size' => $this->faker->numberBetween(1024 * 1024 * 1024, 10 * 1024 * 1024 * 1024), // 1GB to 10GB
+                'backup_size' => $this->faker->numberBetween(1024 * 1024 * 1024, 10 * 1024 * 1024 * 1024),
                 'metadata' => array_merge($existingMetadata, [
-                    'estimated_time' => $this->faker->numberBetween(300, 3600), // 5 minutes to 1 hour
+                    'estimated_time' => $this->faker->numberBetween(300, 3600),
                     'parallel_jobs' => $this->faker->numberBetween(2, 8),
                 ]),
             ];
@@ -302,14 +302,14 @@ class DbForgeBackupFactory extends Factory
      */
     public function small(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'backup_size' => $this->faker->numberBetween(1024 * 1024, 10 * 1024 * 1024), // 1MB to 10MB
+                'backup_size' => $this->faker->numberBetween(1024 * 1024, 10 * 1024 * 1024),
                 'metadata' => array_merge($existingMetadata, [
-                    'estimated_time' => $this->faker->numberBetween(10, 300), // 10 seconds to 5 minutes
+                    'estimated_time' => $this->faker->numberBetween(10, 300),
                     'parallel_jobs' => 1,
                 ]),
             ];
@@ -343,7 +343,7 @@ class DbForgeBackupFactory extends Factory
      */
     public function forTables(array $tables): static
     {
-        return $this->state(function (array $attributes) use ($tables): array {
+        return $this->state(function (array $attributes) use ($tables) {
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 

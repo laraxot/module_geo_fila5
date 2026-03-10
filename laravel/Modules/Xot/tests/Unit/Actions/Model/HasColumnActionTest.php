@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\Model;
+
 use Modules\Xot\Actions\Model\HasColumnAction;
 use Modules\Xot\Models\BaseModel;
-use Modules\Xot\Tests\TestCase;
-
-uses(TestCase::class);
 
 beforeEach(function (): void {
-    $this->action = app(HasColumnAction::class);
+    $action = app(HasColumnAction::class);
 });
 
 it('executes without errors', function (): void {
@@ -20,7 +19,7 @@ it('executes without errors', function (): void {
 
     // Just verify the action runs without throwing
     try {
-        $result = $this->action->execute($model, 'id');
+        $result = $action->execute($model, 'id');
         expect($result)->toBeBool();
     } catch (Exception $e) {
         // Database may not be available in test environment
@@ -34,7 +33,7 @@ it('handles different tables', function (): void {
     };
 
     try {
-        $result = $this->action->execute($model, 'id');
+        $result = $action->execute($model, 'id');
         expect($result)->toBeBool();
     } catch (Exception $e) {
         $this->markTestSkipped('Database not available: '.$e->getMessage());
@@ -47,7 +46,7 @@ it('returns boolean result', function (): void {
     };
 
     try {
-        $result = $this->action->execute($model, 'nonexistent_xyz_123');
+        $result = $action->execute($model, 'nonexistent_xyz_123');
         expect($result)->toBeBool();
     } catch (Exception $e) {
         $this->markTestSkipped('Database not available: '.$e->getMessage());

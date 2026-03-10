@@ -6,7 +6,6 @@ namespace Modules\Setting\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Sushi\Sushi;
@@ -28,6 +27,26 @@ use Sushi\Sushi;
  * @property string $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property int|null $id
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereCharset($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereCollation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereDatabase($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereDriver($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereEngine($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereHost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereOptions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection wherePort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection wherePrefix($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereStrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|DatabaseConnection whereUsername($value)
+ * @mixin \Eloquent
  */
 class DatabaseConnection extends Model
 {
@@ -62,7 +81,7 @@ class DatabaseConnection extends Model
         return [
             'port' => 'integer',
             'strict' => 'boolean',
-            'options' => 'array',
+            'options' => 'array', // Laravel auto JSON encode/decode
         ];
     }
 
@@ -95,7 +114,7 @@ class DatabaseConnection extends Model
                 'prefix' => $value['prefix'] ?? '',
                 'strict' => $value['strict'] ?? true,
                 'engine' => $value['engine'] ?? 'InnoDB',
-                'options' => is_array($value['options'] ?? null) ? $value['options'] : [],
+                'options' => isset($value['options']) && is_array($value['options']) ? json_encode($value['options']) : null,
                 'status' => 'active',
             ];
         }

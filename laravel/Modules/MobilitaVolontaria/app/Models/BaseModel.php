@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\MobilitaVolontaria\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 // ---------- traits
 use Modules\Xot\Models\Traits\HasXotFactory;
@@ -24,7 +23,23 @@ abstract class BaseModel extends Model
     // use Cachable;
     use Updater;
 
-    protected $connection = 'mobilita_volontaria'; // this will use the specified database connection
+    /**
+     * Get the current connection name for the model.
+     * Returns the module-specific connection if configured, otherwise falls back to default.
+     *
+     * @return string|null
+     */
+    public function getConnectionName(): ?string
+    {
+        $connection = 'mobilita_volontaria';
+
+        // Check if the connection exists in config, otherwise fallback to default
+        if (config("database.connections.{$connection}") === null) {
+            return config('database.default');
+        }
+
+        return $connection;
+    }
 
     /**
      * @var list<string>

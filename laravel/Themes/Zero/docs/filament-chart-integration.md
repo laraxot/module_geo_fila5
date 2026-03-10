@@ -113,11 +113,7 @@ window.ChartJsBaseService = window.ChartJsBaseService || ChartJsBaseService;
 
 ### Chart.js Plugin Registration
 
-<<<<<<< .merge_file_Zs1KdO
 **Project rule (healthcare_app Fila5):** Chart.js plugin assets are centralized in the Chart module.
-=======
-**Project rule (ModuloEsempio Fila5):** Chart.js plugin assets are centralized in the Chart module.
->>>>>>> .merge_file_UkbOPj
 
 The Zero theme must **not** register `chartjs-plugin-datalabels` (or other Chart.js plugins) via its own bundle.
 It consumes the plugins that are already registered for Filament charts by the Chart module.

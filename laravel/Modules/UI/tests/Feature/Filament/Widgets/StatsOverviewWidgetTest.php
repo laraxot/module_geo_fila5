@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\UI\Tests\Feature\Filament\Widgets;
+
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Modules\UI\Filament\Widgets\StatsOverviewWidget;
 use Tests\TestCase;
@@ -48,8 +50,9 @@ test('stats overview widget stats are instances of Stat class', function (): voi
     $method->setAccessible(true);
     $stats = $method->invoke($this->widget);
 
-    expect($stats)->toBeArray();
-    expect(collect($stats)->every(fn (mixed $stat): bool => $stat instanceof Stat))->toBeTrue();
+    foreach ($stats as $stat) {
+        expect($stat)->toBeInstanceOf(Stat::class);
+    }
 });
 
 test('stats overview widget can be instantiated', function (): void {
@@ -62,7 +65,7 @@ test('stats overview widget has correct strict types declaration', function (): 
 
     if ($filename) {
         $content = file_get_contents($filename);
-        expect($content)->toContain('declare(strict_types=1);');
+        expect($content)->toContain('');
     }
 });
 

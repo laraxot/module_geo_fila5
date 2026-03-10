@@ -13,7 +13,7 @@ In Laraxot architecture, we **NEVER** create multiple `create_table` migration f
 - No ambiguity about which migration defines the "real" table structure
 - Clear, linear evolution of database schema
 
-### 2. **Predictable Migration Order**
+### 2. **<nome progetto>able Migration Order**
 - No confusion about which migration runs first
 - Consistent behavior across all environments (local, staging, production)
 - Eliminates race conditions in migration execution
@@ -47,60 +47,6 @@ $this->tableCreate(...);
 
 // Safe table updates - only adds missing columns
 $this->tableUpdate(...);
-```
-
-## Critical: tableCreate() Is Self-Guarded
-
-`tableCreate()` **already contains** `if (! $this->tableExists())` internally.
-
-### WRONG - Redundant outer check:
-```php
-if (! $this->tableExists()) {      // REDUNDANT! tableCreate() already checks this
-    $this->tableCreate(function (Blueprint $table) {
-        // ...
-    });
-}
-```
-
-### CORRECT - Direct call:
-```php
-$this->tableCreate(function (Blueprint $table) {
-    // ...
-});
-```
-
-### CORRECT - With legacy update path:
-```php
-// Capture BEFORE tableCreate() changes the state
-$tableAlreadyExisted = $this->tableExists();
-
-$this->tableCreate(function (Blueprint $table) {
-    // full schema
-});
-
-if ($tableAlreadyExisted) {
-    $this->tableUpdate(function (Blueprint $table) {
-        // add missing columns with hasColumn() guards
-    });
-}
-```
-
-## Critical: Pivot Tables and timestamps()
-
-`XotBaseMigration::timestamps()` adds **five columns**: `created_at`, `updated_at`, `user_id`, `updated_by`, `created_by`.
-
-**DANGER**: If a pivot table also defines `user_id` as its FK column, calling `$this->timestamps($table)` causes:
-```
-SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'user_id'
-```
-
-### Fix for pivot tables with user_id FK:
-```php
-// WRONG - for pivot tables with user_id:
-$this->timestamps($table);  // adds ANOTHER user_id → duplicate!
-
-// CORRECT - use plain Laravel timestamps:
-$table->timestamps();       // only created_at + updated_at, no user_id
 ```
 
 ## Correct vs Incorrect Patterns
@@ -175,7 +121,7 @@ When duplicate migrations are discovered:
 ### Laraxot Core Values
 - **Simplicity**: One table, one migration, no exceptions
 - **Clarity**: Clear, unambiguous schema definitions
-- **Predictability**: Consistent migration behavior across environments
+- **<nome progetto>ability**: Consistent migration behavior across environments
 - **Maintainability**: Easy to understand and modify schema evolution
 
 ### Why This Matters

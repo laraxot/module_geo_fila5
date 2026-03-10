@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Notify\Tests\Unit\Filament\Actions;
+
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Actions\SendRecordsNotificationAction;
@@ -12,9 +14,12 @@ use Modules\Notify\Tests\TestCase;
 
 uses(TestCase::class);
 
-class DummyNotifyBulkModel extends Model
+function makeDummyNotifyBulkModel(array $attributes = []): Model
 {
-    protected $guarded = [];
+    return new class($attributes) extends Model
+    {
+        protected $guarded = [];
+    };
 }
 
 test('send records notification bulk action exposes expected schema components', function (): void {
@@ -66,8 +71,8 @@ test('send records notification bulk action delegates to send records action', f
     $callback = $prop->getValue($action);
 
     $records = new EloquentCollection([
-        new DummyNotifyBulkModel(['id' => 1]),
-        new DummyNotifyBulkModel(['id' => 2]),
+        makeDummyNotifyBulkModel(['id' => 1]),
+        makeDummyNotifyBulkModel(['id' => 2]),
     ]);
 
     $callback($records, [

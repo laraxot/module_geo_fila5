@@ -1,44 +1,44 @@
-# CertFisc Module
+# Modulo CertFisc
 
-## 📖 Scopo
+## Overview
 
-Il modulo CertFisc gestisce le certificazioni fiscali e documenti correlati per il personale.
+Il modulo **CertFisc** fa parte dell'ecosistema Laraxot PTVX.
 
-## 🎯 Funzionalità Principali
+## Scopo
 
-- Generazione certificati fiscali
-- Gestione CU (Certificazione Unica)
-- Storico certificazioni
-- Export per commercialista
+Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
 
-## 🚀 Quick Start
-
-### Modelli Principali
-
-- `CertificazioneFiscale` - Certificazioni generate
-- `CU` - Certificazione Unica annuale
-
-## 📂 Struttura
+## Struttura
 
 ```
-Modules/CertFisc/
+CertFisc/
 ├── app/
-│   ├── Models/              # Modelli certificazioni
-│   ├── Filament/Resources/  # Gestione via admin
-│   └── Actions/             # Generazione PDF
-├── database/migrations/     # Migrazioni
-├── lang/                    # Traduzioni
-└── docs/                    # Questa documentazione
+│   ├── Models/
+│   ├── Filament/
+│   └── ...
+├── docs/
+├── lang/
+└── resources/
 ```
 
-## 🔗 Moduli Correlati
+## Dipendenze
 
-- [User](../User/docs/README.md) - Dati anagrafici dipendenti
-- [ContoAnnuale](../ContoAnnuale/docs/README.md) - Dati retributivi
-- [Xot](../Xot/docs/README.md) - Framework core
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/) (se usa autenticazione)
+- [Tenant Module](../Tenant/docs/) (se multi-tenant)
 
----
+## Collegamenti
 
-**Ultimo aggiornamento**: Gennaio 2025  
-**Status**: Active
+- [Documentazione Root](../../../docs/CERTFISC_MODULE.md)
+- [Regole Architecture](../Xot/docs/architecture/)
 
+## Backlinks
+
+- [Indice Moduli](../README.md)
+
+## TODO
+
+- [ ] Completare descrizione funzionalità
+- [ ] Documentare modelli principali
+- [ ] Documentare risorse Filament
+- [ ] Aggiungere esempi codice

@@ -401,6 +401,7 @@ use Parental\HasParent;
  * @method static Builder<static>|IndividualePo whereType($value)
  * @method static Builder<static>|IndividualePo whereValutatoreId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|IndividualePo withCalculatedData()
+ * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
 class IndividualePo extends Individuale

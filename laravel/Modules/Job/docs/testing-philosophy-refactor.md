@@ -169,7 +169,7 @@ $this->artisan('migrate', ['--database' => 'job']);
 ### Philosophical Benefits
 
 1. **Respects User Intent**: User configured MySQL → we use MySQL
-2. **Predictable**: Developers expect `.env.testing` to work
+2. **<nome progetto>able**: Developers expect `.env.testing` to work
 3. **Honest**: Code matches documentation
 4. **Robust**: Uses battle-tested migration system
 

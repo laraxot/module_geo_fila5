@@ -36945,7 +36945,7 @@ process.nextTick = function (fun) {
     }
 };
 
-// v8 likes predictible objects
+// v8 likes <nome progetto>ible objects
 function Item(fun, array) {
     this.fun = fun;
     this.array = array;

@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directory base Laravel
-LARAVEL_DIR="/var/www/html/_bases/base_predict_fila5_mono/laravel"
+LARAVEL_DIR="/var/www/html/_bases/base_<nome progetto>_fila5_mono/laravel"
 # Directory base dei moduli
 MODULES_DIR="${LARAVEL_DIR}/Modules"
 
@@ -153,7 +153,7 @@ EOL
 
 ### Obiettivi di Qualità
 
-Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'analisi PHPStan sono:
+Secondo le "Regole Windsurf per base_<nome progetto>_fila5_mono", gli obiettivi per l'analisi PHPStan sono:
 
 - Iniziare dal livello 1 per i nuovi moduli
 - Assicurarsi che tutto il codice passi almeno il livello 5

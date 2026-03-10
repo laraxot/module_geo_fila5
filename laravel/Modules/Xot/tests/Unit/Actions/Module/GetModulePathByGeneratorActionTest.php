@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use Modules\Xot\Actions\Module\GetModulePathByGeneratorAction;
-use Tests\TestCase;
+namespace Modules\Xot\Tests\Unit\Actions\Module;
 
-uses(TestCase::class);
+use Modules\Xot\Actions\Module\GetModulePathByGeneratorAction;
 
 it('returns path using module_path helper in happy path', function (): void {
     config()->set('modules.paths.generator.config.path', 'config');

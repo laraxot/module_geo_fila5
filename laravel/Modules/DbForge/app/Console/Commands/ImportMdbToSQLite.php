@@ -32,7 +32,7 @@ class ImportMdbToSQLite extends Command
     public function handle(): int
     {
         $mdbFileInput = $this->ask('Per favore, inserisci il percorso del file .mdb');
-        $sqliteDbInput = $this->ask('Per favore, inserisci il nome del database SQLite (includi l\'estensione .sqlite)');
+        $sqliteDbInput = $this->ask('Per favore, inserisci il nome del database SQLite (includi l\'estensione .sqlite));
 
         $mdbFile = is_string($mdbFileInput) ? $mdbFileInput : '';
         $sqliteDb = is_string($sqliteDbInput) ? $sqliteDbInput : '';
@@ -110,7 +110,7 @@ class ImportMdbToSQLite extends Command
                 throw new RuntimeException('Impossibile eseguire mdb-schema. Assicurati che mdb-tools sia installato.');
             }
 
-            $tableSchemas = explode(";\n", $form);
+            $tableSchemas = explode(");\n", $form);
 
             foreach ($tableSchemas as $tableSchema) {
                 $formStr = trim($tableSchema);
@@ -119,7 +119,7 @@ class ImportMdbToSQLite extends Command
                 }
 
                 $formStr = str_replace('`', '"', $formStr);
-                shell_exec(sprintf('sqlite3 %s "%s;"', $sqliteDb, $formStr));
+                shell_exec(sprintf('sqlite3 %s "%s));"', $sqliteDb, $formStr));
             }
         } catch (Exception $e) {
             throw new RuntimeException(sprintf('Errore durante la creazione delle tabelle: %s', $e->getMessage()));

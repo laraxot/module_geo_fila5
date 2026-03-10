@@ -2,28 +2,33 @@
 
 declare(strict_types=1);
 
+namespace Modules\Notify\Tests\Unit\Models\Traits;
+
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Models\Traits\HasContact;
 use Modules\Notify\Tests\TestCase;
 
 uses(TestCase::class);
 
-class HasContactDummyModel extends Model
+function makeHasContactDummyModel(): Model
 {
-    use HasContact;
-
-    protected $table = 'notify_has_contact_dummy';
-
-    protected $fillable = [];
-
-    public function initContactTrait(): void
+    return new class extends Model
     {
-        $this->initializeHasContact();
-    }
+        use HasContact;
+
+        protected $table = 'notify_has_contact_dummy';
+
+        protected $fillable = [];
+
+        public function initContactTrait(): void
+        {
+            $this->initializeHasContact();
+        }
+    };
 }
 
 test('has contact trait appends contact type fields to fillable', function () {
-    $model = new HasContactDummyModel();
+    $model = makeHasContactDummyModel();
     $model->initContactTrait();
 
     expect($model->getFillable())->toContain('phone')

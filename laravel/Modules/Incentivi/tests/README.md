@@ -1,8 +1,14 @@
 # Incentivi Module - Test Suite
 
-This directory contains the comprehensive test suite for the Incentivi module, including unit tests, feature tests, and integration tests.
+This directory contains the Incentivi module test suite, including unit, Filament smoke, and integration workflow tests.
 
 ## Quick Start
+
+### Mandatory DB Safety Rule
+Never use:
+- `RefreshDatabase`
+- `migrate:fresh`
+- `migrate --force`
 
 ### Run All Tests
 ```bash
@@ -38,30 +44,24 @@ cd laravel
 
 ## Test Structure
 
-```
+```text
 tests/
-├── Unit/                          # Pure unit tests (no database)
-│   ├── Models/                    # Model unit tests
-│   │   ├── ActivityTest.pest.php
-│   │   ├── EmployeeTest.pest.php
-│   │   └── ...
-│   └── Actions/                   # Action unit tests
-│       ├── SpareImportoTotaleActionTest.pest.php
-│       └── ...
-│
-├── Feature/                       # Feature & integration tests (with database)
-│   ├── Filament/                  # Filament resource tests
-│   │   ├── ActivityResourceTest.pest.php
-│   │   └── ...
-│   ├── Integration/               # End-to-end workflow tests
-│   │   ├── IncentiveCalculationFlowTest.pest.php
-│   │   └── ...
-│   └── Rules/                     # Validation rule tests
-│       └── ValidationRulesTest.pest.php
-│
-├── Pest.php                       # Global test setup & helpers
-├── TestCase.php                   # Base test class
-└── README.md                      # This file
+├── Unit/
+│   ├── ProjectTest.php
+│   ├── Models/
+│   │   └── IncentiviModelsTest.php
+│   └── Actions/
+│       ├── SpareImportoTotaleActionTest.php
+│       ├── UpdateActivitiesEmployeesActionTest.php
+│       └── UpdateProjectActivitiesActionTest.php
+├── Feature/
+│   ├── Filament/
+│   │   └── IncentiviFilamentResourcesTest.php
+│   └── Integration/
+│       └── IncentiviWorkflowIntegrationTest.php
+├── Pest.php
+├── TestCase.php
+└── README.md
 ```
 
 ## Test Patterns & Best Practices
@@ -104,27 +104,18 @@ it('calculates spare importo totale correctly', function () {
 });
 ```
 
-### 3. Filament Resource Test
+### 3. Filament Resource Smoke Test
 ```php
-// tests/Feature/Filament/ActivityResourceTest.pest.php
+// tests/Feature/Filament/IncentiviFilamentResourcesTest.php
 
-it('can create activity through Filament resource', function () {
-    // Test the Filament UI interaction
-    Livewire::test(ActivityResource\CreateActivity::class)
-        ->fillForm([
-            'name' => 'Test Activity',
-            'description' => 'Test description',
-        ])
-        ->call('create')
-        ->assertHasNoFormErrors();
-    
-    expect(Activity::where('name', 'Test Activity')->exists())->toBeTrue();
+it('all key incentive resources extend xot base resource', function () {
+    expect(is_subclass_of(ActivityResource::class, XotBaseResource::class))->toBeTrue();
 });
 ```
 
 ### 4. Integration Test
 ```php
-// tests/Feature/Integration/IncentiveCalculationFlowTest.pest.php
+// tests/Feature/Integration/IncentiviWorkflowIntegrationTest.php
 
 it('completes full incentive calculation workflow', function () {
     // Create test data

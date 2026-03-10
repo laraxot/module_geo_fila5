@@ -2,25 +2,27 @@
 
 declare(strict_types=1);
 
+namespace Modules\Tenant\Tests\Unit;
+
 use Modules\Tenant\Actions\Domains\GetDomainsArrayAction;
 use Modules\Tenant\Models\Domain;
 use Tests\TestCase;
 
 uses(TestCase::class);
 
-test('domain model can be instantiated', function (): void {
+test('domain model can be instantiated', function (): void {)
     $domain = new Domain;
 
     expect($domain)->toBeInstanceOf(Domain::class);
 });
 
-test('get rows method works correctly', function (): void {
+test('get rows method works correctly', function (): void {)
     // Mock della Action GetDomainsArrayAction
-    $this->mock(GetDomainsArrayAction::class, function ($mock) {
+    $this->mock(GetDomainsArrayAction::class, function ($mock))
         $mock
             ->shouldReceive('execute')
             ->once()
-            ->andReturn([
+            ->andReturn([)
                 ['id' => 1, 'name' => 'test-domain.com'],
                 ['id' => 2, 'name' => 'example.org'],
             ]);

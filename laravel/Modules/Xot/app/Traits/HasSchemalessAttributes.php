@@ -18,6 +18,30 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
 trait HasSchemalessAttributes
 {
     /**
+     * Aggiunge extra_attributes al fillable.
+     *
+     * @return array<string>
+     */
+    protected function schemalessFillable(): array
+    {
+        return array_merge($this->fillable, [
+            'extra_attributes',
+        ]);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function schemalessCasts(): array
+    {
+        return array_merge($this->casts ?? [], [
+            'extra_attributes' => SchemalessAttributes::class,
+        ]);
+    }
+
+    /**
      * Scope per filtrare per attributi schemaless.
      */
     public function scopeWithExtraAttributes(Builder $query): Builder
@@ -42,15 +66,7 @@ trait HasSchemalessAttributes
      */
     public function getExtraAttribute(string $key, mixed $default = null): mixed
     {
-        if ($this->extra_attributes instanceof SchemalessAttributes) {
-            return $this->extra_attributes->get($key, $default);
-        }
-
-        if (is_array($this->extra_attributes)) {
-            return $this->extra_attributes[$key] ?? $default;
-        }
-
-        return $default;
+        return $this->extra_attributes?->get($key, $default) ?? $default;
     }
 
     /**
@@ -58,8 +74,8 @@ trait HasSchemalessAttributes
      */
     public function setExtraAttribute(string $key, mixed $value): void
     {
-        if (! $this->extra_attributes instanceof SchemalessAttributes) {
-            $this->extra_attributes = SchemalessAttributes::createForModel($this, 'extra_attributes');
+        if (! $this->extra_attributes) {
+            $this->extra_attributes = new SchemalessAttributes;
         }
 
         $this->extra_attributes->set($key, $value);
@@ -72,15 +88,7 @@ trait HasSchemalessAttributes
      */
     public function getExtraAttributes(): array
     {
-        if ($this->extra_attributes instanceof SchemalessAttributes) {
-            return $this->extra_attributes->all();
-        }
-
-        if (is_array($this->extra_attributes)) {
-            return $this->extra_attributes;
-        }
-
-        return [];
+        return $this->extra_attributes?->all() ?? [];
     }
 
     /**
@@ -88,15 +96,7 @@ trait HasSchemalessAttributes
      */
     public function hasExtraAttribute(string $key): bool
     {
-        if ($this->extra_attributes instanceof SchemalessAttributes) {
-            return $this->extra_attributes->has($key);
-        }
-
-        if (is_array($this->extra_attributes)) {
-            return array_key_exists($key, $this->extra_attributes);
-        }
-
-        return false;
+        return $this->extra_attributes?->has($key) ?? false;
     }
 
     /**
@@ -104,17 +104,7 @@ trait HasSchemalessAttributes
      */
     public function removeExtraAttribute(string $key): void
     {
-        if ($this->extra_attributes instanceof SchemalessAttributes) {
-            $this->extra_attributes->forget($key);
-
-            return;
-        }
-
-        if (is_array($this->extra_attributes)) {
-            $attributes = $this->extra_attributes;
-            unset($attributes[$key]);
-            $this->extra_attributes = $attributes;
-        }
+        $this->extra_attributes->forget($key);
     }
 
     /**
@@ -123,29 +113,5 @@ trait HasSchemalessAttributes
     public function syncExtraAttributes(): void
     {
         $this->save();
-    }
-
-    /**
-     * Aggiunge extra_attributes al fillable.
-     *
-     * @return array<string>
-     */
-    protected function schemalessFillable(): array
-    {
-        return array_merge($this->fillable, [
-            'extra_attributes',
-        ]);
-    }
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function schemalessCasts(): array
-    {
-        return array_merge($this->casts ?? [], [
-            'extra_attributes' => SchemalessAttributes::class,
-        ]);
     }
 }

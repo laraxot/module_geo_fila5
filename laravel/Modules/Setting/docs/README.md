@@ -1,13 +1,35 @@
+# Modulo Setting
 
+## Overview
 
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
+Il modulo **Setting** fa parte dell'ecosistema Laraxot PTVX.
 
+## Scopo
 
-## 📄 License & Authors
+Gestisce le funzionalità specifiche del dominio Setting.
 
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
+## Struttura
 
-**License:** MIT
+```
+Setting/
+├── app/
+│   ├── Models/
+│   ├── Filament/
+│   └── ...
+├── docs/
+├── lang/
+└── resources/
+```
+
+## Dipendenze
+
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/)
+
+## Collegamenti
+
+- [Documentazione Root](../../../docs/SETTING_MODULE.md)
+
+## Backlinks
+
+- [Moduli correlati](../README.md)

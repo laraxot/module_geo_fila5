@@ -32,120 +32,120 @@ class DbForgeSchemaFactory extends Factory
     public function definition(): array
     {
         return [
-            'table_name' => $this->faker->randomElement(['users', 'posts', 'comments', 'orders', 'products', 'categories', 'tags', 'permissions', 'roles', 'settings', 'logs', 'notifications', 'migrations', 'failed_jobs', 'password_resets', 'personal_access_tokens']),
-            'table_comment' => $this->faker->optional()->sentence(),
-            'engine' => $this->faker->randomElement(['InnoDB', 'MyISAM', 'MEMORY', 'CSV', 'ARCHIVE']),
-            'collation' => $this->faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci']),
-            'row_format' => $this->faker->randomElement(['Dynamic', 'Fixed', 'Compressed', 'Redundant']),
-            'table_rows' => $this->faker->numberBetween(0, 1000000),
-            'avg_row_length' => $this->faker->numberBetween(100, 10000),
-            'data_length' => $this->faker->numberBetween(1024, 1073741824), // 1KB to 1GB
-            'max_data_length' => $this->faker->optional()->numberBetween(0, 9223372036854775807),
-            'index_length' => $this->faker->numberBetween(1024, 536870912), // 1KB to 512MB
-            'data_free' => $this->faker->optional()->numberBetween(0, 1048576), // 0 to 1MB
-            'auto_increment' => $this->faker->optional()->numberBetween(1, 1000000),
-            'create_time' => $this->faker->dateTimeBetween('-2 years', 'now'),
-            'update_time' => $this->faker->optional()->dateTimeBetween('-1 year', 'now'),
-            'check_time' => $this->faker->optional()->dateTimeBetween('-6 months', 'now'),
-            'checksum' => $this->faker->optional()->numberBetween(0, 4294967295),
-            'create_options' => $this->faker->optional()->randomElement(['', 'partitioned', 'temporary']),
-            'table_catalog' => $this->faker->randomElement(['def', 'information_schema', 'mysql', 'performance_schema']),
-            'table_schema' => $this->faker->randomElement(['app_db', 'test_db', 'staging_db', 'production_db', 'backup_db']),
-            'version' => $this->faker->numberBetween(1, 10),
-            'is_active' => $this->faker->boolean(90),
-            'last_analyzed' => $this->faker->optional()->dateTimeBetween('-1 month', 'now'),
-            'last_optimized' => $this->faker->optional()->dateTimeBetween('-3 months', 'now'),
+            'table_name' => $faker->randomElement(['users', 'posts', 'comments', 'orders', 'products', 'categories', 'tags', 'permissions', 'roles', 'settings', 'logs', 'notifications', 'migrations', 'failed_jobs', 'password_resets', 'personal_access_tokens'])
+            'table_comment' => $faker->optional()
+            'engine' => $faker->randomElement(['InnoDB', 'MyISAM', 'MEMORY', 'CSV', 'ARCHIVE'])
+            'collation' => $faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci'])
+            'row_format' => $faker->randomElement(['Dynamic', 'Fixed', 'Compressed', 'Redundant'])
+            'table_rows' => $faker->numberBetween(0, 1000000)
+            'avg_row_length' => $faker->numberBetween(100, 10000)
+            'data_length' => $faker->numberBetween(1024, 1073741824)
+            'max_data_length' => $faker->optional()
+            'index_length' => $faker->numberBetween(1024, 536870912)
+            'data_free' => $faker->optional()
+            'auto_increment' => $faker->optional()
+            'create_time' => $faker->dateTimeBetween('-2 years', 'now')
+            'update_time' => $faker->optional()
+            'check_time' => $faker->optional()
+            'checksum' => $faker->optional()
+            'create_options' => $faker->optional()
+            'table_catalog' => $faker->randomElement(['def', 'information_schema', 'mysql', 'performance_schema'])
+            'table_schema' => $faker->randomElement(['app_db', 'test_db', 'staging_db', 'production_db', 'backup_db'])
+            'version' => $faker->numberBetween(1, 10)
+            'is_active' => $faker->boolean(90)
+            'last_analyzed' => $faker->optional()
+            'last_optimized' => $faker->optional()
             'metadata' => [
-                'columns_count' => $this->faker->numberBetween(3, 50),
-                'indexes_count' => $this->faker->numberBetween(1, 20),
-                'foreign_keys_count' => $this->faker->numberBetween(0, 10),
-                'triggers_count' => $this->faker->numberBetween(0, 5),
-                'views_count' => $this->faker->numberBetween(0, 3),
-                'stored_procedures_count' => $this->faker->numberBetween(0, 5),
-                'functions_count' => $this->faker->numberBetween(0, 3),
-                'events_count' => $this->faker->numberBetween(0, 2),
-                'partitioned' => $this->faker->boolean(20),
-                'partition_count' => $this->faker->optional()->numberBetween(2, 16),
-                'compression' => $this->faker->optional()->randomElement(['NONE', 'ZLIB', 'LZ4', 'ZSTD']),
-                'encryption' => $this->faker->boolean(10),
-                'tablespace' => $this->faker->optional()->randomElement(['innodb_system', 'innodb_file_per_table', 'innodb_undo']),
-                'row_security' => $this->faker->boolean(5),
-                'force_row_level_security' => $this->faker->boolean(5),
-                'inherit' => $this->faker->optional()->randomElement(['', 'parent_table']),
-                'persistence' => $this->faker->randomElement(['PERMANENT', 'TEMPORARY']),
-                'log' => $this->faker->boolean(30),
-                'temporary' => $this->faker->boolean(10),
-                'unlogged' => $this->faker->boolean(5),
-                'oids' => $this->faker->boolean(5),
-                'on_commit' => $this->faker->optional()->randomElement(['DROP', 'DELETE ROWS', 'PRESERVE ROWS']),
-                'parallel_workers' => $this->faker->optional()->numberBetween(1, 8),
-                'fillfactor' => $this->faker->optional()->numberBetween(10, 100),
-                'autovacuum_enabled' => $this->faker->boolean(80),
-                'autovacuum_vacuum_threshold' => $this->faker->optional()->numberBetween(50, 1000),
-                'autovacuum_analyze_threshold' => $this->faker->optional()->numberBetween(50, 1000),
-                'autovacuum_vacuum_scale_factor' => $this->faker->optional()->randomFloat(2, 0.1, 0.5),
-                'autovacuum_analyze_scale_factor' => $this->faker->optional()->randomFloat(2, 0.1, 0.5),
-                'autovacuum_vacuum_cost_limit' => $this->faker->optional()->numberBetween(100, 10000),
-                'autovacuum_vacuum_cost_delay' => $this->faker->optional()->randomFloat(2, 0.1, 2.0),
-                'autovacuum_freeze_min_age' => $this->faker->optional()->numberBetween(1000000, 10000000),
-                'autovacuum_freeze_max_age' => $this->faker->optional()->numberBetween(100000000, 200000000),
-                'autovacuum_freeze_table_age' => $this->faker->optional()->numberBetween(100000000, 200000000),
-                'autovacuum_multixact_freeze_min_age' => $this->faker->optional()->numberBetween(1000000, 10000000),
-                'autovacuum_multixact_freeze_max_age' => $this->faker->optional()->numberBetween(100000000, 200000000),
-                'autovacuum_multixact_freeze_table_age' => $this->faker->optional()->numberBetween(100000000, 200000000),
-                'toast_tuple_target' => $this->faker->optional()->numberBetween(2048, 8192),
-                'autovacuum_vacuum_insert_threshold' => $this->faker->optional()->numberBetween(1000, 10000),
-                'autovacuum_vacuum_insert_scale_factor' => $this->faker->optional()->randomFloat(2, 0.1, 0.5),
-                'user_catalog_table' => $this->faker->boolean(5),
-                'is_insert_only' => $this->faker->boolean(5),
-                'has_oids' => $this->faker->boolean(5),
-                'relispartition' => $this->faker->boolean(20),
-                'relispartition_parent' => $this->faker->boolean(5),
-                'relpartbound' => $this->faker->optional()->text(),
-                'relhasindex' => $this->faker->boolean(80),
-                'relhasrules' => $this->faker->boolean(20),
-                'relhastriggers' => $this->faker->boolean(30),
-                'relhasoids' => $this->faker->boolean(5),
-                'relhasprimarykey' => $this->faker->boolean(90),
-                'relhasforeignkeys' => $this->faker->boolean(40),
-                'relhascheck' => $this->faker->boolean(30),
-                'relhaspartialindexes' => $this->faker->boolean(20),
-                'relhasreplident' => $this->faker->boolean(10),
-                'relisreplicated' => $this->faker->boolean(10),
-                'relfrozenxid' => $this->faker->optional()->numberBetween(1000000, 10000000),
-                'relminmxid' => $this->faker->optional()->numberBetween(1000000, 10000000),
-                'relacl' => $this->faker->optional()->text(),
-                'reloptions' => $this->faker->optional()->text(),
-                'relpartbound_expr' => $this->faker->optional()->text(),
+                'columns_count' => $faker->numberBetween(3, 50)
+                'indexes_count' => $faker->numberBetween(1, 20)
+                'foreign_keys_count' => $faker->numberBetween(0, 10)
+                'triggers_count' => $faker->numberBetween(0, 5)
+                'views_count' => $faker->numberBetween(0, 3)
+                'stored_procedures_count' => $faker->numberBetween(0, 5)
+                'functions_count' => $faker->numberBetween(0, 3)
+                'events_count' => $faker->numberBetween(0, 2)
+                'partitioned' => $faker->boolean(20)
+                'partition_count' => $faker->optional()
+                'compression' => $faker->optional()
+                'encryption' => $faker->boolean(10)
+                'tablespace' => $faker->optional()
+                'row_security' => $faker->boolean(5)
+                'force_row_level_security' => $faker->boolean(5)
+                'inherit' => $faker->optional()
+                'persistence' => $faker->randomElement(['PERMANENT', 'TEMPORARY'])
+                'log' => $faker->boolean(30)
+                'temporary' => $faker->boolean(10)
+                'unlogged' => $faker->boolean(5)
+                'oids' => $faker->boolean(5)
+                'on_commit' => $faker->optional()
+                'parallel_workers' => $faker->optional()
+                'fillfactor' => $faker->optional()
+                'autovacuum_enabled' => $faker->boolean(80)
+                'autovacuum_vacuum_threshold' => $faker->optional()
+                'autovacuum_analyze_threshold' => $faker->optional()
+                'autovacuum_vacuum_scale_factor' => $faker->optional()
+                'autovacuum_analyze_scale_factor' => $faker->optional()
+                'autovacuum_vacuum_cost_limit' => $faker->optional()
+                'autovacuum_vacuum_cost_delay' => $faker->optional()
+                'autovacuum_freeze_min_age' => $faker->optional()
+                'autovacuum_freeze_max_age' => $faker->optional()
+                'autovacuum_freeze_table_age' => $faker->optional()
+                'autovacuum_multixact_freeze_min_age' => $faker->optional()
+                'autovacuum_multixact_freeze_max_age' => $faker->optional()
+                'autovacuum_multixact_freeze_table_age' => $faker->optional()
+                'toast_tuple_target' => $faker->optional()
+                'autovacuum_vacuum_insert_threshold' => $faker->optional()
+                'autovacuum_vacuum_insert_scale_factor' => $faker->optional()
+                'user_catalog_table' => $faker->boolean(5)
+                'is_insert_only' => $faker->boolean(5)
+                'has_oids' => $faker->boolean(5)
+                'relispartition' => $faker->boolean(20)
+                'relispartition_parent' => $faker->boolean(5)
+                'relpartbound' => $faker->optional()
+                'relhasindex' => $faker->boolean(80)
+                'relhasrules' => $faker->boolean(20)
+                'relhastriggers' => $faker->boolean(30)
+                'relhasoids' => $faker->boolean(5)
+                'relhasprimarykey' => $faker->boolean(90)
+                'relhasforeignkeys' => $faker->boolean(40)
+                'relhascheck' => $faker->boolean(30)
+                'relhaspartialindexes' => $faker->boolean(20)
+                'relhasreplident' => $faker->boolean(10)
+                'relisreplicated' => $faker->boolean(10)
+                'relfrozenxid' => $faker->optional()
+                'relminmxid' => $faker->optional()
+                'relacl' => $faker->optional()
+                'reloptions' => $faker->optional()
+                'relpartbound_expr' => $faker->optional()
             ],
             'settings' => [
-                'auto_increment_increment' => $this->faker->optional()->numberBetween(1, 10),
-                'auto_increment_offset' => $this->faker->optional()->numberBetween(1, 10),
-                'character_set_name' => $this->faker->randomElement(['utf8mb4', 'utf8', 'latin1', 'ascii']),
-                'collation_name' => $this->faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci']),
-                'table_type' => $this->faker->randomElement(['BASE TABLE', 'VIEW', 'SYSTEM VIEW', 'LOCAL TEMPORARY', 'GLOBAL TEMPORARY']),
-                'table_collation' => $this->faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci']),
-                'checksum' => $this->faker->optional()->numberBetween(0, 4294967295),
-                'create_options' => $this->faker->optional()->sentence(),
-                'table_comment' => $this->faker->optional()->sentence(),
-                'max_index_length' => $this->faker->optional()->numberBetween(0, 1073741824),
-                'temporary' => $this->faker->optional()->randomElement(['', 'Y', 'N']),
-                'update_time' => $this->faker->optional()->dateTimeBetween('-1 year', 'now'),
-                'check_time' => $this->faker->optional()->dateTimeBetween('-6 months', 'now'),
-                'table_rows' => $this->faker->optional()->numberBetween(0, 1000000),
-                'avg_row_length' => $this->faker->optional()->numberBetween(100, 10000),
-                'data_length' => $this->faker->optional()->numberBetween(1024, 1073741824),
-                'max_data_length' => $this->faker->optional()->numberBetween(0, 9223372036854775807),
-                'index_length' => $this->faker->optional()->numberBetween(1024, 536870912),
-                'data_free' => $this->faker->optional()->numberBetween(0, 1048576),
-                'auto_increment' => $this->faker->optional()->numberBetween(1, 1000000),
-                'create_time' => $this->faker->optional()->dateTimeBetween('-2 years', 'now'),
-                'table_catalog' => $this->faker->optional()->randomElement(['def', 'information_schema', 'mysql', 'performance_schema']),
-                'table_schema' => $this->faker->optional()->randomElement(['app_db', 'test_db', 'staging_db', 'production_db', 'backup_db']),
-                'version' => $this->faker->optional()->numberBetween(1, 10),
-                'is_active' => $this->faker->optional()->boolean(90),
-                'last_analyzed' => $this->faker->optional()->dateTimeBetween('-1 month', 'now'),
-                'last_optimized' => $this->faker->optional()->dateTimeBetween('-3 months', 'now'),
+                'auto_increment_increment' => $faker->optional()
+                'auto_increment_offset' => $faker->optional()
+                'character_set_name' => $faker->randomElement(['utf8mb4', 'utf8', 'latin1', 'ascii'])
+                'collation_name' => $faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci'])
+                'table_type' => $faker->randomElement(['BASE TABLE', 'VIEW', 'SYSTEM VIEW', 'LOCAL TEMPORARY', 'GLOBAL TEMPORARY'])
+                'table_collation' => $faker->randomElement(['utf8mb4_unicode_ci', 'utf8mb4_general_ci', 'utf8_unicode_ci', 'latin1_swedish_ci'])
+                'checksum' => $faker->optional()
+                'create_options' => $faker->optional()
+                'table_comment' => $faker->optional()
+                'max_index_length' => $faker->optional()
+                'temporary' => $faker->optional()
+                'update_time' => $faker->optional()
+                'check_time' => $faker->optional()
+                'table_rows' => $faker->optional()
+                'avg_row_length' => $faker->optional()
+                'data_length' => $faker->optional()
+                'max_data_length' => $faker->optional()
+                'index_length' => $faker->optional()
+                'data_free' => $faker->optional()
+                'auto_increment' => $faker->optional()
+                'create_time' => $faker->optional()
+                'table_catalog' => $faker->optional()
+                'table_schema' => $faker->optional()
+                'version' => $faker->optional()
+                'is_active' => $faker->optional()
+                'last_analyzed' => $faker->optional()
+                'last_optimized' => $faker->optional()
             ],
         ];
     }
@@ -155,7 +155,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function active(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'is_active' => true,
         ]);
     }
@@ -165,7 +165,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function inactive(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'is_active' => false,
         ]);
     }
@@ -175,11 +175,11 @@ class DbForgeSchemaFactory extends Factory
      */
     public function large(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'table_rows' => $this->faker->numberBetween(100000, 10000000),
-            'avg_row_length' => $this->faker->numberBetween(5000, 50000),
-            'data_length' => $this->faker->numberBetween(1073741824, 10737418240), // 1GB to 10GB
-            'index_length' => $this->faker->numberBetween(536870912, 2147483648), // 512MB to 2GB
+        return $this->state(fn (array $attributes))
+            'table_rows' => $faker->numberBetween(100000, 10000000)
+            'avg_row_length' => $faker->numberBetween(5000, 50000)
+            'data_length' => $faker->numberBetween(1073741824, 10737418240)
+            'index_length' => $faker->numberBetween(536870912, 2147483648)
         ]);
     }
 
@@ -188,11 +188,11 @@ class DbForgeSchemaFactory extends Factory
      */
     public function small(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'table_rows' => $this->faker->numberBetween(0, 1000),
-            'avg_row_length' => $this->faker->numberBetween(100, 1000),
-            'data_length' => $this->faker->numberBetween(1024, 1048576), // 1KB to 1MB
-            'index_length' => $this->faker->numberBetween(1024, 1048576), // 1KB to 1MB
+        return $this->state(fn (array $attributes))
+            'table_rows' => $faker->numberBetween(0, 1000)
+            'avg_row_length' => $faker->numberBetween(100, 1000)
+            'data_length' => $faker->numberBetween(1024, 1048576)
+            'index_length' => $faker->numberBetween(1024, 1048576)
         ]);
     }
 
@@ -201,14 +201,14 @@ class DbForgeSchemaFactory extends Factory
      */
     public function partitioned(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'partitioned' => true,
-                    'partition_count' => $this->faker->numberBetween(2, 16),
+                    'partition_count' => $faker->numberBetween(2, 16)
                 ]),
             ];
         });
@@ -219,12 +219,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function notPartitioned(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'partitioned' => false,
                     'partition_count' => null,
                 ]),
@@ -237,13 +237,13 @@ class DbForgeSchemaFactory extends Factory
      */
     public function compressed(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
-                    'compression' => $this->faker->randomElement(['ZLIB', 'LZ4', 'ZSTD']),
+                'metadata' => array_merge($existingMetadata, [)
+                    'compression' => $faker->randomElement(['ZLIB', 'LZ4', 'ZSTD'])
                 ]),
             ];
         });
@@ -254,12 +254,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function uncompressed(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'compression' => 'NONE',
                 ]),
             ];
@@ -271,12 +271,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function encrypted(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'encryption' => true,
                 ]),
             ];
@@ -288,12 +288,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function unencrypted(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'encryption' => false,
                 ]),
             ];
@@ -305,12 +305,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function temporary(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'temporary' => true,
                     'persistence' => 'TEMPORARY',
                 ]),
@@ -323,12 +323,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function permanent(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'temporary' => false,
                     'persistence' => 'PERMANENT',
                 ]),
@@ -341,13 +341,13 @@ class DbForgeSchemaFactory extends Factory
      */
     public function manyColumns(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
-                    'columns_count' => $this->faker->numberBetween(20, 100),
+                'metadata' => array_merge($existingMetadata, [)
+                    'columns_count' => $faker->numberBetween(20, 100)
                 ]),
             ];
         });
@@ -358,13 +358,13 @@ class DbForgeSchemaFactory extends Factory
      */
     public function fewColumns(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
-                    'columns_count' => $this->faker->numberBetween(3, 10),
+                'metadata' => array_merge($existingMetadata, [)
+                    'columns_count' => $faker->numberBetween(3, 10)
                 ]),
             ];
         });
@@ -375,13 +375,13 @@ class DbForgeSchemaFactory extends Factory
      */
     public function manyIndexes(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
-                    'indexes_count' => $this->faker->numberBetween(10, 30),
+                'metadata' => array_merge($existingMetadata, [)
+                    'indexes_count' => $faker->numberBetween(10, 30)
                 ]),
             ];
         });
@@ -392,13 +392,13 @@ class DbForgeSchemaFactory extends Factory
      */
     public function fewIndexes(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
-                    'indexes_count' => $this->faker->numberBetween(1, 5),
+                'metadata' => array_merge($existingMetadata, [)
+                    'indexes_count' => $faker->numberBetween(1, 5)
                 ]),
             ];
         });
@@ -409,14 +409,14 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withForeignKeys(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'relhasforeignkeys' => true,
-                    'foreign_keys_count' => $this->faker->numberBetween(1, 10),
+                    'foreign_keys_count' => $faker->numberBetween(1, 10)
                 ]),
             ];
         });
@@ -427,12 +427,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withoutForeignKeys(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'relhasforeignkeys' => false,
                     'foreign_keys_count' => 0,
                 ]),
@@ -445,14 +445,14 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withTriggers(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'relhastriggers' => true,
-                    'triggers_count' => $this->faker->numberBetween(1, 5),
+                    'triggers_count' => $faker->numberBetween(1, 5)
                 ]),
             ];
         });
@@ -463,12 +463,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withoutTriggers(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'relhastriggers' => false,
                     'triggers_count' => 0,
                 ]),
@@ -481,12 +481,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withRules(): static
     {
-        return $this->state(function (array $attributes): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingMetadata */
             $existingMetadata = is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [];
 
             return [
-                'metadata' => array_merge($existingMetadata, [
+                'metadata' => array_merge($existingMetadata, [)
                     'relhasrules' => true,
                 ]),
             ];
@@ -498,8 +498,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withoutRules(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
+        return $this->state(fn (array $attributes))
+            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [)
                 'relhasrules' => false,
             ]),
         ]);
@@ -510,8 +510,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withChecks(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
+        return $this->state(fn (array $attributes))
+            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [)
                 'relhascheck' => true,
             ]),
         ]);
@@ -522,8 +522,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withoutChecks(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [
+        return $this->state(fn (array $attributes))
+            'metadata' => array_merge(is_array($attributes['metadata'] ?? null) ? $attributes['metadata'] : [], [)
                 'relhascheck' => false,
             ]),
         ]);
@@ -534,7 +534,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function forDatabase(string $databaseName): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'table_schema' => $databaseName,
         ]);
     }
@@ -544,7 +544,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withEngine(string $engine): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'engine' => $engine,
         ]);
     }
@@ -554,7 +554,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withCollation(string $collation): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'collation' => $collation,
         ]);
     }
@@ -564,7 +564,7 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withRowFormat(string $rowFormat): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes))
             'row_format' => $rowFormat,
         ]);
     }
@@ -574,12 +574,12 @@ class DbForgeSchemaFactory extends Factory
      */
     public function withCharacterSet(string $characterSet): static
     {
-        return $this->state(function (array $attributes) use ($characterSet): array {
+        return $this->state(function (array $attributes))
             /** @var array<string, mixed> $existingSettings */
             $existingSettings = is_array($attributes['settings'] ?? null) ? $attributes['settings'] : [];
 
             return [
-                'settings' => array_merge($existingSettings, [
+                'settings' => array_merge($existingSettings, [)
                     'character_set_name' => $characterSet,
                 ]),
             ];
@@ -591,8 +591,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function recentlyCreated(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'create_time' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        return $this->state(fn (array $attributes))
+            'create_time' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 
@@ -601,8 +601,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function old(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'create_time' => $this->faker->dateTimeBetween('-5 years', '-2 years'),
+        return $this->state(fn (array $attributes))
+            'create_time' => $faker->dateTimeBetween('-5 years', '-2 years')
         ]);
     }
 
@@ -611,8 +611,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function recentlyUpdated(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'update_time' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        return $this->state(fn (array $attributes))
+            'update_time' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 
@@ -621,8 +621,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function recentlyAnalyzed(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'last_analyzed' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        return $this->state(fn (array $attributes))
+            'last_analyzed' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 
@@ -631,8 +631,8 @@ class DbForgeSchemaFactory extends Factory
      */
     public function recentlyOptimized(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'last_optimized' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        return $this->state(fn (array $attributes))
+            'last_optimized' => $faker->dateTimeBetween('-1 month', 'now')
         ]);
     }
 }

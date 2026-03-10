@@ -19,11 +19,7 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 - **Integrazione Filament**: Compatibilità completa con i componenti Filament
 
 ## Collegamenti Correlati
-<<<<<<< HEAD
-- [Documentazione Generale Progetto](../../../docs/README.md)
-=======
-- [Documentazione Generale healthcare_app](../../../docs/README.md)
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+- [Documentazione Generale Progetto](../../../docs/README.md) (docs: replace project-specific references with generic placeholders across documentation)
 - [Collegamenti Documentazione](../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../docs/DOCUMENTATION_STANDARDS.md)
 - [Modulo UI](../../Modules/UI/docs/README.md)

@@ -14,7 +14,9 @@ use Modules\MobilitaVolontaria\Database\Factories\BandiAllegatiFactory;
  * @method static Builder|BandiAllegati newModelQuery()
  * @method static Builder|BandiAllegati newQuery()
  * @method static Builder|BandiAllegati query()
- *
+ * @property-read \Modules\Ptv\Models\Profile|null $creator
+ * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
 class BandiAllegati extends BaseModel

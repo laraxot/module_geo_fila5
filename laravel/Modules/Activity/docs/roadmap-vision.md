@@ -245,7 +245,7 @@ class Activity extends SpatieActivity
 #### **2.2 Intelligent Activity Analytics**
 - Implement machine learning for anomaly detection
 - Add user behavior pattern recognition
-- Create predictive analytics for system usage
+- Create <nome progetto>ive analytics for system usage
 - Add automated security alerting
 
 #### **2.3 Advanced Reporting System**
@@ -307,7 +307,7 @@ class Activity extends SpatieActivity
 #### **5. Void (Intelligence)**
 *"From the emptiness of raw data, wisdom emerges"*
 - Pattern recognition in activities
-- Predictive analytics
+- <nome progetto>ive analytics
 - Anomaly detection
 
 ### **The Activity Mantras**
@@ -497,11 +497,7 @@ class User extends BaseUser
     }
 }
 
-<<<<<<< .merge_file_I3bOxx
 // Integration with healthcare_app module
-=======
-// Integration with ModuloEsempio module
->>>>>>> .merge_file_nx26e4
 class Survey extends BaseModel
 {
     public function publish()
