@@ -106,9 +106,10 @@ class StabiDirigente extends BaseModel
             ->append('\\Scheda')
             ->toString();
 
-        Assert::classExists($schedaClass);
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
 
-        return $this->hasMany($schedaClass, 'valutatore_id', 'id');
+        return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
     public function benificiariProgressione(): HasMany

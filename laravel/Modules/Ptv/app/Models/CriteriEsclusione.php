@@ -68,9 +68,10 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
             ->append('\\Scheda')
             ->toString();
 
-        Assert::classExists($schedaClass);
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
 
-        return $this->hasMany($schedaClass, 'anno', 'anno');
+        return $this->hasMany($modelClass, 'anno', 'anno');
     }
 
     public function getSchedaCollection(): EloquentCollection
