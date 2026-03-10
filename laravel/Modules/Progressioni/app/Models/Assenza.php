@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Modules\Progressioni\Database\Factories\AssenzeFactory;
+use Modules\Progressioni\Database\Factories\AssenzaFactory;
 use Modules\Sigma\Models\Asz00f;
 
 // use Modules\Xot\Services\ModelService; // DEPRECATED: Class not found
 /**
- * Modules\Progressioni\Models\Assenze.
+ * Modules\Progressioni\Models\Assenza.
  *
  * @property int $id
  * @property int|null $tipo
@@ -28,27 +28,27 @@ use Modules\Sigma\Models\Asz00f;
  * @property Carbon|null $updated_at
  * @property Collection<int, Asz00f> $asz00fs
  * @property int|null $asz00fs_count
- * @method static AssenzeFactory factory($count = null, $state = [])
- * @method static Builder|Assenze newModelQuery()
- * @method static Builder|Assenze newQuery()
- * @method static Builder|Assenze query()
- * @method static Builder|Assenze whereAnno($value)
- * @method static Builder|Assenze whereCodice($value)
- * @method static Builder|Assenze whereCreatedAt($value)
- * @method static Builder|Assenze whereCreatedBy($value)
- * @method static Builder|Assenze whereDescr($value)
- * @method static Builder|Assenze whereDur($value)
- * @method static Builder|Assenze whereId($value)
- * @method static Builder|Assenze whereTipo($value)
- * @method static Builder|Assenze whereUmi($value)
- * @method static Builder|Assenze whereUpdatedAt($value)
- * @method static Builder|Assenze whereUpdatedBy($value)
+ * @method static AssenzaFactory factory($count = null, $state = [])
+ * @method static Builder|Assenza newModelQuery()
+ * @method static Builder|Assenza newQuery()
+ * @method static Builder|Assenza query()
+ * @method static Builder|Assenza whereAnno($value)
+ * @method static Builder|Assenza whereCodice($value)
+ * @method static Builder|Assenza whereCreatedAt($value)
+ * @method static Builder|Assenza whereCreatedBy($value)
+ * @method static Builder|Assenza whereDescr($value)
+ * @method static Builder|Assenza whereDur($value)
+ * @method static Builder|Assenza whereId($value)
+ * @method static Builder|Assenza whereTipo($value)
+ * @method static Builder|Assenza whereUmi($value)
+ * @method static Builder|Assenza whereUpdatedAt($value)
+ * @method static Builder|Assenza whereUpdatedBy($value)
  * @property-read \Modules\Ptv\Models\Profile|null $creator
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @mixin \Eloquent
  */
-class Assenze extends BaseModel
+class Assenza extends BaseModel
 {
     protected $fillable = ['id', 'tipo', 'codice', 'descr', 'anno', 'umi', 'dur'];
 
@@ -58,10 +58,10 @@ class Assenze extends BaseModel
     {
         // solo per prendere
         // dddx('WIP');
-        // return $this->hasMany(Schede::class);
+        // return $this->hasMany(Scheda::class);
         // dddx($this->asz00f);
 
-        // return $this->hasManyThrough(Schede::class, Asz00f::class);
+        // return $this->hasManyThrough(Scheda::class, Asz00f::class);
     }
 
     public function asz00fs(): HasMany

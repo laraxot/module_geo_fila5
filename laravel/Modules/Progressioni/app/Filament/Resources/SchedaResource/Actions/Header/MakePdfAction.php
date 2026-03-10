@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\SchedeResource\Actions\Header;
+namespace Modules\Progressioni\Filament\Resources\SchedaResource\Actions\Header;
 
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Modules\Progressioni\Actions\RefreshByYearAction;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Progressioni\Models\StabiDirigente;
 use Modules\Progressioni\Services\CriteriPrecedenzaService;
 use Modules\Xot\Actions\Export\PdfByViewAction;
@@ -70,7 +70,7 @@ class MakePdfAction extends Action
                 if ($filteredQuery === null) {
                     return null;
                 }
-                /** @var Builder<Schede> $queryBuilder */
+                /** @var Builder<Scheda> $queryBuilder */
                 $queryBuilder = $filteredQuery
                     ->where('ha_diritto', 1)
                     // ->orderByDesc('totale')
@@ -93,16 +93,16 @@ class MakePdfAction extends Action
                         $queryBuilder = $queryBuilder->orderByDesc($fieldName);
                     }
                 }
-                /** @var Collection<int, Schede> $rows */
+                /** @var Collection<int, Scheda> $rows */
                 $rows = $queryBuilder->get();
 
-                /** @var class-string<Schede> $modelClass */
+                /** @var class-string<Scheda> $modelClass */
                 $modelClass = $livewire->getModel();
 
-                /** @var Collection<int, Schede> $fixRows */
+                /** @var Collection<int, Scheda> $fixRows */
                 $fixRows = $rows->where('perf_ind_media', '<', 1);
                 foreach ($fixRows as $frow) {
-                    /** @var Schede|null $row */
+                    /** @var Scheda|null $row */
                     $row = $modelClass::firstWhere('id', $frow->id);
                     if ($row !== null) {
                         $row->perf_ind_media = $row->perfIndMedia();
@@ -110,10 +110,10 @@ class MakePdfAction extends Action
                     }
                 }
 
-                /** @var Collection<int, Schede> $fixRows2 */
+                /** @var Collection<int, Scheda> $fixRows2 */
                 $fixRows2 = $rows->where('excellences_count_last_3_years', '<', 1);
                 foreach ($fixRows2 as $frow) {
-                    /** @var Schede|null $row */
+                    /** @var Scheda|null $row */
                     $row = $modelClass::firstWhere('id', $frow->id);
                     if ($row !== null) {
                         $row->excellences_count_last_3_years = $row->excellencesCountLast3Years();

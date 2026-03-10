@@ -37,10 +37,10 @@ use Modules\Sigma\Models\Repart;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, Schede> $benificiariProgressione
+ * @property-read Collection<int, Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Repart|null $repart
- * @property-read Collection<int, Schede> $schede
+ * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
@@ -88,7 +88,7 @@ class StabiDirigente extends PtvStabiDirigenteModel
 
     public function schede(): HasMany
     {
-        return $this->hasMany(Schede::class, 'valutatore_id', 'id');
+        return $this->hasMany(Scheda::class, 'valutatore_id', 'id');
     }
 
     public function benificiariProgressione(): HasMany

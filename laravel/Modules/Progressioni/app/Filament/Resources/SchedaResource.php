@@ -6,17 +6,17 @@ namespace Modules\Progressioni\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
-use Modules\Progressioni\Filament\Resources\SchedeResource\Pages\CompilaScheda;
-use Modules\Progressioni\Filament\Resources\SchedeResource\Pages\CreateSchede;
-use Modules\Progressioni\Filament\Resources\SchedeResource\Pages\EditSchede;
-use Modules\Progressioni\Filament\Resources\SchedeResource\Pages\ListSchedes;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\CompilaScheda;
+use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\CreateScheda;
+use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\EditScheda;
+use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\ListScheda;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
 
-class SchedeResource extends XotBaseResource
+class SchedaResource extends XotBaseResource
 {
-    protected static ?string $model = Schede::class;
+    protected static ?string $model = Scheda::class;
 
     #[Override]
     /**
@@ -77,9 +77,9 @@ class SchedeResource extends XotBaseResource
     public static function getPages(): array
     {
         return [
-            'index' => ListSchedes::route('/'),
-            'create' => CreateSchede::route('/create'),
-            'edit' => EditSchede::route('/{record}/edit'),
+            'index' => ListScheda::route('/'),
+            'create' => CreateScheda::route('/create'),
+            'edit' => EditScheda::route('/{record}/edit'),
             'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }

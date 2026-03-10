@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Sigma\Models\Repart;
 use Webmozart\Assert\Assert;
 

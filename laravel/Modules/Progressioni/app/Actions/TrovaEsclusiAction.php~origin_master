@@ -36,7 +36,7 @@ class TrovaEsclusiAction {
             ->pluck('value', 'name')
             ->all();
 
-        $schede = Schede::where('anno', $year)->get();
+        $schede = Scheda::where('anno', $year)->get();
         foreach ($schede as $scheda) {
             $parz = [
                 'scheda' => $scheda,

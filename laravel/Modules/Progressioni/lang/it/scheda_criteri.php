@@ -5,14 +5,14 @@ declare(strict_types=1);
 return [
     'navigation' => [
         'name' => 'Scheda Criteri',
-        'plural' => 'Schede Criteri',
+        'plural' => 'Scheda Criteri',
         'group' => [
             'name' => 'Gestione Progressioni',
             'description' => 'Gestione completa delle progressioni di carriera',
         ],
         'sort' => 16,
         'icon' => 'heroicon-o-clipboard-document-check',
-        'label' => 'Schede Criteri',
+        'label' => 'Scheda Criteri',
     ],
     'fields' => [
         'id' => [
@@ -388,7 +388,7 @@ return [
             'confirmation' => 'Vuoi testare questa scheda criteri?',
         ],
         'import' => [
-            'label' => 'Importa Schede Criteri',
+            'label' => 'Importa Scheda Criteri',
             'success' => 'Importazione schede criteri completata con successo',
             'error' => 'Errore durante l\'importazione delle schede criteri',
             'confirmation' => 'Sei sicuro di voler importare le schede criteri dal file selezionato?',
@@ -401,26 +401,26 @@ return [
             ],
         ],
         'export' => [
-            'label' => 'Esporta Schede Criteri',
+            'label' => 'Esporta Scheda Criteri',
             'success' => 'Esportazione schede criteri completata con successo',
             'error' => 'Errore durante l\'esportazione delle schede criteri',
-            'filename_prefix' => 'Schede_Criteri_',
+            'filename_prefix' => 'Scheda_Criteri_',
         ],
         'bulk_delete' => [
             'label' => 'Elimina Selezionate',
-            'success' => 'Schede criteri eliminate con successo',
+            'success' => 'Scheda criteri eliminate con successo',
             'error' => 'Errore durante l\'eliminazione delle schede criteri',
             'confirmation' => 'Sei sicuro di voler eliminare le schede criteri selezionate? Questa azione è irreversibile.',
         ],
         'bulk_activate' => [
             'label' => 'Attiva Selezionate',
-            'success' => 'Schede criteri attivate con successo',
+            'success' => 'Scheda criteri attivate con successo',
             'error' => 'Errore durante l\'attivazione delle schede criteri',
             'confirmation' => 'Sei sicuro di voler attivare le schede criteri selezionate?',
         ],
         'bulk_approve' => [
             'label' => 'Approva Selezionate',
-            'success' => 'Schede criteri approvate con successo',
+            'success' => 'Scheda criteri approvate con successo',
             'error' => 'Errore durante l\'approvazione delle schede criteri',
             'confirmation' => 'Sei sicuro di voler approvare le schede criteri selezionate?',
         ],

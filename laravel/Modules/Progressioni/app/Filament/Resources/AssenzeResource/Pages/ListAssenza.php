@@ -9,7 +9,7 @@ use Modules\Progressioni\Filament\Resources\AssenzeResource;
 use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Override;
 
-class ListAssenzes extends PtvBaseYearListRecords
+class ListAssenza extends PtvBaseYearListRecords
 {
     protected static string $resource = AssenzeResource::class;
 

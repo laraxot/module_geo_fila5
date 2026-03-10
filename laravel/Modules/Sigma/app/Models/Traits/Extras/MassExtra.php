@@ -39,7 +39,7 @@ trait MassExtra
                 \Modules\IndennitaResponsabilita\Models\LettI::class,
             ],
             \Modules\Ptv\Models\BaseScheda::class => [
-                \Modules\Progressioni\Models\Schede::class,
+                \Modules\Progressioni\Models\Scheda::class,
                 \Modules\Progressioni\Models\SchedaCriteri::class,
             ],
         ];

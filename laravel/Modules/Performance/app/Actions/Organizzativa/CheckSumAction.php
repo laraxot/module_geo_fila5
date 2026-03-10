@@ -23,11 +23,11 @@ class CheckSumAction
     public function execute(string $year, string $type): void
     {
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 
-        Assert::notNull($imp = Schede::selectRaw('sum(importo_totale) as tot')
+        Assert::notNull($imp = Scheda::selectRaw('sum(importo_totale) as tot')
             ->where('ha_diritto', '>', 0)
             ->where('anno', $year)
             ->where('type', $type)

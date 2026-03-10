@@ -6,16 +6,16 @@ namespace Modules\Legge104\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Legge104\Models\Schede;
+use Modules\Legge104\Models\Scheda;
 
-class SchedeFactory extends Factory
+class SchedaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var class-string<Model>
      */
-    protected $model = Schede::class;
+    protected $model = Scheda::class;
 
     /**
      * Define the model's default state.

@@ -95,7 +95,7 @@ class StabiDirigente extends BaseModel
 
     /*
     public function schede():\Illuminate\Database\Eloquent\Relations\HasMany {
-        return $this->hasMany(Schede::class, 'valutatore_id', 'id');
+        return $this->hasMany(Scheda::class, 'valutatore_id', 'id');
     }
 
     public function benificiariProgressione(): void {

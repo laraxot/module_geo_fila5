@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Actions;
 
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Sigma\Models\Rep00f;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -22,7 +22,7 @@ class Populate
     {
         $anno = $data['anno'];
 
-        $rows = Schede::where('anno', $anno)
+        $rows = Scheda::where('anno', $anno)
             ->get();
 
         $matrs = $rows->pluck('matr')->toArray();
@@ -33,7 +33,7 @@ class Populate
         $rows = $rows->filter(static fn ($item): bool => ! in_array($item->matr, $matrs));
 
         foreach ($rows as $row) {
-            Schede::firstOrCreate(
+            Scheda::firstOrCreate(
                 [
                     'ente' => $row->ente,
                     'matr' => $row->matr,

@@ -12,6 +12,7 @@
 - [x] Database migrations
 - [x] Integration with Rating module
 - [x] Basic CRUD operations
+- [x] Aligned model naming to Laravel standards (Schede -> Scheda)
 
 ### 🔄 In Progress
 - [ ] PHPStan Level 10 compliance
@@ -57,6 +58,6 @@
 
 ---
 
-**Last Updated**: 2026-02-24
+**Last Updated**: 2026-03-10
 **Maintainer**: Team Laraxot
 **Status**: Active Development

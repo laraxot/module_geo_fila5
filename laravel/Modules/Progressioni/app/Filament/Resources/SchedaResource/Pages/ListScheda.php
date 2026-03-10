@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\SchedeResource\Pages;
+namespace Modules\Progressioni\Filament\Resources\SchedaResource\Pages;
 
 use Filament\Actions;
 use Filament\Actions\Action;
@@ -20,12 +20,12 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Modules\Progressioni\Actions\Populate;
-use Modules\Progressioni\Filament\Resources\SchedeResource;
-use Modules\Progressioni\Filament\Resources\SchedeResource\Actions\Header\MakePdfAction;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Filament\Resources\SchedaResource;
+use Modules\Progressioni\Filament\Resources\SchedaResource\Actions\Header\MakePdfAction;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Ptv\Actions\FixValutatoreIdByAnno;
 use Modules\Ptv\Actions\GetValutatoriOptions;
-use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Actions\Filament\Actions\CopyFromLastYearButton;
@@ -34,9 +34,9 @@ use Modules\Xot\Filament\Actions\Table\PdfAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListSchedes extends XotBaseListRecords
+class ListScheda extends XotBaseListRecords
 {
-    protected static string $resource = SchedeResource::class;
+    protected static string $resource = SchedaResource::class;
 
     #[Override]
     protected function getHeaderActions(): array
@@ -46,7 +46,7 @@ class ListSchedes extends XotBaseListRecords
         return [
             // 'create' => Actions\CreateAction::make(),
             // 'copy' => app(CopyFromLastYearButton::class)
-            //    ->execute(Schede::class, 'anno', $anno),
+            //    ->execute(Scheda::class, 'anno', $anno),
             'pdf' => MakePdfAction::make(),
             // 'export' => ExportXlsAction::make(), // da togliere campi etc etc
         ];
@@ -188,7 +188,7 @@ class ListSchedes extends XotBaseListRecords
                     /*
                     $populateData = ['anno' => (int) $anno];
                     app(Populate::class)->execute($populateData);
-                    app(FixValutatoreIdByAnno::class)->execute('Progressioni', 'Schede', $anno);
+                    app(FixValutatoreIdByAnno::class)->execute('Progressioni', 'Scheda', $anno);
                     */
                     $query = $query->where($data);
 
@@ -209,12 +209,12 @@ class ListSchedes extends XotBaseListRecords
             // Tables\Actions\ViewAction::make(),
 
             'compila' => CompilaAction::make()
-                ->visible(function (Schede $record): bool {
+                ->visible(function (Scheda $record): bool {
                     // @var bool|null $haDiritto
                     return (int) $record->ha_diritto > 0;
                 }),
             'pdf' => PdfAction::make('pdf')
-                ->visible(function (Schede $record): bool {
+                ->visible(function (Scheda $record): bool {
                     /* @var bool|null $haDiritto */
                     return (int) $record->ha_diritto > 0;
                 }),
@@ -242,7 +242,7 @@ class ListSchedes extends XotBaseListRecords
 
         return [
             // DeleteBulkAction::make(),
-            'send_schede' => SendSchedeBulkAction::make()->setTemplate($tpl),
+            'send_schede' => SendSchedaBulkAction::make()->setTemplate($tpl),
         ];
     }
 }

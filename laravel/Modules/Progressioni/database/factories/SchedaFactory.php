@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 
 /**
- * Factory per la generazione di dati di test per il modello Schede.
+ * Factory per la generazione di dati di test per il modello Scheda.
  *
  * Gestisce la creazione di schede di progressione per il personale,
  * includendo dati anagrafici, posizioni funzionali e criteri di valutazione.
  *
- * @extends Factory<Schede>
+ * @extends Factory<Scheda>
  */
-class SchedeFactory extends Factory
+class SchedaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Schede>
+     * @var class-string<Scheda>
      */
-    protected $model = Schede::class;
+    protected $model = Scheda::class;
 
     /**
      * Define the model's default state.

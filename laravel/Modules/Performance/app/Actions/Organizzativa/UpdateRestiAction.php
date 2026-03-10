@@ -19,7 +19,7 @@ class UpdateRestiAction
      */
     public function execute(string $year, string $type): void
     {
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
         $where = 'ha_diritto>0 and anno="'.$year.'" and type = "'.$type.'"';

@@ -19,7 +19,7 @@ class UpdateQuotaEffettivaAction
      */
     public function execute(string $year, string $type): void
     {
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 

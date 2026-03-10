@@ -23,7 +23,7 @@ class UpdateRestiPondAction
     {
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
         $tbl_tot_stabi = app(TotStabi::class)->getTable();
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 

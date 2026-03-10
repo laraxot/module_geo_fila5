@@ -22,7 +22,7 @@ class UpdateTotStabiAction
     public function execute(string $year, string $type = 'dip'): void
     {
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 

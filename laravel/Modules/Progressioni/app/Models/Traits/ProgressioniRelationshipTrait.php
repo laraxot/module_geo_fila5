@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use Modules\Performance\Models\Individuale as PerformanceIndividuale;
-use Modules\Progressioni\Models\Assenze;
+use Modules\Progressioni\Models\Assenza;
 use Modules\Progressioni\Models\CategoriaPropro;
 use Modules\Progressioni\Models\CodiciAspettative;
 use Modules\Progressioni\Models\Coeff;
@@ -24,7 +24,7 @@ use Modules\Progressioni\Models\Message;
 use Modules\Progressioni\Models\MyLog;
 use Modules\Progressioni\Models\Pesi;
 use Modules\Progressioni\Models\SchedaCriteri;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Progressioni\Models\StabiDirigente;
 use Modules\Progressioni\Models\StipendioTabellare;
 use Modules\Progressioni\Models\Valutatore;
@@ -57,7 +57,7 @@ trait ProgressioniRelationshipTrait
         $anno = request()->input('anno', date('Y'));
         $this->anno = $anno;
 
-        return $this->hasMany(Schede::class, 'anno', 'anno')
+        return $this->hasMany(Scheda::class, 'anno', 'anno')
             ->where('valutatore_id', $valutatore_id)
             ->where('ha_diritto', 1);
     }
@@ -122,7 +122,7 @@ trait ProgressioniRelationshipTrait
 
     public function righeDoppie(): HasMany
     {
-        return $this->hasMany(Schede::class, 'anno', 'anno')
+        return $this->hasMany(Scheda::class, 'anno', 'anno')
             ->where('matr', $this->matr)
             // ->where('id', '!=', $this->id)
             ->orderBy('dal');
@@ -235,7 +235,7 @@ trait ProgressioniRelationshipTrait
      */
     public function assenze(): HasMany
     {
-        return $this->hasMany(Assenze::class, 'anno', 'anno');
+        return $this->hasMany(Assenza::class, 'anno', 'anno');
         // return CodiciAspettative::where('anno',$this->anno);
     }
 

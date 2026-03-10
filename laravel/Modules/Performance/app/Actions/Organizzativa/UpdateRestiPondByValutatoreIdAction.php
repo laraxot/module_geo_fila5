@@ -69,7 +69,7 @@ class UpdateRestiPondByValutatoreIdAction
      */
     protected function resetRestiPond(string $year, string $type): void
     {
-        $count = Schede::where('anno', $year)
+        $count = Scheda::where('anno', $year)
             ->where('type', $type)
             ->update(['resti_pond' => 0]);
 
@@ -109,7 +109,7 @@ class UpdateRestiPondByValutatoreIdAction
             $delta = (float) $valutatore->delta_min_punteggio + 0.00114;
 
             // Aggiorna i resti_pond per i dipendenti di questo valutatore
-            $updated = Schede::where('anno', $year)
+            $updated = Scheda::where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->where('valutatore_id', $valutatore->valutatore_id)
@@ -141,12 +141,12 @@ class UpdateRestiPondByValutatoreIdAction
     protected function verifyTotalResti(string $year, string $type): void
     {
         // Calcola la somma totale dei resti
-        $totResti = (float) Schede::where('anno', $year)
+        $totResti = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('resti');
         // Calcola la somma totale dei resti_pond
-        $totRestiPond = (float) Schede::where('anno', $year)
+        $totRestiPond = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('resti_pond');

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\SchedeResource\Pages;
+namespace Modules\Progressioni\Filament\Resources\SchedaResource\Pages;
 
 use Carbon\Carbon;
 use Filament\Facades\Filament;
@@ -14,7 +14,7 @@ use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 // use Filament\Resources\Pages\Concerns\UsesResourceForm; // Not needed for this custom form implementation
 use Illuminate\Support\Facades\Gate;
-use Modules\Progressioni\Filament\Resources\SchedeResource;
+use Modules\Progressioni\Filament\Resources\SchedaResource;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 // class CompilaCondizioniLavoro extends \Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord {
@@ -30,7 +30,7 @@ class CompilaScheda extends XotBasePage
     use InteractsWithRecord;
     // use UsesResourceForm; // Not needed - using custom form_data implementation
 
-    protected static string $resource = SchedeResource::class;
+    protected static string $resource = SchedaResource::class;
 
     protected string $view = 'progressioni::admin.schede.compila.page';
 

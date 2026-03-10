@@ -7,7 +7,7 @@ return [
         'name' => 'schede',
         'plural' => 'schede',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
             'description' => 'Gestione delle schede di valutazione',
         ],
     ],

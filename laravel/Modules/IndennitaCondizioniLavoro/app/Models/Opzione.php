@@ -10,27 +10,27 @@ use Modules\Ptv\Models\Profile;
 
 // ---- traits --
 /**
- * Modules\IndennitaCondizioniLavoro\Models\Opzioni.
+ * Modules\IndennitaCondizioniLavoro\Models\Opzione.
  *
  * @property int $id
  * @property string|null $name
  * @property string|null $value
  * @property Carbon|null $updated_at
  * @property Carbon|null $created_at
- * @method static Builder|Opzioni newModelQuery()
- * @method static Builder|Opzioni newQuery()
- * @method static Builder|Opzioni query()
- * @method static Builder|Opzioni whereCreatedAt($value)
- * @method static Builder|Opzioni whereId($value)
- * @method static Builder|Opzioni whereName($value)
- * @method static Builder|Opzioni whereUpdatedAt($value)
- * @method static Builder|Opzioni whereValue($value)
+ * @method static Builder|Opzione newModelQuery()
+ * @method static Builder|Opzione newQuery()
+ * @method static Builder|Opzione query()
+ * @method static Builder|Opzione whereCreatedAt($value)
+ * @method static Builder|Opzione whereId($value)
+ * @method static Builder|Opzione whereName($value)
+ * @method static Builder|Opzione whereUpdatedAt($value)
+ * @method static Builder|Opzione whereValue($value)
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
  * @property-read Profile|null $deleter
  * @mixin \Eloquent
  */
-class Opzioni extends BaseModel
+class Opzione extends BaseModel
 {
     protected $table = 'opzioni';
 

@@ -25,7 +25,7 @@ use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
- * @property-read Collection<int, Schede> $schede
+ * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
  * @method static MaxCatecoPosfunAnnoFactory factory($count = null, $state = [])
  * @method static Builder|MaxCatecoPosfunAnno newModelQuery()
@@ -61,8 +61,8 @@ class MaxCatecoPosfunAnno extends BaseModel
     // ------- relationship -------
     public function schede(): HasMany
     {
-        // Schede::updateVincitori(['anno'=>$this->anno]);
-        return $this->hasMany(Schede::class, 'categoria_ecoval', 'cateco')
+        // Scheda::updateVincitori(['anno'=>$this->anno]);
+        return $this->hasMany(Scheda::class, 'categoria_ecoval', 'cateco')
             ->where('posfunval', $this->posfun)
             ->where('anno', $this->anno);
     }

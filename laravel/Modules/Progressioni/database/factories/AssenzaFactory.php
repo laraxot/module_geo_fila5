@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Progressioni\Models\Assenze;
+use Modules\Progressioni\Models\Assenza;
 
 /**
- * Factory per la generazione di dati di test per il modello Assenze.
+ * Factory per la generazione di dati di test per il modello Assenza.
  *
  * Gestisce la creazione di codici assenze per le progressioni di carriera,
  * includendo tipi di assenza, codici identificativi e descrizioni.
  *
- * @extends Factory<Assenze>
+ * @extends Factory<Assenza>
  */
-class AssenzeFactory extends Factory
+class AssenzaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Assenze>
+     * @var class-string<Assenza>
      */
-    protected $model = Assenze::class;
+    protected $model = Assenza::class;
 
     /**
      * Define the model's default state.

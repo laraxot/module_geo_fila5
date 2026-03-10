@@ -46,17 +46,18 @@ use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
  * @property-read Collection<int, \Modules\Progressioni\Models\CriteriOption> $criteriOptions
  * @property-read int|null $criteri_options_count
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $schede
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
  * @property-read int|null $schede_count
  * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @method static Builder<static>|CriteriEsclusione whereIsEnabled($value)
+ * @property-read Collection $scheda
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusioneContract
 {
     protected $connection = 'progressione';
 
-    public function getSchedeAttribute(): Collection
+    public function getSchedaAttribute(): Collection
     {
         return $this->schede()->get();
     }
@@ -64,7 +65,7 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
     /**
      * Get the schede collection.
      */
-    public function getSchedeCollection(): Collection
+    public function getSchedaCollection(): Collection
     {
         return $this->schede()->get();
     }

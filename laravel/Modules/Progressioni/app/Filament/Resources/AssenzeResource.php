@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
-use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\CreateAssenze;
-use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\EditAssenze;
-use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\ListAssenzes;
-use Modules\Progressioni\Models\Assenze;
+use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\CreateAssenza;
+use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\EditAssenza;
+use Modules\Progressioni\Filament\Resources\AssenzeResource\Pages\ListAssenza;
+use Modules\Progressioni\Models\Assenza;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
 
 class AssenzeResource extends XotBaseResource
 {
-    protected static ?string $model = Assenze::class;
+    protected static ?string $model = Assenza::class;
 
     #[Override]
     /**
@@ -37,9 +37,9 @@ class AssenzeResource extends XotBaseResource
     public static function getPages(): array
     {
         return [
-            'index' => ListAssenzes::route('/'),
-            'create' => CreateAssenze::route('/create'),
-            'edit' => EditAssenze::route('/{record}/edit'),
+            'index' => ListAssenza::route('/'),
+            'create' => CreateAssenza::route('/create'),
+            'edit' => EditAssenza::route('/{record}/edit'),
         ];
     }
 }
