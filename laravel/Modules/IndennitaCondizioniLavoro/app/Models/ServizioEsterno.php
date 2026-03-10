@@ -30,7 +30,6 @@ use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
-use Modules\Trasferte\Models\FuoriSedeDip;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno.

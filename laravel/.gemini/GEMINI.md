@@ -40,6 +40,12 @@
 - **NON hardcodare le traduzioni** - usare sempre i file di lingua
 - **Usare i middleware** forniti dal pacchetto per le routes localizzate
 
+### 1.6 Database e Connessioni
+- **NON inserire MAI connessioni specifiche di un modulo in `laravel/config/database.php`**
+- Le connessioni vengono registrate dinamicamente da `TenantServiceProvider`
+- Ogni modulo usa una connessione con il proprio nome (es. `mobilita_volontaria`, `performance`)
+- Per database separati, configurare `laravel/config/local/<tenant>/database.php` o variabili `.env` (es. `DB_DATABASE_USER`)
+
 ---
 
 ## 2. MEMORIES

@@ -58,7 +58,9 @@ Modules/Ptv/tests/
 - [x] Translation files (IT, EN, DE)
 
 ### 🔄 In Progress
-- [ ] PHPStan Level 10 compliance
+- [x] PHPStan Level 10 compliance
+- [x] Resolved Cross-Module relationship leaks (Base Model + Local Wrapper pattern)
+- [x] Implemented Modular Database Connection rules (No hardcoding in root config)
 - [ ] Test coverage improvement
 - [ ] Advanced filtering and reporting
 
