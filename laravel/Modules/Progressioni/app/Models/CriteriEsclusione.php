@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
@@ -46,28 +47,30 @@ use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
  * @property-read Collection<int, \Modules\Progressioni\Models\CriteriOption> $criteriOptions
  * @property-read int|null $criteri_options_count
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
- * @property-read int|null $schede_count
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $scheda
+ * @property-read int|null $scheda_count
  * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @method static Builder<static>|CriteriEsclusione whereIsEnabled($value)
- * @property-read Collection $scheda
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusioneContract
 {
     protected $connection = 'progressione';
 
-    public function getSchedaAttribute(): Collection
+    /**
+     * Get the related scheda.
+     */
+    public function scheda(): HasMany
     {
-        return $this->schede()->get();
+        return $this->hasMany(Scheda::class, 'anno', 'anno');
     }
 
     /**
-     * Get the schede collection.
+     * Get the scheda collection.
      */
     public function getSchedaCollection(): Collection
     {
-        return $this->schede()->get();
+        return $this->scheda()->get();
     }
 
     public function criteriOptionsCollection(): \Illuminate\Support\Collection

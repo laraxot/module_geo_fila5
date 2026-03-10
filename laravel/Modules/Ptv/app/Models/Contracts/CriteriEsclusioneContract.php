@@ -6,7 +6,6 @@ namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
@@ -47,7 +46,7 @@ interface CriteriEsclusioneContract
     /**
      * Ottiene la relazione HasMany delle schede associate al criterio.
      */
-    public function schede(): HasMany;
+    public function scheda(): HasMany;
 
     /**
      * Ottiene la collezione iterabile delle schede per la verifica criteri.

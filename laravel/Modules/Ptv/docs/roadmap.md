@@ -61,6 +61,7 @@ Modules/Ptv/tests/
 - [x] PHPStan Level 10 compliance
 - [x] Resolved Cross-Module relationship leaks (Base Model + Local Wrapper pattern)
 - [x] Implemented Modular Database Connection rules (No hardcoding in root config)
+- [x] Enforced Dynamic Model Resolution Pattern for relationships <!-- id: 125 -->
 - [ ] Test coverage improvement
 - [ ] Advanced filtering and reporting
 

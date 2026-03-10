@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Modules\Ptv\Models\Valutatore as PtvValutatore;
 use Modules\Sigma\Models\Repart;
 use Override;
@@ -42,8 +43,8 @@ use Webmozart\Assert\Assert;
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
- * @property-read int|null $schede_count
+ * @property-read Collection<int, Scheda> $scheda
+ * @property-read int|null $scheda_count
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
  * @method static Builder|Valutatore query()
@@ -79,9 +80,21 @@ class Valutatore extends PtvValutatore
 {
     protected $connection = 'progressione';
 
+    public function scheda(): HasMany
+    {
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        Assert::classExists($schedaClass);
+
+        return $this->hasMany($schedaClass, 'valutatore_id', 'id');
+    }
+
     public function benificiariProgressione(): HasMany
     {
-        return $this->schede()->where('benificiario_progressione', 1);
+        return $this->scheda()->where('benificiario_progressione', 1);
     }
 
     /**

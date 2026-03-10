@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Modules\Progressioni\Database\Factories\StabiDirigenteFactory;
 use Modules\Ptv\Models\StabiDirigente as PtvStabiDirigenteModel;
 use Modules\Sigma\Models\Repart;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Progressioni\Models\StabiDirigente.
@@ -40,8 +42,8 @@ use Modules\Sigma\Models\Repart;
  * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Repart|null $repart
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
- * @property-read int|null $schede_count
+ * @property-read Collection<int, Scheda> $scheda
+ * @property-read int|null $scheda_count
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
@@ -86,14 +88,21 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return (float) $res;
     }
 
-    public function schede(): HasMany
+    public function scheda(): HasMany
     {
-        return $this->hasMany(Scheda::class, 'valutatore_id', 'id');
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        Assert::classExists($schedaClass);
+
+        return $this->hasMany($schedaClass, 'valutatore_id', 'id');
     }
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->schede()
+        return $this->scheda()
             ->where('benificiario_progressione', 1);
     }
 }

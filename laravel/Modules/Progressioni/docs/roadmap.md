@@ -13,6 +13,7 @@
 - [x] Integration with Rating module
 - [x] Basic CRUD operations
 - [x] Aligned model naming to Laravel standards (Schede -> Scheda)
+- [x] Enforced Dynamic Model Resolution Pattern for relationships <!-- id: 126 -->
 
 ### 🔄 In Progress
 - [ ] PHPStan Level 10 compliance

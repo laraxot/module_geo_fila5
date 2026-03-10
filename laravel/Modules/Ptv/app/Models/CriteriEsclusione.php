@@ -13,9 +13,10 @@ use Illuminate\Support\Str;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
 use Modules\Progressioni\Models\Scheda;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
+use Webmozart\Assert\Assert;
 
 /**
- * class Modules\Progressioni\Models\CriteriEsclusione.
+ * class Modules\Ptv\Models\CriteriEsclusione.
  *
  * @property int $id
  * @property string|null $name
@@ -48,8 +49,8 @@ use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
  * @property int|null $criteri_options_count
  * @property Profile|null $updater
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read EloquentCollection<int, Scheda> $schede
- * @property-read int|null $schede_count
+ * @property-read EloquentCollection<int, Scheda> $scheda
+ * @property-read int|null $scheda_count
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
@@ -60,18 +61,21 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
 
     // -------------------------
 
-    public function schede(): HasMany
+    public function scheda(): HasMany
     {
-        $class = Str::of(static::class)->beforeLast('\\')->append('\\Scheda')->toString();
-        $modelClass = class_exists($class) ? $class : Scheda::class;
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
 
-        /** @phpstan-ignore-next-line */
-        return $this->hasMany($modelClass, 'anno', 'anno');
+        Assert::classExists($schedaClass);
+
+        return $this->hasMany($schedaClass, 'anno', 'anno');
     }
 
     public function getSchedaCollection(): EloquentCollection
     {
-        return $this->schede()->get();
+        return $this->scheda()->get();
     }
 
     public function criteriOptions(): HasMany
