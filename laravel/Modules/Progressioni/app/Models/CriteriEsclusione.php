@@ -11,6 +11,8 @@ use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
+use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Progressioni\Models\CriteriEsclusione.
@@ -47,8 +49,8 @@ use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
  * @property-read Collection<int, \Modules\Progressioni\Models\CriteriOption> $criteriOptions
  * @property-read int|null $criteri_options_count
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
+ * @property-read int|null $schede_count
  * @property-read \Modules\Ptv\Models\Profile|null $updater
  * @method static Builder<static>|CriteriEsclusione whereIsEnabled($value)
  * @mixin \Eloquent
@@ -60,9 +62,17 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
     /**
      * Get the related scheda.
      */
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
-        return $this->hasMany(Scheda::class, 'anno', 'anno');
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
+
+        return $this->hasMany($modelClass, 'anno', 'anno');
     }
 
     /**
@@ -70,7 +80,7 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
      */
     public function getSchedaCollection(): Collection
     {
-        return $this->scheda()->get();
+        return $this->schede()->get();
     }
 
     public function criteriOptionsCollection(): \Illuminate\Support\Collection

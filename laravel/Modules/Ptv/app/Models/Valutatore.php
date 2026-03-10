@@ -43,8 +43,8 @@ use Webmozart\Assert\Assert;
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read Collection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @method static mixed factory($count = null, $state = [])
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
@@ -125,7 +125,7 @@ class Valutatore extends BaseModel
         return $this->hasOne(Repart::class, 'stabi', 'stabi')->where('repar', $this->repar)->where('ente', 90);
     }
 
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -145,7 +145,7 @@ class Valutatore extends BaseModel
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->scheda()->where('benificiario_progressione', 1);
+        return $this->schede()->where('benificiario_progressione', 1);
     }
 
     // --- mutators --

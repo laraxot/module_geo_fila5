@@ -46,13 +46,17 @@
 - Le connessioni vengono registrate dinamicamente da `TenantServiceProvider`
 - Ogni modulo usa una connessione con il proprio nome (es. `mobilita_volontaria`, `performance`)
 - Per database separati, configurare `laravel/config/local/<tenant>/database.php` o variabili `.env` (es. `DB_DATABASE_USER`)
-- **Dynamic Model Resolution (Rule #13)**: Per mantenere l'agnosticismo dei moduli e gestire correttamente i namespace, le relazioni tra modelli DEVONO essere definite dinamicamente (ove possibile) invece di hardcodare il namespace. Usare `Webmozart\Assert\Assert::classExists()` per garantire la validità del namespace generato.
+- **Dynamic Model Resolution (Rule #13)**: Per mantenere l'agnosticismo dei moduli e gestire correttamente i namespace, le relazioni tra modelli DEVONO essere definite dinamicamente (ove possibile) invece di hardcodare il namespace. Usare `Webmozart\Assert\Assert::classExists()` con un fallback al modello base e Yoda conditions per i confronti null.
   ```php
   $schedaClass = Str::of(static::class)->beforeLast('\\')->append('\\Scheda')->toString();
-  Assert::classExists($schedaClass);
-  return $this->hasMany($schedaClass, ...);
+  $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+  Assert::classExists($modelClass);
+  return $this->hasMany($modelClass, ...);
   ```
-  Questo assicura che il modello cercato sia quello locale al modulo corrente e che esista effettivamente.
+  Questo assicura che il modello cercato sia quello locale al modulo corrente o il base, e che esista effettivamente.
+- **Nomenclatura Relazioni (Rule #14)**: I nomi dei metodi delle relazioni DEVONO riflettere la pluralità della relazione:
+    - **Singolare** per `HasOne` o `BelongsTo` (es. `user()`, `scheda()`)
+    - **Plurale** per `HasMany` o `BelongsToMany` (es. `users()`, `schede()`)
 
 ---
 

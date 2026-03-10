@@ -46,7 +46,7 @@ interface CriteriEsclusioneContract
     /**
      * Ottiene la relazione HasMany delle schede associate al criterio.
      */
-    public function scheda(): HasMany;
+    public function schede(): HasMany;
 
     /**
      * Ottiene la collezione iterabile delle schede per la verifica criteri.

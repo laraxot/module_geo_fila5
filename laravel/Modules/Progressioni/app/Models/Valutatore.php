@@ -43,8 +43,8 @@ use Webmozart\Assert\Assert;
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read Collection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
  * @method static Builder|Valutatore query()
@@ -80,7 +80,7 @@ class Valutatore extends PtvValutatore
 {
     protected $connection = 'progressione';
 
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -94,7 +94,7 @@ class Valutatore extends PtvValutatore
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->scheda()->where('benificiario_progressione', 1);
+        return $this->schede()->where('benificiario_progressione', 1);
     }
 
     /**

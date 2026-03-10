@@ -63,8 +63,8 @@ use Webmozart\Assert\Assert;
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @mixin \Eloquent
  */
 class StabiDirigente extends BaseModel
@@ -99,7 +99,7 @@ class StabiDirigente extends BaseModel
             ->where('ente', 90);
     }
 
-    public function scheda(): HasMany
+    public function schedas(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -114,7 +114,7 @@ class StabiDirigente extends BaseModel
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->scheda()->where('benificiario_progressione', 1);
+        return $this->schedas()->where('benificiario_progressione', 1);
     }
 
     // --- mutators --

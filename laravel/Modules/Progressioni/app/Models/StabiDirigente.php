@@ -42,8 +42,8 @@ use Webmozart\Assert\Assert;
  * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Repart|null $repart
- * @property-read Collection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read Collection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
@@ -88,7 +88,7 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return (float) $res;
     }
 
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -102,7 +102,7 @@ class StabiDirigente extends PtvStabiDirigenteModel
 
     public function benificiariProgressione(): HasMany
     {
-        return $this->scheda()
+        return $this->schede()
             ->where('benificiario_progressione', 1);
     }
 }

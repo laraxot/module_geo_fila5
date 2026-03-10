@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
+use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Progressioni\Models\MaxCatecoPosfunAnno.
@@ -25,8 +27,8 @@ use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
- * @property-read Collection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read Collection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @method static MaxCatecoPosfunAnnoFactory factory($count = null, $state = [])
  * @method static Builder|MaxCatecoPosfunAnno newModelQuery()
  * @method static Builder|MaxCatecoPosfunAnno newQuery()
@@ -59,10 +61,18 @@ class MaxCatecoPosfunAnno extends BaseModel
     protected $fillable = ['cateco', 'posfun', 'anno', 'max_gg_tot_pond', 'aventi_diritto', 'aventi_diritto_perc', 'aventi_diritto_eff'];
 
     // ------- relationship -------
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
+
         // Scheda::updateVincitori(['anno'=>$this->anno]);
-        return $this->hasMany(Scheda::class, 'categoria_ecoval', 'cateco')
+        return $this->hasMany($modelClass, 'categoria_ecoval', 'cateco')
             ->where('posfunval', $this->posfun)
             ->where('anno', $this->anno);
     }
@@ -84,7 +94,7 @@ class MaxCatecoPosfunAnno extends BaseModel
     // -------- mututators ----
     public function getAventiDirittoAttribute(?int $value): int
     {
-        $rows = $this->scheda()->select('matr')->where('ha_diritto', 1)->distinct();
+        $rows = $this->schede()->select('matr')->where('ha_diritto', 1)->distinct();
         /*
         if($rows->count()>48){
 

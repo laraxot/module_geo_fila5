@@ -49,8 +49,8 @@ use Webmozart\Assert\Assert;
  * @property int|null $criteri_options_count
  * @property Profile|null $updater
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read EloquentCollection<int, Scheda> $scheda
- * @property-read int|null $scheda_count
+ * @property-read EloquentCollection<int, Scheda> $schede
+ * @property-read int|null $schede_count
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
@@ -61,7 +61,7 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
 
     // -------------------------
 
-    public function scheda(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -76,7 +76,7 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
 
     public function getSchedaCollection(): EloquentCollection
     {
-        return $this->scheda()->get();
+        return $this->schede()->get();
     }
 
     public function criteriOptions(): HasMany
