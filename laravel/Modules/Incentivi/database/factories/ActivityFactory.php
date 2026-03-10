@@ -6,19 +6,21 @@ namespace Modules\Incentivi\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Incentivi\Models\Activity;
+use Modules\Incentivi\Models\Project;
 
 class ActivityFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = Activity::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'nome' => 'Activity ' . rand(1, 1000),
+            'tipo' => 'Tipo Activity',
+            'quota_percentuale' => 10,
+            'importo' => 500.00,
+            'anno_competenza' => '2024',
+            'project_id' => Project::factory(),
+        ];
     }
 }

@@ -15,13 +15,13 @@ These tests establish the foundation for all other tests and are required before
 
 | ID | Category | Task | Status | Est. Time | Link |
 |---|----------|------|--------|-----------|------|
-| T001 | Models | Activity Model Unit Tests | pending | 4h | #58 |
-| T002 | Models | Employee Model Unit Tests | pending | 4h | #58 |
-| T003 | Models | Project Model Unit Tests | pending | 3h | #58 |
+| T001 | Models | Activity Model Unit Tests | completed | 4h | #58 |
+| T002 | Models | Employee Model Unit Tests | completed | 4h | #58 |
+| T003 | Models | Project Model Unit Tests | completed | 3h | #58 |
 | T004 | Models | Settlement Model Unit Tests | pending | 3h | #58 |
-| T005 | Actions | SpareImportoTotaleAction Tests | pending | 3h | #59 |
-| T006 | Actions | UpdateActivitiesEmployeesAction Tests | pending | 4h | #59 |
-| T007 | Actions | UpdateProjectActivitiesAction Tests | pending | 4h | #59 |
+| T005 | Actions | SpareImportoTotaleAction Tests | completed | 3h | #59 |
+| T006 | Actions | UpdateActivitiesEmployeesAction Tests | completed | 4h | #59 |
+| T007 | Actions | UpdateProjectActivitiesAction Tests | completed | 4h | #59 |
 
 **Dependencies**: None (foundational layer)
 **Total Est. Time**: 29 hours
