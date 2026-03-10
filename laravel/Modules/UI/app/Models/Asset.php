@@ -23,18 +23,21 @@ use Modules\UI\Database\Factories\AssetFactory;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Theme       $theme
+ *
  * @method static AssetFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Asset newModelQuery()
  * @method static Builder<static>|Asset newQuery()
  * @method static Builder<static>|Asset query()
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @property string $disk
- * @property string|null $extension
- * @property int|null $size
- * @property string|null $updated_by
- * @property string|null $created_by
+ *
+ * @property \Modules\Ptv\Models\Profile|null $creator
+ * @property \Modules\Ptv\Models\Profile|null $deleter
+ * @property \Modules\Ptv\Models\Profile|null $updater
+ * @property string                           $disk
+ * @property string|null                      $extension
+ * @property int|null                         $size
+ * @property string|null                      $updated_by
+ * @property string|null                      $created_by
+ *
  * @method static Builder<static>|Asset whereCreatedAt($value)
  * @method static Builder<static>|Asset whereCreatedBy($value)
  * @method static Builder<static>|Asset whereDisk($value)
@@ -51,6 +54,7 @@ use Modules\UI\Database\Factories\AssetFactory;
  * @method static Builder<static>|Asset whereType($value)
  * @method static Builder<static>|Asset whereUpdatedAt($value)
  * @method static Builder<static>|Asset whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class Asset extends BaseModel

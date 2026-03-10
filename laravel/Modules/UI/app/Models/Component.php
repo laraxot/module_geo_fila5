@@ -27,21 +27,24 @@ use Modules\UI\Database\Factories\ComponentFactory;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Theme       $theme
+ *
  * @method static ComponentFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Component newModelQuery()
  * @method static Builder<static>|Component newQuery()
  * @method static Builder<static>|Component query()
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
- * @property string|null $type
- * @property string|null $config
- * @property bool $supports_lazy_loading
- * @property float|null $lazy_loading_threshold
- * @property string|null $cache_strategy
- * @property int|null $cache_duration
- * @property string|null $updated_by
- * @property string|null $created_by
+ *
+ * @property \Modules\Ptv\Models\Profile|null $creator
+ * @property \Modules\Ptv\Models\Profile|null $deleter
+ * @property \Modules\Ptv\Models\Profile|null $updater
+ * @property string|null                      $type
+ * @property string|null                      $config
+ * @property bool                             $supports_lazy_loading
+ * @property float|null                       $lazy_loading_threshold
+ * @property string|null                      $cache_strategy
+ * @property int|null                         $cache_duration
+ * @property string|null                      $updated_by
+ * @property string|null                      $created_by
+ *
  * @method static Builder<static>|Component whereCacheDuration($value)
  * @method static Builder<static>|Component whereCacheStrategy($value)
  * @method static Builder<static>|Component whereCacheTtl($value)
@@ -65,6 +68,7 @@ use Modules\UI\Database\Factories\ComponentFactory;
  * @method static Builder<static>|Component whereValidationRules($value)
  * @method static Builder<static>|Component whereVersion($value)
  * @method static Builder<static>|Component whereViewPath($value)
+ *
  * @mixin \Eloquent
  */
 class Component extends BaseModel
