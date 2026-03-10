@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Notify\Tests\Unit\Models;
+
 uses(\Modules\Notify\Tests\TestCase::class);
 
 use Modules\Notify\Models\BaseModel;
@@ -9,7 +11,7 @@ use Modules\Notify\Models\Contact;
 
 describe('Contact Business Logic', function () {
     test('contact extends base model', function () {
-        expect(is_subclass_of(Contact::class, BaseModel::class))->toBeTrue();
+        expect(Contact::class)->toBeSubclassOf(BaseModel::class);
     });
 
     test('contact can store polymorphic model relationships', function () {

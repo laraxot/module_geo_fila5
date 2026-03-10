@@ -13,31 +13,14 @@ use Modules\Xot\Providers\XotServiceProvider;
 /**
  * Class XotBaseTestCase.
  *
- * Base test case for all Laraxot modules.
- * Centralizes application bootstrapping, common bindings, and test helpers.
- * DRY + KISS + Laraxot: un solo posto per setup, mai estendere Illuminate\Foundation\Testing\TestCase.
+ * Base test case for all modules.
+ * Note: DatabaseTransactions is already included here to be shared by all tests.
  */
 abstract class XotBaseTestCase extends BaseTestCase
 {
     use CreatesApplication;
-    use DatabaseTransactions;
 
     /**
-     * Shared transactional connections for module tests.
-     *
-     * @var array<int, string>
-     */
-    protected array $connectionsToTransact = ['mysql', 'activity', 'user'];
-
-    /**
-     * Flag to ensure migrations run only once per test process.
-     */
-    protected static bool $migrated = false;
-
-    /**
-     * Package providers for module tests (Orchestra Testbench compatibility).
-     * I moduli che usano parent::getPackageProviders() ricevono XotServiceProvider.
-     *
      * @return array<int, class-string<\Illuminate\Support\ServiceProvider>>
      */
     protected function getPackageProviders($app): array
@@ -55,8 +38,6 @@ abstract class XotBaseTestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->runModuleMigrations();
-
         // Bind translator only if not already resolved (needed for some Filament tests).
         // This ensures the application is in a consistent state for unit tests.
         if (! $this->app->bound('translator')) {
@@ -66,18 +47,6 @@ abstract class XotBaseTestCase extends BaseTestCase
                     'en'
                 );
             });
-        }
-    }
-
-    /**
-     * Run module-specific migrations.
-     * Centralized to run ONCE per test execution to prepare .env.testing databases.
-     */
-    protected function runModuleMigrations(): void
-    {
-        if (! static::$migrated) {
-            $this->artisan('migrate', ['--env' => 'testing', '--force' => true]);
-            static::$migrated = true;
         }
     }
 
@@ -133,5 +102,35 @@ abstract class XotBaseTestCase extends BaseTestCase
         $userClass = static::getUserClass();
 
         return $userClass::factory()->create($attributes);
+    }
+
+    /**
+     * Create a test tenant with optional attributes.
+     *
+     * @param array<string, mixed> $attributes
+     */
+    protected static function createTestTenant(array $attributes = []): \Modules\Tenant\Models\Tenant
+    {
+        return \Modules\Tenant\Models\Tenant::factory()->create($attributes);
+    }
+
+    /**
+     * Create a test module with optional attributes.
+     *
+     * @param array<string, mixed> $attributes
+     */
+    protected static function createTestModule(array $attributes = []): \Modules\Xot\Models\Module
+    {
+        return \Modules\Xot\Models\Module::factory()->create($attributes);
+    }
+
+    /**
+     * Create a test asset with optional attributes.
+     *
+     * @param array<string, mixed> $attributes
+     */
+    protected static function createTestAsset(array $attributes = []): \Modules\UI\Models\Asset
+    {
+        return \Modules\UI\Models\Asset::factory()->create($attributes);
     }
 }

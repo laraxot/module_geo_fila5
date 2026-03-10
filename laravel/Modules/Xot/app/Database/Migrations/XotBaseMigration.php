@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Database\Migrations;
 
+use Closure;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Migrations\Migration as LaravelMigration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
+use ReflectionClass;
 use Webmozart\Assert\Assert;
 
 /**
@@ -37,7 +40,7 @@ abstract class XotBaseMigration extends LaravelMigration
      */
     public function getModelClass(): string
     {
-        if (null !== $this->model_class) {
+        if ($this->model_class !== null) {
             return $this->model_class;
         }
 
@@ -53,12 +56,12 @@ abstract class XotBaseMigration extends LaravelMigration
                 ->toString();
         }
 
-        $reflectionClass = new \ReflectionClass($this);
+        $reflectionClass = new ReflectionClass($this);
         $filename = $reflectionClass->getFilename();
         $mod_path = Module::getPath();
 
         // Controllo che $filename sia valido prima di passarlo a Str::of()
-        $mod_name = false !== $filename ? Str::of($filename)->after($mod_path)->explode(\DIRECTORY_SEPARATOR)[1] : ''; // Fallback nel caso in cui $filename non sia valido.
+        $mod_name = $filename !== false ? Str::of($filename)->after($mod_path)->explode(\DIRECTORY_SEPARATOR)[1] : ''; // Fallback nel caso in cui $filename non sia valido.
 
         $this->model_class = Str::of('\Modules\\'.$mod_name.'\Models\\'.$name)
             ->replace('/', \DIRECTORY_SEPARATOR)
@@ -99,9 +102,9 @@ abstract class XotBaseMigration extends LaravelMigration
     /**
      * Get the table indexes using Doctrine's schema manager.
      *
-     * @throws \Doctrine\DBAL\Exception
-     *
      * @return array<\Doctrine\DBAL\Schema\Index>
+     *
+     * @throws \Doctrine\DBAL\Exception
      */
     // public function getTableIndexes(): array
     // {
@@ -111,7 +114,7 @@ abstract class XotBaseMigration extends LaravelMigration
     /**
      * Add common fields to the table.
      *
-     * @param Blueprint $table The table blueprint
+     * @param  Blueprint  $table  The table blueprint
      */
     public function addCommonFields(Blueprint $table): void
     {
@@ -141,7 +144,7 @@ abstract class XotBaseMigration extends LaravelMigration
     {
         try {
             return $this->getConn()->getColumnType($this->getTable(), $column);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return 'not-exists';
         }
     }
@@ -232,7 +235,7 @@ abstract class XotBaseMigration extends LaravelMigration
         });
     }
 
-    public function tableCreate(\Closure $next, ?string $table = null): void
+    public function tableCreate(Closure $next, ?string $table = null): void
     {
         $tableName = $table ?? $this->getTable();
         if (! $this->tableExists($tableName)) {
@@ -240,7 +243,7 @@ abstract class XotBaseMigration extends LaravelMigration
         }
     }
 
-    public function tableUpdate(\Closure $next, ?string $table = null): void
+    public function tableUpdate(Closure $next, ?string $table = null): void
     {
         $tableName = $table ?? $this->getTable();
         $this->getConn()->table($tableName, $next);
@@ -252,7 +255,7 @@ abstract class XotBaseMigration extends LaravelMigration
         $userClass = $xot->getUserClass();
 
         $table->timestamps();
-        // $table->foreignIdFor($userClass, 'user_id')->nullable();
+        $table->foreignIdFor($userClass, 'user_id')->nullable();
         $table->foreignIdFor($userClass, 'updated_by')->nullable();
         $table->foreignIdFor($userClass, 'created_by')->nullable();
 
@@ -305,11 +308,11 @@ abstract class XotBaseMigration extends LaravelMigration
         $methodName = 'updateUserKey'.Str::studly($this->model->getKeyType());
         $this->{$methodName}($table);
 
-        if ($this->hasColumn('model_id') && 'bigint' === $this->getColumnType('model_id')) {
+        if ($this->hasColumn('model_id') && $this->getColumnType('model_id') === 'bigint') {
             $table->string('model_id', 36)->index()->change();
         }
 
-        if ($this->hasColumn('team_id') && 'bigint' === $this->getColumnType('team_id')) {
+        if ($this->hasColumn('team_id') && $this->getColumnType('team_id') === 'bigint') {
             $table->uuid('team_id')->nullable()->change();
         }
     }
@@ -320,11 +323,11 @@ abstract class XotBaseMigration extends LaravelMigration
             $table->uuid('id')->primary()->first();
         }
 
-        if ($this->hasColumn('id') && 'bigint' === $this->getColumnType('id')) {
+        if ($this->hasColumn('id') && $this->getColumnType('id') === 'bigint') {
             $table->uuid('id')->change();
         }
 
-        if ($this->hasColumn('user_id') && 'bigint' === $this->getColumnType('user_id')) {
+        if ($this->hasColumn('user_id') && $this->getColumnType('user_id') === 'bigint') {
             $table->uuid('user_id')->change();
         }
     }
@@ -381,14 +384,14 @@ abstract class XotBaseMigration extends LaravelMigration
      * Convert table id from UUID to bigint, adding uuid column.
      * Use when migrating legacy installations with uuid primary keys.
      *
-     * @param \Closure(Blueprint): void                                                    $createNewTableSchema Schema for the new table (id bigint + uuid + data columns)
-     * @param list<string>                                                                 $dataColumns          Column names to copy (excluding id, uuid)
-     * @param array{pivot_table?: string, pivot_fk?: string, pivot_post_update?: \Closure} $options              Optional pivot table config
+     * @param  Closure(Blueprint): void  $createNewTableSchema  Schema for the new table (id bigint + uuid + data columns)
+     * @param  list<string>  $dataColumns  Column names to copy (excluding id, uuid)
+     * @param  array{pivot_table?: string, pivot_fk?: string, pivot_post_update?: Closure}  $options  Optional pivot table config
      */
     protected function convertIdFromUuidToBigintIfNeeded(
-        \Closure $createNewTableSchema,
+        Closure $createNewTableSchema,
         array $dataColumns,
-        array $options = [],
+        array $options = []
     ): void {
         $table = $this->getTable();
 
@@ -435,15 +438,15 @@ abstract class XotBaseMigration extends LaravelMigration
     protected array $uuidToBigintIdMapping = [];
 
     /**
-     * @param \Closure(Blueprint): void                                                    $createNewTableSchema
-     * @param list<string>                                                                 $dataColumns
-     * @param array{pivot_table?: string, pivot_fk?: string, pivot_post_update?: \Closure} $options
+     * @param  Closure(Blueprint): void  $createNewTableSchema
+     * @param  list<string>  $dataColumns
+     * @param  array{pivot_table?: string, pivot_fk?: string, pivot_post_update?: Closure}  $options
      */
     protected function performUuidToBigintConversion(
         string $table,
-        \Closure $createNewTableSchema,
+        Closure $createNewTableSchema,
         array $dataColumns,
-        array $options,
+        array $options
     ): void {
         $conn = DB::connection($this->model->getConnectionName());
 
@@ -452,7 +455,7 @@ abstract class XotBaseMigration extends LaravelMigration
                 $blueprint->uuid('uuid')->nullable()->after('id');
             }, $table);
             $conn->table($table)->update(['uuid' => DB::raw('id')]);
-            if ('mysql' === $conn->getDriverName()) {
+            if ($conn->getDriverName() === 'mysql') {
                 $conn->statement('ALTER TABLE '.$table.' MODIFY uuid CHAR(36) NOT NULL');
             }
         }
@@ -463,10 +466,10 @@ abstract class XotBaseMigration extends LaravelMigration
 
         $pivotTable = $options['pivot_table'] ?? null;
         $pivotFk = $options['pivot_fk'] ?? null;
-        if (null !== $pivotTable && null !== $pivotFk && $this->hasTable($pivotTable)) {
+        if ($pivotTable !== null && $pivotFk !== null && $this->hasTable($pivotTable)) {
             $this->updatePivotTableFkFromUuidToBigint($table, $pivotTable, $pivotFk);
             $postUpdate = $options['pivot_post_update'] ?? null;
-            if ($postUpdate instanceof \Closure) {
+            if ($postUpdate instanceof Closure) {
                 $postUpdate($conn);
             }
         }
@@ -476,7 +479,7 @@ abstract class XotBaseMigration extends LaravelMigration
     }
 
     /**
-     * @param list<string> $dataColumns
+     * @param  list<string>  $dataColumns
      */
     protected function copyDataWithUuidToBigintMapping(string $oldTable, string $newTable, array $dataColumns): void
     {
@@ -495,7 +498,7 @@ abstract class XotBaseMigration extends LaravelMigration
             }
             $this->uuidToBigintIdMapping[(string) $row->id] = $newId;
             $conn->table($newTable)->insert($data);
-            ++$newId;
+            $newId++;
         }
     }
 
@@ -507,14 +510,14 @@ abstract class XotBaseMigration extends LaravelMigration
         foreach ($rows as $p) {
             $p = (object) $p;
             $newId = $this->uuidToBigintIdMapping[(string) $p->id] ?? null;
-            if (null !== $newId) {
+            if ($newId !== null) {
                 $conn->table($pivotTable)
                     ->where($fkColumn, $p->id)
                     ->update([$fkColumn => (string) $newId]);
             }
         }
 
-        if ('mysql' === $conn->getDriverName()) {
+        if ($conn->getDriverName() === 'mysql') {
             $db = $conn->getDatabaseName();
             $constraint = $conn->selectOne(
                 "SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS 
@@ -525,7 +528,7 @@ abstract class XotBaseMigration extends LaravelMigration
             $constraintName = is_object($constraint) && isset($constraint->CONSTRAINT_NAME)
                 ? (string) $constraint->CONSTRAINT_NAME
                 : null;
-            if (null !== $constraintName) {
+            if ($constraintName !== null) {
                 $conn->statement('ALTER TABLE '.$pivotTable.' DROP INDEX '.$constraintName);
             }
             $conn->statement('ALTER TABLE '.$pivotTable.' MODIFY '.$fkColumn.' BIGINT UNSIGNED NULL');

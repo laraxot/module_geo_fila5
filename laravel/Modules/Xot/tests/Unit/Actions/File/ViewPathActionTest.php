@@ -7,11 +7,8 @@ namespace Modules\Xot\Tests\Unit\Actions\File;
 use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Actions\File\GetViewNameSpacePathAction;
 use Modules\Xot\Actions\File\ViewPathAction;
-use Modules\Xot\Tests\TestCase;
 
-uses(TestCase::class);
-
-it('calculates view path correctly', function (): void {
+it('calculates view path correctly', function (): void {)
     $this->mock(GetViewNameSpacePathAction::class)
         ->shouldReceive('execute')
         ->once()

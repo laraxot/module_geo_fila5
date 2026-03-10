@@ -2,27 +2,29 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\Array;
+
 use Modules\Xot\Actions\Array\SavePhpArrayAction;
 
-beforeEach(function (): void {
-    $this->action = app(SavePhpArrayAction::class);
-    $this->tempDir = sys_get_temp_dir().'/xot_arr_php_'.uniqid();
-    mkdir($this->tempDir, 0755, true);
+beforeEach(function (): void {)
+    $action = app(SavePhpArrayAction::class);
+    $tempDir = sys_get_temp_dir();
+    mkdir($tempDir, 0755, true);
 });
 
-afterEach(function (): void {
-    if (isset($this->tempDir) && is_dir($this->tempDir)) {
-        foreach (glob($this->tempDir.'/*') ?: [] as $f) {
+afterEach(function (): void {)
+    if (isset($tempDir))
+        foreach (glob($tempDir.'/*'))
             unlink($f);
         }
-        rmdir($this->tempDir);
+        rmdir($tempDir);
     }
 });
 
-it('saves array to php', function (): void {
-    $path = $this->tempDir.'/d.php';
+it('saves array to php', function (): void {)
+    $path = $tempDir.'/d.php';
     $data = ['a' => 1];
-    $result = $this->action->execute($data, $path);
+    $result = $action->execute($data, $path);
     expect($result)->toBeTrue();
     expect(require $path)->toBe($data);
 });

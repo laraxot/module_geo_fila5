@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Notify\Tests\Unit\Filament\Resources;
+
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\DateTimePicker;
@@ -31,32 +33,42 @@ use Modules\Notify\Tests\TestCase;
 
 uses(TestCase::class);
 
-class EditContactTestProxy extends EditContact
+function makeEditContactTestProxy(): EditContact
 {
-    public function exposedHeaderActions(): array
+    return new class extends EditContact
     {
-        return $this->getHeaderActions();
-    }
+        public function exposedHeaderActions(): array
+        {
+            return $this->getHeaderActions();
+        }
+    };
 }
 
-class PreviewMailTemplateTestProxy extends PreviewMailTemplate
+function makePreviewMailTemplateTestProxy(): PreviewMailTemplate
 {
-    public function exposedHeaderActions(): array
+    return new class extends PreviewMailTemplate
     {
-        return $this->getHeaderActions();
-    }
+        public function exposedHeaderActions(): array
+        {
+            return $this->getHeaderActions();
+        }
+    };
 }
 
-class ViewNotificationTestProxy extends ViewNotification
+function makeViewNotificationTestProxy(): ViewNotification
 {
-    public function exposedInfolistSchema(): array
+    return new class extends ViewNotification
     {
-        return $this->getInfolistSchema();
-    }
+        public function exposedInfolistSchema(): array
+        {
+            return $this->getInfolistSchema();
+        }
+    };
 }
 
-class PreviewNotificationTemplateTestProxy extends PreviewNotificationTemplate
+function makePreviewNotificationTemplateTestProxy(): PreviewNotificationTemplate
 {
+    return new class extends PreviewNotificationTemplate {};
 }
 
 test('contact resource form schema exposes expected fields', function (): void {
@@ -69,7 +81,7 @@ test('contact resource form schema exposes expected fields', function (): void {
 });
 
 test('edit contact page exposes delete header action', function (): void {
-    $page = new EditContactTestProxy();
+    $page = makeEditContactTestProxy();
     $actions = $page->exposedHeaderActions();
 
     expect($actions)->toBeArray()
@@ -78,7 +90,7 @@ test('edit contact page exposes delete header action', function (): void {
 });
 
 test('list contacts page exposes expected table columns and filters', function (): void {
-    $page = new ListContacts();
+    $page = new ListContacts;
 
     $columns = $page->getTableColumns();
     $filters = $page->getTableFilters();
@@ -96,7 +108,7 @@ test('list contacts page exposes expected table columns and filters', function (
 });
 
 test('list mail templates page exposes expected table columns', function (): void {
-    $page = new ListMailTemplates();
+    $page = new ListMailTemplates;
     $columns = $page->getTableColumns();
 
     expect($columns)->toBeArray()
@@ -109,7 +121,7 @@ test('list mail templates page exposes expected table columns', function (): voi
 });
 
 test('preview mail template page title and header actions are configured', function (): void {
-    $page = new PreviewMailTemplateTestProxy();
+    $page = makePreviewMailTemplateTestProxy();
     $actions = $page->exposedHeaderActions();
 
     expect($page->getTitle())->toBeString()
@@ -119,7 +131,7 @@ test('preview mail template page title and header actions are configured', funct
 });
 
 test('list notifications page exposes expected columns and filters', function (): void {
-    $page = new ListNotifications();
+    $page = new ListNotifications;
 
     $columns = $page->getTableColumns();
     $filters = $page->getTableFilters();
@@ -139,7 +151,7 @@ test('list notifications page exposes expected columns and filters', function ()
 });
 
 test('view notification page infolist schema contains section with text entries', function (): void {
-    $page = new ViewNotificationTestProxy();
+    $page = makeViewNotificationTestProxy();
     $schema = $page->exposedInfolistSchema();
 
     expect($schema)->toBeArray()
@@ -207,7 +219,7 @@ test('notification template resource form schema and pages are configured', func
 });
 
 test('preview notification template page exposes title and subheading', function (): void {
-    $page = new PreviewNotificationTemplateTestProxy();
+    $page = makePreviewNotificationTemplateTestProxy();
 
     expect($page->getTitle())->toBeString()
         ->and($page->getSubheading())->toBeString();

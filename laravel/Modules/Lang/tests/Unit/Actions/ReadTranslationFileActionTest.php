@@ -104,10 +104,7 @@ describe('ReadTranslationFileAction Business Logic', function () {
 
         expect($phpContent)->toContain("Text with \\'single\\' and \\\"double\\\" quotes");
         expect($phpContent)->toContain('Text with \\\\ backslashes');
-        expect(
-            str_contains($phpContent, 'Text with\\nnewlines')
-            || str_contains($phpContent, "Text with\nnewlines")
-        )->toBeTrue();
+        expect($phpContent)->toContain('Text with\\nnewlines');
     });
 
     test('handles deeply nested arrays', function () {

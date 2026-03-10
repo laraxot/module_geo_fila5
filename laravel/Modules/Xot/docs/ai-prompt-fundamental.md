@@ -5,7 +5,7 @@
 # Regole Fondamentali per Prompt AI - ExternalProject Fila5 Mono
 =======
 # Regole Fondamentali per Prompt AI - ModuloEsempio Fila5 Mono
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 
 ## 🚨 REGOLA ASSOLUTA: Database Testing
@@ -24,7 +24,7 @@ Create/Update code for healthcare_app Fila5 Mono with these CRITICAL rules:
 Create/Update code for ExternalProject Fila5 Mono with these CRITICAL rules:
 =======
 Create/Update code for ModuloEsempio Fila5 Mono with these CRITICAL rules:
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 1. NEVER use SQLite for testing - ALWAYS MySQL with "_test" suffixed databases
 2. NEVER use RefreshDatabase trait - ALWAYS use DatabaseTransactions
@@ -46,7 +46,7 @@ Create test for ProfileService in healthcare_app Fila5 Mono with these rules:
 Create test for ProfileService in ExternalProject Fila5 Mono with these rules:
 =======
 Create test for ProfileService in ModuloEsempio Fila5 Mono with these rules:
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 - Use DatabaseTransactions trait, NEVER RefreshDatabase
 - Test concurrent profile creation with first() + try/catch pattern
@@ -64,7 +64,7 @@ Create ProfileService for healthcare_app Fila5 Mono following these patterns:
 Create ProfileService for ExternalProject Fila5 Mono following these patterns:
 =======
 Create ProfileService for ModuloEsempio Fila5 Mono following these patterns:
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 - Use Spatie QueueableAction pattern, not static service classes
 - Implement getOrCreateProfile with race condition handling:
@@ -83,7 +83,7 @@ Create Filament resource extending XotBaseResource for healthcare_app Fila5 Mono
 Create Filament resource extending XotBaseResource for ExternalProject Fila5 Mono:
 =======
 Create Filament resource extending XotBaseResource for ModuloEsempio Fila5 Mono:
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 - Extend XotBaseResource, never Filament Resource directly
 - Implement getFormSchema() returning array
@@ -127,7 +127,7 @@ ExternalProject module specific requirements:
 ### Modulo ModuloEsempio
 ```
 ModuloEsempio module specific requirements:
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_QZJXII
 - LimeSurvey integration with proper MySQL connections
 - Use SurveyResponse scopes, never direct table access
@@ -195,13 +195,13 @@ Model structure requirements:
 
 ### Documentazione Principale
 - [AGENTS.md](../../../../agents.md) - Guida completa sviluppatori AI
-- [Database Testing Rules](../../../../docs/database-testing-rules.md) - Regole MySQL testing
+- [Database Testing Rules](../../../../../docs/database-testing-rules.md) - Regole MySQL testing
 - [AI Coding Memory](../../../../ai_coding_memory.md) - Memoria completa regole
-- [Critical Rules Index](../../../../docs/critical-rules-index.md) - Indice regole critiche
+- [Critical Rules Index](../../../../../docs/critical-rules-index.md) - Indice regole critiche
 
 ### Regole Specifiche
-- [Profile Duplicate Resolution](../../../../docs/profile-duplicate-issue-resolution.md) - Soluzione completa
-- [MySQL Testing Configuration](../../../../docs/mysql-testing-configuration.md) - Configurazione MySQL
+- [Profile Duplicate Resolution](../../../../../docs/profile-duplicate-issue-resolution.md) - Soluzione completa
+- [MySQL Testing Configuration](../../../../../docs/mysql-testing-configuration.md) - Configurazione MySQL
 - [PHPStan Critical Rules](../xot/docs/phpstan-critical-rules.md) - Regole PHPStan
 
 ## 🔧 Integration Guidelines
@@ -226,7 +226,7 @@ LimeSurvey specific rules:
 
 ---
 
-**
+**Ultimo aggiornamento**: [DATE]  
 **MySQL Testing**: ✅ OBBLIGATORIO  
 **Race Conditions**: ✅ Pattern first() + try/catch  
 **PHPStan Level**: ✅ 10 obbligatorio  

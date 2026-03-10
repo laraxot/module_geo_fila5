@@ -6,35 +6,32 @@ namespace Modules\Xot\Tests\Unit\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Xot\Models\XotBaseModel;
-use Modules\Xot\Tests\TestCase;
 use Modules\Xot\Traits\HasSchemalessAttributes;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
 
-if (! class_exists(TestModel::class)) {
-    class TestModel extends XotBaseModel
-    {
+function makeSchemalessTestModel(): XotBaseModel
+{
+    return new class extends XotBaseModel {
         use HasSchemalessAttributes;
 
         public $extra_attributes;
 
         public bool $saved = false;
 
-        public function save(array $options = [])
+        public function save(array $options = []): bool
         {
             $this->saved = true;
 
             return true;
         }
-    }
+    };
 }
-
-uses(TestCase::class);
 
 it('handles extra attributes scope', function (): void {
     $builder = \Mockery::mock(Builder::class);
     $schemaless = \Mockery::mock(SchemalessAttributes::class);
 
-    $class = new TestModel();
+    $class = makeSchemalessTestModel();
 
     // Test without attributes
     expect($class->scopeWithExtraAttributes($builder))->toBe($builder);
@@ -51,7 +48,7 @@ it('handles where extra attribute scope', function (): void {
     $builder = \Mockery::mock(Builder::class);
     $builder->shouldReceive('where')->with('extra_attributes->key', 'value')->andReturnSelf();
 
-    $class = new TestModel();
+    $class = makeSchemalessTestModel();
 
     expect($class->scopeWhereExtraAttribute($builder, 'key', 'value'))->toBe($builder);
 
@@ -59,7 +56,7 @@ it('handles where extra attribute scope', function (): void {
 });
 
 it('gets and sets extra attributes', function (): void {
-    $class = new TestModel();
+    $class = makeSchemalessTestModel();
 
     // Default
     expect($class->getExtraAttribute('missing', 'default'))->toBe('default');
@@ -72,7 +69,7 @@ it('gets and sets extra attributes', function (): void {
 });
 
 it('returns all extra attributes as array', function (): void {
-    $class = new TestModel();
+    $class = makeSchemalessTestModel();
 
     expect($class->getExtraAttributes())->toBeArray()->toBeEmpty();
 
@@ -81,7 +78,7 @@ it('returns all extra attributes as array', function (): void {
 });
 
 it('removes extra attribute', function (): void {
-    $class = new TestModel();
+    $class = makeSchemalessTestModel();
 
     $class->setExtraAttribute('temp', 'val');
     expect($class->hasExtraAttribute('temp'))->toBeTrue();
@@ -91,7 +88,7 @@ it('removes extra attribute', function (): void {
 });
 
 it('syncs extra attributes calls save', function (): void {
-    $testObject = new TestModel();
+    $testObject = makeSchemalessTestModel();
 
     $testObject->syncExtraAttributes();
     expect($testObject->saved)->toBeTrue();

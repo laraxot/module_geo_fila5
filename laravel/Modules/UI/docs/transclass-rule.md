@@ -1,6 +1,6 @@
 # REGOLA CRITICA: Usa SEMPRE transClass() negli Enum
 
-## 
+## Data: [DATE]
 
 ## ✅ CORRETTO - Implementazione Enum con TransTrait
 
@@ -282,8 +282,8 @@ rules:
 
 ## Collegamenti
 
-- [Translation Standards](../../../docs/translation_standards.md)
-- [Filament Best Practices](../../../docs/filament_best_practices.md)
+- [Translation Standards](../../../../docs/translation_standards.md)
+- [Filament Best Practices](../../../../docs/filament_best_practices.md)
 - [TransTrait Documentation](../../xot/docs/trans_trait_usage.md)
 
 ## Memoria Permanente
@@ -297,7 +297,7 @@ rules:
 
 # REGOLA CRITICA: Usa SEMPRE transClass() negli Enum
 
-## 
+## Data: [DATE]
 
 ## ✅ CORRETTO - Implementazione Enum con TransTrait
 
@@ -579,8 +579,8 @@ rules:
 
 ## Collegamenti
 
-- [Translation Standards](../../../docs/translation_standards.md)
-- [Filament Best Practices](../../../docs/filament_best_practices.md)
+- [Translation Standards](../../../../docs/translation_standards.md)
+- [Filament Best Practices](../../../../docs/filament_best_practices.md)
 - [TransTrait Documentation](../../xot/docs/trans_trait_usage.md)
 
 ## Memoria Permanente

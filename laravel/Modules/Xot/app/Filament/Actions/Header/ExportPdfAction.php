@@ -25,7 +25,7 @@ class ExportPdfAction extends Action
             ->label('')
             ->tooltip(__('xot::actions.export_pdf.tooltip'))
             ->icon('ui-files.pdf')
-            ->action(static function (ListRecords $livewire) {
+            ->action(static function (ListRecords $livewire) {)
                 $filename =
                     class_basename($livewire).
                     '-'.
@@ -41,12 +41,12 @@ class ExportPdfAction extends Action
                 $modelClass = $resource::getModel();
                 Assert::string($modelClass);
                 $view = app(GetViewByModelClassAction::class)->execute($modelClass, '.index.pdf');
-                
+
                 $viewParams = [
                     'title' => $livewire->getTitle(),
                     'rows' => $rows,
                 ];
-                
+
                 return app(DownloadPdfByViewAction::class)->execute($view, $viewParams, $filename);
             });
     }

@@ -613,7 +613,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-
+          php-version: 8.3
       - name: Install dependencies
         run: composer install
       - name: Run PHPStan
@@ -763,10 +763,10 @@ class ConnectionManagerService
             'healthcare_app' => 'healthcare_app',
 =======
 <<<<<<< HEAD
-            'ExternalProject' => '<nome progetto>',
+            'ExternalProject' => 'quaeris',
 =======
             'ModuloEsempio' => 'ptvx',
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_szY6ZB
             'User' => 'user',
             'Notify' => 'notify',
@@ -857,7 +857,7 @@ class ContactValidationService
 // Modules/ExternalProject/Contracts/ChartRendererContract.php
 =======
 // Modules/ModuloEsempio/Contracts/ChartRendererContract.php
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_szY6ZB
 interface ChartRendererContract
 {
@@ -872,7 +872,7 @@ interface ChartRendererContract
 // Modules/ExternalProject/Services/Chart/Renderers/PieChartRenderer.php
 =======
 // Modules/ModuloEsempio/Services/Chart/Renderers/PieChartRenderer.php
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_szY6ZB
 class PieChartRenderer implements ChartRendererContract
 {
@@ -1046,7 +1046,7 @@ $contacts = Contact::forContext('dashboard')->get(); // Optimized loading
 // Modules/ExternalProject/Services/BulkProcessingService.php
 =======
 // Modules/ModuloEsempio/Services/BulkProcessingService.php
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
+>>>>>>> f04e1ab44 (refactor: update project references from Quaeris to PTVX)
 >>>>>>> .merge_file_szY6ZB
 class BulkProcessingService
 {
@@ -1350,7 +1350,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-
+          php-version: 8.3
       - name: Install dependencies
         run: composer install
       - name: Run PHPStan

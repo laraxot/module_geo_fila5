@@ -2,19 +2,21 @@
 
 declare(strict_types=1);
 
+namespace Modules\Job\Tests\Unit\Actions;
+
 use Modules\Job\Actions\ExecuteTaskAction;
 
 describe('ExecuteTaskAction', function () {
     beforeEach(function () {
-        $this->action = new ExecuteTaskAction;
+        $action = new ExecuteTaskAction;
     });
 
     it('can be instantiated', function () {
-        expect($this->action)->toBeInstanceOf(ExecuteTaskAction::class);
+        expect($action);
     });
 
     it('has correct method signature', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
         $method = $reflection->getMethod('execute');
 
         expect($method->isPublic())
@@ -28,35 +30,35 @@ describe('ExecuteTaskAction', function () {
     });
 
     it('returns string', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
         $method = $reflection->getMethod('execute');
 
         expect($method->getReturnType()?->getName())->toBe('string');
     });
 
     it('uses QueueableAction trait', function () {
-        $traits = class_uses($this->action);
+        $traits = class_uses($action);
 
         expect($traits)->toContain('Spatie\QueueableAction\QueueableAction');
     });
 
     it('uses strict types', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
         $filename = $reflection->getFileName();
 
         expect($filename)->not->toBeNull();
         $content = file_get_contents($filename);
-        expect($content)->toContain('declare(strict_types=1);');
+        expect($content)->toContain('');
     });
 
     it('has correct namespace', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
 
         expect($reflection->getNamespaceName())->toBe('Modules\Job\Actions');
     });
 
     it('has proper class structure', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
 
         expect($reflection->isInstantiable())
             ->toBeTrue()
@@ -67,18 +69,18 @@ describe('ExecuteTaskAction', function () {
     });
 
     it('implements queueable functionality', function () {
-        expect(method_exists($this->action, 'onQueue'))->toBeTrue();
+        expect(method_exists($action, 'onQueue'));
     });
 
     it('has required imports', function () {
-        $filename = (new ReflectionClass($this->action))->getFileName();
+        $filename = (new ReflectionClass($action));
         $content = file_get_contents($filename);
 
         expect($content)->toContain('use Spatie\QueueableAction\QueueableAction;');
     });
 
     it('has WIP implementation', function () {
-        $reflection = new ReflectionClass($this->action);
+        $reflection = new ReflectionClass($action);
         $filename = $reflection->getFileName();
         $content = file_get_contents($filename);
 

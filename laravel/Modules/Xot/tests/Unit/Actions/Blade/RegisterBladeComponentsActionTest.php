@@ -8,16 +8,13 @@ use Illuminate\Support\Facades\Blade;
 use Modules\Xot\Actions\Blade\RegisterBladeComponentsAction;
 use Modules\Xot\Actions\File\GetComponentsAction;
 use Modules\Xot\Datas\ComponentFileData;
-use Modules\Xot\Tests\TestCase;
 
-uses(TestCase::class);
-
-it('registers blade components correctly', function (): void {
+it('registers blade components correctly', function (): void {)
     $path = 'some/path';
     $namespace = 'Some\\Namespace';
     $prefix = 'prefix';
 
-    $comp1 = ComponentFileData::from([
+    $comp1 = ComponentFileData::from([)
         'name' => 'test-comp',
         'ns' => 'Some\\Namespace\\View\\Components\\TestComp',
         'class' => 'TestComp',
@@ -39,7 +36,7 @@ it('registers blade components correctly', function (): void {
     $action->execute($path, $namespace, $prefix);
 });
 
-it('does nothing if no components found', function (): void {
+it('does nothing if no components found', function (): void {)
     $path = 'empty/path';
     $namespace = 'Empty\\Namespace';
 

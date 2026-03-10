@@ -1,62 +1,31 @@
-# Documentazione del Tema Zero
+# Zero Theme Docs
 
-Questa cartella contiene documentazione interna per il tema Zero.
+Documentazione tecnica del tema `Zero` (layout, componenti, integrazione Filament e linee guida UI).
 
-## Correzioni Apportate
+## Stato Attuale (snapshot 2026-03-07)
 
-### Problemi di Configurazione PHPStan
+- Documenti markdown in `docs/`: **69**
+- File docs con marker di merge rilevati: **22 file** / **168 marker**
+- Priorita: bonifica conflitti e consolidamento indice
 
-Durante l'analisi del progetto con PHPStan, sono stati identificati e risolti i seguenti problemi relativi al tema Zero:
+## Uso consigliato
 
-1. **Configurazione del Database**:
-<<<<<<< .merge_file_XF97gD
-   - **Problema**: Il database `healthcare_app_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
-   - **Soluzione**: È stato creato il database `healthcare_app_data` per consentire il corretto funzionamento dell'applicazione.
-=======
-   - **Problema**: Il database `ptvx_data` non esisteva, causando errori durante l'esecuzione delle migrazioni.
-   - **Soluzione**: È stato creato il database `ptvx_data` per consentire il corretto funzionamento dell'applicazione.
->>>>>>> .merge_file_VZ4qWz
+- partire da [00-index.md](00-index.md)
+- usare [architecture.md](architecture.md) e [modern-theme-architecture.md](modern-theme-architecture.md) come riferimenti principali
+- trattare i documenti con conflitti come **non affidabili** finche non bonificati
 
-2. **Aggiornamento del File .env**:
-   - **Problema**: Il file `.env` conteneva configurazioni obsolete o mancanti.
-   - **Soluzione**: Il file `.env` è stato aggiornato con le configurazioni corrette per il database e altri parametri necessari.
+## Audit e piano
 
-3. **Abilitazione dei Moduli Necessari**:
-   - **Problema**: Alcuni moduli richiesti per il corretto funzionamento dell'applicazione erano disabilitati.
-   - **Soluzione**: Sono stati abilitati i moduli `Cms` e `Geo` per garantire il corretto caricamento delle dipendenze.
+- report confidenza: [docs-confidence-audit-2026-03-07.md](docs-confidence-audit-2026-03-07.md)
 
-## Struttura e Personalizzazione
+## Struttura
 
-- `app/`: componenti PHP e Blade specifici del tema
-- `resources/`: viste, CSS e JS basati su Tailwind + Vite
-- `public/`: asset compilati
-- `lang/`: file di traduzione dedicati
+- `resources/views/` — layout e componenti blade del tema
+- `lang/` — traduzioni specifiche tema
+- `docs/` — linee guida, roadmap, troubleshooting
 
-Per personalizzare:
-1. Aggiornare componenti/layout in `resources/views/`
-2. Modificare gli stili in `resources/css/`
-3. Eseguire `npm run build` (o `npm run dev`) per rigenerare gli asset
+## Regole
 
-Ricordare di documentare ogni variante o layout personalizzato nella cartella `docs/`.
-
-## 🤖 AI Development Tools & Skills
-- [Claude Context (Laravel)](../../../CLAUDE.md)
-- [AI Agents Guide](../../../../AGENTS.md)
-- [Cursor Rules & Skills](../../../../.cursor/README.md)
-- [Skills di progetto](../../../../.cursor/skills/)
-
-## 🔁 CI & Semantic Versioning
-Il tema include il workflow locale in `.github/workflows/semantic-versioning.yml`.
-Include anche l’attestazione build provenance con `actions/attest-build-provenance@v3`.
-Workflow root progetto: `/.github/workflows/*.yml`.
-
-## 🚀 Release su GitHub
-Le release sono basate su tag Git e possono includere release notes generate automaticamente.
-Workflow locale: `.github/workflows/release.yml`.
-
-## 📄 License & Authors
-
-**Authors:**
-- Marco Sottana <marco.sottana@gmail.com>
-
-**License:** MIT
+- nessun marker di merge nei file finali
+- evitare duplicazioni tra `index.md`, `index-consolidated.md`, `00-index.md`
+- ogni modifica ai componenti principali deve aggiornare almeno un documento canonico

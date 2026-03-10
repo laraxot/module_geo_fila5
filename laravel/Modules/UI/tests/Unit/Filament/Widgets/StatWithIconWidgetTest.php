@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Tests\Unit\Filament\Widgets;
 
-use Filament\Widgets\Widget;
 use Illuminate\Contracts\View\View;
 use Modules\UI\Filament\Widgets\StatWithIconWidget;
 use Tests\TestCase;
@@ -24,16 +23,13 @@ test('stat with icon widget can be instantiated', function () {
 });
 
 test('stat with icon widget has correct view', function () {
-    $view = $this->widget->render();
-
-    expect($view)->toBeInstanceOf(View::class)
-        ->and($view->name())->toBe('ui::filament.widgets.statwithicon');
+    expect($this->widget->getViewName())->toBe('ui::filament.widgets.stat-with-icon-widget');
 });
 
 test('stat with icon widget has proper properties', function () {
-    expect($this->widget)->toHaveProperty('heading');
-    expect($this->widget)->toHaveProperty('label');
-    expect($this->widget)->toHaveProperty('value');
+    expect($this->widget)->toHaveProperty('stat');
+    expect($this->widget)->toHaveProperty('icon');
+    expect($this->widget)->toHaveProperty('description');
 });
 
 test('stat with icon widget can render', function () {
@@ -43,5 +39,7 @@ test('stat with icon widget can render', function () {
 });
 
 test('stat with icon widget has default values', function () {
-    expect($this->widget)->toBeInstanceOf(StatWithIconWidget::class);
+    expect($this->widget->stat)->toBe('0');
+    expect($this->widget->icon)->toBe('heroicon-o-chart-bar');
+    expect($this->widget->description)->toBe('Statistica');
 });
