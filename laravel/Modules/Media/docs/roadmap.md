@@ -11,7 +11,7 @@
 ## Legacy / existing roadmap docs
 
 - [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md)
+- [phpstan-roadmap.md](phpstan-roadmap.md) (1 error found - See [Issue #104](https://github.com/provtv/base_ptv_fila5_mono/issues/104))
 - [roadmap/00-index.md](roadmap/00-index.md)
 - [roadmap/00-overview.md](roadmap/00-overview.md)
 - [roadmap/01-current-state.md](roadmap/01-current-state.md)
