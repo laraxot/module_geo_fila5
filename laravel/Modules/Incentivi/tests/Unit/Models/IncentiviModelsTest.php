@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Incentivi\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Incentivi\Tests\TestCase;
 use Modules\Incentivi\Models\Activity;
 use Modules\Incentivi\Models\ActivityEmployee;
 use Modules\Incentivi\Models\CapitalPercentage;
@@ -17,6 +18,8 @@ use Modules\Incentivi\Models\Project;
 use Modules\Incentivi\Models\Settlement;
 use Modules\Incentivi\Models\StabiDirigente;
 use Modules\Incentivi\Models\Workgroup;
+
+uses(TestCase::class);
 
 it('can instantiate all target incentive models', function (string $class): void {
     $model = new $class();
