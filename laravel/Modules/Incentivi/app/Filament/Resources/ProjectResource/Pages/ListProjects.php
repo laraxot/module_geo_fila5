@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Incentivi\Filament\Resources\ProjectResource\Pages;
 
+use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
 use Filament\Tables\Columns\Column;
@@ -87,8 +88,25 @@ class ListProjects extends XotBaseListRecords
     }
 
     #[Override]
+    public function getTableBulkActions(): array
+    {
+        if (! auth()->user()?->hasRole(['super-admin', 'incentivi-admin'])) {
+            return [];
+        }
+
+        return [
+            'delete' => DeleteBulkAction::make()
+                ->label('Elimina')
+                ->icon('heroicon-o-trash')
+                ->color('danger')
+                ->requiresConfirmation(),
+        ];
+    }
+
+    #[Override]
     public function getHeaderActions(): array
     {        
-        return [];
+        return [
+        ];
     }
 }
