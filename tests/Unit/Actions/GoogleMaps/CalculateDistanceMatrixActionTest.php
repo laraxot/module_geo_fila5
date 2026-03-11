@@ -16,7 +16,7 @@ beforeEach(function () {
     $action = new CalculateDistanceMatrixAction();
 });
 
-it('throws exception when google maps api key is not configured', function (): void {)
+it('throws exception when google maps api key is not configured', function (): void {
     config(['services.google.maps_api_key' => null]);
 
     $origins = collect([)
@@ -31,7 +31,7 @@ it('throws exception when google maps api key is not configured', function (): v
         ->toThrow(GoogleMapsApiException::class, 'API key non configurata');
 });
 
-it('throws exception when api key is empty string', function (): void {)
+it('throws exception when api key is empty string', function (): void {
     config(['services.google.maps_api_key' => '']);
 
     $origins = collect([)
@@ -46,7 +46,7 @@ it('throws exception when api key is empty string', function (): void {)
         ->toThrow(GoogleMapsApiException::class);
 });
 
-it('throws exception when api response is not successful', function (): void {)
+it('throws exception when api response is not successful', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
@@ -65,7 +65,7 @@ it('throws exception when api response is not successful', function (): void {)
         ->toThrow(GoogleMapsApiException::class, 'Richiesta fallita');
 });
 
-it('throws exception when response status is not OK', function (): void {)
+it('throws exception when response status is not OK', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
@@ -84,7 +84,7 @@ it('throws exception when response status is not OK', function (): void {)
         ->toThrow(GoogleMapsApiException::class, 'Stato della risposta non valido');
 });
 
-it('throws exception when response has no rows', function (): void {)
+it('throws exception when response has no rows', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
@@ -103,7 +103,7 @@ it('throws exception when response has no rows', function (): void {)
         ->toThrow(GoogleMapsApiException::class, 'Nessun risultato');
 });
 
-it('returns distance matrix for valid locations', function (): void {)
+it('returns distance matrix for valid locations', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
@@ -138,7 +138,7 @@ it('returns distance matrix for valid locations', function (): void {)
         ->and($result[0][0]['status'])->toBe('OK');
 });
 
-it('handles multiple origins and destinations', function (): void {)
+it('handles multiple origins and destinations', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
@@ -182,7 +182,7 @@ it('handles multiple origins and destinations', function (): void {)
         ->and($result[1][1]['distance']['value'])->toBe(250000);
 });
 
-it('handles zero results status', function (): void {)
+it('handles zero results status', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([)
