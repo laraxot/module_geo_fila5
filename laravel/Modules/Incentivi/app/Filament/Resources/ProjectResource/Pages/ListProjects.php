@@ -9,8 +9,10 @@ use Filament\Actions\EditAction;
 use Filament\Tables;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Auth;
 use Modules\Activity\Filament\Actions\ListLogActivitiesAction;
 use Modules\Incentivi\Filament\Resources\ProjectResource;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
@@ -90,7 +92,10 @@ class ListProjects extends XotBaseListRecords
     #[Override]
     public function getTableBulkActions(): array
     {
-        if (! auth()->user()?->hasRole(['super-admin', 'incentivi-admin'])) {
+        /** @var UserContract|null $user */
+        $user = Auth::user();
+
+        if (! $user?->hasRole(['super-admin', 'incentivi-admin'])) {
             return [];
         }
 
