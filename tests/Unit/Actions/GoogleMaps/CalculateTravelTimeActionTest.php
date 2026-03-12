@@ -59,7 +59,7 @@ it('returns error travel time data for failed api request', function (): void {
 it('returns error for invalid response status', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'INVALID_REQUEST',
     ])));
 

@@ -20,10 +20,10 @@ afterEach(function () {
 
 it('fetches elevation successfully', function (): void {
     // Arrange
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
-        json_encode([)
+        json_encode([
             'results' => [
                 [
                     'latitude' => 45.4642,
@@ -37,7 +37,7 @@ it('fetches elevation successfully', function (): void {
     $mockClient
         ->shouldReceive('post')
         ->once()
-        ->with()
+        ->with(
             'https://api.open-elevation.com/api/v1/lookup',
             Mockery::on(fn ($options) => isset($options['json']['locations']))
         )
@@ -68,7 +68,7 @@ it('throws exception for failed API request', function (): void {
 
 it('throws exception for invalid response', function (): void {
     // Arrange
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
         json_encode(['results' => []]) // Empty results
@@ -86,10 +86,10 @@ it('throws exception for invalid response', function (): void {
 
 it('handles negative elevation', function (): void {
     // Arrange - Dead Sea area (below sea level)
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
-        json_encode([)
+        json_encode([
             'results' => [
                 [
                     'latitude' => 31.5,
@@ -114,10 +114,10 @@ it('handles negative elevation', function (): void {
 
 it('handles high elevation', function (): void {
     // Arrange - Mount Everest
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
-        json_encode([)
+        json_encode([
             'results' => [
                 [
                     'latitude' => 27.9881,
@@ -142,10 +142,10 @@ it('handles high elevation', function (): void {
 
 it('handles zero elevation', function (): void {
     // Arrange - Sea level
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
-        json_encode([)
+        json_encode([
             'results' => [
                 [
                     'latitude' => 0.0,
@@ -170,10 +170,10 @@ it('handles zero elevation', function (): void {
 
 it('sends correct API payload', function (): void {
     // Arrange
-    $mockResponse = new Response()
+    $mockResponse = new Response(
         200,
         [],
-        json_encode([)
+        json_encode([
             'results' => [
                 ['latitude' => 45.4642, 'longitude' => 9.1900, 'elevation' => 100.0],
             ],
@@ -185,9 +185,9 @@ it('sends correct API payload', function (): void {
     $mockClient
         ->shouldReceive('post')
         ->once()
-        ->with()
+        ->with(
             'https://api.open-elevation.com/api/v1/lookup',
-            Mockery::on(function ($options) use (&$capturedOptions) {)
+            Mockery::on(function ($options) use (&$capturedOptions) {
                 $capturedOptions = $options;
 
                 return isset($options['json']['locations']);
