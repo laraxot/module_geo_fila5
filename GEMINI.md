@@ -13,6 +13,9 @@
 - **Rule**: PHPSTAN LEVEL 10 DYNAMIC RELATIONSHIPS - When defining dynamic Eloquent relationships (like `scheda()` in `Ptv` module), always resolve the model class string with a fallback to the base model (e.g., `Modules\Progressioni\Models\Scheda`) and use `Webmozart\Assert\Assert::classExists($modelClass)` for type narrowing.
 - **Rule**: ISSUE & DISCUSSION COORDINATION - Track all PHPStan Level 10 fixes via module-specific GitHub Issues (IDs #85-100) and link them to the central coordination Discussion #84. Every commit must reference the relevant issue.
 - **Rule**: Every module and theme MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `laravel/Modules/Xot/_xot.code-workspace`). Any misplaced files (like `_activity.code-workspace` in `Xot`) must be deleted immediately.
+- **Rule**: BASH SCRIPTS ORGANIZATION - All `.sh` scripts MUST be placed in a subfolder of `bashscripts/` (e.g., `bashscripts/ai/`), NEVER in the root. Every script must be documented in `bashscripts/docs/`.
+- **Rule**: JUNCTION/SYMLINK RULE - Centralize AI agent configuration folders (like `.qwen`) in `bashscripts/ai/` and create symbolic links (junctions) to the project root and `laravel/` folder to ensure multi-agent synchronization.
+- **Rule**: COMMIT & PUSH - When functionality is verified, always perform `git commit` and `git push` to synchronize changes globally.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context

@@ -108,6 +108,20 @@ See coordination hub: [docs/ai-agent-coordination.md](docs/ai-agent-coordination
 
 See full convention: [docs/conventions/qwen-directory-structure.md](docs/conventions/qwen-directory-structure.md)
 
+## Commit and Push Rule
+
+- **Commit when work is complete**: Don't wait, commit and push regularly
+- **When confident it works**: Test → Commit → Push
+- **Small, frequent commits**: Better than large, infrequent commits
+- **Descriptive messages**: Use `[TYPE] description` format
+- **Coordinate via docs**: Reference coordination doc in commits
+- **Examples**:
+  - ✅ `[docs] Add QWEN.md - Coordinated via: docs/ai-agent-coordination.md`
+  - ✅ `[feat] Add ollama script - Related issue: #108`
+  - ❌ `fix stuff` (too vague)
+
+See full rule: [.qwen/skills/commit-and-push-rule.md](.qwen/skills/commit-and-push-rule.md)
+
 ## Navigation Index
 
 - [Project Setup](.agents/docs/project-setup.md)
