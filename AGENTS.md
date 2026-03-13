@@ -95,6 +95,19 @@ See full convention: [bashscripts/docs/](bashscripts/docs/)
 
 See coordination hub: [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
 
+## .qwen Directory Structure
+
+- **Central config in root `.qwen/`**: All AI configuration resides here
+- **Subdirectories use symlinks**: `laravel/.qwen/` and `bashscripts/ai/.qwen/` link to root
+- **Always use absolute paths**: Prevents symlink loops
+- **Single source of truth**: Never duplicate config files
+- **Examples**:
+  - ✅ `.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (central)
+  - ✅ `laravel/.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (symlink)
+  - ❌ Relative symlinks (can create loops)
+
+See full convention: [docs/conventions/qwen-directory-structure.md](docs/conventions/qwen-directory-structure.md)
+
 ## Navigation Index
 
 - [Project Setup](.agents/docs/project-setup.md)

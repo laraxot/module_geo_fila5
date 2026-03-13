@@ -375,3 +375,4 @@ dump.rdb
 # FINE .gitignore
 # =============================================================================
 laravel/database/migrations/
+.qwen/

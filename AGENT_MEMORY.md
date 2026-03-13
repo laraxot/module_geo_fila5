@@ -105,6 +105,22 @@ See: `bashscripts/docs/AI_AGENT_JUNCTION_RULE.md`
 ### Packages
 Packages go in `Modules/{Module}/composer.json`. Run `composer go` from `laravel/`.
 
+## Commit and Push Rule (CRITICAL)
+
+**After completing ANY task, you MUST commit and push immediately.**
+
+Workflow:
+1. Verify work works
+2. Review changes: `git status`, `git diff`
+3. Stage all: `git add -A`
+4. Commit with clear message: `git commit -m "type: description"`
+5. Push to remote: `git push origin dev`
+6. Verify: `git status` (should show "working tree clean")
+
+NEVER leave work uncommitted. Commit after every task.
+
+See: `bashscripts/docs/COMMIT_AND_PUSH_RULE.md`
+
 ## Session History & Decisions
 See full log: [memories.md](.agents/docs/memories.md)
 
