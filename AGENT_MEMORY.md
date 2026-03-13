@@ -121,6 +121,44 @@ NEVER leave work uncommitted. Commit after every task.
 
 See: `bashscripts/docs/COMMIT_AND_PUSH_RULE.md`
 
+## Sync Remote Repo Script (CRITICAL)
+
+**Script**: `bashscripts/git/subtrees/sync_remote_repo.sh`  
+**Workflow**: `.github/workflows/sync-remote-repo.yml`
+
+Dual-mode operation:
+- **CLI Mode**: Local sync with backup, fetch/pull/rebase/push
+- **CI Mode**: GitHub Actions, no backup, align working tree
+
+Usage:
+```bash
+# CLI
+bash bashscripts/git/subtrees/sync_remote_repo.sh
+bash bashscripts/git/subtrees/sync_remote_repo.sh --org=laraxot
+bash bashscripts/git/subtrees/sync_remote_repo.sh --dry-run
+
+# CI: Auto-triggered on push to dev or manual dispatch
+```
+
+Configuration:
+- `gitmodules.ini` in project root
+- `BASHSCRIPTS_TOKEN` secret for GitHub Actions
+- `CI=true` environment variable for CI mode
+
+See: `bashscripts/docs/git/SYNC_REMOTE_REPO_SCRIPT.md`, `.agents/skills/sync-remote-repo/SKILL.md`
+
+## Agent Teams
+
+Multi-agent coordination via teams:
+
+| Team | Responsibility | Lead |
+|------|----------------|------|
+| **Subtree Sync** | Sync script & workflow | Qwen |
+| **CI/CD** | GitHub Actions optimization | Qwen |
+| **Documentation** | Keep docs updated | All |
+
+See: `docs/AGENT_TEAMS.md`, `docs/MULTI_AGENT_COORDINATION.md`
+
 ## Session History & Decisions
 See full log: [memories.md](.agents/docs/memories.md)
 
