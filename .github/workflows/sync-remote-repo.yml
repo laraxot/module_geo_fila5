@@ -1,106 +1,85 @@
-name: Sync Remote Repos
+name: Sync Remote Repo
 
 on:
-  # Schedule: Daily at 2 AM UTC
-  schedule:
-    - cron: '0 2 * * *'
-  
-  # Manual trigger
-  workflow_dispatch:
-    inputs:
-      org:
-        description: 'Organization override (optional)'
-        required: false
-        default: ''
-      
-      verbose:
-        description: 'Verbose logging'
-        required: false
-        default: 'false'
-  
-  # On push to gitmodules config
   push:
     branches:
-      - main
       - dev
-    paths:
-      - 'gitmodules.ini'
-      - 'bashscripts/git/subtrees/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   sync:
-    name: Sync Subtrees
+    if: github.ref == 'refs/heads/dev' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-    
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+      CI: true
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout main repository
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_PAT }}
-      
-      - name: Setup Git
+          token: ${{ secrets.BASHSCRIPTS_TOKEN || github.token }}
+          submodules: false
+
+      - name: Configure Git authentication
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      
-      - name: Verify Script Exists
-        run: |
-          if [ ! -f "bashscripts/git/subtrees/sync_remote_repo.sh" ]; then
-            echo "❌ sync_remote_repo.sh not found"
-            exit 1
+          TOKEN="${{ secrets.BASHSCRIPTS_TOKEN }}"
+          if [ -z "$TOKEN" ]; then
+            TOKEN="${{ github.token }}"
           fi
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git config --global core.symlinks false
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/bashscripts"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+
+      - name: Checkout bashscripts repository
+        uses: actions/checkout@v5
+        with:
+          repository: laraxot/bashscripts_fila5
+          ref: dev
+          token: ${{ secrets.BASHSCRIPTS_TOKEN || github.token }}
+          path: bashscripts
+          fetch-depth: 0
+          sparse-checkout: |
+            git/
+            lib/
+            gitmodules.ini
+          sparse-checkout-cone-mode: false
+
+      - name: Verify sync prerequisites
+        run: |
+          test -f gitmodules.ini
+          test -f bashscripts/git/subtrees/sync_remote_repo.sh
+          bash -n bashscripts/git/subtrees/sync_remote_repo.sh
+
+      - name: Run remote sync
+        run: |
           chmod +x bashscripts/git/subtrees/sync_remote_repo.sh
-      
-      - name: Verify gitmodules.ini
-        run: |
-          if [ ! -f "gitmodules.ini" ]; then
-            echo "❌ gitmodules.ini not found"
-            exit 1
-          fi
-          echo "✅ Found gitmodules.ini"
-          cat gitmodules.ini
-      
-      - name: Run Sync Script
+          bashscripts/git/subtrees/sync_remote_repo.sh laraxot
         env:
-          ORG: ${{ github.event.inputs.org }}
-          VERBOSE: ${{ github.event.inputs.verbose }}
-          CI: 'true'
-          GH_TOKEN: ${{ secrets.GH_PAT }}
+          BASHSCRIPTS_TOKEN: ${{ secrets.BASHSCRIPTS_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          CI: true
+
+      - name: Commit synced files to main repository
         run: |
-          echo "🔄 Starting sync at $(date)"
-          ./bashscripts/git/subtrees/sync_remote_repo.sh "$ORG"
-          echo "✅ Sync completed at $(date)"
-      
-      - name: Upload Logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: sync-logs-${{ github.run_id }}
-          path: |
-            *.log
-            sync-report-*.json
-          retention-days: 30
-      
-      - name: Create Issue on Failure
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const workflowUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `❌ Sync Remote Repo Failed - ${new Date().toISOString().split('T')[0]}`,
-              body: `Sync failed in workflow run: ${workflowUrl}\n\nPlease check the logs and fix the issue.`
-            })
-      
-      - name: Comment on Success
-        if: success()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            console.log('✅ Sync completed successfully');
+          git status --short
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes produced by sync_remote_repo.sh"
+            exit 0
+          fi
+
+          git add -A .
+
+          git commit -m "chore: persist synced remote repo changes [skip ci]"
+          git pull --rebase origin dev
+          git push origin HEAD:dev
