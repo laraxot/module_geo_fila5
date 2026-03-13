@@ -2,7 +2,6 @@
 
 **Module:** Geo  
 **Version:** 1.0.0  
-**Last Updated:** March 12, 2026  
 **Owner:** Product Team
 
 ---
@@ -88,4 +87,3 @@ Respect location privacy.
 
 ---
 
-*Last Updated: March 12, 2026*
