@@ -16,6 +16,7 @@
 - **Rule**: BASH SCRIPTS ORGANIZATION - All `.sh` scripts MUST be placed in a subfolder of `bashscripts/` (e.g., `bashscripts/ai/`), NEVER in the root. Every script must be documented in `bashscripts/docs/`.
 - **Rule**: JUNCTION/SYMLINK RULE - Centralize AI agent configuration folders (like `.qwen`) in `bashscripts/ai/` and create symbolic links (junctions) to the project root and `laravel/` folder to ensure multi-agent synchronization.
 - **Rule**: COMMIT & PUSH - When functionality is verified, always perform `git commit` and `git push` to synchronize changes globally.
+- **Rule**: ENVIRONMENT-AWARE SCRIPTS - All synchronization and deployment scripts (especially `sync_remote_repo.sh`) MUST detect the environment (`CLI` vs. `GitHub Actions`) and adapt their behavior (e.g., skip interactive prompts, use tokens instead of SSH, skip local backups in CI). Coordination is managed via Issue #109.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context
