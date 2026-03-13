@@ -10,12 +10,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
-use Modules\Geo\Models\Comune;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Class Address.
- * 
+ *
  * Implementazione di Schema.org PostalAddress
  *
  * @property int                          $id
@@ -50,6 +49,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string                       $street_address
  * @property Model|\Eloquent|null         $model
  * @property ProfileContract|null         $updater
+ *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
  * @method static Builder<static>|Address newQuery()
@@ -82,10 +82,15 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereType($value)
  * @method static Builder<static>|Address whereUpdatedAt($value)
  * @method static Builder<static>|Address whereUpdatedBy($value)
+ *
  * @property ProfileContract|null $deleter
+ *
  * @method static AddressFactory factory($count = null, $state = [])
+ *
  * @property string|null $phone
+ *
  * @method static Builder<static>|Address wherePhone($value)
+ *
  * @mixin \Eloquent
  */
 class Address extends BaseModel
@@ -161,12 +166,13 @@ class Address extends BaseModel
      */
     public function getRegione(): ?array
     {
+        /** @phpstan-ignore method.unresolvableReturnType */
         $res = Comune::select('regione')
             ->distinct()
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            // @phpstan-ignore-next-line
+            /* @phpstan-ignore argument.unresolvableType */
             ->map(function ($item) {
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
@@ -182,12 +188,13 @@ class Address extends BaseModel
 
     public function getProvincia(): ?array
     {
+        /** @phpstan-ignore method.unresolvableReturnType */
         $res = Comune::select('provincia')
             ->distinct()
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-            // @phpstan-ignore-next-line
+            /* @phpstan-ignore argument.unresolvableType */
             ->map(fn ($item) => [
                 /* @phpstan-ignore offsetAccess.notFound */
                 'codice' => $item->provincia['codice'],
