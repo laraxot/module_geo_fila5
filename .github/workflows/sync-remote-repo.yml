@@ -62,12 +62,22 @@ jobs:
 
       - name: Run remote sync
         run: |
+          echo "🔍 Verifying lib paths..."
+          test -f bashscripts/lib/custom.sh && echo "✅ custom.sh found"
+          test -f bashscripts/lib/parse_gitmodules_ini.sh && echo "✅ parse_gitmodules_ini.sh found"
+          
+          echo "🔧 Setting up environment..."
+          export PROJECT_ROOT="$GITHUB_WORKSPACE"
+          export PATH="$GITHUB_WORKSPACE/bashscripts:$PATH"
+          
+          echo "🚀 Running sync script..."
           chmod +x bashscripts/git/subtrees/sync_remote_repo.sh
-          bashscripts/git/subtrees/sync_remote_repo.sh laraxot
+          bash -x bashscripts/git/subtrees/sync_remote_repo.sh laraxot
         env:
           BASHSCRIPTS_TOKEN: ${{ secrets.BASHSCRIPTS_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
           CI: true
+          PROJECT_ROOT: ${{ github.workspace }}
 
       - name: Commit synced files to main repository
         run: |
