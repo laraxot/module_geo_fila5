@@ -85,6 +85,23 @@ Scripts must be categorized (ai/, maintenance/, backup/, etc.) and documented in
 Documentation files (`.md`) go in `docs/`, NOT in root.
 See: `bashscripts/docs/script-location-rule.md` and `docs/FILE_LOCATION_RULES.md`
 
+### AI Agent Junction Rule (CRITICAL)
+**All AI agent directories (`.qwen`, `.cursor`, `.claude`) MUST be centralized in `bashscripts/ai/` with symlinks.**
+
+Structure:
+```
+bashscripts/ai/.qwen/     # Source of truth (commands, skills, rules)
+.qwen/                    # Symlink -> bashscripts/ai/.qwen
+laravel/.qwen/            # Symlink -> ../bashscripts/ai/.qwen
+```
+
+This ensures:
+- Single source of truth for all AI files
+- Easy synchronization across project
+- Clean project structure
+
+See: `bashscripts/docs/AI_AGENT_JUNCTION_RULE.md`
+
 ### Packages
 Packages go in `Modules/{Module}/composer.json`. Run `composer go` from `laravel/`.
 

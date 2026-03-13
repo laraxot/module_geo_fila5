@@ -135,7 +135,22 @@ docs/xot/  ❌ (unless it's cross-module)
 
 ---
 
-## Temporary Files
+## AI Agent Directories
+
+### Centralized in `bashscripts/ai/`
+
+All AI agent directories (`.qwen`, `.cursor`, `.claude`, etc.) MUST be:
+
+1. **Stored in**: `bashscripts/ai/.{agent}/`
+2. **Symlinked from**: `.{agent}/` and `laravel/.{agent}/`
+
+| Agent | Source | Symlinks |
+|-------|--------|----------|
+| **Qwen** | `bashscripts/ai/.qwen/` | `.qwen/`, `laravel/.qwen/` |
+| **Cursor** | `bashscripts/ai/.cursor/` | `.cursor/`, `laravel/.cursor/` |
+| **Claude** | `bashscripts/ai/.claude/` | `.claude/`, `laravel/.claude/` |
+
+**Documentation**: `bashscripts/docs/AI_AGENT_JUNCTION_RULE.md`
 
 ### Delete or Move to `storage/`
 
