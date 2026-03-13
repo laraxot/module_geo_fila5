@@ -1,47 +1,12 @@
-# Lang - User Research
+# User Research: Lang Module
 
-> Ricerca utente e ipotesi di validazione. Modulo.
-> Coverage research stimata: 68% documentato.
+## 🔬 Research Goals
+Understand how developers manage translations and where they struggle.
 
-## Utenti principali
+## 💡 Key Findings
+- Developers forget to update the secondary language (English) when adding Italian keys.
+- Managing JSON files is error-prone.
 
-- utente interno che dipende da **Lang**
-- amministratore o operatore che lo configura
-- sviluppatore che lo integra o estende
-
-## Job To Be Done
-
-- usare il componente senza dover ricostruire il dominio da zero
-- capire rapidamente cosa e' supportato e cosa no
-- fidarsi di output, UI e documentazione
-
-## Pain points ipotizzati
-
-- ambiguita' tra stato reale e stato dichiarato
-- passaggi manuali non documentati
-- test o quality gates non sufficientemente vicini al business
-
-## Domande di ricerca
-
-1. Quale problema reale risolve oggi Lang?
-2. Dove l'esperienza si rompe per admin, utenti o sviluppatori?
-3. Quale 20% di miglioramenti sblocca l'80% del valore?
-
-## Evidenze da raccogliere
-
-- bug runtime e regressioni
-- issue ricorrenti
-- tempi di completamento dei flussi principali
-- output testuali o visuali che risultano ambigui
-
-## Decisioni attese
-
-- confermare o restringere lo scope
-- spostare i gap in roadmap e sprint
-- decidere se rafforzare, convergere o ridurre il componente
-
-## Collegamenti
-
-- [PRD](prd.md)
-- [Sprint Planning Meeting](sprint-planning-meeting.md)
-- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)
+## ✅ Actionable Insights / Next Steps
+- Implement a "Missing Translation" alert in the admin dashboard.
+- Standardize on PHP files for translations to allow better static analysis.

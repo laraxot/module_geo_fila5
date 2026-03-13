@@ -1,61 +1,9 @@
-# Roadmap tema One
+# Product Roadmap - One Theme
 
-## 🧪 Testing e TDD
+## 🎯 Vision & Strategy
+Develop the One Theme as a high-performance, specialized component of the Laraxot ecosystem.
 
-### Principi TDD
-- **Red-Green-Refactor**: Test che fallisce → Codice minimo → Refactor
-- **Test Coverage**: Minimo 80% per componenti theme
-
-### Struttura Test
-```
-Themes/One/tests/
-├── Unit/
-│   └── Components/
-├── Feature/
-│   └── Blade/
-├── Browser/
-│   └── NavigationTest.php
-├── Pest.php
-└── TestCase.php
-```
-
-### Best Practices
-- [ ] Browser test per navigazione
-- [ ] Test componenti Blade
-- [ ] Visual regression testing
-
-### Comandi
-```bash
-./vendor/bin/pest Themes/One/tests --coverage --min=80
-```
-
-## Stato generale
-
-- **Completato**: 50%
-- **In corso**: 30%
-- **Da fare**: 20%
-
-## Roadmap operativa
-
-1. **Integrazione grafici e dashboard** — **55%**
-   - Dettaglio: [`docs/roadmap/charts-integration.md`](roadmap/charts-integration.md)
-2. **Integrazione HTML2PDF e output stampa** — **45%**
-   - Dettaglio: [`docs/roadmap/html2pdf-integration.md`](roadmap/html2pdf-integration.md)
-3. **Qualita del codice e strumenti** — **60%**
-   - Dettaglio: [`docs/roadmap/code-quality.md`](roadmap/code-quality.md)
-4. **Namespace e convenzioni tema** — **70%**
-   - Dettaglio: [`docs/roadmap/namespace-conventions.md`](roadmap/namespace-conventions.md)
-5. **Consolidamento documentazione** — **40%**
-   - Dettaglio: [roadmap/documentation-consolidation](roadmap/documentation-consolidation.md)
-
-## Collegamenti correlati
-
-- [README](README.md)
-- [`theme-analysis.md`](theme-analysis.md)
-- [`charts-integration.md`](charts-integration.md)
-- [`html2pdf-integration.md`](html2pdf-integration.md)
-- [code-quality-tools](code-quality-tools.md)
-
----
-
-**Ultimo aggiornamento**: Febbraio 2026
+## 🗓️ Timeline
+### Q1 2026: Foundation
+- Standardize One Theme Documentation - *Status: Shipped*
+- PHPStan Level 10 Audit - *Status: In Progress*

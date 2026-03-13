@@ -12,6 +12,7 @@
 - LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
 - **Rule**: PHPSTAN LEVEL 10 DYNAMIC RELATIONSHIPS - When defining dynamic Eloquent relationships (like `scheda()` in `Ptv` module), always resolve the model class string with a fallback to the base model (e.g., `Modules\Progressioni\Models\Scheda`) and use `Webmozart\Assert\Assert::classExists($modelClass)` for type narrowing.
 - **Rule**: ISSUE & DISCUSSION COORDINATION - Track all PHPStan Level 10 fixes via module-specific GitHub Issues (IDs #85-100) and link them to the central coordination Discussion #84. Every commit must reference the relevant issue.
+- **Rule**: Every module and theme MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `laravel/Modules/Xot/_xot.code-workspace`). Any misplaced files (like `_activity.code-workspace` in `Xot`) must be deleted immediately.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context
@@ -30,7 +31,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Follow module-per-module workflow: complete one module before moving to the next.
 - Use MCP tools when encountering file access limitations.
 - **Rule**: Every change MUST be verified with PHPStan lvl10, PHPMD, and PHPInsights.
-- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace`.
+- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `Modules/Xot/_xot.code-workspace`, `Modules/Activity/_activity.code-workspace`).
 - **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
 - **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.

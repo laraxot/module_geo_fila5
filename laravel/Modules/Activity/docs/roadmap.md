@@ -1,37 +1,9 @@
-# Roadmap (Module Activity)
+# Product Roadmap - Activity Module
 
-## Current roadmap
+## 🎯 Vision & Strategy
+Develop the Activity Module as a high-performance, specialized component of the Laraxot ecosystem.
 
-- [Overview](roadmap/00-overview.md)
-- [Now](roadmap/01-now.md)
-- [Next](roadmap/02-next.md)
-- [Later](roadmap/03-later.md)
-- [Risks and dependencies](roadmap/04-risks.md)
-
-## Legacy / existing roadmap docs
-
-- [phpstan-override-fix-roadmap.md](phpstan-override-fix-roadmap.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md) (✅ Completed)
-- [roadmap/00-index.md](roadmap/00-index.md)
-- [roadmap/00-overview.md](roadmap/00-overview.md)
-- [roadmap/01-current-state.md](roadmap/01-current-state.md)
-- [roadmap/01-now.md](roadmap/01-now.md)
-- [roadmap/02-goals.md](roadmap/02-goals.md)
-- [roadmap/02-next.md](roadmap/02-next.md)
-- [roadmap/03-later.md](roadmap/03-later.md)
-- [roadmap/03-workstreams.md](roadmap/03-workstreams.md)
-- [roadmap/04-milestones.md](roadmap/04-milestones.md)
-- [roadmap/04-risks.md](roadmap/04-risks.md)
-- [roadmap/05-risks.md](roadmap/05-risks.md)
-- [roadmap/README.md](roadmap/README.md)
-- [roadmap/legacy-roadmap.md](roadmap/legacy-roadmap.md)
-- [roadmap/legacy/legacy-roadmap-and-issues.md](roadmap/legacy/legacy-roadmap-and-issues.md)
-- [roadmap/legacy/legacy-roadmap-vision.md](roadmap/legacy/legacy-roadmap-vision.md)
-- [roadmap/legacy/legacy-roadmap-x.md](roadmap/legacy/legacy-roadmap-x.md)
-- [roadmap/phases.md](roadmap/phases.md)
-- [roadmap/quality.md](roadmap/quality.md)
-- [roadmap/tasks/enhanced-activity-filtering.md](roadmap/tasks/enhanced-activity-filtering.md)
-- [roadmap/tasks/gdpr-compliance-enhancement.md](roadmap/tasks/gdpr-compliance-enhancement.md)
-- [roadmap/tasks/realtime-monitoring-dashboard.md](roadmap/tasks/realtime-monitoring-dashboard.md)
-- [roadmap/vision.md](roadmap/vision.md)
-- [stabilization-roadmap.md](stabilization-roadmap.md)
+## 🗓️ Timeline
+### Q1 2026: Foundation
+- Standardize Activity Module Documentation - *Status: Shipped*
+- PHPStan Level 10 Audit - *Status: In Progress*

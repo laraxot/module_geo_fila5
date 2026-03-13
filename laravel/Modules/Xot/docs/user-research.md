@@ -1,47 +1,19 @@
-# Xot - User Research
+# User Research: Xot Framework
 
-> Ricerca utente e ipotesi di validazione. Modulo.
-> Coverage research stimata: 78% documentato.
+## 🔬 Research Goals
+Identify bottlenecks in developer productivity when working with XotBase classes.
 
-## Utenti principali
+## 👥 Participants
+- Lead Backend Developers.
+- AI Agents (via usage logs and error patterns).
 
-- utente interno che dipende da **Xot**
-- amministratore o operatore che lo configura
-- sviluppatore che lo integra o estende
+## 💡 Key Findings
+- Dependency Injection in Actions is a common source of confusion (resolved by standardizing on `app()` resolution).
+- Automated discovery of translations saves significant time.
 
-## Job To Be Done
+## 💬 Notable Quotes
+> "The XotBaseResource makes Filament development significantly faster by handling all the boilerplate."
 
-- usare il componente senza dover ricostruire il dominio da zero
-- capire rapidamente cosa e' supportato e cosa no
-- fidarsi di output, UI e documentazione
-
-## Pain points ipotizzati
-
-- ambiguita' tra stato reale e stato dichiarato
-- passaggi manuali non documentati
-- test o quality gates non sufficientemente vicini al business
-
-## Domande di ricerca
-
-1. Quale problema reale risolve oggi Xot?
-2. Dove l'esperienza si rompe per admin, utenti o sviluppatori?
-3. Quale 20% di miglioramenti sblocca l'80% del valore?
-
-## Evidenze da raccogliere
-
-- bug runtime e regressioni
-- issue ricorrenti
-- tempi di completamento dei flussi principali
-- output testuali o visuali che risultano ambigui
-
-## Decisioni attese
-
-- confermare o restringere lo scope
-- spostare i gap in roadmap e sprint
-- decidere se rafforzare, convergere o ridurre il componente
-
-## Collegamenti
-
-- [PRD](prd.md)
-- [Sprint Planning Meeting](sprint-planning-meeting.md)
-- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)
+## ✅ Actionable Insights / Next Steps
+- Simplify the `XotBaseServiceProvider` boot process.
+- Improve documentation for the `HasXotTable` trait.

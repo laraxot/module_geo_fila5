@@ -28,6 +28,63 @@ app(CreateClientAction::class)->execute($data);
 ### Short array syntax (CRITICAL)
 **ALWAYS** `[]` — **NEVER** `array()` in any PHP file.
 
+### Workspace file naming (CRITICAL)
+**Every module MUST have exactly ONE** `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace`.
+
+Examples:
+- `Modules/Xot/_xot.code-workspace` ✓
+- `Modules/Activity/_activity.code-workspace` ✓
+- `Modules/CertFisc/_cert_fisc.code-workspace` ✓
+
+**NEVER** have multiple workspace files in one module directory.
+See: `laravel/Modules/Xot/docs/workspace-file-rule.md`
+
+### Module directory structure (CRITICAL)
+**All source code MUST be in `app/`, NEVER in module root.**
+
+Correct locations:
+- `Modules/Xot/app/Datas/XotData.php` ✓
+- `Modules/Xot/app/Filament/Forms/Components/XotBasePlaceholder.php` ✓
+- `Modules/Xot/app/Services/ArrayService.php` ✓
+
+Removed from root:
+- `Modules/Xot/Datas/` ❌ (entire folder)
+- `Modules/Xot/Filament/` ❌ (entire folder)
+- `Modules/Xot/Services/` ❌ (entire folder)
+- `Modules/Xot/Helpers/` ❌ (entire folder)
+- `Modules/Xot/helpers/` ❌ (entire folder, lowercase)
+
+Data Objects, Actions, Models, Services, Filament components, Helpers all go in `app/`.
+See: `laravel/Modules/Xot/docs/module-directory-structure-rule.md`
+
+### Backup/Copy files (CRITICAL)
+**NEVER commit backup or copy files.**
+
+Patterns in `.gitignore` (root and module):
+- `* copy.*` - Copy files (e.g., `.gitconfig copy`)
+- `*.copy` - Files with .copy extension
+- `*.bak`, `*.backup` - Backup files
+- `*.old`, `*_old` - Old files
+
+All existing copy/backup files deleted (2026-03-13).
+See: `laravel/Modules/Xot/docs/backup-copy-files-cleanup-rule.md`
+
+### Script Location Rule (CRITICAL)
+**All `.sh` scripts MUST be in `bashscripts/`, NEVER in `docs/` or root.**
+
+Correct:
+- `bashscripts/ollama-optimize.sh` ✓
+- `bashscripts/ai/ollama-cmd.sh` ✓
+- `bashscripts/docs/ollama/ollama-optimize.md` (documentation) ✓
+
+Wrong:
+- `docs/ollama-optimize.sh` ✗
+- `workspace-discussion.md` in root ✗ (should be `docs/`)
+
+Scripts must be categorized (ai/, maintenance/, backup/, etc.) and documented in `bashscripts/docs/{category}/`.
+Documentation files (`.md`) go in `docs/`, NOT in root.
+See: `bashscripts/docs/script-location-rule.md` and `docs/FILE_LOCATION_RULES.md`
+
 ### Packages
 Packages go in `Modules/{Module}/composer.json`. Run `composer go` from `laravel/`.
 
