@@ -6,19 +6,21 @@ namespace Modules\Incentivi\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Incentivi\Models\Settlement;
+use Modules\Incentivi\Models\Project;
 
 class SettlementFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = Settlement::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'denominazione' => 'Settlement ' . rand(1, 100),
+            'tipologia' => 'Tipo Test',
+            'importo' => 1000.00,
+            'project_id' => Project::factory(),
+            'model_type' => Project::class,
+            'model_id' => Project::factory(),
+        ];
     }
 }

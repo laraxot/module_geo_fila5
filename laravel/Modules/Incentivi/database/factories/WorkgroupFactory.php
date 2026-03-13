@@ -9,16 +9,12 @@ use Modules\Incentivi\Models\Workgroup;
 
 class WorkgroupFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = Workgroup::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'denominazione' => 'Workgroup ' . rand(1, 50),
+        ];
     }
 }

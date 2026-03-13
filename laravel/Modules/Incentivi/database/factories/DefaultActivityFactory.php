@@ -9,16 +9,16 @@ use Modules\Incentivi\Models\DefaultActivity;
 
 class DefaultActivityFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = DefaultActivity::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'nome' => 'Default Activity ' . rand(1, 100),
+            'tipo' => 'Default Type',
+            'quota_percentuale' => 5,
+            'importo' => 0,
+            'anno_competenza' => '2024',
+        ];
     }
 }

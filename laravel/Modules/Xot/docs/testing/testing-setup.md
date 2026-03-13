@@ -31,11 +31,7 @@ APP_URL=http://localhost
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-<<<<<<< .merge_file_N748rE
 DB_DATABASE=healthcare_app_data_test
-=======
-DB_DATABASE=ptvx_data_test
->>>>>>> .merge_file_u4Ych8
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 
@@ -140,6 +136,7 @@ abstract class TestCase extends BaseTestCase
 
 ## Important Rules
 
+<<<<<<< .merge_file_P1YYmS
 <<<<<<< HEAD
 ### Never Use `migrate:fresh` in Tests (CRITICAL)
 
@@ -184,6 +181,8 @@ Then never repeat it again in the suite.
 
 =======
 >>>>>>> e3956292 (.)
+=======
+>>>>>>> .merge_file_HAqIxO
 ### Never Use RefreshDatabase
 
 The project uses `DatabaseTransactions` instead of `RefreshDatabase` because:

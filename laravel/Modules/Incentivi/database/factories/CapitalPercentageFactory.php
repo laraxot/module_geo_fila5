@@ -9,16 +9,17 @@ use Modules\Incentivi\Models\CapitalPercentage;
 
 class CapitalPercentageFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = CapitalPercentage::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'nome' => 'Capital % Range ' . rand(1, 10),
+            'descrizione' => 'Descrizione Test',
+            'valore' => 2.0,
+            'tipologia' => 'Tipo A',
+            'da' => 0,
+            'a' => 100000,
+        ];
     }
 }
