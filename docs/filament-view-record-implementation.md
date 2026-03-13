@@ -141,7 +141,6 @@ class ViewLocation extends XotBaseViewRecord
                             TextEntry::make('created_by')
                                 ->label('Creato da'),
                             TextEntry::make('updated_by')
-                                ->label('Aggiornato da'),
                         ]),
                 ])
                 ->collapsible(),
@@ -177,7 +176,6 @@ class ViewLocation extends XotBaseViewRecord
 - **Data Creazione**: Timestamp di creazione
 - **Data Aggiornamento**: Timestamp di ultimo aggiornamento
 - **Creato da**: Utente che ha creato il record
-- **Aggiornato da**: Utente che ha aggiornato il record
 
 ## Componenti Utilizzati
 
@@ -275,8 +273,8 @@ protected function getInfolistSchema()
 
 ## Collegamenti e Riferimenti
 
-- [Filament ViewRecord Errors (Root Docs)](../../docs/filament-view-record-errors.md)
-- [Testing Analysis Documentation](../../docs/testing-analysis.md)
+- [Filament ViewRecord Errors (Root Docs)](../../../docs/filament-view-record-errors.md)
+- [Testing Analysis Documentation](../../../docs/testing-analysis.md)
 - [XotBaseViewRecord Source Code](../../../Xot/app/Filament/Resources/Pages/XotBaseViewRecord.php)
 - [Location Model](../../app/Models/Location.php)
 - [LocationResource](../../app/Filament/Resources/LocationResource.php)

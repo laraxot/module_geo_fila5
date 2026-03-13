@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-uses(Modules\Geo\Tests\TestCase::class);
+namespace Modules\Geo\Tests\Unit\Filament;
+
+uses(\Modules\Geo\Tests\TestCase::class);
 
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
