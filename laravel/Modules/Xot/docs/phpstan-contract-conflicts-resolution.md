@@ -17,8 +17,10 @@ Documentazione della risoluzione dei conflitti tra contratti e classi Eloquent n
 - `toArray(): array` - Conflitto con signature di Eloquent
 - `forceFill(array $attributes): static` - Conflitto con signature di Eloquent
 - `withoutRelations(): static` - Conflitto con signature di Eloquent
+- `getKey(): mixed` - Rimossa la tipizzazione di ritorno per compatibilità con Eloquent core (che non ha typehint in PHP source)
+- `getRelationValue(string $key): mixed` - Rimossa la tipizzazione per compatibilità con `HasAttributes` trait di Eloquent
 
-**Solution**: Rimossi tutti i metodi che duplicavano funzionalità Eloquent native
+**Solution**: Rimossi tutti i metodi che duplicavano funzionalità Eloquent native o che introducevano incompatibilità di signature.
 
 ### 2. UserContract Simplification
 **Problem**: Il `UserContract` era troppo complesso e conteneva metodi in conflitto

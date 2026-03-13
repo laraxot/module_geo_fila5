@@ -2,7 +2,7 @@
 
 ## 🚨 **AUDIT CRITICO - ERRORI GRAVI IDENTIFICATI**
 
-### **Data Audit**: [DATE]
+### **Data Audit**: 2025-08-01
 ### **File**: `/Modules/Notify/app/Filament/Tables/Columns/ContactColumn.php`
 ### **Gravità**: CRITICA - REFACTOR COMPLETO RICHIESTO
 
@@ -210,14 +210,14 @@ Implementare ContactColumn che:
 
 ## 🔗 **COLLEGAMENTI**
 
-- [Analisi Errori Root](../../../docs/contactcolumn-critical-errors-analysis.md)
+- [Analisi Errori Root](../../docs/contactcolumn-critical-errors-analysis.md)
 - [ContactTypeEnum](../app/Enums/ContactTypeEnum.php)
 - [Pattern ViewColumn Filament](https://filamentphp.com/docs/3.x/tables/columns/view)
 - [Accessibilità WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
 
 ---
 
-*Audit completato: [DATE]*  
+*Audit completato: 2025-08-01*  
 *Gravità: CRITICA*  
 *Stato: REFACTOR RICHIESTO*  
 *Responsabile: Laraxot Team*

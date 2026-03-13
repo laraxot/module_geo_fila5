@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Actions;
 
-=======
->>>>>>> 8e583cd (.)
 use Modules\Notify\Actions\NetfunSendAction;
 use Modules\Notify\Datas\SmsData;
 use Spatie\QueueableAction\QueueableAction;
@@ -14,7 +11,7 @@ use Spatie\QueueableAction\QueueableAction;
 describe('NetfunSendAction', function () {
     // Test strutturali senza istanziazione - la classe richiede config() nel costruttore
     it('has correct class definition', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
 
         expect($reflection->isInstantiable())->toBeTrue();
     });
@@ -25,7 +22,7 @@ describe('NetfunSendAction', function () {
     });
 
     it('has execute method with correct signature', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
         $method = $reflection->getMethod('execute');
 
         expect($method->isPublic())->toBeTrue();
@@ -33,7 +30,7 @@ describe('NetfunSendAction', function () {
     });
 
     it('execute accepts SmsData parameter', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
         $method = $reflection->getMethod('execute');
         $params = $method->getParameters();
 
@@ -41,7 +38,7 @@ describe('NetfunSendAction', function () {
     });
 
     it('execute returns array', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
         $method = $reflection->getMethod('execute');
         $returnType = $method->getReturnType();
 
@@ -49,38 +46,34 @@ describe('NetfunSendAction', function () {
     });
 
     it('has token property', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
 
         expect($reflection->hasProperty('token'))->toBeTrue();
     });
 
     it('has vars property', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
 
         expect($reflection->hasProperty('vars'))->toBeTrue();
     });
 
     it('uses strict types', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
         $filename = $reflection->getFileName();
 
         expect($filename)->not->toBeNull();
         $content = file_get_contents($filename);
-<<<<<<< HEAD
         expect($content)->toContain('');
-=======
-        expect($content)->toContain('declare(strict_types=1);');
->>>>>>> 8e583cd (.)
     });
 
     it('has correct namespace', function () {
-        $reflection = new ReflectionClass(NetfunSendAction::class);
+        $reflection = new \ReflectionClass(NetfunSendAction::class);
 
         expect($reflection->getNamespaceName())->toBe('Modules\Notify\Actions');
     });
 
     it('has required imports', function () {
-        $filename = (new ReflectionClass(NetfunSendAction::class))->getFileName();
+        $filename = (new \ReflectionClass(NetfunSendAction::class))->getFileName();
         $content = file_get_contents($filename);
 
         expect($content)->toContain('use GuzzleHttp\Client;');

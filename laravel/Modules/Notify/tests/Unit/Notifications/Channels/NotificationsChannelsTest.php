@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Notifications\Channels;
 
-=======
->>>>>>> 8e583cd (.)
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
@@ -126,4 +123,4 @@ test('telegram notifications channel throws when notification has no toTelegram 
     $channel = new TelegramChannel();
 
     $channel->send(makeTelegramNotifiableDummy(), new class extends Notification {});
-})->throws(Exception::class);
+})->throws(\Exception::class);

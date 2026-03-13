@@ -174,6 +174,18 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait as HasSchemalessAttrib
  * @method static Builder<static>|Profile whereStreetNumberShort($value)
  * @method static Builder<static>|Profile whereTimezone($value)
  *
+ * @property string|null $type
+ * @property string|null $birth_date
+ * @property string|null $gender
+ * @property bool        $is_active
+ *
+ * @method static Builder<static>|Profile whereBirthDate($value)
+ * @method static Builder<static>|Profile whereExtra($value)
+ * @method static Builder<static>|Profile whereGender($value)
+ * @method static Builder<static>|Profile whereIsActive($value)
+ * @method static Builder<static>|Profile whereType($value)
+ * @method static Builder<static>|Profile whereUserName($value)
+ *
  * @mixin \Eloquent
  */
 class Profile extends BaseProfile implements HasMedia
@@ -216,4 +228,27 @@ class Profile extends BaseProfile implements HasMedia
      * @var string
      */
     protected $table = 'profiles';
+
+    /**
+     * Generate Schema.org ProfilePage/Person JSON-LD structured data.
+     *
+     * @see https://schema.org/Person
+     * @see https://schema.org/ProfilePage
+     *
+     * @return array<string, mixed>
+     */
+    public function toSchemaOrg(): array
+    {
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'Person',
+            'name' => $this->full_name,
+            'givenName' => $this->first_name,
+            'familyName' => $this->last_name,
+            'email' => $this->email,
+            'description' => $this->bio,
+            'image' => $this->avatar ? asset($this->avatar) : null,
+            'url' => url('/profile/'.$this->user_name),
+        ];
+    }
 }

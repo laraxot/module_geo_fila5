@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Actions;
 
-=======
->>>>>>> 8e583cd (.)
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Messages\MailMessage;
 use Modules\Notify\Actions\BuildMailMessageAction;
@@ -18,7 +15,7 @@ use Spatie\QueueableAction\QueueableAction;
 describe('BuildMailMessageAction', function () {
     // Test strutturali - non richiede container per la classe
     it('has correct class definition', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
 
         expect($reflection->isInstantiable())->toBeTrue();
     });
@@ -29,7 +26,7 @@ describe('BuildMailMessageAction', function () {
     });
 
     it('has execute method with correct signature', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
         $method = $reflection->getMethod('execute');
 
         expect($method->isPublic())->toBeTrue();
@@ -37,7 +34,7 @@ describe('BuildMailMessageAction', function () {
     });
 
     it('has correct return type', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
         $method = $reflection->getMethod('execute');
         $returnType = $method->getReturnType();
 
@@ -45,33 +42,29 @@ describe('BuildMailMessageAction', function () {
     });
 
     it('has private decodeRichText method', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
         $method = $reflection->getMethod('decodeRichText');
 
         expect($method->isPrivate())->toBeTrue();
     });
 
     it('uses strict types', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
         $filename = $reflection->getFileName();
 
         expect($filename)->not->toBeNull();
         $content = file_get_contents($filename);
-<<<<<<< HEAD
         expect($content)->toContain('');
-=======
-        expect($content)->toContain('declare(strict_types=1);');
->>>>>>> 8e583cd (.)
     });
 
     it('has correct namespace', function () {
-        $reflection = new ReflectionClass(BuildMailMessageAction::class);
+        $reflection = new \ReflectionClass(BuildMailMessageAction::class);
 
         expect($reflection->getNamespaceName())->toBe('Modules\Notify\Actions');
     });
 
     it('has required imports', function () {
-        $filename = (new ReflectionClass(BuildMailMessageAction::class))->getFileName();
+        $filename = (new \ReflectionClass(BuildMailMessageAction::class))->getFileName();
         $content = file_get_contents($filename);
 
         expect($content)->toContain('use Modules\Notify\Actions\NotifyTheme\Get;');

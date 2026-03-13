@@ -75,3 +75,4 @@ node_modules/
 
 # PHPStan output files
 phpstan*.json
+_docs/

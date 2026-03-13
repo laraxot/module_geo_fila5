@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Datas;
 
-=======
->>>>>>> 8e583cd (.)
 use Modules\Notify\Datas\SmsData;
 
 describe('SmsData', function () {
     it('can be referenced via reflection without instantiation', function () {
-        $reflection = new ReflectionClass(SmsData::class);
+        $reflection = new \ReflectionClass(SmsData::class);
 
         expect($reflection->isInstantiable())->toBeTrue();
     });
@@ -21,7 +18,7 @@ describe('SmsData', function () {
     });
 
     it('has required properties', function () {
-        $reflection = new ReflectionClass(SmsData::class);
+        $reflection = new \ReflectionClass(SmsData::class);
         $properties = $reflection->getProperties();
 
         $propertyNames = array_map(fn ($p) => $p->getName(), $properties);
@@ -36,20 +33,20 @@ describe('SmsData', function () {
     });
 
     it('from method is static', function () {
-        $reflection = new ReflectionClass(SmsData::class);
+        $reflection = new \ReflectionClass(SmsData::class);
         $fromMethod = $reflection->getMethod('from');
 
         expect($fromMethod->isStatic())->toBeTrue();
     });
 
     it('has constructor', function () {
-        $reflection = new ReflectionClass(SmsData::class);
+        $reflection = new \ReflectionClass(SmsData::class);
 
         expect($reflection->getConstructor())->not->toBeNull();
     });
 
     it('constructor accepts array parameter', function () {
-        $reflection = new ReflectionClass(SmsData::class);
+        $reflection = new \ReflectionClass(SmsData::class);
         $constructor = $reflection->getConstructor();
         $params = $constructor->getParameters();
 

@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Actions;
 
-=======
->>>>>>> 8e583cd (.)
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification as IlluminateNotification;
 use Illuminate\Support\Facades\Notification;
@@ -50,4 +47,4 @@ test('send notification to recipient throws for invalid email', function () {
         'invalid-email',
         makeDummyNotificationForRecipient(),
     );
-})->throws(InvalidArgumentException::class);
+})->throws(\InvalidArgumentException::class);

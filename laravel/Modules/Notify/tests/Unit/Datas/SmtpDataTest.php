@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Datas;
 
-=======
->>>>>>> 8e583cd (.)
 use Modules\Notify\Datas\SmtpData;
 
 describe('SmtpData', function () {
     it('can be referenced via reflection without instantiation', function () {
-        $reflection = new ReflectionClass(SmtpData::class);
+        $reflection = new \ReflectionClass(SmtpData::class);
 
         expect($reflection->isInstantiable())->toBeTrue();
     });
@@ -21,13 +18,13 @@ describe('SmtpData', function () {
     });
 
     it('extends Spatie Data', function () {
-        $reflection = new ReflectionClass(SmtpData::class);
+        $reflection = new \ReflectionClass(SmtpData::class);
 
         expect($reflection->isSubclassOf(\Spatie\LaravelData\Data::class))->toBeTrue();
     });
 
     it('has required properties', function () {
-        $reflection = new ReflectionClass(SmtpData::class);
+        $reflection = new \ReflectionClass(SmtpData::class);
         $properties = $reflection->getProperties();
 
         $propertyNames = array_map(fn ($p) => $p->getName(), $properties);

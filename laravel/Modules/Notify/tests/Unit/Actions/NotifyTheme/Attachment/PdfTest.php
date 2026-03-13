@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 namespace Modules\Notify\Tests\Unit\Actions\NotifyTheme\Attachment;
 
-=======
->>>>>>> 8e583cd (.)
 use Modules\Notify\Actions\NotifyTheme\Attachment\Pdf;
 use Modules\Notify\Datas\AttachmentData;
 use Spatie\QueueableAction\QueueableAction;
@@ -26,7 +23,7 @@ describe('NotifyTheme\Attachment\Pdf', function () {
     });
 
     it('has execute method with correct signature', function () {
-        $reflection = new ReflectionClass($action);
+        $reflection = new \ReflectionClass($action);
         $method = $reflection->getMethod('execute');
 
         expect($method->isPublic())->toBeTrue();
@@ -34,7 +31,7 @@ describe('NotifyTheme\Attachment\Pdf', function () {
     });
 
     it('execute accepts string and array parameters', function () {
-        $reflection = new ReflectionClass($action);
+        $reflection = new \ReflectionClass($action);
         $method = $reflection->getMethod('execute');
         $params = $method->getParameters();
 
@@ -43,7 +40,7 @@ describe('NotifyTheme\Attachment\Pdf', function () {
     });
 
     it('execute returns AttachmentData', function () {
-        $reflection = new ReflectionClass($action);
+        $reflection = new \ReflectionClass($action);
         $method = $reflection->getMethod('execute');
         $returnType = $method->getReturnType();
 
@@ -51,7 +48,7 @@ describe('NotifyTheme\Attachment\Pdf', function () {
     });
 
     it('uses strict types', function () {
-        $reflection = new ReflectionClass($action);
+        $reflection = new \ReflectionClass($action);
         $filename = $reflection->getFileName();
 
         expect($filename)->not->toBeNull();
@@ -60,13 +57,13 @@ describe('NotifyTheme\Attachment\Pdf', function () {
     });
 
     it('has correct namespace', function () {
-        $reflection = new ReflectionClass($action);
+        $reflection = new \ReflectionClass($action);
 
         expect($reflection->getNamespaceName())->toBe('Modules\Notify\Actions\NotifyTheme\Attachment');
     });
 
     it('has required imports', function () {
-        $filename = (new ReflectionClass($action));
+        $filename = (new \ReflectionClass($action));
         $content = file_get_contents($filename);
 
         expect($content)->toContain('use Modules\Notify\Actions\NotifyTheme\Get);');
