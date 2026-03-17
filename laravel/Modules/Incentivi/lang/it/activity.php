@@ -176,6 +176,14 @@ return [
         'submit' => [
             'tooltip' => 'submit',
         ],
+        'view' => [
+            'tooltip' => 'view',
+            'icon' => 'view',
+            'label' => 'view',
+        ],
+        'layout' => [
+            'tooltip' => 'layout',
+        ],
     ],
     'sections' => [
         'Informazioni' => [

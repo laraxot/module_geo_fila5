@@ -10,4 +10,13 @@ use Modules\Incentivi\Filament\Resources\WorkgroupResource;
 class CreateWorkgroup extends CreateRecord
 {
     protected static string $resource = WorkgroupResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        $record = $this->getRecord();
+        $url = static::getResource()::getUrl('edit', ['record' => $record]);
+
+        return is_string($url) ? $url : '';
+    }
 }
+

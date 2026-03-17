@@ -9,16 +9,18 @@ use Modules\Incentivi\Models\Employee;
 
 class EmployeeFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     */
     protected $model = Employee::class;
 
-    /**
-     * Define the model's default state.
-     */
     public function definition(): array
     {
-        return [];
+        return [
+            'matricola' => rand(1000, 99999),
+            'cognome' => 'Cognome Test',
+            'nome' => 'Nome Test',
+            'sesso' => 'm',
+            'codice_fiscale' => 'RSSMRA80A01H501U',
+            'posizione_inail' => 'Posizione Test',
+            'tipologia' => 'Tipologia Test',
+        ];
     }
 }

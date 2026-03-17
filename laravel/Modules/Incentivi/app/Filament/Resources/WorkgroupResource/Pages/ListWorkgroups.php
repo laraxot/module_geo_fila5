@@ -67,10 +67,16 @@ class ListWorkgroups extends XotBaseListRecords
                 ->beforeReplicaSaved(function (Workgroup $replica): void {
                     $replica->denominazione .= ' (copia)';
                 })
+                ->after(function (Workgroup $replica, Workgroup $record): void {
+                    if ($record->employees()->exists()) {
+                        $replica->employees()->attach($record->employees->pluck('id')->toArray());
+                    }
+                })
                 ->modal(false)
                 ->tooltip('duplica')
                 // ->excludeAttributes(['matricola'])
                 ->iconButton(),
         ];
     }
+
 }

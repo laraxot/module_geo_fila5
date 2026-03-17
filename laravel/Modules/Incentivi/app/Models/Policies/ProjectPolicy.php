@@ -75,6 +75,14 @@ class ProjectPolicy extends IncentiviBasePolicy
     }
 
     /**
+     * Determine whether the user can delete any projects.
+     */
+    public function deleteAny(UserContract $user): bool
+    {
+        return $this->isIncentiviAdmin($user);
+    }
+
+    /**
      * Determine whether the user can approve the project.
      */
     public function approve(UserContract $user, Project $project): bool

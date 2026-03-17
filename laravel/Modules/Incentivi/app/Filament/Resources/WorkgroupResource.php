@@ -52,7 +52,7 @@ class WorkgroupResource extends XotBaseResource
     {
         return [
             'index' => ListWorkgroups::route('/'),
-            // 'create' => CreateWorkgroup::route('/create'),
+            'create' => CreateWorkgroup::route('/create'),
             'edit' => EditWorkgroup::route('/{record}/edit'),
         ];
     }

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_3KfvPu
 # QWEN.md - Project Context & Development Guide
 
 > **Project**: PTVX Fila5 Mono - HR & Performance Evaluation System  
@@ -499,3 +500,7 @@ e4a54bda feat: Add new module documentation for planning and strategy
 ---
 
 *This QWEN.md is auto-generated context for AI agents. Always verify with actual files and documentation.*
+=======
+## Qwen Added Memories
+- Test rules: Use Pest format exclusively. NEVER use migrate:fresh or database:refresh in tests. Use DatabaseTransactions trait instead for proper transactional test isolation without schema rebuilds.
+>>>>>>> .merge_file_t4ccTz
