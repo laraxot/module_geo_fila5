@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Laravel\Passport\Client as PassportClient;
+use Modules\User\Database\Factories\OauthClientFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
@@ -32,6 +34,7 @@ use Spatie\Permission\Traits\HasRoles;
 final class OauthClient extends PassportClient implements AuthorizableContract
 {
     use Authorizable;
+    use HasFactory;
     use HasRoles;
 
     /** @var string */
@@ -55,6 +58,14 @@ final class OauthClient extends PassportClient implements AuthorizableContract
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass, 'user_id'); // @phpstan-ignore return.type
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): OauthClientFactory
+    {
+        return OauthClientFactory::new();
     }
 
     /**
