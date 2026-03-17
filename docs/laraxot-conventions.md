@@ -534,6 +534,30 @@ public function user(): UserContract
 }
 ```
 
+### Tipizzazione degli Utenti (UserContract)
+
+Per una corretta tipizzazione degli utenti in modelli, action e policy, non utilizzare mai il tipo generico `Model|null`. Utilizzare sempre `UserContract`.
+
+Per maggiori dettagli, consultare [Verifica delle Proprietà nei Modelli Eloquent](eloquent-models-property-verification.md).
+
+#### ✅ CORRETTO nelle Policy
+```php
+use Modules\Xot\Contracts\UserContract;
+
+public function viewAny(?UserContract $user): bool
+{
+    return true;
+}
+```
+
+#### ❌ ERRATO nelle Policy
+```php
+public function viewAny(?Model $user): bool
+{
+    return true;
+}
+```
+
 ## Controlli di Tipo e Validazioni
 
 ### Controlli di Tipo con is_string()
