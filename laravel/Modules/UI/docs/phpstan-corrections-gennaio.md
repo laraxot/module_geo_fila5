@@ -52,26 +52,29 @@ Pagine Resource estendevano direttamente classi Filament invece di XotBase.
 
 #### Soluzione
 
-- **`ViewLocation` (Geo)**:
+- **`ViewLocation` (Geo)**: 
   - Cambiato da `ViewRecord` a `XotBaseViewRecord`
   - Implementato metodo `getInfolistSchema()` richiesto
-- **`EditUser` (User)**:
+- **`EditUser` (User)**: 
   - Cambiato da `EditRecord` a `XotBaseEditRecord`
   - Aggiunto import corretto
-- **`CreateQuestionChart` (<nome progetto>)**:
+<<<<<<< HEAD
+<<<<<<< HEAD
+- **`CreateQuestionChart` (<nome progetto>)**: 
   - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
-- **`EditQuestionChart` (<nome progetto>)**:
-<<<<<<< .merge_file_mPhBKa
-- **`CreateQuestionChart` (healthcare_app)**:
-  - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
-- **`EditQuestionChart` (healthcare_app)**:
+- **`EditQuestionChart` (<nome progetto>)**: 
 =======
-- **`CreateQuestionChart` (ModuloEsempio)**:
+- **`CreateQuestionChart` (Quaeris)**: 
   - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
-- **`EditQuestionChart` (ModuloEsempio)**:
->>>>>>> .merge_file_YOkb3j
+- **`EditQuestionChart` (Quaeris)**: 
+>>>>>>> 161e28f (Lint)
+=======
+- **`CreateQuestionChart` (Quaeris)**: 
+  - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
+- **`EditQuestionChart` (Quaeris)**: 
+>>>>>>> laraxot/develop
   - Cambiato da `EditRecord` a `XotBaseEditRecord`
-- **`ViewPageContent` (Cms)**:
+- **`ViewPageContent` (Cms)**: 
   - Cambiato da `ViewRecord` a `XotBaseViewRecord`
   - Implementato metodo `getInfolistSchema()` richiesto
 
@@ -82,7 +85,7 @@ Query dinamiche su modelli non riconosciute correttamente da PHPStan.
 
 #### Soluzione
 
-- **`LocationSelector`**:
+- **`LocationSelector`**: 
   - Aggiunti type assertions per query builder dinamiche
   - Aggiunto controllo `is_array()` prima di usare risultati query
   - Aggiunto PHPDoc `@var \Illuminate\Database\Eloquent\Builder` per query builder
@@ -94,7 +97,7 @@ Chiamate a metodi privati con `static::` invece di `self::`.
 
 #### Soluzione
 
-- **`QuestionChartResource`**:
+- **`QuestionChartResource`**: 
   - Cambiato `static::` in `self::` per chiamate a metodi privati
   - Risolto errore `staticClassAccess.privateMethod`
 
@@ -212,12 +215,15 @@ class ViewLocation extends XotBaseViewRecord
 - `app/Filament/Forms/Components/TreeField.php`
 - `app/Filament/Forms/Components/LocationSelector.php`
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 ### Modulo <nome progetto>
-<<<<<<< .merge_file_mPhBKa
-### Modulo healthcare_app
 =======
-### Modulo ModuloEsempio
->>>>>>> .merge_file_YOkb3j
+### Modulo Quaeris
+>>>>>>> 161e28f (Lint)
+=======
+### Modulo Quaeris
+>>>>>>> laraxot/develop
 - `app/Filament/Resources/QuestionChartResource.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/CreateQuestionChart.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/EditQuestionChart.php`
@@ -244,6 +250,7 @@ class ViewLocation extends XotBaseViewRecord
 
 ## Riferimenti
 
-- [Regole Architetturali Critiche](../../xot/docs/critical-architecture-rules.md)
+- [Regole Architetturali Critiche](../../Xot/docs/critical-architecture-rules.md)
 - [PHPStan Patterns](./phpstan-patterns.md)
 - [PHPStan Compliance](./phpstan-compliance.md)
+

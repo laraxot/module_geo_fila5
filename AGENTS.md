@@ -33,6 +33,7 @@ See more in: [quick-commands.md](.agents/docs/agents-guide/02-tooling/quick-comm
 - **No constructor DI in Actions** — use `app(ActionClass::class)->execute()`.
 - **No direct Filament extensions** — use `XotBase*` wrappers.
 - **Workspace files**: Only `_{module-name}.code-workspace` in each module folder.
+- **No dates in .md filenames** — use stable semantic names, keep dates inside document body.
 
 See full rules: [critical-rules-summary.md](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
 

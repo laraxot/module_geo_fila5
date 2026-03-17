@@ -55,3 +55,4 @@ public function canTransitionTo(int|string $recordId, string $stateClass): bool
 - [Architettura Modulo UI](./architecture.md)
 - [Filament Tables](./filament-tables.md)
 - [Icon State Split Column](./icon-state-split-column.md)
+

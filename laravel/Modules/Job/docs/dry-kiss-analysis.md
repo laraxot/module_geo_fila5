@@ -1,43 +1,37 @@
-# 🐄 DRY & KISS Analysis - Job
+# DRY & KISS Analysis - Modulo Job
 
-**Data:** [DATE] | **Status:** ✅
+**Data:** 15 Ottobre 2025  
+**DRY Score:** ✅ 93%  
+**KISS Score:** ✅ 88%
 
-## 📊 Struttura
-Models: 34 🟡 | Resources: 9 | Actions: 7 | Docs: 64
+## ✅ Stato Attuale
 
-**Ruolo:** ⚙️ Job Scheduling & Queue Management
-
-## 🎯 Score
-DRY: 6/10 🟡 | KISS: 6/10 🟡 | **Overall: 6/10 🟡**
-
-## 🔴 CRITICI
-### 1. 34 Models - Molti!
-- FailedJob, JobBatch, Schedule, Task, Import, Export, Result, etc.
-- Possibili raggruppamenti in namespace
-
-**Raccomandazione:**
+### BaseModel con Feature Specifico
 ```php
-Models/
-├── Core/ (Job, Schedule)
-├── Batch/ (JobBatch, FailedJob)
-├── ImportExport/ (Import, Export, FailedImportRow)
-└── Tasks/ (Task, TaskComment, Result)
+abstract class BaseModel extends XotBaseModel
+{
+    protected $connection = 'job';
+    protected $prefix;  // Dynamic table prefix
+    
+    public function __construct(array $attributes = [])
+    {
+        if (isset($this->prefix)) {
+            $this->table = $this->prefix.$this->table;
+        }
+        parent::__construct($attributes);
+    }
+}
 ```
 
-**Benefit:** +40% organizzazione
+**Righe:** 17  
+**DRY Level:** ✅ 92%  
+**Caratteristica:** Dynamic table prefix
 
-## ⚠️ MIGLIORAMENTI
-1. **Models namespace** (1 sett) 🟡
-2. **BaseModel custom __construct**: Documentare meglio il $prefix pattern
-3. **9 Resources**: Usare helpers (~180 LOC eliminabili)
+## 🎯 Raccomandazioni
+- ✅ Prefix feature: Giustificato, mantenere
+- ✅ BaseModel: Buono
+- 🔄 ServiceProvider: Auto-detect nome
 
-## ✅ PUNTI DI FORZA
-- BaseModel con $prefix intelligente
-- Action/Service bilanciati
-- Refactorato: 89→72 LOC
+---
+[DRY/KISS Global](../../docs/DRY_KISS_ANALYSIS_2025-10-15.md)
 
-## 🚀 PIANO
-1. Models namespace reorganization (1 sett)
-2. Resources refactoring (1 sett)
-
-**Status:** 🟡 DA RIORGANIZZARE
