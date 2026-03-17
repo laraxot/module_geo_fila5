@@ -459,6 +459,10 @@ return [
             'icon' => 'createAnother',
             'label' => 'createAnother',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'validation' => [
