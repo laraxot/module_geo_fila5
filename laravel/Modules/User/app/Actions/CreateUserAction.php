@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\Log;
 use Spatie\QueueableAction\QueueableAction;
 

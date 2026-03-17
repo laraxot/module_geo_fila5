@@ -4,68 +4,101 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Clusters\Passport\Resources;
 
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\User\Actions\Passport\RevokeRefreshTokenAction;
 use Modules\User\Filament\Clusters\Passport;
-use Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource\Pages\ListOauthRefreshTokens;
-use Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource\Pages\ViewOauthRefreshToken;
-use Modules\User\Models\OauthRefreshToken;
+use Modules\User\Filament\Clusters\Passport\Resources\OauthDeviceCodeResource\Pages\ListOauthDeviceCodes;
+use Modules\User\Filament\Clusters\Passport\Resources\OauthDeviceCodeResource\Pages\ViewOauthDeviceCode;
+use Modules\User\Models\OauthDeviceCode;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class OauthRefreshTokenResource extends XotBaseResource
+/**
+ * Class OauthDeviceCodeResource.
+ *
+ * Resource Filament per i codici dispositivo OAuth (RFC8628 Device Authorization Grant).
+ */
+class OauthDeviceCodeResource extends XotBaseResource
 {
     protected static ?string $cluster = Passport::class;
 
-    protected static ?string $model = OauthRefreshToken::class;
+    protected static ?string $model = OauthDeviceCode::class;
 
     /**
      * Get the form schema for the resource.
      *
-     * @return array<string, \Filament\Schemas\Components\Component>
+     * @return array<string, Component>
      */
     #[\Override]
     public static function getFormSchema(): array
     {
         return [
-            'oauth_refresh_token_info' => Section::make(static::trans('label'))
+            'oauth_device_code_info' => Section::make(static::trans('label'))
                 ->schema([
                     'grid_1' => Grid::make(2)
                         ->schema([
-                            'access_token_id' => Select::make('access_token_id')
-                                ->relationship('accessToken', 'id')
+                            'user_id' => Select::make('user_id')
+                                ->relationship('user', 'name')
+                                ->searchable(),
+                            'client_id' => Select::make('client_id')
+                                ->relationship('client', 'name')
                                 ->searchable()
                                 ->required(),
+                            'user_code' => TextInput::make('user_code')
+                                ->maxLength(8)
+                                ->required(),
+                        ]),
+                    'grid_2' => Grid::make(2)
+                        ->schema([
+                            'scopes' => TextInput::make('scopes'),
                             'revoked' => TextInput::make('revoked')
                                 ->numeric()
                                 ->required(),
-                            'expires_at' => DateTimePicker::make('expires_at'),
+                            'user_approved_at' => TextInput::make('user_approved_at'),
+                            'last_polled_at' => TextInput::make('last_polled_at'),
+                            'expires_at' => TextInput::make('expires_at'),
                         ]),
                 ]),
         ];
     }
 
-    public static function table(\Filament\Tables\Table $table): \Filament\Tables\Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 \Filament\Tables\Columns\TextColumn::make('id')
                     ->searchable()
                     ->sortable()
-                    ->copyable(),
+                    ->copyable()
+                    ->limit(20),
 
-                \Filament\Tables\Columns\TextColumn::make('access_token_id')
+                \Filament\Tables\Columns\TextColumn::make('user_code')
                     ->searchable()
                     ->sortable(),
+
+                \Filament\Tables\Columns\TextColumn::make('user_id')
+                    ->searchable()
+                    ->sortable(),
+
+                \Filament\Tables\Columns\TextColumn::make('client_id')
+                    ->searchable()
+                    ->sortable(),
+
+                \Filament\Tables\Columns\TextColumn::make('scopes')
+                    ->limit(30),
 
                 \Filament\Tables\Columns\IconColumn::make('revoked')
                     ->boolean()
                     ->color(fn (bool $state): string => $state ? 'danger' : 'success'),
+
+                \Filament\Tables\Columns\TextColumn::make('user_approved_at')
+                    ->dateTime()
+                    ->sortable(),
 
                 \Filament\Tables\Columns\TextColumn::make('expires_at')
                     ->dateTime()
@@ -84,24 +117,23 @@ class OauthRefreshTokenResource extends XotBaseResource
             ])
             ->recordActions([
                 \Filament\Actions\Action::make('revoke')
+                    ->label(static::trans('actions.revoke.label'))
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
+                    ->modalHeading(static::trans('actions.revoke.label'))
                     ->action(function (mixed $record) {
-                        if ($record instanceof OauthRefreshToken && app(RevokeRefreshTokenAction::class)->execute($record)) {
+                        if ($record instanceof OauthDeviceCode) {
+                            $record->revoked = true;
+                            $record->save();
                             Notification::make()
                                 ->title(static::trans('actions.revoke.success'))
                                 ->success()
                                 ->send();
                         }
                     })
-                    ->visible(fn (mixed $record) => $record instanceof OauthRefreshToken && ! (bool) $record->getAttribute('revoked')),
+                    ->visible(fn (mixed $record) => $record instanceof OauthDeviceCode && ! $record->revoked),
                 \Filament\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                \Filament\Actions\BulkActionGroup::make([
-                    \Filament\Actions\DeleteBulkAction::make(),
-                ]),
             ])
             ->defaultSort('expires_at', 'desc');
     }
@@ -113,8 +145,8 @@ class OauthRefreshTokenResource extends XotBaseResource
     public static function getPages(): array
     {
         return [
-            'index' => ListOauthRefreshTokens::route('/'),
-            'view' => ViewOauthRefreshToken::route('/{record}'),
+            'index' => ListOauthDeviceCodes::route('/'),
+            'view' => ViewOauthDeviceCode::route('/{record}'),
         ];
     }
 
@@ -124,6 +156,6 @@ class OauthRefreshTokenResource extends XotBaseResource
     #[\Override]
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->with(['accessToken']);
+        return parent::getEloquentQuery()->with(['user', 'client']);
     }
 }

@@ -38,8 +38,7 @@ Durante l'analisi dell'integrazione Passport, sono emerse tre posizioni:
 laravel/Modules/User/app/Models/
 ├── BaseUser.php              # Implements OAuthenticatable + HasApiTokens
 ├── OauthClient.php          # Extends Laravel\Passport\Client
-├── OauthToken.php           # Extends Laravel\Passport\Token
-├── OauthAccessToken.php     # Local alias/model used by app consumers when needed
+├── OauthToken.php           # Extends Laravel\Passport\Token (canonical token model)
 ├── OauthRefreshToken.php    # Extends Laravel\Passport\RefreshToken
 ├── OauthAuthCode.php        # Extends Laravel\Passport\AuthCode
 └── OauthPersonalAccessClient.php  # Local application model for oauth_personal_access_clients
@@ -112,29 +111,36 @@ public function withAccessToken(mixed $accessToken): static
 
 ---
 
-## 🛡️ OauthClient: Estensione Minimalista
+## 🛡️ OauthClient: Authorizable + HasRoles
 
-### Filosofia DRY
+### Implementazione (riferimento: [aurmich/sample_passport](https://github.com/aurmich/sample_passport/blob/develop/app/Models/Client.php))
 
 ```php
 class OauthClient extends PassportClient implements AuthorizableContract
 {
     use Authorizable;
-    use HasRoles; // Spatie Permission integration
+    use HasRoles; // Spatie Permission - guard api
 
     protected $connection = 'user';
     public $guard_name = 'api';
 
-    // Custom authorization logic for Spatie Permission
-    public function can($ability, mixed $arguments = []): bool
+    // Override user(): usa XotData::getUserClass() invece di config()
+    public function user(): BelongsTo
     {
-        // Custom implementation
+        $userClass = XotData::make()->getUserClass();
+        return $this->belongsTo($userClass, 'user_id');
     }
 
-    // ❌ NON ridefinire owner() se non cambia logica (DRY!)
-    // ✅ Il metodo parent è sufficiente
+    // can() override: usa hasPermissionTo con catch PermissionDoesNotExist
+    public function can($ability, mixed $arguments = []): bool
+    {
+        // checkPermission + hasAnyPermission
+    }
 }
 ```
+
+### Test
+- `Modules/User/tests/Unit/Models/OauthClientTest.php`
 
 ### Decisione: Rimuovere Metodi Ridondanti
 
@@ -349,13 +355,13 @@ public function owner(): MorphTo
 }
 ```
 
-### User ↔ OauthAccessToken
+### User ↔ OauthToken
 
 ```php
 // BaseUser.php
 public function tokens(): HasMany
 {
-    return $this->hasMany(OauthAccessToken::class, 'user_id');
+    return $this->hasMany(OauthToken::class, 'user_id');
 }
 ```
 

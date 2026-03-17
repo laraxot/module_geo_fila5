@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Registered;
-use Modules\Predict\Models\Profile;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * Listener per assegnare crediti iniziali gratuiti ai nuovi utenti.
+ *
+ * Richiede il modulo Predict con Profile (credits). Se assente, non esegue nulla.
  */
 class AssignFreeCreditsListener
 {
@@ -22,15 +24,26 @@ class AssignFreeCreditsListener
      */
     public function handle(Registered $event): void
     {
-        $user = $event->user;
+        if (! class_exists('Modules\\Predict\\Models\\Profile')) {
+            return;
+        }
 
-        // Crea il profilo se non esiste
-        $profile = Profile::firstOrCreate(
-            ['user_id' => $user->id],
+        $user = $event->user;
+        if (! $user instanceof Authenticatable) {
+            return;
+        }
+
+        $userId = $user->getAuthIdentifier();
+        if (null === $userId) {
+            return;
+        }
+
+        /** @var \Modules\Predict\Models\Profile $profile */
+        $profile = \Modules\Predict\Models\Profile::firstOrCreate(
+            ['user_id' => $userId],
             ['credits' => self::FREE_STARTING_CREDITS]
         );
 
-        // Se il profilo esisteva già ma aveva 0 crediti, assegna i crediti iniziali
         if (0 === $profile->credits) {
             $profile->update(['credits' => self::FREE_STARTING_CREDITS]);
         }
