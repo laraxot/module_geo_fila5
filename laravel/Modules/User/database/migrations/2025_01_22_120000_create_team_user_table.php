@@ -7,19 +7,11 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /*
  * Migrazione per team_user con id autoincrement.
- *
- * Questa migrazione gestisce sia la creazione che l'aggiornamento della tabella team_user.
- * Se la tabella esiste già con id UUID, viene convertita a id autoincrement.
+ * Gestisce sia la creazione che l'aggiornamento della tabella.
  */
 return new class extends XotBaseMigration {
-    /**
-     * Nome della tabella gestita dalla migrazione.
-     */
     protected string $table_name = 'team_user';
 
-    /**
-     * Esegue la migrazione.
-     */
     public function up(): void
     {
         // -- CREATE --
@@ -28,15 +20,36 @@ return new class extends XotBaseMigration {
             $table->foreignId('team_id');
             $table->uuid('user_id')->nullable()->index();
             $table->string('role')->nullable();
-
-            // Indice univoco per evitare duplicati team_id + user_id
             $table->unique(['team_id', 'user_id']);
         });
 
         // -- UPDATE --
         $this->tableUpdate(function (Blueprint $table): void {
-            // Converte solo i vecchi schemi con `id` non bigint (es. UUID/string).
-            if ($this->hasColumn('id') && 'bigint' !== $this->getColumnType('id')) {
+            $connection = $this->getConn()->getConnection();
+            $database = $connection->getDatabaseName();
+
+            /** @var array{EXTRA?: string, DATA_TYPE?: string}|object{EXTRA?: string, DATA_TYPE?: string}|null $columnInfo */
+            $columnInfo = $connection->selectOne(
+                "SELECT EXTRA, DATA_TYPE FROM information_schema.columns WHERE table_schema = ? AND table_name = ? AND column_name = 'id'",
+                [$database, $this->table_name]
+            );
+
+            $isAutoIncrement = false;
+            $columnType = null;
+
+            if (is_array($columnInfo)) {
+                $isAutoIncrement = isset($columnInfo['EXTRA']) && str_contains((string) $columnInfo['EXTRA'], 'auto_increment');
+                $columnType = $columnInfo['DATA_TYPE'] ?? null;
+            } elseif (is_object($columnInfo)) {
+                $isAutoIncrement = isset($columnInfo->EXTRA) && str_contains((string) $columnInfo->EXTRA, 'auto_increment');
+                $columnType = $columnInfo->DATA_TYPE ?? null;
+            }
+
+            $typeIsBigint = $columnType !== null && str_contains((string) $columnType, 'bigint');
+
+            $needsConversion = $this->hasColumn('id') && $columnInfo !== null && ! $typeIsBigint && ! $isAutoIncrement;
+
+            if ($needsConversion) {
                 // Rimuoviamo la PRIMARY KEY esistente
                 $this->dropPrimaryKey();
 
@@ -54,34 +67,7 @@ return new class extends XotBaseMigration {
                 $this->query('ALTER TABLE `'.$this->table_name.'` ADD PRIMARY KEY (`id`)');
             }
 
-            // Aggiorniamo i timestamp e soft deletes
             $this->updateTimestamps(table: $table, hasSoftDeletes: true);
-            /*
-            // Aggiungiamo l'indice univoco se non esiste già
-            // Verifichiamo tramite query SQL se l'indice esiste
-            $connection = $this->getConn();
-            $database = $connection->getDatabaseName();
-            //@var array{count: int}|object{count: int}|null $indexExists
-            $indexExists = $connection->selectOne()
-                "SELECT COUNT(*) as count
-                 FROM information_schema.statistics
-                 WHERE table_schema = ?
-                 AND table_name = ?
-                 AND index_name = 'team_user_team_id_user_id_unique'",
-                [$database, $table_name]
-            );
-
-            $count = 0;
-            if (is_array($indexExists) && isset($indexExists['count'])) {
-                $count = (int) $indexExists['count'];
-            } elseif (is_object($indexExists) && isset($indexExists->count)) {
-                $count = (int) $indexExists->count;
-            }
-
-            if ($count === 0) {
-                $table->unique(['team_id', 'user_id'], 'team_user_team_id_user_id_unique');
-            }
-            */
         });
     }
 };
