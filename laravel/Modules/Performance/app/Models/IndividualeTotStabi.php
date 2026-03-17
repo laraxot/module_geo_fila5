@@ -32,8 +32,8 @@ use Override;
  * @property string|null $updated_by
  * @property int $n_diritto
  * @property float $n_diritto_excellence
- * @property Collection<int, Individuale> $schede
- * @property int|null $schede_count
+ * @property-read Collection<int, Individuale> $individuali
+ * @property-read int|null $individuali_count
  * @method static Builder|IndividualeTotStabi newModelQuery()
  * @method static Builder|IndividualeTotStabi newQuery()
  * @method static Builder|IndividualeTotStabi query()
@@ -126,7 +126,7 @@ class IndividualeTotStabi extends BaseModel
      *
      * @return HasMany<Individuale, static>
      */
-    public function schede(): HasMany
+    public function individuali(): HasMany
     {
         // @phpstan-ignore-next-line
         return $this->hasMany(Individuale::class, 'stabi', 'stabi')

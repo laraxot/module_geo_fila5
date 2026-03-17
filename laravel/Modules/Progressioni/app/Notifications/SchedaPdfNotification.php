@@ -10,18 +10,18 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
 use Modules\Progressioni\Emails\SchedaPdfMail;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 
 class SchedaPdfNotification extends Notification
 {
     use Queueable;
 
-    public Schede $model;
+    public Scheda $model;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(Schede $model)
+    public function __construct(Scheda $model)
     {
         $this->model = $model;
     }

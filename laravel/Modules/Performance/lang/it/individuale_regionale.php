@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'name' => 'Schede Regionali',
-        'plural' => 'Schede Regionali',
+        'name' => 'Scheda Regionali',
+        'plural' => 'Scheda Regionali',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
             'description' => 'Gestione delle schede di valutazione regionali',
         ],
-        'label' => 'Schede Regionali',
+        'label' => 'Scheda Regionali',
         'sort' => 33,
         'icon' => 'performance-region-document',
     ],

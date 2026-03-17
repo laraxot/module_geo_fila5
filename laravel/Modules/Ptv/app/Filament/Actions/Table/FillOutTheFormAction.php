@@ -33,7 +33,7 @@ class FillOutTheFormAction extends Action
 
                 return is_string($url) ? $url : '';
             });
-        // ->url(fn ($record): string => SchedeResource::getUrl('compila', ['record' => $record]))
+        // ->url(fn ($record): string => SchedaResource::getUrl('compila', ['record' => $record]))
         // ->visible(fn ($record) => $record->ha_diritto),
 
         /*

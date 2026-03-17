@@ -95,6 +95,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option> $fillSons
+ * @property-read int|null $fill_sons_count
  * @mixin \Eloquent
  */
 class Option extends BaseModel

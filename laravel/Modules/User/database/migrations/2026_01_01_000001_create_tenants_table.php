@@ -17,7 +17,7 @@ return new class extends XotBaseMigration {
     public function up(): void
     {
         // -- CREATE --
-        $this->tableCreate(function (Blueprint $table))
+        $this->tableCreate(function (Blueprint $table): void {
             $table->string('id')->primary();
             $table->string('name');
             $table->string('slug')->unique()->nullable();
@@ -29,14 +29,11 @@ return new class extends XotBaseMigration {
         });
 
         // -- UPDATE --
-        $this->tableUpdate(function (Blueprint $table))
-            if (! $this->hasColumn('settings'))
+        $this->tableUpdate(function (Blueprint $table): void {
+            if (! $this->hasColumn('settings')) {
                 $table->json('settings')->nullable();
             }
-            $this->updateTimestamps()
-                table: $table,
-                hasSoftDeletes: true,
-            );
+            $this->updateTimestamps(table: $table, hasSoftDeletes: true);
         });
     }
 };

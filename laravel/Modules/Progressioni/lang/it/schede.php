@@ -5,14 +5,14 @@ declare(strict_types=1);
 return [
     'navigation' => [
         'name' => 'Scheda',
-        'plural' => 'Schede',
+        'plural' => 'Scheda',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
             'description' => 'Gestione delle schede di valutazione',
         ],
         'sort' => 1,
         'icon' => 'heroicon-o-document-text',
-        'label' => 'Schede',
+        'label' => 'Scheda',
     ],
     'actions' => [
         'import' => [
@@ -32,7 +32,7 @@ return [
             'label' => 'Esporta dati',
             'success' => 'Dati esportati con successo',
             'error' => 'Errore durante l\'esportazione',
-            'filename_prefix' => 'Schede_',
+            'filename_prefix' => 'Scheda_',
             'columns' => [
                 'name' => [
                     'label' => 'Nome scheda',
@@ -476,7 +476,7 @@ return [
         ],
     ],
     'messages' => [
-        'welcome' => 'Benvenuto nel modulo Schede',
+        'welcome' => 'Benvenuto nel modulo Scheda',
         'no_data' => 'Nessuna scheda trovata',
         'loading' => 'Caricamento in corso...',
         'error' => 'Si è verificato un errore',
@@ -492,7 +492,7 @@ return [
         'matr_unique' => 'La matricola deve essere unica',
     ],
     'model' => [
-        'label' => 'Modello Schede',
+        'label' => 'Modello Scheda',
         'placeholder' => 'Seleziona modello schede',
         'tooltip' => 'Modello dati per le schede di valutazione',
         'helper_text' => 'Rappresentazione del modello dati utilizzato per gestire le schede di valutazione e documentazione',

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Organizzativa;
 
-use Modules\Performance\Models\Organizzativa as Schede;
+use Modules\Performance\Models\Organizzativa as Scheda;
 use Modules\Performance\Models\OrganizzativaCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;
@@ -23,11 +23,11 @@ class UpdateQuotaTeoricaAction
     public function execute(string $year, string $type): void
     {
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 
-        $rows = Schede::where('anno', $year)
+        $rows = Scheda::where('anno', $year)
             ->where('type', $type)
             ->get();
 

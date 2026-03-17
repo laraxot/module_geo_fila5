@@ -33,8 +33,10 @@ ACTIVE_THEME=one
 
 - [Tema Zero](../Zero/docs/) - Tema principale
 - [Configurazione Root](../../../docs/THEME_ONE.md)
+- [Governance Naming Docs/Model](./model-docs-governance.md)
 
 ## Backlinks
 
 - [Xot Module](../../Modules/Xot/docs/)
 - [UI Module](../../Modules/UI/docs/)
+- [Progressioni Rename Scheda](../../Modules/Progressioni/docs/rename-schede-to-scheda.md)

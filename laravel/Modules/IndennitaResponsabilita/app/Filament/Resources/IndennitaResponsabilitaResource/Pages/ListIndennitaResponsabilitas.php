@@ -25,8 +25,8 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Models\Rating;
 use Modules\Ptv\Actions\Scheda\GetSentEmailListHtml;
-use Modules\Ptv\Filament\Actions\Bulk\SendSchedeBulkAction;
-use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\DeleteCessatiAction;
 use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
@@ -126,8 +126,8 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
         $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
 
         return [
-            'zip-schede' => ZipSchedeBulkAction::make('zip-schede'),
-            'send-mail' => SendSchedeBulkAction::make('send-mail')->setTemplate($tpl),
+            'zip-schede' => ZipSchedaBulkAction::make('zip-schede'),
+            'send-mail' => SendSchedaBulkAction::make('send-mail')->setTemplate($tpl),
 
         ];
     }

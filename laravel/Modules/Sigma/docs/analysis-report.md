@@ -96,7 +96,7 @@ Il modulo Sigma gestisce il **sistema di calcolo delle schede di valutazione** p
    - Estende `SchedaTrait`
    - Gestisce schede progressioni PTV
 
-2. **Progressioni** (`Modules\Progressioni\Models\Schede`)
+2. **Progressioni** (`Modules\Progressioni\Models\Scheda`)
    - Estende `SchedaTrait`
    - Gestisce schede progressioni carriera
 

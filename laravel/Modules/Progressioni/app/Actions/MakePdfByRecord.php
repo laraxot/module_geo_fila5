@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Actions;
 
 use Modules\Progressioni\Models\Progressioni;
-use Modules\Progressioni\Models\Schede as Scheda;
+use Modules\Progressioni\Models\Scheda as Scheda;
 use Modules\Xot\Actions\Export\PdfByHtmlAction;
 use Spatie\QueueableAction\QueueableAction;
 

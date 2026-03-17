@@ -41,7 +41,7 @@ use Validator;
  * @property-read int|null $asz00k1_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1Year
  * @property-read int|null $asz00k1_year_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
  * @property-read int|null $avversari_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, LettF> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count

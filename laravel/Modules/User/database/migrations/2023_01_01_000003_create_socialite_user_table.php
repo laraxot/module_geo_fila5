@@ -15,7 +15,7 @@ return new class extends XotBaseMigration {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         // -- CREATE --
-        $this->tableCreate(static function (Blueprint $table))
+        $this->tableCreate(static function (Blueprint $table) use ($userClass): void {
             // $table->uuid('id')->primary();
             $table->id();
             $table->foreignIdFor($userClass, 'user_id');
@@ -35,11 +35,11 @@ return new class extends XotBaseMigration {
         });
 
         // -- UPDATE --
-        $this->tableUpdate(function (Blueprint $table))
+        $this->tableUpdate(function (Blueprint $table): void {
             // if (! $this->hasColumn('email'))
             //    $table->string('email')->nullable();
             // }
-            if ('varchar' === $this->getColumnType('token'))
+            if ('varchar' === $this->getColumnType('token')) {
                 $table->text('token')->nullable()->change();
             }
             $this->updateTimestamps($table);

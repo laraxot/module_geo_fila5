@@ -383,8 +383,8 @@ php artisan test --coverage --filter=MailTemplate
 - [Laravel Testing](https://laravel.com/docs/testing)
 - [PHPUnit Documentation](https://phpunit.de/documentation.html)
 
-- [Testing Guide](../../../project_docs/testing-guide.md)
-- [CI/CD Pipeline](../../../project_docs/ci-cd.md)
+- [Testing Guide](../../../../docs/project/testing-guide.md)
+- [CI/CD Pipeline](../../../../docs/project/ci-cd.md)
 
 ## Vedi Anche
 - [Laravel Testing](https://laravel.com/project_docs/testing)

@@ -1,32 +1,13 @@
-# Theme One - Product Requirements Document (PRD)
+# PRD: One Theme
 
-> **Version**: 1.0.0
-> **Status**: Approved
-> **Owner**: Theme Core Team
+## 📋 Overview
+- **Author:** Gemini CLI
+- **Status:** Draft
+- **Target Release:** 1.0.0
 
-## 1. Executive Summary
-Theme One is an advanced UI theme extending Zero, optimized for complex data entry, advanced PDF generation, and rich interactive dashboards. It is the flagship theme for professional HR and Performance management.
+## ❓ Problem Statement
+Specialized logic for One needs a dedicated, type-safe Theme to ensure maintainability.
 
-## 2. Target Personas
-- **End User**: Managers and evaluators (needs data-dense views).
-- **Developer**: Developers integrating complex PDF reports and charts.
-
-## 3. Functional Requirements
-### P0: Critical
-- **FR-001**: Advanced dashboard layouts with Rich Widgets.
-- **FR-002**: HTML2PDF-compatible print layouts for evaluation reports.
-- **FR-003**: Rich Charting integration for performance metrics.
-
-### P1: Important
-- **FR-004**: Interactive step-by-step evaluation wizards.
-- **FR-005**: Advanced data-table filters with saved views.
-
-## 4. Technical Architecture
-- **Dependencies**: Theme Zero (base), Chart.js, HTML2PDF.
-
-## 5. Non-Functional Requirements
-- **Observability**: Performance tracing for complex data views.
-
-## 6. Release Criteria
-- [x] PHPStan Level 10 Compliance
-- [x] PDF compatibility verification for all major reports
+## 🎯 Goals & Success Metrics
+- **Goal 1:** 100% PHPStan L10 compliance.
+- **Goal 2:** Seamless integration with XotBase.

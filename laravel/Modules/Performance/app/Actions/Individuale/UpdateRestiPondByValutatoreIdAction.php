@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Individuale;
 
 use Illuminate\Support\Facades\DB;
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Modules\Performance\Models\IndividualeTotValutatoreId as TotValutatoreId;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -54,7 +54,7 @@ class UpdateRestiPondByValutatoreIdAction
      */
     protected function resetRestiPond(string $year, string $type): void
     {
-        $count = Schede::where('anno', $year)
+        $count = Scheda::where('anno', $year)
             ->where('type', $type)
             ->update(['resti_pond' => 0]);
         echo "<p>Resettati resti_pond per {$count} record, anno: {$year}, tipo: {$type}</p>\n";
@@ -78,7 +78,7 @@ class UpdateRestiPondByValutatoreIdAction
         $totalePonderato = 0;
 
         // Calcola il totale del punteggio per la normalizzazione
-        $totalePunteggio = (float) Schede::where('anno', $year)
+        $totalePunteggio = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('totale_punteggio');
@@ -124,7 +124,7 @@ class UpdateRestiPondByValutatoreIdAction
             // END";
             // 'resti_pond' => DB::raw("quota_effettiva * {$delta} * {$pesoPunteggio}")
 
-            $updated = Schede::where('anno', $year)
+            $updated = Scheda::where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->where('valutatore_id', $valutatore->valutatore_id)
@@ -133,7 +133,7 @@ class UpdateRestiPondByValutatoreIdAction
                 ]);
 
             // Calcola il totale ponderato per questo valutatore
-            $totaleValutatore = Schede::where('anno', $year)
+            $totaleValutatore = Scheda::where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->where('valutatore_id', $valutatore->valutatore_id)
@@ -166,12 +166,12 @@ class UpdateRestiPondByValutatoreIdAction
      */
     protected function verifyTotalResti(string $year, string $type): void
     {
-        $totResti = (float) Schede::where('anno', $year)
+        $totResti = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('resti');
 
-        $totRestiPond = (float) Schede::where('anno', $year)
+        $totRestiPond = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('resti_pond');
@@ -205,7 +205,7 @@ class UpdateRestiPondByValutatoreIdAction
      */
     protected function verifyPunteggioDistribution(string $year, string $type): void
     {
-        $distribuzione = Schede::selectRaw('FLOOR(totale_punteggio/10)*10 as fascia_punteggio, COUNT(*) as num_dipendenti, SUM(resti_pond) as tot_resti_pond')
+        $distribuzione = Scheda::selectRaw('FLOOR(totale_punteggio/10)*10 as fascia_punteggio, COUNT(*) as num_dipendenti, SUM(resti_pond) as tot_resti_pond')
             ->where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)

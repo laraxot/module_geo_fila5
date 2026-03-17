@@ -34,11 +34,30 @@
 - **Per i campi di sola lettura, usare Infolist invece di form disabled**: separazione di responsabilità - Infolist per visualizzazione, Form per input editabili
 - **Implementare Infolist con HasInfolists trait**: `class Page extends XotBasePage implements HasInfolists { use InteractsWithInfolists; }`
 - **getInfolistSchema() deve avere chiavi stringa** come per getFormSchema()
+- **Nomenclatura Modelli (Rule #12)**: I modelli Eloquent DEVONO essere sempre nominati al SINGOLARE (es: `Scheda` invece di `Schede`). Seguire rigorosamente gli standard di Laravel per assicurare compatibilità con le convenzioni di Laraxot.
 
 ### 1.5 Localizzazione
 - Usare `mcamara/laravel-localization` per la gestione multilingua
 - **NON hardcodare le traduzioni** - usare sempre i file di lingua
 - **Usare i middleware** forniti dal pacchetto per le routes localizzate
+
+### 1.6 Database e Connessioni
+- **NON inserire MAI connessioni specifiche di un modulo in `laravel/config/database.php`**
+- Le connessioni vengono registrate dinamicamente da `TenantServiceProvider`
+- Ogni modulo usa una connessione con il proprio nome (es. `mobilita_volontaria`, `performance`)
+- Per database separati, configurare `laravel/config/local/<tenant>/database.php` o variabili `.env` (es. `DB_DATABASE_USER`)
+- **Dynamic Model Resolution (Rule #13)**: Per mantenere l'agnosticismo dei moduli e gestire correttamente i namespace, le relazioni tra modelli DEVONO essere definite dinamicamente (ove possibile) invece di hardcodare il namespace. Usare `Webmozart\Assert\Assert::classExists()` con un fallback al modello base e Yoda conditions (`null === $var`) per i confronti null.
+  ```php
+  $schedaClass = Str::of(static::class)->beforeLast('\\')->append('\\Scheda')->toString();
+  $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+  Assert::classExists($modelClass);
+  return $this->hasMany($modelClass, ...);
+  ```
+  Questo assicura che il modello cercato sia quello locale al modulo corrente o il base, e che esista effettivamente.
+- **Nomenclatura Relazioni (Rule #14)**: I nomi dei metodi delle relazioni DEVONO riflettere la pluralità della relazione per chiarezza semantica e conformità Laravel:
+    - **Singolare** per `HasOne` o `BelongsTo` (es. `user()`, `scheda()`)
+    - **Plurale** per `HasMany` o `BelongsToMany` (es. `users()`, `schede()`)
+    - **Azione**: Se una relazione `HasMany` è singolare (es. `scheda()`), rinominarla in plurale (es. `schede()`) e aggiornare i docblock `@property-read`.
 
 ---
 
@@ -215,7 +234,10 @@ Quando si crea un'issue:
 
 ---
 
-*Ultimo aggiornamento: 2026-02-17*
+*Ultimo aggiornamento: 2026-03-10*
+
+### 8. CRITICAL UPDATES
+- **Standardizzazione Modelli**: Il modello `Schede` nel modulo `Progressioni` è stato rinominato in `Scheda`. Tutte le reference plurali sono state migrate al singolare.
 
 ---
 

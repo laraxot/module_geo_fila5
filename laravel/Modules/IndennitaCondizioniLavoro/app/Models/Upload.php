@@ -10,7 +10,7 @@ use Modules\Ptv\Models\Profile;
 
 // ---- traits --
 /**
- * Modules\IndennitaCondizioniLavoro\Models\Opzioni.
+ * Modules\IndennitaCondizioniLavoro\Models\Opzione.
  *
  * @property int $id
  * @property int|null $user_id

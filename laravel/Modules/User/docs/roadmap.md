@@ -1,57 +1,20 @@
-# Roadmap (Module User)
+# Product Roadmap - User Module
 
-## Current roadmap
+## 🎯 Vision & Strategy
+Provide a secure, highly-scalable authentication and authorization system for the Laraxot ecosystem using Spatie Permissions and Laravel Fortify.
 
-- [Overview](roadmap/00-overview.md)
-- [Now](roadmap/01-now.md)
-- [Next](roadmap/02-next.md)
-- [Later](roadmap/03-later.md)
-- [Risks and dependencies](roadmap/04-risks.md)
+## 🗓️ Timeline
+### Q1 2026: Foundation (Current)
+- **Role/Permission Mapping** - *Status: Shipped*
+- **Profile Management** - *Status: In Progress*
+- **Socialite Integration** - *Status: Planned*
 
-## Legacy / existing roadmap docs
+## 🚦 Status Overview
+| Feature | Status | Owner | Target Date |
+| :--- | :--- | :--- | :--- |
+| Core Auth | ✅ Stable | @CoreTeam | Jan 2026 |
+| Multi-factor Auth | 🏗️ In Dev | @CoreTeam | Apr 2026 |
 
-- [login-widget-filament-schema-errors-roadmap.md](login-widget-filament-schema-errors-roadmap.md)
-- [navigation-translations-completion-roadmap.md](navigation-translations-completion-roadmap.md)
-- [phpstan-error-roadmap.md](phpstan-error-roadmap.md)
-- [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-errors-roadmap.md](phpstan-errors-roadmap.md)
-- [phpstan-fixes-roadmap.md](phpstan-fixes-roadmap.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md)
-- [phpstan_roadmap.md](phpstan_roadmap.md)
-- [roadmap/00-index.md](roadmap/00-index.md)
-- [roadmap/00-overview.md](roadmap/00-overview.md)
-- [roadmap/01-current-state.md](roadmap/01-current-state.md)
-- [roadmap/01-now.md](roadmap/01-now.md)
-- [roadmap/02-goals.md](roadmap/02-goals.md)
-- [roadmap/02-next.md](roadmap/02-next.md)
-- [roadmap/03-later.md](roadmap/03-later.md)
-- [roadmap/03-workstreams.md](roadmap/03-workstreams.md)
-- [roadmap/04-milestones.md](roadmap/04-milestones.md)
-- [roadmap/04-risks.md](roadmap/04-risks.md)
-- [roadmap/05-risks.md](roadmap/05-risks.md)
-- [roadmap/2025-q4-roadmap.md](roadmap/2025-q4-roadmap.md)
-- [roadmap/2fa.md](roadmap/2fa.md)
-- [roadmap/bottlenecks.md](roadmap/bottlenecks.md)
-- [roadmap/features/audit-logging.md](roadmap/features/audit-logging.md)
-- [roadmap/features/autenticazione.md](roadmap/features/autenticazione.md)
-- [roadmap/features/autorizzazione.md](roadmap/features/autorizzazione.md)
-- [roadmap/features/gestione-teams.md](roadmap/features/gestione-teams.md)
-- [roadmap/features/gestione-utenti.md](roadmap/features/gestione-utenti.md)
-- [roadmap/features/legacy-code-cleanup.md](roadmap/features/legacy-code-cleanup.md)
-- [roadmap/features/user-analytics.md](roadmap/features/user-analytics.md)
-- [roadmap/features/user-traits.md](roadmap/features/user-traits.md)
-- [roadmap/legacy-roadmap.md](roadmap/legacy-roadmap.md)
-- [roadmap/legacy/legacy-roadmap-1.md](roadmap/legacy/legacy-roadmap-1.md)
-- [roadmap/legacy/legacy-roadmap-and-issues.md](roadmap/legacy/legacy-roadmap-and-issues.md)
-- [roadmap/legacy/legacy-roadmap-ands.md](roadmap/legacy/legacy-roadmap-ands.md)
-- [roadmap/legacy/legacy-roadmap-complete.md](roadmap/legacy/legacy-roadmap-complete.md)
-- [roadmap/legacy/legacy-roadmap-conflict.md](roadmap/legacy/legacy-roadmap-conflict.md)
-- [roadmap/legacy/legacy-roadmap-x.md](roadmap/legacy/legacy-roadmap-x.md)
-- [roadmap/legacy/legacy-roadmap.md](roadmap/legacy/legacy-roadmap.md)
-- [roadmap/phases.md](roadmap/phases.md)
-- [roadmap/q4-roadmap.md](roadmap/q4-roadmap.md)
-- [roadmap/quality.md](roadmap/quality.md)
-- [roadmap/roadmap.md](roadmap/roadmap.md)
-- [roadmap/technical-debt.md](roadmap/technical-debt.md)
-- [roadmap/testing.md](roadmap/testing.md)
-- [roadmap/vision.md](roadmap/vision.md)
+## 📂 Backlog / Future Ideas
+- Passkey (WebAuthn) support.
+- Centralized Auth across multiple Laraxot instances.

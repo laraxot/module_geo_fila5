@@ -35,7 +35,7 @@ public function execute(string $modelClass, string $fieldname, int|string $year)
 
 #### 3. **Complex Calculation Pattern**
 ```php
-// Pattern in Models/Schede.php
+// Pattern in Models/Scheda.php
 public function getTotaleAttribute(): float
 {
     return $this->esperienza_acquisita * $this->peso_esperienza_acquisita +
@@ -51,7 +51,7 @@ public function getTotaleAttribute(): float
 
 **Files Affected**:
 - `app/Models/Traits/ConvertedTrait.php` - Dynamic field conversion
-- `app/Models/Schede.php` - Complex calculations
+- `app/Models/Scheda.php` - Complex calculations
 - `app/Actions/TrovaEsclusiAction.php` - Multi-model operations
 
 ### Category 2: Return Type Inconsistencies (40+ errors)

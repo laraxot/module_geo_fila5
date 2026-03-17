@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Unit\Models;
 
-uses(Modules\User\Tests\TestCase::class);
+uses(\Modules\User\Tests\TestCase::class);
 
 use Modules\User\Models\Authentication;
 use Modules\User\Models\AuthenticationLog;

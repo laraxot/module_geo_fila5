@@ -21,6 +21,7 @@ return [
         'save' => [
             'tooltip' => 'save',
             'icon' => 'save',
+            'label' => 'save',
         ],
     ],
 ];

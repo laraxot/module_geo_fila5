@@ -6,7 +6,6 @@ namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
@@ -52,7 +51,7 @@ interface CriteriEsclusioneContract
     /**
      * Ottiene la collezione iterabile delle schede per la verifica criteri.
      */
-    public function getSchedeCollection(): Collection;
+    public function getSchedaCollection(): Collection;
 
     /**
      * Ottiene la collezione delle opzioni dei criteri.

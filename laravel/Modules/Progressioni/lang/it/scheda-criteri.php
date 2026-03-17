@@ -5,14 +5,14 @@ declare(strict_types=1);
 return [
     'navigation' => [
         'name' => 'Scheda Criteri',
-        'plural' => 'Schede Criteri',
+        'plural' => 'Scheda Criteri',
         'group' => [
             'name' => 'Gestione Progressioni',
             'description' => 'Gestione completa delle progressioni di carriera',
         ],
         'sort' => 65,
         'icon' => 'heroicon-o-clipboard-document-list',
-        'label' => 'Schede Criteri',
+        'label' => 'Scheda Criteri',
     ],
     'fields' => [
         'name' => [
@@ -59,7 +59,7 @@ return [
             'success' => 'Dati esportati con successo',
             'error' => 'Errore durante l\'esportazione',
             'confirmation' => 'Sei sicuro di voler esportare i dati?',
-            'filename_prefix' => 'Schede_Criteri_',
+            'filename_prefix' => 'Scheda_Criteri_',
             'columns' => [
                 'name' => [
                     'label' => 'Nome scheda criteri',

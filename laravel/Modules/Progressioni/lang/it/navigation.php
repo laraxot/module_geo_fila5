@@ -18,11 +18,11 @@ return [
             'description' => 'Gestione delle progressioni di carriera del personale',
         ],
         'schede' => [
-            'label' => 'Schede Valutazione',
-            'plural_label' => 'Schede Valutazione',
+            'label' => 'Scheda Valutazione',
+            'plural_label' => 'Scheda Valutazione',
             'icon' => 'heroicon-o-document-text',
             'sort' => 2,
-            'description' => 'Schede di valutazione per le progressioni',
+            'description' => 'Scheda di valutazione per le progressioni',
         ],
         'criteri_valutazione' => [
             'label' => 'Criteri Valutazione',
@@ -123,11 +123,11 @@ return [
             'description' => 'Log delle operazioni del sistema',
         ],
         'scheda_criteri' => [
-            'label' => 'Schede Criteri',
-            'plural_label' => 'Schede Criteri',
+            'label' => 'Scheda Criteri',
+            'plural_label' => 'Scheda Criteri',
             'icon' => 'heroicon-o-clipboard-document-check',
             'sort' => 17,
-            'description' => 'Schede dei criteri di valutazione',
+            'description' => 'Scheda dei criteri di valutazione',
         ],
         'criteri_option' => [
             'label' => 'Opzioni Criteri',

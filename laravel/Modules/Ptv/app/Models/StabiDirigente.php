@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
-use Modules\Ptv\Database\Factories\StabiDirigenteFactory;
+use Illuminate\Support\Str;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Repart;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Ptv\Models\StabiDirigente.
@@ -18,7 +20,7 @@ use Modules\Sigma\Models\Repart;
  * @property string|null $nome_diri
  * @property string|null $nome_stabi
  * @property Repart|null $repart
- * @method static StabiDirigenteFactory factory($count = null, $state = [])
+ * @method static \Modules\Ptv\Database\Factories\StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
  * @method static Builder|StabiDirigente query()
@@ -59,6 +61,10 @@ use Modules\Sigma\Models\Repart;
  * @property int $n_diritto_excellence
  * @method static Builder<static>|StabiDirigente whereNDirittoExcellence($value)
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $benificiariProgressione
+ * @property-read int|null $benificiari_progressione_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $schedas
+ * @property-read int|null $schedas_count
  * @mixin \Eloquent
  */
 class StabiDirigente extends BaseModel
@@ -93,15 +99,23 @@ class StabiDirigente extends BaseModel
             ->where('ente', 90);
     }
 
-    /*
-    public function schede():\Illuminate\Database\Eloquent\Relations\HasMany {
-        return $this->hasMany(Schede::class, 'valutatore_id', 'id');
+    public function schedas(): HasMany
+    {
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
+
+        return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
-    public function benificiariProgressione(): void {
-        return $this->schede()->where('benificiario_progressione', 1);
+    public function benificiariProgressione(): HasMany
+    {
+        return $this->schedas()->where('benificiario_progressione', 1);
     }
-    */
 
     // --- mutators --
     public function getNomeStabiAttribute(?string $value): ?string
@@ -242,65 +256,4 @@ class StabiDirigente extends BaseModel
         // */
         return $value;
     }
-
-    /*
-    public function budgetAssegnato(): void {
-        $beneficiari = $this->benificiariProgressione;
-        $res = $beneficiari->sum('costo_fascia_up');
-
-        return $res;
-    }
-    */
-    // end budgetAssegnato
-
-    /*
-    public function getNomeDiriAttribute(): void {
-       if (null !== $value) {
-           return $value;
-       }
-       $row = StabiDirigente::where('stabi', $this->stabi)
-           ->where('repar', $this->repar)
-           ->first();
-
-       if (is_object($row)) {
-           $value = $row->nome_diri;
-           $this->nome_diri = $value;
-
-           // Guard: modello deve avere PK per salvare
-           if (null != $this->getKey()) {
-               $this->save();
-           }
-       }
-
-       return $value;
-    }
-    */
-    /*
-    public function getNomeStabiAttribute(): void {
-        if ($value !== null) {
-            return $value;
-        }
-
-        $stabi = Repart::where('stabi', $this->stabi)
-            ->where('repar', 0)
-            ->where('ente', 90)
-            ->first();
-
-        $repart = Repart::where('stabi', $this->stabi)
-            ->where('repar', $this->repar)
-            ->where('ente', 90)
-            ->first();
-        if (\is_object($stabi) && \is_object($repart)) {
-            $value = $stabi->dest1.' '.$stabi->dest2.' - '.$repart->dest1.' '.$repart->dest2;
-            $this->nome_stabi = $value;
-
-            // Guard: modello deve avere PK per salvare
-            if (null != $this->getKey()) {
-                $this->save();
-            }
-        }
-
-        return $value;
-    }
-        */
 }

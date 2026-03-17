@@ -71,7 +71,7 @@ public static function getFormSchema(): array
 
 ### 1. **Complex Calculations in Schede.php**
 
-**File**: `app/Models/Schede.php`
+**File**: `app/Models/Scheda.php`
 
 **Issues**:
 - Binary operations with mixed types (lines 797, 816, 868, etc.)

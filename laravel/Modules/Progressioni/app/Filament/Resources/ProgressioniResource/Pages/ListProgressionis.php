@@ -32,10 +32,10 @@ use Modules\Ptv\Actions\Filament\Actions\TrovaEsclusiButton;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 // use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Modules\Ptv\Actions\PopulateByYearAction;
-use Modules\Ptv\Filament\Actions\Bulk\ZipSchedeBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\MergeDoubleRowCatecoYearAction;
 use Modules\Ptv\Filament\Actions\Header\PopulateYearAction;
-use Modules\Ptv\Filament\Actions\Header\ZipSchedeAction;
+use Modules\Ptv\Filament\Actions\Header\ZipSchedaAction;
 use Modules\Ptv\Filament\Columns\QuaColumn;
 use Modules\Ptv\Filament\Columns\RepartoColumn;
 use Modules\Ptv\Filament\Columns\WorkerColumn;
@@ -89,7 +89,7 @@ class ListProgressionis extends XotBaseListRecords
             'export' => ExportXlsAction::make(),
             'ricalcola' => RicalcolaAction::make(),
             // ImportCedDiffAction::make(),
-            // ZipSchedeAction::make(),
+            // ZipSchedaAction::make(),
         ];
     }
 
@@ -231,7 +231,7 @@ class ListProgressionis extends XotBaseListRecords
             // Tables\Actions\BulkActionGroup::make([
             // Tables\Actions\DeleteBulkAction::make(),
             'send-mail' => SendMailBulkAction::make('send-mail'),
-            'zip-schede' => ZipSchedeBulkAction::make('zip-schede'),
+            'zip-schede' => ZipSchedaBulkAction::make('zip-schede'),
             // ]),
         ];
     }

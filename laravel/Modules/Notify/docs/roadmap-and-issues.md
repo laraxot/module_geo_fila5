@@ -2,7 +2,7 @@
 
 **Modulo**: Notify (Multi-Channel Notifications)  
 **Data Analisi**: 1 Ottobre 2025  
-**Status PHPStan**: ✅ 0 errori (Level 10)
+**Status PHPStan**: ✅ 0 errori (Level 9)
 
 ---
 
@@ -232,7 +232,7 @@ class TicketDigest extends Notification implements ShouldQueue
 - [ ] A/B testing
 
 ### Quality
-- [x] PHPStan Level 10 ✅
+- [x] PHPStan Level 9 ✅
 - [ ] Test coverage 80%
 - [ ] Documentation complete
 - [ ] Error handling robust
@@ -241,9 +241,9 @@ class TicketDigest extends Notification implements ShouldQueue
 
 ## 🔗 Collegamenti
 
-- [← Notify Module README](../readme.md)
-- [← Fixcity Integration](../../fixcity/docs/roadmap-and-issues.md)
-- [← Root Documentation](../../../../docs/index.md)
+- [← Notify Module README](../README.md)
+- [← Fixcity Integration](../../Fixcity/docs/roadmap-and-issues.md)
+- [← Root Documentation](../../../docs/index.md)
 
 ---
 

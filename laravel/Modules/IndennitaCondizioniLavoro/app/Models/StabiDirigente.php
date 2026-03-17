@@ -69,6 +69,10 @@ use Modules\Sigma\Models\Repart;
  * @property-read Profile|null $deleter
  * @method static Builder<static>|StabiDirigente whereEmail($value)
  * @method static Builder<static>|StabiDirigente whereQuadrimestre($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
+ * @property-read int|null $benificiari_progressione_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Progressioni\Models\Scheda> $scheda
+ * @property-read int|null $scheda_count
  * @mixin \Eloquent
  */
 class StabiDirigente extends PtvStabiDirigenteModel

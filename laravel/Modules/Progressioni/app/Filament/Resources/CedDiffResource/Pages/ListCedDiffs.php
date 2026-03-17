@@ -22,7 +22,7 @@ use Filament\Tables\Table;
 use Modules\Progressioni\Filament\Imports\CedDiffImporter;
 use Modules\Progressioni\Filament\Resources\CedDiffResource;
 use Modules\Progressioni\Models\CedDiff;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Override;
 
@@ -53,7 +53,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
                 ->action(function (array $data) {
                     $matricole = CedDiff::all()->pluck('matricola')->toArray();
 
-                    $rows = Schede::where('anno', $data['anno'])
+                    $rows = Scheda::where('anno', $data['anno'])
                         ->whereIn('matr', $matricole)
                         ->get();
                     foreach ($rows as $row) {

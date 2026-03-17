@@ -1,59 +1,26 @@
-# Roadmap (Module Xot)
+# Product Roadmap - Xot Core Framework
 
-## Current roadmap
+## 🎯 Vision & Strategy
+Xot is the foundational module of the Laraxot ecosystem. Its mission is to provide zero-cost abstractions that enforce architectural standards (XotBase, Actions-over-Services) while maximizing performance and type safety.
 
-- [Overview](roadmap/00-overview.md)
-- [Now](roadmap/01-now.md)
-- [Next](roadmap/02-next.md)
-- [Later](roadmap/03-later.md)
-- [Risks and dependencies](roadmap/04-risks.md)
+## 🗓️ Timeline
 
-## Legacy / existing roadmap docs
+### Q1 2026: Consolidation (Current)
+- **PHPStan Level 10 Compliance** - *Status: Shipped*
+- **XotBase Resource Refactoring** - *Status: In Progress*
+- **Documentation Standardization** - *Status: In Progress*
 
-- [merge-conflicts-resolution-roadmap.md](merge-conflicts-resolution-roadmap.md)
-- [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-fix-roadmap.md](phpstan-fix-roadmap.md)
-- [phpstan-roadmap-completo.md](phpstan-roadmap-completo.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md)
-- [phpstan-xotbasewidget-view-string-fix-roadmap.md](phpstan-xotbasewidget-view-string-fix-roadmap.md)
-- [roadmap/00-index.md](roadmap/00-index.md)
-- [roadmap/00-overview.md](roadmap/00-overview.md)
-- [roadmap/01-current-state.md](roadmap/01-current-state.md)
-- [roadmap/01-now.md](roadmap/01-now.md)
-- [roadmap/02-goals.md](roadmap/02-goals.md)
-- [roadmap/02-next.md](roadmap/02-next.md)
-- [roadmap/03-later.md](roadmap/03-later.md)
-- [roadmap/03-workstreams.md](roadmap/03-workstreams.md)
-- [roadmap/04-milestones.md](roadmap/04-milestones.md)
-- [roadmap/04-risks.md](roadmap/04-risks.md)
-- [roadmap/05-risks.md](roadmap/05-risks.md)
-- [roadmap/architecture/performance.md](roadmap/architecture/performance.md)
-- [roadmap/base-classes.md](roadmap/base-classes.md)
-- [roadmap/bottlenecks.md](roadmap/bottlenecks.md)
-- [roadmap/bottlenecks/dental.md](roadmap/bottlenecks/dental.md)
-- [roadmap/bottlenecks/lang.md](roadmap/bottlenecks/lang.md)
-- [roadmap/bottlenecks/media.md](roadmap/bottlenecks/media.md)
-- [roadmap/bottlenecks/notify.md](roadmap/bottlenecks/notify.md)
-- [roadmap/bottlenecks/patient.md](roadmap/bottlenecks/patient.md)
-- [roadmap/bottlenecks/tenant.md](roadmap/bottlenecks/tenant.md)
-- [roadmap/bottlenecks/ui.md](roadmap/bottlenecks/ui.md)
-- [roadmap/docs/architecture-rules.md](roadmap/docs/architecture-rules.md)
-- [roadmap/docs/status.md](roadmap/docs/status.md)
-- [roadmap/integration/filament.md](roadmap/integration/filament.md)
-- [roadmap/integration/folio-volt.md](roadmap/integration/folio-volt.md)
-- [roadmap/lang/translations.md](roadmap/lang/translations.md)
-- [roadmap/legacy-roadmap.md](roadmap/legacy-roadmap.md)
-- [roadmap/legacy/legacy-roadmap-1.md](roadmap/legacy/legacy-roadmap-1.md)
-- [roadmap/legacy/legacy-roadmap-and-issues.md](roadmap/legacy/legacy-roadmap-and-issues.md)
-- [roadmap/legacy/legacy-roadmap-ands.md](roadmap/legacy/legacy-roadmap-ands.md)
-- [roadmap/legacy/legacy-roadmap-conflict.md](roadmap/legacy/legacy-roadmap-conflict.md)
-- [roadmap/legacy/legacy-roadmap.md](roadmap/legacy/legacy-roadmap.md)
-- [roadmap/performance/optimization.md](roadmap/performance/optimization.md)
-- [roadmap/phases.md](roadmap/phases.md)
-- [roadmap/q4-roadmap.md](roadmap/q4-roadmap.md)
-- [roadmap/quality.md](roadmap/quality.md)
-- [roadmap/roadmap.md](roadmap/roadmap.md)
-- [roadmap/security/status.md](roadmap/security/status.md)
-- [roadmap/testing/status.md](roadmap/testing/status.md)
-- [roadmap/vision.md](roadmap/vision.md)
-- [testing-fixes-roadmap.md](testing-fixes-roadmap.md)
+### Q2 2026: Modernization
+- **Native Folio & Volt Support** - *Status: Planned*
+- **Xot CLI for Module Scaffolding** - *Status: Planned*
+
+## 🚦 Status Overview
+| Feature | Status | Owner | Target Date |
+| :--- | :--- | :--- | :--- |
+| Core Abstractions | ✅ Stable | @CoreTeam | Feb 2026 |
+| PDF Generation Action | ✅ Shipped | @CoreTeam | Jan 2026 |
+| AI-Ready Scaffolding | 🏗️ In Dev | @AI-Agent | Apr 2026 |
+
+## 📂 Backlog / Future Ideas
+- Self-healing database migrations.
+- Automatic API documentation generation for all modules.

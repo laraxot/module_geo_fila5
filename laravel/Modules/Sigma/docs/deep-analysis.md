@@ -301,7 +301,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 **Pattern**:
 ```php
-class Schede extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseModel implements ProgressioneSchedaContract
 {
     use SchedaTrait, SigmaModelTrait {
         // Conflict resolution: prefer SchedaTrait methods
@@ -435,7 +435,7 @@ public function anag(): HasOne
 ### Calcolo Performance Media
 
 ```
-Progressioni/Schede
+Progressioni/Scheda
     ↓
 SchedaTrait::getPerfIndMediaAttribute()
     ↓

@@ -6,7 +6,7 @@ namespace Modules\Progressioni\Models\Traits;
 
 // ----- models------
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 
 // ----- services -----
 
@@ -59,14 +59,14 @@ trait ConvertedTrait
 
     public function avversari(): HasMany
     {
-        return $this->hasMany(Schede::class, 'valutatore_id', 'valutatore_id')
+        return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')
             ->where('anno', $this->anno)
             ->where('ha_diritto', 1);
     }
 
     public function avversariCategoriaEco(): HasMany
     {
-        return $this->hasMany(Schede::class, 'valutatore_id', 'valutatore_id')
+        return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')
             ->where('anno', $this->anno)
             ->where('ha_diritto', 1)
             ->where('categoria_eco', $this->categoria_eco);

@@ -846,7 +846,7 @@ lang/fr
 lang/gr
 lang/it
 lang/ka
-lang/lang
+lang/<locale>
 lang/lang/ar
 lang/lang/da
 lang/lang/de

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Individuale;
 
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Modules\Performance\Models\IndividualeTotValutatoreId as TotValutatoreId;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;
@@ -45,7 +45,7 @@ class UpdateImportoTotaleByValutatoreIdAction
         $totalPunteggio = 0;
 
         // Calcola il totale del punteggio per la normalizzazione
-        $totalPunteggio = (float) Schede::where('anno', $year)
+        $totalPunteggio = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('totale_punteggio');
@@ -53,7 +53,7 @@ class UpdateImportoTotaleByValutatoreIdAction
         // Se non ci sono punteggi, usiamo 100 come valore di default
         $normalizationFactor = $totalPunteggio > 0 ? $totalPunteggio / 100 : 1;
 
-        $schede = Schede::where('anno', $year)
+        $schede = Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->get();

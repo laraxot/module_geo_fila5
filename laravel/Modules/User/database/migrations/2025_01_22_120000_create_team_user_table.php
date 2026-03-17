@@ -23,7 +23,7 @@ return new class extends XotBaseMigration {
     public function up(): void
     {
         // -- CREATE --
-        $this->tableCreate(static function (Blueprint $table))
+        $this->tableCreate(static function (Blueprint $table): void {
             $table->id();
             $table->foreignId('team_id');
             $table->uuid('user_id')->nullable()->index();
@@ -34,31 +34,28 @@ return new class extends XotBaseMigration {
         });
 
         // -- UPDATE --
-        $this->tableUpdate(function (Blueprint $table))
-            // Se la tabella esiste già con id UUID, convertiamo a autoincrement
-            if ($hasColumn('id'))
+        $this->tableUpdate(function (Blueprint $table): void {
+            // Converte solo i vecchi schemi con `id` non bigint (es. UUID/string).
+            if ($this->hasColumn('id') && 'bigint' !== $this->getColumnType('id')) {
                 // Rimuoviamo la PRIMARY KEY esistente
                 $this->dropPrimaryKey();
 
                 // Se non esiste già, rinominiamo id a uuid per preservare i dati
-                if (! $this->hasColumn('uuid'))
+                if (! $this->hasColumn('uuid')) {
                     $this->renameColumn('id', 'uuid');
                 }
 
                 // Aggiungiamo la nuova colonna id come bigint autoincrement
-                if (! $this->hasColumn('id'))
+                if (! $this->hasColumn('id')) {
                     $table->id()->first();
                 }
 
                 // Impostiamo la nuova PRIMARY KEY su id
-                $this->query('ALTER TABLE `'.$this->table_name.'` ADD PRIMARY KEY (`id`));
+                $this->query('ALTER TABLE `'.$this->table_name.'` ADD PRIMARY KEY (`id`)');
             }
 
             // Aggiorniamo i timestamp e soft deletes
-            $this->updateTimestamps()
-                table: $table,
-                hasSoftDeletes: true,
-            );
+            $this->updateTimestamps(table: $table, hasSoftDeletes: true);
             /*
             // Aggiungiamo l'indice univoco se non esiste già
             // Verifichiamo tramite query SQL se l'indice esiste

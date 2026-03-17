@@ -20,7 +20,7 @@ class CheckCriterio
      */
     public function execute(CriteriEsclusioneContract $criterio): void
     {
-        $schede = $criterio->getSchedeCollection();
+        $schede = $criterio->getSchedaCollection();
 
         $criterioName = $criterio->getAttribute('name');
         if (! is_string($criterioName)) {

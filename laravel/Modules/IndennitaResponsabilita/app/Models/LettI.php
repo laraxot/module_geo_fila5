@@ -192,7 +192,7 @@ use RuntimeException;
  * @property-read int|null $asz00k1_count
  * @property-read Collection<int, \Modules\Sigma\Models\Asz00k1> $asz00k1Year
  * @property-read int|null $asz00k1_year_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
  * @property-read int|null $avversari_count
  * @property-read Collection<int, LettI> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count

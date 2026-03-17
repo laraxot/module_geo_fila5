@@ -6,12 +6,11 @@ namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Sigma\Models\Repart;
 use Webmozart\Assert\Assert;
 
@@ -40,11 +39,11 @@ use Webmozart\Assert\Assert;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, Schede> $benificiariProgressione
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
- * @property-read Collection<int, Schede> $schede
+ * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
  * @method static mixed factory($count = null, $state = [])
  * @method static Builder|Valutatore newModelQuery()
@@ -128,25 +127,27 @@ class Valutatore extends BaseModel
 
     public function schede(): HasMany
     {
-        $schedeClass = Str::of(static::class)
+        $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
-            ->append('\\Schede')
+            ->append('\\Scheda')
             ->toString();
 
-        /** @phpstan-ignore-next-line */
-        return $this->hasMany($schedeClass, 'valutatore_id', 'id');
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
+
+        return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
-    public function boss(): hasOne
+    public function boss(): HasOne
     {
         return $this->hasOne(self::class, 'valutatore_id', 'id');
     }
-    /*
+
     public function benificiariProgressione(): HasMany
     {
         return $this->schede()->where('benificiario_progressione', 1);
     }
-    */
+
     // --- mutators --
 
     /**
@@ -173,47 +174,6 @@ class Valutatore extends BaseModel
      */
     public function getNomeDiriAttribute($value): ?string
     {
-        /*
-        if($value==null){
-            $conn=$this->getConnection();
-            $sql='select concat(conome," ",nome) as nome_diri from generale.ana10f where matr=(
-                select matr from generale.qua00f where (
-                    ('.$this->anno.' between year(qua2kd) and year(qua2ka) ) or
-                    ('.$this->anno.' >= year(qua2kd) and qua2ka=0 )
-                ) and quaann=""
-                and matr in
-                (select matr from generale.rep00f where repst1='.$this->stabi.'
-                 and repann=""
-                and (
-                    ('.$this->anno.' between year(rep2kd) and year(rep2ka) ) or
-                    ('.$this->anno.' >= year(rep2kd) and rep2ka=0 )
-                )
-                order by rep2kd desc
-                )
-                and matr in
-                (select matr from generale.sto00f where stann=""
-                and (
-                    ('.($this->anno+1).' between year(st2kas) and year(st2kdi) ) or
-                    ('.($this->anno+1).' >= year(st2kas) and st2kdi=0 )
-                )
-                )
-                order by propro desc,posfun desc
-                limit 1)';
-            $res= \DB::select($sql);
-            $value=ucwords(strtolower($res[0]->nome_diri)).'';
-        }
-        */
         return $value;
     }
-    /*
-    public function budgetAssegnato(): float
-    {
-        $beneficiari = $this->benificiariProgressione;
-
-        // $res = $beneficiari->sum('costo_fascia_up');
-        Assert::float($res = $beneficiari->sum(fn ($item): int|float => $item->costo_fascia_up * $item->ptime));
-
-        return $res;
-    }
-    */
 }

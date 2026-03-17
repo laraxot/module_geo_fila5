@@ -41,7 +41,7 @@ $lista_propro_sup = $schede->first()->categoriaPropro->lista_propro_sup;
                 <td>{{ $row->qua2kd }}</td>
                 <td>{{ $row->qua2ka }}</td>
                 @php
-                    //dddx(get_class($schede->first())); //Modules\Progressioni\Models\Schede
+                    //dddx(get_class($schede->first())); //Modules\Progressioni\Models\Scheda
                     //dddx();
                     $curr = $row->gg([
                         'date_max' => $date_max,

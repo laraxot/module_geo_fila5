@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'name' => 'Schede PO',
-        'plural' => 'Schede PO',
+        'name' => 'Scheda PO',
+        'plural' => 'Scheda PO',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
             'description' => 'Gestione delle schede di valutazione delle Posizioni Organizzative',
         ],
-        'label' => 'Schede PO',
+        'label' => 'Scheda PO',
         'sort' => 32,
         'icon' => 'performance-region-document',
     ],

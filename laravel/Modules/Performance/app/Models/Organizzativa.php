@@ -371,9 +371,9 @@ use Override;
  * @property-read int|null $asz_count
  * @property-read Collection<int, Asz00k1> $aszEff
  * @property-read int|null $asz_eff_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
  * @property-read int|null $avversari_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversariCategoriaEco
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count
  * @property-read Collection<int, \Modules\Performance\Models\CriteriValutazione> $criteriValutazioneOld
  * @property-read int|null $criteri_valutazione_old_count

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 // -------- models -----------
 use Modules\Progressioni\Models\CriteriEsclusione;
 use Modules\Progressioni\Models\CriteriOption;
-use Modules\Progressioni\Models\Progressioni as Schede;
+use Modules\Progressioni\Models\Progressioni as Scheda;
 
 // -------- services --------
 // use Modules\Xot\Services\ArrayService;
@@ -36,7 +36,7 @@ class TrovaEsclusiAction {
             ->pluck('value', 'name')
             ->all();
 
-        $schede = Schede::where('anno', $year)->get();
+        $schede = Scheda::where('anno', $year)->get();
         foreach ($schede as $scheda) {
             $parz = [
                 'scheda' => $scheda,
