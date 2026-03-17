@@ -544,6 +544,30 @@ class MyFormComponent extends Field
         $this->validateUsing([/* validation rules */]);
     }
 }
+<<<<<<< Updated upstream
+
+// Non aggiungere route manualmente
+Route::get('/example', [ExampleController::class, 'index']);
+
+// Non creare middleware personalizzati
+class CustomMiddleware
+{
+    public function handle($request, Closure $next)
+    {
+        // ...
+    }
+}
+
+// Non hardcodare percorsi delle risorse
+<img src="/var/www/html/Quaeris/laravel/public/images/avatar.png">
+
+// Non duplicare la registrazione dei componenti
+Blade::component('ui::components.icon', 'ui.icon');
+
+// Non creare componenti personalizzati se esiste un equivalente Filament
+<x-ui.button>Click me</x-ui.button>
+=======
+>>>>>>> Stashed changes
 ```
 
 ### Widget Development

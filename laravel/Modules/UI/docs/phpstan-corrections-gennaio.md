@@ -62,6 +62,12 @@ Pagine Resource estendevano direttamente classi Filament invece di XotBase.
 <<<<<<< HEAD
 - **`CreateQuestionChart` (<nome progetto>)**: 
   - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
+<<<<<<< Updated upstream
+- **`EditQuestionChart` (<nome progetto>)**:
+- **`CreateQuestionChart` (Quaeris)**:
+  - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
+- **`EditQuestionChart` (Quaeris)**:
+=======
 - **`EditQuestionChart` (<nome progetto>)**: 
 =======
 - **`CreateQuestionChart` (Quaeris)**: 
@@ -73,6 +79,7 @@ Pagine Resource estendevano direttamente classi Filament invece di XotBase.
   - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
 - **`EditQuestionChart` (Quaeris)**: 
 >>>>>>> laraxot/develop
+>>>>>>> Stashed changes
   - Cambiato da `EditRecord` a `XotBaseEditRecord`
 - **`ViewPageContent` (Cms)**: 
   - Cambiato da `ViewRecord` a `XotBaseViewRecord`
@@ -218,12 +225,16 @@ class ViewLocation extends XotBaseViewRecord
 <<<<<<< HEAD
 <<<<<<< HEAD
 ### Modulo <nome progetto>
+<<<<<<< Updated upstream
+### Modulo Quaeris
+=======
 =======
 ### Modulo Quaeris
 >>>>>>> 161e28f (Lint)
 =======
 ### Modulo Quaeris
 >>>>>>> laraxot/develop
+>>>>>>> Stashed changes
 - `app/Filament/Resources/QuestionChartResource.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/CreateQuestionChart.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/EditQuestionChart.php`
