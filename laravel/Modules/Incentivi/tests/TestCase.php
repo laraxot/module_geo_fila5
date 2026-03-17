@@ -16,7 +16,7 @@ abstract class TestCase extends XotTestCase
      *
      * @var array<int, string>
      */
-    protected array $connectionsToTransact = ['mysql', 'incentivi'];
+    protected array $connectionsToTransact = ['mysql', 'incentivi', 'user'];
 
     protected function setUp(): void
     {
