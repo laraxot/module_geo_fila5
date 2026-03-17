@@ -377,3 +377,4 @@ dump.rdb
 laravel/database/migrations/
 .qwen/
 docs/archive/
+.gemini/

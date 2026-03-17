@@ -29,7 +29,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @see https://github.com/aurmich/sample_passport/blob/develop/app/Models/Client.php
  */
-class OauthClient extends PassportClient implements AuthorizableContract
+final class OauthClient extends PassportClient implements AuthorizableContract
 {
     use Authorizable;
     use HasRoles;
@@ -42,7 +42,7 @@ class OauthClient extends PassportClient implements AuthorizableContract
      *
      * @var string
      */
-    public string $guard_name = 'api';
+    public $guard_name = 'api';
 
     /**
      * Get the user that the client belongs to.
