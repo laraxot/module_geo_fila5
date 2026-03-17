@@ -5,7 +5,7 @@
 Nel modulo `Xot` alcuni tool e alcuni percorsi legacy cercano ancora:
 
 - `Modules/Xot/helpers/Helper.php`
-- `Modules/Xot/Helpers/Helper.php`
+- `Modules/Xot/helpers/Helper.php`
 
 Su filesystem case-sensitive questi due path non sono equivalenti.
 
@@ -17,7 +17,7 @@ Su filesystem case-sensitive questi due path non sono equivalenti.
 ## Scelta applicata
 
 - helper attivo: `Modules/Xot/helpers/Helper.php`
-- bridge compatibilita': `Modules/Xot/Helpers/Helper.php`
+- bridge compatibilita': `Modules/Xot/helpers/Helper.php`
 
 ## Perche'
 
