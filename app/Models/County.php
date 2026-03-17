@@ -13,7 +13,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
  *
- * @method static CountyFactory factory($count = null, $state = [])
+ * @method static CountyFactory          factory($count = null, $state = [])
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
