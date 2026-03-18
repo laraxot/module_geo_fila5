@@ -325,7 +325,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     {
         // @phpstan-ignore function.alreadyNarrowedType
         if (method_exists($this, 'teams')) {
-            // @phpstan-ignore function.alreadyNarrowedType
             $this->teams()->detach($model);
         }
     }
@@ -334,7 +333,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     {
         // @phpstan-ignore function.alreadyNarrowedType
         if (method_exists($this, 'teams')) {
-            // @phpstan-ignore function.alreadyNarrowedType
             $this->teams()->attach($model);
         }
     }
@@ -392,11 +390,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
         return $this->morphMany(Notification::class, 'notifiable');
     }
 
-    /**
-     * Get the user's latest authentication log.
-     *
-     * @return MorphOne<AuthenticationLog, static>
-     */
     public function latestAuthentication(): MorphOne
     {
         // @phpstan-ignore return.type

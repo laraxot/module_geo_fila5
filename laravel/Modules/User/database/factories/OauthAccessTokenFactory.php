@@ -16,7 +16,7 @@ use Modules\User\Models\User;
  */
 class OauthAccessTokenFactory extends Factory
 {
-    /** @phpstan-ignore-next-line Passport access token is an Eloquent model at runtime, but PHPStan loses that type here. */
+    /** @phpstan-ignore property.defaultValue */
     protected $model = OauthToken::class;
 
     /**

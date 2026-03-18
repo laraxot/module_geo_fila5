@@ -117,7 +117,7 @@ class PassportServiceProvider extends ServiceProvider
         Passport::useAuthCodeModel($authCodeModel);
         Passport::useClientModel($clientModel);
 
-        // @phpstan-ignore-next-line - method_exists check kept for backward compatibility with older Passport versions
+        // @phpstan-ignore function.alreadyNarrowedType
         if (method_exists(Passport::class, 'useDeviceCodeModel')) {
             $deviceCodeModel = $models['device_code'] ?? OauthDeviceCode::class;
             Assert::stringNotEmpty($deviceCodeModel);

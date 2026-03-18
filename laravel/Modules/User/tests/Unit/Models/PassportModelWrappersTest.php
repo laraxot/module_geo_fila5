@@ -6,7 +6,7 @@ namespace Modules\User\Tests\Unit\Models;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Laravel\Passport\AuthCode;
-use Laravel\Passport\Client;
+use Laravel\Passport\Client as PassportClient;
 use Laravel\Passport\DeviceCode;
 use Laravel\Passport\RefreshToken;
 use Laravel\Passport\Token;
@@ -23,7 +23,7 @@ uses(TestCase::class);
 test('passport eloquent models have oauth wrappers in user module', function (): void {
     $expectedWrappers = [
         AuthCode::class => OauthAuthCode::class,
-        Client::class => OauthClient::class,
+        PassportClient::class => OauthClient::class,
         DeviceCode::class => OauthDeviceCode::class,
         RefreshToken::class => OauthRefreshToken::class,
         Token::class => OauthToken::class,
