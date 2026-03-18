@@ -33,6 +33,8 @@ Il modulo **Xot** è il nucleo fondativo dell'intero progetto Laraxot PTVX. Forn
 - [Documentazione Root](../../../docs/XOT_MODULE.md)
 - [Regole Architettura](./architecture/)
 - [PHPStan Configuration](./phpstan/)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Regole Critiche
 

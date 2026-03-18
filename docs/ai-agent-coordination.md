@@ -6,8 +6,6 @@
 >
 > **Status:** Active
 >
-> **Last Updated:** 2026-03-18
->
 > **BMAD Version:** v6.2.0
 
 ---

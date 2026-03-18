@@ -38,6 +38,8 @@ Zero/
 
 - [PHPStan Docs](./phpstan.md)
 - [Configurazione Root](../../../docs/THEME_ZERO.md)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Backlinks
 

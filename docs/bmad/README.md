@@ -1,7 +1,6 @@
 # BMAD-METHOD Integration Guide
 
 **Version**: 1.0.0  
-**Date**: 2026-03-18  
 **Status**: Active  
 **BMAD Version**: v6.2.0
 
@@ -9,9 +8,9 @@
 
 ## 🎯 Overview
 
-This document describes the integration of **BMAD-METHOD v6.2.0** into the PTVX Fila5 Mono project for AI-driven agile development.
+Questa guida descrive come usare **BMAD Method** in questo progetto per ottenere sviluppo AI-driven **ripetibile** su codebase grande (moduli/temi), senza perdere decisioni e senza duplicare lavoro.
 
-### What is BMAD-METHOD?
+### Cos’è BMAD Method (perché ci serve)
 
 **BMAD-METHOD** (Breakthrough Method for Agile AI Driven Development) is a comprehensive framework for AI-driven software development featuring:
 
@@ -21,7 +20,7 @@ This document describes the integration of **BMAD-METHOD v6.2.0** into the PTVX 
 - **Party Mode** for multi-agent collaboration
 - **Scale-Domain-Adaptive Intelligence**
 
-### Why BMAD for PTVX?
+### Perché BMAD qui
 
 | Benefit | Description |
 |---------|-------------|
@@ -40,7 +39,6 @@ This document describes the integration of **BMAD-METHOD v6.2.0** into the PTVX 
 ```yaml
 BMAD-METHOD:
   Version: 6.2.0
-  Install Date: 2026-03-18
   Location: _bmad/
   
 Modules:
@@ -518,7 +516,6 @@ user_name: "Development Team"
 communication_language: "Italian"
 document_output_language: "Italian"
 user_skill_level: "Expert"
-date: "2026-03-18"
 ```
 
 ### Customizing Agents
@@ -653,18 +650,7 @@ bmad-help "How do I create a Laravel module?"
 
 ---
 
-## 📝 Changelog
+## Note di manutenzione
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2026-03-18 | Initial BMAD-METHOD v6.2.0 integration |
-| - | - | - Added project context file |
-| - | - | - Created Laravel module dev skill |
-| - | - | - Created Filament page dev skill |
-| - | - | - Integrated with existing AI agents |
-| - | - | - Configured workflows for PTVX |
-
----
-
-*BMAD-METHOD Integration Guide v1.0.0*  
-*Last Updated: 2026-03-18*
+- La storia temporale vive in Git: evitare date dentro i file `.md`.
+- Se serve riallineare BMAD alla versione upstream, usare l’install/update ufficiale (vedi README upstream: `npx bmad-method install`) e poi verificare che `_bmad/_config/manifest.yaml` sia coerente.

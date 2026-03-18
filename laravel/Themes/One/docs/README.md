@@ -34,6 +34,8 @@ ACTIVE_THEME=one
 - [Tema Zero](../Zero/docs/) - Tema principale
 - [Configurazione Root](../../../docs/THEME_ONE.md)
 - [Governance Naming Docs/Model](./model-docs-governance.md)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Backlinks
 

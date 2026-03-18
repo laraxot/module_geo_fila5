@@ -50,6 +50,40 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
 - **Rule**: USER TYPING - Never use generic `\Illuminate\Database\Eloquent\Model|null` for users in method signatures or PHPDoc. Always use `Modules\Xot\Contracts\UserContract`. See `docs/eloquent-models-property-verification.md`.
 
+## GSD (Get Shit Done)
+
+This project uses GSD for spec-driven development with context engineering.
+GSD solves context rot by keeping each task in a fresh, optimal context window.
+
+- **State**: `.planning/STATE.md` — read at session start
+- **Config**: `.planning/config.json` — workflow configuration
+- **Templates**: `.gsd/templates/` — document templates
+- **Methodology**: `docs/project/gsd-methodology.md`
+
+### GSD Workflow
+
+```
+new-project → discuss-phase N → plan-phase N → execute-phase N → verify-work N → complete-milestone
+```
+
+### Quick Commands
+
+| Action | How |
+|--------|-----|
+| New project | "GSD new-project" |
+| Discuss phase | "GSD discuss phase N" |
+| Plan phase | "GSD plan phase N" |
+| Execute phase | "GSD execute phase N" |
+| Verify work | "GSD verify N" |
+| Quick task | "GSD quick: description" |
+| Map codebase | "GSD map codebase" |
+| Progress | "GSD progress" |
+
+### GSD vs BMAD
+
+- **GSD**: Single features, refactoring, bug fixes, quick tasks
+- **BMAD**: New modules, architecture, stakeholder alignment, sprint planning
+
 ## Documentation Locations
 
 - Project docs: `docs/`
@@ -58,6 +92,9 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Agent skills: `.agent/skills/`
 - Agent workflows: `.agent/workflows/`
 - Agent teams: `.agent/agent-teams.md`
+- GSD methodology: `docs/project/gsd-methodology.md`
+- GSD templates: `.gsd/templates/`
+- GSD state: `.planning/STATE.md`
 
 ## Links
 
@@ -68,3 +105,5 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - [Filament Guide](./.gemini/docs/filament.md)
 - [MCP Guide](./.gemini/docs/mcp.md)
 - [Agent Teams](./.agent/agent-teams.md)
+- [GSD Methodology](docs/project/gsd-methodology.md)
+- [BMAD Integration](docs/project/bmad-method-integration.md)

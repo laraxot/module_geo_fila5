@@ -47,6 +47,8 @@ Modules\User\Models\Tenant
 - [Documentazione Root](../../../docs/USER_MODULE.md)
 - [Regole Trait](./traits.md)
 - [Filament Resources](./filament/)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Backlinks
 

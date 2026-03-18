@@ -3,8 +3,7 @@
 > Index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
 
 **Project**: PTVX Fila5 Mono  
-**AI Framework**: BMAD-METHOD v6.2.0  
-**Last Updated**: 2026-03-18
+**AI Framework**: BMAD-METHOD v6.2.0
 
 ## Quick Reference
 

@@ -15,12 +15,46 @@ PTVX is a modular HR & Performance evaluation system built on Laravel + Filament
 - **PHPStan Level 10** — no ignores allowed.
 - **Read → Reason → Study** before any edit.
 
+## GSD (Get Shit Done)
+
+This project uses GSD for spec-driven development with context engineering.
+
+- **State**: `.planning/STATE.md` — read at session start
+- **Config**: `.planning/config.json` — workflow configuration
+- **Templates**: `.gsd/templates/` — document templates
+- **Methodology**: `docs/project/gsd-methodology.md`
+
+### GSD Commands
+
+```
+/gsd:new-project          # Initialize project
+/gsd:discuss-phase N      # Discuss phase N
+/gsd:plan-phase N         # Plan phase N
+/gsd:execute-phase N      # Execute phase N
+/gsd:verify-work N        # Verify phase N
+/gsd:quick "desc"         # Quick ad-hoc task
+/gsd:map-codebase         # Analyze brownfield codebase
+/gsd:progress             # Show current state
+```
+
+### When to use GSD vs BMAD
+
+| Scenario | Framework |
+|----------|-----------|
+| Single feature, refactoring | **GSD** |
+| Complex multi-file bug fix | **GSD** |
+| New complete module | **BMAD** |
+| Architecture, stakeholder alignment | **BMAD** |
+| Quick ad-hoc task | **GSD quick** |
+
 ## Documentation Navigation
 
 - [Detailed Project Overview](.agents/docs/agents-guide/01-project-overview/project-overview.md)
 - [Critical Rules Summary](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
 - [Quick Commands](.agents/docs/agents-guide/02-tooling/quick-commands.md)
 - [Laraxot Philosophy](.agents/docs/laraxot-philosophy.md)
+- [GSD Methodology](docs/project/gsd-methodology.md)
+- [BMAD Integration](docs/project/bmad-method-integration.md)
 
 ---
 [Agent docs index](.agents/docs/index.md) | [Agent Teams](.agents/docs/agent-teams.md) | [Project setup](.agents/docs/project-setup.md)

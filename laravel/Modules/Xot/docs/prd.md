@@ -1,30 +1,39 @@
-# PRD: Xot Core Framework
+# PRD: Xot Core Framework Module
 
-## 📋 Overview
-- **Author:** Gemini CLI
-- **Status:** Approved
-- **Target Release:** 1.0.0 (L12 Compatible)
+## 📋 Executive Summary
+Xot is the foundational module of the PTVX ecosystem. It provides the core abstractions, base classes, and behavioral guards (Nyquist validation, PHPStan Level 10) that ensure all other modules operate within a consistent architectural framework. Its primary mission is to eliminate boilerplate and enforce strict typing across the entire multi-tenant system.
 
-## ❓ Problem Statement
-Developing multiple isolated modules requires a shared "language" and set of base classes to avoid logic duplication and architectural drift.
+## 👥 Target Personas
+- **Module Developers**: Need reliable base classes (`XotBase*`) to build domain features rapidly.
+- **System Architects**: Need to monitor compliance and architectural integrity.
+- **AI Agents**: Need standardized patterns and rich metadata to assist in code generation and maintenance.
+- **DevOps Engineers**: Need predictable module registration and discovery.
 
-## 🎯 Goals & Success Metrics
-- **Goal 1:** 100% Type Safety -> **Metric:** Zero PHPStan L10 errors.
-- **Goal 2:** Universal Adoption -> **Metric:** All project modules extend `XotBase*`.
-- **Goal 3:** Performance -> **Metric:** < 5ms framework overhead.
+## 🎯 Functional Requirements (P0/P1)
+- **P0: Base Abstractions**: Comprehensive set of wrappers for Laravel/Filament (`XotBaseModel`, `XotBaseResource`, `XotBasePage`, `XotBaseAction`).
+- **P0: Module Registry**: Automatic discovery and initialization of all modules in `laravel/Modules/`.
+- **P0: Strict Type Enforcement**: Global configuration for PHPStan Level 10 and strict types.
+- **P1: Universal Helpers**: Shared traits for translations, logging (no `Log::debug`), and data transformation.
+- **P1: Database Governance**: Dynamic connection management for modular isolation.
 
-## 👤 User Stories
-- As a **Module Developer**, I want to extend `XotBaseServiceProvider` so that my module is automatically discovered and registered.
-- As an **AI Agent**, I want to see standardized `XotBaseModel` properties so I can generate type-safe code.
+## 🛠️ Technical Specs
+- **Architecture**: Modular Monolith foundation with Domain-Driven Design (DDD) principles.
+- **Registry Pattern**: Each module registers its own service providers and resources via the `XotBaseServiceProvider`.
+- **Validation**: Integrated Nyquist validation for complete feature coverage.
+- **Database Schema**: Manages the `_prisma_migrations` and core system tables.
 
-## 🛠️ Functional Requirements
-1. **Base Abstractions:** Provide `XotBaseModel`, `XotBaseResource`, `XotBasePage`, etc.
-2. **Standard Actions:** Reusable business logic like `GeneratePdfAction`, `ExecuteArtisanCommandAction`.
-3. **Module Registry:** Dynamic discovery of all `laravel/Modules/` subdirectories.
+## 🔌 Service Interface (The Contract)
+- **Extensibility**: All application modules MUST extend `XotBase` equivalents.
+- **Property Access**: No `property_exists()` on models; use `getAttribute()` or `??`.
+- **Action Pattern**: Business logic isolated in `Action` classes resolved via `app()`.
 
-## 🎨 Design & User Experience
-Focuses on Developer Experience (DX). Provides clear error messages and strict typing to prevent common Laravel pitfalls.
+## 🛡️ Non-Functional Requirements
+- **Quality Gate**: 100% PHPStan Level 10 compliance.
+- **Performance**: Zero-to-negligible overhead for module discovery.
+- **Security**: Strict multi-tenant data isolation at the foundation level.
+- **Observability**: Standardized logging and tracing for cross-module operations.
 
-## 🚫 Out of Scope
-- Domain-specific logic (HR, Finance, etc.).
-- Direct UI components (handled by the UI module).
+## ✅ Release Criteria
+- All core tests passing in Pest.
+- Zero issues found by PHPMD and PHPInsights.
+- Clear documentation for all `XotBase` wrappers.
