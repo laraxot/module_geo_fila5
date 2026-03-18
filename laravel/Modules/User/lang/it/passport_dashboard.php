@@ -29,6 +29,9 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'force' => [
+            'description' => 'force',
+        ],
     ],
     'actions' => [
         'create' => [

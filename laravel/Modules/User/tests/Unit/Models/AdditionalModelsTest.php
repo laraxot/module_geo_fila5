@@ -32,11 +32,14 @@ test('Notification model can be instantiated', function () {
     expect($model)->toBeInstanceOf(Notification::class);
 });
 
+<<<<<<< Updated upstream
 test('OauthToken model can be instantiated', function () {
     $model = new OauthToken();
     expect($model)->toBeInstanceOf(OauthToken::class);
 });
 
+=======
+>>>>>>> Stashed changes
 test('OauthClient model can be instantiated', function () {
     $model = new OauthClient();
     expect($model)->toBeInstanceOf(OauthClient::class);
