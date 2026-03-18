@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -69,7 +70,7 @@ class OauthClientResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, \Filament\Tables\Columns\Column>
+     * @return array<string, Column>
      */
     public static function getTableColumns(): array
     {
@@ -80,13 +81,13 @@ class OauthClientResource extends XotBaseResource
             'user.name' => TextColumn::make('user.name')
                 ->searchable()
                 ->label('Owner'),
-            'personal_access_client' => \Filament\Tables\Columns\IconColumn::make('personal_access_client')
+            'personal_access_client' => IconColumn::make('personal_access_client')
                 ->boolean()
                 ->label('Personal'),
-            'password_client' => \Filament\Tables\Columns\IconColumn::make('password_client')
+            'password_client' => IconColumn::make('password_client')
                 ->boolean()
                 ->label('Password'),
-            'revoked' => \Filament\Tables\Columns\IconColumn::make('revoked')
+            'revoked' => IconColumn::make('revoked')
                 ->boolean()
                 ->label('Active')
                 ->color(fn (bool $state): string => $state ? 'danger' : 'success'),
