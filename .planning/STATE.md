@@ -15,7 +15,7 @@
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-03-18)
+See: `.planning/PROJECT.md`
 
 **Core value**: Provide Italian Public Administrations with a compliant, automated system for managing the complete employee performance evaluation cycle
 
@@ -85,13 +85,13 @@ See: `.planning/PROJECT.md` (updated 2026-03-18)
 
 ## State Transitions
 
-| Date | Transition | Trigger |
-|------|------------|---------|
-| 2026-03-18 09:30 | Project initialized | Codebase mapping complete, config created |
-| 2026-03-18 10:06 | Research complete | 4/4 research dimensions finished |
-| 2026-03-18 10:15 | Requirements defined | 68 v1 requirements documented |
-| 2026-03-18 10:30 | Roadmap created | 10-phase roadmap with milestones |
-| 2026-03-18 13:32 | GSD fully installed | Templates, adapters, workflows, rules, agent configs updated |
+| Transition | Trigger |
+|------------|---------|
+| Project initialized | Codebase mapping complete, config created |
+| Research complete | 4/4 research dimensions finished |
+| Requirements defined | 68 v1 requirements documented |
+| Roadmap created | 10-phase roadmap with milestones |
+| GSD fully installed | Templates, adapters, workflows, rules, agent configs updated |
 
 ---
 
