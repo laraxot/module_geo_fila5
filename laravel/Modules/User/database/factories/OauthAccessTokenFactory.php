@@ -16,8 +16,7 @@ use Modules\User\Models\User;
  */
 class OauthAccessTokenFactory extends Factory
 {
-    /** @phpstan-ignore property.defaultValue */
-    protected $model = OauthToken::class;
+    protected $model = OauthToken::class; // @phpstan-ignore property.defaultValue
 
     /**
      * Define the model's default state.

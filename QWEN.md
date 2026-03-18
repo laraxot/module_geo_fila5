@@ -11,7 +11,8 @@
 > **Project**: PTVX Fila5 Mono - HR & Performance Evaluation System  
 > **Stack**: Laravel 12.47 | Filament v5 | Pest v4 | PHPStan Level 10 | PHP 8.3+  
 > **Architecture**: Laraxot Modular System  
-> **Last Updated**: 2026-03-13
+> **AI Framework**: BMAD-METHOD v6.2.0  
+> **Last Updated**: 2026-03-18
 
 ---
 
@@ -34,6 +35,34 @@
 | PHPStan | Level 10 | Static analysis |
 | Pest | v4 | Testing |
 | Laraxot | Custom | Modular architecture |
+| **BMAD-METHOD** | **v6.2.0** | **AI-driven agile development** |
+
+### BMAD-METHOD Integration
+
+**BMAD-METHOD v6.2.0** provides AI-driven agile development with:
+
+- **12+ Specialized Agents**: PM, Architect, Developer, QA, UX, Tech Writer
+- **34+ Workflows**: Analysis, Solutioning, Implementation, Testing, Documentation
+- **Skills Architecture**: Custom Laravel/Filament development skills
+- **Party Mode**: Multi-agent collaboration
+
+**Key Workflows**:
+```bash
+bmad-laravel-module-dev      # Create Laravel modules
+bmad-filament-page-dev       # Create Filament pages
+bmad-create-architecture     # Design architecture
+bmad-dev                     # Implement features
+bmad-code-review             # Review code
+bmad-qa-generate-e2e-tests   # Generate tests
+bmad-document-project        # Generate docs
+```
+
+**Documentation**:
+- **BMAD Guide**: `docs/bmad/README.md`
+- **Project Context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
+- **Laravel Skill**: `_bmad/core/skills/bmad-laravel-module-dev.md`
+- **Filament Skill**: `_bmad/core/skills/bmad-filament-page-dev.md`
+- **AI Coordination**: `docs/ai-agent-coordination.md`
 
 ### Project Structure
 

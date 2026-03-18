@@ -1,342 +1,265 @@
-# AI Agent Coordination Hub
+# AI Agent Coordination Hub with BMAD-METHOD
 
 > **Central Coordination Document for Multiple AI Agents**
-> 
-> **Purpose:** Evitare duplicazioni e conflitti quando múltiples agenti AI lavorano sullo stesso progetto
-> 
+>
+> **Purpose:** Coordinare BMAD-METHOD agents con AI agents esistenti (Qwen, Gemini, Claude) per evitare duplicazioni e conflitti
+>
 > **Status:** Active
-> 
-> **Last Updated:** 2026-03-13
+>
+> **Last Updated:** 2026-03-18
+>
+> **BMAD Version:** v6.2.0
 
 ---
 
-## Principi di Coordinamento
+## 🎯 Panoramica
 
-### 1. Single Source of Truth
+Questo progetto utilizza **BMAD-METHOD v6.2.0** per lo sviluppo agile guidato da AI, integrato con AI agents esistenti (Qwen, Gemini, Claude).
 
-Tutti gli agenti AI devono:
-- ✅ Leggere questo documento prima di agire
-- ✅ Aggiornare questo documento dopo azioni significative
-- ✅ Coordinarsi tramite GitHub Issues/Discussions
+### Agenti AI Attivi
 
-### 2. Divisione dei Compiti
+#### BMAD-METHOD Agents (Specialists)
 
-| Area | Responsabile | Status | Notes |
-|------|-------------|--------|-------|
-| Apache Fix | Agent 1 | ✅ Completed | Virtual host rimosso |
-| Ollama Optimization | Agent 2 | ✅ Completed | Script creato |
-| Documentation | Agent 3 | 🟡 In Progress | Docs in corso |
-| Testing | Agent 4 | ⏳ Pending | Da iniziare |
+| Agent | Name | Role | Expertise | Status |
+|-------|------|------|-----------|--------|
+| **analyst** | Mary 📊 | Business Analyst | Requirements, market research | ✅ Active |
+| **architect** | Winston 🏗️ | System Architect | Distributed systems, Laravel | ✅ Active |
+| **dev** | Amelia 💻 | Senior Developer | TDD, clean code | ✅ Active |
+| **pm** | John 📋 | Product Manager | PRDs, user stories | ✅ Active |
+| **qa** | Quinn 🧪 | QA Engineer | Test automation, Pest | ✅ Active |
+| **ux-designer** | Sally 🎨 | UX Designer | User research, UI | ✅ Active |
+| **sm** | Bob 🏃 | Scrum Master | Sprint planning, agile | ✅ Active |
+| **tech-writer** | Paige 📚 | Technical Writer | Documentation | ✅ Active |
 
-### 3. Comunicazione
+#### General AI Agents (Generalists)
 
-**Canali Preferiti:**
-1. GitHub Issues - Per task specifici
-2. GitHub Discussions - Per decisioni architetturali
-3. Questo documento - Per coordinamento immediato
+| Agent | Role | Status | Notes |
+|-------|------|--------|-------|
+| **Qwen** | Primary AI | ✅ Active | Main development agent |
+| **Gemini** | Secondary AI | ✅ Active | Support, research |
+| **Claude** | Tertiary AI | ✅ Active | Code review, docs |
 
 ---
 
-## Task Attivi
+## 🔄 Workflow di Coordinamento
 
-### Task #1: Apache2 Fix ✅
+### 1. Prima di Agire
+
+**TUTTI gli agenti DEVONO:**
+
+```bash
+# 1. Leggere questo documento
+cat docs/ai-agent-coordination.md
+
+# 2. Verificare task in corso
+git status
+git log --oneline -10
+
+# 3. Controllare GitHub Issues
+gh issue list
+
+# 4. Controllare BMAD workflows attivi
+cat _bmad/bmm/workflows/*/workflow.md
+```
+
+### 2. Scegliere il Workflow Appropriato
+
+| Scenario | Workflow BMAD | Agente Responsabile |
+|----------|---------------|---------------------|
+| **Nuovo modulo** | `bmad-laravel-module-dev` | Mary → Winston → Amelia → Quinn → Paige |
+| **Nuova feature** | `bmad-create-architecture` + `bmad-dev` | Winston → Amelia |
+| **Bug fix** | `bmad-dev` (bug mode) | Amelia |
+| **Code review** | `bmad-code-review` | Amelia + Quinn |
+| **Test** | `bmad-qa-generate-e2e-tests` | Quinn |
+| **Documentazione** | `bmad-document-project` | Paige |
+| **Sprint planning** | `bmad-sprint-planning` | Bob + John |
+| **Retrospettiva** | `bmad-retrospective` | Bob + Team |
+
+### 3. Durante il Lavoro
+
+**Regole per Tutti gli Agenti:**
+
+1. **Lavorare in piccoli incrementi**
+   - Commit atomici e frequenti
+   - Push ogni 5-10 minuti
+   - Documentare ogni cambiamento
+
+2. **Evitare conflitti**
+   - Controllare file lock
+   - Verificare file modificati di recente
+   - Comunicare su GitHub Issues
+
+3. **Seguire le convenzioni**
+   - Laraxot patterns
+   - PHPStan Level 10
+   - Pest per testing
+   - XotBase wrappers
+
+### 4. Dopo il Lavoro
+
+**TUTTI gli agenti DEVONO:**
+
+```bash
+# 1. Eseguire quality gates
+php -d memory_limit=2G ./vendor/bin/phpstan analyse
+./vendor/bin/pint
+./vendor/bin/pest
+
+# 2. Commit con messaggio chiaro
+git add -A
+git commit -m "type: clear description"
+
+# 3. Push immediato
+git push origin dev
+
+# 4. Aggiornare questo documento
+# Edit docs/ai-agent-coordination.md
+
+# 5. Aggiornare GitHub Issues
+gh issue comment <number> --body "Completed: <description>"
+```
+
+---
+
+## 📋 Task Attivi
+
+### Task #1: BMAD Integration ✅
 
 **Status:** COMPLETED
 
-**Agent:** Any
+**Agent:** Qwen (Primary)
+
+**Descrizione:**
+Integrazione BMAD-METHOD v6.2.0 nel progetto PTVX Fila5 Mono
 
 **Azioni Intraprese:**
-```bash
-# Rimosso virtual host rotto
-rm -f /etc/apache2/sites-enabled/quaeris.local.conf
-
-# Verificato configurazione
-apache2ctl configtest  # Syntax OK
-
-# Riavviato Apache
-sudo systemctl restart apache2
+```markdown
+- ✅ Installato BMAD-METHOD v6.2.0
+- ✅ Creato project context: project-context-ptvx.md
+- ✅ Creati custom skills:
+  - bmad-laravel-module-dev.md
+  - bmad-filament-page-dev.md
+- ✅ Integrato con AI agent coordination esistente
+- ✅ Creato documentazione BMAD in docs/bmad/
+- ✅ Configurato MCP servers
 ```
 
-**Risultato:** Apache2 attivo e funzionante
+**Risultato:**
+BMAD-METHOD completamente integrato e operativo
 
 ---
 
-### Task #2: Ollama Optimization ✅
-
-**Status:** COMPLETED
-
-**Agent:** Any
-
-**Azioni Intraprese:**
-```bash
-# Creato script di ottimizzazione
-touch bashscripts/ollama-optimize.sh
-chmod +x bashscripts/ollama-optimize.sh
-
-# Documentato
-touch bashscripts/docs/ollama-optimize.md
-```
-
-**Risultato:** Script funzionante e documentato
-
----
-
-### Task #3: Script Organization 🟡
+### Task #2: Module Documentation Update 🟡
 
 **Status:** IN PROGRESS
 
-**Agent:** Current Agent
+**Agent:** Paige (Tech Writer) + Qwen
 
-**Regola:**
-> Tutti gli script `.sh` devono essere in `bashscripts/` e documentati in `bashscripts/docs/`
+**Descrizione:**
+Aggiornare documentazione in tutti i 42+ moduli seguendo standard BMAD
 
 **Azioni Richieste:**
-- [x] Spostare eventuali script in root verso `bashscripts/`
-- [x] Creare documentazione in `bashscripts/docs/`
-- [ ] Verificare tutti i moduli
-- [ ] Aggiornare AGENTS.md
+- [x] Creare template documentazione BMAD
+- [ ] Verificare modulo Xot
+- [ ] Verificare modulo User
+- [ ] Verificare modulo Performance
+- [ ] Verificare modulo Ptv
+- [ ] Verificare restanti 38 moduli
+
+**Timeline:**
+- Start: 2026-03-18
+- End: 2026-03-25
 
 ---
 
-### Task #4: Documentation Cleanup ⏳
+### Task #3: Test Coverage Improvement ⏳
 
 **Status:** PENDING
 
-**Agent:** Next Available
+**Agent:** Quinn (QA) + Amelia (Developer)
 
 **Descrizione:**
-Pulizia e organizzazione documentazione in tutti i moduli
+Migliorare test coverage dall'82% al 100%
 
 **Azioni Richieste:**
-- [ ] Identificare documentazione duplicata
-- [ ] Rimuovere docs obsolete
-- [ ] Standardizzare naming
-- [ ] Aggiornare indici
+- [ ] Analizzare coverage attuale
+- [ ] Identificare moduli critici
+- [ ] Generare test con BMAD workflow
+- [ ] Eseguire test e verificare
+- [ ] Documentare test patterns
+
+**Timeline:**
+- Start: 2026-03-19
+- End: 2026-03-30
 
 ---
 
-## Conflitti Evitati
+### Task #4: BMAD Workflow Testing ⏳
 
-### Conflitto #1: Script Position
+**Status:** PENDING
 
-**Potenziale Conflitto:** Script `.sh` creati in locazioni sbagliate
+**Agent:** Amelia (Developer) + Quinn (QA)
+
+**Descrizione:**
+Testare tutti i workflow BMAD su moduli reali
+
+**Workflow da Testare:**
+- [ ] bmad-laravel-module-dev
+- [ ] bmad-create-architecture
+- [ ] bmad-dev
+- [ ] bmad-code-review
+- [ ] bmad-qa-generate-e2e-tests
+- [ ] bmad-document-project
+
+**Timeline:**
+- Start: 2026-03-19
+- End: 2026-03-22
+
+---
+
+## 🚨 Conflitti Evitati
+
+### Conflitto #1: Duplicazione Agenti
+
+**Potenziale Conflitto:**
+BMAD agents e Qwen/Gemini potrebbero lavorare sugli stessi file
 
 **Soluzione:**
 ```markdown
-REGOLA: Tutti gli script .sh devono essere in:
-- bashscripts/ (script principali)
-- bashscripts/docs/ (documentazione)
-- Modules/*/bashscripts/ (script specifici per modulo)
+REGOLA DI COORDINAMENTO:
 
-MAI creare script .sh in:
-- Root del modulo
-- app/
-- config/
+1. BMAD agents (specialists) gestiscono:
+   - Architecture decisions (Winston)
+   - Code implementation (Amelia)
+   - Testing (Quinn)
+   - Documentation (Paige)
+
+2. Qwen/Gemini (generalists) gestiscono:
+   - Task generali
+   - Research
+   - Fix rapidi
+   - Integrazione
+
+3. Comunicazione:
+   - GitHub Issues per task specifici
+   - Questo documento per coordinamento
+   - Commit messages chiari
 ```
 
----
+### Conflitto #2: File Lock
 
-## Linee Guida per AI Agents
+**Potenziale Conflitto:**
+Multipli agenti modificano lo stesso file
 
-### Prima di Agire
-
-1. **Leggi questo documento**
-   ```bash
-   cat docs/ai-agent-coordination.md
-   ```
-
-2. **Verifica task in corso**
-   ```bash
-   git status
-   git log --oneline -10
-   ```
-
-3. **Controlla GitHub Issues**
-   ```bash
-   gh issue list
-   ```
-
-### Durante l'Azione
-
-1. **Documenta nel commit**
-   ```bash
-   git commit -m "[AI-Agent] Description of changes
-
-   Coordinated via: docs/ai-agent-coordination.md
-   Related issue: #123"
-   ```
-
-2. **Usa branch separati**
-   ```bash
-   git checkout -b ai-agent/task-name
-   ```
-
-### Dopo l'Azione
-
-1. **Aggiorna questo documento**
-   - Segna task come completato
-   - Aggiungi note
-
-2. **Crea/Aggiorna GitHub Issue**
-   ```bash
-   gh issue create --title "[AI-Agent] Task completed"
-   ```
-
-3. **Notifica altri agenti**
-   - Lascia commento in questo documento
-   - Usa @mentions se necessario
-
----
-
-## Script e Tool per AI Agents
-
-### Coordination Check
-
+**Soluzione:**
 ```bash
 #!/bin/bash
-# verify-coordination.sh
-
-echo "=== AI Agent Coordination Check ==="
-echo ""
-echo "1. Checking for other running agents..."
-ps aux | grep -i "agent\|ai\|copilot" | grep -v grep
-
-echo ""
-echo "2. Recent git activity..."
-git log --oneline -5
-
-echo ""
-echo "3. Open GitHub Issues..."
-gh issue list --state open
-
-echo ""
-echo "4. Current coordination doc..."
-cat docs/ai-agent-coordination.md | head -50
-```
-
-### Auto-Documentation
-
-```bash
-#!/bin/bash
-# auto-document-changes.sh
-
-echo "Generating documentation for changes..."
-
-# Find modified files
-git diff --name-only HEAD~1..HEAD
-
-# Generate markdown
-cat >> docs/ai-agent-changelog.md << EOF
-## $(date +%Y-%m-%d)
-
-**Agent:** $(hostname)
-**Task:** $TASK_NAME
-
-### Files Modified
-$(git diff --name-only HEAD~1..HEAD | sed 's/^/- /')
-
-### Changes Summary
-$(git diff --stat HEAD~1..HEAD)
-
----
-EOF
-```
-
----
-
-## GitHub Integration
-
-### Issue Template per AI Agents
-
-```markdown
----
-name: AI Agent Task
-title: '[AI-Agent] Task description'
-labels: ['ai-agent', 'task']
-assignees: ''
----
-
-## Task Description
-
-[Describe the task]
-
-## Agent Information
-
-- **Agent ID:** [Agent identifier]
-- **Start Time:** [Timestamp]
-- **Expected Duration:** [Time estimate]
-
-## Coordination
-
-- [ ] Checked ai-agent-coordination.md
-- [ ] No conflicting tasks in progress
-- [ ] Related issues linked
-
-## Progress
-
-- [ ] Step 1
-- [ ] Step 2
-- [ ] Step 3
-
-## Completion
-
-- [ ] Task completed
-- [ ] Documentation updated
-- [ ] Tests passing
-- [ ] Coordination doc updated
-```
-
-### Discussion Template
-
-```markdown
----
-title: AI Agent Architecture Decision
-category: Architecture
-labels: ['ai-agent', 'architecture', 'decision']
----
-
-## Proposal
-
-[Describe the architectural decision]
-
-## Impact
-
-[List affected components]
-
-## Coordination Required
-
-- [ ] Agent 1 approval
-- [ ] Agent 2 approval
-- [ ] Human review
-
-## Decision
-
-[Final decision and rationale]
-```
-
----
-
-## Best Practices
-
-### 1. Evitare Duplicazioni
-
-**PRIMA di creare un file:**
-```bash
-# Cerca file simili
-find . -name "*similar*" -type f
-
-# Verifica se esiste già funzionalità
-grep -r "similar_function" .
-```
-
-### 2. Coordinamento in Tempo Reale
-
-**Usa lock file per operazioni critiche:**
-```bash
-LOCKFILE="/tmp/ai-agent.lock"
+# Lock file per operazioni critiche
+LOCKFILE="/tmp/ai-agent-$(basename $FILE).lock"
 
 if [ -f "$LOCKFILE" ]; then
-    echo "Another agent is running. Waiting..."
+    echo "⚠️  File $FILE locked by another agent"
+    echo "Waiting..."
     sleep 5
 fi
 
@@ -345,26 +268,335 @@ touch $LOCKFILE
 rm $LOCKFILE
 ```
 
-### 3. Logging Condiviso
+---
 
+## 📊 BMAD Workflow Status
+
+### Workflow Completati
+
+| Workflow | Data | Agent | Output |
+|----------|------|-------|--------|
+| bmad-generate-project-context | 2026-03-18 | Paige | project-context-ptvx.md |
+| bmad-laravel-module-dev (setup) | 2026-03-18 | Team | Skills create |
+| bmad-filament-page-dev (setup) | 2026-03-18 | Team | Skills create |
+
+### Workflow in Esecuzione
+
+| Workflow | Data | Agent | Status |
+|----------|------|-------|--------|
+| bmad-document-project | 2026-03-18 | Paige | 🟡 In Progress |
+
+### Workflow Pianificati
+
+| Workflow | Data Prevista | Agent | Scopo |
+|----------|---------------|-------|-------|
+| bmad-create-architecture | 2026-03-19 | Winston | Nuovo modulo |
+| bmad-dev | 2026-03-19 | Amelia | Implementazione |
+| bmad-qa-generate-e2e-tests | 2026-03-19 | Quinn | Test coverage |
+
+---
+
+## 🎯 Linee Guida per AI Agents
+
+### BMAD Agents
+
+**Quando Attivare:**
+
+1. **Task Specializzati**
+   - Architecture: `bmad-create-architecture`
+   - Development: `bmad-dev`
+   - Testing: `bmad-qa-generate-e2e-tests`
+   - Documentation: `bmad-document-project`
+
+2. **Workflow Strutturati**
+   - Sprint planning: `bmad-sprint-planning`
+   - Code review: `bmad-code-review`
+   - Retrospettiva: `bmad-retrospective`
+
+**Come Attivare:**
 ```bash
-LOGFILE="/var/log/ai-agents/$(date +%Y%m%d).log"
+# Tramite comando
+bmad-<workflow-name>
 
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$(hostname)] Starting task: $TASK" >> $LOGFILE
-# Esegui task
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$(hostname)] Completed task: $TASK" >> $LOGFILE
+# Tramite skill
+@agent Use bmad-<skill-name>
+```
+
+### Qwen/Gemini/Claude
+
+**Quando Attivare:**
+
+1. **Task Generali**
+   - Research veloce
+   - Fix rapidi
+   - Code review informale
+   - Domande generali
+
+2. **Integrazione**
+   - Coordinare BMAD workflows
+   - Verificare quality gates
+   - Aggiornare documentazione
+
+**Come Attivare:**
+```bash
+# Tramite chat
+"Qwen, verifica PHPStan su modulo Xot"
+
+# Tramite comando
+./vendor/bin/phpstan analyse Modules/Xot
 ```
 
 ---
 
-## Contatti e Risorse
+## 🔧 Script e Tool per AI Agents
+
+### BMAD Workflow Check
+
+```bash
+#!/bin/bash
+# check-bmad-workflows.sh
+
+echo "=== BMAD Workflow Status ==="
+echo ""
+
+echo "1. Active Workflows:"
+find _bmad/bmm/workflows -name "workflow.md" -exec grep -l "status: active" {} \;
+
+echo ""
+echo "2. Recent BMAD Commits:"
+git log --oneline -10 --grep="bmad\|BMAD"
+
+echo ""
+echo "3. BMAD Files Created Today:"
+find _bmad -type f -mtime -1
+
+echo ""
+echo "4. Project Context:"
+cat _bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md | head -30
+```
+
+### Coordination Check
+
+```bash
+#!/bin/bash
+# check-coordination.sh
+
+echo "=== AI Agent Coordination Check ==="
+echo ""
+
+echo "1. Checking for other running agents..."
+ps aux | grep -i "agent\|ai\|copilot" | grep -v grep
+
+echo ""
+echo "2. Recent git activity..."
+git log --oneline -10
+
+echo ""
+echo "3. Open GitHub Issues..."
+gh issue list --state open
+
+echo ""
+echo "4. BMAD Workflows attivi..."
+cat docs/ai-agent-coordination.md | grep -A 5 "Workflow in Esecuzione"
+
+echo ""
+echo "5. Task in corso..."
+cat docs/ai-agent-coordination.md | grep -A 10 "Task Attivi"
+```
+
+### Auto-Documentation
+
+```bash
+#!/bin/bash
+# auto-document-bmad-task.sh
+
+TASK_NAME=$1
+AGENT_NAME=$2
+
+echo "Generating BMAD task documentation..."
+
+# Create task report
+cat >> docs/bmad/task-reports/$(date +%Y-%m-%d)-$TASK_NAME.md << EOF
+# BMAD Task Report
+
+**Task**: $TASK_NAME
+**Agent**: $AGENT_NAME
+**Date**: $(date +%Y-%m-%d)
+**Workflow**: bmad-$TASK_NAME
+
+## Files Modified
+
+$(git diff --name-only HEAD~1..HEAD | sed 's/^/- /')
+
+## Changes Summary
+
+$(git diff --stat HEAD~1..HEAD)
+
+## Quality Gates
+
+- PHPStan: $(php -d memory_limit=2G ./vendor/bin/phpstan analyse --error-format=json | jq '.totals.errors')
+- Tests: $(./vendor/bin/pest --colors=never | grep -E 'Tests:|Passed:' | head -2)
+
+## Next Steps
+
+[ ] Review changes
+[ ] Update documentation
+[ ] Create GitHub issue if needed
+
+---
+EOF
+
+echo "Task documented in docs/bmad/task-reports/"
+```
+
+---
+
+## 📚 GitHub Integration
+
+### Issue Template per BMAD Workflows
+
+```markdown
+---
+name: BMAD Workflow
+title: '[BMAD] Workflow name'
+labels: ['bmad', 'workflow']
+assignees: ''
+---
+
+## Workflow Information
+
+- **Workflow**: bmad-<workflow-name>
+- **Agent**: <agent-name>
+- **Start Time**: <timestamp>
+- **Expected Duration**: <time>
+
+## Input
+
+[Describe input: requirements, user story, etc.]
+
+## Output
+
+[Describe expected output: code, tests, docs]
+
+## Progress
+
+- [ ] Step 1: <step-name>
+- [ ] Step 2: <step-name>
+- [ ] Step 3: <step-name>
+- [ ] Quality gates passed
+- [ ] Documentation updated
+- [ ] Tests passing
+
+## Completion
+
+- [ ] Workflow completed
+- [ ] Output saved to: <path>
+- [ ] Coordination doc updated
+- [ ] GitHub discussion created (if needed)
+
+## Notes
+
+[Any additional notes, decisions, or follow-ups]
+```
+
+### Discussion Template
+
+```markdown
+---
+title: BMAD Architecture Decision
+category: Architecture
+labels: ['bmad', 'architecture', 'decision']
+---
+
+## Proposal
+
+[Describe the architectural decision from BMAD workflow]
+
+## BMAD Workflow Output
+
+**Workflow**: bmad-create-architecture
+**Agent**: Winston (Architect)
+**Date**: <date>
+
+## Impact
+
+[List affected modules, components]
+
+## Coordination Required
+
+- [ ] BMAD Architect (Winston) approval
+- [ ] BMAD Developer (Amelia) feedback
+- [ ] Human review
+- [ ] Other AI agents alignment
+
+## Decision
+
+[Final decision and rationale]
+
+## Next Steps
+
+- [ ] Create ADR
+- [ ] Update documentation
+- [ ] Implement changes
+```
+
+---
+
+## 📊 Metrics & Monitoring
+
+### Workflow Metrics
+
+| Metric | Target | Current | Status |
+|--------|--------|---------|--------|
+| Workflow Completion Rate | 100% | - | 🟡 |
+| Agent Response Time | < 30s | - | 🟡 |
+| Documentation Coverage | 100% | 75% | 🟡 |
+| Test Coverage | 100% | 82% | 🟡 |
+| Quality Gate Pass Rate | 100% | 95% | 🟢 |
+
+### Agent Activity
+
+Tracked in: `_bmad/_memory/agent-activity.yaml`
+
+```yaml
+last_updated: 2026-03-18
+agents:
+  mary:
+    workflows_completed: 1
+    last_active: 2026-03-18T11:36:40Z
+  winston:
+    workflows_completed: 0
+    last_active: null
+  amelia:
+    workflows_completed: 0
+    last_active: null
+  quinn:
+    workflows_completed: 0
+    last_active: null
+  paige:
+    workflows_completed: 1
+    last_active: 2026-03-18T11:38:10Z
+```
+
+---
+
+## 🔗 Risorse
 
 ### Documenti Correlati
 
-- [AGENTS.md](../../AGENTS.md)
-- [Workspace Naming](conventions/workspace-naming.md)
-- [Folder Structure](conventions/module-folder-structure.md)
-- [Copy Files Cleanup](conventions/copy-files-cleanup.md)
+- [BMAD Integration Guide](docs/bmad/README.md)
+- [BMAD Project Context](_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md)
+- [Laravel Module Skill](_bmad/core/skills/bmad-laravel-module-dev.md)
+- [Filament Page Skill](_bmad/core/skills/bmad-filament-page-dev.md)
+- [AGENTS.md](AGENTS.md)
+- [QWEN.md](QWEN.md)
+
+### BMAD Resources
+
+- [BMAD-METHOD Docs](https://docs.bmad-method.org)
+- [BMAD GitHub](https://github.com/bmad-code-org/BMAD-METHOD)
+- [BMAD Discord](https://discord.gg/bmad)
+- [Full Text Docs](https://docs.bmad-method.org/llms-full.txt)
 
 ### GitHub Resources
 
@@ -372,23 +604,20 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$(hostname)] Completed task: $TASK" >> $LO
 - [Discussions](https://github.com/provtv/base_ptv_fila5_mono/discussions)
 - [Pull Requests](https://github.com/provtv/base_ptv_fila5_mono/pulls)
 
-### Human Contacts
-
-- **Project Owner:** @username
-- **Tech Lead:** @username
-- **AI Coordinator:** @username
-
 ---
 
-## Changelog
+## 📝 Changelog
 
 | Date | Agent | Changes |
 |------|-------|---------|
-| 2026-03-13 | Agent 1 | Initial version |
+| 2026-03-18 | Qwen | Updated with BMAD-METHOD v6.2.0 integration |
+| 2026-03-18 | Qwen | Added BMAD agent roles and workflows |
+| 2026-03-18 | Qwen | Added coordination rules for BMAD + existing AI |
+| 2026-03-13 | Agent 3 | Updated with task tracking |
 | 2026-03-13 | Agent 2 | Added coordination examples |
-| 2026-03-13 | Current | Updated with task tracking |
+| 2026-03-13 | Agent 1 | Initial version |
 
 ---
 
 *Documento di coordinamento - Aggiornato in tempo reale dagli agenti AI*
-*Ultimo aggiornamento: 2026-03-13*
+*Ultimo aggiornamento: 2026-03-18*

@@ -4,6 +4,17 @@
 
 **Stack**: Laravel 12 | Filament v5 | Pest v4 | PHPStan L10 | PHP 8.3+
 
+## BMAD Method Integration
+
+Questo progetto usa il **BMAD Method** per workflow strutturati di sviluppo AI-driven.
+
+**Configurazione BMAD**: `_bmad/` directory con workflow e configurazioni
+**Catalog BMAD**: `_bmad/_config/bmad-help.csv` per tutti i workflow disponibili
+
+→ Per guidanza: usa `bmad-help` skill o chiedi "cosa devo fare dopo?"
+→ Per sviluppo rapido: usa `bmad-quick-dev` o `bmad-quick-dev-new-preview`
+→ Per brainstorming: usa `bmad-brainstorming`
+
 ## Regola Fondamentale
 
 **Read → Reason → Study → Update → Improve**
@@ -19,6 +30,7 @@ After edit: PHPStan + PHPMD + PHPInsights.
 | Tests | `./vendor/bin/pest` |
 | PHPStan | `php -d memory_limit=2G ./vendor/bin/phpstan analyse` |
 | Pint | `./vendor/bin/pint --dirty` |
+| BMAD Help | Chiedi "bmad-help" o "cosa devo fare dopo?" |
 
 → [Dettagli](.agents/docs/agents-guide/02-tooling/quick-commands.md)
 

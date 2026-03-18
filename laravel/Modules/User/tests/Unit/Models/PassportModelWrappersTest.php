@@ -52,17 +52,17 @@ test('oauth client has guard name property', function (): void {
     expect($client->guard_name)->toBe('api');
 });
 
-test('oauth client has required properties', function (): void {
+test('oauth client has required attributes', function (): void {
     $client = new OauthClient();
 
-    // These properties are defined in the PHPDoc
-    expect(property_exists($client, 'id'))->toBeTrue();
-    expect(property_exists($client, 'name'))->toBeTrue();
-    expect(property_exists($client, 'secret'))->toBeTrue();
-    expect(property_exists($client, 'provider'))->toBeTrue();
-    expect(property_exists($client, 'redirect'))->toBeTrue();
-    expect(property_exists($client, 'personal_access_client'))->toBeTrue();
-    expect(property_exists($client, 'password_client'))->toBeTrue();
-    expect(property_exists($client, 'revoked'))->toBeTrue();
-    expect(property_exists($client, 'user_id'))->toBeTrue();
+    // Verify attributes are accessible (Eloquent magic via __get/__isset)
+    expect(isset($client->id))->toBeTrue();
+    expect(isset($client->name))->toBeTrue();
+    expect(isset($client->secret))->toBeTrue();
+    expect(isset($client->provider))->toBeTrue();
+    expect(isset($client->redirect))->toBeTrue();
+    expect(isset($client->personal_access_client))->toBeTrue();
+    expect(isset($client->password_client))->toBeTrue();
+    expect(isset($client->revoked))->toBeTrue();
+    expect(isset($client->user_id))->toBeTrue();
 });
