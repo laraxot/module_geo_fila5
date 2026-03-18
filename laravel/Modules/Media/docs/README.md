@@ -8,6 +8,12 @@ Il modulo **Media** fa parte dell'ecosistema Laraxot PTVX.
 
 Gestisce le funzionalità specifiche del dominio Media.
 
+## Cosa copre (business)
+
+- **Upload & gestione file**: associazione media a record di dominio (es. avatar, documenti, allegati).
+- **Integrazione UI**: componenti/risorse Filament per caricare e gestire media.
+- **Policy**: regole condivise su naming, storage e sicurezza (validazioni, mime types).
+
 ## Struttura
 
 ```
