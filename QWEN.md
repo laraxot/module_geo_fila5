@@ -11,7 +11,7 @@
 > **Project**: PTVX Fila5 Mono - HR & Performance Evaluation System  
 > **Stack**: Laravel 12.47 | Filament v5 | Pest v4 | PHPStan Level 10 | PHP 8.3+  
 > **Architecture**: Laraxot Modular System  
-> **AI Framework**: BMAD-METHOD v6.2.0  
+> **AI Frameworks**: BMAD-METHOD v6.2.0 + GSD v1.25.1  
 > **Last Updated**: 2026-03-18
 
 ---
