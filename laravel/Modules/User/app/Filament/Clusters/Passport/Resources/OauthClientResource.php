@@ -58,34 +58,43 @@ class OauthClientResource extends XotBaseResource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->formatStateUsing(fn (string $state): string => Str::headline($state))
-                    ->searchable(),
-                TextColumn::make('user.name')
-                    ->searchable()
-                    ->label('Owner'),
-                TextColumn::make('personal_access_client')
-                    ->boolean()
-                    ->label('Personal'),
-                TextColumn::make('password_client')
-                    ->boolean()
-                    ->label('Password'),
-                TextColumn::make('revoked')
-                    ->boolean()
-                    ->label('Active'),
-                TextColumn::make('created_at')
-                    ->dateTime(),
-                TextColumn::make('updated_at')
-                    ->dateTime(),
-            ])
+            ->columns(static::getTableColumns())
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 DeleteBulkAction::make(),
             ]);
+    }
+
+    /**
+     * @return array<string, \Filament\Tables\Columns\Column>
+     */
+    public static function getTableColumns(): array
+    {
+        return [
+            'name' => TextColumn::make('name')
+                ->formatStateUsing(fn (string $state): string => Str::headline($state))
+                ->searchable(),
+            'user.name' => TextColumn::make('user.name')
+                ->searchable()
+                ->label('Owner'),
+            'personal_access_client' => \Filament\Tables\Columns\IconColumn::make('personal_access_client')
+                ->boolean()
+                ->label('Personal'),
+            'password_client' => \Filament\Tables\Columns\IconColumn::make('password_client')
+                ->boolean()
+                ->label('Password'),
+            'revoked' => \Filament\Tables\Columns\IconColumn::make('revoked')
+                ->boolean()
+                ->label('Active')
+                ->color(fn (bool $state): string => $state ? 'danger' : 'success'),
+            'created_at' => TextColumn::make('created_at')
+                ->dateTime(),
+            'updated_at' => TextColumn::make('updated_at')
+                ->dateTime(),
+        ];
     }
 
     /**
