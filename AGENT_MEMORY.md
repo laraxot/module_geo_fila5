@@ -165,3 +165,25 @@ See full log: [memories.md](.agents/docs/memories.md)
 - Use PHAR only for PHPMD.
 - NEVER use `RefreshDatabase` in tests.
 - Central discussion: `https://github.com/provtv/base_ptv_fila5_mono/discussions/18`
+
+## MCP Configuration
+
+**File**: `.cursor/mcp.json`
+
+| Server | Purpose |
+|--------|---------|
+| filesystem | File system operations |
+| sequential-thinking | Complex problem solving |
+| mysql | Database via Laravel .env |
+| playwright | Browser automation |
+| git | Git operations |
+
+See: [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md)
+
+## PHPStan Status (2026-03-18)
+
+- **User Module**: ✅ COMPLETE - 0 errors at Level 10
+- **Xot Module**: 🔄 In progress
+- **Other modules**: See GitHub issues
+
+See: [Issue #102](https://github.com/provtv/base_ptv_fila5_mono/issues/102)
