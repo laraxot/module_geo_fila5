@@ -379,3 +379,4 @@ laravel/database/migrations/
 docs/archive/
 .gemini/
 .cursor/
+.opencode/
