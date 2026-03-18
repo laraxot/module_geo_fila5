@@ -34,14 +34,32 @@ GSD risolve il **context rot** — il degrado qualitativo quando il contesto del
 
 ## BMAD Method Integration
 
-Questo progetto usa anche il **BMAD Method** per workflow strutturati enterprise.
+Questo progetto usa il **BMAD Method** (Breakthrough Method for Agile AI Driven Development) per workflow strutturati enterprise. BMAD eccelle nel trasformare idee vaghe in specifiche tecniche rigorose (Spec-Driven Development) attraverso una squadra di agenti specializzati.
 
 **Configurazione BMAD**: `_bmad/` directory con workflow e configurazioni
 **Catalog BMAD**: `_bmad/_config/bmad-help.csv` per tutti i workflow disponibili
 
 → Per guidanza: usa `bmad-help` skill o chiedi "cosa devo fare dopo?"
-→ Per sviluppo rapido: usa `bmad-quick-dev` o `bmad-quick-dev-new-preview`
 → Per brainstorming: usa `bmad-brainstorming`
+→ Per Spec: `bmad-create-prd` → `bmad-create-architecture` → `bmad-create-epics-and-stories`
+→ Per Implementazione: `bmad-sprint-planning` → `bmad-dev-story`
+
+### BMM (BMAD Method Modules) Workflow Catalog
+
+| Phase | Workflow | Agent | Purpose |
+|-------|----------|-------|---------|
+| **Analysis** | `bmad-brainstorming` | Analyst | Ideazione e tecniche di facilitazione |
+| **Analysis** | `bmad-create-product-brief` | Analyst | Definizione core dell'idea di prodotto |
+| **Planning** | `bmad-create-prd` | PM | Generazione PRD standard 2025-2026 |
+| **Planning** | `bmad-create-ux-design` | UX | User research e interaction design |
+| **Solutioning**| `bmad-create-architecture` | Architect | Decisioni tecniche e schemi dati |
+| **Solutioning**| `bmad-create-epics-and-stories`| PM | Scomposizione in task atomici |
+| **Implementation**| `bmad-sprint-planning` | SM | Piano di sprint e sequenziamento |
+| **Implementation**| `bmad-dev-story` | Dev | Esecuzione story e test (Story Cycle) |
+| **Implementation**| `bmad-code-review` | Dev | Quality gate post-implementazione |
+| **Anytime** | `bmad-help` | Facilitator | "What's Next" e guidanza agile |
+| **Anytime** | `bmad-document-project` | Analyst | Analisi e documentazione codebase esistente |
+| **Anytime** | `bmad-quick-dev` | Solo Dev | Workflow rapido per task isolati |
 
 ### Quando usare GSD vs BMAD
 
