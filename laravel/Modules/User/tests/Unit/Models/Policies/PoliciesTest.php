@@ -29,14 +29,11 @@ test('OauthClientPolicy can be instantiated', function () {
     expect($policy)->toBeInstanceOf(OauthClientPolicy::class);
 });
 
-<<<<<<< Updated upstream
 test('OauthTokenPolicy can be instantiated', function () {
     $policy = new OauthTokenPolicy();
     expect($policy)->toBeInstanceOf(OauthTokenPolicy::class);
 });
 
-=======
->>>>>>> Stashed changes
 test('OauthAuthCodePolicy can be instantiated', function () {
     $policy = new OauthAuthCodePolicy();
     expect($policy)->toBeInstanceOf(OauthAuthCodePolicy::class);
