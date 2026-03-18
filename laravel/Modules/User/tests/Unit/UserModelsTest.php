@@ -7,7 +7,7 @@ namespace Modules\User\Tests\Unit;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-uses(TestCase::class)->in(__DIR__);
+uses(TestCase::class);
 
 it('can create a user with basic attributes', function () {
     $user = User::factory()->create([

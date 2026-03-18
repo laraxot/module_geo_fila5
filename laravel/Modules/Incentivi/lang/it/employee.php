@@ -355,6 +355,11 @@ return [
             'icon' => 'layout',
             'label' => 'layout',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'validation' => [

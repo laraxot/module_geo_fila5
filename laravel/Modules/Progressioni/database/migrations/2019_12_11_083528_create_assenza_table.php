@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateAssenzeTable.
  */
-class CreateAssenzeTable extends XotBaseMigration
+return new class extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -28,4 +28,4 @@ class CreateAssenzeTable extends XotBaseMigration
                 $table->integer('anno')->nullable();
             });
     }
-}
+};

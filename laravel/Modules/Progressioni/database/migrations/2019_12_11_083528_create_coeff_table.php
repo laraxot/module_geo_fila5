@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateCoeffTable.
  */
-class CreateCoeffTable extends XotBaseMigration
+return new class extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -39,4 +39,4 @@ class CreateCoeffTable extends XotBaseMigration
                 $table->string('guid')->nullable();
             });
     }
-}
+};
