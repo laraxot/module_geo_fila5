@@ -134,6 +134,9 @@ Nella cartella **STORAGE: cancellare le tabelle temporanee di Sushi**
 
 Altri trucchi e sistemi per risolvere errori o installare server sono scritti nella cartella ./bashscripts/tips/
 
+### BMAD METHOD INTEGRATION
+Il framework BMAD è integrato per lo sviluppo strutturato. Se riscontri bug complessi o devi progettare nuovi moduli, consulta `AGENTS.md` e usa `bmad-help` per il workflow corretto.
+
 ### BACKUP DEL PROGETTO
 
 E' possibile fare un backup del progetto con il file

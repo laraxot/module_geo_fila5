@@ -140,10 +140,10 @@ find . -type l -exec test ! -e {} \; -print
 
 ### Gemini
 
-- [ ] Implement in base_fixcity_fila5
-- [ ] Create symlinks for `.gemini`
+- [x] Implement in base_ptvx_fila5
+- [x] Create symlinks for `.gemini` and `.agent`
 - [ ] Sync to other bases
-- [ ] Update documentation
+- [x] Update documentation (AGENTS.md, GEMINI.md)
 
 ### Claude
 

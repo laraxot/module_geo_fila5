@@ -164,10 +164,6 @@ Aggiornare documentazione in tutti i 42+ moduli seguendo standard BMAD
 - [ ] Verificare modulo Ptv
 - [ ] Verificare restanti 38 moduli
 
-**Timeline:**
-- Start: 2026-03-18
-- End: 2026-03-25
-
 ---
 
 ### Task #3: Test Coverage Improvement ⏳
@@ -185,10 +181,6 @@ Migliorare test coverage dall'82% al 100%
 - [ ] Generare test con BMAD workflow
 - [ ] Eseguire test e verificare
 - [ ] Documentare test patterns
-
-**Timeline:**
-- Start: 2026-03-19
-- End: 2026-03-30
 
 ---
 
@@ -208,10 +200,6 @@ Testare tutti i workflow BMAD su moduli reali
 - [ ] bmad-code-review
 - [ ] bmad-qa-generate-e2e-tests
 - [ ] bmad-document-project
-
-**Timeline:**
-- Start: 2026-03-19
-- End: 2026-03-22
 
 ---
 
@@ -268,29 +256,9 @@ rm $LOCKFILE
 
 ---
 
-## 📊 BMAD Workflow Status
+## 📊 Stato workflow BMAD
 
-### Workflow Completati
-
-| Workflow | Data | Agent | Output |
-|----------|------|-------|--------|
-| bmad-generate-project-context | 2026-03-18 | Paige | project-context-ptvx.md |
-| bmad-laravel-module-dev (setup) | 2026-03-18 | Team | Skills create |
-| bmad-filament-page-dev (setup) | 2026-03-18 | Team | Skills create |
-
-### Workflow in Esecuzione
-
-| Workflow | Data | Agent | Status |
-|----------|------|-------|--------|
-| bmad-document-project | 2026-03-18 | Paige | 🟡 In Progress |
-
-### Workflow Pianificati
-
-| Workflow | Data Prevista | Agent | Scopo |
-|----------|---------------|-------|-------|
-| bmad-create-architecture | 2026-03-19 | Winston | Nuovo modulo |
-| bmad-dev | 2026-03-19 | Amelia | Implementazione |
-| bmad-qa-generate-e2e-tests | 2026-03-19 | Quinn | Test coverage |
+Per evitare “date rot” e duplicazioni di tracking, lo stato operativo dei workflow va tracciato in **GitHub Issues** usando i template BMAD già presenti in `.github/ISSUE_TEMPLATE/`.
 
 ---
 

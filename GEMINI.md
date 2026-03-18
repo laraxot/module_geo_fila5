@@ -107,3 +107,9 @@ new-project → discuss-phase N → plan-phase N → execute-phase N → verify-
 - [Agent Teams](./.agent/agent-teams.md)
 - [GSD Methodology](docs/project/gsd-methodology.md)
 - [BMAD Integration](docs/project/bmad-method-integration.md)
+
+## BMAD Rules for Gemini
+- **Spec-First**: Per moduli complessi o nuove architetture, NON iniziare a codificare senza un workflow BMAD (`create-prd` → `create-architecture`).
+- **Context Sharding**: Se un documento supera i 1600 token, usa `bmad-shard-doc` per mantenere l'efficienza del contesto.
+- **Expert Personas**: Quando agisci come `architect` o `pm`, segui strettamente il manifest dell'agente in `_bmad/bmm/agents/`.
+- **"What's Next"**: In caso di incertezza sulla fase del progetto, invoca sempre `bmad-help`.

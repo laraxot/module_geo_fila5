@@ -47,6 +47,31 @@ This project uses GSD for spec-driven development with context engineering.
 | Architecture, stakeholder alignment | **BMAD** |
 | Quick ad-hoc task | **GSD quick** |
 
+## BMAD Method V6
+
+BMAD V6.2.0 is installed in `_bmad/` with 9 specialized agents and 42 workflows.
+
+- **Config**: `_bmad/_config/` — manifests, agents, workflows
+- **Output**: `_bmad-output/` — PRD, architecture, epics, stories
+- **Context**: `_bmad-output/project-context.md` — Laraxot implementation rules
+- **Help**: Invoke `bmad-help` for intelligent guidance
+
+### Key Workflows
+
+```
+bmad-help                          # What should I do next?
+bmad-create-prd                    # Create Product Requirements
+bmad-create-architecture           # Technical decisions
+bmad-create-epics-and-stories      # Break into stories
+bmad-sprint-planning               # Initialize sprint
+bmad-create-story                  # Prepare next story
+bmad-dev-story                     # Implement story
+bmad-code-review                   # Adversarial review
+bmad-quick-dev                     # Quick spec + implementation
+bmad-brainstorming                 # Guided ideation
+bmad-party-mode                    # Multi-agent discussion
+```
+
 ## Documentation Navigation
 
 - [Detailed Project Overview](.agents/docs/agents-guide/01-project-overview/project-overview.md)
