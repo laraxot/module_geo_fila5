@@ -4,6 +4,12 @@
 
 Il modulo **UI** fornisce componenti Blade, widget Filament e asset condivisi per tutti i moduli e temi.
 
+## Scopo (business)
+
+- **Consistenza UX**: componenti riutilizzabili e pattern comuni per evitare UI divergenti tra moduli.
+- **Integrazione Filament**: widget e convenzioni per backoffice coerente.
+- **Riduzione debito**: un punto unico dove consolidare scelte UI/UX e naming.
+
 ## Struttura Componenti
 
 ```

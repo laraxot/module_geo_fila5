@@ -54,10 +54,7 @@ abstract class BaseListUsers extends XotBaseListRecords
      * Get table actions for user records.
      *
      * @return array<string, Action|\Filament\Actions\ActionGroup>
-     *
-     * @phpstan-ignore-next-line
      */
-    /** @phpstan-ignore-next-line */
     #[\Override]
     public function getTableActions(): array
     {
@@ -78,7 +75,6 @@ abstract class BaseListUsers extends XotBaseListRecords
          * ->icon('heroicon-o-trash')
          * ->action(static fn (UserContract $user) => $user->delete());
          */
-        /* @phpstan-ignore-next-line */
     }
 
     /**

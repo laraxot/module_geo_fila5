@@ -4,6 +4,12 @@
 
 Il modulo **Notify** gestisce il sistema di notifiche dell'applicazione.
 
+## Scopo (business)
+
+- **Comunicazioni**: invio email/notifiche (e, dove previsto, altri canali)
+- **Template**: gestione template e versioning (quando abilitato)
+- **Asincrono**: integrazione con queue per invii massivi o costosi
+
 ## Funzionalità
 
 - Mail notifications

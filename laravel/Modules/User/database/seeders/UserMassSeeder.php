@@ -211,7 +211,6 @@ class UserMassSeeder extends Seeder
         // Crea profili per tutti gli utenti
         $profileFactory = \Modules\User\Database\Factories\ProfileFactory::new();
         foreach ($users as $user) {
-            // @phpstan-ignore-next-line
             $profileFactory->create([
                 'user_id' => $user->id,
                 'created_at' => $user->created_at,
@@ -299,7 +298,7 @@ class UserMassSeeder extends Seeder
             $this->info('Utenti verificati: '.str_pad((string) $verifiedUsers, 6, ' ', STR_PAD_LEFT));
 
             // Conta profili
-            $totalProfiles = Profile::count();
+            $totalProfiles = Profile::query()->count();
 
             $this->info('Profili totali: '.str_pad((string) $totalProfiles, 6, ' ', STR_PAD_LEFT));
 
