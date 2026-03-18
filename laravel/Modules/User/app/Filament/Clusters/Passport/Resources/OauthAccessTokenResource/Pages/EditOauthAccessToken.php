@@ -4,26 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource\Pages;
 
-use Filament\Actions\Action;
-use Filament\Actions\DeleteAction;
 use Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
-/**
- * Class EditOauthAccessTokens.
- */
-class EditOauthAccessTokens extends XotBaseEditRecord
+class EditOauthAccessToken extends XotBaseEditRecord
 {
     protected static string $resource = OauthAccessTokenResource::class;
 
-    /**
-     * @return array<string, Action>
-     */
-    #[\Override]
-    protected function getHeaderActions(): array
+    public static function getNavigationLabel(): string
     {
-        return [
-            'delete' => DeleteAction::make(),
-        ];
+        return 'Edit Access Token';
+    }
+
+    public static function getNavigationIcon(): string
+    {
+        return 'heroicon-o-pencil';
     }
 }

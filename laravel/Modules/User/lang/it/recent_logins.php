@@ -101,6 +101,7 @@ return [
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
         ],
     ],
     'navigation' => [

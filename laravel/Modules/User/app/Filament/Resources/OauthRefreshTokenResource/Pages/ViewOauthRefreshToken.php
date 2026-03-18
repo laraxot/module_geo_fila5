@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource\Pages;
+namespace Modules\User\Filament\Resources\OauthRefreshTokenResource\Pages;
 
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
-use Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource;
+use Modules\User\Filament\Resources\OauthRefreshTokenResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
-use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewOauthRefreshToken extends XotBaseViewRecord
 {
@@ -24,7 +23,7 @@ class ViewOauthRefreshToken extends XotBaseViewRecord
     protected function getInfolistSchema(): array
     {
         return [
-            'token_information' => XotBaseSection::make('Token Information')
+            'token_information' => Section::make('Token Information')
                 ->schema([
                     'token_grid' => Grid::make(2)
                         ->schema([

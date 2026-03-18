@@ -40,6 +40,7 @@ This document serves as the central index for the User module, providing guidanc
 - **Authentication Failures**: Ensure correct configuration of auth providers and middleware for user routes.
 - **Permission Conflicts**: Verify role and permission assignments to avoid access issues.
 - **Session Expiry**: Implement proper session management to handle user logout and timeouts securely.
+- **Git "path does not have our version"**: Durante rebase, file "deleted by us" (OauthAccessToken pages). Vedi [git-path-does-not-have-our-version-fix](./git-path-does-not-have-our-version-fix.md).
 
 ## Documentation and Updates
 - Document any custom implementations or deviations from standard User module practices in the relevant documentation folder.
