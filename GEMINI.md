@@ -84,6 +84,26 @@ new-project → discuss-phase N → plan-phase N → execute-phase N → verify-
 - **GSD**: Single features, refactoring, bug fixes, quick tasks
 - **BMAD**: New modules, architecture, stakeholder alignment, sprint planning
 
+## BMAD Method
+
+BMAD (v6.2.0) è integrato in `_bmad/` con agenti specialisti e workflow strutturati.
+
+- **Config**: `_bmad/_config/` (manifest e integrazioni IDE)
+- **Workflows**: `_bmad/bmm/workflows/`
+- **Project context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
+- **Help**: invoca `bmad-help` quando non sai cosa fare dopo
+
+### Fasi tipiche
+
+1. **Analisi** (quando serve): brainstorming / ricerca
+2. **Pianificazione**: PRD / UX
+3. **Solutioning**: architettura / epics & stories
+4. **Implementazione**: dev / code review / QA
+
+### Quick flow
+
+Per task piccoli: `bmad-quick-dev` (spec + implementazione in un workflow).
+
 ## Documentation Locations
 
 - Project docs: `docs/`

@@ -114,4 +114,19 @@ See: `.planning/PROJECT.md` (updated 2026-03-18)
 
 ---
 
-*Last updated: 2026-03-18 after GSD installation*
+## BMAD V6.2.0 Installation Status
+
+**Installed for all agents**:
+- ✅ `_bmad/` — Core + BMM modules (v6.2.0)
+- ✅ `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md` — Contesto progetto per BMAD
+- ✅ `_bmad/_config/ides/windsurf.yaml` — Windsurf IDE config (se usato)
+- ✅ `_bmad/_config/ides/cursor.yaml` — Cursor IDE config
+- ✅ `_bmad/_config/ides/claude-code.yaml` — Claude Code IDE config
+- ✅ `.cursor/rules/bmad.mdc` — Regole Cursor per BMAD (governance + vincoli Laraxot)
+- ✅ `AGENTS.md` — Full BMM workflow catalog + GSD vs BMAD decision table
+- ✅ `docs/bmad/README.md` — Guida BMAD (KISS)
+- ✅ `docs/project/bmad-method-integration.md` — Integrazione progetto (overview)
+
+**No per-module installation needed** — BMAD opera a livello progetto via `_bmad/`. I moduli beneficiano tramite contesto e regole comuni.
+
+---

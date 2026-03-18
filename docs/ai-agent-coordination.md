@@ -524,25 +524,7 @@ labels: ['bmad', 'architecture', 'decision']
 
 Tracked in: `_bmad/_memory/agent-activity.yaml`
 
-```yaml
-last_updated: 2026-03-18
-agents:
-  mary:
-    workflows_completed: 1
-    last_active: 2026-03-18T11:36:40Z
-  winston:
-    workflows_completed: 0
-    last_active: null
-  amelia:
-    workflows_completed: 0
-    last_active: null
-  quinn:
-    workflows_completed: 0
-    last_active: null
-  paige:
-    workflows_completed: 1
-    last_active: 2026-03-18T11:38:10Z
-```
+Nota: evitare timestamp dentro i `.md`. I dettagli di attività vivono nei file macchina sotto `_bmad/_memory/`.
 
 ---
 
@@ -550,12 +532,13 @@ agents:
 
 ### Documenti Correlati
 
-- [BMAD Integration Guide](docs/bmad/README.md)
-- [BMAD Project Context](_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md)
-- [Laravel Module Skill](_bmad/core/skills/bmad-laravel-module-dev.md)
-- [Filament Page Skill](_bmad/core/skills/bmad-filament-page-dev.md)
-- [AGENTS.md](AGENTS.md)
-- [QWEN.md](QWEN.md)
+- [BMAD Guide](bmad/README.md)
+- [BMAD integration summary](bmad/bmad-integration-summary.md)
+- [BMAD project context](../_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md)
+- [Laravel module skill](../_bmad/core/skills/bmad-laravel-module-dev.md)
+- [Filament page skill](../_bmad/core/skills/bmad-filament-page-dev.md)
+- [AGENTS.md](../AGENTS.md)
+- [QWEN.md](../QWEN.md)
 
 ### BMAD Resources
 
@@ -568,22 +551,8 @@ agents:
 
 - [Issues](https://github.com/provtv/base_ptv_fila5_mono/issues)
 - [Discussions](https://github.com/provtv/base_ptv_fila5_mono/discussions)
-- [Pull Requests](https://github.com/provtv/base_ptv_fila5_mono/pulls)
+- [Pull requests](https://github.com/provtv/base_ptv_fila5_mono/pulls)
 
 ---
 
-## 📝 Changelog
-
-| Date | Agent | Changes |
-|------|-------|---------|
-| 2026-03-18 | Qwen | Updated with BMAD-METHOD v6.2.0 integration |
-| 2026-03-18 | Qwen | Added BMAD agent roles and workflows |
-| 2026-03-18 | Qwen | Added coordination rules for BMAD + existing AI |
-| 2026-03-13 | Agent 3 | Updated with task tracking |
-| 2026-03-13 | Agent 2 | Added coordination examples |
-| 2026-03-13 | Agent 1 | Initial version |
-
----
-
-*Documento di coordinamento - Aggiornato in tempo reale dagli agenti AI*
-*Ultimo aggiornamento: 2026-03-18*
+*Documento di coordinamento: lo storico dettagliato vive in Git e nelle Issues.*
