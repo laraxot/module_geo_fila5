@@ -96,6 +96,24 @@ See full convention: [bashscripts/docs/](bashscripts/docs/)
 
 See coordination hub: [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
 
+## MCP Configuration
+
+This project uses Model Context Protocol (MCP) for enhanced AI capabilities. The configuration is in `.cursor/mcp.json`.
+
+### Available MCP Servers
+
+| Server | Purpose |
+|--------|---------|
+| **filesystem** | File system operations |
+| **sequential-thinking** | Complex problem solving |
+| **mysql** | Database operations via Laravel .env |
+| **playwright** | Browser automation and testing |
+| **git** | Git operations and repository management |
+
+### Using MCP Tools
+
+MCP tools are automatically available in Cursor when configured. See [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md) for details.
+
 ## .qwen Directory Structure
 
 - **Central config in root `.qwen/`**: All AI configuration resides here
