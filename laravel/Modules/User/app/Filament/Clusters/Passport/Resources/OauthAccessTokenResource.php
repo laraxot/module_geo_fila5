@@ -196,7 +196,7 @@ class OauthAccessTokenResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, \Filament\Resources\Pages\PageRegistration>
+     * @return array<string, Component>
      */
     public static function getFormSchema(): array
     {

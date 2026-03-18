@@ -127,4 +127,16 @@ class OauthClientFactory extends Factory
             'scopes' => $scopes,
         ]);
     }
+
+    /**
+     * Create a personal access token client.
+     */
+    public function asPersonalAccessTokenClient(): static
+    {
+        return $this->state(fn (): array => [
+            'personal_access_client' => true,
+            'password_client' => false,
+            'name' => 'Personal Access Token Client',
+        ]);
+    }
 }

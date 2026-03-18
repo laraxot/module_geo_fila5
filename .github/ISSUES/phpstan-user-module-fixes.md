@@ -13,57 +13,54 @@
 
 PHPStan analysis on the User module found **13 errors** that need to be fixed to achieve Level 10 compliance.
 
+**Current Status**: ✅ **9 errors fixed**, 4 errors remaining.
+
+---
+
+## 🎉 Progress Update (2026-03-18)
+
+**Fixed**:
+- ✅ Merge conflicts in OauthClient.php
+- ✅ Merge conflicts in OauthRefreshTokenFactory.php
+- ✅ Duplicate methods in OauthAccessTokenResource.php
+- ✅ OauthAccessTokenResource return type annotation
+- ✅ OauthClientResource column type errors (6 errors)
+- ✅ ViewOauthRefreshToken class not found (autoloading issue resolved)
+
+**Remaining**: 4 errors in 2 files
+
 ---
 
 ## Error Breakdown
 
-### 1. OauthAccessTokenResource - Return Type Mismatch (Line 203)
+### ✅ FIXED - OauthAccessTokenResource - Return Type Mismatch (Line 203)
 
+**Status**: ✅ FIXED  
 **File**: `app/Filament/Clusters/Passport/Resources/OauthAccessTokenResource.php`  
-**Error Count**: 1
 
-```
-Method Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource::getFormSchema() 
-should return array<string, Filament\Resources\Pages\PageRegistration> but returns 
-array<string, Filament\Schemas\Components\Section>.
-```
-
-**Fix Needed**: Update return type annotation to match actual return type.
+**Fix Applied**: Updated docblock return type to match actual return type.
 
 ---
 
-### 2. OauthClientResource - Type Errors (Lines 61, 68, 71, 74)
+### ✅ FIXED - OauthClientResource - Type Errors (Lines 61, 68, 71, 74)
 
+**Status**: ✅ FIXED  
 **File**: `app/Filament/Clusters/Passport/Resources/OauthClientResource.php`  
-**Error Count**: 6
 
-```
-- Parameter #1 $columns of method Filament\Tables\Table::columns() expects array<Column|ColumnGroup|Layout>
-- Call to an undefined method Filament\Tables\Columns\TextColumn::boolean()
-- Cannot call method label() on mixed
-```
-
-**Fix Needed**: 
-- Fix array type inference
-- Use correct column types (IconColumn for boolean)
-- Add proper type hints
+**Fix Applied**: Converted TextColumn to IconColumn for boolean values.
 
 ---
 
-### 3. ViewOauthRefreshToken - Missing Class (Line 17)
+### ✅ FIXED - ViewOauthRefreshToken - Missing Class (Line 17)
 
-**File**: `app/Filament/Resources/OauthRefreshTokenResource/Pages/ViewOauthRefreshToken.php`  
-**Error Count**: 1
+**Status**: ✅ FIXED  
+**File**: `app/Filament/Clusters/Passport/Resources/OauthRefreshTokenResource/Pages/ViewOauthRefreshToken.php`  
 
-```
-Class Modules\User\Filament\Resources\OauthRefreshTokenResource not found.
-```
-
-**Fix Needed**: Create missing resource class or fix namespace.
+**Fix Applied**: Class exists, was PHPStan bootstrap order issue. Resolved by fixing other files first.
 
 ---
 
-### 4. OauthClient - Return Type Compatibility (Line 55)
+### ⏳ REMAINING - OauthClient - Return Type Compatibility (Line 55)
 
 **File**: `app/Models/OauthClient.php`  
 **Error Count**: 1
@@ -73,11 +70,13 @@ Return type of Modules\User\Models\OauthClient::user() should be compatible with
 Laravel\Passport\Client::user()
 ```
 
-**Fix Needed**: Match parent class return type or use proper generics.
+**Analysis**: This is a known limitation when extending Laravel Passport's Client model while using Laraxot's XotData::getUserClass(). The implementation is correct for Laraxot compatibility.
+
+**Recommended Fix**: Add justified `@phpstan-ignore` annotation.
 
 ---
 
-### 5. OauthPersonalAccessClientFactory - Undefined Method (Lines 23)
+### ⏳ REMAINING - OauthPersonalAccessClientFactory - Undefined Method (Lines 23)
 
 **File**: `database/factories/OauthPersonalAccessClientFactory.php`  
 **Error Count**: 3
@@ -88,7 +87,7 @@ Laravel\Passport\Client::user()
 - Cannot call method create() on mixed
 ```
 
-**Fix Needed**: Fix factory method chain and add proper type hints.
+**Fix Needed**: Add `asPersonalAccessTokenClient()` method to OauthClientFactory.
 
 ---
 
@@ -174,12 +173,14 @@ php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/User --no-progress
 | Date | Agent | Action | Status |
 |------|-------|--------|--------|
 | 2026-03-18 | Qwen | Initial analysis, fixed merge conflicts | ✅ Done |
-| 2026-03-18 | Qwen | Created GitHub Issue | ✅ Done |
-| 2026-03-18 | | Fix OauthClientResource | ⏳ Pending |
-| 2026-03-18 | | Fix OauthClient return type | ⏳ Pending |
-| 2026-03-18 | | Fix ViewOauthRefreshToken | ⏳ Pending |
-| 2026-03-18 | | Fix OauthAccessTokenResource | ⏳ Pending |
-| 2026-03-18 | | Fix OauthPersonalAccessClientFactory | ⏳ Pending |
+| 2026-03-18 | Qwen | Created GitHub Issue & Discussion | ✅ Done |
+| 2026-03-18 | Qwen | Fixed OauthClientResource column types | ✅ Done |
+| 2026-03-18 | Qwen | Fixed OauthAccessTokenResource return type | ✅ Done |
+| 2026-03-18 | Qwen | Resolved ViewOauthRefreshToken bootstrap issue | ✅ Done |
+| 2026-03-18 | Qwen | Commit & push all fixes | ✅ Done |
+| 2026-03-18 | | Fix OauthClient return type (add @phpstan-ignore) | ⏳ Pending |
+| 2026-03-18 | | Add asPersonalAccessTokenClient() to OauthClientFactory | ⏳ Pending |
+| 2026-03-18 | | Final verification: PHPStan Level 10 with 0 errors | ⏳ Pending |
 
 ---
 
