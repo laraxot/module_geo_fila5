@@ -145,7 +145,7 @@ class PassportDashboard extends XotBasePage
     protected function getHeaderWidgets(): array
     {
         return [
-            \Modules\User\Filament\Clusters\Passport\Widgets\PassportStatsWidget::class,
+            Passport\Widgets\PassportStatsWidget::class,
         ];
     }
 

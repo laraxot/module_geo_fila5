@@ -11,8 +11,8 @@ test('oauth client can be instantiated', function (): void {
     $client = new OauthClient();
 
     expect($client)->toBeInstanceOf(OauthClient::class)
-        ->and($client)->toBeInstanceOf(\Laravel\Passport\Client::class)
-        ->and($client)->toBeInstanceOf(\Illuminate\Contracts\Auth\Access\Authorizable::class);
+        ->and($client)->toBeInstanceOf(Laravel\Passport\Client::class)
+        ->and($client)->toBeInstanceOf(Illuminate\Contracts\Auth\Access\Authorizable::class);
 });
 
 test('oauth client has connection user', function (): void {

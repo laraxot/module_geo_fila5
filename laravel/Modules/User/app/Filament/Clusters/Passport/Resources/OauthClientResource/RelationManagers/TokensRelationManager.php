@@ -84,7 +84,7 @@ class TokensRelationManager extends XotBaseRelationManager
     }
 
     /**
-     * @return array<string, \Filament\Tables\Filters\Filter>
+     * @return array<string, Filter>
      */
     #[\Override]
     public function getTableFilters(): array
@@ -103,7 +103,7 @@ class TokensRelationManager extends XotBaseRelationManager
     }
 
     /**
-     * @return array<string, \Filament\Actions\Action>
+     * @return array<string, Action>
      */
     #[\Override]
     public function getTableActions(): array
@@ -132,7 +132,7 @@ class TokensRelationManager extends XotBaseRelationManager
     }
 
     /**
-     * @return array<string, \Filament\Actions\Action>
+     * @return array<string, Action>
      */
     #[\Override]
     public function getTableHeaderActions(): array
