@@ -27,7 +27,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County                        newModelQuery()
  * @method static Builder<static>|County                        newQuery()
  * @method static Builder<static>|County                        query()
- *                                                                                                  >>>>>>> 65bf1208 (.)
  *
  * @property string                          $id
  * @property string                          $county
