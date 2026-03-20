@@ -25,7 +25,7 @@ it('throws exception when api key is not configured', function (): void {
 it('returns null when api response is not successful', function (): void {
     config(['services.here.key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
@@ -37,8 +37,8 @@ it('returns null when api response is not successful', function (): void {
 it('returns null when no position in response', function (): void {
     config(['services.here.key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'items' => [[
                 'address' => [
                     'countryName' => 'Italia',
@@ -56,8 +56,8 @@ it('returns null when no position in response', function (): void {
 it('returns null when no address in response', function (): void {
     config(['services.here.key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'items' => [[
                 'position' => [
                     'lat' => 45.4642,
@@ -75,8 +75,8 @@ it('returns null when no address in response', function (): void {
 it('returns address data for valid response', function (): void {
     config(['services.here.key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'items' => [[
                 'position' => [
                     'lat' => 45.4642,
@@ -109,8 +109,8 @@ it('returns address data for valid response', function (): void {
 it('uses default country when missing', function (): void {
     config(['services.here.key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'items' => [[
                 'position' => [
                     'lat' => 45.4642,

@@ -46,7 +46,7 @@ it('throws exception when api key is not configured', function (): void {
 it('throws exception when api response is not successful', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
@@ -57,7 +57,7 @@ it('throws exception when api response is not successful', function (): void {
 it('throws exception when response is not valid json', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response('not valid json', 200),
     ]);
 
@@ -68,8 +68,8 @@ it('throws exception when response is not valid json', function (): void {
 it('throws exception when no features in response', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'features' => [],
         ], 200),
     ]);
@@ -81,8 +81,8 @@ it('throws exception when no features in response', function (): void {
 it('returns address data for valid coordinates', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'features' => [[
                 'center' => [9.1900, 45.4642],
                 'text' => 'Via Roma',
@@ -119,8 +119,8 @@ it('returns address data for valid coordinates', function (): void {
 it('handles boundary coordinate values', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'features' => [[
                 'center' => [180.0, 90.0],
                 'text' => 'North Pole',
@@ -142,8 +142,8 @@ it('handles boundary coordinate values', function (): void {
 it('handles missing context items', function (): void {
     config(['services.mapbox.api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'features' => [[
                 'center' => [9.1900, 45.4642],
                 'text' => 'Via Roma',
