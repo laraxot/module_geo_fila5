@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-use Modules\Geo\Tests\LightTestCase;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
-use RuntimeException;
+use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
 
@@ -29,7 +27,7 @@ it('throws exception when api key is not configured', function (): void {
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
     expect(fn () => $this->action->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'API key not found');
+        ->toThrow(\RuntimeException::class, 'API key not found');
 });
 
 it('returns empty array for empty locations', function (): void {
@@ -130,5 +128,5 @@ it('throws exception when api request fails', function (): void {
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
     expect(fn () => $this->action->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'Failed to get directions');
+        ->toThrow(\RuntimeException::class, 'Failed to get directions');
 });
