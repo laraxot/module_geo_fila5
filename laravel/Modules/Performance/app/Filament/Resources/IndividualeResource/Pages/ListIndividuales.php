@@ -33,6 +33,7 @@ use Modules\Ptv\Filament\Columns\QualificaColumn;
 use Modules\Ptv\Filament\Columns\RepartoColumn;
 use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
 use Modules\Ptv\Filament\Resources\ReportResource\Widgets\FirmaValutatoreWidget;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Actions\Table\PdfAction;
@@ -43,7 +44,7 @@ use function Safe\date;
 /**
  * ---.
  */
-class ListIndividuales extends XotBaseListRecords
+class ListIndividuales extends ListScheda
 {
     protected static string $resource = IndividualeResource::class;
 
@@ -90,10 +91,10 @@ class ListIndividuales extends XotBaseListRecords
     /**
      * @return array<string, Actions\CreateAction|CopyFromLastYearAction|PopulateYearAction|ExportXlsAction|Actions\Action>
      */
-    protected function getHeaderActions(): array
+    protected function getHeaderActionsOLD(): array
     {
         return [
-            'parent' => CreateAction::make('create'),
+            ...parent::getHeaderActions(),
             'copy_from_last_year' => CopyFromLastYearAction::make(),
             'populate_year' => PopulateYearAction::make(),
             'copy_from_organizzativa' => Action::make('copy_from_organizzativa')->action(

@@ -374,13 +374,9 @@ trait SchedaMutator
             return null;
         }
 
-        $this->posiz_txt = $row->desc1;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz_txt' => $row->desc1]);
-        }
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz_txt'] = $row->desc1;
 
         return isset($this->attributes['posiz_txt']) && is_string($this->attributes['posiz_txt']) ? $this->attributes['posiz_txt'] : null;
     }
@@ -404,7 +400,10 @@ trait SchedaMutator
         if ($value === null) {
             return null;
         }
-        $this->update(['disci1' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['disci1'] = $value;
 
         return $value;
     }
@@ -423,7 +422,10 @@ trait SchedaMutator
 
         $categoria_propro = $this->categoriaPropro;
         $value = $categoria_propro?->getAttribute('categoria');
-        $this->update(['categoria_ecoval' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['categoria_ecoval'] = $value;
 
         return $value === null ? null : (string) $value;
     }
@@ -460,10 +462,10 @@ trait SchedaMutator
         }
 
         $value = $qua00f->first()?->getAttribute('posiz');
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz' => $value]);
-        }
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz'] = $value;
 
         return $value === null ? null : (int) $value;
     }

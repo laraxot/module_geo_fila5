@@ -332,6 +332,16 @@ return [
             'icon' => 'profile',
             'tooltip' => 'profile',
         ],
+        'MakePdfAction' => [
+            'label' => 'MakePdfAction',
+            'icon' => 'MakePdfAction',
+            'tooltip' => 'MakePdfAction',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
     ],
     'messages' => [
         'import' => [
