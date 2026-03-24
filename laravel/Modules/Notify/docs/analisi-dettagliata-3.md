@@ -1,645 +1,612 @@
-# Analisi Dettagliata del Modulo Notify - Parte 3: Servizi Core
+# Analisi Dettagliata del Modulo Notify
 
-## 3. Servizi Core
+## 1. Analisi delle Soluzioni di Template Email
 
-### 3.1 TemplateService
+### 1.1 Laravel Email Templates (simplepleb)
+**Analisi Dettagliata:**
+- Architettura basata su database
+- Supporto per variabili dinamiche
+- Integrazione nativa con Laravel
+- Sistema di caching base
 
-#### 3.1.1 Struttura Base
+**Vantaggi:**
+- Facile integrazione
+- Bassa curva di apprendimento
+- Manutenzione semplice
+- Performance decenti
+
+**Svantaggi:**
+- Funzionalità limitate
+- Poca personalizzazione
+- Supporto community limitato
+- Mancanza di editor visuale
+
+### 1.2 Spatie Database Mail Templates
+**Analisi Dettagliata:**
+- Sistema robusto di gestione template
+- Supporto multilingua avanzato
+- Integrazione con Filament
+- Sistema di versioning
+
+**Vantaggi:**
+- API ben documentata
+- Ottima integrazione
+- Supporto community attivo
+- Funzionalità avanzate
+
+**Svantaggi:**
+- Overhead database
+- Setup complesso
+- Dipendenze multiple
+- Curva di apprendimento
+
+### 1.3 Laravel Mail Editor (Qoraiche)
+**Analisi Dettagliata:**
+- Editor visuale drag-and-drop
+- Preview in tempo reale
+- Gestione assets
+- Integrazione Filament
+
+**Vantaggi:**
+- UI intuitiva
+- Preview immediata
+- Gestione facile
+- Supporto responsive
+
+**Svantaggi:**
+- Performance overhead
+- Dipendenze pesanti
+- Manutenzione complessa
+- Limitazioni tecniche
+
+## 2. Framework e Librerie Analizzate
+
+### 2.1 MJML
+**Analisi Dettagliata:**
 ```php
 namespace Modules\Notify\Services;
-
-use Modules\Notify\Models\Template;
-use Modules\Notify\Events\TemplateCreated;
-use Modules\Notify\Events\TemplateUpdated;
-use Modules\Notify\Events\TemplateDeleted;
-use Modules\Notify\Exceptions\TemplateException;
-
-class TemplateService
-{
-    protected $cache;
-    protected $mjml;
-    protected $mailgun;
-
-    public function __construct(
-        CacheService $cache,
-        MjmlService $mjml,
-        MailgunService $mailgun
-    ) {
-        $this->cache = $cache;
-        $this->mjml = $mjml;
-        $this->mailgun = $mailgun;
-    }
-}
-```
-
-#### 3.1.2 Gestione Template
-```php
-public function create(array $data): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $template = Template::create([
-            'name' => $data['name'],
-            'subject' => $data['subject'],
-            'content' => $data['content'],
-            'layout' => $data['layout'] ?? 'default',
-            'from_name' => $data['from_name'] ?? null,
-            'from_email' => $data['from_email'] ?? null,
-            'reply_to' => $data['reply_to'] ?? null,
-            'cc' => $data['cc'] ?? null,
-            'bcc' => $data['bcc'] ?? null,
-            'attachments' => $data['attachments'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'settings' => $data['settings'] ?? []
-        ]);
-
-        // Crea versione iniziale
-        $template->versions()->create([
-            'version' => 1,
-            'content' => $data['content'],
-            'created_by' => auth()->id(),
-            'status' => 'published'
-        ]);
-
-        // Crea traduzione default
-        $template->translations()->create([
-            'locale' => config('app.locale'),
-            'content' => $data['content'],
-            'subject' => $data['subject'],
-            'from_name' => $data['from_name'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'translated_by' => auth()->id()
-        ]);
-
-        DB::commit();
-
-        event(new TemplateCreated($template));
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function update(Template $template, array $data): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $oldVersion = $template->version;
-        $newVersion = $oldVersion + 1;
-
-        // Aggiorna template
-        $template->update([
-            'name' => $data['name'] ?? $template->name,
-            'subject' => $data['subject'] ?? $template->subject,
-            'content' => $data['content'] ?? $template->content,
-            'layout' => $data['layout'] ?? $template->layout,
-            'from_name' => $data['from_name'] ?? $template->from_name,
-            'from_email' => $data['from_email'] ?? $template->from_email,
-            'reply_to' => $data['reply_to'] ?? $template->reply_to,
-            'cc' => $data['cc'] ?? $template->cc,
-            'bcc' => $data['bcc'] ?? $template->bcc,
-            'attachments' => $data['attachments'] ?? $template->attachments,
-            'variables' => $data['variables'] ?? $template->variables,
-            'settings' => $data['settings'] ?? $template->settings,
-            'version' => $newVersion
-        ]);
-
-        // Crea nuova versione
-        $template->versions()->create([
-            'version' => $newVersion,
-            'content' => $data['content'] ?? $template->content,
-            'created_by' => auth()->id(),
-            'changes' => $this->getChanges($template, $data),
-            'status' => 'published',
-            'notes' => $data['notes'] ?? null
-        ]);
-
-        // Aggiorna traduzione default
-        $template->translations()
-            ->where('locale', config('app.locale'))
-            ->update([
-                'content' => $data['content'] ?? $template->content,
-                'subject' => $data['subject'] ?? $template->subject,
-                'from_name' => $data['from_name'] ?? $template->from_name,
-                'variables' => $data['variables'] ?? $template->variables
-            ]);
-
-        DB::commit();
-
-        event(new TemplateUpdated($template));
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to update template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function delete(Template $template): bool
-{
-    try {
-        DB::beginTransaction();
-
-        $template->delete();
-
-        DB::commit();
-
-        event(new TemplateDeleted($template));
-
-        return true;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to delete template: {$e->getMessage()}"
-        );
-    }
-}
-```
-
-#### 3.1.3 Gestione Versioni
-```php
-public function createVersion(Template $template, array $data): TemplateVersion
-{
-    try {
-        DB::beginTransaction();
-
-        $newVersion = $template->version + 1;
-
-        $version = $template->versions()->create([
-            'version' => $newVersion,
-            'content' => $data['content'],
-            'created_by' => auth()->id(),
-            'changes' => $this->getChanges($template, $data),
-            'status' => $data['status'] ?? 'draft',
-            'notes' => $data['notes'] ?? null
-        ]);
-
-        $template->update(['version' => $newVersion]);
-
-        DB::commit();
-
-        return $version;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create version: {$e->getMessage()}"
-        );
-    }
-}
-
-public function rollbackVersion(Template $template, int $version): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $targetVersion = $template->versions()
-            ->where('version', $version)
-            ->firstOrFail();
-
-        $template->update([
-            'content' => $targetVersion->content,
-            'version' => $version
-        ]);
-
-        DB::commit();
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to rollback version: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function getChanges(Template $template, array $data): array
-{
-    $changes = [];
-
-    foreach ($data as $key => $value) {
-        if (isset($template->$key) && $template->$key !== $value) {
-            $changes[$key] = [
-                'old' => $template->$key,
-                'new' => $value
-            ];
-        }
-    }
-
-    return $changes;
-}
-```
-
-#### 3.1.4 Gestione Traduzioni
-```php
-public function createTranslation(Template $template, array $data): TemplateTranslation
-{
-    try {
-        DB::beginTransaction();
-
-        $translation = $template->translations()->create([
-            'locale' => $data['locale'],
-            'content' => $data['content'],
-            'subject' => $data['subject'],
-            'from_name' => $data['from_name'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'translated_by' => auth()->id()
-        ]);
-
-        DB::commit();
-
-        return $translation;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create translation: {$e->getMessage()}"
-        );
-    }
-}
-
-public function updateTranslation(TemplateTranslation $translation, array $data): TemplateTranslation
-{
-    try {
-        DB::beginTransaction();
-
-        $translation->update([
-            'content' => $data['content'] ?? $translation->content,
-            'subject' => $data['subject'] ?? $translation->subject,
-            'from_name' => $data['from_name'] ?? $translation->from_name,
-            'variables' => $data['variables'] ?? $translation->variables
-        ]);
-
-        DB::commit();
-
-        return $translation;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to update translation: {$e->getMessage()}"
-        );
-    }
-}
-
-public function deleteTranslation(TemplateTranslation $translation): bool
-{
-    try {
-        DB::beginTransaction();
-
-        $translation->delete();
-
-        DB::commit();
-
-        return true;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to delete translation: {$e->getMessage()}"
-        );
-    }
-}
-```
-
-#### 3.1.5 Preview e Test
-```php
-public function preview(Template $template, array $variables = []): string
-{
-    try {
-        $content = $this->replaceVariables(
-            $template->content,
-            $variables
-        );
-
-        return $this->mjml->compile($content);
-
-    } catch (\Exception $e) {
-        throw new TemplateException(
-            "Failed to preview template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function test(Template $template, string $email, array $variables = []): bool
-{
-    try {
-        $content = $this->preview($template, $variables);
-
-        return $this->mailgun->send([
-            'to' => $email,
-            'subject' => $template->subject,
-            'html' => $content,
-            'from_name' => $template->from_name,
-            'from_email' => $template->from_email,
-            'reply_to' => $template->reply_to,
-            'cc' => $template->cc,
-            'bcc' => $template->bcc,
-            'attachments' => $template->attachments
-        ]);
-
-    } catch (\Exception $e) {
-        throw new TemplateException(
-            "Failed to test template: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function replaceVariables(string $content, array $variables): string
-{
-    foreach ($variables as $key => $value) {
-        $content = str_replace(
-            "{{$key}}",
-            $value,
-            $content
-        );
-    }
-
-    return $content;
-}
-```
-
-### 3.2 MjmlService
-
-#### 3.2.1 Struttura Base
-```php
-namespace Modules\Notify\Services;
-
-use MJML\Mjml;
-use MJML\MjmlException;
 
 class MjmlService
 {
     protected $mjml;
-    protected $cache;
+    protected $options;
 
-    public function __construct(CacheService $cache)
+    public function __construct()
     {
-        $this->mjml = new Mjml();
-        $this->cache = $cache;
+        $this->mjml = new \Mjml\Mjml();
+        $this->options = [
+            'minify' => true,
+            'beautify' => false,
+            'validationLevel' => 'strict'
+        ];
+    }
+
+    public function compile($template)
+    {
+        try {
+            $mjml = $this->convertToMjml($template);
+            $result = $this->mjml->render($mjml, $this->options);
+            
+            return [
+                'html' => $result->html,
+                'errors' => $result->errors
+            ];
+        } catch (\Exception $e) {
+            Log::error('MJML compilation failed', [
+                'error' => $e->getMessage(),
+                'template' => $template
+            ]);
+            throw $e;
+        }
+    }
+
+    protected function convertToMjml($template)
+    {
+        return view('notify::mjml.wrapper', [
+            'content' => $template,
+            'styles' => $this->extractStyles($template),
+            'components' => $this->extractComponents($template)
+        ])->render();
     }
 }
 ```
 
-#### 3.2.2 Compilazione MJML
-```php
-public function compile(string $content): string
-{
-    try {
-        $cacheKey = $this->getCacheKey($content);
-
-        return $this->cache->remember($cacheKey, function () use ($content) {
-            return $this->mjml->render($content);
-        });
-
-    } catch (MjmlException $e) {
-        throw new TemplateException(
-            "Failed to compile MJML: {$e->getMessage()}"
-        );
-    }
-}
-
-public function validate(string $content): bool
-{
-    try {
-        return $this->mjml->validate($content);
-    } catch (MjmlException $e) {
-        return false;
-    }
-}
-
-protected function getCacheKey(string $content): string
-{
-    return 'mjml:' . md5($content);
-}
-```
-
-#### 3.2.3 Estrazione Stili
-```php
-public function extractStyles(string $content): array
-{
-    $styles = [];
-
-    // Estrai stili inline
-    preg_match_all('/style="([^"]+)"/', $content, $matches);
-    foreach ($matches[1] as $style) {
-        $styles[] = $style;
-    }
-
-    // Estrai stili MJML
-    preg_match_all('/mj-style>([^<]+)<\/mj-style>/', $content, $matches);
-    foreach ($matches[1] as $style) {
-        $styles[] = $style;
-    }
-
-    return array_unique($styles);
-}
-
-public function extractComponents(string $content): array
-{
-    $components = [];
-
-    // Estrai componenti MJML
-    preg_match_all('/<mj-([^>]+)>/', $content, $matches);
-    foreach ($matches[1] as $component) {
-        $components[] = $component;
-    }
-
-    return array_unique($components);
-}
-```
-
-### 3.3 MailgunService
-
-#### 3.3.1 Struttura Base
+### 2.2 Mailgun
+**Analisi Dettagliata:**
 ```php
 namespace Modules\Notify\Services;
-
-use Mailgun\Mailgun;
-use Mailgun\Exception\MailgunException;
 
 class MailgunService
 {
     protected $mailgun;
     protected $domain;
-    protected $cache;
+    protected $analytics;
 
-    public function __construct(CacheService $cache)
+    public function __construct()
     {
-        $this->mailgun = Mailgun::create(
-            config('services.mailgun.secret')
-        );
+        $this->mailgun = new \Mailgun\Mailgun(config('services.mailgun.secret'));
         $this->domain = config('services.mailgun.domain');
-        $this->cache = $cache;
+        $this->analytics = new MailgunAnalytics();
+    }
+
+    public function send($template, $data)
+    {
+        try {
+            $result = $this->mailgun->messages()->send($this->domain, [
+                'from' => $template->from,
+                'to' => $data['to'],
+                'subject' => $template->subject,
+                'template' => $template->mailgun_template,
+                'h:X-Mailgun-Variables' => json_encode($data),
+                'o:tracking' => true,
+                'o:tracking-clicks' => true,
+                'o:tracking-opens' => true
+            ]);
+
+            $this->analytics->track($template, $result);
+
+            return $result;
+        } catch (\Exception $e) {
+            Log::error('Mailgun send failed', [
+                'error' => $e->getMessage(),
+                'template' => $template,
+                'data' => $data
+            ]);
+            throw $e;
+        }
     }
 }
 ```
 
-#### 3.3.2 Invio Email
+## 3. Miglioramenti Strutturali Dettagliati
+
+### 3.1 Sistema di Versioning Avanzato
 ```php
-public function send(array $data): bool
+namespace Modules\Notify\Models;
+
+class TemplateVersion extends Model
 {
-    try {
-        $message = [
-            'from' => $this->formatFrom($data),
-            'to' => $data['to'],
-            'subject' => $data['subject'],
-            'html' => $data['html'],
-            'reply-to' => $data['reply_to'] ?? null,
-            'cc' => $data['cc'] ?? null,
-            'bcc' => $data['bcc'] ?? null,
-            'attachment' => $this->formatAttachments($data['attachments'] ?? [])
-        ];
+    protected $fillable = [
+        'template_id',
+        'version',
+        'content',
+        'created_by',
+        'changes',
+        'status'
+    ];
 
-        $response = $this->mailgun->messages()->send(
-            $this->domain,
-            $message
-        );
+    protected $casts = [
+        'changes' => 'array',
+        'status' => 'string'
+    ];
 
-        $this->logMessage($response);
-
-        return true;
-
-    } catch (MailgunException $e) {
-        throw new TemplateException(
-            "Failed to send email: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function formatFrom(array $data): string
-{
-    if (isset($data['from_name'])) {
-        return "{$data['from_name']} <{$data['from_email']}>";
+    public function template()
+    {
+        return $this->belongsTo(Template::class);
     }
 
-    return $data['from_email'];
-}
-
-protected function formatAttachments(array $attachments): array
-{
-    $formatted = [];
-
-    foreach ($attachments as $attachment) {
-        $formatted[] = [
-            'filePath' => $attachment['path'],
-            'filename' => $attachment['name']
-        ];
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
-    return $formatted;
-}
-
-protected function logMessage($response): void
-{
-    // Log messaggio inviato
-    Log::info('Email sent', [
-        'id' => $response->getId(),
-        'message' => $response->getMessage()
-    ]);
-}
-```
-
-#### 3.3.3 Gestione Eventi
-```php
-public function handleWebhook(array $data): void
-{
-    try {
-        $event = $data['event'];
-        $messageId = $data['message-id'];
-
-        switch ($event) {
-            case 'delivered':
-                $this->handleDelivered($messageId);
-                break;
-            case 'opened':
-                $this->handleOpened($messageId);
-                break;
-            case 'clicked':
-                $this->handleClicked($messageId);
-                break;
-            case 'bounced':
-                $this->handleBounced($messageId);
-                break;
-            case 'complained':
-                $this->handleComplained($messageId);
-                break;
-            case 'unsubscribed':
-                $this->handleUnsubscribed($messageId);
-                break;
+    public function getDiff()
+    {
+        if (!$this->previousVersion) {
+            return null;
         }
 
-    } catch (\Exception $e) {
-        Log::error('Webhook error', [
-            'error' => $e->getMessage(),
-            'data' => $data
+        return $this->compareVersions(
+            $this->previousVersion->content,
+            $this->content
+        );
+    }
+
+    protected function compareVersions($old, $new)
+    {
+        // Implementazione diff
+        return [
+            'added' => $this->getAddedLines($old, $new),
+            'removed' => $this->getRemovedLines($old, $new),
+            'modified' => $this->getModifiedLines($old, $new)
+        ];
+    }
+}
+```
+
+### 3.2 Gestione Multilingua Avanzata
+```php
+namespace Modules\Notify\Services;
+
+class LocalizationService
+{
+    protected $translator;
+    protected $cache;
+
+    public function __construct()
+    {
+        $this->translator = app('translator');
+        $this->cache = app('cache');
+    }
+
+    public function translate($template, $locale)
+    {
+        $cacheKey = "template.{$template->id}.{$locale}";
+        
+        return $this->cache->remember($cacheKey, 3600, function () use ($template, $locale) {
+            return $template->translations()
+                ->where('locale', $locale)
+                ->first();
+        });
+    }
+
+    public function syncTranslations($template, $locales)
+    {
+        foreach ($locales as $locale) {
+            $translation = $template->translations()
+                ->updateOrCreate(
+                    ['locale' => $locale],
+                    ['content' => $this->translateContent($template, $locale)]
+                );
+
+            $this->validateTranslation($translation);
+            $this->cache->forget("template.{$template->id}.{$locale}");
+        }
+    }
+
+    protected function validateTranslation($translation)
+    {
+        // Validazione traduzione
+        if (!$this->isValidTranslation($translation)) {
+            throw new InvalidTranslationException(
+                "Invalid translation for locale: {$translation->locale}"
+            );
+        }
+    }
+}
+```
+
+### 3.3 Sistema di Analytics Avanzato
+```php
+namespace Modules\Notify\Services;
+
+class AnalyticsService
+{
+    protected $metrics;
+    protected $logger;
+
+    public function __construct()
+    {
+        $this->metrics = new MetricsCollector();
+        $this->logger = new AnalyticsLogger();
+    }
+
+    public function track($template, $event)
+    {
+        try {
+            $analytics = TemplateAnalytics::create([
+                'template_id' => $template->id,
+                'event' => $event,
+                'metadata' => [
+                    'user_agent' => request()->userAgent(),
+                    'ip' => request()->ip(),
+                    'timestamp' => now(),
+                    'session_id' => session()->getId(),
+                    'user_id' => auth()->id()
+                ]
+            ]);
+
+            $this->metrics->record($analytics);
+            $this->logger->log($analytics);
+
+            return $analytics;
+        } catch (\Exception $e) {
+            $this->logger->error('Analytics tracking failed', [
+                'error' => $e->getMessage(),
+                'template' => $template,
+                'event' => $event
+            ]);
+            throw $e;
+        }
+    }
+
+    public function getMetrics($template, $period = 'daily')
+    {
+        return $this->metrics->get($template, $period);
+    }
+}
+```
+
+## 4. Integrazioni Avanzate
+
+### 4.1 Stripo Integration
+```php
+namespace Modules\Notify\Services;
+
+class StripoService
+{
+    protected $stripo;
+    protected $cache;
+
+    public function __construct()
+    {
+        $this->stripo = new StripoClient(config('services.stripo.api_key'));
+        $this->cache = app('cache');
+    }
+
+    public function export($template)
+    {
+        try {
+            $result = $this->stripo->export([
+                'html' => $template->content,
+                'css' => $template->styles,
+                'images' => $this->processImages($template->images)
+            ]);
+
+            $this->cache->put(
+                "stripo.{$template->id}",
+                $result,
+                now()->addHours(24)
+            );
+
+            return $result;
+        } catch (\Exception $e) {
+            Log::error('Stripo export failed', [
+                'error' => $e->getMessage(),
+                'template' => $template
+            ]);
+            throw $e;
+        }
+    }
+
+    protected function processImages($images)
+    {
+        return collect($images)->map(function ($image) {
+            return [
+                'url' => $image->url,
+                'alt' => $image->alt,
+                'width' => $image->width,
+                'height' => $image->height
+            ];
+        })->toArray();
+    }
+}
+```
+
+## 5. Miglioramenti UI/UX Dettagliati
+
+### 5.1 Editor Avanzato
+```php
+namespace Modules\Notify\Filament\Resources;
+
+class TemplateResource extends Resource
+{
+    public static function form(Form $form): Form
+    {
+        return $form->schema([
+            Forms\Components\Tabs::make('Template')
+                ->tabs([
+                    Forms\Components\Tabs\Tab::make('Content')
+                        ->schema([
+                            Forms\Components\Builder::make('content')
+                                ->blocks([
+                                    Builder\Block::make('text')
+                                        ->schema([
+                                            Forms\Components\RichEditor::make('content')
+                                                ->required()
+                                                ->toolbarButtons([
+                                                    'bold',
+                                                    'italic',
+                                                    'link',
+                                                    'bulletList',
+                                                    'orderedList'
+                                                ])
+                                        ]),
+                                    Builder\Block::make('image')
+                                        ->schema([
+                                            Forms\Components\FileUpload::make('image')
+                                                ->required()
+                                                ->image()
+                                                ->imageResizeMode('cover')
+                                                ->imageCropAspectRatio('16:9')
+                                                ->imageResizeTargetWidth('1920')
+                                                ->imageResizeTargetHeight('1080')
+                                        ])
+                                ])
+                        ]),
+                    Forms\Components\Tabs\Tab::make('Preview')
+                        ->schema([
+                            Forms\Components\View::make('notify::preview')
+                                ->livewire(TemplatePreview::class)
+                        ]),
+                    Forms\Components\Tabs\Tab::make('Settings')
+                        ->schema([
+                            Forms\Components\TextInput::make('subject')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\Select::make('layout')
+                                ->options([
+                                    'default' => 'Default',
+                                    'custom' => 'Custom'
+                                ])
+                                ->required(),
+                            Forms\Components\Toggle::make('is_active')
+                                ->label('Active')
+                                ->default(true)
+                        ])
+                ])
         ]);
     }
 }
+```
 
-protected function handleDelivered(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'delivered');
-}
+### 5.2 Preview in Tempo Reale
+```php
+namespace Modules\Notify\Livewire;
 
-protected function handleOpened(string $messageId): void
+class TemplatePreview extends Component
 {
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'opened');
-}
+    public $template;
+    public $content;
+    public $preview;
+    public $isLoading = false;
 
-protected function handleClicked(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'clicked');
-}
+    protected $listeners = ['contentUpdated' => 'updatePreview'];
 
-protected function handleBounced(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'bounced');
-}
-
-protected function handleComplained(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'complained');
-}
-
-protected function handleUnsubscribed(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'unsubscribed');
-}
-
-protected function updateAnalytics(string $messageId, string $event): void
-{
-    // Trova template
-    $template = Template::where('message_id', $messageId)->first();
-    if (!$template) {
-        return;
+    public function mount($template)
+    {
+        $this->template = $template;
+        $this->content = $template->content;
+        $this->updatePreview();
     }
 
-    // Crea analytics
-    $template->analytics()->create([
-        'event' => $event,
-        'metadata' => [
-            'message_id' => $messageId,
-            'timestamp' => now()
-        ]
-    ]);
+    public function updatePreview()
+    {
+        $this->isLoading = true;
+
+        try {
+            $this->preview = $this->templateService->render($this->template, [
+                'content' => $this->content,
+                'preview' => true
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('preview', $e->getMessage());
+        }
+
+        $this->isLoading = false;
+    }
+
+    public function render()
+    {
+        return view('notify::livewire.preview');
+    }
 }
-``` 
+```
+
+## 6. Raccomandazioni Dettagliate
+
+### 6.1 Fase 1: Core Features
+1. **Sistema di Versioning**
+   - Implementare versioning completo
+   - Aggiungere diff tra versioni
+   - Implementare rollback
+
+2. **Editor Visuale**
+   - Integrare editor drag-and-drop
+   - Aggiungere preview in tempo reale
+   - Implementare componenti riutilizzabili
+
+3. **Preview**
+   - Migliorare preview in browser
+   - Aggiungere test su client email
+   - Implementare responsive preview
+
+### 6.2 Fase 2: Integrazioni
+1. **Mailgun**
+   - Integrare API completa
+   - Implementare analytics
+   - Aggiungere template variables
+
+2. **MJML**
+   - Aggiungere supporto MJML
+   - Implementare conversione
+   - Ottimizzare output
+
+3. **Analytics**
+   - Implementare tracking completo
+   - Aggiungere dashboard
+   - Implementare report
+
+### 6.3 Fase 3: UI/UX
+1. **Editor**
+   - Migliorare UX
+   - Aggiungere shortcuts
+   - Implementare autosave
+
+2. **Preview**
+   - Aggiungere preview in tempo reale
+   - Implementare responsive test
+   - Aggiungere device preview
+
+3. **Drag-and-Drop**
+   - Implementare drag-and-drop
+   - Aggiungere componenti
+   - Implementare templates
+
+### 6.4 Fase 4: Performance
+1. **Caching**
+   - Implementare Redis
+   - Ottimizzare query
+   - Implementare lazy loading
+
+2. **Queue**
+   - Implementare queue
+   - Aggiungere retry logic
+   - Monitorare queue health
+
+3. **Assets**
+   - Ottimizzare immagini
+   - Minificare CSS/JS
+   - Implementare CDN
+
+## 7. Note Tecniche Dettagliate
+
+### 7.1 Performance
+1. **Caching**
+   - Utilizzare Redis per caching
+   - Implementare cache tags
+   - Ottimizzare cache keys
+
+2. **Database**
+   - Aggiungere indici
+   - Ottimizzare query
+   - Implementare eager loading
+
+3. **Assets**
+   - Minificare assets
+   - Ottimizzare immagini
+   - Implementare CDN
+
+### 7.2 Sicurezza
+1. **Validazione**
+   - Validare input
+   - Sanitizzare output
+   - Implementare rate limiting
+
+2. **Crittografia**
+   - Crittografare dati
+   - Implementare HTTPS
+   - Aggiungere SPF/DKIM
+
+3. **Monitoraggio**
+   - Implementare logging
+   - Aggiungere alert
+   - Monitorare accessi
+
+### 7.3 Manutenibilità
+1. **Documentazione**
+   - Documentare API
+   - Aggiungere commenti
+   - Mantenere changelog
+
+2. **Testing**
+   - Aggiungere unit test
+   - Implementare feature test
+   - Aggiungere integration test
+
+3. **Logging**
+   - Implementare logging
+   - Aggiungere context
+   - Monitorare errori
+
+## 8. Collegamenti Utili
+
+- [MJML Documentation](https://mjml.io/documentation/)
+- [Mailgun API](https://documentation.mailgun.com/en/latest/api_reference.html)
+- [Filament Documentation](https://filamentphp.com/docs)
+- [Laravel Mail Documentation](https://laravel.com/project_docs/mail)
+- [Stripo Documentation](https://stripo.email/templates/)
+- [Beefree Documentation](https://beefree.io/templates)
+- [Unlayer Documentation](https://unlayer.com/)
+- [Mailersend Documentation](https://www.mailersend.com/)
+- [Mailjet Documentation](https://www.mailjet.com/) 

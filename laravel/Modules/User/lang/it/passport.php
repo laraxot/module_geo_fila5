@@ -114,4 +114,8 @@ return [
         'refresh_tokens_total' => 'Refresh token',
         'refresh_tokens_description' => 'Token di refresh',
     ],
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 ];

@@ -81,6 +81,10 @@ class OauthRefreshTokenResource extends XotBaseResource
                 \Filament\Tables\Filters\Filter::make('valid')
                     ->label(static::trans('filters.valid'))
                     ->query(fn (Builder $query) => $query->where('revoked', false)->where('expires_at', '>', now())),
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             ])
             ->recordActions([
                 \Filament\Actions\Action::make('revoke')

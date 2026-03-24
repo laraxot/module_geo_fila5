@@ -147,6 +147,10 @@ return [
         'openColumnManager' => [
             'tooltip' => 'openColumnManager',
         ],
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     ],
     'messages' => [
         'created' => 'Token creato con successo',

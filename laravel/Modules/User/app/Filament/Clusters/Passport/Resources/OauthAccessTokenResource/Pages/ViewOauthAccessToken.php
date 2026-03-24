@@ -16,6 +16,10 @@ use Modules\User\Filament\Clusters\Passport\Resources\OauthClientResource;
 use Modules\User\Filament\Resources\UserResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 class ViewOauthAccessToken extends XotBaseViewRecord
 {
@@ -101,5 +105,9 @@ class ViewOauthAccessToken extends XotBaseViewRecord
                         ]),
                 ])->columns(1),
         ];
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 }

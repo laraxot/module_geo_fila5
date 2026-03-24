@@ -125,7 +125,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  *
  * @mixin \Eloquent
  */
-abstract class BaseUser extends Authenticatable implements HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
+abstract class BaseUser extends Authenticatable implements HasMedia, HasName, HasTenants, MustVerifyEmail, UserContract, OAuthenticatable
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 {
     use HasApiTokens;
     use HasAuthenticationLogTrait;

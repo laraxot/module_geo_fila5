@@ -11,6 +11,10 @@ use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\User\Models\OauthToken;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 use Webmozart\Assert\Assert;
 
 trait HasPassportConfiguration
@@ -38,6 +42,10 @@ trait HasPassportConfiguration
     protected function configureModels(): void
     {
         Passport::useTokenModel(OauthToken::class);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         Passport::useClientModel(OauthClient::class);
         Passport::useAuthCodeModel(OauthAuthCode::class);
         Passport::useRefreshTokenModel(OauthRefreshToken::class);

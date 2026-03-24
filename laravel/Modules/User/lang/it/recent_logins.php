@@ -102,6 +102,10 @@ return [
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         ],
     ],
     'navigation' => [

@@ -3,14 +3,38 @@
 ## Overview
 
 The Appointment model in <nome progetto> module defines both legacy field names (`start_time`, `end_time`) and canonical field names (`starts_at`, `ends_at`). The canonical field names `starts_at` and `ends_at` should be used consistently throughout the codebase.
+<<<<<<< Updated upstream
 The Appointment model in Quaeris module defines both legacy field names (`start_time`, `end_time`) and canonical field names (`starts_at`, `ends_at`). The canonical field names `starts_at` and `ends_at` should be used consistently throughout the codebase.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+The Appointment model in Laraxot module defines both legacy field names (`start_time`, `end_time`) and canonical field names (`starts_at`, `ends_at`). The canonical field names `starts_at` and `ends_at` should be used consistently throughout the codebase.
+=======
+The Appointment model in healthcare_app module defines both legacy field names (`start_time`, `end_time`) and canonical field names (`starts_at`, `ends_at`). The canonical field names `starts_at` and `ends_at` should be used consistently throughout the codebase.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+The Appointment model in Quaeris module defines both legacy field names (`start_time`, `end_time`) and canonical field names (`starts_at`, `ends_at`). The canonical field names `starts_at` and `ends_at` should be used consistently throughout the codebase.
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 
 ## Issues Detected
 
 ### SendAppointmentNotificationAction.php.old
 
 **File Path**: `/var/www/html/_bases/base_<nome progetto>/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
+<<<<<<< Updated upstream
 **File Path**: `/var/www/html/_bases/base_Quaeris/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+**File Path**: `/var/www/html/_bases/base_ptvx/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
+=======
+**File Path**: `/var/www/html/_bases/base_healthcare_app/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+**File Path**: `/var/www/html/_bases/base_Quaeris/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 **File Path**: `/var/www/html/_bases/base_techplanner_fila5_mono/laravel/Modules/Notify/app/Actions/SendAppointmentNotificationAction.php.old`
 
 **Line 120**:

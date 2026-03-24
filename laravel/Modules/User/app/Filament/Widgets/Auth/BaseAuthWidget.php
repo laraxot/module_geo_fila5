@@ -20,11 +20,20 @@ abstract class BaseAuthWidget extends XotBaseWidget
 
     /**
      * Restituisce lo schema del form per l'autenticazione.
-     * Deve essere implementato dalle classi concrete.
+     * Override nelle classi concrete se necessario.
      *
      * @return array<mixed>
      */
-    abstract public function getFormSchema(): array;
+    public function getFormSchema(): array
+    {
+        // Implementazione default vuota
+        // Override nelle classi figlie per form specifici
+        return [];
+    }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     /**
      * Restituisce i dati per la view.

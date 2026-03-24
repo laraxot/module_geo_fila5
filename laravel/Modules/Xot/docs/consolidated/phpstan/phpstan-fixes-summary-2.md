@@ -1,43 +1,61 @@
-# Riepilogo delle Soluzioni ai Problemi PHPStan Livello 9
+# Riassunto delle Correzioni per PHPStan Livello 9
 
-Questo documento riassume le soluzioni implementate per risolvere i problemi più comuni di PHPStan a livello 9 nel progetto <nome progetto>. Serve come guida di riferimento rapido per sviluppatori che affrontano errori simili.
+Questo documento riassume i problemi comuni riscontrati con PHPStan livello 9 e le relative soluzioni, basato su un'analisi dettagliata del codice.
 
-## Problemi Principali Risolti
+## Problemi nei Modelli
 
-### 1. Tipo di Ritorno per il Metodo `newFactory()`
+### 1. Tipi PHPDoc Covarianti
 
-**Problema**: Il tipo di ritorno del metodo `newFactory()` non era correttamente specificato.
+**Problema:** PHPStan richiede che i tipi PHPDoc siano covarianti rispetto alle classi estese.
 
-**Soluzione**: Aggiunto il tipo di ritorno corretto e gestito correttamente il return della factory:
+**Esempio di errore:**
+```
+PHPDoc type array<string> of property BaseModel::$fillable is not covariant with PHPDoc type list<string> of overridden property Illuminate\Database\Eloquent\Model::$fillable.
+```
 
+**Soluzione:**
 ```php
 /**
- * @return \Illuminate\Database\Eloquent\Factories\Factory
+ * @var list<string>  // Usare list<string> invece di array<string> o string[]
+ */
+protected $fillable = ['id', 'name', 'email'];
+
+/**
+ * @var list<string>
+ */
+protected $hidden = ['password', 'remember_token'];
+```
+
+### 2. Metodo newFactory() nei Modelli
+
+**Problema:** Il metodo `newFactory()` deve restituire un'istanza di `Factory` e non `object` generico.
+
+**Soluzione:**
+```php
+/**
+ * @return Factory
  */
 protected static function newFactory(): Factory
 {
-    $factoryNamespace = UserFactory::class;
-
-    // Utilizzo di app() invece di new
+    // Utilizzo di app() per risolvere la factory dal container
     if (class_exists($factoryNamespace)) {
         return app($factoryNamespace);
     }
-
+    
     return Factory::factoryForModel(static::class);
 }
 ```
 
-### 2. Gestione Sicura delle Funzioni che Possono Restituire `false`
+### 3. Gestione sicura delle funzioni che potrebbero restituire false
 
-**Problema**: Funzioni come `strrpos()` possono restituire `false` in alcuni casi, causando errori di tipo.
+**Problema:** Funzioni come `strrpos()` possono restituire `false` causando errori di tipo con `substr()`.
 
-**Soluzione**: Utilizzo di controlli espliciti per gestire il caso in cui la funzione restituisca `false`:
-
+**Soluzione:**
 ```php
-// ERRATO - strrpos può restituire false
+// Problema
 $namespace = substr(static::class, 0, strrpos(static::class, '\\'));
 
-// CORRETTO
+// Soluzione
 $position = strrpos(static::class, '\\');
 if ($position === false) {
     $namespace = '';
@@ -46,215 +64,134 @@ if ($position === false) {
 }
 ```
 
-### 3. Tipi Generici per le Relazioni Eloquent
+## Problemi nei Trait e nelle Relazioni
 
-**Problema**: I tipi generici nelle relazioni Eloquent non erano specificati completamente.
+### 1. Metodi mancanti riferiti nei Trait
 
-**Soluzione**: Aggiunta di tutti i tipi generici necessari nelle annotazioni PHPDoc:
+**Problema:** Errori come `Call to an undefined method X::belongsToManyX()` possono verificarsi quando un trait usa metodi che non sono definiti nelle classi che lo usano.
 
+**Soluzione:**
+1. Assicurarsi che la classe utilizzi il trait corretto che include il metodo mancante:
+```php
+use Modules\Xot\Models\Traits\RelationX; // Fornisce metodi come belongsToManyX
+```
+
+2. Se si utilizzano trait generici, aggiungere dichiarazioni di tipo appropriate:
 ```php
 /**
- * @return MorphMany<Notification, static>
+ * @method BelongsToMany belongsToManyX(string $class)
  */
-public function notifications(): MorphMany
+class BaseUser extends Authenticatable
+```
+
+### 2. Incompatibilità tra interfacce nei parametri
+
+**Problema:** I parametri nei metodi implementati devono essere compatibili con quelli dichiarati nell'interfaccia.
+
+**Esempio di errore:**
+```
+Parameter $fail (Closure(string): void) should be compatible with parameter $fail (Closure(string, string|null=): PotentiallyTranslatedString)
+```
+
+**Soluzione:**
+```php
+/**
+ * @param \Closure(string, string|null=): PotentiallyTranslatedString $fail
+ */
+public function validate(string $attribute, mixed $value, \Closure $fail): void
+```
+
+### 3. Tipi generici incompleti
+
+**Problema:** PHPStan richiede che tutte le variabili di tipo generico siano specificate.
+
+**Esempio di errore:**
+```
+Generic type BelongsToMany<User> in PHPDoc tag @return does not specify all template types of class BelongsToMany: TRelatedModel, TDeclaringModel
+```
+
+**Soluzione:**
+```php
+/**
+ * @return BelongsToMany<User, Role>
+ */
+public function users()
+```
+
+## Problemi di visibilità dei metodi
+
+### 1. Visibilità in trait e classi che li utilizzano
+
+**Problema:** I metodi nei trait che vengono utilizzati da classi che implementano interfacce o estendono altre classi devono avere la visibilità corretta.
+
+**Esempio di errore:**
+```
+Access level to HasXotTable::getTableHeaderActions() must be public (as in class XotBaseRelationManager)
+```
+
+**Soluzione:**
+```php
+// Nel trait
+public function getTableHeaderActions(): array
 {
-    return $this->morphMany(Notification::class, 'notifiable');
-}
-
-/**
- * @return MorphOne<AuthenticationLog, static>
- */
-public function latestAuthentication(): MorphOne
-{
-    return $this->morphOne(AuthenticationLog::class, 'authenticatable')
-        ->latestOfMany();
+    // Implementazione
 }
 ```
 
-### 4. Incompatibilità tra Interfacce e Implementazioni Concrete
+## Problemi di type casting
 
-**Problema**: Incompatibilità di tipo quando si passa un'implementazione concreta (es. `User`) a un metodo che si aspetta l'interfaccia (es. `UserContract`).
+### 1. Cast di mixed a tipi scalari
 
-**Soluzione**: Aggiunta di annotazioni PHPDoc che chiariscono la compatibilità:
+**Problema:** PHPStan non consente il cast diretto di `mixed` a tipi scalari come `string`, `int`, `float`.
+
+**Soluzione:**
+```php
+// Errato
+$databaseName = (string) config("database.connections.{$connection}.database");
+
+// Corretto
+$databaseConfig = config("database.connections.{$connection}.database");
+$databaseName = is_string($databaseConfig) ? $databaseConfig : '';
+```
+
+## Risoluzione degli errori modulo per modulo
+
+### Approccio raccomandato
+
+1. **Analisi iniziale**: Eseguire PHPStan su ciascun modulo separatamente per identificare i problemi specifici:
+   ```bash
+   ./vendor/bin/phpstan analyse --level=9 --memory-limit=2G Modules/NomeModulo
+   ```
+
+2. **Prioritizzazione**: Correggere prima i problemi che causano più errori o che bloccano il funzionamento base:
+   - Problemi di visibilità nei trait
+   - Tipi nei modelli base
+   - Incompatibilità di interfacce
+
+3. **Correzione dei trait sottoutilizzati**: Aggiungere annotazioni PHPDoc o implementare metodi mancanti
+
+4. **Test incrementale**: Dopo ogni serie di correzioni, eseguire nuovamente PHPStan per verificare i miglioramenti
+
+### Come ignorare temporaneamente gli errori
+
+In caso di errori che non possono essere risolti immediatamente, è possibile utilizzare annotazioni per ignorarli:
 
 ```php
-/**
- * @param User|UserContract $authObject Il tipo User implementa UserContract, quindi è compatibile
- */
-public function __construct(
-    public readonly UserContract $authObject,
-) {
-    // No additional logic needed
-}
-```
+/** @phpstan-ignore-next-line */
+$value = $data['key'];
 
-## Linee Guida per la Correzione di Errori Comuni
-
-1. **Correggi i Tipi Generici**: Assicurati di specificare tutti i tipi generici richiesti nelle annotazioni PHPDoc.
-
-2. **Gestisci Valori di Ritorno Non Certi**: Quando usi funzioni che possono restituire valori diversi (es. `false`), aggiungi controlli espliciti.
-
-3. **Chiarisci la Compatibilità tra Interfacce e Implementazioni**: Utilizza commenti PHPDoc per spiegare che un'implementazione concreta è compatibile con l'interfaccia richiesta.
-
-4. **Correggi le Annotazioni nei Modelli**: Utilizza `list<string>` per proprietà come `$fillable` e `$hidden`.
-
-5. **Standardizza i Tipi di Ritorno**: Assicurati che i metodi nelle classi concrete restituiscano tipi compatibili con quelli dichiarati nelle interfacce.
-
-## Configurazione Consigliata per PHPStan
-
-Per gestire meglio i tipi generici, considera l'aggiunta delle seguenti configurazioni nel file `phpstan.neon`:
-
-```yaml
-parameters:
-    treatPhpDocTypesAsCertain: false
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
-```
-
-## Approccio per la Risoluzione Incrementale
-
-1. **Analizza per Modulo**: Esegui l'analisi PHPStan modulo per modulo per evitare sovraccarichi di memoria.
-
-2. **Inizia dai Problemi più Semplici**: Risolvi prima gli errori relativi alle annotazioni PHPDoc e tipo di ritorno.
-
-3. **Documenta le Soluzioni**: Aggiorna la documentazione con le nuove soluzioni trovate.
-
-4. **Testa Dopo Ogni Modifica**: Verifica che le modifiche non abbiano introdotto nuovi errori.
-
-Questo approccio incrementale permette di ridurre gradualmente gli errori, mantenendo il codice funzionale durante il processo di correzione.
-
-## Risorse Utili
-
-- [Documentazione PHPStan sui Generics](https://phpstan.org/blog/generics-in-php-using-phpdocs)
-- [Guida Risoluzione Problemi di Proprietà Undefined](https://phpstan.org/blog/solving-phpstan-access-to-undefined-property)
-- [Solving Template Type Issues](https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type)
-# Riepilogo delle Soluzioni ai Problemi PHPStan Livello 9
-
-Questo documento riassume le soluzioni implementate per risolvere i problemi più comuni di PHPStan a livello 9 nel progetto <nome progetto>. Serve come guida di riferimento rapido per sviluppatori che affrontano errori simili.
-
-## Problemi Principali Risolti
-
-### 1. Tipo di Ritorno per il Metodo `newFactory()`
-
-**Problema**: Il tipo di ritorno del metodo `newFactory()` non era correttamente specificato.
-
-**Soluzione**: Aggiunto il tipo di ritorno corretto e gestito correttamente il return della factory:
-
-```php
-/**
- * @return \Illuminate\Database\Eloquent\Factories\Factory
- */
-protected static function newFactory(): Factory
-{
-    $factoryNamespace = UserFactory::class;
-
-    // Utilizzo di app() invece di new
-    if (class_exists($factoryNamespace)) {
-        return app($factoryNamespace);
-    }
-
-    return Factory::factoryForModel(static::class);
-}
-```
-
-### 2. Gestione Sicura delle Funzioni che Possono Restituire `false`
-
-**Problema**: Funzioni come `strrpos()` possono restituire `false` in alcuni casi, causando errori di tipo.
-
-**Soluzione**: Utilizzo di controlli espliciti per gestire il caso in cui la funzione restituisca `false`:
-
-```php
-// ERRATO - strrpos può restituire false
-$namespace = substr(static::class, 0, strrpos(static::class, '\\'));
-
-// CORRETTO
-$position = strrpos(static::class, '\\');
-if ($position === false) {
-    $namespace = '';
-} else {
-    $namespace = substr(static::class, 0, $position);
-}
-```
-
-### 3. Tipi Generici per le Relazioni Eloquent
-
-**Problema**: I tipi generici nelle relazioni Eloquent non erano specificati completamente.
-
-**Soluzione**: Aggiunta di tutti i tipi generici necessari nelle annotazioni PHPDoc:
-
-```php
-/**
- * @return MorphMany<Notification, static>
- */
-public function notifications(): MorphMany
-{
-    return $this->morphMany(Notification::class, 'notifiable');
-}
+/** @phpstan-ignore-line */
+public function someComplexMethod() { ... }
 
 /**
- * @return MorphOne<AuthenticationLog, static>
+ * @phpstan-ignore offsetAccess.nonOffsetAccessible
  */
-public function latestAuthentication(): MorphOne
-{
-    return $this->morphOne(AuthenticationLog::class, 'authenticatable')
-        ->latestOfMany();
-}
 ```
 
-### 4. Incompatibilità tra Interfacce e Implementazioni Concrete
+## Documentazione da studiare
 
-**Problema**: Incompatibilità di tipo quando si passa un'implementazione concreta (es. `User`) a un metodo che si aspetta l'interfaccia (es. `UserContract`).
+Per una comprensione più completa delle correzioni necessarie, consultare:
 
-**Soluzione**: Aggiunta di annotazioni PHPDoc che chiariscono la compatibilità:
-
-```php
-/**
- * @param User|UserContract $authObject Il tipo User implementa UserContract, quindi è compatibile
- */
-public function __construct(
-    public readonly UserContract $authObject,
-) {
-    // No additional logic needed
-}
-```
-
-## Linee Guida per la Correzione di Errori Comuni
-
-1. **Correggi i Tipi Generici**: Assicurati di specificare tutti i tipi generici richiesti nelle annotazioni PHPDoc.
-
-2. **Gestisci Valori di Ritorno Non Certi**: Quando usi funzioni che possono restituire valori diversi (es. `false`), aggiungi controlli espliciti.
-
-3. **Chiarisci la Compatibilità tra Interfacce e Implementazioni**: Utilizza commenti PHPDoc per spiegare che un'implementazione concreta è compatibile con l'interfaccia richiesta.
-
-4. **Correggi le Annotazioni nei Modelli**: Utilizza `list<string>` per proprietà come `$fillable` e `$hidden`.
-
-5. **Standardizza i Tipi di Ritorno**: Assicurati che i metodi nelle classi concrete restituiscano tipi compatibili con quelli dichiarati nelle interfacce.
-
-## Configurazione Consigliata per PHPStan
-
-Per gestire meglio i tipi generici, considera l'aggiunta delle seguenti configurazioni nel file `phpstan.neon`:
-
-```yaml
-parameters:
-    treatPhpDocTypesAsCertain: false
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
-```
-
-## Approccio per la Risoluzione Incrementale
-
-1. **Analizza per Modulo**: Esegui l'analisi PHPStan modulo per modulo per evitare sovraccarichi di memoria.
-
-2. **Inizia dai Problemi più Semplici**: Risolvi prima gli errori relativi alle annotazioni PHPDoc e tipo di ritorno.
-
-3. **Documenta le Soluzioni**: Aggiorna la documentazione con le nuove soluzioni trovate.
-
-4. **Testa Dopo Ogni Modifica**: Verifica che le modifiche non abbiano introdotto nuovi errori.
-
-Questo approccio incrementale permette di ridurre gradualmente gli errori, mantenendo il codice funzionale durante il processo di correzione.
-
-## Risorse Utili
-
-- [Documentazione PHPStan sui Generics](https://phpstan.org/blog/generics-in-php-using-phpdocs)
-- [Guida Risoluzione Problemi di Proprietà Undefined](https://phpstan.org/blog/solving-phpstan-access-to-undefined-property)
-- [Solving Template Type Issues](https://phpstan.org/blog/solving-phpstan-error-unable-to-resolve-template-type)
+1. [NAMESPACE-RULES.md](./NAMESPACE-RULES.md) - Per le regole sui namespace
+2. [PHPSTAN-LEVEL9-GUIDE.md](./PHPSTAN-LEVEL9-GUIDE.md) - Per dettagli su come gestire errori livello 9
+3. [FILAMENT-TABLES.md](./FILAMENT-TABLES.md) - Per problemi specifici di Filament 

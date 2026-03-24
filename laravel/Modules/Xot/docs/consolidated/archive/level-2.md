@@ -1,10 +1,10 @@
-# Rapporto PHPStan Livello 2 per il modulo Xot
+# Rapporto PHPStan Livello 7 per il modulo Xot
 
-Data analisi: 2025-04-15 21:52:59
+Data analisi: 2025-04-15 21:55:11
 
 ## Riepilogo
 
-Trovati 4 errori al livello 2.
+Trovati 4 errori al livello 7.
 
 ## Errori e suggerimenti
 
@@ -53,19 +53,19 @@ aurmich/dev
 aurmich/dev
 aurmich/dev
 
-## Collegamenti tra versioni di level_2.md
-* [level_2.md](laravel/Modules/Chart/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Reporting/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Gdpr/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Notify/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Xot/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Dental/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/User/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/UI/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Lang/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Job/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Media/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Tenant/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Activity/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Patient/project_docs/phpstan/level_2.md)
-* [level_2.md](laravel/Modules/Cms/project_docs/phpstan/level_2.md)
+## Collegamenti tra versioni di level_7.md
+* [level_7.md](laravel/Modules/Chart/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Reporting/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Gdpr/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Notify/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Xot/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Dental/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/User/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/UI/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Lang/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Job/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Media/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Tenant/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Activity/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Patient/project_docs/phpstan/level_7.md)
+* [level_7.md](laravel/Modules/Cms/project_docs/phpstan/level_7.md)

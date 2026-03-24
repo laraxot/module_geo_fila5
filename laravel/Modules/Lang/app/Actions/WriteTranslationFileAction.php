@@ -85,7 +85,7 @@ class WriteTranslationFileAction
     private function validatePhpSyntax(string $phpContent): void
     {
         // Crea un file temporaneo per la validazione
-        $tempFile = tempnam(sys_get_temp_dir(), 'translation_');
+        $tempFile = tempnam(storage_path('framework/cache'), 'translation_');
         file_put_contents($tempFile, $phpContent);
 
         // Esegue php -l per validare la sintassi

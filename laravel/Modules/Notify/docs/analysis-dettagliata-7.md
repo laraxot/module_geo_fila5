@@ -1,643 +1,814 @@
-# Analisi Dettagliata del Modulo Notify - Parte 7: Manutenzione e Backup
+# Analisi Dettagliata del Modulo Notify - Parte 5: Testing
 
-## 7. Manutenzione e Backup
+## 5. Testing
 
-### 7.1 Versioning
+### 5.1 Unit Tests
 
-#### 7.1.1 VersionManager
+#### 5.1.1 TemplateTest
 ```php
-namespace Modules\Notify\Services;
+namespace Modules\Notify\Tests\Unit;
 
+use Tests\TestCase;
 use Modules\Notify\Models\Template;
-use Modules\Notify\Models\TemplateVersion;
+use Modules\Notify\Services\TemplateService;
 use Modules\Notify\Exceptions\TemplateException;
 
-class VersionManager
+class TemplateTest extends TestCase
 {
-    protected $template;
+    protected $templateService;
 
-    public function __construct(Template $template)
+    protected function setUp(): void
     {
-        $this->template = $template;
+        parent::setUp();
+        $this->templateService = app(TemplateService::class);
     }
 
-    public function createVersion(array $data): TemplateVersion
+    /** @test */
+    public function it_can_create_a_template()
     {
-        try {
-            $newVersion = $this->template->version + 1;
+        $data = [
+            'name' => 'Test Template',
+            'subject' => 'Test Subject',
+            'content' => '<mjml>Test Content</mjml>',
+            'layout' => 'default'
+        ];
 
-            $version = $this->template->versions()->create([
-                'version' => $newVersion,
-                'content' => $data['content'],
-                'created_by' => auth()->id(),
-                'changes' => $this->getChanges($data),
-                'status' => $data['status'] ?? 'draft',
-                'notes' => $data['notes'] ?? null
-            ]);
+        $template = $this->templateService->create($data);
 
-            $this->template->update(['version' => $newVersion]);
-
-            return $version;
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to create version: {$e->getMessage()}"
-            );
-        }
+        $this->assertInstanceOf(Template::class, $template);
+        $this->assertEquals($data['name'], $template->name);
+        $this->assertEquals($data['subject'], $template->subject);
+        $this->assertEquals($data['content'], $template->content);
+        $this->assertEquals($data['layout'], $template->layout);
+        $this->assertTrue($template->is_active);
+        $this->assertEquals(1, $template->version);
     }
 
-    public function rollbackVersion(int $version): Template
+    /** @test */
+    public function it_can_update_a_template()
     {
-        try {
-            $targetVersion = $this->template->versions()
-                ->where('version', $version)
-                ->firstOrFail();
+        $template = Template::factory()->create();
 
-            $this->template->update([
-                'content' => $targetVersion->content,
-                'version' => $version
-            ]);
+        $data = [
+            'name' => 'Updated Template',
+            'subject' => 'Updated Subject',
+            'content' => '<mjml>Updated Content</mjml>'
+        ];
 
-            return $this->template;
+        $updated = $this->templateService->update($template, $data);
 
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to rollback version: {$e->getMessage()}"
-            );
-        }
+        $this->assertEquals($data['name'], $updated->name);
+        $this->assertEquals($data['subject'], $updated->subject);
+        $this->assertEquals($data['content'], $updated->content);
+        $this->assertEquals(2, $updated->version);
     }
 
-    public function compareVersions(int $version1, int $version2): array
+    /** @test */
+    public function it_can_delete_a_template()
     {
-        try {
-            $v1 = $this->template->versions()
-                ->where('version', $version1)
-                ->firstOrFail();
+        $template = Template::factory()->create();
 
-            $v2 = $this->template->versions()
-                ->where('version', $version2)
-                ->firstOrFail();
+        $this->templateService->delete($template);
 
-            return [
-                'added' => $this->getAddedLines($v1->content, $v2->content),
-                'removed' => $this->getRemovedLines($v1->content, $v2->content),
-                'modified' => $this->getModifiedLines($v1->content, $v2->content)
-            ];
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to compare versions: {$e->getMessage()}"
-            );
-        }
+        $this->assertSoftDeleted($template);
     }
 
-    public function getVersionHistory(): array
+    /** @test */
+    public function it_can_create_a_version()
     {
-        return $this->template->versions()
-            ->orderBy('version', 'desc')
-            ->get()
-            ->map(function ($version) {
-                return [
-                    'version' => $version->version,
-                    'content' => $version->content,
-                    'status' => $version->status,
-                    'notes' => $version->notes,
-                    'created_at' => $version->created_at,
-                    'created_by' => $version->creator->name
-                ];
-            })
-            ->toArray();
+        $template = Template::factory()->create();
+
+        $data = [
+            'content' => '<mjml>New Version</mjml>',
+            'status' => 'draft'
+        ];
+
+        $version = $this->templateService->createVersion($template, $data);
+
+        $this->assertEquals($template->id, $version->template_id);
+        $this->assertEquals(2, $version->version);
+        $this->assertEquals($data['content'], $version->content);
+        $this->assertEquals($data['status'], $version->status);
     }
 
-    protected function getChanges(array $data): array
+    /** @test */
+    public function it_can_rollback_to_a_version()
     {
-        $changes = [];
+        $template = Template::factory()->create();
+        $version = $template->versions()->create([
+            'version' => 2,
+            'content' => '<mjml>Version 2</mjml>',
+            'status' => 'published'
+        ]);
 
-        foreach ($data as $key => $value) {
-            if (isset($this->template->$key) && $this->template->$key !== $value) {
-                $changes[$key] = [
-                    'old' => $this->template->$key,
-                    'new' => $value
-                ];
-            }
-        }
+        $rolledBack = $this->templateService->rollbackVersion($template, 1);
 
-        return $changes;
+        $this->assertEquals(1, $rolledBack->version);
+        $this->assertEquals($template->versions()->where('version', 1)->first()->content, $rolledBack->content);
     }
 
-    protected function getAddedLines(string $old, string $new): array
+    /** @test */
+    public function it_can_create_a_translation()
     {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        return array_diff($newLines, $oldLines);
+        $template = Template::factory()->create();
+
+        $data = [
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ];
+
+        $translation = $this->templateService->createTranslation($template, $data);
+
+        $this->assertEquals($template->id, $translation->template_id);
+        $this->assertEquals($data['locale'], $translation->locale);
+        $this->assertEquals($data['content'], $translation->content);
+        $this->assertEquals($data['subject'], $translation->subject);
     }
 
-    protected function getRemovedLines(string $old, string $new): array
+    /** @test */
+    public function it_can_update_a_translation()
     {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        return array_diff($oldLines, $newLines);
+        $template = Template::factory()->create();
+        $translation = $template->translations()->create([
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ]);
+
+        $data = [
+            'content' => '<mjml>Updated English Content</mjml>',
+            'subject' => 'Updated English Subject'
+        ];
+
+        $updated = $this->templateService->updateTranslation($translation, $data);
+
+        $this->assertEquals($data['content'], $updated->content);
+        $this->assertEquals($data['subject'], $updated->subject);
     }
 
-    protected function getModifiedLines(string $old, string $new): array
+    /** @test */
+    public function it_can_delete_a_translation()
     {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        $modified = [];
+        $template = Template::factory()->create();
+        $translation = $template->translations()->create([
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ]);
 
-        foreach ($oldLines as $index => $line) {
-            if (isset($newLines[$index]) && $line !== $newLines[$index]) {
-                $modified[] = [
-                    'old' => $line,
-                    'new' => $newLines[$index]
-                ];
-            }
-        }
+        $this->templateService->deleteTranslation($translation);
 
-        return $modified;
+        $this->assertDatabaseMissing('template_translations', [
+            'id' => $translation->id
+        ]);
+    }
+
+    /** @test */
+    public function it_can_preview_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $preview = $this->templateService->preview($template);
+
+        $this->assertIsString($preview);
+        $this->assertStringContainsString('Test Content', $preview);
+    }
+
+    /** @test */
+    public function it_can_test_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $result = $this->templateService->test($template, 'test@example.com');
+
+        $this->assertTrue($result);
+    }
+
+    /** @test */
+    public function it_throws_exception_for_invalid_template()
+    {
+        $this->expectException(TemplateException::class);
+
+        $template = Template::factory()->create([
+            'content' => 'Invalid Content'
+        ]);
+
+        $this->templateService->preview($template);
     }
 }
 ```
 
-### 7.2 Backup
-
-#### 7.2.1 BackupManager
+#### 5.1.2 MjmlServiceTest
 ```php
-namespace Modules\Notify\Services;
+namespace Modules\Notify\Tests\Unit;
 
-use Modules\Notify\Models\Template;
-use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+use Modules\Notify\Services\MjmlService;
 use Modules\Notify\Exceptions\TemplateException;
 
-class BackupManager
+class MjmlServiceTest extends TestCase
 {
-    protected $template;
+    protected $mjmlService;
 
-    public function __construct(Template $template)
+    protected function setUp(): void
     {
-        $this->template = $template;
+        parent::setUp();
+        $this->mjmlService = app(MjmlService::class);
     }
 
-    public function createBackup(): string
+    /** @test */
+    public function it_can_compile_mjml()
     {
-        try {
-            $filename = "backup_{$this->template->id}_" . date('Y-m-d_His') . ".json";
-            $path = "backups/{$filename}";
+        $mjml = '<mjml>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
 
-            $data = [
-                'template' => [
-                    'id' => $this->template->id,
-                    'name' => $this->template->name,
-                    'subject' => $this->template->subject,
-                    'content' => $this->template->content,
-                    'layout' => $this->template->layout,
-                    'is_active' => $this->template->is_active,
-                    'version' => $this->template->version,
-                    'from_name' => $this->template->from_name,
-                    'from_email' => $this->template->from_email,
-                    'reply_to' => $this->template->reply_to,
-                    'cc' => $this->template->cc,
-                    'bcc' => $this->template->bcc,
-                    'attachments' => $this->template->attachments,
-                    'variables' => $this->template->variables,
-                    'settings' => $this->template->settings,
-                    'created_at' => $this->template->created_at,
-                    'updated_at' => $this->template->updated_at
-                ],
-                'versions' => $this->template->versions()
-                    ->orderBy('version')
-                    ->get()
-                    ->map(function ($version) {
-                        return [
-                            'version' => $version->version,
-                            'content' => $version->content,
-                            'status' => $version->status,
-                            'notes' => $version->notes,
-                            'created_at' => $version->created_at,
-                            'created_by' => $version->creator->name
-                        ];
-                    })
-                    ->toArray(),
-                'translations' => $this->template->translations()
-                    ->get()
-                    ->map(function ($translation) {
-                        return [
-                            'locale' => $translation->locale,
-                            'content' => $translation->content,
-                            'subject' => $translation->subject,
-                            'from_name' => $translation->from_name,
-                            'variables' => $translation->variables,
-                            'created_at' => $translation->created_at,
-                            'translated_by' => $translation->translator->name
-                        ];
-                    })
-                    ->toArray()
-            ];
+        $html = $this->mjmlService->compile($mjml);
 
-            Storage::put($path, json_encode($data, JSON_PRETTY_PRINT));
-
-            return $path;
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to create backup: {$e->getMessage()}"
-            );
-        }
+        $this->assertIsString($html);
+        $this->assertStringContainsString('Hello World', $html);
     }
 
-    public function restoreFromBackup(string $path): Template
+    /** @test */
+    public function it_can_validate_mjml()
     {
-        try {
-            $data = json_decode(Storage::get($path), true);
+        $validMjml = '<mjml>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
 
-            DB::beginTransaction();
+        $invalidMjml = '<mjml>
+            <mj-body>
+                <mj-invalid>Hello World</mj-invalid>
+            </mj-body>
+        </mjml>';
 
-            // Ripristina template
-            $this->template->update([
-                'name' => $data['template']['name'],
-                'subject' => $data['template']['subject'],
-                'content' => $data['template']['content'],
-                'layout' => $data['template']['layout'],
-                'is_active' => $data['template']['is_active'],
-                'version' => $data['template']['version'],
-                'from_name' => $data['template']['from_name'],
-                'from_email' => $data['template']['from_email'],
-                'reply_to' => $data['template']['reply_to'],
-                'cc' => $data['template']['cc'],
-                'bcc' => $data['template']['bcc'],
-                'attachments' => $data['template']['attachments'],
-                'variables' => $data['template']['variables'],
-                'settings' => $data['template']['settings']
-            ]);
-
-            // Ripristina versioni
-            $this->template->versions()->delete();
-            foreach ($data['versions'] as $version) {
-                $this->template->versions()->create([
-                    'version' => $version['version'],
-                    'content' => $version['content'],
-                    'status' => $version['status'],
-                    'notes' => $version['notes'],
-                    'created_by' => auth()->id()
-                ]);
-            }
-
-            // Ripristina traduzioni
-            $this->template->translations()->delete();
-            foreach ($data['translations'] as $translation) {
-                $this->template->translations()->create([
-                    'locale' => $translation['locale'],
-                    'content' => $translation['content'],
-                    'subject' => $translation['subject'],
-                    'from_name' => $translation['from_name'],
-                    'variables' => $translation['variables'],
-                    'translated_by' => auth()->id()
-                ]);
-            }
-
-            DB::commit();
-
-            return $this->template;
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            throw new TemplateException(
-                "Failed to restore from backup: {$e->getMessage()}"
-            );
-        }
+        $this->assertTrue($this->mjmlService->validate($validMjml));
+        $this->assertFalse($this->mjmlService->validate($invalidMjml));
     }
 
-    public function getBackups(): array
+    /** @test */
+    public function it_can_extract_styles()
     {
-        return collect(Storage::files('backups'))
-            ->filter(function ($path) {
-                return str_starts_with(basename($path), "backup_{$this->template->id}_");
-            })
-            ->map(function ($path) {
-                return [
-                    'path' => $path,
-                    'filename' => basename($path),
-                    'created_at' => Storage::lastModified($path),
-                    'size' => Storage::size($path)
-                ];
-            })
-            ->sortByDesc('created_at')
-            ->values()
-            ->toArray();
+        $mjml = '<mjml>
+            <mj-head>
+                <mj-style>body { color: red; }</mj-style>
+            </mj-head>
+            <mj-body style="background: blue;">
+                <mj-section>
+                    <mj-column>
+                        <mj-text style="font-size: 20px;">Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $styles = $this->mjmlService->extractStyles($mjml);
+
+        $this->assertIsArray($styles);
+        $this->assertContains('body { color: red; }', $styles);
+        $this->assertContains('background: blue', $styles);
+        $this->assertContains('font-size: 20px', $styles);
     }
 
-    public function deleteBackup(string $path): bool
+    /** @test */
+    public function it_can_extract_components()
     {
-        try {
-            return Storage::delete($path);
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to delete backup: {$e->getMessage()}"
-            );
-        }
+        $mjml = '<mjml>
+            <mj-head>
+                <mj-style>body { color: red; }</mj-style>
+            </mj-head>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                        <mj-image src="test.jpg" />
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $components = $this->mjmlService->extractComponents($mjml);
+
+        $this->assertIsArray($components);
+        $this->assertContains('head', $components);
+        $this->assertContains('body', $components);
+        $this->assertContains('section', $components);
+        $this->assertContains('column', $components);
+        $this->assertContains('text', $components);
+        $this->assertContains('image', $components);
+    }
+
+    /** @test */
+    public function it_throws_exception_for_invalid_mjml()
+    {
+        $this->expectException(TemplateException::class);
+
+        $invalidMjml = '<mjml>
+            <mj-body>
+                <mj-invalid>Hello World</mj-invalid>
+            </mj-body>
+        </mjml>';
+
+        $this->mjmlService->compile($invalidMjml);
     }
 }
 ```
 
-#### 7.2.2 BackupCommand
+#### 5.1.3 MailgunServiceTest
 ```php
-namespace Modules\Notify\Console\Commands;
+namespace Modules\Notify\Tests\Unit;
 
-use Illuminate\Console\Command;
-use Modules\Notify\Models\Template;
-use Modules\Notify\Services\BackupManager;
-
-class BackupTemplatesCommand extends Command
-{
-    protected $signature = 'notify:backup-templates {--template= : ID del template da backuppare} {--all : Backup di tutti i template}';
-
-    protected $description = 'Crea backup dei template';
-
-    public function handle()
-    {
-        if ($this->option('all')) {
-            $templates = Template::all();
-        } elseif ($templateId = $this->option('template')) {
-            $templates = Template::where('id', $templateId)->get();
-        } else {
-            $this->error('Specificare --template o --all');
-            return 1;
-        }
-
-        $bar = $this->output->createProgressBar(count($templates));
-        $bar->start();
-
-        foreach ($templates as $template) {
-            try {
-                $backupManager = new BackupManager($template);
-                $path = $backupManager->createBackup();
-                $this->info("\nBackup creato: {$path}");
-            } catch (\Exception $e) {
-                $this->error("\nErrore nel backup del template {$template->id}: {$e->getMessage()}");
-            }
-            $bar->advance();
-        }
-
-        $bar->finish();
-        $this->newLine();
-        $this->info('Backup completato');
-
-        return 0;
-    }
-}
-```
-
-### 7.3 Manutenzione
-
-#### 7.3.1 MaintenanceManager
-```php
-namespace Modules\Notify\Services;
-
-use Modules\Notify\Models\Template;
-use Illuminate\Support\Facades\Cache;
+use Tests\TestCase;
+use Modules\Notify\Services\MailgunService;
 use Modules\Notify\Exceptions\TemplateException;
 
-class MaintenanceManager
+class MailgunServiceTest extends TestCase
 {
-    protected $template;
+    protected $mailgunService;
 
-    public function __construct(Template $template)
+    protected function setUp(): void
     {
-        $this->template = $template;
+        parent::setUp();
+        $this->mailgunService = app(MailgunService::class);
     }
 
-    public function cleanup(): void
+    /** @test */
+    public function it_can_send_an_email()
     {
-        try {
-            // Pulisci cache
-            $this->clearCache();
+        $data = [
+            'to' => 'test@example.com',
+            'subject' => 'Test Subject',
+            'html' => '<p>Test Content</p>',
+            'from_name' => 'Test Sender',
+            'from_email' => 'sender@example.com'
+        ];
 
-            // Pulisci analytics vecchi
-            $this->cleanupAnalytics();
+        $result = $this->mailgunService->send($data);
 
-            // Pulisci backup vecchi
-            $this->cleanupBackups();
-
-            // Pulisci allegati non utilizzati
-            $this->cleanupAttachments();
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to cleanup: {$e->getMessage()}"
-            );
-        }
+        $this->assertTrue($result);
     }
 
-    public function optimize(): void
+    /** @test */
+    public function it_can_handle_webhook_events()
     {
-        try {
-            // Ottimizza database
-            $this->optimizeDatabase();
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id'
+        ];
 
-            // Ottimizza cache
-            $this->optimizeCache();
+        $this->mailgunService->handleWebhook($data);
 
-            // Ottimizza storage
-            $this->optimizeStorage();
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to optimize: {$e->getMessage()}"
-            );
-        }
+        $this->assertDatabaseHas('template_analytics', [
+            'event' => 'delivered',
+            'metadata->message_id' => 'test-message-id'
+        ]);
     }
 
-    public function validate(): array
+    /** @test */
+    public function it_throws_exception_for_invalid_email()
     {
-        try {
-            $issues = [];
+        $this->expectException(TemplateException::class);
 
-            // Valida template
-            if (!$this->validateTemplate()) {
-                $issues[] = 'Template non valido';
-            }
+        $data = [
+            'to' => 'invalid-email',
+            'subject' => 'Test Subject',
+            'html' => '<p>Test Content</p>'
+        ];
 
-            // Valida versioni
-            if (!$this->validateVersions()) {
-                $issues[] = 'Versioni non valide';
-            }
-
-            // Valida traduzioni
-            if (!$this->validateTranslations()) {
-                $issues[] = 'Traduzioni non valide';
-            }
-
-            // Valida analytics
-            if (!$this->validateAnalytics()) {
-                $issues[] = 'Analytics non validi';
-            }
-
-            return $issues;
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to validate: {$e->getMessage()}"
-            );
-        }
+        $this->mailgunService->send($data);
     }
 
-    protected function clearCache(): void
+    /** @test */
+    public function it_can_format_from_field()
     {
-        Cache::tags(['template_' . $this->template->id])->flush();
+        $data = [
+            'from_name' => 'Test Sender',
+            'from_email' => 'sender@example.com'
+        ];
+
+        $from = $this->mailgunService->formatFrom($data);
+
+        $this->assertEquals('Test Sender <sender@example.com>', $from);
     }
 
-    protected function cleanupAnalytics(): void
+    /** @test */
+    public function it_can_format_attachments()
     {
-        $this->template->analytics()
-            ->where('created_at', '<', now()->subMonths(3))
-            ->delete();
-    }
+        $attachments = [
+            [
+                'path' => 'path/to/file1.pdf',
+                'name' => 'file1.pdf'
+            ],
+            [
+                'path' => 'path/to/file2.pdf',
+                'name' => 'file2.pdf'
+            ]
+        ];
 
-    protected function cleanupBackups(): void
-    {
-        $backups = collect(Storage::files('backups'))
-            ->filter(function ($path) {
-                return str_starts_with(basename($path), "backup_{$this->template->id}_");
-            })
-            ->sortByDesc(function ($path) {
-                return Storage::lastModified($path);
-            })
-            ->skip(10);
+        $formatted = $this->mailgunService->formatAttachments($attachments);
 
-        foreach ($backups as $backup) {
-            Storage::delete($backup);
-        }
-    }
-
-    protected function cleanupAttachments(): void
-    {
-        $usedAttachments = $this->template->attachments ?? [];
-        $allAttachments = Storage::files('attachments');
-
-        foreach ($allAttachments as $attachment) {
-            if (!in_array($attachment, $usedAttachments)) {
-                Storage::delete($attachment);
-            }
-        }
-    }
-
-    protected function optimizeDatabase(): void
-    {
-        DB::statement('OPTIMIZE TABLE templates');
-        DB::statement('OPTIMIZE TABLE template_versions');
-        DB::statement('OPTIMIZE TABLE template_translations');
-        DB::statement('OPTIMIZE TABLE template_analytics');
-    }
-
-    protected function optimizeCache(): void
-    {
-        Cache::tags(['template_' . $this->template->id])->flush();
-    }
-
-    protected function optimizeStorage(): void
-    {
-        // Comprimi allegati
-        foreach ($this->template->attachments ?? [] as $attachment) {
-            if (Storage::exists($attachment)) {
-                $content = Storage::get($attachment);
-                $compressed = gzcompress($content);
-                Storage::put($attachment . '.gz', $compressed);
-            }
-        }
-    }
-
-    protected function validateTemplate(): bool
-    {
-        return $this->template->is_valid;
-    }
-
-    protected function validateVersions(): bool
-    {
-        return $this->template->versions()
-            ->where('is_valid', false)
-            ->count() === 0;
-    }
-
-    protected function validateTranslations(): bool
-    {
-        return $this->template->translations()
-            ->where('is_valid', false)
-            ->count() === 0;
-    }
-
-    protected function validateAnalytics(): bool
-    {
-        return $this->template->analytics()
-            ->where('is_valid', false)
-            ->count() === 0;
+        $this->assertIsArray($formatted);
+        $this->assertCount(2, $formatted);
+        $this->assertEquals('path/to/file1.pdf', $formatted[0]['filePath']);
+        $this->assertEquals('file1.pdf', $formatted[0]['filename']);
     }
 }
 ```
 
-#### 7.3.2 MaintenanceCommand
+### 5.2 Feature Tests
+
+#### 5.2.1 TemplateControllerTest
 ```php
-namespace Modules\Notify\Console\Commands;
+namespace Modules\Notify\Tests\Feature;
 
-use Illuminate\Console\Command;
+use Tests\TestCase;
 use Modules\Notify\Models\Template;
-use Modules\Notify\Services\MaintenanceManager;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class MaintainTemplatesCommand extends Command
+class TemplateControllerTest extends TestCase
 {
-    protected $signature = 'notify:maintain-templates {--template= : ID del template da mantenere} {--all : Manutenzione di tutti i template} {--cleanup : Pulisci risorse} {--optimize : Ottimizza risorse} {--validate : Valida risorse}';
+    use RefreshDatabase;
 
-    protected $description = 'Esegue manutenzione sui template';
-
-    public function handle()
+    /** @test */
+    public function it_can_list_templates()
     {
-        if ($this->option('all')) {
-            $templates = Template::all();
-        } elseif ($templateId = $this->option('template')) {
-            $templates = Template::where('id', $templateId)->get();
-        } else {
-            $this->error('Specificare --template o --all');
-            return 1;
-        }
+        $templates = Template::factory()->count(3)->create();
 
-        $bar = $this->output->createProgressBar(count($templates));
-        $bar->start();
+        $response = $this->getJson('/api/notify/templates');
 
-        foreach ($templates as $template) {
-            try {
-                $maintenanceManager = new MaintenanceManager($template);
-
-                if ($this->option('cleanup')) {
-                    $maintenanceManager->cleanup();
-                    $this->info("\nPulizia completata per il template {$template->id}");
-                }
-
-                if ($this->option('optimize')) {
-                    $maintenanceManager->optimize();
-                    $this->info("\nOttimizzazione completata per il template {$template->id}");
-                }
-
-                if ($this->option('validate')) {
-                    $issues = $maintenanceManager->validate();
-                    if (empty($issues)) {
-                        $this->info("\nValidazione completata per il template {$template->id}");
-                    } else {
-                        $this->warn("\nProblemi trovati nel template {$template->id}:");
-                        foreach ($issues as $issue) {
-                            $this->warn("- {$issue}");
-                        }
-                    }
-                }
-
-            } catch (\Exception $e) {
-                $this->error("\nErrore nella manutenzione del template {$template->id}: {$e->getMessage()}");
-            }
-            $bar->advance();
-        }
-
-        $bar->finish();
-        $this->newLine();
-        $this->info('Manutenzione completata');
-
-        return 0;
+        $response->assertStatus(200)
+            ->assertJsonCount(3, 'data')
+            ->assertJsonStructure([
+                'data' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'subject',
+                        'content',
+                        'layout',
+                        'is_active',
+                        'version',
+                        'created_at',
+                        'updated_at'
+                    ]
+                ]
+            ]);
     }
-} 
+
+    /** @test */
+    public function it_can_show_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $response = $this->getJson("/api/notify/templates/{$template->id}");
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'id' => $template->id,
+                    'name' => $template->name,
+                    'subject' => $template->subject,
+                    'content' => $template->content,
+                    'layout' => $template->layout,
+                    'is_active' => $template->is_active,
+                    'version' => $template->version
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function it_can_create_a_template()
+    {
+        $data = [
+            'name' => 'Test Template',
+            'subject' => 'Test Subject',
+            'content' => '<mjml>Test Content</mjml>',
+            'layout' => 'default'
+        ];
+
+        $response = $this->postJson('/api/notify/templates', $data);
+
+        $response->assertStatus(201)
+            ->assertJson([
+                'data' => [
+                    'name' => $data['name'],
+                    'subject' => $data['subject'],
+                    'content' => $data['content'],
+                    'layout' => $data['layout']
+                ]
+            ]);
+
+        $this->assertDatabaseHas('templates', [
+            'name' => $data['name'],
+            'subject' => $data['subject'],
+            'content' => $data['content'],
+            'layout' => $data['layout']
+        ]);
+    }
+
+    /** @test */
+    public function it_can_update_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'name' => 'Updated Template',
+            'subject' => 'Updated Subject',
+            'content' => '<mjml>Updated Content</mjml>'
+        ];
+
+        $response = $this->putJson("/api/notify/templates/{$template->id}", $data);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'name' => $data['name'],
+                    'subject' => $data['subject'],
+                    'content' => $data['content']
+                ]
+            ]);
+
+        $this->assertDatabaseHas('templates', [
+            'id' => $template->id,
+            'name' => $data['name'],
+            'subject' => $data['subject'],
+            'content' => $data['content']
+        ]);
+    }
+
+    /** @test */
+    public function it_can_delete_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $response = $this->deleteJson("/api/notify/templates/{$template->id}");
+
+        $response->assertStatus(204);
+
+        $this->assertSoftDeleted($template);
+    }
+
+    /** @test */
+    public function it_can_preview_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $response = $this->getJson("/api/notify/templates/{$template->id}/preview");
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => [
+                    'html'
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function it_can_test_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $data = [
+            'email' => 'test@example.com',
+            'variables' => [
+                'name' => 'Test User'
+            ]
+        ];
+
+        $response = $this->postJson("/api/notify/templates/{$template->id}/test", $data);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'message' => 'Email sent successfully'
+            ]);
+    }
+
+    /** @test */
+    public function it_validates_required_fields()
+    {
+        $response = $this->postJson('/api/notify/templates', []);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'name',
+                'subject',
+                'content'
+            ]);
+    }
+
+    /** @test */
+    public function it_validates_email_format()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'email' => 'invalid-email'
+        ];
+
+        $response = $this->postJson("/api/notify/templates/{$template->id}/test", $data);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'email'
+            ]);
+    }
+}
+```
+
+#### 5.2.2 WebhookControllerTest
+```php
+namespace Modules\Notify\Tests\Feature;
+
+use Tests\TestCase;
+use Modules\Notify\Models\Template;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class WebhookControllerTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_can_handle_delivered_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'delivered',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_opened_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'opened',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'opened',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_clicked_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'clicked',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time(),
+            'url' => 'https://example.com'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'clicked',
+            'metadata->message_id' => 'test-message-id',
+            'metadata->url' => 'https://example.com'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_bounced_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'bounced',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time(),
+            'code' => '550',
+            'error' => 'User unknown'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'bounced',
+            'metadata->message_id' => 'test-message-id',
+            'metadata->code' => '550',
+            'metadata->error' => 'User unknown'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_complained_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'complained',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'complained',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_unsubscribed_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'unsubscribed',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'unsubscribed',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_validates_webhook_signature()
+    {
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(401);
+    }
+}
+``` 

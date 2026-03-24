@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Tests\Unit\Models;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 use Laravel\Passport\AuthCode;
 use Laravel\Passport\Client as PassportClient;
 use Laravel\Passport\DeviceCode;
@@ -17,6 +21,10 @@ use Modules\User\Models\OauthRefreshToken;
 use Modules\User\Models\OauthToken;
 use Modules\User\Tests\TestCase;
 use Spatie\Permission\Traits\HasRoles;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 uses(TestCase::class);
 
@@ -66,3 +74,7 @@ test('oauth client has required attributes', function (): void {
     expect(isset($client->revoked))->toBeTrue();
     expect(isset($client->user_id))->toBeTrue();
 });
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes

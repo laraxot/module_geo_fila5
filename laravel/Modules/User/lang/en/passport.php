@@ -27,4 +27,8 @@ return [
         'refresh_tokens_total' => 'Refresh tokens',
         'refresh_tokens_description' => 'Refresh tokens',
     ],
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 ];

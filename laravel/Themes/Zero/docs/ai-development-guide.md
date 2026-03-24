@@ -58,9 +58,9 @@ When creating Blade components for Zero theme:
 
 ## Livewire Volt Pages
 
-For functional Livewire pages:
+Per Volt pages class-based (default):
 - Location: `Themes/Zero/Resources/views/pages/`
-- Use `<?php use function Livewire\Volt\{...}; ?>`
+- Use `<?php use Livewire\Volt\Component; new class extends Component { /* stati e metodi */ }; ?>`
 - Keep logic minimal, delegate to actions
 
 ## Layouts

@@ -1,6 +1,18 @@
 # Guida Completa ai Provider di Notifiche 
 
+<<<<<<< Updated upstream
 Questo documento fornisce una panoramica completa dell'architettura standardizzata per tutti i provider di notifiche supportati nel modulo Notify di Quaeris.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Questo documento fornisce una panoramica completa dell'architettura standardizzata per tutti i provider di notifiche supportati nel modulo Notify di Laraxot.
+=======
+Questo documento fornisce una panoramica completa dell'architettura standardizzata per tutti i provider di notifiche supportati nel modulo Notify di healthcare_app.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+Questo documento fornisce una panoramica completa dell'architettura standardizzata per tutti i provider di notifiche supportati nel modulo Notify di Quaeris.
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 
 ## Principi Architetturali per Tutti i Provider
 

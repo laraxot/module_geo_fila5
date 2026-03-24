@@ -122,8 +122,18 @@ class LoginWidget extends XotBaseWidget
                     $messages = [$messages];
                 }
 
-                /* @var array<int|string, mixed> $messages */
-                $this->addError($field, implode(' ', $messages));
+                $parts = [];
+                foreach ($messages as $message) {
+                    if (is_string($message) || is_int($message) || is_float($message) || is_bool($message)) {
+                        $parts[] = (string) $message;
+                    }
+                }
+
+                $this->addError($field, implode(' ', $parts));
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             }
         } catch (\Exception $e) {
             report($e);

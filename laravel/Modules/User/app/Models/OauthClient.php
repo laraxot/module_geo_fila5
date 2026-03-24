@@ -37,15 +37,15 @@ final class OauthClient extends PassportClient implements AuthorizableContract
     use HasFactory;
     use HasRoles;
 
-    /** @var string */
-    protected $connection = 'user';
-
     /**
      * Guard per Spatie Permission (client API, non web).
      *
      * @var string
      */
     public $guard_name = 'api';
+
+    /** @var string */
+    protected $connection = 'user';
 
     /**
      * Get the user that the client belongs to.
@@ -152,4 +152,8 @@ final class OauthClient extends PassportClient implements AuthorizableContract
             return false;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

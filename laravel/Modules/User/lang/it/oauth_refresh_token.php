@@ -51,6 +51,10 @@ return [
         'expired' => 'Scaduti',
         'valid' => 'Validi',
     ],
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     'actions' => [
         'revoke' => [
             'label' => 'Revoca',

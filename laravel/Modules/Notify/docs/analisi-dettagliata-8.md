@@ -1,220 +1,814 @@
-# Analisi Dettagliata del Modulo Notify - Parte 8: Note Finali
+# Analisi Dettagliata del Modulo Notify - Parte 5: Testing
 
-## 8. Note Finali
+## 5. Testing
 
-### 8.1 Best Practices
+### 5.1 Unit Tests
 
-#### 8.1.1 Documentazione
-- Mantenere aggiornata la documentazione del codice
-- Utilizzare PHPDoc per documentare classi, metodi e proprietà
-- Includere esempi di utilizzo nella documentazione
-- Documentare le dipendenze e i requisiti
-- Mantenere un changelog aggiornato
+#### 5.1.1 TemplateTest
+```php
+namespace Modules\Notify\Tests\Unit;
 
-#### 8.1.2 Logging
-- Utilizzare livelli di log appropriati (info, warning, error)
-- Includere contesto rilevante nei messaggi di log
-- Implementare rotazione dei log
-- Monitorare i log per errori e warning
-- Configurare alert per errori critici
+use Tests\TestCase;
+use Modules\Notify\Models\Template;
+use Modules\Notify\Services\TemplateService;
+use Modules\Notify\Exceptions\TemplateException;
 
-#### 8.1.3 Testing
-- Mantenere una copertura dei test elevata
-- Testare edge cases e scenari di errore
-- Utilizzare test di integrazione per i flussi principali
-- Implementare test di performance
-- Eseguire test automatici in CI/CD
+class TemplateTest extends TestCase
+{
+    protected $templateService;
 
-#### 8.1.4 Performance
-- Implementare caching appropriato
-- Ottimizzare query al database
-- Minimizzare chiamate API esterne
-- Utilizzare code per operazioni pesanti
-- Monitorare metriche di performance
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->templateService = app(TemplateService::class);
+    }
 
-#### 8.1.5 Backup
-- Eseguire backup regolari
-- Verificare l'integrità dei backup
-- Implementare retention policy
-- Testare il ripristino dei backup
-- Documentare procedure di backup/restore
+    /** @test */
+    public function it_can_create_a_template()
+    {
+        $data = [
+            'name' => 'Test Template',
+            'subject' => 'Test Subject',
+            'content' => '<mjml>Test Content</mjml>',
+            'layout' => 'default'
+        ];
 
-#### 8.1.6 Code Review
-- Rivedere il codice prima del merge
-- Verificare la qualità del codice
-- Controllare la sicurezza
-- Verificare la manutenibilità
-- Assicurare la coerenza dello stile
+        $template = $this->templateService->create($data);
 
-#### 8.1.7 Sicurezza
-- Validare input utente
-- Sanitizzare output
-- Implementare rate limiting
-- Utilizzare HTTPS
-- Mantenere aggiornate le dipendenze
+        $this->assertInstanceOf(Template::class, $template);
+        $this->assertEquals($data['name'], $template->name);
+        $this->assertEquals($data['subject'], $template->subject);
+        $this->assertEquals($data['content'], $template->content);
+        $this->assertEquals($data['layout'], $template->layout);
+        $this->assertTrue($template->is_active);
+        $this->assertEquals(1, $template->version);
+    }
 
-#### 8.1.8 Manutenzione
-- Eseguire manutenzione regolare
-- Monitorare l'utilizzo delle risorse
-- Pulire dati obsoleti
-- Ottimizzare performance
-- Aggiornare dipendenze
+    /** @test */
+    public function it_can_update_a_template()
+    {
+        $template = Template::factory()->create();
 
-### 8.2 Raccomandazioni
+        $data = [
+            'name' => 'Updated Template',
+            'subject' => 'Updated Subject',
+            'content' => '<mjml>Updated Content</mjml>'
+        ];
 
-#### 8.2.1 Architettura
-- Seguire i principi SOLID
-- Utilizzare pattern architetturali appropriati
-- Mantenere una struttura modulare
-- Implementare dependency injection
-- Separare le responsabilità
+        $updated = $this->templateService->update($template, $data);
 
-#### 8.2.2 Database
-- Utilizzare indici appropriati
-- Implementare soft deletes
-- Utilizzare transazioni
-- Ottimizzare query
-- Implementare migrazioni
+        $this->assertEquals($data['name'], $updated->name);
+        $this->assertEquals($data['subject'], $updated->subject);
+        $this->assertEquals($data['content'], $updated->content);
+        $this->assertEquals(2, $updated->version);
+    }
 
-#### 8.2.3 Cache
-- Implementare caching strategico
-- Utilizzare cache tags
-- Implementare cache invalidation
-- Monitorare hit/miss ratio
-- Configurare TTL appropriati
+    /** @test */
+    public function it_can_delete_a_template()
+    {
+        $template = Template::factory()->create();
 
-#### 8.2.4 API
-- Documentare API con OpenAPI/Swagger
-- Implementare versioning
-- Utilizzare rate limiting
-- Implementare autenticazione
-- Validare input/output
+        $this->templateService->delete($template);
 
-#### 8.2.5 Frontend
-- Implementare validazione lato client
-- Utilizzare componenti riutilizzabili
-- Implementare error handling
-- Ottimizzare bundle size
-- Implementare lazy loading
+        $this->assertSoftDeleted($template);
+    }
 
-#### 8.2.6 Testing
-- Implementare test unitari
-- Implementare test di integrazione
-- Implementare test end-to-end
-- Implementare test di performance
-- Implementare test di sicurezza
+    /** @test */
+    public function it_can_create_a_version()
+    {
+        $template = Template::factory()->create();
 
-#### 8.2.7 Deployment
-- Implementare CI/CD
-- Utilizzare container
-- Implementare rollback
-- Monitorare deployment
-- Documentare procedure
+        $data = [
+            'content' => '<mjml>New Version</mjml>',
+            'status' => 'draft'
+        ];
 
-#### 8.2.8 Monitoraggio
-- Implementare logging
-- Implementare metrics
-- Implementare alerting
-- Monitorare performance
-- Monitorare errori
+        $version = $this->templateService->createVersion($template, $data);
 
-### 8.3 Considerazioni Future
+        $this->assertEquals($template->id, $version->template_id);
+        $this->assertEquals(2, $version->version);
+        $this->assertEquals($data['content'], $version->content);
+        $this->assertEquals($data['status'], $version->status);
+    }
 
-#### 8.3.1 Scalabilità
-- Implementare sharding
-- Utilizzare load balancing
-- Implementare caching distribuito
-- Ottimizzare query
-- Monitorare performance
+    /** @test */
+    public function it_can_rollback_to_a_version()
+    {
+        $template = Template::factory()->create();
+        $version = $template->versions()->create([
+            'version' => 2,
+            'content' => '<mjml>Version 2</mjml>',
+            'status' => 'published'
+        ]);
 
-#### 8.3.2 Manutenibilità
-- Documentare codice
-- Implementare test
-- Utilizzare pattern
-- Refactoring regolare
-- Code review
+        $rolledBack = $this->templateService->rollbackVersion($template, 1);
 
-#### 8.3.3 Sicurezza
-- Audit regolare
-- Penetration testing
-- Security headers
-- Input validation
-- Output sanitization
+        $this->assertEquals(1, $rolledBack->version);
+        $this->assertEquals($template->versions()->where('version', 1)->first()->content, $rolledBack->content);
+    }
 
-#### 8.3.4 Performance
-- Profiling
-- Ottimizzazione
-- Caching
-- Lazy loading
-- Code splitting
+    /** @test */
+    public function it_can_create_a_translation()
+    {
+        $template = Template::factory()->create();
 
-#### 8.3.5 Feature
-- A/B testing
-- Analytics
-- Personalizzazione
-- Automazione
-- Integrazione
+        $data = [
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ];
 
-### 8.4 Conclusione
+        $translation = $this->templateService->createTranslation($template, $data);
 
-Il modulo Notify è un componente complesso e robusto che fornisce funzionalità avanzate per la gestione delle email. L'architettura modulare e l'implementazione di best practices garantiscono manutenibilità, scalabilità e sicurezza.
+        $this->assertEquals($template->id, $translation->template_id);
+        $this->assertEquals($data['locale'], $translation->locale);
+        $this->assertEquals($data['content'], $translation->content);
+        $this->assertEquals($data['subject'], $translation->subject);
+    }
 
-Le principali caratteristiche includono:
-- Gestione template MJML
-- Versioning
-- Traduzioni
-- Analytics
-- Backup
-- Manutenzione
+    /** @test */
+    public function it_can_update_a_translation()
+    {
+        $template = Template::factory()->create();
+        $translation = $template->translations()->create([
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ]);
 
-Le raccomandazioni per il futuro includono:
-- Migliorare la documentazione
-- Aumentare la copertura dei test
-- Ottimizzare le performance
-- Implementare nuove feature
-- Migliorare la sicurezza
+        $data = [
+            'content' => '<mjml>Updated English Content</mjml>',
+            'subject' => 'Updated English Subject'
+        ];
 
-Il modulo è progettato per essere estensibile e personalizzabile, permettendo l'aggiunta di nuove funzionalità e l'integrazione con altri sistemi.
+        $updated = $this->templateService->updateTranslation($translation, $data);
 
-### 8.5 Riferimenti
+        $this->assertEquals($data['content'], $updated->content);
+        $this->assertEquals($data['subject'], $updated->subject);
+    }
 
-#### 8.5.1 Documentazione
-- [Laravel Documentation](https://laravel.com/docs)
-- [MJML Documentation](https://mjml.io/documentation)
-- [Mailgun Documentation](https://documentation.mailgun.com)
-- [Filament Documentation](https://filamentphp.com/docs)
+    /** @test */
+    public function it_can_delete_a_translation()
+    {
+        $template = Template::factory()->create();
+        $translation = $template->translations()->create([
+            'locale' => 'en',
+            'content' => '<mjml>English Content</mjml>',
+            'subject' => 'English Subject'
+        ]);
 
-#### 8.5.2 Package
-- [spatie/laravel-mail-templates](https://github.com/spatie/laravel-mail-templates)
-- [mjml/mjml-php](https://github.com/mjmlio/mjml-php)
-- [mailgun/mailgun-php](https://github.com/mailgun/mailgun-php)
+        $this->templateService->deleteTranslation($translation);
 
-#### 8.5.3 Tools
-- [Laravel Telescope](https://laravel.com/project_docs/telescope)
-- [Laravel Horizon](https://laravel.com/project_docs/horizon)
-- [Laravel Dusk](https://laravel.com/project_docs/dusk)
+        $this->assertDatabaseMissing('template_translations', [
+            'id' => $translation->id
+        ]);
+    }
 
-#### 8.5.4 Best Practices
-- [Laravel Best Practices](https://github.com/alexeymezenin/laravel-best-practices)
-- [PHP The Right Way](https://phptherightway.com)
-- [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+    /** @test */
+    public function it_can_preview_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
 
-#### 8.5.5 Security
-- [OWASP](https://owasp.org)
-- [Laravel Security](https://laravel.com/project_docs/security)
-- [PHP Security](https://phpsecurity.readthedocs.io)
+        $preview = $this->templateService->preview($template);
 
-#### 8.5.6 Testing
-- [PHPUnit](https://phpunit.de)
-- [Laravel Testing](https://laravel.com/project_docs/testing)
-- [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)
+        $this->assertIsString($preview);
+        $this->assertStringContainsString('Test Content', $preview);
+    }
 
-#### 8.5.7 Performance
-- [Laravel Performance](https://laravel.com/project_docs/performance)
-- [PHP Performance](https://www.php.net/manual/en/performance.php)
-- [Web Performance](https://web.dev/performance)
+    /** @test */
+    public function it_can_test_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
 
-#### 8.5.8 Monitoring
-- [Laravel Monitoring](https://laravel.com/project_docs/monitoring)
-- [Application Monitoring](https://en.wikipedia.org/wiki/Application_performance_management)
-- [Log Management](https://en.wikipedia.org/wiki/Log_management) 
+        $result = $this->templateService->test($template, 'test@example.com');
+
+        $this->assertTrue($result);
+    }
+
+    /** @test */
+    public function it_throws_exception_for_invalid_template()
+    {
+        $this->expectException(TemplateException::class);
+
+        $template = Template::factory()->create([
+            'content' => 'Invalid Content'
+        ]);
+
+        $this->templateService->preview($template);
+    }
+}
+```
+
+#### 5.1.2 MjmlServiceTest
+```php
+namespace Modules\Notify\Tests\Unit;
+
+use Tests\TestCase;
+use Modules\Notify\Services\MjmlService;
+use Modules\Notify\Exceptions\TemplateException;
+
+class MjmlServiceTest extends TestCase
+{
+    protected $mjmlService;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->mjmlService = app(MjmlService::class);
+    }
+
+    /** @test */
+    public function it_can_compile_mjml()
+    {
+        $mjml = '<mjml>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $html = $this->mjmlService->compile($mjml);
+
+        $this->assertIsString($html);
+        $this->assertStringContainsString('Hello World', $html);
+    }
+
+    /** @test */
+    public function it_can_validate_mjml()
+    {
+        $validMjml = '<mjml>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $invalidMjml = '<mjml>
+            <mj-body>
+                <mj-invalid>Hello World</mj-invalid>
+            </mj-body>
+        </mjml>';
+
+        $this->assertTrue($this->mjmlService->validate($validMjml));
+        $this->assertFalse($this->mjmlService->validate($invalidMjml));
+    }
+
+    /** @test */
+    public function it_can_extract_styles()
+    {
+        $mjml = '<mjml>
+            <mj-head>
+                <mj-style>body { color: red; }</mj-style>
+            </mj-head>
+            <mj-body style="background: blue;">
+                <mj-section>
+                    <mj-column>
+                        <mj-text style="font-size: 20px;">Hello World</mj-text>
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $styles = $this->mjmlService->extractStyles($mjml);
+
+        $this->assertIsArray($styles);
+        $this->assertContains('body { color: red; }', $styles);
+        $this->assertContains('background: blue', $styles);
+        $this->assertContains('font-size: 20px', $styles);
+    }
+
+    /** @test */
+    public function it_can_extract_components()
+    {
+        $mjml = '<mjml>
+            <mj-head>
+                <mj-style>body { color: red; }</mj-style>
+            </mj-head>
+            <mj-body>
+                <mj-section>
+                    <mj-column>
+                        <mj-text>Hello World</mj-text>
+                        <mj-image src="test.jpg" />
+                    </mj-column>
+                </mj-section>
+            </mj-body>
+        </mjml>';
+
+        $components = $this->mjmlService->extractComponents($mjml);
+
+        $this->assertIsArray($components);
+        $this->assertContains('head', $components);
+        $this->assertContains('body', $components);
+        $this->assertContains('section', $components);
+        $this->assertContains('column', $components);
+        $this->assertContains('text', $components);
+        $this->assertContains('image', $components);
+    }
+
+    /** @test */
+    public function it_throws_exception_for_invalid_mjml()
+    {
+        $this->expectException(TemplateException::class);
+
+        $invalidMjml = '<mjml>
+            <mj-body>
+                <mj-invalid>Hello World</mj-invalid>
+            </mj-body>
+        </mjml>';
+
+        $this->mjmlService->compile($invalidMjml);
+    }
+}
+```
+
+#### 5.1.3 MailgunServiceTest
+```php
+namespace Modules\Notify\Tests\Unit;
+
+use Tests\TestCase;
+use Modules\Notify\Services\MailgunService;
+use Modules\Notify\Exceptions\TemplateException;
+
+class MailgunServiceTest extends TestCase
+{
+    protected $mailgunService;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->mailgunService = app(MailgunService::class);
+    }
+
+    /** @test */
+    public function it_can_send_an_email()
+    {
+        $data = [
+            'to' => 'test@example.com',
+            'subject' => 'Test Subject',
+            'html' => '<p>Test Content</p>',
+            'from_name' => 'Test Sender',
+            'from_email' => 'sender@example.com'
+        ];
+
+        $result = $this->mailgunService->send($data);
+
+        $this->assertTrue($result);
+    }
+
+    /** @test */
+    public function it_can_handle_webhook_events()
+    {
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id'
+        ];
+
+        $this->mailgunService->handleWebhook($data);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'event' => 'delivered',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_throws_exception_for_invalid_email()
+    {
+        $this->expectException(TemplateException::class);
+
+        $data = [
+            'to' => 'invalid-email',
+            'subject' => 'Test Subject',
+            'html' => '<p>Test Content</p>'
+        ];
+
+        $this->mailgunService->send($data);
+    }
+
+    /** @test */
+    public function it_can_format_from_field()
+    {
+        $data = [
+            'from_name' => 'Test Sender',
+            'from_email' => 'sender@example.com'
+        ];
+
+        $from = $this->mailgunService->formatFrom($data);
+
+        $this->assertEquals('Test Sender <sender@example.com>', $from);
+    }
+
+    /** @test */
+    public function it_can_format_attachments()
+    {
+        $attachments = [
+            [
+                'path' => 'path/to/file1.pdf',
+                'name' => 'file1.pdf'
+            ],
+            [
+                'path' => 'path/to/file2.pdf',
+                'name' => 'file2.pdf'
+            ]
+        ];
+
+        $formatted = $this->mailgunService->formatAttachments($attachments);
+
+        $this->assertIsArray($formatted);
+        $this->assertCount(2, $formatted);
+        $this->assertEquals('path/to/file1.pdf', $formatted[0]['filePath']);
+        $this->assertEquals('file1.pdf', $formatted[0]['filename']);
+    }
+}
+```
+
+### 5.2 Feature Tests
+
+#### 5.2.1 TemplateControllerTest
+```php
+namespace Modules\Notify\Tests\Feature;
+
+use Tests\TestCase;
+use Modules\Notify\Models\Template;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class TemplateControllerTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_can_list_templates()
+    {
+        $templates = Template::factory()->count(3)->create();
+
+        $response = $this->getJson('/api/notify/templates');
+
+        $response->assertStatus(200)
+            ->assertJsonCount(3, 'data')
+            ->assertJsonStructure([
+                'data' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'subject',
+                        'content',
+                        'layout',
+                        'is_active',
+                        'version',
+                        'created_at',
+                        'updated_at'
+                    ]
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function it_can_show_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $response = $this->getJson("/api/notify/templates/{$template->id}");
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'id' => $template->id,
+                    'name' => $template->name,
+                    'subject' => $template->subject,
+                    'content' => $template->content,
+                    'layout' => $template->layout,
+                    'is_active' => $template->is_active,
+                    'version' => $template->version
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function it_can_create_a_template()
+    {
+        $data = [
+            'name' => 'Test Template',
+            'subject' => 'Test Subject',
+            'content' => '<mjml>Test Content</mjml>',
+            'layout' => 'default'
+        ];
+
+        $response = $this->postJson('/api/notify/templates', $data);
+
+        $response->assertStatus(201)
+            ->assertJson([
+                'data' => [
+                    'name' => $data['name'],
+                    'subject' => $data['subject'],
+                    'content' => $data['content'],
+                    'layout' => $data['layout']
+                ]
+            ]);
+
+        $this->assertDatabaseHas('templates', [
+            'name' => $data['name'],
+            'subject' => $data['subject'],
+            'content' => $data['content'],
+            'layout' => $data['layout']
+        ]);
+    }
+
+    /** @test */
+    public function it_can_update_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'name' => 'Updated Template',
+            'subject' => 'Updated Subject',
+            'content' => '<mjml>Updated Content</mjml>'
+        ];
+
+        $response = $this->putJson("/api/notify/templates/{$template->id}", $data);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'name' => $data['name'],
+                    'subject' => $data['subject'],
+                    'content' => $data['content']
+                ]
+            ]);
+
+        $this->assertDatabaseHas('templates', [
+            'id' => $template->id,
+            'name' => $data['name'],
+            'subject' => $data['subject'],
+            'content' => $data['content']
+        ]);
+    }
+
+    /** @test */
+    public function it_can_delete_a_template()
+    {
+        $template = Template::factory()->create();
+
+        $response = $this->deleteJson("/api/notify/templates/{$template->id}");
+
+        $response->assertStatus(204);
+
+        $this->assertSoftDeleted($template);
+    }
+
+    /** @test */
+    public function it_can_preview_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $response = $this->getJson("/api/notify/templates/{$template->id}/preview");
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => [
+                    'html'
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function it_can_test_a_template()
+    {
+        $template = Template::factory()->create([
+            'content' => '<mjml>Test Content</mjml>'
+        ]);
+
+        $data = [
+            'email' => 'test@example.com',
+            'variables' => [
+                'name' => 'Test User'
+            ]
+        ];
+
+        $response = $this->postJson("/api/notify/templates/{$template->id}/test", $data);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'message' => 'Email sent successfully'
+            ]);
+    }
+
+    /** @test */
+    public function it_validates_required_fields()
+    {
+        $response = $this->postJson('/api/notify/templates', []);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'name',
+                'subject',
+                'content'
+            ]);
+    }
+
+    /** @test */
+    public function it_validates_email_format()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'email' => 'invalid-email'
+        ];
+
+        $response = $this->postJson("/api/notify/templates/{$template->id}/test", $data);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'email'
+            ]);
+    }
+}
+```
+
+#### 5.2.2 WebhookControllerTest
+```php
+namespace Modules\Notify\Tests\Feature;
+
+use Tests\TestCase;
+use Modules\Notify\Models\Template;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class WebhookControllerTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_can_handle_delivered_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'delivered',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_opened_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'opened',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'opened',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_clicked_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'clicked',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time(),
+            'url' => 'https://example.com'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'clicked',
+            'metadata->message_id' => 'test-message-id',
+            'metadata->url' => 'https://example.com'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_bounced_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'bounced',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time(),
+            'code' => '550',
+            'error' => 'User unknown'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'bounced',
+            'metadata->message_id' => 'test-message-id',
+            'metadata->code' => '550',
+            'metadata->error' => 'User unknown'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_complained_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'complained',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'complained',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_handle_unsubscribed_event()
+    {
+        $template = Template::factory()->create();
+
+        $data = [
+            'event' => 'unsubscribed',
+            'message-id' => 'test-message-id',
+            'recipient' => 'test@example.com',
+            'domain' => 'example.com',
+            'timestamp' => time()
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('template_analytics', [
+            'template_id' => $template->id,
+            'event' => 'unsubscribed',
+            'metadata->message_id' => 'test-message-id'
+        ]);
+    }
+
+    /** @test */
+    public function it_validates_webhook_signature()
+    {
+        $data = [
+            'event' => 'delivered',
+            'message-id' => 'test-message-id'
+        ];
+
+        $response = $this->postJson('/api/notify/webhooks/mailgun', $data);
+
+        $response->assertStatus(401);
+    }
+}
+``` 

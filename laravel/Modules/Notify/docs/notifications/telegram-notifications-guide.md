@@ -1,6 +1,18 @@
 # Notifiche Telegram 
 
+<<<<<<< Updated upstream
 Questa documentazione descrive come implementare notifiche Telegram nel modulo Notify di Quaeris.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Questa documentazione descrive come implementare notifiche Telegram nel modulo Notify di Laraxot.
+=======
+Questa documentazione descrive come implementare notifiche Telegram nel modulo Notify di healthcare_app.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+Questa documentazione descrive come implementare notifiche Telegram nel modulo Notify di Quaeris.
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 
 ## Indice
 
@@ -15,7 +27,19 @@ Questa documentazione descrive come implementare notifiche Telegram nel modulo N
 
 ## Introduzione
 
+<<<<<<< Updated upstream
 Telegram offre un'ottima piattaforma per notifiche istantanee grazie alla sua API per bot. Quaeris integra Telegram per inviare notifiche relative ad appuntamenti, promemoria e altre comunicazioni importanti.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Telegram offre un'ottima piattaforma per notifiche istantanee grazie alla sua API per bot. Laraxot integra Telegram per inviare notifiche relative ad appuntamenti, promemoria e altre comunicazioni importanti.
+=======
+Telegram offre un'ottima piattaforma per notifiche istantanee grazie alla sua API per bot. healthcare_app integra Telegram per inviare notifiche relative ad appuntamenti, promemoria e altre comunicazioni importanti.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+Telegram offre un'ottima piattaforma per notifiche istantanee grazie alla sua API per bot. Quaeris integra Telegram per inviare notifiche relative ad appuntamenti, promemoria e altre comunicazioni importanti.
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 
 ## Setup del Bot Telegram
 
@@ -28,17 +52,50 @@ Telegram offre un'ottima piattaforma per notifiche istantanee grazie alla sua AP
 
 ### Funzionalità del Bot
 
+<<<<<<< Updated upstream
 Il bot di Quaeris deve avere:
 - Privacy Mode disattivata (per leggere messaggi nei gruppi)
 - Comandi personalizzati configurati
 - Immagine del profilo con logo Quaeris
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Il bot di Laraxot deve avere:
+- Privacy Mode disattivata (per leggere messaggi nei gruppi)
+- Comandi personalizzati configurati
+- Immagine del profilo con logo Laraxot
+=======
+Il bot di healthcare_app deve avere:
+- Privacy Mode disattivata (per leggere messaggi nei gruppi)
+- Comandi personalizzati configurati
+- Immagine del profilo con logo healthcare_app
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+Il bot di Quaeris deve avere:
+- Privacy Mode disattivata (per leggere messaggi nei gruppi)
+- Comandi personalizzati configurati
+- Immagine del profilo con logo Quaeris
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 
 ### Comandi Consigliati
 
 Configura i seguenti comandi per il tuo bot:
 ```
 start - Inizia l'interazione con il bot
+<<<<<<< Updated upstream
 register - Collega il tuo account Telegram a Quaeris
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+register - Collega il tuo account Telegram a Laraxot
+=======
+register - Collega il tuo account Telegram a healthcare_app
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+register - Collega il tuo account Telegram a Quaeris
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 unregister - Scollega il tuo account Telegram
 settings - Gestisci le tue preferenze di notifica
 help - Ottieni assistenza
@@ -159,10 +216,31 @@ public function toTelegram($notifiable)
 
 ### Collegamento Account Telegram
 
+<<<<<<< Updated upstream
 Per collegare un account Telegram a un utente Quaeris:
 
 1. Implementa un comando `/register` nel bot che generi un token univoco.
 2. L'utente inserisce questo token nel proprio profilo nell'app Quaeris.
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Per collegare un account Telegram a un utente Laraxot:
+
+1. Implementa un comando `/register` nel bot che generi un token univoco.
+2. L'utente inserisce questo token nel proprio profilo nell'app Laraxot.
+=======
+Per collegare un account Telegram a un utente healthcare_app:
+
+1. Implementa un comando `/register` nel bot che generi un token univoco.
+2. L'utente inserisce questo token nel proprio profilo nell'app healthcare_app.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+Per collegare un account Telegram a un utente Quaeris:
+
+1. Implementa un comando `/register` nel bot che generi un token univoco.
+2. L'utente inserisce questo token nel proprio profilo nell'app Quaeris.
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
 3. Salva il `chat_id` Telegram dell'utente nel database.
 
 ```php
@@ -175,7 +253,19 @@ use Modules\Notify\Models\TelegramToken;
 class RegisterCommand extends Command
 {
     protected $name = 'register';
+<<<<<<< Updated upstream
 protected $description = 'Collega il tuo account Telegram a Quaeris';
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    protected $description = 'Collega il tuo account Telegram a Laraxot';
+=======
+    protected $description = 'Collega il tuo account Telegram a healthcare_app';
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+protected $description = 'Collega il tuo account Telegram a Quaeris';
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
     
     public function handle()
     {
@@ -190,7 +280,19 @@ protected $description = 'Collega il tuo account Telegram a Quaeris';
         ]);
         
         $this->replyWithMessage([
+<<<<<<< Updated upstream
 'text' => "Il tuo codice di collegamento è: {$token}\n\nInseriscilo nel tuo profilo Quaeris per completare il collegamento."
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            'text' => "Il tuo codice di collegamento è: {$token}\n\nInseriscilo nel tuo profilo Laraxot per completare il collegamento."
+=======
+            'text' => "Il tuo codice di collegamento è: {$token}\n\nInseriscilo nel tuo profilo healthcare_app per completare il collegamento."
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+=======
+'text' => "Il tuo codice di collegamento è: {$token}\n\nInseriscilo nel tuo profilo Quaeris per completare il collegamento."
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
         ]);
     }
 }

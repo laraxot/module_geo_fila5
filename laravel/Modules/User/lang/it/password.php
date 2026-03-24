@@ -141,6 +141,10 @@ return [
         'updateDataAction' => [
             'label' => 'updateDataAction',
             'tooltip' => 'updateDataAction',
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         ],
     ],
     'label' => 'Password',

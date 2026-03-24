@@ -1,618 +1,641 @@
-# Analisi Dettagliata del Modulo Notify - Parte 6: Monitoraggio e Analytics
+# Analisi Dettagliata del Modulo Notify - Parte 2: Modelli e Relazioni
 
-## 6. Monitoraggio e Analytics
+## 2. Modelli e Relazioni
 
-### 6.1 Logging
+### 2.1 Template Model
 
-#### 6.1.1 TemplateLogger
+#### 2.1.1 Struttura Base
 ```php
-namespace Modules\Notify\Services;
+namespace Modules\Notify\Models;
 
-use Illuminate\Support\Facades\Log;
-use Modules\Notify\Models\Template;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class TemplateLogger
+class Template extends Model
 {
-    protected $template;
+    use HasFactory, SoftDeletes;
 
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
-    }
+    protected $table = 'templates';
 
-    public function created(): void
-    {
-        Log::info('Template created', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'version' => $this->template->version,
-            'user_id' => auth()->id()
-        ]);
-    }
+    protected $fillable = [
+        'name',              // Nome del template
+        'subject',           // Oggetto email
+        'content',           // Contenuto template
+        'layout',            // Layout utilizzato
+        'is_active',         // Stato attivo/inattivo
+        'version',           // Versione corrente
+        'from_name',         // Nome mittente
+        'from_email',        // Email mittente
+        'reply_to',          // Email risposta
+        'cc',                // Copie conoscenza
+        'bcc',               // Copie nascoste
+        'attachments',       // Allegati
+        'variables',         // Variabili template
+        'settings'           // Impostazioni
+    ];
 
-    public function updated(): void
-    {
-        Log::info('Template updated', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'version' => $this->template->version,
-            'user_id' => auth()->id()
-        ]);
-    }
+    protected $casts = [
+        'is_active' => 'boolean',
+        'version' => 'integer',
+        'attachments' => 'array',
+        'variables' => 'array',
+        'settings' => 'array',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime'
+    ];
 
-    public function deleted(): void
-    {
-        Log::info('Template deleted', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function versionCreated(int $version): void
-    {
-        Log::info('Template version created', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'version' => $version,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function versionRolledBack(int $version): void
-    {
-        Log::info('Template version rolled back', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'version' => $version,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function translationCreated(string $locale): void
-    {
-        Log::info('Template translation created', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'locale' => $locale,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function translationUpdated(string $locale): void
-    {
-        Log::info('Template translation updated', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'locale' => $locale,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function translationDeleted(string $locale): void
-    {
-        Log::info('Template translation deleted', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'locale' => $locale,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function previewed(): void
-    {
-        Log::info('Template previewed', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function tested(string $email): void
-    {
-        Log::info('Template tested', [
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'email' => $email,
-            'user_id' => auth()->id()
-        ]);
-    }
-
-    public function error(string $message, array $context = []): void
-    {
-        Log::error('Template error', array_merge([
-            'id' => $this->template->id,
-            'name' => $this->template->name,
-            'message' => $message,
-            'user_id' => auth()->id()
-        ], $context));
-    }
+    protected $appends = [
+        'full_name',
+        'status_label',
+        'is_latest',
+        'has_translations'
+    ];
 }
 ```
 
-#### 6.1.2 MailgunLogger
+#### 2.1.2 Relazioni
 ```php
-namespace Modules\Notify\Services;
-
-use Illuminate\Support\Facades\Log;
-
-class MailgunLogger
+public function versions()
 {
-    public function webhookReceived(array $data): void
-    {
-        Log::info('Mailgun webhook received', [
-            'event' => $data['event'],
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'domain' => $data['domain'],
-            'timestamp' => $data['timestamp']
-        ]);
-    }
+    return $this->hasMany(TemplateVersion::class);
+}
 
-    public function emailSent(array $data): void
-    {
-        Log::info('Email sent', [
-            'to' => $data['to'],
-            'subject' => $data['subject'],
-            'message_id' => $data['message-id'],
-            'template_id' => $data['template_id']
-        ]);
-    }
+public function translations()
+{
+    return $this->hasMany(TemplateTranslation::class);
+}
 
-    public function emailDelivered(array $data): void
-    {
-        Log::info('Email delivered', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp']
-        ]);
-    }
+public function analytics()
+{
+    return $this->hasMany(TemplateAnalytics::class);
+}
 
-    public function emailOpened(array $data): void
-    {
-        Log::info('Email opened', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp'],
-            'user_agent' => $data['user-agent']
-        ]);
-    }
+public function creator()
+{
+    return $this->belongsTo(User::class, 'created_by');
+}
 
-    public function emailClicked(array $data): void
-    {
-        Log::info('Email clicked', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp'],
-            'url' => $data['url']
-        ]);
-    }
+public function updater()
+{
+    return $this->belongsTo(User::class, 'updated_by');
+}
 
-    public function emailBounced(array $data): void
-    {
-        Log::error('Email bounced', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp'],
-            'code' => $data['code'],
-            'error' => $data['error']
-        ]);
-    }
+public function latestVersion()
+{
+    return $this->hasOne(TemplateVersion::class)->latest();
+}
 
-    public function emailComplained(array $data): void
-    {
-        Log::warning('Email complained', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp']
-        ]);
-    }
-
-    public function emailUnsubscribed(array $data): void
-    {
-        Log::info('Email unsubscribed', [
-            'message_id' => $data['message-id'],
-            'recipient' => $data['recipient'],
-            'timestamp' => $data['timestamp']
-        ]);
-    }
-
-    public function webhookError(string $message, array $data): void
-    {
-        Log::error('Mailgun webhook error', [
-            'message' => $message,
-            'data' => $data
-        ]);
-    }
+public function defaultTranslation()
+{
+    return $this->hasOne(TemplateTranslation::class)
+        ->where('locale', config('app.locale'));
 }
 ```
 
-### 6.2 Analytics
-
-#### 6.2.1 TemplateAnalytics
+#### 2.1.3 Accessori e Mutatori
 ```php
-namespace Modules\Notify\Services;
-
-use Modules\Notify\Models\Template;
-use Modules\Notify\Models\TemplateAnalytics;
-
-class TemplateAnalytics
+public function getFullNameAttribute()
 {
-    protected $template;
+    return "{$this->name} (v{$this->version})";
+}
 
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
+public function getStatusLabelAttribute()
+{
+    return $this->is_active ? 'Active' : 'Inactive';
+}
+
+public function getIsLatestAttribute()
+{
+    return $this->version === $this->versions()->max('version');
+}
+
+public function getHasTranslationsAttribute()
+{
+    return $this->translations()->count() > 0;
+}
+
+public function setVariablesAttribute($value)
+{
+    $this->attributes['variables'] = json_encode($value);
+}
+
+public function getVariablesAttribute($value)
+{
+    return json_decode($value, true);
+}
+
+public function setSettingsAttribute($value)
+{
+    $this->attributes['settings'] = json_encode($value);
+}
+
+public function getSettingsAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
+
+#### 2.1.4 Scope Query
+```php
+public function scopeActive($query)
+{
+    return $query->where('is_active', true);
+}
+
+public function scopeInactive($query)
+{
+    return $query->where('is_active', false);
+}
+
+public function scopeLatest($query)
+{
+    return $query->orderBy('version', 'desc');
+}
+
+public function scopeByLayout($query, $layout)
+{
+    return $query->where('layout', $layout);
+}
+
+public function scopeSearch($query, $term)
+{
+    return $query->where(function($q) use ($term) {
+        $q->where('name', 'like', "%{$term}%")
+          ->orWhere('subject', 'like', "%{$term}%")
+          ->orWhere('content', 'like', "%{$term}%");
+    });
+}
+```
+
+#### 2.1.5 Eventi del Modello
+```php
+protected static function booted()
+{
+    static::creating(function ($template) {
+        $template->created_by = auth()->id();
+        $template->version = 1;
+    });
+
+    static::updating(function ($template) {
+        $template->updated_by = auth()->id();
+    });
+
+    static::deleting(function ($template) {
+        $template->versions()->delete();
+        $template->translations()->delete();
+        $template->analytics()->delete();
+    });
+
+    static::restored(function ($template) {
+        $template->versions()->restore();
+        $template->translations()->restore();
+    });
+}
+```
+
+### 2.2 TemplateVersion Model
+
+#### 2.2.1 Struttura Base
+```php
+namespace Modules\Notify\Models;
+
+class TemplateVersion extends Model
+{
+    use HasFactory;
+
+    protected $table = 'template_versions';
+
+    protected $fillable = [
+        'template_id',
+        'version',
+        'content',
+        'created_by',
+        'changes',
+        'status',
+        'notes'
+    ];
+
+    protected $casts = [
+        'version' => 'integer',
+        'changes' => 'array',
+        'status' => 'string',
+        'created_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'diff',
+        'creator_name'
+    ];
+}
+```
+
+#### 2.2.2 Relazioni
+```php
+public function template()
+{
+    return $this->belongsTo(Template::class);
+}
+
+public function creator()
+{
+    return $this->belongsTo(User::class, 'created_by');
+}
+
+public function previousVersion()
+{
+    return $this->template->versions()
+        ->where('version', '<', $this->version)
+        ->latest('version')
+        ->first();
+}
+```
+
+#### 2.2.3 Accessori e Mutatori
+```php
+public function getDiffAttribute()
+{
+    if (!$this->previousVersion) {
+        return null;
     }
 
-    public function trackEvent(string $event, array $metadata = []): void
-    {
-        $this->template->analytics()->create([
-            'event' => $event,
-            'metadata' => $metadata,
-            'user_agent' => request()->userAgent(),
-            'ip_address' => request()->ip(),
-            'session_id' => session()->getId()
-        ]);
+    return $this->compareVersions(
+        $this->previousVersion->content,
+        $this->content
+    );
+}
+
+public function getCreatorNameAttribute()
+{
+    return $this->creator ? $this->creator->name : 'System';
+}
+
+public function setChangesAttribute($value)
+{
+    $this->attributes['changes'] = json_encode($value);
+}
+
+public function getChangesAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
+
+#### 2.2.4 Metodi di Confronto
+```php
+protected function compareVersions($old, $new)
+{
+    return [
+        'added' => $this->getAddedLines($old, $new),
+        'removed' => $this->getRemovedLines($old, $new),
+        'modified' => $this->getModifiedLines($old, $new)
+    ];
+}
+
+protected function getAddedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    return array_diff($newLines, $oldLines);
+}
+
+protected function getRemovedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    return array_diff($oldLines, $newLines);
+}
+
+protected function getModifiedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    $modified = [];
+
+    foreach ($oldLines as $index => $line) {
+        if (isset($newLines[$index]) && $line !== $newLines[$index]) {
+            $modified[] = [
+                'old' => $line,
+                'new' => $newLines[$index]
+            ];
+        }
     }
 
-    public function getStats(): array
-    {
+    return $modified;
+}
+```
+
+### 2.3 TemplateTranslation Model
+
+#### 2.3.1 Struttura Base
+```php
+namespace Modules\Notify\Models;
+
+class TemplateTranslation extends Model
+{
+    use HasFactory;
+
+    protected $table = 'template_translations';
+
+    protected $fillable = [
+        'template_id',
+        'locale',
+        'content',
+        'subject',
+        'from_name',
+        'variables'
+    ];
+
+    protected $casts = [
+        'variables' => 'array',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'is_complete',
+        'missing_variables'
+    ];
+}
+```
+
+#### 2.3.2 Relazioni
+```php
+public function template()
+{
+    return $this->belongsTo(Template::class);
+}
+
+public function translator()
+{
+    return $this->belongsTo(User::class, 'translated_by');
+}
+```
+
+#### 2.3.3 Accessori e Mutatori
+```php
+public function getIsCompleteAttribute()
+{
+    return $this->validateVariables();
+}
+
+public function getMissingVariablesAttribute()
+{
+    $required = $this->template->variables;
+    $provided = $this->variables ?? [];
+    return array_diff($required, array_keys($provided));
+}
+
+public function setVariablesAttribute($value)
+{
+    $this->attributes['variables'] = json_encode($value);
+}
+
+public function getVariablesAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
+
+#### 2.3.4 Validazione
+```php
+public function validateVariables()
+{
+    $required = $this->template->variables;
+    $provided = $this->variables ?? [];
+
+    foreach ($required as $variable) {
+        if (!isset($provided[$variable])) {
+            throw new MissingVariableException(
+                "Missing required variable: {$variable}"
+            );
+        }
+    }
+
+    return true;
+}
+
+public function validateContent()
+{
+    // Validazione HTML
+    $validator = new HtmlValidator();
+    $result = $validator->validate($this->content);
+
+    if (!$result->isValid()) {
+        throw new InvalidContentException(
+            "Invalid HTML content: " . implode(', ', $result->getErrors())
+        );
+    }
+
+    return true;
+}
+
+public function validateSubject()
+{
+    if (empty($this->subject)) {
+        throw new InvalidSubjectException(
+            "Subject cannot be empty"
+        );
+    }
+
+    if (strlen($this->subject) > 255) {
+        throw new InvalidSubjectException(
+            "Subject cannot be longer than 255 characters"
+        );
+    }
+
+    return true;
+}
+```
+
+### 2.4 TemplateAnalytics Model
+
+#### 2.4.1 Struttura Base
+```php
+namespace Modules\Notify\Models;
+
+class TemplateAnalytics extends Model
+{
+    use HasFactory;
+
+    protected $table = 'template_analytics';
+
+    protected $fillable = [
+        'template_id',
+        'event',
+        'metadata',
+        'user_agent',
+        'ip_address',
+        'session_id'
+    ];
+
+    protected $casts = [
+        'metadata' => 'array',
+        'created_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'event_label',
+        'formatted_metadata'
+    ];
+}
+```
+
+#### 2.4.2 Relazioni
+```php
+public function template()
+{
+    return $this->belongsTo(Template::class);
+}
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+```
+
+#### 2.4.3 Accessori e Mutatori
+```php
+public function getEventLabelAttribute()
+{
+    return [
+        'email.sent' => 'Email Sent',
+        'email.opened' => 'Email Opened',
+        'email.clicked' => 'Email Clicked',
+        'email.bounced' => 'Email Bounced',
+        'email.complained' => 'Email Complained',
+        'email.unsubscribed' => 'Email Unsubscribed'
+    ][$this->event] ?? $this->event;
+}
+
+public function getFormattedMetadataAttribute()
+{
+    return collect($this->metadata)->map(function ($value, $key) {
         return [
-            'total_sent' => $this->getTotalSent(),
-            'delivered' => $this->getDeliveredCount(),
-            'opened' => $this->getOpenedCount(),
-            'clicked' => $this->getClickedCount(),
-            'bounced' => $this->getBouncedCount(),
-            'complained' => $this->getComplainedCount(),
-            'unsubscribed' => $this->getUnsubscribedCount(),
-            'delivery_rate' => $this->getDeliveryRate(),
-            'open_rate' => $this->getOpenRate(),
-            'click_rate' => $this->getClickRate(),
-            'bounce_rate' => $this->getBounceRate(),
-            'complaint_rate' => $this->getComplaintRate(),
-            'unsubscribe_rate' => $this->getUnsubscribeRate()
+            'key' => $key,
+            'value' => $value,
+            'type' => gettype($value)
         ];
-    }
+    })->values();
+}
 
-    public function getTotalSent(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'sent')
-            ->count();
-    }
+public function setMetadataAttribute($value)
+{
+    $this->attributes['metadata'] = json_encode($value);
+}
 
-    public function getDeliveredCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'delivered')
-            ->count();
-    }
-
-    public function getOpenedCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'opened')
-            ->count();
-    }
-
-    public function getClickedCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'clicked')
-            ->count();
-    }
-
-    public function getBouncedCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'bounced')
-            ->count();
-    }
-
-    public function getComplainedCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'complained')
-            ->count();
-    }
-
-    public function getUnsubscribedCount(): int
-    {
-        return $this->template->analytics()
-            ->where('event', 'unsubscribed')
-            ->count();
-    }
-
-    public function getDeliveryRate(): float
-    {
-        $sent = $this->getTotalSent();
-        if ($sent === 0) {
-            return 0;
-        }
-
-        return ($this->getDeliveredCount() / $sent) * 100;
-    }
-
-    public function getOpenRate(): float
-    {
-        $delivered = $this->getDeliveredCount();
-        if ($delivered === 0) {
-            return 0;
-        }
-
-        return ($this->getOpenedCount() / $delivered) * 100;
-    }
-
-    public function getClickRate(): float
-    {
-        $opened = $this->getOpenedCount();
-        if ($opened === 0) {
-            return 0;
-        }
-
-        return ($this->getClickedCount() / $opened) * 100;
-    }
-
-    public function getBounceRate(): float
-    {
-        $sent = $this->getTotalSent();
-        if ($sent === 0) {
-            return 0;
-        }
-
-        return ($this->getBouncedCount() / $sent) * 100;
-    }
-
-    public function getComplaintRate(): float
-    {
-        $delivered = $this->getDeliveredCount();
-        if ($delivered === 0) {
-            return 0;
-        }
-
-        return ($this->getComplainedCount() / $delivered) * 100;
-    }
-
-    public function getUnsubscribeRate(): float
-    {
-        $delivered = $this->getDeliveredCount();
-        if ($delivered === 0) {
-            return 0;
-        }
-
-        return ($this->getUnsubscribedCount() / $delivered) * 100;
-    }
-
-    public function getEventsByDate(string $event, string $startDate, string $endDate): array
-    {
-        return $this->template->analytics()
-            ->where('event', $event)
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get()
-            ->pluck('count', 'date')
-            ->toArray();
-    }
-
-    public function getEventsByHour(string $event, string $date): array
-    {
-        return $this->template->analytics()
-            ->where('event', $event)
-            ->whereDate('created_at', $date)
-            ->selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
-            ->groupBy('hour')
-            ->orderBy('hour')
-            ->get()
-            ->pluck('count', 'hour')
-            ->toArray();
-    }
-
-    public function getTopRecipients(string $event, int $limit = 10): array
-    {
-        return $this->template->analytics()
-            ->where('event', $event)
-            ->selectRaw('metadata->>"$.recipient" as recipient, COUNT(*) as count')
-            ->groupBy('recipient')
-            ->orderByDesc('count')
-            ->limit($limit)
-            ->get()
-            ->pluck('count', 'recipient')
-            ->toArray();
-    }
-
-    public function getTopUserAgents(string $event, int $limit = 10): array
-    {
-        return $this->template->analytics()
-            ->where('event', $event)
-            ->whereNotNull('user_agent')
-            ->selectRaw('user_agent, COUNT(*) as count')
-            ->groupBy('user_agent')
-            ->orderByDesc('count')
-            ->limit($limit)
-            ->get()
-            ->pluck('count', 'user_agent')
-            ->toArray();
-    }
-
-    public function getTopIPs(string $event, int $limit = 10): array
-    {
-        return $this->template->analytics()
-            ->where('event', $event)
-            ->whereNotNull('ip_address')
-            ->selectRaw('ip_address, COUNT(*) as count')
-            ->groupBy('ip_address')
-            ->orderByDesc('count')
-            ->limit($limit)
-            ->get()
-            ->pluck('count', 'ip_address')
-            ->toArray();
-    }
-
-    public function getTopClickedUrls(int $limit = 10): array
-    {
-        return $this->template->analytics()
-            ->where('event', 'clicked')
-            ->selectRaw('metadata->>"$.url" as url, COUNT(*) as count')
-            ->groupBy('url')
-            ->orderByDesc('count')
-            ->limit($limit)
-            ->get()
-            ->pluck('count', 'url')
-            ->toArray();
-    }
-
-    public function getBounceReasons(): array
-    {
-        return $this->template->analytics()
-            ->where('event', 'bounced')
-            ->selectRaw('metadata->>"$.error" as reason, COUNT(*) as count')
-            ->groupBy('reason')
-            ->orderByDesc('count')
-            ->get()
-            ->pluck('count', 'reason')
-            ->toArray();
-    }
-
-    public function getBounceCodes(): array
-    {
-        return $this->template->analytics()
-            ->where('event', 'bounced')
-            ->selectRaw('metadata->>"$.code" as code, COUNT(*) as count')
-            ->groupBy('code')
-            ->orderByDesc('count')
-            ->get()
-            ->pluck('count', 'code')
-            ->toArray();
-    }
+public function getMetadataAttribute($value)
+{
+    return json_decode($value, true);
 }
 ```
 
-#### 6.2.2 AnalyticsExporter
+#### 2.4.4 Scope Query
 ```php
-namespace Modules\Notify\Services;
-
-use Modules\Notify\Models\Template;
-use Illuminate\Support\Facades\Storage;
-
-class AnalyticsExporter
+public function scopeByEvent($query, $event)
 {
-    protected $template;
-
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
-    }
-
-    public function exportToCsv(string $startDate, string $endDate): string
-    {
-        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.csv";
-        $path = "analytics/{$filename}";
-
-        $handle = fopen(Storage::path($path), 'w');
-
-        // Intestazioni
-        fputcsv($handle, [
-            'Event',
-            'Date',
-            'Time',
-            'Recipient',
-            'User Agent',
-            'IP Address',
-            'Session ID',
-            'Metadata'
-        ]);
-
-        // Dati
-        $this->template->analytics()
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->orderBy('created_at')
-            ->each(function ($analytics) use ($handle) {
-                fputcsv($handle, [
-                    $analytics->event,
-                    $analytics->created_at->format('Y-m-d'),
-                    $analytics->created_at->format('H:i:s'),
-                    $analytics->metadata['recipient'] ?? '',
-                    $analytics->user_agent,
-                    $analytics->ip_address,
-                    $analytics->session_id,
-                    json_encode($analytics->metadata)
-                ]);
-            });
-
-        fclose($handle);
-
-        return $path;
-    }
-
-    public function exportToJson(string $startDate, string $endDate): string
-    {
-        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.json";
-        $path = "analytics/{$filename}";
-
-        $data = $this->template->analytics()
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->orderBy('created_at')
-            ->get()
-            ->map(function ($analytics) {
-                return [
-                    'event' => $analytics->event,
-                    'date' => $analytics->created_at->format('Y-m-d'),
-                    'time' => $analytics->created_at->format('H:i:s'),
-                    'recipient' => $analytics->metadata['recipient'] ?? null,
-                    'user_agent' => $analytics->user_agent,
-                    'ip_address' => $analytics->ip_address,
-                    'session_id' => $analytics->session_id,
-                    'metadata' => $analytics->metadata
-                ];
-            });
-
-        Storage::put($path, json_encode($data, JSON_PRETTY_PRINT));
-
-        return $path;
-    }
-
-    public function exportToExcel(string $startDate, string $endDate): string
-    {
-        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.xlsx";
-        $path = "analytics/{$filename}";
-
-        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        // Intestazioni
-        $sheet->setCellValue('A1', 'Event');
-        $sheet->setCellValue('B1', 'Date');
-        $sheet->setCellValue('C1', 'Time');
-        $sheet->setCellValue('D1', 'Recipient');
-        $sheet->setCellValue('E1', 'User Agent');
-        $sheet->setCellValue('F1', 'IP Address');
-        $sheet->setCellValue('G1', 'Session ID');
-        $sheet->setCellValue('H1', 'Metadata');
-
-        // Dati
-        $row = 2;
-        $this->template->analytics()
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->orderBy('created_at')
-            ->each(function ($analytics) use ($sheet, &$row) {
-                $sheet->setCellValue('A' . $row, $analytics->event);
-                $sheet->setCellValue('B' . $row, $analytics->created_at->format('Y-m-d'));
-                $sheet->setCellValue('C' . $row, $analytics->created_at->format('H:i:s'));
-                $sheet->setCellValue('D' . $row, $analytics->metadata['recipient'] ?? '');
-                $sheet->setCellValue('E' . $row, $analytics->user_agent);
-                $sheet->setCellValue('F' . $row, $analytics->ip_address);
-                $sheet->setCellValue('G' . $row, $analytics->session_id);
-                $sheet->setCellValue('H' . $row, json_encode($analytics->metadata));
-                $row++;
-            });
-
-        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
-        $writer->save(Storage::path($path));
-
-        return $path;
-    }
+    return $query->where('event', $event);
 }
+
+public function scopeByDateRange($query, $start, $end)
+{
+    return $query->whereBetween('created_at', [$start, $end]);
+}
+
+public function scopeByTemplate($query, $templateId)
+{
+    return $query->where('template_id', $templateId);
+}
+
+public function scopeByUser($query, $userId)
+{
+    return $query->where('user_id', $userId);
+}
+```
+
+### 2.5 Migrations
+
+#### 2.5.1 Templates Table
+```php
+Schema::create('templates', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('subject');
+    $table->text('content');
+    $table->string('layout')->default('default');
+    $table->boolean('is_active')->default(true);
+    $table->integer('version')->default(1);
+    $table->string('from_name')->nullable();
+    $table->string('from_email')->nullable();
+    $table->string('reply_to')->nullable();
+    $table->json('cc')->nullable();
+    $table->json('bcc')->nullable();
+    $table->json('attachments')->nullable();
+    $table->json('variables')->nullable();
+    $table->json('settings')->nullable();
+    $table->foreignId('created_by')->constrained('users');
+    $table->foreignId('updated_by')->nullable()->constrained('users');
+    $table->timestamps();
+    $table->softDeletes();
+
+    $table->index('name');
+    $table->index('is_active');
+    $table->index('version');
+});
+```
+
+#### 2.5.2 Template Versions Table
+```php
+Schema::create('template_versions', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->integer('version');
+    $table->text('content');
+    $table->foreignId('created_by')->constrained('users');
+    $table->json('changes')->nullable();
+    $table->string('status')->default('draft');
+    $table->text('notes')->nullable();
+    $table->timestamps();
+
+    $table->unique(['template_id', 'version']);
+    $table->index('status');
+});
+```
+
+#### 2.5.3 Template Translations Table
+```php
+Schema::create('template_translations', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->string('locale', 5);
+    $table->text('content');
+    $table->string('subject');
+    $table->string('from_name')->nullable();
+    $table->json('variables')->nullable();
+    $table->foreignId('translated_by')->constrained('users');
+    $table->timestamps();
+
+    $table->unique(['template_id', 'locale']);
+    $table->index('locale');
+});
+```
+
+#### 2.5.4 Template Analytics Table
+```php
+Schema::create('template_analytics', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->string('event');
+    $table->json('metadata')->nullable();
+    $table->string('user_agent')->nullable();
+    $table->string('ip_address', 45)->nullable();
+    $table->string('session_id')->nullable();
+    $table->foreignId('user_id')->nullable()->constrained('users');
+    $table->timestamps();
+
+    $table->index('event');
+    $table->index('created_at');
+    $table->index(['template_id', 'event']);
+});
 ``` 

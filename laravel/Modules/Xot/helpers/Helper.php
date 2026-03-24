@@ -6,6 +6,10 @@ use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -13,6 +17,10 @@ use Illuminate\Support\Str;
 use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Datas\XotData;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 use Nwidart\Modules\Facades\Module;
 use Webmozart\Assert\Assert;
 
@@ -78,7 +86,12 @@ if (! function_exists('hex2rgba')) {
         if ('#' === $color[0]) {
             $color = mb_substr($color, 1);
         }
+<<<<<<< Updated upstream
         if (6 === mb_strlen($color)) {
+=======
+
+        if (mb_strlen($color) === 6) {
+>>>>>>> Stashed changes
             $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
         } elseif (3 === mb_strlen($color)) {
             $hex = [$color[0].$color[0], $color[1].$color[1], $color[2].$color[2]];
@@ -90,11 +103,19 @@ if (! function_exists('hex2rgba')) {
             if ($opacity < 0 || $opacity > 1) {
                 $opacity = 1.0;
             }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             $output = 'rgba('.implode(',', $rgb).','.$opacity.')';
         } else {
             $output = 'rgb('.implode(',', $rgb).')';
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return $output;
     }
 }
@@ -107,6 +128,10 @@ if (! function_exists('dddx')) {
         if (! defined('LARAVEL_START')) {
             define('LARAVEL_START', $start);
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         $data = [
             '_' => $params,
             'line' => $tmp[0]['line'] ?? 'line-unknows',
@@ -130,6 +155,10 @@ if (! function_exists('getFilename')) {
         $func = $tmp[1]['function'] ?? 'function-unknown';
         $params_list = collect($params)->except(['_token', '_method'])->implode('_');
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return Str::slug(str_replace('Controller', '', $class).'_'.str_replace('do_', '', $func).'_'.$params_list);
     }
 }
@@ -159,7 +188,12 @@ if (! function_exists('inAdmin')) {
         }
         $segments = Request::segments();
 
+<<<<<<< Updated upstream
         return (is_countable($segments) ? count($segments) : 0) > 0 && 'livewire' === $segments[0] && true === session('in_admin');
+=======
+
+        return (is_countable($segments) ? count($segments) : 0) > 0 && $segments[0] === 'livewire' && session('in_admin') === true;
+>>>>>>> Stashed changes
     }
 }
 
@@ -170,6 +204,10 @@ if (! function_exists('isHome')) {
             return true;
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return Route::is('home');
     }
 }
@@ -200,6 +238,10 @@ if (! function_exists('fullTextWildcards')) {
             }
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return implode(' ', $words);
     }
 }
@@ -209,6 +251,10 @@ if (! function_exists('isContainer')) {
     {
         [$containers, $items] = params2ContainerItem();
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return count($containers) > count($items);
     }
 }
@@ -218,6 +264,10 @@ if (! function_exists('isItem')) {
     {
         [$containers, $items] = params2ContainerItem();
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return count($containers) === count($items);
     }
 }
@@ -234,6 +284,10 @@ if (! function_exists('params2ContainerItem')) {
         }
         $container = [];
         $item = [];
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
@@ -244,6 +298,10 @@ if (! function_exists('params2ContainerItem')) {
             }
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return [$container, $item];
     }
 }
@@ -262,6 +320,10 @@ if (! function_exists('getModelByName')) {
         if (is_string($registered) && class_exists($registered)) {
             Assert::isInstanceOf($res = app($registered), Model::class);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             return $res;
         }
         $files_path = base_path('Modules').'/*/Models/*.php';
@@ -275,12 +337,20 @@ if (! function_exists('getModelByName')) {
         if (null === $path) {
             throw new Exception('['.$name.'] not in morph_map');
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         $path = app(FixPathAction::class)->execute($path);
         $info = pathinfo($path);
         $module_name = Str::between($path, 'Modules'.DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR.'Models');
         $class = 'Modules\\'.$module_name.'\Models\\'.$info['filename'];
         Assert::isInstanceOf($res = app($class), Model::class);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return $res;
     }
 }
@@ -292,6 +362,10 @@ if (! function_exists('getModuleFromModel')) {
         $module_name = Str::before(Str::after($class, 'Modules\\'), '\\Models\\');
         Assert::isInstanceOf($res = app('module')->find($module_name), Nwidart\Modules\Module::class);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return $res;
     }
 }
@@ -301,6 +375,10 @@ if (! function_exists('getModuleNameFromModel')) {
     {
         $class = $model::class;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return Str::before(Str::after($class, 'Modules\\'), '\\Models\\');
     }
 }
@@ -314,6 +392,10 @@ if (! function_exists('getModuleNameFromModelName')) {
         }
         Assert::isInstanceOf($model = app($model_class), Model::class);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return getModuleNameFromModel($model);
     }
 }
@@ -334,6 +416,10 @@ if (! function_exists('xotModel')) {
         }
         Assert::isInstanceOf($res = app($model_class), Model::class);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         return $res;
     }
 }
@@ -355,6 +441,10 @@ if (! function_exists('authId')) {
         } catch (Throwable $e) {
             return null;
         }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 }
 
@@ -370,6 +460,11 @@ if (! function_exists('trans_string')) {
         }
         $result = __($key, $safeReplace, $locale);
 
+<<<<<<< Updated upstream
         return is_string($result) ? $result : (null === $result ? null : $key);
+=======
+
+        return is_string($result) ? $result : ($result === null ? null : $key);
+>>>>>>> Stashed changes
     }
 }

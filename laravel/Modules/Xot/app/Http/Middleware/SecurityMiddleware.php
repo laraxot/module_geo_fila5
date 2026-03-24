@@ -165,12 +165,19 @@ class SecurityMiddleware
      */
     private function addSecurityHeaders(Response $response): void
     {
+        $isSecureTransport = $this->isSecureTransport();
+
         // Content Security Policy
-        $csp = $this->buildCSP();
+        $csp = $this->buildCSP($isSecureTransport);
         $response->headers->set('Content-Security-Policy', $csp);
 
-        // Strict Transport Security
-        $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        if ($isSecureTransport) {
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
         // X-Frame-Options
         $response->headers->set('X-Frame-Options', 'DENY');
@@ -188,37 +195,73 @@ class SecurityMiddleware
         $permissions = $this->buildPermissionsPolicy();
         $response->headers->set('Permissions-Policy', $permissions);
 
-        // Cross-Origin Policies
-        $response->headers->set('Cross-Origin-Embedder-Policy', 'require-corp');
-        $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
-        $response->headers->set('Cross-Origin-Resource-Policy', 'same-origin');
+        if ($isSecureTransport) {
+            $response->headers->set('Cross-Origin-Embedder-Policy', 'require-corp');
+            $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
+            $response->headers->set('Cross-Origin-Resource-Policy', 'same-origin');
+        }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     /**
      * Costruisci Content Security Policy.
      */
-    private function buildCSP(): string
+    private function buildCSP(bool $isSecureTransport): string
     {
+        $connectSources = ["'self'", 'https:', 'wss:', 'https://www.google-analytics.com'];
+        if (! $isSecureTransport) {
+            $connectSources[] = 'http:';
+            $connectSources[] = 'ws:';
+        }
+
         $csp = [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
-            "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net",
-            "img-src 'self' data: https: blob:",
+            "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net",
+            "img-src 'self' data: https: http: blob:",
             "media-src 'self' blob:",
-            "connect-src 'self' https: wss:",
+            'connect-src '.implode(' ', array_unique($connectSources)),
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             "frame-src 'none'",
             "object-src 'none'",
             "base-uri 'self'",
             "form-action 'self'",
             "frame-ancestors 'none'",
-            'upgrade-insecure-requests',
-            'block-all-mixed-content',
         ];
+
+        if ($isSecureTransport) {
+            $csp[] = 'upgrade-insecure-requests';
+            $csp[] = 'block-all-mixed-content';
+        }
 
         return implode('; ', $csp);
     }
 
+    private function isSecureTransport(): bool
+    {
+        if (request()->isSecure()) {
+            return true;
+        }
+
+        $forwardedProto = request()->header('x-forwarded-proto');
+        if (is_string($forwardedProto) && 'https' === strtolower($forwardedProto)) {
+            return true;
+        }
+
+        return false;
+    }
+
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     /**
      * Costruisci Permissions Policy.
      */
@@ -233,19 +276,21 @@ class SecurityMiddleware
             'magnetometer=()',
             'gyroscope=()',
             'accelerometer=()',
-            'ambient-light-sensor=()',
             'autoplay=()',
-            'battery=()',
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             'bluetooth=()',
             'display-capture=()',
             'fullscreen=(self)',
             'gamepad=()',
             'midi=()',
-            'notifications=(self)',
-            'persistent-storage=(self)',
-            'push=()',
             'screen-wake-lock=()',
-            'speaker=()',
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             'web-share=()',
             'xr-spatial-tracking=()',
         ];

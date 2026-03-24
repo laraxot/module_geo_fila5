@@ -137,9 +137,8 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     {
         return [];
     }
+<<<<<<< Updated upstream
+=======
 
-    public static function getNavigationLabel(): string
-    {
-        return static::transFunc(__FUNCTION__);
-    }
+>>>>>>> Stashed changes
 }

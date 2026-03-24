@@ -38,6 +38,14 @@ Questo roadmap traduce il PRD in sequenza di rilascio per **Xot**, che nel proge
 - focus: qualita', osservabilita', performance e governance
 - target completamento: 95%+
 
+<<<<<<< HEAD
+### M4 - Eccellenza Web 2026
+- focus: Immersività, Accessibilità WCAG 2.2, Kinetisches Design e Micro-interazioni.
+- target completamento: 100% (Best-in-Class)
+- Riferimento: `docs/project/WEBSITE_QUALITY_CHECKLIST_2026.md`
+
+=======
+>>>>>>> origin/dev
 ## Dipendenze
 
 - [PRD](prd.md)

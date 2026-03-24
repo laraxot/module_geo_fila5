@@ -121,6 +121,11 @@ describe('LoginUserAction', function (): void {
         $response = app(LoginUserAction::class)->execute($socialiteUser);
 
         expect($response)->toBeInstanceOf(RedirectResponse::class);
+        expect($response->getTargetUrl())->not->toBeEmpty();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     });
 
     test('handles null user assertion gracefully', function (): void {

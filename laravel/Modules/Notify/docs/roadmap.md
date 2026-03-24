@@ -1,3 +1,23 @@
+<<<<<<< Updated upstream
+# 🔔 NOTIFY MODULE - ROADMAP 2025
+=======
+<<<<<<< HEAD
+# Product Roadmap - Notify Module
+>>>>>>> Stashed changes
+
+**Modulo**: Notify (Notification System & Communication)  
+**Status**: 80% COMPLETATO  
+**Priority**: HIGH  
+**PHPStan**: ✅ Level 10 (0 errori)  
+**Filament**: ✅ 4.x Compatibile  
+
+<<<<<<< Updated upstream
+=======
+## 🗓️ Timeline
+### Q1 2026: Foundation
+- Standardize Notify Module Documentation - *Status: Shipped*
+- PHPStan Level 10 Audit - *Status: In Progress*
+=======
 # 🔔 NOTIFY MODULE - ROADMAP 2025
 
 **Modulo**: Notify (Notification System & Communication)  
@@ -6,6 +26,7 @@
 **PHPStan**: ✅ Level 10 (0 errori)  
 **Filament**: ✅ 4.x Compatibile  
 
+>>>>>>> Stashed changes
 ---
 
 ## 🎯 MODULE OVERVIEW
@@ -223,3 +244,7 @@ Notify Module
 ---
 
 *Questa roadmap è specifica per il modulo Notify e viene aggiornata regolarmente in base ai progressi e alle nuove esigenze.*
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/dev
+>>>>>>> Stashed changes

@@ -1,6 +1,15 @@
 # Fix: path does not have our version (rebase/merge)
 
-## Errore
+## Stato: ✅ RISOLTO
+
+I file sono stati aggiunti correttamente nel commit `43418fb`:
+- `OauthAccessTokenResource.php`
+- `Pages/CreateOauthAccessToken.php`
+- `Pages/EditOauthAccessToken.php`
+- `Pages/ListOauthAccessTokens.php`
+- `Pages/ViewOauthAccessToken.php`
+
+## Errore (storico)
 
 ```
 error: path 'app/Filament/Clusters/Passport/Resources/OauthAccessTokenResource/Pages/EditOauthAccessToken.php' does not have our version

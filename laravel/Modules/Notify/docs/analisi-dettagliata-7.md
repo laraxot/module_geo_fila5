@@ -1,643 +1,641 @@
-# Analisi Dettagliata del Modulo Notify - Parte 7: Manutenzione e Backup
+# Analisi Dettagliata del Modulo Notify - Parte 2: Modelli e Relazioni
 
-## 7. Manutenzione e Backup
+## 2. Modelli e Relazioni
 
-### 7.1 Versioning
+### 2.1 Template Model
 
-#### 7.1.1 VersionManager
+#### 2.1.1 Struttura Base
 ```php
-namespace Modules\Notify\Services;
+namespace Modules\Notify\Models;
 
-use Modules\Notify\Models\Template;
-use Modules\Notify\Models\TemplateVersion;
-use Modules\Notify\Exceptions\TemplateException;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class VersionManager
+class Template extends Model
 {
-    protected $template;
+    use HasFactory, SoftDeletes;
 
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
+    protected $table = 'templates';
+
+    protected $fillable = [
+        'name',              // Nome del template
+        'subject',           // Oggetto email
+        'content',           // Contenuto template
+        'layout',            // Layout utilizzato
+        'is_active',         // Stato attivo/inattivo
+        'version',           // Versione corrente
+        'from_name',         // Nome mittente
+        'from_email',        // Email mittente
+        'reply_to',          // Email risposta
+        'cc',                // Copie conoscenza
+        'bcc',               // Copie nascoste
+        'attachments',       // Allegati
+        'variables',         // Variabili template
+        'settings'           // Impostazioni
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'version' => 'integer',
+        'attachments' => 'array',
+        'variables' => 'array',
+        'settings' => 'array',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'full_name',
+        'status_label',
+        'is_latest',
+        'has_translations'
+    ];
+}
+```
+
+#### 2.1.2 Relazioni
+```php
+public function versions()
+{
+    return $this->hasMany(TemplateVersion::class);
+}
+
+public function translations()
+{
+    return $this->hasMany(TemplateTranslation::class);
+}
+
+public function analytics()
+{
+    return $this->hasMany(TemplateAnalytics::class);
+}
+
+public function creator()
+{
+    return $this->belongsTo(User::class, 'created_by');
+}
+
+public function updater()
+{
+    return $this->belongsTo(User::class, 'updated_by');
+}
+
+public function latestVersion()
+{
+    return $this->hasOne(TemplateVersion::class)->latest();
+}
+
+public function defaultTranslation()
+{
+    return $this->hasOne(TemplateTranslation::class)
+        ->where('locale', config('app.locale'));
+}
+```
+
+#### 2.1.3 Accessori e Mutatori
+```php
+public function getFullNameAttribute()
+{
+    return "{$this->name} (v{$this->version})";
+}
+
+public function getStatusLabelAttribute()
+{
+    return $this->is_active ? 'Active' : 'Inactive';
+}
+
+public function getIsLatestAttribute()
+{
+    return $this->version === $this->versions()->max('version');
+}
+
+public function getHasTranslationsAttribute()
+{
+    return $this->translations()->count() > 0;
+}
+
+public function setVariablesAttribute($value)
+{
+    $this->attributes['variables'] = json_encode($value);
+}
+
+public function getVariablesAttribute($value)
+{
+    return json_decode($value, true);
+}
+
+public function setSettingsAttribute($value)
+{
+    $this->attributes['settings'] = json_encode($value);
+}
+
+public function getSettingsAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
+
+#### 2.1.4 Scope Query
+```php
+public function scopeActive($query)
+{
+    return $query->where('is_active', true);
+}
+
+public function scopeInactive($query)
+{
+    return $query->where('is_active', false);
+}
+
+public function scopeLatest($query)
+{
+    return $query->orderBy('version', 'desc');
+}
+
+public function scopeByLayout($query, $layout)
+{
+    return $query->where('layout', $layout);
+}
+
+public function scopeSearch($query, $term)
+{
+    return $query->where(function($q) use ($term) {
+        $q->where('name', 'like', "%{$term}%")
+          ->orWhere('subject', 'like', "%{$term}%")
+          ->orWhere('content', 'like', "%{$term}%");
+    });
+}
+```
+
+#### 2.1.5 Eventi del Modello
+```php
+protected static function booted()
+{
+    static::creating(function ($template) {
+        $template->created_by = auth()->id();
+        $template->version = 1;
+    });
+
+    static::updating(function ($template) {
+        $template->updated_by = auth()->id();
+    });
+
+    static::deleting(function ($template) {
+        $template->versions()->delete();
+        $template->translations()->delete();
+        $template->analytics()->delete();
+    });
+
+    static::restored(function ($template) {
+        $template->versions()->restore();
+        $template->translations()->restore();
+    });
+}
+```
+
+### 2.2 TemplateVersion Model
+
+#### 2.2.1 Struttura Base
+```php
+namespace Modules\Notify\Models;
+
+class TemplateVersion extends Model
+{
+    use HasFactory;
+
+    protected $table = 'template_versions';
+
+    protected $fillable = [
+        'template_id',
+        'version',
+        'content',
+        'created_by',
+        'changes',
+        'status',
+        'notes'
+    ];
+
+    protected $casts = [
+        'version' => 'integer',
+        'changes' => 'array',
+        'status' => 'string',
+        'created_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'diff',
+        'creator_name'
+    ];
+}
+```
+
+#### 2.2.2 Relazioni
+```php
+public function template()
+{
+    return $this->belongsTo(Template::class);
+}
+
+public function creator()
+{
+    return $this->belongsTo(User::class, 'created_by');
+}
+
+public function previousVersion()
+{
+    return $this->template->versions()
+        ->where('version', '<', $this->version)
+        ->latest('version')
+        ->first();
+}
+```
+
+#### 2.2.3 Accessori e Mutatori
+```php
+public function getDiffAttribute()
+{
+    if (!$this->previousVersion) {
+        return null;
     }
 
-    public function createVersion(array $data): TemplateVersion
-    {
-        try {
-            $newVersion = $this->template->version + 1;
+    return $this->compareVersions(
+        $this->previousVersion->content,
+        $this->content
+    );
+}
 
-            $version = $this->template->versions()->create([
-                'version' => $newVersion,
-                'content' => $data['content'],
-                'created_by' => auth()->id(),
-                'changes' => $this->getChanges($data),
-                'status' => $data['status'] ?? 'draft',
-                'notes' => $data['notes'] ?? null
-            ]);
+public function getCreatorNameAttribute()
+{
+    return $this->creator ? $this->creator->name : 'System';
+}
 
-            $this->template->update(['version' => $newVersion]);
+public function setChangesAttribute($value)
+{
+    $this->attributes['changes'] = json_encode($value);
+}
 
-            return $version;
+public function getChangesAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
 
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to create version: {$e->getMessage()}"
-            );
-        }
-    }
+#### 2.2.4 Metodi di Confronto
+```php
+protected function compareVersions($old, $new)
+{
+    return [
+        'added' => $this->getAddedLines($old, $new),
+        'removed' => $this->getRemovedLines($old, $new),
+        'modified' => $this->getModifiedLines($old, $new)
+    ];
+}
 
-    public function rollbackVersion(int $version): Template
-    {
-        try {
-            $targetVersion = $this->template->versions()
-                ->where('version', $version)
-                ->firstOrFail();
+protected function getAddedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    return array_diff($newLines, $oldLines);
+}
 
-            $this->template->update([
-                'content' => $targetVersion->content,
-                'version' => $version
-            ]);
+protected function getRemovedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    return array_diff($oldLines, $newLines);
+}
 
-            return $this->template;
+protected function getModifiedLines($old, $new)
+{
+    $oldLines = explode("\n", $old);
+    $newLines = explode("\n", $new);
+    $modified = [];
 
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to rollback version: {$e->getMessage()}"
-            );
-        }
-    }
-
-    public function compareVersions(int $version1, int $version2): array
-    {
-        try {
-            $v1 = $this->template->versions()
-                ->where('version', $version1)
-                ->firstOrFail();
-
-            $v2 = $this->template->versions()
-                ->where('version', $version2)
-                ->firstOrFail();
-
-            return [
-                'added' => $this->getAddedLines($v1->content, $v2->content),
-                'removed' => $this->getRemovedLines($v1->content, $v2->content),
-                'modified' => $this->getModifiedLines($v1->content, $v2->content)
+    foreach ($oldLines as $index => $line) {
+        if (isset($newLines[$index]) && $line !== $newLines[$index]) {
+            $modified[] = [
+                'old' => $line,
+                'new' => $newLines[$index]
             ];
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to compare versions: {$e->getMessage()}"
-            );
         }
     }
 
-    public function getVersionHistory(): array
-    {
-        return $this->template->versions()
-            ->orderBy('version', 'desc')
-            ->get()
-            ->map(function ($version) {
-                return [
-                    'version' => $version->version,
-                    'content' => $version->content,
-                    'status' => $version->status,
-                    'notes' => $version->notes,
-                    'created_at' => $version->created_at,
-                    'created_by' => $version->creator->name
-                ];
-            })
-            ->toArray();
-    }
-
-    protected function getChanges(array $data): array
-    {
-        $changes = [];
-
-        foreach ($data as $key => $value) {
-            if (isset($this->template->$key) && $this->template->$key !== $value) {
-                $changes[$key] = [
-                    'old' => $this->template->$key,
-                    'new' => $value
-                ];
-            }
-        }
-
-        return $changes;
-    }
-
-    protected function getAddedLines(string $old, string $new): array
-    {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        return array_diff($newLines, $oldLines);
-    }
-
-    protected function getRemovedLines(string $old, string $new): array
-    {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        return array_diff($oldLines, $newLines);
-    }
-
-    protected function getModifiedLines(string $old, string $new): array
-    {
-        $oldLines = explode("\n", $old);
-        $newLines = explode("\n", $new);
-        $modified = [];
-
-        foreach ($oldLines as $index => $line) {
-            if (isset($newLines[$index]) && $line !== $newLines[$index]) {
-                $modified[] = [
-                    'old' => $line,
-                    'new' => $newLines[$index]
-                ];
-            }
-        }
-
-        return $modified;
-    }
+    return $modified;
 }
 ```
 
-### 7.2 Backup
+### 2.3 TemplateTranslation Model
 
-#### 7.2.1 BackupManager
+#### 2.3.1 Struttura Base
 ```php
-namespace Modules\Notify\Services;
+namespace Modules\Notify\Models;
 
-use Modules\Notify\Models\Template;
-use Illuminate\Support\Facades\Storage;
-use Modules\Notify\Exceptions\TemplateException;
-
-class BackupManager
+class TemplateTranslation extends Model
 {
-    protected $template;
+    use HasFactory;
 
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
-    }
+    protected $table = 'template_translations';
 
-    public function createBackup(): string
-    {
-        try {
-            $filename = "backup_{$this->template->id}_" . date('Y-m-d_His') . ".json";
-            $path = "backups/{$filename}";
+    protected $fillable = [
+        'template_id',
+        'locale',
+        'content',
+        'subject',
+        'from_name',
+        'variables'
+    ];
 
-            $data = [
-                'template' => [
-                    'id' => $this->template->id,
-                    'name' => $this->template->name,
-                    'subject' => $this->template->subject,
-                    'content' => $this->template->content,
-                    'layout' => $this->template->layout,
-                    'is_active' => $this->template->is_active,
-                    'version' => $this->template->version,
-                    'from_name' => $this->template->from_name,
-                    'from_email' => $this->template->from_email,
-                    'reply_to' => $this->template->reply_to,
-                    'cc' => $this->template->cc,
-                    'bcc' => $this->template->bcc,
-                    'attachments' => $this->template->attachments,
-                    'variables' => $this->template->variables,
-                    'settings' => $this->template->settings,
-                    'created_at' => $this->template->created_at,
-                    'updated_at' => $this->template->updated_at
-                ],
-                'versions' => $this->template->versions()
-                    ->orderBy('version')
-                    ->get()
-                    ->map(function ($version) {
-                        return [
-                            'version' => $version->version,
-                            'content' => $version->content,
-                            'status' => $version->status,
-                            'notes' => $version->notes,
-                            'created_at' => $version->created_at,
-                            'created_by' => $version->creator->name
-                        ];
-                    })
-                    ->toArray(),
-                'translations' => $this->template->translations()
-                    ->get()
-                    ->map(function ($translation) {
-                        return [
-                            'locale' => $translation->locale,
-                            'content' => $translation->content,
-                            'subject' => $translation->subject,
-                            'from_name' => $translation->from_name,
-                            'variables' => $translation->variables,
-                            'created_at' => $translation->created_at,
-                            'translated_by' => $translation->translator->name
-                        ];
-                    })
-                    ->toArray()
-            ];
+    protected $casts = [
+        'variables' => 'array',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
 
-            Storage::put($path, json_encode($data, JSON_PRETTY_PRINT));
-
-            return $path;
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to create backup: {$e->getMessage()}"
-            );
-        }
-    }
-
-    public function restoreFromBackup(string $path): Template
-    {
-        try {
-            $data = json_decode(Storage::get($path), true);
-
-            DB::beginTransaction();
-
-            // Ripristina template
-            $this->template->update([
-                'name' => $data['template']['name'],
-                'subject' => $data['template']['subject'],
-                'content' => $data['template']['content'],
-                'layout' => $data['template']['layout'],
-                'is_active' => $data['template']['is_active'],
-                'version' => $data['template']['version'],
-                'from_name' => $data['template']['from_name'],
-                'from_email' => $data['template']['from_email'],
-                'reply_to' => $data['template']['reply_to'],
-                'cc' => $data['template']['cc'],
-                'bcc' => $data['template']['bcc'],
-                'attachments' => $data['template']['attachments'],
-                'variables' => $data['template']['variables'],
-                'settings' => $data['template']['settings']
-            ]);
-
-            // Ripristina versioni
-            $this->template->versions()->delete();
-            foreach ($data['versions'] as $version) {
-                $this->template->versions()->create([
-                    'version' => $version['version'],
-                    'content' => $version['content'],
-                    'status' => $version['status'],
-                    'notes' => $version['notes'],
-                    'created_by' => auth()->id()
-                ]);
-            }
-
-            // Ripristina traduzioni
-            $this->template->translations()->delete();
-            foreach ($data['translations'] as $translation) {
-                $this->template->translations()->create([
-                    'locale' => $translation['locale'],
-                    'content' => $translation['content'],
-                    'subject' => $translation['subject'],
-                    'from_name' => $translation['from_name'],
-                    'variables' => $translation['variables'],
-                    'translated_by' => auth()->id()
-                ]);
-            }
-
-            DB::commit();
-
-            return $this->template;
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            throw new TemplateException(
-                "Failed to restore from backup: {$e->getMessage()}"
-            );
-        }
-    }
-
-    public function getBackups(): array
-    {
-        return collect(Storage::files('backups'))
-            ->filter(function ($path) {
-                return str_starts_with(basename($path), "backup_{$this->template->id}_");
-            })
-            ->map(function ($path) {
-                return [
-                    'path' => $path,
-                    'filename' => basename($path),
-                    'created_at' => Storage::lastModified($path),
-                    'size' => Storage::size($path)
-                ];
-            })
-            ->sortByDesc('created_at')
-            ->values()
-            ->toArray();
-    }
-
-    public function deleteBackup(string $path): bool
-    {
-        try {
-            return Storage::delete($path);
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to delete backup: {$e->getMessage()}"
-            );
-        }
-    }
+    protected $appends = [
+        'is_complete',
+        'missing_variables'
+    ];
 }
 ```
 
-#### 7.2.2 BackupCommand
+#### 2.3.2 Relazioni
 ```php
-namespace Modules\Notify\Console\Commands;
-
-use Illuminate\Console\Command;
-use Modules\Notify\Models\Template;
-use Modules\Notify\Services\BackupManager;
-
-class BackupTemplatesCommand extends Command
+public function template()
 {
-    protected $signature = 'notify:backup-templates {--template= : ID del template da backuppare} {--all : Backup di tutti i template}';
+    return $this->belongsTo(Template::class);
+}
 
-    protected $description = 'Crea backup dei template';
-
-    public function handle()
-    {
-        if ($this->option('all')) {
-            $templates = Template::all();
-        } elseif ($templateId = $this->option('template')) {
-            $templates = Template::where('id', $templateId)->get();
-        } else {
-            $this->error('Specificare --template o --all');
-            return 1;
-        }
-
-        $bar = $this->output->createProgressBar(count($templates));
-        $bar->start();
-
-        foreach ($templates as $template) {
-            try {
-                $backupManager = new BackupManager($template);
-                $path = $backupManager->createBackup();
-                $this->info("\nBackup creato: {$path}");
-            } catch (\Exception $e) {
-                $this->error("\nErrore nel backup del template {$template->id}: {$e->getMessage()}");
-            }
-            $bar->advance();
-        }
-
-        $bar->finish();
-        $this->newLine();
-        $this->info('Backup completato');
-
-        return 0;
-    }
+public function translator()
+{
+    return $this->belongsTo(User::class, 'translated_by');
 }
 ```
 
-### 7.3 Manutenzione
-
-#### 7.3.1 MaintenanceManager
+#### 2.3.3 Accessori e Mutatori
 ```php
-namespace Modules\Notify\Services;
-
-use Modules\Notify\Models\Template;
-use Illuminate\Support\Facades\Cache;
-use Modules\Notify\Exceptions\TemplateException;
-
-class MaintenanceManager
+public function getIsCompleteAttribute()
 {
-    protected $template;
+    return $this->validateVariables();
+}
 
-    public function __construct(Template $template)
-    {
-        $this->template = $template;
-    }
+public function getMissingVariablesAttribute()
+{
+    $required = $this->template->variables;
+    $provided = $this->variables ?? [];
+    return array_diff($required, array_keys($provided));
+}
 
-    public function cleanup(): void
-    {
-        try {
-            // Pulisci cache
-            $this->clearCache();
+public function setVariablesAttribute($value)
+{
+    $this->attributes['variables'] = json_encode($value);
+}
 
-            // Pulisci analytics vecchi
-            $this->cleanupAnalytics();
-
-            // Pulisci backup vecchi
-            $this->cleanupBackups();
-
-            // Pulisci allegati non utilizzati
-            $this->cleanupAttachments();
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to cleanup: {$e->getMessage()}"
-            );
-        }
-    }
-
-    public function optimize(): void
-    {
-        try {
-            // Ottimizza database
-            $this->optimizeDatabase();
-
-            // Ottimizza cache
-            $this->optimizeCache();
-
-            // Ottimizza storage
-            $this->optimizeStorage();
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to optimize: {$e->getMessage()}"
-            );
-        }
-    }
-
-    public function validate(): array
-    {
-        try {
-            $issues = [];
-
-            // Valida template
-            if (!$this->validateTemplate()) {
-                $issues[] = 'Template non valido';
-            }
-
-            // Valida versioni
-            if (!$this->validateVersions()) {
-                $issues[] = 'Versioni non valide';
-            }
-
-            // Valida traduzioni
-            if (!$this->validateTranslations()) {
-                $issues[] = 'Traduzioni non valide';
-            }
-
-            // Valida analytics
-            if (!$this->validateAnalytics()) {
-                $issues[] = 'Analytics non validi';
-            }
-
-            return $issues;
-
-        } catch (\Exception $e) {
-            throw new TemplateException(
-                "Failed to validate: {$e->getMessage()}"
-            );
-        }
-    }
-
-    protected function clearCache(): void
-    {
-        Cache::tags(['template_' . $this->template->id])->flush();
-    }
-
-    protected function cleanupAnalytics(): void
-    {
-        $this->template->analytics()
-            ->where('created_at', '<', now()->subMonths(3))
-            ->delete();
-    }
-
-    protected function cleanupBackups(): void
-    {
-        $backups = collect(Storage::files('backups'))
-            ->filter(function ($path) {
-                return str_starts_with(basename($path), "backup_{$this->template->id}_");
-            })
-            ->sortByDesc(function ($path) {
-                return Storage::lastModified($path);
-            })
-            ->skip(10);
-
-        foreach ($backups as $backup) {
-            Storage::delete($backup);
-        }
-    }
-
-    protected function cleanupAttachments(): void
-    {
-        $usedAttachments = $this->template->attachments ?? [];
-        $allAttachments = Storage::files('attachments');
-
-        foreach ($allAttachments as $attachment) {
-            if (!in_array($attachment, $usedAttachments)) {
-                Storage::delete($attachment);
-            }
-        }
-    }
-
-    protected function optimizeDatabase(): void
-    {
-        DB::statement('OPTIMIZE TABLE templates');
-        DB::statement('OPTIMIZE TABLE template_versions');
-        DB::statement('OPTIMIZE TABLE template_translations');
-        DB::statement('OPTIMIZE TABLE template_analytics');
-    }
-
-    protected function optimizeCache(): void
-    {
-        Cache::tags(['template_' . $this->template->id])->flush();
-    }
-
-    protected function optimizeStorage(): void
-    {
-        // Comprimi allegati
-        foreach ($this->template->attachments ?? [] as $attachment) {
-            if (Storage::exists($attachment)) {
-                $content = Storage::get($attachment);
-                $compressed = gzcompress($content);
-                Storage::put($attachment . '.gz', $compressed);
-            }
-        }
-    }
-
-    protected function validateTemplate(): bool
-    {
-        return $this->template->is_valid;
-    }
-
-    protected function validateVersions(): bool
-    {
-        return $this->template->versions()
-            ->where('is_valid', false)
-            ->count() === 0;
-    }
-
-    protected function validateTranslations(): bool
-    {
-        return $this->template->translations()
-            ->where('is_valid', false)
-            ->count() === 0;
-    }
-
-    protected function validateAnalytics(): bool
-    {
-        return $this->template->analytics()
-            ->where('is_valid', false)
-            ->count() === 0;
-    }
+public function getVariablesAttribute($value)
+{
+    return json_decode($value, true);
 }
 ```
 
-#### 7.3.2 MaintenanceCommand
+#### 2.3.4 Validazione
 ```php
-namespace Modules\Notify\Console\Commands;
-
-use Illuminate\Console\Command;
-use Modules\Notify\Models\Template;
-use Modules\Notify\Services\MaintenanceManager;
-
-class MaintainTemplatesCommand extends Command
+public function validateVariables()
 {
-    protected $signature = 'notify:maintain-templates {--template= : ID del template da mantenere} {--all : Manutenzione di tutti i template} {--cleanup : Pulisci risorse} {--optimize : Ottimizza risorse} {--validate : Valida risorse}';
+    $required = $this->template->variables;
+    $provided = $this->variables ?? [];
 
-    protected $description = 'Esegue manutenzione sui template';
-
-    public function handle()
-    {
-        if ($this->option('all')) {
-            $templates = Template::all();
-        } elseif ($templateId = $this->option('template')) {
-            $templates = Template::where('id', $templateId)->get();
-        } else {
-            $this->error('Specificare --template o --all');
-            return 1;
+    foreach ($required as $variable) {
+        if (!isset($provided[$variable])) {
+            throw new MissingVariableException(
+                "Missing required variable: {$variable}"
+            );
         }
-
-        $bar = $this->output->createProgressBar(count($templates));
-        $bar->start();
-
-        foreach ($templates as $template) {
-            try {
-                $maintenanceManager = new MaintenanceManager($template);
-
-                if ($this->option('cleanup')) {
-                    $maintenanceManager->cleanup();
-                    $this->info("\nPulizia completata per il template {$template->id}");
-                }
-
-                if ($this->option('optimize')) {
-                    $maintenanceManager->optimize();
-                    $this->info("\nOttimizzazione completata per il template {$template->id}");
-                }
-
-                if ($this->option('validate')) {
-                    $issues = $maintenanceManager->validate();
-                    if (empty($issues)) {
-                        $this->info("\nValidazione completata per il template {$template->id}");
-                    } else {
-                        $this->warn("\nProblemi trovati nel template {$template->id}:");
-                        foreach ($issues as $issue) {
-                            $this->warn("- {$issue}");
-                        }
-                    }
-                }
-
-            } catch (\Exception $e) {
-                $this->error("\nErrore nella manutenzione del template {$template->id}: {$e->getMessage()}");
-            }
-            $bar->advance();
-        }
-
-        $bar->finish();
-        $this->newLine();
-        $this->info('Manutenzione completata');
-
-        return 0;
     }
-} 
+
+    return true;
+}
+
+public function validateContent()
+{
+    // Validazione HTML
+    $validator = new HtmlValidator();
+    $result = $validator->validate($this->content);
+
+    if (!$result->isValid()) {
+        throw new InvalidContentException(
+            "Invalid HTML content: " . implode(', ', $result->getErrors())
+        );
+    }
+
+    return true;
+}
+
+public function validateSubject()
+{
+    if (empty($this->subject)) {
+        throw new InvalidSubjectException(
+            "Subject cannot be empty"
+        );
+    }
+
+    if (strlen($this->subject) > 255) {
+        throw new InvalidSubjectException(
+            "Subject cannot be longer than 255 characters"
+        );
+    }
+
+    return true;
+}
+```
+
+### 2.4 TemplateAnalytics Model
+
+#### 2.4.1 Struttura Base
+```php
+namespace Modules\Notify\Models;
+
+class TemplateAnalytics extends Model
+{
+    use HasFactory;
+
+    protected $table = 'template_analytics';
+
+    protected $fillable = [
+        'template_id',
+        'event',
+        'metadata',
+        'user_agent',
+        'ip_address',
+        'session_id'
+    ];
+
+    protected $casts = [
+        'metadata' => 'array',
+        'created_at' => 'datetime'
+    ];
+
+    protected $appends = [
+        'event_label',
+        'formatted_metadata'
+    ];
+}
+```
+
+#### 2.4.2 Relazioni
+```php
+public function template()
+{
+    return $this->belongsTo(Template::class);
+}
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+```
+
+#### 2.4.3 Accessori e Mutatori
+```php
+public function getEventLabelAttribute()
+{
+    return [
+        'email.sent' => 'Email Sent',
+        'email.opened' => 'Email Opened',
+        'email.clicked' => 'Email Clicked',
+        'email.bounced' => 'Email Bounced',
+        'email.complained' => 'Email Complained',
+        'email.unsubscribed' => 'Email Unsubscribed'
+    ][$this->event] ?? $this->event;
+}
+
+public function getFormattedMetadataAttribute()
+{
+    return collect($this->metadata)->map(function ($value, $key) {
+        return [
+            'key' => $key,
+            'value' => $value,
+            'type' => gettype($value)
+        ];
+    })->values();
+}
+
+public function setMetadataAttribute($value)
+{
+    $this->attributes['metadata'] = json_encode($value);
+}
+
+public function getMetadataAttribute($value)
+{
+    return json_decode($value, true);
+}
+```
+
+#### 2.4.4 Scope Query
+```php
+public function scopeByEvent($query, $event)
+{
+    return $query->where('event', $event);
+}
+
+public function scopeByDateRange($query, $start, $end)
+{
+    return $query->whereBetween('created_at', [$start, $end]);
+}
+
+public function scopeByTemplate($query, $templateId)
+{
+    return $query->where('template_id', $templateId);
+}
+
+public function scopeByUser($query, $userId)
+{
+    return $query->where('user_id', $userId);
+}
+```
+
+### 2.5 Migrations
+
+#### 2.5.1 Templates Table
+```php
+Schema::create('templates', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('subject');
+    $table->text('content');
+    $table->string('layout')->default('default');
+    $table->boolean('is_active')->default(true);
+    $table->integer('version')->default(1);
+    $table->string('from_name')->nullable();
+    $table->string('from_email')->nullable();
+    $table->string('reply_to')->nullable();
+    $table->json('cc')->nullable();
+    $table->json('bcc')->nullable();
+    $table->json('attachments')->nullable();
+    $table->json('variables')->nullable();
+    $table->json('settings')->nullable();
+    $table->foreignId('created_by')->constrained('users');
+    $table->foreignId('updated_by')->nullable()->constrained('users');
+    $table->timestamps();
+    $table->softDeletes();
+
+    $table->index('name');
+    $table->index('is_active');
+    $table->index('version');
+});
+```
+
+#### 2.5.2 Template Versions Table
+```php
+Schema::create('template_versions', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->integer('version');
+    $table->text('content');
+    $table->foreignId('created_by')->constrained('users');
+    $table->json('changes')->nullable();
+    $table->string('status')->default('draft');
+    $table->text('notes')->nullable();
+    $table->timestamps();
+
+    $table->unique(['template_id', 'version']);
+    $table->index('status');
+});
+```
+
+#### 2.5.3 Template Translations Table
+```php
+Schema::create('template_translations', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->string('locale', 5);
+    $table->text('content');
+    $table->string('subject');
+    $table->string('from_name')->nullable();
+    $table->json('variables')->nullable();
+    $table->foreignId('translated_by')->constrained('users');
+    $table->timestamps();
+
+    $table->unique(['template_id', 'locale']);
+    $table->index('locale');
+});
+```
+
+#### 2.5.4 Template Analytics Table
+```php
+Schema::create('template_analytics', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('template_id')->constrained()->onDelete('cascade');
+    $table->string('event');
+    $table->json('metadata')->nullable();
+    $table->string('user_agent')->nullable();
+    $table->string('ip_address', 45)->nullable();
+    $table->string('session_id')->nullable();
+    $table->foreignId('user_id')->nullable()->constrained('users');
+    $table->timestamps();
+
+    $table->index('event');
+    $table->index('created_at');
+    $table->index(['template_id', 'event']);
+});
+``` 

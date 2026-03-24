@@ -1,645 +1,618 @@
-# Analisi Dettagliata del Modulo Notify - Parte 3: Servizi Core
+# Analisi Dettagliata del Modulo Notify - Parte 6: Monitoraggio e Analytics
 
-## 3. Servizi Core
+## 6. Monitoraggio e Analytics
 
-### 3.1 TemplateService
+### 6.1 Logging
 
-#### 3.1.1 Struttura Base
+#### 6.1.1 TemplateLogger
 ```php
 namespace Modules\Notify\Services;
 
+use Illuminate\Support\Facades\Log;
 use Modules\Notify\Models\Template;
-use Modules\Notify\Events\TemplateCreated;
-use Modules\Notify\Events\TemplateUpdated;
-use Modules\Notify\Events\TemplateDeleted;
-use Modules\Notify\Exceptions\TemplateException;
 
-class TemplateService
+class TemplateLogger
 {
-    protected $cache;
-    protected $mjml;
-    protected $mailgun;
+    protected $template;
 
-    public function __construct(
-        CacheService $cache,
-        MjmlService $mjml,
-        MailgunService $mailgun
-    ) {
-        $this->cache = $cache;
-        $this->mjml = $mjml;
-        $this->mailgun = $mailgun;
+    public function __construct(Template $template)
+    {
+        $this->template = $template;
+    }
+
+    public function created(): void
+    {
+        Log::info('Template created', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'version' => $this->template->version,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function updated(): void
+    {
+        Log::info('Template updated', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'version' => $this->template->version,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function deleted(): void
+    {
+        Log::info('Template deleted', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function versionCreated(int $version): void
+    {
+        Log::info('Template version created', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'version' => $version,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function versionRolledBack(int $version): void
+    {
+        Log::info('Template version rolled back', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'version' => $version,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function translationCreated(string $locale): void
+    {
+        Log::info('Template translation created', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'locale' => $locale,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function translationUpdated(string $locale): void
+    {
+        Log::info('Template translation updated', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'locale' => $locale,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function translationDeleted(string $locale): void
+    {
+        Log::info('Template translation deleted', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'locale' => $locale,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function previewed(): void
+    {
+        Log::info('Template previewed', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function tested(string $email): void
+    {
+        Log::info('Template tested', [
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'email' => $email,
+            'user_id' => auth()->id()
+        ]);
+    }
+
+    public function error(string $message, array $context = []): void
+    {
+        Log::error('Template error', array_merge([
+            'id' => $this->template->id,
+            'name' => $this->template->name,
+            'message' => $message,
+            'user_id' => auth()->id()
+        ], $context));
     }
 }
 ```
 
-#### 3.1.2 Gestione Template
-```php
-public function create(array $data): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $template = Template::create([
-            'name' => $data['name'],
-            'subject' => $data['subject'],
-            'content' => $data['content'],
-            'layout' => $data['layout'] ?? 'default',
-            'from_name' => $data['from_name'] ?? null,
-            'from_email' => $data['from_email'] ?? null,
-            'reply_to' => $data['reply_to'] ?? null,
-            'cc' => $data['cc'] ?? null,
-            'bcc' => $data['bcc'] ?? null,
-            'attachments' => $data['attachments'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'settings' => $data['settings'] ?? []
-        ]);
-
-        // Crea versione iniziale
-        $template->versions()->create([
-            'version' => 1,
-            'content' => $data['content'],
-            'created_by' => auth()->id(),
-            'status' => 'published'
-        ]);
-
-        // Crea traduzione default
-        $template->translations()->create([
-            'locale' => config('app.locale'),
-            'content' => $data['content'],
-            'subject' => $data['subject'],
-            'from_name' => $data['from_name'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'translated_by' => auth()->id()
-        ]);
-
-        DB::commit();
-
-        event(new TemplateCreated($template));
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function update(Template $template, array $data): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $oldVersion = $template->version;
-        $newVersion = $oldVersion + 1;
-
-        // Aggiorna template
-        $template->update([
-            'name' => $data['name'] ?? $template->name,
-            'subject' => $data['subject'] ?? $template->subject,
-            'content' => $data['content'] ?? $template->content,
-            'layout' => $data['layout'] ?? $template->layout,
-            'from_name' => $data['from_name'] ?? $template->from_name,
-            'from_email' => $data['from_email'] ?? $template->from_email,
-            'reply_to' => $data['reply_to'] ?? $template->reply_to,
-            'cc' => $data['cc'] ?? $template->cc,
-            'bcc' => $data['bcc'] ?? $template->bcc,
-            'attachments' => $data['attachments'] ?? $template->attachments,
-            'variables' => $data['variables'] ?? $template->variables,
-            'settings' => $data['settings'] ?? $template->settings,
-            'version' => $newVersion
-        ]);
-
-        // Crea nuova versione
-        $template->versions()->create([
-            'version' => $newVersion,
-            'content' => $data['content'] ?? $template->content,
-            'created_by' => auth()->id(),
-            'changes' => $this->getChanges($template, $data),
-            'status' => 'published',
-            'notes' => $data['notes'] ?? null
-        ]);
-
-        // Aggiorna traduzione default
-        $template->translations()
-            ->where('locale', config('app.locale'))
-            ->update([
-                'content' => $data['content'] ?? $template->content,
-                'subject' => $data['subject'] ?? $template->subject,
-                'from_name' => $data['from_name'] ?? $template->from_name,
-                'variables' => $data['variables'] ?? $template->variables
-            ]);
-
-        DB::commit();
-
-        event(new TemplateUpdated($template));
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to update template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function delete(Template $template): bool
-{
-    try {
-        DB::beginTransaction();
-
-        $template->delete();
-
-        DB::commit();
-
-        event(new TemplateDeleted($template));
-
-        return true;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to delete template: {$e->getMessage()}"
-        );
-    }
-}
-```
-
-#### 3.1.3 Gestione Versioni
-```php
-public function createVersion(Template $template, array $data): TemplateVersion
-{
-    try {
-        DB::beginTransaction();
-
-        $newVersion = $template->version + 1;
-
-        $version = $template->versions()->create([
-            'version' => $newVersion,
-            'content' => $data['content'],
-            'created_by' => auth()->id(),
-            'changes' => $this->getChanges($template, $data),
-            'status' => $data['status'] ?? 'draft',
-            'notes' => $data['notes'] ?? null
-        ]);
-
-        $template->update(['version' => $newVersion]);
-
-        DB::commit();
-
-        return $version;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create version: {$e->getMessage()}"
-        );
-    }
-}
-
-public function rollbackVersion(Template $template, int $version): Template
-{
-    try {
-        DB::beginTransaction();
-
-        $targetVersion = $template->versions()
-            ->where('version', $version)
-            ->firstOrFail();
-
-        $template->update([
-            'content' => $targetVersion->content,
-            'version' => $version
-        ]);
-
-        DB::commit();
-
-        return $template;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to rollback version: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function getChanges(Template $template, array $data): array
-{
-    $changes = [];
-
-    foreach ($data as $key => $value) {
-        if (isset($template->$key) && $template->$key !== $value) {
-            $changes[$key] = [
-                'old' => $template->$key,
-                'new' => $value
-            ];
-        }
-    }
-
-    return $changes;
-}
-```
-
-#### 3.1.4 Gestione Traduzioni
-```php
-public function createTranslation(Template $template, array $data): TemplateTranslation
-{
-    try {
-        DB::beginTransaction();
-
-        $translation = $template->translations()->create([
-            'locale' => $data['locale'],
-            'content' => $data['content'],
-            'subject' => $data['subject'],
-            'from_name' => $data['from_name'] ?? null,
-            'variables' => $data['variables'] ?? [],
-            'translated_by' => auth()->id()
-        ]);
-
-        DB::commit();
-
-        return $translation;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to create translation: {$e->getMessage()}"
-        );
-    }
-}
-
-public function updateTranslation(TemplateTranslation $translation, array $data): TemplateTranslation
-{
-    try {
-        DB::beginTransaction();
-
-        $translation->update([
-            'content' => $data['content'] ?? $translation->content,
-            'subject' => $data['subject'] ?? $translation->subject,
-            'from_name' => $data['from_name'] ?? $translation->from_name,
-            'variables' => $data['variables'] ?? $translation->variables
-        ]);
-
-        DB::commit();
-
-        return $translation;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to update translation: {$e->getMessage()}"
-        );
-    }
-}
-
-public function deleteTranslation(TemplateTranslation $translation): bool
-{
-    try {
-        DB::beginTransaction();
-
-        $translation->delete();
-
-        DB::commit();
-
-        return true;
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        throw new TemplateException(
-            "Failed to delete translation: {$e->getMessage()}"
-        );
-    }
-}
-```
-
-#### 3.1.5 Preview e Test
-```php
-public function preview(Template $template, array $variables = []): string
-{
-    try {
-        $content = $this->replaceVariables(
-            $template->content,
-            $variables
-        );
-
-        return $this->mjml->compile($content);
-
-    } catch (\Exception $e) {
-        throw new TemplateException(
-            "Failed to preview template: {$e->getMessage()}"
-        );
-    }
-}
-
-public function test(Template $template, string $email, array $variables = []): bool
-{
-    try {
-        $content = $this->preview($template, $variables);
-
-        return $this->mailgun->send([
-            'to' => $email,
-            'subject' => $template->subject,
-            'html' => $content,
-            'from_name' => $template->from_name,
-            'from_email' => $template->from_email,
-            'reply_to' => $template->reply_to,
-            'cc' => $template->cc,
-            'bcc' => $template->bcc,
-            'attachments' => $template->attachments
-        ]);
-
-    } catch (\Exception $e) {
-        throw new TemplateException(
-            "Failed to test template: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function replaceVariables(string $content, array $variables): string
-{
-    foreach ($variables as $key => $value) {
-        $content = str_replace(
-            "{{$key}}",
-            $value,
-            $content
-        );
-    }
-
-    return $content;
-}
-```
-
-### 3.2 MjmlService
-
-#### 3.2.1 Struttura Base
+#### 6.1.2 MailgunLogger
 ```php
 namespace Modules\Notify\Services;
 
-use MJML\Mjml;
-use MJML\MjmlException;
+use Illuminate\Support\Facades\Log;
 
-class MjmlService
+class MailgunLogger
 {
-    protected $mjml;
-    protected $cache;
-
-    public function __construct(CacheService $cache)
+    public function webhookReceived(array $data): void
     {
-        $this->mjml = new Mjml();
-        $this->cache = $cache;
-    }
-}
-```
-
-#### 3.2.2 Compilazione MJML
-```php
-public function compile(string $content): string
-{
-    try {
-        $cacheKey = $this->getCacheKey($content);
-
-        return $this->cache->remember($cacheKey, function () use ($content) {
-            return $this->mjml->render($content);
-        });
-
-    } catch (MjmlException $e) {
-        throw new TemplateException(
-            "Failed to compile MJML: {$e->getMessage()}"
-        );
-    }
-}
-
-public function validate(string $content): bool
-{
-    try {
-        return $this->mjml->validate($content);
-    } catch (MjmlException $e) {
-        return false;
-    }
-}
-
-protected function getCacheKey(string $content): string
-{
-    return 'mjml:' . md5($content);
-}
-```
-
-#### 3.2.3 Estrazione Stili
-```php
-public function extractStyles(string $content): array
-{
-    $styles = [];
-
-    // Estrai stili inline
-    preg_match_all('/style="([^"]+)"/', $content, $matches);
-    foreach ($matches[1] as $style) {
-        $styles[] = $style;
+        Log::info('Mailgun webhook received', [
+            'event' => $data['event'],
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'domain' => $data['domain'],
+            'timestamp' => $data['timestamp']
+        ]);
     }
 
-    // Estrai stili MJML
-    preg_match_all('/mj-style>([^<]+)<\/mj-style>/', $content, $matches);
-    foreach ($matches[1] as $style) {
-        $styles[] = $style;
-    }
-
-    return array_unique($styles);
-}
-
-public function extractComponents(string $content): array
-{
-    $components = [];
-
-    // Estrai componenti MJML
-    preg_match_all('/<mj-([^>]+)>/', $content, $matches);
-    foreach ($matches[1] as $component) {
-        $components[] = $component;
-    }
-
-    return array_unique($components);
-}
-```
-
-### 3.3 MailgunService
-
-#### 3.3.1 Struttura Base
-```php
-namespace Modules\Notify\Services;
-
-use Mailgun\Mailgun;
-use Mailgun\Exception\MailgunException;
-
-class MailgunService
-{
-    protected $mailgun;
-    protected $domain;
-    protected $cache;
-
-    public function __construct(CacheService $cache)
+    public function emailSent(array $data): void
     {
-        $this->mailgun = Mailgun::create(
-            config('services.mailgun.secret')
-        );
-        $this->domain = config('services.mailgun.domain');
-        $this->cache = $cache;
-    }
-}
-```
-
-#### 3.3.2 Invio Email
-```php
-public function send(array $data): bool
-{
-    try {
-        $message = [
-            'from' => $this->formatFrom($data),
+        Log::info('Email sent', [
             'to' => $data['to'],
             'subject' => $data['subject'],
-            'html' => $data['html'],
-            'reply-to' => $data['reply_to'] ?? null,
-            'cc' => $data['cc'] ?? null,
-            'bcc' => $data['bcc'] ?? null,
-            'attachment' => $this->formatAttachments($data['attachments'] ?? [])
-        ];
-
-        $response = $this->mailgun->messages()->send(
-            $this->domain,
-            $message
-        );
-
-        $this->logMessage($response);
-
-        return true;
-
-    } catch (MailgunException $e) {
-        throw new TemplateException(
-            "Failed to send email: {$e->getMessage()}"
-        );
-    }
-}
-
-protected function formatFrom(array $data): string
-{
-    if (isset($data['from_name'])) {
-        return "{$data['from_name']} <{$data['from_email']}>";
+            'message_id' => $data['message-id'],
+            'template_id' => $data['template_id']
+        ]);
     }
 
-    return $data['from_email'];
-}
-
-protected function formatAttachments(array $attachments): array
-{
-    $formatted = [];
-
-    foreach ($attachments as $attachment) {
-        $formatted[] = [
-            'filePath' => $attachment['path'],
-            'filename' => $attachment['name']
-        ];
+    public function emailDelivered(array $data): void
+    {
+        Log::info('Email delivered', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp']
+        ]);
     }
 
-    return $formatted;
-}
+    public function emailOpened(array $data): void
+    {
+        Log::info('Email opened', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp'],
+            'user_agent' => $data['user-agent']
+        ]);
+    }
 
-protected function logMessage($response): void
-{
-    // Log messaggio inviato
-    Log::info('Email sent', [
-        'id' => $response->getId(),
-        'message' => $response->getMessage()
-    ]);
-}
-```
+    public function emailClicked(array $data): void
+    {
+        Log::info('Email clicked', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp'],
+            'url' => $data['url']
+        ]);
+    }
 
-#### 3.3.3 Gestione Eventi
-```php
-public function handleWebhook(array $data): void
-{
-    try {
-        $event = $data['event'];
-        $messageId = $data['message-id'];
+    public function emailBounced(array $data): void
+    {
+        Log::error('Email bounced', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp'],
+            'code' => $data['code'],
+            'error' => $data['error']
+        ]);
+    }
 
-        switch ($event) {
-            case 'delivered':
-                $this->handleDelivered($messageId);
-                break;
-            case 'opened':
-                $this->handleOpened($messageId);
-                break;
-            case 'clicked':
-                $this->handleClicked($messageId);
-                break;
-            case 'bounced':
-                $this->handleBounced($messageId);
-                break;
-            case 'complained':
-                $this->handleComplained($messageId);
-                break;
-            case 'unsubscribed':
-                $this->handleUnsubscribed($messageId);
-                break;
-        }
+    public function emailComplained(array $data): void
+    {
+        Log::warning('Email complained', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp']
+        ]);
+    }
 
-    } catch (\Exception $e) {
-        Log::error('Webhook error', [
-            'error' => $e->getMessage(),
+    public function emailUnsubscribed(array $data): void
+    {
+        Log::info('Email unsubscribed', [
+            'message_id' => $data['message-id'],
+            'recipient' => $data['recipient'],
+            'timestamp' => $data['timestamp']
+        ]);
+    }
+
+    public function webhookError(string $message, array $data): void
+    {
+        Log::error('Mailgun webhook error', [
+            'message' => $message,
             'data' => $data
         ]);
     }
 }
+```
 
-protected function handleDelivered(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'delivered');
-}
+### 6.2 Analytics
 
-protected function handleOpened(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'opened');
-}
+#### 6.2.1 TemplateAnalytics
+```php
+namespace Modules\Notify\Services;
 
-protected function handleClicked(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'clicked');
-}
+use Modules\Notify\Models\Template;
+use Modules\Notify\Models\TemplateAnalytics;
 
-protected function handleBounced(string $messageId): void
+class TemplateAnalytics
 {
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'bounced');
-}
+    protected $template;
 
-protected function handleComplained(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'complained');
-}
-
-protected function handleUnsubscribed(string $messageId): void
-{
-    // Aggiorna analytics
-    $this->updateAnalytics($messageId, 'unsubscribed');
-}
-
-protected function updateAnalytics(string $messageId, string $event): void
-{
-    // Trova template
-    $template = Template::where('message_id', $messageId)->first();
-    if (!$template) {
-        return;
+    public function __construct(Template $template)
+    {
+        $this->template = $template;
     }
 
-    // Crea analytics
-    $template->analytics()->create([
-        'event' => $event,
-        'metadata' => [
-            'message_id' => $messageId,
-            'timestamp' => now()
-        ]
-    ]);
+    public function trackEvent(string $event, array $metadata = []): void
+    {
+        $this->template->analytics()->create([
+            'event' => $event,
+            'metadata' => $metadata,
+            'user_agent' => request()->userAgent(),
+            'ip_address' => request()->ip(),
+            'session_id' => session()->getId()
+        ]);
+    }
+
+    public function getStats(): array
+    {
+        return [
+            'total_sent' => $this->getTotalSent(),
+            'delivered' => $this->getDeliveredCount(),
+            'opened' => $this->getOpenedCount(),
+            'clicked' => $this->getClickedCount(),
+            'bounced' => $this->getBouncedCount(),
+            'complained' => $this->getComplainedCount(),
+            'unsubscribed' => $this->getUnsubscribedCount(),
+            'delivery_rate' => $this->getDeliveryRate(),
+            'open_rate' => $this->getOpenRate(),
+            'click_rate' => $this->getClickRate(),
+            'bounce_rate' => $this->getBounceRate(),
+            'complaint_rate' => $this->getComplaintRate(),
+            'unsubscribe_rate' => $this->getUnsubscribeRate()
+        ];
+    }
+
+    public function getTotalSent(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'sent')
+            ->count();
+    }
+
+    public function getDeliveredCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'delivered')
+            ->count();
+    }
+
+    public function getOpenedCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'opened')
+            ->count();
+    }
+
+    public function getClickedCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'clicked')
+            ->count();
+    }
+
+    public function getBouncedCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'bounced')
+            ->count();
+    }
+
+    public function getComplainedCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'complained')
+            ->count();
+    }
+
+    public function getUnsubscribedCount(): int
+    {
+        return $this->template->analytics()
+            ->where('event', 'unsubscribed')
+            ->count();
+    }
+
+    public function getDeliveryRate(): float
+    {
+        $sent = $this->getTotalSent();
+        if ($sent === 0) {
+            return 0;
+        }
+
+        return ($this->getDeliveredCount() / $sent) * 100;
+    }
+
+    public function getOpenRate(): float
+    {
+        $delivered = $this->getDeliveredCount();
+        if ($delivered === 0) {
+            return 0;
+        }
+
+        return ($this->getOpenedCount() / $delivered) * 100;
+    }
+
+    public function getClickRate(): float
+    {
+        $opened = $this->getOpenedCount();
+        if ($opened === 0) {
+            return 0;
+        }
+
+        return ($this->getClickedCount() / $opened) * 100;
+    }
+
+    public function getBounceRate(): float
+    {
+        $sent = $this->getTotalSent();
+        if ($sent === 0) {
+            return 0;
+        }
+
+        return ($this->getBouncedCount() / $sent) * 100;
+    }
+
+    public function getComplaintRate(): float
+    {
+        $delivered = $this->getDeliveredCount();
+        if ($delivered === 0) {
+            return 0;
+        }
+
+        return ($this->getComplainedCount() / $delivered) * 100;
+    }
+
+    public function getUnsubscribeRate(): float
+    {
+        $delivered = $this->getDeliveredCount();
+        if ($delivered === 0) {
+            return 0;
+        }
+
+        return ($this->getUnsubscribedCount() / $delivered) * 100;
+    }
+
+    public function getEventsByDate(string $event, string $startDate, string $endDate): array
+    {
+        return $this->template->analytics()
+            ->where('event', $event)
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get()
+            ->pluck('count', 'date')
+            ->toArray();
+    }
+
+    public function getEventsByHour(string $event, string $date): array
+    {
+        return $this->template->analytics()
+            ->where('event', $event)
+            ->whereDate('created_at', $date)
+            ->selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
+            ->groupBy('hour')
+            ->orderBy('hour')
+            ->get()
+            ->pluck('count', 'hour')
+            ->toArray();
+    }
+
+    public function getTopRecipients(string $event, int $limit = 10): array
+    {
+        return $this->template->analytics()
+            ->where('event', $event)
+            ->selectRaw('metadata->>"$.recipient" as recipient, COUNT(*) as count')
+            ->groupBy('recipient')
+            ->orderByDesc('count')
+            ->limit($limit)
+            ->get()
+            ->pluck('count', 'recipient')
+            ->toArray();
+    }
+
+    public function getTopUserAgents(string $event, int $limit = 10): array
+    {
+        return $this->template->analytics()
+            ->where('event', $event)
+            ->whereNotNull('user_agent')
+            ->selectRaw('user_agent, COUNT(*) as count')
+            ->groupBy('user_agent')
+            ->orderByDesc('count')
+            ->limit($limit)
+            ->get()
+            ->pluck('count', 'user_agent')
+            ->toArray();
+    }
+
+    public function getTopIPs(string $event, int $limit = 10): array
+    {
+        return $this->template->analytics()
+            ->where('event', $event)
+            ->whereNotNull('ip_address')
+            ->selectRaw('ip_address, COUNT(*) as count')
+            ->groupBy('ip_address')
+            ->orderByDesc('count')
+            ->limit($limit)
+            ->get()
+            ->pluck('count', 'ip_address')
+            ->toArray();
+    }
+
+    public function getTopClickedUrls(int $limit = 10): array
+    {
+        return $this->template->analytics()
+            ->where('event', 'clicked')
+            ->selectRaw('metadata->>"$.url" as url, COUNT(*) as count')
+            ->groupBy('url')
+            ->orderByDesc('count')
+            ->limit($limit)
+            ->get()
+            ->pluck('count', 'url')
+            ->toArray();
+    }
+
+    public function getBounceReasons(): array
+    {
+        return $this->template->analytics()
+            ->where('event', 'bounced')
+            ->selectRaw('metadata->>"$.error" as reason, COUNT(*) as count')
+            ->groupBy('reason')
+            ->orderByDesc('count')
+            ->get()
+            ->pluck('count', 'reason')
+            ->toArray();
+    }
+
+    public function getBounceCodes(): array
+    {
+        return $this->template->analytics()
+            ->where('event', 'bounced')
+            ->selectRaw('metadata->>"$.code" as code, COUNT(*) as count')
+            ->groupBy('code')
+            ->orderByDesc('count')
+            ->get()
+            ->pluck('count', 'code')
+            ->toArray();
+    }
+}
+```
+
+#### 6.2.2 AnalyticsExporter
+```php
+namespace Modules\Notify\Services;
+
+use Modules\Notify\Models\Template;
+use Illuminate\Support\Facades\Storage;
+
+class AnalyticsExporter
+{
+    protected $template;
+
+    public function __construct(Template $template)
+    {
+        $this->template = $template;
+    }
+
+    public function exportToCsv(string $startDate, string $endDate): string
+    {
+        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.csv";
+        $path = "analytics/{$filename}";
+
+        $handle = fopen(Storage::path($path), 'w');
+
+        // Intestazioni
+        fputcsv($handle, [
+            'Event',
+            'Date',
+            'Time',
+            'Recipient',
+            'User Agent',
+            'IP Address',
+            'Session ID',
+            'Metadata'
+        ]);
+
+        // Dati
+        $this->template->analytics()
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->orderBy('created_at')
+            ->each(function ($analytics) use ($handle) {
+                fputcsv($handle, [
+                    $analytics->event,
+                    $analytics->created_at->format('Y-m-d'),
+                    $analytics->created_at->format('H:i:s'),
+                    $analytics->metadata['recipient'] ?? '',
+                    $analytics->user_agent,
+                    $analytics->ip_address,
+                    $analytics->session_id,
+                    json_encode($analytics->metadata)
+                ]);
+            });
+
+        fclose($handle);
+
+        return $path;
+    }
+
+    public function exportToJson(string $startDate, string $endDate): string
+    {
+        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.json";
+        $path = "analytics/{$filename}";
+
+        $data = $this->template->analytics()
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->orderBy('created_at')
+            ->get()
+            ->map(function ($analytics) {
+                return [
+                    'event' => $analytics->event,
+                    'date' => $analytics->created_at->format('Y-m-d'),
+                    'time' => $analytics->created_at->format('H:i:s'),
+                    'recipient' => $analytics->metadata['recipient'] ?? null,
+                    'user_agent' => $analytics->user_agent,
+                    'ip_address' => $analytics->ip_address,
+                    'session_id' => $analytics->session_id,
+                    'metadata' => $analytics->metadata
+                ];
+            });
+
+        Storage::put($path, json_encode($data, JSON_PRETTY_PRINT));
+
+        return $path;
+    }
+
+    public function exportToExcel(string $startDate, string $endDate): string
+    {
+        $filename = "analytics_{$this->template->id}_{$startDate}_{$endDate}.xlsx";
+        $path = "analytics/{$filename}";
+
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Intestazioni
+        $sheet->setCellValue('A1', 'Event');
+        $sheet->setCellValue('B1', 'Date');
+        $sheet->setCellValue('C1', 'Time');
+        $sheet->setCellValue('D1', 'Recipient');
+        $sheet->setCellValue('E1', 'User Agent');
+        $sheet->setCellValue('F1', 'IP Address');
+        $sheet->setCellValue('G1', 'Session ID');
+        $sheet->setCellValue('H1', 'Metadata');
+
+        // Dati
+        $row = 2;
+        $this->template->analytics()
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->orderBy('created_at')
+            ->each(function ($analytics) use ($sheet, &$row) {
+                $sheet->setCellValue('A' . $row, $analytics->event);
+                $sheet->setCellValue('B' . $row, $analytics->created_at->format('Y-m-d'));
+                $sheet->setCellValue('C' . $row, $analytics->created_at->format('H:i:s'));
+                $sheet->setCellValue('D' . $row, $analytics->metadata['recipient'] ?? '');
+                $sheet->setCellValue('E' . $row, $analytics->user_agent);
+                $sheet->setCellValue('F' . $row, $analytics->ip_address);
+                $sheet->setCellValue('G' . $row, $analytics->session_id);
+                $sheet->setCellValue('H' . $row, json_encode($analytics->metadata));
+                $row++;
+            });
+
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save(Storage::path($path));
+
+        return $path;
+    }
 }
 ``` 
