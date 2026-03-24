@@ -180,17 +180,34 @@ TextInput::make('name')->label('Nome')
 TextInput::make('name')
 ```
 
-### 6. Forward-Only Git
+### 6. Forward-Only Git & Database 🔴
 
 ```bash
-// ❌ NEVER go backward
+// ❌ NEVER go backward (Git)
 git reset --hard HEAD~1
 
 // ✅ ALWAYS go forward
 git commit -m "fix: correct issue"
 ```
 
-### 7. PHPStan Level 10
+### 7. Database SACRO - MAI Distruggere Dati 🔴🔴🔴
+
+```bash
+// ❌ MAI E POI MAI (distrugge i dati)
+php artisan migrate:refresh
+php artisan migrate:fresh
+php artisan migrate:rollback
+
+// ✅ SOLO questo (preserva i dati)
+php artisan migrate
+php artisan migrate --path=specific_migration.php
+```
+
+**Le migration Laraxot sono IDEMPOTENTI**: usano `if (! $this->hasColumn())` e non cancellano mai dati.
+
+Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`
+
+### 8. PHPStan Level 10
 
 - **No ignores** allowed
 - **declare(strict_types=1)** in every file

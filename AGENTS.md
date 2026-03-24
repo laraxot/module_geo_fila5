@@ -4,6 +4,19 @@
 
 **Stack**: Laravel 12 | Filament v5 | Pest v4 | PHPStan L10 | PHP 8.3+
 
+## ⚠️ REGOLA CRITICA: Database SACRO 🔴
+
+> **MAI eseguire**: `migrate:refresh`, `migrate:fresh`, `migrate:rollback`  
+> **SOLO eseguire**: `migrate` (forward-only)
+
+Le migration Laraxot sono **IDEMPOTENTI** - usano `if (! $this->hasColumn())` e non cancellano mai dati.
+
+**Perché**: I dati sono SACRI - `migrate:refresh` esegue `down()` che **CANCELLA TUTTO**.
+
+📖 Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`
+
+---
+
 ## GSD (Get Shit Done) Integration
 
 Questo progetto usa **GSD** per sviluppo spec-driven con context engineering.
@@ -92,6 +105,24 @@ After edit: PHPStan + PHPMD + PHPInsights.
 → [Dettagli](.agents/docs/agents-guide/02-tooling/quick-commands.md)
 
 ## Regole Critiche
+
+## 🔴 REGOLA SACRALE: I DATI SONO SACRI
+
+**MAI E POI MAI usare:**
+- ❌ `php artisan migrate:fresh`
+- ❌ `php artisan migrate:refresh`
+- ❌ `php artisan db:wipe`
+- ❌ `RefreshDatabase` trait nei test
+- ❌ Qualsiasi comando che distrugge dati
+
+**SEMPRE usare:**
+- ✅ `php artisan migrate` (solo avanti, mai rollback)
+- ✅ `DatabaseTransactions` nei test
+- ✅ Backup prima di qualsiasi modifica schema
+
+→ [Migration Safety Rules](.agents/docs/agents-guide/04-architecture/database-migration-safety.md)
+
+---
 
 - PHPStan Level 10 — no ignores
 - `declare(strict_types=1)` always

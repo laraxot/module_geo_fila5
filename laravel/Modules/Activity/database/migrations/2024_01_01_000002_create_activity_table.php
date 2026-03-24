@@ -8,7 +8,8 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 return new class extends XotBaseMigration
 {
-    // protected ?string $model_class = Activity::class;
+    protected ?string $model_class = Activity::class;
+
     public function up(): void
     {
         // -- CREATE --
@@ -23,8 +24,18 @@ return new class extends XotBaseMigration
             $table->uuid('batch_uuid')->nullable();
             $table->string('event')->nullable();
         });
+
         // -- UPDATE --
         $this->tableUpdate(function (Blueprint $table): void {
+            // Add missing columns if table exists but columns don't
+            if (! $this->hasColumn('batch_uuid')) {
+                $table->uuid('batch_uuid')->nullable()->after('properties');
+            }
+
+            if (! $this->hasColumn('event')) {
+                $table->string('event')->nullable()->after('batch_uuid');
+            }
+
             // Ensure causer columns are nullable to allow console operations without an authenticated user
             if ($this->hasColumn('causer_id')) {
                 $table->string('causer_id', 36)->nullable()->change()->index();
