@@ -99,6 +99,7 @@ After edit: PHPStan + PHPMD + PHPInsights.
 - No `property_exists()` — usa `isset()`
 - No constructor DI in Actions — usa `app(ActionClass::class)->execute()`
 - No direct Filament — usa `XotBase*`
+- No numbered filename suffixes (`-1.md`, `_2.md`) — edit in place, Git handles versioning
 
 → [Tutte le regole](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
 
