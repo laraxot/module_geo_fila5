@@ -342,6 +342,11 @@ return [
             'icon' => 'compila',
             'tooltip' => 'compila',
         ],
+        'CopyFromOrganizzativa' => [
+            'label' => 'CopyFromOrganizzativa',
+            'icon' => 'CopyFromOrganizzativa',
+            'tooltip' => 'CopyFromOrganizzativa',
+        ],
     ],
     'messages' => [
         'import' => [

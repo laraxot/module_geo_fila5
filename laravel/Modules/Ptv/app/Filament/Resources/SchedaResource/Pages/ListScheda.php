@@ -36,6 +36,18 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Ptv\Filament\Actions\Header\PopulateYearAction;
+use Modules\Ptv\Filament\Actions\Bulk\SendMailBulkAction;
+use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
+use Modules\Ptv\Filament\Resources\ReportResource\Widgets\FirmaValutatoreWidget;
+use Modules\Ptv\Filament\Columns\LavoratoreColumn;
+use Modules\Ptv\Filament\Columns\PeriodoColumn;
+use Modules\Ptv\Filament\Columns\QualificaColumn;
+use Modules\Ptv\Filament\Columns\RepartoColumn;
+use Modules\Performance\Actions\ShowMailSendedAt;
+use Filament\Tables\Columns\SelectColumn;
+use Modules\Performance\Models\StabiDirigente;
+use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
+
 
 
 class ListScheda extends XotBaseListRecords
@@ -51,158 +63,62 @@ class ListScheda extends XotBaseListRecords
             ...parent::getHeaderActions(),
             'copy_from_last_year' => CopyFromLastYearAction::make(),
             'populate_year' => PopulateYearAction::make(),
-            // 'create' => Actions\CreateAction::make(),
-            // 'copy' => app(CopyFromLastYearButton::class)
-            //    ->execute(Scheda::class, 'anno', $anno),
             'pdf' => MakePdfAction::make(),
             // 'export' => ExportXlsAction::make(), // da togliere campi etc etc
         ];
     }
 
+    
+    /**
+     * @return array<string, Column>
+     */
     #[Override]
     public function getTableColumns(): array
     {
         return [
-            'id' => TextColumn::make('id')
-                ->sortable(),
-            'lavoratore' => GroupColumn::make('lavoratore')->schema([
-                'matr' => TextColumn::make('matr')->searchable(),
-                'cognome' => TextColumn::make('cognome')->searchable(),
-                'nome' => TextColumn::make('nome'),
-                'email' => TextColumn::make('email'),
-            ])->searchable(['matr', 'cognome', 'nome', 'email']),
-            /*
-            'matr' => TextColumn::make('matr')
-                ->searchable()
-                ->sortable(),
-            'cognome' => TextColumn::make('cognome')
-                ->searchable()
-                ->sortable(),
-            'nome' => TextColumn::make('nome')
-                ->searchable()
-                ->sortable(),
-            'email' => TextColumn::make('email')
-                ->searchable()
-                ->sortable(),
-            */
-            'ha_diritto' => IconColumn::make('ha_diritto')
-                ->boolean()
-                ->sortable(),
-            'motivo' => TextColumn::make('motivo')
-                ->wrap()
-                ->sortable(),
+            'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
+            'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([
+                'motivo' => TextColumn::make('motivo')->searchable(),
+                'mail_sended_at' => TextColumn::make('mail_sended_at')
+                    ->html()
+                    ->default(app(ShowMailSendedAt::class)->execute(...)),
+            ]),
+            'lavoratore' => LavoratoreColumn::make('lavoratore')->appendColumns([
+                'totale_punteggio' => TextColumn::make('totale_punteggio'),
+                'propro' => TextColumn::make('propro'),
+            ]),
+            'qualifica' => QualificaColumn::make('qualifica'),
+            'reparto' => RepartoColumn::make('reparto'),
+            'periodo' => PeriodoColumn::make('periodo'),
+            'valutatore_id' => SelectColumn::make('valutatore_id')
+                ->label('valutatore')
+                ->options(function (mixed $record): array {
+                    if (! is_object($record) || ! isset($record->anno)) {
+                        return [];
+                    }
+                    /** @var int $anno */
+                    $anno = $record->anno;
 
-            'qua' => GroupColumn::make('qua')->schema([
-                // TextColumn::make('propro'),
-                // TextColumn::make('posfun'),
-                // TextColumn::make('categoria_eco'),
-                'categoria_ecoval' => TextColumn::make('categoria_ecoval'),
-                'posfunval' => TextColumn::make('posfunval'),
-                // TextColumn::make('posiz'),
-                // TextColumn::make('posiz_txt'),
-                'disci1' => TextColumn::make('disci1'),
-                'disci1_txt' => TextColumn::make('disci1_txt'),
-            ]),
-            /*
-            'categoria_ecoval' => TextColumn::make('categoria_ecoval')
-                ->searchable()
-                ->sortable(),
-            'posfunval' => TextColumn::make('posfunval')
-                ->searchable()
-                ->sortable(),
-            'disci1' => TextColumn::make('disci1')
-                ->searchable()
-                ->sortable(),
-            'disci1_txt' => TextColumn::make('disci1_txt')
-                ->searchable()
-                ->sortable(),
-            */
-            'rep' => GroupColumn::make('rep')->schema([
-                'stabi' => TextColumn::make('stabi'),
-                'stabi_txt' => TextColumn::make('stabi_txt'),
-                'repar' => TextColumn::make('repar'),
-                'repar_txt' => TextColumn::make('repar_txt'),
-            ]),
-            /*
-            'stabi' => TextColumn::make('stabi')
-                ->searchable()
-                ->sortable(),
-            'stabi_txt' => TextColumn::make('stabi_txt')
-                ->searchable()
-                ->sortable(),
-            'repar' => TextColumn::make('repar')
-                ->searchable()
-                ->sortable(),
-            'repar_txt' => TextColumn::make('repar_txt')
-                ->searchable()
-                ->sortable(),
-            */
-            'periodo' => GroupColumn::make('periodo')->schema([
-                'dal' => TextColumn::make('dal'),
-                'al' => TextColumn::make('al'),
-                'anno' => TextColumn::make('anno'),
-            ]),
-            /*
-            'dal' => TextColumn::make('dal')
-                ->sortable(),
-            'al' => TextColumn::make('al')
-                ->sortable(),
-            'anno' => TextColumn::make('anno')
-                ->numeric()
-                ->sortable(),
-            */
-            'created_at' => TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            'updated_at' => TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
+                    return StabiDirigente::where('anno', $anno)->whereRaw('id=valutatore_id')->pluck('nome_diri', 'id')->toArray();
+                })
+                ->visible(auth()->user()?->isSuperAdmin() ?? false),
         ];
     }
 
+    
+    /**
+     * @return array<string, Filter>
+     */
     #[Override]
     public function getTableFilters(): array
     {
         return [
-            SelectFilter::make('anno/valutatore')
-                ->label('anno/valutatore')
-                ->schema([
-                    Select::make('anno')
-                        ->options([
-                            // '2022' => '2022',
-                            // '2023' => '2023',
-                            '2024' => '2024',
-                            '2025' => '2025',
-                        ])
-                        ->reactive()
-                        ->live(),
-
-                    Select::make('valutatore_id')
-                        ->label('valutatore')
-                        ->options(static fn (Get $get, Set $set) => app(GetValutatoriOptions::class)
-                            ->execute('Progressioni', (string) ($get('anno') ?? ''))),
-                ])
-
-                ->query(static function (Builder $query, array $data): Builder {
-                    /** @var int|string|null $anno */
-                    $anno = $data['anno'] ?? null;
-                    if ($anno === null /* || null == $data['valutatore_id'] */) {
-                        return $query->where('id', 0);
-                    }
-                    // @var array{anno: int} $populateData
-                    /*
-                    $populateData = ['anno' => (int) $anno];
-                    app(Populate::class)->execute($populateData);
-                    app(FixValutatoreIdByAnno::class)->execute('Progressioni', 'Scheda', $anno);
-                    */
-                    $query = $query->where($data);
-
-                    return $query;
-                })
-
-                ->columns(4),
+            'anno_valutatore' => AnnoValutatoreFilter::make('anno_valutatore'),
+            /*
+            'anno' => app(\Modules\Xot\Actions\Filament\Filter\GetYearFilter::class)
+                ->execute('anno', intval(date('Y')) - 3, intval(date('Y')))
+                ->default(intval(date('Y'))-1),
+            */
         ];
     }
 
@@ -237,19 +153,22 @@ class ListScheda extends XotBaseListRecords
     #[Override]
     public function getTableBulkActions(): array
     {
-        // dddx($this->tableFilters);
-        /** @var array<string, mixed> $tableFilters */
-        $tableFilters = $this->tableFilters ?? [];
-        /** @var array<string, mixed> $annoValutatoreFilter */
-        $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-        /** @var int|string|null $anno */
-        $anno = Arr::get($annoValutatoreFilter, 'anno');
-        /** @var non-falsy-string $tpl */
-        $tpl = 'scheda-'.(string) ($anno ?? '');
+        return [
+            'send_mail' => SendMailBulkAction::make('send_mail'),
+            'zip_schede' => ZipSchedaBulkAction::make('zip_schede'),
+        ];
+    }
+
+    /**
+     * @return array<string, WidgetConfiguration>
+     */
+    public function getHeaderWidgets(): array
+    {
+        // $filters = Arr::get($this->tableFilters ?? [], 'stabi_repar_anno');
+        $filters = Arr::get($this->tableFilters ?? [], 'anno_valutatore');
 
         return [
-            // DeleteBulkAction::make(),
-            'send_schede' => SendSchedaBulkAction::make()->setTemplate($tpl),
+            'firma_valutatore' => FirmaValutatoreWidget::make(['resource' => static::$resource, 'filters' => $filters]),
         ];
     }
 }

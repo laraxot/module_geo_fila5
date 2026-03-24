@@ -32,7 +32,8 @@ trait MutatorTrait
         $date_min = $this->dal;
         $date_max = $this->al;
 
-        if ($date_min === '') {
+        // Guard: invalid date range prevents SQL errors
+        if ($date_min === '' || $date_max === '' || $date_min === null || $date_max === null) {
             return 0;
         }
 
