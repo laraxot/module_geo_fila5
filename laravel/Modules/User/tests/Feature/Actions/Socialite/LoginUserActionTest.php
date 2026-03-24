@@ -122,10 +122,6 @@ describe('LoginUserAction', function (): void {
 
         expect($response)->toBeInstanceOf(RedirectResponse::class);
         expect($response->getTargetUrl())->not->toBeEmpty();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     });
 
     test('handles null user assertion gracefully', function (): void {

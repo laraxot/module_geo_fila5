@@ -44,15 +44,7 @@ class SaveAttachmentsAction
 
             // Ottieni il contenuto del file prima che venga eliminato
             $fileContent = $storage->get($path);
-<<<<<<< Updated upstream
             $tempPath = tempnam(storage_path('framework/cache'), 'media_');
-=======
-<<<<<<< HEAD
-            $tempPath = tempnam(sys_get_temp_dir(), 'media_');
-=======
-            $tempPath = tempnam(storage_path('framework/cache'), 'media_');
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
             file_put_contents($tempPath, $fileContent);
 

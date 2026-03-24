@@ -30,10 +30,6 @@ abstract class BaseAuthWidget extends XotBaseWidget
         // Override nelle classi figlie per form specifici
         return [];
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
     /**
      * Restituisce i dati per la view.

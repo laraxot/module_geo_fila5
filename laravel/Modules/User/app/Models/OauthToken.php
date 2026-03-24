@@ -22,8 +22,4 @@ class OauthToken extends PassportToken
     {
         return OauthAccessTokenFactory::new();
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

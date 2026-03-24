@@ -9,10 +9,6 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
@@ -34,10 +30,6 @@ class ViewOauthRefreshToken extends XotBaseViewRecord
                         ->schema([
                             'id' => TextEntry::make('id'),
                             'access_token_id' => TextEntry::make('accessToken.id'),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                         ]),
                 ])->columns(1),
 

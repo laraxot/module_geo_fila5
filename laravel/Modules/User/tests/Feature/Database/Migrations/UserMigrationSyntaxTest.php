@@ -19,10 +19,6 @@ it('does not contain merge conflict markers in user migrations', function (strin
     $contents = file_get_contents($migrationFile);
 
     expect($contents)->not->toBeFalse();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     expect($contents)->not->toContain('=======');
     expect($contents)->not->toContain('>>>>>>> ');
 })->with('userMigrationFiles');

@@ -2,19 +2,7 @@
 
 ## Panoramica
 
-<<<<<<< Updated upstream
 Questo documento descrive l'architettura e l'implementazione dell'integrazione WhatsApp nel modulo Notify di Quaeris, seguendo gli stessi standard e pattern utilizzati per l'invio di email e SMS.
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-Questo documento descrive l'architettura e l'implementazione dell'integrazione WhatsApp nel modulo Notify di Laraxot, seguendo gli stessi standard e pattern utilizzati per l'invio di email e SMS.
-=======
-Questo documento descrive l'architettura e l'implementazione dell'integrazione WhatsApp nel modulo Notify di healthcare_app, seguendo gli stessi standard e pattern utilizzati per l'invio di email e SMS.
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
-=======
-Questo documento descrive l'architettura e l'implementazione dell'integrazione WhatsApp nel modulo Notify di Quaeris, seguendo gli stessi standard e pattern utilizzati per l'invio di email e SMS.
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
 ## Architettura
 
@@ -411,19 +399,7 @@ $action = app(SendTwilioWhatsAppAction::class);
 
 $whatsAppData = new WhatsAppData(
     to: '+393401234567',
-<<<<<<< Updated upstream
 body: 'Questo è un messaggio di test da Quaeris',
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    body: 'Questo è un messaggio di test da Laraxot',
-=======
-    body: 'Questo è un messaggio di test da healthcare_app',
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
-=======
-body: 'Questo è un messaggio di test da Quaeris',
->>>>>>> origin/dev
->>>>>>> Stashed changes
 );
 
 $result = $action->execute($whatsAppData);
@@ -556,19 +532,7 @@ L'integrazione WhatsApp  segue gli stessi pattern e standard utilizzati per l'in
 3. **Estensibilità**: È facile aggiungere nuovi provider WhatsApp
 4. **Testabilità**: Le azioni sono facilmente testabili grazie all'interfaccia comune
 
-<<<<<<< Updated upstream
 Seguendo questa architettura, l'integrazione WhatsApp si inserisce perfettamente nell'ecosistema di notifiche di Quaeris, mantenendo la coerenza con le altre modalità di comunicazione.
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-Seguendo questa architettura, l'integrazione WhatsApp si inserisce perfettamente nell'ecosistema di notifiche di Laraxot, mantenendo la coerenza con le altre modalità di comunicazione.
-=======
-Seguendo questa architettura, l'integrazione WhatsApp si inserisce perfettamente nell'ecosistema di notifiche di healthcare_app, mantenendo la coerenza con le altre modalità di comunicazione.
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
-=======
-Seguendo questa architettura, l'integrazione WhatsApp si inserisce perfettamente nell'ecosistema di notifiche di Quaeris, mantenendo la coerenza con le altre modalità di comunicazione.
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
 ---
 

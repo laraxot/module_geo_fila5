@@ -51,10 +51,6 @@
     "laravel/passport": "^13.0",
     "socialiteproviders/auth0": "*",
     "spatie/laravel-permission": "^7.0",
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     "spatie/laravel-personal-data-export": "*",
     "socialiteproviders/microsoft": "^4.8"
   },

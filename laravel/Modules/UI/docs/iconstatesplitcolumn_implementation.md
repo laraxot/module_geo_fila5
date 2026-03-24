@@ -329,13 +329,4 @@ document.addEventListener('state-transition', function(event) {
 
 **Last Updated**: June 2025
 **Version**: 2.1
-<<<<<<< HEAD
-<<<<<<< HEAD
 **Compatibility**: Filament 4.x, Laravel 10.x 
-=======
-**Compatibility**: Filament 3.x, Laravel 10.x 
->>>>>>> 7eb1087 (.)
-=======
-**Compatibility**: Filament 3.x, Laravel 10.x 
-**Compatibility**: Filament 3.x, Laravel 10.x 
->>>>>>> laraxot/develop

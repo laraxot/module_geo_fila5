@@ -1383,3 +1383,4 @@ Specialized UI components for displaying statistics of Y type questions:
     </script>
 </div>
 ```
+- [Conflict Resolution](conflict-resolution.md)

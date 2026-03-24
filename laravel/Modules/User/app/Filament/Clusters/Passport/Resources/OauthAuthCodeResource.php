@@ -99,10 +99,6 @@ class OauthAuthCodeResource extends XotBaseResource
                     ->label(static::trans('filters.valid'))
                     ->query(fn (Builder $query) => $query->where('revoked', false)->where('expires_at', '>', now())),
             ])
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             ->recordActions([
                 \Filament\Actions\Action::make('revoke')
                     ->label(static::trans('actions.revoke.label'))

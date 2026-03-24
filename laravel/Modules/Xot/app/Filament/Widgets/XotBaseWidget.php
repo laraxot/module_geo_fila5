@@ -83,10 +83,6 @@ abstract class XotBaseWidget extends FilamentWidget implements HasActions, HasFo
         // Override nelle classi figlie se necessario
         return [];
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
     /**
      * Configura il form del widget.

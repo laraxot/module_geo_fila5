@@ -14,10 +14,6 @@ use Modules\User\Models\DeviceUser;
 use Modules\User\Models\Extra;
 use Modules\User\Models\Feature;
 use Modules\User\Models\Notification;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthDeviceCode;
@@ -39,10 +35,6 @@ test('Notification model can be instantiated', function () {
 test('OauthToken model can be instantiated', function () {
     $model = new OauthToken();
     expect($model)->toBeInstanceOf(OauthToken::class);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 });
 
 test('OauthClient model can be instantiated', function () {
@@ -65,10 +57,6 @@ test('OauthPersonalAccessClient model can be instantiated', function () {
     expect($model)->toBeInstanceOf(OauthPersonalAccessClient::class);
 });
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 test('OauthDeviceCode model can be instantiated', function () {
     $model = new OauthDeviceCode();
     expect($model)->toBeInstanceOf(OauthDeviceCode::class);

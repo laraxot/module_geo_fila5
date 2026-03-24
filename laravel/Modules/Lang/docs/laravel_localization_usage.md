@@ -28,11 +28,7 @@ Questo documento descrive come utilizzare correttamente il pacchetto `mcamara/la
 ## Configurazione
 
 Il pacchetto `mcamara/laravel-localization` è già configurato . La configurazione si trova in:
-<<<<<<< HEAD
 - `/var/www/html/<directory progetto>/laravel/config/laravellocalization.php`
-=======
-- `/var/www/html/saluteora/laravel/config/laravellocalization.php`
->>>>>>> laraxot/develop
 
 Le lingue supportate sono definite nella chiave `supportedLocales` di questo file.
 
@@ -101,11 +97,7 @@ $currentLocale = app()->getLocale();
 
 ## Utilizzo delle Bandiere SVG
 
-<<<<<<< HEAD
 Le bandiere SVG sono disponibili in `/var/www/html/<directory progetto>/laravel/Modules/UI/resources/svg/flags` e sono autoregistrate come componenti Blade con il prefisso `ui-flags`.
-=======
-Le bandiere SVG sono disponibili in `/var/www/html/saluteora/laravel/Modules/UI/resources/svg/flags` e sono autoregistrate come componenti Blade con il prefisso `ui-flags`.
->>>>>>> laraxot/develop
 
 ### Utilizzo Corretto
 

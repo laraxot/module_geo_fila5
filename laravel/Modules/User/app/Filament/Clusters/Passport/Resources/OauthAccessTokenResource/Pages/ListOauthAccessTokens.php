@@ -10,8 +10,4 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 class ListOauthAccessTokens extends XotBaseListRecords
 {
     protected static string $resource = OauthAccessTokenResource::class;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

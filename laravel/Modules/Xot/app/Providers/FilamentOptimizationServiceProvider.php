@@ -248,10 +248,6 @@ class FilamentOptimizationServiceProvider extends ServiceProvider
             return str_contains($path, '/admin')
                                || str_ends_with($path, '/admin')
                                || preg_match('/\/(user|<nome progetto>|cms|geo|notify|tenant)\/admin/', $path);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         }
 
         return false;

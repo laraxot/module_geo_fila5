@@ -33,15 +33,7 @@
 | 6 | **Chart** | 0 | 0 | 9-10 | ✨ Già Puro |
 | 7 | **Geo** | 0 | 0 | 9-10 | ✨ Già Puro |
 | 8 | **Job** | 2 | 0 | 10 | ✨ Illuminato |
-<<<<<<< .merge_file_qkiqhT
 | 9 | **healthcare_app** | 13 | 0 | 10 | ✨ Illuminato |
-=======
-<<<<<<< HEAD
-| 9 | **ExternalProject** | 13 | 0 | 10 | ✨ Illuminato |
-=======
-| 9 | **ModuloEsempio** | 13 | 0 | 10 | ✨ Illuminato |
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_kf6vny
 
 ### 📈 Metriche dell'Illuminazione
 
@@ -92,15 +84,7 @@ Codice perfetto
 ## 🎯 Le Sette Illuminazioni Principali
 
 ### 1️⃣ Semantic Keys (Il Nome delle Cose)
-<<<<<<< .merge_file_qkiqhT
 **Moduli**: Cms, healthcare_app
-=======
-<<<<<<< HEAD
-**Moduli**: Cms, ExternalProject
-=======
-**Moduli**: Cms, ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_kf6vny
 
 **Insegnamento**:
 > "Un array con int keys è come un tempio senza insegne.
@@ -133,15 +117,7 @@ if (is_array($value)) { /* ... */ }  // Dopo filter che garantisce array
 ```
 
 ### 3️⃣ Cascading Purity (L'Effetto Farfalla)
-<<<<<<< .merge_file_qkiqhT
 **Modulo**: healthcare_app
-=======
-<<<<<<< HEAD
-**Modulo**: ExternalProject
-=======
-**Modulo**: ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_kf6vny
 
 **Insegnamento**:
 > "Una goccia crea cerchi in tutto il lago.
@@ -254,15 +230,7 @@ Assert::isArray($value);  // Ridondante dopo narrowing
 Level 10 → 🏔️ Nirvana
             │ Zero tolleranza
             │ Perfezione assoluta
-<<<<<<< .merge_file_qkiqhT
             └─ Job, healthcare_app
-=======
-<<<<<<< HEAD
-            └─ Job, ExternalProject
-=======
-            └─ Job, ModuloEsempio
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_kf6vny
 
 Level 9  → ⛰️  Illuminazione
             │ Quasi perfezione
@@ -287,15 +255,7 @@ Level 0  → 🏕️  Campo Base
    - Collection Flow Analysis
    - Best practices Level 10
 
-<<<<<<< .merge_file_qkiqhT
 2. **`Modules/healthcare_app/docs/phpstan-enlightenment.md`**
-=======
-<<<<<<< HEAD
-2. **`Modules/ExternalProject/docs/phpstan-enlightenment.md`**
-=======
-2. **`Modules/ModuloEsempio/docs/phpstan-enlightenment.md`**
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_kf6vny
    - Filosofia del modulo
    - I 4 Pilastri
    - Le 4 Nobili Verità del Type Safety

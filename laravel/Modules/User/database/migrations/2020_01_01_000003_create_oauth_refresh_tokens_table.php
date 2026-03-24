@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\OauthToken;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 return new class extends XotBaseMigration {
@@ -21,10 +17,6 @@ return new class extends XotBaseMigration {
             $table->string('id', 100)->primary();
             // $table->string('access_token_id', 100)->index();
             $table->foreignIdFor(OauthToken::class, 'access_token_id')->index();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             $table->boolean('revoked');
             $table->dateTime('expires_at')->nullable();
         });

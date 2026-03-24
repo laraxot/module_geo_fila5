@@ -1,12 +1,8 @@
-<<<<<<< .merge_file_Yetbce
 
-=======
->>>>>>> .merge_file_CVX6FM
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary
 
-<<<<<<< .merge_file_Yetbce
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios. (.)
@@ -35,9 +31,6 @@ Successfully implemented comprehensive Pest PHP tests for 5 critical User module
 
 Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios.
 
-=======
-Successfully implemented comprehensive Pest PHP tests for 5 critical User module Actions in <nome progetto>. All tests are now **PASSING** with high code coverage and comprehensive test scenarios. (.)
->>>>>>> .merge_file_CVX6FM
 # <nome progetto> User Module - Pest Test Implementation Report
 
 ## Executive Summary

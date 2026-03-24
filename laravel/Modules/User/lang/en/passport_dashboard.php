@@ -68,10 +68,6 @@ return [
         ],
         'generate_keys' => [
             'label' => 'Generate Keys',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         ],
     ],
     'status' => [

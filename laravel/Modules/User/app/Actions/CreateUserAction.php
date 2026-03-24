@@ -7,10 +7,6 @@ namespace Modules\User\Actions;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Modules\User\Models\User;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Spatie\QueueableAction\QueueableAction;
 
 /**

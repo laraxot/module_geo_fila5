@@ -1,17 +1,7 @@
 # 🔧 PHPStan Fixes - Modulo Notify - Gennaio 2025
 
-<<<<<<< Updated upstream
 **Data**: 27 Gennaio 2025  
 **Status**: ✅ COMPLETATO CON SUCCESSO  
-=======
-<<<<<<< HEAD
-**Data**: 27 Gennaio 2025
-**Status**: ✅ COMPLETATO CON SUCCESSO
-=======
-**Data**: 27 Gennaio 2025  
-**Status**: ✅ COMPLETATO CON SUCCESSO  
->>>>>>> origin/dev
->>>>>>> Stashed changes
 **Errori Corretti**: 5 errori di sintassi method chaining
 
 ## 📋 Panoramica Correzioni
@@ -150,15 +140,7 @@ PHPStan aveva difficoltà nel riconoscere la sintassi method chaining in alcuni 
 - **Leggibilità migliorata**: Codice più esplicito e chiaro
 
 ### **Benefici**
-<<<<<<< Updated upstream
 - ✅ **PHPStan Level 9**: Compatibilità completa
-=======
-<<<<<<< HEAD
-- ✅ **PHPStan level 10**: Compatibilità completa
-=======
-- ✅ **PHPStan Level 9**: Compatibilità completa
->>>>>>> origin/dev
->>>>>>> Stashed changes
 - ✅ **Leggibilità**: Codice più esplicito e chiaro
 - ✅ **Type Safety**: Mantenuta con type hints espliciti
 - ✅ **Debugging**: Più facile identificare problemi
@@ -247,15 +229,7 @@ public function toMail(object $notifiable): MailMessage
 ## 📚 **Riferimenti**
 
 ### **Documentazione Correlata**
-<<<<<<< Updated upstream
 - [README.md Modulo Notify](./readme.md)
-=======
-<<<<<<< HEAD
-- [README.md Modulo Notify](./README.md)
-=======
-- [README.md Modulo Notify](./readme.md)
->>>>>>> origin/dev
->>>>>>> Stashed changes
 - [Template Management](./template-management.md)
 - [Best Practices](./best-practices.md)
 
@@ -266,7 +240,6 @@ public function toMail(object $notifiable): MailMessage
 
 ---
 
-<<<<<<< Updated upstream
 **🔄 Ultimo aggiornamento**: 27 Gennaio 2025  
 **📦 Versione**: 1.0  
 **🐛 PHPStan Level**: 9 ✅  
@@ -275,22 +248,3 @@ public function toMail(object $notifiable): MailMessage
 **✨ Test Coverage**: 95% ✅
 
 
-=======
-<<<<<<< HEAD
-**🔄 Ultimo aggiornamento**: 27 Gennaio 2025
-**📦 Versione**: 1.0
-**🐛 PHPStan Level**: 9 ✅
-**🌐 Translation Standards**: IT/EN complete ✅
-**🚀 Performance**: 92/100 score
-**✨ Test Coverage**: 95% ✅
-=======
-**🔄 Ultimo aggiornamento**: 27 Gennaio 2025  
-**📦 Versione**: 1.0  
-**🐛 PHPStan Level**: 9 ✅  
-**🌐 Translation Standards**: IT/EN complete ✅  
-**🚀 Performance**: 92/100 score  
-**✨ Test Coverage**: 95% ✅
-
-
->>>>>>> origin/dev
->>>>>>> Stashed changes

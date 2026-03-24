@@ -12,15 +12,7 @@ Documentazione delle correzioni apportate durante l'esecuzione di `composer upda
 
 ### 1. Errore di Sintassi in Helper.php
 
-<<<<<<< Updated upstream
 **File**: `Modules/Xot/helpers/Helper.php:727`
-=======
-<<<<<<< HEAD
-**File**: `Modules/Xot/Helpers/Helper.php:727`
-=======
-**File**: `Modules/Xot/helpers/Helper.php:727`
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
 **Problema**:
 ```php
@@ -37,15 +29,7 @@ $related = $return->getRelated();
 $related_model = (new ReflectionClass($related))->getName();
 ```
 
-<<<<<<< Updated upstream
 **File Modificato**: `Modules/Xot/helpers/Helper.php:727-728`
-=======
-<<<<<<< HEAD
-**File Modificato**: `Modules/Xot/Helpers/Helper.php:727-728`
-=======
-**File Modificato**: `Modules/Xot/helpers/Helper.php:727-728`
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
 ---
 

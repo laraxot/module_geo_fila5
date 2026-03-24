@@ -544,7 +544,6 @@ class MyFormComponent extends Field
         $this->validateUsing([/* validation rules */]);
     }
 }
-<<<<<<< Updated upstream
 
 // Non aggiungere route manualmente
 Route::get('/example', [ExampleController::class, 'index']);
@@ -566,8 +565,6 @@ Blade::component('ui::components.icon', 'ui.icon');
 
 // Non creare componenti personalizzati se esiste un equivalente Filament
 <x-ui.button>Click me</x-ui.button>
-=======
->>>>>>> Stashed changes
 ```
 
 ### Widget Development

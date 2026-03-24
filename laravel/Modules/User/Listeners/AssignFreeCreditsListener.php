@@ -11,10 +11,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
  * Listener per assegnare crediti iniziali gratuiti ai nuovi utenti.
  *
  * Richiede il modulo Predict con Profile (credits). Se assente, non esegue nulla.
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
  */
 class AssignFreeCreditsListener
 {
@@ -50,10 +46,6 @@ class AssignFreeCreditsListener
         );
 
         if (0 === $profile->credits) {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             $profile->update(['credits' => self::FREE_STARTING_CREDITS]);
         }
     }

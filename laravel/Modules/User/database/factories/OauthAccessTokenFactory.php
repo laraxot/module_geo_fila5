@@ -13,23 +13,11 @@ use Modules\User\Models\User;
  * OauthToken Factory.
  *
  * Factory for creating OauthToken model instances for testing and seeding.
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
  */
 class OauthAccessTokenFactory extends Factory
 {
-<<<<<<< Updated upstream
     /** @phpstan-ignore-next-line Passport access token is an Eloquent model at runtime, but PHPStan loses that type here. */
     protected $model = OauthToken::class;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-    protected $model = OauthToken::class; // @phpstan-ignore property.defaultValue
->>>>>>> Stashed changes
 
     /**
      * Define the model's default state.

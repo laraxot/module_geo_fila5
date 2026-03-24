@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\User\Models\OauthToken;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 /**
  * OauthRefreshToken Factory.
@@ -35,10 +31,6 @@ class OauthRefreshTokenFactory extends Factory
     protected function newAccessTokenId(): string
     {
         /** @var OauthToken $token */
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         $token = (new OauthAccessTokenFactory())->create([
             'id' => $this->faker->uuid(),
             'user_id' => null,

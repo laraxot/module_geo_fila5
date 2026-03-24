@@ -23,17 +23,8 @@
   "require": {
     "php": "^8.2",
     "pbmedia/laravel-ffmpeg": "^8.5",
-<<<<<<< Updated upstream
     "intervention/image": "^3.0",
     "spatie/laravel-medialibrary": "^11.0"
-=======
-<<<<<<< HEAD
-    "intervention/image": "*"
-=======
-    "intervention/image": "^3.0",
-    "spatie/laravel-medialibrary": "^11.0"
->>>>>>> origin/dev
->>>>>>> Stashed changes
   },
   "require-dev": {},
   "repositories": [

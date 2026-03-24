@@ -8,10 +8,6 @@ use Filament\Support\Components\Component;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Illuminate\Support\Str;
 use Livewire\Features\SupportRedirects\Redirector;
 use Modules\Xot\Datas\XotData;
@@ -95,10 +91,6 @@ class EditUserWidget extends XotBaseWidget
                 return $result;
             } catch (\Exception $e) {
                 // Se toArray() fallisce (problemi con enum), usa getAttributes()
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                 /** @var array<string, mixed> $result */
                 $result = $model->getAttributes();
                 // Gestisci specificamente gli enum se presenti
@@ -118,10 +110,6 @@ class EditUserWidget extends XotBaseWidget
                 $fields[] = $field;
             }
         }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
         /** @var array<string, mixed> $result */
         $result = array_fill_keys($fields, null);

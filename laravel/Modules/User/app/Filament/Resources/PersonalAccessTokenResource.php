@@ -7,19 +7,11 @@ namespace Modules\User\Filament\Resources;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Modules\User\Models\OauthToken;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 final class PersonalAccessTokenResource extends XotBaseResource
 {
     protected static ?string $model = OauthToken::class;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
     protected static ?string $recordTitleAttribute = 'name';
 

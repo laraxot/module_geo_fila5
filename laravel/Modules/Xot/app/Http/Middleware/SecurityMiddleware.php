@@ -174,10 +174,6 @@ class SecurityMiddleware
         if ($isSecureTransport) {
             $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
         }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
         // X-Frame-Options
         $response->headers->set('X-Frame-Options', 'DENY');
@@ -200,10 +196,6 @@ class SecurityMiddleware
             $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
             $response->headers->set('Cross-Origin-Resource-Policy', 'same-origin');
         }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     }
 
     /**
@@ -225,10 +217,6 @@ class SecurityMiddleware
             "img-src 'self' data: https: http: blob:",
             "media-src 'self' blob:",
             'connect-src '.implode(' ', array_unique($connectSources)),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             "frame-src 'none'",
             "object-src 'none'",
             "base-uri 'self'",
@@ -258,10 +246,6 @@ class SecurityMiddleware
         return false;
     }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     /**
      * Costruisci Permissions Policy.
      */
@@ -277,20 +261,12 @@ class SecurityMiddleware
             'gyroscope=()',
             'accelerometer=()',
             'autoplay=()',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             'bluetooth=()',
             'display-capture=()',
             'fullscreen=(self)',
             'gamepad=()',
             'midi=()',
             'screen-wake-lock=()',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             'web-share=()',
             'xr-spatial-tracking=()',
         ];

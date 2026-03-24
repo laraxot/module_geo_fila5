@@ -19,10 +19,6 @@ use Modules\User\Models\Policies\OauthDeviceCodePolicy;
 use Modules\User\Models\Policies\OauthPersonalAccessClientPolicy;
 use Modules\User\Models\Policies\OauthRefreshTokenPolicy;
 use Modules\User\Models\Policies\OauthTokenPolicy;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Modules\User\Models\Policies\SocialiteUserPolicy;
 use Modules\User\Models\Policies\SocialProviderPolicy;
 use Modules\User\Models\Policies\TeamInvitationPolicy;
@@ -36,10 +32,6 @@ test('OauthClientPolicy can be instantiated', function () {
 test('OauthTokenPolicy can be instantiated', function () {
     $policy = new OauthTokenPolicy();
     expect($policy)->toBeInstanceOf(OauthTokenPolicy::class);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 });
 
 test('OauthAuthCodePolicy can be instantiated', function () {
@@ -52,10 +44,6 @@ test('OauthDeviceCodePolicy can be instantiated', function () {
     expect($policy)->toBeInstanceOf(OauthDeviceCodePolicy::class);
 });
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 test('OauthRefreshTokenPolicy can be instantiated', function () {
     $policy = new OauthRefreshTokenPolicy();
     expect($policy)->toBeInstanceOf(OauthRefreshTokenPolicy::class);

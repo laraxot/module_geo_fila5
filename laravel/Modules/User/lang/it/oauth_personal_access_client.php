@@ -76,10 +76,6 @@ return [
             'tooltip' => 'profile',
             'icon' => 'profile',
         ],
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     ],
     'messages' => [
         'created' => 'Personal Access Client creato con successo',

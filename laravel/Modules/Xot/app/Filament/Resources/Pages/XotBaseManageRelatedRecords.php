@@ -137,8 +137,4 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     {
         return [];
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

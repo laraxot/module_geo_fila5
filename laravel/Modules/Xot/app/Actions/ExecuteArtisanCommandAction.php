@@ -18,10 +18,6 @@ class ExecuteArtisanCommandAction
 
     /**
      * Lista dei comandi consentiti per motivi di sicurezza (match esatto).
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
      *
      * @var array<int, string>
      */
@@ -44,10 +40,6 @@ class ExecuteArtisanCommandAction
      */
     private array $allowedCommandPrefixes = [
         'passport:install',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         'passport:keys',
         'passport:purge',
         'passport:hash',
@@ -167,9 +159,5 @@ class ExecuteArtisanCommandAction
         }
 
         return false;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     }
 }

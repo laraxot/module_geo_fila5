@@ -7,10 +7,6 @@ namespace Modules\User\Filament\Clusters\Passport\Pages;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 use Filament\Notifications\Notification;
 use Livewire\Attributes\On;
 use Modules\User\Filament\Clusters\Passport;
@@ -153,10 +149,6 @@ class PassportDashboard extends XotBasePage
         ];
     }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     protected function getHeaderActions(): array
     {
         return [
@@ -180,10 +172,6 @@ class PassportDashboard extends XotBasePage
                     }
                     $this->executeCommand($cmd);
                 }),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
             Action::make('passport_keys')
                 ->icon('heroicon-o-key')
@@ -204,10 +192,6 @@ class PassportDashboard extends XotBasePage
                     }
                     $this->executeCommand($cmd);
                 }),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
             Action::make('passport_purge')
                 ->icon('heroicon-o-trash')
@@ -246,10 +230,6 @@ class PassportDashboard extends XotBasePage
                     $cmd = 'passport:purge'.(empty($parts) ? '' : ' '.implode(' ', $parts));
                     $this->executeCommand($cmd);
                 }),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
             Action::make('passport_hash')
                 ->icon('heroicon-o-lock-closed')
@@ -271,10 +251,6 @@ class PassportDashboard extends XotBasePage
                     }
                     $this->executeCommand($cmd);
                 }),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         ];
     }
 }

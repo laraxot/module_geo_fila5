@@ -32,10 +32,6 @@ return [
         'force' => [
             'description' => 'force',
         ],
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     ],
     'actions' => [
         'create' => [
@@ -78,10 +74,6 @@ return [
         'hash_secrets' => [
             'label' => 'Hash Secret',
             'modal_description' => 'Applica l\'hashing a tutti i client secret esistenti. Operazione irreversibile.',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         ],
         'generate_keys' => [
             'label' => 'Genera Chiavi',
@@ -89,10 +81,6 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         ],
     ],
     'status' => [

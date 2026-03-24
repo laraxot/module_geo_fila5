@@ -21,10 +21,6 @@ class SocialiteServiceProvider extends BaseSocialiteServiceProvider
             if (class_exists('SocialiteProviders\\Microsoft\\Provider')) {
                 $event->extendSocialite('microsoft', \SocialiteProviders\Microsoft\Provider::class);
             }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         });
     }
 }

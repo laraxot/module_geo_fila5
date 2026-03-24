@@ -1,21 +1,3 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-# Modulo Notify - Analisi Completa
-=======
-=======
->>>>>>> origin/dev
->>>>>>> Stashed changes
 # Modulo Notify - Documentazione
 
 ## 📚 Overview
@@ -250,41 +232,12 @@ Notification::route('mail', 'to@example.com')->notify($notify);
 
 ---
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
-=======
->>>>>>> origin/dev
->>>>>>> Stashed changes
 **Ultimo aggiornamento**: Novembre 2025 (PSR-4 fixes)  
 **Versione**: 1.1  
 **Stato**: PSR-4 compliant, test business logic completati (95% copertura)  
 **Prossimi passi**: Completamento test modelli base  
 **Changelog**: [CHANGELOG.md](./CHANGELOG.md)
-<<<<<<< Updated upstream
 
-=======
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> origin/dev
->>>>>>> Stashed changes
 ## 🔗 Collegamenti
 
 ### Moduli Correlati

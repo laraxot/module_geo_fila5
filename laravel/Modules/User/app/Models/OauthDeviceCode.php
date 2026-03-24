@@ -9,10 +9,6 @@ use Laravel\Passport\DeviceCode as PassportDeviceCode;
 use Laravel\Passport\Passport;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 /**
  * Class OauthDeviceCode.
@@ -53,8 +49,4 @@ class OauthDeviceCode extends PassportDeviceCode
 
         return $this->belongsTo($userClass, 'user_id');
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
