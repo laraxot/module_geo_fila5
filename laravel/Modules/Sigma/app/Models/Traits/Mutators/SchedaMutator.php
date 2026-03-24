@@ -401,9 +401,12 @@ trait SchedaMutator
             return null;
         }
 
-        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // ⚠️ DO NOT call update() inside accessor - may causes infinite loop
         // Just set the raw attribute value without triggering events
         $this->attributes['disci1'] = $value;
+        if($this->getKey()!=null){
+            $this->update(['disci1'=>$value]);
+        }
 
         return $value;
     }

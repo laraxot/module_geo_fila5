@@ -150,8 +150,11 @@ trait EnteMatrDateRangeMutator
         return $value;
     }
 
-    protected function getGgParttimevertDalalAttribute(): ?float
+    protected function getGgParttimevertDalalAttribute(?float $value): ?float
     {
+        if(is_numeric($value)){
+            return (float)$value;
+        }
         $date_min = $this->dal;
         $date_max = $this->al;
         if ($date_min === null || $date_min === 0 || $date_min === '') {
@@ -198,7 +201,7 @@ trait EnteMatrDateRangeMutator
         return is_numeric($value) ? (float) $value : null;
     }
 
-    protected function getGgPresenzaDalalAttribute(): int
+    protected function getGgPresenzaDalal(): ?int
     {
         $date_min = $this->dal;
         $date_max = $this->al;
@@ -222,24 +225,29 @@ trait EnteMatrDateRangeMutator
             ->withDays($date_min_int_typed, $date_max_int_typed)
             ->get()
             ->sum('days');
-        $this->gg_presenza_dalal = is_numeric($value) ? (int) $value : 0;
 
+        return is_numeric($value) ? (int) $value : null;
+    }
+
+    protected function getGgPresenzaDalalAttribute(?int $value): ?int
+    {
+        if (is_int($value)) {
+            return $value;
+        }
+        $value = $this->getGgPresenzaDalal();
         // Guard: modello deve avere PK per salvare
-        if ($this->getKey() !== null) {
+        if ($this->getKey() != null) {
             // Prevent recursive activitylog crash
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['gg_presenza_dalal' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
+            try {
+                static::withoutEvents(function () use ($value): void {
+                    $this->update(['gg_presenza_dalal' => $value]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
             }
         }
 
-        return is_numeric($value) ? (int) $value : 0;
+        return $value;
     }
 
     protected function getCategoriaEcoAttribute(?string $value): ?string
