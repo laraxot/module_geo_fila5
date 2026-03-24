@@ -7,13 +7,19 @@
 ## ⚠️ REGOLA CRITICA: Database SACRO 🔴
 
 > **MAI eseguire**: `migrate:refresh`, `migrate:fresh`, `migrate:rollback`  
+> **MAI usare**: `migrate --force` (manuale in produzione)  
 > **SOLO eseguire**: `migrate` (forward-only)
 
 Le migration Laraxot sono **IDEMPOTENTI** - usano `if (! $this->hasColumn())` e non cancellano mai dati.
 
 **Perché**: I dati sono SACRI - `migrate:refresh` esegue `down()` che **CANCELLA TUTTO**.
 
-📖 Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`
+**`--force` è PERICOLOSO**:
+- ❌ MAI usarlo manualmente in produzione
+- ✅ SOLO in CI/CD pipeline automatizzate
+- SEMPRE backup e maintenance mode prima
+
+📖 Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`, `MAI_FARE_MIGRATE_FORCE.md`
 
 ---
 

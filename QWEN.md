@@ -198,14 +198,23 @@ php artisan migrate:refresh
 php artisan migrate:fresh
 php artisan migrate:rollback
 
+// ❌ MAI USARE --force MANUALE (bypassa sicurezza produzione)
+php artisan migrate --force
+
 // ✅ SOLO questo (preserva i dati)
 php artisan migrate
 php artisan migrate --path=specific_migration.php
+
+// ✅ --force SOLO in CI/CD automatizzato
+# .github/workflows/deploy.yml
+php artisan migrate --force  # OK solo in pipeline automatizzata
 ```
 
 **Le migration Laraxot sono IDEMPOTENTI**: usano `if (! $this->hasColumn())` e non cancellano mai dati.
 
-Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`
+**Produzione**: Usa SEMPRE maintenance mode e backup prima di migrare.
+
+Vedi: `laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md`, `MAI_FARE_MIGRATE_FORCE.md`
 
 ### 8. PHPStan Level 10
 
