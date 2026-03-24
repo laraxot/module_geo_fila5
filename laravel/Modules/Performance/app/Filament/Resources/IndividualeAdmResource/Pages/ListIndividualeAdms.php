@@ -21,22 +21,24 @@ use Modules\Ptv\Filament\Columns\LavoratoreColumn;
 use Modules\Ptv\Filament\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Columns\QualificaColumn;
 use Modules\Ptv\Filament\Columns\RepartoColumn;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 use function Safe\date;
 
-class ListIndividualeAdms extends XotBaseListRecords
+class ListIndividualeAdms extends ListScheda
 {
     protected static string $resource = IndividualeAdmResource::class;
 
     /**
      * @return array<Column>
      */
-    public function getTableColumns(): array
+    public function getTableColumnsOLD(): array
     {
         return [
             'type' => TextColumn::make('type')
+                ->badge()
                 ->searchable(),
             'valutatore_id' => SelectColumn::make('valutatore_id')
                 ->label('valutatore')
@@ -81,6 +83,40 @@ class ListIndividualeAdms extends XotBaseListRecords
             'qualifica' => QualificaColumn::make('qualifica'),
             'reparto' => RepartoColumn::make('reparto'),
             'periodo' => PeriodoColumn::make('periodo'),
+        ];
+    }
+
+    /**
+     * @return array<Column>
+     */
+    public function getTableColumns(): array
+    {
+        return [
+            'id'=>TextColumn::make('id'),
+            'type' => TextColumn::make('type')
+                ->badge()
+                ->searchable(),
+            'soldi_group' => GroupColumn::make('soldi')->schema([
+                'importo_totale' => TextColumn::make('importo_totale'),
+                'resti' => TextColumn::make('resti'),
+                'resti_pond' => TextColumn::make('resti_pond'),
+                'budget_assegnato' => TextColumn::make('budget_assegnato'),
+                'quota_effettiva' => TextColumn::make('quota_effettiva'),
+
+            ]),
+            'info_group' => GroupColumn::make('info')->schema([
+                'perc_parttimepond_dalal' => TextColumn::make('perc_parttimepond_dalal'),
+                'gg_presenza_dalal' => TextColumn::make('gg_presenza_dalal'),
+                'gg_assenza_dalal' => TextColumn::make('gg_assenza_dalal'),
+                'hh_assenza_dalal' => TextColumn::make('hh_assenza_dalal'),
+                'quota_teorica' => TextColumn::make('quota_teorica'),
+                'budget_assegnato' => TextColumn::make('budget_assegnato'),
+                'quota_effettiva' => TextColumn::make('quota_effettiva'),
+                'resti' => TextColumn::make('resti'),
+                'resti_pond' => TextColumn::make('resti_pond'),
+                'importo_totale' => TextColumn::make('importo_totale'),
+            ]),
+            ...parent::getTableColumns(),
         ];
     }
 

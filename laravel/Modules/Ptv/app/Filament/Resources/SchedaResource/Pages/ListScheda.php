@@ -76,6 +76,7 @@ class ListScheda extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
+            'id'=>TextColumn::make('id'),
             'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
             'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([
                 'motivo' => TextColumn::make('motivo')->searchable(),

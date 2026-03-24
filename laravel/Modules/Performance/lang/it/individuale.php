@@ -207,6 +207,9 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
     ],
     'actions' => [
         'copy_from_organizzativa' => [

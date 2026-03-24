@@ -567,4 +567,25 @@ trait SchedaMutator
      */
     // *
     // */
+    public function getWorkerType(): string
+    {
+        $post_type = 'dip';
+        if ($this->isPo()) {
+            $post_type = 'po';
+        } elseif ($this->isRegionale()) {
+            $post_type = 'regionale';
+        } 
+        return $post_type;
+    }
+    public function getTypeAttribute(?string $value): string
+    {
+        if($value!=null){
+            return $value;
+        }
+        $value=$this->getWorkerType();
+        if($this->getKey()!=null){
+            $this->update(['type'=>$value]);
+        }
+        return $value;
+    }
 }

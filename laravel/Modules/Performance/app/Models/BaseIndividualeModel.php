@@ -225,7 +225,7 @@ abstract class BaseIndividualeModel extends BaseScheda
     public function casts(): array
     {
         return [
-            //'type' => WorkerType::class,
+            'type' => WorkerType::class,
             'ente' => 'integer',
             'matr' => 'integer',
             'disci1' => 'integer',

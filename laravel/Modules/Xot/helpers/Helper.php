@@ -76,20 +76,20 @@ if (! function_exists('hex2rgba')) {
             return $default;
         }
 
-        if ($color[0] === '#') {
+        if ('#' === $color[0]) {
             $color = mb_substr($color, 1);
         }
 
-        if (mb_strlen($color) === 6) {
+        if (6 === mb_strlen($color)) {
             $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
-        } elseif (mb_strlen($color) === 3) {
+        } elseif (3 === mb_strlen($color)) {
             $hex = [$color[0].$color[0], $color[1].$color[1], $color[2].$color[2]];
         } else {
             return $default;
         }
 
         $rgb = array_map('hexdec', $hex);
-        if ($opacity !== -1.0) {
+        if (-1.0 !== $opacity) {
             if ($opacity < 0 || $opacity > 1) {
                 $opacity = 1.0;
             }
@@ -162,13 +162,13 @@ if (! function_exists('inAdmin')) {
             return (bool) $params['in_admin'];
         }
 
-        if (Request::segment(2) === 'admin') {
+        if ('admin' === Request::segment(2)) {
             return true;
         }
 
         $segments = Request::segments();
 
-        return (is_countable($segments) ? count($segments) : 0) > 0 && $segments[0] === 'livewire' && session('in_admin') === true;
+        return (is_countable($segments) ? count($segments) : 0) > 0 && 'livewire' === $segments[0] && true === session('in_admin');
     }
 }
 
@@ -388,6 +388,6 @@ if (! function_exists('trans_string')) {
 
         $result = __($key, $safeReplace, $locale);
 
-        return is_string($result) ? $result : ($result === null ? null : $key);
+        return is_string($result) ? $result : (null === $result ? null : $key);
     }
 }

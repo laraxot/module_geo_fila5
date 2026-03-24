@@ -71,7 +71,7 @@ abstract class XotBaseListRecords extends FilamentListRecords
     protected function getHeaderActions(): array
     {
         return [
-            //'create' => CreateAction::make()->icon('heroicon-o-plus'),
+            // 'create' => CreateAction::make()->icon('heroicon-o-plus'),
         ];
     }
 

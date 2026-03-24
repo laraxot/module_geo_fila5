@@ -75,6 +75,53 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 {
     use LogsActivity;
     use SchemalessAttributesTrait;
+    use \Modules\Progressioni\Models\Traits\ConvertedTrait;
+    use SchedaTrait;
+
+     /**
+     * Relazioni da eager-loadare sempre per evitare N+1 queries.
+     *
+     * ⚡ PERFORMANCE CRITICAL: Fix DOPPIO LIVELLO N+1
+     *
+     * PROBLEMA:
+     * 1. Accessor chiama $this->anag->ggInSedeTot()
+     * 2. ggInSedeTot() (in FunctionExtra) chiama $this->qua00f()
+     * 3. = N+1 al primo livello (anag) + N+1 al secondo livello (qua00f)!
+     *
+     * SOLUZIONE:
+     * - Eager load 'anag' (primo livello)
+     * - Eager load 'anag.qua00f', 'anag.qua03f', 'anag.asz00k1' (secondo livello)
+     *
+     * RISULTATO:
+     * - Da 200-300+ query a 5-10 query (95-98% riduzione)
+     * - Da 15-30 secondi a 1-3 secondi (10-30x più veloce)
+     *
+     * @see \Modules\Sigma\docs\performance\function-extra-n-plus-1-queries.md
+     *
+     * @var list<string>
+     */
+    protected $with = [
+        // Primo livello - relazioni dirette di Scheda
+        // 'anag',              // ⚡ CRITICO: evita N+1 su anagrafica
+        // 'categoriaPropro',   // ⚡ CRITICO: evita N+1 su categoria
+        // 'stabiDirigente',    // Evita N+1 su stabi dirigente
+
+        // Secondo livello - relazioni nested di anag (FunctionExtra le usa!)
+        // 'anag.qua00f',       // ⚡ CRITICO: evita N+1 in ggInSedeTot()
+        // 'anag.qua03f',       // ⚡ CRITICO: evita N+1 in ggFuoriSedeTot()
+        // 'anag.asz00k1',      // ⚡ CRITICO: evita N+1 in ggAssenzaInSedeTot(), hhAssenzaInSedeTot()
+    ];
+
+    public string $from_field = 'dal';
+
+    public string $to_field = 'al';
+
+    /**
+     * Number of performance years considered for aggregate calculations.
+     */
+    public int $n_perf_ind = 3;
+
+    protected $table = 'schede';
     
     /**
      * Configure the activity logger options.
@@ -98,17 +145,8 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
             ->logOnlyDirty()   // Solo campi effettivamente modificati
             ->dontSubmitEmptyLogs();  // Non salvare log vuoti
     }
-    /*
-    use SchedaTrait, SigmaModelTrait {
-        SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaInSedeTot insteadof SigmaModelTrait;
-    }
-    */
-    use \Modules\Progressioni\Models\Traits\ConvertedTrait, SchedaTrait;
+   
+   
 
     /**
      * Get avversari with the same category.
@@ -229,50 +267,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         return $this->hasMany(static::class);
     }
 
-    /**
-     * Relazioni da eager-loadare sempre per evitare N+1 queries.
-     *
-     * ⚡ PERFORMANCE CRITICAL: Fix DOPPIO LIVELLO N+1
-     *
-     * PROBLEMA:
-     * 1. Accessor chiama $this->anag->ggInSedeTot()
-     * 2. ggInSedeTot() (in FunctionExtra) chiama $this->qua00f()
-     * 3. = N+1 al primo livello (anag) + N+1 al secondo livello (qua00f)!
-     *
-     * SOLUZIONE:
-     * - Eager load 'anag' (primo livello)
-     * - Eager load 'anag.qua00f', 'anag.qua03f', 'anag.asz00k1' (secondo livello)
-     *
-     * RISULTATO:
-     * - Da 200-300+ query a 5-10 query (95-98% riduzione)
-     * - Da 15-30 secondi a 1-3 secondi (10-30x più veloce)
-     *
-     * @see \Modules\Sigma\docs\performance\function-extra-n-plus-1-queries.md
-     *
-     * @var list<string>
-     */
-    protected $with = [
-        // Primo livello - relazioni dirette di Scheda
-        // 'anag',              // ⚡ CRITICO: evita N+1 su anagrafica
-        // 'categoriaPropro',   // ⚡ CRITICO: evita N+1 su categoria
-        // 'stabiDirigente',    // Evita N+1 su stabi dirigente
-
-        // Secondo livello - relazioni nested di anag (FunctionExtra le usa!)
-        // 'anag.qua00f',       // ⚡ CRITICO: evita N+1 in ggInSedeTot()
-        // 'anag.qua03f',       // ⚡ CRITICO: evita N+1 in ggFuoriSedeTot()
-        // 'anag.asz00k1',      // ⚡ CRITICO: evita N+1 in ggAssenzaInSedeTot(), hhAssenzaInSedeTot()
-    ];
-
-    public string $from_field = 'dal';
-
-    public string $to_field = 'al';
-
-    /**
-     * Number of performance years considered for aggregate calculations.
-     */
-    public int $n_perf_ind = 3;
-
-    protected $table = 'schede';
+   
 
     /**
      * Get the attributes that should be cast.

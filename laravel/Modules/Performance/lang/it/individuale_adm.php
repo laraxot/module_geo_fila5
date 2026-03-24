@@ -188,6 +188,18 @@ return [
         'info' => [
             'label' => 'info',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'motivo/invio_email' => [
+            'label' => 'motivo/invio_email',
+        ],
+        'mail_sended_at' => [
+            'label' => 'mail_sended_at',
+        ],
+        'propro' => [
+            'label' => 'propro',
+        ],
     ],
     'actions' => [
         'import' => [
@@ -266,6 +278,46 @@ return [
             'label' => 'reorderRecords',
             'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'zip_schede' => [
+            'tooltip' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'label' => 'zip_schede',
+        ],
+        'populate_year' => [
+            'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
+        ],
+        'MakePdfAction' => [
+            'label' => 'MakePdfAction',
+            'icon' => 'MakePdfAction',
+            'tooltip' => 'MakePdfAction',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
         ],
     ],
     'messages' => [
