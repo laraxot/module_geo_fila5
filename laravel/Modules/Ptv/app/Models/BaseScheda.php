@@ -75,6 +75,29 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 {
     use LogsActivity;
     use SchemalessAttributesTrait;
+    
+    /**
+     * Configure the activity logger options.
+     *
+     * NOTA: Questo metodo è stato creato per risolvere un errore critico di Spatie Activity Log.
+     *
+     * PROBLEMA: Durante l'accesso a mutator/attribute, Spatie cerca di accedere a
+     *           attributeRawValues che è null, causando:
+     *           "Attempt to read property 'attributeRawValues' on null"
+     *
+     * SOLUZIONE: Disabilito completamente il logging per questo modello loggando solo 'id'.
+     *            I modelli figli possono sovrascrivere questo metodo se necessitano di logging.
+     *
+     * @see \Modules\Activity\docs\errori\duplicate-entry-accessor-save.md
+     * @see \Modules\Sigma\app\Models\Traits\SchedaTrait.php
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['id'])  // Log only ID to effectively disable logging
+            ->logOnlyDirty()   // Solo campi effettivamente modificati
+            ->dontSubmitEmptyLogs();  // Non salvare log vuoti
+    }
     /*
     use SchedaTrait, SigmaModelTrait {
         SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
@@ -266,46 +289,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     protected array $schemalessAttributes = [
         //'calculated_data',
     ];
-
-    /**
-     * Configurazione Activity Log con esclusione attributi problematici.
-     *
-     * PROBLEMA: SchedaTrait ha accessor che chiamano $this->save() causando
-     *           errori "Duplicate Entry" quando Activity Log serializza il modello.
-     *
-     * SOLUZIONE: Escludo gli attributi con accessor che chiamano ->save()
-     *            in modo che Activity Log non li acceda durante toArray().
-     *
-     * RISULTATO: Activity Log funziona e traccia i campi importanti (stabi,
-     *            coordinamento, responsabilita, etc.) senza causare Duplicate Entry.
-     *
-     * @see \Modules\Activity\docs\errori\duplicate-entry-accessor-save.md
-     * @see \Modules\Sigma\app\Models\Traits\SchedaTrait.php
-     */
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logAll()  // Traccia tutti i campi
-            /*
-            ->logExcept([
-                // Escludo attributi con accessor che chiamano $this->save()
-                // per evitare errori "Duplicate Entry" durante serializzazione
-                'propro',                           // getProproAttribute() - linea 617
-                'gg',                               // getGgAttribute() - linea 241
-                'gg_asz',                           // getGgAszAttribute() - linea 265
-                'gg_no_asz',                        // getGgNoAszAttribute()
-                'valore_differenziale_rapportato_pt', // getValoreDifferenzialeRapportatoPtAttribute() - linea 1227
-                'punt_progressione_finale',         // getPuntProgressioneFinaleAttribute() - linea 1365
-                'valutatore_id',                    // getValutatoreIdAttribute() - linea 1392
-                'perf_ind_media',                   // getPerfIndMediaAttribute() - linea 1891
-                'perf_ind_count_last_3_years',      // getPerfIndCountLast3YearsAttribute() - linea 1911
-                'excellences_count_last_3years',    // getExcellencesCountLast3yearsAttribute()
-                'posizione_eco',                    // getPosizioneEcoAttribute() in SchedaMutator
-            ])
-            */
-            ->logOnlyDirty()  // Solo campi effettivamente modificati
-            ->dontSubmitEmptyLogs();  // Non salvare log vuoti
-    }
 
     /**
      * Verifica se il posfun è di tipo PO (Punto Organizzativo).

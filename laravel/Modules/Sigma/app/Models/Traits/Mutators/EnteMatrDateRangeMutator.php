@@ -9,6 +9,13 @@ use Carbon\Carbon;
 trait EnteMatrDateRangeMutator
 {
     /**
+     * Guard against recursive updates from accessors.
+     * Prevents "attributeRawValues null" crash with spatie/activitylog:
+     * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     */
+    private static bool $isUpdatingFromAccessor = false;
+
+    /**
      * Convert date value to integer Ymd format.
      */
     private function dateToYmdInt(Carbon|int|string|null $date): int
@@ -127,7 +134,17 @@ trait EnteMatrDateRangeMutator
 
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() !== null) {
-            $this->update(['perc_parttime_dalal' => $value]);
+            // Prevent recursive activitylog crash
+            if (! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['perc_parttime_dalal' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return $value;
@@ -165,7 +182,17 @@ trait EnteMatrDateRangeMutator
 
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() !== null) {
-            $this->update(['gg_parttimevert_dalal' => $value]);
+            // Prevent recursive activitylog crash
+            if (! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['gg_parttimevert_dalal' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return is_numeric($value) ? (float) $value : null;
@@ -199,7 +226,17 @@ trait EnteMatrDateRangeMutator
 
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() !== null) {
-            $this->update(['gg_presenza_dalal' => $value]);
+            // Prevent recursive activitylog crash
+            if (! static::$isUpdatingFromAccessor) {
+                static::$isUpdatingFromAccessor = true;
+                try {
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['gg_presenza_dalal' => $value]);
+                    });
+                } finally {
+                    static::$isUpdatingFromAccessor = false;
+                }
+            }
         }
 
         return is_numeric($value) ? (int) $value : 0;
@@ -248,7 +285,17 @@ trait EnteMatrDateRangeMutator
             return isset($this->attributes['categoria_eco']) && is_string($this->attributes['categoria_eco']) ? $this->attributes['categoria_eco'] : null;
         }
 
-        $this->update(['categoria_eco' => $categoria_eco]);
+        // Prevent recursive activitylog crash
+        if (! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($categoria_eco): void {
+                    $this->update(['categoria_eco' => $categoria_eco]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
+        }
 
         return isset($this->attributes['categoria_eco']) && is_string($this->attributes['categoria_eco']) ? $this->attributes['categoria_eco'] : null;
     }
