@@ -36,6 +36,21 @@ trait MutatorTrait
             return 0;
         }
 
+        // Guard: empty lista_tipo_codice_assenze prevents invalid SQL: IN ()
+        if (empty($lista_tipo_codice_assenze)) {
+            $int_value = 0;
+
+            // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
+            // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
+            /** @var int|string|null $key */
+            $key = $this->getKey();
+            if ($key !== null) {
+                $this->update(['gg_assenza_dalal' => $int_value]);
+            }
+
+            return $int_value;
+        }
+
         $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
             /** @var string $item */
             return "'{$item}'";
@@ -89,6 +104,23 @@ trait MutatorTrait
 
         if ($date_min === '') {
             return 0;
+        }
+
+        // Guard: empty lista_tipo_codice_assenze prevents invalid SQL: IN ()
+        if (empty($lista_tipo_codice_assenze)) {
+            $float_value = 0.0;
+            $this->hh_assenza_dalal = $float_value;
+
+            // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
+            /** @var int|string|null $key */
+            $key = $this->getKey();
+            if ($key !== null) {
+                $this->update([
+                    'hh_assenza_dalal' => $float_value,
+                ]);
+            }
+
+            return $float_value;
         }
 
         $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
@@ -318,37 +350,34 @@ trait MutatorTrait
         return $value;
     }
     */
-    public function getTypeAttribute(?string $value): ?string
+    public function setTypeAttribute(string|\Modules\Ptv\Enums\WorkerType|null $value): void
     {
-        if ($value !== null && ! request()->input('refresh', 0)) {
-            return $value;
-            // $value=null; // per forzare il refresh
+        // Convert enum to string value
+        $stringValue = $value instanceof \Modules\Ptv\Enums\WorkerType ? $value->value : $value;
+
+        // Auto-detect type if not provided or when refreshing
+        if ($stringValue === null || (app()->has('request') && request()->exists('refresh'))) {
+            if ($this->isRegionale()) {
+                $stringValue = 'regionale';
+            } elseif ($this->isDirigente()) {
+                $stringValue = 'dirigente';
+            } elseif ($this->isPo()) {
+                $stringValue = 'po';
+            } else {
+                $stringValue = 'dip';
+            }
         }
 
-        if ($value == null && $this->isRegionale()) {
-            $value = 'regionale';
-        }
-
-        if ($value == null && $this->isDirigente()) {
-            $value = 'dirigente';
-        }
-        if ($value == null && $this->isPo()) {
-            $value = 'po';
-        }
-        if ($value == null) {
-            $value = 'dip';
-        }
-        $this->type = $value;
+        $this->attributes['type'] = $stringValue;
 
         // Guard: modello deve avere PK per salvare
         if ($this->getKey() === null) {
-            return $value;
+            return;
         }
 
+        // Persist the value
         $this->update([
-            'type' => $value,
+            'type' => $stringValue,
         ]);
-
-        return $value;
     }
 }

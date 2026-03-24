@@ -212,6 +212,8 @@ return [
         'copy_from_organizzativa' => [
             'label' => 'Copia da Organizzativa',
             'help' => 'Copia i dati dalla scheda organizzativa',
+            'icon' => 'copy_from_organizzativa',
+            'tooltip' => 'copy_from_organizzativa',
         ],
         'import' => [
             'fields' => [
@@ -237,9 +239,98 @@ return [
         ],
         'populate_year' => [
             'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
         ],
         'copy_from_last_year_' => [
             'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'label' => 'logout',
+            'icon' => 'logout',
+        ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'fill' => [
+            'label' => 'fill',
+            'icon' => 'fill',
+            'tooltip' => 'fill',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
+        ],
+        'zip_schede' => [
+            'label' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'tooltip' => 'zip_schede',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
         ],
     ],
     'messages' => [
@@ -264,4 +355,5 @@ return [
     'model' => [
         'label' => 'individuale.model',
     ],
+    'label' => 'individuale',
 ];

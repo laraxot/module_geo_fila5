@@ -264,7 +264,7 @@ trait SchedaMutator
 
         // */
         $value = 0;
-        if ($this->gg_presenza_anno !== 0) {
+        if ($this->gg_presenza_anno != 0) {
             $value = $this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno));
         }
 

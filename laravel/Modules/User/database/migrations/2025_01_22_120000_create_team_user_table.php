@@ -45,9 +45,9 @@ return new class extends XotBaseMigration {
                 $columnType = $columnInfo->DATA_TYPE ?? null;
             }
 
-            $typeIsBigint = $columnType !== null && str_contains((string) $columnType, 'bigint');
+            $typeIsBigint = null !== $columnType && str_contains((string) $columnType, 'bigint');
 
-            $needsConversion = $this->hasColumn('id') && $columnInfo !== null && ! $typeIsBigint && ! $isAutoIncrement;
+            $needsConversion = $this->hasColumn('id') && null !== $columnInfo && ! $typeIsBigint && ! $isAutoIncrement;
 
             if ($needsConversion) {
                 // Rimuoviamo la PRIMARY KEY esistente

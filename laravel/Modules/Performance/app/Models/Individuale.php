@@ -445,6 +445,7 @@ class Individuale extends BaseIndividualeModel
     public function casts(): array
     {
         return [
+            'type' => \Modules\Ptv\Enums\WorkerType::class,
             'stabi' => 'integer',
             'repar' => 'integer',
             'stabival' => 'integer',
@@ -498,6 +499,6 @@ class Individuale extends BaseIndividualeModel
         'dip' => IndividualeDip::class,
         'regionale' => IndividualeRegionale::class,
         'dirigente' => IndividualeDirigente::class,
-        'individuale_regionale' => IndividualeRegionale::class,
+        //'individuale_regionale' => IndividualeRegionale::class,
     ];
 }

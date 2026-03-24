@@ -182,6 +182,12 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+        'soldi' => [
+            'label' => 'soldi',
+        ],
+        'info' => [
+            'label' => 'info',
+        ],
     ],
     'actions' => [
         'import' => [
@@ -203,6 +209,63 @@ return [
         ],
         'create' => [
             'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
         ],
     ],
     'messages' => [
@@ -220,4 +283,5 @@ return [
     'model' => [
         'label' => 'Performance Amministrativa',
     ],
+    'label' => 'individuale adm',
 ];
