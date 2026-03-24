@@ -25,7 +25,15 @@ it('throws exception when api key is not configured', function (): void {
 it('returns null when api response is not successful', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
+=======
+<<<<<<< HEAD
+    Http::fake([)
+=======
+    Http::fake([
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
         '*' => Http::response(null, 500),
     ]);
 
@@ -37,7 +45,15 @@ it('returns null when api response is not successful', function (): void {
 it('returns null when no results found', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
+=======
+<<<<<<< HEAD
+    Http::fake([)
+=======
+    Http::fake([
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
         '*' => Http::response([], 200),
     ]);
 
@@ -49,7 +65,15 @@ it('returns null when no results found', function (): void {
 it('returns null when first result is empty', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
+=======
+<<<<<<< HEAD
+    Http::fake([)
+=======
+    Http::fake([
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
         '*' => Http::response([[]], 200),
     ]);
 
@@ -61,8 +85,18 @@ it('returns null when first result is empty', function (): void {
 it('returns address data for valid response', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
         '*' => Http::response([[
+=======
+<<<<<<< HEAD
+    Http::fake([)
+        '*' => Http::response([[)
+=======
+    Http::fake([
+        '*' => Http::response([[
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
             'lat' => '45.4642',
             'lon' => '9.1900',
             'address' => [
@@ -102,8 +136,18 @@ it('returns address data for valid response', function (): void {
 it('uses default country when missing', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
         '*' => Http::response([[
+=======
+<<<<<<< HEAD
+    Http::fake([)
+        '*' => Http::response([[)
+=======
+    Http::fake([
+        '*' => Http::response([[
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
             'lat' => '45.4642',
             'lon' => '9.1900',
             'address' => [],
@@ -121,8 +165,18 @@ it('uses default country when missing', function (): void {
 it('falls back to town and village for city', function (): void {
     config(['services.locationiq.key' => 'test_key']);
 
+<<<<<<< Updated upstream
     Http::fake([
         '*' => Http::response([[
+=======
+<<<<<<< HEAD
+    Http::fake([)
+        '*' => Http::response([[)
+=======
+    Http::fake([
+        '*' => Http::response([[
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
             'lat' => '45.4642',
             'lon' => '9.1900',
             'address' => [
