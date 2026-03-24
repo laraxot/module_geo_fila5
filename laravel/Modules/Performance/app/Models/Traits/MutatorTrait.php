@@ -251,7 +251,11 @@ trait MutatorTrait
                         $up[$nomeField] = $rowValue;
                     }
                 }
-                $this->update($up);
+                // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+                // Just set the attributes directly without triggering events
+                foreach ($up as $key => $val) {
+                    $this->attributes[$key] = $val;
+                }
             }
         }
         /*
@@ -285,7 +289,9 @@ trait MutatorTrait
         }
         // */
 
-        $this->update(['totale_punteggio' => $value]);
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Set the raw attribute value without triggering events
+        $this->attributes['totale_punteggio'] = $value;
 
         return $value;
     }
