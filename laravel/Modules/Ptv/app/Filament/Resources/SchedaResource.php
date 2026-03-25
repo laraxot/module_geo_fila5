@@ -106,6 +106,5 @@ abstract class SchedaResource extends XotBaseResource
         ];
     }
 
-    public static function getModel(): string
-    {
+    
 }

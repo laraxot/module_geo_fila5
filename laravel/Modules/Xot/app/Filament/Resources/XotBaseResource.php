@@ -80,9 +80,9 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getModel(): string
     {
-        // Usa reflection per leggere $model dalla classe concreta (late static binding)
-        // Questo risolve il problema quando classi intermedie non definiscono $model
-        $calledClass = static::class;
+        // Usa get_called_class() per late static binding corretto
+        // static::class viene risolto a compile-time, get_called_class() a runtime
+        $calledClass = get_called_class();
         $reflection = new ReflectionClass($calledClass);
         
         // Cerca la proprietà $model nella gerarchia di classi
@@ -98,11 +98,6 @@ abstract class XotBaseResource extends FilamentResource
             }
             $reflection = $reflection->getParentClass();
         }
-        
-        dddx([
-            'called_class' => $calledClass,
-            'model' => $modelClass,
-        ]);
         
         if ($modelClass !== null) {
             $res = $modelClass;

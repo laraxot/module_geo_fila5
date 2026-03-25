@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Lang\Actions\SaveTransAction;
 use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndividuale;
@@ -135,4 +136,5 @@ class IndividualeResource extends SchedaResource
 
         return $fields;
     }
+
 }
