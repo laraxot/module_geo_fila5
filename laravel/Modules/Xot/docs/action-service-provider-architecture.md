@@ -384,7 +384,7 @@ The Action and Service Provider patterns embody Laraxot's core principles:
 - Auto-discovery prevents repetitive code
 
 ### KISS (Keep It Simple, Stupid)
-- Clear, <nome progetto>able patterns
+- Clear, predictable patterns
 - Minimal configuration needed
 - Consistent API across all modules
 
@@ -397,7 +397,7 @@ The Action and Service Provider patterns embody Laraxot's core principles:
 ### Type Safety
 - Strict typing in actions
 - Interface contracts
-- <nome progetto>able method signatures
+- Predictable method signatures
 
 ### Modularity
 - Self-contained actions

@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Modules\Lang\Actions\SaveTransAction;
 use Modules\Xot\Actions\GetTransKeyAction;
+use TypeError;
 
 /**
  * Trait che fornisce solo i metodi transFunc() e getKeyTransFunc().
@@ -53,7 +54,7 @@ trait TransFuncTrait
         try {
             /** @var array<string, mixed>|Translator|string $trans */
             $trans = trans($key);
-        } catch (\TypeError $e) {
+        } catch (TypeError $e) {
             dddx([
                 'e' => $e,
                 'key' => $key,
@@ -66,6 +67,7 @@ trait TransFuncTrait
             /** @var array<string, mixed>|Translator|string $group_arr */
             $group_arr = trans($group);
             if (is_array($group_arr)) {
+                /** @var mixed $transValue */
                 $transValue = Arr::get($group_arr, $item);
                 if (is_string($transValue) || is_numeric($transValue) || is_array($transValue)) {
                     $trans = $transValue;
@@ -97,7 +99,7 @@ trait TransFuncTrait
             return $trans;
         }
 
-        if (null === $trans) {
+        if ($trans === null) {
             $newTrans = Str::of($key)
                 ->between('::', '.')
                 ->replace('_', ' ')

@@ -2,16 +2,7 @@
 
 ## Panoramica
 
-Questo documento fornisce informazioni sulle skills disponibili per il tema Zero. Le skills permettono agli agenti AI di specializzarsi in aree specifiche del tema e migliorare la produttivita' nello sviluppo frontend.
-
-## Governance d'uso
-
-Le skills del tema non sostituiscono i `docs/` del tema:
-
-- prima si leggono e si aggiornano i `Themes/*/docs/` pertinenti;
-- poi si usa la skill minima necessaria;
-- le decisioni rilevanti tornano nei `docs/` come handoff per altri agenti;
-- se il task impatta PHP, il quality gate include `phpstan`, `PHPMD` standalone `.phar` e `phpinsights`.
+Questo documento fornisce informazioni sulle skills disponibili per il tema Zero del progetto Quaeris Fila5 Mono. Le skills sono strumenti potenti che permettono agli agenti AI di specializzarsi in specifiche aree del tema e migliorare significativamente la produttività nello sviluppo frontend.
 
 ## Skills Disponibili
 
@@ -45,11 +36,6 @@ Le skills del tema non sostituiscono i `docs/` del tema:
 - **Asset Management**: Gestione risorse frontend, compilazione Vite, ottimizzazione
 - **Build System Skills**: Configurazione e ottimizzazione pipeline di build
 - **Development Workflow**: Best practices per workflow sviluppo frontend
-
-#### Filament / Livewire Operational Rules
-- **Download actions**: le closure `->action()` che generano PDF/Excel devono `return` la response (es. `StreamedResponse`). Se la closure è `void` o non fa `return`, il browser non scarica nulla.
-- **tableFilters payload**: quando passi `$this->tableFilters` a una Action, passalo direttamente (niente wrapper tipo `['anno/valutatore' => $tableFilters]`). La normalizzazione va fatta dentro l’Action.
-- **Riferimento**: `Modules/IndennitaCondizioniLavoro/docs/action-return-type-rule.md`
 
 #### Testing Skills
 - **Frontend Testing**: Testing componenti frontend, browser automation

@@ -61,8 +61,8 @@ Vedi skill semantic-versioning per il template completo con attestation.
 
 ## Collegamenti
 
-- [docs root – GitHub Actions moduli](../../../../../../docs/github-actions-modules.md)
-- [Semantic versioning](../../../../../.cursor/skills/semantic-versioning/skill.md)
+- [docs root – GitHub Actions moduli](../../../../../docs/github-actions-modules.md)
+- [Semantic versioning](../../../../../.cursor/skills/semantic-versioning/SKILL.md)
 - [PHPStan CI](phpstan.md)
 - [Links CI](links.md)
 

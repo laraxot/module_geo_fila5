@@ -99,6 +99,120 @@ Prima di modificare: leggi → ragiona → studia → aggiorna docs → migliora
 
 After edit: PHPStan + PHPMD + PHPInsights.
 
+---
+
+## 🚫 REGOLA COSTITUZIONALE: Bashscripts è SACRO 🔴
+
+> **`bashscripts/` DEVE rimanere nel `.gitignore`**  
+> **NON è un bug - è una feature filosofica**
+
+### La Filosofia in Breve
+
+| bashscripts/ (Ignorato) | laravel/ (Tracciato) |
+|------------------------|---------------------|
+| 🛠️ Strumenti locali | 📦 Codice produzione |
+| 🧪 Sperimentazione libera | ✅ Review richiesto |
+| 📝 Personali | 🌍 Condiviso |
+| 🔄 Mutevoli | 🗿 Eterno |
+
+### Perché Questa Regola?
+
+```
+Il falegname non inchioda gli attrezzi al banco.
+Gli attrezzi si cambiano, il mobile rimane.
+
+bashscripts/ = Attrezzi
+laravel/ = Mobile costruito
+.gitignore = Banco che non fissa attrezzi
+```
+
+### Cosa FARE ✅
+
+- Creare script in `bashscripts/` per automazione personale
+- Sperimentare liberamente (v1, v2, v3...)
+- Modificare senza commit
+- Ottimizzare il TUO workflow
+
+### Cosa NON FARE ❌
+
+- `git add bashscripts/` (incostituzionale)
+- Commitare script "temporanei"
+- Confondere strumenti con codice
+- Rimuovere `bashscripts/` da `.gitignore`
+
+### Promozione a Codice
+
+Se uno script diventa **produzione**:
+
+1. Riscrivi come Action PHP o Workflow CI
+2. Sposta in `laravel/` o `.github/workflows/`
+3. Crea PR con review e test
+
+📖 **Documentazione completa**: [docs/bashscripts-philosophy.md](docs/bashscripts-philosophy.md)
+
+---
+
+## 🚨 QUANDO RICEVI UN ERRORE DA CORREGGERE
+
+> **SEGUITI 12 PASSI IN ORDINE - MAI SALTARNE NESSUNO**
+
+### I 12 Passi Sacri
+
+1. **STUDIARE** 📚 - Leggi docs esistenti (usa indici, no duplicati)
+2. **AGGIORNARE DOCS** ✍️ - Prima di codificare, aggiorna documentazione
+3. **STUDIARE GIT HISTORY** 📜 - Forward-only, MAI reset/revert
+4. **CAPIRE LO SCOPO** 🎯 - A cosa serve? Business value?
+5. **RAGIONARE** 🤔 - Pensa prima di agire
+6. **AGGIORNARE REGOLE** 📖 - QWEN.md, memories, skills
+7. **AGGIORNARE MEMORIES** 🧠 - Memoria a lungo termine
+8. **AGGIORNARE SKILLS** 🛠️ - Pattern e conoscenze
+9. **AGGIORNARE GUIDELINES** 📏 - Linee guida progetto
+10. **GITHUB ISSUE** 📋 - Crea/aggiorna issue
+11. **GITHUB ACTIONS** ⚙️ - Prevenzione CI/CD
+12. **QUALITY GATES** ✅ - PHPStan + PHPMD + PHPInsights + Pest
+
+### 🚫 MAI FARE
+
+```bash
+# Database SACRO
+❌ migrate:refresh, migrate:fresh, db:wipe
+❌ RefreshDatabase nei test
+❌ migrate --force (manuale produzione)
+
+# Git FORWARD-ONLY
+❌ git reset --hard HEAD~N
+❌ git checkout vecchie versioni
+❌ git revert (se non forward fix)
+
+# Documentazione
+❌ Documenti doppi (usa indici)
+❌ Timestamp nei filename
+❌ Numerazione file (doc-1.md)
+```
+
+### ✅ SEMPRE FARE
+
+```bash
+# Quality dopo OGNI modifica
+✅ PHPStan Level 10
+✅ PHPMD
+✅ PHPInsights
+✅ Pest tests
+
+# Multi-AI Coordination
+✅ Leggi docs/ai-agent-coordination.md
+✅ Controlla GitHub Issues
+✅ Commit piccoli e frequenti
+✅ Push ogni 5-10 minuti
+
+# Git Remote
+✅ git remote -v (verifica repo)
+```
+
+📖 **Workflow completo**: [docs/error-correction-workflow.md](docs/error-correction-workflow.md)
+
+---
+
 ## Quick Commands
 
 | Action | Command |

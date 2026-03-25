@@ -65,8 +65,4 @@ return [
         ],
     ],
     'title' => 'artisan commands manager',
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
 ];

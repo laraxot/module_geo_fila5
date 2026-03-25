@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Database\Factories\LogFactory;
+use Override;
 use Sushi\Sushi;
 
 // --- services
@@ -17,9 +18,9 @@ use Sushi\Sushi;
  *
  * @property string|null $id
  * @property string|null $name
- * @property int|null    $size
+ * @property int|null $size
  *
- * @method static LogFactory          factory($count = null, $state = [])
+ * @method static LogFactory factory($count = null, $state = [])
  * @method static Builder<static>|Log newModelQuery()
  * @method static Builder<static>|Log newQuery()
  * @method static Builder<static>|Log query()
@@ -27,10 +28,10 @@ use Sushi\Sushi;
  * @method static Builder<static>|Log whereName($value)
  * @method static Builder<static>|Log whereSize($value)
  *
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $deleter
- * @property string|null          $file_content
- * @property ProfileContract|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $deleter
+ * @property-read string|null $file_content
+ * @property-read ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */
@@ -49,7 +50,7 @@ class Log extends BaseModel
         $files = File::files(storage_path('logs'));
 
         foreach ($files as $file) {
-            if ('log' === $file->getExtension()) {
+            if ($file->getExtension() === 'log') {
                 $rows[] = [
                     'id' => $file->getFilenameWithoutExtension(),
                     'name' => $file->getFilenameWithoutExtension(),
@@ -67,7 +68,7 @@ class Log extends BaseModel
     }
 
     /** @return array<string, string> */
-    #[\Override]
+    #[Override]
     protected function casts(): array
     {
         return [
@@ -120,11 +121,11 @@ class Log extends BaseModel
  * "getRelativePath" => ""
  * "getRelativePathname" => "laravel-2024-03-01.log"
  * "getFilenameWithoutExtension" => "laravel-2024-03-01"
- * "getPath" => "C:\var\www\_bases\base_camping_fila5\laravel\storage\logs"
+ * "getPath" => "C:\var\www\_bases\base_camping_fila3\laravel\storage\logs"
  * "getFilename" => "laravel-2024-03-01.log"
  * "getExtension" => "log"
  * "getBasename" => "laravel-2024-03-01.log"
- * "getPathname" => "C:\var\www\_bases\base_camping_fila5\laravel\storage\logs\laravel-2024-03-01.log"
+ * "getPathname" => "C:\var\www\_bases\base_camping_fila3\laravel\storage\logs\laravel-2024-03-01.log"
  * "getPerms" => 33206
  * "getInode" => 32369622322094035
  * "getSize" => 12497
@@ -140,6 +141,6 @@ class Log extends BaseModel
  * "isFile" => true
  * "isDir" => false
  * "isLink" => false
- * "getLinkTarget" => "C:\var\www\_bases\base_camping_fila5\laravel\storage\logs\laravel-2024-03-01.log"
- * "getRealPath" => "C:\var\www\_bases\base_camping_fila5\laravel\storage\logs\laravel-2024-03-01.log"
+ * "getLinkTarget" => "C:\var\www\_bases\base_camping_fila3\laravel\storage\logs\laravel-2024-03-01.log"
+ * "getRealPath" => "C:\var\www\_bases\base_camping_fila3\laravel\storage\logs\laravel-2024-03-01.log"
  */

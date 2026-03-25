@@ -185,7 +185,7 @@ Line 146: Offset 1 on array{list<string>, list<string>} in isset() always exists
 
 ## Soluzioni Implementate
 
-### 1. Correzione in helpers/Helper.php
+### 1. Correzione in Helpers/Helper.php
 
 Il problema è che PHPStan rileva che la chiamata a `is_array($matches)` sarà sempre vera perché `$matches` è già tipizzato come array. Abbiamo modificato il controllo per verificare se l'array non è vuoto invece di verificare se è un array:
 
@@ -804,3 +804,5 @@ private function exportTablesToCSV(string $mdbFile): array
 - [Array Types Fixes](./phpstan-array-types-fixes.md)
 - [PHPStan Level 10 Guidelines](./phpstan-level10-guidelines.md)
 
+*Ultimo aggiornamento: 6 Gennaio 2025*
+*Ultimo aggiornamento: 6 Gennaio 2025*

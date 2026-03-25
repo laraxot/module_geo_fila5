@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    // Europe
     'it' => 'Italian',
     'fr' => 'French',
     'de' => 'German',
@@ -47,6 +48,7 @@ return [
     'ge' => 'Georgian',
     'am' => 'Armenian',
     'az' => 'Azerbaijani',
+    // Americas
     'us' => 'American',
     'ca' => 'Canadian',
     'mx' => 'Mexican',
@@ -89,6 +91,7 @@ return [
     'kn' => 'Kittitian',
     'dm' => 'Dominican',
     'bs' => 'Bahamian',
+    // Asia
     'cn' => 'Chinese',
     'jp' => 'Japanese',
     'kr' => 'South Korean',
@@ -133,6 +136,7 @@ return [
     'kg' => 'Kyrgyz',
     'tj' => 'Tajik',
     'tm' => 'Turkmen',
+    // Africa
     'eg' => 'Egyptian',
     'ly' => 'Libyan',
     'tn' => 'Tunisian',
@@ -187,6 +191,7 @@ return [
     'ao' => 'Angolan',
     'aq' => 'Antarctic',
     'zr' => 'Zairian',
+    // Oceania
     'au' => 'Australian',
     'ax' => 'Alandish',
     'nz' => 'New Zealander',
@@ -204,6 +209,7 @@ return [
     'pw' => 'Palauan',
     'fm' => 'Micronesian',
     'mh' => 'Marshallese',
+    // Others
     'xk' => 'Kosovar',
     'va' => 'Vatican',
     'sm' => 'Sammarinese',
@@ -256,17 +262,4 @@ return [
     'mp' => 'Northern Mariana Islander',
     'um' => 'U.S. Minor Outlying Islands',
     'eh' => 'Western Sahara',
-    'navigation' => [
-        'label' => 'Missing Navigation Label',
-        'plural_label' => 'Missing Navigation Plural Label',
-        'group' => 'Missing Group',
-        'icon' => 'heroicon-o-puzzle-piece',
-        'sort' => 100,
-    ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
-    'actions' => [
-    ],
 ];

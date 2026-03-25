@@ -9,10 +9,4 @@ return [
         'icon' => 'temporary upload',
         'sort' => '96',
     ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
-    'actions' => [
-    ],
 ];

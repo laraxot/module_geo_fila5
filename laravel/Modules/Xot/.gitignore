@@ -89,12 +89,6 @@ ehthumbs.db
 Thumbs.db
 *.exe
 
-# Copy files (duplicati temporanei)
-* copy
-* copy.*
-*.copy
-*~
-
 # ==============================================
 # BACKUP FILES
 # ==============================================
@@ -106,9 +100,6 @@ Thumbs.db
 *.bak
 *.bakcup
 *.new
-* copy.*
-* copy/
-*.copy
 
 # ==============================================
 # DEVELOPMENT TOOLS
@@ -156,5 +147,3 @@ packages/temp/
 # END OF XOT .GITIGNORE
 # ==============================================
 lang/lang/
-_docs/
-_docs/

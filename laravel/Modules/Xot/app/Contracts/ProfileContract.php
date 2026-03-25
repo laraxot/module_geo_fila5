@@ -15,14 +15,14 @@ use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 /**
  * Modules\Xot\Contracts\ProfileContract.
  *
- * @property string                $id
- * @property string                $email
- * @property string                $slug
- * @property string                $user_id
- * @property int|null              $matr
+ * @property string $id
+ * @property string $email
+ * @property string $slug
+ * @property string $user_id
+ * @property int|null $matr
  * @property Collection<int, Role> $roles
- * @property int|null              $roles_count
- * @property UserContract          $user
+ * @property int|null $roles_count
+ * @property UserContract $user
  *
  * @phpstan-require-extends Model
  *
@@ -82,9 +82,4 @@ interface ProfileContract extends HasMedia
      * --.
      */
     public function isSuperAdmin(): bool;
-
-    /**
-     * Get the URL of the user's avatar.
-     */
-    public function getAvatarUrl(): ?string;
 }

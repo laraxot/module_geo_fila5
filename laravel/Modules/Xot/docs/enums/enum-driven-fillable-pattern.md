@@ -137,7 +137,7 @@ class YourModel extends BaseModel
 
 ### 5. **Consistency**
 - Same pattern across all models
-- <nome progetto>able code structure
+- Predictable code structure
 - Easier onboarding for developers
 
 ## Migration Strategy

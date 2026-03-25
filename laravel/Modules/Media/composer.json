@@ -1,17 +1,18 @@
 {
-  "name": "laraxot/module_media_fila5",
-  "description": "Media management module for the Laraxot ecosystem: images, videos, FFmpeg, and Intervention Image.",
+  "name": "laraxot/module_media_fila3",
+  "description": "media module dedicated to image and video management",
   "keywords": [
     "laraxot",
     "laravel",
     "filament",
     "module_media",
-    "media",
-    "images",
-    "videos",
-    "ffmpeg"
+    "Laravel",
+    "Media module",
+    "Media",
+    "Images",
+    "Videos"
   ],
-  "homepage": "https://github.com/laraxot/module_media_fila5.git",
+  "homepage": "https://github.com/laraxot/module_media_fila3.git",
   "license": "MIT",
   "authors": [
     {
@@ -23,8 +24,7 @@
   "require": {
     "php": "^8.2",
     "pbmedia/laravel-ffmpeg": "^8.5",
-    "intervention/image": "^3.0",
-    "spatie/laravel-medialibrary": "^11.0"
+    "intervention/image": "*"
   },
   "require-dev": {},
   "repositories": [

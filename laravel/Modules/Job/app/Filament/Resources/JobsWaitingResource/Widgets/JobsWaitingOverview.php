@@ -54,7 +54,7 @@ class JobsWaitingOverview extends BaseWidget
                 : '0';
 
             $totalTime = $totalSeconds > 0
-                ? $this->formatSeconds($totalSeconds)
+                ? $this->formatSeconds($totalSeconds).'s'
                 : '0';
         }
 

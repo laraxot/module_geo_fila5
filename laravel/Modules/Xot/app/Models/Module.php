@@ -10,19 +10,18 @@ use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Database\Factories\ModuleFactory;
 use Nwidart\Modules\Facades\Module as ModuleFacade;
 use Nwidart\Modules\Module as NModule;
+use Sushi\Sushi;
 
 use function Safe\json_encode;
 
-use Sushi\Sushi;
-
 /**
- * @property int                          $id
- * @property string|null                  $name
- * @property string|null                  $description
- * @property bool|null                    $status
- * @property int|null                     $priority
- * @property string|null                  $path
- * @property string|null                  $icon
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $description
+ * @property bool|null $status
+ * @property int|null $priority
+ * @property string|null $path
+ * @property string|null $icon
  * @property array<array-key, mixed>|null $colors
  *
  * @method static Builder<static>|Module newModelQuery()
@@ -37,9 +36,9 @@ use Sushi\Sushi;
  * @method static Builder<static>|Module wherePriority($value)
  * @method static Builder<static>|Module whereStatus($value)
  *
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $deleter
- * @property ProfileContract|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $deleter
+ * @property-read ProfileContract|null $updater
  *
  * @method static ModuleFactory factory($count = null, $state = [])
  *
@@ -61,9 +60,9 @@ final class Module extends BaseModel
     ];
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $connection = 'xot';
+    protected $connection = null;
 
     /**
      * @return array<int, array<string, mixed>>
@@ -90,10 +89,8 @@ final class Module extends BaseModel
             ];
         });
 
-        $rows = array_values($modules);
-
-        /* @var array<int, array<string, mixed>> $rows */
-        return $rows;
+        /** @var array<int, array<string, mixed>> */
+        return array_values($modules);
     }
 
     protected function casts(): array

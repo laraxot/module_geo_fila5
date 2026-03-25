@@ -46,9 +46,6 @@ return [
                 'placeholder' => 'Inserisci l\'URL canonico',
                 'help' => 'URL canonico per evitare contenuti duplicati',
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
         ],
         'social' => [
             'og_title' => [
@@ -76,10 +73,6 @@ return [
                     'player' => 'Card per contenuti multimediali',
                 ],
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
         'site' => [
             'sitename' => [
@@ -102,10 +95,6 @@ return [
                 'placeholder' => 'Inserisci il copyright',
                 'help' => 'Informazioni sul copyright del sito',
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
         'appearance' => [
             'logo_header' => [
@@ -136,10 +125,6 @@ return [
                     'help' => 'Codice colore esadecimale',
                 ],
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
         'contact' => [
             'email' => [
@@ -157,10 +142,6 @@ return [
                 'placeholder' => 'Inserisci l\'indirizzo',
                 'help' => 'Indirizzo fisico dell\'attività',
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
     ],
     'actions' => [
@@ -223,6 +204,4 @@ return [
             'oversized_image' => 'Immagine social troppo grande',
         ],
     ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
 ];

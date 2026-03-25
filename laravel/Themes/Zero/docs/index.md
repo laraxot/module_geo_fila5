@@ -19,7 +19,7 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 - **Integrazione Filament**: Compatibilità completa con i componenti Filament
 
 ## Collegamenti Correlati
-- [Documentazione Generale Progetto](../../../docs/README.md) (docs: replace project-specific references with generic placeholders across documentation)
+- [Documentazione Generale SaluteOra](../../../docs/README.md)
 - [Collegamenti Documentazione](../../../docs/collegamenti-documentazione.md)
 - [Standard di Documentazione](../../../docs/DOCUMENTATION_STANDARDS.md)
 - [Modulo UI](../../Modules/UI/docs/README.md)
@@ -35,7 +35,6 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 
 ### Personalizzazione
 - [Personalizzazione](./customization.md) - Guida alla personalizzazione del tema
-- [Readonly Field Styling](./readonly-field-styling.md) - Pattern UI/UX per campi readonly/calcolati
 - [Esempi](./examples.md) - Esempi pratici di personalizzazione
 - [Autenticazione](./authentication.md) - Componenti di autenticazione
 - [Esempi Autenticazione](./auth_examples.md) - Esempi di pagine di autenticazione
@@ -161,6 +160,4 @@ Questa documentazione viene aggiornata regolarmente. Prima di apportare modifich
 - Vedi anche: [../../../docs/README.md](../../../docs/README.md)
 - Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
 
-- **Aggiunto**: Sistema di documentazione automatica moduli
-- **Integrato**: Refresh intelligente form reattivi
-- **Migliorato**: Sistema di tracking e audit trail
+*Ultimo aggiornamento: Gennaio 2025*

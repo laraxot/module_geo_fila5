@@ -1,46 +1,48 @@
-# Modulo Job
+# ⚡ **Job Module** - Enterprise Queue & Schedule Management
 
-## Overview
+[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
+[![PHPStan level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
+[![Queue Engine](https://img.shields.io/badge/Engine-Redis%20%7C%20Database%20%7C%20Soketi-blue.svg)](https://laravel.com/docs/11.x/queues)
 
-Il modulo **Job** gestisce i job asincroni e le code di elaborazione.
+> **🚀 Modulo Job**: Il sistema nervoso della gestione asincrona per Laraxot. Gestisce con precisione chirurgica code multiple, task schedulati complessi e processi batch massivi, garantendo monitoraggio real-time e reportistica avanzata.
 
-## Funzionalità
+## 📋 **Panoramica**
 
-- Job queue management
-- Retry logic
-- Failed job handling
-- Job monitoring
+Il modulo **Job** trasforma il background processing in un asset strategico per l'applicazione.
 
-## Modelli Principali
+- 🧵 **Multi-Queue Mastery**: Gestione di code differenziate (high, default, low) con priorità dinamiche.
+- 🕒 **Precision Scheduling**: Task manager integrato con supporto per espressioni cron e prevenzione sovrapposizioni.
+- 📊 **Real-Time Insight**: Dashboard Soketi-powered per osservare i job mentre lavorano.
+- 📄 **Insight Analytics**: Generazione automatica di report PDF sulle performance del sistema di code.
+- 🛡️ **Failure Resilience**: Sistema di retry intelligente e notifiche immediate su errori critici.
 
+## ⚡ **Funzionalità Core**
+
+### 🧩 **Schedulazione Dinamica**
+Non serve toccare il file `crontab`. Ogni task è definibile via database e gestibile tramite l'interfaccia Filament.
+
+### 🧘 **Philosophical Design**
+"Un job ben scritto non si accorge di essere in background". Il modulo garantisce che l'ambiente di esecuzione sia coerente e traccabile.
+
+## 🚀 **Quick Start**
+
+### 📦 **Dispatch di un Job**
 ```php
-// Job
-Job\Models\Job
-
-// Failed Job
-Job\Models\FailedJob
-
-// Job Batch
-Job\Models\JobBatch
+ProcessDataJob::dispatch($data)->onQueue('high');
 ```
 
-## Services
+### ⚙️ **Verifica Stato Code**
+Accedere alla sezione **Job Monitor** in Filament per visualizzare grafici di throughput e job falliti.
 
-```php
-// Job dispatcher
-Job\Services\JobDispatcher
+## 📚 **Documentazione Centrale**
 
-// Queue manager
-Job\Services\QueueManager
-```
+- 📖 **[Indice Documentazione](./00-index.md)** - Navigazione rapida.
+- 🙏 **[Filosofia Code](./philosophy.md)** - La gestione asincrona secondo Laraxot.
+- 🗺️ **[Roadmap](./roadmap.md)** - Verso lo scheduling basato su AI.
+- 📄 **[Report PDF Guide](./job-reports.md)** - Come interpretare i log di sistema.
 
-## Collegamenti
+---
 
-- [Documentazione Root](../../../docs/JOB_MODULE.md)
-- [Xot Base](../Xot/docs/)
-- [Notify Module](../Notify/docs/) - per notifiche job
-
-## Backlinks
-
-- [Queue Config](./queue/)
-- [Failed Jobs](./failed/)
+**🔄 Ultimo aggiornamento**: 31 Gennaio 2026
+**📦 Versione**: 2.3.0
+**✅ PHPStan level 10**: Compliance nativa garantita

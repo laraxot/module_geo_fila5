@@ -103,7 +103,7 @@ SELECT
     REFERENCED_TABLE_NAME,
     REFERENCED_COLUMN_NAME
 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-WHERE TABLE_SCHEMA = 'Quaeris_data'
+WHERE TABLE_SCHEMA = 'quaeris_data'
   AND REFERENCED_TABLE_NAME IS NOT NULL;
 
 -- Analizza tenant isolation
@@ -111,7 +111,7 @@ SELECT
     TABLE_NAME,
     COUNT(*) as columns
 FROM INFORMATION_SCHEMA.COLUMNS
-WHERE TABLE_SCHEMA LIKE 'Quaeris_%'
+WHERE TABLE_SCHEMA LIKE 'quaeris_%'
   AND COLUMN_NAME LIKE '%tenant%'
 GROUP BY TABLE_NAME;
 
@@ -120,7 +120,7 @@ SELECT
     TABLE_NAME,
     COLUMN_NAME
 FROM INFORMATION_SCHEMA.STATISTICS
-WHERE TABLE_SCHEMA = 'Quaeris_data'
+WHERE TABLE_SCHEMA = 'quaeris_data'
   AND SEQ_IN_INDEX = 1
 GROUP BY TABLE_NAME, COLUMN_NAME
 HAVING COUNT(*) < 3;
@@ -166,14 +166,14 @@ https://www.php-fig.org/psr/psr-12/
 ```json
 {
   "decision": "ModuleBaseModel Pattern",
-  "date": "[DATE]",
+  "date": "2026-01-10",
   "context": "Need module-specific base classes",
   "resolution": "Each module extends ModuleBaseModel which extends XotBaseModel",
   "rationale": "Maintains Laraxot philosophy while allowing module customization",
   "enforcement": "Architecture tests prevent direct XotBaseModel extension",
   "files": [
     "Modules/User/app/Models/BaseModel.php",
-"Modules/Quaeris/app/Models/BaseModel.php",
+    "Modules/Quaeris/app/Models/BaseModel.php",
     "Modules/Xot/Tests/Architecture/BaseModelTest.php"
   ]
 }
@@ -264,9 +264,9 @@ File: `Modules/Xot/.mcp.json`
   "mcpServers": {
     "filesystem-xot": {
       "command": "npx",
-"args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_Quaeris_fila5_mono/laravel/Modules/Xot"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/Xot"],
       "env": {
-        "ALLOWED_DIRECTORIES": "/var/www/_bases/base_Quaeris_fila5_mono/laravel/Modules/Xot"
+        "ALLOWED_DIRECTORIES": "/var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/Xot"
       },
       "trust": false,
       "includeTools": [
@@ -278,8 +278,8 @@ File: `Modules/Xot/.mcp.json`
     },
     "git-xot": {
       "command": "npx",
-"args": ["-y", "@modelcontextprotocol/server-git", "--repository", "/var/www/_bases/base_Quaeris_fila5_mono"],
-      "cwd": "/var/www/_bases/base_Quaeris_fila5_mono/laravel/Modules/Xot",
+      "args": ["-y", "@modelcontextprotocol/server-git", "--repository", "/var/www/_bases/base_quaeris_fila5_mono"],
+      "cwd": "/var/www/_bases/base_quaeris_fila5_mono/laravel/Modules/Xot",
       "trust": false
     },
     "sequential-thinking-xot": {
@@ -334,7 +334,7 @@ File: `Modules/Xot/.mcp.json`
   "implementation": "Model → ModuleBaseModel → XotBaseModel → Eloquent",
   "files": [
     "Modules/User/app/Models/BaseModel.php",
-"Modules/Quaeris/app/Models/BaseModel.php",
+    "Modules/Quaeris/app/Models/BaseModel.php",
     "Modules/Xot/Models/XotBaseModel.php"
   ],
   "rationale": "Module sovereignty and Laraxot philosophy",
@@ -463,6 +463,6 @@ WHERE active = true;
 
 ---
 
-**Ultimo aggiornamento**: [DATE]  
+**Ultimo aggiornamento**: 2026-02-05  
 **Module**: Xot  
 **Versione**: 1.0.0

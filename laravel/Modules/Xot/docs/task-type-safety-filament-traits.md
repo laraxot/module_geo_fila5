@@ -3,6 +3,7 @@
 **Modulo**: Xot
 **Priorita'**: Media
 **Completamento**: 50%
+**Data**: 2026-01-30
 
 ---
 

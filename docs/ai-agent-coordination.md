@@ -528,6 +528,38 @@ Nota: evitare timestamp dentro i `.md`. I dettagli di attività vivono nei file 
 
 ---
 
+## 📜 Regole Fondamentali
+
+### 🚫 Bashscripts è SACRO
+
+> **REGOLA COSTITUZIONALE**: `bashscripts/` DEVE rimanere nel `.gitignore`
+
+**Perché**:
+- bashscripts/ = Strumenti locali dell'operatore
+- Non sono codice di produzione
+- Sperimentazione libera senza review
+- Ogni agente può ottimizzare il proprio workflow
+
+**Cosa fare**:
+- ✅ Creare script in bashscripts/ per automazione personale
+- ✅ Sperimentare liberamente (v1, v2, v3...)
+- ✅ Modificare senza commit
+
+**Cosa NON fare**:
+- ❌ `git add bashscripts/` (incostituzionale)
+- ❌ Commitare script "temporanei"
+- ❌ Confondere strumenti con codice
+
+**Promozione a codice**:
+Se uno script diventa produzione:
+1. Riscrivi come Action PHP o Workflow CI
+2. Sposta in `laravel/` o `.github/workflows/`
+3. Crea PR con review e test
+
+📖 Vedi: [docs/bashscripts-philosophy.md](bashscripts-philosophy.md)
+
+---
+
 ## 🔗 Risorse
 
 ### Documenti Correlati
@@ -539,6 +571,7 @@ Nota: evitare timestamp dentro i `.md`. I dettagli di attività vivono nei file 
 - [Filament page skill](../_bmad/core/skills/bmad-filament-page-dev.md)
 - [AGENTS.md](../AGENTS.md)
 - [QWEN.md](../QWEN.md)
+- [Bashscripts Philosophy](bashscripts-philosophy.md) ⭐ **NUOVO**
 
 ### BMAD Resources
 

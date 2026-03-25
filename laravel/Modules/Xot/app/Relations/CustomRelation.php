@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Modules\Xot\Relations;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,7 @@ use Webmozart\Assert\Assert;
  *
  * @method static Builder when($value = null, callable $callback = null, callable $default = null)
  * @method static Builder whereBetween($column, iterable<int, mixed> $values, $boolean = 'and', $not = false)
- * @method static Builder selectRaw($expression, array<int, mixed> $bindings = [])                            ;
+ * @method static Builder selectRaw($expression, array<int, mixed> $bindings = []) ;
  * @method static Builder where($column, $operator = null, $value = null, $boolean = 'and')
  */
 class CustomRelation extends Relation
@@ -37,15 +38,15 @@ class CustomRelation extends Relation
         /**
          * The baseConstraints callback.
          */
-        protected \Closure $baseConstraints,
+        protected Closure $baseConstraints,
         /**
          * The eagerConstraints callback.
          */
-        protected ?\Closure $eagerConstraints,
+        protected ?Closure $eagerConstraints,
         /**
          * The eager constraints model matcher.
          */
-        protected ?\Closure $eagerMatcher,
+        protected ?Closure $eagerMatcher,
     ) {
         parent::__construct($query, $model);
     }
@@ -65,7 +66,7 @@ class CustomRelation extends Relation
     {
         // Parameter #1 $function of function call_user_func expects callable(): mixed, Closure|null given.
         if (! \is_callable($this->eagerConstraints)) {
-            throw new \Exception('eagerConstraints is not callable');
+            throw new Exception('eagerConstraints is not callable');
         }
 
         \call_user_func($this->eagerConstraints, $this, $models);
@@ -92,17 +93,15 @@ class CustomRelation extends Relation
     {
         // Trying to invoke Closure|null but it might not be a callable.
         if (! \is_callable($this->eagerMatcher)) {
-            throw new \Exception('eagerMatcher is not callable');
+            throw new Exception('eagerMatcher is not callable');
         }
 
         $res = ($this->eagerMatcher)($models, $collection, $relation, $this);
         Assert::isArray($res);
         Assert::allIsInstanceOf($res, Model::class);
 
-        /** @var array<int, Model> $models */
-        $models = array_values($res);
-
-        return $models;
+        /** @var array<int, Model> $res */
+        return $res;
     }
 
     /**
@@ -117,6 +116,8 @@ class CustomRelation extends Relation
 
     /**
      * Execute the query as a "select" statement.
+     *
+     * @param  mixed  $columns
      */
     public function get($columns = ['*']): Collection
     {
@@ -140,7 +141,7 @@ class CustomRelation extends Relation
         Assert::isArray($models);
         Assert::allIsInstanceOf($models, Model::class);
 
-        /* @var array<int, Model> $models */
+        /** @var array<int, Model> $models */
         return $this->related->newCollection($models);
     }
 

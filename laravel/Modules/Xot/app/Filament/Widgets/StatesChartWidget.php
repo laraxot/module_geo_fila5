@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Widgets;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Override;
+use RuntimeException;
 
 class StatesChartWidget extends XotBaseChartWidget
 {
@@ -18,13 +21,13 @@ class StatesChartWidget extends XotBaseChartWidget
 
     protected static bool $isLazy = true;
 
-    #[\Override]
+    #[Override]
     public function getHeading(): ?string
     {
         return static::transClass($this->model, 'widgets.states_chart.heading');
     }
 
-    #[\Override]
+    #[Override]
     protected function getData(): array
     {
         $label = static::transClass($this->model, 'widgets.states_chart.label');
@@ -37,7 +40,7 @@ class StatesChartWidget extends XotBaseChartWidget
                 ->get();
 
             if (! is_object($queryResult) || ! method_exists($queryResult, 'keyBy')) {
-                throw new \RuntimeException('Invalid query result');
+                throw new RuntimeException('Invalid query result');
             }
 
             $states = $queryResult->keyBy('state');
@@ -70,7 +73,7 @@ class StatesChartWidget extends XotBaseChartWidget
                     ->map(fn ($state) => static::transClass($this->model, 'states.'.((string) $state).'.label'))
                     ->toArray(),
             ];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // Fallback appropriato senza logging inutile
             return [
                 'datasets' => [
@@ -87,7 +90,7 @@ class StatesChartWidget extends XotBaseChartWidget
         }
     }
 
-    #[\Override]
+    #[Override]
     protected function getType(): string
     {
         return 'bar';

@@ -37,11 +37,11 @@
 2. Importare i moduli nell'ordine corretto, iniziando dai moduli base:
    ```bash
    # Importare prima il modulo Xot (base per tutti gli altri)
-   git subtree add --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila5.git dev --squash
+   git subtree add --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila3.git dev --squash
    
    # Seguito da altri moduli core in ordine di dipendenza
-   git subtree add --prefix laravel/Modules/User git@github.com:laraxot/module_user_fila5.git dev --squash
-   git subtree add --prefix laravel/Modules/Media git@github.com:laraxot/module_media_fila5.git dev --squash
+   git subtree add --prefix laravel/Modules/User git@github.com:laraxot/module_user_fila3.git dev --squash
+   git subtree add --prefix laravel/Modules/Media git@github.com:laraxot/module_media_fila3.git dev --squash
    # ... e così via
    ```
 
@@ -60,7 +60,7 @@
 ### Aggiornamento dei Moduli Importati
 Per aggiornare un modulo precedentemente importato:
 ```bash
-git subtree pull --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila5.git dev --squash
+git subtree pull --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila3.git dev --squash
 ```
 
 ## Gestione delle Dipendenze tra Moduli

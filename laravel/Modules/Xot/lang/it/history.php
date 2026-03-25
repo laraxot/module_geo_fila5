@@ -24,48 +24,4 @@ return [
             'restored' => 'restored user',
         ],
     ],
-    'label' => 'History',
-    'plural_label' => 'History (Plurale)',
-    'navigation' => [
-        'name' => 'History',
-        'plural' => 'History',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'History',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'fields' => [
-        'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'created_at' => [
-            'label' => 'Data Creazione',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'updated_at' => [
-            'label' => 'Ultima Modifica',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea History',
-        ],
-        'edit' => [
-            'label' => 'Modifica History',
-        ],
-        'delete' => [
-            'label' => 'Elimina History',
-        ],
-    ],
 ];

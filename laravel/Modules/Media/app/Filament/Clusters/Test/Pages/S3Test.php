@@ -656,7 +656,7 @@ class S3Test extends XotBasePage
             $signedUrl = app(GetCloudFrontSignedUrlAction::class)->execute((string) $filePath, 60);
 
             // Log the email data for testing purposes (no actual email sent)
-            Log::debug('S3 Test Email Data', [
+            Log::info('S3 Test Email Data', [
                 'attachment_path' => $filePath,
                 'signed_url' => $signedUrl,
                 'timestamp' => now()->toISOString(),
@@ -692,7 +692,7 @@ class S3Test extends XotBasePage
         try {
             $testData = 'This is a test file content for S3 upload/download test.';
             $testFileName = 'test-file-'.time().'.txt';
-            $localTestPath = storage_path('framework/cache/'.$testFileName);
+            $localTestPath = sys_get_temp_dir().'/'.$testFileName;
 
             // Create test file
             file_put_contents($localTestPath, $testData);
@@ -815,7 +815,7 @@ class S3Test extends XotBasePage
                 ->send();
 
             // Log results for debugging
-            Log::debug('S3 Test Results', $results);
+            Log::info('S3 Test Results', $results);
         } catch (Exception $e) {
             Notification::make()
                 ->danger()

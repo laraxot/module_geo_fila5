@@ -102,8 +102,4 @@ return [
         'updated_at' => 'Aggiornato il',
         'deleted_at' => 'Eliminato il',
     ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
 ];

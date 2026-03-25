@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    // Europa
     'it' => 'Italia',
     'fr' => 'Francia',
     'de' => 'Germania',
@@ -47,6 +48,7 @@ return [
     'ge' => 'Georgia',
     'am' => 'Armenia',
     'az' => 'Azerbaigian',
+    // Americhe
     'us' => 'Stati Uniti d\'America',
     'ca' => 'Canada',
     'mx' => 'Messico',
@@ -89,6 +91,7 @@ return [
     'kn' => 'Saint Kitts e Nevis',
     'dm' => 'Dominica',
     'bs' => 'Bahamas',
+    // Asia
     'cn' => 'Cina',
     'jp' => 'Giappone',
     'kr' => 'Corea del Sud',
@@ -133,6 +136,7 @@ return [
     'kg' => 'Kirghizistan',
     'tj' => 'Tagikistan',
     'tm' => 'Turkmenistan',
+    // Africa
     'eg' => 'Egitto',
     'ly' => 'Libia',
     'tn' => 'Tunisia',
@@ -187,6 +191,7 @@ return [
     'ao' => 'Angola',
     'aq' => 'Antartide',
     'zr' => 'Zaire',
+    // Oceania
     'au' => 'Australia',
     'ax' => 'Isole Aland',
     'nz' => 'Nuova Zelanda',
@@ -204,6 +209,7 @@ return [
     'pw' => 'Palau',
     'fm' => 'Micronesia',
     'mh' => 'Isole Marshall',
+    // Altri
     'xk' => 'Kosovo',
     'va' => 'Città del Vaticano',
     'sm' => 'San Marino',
@@ -256,48 +262,4 @@ return [
     'mp' => 'Isole Marianne Settentrionali',
     'um' => 'Isole Minori Esterne degli Stati Uniti',
     'eh' => 'Sahara Occidentale',
-    'label' => 'Countries',
-    'plural_label' => 'Countries (Plurale)',
-    'navigation' => [
-        'name' => 'Countries',
-        'plural' => 'Countries',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Countries',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'fields' => [
-        'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'created_at' => [
-            'label' => 'Data Creazione',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'updated_at' => [
-            'label' => 'Ultima Modifica',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Countries',
-        ],
-        'edit' => [
-            'label' => 'Modifica Countries',
-        ],
-        'delete' => [
-            'label' => 'Elimina Countries',
-        ],
-    ],
 ];

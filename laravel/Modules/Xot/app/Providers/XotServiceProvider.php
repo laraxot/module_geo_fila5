@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\View;
 use Modules\Xot\Console\Commands\GenerateFilamentResources;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\View\Composers\XotComposer;
+use Override;
 use Webmozart\Assert\Assert;
 
 /**
@@ -36,7 +37,7 @@ class XotServiceProvider extends XotBaseServiceProvider
 
     protected string $module_ns = __NAMESPACE__;
 
-    #[\Override]
+    #[Override]
     public function boot(): void
     {
         parent::boot();
@@ -50,7 +51,7 @@ class XotServiceProvider extends XotBaseServiceProvider
         $this->registerProviders();
     }
 
-    #[\Override]
+    #[Override]
     public function register(): void
     {
         parent::register();
@@ -132,7 +133,7 @@ class XotServiceProvider extends XotBaseServiceProvider
      * }
      */
 
-    #[\Override]
+    #[Override]
     public function registerConfig(): void
     {
         // $config_file = realpath(__DIR__.'/../config/metatag.php');
@@ -143,12 +144,12 @@ class XotServiceProvider extends XotBaseServiceProvider
     {
         $files = File::files($path);
         foreach ($files as $file) {
-            if ('php' !== $file->getExtension()) {
+            if ($file->getExtension() !== 'php') {
                 continue;
             }
 
             $realPath = $file->getRealPath();
-            if (false === $realPath) {
+            if ($realPath === false) {
                 continue;
             }
 
@@ -256,7 +257,7 @@ class XotServiceProvider extends XotBaseServiceProvider
         //             'modules.xot.filament.widgets.modules-overview-widget',
         //             \Modules\Xot\Filament\Widgets\ModulesOverviewWidget::class
         //         );
-        //         \Log::debug('ModulesOverviewWidget registrato correttamente');
+        //         \Log::info('ModulesOverviewWidget registrato correttamente');
         //     } catch (\Exception $e) {
         //         \Log::error('Errore nella registrazione ModulesOverviewWidget: ' . $e->getMessage());
         //     }

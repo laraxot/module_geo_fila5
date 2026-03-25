@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-uses(TestCase::class);
+uses(\Modules\Job\Tests\TestCase::class);
 
 use Modules\Job\Models\Job;
-use Modules\Job\Tests\TestCase;
 
 use function Safe\json_encode;
 

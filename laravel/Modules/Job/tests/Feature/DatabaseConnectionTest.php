@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Job\Tests\Feature;
-
-use Modules\Job\Tests\TestCase;
-
-uses(TestCase::class);
+uses(\Modules\Job\Tests\TestCase::class);
 
 test('default database connection is configured', function () {
     expect(config('database.default'))->not->toBeEmpty();

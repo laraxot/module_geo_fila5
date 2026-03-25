@@ -1,17 +1,6 @@
-# Memoria Form e Table Widget Filament
+# Memoria Form Widget Filament
 
-## Regola Obbligatoria: Controllare Front Office
-
-**SEMPRE controllare le pagine del front office** quando si applica la governance form/table. Verificare: auth, profile, blocchi CMS, listing. Vedi `docs/project/front-office-form-table-audit.md`.
-
-## Governance (Form + Griglia)
-
-- **Form** → `XotBaseWidget` con `getFormSchema()` → richiamare con `@livewire()`.
-- **Griglia/Tabella** → `XotBaseTableWidget` con `getTableColumns()`, `getTableFilters()`, ricerca, ordinamento → richiamare con `@livewire()`.
-- MAI form HTML custom, MAI griglia Blade senza ricerca/filtri/sort.
-- Vedi `docs/project/filament-form-table-widget-governance.md`.
-
-## Componenti Essenziali (Form)
+## Componenti Essenziali
 
 ### 1. Proprietà Data
 ```php

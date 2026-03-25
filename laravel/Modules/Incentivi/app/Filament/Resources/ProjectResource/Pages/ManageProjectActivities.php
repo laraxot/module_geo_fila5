@@ -117,7 +117,6 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
         ];
     }
 
-    #[Override]
     public function getTablePaginated(): bool
     {
         return false;

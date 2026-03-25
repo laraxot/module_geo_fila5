@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    // Europa
     'it' => 'Italiana',
     'fr' => 'Francese',
     'de' => 'Tedesca',
@@ -47,6 +48,7 @@ return [
     'ge' => 'Georgiana',
     'am' => 'Armena',
     'az' => 'Azerbaigiana',
+    // Americhe
     'us' => 'Statunitense',
     'ca' => 'Canadese',
     'mx' => 'Messicana',
@@ -89,6 +91,7 @@ return [
     'kn' => 'Kittitiana',
     'dm' => 'Dominicana',
     'bs' => 'Bahamense',
+    // Asia
     'cn' => 'Cinese',
     'jp' => 'Giapponese',
     'kr' => 'Sudcoreana',
@@ -133,6 +136,7 @@ return [
     'kg' => 'Kirghisa',
     'tj' => 'Tagika',
     'tm' => 'Turkmena',
+    // Africa
     'eg' => 'Egiziana',
     'ly' => 'Libica',
     'tn' => 'Tunisina',
@@ -180,13 +184,14 @@ return [
     'cm' => 'Camerunese',
     'cf' => 'Centrafricana',
     'cg' => 'Congolese',
-    'cd' => 'Congolese (RDC]',
+    'cd' => 'Congolese (RDC)',
     'ga' => 'Gabonese',
     'gq' => 'Guineana Equatoriale',
     'st' => 'Sao Tomé e Principe',
     'ao' => 'Angolana',
     'aq' => 'Antartica',
     'zr' => 'Zairese',
+    // Oceania
     'au' => 'Australiana',
     'ax' => 'Alandese',
     'nz' => 'Neozelandese',
@@ -204,6 +209,7 @@ return [
     'pw' => 'Palau',
     'fm' => 'Micronesiana',
     'mh' => 'Marshallese',
+    // Altri
     'xk' => 'Kosovara',
     'va' => 'Vaticana',
     'sm' => 'Sanmarinese',
@@ -256,48 +262,4 @@ return [
     'mp' => 'Isolano delle Marianne Settentrionali',
     'um' => 'Isole Minori degli Stati Uniti',
     'eh' => 'Saharawi',
-    'label' => 'Nationalities',
-    'plural_label' => 'Nationalities (Plurale)',
-    'navigation' => [
-        'name' => 'Nationalities',
-        'plural' => 'Nationalities',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Nationalities',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'fields' => [
-        'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'created_at' => [
-            'label' => 'Data Creazione',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'updated_at' => [
-            'label' => 'Ultima Modifica',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Nationalities',
-        ],
-        'edit' => [
-            'label' => 'Modifica Nationalities',
-        ],
-        'delete' => [
-            'label' => 'Elimina Nationalities',
-        ],
-    ],
 ];

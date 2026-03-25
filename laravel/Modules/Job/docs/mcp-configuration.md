@@ -1,6 +1,6 @@
 # MCP Server Configuration - Job Module
 
-
+**Last Updated**: 31 Gennaio 2026
 **Status**: ✅ Configured
 **MCP Servers**: Asana, ClickUp, Filesystem, Database, Redmine (Planned)
 
@@ -36,14 +36,14 @@ The Job module's MCP configuration enables AI assistants to interact with:
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_<nome progetto>/laravel"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_laravelpizza/laravel"],
       "description": "Access to Job module files"
     },
     "database": {
       "command": "npx",
       "args": ["-y", "@bytebase/dbhub"],
       "env": {
-        "DATABASE_URL": "sqlite:///var/www/_bases/base_<nome progetto>/laravel/database/database.sqlite"
+        "DATABASE_URL": "sqlite:///var/www/_bases/base_laravelpizza/laravel/database/database.sqlite"
       },
       "description": "SQLite database queries"
     }
@@ -58,7 +58,7 @@ The Job module's MCP configuration enables AI assistants to interact with:
 ### Asana Integration
 ```bash
 # Create task
-"Create task in '<nome progetto> - Job Module' project: 'Implement dashboard monitoring'"
+"Create task in 'LaravelPizza - Job Module' project: 'Implement dashboard monitoring'"
 
 # Update status
 "Update task 'Increase test coverage to 90%' status to 'In Progress'"
@@ -111,17 +111,17 @@ The Job module's MCP configuration enables AI assistants to interact with:
 
 ## 📚 Related Documentation
 
-- [Asana MCP Configuration](../../../../docs/mcp-asana-configuration.md)
-- [ClickUp MCP Configuration](../../../../docs/mcp-clickup-configuration.md)
-- [Redmine MCP Configuration](../../../../docs/mcp-redmine-configuration.md)
-- [Job Module Roadmap](./roadmap-[date].md)
+- [Asana MCP Configuration](../../../docs/mcp-asana-configuration.md)
+- [ClickUp MCP Configuration](../../../docs/mcp-clickup-configuration.md)
+- [Redmine MCP Configuration](../../../docs/mcp-redmine-configuration.md)
+- [Job Module Roadmap](./roadmap-2026-01-31.md)
 
 ---
 
 ## 🔄 Updates
 
-- **[DATE]**: Added ClickUp support
-- **[DATE]**: Planned Redmine integration
+- **2026-01-31**: Added ClickUp support
+- **2026-01-31**: Planned Redmine integration
 - **Servers Active**: 4 (Asana, ClickUp, Filesystem, Database)
 
 ---

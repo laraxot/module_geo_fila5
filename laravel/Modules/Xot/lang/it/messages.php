@@ -27,48 +27,4 @@ return [
         'finished' => 'L\'applicazione è stata configurata correttamente.',
         'exit' => 'Clicca qui per uscire',
     ],
-    'label' => 'Messages',
-    'plural_label' => 'Messages (Plurale)',
-    'navigation' => [
-        'name' => 'Messages',
-        'plural' => 'Messages',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Messages',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'fields' => [
-        'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'created_at' => [
-            'label' => 'Data Creazione',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'updated_at' => [
-            'label' => 'Ultima Modifica',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Messages',
-        ],
-        'edit' => [
-            'label' => 'Modifica Messages',
-        ],
-        'delete' => [
-            'label' => 'Elimina Messages',
-        ],
-    ],
 ];

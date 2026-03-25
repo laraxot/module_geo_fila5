@@ -9,10 +9,10 @@ Per una guida completa e dettagliata su tutti i breaking changes e le procedure 
 
 ## Requisiti Filament v5
 
-- PHP 8.2+ ✅ (Il progetto ha 8.3.29)
-- Laravel v11.28+ ✅ (Laravel 12)
-- Livewire v4.0+ ⚠️ (Upgrade da v3 in corso)
-- Tailwind CSS v4.1+ ⚠️ (Da verificare)
+- PHP 8.2+ ✅ (Il progetto ha 8.3.6)
+- Laravel v11.28+ ⚠️ (Da verificare)
+- Livewire v4.0+ ⚠️ (Attualmente 3.7.6)
+- Tailwind CSS v4.0+ ⚠️ (Da verificare)
 
 ## 🔑 Punto Fondamentale
 
@@ -94,7 +94,7 @@ Nel progetto: verificare `filament/spatie-laravel-media-library-plugin` e altri 
 - **Documentazione**: dopo l’upgrade, verificare [filament.md](filament.md), [filament-v4-migration-guide.md](filament-v4-migration-guide.md) e [filament-best-practices.md](filament-best-practices.md) per eventuali adattamenti a v5.
 - **Configurazioni globali**: se in XotServiceProvider o AdminPanelProvider ci sono `configureUsing()` per Section/Grid/Fieldset/Table (es. v4), confrontare con il comportamento v5 e adattare se necessario.
 
-## Stato upgrade (base_<nome progetto>)
+## Stato upgrade (base_laravelpizza)
 
 - [x] Documentazione creata (filament-5-upgrade-guide.md)
 - [x] Script `vendor/bin/filament-v5` eseguito con directory `app,Modules` – modifiche applicate

@@ -54,4 +54,4 @@ class SendSmsPage extends XotBasePage
    - Rende più chiara la gerarchia delle classi
 
 ## Riferimenti
-- [Modules/Notify/docs/CLASS_INHERITANCE_PRINCIPLES.md](file:///var/www/html/healthcare_app/laravel/Modules/Notify/docs/CLASS_INHERITANCE_PRINCIPLES.md)
+- [Modules/Notify/docs/CLASS_INHERITANCE_PRINCIPLES.md](file:///var/www/html/saluteora/laravel/Modules/Notify/docs/CLASS_INHERITANCE_PRINCIPLES.md)
