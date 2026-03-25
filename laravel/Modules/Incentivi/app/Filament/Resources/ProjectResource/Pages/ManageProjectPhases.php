@@ -106,7 +106,7 @@ class ManageProjectPhases extends XotBaseManageRelatedRecords
     }
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

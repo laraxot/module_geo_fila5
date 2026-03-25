@@ -14,22 +14,15 @@ use Modules\Performance\Models\Option;
 use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Ptv\Filament\Resources\OptionResource;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListOptions extends XotBaseListRecords
+class ListOptions extends PtvBaseYearListRecords
 {
     protected static string $resource = OptionResource::class;
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            CreateAction::make(),
-            CopyFromLastYearAction::make(),
-        ];
-    }
+   
 
     #[Override]
     public function getTableColumns(): array
@@ -118,16 +111,7 @@ class ListOptions extends XotBaseListRecords
     public function getTableFilters(): array
     {
         return [
-            SelectFilter::make('year')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
+            ...parent::getTableFilters(),
             SelectFilter::make('option_type')
                 ->options(WorkerType::class),
         ];

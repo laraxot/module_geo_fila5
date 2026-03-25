@@ -34,7 +34,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
      * @return array<string, Actions\Action>
      */
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             'create' => CreateAction::make(),

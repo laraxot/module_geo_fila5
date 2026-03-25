@@ -65,7 +65,7 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
         ];
     }
 
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
         ];

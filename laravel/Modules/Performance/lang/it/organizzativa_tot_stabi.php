@@ -69,19 +69,64 @@ return [
         'reorderRecords' => [
             'label' => 'reorderRecords',
         ],
+        'stabi' => [
+            'label' => 'stabi',
+        ],
+        'tot_budget_assegnato' => [
+            'label' => 'tot_budget_assegnato',
+        ],
+        'tot_budget_assegnato_min_punteggio' => [
+            'label' => 'tot_budget_assegnato_min_punteggio',
+        ],
+        'tot_quota_effettiva' => [
+            'label' => 'tot_quota_effettiva',
+        ],
+        'tot_quota_effettiva_min_punteggio' => [
+            'label' => 'tot_quota_effettiva_min_punteggio',
+        ],
+        'tot_resti' => [
+            'label' => 'tot_resti',
+        ],
+        'tot_resti_min_punteggio' => [
+            'label' => 'tot_resti_min_punteggio',
+        ],
+        'delta' => [
+            'label' => 'delta',
+        ],
+        'delta_min_punteggio' => [
+            'label' => 'delta_min_punteggio',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'value' => [
+            'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
+        ],
     ],
     'actions' => [
         'create' => [
             'label' => 'Nuovo Totale',
             'success' => 'Totale creato con successo',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica',
             'success' => 'Totale aggiornato con successo',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina',
             'success' => 'Totale eliminato con successo',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'import' => [
             'label' => 'Importa',
@@ -106,6 +151,76 @@ return [
                     'help' => 'Area di appartenenza',
                 ],
             ],
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'label' => 'logout',
+            'icon' => 'logout',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'check' => [
+            'label' => 'check',
+            'icon' => 'check',
+            'tooltip' => 'check',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
         ],
     ],
     'messages' => [
@@ -136,4 +251,5 @@ return [
             'error' => 'Errore durante l\'eliminazione',
         ],
     ],
+    'label' => 'organizzativa tot stabi',
 ];

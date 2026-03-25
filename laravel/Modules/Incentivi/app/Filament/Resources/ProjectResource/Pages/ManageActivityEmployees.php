@@ -22,7 +22,7 @@ class ManageActivityEmployees extends XotBaseManageRelatedRecords
     // protected static ?string $slug = 'activity/employees';
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

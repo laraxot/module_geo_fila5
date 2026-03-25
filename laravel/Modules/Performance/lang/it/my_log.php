@@ -49,4 +49,9 @@ return [
             'label' => 'applyFilters',
         ],
     ],
+    'actions' => [
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
+    ],
 ];

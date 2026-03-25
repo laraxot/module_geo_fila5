@@ -109,7 +109,7 @@ class ListProjects extends XotBaseListRecords
     }
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {        
         return [
         ];

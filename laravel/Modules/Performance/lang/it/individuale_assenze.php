@@ -259,6 +259,22 @@ return [
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'check' => [
+            'label' => 'check',
+            'icon' => 'check',
+            'tooltip' => 'check',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
         ],
     ],
     'messages' => [

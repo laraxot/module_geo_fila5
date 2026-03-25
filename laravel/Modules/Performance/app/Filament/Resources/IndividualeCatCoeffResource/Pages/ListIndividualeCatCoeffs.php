@@ -79,16 +79,7 @@ class ListIndividualeCatCoeffs extends PtvBaseYearListRecords
     public function getTableFilters(): array
     {
         return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
+            ...parent::getTableFilters(),
             'lista_propro' => SelectFilter::make('lista_propro')
                 ->searchable()
                 ->preload(),

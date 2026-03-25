@@ -19,7 +19,7 @@ class ManagePhaseSettlements extends XotBaseManageRelatedRecords
     protected static string $relationship = 'settlements';
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

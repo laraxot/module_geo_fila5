@@ -27,7 +27,7 @@ class ManageProjectSettlements extends XotBaseManageRelatedRecords
     protected static ?string $title = 'Liquidazioni';
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             'generate_pdf_report' => GeneratePDFProjectReportAction::make(),

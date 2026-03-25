@@ -26,7 +26,7 @@ use function Safe\date;
 abstract class PtvBaseYearListRecords extends XotBaseListRecords
 {
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         /** @var array<string, mixed>|null $tableFilters */
         $tableFilters = $this->tableFilters;
@@ -65,34 +65,6 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    public function getTableActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            ...parent::getTableActions(),
-            Action::make('check')
-                ->action(function ($record): void {
-                    // Type narrowing: ensure record implements CriteriEsclusioneContract
-                    if (! is_object($record) || ! $record instanceof CriteriEsclusioneContract) {
-                        return;
-                    }
-
-                    app(CheckCriterio::class)->execute($record);
-                }),
-        ];
-    }
-
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            ...parent::getTableBulkActions(),
-            CheckCriterioEsclusioneBulkAction::make(),
-            // DeleteBulkAction::make(),
-        ];
-    }
 
    
 }
