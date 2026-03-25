@@ -10,16 +10,6 @@ use Modules\Sigma\Models\Qua00f;
 trait EnteMatrDateRangeMutator
 {
     /**
-     * Guard against recursive updates from accessors.
-     * Prevents "attributeRawValues null" crash with spatie/activitylog:
-     * accessor → update() → LogsActivity reads attributes → accessor again → crash.
-     *
-     * MUST be protected (not private) for proper trait composition.
-     * Multiple traits share this guard to prevent conflicts.
-     */
-    protected static bool $isUpdatingFromAccessor = false;
-
-    /**
      * Convert date value to integer Ymd format.
      */
     private function dateToYmdInt(Carbon|int|string|null $date): int

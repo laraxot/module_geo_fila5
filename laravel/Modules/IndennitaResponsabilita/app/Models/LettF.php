@@ -432,16 +432,13 @@ class LettF extends BaseScheda
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! self::$isUpdatingFromAccessor) {
-                self::$isUpdatingFromAccessor = true;
-                try {
+           
                     self::withoutEvents(function () use ($value): void {
                         $this->update(['tot' => $value]);
                     });
-                } finally {
-                    self::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;
@@ -485,16 +482,13 @@ class LettF extends BaseScheda
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! self::$isUpdatingFromAccessor) {
-                self::$isUpdatingFromAccessor = true;
-                try {
+            
                     self::withoutEvents(function () use ($value): void {
                         $this->update(['valore_economico_calcolato' => $value]);
                     });
-                } finally {
-                    self::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;
@@ -556,16 +550,13 @@ class LettF extends BaseScheda
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! self::$isUpdatingFromAccessor) {
-                self::$isUpdatingFromAccessor = true;
-                try {
+            
                     self::withoutEvents(function () use ($value): void {
                         $this->update(['valore_economico_attribuito' => $value]);
                     });
-                } finally {
-                    self::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;

@@ -111,11 +111,7 @@ class StabiDirigente extends BaseModel
 
     // --- mutators --
     
-    /**
-     * Guard contro aggiornamenti ricorsivi da accessor.
-     */
-    protected static bool $isUpdatingFromAccessor = false;
-
+   
     /**
      * Get nome_stabi attribute.
      *
@@ -169,16 +165,9 @@ class StabiDirigente extends BaseModel
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['stabi' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['stabi' => $value]);
+            });
         }
 
         return $value;
@@ -218,16 +207,9 @@ class StabiDirigente extends BaseModel
         $value = 0;
 
         if ($this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['repar' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['repar' => $value]);
+            });
         }
 
         return $value;
@@ -245,16 +227,12 @@ class StabiDirigente extends BaseModel
         $value = 90;
 
         if ($this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
+           
                     static::withoutEvents(function () use ($value): void {
                         $this->update(['ente' => $value]);
                     });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+           
+           
         }
 
         return $value;
@@ -275,16 +253,13 @@ class StabiDirigente extends BaseModel
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($value !== null && $this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
+            
                     static::withoutEvents(function () use ($value): void {
                         $this->update(['nome_diri' => $value]);
                     });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;

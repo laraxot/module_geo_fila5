@@ -514,16 +514,13 @@ class CondizioniLavoro extends BaseModel
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
+           
                     static::withoutEvents(function () use ($value): void {
                         $this->update(['gg_assenza_anno' => $value]);
                     });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;
@@ -562,16 +559,13 @@ class CondizioniLavoro extends BaseModel
 
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
+           
                     static::withoutEvents(function () use ($value): void {
                         $this->update(['hh_assenza_anno' => $value]);
                     });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+                
+                
+                
         }
 
         return $value;

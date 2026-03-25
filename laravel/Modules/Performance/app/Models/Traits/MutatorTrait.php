@@ -14,23 +14,13 @@ use Modules\Sigma\Datas\GgFilterData;
  */
 trait MutatorTrait
 {
-    /**
-     * Guard against recursive updates from accessors.
-     * Prevents "attributeRawValues null" crash with spatie/activitylog:
-     * accessor → update() → LogsActivity reads attributes → accessor again → crash.
-     *
-     * MUST be protected (not private) for proper trait composition.
-     * Multiple traits share this guard to prevent conflicts.
-     */
-    protected static bool $isUpdatingFromAccessor = false;
-
     public function getGgAssenzaDalalAttribute(?int $value): ?int
     {
-        // /*
+        
         if ($value !== null) {
             return $value;
         }
-        // */
+        
 
         // ✅ Check: record deve esistere prima di save()
         if ($this->getKey() == null) {
@@ -57,16 +47,11 @@ trait MutatorTrait
             $key = $this->getKey();
             if ($key !== null) {
                 // Prevent recursive activitylog crash
-                if (! static::$isUpdatingFromAccessor) {
-                    static::$isUpdatingFromAccessor = true;
-                    try {
+                
                         static::withoutEvents(function () use ($int_value): void {
                             $this->update(['gg_assenza_dalal' => $int_value]);
                         });
-                    } finally {
-                        static::$isUpdatingFromAccessor = false;
-                    }
-                }
+                
             }
 
             return $int_value;
@@ -99,17 +84,9 @@ trait MutatorTrait
         /** @var int|string|null $key */
         $key = $this->getKey();
         if ($key !== null) {
-            // Prevent recursive activitylog crash
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($int_value): void {
-                        $this->update(['gg_assenza_dalal' => $int_value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+            static::withoutEvents(function () use ($int_value): void {
+                $this->update(['gg_assenza_dalal' => $int_value]);
+            });
         }
 
         return $int_value;
@@ -146,19 +123,11 @@ trait MutatorTrait
             /** @var int|string|null $key */
             $key = $this->getKey();
             if ($key !== null) {
-                // Prevent recursive activitylog crash
-                if (! static::$isUpdatingFromAccessor) {
-                    static::$isUpdatingFromAccessor = true;
-                    try {
-                        static::withoutEvents(function () use ($float_value): void {
-                            $this->update([
-                                'hh_assenza_dalal' => $float_value,
-                            ]);
-                        });
-                    } finally {
-                        static::$isUpdatingFromAccessor = false;
-                    }
-                }
+                static::withoutEvents(function () use ($float_value): void {
+                    $this->update([
+                        'hh_assenza_dalal' => $float_value,
+                    ]);
+                });
             }
 
             return $float_value;
@@ -197,19 +166,11 @@ trait MutatorTrait
             return $float_value;
         }
 
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($float_value): void {
-                    $this->update([
-                        'hh_assenza_dalal' => $float_value,
-                    ]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        static::withoutEvents(function () use ($float_value): void {
+            $this->update([
+                'hh_assenza_dalal' => $float_value,
+            ]);
+        });
 
         return $float_value;
     }
@@ -334,17 +295,9 @@ trait MutatorTrait
                 foreach ($voti as $voto) {
                     $tot[$voto] = $tot[$voto] / $gg;
                 }
-                // Prevent recursive activitylog crash
-                if (! static::$isUpdatingFromAccessor) {
-                    static::$isUpdatingFromAccessor = true;
-                    try {
-                        static::withoutEvents(function () use ($tot): void {
-                            $this->update($tot);
-                        });
-                    } finally {
-                        static::$isUpdatingFromAccessor = false;
-                    }
-                }
+                static::withoutEvents(function () use ($tot): void {
+                    $this->update($tot);
+                });
                 $value = $tot['totale_punteggio'];
             }
         }
@@ -442,18 +395,11 @@ trait MutatorTrait
             return;
         }
 
-        // Persist the value - prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($stringValue): void {
-                    $this->update([
-                        'type' => $stringValue,
-                    ]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        // Persist the value
+        static::withoutEvents(function () use ($stringValue): void {
+            $this->update([
+                'type' => $stringValue,
+            ]);
+        });
     }
 }

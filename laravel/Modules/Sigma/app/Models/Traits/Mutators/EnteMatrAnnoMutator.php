@@ -10,16 +10,6 @@ use Modules\Sigma\Models\Qua00f;
 
 trait EnteMatrAnnoMutator
 {
-    /**
-     * Guard against recursive updates from accessors.
-     * Prevents "attributeRawValues null" crash with spatie/activitylog:
-     * accessor → update() → LogsActivity reads attributes → accessor again → crash.
-     *
-     * MUST be protected (not private) for proper trait composition.
-     * Multiple traits share this guard to prevent conflicts.
-     */
-    protected static bool $isUpdatingFromAccessor = false;
-
     protected function getPercPTimeYearAttribute(mixed $_value): int|float
     {
         $rows = $this->qua00fYear();
@@ -90,17 +80,9 @@ trait EnteMatrAnnoMutator
             return $value;
         }
 
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($value): void {
-                    $this->update(['perc_parttime_anno' => $value]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['perc_parttime_anno' => $value]);
+        });
 
         return $value;
     }
@@ -138,17 +120,9 @@ trait EnteMatrAnnoMutator
             return $value;
         }
 
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($value): void {
-                    $this->update(['gg_parttimevert_anno' => $value]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['gg_parttimevert_anno' => $value]);
+        });
 
         return $value;
     }
@@ -209,17 +183,9 @@ trait EnteMatrAnnoMutator
             return (int) $value;
         }
 
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($value): void {
-                    $this->update(['gg_parttimevert' => $value]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['gg_parttimevert' => $value]);
+        });
 
         return (int) $value;
     }
@@ -260,17 +226,9 @@ trait EnteMatrAnnoMutator
             return (float) $value;
         }
 
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($value): void {
-                    $this->update(['perc_parttime' => $value]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['perc_parttime' => $value]);
+        });
 
         return (float) $value;
     }
