@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCoeff extends XotBaseEditRecord
 {
-    protected static string $resource = CoeffResource::class;
+    public static string $resource = CoeffResource::class;
 
     protected function getHeaderActions(): array
     {

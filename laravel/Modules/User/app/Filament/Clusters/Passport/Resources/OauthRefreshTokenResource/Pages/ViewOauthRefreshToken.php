@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewOauthRefreshToken extends XotBaseViewRecord
 {
-    protected static string $resource = OauthRefreshTokenResource::class;
+    public static string $resource = OauthRefreshTokenResource::class;
 
     /**
      * @return array<string, Component>

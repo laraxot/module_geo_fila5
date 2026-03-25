@@ -11,7 +11,7 @@ use Override;
 
 class ListUsers extends XotBaseListRecords
 {
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     #[Override]
     public function getTableColumns(): array

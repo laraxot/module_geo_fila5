@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateTreatment extends XotBaseCreateRecord
 {
-    protected static string $resource = TreatmentResource::class;
+    public static string $resource = TreatmentResource::class;
 }

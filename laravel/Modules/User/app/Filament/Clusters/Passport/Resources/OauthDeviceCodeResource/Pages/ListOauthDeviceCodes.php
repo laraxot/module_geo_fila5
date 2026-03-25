@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListOauthDeviceCodes extends XotBaseListRecords
 {
-    protected static string $resource = OauthDeviceCodeResource::class;
+    public static string $resource = OauthDeviceCodeResource::class;
 }

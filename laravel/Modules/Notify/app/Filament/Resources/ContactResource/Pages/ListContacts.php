@@ -14,7 +14,7 @@ use Override;
 
 class ListContacts extends XotBaseListRecords
 {
-    protected static string $resource = ContactResource::class;
+    public static string $resource = ContactResource::class;
 
     #[Override]
     public function getTableColumns(): array

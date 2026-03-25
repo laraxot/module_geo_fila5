@@ -25,7 +25,7 @@ use function Safe\date;
 
 class ListPerformanceFondos extends PtvBaseYearListRecords
 {
-    protected static string $resource = PerformanceFondoResource::class;
+    public static string $resource = PerformanceFondoResource::class;
 
    
     /**

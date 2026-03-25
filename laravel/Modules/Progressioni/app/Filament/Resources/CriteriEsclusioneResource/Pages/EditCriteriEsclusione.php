@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCriteriEsclusione extends XotBaseEditRecord
 {
-    protected static string $resource = CriteriEsclusioneResource::class;
+    public static string $resource = CriteriEsclusioneResource::class;
 
     protected function getHeaderActions(): array
     {

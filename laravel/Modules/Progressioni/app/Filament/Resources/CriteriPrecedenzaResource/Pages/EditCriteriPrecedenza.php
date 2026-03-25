@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCriteriPrecedenza extends XotBaseEditRecord
 {
-    protected static string $resource = CriteriPrecedenzaResource::class;
+    public static string $resource = CriteriPrecedenzaResource::class;
 
     protected function getHeaderActions(): array
     {

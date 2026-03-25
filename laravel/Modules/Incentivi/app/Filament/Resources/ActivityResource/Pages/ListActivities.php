@@ -15,7 +15,7 @@ use Override;
 
 class ListActivities extends XotBaseListRecords
 {
-    protected static string $resource = ActivityResource::class;
+    public static string $resource = ActivityResource::class;
 
     // public static function route(string $path): string
     // {

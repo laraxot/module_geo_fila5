@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTranslationFile extends XotBaseEditRecord
 {
-    protected static string $resource = TranslationFileResource::class;
+    public static string $resource = TranslationFileResource::class;
 
     /**
      * @return array<string>

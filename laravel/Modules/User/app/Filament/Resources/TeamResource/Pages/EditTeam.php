@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 class EditTeam extends XotBaseEditRecord
 {
     // //
-    protected static string $resource = TeamResource::class;
+    public static string $resource = TeamResource::class;
 
     protected function getHeaderActions(): array
     {

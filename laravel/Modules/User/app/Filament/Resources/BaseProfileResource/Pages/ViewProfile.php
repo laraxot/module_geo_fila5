@@ -16,7 +16,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewProfile extends XotBaseViewRecord
 {
-    protected static string $resource = BaseProfileResource::class;
+    public static string $resource = BaseProfileResource::class;
 
     /**
      * @return array<string, Component>

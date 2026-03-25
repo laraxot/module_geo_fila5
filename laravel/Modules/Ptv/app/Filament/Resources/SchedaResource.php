@@ -10,6 +10,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Components\Section;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CreateScheda;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\EditScheda;
@@ -17,6 +20,8 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\Ptv\Models\Scheda;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
+use ReflectionClass;
+use Webmozart\Assert\Assert;
 
 abstract class SchedaResource extends XotBaseResource
 {
@@ -98,13 +103,35 @@ abstract class SchedaResource extends XotBaseResource
     #[Override]
     public static function getPages(): array
     {
+        
+        dddx([
+            'static::class'=>static::class,
+             'backtrace'=>debug_backtrace()
+            ]);
+
         return [
-            'index' => ListScheda::route('/'),
-            'create' => CreateScheda::route('/create'),
-            'edit' => EditScheda::route('/{record}/edit'),
+            ...parent::getPages(),
             'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 
-    
+     /**
+     * @return class-string<Model>
+     */
+    public static function getModel(): string
+    {
+
+        
+        $model= Individuale::class;
+       
+        Assert::classExists($model, \sprintf('Model class %s does not exist', $model));
+        Assert::subclassOf(
+            $model,
+            Model::class,
+            \sprintf('Class %s must extend Eloquent Model', $model),
+        );
+        static::$model = $model;
+
+        return $model;
+    }
 }

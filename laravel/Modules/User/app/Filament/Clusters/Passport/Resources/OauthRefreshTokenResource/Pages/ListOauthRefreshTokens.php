@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListOauthRefreshTokens extends XotBaseListRecords
 {
-    protected static string $resource = OauthRefreshTokenResource::class;
+    public static string $resource = OauthRefreshTokenResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateImportiCategoria extends XotBaseCreateRecord
 {
-    protected static string $resource = ImportiCategoriaResource::class;
+    public static string $resource = ImportiCategoriaResource::class;
 }

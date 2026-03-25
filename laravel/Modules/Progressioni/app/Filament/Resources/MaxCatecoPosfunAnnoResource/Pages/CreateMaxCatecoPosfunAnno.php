@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateMaxCatecoPosfunAnno extends XotBaseCreateRecord
 {
-    protected static string $resource = MaxCatecoPosfunAnnoResource::class;
+    public static string $resource = MaxCatecoPosfunAnnoResource::class;
 }

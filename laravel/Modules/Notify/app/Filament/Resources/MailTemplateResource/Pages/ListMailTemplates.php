@@ -11,7 +11,7 @@ use Override;
 
 class ListMailTemplates extends LangBaseListRecords
 {
-    protected static string $resource = MailTemplateResource::class;
+    public static string $resource = MailTemplateResource::class;
 
     #[Override]
     public function getTableColumns(): array

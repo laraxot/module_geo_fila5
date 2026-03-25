@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateOrganizzativaAssenze extends XotBaseCreateRecord
 {
-    protected static string $resource = OrganizzativaAssenzeResource::class;
+    public static string $resource = OrganizzativaAssenzeResource::class;
 }

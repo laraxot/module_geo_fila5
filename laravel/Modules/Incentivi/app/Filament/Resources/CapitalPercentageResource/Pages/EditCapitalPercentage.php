@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCapitalPercentage extends XotBaseEditRecord
 {
-    protected static string $resource = CapitalPercentageResource::class;
+    public static string $resource = CapitalPercentageResource::class;
 
     protected function getHeaderActions(): array
     {

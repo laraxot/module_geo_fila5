@@ -8,13 +8,14 @@ use Carbon\Carbon;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions;
-// use Filament\Pages\Page; //route not exists
 use Filament\Pages\Contracts\HasFormActions;
 use Filament\Resources\Pages\Concerns\HasRelationManagers;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
-// use Filament\Resources\Pages\Concerns\UsesResourceForm; // Not needed for this custom form implementation
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Modules\Ptv\Filament\Resources\SchedaResource;
+use Modules\Xot\Actions\GetViewAction;
+use Modules\Xot\Actions\View\GetViewByModelClassAction;
 use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 // class CompilaCondizioniLavoro extends \Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord {
@@ -30,57 +31,35 @@ class CompilaScheda extends XotBasePage
     use InteractsWithRecord;
     // use UsesResourceForm; // Not needed - using custom form_data implementation
 
-    protected static string $resource = SchedaResource::class;
+    public static string $resource = SchedaResource::class;
 
-    protected string $view = 'progressioni::admin.schede.compila.page';
+    protected string $view = 'ptv::scheda.pages.compila';
 
     /** @var array<string, mixed> */
     public array $form_data = [];
 
     public string $previousUrl = '#';
 
-    /*
-    public array $rules = [
-        // 'form_data.tot_gg' => 'numeric',
-        // 'form_data.tot_presenza_periodo_plus_no_timbr' => 'gte:form_data.tot_gg',
-        // 'form_data.tot_presenza_periodo_plus_no_timbr' => 'required',
-        // 'form_data.dettaglio.*.pivot.gg' => 'lte:form_data.tot_presenza_periodo_plus_no_timbr',
-        'form_data.punt_progressione' => 'required|numeric|min:0|max:4',
-        'form_data.email' => 'email',
-    ];
-    */
-
-    public function rules(): array
-    {
-        return [
-            // 'form_data.punt_progressione' => 'required|numeric|min:0|max:4',
-            'form_data.punt_progressione' => 'required|decimal:0,2|min:0|max:4',
-            'form_data.email' => 'email',
-            'form_data.benificiario_progressione' => '',
-        ];
-    }
-
-    public array $messages = [
-        // 'form_data.tot_presenza_periodo_plus_no_timbr.gte' => ':attribute: DEVONO ESSERE MAGGIORNI DELLA SOMMA DEI GIORNI DEI PERIODI',
-    ];
-
-    public array $validationAttributes = [
-        // 'form_data.tot_presenza_periodo_plus_no_timbr' => 'Giorni Complessivi',
-    ];
-
-    /*
-    protected function getActions(): array {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }*/
+   
     public function mount(int|string $record): void
     {
-        $this->record = $this->resolveRecord($record);
+        
+
+        $record = $this->resolveRecord($record);
+        $this->record = $record;
+        $recordClass=get_class($this->record);
+        $resourceClass=Str::of($recordClass)
+            ->replace('Models\\','Filament\\Resources\\')
+            ->append('Resource')
+            ->toString();
+        static::$resource=$resourceClass;
 
         $this->authorizeAccess();
+        $view=app(GetViewByModelClassAction::class)->execute($recordClass,'.pages.compila');
 
-        $this->fillForm();
+        $this->view=$view;
+
+        //$this->fillForm();
 
         $this->previousUrl = url()->previous();
     }
@@ -101,52 +80,28 @@ class CompilaScheda extends XotBasePage
 
     private function fillForm(): void
     {
-        // Hook for before filling form data
+        
         $this->beforeFill();
 
         $data = $this->getRecord()->attributesToArray();
 
-        /*
-        if ($this->getRecord()->anno >= 2023) {
-            $q = $this->getRecord()->quadrimestre;
-            $dal = Carbon::parse($this->getRecord()->anno.'-01-01')->addMonths(4 * ($q - 1));
-            $al = Carbon::parse($this->getRecord()->anno.'-01-01')->addMonths(4 * $q)->subDays(1);
-            $res = tap($this->getRecord())->update(['dal' => $dal, 'al' => $al]);
-            // dddx($res);
-        }
-        */
+       
         $data = $this->mutateFormDataBeforeFill($data);
 
         // Store form data directly without using Filament form
         /** @var array<string, mixed> $data */
         $this->form_data = $data;
 
-        // dddx($this->form_data['benificiario_progressione']);
-
         // Hook for after filling form data
         $this->afterFill();
 
-        // $this->form_data['dettaglio'] = $this->getRecord()->indennitaTipoDettaglio->keyBy('id')->toArray();
-        // $this->form_data['tot_presenza_periodo_plus_no_timbr'] = $this->getRecord()->tot_presenza_periodo_plus_no_timbr;
     }
 
     protected function getViewData(): array
     {
-        /*
-        $this->form_data['tot_gg'] = collect($this->form_data['dettaglio'])
-        ->filter(function ($item) {
-            // return is_numeric($item);
-            return true;
-        })
-        ->sum('pivot.gg');
-        */
-        /*
-        $this->form_data['tot_gg'] = collect($this->form_data['dettaglio'])
-              ->reduce(static fn ($tot_gg, $item): float|int => $tot_gg + (int) $item['pivot']['gg'], 0);
-        $this->form_data['tot_euro'] = collect($this->form_data['dettaglio'])
-            ->reduce(static fn ($tot_euro, $item): float|int => $tot_euro + ($item['euro_giorno'] * (int) $item['pivot']['gg']), 0);
-        */
-        return [];
+        return [
+            'view' => $this->view,
+        ];
     }
 
     private function mutateFormDataBeforeFill(array $data): array

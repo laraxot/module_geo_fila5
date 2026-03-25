@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateProject extends XotBaseCreateRecord
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected function afterCreate(): void
     {

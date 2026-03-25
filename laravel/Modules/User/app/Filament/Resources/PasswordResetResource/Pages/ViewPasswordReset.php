@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewPasswordReset extends XotBaseViewRecord
 {
-    protected static string $resource = PasswordResetResource::class;
+    public static string $resource = PasswordResetResource::class;
 
     /**
      * @return array<string, Component>

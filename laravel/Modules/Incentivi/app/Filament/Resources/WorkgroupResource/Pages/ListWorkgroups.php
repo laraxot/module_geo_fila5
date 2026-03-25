@@ -17,7 +17,7 @@ use Override;
 
 class ListWorkgroups extends XotBaseListRecords
 {
-    protected static string $resource = WorkgroupResource::class;
+    public static string $resource = WorkgroupResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

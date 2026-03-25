@@ -20,7 +20,7 @@ use Modules\User\Filament\Resources\RoleResource;
 
 class ManageRolePermissions extends ManageRelatedRecords
 {
-    protected static string $resource = RoleResource::class;
+    public static string $resource = RoleResource::class;
 
     protected static string $relationship = 'permissions';
 

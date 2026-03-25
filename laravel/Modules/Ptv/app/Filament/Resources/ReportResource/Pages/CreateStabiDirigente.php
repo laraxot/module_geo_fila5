@@ -14,7 +14,7 @@ use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource;
 
 class CreateStabiDirigente extends CreateRecord
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     public function form(Schema $schema): Schema
     {

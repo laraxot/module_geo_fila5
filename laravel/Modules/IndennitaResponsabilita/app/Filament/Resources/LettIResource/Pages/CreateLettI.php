@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateLettI extends XotBaseCreateRecord
 {
-    protected static string $resource = LettIResource::class;
+    public static string $resource = LettIResource::class;
 }

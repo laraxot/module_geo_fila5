@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCedDiff extends XotBaseEditRecord
 {
-    protected static string $resource = CedDiffResource::class;
+    public static string $resource = CedDiffResource::class;
 
     protected function getHeaderActions(): array
     {

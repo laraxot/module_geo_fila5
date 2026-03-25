@@ -20,8 +20,8 @@ use Override;
 
 class ListOptions extends PtvBaseYearListRecords
 {
-    protected static string $resource = OptionResource::class;
-
+    public static string $resource = OptionResource::class;
+    public string $yearFieldName='year';
    
 
     #[Override]

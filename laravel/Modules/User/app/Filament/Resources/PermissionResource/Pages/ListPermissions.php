@@ -28,7 +28,7 @@ use Webmozart\Assert\Assert;
 
 class ListPermissions extends XotBaseListRecords
 {
-    protected static string $resource = PermissionResource::class;
+    public static string $resource = PermissionResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

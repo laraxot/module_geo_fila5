@@ -24,7 +24,7 @@ use function Safe\date;
 
 class ListCriteriMaggioraziones extends PtvBaseYearListRecords
 {
-    protected static string $resource = CriteriMaggiorazioneResource::class;
+    public static string $resource = CriteriMaggiorazioneResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -11,7 +11,7 @@ use Override;
 
 class ListStipendioTabellares extends PtvBaseYearListRecords
 {
-    protected static string $resource = StipendioTabellareResource::class;
+    public static string $resource = StipendioTabellareResource::class;
 
     #[Override]
     public function getTableColumns(): array

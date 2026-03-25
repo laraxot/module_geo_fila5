@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 abstract class BaseEditUser extends EditRecord
 {
     // //
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

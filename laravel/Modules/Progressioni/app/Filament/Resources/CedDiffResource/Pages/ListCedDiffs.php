@@ -28,7 +28,7 @@ use Override;
 
 class ListCedDiffs extends PtvBaseYearListRecords
 {
-    protected static string $resource = CedDiffResource::class;
+    public static string $resource = CedDiffResource::class;
 
     /**
      * @return array<string, Actions\Action>

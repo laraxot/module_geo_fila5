@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditContact extends XotBaseEditRecord
 {
-    protected static string $resource = ContactResource::class;
+    public static string $resource = ContactResource::class;
 
     protected function getHeaderActions(): array
     {

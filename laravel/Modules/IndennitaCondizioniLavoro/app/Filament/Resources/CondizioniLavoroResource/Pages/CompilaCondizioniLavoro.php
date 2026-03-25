@@ -24,7 +24,7 @@ class CompilaCondizioniLavoro extends XotBaseResourcePage
 
     protected static bool $isLazy = false;
 
-    protected static string $resource = CondizioniLavoroResource::class;
+    public static string $resource = CondizioniLavoroResource::class;
 
     protected string $view = 'indennitacondizionilavoro::admin.condizioni_lavoro.compila.page';
 

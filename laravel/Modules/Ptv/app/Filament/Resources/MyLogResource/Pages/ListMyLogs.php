@@ -16,7 +16,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListMyLogs extends XotBaseListRecords
 {
-    protected static string $resource = MyLogResource::class;
+    public static string $resource = MyLogResource::class;
 
     /**
      * Get the table columns definition.

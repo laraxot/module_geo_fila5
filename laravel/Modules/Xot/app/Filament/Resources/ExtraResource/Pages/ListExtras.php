@@ -20,7 +20,7 @@ use Override;
  */
 class ListExtras extends XotBaseListRecords
 {
-    protected static string $resource = ExtraResource::class;
+    public static string $resource = ExtraResource::class;
 
     #[Override]
     public function getTableColumns(): array

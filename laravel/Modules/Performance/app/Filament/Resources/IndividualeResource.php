@@ -19,13 +19,16 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndivid
 use Modules\Performance\Models\CriteriValutazione;
 use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Filament\Resources\SchedaResource;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
+use ReflectionClass;
+use Webmozart\Assert\Assert;
 
 use function Safe\date;
 
-class IndividualeResource extends SchedaResource
+class IndividualeResource extends XotBaseResource
 {
     protected static ?string $model = Individuale::class;
 
@@ -95,13 +98,13 @@ class IndividualeResource extends SchedaResource
     }
 
   
-    public static function getPagesOLD(): array
+    public static function getPages(): array
     {
+
         return [
-            'index' => ListIndividuales::route('/'),
-            'create' => CreateIndividuale::route('/create'),
-            'edit' => EditIndividuale::route('/{record}/edit'),
+            ...parent::getPages(),
             'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 
@@ -136,5 +139,8 @@ class IndividualeResource extends SchedaResource
 
         return $fields;
     }
+
+
+    
 
 }

@@ -23,7 +23,7 @@ use function Safe\date;
 
 class ListCriteriValutaziones extends PtvBaseYearListRecords
 {
-    protected static string $resource = CriteriValutazioneResource::class;
+    public static string $resource = CriteriValutazioneResource::class;
 
     /**
      * @return array<string, Columns\TextColumn>

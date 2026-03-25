@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTranslationFiles extends XotBaseListRecords
 {
-    protected static string $resource = TranslationFileResource::class;
+    public static string $resource = TranslationFileResource::class;
 
     #[\Override]
     public function getTableColumns(): array

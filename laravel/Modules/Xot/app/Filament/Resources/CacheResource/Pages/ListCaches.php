@@ -21,7 +21,7 @@ class ListCaches extends XotBaseListRecords
 {
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    protected static string $resource = CacheResource::class;
+    public static string $resource = CacheResource::class;
 
     public function getHeaderWidgets(): array
     {

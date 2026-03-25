@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditNotificationLog extends XotBaseEditRecord
 {
-    protected static string $resource = NotificationLogResource::class;
+    public static string $resource = NotificationLogResource::class;
     
     /**
      * {@inheritdoc}

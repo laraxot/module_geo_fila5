@@ -17,7 +17,7 @@ use Modules\Xot\Contracts\UserContract;
 
 class ListUsers extends BaseListUsers
 {
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     #[\Override]
     public function getTableColumns(): array

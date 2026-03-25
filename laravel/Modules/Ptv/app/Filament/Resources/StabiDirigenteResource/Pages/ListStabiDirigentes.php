@@ -22,7 +22,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListStabiDirigentes extends PtvBaseYearListRecords
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     /**
      * Get the table columns definition.

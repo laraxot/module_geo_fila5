@@ -80,6 +80,8 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getModel(): string
     {
+
+        
         // Usa get_called_class() per late static binding corretto
         // static::class viene risolto a compile-time, get_called_class() a runtime
         $calledClass = get_called_class();

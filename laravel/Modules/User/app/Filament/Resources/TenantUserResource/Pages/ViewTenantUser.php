@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
  */
 class ViewTenantUser extends XotBaseViewRecord
 {
-    protected static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
+    public static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
 
     /**
      * @return array<string, Component>

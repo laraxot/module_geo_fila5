@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewPermission extends XotBaseViewRecord
 {
-    protected static string $resource = PermissionResource::class;
+    public static string $resource = PermissionResource::class;
 
     /**
      * @return array<string, Component>

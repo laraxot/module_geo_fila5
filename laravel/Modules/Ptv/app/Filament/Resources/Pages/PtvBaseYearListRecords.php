@@ -25,6 +25,8 @@ use function Safe\date;
 
 abstract class PtvBaseYearListRecords extends XotBaseListRecords
 {
+
+    public string $yearFieldName='anno';
     #[Override]
     protected function getHeaderActions(): array
     {
@@ -35,8 +37,7 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         // @phpstan-ignore-next-line return.type
         return [
             ...parent::getHeaderActions(),
-            CreateAction::make(),
-            CopyFromLastYearAction::make('copy_from_last_year'),
+            CopyFromLastYearAction::make('copy_from_last_year')->setYearFieldName($this->yearFieldName),
         ];
     }
 
@@ -46,7 +47,7 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         return [
             ...parent::getTableFilters(),
             'anno' => app(GetYearFilter::class)
-                ->execute('anno', intval(date('Y')) - 3, intval(date('Y'))),
+                ->execute($this->yearFieldName, intval(date('Y')) - 3, intval(date('Y'))),
         ];
     }
 

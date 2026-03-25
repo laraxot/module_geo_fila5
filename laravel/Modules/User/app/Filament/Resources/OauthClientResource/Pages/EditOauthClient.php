@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditOauthClient extends XotBaseEditRecord
 {
-    protected static string $resource = OauthClientResource::class;
+    public static string $resource = OauthClientResource::class;
 
     /**
      * Get the header actions.

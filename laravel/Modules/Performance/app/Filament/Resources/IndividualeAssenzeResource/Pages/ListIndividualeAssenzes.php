@@ -17,7 +17,7 @@ use function Safe\date;
 
 class ListIndividualeAssenzes extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualeAssenzeResource::class;
+    public static string $resource = IndividualeAssenzeResource::class;
 
     #[Override]
     public function getTableColumns(): array

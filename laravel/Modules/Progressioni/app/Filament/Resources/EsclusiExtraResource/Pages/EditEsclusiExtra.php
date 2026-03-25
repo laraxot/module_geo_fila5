@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditEsclusiExtra extends XotBaseEditRecord
 {
-    protected static string $resource = EsclusiExtraResource::class;
+    public static string $resource = EsclusiExtraResource::class;
 
     protected function getHeaderActions(): array
     {

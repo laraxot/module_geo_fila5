@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateCriteriMaggiorazione extends XotBaseCreateRecord
 {
-    protected static string $resource = CriteriMaggiorazioneResource::class;
+    public static string $resource = CriteriMaggiorazioneResource::class;
 }

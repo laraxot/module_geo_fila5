@@ -16,7 +16,7 @@ use Override;
 
 class ListOrganizzativaCatCoeffs extends PtvBaseYearListRecords
 {
-    protected static string $resource = OrganizzativaCatCoeffResource::class;
+    public static string $resource = OrganizzativaCatCoeffResource::class;
 
   
 

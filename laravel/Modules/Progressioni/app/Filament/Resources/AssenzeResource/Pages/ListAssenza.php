@@ -11,7 +11,7 @@ use Override;
 
 class ListAssenza extends PtvBaseYearListRecords
 {
-    protected static string $resource = AssenzeResource::class;
+    public static string $resource = AssenzeResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -14,7 +14,7 @@ use function Safe\json_encode;
 
 class ViewSocialProvider extends XotBaseViewRecord
 {
-    protected static string $resource = SocialProviderResource::class;
+    public static string $resource = SocialProviderResource::class;
 
     /**
      * @return array<string, Component>

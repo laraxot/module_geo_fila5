@@ -11,5 +11,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditTenantUser extends XotBaseEditRecord
 {
-    protected static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
+    public static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
 }

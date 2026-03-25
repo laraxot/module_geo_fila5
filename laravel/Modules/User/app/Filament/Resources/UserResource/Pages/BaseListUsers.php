@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 abstract class BaseListUsers extends XotBaseListRecords
 {
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     /**
      * Get table columns for user records.

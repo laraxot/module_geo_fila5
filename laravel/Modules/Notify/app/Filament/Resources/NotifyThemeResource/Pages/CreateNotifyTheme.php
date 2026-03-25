@@ -12,5 +12,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
  */
 class CreateNotifyTheme extends XotBaseCreateRecord
 {
-    protected static string $resource = NotifyThemeResource::class;
+    public static string $resource = NotifyThemeResource::class;
 }

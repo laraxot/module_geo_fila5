@@ -9,5 +9,5 @@ use Modules\Xot\Tests\Fixtures\Filament\Resources\ProbeResource;
 
 class CreateProbe extends CreateRecord
 {
-    protected static string $resource = ProbeResource::class;
+    public static string $resource = ProbeResource::class;
 }

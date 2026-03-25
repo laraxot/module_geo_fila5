@@ -11,7 +11,7 @@ use Override;
 
 class ListEsclusiExtras extends PtvBaseYearListRecords
 {
-    protected static string $resource = EsclusiExtraResource::class;
+    public static string $resource = EsclusiExtraResource::class;
 
     #[Override]
     public function getTableColumns(): array

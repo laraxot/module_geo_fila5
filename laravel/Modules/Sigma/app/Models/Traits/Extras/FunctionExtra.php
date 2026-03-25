@@ -12,7 +12,6 @@ use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
 
-// ------- services -------
 
 trait FunctionExtra
 {
@@ -438,6 +437,7 @@ trait FunctionExtra
 
     public function ggAssenzaInSedeTot(GgFilterData $data): int
     {
+        return 0; // solo adesso per debug perche' sta causando problemi di performance
         // These helper calculations are only valid on Anag instances,
         // which provide the required asz00k1() relationship.
         if (! $this instanceof Anag) {

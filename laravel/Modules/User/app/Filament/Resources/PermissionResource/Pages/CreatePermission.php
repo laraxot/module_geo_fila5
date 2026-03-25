@@ -10,5 +10,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 class CreatePermission extends XotBaseCreateRecord
 {
     // //
-    protected static string $resource = PermissionResource::class;
+    public static string $resource = PermissionResource::class;
 }

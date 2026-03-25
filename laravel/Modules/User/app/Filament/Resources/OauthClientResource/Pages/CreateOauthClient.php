@@ -12,5 +12,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
  */
 class CreateOauthClient extends XotBaseCreateRecord
 {
-    protected static string $resource = OauthClientResource::class;
+    public static string $resource = OauthClientResource::class;
 }

@@ -36,7 +36,7 @@ use Override;
 
 class ListScheda extends XotBaseListRecords
 {
-    protected static string $resource = SchedaResource::class;
+    public static string $resource = SchedaResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

@@ -12,5 +12,5 @@ use Modules\Incentivi\Filament\Resources\StabiDirigenteResource;
 
 class CreateStabiDirigente extends CreateRecord
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 }

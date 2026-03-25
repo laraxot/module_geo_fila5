@@ -36,7 +36,7 @@ use function Safe\date;
  */
 class ListOrganizzativas extends ListScheda
 {
-    protected static string $resource = OrganizzativaResource::class;
+    public static string $resource = OrganizzativaResource::class;
 
     public function getTableColumns(): array
     {

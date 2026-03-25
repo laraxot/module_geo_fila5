@@ -21,7 +21,7 @@ use Override;
  */
 class ListLogs extends XotBaseListRecords
 {
-    protected static string $resource = LogResource::class;
+    public static string $resource = LogResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListSocialProviders extends XotBaseListRecords
 {
-    protected static string $resource = SocialProviderResource::class;
+    public static string $resource = SocialProviderResource::class;
 
     #[\Override]
     public function getTableColumns(): array

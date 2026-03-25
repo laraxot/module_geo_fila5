@@ -24,7 +24,7 @@ use Override;
 
 class ViewMedia extends XotBaseViewRecord
 {
-    protected static string $resource = MediaResource::class;
+    public static string $resource = MediaResource::class;
 
     /**
      * Restituisce lo schema dell'infolist per la visualizzazione dei dettagli del record.

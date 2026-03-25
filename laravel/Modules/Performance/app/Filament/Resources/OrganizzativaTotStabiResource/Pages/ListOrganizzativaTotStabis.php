@@ -15,7 +15,7 @@ use Override;
 
 class ListOrganizzativaTotStabis extends PtvBaseYearListRecords
 {
-    protected static string $resource = OrganizzativaTotStabiResource::class;
+    public static string $resource = OrganizzativaTotStabiResource::class;
 
     
 

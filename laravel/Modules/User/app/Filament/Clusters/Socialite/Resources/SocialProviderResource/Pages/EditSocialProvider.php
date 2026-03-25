@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditSocialProvider extends XotBaseEditRecord
 {
-    protected static string $resource = SocialProviderResource::class;
+    public static string $resource = SocialProviderResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCache extends XotBaseEditRecord
 {
-    protected static string $resource = CacheResource::class;
+    public static string $resource = CacheResource::class;
 }

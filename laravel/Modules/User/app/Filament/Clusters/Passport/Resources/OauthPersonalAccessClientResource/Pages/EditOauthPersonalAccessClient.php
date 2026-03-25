@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOauthPersonalAccessClient extends XotBaseEditRecord
 {
-    protected static string $resource = OauthPersonalAccessClientResource::class;
+    public static string $resource = OauthPersonalAccessClientResource::class;
 }

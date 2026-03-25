@@ -21,7 +21,7 @@ use Webmozart\Assert\Assert;
  */
 class EditUser extends XotBaseEditRecord
 {
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

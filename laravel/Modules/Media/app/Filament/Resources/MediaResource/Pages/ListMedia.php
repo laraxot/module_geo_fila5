@@ -21,7 +21,7 @@ use Webmozart\Assert\Assert;
 
 class ListMedia extends XotBaseListRecords
 {
-    protected static string $resource = MediaResource::class;
+    public static string $resource = MediaResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

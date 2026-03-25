@@ -16,7 +16,7 @@ use Modules\Xot\Models\Module;
  */
 class EditModule extends XotBaseEditRecord
 {
-    protected static string $resource = ModuleResource::class;
+    public static string $resource = ModuleResource::class;
 
     protected function getHeaderActions(): array
     {

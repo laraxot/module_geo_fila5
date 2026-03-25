@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditValutatore extends XotBaseEditRecord
 {
-    protected static string $resource = ValutatoreResource::class;
+    public static string $resource = ValutatoreResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -22,7 +22,7 @@ class ViewUser extends BaseViewUser
 {
     use HasFiltersForm;
 
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 
     protected string $view = 'user::filament.resources.user.pages.view-user';
 

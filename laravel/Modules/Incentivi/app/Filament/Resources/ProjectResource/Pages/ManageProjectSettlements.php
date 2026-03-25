@@ -20,7 +20,7 @@ use Override;
 
 class ManageProjectSettlements extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'settlements';
 

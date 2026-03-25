@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditJobsWaiting extends XotBaseEditRecord
 {
-    protected static string $resource = JobsWaitingResource::class;
+    public static string $resource = JobsWaitingResource::class;
 
     protected function getHeaderActions(): array
     {

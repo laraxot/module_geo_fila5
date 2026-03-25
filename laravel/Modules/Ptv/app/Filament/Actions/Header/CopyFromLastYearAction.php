@@ -18,6 +18,9 @@ use Modules\Xot\Actions\ModelClass\CopyFromLastYearAction as CopyFromLastYearByF
 
 class CopyFromLastYearAction extends Action
 {
+
+    public ?string $yearFieldName=null;
+
     public static function getDefaultName(): ?string
     {
         return 'copy_from_last_year_';
@@ -50,6 +53,9 @@ class CopyFromLastYearAction extends Action
                     // 2023
                     $fieldname = 'year';
                 }
+                if (is_string($this->yearFieldName)) {
+                    $fieldname=$this->yearFieldName;
+                }
 
                 app(CopyFromLastYearByFieldnameAction::class)->execute($modelClass, $fieldname, is_string($year) ? $year : '');
                 Notification::make()
@@ -67,5 +73,12 @@ class CopyFromLastYearAction extends Action
 
             return is_bool($canCreate) ? $canCreate : false;
         });
+    }
+
+    public function setYearFieldName(string $yearFieldName): self
+    {
+        $this->yearFieldName = $yearFieldName;
+
+        return $this;
     }
 }

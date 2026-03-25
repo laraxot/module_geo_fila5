@@ -9,5 +9,5 @@ use Modules\IndennitaResponsabilita\Filament\Resources\RatingMorphResource;
 
 class CreateRatingMorph extends CreateRecord
 {
-    protected static string $resource = RatingMorphResource::class;
+    public static string $resource = RatingMorphResource::class;
 }

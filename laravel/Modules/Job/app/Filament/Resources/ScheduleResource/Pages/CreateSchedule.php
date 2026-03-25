@@ -20,7 +20,7 @@ class CreateSchedule extends XotBaseCreateRecord
 
     public Collection $commands;
 
-    protected static string $resource = ScheduleResource::class;
+    public static string $resource = ScheduleResource::class;
 
     /**
      * @return array<Htmlable|string>

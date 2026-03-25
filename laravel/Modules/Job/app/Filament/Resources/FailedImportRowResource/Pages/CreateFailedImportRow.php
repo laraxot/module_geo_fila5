@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateFailedImportRow extends XotBaseCreateRecord
 {
-    protected static string $resource = FailedImportRowResource::class;
+    public static string $resource = FailedImportRowResource::class;
 }

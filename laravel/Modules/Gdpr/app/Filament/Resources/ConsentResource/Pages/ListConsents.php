@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListConsents extends XotBaseListRecords
 {
-    protected static string $resource = ConsentResource::class;
+    public static string $resource = ConsentResource::class;
 
     public function getTableColumns(): array
     {

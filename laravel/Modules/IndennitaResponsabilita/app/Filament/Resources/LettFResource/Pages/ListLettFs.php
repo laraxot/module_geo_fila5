@@ -17,7 +17,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListLettFs extends XotBaseListRecords
 {
-    protected static string $resource = LettFResource::class;
+    public static string $resource = LettFResource::class;
 
     /**
      * Get the table columns definition.

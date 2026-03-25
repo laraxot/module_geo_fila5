@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 class CreateTeam extends XotBaseCreateRecord
 {
     // //
-    protected static string $resource = TeamResource::class;
+    public static string $resource = TeamResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTenant extends XotBaseEditRecord
 {
-    protected static string $resource = TenantResource::class;
+    public static string $resource = TenantResource::class;
 
     protected function getHeaderActions(): array
     {

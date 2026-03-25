@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListOauthPersonalAccessClients extends XotBaseListRecords
 {
-    protected static string $resource = OauthPersonalAccessClientResource::class;
+    public static string $resource = OauthPersonalAccessClientResource::class;
 }
