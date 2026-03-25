@@ -147,137 +147,83 @@ trait MutatorTrait
         return $float_value;
     }
 
+    /**
+     * Calcola totale punteggio.
+     *
+     * Metodo separato per il calcolo complesso (Pattern Livello 4).
+     */
     public function getTotalePunteggio(): ?float
     {
         if ($this->getKey() == null) {
             return null;
         }
 
-        $value = 0;
+        $value = 0.0;
         $criteri_valutazione = $this->criteriValutazione->where('post_type', $this->type);
-        $tmp = [];
+
         foreach ($criteri_valutazione as $v) {
-            // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
             $nomeField = is_object($v) && isset($v->nome) && is_string($v->nome) ? $v->nome : '';
             if ($nomeField === '') {
                 continue;
             }
+
             /** @var float $val */
             $val = (float) ($this->getAttribute($nomeField) ?? 0);
             /** @var float $peso */
             $peso = (float) $this->getPeso($nomeField);
 
             $value += ((float) $val * (float) $peso) / 4;
-            $tmp[] = [
-                'nome' => $nomeField,
-                'val' => $val,
-                'peso' => $peso,
-                'value' => $value,
-            ];
-        }
-        dddx($value);
-
-        return $value;
-    }
-
-    public function getTotalePunteggioAttribute(?float $value): ?float
-    {
-        if ($this->getKey() == null) {
-            return null;
         }
 
-        if ($value !== null && $value >= 1) {
-            return $value;
-        }
-
-        $value = 0;
-        $criteri_valutazione = $this->criteriValutazione->where('post_type', $this->type);
-        $tmp = [];
-        foreach ($criteri_valutazione as $v) {
-            // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
-            $nomeField = is_object($v) && isset($v->nome) && is_string($v->nome) ? $v->nome : '';
-            if ($nomeField === '') {
-                continue;
-            }
-            /** @var float $val */
-            $val = (float) ($this->getAttribute($nomeField) ?? 0);
-            /** @var float $peso */
-            $peso = (float) $this->getPeso($nomeField);
-
-            $value += ((float) $val * (float) $peso) / 4;
-            $tmp[] = [
-                'nome' => $nomeField,
-                'val' => $val,
-                'peso' => $peso,
-                'value' => $value,
-            ];
-        }
-
+        // Fallback: se valore è basso e ha_diritto > 0, copia da altro record
         if ($value <= 0.001 && $this->ha_diritto > 0) {
             $where = [
                 'ente' => $this->ente,
                 'matr' => $this->matr,
                 'anno' => $this->anno,
             ];
-            $row = Individuale::where($where)->where('ha_diritto', '>', 0)
+            $row = Individuale::where($where)
+                ->where('ha_diritto', '>', 0)
                 ->where('esperienza_acquisita', '>', 0)
                 ->first();
+
             if ($row !== null) {
-                $up = [];
+                $value = 0.0;
                 foreach ($criteri_valutazione as $v) {
-                    // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
                     $nomeField = is_object($v) && isset($v->nome) && is_string($v->nome) ? $v->nome : '';
                     if ($nomeField === '') {
                         continue;
                     }
                     $rowValue = $row->getAttribute($nomeField);
                     if ($rowValue !== null) {
-                        $up[$nomeField] = $rowValue;
+                        $value += ((float) $rowValue * (float) $this->getPeso($nomeField)) / 4;
                     }
-                }
-                // ⚠️ DO NOT call update() inside accessor - causes infinite loop
-                // Just set the attributes directly without triggering events
-                foreach ($up as $key => $val) {
-                    $this->attributes[$key] = $val;
                 }
             }
         }
-        /*
-        if (0.001 >= $value) {
-            $tot = 0;
-            $gg = 0;
 
-            $voti = $this->criteriValutazione->pluck('nome')->toArray();
-            $voti[] = 'totale_punteggio';
+        return $value;
+    }
 
-            $tot = [];
-            foreach ($this->otherWinnerRows as $otherWinnerRow) {
-                foreach ($voti as $voto) {
-                    if (! isset($tot[$voto])) {
-                        $tot[$voto] = 0;
-                    }
-                    $tot[$voto] += ($otherWinnerRow->attributes[$voto] * $otherWinnerRow->attributes['gg_presenza_dalal']);
-                }
-
-                // $tot += $otherWinnerRow->attributes['totale_punteggio'] * $otherWinnerRow->attributes['gg_presenza_dalal'];
-                $gg += $otherWinnerRow->attributes['gg_presenza_dalal'];
-            }
-
-            if (0 !== $gg) {
-                foreach ($voti as $voto) {
-                    $tot[$voto] = $tot[$voto] / $gg;
-                }
-                static::withoutEvents(function () use ($tot): void {
-                    $this->update($tot);
-                });
-                $value = $tot['totale_punteggio'];
-            }
+    public function getTotalePunteggioAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value) && $value >= 1) {
+            return $value;
         }
-        // */
 
-        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
-        // Set the raw attribute value without triggering events
-        $this->attributes['totale_punteggio'] = $value;
+        // ✅ Check: record deve esistere prima di save()
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getTotalePunteggio();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['totale_punteggio' => $value]);
+        });
 
         return $value;
     }
