@@ -1,3 +1,12 @@
+# Gemini Context
+
+> **Gemini Agent Guide (split)**: [.agents/docs/ai-agents/gemini/index.md](.agents/docs/ai-agents/gemini/index.md)
+> Memories: [.agents/docs/ai-agents/gemini/memories.md](.agents/docs/ai-agents/gemini/memories.md)
+> Rules: [.agents/docs/ai-agents/gemini/rules.md](.agents/docs/ai-agents/gemini/rules.md)
+> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
+
+---
+
 # Gemini Added Memories
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
 - PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.

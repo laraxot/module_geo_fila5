@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Mutators;
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Codici;
 
 /**
@@ -23,8 +25,11 @@ trait EnteMatrMutator
      * Guard against recursive updates from accessors.
      * Prevents "attributeRawValues null" crash with spatie/activitylog:
      * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     *
+     * MUST be protected (not private) for proper trait composition.
+     * Multiple traits share this guard to prevent conflicts.
      */
-    private static bool $isUpdatingFromAccessor = false;
+    protected static bool $isUpdatingFromAccessor = false;
 
     protected function getEnteAttribute(?int $value): ?int
     {
@@ -225,7 +230,7 @@ trait EnteMatrMutator
         }
 
         $anag = $this->ana10f;
-        if (! ($anag instanceof \Modules\Sigma\Models\Ana10f)) {
+        if (! ($anag instanceof Ana10f)) {
             return '---';
         }
 
@@ -271,7 +276,7 @@ trait EnteMatrMutator
         $fieldname = 'titolo_di_studio';
 
         if (! Schema::connection($this->getConnectionName())->hasColumn($this->getTable(), $fieldname)) {
-            Schema::connection($this->getConnectionName())->table($this->getTable(), static function (\Illuminate\Database\Schema\Blueprint $table) use (
+            Schema::connection($this->getConnectionName())->table($this->getTable(), static function (Blueprint $table) use (
                 $fieldname,
             ): void {
                 $table->string($fieldname);
@@ -292,7 +297,45 @@ trait EnteMatrMutator
         return $value;
     }
 
-    protected function getLastDataAssunzAttribute(mixed $_value): ?string
+    /**
+     * Get last_data_assunz attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
+     */
+    protected function getLastDataAssunzAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateLastDataAssunz();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($value): void {
+                    tap($this)->update(['last_data_assunz' => $value]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola last_data_assunz.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateLastDataAssunz(): ?string
     {
         $row = $this->sto00f()->orderBy('st2kas', 'desc')->first();
 
@@ -302,20 +345,6 @@ trait EnteMatrMutator
 
         /** @var object{st2kas: string|int|null} $row */
         $value = $row->st2kas;
-        if (\in_array('last_data_assunz', $this->getFillable(), false)) {
-            if ($this->getKey() != null && ! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        tap($this)->update(['last_data_assunz' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
-        } else {
-            dddx('[last_data_assunz] not in fillable in class ['.static::class.']');
-        }
 
         return $value === null ? null : (string) $value;
     }

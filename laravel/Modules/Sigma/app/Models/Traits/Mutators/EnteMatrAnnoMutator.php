@@ -4,14 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Mutators;
 
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Qua00f;
+
 trait EnteMatrAnnoMutator
 {
     /**
      * Guard against recursive updates from accessors.
      * Prevents "attributeRawValues null" crash with spatie/activitylog:
      * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     *
+     * MUST be protected (not private) for proper trait composition.
+     * Multiple traits share this guard to prevent conflicts.
      */
-    private static bool $isUpdatingFromAccessor = false;
+    protected static bool $isUpdatingFromAccessor = false;
 
     protected function getPercPTimeYearAttribute(mixed $_value): int|float
     {
@@ -58,7 +65,7 @@ trait EnteMatrAnnoMutator
             ->get();
         $perc = 0.0;
         $peso = 0;
-        /** @var \Modules\Sigma\Models\Qua00f $row */
+        /** @var Qua00f $row */
         foreach ($rows as $row) {
             /** @var float|int|numeric-string|null $percPtime */
             $percPtime = $row->getAttribute('perc_ptime');
@@ -107,7 +114,7 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Asz00k1> $collection */
+        /** @var Collection<int, Asz00k1> $collection */
         $collection = $this->asz00k1()
             ->where('asztip', 505)
             ->where('aszcod', 97)
@@ -115,7 +122,7 @@ trait EnteMatrAnnoMutator
             ->get();
 
         $value = 0.0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $item */
+        /** @var Asz00k1 $item */
         foreach ($collection as $item) {
             /** @var float|int|null $days */
             $days = $item->getAttribute('days');
@@ -158,7 +165,7 @@ trait EnteMatrAnnoMutator
             ->where('aszcod', 97)
             ->get();
         $giorni = 0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $v */
+        /** @var Asz00k1 $v */
         foreach ($asz as $v) {
             $aszdur = is_numeric($v->aszdur) ? (int) $v->aszdur : 0;
             $giorni += $aszdur;
@@ -178,7 +185,7 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Asz00k1> $collection */
+        /** @var Collection<int, Asz00k1> $collection */
         $collection = $this->asz00k1()
             ->where('asztip', 505)
             ->where('aszcod', 97)
@@ -186,7 +193,7 @@ trait EnteMatrAnnoMutator
             ->get();
 
         $value = 0.0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $item */
+        /** @var Asz00k1 $item */
         foreach ($collection as $item) {
             /** @var float|int|numeric-string|null $days */
             $days = $item->getAttribute('days');
@@ -235,7 +242,7 @@ trait EnteMatrAnnoMutator
             ->get();
         $perc = 0.0;
         $peso = 0.0;
-        /** @var \Modules\Sigma\Models\Qua00f $row */
+        /** @var Qua00f $row */
         foreach ($rows as $row) {
             // Proprietà dinamiche aggiunte da withDays() e withPercPtime()
             $percPtime = is_numeric($row->getAttribute('perc_ptime')) ? (float) $row->getAttribute('perc_ptime') : 0.0;

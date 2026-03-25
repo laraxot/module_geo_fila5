@@ -413,64 +413,111 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param  float|int|string|null  $value
+     * Get tot attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
      */
-    public function getTotAttribute(mixed $value): float
+    public function getTotAttribute(?float $value): ?float
     {
-        /** @var float|int|string|null $complessita */
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateTot();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            if (! self::$isUpdatingFromAccessor) {
+                self::$isUpdatingFromAccessor = true;
+                try {
+                    self::withoutEvents(function () use ($value): void {
+                        $this->update(['tot' => $value]);
+                    });
+                } finally {
+                    self::$isUpdatingFromAccessor = false;
+                }
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola il totale (complessita + coordinamento + responsabilita).
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateTot(): float
+    {
         $complessita = $this->complessita ?? 0;
-        /** @var float|int|string|null $coordinamento */
         $coordinamento = $this->coordinamento ?? 0;
-        /** @var float|int|string|null $responsabilita */
         $responsabilita = $this->responsabilita ?? 0;
 
         $complessitaNum = is_numeric($complessita) ? (float) $complessita : 0.0;
         $coordinamentoNum = is_numeric($coordinamento) ? (float) $coordinamento : 0.0;
         $responsabilitaNum = is_numeric($responsabilita) ? (float) $responsabilita : 0.0;
 
-        $newValue = $complessitaNum + $coordinamentoNum + $responsabilitaNum;
-        /** @var float|int|string|null $valueNum */
-        $valueNum = $value;
-        $valueFloat = is_numeric($valueNum) ? (float) $valueNum : 0.0;
-        if ($newValue != $valueFloat) {
-            // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if ($this->getKey() !== null) {
-                $this->update(['tot' => $newValue]);
-            }
-        }
-
-        return $newValue;
+        return $complessitaNum + $coordinamentoNum + $responsabilitaNum;
     }
 
     /**
-     * @param  float|int|string|null  $value
+     * Get valore_economico_calcolato attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
      */
-    public function getValoreEconomicoCalcolatoAttribute(mixed $value): float
+    public function getValoreEconomicoCalcolatoAttribute(?float $value): ?float
     {
-        /** @var ImportiCategoria|null $importi */
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateValoreEconomicoCalcolato();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            if (! self::$isUpdatingFromAccessor) {
+                self::$isUpdatingFromAccessor = true;
+                try {
+                    self::withoutEvents(function () use ($value): void {
+                        $this->update(['valore_economico_calcolato' => $value]);
+                    });
+                } finally {
+                    self::$isUpdatingFromAccessor = false;
+                }
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola il valore economico calcolato.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateValoreEconomicoCalcolato(): float
+    {
         $importi = $this->importi;
         if ($importi === null) {
             return 0.0;
         }
 
-        /** @var float|int|string|null $importoMax */
         $importoMax = $importi->max ?? 0;
         $importoMaxNum = is_numeric($importoMax) ? (float) $importoMax : 0.0;
-        /** @var float|int $tot */
         $tot = $this->tot ?? 0.0;
         $totNum = is_numeric($tot) ? (float) $tot : 0.0;
-        $newValue = $totNum * $importoMaxNum / 100;
-        /** @var float|int|string|null $valueNum */
-        $valueNum = $value;
-        $valueFloat = is_numeric($valueNum) ? (float) $valueNum : 0.0;
-        if ($newValue != $valueFloat) {
-            // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if ($this->getKey() !== null) {
-                $this->update(['valore_economico_calcolato' => $newValue]);
-            }
-        }
 
-        return $newValue;
+        return $totNum * $importoMaxNum / 100;
     }
 
     public function getValoreEconomicoEffettivoAttribute(): float
@@ -490,31 +537,60 @@ class LettF extends BaseScheda
     }
 
     /**
-     * @param  float|int|string|null  $value
+     * Get valore_economico_attribuito attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
      */
-    public function getValoreEconomicoAttribuitoAttribute(mixed $value): float
+    public function getValoreEconomicoAttribuitoAttribute(?float $value): ?float
     {
-        /** @var ImportiCategoria|null $importi */
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateValoreEconomicoAttribuito();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            if (! self::$isUpdatingFromAccessor) {
+                self::$isUpdatingFromAccessor = true;
+                try {
+                    self::withoutEvents(function () use ($value): void {
+                        $this->update(['valore_economico_attribuito' => $value]);
+                    });
+                } finally {
+                    self::$isUpdatingFromAccessor = false;
+                }
+            }
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola il valore economico attribuito (max tra valore e importoMin).
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateValoreEconomicoAttribuito(): float
+    {
         $importi = $this->importi;
         if ($importi === null) {
             return 0.0;
         }
 
-        /** @var float|int|string|null $importoMin */
         $importoMin = $importi->min ?? 0;
         $importoMinNum = is_numeric($importoMin) ? (float) $importoMin : 0.0;
-        /** @var float|int|string|null $valueNum */
-        $valueNum = $value;
-        $valueFloat = is_numeric($valueNum) ? (float) $valueNum : 0.0;
-        $newValue = max($valueFloat, $importoMinNum);
-        if ($newValue != $valueFloat) {
-            // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            if ($this->getKey() !== null) {
-                $this->update(['valore_economico_attribuito' => $newValue]);
-            }
-        }
 
-        return $newValue;
+        // Il valore corrente è già nel DB o calcolato
+        $value = $this->attributes['valore_economico_attribuito'] ?? 0.0;
+        $valueFloat = is_numeric($value) ? (float) $value : 0.0;
+
+        return max($valueFloat, $importoMinNum);
     }
 
     public function getPosizTxtAttribute(?string $value): ?string

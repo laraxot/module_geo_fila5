@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models\Traits\Mutators;
 
 use Carbon\Carbon;
+use Modules\Sigma\Models\Qua00f;
 
 trait EnteMatrDateRangeMutator
 {
@@ -12,8 +13,11 @@ trait EnteMatrDateRangeMutator
      * Guard against recursive updates from accessors.
      * Prevents "attributeRawValues null" crash with spatie/activitylog:
      * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     *
+     * MUST be protected (not private) for proper trait composition.
+     * Multiple traits share this guard to prevent conflicts.
      */
-    private static bool $isUpdatingFromAccessor = false;
+    protected static bool $isUpdatingFromAccessor = false;
 
     /**
      * Convert date value to integer Ymd format.
@@ -44,18 +48,46 @@ trait EnteMatrDateRangeMutator
     /**
      * Get percentage part-time for date range.
      *
-     * @param  mixed  $_value  Unused parameter (required by Laravel accessor pattern)
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE il risultato
+     * 4. Mantengo l'accessore pulito e leggibile
      */
-    protected function getPercPTimeDaterangeAttribute(mixed $_value): int|float
+    protected function getPercPTimeDaterangeAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;  // Già calcolato, torno subito
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getPercPTimeDaterange();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE (campo CORRETTO!)
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['perc_ptime_daterange' => $value]);
+            });
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola la percentuale part-time per il range di date.
+     *
+     * Metodo separato per il calcolo complesso.
+     * Questo mantiene l'accessore pulito e leggibile (Livello 4).
+     */
+    protected function getPercPTimeDaterange(): float
     {
         $rows = $this->qua00fDaterange();
         if ($rows === null) {
-            return 0;
+            return 0.0;
         }
-        /** @var array<int, array<string, mixed>> $array */
-        $array = $rows->get()->toArray();
 
-        // echo '<pre>';print_r($array);echo '</pre>';
+        $array = $rows->get()->toArray();
 
         $ore = 0.0;
         $giorni = 0;
@@ -77,27 +109,49 @@ trait EnteMatrDateRangeMutator
         }
 
         if ($giorni === 0) {
-            return 0;
+            return 0.0;
         }
 
-        // echo '<h3>'.$ris.'</h3>';
         return $ore / $giorni;
     }
 
     /**
      * Get perc_parttime_dalal attribute.
-     * 
-     * Pattern corretto: accetta SEMPRE il valore grezzo dal database come parametro.
-     * Se il valore esiste già (è float), lo restituisco immediatamente.
-     * Altrimenti, calcolo il valore personalizzato.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE il risultato
+     * 4. Mantengo l'accessore pulito e leggibile
      */
     protected function getPercParttimeDalalAttribute(?float $value): ?float
     {
-        // ✅ CORRETTO: Controllo se il valore esiste già dal database
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
         if (is_float($value)) {
             return $value;
         }
-        
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getPercParttimeDalal();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['perc_parttime_dalal' => $value]);
+            });
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola la percentuale part-time dal/al.
+     *
+     * Metodo separato per il calcolo complesso.
+     * Questo mantiene l'accessore pulito e leggibile (Livello 4).
+     */
+    protected function getPercParttimeDalal(): ?float
+    {
         $date_min = $this->dal;
         $date_max = $this->al;
         if ($date_min === null || $date_min === 0 || $date_min === '') {
@@ -139,33 +193,46 @@ trait EnteMatrDateRangeMutator
             return null;
         }
 
-        $value = $perc / $peso;
-        // $value = number_format($value, 3);
-        $this->perc_parttime_dalal = $value;
+        return $perc / $peso;
+    }
 
-        // Guard: modello deve avere PK per salvare
+    /**
+     * Get gg_parttimevert_dalal attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE il risultato
+     * 4. Mantengo l'accessore pulito e leggibile
+     */
+    protected function getGgParttimevertDalalAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_numeric($value)) {
+            return (float) $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getGgParttimevertDalal();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
         if ($this->getKey() !== null) {
-            // Prevent recursive activitylog crash
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['perc_parttime_dalal' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['gg_parttimevert_dalal' => $value]);
+            });
         }
 
         return $value;
     }
 
-    protected function getGgParttimevertDalalAttribute(?float $value): ?float
+    /**
+     * Calcola i giorni parttime verticale dal/al.
+     *
+     * Metodo separato per il calcolo complesso.
+     * Questo mantiene l'accessore pulito e leggibile (Livello 4).
+     */
+    protected function getGgParttimevertDalal(): ?float
     {
-        if(is_numeric($value)){
-            return (float)$value;
-        }
         $date_min = $this->dal;
         $date_max = $this->al;
         if ($date_min === null || $date_min === 0 || $date_min === '') {
@@ -190,24 +257,6 @@ trait EnteMatrDateRangeMutator
             ->withDays($date_min_int_typed, $date_max_int_typed)
             ->get()
             ->sum('days');
-        // $value = number_format($value, 3);
-
-        $this->gg_parttimevert_dalal = is_numeric($value) ? (float) $value : null;
-
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() !== null) {
-            // Prevent recursive activitylog crash
-            if (! static::$isUpdatingFromAccessor) {
-                static::$isUpdatingFromAccessor = true;
-                try {
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['gg_parttimevert_dalal' => $value]);
-                    });
-                } finally {
-                    static::$isUpdatingFromAccessor = false;
-                }
-            }
-        }
 
         return is_numeric($value) ? (float) $value : null;
     }
@@ -240,36 +289,76 @@ trait EnteMatrDateRangeMutator
         return is_numeric($value) ? (int) $value : null;
     }
 
+    /**
+     * Get gg_presenza_dalal attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE il risultato
+     * 4. Mantengo l'accessore pulito e leggibile
+     */
     protected function getGgPresenzaDalalAttribute(?int $value): ?int
     {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
         if (is_int($value)) {
             return $value;
         }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
         $value = $this->getGgPresenzaDalal();
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() != null) {
-            // Prevent recursive activitylog crash
-            try {
-                static::withoutEvents(function () use ($value): void {
-                    $this->update(['gg_presenza_dalal' => $value]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['gg_presenza_dalal' => $value]);
+            });
         }
 
         return $value;
     }
 
+    /**
+     * Get categoria_eco attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE il risultato
+     * 4. Mantengo l'accessore pulito e leggibile
+     */
     protected function getCategoriaEcoAttribute(?string $value): ?string
     {
-        if ($value != null) {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if ($value !== null) {
             return $value;
         }
-        if ($this->matr == null) {
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getCategoriaEco();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['categoria_eco' => $value]);
+            });
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola la categoria economica.
+     *
+     * Metodo separato per il calcolo complesso.
+     * Questo mantiene l'accessore pulito e leggibile (Livello 4).
+     */
+    protected function getCategoriaEco(): ?string
+    {
+        if ($this->matr === null) {
             return null;
         }
-        if ($this->qua2kd == null) {
+        if ($this->qua2kd === null) {
             return null;
         }
 
@@ -279,43 +368,18 @@ trait EnteMatrDateRangeMutator
         }
         $qua00f = $qua00fRelation->first();
 
-        if (! ($qua00f instanceof \Modules\Sigma\Models\Qua00f)) {
-            // dddx($this);
-
+        if (! ($qua00f instanceof Qua00f)) {
             return null;
         }
 
         $tqu00f = $qua00f->tqu00f;
         if ($tqu00f === null) {
-            $rows = $qua00f->tqu00f();
-            if (function_exists('rowsToSql')) {
-                dddx(['rows' => $rows, 'sql' => rowsToSql($rows), 'qua00f' => $qua00f]);
-            }
-
-            return '---';
+            return null;
         }
 
         $categoria_eco = $tqu00f->desc1;
         $categoria_eco = str_replace('Posizione economica ', '', (string) $categoria_eco);
-        $this->categoria_eco = $categoria_eco;
 
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() == null) {
-            return isset($this->attributes['categoria_eco']) && is_string($this->attributes['categoria_eco']) ? $this->attributes['categoria_eco'] : null;
-        }
-
-        // Prevent recursive activitylog crash
-        if (! static::$isUpdatingFromAccessor) {
-            static::$isUpdatingFromAccessor = true;
-            try {
-                static::withoutEvents(function () use ($categoria_eco): void {
-                    $this->update(['categoria_eco' => $categoria_eco]);
-                });
-            } finally {
-                static::$isUpdatingFromAccessor = false;
-            }
-        }
-
-        return isset($this->attributes['categoria_eco']) && is_string($this->attributes['categoria_eco']) ? $this->attributes['categoria_eco'] : null;
+        return $categoria_eco;
     }
 }

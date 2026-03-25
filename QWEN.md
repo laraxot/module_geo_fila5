@@ -1,4 +1,12 @@
-# Gemini Added Memories
+# Qwen Context
+
+> **Qwen Agent Guide (split)**: [.agents/docs/ai-agents/qwen/index.md](.agents/docs/ai-agents/qwen/index.md)
+> Rules: [.agents/docs/ai-agents/qwen/rules.md](.agents/docs/ai-agents/qwen/rules.md)
+> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
+
+---
+
+# Qwen Added Memories (condivise con Gemini)
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
 - PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
 - PRD STRUCTURE: A standard PRD must include: Executive Summary, Target Personas (including Internal Developers), Functional Requirements, Service Interface (The Contract), System Architecture & Dependencies, Non-Functional Requirements (SLA, Observability, Security), and Release Criteria.

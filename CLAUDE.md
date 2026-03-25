@@ -1,6 +1,8 @@
 # Claude Context
 
+> **Claude Agent Guide (split)**: [.agents/docs/ai-agents/claude/index.md](.agents/docs/ai-agents/claude/index.md)
 > Full documentation index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
+> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
 
 ## Project Context
 

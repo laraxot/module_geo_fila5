@@ -1,8 +1,19 @@
 # AGENTS.md
 
-> Index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
+> **Indice AI Agents (split)**: [.agents/docs/ai-agents/index.md](.agents/docs/ai-agents/index.md)
+> Index completo: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
 
 **Stack**: Laravel 12 | Filament v5 | Pest v4 | PHPStan L10 | PHP 8.3+
+
+> Questo file è il punto di ingresso condiviso. I contenuti sono stati suddivisi in file tematici:
+> - [Database Safety](.agents/docs/ai-agents/shared/database-safety.md)
+> - [Bashscripts Philosophy](.agents/docs/ai-agents/shared/bashscripts-philosophy.md)
+> - [Error Correction — 12 Steps](.agents/docs/ai-agents/shared/error-correction-12-steps.md)
+> - [Translation Rules](.agents/docs/ai-agents/shared/translation-rules.md)
+> - [Accessor/Mutator Pattern](.agents/docs/ai-agents/shared/accessor-mutator.md)
+> - [GSD Workflow](.agents/docs/ai-agents/shared/gsd-workflow.md)
+> - [BMAD Workflow](.agents/docs/ai-agents/shared/bmad-workflow.md)
+> - [Critical Rules](.agents/docs/ai-agents/shared/critical-rules.md)
 
 ## ⚠️ REGOLA CRITICA: Database SACRO 🔴
 
@@ -210,6 +221,294 @@ Se uno script diventa **produzione**:
 ```
 
 📖 **Workflow completo**: [docs/error-correction-workflow.md](docs/error-correction-workflow.md)
+
+---
+
+## 📚 REGOLE TRADUZIONI - CRITICAL 🔴
+
+> **QUANDO MODIFICHI TRADUZIONI**  
+> **SEGUITI QUESTE REGOLE IN ORDINE**
+
+### Struttura OBBLIGATORIA
+
+```php
+// 1. Navigation (5 chiavi)
+'navigation' => [
+    'label' => 'Singolare',
+    'plural_label' => 'Plurale',
+    'group' => 'Gruppo',
+    'icon' => 'heroicon-o-xxx',
+    'sort' => 10,
+],
+
+// 2. Fields (5 chiavi per CAMPO)
+'fields' => [
+    'campo' => [
+        'label' => 'Label Descrittiva',     // MAI 'campo'
+        'placeholder' => 'Placeholder Utile',
+        'helper_text' => 'Testo Aiuto',
+        'description' => 'Descrizione',
+        'tooltip' => 'Tooltip Info',
+    ],
+],
+
+// 3. Actions (success/failure OBBLIGATORI)
+'actions' => [
+    'create' => [
+        'label' => 'Crea Resource',
+        'success' => 'Creato con successo',
+        'failure' => 'Errore creazione',
+    ],
+],
+```
+
+### ❌ MAI FARE
+
+```php
+// MAI label = nome campo
+'label' => 'matr',  // ❌ Deve essere 'Matricola'
+
+// MAI placeholder = label
+'placeholder' => 'Nome',  // ❌ Deve essere 'Inserisci nome'
+
+// MAI chiavi mancanti
+'fields' => [
+    'email' => [
+        'label' => 'Email',
+        // ❌ Mancano 4 chiavi!
+    ],
+],
+
+// MAI navigation incompleta
+'navigation' => [
+    'label' => 'Progetto',
+    // ❌ Mancano 4 chiavi!
+],
+```
+
+### ✅ SEMPRE FARE
+
+1. **STUDIARE** `docs/translation-standards.md`
+2. **USARE** struttura completa (5 chiavi per field)
+3. **TRADURRE** label (MAI nomi tecnici)
+4. **VERIFICARE** it/en/de coerenti
+5. **TESTARE** in Filament UI
+6. **QUALITY GATES**: PHPStan + PHPMD + Pest
+
+📖 **Documentazione completa**: [docs/translation-standards.md](docs/translation-standards.md)  
+📖 **Fix plan**: [docs/translation-errors-fix-plan.md](docs/translation-errors-fix-plan.md)
+
+---
+
+## 🔴 REGOLE ACCESSOR/MUTATOR - CRITICAL
+
+> **QUANDO SCRIVI ACCESSOR O MUTATOR**  
+> **SEGUITI QUESTE REGOLE IN ORDINE**
+
+### Pattern SACRO
+
+```php
+// ✅ CORRETTO
+protected function getAttribute(?float $value): ?float
+{
+    // 1. Controllo se il valore esiste già dal DB
+    if (is_float($value)) {
+        return $value;  // Già calcolato, torno subito
+    }
+
+    // 2. Calcolo complesso
+    $result = $this->calculate();
+    
+    // 3. Persisto nel modello
+    $this->attribute = $result;
+
+    // 4. Persisto nel DB (solo se modello esiste)
+    if ($this->getKey() !== null) {
+        // 5. ActivityLog-Safe: prevengo ricorsione
+        if (! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($result): void {
+                    $this->update(['attribute' => $result]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
+        }
+    }
+
+    return $result;
+}
+```
+
+### ❌ MAI FARE
+
+```php
+// MAI usare mixed come tipo
+protected function getAttribute(mixed $value): mixed  // ❌
+
+// MAI ignorare il parametro con underscore
+protected function getAttribute(mixed $_value)  // ❌
+
+// MAI ricalcolare SEMPRE (ignori $value)
+protected function getAttribute(?float $value): ?float
+{
+    return $this->calculate();  // ❌ Ignora $value!
+}
+
+// MAI aggiornare senza guard (ricorsione!)
+protected function getAttribute(?float $value): ?float
+{
+    if ($value === null) {
+        $this->update(['attribute' => 42]);  // ❌ CRASH!
+    }
+}
+```
+
+### ✅ SEMPRE FARE
+
+1. **USARE** tipo forte (`?float`, `?string`, `?int`)
+2. **CONTROLLARE** il valore (`is_float($value)`)
+3. **PERSISTERE** il calcolo (`$this->attribute = $result`)
+4. **AGGIORNARE** il DB (solo se `$this->exists`)
+5. **USARE** guard per ActivityLog
+6. **DOCUMENTARE** in `docs/accessor-mutator-philosophy.md`
+
+📖 **Filosofia completa**: [docs/accessor-mutator-fix-summary.md](docs/accessor-mutator-fix-summary.md)  
+📖 **Pattern SACRO**: [Sigma/docs/accessor-mutator-philosophy.md](laravel/Modules/Sigma/docs/accessor-mutator-philosophy.md)
+
+---
+
+## 🧘 I TRE LIVELLI DELL'ACCESSOR
+
+### Livello 1: ❌ PRINCIPIANTE (Ignorante)
+
+```php
+protected function getAttribute(mixed $_value): int|float
+{
+    // ❌ mixed = tipo debole
+    // ❌ $_value = ignorato
+    // ❌ Ricalcola SEMPRE
+    return $this->calculate();
+}
+```
+
+### Livello 2: ✅ DISCEPOLO (Consapevole)
+
+```php
+protected function getAttribute(?float $value): ?float
+{
+    if (is_float($value)) {
+        return $value;  // ✅ Uso DB
+    }
+    return $this->calculate();  // ❌ Nessuna persistenza
+}
+```
+
+### Livello 3: 🧘 MAESTRO ZEN (Auto-Persistente)
+
+```php
+protected function getAttribute(?float $value): ?float
+{
+    private static bool $isUpdatingFromAccessor = false;
+    
+    if (is_float($value)) {
+        return $value;  // ✅ Uso DB (1ms)
+    }
+
+    $result = $this->calculate();  // Calcolo (100ms)
+    
+    // ✅ AUTO-PERSISTENZA SACRA
+    $this->attribute = $result;
+    
+    if ($this->getKey() !== null) {
+        if (! static::$isUpdatingFromAccessor) {
+            static::$isUpdatingFromAccessor = true;
+            try {
+                static::withoutEvents(function () use ($result): void {
+                    $this->update(['attribute' => $result]);
+                });
+            } finally {
+                static::$isUpdatingFromAccessor = false;
+            }
+        }
+    }
+
+    return $result;
+}
+```
+
+**Performance**: 9.2x più veloce su 10 accessi
+
+### ❌ MAI FARE
+
+```php
+// MAI Livello 1
+protected function getAttribute(mixed $_value)  // ❌
+
+// MAI Livello 2 (nessuna persistenza)
+protected function getAttribute(?float $value): ?float
+{
+    if (is_float($value)) return $value;
+    return $this->calculate();  // ❌ Non persisti!
+}
+
+// MAI senza guard
+$this->update(['attribute' => $result]);  // ❌ CRASH!
+```
+
+### ✅ SEMPRE FARE
+
+1. **RAGGIUNGERE** Livello 3 (auto-persistenza)
+2. **USARE** tipo forte (`?float`, `?string`, `?int`)
+3. **CONTROLLARE** `is_float($value)`
+4. **PERSISTERE** automaticamente
+5. **USARE** guard per ActivityLog
+6. **DOCUMENTARE** in `docs/accessor-enlightenment-complete.md`
+
+📖 **Illuminazione completa**: [docs/accessor-enlightenment-complete.md](docs/accessor-enlightenment-complete.md)  
+📖 **Zen Level 3**: [docs/accessor-zen-level-3.md](docs/accessor-zen-level-3.md)  
+📖 **Livello 4 (SUPREMO)**: [docs/accessor-level-4-supreme.md](docs/accessor-level-4-supreme.md)
+
+---
+
+## 🧘🧘 LIVELLO 4 - MAESTRO SUPREMO
+
+### Pattern del Livello 4 (Delegazione + Purezza)
+
+```php
+// ✅ LIVELLO 4: Accessore PULITO (10 righe)
+protected function getAttribute(?float $value): ?float
+{
+    if (is_float($value)) return $value;  // ✅ Cache
+    
+    // ✅ Delega calcolo a metodo separato
+    $value = $this->calculateAttribute();
+    
+    // ✅ Persistenza PULITA
+    if ($this->exists) {
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['attribute' => $value]);
+        });
+    }
+    
+    return $value;
+}
+
+// ✅ Metodo separato per calcolo complesso
+protected function calculateAttribute(): float
+{
+    // 50 righe di calcolo QUI
+    // Accessore rimane PULITO
+}
+```
+
+### Vantaggi del Livello 4
+
+- ✅ **Accessore PULITO** (10 righe vs 100+)
+- ✅ **Calcolo SEPARATO** (testabile)
+- ✅ **Single Responsibility** (SOLID)
+- ✅ **Manutenibilità ALTA**
 
 ---
 
