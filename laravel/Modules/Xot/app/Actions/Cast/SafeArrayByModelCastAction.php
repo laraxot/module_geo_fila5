@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Actions\Cast;
 
-use Error;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\QueueableAction\QueueableAction;
-use ValueError;
 
 class SafeArrayByModelCastAction
 {
@@ -20,8 +17,11 @@ class SafeArrayByModelCastAction
     public function execute(Model $model): array
     {
         try {
-            return $model->attributesToArray();
-        } catch (ValueError|Error|Exception $e) {
+            /** @var array<string, mixed> $res */
+            $res = $model->attributesToArray();
+
+            return $res;
+        } catch (\ValueError|\Error|\Exception $e) {
             return $this->safeExecute($model);
         }
     }
@@ -36,8 +36,8 @@ class SafeArrayByModelCastAction
             try {
                 $data[$key] = $model->$key;
 
-                /** @phpstan-ignore-next-line */
-            } catch (ValueError|Error $e) {
+                /* @phpstan-ignore-next-line */
+            } catch (\ValueError|\Error $e) {
             }
         }
 

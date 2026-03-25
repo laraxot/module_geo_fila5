@@ -1,6 +1,6 @@
-# UserFactory Advanced Integration - Modulo User & <nome progetto>
+# UserFactory Advanced Integration - Modulo User & SaluteOra
 
-## Post Deep-Study Analysis
+## Post Deep-Study Analysis 
 
 Dopo uno studio approfondito dei modelli User, Patient, Doctor e Admin, l'integrazione UserFactory ha raggiunto un livello di eccellenza enterprise-grade con supporto completo per:
 
@@ -9,15 +9,15 @@ Dopo uno studio approfondito dei modelli User, Patient, Doctor e Admin, l'integr
 ### Hierarchy Mapping
 ```
 BaseUser (User Module)
-├── User (<nome progetto>) - STI Base + Business Logic
+├── User (SaluteOra) - STI Base + Business Logic  
     ├── Patient (HasParent) - Healthcare Consumer
-    ├── Doctor (HasParent) - Healthcare Provider
+    ├── Doctor (HasParent) - Healthcare Provider  
     └── Admin (HasParent) - System Administrator
 ```
 
 ### Cross-Module Compatibility Matrix
 
-| BaseUser Field | <nome progetto> User | Business Logic | Factory Support |
+| BaseUser Field | SaluteOra User | Business Logic | Factory Support |
 |----------------|----------------|----------------|-----------------|
 | `name` | `name` | Full name concat | ✅ Complete |
 | `email` | `email` | Authentication | ✅ Complete |
@@ -47,7 +47,7 @@ User::factory()->patient()->eligibleForFreeServices()->create();
 User::factory()->patient()->pregnant()->create();
 User::factory()->patient()->lowIncome()->create();
 
-// Doctor scenarios
+// Doctor scenarios  
 User::factory()->doctor()->withStudio()->create();
 User::factory()->doctor()->withWorkflow()->create();
 User::factory()->doctor()->specialist()->create();
@@ -67,7 +67,7 @@ User::factory()->gdprCompliant()->create();
 
 ### Italian Healthcare System
 - **Codice Fiscale**: Realistic generation algorithm
-- **ISEE Integration**: Low-income eligibility logic
+- **ISEE Integration**: Low-income eligibility logic  
 - **Pregnancy Services**: Special healthcare pathways
 - **Professional Credentials**: Realistic doctor certifications
 
@@ -81,14 +81,14 @@ User::factory()->gdprCompliant()->create();
 
 ### Connection Strategy Perfezionata
 ```php
-// BaseUser (User Module)
+// BaseUser (User Module) 
 protected $connection = 'user';
 
-// <nome progetto> User (Healthcare Domain)
-protected $connection = '<nome progetto>';
+// SaluteOra User (Healthcare Domain)
+protected $connection = 'salute_ora';
 
 // Factory automatically handles connection switching
-User::factory()->create(); // Uses '<nome progetto>' connection
+User::factory()->create(); // Uses 'salute_ora' connection
 ```
 
 ### Morph Relations Support
@@ -109,25 +109,25 @@ $address = $doctor->address; // Cross-module morph relation
 public function test_cross_module_compatibility()
 {
     $user = User::factory()->create();
-
+    
     // BaseUser contracts respected
     expect($user)->toHaveProperty('email');
-    expect($user)->toHaveProperty('password');
+    expect($user)->toHaveProperty('password'); 
     expect($user->email_verified_at)->toBeInstanceOf(Carbon::class);
-
-    // <nome progetto> domain contracts
+    
+    // SaluteOra domain contracts
     expect($user->type)->toBeInstanceOf(UserTypeEnum::class);
     expect($user->state)->toBeInstanceOf(UserState::class);
 }
 
-// Business logic testing
+// Business logic testing  
 public function test_healthcare_workflows()
 {
     // Patient registration workflow
     $patient = User::factory()->patient()->pending()->create();
     $patient->requestIntegration();
     expect($patient->isIntegrationRequested())->toBeTrue();
-
+    
     // Doctor onboarding workflow
     $doctor = User::factory()->doctorWithWorkflow()->create();
     expect($doctor->workflow)->toBeInstanceOf(DoctorRegistrationWorkflow::class);
@@ -144,11 +144,11 @@ public function test_bulk_sti_performance()
         ...User::factory()->doctor()->count(30)->make(),
         ...User::factory()->admin()->count(5)->make(),
     ]);
-
+    
     User::insert($users->toArray()); // Single query
-
+    
     expect(Patient::count())->toBe(100);
-    expect(Doctor::count())->toBe(30);
+    expect(Doctor::count())->toBe(30); 
     expect(Admin::count())->toBe(5);
 }
 ```
@@ -189,11 +189,11 @@ public function run(): void
     User::factory()->patient()->count(500)->create();
     User::factory()->patient()->pregnant()->count(50)->create();
     User::factory()->patient()->eligibleForFreeServices()->count(200)->create();
-
+    
     // Professional doctor network
     User::factory()->doctorWithStudio()->count(50)->create();
     User::factory()->doctor()->specialist()->count(20)->create();
-
+    
     // Administrative structure
     User::factory()->admin()->count(5)->create();
 }
@@ -218,7 +218,7 @@ public function run(): void
 ### Database Efficiency
 - **Single Table Inheritance**: Optimal queries
 - **Eager Loading**: Relationship optimization
-- **Connection Pooling**: Cross-database efficiency
+- **Connection Pooling**: Cross-database efficiency  
 - **Index Strategy**: Query performance
 
 ### Memory Management
@@ -245,7 +245,7 @@ public function run(): void
 
 ### Phase 2 Roadmap
 - **Media Library Integration**: Real file attachments
-- **API Testing Support**: RESTful endpoint testing
+- **API Testing Support**: RESTful endpoint testing  
 - **Multi-Language**: Internationalization support
 - **Advanced Workflows**: Complex business processes
 
@@ -261,7 +261,7 @@ public function run(): void
 - **Reusability**: Base authentication contracts preserved
 - **Testability**: Comprehensive user scenario testing
 
-### For <nome progetto> Module
+### For SaluteOra Module  
 - **Domain Focus**: Healthcare-specific data generation
 - **Business Logic**: Real-world scenario testing
 - **Compliance**: GDPR and healthcare regulation support
@@ -273,23 +273,23 @@ public function run(): void
 
 ---
 
-**Status**: ✅ **PRODUCTION READY**
-**Last Updated**: Gennaio 2025
-**Maintenance**: Active development
+**Status**: ✅ **PRODUCTION READY**  
+**Last Updated**: Gennaio 2025  
+**Maintenance**: Active development  
 **Support**: Enterprise-grade
 
 ## Link Documentazione
 
-### <nome progetto> Module
-- [Advanced Improvements Analysis](../../<nome progetto>/docs/factories/UserFactory-advanced-improvements-analysis.md)
-- [Implementation Completed](../../<nome progetto>/docs/factories/userfactory_implementation_completed.md)
-- [Model States](../../<nome progetto>/docs/models/states.md)
+### SaluteOra Module
+- [Advanced Improvements Analysis](../../SaluteOra/docs/factories/UserFactory-advanced-improvements-analysis.md)
+- [Implementation Completed](../../SaluteOra/docs/factories/userfactory_implementation_completed.md)
+- [Model States](../../SaluteOra/docs/models/states.md)
 
 ### User Module
 - [User Factory Integration](./user_factory_integration.md)
 - [Traits Complete Guide](./traits_complete_guide.md)
 - [BaseUser Architecture](./parental_inheritance.md)
 
-### Root Documentation
-- [UserFactory <nome progetto> Integration](../../../../docs/userfactory_<nome progetto>_integration.md)
-- [Testing Standards](../../../../docs/testing_standards.md)
+### Root Documentation  
+- [UserFactory SaluteOra Integration](../../../../docs/userfactory_saluteora_integration.md)
+- [Testing Standards](../../../../docs/testing_standards.md) 

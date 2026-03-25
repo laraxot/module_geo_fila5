@@ -4,7 +4,6 @@
 **Module Name**: Xot  
 **Type**: Core Framework Module  
 **Status**: ✅ Active and Critical  
-**Version**: 3.0  
 **Language**: Italian (with multi-language support)  
 
 ## Purpose

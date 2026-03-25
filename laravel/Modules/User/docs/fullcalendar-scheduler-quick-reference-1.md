@@ -90,7 +90,7 @@ return [
 private function getFullCalendarPlugin(): FilamentFullCalendarPlugin
 {
     $licenseKey = config('fullcalendar.scheduler_license_key');
-
+    
     $plugin = FilamentFullCalendarPlugin::make()
         ->selectable()
         ->editable();
@@ -181,7 +181,7 @@ if (app()->environment('local') && empty($licenseKey)) {
 - [ ] Banner rosso rimosso
 - [ ] Funzionalità premium attive
 
-## 🚀 <nome progetto> Specifico
+## 🚀 SaluteOra Specifico
 
 ### Business Hours Sanitarie
 ```javascript
@@ -210,4 +210,4 @@ $plugin->config([
 selectConstraint: 'businessHours',
 eventConstraint: 'businessHours',
 slotDuration: '00:30:00', // 30 min slots
-```
+``` 

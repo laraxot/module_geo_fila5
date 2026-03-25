@@ -18,6 +18,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\ViewAction;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
@@ -34,7 +35,6 @@ use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
 use Webmozart\Assert\Assert;
-use Filament\Resources\Pages\ListRecords;
 
 /**
  * Trait HasXotTable.
@@ -70,6 +70,17 @@ trait HasXotTable
      */
     public function getTableHeaderActions(): array
     {
+        $resource = $this;
+        /* @phpstan-ignore-next-line */
+        if ($this instanceof ListRecords) {
+            $resourceClass = $this->getResource();
+            // @phpstan-ignore-next-line staticMethod.alreadyNarrowedType
+            Assert::string($resourceClass);
+            $resource = app($resourceClass);
+        }
+
+        // dddx(method_exists($resource, 'canAttach'));
+
         $actions = [];
 
         $actions['create'] = CreateAction::make();
@@ -80,11 +91,11 @@ trait HasXotTable
                 ->icon('heroicon-o-paper-clip');
         }
 
-        if ($this->shouldShowAttachAction()) {
+        if (is_object($resource) && method_exists($resource, 'canAttach')) {
             $actions['attach'] = AttachAction::make()
-                ->label('')
                 ->icon('heroicon-o-link')
-                ->preloadRecordSelect();
+                ->iconButton()
+                ->visible(fn (): bool => (bool) $resource->canAttach());
         }
 
         $actions['layout'] = TableLayoutToggleTableAction::make('layout');
@@ -251,7 +262,7 @@ trait HasXotTable
 
         $actions = [];
         $resource = $this;
-        // @phpstan-ignore-next-line instanceof.alwaysFalse
+        /* @phpstan-ignore-next-line */
         if ($this instanceof ListRecords) {
             $resourceClass = $this->getResource();
             // @phpstan-ignore-next-line staticMethod.alreadyNarrowedType

@@ -759,7 +759,7 @@ class ConnectionManagerService
     public static function getConnectionForModule(string $module): string
     {
         return match($module) {
-            'Quaeris' => 'quaeris',
+'Quaeris' => 'Quaeris',
             'User' => 'user',
             'Notify' => 'notify',
             default => 'mysql'

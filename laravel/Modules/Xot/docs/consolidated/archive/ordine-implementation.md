@@ -23,16 +23,16 @@ php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProv
 ```bash
 
 # 1. Modulo Xot (base)
-git subtree add --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Xot git@github.com:laraxot/module_xot_fila5.git dev --squash
 
 # 2. Modulo Lang (dipende da Xot)
-git subtree add --prefix laravel/Modules/Lang git@github.com:laraxot/module_lang_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Lang git@github.com:laraxot/module_lang_fila5.git dev --squash
 
 # 3. Modulo Tenant (dipende da Xot)
-git subtree add --prefix laravel/Modules/Tenant git@github.com:laraxot/module_tenant_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Tenant git@github.com:laraxot/module_tenant_fila5.git dev --squash
 
 # 4. Modulo UI (dipende da Xot)
-git subtree add --prefix laravel/Modules/UI git@github.com:laraxot/module_ui_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/UI git@github.com:laraxot/module_ui_fila5.git dev --squash
 ```
 
 ### 3. Installazione Tema
@@ -40,7 +40,7 @@ git subtree add --prefix laravel/Modules/UI git@github.com:laraxot/module_ui_fil
 ```bash
 
 # Tema One (dipende da UI)
-git subtree add --prefix laravel/Themes/One git@github.com:laraxot/theme_one_fila3.git dev --squash
+git subtree add --prefix laravel/Themes/One git@github.com:laraxot/theme_one_fila5.git dev --squash
 ```
 
 ### 4. Installazione Moduli Funzionali (in ordine)
@@ -48,25 +48,25 @@ git subtree add --prefix laravel/Themes/One git@github.com:laraxot/theme_one_fil
 ```bash
 
 # 5. Modulo User (dipende da Xot, Tenant)
-git subtree add --prefix laravel/Modules/User git@github.com:laraxot/module_user_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/User git@github.com:laraxot/module_user_fila5.git dev --squash
 
 # 6. Modulo Media (dipende da Xot)
-git subtree add --prefix laravel/Modules/Media git@github.com:laraxot/module_media_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Media git@github.com:laraxot/module_media_fila5.git dev --squash
 
 # 7. Modulo Activity (dipende da Xot, User)
-git subtree add --prefix laravel/Modules/Activity git@github.com:laraxot/module_activity_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Activity git@github.com:laraxot/module_activity_fila5.git dev --squash
 
 # 8. Modulo GDPR (dipende da Xot, User)
-git subtree add --prefix laravel/Modules/Gdpr git@github.com:laraxot/module_gdpr_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Gdpr git@github.com:laraxot/module_gdpr_fila5.git dev --squash
 
 # 9. Modulo Notify (dipende da Xot, User)
-git subtree add --prefix laravel/Modules/Notify git@github.com:laraxot/module_notify_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Notify git@github.com:laraxot/module_notify_fila5.git dev --squash
 
 # 10. Modulo CMS (dipende da Xot, Media)
-git subtree add --prefix laravel/Modules/Cms git@github.com:laraxot/module_cms_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Cms git@github.com:laraxot/module_cms_fila5.git dev --squash
 
 # 11. Modulo Job (dipende da Xot)
-git subtree add --prefix laravel/Modules/Job git@github.com:laraxot/module_job_fila3.git dev --squash
+git subtree add --prefix laravel/Modules/Job git@github.com:laraxot/module_job_fila5.git dev --squash
 ```
 
 ### 5. Configurazione Post-Installazione
@@ -80,7 +80,7 @@ composer update
 php artisan optimize:clear
 
 # Installazione BashScripts
-git subtree add -P bashscripts git@github.com:laraxot/bashscripts_fila3.git dev --squash
+git subtree add -P bashscripts git@github.com:laraxot/bashscripts_fila5.git dev --squash
 
 # Rimozione migrazioni centrali
 rm -rf database/migrations

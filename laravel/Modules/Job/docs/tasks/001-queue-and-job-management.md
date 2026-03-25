@@ -222,6 +222,5 @@ The Job module needs robust queue management for background processing with moni
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

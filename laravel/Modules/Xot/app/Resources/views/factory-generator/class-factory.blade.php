@@ -1,36 +1,33 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /** @var \ReflectionClass $reflection */
 /** @var array<string, string> $properties */
-
 ?>
 
-@isset($properties['remember_token'])
-    use Illuminate\Support\Str;
-@endisset
-use {{ $reflection->getName() }};
+namespace Database\Factories;
 
-class {{ $reflection->getShortName() }}Factory extends Factory
-{
-/**
-* The name of the factory's corresponding model.
-*
-* @var string
-*/
-protected $model = {{ $reflection->getShortName() }}::class;
+use Illuminate\Database\Eloquent\Factories\Factory;
+<?php if (array_key_exists('remember_token', $properties)): ?>
+use Illuminate\Support\Str;
+<?php endif; ?>
+use <?= $reflection->getName(); ?>;
 
-/**
-* Define the model's default state.
-*
-* @return array
-*/
-public function definition(): array
+class <?= $reflection->getShortName(); ?>Factory extends Factory
 {
-return [
-@foreach ($properties as $name => $property)
-    '{{ $name }}' => {!! $property !!},
-@endforeach
-];
+    /**
+     * @var class-string<\Illuminate\Database\Eloquent\Model>
+     */
+    protected $model = <?= $reflection->getShortName(); ?>::class;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+<?php foreach ($properties as $name => $property): ?>
+            '<?= $name ?>' => <?= $property ?>,
+<?php endforeach; ?>
+        ];
+    }
 }

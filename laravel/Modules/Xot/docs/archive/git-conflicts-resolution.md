@@ -3,7 +3,7 @@
 ## Data: 2025-01-06
 
 ## Contesto
-Sono stati identificati e risolti conflitti Git in diversi file del progetto <main module>, coinvolgendo moduli Geo, User e tema Two.
+Sono stati identificati e risolti conflitti Git in diversi file del progetto <nome progetto>, coinvolgendo moduli Geo, User e tema Two.
 
 ## File Corretti
 
@@ -91,6 +91,7 @@ $res=Locality::query()
 - **Aggiungere** annotazioni PHPStan appropriate
 
 ## Verifiche Post-Correzione
+
 
 ### 2. Validazione PHPStan
 ```bash

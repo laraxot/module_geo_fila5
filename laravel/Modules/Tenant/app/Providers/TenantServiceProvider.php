@@ -121,6 +121,9 @@ class TenantServiceProvider extends XotBaseServiceProvider
             }
         }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< .merge_file_EkwQnQ
         // Create test database connections during testing
         if ($this->app->environment('testing')) {
             // Create test database connections based on environment variables
@@ -174,6 +177,9 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $connections = array_merge($connections, $testConnections);
         }
 
+=======
+>>>>>>> .merge_file_EufmEY
+>>>>>>> Stashed changes
         $data = Arr::set($data, 'connections', $connections);
         Config::set('database', $data);
 

@@ -427,7 +427,7 @@ class MakePdfAction
 
         // Create filename
         $survey_date_to = $surveyPdf->date_to;
-        if ($survey_date_to === null || $survey_date_to === '0000-00-00') {
+        if ($survey_date_to === null || $survey_date_to === '[DATE]') {
             $survey_date_to = date('W / o');
         } else {
             $survey_date_to = date('W / o', strtotime($survey_date_to));
@@ -509,7 +509,7 @@ class HtmlService
 PDFs support multi-page layouts with proper headers and footers:
 
 ```blade
-@include('quaeris::pdf.css')
+@include('Quaeris::pdf.css')
 
 <page backtop="{{ $pdf->backtop }}mm" backbottom="{{ $pdf->backbottom }}mm">
     <page_header>

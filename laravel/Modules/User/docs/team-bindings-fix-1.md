@@ -105,7 +105,7 @@ public function teamUsers(): HasMany
 
 ### Funzionalità Ripristinate
 - ✅ Creazione e gestione team
-- ✅ Inviti ai team
+- ✅ Inviti ai team  
 - ✅ Relazioni User-Team
 - ✅ Controllo permessi team-based
 - ✅ Switch tra team multipli
@@ -165,11 +165,11 @@ $this->assertTrue($user->belongsToTeam($team));
 - [TeamUser Model](../app/Models/TeamUser.php)
 - [TeamInvitation Model](../app/Models/TeamInvitation.php)
 - [UserServiceProvider](../app/Providers/UserServiceProvider.php)
-- [Critical Errors Documentation](../../<nome progetto>/docs/critical-errors-resolved.md)
+- [Critical Errors Documentation](../../SaluteOra/docs/critical-errors-resolved.md)
 
 ---
 
-**Autore**: AI Assistant
-**Data**: Gennaio 2025
-**Versione**: 1.0
-**Status**: ✅ Risolto e Testato
+**Autore**: AI Assistant  
+**Data**: Gennaio 2025  
+**Versione**: 1.0  
+**Status**: ✅ Risolto e Testato 

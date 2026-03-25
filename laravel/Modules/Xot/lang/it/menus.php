@@ -38,18 +38,62 @@ return [
     'language-picker' => [
         'language' => 'Lingua',
         'langs' => [
-            'ar' => 'العربية (Arabic)',
-            'da' => 'Danese (Danish)',
-            'de' => 'Tedesco (German)',
-            'el' => '(Greek)',
-            'en' => 'Inglese (English)',
-            'es' => 'Spagnol (Spanish)',
-            'fr' => 'Francese (French)',
-            'it' => 'Italiano (Italian)',
-            'nl' => 'Olandese (Dutch)',
-            'pt_BR' => 'Portoghese Brasiliano (Brazilian Portuguese)',
-            'sv' => 'Svedese (Swedish)',
+            'ar' => 'العربية (Arabic]',
+            'da' => 'Danese (Danish]',
+            'de' => 'Tedesco (German]',
+            'el' => '(Greek]',
+            'en' => 'Inglese (English]',
+            'es' => 'Spagnol (Spanish]',
+            'fr' => 'Francese (French]',
+            'it' => 'Italiano (Italian]',
+            'nl' => 'Olandese (Dutch]',
+            'pt_BR' => 'Portoghese Brasiliano (Brazilian Portuguese]',
+            'sv' => 'Svedese (Swedish]',
             'th' => 'Thai',
+        ],
+    ],
+    'label' => 'Menus',
+    'plural_label' => 'Menus (Plurale)',
+    'navigation' => [
+        'name' => 'Menus',
+        'plural' => 'Menus',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Menus',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Menus',
+        ],
+        'edit' => [
+            'label' => 'Modifica Menus',
+        ],
+        'delete' => [
+            'label' => 'Elimina Menus',
         ],
     ],
 ];

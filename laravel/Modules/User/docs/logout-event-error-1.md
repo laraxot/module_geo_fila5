@@ -1,17 +1,17 @@
 # Analisi dell'Errore negli Eventi di Logout
 
 ## Collegamenti correlati
-- [Documentazione centrale](/docs/README.md)
+- [Documentazione centrale](/docs/readme.md)
 - [Collegamenti documentazione](/docs/collegamenti-documentazione.md)
-- [Implementazione Auth Pages](AUTH_PAGES_IMPLEMENTATION.md)
-- [Implementazione Logout](LOGOUT_BLADE_IMPLEMENTATION.md)
-- [Analisi Errore Logout](LOGOUT_BLADE_ERROR_ANALYSIS.md)
-- [Widget Filament Corretto](LOGOUT_FILAMENT_WIDGET_CORRECTED.md)
-- [Documentazione Auth Tema One](/laravel/Themes/One/docs/AUTH.md)
+- [Implementazione Auth Pages](auth_pages_implementation.md)
+- [Implementazione Logout](logout_blade_implementation.md)
+- [Analisi Errore Logout](logout_blade_error_analysis.md)
+- [Widget Filament Corretto](logout_filament_widget_corrected.md)
+- [Documentazione Auth Tema One](/laravel/themes/one/docs/auth.md)
 
 ## Errore Identificato
 
-L'implementazione attuale del file `Themes/One/resources/views/pages/auth/logout.blade.php` causa un errore quando viene eseguito il logout:
+L'implementazione attuale del file `/var/www/html/Quaeris/laravel/Themes/One/resources/views/pages/auth/logout.blade.php` causa un errore quando viene eseguito il logout:
 
 ```
 Call to a member function getAuthIdentifier() on null
@@ -63,18 +63,18 @@ name('logout');
 try {
     // Ottieni l'utente prima del logout
     $user = Auth::user();
-
+    
     // Dispatch dell'evento prima del logout
     Event::dispatch('auth.logout.attempting', [$user]);
-
+    
     // Esegui il logout
     Auth::logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
-
+    
     // Dispatch dell'evento dopo il logout, passando l'utente salvato
     Event::dispatch('auth.logout.successful', [$user]);
-
+    
     // Reindirizzamento con localizzazione
     $locale = app()->getLocale();
     return redirect()->to('/' . $locale)
@@ -82,7 +82,7 @@ try {
 } catch (\Exception $e) {
     // Log dell'errore
     Log::error('Errore durante il logout: ' . $e->getMessage());
-
+    
     // Reindirizzamento con messaggio di errore
     $locale = app()->getLocale();
     return redirect()->to('/' . $locale)
@@ -124,7 +124,7 @@ public function handle(Logout $event): void
                 ]);
             }
         }
-
+        
         // Resto del codice...
     } catch (\Exception $e) {
         Log::error('Errore durante la gestione dell\'evento di logout', [

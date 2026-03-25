@@ -30,50 +30,11 @@ This document consolidates recurring fixes and rules applied across modules. Kee
 
 ## 6. Documentation Policy
 - No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
-- No root `docs/`. Use `docs_project/` (global) and `Modules/<Module>/project_docs/` (module).
 - All docs filenames lowercase except `README.md`.
 
 ## 7. PHPStan
 - Do not modify `laravel/phpstan.neon`.
 - Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 9+. Keep array key/value types explicit.
-- Use CLI flags for scope/limits; target level 10+. Keep array key/value types explicit.
 
 ## 8. Testing
 - No `RefreshDatabase`.
@@ -82,20 +43,6 @@ This document consolidates recurring fixes and rules applied across modules. Kee
 ## 9. URL Localization & Frontoffice
 - URLs prefixed by locale: `/{locale}/...`; get locale via `app()->getLocale()`.
 - Homepage blade: `Themes/One/resources/views/pages/index.blade.php` (`pub_theme::pages.index`).
-## 10. Icons & Assets ()
-- SVG in `laravel/Modules//resources/svg/`, kebab-case; reference as `<nome progetto>-{name}`.
-- Content from `config/local/<nome progetto>/database/content/pages/home.json`. Root `/` redirects to `/{locale}`.
-
-## 10. Icons & Assets ()
-- SVG in `laravel/Modules//resources/svg/`, kebab-case; reference as `<nome progetto>-{name}`.
-- Content from `config/local/<nome progetto>/database/content/pages/home.json`. Root `/` redirects to `/{locale}`.
-
-## 10. Icons & Assets (<nome progetto>)
-- SVG in `laravel/Modules/<nome progetto>/resources/svg/`, kebab-case; reference as `<nome progetto>-{name}`.
-- Content from `config/local/<nome progetto>/database/content/pages/home.json`. Root `/` redirects to `/{locale}`.
-
-## 10. Icons & Assets ()
-- SVG in `laravel/Modules//resources/svg/`, kebab-case; reference as `<nome progetto>-{name}`.
 - Content from `config/local/<nome progetto>/database/content/pages/home.json`. Root `/` redirects to `/{locale}`.
 
 ## 10. Icons & Assets (<nome progetto>)
@@ -118,37 +65,4 @@ This document consolidates recurring fixes and rules applied across modules. Kee
 - Add JS callbacks: `eventDidMount`, `eventClassNames`, `selectAllow`, `eventAllow`.
 
 ---
-- Backlinks: see `Modules/<nome progetto>/docs/translation-rules-consolidated.md`, `Modules/Xot/docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
 - Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/docs/translation-rules-consolidated.md`, `Modules/Xot/docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/docs/translation-rules-consolidated.md`, `Modules/Xot/docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/docs/translation-rules-consolidated.md`, `Modules/Xot/docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-
-- Backlinks: see `Modules/<nome progetto>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.
-- Backlinks: see `Modules/<nome modulo>/project_docs/translation-rules-consolidated.md`, `Modules/Xot/project_docs/translation-structure-expanded.md`, `.windsurf/rules/full_calendar*.mdc`.

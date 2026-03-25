@@ -506,8 +506,7 @@ grep -r "XotBase" .cursor/rules/ .windsurf/rules/ CLAUDE.md
 
 ---
 
-**Version**: 1.0
-**Last Updated**: December 23, 2025
+
 **Module**: Xot (Core Engine)
 **Maintainer**: Laraxot Team
 

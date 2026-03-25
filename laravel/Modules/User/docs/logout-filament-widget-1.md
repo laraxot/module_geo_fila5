@@ -138,7 +138,7 @@ class LogoutWidget extends XotBaseWidget
                 {{ $this->form }}
 
                 <div class="mt-6 flex flex-col gap-3">
-                    <x-filament::button
+                    <x-filament::button 
                         type="submit"
                         color="danger"
                         size="lg"
@@ -147,8 +147,8 @@ class LogoutWidget extends XotBaseWidget
                         {{ __('Conferma Logout') }}
                     </x-filament::button>
 
-                    <x-filament::button
-                        tag="a"
+                    <x-filament::button 
+                        tag="a" 
                         :href="'/' . app()->getLocale()"
                         color="gray"
                         size="lg"
@@ -223,7 +223,7 @@ FilamentView::registerRenderHook(
 2. **Coerenza UI**: Utilizza i componenti UI nativi di Filament, garantendo coerenza visiva.
 3. **Manutenibilità**: Separa chiaramente la logica dalla presentazione.
 4. **Estensibilità**: Facilmente estensibile per aggiungere funzionalità aggiuntive.
-5. **Conformità alle convenzioni**: Segue le convenzioni di <nome progetto> per i widget Filament.
+5. **Conformità alle convenzioni**: Segue le convenzioni di SaluteOra per i widget Filament.
 
 ## Alternativa: Logout Immediato
 

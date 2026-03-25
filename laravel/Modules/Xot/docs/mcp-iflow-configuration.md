@@ -240,10 +240,10 @@ Aggiungere al file `~/.cursor/mcp.json`:
         "MINIMAX_API_KEY": "${MINIMAX_API_KEY}"
       }
     },
-    "phpstan-quaeris": {
+"phpstan-Quaeris": {
       "url": "http://localhost:8003/sse"
     },
-    "artisan-quaeris": {
+    "artisan-Quaeris": {
       "url": "http://localhost:8004/sse"
     }
   }

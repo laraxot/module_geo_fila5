@@ -323,7 +323,7 @@ for m in sorted(by_module.keys(), key=lambda x: by_module[x], reverse=True):
 ./vendor/bin/phpstan analyse Modules --memory-limit=-1 2>&1 | tail -5
 
 # Detailed JSON analysis
-./vendor/bin/phpstan analyse Modules/Quaeris --error-format=json > quaeris_errors.json
+./vendor/bin/phpstan analyse Modules/Quaeris --error-format=json > Quaeris_errors.json
 ```
 
 ## Success Metrics

@@ -1,6 +1,5 @@
 # PHPStan Level 10 - Status Completo Progetto
 
-**Data**: 2026-01-27  
 **Status**: ✅ **TUTTI I 34 MODULI A 0 ERRORI**
 
 ---
@@ -90,7 +89,7 @@ Moduli che richiedono questa configurazione:
 
 ## 📖 Documentazione Correlata
 
-- [PHPStan Audit Completo](../../../docs/phpstan-audit-complete-2026-01.md)
+- [PHPStan Audit Completo](../../../../docs/phpstan-audit-complete-2026-01.md)
 - [PHPStan Code Quality Guide](./phpstan-code-quality-guide.md)
 - [Model Casting Rules](./model-casting-rules.md)
 - [Property Exists vs Isset](./phpstan-code-quality-guide.md#5-property-access-su-mixed-eloquent---regola-critica)
@@ -108,4 +107,3 @@ Moduli che richiedono questa configurazione:
 
 ---
 
-*Ultimo aggiornamento: gennaio 2026*

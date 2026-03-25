@@ -1,4 +1,4 @@
-# Widget Translation Rules - <nome progetto> Project
+# Widget Translation Rules - SaluteOra Project
 
 ## Core Principles
 
@@ -113,13 +113,13 @@ class EditUserWidget extends XotBaseWidget
     <h2 class="text-xl font-semibold mb-4">
         {{ __('user::widgets.edit_user.title') }}
     </h2>
-
+    
     <p class="text-gray-600 mb-6">
         {{ __('user::widgets.edit_user.description') }}
     </p>
-
+    
     {{ $this->form }}
-
+    
     <div class="mt-6 flex justify-end space-x-3">
         <button type="button" class="btn-secondary">
             {{ __('user::widgets.edit_user.actions.cancel.label') }}
@@ -196,4 +196,4 @@ This document serves as a reference for:
 - Code quality requirements
 - Documentation standards
 
-All widget development should follow these rules to maintain consistency and quality across the <nome progetto> project.
+All widget development should follow these rules to maintain consistency and quality across the SaluteOra project.

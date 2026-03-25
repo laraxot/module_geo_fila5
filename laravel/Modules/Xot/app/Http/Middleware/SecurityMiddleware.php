@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Http\Middleware;
 
-use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpFoundation\Response;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
 use function Safe\preg_match;
+
+use Symfony\Component\HttpFoundation\Response;
+use Webmozart\Assert\Assert;
 
 /**
  * Middleware di sicurezza avanzato.
@@ -24,7 +24,7 @@ class SecurityMiddleware
     /**
      * Handle an incoming request.
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, \Closure $next): Response
     {
         // 1. Rate Limiting avanzato
         $this->applyAdvancedRateLimiting($request);
@@ -165,12 +165,15 @@ class SecurityMiddleware
      */
     private function addSecurityHeaders(Response $response): void
     {
+        $isSecureTransport = $this->isSecureTransport();
+
         // Content Security Policy
-        $csp = $this->buildCSP();
+        $csp = $this->buildCSP($isSecureTransport);
         $response->headers->set('Content-Security-Policy', $csp);
 
-        // Strict Transport Security
-        $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        if ($isSecureTransport) {
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        }
 
         // X-Frame-Options
         $response->headers->set('X-Frame-Options', 'DENY');
@@ -188,35 +191,59 @@ class SecurityMiddleware
         $permissions = $this->buildPermissionsPolicy();
         $response->headers->set('Permissions-Policy', $permissions);
 
-        // Cross-Origin Policies
-        $response->headers->set('Cross-Origin-Embedder-Policy', 'require-corp');
-        $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
-        $response->headers->set('Cross-Origin-Resource-Policy', 'same-origin');
+        if ($isSecureTransport) {
+            $response->headers->set('Cross-Origin-Embedder-Policy', 'require-corp');
+            $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
+            $response->headers->set('Cross-Origin-Resource-Policy', 'same-origin');
+        }
     }
 
     /**
      * Costruisci Content Security Policy.
      */
-    private function buildCSP(): string
+    private function buildCSP(bool $isSecureTransport): string
     {
+        $connectSources = ["'self'", 'https:', 'wss:', 'https://www.google-analytics.com'];
+        if (! $isSecureTransport) {
+            $connectSources[] = 'http:';
+            $connectSources[] = 'ws:';
+        }
+
         $csp = [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
-            "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net",
-            "img-src 'self' data: https: blob:",
+            "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net",
+            "img-src 'self' data: https: http: blob:",
             "media-src 'self' blob:",
-            "connect-src 'self' https: wss:",
+            'connect-src '.implode(' ', array_unique($connectSources)),
             "frame-src 'none'",
             "object-src 'none'",
             "base-uri 'self'",
             "form-action 'self'",
             "frame-ancestors 'none'",
-            'upgrade-insecure-requests',
-            'block-all-mixed-content',
         ];
 
+        if ($isSecureTransport) {
+            $csp[] = 'upgrade-insecure-requests';
+            $csp[] = 'block-all-mixed-content';
+        }
+
         return implode('; ', $csp);
+    }
+
+    private function isSecureTransport(): bool
+    {
+        if (request()->isSecure()) {
+            return true;
+        }
+
+        $forwardedProto = request()->header('x-forwarded-proto');
+        if (is_string($forwardedProto) && 'https' === strtolower($forwardedProto)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -278,7 +305,7 @@ class SecurityMiddleware
         }
 
         // Log tentativi di accesso falliti
-        if ($response->getStatusCode() === 401 || $response->getStatusCode() === 403) {
+        if (401 === $response->getStatusCode() || 403 === $response->getStatusCode()) {
             Log::warning('Failed access attempt', $securityData);
         }
 
@@ -331,7 +358,7 @@ class SecurityMiddleware
         ];
 
         foreach ($suspiciousUserAgents as $suspicious) {
-            if ($userAgent !== null && stripos($userAgent, $suspicious) !== false) {
+            if (null !== $userAgent && false !== stripos($userAgent, $suspicious)) {
                 return true;
             }
         }
@@ -347,7 +374,7 @@ class SecurityMiddleware
         $inputs = $request->all();
 
         foreach ($inputs as $key => $value) {
-            if ($value !== null && is_string($value)) {
+            if (null !== $value && is_string($value)) {
                 $this->validateStringInput($key, $value);
             } elseif (is_array($value)) {
                 $this->validateArrayInput($key, $value);

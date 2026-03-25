@@ -54,6 +54,7 @@ class ConnectionManagerService
     public static function getConnectionForModule(string $module): string
     {
         return match($module) {
+            'healthcare_app' => 'healthcare_app',
             'User' => 'user',
             'Notify' => 'notify',
             default => 'mysql'
@@ -136,12 +137,14 @@ class ContactValidationService
 **Solution**: Strategy pattern con interfaces
 
 ```php
+// Modules/healthcare_app/Contracts/ChartRendererContract.php
 interface ChartRendererContract
 {
     public function supports(string $type): bool;
     public function render(array $data, array $config): string;
 }
 
+// Modules/healthcare_app/Services/Chart/Renderers/PieChartRenderer.php
 class PieChartRenderer implements ChartRendererContract
 {
     public function supports(string $type): bool
@@ -307,6 +310,7 @@ $contacts = Contact::forContext('dashboard')->get(); // Optimized loading
 **Solution**: Chunking e memory management
 
 ```php
+// Modules/healthcare_app/Services/BulkProcessingService.php
 class BulkProcessingService
 {
     public function processLargeDataset(\Closure $processor, Builder $query, int $chunkSize = 1000): void
@@ -574,6 +578,7 @@ public function processContacts(): Collection
 
 ### 1. Static Analysis
 ```bash
+# PHPStan Level 9+ compliance
 vendor/bin/phpstan analyse --level=9
 
 # Laravel Pint formatting
@@ -608,7 +613,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-
       - name: Install dependencies
         run: composer install
       - name: Run PHPStan
@@ -622,6 +627,7 @@ jobs:
 ## 🎯 Success Criteria
 
 ### Technical
+- [ ] PHPStan Level 9+ compliance
 - [ ] 85%+ test coverage
 - [ ] <5% code duplication
 - [ ] All SOLID principles followed

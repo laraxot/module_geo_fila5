@@ -292,7 +292,7 @@ Data: 2025-04-23 19:09:56
 - **Namespace principale**: Modules\\Xot
 Modules\\Xot\\Database\\Factories
 Modules\\Xot\\Database\\Seeders
-- **Pacchetto Composer**: laraxot/module_xot_fila3
+- **Pacchetto Composer**: laraxot/module_xot_fila5
 marco sottana
 - **Dipendenze**: php ^8.2 calebporzio/sushi ^2.5 coolsam/panel-modules * doctrine/dbal * fidum/laravel-eloquent-morph-to-one * filament/filament ^3.3 filament/spatie-laravel-media-library-plugin ^3.2 filament/spatie-laravel-translatable-plugin ^3.2 aaronfrancis/fast-paginate * guzzlehttp/guzzle * laravel/folio ^1.1 laravel/framework * laravel/pennant ^1.11 laravel/pulse ^1.2 livewire/livewire * maatwebsite/excel ^3.1 nwidart/laravel-modules * predis/predis ^2.2 spatie/cpu-load-health-check ^1.0 spatie/laravel-data ^4.7
 - **Totale file PHP**: 968
@@ -846,7 +846,7 @@ lang/fr
 lang/gr
 lang/it
 lang/ka
-lang/lang
+lang/<locale>
 lang/lang/ar
 lang/lang/da
 lang/lang/de
@@ -997,7 +997,7 @@ tests_old
             "Coolsam\\FilamentModules\\": "packages/coolsam/panel-modules/src/"
         },
         "files": [
-            "Helpers/Helper.php"
+            "helpers/Helper.php"
         ]
     },
     "scripts": {
@@ -1030,21 +1030,21 @@ tests_old
 
 ## Collegamenti tra versioni di structure.md
 * [structure.md](bashscripts/project_docs/structure.md)
-* [structure.md](../../../Gdpr/project_docs/structure.md)
-* [structure.md](../../../Notify/project_docs/structure.md)
-* [structure.md](../../../Xot/project_docs/structure.md)
-* [structure.md](../../../Xot/project_docs/base/structure.md)
-* [structure.md](../../../Xot/project_docs/config/structure.md)
-* [structure.md](../../../User/project_docs/structure.md)
-* [structure.md](../../../UI/project_docs/structure.md)
-* [structure.md](../../../Lang/project_docs/structure.md)
-* [structure.md](../../../Job/project_docs/structure.md)
-* [structure.md](../../../Media/project_docs/structure.md)
-* [structure.md](../../../Tenant/project_docs/structure.md)
-* [structure.md](../../../Activity/project_docs/structure.md)
-* [structure.md](../../../Cms/project_docs/structure.md)
-* [structure.md](../../../Cms/project_docs/themes/structure.md)
-* [structure.md](../../../Cms/project_docs/components/structure.md)
+* [structure.md](../../../gdpr/project_docs/structure.md)
+* [structure.md](../../../notify/project_docs/structure.md)
+* [structure.md](../../../xot/project_docs/structure.md)
+* [structure.md](../../../xot/project_docs/base/structure.md)
+* [structure.md](../../../xot/project_docs/config/structure.md)
+* [structure.md](../../../user/project_docs/structure.md)
+* [structure.md](../../../ui/project_docs/structure.md)
+* [structure.md](../../../lang/project_docs/structure.md)
+* [structure.md](../../../job/project_docs/structure.md)
+* [structure.md](../../../media/project_docs/structure.md)
+* [structure.md](../../../tenant/project_docs/structure.md)
+* [structure.md](../../../activity/project_docs/structure.md)
+* [structure.md](../../../cms/project_docs/structure.md)
+* [structure.md](../../../cms/project_docs/themes/structure.md)
+* [structure.md](../../../cms/project_docs/components/structure.md)
 
 ---
 

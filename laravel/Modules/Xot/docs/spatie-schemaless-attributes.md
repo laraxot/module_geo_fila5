@@ -1,7 +1,6 @@
 # spatie/laravel-schemaless-attributes — Central Reference
 
 **Package**: [`spatie/laravel-schemaless-attributes`](https://github.com/spatie/laravel-schemaless-attributes)
-**Version**: 2.x (Laravel 11+)
 **PHPStan**: Level 10 ✅
 
 ---
@@ -197,6 +196,6 @@ $model->extra_attributes->set('key2', 'value2'); $model->save();
 - [GitHub: spatie/laravel-schemaless-attributes](https://github.com/spatie/laravel-schemaless-attributes)
 - [Laravel News: Schemaless Attributes](https://laravel-news.com/laravel-schemaless-attributes-package)
 - [Laracasts: Dynamic Columns](https://laracasts.com/discuss/channels/eloquent/dynamic-columns-with-schemaless-attributes)
-- [Rating Module Docs](../../Rating/docs/schemaless-attributes.md)
-- [IndennitaResponsabilita Docs](../../IndennitaResponsabilita/docs/rating-schemaless-usage.md)
-- [UI Themes Schemaless Guide](../../UI/docs/themes/schemaless-attributes-guide.md)
+- [Rating Module Docs](../../rating/docs/schemaless-attributes.md)
+- [IndennitaResponsabilita Docs](../../indennitaresponsabilita/docs/rating-schemaless-usage.md)
+- [UI Themes Schemaless Guide](../../ui/docs/themes/schemaless-attributes-guide.md)

@@ -20,6 +20,7 @@ namespace Modules\Xot\app\Console\Commands;
 
 ### Versione HEAD
 
+
 ### Versione Incoming
 
 namespace Modules\Xot\Console\Commands;
@@ -182,7 +183,7 @@ namespace Modules\<nome progetto>\Console\Commands;
 Utilizzare grep per trovare tutti i file con namespace errato:
 
 ```bash
-grep -r "namespace Modules\\\\.*\\\\App\\\\" Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" /var/www/html/base_<nome progetto>/laravel/Modules
 ```
 
 ### PHP Stan

@@ -5,7 +5,7 @@
 The system utilizes three main database connections:
 
 ### 1. Limesurvey Database (`limesurvey` connection)
-- **Schema**: `txaesfry_quaeris_survey` 
+- **Schema**: `txaesfry_Quaeris_survey`
 - **Purpose**: Main Limesurvey installation with surveys, questions, and responses
 - **Key tables**: 
   - `lime_questions` - Question structure and metadata
@@ -15,7 +15,7 @@ The system utilizes three main database connections:
   - `lime_answers` - Possible answer options
   - `lime_answer_l10ns` - Answer translations
 
-### 2. Quaeris Database (`quaeris` connection) 
+### 2. Quaeris Database (`Quaeris` connection) 
 - **Purpose**: Application-specific data including survey mappings
 - **Key tables**:
   - `survey_pdfs` - Links Limesurvey surveys to Quaeris functionality

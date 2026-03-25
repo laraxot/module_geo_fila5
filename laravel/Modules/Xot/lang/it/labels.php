@@ -59,7 +59,7 @@ return [
                     'no_deactivated' => 'Nessun utente disattivato',
                     'no_deleted' => 'Nessun utente eliminato',
                     'roles' => 'Ruoli',
-                    'total' => 'utente(i) totali',
+                    'total' => 'utente(i] totali',
                 ],
                 'tabs' => [
                     'titles' => [
@@ -132,6 +132,50 @@ return [
                 'name' => 'Nome',
                 'update_information' => 'Aggiorna informazioni',
             ],
+        ],
+    ],
+    'label' => 'Labels',
+    'plural_label' => 'Labels (Plurale)',
+    'navigation' => [
+        'name' => 'Labels',
+        'plural' => 'Labels',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Labels',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Identificativo',
+            'tooltip' => 'Identificativo univoco del record',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'created_at' => [
+            'label' => 'Data Creazione',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+        'updated_at' => [
+            'label' => 'Ultima Modifica',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Labels',
+        ],
+        'edit' => [
+            'label' => 'Modifica Labels',
+        ],
+        'delete' => [
+            'label' => 'Elimina Labels',
         ],
     ],
 ];

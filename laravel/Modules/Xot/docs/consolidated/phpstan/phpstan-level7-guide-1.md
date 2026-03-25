@@ -11,8 +11,6 @@ A partire dal 10 Marzo 2025, tutti i moduli del progetto devono essere validati 
 Per validare tutti i moduli con PHPStan a livello 7:
 
 ```bash
-
-
 # Posizionarsi nella directory principale di Laravel
 cd /path/to/laravel
 vendor/bin/phpstan analyse Modules --configuration=phpstan.neon
@@ -23,8 +21,6 @@ vendor/bin/phpstan analyse Modules --configuration=phpstan.neon
 Per validare un singolo modulo:
 
 ```bash
-
-
 # Posizionarsi nella directory principale di Laravel
 cd /path/to/laravel
 vendor/bin/phpstan analyse Modules/NomeModulo --configuration=phpstan.neon
@@ -35,8 +31,6 @@ vendor/bin/phpstan analyse Modules/NomeModulo --configuration=phpstan.neon
 Se ci sono troppi errori da risolvere immediatamente, è possibile generare un baseline:
 
 ```bash
-
-
 # Posizionarsi nella directory principale di Laravel
 cd /path/to/laravel
 vendor/bin/phpstan analyse Modules/NomeModulo --configuration=phpstan.neon --generate-baseline
@@ -124,7 +118,7 @@ $latitude = (float)$data['latitude'];
 #### Soluzione
 ```php
 // CORRETTO: Validazione e poi cast
-$latitude = is_numeric($data['latitude'])
+$latitude = is_numeric($data['latitude']) 
     ? (float)$data['latitude']
     : throw new InvalidArgumentException('Latitude must be numeric');
 ```
@@ -179,7 +173,7 @@ public function processApiResponse(mixed $response): void
     if (!is_array($response) || !isset($response['data']) || !is_array($response['data'])) {
         throw new InvalidArgumentException('Invalid API response format');
     }
-
+    
     foreach ($response['data'] as $item) {
         // Ora è sicuro processare $item
     }

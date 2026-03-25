@@ -1,4 +1,4 @@
-# Actions Structure
+# Actions Structure 
 
 ## Directory Structure
 
@@ -39,7 +39,7 @@ Questa differenza è definita nel file `composer.json` di ogni modulo, che mappa
 
 ## Pattern di Implementazione
 
-<nome progetto> utilizza il package `spatie/laravel-queueable-action` per le Actions, NON il pattern Service:
+SaluteOra utilizza il package `spatie/laravel-queueable-action` per le Actions, NON il pattern Service:
 
 ```php
 <?php

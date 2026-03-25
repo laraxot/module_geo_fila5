@@ -453,7 +453,7 @@ dd($this->getRouteKey(), $this->getRecord());
 public function test_nested_resource_routing()
 {
     $course = Course::factory()->create();
-    $response = $this->get(route('filament.quaeris.resources.courses.resources.lessons.list', [
+$response = $this->get(route('filament.Quaeris.resources.courses.resources.lessons.list', [
         'course' => $course,
     ]));
     

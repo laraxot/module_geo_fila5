@@ -2,20 +2,20 @@
 
 ## 🎯 Integration Achievement
 
-L'integrazione tra il **modulo User** e l'**ecosistema factory <nome progetto>** è stata completata con successo, creando un sistema di generazione dati **enterprise-grade** per applicazioni sanitarie multi-modulo.
+L'integrazione tra il **modulo User** e l'**ecosistema factory Quaeris** è stata completata con successo, creando un sistema di generazione dati **enterprise-grade** per applicazioni sanitarie multi-modulo.
 
 ## 🏗️ Architectural Foundation
 
 ### Cross-Module Strategy
 ```
 BaseUser (Modules\User\Models\BaseUser)
-├── Connection Strategy: 'user' (default) vs '<nome progetto>' (specialized)
+├── Connection Strategy: 'user' (default) vs 'salute_ora' (specialized)
 ├── Trait Integration: HasTeams, HasRoles, HasAuthenticationLog
 └── Foundation for STI in specialized modules
 
-<nome progetto> Factory Ecosystem
+Quaeris Factory Ecosystem
 ├── UserFactory (extends BaseUserFactory) - STI Foundation
-├── PatientFactory (extends UserFactory) - Healthcare Consumer
+├── PatientFactory (extends UserFactory) - Healthcare Consumer  
 ├── DoctorFactory (extends UserFactory) - Healthcare Provider
 └── AdminFactory (extends UserFactory) - System Administrator
 ```
@@ -25,13 +25,13 @@ BaseUser (Modules\User\Models\BaseUser)
 // BaseUser (User Module) - Foundation
 protected $connection = 'user'; // Default Laravel connection
 
-// <nome progetto> User Models - Specialized
-protected $connection = '<nome progetto>'; // Healthcare domain connection
+// Quaeris User Models - Specialized
+protected $connection = 'salute_ora'; // Healthcare domain connection
 
 // Factory Resolution
 class UserFactory {
-    protected $model = User::class; // Resolves to <nome progetto>\Models\User
-
+protected $model = User::class; // Resolves to Quaeris\Models\User
+    
     // Inherits all BaseUser functionality
     // Adds healthcare-specific business logic
 }
@@ -43,11 +43,11 @@ class UserFactory {
 ```php
 // User Module Foundation
 BaseUser::class
-├── HasTeams trait (multi-studio support)
+├── HasTeams trait (multi-studio support)  
 ├── HasRoles trait (permission management)
 └── HasAuthenticationLog trait (security audit)
 
-// <nome progetto> Specialized Implementation
+// Quaeris Specialized Implementation
 User::class (extends BaseUser)
 ├── STI Parent for Patient/Doctor/Admin
 ├── Healthcare domain connection
@@ -56,7 +56,7 @@ User::class (extends BaseUser)
 
 // Concrete Implementations
 Patient::class (HasParent trait)
-Doctor::class (HasParent trait)
+Doctor::class (HasParent trait)  
 Admin::class (HasParent trait)
 ```
 
@@ -65,25 +65,25 @@ Admin::class (HasParent trait)
 // Base Factory (User Module)
 // Provides authentication, roles, teams foundation
 
-// <nome progetto> UserFactory
+// Quaeris UserFactory
 // Adds: codice_fiscale, healthcare addresses, Italian localization
 public function definition(): array {
     return array_merge(parent::definition(), [
         'codice_fiscale' => $this->generateCodiceFiscale(),
-        'connection' => '<nome progetto>',
+        'connection' => 'salute_ora',
         // ... healthcare specific fields
     ]);
 }
 
 // Specialized Factories
 PatientFactory::definition() // Healthcare consumer data
-DoctorFactory::definition()  // Professional credentials
+DoctorFactory::definition()  // Professional credentials  
 AdminFactory::definition()   // Administrative privileges
 ```
 
 ## 📊 Integration Benefits Matrix
 
-| Component | User Module Provides | <nome progetto> Adds | Combined Result |
+| Component | User Module Provides | Quaeris Adds | Combined Result |
 |-----------|---------------------|----------------|-----------------|
 | **Authentication** | Laravel standard | Healthcare workflows | Medical-grade security |
 | **Authorization** | Roles & Permissions | Medical specializations | Granular clinical access |
@@ -102,9 +102,9 @@ AdminFactory::definition()   // Administrative privileges
         'driver' => 'mysql',
         'database' => env('DB_USER_DATABASE', 'laravel_users'),
     ],
-    '<nome progetto>' => [ // Healthcare specialized
-        'driver' => 'mysql',
-        'database' => env('DB_<nome progetto>_DATABASE', '<nome progetto>_healthcare'),
+    'salute_ora' => [ // Healthcare specialized
+        'driver' => 'mysql', 
+'database' => env('DB_Quaeris_DATABASE', 'Quaeris_healthcare'),
     ]
 ];
 
@@ -123,10 +123,10 @@ class UserFactory {
 ```php
 // Shared traits availability
 use Modules\User\Models\Traits\HasTeams;
-use Modules\User\Models\Traits\HasRoles;
+use Modules\User\Models\Traits\HasRoles;  
 use Modules\User\Models\Traits\HasAuthenticationLogTrait;
 
-// <nome progetto> models inherit ALL User module capabilities
+// Quaeris models inherit ALL User module capabilities
 class Doctor extends User {
     use HasTeams;    // Multi-studio assignment
     use HasRoles;    // Clinical privileges
@@ -148,24 +148,24 @@ class MasterSeeder extends Seeder {
         // 1. Create base infrastructure (User module)
         $teams = Team::factory()->count(5)->create(); // Studios
         $roles = Role::factory()->count(10)->create(); // Permissions
-
-        // 2. Create healthcare ecosystem (<nome progetto> module)
+        
+// 2. Create healthcare ecosystem (Quaeris module)
         $systemAdmin = Admin::factory()
             ->systemAdmin()
             ->hasRole('super_admin')
             ->create();
-
+            
         $doctors = Doctor::factory()
             ->count(20)
             ->specialist()
             ->hasRole('doctor')
             ->create();
-
+            
         $patients = Patient::factory()
             ->count(500)
             ->withMedicalHistory()
             ->create();
-
+            
         // 3. Assign relationships
         $doctors->each(function($doctor) use ($teams) {
             $doctor->teams()->attach($teams->random(2));
@@ -176,22 +176,22 @@ class MasterSeeder extends Seeder {
 
 ### Cross-Module Testing
 ```php
-// Test User module integration with <nome progetto>
+// Test User module integration with Quaeris
 public function test_doctor_team_assignment_and_permissions()
 {
     // Create using User module infrastructure
     $studio = Team::factory()->create(['name' => 'Studio Dentistico Roma']);
     $doctorRole = Role::factory()->create(['name' => 'specialist_doctor']);
-
-    // Create using <nome progetto> specialized factory
+    
+// Create using Quaeris specialized factory
     $doctor = Doctor::factory()
         ->specialist()
         ->create();
-
+        
     // Test cross-module integration
     $doctor->teams()->attach($studio);
     $doctor->assignRole($doctorRole);
-
+    
     // Verify both module capabilities work together
     $this->assertTrue($doctor->belongsToTeam($studio));
     $this->assertTrue($doctor->hasRole('specialist_doctor'));
@@ -200,19 +200,19 @@ public function test_doctor_team_assignment_and_permissions()
 }
 
 // Test authentication logging across modules
-public function test_healthcare_user_authentication_audit()
+public function test_healthcare_user_authentication_audit() 
 {
     $patient = Patient::factory()->active()->create();
-
+    
     // User module provides authentication logging
     $patient->logAuthentication(request());
-
-    // <nome progetto> provides healthcare context
+    
+// Quaeris provides healthcare context
     $this->assertDatabaseHas('authentication_logs', [
         'authenticatable_id' => $patient->id,
         'authenticatable_type' => Patient::class
     ]);
-
+    
     // Combined: complete healthcare audit trail
     $this->assertTrue($patient->authentications->isNotEmpty());
 }
@@ -226,18 +226,18 @@ class HealthcareSystemInitializer {
         DB::transaction(function() {
             // Phase 1: User module foundation
             $this->createTeamsAndRoles();
-
-            // Phase 2: <nome progetto> healthcare specialization
+            
+// Phase 2: Quaeris healthcare specialization
             $this->createHealthcareUsers();
-
+            
             // Phase 3: Cross-module relationships
             $this->establishRelationships();
-
+            
             // Phase 4: Verification and health checks
             $this->verifySystemIntegrity();
         });
     }
-
+    
     private function createHealthcareUsers(): void {
         // Use factory ecosystem for realistic data generation
         Admin::factory()->count(5)->systemAdmin()->create();
@@ -265,15 +265,15 @@ class HealthcareSystemInitializer {
 // Multi-module factory performance
 Benchmark::run([
     'User module only' => fn() => User::factory()->count(1000)->create(),
-    '<nome progetto> Patient' => fn() => Patient::factory()->count(1000)->create(),
-    '<nome progetto> Doctor' => fn() => Doctor::factory()->count(1000)->create(),
+'Quaeris Patient' => fn() => Patient::factory()->count(1000)->create(),
+    'Quaeris Doctor' => fn() => Doctor::factory()->count(1000)->create(),
     'Cross-module relations' => fn() => $this->createWithRelations(1000),
 ]);
 
 Results:
 - User module only: 2.1s (baseline)
-- <nome progetto> Patient: 2.8s (+33% for healthcare data)
-- <nome progetto> Doctor: 3.2s (+52% for professional data)
+- Quaeris Patient: 2.8s (+33% for healthcare data)
+- Quaeris Doctor: 3.2s (+52% for professional data)
 - Cross-module relations: 4.1s (+95% for complete ecosystem)
 ```
 
@@ -284,15 +284,15 @@ public function test_complete_ecosystem_data_integrity()
 {
     // Generate full healthcare system
     $this->seedCompleteSystem();
-
+    
     // Verify User module constraints
     $this->assertAllUsersHaveValidTeams();
     $this->assertAllUsersHaveAppropriateRoles();
-
-    // Verify <nome progetto> constraints
+    
+// Verify Quaeris constraints
     $this->assertAllHealthcareUsersHaveValidTypes();
     $this->assertAllCodiciFiscaliAreValid();
-
+    
     // Verify cross-module integrity
     $this->assertDoctorsHaveValidStudioAssignments();
     $this->assertPatientsHaveValidMedicalData();
@@ -311,7 +311,7 @@ tests/
 │   │   ├── AuthenticationTest.php
 │   │   ├── RoleManagementTest.php
 │   │   └── TeamManagementTest.php
-│   └── <nome progetto>Integration/
+│   └── QuaerisIntegration/
 │       ├── PatientWorkflowTest.php
 │       ├── DoctorCredentialsTest.php
 │       └── AdminPermissionsTest.php
@@ -328,8 +328,8 @@ tests/
 DB_USER_CONNECTION=sqlite
 DB_USER_DATABASE=:memory:
 
-DB_<nome progetto>_CONNECTION=sqlite
-DB_<nome progetto>_DATABASE=:memory:
+DB_Quaeris_CONNECTION=sqlite  
+DB_Quaeris_DATABASE=:memory:
 
 # Enable cross-module testing
 MULTI_MODULE_TESTING=true
@@ -344,7 +344,7 @@ class MultiModuleSeeder extends Seeder {
         // Order matters for referential integrity
         $this->call([
             UserModuleSeeder::class,     // Foundation
-            <nome progetto>Seeder::class,      // Healthcare specialization
+QuaerisSeeder::class,      // Healthcare specialization
             RelationshipSeeder::class,   // Cross-module relationships
             PermissionSeeder::class,     // Access control
         ]);
@@ -384,14 +384,14 @@ class MultiModuleSeeder extends Seeder {
 
 ## 🏆 Integration Success Recognition
 
-**The User-<nome progetto> factory integration represents a landmark achievement in:**
+**The User-Quaeris factory integration represents a landmark achievement in:**
 
-✅ **Multi-Module Architecture**: Seamless cross-module functionality
-✅ **Domain Specialization**: Healthcare expertise while maintaining flexibility
-✅ **Testing Excellence**: Comprehensive test coverage across modules
-✅ **Performance Optimization**: Efficient data generation at scale
-✅ **GDPR Compliance**: Privacy-by-design implementation
-✅ **Developer Experience**: Intuitive APIs and excellent documentation
+✅ **Multi-Module Architecture**: Seamless cross-module functionality  
+✅ **Domain Specialization**: Healthcare expertise while maintaining flexibility  
+✅ **Testing Excellence**: Comprehensive test coverage across modules  
+✅ **Performance Optimization**: Efficient data generation at scale  
+✅ **GDPR Compliance**: Privacy-by-design implementation  
+✅ **Developer Experience**: Intuitive APIs and excellent documentation  
 
 **This integration sets the standard for Laravel multi-module application development.**
 
@@ -409,4 +409,4 @@ class MultiModuleSeeder extends Seeder {
 | **Test Coverage** | >95% | 98% | 🏆 OUTSTANDING |
 | **Documentation Quality** | Complete | Comprehensive | 🏆 EXEMPLARY |
 
-**FINAL GRADE: A+++ ENTERPRISE EXCELLENCE ACHIEVED** 🌟
+**FINAL GRADE: A+++ ENTERPRISE EXCELLENCE ACHIEVED** 🌟 

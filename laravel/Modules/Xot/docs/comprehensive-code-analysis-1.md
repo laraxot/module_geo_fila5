@@ -8,17 +8,24 @@ Analisi sistematica di tutti i moduli del progetto per identificare violazioni d
 ### 1. Violazioni DRY - Duplicazioni di Codice
 
 #### Singleton Pattern Duplicato
+**File**: `Modules/healthcare_app/app/Services/LimeJsonService.php`, `Modules/healthcare_app/app/Services/healthcare_appService.php`
 
 ```php
 // DUPLICATO in LimeJsonService.php
 private static ?self $instance = null;
 public static function getInstance(): self
 {
+    if (! self::$instance instanceof \Modules\healthcare_app\Services\LimeJsonService) {
         self::$instance = new self();
     }
     return self::$instance;
 }
 
+// DUPLICATO in healthcare_appService.php
+private static ?self $instance = null;
+public static function getInstance(): self
+{
+    if (! self::$instance instanceof \Modules\healthcare_app\Services\healthcare_appService) {
         self::$instance = new self();
     }
     return self::$instance;
@@ -28,11 +35,13 @@ public static function getInstance(): self
 **Soluzione**: Creare trait `SingletonTrait` in `Modules/Xot/app/Traits/SingletonTrait.php`
 
 #### Connection Hardcoded Duplicata
+**Problema**: `protected $connection = 'healthcare_app';` ripetuto in tutti i modelli healthcare_app
 **Soluzione**: Centralizzare in BaseModel o configurazione
 
 ### 2. Violazioni SOLID
 
 #### Single Responsibility Principle Violato
+**File**: `Modules/healthcare_app/app/Models/BaseModel.php`
 
 ```php
 abstract class BaseModel extends Model implements ModelContract, HasMedia
@@ -55,7 +64,7 @@ abstract class BaseModel extends Model implements ModelContract, HasMedia
 **File**: `Modules/User/app/Models/BaseUser.php`
 
 ```php
-abstract class BaseUser extends Authenticatable implements
+abstract class BaseUser extends Authenticatable implements 
     HasMedia, HasName, HasTenants, MustVerifyEmail, UserContract
 {
     use HasApiTokens;
@@ -80,6 +89,7 @@ abstract class BaseUser extends Authenticatable implements
 ### 3. N+1 Query Problems
 
 #### Customer Model - Lazy Loading
+**File**: `Modules/healthcare_app/app/Models/Customer.php`
 
 ```php
 public function surveyPdfsActive()
@@ -92,6 +102,7 @@ public function surveyPdfsActive()
 **Soluzione**: Usare query builder o eager loading
 
 #### AlertWidget - Query Complessa
+**File**: `Modules/healthcare_app/app/Filament/Widgets/AlertWidget.php`
 
 ```php
 return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
@@ -114,6 +125,7 @@ return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
 ### 4. Violazioni KISS - Complessità Eccessiva
 
 #### QuestionChart Model - Metodi Complessi
+**File**: `Modules/healthcare_app/app/Models/QuestionChart.php`
 
 ```php
 public function participants(): CustomRelation
@@ -140,6 +152,7 @@ public function participants(): CustomRelation
 ### 5. Gestione Errori Inadeguata
 
 #### SendInviteAction - Catch Vuoti
+**File**: `Modules/healthcare_app/app/Actions/SendInviteAction.php`
 
 ```php
 try {
@@ -159,6 +172,7 @@ try {
 ### 1. Filament Resources - Pattern Duplicati
 
 #### Schema Duplicato
+**File**: `Modules/healthcare_app/app/Filament/Resources/ContactResource.php`, `CustomerResource.php`
 
 ```php
 // ContactResource.php
@@ -207,10 +221,13 @@ public function customer(): HasOneThrough
 **File**: Tutti i ServiceProvider dei moduli
 
 ```php
-
+class healthcare_appServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'healthcare_app';
+    
     protected string $module_dir = __DIR__;
     protected string $module_ns = __NAMESPACE__;
-
+    
     public function register(): void
     {
         parent::register();
@@ -306,18 +323,20 @@ trait SingletonTrait
 ```
 
 #### B. Separare BaseModel Responsibilities
+**File**: `Modules/healthcare_app/app/Models/BaseModel.php`
 ```php
 abstract class BaseModel extends Model implements ModelContract
 {
     use HasFactory;
     use Updater;
-
+    
     // Rimuovere: Cachable, HasExtraTrait, InteractsWithMedia
     // Creare trait specifici per ogni concern
 }
 ```
 
 #### C. Implementare Repository Pattern
+**File**: `Modules/healthcare_app/app/Repositories/SurveyFlipResponseRepository.php`
 ```php
 class SurveyFlipResponseRepository
 {
@@ -378,6 +397,10 @@ try {
 
 #### B. Configuration Centralization
 ```php
+// config/healthcare_app.php
+return [
+    'database' => [
+        'connection' => env('healthcare_app_DB_CONNECTION', 'healthcare_app'),
     ],
     'limesurvey' => [
         'api' => [
@@ -412,7 +435,7 @@ try {
 
 ---
 
-**Data Analisi**: 2025-01-06
-**Analista**: AI Code Review System
-**Priorità**: CRITICA - Richiede intervento immediato
+**Data Analisi**: 2025-01-06  
+**Analista**: AI Code Review System  
+**Priorità**: CRITICA - Richiede intervento immediato  
 **Stima Effort**: 40-60 ore di refactoring

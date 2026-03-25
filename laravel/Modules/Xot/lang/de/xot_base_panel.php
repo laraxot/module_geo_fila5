@@ -77,4 +77,17 @@ Per questo Le chiediamo il permesso di trasmettere i Suoi dati e le Sue risposte
     'emailstatus' => 'emailstatus',
     'year' => 'year',
     'week' => 'week',
+    'navigation' => [
+        'label' => 'Missing Navigation Label',
+        'plural_label' => 'Missing Navigation Plural Label',
+        'group' => 'Missing Group',
+        'icon' => 'heroicon-o-puzzle-piece',
+        'sort' => 100,
+    ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

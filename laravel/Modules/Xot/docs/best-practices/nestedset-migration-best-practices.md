@@ -1,8 +1,31 @@
+<<<<<<< HEAD
 # NestedSet Migration Best Practices - XOT Module
 
 ## Overview
 
 Questo documento descrive le best practices per implementare migrazioni con strutture ad albero (nested sets) nel modulo XOT utilizzando il pacchetto `kalnoy/laravel-nestedset`.
+=======
+# NestedSet Migration Best Practices — DOCUMENTO LEGACY
+
+> **ATTENZIONE**: Questo documento è **legacy**. Il progetto ha completato la migrazione
+> da `kalnoy/nestedset` a `staudenmeir/laravel-adjacency-list` (marzo 2026).
+>
+> Il pacchetto `kalnoy/nestedset` è stato **rimosso** dal progetto.
+
+## Documento Aggiornato
+
+Per le best practices attuali sulle strutture ad albero, consultare:
+
+- **[Adjacency List Migration — Filosofia Completa](../adjacency-list-migration.md)**
+- **[Adjacency List Best Practices](adjacency-list-best-practices.md)**
+- **[BaseTreeModel Documentation](../models/base-tree-model.md)**
+
+---
+
+## Archivio Storico (sotto, per riferimento)
+
+Questo documento descriveva le best practices per implementare migrazioni con strutture ad albero (nested sets) nel modulo XOT utilizzando il pacchetto `kalnoy/laravel-nestedset` (ora rimosso).
+>>>>>>> origin/dev
 
 ## Pattern per Struttura Moduli XOT
 

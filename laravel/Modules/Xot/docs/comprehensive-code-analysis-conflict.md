@@ -15,7 +15,7 @@ Analisi sistematica di tutti i moduli del progetto per identificare violazioni d
 private static ?self $instance = null;
 public static function getInstance(): self
 {
-    if (! self::$instance instanceof \Modules\Quaeris\Services\LimeJsonService) {
+if (! self::$instance instanceof \Modules\Quaeris\Services\LimeJsonService) {
         self::$instance = new self();
     }
     return self::$instance;
@@ -35,7 +35,7 @@ public static function getInstance(): self
 **Soluzione**: Creare trait `SingletonTrait` in `Modules/Xot/app/Traits/SingletonTrait.php`
 
 #### Connection Hardcoded Duplicata
-**Problema**: `protected $connection = 'quaeris';` ripetuto in tutti i modelli Quaeris
+**Problema**: `protected $connection = 'Quaeris';` ripetuto in tutti i modelli Quaeris
 **Soluzione**: Centralizzare in BaseModel o configurazione
 
 ### 2. Violazioni SOLID
@@ -397,10 +397,10 @@ try {
 
 #### B. Configuration Centralization
 ```php
-// config/quaeris.php
+// config/Quaeris.php
 return [
     'database' => [
-        'connection' => env('QUAERIS_DB_CONNECTION', 'quaeris'),
+        'connection' => env('Quaeris_DB_CONNECTION', 'Quaeris'),
     ],
     'limesurvey' => [
         'api' => [
@@ -414,10 +414,10 @@ return [
 
 ## 🔗 Collegamenti Correlati
 
-- [Architettura Moduli](./ARCHITECTURE.md)
-- [Best Practices Laravel 12](./LARAVEL_12_GUIDE.md)
-- [Pattern Filament](./FILAMENT_PATTERNS.md)
-- [Performance Optimization](./PERFORMANCE_GUIDE.md)
+- [Architettura Moduli](./architecture.md)
+- [Best Practices Laravel 12](./laravel_12_guide.md)
+- [Pattern Filament](./filament_patterns.md)
+- [Performance Optimization](./performance_guide.md)
 
 ## 📊 Metriche di Qualità
 
@@ -435,7 +435,7 @@ return [
 
 ---
 
-**Data Analisi**: 2025-01-06
+**Data Analisi**: [DATE]
 **Analista**: AI Code Review System
 **Priorità**: CRITICA - Richiede intervento immediato
 **Stima Effort**: 40-60 ore di refactoring

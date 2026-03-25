@@ -38,11 +38,11 @@ Il `RouteServiceProvider` gestisce:
 ## Collegamenti Bidirezionali
 - [Documentazione Generale dei Moduli](/docs/modules.md)
 - [Configurazione Job](/docs/module_job.md)
-- [Best Practices PHPStan](/docs/phpstan/PHPSTAN_LEVEL10_LINEE_GUIDA.md)
+- [Best Practices PHPStan](/docs/phpstan/phpstan_level10_linee_guida.md)
 
 # Analisi Dettagliata del Modulo Job
 
-Data: 2025-04-23 19:09:55
+Data: [DATE] 19:09:55
 
 ## Informazioni generali
 
@@ -50,7 +50,7 @@ Data: 2025-04-23 19:09:55
 - **Namespaces secondari**:
   - Modules\\Job\\Database\\Factories
   - Modules\\Job\\Database\\Seeders
-- **Pacchetto Composer**: laraxot/module_job_fila3
+- **Pacchetto Composer**: laraxot/module_job_fila5
 - **Autore**: Marco Sottana
 - **Dipendenze**:
   - repositories_comment
@@ -132,28 +132,28 @@ namespace Modules\Job\App\Filament\Resources;
 
 - [Analisi strutturale complessiva](/docs/phpstan/modules_structure_analysis.md)
 - [Report PHPStan](/docs/phpstan/)
-- [Documentazione Xot](laravel/Modules/Xot/docs/README.md)
-- [Documentazione UI](laravel/Modules/UI/docs/README.md)
-- [Convenzioni dei Namespace](laravel/docs/MODULE_NAMESPACE_RULES.md)
+- [Documentazione Xot](laravel/modules/xot/docs/readme.md)
+- [Documentazione UI](laravel/modules/ui/docs/readme.md)
+- [Convenzioni dei Namespace](laravel/docs/module_namespace_rules.md)
 
 ## Collegamenti tra versioni di structure.md
 * [structure.md](bashscripts/docs/structure.md)
-* [structure.md](../../../Gdpr/docs/structure.md)
-* [structure.md](../../../Notify/docs/structure.md)
-* [structure.md](../../../Xot/docs/structure.md)
-* [structure.md](../../../Xot/docs/base/structure.md)
-* [structure.md](../../../Xot/docs/config/structure.md)
-* [structure.md](../../../User/docs/structure.md)
-* [structure.md](../../../UI/docs/structure.md)
-* [structure.md](../../../Lang/docs/structure.md)
-* [structure.md](../../../Job/docs/structure.md)
-* [structure.md](../../../Media/docs/structure.md)
-* [structure.md](../../../Tenant/docs/structure.md)
-* [structure.md](../../../Activity/docs/structure.md)
-* [structure.md](../../../Cms/docs/structure.md)
-* [structure.md](../../../Cms/docs/themes/structure.md)
-* [structure.md](../../../Cms/docs/components/structure.md)
+* [structure.md](../../../gdpr/docs/structure.md)
+* [structure.md](../../../notify/docs/structure.md)
+* [structure.md](../../../xot/docs/structure.md)
+* [structure.md](../../../xot/docs/base/structure.md)
+* [structure.md](../../../xot/docs/config/structure.md)
+* [structure.md](../../../user/docs/structure.md)
+* [structure.md](../../../ui/docs/structure.md)
+* [structure.md](../../../lang/docs/structure.md)
+* [structure.md](../../../job/docs/structure.md)
+* [structure.md](../../../media/docs/structure.md)
+* [structure.md](../../../tenant/docs/structure.md)
+* [structure.md](../../../activity/docs/structure.md)
+* [structure.md](../../../cms/docs/structure.md)
+* [structure.md](../../../cms/docs/themes/structure.md)
+* [structure.md](../../../cms/docs/components/structure.md)
 
 ### Versione Incoming
 
-* [structure.md](../../../Cms/docs/components/structure.md)
+* [structure.md](../../../cms/docs/components/structure.md)

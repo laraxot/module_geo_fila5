@@ -2,17 +2,17 @@
 
 ## Problema Risolto
 
-**Data**: 26 Settembre 2025
-**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: <nome progetto>_data.customer_user`
+**Data**: 26 Settembre 2025  
+**Errore**: `SQLSTATE[HY000]: General error: 1 no such table: quaeris_data.customer_user`
 
 ## Causa Radice
 
-Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`<nome progetto>_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
+Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`quaeris_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
 
 ## Soluzione Implementata
 
 ### File Modificato
-`Modules/Xot/app/Models/Traits/RelationX.php`
+`/var/www/_bases/base_quaeris_fila4_mono/laravel/Modules/Xot/app/Models/Traits/RelationX.php`
 
 ### Correzione Applicata
 Righe 51-59, aggiunto controllo del driver database:
@@ -31,7 +31,7 @@ if ($pivotDbName !== $dbName || $relatedDbName !== $dbName) {
 ### Logica della Correzione
 
 1. **Rilevamento Driver**: Controlla il tipo di database utilizzato dalla connessione pivot
-2. **Gestione Condizionale**:
+2. **Gestione Condizionale**: 
    - **SQLite**: Usa solo il nome della tabella (`customer_user`)
    - **MySQL/Altri**: Usa il prefisso completo (`database.table`)
 3. **Compatibilità**: Mantiene il comportamento esistente per tutti i driver non-SQLite
@@ -40,12 +40,12 @@ if ($pivotDbName !== $dbName || $relatedDbName !== $dbName) {
 
 ### Relazioni Riparate
 - ✅ `User::tenants()` - Relazione many-to-many con Customer
-- ✅ `Customer::users()` - Relazione inversa
+- ✅ `Customer::users()` - Relazione inversa 
 - ✅ Filament tenant switching
 - ✅ Multi-tenancy cross-database
 
 ### Moduli Affetti
-- **<nome progetto> Module**: Customer-User relationships
+- **Quaeris Module**: Customer-User relationships
 - **User Module**: HasTenants trait functionality
 - **Tutti i moduli**: che usano `belongsToManyX` con database separati
 
@@ -73,7 +73,7 @@ echo $tenants->count(); // ✅ Output: 1
 
 ## Riferimenti
 
-- [Customer User Fix Summary](../../<nome progetto>/docs/customer_user_fix_summary.md)
+- [Customer User Fix Summary](../../Quaeris/docs/customer_user_fix_summary.md)
 - [Cross Database Relations](../../User/docs/cross_database_relations_issue.md)
 - [Multi-Tenant Architecture](../architecture/multi_tenant_design.md)
 
@@ -87,3 +87,6 @@ echo $tenants->count(); // ✅ Output: 1
 ---
 
 *Fix implementato e verificato - Sistema multi-tenant completamente funzionante*
+
+
+

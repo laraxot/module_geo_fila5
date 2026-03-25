@@ -1,6 +1,5 @@
 # Model Architecture - Guida Completa
 
-**Data**: 2025-10-16
 **Modulo**: Xot (Base Module)
 **Autore**: Claude Code Analysis
 
@@ -348,10 +347,10 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
-- Namespace: `Modules\Quaeris\Models\*` → Connection: `quaeris`
+- Namespace: `Modules\Quaeris\Models\*` → Connection: `Quaeris`
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
-**Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./DRY-KISS-ANALYSIS.md) per proposta di implementazione).
+**Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
 
 ---
 
@@ -561,7 +560,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
- * Base Model per Quaeris module.
+* Base Model per Quaeris module.
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -574,7 +573,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
     use HasExtraTrait;
     use InteractsWithMedia;
 
-    protected $connection = 'quaeris';
+protected $connection = 'Quaeris';
 
     // Eager load sempre la relazione extra
     protected $with = ['extra'];
@@ -775,8 +774,8 @@ it('tracks who created the record', function () {
 - [XotBaseModel.php](../../app/Models/XotBaseModel.php) - Base class per modelli standard
 - [XotBasePivot.php](../../app/Models/XotBasePivot.php) - Base class per pivot tables
 - [XotBaseMorphPivot.php](../../app/Models/XotBaseMorphPivot.php) - Base class per morph pivots
-- [DRY-KISS-ANALYSIS.md](./DRY-KISS-ANALYSIS.md) - Analisi duplicazioni e proposte miglioramento
-- [CLAUDE.md](../../../CLAUDE.md) - Convenzioni generali del progetto
+- [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) - Analisi duplicazioni e proposte miglioramento
+- [CLAUDE.md](../../../claude.md) - Convenzioni generali del progetto
 
 ---
 
@@ -803,7 +802,6 @@ A: Estendi comunque BaseModel, ma usa `setTable()` nel costruttore o in metodi f
 **Prossimo aggiornamento**: Dopo implementazione auto-discovery in XotBaseModel
 # Model Architecture - Guida Completa
 
-**Data**: 2025-10-16
 **Modulo**: Xot (Base Module)
 **Autore**: Claude Code Analysis
 
@@ -1151,10 +1149,10 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
-- Namespace: `Modules\Quaeris\Models\*` → Connection: `quaeris`
+- Namespace: `Modules\Quaeris\Models\*` → Connection: `Quaeris`
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
-**Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./DRY-KISS-ANALYSIS.md) per proposta di implementazione).
+**Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
 
 ---
 
@@ -1364,7 +1362,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
- * Base Model per Quaeris module.
+* Base Model per Quaeris module.
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -1377,7 +1375,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
     use HasExtraTrait;
     use InteractsWithMedia;
 
-    protected $connection = 'quaeris';
+protected $connection = 'Quaeris';
 
     // Eager load sempre la relazione extra
     protected $with = ['extra'];
@@ -1578,8 +1576,8 @@ it('tracks who created the record', function () {
 - [XotBaseModel.php](../../app/Models/XotBaseModel.php) - Base class per modelli standard
 - [XotBasePivot.php](../../app/Models/XotBasePivot.php) - Base class per pivot tables
 - [XotBaseMorphPivot.php](../../app/Models/XotBaseMorphPivot.php) - Base class per morph pivots
-- [DRY-KISS-ANALYSIS.md](./DRY-KISS-ANALYSIS.md) - Analisi duplicazioni e proposte miglioramento
-- [CLAUDE.md](../../../CLAUDE.md) - Convenzioni generali del progetto
+- [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) - Analisi duplicazioni e proposte miglioramento
+- [CLAUDE.md](../../../claude.md) - Convenzioni generali del progetto
 
 ---
 

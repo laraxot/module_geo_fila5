@@ -1,6 +1,4 @@
-# Report Normalizzazione Documentazione
-
-## Data: Gennaio 2025
+# Report Normalizzazione Documentazione - Gennaio 2025
 
 ## Azioni Completate
 
@@ -110,6 +108,8 @@
 
 ---
 
-**Data**: Gennaio 2025
-**Stato**: In corso
+**Data**: Gennaio 2025  
+**Stato**: In corso  
 **Prossima Revisione**: Dopo normalizzazione batch successivo
+
+

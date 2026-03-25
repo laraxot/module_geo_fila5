@@ -20,11 +20,11 @@ Crearsi il virtual host con il nome del dominio uguale a quello del file di conf
 Noi suggeriamo l'utilizzo di Laragon perchè crea automaticamente i virtual host.
 Dopo aver installato laragon, Assicurarsi di abilitate tutte le estensioni php indicate nella foto
 
-<img class="block m-auto" src="https://laraxot.github.io/module_xot_fila3/assets/img/php-extentions.png" alt="php extentions" />
+<img class="block m-auto" src="https://laraxot.github.io/module_xot_fila5/assets/img/php-extentions.png" alt="php extentions" />
 
 Configurare le preferenze di laragon come in foto
 
-<img class="block m-auto" src="https://laraxot.github.io/module_xot_fila3/assets/img/laragon-config.png" alt="laragon config" />
+<img class="block m-auto" src="https://laraxot.github.io/module_xot_fila5/assets/img/laragon-config.png" alt="laragon config" />
 
 Creare una cartella _bases dentro la cartella www, in questa cartella si andrà a clonare il progetto.
 
@@ -132,13 +132,13 @@ se il branch di un modulo vuole essere pubblicato, eseguire nel modulo
 ### Versione HEAD
 
 ## Collegamenti tra versioni di installation.md
-* [installation.md](../../../Xot/docs/filament/installation.md)
-* [installation.md](../../../Xot/docs/installation.md)
-* [installation.md](../../../Xot/docs/base/installation.md)
-* [installation.md](../../../User/docs/installation.md)
-* [installation.md](../../../Lang/docs/installation.md)
-* [installation.md](../../../Cms/docs/installation.md)
-* [installation.md](../../../../Themes/One/docs/installation.md)
+* [installation.md](../../../xot/docs/filament/installation.md)
+* [installation.md](../../../xot/docs/installation.md)
+* [installation.md](../../../xot/docs/base/installation.md)
+* [installation.md](../../../user/docs/installation.md)
+* [installation.md](../../../lang/docs/installation.md)
+* [installation.md](../../../cms/docs/installation.md)
+* [installation.md](../../../../themes/one/docs/installation.md)
 
 ### Versione Incoming
 

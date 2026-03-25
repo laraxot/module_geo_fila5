@@ -1,6 +1,5 @@
 # Analisi PHPMD - Tutti i Moduli
 
-**Data**: 2025-12-23
 **Strumento**: PHPMD (PHP Mess Detector)
 **Rules**: codesize, unusedcode, naming, design, controversial, cleancode
 

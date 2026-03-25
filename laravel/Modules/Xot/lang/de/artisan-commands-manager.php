@@ -54,4 +54,10 @@ return [
         'disabled' => 'Non è possibile eseguire altri comandi mentre un comando è in esecuzione.',
         'scroll' => 'L\'output si aggiorna automaticamente e scorre verso il basso.',
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
+    'fields' => [
+    ],
+    'actions' => [
+    ],
 ];

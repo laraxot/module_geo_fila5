@@ -584,13 +584,13 @@ Implementare:
 ## 🔗 Collegamenti
 
 **Documentazione Root**:
-- [../../../docs/code-quality/eloquent-magic-properties.md](../../../docs/code-quality/eloquent-magic-properties.md)
-- [../../../docs/phpstan/level-10-guide.md](../../../docs/phpstan/level-10-guide.md)
+- [../../../../docs/code-quality/eloquent-magic-properties.md](../../../../docs/code-quality/eloquent-magic-properties.md)
+- [../../../../docs/phpstan/level-10-guide.md](../../../../docs/phpstan/level-10-guide.md)
 
 **Documentazione Moduli**:
-- [User/docs/phpstan-level10-fixes.md](../../User/docs/phpstan-level10-fixes.md)
-- [Tenant/docs/phpstan-level10-fixes.md](../../Tenant/docs/phpstan-level10-fixes.md)
-- [Notify/docs/eloquent-properties-best-practices.md](../../Notify/docs/eloquent-properties-best-practices.md)
+- [User/docs/phpstan-level10-fixes.md](../../user/docs/phpstan-level10-fixes.md)
+- [Tenant/docs/phpstan-level10-fixes.md](../../tenant/docs/phpstan-level10-fixes.md)
+- [Notify/docs/eloquent-properties-best-practices.md](../../notify/docs/eloquent-properties-best-practices.md)
 
 **References Esterne**:
 - [Laravel Eloquent Properties](https://laravel.com/docs/11.x/eloquent#accessing-attributes)

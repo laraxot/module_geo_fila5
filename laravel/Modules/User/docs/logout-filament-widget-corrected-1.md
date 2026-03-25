@@ -11,7 +11,7 @@
 
 ## Introduzione
 
-Questo documento descrive l'implementazione corretta del logout utilizzando un widget Filament, rispettando le convenzioni di <nome progetto> e la struttura di `XotBaseWidget`. L'approccio con widget Filament è particolarmente utile quando si desidera mantenere una pagina di conferma per il logout.
+Questo documento descrive l'implementazione corretta del logout utilizzando un widget Filament, rispettando le convenzioni di SaluteOra e la struttura di `XotBaseWidget`. L'approccio con widget Filament è particolarmente utile quando si desidera mantenere una pagina di conferma per il logout.
 
 ## Errore Comune da Evitare
 
@@ -87,7 +87,7 @@ class LogoutWidget extends XotBaseWidget
 
             // Ottieni l'utente prima del logout per il logging
             $user = Auth::user();
-
+            
             // Evento pre-logout
             Event::dispatch('auth.logout.attempting', [$user]);
 
@@ -160,7 +160,7 @@ class LogoutWidget extends XotBaseWidget
                 {{ $this->form }}
 
                 <div class="mt-6 flex flex-col gap-3">
-                    <x-filament::button
+                    <x-filament::button 
                         type="submit"
                         color="danger"
                         size="lg"
@@ -169,8 +169,8 @@ class LogoutWidget extends XotBaseWidget
                         {{ __('Conferma Logout') }}
                     </x-filament::button>
 
-                    <x-filament::button
-                        tag="a"
+                    <x-filament::button 
+                        tag="a" 
                         :href="'/' . app()->getLocale()"
                         color="gray"
                         size="lg"
@@ -230,7 +230,7 @@ name('logout');
    - Implementare il metodo astratto `getFormSchema()` invece di tentare di sovrascrivere `form()`
    - Utilizzare correttamente i componenti Filament
 
-2. **Convenzioni di <nome progetto> per i Widget**:
+2. **Convenzioni di SaluteOra per i Widget**:
    - Namespace corretto: `Modules\User\Filament\Widgets`
    - Path della vista: `filament.widgets.auth.logout` (senza namespace del modulo per l'utilizzo diretto nelle Blade)
    - Due copie della vista: una con namespace del modulo e una senza
@@ -249,7 +249,7 @@ name('logout');
 2. **Coerenza UI**: Utilizza i componenti UI nativi di Filament, garantendo coerenza visiva.
 3. **Manutenibilità**: Separa chiaramente la logica dalla presentazione.
 4. **Estensibilità**: Facilmente estensibile per aggiungere funzionalità aggiuntive.
-5. **Conformità alle convenzioni**: Segue le convenzioni di <nome progetto> per i widget Filament.
+5. **Conformità alle convenzioni**: Segue le convenzioni di SaluteOra per i widget Filament.
 
 ## Alternativa: Logout Immediato
 

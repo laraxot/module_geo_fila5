@@ -47,7 +47,7 @@ The Job module provides comprehensive queue and background job processing:
 ### ❌ Missing Features
 - Real-time job monitoring dashboard
 - Advanced queue analytics and insights
-- Job performance prediction
+- Job performance <nome progetto>ion
 - Automated queue scaling
 - Advanced job scheduling patterns
 - Job dependency visualization
@@ -86,7 +86,7 @@ The Job module provides comprehensive queue and background job processing:
 - Advanced analytics
 - Automated scaling
 - Job dependency management
-- Performance prediction
+- Performance <nome progetto>ion
 - Advanced debugging tools
 - External system integration
 - Queue optimization

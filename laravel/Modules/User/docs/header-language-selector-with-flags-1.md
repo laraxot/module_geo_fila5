@@ -1,19 +1,19 @@
 # Implementazione del Selettore di Lingua con Bandiere SVG
 
 ## Collegamenti correlati
-- [README modulo User](./README.md)
-- [Convenzioni Path](./PATH_CONVENTIONS.md)
-- [Best Practices Chiavi di Traduzione](/laravel/Modules/Lang/docs/TRANSLATION_KEYS_BEST_PRACTICES.md)
-- [Implementazione Header](/laravel/Modules/User/docs/HEADER_LANGUAGE_AVATAR_IMPLEMENTATION.md)
+- [README modulo User](./readme.md)
+- [Convenzioni Path](./path_conventions.md)
+- [Best Practices Chiavi di Traduzione](/laravel/modules/lang/docs/translation_keys_best_practices.md)
+- [Implementazione Header](/laravel/modules/user/docs/header_language_avatar_implementation.md)
 - [Collegamenti Documentazione](/docs/collegamenti-documentazione.md)
 
 ## Panoramica
 
-Questo documento descrive come migliorare il selettore di lingua nell'header di <nome progetto> utilizzando le bandiere SVG disponibili nel modulo UI, rendendo il componente più visibile e accattivante.
+Questo documento descrive come migliorare il selettore di lingua nell'header di Quaeris utilizzando le bandiere SVG disponibili nel modulo UI, rendendo il componente più visibile e accattivante.
 
 ## Utilizzo delle Bandiere SVG
 
-Le bandiere SVG sono disponibili in `Modules/UI/resources/svg/flags` e sono autoregistrate come componenti Blade tramite il sistema di registrazione delle icone di Blade. Questo avviene grazie al metodo `registerBladeIcons()` nel `XotBaseServiceProvider`.
+Le bandiere SVG sono disponibili in `/var/www/html/Quaeris/laravel/Modules/UI/resources/svg/flags` e sono autoregistrate come componenti Blade tramite il sistema di registrazione delle icone di Blade. Questo avviene grazie al metodo `registerBladeIcons()` nel `XotBaseServiceProvider`.
 
 ### Come Funziona la Registrazione
 
@@ -48,8 +48,8 @@ Ecco un'implementazione migliorata del selettore di lingua che utilizza le bandi
     >
         {{-- Mostra la bandiera della lingua corrente --}}
         <span class="flex items-center">
-            <x-dynamic-component
-                :component="'ui-flags.' . $currentLocale"
+            <x-dynamic-component 
+                :component="'ui-flags.' . $currentLocale" 
                 class="w-6 h-6 rounded-full shadow-sm border border-gray-200"
                 aria-hidden="true"
             />
@@ -59,7 +59,7 @@ Ecco un'implementazione migliorata del selettore di lingua che utilizza le bandi
             </svg>
         </span>
     </button>
-
+    
     <div
         x-show="open"
         x-transition:enter="transition ease-out duration-100"
@@ -76,8 +76,8 @@ Ecco un'implementazione migliorata del selettore di lingua che utilizza le bandi
                     href="{{ '/' . $locale . request()->getPathInfo() }}"
                     class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ $currentLocale === $locale ? 'bg-gray-100' : '' }}"
                 >
-                    <x-dynamic-component
-                        :component="'ui-flags.' . $locale"
+                    <x-dynamic-component 
+                        :component="'ui-flags.' . $locale" 
                         class="w-5 h-5 rounded-full mr-3"
                         aria-hidden="true"
                     />

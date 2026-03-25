@@ -1,4 +1,4 @@
-# Best Practices per i Componenti di Autenticazione
+# Best Practices per i Componenti di Autenticazione 
 
 ## Collegamenti correlati
 - [README modulo User](./README.md)
@@ -149,7 +149,7 @@ Prima di utilizzare una chiave di traduzione, assicurarsi che i file di traduzio
 - `/laravel/Modules/Lang/lang/it/auth.php`
 - `/laravel/Modules/Lang/lang/en/auth.php`
 
-## Componenti di Autenticazione
+## Componenti di Autenticazione 
 
 ### 1. Pagine di Autenticazione
 
@@ -183,7 +183,7 @@ Prima di implementare nuovi componenti di autenticazione o modificare quelli esi
 
 1. Che tutte le chiavi di traduzione siano definite in tutti i file di lingua supportati
 2. Che i componenti funzionino correttamente con la localizzazione delle URL
-3. Che i componenti rispettino le best practices di <nome progetto> per le chiavi di traduzione
+3. Che i componenti rispettino le best practices di SaluteOra per le chiavi di traduzione
 
 ## Riferimenti
 

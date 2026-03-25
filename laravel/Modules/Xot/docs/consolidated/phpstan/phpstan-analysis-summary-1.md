@@ -19,7 +19,7 @@ Based on the latest analysis:
 ### Common Error Types
 
 #### 1. Class Not Found Errors (15%)
-- Missing classes from Modules\<nome progetto>\Models namespace
+- Missing classes from Modules\Quaeris\Models namespace
 - Missing traits (EnumTrait from Modules\Core\Traits)
 - Undefined classes in factories
 
@@ -66,11 +66,11 @@ Based on the latest analysis:
 
 ### Notify Module
 **Key Issues**:
-- Missing <nome progetto> model classes
+- Missing Quaeris model classes
 - String function parameter type issues
 - Method not found errors on models
 
-### Predict Module
+### <nome progetto> Module
 **Key Issues**:
 - Mixed type operations in price calculations
 - Property access on nullable objects
@@ -89,7 +89,7 @@ Based on the latest analysis:
 **Solution**:
 ```php
 // Use class_exists checks before referencing
-if (!class_exists('Modules\\<nome progetto>\\Models\\Appointment')) {
+if (!class_exists('Modules\\Quaeris\\Models\\Appointment')) {
     // Handle missing class gracefully
     throw new \Exception('Required class not available');
 }
@@ -185,7 +185,7 @@ vendor/bin/phpstan analyse --generate-baseline
 ## Remaining Issues Requiring Manual Intervention
 
 ### High Priority
-1. **Missing <nome progetto> Models**: Classes referenced but not available
+1. **Missing Quaeris Models**: Classes referenced but not available
 2. **Cross-Module Dependencies**: Tight coupling between modules
 3. **Factory Configuration**: Incorrect model references in factories
 

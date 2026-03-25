@@ -38,11 +38,11 @@ trait EnumTrait
      */
     public static function getSearchable(): array
     {
-        return array_map(fn ($item) => $item->value, static::cases());
+        return array_map(fn ($item) => (string) $item->value, static::cases());
     }
 
     /**
-     * @return array<string, TextInput>
+     * @return array<int|string, TextInput>
      */
     public static function getFormSchema(): array
     {
@@ -51,7 +51,8 @@ trait EnumTrait
         /** @var array<string, TextInput> $result */
         $result = [];
         foreach ($cases as $item) {
-            $result[$item->value] = TextInput::make($item->value)->prefixIcon($item->getIcon());
+            $name = (string) $item->value;
+            $result[$name] = TextInput::make($name)->prefixIcon($item->getIcon());
         }
 
         return $result;
@@ -74,7 +75,7 @@ trait EnumTrait
      * - **Religion**: Strong typing through enum values
      * - **Zen**: Form without form - one method adapts to both contexts
      *
-     * Inspired by Modules/TechPlanner/database/migrations/2019_12_12_000004_create_workers_table.php:
+     * Inspired by Modules/<nome progetto>/database/migrations/2019_12_12_000004_create_workers_table.php:
      * ```php
      * $address_components = Place::$address_components;
      * foreach ($address_components as $el) {
@@ -99,8 +100,8 @@ trait EnumTrait
      * ```
      */
     /**
-     * @param  Blueprint  $table  The table blueprint
-     * @param  XotBaseMigration|null  $migration  XotBaseMigration instance for UPDATE context (provides hasColumn())
+     * @param Blueprint             $table     The table blueprint
+     * @param XotBaseMigration|null $migration XotBaseMigration instance for UPDATE context (provides hasColumn())
      */
     public static function columns(Blueprint $table, ?XotBaseMigration $migration = null): void
     {
@@ -109,7 +110,7 @@ trait EnumTrait
         // }
 
         foreach (static::getColumnDefinitions() as $name => $definition) {
-            if ($migration === null || ! $migration->hasColumn($name)) {
+            if (null === $migration || ! $migration->hasColumn($name)) {
                 $definition($table);
             }
         }
@@ -138,7 +139,7 @@ trait EnumTrait
      */
     public static function getColumnNames(): array
     {
-        return array_map(fn ($case) => $case->value, static::cases());
+        return array_map(fn ($case) => (string) $case->value, static::cases());
     }
 
     /**

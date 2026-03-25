@@ -1,4 +1,4 @@
-# Implementazione del Logout
+# Implementazione del Logout 
 
 ## Indice
 - [Panoramica](#panoramica)
@@ -34,16 +34,16 @@ mount(function() {
     if (Auth::check()) {
         // Dispatch dell'evento prima del logout
         Event::dispatch('auth.logout.attempting', [Auth::user()]);
-
+        
         // Esegui il logout
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
-
+        
         // Dispatch dell'evento dopo il logout
         Event::dispatch('auth.logout.successful');
     }
-
+    
     // Reindirizza l'utente alla home page localizzata
     $this->redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), route('home')));
 });
@@ -63,7 +63,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 $this->redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), route('home')));
 ```
 
-Questo garantisce che l'utente venga reindirizzato alla versione localizzata della home page dopo il logout, rispettando le convenzioni di <nome progetto> per la gestione della localizzazione.
+Questo garantisce che l'utente venga reindirizzato alla versione localizzata della home page dopo il logout, rispettando le convenzioni di SaluteOra per la gestione della localizzazione.
 
 ## Componenti Filament
 
@@ -91,7 +91,7 @@ Il template Blade per il logout deve utilizzare i componenti Filament per garant
 
 ## Chiavi di Traduzione
 
-Le chiavi di traduzione per il logout devono seguire la struttura gerarchica definita nelle best practices di <nome progetto>:
+Le chiavi di traduzione per il logout devono seguire la struttura gerarchica definita nelle best practices di SaluteOra:
 
 ```php
 'logout' => [
@@ -148,7 +148,7 @@ mount(function() {
     Auth::logout();
     session()->invalidate();
     session()->regenerateToken();
-
+    
     $this->redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), route('home')));
 });
 ?>
@@ -190,19 +190,19 @@ name('logout');
 mount(function() {
     if (Auth::check()) {
         $user = Auth::user();
-
+        
         // Evento pre-logout
         Event::dispatch('auth.logout.attempting', [$user]);
-
+        
         // Logout
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
-
+        
         // Evento post-logout
         Event::dispatch('auth.logout.successful');
     }
-
+    
     $this->redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), route('home')));
 });
 ?>

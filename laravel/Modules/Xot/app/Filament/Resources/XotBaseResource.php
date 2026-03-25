@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Resources;
 
-use Exception;
 use Filament\Pages\Enums\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Pages\PageRegistration;
@@ -23,10 +22,10 @@ use Modules\Media\Actions\GetAttachmentsSchemaAction;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Actions\ModelClass\CountAction;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use ReflectionClass;
-use Webmozart\Assert\Assert;
 
 use function Safe\glob;
+
+use Webmozart\Assert\Assert;
 
 /**
  * @method static string getUrl(string $name, array<string, mixed> $parameters = [], bool $isAbsolute = true)
@@ -37,10 +36,10 @@ abstract class XotBaseResource extends FilamentResource
 
     protected static ?string $model = null;
 
-    protected static ?\Filament\Pages\Enums\SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+    protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     /**
-     * @param  array<string, bool|float|int|string|null>  $params
+     * @param array<string, bool|float|int|string|null> $params
      */
     public static function trans(string $key, bool $exceptionIfNotExist = false, array $params = []): string
     {
@@ -49,7 +48,7 @@ abstract class XotBaseResource extends FilamentResource
 
         if (is_string($res)) {
             if ($exceptionIfNotExist && $res === $tmp) {
-                throw new Exception('['.__LINE__.']['.class_basename(self::class).']');
+                throw new \Exception('['.__LINE__.']['.class_basename(self::class).']');
             }
 
             return $res;
@@ -80,29 +79,8 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getModel(): string
     {
-
-        
-        // Usa get_called_class() per late static binding corretto
-        // static::class viene risolto a compile-time, get_called_class() a runtime
-        $calledClass = get_called_class();
-        $reflection = new ReflectionClass($calledClass);
-        
-        // Cerca la proprietà $model nella gerarchia di classi
-        $modelClass = null;
-        while ($reflection instanceof ReflectionClass) {
-            if ($reflection->hasProperty('model')) {
-                $prop = $reflection->getProperty('model');
-                $prop->setAccessible(true);
-                $modelClass = $prop->getValue();
-                if ($modelClass !== null) {
-                    break;
-                }
-            }
-            $reflection = $reflection->getParentClass();
-        }
-        
-        if ($modelClass !== null) {
-            $res = $modelClass;
+        if (null !== static::$model) {
+            $res = static::$model;
             Assert::subclassOf(
                 $res,
                 Model::class,
@@ -112,9 +90,7 @@ abstract class XotBaseResource extends FilamentResource
             return $res;
         }
         $moduleName = static::getModuleName();
-
         $modelName = Str::before(class_basename(static::class), 'Resource');
-
         $res = 'Modules\\'.$moduleName.'\Models\\'.$modelName;
         Assert::classExists($res, \sprintf('Model class %s does not exist', $res));
         Assert::subclassOf(
@@ -189,7 +165,7 @@ abstract class XotBaseResource extends FilamentResource
             $count = app(CountAction::class)->execute(static::getModel());
 
             return number_format($count, 0).'';
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return '--';
         }
     }
@@ -236,7 +212,7 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getRelations(): array
     {
-        $reflector = new ReflectionClass(static::class);
+        $reflector = new \ReflectionClass(static::class);
         $filename = $reflector->getFileName();
         Assert::string($filename, __FILE__.':'.__LINE__.' - '.class_basename(self::class));
 
@@ -249,7 +225,7 @@ abstract class XotBaseResource extends FilamentResource
         $filesResult = glob($path.\DIRECTORY_SEPARATOR.'*RelationManager.php');
 
         // PHPStan: glob() with valid pattern returns array
-        if ($filesResult === []) {
+        if ([] === $filesResult) {
             return [];
         }
 
@@ -279,7 +255,7 @@ abstract class XotBaseResource extends FilamentResource
         $submit_view = 'pub_theme::filament.wizard.submit-button';
         // @phpstan-ignore-next-line
         if (! view()->exists($submit_view)) {
-            throw new Exception("View {$submit_view} does not exist");
+            throw new \Exception("View {$submit_view} does not exist");
         }
         $render = view($submit_view)->render();
 

@@ -1,6 +1,5 @@
 # PHPStan Syntax Fixes - Modulo Job
 
-**Data**: 2025-01-11
 **Versione PHPStan**: 1.12.x
 **Livello**: max
 **Status**: ✅ IMPORT CONFLICT RISOLTO
@@ -157,7 +156,7 @@ Pest tests hanno molte funzioni helper globali che possono confliggere:
 
 ## 🔗 Collegamenti
 
-- [Analisi Generale PHPStan](../../../project_docs/quality/phpstan-analysis.md)
+- [Analisi Generale PHPStan](../../../../docs/project/quality/phpstan-analysis.md)
 - [Safe Functions Documentation](https://github.com/thecodingmachine/safe)
 - [Pest Testing Framework](https://pestphp.com/)
 
@@ -215,7 +214,7 @@ $traits = class_uses($obj);    // ❌ Può ritornare false!
 
 ---
 
-**Fix Completato**: 2025-01-11
+**Fix Completato**: [DATE]
 **Priority**: ALTA
 **Impact**: BASSO (Solo 1 test file)
 **Type Safety**: MIGLIORATA ✅

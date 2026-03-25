@@ -2,7 +2,7 @@
 
 ## Regola Fondamentale
 
-La cartella `bashscripts` deve contenere **SOLO** il file `README.md` nella root. Tutti gli altri file devono essere categorizzati e organizzati in sottocartelle tematiche.
+La cartella `/var/www/html/_bases/base_saluteora/bashscripts` deve contenere **SOLO** il file `README.md` nella root. Tutti gli altri file devono essere categorizzati e organizzati in sottocartelle tematiche.
 
 ## Struttura Organizzata
 
@@ -55,7 +55,7 @@ bashscripts/
 
 #### 8. **translations/** - Gestione Traduzioni
 - `fix_all_english_translations.sh` - Fix traduzioni inglesi
-- `fix_project_translations.sh` - Fix traduzioni progetto
+- `fix_saluteora_translations.sh` - Fix traduzioni SaluteOra
 - `verify_translations_syntax.sh` - Verifica sintassi traduzioni
 
 #### 9. **utilities/** - Utilità Generali
@@ -107,7 +107,6 @@ Le seguenti sottocartelle esistevano già e contengono script specifici:
 3. **Documentazione**: Aggiornare questa documentazione per nuove categorie
 4. **Naming**: Usare nomi descrittivi per sottocartelle e script
 5. **README**: Ogni sottocartella dovrebbe avere un `README.md` esplicativo
-6. **Prompt portabili**: i prompt devono restare project-agnostic e senza percorsi assoluti
 
 ## Implementazione
 
@@ -137,4 +136,4 @@ Per mantenere questa organizzazione:
 ---
 
 *Ultimo aggiornamento: 2025-01-29*
-*Responsabile: sistema di automazione*
+*Responsabile: Sistema di Automazione Laraxot*

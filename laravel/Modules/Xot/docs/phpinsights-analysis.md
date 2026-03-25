@@ -1,6 +1,5 @@
 # Analisi PHPInsights - Tutti i Moduli
 
-**Data**: 2025-12-23
 **Strumento**: PHPInsights 2.13.3
 **Esecuzione**: Dalla root Laravel (richiede composer.lock)
 

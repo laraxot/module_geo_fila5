@@ -220,7 +220,7 @@ find Modules/*/docs -type f | sort -f | uniq -di
 
 ```bash
 # Sposta file vecchi in _archive con data
-mv old-file.md _archive/2024-01-15-old-file.md
+mv old-file.md _archive/[DATE]-old-file.md
 ```
 
 **Quando archiviare**:
@@ -239,7 +239,7 @@ mv old-file.md _archive/2024-01-15-old-file.md
 ✅ CORRETTO:
 [Link](./same-folder/file.md)
 [Link](../parent-folder/file.md)
-[Link](../../Modules/Other/docs/file.md)
+[Link](../../modules/other/docs/file.md)
 
 ❌ SBAGLIATO:
 [Link](/absolute/path/file.md)
@@ -565,7 +565,7 @@ Per migliorare questa guida:
 
 ---
 
-**Ultimo aggiornamento**: 2025-01-06
+**Ultimo aggiornamento**: [DATE]
 **Versione**: 1.0
 **Status**: ✅ Active
 **Maintainer**: Team Laraxot

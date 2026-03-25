@@ -366,6 +366,5 @@ TechPlanner ha ora una homepage che:
 ---
 
 **Implementato da**: iFlow CLI
-**Data**: 6 Febbraio 2026
 **Stato**: ✅ COMPLETATO
 **Next Step**: Testing su http://127.0.0.1:8000/it

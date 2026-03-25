@@ -58,13 +58,9 @@ use Illuminate\Support\Carbon;
  * @mixin IdeHelperExport
  * @mixin IdeHelperExport
  * @mixin IdeHelperExport
- * @mixin Eloquent
  * @mixin IdeHelperExport
- * @mixin Eloquent
  * @mixin IdeHelperExport
- * @mixin Eloquent
  * @mixin IdeHelperExport
- * @mixin Eloquent
  * @mixin IdeHelperExport
  * @mixin Eloquent
  */

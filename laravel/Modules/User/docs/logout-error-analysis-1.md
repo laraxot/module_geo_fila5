@@ -2,7 +2,7 @@
 
 ## Problema Identificato
 
-Il file `Themes/One/resources/views/pages/auth/logout.blade.php` presenta un errore fondamentale nella sua implementazione:
+Il file `/var/www/html/Quaeris/laravel/Themes/One/resources/views/pages/auth/logout.blade.php` presenta un errore fondamentale nella sua implementazione:
 
 1. **Errore di Sintassi**:
    - Uso errato della direttiva `@volt` quando il file dovrebbe essere una semplice blade template
@@ -33,7 +33,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
 class LogoutWidget extends XotBaseWidget
 {
     protected static string $view = 'user::widgets.logout';
-
+    
     protected function getViewData(): array
     {
         return [
@@ -41,13 +41,13 @@ class LogoutWidget extends XotBaseWidget
             'description' => __('Sei sicuro di voler uscire?'),
         ];
     }
-
+    
     public function logout()
     {
         auth()->logout();
         session()->invalidate();
         session()->regenerateToken();
-
+        
         return redirect()->route('home');
     }
 }
@@ -61,18 +61,18 @@ class LogoutWidget extends XotBaseWidget
             <h3 class="text-lg font-medium">
                 {{ $title }}
             </h3>
-
+            
             <p class="mt-2 text-sm text-gray-600">
                 {{ $description }}
             </p>
-
+            
             <div class="mt-4 flex space-x-4">
                 <x-filament::button
                     wire:click="logout"
                     color="danger">
                     {{ __('Logout') }}
                 </x-filament::button>
-
+                
                 <x-filament::button
                     color="secondary"
                     href="{{ route('home') }}">
@@ -120,6 +120,6 @@ class LogoutWidget extends XotBaseWidget
 
 ## Collegamenti Correlati
 - [Documentazione Filament Widgets](https://filamentphp.com/docs/3.x/panels/widgets)
-- [Best Practices di Sicurezza](./SECURITY_BEST_PRACTICES.md)
-- [Gestione Sessione](./SESSION_MANAGEMENT.md)
-- [Documentazione Blade](https://laravel.com/docs/10.x/blade)
+- [Best Practices di Sicurezza](./security_best_practices.md)
+- [Gestione Sessione](./session_management.md)
+- [Documentazione Blade](https://laravel.com/docs/10.x/blade) 

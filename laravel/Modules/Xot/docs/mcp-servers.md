@@ -517,7 +517,7 @@ iflow
 
 ## Changelog
 
-- **2025-01-06**: Documentazione iniziale creata
+- **[DATE]**: Documentazione iniziale creata
   - Cursor, Windsurf, Cline, iFlow
   - Server MCP essenziali configurati
   - Best practices e troubleshooting
@@ -526,4 +526,4 @@ iflow
 
 ## Licenza
 
-Questa documentazione è parte del progetto **base_quaeris_fila4_mono** ed è soggetta alla stessa licenza del progetto principale.
+Questa documentazione è parte del progetto **base_Quaeris_fila5_mono** ed è soggetta alla stessa licenza del progetto principale.

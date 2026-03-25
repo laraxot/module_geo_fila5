@@ -14,7 +14,7 @@ use Modules\Xot\Filament\RelationManagers\XotBaseRelationManager;
 class TeamsRelationManager extends XotBaseRelationManager
 {
     protected static string $relationship = 'teams';
-
+    
     // ...
 }
 ```
@@ -95,7 +95,7 @@ return [
    ```php
    // ❌ ERRATO: Non usare ->label()
    TextColumn::make('name')->label('Nome')
-
+   
    // ✅ CORRETTO: Lasciare che il sistema gestisca la traduzione
    TextColumn::make('name')
    ```
@@ -104,7 +104,7 @@ return [
    ```php
    // ❌ ERRATO: Non usare metodi statici
    public static function getTableColumns()
-
+   
    // ✅ CORRETTO: Usare metodi di istanza
    public function getTableColumns()
    ```
@@ -171,6 +171,6 @@ class TeamsRelationManager extends XotBaseRelationManager
 ## Riferimenti
 
 - [Documentazione Filament RelationManager](https://filamentphp.com/docs/tables#relation-managers)
-- [XotBaseRelationManager](../Xot/docs/filament-relation-managers.md)
-- [Sistema di Traduzione](../Xot/docs/translation-system.md)
-- [Best Practices Filament](../Xot/docs/filament-best-practices.md)
+- [XotBaseRelationManager](../xot/docs/filament-relation-managers.md)
+- [Sistema di Traduzione](../xot/docs/translation-system.md)
+- [Best Practices Filament](../xot/docs/filament-best-practices.md) 
