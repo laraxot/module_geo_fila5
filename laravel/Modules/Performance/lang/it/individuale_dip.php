@@ -146,6 +146,9 @@ return [
         ],
         'value' => [
             'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
         ],
         'fill' => [
             'label' => 'compila',
@@ -169,6 +172,9 @@ return [
         ],
         'id' => [
             'label' => 'id',
+        ],
+        'type' => [
+            'label' => 'type',
         ],
     ],
     'actions' => [
@@ -212,6 +218,7 @@ return [
         'profile' => [
             'tooltip' => 'profile',
             'icon' => 'profile',
+            'label' => 'profile',
         ],
         'MakePdfAction' => [
             'label' => 'MakePdfAction',
@@ -277,6 +284,16 @@ return [
             'label' => 'reorderRecords',
             'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
         ],
     ],
     'messages' => [

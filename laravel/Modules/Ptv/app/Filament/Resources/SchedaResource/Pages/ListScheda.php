@@ -34,6 +34,7 @@ use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Ptv\Filament\Actions\Header\PopulateYearAction;
+use Modules\Ptv\Filament\Actions\Header\TrovaEsclusiAction;
 use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Columns\LavoratoreColumn;
 use Modules\Ptv\Filament\Columns\PeriodoColumn;
@@ -51,6 +52,8 @@ use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Actions\Table\PdfAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
+use Parental\HasChildren;
+use Parental\HasParent;
 
 
 
@@ -67,6 +70,8 @@ class ListScheda extends XotBaseListRecords
             ...parent::getHeaderActions(),
             'copy_from_last_year' => CopyFromLastYearAction::make(),
             'populate_year' => PopulateYearAction::make(),
+            'trova_esclusi' => TrovaEsclusiAction::make(),
+            'export_xls' => ExportXlsAction::make(),
             'pdf' => MakePdfAction::make(),
             // 'export' => ExportXlsAction::make(), // da togliere campi etc etc
         ];
@@ -118,7 +123,10 @@ class ListScheda extends XotBaseListRecords
             'anno_valutatore' => AnnoValutatoreFilter::make('anno_valutatore'),
             'ha_diritto' => TernaryFilter::make('ha_diritto'),
             'type' => SelectFilter::make('type')
-                ->options(WorkerType::class),
+                ->options(WorkerType::class)
+                ->visible(fn () => !in_array(HasParent::class, class_uses_recursive(static::getModel()))),
+    
+                
             
         ];
     }

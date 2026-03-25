@@ -36,6 +36,7 @@ class TrovaEsclusiAction extends Action
 
                 $resource = $livewire->getResource();
                 $modelClass = $resource::getModel();
+                
 
                 if (! is_string($modelClass)) {
                     return;
@@ -51,6 +52,14 @@ class TrovaEsclusiAction extends Action
                     // 2023
                     $fieldname = 'year';
                 }
+
+                 if ($year == null) {
+                    $year = Arr::get($tableFilters, 'anno_valutatore.anno');
+                    // 2023
+                    $fieldname = 'anno';
+                }
+
+                
 
                 $yearInt = is_numeric($year) ? (int) $year : 0;
                 app(TrovaEsclusiByModelClassYearAction::class)->execute($modelClass, $fieldname, $yearInt);

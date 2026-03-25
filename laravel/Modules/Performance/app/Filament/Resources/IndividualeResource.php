@@ -17,13 +17,14 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\FillOutTheF
 use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndividuales;
 use Modules\Performance\Models\CriteriValutazione;
 use Modules\Performance\Models\Individuale;
+use Modules\Ptv\Filament\Resources\SchedaResource;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
 
 use function Safe\date;
 
-class IndividualeResource extends XotBaseResource
+class IndividualeResource extends SchedaResource
 {
     protected static ?string $model = Individuale::class;
 
@@ -92,8 +93,8 @@ class IndividualeResource extends XotBaseResource
         ];
     }
 
-    #[Override]
-    public static function getPages(): array
+  
+    public static function getPagesOLD(): array
     {
         return [
             'index' => ListIndividuales::route('/'),

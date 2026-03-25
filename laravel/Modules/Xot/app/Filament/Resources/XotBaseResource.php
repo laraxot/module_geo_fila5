@@ -80,8 +80,32 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getModel(): string
     {
-        if (static::$model !== null) {
-            $res = static::$model;
+        // Usa reflection per leggere $model dalla classe concreta (late static binding)
+        // Questo risolve il problema quando classi intermedie non definiscono $model
+        $calledClass = static::class;
+        $reflection = new ReflectionClass($calledClass);
+        
+        // Cerca la proprietà $model nella gerarchia di classi
+        $modelClass = null;
+        while ($reflection instanceof ReflectionClass) {
+            if ($reflection->hasProperty('model')) {
+                $prop = $reflection->getProperty('model');
+                $prop->setAccessible(true);
+                $modelClass = $prop->getValue();
+                if ($modelClass !== null) {
+                    break;
+                }
+            }
+            $reflection = $reflection->getParentClass();
+        }
+        
+        dddx([
+            'called_class' => $calledClass,
+            'model' => $modelClass,
+        ]);
+        
+        if ($modelClass !== null) {
+            $res = $modelClass;
             Assert::subclassOf(
                 $res,
                 Model::class,
@@ -91,7 +115,9 @@ abstract class XotBaseResource extends FilamentResource
             return $res;
         }
         $moduleName = static::getModuleName();
+
         $modelName = Str::before(class_basename(static::class), 'Resource');
+
         $res = 'Modules\\'.$moduleName.'\Models\\'.$modelName;
         Assert::classExists($res, \sprintf('Model class %s does not exist', $res));
         Assert::subclassOf(

@@ -97,6 +97,9 @@ return [
         ],
         'value' => [
             'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
         ],
         'fill' => [
             'label' => 'fill',
@@ -209,6 +212,9 @@ return [
         ],
         'id' => [
             'label' => 'id',
+        ],
+        'type' => [
+            'label' => 'type',
         ],
     ],
     'actions' => [
@@ -354,6 +360,16 @@ return [
             'tooltip' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
             'label' => 'resetColumnManager',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
         ],
     ],
     'messages' => [
