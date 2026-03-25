@@ -363,11 +363,6 @@ class CondizioniLavoro extends BaseModel
     }
 
     /**
-     * Guard contro aggiornamenti ricorsivi da accessor.
-     */
-    protected static bool $isUpdatingFromAccessor = false;
-
-    /**
      * Get disci1 attribute.
      *
      * Pattern del Livello 4 (Maestro Supremo):
