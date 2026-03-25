@@ -18,8 +18,11 @@ trait MutatorTrait
      * Guard against recursive updates from accessors.
      * Prevents "attributeRawValues null" crash with spatie/activitylog:
      * accessor → update() → LogsActivity reads attributes → accessor again → crash.
+     *
+     * MUST be protected (not private) for proper trait composition.
+     * Multiple traits share this guard to prevent conflicts.
      */
-    private static bool $isUpdatingFromAccessor = false;
+    protected static bool $isUpdatingFromAccessor = false;
 
     public function getGgAssenzaDalalAttribute(?int $value): ?int
     {
