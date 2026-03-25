@@ -104,3 +104,5 @@
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata
+
+- [Conflict Resolution](conflict-resolution.md)
