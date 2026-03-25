@@ -72,3 +72,7 @@ public_html/
 .env.docker
 .env.latest
 node_modules/
+
+# PHPStan output files
+phpstan*.json
+_docs/

@@ -64,12 +64,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# base_quaeris_fila4_mono
-# Quaeris Fila3 Mono Project
+# base_healthcare_app_fila5_mono
+# healthcare_app Fila3 Mono Project
 
 ## Overview
 
-Quaeris Fila3 Mono is a comprehensive Laravel-based modular application built on the Laraxot framework. This project implements a complete authorization system with policies for all models across all modules.
+healthcare_app Fila3 Mono is a comprehensive Laravel-based modular application built on the Laraxot framework. This project implements a complete authorization system with policies for all models across all modules.
 
 ## Key Features
 
@@ -99,7 +99,7 @@ The project consists of the following modules:
 - **Tenant**: Multi-tenant architecture support
 
 ### Survey and Analytics
-- **Quaeris**: Survey management and analytics
+- **healthcare_app**: Survey management and analytics
 - **Limesurvey**: Integration with LimeSurvey platform
 - **Chart**: Data visualization and charting
 
@@ -236,5 +236,5 @@ This project is proprietary software. All rights reserved.
 For support and questions, please refer to the project documentation or contact the development team.
 
 *Last updated: January 2025*
-# base_quaeris_fila4_mono
-# base_quaeris_fila4_mono
+# base_healthcare_app_fila5_mono
+# base_healthcare_app_fila5_mono

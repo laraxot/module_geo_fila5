@@ -5,6 +5,9 @@
 **Version:** 1.0.0
 **Status:** Production Ready
 
+> Update 2026-03-09: this project follows a docs-first rule.
+> Before code changes on PDF/chart flows, module and theme docs must be reviewed and improved.
+
 ---
 
 ## Table of Contents
@@ -33,7 +36,7 @@ This document describes how the Zero theme integrates LimeSurvey survey charts i
 ```
 Survey Data (LimeSurvey)
     ↓
-Quaeris Module (Chart Widgets)
+<nome progetto> Module (Dashboard + PDF orchestration)
     ↓
 JpGraph (PNG Generation)
     ↓
@@ -53,13 +56,13 @@ PDF Download
 | Module/Theme | Responsibility |
 |--------------|----------------|
 | **Limesurvey** | Database access, models, question types |
-| **Quaeris** | Business logic, chart widgets, PDF generation |
+| **<nome progetto>** | Business logic, chart widgets orchestration, PDF generation |
 | **Chart** | JpGraph actions, Chart.js plugins, asset registration |
 | **Zero Theme** | PDF templates, styling, Blade components |
 
 ### Theme Does NOT
 
-- Generate chart images (that's Quaeris/Chart)
+- Generate chart images (that's <nome progetto>/Chart actions)
 - Register Chart.js plugins (that's Chart module)
 - Query LimeSurvey database (that's Limesurvey module)
 
@@ -612,12 +615,12 @@ Themes/Zero/
 ## Related Documentation
 
 ### Primary Guides
-- [Guida Completa LimeSurvey Chart Widget](../../Modules/Quaeris/docs/limesurvey-chart-widget-complete-guide.md) - ⭐ **PRINCIPALE**
+- [Guida Completa LimeSurvey Chart Widget](../../Modules/healthcare_app/docs/limesurvey-chart-widget-complete-guide.md) - ⭐ **PRINCIPALE**
 - [JpGraph Deep Dive and Alternatives](../../Modules/Chart/docs/jpgraph-deep-dive-and-alternatives.md) - ⭐ **NUOVO** - Analisi approfondita JpGraph 4.4.3, alternative, confronto, e best practices
 
 ### Implementation Guides
-- [Survey Chart Widget Implementation](../../Modules/Quaeris/docs/survey-chart-widget-implementation.md)
-- [PDF Generation Workflow](../../Modules/Quaeris/docs/pdf-generation-workflow.md)
+- [Survey Chart Widget Implementation](../../Modules/healthcare_app/docs/survey-chart-widget-implementation.md)
+- [PDF Generation Workflow](../../Modules/healthcare_app/docs/pdf-generation-workflow.md)
 - [PDF Charts Integration Complete](../../Modules/Chart/docs/pdf-charts-limesurvey-integration-complete.md)
 - [JpGraph Class Reference Complete](../../Modules/Chart/docs/jpgraph-class-reference-complete.md) - ⭐ **NUOVO** - Guida completa Class Reference basata su documentazione ufficiale
 - [JpGraph Complete Guide](../../Modules/Chart/docs/jpgraph-complete-guide.md) - Guida completa JpGraph con esempi pratici

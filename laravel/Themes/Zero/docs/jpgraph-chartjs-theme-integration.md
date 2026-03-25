@@ -2,7 +2,7 @@
 
 ## Panoramica
 
-Il tema Zero funge da "vestito" per l'applicazione Quaeris, fornendo la presentazione visiva senza logica di business. Questo documento descrive come il tema Zero può supportare l'integrazione di JpGraph e Chart.js per la visualizzazione dei dati.
+Il tema Zero funge da "vestito" per l'applicazione healthcare_app, fornendo la presentazione visiva senza logica di business. Questo documento descrive come il tema Zero può supportare l'integrazione di JpGraph e Chart.js per la visualizzazione dei dati.
 
 ## Principi del Tema "Vestito"
 
@@ -223,4 +223,4 @@ document.querySelectorAll('.lazy-chart').forEach(chart => {
 
 ## Conclusione
 
-Il tema Zero supporta pienamente l'integrazione di JpGraph e Chart.js mantenendo la separazione tra presentazione e logica di business. Fornisce componenti flessibili, stili coerenti e considerazioni di accessibilità per entrambi i tipi di grafici, permettendo una presentazione visiva di alta qualità dei dati generati dal sistema Quaeris.
+Il tema Zero supporta pienamente l'integrazione di JpGraph e Chart.js mantenendo la separazione tra presentazione e logica di business. Fornisce componenti flessibili, stili coerenti e considerazioni di accessibilità per entrambi i tipi di grafici, permettendo una presentazione visiva di alta qualità dei dati generati dal sistema healthcare_app.

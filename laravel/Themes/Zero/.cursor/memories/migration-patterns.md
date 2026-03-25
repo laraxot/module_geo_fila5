@@ -1,4 +1,4 @@
-# Pattern di Migrazione in SaluteOra
+# Pattern di Migrazione in healthcare_app
 
 ## Pattern XotBaseMigration
 
@@ -22,16 +22,17 @@ In questo progetto, le migrazioni seguono un pattern evolutivo basato su `XotBas
 ### Approccio Corretto
 
 ✅ **SEMPRE** modificare il file originale di migrazione quando si aggiungono nuove colonne:
-```php
-// File originale: 2018_10_10_000001_create_example_table.php
+1. Modificare la **stessa** migrazione `create_{table}_table.php`
+2. **Aggiornare il timestamp** nel nome del file (es. da `2018_10_10_000001` a `2026_02_22_000000`)
 
-// Aggiungere la colonna sia in tableCreate (per nuove installazioni)
+```php
+// File: 2026_02_22_000000_create_example_table.php
+
 $this->tableCreate(function (Blueprint $table) {
-    // ... campi esistenti
+    // ... campi esistenti + nuovi
     $table->string('new_column')->nullable();
 });
 
-// Che in tableUpdate (per installazioni esistenti)
 $this->tableUpdate(function (Blueprint $table) {
     if(!$this->hasColumn('new_column')) {
         $table->string('new_column')->nullable();
@@ -41,10 +42,19 @@ $this->tableUpdate(function (Blueprint $table) {
 
 ### Approccio Errato
 
-❌ **MAI** creare un nuovo file di migrazione per aggiungere campi a una tabella esistente:
+❌ **MAI** creare un nuovo file di migrazione per aggiungere campi:
 ```php
 // ERRORE: Non creare 2023_01_01_000001_add_column_to_table.php
+// ERRORE: Non creare migrazioni separate per modifiche schema
 ```
+
+## Metodo convertIdFromUuidToBigintIfNeeded
+
+Per tabelle legacy con id UUID, usare `XotBaseMigration::convertIdFromUuidToBigintIfNeeded()` (documentato in `Modules/Xot/docs/database/convert-id-uuid-to-bigint.md`).
+
+## Main-module dependency
+
+Modelli strettamente dipendenti dal main_module (es. Profile): migrazione nel modulo main (TechPlanner), NON in User.
 
 ## Motivazione
 

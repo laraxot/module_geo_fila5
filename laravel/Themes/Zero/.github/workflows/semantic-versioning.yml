@@ -9,9 +9,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
-  attestations: write
-  artifact-metadata: write
 
 jobs:
   tag:
@@ -20,12 +17,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Build theme artifact
-        run: tar -czf theme-artifact.tgz .
-      - name: Attest build provenance
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-path: theme-artifact.tgz
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.2
