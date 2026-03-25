@@ -4,14 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-<<<<<<< Updated upstream
 use Illuminate\Support\Facades\Http;
-=======
-<<<<<<< HEAD
-=======
-use Illuminate\Support\Facades\Http;
->>>>>>> origin/dev
->>>>>>> Stashed changes
 use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
@@ -21,15 +14,7 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\RouteData;
 
 beforeEach(function () {
-<<<<<<< Updated upstream
     $this->action = new OptimizeRouteAction();
-=======
-<<<<<<< HEAD
-    $action = new OptimizeRouteAction();
-=======
-    $this->action = new OptimizeRouteAction();
->>>>>>> origin/dev
->>>>>>> Stashed changes
 });
 
 it('throws exception when api key is not configured', function (): void {
@@ -41,18 +26,8 @@ it('throws exception when api key is not configured', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< Updated upstream
     expect(fn () => $this->action->execute($locations, $origin, $destination))
         ->toThrow(\RuntimeException::class, 'API key not found');
-=======
-<<<<<<< HEAD
-    expect(fn () => $action->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'API key not found');
-=======
-    expect(fn () => $this->action->execute($locations, $origin, $destination))
-        ->toThrow(\RuntimeException::class, 'API key not found');
->>>>>>> origin/dev
->>>>>>> Stashed changes
 });
 
 it('returns empty array for empty locations', function (): void {
@@ -61,15 +36,7 @@ it('returns empty array for empty locations', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< Updated upstream
     $result = $this->action->execute([], $origin, $destination);
-=======
-<<<<<<< HEAD
-    $result = $action->execute([], $origin, $destination);
-=======
-    $result = $this->action->execute([], $origin, $destination);
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
     expect($result)->toBeArray()->toBeEmpty();
 });
@@ -77,15 +44,7 @@ it('returns empty array for empty locations', function (): void {
 it('returns empty array when api returns no routes', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-<<<<<<< Updated upstream
     Http::fake([
-=======
-<<<<<<< HEAD
-    Http::fake([)
-=======
-    Http::fake([
->>>>>>> origin/dev
->>>>>>> Stashed changes
         '*' => Http::response(['routes' => []], 200),
     ]);
 
@@ -95,15 +54,7 @@ it('returns empty array when api returns no routes', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< Updated upstream
     $result = $this->action->execute($locations, $origin, $destination);
-=======
-<<<<<<< HEAD
-    $result = $action->execute($locations, $origin, $destination);
-=======
-    $result = $this->action->execute($locations, $origin, $destination);
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
     expect($result)->toBeArray()->toBeEmpty();
 });
@@ -111,18 +62,8 @@ it('returns empty array when api returns no routes', function (): void {
 it('returns route data for valid request', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-<<<<<<< Updated upstream
     Http::fake([
         '*' => Http::response([
-=======
-<<<<<<< HEAD
-    Http::fake([)
-        '*' => Http::response([)
-=======
-    Http::fake([
-        '*' => Http::response([
->>>>>>> origin/dev
->>>>>>> Stashed changes
             'routes' => [[
                 'legs' => [
                     [
@@ -163,15 +104,7 @@ it('returns route data for valid request', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< Updated upstream
     $result = $this->action->execute($locations, $origin, $destination);
-=======
-<<<<<<< HEAD
-    $result = $action->execute($locations, $origin, $destination);
-=======
-    $result = $this->action->execute($locations, $origin, $destination);
->>>>>>> origin/dev
->>>>>>> Stashed changes
 
     expect($result)
         ->toBeArray()
@@ -184,15 +117,7 @@ it('returns route data for valid request', function (): void {
 it('throws exception when api request fails', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-<<<<<<< Updated upstream
     Http::fake([
-=======
-<<<<<<< HEAD
-    Http::fake([)
-=======
-    Http::fake([
->>>>>>> origin/dev
->>>>>>> Stashed changes
         '*' => Http::response(null, 500),
     ]);
 
@@ -202,16 +127,6 @@ it('throws exception when api request fails', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< Updated upstream
     expect(fn () => $this->action->execute($locations, $origin, $destination))
         ->toThrow(\RuntimeException::class, 'Failed to get directions');
-=======
-<<<<<<< HEAD
-    expect(fn () => $action->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'Failed to get directions');
-=======
-    expect(fn () => $this->action->execute($locations, $origin, $destination))
-        ->toThrow(\RuntimeException::class, 'Failed to get directions');
->>>>>>> origin/dev
->>>>>>> Stashed changes
 });
