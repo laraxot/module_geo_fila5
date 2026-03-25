@@ -380,3 +380,5 @@ docs/archive/
 .gemini/
 .cursor/
 .opencode/
+laravel/Themes/Zero/.devcontainer/
+laravel/Themes/Zero/.cursor/
