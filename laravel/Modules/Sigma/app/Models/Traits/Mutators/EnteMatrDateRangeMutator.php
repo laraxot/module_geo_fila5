@@ -84,8 +84,20 @@ trait EnteMatrDateRangeMutator
         return $ore / $giorni;
     }
 
-    protected function getPercParttimeDalalAttribute(): ?float
+    /**
+     * Get perc_parttime_dalal attribute.
+     * 
+     * Pattern corretto: accetta SEMPRE il valore grezzo dal database come parametro.
+     * Se il valore esiste già (è float), lo restituisco immediatamente.
+     * Altrimenti, calcolo il valore personalizzato.
+     */
+    protected function getPercParttimeDalalAttribute(?float $value): ?float
     {
+        // ✅ CORRETTO: Controllo se il valore esiste già dal database
+        if (is_float($value)) {
+            return $value;
+        }
+        
         $date_min = $this->dal;
         $date_max = $this->al;
         if ($date_min === null || $date_min === 0 || $date_min === '') {
@@ -108,7 +120,6 @@ trait EnteMatrDateRangeMutator
             ->withDays($date_min_int_typed, $date_max_int_typed)
             ->withPercPtime()
             ->having('days', '>', 0)
-            // ->sum(\DB::raw('order_product.price * order_product.quantity'));
             ->get();
         $perc = 0.0;
         $peso = 0.0;
