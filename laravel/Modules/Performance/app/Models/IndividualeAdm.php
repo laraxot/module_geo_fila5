@@ -369,9 +369,9 @@ use Modules\Xot\Traits\Updater;
  * @property string|null $scheda_type
  * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
  * @property-read int|null $activities_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
  * @property-read int|null $avversari_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversariCategoriaEco
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count
  * @property-read Collection<int, \Modules\Performance\Models\CriteriValutazione> $criteriValutazioneOld
  * @property-read int|null $criteri_valutazione_old_count

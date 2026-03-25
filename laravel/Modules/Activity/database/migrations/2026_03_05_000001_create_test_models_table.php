@@ -6,17 +6,12 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Activity\Models\TestModel;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-return new class extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     protected ?string $model_class = TestModel::class;
 
     public function up(): void
     {
-<<<<<<< HEAD
         $this->tableCreate(function (Blueprint $table): void {
-=======
-        $this->tableCreate(function (Blueprint $table) {
->>>>>>> 74e589dbb (.)
             $table->id();
             $table->string('name')->nullable();
             $table->timestamps();

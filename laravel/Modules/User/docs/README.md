@@ -2,7 +2,12 @@
 
 ## Overview
 
-Il modulo **User** gestisce l'autenticazione, l'autorizzazione e la gestione utenti completa nel sistema Laraxot PTVX.
+Il modulo **User** gestisce l'autenticazione, l'autorizzazione e la gestione utenti completa nel sistema Laraxot Quaeris.
+
+## Stato qualità (sintesi)
+
+- **PHPStan**: Level 10 (raggiunto; dettagli nel vecchio `readme.md`)
+- **Focus**: sicurezza (authn/authz), multi-tenancy, integrazione Filament
 
 ## Funzionalità Principali
 
@@ -48,6 +53,18 @@ Modules\User\Models\Tenant
 - [Xot Base](../Xot/docs/)
 - [Tenant Module](../Tenant/docs/)
 - [UI Components](../UI/docs/)
+
+## Architectural Rules — Violations Fixed
+
+### No Log calls in production code
+`Log::info()`, `Log::debug()`, `Log::error()` are forbidden in Actions, Models, Services, and Widgets.
+Found and removed from `RegisterWidget`. Laravel logs unhandled exceptions automatically.
+See: [no-log-in-production.md](./no-log-in-production.md)
+
+### Git merge conflicts in migrations
+46 migration files in `database/migrations/` had unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`).
+These break PHP syntax and halt PHPStan entirely. All were resolved.
+Rule: never commit files with conflict markers. Fix immediately when found.
 
 ## Requisiti
 

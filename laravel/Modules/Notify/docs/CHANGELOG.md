@@ -2,7 +2,7 @@
 
 Tutte le modifiche significative al modulo Notify saranno documentate in questo file.
 
-## [[DATE]] - Fix PSR-4 Autoloading
+## [2025-06-04] - Fix PSR-4 Autoloading
 
 ### Fixed
 - **SendScheduledPushNotification.php**: Corretto import con namespace errato

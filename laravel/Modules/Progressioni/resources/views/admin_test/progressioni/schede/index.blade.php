@@ -6,7 +6,7 @@ pdf)
 
 @extends('adm_theme::'.'.layouts.'.$lay)
 
-@section('page_heading','Lista Schede')
+@section('page_heading','Lista Scheda')
 @section('section')
 !!!!!!!!!!!!!!!!
 @if(!$pdf)

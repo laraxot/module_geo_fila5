@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Modules\Progressioni\Models\CriteriEsclusione;
 use Modules\Progressioni\Models\CriteriOption;
-use Modules\Progressioni\Models\Progressioni as Schede;
+use Modules\Progressioni\Models\Scheda as Progressioni;
 
 // -------- services --------
 // use Modules\Xot\Services\ArrayService;
@@ -39,7 +39,7 @@ class TrovaEsclusiAction
             ->pluck('value', 'name')
             ->all();
 
-        $schede = Schede::where('anno', $year)->get();
+        $schede = Progressioni::where('anno', $year)->get();
         foreach ($schede as $scheda) {
             /** @var array<int|string, mixed> $criteri_esclusione */
             /** @var array<int|string, mixed> $criteri_option */
@@ -73,9 +73,9 @@ class TrovaEsclusiAction
                 ->all();
         }
 
-        /** @var \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni $scheda */
+        /** @var \Modules\Progressioni\Models\Scheda|\Modules\Progressioni\Models\Progressioni $scheda */
         $scheda = $params['scheda'];
-        /** @var array{scheda: \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<string, mixed>, criteri_option: array<string, mixed>} $typedParams */
+        /** @var array{scheda: \Modules\Progressioni\Models\Scheda|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<string, mixed>, criteri_option: array<string, mixed>} $typedParams */
         $typedParams = $params;
         $result = $this->criteriScheda($typedParams, $year);
         $scheda->motivo = $result['motivo'];
@@ -86,12 +86,12 @@ class TrovaEsclusiAction
     }
 
     /**
-     * @param  array{scheda: \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>}  $params
+     * @param  array{scheda: \Modules\Progressioni\Models\Scheda|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>}  $params
      * @return array{ha_diritto: int, motivo: string}
      */
     public function criteriScheda(array $params, int $year): array
     {
-        /** @var \Modules\Progressioni\Models\Schede|\Modules\Progressioni\Models\Progressioni $scheda */
+        /** @var \Modules\Progressioni\Models\Scheda|\Modules\Progressioni\Models\Progressioni $scheda */
         $scheda = $params['scheda'];
         /** @var array<int|string, mixed> $criteri_esclusione */
         $criteri_esclusione = $params['criteri_esclusione'];
@@ -134,7 +134,7 @@ class TrovaEsclusiAction
             ->all();
     }
 
-    public function check(string $criterio_name, mixed $criterio_value, \Modules\Progressioni\Models\Schede $scheda, int $year): string
+    public function check(string $criterio_name, mixed $criterio_value, \Modules\Progressioni\Models\Scheda $scheda, int $year): string
     {
         $func = 'check'.Str::studly($criterio_name);
         $parz = $this->criteriOptions($year);
@@ -149,7 +149,7 @@ class TrovaEsclusiAction
         return (string) $this->$func($parz, $scheda);
     }
 
-    public function checkMinGgRuolo(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinGgRuolo(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_ruolo)) {
@@ -163,7 +163,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinPerfIndCountLast3Years(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinPerfIndCountLast3Years(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_perf_ind_count_last_3_years)) {
@@ -177,7 +177,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgPosiz1InSede(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinGgPosiz1InSede(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_posiz_1_in_sede)) {
@@ -191,7 +191,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunNoAsz(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinGgCatecoPosfunNoAsz(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_cateco_posfun_no_asz)) {
@@ -205,7 +205,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunInSedeNoAsz(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinGgCatecoPosfunInSedeNoAsz(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         /*
@@ -226,14 +226,14 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunLavoratiInSede(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkMinGgCatecoPosfunLavoratiInSede(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkPresentiIlGiorno(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkPresentiIlGiorno(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
@@ -242,7 +242,7 @@ class TrovaEsclusiAction
 
     // ---
 
-    public function checkListaPropro(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkListaPropro(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_propro)) {
@@ -257,7 +257,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaPosiz(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkListaPosiz(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_posiz)) {
@@ -272,7 +272,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaProproPosfun(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkListaProproPosfun(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_propro_posfun)) {
@@ -287,7 +287,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkDisci(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkDisci(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($disci)) {
@@ -301,7 +301,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaAszTipCodEsclusoSubito(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkListaAszTipCodEsclusoSubito(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
 
@@ -348,21 +348,21 @@ class TrovaEsclusiAction
 
     // ---
 
-    public function checkMinGgPropro(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkMinGgPropro(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkMinGgProproPosfun(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkMinGgProproPosfun(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkMinGgAnno(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMinGgAnno(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_anno)) {
@@ -379,7 +379,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgTempoDeterminato(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkMinGgTempoDeterminato(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
@@ -387,14 +387,14 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgEffettuati(array $parz, \Modules\Progressioni\Models\Schede $_scheda): string
+    public function checkMinGgEffettuati(array $parz, \Modules\Progressioni\Models\Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkNoposizList(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkNoposizList(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($noposiz_list)) {
@@ -409,7 +409,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNoproproList(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkNoproproList(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($nopropro_list)) {
@@ -424,7 +424,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNoposfunList(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkNoposfunList(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($noposfun_list)) {
@@ -439,7 +439,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNodisci1List(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkNodisci1List(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($nodisci1_list)) {
@@ -454,7 +454,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMaxGgAssenzeAnno(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkMaxGgAssenzeAnno(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
         if (! isset($max_gg_assenze_anno)) {
@@ -468,7 +468,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkDateMinAssunz(array $parz, \Modules\Progressioni\Models\Schede $scheda): string
+    public function checkDateMinAssunz(array $parz, \Modules\Progressioni\Models\Scheda $scheda): string
     {
         extract($parz);
 

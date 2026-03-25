@@ -32,8 +32,114 @@ See more in: [quick-commands.md](.agents/docs/agents-guide/02-tooling/quick-comm
 - **`property_exists()` forbidden** — use `isset()`.
 - **No constructor DI in Actions** — use `app(ActionClass::class)->execute()`.
 - **No direct Filament extensions** — use `XotBase*` wrappers.
+- **Workspace files**: Only `_{module-name}.code-workspace` in each module folder.
+- **No dates in .md filenames** — use stable semantic names, keep dates inside document body.
 
 See full rules: [critical-rules-summary.md](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
+
+## Workspace Convention
+
+- **One module, one workspace**: Each module has ONLY its own `_{module-name}.code-workspace`
+- **Naming**: File name must match module name (lowercase)
+- **Location**: Root of module folder
+- **Examples**:
+  - ✅ `laravel/Modules/Xot/_xot.code-workspace`
+  - ✅ `laravel/Modules/Activity/_activity.code-workspace`
+  - ❌ `laravel/Modules/Xot/_activity.code-workspace` (wrong module)
+
+See full convention: [docs/conventions/workspace-naming.md](docs/conventions/workspace-naming.md)
+
+## Module Folder Structure
+
+- **All PHP classes under `app/`**: Models, Enums, Actions, Controllers, etc.
+- **Exceptions**: Only Xot module can have special folders in root (`helpers/`, `Datas/`, `Services/`, `Filament/`, `packages/`, `stubs/`)
+- **Never in root**: `Enums/`, `Models/`, `Actions/`, `Controllers/` (use `app/Enums/`, `app/Models/`, etc.)
+- **Examples**:
+  - ✅ `laravel/Modules/Gdpr/app/Enums/ConsentType.php`
+  - ❌ `laravel/Modules/Gdpr/Enums/ConsentType.php` (wrong, duplicate)
+  - ✅ `laravel/Modules/Xot/helpers/` (Xot-specific exception)
+
+See full convention: [docs/conventions/module-folder-structure.md](docs/conventions/module-folder-structure.md)
+
+## Copy Files Rule
+
+- **Never commit copy files**: Files named `* copy`, `*.copy`, `*~` are temporary duplicates
+- **Auto-ignored**: Added to `.gitignore` in root and all modules
+- **Delete immediately**: Remove after use or if not needed
+- **Examples**:
+  - ❌ `.gitattributes copy` (delete or rename)
+  - ❌ `file.php copy` (delete or rename properly)
+  - ✅ Use git branching instead of file copies
+
+See full convention: [docs/conventions/copy-files-cleanup.md](docs/conventions/copy-files-cleanup.md)
+
+## Bash Scripts Organization
+
+- **All .sh scripts in `bashscripts/`**: Never in module root or other directories
+- **Documentation in `bashscripts/docs/`**: Every script must have corresponding docs
+- **Naming**: lowercase with hyphens (e.g., `ollama-optimize.sh`)
+- **Executable**: Always `chmod +x` after creation
+- **Examples**:
+  - ✅ `bashscripts/ollama-optimize.sh` + `bashscripts/docs/ollama-optimize.md`
+  - ❌ `ModuleRoot/script.sh` (wrong location)
+  - ❌ `bashscripts/script.sh` without docs (incomplete)
+
+See full convention: [bashscripts/docs/](bashscripts/docs/)
+
+## AI Agent Coordination
+
+- **Read before acting**: Always check [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
+- **Update after action**: Mark tasks as complete, add notes
+- **Avoid conflicts**: Check for concurrent agents, use lock files
+- **Document everything**: GitHub Issues, commits, coordination doc
+- **Coordinate with other agents**: Use GitHub Discussions for decisions
+
+See coordination hub: [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
+
+## MCP Configuration
+
+This project uses Model Context Protocol (MCP) for enhanced AI capabilities. The configuration is in `.cursor/mcp.json`.
+
+### Available MCP Servers
+
+| Server | Purpose |
+|--------|---------|
+| **filesystem** | File system operations |
+| **sequential-thinking** | Complex problem solving |
+| **mysql** | Database operations via Laravel .env |
+| **playwright** | Browser automation and testing |
+| **git** | Git operations and repository management |
+
+### Using MCP Tools
+
+MCP tools are automatically available in Cursor when configured. See [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md) for details.
+
+## .qwen Directory Structure
+
+- **Central config in root `.qwen/`**: All AI configuration resides here
+- **Subdirectories use symlinks**: `laravel/.qwen/` and `bashscripts/ai/.qwen/` link to root
+- **Always use absolute paths**: Prevents symlink loops
+- **Single source of truth**: Never duplicate config files
+- **Examples**:
+  - ✅ `.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (central)
+  - ✅ `laravel/.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (symlink)
+  - ❌ Relative symlinks (can create loops)
+
+See full convention: [docs/conventions/qwen-directory-structure.md](docs/conventions/qwen-directory-structure.md)
+
+## Commit and Push Rule
+
+- **Commit when work is complete**: Don't wait, commit and push regularly
+- **When confident it works**: Test → Commit → Push
+- **Small, frequent commits**: Better than large, infrequent commits
+- **Descriptive messages**: Use `[TYPE] description` format
+- **Coordinate via docs**: Reference coordination doc in commits
+- **Examples**:
+  - ✅ `[docs] Add QWEN.md - Coordinated via: docs/ai-agent-coordination.md`
+  - ✅ `[feat] Add ollama script - Related issue: #108`
+  - ❌ `fix stuff` (too vague)
+
+See full rule: [.qwen/skills/commit-and-push-rule.md](.qwen/skills/commit-and-push-rule.md)
 
 ## Navigation Index
 

@@ -12,7 +12,7 @@ Documentazione delle correzioni apportate durante l'esecuzione di `composer upda
 
 ### 1. Errore di Sintassi in Helper.php
 
-**File**: `Modules/Xot/Helpers/Helper.php:727`
+**File**: `Modules/Xot/helpers/Helper.php:727`
 
 **Problema**:
 ```php
@@ -29,7 +29,7 @@ $related = $return->getRelated();
 $related_model = (new ReflectionClass($related))->getName();
 ```
 
-**File Modificato**: `Modules/Xot/Helpers/Helper.php:727-728`
+**File Modificato**: `Modules/Xot/helpers/Helper.php:727-728`
 
 ---
 

@@ -292,6 +292,9 @@ return [
             'icon' => 'attachAnother',
             'label' => 'attachAnother',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'validation' => [

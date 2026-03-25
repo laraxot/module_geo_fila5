@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Individuale;
 
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -27,16 +27,16 @@ class UpdateQuotaEffettivaAction
     use QueueableAction;
 
     /**
-     * Il modello Schede per le query.
+     * Il modello Scheda per le query.
      */
-    protected Schede $model;
+    protected Scheda $model;
 
     /**
      * Costruttore.
      *
-     * @param  Schede  $schedeModel  Il modello Schede
+     * @param  Scheda  $schedeModel  Il modello Scheda
      */
-    public function __construct(Schede $schedeModel)
+    public function __construct(Scheda $schedeModel)
     {
         $this->model = $schedeModel;
     }

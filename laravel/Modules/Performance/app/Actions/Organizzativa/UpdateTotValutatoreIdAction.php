@@ -6,7 +6,7 @@ namespace Modules\Performance\Actions\Organizzativa;
 
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Log;
-use Modules\Performance\Models\Organizzativa as Schede;
+use Modules\Performance\Models\Organizzativa as Scheda;
 use Modules\Performance\Models\OrganizzativaTotValutatoreId as TotValutatoreId;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -29,16 +29,16 @@ class UpdateTotValutatoreIdAction
     protected array $fields = ['budget_assegnato', 'quota_effettiva', 'resti'];
 
     /**
-     * Il modello Schede per le query.
+     * Il modello Scheda per le query.
      */
-    protected Schede $model;
+    protected Scheda $model;
 
     /**
      * Costruttore.
      *
-     * @param  Schede  $schedeModel  Il modello Schede
+     * @param  Scheda  $schedeModel  Il modello Scheda
      */
-    public function __construct(Schede $schedeModel)
+    public function __construct(Scheda $schedeModel)
     {
         $this->model = $schedeModel;
     }

@@ -13,7 +13,7 @@ return new class extends XotBaseMigration {
     {
         // -- CREATE --
 
-        $this->tableCreate(static function (Blueprint $table))
+        $this->tableCreate(static function (Blueprint $table): void {
             $table->id();
             $table->uuid('uuid');
             $table->string('team_id', 36)->nullable()->index();
@@ -26,14 +26,14 @@ return new class extends XotBaseMigration {
         });
 
         // -- UPDATE --
-        $this->tableUpdate(function (Blueprint $table))
-            if (! $this->hasColumn('accepted_at'))
+        $this->tableUpdate(function (Blueprint $table): void {
+            if (! $this->hasColumn('accepted_at')) {
                 $table->timestamp('accepted_at')->nullable();
             }
-            if (! $this->hasColumn('declined_at'))
+            if (! $this->hasColumn('declined_at')) {
                 $table->timestamp('declined_at')->nullable();
             }
-            if (! $this->hasColumn('user_id'))
+            if (! $this->hasColumn('user_id')) {
                 $table->string('user_id')->nullable()->index();
             }
 

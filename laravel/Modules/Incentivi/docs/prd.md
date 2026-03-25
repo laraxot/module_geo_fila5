@@ -61,3 +61,16 @@ Manual calculation of employee incentives is prone to errors, time-consuming, an
 - **PHPStan:** Level 10 compliance for all module classes.
 - **Testing:** 100% pass rate for Pest unit and integration tests.
 - **Documentation:** Complete `docs/` folder with updated PRD, Architecture, and Model/Action details.
+# PRD: Incentivi Module
+
+## 📋 Overview
+- **Author:** Gemini CLI
+- **Status:** Draft
+- **Target Release:** 1.0.0
+
+## ❓ Problem Statement
+Specialized logic for Incentivi needs a dedicated, type-safe Module to ensure maintainability.
+
+## 🎯 Goals & Success Metrics
+- **Goal 1:** 100% PHPStan L10 compliance.
+- **Goal 2:** Seamless integration with XotBase.

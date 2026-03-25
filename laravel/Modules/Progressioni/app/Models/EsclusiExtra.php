@@ -74,7 +74,7 @@ class EsclusiExtra extends BaseModel
         $rows = self::where('anno', $params['anno']);
         foreach ($rows->get() as $row) {
             // echo '<br/>'.$row->ente.' '.$row->matr.' '.$row->anno;
-            $schede = Schede::where('ente', $row->ente)->where('matr', $row->matr)->where('anno', $row->anno);
+            $schede = Scheda::where('ente', $row->ente)->where('matr', $row->matr)->where('anno', $row->anno);
             foreach ($schede->get() as $scheda) {
                 $scheda->ha_diritto = 0;
                 $motivi = array_map('trim', explode(',', (string) $scheda->motivo));

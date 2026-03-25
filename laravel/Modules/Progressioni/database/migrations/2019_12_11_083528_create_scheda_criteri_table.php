@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateSchedaCriteriTable.
  */
-class CreateSchedaCriteriTable extends XotBaseMigration
+return new class extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -39,4 +39,4 @@ class CreateSchedaCriteriTable extends XotBaseMigration
             }
         );
     }
-}
+};

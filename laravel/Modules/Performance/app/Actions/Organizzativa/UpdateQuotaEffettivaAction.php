@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Organizzativa;
 
-use Modules\Performance\Models\Organizzativa as Schede;
+use Modules\Performance\Models\Organizzativa as Scheda;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -19,7 +19,7 @@ class UpdateQuotaEffettivaAction
      */
     public function execute(string $year, string $type): void
     {
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 

@@ -14,7 +14,7 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
 /**
  * Class StoredEvent.
- * 
+ *
  * Represents a stored event in the activity module.
  *
  * @property int $id
@@ -61,6 +61,7 @@ class StoredEvent extends SpatieStoredEvent
 {
     use HasXotFactory;
 
+    /** @laravel/Modules/UI/docs/bugfix-awstest-undefined-variable.md string */
     protected $connection = 'activity';
 
     protected $table = 'stored_events';

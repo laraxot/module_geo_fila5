@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Individuale;
 
 use Modules\Performance\Models\Individuale;
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Modules\Performance\Models\IndividualeCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;
@@ -31,11 +31,11 @@ class UpdateQuotaTeoricaAction
     public function execute(string $year, string $type): void
     {
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app(Schede::class);
+        $model = app(Scheda::class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 
-        $rows = Schede::where('anno', $year)
+        $rows = Scheda::where('anno', $year)
             ->where('type', $type)
             ->get();
 
@@ -160,7 +160,7 @@ class UpdateQuotaTeoricaAction
         $conn->statement($sql);
 
         // Verifica finale con output delle somme
-        $sumQuotaTeorica = (float) Schede::where('anno', $year)
+        $sumQuotaTeorica = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('quota_teorica');

@@ -27,8 +27,10 @@ parameters:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
         - identifier: larastan.noEnvCallsOutsideOfConfig
-        - identifier: trait.unused 
+        - identifier: trait.unused
         - identifier: method.unused
+        # OauthClient::user() return type - Laraxot compatibility (XotData::getUserClass() vs Passport)
+        - { message: '#Return type .*OauthClient::user\(\).*should be compatible with.*Laravel\\Passport\\Client::user\(\)#', identifier: method.childReturnType }
 
     excludePaths:
         - ./*/vendor/*
@@ -85,7 +87,7 @@ parameters:
         #- ./vendor/amenadiel/jpgraph/src/config.inc.php
 
     scanFiles:
-        - ./Modules/Xot/Helpers/Helper.php
+        - ./Modules/Xot/helpers/Helper.php
 
     mixinExcludeClasses:
         - ./Modules/Badge/Models

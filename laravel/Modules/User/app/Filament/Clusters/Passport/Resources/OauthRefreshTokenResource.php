@@ -8,7 +8,6 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,7 +27,7 @@ class OauthRefreshTokenResource extends XotBaseResource
     /**
      * Get the form schema for the resource.
      *
-     * @return array<string, Component>
+     * @return array<string, \Filament\Schemas\Components\Component>
      */
     #[\Override]
     public static function getFormSchema(): array
@@ -73,7 +72,15 @@ class OauthRefreshTokenResource extends XotBaseResource
                     ->sortable(),
             ])
             ->filters([
-                // Add filters for revoked status, expiration
+                \Filament\Tables\Filters\Filter::make('revoked')
+                    ->label(static::trans('filters.revoked'))
+                    ->query(fn (Builder $query) => $query->where('revoked', true)),
+                \Filament\Tables\Filters\Filter::make('expired')
+                    ->label(static::trans('filters.expired'))
+                    ->query(fn (Builder $query) => $query->where('expires_at', '<', now())),
+                \Filament\Tables\Filters\Filter::make('valid')
+                    ->label(static::trans('filters.valid'))
+                    ->query(fn (Builder $query) => $query->where('revoked', false)->where('expires_at', '>', now())),
             ])
             ->recordActions([
                 \Filament\Actions\Action::make('revoke')
@@ -88,7 +95,7 @@ class OauthRefreshTokenResource extends XotBaseResource
                                 ->send();
                         }
                     })
-                    ->visible(fn (mixed $record) => $record instanceof OauthRefreshToken && ! $record->revoked),
+                    ->visible(fn (mixed $record) => $record instanceof OauthRefreshToken && ! (bool) $record->getAttribute('revoked')),
                 \Filament\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

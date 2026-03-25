@@ -4,6 +4,11 @@
 
 Il tema **Zero** è il tema principale di default per l'applicazione Laraxot PTVX.
 
+## Scopo (business)
+
+- **Frontoffice**: layout e pagine base, con convenzioni condivise.
+- **Coerenza**: integrazione con `UI` per componenti, e con `Xot` per regole architetturali.
+
 ## Struttura
 
 ```

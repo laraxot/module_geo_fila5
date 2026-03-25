@@ -19,7 +19,7 @@ $factories = [
     'PesiFactory.php',
     'ProgressioniFactory.php',
     'SchedaCriteriFactory.php',
-    'SchedeFactory.php',
+    'SchedaFactory.php',
     'StabiDirigenteFactory.php',
     'StipendioTabellareFactory.php',
     'ValutatoreFactory.php',

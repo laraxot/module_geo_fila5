@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Actions\Individuale;
 
-use Modules\Performance\Models\Individuale as Schede;
+use Modules\Performance\Models\Individuale as Scheda;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -29,7 +29,7 @@ class CheckSumAction
 
         // [MODIFICA] Questa azione verifica che la somma degli importo_totale sia uguale alla quota individuale del fondo.
         // Se il delta è significativo, c'è un errore in uno degli step della pipeline (manca la ponderazione per punteggio o altro bug).
-        $sumImportoTotale = (float) Schede::where('anno', $year)
+        $sumImportoTotale = (float) Scheda::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)
             ->sum('importo_totale');

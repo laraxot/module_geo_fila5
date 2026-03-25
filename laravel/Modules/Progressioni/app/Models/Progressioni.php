@@ -168,9 +168,9 @@ use Spatie\Activitylog\LogOptions;
  * @property int|null $asz00k1_count
  * @property Collection<int, Asz00k1> $asz00k1Year
  * @property int|null $asz00k1_year_count
- * @property Collection<int, Schede> $avversari
+ * @property Collection<int, Scheda> $avversari
  * @property int|null $avversari_count
- * @property Collection<int, Schede> $avversariCategoriaEco
+ * @property Collection<int, Scheda> $avversariCategoriaEco
  * @property int|null $avversari_categoria_eco_count
  * @property CategoriaPropro|null $categoriaPropro
  * @property Collection<int, Coeff> $coeff
@@ -231,7 +231,7 @@ use Spatie\Activitylog\LogOptions;
  * @property string|null $valutatore_txt
  * @property Collection<int, MyLog> $mailInviate
  * @property int|null $mail_inviate_count
- * @property Collection<int, Schede> $mails
+ * @property Collection<int, Scheda> $mails
  * @property int|null $mails_count
  * @property MaxCatecoPosfunAnno|null $maxCatecoPosfun
  * @property Collection<int, Message> $messages
@@ -253,7 +253,7 @@ use Spatie\Activitylog\LogOptions;
  * @property int|null $rep00f_count
  * @property Collection<int, Repart> $reparts
  * @property int|null $reparts_count
- * @property Collection<int, Schede> $righeDoppie
+ * @property Collection<int, Scheda> $righeDoppie
  * @property int|null $righe_doppie_count
  * @property Collection<int, SchedaCriteri> $schedaCriteri
  * @property int|null $scheda_criteri_count

@@ -59,15 +59,15 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 ### 2. Progressioni (`Modules\Progressioni`)
 
-**Utilizzo Principale**: `Schede` estende `SchedaTrait` con conflict resolution
+**Utilizzo Principale**: `Scheda` estende `SchedaTrait` con conflict resolution
 
 **File Chiave**:
-- `app/Models/Schede.php`
+- `app/Models/Scheda.php`
 - `app/Models/Progressioni.php`
 
 **Pattern di Utilizzo**:
 ```php
-class Schede extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseModel implements ProgressioneSchedaContract
 {
     use ConvertedTrait;
     use ProgressioniTrait;
@@ -266,7 +266,7 @@ public function anag(): HasOne
 ### Calcolo Performance Media
 
 ```
-Progressioni/Schede
+Progressioni/Scheda
     ↓
 SchedaTrait::getPerfIndMediaAttribute()
     ↓
@@ -329,7 +329,7 @@ Risultato persistito
 
 ### Progressioni: Conflict Trait
 
-Quando `Progressioni\Schede` usa sia `SchedaTrait` che `SigmaModelTrait`, utilizza conflict resolution:
+Quando `Progressioni\Scheda` usa sia `SchedaTrait` che `SigmaModelTrait`, utilizza conflict resolution:
 
 ```php
 use SchedaTrait, SigmaModelTrait {
@@ -347,7 +347,7 @@ use SchedaTrait, SigmaModelTrait {
 
 ```php
 test('Progressioni utilizza correttamente SchedaTrait', function () {
-    $scheda = Progressioni\Schede::factory()->create([
+    $scheda = Progressioni\Scheda::factory()->create([
         'ente' => 90,
         'matr' => 12345,
         'anno' => 2025,

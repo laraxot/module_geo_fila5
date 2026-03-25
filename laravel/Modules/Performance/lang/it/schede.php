@@ -6,7 +6,7 @@ return [
     'navigation' => [
         'group' => [
             'schede' => [
-                'name' => 'Schede',
+                'name' => 'Scheda',
                 'description' => 'Gestione delle schede di valutazione',
                 'icon' => 'document-text',
                 'sort' => 30,

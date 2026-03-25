@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
+use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Progressioni\Models\MaxCatecoPosfunAnno.
@@ -25,7 +27,7 @@ use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
- * @property-read Collection<int, Schede> $schede
+ * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
  * @method static MaxCatecoPosfunAnnoFactory factory($count = null, $state = [])
  * @method static Builder|MaxCatecoPosfunAnno newModelQuery()
@@ -61,8 +63,16 @@ class MaxCatecoPosfunAnno extends BaseModel
     // ------- relationship -------
     public function schede(): HasMany
     {
-        // Schede::updateVincitori(['anno'=>$this->anno]);
-        return $this->hasMany(Schede::class, 'categoria_ecoval', 'cateco')
+        $schedaClass = Str::of(static::class)
+            ->beforeLast('\\')
+            ->append('\\Scheda')
+            ->toString();
+
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::classExists($modelClass);
+
+        // Scheda::updateVincitori(['anno'=>$this->anno]);
+        return $this->hasMany($modelClass, 'categoria_ecoval', 'cateco')
             ->where('posfunval', $this->posfun)
             ->where('anno', $this->anno);
     }

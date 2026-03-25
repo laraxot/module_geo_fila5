@@ -241,7 +241,6 @@ La tabella `activity_log` contiene:
         'valutatore_nome' => $record->valutatore?->nome_diri, // Nome valutatore
     ],
     'pdf_size' => strlen($pdfContent),         // Dimensione PDF in bytes
-    'sent_at' => now()->toIso8601String(),    // Timestamp ISO
 ]
 ```
 

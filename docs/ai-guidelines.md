@@ -242,6 +242,20 @@ Vedi [Analisi Miglioramento Prompt](analisi_miglioramento_prompt.md) per i detta
 
 Vedi [Database Patterns](patterns/database.md) per lo standard completo.
 
+### 🚨 **RULE #11: Modular Database Connections**
+
+**È ASSOLUTAMENTE VIETATO inserire connessioni database specifiche di un modulo nel file `laravel/config/database.php`.**
+
+*   **DYANAMIC REGISTRATION**: Le connessioni dei moduli sono registrate dinamicamente da `Modules\Tenant\Providers\TenantServiceProvider`.
+*   **AGNOSTICISM**: Il core (`config/database.php`) deve rimanere agnostico e contenere solo le connessioni standard (`mysql`, `sqlite`, etc.).
+*   **NAMING**: La connessione deve avere lo stesso nome del modulo (snake_case).
+*   **CONFIGURAZIONE**: Se un modulo necessita di un database separato, la configurazione deve risiedere nei file di configurazione del tenant (es. `laravel/config/local/<tenant>/database.php`) o essere pilotata da variabili d'ambiente (`DB_DATABASE_{MODULE_NAME}`).
+*   **FALLBACK**: Se non configurata esplicitamente, la connessione del modulo clona automaticamente la connessione `mysql` di default.
+
+Vedi [Database Architecture](Modules/Xot/docs/database-architecture.md) per lo standard completo.
+
+---
+
 ## ⚠️ Critical Quick Rules
 
 ### NEVER Extend Filament Directly

@@ -10,6 +10,13 @@
 - CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
 - When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
 - LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
+- **Rule**: PHPSTAN LEVEL 10 DYNAMIC RELATIONSHIPS - When defining dynamic Eloquent relationships (like `scheda()` in `Ptv` module), always resolve the model class string with a fallback to the base model (e.g., `Modules\Progressioni\Models\Scheda`) and use `Webmozart\Assert\Assert::classExists($modelClass)` for type narrowing.
+- **Rule**: ISSUE & DISCUSSION COORDINATION - Track all PHPStan Level 10 fixes via module-specific GitHub Issues (IDs #85-100) and link them to the central coordination Discussion #84. Every commit must reference the relevant issue.
+- **Rule**: Every module and theme MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `laravel/Modules/Xot/_xot.code-workspace`). Any misplaced files (like `_activity.code-workspace` in `Xot`) must be deleted immediately.
+- **Rule**: BASH SCRIPTS ORGANIZATION - All `.sh` scripts MUST be placed in a subfolder of `bashscripts/` (e.g., `bashscripts/ai/`), NEVER in the root. Every script must be documented in `bashscripts/docs/`.
+- **Rule**: JUNCTION/SYMLINK RULE - Centralize AI agent configuration folders (like `.qwen`) in `bashscripts/ai/` and create symbolic links (junctions) to the project root and `laravel/` folder to ensure multi-agent synchronization.
+- **Rule**: COMMIT & PUSH - When functionality is verified, always perform `git commit` and `git push` to synchronize changes globally.
+- **Rule**: ENVIRONMENT-AWARE SCRIPTS - All synchronization and deployment scripts (especially `sync_remote_repo.sh`) MUST detect the environment (`CLI` vs. `GitHub Actions`) and adapt their behavior (e.g., skip interactive prompts, use tokens instead of SSH, skip local backups in CI). Coordination is managed via Issue #109.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
 # Gemini Context
@@ -28,11 +35,12 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Follow module-per-module workflow: complete one module before moving to the next.
 - Use MCP tools when encountering file access limitations.
 - **Rule**: Every change MUST be verified with PHPStan lvl10, PHPMD, and PHPInsights.
-- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace`.
+- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `Modules/Xot/_xot.code-workspace`, `Modules/Activity/_activity.code-workspace`).
 - **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
 - **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
 - **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
 - **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
+- **Rule**: SAFE REFACTORING PATTERN - Never delete critical files (Models, Actions, Resources) during a rename or major refactor. Instead, rename the old version by appending `.old` (e.g., `OldModel.php.old`) to allow for recovery and reference during the transition.
 - **Rule**: MODULAR DATABASE ISOLATION - It is strictly forbidden to add module-specific database connections (e.g., `db_forge`, `mobilita_volontaria`) to the root `/laravel/config/database.php`. Each module must register its connections dynamically in its `XotBaseServiceProvider` to maintain core agnosticism and self-containment. See `Modules/Xot/docs/database-architecture.md`.
 - **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
 - **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
@@ -40,6 +48,7 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: UNIFIED FORM PATTERN - Avoid manual Blade HTML on custom pages. Integrate header metadata and summary sections into a unified Filament form schema for better reactivity and consistency.
 - **Rule**: INFOLIST FOR METADATA - Use Filament Infolists for read-only metadata on custom pages. This separates visualization (Infolist) from active interaction (Form), adhering to KISS and semantic UI principles.
 - **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
+- **Rule**: USER TYPING - Never use generic `\Illuminate\Database\Eloquent\Model|null` for users in method signatures or PHPDoc. Always use `Modules\Xot\Contracts\UserContract`. See `docs/eloquent-models-property-verification.md`.
 
 ## Documentation Locations
 

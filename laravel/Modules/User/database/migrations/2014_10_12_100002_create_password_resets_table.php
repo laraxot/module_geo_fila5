@@ -12,7 +12,7 @@ return new class extends XotBaseMigration {
     public function up(): void
     {
         // -- CREATE --
-        $this->tableCreate(function (Blueprint $table))
+        $this->tableCreate(function (Blueprint $table): void {
             $table->id();
             $table->string('uuid', 36)->nullable()->index();
             $table->string('email')->index();
@@ -22,15 +22,15 @@ return new class extends XotBaseMigration {
         });
 
         // -- UPDATE --
-        $this->tableUpdate(function (Blueprint $table))
+        $this->tableUpdate(function (Blueprint $table): void {
             // if (! $this->hasColumn('email'))
             //    $table->string('email')->nullable();
             // }
             // $this->updateUser($table);
-            if ('uuid' === $this->getColumnType('id'))
+            if ('uuid' === $this->getColumnType('id')) {
                 $table->dropColumn('id');
             }
-            if (! $this->hasColumn('id'))
+            if (! $this->hasColumn('id')) {
                 $table->id();
             }
         });

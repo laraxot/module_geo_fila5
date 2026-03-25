@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'name' => 'Schede Dipendenti',
-        'plural' => 'Schede Dipendenti',
+        'name' => 'Scheda Dipendenti',
+        'plural' => 'Scheda Dipendenti',
         'group' => [
-            'name' => 'Schede',
+            'name' => 'Scheda',
             'description' => 'Gestione delle schede di valutazione dei dipendenti',
         ],
-        'label' => 'Schede Dipendenti',
+        'label' => 'Scheda Dipendenti',
         'sort' => 31,
         'icon' => 'performance-region-document',
     ],
@@ -196,6 +196,10 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
         ],
     ],
     'messages' => [

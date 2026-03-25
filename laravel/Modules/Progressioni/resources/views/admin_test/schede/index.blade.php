@@ -8,7 +8,7 @@
 
 @extends('adm_theme::'.'.layouts.'.$lay)
 
-@section('page_heading','Lista Schede')
+@section('page_heading','Lista Scheda')
 @section('section')
 <x-filament::badge> flash-message </x-filament::badge>
 

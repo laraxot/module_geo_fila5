@@ -8,17 +8,17 @@ use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Progressioni\Models\MyLog;
 use Modules\Progressioni\Models\Progressioni;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Spatie\QueueableAction\QueueableAction;
 
 class ShowMailSendedAt
 {
     use QueueableAction;
 
-    public function execute(Schede|Progressioni $model): string
+    public function execute(Scheda|Progressioni $model): string
     {
         $timestamps = array_merge(
-            $this->collectSendMailTimestamps(Schede::firstWhere(['id' => $model->getKey()])),
+            $this->collectSendMailTimestamps(Scheda::firstWhere(['id' => $model->getKey()])),
             $this->collectSendMailTimestamps(Progressioni::firstWhere(['id' => $model->getKey()]))
         );
 
@@ -32,7 +32,7 @@ class ShowMailSendedAt
     /**
      * @return list<string>
      */
-    private function collectSendMailTimestamps(Schede|Progressioni|null $scheda): array
+    private function collectSendMailTimestamps(Scheda|Progressioni|null $scheda): array
     {
         if ($scheda === null) {
             return [];

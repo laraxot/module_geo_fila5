@@ -24,7 +24,7 @@ use Modules\Progressioni\Models\Message;
 use Modules\Progressioni\Models\MyLog;
 use Modules\Progressioni\Models\Pesi;
 use Modules\Progressioni\Models\SchedaCriteri;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Progressioni\Models\StabiDirigente;
 use Modules\Progressioni\Models\StipendioTabellare;
 use Modules\Progressioni\Models\Valutatore;
@@ -48,7 +48,7 @@ trait ProgressioniRelationshipTrait {
 
         $this->anno = (int) request()->input('anno', date('Y'));
 
-        return $this->hasMany(Schede::class, 'anno', 'anno')
+        return $this->hasMany(Scheda::class, 'anno', 'anno')
             ->where('valutatore_id', $valutatore_id)
             ->where('ha_diritto', 1);
     }
@@ -102,7 +102,7 @@ trait ProgressioniRelationshipTrait {
     }
 
     public function righeDoppie(): HasMany {
-        return $this->hasMany(Schede::class, 'anno', 'anno')
+        return $this->hasMany(Scheda::class, 'anno', 'anno')
             ->where('matr', $this->matr)
             // ->where('id', '!=', $this->id)
             ->orderBy('dal')

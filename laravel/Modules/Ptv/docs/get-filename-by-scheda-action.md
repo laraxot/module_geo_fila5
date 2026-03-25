@@ -80,10 +80,10 @@ class GetFilenameBySchedaAction
     /**
      * Genera il nome file PDF per una scheda.
      *
-     * @param SchedaContract $scheda La scheda per cui generare il nome file
+     * @param Scheda $scheda La scheda per cui generare il nome file
      * @return string Nome file PDF generato
      */
-    public function execute(SchedaContract $scheda): string
+    public function execute(Scheda $scheda): string
     {
         if (
             isset($scheda->id) &&

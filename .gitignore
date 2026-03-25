@@ -292,6 +292,9 @@ backups/
 *_old
 *.orig
 *.rej
+* copy.*
+* copy/
+*.copy
 
 # Archivi
 *.zip
@@ -357,6 +360,12 @@ test*.php
 # Scripts bash locali
 bashscripts/
 
+# Copy files (duplicati temporanei)
+* copy
+* copy.*
+*.copy
+*~
+
 # Altri
 laravel/nunomaduro-phpinsights-ae780a9/
 laravel/phpinsights-standalone
@@ -366,3 +375,8 @@ dump.rdb
 # FINE .gitignore
 # =============================================================================
 laravel/database/migrations/
+.qwen/
+docs/archive/
+.gemini/
+.cursor/
+.opencode/

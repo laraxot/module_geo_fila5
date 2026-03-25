@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateCategoriaProproTable.
  */
-class CreateCategoriaProproTable extends XotBaseMigration
+return new class extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -26,4 +26,4 @@ class CreateCategoriaProproTable extends XotBaseMigration
                 $table->integer('anno')->unsigned()->nullable()->default(0);
             });
     }
-}
+};

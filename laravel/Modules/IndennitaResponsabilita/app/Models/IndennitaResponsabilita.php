@@ -228,7 +228,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property string|null $calculated_data
  * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
  * @property-read int|null $activities_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Schede> $avversari
+ * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
  * @property-read int|null $avversari_count
  * @property-read Collection<int, IndennitaResponsabilita> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count

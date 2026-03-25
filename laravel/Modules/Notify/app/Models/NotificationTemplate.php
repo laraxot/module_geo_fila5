@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Blade;
 use Modules\Media\Models\Media;
 use Modules\Notify\Database\Factories\NotificationTemplateFactory;
 use Modules\Notify\Enums\NotificationTypeEnum;
-use Modules\Xot\Contracts\ProfileContract;
 use Override;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -42,12 +41,12 @@ use Spatie\Translatable\HasTranslations;
  * @property Carbon|null $deleted_at
  * @property-read string $channels_label
  * @property NotificationTypeEnum $type
- * @property-read ProfileContract|null $creator
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property-read int|null $logs_count
  * @property-read MediaCollection<int, Media> $media
  * @property-read int|null $media_count
  * @property-read mixed $translations
- * @property-read ProfileContract|null $updater
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $updater
  * @property-read int|null $versions_count
  * @method static Builder<static>|NotificationTemplate active()
  * @method static NotificationTemplateFactory factory($count = null, $state = [])
@@ -61,7 +60,34 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder<static>|NotificationTemplate whereLocale(string $column, string $locale)
  * @method static Builder<static>|NotificationTemplate whereLocales(string $column, array $locales)
  * @mixin IdeHelperNotificationTemplate
- * @property-read ProfileContract|null $deleter
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $deleter
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_by
+ * @method static Builder<static>|NotificationTemplate whereBodyHtml($value)
+ * @method static Builder<static>|NotificationTemplate whereBodyText($value)
+ * @method static Builder<static>|NotificationTemplate whereCategory($value)
+ * @method static Builder<static>|NotificationTemplate whereChannels($value)
+ * @method static Builder<static>|NotificationTemplate whereCode($value)
+ * @method static Builder<static>|NotificationTemplate whereConditions($value)
+ * @method static Builder<static>|NotificationTemplate whereCreatedAt($value)
+ * @method static Builder<static>|NotificationTemplate whereCreatedBy($value)
+ * @method static Builder<static>|NotificationTemplate whereDeletedAt($value)
+ * @method static Builder<static>|NotificationTemplate whereDeletedBy($value)
+ * @method static Builder<static>|NotificationTemplate whereDescription($value)
+ * @method static Builder<static>|NotificationTemplate whereGrapesjsData($value)
+ * @method static Builder<static>|NotificationTemplate whereId($value)
+ * @method static Builder<static>|NotificationTemplate whereIsActive($value)
+ * @method static Builder<static>|NotificationTemplate whereMetadata($value)
+ * @method static Builder<static>|NotificationTemplate whereName($value)
+ * @method static Builder<static>|NotificationTemplate wherePreviewData($value)
+ * @method static Builder<static>|NotificationTemplate whereSubject($value)
+ * @method static Builder<static>|NotificationTemplate whereTenantId($value)
+ * @method static Builder<static>|NotificationTemplate whereType($value)
+ * @method static Builder<static>|NotificationTemplate whereUpdatedAt($value)
+ * @method static Builder<static>|NotificationTemplate whereUpdatedBy($value)
+ * @method static Builder<static>|NotificationTemplate whereVariables($value)
+ * @method static Builder<static>|NotificationTemplate whereVersion($value)
  * @mixin \Eloquent
  */
 class NotificationTemplate extends BaseModel implements HasMedia

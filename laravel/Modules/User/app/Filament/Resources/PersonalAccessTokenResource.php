@@ -6,12 +6,12 @@ namespace Modules\User\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
-use Modules\User\Models\OauthAccessToken;
+use Modules\User\Models\OauthToken;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 final class PersonalAccessTokenResource extends XotBaseResource
 {
-    protected static ?string $model = OauthAccessToken::class;
+    protected static ?string $model = OauthToken::class;
 
     protected static ?string $recordTitleAttribute = 'name';
 

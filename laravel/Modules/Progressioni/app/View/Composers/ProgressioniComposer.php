@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\View\Composers;
 
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 
 class ProgressioniComposer
 {
@@ -13,7 +13,7 @@ class ProgressioniComposer
      */
     public function schedeCount(int $year): int
     {
-        return Schede::where('anno', $year)
+        return Scheda::where('anno', $year)
             // ->where('ha_diritto', '>', 0)
             // ->get()
             ->count();

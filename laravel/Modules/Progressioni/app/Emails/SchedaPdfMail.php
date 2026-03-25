@@ -8,7 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Modules\Cms\Services\PanelService as Panel;
-use Modules\Progressioni\Models\Schede;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Xot\Datas\PdfData;
 
 // ------ models--------
@@ -18,12 +18,12 @@ class SchedaPdfMail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public Schede $model;
+    public Scheda $model;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Schede $model)
+    public function __construct(Scheda $model)
     {
         $this->model = $model;
     }

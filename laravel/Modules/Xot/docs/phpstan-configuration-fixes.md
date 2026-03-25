@@ -104,13 +104,20 @@ parameters:
         - ./vendor/amenadiel/jpgraph/src/config.inc.php
 
     scanFiles:
-        - ./Modules/Xot/Helpers/Helper.php
+        - ./Modules/Xot/helpers/Helper.php
 
     editorUrl: 'vscode://file/%%file%%:%%line%%'
-    tmpDir: /tmp/phpstan
+    tmpDir: ./storage/app/phpstan
     treatPhpDocTypesAsCertain: false
     reportUnmatchedIgnoredErrors: false
 ```
+
+## Runtime Rule
+
+- non usare `/tmp/phpstan`;
+- usare `./storage/app/phpstan` come runtime dir;
+- in caso di crash anticipato del tool, il comando di recovery e':
+  `XDEBUG_MODE=off ./vendor/bin/phpstan analyse Modules --memory-limit=-1 --no-progress`
 
 ## Best Practices per PHPStan
 

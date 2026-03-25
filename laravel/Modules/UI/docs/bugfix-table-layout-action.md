@@ -140,11 +140,16 @@ php -l Modules/UI/app/Filament/Actions/Table/TableLayoutToggleTableAction.php
 php artisan tinker --execute="TableLayoutToggleTableAction::make('test');"
 
 # Testare l'URL che causava l'errore
-<<<<<<< .merge_file_XEXyRb
+<<<<<<< Updated upstream
+curl -I http://127.0.0.1:8001/Quaeris/admin/gaia/survey-pdfs
+=======
+<<<<<<< .merge_file_mfdQIw
 curl -I http://127.0.0.1:8001/healthcare_app/admin/gaia/survey-pdfs
 =======
+curl -I http://127.0.0.1:8001/healthcare_app/admin/gaia/survey-pdfs
 curl -I http://127.0.0.1:8001/ptvx/admin/gaia/survey-pdfs
->>>>>>> .merge_file_iwpjs6
+>>>>>>> .merge_file_qtLcIH
+>>>>>>> Stashed changes
 ```
 
 ### Risultati Test
@@ -177,6 +182,7 @@ curl -I http://127.0.0.1:8001/ptvx/admin/gaia/survey-pdfs
 
 ---
 
+**Data**: 27 Gennaio 2025  
 **Modulo**: UI  
 **Tipo**: Bug Fix  
 **Priorità**: Alta  
