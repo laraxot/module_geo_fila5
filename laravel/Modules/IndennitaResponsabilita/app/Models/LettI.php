@@ -301,7 +301,7 @@ use RuntimeException;
  * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @property-read LettI|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read LettI|null $pesi
  * @property-read Collection<int, Qua00f> $qua00f

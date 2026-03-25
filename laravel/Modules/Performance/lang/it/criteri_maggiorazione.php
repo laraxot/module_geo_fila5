@@ -153,6 +153,21 @@ return [
             'icon' => 'logout',
             'tooltip' => 'logout',
         ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
     ],
     'messages' => [
         'validation' => [

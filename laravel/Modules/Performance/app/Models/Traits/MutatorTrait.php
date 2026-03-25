@@ -36,10 +36,11 @@ trait MutatorTrait
             return 0;
         }
 
-        $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
+        $arr = Arr::map($lista_tipo_codice_assenze, static function ($item): string {
             /** @var string $item */
             return "'{$item}'";
         });
+        /** @var array<string> $arr */
         $list = implode(',', $arr);
 
         $asz00k1s = $this->asz00k1()
@@ -101,10 +102,11 @@ trait MutatorTrait
             return 0.0;
         }
 
-        $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
+        $arr = Arr::map($lista_tipo_codice_assenze, static function ($item): string {
             /** @var string $item */
             return "'{$item}'";
         });
+        /** @var array<string> $arr */
         $list = implode(',', $arr);
 
         $value = $this->asz00k1()

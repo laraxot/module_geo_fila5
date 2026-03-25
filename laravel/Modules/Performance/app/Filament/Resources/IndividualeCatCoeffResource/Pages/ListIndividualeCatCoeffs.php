@@ -70,11 +70,7 @@ class ListIndividualeCatCoeffs extends PtvBaseYearListRecords
         ];
     }
 
-    /**
-     * Get the table filters.
-     *
-     * @return array<string, Filters\SelectFilter>
-     */
+    
     #[Override]
     public function getTableFilters(): array
     {

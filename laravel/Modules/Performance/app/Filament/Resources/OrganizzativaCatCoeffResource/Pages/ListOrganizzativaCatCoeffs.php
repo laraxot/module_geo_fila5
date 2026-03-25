@@ -9,22 +9,16 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Performance\Filament\Resources\OrganizzativaCatCoeffResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListOrganizzativaCatCoeffs extends XotBaseListRecords
+class ListOrganizzativaCatCoeffs extends PtvBaseYearListRecords
 {
     protected static string $resource = OrganizzativaCatCoeffResource::class;
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+  
 
     /**
      * Le colonne della tabella devono corrispondere esattamente a quelle del modello/migrazione.
@@ -48,16 +42,5 @@ class ListOrganizzativaCatCoeffs extends XotBaseListRecords
         ];
     }
 
-    /**
-     * @return array<string, SelectFilter>
-     */
-    #[Override]
-    public function getTableFilters(): array
-    {
-        return [
-            'anno' => app(GetYearFilter::class)
-                ->execute('anno', intval(date('Y')) - 3, intval(date('Y')))
-                ->default(intval(date('Y')) - 1),
-        ];
-    }
+   
 }

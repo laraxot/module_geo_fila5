@@ -9,21 +9,15 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Performance\Filament\Resources\OrganizzativaAssenzeResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListOrganizzativaAssenzes extends XotBaseListRecords
+class ListOrganizzativaAssenzes extends PtvBaseYearListRecords
 {
     protected static string $resource = OrganizzativaAssenzeResource::class;
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy_from_last_year' => CopyFromLastYearAction::make(),
-        ];
-    }
+   
 
     #[Override]
     public function getTableColumns(): array

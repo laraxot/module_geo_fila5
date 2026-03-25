@@ -16,12 +16,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Performance\Filament\Resources\CriteriMaggiorazioneResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListCriteriMaggioraziones extends XotBaseListRecords
+class ListCriteriMaggioraziones extends PtvBaseYearListRecords
 {
     protected static string $resource = CriteriMaggiorazioneResource::class;
 
@@ -56,68 +57,5 @@ class ListCriteriMaggioraziones extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    public function getTableFilters(): array
-    {
-        return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
-        ];
-    }
-
-    /**
-     * @return array<string, Action>
-     */
-    #[Override]
-    public function getTableActions(): array
-    {
-        return [
-            'edit' => EditAction::make(),
-            'delete' => DeleteAction::make(),
-        ];
-    }
-
-    /**
-     * @return array<string, BulkAction>
-     */
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
-
-    /**
-     * @return array<string, Action>
-     */
-    #[Override]
-    public function getTableHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-        ];
-    }
-
-    /**
-     * Get the header actions for the list page.
-     *
-     * @return array<string, Action>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+  
 }

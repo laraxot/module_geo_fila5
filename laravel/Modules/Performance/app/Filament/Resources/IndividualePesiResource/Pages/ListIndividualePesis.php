@@ -83,9 +83,6 @@ class ListIndividualePesis extends PtvBaseYearListRecords
         ];
     }
 
-    /**
-     * @return array<string, Filter|SelectFilter>
-     */
     #[Override]
     public function getTableFilters(): array
     {

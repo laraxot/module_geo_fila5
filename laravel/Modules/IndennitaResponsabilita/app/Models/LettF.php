@@ -177,7 +177,7 @@ use Validator;
  * @property-read int|null $messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaResponsabilita\Models\MyLog> $myLogs
  * @property-read int|null $my_logs_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read LettF|null $pesi
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fDaterange

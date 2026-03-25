@@ -77,9 +77,6 @@ class ListPerformanceFondos extends PtvBaseYearListRecords
 
    
 
-    /**
-     * @return array<string, Action>
-     */
     #[Override]
     public function getTableActions(): array
     {

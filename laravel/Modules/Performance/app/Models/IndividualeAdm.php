@@ -384,7 +384,7 @@ use Modules\Xot\Traits\Updater;
  * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @property-read IndividualeAdm|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read IndividualeAdm|null $pesi
  * @property-read IndividualeAdm|null $stipendioTabellare
