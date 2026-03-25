@@ -14,19 +14,13 @@ use Modules\Sigma\Datas\GgFilterData;
  */
 trait MutatorTrait
 {
-    public function getGgAssenzaDalalAttribute(?int $value): ?int
+    /**
+     * Calcola giorni assenza nel range dal-al.
+     *
+     * Metodo separato per il calcolo complesso (Pattern Livello 4).
+     */
+    public function getGgAssenzaDalal(): int
     {
-        
-        if ($value !== null) {
-            return $value;
-        }
-        
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
         $lista_tipo_codice_assenze = $this->listaTipoCodiceAssenze();
 
         $date_min = $this->dal;
@@ -39,22 +33,7 @@ trait MutatorTrait
 
         // Guard: empty lista_tipo_codice_assenze prevents invalid SQL: IN ()
         if (empty($lista_tipo_codice_assenze)) {
-            $int_value = 0;
-
-            // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-            // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
-            /** @var int|string|null $key */
-            $key = $this->getKey();
-            if ($key !== null) {
-                // Prevent recursive activitylog crash
-                
-                        static::withoutEvents(function () use ($int_value): void {
-                            $this->update(['gg_assenza_dalal' => $int_value]);
-                        });
-                
-            }
-
-            return $int_value;
+            return 0;
         }
 
         $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
@@ -64,37 +43,22 @@ trait MutatorTrait
         $list = implode(',', $arr);
 
         $asz00k1s = $this->asz00k1()
-            // ->whereIn('aszcod', $lista_tipo_codice_assenze)
             ->whereRaw("CONCAT(asztip, '-', aszcod) IN (".$list.')')
-            // ->selectRaw('COALESCE(sum(aszdur*1),0) as aszdur_sum')
             ->selectRaw('COALESCE(sum(CAST(aszdur AS DECIMAL(10,2))),0) as aszdur_sum')
             ->whereBetween('asz2kd', [$date_min, $date_max])
-        // ->withDays($date_min, $date_max)
             ->where('aszumi', 'G')
-
             ->first();
-        // ->sum('aszdur')
 
         // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
         $aszdur_sum = (is_object($asz00k1s) && isset($asz00k1s->aszdur_sum)) ? $asz00k1s->aszdur_sum : 0;
-        $int_value = (int) $aszdur_sum;
 
-        // ✅ Persist con update chirurgico (salva SOLO questo campo, previene loop)
-        // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
-        /** @var int|string|null $key */
-        $key = $this->getKey();
-        if ($key !== null) {
-            static::withoutEvents(function () use ($int_value): void {
-                $this->update(['gg_assenza_dalal' => $int_value]);
-            });
-        }
-
-        return $int_value;
+        return (int) $aszdur_sum;
     }
 
-    public function getHhAssenzaDalalAttribute(?float $value): ?float
+    public function getGgAssenzaDalalAttribute(?int $value): ?int
     {
-        if ($value !== null) {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_int($value)) {
             return $value;
         }
 
@@ -103,6 +67,24 @@ trait MutatorTrait
             return null;
         }
 
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $int_value = $this->getGgAssenzaDalal();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
+        static::withoutEvents(function () use ($int_value): void {
+            $this->update(['gg_assenza_dalal' => $int_value]);
+        });
+
+        return $int_value;
+    }
+
+    /**
+     * Calcola ore assenza nel range dal-al.
+     *
+     * Metodo separato per il calcolo complesso (Pattern Livello 4).
+     */
+    public function getHhAssenzaDalal(): float
+    {
         $lista_tipo_codice_assenze = $this->listaTipoCodiceAssenze();
 
         $aszdur = "(hour(replace(aszdur,'.',':')))+((minute(replace(aszdur,'.',':')))/60)";
@@ -111,26 +93,12 @@ trait MutatorTrait
         $date_max = $this->al;
 
         if ($date_min === '') {
-            return 0;
+            return 0.0;
         }
 
         // Guard: empty lista_tipo_codice_assenze prevents invalid SQL: IN ()
         if (empty($lista_tipo_codice_assenze)) {
-            $float_value = 0.0;
-            $this->hh_assenza_dalal = $float_value;
-
-            // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
-            /** @var int|string|null $key */
-            $key = $this->getKey();
-            if ($key !== null) {
-                static::withoutEvents(function () use ($float_value): void {
-                    $this->update([
-                        'hh_assenza_dalal' => $float_value,
-                    ]);
-                });
-            }
-
-            return $float_value;
+            return 0.0;
         }
 
         $arr = Arr::map($lista_tipo_codice_assenze, function ($item): string {
@@ -140,36 +108,40 @@ trait MutatorTrait
         $list = implode(',', $arr);
 
         $value = $this->asz00k1()
-            // ->whereIn('aszcod', $lista_tipo_codice_assenze)
             ->whereRaw("CONCAT(asztip, '-', aszcod) IN (".$list.')')
-            // ->selectRaw('sum('.$aszdur.') as aszdur_sum')
             ->selectRaw('COALESCE(sum(CAST(aszdur AS DECIMAL(10,2))),0) as aszdur_sum')
             ->whereBetween('asz2kd', [$date_min, $date_max])
-        // ->withDays($date_min, $date_max)
             ->where('aszumi', 'O')
             ->first();
-        // ->sum('aszdur')
+
         // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
         $aszdur_sum = (is_object($value) && isset($value->aszdur_sum)) ? $value->aszdur_sum : 0;
+
         if (empty($aszdur_sum)) {
-            $float_value = 0.0;
-        } else {
-            $float_value = (float) $aszdur_sum;
+            return 0.0;
         }
 
-        $this->hh_assenza_dalal = $float_value;
+        return (float) $aszdur_sum;
+    }
 
-        // PHPStan: getKey() può restituire null, ma qui il tipo è già ristretto
-        /** @var int|string|null $key */
-        $key = $this->getKey();
-        if ($key === null) {
-            return $float_value;
+    public function getHhAssenzaDalalAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
         }
 
+        // ✅ Check: record deve esistere prima di save()
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $float_value = $this->getHhAssenzaDalal();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE
         static::withoutEvents(function () use ($float_value): void {
-            $this->update([
-                'hh_assenza_dalal' => $float_value,
-            ]);
+            $this->update(['hh_assenza_dalal' => $float_value]);
         });
 
         return $float_value;

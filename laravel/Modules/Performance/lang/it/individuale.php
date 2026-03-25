@@ -350,6 +350,11 @@ return [
             'icon' => 'CopyFromOrganizzativa',
             'tooltip' => 'CopyFromOrganizzativa',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'import' => [
