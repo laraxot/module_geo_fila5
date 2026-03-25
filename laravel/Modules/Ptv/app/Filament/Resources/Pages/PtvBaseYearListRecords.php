@@ -94,24 +94,5 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         ];
     }
 
-    public function tableOLD(Table $table): Table
-    {
-        return $table
-            // ->columns($this->getTableColumns())
-            // @phpstan-ignore-next-line arguments.count
-            ->columns($this->layoutView->getTableColumns())
-            ->contentGrid($this->layoutView->getTableContentGrid())
-            ->headerActions($this->getTableHeaderActions())
-
-            ->filters($this->getTableFilters())
-            ->filtersLayout(FiltersLayout::AboveContent)
-            ->persistFiltersInSession()
-            ->recordActions($this->getTableActions())
-            ->toolbarActions($this->getTableBulkActions())
-            ->recordActionsPosition(RecordActionsPosition::BeforeColumns)
-            ->defaultSort(
-                column: 'created_at',
-                direction: 'DESC',
-            );
-    }
+   
 }

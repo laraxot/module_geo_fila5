@@ -103,6 +103,9 @@ return [
             'success' => 'Dati aggiornati con successo',
             'error' => 'Errore durante l\'aggiornamento',
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
     ],
     'messages' => [
         'validation' => [

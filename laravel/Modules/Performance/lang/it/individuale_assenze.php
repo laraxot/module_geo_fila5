@@ -256,6 +256,10 @@ return [
             'icon' => 'profile',
             'tooltip' => 'profile',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'validation' => [
