@@ -12,8 +12,11 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 beforeEach(function () {
     $this->fetchAction = \Mockery::mock(FetchIPLocationAction::class);
