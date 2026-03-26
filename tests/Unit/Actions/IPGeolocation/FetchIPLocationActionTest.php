@@ -10,18 +10,9 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Datas\IPLocationData;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
-=======
->>>>>>> Stashed changes
-=======
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
->>>>>>> Stashed changes
 
 beforeEach(function () {
     $this->mockHandler = new MockHandler();
