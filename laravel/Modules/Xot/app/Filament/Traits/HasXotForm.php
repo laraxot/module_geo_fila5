@@ -27,7 +27,7 @@ trait HasXotForm
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     abstract public function getFormSchema(): array;
 

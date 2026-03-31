@@ -62,7 +62,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     /**
      * Mount page - resolves {record} from URL, authorizes, fills form.

@@ -24,7 +24,7 @@ class SqlUpload extends XotBasePage
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     public string $disk = 'cache';
 

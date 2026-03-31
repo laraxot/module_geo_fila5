@@ -13,13 +13,12 @@ class SendMailIndennitaResponsabilita extends XotBasePage
     // use HasRelationManagers;
     // use InteractsWithRecord;
 
-    /** @var array<string, mixed> */
     /**
      * Form data holder.
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     /** @var array<string, mixed> */
     public array $tableFilters = [];

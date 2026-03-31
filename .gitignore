@@ -382,3 +382,4 @@ docs/archive/
 .opencode/
 laravel/Themes/Zero/.devcontainer/
 laravel/Themes/Zero/.cursor/
+laravel/.claude/

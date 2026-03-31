@@ -39,7 +39,7 @@ class FillOutTheForm extends XotBaseResourcePage
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     public float $totale = 0;
 

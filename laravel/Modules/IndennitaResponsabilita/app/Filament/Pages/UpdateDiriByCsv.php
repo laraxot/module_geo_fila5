@@ -28,7 +28,7 @@ class UpdateDiriByCsv extends XotBasePage
      *
      * @var array<string, mixed>
      */
-    public ?array $data = [];
+    public array $data = [];
 
     protected string $view = 'indennitaresponsabilita::filament.pages.import-csv';
 
