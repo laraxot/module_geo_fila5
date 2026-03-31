@@ -387,3 +387,4 @@ laravel/Themes/Zero/.cursor/
 laravel/.claude/
 .kilo/
 .cursor/
+*.backup*

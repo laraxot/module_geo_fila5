@@ -104,10 +104,7 @@ abstract class SchedaResource extends XotBaseResource
     public static function getPages(): array
     {
         
-        dddx([
-            'static::class'=>static::class,
-             'backtrace'=>debug_backtrace()
-            ]);
+        
 
         return [
             ...parent::getPages(),
@@ -120,7 +117,7 @@ abstract class SchedaResource extends XotBaseResource
      */
     public static function getModel(): string
     {
-
+        
         
         $model= Individuale::class;
        

@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources;
 
-use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\CreateIndividualeRegionale;
-use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\EditIndividualeRegionale;
-use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\FillOutTheForm;
-use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\ListIndividualeRegionales;
+use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages;
 use Modules\Performance\Models\IndividualeRegionale;
-use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Override;
 
 class IndividualeRegionaleResource extends IndividualeResource
@@ -29,11 +25,11 @@ class IndividualeRegionaleResource extends IndividualeResource
     public static function getPages(): array
     {
         return [
-            'index' => ListIndividualeRegionales::route('/'),
-            'create' => CreateIndividualeRegionale::route('/create'),
-            'edit' => EditIndividualeRegionale::route('/{record}/edit'),
-            'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
-            'compila' => CompilaScheda::route('/{record}/compila'),
+            'index' => Pages\ListIndividualeRegionales::route('/'),
+            'create' => Pages\CreateIndividualeRegionale::route('/create'),
+            'edit' => Pages\EditIndividualeRegionale::route('/{record}/edit'),
+            'fill_out_the_form' => Pages\FillOutTheForm::route('/{record}/fill'),
+            'compila' => Pages\CompilaScheda::route('/{record}/compila'),
         ];
     }
 }

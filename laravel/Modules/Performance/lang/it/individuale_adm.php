@@ -321,6 +321,13 @@ return [
         ],
         'export_xls' => [
             'tooltip' => 'export_xls',
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
         ],
     ],
     'messages' => [

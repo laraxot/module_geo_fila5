@@ -6,10 +6,7 @@ namespace Modules\Performance\Filament\Resources;
 
 use Illuminate\Support\Arr;
 use Modules\Lang\Actions\SaveTransAction;
-use Modules\Performance\Filament\Resources\IndividualeDipResource\Pages\CreateIndividualeDip;
-use Modules\Performance\Filament\Resources\IndividualeDipResource\Pages\EditIndividualeDip;
-use Modules\Performance\Filament\Resources\IndividualeDipResource\Pages\FillOutTheForm;
-use Modules\Performance\Filament\Resources\IndividualeDipResource\Pages\ListIndividualeDips;
+use Modules\Performance\Filament\Resources\IndividualeDipResource\Pages;
 use Modules\Performance\Models\CriteriValutazione;
 use Modules\Performance\Models\IndividualeDip;
 use Modules\Xot\Actions\GetTransKeyAction;
@@ -25,10 +22,11 @@ class IndividualeDipResource extends IndividualeResource
     public static function getPages(): array
     {
         return [
-            'index' => ListIndividualeDips::route('/'),
-            'create' => CreateIndividualeDip::route('/create'),
-            'edit' => EditIndividualeDip::route('/{record}/edit'),
-            'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'index' => Pages\ListIndividualeDips::route('/'),
+            'create' => Pages\CreateIndividualeDip::route('/create'),
+            'edit' => Pages\EditIndividualeDip::route('/{record}/edit'),
+            'fill_out_the_form' => Pages\FillOutTheForm::route('/{record}/fill'),
+            'compila' => Pages\CompilaScheda::route('/{record}/compila'),
         ];
     }
 
