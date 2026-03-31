@@ -45,3 +45,6 @@ Zero/
 
 - [Xot Module](../../Modules/Xot/docs/)
 - [UI Module](../../Modules/UI/docs/)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
