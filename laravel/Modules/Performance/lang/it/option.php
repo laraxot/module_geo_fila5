@@ -82,14 +82,9 @@ return [
         ],
         'value' => [
             'label' => 'value',
-<<<<<<< HEAD
             'placeholder' => 'value',
             'helper_text' => 'value',
             'description' => 'value',
-=======
-            'description' => 'value',
-            'helper_text' => 'value',
->>>>>>> 2eca350c6 (.)
         ],
         'id' => [
             'label' => 'id',
@@ -124,8 +119,8 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
-            'label' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
         ],
         'copy_from_last_year' => [
             'label' => 'copy_from_last_year',
@@ -183,21 +178,14 @@ return [
             'tooltip' => 'resetColumnManager',
         ],
         'reorderRecords' => [
-            'label' => 'reorderRecords',
-            'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'label' => 'reorderRecords',
         ],
         'profile' => [
             'label' => 'profile',
             'icon' => 'profile',
             'tooltip' => 'profile',
-        ],
-        'logout' => [
-            'tooltip' => 'logout',
-            'icon' => 'logout',
-        ],
-        'reorderRecords' => [
-            'tooltip' => 'reorderRecords',
         ],
     ],
     'model' => [

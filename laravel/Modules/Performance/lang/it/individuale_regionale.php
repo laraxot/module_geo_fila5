@@ -111,6 +111,7 @@ return [
         ],
         'value' => [
             'label' => 'value',
+            'description' => 'value',
         ],
         'fill' => [
             'label' => 'fill',
@@ -250,6 +251,7 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
         ],
         'MakePdfAction' => [
             'label' => 'MakePdfAction',
@@ -312,15 +314,9 @@ return [
             'tooltip' => 'openColumnManager',
         ],
         'reorderRecords' => [
-            'label' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
             'icon' => 'reorderRecords',
-            'tooltip' => 'reorderRecords',
-        ],
-        'logout' => [
-            'tooltip' => 'logout',
-        ],
-        'reorderRecords' => [
-            'tooltip' => 'reorderRecords',
+            'label' => 'reorderRecords',
         ],
     ],
     'messages' => [
