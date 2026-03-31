@@ -316,6 +316,12 @@ return [
             'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+        ],
     ],
     'messages' => [
         'validation' => [

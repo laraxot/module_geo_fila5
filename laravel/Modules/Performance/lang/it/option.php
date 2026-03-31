@@ -82,9 +82,14 @@ return [
         ],
         'value' => [
             'label' => 'value',
+<<<<<<< HEAD
             'placeholder' => 'value',
             'helper_text' => 'value',
             'description' => 'value',
+=======
+            'description' => 'value',
+            'helper_text' => 'value',
+>>>>>>> 2eca350c6 (.)
         ],
         'id' => [
             'label' => 'id',
@@ -186,6 +191,13 @@ return [
             'label' => 'profile',
             'icon' => 'profile',
             'tooltip' => 'profile',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
         ],
     ],
     'model' => [
