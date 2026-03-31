@@ -4,7 +4,7 @@
 
 This guide explains how to leverage AI assistants (Claude Code, Cursor, Windsurf) when developing with the **Zero Theme** in the healthcare_app Fila4 Mono project.
 
-Zero is a flexible, modern Laravel theme system built on Filament 4, Livewire 3, and Volt. Understanding how to configure AI assistants for theme development ensures faster, more consistent development.
+Zero is a flexible, modern Laravel theme system built on Filament 5, Livewire 4, and Volt. Understanding how to configure AI assistants for theme development ensures faster, more consistent development.
 
 ## Why AI Configuration Matters for Theme Development
 
@@ -58,9 +58,9 @@ When creating Blade components for Zero theme:
 
 ## Livewire Volt Pages
 
-For functional Livewire pages:
+Per Volt pages class-based (default):
 - Location: `Themes/Zero/Resources/views/pages/`
-- Use `<?php use function Livewire\Volt\{...}; ?>`
+- Use `<?php use Livewire\Volt\Component; new class extends Component { /* stati e metodi */ }; ?>`
 - Keep logic minimal, delegate to actions
 
 ## Layouts
@@ -603,7 +603,7 @@ Consider creating a custom MCP server for Zero theme operations:
 ### External Resources
 
 - [Livewire Volt](https://livewire.laravel.com/docs/volt)
-- [Filament v4 Themes](https://filamentphp.com/docs/4.x/themes)
+- [Filament v5 Themes](https://filamentphp.com/docs/5.x/themes)
 - [Tailwind CSS](https://tailwindcss.com/docs)
 - [Alpine.js](https://alpinejs.dev/)
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)

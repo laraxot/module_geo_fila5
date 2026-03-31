@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages;
 
-use Filament\Tables;
 use Filament\Actions;
-use Filament\Tables\Table;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Actions\DeleteBulkAction;
-use Modules\Ptv\Models\StabiDirigente;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Ptv\Filament\Tables\Columns\RepColumn;
-use Modules\UI\Filament\Tables\Columns\GroupColumn;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Ptv\Filament\Resources\StabiDirigenteResource;
+use Modules\Ptv\Filament\Tables\Columns\RepColumn;
+use Modules\Ptv\Models\StabiDirigente;
+use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
-class ListStabiDirigentes extends XotBaseListRecords
+class ListStabiDirigentes extends PtvBaseYearListRecords
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     /**
      * Get the table columns definition.
@@ -72,38 +73,5 @@ class ListStabiDirigentes extends XotBaseListRecords
     
 
     
-    /**
-     * Get the Eloquent query builder.
-     *
-     * @return Builder<StabiDirigente>
-     */
-    public function getEloquentQuery(): Builder
-    {
-        return StabiDirigenteResource::getEloquentQuery();
-    }
-
-     /**
-     * Undocumented function.
-     *
-     * @return array<\Filament\Tables\Filters\BaseFilter>
-     */
-    public function getTableFilters(): array
-    {
-        return [
-            SelectFilter::make('anno')
-                ->options([
-                    '2022' => '2022',
-                    '2023' => '2023',
-                    '2024' => '2024',
-                    '2025' => '2025',
-                    '2026' => '2026',
-                ])->query(static function (Builder $query, array $data): Builder {
-                    if (null == $data['value']) {
-                        return $query->where('id', 0);
-                    }
-
-                    return $query->where('anno', $data['value']);
-                }),
-        ];
-    }
+   
 }

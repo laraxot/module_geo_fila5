@@ -18,7 +18,7 @@ use Override;
 
 class ListJobManagers extends XotBaseListRecords
 {
-    protected static string $resource = JobManagerResource::class;
+    public static string $resource = JobManagerResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

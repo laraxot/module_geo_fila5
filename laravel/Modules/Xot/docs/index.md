@@ -61,3 +61,5 @@
 
 ---
 *Last update: January 2025*
+
+- [Conflict Resolution](conflict-resolution.md)

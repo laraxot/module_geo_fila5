@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIndividualeTotStabi extends XotBaseEditRecord
 {
-    protected static string $resource = IndividualeTotStabiResource::class;
+    public static string $resource = IndividualeTotStabiResource::class;
 
     protected function getHeaderActions(): array
     {

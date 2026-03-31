@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigen
 
 class ListStabiDirigentes extends PtvListStabiDirigentes
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 }

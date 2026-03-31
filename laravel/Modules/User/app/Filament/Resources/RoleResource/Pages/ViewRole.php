@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewRole extends XotBaseViewRecord
 {
-    protected static string $resource = RoleResource::class;
+    public static string $resource = RoleResource::class;
 
     /**
      * @return array<string, Component>

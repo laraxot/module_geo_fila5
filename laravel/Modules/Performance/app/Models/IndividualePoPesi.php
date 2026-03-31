@@ -29,7 +29,6 @@ use Illuminate\Support\Carbon;
  * @property-read IndividualePo|null $individualePo
  * @property-read IndividualeRegionale|null $individualeRegionale
  * @property-read Organizzativa|null $organizzativa
- * @property-read Performance|null $performance
  * @mixin Model
  * @method static Builder<static>|IndividualePoPesi newModelQuery()
  * @method static Builder<static>|IndividualePoPesi newQuery()
@@ -168,12 +167,12 @@ class IndividualePoPesi extends Model
     /**
      * Relazione con la performance
      *
-     * @return BelongsTo<Performance, static>
+     * @return BelongsTo<Individuale, static>
      */
-    public function performance(): BelongsTo
+    public function performanceOLD(): BelongsTo
     {
         // @phpstan-ignore-next-line
-        return $this->belongsTo(Performance::class, 'matr', 'matr')
+        return $this->belongsTo(Individuale::class, 'matr', 'matr')
             ->where('ente', $this->ente)
             ->where('anno', $this->anno);
     }

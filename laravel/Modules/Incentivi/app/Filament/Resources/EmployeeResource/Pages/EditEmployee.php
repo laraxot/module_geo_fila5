@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditEmployee extends XotBaseEditRecord
 {
-    protected static string $resource = EmployeeResource::class;
+    public static string $resource = EmployeeResource::class;
 
     protected function getHeaderActions(): array
     {

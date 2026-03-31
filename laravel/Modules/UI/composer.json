@@ -41,7 +41,8 @@
     }
   },
   "require": {
-    "owenvoke/blade-fontawesome": "*"
+    "owenvoke/blade-fontawesome": "*",
+    "blade-ui-kit/blade-heroicons": "*"
   },
   "require_comment": {
     "coolsam/flatpickr": "*",

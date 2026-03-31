@@ -19,7 +19,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListExtras extends XotBaseListRecords
 {
-    protected static string $resource = ExtraResource::class;
+    public static string $resource = ExtraResource::class;
 
     #[\Override]
     public function getTableColumns(): array

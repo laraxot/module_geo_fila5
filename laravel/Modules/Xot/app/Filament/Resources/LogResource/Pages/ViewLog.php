@@ -14,7 +14,7 @@ use function Safe\json_encode;
 
 class ViewLog extends XotBaseViewRecord
 {
-    protected static string $resource = LogResource::class;
+    public static string $resource = LogResource::class;
 
     #[\Override]
     protected function getInfolistSchema(): array

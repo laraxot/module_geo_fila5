@@ -274,9 +274,11 @@ trait FunctionTrait
 
     protected function getType(): string
     {
-        return $this->type instanceof WorkerType
-            ? $this->type->value
-            : (string) ($this->type ?? '');
+        $type = $this->getAttribute('type');
+
+        return $type instanceof WorkerType
+            ? $type->value
+            : (string) ($type ?? 'dip');
     }
 
     public function isPo(): bool

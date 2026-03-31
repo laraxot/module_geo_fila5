@@ -91,23 +91,24 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Auth;
 use function Laravel\Folio\{middleware, name};
-use function Livewire\Volt\{state, mount};
+use Livewire\Volt\Component;
 
 middleware(['auth']);
 name('logout');
 
-state([]);
+new class extends Component {
+    public function mount(): void
+    {
+        if (Auth::check()) {
+            Auth::logout();
+            session()->invalidate();
+            session()->regenerateToken();
+        }
 
-mount(function() {
-    if(Auth::check()) {
-        Auth::logout();
-        session()->invalidate();
-        session()->regenerateToken();
+        // Reindirizza alla home page localizzata
+        $this->redirect('/' . app()->getLocale());
     }
-
-    // Reindirizza alla home page localizzata
-    $this->redirect('/' . app()->getLocale());
-});
+};
 ?>
 
 <x-layouts.main>

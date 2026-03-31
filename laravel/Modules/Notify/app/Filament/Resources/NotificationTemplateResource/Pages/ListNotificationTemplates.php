@@ -10,7 +10,7 @@ use Override;
 
 class ListNotificationTemplates extends XotBaseListRecords
 {
-    protected static string $resource = NotificationTemplateResource::class;
+    public static string $resource = NotificationTemplateResource::class;
 
     #[Override]
     public function getTableColumns(): array

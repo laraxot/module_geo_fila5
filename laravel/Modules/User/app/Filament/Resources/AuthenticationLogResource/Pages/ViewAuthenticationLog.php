@@ -19,7 +19,7 @@ use function Safe\json_encode;
 
 class ViewAuthenticationLog extends XotBaseViewRecord
 {
-    protected static string $resource = AuthenticationLogResource::class;
+    public static string $resource = AuthenticationLogResource::class;
 
     /**
      * @return array<string, Component>

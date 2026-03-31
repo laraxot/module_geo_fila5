@@ -213,6 +213,9 @@ return [
         'motivo/invio_email' => [
             'label' => 'motivo/invio_email',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
     ],
     'actions' => [
         'calculate' => [
@@ -232,12 +235,86 @@ return [
         ],
         'copy_from_organizzativa' => [
             'label' => 'copy_from_organizzativa',
+            'icon' => 'copy_from_organizzativa',
+            'tooltip' => 'copy_from_organizzativa',
         ],
         'populate_year' => [
             'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
         ],
         'copy_from_last_year_' => [
             'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
+        'MakePdfAction' => [
+            'label' => 'MakePdfAction',
+            'icon' => 'MakePdfAction',
+            'tooltip' => 'MakePdfAction',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
+        ],
+        'zip_schede' => [
+            'label' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'tooltip' => 'zip_schede',
+        ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
         ],
     ],
     'messages' => [
@@ -272,4 +349,5 @@ return [
     'model' => [
         'label' => 'individuale regionale.model',
     ],
+    'label' => 'individuale regionale',
 ];

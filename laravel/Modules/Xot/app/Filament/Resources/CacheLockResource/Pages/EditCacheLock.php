@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCacheLock extends XotBaseEditRecord
 {
-    protected static string $resource = CacheLockResource::class;
+    public static string $resource = CacheLockResource::class;
 }

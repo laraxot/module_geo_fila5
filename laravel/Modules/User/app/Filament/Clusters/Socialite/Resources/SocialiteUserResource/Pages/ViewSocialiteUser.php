@@ -17,7 +17,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewSocialiteUser extends XotBaseViewRecord
 {
-    protected static string $resource = SocialiteUserResource::class;
+    public static string $resource = SocialiteUserResource::class;
 
     /**
      * @return array<string, Component>

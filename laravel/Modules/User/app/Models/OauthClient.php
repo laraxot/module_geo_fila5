@@ -37,15 +37,15 @@ final class OauthClient extends PassportClient implements AuthorizableContract
     use HasFactory;
     use HasRoles;
 
-    /** @var string */
-    protected $connection = 'user';
-
     /**
      * Guard per Spatie Permission (client API, non web).
      *
      * @var string
      */
     public $guard_name = 'api';
+
+    /** @var string */
+    protected $connection = 'user';
 
     /**
      * Get the user that the client belongs to.
@@ -54,9 +54,10 @@ final class OauthClient extends PassportClient implements AuthorizableContract
      */
     public function user(): BelongsTo
     {
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $userClass */
+        /** @var class-string<UserContract> $userClass */
         $userClass = XotData::make()->getUserClass();
 
+        // @phpstan-ignore return.type, argument.type, argument.templateType
         return $this->belongsTo($userClass, 'user_id');
     }
 

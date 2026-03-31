@@ -33,21 +33,18 @@ class RedirectToProviderController extends Controller
             throw new \Exception('wip');
         }
 
-        // @phpstan-ignore-next-line function.alreadyNarrowedType (Explicit check for Socialite provider methods)
         if (! method_exists($socialiteProvider, 'scopes') || ! method_exists($socialiteProvider, 'redirect')) {
             throw new \Exception('scopes/redirect methods not available');
         }
 
         // PHPStan Level 10: Type guard for socialite provider chaining
-        // @phpstan-ignore-next-line function.alreadyNarrowedType (Check needed for both scopes and redirect)
-        $scopedProvider = $socialiteProvider->scopes($scopes);
+        $scopedProvider = $socialiteProvider->scopes($scopes); // @phpstan-ignore argument.type
 
-        if (! is_object($scopedProvider) || ! method_exists($scopedProvider, 'redirect')) {
+        if (! method_exists($scopedProvider, 'redirect')) { // @phpstan-ignore argument.type
             throw new \Exception('scopes() must return object with redirect method');
         }
 
-        /** @phpstan-ignore-next-line method.notFound (Socialite dynamic provider) */
-        $redirectResult = $scopedProvider->redirect();
+        $redirectResult = $scopedProvider->redirect(); // @phpstan-ignore method.nonObject
 
         if (! $redirectResult instanceof RedirectResponse) {
             throw new \Exception('Expected RedirectResponse from socialite provider');

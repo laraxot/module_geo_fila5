@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\EditStabiDirigen
 
 class EditStabiDirigente extends PtvcEditStabiDirigente
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 }

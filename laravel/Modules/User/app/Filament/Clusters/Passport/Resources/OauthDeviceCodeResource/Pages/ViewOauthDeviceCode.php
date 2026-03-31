@@ -19,7 +19,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewOauthDeviceCode extends XotBaseViewRecord
 {
-    protected static string $resource = OauthDeviceCodeResource::class;
+    public static string $resource = OauthDeviceCodeResource::class;
 
     /**
      * @return array<string, Component>

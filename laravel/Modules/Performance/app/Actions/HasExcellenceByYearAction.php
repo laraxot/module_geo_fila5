@@ -14,7 +14,7 @@ class HasExcellenceByYearAction
     use QueueableAction;
 
     /**
-     * @param  Performance|Progressioni  $model
+     * @param  Individuale|Progressioni  $model
      */
     public function execute($model, int $year): bool
     {

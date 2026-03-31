@@ -384,7 +384,7 @@ use Modules\Xot\Traits\Updater;
  * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @property-read IndividualeAdm|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read IndividualeAdm|null $pesi
  * @property-read IndividualeAdm|null $stipendioTabellare
@@ -404,29 +404,5 @@ class IndividualeAdm extends BaseIndividualeModel
 
     public string $to_field = 'al';
 
-    /*
-    use Updater;
-    use SigmaModelTrait;
-    use Traits\RelationshipTrait;
-    use Traits\MutatorTrait;
-    use Traits\FunctionTrait;
-
-    protected $connection = 'performance'; // this will use the specified database connection
-    protected $table      = 'performance_individuale';
-    //public $timestamps= false;
-    protected $fillable = ['id', 'ente', 'matr', 'cognome', 'nome', 'email', 'propro',
-        'posfun', 'categoria_eco', 'posiz', 'posiz_txt', 'clafun', 'stabi', 'stabi_txt',
-        'repar', 'repar_txt', 'stabival', 'reparval','gg_posiz_1_in_sede', 'gg_presenza_anno',
-        'gg_assenza_anno', 'disci1', 'disci1_txt', 'rep2kd', 'rep2ka', 'qua2kd', 'qua2ka',
-        'dal', 'al', 'anno', 'esperienza_acquisita', 'peso_esperienza_acquisita', 'risultati_ottenuti',
-        'peso_risultati_ottenuti', 'arricchimento_professionale', 'peso_arricchimento_professionale',
-        'impegno', 'peso_impegno', 'qualita_prestazione', 'peso_qualita_prestazione', 'ha_diritto', 'motivo',
-        'last_data_assunz','excellence',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
-    */
+   
 }

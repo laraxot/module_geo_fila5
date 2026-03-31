@@ -19,7 +19,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewOauthAccessToken extends XotBaseViewRecord
 {
-    protected static string $resource = OauthAccessTokenResource::class;
+    public static string $resource = OauthAccessTokenResource::class;
 
     /**
      * @return array<string, Component>

@@ -184,11 +184,7 @@ protected function getFormActions(): array
 
 ### 1. Estrazione Automatica delle Chiavi
 
-<<<<<<< HEAD
 <main module> include strumenti per l'estrazione automatica delle chiavi di traduzione:
-=======
-SaluteOra include strumenti per l'estrazione automatica delle chiavi di traduzione:
->>>>>>> laraxot/develop
 
 ```bash
 php artisan lang:extract
@@ -212,11 +208,7 @@ php artisan lang:sync
 
 ## Conclusione
 
-<<<<<<< HEAD
 Seguire queste regole per le chiavi di traduzione è fondamentale per garantire la coerenza, la manutenibilità e l'internazionalizzazione dell'applicazione <main module>. L'utilizzo di chiavi standardizzate e strutturate gerarchicamente facilita la gestione delle traduzioni e migliora la qualità complessiva del codice.
-=======
-Seguire queste regole per le chiavi di traduzione è fondamentale per garantire la coerenza, la manutenibilità e l'internazionalizzazione dell'applicazione SaluteOra. L'utilizzo di chiavi standardizzate e strutturate gerarchicamente facilita la gestione delle traduzioni e migliora la qualità complessiva del codice.
->>>>>>> laraxot/develop
 
 ## [2024-07-07] Nota storica: correzione massiva Notify
 

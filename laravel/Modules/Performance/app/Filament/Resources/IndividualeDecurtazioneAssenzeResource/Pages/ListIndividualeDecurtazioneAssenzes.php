@@ -9,12 +9,13 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Performance\Filament\Resources\IndividualeDecurtazioneAssenzeResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListIndividualeDecurtazioneAssenzes extends XotBaseListRecords
+class ListIndividualeDecurtazioneAssenzes extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualeDecurtazioneAssenzeResource::class;
+    public static string $resource = IndividualeDecurtazioneAssenzeResource::class;
 
     #[Override]
     public function getTableColumns(): array
@@ -55,12 +56,5 @@ class ListIndividualeDecurtazioneAssenzes extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+   
 }

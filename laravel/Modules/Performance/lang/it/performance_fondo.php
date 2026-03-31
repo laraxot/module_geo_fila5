@@ -124,19 +124,31 @@ return [
             'helper_text' => 'quota_individuale',
             'placeholder' => 'quota_individuale',
         ],
+        'value' => [
+            'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
+        ],
     ],
     'actions' => [
         'create' => [
             'label' => 'Nuovo Fondo',
             'success' => 'Fondo creato con successo',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica',
             'success' => 'Fondo aggiornato con successo',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina',
             'success' => 'Fondo eliminato con successo',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'import' => [
             'label' => 'Importa',
@@ -161,6 +173,76 @@ return [
                     'help' => 'Area di appartenenza',
                 ],
             ],
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'label' => 'logout',
+            'icon' => 'logout',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'organizzativa_spread_money' => [
+            'label' => 'organizzativa_spread_money',
+            'icon' => 'organizzativa_spread_money',
+            'tooltip' => 'organizzativa_spread_money',
+        ],
+        'individuale_spread_money' => [
+            'label' => 'individuale_spread_money',
+            'icon' => 'individuale_spread_money',
+            'tooltip' => 'individuale_spread_money',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
         ],
     ],
     'messages' => [
@@ -195,4 +277,5 @@ return [
     'model' => [
         'label' => 'performance fondo.model',
     ],
+    'label' => 'performance fondo',
 ];

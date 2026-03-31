@@ -14,5 +14,5 @@ ini_set('memory_limit', '512M');
 
 class EditPerformanceFondo extends XotBaseEditRecord
 {
-    protected static string $resource = PerformanceFondoResource::class;
+    public static string $resource = PerformanceFondoResource::class;
 }

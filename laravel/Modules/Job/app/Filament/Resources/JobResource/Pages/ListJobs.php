@@ -20,7 +20,7 @@ use Override;
 
 class ListJobs extends XotBaseListRecords
 {
-    protected static string $resource = JobResource::class;
+    public static string $resource = JobResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

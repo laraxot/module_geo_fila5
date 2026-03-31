@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListNotificationLogs extends XotBaseListRecords
 {
-    protected static string $resource = NotificationLogResource::class;
+    public static string $resource = NotificationLogResource::class;
 
     /**
      * {@inheritdoc}

@@ -50,6 +50,8 @@ resources/views/components/ui/
 
 - [Regole Posizionamento](../../.cursor/rules/ui-components-rules.mdc)
 - [Filament Widgets](./widgets/)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Regole Fondamentali
 

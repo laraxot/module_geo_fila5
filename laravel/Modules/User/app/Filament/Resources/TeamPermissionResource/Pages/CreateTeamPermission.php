@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateTeamPermission extends XotBaseCreateRecord
 {
-    protected static string $resource = TeamPermissionResource::class;
+    public static string $resource = TeamPermissionResource::class;
 }

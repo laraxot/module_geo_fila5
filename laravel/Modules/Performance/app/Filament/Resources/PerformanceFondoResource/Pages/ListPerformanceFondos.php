@@ -16,28 +16,18 @@ use Modules\Performance\Filament\Actions\Table\IndividualeSpreadMoneyAction;
 use Modules\Performance\Filament\Actions\Table\OrganizzativaSpreadMoneyAction;
 use Modules\Performance\Filament\Resources\PerformanceFondoResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListPerformanceFondos extends XotBaseListRecords
+class ListPerformanceFondos extends PtvBaseYearListRecords
 {
-    protected static string $resource = PerformanceFondoResource::class;
+    public static string $resource = PerformanceFondoResource::class;
 
-    /**
-     * @return array<string, Action>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy_from_last_year' => CopyFromLastYearAction::make(),
-        ];
-    }
-
+   
     /**
      * @return array<string, Column>
      */
@@ -85,41 +75,17 @@ class ListPerformanceFondos extends XotBaseListRecords
         ];
     }
 
-    /**
-     * @return array<string, SelectFilter>
-     */
-    #[Override]
-    public function getTableFilters(): array
-    {
-        return [
-            'anno' => app(GetYearFilter::class)
-                ->execute('anno', intval(date('Y')) - 3, intval(date('Y'))),
-        ];
-    }
+   
 
-    /**
-     * @return array<string, Action>
-     */
     #[Override]
     public function getTableActions(): array
     {
         return [
-            'edit' => EditAction::make()
-                ->label('')
-                ->tooltip('Modifica'),
+            ...parent::getTableActions(),
             'organizzativa' => OrganizzativaSpreadMoneyAction::make(),
             'individuale' => IndividualeSpreadMoneyAction::make(),
         ];
     }
 
-    /**
-     * @return array<string, BulkAction>
-     */
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
+   
 }

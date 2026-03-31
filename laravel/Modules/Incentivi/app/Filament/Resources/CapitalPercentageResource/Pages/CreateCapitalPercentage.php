@@ -9,5 +9,5 @@ use Modules\Incentivi\Filament\Resources\CapitalPercentageResource;
 
 class CreateCapitalPercentage extends CreateRecord
 {
-    protected static string $resource = CapitalPercentageResource::class;
+    public static string $resource = CapitalPercentageResource::class;
 }

@@ -246,8 +246,8 @@ class FilamentOptimizationServiceProvider extends ServiceProvider
             $path = request()->path();
 
             return str_contains($path, '/admin')
-                   || str_ends_with($path, '/admin')
-                   || preg_match('/\/(user|<nome progetto>|cms|geo|notify|tenant)\/admin/', $path);
+                               || str_ends_with($path, '/admin')
+                               || preg_match('/\/(user|<nome progetto>|cms|geo|notify|tenant)\/admin/', $path);
         }
 
         return false;

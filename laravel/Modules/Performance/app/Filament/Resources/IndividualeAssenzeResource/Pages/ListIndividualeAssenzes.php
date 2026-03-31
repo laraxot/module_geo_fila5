@@ -9,14 +9,15 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Performance\Filament\Resources\IndividualeAssenzeResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListIndividualeAssenzes extends XotBaseListRecords
+class ListIndividualeAssenzes extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualeAssenzeResource::class;
+    public static string $resource = IndividualeAssenzeResource::class;
 
     #[Override]
     public function getTableColumns(): array
@@ -50,16 +51,7 @@ class ListIndividualeAssenzes extends XotBaseListRecords
     public function getTableFilters(): array
     {
         return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
+            ...parent::getTableFilters(),
             'tipo' => SelectFilter::make('tipo')
                 ->searchable()
                 ->preload(),
@@ -69,12 +61,5 @@ class ListIndividualeAssenzes extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            ...parent::getHeaderActions(),
-            'copy_from_last_year' => CopyFromLastYearAction::make(),
-        ];
-    }
+   
 }

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateNotificationTemplate extends XotBaseCreateRecord
 {
-    protected static string $resource = NotificationTemplateResource::class;
+    public static string $resource = NotificationTemplateResource::class;
 }

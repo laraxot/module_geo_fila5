@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListPasswordResets extends XotBaseListRecords
 {
-    protected static string $resource = PasswordResetResource::class;
+    public static string $resource = PasswordResetResource::class;
 }

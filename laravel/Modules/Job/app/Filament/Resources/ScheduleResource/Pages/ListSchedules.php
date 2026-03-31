@@ -19,7 +19,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListSchedules extends XotBaseListRecords
 {
-    protected static string $resource = ScheduleResource::class;
+    public static string $resource = ScheduleResource::class;
 
     public function getTableColumns(): array
     {

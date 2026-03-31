@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditAuthenticationLog extends XotBaseEditRecord
 {
-    protected static string $resource = AuthenticationLogResource::class;
+    public static string $resource = AuthenticationLogResource::class;
 
     /**
      * @return array<string, Action>

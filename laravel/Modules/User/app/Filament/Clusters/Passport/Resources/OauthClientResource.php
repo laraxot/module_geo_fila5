@@ -10,8 +10,6 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -60,43 +58,34 @@ class OauthClientResource extends XotBaseResource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns(static::getTableColumns())
+            ->columns([
+                TextColumn::make('name')
+                    ->formatStateUsing(fn (string $state): string => Str::headline($state))
+                    ->searchable(),
+                TextColumn::make('user.name')
+                    ->searchable()
+                    ->label('Owner'),
+                TextColumn::make('personal_access_client')
+                    ->boolean()
+                    ->label('Personal'),
+                TextColumn::make('password_client')
+                    ->boolean()
+                    ->label('Password'),
+                TextColumn::make('revoked')
+                    ->boolean()
+                    ->label('Active'),
+                TextColumn::make('created_at')
+                    ->dateTime(),
+                TextColumn::make('updated_at')
+                    ->dateTime(),
+            ])
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 DeleteBulkAction::make(),
             ]);
-    }
-
-    /**
-     * @return array<string, Column>
-     */
-    public static function getTableColumns(): array
-    {
-        return [
-            'name' => TextColumn::make('name')
-                ->formatStateUsing(fn (string $state): string => Str::headline($state))
-                ->searchable(),
-            'user.name' => TextColumn::make('user.name')
-                ->searchable()
-                ->label('Owner'),
-            'personal_access_client' => IconColumn::make('personal_access_client')
-                ->boolean()
-                ->label('Personal'),
-            'password_client' => IconColumn::make('password_client')
-                ->boolean()
-                ->label('Password'),
-            'revoked' => IconColumn::make('revoked')
-                ->boolean()
-                ->label('Active')
-                ->color(fn (bool $state): string => $state ? 'danger' : 'success'),
-            'created_at' => TextColumn::make('created_at')
-                ->dateTime(),
-            'updated_at' => TextColumn::make('updated_at')
-                ->dateTime(),
-        ];
     }
 
     /**

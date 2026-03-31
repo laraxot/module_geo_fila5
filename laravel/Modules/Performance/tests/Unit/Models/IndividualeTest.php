@@ -93,6 +93,26 @@ describe('Individuale Model', function () {
             expect($casts['hh_assenza_anno'])->toBe('float');
             expect($casts['gg_anno'])->toBe('float');
         });
+
+        it('casts type field to WorkerType enum', function () {
+            $casts = $this->individuale->casts();
+
+            expect($casts['type'])->toBe(\Modules\Ptv\Enums\WorkerType::class);
+        });
+
+        it('can set and get type attribute with enum casting', function () {
+            $individuale = new Individuale;
+            
+            // Test setting type directly with string
+            $individuale->type = 'dip';
+            expect($individuale->type)->toBe(\Modules\Ptv\Enums\WorkerType::Dip);
+            expect($individuale->type->value)->toBe('dip');
+            
+            // Test setting with enum
+            $individuale->type = \Modules\Ptv\Enums\WorkerType::Regionale;
+            expect($individuale->type)->toBe(\Modules\Ptv\Enums\WorkerType::Regionale);
+            expect($individuale->type->value)->toBe('regionale');
+        });
     });
 
     describe('Child Types', function () {

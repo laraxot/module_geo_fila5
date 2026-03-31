@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature\Passport;
 
-use Laravel\Passport\Client;
 use Laravel\Passport\ClientRepository;
+use Modules\User\Models\OauthClient;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
 uses(TestCase::class);
 
 /**
- * @return array{client: Client, secret: string}
+ * @return array{client: OauthClient, secret: string}
  */
 function createPassportClient(): array
 {
     $repository = app(ClientRepository::class);
 
+    /** @var OauthClient $client */
     $client = $repository->createClientCredentialsGrantClient('Flow Test Client');
 
     return ['client' => $client, 'secret' => $client->plainSecret ?? $client->secret];

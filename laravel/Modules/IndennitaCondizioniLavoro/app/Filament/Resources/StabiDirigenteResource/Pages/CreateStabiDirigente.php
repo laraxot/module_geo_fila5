@@ -12,5 +12,5 @@ use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\CreateStabiDirig
 
 class CreateStabiDirigente extends PtvCreateStabiDirigente
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 }

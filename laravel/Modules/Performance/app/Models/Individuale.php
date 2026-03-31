@@ -383,7 +383,7 @@ use Parental\HasChildren;
  * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @property-read Individuale|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Performance> $performanceIndividuale
+ * @property-read Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read Individuale|null $pesi
  * @property-read Individuale|null $stipendioTabellare
@@ -445,6 +445,7 @@ class Individuale extends BaseIndividualeModel
     public function casts(): array
     {
         return [
+            'type' => \Modules\Ptv\Enums\WorkerType::class,
             'stabi' => 'integer',
             'repar' => 'integer',
             'stabival' => 'integer',
@@ -498,6 +499,6 @@ class Individuale extends BaseIndividualeModel
         'dip' => IndividualeDip::class,
         'regionale' => IndividualeRegionale::class,
         'dirigente' => IndividualeDirigente::class,
-        'individuale_regionale' => IndividualeRegionale::class,
+        //'individuale_regionale' => IndividualeRegionale::class,
     ];
 }

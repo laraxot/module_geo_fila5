@@ -11,7 +11,7 @@ use Override;
 
 class ListCategoriaPropros extends PtvBaseYearListRecords
 {
-    protected static string $resource = CategoriaProproResource::class;
+    public static string $resource = CategoriaProproResource::class;
 
     #[Override]
     public function getTableColumns(): array

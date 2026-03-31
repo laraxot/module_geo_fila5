@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditSchedaCriteri extends XotBaseEditRecord
 {
-    protected static string $resource = SchedaCriteriResource::class;
+    public static string $resource = SchedaCriteriResource::class;
 }

@@ -105,6 +105,9 @@ return [
         'copy_from_last_year_' => [
             'label' => 'copy_from_last_year_',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'import' => [

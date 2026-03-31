@@ -10,7 +10,7 @@ use Modules\Setting\Models\DatabaseConnection;
 
 class CreateDatabaseConnection extends CreateRecord
 {
-    protected static string $resource = DatabaseConnectionResource::class;
+    public static string $resource = DatabaseConnectionResource::class;
 
     protected function getRedirectUrl(): string
     {

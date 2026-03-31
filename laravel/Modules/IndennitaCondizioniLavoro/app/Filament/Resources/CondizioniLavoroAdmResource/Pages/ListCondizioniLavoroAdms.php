@@ -26,7 +26,7 @@ use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 
 class ListCondizioniLavoroAdms extends XotBaseListRecords
 {
-    protected static string $resource = CondizioniLavoroAdmResource::class;
+    public static string $resource = CondizioniLavoroAdmResource::class;
 
     #[Override]
     public function getTableColumns(): array

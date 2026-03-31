@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Lang\Actions\SaveTransAction;
 use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndividuale;
@@ -17,9 +18,13 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\FillOutTheF
 use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndividuales;
 use Modules\Performance\Models\CriteriValutazione;
 use Modules\Performance\Models\Individuale;
+use Modules\Ptv\Filament\Resources\SchedaResource;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
+use ReflectionClass;
+use Webmozart\Assert\Assert;
 
 use function Safe\date;
 
@@ -92,14 +97,14 @@ class IndividualeResource extends XotBaseResource
         ];
     }
 
-    #[Override]
+  
     public static function getPages(): array
     {
+
         return [
-            'index' => ListIndividuales::route('/'),
-            'create' => CreateIndividuale::route('/create'),
-            'edit' => EditIndividuale::route('/{record}/edit'),
+            ...parent::getPages(),
             'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 
@@ -134,4 +139,8 @@ class IndividualeResource extends XotBaseResource
 
         return $fields;
     }
+
+
+    
+
 }

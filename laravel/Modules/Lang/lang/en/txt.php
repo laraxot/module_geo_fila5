@@ -32,14 +32,12 @@ return [
             'placeholder' => 'test',
             'helper_text' => 'test',
             'description' => 'test',
-            'tooltip' => '',
         ],
         'test_date' => [
             'label' => 'test_date',
             'placeholder' => 'test_date',
             'helper_text' => 'test_date',
             'description' => 'test_date',
-            'tooltip' => '',
         ],
     ],
     'actions' => [
@@ -59,13 +57,4 @@ return [
             'label' => 'request',
         ],
     ],
-    'navigation' => [
-        'label' => 'Missing Navigation Label',
-        'plural_label' => 'Missing Navigation Plural Label',
-        'group' => 'Missing Group',
-        'icon' => 'heroicon-o-puzzle-piece',
-        'sort' => 100,
-    ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
 ];

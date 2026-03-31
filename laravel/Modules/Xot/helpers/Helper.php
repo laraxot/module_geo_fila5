@@ -75,9 +75,11 @@ if (! function_exists('hex2rgba')) {
         if (empty($color)) {
             return $default;
         }
+
         if ('#' === $color[0]) {
             $color = mb_substr($color, 1);
         }
+
         if (6 === mb_strlen($color)) {
             $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
         } elseif (3 === mb_strlen($color)) {
@@ -85,11 +87,13 @@ if (! function_exists('hex2rgba')) {
         } else {
             return $default;
         }
+
         $rgb = array_map('hexdec', $hex);
         if (-1.0 !== $opacity) {
             if ($opacity < 0 || $opacity > 1) {
                 $opacity = 1.0;
             }
+
             $output = 'rgba('.implode(',', $rgb).','.$opacity.')';
         } else {
             $output = 'rgb('.implode(',', $rgb).')';
@@ -103,21 +107,24 @@ if (! function_exists('dddx')) {
     function dddx(mixed $params): void
     {
         $tmp = debug_backtrace();
-        $start = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
+        $start = defined('LARAVEL_START') ? (float) LARAVEL_START : microtime(true);
         if (! defined('LARAVEL_START')) {
             define('LARAVEL_START', $start);
         }
+
         $data = [
             '_' => $params,
             'line' => $tmp[0]['line'] ?? 'line-unknows',
             'file' => app(FixPathAction::class)->execute($tmp[0]['file'] ?? 'file-unknown'),
-            'time' => microtime(true) - (float) $start,
+            'time' => microtime(true) - $start,
             'memory_taken' => round(memory_get_peak_usage() / (1024 * 1024), 2).' MB',
         ];
+
         if (File::exists($data['file']) && Str::startsWith($data['file'], app(FixPathAction::class)->execute(storage_path('framework/views')))) {
             $content = File::get($data['file']);
             $data['view_file'] = app(FixPathAction::class)->execute(Str::between($content, '/**PATH ', ' ENDPATH**/'));
         }
+
         dd($data);
     }
 }
@@ -154,9 +161,11 @@ if (! function_exists('inAdmin')) {
         if (isset($params['in_admin'])) {
             return (bool) $params['in_admin'];
         }
+
         if ('admin' === Request::segment(2)) {
             return true;
         }
+
         $segments = Request::segments();
 
         return (is_countable($segments) ? count($segments) : 0) > 0 && 'livewire' === $segments[0] && true === session('in_admin');
@@ -232,8 +241,10 @@ if (! function_exists('params2ContainerItem')) {
                 $params = $route_current->parameters();
             }
         }
+
         $container = [];
         $item = [];
+
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
@@ -264,6 +275,7 @@ if (! function_exists('getModelByName')) {
 
             return $res;
         }
+
         $files_path = base_path('Modules').'/*/Models/*.php';
         Assert::isArray($files = glob($files_path));
         $path = Arr::first($files, function ($file) use ($name): bool {
@@ -272,9 +284,11 @@ if (! function_exists('getModelByName')) {
 
             return Str::snake($info['filename'] ?? '') === $name;
         });
+
         if (null === $path) {
             throw new Exception('['.$name.'] not in morph_map');
         }
+
         $path = app(FixPathAction::class)->execute($path);
         $info = pathinfo($path);
         $module_name = Str::between($path, 'Modules'.DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR.'Models');
@@ -312,6 +326,7 @@ if (! function_exists('getModuleNameFromModelName')) {
         if (! is_string($model_class)) {
             throw new Exception('['.__LINE__.']');
         }
+
         Assert::isInstanceOf($model = app($model_class), Model::class);
 
         return getModuleNameFromModel($model);
@@ -332,6 +347,7 @@ if (! function_exists('xotModel')) {
         if (! is_string($model_class)) {
             throw new Exception('['.__LINE__.']');
         }
+
         Assert::isInstanceOf($res = app($model_class), Model::class);
 
         return $res;
@@ -366,8 +382,10 @@ if (! function_exists('trans_string')) {
             if (! is_string($k)) {
                 continue;
             }
+
             $safeReplace[$k] = (is_scalar($v) || null === $v) ? $v : (string) $v;
         }
+
         $result = __($key, $safeReplace, $locale);
 
         return is_string($result) ? $result : (null === $result ? null : $key);

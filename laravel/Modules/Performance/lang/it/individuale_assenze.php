@@ -142,6 +142,9 @@ return [
         ],
         'value' => [
             'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
         ],
         'openFilters' => [
             'label' => 'openFilters',
@@ -167,6 +170,8 @@ return [
             'label' => 'Nuova Assenza',
             'success' => 'Assenza registrata con successo',
             'error' => 'Errore durante la registrazione',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'update' => [
             'label' => 'Modifica',
@@ -178,6 +183,8 @@ return [
             'success' => 'Assenza eliminata con successo',
             'error' => 'Errore durante l\'eliminazione',
             'confirm' => 'Sei sicuro di voler eliminare questa assenza?',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'approve' => [
             'label' => 'Approva',
@@ -191,6 +198,83 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
+        ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'check' => [
+            'label' => 'check',
+            'icon' => 'check',
+            'tooltip' => 'check',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
         ],
     ],
     'messages' => [
@@ -229,4 +313,5 @@ return [
     'model' => [
         'label' => 'individuale assenze.model',
     ],
+    'label' => 'individuale assenze',
 ];

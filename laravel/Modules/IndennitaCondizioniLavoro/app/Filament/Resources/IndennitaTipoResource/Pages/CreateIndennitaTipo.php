@@ -9,5 +9,5 @@ use Modules\IndennitaCondizioniLavoro\Filament\Resources\IndennitaTipoResource;
 
 class CreateIndennitaTipo extends CreateRecord
 {
-    protected static string $resource = IndennitaTipoResource::class;
+    public static string $resource = IndennitaTipoResource::class;
 }

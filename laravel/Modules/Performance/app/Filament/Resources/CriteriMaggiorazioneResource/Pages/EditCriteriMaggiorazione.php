@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCriteriMaggiorazione extends XotBaseEditRecord
 {
-    protected static string $resource = CriteriMaggiorazioneResource::class;
+    public static string $resource = CriteriMaggiorazioneResource::class;
 
     protected function getHeaderActions(): array
     {

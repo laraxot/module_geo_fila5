@@ -95,51 +95,5 @@ class SsoProviderResource extends XotBaseResource
         ];
     }
 
-    /**
-     * @return array<string, EditAction|DeleteAction>
-     */
-    public static function getTableActions(): array
-    {
-        return [
-            'edit' => EditAction::make(),
-            'delete' => DeleteAction::make(),
-        ];
-    }
-
-    /**
-     * @return array<string, BulkActionGroup>
-     */
-    public static function getTableBulkActions(): array
-    {
-        return [
-            'group' => BulkActionGroup::make([
-                DeleteBulkAction::make(),
-            ]),
-        ];
-    }
-
-    /**
-     * @return array<string, class-string<\Filament\Resources\RelationManagers\RelationManager>>
-     */
-    #[\Override]
-    public static function getRelations(): array
-    {
-        return [
-            'users' => UsersRelationManager::class,
-        ];
-    }
-
-    /**
-     * @return array<string, PageRegistration>
-     */
-    #[\Override]
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListSsoProviders::route('/'),
-            'create' => Pages\CreateSsoProvider::route('/create'),
-            'view' => Pages\ViewSsoProvider::route('/{record}'),
-            'edit' => Pages\EditSsoProvider::route('/{record}/edit'),
-        ];
-    }
+   
 }

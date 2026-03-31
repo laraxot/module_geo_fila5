@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateIndividualeCatCoeff extends XotBaseCreateRecord
 {
-    protected static string $resource = IndividualeCatCoeffResource::class;
+    public static string $resource = IndividualeCatCoeffResource::class;
 }

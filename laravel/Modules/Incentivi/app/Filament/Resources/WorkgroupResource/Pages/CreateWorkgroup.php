@@ -9,7 +9,7 @@ use Modules\Incentivi\Filament\Resources\WorkgroupResource;
 
 class CreateWorkgroup extends CreateRecord
 {
-    protected static string $resource = WorkgroupResource::class;
+    public static string $resource = WorkgroupResource::class;
 
     protected function getRedirectUrl(): string
     {

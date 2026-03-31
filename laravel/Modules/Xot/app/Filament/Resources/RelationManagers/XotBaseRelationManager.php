@@ -35,7 +35,7 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
     protected static string $relationship = '';
 
     /** @var class-string<XotBaseResource> */
-    protected static string $resource;
+    public static string $resource;
 
     /**
      * Resolve the parent Resource class for this RelationManager.

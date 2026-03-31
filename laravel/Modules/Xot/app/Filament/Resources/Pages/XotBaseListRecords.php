@@ -71,14 +71,14 @@ abstract class XotBaseListRecords extends FilamentListRecords
     protected function getHeaderActions(): array
     {
         return [
-            'create' => CreateAction::make()->icon('heroicon-o-plus'),
+            // 'create' => CreateAction::make()->icon('heroicon-o-plus'),
         ];
     }
 
     /**
      * Paginate the table query.
      */
-    protected function paginateTableQuery(Builder $query): Paginator
+    protected function paginateTableQueryOLD(Builder $query): Paginator
     {
         $paginator = $query->fastPaginate(
             'all' === $this->getTableRecordsPerPage() ? $query->count() : $this->getTableRecordsPerPage(),

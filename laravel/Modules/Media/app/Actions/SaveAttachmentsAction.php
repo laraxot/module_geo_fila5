@@ -44,7 +44,7 @@ class SaveAttachmentsAction
 
             // Ottieni il contenuto del file prima che venga eliminato
             $fileContent = $storage->get($path);
-            $tempPath = tempnam(sys_get_temp_dir(), 'media_');
+            $tempPath = tempnam(storage_path('framework/cache'), 'media_');
 
             file_put_contents($tempPath, $fileContent);
 

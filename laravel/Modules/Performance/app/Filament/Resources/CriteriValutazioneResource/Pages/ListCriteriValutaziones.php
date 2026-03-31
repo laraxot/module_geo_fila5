@@ -15,14 +15,15 @@ use Filament\Tables\Filters\SelectFilter;
 use Modules\Performance\Filament\Resources\CriteriValutazioneResource;
 use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListCriteriValutaziones extends XotBaseListRecords
+class ListCriteriValutaziones extends PtvBaseYearListRecords
 {
-    protected static string $resource = CriteriValutazioneResource::class;
+    public static string $resource = CriteriValutazioneResource::class;
 
     /**
      * @return array<string, Columns\TextColumn>
@@ -62,50 +63,15 @@ class ListCriteriValutaziones extends XotBaseListRecords
         ];
     }
 
-    /**
-     * @return array<string, Filters\SelectFilter>
-     */
     #[Override]
     public function getTableFilters(): array
     {
         return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
+            ...parent::getTableFilters(),
             'post_type' => SelectFilter::make('post_type')
                 ->options(WorkerType::class),
         ];
     }
 
-    /**
-     * @return array<string, DeleteBulkAction>
-     */
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
-
-    /**
-     * Get the header actions for the list page.
-     *
-     * @return array<string, Action>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+    
 }

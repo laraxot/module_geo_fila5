@@ -10,5 +10,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 class EditPermission extends XotBaseEditRecord
 {
     // //
-    protected static string $resource = PermissionResource::class;
+    public static string $resource = PermissionResource::class;
 }

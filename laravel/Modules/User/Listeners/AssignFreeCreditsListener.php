@@ -29,6 +29,7 @@ class AssignFreeCreditsListener
         }
 
         $user = $event->user;
+
         if (! $user instanceof Authenticatable) {
             return;
         }

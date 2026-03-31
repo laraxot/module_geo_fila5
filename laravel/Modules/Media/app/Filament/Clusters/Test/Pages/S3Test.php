@@ -692,7 +692,7 @@ class S3Test extends XotBasePage
         try {
             $testData = 'This is a test file content for S3 upload/download test.';
             $testFileName = 'test-file-'.time().'.txt';
-            $localTestPath = sys_get_temp_dir().'/'.$testFileName;
+            $localTestPath = storage_path('framework/cache/'.$testFileName);
 
             // Create test file
             file_put_contents($localTestPath, $testData);

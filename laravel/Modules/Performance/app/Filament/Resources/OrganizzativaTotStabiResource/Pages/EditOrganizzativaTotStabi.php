@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOrganizzativaTotStabi extends XotBaseEditRecord
 {
-    protected static string $resource = OrganizzativaTotStabiResource::class;
+    public static string $resource = OrganizzativaTotStabiResource::class;
 
     protected function getHeaderActions(): array
     {

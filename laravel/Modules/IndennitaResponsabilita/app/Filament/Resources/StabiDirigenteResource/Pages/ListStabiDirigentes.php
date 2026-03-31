@@ -15,7 +15,7 @@ use Override;
 
 class ListStabiDirigentes extends PtvListStabiDirigentes
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     /**
      * @return array<Action>

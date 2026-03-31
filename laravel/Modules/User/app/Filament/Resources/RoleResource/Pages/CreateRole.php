@@ -15,7 +15,7 @@ class CreateRole extends XotBaseCreateRecord
     // //
     public Collection $permissions;
 
-    protected static string $resource = RoleResource::class;
+    public static string $resource = RoleResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

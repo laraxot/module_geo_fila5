@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateProfile extends XotBaseCreateRecord
 {
-    protected static string $resource = BaseProfileResource::class;
+    public static string $resource = BaseProfileResource::class;
 
     public function mutateFormDataBeforeCreate(array $data): array
     {

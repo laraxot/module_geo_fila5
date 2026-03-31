@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListAuthenticationLogs extends XotBaseListRecords
 {
-    protected static string $resource = AuthenticationLogResource::class;
+    public static string $resource = AuthenticationLogResource::class;
 
     /**
      * @return array<string, Action>

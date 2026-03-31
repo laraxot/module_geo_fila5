@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditProgressioni extends XotBaseEditRecord
 {
-    protected static string $resource = ProgressioniResource::class;
+    public static string $resource = ProgressioniResource::class;
 }

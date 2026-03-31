@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCategoriaPropro extends XotBaseEditRecord
 {
-    protected static string $resource = CategoriaProproResource::class;
+    public static string $resource = CategoriaProproResource::class;
 
     protected function getHeaderActions(): array
     {

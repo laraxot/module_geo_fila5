@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Models\Profile;
 use Modules\Xot\Traits\Updater;
+use function Safe\unserialize;
 
 /**
  * Modules\Performance\Models\MyLog.

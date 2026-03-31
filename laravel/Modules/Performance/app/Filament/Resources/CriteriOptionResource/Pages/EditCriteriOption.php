@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\CriteriOptionResource\Pages\EditCriteriOption
 
 class EditCriteriOption extends PtvEditCriteriOption
 {
-    protected static string $resource = CriteriOptionResource::class;
+    public static string $resource = CriteriOptionResource::class;
 }

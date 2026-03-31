@@ -264,7 +264,7 @@ trait SchedaMutator
 
         // */
         $value = 0;
-        if ($this->gg_presenza_anno !== 0) {
+        if ($this->gg_presenza_anno != 0) {
             $value = $this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno));
         }
 
@@ -374,13 +374,9 @@ trait SchedaMutator
             return null;
         }
 
-        $this->posiz_txt = $row->desc1;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz_txt' => $row->desc1]);
-        }
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz_txt'] = $row->desc1;
 
         return isset($this->attributes['posiz_txt']) && is_string($this->attributes['posiz_txt']) ? $this->attributes['posiz_txt'] : null;
     }
@@ -404,7 +400,13 @@ trait SchedaMutator
         if ($value === null) {
             return null;
         }
-        $this->update(['disci1' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - may causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['disci1'] = $value;
+        if($this->getKey()!=null){
+            $this->update(['disci1'=>$value]);
+        }
 
         return $value;
     }
@@ -423,7 +425,10 @@ trait SchedaMutator
 
         $categoria_propro = $this->categoriaPropro;
         $value = $categoria_propro?->getAttribute('categoria');
-        $this->update(['categoria_ecoval' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['categoria_ecoval'] = $value;
 
         return $value === null ? null : (string) $value;
     }
@@ -460,10 +465,10 @@ trait SchedaMutator
         }
 
         $value = $qua00f->first()?->getAttribute('posiz');
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz' => $value]);
-        }
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz'] = $value;
 
         return $value === null ? null : (int) $value;
     }
@@ -565,4 +570,25 @@ trait SchedaMutator
      */
     // *
     // */
+    public function getWorkerType(): string
+    {
+        $post_type = 'dip';
+        if ($this->isPo()) {
+            $post_type = 'po';
+        } elseif ($this->isRegionale()) {
+            $post_type = 'regionale';
+        } 
+        return $post_type;
+    }
+    public function getTypeAttribute(?string $value): string
+    {
+        if($value!=null){
+            return $value;
+        }
+        $value=$this->getWorkerType();
+        if($this->getKey()!=null){
+            $this->update(['type'=>$value]);
+        }
+        return $value;
+    }
 }

@@ -24,7 +24,7 @@ use Webmozart\Assert\Assert;
 
 class ListJobBatches extends XotBaseListRecords
 {
-    protected static string $resource = JobBatchResource::class;
+    public static string $resource = JobBatchResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

@@ -23,6 +23,7 @@ use Modules\Ptv\Filament\Columns\LavoratoreColumn;
 use Modules\Ptv\Filament\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Columns\QualificaColumn;
 use Modules\Ptv\Filament\Columns\RepartoColumn;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
@@ -33,9 +34,9 @@ use function Safe\date;
 /**
  * ---.
  */
-class ListOrganizzativas extends XotBaseListRecords
+class ListOrganizzativas extends ListScheda
 {
-    protected static string $resource = OrganizzativaResource::class;
+    public static string $resource = OrganizzativaResource::class;
 
     public function getTableColumns(): array
     {

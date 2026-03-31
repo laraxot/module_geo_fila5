@@ -380,4 +380,10 @@ docs/archive/
 .gemini/
 .cursor/
 .opencode/
+<<<<<<< HEAD
 docs/archive/
+=======
+laravel/Themes/Zero/.devcontainer/
+laravel/Themes/Zero/.cursor/
+laravel/.claude/
+>>>>>>> dev

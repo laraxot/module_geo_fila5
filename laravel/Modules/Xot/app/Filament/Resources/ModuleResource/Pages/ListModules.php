@@ -23,7 +23,7 @@ class ListModules extends XotBaseListRecords
 {
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    protected static string $resource = ModuleResource::class;
+    public static string $resource = ModuleResource::class;
 
     #[\Override]
     public function getGridTableColumns(): array

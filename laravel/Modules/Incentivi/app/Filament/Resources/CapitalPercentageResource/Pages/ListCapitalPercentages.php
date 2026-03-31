@@ -16,7 +16,7 @@ use Override;
 
 class ListCapitalPercentages extends XotBaseListRecords
 {
-    protected static string $resource = CapitalPercentageResource::class;
+    public static string $resource = CapitalPercentageResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

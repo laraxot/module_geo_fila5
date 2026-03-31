@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListDevices extends XotBaseListRecords
 {
-    protected static string $resource = DeviceResource::class;
+    public static string $resource = DeviceResource::class;
 
     /**
      * @return array<string, Column>

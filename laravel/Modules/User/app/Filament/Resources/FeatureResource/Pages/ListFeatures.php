@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListFeatures extends XotBaseListRecords
 {
-    protected static string $resource = FeatureResource::class;
+    public static string $resource = FeatureResource::class;
 
     /**
      * @return array<string, Column>

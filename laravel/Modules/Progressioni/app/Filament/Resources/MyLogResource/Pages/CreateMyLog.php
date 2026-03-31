@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\MyLogResource;
 
 class CreateMyLog extends CreateRecord
 {
-    protected static string $resource = MyLogResource::class;
+    public static string $resource = MyLogResource::class;
 }

@@ -46,7 +46,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListProgressionis extends XotBaseListRecords
 {
-    protected static string $resource = ProgressioniResource::class;
+    public static string $resource = ProgressioniResource::class;
 
     /**
      * @return array<string, Action>

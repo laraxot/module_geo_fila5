@@ -1,3 +1,12 @@
+# Gemini Context
+
+> **Gemini Agent Guide (split)**: [.agents/docs/ai-agents/gemini/index.md](.agents/docs/ai-agents/gemini/index.md)
+> Memories: [.agents/docs/ai-agents/gemini/memories.md](.agents/docs/ai-agents/gemini/memories.md)
+> Rules: [.agents/docs/ai-agents/gemini/rules.md](.agents/docs/ai-agents/gemini/rules.md)
+> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
+
+---
+
 # Gemini Added Memories
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
 - PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
@@ -50,6 +59,60 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
 - **Rule**: USER TYPING - Never use generic `\Illuminate\Database\Eloquent\Model|null` for users in method signatures or PHPDoc. Always use `Modules\Xot\Contracts\UserContract`. See `docs/eloquent-models-property-verification.md`.
 
+## GSD (Get Shit Done)
+
+This project uses GSD for spec-driven development with context engineering.
+GSD solves context rot by keeping each task in a fresh, optimal context window.
+
+- **State**: `.planning/STATE.md` — read at session start
+- **Config**: `.planning/config.json` — workflow configuration
+- **Templates**: `.gsd/templates/` — document templates
+- **Methodology**: `docs/project/gsd-methodology.md`
+
+### GSD Workflow
+
+```
+new-project → discuss-phase N → plan-phase N → execute-phase N → verify-work N → complete-milestone
+```
+
+### Quick Commands
+
+| Action | How |
+|--------|-----|
+| New project | "GSD new-project" |
+| Discuss phase | "GSD discuss phase N" |
+| Plan phase | "GSD plan phase N" |
+| Execute phase | "GSD execute phase N" |
+| Verify work | "GSD verify N" |
+| Quick task | "GSD quick: description" |
+| Map codebase | "GSD map codebase" |
+| Progress | "GSD progress" |
+
+### GSD vs BMAD
+
+- **GSD**: Single features, refactoring, bug fixes, quick tasks
+- **BMAD**: New modules, architecture, stakeholder alignment, sprint planning
+
+## BMAD Method
+
+BMAD (v6.2.0) è integrato in `_bmad/` con agenti specialisti e workflow strutturati.
+
+- **Config**: `_bmad/_config/` (manifest e integrazioni IDE)
+- **Workflows**: `_bmad/bmm/workflows/`
+- **Project context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
+- **Help**: invoca `bmad-help` quando non sai cosa fare dopo
+
+### Fasi tipiche
+
+1. **Analisi** (quando serve): brainstorming / ricerca
+2. **Pianificazione**: PRD / UX
+3. **Solutioning**: architettura / epics & stories
+4. **Implementazione**: dev / code review / QA
+
+### Quick flow
+
+Per task piccoli: `bmad-quick-dev` (spec + implementazione in un workflow).
+
 ## Documentation Locations
 
 - Project docs: `docs/`
@@ -58,6 +121,9 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - Agent skills: `.agent/skills/`
 - Agent workflows: `.agent/workflows/`
 - Agent teams: `.agent/agent-teams.md`
+- GSD methodology: `docs/project/gsd-methodology.md`
+- GSD templates: `.gsd/templates/`
+- GSD state: `.planning/STATE.md`
 
 ## Links
 
@@ -68,3 +134,11 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - [Filament Guide](./.gemini/docs/filament.md)
 - [MCP Guide](./.gemini/docs/mcp.md)
 - [Agent Teams](./.agent/agent-teams.md)
+- [GSD Methodology](docs/project/gsd-methodology.md)
+- [BMAD Integration](docs/project/bmad-method-integration.md)
+
+## BMAD Rules for Gemini
+- **Spec-First**: Per moduli complessi o nuove architetture, NON iniziare a codificare senza un workflow BMAD (`create-prd` → `create-architecture`).
+- **Context Sharding**: Se un documento supera i 1600 token, usa `bmad-shard-doc` per mantenere l'efficienza del contesto.
+- **Expert Personas**: Quando agisci come `architect` o `pm`, segui strettamente il manifest dell'agente in `_bmad/bmm/agents/`.
+- **"What's Next"**: In caso di incertezza sulla fase del progetto, invoca sempre `bmad-help`.

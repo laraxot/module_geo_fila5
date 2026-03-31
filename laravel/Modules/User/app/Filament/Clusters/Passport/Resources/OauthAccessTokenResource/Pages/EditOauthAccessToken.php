@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOauthAccessToken extends XotBaseEditRecord
 {
-    protected static string $resource = OauthAccessTokenResource::class;
+    public static string $resource = OauthAccessTokenResource::class;
 
     public static function getNavigationLabel(): string
     {

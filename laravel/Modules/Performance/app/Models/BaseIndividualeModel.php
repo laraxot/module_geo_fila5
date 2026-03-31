@@ -340,4 +340,10 @@ abstract class BaseIndividualeModel extends BaseScheda
     {
         $this->attributes['motivo'] = $value;
     }
+
+
+    public function getCriteriOptionsRoot(): Collection
+    {
+        return $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();
+    }
 }

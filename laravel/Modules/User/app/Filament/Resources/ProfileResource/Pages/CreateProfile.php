@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateProfile extends XotBaseCreateRecord
 {
-    protected static string $resource = ProfileResource::class;
+    public static string $resource = ProfileResource::class;
 }

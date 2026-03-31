@@ -73,7 +73,7 @@ final class SendGammuSMSAction implements SmsActionContract
         }
 
         // Prepara il messaggio per Gammu
-        $tempFile = tempnam(sys_get_temp_dir(), 'sms_');
+        $tempFile = tempnam(storage_path('framework/cache'), 'sms_');
         file_put_contents($tempFile, $smsData->body);
 
         // Esegue il comando Gammu per inviare l'SMS

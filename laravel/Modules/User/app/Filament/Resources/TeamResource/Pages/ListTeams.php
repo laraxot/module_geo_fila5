@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 class ListTeams extends XotBaseListRecords
 {
     // //
-    protected static string $resource = TeamResource::class;
+    public static string $resource = TeamResource::class;
 
     #[\Override]
     public function getTableColumns(): array

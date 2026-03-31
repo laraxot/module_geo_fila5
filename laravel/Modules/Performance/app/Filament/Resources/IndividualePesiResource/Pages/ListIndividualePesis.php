@@ -15,27 +15,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Performance\Filament\Resources\IndividualePesiResource;
 use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListIndividualePesis extends XotBaseListRecords
+class ListIndividualePesis extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualePesiResource::class;
+    public static string $resource = IndividualePesiResource::class;
 
-    /**
-     * @return array<string, CreateAction|CopyFromLastYearAction>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+    
 
     /**
      * @return array<string, Column>
@@ -92,15 +83,11 @@ class ListIndividualePesis extends XotBaseListRecords
         ];
     }
 
-    /**
-     * @return array<string, Filter|SelectFilter>
-     */
     #[Override]
     public function getTableFilters(): array
     {
         return [
-            'anno' => app(GetYearFilter::class)
-                ->execute('anno', intval(date('Y')) - 3, intval(date('Y'))),
+            ...parent::getTableFilters(),
             'type' => SelectFilter::make('type')
                 ->options(WorkerType::class),
             'pesi_non_zero' => Filter::make('pesi_non_zero')
@@ -122,11 +109,5 @@ class ListIndividualePesis extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
+   
 }

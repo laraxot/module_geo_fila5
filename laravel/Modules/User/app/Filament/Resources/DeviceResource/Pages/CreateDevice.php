@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateDevice extends XotBaseCreateRecord
 {
-    protected static string $resource = DeviceResource::class;
+    public static string $resource = DeviceResource::class;
 }

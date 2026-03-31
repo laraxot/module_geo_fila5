@@ -10,5 +10,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateNotificationLog extends XotBaseCreateRecord
 {
-    protected static string $resource = NotificationLogResource::class;
+    public static string $resource = NotificationLogResource::class;
 }

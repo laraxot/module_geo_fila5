@@ -182,6 +182,24 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+        'soldi' => [
+            'label' => 'soldi',
+        ],
+        'info' => [
+            'label' => 'info',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'motivo/invio_email' => [
+            'label' => 'motivo/invio_email',
+        ],
+        'mail_sended_at' => [
+            'label' => 'mail_sended_at',
+        ],
+        'propro' => [
+            'label' => 'propro',
+        ],
     ],
     'actions' => [
         'import' => [
@@ -203,6 +221,103 @@ return [
         ],
         'create' => [
             'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'zip_schede' => [
+            'tooltip' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'label' => 'zip_schede',
+        ],
+        'populate_year' => [
+            'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
+        ],
+        'MakePdfAction' => [
+            'label' => 'MakePdfAction',
+            'icon' => 'MakePdfAction',
+            'tooltip' => 'MakePdfAction',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
         ],
     ],
     'messages' => [
@@ -220,4 +335,5 @@ return [
     'model' => [
         'label' => 'Performance Amministrativa',
     ],
+    'label' => 'individuale adm',
 ];

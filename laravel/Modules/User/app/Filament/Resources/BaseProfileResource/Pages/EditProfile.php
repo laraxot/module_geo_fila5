@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditProfile extends XotBaseEditRecord
 {
-    protected static string $resource = BaseProfileResource::class;
+    public static string $resource = BaseProfileResource::class;
 }

@@ -11,7 +11,7 @@ use Override;
 
 class ListStabiDirigentes extends PtvBaseYearListRecords
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -9,5 +9,5 @@ use Modules\Incentivi\Filament\Resources\ActivityResource;
 
 class CreateActivity extends CreateRecord
 {
-    protected static string $resource = ActivityResource::class;
+    public static string $resource = ActivityResource::class;
 }

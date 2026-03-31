@@ -9,5 +9,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndivid
 
 class ListIndividualeRegionales extends ListIndividuales
 {
-    protected static string $resource = IndividualeRegionaleResource::class;
+    public static string $resource = IndividualeRegionaleResource::class;
 }

@@ -22,7 +22,7 @@ use Override;
 
 class ManageProjectActivities extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'activities';
 
@@ -111,13 +111,12 @@ class ManageProjectActivities extends XotBaseManageRelatedRecords
     }
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
         ];
     }
 
-    #[Override]
     public function getTablePaginated(): bool
     {
         return false;

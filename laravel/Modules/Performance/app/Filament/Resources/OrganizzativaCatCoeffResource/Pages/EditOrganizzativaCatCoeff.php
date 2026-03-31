@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOrganizzativaCatCoeff extends XotBaseEditRecord
 {
-    protected static string $resource = OrganizzativaCatCoeffResource::class;
+    public static string $resource = OrganizzativaCatCoeffResource::class;
 
     protected function getHeaderActions(): array
     {

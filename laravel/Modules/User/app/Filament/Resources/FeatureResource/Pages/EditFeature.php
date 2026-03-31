@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditFeature extends XotBaseEditRecord
 {
-    protected static string $resource = FeatureResource::class;
+    public static string $resource = FeatureResource::class;
 }

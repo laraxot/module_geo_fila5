@@ -21,7 +21,7 @@ class EditRole extends XotBaseEditRecord
     public Collection $permissions;
 
     // public Role $record;
-    protected static string $resource = RoleResource::class;
+    public static string $resource = RoleResource::class;
 
     /**
      *  ---.

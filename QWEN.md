@@ -1,506 +1,143 @@
-<<<<<<< .merge_file_7GEvnI
-## Qwen Added Memories
-- Test rules: Use Pest format exclusively. NEVER use migrate:fresh or database:refresh in tests. Use DatabaseTransactions trait instead for proper transactional test isolation without schema rebuilds.
-=======
-# QWEN.md - Project Context & Development Guide
+# Qwen Context
 
-> **Project**: PTVX Fila5 Mono - HR & Performance Evaluation System  
-> **Stack**: Laravel 12.47 | Filament v5 | Pest v4 | PHPStan Level 10 | PHP 8.3+  
-> **Architecture**: Laraxot Modular System  
-> **Last Updated**: 2026-03-13
+> **Qwen Agent Guide (split)**: [.agents/docs/ai-agents/qwen/index.md](.agents/docs/ai-agents/qwen/index.md)
+> Rules: [.agents/docs/ai-agents/qwen/rules.md](.agents/docs/ai-agents/qwen/rules.md)
+> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
 
 ---
 
-## 🎯 Project Overview
+# Qwen Added Memories (condivise con Gemini)
+- When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
+- PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
+- PRD STRUCTURE: A standard PRD must include: Executive Summary, Target Personas (including Internal Developers), Functional Requirements, Service Interface (The Contract), System Architecture & Dependencies, Non-Functional Requirements (SLA, Observability, Security), and Release Criteria.
+- PRD FOR MODULAR SYSTEMS: Focus on Service Boundaries (Domain-Driven Design), Data Ownership (Source of Truth), and "Contract-First" requirements (API/Event schemas).
+- NEVER use 'git remote set-url'. This command is reserved for the project owner only.
+- Always follow a forward-only Git workflow. Never revert or reset old versions; study logs for context.
+- When calling Spatie Queueable Actions, always use 'app(ActionClass::class)->execute()' instead of direct method calls like 'createPersonalAccessClient()'.
+- Avoid constructor Dependency Injection in Actions and Services. Prefer using the 'app()' container resolution (e.g., 'app(Dependency::class)') for dependencies.
+- CRITICAL: Never replace domain-specific components like 'WorkerColumn' with generic Filament components (e.g., 'TextColumn'). Always preserve existing specialized logic, fields, and actions. This aligns with the 'Never Simplify Domain' principle.
+- When invoking actions from Filament components, ensure return types and parameter passing strictly adhere to the action's signature. For actions returning StreamedResponse, explicitly return the result of the action call.
+- LARAVEL BOOST & SKILLS: Use `php artisan boost:add-skill <owner/repo>` to install skills from https://skills.laravel.cloud/.
+- **Rule**: PHPSTAN LEVEL 10 DYNAMIC RELATIONSHIPS - When defining dynamic Eloquent relationships (like `scheda()` in `Ptv` module), always resolve the model class string with a fallback to the base model (e.g., `Modules\Progressioni\Models\Scheda`) and use `Webmozart\Assert\Assert::classExists($modelClass)` for type narrowing.
+- **Rule**: ISSUE & DISCUSSION COORDINATION - Track all PHPStan Level 10 fixes via module-specific GitHub Issues (IDs #85-100) and link them to the central coordination Discussion #84. Every commit must reference the relevant issue.
+- **Rule**: Every module and theme MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `laravel/Modules/Xot/_xot.code-workspace`). Any misplaced files (like `_activity.code-workspace` in `Xot`) must be deleted immediately.
+- **Rule**: BASH SCRIPTS ORGANIZATION - All `.sh` scripts MUST be placed in a subfolder of `bashscripts/` (e.g., `bashscripts/ai/`), NEVER in the root. Every script must be documented in `bashscripts/docs/`.
+- **Rule**: JUNCTION/SYMLINK RULE - Centralize AI agent configuration folders (like `.qwen`) in `bashscripts/ai/` and create symbolic links (junctions) to the project root and `laravel/` folder to ensure multi-agent synchronization.
+- **Rule**: COMMIT & PUSH - When functionality is verified, always perform `git commit` and `git push` to synchronize changes globally.
+- **Rule**: ENVIRONMENT-AWARE SCRIPTS - All synchronization and deployment scripts (especially `sync_remote_repo.sh`) MUST detect the environment (`CLI` vs. `GitHub Actions`) and adapt their behavior (e.g., skip interactive prompts, use tokens instead of SSH, skip local backups in CI). Coordination is managed via Issue #109.
+- YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
 
-**PTVX** is a modular enterprise HR & Performance evaluation system for Italian Public Administrations. It automates:
+# Gemini Context
 
-- **Personnel evaluations** with configurable criteria and automatic calculations
-- **Indemnity management** with defined formulas and complete audit trails
-- **Career progression** with standardized workflows and approval chains
-- **Documentation generation** including PDF exports and version control
+## Project Context
 
-### Core Technologies
+PTVX is a modular HR & Performance evaluation system based on Laravel + Filament + Laraxot.
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Laravel | 12.47.0 | Backend framework |
-| Filament | 5.0.0 | Admin panel |
-| PHP | 8.3+ | Language |
-| PHPStan | Level 10 | Static analysis |
-| Pest | v4 | Testing |
-| Laraxot | Custom | Modular architecture |
+## Guidelines for Gemini
 
-### Project Structure
+- Do not extend Filament classes directly in application modules: use `XotBase*` wrappers.
+- Translations must not be hardcoded in Filament components.
+- Prefer Actions (e.g. Spatie Queueable Action) over Services.
+- **CRITICAL RULE**: Before modifying ANY file, the mandatory sequence is: 1. **Read** the file; 2. **Reason**; 3. **Study** the context; 4. **Update and improve** the `docs/` folders within modules and themes. Only after these steps can code modifications begin.
+- Use PHPStan Level 10 approach: "Fix, Don't Ignore" - all 34 modules are now 100% compliant.
+- Follow module-per-module workflow: complete one module before moving to the next.
+- Use MCP tools when encountering file access limitations.
+- **Rule**: Every change MUST be verified with PHPStan lvl10, PHPMD, and PHPInsights.
+- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `Modules/Xot/_xot.code-workspace`, `Modules/Activity/_activity.code-workspace`).
+- **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
+- **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
+- **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
+- **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
+- **Rule**: SAFE REFACTORING PATTERN - Never delete critical files (Models, Actions, Resources) during a rename or major refactor. Instead, rename the old version by appending `.old` (e.g., `OldModel.php.old`) to allow for recovery and reference during the transition.
+- **Rule**: MODULAR DATABASE ISOLATION - It is strictly forbidden to add module-specific database connections (e.g., `db_forge`, `mobilita_volontaria`) to the root `/laravel/config/database.php`. Each module must register its connections dynamically in its `XotBaseServiceProvider` to maintain core agnosticism and self-containment. See `Modules/Xot/docs/database-architecture.md`.
+- **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
+- **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
+- **Rule**: FILAMENT CUSTOM PAGES - Custom pages MUST extend `XotBase*` classes. Single-record edit pages follow the `$data` array + `form->fill()` + `form->getState()` pattern. For type-safe record access, use a `getSpecificRecord()` helper with explicit `instanceof` narrowing. See skill: `.agent/skills/filament-custom-pages/SKILL.md`.
+- **Rule**: UNIFIED FORM PATTERN - Avoid manual Blade HTML on custom pages. Integrate header metadata and summary sections into a unified Filament form schema for better reactivity and consistency.
+- **Rule**: INFOLIST FOR METADATA - Use Filament Infolists for read-only metadata on custom pages. This separates visualization (Infolist) from active interaction (Form), adhering to KISS and semantic UI principles.
+- **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
+- **Rule**: USER TYPING - Never use generic `\Illuminate\Database\Eloquent\Model|null` for users in method signatures or PHPDoc. Always use `Modules\Xot\Contracts\UserContract`. See `docs/eloquent-models-property-verification.md`.
 
-```
-base_ptvx_fila5_mono/
-├── laravel/                    # Main Laravel application
-│   ├── Modules/                # 42+ modular components
-│   │   ├── Xot/               # Core module (base for all others)
-│   │   ├── Activity/          # Activity tracking
-│   │   ├── Performance/       # Performance evaluations
-│   │   ├── Ptv/               # Main PTV functionality
-│   │   └── ...                # 38+ other modules
-│   ├── app/                   # Core application code
-│   ├── config/                # Configuration
-│   └── database/              # Migrations, seeders
-├── bashscripts/               # All .sh scripts (centralized)
-│   ├── ai/                    # AI-related scripts
-│   ├── maintenance/           # Maintenance scripts
-│   ├── git/                   # Git operations
-│   └── docs/                  # Script documentation
-├── docs/                      # Project documentation
-├── .qwen/                     # Qwen AI configuration (symlink)
-└── AGENTS.md                  # Development guide index
-```
+## GSD (Get Shit Done)
 
----
+This project uses GSD for spec-driven development with context engineering.
+GSD solves context rot by keeping each task in a fresh, optimal context window.
 
-## 🚀 Quick Start
+- **State**: `.planning/STATE.md` — read at session start
+- **Config**: `.planning/config.json` — workflow configuration
+- **Templates**: `.gsd/templates/` — document templates
+- **Methodology**: `docs/project/gsd-methodology.md`
 
-### Initial Setup
-
-```bash
-# Clone and install
-git clone <repository-url>
-cd base_ptvx_fila5_mono/laravel
-composer install
-cp .env.example .env
-php artisan key:generate
-
-# Configure database in .env
-php artisan migrate
-php artisan db:seed
-
-# Frontend
-npm install
-npm run build
-```
-
-### Essential Commands
-
-```bash
-# Complete setup (recommended)
-composer go                    # Install + permissions + optimization
-
-# Code quality
-php -d memory_limit=2G ./vendor/bin/phpstan analyse   # Level 10
-./vendor/bin/pint                                      # Formatting
-./vendor/bin/pest                                      # Testing
-
-# Cache clearing
-bash bashscripts/maintenance/cleanup/clear_all_caches.sh
-php artisan filament:optimize
-```
-
----
-
-## 🔴 CRITICAL RULES (Must Follow)
-
-### 1. Commit & Push Immediately
-
-**After completing ANY task:**
-
-```bash
-git add -A
-git commit -m "type: clear description"
-git push origin dev
-```
-
-**NEVER** leave work uncommitted. See: `bashscripts/docs/COMMIT_AND_PUSH_RULE.md`
-
-### 2. File Location Rules
-
-| File Type | Location | Never |
-|-----------|----------|-------|
-| **Scripts (.sh)** | `bashscripts/{category}/` | `docs/`, root |
-| **Documentation (.md)** | `docs/` or module `docs/` | root |
-| **AI Agent dirs** | `bashscripts/ai/.{agent}/` + symlinks | Multiple copies |
-| **Module code** | `Modules/{Module}/app/` | Module root |
-
-See: `docs/FILE_LOCATION_RULES.md`, `bashscripts/docs/script-location-rule.md`
-
-### 3. Read → Reason → Study → Update → Improve
-
-**Before modifying ANY file:**
-
-1. **Read** the file completely
-2. **Reason** about the change
-3. **Study** related context and documentation
-4. **Update** docs if needed
-5. **Improve** the code
-
-After edit: Run PHPStan + PHPMD + PHPInsights.
-
-See: `.agents/docs/agents-first-rule.md`
-
-### 4. Extend XotBase Classes
-
-```php
-// ❌ NEVER extend Filament directly
-class MyPage extends Filament\Pages\Page
-
-// ✅ ALWAYS use XotBase wrappers
-class MyPage extends Modules\Xot\Filament\Pages\XotBasePage
-```
-
-### 5. No Hardcoded Strings
-
-```php
-// ❌ NEVER
-TextInput::make('name')->label('Nome')
-
-// ✅ ALWAYS (auto-translated)
-TextInput::make('name')
-```
-
-### 6. Forward-Only Git
-
-```bash
-// ❌ NEVER go backward
-git reset --hard HEAD~1
-
-// ✅ ALWAYS go forward
-git commit -m "fix: correct issue"
-```
-
-### 7. PHPStan Level 10
-
-- **No ignores** allowed
-- **declare(strict_types=1)** in every file
-- **Short array syntax `[]`** always, never `array()`
-- **No `property_exists()`** on Eloquent models - use `isset()`
-
----
-
-## 📁 AI Agent Coordination
-
-### .qwen Directory Structure
+### GSD Workflow
 
 ```
-.qwen/                        # Root symlink -> bashscripts/ai/.qwen
-  -> bashscripts/ai/.qwen
-
-laravel/.qwen/                # Laravel symlink
-  -> ../bashscripts/ai/.qwen
-
-bashscripts/ai/.qwen/         # Source of truth
-├── commands/
-├── skills/
-└── rules/
+new-project → discuss-phase N → plan-phase N → execute-phase N → verify-work N → complete-milestone
 ```
 
-**All AI agents share the same centralized configuration via symlinks.**
-
-See: `bashscripts/docs/AI_AGENT_JUNCTION_RULE.md`, `docs/conventions/qwen-directory-structure.md`
-
-### Before You Act
-
-1. **Read** `docs/ai-agent-coordination.md`
-2. **Check** for concurrent agents working on same files
-3. **Review** recent commits: `git log -n 10 --oneline`
-4. **Pull** latest changes: `git pull origin dev`
-
-### After You Act
-
-1. **Commit** with clear message
-2. **Push** to remote
-3. **Update** coordination document
-4. **Create** GitHub Issue/Discussion if needed
-
----
-
-## 🏗️ Architecture Patterns
-
-### Module Structure
-
-Every module follows this pattern:
-
-```
-Modules/{ModuleName}/
-├── app/                    # ALL PHP classes go here
-│   ├── Actions/           # Business logic
-│   ├── Datas/             # Data objects (Spatie Laravel Data)
-│   ├── Filament/          # Filament resources, pages, widgets
-│   ├── Models/            # Eloquent models
-│   ├── Providers/         # Service providers
-│   └── Services/          # Services
-├── config/                # Module configuration
-├── database/              # Migrations, factories, seeders
-├── docs/                  # Module documentation
-├── lang/                  # Translations
-├── resources/             # Views, assets
-├── routes/                # Module routes
-├── tests/                 # Tests
-├── composer.json          # Module dependencies
-└── module.json            # Module metadata
-```
-
-**Exceptions**: Only Xot module can have special folders in root (`helpers/`, `Datas/`, `Services/`, `Filament/`) for legacy reasons.
-
-See: `laravel/Modules/Xot/docs/module-directory-structure-rule.md`
-
-### Action Pattern
-
-```php
-// ✅ CORRECT - Spatie QueueableAction + app() resolution
-app(CreateClientAction::class)->execute($data);
-
-// ❌ WRONG - Direct method call
-CreateClientAction::execute($data);
-
-// ❌ WRONG - Constructor DI in Actions
-new CreateClientAction($dependency)
-```
-
-See: `.agents/docs/agents-guide/13-references/project-patterns.md`
-
-### Database Patterns
-
-- **No RefreshDatabase** in tests
-- Use **HasXotFactory** trait (inherited from BaseModel)
-- **Model classes MUST be singular** (e.g., `Scheda`, not `Schede`)
-- Table names stay plural
-
-See: `.agents/docs/database-patterns.md`, `.agents/docs/laraxot-model-rules.md`
-
----
-
-## 🧪 Testing
-
-### Running Tests
-
-```bash
-# All tests
-./vendor/bin/pest
-
-# Specific test
-./vendor/bin/pest --filter="test_name"
-
-# With coverage
-./vendor/bin/pest --coverage
-```
-
-### Test Structure
-
-```php
-<?php
-
-declare(strict_types=1);
-
-it('can create user', function () {
-    // ✅ CORRECT - No RefreshDatabase
-    // ✅ CORRECT - app() resolution
-    $user = app(CreateUserAction::class)->execute([...]);
-    
-    expect($user)->toBeInstanceOf(User::class);
-});
-```
-
-See: `.agents/docs/agents-guide/08-testing/`
-
----
-
-## 📝 Commit Message Format
-
-```
-type: Short summary (50 chars or less)
-
-Detailed description (optional, wrap at 72 chars)
-
-- List of key changes
-- Related issues
-- Breaking changes (if any)
-```
-
-**Types:**
-- `feat:` New feature
-- `fix:` Bug fix
-- `docs:` Documentation only
-- `refactor:` Code refactoring
-- `test:` Adding tests
-- `chore:` Maintenance tasks
-
-**Example:**
-```
-feat: AI agent junction structure, file location rules, and cleanup
-
-- Add AI agent junction rule for .qwen directory
-- Create symlinks: .qwen -> bashscripts/ai/.qwen
-- Add file location rules documentation
-- Update AGENT_MEMORY.md with new rules
-- Remove temp/backup files from root
-```
-
----
-
-## 🔧 Development Workflow
-
-### 1. Start Work
-
-```bash
-# Pull latest changes
-git pull origin dev
-
-# Check recent commits
-git log -n 10 --oneline
-
-# Read coordination doc
-cat docs/ai-agent-coordination.md
-```
-
-### 2. During Work
-
-- Follow **Read → Reason → Study → Update → Improve**
-- Keep changes **atomic and focused**
-- **Test** as you go
-- **Document** decisions
-
-### 3. Complete Work
-
-```bash
-# Review changes
-git status
-git diff
-
-# Stage all
-git add -A
-
-# Commit with clear message
-git commit -m "type: description"
-
-# Push immediately
-git push origin dev
-
-# Verify
-git status  # Should show "working tree clean"
-```
-
----
-
-## 📚 Key Documentation
-
-### Core Rules
-
-| Document | Path |
-|----------|------|
-| **Critical Rules** | `.agents/docs/agents-guide/04-architecture/critical-rules-summary.md` |
-| **First Rule** | `.agents/docs/agents-first-rule.md` |
-| **File Location** | `docs/FILE_LOCATION_RULES.md` |
-| **Script Location** | `bashscripts/docs/script-location-rule.md` |
-| **Commit & Push** | `bashscripts/docs/COMMIT_AND_PUSH_RULE.md` |
-| **AI Junction** | `bashscripts/docs/AI_AGENT_JUNCTION_RULE.md` |
-
-### Architecture
-
-| Document | Path |
-|----------|------|
-| **Project Patterns** | `.agents/docs/agents-guide/13-references/project-patterns.md` |
-| **Database Patterns** | `.agents/docs/database-patterns.md` |
-| **Model Rules** | `.agents/docs/laraxot-model-rules.md` |
-| **Migration Patterns** | `.agents/docs/migration-patterns.md` |
-| **Filament Patterns** | `.agents/docs/filament-patterns.md` |
-
-### Module Documentation
-
-| Document | Path |
-|----------|------|
-| **Module Structure** | `laravel/Modules/Xot/docs/module-directory-structure-rule.md` |
-| **Workspace Naming** | `laravel/Modules/Xot/docs/workspace-file-rule.md` |
-| **Backup Files** | `laravel/Modules/Xot/docs/backup-copy-files-cleanup-rule.md` |
-
----
-
-## 🤝 Multi-Agent Coordination
-
-### GitHub
-
-- **Repository**: `github.com/provtv/base_ptv_fila5_mono`
-- **Branch**: `dev`
-- **Issues**: Track specific tasks
-- **Discussions**: Coordinate decisions
-
-### Other AI Agents
-
-- **Gemini**: Works on `base_fixcity_fila5`
-- **Claude**: Works on `base_quaeris_fila5`
-- **You**: Work on `base_ptvx_fila5`
-
-**Sync changes** across bases when useful. Use GitHub Discussions to coordinate.
-
----
-
-## 🚨 Common Pitfalls
-
-### ❌ Don't Do This
-
-```php
-// Wrong: Direct Filament extension
-class MyPage extends Filament\Pages\Page
-
-// Wrong: Hardcoded label
-TextInput::make('name')->label('Nome')
-
-// Wrong: property_exists on model
-if (property_exists($model, 'attribute'))
-
-// Wrong: Constructor DI in Actions
-new CreateAction($dependency)
-
-// Wrong: array() syntax
-$data = array('key' => 'value')
-```
-
-### ✅ Do This Instead
-
-```php
-// Correct: XotBase extension
-class MyPage extends Modules\Xot\Filament\Pages\XotBasePage
-
-// Correct: Auto-translated
-TextInput::make('name')
-
-// Correct: isset()
-if (isset($model->attribute))
-
-// Correct: app() resolution
-app(CreateAction::class)->execute($data)
-
-// Correct: Short array syntax
-$data = ['key' => 'value']
-```
-
----
-
-## 📊 Project Status
-
-### Current State
-
-- **42+ Modules** installed and active
-- **PHPStan Level 10** achieved across all modules
-- **100% Test Coverage** goal in progress
-- **AI Agent Coordination** active (Qwen, Gemini, Claude)
-
-### Recent Changes
-
-```
-8cbf25df docs: Add COMMIT_AND_PUSH_RULE and update AGENT_MEMORY
-13f51baf feat: AI agent junction structure, file location rules, and cleanup
-e4a54bda feat: Add new module documentation for planning and strategy
-```
-
----
-
-## 🔗 Quick Links
-
-- **Laravel Docs**: https://laravel.com/docs
-- **Filament Docs**: https://filamentphp.com/docs
-- **PHPStan**: https://phpstan.org/user-guide
-- **Pest**: https://pestphp.com/docs
-- **Spatie Data**: https://spatie.be/docs/laravel-data
-
----
-
-*This QWEN.md is auto-generated context for AI agents. Always verify with actual files and documentation.*
->>>>>>> .merge_file_1KHqaZ
+### Quick Commands
+
+| Action | How |
+|--------|-----|
+| New project | "GSD new-project" |
+| Discuss phase | "GSD discuss phase N" |
+| Plan phase | "GSD plan phase N" |
+| Execute phase | "GSD execute phase N" |
+| Verify work | "GSD verify N" |
+| Quick task | "GSD quick: description" |
+| Map codebase | "GSD map codebase" |
+| Progress | "GSD progress" |
+
+### GSD vs BMAD
+
+- **GSD**: Single features, refactoring, bug fixes, quick tasks
+- **BMAD**: New modules, architecture, stakeholder alignment, sprint planning
+
+## BMAD Method
+
+BMAD (v6.2.0) è integrato in `_bmad/` con agenti specialisti e workflow strutturati.
+
+- **Config**: `_bmad/_config/` (manifest e integrazioni IDE)
+- **Workflows**: `_bmad/bmm/workflows/`
+- **Project context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
+- **Help**: invoca `bmad-help` quando non sai cosa fare dopo
+
+### Fasi tipiche
+
+1. **Analisi** (quando serve): brainstorming / ricerca
+2. **Pianificazione**: PRD / UX
+3. **Solutioning**: architettura / epics & stories
+4. **Implementazione**: dev / code review / QA
+
+### Quick flow
+
+Per task piccoli: `bmad-quick-dev` (spec + implementazione in un workflow).
+
+## Documentation Locations
+
+- Project docs: `docs/`
+- Module docs: `laravel/Modules/{Module}/docs/`
+- MCP configuration: `laravel/.mcp.json`
+- Agent skills: `.agent/skills/`
+- Agent workflows: `.agent/workflows/`
+- Agent teams: `.agent/agent-teams.md`
+- GSD methodology: `docs/project/gsd-methodology.md`
+- GSD templates: `.gsd/templates/`
+- GSD state: `.planning/STATE.md`
+
+## Links
+
+- [Gemini Setup Guide](./.gemini/docs/context.md)
+- [Overview](./.gemini/docs/overview.md)
+- [Workflow](./.gemini/docs/workflow.md)
+- [PHPStan Guide](./.gemini/docs/phpstan.md)
+- [Filament Guide](./.gemini/docs/filament.md)
+- [MCP Guide](./.gemini/docs/mcp.md)
+- [Agent Teams](./.agent/agent-teams.md)
+- [GSD Methodology](docs/project/gsd-methodology.md)
+- [BMAD Integration](docs/project/bmad-method-integration.md)
+
+## BMAD Rules for Gemini
+- **Spec-First**: Per moduli complessi o nuove architetture, NON iniziare a codificare senza un workflow BMAD (`create-prd` → `create-architecture`).
+- **Context Sharding**: Se un documento supera i 1600 token, usa `bmad-shard-doc` per mantenere l'efficienza del contesto.
+- **Expert Personas**: Quando agisci come `architect` o `pm`, segui strettamente il manifest dell'agente in `_bmad/bmm/agents/`.
+- **"What's Next"**: In caso di incertezza sulla fase del progetto, invoca sempre `bmad-help`.

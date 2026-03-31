@@ -18,7 +18,7 @@ use Webmozart\Assert\Assert;
 
 class ClientResource extends XotBaseResource
 {
-    protected static string $resource = ClientResource::class;
+    public static string $resource = ClientResource::class;
     // use HasResourceFormComponents;
 
     /**

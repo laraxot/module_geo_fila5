@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateContact extends XotBaseCreateRecord
 {
-    protected static string $resource = ContactResource::class;
+    public static string $resource = ContactResource::class;
 }
