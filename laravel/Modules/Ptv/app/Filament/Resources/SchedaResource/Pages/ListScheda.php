@@ -86,32 +86,40 @@ class ListScheda extends XotBaseListRecords
     {
         return [
             'id'=>TextColumn::make('id'),
+            
+            'type' => TextColumn::make('type'),
+            
             'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
+            
             'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([
                 'motivo' => TextColumn::make('motivo')->searchable(),
                 'mail_sended_at' => TextColumn::make('mail_sended_at')
                     ->html()
                     ->default(app(ShowMailSendedAt::class)->execute(...)),
             ]),
+            
             'lavoratore' => LavoratoreColumn::make('lavoratore')->appendColumns([
-                'totale_punteggio' => TextColumn::make('totale_punteggio'),
-                'propro' => TextColumn::make('propro'),
+                //'totale_punteggio' => TextColumn::make('totale_punteggio'),
+                //'propro' => TextColumn::make('propro'),
             ]),
+            
             'qualifica' => QualificaColumn::make('qualifica'),
             'reparto' => RepartoColumn::make('reparto'),
             'periodo' => PeriodoColumn::make('periodo'),
+            
             'valutatore_id' => SelectColumn::make('valutatore_id')
                 ->label('valutatore')
                 ->options(function (mixed $record): array {
                     if (! is_object($record) || ! isset($record->anno)) {
                         return [];
                     }
-                    /** @var int $anno */
+                    // @var int $anno 
                     $anno = $record->anno;
 
                     return StabiDirigente::where('anno', $anno)->whereRaw('id=valutatore_id')->pluck('nome_diri', 'id')->toArray();
                 })
                 ->visible(auth()->user()?->isSuperAdmin() ?? false),
+                
         ];
     }
 

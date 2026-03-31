@@ -185,6 +185,7 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
         ],
     ],
     'messages' => [
@@ -204,4 +205,5 @@ return [
     'model' => [
         'label' => 'individuale po.model',
     ],
+    'label' => 'individuale po',
 ];

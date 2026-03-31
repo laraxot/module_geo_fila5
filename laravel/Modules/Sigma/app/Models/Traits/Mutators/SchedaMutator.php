@@ -572,22 +572,31 @@ trait SchedaMutator
     // */
     public function getWorkerType(): string
     {
-        $post_type = 'dip';
+        
         if ($this->isPo()) {
-            $post_type = 'po';
-        } elseif ($this->isRegionale()) {
-            $post_type = 'regionale';
+            return 'po';
+        }
+        if ($this->isRegionale()) {
+            return 'regionale';
         } 
-        return $post_type;
+        return 'dip';
     }
+
+
     public function getTypeAttribute(?string $value): string
     {
+        
         if($value!=null){
-            return $value;
+           return $value;
         }
         $value=$this->getWorkerType();
-        if($this->getKey()!=null){
-            $this->update(['type'=>$value]);
+       
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                //$this->update(['type' => $value]);
+                $this->attributes['type'] = $value;
+                $this->save();
+            });
         }
         return $value;
     }

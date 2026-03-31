@@ -1,4 +1,4 @@
-ude('ptv::pdf.css')
+@include('ptv::pdf.css') 
 <page>
     @include('ptv::intestazione')
     @php

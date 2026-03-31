@@ -344,6 +344,8 @@ abstract class BaseIndividualeModel extends BaseScheda
 
     public function getCriteriOptionsRoot(): Collection
     {
-        return $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();
+        $criteri= $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();
+        
+        return $criteri;
     }
 }

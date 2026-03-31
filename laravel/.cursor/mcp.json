@@ -4,7 +4,7 @@
             "command": "wsl.exe",
             "args": [
                 "/usr/bin/php8.3",
-                "/var/www/_bases/base_ptvx_fila5/laravel/artisan",
+                "/var/www/html/ptvx/laravel/artisan",
                 "boost:mcp"
             ]
         }

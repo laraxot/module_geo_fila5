@@ -112,6 +112,8 @@ return [
         'value' => [
             'label' => 'value',
             'description' => 'value',
+            'helper_text' => 'value',
+            'placeholder' => 'value',
         ],
         'fill' => [
             'label' => 'fill',
@@ -217,6 +219,9 @@ return [
         'id' => [
             'label' => 'id',
         ],
+        'type' => [
+            'label' => 'type',
+        ],
     ],
     'actions' => [
         'calculate' => [
@@ -252,6 +257,7 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
         ],
         'MakePdfAction' => [
             'label' => 'MakePdfAction',
@@ -317,6 +323,21 @@ return [
             'tooltip' => 'reorderRecords',
             'icon' => 'reorderRecords',
             'label' => 'reorderRecords',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
         ],
     ],
     'messages' => [

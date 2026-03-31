@@ -9,6 +9,7 @@ use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\Ed
 use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\FillOutTheForm;
 use Modules\Performance\Filament\Resources\IndividualeRegionaleResource\Pages\ListIndividualeRegionales;
 use Modules\Performance\Models\IndividualeRegionale;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Override;
 
 class IndividualeRegionaleResource extends IndividualeResource
@@ -32,6 +33,7 @@ class IndividualeRegionaleResource extends IndividualeResource
             'create' => CreateIndividualeRegionale::route('/create'),
             'edit' => EditIndividualeRegionale::route('/{record}/edit'),
             'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 }

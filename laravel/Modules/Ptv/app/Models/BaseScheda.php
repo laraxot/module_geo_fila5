@@ -73,7 +73,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 // @see Modules/Xot/docs/spatie-schemaless-attributes.md
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
-    use LogsActivity;
+    //use LogsActivity;
     use SchemalessAttributesTrait;
     use \Modules\Progressioni\Models\Traits\ConvertedTrait;
     use SchedaTrait;
@@ -292,6 +292,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function isPo(): bool
     {
+        dddx('a');//functiontrait
         return (int) ($this->posfun ?? 0) >= 100;
     }
 
@@ -302,6 +303,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function isRegionale(): bool
     {
+        dddx('c');//functiontrait
         return (int) ($this->disci1 ?? 0) === 203;
     }
 

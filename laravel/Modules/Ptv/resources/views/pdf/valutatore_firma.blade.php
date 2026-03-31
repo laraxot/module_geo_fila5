@@ -1,6 +1,6 @@
-e  style="width:80%;">
-        <col style="width: 40%;" />
-        <col style="width: 40%" />
+<table  style="width:80%;">
+    <col style="width: 40%;" />
+    <col style="width: 40%" />
     <tr>
         <td>
            Treviso, li
@@ -14,4 +14,4 @@ e  style="width:80%;">
             Dirigente: {{ $row->valutatore?->nome_diri }}
         </td>
     </tr>
-    </table>
+</table>

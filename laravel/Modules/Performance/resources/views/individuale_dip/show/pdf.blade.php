@@ -1,4 +1,4 @@
-ude('ptv::pdf.css')
+@include('ptv::pdf.css')
 <page>
     <h4 style="text-align:center;">SISTEMA DI MISURAZIONE E VALUTAZIONE DELLA PERFORMANCE INDIVIDUALE - Anno
         {{ $row->anno }}

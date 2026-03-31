@@ -25,5 +25,17 @@ return [
         'propro' => [
             'label' => 'propro',
         ],
+        'disci1_txt' => [
+            'label' => 'disci1_txt',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+        ],
+        'posiz_txt' => [
+            'label' => 'posiz_txt',
+        ],
+        'disci1' => [
+            'label' => 'disci1',
+        ],
     ],
 ];

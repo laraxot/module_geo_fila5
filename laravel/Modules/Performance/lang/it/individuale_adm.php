@@ -319,6 +319,9 @@ return [
             'icon' => 'send_mail',
             'tooltip' => 'send_mail',
         ],
+        'export_xls' => [
+            'tooltip' => 'export_xls',
+        ],
     ],
     'messages' => [
         'created' => 'Performance amministrativa creata con successo',
