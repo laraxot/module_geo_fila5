@@ -1,44 +1,91 @@
-# Accessor Delegation Pattern (SACRO)
+# 🧘 Accessor Delegation Pattern - Zero Theme
 
-Questo documento descrive il pattern di delegazione per gli accessor Eloquent con auto-persistenza, applicato ai modelli utilizzati nel tema.
+> **Pattern per accessor nel Zero Theme**
+> **Aggiornato**: 2026-04-01
+> **Versione**: 1.0
 
-## Descrizione
+---
 
-Il pattern separa l'orchestrazione dell'accessor dalla logica di calcolo pura. Questo garantisce testabilità, performance e pulizia del codice.
+## 🎯 Panoramica
 
-### Struttura
+Questo documento applica il **pattern di delega accessor** al Zero Theme, basato sul lavoro completato nel modulo Sigma (22/22 accessor refactorizzati).
 
-1.  **Accessor (`getSomeValueAttribute`)**: Gestisce il controllo della cache (DB), l'orchestrazione e la persistenza silenziosa.
-2.  **Metodo Puro (`getSomeValue`)**: Contiene la logica di calcolo complessa, senza dipendenze dal DB o effetti collaterali. Deve essere posizionato **vicino** all'accessor per facilità di lettura.
+**Regola SACRA**: 
+> Il metodo puro `get<Nome>()` deve vivere **VICINO** all'accessor `get<Nome>Attribute()`, idealmente nelle stesse 50 righe di codice.
 
-## Esempio
+---
+
+## 📊 Riferimenti
+
+La documentazione completa si trova nel modulo Sigma:
+
+- **Guida Completa**: `laravel/Modules/Sigma/docs/accessor-delegation-complete-guide.md`
+- **Pattern**: `laravel/Modules/Sigma/docs/accessor-delegation-pattern.md`
+- **Audit**: `laravel/Modules/Sigma/docs/accessor-delegation-audit.md`
+
+---
+
+## 📋 Template per Zero Theme
 
 ```php
-protected function getSomeValueAttribute(?float $value): ?float
+/**
+ * Helper method: [Descrizione calcolo] (calcolo puro).
+ *
+ * Business Rule: [Spiegazione regola business specifica per il theme]
+ *
+ * @return [Tipo]|[null] [Descrizione risultato], null se [condizione]
+ */
+protected function get<Nome>(): [Tipo]|null
 {
-    if (is_float($value)) {
+    // ✅ SOLO calcolo puro (max 50 righe)
+}
+
+/**
+ * Accessor per <snake_case_nome> ([descrizione]).
+ * Delega calcolo a get<Nome>().
+ *
+ * @param [Tipo]|null $value Valore cached dal DB
+ *
+ * @return [Tipo]|[null] [Descrizione risultato] calcolato
+ */
+protected function get<Nome>Attribute([Tipo]|null $value): [Tipo]|null
+{
+    // ✅ Cache hit
+    if ([controllo tipo]) {
         return $value;
     }
 
-    $result = $this->getSomeValue();
-
-    if ($this->exists) {
-        static::withoutEvents(function () use ($result): void {
-            $this->update(['some_value' => $result]);
-        });
+    // ✅ Guard: modello deve avere PK
+    if (null == $this->getKey()) {
+        return null;
     }
 
-    return $result;
-}
+    // ✅ Delega al metodo puro (VICINO!)
+    $value = $this->get<Nome>();
 
-protected function getSomeValue(): float
-{
-    // Logica complessa...
-    return 42.0;
+    if (null === $value) {
+        return null;
+    }
+
+    // ✅ Persist con update chirurgico
+    $this->update(['<snake_case_nome>' => $value]);
+
+    return $value;
 }
 ```
 
 ---
-**Riferimenti**:
-- [Documento Canonico AI Agents](../../../../.agents/docs/accessor-auto-persistence.md)
-- [00-index.md](00-index.md)
+
+## 🔗 Indici Documentazione
+
+Per prevenire duplicati, consulta sempre:
+
+1. **Indice Principale**: `docs/README.md` (questo file)
+2. **Indice Moduli**: `laravel/Modules/Sigma/docs/README.md`
+3. **Indice Progetto**: `docs/project/README.md`
+
+---
+
+*Documento creato: 2026-04-01*
+*Ultimo aggiornamento: 2026-04-01*
+*Stato: ✅ Allineato con Sigma Module (22/22 accessor)*

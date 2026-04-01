@@ -34,20 +34,37 @@ public static function bootHasParent(): void
 }
 ```
 
-### Our Implementation Pattern
+### ✅ CORRECT Implementation (Minimal)
 
-Even though Parental handles filtering automatically, we **explicitly add a global scope** in each child model's `boot()` method:
+**You DO NOT need a custom `boot()` method!** Just use the trait:
+
+```php
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;  // ✅ That's all you need!
+
+    // No boot() needed - HasParent handles filtering automatically
+    
+    public function mails(): HasMany
+    {
+        // ... your relationships
+    }
+}
+```
+
+### ❌ WRONG: Redundant boot() Method
 
 ```php
 class IndividualeRegionale extends Individuale
 {
     use HasParent;
 
+    // ❌ DON'T DO THIS - Redundant and useless!
+    // HasParent ALREADY adds the global scope automatically
     protected static function boot(): void
     {
-        parent::boot();  // ✅ Calls bootHasParent() from HasParent trait
-
-        // ✅ Redundant but recommended for clarity and defense
+        parent::boot();
+        
         static::addGlobalScope(function ($query) {
             $query->where('type', 'regionale');
         });
@@ -55,15 +72,12 @@ class IndividualeRegionale extends Individuale
 }
 ```
 
-### Why We Add Redundant Global Scope
-
-| Reason | Explanation |
-|--------|-------------|
-| **Self-Documenting** | Clear intent in the code - developers see the filter immediately |
-| **Defensive** | Works even if Parental configuration changes or is removed |
-| **Debuggable** | Easier to understand when debugging queries |
-| **Consistent** | All child models follow the same explicit pattern |
-| **Safe** | Two identical filters don't break anything |
+**Why it's wrong:**
+- 🗑️ **Useless redundancy** - HasParent already filters by type
+- 🗑️ **Double filtering** - Two identical global scopes execute
+- 🗑️ **Confusion** - Developers think manual scope is required
+- 🗑️ **Performance** - Minimal but unnecessary overhead
+- 🗑️ **Violates KISS** - Keep It Simple, Stupid! |
 
 ## ✅ DO: Implementation Checklist
 
@@ -94,24 +108,32 @@ class Individuale extends BaseIndividualeModel
 ```php
 class IndividualeRegionale extends Individuale
 {
-    use HasParent;  // ✅ Required trait
+    use HasParent;  // ✅ Required trait - handles EVERYTHING!
 
-    /**
-     * Boot the model and add global scope to filter by type.
-     *
-     * This ensures that IndividualeRegionale only returns records
-     * where type = 'regionale', as required by Parental STI pattern.
-     */
-    protected static function boot(): void  // ✅ Explicit boot method
+    // ✅ NO boot() needed!
+    // HasParent automatically:
+    // 1. Sets type column on create
+    // 2. Adds global scope to filter queries by type
+    
+    public function mails(): HasMany
     {
-        parent::boot();  // ✅ MUST call parent::boot() first
-
-        static::addGlobalScope(function ($query) {  // ✅ Use static:: not self::
-            $query->where('type', 'regionale');  // Match key in parent's $childTypes
-        });
+        // ... your relationships
     }
+}
+```
 
-    // ... rest of model
+**Note**: If you need custom boot logic for OTHER reasons (not type filtering), you can add it, but call `parent::boot()` first and DON'T add redundant global scopes:
+
+```php
+// ✅ ONLY if you need OTHER boot logic
+protected static function boot(): void
+{
+    parent::boot();  // Calls HasParent's automatic filtering
+    
+    // Your OTHER custom logic (not type filtering!)
+    static::created(function ($model) {
+        // Custom event handling
+    });
 }
 ```
 
@@ -129,40 +151,65 @@ Schema::create('performance_individuale', function (Blueprint $table) {
 
 ## ❌ DON'T: Common Mistakes
 
-### Mistake 1: Not Calling parent::boot()
+### Mistake 1: Adding Redundant boot() Method
 
 ```php
-// ❌ WRONG - Breaks HasParent trait!
-protected static function boot(): void
+// ❌ WRONG - Useless redundancy!
+class IndividualeRegionale extends Individuale
 {
-    // Missing parent::boot() call
-    static::addGlobalScope(function ($query) {
-        $query->where('type', 'regionale');
-    });
+    use HasParent;
+
+    protected static function boot(): void
+    {
+        parent::boot();
+        
+        // ❌ DON'T - HasParent ALREADY does this!
+        static::addGlobalScope(function ($query) {
+            $query->where('type', 'regionale');
+        });
+    }
+}
+
+// ✅ CORRECT - Just use the trait!
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;
+
+    // No boot() needed - HasParent handles everything!
+    
+    public function mails(): HasMany
+    {
+        // ... your relationships
+    }
 }
 ```
 
-### Mistake 2: Using self:: Instead of static::
+### Mistake 2: Thinking You Need Manual Filtering
 
 ```php
-// ❌ WRONG - Won't work with inheritance
-protected static function boot(): void
+// ❌ WRONG - Overcomplicating!
+class IndividualeRegionale extends Individuale
 {
-    parent::boot();
-    
-    self::addGlobalScope(function ($query) {  // ❌ self:: breaks late binding
-        $query->where('type', 'regionale');
-    });
+    use HasParent;
+
+    protected static function boot(): void
+    {
+        parent::boot();
+        
+        // ❌ HasParent ALREADY adds this scope automatically!
+        static::addGlobalScope(function ($query) {
+            $query->where('type', 'regionale');
+        });
+    }
 }
 
-// ✅ CORRECT
-protected static function boot(): void
+// ✅ CORRECT - Trust the trait!
+class IndividualeRegionale extends Individuale
 {
-    parent::boot();
-    
-    static::addGlobalScope(function ($query) {  // ✅ static:: for late binding
-        $query->where('type', 'regionale');
-    });
+    use HasParent;
+
+    // HasParent automatically filters by type = 'regionale'
+    // No manual scope needed!
 }
 ```
 

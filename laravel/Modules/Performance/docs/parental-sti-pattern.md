@@ -86,29 +86,17 @@ class Individuale extends BaseIndividualeModel
 namespace Modules\Performance\Models;
 
 use Parental\HasParent;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class IndividualeRegionale extends Individuale
 {
-    use HasParent;
+    use HasParent;  // ✅ Questo fa TUTTO automaticamente!
 
-    /**
-     * Boot the model and add global scope to filter by type.
-     *
-     * Questo ensure che IndividualeRegionale restituisca SOLO
-     * i record con type='regionale', come richiesto dal pattern
-     * Parental STI.
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::addGlobalScope(function ($query) {
-            $query->where('type', 'regionale');
-        });
-    }
-
+    // ✅ NON serve il metodo boot()!
+    // HasParent automaticamente:
+    // 1. Imposta la colonna type quando si crea un record
+    // 2. Aggiunge un global scope per filtrare le query per type
+    
     public function mails(): HasMany
     {
         $stabi = request()->input('stabi', '');
@@ -121,6 +109,54 @@ class IndividualeRegionale extends Individuale
     }
 }
 ```
+
+### ⚠️ IMPORTANTE: Non Aggiungere boot() Ridondante!
+
+**SBAGLIATO** (quello che facevamo prima):
+
+```php
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;
+
+    // ❌ SBAGLIATO - Ridondanza inutile!
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::addGlobalScope(function ($query) {
+            $query->where('type', 'regionale');
+        });
+    }
+}
+```
+
+**CORRETTO** (quello che dovremmo fare):
+
+```php
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;
+
+    // ✅ CORRETTO - HasParent fa già tutto!
+    // Nessun boot() necessario
+    
+    public function mails(): HasMany
+    {
+        // ... le tue relazioni
+    }
+}
+```
+
+### Perché il boot() Ridondante è SBAGLIATO
+
+| Problema | Spiegazione |
+|----------|-------------|
+| **Ridondanza Inutile** | HasParent già aggiunge il global scope automaticamente |
+| **Doppio Filtering** | Due global scope identici vengono eseguiti (spreco) |
+| **Confusione** | I sviluppatori pensano che il scope manuale sia necessario |
+| **Violazione KISS** | Keep It Simple, Stupid! |
+| **Manutenzione** | Più codice da mantenere senza beneficio |
 
 ## Come Parental Gestisce il Filtering
 
@@ -183,15 +219,15 @@ Anche se `HasParent` aggiunge già un global scope automaticamente, aggiungiamo 
 ```php
 class IndividualeRegionale extends Individuale
 {
-    use HasParent;
+    use HasParent;  // ✅ HasParent fa già tutto!
 
-    protected static function boot(): void
+    // Nessun boot() necessario - HasParent gestisce automaticamente:
+    // 1. Imposta type='regionale' quando crei un record
+    // 2. Filtra le query per type='regionale' automaticamente
+    
+    public function mails(): HasMany
     {
-        parent::boot();  // ✅ Chiama bootHasParent() dal trait
-
-        static::addGlobalScope(function ($query) {
-            $query->where('type', 'regionale');
-        });
+        // ... le tue relazioni
     }
 }
 ```
@@ -203,29 +239,15 @@ class IndividualeRegionale extends Individuale
 {
     use HasParent;
 
-    // ❌ NON chiamare parent::boot() rompe HasParent!
-    protected static function boot(): void
-    {
-        static::addGlobalScope(function ($query) {
-            $query->where('type', 'regionale');
-        });
-    }
-}
-```
-
-### ❌ SBAGLIATO (Inutile)
-
-```php
-class IndividualeRegionale extends Individuale
-{
-    use HasParent;
-
-    // ❌ Non serve se HasParent già lo fa
+    // ❌ SBAGLIATO - Ridondanza inutile!
     protected static function boot(): void
     {
         parent::boot();
-        // Nessun global scope aggiuntivo necessario
-        // HasParent già aggiunge il filtro automaticamente
+        
+        // ❌ HasParent già aggiunge questo scope automaticamente!
+        static::addGlobalScope(function ($query) {
+            $query->where('type', 'regionale');
+        });
     }
 }
 ```
@@ -391,29 +413,39 @@ Quando crei un nuovo modello child con Parental:
 
 ## Lezioni Apprese
 
-### 1. Parental Fa Già il Filtering
+### 1. HasParent Fa Già il Filtering
 
-Il trait `HasParent` aggiunge automaticamente un global scope. Il nostro `boot()` è **ridondante ma utile** per chiarezza.
+Il trait `HasParent` aggiunge **automaticamente** un global scope che filtra per type. **NON serve aggiungere boot()** con global scope manuale!
 
-### 2. boot() Order è Importante
+### 2. KISS - Keep It Simple, Stupid!
 
-```
-1. bootHasParent() (dal trait)
-2. boot() (dal modello)
-3. booted() (dal modello)
-```
-
-### 3. static:: vs self::
-
-Usa sempre `static::` per late binding:
 ```php
-static::addGlobalScope(...)  // ✅ Corretto
-self::addGlobalScope(...)    // ❌ Sbagliato
+// ❌ PRIMA (sbagliato - ridondanza)
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;
+
+    protected static function boot(): void
+    {
+        parent::boot();
+        static::addGlobalScope(/* ... */);  // ❌ Ridondante!
+    }
+}
+
+// ✅ ORA (corretto - semplice)
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;  // ✅ Punto!
+}
 ```
 
-### 4. Filament Rispetta i Global Scope
+### 3. Fidati del Pacchetto
 
-Filament v5 usa automaticamente i global scope del modello quando esegue query.
+Parental è un pacchetto maturo e ben testato. **Non c'è bisogno di "aiutarlo"** aggiungendo global scope manuali. Fa già tutto quello che serve.
+
+### 4. Rimuovere Ridondanze
+
+Se trovi modelli child con `boot()` che aggiunge global scope per il filtering per type, **rimuovilo**! È codice morto senza beneficio.
 
 ---
 

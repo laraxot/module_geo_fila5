@@ -50,12 +50,11 @@ PTVX is a modular HR & Performance evaluation system based on Laravel + Filament
 - **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
 - **Rule**: PARENTAL STI PATTERN - When using Tighten/Parental for Single Table Inheritance: 
   (1) Parent models use `HasChildren` trait with `$childTypes` mapping, 
-  (2) Child models use `HasParent` trait, 
+  (2) Child models use `HasParent` trait - **THAT'S ALL, NO boot() NEEDED!**,
   (3) The `HasParent` trait AUTOMATICALLY adds a global scope filtering by type,
-  (4) We RECOMMEND adding explicit `boot()` with global scope in child models for clarity (redundant but defensive),
-  (5) ALWAYS call `parent::boot()` first to ensure `bootHasParent()` from trait executes,
-  (6) Use `static::` not `self::` for late binding.
-  Example: `class Child extends Parent { use HasParent; protected static function boot(): void { parent::boot(); static::addGlobalScope(fn ($q) => $q->where('type', 'child_type')); } }`
+  (4) **DO NOT add redundant boot() with manual global scope** - it's useless duplication,
+  (5) Keep it simple: just `use HasParent;` in child models, no boot() required.
+  Example: `class Child extends Parent { use HasParent; /* No boot() needed! */ }`
   See: `docs/index/parental-sti-index.md`, `Modules/Performance/docs/parental-sti-pattern.md`, `docs/rules/parental-sti-pattern-rules.md`
 - **Rule**: SAFE REFACTORING PATTERN - Never delete critical files (Models, Actions, Resources) during a rename or major refactor. Instead, rename the old version by appending `.old` (e.g., `OldModel.php.old`) to allow for recovery and reference during the transition.
 - **Rule**: MODULAR DATABASE ISOLATION - It is strictly forbidden to add module-specific database connections (e.g., `db_forge`, `mobilita_volontaria`) to the root `/laravel/config/database.php`. Each module must register its connections dynamically in its `XotBaseServiceProvider` to maintain core agnosticism and self-containment. See `Modules/Xot/docs/database-architecture.md`.
