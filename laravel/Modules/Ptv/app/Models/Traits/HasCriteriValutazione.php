@@ -16,6 +16,7 @@ trait HasCriteriValutazione
 {
     public function criteriValutazione(): HasMany
     {
+        
         $myclass = static::class;
         $class = Str::of($myclass)
             ->before('\Models\\')

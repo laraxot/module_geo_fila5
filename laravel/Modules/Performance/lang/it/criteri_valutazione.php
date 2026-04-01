@@ -235,6 +235,11 @@ return [
             'icon' => 'logout',
             'tooltip' => 'logout',
         ],
+        'copy_from_last_year' => [
+            'tooltip' => 'copy_from_last_year',
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+        ],
     ],
     'messages' => [
         'validation' => [

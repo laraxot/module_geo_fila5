@@ -4,165 +4,139 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\SchedaResource\Pages;
 
-use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
-use Filament\Pages\Contracts\HasFormActions;
-use Filament\Resources\Pages\Concerns\HasRelationManagers;
-use Filament\Resources\Pages\Concerns\InteractsWithRecord;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Str;
+use Modules\Performance\Filament\Resources\IndividualeResource;
+use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Filament\Resources\SchedaResource;
 use Modules\Xot\Actions\View\GetViewByModelClassAction;
-use Modules\Xot\Filament\Resources\Pages\XotBasePage;
-use Override;
+use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
+use Webmozart\Assert\Assert;
 
-// class CompilaCondizioniLavoro extends \Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord {
 /**
- * Custom form implementation for compiling evaluation sheets
- * Uses data array for Livewire wire:model binding
+ * @property Schema      $form
+ * @property Individuale $record
  */
-abstract class BaseCompilaScheda extends XotBasePage
+abstract class BaseCompilaScheda extends XotBaseResourcePage
 {
-    /* implements HasFormActions */
-    // use HasRecordBreadcrumb;
-    use HasRelationManagers;
-    use InteractsWithRecord;
-    // use UsesResourceForm; // Not needed - using custom data implementation
-
+    // public static string $resource = IndividualeResource::class;
     public static string $resource = SchedaResource::class;
 
-    protected string $view = 'ptv::scheda.pages.compila';
+    public string $previousUrl = '#';
 
     /** @var array<string, mixed> */
     public array $data = [];
 
+    public float $totale = 0;
+
     public bool $excellence = false;
 
-    public float $totale = 0.0;
-
-    public string $previousUrl = '#';
-
     /** @var array<string, string> */
-    protected array $rules = [];
+    protected array $rules = [
+        'data.risultati_ottenuti' => 'required|numeric|min:0|max:4',
+        'data.qualita_prestazione' => 'required|numeric|min:0|max:4',
+        'data.arricchimento_professionale' => 'required|numeric|min:0|max:4',
+        'data.impegno' => 'required|numeric|min:0|max:4',
+        'data.esperienza_acquisita' => 'required|numeric|min:0|max:4',
+    ];
 
-    public function mount(int|string $record): void
+    /**
+     * @param int|string $record
+     */
+    public function mount($record): void
     {
-        $record = $this->resolveRecord($record);
-        $this->record = $record;
-
-        /*
-        $recordClass = \get_class($this->record);
-        $resourceClass = Str::of($recordClass)
-            ->replace('Models\\', 'Filament\\Resources\\')
-            ->append('Resource')
-            ->toString();
-        static::$resource = $resourceClass;
-        */
-        $view = app(GetViewByModelClassAction::class)->execute($this->record::class, '.pages.compila');
-
-        $this->view = $view;
+        Assert::isInstanceOf($model = $this->resolveRecord($record), Individuale::class);
+        $this->record = $model;
         $this->authorizeAccess();
-        $this->fillForm();
+        // *
+        $criteri_valutazione = $this->record->criteriValutazione()->get();
+        
+        foreach ($criteri_valutazione as $criterio) {
+            $k = $criterio->getAttribute('nome');
+            if (\is_string($k)) {
+                $this->data[$k] = data_get($this->record, $k, 0);
+            }
+        }
+        
+        // */
+        $this->excellence = (bool) $this->record->excellence;
+        $this->totale = (float) $this->record->totale_punteggio;
+        // $this->fillForm();
 
         $this->previousUrl = url()->previous();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getViewData(): array
+    {
+       
+        return [
+            // 'criteri_options_root' => $criteri_options_root,
+            'view' => $this->getView(),
+        ];
+    }
+
     private function authorizeAccess(): void
     {
-        // Check if user can access the resource
-        $resource = static::$resource;
-        if (! $resource::canEdit($this->getRecord())) {
-            abort(403);
-        }
-
-        // Check specific permission for compiling
+        static::authorizeResourceAccess();
+        // abort_unless(static::getResource()::canEdit($this->getRecord()), 403);
         if (! Gate::allows('compila', $this->record)) {
             abort(403);
         }
     }
 
-    private function fillForm(): void
+    public function getView(): string
     {
-        $this->beforeFill();
+        $view = app(GetViewByModelClassAction::class)->execute($this->record::class, '.pages.compila');
 
-        //$data = $this->getRecord()->attributesToArray();
-        $data = $this->getRecord()->getAttributes();
+        if (! view()->exists($view)) {
+            throw new \Exception('View ['.$view.'] not found');
+        }
 
-        $data = $this->mutateFormDataBeforeFill($data);
-
-        // Store form data directly without using Filament form
-        /* @var array<string, mixed> $data */
-        $this->data = $data;
-        
-        // Initialize excellence and totale if they exist
-        $this->excellence = (bool) ($this->getRecord()->excellence ?? false);
-        $this->totale = (float) ($this->getRecord()->totale_punteggio ?? 0.0);
-
-        // Hook for after filling form data
-        $this->afterFill();
+        return $view;
     }
 
-    #[Override]
-    protected function getViewData(): array
+    public function back(): void
     {
-        return [
-            'view' => $this->view,
-            'record' => $this->getRecord(),
-            'data' => $this->data,
-            'excellence' => $this->excellence,
-            'totale' => $this->totale,
-        ];
-    }
-
-    private function mutateFormDataBeforeFill(array $data): array
-    {
-        return $data;
-    }
-
-    /**
-     * Hook called before filling form data.
-     */
-    protected function beforeFill(): void
-    {
-        // Override in child classes if needed
-    }
-
-    /**
-     * Hook called after filling form data.
-     */
-    protected function afterFill(): void
-    {
-        // Override in child classes if needed
+        $this->redirect(static::$resource::getUrl('index'));
     }
 
     public function save(): void
     {
         $this->validate();
-        
         $data = $this->data;
         $data['excellence'] = $this->excellence;
         $data['totale_punteggio'] = $this->totale;
+
+        // $this->authorizeAccess();
+        // $this->record->fill($this->data);
+        // $this->record->save();
         
-        $this->getRecord()->update($data);
+        $res=$this->record->update($data);
+        
+        // $this->redirect(route('admin.'.$this->getRoutePrefix().'.edit', $this->record->getKey()));
 
         Notification::make()
-            ->title('Saved successfully')
+            ->title('Aggiornato ')
             ->success()
             ->send();
     }
 
     public function recalculate(): void
     {
-        $tot = 0.0;
+        $tot = 0;
 
-        $criteri_valutazione = $this->record->criteriValutazione ?? collect();
+        $criteri_valutazione = $this->record->criteriValutazione->where('post_type', $this->record->type);
         foreach ($criteri_valutazione as $v) {
             $nome = $v->getAttribute('nome');
-            if (is_string($nome)) {
+            if (\is_string($nome)) {
                 $dataValue = $this->data[$nome] ?? 0;
                 if (is_numeric($dataValue)) {
-                    $value = floatval($dataValue);
-                    $peso = method_exists($this->record, 'getPeso') ? $this->record->getPeso($nome) : 1.0;
+                    $value = (float) $dataValue;
+                    $peso = $this->record->getPeso($nome);
                     $tot += $peso * $value;
                 }
             }
@@ -173,15 +147,24 @@ abstract class BaseCompilaScheda extends XotBasePage
         $this->totale = $tot;
     }
 
+    /*
+    public function updating(): void {
+        dddx([
+            'property'=>$property,
+            'value'=>$value
+        ]);
+    }
+    */
+    /*
+    public function updated(): void {
+        dddx([
+            'property'=>$property
+        ]);
+    }
+    */
+
     public function updatedData(): void
     {
         $this->recalculate();
-    }
-
-    public function back(): void
-    {
-        /** @var string|null $url */
-        $url = static::$resource::getUrl('index');
-        redirect($url ?? '');
     }
 }

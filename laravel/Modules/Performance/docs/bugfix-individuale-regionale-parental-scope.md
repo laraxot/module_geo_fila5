@@ -1,12 +1,42 @@
-# Bug Fix: IndividualeRegionale Missing Parental Global Scope
+# IndividualeRegionale Parental Global Scope - Verification Report
 
-## Problem
+## Issue Report
 
-The `IndividualeRegionale` model was displaying **all records** from the `performance_individuale` table instead of filtering only records where `type='regionale'`.
+The `IndividualeRegionale` model was reported as displaying **all records** from the `performance_individuale` table instead of filtering only records where `type='regionale'`.
 
-## Root Cause
+## Investigation Results
 
-The model was using the [Tighten Parental](https://github.com/tighten/parental) package for Single Table Inheritance (STI), but was **missing the required `boot()` method** with a global scope to filter by type.
+✅ **VERIFIED FIXED**: The model **already has** the correct `boot()` method with global scope.
+
+### Current Implementation (Already Correct)
+
+```php
+class IndividualeRegionale extends Individuale
+{
+    use HasParent;
+
+    /**
+     * Boot the model and add global scope to filter by type.
+     *
+     * This ensures that IndividualeRegionale only returns records
+     * where type = 'regionale', as required by Parental STI pattern.
+     */
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::addGlobalScope(function ($query) {
+            $query->where('type', 'regionale');
+        });
+    }
+
+    // ... rest of the model
+}
+```
+
+## Root Cause Analysis (Historical)
+
+The issue was reported when the model was **missing the required `boot()` method** with a global scope to filter by type. This has been corrected in a previous commit.
 
 ### Pattern Violation
 

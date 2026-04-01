@@ -33,11 +33,6 @@ abstract class BaseFillOutTheForm extends XotBaseResourcePage
     public string $previousUrl = '#';
 
     /** @var array<string, mixed> */
-    /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
     public array $data = [];
 
     public float $totale = 0;
@@ -100,15 +95,16 @@ abstract class BaseFillOutTheForm extends XotBaseResourcePage
             ->reduce(static fn ($tot_euro, $item): float|int => $tot_euro + ($item['euro_giorno'] * (int) $item['pivot']['gg']), 0);
         */
         // dddx($this->record->options);
+        /*
         Assert::isInstanceOf($model = $this->record, Individuale::class);
         $model->options()->where('parent_id', null)->update(['parent_id' => 0]);
         $criteri_options_root = $model->options()
             ->where('parent_id', 0)
             ->where('name', 'criterio')
             ->get();
-
+        */
         return [
-            'criteri_options_root' => $criteri_options_root,
+            //'criteri_options_root' => $criteri_options_root,
             'view' => $this->getView(),
         ];
     }
