@@ -7,12 +7,16 @@ namespace Modules\Performance\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use Modules\Activity\Models\Activity;
+use Modules\Progressioni\Models\Scheda;
+use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00f;
 use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
@@ -179,6 +183,7 @@ use Parental\HasChildren;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
+ *
  * @method static Builder|Individuale newModelQuery()
  * @method static Builder|Individuale newQuery()
  * @method static Builder|BaseIndividualeModel ofDate(int $date)
@@ -284,6 +289,7 @@ use Parental\HasChildren;
  * @method static Builder|Individuale whereUpdatedBy($value)
  * @method static Builder|BaseIndividualeModel withDays(int $date_min, int $date_max)
  * @method static Builder|BaseIndividualeModel withTotPunt()
+ *
  * @property int|null $assenze_aggiornate Flag per tracciamento aggiornamento assenze, vedi pipeline individuale
  * @property-read Profile|null $creator
  * @property-read mixed $aventi_diritto
@@ -362,17 +368,19 @@ use Parental\HasChildren;
  * @property mixed $fascia_punteggio Dynamic property from selectRaw queries
  * @property mixed $num_dipendenti Dynamic property from selectRaw queries
  * @property mixed $tot_resti_pond Dynamic property from selectRaw queries
+ *
  * @method static Builder<static>|Individuale ofEnte(int $ente)
  * @method static Builder<static>|Individuale ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|Individuale whereAssenzeAggiornate($value)
+ *
  * @property string|null $scheda_type
- * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
+ * @property-read Collection<int, Activity> $activities
  * @property-read int|null $activities_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversari
+ * @property-read Collection<int, Scheda> $avversari
  * @property-read int|null $avversari_count
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $avversariCategoriaEco
+ * @property-read Collection<int, Scheda> $avversariCategoriaEco
  * @property-read int|null $avversari_categoria_eco_count
- * @property-read Collection<int, \Modules\Performance\Models\CriteriValutazione> $criteriValutazioneOld
+ * @property-read Collection<int, CriteriValutazione> $criteriValutazioneOld
  * @property-read int|null $criteri_valutazione_old_count
  * @property-read Profile|null $deleter
  * @property-read string $from_field
@@ -380,13 +388,14 @@ use Parental\HasChildren;
  * @property-read int|null $gg_esperienza_no_asz
  * @property-read float|null $gg_integ_params_asz
  * @property-read string $to_field
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read Collection<int, Integparam> $integParams
  * @property-read int|null $integ_params_count
  * @property-read Individuale|null $maxCatecoPosfun
- * @property-read Collection<int, \Modules\Performance\Models\Individuale> $performanceIndividuale
+ * @property-read Collection<int, Individuale> $performanceIndividuale
  * @property-read int|null $performance_individuale_count
  * @property-read Individuale|null $pesi
  * @property-read Individuale|null $stipendioTabellare
+ *
  * @method static Builder<static>|Individuale childrenWith(array $relations)
  * @method static Builder<static>|Individuale childrenWithCount(array $relations)
  * @method static \Modules\Performance\Database\Factories\IndividualeFactory factory($count = null, $state = [])
@@ -396,7 +405,9 @@ use Parental\HasChildren;
  * @method static Builder<static>|Individuale whereType($value)
  * @method static Builder<static>|Individuale whereValutatoreId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Individuale withCalculatedData()
- * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
+ *
+ * @property-read CategoriaPropro|null $categoriaPropro
+ *
  * @mixin \Eloquent
  */
 class Individuale extends BaseIndividualeModel
@@ -408,6 +419,9 @@ class Individuale extends BaseIndividualeModel
 
     /** @var string */
     protected $table = 'performance_individuale';
+
+    /** @var string */
+    protected $childColumn = 'type';
 
     /** @var list<string> */
     protected $fillable = [
@@ -445,7 +459,7 @@ class Individuale extends BaseIndividualeModel
     public function casts(): array
     {
         return [
-            'type' => \Modules\Ptv\Enums\WorkerType::class,
+            'type' => WorkerType::class.':nullable',
             'stabi' => 'integer',
             'repar' => 'integer',
             'stabival' => 'integer',
@@ -499,6 +513,5 @@ class Individuale extends BaseIndividualeModel
         'dip' => IndividualeDip::class,
         'regionale' => IndividualeRegionale::class,
         'dirigente' => IndividualeDirigente::class,
-        //'individuale_regionale' => IndividualeRegionale::class,
     ];
 }

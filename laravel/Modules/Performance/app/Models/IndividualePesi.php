@@ -28,6 +28,7 @@ use Override;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static Builder|IndividualePesi newModelQuery()
  * @method static Builder|IndividualePesi newQuery()
  * @method static Builder|IndividualePesi query()
@@ -44,6 +45,7 @@ use Override;
  * @method static Builder|IndividualePesi wherePesoRisultatiOttenuti($value)
  * @method static Builder|IndividualePesi whereUpdatedAt($value)
  * @method static Builder|IndividualePesi whereUpdatedBy($value)
+ *
  * @property WorkerType $type
  * @property-read Profile|null $creator
  * @property-read float $total_weight
@@ -56,8 +58,11 @@ use Override;
  * @property-read Collection<int, IndividualeRegionale> $individualeRegionale
  * @property-read int|null $individuale_regionale_count
  * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|IndividualePesi whereType($value)
+ *
  * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class IndividualePesi extends BaseModel
@@ -82,7 +87,7 @@ class IndividualePesi extends BaseModel
     public function casts(): array
     {
         return [
-            'type' => WorkerType::class,
+            'type' => WorkerType::class.':nullable',
         ];
     }
 

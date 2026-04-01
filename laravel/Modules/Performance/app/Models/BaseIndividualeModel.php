@@ -19,7 +19,6 @@ use Modules\Performance\Models\Traits\RelationshipTrait;
 use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Models\BaseScheda;
 use Modules\Ptv\Models\Traits\HasCriteriValutazione;
-// ---------- traits
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00k1;
@@ -225,7 +224,7 @@ abstract class BaseIndividualeModel extends BaseScheda
     public function casts(): array
     {
         return [
-            'type' => WorkerType::class,
+            'type' => WorkerType::class.':nullable',
             'ente' => 'integer',
             'matr' => 'integer',
             'disci1' => 'integer',
@@ -341,11 +340,10 @@ abstract class BaseIndividualeModel extends BaseScheda
         $this->attributes['motivo'] = $value;
     }
 
-
     public function getCriteriOptionsRoot(): Collection
     {
-        $criteri= $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();
-        
+        $criteri = $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();
+
         return $criteri;
     }
 }

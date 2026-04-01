@@ -34,6 +34,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property string|null $updated_by
  * @property Collection<int, Option> $sons
  * @property int|null $sons_count
+ *
  * @method static Builder|Option newModelQuery()
  * @method static Builder|Option newQuery()
  * @method static Builder|Option query()
@@ -51,6 +52,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Option whereUpdatedBy($value)
  * @method static Builder|Option whereValue($value)
  * @method static Builder|Option whereYear($value)
+ *
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option> $children
  * @property-read int|null $children_count
  * @property-read Profile|null $creator
@@ -77,6 +79,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property-read int|null $siblings_count
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option> $siblingsAndSelf All the parent's children.
  * @property-read int|null $siblings_and_self_count
+ *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option breadthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option depthFirst()
@@ -94,9 +97,11 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option whereDepth($operator, $value = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ *
+ * @property-read Profile|null $deleter
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option> $fillSons
  * @property-read int|null $fill_sons_count
+ *
  * @mixin \Eloquent
  */
 class Option extends BaseModel
@@ -123,7 +128,7 @@ class Option extends BaseModel
     public function casts(): array
     {
         return [
-            'option_type' => WorkerType::class,
+            'option_type' => WorkerType::class.':nullable',
         ];
     }
 
