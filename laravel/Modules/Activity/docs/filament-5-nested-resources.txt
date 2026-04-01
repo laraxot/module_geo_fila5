@@ -205,7 +205,7 @@ public static function getRelations(): array
 
 ### Custom Actions
 ```php
-protected function getHeaderActions(): array
+public function getHeaderActions(): array
 {
     return [
         Actions\CreateAction::make()
