@@ -93,8 +93,8 @@
                 <b>Totale</b>
             </td>
             <td class="border border-gray-300 px-4 py-2">
-                {{-- $totale --}}
-                666
+                {{ $totale }}
+                
                  <x-filament::icon-button
                         icon="heroicon-o-arrow-path"
                         wire:click="recalculate()"

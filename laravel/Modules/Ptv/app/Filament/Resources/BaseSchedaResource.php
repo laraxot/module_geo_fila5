@@ -114,18 +114,6 @@ abstract class BaseSchedaResource extends XotBaseResource
      */
     public static function getModel(): string
     {
-        
-        
-        $model= Individuale::class;
-       
-        Assert::classExists($model, \sprintf('Model class %s does not exist', $model));
-        Assert::subclassOf(
-            $model,
-            Model::class,
-            \sprintf('Class %s must extend Eloquent Model', $model),
-        );
-        static::$model = $model;
-
-        return $model;
+        return parent::getModel();
     }
 }

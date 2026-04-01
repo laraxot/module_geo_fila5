@@ -2188,10 +2188,31 @@ trait SchedaExtraFieldTrait
         return $value;
     }
 
+    /**
+     * Helper method: Ottiene giorni assenza per tipo codice escluso subito (calcolo puro).
+     *
+     * Business Rule: Attualmente non implementato. Placeholder per future implementazioni.
+     *
+     * @return null Sempre null (non implementato)
+     */
+    protected function getGgAszTipCodEsclusoSubito(): ?int
+    {
+        // Placeholder: non implementato
+        return null;
+    }
+
+    /**
+     * Accessor per gg_asz_tip_cod_escluso_subito (giorni assenza per tipo codice escluso subito).
+     * Delega calcolo a getGgAszTipCodEsclusoSubito().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato)
+     *
+     * @return null Sempre null (non implementato)
+     */
     protected function getGgAszTipCodEsclusoSubitoAttribute(?int $_value): ?int
     {
-        // gg_asz_tip_cod_escluso_subito
-        return null;
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getGgAszTipCodEsclusoSubito();
     }
 
     /**

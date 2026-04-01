@@ -412,20 +412,7 @@ class IndividualeRegionale extends Individuale
 {
     use HasParent;
 
-    /**
-     * Boot the model and add global scope to filter by type.
-     *
-     * This ensures that IndividualeRegionale only returns records
-     * where type = 'regionale', as required by Parental STI pattern.
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::addGlobalScope(function ($query) {
-            $query->where('type', 'regionale');
-        });
-    }
+   
 
     public function mails(): HasMany
     {
