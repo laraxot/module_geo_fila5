@@ -416,20 +416,7 @@ class IndividualeDirigente extends Individuale
 {
     use HasParent;
 
-    /**
-     * Boot the model and add global scope to filter by type.
-     *
-     * This ensures that IndividualeDirigente only returns records
-     * where type = 'dirigente', as required by Parental STI pattern.
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::addGlobalScope(function ($query) {
-            $query->where('type', 'dirigente');
-        });
-    }
+   
 
     public string $from_field = 'dal';
 
