@@ -29,6 +29,8 @@ Questo documento fornisce un **indice centrale** per tutta la documentazione del
 | Documento | Path | Scopo |
 |-----------|------|-------|
 | **Accessor/Mutator Philosophy** | [`docs/accessor-mutator-philosophy.md`](accessor-mutator-philosophy.md) | **Filosofia SACRA per accessor** |
+| **Accessor Delegation Pattern** | [`docs/accessor-delegation-pattern.md`](accessor-delegation-pattern.md) | **Metodo puro VICINO all'accessor** |
+| **Accessor Delegation Audit** | [`docs/accessor-delegation-audit.md`](accessor-delegation-audit.md) | **Audit completo: 33 accessor da correggere** |
 | Accessor Patterns | `docs/accessor-patterns.md` | Pattern comuni per accessor |
 | Mutator Best Practices | `docs/mutator-best-practices.md` | Best practices per mutator |
 

@@ -254,13 +254,55 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Costruisce stringa identificativa valutatore (calcolo puro).
+     *
+     * Business Rule: Formato "ID valutatore] Nome dirigente".
+     * Es: "123] Mario Rossi"
+     *
+     * @return string|null Stringa identificativa, null se valutatore non disponibile
+     */
+    protected function getValutatoreTxt(): ?string
+    {
+        if (null === $this->valutatore) {
+            return null;
+        }
+
+        $id = $this->valutatore?->id ?? '';
+        $nome_diri = $this->valutatore?->nome_diri ?? '';
+
+        if ('' === $id || '' === $nome_diri) {
+            return null;
+        }
+
+        return $id.'] '.$nome_diri;
+    }
+
+    /**
+     * Accessor per valutatore_txt (stringa identificativa valutatore).
+     * Delega calcolo a getValutatoreTxt().
+     *
+     * @param string|null $value Valore cached dal DB
+     *
+     * @return string|null Stringa identificativa calcolata
+     */
     protected function getValutatoreTxtAttribute(?string $value): ?string
     {
-        if (null === $value) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
         }
-        if (request()->input('refresh', 0)) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getValutatoreTxt();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        if ($this->getKey() !== null) {
+            $this->update(['valutatore_txt' => $value]);
         }
 
         return $value;
@@ -385,16 +427,52 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni fuori sede senza assenze (calcolo puro).
+     *
+     * Business Rule: Giorni fuori sede - (giorni assenza + ore assenza / 6).
+     * Conversione ore in giorni: 6 ore = 1 giorno.
+     *
+     * @return float|null Giorni fuori sede netti, null se dati non disponibili
+     */
+    protected function getGgFuoriSedeNoAsz(): ?float
+    {
+        if (null == $this->gg_fuori_sede) {
+            return null;
+        }
+
+        $gg_asz_fuori_sede = $this->gg_asz_fuori_sede ?? 0;
+        $hh_asz_fuori_sede = $this->hh_asz_fuori_sede ?? 0;
+
+        return (float) ($this->gg_fuori_sede - $gg_asz_fuori_sede - ($hh_asz_fuori_sede / 6));
+    }
+
+    /**
+     * Accessor per gg_fuori_sede_no_asz (giorni fuori sede senza assenze).
+     * Delega calcolo a getGgFuoriSedeNoAsz().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Giorni fuori sede netti calcolati
+     */
     protected function getGgFuoriSedeNoAszAttribute(?float $value): ?float
     {
+        // Cache hit
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK per salvare
         if (null == $this->getKey()) {
             return null;
         }
 
-        $value = $this->gg_fuori_sede - $this->gg_asz_fuori_sede - ($this->hh_asz_fuori_sede / 6);
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgFuoriSedeNoAsz();
+
+        if (null === $value) {
+            return null;
+        }
 
         // Persist con update chirurgico (salva SOLO questo campo, previene loop)
         $this->update(['gg_fuori_sede_no_asz' => $value]);
@@ -1752,7 +1830,7 @@ trait SchedaTrait
         if (null == $this->propro) {
             return null;
         }
-        $pesi = $this->pesi;
+        $pesi = $this->peso;
         if (! \is_object($pesi) || ! isset($pesi->peso_esperienza_acquisita)) {
             return null;
         }
