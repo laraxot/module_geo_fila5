@@ -2,70 +2,45 @@
 
 > **Audit completo: Metodo puro VICINO all'accessor**
 > **Aggiornato**: 2026-04-01
-> **Stato**: ✅ **FASE 1 COMPLETATA** (6/6 accessor refactorizzati)
+> **Stato**: ✅ **FASE 1 COMPLETATA** + ✅ **FASE 2 PARZIALE** (13/24 accessor refactorizzati)
 > **AI Agent**: @qwen
-> **Commit**: `c4e3c502c`
+> **Commit**: `58dd1fc15`
 
 ---
 
 ## 📊 Panoramica
 
 **File Analizzati**:
-- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2801 righe)
+- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2935 righe)
 - `laravel/Modules/Sigma/app/Models/Traits/Mutators/SchedaMutator.php` (604 righe)
 
 **Totale Accessor**: ~83  
-**Conforme al Pattern**: ~58 (70%)  
-**Da Correggere**: ~25 (30%)  
-**Completati Oggi**: 6 ✅
+**Conforme al Pattern**: ~64 (77%) ⬆️  
+**Da Correggere**: ~19 (23%) ⬇️  
+**Completati Oggi**: 13 ✅
 
 ---
 
-## ✅ Accessor CONFORMI (Pattern Corretto)
+## ✅ Accessor CONFORMI (Pattern Corretto) - AGGIORNATO
 
 Questi accessor **HANNO** il metodo puro vicino e seguono il pattern corretto:
 
-| # | Accessor | Metodo Puro | File | Righe | Stato |
-|---|----------|-------------|------|-------|-------|
-| 1 | `getGgIntegParamsAszAttribute` | `getGgIntegParamsAsz()` | SchedaTrait | 100-150 | ✅ |
-| 2 | `getGgEsperienzaNoAszAttribute` | `getGgEsperienzaNoAsz()` | SchedaTrait | 150-200 | ✅ |
-| 3 | `getGgCatecoPosfunNoAszAttribute` | `getGgCatecoPosfunNoAsz()` | SchedaTrait | 200-250 | ✅ |
-| 4 | `getPosfunvalAttribute` | `getPosfunval()` | SchedaTrait | 300-350 | ✅ |
-| 5 | `getGgAttribute` | `getGg()` | SchedaTrait | 400-450 | ✅ |
-| 6 | `getGgAszAttribute` | `getGgAsz()` | SchedaTrait | 450-500 | ✅ |
-| 7 | `getGgNoAszAttribute` | `getGgNoAsz()` | SchedaTrait | 500-550 | ✅ |
-| 8 | `getHhAszAttribute` | `getHhAsz()` | SchedaTrait | 600-650 | ✅ |
-| 9 | `getGgAszInSedeAttribute` | `getGgAszInSede()` | SchedaTrait | 700-750 | ✅ |
-| 10 | `getGgAszFuoriSedeAttribute` | `getGgAszFuoriSede()` | SchedaTrait | 800-850 | ✅ |
-| 11 | `getGgAszCatecoAttribute` | `getGgAszCateco()` | SchedaTrait | 900-950 | ✅ |
-| 12 | `getGgAszCatecoInSedeAttribute` | `getGgAszCatecoInSede()` | SchedaTrait | 1000-1050 | ✅ |
-| 13 | `getGgAszCatecoPosfunInSedeAttribute` | `getGgAszCatecoPosfunInSede()` | SchedaTrait | 1100-1150 | ✅ |
-| 14 | `getGgCatecoNoAszAttribute` | `getGgCatecoNoAsz()` | SchedaTrait | 1150-1200 | ✅ |
-| 15 | `getProproAttribute` | `getPropro()` | SchedaTrait | 1250-1300 | ✅ |
-| 16 | `getGgCatecoPosfunAttribute` | `getGgCatecoPosfun()` | SchedaTrait | 1350-1400 | ✅ |
-| 17 | `getGgCatecoInSedeAttribute` | `getGgCatecoInSede()` | SchedaTrait | 1450-1500 | ✅ |
-| 18 | `getGgCatecoAttribute` | `getGgCateco()` | SchedaTrait | 1550-1600 | ✅ |
-| 19 | `getGgCatecoPosfunInSedeAttribute` | `getGgCatecoPosfunInSede()` | SchedaTrait | 1650-1700 | ✅ |
-| 20 | `getGgAszCatecoPosfunFuoriSedeAttribute` | `getGgAszCatecoPosfunFuoriSede()` | SchedaTrait | 1750-1800 | ✅ |
-| 21 | `getGgCatecoFuoriSedeAttribute` | `getGgCatecoFuoriSede()` | SchedaTrait | 1850-1900 | ✅ |
-| 22 | `getGgCatecoPosfunFuoriSedeAttribute` | `getGgCatecoPosfunFuoriSede()` | SchedaTrait | 1950-2000 | ✅ |
-| 23 | `getGgAssenzaAnnoAttribute` | `getGgAssenzaAnno()` | SchedaTrait | 2050-2100 | ✅ |
-| 24 | `getTotalePondAttribute` | `getTotalePond()` | SchedaTrait | 2150-2200 | ✅ |
-| 25 | `getPuntProgressioneFinaleAttribute` | `puntProgressioneFinale()` | SchedaTrait | 2250-2300 | ✅ |
-| 26 | `getValutatoreIdAttribute` | `getValutatoreId()` | SchedaTrait | 2350-2400 | ✅ |
-| 27 | `getPtimeAttribute` | `getPtime()` | SchedaTrait | 2450-2500 | ✅ |
-| 28 | `getGgInSedeAttribute` | `getGgInSede()` | SchedaTrait | 2550-2600 | ✅ |
-| 29 | `getGgInSedeNoAszAttribute` | `getGgInSedeNoAsz()` | SchedaTrait | 2650-2700 | ✅ |
-| 30 | `getGgPresenzaAnnoAttribute` | `getGgPresenzaAnno()` | SchedaTrait | 2750-2800 | ✅ |
-| 31 | `getGgAnnoAttribute` | `getGgAnno()` | SchedaTrait | 2850-2900 | ✅ |
-| 32 | `getGgFuoriSedeAttribute` | `getGgFuoriSede()` | SchedaTrait | 2950-3000 | ✅ |
-| 33 | `getPerfIndMediaAttribute` | `getPerfIndMedia()` | SchedaTrait | 3050-3100 | ✅ |
-| 34 | `getGgFuoriSedeNoAszAttribute` | `getGgFuoriSedeNoAsz()` | SchedaTrait | 390-420 | ✅ **NEW** |
-| 35 | `getValutatoreTxtAttribute` | `getValutatoreTxt()` | SchedaTrait | 260-290 | ✅ **NEW** |
-| 36 | `getPosizioneAttribute` | `getPosizione()` | SchedaTrait | 310-340 | ✅ **NEW** |
-| 37 | `getAventiDirittoAttribute` | `getAventiDiritto()` | SchedaTrait | 1750-1780 | ✅ **NEW** |
-| 38 | `getAventiDirittoEffAttribute` | `getAventiDirittoEff()` | SchedaTrait | 1790-1820 | ✅ **NEW** |
-| 39 | `getGgAszCatecoPosfunAttribute` | `getGgAszCatecoPosfun()` | SchedaTrait | 1620-1650 | ✅ **NEW** |
+| # | Accessor | Metodo Puro | File | Stato |
+|---|----------|-------------|------|-------|
+| 1-33 | (vedi audit precedente) | Vari | SchedaTrait | ✅ |
+| 34 | `getGgFuoriSedeNoAszAttribute` | `getGgFuoriSedeNoAsz()` | SchedaTrait | ✅ **FASE 1** |
+| 35 | `getValutatoreTxtAttribute` | `getValutatoreTxt()` | SchedaTrait | ✅ **FASE 1** |
+| 36 | `getPosizioneAttribute` | `getPosizione()` | SchedaTrait | ✅ **FASE 1** |
+| 37 | `getAventiDirittoAttribute` | `getAventiDiritto()` | SchedaTrait | ✅ **FASE 1** |
+| 38 | `getAventiDirittoEffAttribute` | `getAventiDirittoEff()` | SchedaTrait | ✅ **FASE 1** |
+| 39 | `getGgAszCatecoPosfunAttribute` | `getGgAszCatecoPosfun()` | SchedaTrait | ✅ **FASE 1** |
+| 40 | `getGgCatecoNoPosfunNoAszAttribute` | `getGgCatecoNoPosfunNoAsz()` | SchedaTrait | ✅ **FASE 2** |
+| 41 | `getGgCatecoSupAttribute` | `getGgCatecoSup()` | SchedaTrait | ✅ **FASE 2** |
+| 42 | `getGgCatecoSupInSedeAttribute` | `getGgCatecoSupInSede()` | SchedaTrait | ✅ **FASE 2** |
+| 43 | `getGgCatecoSupFuoriSedeAttribute` | `getGgCatecoSupFuoriSede()` | SchedaTrait | ✅ **FASE 2** |
+| 44 | `getListaProproAttribute` | `getListaPropro()` | SchedaTrait | ✅ **FASE 2** |
+| 45 | `getListaProproSupAttribute` | `getListaProproSup()` | SchedaTrait | ✅ **FASE 2** |
+| 46 | `getImportoStipendioAnnuoAttribute` | `getImportoStipendioAnnuo()` | SchedaTrait | ✅ **FASE 2** |
 
 **Note**:
 - Questi accessor seguono il pattern corretto: metodo puro + accessor con cache/guard/delega/persist
@@ -144,21 +119,34 @@ Questi accessor **NON HANNO** il metodo puro vicino o fanno calcolo diretto:
 **Commit**: `53248cfec`, `c4e3c502c`  
 **GitHub Issue**: #XXX (da creare - Fase 1 completata)
 
-### Fase 2: Priorità Media (🟡) - DA INIZIARE
+### Fase 2: Priorità Media (🟡) - ✅ PARZIALE (7/15)
 
 **Obiettivo**: ~15 accessor
 
-- [ ] `getGgCatecoNoPosfunNoAszAttribute` → Creare `getGgCatecoNoPosfunNoAsz()`
-- [ ] `getGgCatecoSupAttribute` → Creare `getGgCatecoSup()`
-- [ ] `getGgCatecoSupInSedeAttribute` → Creare `getGgCatecoSupInSede()`
-- [ ] `getGgCatecoSupFuoriSedeAttribute` → Creare `getGgCatecoSupFuoriSede()`
-- [ ] `getListaProproAttribute` → Creare `getListaPropro()`
-- [ ] `getListaProproSupAttribute` → Creare `getListaProproSup()`
-- [ ] `getImportoStipendioAnnuoAttribute` → Creare `getImportoStipendioAnnuo()`
-- [ ] Tutti i `get*Attribute` in SchedaMutator (~10)
+**Completati (7)**:
+- [x] ✅ `getGgCatecoNoPosfunNoAszAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getGgCatecoSupAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getGgCatecoSupInSedeAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getGgCatecoSupFuoriSedeAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getListaProproAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getListaProproSupAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
+- [x] ✅ `getImportoStipendioAnnuoAttribute` → **COMPLETATO** (Commit: `58dd1fc15`)
 
-**Stima**: 6-8 ore  
-**GitHub Issue**: #YYY (da creare)
+**Restanti (8)**:
+- [ ] `getGgAszTipCodEsclusoSubitoAttribute` → Rimuovere o documentare (🟢 Bassa)
+- [ ] `getCodquaAttribute` → SchedaMutator (complesso: fetch + multi-update)
+- [ ] `getContAttribute` → SchedaMutator (complesso: fetch + multi-update)
+- [ ] `getTipcoAttribute` → SchedaMutator (complesso: fetch + multi-update)
+- [ ] `getPosizioneEcoAttribute` → SchedaMutator (complesso: fetch + multi-update)
+- [ ] `getPercParttimepondAnnoAttribute` → SchedaMutator
+- [ ] `getPercParttimepondDalalAttribute` → SchedaMutator
+- [ ] `getDisci1TxtAttribute` → SchedaMutator
+- [ ] `getEtaAttribute` → SchedaMutator
+
+**Stato**: 7/15 completati (47%)  
+**Quality Gates**: PHPStan Level 10 ✅  
+**Commit**: `58dd1fc15`  
+**GitHub Issue**: #YYY (da creare - Fase 2 in corso)
 
 ### Fase 3: Priorità Bassa (🟢) - Cleanup
 
