@@ -1249,25 +1249,48 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni categoria economica senza posizione funzionale e senza assenze (calcolo puro).
+     *
+     * Business Rule: Sottrae giorni cateco_posfun_no_asz da gg_cateco_no_asz.
+     * Ottiene giorni categoria economica netti escludendo posizione funzionale.
+     *
+     * @return int|null Giorni cateco_no_posfun_no_asz, null se dati non disponibili
+     */
+    protected function getGgCatecoNoPosfunNoAsz(): ?int
+    {
+        if (null === $this->gg_cateco_no_asz || null === $this->gg_cateco_posfun_no_asz) {
+            return null;
+        }
+
+        return (int) ($this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz);
+    }
+
+    /**
+     * Accessor per gg_cateco_no_posfun_no_asz (giorni categoria economica senza posfun e senza assenze).
+     * Delega calcolo a getGgCatecoNoPosfunNoAsz().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_no_posfun_no_asz calcolati
+     */
     protected function getGgCatecoNoPosfunNoAszAttribute(?int $value): ?int
     {
+        // Cache hit (con refresh opzionale)
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK per salvare
         if (null == $this->getKey()) {
             return null;
         }
-        if (2160000 == $this->matr) {
-            dddx([
-                'gg_cateco_no_asz' => $this->gg_cateco_no_asz,
-                'gg_cateco_posun_no_asz' => $this->gg_cateco_posfun_no_asz,
-            ]);
-        }
-        $value = $this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz;
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
-            return $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoNoPosfunNoAsz();
+
+        if (null === $value) {
+            return null;
         }
 
         // Persist con update chirurgico (salva SOLO questo campo, previene loop)
