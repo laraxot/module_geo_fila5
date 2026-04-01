@@ -34,6 +34,8 @@ return [
             'label' => 'Anno',
             'placeholder' => 'Seleziona l\'anno',
             'help' => 'Anno di riferimento',
+            'description' => 'anno',
+            'helper_text' => 'anno',
         ],
         'punteggio' => [
             'label' => 'Punteggio',
@@ -256,6 +258,21 @@ return [
             'label' => 'profile',
             'icon' => 'profile',
             'tooltip' => 'profile',
+        ],
+        'import_valutatori' => [
+            'tooltip' => 'import_valutatori',
+            'icon' => 'import_valutatori',
+            'label' => 'import_valutatori',
+        ],
+        'submit' => [
+            'label' => 'submit',
+            'icon' => 'submit',
+            'tooltip' => 'submit',
+        ],
+        'cancel' => [
+            'label' => 'cancel',
+            'icon' => 'cancel',
+            'tooltip' => 'cancel',
         ],
     ],
     'messages' => [

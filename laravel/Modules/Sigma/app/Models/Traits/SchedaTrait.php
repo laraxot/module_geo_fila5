@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Modules\Ptv\Models\Traits\HasMyLogs;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
@@ -34,6 +35,7 @@ trait SchedaTrait
     use SchedaMutator; // → CommonMutator, EnteMatr*Mutator
     use SchedaRelationship; // → CommonRelationship, EnteMatr*Relationship, TquRelationship
     use SchedaScope; // → FunctionExtra, MassExtra, Helper inline
+    use HasMyLogs;
 
     // -------------
     // ⚡ HELPER METHODS: Migrated to SchedaHelper.php (703 lines)

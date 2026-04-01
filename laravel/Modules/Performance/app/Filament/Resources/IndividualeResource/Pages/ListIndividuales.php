@@ -17,8 +17,8 @@ class ListIndividuales extends ListScheda
 {
     public static string $resource = IndividualeResource::class;
 
-    /** @var array<string, mixed> */
-    protected array $data = [];
+    // @var array<string, mixed> 
+    //protected array $data = [];
 
     /**
      * @return array<string, Action|ActionGroup>

@@ -85,18 +85,33 @@ class ListScheda extends XotBaseListRecords
     public function getTableColumns(): array
     {
         return [
+            'id/motivo' => GroupColumn::make('id/motivo')->schema([
+                'id' => TextColumn::make('id'),
+                //'type' => TextColumn::make('type'),
+                //'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
+                'motivo' => TextColumn::make('motivo'),
+            ])->searchable(['motivo']),
+            /*
             'id'=>TextColumn::make('id'),
-            
-            'type' => TextColumn::make('type'),
+            */
+            'type' => TextColumn::make('type')
+                ->visible(fn () => !in_array(HasParent::class, class_uses_recursive(static::getModel()))),
             
             'ha_diritto' => IconColumn::make('ha_diritto')->boolean(),
             
+             
+            'mail_sended_at' => TextColumn::make('mail_sended_at')
+                    ->html()
+                    ->default(fn($record)=>app(ShowMailSendedAt::class)->execute($record)),
+                    
+            /*
             'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([
                 'motivo' => TextColumn::make('motivo')->searchable(),
                 'mail_sended_at' => TextColumn::make('mail_sended_at')
                     ->html()
-                    ->default(app(ShowMailSendedAt::class)->execute(...)),
+                    ->default(fn($record)=>app(ShowMailSendedAt::class)->execute($record)),
             ]),
+            */
             
             'lavoratore' => LavoratoreColumn::make('lavoratore')->appendColumns([
                 //'totale_punteggio' => TextColumn::make('totale_punteggio'),

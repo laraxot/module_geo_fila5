@@ -222,6 +222,18 @@ return [
         'type' => [
             'label' => 'type',
         ],
+        'mail_sended_a1t' => [
+            'label' => 'mail_sended_a1t',
+        ],
+        'id/type/ha_diritto' => [
+            'label' => 'id/type/ha_diritto',
+        ],
+        'id/type/ha_diritto/motivo' => [
+            'label' => 'id/type/ha_diritto/motivo',
+        ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
     ],
     'actions' => [
         'calculate' => [

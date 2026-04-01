@@ -45,10 +45,11 @@ class SendMailByRecordAction
         }
 
         if (! method_exists($record, 'myLogs')) {
-            throw new \InvalidArgumentException('Model must implement myLogs method');
+            throw new \InvalidArgumentException('Model ['.$record::class.'] must implement myLogs method');
         }
 
         $to = $record->email;
+        //$to = 'marco.sottana@gmail.com'; //4 debug non cancellare
         $subject = $record->option('mail_oggetto');
         $bodyHtml = $record->option('mail_testo');
 

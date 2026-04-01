@@ -229,7 +229,10 @@ class ImportValutatoriAction extends Action
             $schedaWhereAttributes = array_merge($where, ['matr' => $matricola]);
             /** @var array<string, mixed> $schedaCreateAttributes */
             $schedaCreateAttributes = ['valutatore_id' => $valutatore_id];
-            $model=app($schedaModelClass)->disableLogging();
+            $model=app($schedaModelClass);
+            if(method_exists($model, 'disableLogging')){
+                $model->disableLogging();
+            }
             $schedaModelClass::withoutEvents(function () use ($model, $schedaWhereAttributes, $schedaCreateAttributes) : void {
                     $model->updateOrCreate($schedaWhereAttributes, $schedaCreateAttributes);
                 });

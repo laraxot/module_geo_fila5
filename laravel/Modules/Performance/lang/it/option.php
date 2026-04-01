@@ -187,6 +187,9 @@ return [
             'icon' => 'profile',
             'tooltip' => 'profile',
         ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+        ],
     ],
     'model' => [
         'label' => 'option.model',
