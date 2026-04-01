@@ -2195,7 +2195,14 @@ trait SchedaTrait
          */
     }
 
-    protected function getListaProproAttribute(?string $_value): ?string
+    /**
+     * Helper method: Ottiene lista propro dalla categoria economica (calcolo puro).
+     *
+     * Business Rule: Estrae lista_propro da categoriaPropro.
+     *
+     * @return string|null Lista propro, null se categoria non disponibile
+     */
+    protected function getListaPropro(): ?string
     {
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
@@ -2205,7 +2212,28 @@ trait SchedaTrait
         return $categoria->lista_propro;
     }
 
-    protected function getListaProproSupAttribute(?string $_value): ?string
+    /**
+     * Accessor per lista_propro (lista propro da categoria economica).
+     * Delega calcolo a getListaPropro().
+     *
+     * @param string|null $_value Valore cached dal DB (non usato)
+     *
+     * @return string|null Lista propro calcolata
+     */
+    protected function getListaProproAttribute(?string $_value): ?string
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getListaPropro();
+    }
+
+    /**
+     * Helper method: Ottiene lista propro superiore dalla categoria economica (calcolo puro).
+     *
+     * Business Rule: Estrae lista_propro_sup da categoriaPropro.
+     *
+     * @return string|null Lista propro sup, null se categoria non disponibile
+     */
+    protected function getListaProproSup(): ?string
     {
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
@@ -2213,6 +2241,20 @@ trait SchedaTrait
         }
 
         return $categoria->lista_propro_sup;
+    }
+
+    /**
+     * Accessor per lista_propro_sup (lista propro superiore da categoria economica).
+     * Delega calcolo a getListaProproSup().
+     *
+     * @param string|null $_value Valore cached dal DB (non usato)
+     *
+     * @return string|null Lista propro sup calcolata
+     */
+    protected function getListaProproSupAttribute(?string $_value): ?string
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getListaProproSup();
     }
 
     /**
@@ -2318,7 +2360,15 @@ trait SchedaTrait
      * return 0;
      * }
      */
-    protected function getImportoStipendioAnnuoAttribute(?float $_value): ?float
+
+    /**
+     * Helper method: Ottiene importo stipendio annuo da tabellare (calcolo puro).
+     *
+     * Business Rule: Estrae importo_stipendio_annuo dalla relazione stipendioTabellare.
+     *
+     * @return float|null Importo stipendio annuo, null se non disponibile
+     */
+    protected function getImportoStipendioAnnuo(): ?float
     {
         $tmp = $this->stipendioTabellare;
         // $tmp è HasOne, quindi può essere un Model o null
@@ -2327,6 +2377,20 @@ trait SchedaTrait
         }
 
         return is_numeric($tmp->importo_stipendio_annuo) ? (float) $tmp->importo_stipendio_annuo : null;
+    }
+
+    /**
+     * Accessor per importo_stipendio_annuo (importo stipendio annuo da tabellare).
+     * Delega calcolo a getImportoStipendioAnnuo().
+     *
+     * @param float|null $_value Valore cached dal DB (non usato)
+     *
+     * @return float|null Importo stipendio annuo calcolato
+     */
+    protected function getImportoStipendioAnnuoAttribute(?float $_value): ?float
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getImportoStipendioAnnuo();
     }
 
     /**
