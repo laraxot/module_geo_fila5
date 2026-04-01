@@ -253,81 +253,109 @@ trait SchedaMutator
         return $value;
     }
 
+    /**
+     * Helper method: Calcola percentuale part-time ponderata anno (calcolo puro).
+     *
+     * Business Rule: perc_parttime_anno * (1 - (gg_parttimevert_anno / gg_presenza_anno)).
+     * Se gg_presenza_anno = 0, return 0.
+     *
+     * @return float|null Percentuale calcolata, null se dati non disponibili
+     */
+    protected function getPercParttimepondAnno(): ?float
+    {
+        if ($this->gg_presenza_anno == 0) {
+            return 0.0;
+        }
+
+        return (float) ($this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno)));
+    }
+
+    /**
+     * Accessor per perc_parttimepond_anno (percentuale part-time ponderata anno).
+     * Delega calcolo a getPercParttimepondAnno().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Percentuale calcolata
+     */
     protected function getPercParttimepondAnnoAttribute(?float $value = null): ?float
     {
-        // Get raw value if not provided
+        // Cache hit
         $rawValue = $this->attributes['perc_parttime_pond_anno'] ?? null;
         $value = $value ?? ($rawValue !== null && is_numeric($rawValue) ? (float) $rawValue : null);
         if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
+        // Guard: record deve esistere
         if ($this->getKey() == null) {
             return null;
         }
 
-        // */
-        $value = 0;
-        if ($this->gg_presenza_anno != 0) {
-            $value = $this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno));
-        }
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getPercParttimepondAnno();
 
-        // $value = number_format($value, 3);
-        $this->perc_parttimepond_anno = $value;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['perc_parttimepond_anno' => $value]);
-        }
+        // Persist con update
+        $this->update(['perc_parttimepond_anno' => $value]);
 
         return (float) $value;
     }
 
+    /**
+     * Helper method: Calcola percentuale part-time ponderata dal-al (calcolo puro).
+     *
+     * Business Rule: perc_parttime_dalal * (1 - (gg_parttimevert_dalal / gg_presenza_dalal)).
+     * Se gg_presenza_dalal = 0, return 0.
+     *
+     * @return float|null Percentuale calcolata, null se dati non disponibili
+     */
+    protected function getPercParttimepondDalal(): ?float
+    {
+        if ($this->gg_presenza_dalal == 0) {
+            return 0.0;
+        }
+
+        return (float) ($this->perc_parttime_dalal * (1 - ($this->gg_parttimevert_dalal / $this->gg_presenza_dalal)));
+    }
+
+    /**
+     * Accessor per perc_parttimepond_dalal (percentuale part-time ponderata dal-al).
+     * Delega calcolo a getPercParttimepondDalal().
+     *
+     * @return float|null Percentuale calcolata
+     */
     protected function getPercParttimepondDalalAttribute(): ?float
     {
-        // Get raw value from attributes
+        // Cache hit
         $rawValue = $this->attributes['perc_parttime_pond_dalal'] ?? null;
         $value = $rawValue !== null && is_numeric($rawValue) ? (float) $rawValue : null;
         if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
+        // Guard: record deve esistere
         if ($this->getKey() == null) {
             return null;
         }
 
-        // */
-        $value = 0;
-        if ($this->gg_presenza_dalal !== 0) {
-            $value = $this->perc_parttime_dalal * (1 - ($this->gg_parttimevert_dalal / $this->gg_presenza_dalal));
-        }
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getPercParttimepondDalal();
 
-        // $value = number_format($value, 3);
-        $this->perc_parttimepond_dalal = $value;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['perc_parttimepond_dalal' => $value]);
-        }
+        // Persist con update
+        $this->update(['perc_parttimepond_dalal' => $value]);
 
         return $value;
     }
 
-    protected function getDisci1TxtAttribute(?string $value): ?string
+    /**
+     * Helper method: Ottiene descrizione disciplina 1 da Codici (calcolo puro).
+     *
+     * Business Rule: Estrae desc1 da Codici dove tipo=6 e codice=disci1.
+     *
+     * @return string|null Descrizione disciplina, null se non disponibile
+     */
+    protected function getDisci1Txt(): ?string
     {
-        if ($value !== null) {
-            return $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
         if ($this->disci1 == null) {
             return null;
         }
@@ -337,15 +365,41 @@ trait SchedaMutator
             return null;
         }
 
-        try {
-            $this->disci1_txt = $row->desc1;
+        return $row->desc1;
+    }
 
-            // Guard: modello deve avere PK per salvare
-            // @phpstan-ignore notIdentical.alwaysTrue
-            if ($this->getKey() !== null) {
-                $this->update(['disci1_txt' => $row->desc1]);
-            }
+    /**
+     * Accessor per disci1_txt (descrizione disciplina 1 da Codici).
+     * Delega calcolo a getDisci1Txt().
+     *
+     * @param string|null $value Valore cached dal DB
+     *
+     * @return string|null Descrizione calcolata
+     */
+    protected function getDisci1TxtAttribute(?string $value): ?string
+    {
+        // Cache hit
+        if ($value !== null) {
+            return $value;
+        }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getDisci1Txt();
+
+        if ($value === null) {
+            return null;
+        }
+
+        // Persist con gestione errori
+        try {
+            $this->update(['disci1_txt' => $value]);
         } catch (\Exception) {
+            // Se tabella non ha colonna, la crea (legacy behavior)
             $fieldname = 'disci1_txt';
             if (! Schema::connection($this->getConnectionName())->hasColumn($this->getTable(), $fieldname)) {
                 Schema::connection($this->getConnectionName())->table($this->getTable(), static function (\Illuminate\Database\Schema\Blueprint $table) use (
@@ -356,7 +410,7 @@ trait SchedaMutator
             }
         }
 
-        return isset($this->attributes['disci1_txt']) && is_string($this->attributes['disci1_txt']) ? $this->attributes['disci1_txt'] : null;
+        return $value;
     }
 
     protected function getPosizTxtAttribute(?string $value): ?string
@@ -478,59 +532,66 @@ trait SchedaMutator
         return $value === null ? null : (int) $value;
     }
 
-    protected function getEtaAttribute(?float $value): ?float
+    /**
+     * Helper method: Calcola età anagrafica (calcolo puro).
+     *
+     * Business Rule: Differenza in anni tra data nascita (ana2kd) e data_presenza_al.
+     * Se ana02f non esiste o vuota, return 0.
+     *
+     * @return float|null Età calcolata, 0 se dati non disponibili
+     */
+    protected function getEta(): ?float
     {
-        if ($value !== null && $value > 0 && ! request()->input('refresh', 0)) {
-            return $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
         $ana02f = $this->ana02f;
         if ($ana02f === null) {
-            dddx([
-                'get_class' => static::class,
-                'this' => $this->toArray(),
-                'ana02f' => $this->ana02f(),
-            ]);
+            return 0.0;
         }
 
         if ($ana02f->last() === null) {
-            return 0;
+            return 0.0;
         }
 
         $ana2kd = $ana02f->last()->ana2kd;
-
         $ana2kd_date = Date::createFromFormat('Ymd', $ana2kd);
         $date_max = $this->criteriOptionsArr('data_presenza_al');
 
         // Verifica che $date_max sia una Carbon instance
         if (! ($date_max instanceof \Carbon\Carbon)) {
-            $this->eta = 0.0;
-            if ($this->getKey() != null) {
-                $this->update(['eta' => 0.0]);
-            }
-
             return 0.0;
         }
 
-        // floatDiffInYears non esiste, usare diffInYears con calcolo float
+        // Calcolo età: giorni / 365.25 (con anni bisestili)
         $daysDiff = $date_max->diffInDays($ana2kd_date, true);
-        $value = $daysDiff / 365.25; // Conversione giorni in anni con anni bisestili
+        $value = $daysDiff / 365.25;
 
-        // $value è sempre float perché $daysDiff è int e la divisione per float restituisce float
-        $valueFloat = abs((float) $value);
-        $this->eta = $valueFloat;
+        return abs((float) $value);
+    }
 
-        // Guard: modello deve avere PK per salvare
-        $key = $this->getKey();
-        // @phpstan-ignore-next-line notIdentical.alwaysTrue
-        if ($key !== null) {
-            $this->update(['eta' => $valueFloat]);
+    /**
+     * Accessor per eta (età anagrafica).
+     * Delega calcolo a getEta().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Età calcolata
+     */
+    protected function getEtaAttribute(?float $value): ?float
+    {
+        // Cache hit
+        if ($value !== null && $value > 0 && ! request()->input('refresh', 0)) {
+            return $value;
         }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $valueFloat = $this->getEta();
+
+        // Persist con update
+        $this->update(['eta' => $valueFloat]);
 
         return $valueFloat;
     }
