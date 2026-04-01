@@ -2,22 +2,22 @@
 
 > **Audit completo: Metodo puro VICINO all'accessor**
 > **Aggiornato**: 2026-04-01
-> **Stato**: 🟡 In Progress (2/33 completati ✅)
+> **Stato**: ✅ **FASE 1 COMPLETATA** (6/6 accessor refactorizzati)
 > **AI Agent**: @qwen
-> **Commit**: `53248cfec`
+> **Commit**: `c4e3c502c`
 
 ---
 
 ## 📊 Panoramica
 
 **File Analizzati**:
-- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2749 righe)
-- `laravel/Modules/Sigma/app/Models/Traits/Mutators/SchedaMutator.php` (600+ righe)
+- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2801 righe)
+- `laravel/Modules/Sigma/app/Models/Traits/Mutators/SchedaMutator.php` (604 righe)
 
 **Totale Accessor**: ~83  
-**Conforme al Pattern**: ~52 (63%)  
-**Da Correggere**: ~31 (37%)  
-**Completati Oggi**: 2 ✅
+**Conforme al Pattern**: ~58 (70%)  
+**Da Correggere**: ~25 (30%)  
+**Completati Oggi**: 6 ✅
 
 ---
 
@@ -62,6 +62,10 @@ Questi accessor **HANNO** il metodo puro vicino e seguono il pattern corretto:
 | 33 | `getPerfIndMediaAttribute` | `getPerfIndMedia()` | SchedaTrait | 3050-3100 | ✅ |
 | 34 | `getGgFuoriSedeNoAszAttribute` | `getGgFuoriSedeNoAsz()` | SchedaTrait | 390-420 | ✅ **NEW** |
 | 35 | `getValutatoreTxtAttribute` | `getValutatoreTxt()` | SchedaTrait | 260-290 | ✅ **NEW** |
+| 36 | `getPosizioneAttribute` | `getPosizione()` | SchedaTrait | 310-340 | ✅ **NEW** |
+| 37 | `getAventiDirittoAttribute` | `getAventiDiritto()` | SchedaTrait | 1750-1780 | ✅ **NEW** |
+| 38 | `getAventiDirittoEffAttribute` | `getAventiDirittoEff()` | SchedaTrait | 1790-1820 | ✅ **NEW** |
+| 39 | `getGgAszCatecoPosfunAttribute` | `getGgAszCatecoPosfun()` | SchedaTrait | 1620-1650 | ✅ **NEW** |
 
 **Note**:
 - Questi accessor seguono il pattern corretto: metodo puro + accessor con cache/guard/delega/persist
@@ -80,16 +84,18 @@ Questi accessor **NON HANNO** il metodo puro vicino o fanno calcolo diretto:
 |---|----------|------|-------|----------|----------|
 | 1 | ~~`getGgFuoriSedeNoAszAttribute`~~ | ~~SchedaTrait~~ | ~~450~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
 | 2 | ~~`getValutatoreTxtAttribute`~~ | ~~SchedaTrait~~ | ~~320~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
-| 3 | `getPosizioneAttribute` | SchedaTrait | ~330 | Calcolo diretto: conteggio avversari | 🔴 Alta |
-| 4 | `getGgAszCatecoPosfunAttribute` | SchedaTrait | ~1700 | Calcolo diretto: somma in_sede + fuori_sede | 🟡 Media |
-| 5 | `getGgCatecoNoPosfunNoAszAttribute` | SchedaTrait | ~1600 | Calcolo diretto: sottrazione | 🟡 Media |
-| 6 | `getGgCatecoSupAttribute` | SchedaTrait | ~1500 | Calcolo diretto: somma sup_in_sede + sup_fuori_sede | 🟡 Media |
-| 7 | `getGgCatecoSupInSedeAttribute` | SchedaTrait | ~1520 | Calcolo diretto: delega ad anag ma nessun metodo puro | 🟡 Media |
-| 8 | `getGgCatecoSupFuoriSedeAttribute` | SchedaTrait | ~1800 | Calcolo diretto: delega ad anag ma nessun metodo puro | 🟡 Media |
-| 9 | `getGgAszTipCodEsclusoSubitoAttribute` | SchedaTrait | ~2900 | Return null diretto | 🟢 Bassa |
-| 10 | `getListaProproAttribute` | SchedaTrait | ~2500 | Calcolo diretto: delega a categoria | 🟡 Media |
-| 11 | `getListaProproSupAttribute` | SchedaTrait | ~2510 | Calcolo diretto: delega a categoria | 🟡 Media |
-| 12 | `getImportoStipendioAnnuoAttribute` | SchedaTrait | ~2800 | Calcolo diretto: delega a stipendioTabellare | 🟡 Media |
+| 3 | ~~`getPosizioneAttribute`~~ | ~~SchedaTrait~~ | ~~330~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
+| 4 | ~~`getAventiDirittoAttribute`~~ | ~~SchedaTrait~~ | ~~1750~~ | ~~Calcolo diretto + debug echo~~ | ✅ **COMPLETATO** |
+| 5 | ~~`getAventiDirittoEffAttribute`~~ | ~~SchedaTrait~~ | ~~1790~~ | ~~Calcolo diretto + debug echo~~ | ✅ **COMPLETATO** |
+| 6 | ~~`getGgAszCatecoPosfunAttribute`~~ | ~~SchedaTrait~~ | ~~1620~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
+| 7 | `getGgCatecoNoPosfunNoAszAttribute` | SchedaTrait | ~1600 | Calcolo diretto: sottrazione | 🟡 Media |
+| 8 | `getGgCatecoSupAttribute` | SchedaTrait | ~1500 | Calcolo diretto: somma sup_in_sede + sup_fuori_sede | 🟡 Media |
+| 9 | `getGgCatecoSupInSedeAttribute` | SchedaTrait | ~1520 | Calcolo diretto: delega ad anag ma nessun metodo puro | 🟡 Media |
+| 10 | `getGgCatecoSupFuoriSedeAttribute` | SchedaTrait | ~1800 | Calcolo diretto: delega ad anag ma nessun metodo puro | 🟡 Media |
+| 11 | `getGgAszTipCodEsclusoSubitoAttribute` | SchedaTrait | ~2900 | Return null diretto | 🟢 Bassa |
+| 12 | `getListaProproAttribute` | SchedaTrait | ~2500 | Calcolo diretto: delega a categoria | 🟡 Media |
+| 13 | `getListaProproSupAttribute` | SchedaTrait | ~2510 | Calcolo diretto: delega a categoria | 🟡 Media |
+| 14 | `getImportoStipendioAnnuoAttribute` | SchedaTrait | ~2800 | Calcolo diretto: delega a stipendioTabellare | 🟡 Media |
 
 ### Categoria 2: Pattern Specializzati (OK ma Documentare)
 
@@ -122,41 +128,46 @@ Questi accessor **NON HANNO** il metodo puro vicino o fanno calcolo diretto:
 
 ## 📋 Piano di Refactoring
 
-### Fase 1: Priorità Alta (🔴)
+### Fase 1: Priorità Alta (🔴) - ✅ COMPLETATA
 
-**Obiettivo**: 5 accessor critici
+**Obiettivo**: 6 accessor critici
 
-1. ✅ `getGgFuoriSedeNoAszAttribute` → **COMPLETATO** (Commit: `53248cfec`)
-2. ✅ `getValutatoreTxtAttribute` → **COMPLETATO** (Commit: `53248cfec`)
-3. [ ] `getPosizioneAttribute` → Creare `getPosizione()`
-4. [ ] `getAventiDirittoAttribute` → Creare `getAventiDiritto()` + cleanup debug
-5. [ ] `getAventiDirittoEffAttribute` → Creare `getAventiDirittoEff()` + cleanup debug
-6. [ ] `getGgAszCatecoPosfunAttribute` → Creare `getGgAszCatecoPosfun()`
+- [x] ✅ `getGgFuoriSedeNoAszAttribute` → **COMPLETATO** (Commit: `53248cfec`)
+- [x] ✅ `getValutatoreTxtAttribute` → **COMPLETATO** (Commit: `53248cfec`)
+- [x] ✅ `getPosizioneAttribute` → **COMPLETATO** (Commit: `c4e3c502c`)
+- [x] ✅ `getAventiDirittoAttribute` → **COMPLETATO** + cleanup debug echo (Commit: `c4e3c502c`)
+- [x] ✅ `getAventiDirittoEffAttribute` → **COMPLETATO** + cleanup debug echo (Commit: `c4e3c502c`)
+- [x] ✅ `getGgAszCatecoPosfunAttribute` → **COMPLETATO** (Commit: `c4e3c502c`)
 
-**Stato**: 2/6 completati (33%)  
-**Stima**: 2-3 ore  
-**GitHub Issue**: #XXX (da creare)
+**Stato**: 6/6 completati (100%)  
+**Quality Gates**: PHPStan Level 10 ✅  
+**Commit**: `53248cfec`, `c4e3c502c`  
+**GitHub Issue**: #XXX (da creare - Fase 1 completata)
 
-### Fase 2: Priorità Media (🟡)
+### Fase 2: Priorità Media (🟡) - DA INIZIARE
 
-**Obiettivo**: 15 accessor
+**Obiettivo**: ~15 accessor
 
-- Tutti i `getGgCateco*` senza metodo puro
-- Tutti i `get*Attribute` in SchedaMutator
+- [ ] `getGgCatecoNoPosfunNoAszAttribute` → Creare `getGgCatecoNoPosfunNoAsz()`
+- [ ] `getGgCatecoSupAttribute` → Creare `getGgCatecoSup()`
+- [ ] `getGgCatecoSupInSedeAttribute` → Creare `getGgCatecoSupInSede()`
+- [ ] `getGgCatecoSupFuoriSedeAttribute` → Creare `getGgCatecoSupFuoriSede()`
+- [ ] `getListaProproAttribute` → Creare `getListaPropro()`
+- [ ] `getListaProproSupAttribute` → Creare `getListaProproSup()`
+- [ ] `getImportoStipendioAnnuoAttribute` → Creare `getImportoStipendioAnnuo()`
+- [ ] Tutti i `get*Attribute` in SchedaMutator (~10)
 
 **Stima**: 6-8 ore  
-**GitHub Issue**: #YYY
+**GitHub Issue**: #YYY (da creare)
 
-### Fase 3: Priorità Bassa (🟢)
+### Fase 3: Priorità Bassa (🟢) - Cleanup
 
-**Obiettivo**: Cleanup e documentazione
-
-1. `getGgAszTipCodEsclusoSubitoAttribute` → Rimuovere o documentare
-2. Documentare pattern `funcYear()` per performance indicator
-3. Aggiornare documentazione
+- [ ] `getGgAszTipCodEsclusoSubitoAttribute` → Rimuovere o documentare
+- [ ] Documentare pattern `funcYear()` per performance indicator
+- [ ] Aggiornare documentazione
 
 **Stima**: 1-2 ore  
-**GitHub Issue**: #ZZZ
+**GitHub Issue**: #ZZZ (da creare)
 
 ---
 
