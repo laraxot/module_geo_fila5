@@ -308,11 +308,33 @@ trait SchedaTrait
         return $value;
     }
 
-    protected function getPosizioneAttribute(?int $_value): int
+    /**
+     * Helper method: Calcola posizione in classifica categoria economica (calcolo puro).
+     *
+     * Business Rule: Conta quanti avversari hanno punteggio maggiore.
+     * Posizione = numero di avversari con punt_progressione_finale superiore.
+     *
+     * @return int Posizione in classifica (0 = primo posto)
+     */
+    protected function getPosizione(): int
     {
         return $this->avversariCategoriaEco
             ->where('punt_progressione_finale', '>', $this->punt_progressione_finale)
             ->count();
+    }
+
+    /**
+     * Accessor per posizione (posizione in classifica categoria economica).
+     * Delega calcolo a getPosizione().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
+     *
+     * @return int Posizione in classifica calcolata
+     */
+    protected function getPosizioneAttribute(?int $_value): int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getPosizione();
     }
 
     /**
@@ -1595,11 +1617,37 @@ trait SchedaTrait
      * }
      */
 
+    /**
+     * Helper method: Calcola giorni assenza categoria economica + posizione funzionale totali (calcolo puro).
+     *
+     * Business Rule: Somma giorni assenza cateco_posfun in sede + fuori sede.
+     *
+     * @return int|null Giorni assenza cateco_posfun totali, null se dati non disponibili
+     */
+    protected function getGgAszCatecoPosfun(): ?int
+    {
+        if (null === $this->gg_asz_cateco_posfun_in_sede && null === $this->gg_asz_cateco_posfun_fuori_sede) {
+            return null;
+        }
+
+        $in_sede = $this->gg_asz_cateco_posfun_in_sede ?? 0;
+        $fuori_sede = $this->gg_asz_cateco_posfun_fuori_sede ?? 0;
+
+        return (int) ($in_sede + $fuori_sede);
+    }
+
+    /**
+     * Accessor per gg_asz_cateco_posfun (giorni assenza categoria economica + posfun totali).
+     * Delega calcolo a getGgAszCatecoPosfun().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
+     *
+     * @return int|null Giorni assenza cateco_posfun totali calcolati
+     */
     protected function getGgAszCatecoPosfunAttribute(?int $_value): ?int
     {
-        $value = $this->gg_asz_cateco_posfun_in_sede + $this->gg_asz_cateco_posfun_fuori_sede;
-
-        return (int) $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getGgAszCatecoPosfun();
     }
 
     /*
@@ -1722,7 +1770,16 @@ trait SchedaTrait
      *
      * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
      */
-    protected function getAventiDirittoAttribute(mixed $_value): ?int
+
+    /**
+     * Helper method: Calcola aventi diritto alla progressione (calcolo puro).
+     *
+     * Business Rule: Estrae valore da maxCatecoPosfun (query aggregata su categoria+posfun).
+     * Se non disponibile, return null (nessun debug echo - usare log se necessario).
+     *
+     * @return int|null Numero aventi diritto, null se non determinabile
+     */
+    protected function getAventiDiritto(): ?int
     {
         $maxCatecoPosfun = $this->maxCatecoPosfun;
         if (\is_object($maxCatecoPosfun) && isset($maxCatecoPosfun->aventi_diritto)) {
@@ -1731,35 +1788,33 @@ trait SchedaTrait
             return is_numeric($value) ? (int) $value : null;
         }
 
-        $id = $this->getKey() ?? 'null';
-        $anno = is_numeric($this->anno) ? (string) $this->anno : ($this->anno ?? 'null');
-        $categoriaEcoval = is_string($this->categoria_ecoval) ? $this->categoria_ecoval : ($this->categoria_ecoval ?? 'null');
-        $posfunval = is_numeric($this->posfunval) ? (string) $this->posfunval : ($this->posfunval ?? 'null');
-        echo '<h3>id :'
-            .(string) $id
-                .'<br/>'
-                .'anno :'
-                .(string) $anno
-                .'<br/>'
-                .'categoria_ecoval :'
-                .$categoriaEcoval
-                .'<br/>'
-                .'posfun :'
-                .$posfunval
-                .'</h3>';
-        if (function_exists('dddx')) {
-            dddx([$this->maxCatecoPosfun()->toSql()]);
-        }
-
+        // Nessun debug echo - se serve troubleshooting, usare log o dddx solo in sviluppo
         return null;
     }
 
     /**
-     * Undocumented function.
+     * Accessor per aventi_diritto (aventi diritto alla progressione).
+     * Delega calcolo a getAventiDiritto().
      *
      * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
+     *
+     * @return int|null Numero aventi diritto calcolato
      */
-    protected function getAventiDirittoEffAttribute(mixed $_value): ?int
+    protected function getAventiDirittoAttribute(mixed $_value): ?int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getAventiDiritto();
+    }
+
+    /**
+     * Helper method: Calcola aventi diritto effettivi alla progressione (calcolo puro).
+     *
+     * Business Rule: Estrae valore da maxCatecoPosfun (query aggregata su categoria+posfun).
+     * Se non disponibile, return null (nessun debug echo - usare log se necessario).
+     *
+     * @return int|null Numero aventi diritto effettivi, null se non determinabile
+     */
+    protected function getAventiDirittoEff(): ?int
     {
         $maxCatecoPosfun = $this->maxCatecoPosfun;
         if (\is_object($maxCatecoPosfun) && isset($maxCatecoPosfun->aventi_diritto_eff)) {
@@ -1768,25 +1823,22 @@ trait SchedaTrait
             return is_numeric($value) ? (int) $value : null;
         }
 
-        $id = $this->getKey() ?? 'null';
-        $anno = is_numeric($this->anno) ? (string) $this->anno : ($this->anno ?? 'null');
-        $categoriaEcoval = is_string($this->categoria_ecoval) ? $this->categoria_ecoval : ($this->categoria_ecoval ?? 'null');
-        $posfunval = is_numeric($this->posfunval) ? (string) $this->posfunval : ($this->posfunval ?? 'null');
-        echo '<h3>id :'
-            .(string) $id
-                .'<br/>'
-                .'anno :'
-                .(string) $anno
-                .'<br/>'
-                .'categoria_ecoval :'
-                .(string) $categoriaEcoval
-                .'<br/>'
-                .'posfun :'
-                .(string) $posfunval
-                .'</h3>';
-
+        // Nessun debug echo - se serve troubleshooting, usare log o dddx solo in sviluppo
         return null;
-        // dddx([$this->maxCatecoPosfun()->toSql()]); // Unreachable code
+    }
+
+    /**
+     * Accessor per aventi_diritto_eff (aventi diritto effettivi alla progressione).
+     * Delega calcolo a getAventiDirittoEff().
+     *
+     * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
+     *
+     * @return int|null Numero aventi diritto effettivi calcolato
+     */
+    protected function getAventiDirittoEffAttribute(mixed $_value): ?int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getAventiDirittoEff();
     }
 
     protected function getValoreDifferenzialeRapportatoPtAttribute(?float $value): ?float

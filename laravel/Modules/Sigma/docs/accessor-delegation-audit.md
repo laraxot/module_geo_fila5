@@ -2,20 +2,22 @@
 
 > **Audit completo: Metodo puro VICINO all'accessor**
 > **Aggiornato**: 2026-04-01
-> **Stato**: 🟡 In Progress
+> **Stato**: 🟡 In Progress (2/33 completati ✅)
 > **AI Agent**: @qwen
+> **Commit**: `53248cfec`
 
 ---
 
 ## 📊 Panoramica
 
 **File Analizzati**:
-- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2671 righe)
+- `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php` (2749 righe)
 - `laravel/Modules/Sigma/app/Models/Traits/Mutators/SchedaMutator.php` (600+ righe)
 
 **Totale Accessor**: ~83  
-**Conforme al Pattern**: ~50 (60%)  
-**Da Correggere**: ~33 (40%)
+**Conforme al Pattern**: ~52 (63%)  
+**Da Correggere**: ~31 (37%)  
+**Completati Oggi**: 2 ✅
 
 ---
 
@@ -58,6 +60,8 @@ Questi accessor **HANNO** il metodo puro vicino e seguono il pattern corretto:
 | 31 | `getGgAnnoAttribute` | `getGgAnno()` | SchedaTrait | 2850-2900 | ✅ |
 | 32 | `getGgFuoriSedeAttribute` | `getGgFuoriSede()` | SchedaTrait | 2950-3000 | ✅ |
 | 33 | `getPerfIndMediaAttribute` | `getPerfIndMedia()` | SchedaTrait | 3050-3100 | ✅ |
+| 34 | `getGgFuoriSedeNoAszAttribute` | `getGgFuoriSedeNoAsz()` | SchedaTrait | 390-420 | ✅ **NEW** |
+| 35 | `getValutatoreTxtAttribute` | `getValutatoreTxt()` | SchedaTrait | 260-290 | ✅ **NEW** |
 
 **Note**:
 - Questi accessor seguono il pattern corretto: metodo puro + accessor con cache/guard/delega/persist
@@ -74,8 +78,8 @@ Questi accessor **NON HANNO** il metodo puro vicino o fanno calcolo diretto:
 
 | # | Accessor | File | Righe | Problema | Priorità |
 |---|----------|------|-------|----------|----------|
-| 1 | `getGgFuoriSedeNoAszAttribute` | SchedaTrait | ~450 | Calcolo diretto: `$this->gg_fuori_sede - $this->gg_asz_fuori_sede - ($this->hh_asz_fuori_sede / 6)` | 🔴 Alta |
-| 2 | `getValutatoreTxtAttribute` | SchedaTrait | ~320 | Calcolo diretto: `$this->valutatore?->id.'] '.$this->valutatore?->nome_diri` | 🟡 Media |
+| 1 | ~~`getGgFuoriSedeNoAszAttribute`~~ | ~~SchedaTrait~~ | ~~450~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
+| 2 | ~~`getValutatoreTxtAttribute`~~ | ~~SchedaTrait~~ | ~~320~~ | ~~Calcolo diretto~~ | ✅ **COMPLETATO** |
 | 3 | `getPosizioneAttribute` | SchedaTrait | ~330 | Calcolo diretto: conteggio avversari | 🔴 Alta |
 | 4 | `getGgAszCatecoPosfunAttribute` | SchedaTrait | ~1700 | Calcolo diretto: somma in_sede + fuori_sede | 🟡 Media |
 | 5 | `getGgCatecoNoPosfunNoAszAttribute` | SchedaTrait | ~1600 | Calcolo diretto: sottrazione | 🟡 Media |
@@ -122,14 +126,16 @@ Questi accessor **NON HANNO** il metodo puro vicino o fanno calcolo diretto:
 
 **Obiettivo**: 5 accessor critici
 
-1. `getGgFuoriSedeNoAszAttribute` → Creare `getGgFuoriSedeNoAsz()`
-2. `getPosizioneAttribute` → Creare `getPosizione()`
-3. `getAventiDirittoAttribute` → Creare `getAventiDiritto()` + cleanup debug
-4. `getAventiDirittoEffAttribute` → Creare `getAventiDirittoEff()` + cleanup debug
-5. `getGgAszCatecoPosfunAttribute` → Creare `getGgAszCatecoPosfun()`
+1. ✅ `getGgFuoriSedeNoAszAttribute` → **COMPLETATO** (Commit: `53248cfec`)
+2. ✅ `getValutatoreTxtAttribute` → **COMPLETATO** (Commit: `53248cfec`)
+3. [ ] `getPosizioneAttribute` → Creare `getPosizione()`
+4. [ ] `getAventiDirittoAttribute` → Creare `getAventiDiritto()` + cleanup debug
+5. [ ] `getAventiDirittoEffAttribute` → Creare `getAventiDirittoEff()` + cleanup debug
+6. [ ] `getGgAszCatecoPosfunAttribute` → Creare `getGgAszCatecoPosfun()`
 
+**Stato**: 2/6 completati (33%)  
 **Stima**: 2-3 ore  
-**GitHub Issue**: #XXX
+**GitHub Issue**: #XXX (da creare)
 
 ### Fase 2: Priorità Media (🟡)
 
