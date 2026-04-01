@@ -18,6 +18,7 @@ Modulo: @Modules/Activity
 | BUSINESS_LOGIC_ANALYSIS.md | Business logic |
 | CODE_QUALITY_ANALYSIS.md | Code quality |
 | QUERY_OPTIMIZATION_ANALYSIS.md | Query optimization |
+| accessor-delegation-pattern.md | Accessor delegation & auto-persistence |
 
 ### Filament
 | File | Scopo |

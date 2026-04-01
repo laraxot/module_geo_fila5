@@ -183,27 +183,28 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         return $this->hasOne(Anag::class, 'matr', 'matr');
     }
 
-    /**
+    /*
      * Max cateco posfun relationship.
      *
      * @return HasOne
      */
-    public function maxCatecoPosfun()
-    {
+    //public function maxCatecoPosfun()
+    //{
         // This is a placeholder implementation - the actual relationship may vary
-        return $this->hasOne(static::class);
-    }
+    //    return $this->hasOne(static::class);
+    //}
 
-    /**
+    /*
      * Pesi relationship.
      *
-     * @return HasOne
+     * @return HasOne  pesi plurale, non ha senso
      */
-    public function pesi()
-    {
+    //public function pesi(): HasOne
+    //{
+       
         // This is a placeholder implementation - the actual relationship may vary
-        return $this->hasOne(static::class);
-    }
+    //    return $this->hasOne(static::class);
+    //}
 
     /**
      * Stipendio tabellare relationship.

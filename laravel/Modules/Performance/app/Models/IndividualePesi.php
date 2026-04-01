@@ -87,7 +87,7 @@ class IndividualePesi extends BaseModel
     public function casts(): array
     {
         return [
-            'type' => WorkerType::class.':nullable',
+            'type' => WorkerType::class,
         ];
     }
 

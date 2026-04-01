@@ -459,7 +459,6 @@ class Individuale extends BaseIndividualeModel
     public function casts(): array
     {
         return [
-            'type' => WorkerType::class.':nullable',
             'stabi' => 'integer',
             'repar' => 'integer',
             'stabival' => 'integer',
@@ -514,4 +513,12 @@ class Individuale extends BaseIndividualeModel
         'regionale' => IndividualeRegionale::class,
         'dirigente' => IndividualeDirigente::class,
     ];
+
+    /**
+     * Accessor per il tipo di lavoratore.
+     */
+    public function getTypeAttribute(?string $value): ?\Modules\Ptv\Enums\WorkerType
+    {
+        return $value ? \Modules\Ptv\Enums\WorkerType::tryFrom($value) : null;
+    }
 }

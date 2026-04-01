@@ -583,7 +583,7 @@ trait SchedaMutator
     }
 
 
-    public function getTypeAttribute(?string $value): string
+    public function getTypeAttribute(?string $value)
     {
         
         if($value!=null){

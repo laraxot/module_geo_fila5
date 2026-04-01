@@ -50,6 +50,7 @@ docs/
 |------|-------------|------|
 | XOTBASE_ARCHITECTURE_PHILOSOPHY.md | **FILOSOFIA PROFONDA**: Perché estendere XotBase | [Link](./XOTBASE_ARCHITECTURE_PHILOSOPHY.md) |
 | ARCHITECTURE.md | Architettura tecnica del modulo | [Link](./ARCHITECTURE.md) |
+| accessor-delegation-pattern.md | **PATTERN SACRO**: Delegazione e auto-persistenza accessor | [Link](./accessor-delegation-pattern.md) |
 
 ### XotBase Rules (CRITICAL!)
 | File | Descrizione | Link |

@@ -2,43 +2,35 @@
 
 declare(strict_types=1);
 
-namespace Modules\Performance\Filament\Resources;
+namespace Modules\Ptv\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Modules\Lang\Actions\SaveTransAction;
-use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndividuale;
-use Modules\Performance\Filament\Resources\IndividualeResource\Pages\EditIndividuale;
-use Modules\Performance\Filament\Resources\IndividualeResource\Pages\FillOutTheForm;
-use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndividuales;
-use Modules\Performance\Models\CriteriValutazione;
+use Illuminate\Support\Str;
 use Modules\Performance\Models\Individuale;
-use Modules\Ptv\Filament\Resources\BaseSchedaResource;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
-use Modules\Xot\Actions\GetTransKeyAction;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CreateScheda;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\EditScheda;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
+use Modules\Ptv\Models\Scheda;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
 use ReflectionClass;
 use Webmozart\Assert\Assert;
 
-use function Safe\date;
-
-class IndividualeResource extends BaseSchedaResource
+abstract class BaseSchedaResource extends XotBaseResource
 {
-    protected static ?string $model = Individuale::class;
+    //protected static ?string $model = Scheda::class;
 
     #[Override]
-    public static function getNavigationBadge(): ?string
-    {
-        return null;
-    }
-
-    #[Override]
+    /**
+     * @return array<string, \Filament\Forms\Components\Component>
+     */
     public static function getFormSchema(): array
     {
         // Types are inferred by Filament v4
@@ -97,50 +89,43 @@ class IndividualeResource extends BaseSchedaResource
         ];
     }
 
-  
+
+    /**
+     * @return array<string, RelationManager>
+     */
+    #[Override]
+    public static function getRelations(): array
+    {
+        return [
+        ];
+    }
+
+    #[Override]
     public static function getPages(): array
     {
-
         return [
             ...parent::getPages(),
-            'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
             'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 
-    public static function getXlsFields(array $data): array
+     /**
+     * @return class-string<Model>
+     */
+    public static function getModel(): string
     {
-        $anno = Arr::get($data, 'stabi_repar_anno.anno', intval(date('Y')) - 1);
-        $criteri = CriteriValutazione::where('anno', $anno)
-            ->where('post_type', 'po')
-            ->orderBy('posizione')
-            ->get();
+        
+        
+        $model= Individuale::class;
+       
+        Assert::classExists($model, \sprintf('Model class %s does not exist', $model));
+        Assert::subclassOf(
+            $model,
+            Model::class,
+            \sprintf('Class %s must extend Eloquent Model', $model),
+        );
+        static::$model = $model;
 
-        $fields = [
-            'id',
-            'ente',
-            'matr',
-            'cognome',
-            'nome',
-            'email',
-            'dal',
-            'al',
-        ];
-        $transKey = app(GetTransKeyAction::class)->execute(static::class);
-        $trans = trans($transKey);
-
-        foreach ($criteri as $criterio) {
-            $fields[] = $criterio->nome;
-            Arr::set($trans, 'fields.'.$criterio->nome, $criterio->label);
-        }
-        app(SaveTransAction::class)->execute($transKey, $trans);
-        $fields[] = 'excellence';
-        $fields[] = 'totale_punteggio';
-
-        return $fields;
+        return $model;
     }
-
-
-    
-
 }

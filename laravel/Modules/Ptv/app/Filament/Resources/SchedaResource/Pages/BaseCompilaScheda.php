@@ -85,7 +85,8 @@ abstract class BaseCompilaScheda extends XotBasePage
     {
         $this->beforeFill();
 
-        $data = $this->getRecord()->attributesToArray();
+        //$data = $this->getRecord()->attributesToArray();
+        $data = $this->getRecord()->getAttributes();
 
         $data = $this->mutateFormDataBeforeFill($data);
 

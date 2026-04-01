@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Performance\Filament\Resources\IndividualeResource\Pages;
+namespace Modules\Ptv\Filament\Resources\SchedaResource\Pages;
 
 use Exception;
 use Filament\Forms\Form;
@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Modules\Performance\Filament\Resources\IndividualeResource;
 use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Filament\Resources\SchedaResource;
+use Modules\Xot\Actions\View\GetViewByModelClassAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Webmozart\Assert\Assert;
@@ -23,7 +24,7 @@ use Webmozart\Assert\Assert;
  * @property Schema $form
  * @property Individuale $record
  */
-class FillOutTheForm extends XotBaseResourcePage
+abstract class BaseFillOutTheForm extends XotBaseResourcePage
 {
     
     //public static string $resource = IndividualeResource::class;
@@ -52,12 +53,7 @@ class FillOutTheForm extends XotBaseResourcePage
         'data.esperienza_acquisita' => 'required|numeric|min:0|max:4',
     ];
 
-    /*
-    public static function getResource(): string
-    {
-        return IndividualeResource::class;
-    }
-    */
+   
 
     /**
      * @param  int|string  $record
@@ -67,6 +63,7 @@ class FillOutTheForm extends XotBaseResourcePage
         Assert::isInstanceOf($model = $this->resolveRecord($record), Individuale::class);
         $this->record = $model;
         $this->authorizeAccess();
+        //*
         $criteri_valutazione = $this->record->criteriValutazione()->get();
         foreach ($criteri_valutazione as $criterio) {
             $k = $criterio->getAttribute('nome');
@@ -74,7 +71,7 @@ class FillOutTheForm extends XotBaseResourcePage
                 $this->data[$k] = data_get($this->record, $k, 0);
             }
         }
-
+        //*/
         $this->excellence = (bool) $this->record->excellence;
         $this->totale = (float) $this->record->totale_punteggio;
         // $this->fillForm();
@@ -116,26 +113,7 @@ class FillOutTheForm extends XotBaseResourcePage
         ];
     }
 
-    /*
-     private function fillFormOld(): void {
-        $this->callHook('beforeFill');
-
-        $data = $this->getRecord()->attributesToArray();
-
-
-        $data = $this->mutateFormDataBeforeFill($data);
-
-        $this->form->fill($data);
-        $this->data = $data;
-
-        // dddx($this->form_data['benificiario_progressione']);
-
-        $this->callHook('afterFill');
-
-        // $this->form_data['dettaglio'] = $this->getRecord()->indennitaTipoDettaglio->keyBy('id')->toArray();
-        // $this->form_data['tot_presenza_periodo_plus_no_timbr'] = $this->getRecord()->tot_presenza_periodo_plus_no_timbr;
-    }
-    */
+   
 
     private function authorizeAccess(): void
     {
@@ -148,12 +126,8 @@ class FillOutTheForm extends XotBaseResourcePage
 
     public function getView(): string
     {
-        $resource = static::getResource();
-        $view = 'performance::'.Str::of(class_basename($resource))
-            ->snake()
-            ->before('_resource')
-            ->append('.pages.fill_out_the_form')
-            ->toString();
+        $view = app(GetViewByModelClassAction::class)->execute($this->record::class, '.pages.compila');
+        
         if (! view()->exists($view)) {
             throw new Exception('View ['.$view.'] not found');
         }

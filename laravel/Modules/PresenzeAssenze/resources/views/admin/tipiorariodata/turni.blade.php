@@ -1,4 +1,4 @@
-e class="table">
+<table class="table">
 @foreach($dipts as $dipt)
 	<tr>
 		<td>{{ $dipt }}</td>

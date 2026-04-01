@@ -21,6 +21,7 @@ This document serves as the central index for the User module, providing guidanc
 
 ### 2. BaseUser Model
 - Use the `BaseUser` model as the foundation for user-related data and logic, extending it as needed for specific types.
+- **[Accessor Delegation Pattern](./accessor-delegation-pattern.md)**: Pattern per accessor con auto-persistenza.
   ```php
   namespace Modules\User\Models;
 

@@ -1,4 +1,4 @@
-e class="table">
+<table class="table">
 @foreach($rows /*->where('ha_diritto',1)*/ as $v)
 	<tr>
 		<td>{{ $v->id}} <br/> {{ $v->cognome }} {{ $v->nome }} <br/> {{ $v->email }}</td>

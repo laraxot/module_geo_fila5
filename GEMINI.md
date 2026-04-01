@@ -136,6 +136,8 @@ Per task piccoli: `bmad-quick-dev` (spec + implementazione in un workflow).
 - [Agent Teams](./.agent/agent-teams.md)
 - [GSD Methodology](docs/project/gsd-methodology.md)
 - [BMAD Integration](docs/project/bmad-method-integration.md)
+- [Accessor/Mutator Pattern — Livelli 1–4](.agents/docs/ai-agents/shared/accessor-mutator.md)
+- [Pattern SACRO Accessor](.agents/docs/accessor-auto-persistence.md)
 
 ## BMAD Rules for Gemini
 - **Spec-First**: Per moduli complessi o nuove architetture, NON iniziare a codificare senza un workflow BMAD (`create-prd` → `create-architecture`).

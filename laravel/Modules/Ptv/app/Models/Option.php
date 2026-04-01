@@ -128,7 +128,7 @@ class Option extends BaseModel
     public function casts(): array
     {
         return [
-            'option_type' => WorkerType::class.':nullable',
+            'option_type' => WorkerType::class,
         ];
     }
 

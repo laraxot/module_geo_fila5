@@ -258,7 +258,126 @@ rm $LOCKFILE
 
 ## 📊 Stato workflow BMAD
 
-Per evitare “date rot” e duplicazioni di tracking, lo stato operativo dei workflow va tracciato in **GitHub Issues** usando i template BMAD già presenti in `.github/ISSUE_TEMPLATE/`.
+Per evitare "date rot" e duplicazioni di tracking, lo stato operativo dei workflow va tracciato in **GitHub Issues** usando i template BMAD già presenti in `.github/ISSUE_TEMPLATE/`.
+
+---
+
+## 🔴 Task Correnti: Refactoring Accessor Sigma
+
+### Panoramica
+
+**Task**: Refactoring accessor per seguire pattern di delega con metodo puro vicino  
+**Modulo**: Sigma  
+**File**: `laravel/Modules/Sigma/app/Models/Traits/SchedaTrait.php`, `SchedaMutator.php`  
+**Stato**: 🟡 In Progress  
+**AI Agent Lead**: @qwen  
+**Started**: 2026-04-01
+
+### Documentazione
+
+- [Accessor Delegation Pattern](laravel/Modules/Sigma/docs/accessor-delegation-pattern.md)
+- [Accessor Delegation Audit](laravel/Modules/Sigma/docs/accessor-delegation-audit.md)
+- [Accessor/Mutator Philosophy](laravel/Modules/Sigma/docs/accessor-mutator-philosophy.md)
+
+### Numeri
+
+- **Totale Accessor**: ~83
+- **Conformi**: ~50 (60%)
+- **Da Correggere**: ~33 (40%)
+
+### Fasi
+
+#### Fase 1: Priorità Alta (🔴) - 5 accessor critici
+
+- [ ] `getGgFuoriSedeNoAszAttribute` → Creare `getGgFuoriSedeNoAsz()`
+- [ ] `getPosizioneAttribute` → Creare `getPosizione()`
+- [ ] `getAventiDirittoAttribute` → Creare `getAventiDiritto()` + cleanup debug
+- [ ] `getAventiDirittoEffAttribute` → Creare `getAventiDirittoEff()` + cleanup debug
+- [ ] `getGgAszCatecoPosfunAttribute` → Creare `getGgAszCatecoPosfun()`
+
+**GitHub Issue**: #XXX (da creare)
+
+#### Fase 2: Priorità Media (🟡) - 15 accessor
+
+- [ ] Tutti i `getGgCateco*` senza metodo puro
+- [ ] Tutti i `get*Attribute` in SchedaMutator
+
+**GitHub Issue**: #YYY (da creare)
+
+#### Fase 3: Priorità Bassa (🟢) - Cleanup
+
+- [ ] `getGgAszTipCodEsclusoSubitoAttribute` → Rimuovere o documentare
+- [ ] Documentare pattern `funcYear()` per performance indicator
+- [ ] Aggiornare documentazione
+
+**GitHub Issue**: #ZZZ (da creare)
+
+### Regole per AI Agent
+
+**QUANDO lavori su questo refactoring:**
+
+1. **LEGGI** prima la documentazione:
+   - `laravel/Modules/Sigma/docs/accessor-delegation-pattern.md`
+   - `laravel/Modules/Sigma/docs/accessor-delegation-audit.md`
+
+2. **SCEGLI** un accessor dalla lista (inizia da Fase 1)
+
+3. **APPLICA** il template:
+   ```php
+   // Metodo puro (entro 50 righe dall'accessor)
+   protected function get<Nome>(): [Tipo] { ... }
+   
+   // Accessor con cache/guard/delega/persist
+   protected function get<Nome>Attribute([Tipo] $value): [Tipo] {
+       if (is_float($value)) return $value;  // Cache
+       if (null == $this->getKey()) return null;  // Guard
+       $value = $this->get<Nome>();  // Delega
+       $this->update([...]);  // Persist
+       return $value;
+   }
+   ```
+
+4. **VERIFICA**:
+   - PHPStan Level 10: nessun errore
+   - PHPMD: nessun warning
+   - PHPInsights: score > 90
+
+5. **COMMITTA** con messaggio:
+   ```
+   [REFACTOR] Sigma: Extract pure method for get<Nome>Attribute
+   
+   - Create get<Nome>() pure method
+   - Delegate from get<Nome>Attribute()
+   - Follow accessor delegation pattern
+   
+   Ref: Sigma/docs/accessor-delegation-audit.md
+   Issue: #XXX
+   ```
+
+6. **AGGIORNA** questo documento e l'audit
+
+**NON FARE:**
+- ❌ Non modificare più di 5 accessor per commit
+- ❌ Non cambiare logica business, solo refactoring
+- ❌ Non rimuovere metodi helper esistenti senza check
+- ❌ Non lavorare sugli stessi file contemporaneamente (usare lock)
+
+### Coordination Lock
+
+```bash
+# Prima di iniziare, crea lock file
+touch /tmp/sigma-accessor-refactor.lock
+
+# Dopo aver finito, rimuovi lock
+rm /tmp/sigma-accessor-refactor.lock
+```
+
+### GitHub Issues
+
+Crea issue separate per ogni fase:
+- Issue #XXX: Fase 1 - Priorità Alta (5 accessor)
+- Issue #YYY: Fase 2 - Priorità Media (15 accessor)
+- Issue #ZZZ: Fase 3 - Priorità Bassa (cleanup)
 
 ---
 

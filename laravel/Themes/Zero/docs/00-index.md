@@ -15,6 +15,7 @@
 
 ### Development Guides
 - [ai-development-guide.md](./ai-development-guide.md) - AI-assisted development workflows
+- [accessor-delegation-pattern.md](./accessor-delegation-pattern.md) - Accessor delegation & auto-persistence (SACRO)
 - [filament-chart-integration.md](./filament-chart-integration.md) - Filament 5.x ChartWidget integration
 - [phpstan-dry-kiss-theme-guidelines.md](./phpstan-dry-kiss-theme-guidelines.md) - PHPStan Level 10 + DRY/KISS for themes
 - [components.md](./components.md) - Component catalog

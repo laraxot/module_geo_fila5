@@ -1167,83 +1167,112 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni categoria economica superiore totali (calcolo puro).
+     *
+     * Business Rule: Somma giorni cateco_sup in sede + fuori sede.
+     * Prerequisiti: matr, qua2kd, propro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup totali, null se dati non disponibili
+     */
+    protected function getGgCatecoSup(): ?int
+    {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
+            return null;
+        }
+
+        $in_sede = $this->gg_cateco_sup_in_sede ?? 0;
+        $fuori_sede = $this->gg_cateco_sup_fuori_sede ?? 0;
+
+        return (int) ($in_sede + $fuori_sede);
+    }
+
+    /**
+     * Accessor per gg_cateco_sup (giorni categoria economica superiore totali).
+     * Delega calcolo a getGgCatecoSup().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup totali calcolati
+     */
     protected function getGgCatecoSupAttribute(?int $value): ?int
     {
+        // Cache hit (con refresh opzionale)
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK
         if (null == $this->getKey()) {
             return null;
         }
-        // 730
-        if (null == $this->matr) {
-            return null;
-        }
-        if (null == $this->qua2kd) {
-            return null;
-        }
-        if (null == $this->propro) {
-            return null;
-        }
-        $value = $this->gg_cateco_sup_in_sede + $this->gg_cateco_sup_fuori_sede;
-        $this->addTableField(['name' => 'gg_cateco_sup', 'type' => 'integer']);
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
-            return $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSup();
+
+        if (null === $value) {
+            return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup' => $value]);
 
         return $value;
     }
 
-    protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
+    /**
+     * Helper method: Calcola giorni categoria economica superiore in sede (calcolo puro).
+     *
+     * Business Rule: Delega ad anag->ggInSedeTot() con filter data.
+     * Prerequisiti: matr, propro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup in sede, null se dati non disponibili
+     */
+    protected function getGgCatecoSupInSede(): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
-            return $value;
-        }
-        if (null == $this->getKey()) {
-            return null;
-        }
-        if (null == $this->matr) {
-            return null;
-        }
-        if (null == $this->propro) {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->propro) {
             return null;
         }
 
         $parz = [
-            // 'lista_propro'=>$categoria->lista_propro,
-            // 'lista_propro_sup'=>$categoria->lista_propro_sup,
-            // 'posfun'=>$this->posfun,
-            // 'lista_propro' => $categoria->lista_propro_sup,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
         $data = GgFilterData::from($parz);
 
-        $value = $this->anag?->ggInSedeTot($data);
+        return $this->anag?->ggInSedeTot($data);
+    }
 
-        /*
-         * $table=$this->getTable();
-         * $conn=$this->getConnection();
-         * $fieldname='gg_cateco_sup_in_sede';
-         * if (!\Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-         * \Schema::connection($conn->getName())->table($table, function ($table) use($fieldname){
-         * $table->integer($fieldname);
-         * });
-         * }
-         * $this->addTableField(['name' => 'gg_cateco_sup_in_sede', 'type' => 'integer']);
-         */
-
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+    /**
+     * Accessor per gg_cateco_sup_in_sede (giorni categoria economica superiore in sede).
+     * Delega calcolo a getGgCatecoSupInSede().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup in sede calcolati
+     */
+    protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
+    {
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Guard: modello deve avere PK
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSupInSede();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup_in_sede' => $value]);
 
         return $value;
@@ -1462,43 +1491,61 @@ trait SchedaTrait
         return $value;
     }
 
-    protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
+    /**
+     * Helper method: Calcola giorni categoria economica superiore fuori sede (calcolo puro).
+     *
+     * Business Rule: Delega ad anag->ggFuoriSedeTot() con lista_propro_sup.
+     * Prerequisiti: matr, qua2kd, propro, categoriaPropro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup fuori sede, null se dati non disponibili
+     */
+    protected function getGgCatecoSupFuoriSede(): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
-            return $value;
-        }
-        if (null == $this->matr) {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
             return null;
         }
-        if (null == $this->qua2kd) {
-            return null;
-        }
-        if (null == $this->propro) {
-            return null;
-        }
-        // 730
+
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
             return null;
         }
-        // dddx($categoria->lista_propro);
-        // $criteri = $this->criteriEsclusione;
-        $value = $this->anag?->ggFuoriSedeTot([
-            // 'lista_propro'=>$categoria->lista_propro,
-            // 'lista_propro_sup'=>$categoria->lista_propro_sup,
+
+        return $this->anag?->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro_sup ?? '',
-            // 'posfun'=>$this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
-        $this->addTableField(['name' => 'gg_cateco_sup_fuori_sede', 'type' => 'integer']);
+    }
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+    /**
+     * Accessor per gg_cateco_sup_fuori_sede (giorni categoria economica superiore fuori sede).
+     * Delega calcolo a getGgCatecoSupFuoriSede().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup fuori sede calcolati
+     */
+    protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
+    {
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Guard: modello deve avere PK
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSupFuoriSede();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup_fuori_sede' => $value]);
 
         return $value;

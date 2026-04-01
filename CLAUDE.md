@@ -82,6 +82,8 @@ bmad-party-mode                    # Multi-agent discussion
 - [Laraxot Philosophy](.agents/docs/laraxot-philosophy.md)
 - [GSD Methodology](docs/project/gsd-methodology.md)
 - [BMAD Integration](docs/project/bmad-method-integration.md)
+- [Accessor/Mutator Pattern — Livelli 1–4](.agents/docs/ai-agents/shared/accessor-mutator.md)
+- [Pattern SACRO Accessor](.agents/docs/accessor-auto-persistence.md)
 
 ---
 [Agent docs index](.agents/docs/index.md) | [Agent Teams](.agents/docs/agent-teams.md) | [Project setup](.agents/docs/project-setup.md)

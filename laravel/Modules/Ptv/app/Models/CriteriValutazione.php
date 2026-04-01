@@ -83,7 +83,7 @@ class CriteriValutazione extends BaseModel
     public function casts(): array
     {
         return [
-            'post_type' => WorkerType::class.':nullable',
+            'post_type' => WorkerType::class,
         ];
     }
 }

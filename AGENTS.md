@@ -11,6 +11,7 @@
 > - [Error Correction — 12 Steps](.agents/docs/ai-agents/shared/error-correction-12-steps.md)
 > - [Translation Rules](.agents/docs/ai-agents/shared/translation-rules.md)
 > - [Accessor/Mutator Pattern](.agents/docs/ai-agents/shared/accessor-mutator.md)
+> - [Pattern SACRO Accessor](.agents/docs/accessor-auto-persistence.md)
 > - [GSD Workflow](.agents/docs/ai-agents/shared/gsd-workflow.md)
 > - [BMAD Workflow](.agents/docs/ai-agents/shared/bmad-workflow.md)
 > - [Critical Rules](.agents/docs/ai-agents/shared/critical-rules.md)

@@ -9,13 +9,12 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Modules\Performance\Models\IndividualeAdm;
-use Modules\Ptv\Filament\Resources\SchedaResource;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\Ptv\Filament\Resources\BaseSchedaResource;
 use Override;
 
 use function Safe\date;
 
-class IndividualeAdmResource extends SchedaResource
+class IndividualeAdmResource extends BaseSchedaResource
 {
     protected static ?string $model = IndividualeAdm::class;
 
