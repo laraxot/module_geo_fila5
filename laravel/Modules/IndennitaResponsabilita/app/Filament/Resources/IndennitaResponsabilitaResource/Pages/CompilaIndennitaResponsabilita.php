@@ -58,13 +58,6 @@ class CompilaIndennitaResponsabilita extends XotBasePage
     public ?string $previousUrl = null;
 
     /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
-    public array $data = [];
-
-    /**
      * Mount page - resolves {record} from URL, authorizes, fills form.
      */
     public function mount(int|string $record): void

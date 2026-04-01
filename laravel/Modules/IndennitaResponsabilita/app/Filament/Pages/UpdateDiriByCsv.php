@@ -23,13 +23,6 @@ use Throwable;
 
 class UpdateDiriByCsv extends XotBasePage
 {
-    /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
-    public array $data = [];
-
     protected string $view = 'indennitaresponsabilita::filament.pages.import-csv';
 
     protected static string $icon = 'heroicon-o-upload'; // Add icon here
