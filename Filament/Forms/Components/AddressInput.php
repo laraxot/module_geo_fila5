@@ -47,5 +47,4 @@ class AddressInput extends Field
     {
         return $this->sprite($path);
     }
-
 }
