@@ -97,6 +97,26 @@ Questo progetto usa il **BMAD Method** (Breakthrough Method for Agile AI Driven 
 
 | Scenario | Framework |
 |----------|-----------|
+
+---
+
+## LLM Wiki Integration
+
+Questo progetto usa il **pattern Karpathy LLM Wiki** per knowledge management strutturato.
+
+**Documentazione**: [docs/llm-wiki-pattern.md](docs/llm-wiki-pattern.md)
+
+**Struttura**:
+- `./docs/wiki/` - Wiki principale del progetto
+- `./docs/raw/` - Sorgenti immutable
+- `<module>/docs/wiki/` - Wiki per ogni modulo
+- `<module>/docs/raw/` - Sorgenti per modulo
+- `bashscripts/docs/wiki/` - Wiki per scripts
+
+**Tools**: qmd per search locale con BM25/vector search + MCP server
+
+→ Per cercare documentazione: usa `qmd query "<query>"`
+→ Per info su LLM Wiki: leggi [docs/llm-wiki-pattern.md](docs/llm-wiki-pattern.md)
 | Feature singola, refactoring | **GSD** |
 | Bug fix complesso multi-file | **GSD** |
 | Nuovo modulo completo | **BMAD** |
