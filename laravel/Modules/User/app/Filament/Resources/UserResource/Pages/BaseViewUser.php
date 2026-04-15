@@ -18,7 +18,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
  */
 abstract class BaseViewUser extends XotBaseViewRecord
 {
-    public static string $resource = UserResource::class;
+    protected static string $resource = UserResource::class;
 
     /**
      * Define the infolist schema for the view.

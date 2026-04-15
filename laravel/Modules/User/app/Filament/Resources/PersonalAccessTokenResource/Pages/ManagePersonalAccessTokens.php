@@ -12,7 +12,7 @@ use Modules\User\Filament\Resources\PersonalAccessTokenResource;
 
 final class ManagePersonalAccessTokens extends ManageRecords
 {
-    public static string $resource = PersonalAccessTokenResource::class;
+    protected static string $resource = PersonalAccessTokenResource::class;
 
     /**
      * Get the header actions.

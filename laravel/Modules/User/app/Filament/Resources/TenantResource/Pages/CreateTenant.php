@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateTenant extends XotBaseCreateRecord
 {
-    public static string $resource = TenantResource::class;
+    protected static string $resource = TenantResource::class;
 
     /**
      * @throws \Throwable

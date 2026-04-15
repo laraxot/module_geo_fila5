@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditSocialiteUser extends XotBaseEditRecord
 {
-    public static string $resource = SocialiteUserResource::class;
+    protected static string $resource = SocialiteUserResource::class;
 
     /**
      * @return array<string, Action>

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTeamPermission extends XotBaseEditRecord
 {
-    public static string $resource = TeamPermissionResource::class;
+    protected static string $resource = TeamPermissionResource::class;
 }

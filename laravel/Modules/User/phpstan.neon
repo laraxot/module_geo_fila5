@@ -65,7 +65,7 @@ parameters:
         - ../../vendor/autoload.php
 
     scanFiles:
-    #    - ./helpers/Helper.php
+    #    - ./Helpers/Helper.php
     #    - ./vendor/amenadiel/jpgraph/src/config.inc.php
     #    - ../../vendor/autoload.php
     

@@ -11,5 +11,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
  */
 class CreateTenantUser extends XotBaseCreateRecord
 {
-    public static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
+    protected static string $resource = \Modules\User\Filament\Resources\TenantUserResource::class;
 }

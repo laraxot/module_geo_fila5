@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewClient extends XotBaseViewRecord
 {
-    public static string $resource = ClientResource::class;
+    protected static string $resource = ClientResource::class;
 
     /**
      * @return array<string, Component>

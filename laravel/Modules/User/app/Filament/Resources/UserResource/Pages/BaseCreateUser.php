@@ -10,5 +10,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 abstract class BaseCreateUser extends XotBaseCreateRecord
 {
     // //
-    public static string $resource = UserResource::class;
+    protected static string $resource = UserResource::class;
 }

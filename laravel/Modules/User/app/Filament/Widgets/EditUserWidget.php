@@ -8,6 +8,7 @@ use Filament\Support\Components\Component;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportRedirects\Redirector;
 use Modules\Xot\Datas\XotData;
@@ -91,6 +92,8 @@ class EditUserWidget extends XotBaseWidget
                 return $result;
             } catch (\Exception $e) {
                 // Se toArray() fallisce (problemi con enum), usa getAttributes()
+                Log::warning("Errore in toArray() per modello {$this->model}: ".$e->getMessage());
+
                 /** @var array<string, mixed> $result */
                 $result = $model->getAttributes();
                 // Gestisci specificamente gli enum se presenti
@@ -104,12 +107,7 @@ class EditUserWidget extends XotBaseWidget
         // Se è un nuovo modello, restituisci solo i campi fillable con valori null
         $fillable = $model->getFillable();
         $appends = $model->getAppends();
-        $fields = [];
-        foreach (array_merge($fillable, $appends) as $field) {
-            if (is_string($field) && '' !== $field) {
-                $fields[] = $field;
-            }
-        }
+        $fields = array_merge($fillable, $appends);
 
         /** @var array<string, mixed> $result */
         $result = array_fill_keys($fields, null);

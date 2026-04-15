@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 class ViewTeam extends XotBaseViewRecord
 {
     // //
-    public static string $resource = TeamResource::class;
+    protected static string $resource = TeamResource::class;
 
     /**
      * @return array<string, Component>

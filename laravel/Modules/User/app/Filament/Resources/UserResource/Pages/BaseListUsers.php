@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 abstract class BaseListUsers extends XotBaseListRecords
 {
-    public static string $resource = UserResource::class;
+    protected static string $resource = UserResource::class;
 
     /**
      * Get table columns for user records.
@@ -54,7 +54,10 @@ abstract class BaseListUsers extends XotBaseListRecords
      * Get table actions for user records.
      *
      * @return array<string, Action|\Filament\Actions\ActionGroup>
+     *
+     * @phpstan-ignore-next-line
      */
+    /** @phpstan-ignore-next-line */
     #[\Override]
     public function getTableActions(): array
     {
@@ -75,6 +78,7 @@ abstract class BaseListUsers extends XotBaseListRecords
          * ->icon('heroicon-o-trash')
          * ->action(static fn (UserContract $user) => $user->delete());
          */
+        /* @phpstan-ignore-next-line */
     }
 
     /**

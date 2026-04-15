@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListSocialiteUsers extends XotBaseListRecords
 {
-    public static string $resource = SocialiteUserResource::class;
+    protected static string $resource = SocialiteUserResource::class;
 
     /**
      * @return array<string, Action>

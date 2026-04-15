@@ -1,90 +1,51 @@
----
-title: Wiki Schema
-description: Schema e convenzioni per la manutenzione della wiki
-tags:
-  - schema
-  - conventions
-  - llm-instructions
-created: 2026-04-15
----
+# PTVX Project Wiki — Schema e Convenzioni
 
-# Wiki Schema
+## Dominio
+Documentazione di progetto trasversale per la piattaforma PTVX (Piattaforma Territorio e Valori). Copre architettura generale, decisioni cross-modulo, pattern condivisi, integrazioni esterne e standard di sviluppo.
 
-Questo documento istruisce l'LLM su come strutturare e mantenere la wiki.
+## Tipi di Entità
+- **Architecture**: Decisioni architetturali globali con ADR (Architecture Decision Record)
+- **Pattern**: Pattern condivisi tra tutti i moduli
+- **Integration**: Integrazioni con sistemi esterni (PDND, SIGMA, INAIL, ecc.)
+- **Standard**: Standard di sviluppo, naming convention, quality gates
+- **Module**: Overview di ogni modulo con responsabilità e dipendenze
+- **Workflow**: Workflow di sviluppo e deploy
 
-## Struttura Directory
+## Entità Principali
+- **XotBase**: Classi base del framework interno (via modulo Xot)
+- **MultiTenancy**: Architettura multi-tenant della piattaforma
+- **FilamentAdmin**: Configurazione Filament per il pannello admin
+- **ModuleStructure**: Struttura standard di ogni modulo
+- **DeployPipeline**: Pipeline di deploy CI/CD
 
-```
-docs/
-├── wiki/
-│   ├── index.md           # Catalogo (aggiornare su ogni ingest)
-│   ├── log.md             # Registro cronologico (append-only)
-│   ├── SCHEMA.md          # Questo file
-│   ├── concepts/          # Pagine concetto (pattern, architettura)
-│   ├── entities/          # Pagine entità (modelli, azioni)
-│   ├── sources/           # Riferimenti documentazione esterna
-│   └── comparisons/       # Tabelle comparative
-└── raw/                   # Sorgenti immutable
-    ├── papers/
-    ├── articles/
-    └── notes/
-```
+## Pattern Rilevanti
+- **Nwidart Modules**: sistema modulare Laravel
+- **Filament v3**: pannello admin
+- **Spatie Packages**: permission, media, activity log
+- **Multi-tenancy**: isolamento dati per ente/tenant
+- **LLM Wiki**: pattern Karpathy per knowledge management (questo wiki!)
 
-## Convenzioni Naming
+## Protocollo di Ingest
+1. Leggere il documento sorgente raw
+2. Identificare se è cross-modulo (va qui) o specifico di un modulo (va nel wiki del modulo)
+3. Estrarre entità architetturali e pattern
+4. Scrivere/aggiornare pagine in `entities/` o `concepts/`
+5. Cross-linkare con i wiki dei moduli rilevanti
+6. Aggiungere riassunto in `sources/`
+7. Aggiornare `index.md` e appendere a `log.md`
 
-### File Markdown
+## Convenzione Nomi File
+- `concepts/{kebab-case}.md`
+- `entities/{EntityName}.md`
+- `comparisons/{a}-vs-{b}.md`
+- `sources/{source-filename}.md`
 
-- usare kebab-case: `authentication-flow.md`
-- entities: `entity-<name>.md`
-- concepts: `concept-<name>.md`
-- sources: `source-<name>.md`
+## Regola Cross-linking
+Ogni pagina DEVE linkare almeno un'altra pagina wiki.
+Le pagine orfane sono un errore di lint.
+I link a wiki di moduli specifici usano path relativi: `../../laravel/Modules/{Module}/docs/wiki/`
 
-### Frontmatter
-
-```yaml
----
-title: Titolo Descrittivo
-description: Breve descrizione
-tags:
-  - tag1
-  - tag2
-created: 2026-04-15
-updated: 2026-04-15
-sources:
-  - docs/raw/papers/laravel-auth.md
----
-```
-
-## Workflow Ingest
-
-1. Leggi source in `docs/raw/`
-2. Estrai key information
-3. Crea/aggiorna pagine in `docs/wiki/`
-4. Aggiorna `index.md`
-5. Appendi a `log.md`
-
-## Workflow Query
-
-1. Leggi `index.md` per trovare pagine rilevanti
-2. Drill-down nelle pagine
-3. Sintetizza risposta con citazioni
-
-## Workflow Lint
-
-1. Cerca contraddizioni tra pagine
-2. Identifica claim obsoleti
-3. Trova orphan pages (nessun inbound link)
-4. Suggerisci cross-references mancanti
-
-## Cross-Reference Format
-
-```markdown
-Vedi anche: [Authentication Flow](../concepts/authentication-flow.md)
-```
-
-## Cosa Evitare
-
-- Non modificare file in `docs/raw/`
-- Non sovrascrivere pagine esistenti senza ragione
-- Non creare pagine duplicate
-- Non rimuovere contenuto (marchia come deprecated)
+## Standard di Qualità
+- Le ADR (Architecture Decision Records) non cambiano — le nuove decisioni creano nuove ADR
+- Ogni integrazione esterna deve avere la sua pagina con endpoint, auth e limitazioni documentate
+- Nessuna claim obsoleta oltre 30 giorni senza ri-verifica

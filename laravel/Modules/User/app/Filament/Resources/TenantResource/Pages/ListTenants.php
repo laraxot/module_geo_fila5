@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTenants extends XotBaseListRecords
 {
-    public static string $resource = TenantResource::class;
+    protected static string $resource = TenantResource::class;
 
     /**
      * Definisce le colonne della tabella per la lista tenant.

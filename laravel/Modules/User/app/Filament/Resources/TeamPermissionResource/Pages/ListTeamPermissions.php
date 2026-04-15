@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTeamPermissions extends XotBaseListRecords
 {
-    public static string $resource = TeamPermissionResource::class;
+    protected static string $resource = TeamPermissionResource::class;
 }

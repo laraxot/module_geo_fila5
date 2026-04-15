@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateOauthPersonalAccessClient extends XotBaseCreateRecord
 {
-    public static string $resource = OauthPersonalAccessClientResource::class;
+    protected static string $resource = OauthPersonalAccessClientResource::class;
 }

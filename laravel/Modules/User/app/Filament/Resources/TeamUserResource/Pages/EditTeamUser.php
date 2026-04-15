@@ -11,5 +11,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditTeamUser extends XotBaseEditRecord
 {
-    public static string $resource = \Modules\User\Filament\Resources\TeamUserResource::class;
+    protected static string $resource = \Modules\User\Filament\Resources\TeamUserResource::class;
 }

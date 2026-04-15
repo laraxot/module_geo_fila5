@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditDevice extends XotBaseEditRecord
 {
-    public static string $resource = DeviceResource::class;
+    protected static string $resource = DeviceResource::class;
 
     protected function getHeaderActions(): array
     {

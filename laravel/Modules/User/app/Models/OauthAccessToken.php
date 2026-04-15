@@ -4,38 +4,60 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\Token as PassportToken;
-use Modules\User\Database\Factories\OauthAccessTokenFactory;
 
 /**
- * Passport Token model for User module.
+ * Modules\User\Models\OauthAccessToken.
  *
- * Extends Laravel\Passport\Token to provide custom behavior
- * and use the user connection for multi-tenancy.
+ * @property string           $id
+ * @property string|null      $user_id
+ * @property string           $client_id
+ * @property string|null      $name
+ * @property array|null       $scopes
+ * @property bool             $revoked
+ * @property Carbon|null      $created_at
+ * @property Carbon|null      $updated_at
+ * @property Carbon|null      $expires_at
+ * @property OauthClient|null $client
+ * @property User|null        $user
  *
- * @property string              $id
- * @property string              $user_id
- * @property string              $client_id
- * @property string|null         $name
- * @property string|null         $scopes
- * @property bool                $revoked
- * @property \Carbon\Carbon|null $expires_at
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @method static Builder|OauthAccessToken newModelQuery()
+ * @method static Builder|OauthAccessToken newQuery()
+ * @method static Builder|OauthAccessToken query()
+ * @method static Builder|OauthAccessToken whereClientId($value)
+ * @method static Builder|OauthAccessToken whereCreatedAt($value)
+ * @method static Builder|OauthAccessToken whereExpiresAt($value)
+ * @method static Builder|OauthAccessToken whereId($value)
+ * @method static Builder|OauthAccessToken whereName($value)
+ * @method static Builder|OauthAccessToken whereRevoked($value)
+ * @method static Builder|OauthAccessToken whereScopes($value)
+ * @method static Builder|OauthAccessToken whereUpdatedAt($value)
+ * @method static Builder|OauthAccessToken whereUserId($value)
+ *
+ * @property OauthRefreshToken|null $refreshToken
+ * @property string|null            $updated_by
+ * @property string|null            $created_by
+ * @property string|null            $deleted_at
+ * @property string|null            $deleted_by
+ *
+ * @method static Builder<static>|OauthAccessToken whereCreatedBy($value)
+ * @method static Builder<static>|OauthAccessToken whereDeletedAt($value)
+ * @method static Builder<static>|OauthAccessToken whereDeletedBy($value)
+ * @method static Builder<static>|OauthAccessToken whereUpdatedBy($value)
+ * @method static static                           create(array $attributes = [])
+ * @method static static                           firstOrCreate(array $attributes, array $values = [])
+ * @method static static                           updateOrCreate(array $attributes, array $values = [])
+ *
+ * @mixin IdeHelperOauthAccessToken
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
+ *
+ * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken
 {
-    use HasFactory;
-
     /** @var string */
     protected $connection = 'user';
-
-    /**
-     * Create a new factory instance for the model.
-     */
-    protected static function newFactory(): OauthAccessTokenFactory
-    {
-        return OauthAccessTokenFactory::new();
-    }
 }

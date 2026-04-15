@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditOauthAccessTokens extends XotBaseEditRecord
 {
-    public static string $resource = OauthAccessTokenResource::class;
+    protected static string $resource = OauthAccessTokenResource::class;
 
     /**
      * @return array<string, Action>

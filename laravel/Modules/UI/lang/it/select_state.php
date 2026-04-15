@@ -45,4 +45,28 @@ return [
             'label' => 'Elimina Select State',
         ],
     ],
+    'label' => 'Select State',
+    'plural_label' => 'Select State (Plurale)',
+    'navigation' => [
+        'name' => 'Select State',
+        'plural' => 'Select State',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Select State',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Select State',
+        ],
+        'edit' => [
+            'label' => 'Modifica Select State',
+        ],
+        'delete' => [
+            'label' => 'Elimina Select State',
+        ],
+    ],
 ];

@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListRoles extends XotBaseListRecords
 {
-    public static string $resource = RoleResource::class;
+    protected static string $resource = RoleResource::class;
 
     #[\Override]
     public function getTableColumns(): array

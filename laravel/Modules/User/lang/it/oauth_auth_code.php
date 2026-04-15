@@ -54,11 +54,6 @@ return [
             'description' => 'Data di scadenza',
         ],
     ],
-    'filters' => [
-        'revoked' => 'Revocati',
-        'expired' => 'Scaduti',
-        'valid' => 'Validi',
-    ],
     'actions' => [
         'revoke' => [
             'label' => 'Revoca',

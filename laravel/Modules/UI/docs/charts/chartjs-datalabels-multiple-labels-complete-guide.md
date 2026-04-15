@@ -88,7 +88,7 @@ Se il modulo UI ha un **panel Filament separato**, devi:
 
 1. **Installa il plugin:**
    ```bash
-cd /var/www/_bases/base_Quaeris_fila5_mono/laravel/Modules/UI
+cd ./laravel/Modules/UI
    npm install chartjs-plugin-datalabels --save-dev
    ```
 

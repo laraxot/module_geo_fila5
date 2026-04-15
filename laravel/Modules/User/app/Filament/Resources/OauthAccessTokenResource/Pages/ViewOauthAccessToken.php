@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewOauthAccessToken extends XotBaseViewRecord
 {
-    public static string $resource = OauthAccessTokenResource::class;
+    protected static string $resource = OauthAccessTokenResource::class;
 
     /**
      * @return array<string, Component>

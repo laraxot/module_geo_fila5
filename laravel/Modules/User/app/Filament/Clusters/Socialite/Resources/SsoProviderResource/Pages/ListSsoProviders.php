@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListSsoProviders extends XotBaseListRecords
 {
-    public static string $resource = SsoProviderResource::class;
+    protected static string $resource = SsoProviderResource::class;
 
     #[\Override]
     public function getTableColumns(): array

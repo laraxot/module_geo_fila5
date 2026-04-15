@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListClients extends XotBaseListRecords
 {
-    public static string $resource = ClientResource::class;
+    protected static string $resource = ClientResource::class;
     // This class extends the base list records functionality
     // All common functionality is handled by XotBaseListRecords
 }

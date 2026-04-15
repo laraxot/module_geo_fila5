@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListOauthClients extends XotBaseListRecords
 {
-    public static string $resource = OauthClientResource::class;
+    protected static string $resource = OauthClientResource::class;
 
     /**
      * Get the header actions.

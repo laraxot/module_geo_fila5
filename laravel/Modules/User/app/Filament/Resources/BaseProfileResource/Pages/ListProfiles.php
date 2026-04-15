@@ -20,7 +20,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListProfiles extends XotBaseListRecords
 {
-    public static string $resource = BaseProfileResource::class;
+    protected static string $resource = BaseProfileResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListTeamInvitations extends XotBaseListRecords
 {
-    public static string $resource = TeamInvitationResource::class;
+    protected static string $resource = TeamInvitationResource::class;
 
     /**
      * @return array<string, Action>

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditSsoProvider extends XotBaseEditRecord
 {
-    public static string $resource = SsoProviderResource::class;
+    protected static string $resource = SsoProviderResource::class;
 }

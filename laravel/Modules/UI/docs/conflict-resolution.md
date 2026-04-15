@@ -5,10 +5,10 @@
 - **Strategy**: Keep HEAD/local (ours) side
 - **Root cause**: Nested stash-on-merge conflicts
 
-## PHP Files Resolved
+## PHP Files
 - app/View/Components/Render/Block.php
 
-## Documentation Files Resolved
+## Documentation Files
 - docs/algolia_docsearch.md
 - docs/architecture.md
 - docs/best_practices.md
@@ -56,11 +56,8 @@
 - docs/table_components.md
 - docs/vscode_filament_plugin.md
 
-## Config Files Resolved
+## Config Files
 - composer.json
-
-## Translation Files Resolved
-None
 
 ## Backlinks
 - [Root conflict resolution report](../../../../docs/conflict-resolution-report.md)

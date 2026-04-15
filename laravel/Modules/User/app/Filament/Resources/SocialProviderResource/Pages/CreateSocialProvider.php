@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateSocialProvider extends XotBaseCreateRecord
 {
-    public static string $resource = SocialProviderResource::class;
+    protected static string $resource = SocialProviderResource::class;
 }

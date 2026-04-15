@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListTeamUsers extends XotBaseListRecords
 {
-    public static string $resource = \Modules\User\Filament\Resources\TeamUserResource::class;
+    protected static string $resource = \Modules\User\Filament\Resources\TeamUserResource::class;
 
     /**
      * @return array<string, Action>

@@ -46,11 +46,6 @@ return [
             'description' => 'Timestamp di creazione',
         ],
     ],
-    'filters' => [
-        'revoked' => 'Revocati',
-        'expired' => 'Scaduti',
-        'valid' => 'Validi',
-    ],
     'actions' => [
         'revoke' => [
             'label' => 'Revoca',

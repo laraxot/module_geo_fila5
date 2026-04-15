@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class ViewOauthAuthCode extends XotBaseViewRecord
 {
-    public static string $resource = OauthAuthCodeResource::class;
+    protected static string $resource = OauthAuthCodeResource::class;
 
     /**
      * @return array<string, Component>

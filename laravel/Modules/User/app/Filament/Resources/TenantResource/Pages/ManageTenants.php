@@ -9,5 +9,5 @@ use Modules\User\Filament\Resources\TenantResource;
 
 class ManageTenants extends ManageRecords
 {
-    public static string $resource = TenantResource::class;
+    protected static string $resource = TenantResource::class;
 }

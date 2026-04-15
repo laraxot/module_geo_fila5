@@ -77,4 +77,28 @@ return [
             'label' => 'Elimina Group',
         ],
     ],
+    'label' => 'Group',
+    'plural_label' => 'Group (Plurale)',
+    'navigation' => [
+        'name' => 'Group',
+        'plural' => 'Group',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Group',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Group',
+        ],
+        'edit' => [
+            'label' => 'Modifica Group',
+        ],
+        'delete' => [
+            'label' => 'Elimina Group',
+        ],
+    ],
 ];

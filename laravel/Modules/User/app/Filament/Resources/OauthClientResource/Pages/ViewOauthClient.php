@@ -19,7 +19,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
  */
 class ViewOauthClient extends XotBaseViewRecord
 {
-    public static string $resource = OauthClientResource::class;
+    protected static string $resource = OauthClientResource::class;
 
     /**
      * Get the header actions.

@@ -12,7 +12,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewSsoProvider extends XotBaseViewRecord
 {
-    public static string $resource = SsoProviderResource::class;
+    protected static string $resource = SsoProviderResource::class;
 
     /**
      * @return array<string, Component>

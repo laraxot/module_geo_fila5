@@ -1,25 +1,34 @@
+# Wiki Locale - Module User
+
+## Schema di Riferimento
+
+Vedi [[../../../../docs/.schema/WIKI_SCHEMA.md|Schema Wiki Globale]]
+
+## Struttura Locale
+
+```
+wiki/
+├── concepts/       # Pattern e metodologie
+├── entities/       # Classi e componenti
+├── summaries/      # Sommari documenti
+├── comparisons/    # Confronti
+└── overviews/     # Panoramiche
+```
+
+## Pagine Compilate
+
+| Pagina | Tipo | Argomento |
+|--------|------|-----------|
+| [user-module](./overviews/user-module.md) | overview | User, Profile, Team, Spatie RBAC, OAuth, multi-tenancy |
+
+## Raw Sources
+
+Vedi [[../raw/index|Lista Sorgenti Grezzi]]
+
+## Index Globale
+
+Vedi [[../../../../docs/wiki/index|Index Globale Wiki]]
+
 ---
-module: User
-concept: Wiki Index
-last_updated: 2026-04-15
----
 
-# User Module Wiki
-
-Knowledge base for identity, access, and profile management in PTVX.
-
-## 🏗️ Architecture
-- [[Architecture]]: Overview of the User module.
-- [[User vs Profile]]: Understanding the separation of identity and persona.
-
-## 🔐 Security & Access
-- [[Two-Factor Authentication]]: Securing accounts with TOTP.
-- [[Roles and Permissions]]: Role-based access control (RBAC).
-- [[SSO and Socialite]]: Third-party authentication providers.
-
-## 🔧 Maintenance
-- [[User Factory Integration]]: Advanced seeding and testing strategies.
-- [[Moderation Strategy]]: Handling user reports and bans.
-
----
-**Main Project Wiki:** [[Project Home]]
+*Ultimo aggiornamento: 2026-04-15*

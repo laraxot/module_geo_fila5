@@ -140,7 +140,6 @@ return [
         'change_password' => 'Cambio password',
         'updateDataAction' => [
             'label' => 'updateDataAction',
-            'tooltip' => 'updateDataAction',
         ],
     ],
     'label' => 'Password',

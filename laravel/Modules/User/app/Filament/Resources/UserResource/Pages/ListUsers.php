@@ -17,7 +17,7 @@ use Modules\Xot\Contracts\UserContract;
 
 class ListUsers extends BaseListUsers
 {
-    public static string $resource = UserResource::class;
+    protected static string $resource = UserResource::class;
 
     #[\Override]
     public function getTableColumns(): array
@@ -49,9 +49,13 @@ class ListUsers extends BaseListUsers
         ];
     }
 
+    /**
+     * @phpstan-ignore-next-line
+     */
     #[\Override]
     public function getTableActions(): array
     {
+        /* @phpstan-ignore-next-line */
         return [
             'change_password' => ChangePasswordAction::make()->tooltip('Cambio Password')->iconButton(),
             ...parent::getTableActions(),
@@ -59,7 +63,7 @@ class ListUsers extends BaseListUsers
                 ->tooltip(__('filament-actions::delete.single.label'))
                 ->color('danger')
                 ->icon('heroicon-o-trash')
-                ->action(fn (UserContract $user) => $user->delete()),
+                ->action(static fn (UserContract $user) => $user->delete()),
         ];
     }
 

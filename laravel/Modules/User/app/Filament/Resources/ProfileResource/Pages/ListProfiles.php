@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListProfiles extends XotBaseListRecords
 {
-    public static string $resource = ProfileResource::class;
+    protected static string $resource = ProfileResource::class;
 
     #[\Override]
     public function getTableColumns(): array

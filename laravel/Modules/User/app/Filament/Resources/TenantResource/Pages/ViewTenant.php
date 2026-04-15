@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewTenant extends XotBaseViewRecord
 {
-    public static string $resource = TenantResource::class;
+    protected static string $resource = TenantResource::class;
 
     /**
      * @return array<string, Component>

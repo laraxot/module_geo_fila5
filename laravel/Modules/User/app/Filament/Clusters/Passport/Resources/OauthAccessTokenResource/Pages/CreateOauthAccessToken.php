@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateOauthAccessToken extends XotBaseCreateRecord
 {
-    public static string $resource = OauthAccessTokenResource::class;
+    protected static string $resource = OauthAccessTokenResource::class;
 
     public static function getNavigationLabel(): string
     {
