@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "private": true,
   "scripts": {
     "dev": "npm run development",
@@ -23,27 +22,5 @@
     "postcss": "^8.4.38",
     "postcss-nesting": "^12.1.4",
     "tailwindcss": "^3.4.3"
-=======
-  "name": "fixcity-platform",
-  "version": "1.0.0",
-  "description": "FixCity Platform - Quality Tools",
-  "scripts": {
-    "quality": "npm run quality:biome && npm run quality:eslint && npm run quality:htmlhint && npm run quality:markdownlint",
-    "quality:biome": "biome check .",
-    "quality:eslint": "eslint .",
-    "quality:htmlhint": "htmlhint \"**/*.html\"",
-    "quality:markdownlint": "markdownlint \"**/*.md\"",
-    "fix": "npm run fix:biome && npm run fix:eslint",
-    "fix:biome": "biome format --write .",
-    "fix:eslint": "eslint . --fix"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.2.4",
-    "@typescript-eslint/eslint-plugin": "^8.45.0",
-    "@typescript-eslint/parser": "^8.45.0",
-    "eslint": "^9.36.0",
-    "htmlhint": "^1.7.1",
-    "markdownlint-cli": "^0.45.0"
->>>>>>> f2d809135 (.)
   }
 }

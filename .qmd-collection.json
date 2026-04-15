@@ -1,0 +1,40 @@
+{
+  "collections": {
+    "main_docs": {
+      "path": "./docs/raw",
+      "description": "Documentazione principale del progetto PTVX"
+    },
+    "module_Xot": {
+      "path": "./laravel/Modules/Xot/docs/raw",
+      "description": "Documentazione del modulo Xot"
+    },
+    "module_User": {
+      "path": "./laravel/Modules/User/docs/raw",
+      "description": "Documentazione del modulo User"
+    },
+    "module_Tenant": {
+      "path": "./laravel/Modules/Tenant/docs/raw",
+      "description": "Documentazione del modulo Tenant"
+    },
+    "module_Notify": {
+      "path": "./laravel/Modules/Notify/docs/raw",
+      "description": "Documentazione del modulo Notify"
+    },
+    "module_UI": {
+      "path": "./laravel/Modules/UI/docs/raw",
+      "description": "Documentazione del modulo UI"
+    },
+    "bashscripts_docs": {
+      "path": "./bashscripts/docs/raw",
+      "description": "Documentazione di bashscripts"
+    },
+    "theme_Zero": {
+      "path": "./laravel/Themes/Zero/docs/raw",
+      "description": "Documentazione del tema Zero"
+    },
+    "theme_One": {
+      "path": "./laravel/Themes/One/docs/raw",
+      "description": "Documentazione del tema One"
+    }
+  }
+}

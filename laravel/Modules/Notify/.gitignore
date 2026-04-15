@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ==============================================
 # LARAXOT MODULE NOTIFY - .GITIGNORE
 # ==============================================
@@ -59,7 +58,6 @@ lerna-debug.log*
 # ==============================================
 # LARAVEL SPECIFIC
 # ==============================================
-=======
 # System files
 .DS_Store
 *.exe
@@ -91,14 +89,12 @@ cache/
 tmp/
 
 # Laravel specific files and directories
->>>>>>> f2d809135 (.)
 bootstrap/compiled.php
 app/storage/
 public/storage
 public/hot
 public_html/storage
 public_html/hot
-<<<<<<< HEAD
 storage/*.key
 .env
 .env.*
@@ -301,9 +297,6 @@ cache/*
 .git.bfg-report/
 *.jar
 laravel/Themes/One
-<<<<<<< HEAD
->>>>>>> f2d809135 (.)
-=======
 
 .ai
 .ai-context
@@ -322,4 +315,4 @@ laravel/Themes/One
 .windsurf.*
 .ai-context
 .clauderules
->>>>>>> a1fe21424 (.)
+

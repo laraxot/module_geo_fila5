@@ -90,15 +90,9 @@ final class Module extends BaseModel
             ];
         });
 
-<<<<<<< HEAD
         /** @var array<int, array<string, mixed>> $rows */
         $rows = array_values($modules);
 
-=======
-        $rows = array_values($modules);
-
-        /* @var array<int, array<string, mixed>> $rows */
->>>>>>> 9506daa5 (.)
         return $rows;
     }
 

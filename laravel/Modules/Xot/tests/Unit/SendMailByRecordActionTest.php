@@ -4,13 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Unit;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-use Illuminate\Mail\Mailable;
->>>>>>> 4ffe7f41e (.)
->>>>>>> 9506daa5 (.)
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Mail\Mailable;
 use Modules\Xot\Actions\Mail\SendMailByRecordAction;

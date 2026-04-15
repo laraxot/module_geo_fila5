@@ -4,13 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Unit\Models;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-use Tests\TestCase;
->>>>>>> 4ffe7f41e (.)
->>>>>>> 9506daa5 (.)
 use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Models\XotBaseModel;
 use Modules\Xot\Traits\Updater;

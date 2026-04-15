@@ -1,32 +1,25 @@
 ---
-title: "Wiki Index"
-module: "User"
-updated: "2026-04-15T08:28:51Z"
+module: User
+concept: Wiki Index
+last_updated: 2026-04-15
 ---
 
-# Wiki Index — User
+# User Module Wiki
 
-> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
-> **Replaces embedding-based RAG at moderate scale (~100 sources).**
+Knowledge base for identity, access, and profile management in PTVX.
 
-## Concepts
+## 🏗️ Architecture
+- [[Architecture]]: Overview of the User module.
+- [[User vs Profile]]: Understanding the separation of identity and persona.
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+## 🔐 Security & Access
+- [[Two-Factor Authentication]]: Securing accounts with TOTP.
+- [[Roles and Permissions]]: Role-based access control (RBAC).
+- [[SSO and Socialite]]: Third-party authentication providers.
 
-## Entities
-
-_No entities tracked yet._
-
-## Sources
-
-_No sources ingested yet._
-
-## Comparisons
-
-_No comparisons synthesized yet._
+## 🔧 Maintenance
+- [[User Factory Integration]]: Advanced seeding and testing strategies.
+- [[Moderation Strategy]]: Handling user reports and bans.
 
 ---
-
-**Last Updated:** 2026-04-15T08:28:51Z  
-**Total Pages:** 0  
-**Total Raw Sources:** 0
+**Main Project Wiki:** [[Project Home]]

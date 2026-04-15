@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "laraxot/module_notify_fila5",
   "description": "Notification management module for the Laraxot ecosystem: email, SMS, WhatsApp, Telegram, and FCM push.",
   "keywords": [
@@ -95,43 +94,4 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true
-=======
-    "name": "fixcity/user-module",
-    "description": "Modulo User per FixCity",
-    "type": "laravel-module",
-    "require": {
-        "php": "^8.1",
-        "laravel/framework": "^10.0",
-        "spatie/laravel-permission": "^5.0",
-        "laravel/sanctum": "^3.0",
-        "thecodingmachine/safe": "^2.0"
-    },
-    "require-dev": {
-        "phpstan/phpstan": "^2.1",
-        "phpstan/phpstan-deprecation-rules": "*",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.0",
-        "thecodingmachine/phpstan-safe-rule": "^1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Modules\\User\\": "laravel/Modules/User/app/"
-        },
-        "files": [
-            "laravel/Modules/User/app/helpers.php"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Modules\\User\\Providers\\UserServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
->>>>>>> f2d809135 (.)
 }

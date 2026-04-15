@@ -1,13 +1,18 @@
-# Gemini Context
+# Gemini Context Central
 
-> **Gemini Agent Guide (split)**: [.agents/docs/ai-agents/gemini/index.md](.agents/docs/ai-agents/gemini/index.md)
-> Memories: [.agents/docs/ai-agents/gemini/memories.md](.agents/docs/ai-agents/gemini/memories.md)
-> Rules: [.agents/docs/ai-agents/gemini/rules.md](.agents/docs/ai-agents/gemini/rules.md)
-> Shared rules: [.agents/docs/ai-agents/shared/index.md](.agents/docs/ai-agents/shared/index.md)
+This file is the primary context loader for the **Gemini** AI agent.
+
+## 🔗 Fast Links
+- [[Gemini Index]]: Abstract and agent-specific links.
+- [[Shared Core Mandates]]: The fundamental rules (Mandatory Sequence, PHPStan).
+- [[LLM Wiki Mandate]]: Karpathy pattern and QMD usage.
+- [[Directory Standards]]: Repository conventions.
+- [[GSD & BMAD Methodologies]]: Project workflows.
 
 ---
 
 # Gemini Added Memories
+- I MUST always use the Karpathy LLM Wiki pattern for knowledge management. At the start of every task, I MUST query the module's wiki using 'qmd_search' to load compiled context. I MUST proactively compile new findings into 'docs/wiki/' pages instead of leaving them in session logs.
 - When approaching complex tasks, break them down and orchestrate existing skills as specialized 'sub-agents' following the 'Agent Teams and Skill Orchestration' guidelines documented in AGENTS.md.
 - PRD STANDARD: Every module and theme must have a `PRD.md` in its `docs/` folder.
 - PRD STRUCTURE: A standard PRD must include: Executive Summary, Target Personas (including Internal Developers), Functional Requirements, Service Interface (The Contract), System Architecture & Dependencies, Non-Functional Requirements (SLA, Observability, Security), and Release Criteria.
@@ -27,120 +32,3 @@
 - **Rule**: COMMIT & PUSH - When functionality is verified, always perform `git commit` and `git push` to synchronize changes globally.
 - **Rule**: ENVIRONMENT-AWARE SCRIPTS - All synchronization and deployment scripts (especially `sync_remote_repo.sh`) MUST detect the environment (`CLI` vs. `GitHub Actions`) and adapt their behavior (e.g., skip interactive prompts, use tokens instead of SSH, skip local backups in CI). Coordination is managed via Issue #109.
 - YOLO MODE: Persistence and autonomy are prioritized. Complete all sub-tasks through an iterative Plan -> Act -> Validate cycle without intermediate confirmation for atomic steps.
-
-# Gemini Context
-
-## Project Context
-
-PTVX is a modular HR & Performance evaluation system based on Laravel + Filament + Laraxot.
-
-## Guidelines for Gemini
-
-- Do not extend Filament classes directly in application modules: use `XotBase*` wrappers.
-- Translations must not be hardcoded in Filament components.
-- Prefer Actions (e.g. Spatie Queueable Action) over Services.
-- **CRITICAL RULE**: Before modifying ANY file, the mandatory sequence is: 1. **Read** the file; 2. **Reason**; 3. **Study** the context; 4. **Update and improve** the `docs/` folders within modules and themes. Only after these steps can code modifications begin.
-- Use PHPStan Level 10 approach: "Fix, Don't Ignore" - all 34 modules are now 100% compliant.
-- Follow module-per-module workflow: complete one module before moving to the next.
-- Use MCP tools when encountering file access limitations.
-- **Rule**: Every change MUST be verified with PHPStan lvl10, PHPMD, and PHPInsights.
-- **Rule**: Every module MUST have exactly one `.code-workspace` file named `_<module_name_in_snake_case>.code-workspace` (e.g., `Modules/Xot/_xot.code-workspace`, `Modules/Activity/_activity.code-workspace`).
-- **Rule**: Every module MUST have Semantic Versioning configured (`.releaserc.json` + workflows).
-- **Rule**: GIT HEALTH - Always check for shallow clones (`git rev-parse --is-shallow-repository`) before pushing. Unshallow using `git fetch --unshallow` if needed.
-- **Rule**: DOCS STANDARD - `docs/` filenames must be lowercase and date-free. Exception: `README.md`, `CHANGELOG.md` must be UPPERCASE. NO dates are allowed in ANY `.md` filename across the project. Use `standardize_docs.py` to fix.
-- **Rule**: PRD STANDARD - Every module and theme MUST have a `prd.md` in its `docs/` folder. This document must follow the 2025-2026 "Lean PRD" standard, emphasizing problem statements, KPIs, prioritized functional requirements (P0/P1/P2), and technical specs (agnostic design, data schemas). Themes must additionally document design tokens and accessibility patterns.
-- **Rule**: SAFE REFACTORING PATTERN - Never delete critical files (Models, Actions, Resources) during a rename or major refactor. Instead, rename the old version by appending `.old` (e.g., `OldModel.php.old`) to allow for recovery and reference during the transition.
-- **Rule**: MODULAR DATABASE ISOLATION - It is strictly forbidden to add module-specific database connections (e.g., `db_forge`, `mobilita_volontaria`) to the root `/laravel/config/database.php`. Each module must register its connections dynamically in its `XotBaseServiceProvider` to maintain core agnosticism and self-containment. See `Modules/Xot/docs/database-architecture.md`.
-- **Rule**: REGRESSION PREVENTION - Do not remove specialized columns/actions (e.g., `WorkerColumn`) without explicit instruction. Always check existing logic before refactoring.
-- **Rule**: SHORT ARRAY SYNTAX - Always use `[]` in PHP files, never `array()`. The only exception is when explicitly demonstrating incorrect/deprecated usage in documentation.
-- **Rule**: FILAMENT CUSTOM PAGES - Custom pages MUST extend `XotBase*` classes. Single-record edit pages follow the `$data` array + `form->fill()` + `form->getState()` pattern. For type-safe record access, use a `getSpecificRecord()` helper with explicit `instanceof` narrowing. See skill: `.agent/skills/filament-custom-pages/SKILL.md`.
-- **Rule**: UNIFIED FORM PATTERN - Avoid manual Blade HTML on custom pages. Integrate header metadata and summary sections into a unified Filament form schema for better reactivity and consistency.
-- **Rule**: INFOLIST FOR METADATA - Use Filament Infolists for read-only metadata on custom pages. This separates visualization (Infolist) from active interaction (Form), adhering to KISS and semantic UI principles.
-- **Rule**: LARAVEL LOCALIZATION - `mcamara/laravel-localization` patterns must use `LaravelLocalization::setLocale()` in route groups. Module `Lang` owns all localization logic. See skill: `.agent/skills/laravel-localization/SKILL.md`.
-- **Rule**: USER TYPING - Never use generic `\Illuminate\Database\Eloquent\Model|null` for users in method signatures or PHPDoc. Always use `Modules\Xot\Contracts\UserContract`. See `docs/eloquent-models-property-verification.md`.
-
-## GSD (Get Shit Done)
-
-This project uses GSD for spec-driven development with context engineering.
-GSD solves context rot by keeping each task in a fresh, optimal context window.
-
-- **State**: `.planning/STATE.md` — read at session start
-- **Config**: `.planning/config.json` — workflow configuration
-- **Templates**: `.gsd/templates/` — document templates
-- **Methodology**: `docs/project/gsd-methodology.md`
-
-### GSD Workflow
-
-```
-new-project → discuss-phase N → plan-phase N → execute-phase N → verify-work N → complete-milestone
-```
-
-### Quick Commands
-
-| Action | How |
-|--------|-----|
-| New project | "GSD new-project" |
-| Discuss phase | "GSD discuss phase N" |
-| Plan phase | "GSD plan phase N" |
-| Execute phase | "GSD execute phase N" |
-| Verify work | "GSD verify N" |
-| Quick task | "GSD quick: description" |
-| Map codebase | "GSD map codebase" |
-| Progress | "GSD progress" |
-
-### GSD vs BMAD
-
-- **GSD**: Single features, refactoring, bug fixes, quick tasks
-- **BMAD**: New modules, architecture, stakeholder alignment, sprint planning
-
-## BMAD Method
-
-BMAD (v6.2.0) è integrato in `_bmad/` con agenti specialisti e workflow strutturati.
-
-- **Config**: `_bmad/_config/` (manifest e integrazioni IDE)
-- **Workflows**: `_bmad/bmm/workflows/`
-- **Project context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
-- **Help**: invoca `bmad-help` quando non sai cosa fare dopo
-
-### Fasi tipiche
-
-1. **Analisi** (quando serve): brainstorming / ricerca
-2. **Pianificazione**: PRD / UX
-3. **Solutioning**: architettura / epics & stories
-4. **Implementazione**: dev / code review / QA
-
-### Quick flow
-
-Per task piccoli: `bmad-quick-dev` (spec + implementazione in un workflow).
-
-## Documentation Locations
-
-- Project docs: `docs/`
-- Module docs: `laravel/Modules/{Module}/docs/`
-- MCP configuration: `laravel/.mcp.json`
-- Agent skills: `.agent/skills/`
-- Agent workflows: `.agent/workflows/`
-- Agent teams: `.agent/agent-teams.md`
-- GSD methodology: `docs/project/gsd-methodology.md`
-- GSD templates: `.gsd/templates/`
-- GSD state: `.planning/STATE.md`
-
-## Links
-
-- [Gemini Setup Guide](./.gemini/docs/context.md)
-- [Overview](./.gemini/docs/overview.md)
-- [Workflow](./.gemini/docs/workflow.md)
-- [PHPStan Guide](./.gemini/docs/phpstan.md)
-- [Filament Guide](./.gemini/docs/filament.md)
-- [MCP Guide](./.gemini/docs/mcp.md)
-- [Agent Teams](./.agent/agent-teams.md)
-- [GSD Methodology](docs/project/gsd-methodology.md)
-- [BMAD Integration](docs/project/bmad-method-integration.md)
-- [Accessor/Mutator Pattern — Livelli 1–4](.agents/docs/ai-agents/shared/accessor-mutator.md)
-- [Pattern SACRO Accessor](.agents/docs/accessor-auto-persistence.md)
-
-## BMAD Rules for Gemini
-- **Spec-First**: Per moduli complessi o nuove architetture, NON iniziare a codificare senza un workflow BMAD (`create-prd` → `create-architecture`).
-- **Context Sharding**: Se un documento supera i 1600 token, usa `bmad-shard-doc` per mantenere l'efficienza del contesto.
-- **Expert Personas**: Quando agisci come `architect` o `pm`, segui strettamente il manifest dell'agente in `_bmad/bmm/agents/`.
-- **"What's Next"**: In caso di incertezza sulla fase del progetto, invoca sempre `bmad-help`.
