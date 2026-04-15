@@ -4,12 +4,6 @@
 
 Il modulo **Xot** è il nucleo fondativo dell'intero progetto Laraxot PTVX. Fornisce classi base, trait, servizi e configurazioni condivise da tutti gli altri moduli.
 
-## Principi (perché esiste)
-
-- **Coerenza**: un set unico di wrapper base (Filament/Laravel) per evitare divergenze fra moduli.
-- **DRY**: funzionalità trasversali centralizzate (azioni, helper, convenzioni).
-- **Qualità**: vincoli forti (PHPStan level 10, naming, traduzioni) per ridurre bug e “snowflake modules”.
-
 ## Architettura
 
 ### Classi Base Principali
@@ -21,6 +15,7 @@ Il modulo **Xot** è il nucleo fondativo dell'intero progetto Laraxot PTVX. Forn
 | `XotBaseResource` | Risorse Filament base | `Filament\Resources\Resource` |
 | `XotBaseServiceProvider` | ServiceProvider modulare | `Illuminate\Support\ServiceProvider` |
 | `XotBaseWidget` | Widget Filament base | `Filament\Widgets\Widget` |
+| `XotBaseWizardWidget` | Widget con form wizard multi-step (Filament `Wizard` / `Step`) | `XotBaseWidget` |
 
 ### Trait Fondamentali
 
@@ -29,12 +24,13 @@ Il modulo **Xot** è il nucleo fondativo dell'intero progetto Laraxot PTVX. Forn
 - `RelationX`: Relazioni many-to-many estese
 
 ## Collegamenti
+- [Vite Configuration](./vite-configuration.md)
+- [Theme Assets Workflow](./theme-assets-workflow.md)
+- [BMAD Method (progetto)](../../../docs/bmad/setup-guide.md) — processo AI/agile e artefatti `_bmad-output/`
 
 - [Documentazione Root](../../../docs/XOT_MODULE.md)
 - [Regole Architettura](./architecture/)
 - [PHPStan Configuration](./phpstan/)
-- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
-- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Regole Critiche
 

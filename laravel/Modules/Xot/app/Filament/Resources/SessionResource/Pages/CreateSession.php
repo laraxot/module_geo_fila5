@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\SessionResource;
 
 class CreateSession extends XotBaseCreateRecord
 {
-    public static string $resource = SessionResource::class;
+    protected static string $resource = SessionResource::class;
 }

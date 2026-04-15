@@ -24,11 +24,6 @@ class MetatagPage extends XotBasePage
 {
     use NavigationLabelTrait;
 
-    /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
     public array $data = [];
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';

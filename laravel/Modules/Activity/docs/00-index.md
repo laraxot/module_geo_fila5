@@ -29,11 +29,6 @@
 - `spatie/laravel-activitylog` - Audit trail
 - `spatie/laravel-event-sourcing` - Event sourcing, CQRS
 
-## 📦 **Pacchetti Composer**
-- [Riferimento completo](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md)
-- `spatie/laravel-activitylog` - Audit trail
-- `spatie/laravel-event-sourcing` - Event sourcing, CQRS
-
 ## 🔗 **Moduli Correlati**
 - [Xot](../../xot/docs/readme.md) - Core framework.
 - [Tenant](../../tenant/docs/readme.md) - Isolamento dati per tenant.
@@ -45,10 +40,3 @@
 ## Dependency Intelligence
 
 - [Dependency intelligence](dependency-intelligence.md)
-
-## Regola Operativa Obbligatoria
-
-- Prima di modificare codice: ragionare, studiare i docs del modulo/tema, aggiornare docs/rules/memory/skills.
-- Riferimento globale: [Pre-Edit Docs-First Rule](../../../../docs/rules/pre-edit-docs-first-rule.md)
-- Memory: [Pre-Edit Docs-First Memory](../../../../docs/memory/pre-edit-docs-first-memory.md)
-- Skill: [Pre-Edit Docs-First Skill](../../../../docs/skills/pre-edit-docs-first-skill.md)

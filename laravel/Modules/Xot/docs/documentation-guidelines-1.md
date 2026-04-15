@@ -1,4 +1,3 @@
-
 # Linee Guida per la Documentazione in Laraxot
 
 Questo documento definisce le best practices per la creazione e la manutenzione della documentazione all'interno del framework Laraxot.
@@ -141,7 +140,7 @@ Esempio:
 Modules\ModuloNome\Models\NomeModello
 ```
 
-**Tabella:** `nome_tabella`  
+**Tabella:** `nome_tabella`
 **Chiave primaria:** `id_nome`
 
 **Attributi principali:**
@@ -214,7 +213,7 @@ Prima di committare la documentazione:
 Quando si fa riferimento a concetti o classi in altri moduli, utilizzare collegamenti relativi:
 
 ```markdown
-Per ulteriori informazioni, consultare la [documentazione del modulo UI](../UI/project_docs/README.md).
+Per ulteriori informazioni, consultare la [documentazione del modulo UI](../ui/docs/readme.md).
 ```
 
 ### 2. Documentazione Centralizzata
@@ -222,7 +221,7 @@ Per ulteriori informazioni, consultare la [documentazione del modulo UI](../UI/p
 Alcuni argomenti comuni a più moduli dovrebbero essere documentati nel modulo Xot e poi referenziati dagli altri moduli:
 
 ```markdown
-Per le best practices generali sul framework, consultare la [guida principale](../Xot/project_docs/best-practices.md).
+Per le best practices generali sul framework, consultare la [guida principale](../xot/docs/best-practices.md).
 ```
 
 ## Esempi di Eccellenza
@@ -248,7 +247,7 @@ Rappresenta un socio dell'associazione.
 Modules\Brain\Models\Socio
 ```
 
-**Tabella:** `socio`  
+**Tabella:** `socio`
 **Chiave primaria:** `id_socio`
 
 **Relazioni:**

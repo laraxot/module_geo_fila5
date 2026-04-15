@@ -167,7 +167,9 @@ Modules/
 │   │   ├── migrations/
 │   │   └── seeders/
 │   └── app/
-└── Quaeris/
+└── healthcare_app/
+└── ExternalProject/
+>>>>>>> .merge_file_WGxfyj
     ├── database/
     │   ├── factories/
     │   ├── migrations/

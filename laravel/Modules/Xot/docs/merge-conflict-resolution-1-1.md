@@ -80,15 +80,8 @@ at Modules/Xot/app/Providers/RouteServiceProvider.php:155
 14. **EditProfile.php**
     - Marker di merge conflict GIT non risolti:
       ```
-<<<<<<< HEAD
       
       
-=======
-      =======
-      >>>>>>> 041533e (.)
-      =======
-      >>>>>>> 00a34d0 (.)
->>>>>>> 38b70c7ba (.)
       ```
 
 15. **PasswordResetConfirmWidget.php**
@@ -169,11 +162,7 @@ public ?string $super_admin = null;
 ```php
 // ❌ SBAGLIATO
 use Filament\Forms\Form;
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> 041533e (.)
 >>>>>>> 38b70c7ba (.)
 use Modules\User\Datas\PasswordData;
 ```

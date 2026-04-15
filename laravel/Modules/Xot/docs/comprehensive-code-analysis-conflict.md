@@ -8,24 +8,24 @@ Analisi sistematica di tutti i moduli del progetto per identificare violazioni d
 ### 1. Violazioni DRY - Duplicazioni di Codice
 
 #### Singleton Pattern Duplicato
-**File**: `Modules/Quaeris/app/Services/LimeJsonService.php`, `Modules/Quaeris/app/Services/QuaerisService.php`
+**File**: `Modules/healthcare_app/app/Services/LimeJsonService.php`, `Modules/healthcare_app/app/Services/healthcare_appService.php`
 
 ```php
 // DUPLICATO in LimeJsonService.php
 private static ?self $instance = null;
 public static function getInstance(): self
 {
-if (! self::$instance instanceof \Modules\Quaeris\Services\LimeJsonService) {
+    if (! self::$instance instanceof \Modules\healthcare_app\Services\LimeJsonService) {
         self::$instance = new self();
     }
     return self::$instance;
 }
 
-// DUPLICATO in QuaerisService.php
+// DUPLICATO in healthcare_appService.php
 private static ?self $instance = null;
 public static function getInstance(): self
 {
-    if (! self::$instance instanceof \Modules\Quaeris\Services\QuaerisService) {
+    if (! self::$instance instanceof \Modules\healthcare_app\Services\healthcare_appService) {
         self::$instance = new self();
     }
     return self::$instance;
@@ -35,13 +35,13 @@ public static function getInstance(): self
 **Soluzione**: Creare trait `SingletonTrait` in `Modules/Xot/app/Traits/SingletonTrait.php`
 
 #### Connection Hardcoded Duplicata
-**Problema**: `protected $connection = 'Quaeris';` ripetuto in tutti i modelli Quaeris
+**Problema**: `protected $connection = 'healthcare_app';` ripetuto in tutti i modelli healthcare_app
 **Soluzione**: Centralizzare in BaseModel o configurazione
 
 ### 2. Violazioni SOLID
 
 #### Single Responsibility Principle Violato
-**File**: `Modules/Quaeris/app/Models/BaseModel.php`
+**File**: `Modules/healthcare_app/app/Models/BaseModel.php`
 
 ```php
 abstract class BaseModel extends Model implements ModelContract, HasMedia
@@ -89,7 +89,7 @@ abstract class BaseUser extends Authenticatable implements
 ### 3. N+1 Query Problems
 
 #### Customer Model - Lazy Loading
-**File**: `Modules/Quaeris/app/Models/Customer.php`
+**File**: `Modules/healthcare_app/app/Models/Customer.php`
 
 ```php
 public function surveyPdfsActive()
@@ -102,7 +102,7 @@ public function surveyPdfsActive()
 **Soluzione**: Usare query builder o eager loading
 
 #### AlertWidget - Query Complessa
-**File**: `Modules/Quaeris/app/Filament/Widgets/AlertWidget.php`
+**File**: `Modules/healthcare_app/app/Filament/Widgets/AlertWidget.php`
 
 ```php
 return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
@@ -125,7 +125,7 @@ return SurveyFlipResponse::where('survey_id', $this->getSurveyId())
 ### 4. Violazioni KISS - Complessità Eccessiva
 
 #### QuestionChart Model - Metodi Complessi
-**File**: `Modules/Quaeris/app/Models/QuestionChart.php`
+**File**: `Modules/healthcare_app/app/Models/QuestionChart.php`
 
 ```php
 public function participants(): CustomRelation
@@ -152,7 +152,7 @@ public function participants(): CustomRelation
 ### 5. Gestione Errori Inadeguata
 
 #### SendInviteAction - Catch Vuoti
-**File**: `Modules/Quaeris/app/Actions/SendInviteAction.php`
+**File**: `Modules/healthcare_app/app/Actions/SendInviteAction.php`
 
 ```php
 try {
@@ -172,7 +172,7 @@ try {
 ### 1. Filament Resources - Pattern Duplicati
 
 #### Schema Duplicato
-**File**: `Modules/Quaeris/app/Filament/Resources/ContactResource.php`, `CustomerResource.php`
+**File**: `Modules/healthcare_app/app/Filament/Resources/ContactResource.php`, `CustomerResource.php`
 
 ```php
 // ContactResource.php
@@ -221,9 +221,9 @@ public function customer(): HasOneThrough
 **File**: Tutti i ServiceProvider dei moduli
 
 ```php
-class QuaerisServiceProvider extends XotBaseServiceProvider
+class healthcare_appServiceProvider extends XotBaseServiceProvider
 {
-    public string $name = 'Quaeris';
+    public string $name = 'healthcare_app';
 
     protected string $module_dir = __DIR__;
     protected string $module_ns = __NAMESPACE__;
@@ -323,7 +323,7 @@ trait SingletonTrait
 ```
 
 #### B. Separare BaseModel Responsibilities
-**File**: `Modules/Quaeris/app/Models/BaseModel.php`
+**File**: `Modules/healthcare_app/app/Models/BaseModel.php`
 ```php
 abstract class BaseModel extends Model implements ModelContract
 {
@@ -336,7 +336,7 @@ abstract class BaseModel extends Model implements ModelContract
 ```
 
 #### C. Implementare Repository Pattern
-**File**: `Modules/Quaeris/app/Repositories/SurveyFlipResponseRepository.php`
+**File**: `Modules/healthcare_app/app/Repositories/SurveyFlipResponseRepository.php`
 ```php
 class SurveyFlipResponseRepository
 {
@@ -397,10 +397,10 @@ try {
 
 #### B. Configuration Centralization
 ```php
-// config/Quaeris.php
+// config/healthcare_app.php
 return [
     'database' => [
-        'connection' => env('Quaeris_DB_CONNECTION', 'Quaeris'),
+        'connection' => env('healthcare_app_DB_CONNECTION', 'healthcare_app'),
     ],
     'limesurvey' => [
         'api' => [

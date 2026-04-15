@@ -65,7 +65,9 @@ Tutti i modelli devono estendere una delle classi base appropriate:
 │ Livello 3: Concrete Models                                 │
 │ - Modules/User/Models/Tenant                                │
 │ - Modules/User/Models/TeamUser                              │
-│ - Modules/Quaeris/Models/Contact                            │
+│ - Modules/healthcare_app/Models/Contact                            │
+│ - Modules/ModuloEsempio/Models/Contact                            │
+>>>>>>> .merge_file_flnzoR
 │                                                             │
 │ Implementano: Business logic, Relationships, Scopes         │
 └─────────────────────────────────────────────────────────────┘
@@ -190,7 +192,9 @@ abstract class BaseMorphPivot extends XotBaseMorphPivot
 
 **Scopo**:
 - Definire la connection specifica del modulo
-- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in Quaeris)
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in healthcare_app)
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ModuloEsempio)
+>>>>>>> .merge_file_flnzoR
 - Configurare casts specifici del modulo
 - Configurare eager loading predefinito (`$with`)
 
@@ -231,7 +235,9 @@ class Tenant extends BaseModel
 
 **Esempi**:
 - `Modules/User/Models/Tenant.php`
-- `Modules/Quaeris/Models/Contact.php`
+- `Modules/healthcare_app/Models/Contact.php`
+- `Modules/ModuloEsempio/Models/Contact.php`
+>>>>>>> .merge_file_flnzoR
 - `Modules/Cms/Models/Page.php`
 - `Modules/Geo/Models/GeoNamesCap.php`
 
@@ -347,7 +353,9 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
-- Namespace: `Modules\Quaeris\Models\*` → Connection: `Quaeris`
+- Namespace: `Modules\healthcare_app\Models\*` → Connection: `healthcare_app`
+- Namespace: `Modules\ModuloEsempio\Models\*` → Connection: `modulo_esempio`
+>>>>>>> .merge_file_flnzoR
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
 **Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
@@ -547,10 +555,15 @@ class ModelHasRole extends BaseMorphPivot
 }
 ```
 
-### Esempio 4: BaseModel con Traits Specifici (Quaeris Module)
+### Esempio 4: BaseModel con Traits Specifici (healthcare_app Module)
 
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
+### Esempio 4: BaseModel con Traits Specifici (ModuloEsempio Module)
+
+```php
+namespace Modules\ModuloEsempio\Models;
+>>>>>>> .merge_file_flnzoR
 
 use Modules\Xot\Models\XotBaseModel;
 use Modules\Xot\Contracts\ModelContract;
@@ -560,7 +573,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
-* Base Model per Quaeris module.
+ * Base Model per healthcare_app module.
+ * Base Model per ModuloEsempio module.
+>>>>>>> .merge_file_flnzoR
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -573,7 +588,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
     use HasExtraTrait;
     use InteractsWithMedia;
 
-protected $connection = 'Quaeris';
+    protected $connection = 'healthcare_app';
 
     // Eager load sempre la relazione extra
     protected $with = ['extra'];
@@ -583,7 +598,9 @@ protected $connection = 'Quaeris';
 Poi i modelli concreti ereditano tutto:
 
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
+namespace Modules\ModuloEsempio\Models;
+>>>>>>> .merge_file_flnzoR
 
 class Contact extends BaseModel
 {
@@ -643,7 +660,9 @@ protected $connection = 'user';  // ← Già ereditato da BaseModel
 
 ```php
 // ✅ CORRETTO - Aggiungere traits specifici in BaseModel
-// Modules/Quaeris/Models/BaseModel.php
+// Modules/healthcare_app/Models/BaseModel.php
+// Modules/ModuloEsempio/Models/BaseModel.php
+>>>>>>> .merge_file_flnzoR
 use InteractsWithMedia;
 use HasExtraTrait;
 
@@ -867,7 +886,9 @@ Tutti i modelli devono estendere una delle classi base appropriate:
 │ Livello 3: Concrete Models                                 │
 │ - Modules/User/Models/Tenant                                │
 │ - Modules/User/Models/TeamUser                              │
-│ - Modules/Quaeris/Models/Contact                            │
+│ - Modules/healthcare_app/Models/Contact                            │
+│ - Modules/ModuloEsempio/Models/Contact                            │
+>>>>>>> .merge_file_flnzoR
 │                                                             │
 │ Implementano: Business logic, Relationships, Scopes         │
 └─────────────────────────────────────────────────────────────┘
@@ -992,7 +1013,9 @@ abstract class BaseMorphPivot extends XotBaseMorphPivot
 
 **Scopo**:
 - Definire la connection specifica del modulo
-- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in Quaeris)
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in healthcare_app)
+- Aggiungere traits specifici del modulo (es: `InteractsWithMedia` in ModuloEsempio)
+>>>>>>> .merge_file_flnzoR
 - Configurare casts specifici del modulo
 - Configurare eager loading predefinito (`$with`)
 
@@ -1033,7 +1056,9 @@ class Tenant extends BaseModel
 
 **Esempi**:
 - `Modules/User/Models/Tenant.php`
-- `Modules/Quaeris/Models/Contact.php`
+- `Modules/healthcare_app/Models/Contact.php`
+- `Modules/ModuloEsempio/Models/Contact.php`
+>>>>>>> .merge_file_flnzoR
 - `Modules/Cms/Models/Page.php`
 - `Modules/Geo/Models/GeoNamesCap.php`
 
@@ -1149,7 +1174,9 @@ public function getConnectionName(): ?string
 ### Convenzione
 
 - Namespace: `Modules\User\Models\*` → Connection: `user`
-- Namespace: `Modules\Quaeris\Models\*` → Connection: `Quaeris`
+- Namespace: `Modules\healthcare_app\Models\*` → Connection: `healthcare_app`
+- Namespace: `Modules\ModuloEsempio\Models\*` → Connection: `modulo_esempio`
+>>>>>>> .merge_file_flnzoR
 - Namespace: `Modules\Cms\Models\*` → Connection: `cms`
 
 **Nota**: Attualmente `XotBaseModel` NON ha auto-discovery (vedi [DRY-KISS-ANALYSIS.md](./dry-kiss-analysis.md) per proposta di implementazione).
@@ -1349,10 +1376,15 @@ class ModelHasRole extends BaseMorphPivot
 }
 ```
 
-### Esempio 4: BaseModel con Traits Specifici (Quaeris Module)
+### Esempio 4: BaseModel con Traits Specifici (healthcare_app Module)
 
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
+### Esempio 4: BaseModel con Traits Specifici (ModuloEsempio Module)
+
+```php
+namespace Modules\ModuloEsempio\Models;
+>>>>>>> .merge_file_flnzoR
 
 use Modules\Xot\Models\XotBaseModel;
 use Modules\Xot\Contracts\ModelContract;
@@ -1362,7 +1394,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 /**
-* Base Model per Quaeris module.
+ * Base Model per healthcare_app module.
+ * Base Model per ModuloEsempio module.
+>>>>>>> .merge_file_flnzoR
  *
  * Aggiunge supporto per:
  * - Media Library (Spatie)
@@ -1375,7 +1409,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia, ModelContract
     use HasExtraTrait;
     use InteractsWithMedia;
 
-protected $connection = 'Quaeris';
+    protected $connection = 'healthcare_app';
 
     // Eager load sempre la relazione extra
     protected $with = ['extra'];
@@ -1385,7 +1419,9 @@ protected $connection = 'Quaeris';
 Poi i modelli concreti ereditano tutto:
 
 ```php
-namespace Modules\Quaeris\Models;
+namespace Modules\healthcare_app\Models;
+namespace Modules\ModuloEsempio\Models;
+>>>>>>> .merge_file_flnzoR
 
 class Contact extends BaseModel
 {
@@ -1445,7 +1481,9 @@ protected $connection = 'user';  // ← Già ereditato da BaseModel
 
 ```php
 // ✅ CORRETTO - Aggiungere traits specifici in BaseModel
-// Modules/Quaeris/Models/BaseModel.php
+// Modules/healthcare_app/Models/BaseModel.php
+// Modules/ModuloEsempio/Models/BaseModel.php
+>>>>>>> .merge_file_flnzoR
 use InteractsWithMedia;
 use HasExtraTrait;
 

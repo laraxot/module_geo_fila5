@@ -71,13 +71,7 @@ class MyTableWidget extends XotBaseTableWidget
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 namespace Modules\Quaeris\Filament\Widgets;
-=======
-namespace Modules\<nome progetto>\Filament\Widgets;
->>>>>>> laraxot/develop
 >>>>>>> 551c768c4 (.)
 
 use Filament\Forms\Components\DatePicker;
@@ -134,13 +128,7 @@ class QuestionChartFilterWidget extends XotBaseWidget
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 namespace Modules\Quaeris\Filament\Widgets;
-=======
-namespace Modules\<nome progetto>\Filament\Widgets;
->>>>>>> laraxot/develop
 >>>>>>> 551c768c4 (.)
 
 use Filament\Tables\Columns\TextColumn;
@@ -218,13 +206,7 @@ class QuestionChartDataWidget extends XotBaseTableWidget
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 namespace Modules\Quaeris\Filament\Widgets;
-=======
-namespace Modules\<nome progetto>\Filament\Widgets;
->>>>>>> laraxot/develop
 >>>>>>> 551c768c4 (.)
 
 use Filament\Widgets\ChartWidget;

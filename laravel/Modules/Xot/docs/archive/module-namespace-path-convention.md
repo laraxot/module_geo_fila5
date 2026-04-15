@@ -9,13 +9,13 @@ uno degli errori più comuni è la confusione tra il namespace nel codice php e 
 i file dei moduli devono sempre seguire questa struttura:
 
 ```
-/var/www/html/base_<nome progetto>/laravel/Modules/{NomeModulo}/app/{Tipo}/...
+Modules/{NomeModulo}/app/{Tipo}/...
 ```
 
 per esempio:
-- `/var/www/html/base_<nome progetto>/laravel/Modules/<nome progetto>/app/Filament/Resources/...`
-- `/var/www/html/base_<nome progetto>/laravel/Modules/<nome progetto>/app/Models/...`
-- `/var/www/html/base_<nome progetto>/laravel/Modules/<nome progetto>/app/Http/Controllers/...`
+- `Modules/<nome progetto>/app/Filament/Resources/...`
+- `Modules/<nome progetto>/app/Models/...`
+- `Modules/<nome progetto>/app/Http/Controllers/...`
 
 ### namespace corretto
 
@@ -35,7 +35,7 @@ per esempio:
 spesso si confonde il percorso fisico con il namespace, cercando file in:
 
 ```
-/var/www/html/base_<nome progetto>/laravel/Modules/{NomeModulo}/{Tipo}/...
+Modules/{NomeModulo}/{Tipo}/...
 ```
 
 questo è **errato** perché omette la directory `app/` nel percorso fisico.
@@ -49,8 +49,8 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 | namespace | percorso fisico |
 |-----------|----------------|
-| `Modules\<nome progetto>\Filament\Resources\DoctorResource` | `/var/www/html/base_<nome progetto>/laravel/Modules/<nome progetto>/app/Filament/Resources/DoctorResource.php` |
-| `Modules\User\Models\User` | `/var/www/html/base_<nome progetto>/laravel/Modules/User/app/Models/User.php` |
+| `Modules\<nome progetto>\Filament\Resources\DoctorResource` | `Modules/<nome progetto>/app/Filament/Resources/DoctorResource.php` |
+| `Modules\User\Models\User` | `Modules/User/app/Models/User.php` |
 
 ## come evitare l'errore
 
@@ -60,5 +60,5 @@ questo è **errato** perché omette la directory `app/` nel percorso fisico.
 
 ## linkback
 
-- [convenzioni di codice](/var/www/html/base_<nome progetto>/laravel/docs/conventions.md)
-- [struttura progetto](/var/www/html/base_<nome progetto>/laravel/docs/project-structure.md)
+- [convenzioni di codice](project_docs/conventions.md)
+- [struttura progetto](project_docs/project-structure.md)

@@ -1,28 +1,27 @@
 ---
-title: Wiki Index
-description: Catalogo del contenuto del modulo Xot
-tags:
-  - index
-  - navigation
-created: 2026-04-15
+module: Xot
+concept: Wiki Index
+last_updated: 2026-04-15
 ---
 
-# Wiki Index - Xot
+# Xot Module Wiki
 
-Catalogo di tutto il contenuto della wiki del modulo.
+Welcome to the **Xot** module knowledge base. This wiki is maintained by AI agents using the Karpathy pattern.
 
-## Entities
+## 🏗️ Core Architecture
+- [[Architecture]]: Overview of the modular system.
+- [[BaseModel]]: The sacred inheritance chain for Eloquent models.
+- [[XotBaseResource]]: Standardizing Filament resources.
+- [[Actions Over Services]]: The mandatory business logic pattern.
 
-<!-- Pagine entità: modelli, azioni, servizi -->
+## 🔧 Components & Traits
+- [[HasXotTable]]: Automatic table naming.
+- [[HasExtra]]: Schemaless metadata management.
+- [[Updater]]: Creation and update tracking.
 
-## Concepts
+## 🌐 Systems
+- [[Translation System]]: Automatic UI localization.
+- [[Database Architecture]]: Multi-module connection management.
 
-<!-- Pagine concetto: pattern, architettura, flussi -->
-
-## Sources
-
-<!-- Riferimenti documentazione esterna -->
-
-## Recent Updates
-
-Vedi [log.md](./log.md) per cronologia completa.
+---
+**Main Project Wiki:** [[Project Home]]

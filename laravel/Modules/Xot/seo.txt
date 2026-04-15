@@ -1,3 +1,7 @@
+# seo
+
+<!-- Contenuto migrato da _docs/seo.txt -->
+
 Now Let's see Some Laravel SEO Packages
 
 6. Laravel Meta Manager

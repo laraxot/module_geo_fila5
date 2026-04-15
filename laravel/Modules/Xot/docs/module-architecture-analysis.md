@@ -36,7 +36,9 @@
 - Multi-tenant aware models
 - Social authentication integration
 
-#### 3. **Quaeris Module - Business Core**
+#### 3. **healthcare_app Module - Business Core**
+#### 3. **ExternalProject Module - Business Core**
+>>>>>>> .merge_file_mjdk5z
 **Role**: Survey management, reporting, analytics
 **Priority**: 0 (Standard priority)
 **Dependencies**: Xot, User, Geo, Media
@@ -228,7 +230,9 @@
 #### 15. **Limesurvey Module - External Integration**
 **Role**: Limesurvey integration, survey synchronization
 **Priority**: 0 (Standard priority)
-**Dependencies**: Xot, Quaeris
+**Dependencies**: Xot, healthcare_app
+**Dependencies**: Xot, ExternalProject
+>>>>>>> .merge_file_mjdk5z
 
 **Key Components**:
 - `LimeSurvey`, `LimeQuestion` models
@@ -276,7 +280,9 @@
 Xot (Foundation)
 ├── User (Security)
 │   └── Tenant (Multi-tenancy)
-├── Quaeris (Business Core)
+├── healthcare_app (Business Core)
+├── ExternalProject (Business Core)
+>>>>>>> .merge_file_mjdk5z
 │   ├── Geo (Locations)
 │   ├── Media (Files)
 │   └── Limesurvey (External Integration)
@@ -385,7 +391,9 @@ public function register(): void
 #### ⚠️ Needs Attention
 - **Cms**: Mixed file structure issues
 - **UI**: Mixed test structure issues
-- **Quaeris**: Missing module.json description
+- **healthcare_app**: Missing module.json description
+- **ExternalProject**: Missing module.json description
+>>>>>>> .merge_file_mjdk5z
 
 #### 🔧 Technical Debt
 - **Translation consistency**: Some .navigation placeholders
@@ -396,7 +404,9 @@ public function register(): void
 
 #### High-Usage Modules
 - **User**: Authentication checks on every request
-- **Quaeris**: Survey processing and reporting
+- **healthcare_app**: Survey processing and reporting
+- **ExternalProject**: Survey processing and reporting
+>>>>>>> .merge_file_mjdk5z
 - **Media**: File uploads and conversions
 - **Job**: Background processing
 

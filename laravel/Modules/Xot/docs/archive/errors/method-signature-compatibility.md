@@ -97,7 +97,7 @@ class XotBasePage extends BasePage
     {
         return $this->resolveView();
     }
-    
+
     // Nuovo metodo statico con nome diverso
     public static function resolveViewPath(): string
     {
@@ -123,5 +123,5 @@ $returnType = $parentMethod->getReturnType();
 
 ## collegamento ad altre risorse
 
-- [regole di ereditarietà in php](/var/www/html/base_<nome progetto>/laravel/docs/standards/php-inheritance-rules.md)
-- [estensione pattern filament](/var/www/html/base_<nome progetto>/laravel/Modules/Xot/docs/filament_extension_pattern.md)
+- [regole di ereditarietà in php](project_docs/standards/php-inheritance-rules.md)
+- [estensione pattern filament](modules/xot/project_docs/filament_extension_pattern.md)

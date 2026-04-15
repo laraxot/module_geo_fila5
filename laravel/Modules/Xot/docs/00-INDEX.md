@@ -63,6 +63,12 @@ docs/
 |------|-------------|------|
 | XotBaseTableWidget | Table widget base per TUTTI i moduli | [Source](../app/Filament/Widgets/XotBaseTableWidget.php) |
 | XotBaseWidget | Widget base per tutti i moduli | [Source](../app/Filament/Widgets/XotBaseWidget.php) |
+| XotBaseWizardWidget | Base dedicata ai widget con `Wizard` / `Step` Filament, query-step policy e normalizzazione stato wrapper | [Doc](./filament/widgets/xot-base-wizard-widget.md) |
+
+### Filament — pagine resource (pannello)
+| File | Descrizione | Link |
+|------|-------------|------|
+| CreateRecord (Filament) | Pipeline `create()`, hook, eventi, differenza vs wizard frontoffice | [Doc](./filament/pages/create-record-page.md) |
 
 ### Traits
 | File | Descrizione | Link |

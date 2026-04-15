@@ -6,7 +6,7 @@ la classe `XotBasePage` è una classe base astratta per tutte le pagine filament
 ## struttura
 la classe `XotBasePage` estende `Filament\Pages\Page` e si trova in:
 ```
-/var/www/html/base_<nome progetto>/laravel/Modules/Xot/app/Filament/Pages/XotBasePage.php
+Modules/Xot/app/Filament/Pages/XotBasePage.php
 ```
 
 ## namespace
@@ -78,9 +78,9 @@ use Filament\Forms\Components\Select;
 class DashboardSettings extends XotBasePage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog';
-    
+
     protected static string $view = '<nome progetto>::filament.pages.dashboard-settings';
-    
+
     protected function getFormFields(): array
     {
         return [
@@ -103,7 +103,7 @@ class DashboardSettings extends XotBasePage
             ]
         ];
     }
-    
+
     public function submit(): void
     {
         $this->form->validate();
@@ -172,8 +172,8 @@ class DashboardSettingsPolicy
 - wizard personalizzati
 
 ## collegamento ad altre documentazioni
-- [pattern di estensione filament](/var/www/html/base_<nome progetto>/laravel/Modules/Xot/docs/filament_extension_pattern.md)
-- [best practices filament](/var/www/html/base_<nome progetto>/laravel/Modules/<nome progetto>/docs/filament-best-practices.md)
+- [pattern di estensione filament](modules/xot/project_docs/filament_extension_pattern.md)
+- [best practices filament](modules/<nome progetto>/project_docs/filament-best-practices.md)
 
 ## ATTENZIONE: errori critici da evitare
 - NON dichiarare mai abstract getFormSchema() in XotBasePage: la classe base Filament lo implementa già. Fornire sempre una implementazione di default (array vuoto).

@@ -1,41 +1,32 @@
-# Wiki Locale - Module Activity
+---
+title: "Wiki Index"
+module: "Activity"
+updated: "2026-04-15T08:28:40Z"
+---
 
-## Schema di Riferimento
+# Wiki Index — Activity
 
-Vedi [[../../../../docs/.schema/WIKI_SCHEMA.md|Schema Wiki Globale]]
+> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
+> **Replaces embedding-based RAG at moderate scale (~100 sources).**
 
-## Struttura Locale
+## Concepts
 
-```
-wiki/
-├── concepts/       # Pattern e metodologie (tracking, audit trail)
-├── entities/       # Classi e componenti Activity
-├── summaries/      # Sommari documenti raw
-├── comparisons/    # Confronti implementazioni
-└── overviews/      # Panoramiche area tematica
-```
+_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
 
-## Raw Sources (docs/ del modulo)
+## Entities
 
-Documenti chiave da ingerire:
-- `../README.md` — panoramica modulo
-- `../BUSINESS_LOGIC_ANALYSIS.md` — logica di business
-- `../CODE_QUALITY_ANALYSIS.md` — qualità codice
-- `../USER_RESEARCH.md` — ricerca utenti
-- `../PRODUCT_ROADMAP.md` — roadmap
+_No entities tracked yet._
 
-## Index Globale
+## Sources
 
-Vedi [[../../../../docs/wiki/index|Index Globale Wiki]]
+_No sources ingested yet._
 
-## Pagine Compilate
+## Comparisons
 
-*Nessuna ancora — da ingerire.*
-
-| Pagina | Tipo | Raw source | Data |
-|--------|------|------------|------|
-| — | — | — | — |
+_No comparisons synthesized yet._
 
 ---
 
-*Ultimo aggiornamento: 2026-04-15*
+**Last Updated:** 2026-04-15T08:28:40Z  
+**Total Pages:** 0  
+**Total Raw Sources:** 0

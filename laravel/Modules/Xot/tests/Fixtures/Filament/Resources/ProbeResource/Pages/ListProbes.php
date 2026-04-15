@@ -9,5 +9,5 @@ use Modules\Xot\Tests\Fixtures\Filament\Resources\ProbeResource;
 
 class ListProbes extends ListRecords
 {
-    public static string $resource = ProbeResource::class;
+    protected static string $resource = ProbeResource::class;
 }

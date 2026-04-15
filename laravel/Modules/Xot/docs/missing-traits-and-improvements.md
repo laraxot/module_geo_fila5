@@ -693,8 +693,11 @@ class LimeJsonService
     // Rimuovere getInstance() e make() duplicati
 }
 
-// QuaerisService.php
-class QuaerisService
+// healthcare_appService.php
+class healthcare_appService
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 
@@ -1167,8 +1170,11 @@ class LimeJsonService
     // Mantenere solo la logica specifica
 }
 
-// QuaerisService.php
-class QuaerisService
+// healthcare_appService.php
+class healthcare_appService
+// ModuloEsempioService.php
+class ModuloEsempioService
+>>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 

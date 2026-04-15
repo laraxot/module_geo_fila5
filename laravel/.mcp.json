@@ -75,6 +75,13 @@
                 "--repository",
                 "${PWD}"
             ]
+        },
+        "qmd": {
+            "command": "qmd",
+            "args": [
+                "mcp",
+                "${PWD}/docs"
+            ]
         }
     }
 }

@@ -763,13 +763,13 @@ protected function getData(): array
 ### PHPStan Level 10 Compliance
 ```bash
 # ✅ Zero errori dopo refactoring
-./vendor/bin/phpstan analyse Modules/Quaeris/app/Filament/Widgets/SimpleChartWidget.php --memory-limit=-1 --level=10
+./vendor/bin/phpstan analyse Modules/healthcare_app/app/Filament/Widgets/SimpleChartWidget.php --memory-limit=-1 --level=10
 ```
 
 ### Testing Coverage
 ```bash
 # ✅ 100% coverage per metodi principali
-./vendor/bin/phpunit --coverage-html=coverage Modules/Quaeris/tests/Unit/SimpleChartWidgetTest.php
+./vendor/bin/phpunit --coverage-html=coverage Modules/healthcare_app/tests/Unit/SimpleChartWidgetTest.php
 ```
 
 ### Performance Metrics

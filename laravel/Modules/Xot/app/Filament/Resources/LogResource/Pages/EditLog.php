@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditLog extends XotBaseEditRecord
 {
-    public static string $resource = LogResource::class;
+    protected static string $resource = LogResource::class;
 }

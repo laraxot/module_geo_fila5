@@ -262,6 +262,5 @@ The Xot module is the foundation of the entire Laraxot architecture. It needs co
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

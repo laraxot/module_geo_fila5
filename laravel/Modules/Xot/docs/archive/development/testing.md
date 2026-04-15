@@ -6,23 +6,23 @@
 
 ## Pest Testing
 ```txt
-${cat /mnt/f/var/www/Quaeris/laravel/Modules/Xot/_docs/_pest.txt}
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/_pest.txt}
 ```
 
 ## Static Analysis
 ```txt
-${cat /mnt/f/var/www/Quaeris/laravel/Modules/Xot/_docs/static-analysis-tools.txt}
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/static-analysis-tools.txt}
 ```
 
 ## Code Analysis Tools
 ```txt
-${cat /mnt/f/var/www/Quaeris/laravel/Modules/Xot/_docs/__php-code-analysis-tools.txt}
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/__php-code-analysis-tools.txt}
 ```
 
 ## PHPStan
 ```txt
-${cat /mnt/f/var/www/Quaeris/laravel/Modules/Xot/_docs/phpstan.txt}
-${cat /mnt/f/var/www/Quaeris/laravel/Modules/Xot/_docs/phpstan_error.txt}
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/phpstan.txt}
+${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/phpstan_error.txt}
 ```
 ### Versione HEAD
 

@@ -248,6 +248,5 @@ The Notify module needs a robust multi-channel notification system for sending m
 
 ---
 
-**Created**: 2026-01-31
 **Status**: Pending
 **Assignee**: TBD

@@ -20,7 +20,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListLogs extends XotBaseListRecords
 {
-    public static string $resource = LogResource::class;
+    protected static string $resource = LogResource::class;
 
     #[\Override]
     public function getTableColumns(): array

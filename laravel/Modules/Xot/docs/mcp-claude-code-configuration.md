@@ -2,7 +2,9 @@
 
 ## Panoramica
 
-Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto Quaeris Fila4 Mono.
+Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto healthcare_app Fila4 Mono.
+Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto.
+>>>>>>> .merge_file_nWfXWo
 
 ## Prerequisiti
 
@@ -17,7 +19,9 @@ Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida desc
 Permette l'accesso ai file del progetto.
 
 ```bash
-claude mcp add --transport http filesystem-Quaeris http://localhost:8000/mcp/filesystem
+claude mcp add --transport http filesystem-healthcare_app http://localhost:8000/mcp/filesystem
+claude mcp add --transport http filesystem http://localhost:8000/mcp/filesystem
+>>>>>>> .merge_file_nWfXWo
 ```
 
 **Nota**: Richiede un server MCP HTTP in esecuzione. Per sviluppo locale, utilizzare server STDIO invece.
@@ -27,7 +31,7 @@ claude mcp add --transport http filesystem-Quaeris http://localhost:8000/mcp/fil
 Permette chiamate HTTP e API.
 
 ```bash
-claude mcp add --transport http fetch-Quaeris http://localhost:8000/mcp/fetch
+claude mcp add --transport http fetch-healthcare_app http://localhost:8000/mcp/fetch
 ```
 
 ### 3. Memory Server
@@ -35,7 +39,7 @@ claude mcp add --transport http fetch-Quaeris http://localhost:8000/mcp/fetch
 Memoria temporanea per contesto tra richieste.
 
 ```bash
-claude mcp add --transport http memory-Quaeris http://localhost:8000/mcp/memory
+claude mcp add --transport http memory-healthcare_app http://localhost:8000/mcp/memory
 ```
 
 ### 4. MySQL Server
@@ -43,7 +47,7 @@ claude mcp add --transport http memory-Quaeris http://localhost:8000/mcp/memory
 Interazione con database MySQL.
 
 ```bash
-claude mcp add --transport http mysql-Quaeris http://localhost:8000/mcp/mysql
+claude mcp add --transport http mysql-healthcare_app http://localhost:8000/mcp/mysql
 ```
 
 **Variabili d'ambiente richieste**:
@@ -58,7 +62,7 @@ claude mcp add --transport http mysql-Quaeris http://localhost:8000/mcp/mysql
 Analisi codice e ottimizzazione.
 
 ```bash
-claude mcp add --transport http sequential-thinking-Quaeris http://localhost:8000/mcp/sequential-thinking
+claude mcp add --transport http sequential-thinking-healthcare_app http://localhost:8000/mcp/sequential-thinking
 ```
 
 ## Configurazione con Server STDIO (Raccomandato)
@@ -68,13 +72,13 @@ Per sviluppo locale, è preferibile utilizzare server STDIO invece di HTTP:
 ### Filesystem con STDIO
 
 ```bash
-claude mcp add filesystem-Quaeris npx -y @modelcontextprotocol/server-filesystem server-memory
+claude mcp add filesystem-healthcare_app npx -y @modelcontextprotocol/server-filesystem server-memory
 ```
 
 ### MySQL con STDIO
 
 ```bash
-claude mcp add mysql-Quaeris npx -y @modelcontextprotocol/server-mysql
+claude mcp add mysql-healthcare_app npx -y @modelcontextprotocol/server-mysql
 ```
 
 **Con variabili d'ambiente**:
@@ -85,7 +89,7 @@ export DB_USERNAME=your_username
 export DB_PASSWORD=your_password
 export DB_DATABASE=your_database
 
-claude mcp add mysql-Quaeris npx -y @modelcontextprotocol/server-mysql
+claude mcp add mysql-healthcare_app npx -y @modelcontextprotocol/server-mysql
 ```
 
 ## Gestione Server
@@ -99,13 +103,13 @@ claude mcp list
 ### Rimozione Server
 
 ```bash
-claude mcp remove filesystem-Quaeris
+claude mcp remove filesystem-healthcare_app
 ```
 
 ### Test Connessione
 
 ```bash
-claude mcp test filesystem-Quaeris
+claude mcp test filesystem-healthcare_app
 ```
 
 ## Configurazione Avanzata
@@ -116,7 +120,7 @@ Per server MCP personalizzati, creare uno script wrapper:
 
 ```bash
 #!/bin/bash
-# ~/bin/mcp-mysql-Quaeris.sh
+# ~/bin/mcp-mysql-healthcare_app.sh
 
 export MYSQL_HOST="${DB_HOST:-localhost}"
 export MYSQL_PORT="${DB_PORT:-3306}"
@@ -130,8 +134,8 @@ exec npx -y @modelcontextprotocol/server-mysql
 Poi aggiungere il server:
 
 ```bash
-chmod +x ~/bin/mcp-mysql-Quaeris.sh
-claude mcp add mysql-Quaeris ~/bin/mcp-mysql-Quaeris.sh
+chmod +x ~/bin/mcp-mysql-healthcare_app.sh
+claude mcp add mysql-healthcare_app ~/bin/mcp-mysql-healthcare_app.sh
 ```
 
 ## Troubleshooting

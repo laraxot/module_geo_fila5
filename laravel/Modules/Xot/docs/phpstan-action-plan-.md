@@ -3,14 +3,14 @@
 ## Executive Summary
 
 **Total Issues Identified:** 744 PHPStan errors
-**Critical Modules:** Chart, Quaeris
+**Critical Modules:** Chart, healthcare_app
 **Status:** 🔴 **Requires Immediate Action**
 
 ## Quick Start Guide
 
 ### Immediate Actions (Today)
 1. **Add Safe function imports** to all problematic files
-2. **Comment out quantum code** in Quaeris module
+2. **Comment out quantum code** in healthcare_app module
 3. **Run PHPStan again** to verify progress
 
 ### Week 1 Goals
@@ -32,7 +32,7 @@
 Modules/Chart/app/Actions/ChartJs/ExportToSvgAction.php
 Modules/Chart/app/Actions/ExportChartToPngAction.php
 Modules/Chart/app/Actions/ExportChartToSvgAction.php
-Modules/Quaeris/app/Actions/Charts/Export/Concerns/HandlesChartWidgetData.php
+Modules/healthcare_app/app/Actions/Charts/Export/Concerns/HandlesChartWidgetData.php
 # ... and others identified in analysis
 ```
 
@@ -50,7 +50,7 @@ use function Safe\htmlspecialchars;
 #### Task 1.2: Quantum Code Stabilization
 **Priority:** 🔴 CRITICAL
 **Estimated Time:** 1-2 hours
-**Files:** Quaeris quantum actions
+**Files:** healthcare_app quantum actions
 
 **Options:**
 1. **Comment out** quantum features temporarily
@@ -225,7 +225,7 @@ class ChartDataValidator
 - [Safe Library Documentation](https://github.com/thecodingmachine/safe)
 - [PHPStan Configuration](../phpstan.neon)
 - [Chart Module Documentation](../Chart/docs/)
-- [Quaeris Module Documentation](../Quaeris/docs/)
+- [healthcare_app Module Documentation](../healthcare_app/docs/)
 
 ## Emergency Procedures
 

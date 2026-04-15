@@ -759,7 +759,9 @@ class ConnectionManagerService
     public static function getConnectionForModule(string $module): string
     {
         return match($module) {
-'Quaeris' => 'Quaeris',
+            'healthcare_app' => 'healthcare_app',
+            'ExternalProject' => '<nome progetto>',
+>>>>>>> .merge_file_szY6ZB
             'User' => 'user',
             'Notify' => 'notify',
             default => 'mysql'
@@ -842,14 +844,18 @@ class ContactValidationService
 **Solution**: Strategy pattern con interfaces
 
 ```php
-// Modules/Quaeris/Contracts/ChartRendererContract.php
+// Modules/healthcare_app/Contracts/ChartRendererContract.php
+// Modules/ExternalProject/Contracts/ChartRendererContract.php
+>>>>>>> .merge_file_szY6ZB
 interface ChartRendererContract
 {
     public function supports(string $type): bool;
     public function render(array $data, array $config): string;
 }
 
-// Modules/Quaeris/Services/Chart/Renderers/PieChartRenderer.php
+// Modules/healthcare_app/Services/Chart/Renderers/PieChartRenderer.php
+// Modules/ExternalProject/Services/Chart/Renderers/PieChartRenderer.php
+>>>>>>> .merge_file_szY6ZB
 class PieChartRenderer implements ChartRendererContract
 {
     public function supports(string $type): bool
@@ -1015,7 +1021,9 @@ $contacts = Contact::forContext('dashboard')->get(); // Optimized loading
 **Solution**: Chunking e memory management
 
 ```php
-// Modules/Quaeris/Services/BulkProcessingService.php
+// Modules/healthcare_app/Services/BulkProcessingService.php
+// Modules/ExternalProject/Services/BulkProcessingService.php
+>>>>>>> .merge_file_szY6ZB
 class BulkProcessingService
 {
     public function processLargeDataset(\Closure $processor, Builder $query, int $chunkSize = 1000): void

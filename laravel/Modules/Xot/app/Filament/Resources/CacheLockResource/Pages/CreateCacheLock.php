@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateCacheLock extends XotBaseCreateRecord
 {
-    public static string $resource = CacheLockResource::class;
+    protected static string $resource = CacheLockResource::class;
 }

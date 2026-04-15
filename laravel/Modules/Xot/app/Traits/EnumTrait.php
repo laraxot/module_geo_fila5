@@ -15,22 +15,22 @@ trait EnumTrait
 
     public function getLabel(): string
     {
-        return $this->transClass(static::class, $this->value.'.label');
+        return $this->transClass(static::class, 'values.'.$this->value.'.label');
     }
 
     public function getColor(): string
     {
-        return $this->transClass(static::class, $this->value.'.color');
+        return $this->transClass(static::class, 'values.'.$this->value.'.color');
     }
 
     public function getIcon(): string
     {
-        return $this->transClass(static::class, $this->value.'.icon');
+        return $this->transClass(static::class, 'values.'.$this->value.'.icon');
     }
 
     public function getDescription(): string
     {
-        return $this->transClass(static::class, $this->value.'.description');
+        return $this->transClass(static::class, 'values.'.$this->value.'.description');
     }
 
     /**

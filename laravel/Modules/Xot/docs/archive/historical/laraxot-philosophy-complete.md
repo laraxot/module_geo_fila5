@@ -49,7 +49,7 @@ Xot (Core Engine)
 - **PHP 8.3.27** - Modern PHP with strict typing
 - **Laravel 12.38.1** - Latest Laravel framework
 - **Filament 4.2.2** - Admin panel framework
-- **Livewire 3.6.4** - Reactive UI components
+- **Livewire 4.6.4** - Reactive UI components
 - **MySQL** - Primary database
 - **TailwindCSS 3.4.17** - Utility-first CSS
 

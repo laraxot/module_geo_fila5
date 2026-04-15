@@ -98,7 +98,7 @@ Le connessioni per i moduli (notify, geo, media, etc.) vengono create **automati
 
 ### Database
 - `DB_CONNECTION=mysql`: Usa MySQL per i test
-- Database con suffisso "_test" (es. `Quaeris_data_test`, `Quaeris_user_test`)
+- Database con suffisso "_test" (es. `healthcare_app_data_test`, `healthcare_app_user_test`)
 - **MAI** usare SQLite per i test, nemmeno per convenienza
 
 ### Motivazione
@@ -198,7 +198,7 @@ protected function setUp(): void
 $moduleConnections = [
     'user', 'notify', 'geo', 'media', 'job', 'xot',
     'activity', 'cms', 'gdpr', 'lang', 'meetup', 'seo', 'tenant',
-'Quaeris', 'limesurvey',
+    'healthcare_app', 'limesurvey',
 ];
 
 foreach ($moduleConnections as $connection) {

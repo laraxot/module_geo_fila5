@@ -32,3 +32,5 @@ test('StoredEvent model has correct connection', function () {
 
     expect($storedEvent->getConnectionName())->toBeString();
 });
+
+ 

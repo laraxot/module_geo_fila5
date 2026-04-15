@@ -58,8 +58,18 @@ class FixStructureTest extends TestCase
     public function testMoveToAppFunctionality(): void
     {
         // Creiamo una struttura di directory di test
+<<<<<<< HEAD
         mkdir($this->testDir.'/Actions', 0o755, true);
         file_put_contents($this->testDir.'/Actions/test.php', 'echo "test";');
+=======
+<<<<<<< HEAD
+        mkdir($this->testDir.'/Actions', 0o755, true);
+        file_put_contents($this->testDir.'/Actions/test.php', 'echo "test";');
+=======
+        mkdir($this->testDir . '/Actions', 0o755, true);
+        file_put_contents($this->testDir . '/Actions/test.php', 'echo "test";');
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 
         // Copiamo lo script nella directory di test
         $script = base_path('../bashscripts/fix_structure.sh');
@@ -80,8 +90,18 @@ class FixStructureTest extends TestCase
     public function testRenameToLowerFunctionality(): void
     {
         // Creiamo una struttura di directory di test
+<<<<<<< HEAD
         mkdir($this->testDir.'/Config', 0o755, true);
         file_put_contents($this->testDir.'/Config/test.php', 'echo "test";');
+=======
+<<<<<<< HEAD
+        mkdir($this->testDir.'/Config', 0o755, true);
+        file_put_contents($this->testDir.'/Config/test.php', 'echo "test";');
+=======
+        mkdir($this->testDir . '/Config', 0o755, true);
+        file_put_contents($this->testDir . '/Config/test.php', 'echo "test";');
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 
         // Copiamo lo script nella directory di test
         $script = base_path('../bashscripts/fix_structure.sh');
@@ -102,11 +122,27 @@ class FixStructureTest extends TestCase
     public function testMoveConfigFunctionality(): void
     {
         // Creiamo una struttura di directory di test con entrambe le versioni
+<<<<<<< HEAD
         mkdir($this->testDir.'/Config', 0o755, true);
         file_put_contents($this->testDir.'/Config/main.php', 'echo "main";');
 
         mkdir($this->testDir.'/config', 0o755, true);
         file_put_contents($this->testDir.'/config/secondary.php', 'echo "secondary";');
+=======
+<<<<<<< HEAD
+        mkdir($this->testDir.'/Config', 0o755, true);
+        file_put_contents($this->testDir.'/Config/main.php', 'echo "main";');
+
+        mkdir($this->testDir.'/config', 0o755, true);
+        file_put_contents($this->testDir.'/config/secondary.php', 'echo "secondary";');
+=======
+        mkdir($this->testDir . '/Config', 0o755, true);
+        file_put_contents($this->testDir . '/Config/main.php', 'echo "main";');
+
+        mkdir($this->testDir . '/config', 0o755, true);
+        file_put_contents($this->testDir . '/config/secondary.php', 'echo "secondary";');
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 
         // Copiamo lo script nella directory di test
         $script = base_path('../bashscripts/fix_structure.sh');

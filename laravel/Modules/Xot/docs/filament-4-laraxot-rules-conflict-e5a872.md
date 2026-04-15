@@ -20,10 +20,15 @@ class MyPage extends XotBaseViewRecord
 ### 2. **Struttura Namespace Corretta**
 ```php
 // ✅ CORRETTO
-namespace Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
 
 // ❌ SBAGLIATO
-namespace Modules\Quaeris\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\healthcare_app\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+
+// ❌ SBAGLIATO
+namespace Modules\ExternalProject\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> .merge_file_0Ph2Jq
 ```
 
 ### 3. **Uso di Schema invece di Form**
@@ -69,7 +74,9 @@ class MyWidget extends Widget implements HasForms
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> .merge_file_0Ph2Jq
 
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
@@ -92,7 +99,9 @@ class ViewQuestionChart extends XotBaseViewRecord
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
+namespace Modules\ExternalProject\Filament\Widgets;
+>>>>>>> .merge_file_0Ph2Jq
 
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
@@ -157,10 +166,15 @@ public function getFormSchema(): array
 ### 3. **Namespace Errati**
 ```php
 // ❌ SBAGLIATO
-namespace Modules\Quaeris\App\Filament\Widgets;
+namespace Modules\healthcare_app\App\Filament\Widgets;
 
 // ✅ CORRETTO
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
+namespace Modules\ExternalProject\App\Filament\Widgets;
+
+// ✅ CORRETTO
+namespace Modules\ExternalProject\Filament\Widgets;
+>>>>>>> .merge_file_0Ph2Jq
 ```
 
 ## 🔧 Implementazione Corretta
@@ -171,12 +185,16 @@ namespace Modules\Quaeris\Filament\Widgets;
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> .merge_file_0Ph2Jq
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
-use Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+use Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+use Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+>>>>>>> .merge_file_0Ph2Jq
 
 class ViewQuestionChart extends XotBaseViewRecord
 {
@@ -220,7 +238,9 @@ class ViewQuestionChart extends XotBaseViewRecord
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
+namespace Modules\ExternalProject\Filament\Widgets;
+>>>>>>> .merge_file_0Ph2Jq
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;

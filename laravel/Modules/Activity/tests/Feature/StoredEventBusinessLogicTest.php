@@ -11,15 +11,6 @@ use Modules\Activity\Models\StoredEvent;
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
-beforeEach(function () {
-    // Skip if database not available
-    try {
-        \DB::connection()->getPdo();
-    } catch (\Exception $e) {
-        $this->markTestSkipped('Database not available: '.$e->getMessage());
-    }
-});
-
 it('can create stored event with basic information', function (): void {
     $eventData = [
         'aggregate_uuid' => Str::uuid()->toString(),
@@ -40,7 +31,7 @@ it('can create stored event with basic information', function (): void {
 
     $storedEvent = StoredEvent::create($eventData);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('aggregate_uuid', $eventData['aggregate_uuid'])
@@ -120,7 +111,7 @@ it('can create stored event with complex properties', function (): void {
         'created_at' => now(),
     ]);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('event_class', 'App\\Events\\OrderPlaced')
@@ -194,9 +185,9 @@ it('can manage event versioning', function (): void {
         'created_at' => now(),
     ]);
 
-    $this->assertTrue(DB::connection()->table('stored_events')->where('id', $event1->id)->exists());
-    $this->assertTrue(DB::connection()->table('stored_events')->where('id', $event2->id)->exists());
-    $this->assertTrue(DB::connection()->table('stored_events')->where('id', $event3->id)->exists());
+    $this->assertTrue(DB::connection('activity')->table('stored_events')->where('id', $event1->id)->exists());
+    $this->assertTrue(DB::connection('activity')->table('stored_events')->where('id', $event2->id)->exists());
+    $this->assertTrue(DB::connection('activity')->table('stored_events')->where('id', $event3->id)->exists());
     // Verifica che tutti gli eventi abbiano lo stesso UUID ma versioni diverse
     $this->assertSame($aggregateUuid, $event1->aggregate_uuid);
     $this->assertSame($aggregateUuid, $event2->aggregate_uuid);
@@ -331,7 +322,7 @@ it('can handle event with empty properties', function (): void {
         'created_at' => now(),
     ]);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('event_class', 'App\\Events\\EmptyEvent')
@@ -352,7 +343,7 @@ it('can handle event with null properties', function (): void {
         'created_at' => now(),
     ]);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('event_class', 'App\\Events\\NullEvent')
@@ -458,7 +449,7 @@ it('can handle event with timestamps', function (): void {
         'created_at' => $now,
     ]);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('created_at', $now->toDateTimeString())
@@ -551,7 +542,7 @@ it('can handle event with metadata', function (): void {
         'created_at' => now(),
     ]);
 
-    $exists = DB::connection()
+    $exists = DB::connection('activity')
         ->table('stored_events')
         ->where('id', $storedEvent->id)
         ->where('event_class', 'App\\Events\\BulkImportCompleted')

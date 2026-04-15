@@ -4,7 +4,7 @@ Questo documento traccia gli errori PHPStan di livello 7 identificati nel modulo
 
 ## Errori Identificati
 
-### 1. Errore in helpers/Helper.php
+### 1. Errore in Helpers/Helper.php
 
 ```
 Line 406: Call to function is_array() with array{0?: string, 1?: 'container'|'item', 2?: numeric-string} will always evaluate to true.
@@ -180,7 +180,7 @@ Line 146: Offset 1 on array{list<string>, list<string>} in isset() always exists
 
 ## Soluzioni Implementate
 
-### 1. Correzione in helpers/Helper.php
+### 1. Correzione in Helpers/Helper.php
 
 Il problema è che PHPStan rileva che la chiamata a `is_array($matches)` sarà sempre vera perché `$matches` è già tipizzato come array. Abbiamo modificato il controllo per verificare se l'array non è vuoto invece di verificare se è un array:
 
@@ -209,19 +209,19 @@ private function getComponentName(Field|Component $component): string
     if (method_exists($component, 'getName')) {
         return $component->getName();
     }
-    
+
     // Per i componenti generali di Filament che hanno getStatePath
     if (method_exists($component, 'getStatePath')) {
         return $component->getStatePath();
     }
-    
+
     // Fallback a reflection per altri casi
     $reflectionClass = new \ReflectionClass($component);
     if ($reflectionClass->hasProperty('name') && $reflectionClass->getProperty('name')->isPublic()) {
         $property = $reflectionClass->getProperty('name');
         return (string) $property->getValue($component);
     }
-    
+
     // Ultima risorsa
     return class_basename($component);
 }
@@ -655,7 +655,7 @@ private function exportTablesToCSV(string $mdbFile): void
 // Dopo:
 /**
  * Esporta tutte le tabelle dal file .mdb in formato CSV.
- * 
+ *
  * @return string[] Array di nomi di tabelle esportate
  */
 private function exportTablesToCSV(string $mdbFile): array
@@ -781,7 +781,7 @@ L'errore riguardava il tipo di ritorno del metodo `getProfileClass()`, che era d
 public function getProfileClass(): string
 {
     // ... implementazione ...
-    
+
     /** @var class-string<\Illuminate\Database\Eloquent\Model&\Modules\Xot\Contracts\ProfileContract> */
     return $class;
 }
@@ -806,7 +806,7 @@ L'errore riguardava la proprietà $listeners che, secondo PHPStan, non aveva un 
 ```php
 /**
  * Livewire event listeners for this component.
- * 
+ *
  * @var array<string, string>
  * @phpstan-var array<string, string>
  */
@@ -825,4 +825,3 @@ L'aggiunta dell'annotazione `@phpstan-var` fornisce a PHPStan un'informazione pi
 * [phpstan_fixes.md](../../../User/project_docs/phpstan_fixes.md)
 * [phpstan_fixes.md](../../../UI/project_docs/phpstan_fixes.md)
 * [phpstan_fixes.md](../../../Media/project_docs/phpstan_fixes.md)
-

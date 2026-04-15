@@ -1,39 +1,32 @@
 ---
-title: Wiki Index
-description: Catalogo di tutto il contenuto della wiki
-tags:
-  - index
-  - navigation
-created: 2026-04-15
+title: "Wiki Index"
+module: "ptvx-project"
+updated: "2026-04-15T08:28:52Z"
 ---
 
-# Wiki Index
+# Wiki Index — ptvx-project
 
-Questo file è il catalogo di tutto il contenuto della wiki.
-
-## Moduli
-
-- [Activity](./modules/activity.md)
-- [User](./modules/user.md)
-- [UI](./modules/ui.md)
-- [Lang](./modules/lang.md)
-- [Sigma](./modules/sigma.md)
-- [Setting](./modules/setting.md)
-- [Seo](./modules/seo.md)
-- [Questionari](./modules/questionari.md)
-- [Ptv](./modules/ptv.md)
-- [Prenotazioni](./modules/prenotazioni.md)
-- [Incentivi](./modules/incentivi.md)
-- [Europa](./modules/europa.md)
+> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
+> **Replaces embedding-based RAG at moderate scale (~100 sources).**
 
 ## Concepts
 
-<!-- Aggiungi concept pages qui -->
+_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
 
 ## Entities
 
-<!-- Aggiungi entity pages qui -->
+_No entities tracked yet._
 
 ## Sources
 
-<!-- Aggiungi source references qui -->
+_No sources ingested yet._
+
+## Comparisons
+
+_No comparisons synthesized yet._
+
+---
+
+**Last Updated:** 2026-04-15T08:28:52Z  
+**Total Pages:** 0  
+**Total Raw Sources:** 0

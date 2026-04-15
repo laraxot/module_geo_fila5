@@ -13,15 +13,6 @@ use Modules\User\Models\User;
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
-beforeEach(function () {
-    // Skip if database not available
-    try {
-        \DB::connection()->getPdo();
-    } catch (\Exception $e) {
-        $this->markTestSkipped('Database not available: '.$e->getMessage());
-    }
-});
-
 test('activity event sourcing lifecycle works correctly', function () {
     $user = User::factory()->create(); // @phpstan-ignore-line method.nonObject // @phpstan-ignore-line method.nonObject
     \assert($user instanceof User);
@@ -51,9 +42,9 @@ test('activity event sourcing lifecycle works correctly', function () {
     $this->assertSame('created', $activity->event);
 
     $properties = $activity->properties;
-    $this->assertInstanceOf(\Spatie\SchemalessAttributes\SchemalessAttributes::class, $properties);
-    $this->assertSame('test', $properties->action);
-    $this->assertSame('success', $properties->result);
+    $this->assertInstanceOf(Collection::class, $properties);
+    $this->assertSame('test', $properties->get('action'));
+    $this->assertSame('success', $properties->get('result'));
 });
 
 test('activity can be queried with complex scopes', function () {
@@ -232,15 +223,13 @@ test('activity batch operations work correctly', function () {
 });
 
 test('activity with batch scope returns correct results', function () {
-    $batchUuid = Str::uuid()->toString();
-    $withBatch = Activity::factory()->create(['batch_uuid' => $batchUuid]); // @phpstan-ignore-line method.nonObject
+    $withBatch = Activity::factory()->create(['batch_uuid' => Str::uuid()->toString()]); // @phpstan-ignore-line method.nonObject
     \assert($withBatch instanceof Activity);
     $this->assertNotNull($withBatch);
 
     Activity::factory()->create(['batch_uuid' => null]); // @phpstan-ignore-line method.nonObject
 
-    // Scope to our test data: hasBatch filters non-null batch_uuid
-    $activitiesWithBatch = Activity::hasBatch()->whereKey($withBatch->id)->get();
+    $activitiesWithBatch = Activity::hasBatch()->get();
 
     $firstActivity = $activitiesWithBatch->first();
     $this->assertCount(1, $activitiesWithBatch);
@@ -290,15 +279,15 @@ test('activity properties support complex nested structures', function () {
     $this->assertNotNull($freshActivity);
 
     $properties = $freshActivity->properties;
-    $this->assertInstanceOf(\Spatie\SchemalessAttributes\SchemalessAttributes::class, $properties);
-    $this->assertTrue(isset($properties->user));
-    $this->assertTrue(isset($properties->action));
-    $this->assertTrue(isset($properties->context));
-    $this->assertTrue(isset($properties->timestamps));
+    $this->assertInstanceOf(Collection::class, $properties);
+    $this->assertTrue($properties->has('user'));
+    $this->assertTrue($properties->has('action'));
+    $this->assertTrue($properties->has('context'));
+    $this->assertTrue($properties->has('timestamps'));
 
-    $userData = $properties->user;
-    $contextData = $properties->context;
-    $timestampsData = $properties->timestamps;
+    $userData = $properties->get('user');
+    $contextData = $properties->get('context');
+    $timestampsData = $properties->get('timestamps');
 
     $this->assertIsArray($userData);
     $this->assertArrayHasKey('id', $userData);

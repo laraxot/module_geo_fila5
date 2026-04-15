@@ -1,3 +1,66 @@
+# Documentazione
+
+Questo documento serve come indice centrale per tutta la documentazione del progetto.
+
+## Linee Guida Generali
+Le linee guida complete per la documentazione sono disponibili in:
+- [Linee Guida per la Documentazione](../../../xot/project_docs/guidelines/documentation.md)
+
+## Documentazione per Modulo
+
+### Core
+- [Xot Module](../../../xot/docs/readme.md)
+- [UI Module](../../../ui/docs/readme.md)
+- [CMS Module](../../../cms/docs/readme.md)
+
+### Business
+- [Patient Module](../../../patient/docs/readme.md)
+- [Dental Module](../../../dental/docs/readme.md)
+
+### Supporto
+- [Reporting Module](../../../reporting/docs/readme.md)
+- [User Module](../../../user/docs/readme.md)
+
+## Documentazione Tecnica
+- [Architettura](../../../xot/docs/architecture/readme.md)
+- [API Documentation](../../../xot/docs/api/readme.md)
+- [Testing](../../../xot/docs/testing/readme.md)
+
+## Guide e Tutorial
+- [Guida all'Installazione](../../../xot/docs/installation.md)
+- [Guida allo Sviluppo](../../../xot/docs/development/readme.md)
+- [Troubleshooting](../../../xot/docs/troubleshooting/readme.md)
+
+## Risorse Aggiuntive
+- [Changelog](../../../xot/docs/changelog/readme.md)
+- [Contributing](../../../xot/docs/contributing.md)
+- [Security](../../../xot/docs/security.md)
+- [Xot Module](../../../xot/project_docs/readme.md)
+- [UI Module](../../../ui/project_docs/readme.md)
+- [CMS Module](../../../cms/project_docs/readme.md)
+
+### Business
+- [Patient Module](../../../patient/project_docs/readme.md)
+- [Dental Module](../../../dental/project_docs/readme.md)
+
+### Supporto
+- [Reporting Module](../../../reporting/project_docs/readme.md)
+- [User Module](../../../user/project_docs/readme.md)
+
+## Documentazione Tecnica
+- [Architettura](../../../xot/project_docs/architecture/readme.md)
+- [API Documentation](../../../xot/project_docs/api/readme.md)
+- [Testing](../../../xot/project_docs/testing/readme.md)
+
+## Guide e Tutorial
+- [Guida all'Installazione](../../../xot/project_docs/installation.md)
+- [Guida allo Sviluppo](../../../xot/project_docs/development/readme.md)
+- [Troubleshooting](../../../xot/project_docs/troubleshooting/readme.md)
+
+## Risorse Aggiuntive
+- [Changelog](../../../xot/project_docs/changelog/readme.md)
+- [Contributing](../../../xot/project_docs/contributing.md)
+- [Security](../../../xot/project_docs/security.md)
 # Regole di Documentazione
 
 ## Panoramica
@@ -6,36 +69,30 @@ Questo documento descrive le regole fondamentali per la creazione e la manutenzi
 ## Collegamenti
 
 ### Documentazione Correlata
-- [README](../README.md) - Panoramica del modulo Xot
-- [Convenzioni di Naming](./NAMING_CONVENTIONS.md) - Regole di naming per campi, classi e directory
-- [Struttura dei Moduli](./MODULE_STRUCTURE.md) - Convenzioni di struttura dei moduli
-- [Prompt di Documentazione](./prompts/DOCUMENTATION_PROMPTS.md) - Regole e best practices per i prompt
+- [README](../readme.md) - Panoramica del modulo Xot
+- [Convenzioni di Naming](./naming_conventions.md) - Regole di naming per campi, classi e directory
+- [Struttura dei Moduli](./module_structure.md) - Convenzioni di struttura dei moduli
+- [Prompt di Documentazione](./prompts/documentation_prompts.md) - Regole e best practices per i prompt
 
 ## Validazione dei Collegamenti
 
 ### Regole Fondamentali
 - MAI usare percorsi assoluti nei collegamenti
 - MAI includere il nome del progetto nei percorsi
-- MAI usare percorsi che iniziano con `/var/www/html/` o simili
-- MAI usare percorsi che includono `<nome progetto>` o altri nomi specifici
-
-### Formato Corretto
-```markdown
-
-# Collegamenti Corretti
-[Documento Correlato](./documento.md)
+- MAI usare percorsi che iniziano con `documento.md)
 [Documento in Sottodirectory](./sottodirectory/documento.md)
-[Documento in Modulo Altro](../../AltroModulo/docs/documento.md)
-[Documento in Root](../../../docs/documento.md)
+[Documento in Modulo Altro](../../altromodulo/docs/documento.md)
+[Documento in Root](../../../../docs/documento.md)
 ```
 
 ### Formato Non Corretto
 ```markdown
 
 # Collegamenti Non Corretti
-[Documento Correlato](/var/www/html/<nome progetto>/laravel/Modules/Xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
 [Documento in Sottodirectory](https://github.com/<nome progetto>/progetto/blob/main/docs/documento.md)
-[Documento in Modulo Altro](C:\progetti\<nome progetto>\laravel\Modules\Xot\docs\documento.md)
+[Documento in Modulo Altro](c:\progetti\<nome progetto>\laravel\modules\xot\docs\documento.md)
 ```
 
 ### Checklist di Validazione
@@ -45,33 +102,27 @@ Questo documento descrive le regole fondamentali per la creazione e la manutenzi
 - [ ] Usa la notazione corretta per i percorsi relativi
 - [ ] I percorsi sono compatibili con diversi sistemi operativi
 
-- [Prompt di Documentazione](./prompts/DOCUMENTATION_PROMPTS.md) - Regole e best practices per i prompt
+- [Prompt di Documentazione](./prompts/documentation_prompts.md) - Regole e best practices per i prompt
 
 ## Validazione dei Collegamenti
 
 ### Regole Fondamentali
 - MAI usare percorsi assoluti nei collegamenti
 - MAI includere il nome del progetto nei percorsi
-- MAI usare percorsi che iniziano con `/var/www/html/` o simili
-- MAI usare percorsi che includono `<nome progetto>` o altri nomi specifici
-
-### Formato Corretto
-```markdown
-
-# Collegamenti Corretti
-[Documento Correlato](./documento.md)
+- MAI usare percorsi che iniziano con `documento.md)
 [Documento in Sottodirectory](./sottodirectory/documento.md)
-[Documento in Modulo Altro](../../AltroModulo/docs/documento.md)
-[Documento in Root](../../../docs/documento.md)
+[Documento in Modulo Altro](../../altromodulo/docs/documento.md)
+[Documento in Root](../../../../docs/documento.md)
 ```
 
 ### Formato Non Corretto
 ```markdown
 
 # Collegamenti Non Corretti
-[Documento Correlato](/var/www/html/<nome progetto>/laravel/Modules/Xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
 [Documento in Sottodirectory](https://github.com/<nome progetto>/progetto/blob/main/docs/documento.md)
-[Documento in Modulo Altro](C:\progetti\<nome progetto>\laravel\Modules\Xot\docs\documento.md)
+[Documento in Modulo Altro](c:\progetti\<nome progetto>\laravel\modules\xot\docs\documento.md)
 ```
 
 ### Checklist di Validazione
@@ -81,34 +132,27 @@ Questo documento descrive le regole fondamentali per la creazione e la manutenzi
 - [ ] Usa la notazione corretta per i percorsi relativi
 - [ ] I percorsi sono compatibili con diversi sistemi operativib6f667c (.)
 
-
-- [Prompt di Documentazione](./prompts/DOCUMENTATION_PROMPTS.md) - Regole e best practices per i prompt
+- [Prompt di Documentazione](./prompts/documentation_prompts.md) - Regole e best practices per i prompt
 
 ## Validazione dei Collegamenti
 
 ### Regole Fondamentali
 - MAI usare percorsi assoluti nei collegamenti
 - MAI includere il nome del progetto nei percorsi
-- MAI usare percorsi che iniziano con `/var/www/html/` o simili
-- MAI usare percorsi che includono `<nome progetto>` o altri nomi specifici
-
-### Formato Corretto
-```markdown
-
-# Collegamenti Corretti
-[Documento Correlato](./documento.md)
+- MAI usare percorsi che iniziano con `documento.md)
 [Documento in Sottodirectory](./sottodirectory/documento.md)
-[Documento in Modulo Altro](../../AltroModulo/docs/documento.md)
-[Documento in Root](../../../docs/documento.md)
+[Documento in Modulo Altro](../../altromodulo/docs/documento.md)
+[Documento in Root](../../../../docs/documento.md)
 ```
 
 ### Formato Non Corretto
 ```markdown
 
 # Collegamenti Non Corretti
-[Documento Correlato](/var/www/html/<nome progetto>/laravel/Modules/Xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
+[Documento Correlato](../xot/docs/documento.md)
 [Documento in Sottodirectory](https://github.com/<nome progetto>/progetto/blob/main/docs/documento.md)
-[Documento in Modulo Altro](C:\progetti\<nome progetto>\laravel\Modules\Xot\docs\documento.md)
+[Documento in Modulo Altro](c:\progetti\<nome progetto>\laravel\modules\xot\docs\documento.md)
 ```
 
 ### Checklist di Validazione
@@ -117,7 +161,6 @@ Questo documento descrive le regole fondamentali per la creazione e la manutenzi
 - [ ] Non contiene percorsi assoluti
 - [ ] Usa la notazione corretta per i percorsi relativi
 - [ ] I percorsi sono compatibili con diversi sistemi operativib6f667c (.)
-
 
 ## 1. Regole Fondamentali
 
@@ -150,11 +193,9 @@ Questo documento descrive le regole fondamentali per la creazione e la manutenzi
 - Ogni modifica al prompt deve essere accompagnata da aggiornamenti alla documentazione
 - La documentazione deve spiegare il "perché" delle regole, non solo il "come"b6f667c (.)
 
-
 - Devono essere documentati nelle cartelle docs appropriate
 - Ogni modifica al prompt deve essere accompagnata da aggiornamenti alla documentazione
 - La documentazione deve spiegare il "perché" delle regole, non solo il "come"b6f667c (.)
-
 
 ## 2. Struttura della Documentazione
 

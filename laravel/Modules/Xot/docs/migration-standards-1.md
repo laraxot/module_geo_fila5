@@ -1,8 +1,8 @@
-# Standard per le Migrazioni in SaluteOra
+# Standard per le Migrazioni in <nome progetto>
 
 ## Introduzione
 
-Questo documento definisce gli standard e le best practices da seguire per tutte le migrazioni nei moduli di SaluteOra. Questi standard sono fondamentali per garantire la coerenza e la correttezza delle migrazioni in tutto il progetto.
+Questo documento definisce gli standard e le best practices da seguire per tutte le migrazioni nei moduli di <nome progetto>. Questi standard sono fondamentali per garantire la coerenza e la correttezza delle migrazioni in tutto il progetto.
 
 ## Principi Fondamentali
 
@@ -25,7 +25,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Migrazione per [scopo della migrazione].
- * 
+ *
  * @see docs/standards/migrations.md
  */
 return new class extends XotBaseMigration
@@ -36,7 +36,7 @@ return new class extends XotBaseMigration
      * @var string
      */
     protected string $table = 'nome_tabella';
-    
+
     /**
      * Connessione al database.
      *
@@ -51,12 +51,12 @@ return new class extends XotBaseMigration
     {
         $this->tableCreate(function (Blueprint $table) {
             $table->id(); // o altro tipo di chiave primaria
-            
+
             // Definizione dei campi
-            
+
             // Utilizziamo updateTimestamps per gestire created_at, updated_at e deleted_at
             $this->updateTimestamps($table, true); // true per includere soft delete
-            
+
             // Verifica se le tabelle correlate esistono prima di creare foreign keys
             if (Schema::connection($this->getConnection())->hasTable('tabella_correlata')) {
                 $table->foreign('campo_id')
@@ -64,7 +64,7 @@ return new class extends XotBaseMigration
                     ->on('tabella_correlata')
                     ->onDelete('cascade');
             }
-            
+
             // Indici
             $table->index('campo_id');
         });
@@ -74,7 +74,7 @@ return new class extends XotBaseMigration
 
 ## Connessioni al Database
 
-SaluteOra utilizza diverse connessioni al database per diversi tipi di dati:
+<nome progetto> utilizza diverse connessioni al database per diversi tipi di dati:
 
 1. **mysql**: Connessione principale per la maggior parte delle tabelle
 2. **user**: Connessione per i dati degli utenti
@@ -136,9 +136,9 @@ if (! $this->hasIndex('nome_indice')) {
 
 Ogni modulo può avere best practices specifiche per le migrazioni. Consultare la documentazione del modulo per ulteriori dettagli:
 
-- [Best Practices per le Migrazioni nel Modulo Patient](/laravel/Modules/Patient/docs/MIGRATION_BEST_PRACTICES.md)
-- [Best Practices per le Migrazioni nel Modulo Tenant](/laravel/Modules/Tenant/docs/MIGRATION_BEST_PRACTICES.md)
-- [Best Practices per le Migrazioni nel Modulo User](/laravel/Modules/User/docs/MIGRATION_BEST_PRACTICES.md)
+- [Best Practices per le Migrazioni nel Modulo Patient](/laravel/modules/patient/docs/migration_best_practices.md)
+- [Best Practices per le Migrazioni nel Modulo Tenant](/laravel/modules/tenant/docs/migration_best_practices.md)
+- [Best Practices per le Migrazioni nel Modulo User](/laravel/modules/user/docs/migration_best_practices.md)
 
 ## Errori Comuni e Come Evitarli
 
@@ -161,7 +161,7 @@ return new class extends XotBaseMigration
 {
     protected string $table = 'nome_tabella';
     protected ?string $connection = 'mysql';
-    
+
     public function up(): void
     {
         // ...
@@ -207,4 +207,4 @@ protected ?string $connection = 'user'; // Stessa connessione del modello
 
 ## Conclusione
 
-Seguire questi standard per le migrazioni è fondamentale per garantire la coerenza e la correttezza del database in SaluteOra. Assicurarsi di consultare sempre la documentazione specifica del modulo prima di creare o modificare una migrazione.
+Seguire questi standard per le migrazioni è fondamentale per garantire la coerenza e la correttezza del database in <nome progetto>. Assicurarsi di consultare sempre la documentazione specifica del modulo prima di creare o modificare una migrazione.

@@ -12,7 +12,7 @@ MCP (Model Context Protocol) tools provide enhanced capabilities for database an
 {
   "command": "node",
   "args": [
-    "/var/www/_bases/base_techplanner_fila4_mono/bashscripts/mcp/mysql-db-connector.js"
+    "./bashscripts/mcp/mysql-db-connector.js"
   ]
 }
 ```

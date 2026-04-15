@@ -28,7 +28,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasXotTable;
     use InteractsWithForms;
-    // public static string $resource;
+    // protected static string $resource;
 
     /**
      * Restituisce il gruppo di navigazione (override opzionale).

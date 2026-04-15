@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Feature;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Str;
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Xot\Services\ModuleService;

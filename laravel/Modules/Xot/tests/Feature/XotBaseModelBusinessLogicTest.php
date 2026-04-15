@@ -195,7 +195,6 @@ class XotBaseModelBusinessLogicTest extends TestCase
     {
         // Arrange
         $baseModel = new BaseModel();
-
         $serialized = serialize($baseModel);
 
         // Act

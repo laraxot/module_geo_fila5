@@ -22,11 +22,6 @@ use Modules\UI\Enums\TableLayoutEnum;
 trait HasXotForm
 {
     /** @var array<string, mixed> */
-    /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
     public array $data = [];
 
     abstract public function getFormSchema(): array;

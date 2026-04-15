@@ -9,5 +9,5 @@ use Modules\Xot\Tests\Fixtures\Filament\Resources\ProbeResource;
 
 class ViewProbe extends ViewRecord
 {
-    public static string $resource = ProbeResource::class;
+    protected static string $resource = ProbeResource::class;
 }

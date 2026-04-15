@@ -1,26 +1,29 @@
 ---
-title: Wiki Log
-description: Registro cronologico delle operazioni
-tags:
-  - log
-  - history
-created: 2026-04-15
+title: "Activity Log"
+module: "ptvx-project"
 ---
 
-# Wiki Log
+# Activity Log — ptvx-project
 
-Registro append-only delle operazioni sulla wiki.
+> **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
-Formato: `## [YYYY-MM-DD] <tipo> | <descrizione>`
+## Log Entries
 
-## [2026-04-15] setup | Inizializzazione wiki
+_No activity yet. Start by ingesting raw documents._
 
-- Creato schema wiki secondo pattern Karpathy LLM Wiki
-- Configurato qmd per search locale
-- Aggiunto MCP server qmd
+### Format
 
-## TODO
+```
+[YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
+```
 
-- Aggiungere prime pagine concept per ogni modulo
-- Importare documentazione esistente
-- Strutturare entity pages per modelli principali
+**Operations:**
+- `INGEST` — Added raw document to wiki
+- `QUERY` — Answered question from wiki
+- `LINT` — Maintained wiki quality
+- `UPDATE` — Modified existing wiki page
+
+---
+
+**Last Activity:** None  
+**Total Operations:** 0

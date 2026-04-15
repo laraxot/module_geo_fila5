@@ -150,12 +150,16 @@ class MyAction
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
+>>>>>>> .merge_file_P23loR
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
-use Modules\Quaeris\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+use Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+use Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
+>>>>>>> .merge_file_P23loR
 
 class ViewQuestionChart extends XotBaseViewRecord
 {
@@ -197,7 +201,9 @@ class ViewQuestionChart extends XotBaseViewRecord
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
+namespace Modules\ExternalProject\Filament\Widgets;
+>>>>>>> .merge_file_P23loR
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -253,10 +259,15 @@ class QuestionChartFilterWidget extends XotBaseWidget
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Resources;
+namespace Modules\healthcare_app\Filament\Resources;
 
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Modules\Quaeris\Models\QuestionChart;
+use Modules\healthcare_app\Models\QuestionChart;
+namespace Modules\ExternalProject\Filament\Resources;
+
+use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\ExternalProject\Models\QuestionChart;
+>>>>>>> .merge_file_P23loR
 
 class QuestionChartResource extends XotBaseResource
 {

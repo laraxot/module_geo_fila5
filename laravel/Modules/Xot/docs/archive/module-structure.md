@@ -1,3 +1,127 @@
+# Struttura dei Moduli in <nome progetto>
+
+Questo documento definisce le linee guida ufficiali per la struttura dei moduli all'interno del framework <nome progetto>.
+
+---
+
+## Gestione dati geografici statici: GeoJsonModel readonly (ispirato a Squire)
+
+Per tutti i dati geografici statici (regioni, province, comuni, cap) di dimensioni gestibili, NON creare tabelle/migration dedicate. Utilizzare invece un modello base readonly (`GeoJsonModel`) che legge i dati direttamente da file JSON (es: `Modules/Geo/resources/json/comuni.json`).
+
+- I model specialistici (Region, Province, City, Cap) devono estendere la base GeoJsonModel e fornire metodi di filtro.
+- Versionare sempre il file json e documentare la struttura.
+- Aggiornare la documentazione di Geo/docs, <nome progetto>/docs e questa stessa doc con collegamenti bidirezionali.
+
+Per dettagli implementativi e best practice vedi:
+- [Geo/project_docs/geo-json-model.md](../../geo/project_docs/geo-json-model.md)
+- [<nome progetto>/project_docs/geo-integration.md](../../<nome progetto>/project_docs/geo-integration.md)
+- [Questa stessa doc (Xot/module-structure.md)](module-structure.md)
+
+---
+
+## Service Provider
+
+### Convenzioni Base
+
+Ogni modulo deve avere un ServiceProvider che estende `XotBaseServiceProvider`. Questo provider è responsabile della registrazione delle risorse del modulo (routes, views, translations, etc.) nell'applicazione.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\NomeModulo\Providers;
+
+use Modules\Xot\Providers\XotBaseServiceProvider;
+
+class NomeModuloServiceProvider extends XotBaseServiceProvider {
+    // Implementazione
+}
+```
+
+### Proprietà Obbligatorie
+
+Il ServiceProvider deve definire le seguenti proprietà:
+
+1. **public string $name**: Nome del modulo in formato PascalCase/CamelCase con prima lettera maiuscola (NON $module_name)
+   ```php
+   public string $name = 'NomeModulo';
+   ```
+
+   > **IMPORTANTE**: La stessa proprietà deve essere definita anche nel `RouteServiceProvider` del modulo
+
+2. **protected string $module_dir**: Directory del modulo (default: `__DIR__`)
+   ```php
+   protected string $module_dir = __DIR__;
+   ```
+
+3. **protected string $module_ns**: Namespace del modulo (default: `__NAMESPACE__`)
+   ```php
+   protected string $module_ns = __NAMESPACE__;
+   ```
+
+### Proprietà Opzionali
+
+1. **public string $nameLower**: Versione minuscola del nome del modulo (se non definita, viene generata automaticamente da $name)
+
+### Metodi Personalizzabili
+
+I seguenti metodi possono essere sovrascritti per personalizzare il comportamento del ServiceProvider:
+
+- `register()`: Registra i servizi del modulo nel container
+- `registerTranslations()`: Registra le traduzioni
+- `registerConfig()`: Registra le configurazioni
+- `registerViews()`: Registra le viste
+- `registerFactories()`: Registra le factories per i modelli
+- `registerCommands()`: Registra i comandi Artisan
+- `registerLivewireComponents()`: Registra i componenti Livewire
+
+## Errori Comuni
+
+### Nome del Modulo Mancante o Errato
+
+Se viene mostrato l'errore `name is empty on [Modules\NomeModulo\Providers\NomeModuloServiceProvider]`, significa che:
+
+1. La proprietà `$name` non è stata definita nel ServiceProvider
+2. È stata utilizzata `$module_name` invece di `$name`
+
+**Correzione**:
+```php
+// ERRATO
+public string $module_name = 'nomeModulo';
+// ERRATO
+public string $name = 'nomemodulo';
+
+// CORRETTO
+public string $name = 'NomeModulo';
+```
+
+## Esempio Completo
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Blog\Providers;
+
+use Modules\Xot\Providers\XotBaseServiceProvider;
+
+class BlogServiceProvider extends XotBaseServiceProvider {
+    public string $name = 'Blog';
+
+    protected string $module_dir = __DIR__;
+
+    protected string $module_ns = __NAMESPACE__;
+
+    // Metodi personalizzati se necessario
+    public function registerConfig(): void
+    {
+        // Configurazione personalizzata
+        parent::registerConfig();
+    }
+}
+```
 # Struttura dei Moduli in il progetto
 
 ## Panoramica
@@ -34,16 +158,16 @@ ModuleName/
 ## Collegamenti
 
 ### Documentazione Correlata
-- [README](../README.md) - Panoramica del modulo Xot
+- [README](../readme.md) - Panoramica del modulo Xot
 - [Convenzioni di Naming](./naming-conventions.md) - Regole di naming
-- [Case Sensitivity](./DIRECTORY-CASE-SENSITIVITY.md) - Regole per la case sensitivity
-- [Namespace Rules](./NAMESPACE-RULES.md) - Regole per i namespace
+- [Case Sensitivity](./directory-case-sensitivity.md) - Regole per la case sensitivity
+- [Namespace Rules](./namespace-rules.md) - Regole per i namespace
 
 ### Moduli Collegati
-- [UI](../UI/docs/README.md) - Componenti di interfaccia
-- [Cms](../Cms/docs/README.md) - Gestione contenuti
-- [Lang](../Lang/docs/README.md) - Traduzioni
-- [User](../User/docs/README.md) - Gestione utenti
+- [UI](../ui/docs/readme.md) - Componenti di interfaccia
+- [Cms](../cms/docs/readme.md) - Gestione contenuti
+- [Lang](../lang/docs/readme.md) - Traduzioni
+- [User](../user/docs/readme.md) - Gestione utenti
 
 ## Struttura Dettagliata
 
@@ -201,71 +325,71 @@ User/
 ## Collegamenti Moduli
 
 ### Modulo UI
-- [Componenti Volt](../UI/docs/components/volt.md)
-- [Layout](../UI/docs/layouts.md)
-- [Temi](../UI/docs/themes.md)
-- [Best Practices](../UI/docs/best-practices.md)
+- [Componenti Volt](../ui/docs/components/volt.md)
+- [Layout](../ui/docs/layouts.md)
+- [Temi](../ui/docs/themes.md)
+- [Best Practices](../ui/docs/best-practices.md)
 
 ### Modulo Cms
-- [Frontend](../Cms/docs/frontend.md)
-- [Temi](../Cms/docs/themes.md)
-- [Contenuti](../Cms/docs/content.md)
-- [Convenzioni Filament](../Cms/docs/convenzioni-namespace-filament.md)
+- [Frontend](../cms/docs/frontend.md)
+- [Temi](../cms/docs/themes.md)
+- [Contenuti](../cms/docs/content.md)
+- [Convenzioni Filament](../cms/docs/convenzioni-namespace-filament.md)
 
 ### Modulo Lang
-- [Traduzioni](../Lang/docs/translations.md)
-- [Localizzazione](../Lang/docs/localization.md)
-- [API Traduzioni](../Lang/docs/api.md)
+- [Traduzioni](../lang/docs/translations.md)
+- [Localizzazione](../lang/docs/localization.md)
+- [API Traduzioni](../lang/docs/api.md)
 
 ### Modulo User
-- [Autenticazione](../User/docs/auth.md)
-- [Permessi](../User/docs/permissions.md)
-- [Profilo](../User/docs/profile.md)
+- [Autenticazione](../user/docs/auth.md)
+- [Permessi](../user/docs/permissions.md)
+- [Profilo](../user/docs/profile.md)
 
 ### Modulo Patient
-- [Gestione Pazienti](../Patient/docs/patients.md)
-- [Cartelle Cliniche](../Patient/docs/records.md)
-- [Appuntamenti](../Patient/docs/appointments.md)
+- [Gestione Pazienti](../patient/docs/patients.md)
+- [Cartelle Cliniche](../patient/docs/records.md)
+- [Appuntamenti](../patient/docs/appointments.md)
 
 ### Modulo Dental
-- [Trattamenti](../Dental/docs/treatments.md)
-- [Pianificazione](../Dental/docs/planning.md)
-- [Documenti](../Dental/docs/documents.md)
+- [Trattamenti](../dental/docs/treatments.md)
+- [Pianificazione](../dental/docs/planning.md)
+- [Documenti](../dental/docs/documents.md)
 
 ### Modulo Tenant
-- [Multi-tenant](../Tenant/docs/multi-tenant.md)
-- [Configurazione](../Tenant/docs/configuration.md)
-- [Migrazione](../Tenant/docs/migration.md)
+- [Multi-tenant](../tenant/docs/multi-tenant.md)
+- [Configurazione](../tenant/docs/configuration.md)
+- [Migrazione](../tenant/docs/migration.md)
 
 ### Modulo Media
-- [Gestione File](../Media/docs/files.md)
-- [Upload](../Media/docs/upload.md)
-- [Storage](../Media/docs/storage.md)
+- [Gestione File](../media/docs/files.md)
+- [Upload](../media/docs/upload.md)
+- [Storage](../media/docs/storage.md)
 
 ### Modulo Notify
-- [Notifiche](../Notify/docs/notifications.md)
-- [Email](../Notify/docs/email.md)
-- [SMS](../Notify/docs/sms.md)
+- [Notifiche](../notify/docs/notifications.md)
+- [Email](../notify/docs/email.md)
+- [SMS](../notify/docs/sms.md)
 
 ### Modulo Reporting
-- [Report](../Reporting/docs/reports.md)
-- [Esportazione](../Reporting/docs/export.md)
-- [Analytics](../Reporting/docs/analytics.md)
+- [Report](../reporting/docs/reports.md)
+- [Esportazione](../reporting/docs/export.md)
+- [Analytics](../reporting/docs/analytics.md)
 
 ### Modulo Gdpr
-- [Privacy](../Gdpr/docs/privacy.md)
-- [Consensi](../Gdpr/docs/consents.md)
-- [Sicurezza](../Gdpr/docs/security.md)
+- [Privacy](../gdpr/docs/privacy.md)
+- [Consensi](../gdpr/docs/consents.md)
+- [Sicurezza](../gdpr/docs/security.md)
 
 ### Modulo Job
-- [Jobs](../Job/docs/jobs.md)
-- [Queue](../Job/docs/queue.md)
-- [Scheduling](../Job/docs/scheduling.md)
+- [Jobs](../job/docs/jobs.md)
+- [Queue](../job/docs/queue.md)
+- [Scheduling](../job/docs/scheduling.md)
 
 ### Modulo Chart
-- [Grafici](../Chart/docs/charts.md)
-- [Dashboard](../Chart/docs/dashboard.md)
-- [Visualizzazione](../Chart/docs/visualization.md)
+- [Grafici](../chart/docs/charts.md)
+- [Dashboard](../chart/docs/dashboard.md)
+- [Visualizzazione](../chart/docs/visualization.md)
 
 # Struttura dei Moduli Laravel
 
@@ -408,5 +532,4 @@ Se trovi una directory con case errato:
 6. Committa le modifiche
 
 ## Collegamenti tra versioni di module_structure.md
-* [module_structure.md](../../../../docs/error_analysis/module_structure.md)
-
+* [module_structure.md](../../../../../docs/error_analysis/module_structure.md)

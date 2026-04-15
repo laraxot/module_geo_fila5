@@ -65,10 +65,10 @@ Questo è l'errore più comune e grave nelle convenzioni di namespace:
 
 ```php
 // GRAVEMENTE ERRATO
-namespace Modules\Quaeris\App\Controllers;
+namespace Modules\ModuloEsempio\App\Controllers;
 
 // CORRETTO
-namespace Modules\Quaeris\Controllers;
+namespace Modules\ModuloEsempio\Controllers;
 ```
 
 ## esempi corretti vs errati
@@ -76,19 +76,19 @@ namespace Modules\Quaeris\Controllers;
 ### corretti ✓
 ```php
 namespace Modules\Xot\Console\Commands;
-namespace Modules\Quaeris\Models;
+namespace Modules\ModuloEsempio\Models;
 namespace Modules\User\Services;
 namespace Modules\Tenant\Repositories;
-namespace Modules\Quaeris\Filament\Resources;
+namespace Modules\ModuloEsempio\Filament\Resources;
 ```
 
 ### errati ✗
 ```php
 namespace Modules\Xot\app\Console\Commands;       // errato: 'app' nel namespace
-namespace Modules\Quaeris\App\Models;           // errato: 'App' nel namespace
+namespace Modules\ModuloEsempio\App\Models;           // errato: 'App' nel namespace
 namespace Modules\User\App\Services;              // errato: 'App' nel namespace
 namespace Modules\Tenant\app\Repositories;        // errato: 'app' nel namespace
-namespace App\Modules\Quaeris\Controllers;      // errato: struttura completamente sbagliata
+namespace App\Modules\ModuloEsempio\Controllers;      // errato: struttura completamente sbagliata
 ```
 
 ## struttura fisica vs namespace
@@ -98,32 +98,32 @@ namespace App\Modules\Quaeris\Controllers;      // errato: struttura completamen
 Anche se i file sono fisicamente collocati in una directory `app/`, il namespace **non deve mai riflettere** questa struttura.
 
 ```
-Percorso fisico:    /Modules/Quaeris/app/Models/Patient.php
-Namespace corretto: namespace Modules\Quaeris\Models;
+Percorso fisico:    /Modules/ModuloEsempio/app/Models/Patient.php
+Namespace corretto: namespace Modules\ModuloEsempio\Models;
 ```
 
 ### mappatura corretta percorso-namespace
 
 | percorso fisico | namespace corretto |
 |-----------------|--------------------|
-| `/Modules/Quaeris/app/Models/Patient.php` | `Modules\Quaeris\Models` |
-| `/Modules/Quaeris/app/Filament/Resources/PatientResource.php` | `Modules\Quaeris\Filament\Resources` |
+| `/Modules/ModuloEsempio/app/Models/Patient.php` | `Modules\ModuloEsempio\Models` |
+| `/Modules/ModuloEsempio/app/Filament/Resources/PatientResource.php` | `Modules\ModuloEsempio\Filament\Resources` |
 | `/Modules/Xot/app/Providers/XotServiceProvider.php` | `Modules\Xot\Providers` |
 
 ### struttura directory completa
 
 ```
 Modules/
-Quaeris/
+  ModuloEsempio/
     app/                        // directory fisica
       Console/
         Commands/
-          ImportPatient.php     // namespace Modules\Quaeris\Console\Commands;
+          ImportPatient.php     // namespace Modules\ModuloEsempio\Console\Commands;
       Models/
-        Patient.php            // namespace Modules\Quaeris\Models;
+        Patient.php            // namespace Modules\ModuloEsempio\Models;
       Filament/
         Resources/
-          PatientResource.php  // namespace Modules\Quaeris\Filament\Resources;
+          PatientResource.php  // namespace Modules\ModuloEsempio\Filament\Resources;
 ```
 
 ## come verificare i namespace
@@ -141,7 +141,7 @@ Prima di committare un file, verifica sempre che:
 Utilizza phpstan per verificare automaticamente i namespace:
 
 ```bash
-php artisan phpstan:analyse --level=1 Modules/Quaeris
+php artisan phpstan:analyse --level=1 Modules/ModuloEsempio
 ```
 
 ## motivazione di questa convenzione
@@ -164,10 +164,10 @@ Un errore comune è includere `App` nel namespace:
 
 ```php
 // ERRATO ❌
-namespace Modules\Quaeris\App\Console\Commands;
+namespace Modules\ModuloEsempio\App\Console\Commands;
 
 // CORRETTO ✓
-namespace Modules\Quaeris\Console\Commands;
+namespace Modules\ModuloEsempio\Console\Commands;
 ```
 
 ### Conseguenze dell'Errore
@@ -183,7 +183,7 @@ namespace Modules\Quaeris\Console\Commands;
 Utilizzare grep per trovare tutti i file con namespace errato:
 
 ```bash
-grep -r "namespace Modules\\\\.*\\\\App\\\\" /var/www/html/base_Quaeris/laravel/Modules
+grep -r "namespace Modules\\\\.*\\\\App\\\\" /var/www/html/base_ptvx/laravel/Modules
 ```
 
 ### PHP Stan

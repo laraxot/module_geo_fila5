@@ -23,6 +23,8 @@
 - [Data Objects](module-development/data-objects.md)
 
 ### 🎨 Filament & UI
+- [Theme Vite Configuration](./vite-configuration.md)
+- [Theme Assets Workflow](./theme-assets-workflow.md)
 - [Filament Best Practices](filament/filament-best-practices.md)
 - [Filament Resource Rules](filament/filament-resource-rules.md)
 - [Filament Tables Guide](filament/filament-tables.md)
@@ -61,5 +63,3 @@
 
 ---
 *Last update: January 2025*
-
-- [Conflict Resolution](conflict-resolution.md)

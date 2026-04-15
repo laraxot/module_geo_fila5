@@ -28,7 +28,9 @@
 ```
 Xot (Core Engine)
 ├── User (Authentication & Authorization)
-├── Quaeris (Core Business Logic - Surveys)
+├── healthcare_app (Core Business Logic - Surveys)
+├── ExternalProject (Core Business Logic - Surveys)
+>>>>>>> .merge_file_mSTn06
 ├── Cms (Content Management)
 ├── Media (File Management)
 ├── Geo (Location Services)
@@ -108,7 +110,9 @@ TextInput::make('name');
 - **Power**: Controls access to all resources
 - **Responsibility**: Security and permissions
 
-#### 3. **Quaeris Module (The Economy)**
+#### 3. **healthcare_app Module (The Economy)**
+#### 3. **ExternalProject Module (The Economy)**
+>>>>>>> .merge_file_mSTn06
 - **Role**: Core business logic, surveys, reporting
 - **Power**: Main revenue-generating functionality
 - **Responsibility**: Business operations

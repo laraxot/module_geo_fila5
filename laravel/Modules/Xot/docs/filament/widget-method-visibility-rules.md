@@ -36,7 +36,7 @@ Tutti i metodi `getTable*()` in `HasXotTable` sono dichiarati come `public` perc
 
 declare(strict_types=1);
 
-namespace Modules\Quaeris\Filament\Widgets;
+namespace Modules\healthcare_app\Filament\Widgets;
 
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 

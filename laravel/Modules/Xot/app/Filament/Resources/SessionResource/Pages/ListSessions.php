@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\SessionResource;
  */
 class ListSessions extends XotBaseListRecords
 {
-    public static string $resource = SessionResource::class;
+    protected static string $resource = SessionResource::class;
 
     #[\Override]
     public function getGridTableColumns(): array

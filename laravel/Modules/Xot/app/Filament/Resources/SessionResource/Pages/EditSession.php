@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\SessionResource;
 
 class EditSession extends XotBaseEditRecord
 {
-    public static string $resource = SessionResource::class;
+    protected static string $resource = SessionResource::class;
 }

@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Unit\Console\Commands;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use Modules\Xot\Tests\TestCase;
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Tests\TestCase;

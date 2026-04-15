@@ -8,7 +8,7 @@ Durante lo sviluppo è stata identificata una **violazione architetturale critic
 
 ```php
 // ❌ VIOLAZIONE CRITICA
-use Modules\SaluteOra\Models\User;
+use Modules\<nome progetto>\Models\User;
 
 /** @var User $user */
 $user = User::factory()->create([...]);
@@ -16,7 +16,7 @@ $user = User::factory()->create([...]);
 
 ### **Perché è un Errore Grave**
 
-1. **Accoppiamento Stretto**: Cms conosce SaluteOra → viola principio di disaccoppiamento
+1. **Accoppiamento Stretto**: Cms conosce <nome progetto> → viola principio di disaccoppiamento
 2. **Configurabilità Persa**: La classe User è **dinamica** e configurabile
 3. **Multi-tenancy Rotta**: XotData supporta tenant con User diverse
 4. **Pattern Ignorato**: XotData è il **core** dell'architettura Laraxot
@@ -48,7 +48,7 @@ $user = $userClass::factory()->create($attributes);
 'providers' => [
     'users' => [
         'driver' => 'eloquent',
-        'model' => \Modules\SaluteOra\Models\User::class, // CONFIGURABILE!
+        'model' => \Modules\<nome progetto>\Models\User::class, // CONFIGURABILE!
     ],
 ],
 ```
@@ -58,7 +58,7 @@ $user = $userClass::factory()->create($attributes);
 public function getUserClass(): string
 {
     $class = config('auth.providers.users.model');
-    
+
     // Validazioni automatiche
     Assert::stringNotEmpty($class, 'check config auth');
     Assert::classExists($class, '['.$class.'] check config auth');
@@ -96,7 +96,7 @@ interface UserContract
 // ✅ SEMPRE così
 $userClass = XotData::make()->getUserClass();
 
-// ❌ MAI così  
+// ❌ MAI così
 use Modules\SpecificModule\Models\User;
 ```
 
@@ -106,7 +106,7 @@ use Modules\SpecificModule\Models\User;
 public function processUser(UserContract $user): void
 
 // ❌ MAI implementazione specifica
-public function processUser(\Modules\SaluteOra\Models\User $user): void
+public function processUser(\Modules\<nome progetto>\Models\User $user): void
 ```
 
 ### **Regola 3: Factory tramite XotData**
@@ -145,19 +145,19 @@ function getUserClass(): string
 function createTestUser(array $attributes = []): UserContract
 {
     $userClass = getUserClass();
-    
+
     $defaultAttributes = [
         'email' => fake()->unique()->safeEmail(),
         'password' => Hash::make('password123'),
         'first_name' => fake()->firstName(),
         'last_name' => fake()->lastName(),
     ];
-    
+
     $attributes = array_merge($defaultAttributes, $attributes);
-    
+
     /** @var UserContract */
     $user = $userClass::factory()->create($attributes);
-    
+
     return $user;
 }
 ```
@@ -169,13 +169,13 @@ class CreateUserAction
     public function execute(UserData $data): UserContract
     {
         $userClass = XotData::make()->getUserClass();
-        
+
         /** @var UserContract */
         $user = $userClass::create([
             'name' => $data->name,
             'email' => $data->email,
         ]);
-        
+
         return $user;
     }
 }
@@ -219,15 +219,15 @@ class ChangeTypeCommand extends Command
     public function handle(): void
     {
         $email = text('User email?');
-        
+
         /** @var UserContract */
         $user = XotData::make()->getUserByEmail($email);
-        
+
         if (!$user) {
             $this->error("User with email '{$email}' not found.");
             return;
         }
-        
+
         // Continua elaborazione...
     }
 }
@@ -238,9 +238,9 @@ class ChangeTypeCommand extends Command
 ### **1. Import Diretti**
 ```php
 // ❌ VIETATO
-use Modules\SaluteOra\Models\User;
-use Modules\SaluteOra\Models\Patient;
-use Modules\SaluteOra\Models\Doctor;
+use Modules\<nome progetto>\Models\User;
+use Modules\<nome progetto>\Models\Patient;
+use Modules\<nome progetto>\Models\Doctor;
 
 // ✅ CONSENTITO
 use Modules\Xot\Contracts\UserContract;
@@ -250,9 +250,9 @@ use Modules\Xot\Datas\XotData;
 ### **2. Hardcoding Classi**
 ```php
 // ❌ VIETATO
-$user = \Modules\SaluteOra\Models\User::find($id);
+$user = \Modules\<nome progetto>\Models\User::find($id);
 
-// ✅ CONSENTITO  
+// ✅ CONSENTITO
 $userClass = XotData::make()->getUserClass();
 $user = $userClass::find($id);
 ```
@@ -260,7 +260,7 @@ $user = $userClass::find($id);
 ### **3. Type Hints Specifici**
 ```php
 // ❌ VIETATO
-function updateUser(\Modules\SaluteOra\Models\User $user): void
+function updateUser(\Modules\<nome progetto>\Models\User $user): void
 
 // ✅ CONSENTITO
 function updateUser(UserContract $user): void
@@ -311,7 +311,7 @@ grep -r "function.*\\\Modules\\\.*\\\Models\\\User" --include="*.php" ./
 
 ### **Fase 2: Sostituzione Pattern**
 1. Sostituire import diretti con XotData
-2. Cambiare type hints con UserContract  
+2. Cambiare type hints con UserContract
 3. Aggiornare factory calls
 4. Implementare helper functions
 
@@ -325,7 +325,7 @@ grep -r "function.*\\\Modules\\\.*\\\Models\\\User" --include="*.php" ./
 
 ### **Documentazione Core**
 - [XotData API Reference](xotdata-api.md)
-- [UserContract Specification](contracts/user-contract.md)  
+- [UserContract Specification](contracts/user-contract.md)
 - [Best Practices](best-practices.md)
 - [Module Architecture](module-architecture.md)
 
@@ -335,12 +335,12 @@ grep -r "function.*\\\Modules\\\.*\\\Models\\\User" --include="*.php" ./
 - [IsTenant Trait](../../User/app/Models/Traits/IsTenant.php)
 
 ### **Documentazione Moduli**
-- [Cms Architecture](../../Cms/project_docs/architecture-xotdata-pattern.md)
-- [User Module Traits](../../User/project_docs/traits_complete_guide.md)
-- [Testing Strategy](../../SaluteOra/project_docs/testing/real-data-testing-strategy.md)
+- [Cms Architecture](../../cms/docs/architecture-xotdata-pattern.md)
+- [User Module Traits](../../user/docs/traits_complete_guide.md)
+- [Testing Strategy](../../<nome progetto>/docs/testing/real-data-testing-strategy.md)
 
 ---
 
-**Ultimo Aggiornamento**: Gennaio 2025  
-**Stato**: ✅ Pattern Documentato e Implementato  
-**Responsabile**: Team Architettura Laraxot 
+**Ultimo Aggiornamento**: Gennaio 2025
+**Stato**: ✅ Pattern Documentato e Implementato
+**Responsabile**: Team Architettura Laraxot

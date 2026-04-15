@@ -253,8 +253,12 @@ return [
 ### 1. Controllo Sintassi PHP
 ```bash
 cd /var/www/html/_bases/base_<nome progetto>/laravel
-cd /var/www/html/_bases/base_saluteora/laravel
-cd /var/www/html/_bases/base_techplanner_fila3_mono/laravel
+<<<<<<< HEAD
+cd /var/www/html/_bases/base_ptvx/laravel
+=======
+cd /var/www/html/_bases/base_healthcare_app/laravel
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
+cd /var/www/html/_bases/base_techplanner_fila5_mono/laravel
 php -l Modules/Notify/lang/it/send_email.php
 
 # Output: No syntax errors detected
@@ -278,11 +282,11 @@ php -l Modules/Notify/lang/it/send_email.php
 ## 🔗 Collegamenti
 
 ### Documentazione Correlata
-- [Regole Traduzioni Laraxot](../../../docs/translation-standards.md)
-- [Best Practice Filament](../../../docs/FILAMENT-BEST-PRACTICES.md)
-- [Regole Traduzioni Laraxot](../../../project_docs/translation-standards.md)
-- [Best Practice Filament](../../../docs/FILAMENT-BEST-PRACTICES.md)- [Regole Traduzioni Laraxot](../../../project_docs/translation-standards.md)
-- [Best Practice Filament](../../../project_docs/FILAMENT-BEST-PRACTICES.md)
+- [Regole Traduzioni Laraxot](../../../../docs/translation-standards.md)
+- [Best Practice Filament](../../../../docs/FILAMENT-BEST-PRACTICES.md)
+- [Regole Traduzioni Laraxot](../../../../docs/project/translation-standards.md)
+- [Best Practice Filament](../../../../docs/FILAMENT-BEST-PRACTICES.md)- [Regole Traduzioni Laraxot](../../../../docs/project/translation-standards.md)
+- [Best Practice Filament](../../../../docs/project/FILAMENT-BEST-PRACTICES.md)
 - [Struttura Modulo Notify](./README.md)
 
 ### File Modificati

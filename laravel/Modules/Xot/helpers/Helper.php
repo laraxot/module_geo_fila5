@@ -14,6 +14,11 @@ use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
+
+use function Safe\define;
+use function Safe\glob;
+use function Safe\preg_match;
+
 use Webmozart\Assert\Assert;
 
 if (! function_exists('isRunningTestBench')) {
@@ -79,7 +84,6 @@ if (! function_exists('hex2rgba')) {
         if ('#' === $color[0]) {
             $color = mb_substr($color, 1);
         }
-
         if (6 === mb_strlen($color)) {
             $hex = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
         } elseif (3 === mb_strlen($color)) {
@@ -93,7 +97,6 @@ if (! function_exists('hex2rgba')) {
             if ($opacity < 0 || $opacity > 1) {
                 $opacity = 1.0;
             }
-
             $output = 'rgba('.implode(',', $rgb).','.$opacity.')';
         } else {
             $output = 'rgb('.implode(',', $rgb).')';
@@ -111,7 +114,6 @@ if (! function_exists('dddx')) {
         if (! defined('LARAVEL_START')) {
             define('LARAVEL_START', $start);
         }
-
         $data = [
             '_' => $params,
             'line' => $tmp[0]['line'] ?? 'line-unknows',
@@ -232,6 +234,11 @@ if (! function_exists('isItem')) {
 }
 
 if (! function_exists('params2ContainerItem')) {
+    /**
+     * @param array<string, mixed>|null $params
+     *
+     * @return array{0: array<string, mixed>, 1: array<string, mixed>}
+     */
     function params2ContainerItem(?array $params = null): array
     {
         if (null === $params) {
@@ -244,7 +251,6 @@ if (! function_exists('params2ContainerItem')) {
 
         $container = [];
         $item = [];
-
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
@@ -278,8 +284,7 @@ if (! function_exists('getModelByName')) {
 
         $files_path = base_path('Modules').'/*/Models/*.php';
         Assert::isArray($files = glob($files_path));
-        $path = Arr::first($files, function ($file) use ($name): bool {
-            Assert::string($file, __FILE__.':'.__LINE__.' - Helper');
+        $path = Arr::first($files, function (string $file) use ($name): bool {
             $info = pathinfo($file);
 
             return Str::snake($info['filename'] ?? '') === $name;
@@ -304,7 +309,8 @@ if (! function_exists('getModuleFromModel')) {
     {
         $class = $model::class;
         $module_name = Str::before(Str::after($class, 'Modules\\'), '\\Models\\');
-        Assert::isInstanceOf($res = app('module')->find($module_name), Nwidart\Modules\Module::class);
+        $moduleRepository = app(Nwidart\Modules\Contracts\RepositoryInterface::class);
+        Assert::isInstanceOf($res = $moduleRepository->find($module_name), Nwidart\Modules\Module::class);
 
         return $res;
     }
@@ -375,7 +381,7 @@ if (! function_exists('authId')) {
 }
 
 if (! function_exists('trans_string')) {
-    function trans_string(string $key, array $replace = [], ?string $locale = null): ?string
+    function trans_string(string $key, array $replace = [], ?string $locale = null): string
     {
         $safeReplace = [];
         foreach ($replace as $k => $v) {
@@ -388,6 +394,6 @@ if (! function_exists('trans_string')) {
 
         $result = __($key, $safeReplace, $locale);
 
-        return is_string($result) ? $result : (null === $result ? null : $key);
+        return is_string($result) ? $result : $key;
     }
 }

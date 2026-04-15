@@ -323,7 +323,9 @@ public function panel(Panel $panel): Panel
 
 ```php
 // ❌ ERRATO - NON registrare asset chart in altri moduli
-// Modules/Quaeris/app/Providers/Filament/AdminPanelProvider.php
+// Modules/healthcare_app/app/Providers/Filament/AdminPanelProvider.php
+// Modules/ModuloEsempio/app/Providers/Filament/AdminPanelProvider.php
+>>>>>>> .merge_file_ZGnA1X
 // Modules/UI/app/Providers/Filament/AdminPanelProvider.php
 // Themes/Zero/app/Providers/Filament/AdminPanelProvider.php
 
@@ -333,7 +335,7 @@ public function panel(Panel $panel): Panel
     
     // ❌ NON fare questo - causa duplicazioni e conflitti
     // FilamentAsset::register([
-//     Js::make('chart-js-plugins', Vite::asset('resources/js/filament-chart-js-plugins.js', 'assets/Quaeris'))->module(),
+    //     Js::make('chart-js-plugins', Vite::asset('resources/js/filament-chart-js-plugins.js', 'assets/healthcare_app'))->module(),
     // ]);
     
     return $panel;

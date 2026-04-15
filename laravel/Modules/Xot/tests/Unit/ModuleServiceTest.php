@@ -4,6 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Unit;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+use Tests\TestCase;
+=======
+>>>>>>> 2253954 (.)
+>>>>>>> 4ffe7f41e (.)
+>>>>>>> 9506daa5 (.)
 use Modules\Xot\Services\ModuleService;
 use Tests\TestCase;
 
