@@ -27,7 +27,7 @@ class TrovaEsclusiAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.trova_esclusi.label'))
+            ->tooltip(__('ptv::scheda.actions.trova_esclusi.label'))
             ->icon('fas-skull')
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {
@@ -62,6 +62,9 @@ class TrovaEsclusiAction extends Action
                 
 
                 $yearInt = is_numeric($year) ? (int) $year : 0;
+
+
+                
                 app(TrovaEsclusiByModelClassYearAction::class)->execute($modelClass, $fieldname, $yearInt);
 
                 Notification::make()

@@ -27,7 +27,7 @@ class PopulateYearAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.'.$this->getDefaultName().'.label'))
+            ->tooltip(__('ptv::scheda.actions.'.$this->getDefaultName().'.label'))
             ->icon('fas-fill')
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {

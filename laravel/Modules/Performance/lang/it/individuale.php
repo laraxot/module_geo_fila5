@@ -16,11 +16,15 @@ return [
             'label' => 'Ha Diritto',
             'placeholder' => 'Indica se ha diritto alla valutazione',
             'help' => 'Stato del diritto alla valutazione',
+            'helper_text' => 'ha_diritto',
+            'description' => 'ha_diritto',
         ],
         'motivo' => [
             'label' => 'Motivo',
             'placeholder' => 'Specifica il motivo',
             'help' => 'Motivazione della valutazione',
+            'helper_text' => 'motivo',
+            'description' => 'motivo',
         ],
         'mail_sended_at' => [
             'label' => 'Data Invio Mail',
@@ -125,48 +129,89 @@ return [
         'al' => [
             'label' => 'al',
             'description' => 'al',
+            'helper_text' => 'al',
+            'placeholder' => 'al',
         ],
         'dal' => [
             'label' => 'dal',
+            'description' => 'dal',
+            'helper_text' => 'dal',
+            'placeholder' => 'dal',
         ],
         'repar_txt' => [
             'label' => 'repar_txt',
+            'description' => 'repar_txt',
+            'helper_text' => 'repar_txt',
+            'placeholder' => 'repar_txt',
         ],
         'repar' => [
             'label' => 'repar',
+            'description' => 'repar',
+            'placeholder' => 'repar',
+            'helper_text' => 'repar',
         ],
         'stabi_txt' => [
             'label' => 'stabi_txt',
+            'placeholder' => 'stabi_txt',
+            'helper_text' => 'stabi_txt',
+            'description' => 'stabi_txt',
         ],
         'stabi' => [
             'label' => 'stabi',
+            'placeholder' => 'stabi',
+            'helper_text' => 'stabi',
+            'description' => 'stabi',
         ],
         'disci1_txt' => [
             'label' => 'disci1_txt',
+            'placeholder' => 'disci1_txt',
+            'helper_text' => 'disci1_txt',
+            'description' => 'disci1_txt',
         ],
         'disci1' => [
             'label' => 'disci1',
+            'placeholder' => 'disci1',
+            'helper_text' => 'disci1',
+            'description' => 'disci1',
         ],
         'cognome' => [
             'label' => 'cognome',
+            'placeholder' => 'cognome',
+            'helper_text' => 'cognome',
+            'description' => 'cognome',
         ],
         'nome' => [
             'label' => 'nome',
+            'placeholder' => 'nome',
+            'helper_text' => 'nome',
+            'description' => 'nome',
         ],
         'matr' => [
             'label' => 'matr',
+            'placeholder' => 'matr',
+            'helper_text' => 'matr',
+            'description' => 'matr',
         ],
         'email' => [
             'label' => 'email',
+            'placeholder' => 'email',
+            'helper_text' => 'email',
+            'description' => 'email',
         ],
         'totale_punteggio' => [
             'label' => 'totale_punteggio',
         ],
         'propro' => [
             'label' => 'propro',
+            'placeholder' => 'propro',
+            'helper_text' => 'propro',
+            'description' => 'propro',
         ],
         'posfun' => [
             'label' => 'posfun',
+            'placeholder' => 'posfun',
+            'helper_text' => 'posfun',
+            'description' => 'posfun',
         ],
         'categoria_eco' => [
             'label' => 'categoria_eco',
@@ -179,9 +224,15 @@ return [
         ],
         'posiz' => [
             'label' => 'posiz',
+            'placeholder' => 'posiz',
+            'helper_text' => 'posiz',
+            'description' => 'posiz',
         ],
         'posiz_txt' => [
             'label' => 'posiz_txt',
+            'placeholder' => 'posiz_txt',
+            'helper_text' => 'posiz_txt',
+            'description' => 'posiz_txt',
         ],
         'valutatore_id' => [
             'label' => 'valutatore_id',
@@ -212,9 +263,27 @@ return [
         ],
         'id' => [
             'label' => 'id',
+            'placeholder' => 'id',
+            'helper_text' => 'id',
+            'description' => 'id',
         ],
         'type' => [
             'label' => 'type',
+        ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
+        'criteri' => [
+            'label' => 'criteri',
+            'placeholder' => 'criteri',
+            'helper_text' => 'criteri',
+            'description' => 'criteri',
+        ],
+        'last_data_assunz' => [
+            'label' => 'last_data_assunz',
+            'placeholder' => 'last_data_assunz',
+            'helper_text' => 'last_data_assunz',
+            'description' => 'last_data_assunz',
         ],
     ],
     'actions' => [
@@ -371,6 +440,26 @@ return [
             'icon' => 'export_xls',
             'tooltip' => 'export_xls',
         ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'icon' => 'cancel',
+            'label' => 'cancel',
+        ],
+        'save' => [
+            'tooltip' => 'save',
+            'icon' => 'save',
+            'label' => 'save',
+        ],
+        'refresh' => [
+            'label' => 'refresh',
+            'icon' => 'refresh',
+            'tooltip' => 'refresh',
+        ],
+        'last_data_assunz' => [
+            'label' => 'last_data_assunz',
+            'icon' => 'last_data_assunz',
+            'tooltip' => 'last_data_assunz',
+        ],
     ],
     'messages' => [
         'import' => [
@@ -395,4 +484,34 @@ return [
         'label' => 'individuale.model',
     ],
     'label' => 'individuale',
+    'sections' => [
+        'assenze' => [
+            'heading' => 'assenze',
+            'label' => 'assenze',
+        ],
+        'periodo' => [
+            'heading' => 'periodo',
+            'label' => 'periodo',
+        ],
+        'diritto' => [
+            'label' => 'diritto',
+            'heading' => 'diritto',
+        ],
+        'lavoratore' => [
+            'label' => 'lavoratore',
+            'heading' => 'lavoratore',
+        ],
+        'qua' => [
+            'label' => 'qua',
+            'heading' => 'qua',
+        ],
+        'rep' => [
+            'label' => 'rep',
+            'heading' => 'rep',
+        ],
+        'criteri' => [
+            'label' => 'criteri',
+            'heading' => 'criteri',
+        ],
+    ],
 ];

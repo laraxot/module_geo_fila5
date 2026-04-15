@@ -161,8 +161,7 @@ class ListScheda extends XotBaseListRecords
     public function getTableActions(): array
     {
         return [
-            // Tables\Actions\ViewAction::make(),
-
+            ...parent::getTableActions(),
             'compila' => CompilaAction::make()
                 ->visible(function (SchedaContract $record): bool {
                     // @var bool|null $haDiritto
@@ -173,9 +172,6 @@ class ListScheda extends XotBaseListRecords
                     /* @var bool|null $haDiritto */
                     return (int) $record->ha_diritto > 0;
                 }),
-
-            // EditAction::make(),
-            // Tables\Actions\EditAction::make(),
         ];
     }
 

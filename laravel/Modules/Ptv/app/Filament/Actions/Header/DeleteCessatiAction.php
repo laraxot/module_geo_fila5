@@ -45,13 +45,13 @@ final class DeleteCessatiAction extends Action
         parent::setUp();
 
         $this->label('')
-            ->tooltip(__('ptv::actions.delete_cessati.label'))
+            ->tooltip(__('ptv::scheda.actions.delete_cessati.label'))
             ->icon('heroicon-o-trash')
             ->color('danger')
             ->form([
                 Select::make('anno')
-                    ->label(__('ptv::actions.delete_cessati.year_label'))
-                    ->placeholder(__('ptv::actions.delete_cessati.year_placeholder'))
+                    ->label(__('ptv::scheda.actions.delete_cessati.year_label'))
+                    ->placeholder(__('ptv::scheda.actions.delete_cessati.year_placeholder'))
                     ->options([
                         '2023' => '2023',
                         '2024' => '2024',
@@ -71,7 +71,7 @@ final class DeleteCessatiAction extends Action
                     }),
 
                 TextEntry::make('records_count')
-                    ->label(__('ptv::actions.delete_cessati.count_label'))
+                    ->label(__('ptv::scheda.actions.delete_cessati.count_label'))
                     ->formatStateUsing(function ($state, callable $get): string {
                         $anno = $get('anno');
                         if (! $anno) {
@@ -88,7 +88,7 @@ final class DeleteCessatiAction extends Action
                     ->color(fn (string $state): string => str_contains($state, 'Nessun') ? 'gray' : 'warning'),
 
                 Textarea::make('records_preview')
-                    ->label(__('ptv::actions.delete_cessati.preview_label'))
+                    ->label(__('ptv::scheda.actions.delete_cessati.preview_label'))
                     ->rows(10)
                     ->disabled(),
             ])
@@ -100,7 +100,7 @@ final class DeleteCessatiAction extends Action
                 $anno = $data['anno'] ?? null;
                 if (! $anno) {
                     Notification::make()
-                        ->title(__('ptv::actions.delete_cessati.no_year_error'))
+                        ->title(__('ptv::scheda.actions.delete_cessati.no_year_error'))
                         ->danger()
                         ->send();
 
@@ -111,7 +111,7 @@ final class DeleteCessatiAction extends Action
 
                 if ($cessatiRecords->isEmpty()) {
                     Notification::make()
-                        ->title(__('ptv::actions.delete_cessati.no_records_error'))
+                        ->title(__('ptv::scheda.actions.delete_cessati.no_records_error'))
                         ->warning()
                         ->send();
 
@@ -126,7 +126,7 @@ final class DeleteCessatiAction extends Action
                     });
 
                     Notification::make()
-                        ->title(__('ptv::actions.delete_cessati.success_title', [
+                        ->title(__('ptv::scheda.actions.delete_cessati.success_title', [
                             'count' => $cessatiRecords->count(),
                         ]))
                         ->success()
@@ -135,16 +135,16 @@ final class DeleteCessatiAction extends Action
                     $livewire->resetTable();
                 } catch (\Exception $e) {
                     Notification::make()
-                        ->title(__('ptv::actions.delete_cessati.error_title'))
+                        ->title(__('ptv::scheda.actions.delete_cessati.error_title'))
                         ->body($e->getMessage())
                         ->danger()
                         ->send();
                 }
             })
-            ->modalHeading(__('ptv::actions.delete_cessati.modal_title'))
-            ->modalDescription(__('ptv::actions.delete_cessati.modal_description'))
-            ->modalSubmitActionLabel(__('ptv::actions.delete_cessati.submit_label'))
-            ->modalCancelActionLabel(__('ptv::actions.delete_cessati.cancel_label'))
+            ->modalHeading(__('ptv::scheda.actions.delete_cessati.modal_title'))
+            ->modalDescription(__('ptv::scheda.actions.delete_cessati.modal_description'))
+            ->modalSubmitActionLabel(__('ptv::scheda.actions.delete_cessati.submit_label'))
+            ->modalCancelActionLabel(__('ptv::scheda.actions.delete_cessati.cancel_label'))
             ->modalWidth('4xl')
             ->visible(function ($livewire): bool {
                 if (! ($livewire instanceof ListRecords)) {

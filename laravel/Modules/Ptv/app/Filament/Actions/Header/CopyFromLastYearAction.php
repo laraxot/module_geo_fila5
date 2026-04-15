@@ -30,7 +30,7 @@ class CopyFromLastYearAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.copy_from_last_year'))
+            ->tooltip(__('ptv::scheda.actions.copy_from_last_year'))
             ->icon('heroicon-o-document-duplicate')
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {

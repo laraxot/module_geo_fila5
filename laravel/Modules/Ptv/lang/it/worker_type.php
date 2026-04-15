@@ -23,4 +23,26 @@ return [
         'icon' => 'heroicon-o-user',
         'color' => 'info',
     ],
+    'values'=>[
+        'dip' => [
+            'label' => 'Dipendente',
+            'icon' => 'heroicon-o-user',
+            'color' => 'info',
+        ],
+        'regionale' => [
+            'label' => 'Regionale',
+            'icon' => 'heroicon-o-user',
+            'color' => 'info',
+        ],
+        'po' => [
+            'label' => 'Po',
+            'icon' => 'heroicon-o-user',
+            'color' => 'info',
+        ],
+        'dirigente' => [
+            'label' => 'Dirigente',
+            'icon' => 'heroicon-o-user',
+            'color' => 'info',
+        ],
+    ]
 ];

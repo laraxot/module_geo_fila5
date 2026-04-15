@@ -11,16 +11,16 @@ use Livewire\Wireable;
 use Modules\Xot\Traits\EnumTrait;
 use Spatie\LaravelData\Concerns\WireableData;
 
-enum WorkerType: string implements HasColor, HasIcon, HasLabel, Wireable
+enum WorkerType: string implements HasColor, HasIcon, HasLabel//, Wireable
 {
     use WireableData;
     use EnumTrait;
 
     case Dip = 'dip';
     case Regionale = 'regionale';
-    case IndividualeRegionale = 'individuale_regionale';
     case Po = 'po';
     case Dirigente = 'dirigente';
+    //case IndividualeRegionale = 'individuale_regionale';
 
    
 }

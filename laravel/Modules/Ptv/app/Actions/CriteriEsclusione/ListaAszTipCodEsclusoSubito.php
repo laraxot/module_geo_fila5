@@ -6,7 +6,7 @@ namespace Modules\Ptv\Actions\CriteriEsclusione;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class ListaAszTipCodEsclusoSubito
@@ -21,7 +21,7 @@ class ListaAszTipCodEsclusoSubito
      * @param  Collection<string, mixed>  $option  Collezione delle opzioni del criterio
      * @return string Motivo di esclusione o stringa vuota se ha diritto
      */
-    public function execute(ProgressioneSchedaContract $scheda, string $value, Collection $option): string
+    public function execute(SchedaContract $scheda, string $value, Collection $option): string
     {
         // $asz_al = Carbon::parse($data_presenza_al)->format('Ymd');
         $dataPresenzaAl = $option->get('data_presenza_al');

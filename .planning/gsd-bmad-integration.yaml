@@ -1,0 +1,162 @@
+# GSD + BMAD Integration Configuration
+# Integrazione tra GSD (spec-driven development) e BMAD V6.3.0 (method framework)
+
+## Workflow Hybrid: GSD + BMAD
+
+### Overview
+Questo sistema ibrido combina:
+- **GSD**: Per la gestione delle specifiche e del ciclo di vita del progetto
+- **BMAD**: Per la generazione di artefatti specifici e workflow specializzati
+
+### Decision Flow
+
+```mermaid
+graph TD
+    A[Inizio Task] --> B{Tipo di Task?}
+    B -->|Spec/Requisiti| C[GSD: /gsd:plan-phase N]
+    B -->|Nuova Feature| D[BMAD: bmad-create-prd]
+    B -->|Implementazione| E[BMAD: bmad-quick-dev]
+    B -->|Code Review| F[BMAD: bmad-code-review]
+    B -->|Brainstorming| G[BMAD: bmad-brainstorming]
+```
+
+## Mapping Fasi GSD ↔ BMAD
+
+| Fase GSD | BMAD Skills | Output |
+|----------|-------------|--------|
+| 1-analysis | bmad-domain-research, bmad-technical-research, bmad-market-research | Research documents |
+| 2-planning | bmad-create-prd, bmad-create-epics-and-stories | PRD, Epics, Stories |
+| 3-solutioning | bmad-create-architecture, bmad-create-ux-design | Architecture, UX design |
+| 4-implementation | bmad-quick-dev, bmad-dev-story | Implementation artifacts |
+| 5-verification | bmad-qa-generate-e2e-tests, bmad-check-implementation-readiness | Tests, validation reports |
+
+## Comandi Combinati
+
+### Planning Phase
+```bash
+# 1. Usa GSD per pianificare la fase
+/gsd:plan-phase 1
+
+# 2. Usa BMAD per generare artefatti specifici
+bmad-create-prd --context .planning/PHASE-1/requirements.md
+bmad-create-epics-and-stories --prd .planning/PHASE-1/PRD.md
+```
+
+### Execution
+```bash
+# 1. Genera project context per BMAD
+bmad-generate-project-context
+
+# 2. Esegui sviluppo rapido
+bmad-quick-dev --story .planning/PHASE-1/stories/story-001.md
+
+# 3. Verifica implementazione
+bmad-check-implementation-readiness --phase 1
+```
+
+## Configurazione IDE
+
+### Claude Code
+```yaml
+# .claude/settings.json
+{
+  "hooks": {
+    "pre-gsd-plan": "bmad-generate-project-context",
+    "post-gsd-plan": "bmad-validate-prd --path .planning/PHASE-1/PRD.md"
+  }
+}
+```
+
+### Cursor
+```yaml
+# .cursor/rules/bmad-gsd.mdc
+# BMAD + GSD Rules for Cursor
+- Prima di aprire un task: verificare che il project context sia aggiornato
+- Usare GSD per il lifecycle, BMAD per gli artefatti specifici
+- Mantenere sincronizzati PRD e REQUIREMENTS.md
+```
+
+## Quality Gates Combinati
+
+### GSD Quality Gates
+- PHPStan Level 10
+- Test coverage >80%
+- Documentation completa
+- Compliance Laraxot patterns
+
+### BMAD Quality Gates
+- PRD validation
+- Architecture review
+- User story completeness
+- Implementation readiness
+
+## Templates Personalizzati
+
+### GSD Templates con BMAD Integration
+- `.gsd/templates/PHASE-PLAN.md`: Include sezione per BMAD workflow
+- `.gsd/templates/QUICK-TASK.md`: Integra bmad-quick-dev
+- `.gsd/templates/PHASE-UAT.md`: Usa bmad-qa-generate-e2e-tests
+
+## Memory Sharing
+
+### GSD Memory
+- `.planning/memory/`: Stato del progetto GSD
+
+### BMAD Memory
+- `_bmad/_memory/`: Contesto BMAD e agent memory
+
+### Integration Points
+- `.planning/PROJECT.md` ↔ `_bmad/_memory/project-context.md`
+- `.planning/REQUIREMENTS.md` ↔ BMAD PRD validation
+- `.planning/ROADMAP.md` ↔ BMAD epics generation
+
+## Workflow Commands
+
+### GSD Commands Enhanced
+```bash
+/gsd:discuss-phase 1      # → Auto: bmad-domain-research
+/gsd:plan-phase 1         # → Auto: bmad-create-prd
+/gsd:execute-phase 1      # → Auto: bmad-quick-dev per ogni story
+/gsd:verify-work 1        # → Auto: bmad-check-implementation-readiness
+```
+
+### BMAD Commands Accessibili
+```bash
+bmad-help                 # Mostra tutti i workflow disponibili
+bmad-brainstorming        # Per ideazione iniziale
+bmad-create-prd           # Per creare PRD dettagliati
+bmad-quick-dev           # Per implementazione rapida
+bmad-code-review         # Per review avversariali
+```
+
+## Esempio di Utilizzo
+
+### Nuova Feature
+```bash
+# 1. Brainstorming con BMAD
+bmad-brainstorming --topic "Nuovo modulo di performance evaluation"
+
+# 2. Creazione PRD
+bmad-create-prd --output .planning/FEATURES/PERFORMANCE-PRD.md
+
+# 3. Planning con GSD
+/gsd:plan-phase 2 --features PERFORMANCE
+
+# 4. Implementazione con BMAD
+bmad-quick-dev --story .planning/PHASE-2/stories/perf-001.md
+
+# 5. Verifica
+bmad-check-implementation-readiness --feature performance
+```
+
+### Bug Fix
+```bash
+# 1. Quick development
+bmad-quick-dev --intent "Fix bug X in authentication"
+
+# 2. Code review
+bmad-code-review --path laravel/Modules/Auth/ --focus security
+
+# 3. Update requirements
+/gsd:quick "Update requirements to reflect bug fix"
+```

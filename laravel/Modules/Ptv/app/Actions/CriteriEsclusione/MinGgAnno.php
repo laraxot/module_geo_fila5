@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
+use Modules\Ptv\Models\Contracts\SchedaContract;
+
 use Spatie\QueueableAction\QueueableAction;
 
 class MinGgAnno
 {
     use QueueableAction;
 
-    public function execute(ProgressioneSchedaContract $scheda, string $value): string
+    public function execute(SchedaContract $scheda, string $value): string
     {
         $value = intval($value);
         // Use isset check which works with Eloquent models

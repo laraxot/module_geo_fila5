@@ -25,7 +25,7 @@ class FillOutTheFormAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.fill_out_the_form'))
+            ->tooltip(__('ptv::scheda.actions.fill_out_the_form'))
             ->icon('heroicon-m-pencil-square')
             ->url(function (ListRecords $livewire, $record): string {
                 $resource = $livewire->getResource();
@@ -37,7 +37,7 @@ class FillOutTheFormAction extends Action
         // ->visible(fn ($record) => $record->ha_diritto),
 
         /*
-            ->tooltip(__('ptv::actions.fill_out_the_form'))
+            ->tooltip(__('ptv::scheda.actions.fill_out_the_form'))
             ->icon('heroicon-o-document-duplicate')
             ->action(function ($livewire,$record,$action) {
         $modelClass=$livewire->getResource()::getModel();

@@ -24,17 +24,25 @@
       "path": "./laravel/Modules/UI/docs/raw",
       "description": "Documentazione del modulo UI"
     },
-    "bashscripts_docs": {
-      "path": "./bashscripts/docs/raw",
-      "description": "Documentazione di bashscripts"
+    "bashscripts_Xot": {
+      "path": "./laravel/Modules/Xot/docs/bashscripts/raw",
+      "description": "Documentazione di bashscripts in Xot"
     },
-    "theme_Zero": {
-      "path": "./laravel/Themes/Zero/docs/raw",
-      "description": "Documentazione del tema Zero"
+    "bashscripts_User": {
+      "path": "./laravel/Modules/User/docs/bashscripts/raw",
+      "description": "Documentazione di bashscripts in User"
     },
-    "theme_One": {
-      "path": "./laravel/Themes/One/docs/raw",
-      "description": "Documentazione del tema One"
+    "bashscripts_Notify": {
+      "path": "./laravel/Modules/Notify/docs/bashscripts/raw",
+      "description": "Documentazione di bashscripts in Notify"
+    },
+    "bashscripts_Lang": {
+      "path": "./laravel/Modules/Lang/docs/bashscripts/raw",
+      "description": "Documentazione di bashscripts in Lang"
+    },
+    "theme_TwentyOne": {
+      "path": "./Notify/laravel/Themes/TwentyOne/docs/raw",
+      "description": "Documentazione del tema TwentyOne"
     }
   }
 }

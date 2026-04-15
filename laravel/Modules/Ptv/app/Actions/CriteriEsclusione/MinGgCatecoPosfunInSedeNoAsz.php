@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class MinGgCatecoPosfunInSedeNoAsz
 {
     use QueueableAction;
 
-    public function execute(ProgressioneSchedaContract $scheda, string $value): string
+    public function execute(SchedaContract $scheda, string $value): string
     {
         $value = intval($value);
         $gg_cateco_posfun_in_sede_no_asz = isset($scheda->gg_cateco_posfun_in_sede_no_asz) ? $scheda->gg_cateco_posfun_in_sede_no_asz : 0;

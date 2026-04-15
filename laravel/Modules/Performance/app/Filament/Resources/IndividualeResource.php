@@ -43,6 +43,8 @@ class IndividualeResource extends BaseSchedaResource
     {
         // Types are inferred by Filament v4
         return [
+            ...parent::getFormSchema(),
+            /*
             'id' => TextInput::make('id')->disabled(),
 
             'diritto_section' => Section::make('diritto')
@@ -94,6 +96,7 @@ class IndividualeResource extends BaseSchedaResource
                 'gg_assenza_dalal' => TextInput::make('gg_assenza_dalal'),
                 'hh_assenza_dalal' => TextInput::make('hh_assenza_dalal'),
             ])->columns(4),
+            */
         ];
     }
 

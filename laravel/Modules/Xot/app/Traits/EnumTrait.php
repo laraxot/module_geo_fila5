@@ -152,4 +152,18 @@ trait EnumTrait
     {
         return [];
     }
+
+    
+    public static function toArray(): array
+    {
+        $cases = static::cases();
+        $result = [];
+        foreach ($cases as $item) {
+            $name = (string) $item->value;
+            $result[$name] = $item->getLabel();
+        }
+
+        return $result;
+    }
+    
 }

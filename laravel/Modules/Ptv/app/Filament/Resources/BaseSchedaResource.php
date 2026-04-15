@@ -13,11 +13,14 @@ use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\Performance\Models\Individuale;
+use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CreateScheda;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\EditScheda;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Ptv\Models\Scheda;
+use Modules\Xot\Filament\Actions\Form\FieldRefreshAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
 use ReflectionClass;
@@ -33,8 +36,8 @@ abstract class BaseSchedaResource extends XotBaseResource
      */
     public static function getFormSchema(): array
     {
-        // Types are inferred by Filament v4
-        return [
+        
+        $schema= [
             'id' => TextInput::make('id')->disabled(),
 
             'diritto_section' => Section::make('diritto')
@@ -44,7 +47,9 @@ abstract class BaseSchedaResource extends XotBaseResource
                         ->tooltip('ricalcola')
                         ->icon('heroicon-o-arrow-path')
                         ->action(function ($record) {
-                            dddx($record);
+                            $validatedCriteriEsclusione=$record->criteriEsclusione->where('value', '!=', 0);
+                            $validatedCriteriOption=$record->getCriteriOptions();
+                            app(Check::class)->execute($record, $validatedCriteriEsclusione, $validatedCriteriOption);
                         }),
                 ])
                 ->schema([
@@ -86,7 +91,27 @@ abstract class BaseSchedaResource extends XotBaseResource
                 'gg_assenza_dalal' => TextInput::make('gg_assenza_dalal'),
                 'hh_assenza_dalal' => TextInput::make('hh_assenza_dalal'),
             ])->columns(4),
+            'criteri_section' => Section::make('criteri')->schema(fn($record)=>static::getFormSchemaCriteri($record))->columns(4),
         ];
+        
+
+        return $schema;
+    }
+
+
+    public static function getFormSchemaCriteri(SchedaContract $record): array
+    {
+        $schema = [];
+
+        $fields=$record->criteriEsclusione->where('field_name','!=','')->pluck('field_name')->unique()->toArray();
+        foreach($fields as $field){
+            $schema[$field] = TextInput::make($field)
+                ->suffixAction(FieldRefreshAction::make($field));
+            //'propro' => TextInput::make('propro')
+            //        ->suffixAction(FieldRefreshAction::make('propro')),
+        }
+        
+        return $schema;
     }
 
 
