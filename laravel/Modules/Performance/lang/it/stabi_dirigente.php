@@ -85,30 +85,57 @@ return [
         ],
         'id' => [
             'label' => 'id',
+            'placeholder' => 'id',
+            'helper_text' => 'id',
+            'description' => 'id',
         ],
         'valutatore_id' => [
             'label' => 'valutatore_id',
+            'placeholder' => 'valutatore_id',
+            'helper_text' => 'valutatore_id',
+            'description' => 'valutatore_id',
         ],
         'stabi' => [
             'label' => 'stabi',
+            'placeholder' => 'stabi',
+            'helper_text' => 'stabi',
+            'description' => 'stabi',
         ],
         'repar' => [
             'label' => 'repar',
+            'placeholder' => 'repar',
+            'helper_text' => 'repar',
+            'description' => 'repar',
         ],
         'nome_stabi' => [
             'label' => 'nome_stabi',
+            'placeholder' => 'nome_stabi',
+            'helper_text' => 'nome_stabi',
+            'description' => 'nome_stabi',
         ],
         'matr' => [
             'label' => 'matr',
+            'placeholder' => 'matr',
+            'helper_text' => 'matr',
+            'description' => 'matr',
         ],
         'nome_diri' => [
             'label' => 'nome_diri',
+            'placeholder' => 'nome_diri',
+            'helper_text' => 'nome_diri',
+            'description' => 'nome_diri',
         ],
         'nome_diri_plus' => [
             'label' => 'nome_diri_plus',
+            'placeholder' => 'nome_diri_plus',
+            'helper_text' => 'nome_diri_plus',
+            'description' => 'nome_diri_plus',
         ],
         'email' => [
             'label' => 'email',
+            'placeholder' => 'email',
+            'helper_text' => 'email',
+            'description' => 'email',
         ],
         'create' => [
             'label' => 'create',
@@ -273,6 +300,26 @@ return [
             'label' => 'cancel',
             'icon' => 'cancel',
             'tooltip' => 'cancel',
+        ],
+        'save' => [
+            'tooltip' => 'save',
+            'label' => 'save',
+            'icon' => 'save',
+        ],
+        'stabi' => [
+            'label' => 'stabi',
+            'icon' => 'stabi',
+            'tooltip' => 'stabi',
+        ],
+        'repar' => [
+            'label' => 'repar',
+            'icon' => 'repar',
+            'tooltip' => 'repar',
+        ],
+        'nome_stabi' => [
+            'label' => 'nome_stabi',
+            'icon' => 'nome_stabi',
+            'tooltip' => 'nome_stabi',
         ],
     ],
     'messages' => [
