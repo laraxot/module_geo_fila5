@@ -37,5 +37,14 @@ return [
         'disci1' => [
             'label' => 'disci1',
         ],
+        'clafun' => [
+            'label' => 'clafun',
+        ],
+        'codqua' => [
+            'label' => 'codqua',
+        ],
+        'codqua_txt' => [
+            'label' => 'codqua_txt',
+        ],
     ],
 ];

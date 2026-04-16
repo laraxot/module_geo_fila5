@@ -149,9 +149,9 @@ return [
             'tooltip' => 'save',
         ],
         'cancel' => [
+            'tooltip' => 'cancel',
             'label' => 'cancel',
             'icon' => 'cancel',
-            'tooltip' => 'cancel',
         ],
         'profile' => [
             'label' => 'profile',
@@ -207,18 +207,6 @@ return [
             'label' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
             'tooltip' => 'resetColumnManager',
-        ],
-        'logout' => [
-            'tooltip' => 'logout',
-            'icon' => 'logout',
-            'label' => 'logout',
-        ],
-        'reorderRecords' => [
-            'tooltip' => 'reorderRecords',
-            'icon' => 'reorderRecords',
-        ],
-        'cancel' => [
-            'tooltip' => 'cancel',
         ],
     ],
     'messages' => [

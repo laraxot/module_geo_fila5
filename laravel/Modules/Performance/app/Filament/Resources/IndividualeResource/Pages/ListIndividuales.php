@@ -6,6 +6,7 @@ namespace Modules\Performance\Filament\Resources\IndividualeResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+use Illuminate\Support\Facades\Auth;
 use Modules\Performance\Filament\Actions\Header\CopyFromOrganizzativaAction;
 use Modules\Performance\Filament\Resources\IndividualeResource;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
@@ -27,7 +28,8 @@ class ListIndividuales extends ListScheda
     {
         return [
             ...parent::getHeaderActions(),
-            'copy_from_organizzativa' => CopyFromOrganizzativaAction::make('copy_from_organizzativa'),
+            'copy_from_organizzativa' => CopyFromOrganizzativaAction::make('copy_from_organizzativa')
+            //->visible(fn (): bool => Auth::user()->isSuperAdmin()),
         ];
     }
 }

@@ -1,52 +1,49 @@
 <x-filament::page>
     @include($view.'.head')
-    
-	
-    
-    
-    <table class="w-full border-collapse border border-gray-300" style=" ">
-        <tr style="border-bottom: 1px solid #e0e0e0; ">
+	<table class="w-full border-collapse border border-gray-300">
+        <tr>
 			<td class="border border-gray-300 px-4 py-2">
-                <b>Criterio</b>
+                Criterio
             </td>   
             <td class="border border-gray-300 px-4 py-2">
-                <b>Descrizione</b>
+                Descrizione
             </td>   
 
             
             <td class="border border-gray-300 px-4 py-2">
-                <b>Valutazione</b>
+                Valutazione
             </td>   
             <td class="border border-gray-300 px-4 py-2">
-                <b>Peso</b>
+                Peso
             </td>   
         </tr>
-		@foreach($record->getCriteriOptionsRoot() as $root)
-		<tr style="border-bottom: 1px solid #e0e0e0; ">
+		@foreach($criteri_options_root as $root)
+		<tr>
 			<td class="border border-gray-300 px-4 py-2">
                 <div class="flex whitespace-normal " >
-                    <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white  "style="" >
+                    <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white  " style="" >
                         {!! $root->txt !!}
                     </span>
                 </div>
 			</td>
             <td class="border border-gray-300 px-4 py-2">
                 <table class="w-full border-collapse border border-gray-300">
-                    @php   
-                        $sons=$root->sons()->where('option_type', 'dip')->ordered()->get();
+                    @php
+                        
+                        $sons=$root->sons()->where('option_type', 'po')->ordered()->get();
                     @endphp
                 @foreach($sons as $son)
-                    <tr style="border-bottom: 1px solid #e0e0e0; ">
+                    <tr>
                         <td class="border border-gray-300 px-4 py-2">
                             <div class="flex whitespace-normal max-w-max" >
-                                <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white  "style="" >
+                                <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white  " style="" >
                                     {!! $son->txt !!}
                                 </span>
                             </div>
                         </td>
                          <td class="border border-gray-300 px-4 py-2">
                             <div class="flex whitespace-normal max-w-max " >
-                                <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white "style="" >
+                                <span class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white " style="" >
                                     {!! $son->txt1 !!}
                                 </span>
                             </div>
@@ -108,7 +105,6 @@
             </td>
         </tr>
 	</table>
-    
 
     @if ($errors->any())
     <div class="text-danger-600 hover:text-danger-700">

@@ -8,6 +8,7 @@ use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Modules\Performance\Models\Individuale;
 use Modules\Performance\Models\Organizzativa;
 
@@ -114,7 +115,7 @@ class CopyFromOrganizzativaAction extends Action
     public function isVisible(): bool
     {
         // Visible solo per utenti autorizzati
-        return true;
+        return Auth::user()->isSuperAdmin();
     }
 
     /**

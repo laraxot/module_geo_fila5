@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Modules\Sigma\Models\Codici;
+use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
 
 /**
@@ -38,7 +39,7 @@ trait SchedaMutator
      *
      * @return string|null Codqua calcolato, null se non disponibile
      */
-    protected function getCodqua(): ?string
+    protected function getCodqua(): ?int
     {
         // Guard: qua2kd deve esistere
         if ($this->qua2kd === '') {
@@ -59,7 +60,7 @@ trait SchedaMutator
             ]);
         }
 
-        return (string) $qua00f->codqua;
+        return $qua00f->codqua;
     }
 
     /**
@@ -68,22 +69,83 @@ trait SchedaMutator
      *
      * @return string|null Codqua calcolato
      */
-    protected function getCodquaAttribute(): ?string
+    protected function getCodquaAttribute(?int $value): ?int
     {
-        // Cache hit: se già in attributes, uso quello
-        $value = $this->attributes['codqua'] ?? null;
+        
         if ($value !== null) {
-            return (string) $value;
+            return  $value;
         }
 
-        // Guard: record deve esistere
-        if ($this->getKey() == null) {
-            return null;
-        }
-
+        
         // Delega calcolo al metodo puro (VICINO!)
-        return $this->getCodqua();
+        $value = $this->getCodqua();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['codqua' => $value]);
+            });
+        }
+        return $value;
     }
+
+
+    protected function getCodquaTxt(): ?string
+    {
+        /*
+        $row = Codici::where('codice', '768')->get();
+        $rows=Tqu00f::limit(10)->get();
+        dddx($this->tqu00f()->get());
+        //dddx($this->qua00f);
+        return $row->desc1;
+        */
+    }
+
+
+    protected function getCodquaTxtAttributeTmp(?string $value): ?string
+    {
+        //dddx($this->integParams()->toRawSql());
+        
+        return $this->tqu00f()->first()->liv;
+        if ($value !== null) {
+            return $value;
+        }
+
+        
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getCodquaTxt();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['codqua_txt' => $value]);
+            });
+        }
+        return $value;
+    }
+
+    /*
+    protected function getClafun(): ?int
+    {
+         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
+         dddx($qua00f);
+    }
+    
+
+    protected function getClafunAttribute(?int $value): ?int
+    {
+        if ($value !== null) {
+            return $value;
+        }
+        $value = $this->getClafun();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['clafun' => $value]);
+            });
+        }
+        return $value;
+        
+    }
+    */
 
     /**
      * Helper method: Ottiene cont (contratto) da qua00f (calcolo puro).

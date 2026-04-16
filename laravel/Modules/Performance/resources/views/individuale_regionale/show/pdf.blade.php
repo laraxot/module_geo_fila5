@@ -7,8 +7,10 @@
     </h4>
     <b>Dipendente:</b> {{ $row->cognome }} {{ $row->nome }} <b>matr:</b> {{ $row->matr }} <b>Email
         :</b>{{ $row->email }}<br />
-    <b>Cat. Giur:</b> {{ $row->posizione_eco }} <b>Settore:</b> {{ $row->stabi_txt }} <b>Reparto:</b>
-    {{ $row->repar_txt }}<b>             dal:</b> {{ $row->dal }} <b>al:</b> {{ $row->al }} <br />
+    <b>Cat. Giur:</b> {{-- $row->posizione_eco --}} {{ $row->categoria_ecoval }} 
+    <b>Settore:</b> {{ $row->stabi_txt }} 
+    <b>Reparto:</b>    {{ $row->repar_txt }}
+    <b>             dal:</b> {{ $row->dal }} <b>al:</b> {{ $row->al }} <br />
     <br style="clear:both" />
     @php
         //$criteri = $row->options->where('name', 'criterio')->where('parent_id', 0);

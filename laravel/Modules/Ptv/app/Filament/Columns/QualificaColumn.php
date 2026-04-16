@@ -52,6 +52,8 @@ class QualificaColumn extends GroupColumn
             'posiz_txt' => TextColumn::make('posiz_txt'),
             'disci1' => TextColumn::make('disci1'),
             'disci1_txt' => TextColumn::make('disci1_txt'),
+            //'codqua' => TextColumn::make('codqua'),
+            //'codqua_txt' => TextColumn::make('codqua_txt'),
         ];
     }
 }

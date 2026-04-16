@@ -356,6 +356,9 @@ return [
             'icon' => 'resetColumnManager',
             'label' => 'resetColumnManager',
         ],
+        'delete' => [
+            'tooltip' => 'delete',
+        ],
     ],
     'messages' => [
         'validation' => [

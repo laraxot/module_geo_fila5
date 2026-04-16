@@ -33,7 +33,8 @@
             <td class="border border-gray-300 px-4 py-2">
                 <table class="w-full border-collapse border border-gray-300">
                     @php   
-                        $sons=$root->sons()->where('option_type', 'dip')->ordered()->get();
+                    
+                        $sons=$root->sons()->where('option_type', $root->option_type)->ordered()->get();
                     @endphp
                 @foreach($sons as $son)
                     <tr style="border-bottom: 1px solid #e0e0e0; ">

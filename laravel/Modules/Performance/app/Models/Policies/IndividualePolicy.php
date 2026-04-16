@@ -10,7 +10,7 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 use Override;
 
-class IndividualePolicy extends XotBasePolicy
+class IndividualePolicy extends BaseIndividualePolicy
 {
     #[Override]
     public function viewAny(?UserContract $user): bool
@@ -24,70 +24,5 @@ class IndividualePolicy extends XotBasePolicy
         return true;
     }
 
-    public function index(?UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function edit(UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function update(UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function create(UserContract $userContract): bool
-    {
-        return false;
-    }
-
-    public function show(?UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function view(UserContract $user, MyModel $model): bool
-    {
-        return $user instanceof User && $user->isSuperAdmin();
-    }
-
-    public function destroy(?UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function delete(?UserContract $user, MyModel $model): bool
-    {
-        return false;
-    }
-
-    public function compila(UserContract $user, MyModel $model): bool
-    {
-        // return $model->getAttributeValue('posfun') >= 100;
-        return (bool) $model->getAttributeValue('ha_diritto');
-    }
-
-    public function individualePdf(UserContract $user, MyModel $model): bool
-    {
-        // return $model->getAttributeValue('posfun') >= 100;
-        return (bool) $model->getAttributeValue('ha_diritto');
-    }
-
-    public function xlsIndividualeStabiRepar(UserContract $user, MyModel $model): bool
-    {
-        return true;
-    }
-
-    public function pdfIndividualeStabiRepar(UserContract $user, MyModel $model): bool
-    {
-        return true;
-    }
-
-    public function massMail(UserContract $user, MyModel $model): bool
-    {
-        return true;
-    }
+    
 }

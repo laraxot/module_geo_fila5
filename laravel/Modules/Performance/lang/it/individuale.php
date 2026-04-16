@@ -285,6 +285,24 @@ return [
             'helper_text' => 'last_data_assunz',
             'description' => 'last_data_assunz',
         ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'placeholder' => 'gg_effettuati',
+            'helper_text' => 'gg_effettuati',
+            'description' => 'gg_effettuati',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'placeholder' => 'gg_assenza_anno',
+            'helper_text' => 'gg_assenza_anno',
+            'description' => 'gg_assenza_anno',
+        ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'placeholder' => 'gg_anno',
+            'helper_text' => 'gg_anno',
+            'description' => 'gg_anno',
+        ],
     ],
     'actions' => [
         'copy_from_organizzativa' => [
@@ -459,6 +477,29 @@ return [
             'label' => 'last_data_assunz',
             'icon' => 'last_data_assunz',
             'tooltip' => 'last_data_assunz',
+        ],
+        'submit' => [
+            'tooltip' => 'submit',
+        ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'icon' => 'gg_effettuati',
+            'tooltip' => 'gg_effettuati',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+            'icon' => 'posiz',
+            'tooltip' => 'posiz',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'icon' => 'gg_assenza_anno',
+            'tooltip' => 'gg_assenza_anno',
+        ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'icon' => 'gg_anno',
+            'tooltip' => 'gg_anno',
         ],
     ],
     'messages' => [

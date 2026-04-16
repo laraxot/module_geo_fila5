@@ -29,6 +29,16 @@ class TrovaEsclusiAction extends Action
         $this->label('')
             ->tooltip(__('ptv::scheda.actions.trova_esclusi.label'))
             ->icon('fas-skull')
+            ->visible(function ($livewire): bool {
+                if (! ($livewire instanceof ListRecords)) {
+                    return false;
+                }
+
+                $resource = $livewire->getResource();
+                $canCreate = $resource::can('create');
+
+                return is_bool($canCreate) ? $canCreate : false;
+            })
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {
                     return;

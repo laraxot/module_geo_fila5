@@ -160,6 +160,16 @@ return [
             'description' => 'value',
             'helper_text' => 'value',
             'placeholder' => 'value',
+            'label' => 'value',
+        ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'type' => [
+            'label' => 'type',
         ],
     ],
     'actions' => [
@@ -181,12 +191,18 @@ return [
         ],
         'copy_from_organizzativa' => [
             'label' => 'copy_from_organizzativa',
+            'icon' => 'copy_from_organizzativa',
+            'tooltip' => 'copy_from_organizzativa',
         ],
         'populate_year' => [
             'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
         ],
         'copy_from_last_year_' => [
             'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -230,6 +246,66 @@ return [
             'tooltip' => 'profile',
             'icon' => 'profile',
             'label' => 'profile',
+        ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
+        ],
+        'MakePdfAction' => [
+            'label' => 'MakePdfAction',
+            'icon' => 'MakePdfAction',
+            'tooltip' => 'MakePdfAction',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
+        ],
+        'zip_schede' => [
+            'label' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'tooltip' => 'zip_schede',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
         ],
     ],
     'messages' => [

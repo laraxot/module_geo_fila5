@@ -8,7 +8,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Performance\Models\IndividualeDip as MyModel;
 use Modules\Xot\Contracts\UserContract;
 
-class IndividualeDipPolicy extends IndividualePolicy
+class IndividualeDipPolicy extends BaseIndividualePolicy
 {
     // use HandlesAuthorization;
 

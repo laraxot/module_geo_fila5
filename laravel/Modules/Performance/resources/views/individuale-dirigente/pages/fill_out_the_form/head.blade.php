@@ -16,12 +16,6 @@
 			{{ $record->categoria_eco }} {{ $record->posfun }}
 		</td>
 	</tr>
-	{{--
-	<tr>
-		<td>Codice Qualifica</td>
-		<td>{{ $record->codqua }} - {{ $record->codqua_txt }}</td>
-	</tr>
-	--}}
     {{--
 	<tr>
 		<td>Titolo di Studio</td>
