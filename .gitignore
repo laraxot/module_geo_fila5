@@ -388,3 +388,4 @@ laravel/.claude/
 .kilo/
 .cursor/
 *.backup*
+*.pest.php
