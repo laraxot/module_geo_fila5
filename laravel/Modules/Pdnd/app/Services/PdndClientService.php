@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Modules\Pdnd\Datas\PdndData;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Enums\ServizioAnprEnum;
 use Modules\Pdnd\Services\Client\PdndClient;
+// use Spipu\Html2Pdf\Tag\Html\S;
 
 class PdndClientService
 {
@@ -33,19 +34,22 @@ class PdndClientService
         $serviceAud = match ($servizio) {
             ServizioAnprEnum::C030 => 'https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C030-servizioAccertamentoIdUnicoNazionale/v1',
             ServizioAnprEnum::C003 => 'https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C003-servizioVerificaDichGeneralita/v1',
-            ServizioAnprEnum::C007 => 'https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C007-servizioVerificaDichEsistenzaVita/v1'
+            ServizioAnprEnum::C007 => 'https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C007-servizioVerificaDichEsistenzaVita/v1',
+            ServizioAnprEnum::C015 => 'https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C015-servizioAccertamentoGeneralita/v1',
         };
 
         $servicePath = match ($servizio) {
             ServizioAnprEnum::C030 => 'C030-servizioAccertamentoIdUnicoNazionale/v1/anpr-service-e002',
             ServizioAnprEnum::C003 => 'C003-servizioVerificaDichGeneralita/v1/anpr-service-e002',
-            ServizioAnprEnum::C007 => 'C007-servizioVerificaDichEsistenzaVita/v1/anpr-service-e002'
+            ServizioAnprEnum::C007 => 'C007-servizioVerificaDichEsistenzaVita/v1/anpr-service-e002',
+            ServizioAnprEnum::C015 => 'C015-servizioAccertamentoGeneralita/v1/anpr-service-e002',
         };
 
         $purposeId = match ($servizio) {
             ServizioAnprEnum::C030 => 'f67eb971-f8be-4ea5-8c29-f251e83af926',
             ServizioAnprEnum::C003 => '8e69eb1e-a937-4713-8abd-38335a36a045',
-            ServizioAnprEnum::C007 => ''
+            ServizioAnprEnum::C007 => '',
+            ServizioAnprEnum::C015 => '78a58eda-327f-4a28-bb42-d320f7df736d',
         };
 
         $this->client = new PdndClient;
@@ -68,19 +72,22 @@ class PdndClientService
         $serviceAud = match ($servizio) {
             ServizioAnprEnum::C030 => 'https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C030-servizioAccertamentoIdUnicoNazionale/v1',
             ServizioAnprEnum::C003 => 'https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C003-servizioVerificaDichGeneralita/v1',
-            ServizioAnprEnum::C007 => 'https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C007-servizioVerificaDichEsistenzaVita/v1'
+            ServizioAnprEnum::C007 => 'https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C007-servizioVerificaDichEsistenzaVita/v1',
+            ServizioAnprEnum::C015 => 'https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C015-servizioAccertamentoGeneralita/v1',
         };
 
         $servicePath = match ($servizio) {
             ServizioAnprEnum::C030 => 'C030-servizioAccertamentoIdUnicoNazionale/v1/anpr-service-e002',
             ServizioAnprEnum::C003 => 'C003-servizioVerificaDichGeneralita/v1/anpr-service-e002',
-            ServizioAnprEnum::C007 => 'C007-servizioVerificaDichEsistenzaVita/v1/anpr-service-e002'
+            ServizioAnprEnum::C007 => 'C007-servizioVerificaDichEsistenzaVita/v1/anpr-service-e002',
+            ServizioAnprEnum::C015 => 'C015-servizioAccertamentoGeneralita/v1/anpr-service-e002',
         };
 
         $purposeId = match ($servizio) {
             ServizioAnprEnum::C030 => '3ab3e801-01bd-4e4b-a6e8-e7951ba9ebad',
             ServizioAnprEnum::C003 => 'bfe97db9-e1f6-4616-9421-84b2e6d8303b',
-            ServizioAnprEnum::C007 => '39647c26-5f1f-49c7-8606-2b9e8586bd24'
+            ServizioAnprEnum::C007 => '39647c26-5f1f-49c7-8606-2b9e8586bd24',
+            ServizioAnprEnum::C015 => '4be3854f-80b9-4563-91f7-9bdf11fa3ce2',
         };
 
         $this->client = new PdndClient;

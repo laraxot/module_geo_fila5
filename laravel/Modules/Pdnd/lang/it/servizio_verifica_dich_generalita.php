@@ -15,6 +15,11 @@ return [
             'label' => 'logout',
             'tooltip' => 'logout',
         ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
+        ],
     ],
     'fields' => [
         'codiceFiscale' => [

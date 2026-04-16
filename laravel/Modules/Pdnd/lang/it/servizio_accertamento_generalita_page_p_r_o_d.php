@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'group' => 'AMBIENTE TEST',
+        'group' => 'AMBIENTE PRODUZIONE',
     ],
     'actions' => [
         'logout' => [
@@ -14,21 +14,21 @@ return [
         ],
         'pdndFormActions' => [
             'tooltip' => 'Cerca',
-            'icon' => 'Cerca',
             'label' => 'Cerca',
+            'icon' => 'pdndFormActions',
         ],
         'profile' => [
-            'tooltip' => 'profile',
-            'icon' => 'profile',
             'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
         ],
     ],
     'fields' => [
         'codiceFiscale' => [
-            'description' => 'codiceFiscale',
-            'helper_text' => 'codiceFiscale',
-            'placeholder' => 'codiceFiscale',
             'label' => 'codiceFiscale',
+            'placeholder' => 'codiceFiscale',
+            'helper_text' => 'codiceFiscale',
+            'description' => 'codiceFiscale',
         ],
     ],
 ];
