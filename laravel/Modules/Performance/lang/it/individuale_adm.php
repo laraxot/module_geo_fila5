@@ -200,6 +200,9 @@ return [
         'propro' => [
             'label' => 'propro',
         ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
     ],
     'actions' => [
         'import' => [

@@ -276,6 +276,14 @@ return [
             'icon' => 'CheckCriterioEsclusioneBulkAction',
             'tooltip' => 'CheckCriterioEsclusioneBulkAction',
         ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'icon' => 'cancel',
+            'label' => 'cancel',
+        ],
+        'submit' => [
+            'tooltip' => 'submit',
+        ],
     ],
     'messages' => [
         'validation' => [

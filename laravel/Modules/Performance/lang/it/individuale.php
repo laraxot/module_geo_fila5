@@ -487,6 +487,7 @@ return [
     'sections' => [
         'assenze' => [
             'heading' => 'assenze',
+<<<<<<< HEAD
             'label' => 'assenze',
         ],
         'periodo' => [
@@ -512,6 +513,8 @@ return [
         'criteri' => [
             'label' => 'criteri',
             'heading' => 'criteri',
+=======
+>>>>>>> 7e497a7c8 (.)
         ],
     ],
 ];

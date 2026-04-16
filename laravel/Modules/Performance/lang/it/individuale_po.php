@@ -156,6 +156,11 @@ return [
         'motivo/invio_email' => [
             'label' => 'motivo/invio_email',
         ],
+        'value' => [
+            'description' => 'value',
+            'helper_text' => 'value',
+            'placeholder' => 'value',
+        ],
     ],
     'actions' => [
         'evaluate' => [
@@ -186,6 +191,45 @@ return [
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'label' => 'reorderRecords',
+        ],
+        'openColumnManager' => [
+            'tooltip' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'label' => 'openColumnManager',
+        ],
+        'applyTableColumnManager' => [
+            'tooltip' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'label' => 'applyTableColumnManager',
+        ],
+        'resetFilters' => [
+            'tooltip' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'label' => 'resetFilters',
+        ],
+        'applyFilters' => [
+            'tooltip' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'label' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'tooltip' => 'openFilters',
+            'icon' => 'openFilters',
+            'label' => 'openFilters',
+        ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
         ],
     ],
     'messages' => [

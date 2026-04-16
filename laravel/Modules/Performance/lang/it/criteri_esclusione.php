@@ -208,6 +208,18 @@ return [
             'icon' => 'resetColumnManager',
             'tooltip' => 'resetColumnManager',
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+        ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+        ],
     ],
     'messages' => [
         'validation' => [

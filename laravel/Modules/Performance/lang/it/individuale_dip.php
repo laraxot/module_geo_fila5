@@ -176,6 +176,9 @@ return [
         'type' => [
             'label' => 'type',
         ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
     ],
     'actions' => [
         'evaluate' => [
