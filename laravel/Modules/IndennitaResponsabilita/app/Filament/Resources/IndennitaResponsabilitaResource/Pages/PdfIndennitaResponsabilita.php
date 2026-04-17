@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBasePage;
 
 class PdfIndennitaResponsabilita extends XotBasePage
 {
-    protected static string $resource = IndennitaResponsabilitaResource::class;
+    public static string $resource = IndennitaResponsabilitaResource::class;
 
     protected string $view = 'modules.indennita-responsabilita.filament.resources.indennita-responsabilita-resource.pages.pdf-indennita-responsabilita';
 }

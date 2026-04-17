@@ -9,5 +9,5 @@ use Modules\Incentivi\Filament\Resources\PhaseResource;
 
 class CreatePhase extends CreateRecord
 {
-    protected static string $resource = PhaseResource::class;
+    public static string $resource = PhaseResource::class;
 }

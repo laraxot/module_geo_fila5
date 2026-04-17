@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateIntegparam extends XotBaseCreateRecord
 {
-    protected static string $resource = IntegparamResource::class;
+    public static string $resource = IntegparamResource::class;
 }

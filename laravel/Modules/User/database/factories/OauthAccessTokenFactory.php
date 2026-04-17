@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthClient;
-use Modules\User\Models\OauthToken;
 use Modules\User\Models\User;
 
 /**
- * OauthToken Factory.
+ * OauthAccessToken Factory.
  *
- * Factory for creating OauthToken model instances for testing and seeding.
+ * Factory for creating OauthAccessToken model instances for testing and seeding.
  */
 class OauthAccessTokenFactory extends Factory
 {
     /** @phpstan-ignore-next-line Passport access token is an Eloquent model at runtime, but PHPStan loses that type here. */
-    protected $model = OauthToken::class;
+    protected $model = OauthAccessToken::class;
 
     /**
      * Define the model's default state.

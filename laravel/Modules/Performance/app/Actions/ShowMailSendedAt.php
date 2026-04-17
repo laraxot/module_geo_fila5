@@ -20,20 +20,11 @@ class ShowMailSendedAt
      */
     public function execute(Scheda $model): string
     {
-        $a = Scheda::firstWhere(['id' => $model->getKey()]);
-
-        if (! $a) {
-            return '';
-        }
-
+        $dates=($model->myLogs()->where('act', 'sendMail')->pluck('created_at')->toArray());
         $html = '';
-        // Use mailInviate() relation which returns HasMany<MyLog>
-        $myLogs = $a->mailInviate()->where('act', 'sendMail')->get();
-
-        /** @var MyLog $row */
-        foreach ($myLogs as $row) {
-            $formattedDate = $row->updated_at?->format('Y-m-d H:i:s') ?? '';
-            $html .= '<br/>'.$formattedDate;
+        foreach ($dates as $date) {
+            $formattedDate = $date->format('d/m/Y H:i:s') ?? '';
+            $html .= $formattedDate.'<br/>';
         }
 
         return $html;

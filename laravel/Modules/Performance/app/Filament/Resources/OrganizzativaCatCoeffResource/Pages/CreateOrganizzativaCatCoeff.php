@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateOrganizzativaCatCoeff extends XotBaseCreateRecord
 {
-    protected static string $resource = OrganizzativaCatCoeffResource::class;
+    public static string $resource = OrganizzativaCatCoeffResource::class;
 }

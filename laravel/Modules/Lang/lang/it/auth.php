@@ -3,6 +3,17 @@
 declare(strict_types=1);
 
 return [
+    /*
+     * |--------------------------------------------------------------------------
+     * | Authentication Language Lines
+     * |--------------------------------------------------------------------------
+     * |
+     * | The following language lines are used during authentication for various
+     * | messages that we need to display to the user. You are free to modify
+     * | these language lines according to your application's requirements.
+     * |
+     */
+
     'failed' => 'Credenziali non valide.',
     'password' => 'La password fornita non è corretta.',
     'throttle' => 'Troppi tentativi di accesso. Riprova tra :seconds secondi.',
@@ -69,49 +80,5 @@ return [
         'profile' => 'Profilo',
         'settings' => 'Impostazioni',
         'logout' => 'Disconnetti',
-    ],
-    'label' => 'Auth',
-    'plural_label' => 'Auth (Plurale)',
-    'navigation' => [
-        'name' => 'Auth',
-        'plural' => 'Auth',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Auth',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'fields' => [
-        'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'created_at' => [
-            'label' => 'Data Creazione',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-        'updated_at' => [
-            'label' => 'Ultima Modifica',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
-        ],
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Auth',
-        ],
-        'edit' => [
-            'label' => 'Modifica Auth',
-        ],
-        'delete' => [
-            'label' => 'Elimina Auth',
-        ],
     ],
 ];

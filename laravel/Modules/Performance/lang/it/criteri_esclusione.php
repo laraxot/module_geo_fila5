@@ -19,6 +19,8 @@ return [
             'label' => 'Nome',
             'placeholder' => 'Inserisci il nome',
             'help' => 'Nome del criterio di esclusione',
+            'helper_text' => 'name',
+            'description' => 'name',
         ],
         'descrizione' => [
             'label' => 'Descrizione',
@@ -68,15 +70,27 @@ return [
         ],
         'field_name' => [
             'label' => 'field_name',
+            'placeholder' => 'field_name',
+            'helper_text' => 'field_name',
+            'description' => 'field_name',
         ],
         'op' => [
             'label' => 'op',
+            'placeholder' => 'op',
+            'helper_text' => 'op',
+            'description' => 'op',
         ],
         'value' => [
             'label' => 'value',
+            'description' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
         ],
         'anno' => [
             'label' => 'anno',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+            'description' => 'anno',
         ],
         'created_at' => [
             'label' => 'created_at',
@@ -96,19 +110,103 @@ return [
         'openFilters' => [
             'label' => 'openFilters',
         ],
+        'is_enabled' => [
+            'label' => 'is_enabled',
+        ],
     ],
     'actions' => [
         'create' => [
             'label' => 'Nuovo Criterio',
             'success' => 'Criterio creato con successo',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica',
             'success' => 'Criterio aggiornato con successo',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina',
             'success' => 'Criterio eliminato con successo',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'label' => 'reorderRecords',
+        ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
+        ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'label' => 'cancel',
+            'icon' => 'cancel',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
         ],
     ],
     'messages' => [
@@ -122,4 +220,5 @@ return [
     'model' => [
         'label' => 'criteri esclusione.model',
     ],
+    'label' => 'criteri esclusione',
 ];

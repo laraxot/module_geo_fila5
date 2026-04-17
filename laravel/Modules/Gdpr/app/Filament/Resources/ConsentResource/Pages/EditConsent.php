@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditConsent extends XotBaseEditRecord
 {
-    protected static string $resource = ConsentResource::class;
+    public static string $resource = ConsentResource::class;
 }

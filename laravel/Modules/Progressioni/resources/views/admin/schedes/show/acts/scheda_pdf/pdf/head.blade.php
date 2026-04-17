@@ -1,4 +1,4 @@
-e class="table">
+<table class="table">
 	<tr>
 		<td>Lavoratore</td>
 		<td>[{{ $row->id }}] {{ $row->ente }}-{{ $row->matr }} <br/>

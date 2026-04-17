@@ -18,7 +18,7 @@ use Filament\Actions\Action;
 
 class ListStabiDirigentes extends PtvListStabiDirigentes
 {
-    protected static string $resource = StabiDirigenteResource::class;
+    public static string $resource = StabiDirigenteResource::class;
 
     #[Override]
     /**

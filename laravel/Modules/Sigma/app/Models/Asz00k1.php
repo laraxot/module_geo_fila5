@@ -444,12 +444,60 @@ OR
         return 'asz2ka';
     }
 
-    protected function getAnnAttribute(mixed $value): string
+    /**
+     * Get ann attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    protected function getAnnAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateAnn();
+    }
+
+    /**
+     * Calcola ann.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateAnn(): string
     {
         return 'aszann';
     }
 
-    protected function getAszdescrAttribute(mixed $value): string
+    /**
+     * Get aszdescr attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    protected function getAszdescrAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateAszdescr();
+    }
+
+    /**
+     * Calcola aszdescr.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateAszdescr(): string
     {
         $codici = $this->codici;
         if (! \is_object($codici)) {
@@ -479,10 +527,33 @@ OR
     }
 
     // ----------------------------------------------------------------------
-    protected function getProproAttribute(mixed $value): ?string
+    /**
+     * Get propro attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    protected function getProproAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculatePropro();
+    }
+
+    /**
+     * Calcola propro.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculatePropro(): ?string
     {
         $qua00f = $this->qua00f();
-        // echo '<br/>['.$qua00f->count().']';
         if ($qua00f->count() > 1) {
             $html = '';
             $html .= '<table>';
@@ -510,15 +581,36 @@ OR
         $first = $qua00f->first();
 
         return $first ? (string) $first->getAttribute('propro') : null;
-
-        // return $qua00f->get()->count();
     }
 
     // ----------------------------------------------------------------------
-    protected function getPosfunAttribute(mixed $value): ?string
+    /**
+     * Get posfun attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    protected function getPosfunAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculatePosfun();
+    }
+
+    /**
+     * Calcola posfun.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculatePosfun(): ?string
     {
         $qua00f = $this->qua00f();
-
         $first = $qua00f->first();
 
         return $first ? (string) $first->getAttribute('posfun') : null;

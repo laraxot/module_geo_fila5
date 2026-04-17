@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\EsclusiExtraResource;
 
 class CreateEsclusiExtra extends CreateRecord
 {
-    protected static string $resource = EsclusiExtraResource::class;
+    public static string $resource = EsclusiExtraResource::class;
 }

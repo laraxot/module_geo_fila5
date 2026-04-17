@@ -13,7 +13,7 @@ use Override;
 
 class MessageResource extends PtvMessageResource
 {
-    protected static string $resourceFile = __FILE__;
+    public static string $resourceFile = __FILE__;
 
     protected static ?string $model = Message::class;
 

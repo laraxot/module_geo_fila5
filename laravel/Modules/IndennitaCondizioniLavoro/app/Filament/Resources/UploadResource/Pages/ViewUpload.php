@@ -10,7 +10,7 @@ use Modules\IndennitaCondizioniLavoro\Filament\Resources\UploadResource;
 
 class ViewUpload extends ViewRecord
 {
-    protected static string $resource = UploadResource::class;
+    public static string $resource = UploadResource::class;
 
     protected function getHeaderActions(): array
     {

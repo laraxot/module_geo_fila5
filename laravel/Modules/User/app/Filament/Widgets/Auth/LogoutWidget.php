@@ -63,8 +63,7 @@ class LogoutWidget extends XotBaseWidget
      *
      * @return array<Action>
      */
-    #[\Override]
-    public function getFormActions(): array
+    protected function getFormActions(): array
     {
         return [
             $this->getLogoutAction(),

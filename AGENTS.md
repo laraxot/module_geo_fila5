@@ -1,149 +1,21 @@
-# AGENTS.md - Development Guide Index
+# AI Agents Central Hub
 
-> Full documentation index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
+This is the central entry point for all AI agents working on the PTVX project. Documentation is organized following the **SOLID** principle: modular, non-redundant, and interlinked.
 
-**Stack**: Laravel 12 | Filament v5 | Pest v4 | PHPStan Level 10 | PHP 8.3+
+## 📌 Abstract
+PTVX uses multiple specialized AI agents (Gemini, Claude, Qwen). All agents share a core set of mandates and methodologies to ensure consistency across the modular architecture.
 
-## First rule: Read → Reason → Study → Update → Improve
+## 🔗 Shared Knowledge Base
+Every agent MUST follow these shared standards:
+- [[Core Mandates]]: The fundamental rules of development (R-R-S-U, PHPStan, XotBase).
+- [[LLM Wiki Mandate]]: Mandatory Karpathy pattern for persistent knowledge.
+- [[Directory Standards]]: Repository organization and naming rules.
+- [[GSD & BMAD Methodologies]]: Workflow frameworks for execution and design.
 
-See full guide: [.agents/docs/agents-first-rule.md](.agents/docs/agents-first-rule.md)
+## 🤖 Agent-Specific Entry Points
+- [[Gemini]]: Senior engineer and strategic orchestrator.
+- [[Claude]]: Precision coding and refactoring specialist.
+- [[Qwen]]: Local analysis and high-performance task handler.
 
-Before modifying ANY file: Read → Reason → Study → Update docs → Improve.
-After edit: PHPStan + PHPMD + PHPInsights.
-
-## Quick Commands Reference
-
-| Action | Command |
-|--------|---------|
-| **Tests** | `./vendor/bin/pest --filter="test_name"` |
-| **PHPStan** | `php -d memory_limit=2G ./vendor/bin/phpstan analyse` |
-| **PHPMD** | `bash laravel/tools/phpmd.sh laravel text phpmd.xml ...` |
-| **Pint** | `./vendor/bin/pint --dirty` |
-| **Build** | `npm run dev && npm run build` |
-| **Merge** | `composer go` |
-
-See more in: [quick-commands.md](.agents/docs/agents-guide/02-tooling/quick-commands.md)
-
-## Critical Rules Summary
-
-- **PHPStan Level 10** — no ignores.
-- **`declare(strict_types=1)`** always.
-- **Short array syntax `[]`** always.
-- **`property_exists()` forbidden** — use `isset()`.
-- **No constructor DI in Actions** — use `app(ActionClass::class)->execute()`.
-- **No direct Filament extensions** — use `XotBase*` wrappers.
-- **Workspace files**: Only `_{module-name}.code-workspace` in each module folder.
-- **No dates in .md filenames** — use stable semantic names, keep dates inside document body.
-
-See full rules: [critical-rules-summary.md](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
-
-## Workspace Convention
-
-- **One module, one workspace**: Each module has ONLY its own `_{module-name}.code-workspace`
-- **Naming**: File name must match module name (lowercase)
-- **Location**: Root of module folder
-- **Examples**:
-  - ✅ `laravel/Modules/Xot/_xot.code-workspace`
-  - ✅ `laravel/Modules/Activity/_activity.code-workspace`
-  - ❌ `laravel/Modules/Xot/_activity.code-workspace` (wrong module)
-
-See full convention: [docs/conventions/workspace-naming.md](docs/conventions/workspace-naming.md)
-
-## Module Folder Structure
-
-- **All PHP classes under `app/`**: Models, Enums, Actions, Controllers, etc.
-- **Exceptions**: Only Xot module can have special folders in root (`helpers/`, `Datas/`, `Services/`, `Filament/`, `packages/`, `stubs/`)
-- **Never in root**: `Enums/`, `Models/`, `Actions/`, `Controllers/` (use `app/Enums/`, `app/Models/`, etc.)
-- **Examples**:
-  - ✅ `laravel/Modules/Gdpr/app/Enums/ConsentType.php`
-  - ❌ `laravel/Modules/Gdpr/Enums/ConsentType.php` (wrong, duplicate)
-  - ✅ `laravel/Modules/Xot/helpers/` (Xot-specific exception)
-
-See full convention: [docs/conventions/module-folder-structure.md](docs/conventions/module-folder-structure.md)
-
-## Copy Files Rule
-
-- **Never commit copy files**: Files named `* copy`, `*.copy`, `*~` are temporary duplicates
-- **Auto-ignored**: Added to `.gitignore` in root and all modules
-- **Delete immediately**: Remove after use or if not needed
-- **Examples**:
-  - ❌ `.gitattributes copy` (delete or rename)
-  - ❌ `file.php copy` (delete or rename properly)
-  - ✅ Use git branching instead of file copies
-
-See full convention: [docs/conventions/copy-files-cleanup.md](docs/conventions/copy-files-cleanup.md)
-
-## Bash Scripts Organization
-
-- **All .sh scripts in `bashscripts/`**: Never in module root or other directories
-- **Documentation in `bashscripts/docs/`**: Every script must have corresponding docs
-- **Naming**: lowercase with hyphens (e.g., `ollama-optimize.sh`)
-- **Executable**: Always `chmod +x` after creation
-- **Examples**:
-  - ✅ `bashscripts/ollama-optimize.sh` + `bashscripts/docs/ollama-optimize.md`
-  - ❌ `ModuleRoot/script.sh` (wrong location)
-  - ❌ `bashscripts/script.sh` without docs (incomplete)
-
-See full convention: [bashscripts/docs/](bashscripts/docs/)
-
-## AI Agent Coordination
-
-- **Read before acting**: Always check [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
-- **Update after action**: Mark tasks as complete, add notes
-- **Avoid conflicts**: Check for concurrent agents, use lock files
-- **Document everything**: GitHub Issues, commits, coordination doc
-- **Coordinate with other agents**: Use GitHub Discussions for decisions
-
-See coordination hub: [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
-
-## MCP Configuration
-
-This project uses Model Context Protocol (MCP) for enhanced AI capabilities. The configuration is in `.cursor/mcp.json`.
-
-### Available MCP Servers
-
-| Server | Purpose |
-|--------|---------|
-| **filesystem** | File system operations |
-| **sequential-thinking** | Complex problem solving |
-| **mysql** | Database operations via Laravel .env |
-| **playwright** | Browser automation and testing |
-| **git** | Git operations and repository management |
-
-### Using MCP Tools
-
-MCP tools are automatically available in Cursor when configured. See [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md) for details.
-
-## .qwen Directory Structure
-
-- **Central config in root `.qwen/`**: All AI configuration resides here
-- **Subdirectories use symlinks**: `laravel/.qwen/` and `bashscripts/ai/.qwen/` link to root
-- **Always use absolute paths**: Prevents symlink loops
-- **Single source of truth**: Never duplicate config files
-- **Examples**:
-  - ✅ `.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (central)
-  - ✅ `laravel/.qwen/skills/` -> `/var/www/_bases/base_ptvx_fila5/.qwen/skills` (symlink)
-  - ❌ Relative symlinks (can create loops)
-
-See full convention: [docs/conventions/qwen-directory-structure.md](docs/conventions/qwen-directory-structure.md)
-
-## Commit and Push Rule
-
-- **Commit when work is complete**: Don't wait, commit and push regularly
-- **When confident it works**: Test → Commit → Push
-- **Small, frequent commits**: Better than large, infrequent commits
-- **Descriptive messages**: Use `[TYPE] description` format
-- **Coordinate via docs**: Reference coordination doc in commits
-- **Examples**:
-  - ✅ `[docs] Add QWEN.md - Coordinated via: docs/ai-agent-coordination.md`
-  - ✅ `[feat] Add ollama script - Related issue: #108`
-  - ❌ `fix stuff` (too vague)
-
-See full rule: [.qwen/skills/commit-and-push-rule.md](.qwen/skills/commit-and-push-rule.md)
-
-## Navigation Index
-
-- [Project Setup](.agents/docs/project-setup.md)
-- [Agent Teams](.agents/docs/agent-teams.md)
-- [Documentation Standards](.agents/docs/documentation-standards.md)
-- [Laraxot Philosophy](.agents/docs/laraxot-philosophy.md)
+---
+**Full Documentation Index**: [[00-INDEX]]

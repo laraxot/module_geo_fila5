@@ -12,7 +12,7 @@ use Override;
 
 class ListPhases extends XotBaseListRecords
 {
-    protected static string $resource = PhaseResource::class;
+    public static string $resource = PhaseResource::class;
 
     #[Override]
     public function getTableColumns(): array

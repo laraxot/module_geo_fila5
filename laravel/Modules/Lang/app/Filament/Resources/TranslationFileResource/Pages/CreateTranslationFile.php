@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateTranslationFile extends XotBaseCreateRecord
 {
-    protected static string $resource = TranslationFileResource::class;
+    public static string $resource = TranslationFileResource::class;
 }

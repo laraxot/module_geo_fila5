@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource;
 
 class CreateCriteriEsclusione extends CreateRecord
 {
-    protected static string $resource = CriteriEsclusioneResource::class;
+    public static string $resource = CriteriEsclusioneResource::class;
 }

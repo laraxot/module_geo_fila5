@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\CriteriOptionResource;
 
 class CreateCriteriOption extends CreateRecord
 {
-    protected static string $resource = CriteriOptionResource::class;
+    public static string $resource = CriteriOptionResource::class;
 }

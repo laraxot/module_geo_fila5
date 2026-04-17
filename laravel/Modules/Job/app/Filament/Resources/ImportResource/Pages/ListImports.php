@@ -18,7 +18,7 @@ use Override;
 
 class ListImports extends XotBaseListRecords
 {
-    protected static string $resource = ImportResource::class;
+    public static string $resource = ImportResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

@@ -9,7 +9,7 @@ use Modules\IndennitaCondizioniLavoro\Filament\Resources\UploadResource;
 
 class CreateUpload extends CreateRecord
 {
-    protected static string $resource = UploadResource::class;
+    public static string $resource = UploadResource::class;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {

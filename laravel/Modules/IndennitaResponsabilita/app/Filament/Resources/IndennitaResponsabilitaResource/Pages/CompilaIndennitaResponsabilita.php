@@ -49,20 +49,13 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     private const MIN_POSITIVE_RATINGS = 2;
 
-    protected static string $resource = IndennitaResponsabilitaResource::class;
+    public static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.compila';
 
     public ?string $previousUrl = null;
-
-    /**
-     * Form data holder.
-     *
-     * @var array<string, mixed>
-     */
-    public array $data = [];
 
     /**
      * Mount page - resolves {record} from URL, authorizes, fills form.

@@ -9,7 +9,6 @@ return [
             'placeholder' => 'key',
             'helper_text' => 'key',
             'description' => 'key',
-            'tooltip' => '',
         ],
         'data' => [
             'pippo' => [
@@ -17,23 +16,15 @@ return [
                 'helper_text' => 'data.pippo',
                 'placeholder' => 'data.pippo',
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
         'pippo' => [
             'description' => 'pippo',
             'helper_text' => 'pippo',
             'placeholder' => 'pippo',
             'label' => 'pippo',
-            'tooltip' => '',
         ],
         'pluto' => [
             'description' => 'pluto',
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
         ],
         'snapshots' => [
             'fields' => [
@@ -46,10 +37,6 @@ return [
                     ],
                 ],
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
         'content' => [
             'snapshots' => [
@@ -354,10 +341,6 @@ return [
                     'helper_text' => 'content.specialties.empty',
                 ],
             ],
-            'label' => '',
-            'tooltip' => '',
-            'helper_text' => '',
-            'description' => '',
         ],
     ],
     'actions' => [
@@ -371,13 +354,4 @@ return [
             'label' => 'lang',
         ],
     ],
-    'navigation' => [
-        'label' => 'Missing Navigation Label',
-        'plural_label' => 'Missing Navigation Plural Label',
-        'group' => 'Missing Group',
-        'icon' => 'heroicon-o-puzzle-piece',
-        'sort' => 100,
-    ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
 ];

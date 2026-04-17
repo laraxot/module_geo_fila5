@@ -17,7 +17,7 @@ use Override;
 
 class ListTemporaryUploads extends XotBaseListRecords
 {
-    protected static string $resource = TemporaryUploadResource::class;
+    public static string $resource = TemporaryUploadResource::class;
 
     /**
      * @return array<string, TextColumn>

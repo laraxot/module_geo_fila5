@@ -4,12 +4,6 @@
 
 Il modulo **UI** fornisce componenti Blade, widget Filament e asset condivisi per tutti i moduli e temi.
 
-## Scopo (business)
-
-- **Consistenza UX**: componenti riutilizzabili e pattern comuni per evitare UI divergenti tra moduli.
-- **Integrazione Filament**: widget e convenzioni per backoffice coerente.
-- **Riduzione debito**: un punto unico dove consolidare scelte UI/UX e naming.
-
 ## Struttura Componenti
 
 ```
@@ -61,3 +55,46 @@ resources/views/components/ui/
 
 - [Xot Base](../Xot/docs/)
 - [User Module](../User/docs/)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
+||||||| parent of 9a84589 (.)
+    case LIST = 'list';
+    case GRID = 'grid';
+
+    public function getLabel(): string
+    {
+        return $this->transClass(self::class, $this->value . '.label');
+    }
+}
+```
+
+## ✅ Stato Qualità
+
+- **PHPStan Level 10**: ✅ Compliant
+- **Translation Standards**: ✅ 100%
+- **Componenti**: 50+ Blade components
+- **Widget**: 20+ Filament widgets
+
+## 📚 Documentazione
+
+- [Components Guide](components.md)
+- [TableLayoutEnum Guide](table-layout-enum-complete-guide.md)
+- [Filament Components](filament-components.md)
+
+## 🔗 Moduli Collegati
+
+- [Xot Module](../xot/docs/readme.md) - Framework core
+- [User Module](../user/docs/readme.md) - Gestione utenti
+- [Lang Module](../lang/docs/readme.md) - Traduzioni
+
+---
+
+**🔄 
+**📦 Versione**: 4.1.0
+
+## 🔁 CI & Semantic Versioning
+Workflow: `.github/workflows/semantic-versioning.yml`
+
+## 📄 License
+MIT

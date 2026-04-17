@@ -19,6 +19,11 @@ use Modules\Xot\Filament\Pages\XotBasePage;
  */
 class SqlUpload extends XotBasePage
 {
+    /**
+     * Form data holder.
+     *
+     * @var array<string, mixed>
+     */
     public array $data = [];
 
     public string $disk = 'cache';

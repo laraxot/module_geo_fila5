@@ -12,7 +12,7 @@ use Modules\User\Filament\Resources\BaseProfileResource\Pages\ListProfiles as Us
 
 class ListProfiles extends UserListProfiles
 {
-    protected static string $resource = ProfileResource::class;
+    public static string $resource = ProfileResource::class;
 
     /**
      * @return array<string, Tables\Columns\Column>

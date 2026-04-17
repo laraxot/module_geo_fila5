@@ -6,10 +6,7 @@ namespace Modules\Performance\Filament\Resources;
 
 use Illuminate\Support\Arr;
 use Modules\Lang\Actions\SaveTransAction;
-use Modules\Performance\Filament\Resources\IndividualePoResource\Pages\CreateIndividualePo;
-use Modules\Performance\Filament\Resources\IndividualePoResource\Pages\EditIndividualePo;
-use Modules\Performance\Filament\Resources\IndividualePoResource\Pages\FillOutTheForm;
-use Modules\Performance\Filament\Resources\IndividualePoResource\Pages\ListIndividualePos;
+use Modules\Performance\Filament\Resources\IndividualePoResource\Pages;
 use Modules\Performance\Models\CriteriValutazione;
 use Modules\Performance\Models\IndividualePo;
 use Modules\Xot\Actions\GetTransKeyAction;
@@ -34,10 +31,11 @@ class IndividualePoResource extends IndividualeResource
     public static function getPages(): array
     {
         return [
-            'index' => ListIndividualePos::route('/'),
-            'create' => CreateIndividualePo::route('/create'),
-            'edit' => EditIndividualePo::route('/{record}/edit'),
-            'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'index' => Pages\ListIndividualePos::route('/'),
+            'create' => Pages\CreateIndividualePo::route('/create'),
+            'edit' => Pages\EditIndividualePo::route('/{record}/edit'),
+            'fill_out_the_form' => Pages\FillOutTheForm::route('/{record}/fill'),
+            'compila' => Pages\CompilaScheda::route('/{record}/compila'),
         ];
     }
 

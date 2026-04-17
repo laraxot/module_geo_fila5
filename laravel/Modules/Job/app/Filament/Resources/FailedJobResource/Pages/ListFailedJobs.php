@@ -19,7 +19,7 @@ use Override;
 
 class ListFailedJobs extends XotBaseListRecords
 {
-    protected static string $resource = FailedJobResource::class;
+    public static string $resource = FailedJobResource::class;
 
     #[Override]
     public function getTableColumns(): array

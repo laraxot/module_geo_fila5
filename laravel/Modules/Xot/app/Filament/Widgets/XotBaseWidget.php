@@ -10,13 +10,10 @@ use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Schemas\Components\Component;
-use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Filament\Widgets\Widget as FilamentWidget;
-use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Modules\Xot\Actions\View\GetViewByClassAction;
 use Modules\Xot\Filament\Traits\TransTrait;
 use Webmozart\Assert\Assert;
@@ -105,6 +102,17 @@ abstract class XotBaseWidget extends FilamentWidget implements HasActions, HasFo
         return $schema;
     }
 
+    /**
+     * Azioni form opzionali per viste che chiamano `$this->getFormActions()` (es. layout custom, footer azioni).
+     * I widget che non le usano restano con array vuoto.
+     *
+     * @return array<int|string, Action>
+     */
+    protected function getFormActions(): array
+    {
+        return [];
+    }
+
     public function getFormFill(): array
     {
         $model = $this->getFormModel();
@@ -172,35 +180,6 @@ abstract class XotBaseWidget extends FilamentWidget implements HasActions, HasFo
         return static::transFunc(__FUNCTION__);
     }
 
-    public function getWizardSubmitAction(): Action
-    {
-        /** @var view-string $submit_view */
-        $submit_view = 'pub_theme::filament.wizard.submit-button';
-
-        if (! view()->exists($submit_view)) {
-            throw new \Exception("View {$submit_view} does not exist");
-        }
-
-        return Action::make('submit')
-            ->label(__('filament-panels::resources/edit-record.form.actions.save.label'))
-            ->submit('save')
-            ->view((string) $submit_view);
-    }
-
-    /**
-     * Ottiene le azioni del form.
-     *
-     * @return array<int|string, Action>
-     */
-    protected function getFormActions(): array
-    {
-        return [
-            Action::make('save')
-                ->label(__('filament-panels::resources/edit-record.form.actions.save.label'))
-                ->submit('save'),
-        ];
-    }
-
     /**
      * Ottiene il modello per il form.
      * Può essere sovrascritto nelle classi figlie per fornire un modello specifico.
@@ -208,21 +187,6 @@ abstract class XotBaseWidget extends FilamentWidget implements HasActions, HasFo
     protected function getFormModel(): Model|string|null
     {
         return null;
-    }
-
-    protected function getStepByName(string $name): Step
-    {
-        $schema = Str::of($name)
-            ->snake()
-            ->studly()
-            ->prepend('get')
-            ->append('Schema')
-            ->toString();
-
-        /** @var array<Htmlable|string> $schemaComponents */
-        $schemaComponents = $this->$schema();
-
-        return Step::make($name)->schema($schemaComponents);
     }
 
     private function resolveView(): void

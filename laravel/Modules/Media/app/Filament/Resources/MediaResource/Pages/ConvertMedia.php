@@ -10,7 +10,7 @@ use Override;
 
 class ConvertMedia extends XotBaseViewRecord
 {
-    protected static string $resource = MediaResource::class;
+    public static string $resource = MediaResource::class;
 
     #[Override]
     public function getInfolistSchema(): array

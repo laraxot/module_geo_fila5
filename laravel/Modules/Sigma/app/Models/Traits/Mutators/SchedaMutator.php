@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Modules\Sigma\Models\Codici;
+use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
 
 /**
@@ -30,88 +31,134 @@ trait SchedaMutator
     use EnteStabiMutator; // ⚡ DELEGATION CASCADE
     use SchedaHelper; // Mutator ente+stabi (delegato da SchedaTrait)
 
-    protected function getCodquaAttribute(): ?string
+    /**
+     * Helper method: Ottiene codqua da qua00f (calcolo puro).
+     *
+     * Business Rule: Estrae codqua dalla relazione qua00f filtrata per qua2kd.
+     * Se qua00f esiste, aggiorna anche cont e tipco per consistenza.
+     *
+     * @return string|null Codqua calcolato, null se non disponibile
+     */
+    protected function getCodqua(): ?int
     {
-        // Get the raw value from attributes
-        $value = $this->attributes['codqua'] ?? null;
-        if ($value !== null) {
-            return (string) $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
-        $fieldname = 'codqua';
-
+        // Guard: qua2kd deve esistere
         if ($this->qua2kd === '') {
             return null;
         }
 
         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
-        /*
-         * }else{
-         * $qua00f = $this->qua00f()->ofYear($this->anno);
-         * if($qua00f->count()!=1){
-         * dddx('Matricola non trovata nella tabella qua00f aggiornare');
-         * }
-         * $qua00f=$qua00f->first();
-         * $this->qua2kd=$qua00f->qua2kd;
-         * $this->qua2ka=$qua00f->qua2ka;
-         * $this->save();
-         * }
-         */
         if (! \is_object($qua00f)) {
-            $msg = [
-                'qua2kd' => $this->qua2kd,
-                'dal' => $this->dal,
-            ];
-
-            // dddx($msg);
             return null;
         }
 
-        $value = $qua00f->$fieldname;
-
-        // @phpstan-ignore notIdentical.alwaysTrue
+        // Effettua update per consistenza (cont e tipco)
         if ($this->getKey() !== null) {
             $this->update([
-                $fieldname => $value,
+                'codqua' => $qua00f->codqua,
                 'cont' => $qua00f->cont,
                 'tipco' => $qua00f->tipco,
             ]);
         }
 
-        return (string) $value;
+        return $qua00f->codqua;
     }
 
-    protected function getContAttribute(): mixed
+    /**
+     * Accessor per codqua (codice qualifica da qua00f).
+     * Delega calcolo a getCodqua().
+     *
+     * @return string|null Codqua calcolato
+     */
+    protected function getCodquaAttribute(?int $value): ?int
     {
-        $value = $this->attributes['cont'] ?? null;
+        
+        if ($value !== null) {
+            return  $value;
+        }
+
+        
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getCodqua();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['codqua' => $value]);
+            });
+        }
+        return $value;
+    }
+
+
+    protected function getCodquaTxt(): ?string
+    {
+        /*
+        $row = Codici::where('codice', '768')->get();
+        $rows=Tqu00f::limit(10)->get();
+        dddx($this->tqu00f()->get());
+        //dddx($this->qua00f);
+        return $row->desc1;
+        */
+    }
+
+
+    protected function getCodquaTxtAttributeTmp(?string $value): ?string
+    {
+        //dddx($this->integParams()->toRawSql());
+        
+        return $this->tqu00f()->first()->liv;
         if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
+        
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getCodquaTxt();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['codqua_txt' => $value]);
+            });
         }
+        return $value;
+    }
 
-        $fieldname = 'cont';
+    /*
+    protected function getClafun(): ?int
+    {
+         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
+         dddx($qua00f);
+    }
+    
+
+    protected function getClafunAttribute(?int $value): ?int
+    {
+        if ($value !== null) {
+            return $value;
+        }
+        $value = $this->getClafun();
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['clafun' => $value]);
+            });
+        }
+        return $value;
+        
+    }
+    */
+
+    /**
+     * Helper method: Ottiene cont (contratto) da qua00f (calcolo puro).
+     *
+     * Business Rule: Estrae cont dalla relazione qua00f filtrata per qua2kd.
+     *
+     * @return mixed Valore cont, null se non disponibile
+     */
+    protected function getCont(): mixed
+    {
+        // Guard: qua2kd deve esistere
         if ($this->qua2kd === '') {
             return null;
-
-            /*
-             * $qua00f = $this->qua00f()->ofYear($this->anno);
-             * if($qua00f->count()!=1){
-             * dddx('Matricola non trovata nella tabella qua00f aggiornare');
-             * }
-             * $qua00f=$qua00f->first();
-             * $this->qua2kd=$qua00f->qua2kd;
-             * $this->qua2ka=$qua00f->qua2ka;
-             * $this->save();
-             */
         }
 
         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
@@ -119,127 +166,147 @@ trait SchedaMutator
             return null;
         }
 
-        $value = $qua00f->$fieldname;
-        if (\in_array($fieldname, $this->getFillable(), false)) {
-            $this->$fieldname = $value;
+        return $qua00f->cont;
+    }
 
-            // Guard: modello deve avere PK per salvare
-            // @phpstan-ignore notIdentical.alwaysTrue
-            if ($this->getKey() !== null) {
-                $this->update([$fieldname => $value]);
-            }
+    /**
+     * Accessor per cont (contratto da qua00f).
+     * Delega calcolo a getCont().
+     *
+     * @return mixed Valore cont calcolato
+     */
+    protected function getContAttribute(): mixed
+    {
+        // Cache hit: se già in attributes, uso quello
+        $value = $this->attributes['cont'] ?? null;
+        if ($value !== null) {
+            return $value;
+        }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getCont();
+
+        // Persist se fillable
+        if ($value !== null && \in_array('cont', $this->getFillable(), false)) {
+            $this->update(['cont' => $value]);
         }
 
         return $value;
     }
 
-    protected function getTipcoAttribute(): mixed
+    /**
+     * Helper method: Ottiene tipco (tipo contratto) da qua00f (calcolo puro).
+     *
+     * Business Rule: Estrae tipco dalla relazione qua00f filtrata per qua2kd.
+     *
+     * @return int|string|null Valore tipco, null se non disponibile
+     */
+    protected function getTipco(): int|string|null
     {
-        $value = $this->attributes['tipco'] ?? null;
-        if ($value !== null) {
-            return $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
-        $fieldname = 'tipco';
         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
         if (! ($qua00f instanceof \Modules\Sigma\Models\Qua00f)) {
             return null;
         }
 
-        $value = $qua00f->$fieldname ?? null;
+        $value = $qua00f->tipco ?? null;
         if ($value === null) {
             return null;
-        }
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update([$fieldname => $value]);
         }
 
         return is_numeric($value) ? (int) $value : (string) $value;
     }
 
-    protected function getPosizioneEcoAttribute(?string $value): ?string
+    /**
+     * Accessor per tipco (tipo contratto da qua00f).
+     * Delega calcolo a getTipco().
+     *
+     * @return int|string|null Valore tipco calcolato
+     */
+    protected function getTipcoAttribute(): mixed
     {
-        if ($value !== null && ! request('refresh', false)) {
+        // Cache hit: se già in attributes, uso quello
+        $value = $this->attributes['tipco'] ?? null;
+        if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
+        // Guard: record deve esistere
         if ($this->getKey() == null) {
             return null;
         }
 
-        $fieldname = 'posizione_eco';
-        $tqu00f = $this->tqu00f;
-        if (! \is_object($tqu00f)) {
-            /*
-             * if($this->propro==''){
-             * $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
-             * $this->qua2kd=$qua00f->qua2kd;
-             * $this->qua2ka=$qua00f->qua2ka;
-             * $this->propro=$qua00f->propro;
-             * $this->posfun=$qua00f->posfun;
-             * $this->tipco=$qua00f->tipco;
-             * $this->cont=$qua00f->cont;
-             * $this->codqua=$qua00f->codqua;
-             * $this->save();
-             * }
-             */
-            /** @var string $propro */
-            $propro = is_numeric($this->propro) ? (string) $this->propro : (string) ($this->propro ?? '');
-            /** @var string $posfun */
-            $posfun = is_numeric($this->posfun) ? (string) $this->posfun : (string) ($this->posfun ?? '');
-            /** @var string $tipco */
-            $tipco = is_numeric($this->tipco) ? (string) $this->tipco : (string) ($this->tipco ?? '');
-            /** @var string $cont */
-            $cont = is_numeric($this->cont) ? (string) $this->cont : (string) ($this->cont ?? '');
-            /** @var string $codqua */
-            $codqua = is_numeric($this->codqua) ? (string) $this->codqua : (string) ($this->codqua ?? '');
-            echo 'propro:['
-                .$propro
-                    .'] posfun:['
-                    .$posfun
-                    .'] tipco:['
-                    .$tipco
-                    .'] cont:['
-                    .$cont
-                    .'] codqua: ['
-                    .$codqua
-                    .']';
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getTipco();
 
-            return null; // 'propro:['.$this->propro.'] posfun:['.$this->posfun.'] tipco:['.$this->tipco.'] cont:['.$this->cont.'] codqua: ['.$this->codqua.']';
+        // Persist se valore valido
+        if ($value !== null && $this->getKey() !== null) {
+            $this->update(['tipco' => $value]);
         }
 
+        return $value;
+    }
+
+    /**
+     * Helper method: Ottiene posizione economica da tqu00f (calcolo puro).
+     *
+     * Business Rule: Estrae descrizione posizione economica da tqu00f.
+     * Formato: "Descrizione (codice)"
+     *
+     * @return string|null Posizione economica formattata, null se non disponibile
+     */
+    protected function getPosizioneEco(): ?string
+    {
+        $tqu00f = $this->tqu00f;
         if (! ($tqu00f instanceof \Modules\Sigma\Models\Tqu00f)) {
             return null;
         }
+
         $desc1 = $tqu00f->desc1 ?? '';
         $desc2 = $tqu00f->desc2 ?? '';
         $value = str_replace('Posizione economica', '', (string) $desc1);
         $value .= ' ('.$desc2.')';
-        /*
-         * if (in_array($fieldname, $this->getFillable())) {
-         * $this->$fieldname = $value;
-         * $this->save();
-         * }
-         */
-        try {
-            $this->$fieldname = $value;
 
-            // Guard: modello deve avere PK per salvare
-            // @phpstan-ignore notIdentical.alwaysTrue
-            if ($this->getKey() !== null) {
-                $this->update([$fieldname => $value]);
-            }
+        return $value;
+    }
+
+    /**
+     * Accessor per posizione_eco (posizione economica da tqu00f).
+     * Delega calcolo a getPosizioneEco().
+     *
+     * @param string|null $value Valore cached dal DB
+     *
+     * @return string|null Posizione economica calcolata
+     */
+    protected function getPosizioneEcoAttribute(?string $value): ?string
+    {
+        // Cache hit (con refresh opzionale)
+        if ($value !== null && ! request('refresh', false)) {
+            return $value;
+        }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getPosizioneEco();
+
+        if ($value === null) {
+            return null;
+        }
+
+        // Persist con gestione errori
+        try {
+            $this->update(['posizione_eco' => $value]);
         } catch (\Exception $e) {
-            // Log the error but don't break the application
-            Log::warning('Failed to save field in SchedaMutator', [
-                'field' => $fieldname,
+            Log::warning('Failed to save posizione_eco in SchedaMutator', [
+                'field' => 'posizione_eco',
                 'model' => $this::class,
                 'error' => $e->getMessage(),
             ]);
@@ -248,81 +315,109 @@ trait SchedaMutator
         return $value;
     }
 
+    /**
+     * Helper method: Calcola percentuale part-time ponderata anno (calcolo puro).
+     *
+     * Business Rule: perc_parttime_anno * (1 - (gg_parttimevert_anno / gg_presenza_anno)).
+     * Se gg_presenza_anno = 0, return 0.
+     *
+     * @return float|null Percentuale calcolata, null se dati non disponibili
+     */
+    protected function getPercParttimepondAnno(): ?float
+    {
+        if ($this->gg_presenza_anno == 0) {
+            return 0.0;
+        }
+
+        return (float) ($this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno)));
+    }
+
+    /**
+     * Accessor per perc_parttimepond_anno (percentuale part-time ponderata anno).
+     * Delega calcolo a getPercParttimepondAnno().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Percentuale calcolata
+     */
     protected function getPercParttimepondAnnoAttribute(?float $value = null): ?float
     {
-        // Get raw value if not provided
+        // Cache hit
         $rawValue = $this->attributes['perc_parttime_pond_anno'] ?? null;
         $value = $value ?? ($rawValue !== null && is_numeric($rawValue) ? (float) $rawValue : null);
         if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
+        // Guard: record deve esistere
         if ($this->getKey() == null) {
             return null;
         }
 
-        // */
-        $value = 0;
-        if ($this->gg_presenza_anno !== 0) {
-            $value = $this->perc_parttime_anno * (1 - ($this->gg_parttimevert_anno / $this->gg_presenza_anno));
-        }
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getPercParttimepondAnno();
 
-        // $value = number_format($value, 3);
-        $this->perc_parttimepond_anno = $value;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['perc_parttimepond_anno' => $value]);
-        }
+        // Persist con update
+        $this->update(['perc_parttimepond_anno' => $value]);
 
         return (float) $value;
     }
 
+    /**
+     * Helper method: Calcola percentuale part-time ponderata dal-al (calcolo puro).
+     *
+     * Business Rule: perc_parttime_dalal * (1 - (gg_parttimevert_dalal / gg_presenza_dalal)).
+     * Se gg_presenza_dalal = 0, return 0.
+     *
+     * @return float|null Percentuale calcolata, null se dati non disponibili
+     */
+    protected function getPercParttimepondDalal(): ?float
+    {
+        if ($this->gg_presenza_dalal == 0) {
+            return 0.0;
+        }
+
+        return (float) ($this->perc_parttime_dalal * (1 - ($this->gg_parttimevert_dalal / $this->gg_presenza_dalal)));
+    }
+
+    /**
+     * Accessor per perc_parttimepond_dalal (percentuale part-time ponderata dal-al).
+     * Delega calcolo a getPercParttimepondDalal().
+     *
+     * @return float|null Percentuale calcolata
+     */
     protected function getPercParttimepondDalalAttribute(): ?float
     {
-        // Get raw value from attributes
+        // Cache hit
         $rawValue = $this->attributes['perc_parttime_pond_dalal'] ?? null;
         $value = $rawValue !== null && is_numeric($rawValue) ? (float) $rawValue : null;
         if ($value !== null) {
             return $value;
         }
 
-        // ✅ Check: record deve esistere prima di save()
+        // Guard: record deve esistere
         if ($this->getKey() == null) {
             return null;
         }
 
-        // */
-        $value = 0;
-        if ($this->gg_presenza_dalal !== 0) {
-            $value = $this->perc_parttime_dalal * (1 - ($this->gg_parttimevert_dalal / $this->gg_presenza_dalal));
-        }
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getPercParttimepondDalal();
 
-        // $value = number_format($value, 3);
-        $this->perc_parttimepond_dalal = $value;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['perc_parttimepond_dalal' => $value]);
-        }
+        // Persist con update
+        $this->update(['perc_parttimepond_dalal' => $value]);
 
         return $value;
     }
 
-    protected function getDisci1TxtAttribute(?string $value): ?string
+    /**
+     * Helper method: Ottiene descrizione disciplina 1 da Codici (calcolo puro).
+     *
+     * Business Rule: Estrae desc1 da Codici dove tipo=6 e codice=disci1.
+     *
+     * @return string|null Descrizione disciplina, null se non disponibile
+     */
+    protected function getDisci1Txt(): ?string
     {
-        if ($value !== null) {
-            return $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
         if ($this->disci1 == null) {
             return null;
         }
@@ -332,15 +427,41 @@ trait SchedaMutator
             return null;
         }
 
-        try {
-            $this->disci1_txt = $row->desc1;
+        return $row->desc1;
+    }
 
-            // Guard: modello deve avere PK per salvare
-            // @phpstan-ignore notIdentical.alwaysTrue
-            if ($this->getKey() !== null) {
-                $this->update(['disci1_txt' => $row->desc1]);
-            }
+    /**
+     * Accessor per disci1_txt (descrizione disciplina 1 da Codici).
+     * Delega calcolo a getDisci1Txt().
+     *
+     * @param string|null $value Valore cached dal DB
+     *
+     * @return string|null Descrizione calcolata
+     */
+    protected function getDisci1TxtAttribute(?string $value): ?string
+    {
+        // Cache hit
+        if ($value !== null) {
+            return $value;
+        }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getDisci1Txt();
+
+        if ($value === null) {
+            return null;
+        }
+
+        // Persist con gestione errori
+        try {
+            $this->update(['disci1_txt' => $value]);
         } catch (\Exception) {
+            // Se tabella non ha colonna, la crea (legacy behavior)
             $fieldname = 'disci1_txt';
             if (! Schema::connection($this->getConnectionName())->hasColumn($this->getTable(), $fieldname)) {
                 Schema::connection($this->getConnectionName())->table($this->getTable(), static function (\Illuminate\Database\Schema\Blueprint $table) use (
@@ -351,7 +472,7 @@ trait SchedaMutator
             }
         }
 
-        return isset($this->attributes['disci1_txt']) && is_string($this->attributes['disci1_txt']) ? $this->attributes['disci1_txt'] : null;
+        return $value;
     }
 
     protected function getPosizTxtAttribute(?string $value): ?string
@@ -374,13 +495,9 @@ trait SchedaMutator
             return null;
         }
 
-        $this->posiz_txt = $row->desc1;
-
-        // Guard: modello deve avere PK per salvare
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz_txt' => $row->desc1]);
-        }
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz_txt'] = $row->desc1;
 
         return isset($this->attributes['posiz_txt']) && is_string($this->attributes['posiz_txt']) ? $this->attributes['posiz_txt'] : null;
     }
@@ -404,7 +521,13 @@ trait SchedaMutator
         if ($value === null) {
             return null;
         }
-        $this->update(['disci1' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - may causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['disci1'] = $value;
+        if($this->getKey()!=null){
+            $this->update(['disci1'=>$value]);
+        }
 
         return $value;
     }
@@ -423,7 +546,10 @@ trait SchedaMutator
 
         $categoria_propro = $this->categoriaPropro;
         $value = $categoria_propro?->getAttribute('categoria');
-        $this->update(['categoria_ecoval' => $value]);
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['categoria_ecoval'] = $value;
 
         return $value === null ? null : (string) $value;
     }
@@ -460,67 +586,74 @@ trait SchedaMutator
         }
 
         $value = $qua00f->first()?->getAttribute('posiz');
-        // @phpstan-ignore notIdentical.alwaysTrue
-        if ($this->getKey() !== null) {
-            $this->update(['posiz' => $value]);
-        }
+
+        // ⚠️ DO NOT call update() inside accessor - causes infinite loop
+        // Just set the raw attribute value without triggering events
+        $this->attributes['posiz'] = $value;
 
         return $value === null ? null : (int) $value;
     }
 
-    protected function getEtaAttribute(?float $value): ?float
+    /**
+     * Helper method: Calcola età anagrafica (calcolo puro).
+     *
+     * Business Rule: Differenza in anni tra data nascita (ana2kd) e data_presenza_al.
+     * Se ana02f non esiste o vuota, return 0.
+     *
+     * @return float|null Età calcolata, 0 se dati non disponibili
+     */
+    protected function getEta(): ?float
     {
-        if ($value !== null && $value > 0 && ! request()->input('refresh', 0)) {
-            return $value;
-        }
-
-        // ✅ Check: record deve esistere prima di save()
-        if ($this->getKey() == null) {
-            return null;
-        }
-
         $ana02f = $this->ana02f;
         if ($ana02f === null) {
-            dddx([
-                'get_class' => static::class,
-                'this' => $this->toArray(),
-                'ana02f' => $this->ana02f(),
-            ]);
+            return 0.0;
         }
 
         if ($ana02f->last() === null) {
-            return 0;
+            return 0.0;
         }
 
         $ana2kd = $ana02f->last()->ana2kd;
-
         $ana2kd_date = Date::createFromFormat('Ymd', $ana2kd);
         $date_max = $this->criteriOptionsArr('data_presenza_al');
 
         // Verifica che $date_max sia una Carbon instance
         if (! ($date_max instanceof \Carbon\Carbon)) {
-            $this->eta = 0.0;
-            if ($this->getKey() != null) {
-                $this->update(['eta' => 0.0]);
-            }
-
             return 0.0;
         }
 
-        // floatDiffInYears non esiste, usare diffInYears con calcolo float
+        // Calcolo età: giorni / 365.25 (con anni bisestili)
         $daysDiff = $date_max->diffInDays($ana2kd_date, true);
-        $value = $daysDiff / 365.25; // Conversione giorni in anni con anni bisestili
+        $value = $daysDiff / 365.25;
 
-        // $value è sempre float perché $daysDiff è int e la divisione per float restituisce float
-        $valueFloat = abs((float) $value);
-        $this->eta = $valueFloat;
+        return abs((float) $value);
+    }
 
-        // Guard: modello deve avere PK per salvare
-        $key = $this->getKey();
-        // @phpstan-ignore-next-line notIdentical.alwaysTrue
-        if ($key !== null) {
-            $this->update(['eta' => $valueFloat]);
+    /**
+     * Accessor per eta (età anagrafica).
+     * Delega calcolo a getEta().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Età calcolata
+     */
+    protected function getEtaAttribute(?float $value): ?float
+    {
+        // Cache hit
+        if ($value !== null && $value > 0 && ! request()->input('refresh', 0)) {
+            return $value;
         }
+
+        // Guard: record deve esistere
+        if ($this->getKey() == null) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $valueFloat = $this->getEta();
+
+        // Persist con update
+        $this->update(['eta' => $valueFloat]);
 
         return $valueFloat;
     }
@@ -565,4 +698,34 @@ trait SchedaMutator
      */
     // *
     // */
+    public function getWorkerType(): string
+    {
+        
+        if ($this->isPo()) {
+            return 'po';
+        }
+        if ($this->isRegionale()) {
+            return 'regionale';
+        } 
+        return 'dip';
+    }
+
+
+    public function getTypeAttribute(?string $value)
+    {
+        
+        if($value!=null){
+           return $value;
+        }
+        $value=$this->getWorkerType();
+       
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                //$this->update(['type' => $value]);
+                $this->attributes['type'] = $value;
+                $this->save();
+            });
+        }
+        return $value;
+    }
 }

@@ -30,7 +30,7 @@ class CompilaScheda extends XotBasePage
     use InteractsWithRecord;
     // use UsesResourceForm; // Not needed - using custom form_data implementation
 
-    protected static string $resource = SchedaResource::class;
+    public static string $resource = SchedaResource::class;
 
     protected string $view = 'progressioni::admin.schede.compila.page';
 

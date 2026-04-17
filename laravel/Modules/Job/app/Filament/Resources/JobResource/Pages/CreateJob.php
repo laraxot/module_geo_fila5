@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateJob extends XotBaseCreateRecord
 {
-    protected static string $resource = JobResource::class;
+    public static string $resource = JobResource::class;
 }

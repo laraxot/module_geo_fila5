@@ -362,7 +362,31 @@ class CondizioniLavoro extends BaseModel
         return $repart->dest1;
     }
 
-    public function getDisci1Attribute(mixed $value): ?int
+    /**
+     * Get disci1 attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    public function getDisci1Attribute(?int $value): ?int
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_int($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateDisci1();
+    }
+
+    /**
+     * Calcola disci1.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateDisci1(): ?int
     {
         $qua00f_curr = $this->qua00fDaterange->first();
         if (! \is_object($qua00f_curr)) {
@@ -374,7 +398,31 @@ class CondizioniLavoro extends BaseModel
         return is_numeric($disci1) ? (int) $disci1 : null;
     }
 
-    public function getCodquaAttribute(mixed $value): int|string
+    /**
+     * Get codqua attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    public function getCodquaAttribute(?string $value): ?string
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateCodqua();
+    }
+
+    /**
+     * Calcola codqua.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateCodqua(): string
     {
         $qua00f_curr = $this->qua00fDaterange->first();
         if (! $qua00f_curr instanceof Qua00f) {
@@ -383,131 +431,158 @@ class CondizioniLavoro extends BaseModel
 
         $codqua = $qua00f_curr->getAttribute('codqua');
 
-        return is_string($codqua) ? $codqua : (int) $codqua;
+        return is_string($codqua) ? $codqua : (string) $codqua;
     }
 
-    public function indennitaTipoAnno(?int $anno = null): Collection
+    /**
+     * Get all_indennita_tipo attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    public function getAllIndennitaTipoAttribute(?Collection $value): Collection
     {
-        if ($anno === null) {
-            $anno = $this->anno;
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if ($value instanceof Collection) {
+            return $value;
         }
 
-        // return $this->hasMany(IndennitaTipo::class, 'anno', 'anno');
-        $table = app(IndennitaTipo::class)->getTable();
-
-        return IndennitaTipo::whereRaw($anno.' between '.$table.'.dal and '.$table.'.al')->get();
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateAllIndennitaTipo();
     }
 
-    public function getAllIndennitaTipoAttribute(mixed $value): Collection
+    /**
+     * Calcola all_indennita_tipo.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateAllIndennitaTipo(): Collection
     {
         return IndennitaTipo::all();
     }
 
-    public function getGgTrasferteAnnoAttribute(?int $value): ?int
+    /**
+     * Get tot_presenza_periodo_plus_no_timbr attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
+    public function getTotPresenzaPeriodoPlusNoTimbrAttribute(?int $value): ?int
     {
-        if ($value !== null) {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_int($value)) {
             return $value;
         }
 
-        return 0;
-        /*
-        $trasferte = $this->trasferte;
-        $giorni = [];
-        foreach ($trasferte ?? [] as $trasf) {
-            $curr = $trasf->dal;
-            while ($curr <= $trasf->al && $curr !== null) {
-                $giorni[] = $curr->format('Ymd');
-                $curr->addDay();
-            }
-        }
-
-        $giorni = array_unique($giorni);
-        $giorni = \count($giorni);
-
-        $this->gg_trasferte_anno = $giorni;
-        $this->save();
-
-        return $giorni;
-        */
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateTotPresenzaPeriodoPlusNoTimbr();
     }
 
-    public function getGgPresenzaAnnoAttribute(?int $value): ?int
+    /**
+     * Calcola tot_presenza_periodo_plus_no_timbr.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateTotPresenzaPeriodoPlusNoTimbr(): int
     {
-        // Cache hit
-        if ($value !== null) {
+        $ggPresenza = $this->gg_presenza_periodo ?? 0;
+
+        return max($ggPresenza, 0);
+    }
+
+    /**
+     * Get gg_assenza_anno attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
+     */
+    public function getGgAssenzaAnnoAttribute(?int $value): ?int
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_int($value)) {
             return $value;
         }
 
-        $gg = $this->wstr01lx()->select('wtdata')->distinct('wtdata')->get()->count();
-        $this->gg_presenza_anno = $gg;
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateGgAssenzaAnno();
 
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() === null) {
-            return $gg;
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+           
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['gg_assenza_anno' => $value]);
+                    });
+                
+                
+                
         }
 
-        $this->update([
-            'gg_presenza_anno' => $gg,
-        ]);
-
-        return $gg;
+        return $value;
     }
 
-    public function getTotPresenzaPeriodoPlusNoTimbrAttribute(mixed $value): int
+    /**
+     * Calcola gg_assenza_anno.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateGgAssenzaAnno(): int
     {
-        $valueInt = (int) $value;
-        if ($valueInt < $this->gg_presenza_periodo) {
-            return $this->gg_presenza_periodo;
-        }
-
-        return $valueInt;
-    }
-
-    public function getGgAssenzaAnnoAttribute(mixed $value): ?int
-    {
-        if ($value !== null) {
-            return is_numeric($value) ? (int) $value : null;
-        }
-
         $asz = $this->asz00k1()->where('aszumi', 'G')
             ->get();
-        $gg = (int) $asz->sum('aszdur');
-        $this->gg_assenza_anno = $gg;
 
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() === null) {
-            return $gg;
-        }
-
-        $this->update([
-            'gg_assenza_anno' => $gg,
-        ]);
-
-        return $gg;
+        return (int) $asz->sum('aszdur');
     }
 
-    public function getHhAssenzaAnnoAttribute(mixed $value): ?string
+    /**
+     * Get hh_assenza_anno attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
+     */
+    public function getHhAssenzaAnnoAttribute(?string $value): ?string
     {
-        if ($value !== null) {
-            return is_string($value) ? $value : (string) $value;
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_string($value)) {
+            return $value;
         }
 
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->calculateHhAssenzaAnno();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+           
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['hh_assenza_anno' => $value]);
+                    });
+                
+                
+                
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola hh_assenza_anno.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateHhAssenzaAnno(): string
+    {
         $asz = $this->asz00k1()->where('aszumi', 'O')
             ->whereRaw('concat(asztip,"-",aszcod)!="504-13"') // nelle assenze tolgo le trasferte
             ->get();
-        $hh = (string) $asz->sum('aszdur');
-        $this->hh_assenza_anno = $hh;
 
-        // Guard: modello deve avere PK per salvare
-        if ($this->getKey() === null) {
-            return $hh;
-        }
-
-        $this->update([
-            'hh_assenza_anno' => $hh,
-        ]);
-
-        return $hh;
+        return (string) $asz->sum('aszdur');
     }
 
     /*

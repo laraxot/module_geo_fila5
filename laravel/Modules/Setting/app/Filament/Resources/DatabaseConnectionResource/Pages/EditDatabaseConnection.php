@@ -12,7 +12,7 @@ use Modules\Setting\Models\DatabaseConnection;
 
 class EditDatabaseConnection extends EditRecord
 {
-    protected static string $resource = DatabaseConnectionResource::class;
+    public static string $resource = DatabaseConnectionResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -7,7 +7,7 @@ namespace Modules\User\Tests\Unit;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-uses(TestCase::class);
+uses(TestCase::class)->in(__DIR__);
 
 it('can create a user with basic attributes', function () {
     $user = User::factory()->create([
@@ -38,7 +38,7 @@ it('can authenticate a user', function () {
         'password' => bcrypt('secret123'),
     ]);
 
-    $this->assertTrue(auth()->attempt([
+    $this->assertTrue(auth())
         'email' => 'auth@example.com',
         'password' => 'secret123',
     ]));

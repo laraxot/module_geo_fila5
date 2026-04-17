@@ -8,36 +8,26 @@ return [
             'label' => 'Language',
             'placeholder' => 'Select language',
             'helper_text' => 'Currently selected interface language',
-            'tooltip' => '',
-            'description' => '',
         ],
         'available_languages' => [
             'label' => 'Available Languages',
             'placeholder' => 'Available languages list',
             'helper_text' => 'Languages available for interface selection',
-            'tooltip' => '',
-            'description' => '',
         ],
         'value' => [
             'label' => 'Value',
             'placeholder' => 'Enter value',
             'helper_text' => 'Translation value',
-            'tooltip' => '',
-            'description' => '',
         ],
         'key' => [
             'label' => 'Key',
             'placeholder' => 'Enter translation key',
             'helper_text' => 'Unique identifier for the translation',
-            'tooltip' => '',
-            'description' => '',
         ],
         'locale' => [
             'label' => 'Locale',
             'placeholder' => 'Select locale',
             'helper_text' => 'Language locale code (e.g. it, en, de)',
-            'tooltip' => '',
-            'description' => '',
         ],
     ],
     'actions' => [
@@ -105,6 +95,4 @@ return [
         'heading' => 'Language Service',
         'description' => 'Manage translations and available languages in the system',
     ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
 ];

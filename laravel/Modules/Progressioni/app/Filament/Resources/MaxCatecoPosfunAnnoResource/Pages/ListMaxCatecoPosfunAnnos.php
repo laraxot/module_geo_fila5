@@ -11,7 +11,7 @@ use Override;
 
 class ListMaxCatecoPosfunAnnos extends PtvBaseYearListRecords
 {
-    protected static string $resource = MaxCatecoPosfunAnnoResource::class;
+    public static string $resource = MaxCatecoPosfunAnnoResource::class;
 
     #[Override]
     public function getTableColumns(): array

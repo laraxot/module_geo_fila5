@@ -9,7 +9,7 @@ use Modules\Rating\Filament\Resources\RatingMorphResource as BaseRatingMorphReso
 
 class RatingMorphResource extends BaseRatingMorphResource
 {
-    protected static string $resourceFile = __FILE__;
+    public static string $resourceFile = __FILE__;
 
     protected static ?string $model = RatingMorph::class;
 }

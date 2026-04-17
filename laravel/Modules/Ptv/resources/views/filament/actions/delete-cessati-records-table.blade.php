@@ -29,7 +29,7 @@
 @if ($cessatiRecords->count() > 0)
     <div class="space-y-2">
         <div class="text-sm text-gray-600 mb-2">
-            {{ __('ptv::actions.showing_records', ['count' => $cessatiRecords->count(), 'total' => $cessatiRecords->count()]) }}
+            {{ __('ptv::scheda.actions.showing_records', ['count' => $cessatiRecords->count(), 'total' => $cessatiRecords->count()]) }}
         </div>
         
         <div class="overflow-x-auto">
@@ -79,7 +79,7 @@
         
         @if ($cessatiRecords->count() >= 50)
             <div class="text-sm text-amber-600 mt-2">
-                {{ __('ptv::actions.showing_limited_results') }}
+                {{ __('ptv::scheda.actions.showing_limited_results') }}
             </div>
         @endif
     </div>

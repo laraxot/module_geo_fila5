@@ -64,4 +64,17 @@ return [
             'label' => 'Elimina Collection Lang',
         ],
     ],
+    'label' => 'Collection Lang',
+    'plural_label' => 'Collection Lang (Plurale)',
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Collection Lang',
+        ],
+        'edit' => [
+            'label' => 'Modifica Collection Lang',
+        ],
+        'delete' => [
+            'label' => 'Elimina Collection Lang',
+        ],
+    ],
 ];

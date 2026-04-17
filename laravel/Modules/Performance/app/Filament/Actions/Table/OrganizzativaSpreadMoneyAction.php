@@ -29,7 +29,7 @@ class OrganizzativaSpreadMoneyAction extends Action
         parent::setUp();
 
         $this->label('organizzativa')
-            ->tooltip(__('ptv::actions.'.$this->getDefaultName()))
+            ->tooltip(__('ptv::scheda.actions.'.$this->getDefaultName()))
             ->icon('heroicon-o-currency-euro')
             ->url(fn ($record) => PerformanceFondoResource::getUrl('organizzativa-money', ['record' => $record]));
         /*

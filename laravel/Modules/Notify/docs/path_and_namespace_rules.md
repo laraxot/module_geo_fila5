@@ -7,19 +7,33 @@
 ### ✅ Path Corretti
 
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Actions/SMS
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Http/Controllers
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Providers
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Models
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Filament
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Actions/SMS
+/var/www/html/ptvx/laravel/Modules/Notify/app/Http/Controllers
+/var/www/html/ptvx/laravel/Modules/Notify/app/Providers
+/var/www/html/ptvx/laravel/Modules/Notify/app/Models
+/var/www/html/ptvx/laravel/Modules/Notify/app/Filament
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Actions/SMS
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Http/Controllers
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Providers
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Models
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Filament
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 ### ❌ Path Errati
 
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/App/Actions/SMS
-/var/www/html/Quaeris/laravel/Modules/Notify/App/Http/Controllers
-/var/www/html/Quaeris/laravel/Modules/Notify/App/Providers
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/App/Actions/SMS
+/var/www/html/ptvx/laravel/Modules/Notify/App/Http/Controllers
+/var/www/html/ptvx/laravel/Modules/Notify/App/Providers
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/App/Actions/SMS
+/var/www/html/healthcare_app/laravel/Modules/Notify/App/Http/Controllers
+/var/www/html/healthcare_app/laravel/Modules/Notify/App/Providers
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 ## Struttura Corretta dei Namespace
@@ -54,7 +68,11 @@ namespace Modules\Notify\App\Datas;
 
 **Path fisico corretto:**
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Actions/SMS/SendNetfunSmsAction.php
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Actions/SMS/SendNetfunSmsAction.php
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Actions/SMS/SendNetfunSmsAction.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Namespace corretto:**
@@ -66,7 +84,11 @@ namespace Modules\Notify\Actions\SMS;
 
 **Path fisico corretto:**
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Http/Controllers/NotificationController.php
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Http/Controllers/NotificationController.php
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Http/Controllers/NotificationController.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Namespace corretto:**
@@ -78,7 +100,11 @@ namespace Modules\Notify\Http\Controllers;
 
 **Path fisico corretto:**
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Providers/NotifyServiceProvider.php
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Providers/NotifyServiceProvider.php
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Providers/NotifyServiceProvider.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Namespace corretto:**
@@ -90,7 +116,11 @@ namespace Modules\Notify\Providers;
 
 **Path fisico corretto:**
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Datas/NetfunSMSMessage.php
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Datas/NetfunSMSMessage.php
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Datas/NetfunSMSMessage.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Namespace corretto:**
@@ -107,7 +137,11 @@ namespace Modules\Notify\App\Datas;
 
 ## Motivo di questa Regola
 
-Questa struttura di namespace mantiene compatibilità con la convenzione di Laravel e il sistema di moduli Nwidart, anche se i file sono fisicamente organizzati in modo diverso. Questo approccio è stato adottato per standardizzare i namespace in tutto il progetto Quaeris.
+<<<<<<< HEAD
+Questa struttura di namespace mantiene compatibilità con la convenzione di Laravel e il sistema di moduli Nwidart, anche se i file sono fisicamente organizzati in modo diverso. Questo approccio è stato adottato per standardizzare i namespace in tutto il progetto Laraxot.
+=======
+Questa struttura di namespace mantiene compatibilità con la convenzione di Laravel e il sistema di moduli Nwidart, anche se i file sono fisicamente organizzati in modo diverso. Questo approccio è stato adottato per standardizzare i namespace in tutto il progetto healthcare_app.
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## Esempio per Datas
 
@@ -139,7 +173,11 @@ Per le regole generali e condivise tra tutti i moduli, consulta anche:
 
 **Path fisico corretto:**
 ```
-/var/www/html/Quaeris/laravel/Modules/Notify/app/Console/Commands/AnalyzeTranslationFiles.php
+<<<<<<< HEAD
+/var/www/html/ptvx/laravel/Modules/Notify/app/Console/Commands/AnalyzeTranslationFiles.php
+=======
+/var/www/html/healthcare_app/laravel/Modules/Notify/app/Console/Commands/AnalyzeTranslationFiles.php
+>>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 ```
 
 **Namespace corretto:**

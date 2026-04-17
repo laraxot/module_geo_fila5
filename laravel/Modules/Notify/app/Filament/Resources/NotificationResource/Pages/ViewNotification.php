@@ -13,7 +13,7 @@ use Override;
 
 class ViewNotification extends XotBaseViewRecord
 {
-    protected static string $resource = NotificationResource::class;
+    public static string $resource = NotificationResource::class;
 
     /**
      * @return array<Component>

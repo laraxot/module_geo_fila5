@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
 
 class PreviewNotificationTemplate extends XotBaseResourcePage
 {
-    protected static string $resource = NotificationTemplateResource::class;
+    public static string $resource = NotificationTemplateResource::class;
 
     protected string $view = 'notify::filament.resources.notification-template-resource.pages.preview-notification-template';
 

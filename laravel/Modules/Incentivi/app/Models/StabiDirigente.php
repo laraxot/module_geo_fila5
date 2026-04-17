@@ -110,23 +110,76 @@ class StabiDirigente extends BaseModel
     */
 
     // --- mutators --
+    
+   
+    /**
+     * Get nome_stabi attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Mantengo l'accessore pulito e leggibile
+     */
     public function getNomeStabiAttribute(?string $value): ?string
     {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
         if ($value !== null) {
             return $value;
         }
+        
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->getNomeStabi();
+    }
+
+    /**
+     * Calcola il nome_stabi.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function getNomeStabi(): ?string
+    {
         if (! $this->repart instanceof Repart) {
-            return $value;
+            return null;
         }
 
         return $this->repart->dest1;
     }
 
+    /**
+     * Get stabi attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * 1. Controllo se il valore esiste già dal DB
+     * 2. Se NULL, delego il calcolo a un metodo separato
+     * 3. Persisto AUTOMATICAMENTE con ActivityLog-Safe
+     */
     public function getStabiAttribute(?int $value): ?int
     {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
         if (($value !== null && $value != 0) || $this->getKey() === null) {
             return $value;
         }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getStabi();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['stabi' => $value]);
+            });
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola lo stabi.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function getStabi(): ?int
+    {
         $rep00f = Rep00f::where('ente', $this->ente)
             ->where('matr', $this->matr)
             ->whereRaw('repann=""')
@@ -138,39 +191,87 @@ class StabiDirigente extends BaseModel
         if ($value == 0 && $rep00f?->repst2 != 0) {
             $value = $rep00f->repst2;
         }
-        $this->update(['stabi' => $value]);
 
         return $value;
     }
 
+    /**
+     * Get repar attribute.
+     */
     public function getReparAttribute(?int $value): ?int
     {
         if (($value !== null) || $this->getKey() === null) {
             return $value;
         }
+
         $value = 0;
-        $this->update(['repar' => $value]);
+
+        if ($this->getKey() !== null) {
+            static::withoutEvents(function () use ($value): void {
+                $this->update(['repar' => $value]);
+            });
+        }
 
         return $value;
     }
 
+    /**
+     * Get ente attribute.
+     */
     public function getEnteAttribute(?int $value): ?int
     {
         if (($value !== null) || $this->getKey() === null) {
             return $value;
         }
+
         $value = 90;
-        $this->update(['ente' => $value]);
+
+        if ($this->getKey() !== null) {
+           
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['ente' => $value]);
+                    });
+           
+           
+        }
 
         return $value;
     }
 
+    /**
+     * Get nome_diri attribute.
+     */
     public function getNomeDiriAttribute(?string $value): ?string
     {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
         if ($value !== null) {
             return $value;
         }
 
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        $value = $this->getNomeDiri();
+
+        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        if ($value !== null && $this->getKey() !== null) {
+            
+                    static::withoutEvents(function () use ($value): void {
+                        $this->update(['nome_diri' => $value]);
+                    });
+                
+                
+                
+        }
+
+        return $value;
+    }
+
+    /**
+     * Calcola il nome_diri.
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function getNomeDiri(): ?string
+    {
         /*
          * Se non c'e' il nome prendo quello dell'anno prima.
          */
@@ -180,15 +281,7 @@ class StabiDirigente extends BaseModel
                 ->where('anno', $this->anno - 1)
                 ->first();
             if (\is_object($prev)) {
-                $value = $prev->nome_diri;
-                $this->nome_diri = $value;
-
-                // Guard: modello deve avere PK per salvare
-                if ($this->getKey() != null) {
-                    $this->save();
-                }
-
-                return $value;
+                return $prev->nome_diri;
             }
         }
 
@@ -225,21 +318,13 @@ class StabiDirigente extends BaseModel
                 /** @var object{nome_diri?: string} $firstResult */
                 $firstResult = $res[0];
                 $nomeDiri = isset($firstResult->nome_diri) ? (string) $firstResult->nome_diri : '';
-                $value = ucwords(strtolower($nomeDiri)).'';
 
-                $this->nome_diri = $value;
-
-                // Guard: modello deve avere PK per salvare
-                if ($this->getKey() != null) {
-                    $this->save();
-                }
+                return ucwords(strtolower($nomeDiri));
             }
-
-            return $value;
         }
 
         // */
-        return $value;
+        return null;
     }
 
     /*

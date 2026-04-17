@@ -9,21 +9,15 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Performance\Filament\Resources\IndividualeTotStabiResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
-class ListIndividualeTotStabis extends XotBaseListRecords
+class ListIndividualeTotStabis extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualeTotStabiResource::class;
+    public static string $resource = IndividualeTotStabiResource::class;
 
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy_from_last_year' => CopyFromLastYearAction::make(),
-        ];
-    }
+   
 
     #[Override]
     public function getTableColumns(): array

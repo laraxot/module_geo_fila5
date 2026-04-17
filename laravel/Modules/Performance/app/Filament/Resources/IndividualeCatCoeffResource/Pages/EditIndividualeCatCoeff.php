@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIndividualeCatCoeff extends XotBaseEditRecord
 {
-    protected static string $resource = IndividualeCatCoeffResource::class;
+    public static string $resource = IndividualeCatCoeffResource::class;
 
     protected function getHeaderActions(): array
     {

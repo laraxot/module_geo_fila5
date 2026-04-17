@@ -17,7 +17,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
  */
 class IndividualeMoney extends XotBaseViewRecord
 {
-    protected static string $resource = PerformanceFondoResource::class;
+    public static string $resource = PerformanceFondoResource::class;
 
     /**
      * Restituisce la view per la pagina IndividualeMoney.

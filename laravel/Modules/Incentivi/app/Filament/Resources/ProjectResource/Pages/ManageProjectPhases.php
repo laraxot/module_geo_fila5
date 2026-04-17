@@ -20,7 +20,7 @@ use Override;
 
 class ManageProjectPhases extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'phases';
 
@@ -106,7 +106,7 @@ class ManageProjectPhases extends XotBaseManageRelatedRecords
     }
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

@@ -2,8 +2,7 @@
     "agents": [
         "claude_code",
         "copilot",
-        "cursor",
-        "phpstorm"
+        "cursor"
     ],
     "guidelines": true,
     "herd_mcp": false,

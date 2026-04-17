@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Job\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Job\Actions\GetTaskFrequenciesAction;
+use Modules\Job\Tests\TestCase;
 
 describe('GetTaskFrequenciesAction Integration', function () {
     beforeEach(function () {

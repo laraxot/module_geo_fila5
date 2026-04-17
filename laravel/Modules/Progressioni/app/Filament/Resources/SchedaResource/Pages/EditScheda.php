@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditScheda extends XotBaseEditRecord
 {
-    protected static string $resource = SchedaResource::class;
+    public static string $resource = SchedaResource::class;
 
     protected function getHeaderActions(): array
     {

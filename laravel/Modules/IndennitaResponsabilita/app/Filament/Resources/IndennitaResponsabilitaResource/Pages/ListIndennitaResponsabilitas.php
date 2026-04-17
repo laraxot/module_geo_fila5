@@ -42,7 +42,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ListIndennitaResponsabilitas extends XotBaseListRecords
 {
-    protected static string $resource = IndennitaResponsabilitaResource::class;
+    public static string $resource = IndennitaResponsabilitaResource::class;
 
     /**
      * @return array<string, Action>

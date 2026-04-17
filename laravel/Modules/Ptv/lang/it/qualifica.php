@@ -25,5 +25,26 @@ return [
         'propro' => [
             'label' => 'propro',
         ],
+        'disci1_txt' => [
+            'label' => 'disci1_txt',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+        ],
+        'posiz_txt' => [
+            'label' => 'posiz_txt',
+        ],
+        'disci1' => [
+            'label' => 'disci1',
+        ],
+        'clafun' => [
+            'label' => 'clafun',
+        ],
+        'codqua' => [
+            'label' => 'codqua',
+        ],
+        'codqua_txt' => [
+            'label' => 'codqua_txt',
+        ],
     ],
 ];

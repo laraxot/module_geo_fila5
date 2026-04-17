@@ -380,3 +380,12 @@ docs/archive/
 .gemini/
 .cursor/
 .opencode/
+
+# AI Agent directories (Theme-specific)
+laravel/Themes/Zero/.devcontainer/
+laravel/Themes/Zero/.cursor/
+laravel/.claude/
+.kilo/
+.cursor/
+*.backup*
+*.pest.php

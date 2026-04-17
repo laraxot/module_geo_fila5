@@ -15,14 +15,14 @@ use Override;
 
 class ManageActivityEmployees extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'employees';
 
     // protected static ?string $slug = 'activity/employees';
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

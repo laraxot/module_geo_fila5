@@ -179,15 +179,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-<<<<<<< .merge_file_SZV6Pc
         'database.connections.seo.database' => 'healthcare_app_data_test',
-=======
-<<<<<<< HEAD
-        'database.connections.seo.database' => 'app_data_test',
-=======
-        'database.connections.seo.database' => 'ptvx_data_test',
->>>>>>> f04e1ab44 (refactor: update project references from <nome progetto> to PTVX)
->>>>>>> .merge_file_s1xQlq
     ]);
     
     return $app;

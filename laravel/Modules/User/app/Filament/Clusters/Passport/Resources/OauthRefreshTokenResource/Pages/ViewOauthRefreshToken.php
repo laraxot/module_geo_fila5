@@ -9,6 +9,8 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Illuminate\Database\Eloquent\Model;
+use Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource;
 use Modules\User\Filament\Clusters\Passport\Resources\OauthRefreshTokenResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
@@ -29,7 +31,19 @@ class ViewOauthRefreshToken extends XotBaseViewRecord
                     'token_grid' => Grid::make(2)
                         ->schema([
                             'id' => TextEntry::make('id'),
-                            'access_token_id' => TextEntry::make('accessToken.id'),
+                            'access_token_id' => TextEntry::make('accessToken.id')
+                                ->url(function (mixed $state, $record): ?string {
+                                    if (! $record instanceof Model) {
+                                        return null;
+                                    }
+
+                                    $accessToken = $record->getRelationValue('accessToken');
+                                    if (($accessToken instanceof Model) && $accessToken->exists) {
+                                        return OauthAccessTokenResource::getUrl('view', ['record' => $accessToken]);
+                                    }
+
+                                    return null;
+                                }),
                         ]),
                 ])->columns(1),
 

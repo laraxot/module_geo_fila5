@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Modules\Performance\Filament\Resources\IndividualeResource;
 use Modules\Performance\Models\Individuale;
+use Modules\Ptv\Filament\Resources\SchedaResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Webmozart\Assert\Assert;
@@ -24,16 +25,18 @@ use Webmozart\Assert\Assert;
  */
 class FillOutTheForm extends XotBaseResourcePage
 {
-    /*
-    use HasRelationManagers;
-    use InteractsWithRecord;
-    use NavigationLabelTrait;
-    */
-    public static string $resource = IndividualeResource::class;
+    
+    //public static string $resource = IndividualeResource::class;
+    public static string $resource = SchedaResource::class;
 
     public string $previousUrl = '#';
 
     /** @var array<string, mixed> */
+    /**
+     * Form data holder.
+     *
+     * @var array<string, mixed>
+     */
     public array $data = [];
 
     public float $totale = 0;
@@ -75,6 +78,7 @@ class FillOutTheForm extends XotBaseResourcePage
         $this->excellence = (bool) $this->record->excellence;
         $this->totale = (float) $this->record->totale_punteggio;
         // $this->fillForm();
+        
 
         $this->previousUrl = url()->previous();
     }

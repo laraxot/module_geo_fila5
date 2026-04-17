@@ -10,7 +10,7 @@ use Modules\Progressioni\Filament\Resources\ProgressioniResource\RelationManager
 
 class ViewProgressioni extends ViewRecord
 {
-    protected static string $resource = ProgressioniResource::class;
+    public static string $resource = ProgressioniResource::class;
 
     /* va in progressioniResource
     public function getRelations():array {

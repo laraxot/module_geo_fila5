@@ -27,7 +27,7 @@ class MergeDoubleRowCatecoYearAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.merge_double_row_cateco_year'))
+            ->tooltip(__('ptv::scheda.actions.merge_double_row_cateco_year'))
             ->icon('fas-code-merge')
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {

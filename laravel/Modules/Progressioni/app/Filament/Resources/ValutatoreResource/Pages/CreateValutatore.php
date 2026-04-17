@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\ValutatoreResource;
 
 class CreateValutatore extends CreateRecord
 {
-    protected static string $resource = ValutatoreResource::class;
+    public static string $resource = ValutatoreResource::class;
 }

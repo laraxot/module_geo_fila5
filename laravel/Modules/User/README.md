@@ -1,167 +1,152 @@
+---
+title: User
+module: user
+related: Xot, Notify
+status: production
+---
+
 # User Module
 
-[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
-[![Filament 5.x](https://img.shields.io/badge/Filament-5.x-blue.svg)](https://filamentphp.com/)
-[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
-[![PHP 8.3+](https://img.shields.io/badge/PHP-8.3+-blue.svg)](https://php.net)
-[![Models 42](https://img.shields.io/badge/Models-42-orange.svg)](#modelli)
-[![Resources 26](https://img.shields.io/badge/Resources-26-purple.svg)](#filament)
-
-> **Sistema completo di autenticazione e autorizzazione**: 42 modelli, 26 resource Filament, 8 widget, multi-auth (OAuth/SSO), RBAC con Spatie, team, tenant, device tracking e OTP.
+**Module**: `user`
+**Namespace**: `Modules\User\`
+**Status**: ✅ Production
 
 ---
 
-## Cosa fa
+## Overview
 
 Il modulo User gestisce l'intero ciclo di vita dell'utente: registrazione, autenticazione multi-metodo (password, OAuth, SSO, OTP), autorizzazione basata su ruoli e permessi (Spatie), organizzazione in team e tenant, tracciamento dispositivi e sessioni.
 
-```php
-// Autenticazione con device tracking
-$user = User::authenticate($credentials);
-app(GetCurrentDeviceAction::class)->execute($user, $request);
+### Key Features
 
-// RBAC con Spatie
-$user->assignRole('admin');
-$user->givePermissionTo('manage-surveys');
+- Feature 1
+- Feature 2
+- Feature 3
 
-// Team e tenant
-$user->teams()->attach($team);
-$user->tenants()->attach($tenant);
-```
+### Module Dependencies
 
----
-
-## Modelli (42)
-
-### Autenticazione
-
-| Modello | Funzione |
-|---------|----------|
-| **User** | Utente base con traits HasRoles, Notifiable, HasApiTokens |
-| **Profile** | Profilo esteso con dati personali |
-| **Device** | Dispositivo con fingerprint e geolocalizzazione |
-| **OauthClient / OauthToken** | Client e token OAuth (Passport) |
-| **SocialiteUser** | Account social collegati |
-| **PasswordHistory** | Storico password per policy di rinnovo |
-
-### Autorizzazione (Spatie Permission)
-
-| Modello | Funzione |
-|---------|----------|
-| **Role** | Ruoli utente (admin, editor, viewer...) |
-| **Permission** | Permessi granulari (manage-surveys, view-reports...) |
-| **ModelHasRole** | Pivot ruolo-modello |
-| **ModelHasPermission** | Pivot permesso-modello |
-| **RoleHasPermission** | Pivot ruolo-permesso |
-
-### Organizzazione
-
-| Modello | Funzione |
-|---------|----------|
-| **Team** | Gruppo di lavoro con membri |
-| **TeamUser** | Pivot team-utente con ruolo nel team |
-| **Tenant** | Tenant per multi-tenancy |
-| **TenantUser** | Pivot tenant-utente |
-
----
-
-## Azioni (4)
-
-| Action | Funzione |
-|--------|----------|
-| **GetCurrentDeviceAction** | Identifica/registra dispositivo corrente |
-| **ChangePasswordAction** | Cambio password con validazione policy |
-| **AlwaysAskPasswordAction** | Forza richiesta password per operazioni sensibili |
-| **SendOtpAction** | Invia OTP via email/SMS |
-
----
-
-## Filament Integration (26 Resource + 8 Widget)
-
-### Resource principali
-
-| Resource | Funzione |
-|----------|----------|
-| **UserResource** | CRUD utenti completo |
-| **RoleResource** | Gestione ruoli con permessi |
-| **PermissionResource** | Gestione permessi granulari |
-| **TeamResource** | Gestione team e membri |
-| **TenantResource** | Gestione tenant |
-| **DeviceResource** | Dispositivi registrati |
-| **ProfileResource** | Profili utente |
-| **OauthClientResource** | Client OAuth |
-| + 18 resource aggiuntive per modelli correlati |
-
-### Widget (8)
-
-| Widget | Funzione |
-|--------|----------|
-| **LoginWidget** | Form di login |
-| **LogoutWidget** | Azione logout |
-| **RegistrationWidget** | Form registrazione |
-| **PasswordExpiredWidget** | Notifica scadenza password |
-| **EditUserWidget** | Editor profilo inline |
-| **UserStatsChartWidget** | Grafico statistiche utenti |
-| **RecentLoginsWidget** | Ultimi accessi |
-| **UserOverviewWidget** | Overview utenti attivi |
-
----
-
-## Autenticazione multi-metodo
-
-| Metodo | Implementazione |
-|--------|----------------|
-| **Password** | bcrypt con policy complessita |
-| **OAuth/SSO** | Laravel Passport, Socialite |
-| **OTP** | Email/SMS one-time password |
-| **Device Trust** | Fingerprint dispositivo |
-| **Password Expiry** | Rinnovo obbligatorio periodico |
-
----
-
-## Integrazione con altri moduli
-
-```
-User ──> Tenant     (multi-tenancy, isolamento dati)
-User ──> Activity   (audit trail login/logout/CRUD)
-User ──> Notify     (welcome email, reset password, OTP)
-User ──> Quaeris    (proprietari survey, accesso dashboard)
-User ──> Meetup     (organizzatori, partecipanti eventi)
-User ──> Gdpr       (consensi, profilo privacy)
-User ──> Lang       (preferenza lingua utente)
-```
+- [Xot](../Xot/README.md) (required)
+- [Notify](../Notify/README.md) (required)
 
 ---
 
 ## Quick Start
 
-```bash
-php artisan module:enable User
-php artisan migrate
+### Installation
 
-# Crea utente admin
-php artisan tinker
->>> $user = Modules\User\Models\User::factory()->create();
->>> $user->assignRole('admin');
+```bash
+# Already included in main project
+# No additional setup required
+```
+
+### Basic Usage
+
+```php
+use Modules\User\Models\YourModel;
+
+$item = YourModel::first();
+```
+
+### Configuration
+
+Configuration file: `config/user.php`
+
+Key settings:
+- `setting1` - Description
+- `setting2` - Description
+
+---
+
+## Architecture
+
+### Directory Structure
+
+```
+User/
+├── src/
+│   ├── Models/
+│   ├── Controllers/
+│   ├── Resources/
+│   ├── Actions/
+│   └── Traits/
+├── routes/
+│   ├── api.php
+│   └── web.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── tests/
+│   ├── Unit/
+│   └── Feature/
+├── config/
+│   └── user.php
+├── docs/
+│   └── README.md
+└── composer.json
+```
+
+### Key Components
+
+
+
+---
+
+## API Reference
+
+Reference
+
+---
+
+## Usage Examples
+
+### Common Tasks
+
+#### Task 1: Description
+
+```php
+// Code example
 ```
 
 ---
 
-## Metriche
+## Testing
 
-| Metrica | Valore |
-|---------|--------|
-| **Modelli** | 42 |
-| **Resource Filament** | 26 |
-| **Widget Filament** | 8 |
-| **Azioni** | 4 |
-| **Metodi auth** | 5 (password, OAuth, SSO, OTP, device) |
-| **PHPStan Level** | 10 |
+### Running Tests
+
+```bash
+# Run all module tests
+composer test -- Modules/User
+```
 
 ---
 
-**Module Type**: Authentication & Authorization
-**Architecture**: Spatie Permission, Laravel Passport, multi-tenant RBAC
-**Quality**: PHPStan Level 10, 42 modelli tipizzati
+## Troubleshooting
 
-*Autenticazione, autorizzazione e organizzazione utenti: dal login all'RBAC, dal team al tenant.*
+### Common Issues
+
+#### Issue: Problem description
+
+**Solution**: How to fix this issue
+
+---
+
+## Related Modules
+
+### Dependencies
+
+- [Xot](../Xot/README.md) - Required module
+- [Notify](../Notify/README.md) - Required module
+
+### Dependents
+
+- [Activity](../Activity/README.md) - Depends on this module
+- [Comment](../Comment/README.md) - Depends on this module
+- [Fixcity](../Fixcity/README.md) - Depends on this module
+- [Gdpr](../Gdpr/README.md) - Depends on this module
+- [Notify](../Notify/README.md) - Depends on this module
+- [Rating](../Rating/README.md) - Depends on this module
+- [Tenant](../Tenant/README.md) - Depends on this module
+
+---
+
+Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)

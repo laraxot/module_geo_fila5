@@ -9,7 +9,7 @@ use Modules\User\Tests\TestCase;
 uses(TestCase::class);
 
 it('migrates the test database', function () {
-    $this->artisan('migrate', [
+    $this->artisan('migrate:fresh', [
         '--force' => true,
         '--env' => 'testing',
         '--path' => [

@@ -9,5 +9,5 @@ use Modules\Notify\Filament\Resources\MailTemplateResource\Pages\ListMailTemplat
 
 class ListMailTemplates extends NotifyListMailTemplates
 {
-    protected static string $resource = MailTemplateResource::class;
+    public static string $resource = MailTemplateResource::class;
 }

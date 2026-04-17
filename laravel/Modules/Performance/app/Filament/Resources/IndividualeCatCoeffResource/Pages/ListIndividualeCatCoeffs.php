@@ -17,14 +17,15 @@ use Filament\Tables\Filters;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Performance\Filament\Resources\IndividualeCatCoeffResource;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
 
 use function Safe\date;
 
-class ListIndividualeCatCoeffs extends XotBaseListRecords
+class ListIndividualeCatCoeffs extends PtvBaseYearListRecords
 {
-    protected static string $resource = IndividualeCatCoeffResource::class;
+    public static string $resource = IndividualeCatCoeffResource::class;
 
     /**
      * Get the list table columns.
@@ -69,69 +70,17 @@ class ListIndividualeCatCoeffs extends XotBaseListRecords
         ];
     }
 
-    /**
-     * Get the table filters.
-     *
-     * @return array<string, Filters\SelectFilter>
-     */
+    
     #[Override]
     public function getTableFilters(): array
     {
         return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
+            ...parent::getTableFilters(),
             'lista_propro' => SelectFilter::make('lista_propro')
                 ->searchable()
                 ->preload(),
         ];
     }
 
-    /**
-     * Get the table actions.
-     *
-     * @return array<string, Action>
-     */
-    #[Override]
-    public function getTableActions(): array
-    {
-        return [
-            'edit' => EditAction::make(),
-            'delete' => DeleteAction::make(),
-        ];
-    }
-
-    /**
-     * Get the table bulk actions.
-     *
-     * @return array<string, DeleteBulkAction>
-     */
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        return [
-            'delete' => DeleteBulkAction::make(),
-        ];
-    }
-
-    /**
-     * Get the header actions for the list page.
-     *
-     * @return array<string, Action>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy' => CopyFromLastYearAction::make(),
-        ];
-    }
+   
 }

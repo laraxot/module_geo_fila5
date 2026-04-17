@@ -92,6 +92,44 @@ return [
                 'help' => 'Data dell\'ultima modifica',
             ],
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'individuale' => [
+            'nome' => [
+                'label' => 'individuale.nome',
+            ],
+        ],
+        'min_perc' => [
+            'label' => 'min_perc',
+        ],
+        'max_perc' => [
+            'label' => 'max_perc',
+        ],
+        'min_gg_365' => [
+            'label' => 'min_gg_365',
+        ],
+        'max_gg_365' => [
+            'label' => 'max_gg_365',
+        ],
+        'decurtazione_perc' => [
+            'label' => 'decurtazione_perc',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
+        'value' => [
+            'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
+        ],
     ],
     'actions' => [
         'calculate' => [
@@ -114,6 +152,91 @@ return [
             'success' => 'Decurtazione annullata con successo',
             'error' => 'Errore durante l\'annullamento',
             'confirm' => 'Sei sicuro di voler annullare questa decurtazione?',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'label' => 'logout',
+            'icon' => 'logout',
+        ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+        'check' => [
+            'label' => 'check',
+            'icon' => 'check',
+            'tooltip' => 'check',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
         ],
     ],
     'messages' => [
@@ -152,4 +275,5 @@ return [
             'auto_calculation' => 'Calcolo automatico applicato',
         ],
     ],
+    'label' => 'individuale decurtazione assenze',
 ];

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class Disci
@@ -18,7 +18,7 @@ class Disci
      * @param  string  $value  Valore del criterio (lista separata da virgole)
      * @return string Motivo di esclusione o stringa vuota se ha diritto
      */
-    public function execute(ProgressioneSchedaContract $scheda, string $value): string
+    public function execute(SchedaContract $scheda, string $value): string
     {
         if (\in_array($scheda->disci1, explode(',', $value), false)) {
             return 'no disci';

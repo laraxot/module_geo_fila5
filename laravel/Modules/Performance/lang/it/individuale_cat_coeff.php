@@ -144,6 +144,9 @@ return [
         ],
         'value' => [
             'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+            'description' => 'value',
         ],
         'openFilters' => [
             'label' => 'openFilters',
@@ -160,6 +163,8 @@ return [
             'label' => 'Nuovo Coefficiente',
             'success' => 'Coefficiente creato con successo',
             'error' => 'Errore durante la creazione',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'update' => [
             'label' => 'Modifica',
@@ -171,11 +176,93 @@ return [
             'success' => 'Coefficiente eliminato con successo',
             'error' => 'Errore durante l\'eliminazione',
             'confirm' => 'Sei sicuro di voler eliminare questo coefficiente?',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'apply' => [
             'label' => 'Applica',
             'success' => 'Coefficiente applicato con successo',
             'error' => 'Errore durante l\'applicazione',
+        ],
+        'logout' => [
+            'tooltip' => 'logout',
+            'icon' => 'logout',
+            'label' => 'logout',
+        ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'profile' => [
+            'label' => 'profile',
+            'icon' => 'profile',
+            'tooltip' => 'profile',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'check' => [
+            'label' => 'check',
+            'icon' => 'check',
+            'tooltip' => 'check',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
         ],
     ],
     'messages' => [
@@ -215,4 +302,5 @@ return [
     'model' => [
         'label' => 'individuale cat coeff.model',
     ],
+    'label' => 'individuale cat coeff',
 ];

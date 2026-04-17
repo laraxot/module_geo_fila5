@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditWebService extends XotBaseEditRecord
 {
-    protected static string $resource = WebServiceResource::class;
+    public static string $resource = WebServiceResource::class;
 
     #[\Override]
     protected function getHeaderActions(): array

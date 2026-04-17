@@ -48,10 +48,12 @@ class QualificaColumn extends GroupColumn
             'categoria_eco' => TextColumn::make('categoria_eco'),
             'categoria_ecoval' => TextColumn::make('categoria_ecoval'),
             'posfunval' => TextColumn::make('posfunval'),
-            // 'posiz' => TextColumn::make('posiz'),
-            // 'posiz_txt' => TextColumn::make('posiz_txt'),
-            // 'disci1' => TextColumn::make('disci1'),
-            // 'disci1_txt' => TextColumn::make('disci1_txt'),
+            'posiz' => TextColumn::make('posiz'),
+            'posiz_txt' => TextColumn::make('posiz_txt'),
+            'disci1' => TextColumn::make('disci1'),
+            'disci1_txt' => TextColumn::make('disci1_txt'),
+            //'codqua' => TextColumn::make('codqua'),
+            //'codqua_txt' => TextColumn::make('codqua_txt'),
         ];
     }
 }

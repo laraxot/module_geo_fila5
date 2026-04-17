@@ -257,4 +257,28 @@ return [
             'label' => 'Elimina Icon State Split',
         ],
     ],
+    'label' => 'Icon State Split',
+    'plural_label' => 'Icon State Split (Plurale)',
+    'navigation' => [
+        'name' => 'Icon State Split',
+        'plural' => 'Icon State Split',
+        'group' => [
+            'name' => 'General',
+            'description' => 'General Settings',
+        ],
+        'label' => 'Icon State Split',
+        'sort' => 1,
+        'icon' => 'heroicon-o-collection',
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'Crea Icon State Split',
+        ],
+        'edit' => [
+            'label' => 'Modifica Icon State Split',
+        ],
+        'delete' => [
+            'label' => 'Elimina Icon State Split',
+        ],
+    ],
 ];

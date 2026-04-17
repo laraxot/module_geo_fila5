@@ -28,13 +28,13 @@ use Override;
 
 class ListCedDiffs extends PtvBaseYearListRecords
 {
-    protected static string $resource = CedDiffResource::class;
+    public static string $resource = CedDiffResource::class;
 
     /**
      * @return array<string, Actions\Action>
      */
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             'create' => CreateAction::make(),

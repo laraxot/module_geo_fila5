@@ -18,7 +18,7 @@ use Override;
 
 class ListProjects extends XotBaseListRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     #[Override]
     public function getTableColumns(): array
@@ -109,7 +109,7 @@ class ListProjects extends XotBaseListRecords
     }
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {        
         return [
         ];

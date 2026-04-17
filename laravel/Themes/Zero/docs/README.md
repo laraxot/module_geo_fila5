@@ -38,8 +38,13 @@ Zero/
 
 - [PHPStan Docs](./phpstan.md)
 - [Configurazione Root](../../../docs/THEME_ZERO.md)
+- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
+- [GSD templates locali](../../../../.gsd/README.md)
 
 ## Backlinks
 
 - [Xot Module](../../Modules/Xot/docs/)
 - [UI Module](../../Modules/UI/docs/)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)

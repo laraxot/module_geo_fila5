@@ -1,4 +1,4 @@
-e class="table">
+<table class="table">
 	<tr>
 		<td>ID</td>
 		<td> {{ $row->id }} </td>

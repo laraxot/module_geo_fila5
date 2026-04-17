@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages\ListCriteriEs
 
 class ListCriteriEsclusiones extends PtvListCriteriEsclusiones
 {
-    protected static string $resource = CriteriEsclusioneResource::class;
+    public static string $resource = CriteriEsclusioneResource::class;
 }

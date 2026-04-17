@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTranslationFile extends XotBaseEditRecord
 {
-    protected static string $resource = TranslationFileResource::class;
+    public static string $resource = TranslationFileResource::class;
 
     /**
      * @return array<string>
@@ -45,7 +45,7 @@ class EditTranslationFile extends XotBaseEditRecord
         $fields = [];
 
         foreach ($array as $key => $value) {
-            $fullKey = '' === $prefix ? $key : ($prefix.'.'.$key);
+            $fullKey = $prefix === '' ? $key : ($prefix.'.'.$key);
 
             if (is_array($value)) {
                 /** @var array<string, mixed> $childArray */

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\SchedaResource;
 
 class CreateScheda extends CreateRecord
 {
-    protected static string $resource = SchedaResource::class;
+    public static string $resource = SchedaResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Incentivi\Filament\Resources\SettlementResource;
 
 class CreateSettlement extends CreateRecord
 {
-    protected static string $resource = SettlementResource::class;
+    public static string $resource = SettlementResource::class;
 }

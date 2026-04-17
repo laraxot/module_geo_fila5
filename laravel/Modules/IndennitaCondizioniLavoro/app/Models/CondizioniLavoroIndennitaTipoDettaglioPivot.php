@@ -54,18 +54,73 @@ class CondizioniLavoroIndennitaTipoDettaglioPivot extends BasePivot
     }
 
     // ---- mutators --
-    public function getTotAttribute(mixed $value): int|float
+    
+    /**
+     * Get tot attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * Calcola il totale (gg * euro_giorno).
+     * Questo è un calcolo puro, non necessita di persistenza.
+     */
+    public function getTotAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateTot();
+    }
+
+    /**
+     * Calcola il totale (gg * euro_giorno).
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateTot(): ?float
     {
         $gg = $this->gg ?? 0;
         $euroGiorno = $this->indennitaTipoDettaglio->euro_giorno ?? 0;
 
-        return (int) $gg * (float) $euroGiorno;
+        if ($gg === 0 || $euroGiorno === 0) {
+            return 0.0;
+        }
+
+        return (float) $gg * (float) $euroGiorno;
     }
 
-    public function getTotXPtimeAttribute(mixed $value): int|float
+    /**
+     * Get tot_x_ptime attribute.
+     *
+     * Pattern del Livello 4 (Maestro Supremo):
+     * Calcola il totale per part-time (tot * perc_p_time).
+     * Questo è un calcolo puro, non necessita di persistenza.
+     */
+    public function getTotXPtimeAttribute(?float $value): ?float
+    {
+        // ✅ Livello 4: Controllo se il valore esiste già dal DB
+        if (is_float($value)) {
+            return $value;
+        }
+
+        // ✅ Livello 4: Delego il calcolo a metodo separato
+        return $this->calculateTotXPtime();
+    }
+
+    /**
+     * Calcola il totale per part-time (tot * perc_p_time).
+     *
+     * Metodo separato per il calcolo complesso.
+     */
+    protected function calculateTotXPtime(): ?float
     {
         $tot = $this->tot;
         $ptime = $this->condizioniLavoro->perc_p_time_daterange ?? 0;
+
+        if ($tot === 0.0 || $ptime === 0.0) {
+            return 0.0;
+        }
 
         return (float) $tot * (float) $ptime;
     }

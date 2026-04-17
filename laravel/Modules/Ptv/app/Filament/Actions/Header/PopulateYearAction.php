@@ -27,7 +27,7 @@ class PopulateYearAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.'.$this->getDefaultName()))
+            ->tooltip(__('ptv::scheda.actions.'.$this->getDefaultName().'.label'))
             ->icon('fas-fill')
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {
@@ -42,6 +42,7 @@ class PopulateYearAction extends Action
                 }
 
                 $tableFilters = is_array($livewire->tableFilters) ? $livewire->tableFilters : [];
+                
                 $year = Arr::get($tableFilters, 'anno.value');
                 // 2023
                 $fieldname = 'anno';
@@ -54,8 +55,14 @@ class PopulateYearAction extends Action
                     $year = Arr::get($tableFilters, 'anno/valutatore.anno');
                     $fieldname = 'anno';
                 }
+                 if ($year == null) {
+                    $year = Arr::get($tableFilters, 'anno_valutatore.anno');
+                    $fieldname = 'anno';
+                }
+                
 
                 $yearInt = is_numeric($year) ? (int) $year : 0;
+                
                 app(PopulateByYearAction::class)->execute($modelClass, $fieldname, $yearInt);
                 Notification::make()
                     ->title('Successfully')

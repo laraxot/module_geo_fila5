@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CriteriValutazioneResource;
 
 class CreateCriteriValutazione extends CreateRecord
 {
-    protected static string $resource = CriteriValutazioneResource::class;
+    public static string $resource = CriteriValutazioneResource::class;
 }

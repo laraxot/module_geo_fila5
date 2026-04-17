@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\OptionResource\Pages\ListOptions as PtvListOp
 
 class ListOptions extends PtvListOptions
 {
-    protected static string $resource = OptionResource::class;
+    public static string $resource = OptionResource::class;
 }

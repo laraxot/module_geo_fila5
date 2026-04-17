@@ -9,5 +9,5 @@ use Modules\Sigma\Filament\Resources\WebServiceResource;
 
 class CreateWebService extends CreateRecord
 {
-    protected static string $resource = WebServiceResource::class;
+    public static string $resource = WebServiceResource::class;
 }

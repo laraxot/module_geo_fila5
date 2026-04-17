@@ -100,6 +100,10 @@ return [
             'icon' => 'submit',
             'label' => 'submit',
         ],
+        'createAnother' => [
+            'tooltip' => 'createAnother',
+            'icon' => 'createAnother',
+        ],
     ],
     'label' => 'stabi dirigente',
     'fields' => [

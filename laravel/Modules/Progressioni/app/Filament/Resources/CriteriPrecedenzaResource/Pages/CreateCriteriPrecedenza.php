@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CriteriPrecedenzaResource;
 
 class CreateCriteriPrecedenza extends CreateRecord
 {
-    protected static string $resource = CriteriPrecedenzaResource::class;
+    public static string $resource = CriteriPrecedenzaResource::class;
 }

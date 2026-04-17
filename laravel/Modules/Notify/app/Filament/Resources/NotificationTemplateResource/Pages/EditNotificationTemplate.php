@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditNotificationTemplate extends XotBaseEditRecord
 {
-    protected static string $resource = NotificationTemplateResource::class;
+    public static string $resource = NotificationTemplateResource::class;
 
     /*
      * protected function getRedirectUrl(): string

@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
  */
 class PreviewMailTemplate extends XotBaseResourcePage
 {
-    protected static string $resource = MailTemplateResource::class;
+    public static string $resource = MailTemplateResource::class;
 
     protected string $view = 'notify::filament.resources.mail-template-resource.pages.preview-mail-template';
 

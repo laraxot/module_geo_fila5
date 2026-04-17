@@ -27,8 +27,18 @@ class TrovaEsclusiAction extends Action
     {
         parent::setUp();
         $this->label('')
-            ->tooltip(__('ptv::actions.trova_esclusi.label'))
+            ->tooltip(__('ptv::scheda.actions.trova_esclusi.label'))
             ->icon('fas-skull')
+            ->visible(function ($livewire): bool {
+                if (! ($livewire instanceof ListRecords)) {
+                    return false;
+                }
+
+                $resource = $livewire->getResource();
+                $canCreate = $resource::can('create');
+
+                return is_bool($canCreate) ? $canCreate : false;
+            })
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {
                     return;
@@ -36,6 +46,7 @@ class TrovaEsclusiAction extends Action
 
                 $resource = $livewire->getResource();
                 $modelClass = $resource::getModel();
+                
 
                 if (! is_string($modelClass)) {
                     return;
@@ -52,7 +63,18 @@ class TrovaEsclusiAction extends Action
                     $fieldname = 'year';
                 }
 
+                 if ($year == null) {
+                    $year = Arr::get($tableFilters, 'anno_valutatore.anno');
+                    // 2023
+                    $fieldname = 'anno';
+                }
+
+                
+
                 $yearInt = is_numeric($year) ? (int) $year : 0;
+
+
+                
                 app(TrovaEsclusiByModelClassYearAction::class)->execute($modelClass, $fieldname, $yearInt);
 
                 Notification::make()

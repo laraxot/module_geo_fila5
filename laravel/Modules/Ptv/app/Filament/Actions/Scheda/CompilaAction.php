@@ -20,7 +20,7 @@ class CompilaAction extends Action
 
         $this->icon('heroicon-m-pencil-square')
             ->iconButton()
-            ->tooltip(__('ptv::actions.compila.label'))
+            ->tooltip(__('ptv::scheda.actions.compila.label'))
             ->url(function (ListRecords $livewire, $record): string {
                 $resource = $livewire->getResource();
                 $url = $resource::getUrl('compila', ['record' => $record]);

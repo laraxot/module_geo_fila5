@@ -14,12 +14,12 @@ use Override;
 
 class ManagePhaseSettlements extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = PhaseResource::class;
+    public static string $resource = PhaseResource::class;
 
     protected static string $relationship = 'settlements';
 
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
 

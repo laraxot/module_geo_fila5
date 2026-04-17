@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Modules\Ptv\Models\Traits\HasMyLogs;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
@@ -34,6 +35,7 @@ trait SchedaTrait
     use SchedaMutator; // → CommonMutator, EnteMatr*Mutator
     use SchedaRelationship; // → CommonRelationship, EnteMatr*Relationship, TquRelationship
     use SchedaScope; // → FunctionExtra, MassExtra, Helper inline
+    use HasMyLogs;
 
     // -------------
     // ⚡ HELPER METHODS: Migrated to SchedaHelper.php (703 lines)
@@ -254,23 +256,87 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Costruisce stringa identificativa valutatore (calcolo puro).
+     *
+     * Business Rule: Formato "ID valutatore] Nome dirigente".
+     * Es: "123] Mario Rossi"
+     *
+     * @return string|null Stringa identificativa, null se valutatore non disponibile
+     */
+    protected function getValutatoreTxt(): ?string
+    {
+        if (null === $this->valutatore) {
+            return null;
+        }
+
+        $id = $this->valutatore?->id ?? '';
+        $nome_diri = $this->valutatore?->nome_diri ?? '';
+
+        if ('' === $id || '' === $nome_diri) {
+            return null;
+        }
+
+        return $id.'] '.$nome_diri;
+    }
+
+    /**
+     * Accessor per valutatore_txt (stringa identificativa valutatore).
+     * Delega calcolo a getValutatoreTxt().
+     *
+     * @param string|null $value Valore cached dal DB
+     *
+     * @return string|null Stringa identificativa calcolata
+     */
     protected function getValutatoreTxtAttribute(?string $value): ?string
     {
-        if (null === $value) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', 0)) {
+            return $value;
         }
-        if (request()->input('refresh', 0)) {
-            return $this->valutatore?->id.'] '.$this->valutatore?->nome_diri;
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getValutatoreTxt();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        if ($this->getKey() !== null) {
+            $this->update(['valutatore_txt' => $value]);
         }
 
         return $value;
     }
 
-    protected function getPosizioneAttribute(?int $_value): int
+    /**
+     * Helper method: Calcola posizione in classifica categoria economica (calcolo puro).
+     *
+     * Business Rule: Conta quanti avversari hanno punteggio maggiore.
+     * Posizione = numero di avversari con punt_progressione_finale superiore.
+     *
+     * @return int Posizione in classifica (0 = primo posto)
+     */
+    protected function getPosizione(): int
     {
         return $this->avversariCategoriaEco
             ->where('punt_progressione_finale', '>', $this->punt_progressione_finale)
             ->count();
+    }
+
+    /**
+     * Accessor per posizione (posizione in classifica categoria economica).
+     * Delega calcolo a getPosizione().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
+     *
+     * @return int Posizione in classifica calcolata
+     */
+    protected function getPosizioneAttribute(?int $_value): int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getPosizione();
     }
 
     /**
@@ -385,16 +451,52 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni fuori sede senza assenze (calcolo puro).
+     *
+     * Business Rule: Giorni fuori sede - (giorni assenza + ore assenza / 6).
+     * Conversione ore in giorni: 6 ore = 1 giorno.
+     *
+     * @return float|null Giorni fuori sede netti, null se dati non disponibili
+     */
+    protected function getGgFuoriSedeNoAsz(): ?float
+    {
+        if (null == $this->gg_fuori_sede) {
+            return null;
+        }
+
+        $gg_asz_fuori_sede = $this->gg_asz_fuori_sede ?? 0;
+        $hh_asz_fuori_sede = $this->hh_asz_fuori_sede ?? 0;
+
+        return (float) ($this->gg_fuori_sede - $gg_asz_fuori_sede - ($hh_asz_fuori_sede / 6));
+    }
+
+    /**
+     * Accessor per gg_fuori_sede_no_asz (giorni fuori sede senza assenze).
+     * Delega calcolo a getGgFuoriSedeNoAsz().
+     *
+     * @param float|null $value Valore cached dal DB
+     *
+     * @return float|null Giorni fuori sede netti calcolati
+     */
     protected function getGgFuoriSedeNoAszAttribute(?float $value): ?float
     {
+        // Cache hit
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK per salvare
         if (null == $this->getKey()) {
             return null;
         }
 
-        $value = $this->gg_fuori_sede - $this->gg_asz_fuori_sede - ($this->hh_asz_fuori_sede / 6);
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgFuoriSedeNoAsz();
+
+        if (null === $value) {
+            return null;
+        }
 
         // Persist con update chirurgico (salva SOLO questo campo, previene loop)
         $this->update(['gg_fuori_sede_no_asz' => $value]);
@@ -1067,107 +1169,159 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni categoria economica superiore totali (calcolo puro).
+     *
+     * Business Rule: Somma giorni cateco_sup in sede + fuori sede.
+     * Prerequisiti: matr, qua2kd, propro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup totali, null se dati non disponibili
+     */
+    protected function getGgCatecoSup(): ?int
+    {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
+            return null;
+        }
+
+        $in_sede = $this->gg_cateco_sup_in_sede ?? 0;
+        $fuori_sede = $this->gg_cateco_sup_fuori_sede ?? 0;
+
+        return (int) ($in_sede + $fuori_sede);
+    }
+
+    /**
+     * Accessor per gg_cateco_sup (giorni categoria economica superiore totali).
+     * Delega calcolo a getGgCatecoSup().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup totali calcolati
+     */
     protected function getGgCatecoSupAttribute(?int $value): ?int
     {
+        // Cache hit (con refresh opzionale)
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK
         if (null == $this->getKey()) {
             return null;
         }
-        // 730
-        if (null == $this->matr) {
-            return null;
-        }
-        if (null == $this->qua2kd) {
-            return null;
-        }
-        if (null == $this->propro) {
-            return null;
-        }
-        $value = $this->gg_cateco_sup_in_sede + $this->gg_cateco_sup_fuori_sede;
-        $this->addTableField(['name' => 'gg_cateco_sup', 'type' => 'integer']);
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
-            return $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSup();
+
+        if (null === $value) {
+            return null;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup' => $value]);
 
         return $value;
     }
 
-    protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
+    /**
+     * Helper method: Calcola giorni categoria economica superiore in sede (calcolo puro).
+     *
+     * Business Rule: Delega ad anag->ggInSedeTot() con filter data.
+     * Prerequisiti: matr, propro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup in sede, null se dati non disponibili
+     */
+    protected function getGgCatecoSupInSede(): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
-            return $value;
-        }
-        if (null == $this->getKey()) {
-            return null;
-        }
-        if (null == $this->matr) {
-            return null;
-        }
-        if (null == $this->propro) {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->propro) {
             return null;
         }
 
         $parz = [
-            // 'lista_propro'=>$categoria->lista_propro,
-            // 'lista_propro_sup'=>$categoria->lista_propro_sup,
-            // 'posfun'=>$this->posfun,
-            // 'lista_propro' => $categoria->lista_propro_sup,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
         $data = GgFilterData::from($parz);
 
-        $value = $this->anag?->ggInSedeTot($data);
+        return $this->anag?->ggInSedeTot($data);
+    }
 
-        /*
-         * $table=$this->getTable();
-         * $conn=$this->getConnection();
-         * $fieldname='gg_cateco_sup_in_sede';
-         * if (!\Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-         * \Schema::connection($conn->getName())->table($table, function ($table) use($fieldname){
-         * $table->integer($fieldname);
-         * });
-         * }
-         * $this->addTableField(['name' => 'gg_cateco_sup_in_sede', 'type' => 'integer']);
-         */
-
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+    /**
+     * Accessor per gg_cateco_sup_in_sede (giorni categoria economica superiore in sede).
+     * Delega calcolo a getGgCatecoSupInSede().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup in sede calcolati
+     */
+    protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
+    {
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Guard: modello deve avere PK
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSupInSede();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup_in_sede' => $value]);
 
         return $value;
     }
 
+    /**
+     * Helper method: Calcola giorni categoria economica senza posizione funzionale e senza assenze (calcolo puro).
+     *
+     * Business Rule: Sottrae giorni cateco_posfun_no_asz da gg_cateco_no_asz.
+     * Ottiene giorni categoria economica netti escludendo posizione funzionale.
+     *
+     * @return int|null Giorni cateco_no_posfun_no_asz, null se dati non disponibili
+     */
+    protected function getGgCatecoNoPosfunNoAsz(): ?int
+    {
+        if (null === $this->gg_cateco_no_asz || null === $this->gg_cateco_posfun_no_asz) {
+            return null;
+        }
+
+        return (int) ($this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz);
+    }
+
+    /**
+     * Accessor per gg_cateco_no_posfun_no_asz (giorni categoria economica senza posfun e senza assenze).
+     * Delega calcolo a getGgCatecoNoPosfunNoAsz().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_no_posfun_no_asz calcolati
+     */
     protected function getGgCatecoNoPosfunNoAszAttribute(?int $value): ?int
     {
+        // Cache hit (con refresh opzionale)
         if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
+
+        // Guard: modello deve avere PK per salvare
         if (null == $this->getKey()) {
             return null;
         }
-        if (2160000 == $this->matr) {
-            dddx([
-                'gg_cateco_no_asz' => $this->gg_cateco_no_asz,
-                'gg_cateco_posun_no_asz' => $this->gg_cateco_posfun_no_asz,
-            ]);
-        }
-        $value = $this->gg_cateco_no_asz - $this->gg_cateco_posfun_no_asz;
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
-            return $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoNoPosfunNoAsz();
+
+        if (null === $value) {
+            return null;
         }
 
         // Persist con update chirurgico (salva SOLO questo campo, previene loop)
@@ -1339,43 +1493,61 @@ trait SchedaTrait
         return $value;
     }
 
-    protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
+    /**
+     * Helper method: Calcola giorni categoria economica superiore fuori sede (calcolo puro).
+     *
+     * Business Rule: Delega ad anag->ggFuoriSedeTot() con lista_propro_sup.
+     * Prerequisiti: matr, qua2kd, propro, categoriaPropro devono esistere.
+     *
+     * @return int|null Giorni cateco_sup fuori sede, null se dati non disponibili
+     */
+    protected function getGgCatecoSupFuoriSede(): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
-            return $value;
-        }
-        if (null == $this->matr) {
+        // Guard: prerequisiti
+        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
             return null;
         }
-        if (null == $this->qua2kd) {
-            return null;
-        }
-        if (null == $this->propro) {
-            return null;
-        }
-        // 730
+
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
             return null;
         }
-        // dddx($categoria->lista_propro);
-        // $criteri = $this->criteriEsclusione;
-        $value = $this->anag?->ggFuoriSedeTot([
-            // 'lista_propro'=>$categoria->lista_propro,
-            // 'lista_propro_sup'=>$categoria->lista_propro_sup,
+
+        return $this->anag?->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro_sup ?? '',
-            // 'posfun'=>$this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
-        $this->addTableField(['name' => 'gg_cateco_sup_fuori_sede', 'type' => 'integer']);
+    }
 
-        // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+    /**
+     * Accessor per gg_cateco_sup_fuori_sede (giorni categoria economica superiore fuori sede).
+     * Delega calcolo a getGgCatecoSupFuoriSede().
+     *
+     * @param int|null $value Valore cached dal DB
+     *
+     * @return int|null Giorni cateco_sup fuori sede calcolati
+     */
+    protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
+    {
+        // Cache hit (con refresh opzionale)
+        if (null !== $value && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        // Persist con update chirurgico (salva SOLO questo campo, previene loop)
+        // Guard: modello deve avere PK
+        if (null == $this->getKey()) {
+            return null;
+        }
+
+        // Delega calcolo al metodo puro (VICINO!)
+        $value = $this->getGgCatecoSupFuoriSede();
+
+        if (null === $value) {
+            return null;
+        }
+
+        // Persist con update chirurgico
         $this->update(['gg_cateco_sup_fuori_sede' => $value]);
 
         return $value;
@@ -1517,11 +1689,37 @@ trait SchedaTrait
      * }
      */
 
+    /**
+     * Helper method: Calcola giorni assenza categoria economica + posizione funzionale totali (calcolo puro).
+     *
+     * Business Rule: Somma giorni assenza cateco_posfun in sede + fuori sede.
+     *
+     * @return int|null Giorni assenza cateco_posfun totali, null se dati non disponibili
+     */
+    protected function getGgAszCatecoPosfun(): ?int
+    {
+        if (null === $this->gg_asz_cateco_posfun_in_sede && null === $this->gg_asz_cateco_posfun_fuori_sede) {
+            return null;
+        }
+
+        $in_sede = $this->gg_asz_cateco_posfun_in_sede ?? 0;
+        $fuori_sede = $this->gg_asz_cateco_posfun_fuori_sede ?? 0;
+
+        return (int) ($in_sede + $fuori_sede);
+    }
+
+    /**
+     * Accessor per gg_asz_cateco_posfun (giorni assenza categoria economica + posfun totali).
+     * Delega calcolo a getGgAszCatecoPosfun().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
+     *
+     * @return int|null Giorni assenza cateco_posfun totali calcolati
+     */
     protected function getGgAszCatecoPosfunAttribute(?int $_value): ?int
     {
-        $value = $this->gg_asz_cateco_posfun_in_sede + $this->gg_asz_cateco_posfun_fuori_sede;
-
-        return (int) $value;
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getGgAszCatecoPosfun();
     }
 
     /*
@@ -1644,7 +1842,16 @@ trait SchedaTrait
      *
      * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
      */
-    protected function getAventiDirittoAttribute(mixed $_value): ?int
+
+    /**
+     * Helper method: Calcola aventi diritto alla progressione (calcolo puro).
+     *
+     * Business Rule: Estrae valore da maxCatecoPosfun (query aggregata su categoria+posfun).
+     * Se non disponibile, return null (nessun debug echo - usare log se necessario).
+     *
+     * @return int|null Numero aventi diritto, null se non determinabile
+     */
+    protected function getAventiDiritto(): ?int
     {
         $maxCatecoPosfun = $this->maxCatecoPosfun;
         if (\is_object($maxCatecoPosfun) && isset($maxCatecoPosfun->aventi_diritto)) {
@@ -1653,35 +1860,33 @@ trait SchedaTrait
             return is_numeric($value) ? (int) $value : null;
         }
 
-        $id = $this->getKey() ?? 'null';
-        $anno = is_numeric($this->anno) ? (string) $this->anno : ($this->anno ?? 'null');
-        $categoriaEcoval = is_string($this->categoria_ecoval) ? $this->categoria_ecoval : ($this->categoria_ecoval ?? 'null');
-        $posfunval = is_numeric($this->posfunval) ? (string) $this->posfunval : ($this->posfunval ?? 'null');
-        echo '<h3>id :'
-            .(string) $id
-                .'<br/>'
-                .'anno :'
-                .(string) $anno
-                .'<br/>'
-                .'categoria_ecoval :'
-                .$categoriaEcoval
-                .'<br/>'
-                .'posfun :'
-                .$posfunval
-                .'</h3>';
-        if (function_exists('dddx')) {
-            dddx([$this->maxCatecoPosfun()->toSql()]);
-        }
-
+        // Nessun debug echo - se serve troubleshooting, usare log o dddx solo in sviluppo
         return null;
     }
 
     /**
-     * Undocumented function.
+     * Accessor per aventi_diritto (aventi diritto alla progressione).
+     * Delega calcolo a getAventiDiritto().
      *
      * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
+     *
+     * @return int|null Numero aventi diritto calcolato
      */
-    protected function getAventiDirittoEffAttribute(mixed $_value): ?int
+    protected function getAventiDirittoAttribute(mixed $_value): ?int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getAventiDiritto();
+    }
+
+    /**
+     * Helper method: Calcola aventi diritto effettivi alla progressione (calcolo puro).
+     *
+     * Business Rule: Estrae valore da maxCatecoPosfun (query aggregata su categoria+posfun).
+     * Se non disponibile, return null (nessun debug echo - usare log se necessario).
+     *
+     * @return int|null Numero aventi diritto effettivi, null se non determinabile
+     */
+    protected function getAventiDirittoEff(): ?int
     {
         $maxCatecoPosfun = $this->maxCatecoPosfun;
         if (\is_object($maxCatecoPosfun) && isset($maxCatecoPosfun->aventi_diritto_eff)) {
@@ -1690,25 +1895,22 @@ trait SchedaTrait
             return is_numeric($value) ? (int) $value : null;
         }
 
-        $id = $this->getKey() ?? 'null';
-        $anno = is_numeric($this->anno) ? (string) $this->anno : ($this->anno ?? 'null');
-        $categoriaEcoval = is_string($this->categoria_ecoval) ? $this->categoria_ecoval : ($this->categoria_ecoval ?? 'null');
-        $posfunval = is_numeric($this->posfunval) ? (string) $this->posfunval : ($this->posfunval ?? 'null');
-        echo '<h3>id :'
-            .(string) $id
-                .'<br/>'
-                .'anno :'
-                .(string) $anno
-                .'<br/>'
-                .'categoria_ecoval :'
-                .(string) $categoriaEcoval
-                .'<br/>'
-                .'posfun :'
-                .(string) $posfunval
-                .'</h3>';
-
+        // Nessun debug echo - se serve troubleshooting, usare log o dddx solo in sviluppo
         return null;
-        // dddx([$this->maxCatecoPosfun()->toSql()]); // Unreachable code
+    }
+
+    /**
+     * Accessor per aventi_diritto_eff (aventi diritto effettivi alla progressione).
+     * Delega calcolo a getAventiDirittoEff().
+     *
+     * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
+     *
+     * @return int|null Numero aventi diritto effettivi calcolato
+     */
+    protected function getAventiDirittoEffAttribute(mixed $_value): ?int
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getAventiDirittoEff();
     }
 
     protected function getValoreDifferenzialeRapportatoPtAttribute(?float $value): ?float
@@ -1752,7 +1954,7 @@ trait SchedaTrait
         if (null == $this->propro) {
             return null;
         }
-        $pesi = $this->pesi;
+        $pesi = $this->peso;
         if (! \is_object($pesi) || ! isset($pesi->peso_esperienza_acquisita)) {
             return null;
         }
@@ -1995,7 +2197,14 @@ trait SchedaTrait
          */
     }
 
-    protected function getListaProproAttribute(?string $_value): ?string
+    /**
+     * Helper method: Ottiene lista propro dalla categoria economica (calcolo puro).
+     *
+     * Business Rule: Estrae lista_propro da categoriaPropro.
+     *
+     * @return string|null Lista propro, null se categoria non disponibile
+     */
+    protected function getListaPropro(): ?string
     {
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
@@ -2005,7 +2214,28 @@ trait SchedaTrait
         return $categoria->lista_propro;
     }
 
-    protected function getListaProproSupAttribute(?string $_value): ?string
+    /**
+     * Accessor per lista_propro (lista propro da categoria economica).
+     * Delega calcolo a getListaPropro().
+     *
+     * @param string|null $_value Valore cached dal DB (non usato)
+     *
+     * @return string|null Lista propro calcolata
+     */
+    protected function getListaProproAttribute(?string $_value): ?string
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getListaPropro();
+    }
+
+    /**
+     * Helper method: Ottiene lista propro superiore dalla categoria economica (calcolo puro).
+     *
+     * Business Rule: Estrae lista_propro_sup da categoriaPropro.
+     *
+     * @return string|null Lista propro sup, null se categoria non disponibile
+     */
+    protected function getListaProproSup(): ?string
     {
         $categoria = $this->categoriaPropro;
         if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
@@ -2013,6 +2243,20 @@ trait SchedaTrait
         }
 
         return $categoria->lista_propro_sup;
+    }
+
+    /**
+     * Accessor per lista_propro_sup (lista propro superiore da categoria economica).
+     * Delega calcolo a getListaProproSup().
+     *
+     * @param string|null $_value Valore cached dal DB (non usato)
+     *
+     * @return string|null Lista propro sup calcolata
+     */
+    protected function getListaProproSupAttribute(?string $_value): ?string
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getListaProproSup();
     }
 
     /**
@@ -2118,7 +2362,15 @@ trait SchedaTrait
      * return 0;
      * }
      */
-    protected function getImportoStipendioAnnuoAttribute(?float $_value): ?float
+
+    /**
+     * Helper method: Ottiene importo stipendio annuo da tabellare (calcolo puro).
+     *
+     * Business Rule: Estrae importo_stipendio_annuo dalla relazione stipendioTabellare.
+     *
+     * @return float|null Importo stipendio annuo, null se non disponibile
+     */
+    protected function getImportoStipendioAnnuo(): ?float
     {
         $tmp = $this->stipendioTabellare;
         // $tmp è HasOne, quindi può essere un Model o null
@@ -2127,6 +2379,20 @@ trait SchedaTrait
         }
 
         return is_numeric($tmp->importo_stipendio_annuo) ? (float) $tmp->importo_stipendio_annuo : null;
+    }
+
+    /**
+     * Accessor per importo_stipendio_annuo (importo stipendio annuo da tabellare).
+     * Delega calcolo a getImportoStipendioAnnuo().
+     *
+     * @param float|null $_value Valore cached dal DB (non usato)
+     *
+     * @return float|null Importo stipendio annuo calcolato
+     */
+    protected function getImportoStipendioAnnuoAttribute(?float $_value): ?float
+    {
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getImportoStipendioAnnuo();
     }
 
     /**
@@ -2255,10 +2521,31 @@ trait SchedaTrait
         return $value;
     }
 
+    /**
+     * Helper method: Ottiene giorni assenza per tipo codice escluso subito (calcolo puro).
+     *
+     * Business Rule: Attualmente non implementato. Placeholder per future implementazioni.
+     *
+     * @return null Sempre null (non implementato)
+     */
+    protected function getGgAszTipCodEsclusoSubito(): ?int
+    {
+        // Placeholder: non implementato
+        return null;
+    }
+
+    /**
+     * Accessor per gg_asz_tip_cod_escluso_subito (giorni assenza per tipo codice escluso subito).
+     * Delega calcolo a getGgAszTipCodEsclusoSubito().
+     *
+     * @param int|null $_value Valore cached dal DB (non usato)
+     *
+     * @return null Sempre null (non implementato)
+     */
     protected function getGgAszTipCodEsclusoSubitoAttribute(?int $_value): ?int
     {
-        // gg_asz_tip_cod_escluso_subito
-        return null;
+        // Delega calcolo al metodo puro (VICINO!)
+        return $this->getGgAszTipCodEsclusoSubito();
     }
 
     /**

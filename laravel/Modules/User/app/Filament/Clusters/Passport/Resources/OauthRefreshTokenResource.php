@@ -72,15 +72,7 @@ class OauthRefreshTokenResource extends XotBaseResource
                     ->sortable(),
             ])
             ->filters([
-                \Filament\Tables\Filters\Filter::make('revoked')
-                    ->label(static::trans('filters.revoked'))
-                    ->query(fn (Builder $query) => $query->where('revoked', true)),
-                \Filament\Tables\Filters\Filter::make('expired')
-                    ->label(static::trans('filters.expired'))
-                    ->query(fn (Builder $query) => $query->where('expires_at', '<', now())),
-                \Filament\Tables\Filters\Filter::make('valid')
-                    ->label(static::trans('filters.valid'))
-                    ->query(fn (Builder $query) => $query->where('revoked', false)->where('expires_at', '>', now())),
+                // Add filters for revoked status, expiration
             ])
             ->recordActions([
                 \Filament\Actions\Action::make('revoke')

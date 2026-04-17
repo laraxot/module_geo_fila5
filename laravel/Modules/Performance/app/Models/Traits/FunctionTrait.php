@@ -274,28 +274,37 @@ trait FunctionTrait
 
     protected function getType(): string
     {
-        return $this->type instanceof WorkerType
-            ? $this->type->value
-            : (string) ($this->type ?? '');
+        $type = $this->getAttribute('type');
+
+        return $type instanceof WorkerType
+            ? $type->value
+            : (string) ($type ?? 'dip');
     }
 
     public function isPo(): bool
     {
-        return (int) ($this->posfun ?? 0) >= 100;
+        $posfun = (int)($this->attributes['posfun'] ?? 0);
+        
+        $isPo = $posfun >= 100;
+        return $isPo;
     }
 
     public function isRegionale(): bool
     {
-        return (int) ($this->disci1 ?? 0) === 203;
+        $disci1 = (int) ($this->attributes['disci1'] ?? 0);
+        $isRegionale = $disci1 == 203;
+        
+        return $isRegionale;
     }
 
     public function isDirigente(): bool
     {
-        if ($this->propro === null) {
+        $propro = $this->getAttributeValue('propro');
+        if ($propro === null) {
             return false;
         }
 
-        return in_array($this->propro, [729, 750, 751]);
+        return in_array($propro, [729, 750, 751]);
     }
 
     /**

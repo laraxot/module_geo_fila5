@@ -497,17 +497,17 @@ trait ProgressioniFunctionTrait
 
         return $stabi_0->valutatore_id;
     }
-
+    /*
     public function isPo(): bool
     {
         return $this->posfun >= 100;
     }
-
+    
     public function isRegionale(): bool
     {
         return $this->disci1 === 203;
     }
-
+    */
     public function listaCodiciAspettative(): string // shortcut
     {$assenze = $this->assenze ?? null;
         if ($assenze === null || ! method_exists($assenze, 'map')) {

@@ -56,12 +56,7 @@ trait RelationshipTrait
             ->where('tbl', $this->getTable())
             ->where('note', 'sendMail');
     }
-
-    public function myLogs(): HasMany
-    {
-        return $this->hasMany(MyLog::class, 'id_tbl', 'id')
-            ->where('tbl', $this->getTable());
-    }
+    
 
     public function importi(): HasOne
     {

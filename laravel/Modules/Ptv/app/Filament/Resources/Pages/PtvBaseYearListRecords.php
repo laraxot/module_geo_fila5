@@ -25,8 +25,10 @@ use function Safe\date;
 
 abstract class PtvBaseYearListRecords extends XotBaseListRecords
 {
+
+    public string $yearFieldName='anno';
     #[Override]
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         /** @var array<string, mixed>|null $tableFilters */
         $tableFilters = $this->tableFilters;
@@ -35,8 +37,7 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         // @phpstan-ignore-next-line return.type
         return [
             ...parent::getHeaderActions(),
-            CreateAction::make(),
-            CopyFromLastYearAction::make('copy_from_last_year'),
+            CopyFromLastYearAction::make('copy_from_last_year')->setYearFieldName($this->yearFieldName),
         ];
     }
 
@@ -46,7 +47,7 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         return [
             ...parent::getTableFilters(),
             'anno' => app(GetYearFilter::class)
-                ->execute('anno', intval(date('Y')) - 3, intval(date('Y'))),
+                ->execute($this->yearFieldName, intval(date('Y')) - 3, intval(date('Y'))),
         ];
     }
 
@@ -65,53 +66,6 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
         ];
     }
 
-    #[Override]
-    public function getTableActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            ...parent::getTableActions(),
-            Action::make('check')
-                ->action(function ($record): void {
-                    // Type narrowing: ensure record implements CriteriEsclusioneContract
-                    if (! is_object($record) || ! $record instanceof CriteriEsclusioneContract) {
-                        return;
-                    }
 
-                    app(CheckCriterio::class)->execute($record);
-                }),
-        ];
-    }
-
-    #[Override]
-    public function getTableBulkActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            ...parent::getTableBulkActions(),
-            CheckCriterioEsclusioneBulkAction::make(),
-            // DeleteBulkAction::make(),
-        ];
-    }
-
-    public function tableOLD(Table $table): Table
-    {
-        return $table
-            // ->columns($this->getTableColumns())
-            // @phpstan-ignore-next-line arguments.count
-            ->columns($this->layoutView->getTableColumns())
-            ->contentGrid($this->layoutView->getTableContentGrid())
-            ->headerActions($this->getTableHeaderActions())
-
-            ->filters($this->getTableFilters())
-            ->filtersLayout(FiltersLayout::AboveContent)
-            ->persistFiltersInSession()
-            ->recordActions($this->getTableActions())
-            ->toolbarActions($this->getTableBulkActions())
-            ->recordActionsPosition(RecordActionsPosition::BeforeColumns)
-            ->defaultSort(
-                column: 'created_at',
-                direction: 'DESC',
-            );
-    }
+   
 }

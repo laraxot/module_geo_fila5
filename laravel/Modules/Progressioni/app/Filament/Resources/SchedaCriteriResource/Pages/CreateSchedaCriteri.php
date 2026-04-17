@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\SchedaCriteriResource;
 
 class CreateSchedaCriteri extends CreateRecord
 {
-    protected static string $resource = SchedaCriteriResource::class;
+    public static string $resource = SchedaCriteriResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditUser extends XotBaseEditRecord
 {
-    protected static string $resource = UserResource::class;
+    public static string $resource = UserResource::class;
 }

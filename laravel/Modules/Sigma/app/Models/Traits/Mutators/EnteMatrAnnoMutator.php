@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Mutators;
 
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Qua00f;
+
 trait EnteMatrAnnoMutator
 {
     protected function getPercPTimeYearAttribute(mixed $_value): int|float
@@ -51,7 +55,7 @@ trait EnteMatrAnnoMutator
             ->get();
         $perc = 0.0;
         $peso = 0;
-        /** @var \Modules\Sigma\Models\Qua00f $row */
+        /** @var Qua00f $row */
         foreach ($rows as $row) {
             /** @var float|int|numeric-string|null $percPtime */
             $percPtime = $row->getAttribute('perc_ptime');
@@ -76,9 +80,9 @@ trait EnteMatrAnnoMutator
             return $value;
         }
 
-        $this->update([
-            'perc_parttime_anno' => $value,
-        ]);
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['perc_parttime_anno' => $value]);
+        });
 
         return $value;
     }
@@ -92,7 +96,7 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Asz00k1> $collection */
+        /** @var Collection<int, Asz00k1> $collection */
         $collection = $this->asz00k1()
             ->where('asztip', 505)
             ->where('aszcod', 97)
@@ -100,7 +104,7 @@ trait EnteMatrAnnoMutator
             ->get();
 
         $value = 0.0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $item */
+        /** @var Asz00k1 $item */
         foreach ($collection as $item) {
             /** @var float|int|null $days */
             $days = $item->getAttribute('days');
@@ -116,9 +120,9 @@ trait EnteMatrAnnoMutator
             return $value;
         }
 
-        $this->update([
-            'gg_parttimevert_anno' => $value,
-        ]);
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['gg_parttimevert_anno' => $value]);
+        });
 
         return $value;
     }
@@ -135,7 +139,7 @@ trait EnteMatrAnnoMutator
             ->where('aszcod', 97)
             ->get();
         $giorni = 0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $v */
+        /** @var Asz00k1 $v */
         foreach ($asz as $v) {
             $aszdur = is_numeric($v->aszdur) ? (int) $v->aszdur : 0;
             $giorni += $aszdur;
@@ -155,7 +159,7 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Asz00k1> $collection */
+        /** @var Collection<int, Asz00k1> $collection */
         $collection = $this->asz00k1()
             ->where('asztip', 505)
             ->where('aszcod', 97)
@@ -163,7 +167,7 @@ trait EnteMatrAnnoMutator
             ->get();
 
         $value = 0.0;
-        /** @var \Modules\Sigma\Models\Asz00k1 $item */
+        /** @var Asz00k1 $item */
         foreach ($collection as $item) {
             /** @var float|int|numeric-string|null $days */
             $days = $item->getAttribute('days');
@@ -179,9 +183,9 @@ trait EnteMatrAnnoMutator
             return (int) $value;
         }
 
-        $this->update([
-            'gg_parttimevert' => $value,
-        ]);
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['gg_parttimevert' => $value]);
+        });
 
         return (int) $value;
     }
@@ -204,7 +208,7 @@ trait EnteMatrAnnoMutator
             ->get();
         $perc = 0.0;
         $peso = 0.0;
-        /** @var \Modules\Sigma\Models\Qua00f $row */
+        /** @var Qua00f $row */
         foreach ($rows as $row) {
             // Proprietà dinamiche aggiunte da withDays() e withPercPtime()
             $percPtime = is_numeric($row->getAttribute('perc_ptime')) ? (float) $row->getAttribute('perc_ptime') : 0.0;
@@ -222,9 +226,9 @@ trait EnteMatrAnnoMutator
             return (float) $value;
         }
 
-        $this->update([
-            'perc_parttime' => $value,
-        ]);
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['perc_parttime' => $value]);
+        });
 
         return (float) $value;
     }

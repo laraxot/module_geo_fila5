@@ -1,0 +1,3 @@
+# PTVX Wiki Entry Point
+
+Redirecting to [[Project Home]]...

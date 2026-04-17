@@ -23,7 +23,7 @@ use Override;
 
 class ManageProjectEmployees extends XotBaseManageRelatedRecords
 {
-    protected static string $resource = ProjectResource::class;
+    public static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'employees';
 
@@ -65,7 +65,7 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
         ];
     }
 
-    public function getHeaderActions(): array
+    protected function getHeaderActions(): array
     {
         return [
         ];

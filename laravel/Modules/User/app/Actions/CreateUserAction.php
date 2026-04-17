@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -63,7 +63,7 @@ class CreateUserAction
     private function sendWelcomeEmail(User $user): void
     {
         // Logica per inviare email di benvenuto
-        Log::info("Invio email di benvenuto a {$user->email}");
+        Log::info('Invio email di benvenuto a '.(string) $user->getAttribute('email'));
     }
 
     private function createAuditLog(User $user): void

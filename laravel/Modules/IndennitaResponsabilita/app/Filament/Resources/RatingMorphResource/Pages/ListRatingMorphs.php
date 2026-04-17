@@ -17,7 +17,7 @@ use Override;
 
 class ListRatingMorphs extends XotBaseListRecords
 {
-    protected static string $resource = RatingMorphResource::class;
+    public static string $resource = RatingMorphResource::class;
 
     #[Override]
     public function getTableColumns(): array

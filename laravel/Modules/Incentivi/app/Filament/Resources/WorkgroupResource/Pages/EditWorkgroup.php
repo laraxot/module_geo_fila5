@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditWorkgroup extends XotBaseEditRecord
 {
-    protected static string $resource = WorkgroupResource::class;
+    public static string $resource = WorkgroupResource::class;
 
     protected function getHeaderActions(): array
     {

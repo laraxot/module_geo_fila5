@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTreatments extends XotBaseListRecords
 {
-    protected static string $resource = TreatmentResource::class;
+    public static string $resource = TreatmentResource::class;
 
     public function getTableColumns(): array
     {

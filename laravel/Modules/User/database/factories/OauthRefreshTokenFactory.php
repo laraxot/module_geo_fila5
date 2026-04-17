@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthRefreshToken;
-use Modules\User\Models\OauthToken;
 
 /**
  * OauthRefreshToken Factory.
@@ -30,8 +30,8 @@ class OauthRefreshTokenFactory extends Factory
 
     protected function newAccessTokenId(): string
     {
-        /** @var OauthToken $token */
-        $token = OauthToken::factory()->create([
+        /** @var OauthAccessToken $token */
+        $token = (new OauthAccessTokenFactory())->create([
             'id' => $this->faker->uuid(),
             'user_id' => null,
             'client_id' => OauthClient::factory(),
