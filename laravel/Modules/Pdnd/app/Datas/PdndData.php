@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Pdnd\Datas;
 
+
 use Illuminate\Support\Facades\Config;
 use Livewire\Wireable;
 use RuntimeException;
@@ -44,11 +45,14 @@ class PdndData extends Data implements Wireable
     {
         if (! self::$instance) {
             if ($ambiente == 'test') {
-                $test = Config::string('pdnd::pdnd.default');
-                $data = Config::array('pdnd::pdnd.'.$test);
+                // $test = Config::string('pdnd::pdnd.default');
+                // $data = Config::array('pdnd::pdnd.'.$test);
+                $test = Config::string('pdnd.pdnd.default');
+                $data = Config::array('pdnd.pdnd.'.$test);
                 self::$instance = self::from($data);
             } elseif ($ambiente == 'prod') {
-                $data = Config::array('pdnd::pdnd.prod');
+                // $data = Config::array('pdnd::pdnd.prod');
+                $data = Config::array('pdnd.pdnd.prod');
                 self::$instance = self::from($data);
             }
         }
