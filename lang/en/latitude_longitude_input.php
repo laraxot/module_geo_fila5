@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 return [
     'actions' => [
-        'fullscreen_enter' => 'Visualizza a schermo intero',
-        'fullscreen_exit' => 'Esci da schermo intero',
+        'fullscreen_enter' => 'View fullscreen',
+        'fullscreen_exit' => 'Exit fullscreen',
     ],
     'layers' => [
-        'osm' => 'Mappa',
+        'osm' => 'Map',
         'satellite' => 'Satellite',
-        'terrain' => 'Terreno',
+        'terrain' => 'Terrain',
     ],
     'fields' => [
         'latitude' => [

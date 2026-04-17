@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+use InvalidArgumentException;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
@@ -21,7 +22,17 @@ use Filament\Schemas\Components\Grid;
  */
 class LatitudeLongitudeInput extends Field
 {
+    /**
+     * Supported JS frameworks for rendering the map component.
+     * - 'blade': Legacy Blade/Alpine implementation (default)
+     * - 'lit': Lit Web Component implementation
+     */
+    protected const FRAMEWORK_BLADE = 'blade';
+    protected const FRAMEWORK_LIT = 'lit';
+
     protected string $view = 'geo::filament.forms.components.latitude-longitude-input';
+
+    protected string $jsFramework = self::FRAMEWORK_BLADE;
 
     protected float $defaultLatitude = 41.9028;
 
@@ -91,6 +102,28 @@ class LatitudeLongitudeInput extends Field
         return $this;
     }
 
+    /**
+     * Set the JavaScript framework for rendering the map.
+     *
+     * @param  string  $framework  'blade' or 'lit'
+     * @return $this
+     * @throws \InvalidArgumentException if framework is not supported
+     */
+    public function jsFramework(string $framework): static
+    {
+        if (! in_array($framework, $this->getSupportedJsFrameworks(), true)) {
+            throw new InvalidArgumentException(sprintf(
+                'Unsupported JS framework "%s". Supported values: %s',
+                $framework,
+                implode(', ', $this->getSupportedJsFrameworks()),
+            ));
+        }
+
+        $this->jsFramework = $framework;
+
+        return $this;
+    }
+
     public function getDefaultLatitude(): float
     {
         return $this->defaultLatitude;
@@ -114,5 +147,35 @@ class LatitudeLongitudeInput extends Field
     public function isMapShown(): bool
     {
         return $this->showMap;
+    }
+
+    public function getJsFramework(): string
+    {
+        return $this->jsFramework;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    public function getSupportedJsFrameworks(): array
+    {
+        return [
+            self::FRAMEWORK_BLADE,
+            self::FRAMEWORK_LIT,
+        ];
+    }
+
+    /**
+     * Override getView() to select the correct view based on the configured framework.
+     *
+     * @return string the Blade view name
+     */
+    public function getView(): string
+    {
+        if ($this->jsFramework === self::FRAMEWORK_LIT) {
+            return 'geo::filament.forms.components.latitude-longitude-input-lit';
+        }
+
+        return $this->view;
     }
 }
