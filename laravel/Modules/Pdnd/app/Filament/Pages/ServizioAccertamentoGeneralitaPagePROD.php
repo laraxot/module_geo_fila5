@@ -29,6 +29,8 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
     public array $datiCittadino = [];
     public bool $esitoPositivo = false;
 
+    public string $erroreMessaggio = '';
+
     protected string $view = 'pdnd::filament.pages.C015-servizioAccertamentoGeneralita-approvazione_autom';
 
     private const CODICE_FISCALE_REGEX = '/^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$/';
@@ -71,9 +73,16 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
                 $this->handleAccertamentoFailed($risultato);
             }
         } catch (Exception $e) {
-            Log::error('Errore in send(): ' . $e->getMessage());
+            $this->erroreMessaggio = $e->getMessage();
+
+            Log::error('Errore in ServizioAccertamentoGeneralita', [
+                'codice_fiscale' => $codiceFiscale ?? 'N/D',
+                'errore' => $e->getMessage()
+            ]);
+
             Notification::make()
-                ->title('Errore imprevisto')
+                ->title('Errore durante l\'accertamento')
+                ->body($e->getMessage())
                 ->danger()
                 ->persistent()
                 ->send();
@@ -90,7 +99,7 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
             $idAnpr = $this->recuperaIdAnprDaC030($codiceFiscale);
 
             if (empty($idAnpr)) {
-                throw new Exception("Impossibile ottenere ID ANPR tramite C030");
+                throw new Exception("Codice Fiscale errato o inesistente. Impossibile ottenere ID ANPR tramite C030.");
             }
 
             $this->idAnpr = $idAnpr;
@@ -135,7 +144,7 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
         return new C015Service($pdndClient);
     }
 
-    // ====================== METODI DI SUPPORTO (stile C007) ======================
+    // ====================== METODI DI SUPPORTO ======================
     private function isAccertamentoSuccessful(array $risultato): bool
     {
         return isset($risultato['successo']) && $risultato['successo'] === true;
@@ -166,7 +175,14 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
 
     private function handleAccertamentoFailed(array $risultato): void
     {
-        $this->notifyError('Accertamento Fallito', $this->formatErrorBody($risultato));
+        $messaggio = $this->formatErrorBody($risultato);
+        $this->erroreMessaggio = $messaggio;
+
+        Notification::make()
+            ->title('Accertamento Fallito')
+            ->body($messaggio)
+            ->danger()
+            ->send();
     }
 
     private function notifySuccess(): void
@@ -193,6 +209,7 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
         $this->idAnpr = '';
         $this->datiCittadino = [];
         $this->esitoPositivo = false;
+        $this->erroreMessaggio = '';
     }
 
     private function validateCodiceFiscale(array $state): string
