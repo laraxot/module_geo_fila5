@@ -33,6 +33,10 @@
   "dependencies": {
     "laravel-mix": "^6.0.43"
   },
+  "peerDependencies": {
+    "lit": "^3.3.2",
+    "leaflet": "^1.9.4"
+  },
   "name": "module-geo",
   "version": "1.0.0",
   "main": "index.js",

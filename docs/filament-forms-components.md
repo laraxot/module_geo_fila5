@@ -66,9 +66,83 @@ AddressSection::make('address')
 
 **Tipo**: Filament Field
 **Path**: `app/Filament/Forms/Components/LatitudeLongitudeInput.php`
-**View**: `resources/views/filament/forms/components/latitude-longitude-input.blade.php`
+**View default**: `resources/views/filament/forms/components/latitude-longitude-input.blade.php`
+**View Lit**: `resources/views/filament/forms/components/latitude-longitude-input-lit.blade.php`
 
-Coppia di input numerici annidati nello stato del field (schema interno `latitude` / `longitude`). Non include ancora mappa interattiva; per picker visivo usare **LeafletMarkerMapInput** + campi sibling.
+Coppia di input numerici annidati nello stato del field (schema interno `latitude` / `longitude`) con **mappa Leaflet integrata**, marker trascinabile, geolocalizzazione, fullscreen e **sincronizzazione bidirezionale non-distruttiva** input ↔ mappa ↔ Livewire.
+
+**Regola runtime (Anti-Regressione)**:
+- ✅ Marker, center mappa e input devono essere sempre allineati
+- ✅ Il drag del marker NON genera refresh/re-render distruttivi della shell
+- ✅ Sync continuo resta **locale** durante drag (DOM only), persistenza Livewire su dragend
+- ✅ Gli input usano `wire:model.change` (non `.live`) per evitare aggressione Livewire
+- ✅ Commitare coordinate via change event, non via `wire.set()` diretto
+- ✅ Idempotenza: inizializzazione riveduta non duplica istanze o DOM
+- ✅ Stato iniziale: Livewire state ha precedenza su default center
+
+**Sincronizzazione Bidirezionale**:
+
+#### Marker → Inputs → Livewire
+1. **drag**: Aggiorna `currentLat`/`currentLng` in memoria, throttle setInputValues() ogni ~200ms (DOM only)
+2. **dragend**: Chiama `setInputValues()` per aggiornare DOM, poi `commitCoordinates()` che dispatches change event
+3. **change event**: Attiva `wire:model.change` per sincronizzare a Livewire
+
+#### Map Click / Geolocation → Livewire
+1. Aggiorna marker position
+2. Chiama `setInputValues()` + `commitCoordinates()`
+3. Stesso flusso di dragend
+
+#### Inputs → Marker → Center Map
+1. **input event**: Throttle syncMapFromInputs() ogni ~160ms (preview, no commit)
+2. **change event**: syncMapFromInputs(true) ricalcola posizione, recentra mappa, commit
+3. `wire:model.change` si attiva automaticamente dal browser form submission
+
+**Usage**:
+```php
+use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
+
+LatitudeLongitudeInput::make('location')
+    ->hiddenLabel()
+    ->defaultCenter(41.9028, 12.4964)  // Roma
+    ->defaultZoom(13)
+    ->mapHeight('340px')
+    ->showMap(true),
+```
+
+**Renderer Selection**:
+```php
+LatitudeLongitudeInput::make('location')
+    ->jsFramework('lit')
+    ->defaultCenter(41.9028, 12.4964)
+    ->defaultZoom(13)
+    ->mapHeight('340px');
+```
+
+**Regola**:
+- `blade` resta il renderer di default e mantiene il percorso legacy Blade/Alpine
+- `lit` è opt-in esplicito e usa un Web Component dedicato
+- Filament/PHP resta il layer di governo del field; il renderer JS cambia solo la UI
+- valori supportati: `blade`, `lit`
+
+**Data Structure** (Livewire state):
+```php
+'location' => [
+    'latitude' => 41.9028,
+    'longitude' => 12.4964,
+]
+```
+
+**Protocollo Tecnico**:
+- `wire:ignore` protegge la shell mappa da Livewire re-renders
+- Global instance registry (`window.geoMapInstances`) previene duplicazioni
+- `isProgrammaticInputUpdate` flag previene sync circolare durante updates JS
+- Throttling (200ms drag, 160ms input) riduce DOM thrashing
+- Non usiamo `wire.set()` diretto — usiamo change event per attivare `wire:model.change`
+
+**Variante Lit**:
+- la Blade Lit monta `<my-map>` come Web Component
+- il bridge dati resta nel field: input Filament con `wire:model.change` + sync bidirezionale `inputs ↔ my-map`
+- la variante Lit oggi copre il contract dati del field senza replicare integralmente tutti i controlli UX del renderer legacy
 
 ### 4. LeafletMarkerMapInput
 
@@ -182,6 +256,147 @@ function useMyLocation(statePath) {
 }
 </script>
 ```
+
+## Web Components & Lit.dev
+
+### Overview
+
+Il modulo Geo utilizza **web components** (custom HTML elements) basati su [Lit.dev](https://lit.dev/) per componenti interattivi come `<my-map>`. I web components seguono lo standard DOM Web Components, con Lit come lightweight library di supporto.
+
+**Why Lit.dev?**
+- **Standard-based**: Utilizza Custom Elements (Web Components standard W3C)
+- **Lightweight**: ~5KB minified, zero dependencies (oltre a Leaflet per mappe)
+- **Reactive**: Data binding dichiarativo e reactive properties
+- **Shadow DOM**: Encapsulation garantito, CSS scoped automaticamente
+- **Lifecycle management**: `firstUpdated()`, `updated()`, `disconnectedCallback()` per gestire risorse
+
+### Componente my-map
+
+**Path**: `resources/js/components/my-map-lit.js`
+**Extends**: `LitElement`
+**Custom Element**: `<my-map>`
+
+**Properties**:
+```typescript
+static properties = {
+    lat: { type: Number },        // Latitude (default: 45.6669)
+    lng: { type: Number },        // Longitude (default: 12.2423)
+    zoom: { type: Number },       // Zoom level (default: 10)
+    markerTitle: { type: String, attribute: 'marker-title' }
+};
+```
+
+**Usage in Blade**:
+```blade
+<my-map 
+    lat="45.6669" 
+    lng="12.2423" 
+    zoom="10"
+    marker-title="My Location"
+></my-map>
+```
+
+### Design Patterns
+
+#### 1. Never Import Web Components Globally in Themes
+
+❌ **WRONG** (laravel/Themes/Sixteen/resources/js/app.js):
+```javascript
+// This breaks the build because CSS imports from node_modules don't resolve at theme level
+import '../../../../Modules/Geo/resources/js/components/my-map-lit.js';
+```
+
+✅ **CORRECT**:
+- Keep web component files in module folder (`Modules/Geo/resources/js/`)
+- Import only where needed (specific page/feature, not globally in theme)
+- If needed at theme level, compile separately or use lazy-loading
+
+**Why?**
+- Web components are **module-scoped assets** with their own dependencies
+- Themes are **presentation layer** — importing module-specific code breaks separation of concerns
+- The build system can't resolve module CSS imports (`leaflet/dist/leaflet.css`) from theme context
+- Each import in `app.js` becomes a global dependency that must resolve at build time
+
+#### 2. Lifecycle Management
+
+Always implement `disconnectedCallback()` to clean up resources:
+
+```javascript
+disconnectedCallback() {
+    if (this._map) {
+        this._map.remove();      // Clean up Leaflet instance
+        this._map = null;
+    }
+    super.disconnectedCallback();
+}
+```
+
+This prevents:
+- Memory leaks on page navigation
+- Ghost instances in DOM
+- Race conditions on re-render
+
+#### 3. Shadow DOM for Style Encapsulation
+
+Lit uses Shadow DOM by default:
+```javascript
+static styles = css`
+    :host {
+        display: block;
+    }
+    .map {
+        width: 100%;
+        height: 400px;
+    }
+`;
+```
+
+Benefits:
+- CSS scoped to component (no conflicts with page CSS)
+- Component styles don't leak to parent
+- Predictable styling independent of page context
+
+### Integration with Filament Fields
+
+To use a web component in a Filament field:
+
+**Create field wrapper** (`app/Filament/Forms/Components/MyMapField.php`):
+```php
+class MyMapField extends Field {
+    protected string $view = 'geo::filament.forms.components.my-map-field';
+    
+    public function getChildComponents(): array {
+        return [];
+    }
+}
+```
+
+**Field view** (`resources/views/filament/forms/components/my-map-field.blade.php`):
+```blade
+<my-map 
+    lat="{{ $getState()['lat'] ?? 45.6669 }}"
+    lng="{{ $getState()['lng'] ?? 12.2423 }}"
+    zoom="12"
+    marker-title="Selected Location"
+    wire:ignore
+></my-map>
+```
+
+**Key points**:
+- Use `wire:ignore` to prevent Livewire from re-rendering the web component
+- Pass state via attributes (not JS, not Livewire.entangle)
+- Web component manages its own state internally
+- Use Alpine/custom events to communicate back to Livewire if needed
+
+### Building & Compilation
+
+Web components in Geo module are bundled with module assets, NOT with theme assets.
+
+**Workflow**:
+1. Code web component in `Modules/Geo/resources/js/components/`
+2. Build happens at **module level** (if applicable) or **application level**
+3. Never import module-level code in theme build context
+4. Import only in specific pages/components where needed
 
 ## Troubleshooting
 

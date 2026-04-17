@@ -19,7 +19,9 @@
 
 ### 🔧 Integration & Usage
 
+- [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
 - [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
+- [**Web Components & Build Architecture**](./filament-forms-components.md#web-components--litdev) - Lit.dev web component pattern, module vs theme asset separation
 - [**MCP Servers**](./MCP_SERVER_RECOMMENDED.md) - Recommended Model Context Protocol servers
 - [**App Integration**](./app-integration.md) - Integration with main application
 - [**Address Migration**](./address_migration_guide.md) - Migration guides and patterns
