@@ -26,49 +26,67 @@
                     <h3 class="text-lg font-semibold text-success-600 flex items-center gap-2">
                         ✅ Accertamento completato con successo
                     </h3>
-                    <br>
 
-                    <!-- === LAYOUT A TRE COLONNE === -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- LAYOUT A TRE COLONNE CON FLEX (più compatibile) -->
+                    <div class="flex flex-col lg:flex-row gap-6">
 
-                        <!-- Colonna 1: Generalità -->
-                        <x-filament::section heading="Generalità" class="h-fit">
-                            <dl class="space-y-3 text-sm">
-                                <div class="flex justify-between"><span class="font-medium">Cognome</span> <span>{{ $datiCittadino['generalita']['cognome'] ?? '-' }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">Nome</span> <span>{{ $datiCittadino['generalita']['nome'] ?? '-' }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">Codice Fiscale</span> <span class="font-mono">{{ $datiCittadino['generalita']['codiceFiscale']['codFiscale'] ?? '-' }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">Validità CF</span> 
-                                    <span>{{ ($datiCittadino['generalita']['codiceFiscale']['validitaCF'] ?? '') === '1' ? '✅ Valido' : '❌ Non valido' }}</span>
-                                </div>
-                                <div class="flex justify-between"><span class="font-medium">Sesso</span> <span>{{ $datiCittadino['generalita']['sesso'] ?? '-' }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">Soggetto AIRE</span> <span>{{ $datiCittadino['generalita']['soggettoAIRE'] === 'S' ? 'Sì' : 'No' }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">Data di nascita</span> 
-                                    <span>{{ $datiCittadino['generalita']['dataNascita'] ? \Carbon\Carbon::parse($datiCittadino['generalita']['dataNascita'])->format('d/m/Y') : '-' }}</span>
-                                </div>
-                                <div class="flex justify-between"><span class="font-medium">Luogo di nascita</span> 
-                                    <span>{{ $luogoFinale ?? '-' }}</span>
-                                </div>
+                    @if(!empty($datiCittadino['generalita']))
+                        <x-filament::section heading="Generalità">
+                            <dl class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div><strong>Cognome:</strong> {{ $datiCittadino['generalita']['cognome'] ?? '-' }}</div>
+                                <div><strong>Nome:</strong> {{ $datiCittadino['generalita']['nome'] ?? '-' }}</div>
+                                <div><strong>Codice Fiscale:</strong> {{ $datiCittadino['generalita']['codiceFiscale']['codFiscale'] ?? '-' }}</div>
+
+                                @php
+                                    $validitaCF = $datiCittadino['generalita']['codiceFiscale']['validitaCF'] ?? null;
+                                    $validitaTesto = $validitaCF === '1' ? '✅ Valido' : '❌ Non valido';
+                                @endphp
+                                <div><strong>Validità CF:</strong> {{ $validitaTesto }}</div>
+
+                                <div><strong>Sesso:</strong> {{ $datiCittadino['generalita']['sesso'] ?? '-' }}</div>
+                                <div><strong>Soggetto AIRE:</strong> {{ $datiCittadino['generalita']['soggettoAIRE'] === 'S' ? 'Sì' : 'No' }}</div>
+
+                                @php
+                                    $dataNascita = $datiCittadino['generalita']['dataNascita'] ?? null;
+                                    $dataFormattata = $dataNascita ? \Carbon\Carbon::parse($dataNascita)->format('d/m/Y') : '-';
+                                @endphp
+                                <div><strong>Data di nascita:</strong> {{ $dataFormattata }}</div>
+
+                                {{-- LUOGO DI NASCITA MIGLIORATO --}}
+                                @php
+                                    $luogoNascita = $datiCittadino['generalita']['luogoNascita'] ?? [];
+                                    $comune       = $luogoNascita['comune'] ?? [];
+                                    $localita     = $luogoNascita['localita'] ?? [];
+                                    $luogoEccezionale = $luogoNascita['luogoEccezionale'] ?? null;
+
+                                    if ($comune && !empty($comune['nomeComune'])) {
+                                        $luogoFinale = $comune['nomeComune'];
+                                        if (!empty($comune['siglaProvinciaIstat'])) {
+                                            $luogoFinale .= ' (' . $comune['siglaProvinciaIstat'] . ')';
+                                        }
+                                    } elseif ($localita && !empty($localita['descrizioneLocalita'])) {
+                                        $luogoFinale = $localita['descrizioneLocalita'];
+                                        if (!empty($localita['descrizioneStato'])) {
+                                            $luogoFinale .= ' (' . $localita['descrizioneStato'] . ')';
+                                        }
+                                    } elseif ($luogoEccezionale) {
+                                        $luogoFinale = $luogoEccezionale;
+                                    } else {
+                                        $luogoFinale = '-';
+                                    }
+                                @endphp
+                                <div><strong>Luogo di nascita:</strong> {{ $luogoFinale }}</div>
                             </dl>
                         </x-filament::section>
+                    @endif
 
-                        {{-- <!-- Colonna 2: Identificativi -->
-                        <x-filament::section heading="Identificativi" class="h-fit">
-                            <dl class="space-y-3 text-sm">
-                                <div class="flex justify-between"><span class="font-medium">ID ANPR</span> <span class="font-mono">{{ $idAnpr }}</span></div>
-                                <div class="flex justify-between"><span class="font-medium">ID Scheda ANPR</span> <span class="font-mono">{{ $datiCittadino['generalita']['idSchedaSoggettoANPR'] ?? '-' }}</span></div>
-                            </dl>
-                        </x-filament::section> --}}
 
-                        <!-- Colonna 3: Stato Civile -->
+                        <!-- Colonna 3 - Stato Civile -->
                         @if(!empty($datiCittadino['stato_civile']))
-                            <x-filament::section heading="Stato Civile" class="h-fit">
+                            <x-filament::section heading="Stato Civile" class="flex-1">
                                 @php
                                     $codiceStato = $datiCittadino['stato_civile']['statoCivile'] ?? null;
-                                    $descrizioni = [
-                                        '1' => 'Celibe/Nubile', '2' => 'Coniugato/a', '3' => 'Vedovo/a',
-                                        '4' => 'Divorziato/a', '5' => 'Non classificabile', '6' => 'Unito civilmente',
-                                        '7' => 'Stato libero (decesso)', '8' => 'Stato libero (scioglimento)', '9' => 'Non classificabile'
-                                    ];
+                                    $descrizioni = ['1'=>'Celibe/Nubile','2'=>'Coniugato/a','3'=>'Vedovo/a','4'=>'Divorziato/a','5'=>'Non classificabile','6'=>'Unito civilmente','7'=>'Stato libero (decesso)','8'=>'Stato libero (scioglimento)','9'=>'Non classificabile'];
                                     $descrizione = $descrizioni[$codiceStato] ?? 'Codice sconosciuto';
                                 @endphp
                                 <p class="text-base font-medium">
