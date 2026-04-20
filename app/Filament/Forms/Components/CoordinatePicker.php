@@ -32,7 +32,7 @@ class CoordinatePicker extends XotBaseField
     public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latCol = 'latitude', string $longCol = 'longitude'): array
     {
         $coords = $data[$fieldName] ?? null;
-        if (!is_array($coords)) {
+        if (! is_array($coords)) {
             return $data;
         }
 
@@ -40,6 +40,7 @@ class CoordinatePicker extends XotBaseField
         $data[$longCol] = isset($coords['longitude']) ? (float) $coords['longitude'] : null;
 
         unset($data[$fieldName]);
+
         return $data;
     }
 }

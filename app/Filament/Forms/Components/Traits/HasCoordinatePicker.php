@@ -8,7 +8,6 @@ use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
-use Throwable;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
@@ -36,8 +35,8 @@ trait HasCoordinatePicker
     protected function setUpCoordinatePicker(): void
     {
         $this->default(['latitude' => null, 'longitude' => null]);
-        
-        // Mandatory: Dehydrated(true) for consistency in form state, 
+
+        // Mandatory: Dehydrated(true) for consistency in form state,
         // but can be overridden if explicit extraction is preferred.
         $this->dehydrated(true);
 
@@ -59,18 +58,21 @@ trait HasCoordinatePicker
     public function latitudeColumn(string $column): static
     {
         $this->latitudeColumn = $column;
+
         return $this;
     }
 
     public function longitudeColumn(string $column): static
     {
         $this->longitudeColumn = $column;
+
         return $this;
     }
 
     public function zoom(int $zoom): static
     {
         $this->zoom = $zoom;
+
         return $this;
     }
 
@@ -78,35 +80,70 @@ trait HasCoordinatePicker
     {
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+
         return $this;
     }
 
     public function reverseGeocoding(bool $condition = true): static
     {
         $this->hasReverseGeocoding = $condition;
+
         return $this;
     }
 
     public function showSearch(bool $condition = true): static
     {
         $this->searchVisible = $condition;
+
         return $this;
     }
 
     public function height(string $height): static
     {
         $this->height = $height;
+
         return $this;
     }
 
-    public function getLatitudeColumn(): string { return $this->latitudeColumn; }
-    public function getLongitudeColumn(): string { return $this->longitudeColumn; }
-    public function getZoom(): int { return $this->zoom; }
-    public function getLatitude(): float { return $this->latitude; }
-    public function getLongitude(): float { return $this->longitude; }
-    public function hasReverseGeocoding(): bool { return $this->hasReverseGeocoding; }
-    public function isSearchVisible(): bool { return $this->searchVisible; }
-    public function getHeight(): string { return $this->height; }
+    public function getLatitudeColumn(): string
+    {
+        return $this->latitudeColumn;
+    }
+
+    public function getLongitudeColumn(): string
+    {
+        return $this->longitudeColumn;
+    }
+
+    public function getZoom(): int
+    {
+        return $this->zoom;
+    }
+
+    public function getLatitude(): float
+    {
+        return $this->latitude;
+    }
+
+    public function getLongitude(): float
+    {
+        return $this->longitude;
+    }
+
+    public function hasReverseGeocoding(): bool
+    {
+        return $this->hasReverseGeocoding;
+    }
+
+    public function isSearchVisible(): bool
+    {
+        return $this->searchVisible;
+    }
+
+    public function getHeight(): string
+    {
+        return $this->height;
+    }
 
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -122,8 +159,9 @@ trait HasCoordinatePicker
                 ]);
 
             $data = $response->json() ?? [];
+
             return (string) ($data['display_name'] ?? '');
-        } catch (Throwable) {
+        } catch (\Throwable) {
             return '';
         }
     }
@@ -152,7 +190,7 @@ trait HasCoordinatePicker
                 'longitude' => (float) $data[0]['lon'],
                 'display_name' => (string) $data[0]['display_name'],
             ];
-        } catch (Throwable) {
+        } catch (\Throwable) {
             return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Error'];
         }
     }

@@ -55,7 +55,7 @@ class GeopointPicker extends XotBaseField
             $record = $this->getRecord();
             if ($record instanceof Model) {
                 $this->state([
-                    'latitude'  => $record->getAttribute($this->latitudeColumn),
+                    'latitude' => $record->getAttribute($this->latitudeColumn),
                     'longitude' => $record->getAttribute($this->longitudeColumn),
                 ]);
             }
@@ -65,7 +65,7 @@ class GeopointPicker extends XotBaseField
             $loc = is_array($state) ? $state : [];
 
             return [
-                $this->latitudeColumn  => isset($loc['latitude'])  ? (float) $loc['latitude']  : null,
+                $this->latitudeColumn => isset($loc['latitude']) ? (float) $loc['latitude'] : null,
                 $this->longitudeColumn => isset($loc['longitude']) ? (float) $loc['longitude'] : null,
             ];
         });
@@ -95,7 +95,7 @@ class GeopointPicker extends XotBaseField
 
     public function defaultLocation(float $latitude, float $longitude): static
     {
-        $this->defaultLatitude  = $latitude;
+        $this->defaultLatitude = $latitude;
         $this->defaultLongitude = $longitude;
 
         return $this;
@@ -177,9 +177,9 @@ class GeopointPicker extends XotBaseField
         try {
             $response = Http::withHeaders(['User-Agent' => 'Laraxot/1.0'])
                 ->get('https://nominatim.openstreetmap.org/search', [
-                    'q'      => $address,
+                    'q' => $address,
                     'format' => 'json',
-                    'limit'  => 1,
+                    'limit' => 1,
                 ]);
 
             /** @var array<int,array{lat?:string,lon?:string,display_name?:string}> $data */
@@ -190,8 +190,8 @@ class GeopointPicker extends XotBaseField
             }
 
             return [
-                'latitude'     => (float) $data[0]['lat'],
-                'longitude'    => (float) $data[0]['lon'],
+                'latitude' => (float) $data[0]['lat'],
+                'longitude' => (float) $data[0]['lon'],
                 'display_name' => (string) ($data[0]['display_name'] ?? 'Found location'),
             ];
         } catch (\Exception $e) {
@@ -211,8 +211,8 @@ class GeopointPicker extends XotBaseField
         try {
             $response = Http::withHeaders(['User-Agent' => 'Laraxot/1.0'])
                 ->get('https://nominatim.openstreetmap.org/reverse', [
-                    'lat'    => $lat,
-                    'lon'    => $lng,
+                    'lat' => $lat,
+                    'lon' => $lng,
                     'format' => 'json',
                 ]);
 
@@ -233,8 +233,8 @@ class GeopointPicker extends XotBaseField
     private function defaultLocationResult(string $message): array
     {
         return [
-            'latitude'     => $this->defaultLatitude,
-            'longitude'    => $this->defaultLongitude,
+            'latitude' => $this->defaultLatitude,
+            'longitude' => $this->defaultLongitude,
             'display_name' => $message,
         ];
     }
