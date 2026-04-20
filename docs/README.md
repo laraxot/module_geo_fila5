@@ -2,6 +2,35 @@
 
 Handles geographic data, maps, geocoding, and location-based services.
 
+## 🗺️ Map Components Architecture
+
+### ⚠️ CRITICAL RULES
+
+#### 1. Class Selectors for Leaflet (Golden Rule)
+**FORBIDDEN:** `id="map"` | **MANDATORY:** `class="map-container"`
+📖 [`docs/rules/leaflet-class-selector.md`](../../../../docs/rules/leaflet-class-selector.md)
+
+#### 2. XotBaseField Extension (CRITICAL)
+**FORBIDDEN:** `extends Field` | **MANDATORY:** `extends XotBaseField`
+```php
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
+class CoordinatePicker extends XotBaseField  // ✅ CORRECT
+class MapPicker extends XotBaseField         // ✅ CORRECT
+```
+📖 [`docs/rules/xotbasefield-mandatory.md`](../../../../docs/rules/xotbasefield-mandatory.md)
+
+---
+
+**Quick Reference:**
+- ✅ `class="map-container"` + `extends XotBaseField`
+- ✅ Custom SVG marker (farmshops-inspired) - local assets only
+- ❌ `id="map"` + `extends Field` + Leaflet default markers + unpkg/CDN
+- ✅ `MapPicker`, `CoordinatePicker`, `LatitudeLongitudeInput`, `GeopointPicker` → `extends XotBaseField`
+- ✅ se `latitude` o `longitude` mancano, il picker tenta geolocalizzazione e valorizza entrambe le coordinate correnti
+- ✅ marker `MapPicker` custom locale (`svg/png`) in stile farmshops-like
+- ❌ marker default Leaflet / `unpkg` / CDN per il marker runtime
+- [`.planning/stories/2.1-leaflet-class-selector-golden-rule.story.md`](../../../../.planning/stories/2.1-leaflet-class-selector-golden-rule.story.md) — BMAD story
+
 ## Filament Components
 
 - [AddressInput](address-field-component.md) — Campo indirizzo con geolocalizzazione browser e loading feedback (Filament Form component)
@@ -26,7 +55,7 @@ Geo module owns ALL geo-spatial concerns. Other modules (Fixcity, Transport, Log
 | **Domain ownership** | Geocoding, coordinates, maps, timezone = Geo |
 | **Cross-cutting** | Geolocation is NOT app-specific; it's infrastructural |
 | **DRY** | One `AddressInput`, many consumers |
-| **KISS** | Extend `Field`, not complex Blade wrappers |
+| **KISS** | Extend `XotBaseField`, keep one shared PHP base and move special logic into focused traits/components |
 
 ## UX Ownership
 

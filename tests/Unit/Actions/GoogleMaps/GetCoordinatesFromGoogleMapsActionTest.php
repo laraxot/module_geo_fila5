@@ -56,7 +56,7 @@ it('throws exception for guzzle exception', function (): void {
 it('throws exception when no coordinates found', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
         'results' => [],
     ])));
@@ -68,7 +68,7 @@ it('throws exception when no coordinates found', function (): void {
 it('throws exception when status is not OK', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'ZERO_RESULTS',
     ])));
 
@@ -79,7 +79,7 @@ it('throws exception when status is not OK', function (): void {
 it('returns location data for valid address', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
         'results' => [[
             'geometry' => [
@@ -103,7 +103,7 @@ it('returns location data for valid address', function (): void {
 it('handles address with special characters', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
         'results' => [[
             'geometry' => [

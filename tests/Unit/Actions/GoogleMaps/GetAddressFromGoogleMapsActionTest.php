@@ -33,7 +33,7 @@ it('throws exception when api key is empty', function (): void {
 it('throws exception when api response is not successful', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
@@ -44,8 +44,8 @@ it('throws exception when api response is not successful', function (): void {
 it('throws exception when no results found', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'results' => [],
         ], 200),
     ]);
@@ -57,8 +57,8 @@ it('throws exception when no results found', function (): void {
 it('returns address data for valid address', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'results' => [[
                 'geometry' => [
                     'location' => [
@@ -101,8 +101,8 @@ it('returns address data for valid address', function (): void {
 it('handles missing optional address components', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'results' => [[
                 'geometry' => [
                     'location' => [

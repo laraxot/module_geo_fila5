@@ -2,6 +2,15 @@
 
 ## Documentation Structure
 
+## Canonical Rules First
+
+- [README.md](./README.md) - entrypoint modulo Geo, quick rules e ownership del dominio
+- [rules-index.md](./rules-index.md) - indice regole canoniche Geo + regole globali da non violare
+- [wiki/index.md](./wiki/index.md) - memoria persistente LLM Wiki del modulo Geo
+- [wiki/concepts/map-picker-filament-field.md](./wiki/concepts/map-picker-filament-field.md) - riferimento canonico per `MapPicker`
+- [wiki/concepts/latitudelongitudeinput-xotbasefield-rule.md](./wiki/concepts/latitudelongitudeinput-xotbasefield-rule.md) - regola strutturale XotBaseField
+- [wiki/concepts/latitudelongitudeinput-runtime-ux.md](./wiki/concepts/latitudelongitudeinput-runtime-ux.md) - regola UX/runtime: coordinate incomplete => posizione corrente
+
 ### 📚 Core Documentation
 
 - [**Architecture Overview**](./architecture.md) - Technical architecture and system design
@@ -44,6 +53,7 @@
 
 - [**Map Component Enhancement Story**](../../_bmad/bmm/4-implementation/bmad-create-story/story-map-ticket-wizard.md) - Enhanced map component for ticket wizard
 - [**Address Input Story**](../../_bmad/bmm/4-implementation/bmad-create-story/discover-inputs.md) - Address input implementation
+- [**BMAD Story 8-25**](../../../../_bmad-output/implementation-artifacts/8-25-mappicker-toolbar-marker-address-fullscreen-runtime-fix.md) - runtime fix su toolbar/layer/marker/readout/fullscreen del `MapPicker`
 
 ### 📋 Guidelines & Best Practices
 
@@ -67,6 +77,8 @@
 | AddressResource | [address-resource.md](./filament/address-resource.md) | ✅ Active |
 | Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
 | README / Overview | [README.md](./README.md) | ✅ Active |
+| MapPicker Rule | [wiki/concepts/map-picker-filament-field.md](./wiki/concepts/map-picker-filament-field.md) | ✅ Canonical |
+| XotBaseField Rule | [wiki/concepts/latitudelongitudeinput-xotbasefield-rule.md](./wiki/concepts/latitudelongitudeinput-xotbasefield-rule.md) | ✅ Canonical |
 
 ## Filament Components
 

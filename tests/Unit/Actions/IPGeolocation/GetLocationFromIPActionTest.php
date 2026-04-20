@@ -22,7 +22,7 @@ it('delegates to fetch action and returns result', function (): void {
         ->shouldReceive('execute')
         ->once()
         ->with('8.8.8.8')
-        ->andReturn(new IPLocationData())
+        ->andReturn(new IPLocationData(
             ip: '8.8.8.8',
             city: 'Ashburn',
             region: null,

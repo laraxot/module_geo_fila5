@@ -57,7 +57,7 @@ it('throws exception for guzzle exception', function (): void {
 it('returns null when no features in response', function (): void {
     config(['services.mapbox.access_token' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'features' => [],
     ])));
 
@@ -69,7 +69,7 @@ it('returns null when no features in response', function (): void {
 it('returns address data for valid response', function (): void {
     config(['services.mapbox.access_token' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'features' => [[
             'center' => [9.1900, 45.4642],
             'context' => [
@@ -100,7 +100,7 @@ it('returns address data for valid response', function (): void {
 it('handles address without house number', function (): void {
     config(['services.mapbox.access_token' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'features' => [[
             'center' => [9.1900, 45.4642],
             'context' => [
