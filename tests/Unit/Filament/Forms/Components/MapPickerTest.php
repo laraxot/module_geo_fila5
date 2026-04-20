@@ -7,8 +7,8 @@ namespace Modules\Geo\Tests\Unit\Filament\Forms\Components;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Filament\Forms\Components\LocationPicker;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
-use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use Modules\Geo\Tests\UnitTestCase;
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 uses(UnitTestCase::class);
 
@@ -125,14 +125,14 @@ test('MapPicker geocodeAddress returns expected keys on success', function (): v
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response([
             [
-                'lat'          => '45.4642',
-                'lon'          => '9.1900',
+                'lat' => '45.4642',
+                'lon' => '9.1900',
                 'display_name' => 'Milano, Lombardia, Italia',
             ],
         ], 200),
     ]);
 
-    $field  = MapPicker::make('location');
+    $field = MapPicker::make('location');
     $result = $field->geocodeAddress('Milano');
 
     expect($result)->toHaveKeys(['latitude', 'longitude', 'display_name'])
@@ -146,7 +146,7 @@ test('MapPicker geocodeAddress returns default location when Nominatim returns e
         'nominatim.openstreetmap.org/*' => Http::response([], 200),
     ]);
 
-    $field  = MapPicker::make('location')->defaultLocation(41.9028, 12.4964);
+    $field = MapPicker::make('location')->defaultLocation(41.9028, 12.4964);
     $result = $field->geocodeAddress('nonexistent place xyz');
 
     expect($result['latitude'])->toBe(41.9028)
@@ -159,7 +159,7 @@ test('MapPicker geocodeAddress returns default location on HTTP exception', func
         'nominatim.openstreetmap.org/*' => Http::response(null, 500),
     ]);
 
-    $field  = MapPicker::make('location');
+    $field = MapPicker::make('location');
     $result = $field->geocodeAddress('anywhere');
 
     expect($result)->toHaveKeys(['latitude', 'longitude', 'display_name']);
@@ -176,7 +176,7 @@ test('MapPicker reverseGeocode returns address string', function (): void {
         ], 200),
     ]);
 
-    $field  = MapPicker::make('location');
+    $field = MapPicker::make('location');
     $result = $field->reverseGeocode(45.4642, 9.19);
 
     expect($result)->toBeString()->toBe('Via Roma, Milano, Italia');
@@ -187,7 +187,7 @@ test('MapPicker reverseGeocode returns empty string on failure', function (): vo
         'nominatim.openstreetmap.org/*' => Http::response(null, 500),
     ]);
 
-    $field  = MapPicker::make('location');
+    $field = MapPicker::make('location');
     $result = $field->reverseGeocode(0.0, 0.0);
 
     expect($result)->toBeString()->toBe('');

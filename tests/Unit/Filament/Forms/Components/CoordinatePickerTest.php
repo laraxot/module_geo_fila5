@@ -7,8 +7,8 @@ namespace Modules\Geo\Tests\Unit\Filament\Forms\Components;
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
-use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use Modules\Geo\Tests\UnitTestCase;
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 uses(UnitTestCase::class);
 
@@ -34,7 +34,7 @@ test('MapPicker DOES NOT extend CoordinatePicker', function (): void {
 
 test('CoordinatePicker uses clean naming convention (No Default prefixes)', function (): void {
     $field = CoordinatePicker::make('test');
-        
+
     expect(method_exists($field, 'getDefaultLatitude'))->toBeFalse()
         ->and(method_exists($field, 'getDefaultZoom'))->toBeFalse();
 });

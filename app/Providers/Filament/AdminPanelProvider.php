@@ -17,7 +17,7 @@ class AdminPanelProvider extends XotBasePanelProvider
     #[\Override]
     public function panel(Panel $panel): Panel
     {
-        /**
+        /*
          * Geo map assets are loaded through theme Vite bundles.
          * Keep panel provider lean to avoid frontoffice 404 requests
          * for legacy Filament asset IDs (geo-leaflet-*.css, geo-module-scripts.js).
