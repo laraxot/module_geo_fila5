@@ -30,6 +30,7 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
     public bool $esitoPositivo = false;
 
     public string $erroreMessaggio = '';
+    public string $messaggioInfo = '';
 
     protected string $view = 'pdnd::filament.pages.C015-servizioAccertamentoGeneralita-approvazione_autom';
 
@@ -54,85 +55,98 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
             ->statePath('pdndData');
     }
 
-    public function send(): void
-    {
-        $this->resetRisultato();
-        $this->validate();
 
-        try {
-            $state = $this->pdndForm->getState();
-            $codiceFiscale = $this->validateCodiceFiscale($state);
+public function send(): void
+{
+    $this->resetRisultato();
+    $this->validate();
 
-            $risultato = $this->accertamentoGeneralita($codiceFiscale);
+    try {
+        $state = $this->pdndForm->getState();
+        $codiceFiscale = $this->validateCodiceFiscale($state);
 
-            // dddx($risultato);
+        $risultato = $this->accertamentoGeneralita($codiceFiscale);
 
-            if ($this->isAccertamentoSuccessful($risultato)) {
-                $this->handleAccertamentoSuccessful($risultato);
-            } else {
-                $this->handleAccertamentoFailed($risultato);
-            }
-        } catch (Exception $e) {
-            $this->erroreMessaggio = $e->getMessage();
-
-            Log::error('Errore in ServizioAccertamentoGeneralita', [
-                'codice_fiscale' => $codiceFiscale ?? 'N/D',
-                'errore' => $e->getMessage()
-            ]);
-
+        if (!empty($this->messaggioInfo)) {
+            // Caso "Cittadino non trovato"
             Notification::make()
-                ->title('Errore durante l\'accertamento')
-                ->body($e->getMessage())
-                ->danger()
+                ->title('Cittadino non trovato')
+                ->body($this->messaggioInfo)
+                ->warning()
                 ->persistent()
                 ->send();
+            return;
         }
+
+        if ($this->isAccertamentoSuccessful($risultato)) {
+            $this->handleAccertamentoSuccessful($risultato);
+        } else {
+            $this->handleAccertamentoFailed($risultato);
+        }
+    } catch (Exception $e) {
+        $this->erroreMessaggio = $e->getMessage();
+
+        Notification::make()
+            ->title('Errore durante l\'accertamento')
+            ->body($e->getMessage())
+            ->danger()
+            ->persistent()
+            ->send();
     }
+}
 
 
 
     // ====================== FLUSSO C030 → C015 ======================
-    private function accertamentoGeneralita(string $codiceFiscale): array
-    {
-        try {
-            // 1. Recupero idAnpr tramite C030
-            $idAnpr = $this->recuperaIdAnprDaC030($codiceFiscale);
+private function accertamentoGeneralita(string $codiceFiscale): array
+{
 
-            if (empty($idAnpr)) {
-                throw new Exception("Codice Fiscale errato o inesistente. Impossibile ottenere ID ANPR tramite C030.");
+    $idAnpr = $this->recuperaIdAnprDaC030($codiceFiscale);
+
+    if (!empty($this->messaggioInfo)) {
+        return ['successo' => false];   // forza fallimento pulito
+    }
+
+    if (empty($idAnpr)) {
+        throw new Exception('Impossibile ottenere ID ANPR tramite C030');
+    }
+
+    $this->idAnpr = $idAnpr;
+
+    $c015Service = $this->createC015Service();
+    return $c015Service->accertamentoPerIdAnpr($idAnpr);
+}
+
+
+private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
+{
+    $c030Service = new C030Service(app()->make(PdndClientService::class, [
+        'servizio' => ServizioAnprEnum::C030,
+        'ambiente' => self::AMBIENTE_ANPR,
+    ]));
+
+    $risultato = $c030Service->cercaPerCodiceFiscale($codiceFiscale);
+
+    // Cittadino non registrato in ANPR
+    if (isset($risultato['errori']) && is_array($risultato['errori'])) {
+        foreach ($risultato['errori'] as $err) {
+            if (($err['codiceErroreAnomalia'] ?? '') === 'EN122') {
+                $this->messaggioInfo = 'Il codice fiscale inserito non risulta registrato in ANPR.';
+                return null;
             }
-
-            $this->idAnpr = $idAnpr;
-
-            // 2. Chiamata a C015 usando l'idANPR
-            $c015Service = $this->createC015Service();
-            return $c015Service->accertamentoPerIdAnpr($idAnpr);
-
-        } catch (Throwable $e) {
-            Log::error('Errore flusso C030 → C015', [
-                'codice_fiscale' => $codiceFiscale,
-                'ambiente' => self::AMBIENTE_ANPR,
-                'exception' => $e->getMessage(),
-            ]);
-            throw $e;
         }
     }
 
-    private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
-    {
-        $c030Service = new C030Service(app()->make(PdndClientService::class, [
-            'servizio' => ServizioAnprEnum::C030,
-            'ambiente' => self::AMBIENTE_ANPR,
-        ]));
-
-        $risultatoC030 = $c030Service->cercaPerCodiceFiscale($codiceFiscale);
-
-        // Estrazione idANPR (struttura identica a C007/C015)
-        return $risultatoC030['lista_soggetti'][0]['identificativi']['idANPR']
-            ?? $risultatoC030['lista_soggetti'][0]['idANPR']
-            ?? $risultatoC030['idAnpr']
-            ?? null;
+    // Altri errori reali di C030
+    if (empty($risultato['successo']) || $risultato['successo'] !== true) {
+        throw new Exception('Errore di sistema durante la ricerca su C030');
     }
+
+    return $risultato['lista_soggetti'][0]['identificativi']['idANPR']
+        ?? $risultato['lista_soggetti'][0]['idANPR']
+        ?? null;
+}
+
 
 
     private function createC015Service(): C015Service
@@ -173,17 +187,21 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
         $this->notifySuccess();
     }
 
-    private function handleAccertamentoFailed(array $risultato): void
-    {
-        $messaggio = $this->formatErrorBody($risultato);
-        $this->erroreMessaggio = $messaggio;
 
-        Notification::make()
-            ->title('Accertamento Fallito')
-            ->body($messaggio)
-            ->danger()
-            ->send();
-    }
+    private function handleAccertamentoFailed(array $risultato): void
+{
+    $messaggio = $this->formatErrorBody($risultato);
+
+    $this->erroreMessaggio = $messaggio;
+    $this->messaggioInfo   = '';
+
+    Notification::make()
+        ->title('Errore durante l\'accertamento')
+        ->body($messaggio)
+        ->danger()
+        ->persistent()
+        ->send();
+}
 
     private function notifySuccess(): void
     {
@@ -210,6 +228,7 @@ class ServizioAccertamentoGeneralitaPagePROD extends XotBasePage
         $this->datiCittadino = [];
         $this->esitoPositivo = false;
         $this->erroreMessaggio = '';
+        $this->messaggioInfo = '';
     }
 
     private function validateCodiceFiscale(array $state): string

@@ -2,6 +2,13 @@
     <x-filament::section>
         <form wire:submit="send">
 
+            {{-- @if(!empty($this->messaggioInfo))
+                <div class="mb-6 p-5 bg-amber-100 border border-amber-300 rounded-xl text-amber-700">
+                    <strong>⚠️ Attenzione:</strong><br>
+                    {{ $this->messaggioInfo }}
+                </div>
+            @endif --}}
+
             <x-slot name="heading">
                 C015 - Accertamento Generalità
             </x-slot>
