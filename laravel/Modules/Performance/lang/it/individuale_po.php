@@ -307,6 +307,10 @@ return [
             'icon' => 'layout',
             'tooltip' => 'layout',
         ],
+        'last_data_assunz' => [
+            'tooltip' => 'last_data_assunz',
+            'icon' => 'last_data_assunz',
+        ],
     ],
     'messages' => [
         'validation' => [
