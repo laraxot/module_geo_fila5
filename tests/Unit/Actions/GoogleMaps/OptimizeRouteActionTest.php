@@ -43,7 +43,7 @@ it('returns empty array for empty locations', function (): void {
 it('returns empty array when api returns no routes', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response(['routes' => []], 200),
     ]);
 
@@ -61,8 +61,8 @@ it('returns empty array when api returns no routes', function (): void {
 it('returns route data for valid request', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-    Http::fake([)
-        '*' => Http::response([)
+    Http::fake([
+        '*' => Http::response([
             'routes' => [[
                 'legs' => [
                     [
@@ -116,7 +116,7 @@ it('returns route data for valid request', function (): void {
 it('throws exception when api request fails', function (): void {
     config(['services.google.maps.key' => 'test_key']);
 
-    Http::fake([)
+    Http::fake([
         '*' => Http::response(null, 500),
     ]);
 

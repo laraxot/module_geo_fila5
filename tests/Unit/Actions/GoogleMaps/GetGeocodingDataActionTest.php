@@ -60,7 +60,7 @@ it('returns error geocoding data for guzzle exception', function (): void {
 it('returns error geocoding data for invalid status', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'ZERO_RESULTS',
         'results' => [],
     ])));
@@ -75,7 +75,7 @@ it('returns error geocoding data for invalid status', function (): void {
 it('returns geocoding data for valid address', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([)))
+    $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
         'results' => [[
             'geometry' => [

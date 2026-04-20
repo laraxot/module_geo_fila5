@@ -1,0 +1,159 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Geo\Filament\Forms\Components\Traits;
+
+use Filament\Support\Components\Attributes\ExposedLivewireMethod;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Http;
+use Livewire\Attributes\Renderless;
+use Throwable;
+
+/**
+ * Trait HasCoordinatePicker - Shared logic for geographic components.
+ * Rule: No "Default" prefixes.
+ * Rule: Unified state {latitude, longitude}.
+ */
+trait HasCoordinatePicker
+{
+    protected float $latitude = 41.9028;
+
+    protected float $longitude = 12.4964;
+
+    protected int $zoom = 15;
+
+    protected string $height = '400px';
+
+    protected bool $hasReverseGeocoding = true;
+
+    protected bool $searchVisible = true;
+
+    protected string $latitudeColumn = 'latitude';
+
+    protected string $longitudeColumn = 'longitude';
+
+    protected function setUpCoordinatePicker(): void
+    {
+        $this->default(['latitude' => null, 'longitude' => null]);
+        
+        // Mandatory: Dehydrated(true) for consistency in form state, 
+        // but can be overridden if explicit extraction is preferred.
+        $this->dehydrated(true);
+
+        $this->afterStateHydrated(function ($component, mixed $state): void {
+            if (is_array($state) && isset($state['latitude'], $state['longitude'])) {
+                return;
+            }
+
+            $record = $component->getRecord();
+            if ($record instanceof Model) {
+                $component->state([
+                    'latitude' => $record->getAttribute($this->latitudeColumn),
+                    'longitude' => $record->getAttribute($this->longitudeColumn),
+                ]);
+            }
+        });
+    }
+
+    public function latitudeColumn(string $column): static
+    {
+        $this->latitudeColumn = $column;
+        return $this;
+    }
+
+    public function longitudeColumn(string $column): static
+    {
+        $this->longitudeColumn = $column;
+        return $this;
+    }
+
+    public function zoom(int $zoom): static
+    {
+        $this->zoom = $zoom;
+        return $this;
+    }
+
+    public function center(float $latitude, float $longitude): static
+    {
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+        return $this;
+    }
+
+    public function reverseGeocoding(bool $condition = true): static
+    {
+        $this->hasReverseGeocoding = $condition;
+        return $this;
+    }
+
+    public function showSearch(bool $condition = true): static
+    {
+        $this->searchVisible = $condition;
+        return $this;
+    }
+
+    public function height(string $height): static
+    {
+        $this->height = $height;
+        return $this;
+    }
+
+    public function getLatitudeColumn(): string { return $this->latitudeColumn; }
+    public function getLongitudeColumn(): string { return $this->longitudeColumn; }
+    public function getZoom(): int { return $this->zoom; }
+    public function getLatitude(): float { return $this->latitude; }
+    public function getLongitude(): float { return $this->longitude; }
+    public function hasReverseGeocoding(): bool { return $this->hasReverseGeocoding; }
+    public function isSearchVisible(): bool { return $this->searchVisible; }
+    public function getHeight(): string { return $this->height; }
+
+    #[ExposedLivewireMethod]
+    #[Renderless]
+    public function reverseGeocode(float $latitude, float $longitude): string
+    {
+        try {
+            $response = Http::withHeaders(['User-Agent' => 'Senior-Architect/1.0'])
+                ->timeout(3)
+                ->get('https://nominatim.openstreetmap.org/reverse', [
+                    'lat' => $latitude,
+                    'lon' => $longitude,
+                    'format' => 'json',
+                ]);
+
+            $data = $response->json() ?? [];
+            return (string) ($data['display_name'] ?? '');
+        } catch (Throwable) {
+            return '';
+        }
+    }
+
+    /** Forward geocoding */
+    #[ExposedLivewireMethod]
+    #[Renderless]
+    public function geocodeAddress(string $address): array
+    {
+        try {
+            $response = Http::withHeaders(['User-Agent' => 'FixCity/1.0'])
+                ->get('https://nominatim.openstreetmap.org/search', [
+                    'q' => $address,
+                    'format' => 'json',
+                    'limit' => 1,
+                ]);
+
+            $data = $response->json() ?? [];
+
+            if (empty($data) || ! isset($data[0]['lat'], $data[0]['lon'])) {
+                return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Not found'];
+            }
+
+            return [
+                'latitude' => (float) $data[0]['lat'],
+                'longitude' => (float) $data[0]['lon'],
+                'display_name' => (string) $data[0]['display_name'],
+            ];
+        } catch (Throwable) {
+            return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Error'];
+        }
+    }
+}

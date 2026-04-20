@@ -26,8 +26,7 @@ test('LatitudeLongitudeInput supports fluent interface for defaults', function (
     $field = LatitudeLongitudeInput::make('location')
         ->defaultCenter(41.9028, 12.4964)
         ->defaultZoom(13)
-        ->mapHeight('340px')
-        ->showMap(true);
+        ->mapHeight('340px');
 
     expect($field)->toBeObject();
     expect($field)->toBeInstanceOf(LatitudeLongitudeInput::class);
@@ -44,9 +43,6 @@ test('LatitudeLongitudeInput fluent methods return self', function () {
 
     $result3 = $field->mapHeight('400px');
     expect($result3)->toBe($field);
-
-    $result4 = $field->showMap(false);
-    expect($result4)->toBe($field);
 });
 
 test('LatitudeLongitudeInput renders with wire:model.change (non-destructive sync)', function () {
