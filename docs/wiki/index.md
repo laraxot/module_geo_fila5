@@ -20,6 +20,7 @@ wiki/
 | Pagina | Tipo | Argomento |
 |--------|------|-----------|
 | [geo-module](./overviews/geo-module.md) | overview | Gerarchia geografica italiana, Address, Comune, geocoding, LeafletMarkerMapInput |
+| [static-geo-map-widget-pattern](./concepts/static-geo-map-widget-pattern.md) | concept | Pattern static GeoJSON + Lit + Leaflet + Filament widget |
 
 ## Raw Sources
 
@@ -31,4 +32,4 @@ Vedi [[../../../../docs/wiki/index|Index Globale Wiki]]
 
 ---
 
-*Ultimo aggiornamento: 2026-04-15*
+*Ultimo aggiornamento: 2026-04-16*
