@@ -195,7 +195,7 @@ trait HasCoordinatePicker
 
             $displayName = $data['display_name'] ?? null;
 
-            return is_string($displayName) && $displayName !== '' ? $displayName : null;
+            return is_string($displayName) && '' !== $displayName ? $displayName : null;
         } catch (\Throwable) {
             return null;
         }
@@ -232,7 +232,7 @@ trait HasCoordinatePicker
 
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

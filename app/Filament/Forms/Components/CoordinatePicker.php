@@ -50,7 +50,7 @@ class CoordinatePicker extends XotBaseField
 
     private static function extractCoordinateValue(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 
