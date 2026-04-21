@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(Modules\Geo\Tests\LightTestCase::class);
 
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
@@ -33,10 +33,11 @@ test('geo map widget returns payload data object', function () {
     ]);
 
     $this->app->bind(
-        \Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction::class,
-        static fn (): object => new class($payload)
-        {
-            public function __construct(private readonly GeoMapWidgetData $payload) {}
+        Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction::class,
+        static fn (): object => new class($payload) {
+            public function __construct(private readonly GeoMapWidgetData $payload)
+            {
+            }
 
             public function execute(): GeoMapWidgetData
             {
