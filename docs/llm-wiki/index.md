@@ -8,7 +8,10 @@
 
 ## Concepts
 
-_No concept pages created yet_
+- [Litelement in JS only rule](concepts/litelement-in-js-only-rule.md)
+- [No docs archive rule](concepts/no-docs-archive-rule.md)
+- [Wiki sacred structure rule](concepts/wiki-sacred-structure-rule.md)
+- [CoordinatePicker Architecture](concepts/coordinate-picker-architecture.md)
 
 ## Entities
 
@@ -34,8 +37,8 @@ _No troubleshooting pages created yet_
 
 ## Statistics
 
-- **Total Pages**: 0
-- **Last Ingestion**: None yet
+- **Total Pages**: 3
+- **Last Ingestion**: 2026-04-21
 - **Last Lint**: None yet
 
 ## Project Wiki Cross-References

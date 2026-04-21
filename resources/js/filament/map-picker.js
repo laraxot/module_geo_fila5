@@ -345,8 +345,8 @@ const registerMapPickerField = () => {
     window.__geoMapPickerFieldRegistered = true;
 
     window.Alpine.data('geoMapPickerField', (config) => ({
-        latitude: config.latitude,
-        longitude: config.longitude,
+        latitude: roundCoordinate(config.state?.latitude ?? config.latitude),
+        longitude: roundCoordinate(config.state?.longitude ?? config.longitude),
         geolocateWhenEmpty: config.geolocateWhenEmpty,
         reverseGeocoding: config.reverseGeocoding,
         zoom: config.zoom,
@@ -356,8 +356,24 @@ const registerMapPickerField = () => {
         isSyncingFromMap: false,
         reverseGeocodeTimer: null,
         lastMapSignature: null,
+        unwatchState: null,
 
         init() {
+            this.unwatchState = this.$wire?.$watch?.(config.statePath, (state) => {
+                const nextLatitude = roundCoordinate(state?.latitude);
+                const nextLongitude = roundCoordinate(state?.longitude);
+                const nextSignature = coordinatesSignature(nextLatitude, nextLongitude);
+
+                if (nextSignature === null || nextSignature === this.lastMapSignature) {
+                    return;
+                }
+
+                this.latitude = nextLatitude;
+                this.longitude = nextLongitude;
+                this.syncToMap(true);
+                this.updateStatus();
+            });
+
             this.updateStatus();
             this.syncToMap(true);
             this.scheduleReverseGeocoding();
@@ -405,6 +421,10 @@ const registerMapPickerField = () => {
 
             queueMicrotask(() => {
                 this.isSyncingFromMap = false;
+                this.$wire?.$set?.(config.statePath, {
+                    latitude: nextLatitude,
+                    longitude: nextLongitude,
+                }, false);
                 this.updateStatus();
                 this.scheduleReverseGeocoding();
             });

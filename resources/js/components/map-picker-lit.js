@@ -1,6 +1,6 @@
 import { LitElement, html } from '@theme-lit';
 import L from '@theme-leaflet';
-import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
+import { controlIcons, injectMapPickerStyles } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
 
 export class MapPickerLit extends LitElement {
@@ -12,13 +12,13 @@ export class MapPickerLit extends LitElement {
         zoom: { type: Number },
         height: { type: String },
         showSearch: { type: Boolean, attribute: 'show-search' },
+        geolocateWhenEmpty: { type: Boolean, attribute: 'geolocate-when-empty' },
         address: { type: String, attribute: 'address' },
     };
 
-    static styles = mapPickerStyles;
-
     constructor() {
         super();
+        injectMapPickerStyles();
         this.latitude = null;
         this.longitude = null;
         this.defaultLatitude = 41.9028;
@@ -26,6 +26,7 @@ export class MapPickerLit extends LitElement {
         this.zoom = 15;
         this.height = '400px';
         this.showSearch = true;
+        this.geolocateWhenEmpty = false;
         this.address = null;
         this.hasReverseGeocoding = true;
 
@@ -37,6 +38,7 @@ export class MapPickerLit extends LitElement {
         this._suppressEvent = false;
         this._pendingLocation = null;
         this._resizeObserver = null;
+        this._visibilityObserver = null;
         this._initRaf = null;
         this._isLocating = false;
 
@@ -53,6 +55,10 @@ export class MapPickerLit extends LitElement {
                 </div>
             </div>
         `;
+    }
+
+    createRenderRoot() {
+        return this;
     }
 
     _renderSearch() {
@@ -74,6 +80,12 @@ export class MapPickerLit extends LitElement {
         `;
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        const raw = this.getAttribute('geolocate-when-empty');
+        this.geolocateWhenEmpty = raw !== 'false' && raw !== '0';
+    }
+
     firstUpdated() {
         if (typeof ResizeObserver !== 'undefined') {
             this._resizeObserver = new ResizeObserver(() => this._handleResize());
@@ -82,11 +94,45 @@ export class MapPickerLit extends LitElement {
 
         requestAnimationFrame(() => this._handleResize());
         document.addEventListener('fullscreenchange', this._onFullscreenChange);
+
+        this._visibilityObserver = new IntersectionObserver(
+            () => {
+                this._handleResize();
+            },
+            { root: null, threshold: 0, rootMargin: '80px' },
+        );
+        this._visibilityObserver.observe(this);
     }
 
     updated(changed) {
         if (changed.has('height')) {
             this.invalidateSize();
+        }
+
+        if (!this._mapReady) {
+            return;
+        }
+
+        if (changed.has('latitude') || changed.has('longitude')) {
+            const normalized = this._normalizeLocation({
+                latitude: this.latitude,
+                longitude: this.longitude,
+            });
+
+            if (!normalized) {
+                return;
+            }
+
+            const markerLatLng = this._marker?.getLatLng();
+            if (
+                markerLatLng &&
+                Math.abs(markerLatLng.lat - normalized.latitude) < 1e-6 &&
+                Math.abs(markerLatLng.lng - normalized.longitude) < 1e-6
+            ) {
+                return;
+            }
+
+            this._updateInternal(normalized.latitude, normalized.longitude, false, 'props');
         }
     }
 
@@ -94,6 +140,8 @@ export class MapPickerLit extends LitElement {
         super.disconnectedCallback();
         document.removeEventListener('fullscreenchange', this._onFullscreenChange);
         this._resizeObserver?.disconnect();
+        this._visibilityObserver?.disconnect();
+        this._visibilityObserver = null;
 
         if (this._initRaf) {
             cancelAnimationFrame(this._initRaf);
@@ -148,7 +196,7 @@ export class MapPickerLit extends LitElement {
     _initMap() {
         if (this._map) return;
 
-        const el = this.renderRoot.querySelector('.map-picker-leaflet-pane');
+        const el = this.querySelector('.map-picker-leaflet-pane');
 
         if (!el || el._leaflet_id) return;
 
@@ -340,22 +388,28 @@ export class MapPickerLit extends LitElement {
             return;
         }
 
+        if (!this.geolocateWhenEmpty) {
+            return;
+        }
+
         this._handleGeolocation();
     }
 
     _toggleFullscreen() {
-        const container = this.renderRoot.querySelector('.map-container');
+        const container = this.querySelector('.map-container');
         if (!container) return;
 
-        if (!document.fullscreenElement) {
-            container.requestFullscreen().catch(() => {});
-        } else {
+        if (document.fullscreenElement === container) {
             document.exitFullscreen();
+        } else {
+            container.requestFullscreen().catch(() => {});
         }
     }
 
     _onFullscreenChange() {
-        this.classList.toggle('is-fullscreen', !!document.fullscreenElement);
+        const container = this.querySelector('.map-container');
+
+        this.classList.toggle('is-fullscreen', document.fullscreenElement === container);
         this.invalidateSize();
     }
 
@@ -372,7 +426,7 @@ export class MapPickerLit extends LitElement {
     }
 
     _setLoading(active) {
-        const loader = this.renderRoot.querySelector('.loading-overlay');
+        const loader = this.querySelector('.loading-overlay');
         if (loader) loader.classList.toggle('active', active);
     }
 }

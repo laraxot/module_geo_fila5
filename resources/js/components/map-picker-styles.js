@@ -45,6 +45,14 @@ export const mapPickerStyles = css`
         z-index: 0;
     }
 
+    /* Leaflet assegna .leaflet-container al div mappa: forza fill (wizard step nascosto → altezza 0 al primo paint). */
+    map-picker-lit .map-picker-leaflet-pane.leaflet-container,
+    map-picker-lit .leaflet-container {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 280px !important;
+    }
+
     /* Controlli Leaflet in overlay sopra i tile */
     .leaflet-top.leaflet-left .leaflet-control {
         z-index: 1100;
@@ -188,6 +196,17 @@ export const mapPickerStyles = css`
         background: transparent !important;
     }
 `;
+
+export function injectMapPickerStyles() {
+    if (document.getElementById('map-picker-lit-global-styles')) {
+        return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'map-picker-lit-global-styles';
+    style.textContent = mapPickerStyles.cssText;
+    document.head.appendChild(style);
+}
 
 /**
  * Icon SVGs for toolbar controls.

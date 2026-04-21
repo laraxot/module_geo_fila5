@@ -1,115 +1,66 @@
 @php
-    /** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
-    $statePath = $getStatePath();
-    $state = $getState() ?? [];
-    $latitude = $state['latitude'] ?? null;
-    $longitude = $state['longitude'] ?? null;
-    $fieldKey = $getKey();
+/** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
+$statePath = $field->getStatePath();
+$id = $field->getId();
 @endphp
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
-    <div
-        class="coordinate-picker-wrapper"
-        wire:ignore
-        x-data="{
-            statePath: @js($statePath),
-            fieldKey: @js($fieldKey),
+    <div x-data="{
+            state: $wire.entangle('{{ $statePath }}'),
             address: '',
-            lat: @js($latitude),
-            lng: @js($longitude),
-            hasReverse: @js($field->hasReverseGeocoding()),
-
-            get picker() { return this.$el.querySelector('.coordinate-picker-core'); },
-
-            onCoordsChanged(e) {
-                const { latitude, longitude } = e.detail;
-                this.lat = latitude;
-                this.lng = longitude;
-                // Livewire v4 API
-                this.$wire.$set(this.statePath, { latitude, longitude }, false);
-
-                if (this.hasReverse) {
-                    this.updateAddress(latitude, longitude);
-                }
-            },
-
-            async updateAddress(lat, lng) {
-                const result = await this.$wire.callSchemaComponentMethod(this.fieldKey, 'reverseGeocode', { latitude: lat, longitude: lng });
-                if (typeof result === 'string') {
-                    this.address = result || 'Indirizzo non rilevato';
-                    return;
-                }
-
-                if (result && typeof result === 'object') {
-                    this.address = result.display_name ?? result.address ?? 'Indirizzo non rilevato';
-                    return;
-                }
-
-                this.address = 'Indirizzo non rilevato';
-            },
 
             init() {
-                this.$wire.$watch(this.statePath, (value) => {
-                    if (this.picker && typeof this.picker.applyExternalLocation === 'function') {
-                        this.picker.applyExternalLocation(value ?? null);
-                    }
+                // Initial sync handled by web component updated() via properties if passed
+            },
 
-                    if (value && typeof value === 'object') {
-                        this.lat = value.latitude ?? null;
-                        this.lng = value.longitude ?? null;
-                    } else {
-                        this.lat = null;
-                        this.lng = null;
-                    }
-                });
+            handleCoordsChanged(event) {
+                const { latitude, longitude, source } = event.detail;
 
-                if ((!this.lat || !this.lng) && this.picker && typeof this.picker.autolocateWhenCoordinatesMissing === 'function') {
-                    this.picker.autolocateWhenCoordinatesMissing();
+                // Avoid spamming Livewire during drag, but update local state so watchers work
+                // Use false for 'live' to avoid constant server roundtrips if not needed
+                this.state = { latitude, longitude };
+
+                if (source === 'drag' || source === 'click' || source === 'geolocation') {
+                    // Force Livewire sync on important events
+                    this.$wire.$set('{{ $statePath }}', { latitude, longitude }, false);
                 }
-                
-                if (this.lat && this.lng && this.hasReverse) {
-                    this.updateAddress(this.lat, this.lng);
+
+                if (@js($field->hasReverseGeocoding())) {
+                    this.reverseGeocode(latitude, longitude);
+                }
+            },
+
+            async reverseGeocode(lat, lng) {
+                if (!lat || !lng) return;
+                try {
+                    // Call the exposed Livewire method
+                    const result = await this.$wire.callSchemaComponentMethod('{{ $id }}', 'reverseGeocode', { latitude: lat, longitude: lng });
+                    this.address = result || '';
+                } catch (e) {
+                    this.address = '';
                 }
             }
-        }"
-        @coords-changed="onCoordsChanged($event)"
-    >
-        {{-- Readout minimale e pulito --}}
-        <div class="mb-3 flex flex-wrap items-center gap-4 text-sm bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg border border-gray-100 dark:border-gray-700">
-            <template x-if="lat && lng">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
-                    <span class="inline-flex items-center gap-1.5 px-2 py-1 bg-white dark:bg-gray-800 rounded shadow-sm border border-gray-200 dark:border-gray-600">
-                        <span class="text-gray-400 font-mono text-xs">LAT</span>
-                        <span x-text="lat.toFixed(6)" class="font-mono font-bold text-primary-600 dark:text-primary-400"></span>
-                    </span>
-                    <span class="inline-flex items-center gap-1.5 px-2 py-1 bg-white dark:bg-gray-800 rounded shadow-sm border border-gray-200 dark:border-gray-600">
-                        <span class="text-gray-400 font-mono text-xs">LNG</span>
-                        <span x-text="lng.toFixed(6)" class="font-mono font-bold text-primary-600 dark:text-primary-400"></span>
-                    </span>
-                    <span x-show="address" class="text-gray-500 dark:text-gray-400 italic truncate flex-1" x-text="address"></span>
-                </div>
-            </template>
-            <template x-if="!lat || !lng">
-                <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 py-1">
-                    <span>⚠️</span>
-                    <span class="italic font-medium">Nessuna coordinata impostata. Clicca sulla mappa o usa la tua posizione.</span>
-                </div>
+        }" class="coordinate-picker-field-wrapper space-y-2">
+        {{-- The Web Component Core --}}
+        <coordinate-picker-lit x-ref="picker" :latitude="state?.latitude" :longitude="state?.longitude"
+            :zoom="@js($field->getZoom())" :height="@js($field->getHeight())"
+            @coords-changed="handleCoordsChanged"></coordinate-picker-lit>
+
+        {{-- Status Readout & Feedbacks --}}
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] sm:text-xs text-gray-500 bg-gray-50 p-2 rounded-md border border-gray-100">
+            <div class="flex gap-3 sm:gap-4">
+                <span>Lat: <strong class="text-gray-700"
+                        x-text="state?.latitude ? state.latitude.toFixed(6) : '--'"></strong></span>
+                <span>Lng: <strong class="text-gray-700"
+                        x-text="state?.longitude ? state.longitude.toFixed(6) : '--'"></strong></span>
+            </div>
+            <div class="truncate max-w-full sm:max-w-[250px]" x-show="address">
+                <span x-text="address"></span>
+            </div>
+            <template x-if="!state?.latitude">
+                <span class="text-warning-600 italic">Posizione non impostata</span>
             </template>
         </div>
 
-        <coordinate-picker-field
-            class="coordinate-picker-core w-full block"
-            latitude="{{ is_numeric($latitude) ? (string) $latitude : 'NaN' }}"
-            longitude="{{ is_numeric($longitude) ? (string) $longitude : 'NaN' }}"
-            default-latitude="{{ $field->getLatitude() }}"
-            default-longitude="{{ $field->getLongitude() }}"
-            zoom="{{ $field->getZoom() }}"
-            height="{{ $field->getHeight() }}"
-        ></coordinate-picker-field>
-
-        {{-- Validazione feedback --}}
-        @error($statePath)
-            <p class="text-danger-600 text-xs mt-2 font-medium">{{ $message }}</p>
-        @enderror
     </div>
 </x-dynamic-component>
