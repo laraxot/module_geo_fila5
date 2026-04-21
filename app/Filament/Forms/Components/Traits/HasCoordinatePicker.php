@@ -6,6 +6,7 @@ namespace Modules\Geo\Filament\Forms\Components\Traits;
 
 use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
 
@@ -20,7 +21,7 @@ trait HasCoordinatePicker
 
     protected float $longitude = 12.4964;
 
-    protected int $zoom = 15;
+    protected int $zoom = 13;
 
     protected string $height = '400px';
 
@@ -36,11 +37,9 @@ trait HasCoordinatePicker
     {
         $this->default(['latitude' => null, 'longitude' => null]);
 
-        // Mandatory: Dehydrated(true) for consistency in form state,
-        // but can be overridden if explicit extraction is preferred.
-        $this->dehydrated(true);
+        $this->dehydrated(false);
 
-        $this->afterStateHydrated(function ($component, mixed $state): void {
+        $this->afterStateHydrated(function (self $component, mixed $state): void {
             if (is_array($state) && isset($state['latitude'], $state['longitude'])) {
                 return;
             }
@@ -48,10 +47,17 @@ trait HasCoordinatePicker
             $record = $component->getRecord();
             if ($record instanceof Model) {
                 $component->state([
-                    'latitude' => $record->getAttribute($this->latitudeColumn),
-                    'longitude' => $record->getAttribute($this->longitudeColumn),
+                    'latitude' => self::normalizeCoordinate($record->getAttribute($this->latitudeColumn)),
+                    'longitude' => self::normalizeCoordinate($record->getAttribute($this->longitudeColumn)),
                 ]);
+
+                return;
             }
+
+            $component->state([
+                'latitude' => $this->latitude,
+                'longitude' => $this->longitude,
+            ]);
         });
     }
 
@@ -82,6 +88,26 @@ trait HasCoordinatePicker
         $this->longitude = $longitude;
 
         return $this;
+    }
+
+    public function defaultCenter(float $latitude, float $longitude): static
+    {
+        return $this->center($latitude, $longitude);
+    }
+
+    public function defaultLocation(float $latitude, float $longitude): static
+    {
+        return $this->center($latitude, $longitude);
+    }
+
+    public function defaultZoom(int $zoom): static
+    {
+        return $this->zoom($zoom);
+    }
+
+    public function mapHeight(string $height): static
+    {
+        return $this->height($height);
     }
 
     public function reverseGeocoding(bool $condition = true): static
@@ -147,10 +173,10 @@ trait HasCoordinatePicker
 
     #[ExposedLivewireMethod]
     #[Renderless]
-    public function reverseGeocode(float $latitude, float $longitude): string
+    public function reverseGeocode(float $latitude, float $longitude): ?string
     {
         try {
-            $response = Http::withHeaders(['User-Agent' => 'Senior-Architect/1.0'])
+            $response = Http::withHeaders(['User-Agent' => 'FixCity Geo CoordinatePicker/1.0'])
                 ->timeout(3)
                 ->get('https://nominatim.openstreetmap.org/reverse', [
                     'lat' => $latitude,
@@ -158,11 +184,20 @@ trait HasCoordinatePicker
                     'format' => 'json',
                 ]);
 
-            $data = $response->json() ?? [];
+            if (! $response instanceof Response || ! $response->successful()) {
+                return null;
+            }
 
-            return (string) ($data['display_name'] ?? '');
+            $data = $response->json() ?? [];
+            if (! is_array($data)) {
+                return null;
+            }
+
+            $displayName = $data['display_name'] ?? null;
+
+            return is_string($displayName) && $displayName !== '' ? $displayName : null;
         } catch (\Throwable) {
-            return '';
+            return null;
         }
     }
 
@@ -193,5 +228,14 @@ trait HasCoordinatePicker
         } catch (\Throwable) {
             return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Error'];
         }
+    }
+
+    private static function normalizeCoordinate(mixed $value): ?float
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return is_numeric($value) ? (float) $value : null;
     }
 }
