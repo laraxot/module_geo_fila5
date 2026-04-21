@@ -8,11 +8,21 @@ uses(\Modules\Geo\Tests\TestCase::class);
 
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
+use Modules\Geo\Filament\Forms\Components\MapPicker;
+use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
 
 test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');
+
+    expect($field)->toBeObject();
+});
+
+test('MapPicker can be instantiated', function () {
+    $field = MapPicker::make('map_picker')
+        ->latitude('latitude')
+        ->longitude('longitude');
 
     expect($field)->toBeObject();
 });
@@ -23,6 +33,10 @@ test('LocationWidget can be instantiated', function () {
 
 test('LatLngWidget can be instantiated', function () {
     expect(class_exists(LatLngWidget::class))->toBeTrue();
+});
+
+test('GeoMapWidget can be instantiated', function () {
+    expect(class_exists(GeoMapWidget::class))->toBeTrue();
 });
 
 test('UpdateCoordinatesBulkAction can be instantiated', function () {
