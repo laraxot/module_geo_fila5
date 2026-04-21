@@ -8,7 +8,7 @@ uses(\Modules\Geo\Tests\TestCase::class);
 
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 
-/**
+/*
  * Test LatitudeLongitudeInput component for story 8-10:
  * - Bidirectional sync between map marker and coordinate inputs
  * - No destructive page refresh on marker drag

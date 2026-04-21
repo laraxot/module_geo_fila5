@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(Modules\Geo\Tests\LightTestCase::class);
 
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
@@ -23,12 +23,13 @@ test('build geo map widget payload action returns widget data contract', functio
     $place->setRelation('placeType', $placeType);
     $place->formatted_address = 'Via Roma 1, Milano';
 
-    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction
-    {
+    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction {
         /**
          * @param Collection<int, Place> $places
          */
-        public function __construct(private readonly Collection $places) {}
+        public function __construct(private readonly Collection $places)
+        {
+        }
 
         /**
          * @return Collection<int, Place>

@@ -173,13 +173,13 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-        if (is_string($title) && trim($title) !== '') {
+        if (is_string($title) && '' !== trim($title)) {
             return trim($title);
         }
 
         $formattedAddress = $place->getFormattedAddress();
 
-        if ($formattedAddress !== '') {
+        if ('' !== $formattedAddress) {
             return $formattedAddress;
         }
 
