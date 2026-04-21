@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Closure;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use Webmozart\Assert\Assert;
 
@@ -12,15 +11,15 @@ class MapPicker extends XotBaseField
 {
     protected string $view = 'geo::filament.forms.components.map-picker';
 
-    protected string|Closure|null $latitudeField = null;
+    protected string|\Closure|null $latitudeField = null;
 
-    protected string|Closure|null $longitudeField = null;
+    protected string|\Closure|null $longitudeField = null;
 
-    protected bool|Closure $reverseGeocoding = true;
+    protected bool|\Closure $reverseGeocoding = true;
 
-    protected bool|Closure $geolocateWhenEmpty = true;
+    protected bool|\Closure $geolocateWhenEmpty = true;
 
-    protected int|Closure $zoom = 15;
+    protected int|\Closure $zoom = 15;
 
     protected function setUp(): void
     {
@@ -29,35 +28,35 @@ class MapPicker extends XotBaseField
         $this->dehydrated(false);
     }
 
-    public function latitude(string|Closure $path): static
+    public function latitude(string|\Closure $path): static
     {
         $this->latitudeField = $path;
 
         return $this;
     }
 
-    public function longitude(string|Closure $path): static
+    public function longitude(string|\Closure $path): static
     {
         $this->longitudeField = $path;
 
         return $this;
     }
 
-    public function reverseGeocoding(bool|Closure $condition = true): static
+    public function reverseGeocoding(bool|\Closure $condition = true): static
     {
         $this->reverseGeocoding = $condition;
 
         return $this;
     }
 
-    public function geolocateWhenEmpty(bool|Closure $condition = true): static
+    public function geolocateWhenEmpty(bool|\Closure $condition = true): static
     {
         $this->geolocateWhenEmpty = $condition;
 
         return $this;
     }
 
-    public function zoom(int|Closure $zoom): static
+    public function zoom(int|\Closure $zoom): static
     {
         $this->zoom = $zoom;
 
@@ -120,13 +119,13 @@ class MapPicker extends XotBaseField
 
         $statePath = $this->resolveCurrentStatePath();
 
-        if ($statePath === null || ! str_contains($statePath, '.')) {
+        if (null === $statePath || ! str_contains($statePath, '.')) {
             return $path;
         }
 
         $parentStatePath = (string) str($statePath)->beforeLast('.');
 
-        if ($parentStatePath === '') {
+        if ('' === $parentStatePath) {
             return $path;
         }
 
