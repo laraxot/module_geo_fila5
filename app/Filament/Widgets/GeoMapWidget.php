@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Widgets;
 
 use Filament\Widgets\Widget;
-use JsonException;
 use Modules\Geo\Support\GeoMapDataset;
-use RuntimeException;
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -117,14 +115,14 @@ final class GeoMapWidget extends Widget
     }
 
     /**
-     * @param  array<string, array|bool|float|int|string|null>  $payload
+     * @param array<string, array|bool|float|int|string|null> $payload
      */
     private function encodeJson(array $payload, string $message): string
     {
         try {
             return json_encode($payload, JSON_THROW_ON_ERROR);
-        } catch (JsonException $exception) {
-            throw new RuntimeException($message, 0, $exception);
+        } catch (\JsonException $exception) {
+            throw new \RuntimeException($message, 0, $exception);
         }
     }
 

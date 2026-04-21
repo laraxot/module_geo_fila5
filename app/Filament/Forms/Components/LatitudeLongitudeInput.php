@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use InvalidArgumentException;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
@@ -25,7 +24,7 @@ class LatitudeLongitudeInput extends Field
     /**
      * Supported JS frameworks for rendering the map component.
      * - 'blade': Legacy Blade/Alpine implementation (default)
-     * - 'lit': Lit Web Component implementation
+     * - 'lit': Lit Web Component implementation.
      */
     protected const FRAMEWORK_BLADE = 'blade';
     protected const FRAMEWORK_LIT = 'lit';
@@ -105,18 +104,16 @@ class LatitudeLongitudeInput extends Field
     /**
      * Set the JavaScript framework for rendering the map.
      *
-     * @param  string  $framework  'blade' or 'lit'
-     * @return $this
+     * @param string $framework 'blade' or 'lit'
+     *
      * @throws \InvalidArgumentException if framework is not supported
+     *
+     * @return $this
      */
     public function jsFramework(string $framework): static
     {
         if (! in_array($framework, $this->getSupportedJsFrameworks(), true)) {
-            throw new InvalidArgumentException(sprintf(
-                'Unsupported JS framework "%s". Supported values: %s',
-                $framework,
-                implode(', ', $this->getSupportedJsFrameworks()),
-            ));
+            throw new \InvalidArgumentException(sprintf('Unsupported JS framework "%s". Supported values: %s', $framework, implode(', ', $this->getSupportedJsFrameworks())));
         }
 
         $this->jsFramework = $framework;
@@ -172,7 +169,7 @@ class LatitudeLongitudeInput extends Field
      */
     public function getView(): string
     {
-        if ($this->jsFramework === self::FRAMEWORK_LIT) {
+        if (self::FRAMEWORK_LIT === $this->jsFramework) {
             return 'geo::filament.forms.components.latitude-longitude-input-lit';
         }
 
