@@ -5,21 +5,26 @@ import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
 
 /**
- * LocationPickerLit
- * ZEN: Standardized geographical picker with address support.
- * Implementation: Light DOM for stability in dynamic/wizard contexts.
- * Logic: Stateless UI, synchronization via coordinates-changed event.
+ * CoordinatePickerField
+ * ZEN: Absolute technical precision and wizard stability.
+ * Implementation: Guarded Light DOM with ResizeObserver.
  */
-export class LocationPickerLit extends LitElement {
+export class CoordinatePickerField extends LitElement {
     static properties = {
-        latitude: { type: Number },
-        longitude: { type: Number },
+        state: { type: Object }, // Accepts {latitude, longitude} object
         zoom: { type: Number },
         height: { type: String },
-        address: { type: String },
         isLocating: { type: Boolean, state: true },
         isFullscreen: { type: Boolean, state: true },
+        geolocateWhenEmpty: { type: Boolean, attribute: 'geolocate-when-empty' },
+        labels: { type: Object },
+        provider: { type: String },
+        showSearch: { type: Boolean, attribute: 'show-search' },
+        _isProgrammaticUpdate: { type: Boolean, state: true },
     };
+
+    get _lat() { return this.state?.latitude ?? null; }
+    get _lng() { return this.state?.longitude ?? null; }
 
     createRenderRoot() {
         return this;
@@ -27,64 +32,63 @@ export class LocationPickerLit extends LitElement {
 
     constructor() {
         super();
-        this.latitude = 41.9028;
-        this.longitude = 12.4964;
+        this.state = null;
         this.zoom = 13;
         this.height = '400px';
-        this.address = '';
         this.isLocating = false;
         this.isFullscreen = false;
+        this.geolocateWhenEmpty = false;
+        this.labels = {};
+        this.provider = 'osm';
+        this.showSearch = false;
+        this._isProgrammaticUpdate = false;
 
         this._map = null;
         this._marker = null;
+        this._layers = {};
         this._isProgrammaticUpdate = false;
         this._resizeObserver = null;
         this._currentLayer = 'street';
-        this._layers = {};
     }
 
     render() {
+        const l = this.labels || {};
+        
         return html`
             <style>
-                location-picker-lit { display: block; width: 100%; }
+                coordinate-picker-lit { display: block; width: 100%; height: 100%; min-height: 200px; }
                 ${mapPickerStyles}
+                .map-container { min-height: 200px; }
+                .map-container.is-fullscreen { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100vh !important; border: none !important; border-radius: 0 !important; z-index: 9999 !important; }
+                .map-container.is-fullscreen .map-picker-leaflet-pane { height: 100vh !important; }
                 .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
-                .ctrl-btn svg { width: 1.5rem; height: 1.5rem; color: #374151; }
-                .ctrl-btn:hover svg { color: #ef4444; }
-                .close-fullscreen-btn { background: #ef4444 !important; color: white !important; }
             </style>
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             
             <div class="map-container ${this.isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
-
+                
                 <div class="layer-controls-overlay">
-                     ${this.isFullscreen ? html`
-                        <button class="ctrl-btn close-fullscreen-btn" type="button" @click="${this._toggleFullscreen}" title="Chiudi">
-                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                        </button>
-                    ` : html`
-                        <button class="ctrl-btn" type="button" @click="${this._toggleFullscreen}" title="Fullscreen">
-                            ${controlIcons.fullscreen}
-                        </button>
-                    `}
+                    <button class="ctrl-btn" type="button" @click="${this._toggleFullscreen}" title="${this.isFullscreen ? (l.close_fullscreen || 'Chiudi') : (l.fullscreen || 'Fullscreen')}">
+                        ${this.isFullscreen ? controlIcons.fullscreenExit : controlIcons.fullscreen}
+                    </button>
                     
-                    <button class="ctrl-btn" type="button" @click="${this._handleGeolocation}" ?disabled="${this.isLocating}" title="Mia posizione">
+                    <button class="ctrl-btn" type="button" @click="${this._requestGeolocation}" ?disabled="${this.isLocating}" title="${l.use_location || 'Mia posizione'}">
                         ${this.isLocating 
                             ? html`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`
-                            : controlIcons.locate
+                            : controlIcons.crosshair
                         }
                     </button>
                     
-                    <button class="ctrl-btn" type="button" @click="${this._switchLayer}" title="Cambia Layer">
+                    <button class="ctrl-btn" type="button" @click="${this._switchLayer}" title="${l.switch_layer || 'Cambia Layer'}">
                         ${controlIcons.layer}
                     </button>
                     
-                    <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomIn()}" title="Zoom In">
+                    <button class="ctrl-btn" type="button" @click="${this._zoomIn}" title="${l.zoom_in || 'Zoom In'}">
                         ${controlIcons.zoomIn}
                     </button>
-                    <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomOut()}" title="Zoom Out">
+                    <button class="ctrl-btn" type="button" @click="${this._zoomOut}" title="${l.zoom_out || 'Zoom Out'}">
                         ${controlIcons.zoomOut}
                     </button>
                 </div>
@@ -99,7 +103,9 @@ export class LocationPickerLit extends LitElement {
     firstUpdated() {
         this._initMap();
         this._resizeObserver = new ResizeObserver(() => {
-            if (this._map) setTimeout(() => this._map.invalidateSize(), 350);
+            if (this._map) {
+                setTimeout(() => this._map?.invalidateSize(), 350);
+            }
         });
         this._resizeObserver.observe(this);
         
@@ -118,8 +124,10 @@ export class LocationPickerLit extends LitElement {
     }
 
     updated(changed) {
-        if ((changed.has('latitude') || changed.has('longitude')) && !this._isProgrammaticUpdate) {
-            this._syncMarkerToState();
+        if (changed.has('state') && !this._isProgrammaticUpdate) {
+            if (this._map && this._lat != null && this._lng != null) {
+                this._syncMarkerToProperties();
+            }
         }
     }
 
@@ -127,8 +135,11 @@ export class LocationPickerLit extends LitElement {
         const el = this.querySelector('.map-picker-leaflet-pane');
         if (!el || this._map) return;
 
+        const centerLat = this._lat ?? 41.9028;
+        const centerLng = this._lng ?? 12.4964;
+
         this._map = L.map(el, {
-            center: [this.latitude, this.longitude],
+            center: [centerLat, centerLng],
             zoom: this.zoom,
             zoomControl: false,
             attributionControl: false
@@ -138,21 +149,32 @@ export class LocationPickerLit extends LitElement {
         this._layers.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 });
         this._layers.topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { maxZoom: 17 });
 
-        this._map.on('click', (e) => this._handleInteraction(e.latlng.lat, e.latlng.lng, 'click'));
+        this._map.on('click', (e) => this._handleMapInteraction(e.latlng.lat, e.latlng.lng, 'click'));
 
-        this._syncMarkerToState();
-        setTimeout(() => this._map.invalidateSize(), 350);
+        if (this._lat != null && this._lng != null) {
+            this._syncMarkerToProperties();
+        } else if (this.geolocateWhenEmpty || (this._lat === null && this._lng === null)) {
+            void this._requestGeolocation();
+        }
+
+        setTimeout(() => this._map?.invalidateSize(), 350);
     }
 
-    _handleInteraction(lat, lng, source = 'manual') {
+    _handleMapInteraction(lat, lng, source = 'manual') {
         this._isProgrammaticUpdate = true;
-        this.latitude = parseFloat(lat.toFixed(6));
-        this.longitude = parseFloat(lng.toFixed(6));
+        const latFixed = parseFloat(lat.toFixed(6));
+        const lngFixed = parseFloat(lng.toFixed(6));
         
-        this._syncMarkerToState();
-
-        this.dispatchEvent(new CustomEvent('location-changed', {
-            detail: { latitude: this.latitude, longitude: this.longitude, source },
+        // Update state object directly
+        if (this.state) {
+            this.state.latitude = latFixed;
+            this.state.longitude = lngFixed;
+        }
+        
+        this._updateMarker(latFixed, lngFixed);
+        
+        this.dispatchEvent(new CustomEvent('coords-changed', {
+            detail: { latitude: latFixed, longitude: lngFixed, source },
             bubbles: true,
             composed: true,
         }));
@@ -160,21 +182,28 @@ export class LocationPickerLit extends LitElement {
         setTimeout(() => { this._isProgrammaticUpdate = false; }, 100);
     }
 
-    _syncMarkerToState() {
+    _updateMarker(lat, lng) {
         if (!this._map) return;
         if (!this._marker) {
-            this._marker = L.marker([this.latitude, this.longitude], { 
+            this._marker = L.marker([lat, lng], { 
                 draggable: true, 
                 icon: createMapPickerLeafletIcon(L) 
             }).addTo(this._map);
             this._marker.on('dragend', (e) => {
                 const pos = e.target.getLatLng();
-                this._handleInteraction(pos.lat, pos.lng, 'drag');
+                this._handleMapInteraction(pos.lat, pos.lng, 'drag');
             });
         } else {
-            this._marker.setLatLng([this.latitude, this.longitude]);
+            this._marker.setLatLng([lat, lng]);
         }
-        this._map.setView([this.latitude, this.longitude], this._map.getZoom());
+    }
+
+    _syncMarkerToProperties() {
+        if (!this._map) return;
+        const lat = this._lat;
+        const lng = this._lng;
+        this._updateMarker(lat, lng);
+        this._map.setView([lat, lng], this._map.getZoom());
     }
 
     _switchLayer() {
@@ -192,38 +221,67 @@ export class LocationPickerLit extends LitElement {
 
     _toggleFullscreen() {
         this.isFullscreen = !this.isFullscreen;
+        
         if (this.isFullscreen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
         }
+
         this.dispatchEvent(new CustomEvent('fullscreen-changed', {
             detail: { isFullscreen: this.isFullscreen },
             bubbles: true,
             composed: true,
         }));
+
+        if (this._map) {
+            setTimeout(() => this._map?.invalidateSize(), 350);
+        }
     }
 
-    async _handleGeolocation() {
+    _zoomIn() {
+        if (this._map) {
+            this._map.zoomIn();
+            setTimeout(() => this._map?.invalidateSize(), 150);
+        }
+    }
+
+    _zoomOut() {
+        if (this._map) {
+            this._map.zoomOut();
+            setTimeout(() => this._map?.invalidateSize(), 150);
+        }
+    }
+
+    async _requestGeolocation() {
         if (!navigator.geolocation) return;
         this.isLocating = true;
         this.requestUpdate();
+
         return new Promise((resolve) => {
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                    this._handleInteraction(pos.coords.latitude, pos.coords.longitude, 'geolocation');
-                    if (this._map) this._map.setView([pos.coords.latitude, pos.coords.longitude], 16);
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    this._handleMapInteraction(lat, lng, 'geolocation');
+                    if (this._map) {
+                        this._map.setView([lat, lng], 16);
+                    }
                     this.isLocating = false;
                     this.requestUpdate();
                     resolve(true);
                 },
-                () => { this.isLocating = false; this.requestUpdate(); resolve(false); },
+                () => {
+                    this.isLocating = false;
+                    this.requestUpdate();
+                    resolve(false);
+                },
                 { enableHighAccuracy: true, timeout: 5000 }
             );
         });
     }
 }
 
-if (!customElements.get('location-picker-lit')) {
-    customElements.define('location-picker-lit', LocationPickerLit);
+if (!customElements.get('coordinate-picker-lit')) {
+    customElements.define('coordinate-picker-lit', CoordinatePickerField);
 }

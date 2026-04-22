@@ -4,12 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
+
 /**
- * LocationPicker - Simplified Alias for MapPicker.
+ * LocationPicker - Specialized for finding locations via address search.
  *
- * In Laraxot, we prefer using descriptive names while maintaining compatibility.
- * This class inherits all robust logic from MapPicker.
+ * Zen: The bridge between human address and machine coordinate.
+ * Implementation: Separate Blade and Lit JS.
  */
-class LocationPicker extends MapPicker
+class LocationPicker extends XotBaseField
 {
+    use HasCoordinatePicker;
+
+    protected string $view = 'geo::filament.forms.components.location-picker';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->setUpCoordinatePicker();
+    }
 }

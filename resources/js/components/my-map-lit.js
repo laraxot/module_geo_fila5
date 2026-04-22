@@ -1,6 +1,12 @@
-import { LitElement, html } from '@theme-lit';
+import { LitElement, html, css } from '@theme-lit';
 import L from '@theme-leaflet';
 
+/**
+ * MyMap - Custom map component.
+ * Zen: Personality. Represents the specific intent of the author.
+ * 
+ * Commandment 4: Thou shalt be encapsulated (Shadow DOM).
+ */
 export class MyMap extends LitElement {
     static properties = {
         lat: { type: Number },
@@ -11,34 +17,53 @@ export class MyMap extends LitElement {
         markerTitle: { type: String, attribute: 'marker-title' },
     };
 
+    static styles = css`
+        :host {
+            display: block;
+            width: 100%;
+        }
+        .map-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            background: #f3f4f6;
+        }
+        .map-canvas {
+            width: 100%;
+            height: 100%;
+        }
+    `;
+
     constructor() {
         super();
-        this.lat = 45.6669;   // esempio: Treviso/Mogliano area
+        this.lat = 45.6669;
         this.lng = 12.2423;
         this.zoom = 10;
         this.height = '400px';
         this.interactive = true;
         this.markerTitle = 'My Map';
+        
         this._map = null;
         this._marker = null;
     }
 
-    connectedCallback() {
-        super.connectedCallback();
-        this.style.display = 'block';
-        this.style.width = '100%';
-    }
-
-    createRenderRoot() {
-        return this;
-    }
-
     render() {
-        return html`<div id="map" class="map" style="width: 100%; height: ${this.height}; border-radius: 12px; overflow: hidden;"></div>`;
+        return html`
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+            <div class="map-wrapper" style="height: ${this.height};">
+                <div class="map-canvas"></div>
+            </div>
+        `;
     }
 
     firstUpdated() {
-        const mapEl = this.querySelector('#map');
+        this._initMap();
+    }
+
+    _initMap() {
+        const mapEl = this.shadowRoot.querySelector('.map-canvas');
+        if (!mapEl) return;
 
         this._map = L.map(mapEl).setView([this.lat, this.lng], this.zoom);
 
@@ -56,58 +81,31 @@ export class MyMap extends LitElement {
         if (this.interactive) {
             this._marker.on('dragend', () => {
                 const position = this._marker?.getLatLng();
-
-                if (! position) {
-                    return;
-                }
-
+                if (!position) return;
                 this.lat = position.lat;
                 this.lng = position.lng;
-
                 this.dispatchCoordinatesChanged();
             });
 
             this._map.on('click', (event) => {
                 this.lat = event.latlng.lat;
                 this.lng = event.latlng.lng;
-
                 this._marker?.setLatLng(event.latlng);
                 this.dispatchCoordinatesChanged();
             });
         }
 
-        requestAnimationFrame(() => {
-            this._map?.invalidateSize();
-        });
+        setTimeout(() => this._map.invalidateSize(), 150);
     }
 
     updated(changedProperties) {
-        if (! this._map) {
-            return;
-        }
+        if (!this._map) return;
 
-        const latChanged = changedProperties.has('lat');
-        const lngChanged = changedProperties.has('lng');
-        const zoomChanged = changedProperties.has('zoom');
-
-        if (latChanged || lngChanged || zoomChanged) {
+        if (changedProperties.has('lat') || changedProperties.has('lng') || changedProperties.has('zoom')) {
             this._map.setView([this.lat, this.lng], this.zoom);
-
             if (this._marker) {
                 this._marker.setLatLng([this.lat, this.lng]);
             }
-        }
-
-        if (changedProperties.has('height')) {
-            const mapEl = this.querySelector('#map');
-
-            if (mapEl instanceof HTMLElement) {
-                mapEl.style.height = this.height;
-            }
-
-            requestAnimationFrame(() => {
-                this._map?.invalidateSize();
-            });
         }
     }
 
@@ -133,6 +131,6 @@ export class MyMap extends LitElement {
     }
 }
 
-if (! customElements.get('my-map')) {
+if (!customElements.get('my-map')) {
     customElements.define('my-map', MyMap);
 }

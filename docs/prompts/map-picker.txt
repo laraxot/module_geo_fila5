@@ -1,75 +1,803 @@
-REGOLA OPERATIVA PERMANENTE: LEAFLET SI COLLEGA AL CONTAINER TRAMITE CLASSI LOCALI, MAI TRAMITE ID GLOBALI.
-REGOLA OPERATIVA PERMANENTE: LATITUDELONGITUDEINPUT DEVE ESTENDERE XOTBASEFIELD, MAI COORDINATEPICKER.
+in laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php i form components
+CoordinatePicker, GeopointPicker, LatitudeLongitudeInput, LeafletMarkerMapInput, LocationPicker, MapLocationInput, MapPicker, MapPositioner, PlacePicker
+anche se commentati non devi toglierli !
 
-bmad-create-story Devi creare un campo personalizzato per Filament v5 chiamato MapPicker da usare nelle Resource che
-   gestisce una mappa interattiva basata su Leaflet incapsulata in un Web Component Lit riutilizzabile. Il campo deve
-   integrarsi con Livewire e Alpine già presenti nel progetto Laravel e deve lavorare con due colonne reali del
-   database chiamate latitude e longitude senza usare JSON. Il componente deve mostrare una mappa con marker draggable
-   e aggiornare in tempo reale i valori di latitudine e longitudine sia negli input visibili sia nei campi Livewire
-   tramite entangle separato per latitude e longitude. Se i valori iniziali di latitude e longitude sono null il
-   componente deve automaticamente usare la geolocalizzazione del browser per centrare la mappa e posizionare il
-   marker. Quando l’utente sposta il marker la posizione deve aggiornare Alpine state, gli input e Livewire senza loop
-   o desincronizzazioni. Il Web Component Lit deve essere completamente isolato e gestire la logica della mappa,
-   inclusa inizializzazione Leaflet, marker draggable e dispatch di eventi custom coords-changed verso Alpine. Il
-   componente deve supportare fullscreen toggle che espande la mappa a schermo intero e deve gestire correttamente il
-   resize di Leaflet con invalidateSize. Deve includere anche layer base mappa stradale e layer satellitare o
-   equivalente tramite tile provider compatibile con Leaflet con possibilità di switch tra layer. Alpine deve fungere
-   da orchestratore tra Livewire e Web Component usando @entangle live su latitude e longitude e watcher per
-   sincronizzare i valori verso il Web Component. Il campo Filament deve essere riutilizzabile nelle Resource con
-   sintassi MapPicker::make senza campo JSON ma collegandosi esplicitamente a latitude e longitude tramite metodi
-   dedicati latitude() e longitude() nel componente custom. Il sistema deve essere progettato in modo modulare e
-   inserito nel modulo GEO dell’applicazione, rispettando l’architettura a moduli del progetto, senza contaminare altri
-   domini. Il lavoro non è considerato completo finché tutto il codice non passa senza errori e senza warning
-   attraverso PHPStan, PHP Mess Detector (PHPMD), PHP Insights e Pest con test automatizzati. Deve essere inclusa una
-   validazione visiva dei dati nel frontend: si consiglia l’uso di indicatori di stato inline (input validation
-   colorata con error state), feedback immediato sullo stato delle coordinate e opzionalmente reverse geocoding per
-   mostrare un indirizzo leggibile quando le coordinate cambiano, usando servizi basati su OpenStreetMap come Nominatim
-   o Photon.
+# Geo Fields – Complete Guide for Geographic Filament Components
 
+> **STACK**: TailwindCSS + AlpineJS + Lit + Livewire + Filament v5 + Laraxot
+> **TARGET**: Mobile-first, responsive, multilingua (i18n)
+> **REFERENCE**: https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
+> **BRANCH**: `dev` only. Never change branch!
 
-   bmad-create-story dopo aver studiato a fondo https://filamentphp.com/docs/5.x/forms/custom-fields, https://livewire.laravel.com/docs/properties#data-binding, https://livewire.laravel.com/docs/javascript#the-wire-object e https://lit.dev/
-   Agisci come un senior architect specializzato in Laravel 12, Filament v5, Livewire v3 e Web Components con Lit, con esperienza reale in sistemi complessi e alta attenzione a performance, DX e manutenibilità, analizza profondamente un custom field Filament chiamato MapPicker che integra Leaflet tramite un web component Lit e sincronizza coordinate geografiche con Livewire, il tuo obiettivo è rifattorizzare l’intero sistema (PHP Field, Blade view, Alpine layer, integrazione Livewire JS e componente Lit) per ottenere un’architettura pulita, coerente e senza side effects, devi rispettare rigorosamente i principi ufficiali della documentazione Filament sui custom fields (uso corretto di $getStatePath, $applyStateBindingModifiers, gestione dello state come singola fonte di verità), della documentazione Livewire (uso corretto di $wire.$set, $wire.$watch, evitare uso improprio di entangle e loop reattivi) e della documentazione Lit (Shadow DOM, gestione styles tramite CSSResult, separazione UI/logic), individua e correggi tutte le criticità architetturali tra cui sincronizzazione bidirezionale fragile, duplicazione dello stato tra location e latitude/longitude, uso eccessivo di flag come _isExternalUpdate e _isSyncingFromExternal, potenziali memory leak (event listener globali non rimossi), coupling tra Blade e struttura dello state tramite string manipulation, e problemi di lifecycle tra Lit e Livewire, definisci chiaramente un contratto dati unico e stabile dove il field Filament gestisce uno state strutturato location { latitude, longitude } e il model finale riceve latitude e longitude solo in fase di submit tramite trasformazione esplicita, assicurati che il componente Lit sia completamente stateless rispetto a Livewire e funzioni solo come UI emitter tramite eventi custom (es. coords-changed), riduci al minimo la logica difensiva in shouldUpdate e sposta la responsabilità di sincronizzazione nel layer Alpine/Livewire, migliora la gestione delle performance evitando re-render inutili e garantendo che aggiornamenti di coordinate non generino loop, proponi una gestione pulita del CSS tramite file separato che esporta css`` per Lit mantenendo isolamento Shadow DOM, valuta se spostare logiche asincrone come geocoding verso metodi Livewire esposti (ExposedLivewireMethod) per maggiore controllo e testabilità, assicurati che il codice finale sia DRY, SOLID, altamente leggibile e modulare, documenta chiaramente ogni scelta architetturale e motiva ogni refactor con riferimento ai principi delle librerie utilizzate, produci come output finale codice pronto produzione per MapPicker.php, map-picker.blade.php e map-picker-lit.js coerenti tra loro, senza hack, senza workaround fragili e senza dipendenze implicite tra layer, con particolare attenzione a evitare race conditions tra init della mappa e aggiornamenti dello stato, mantenere compatibilità con Filament Wizard e garantire una UX fluida senza glitch visivi o lag nelle interazioni con la mappa
+---
 
+## QUICK START — What We Need
 
-   bmad-create-story Agisci come un senior architect specializzato in Laravel 12, Filament v5, Livewire v3/v4 compatibility, Alpine.js, Web Components con Lit e Leaflet, con esperienza reale in sistemi modulari complessi, DX, performance, accessibilità, testabilità e clean architecture, e prima di scrivere anche una sola riga di codice studia a fondo e cita internamente nella tua analisi le fonti ufficiali e verificate su cui devi basarti: https://filamentphp.com/docs/5.x/forms/custom-fields
- https://filamentphp.com/docs/5.x/forms/overview
- https://livewire.laravel.com/docs/4.x/javascript
- https://livewire.laravel.com/docs/4.x/properties
- https://livewire.laravel.com/docs/4.x/wire-model
- https://lit.dev/docs/
- https://lit.dev/docs/components/properties/
- https://lit.dev/docs/components/events/
- https://lit.dev/docs/components/styles/
- https://leafletjs.com/reference.html
- https://leafletjs.com/examples/quick-start/
- e devi inoltre usare LLM Wiki come fonte di contesto e di memoria di progetto per documentare, accumulare conoscenza e guidare il refactor; se non sai esattamente cosa sia LLM Wiki devi prima studiarlo seriamente su internet con fonti aggiornate e verificate, capire il pattern, il protocollo, l’eventuale AGENTS.md, il workflow di compilazione della conoscenza, le convenzioni di organizzazione della wiki, verificare che sia tutto a posto per usarlo al meglio nel progetto e poi usarlo davvero per aggiornare e consolidare la documentazione tecnica e il ragionamento architetturale, studiando in particolare anche https://github.com/Pratiyush/llm-wiki
- https://github.com/nvk/llm-wiki
- e se trovi altre fonti autorevoli e più aggiornate devi includerle nel tuo processo; il tuo obiettivo è progettare, documentare, rifattorizzare e implementare un campo personalizzato Filament v5 chiamato idealmente LocationPicker come naming architetturalmente corretto secondo la documentazione ufficiale Filament, ma compatibile con l’uso nel progetto anche come MapPicker se il naming pubblico va mantenuto, da usare nelle Resource e nei Wizard del progetto modulare Laravel, inserito nel modulo Geo senza contaminare altri domini e senza introdurre coupling fragile, che integri una mappa interattiva basata su Leaflet incapsulata in un Web Component Lit riutilizzabile, mantenendo Alpine come glue layer minimale e Livewire come source of truth server-side, evitando hack, workaround fragili e side effects; devi prima analizzare in profondità l’implementazione esistente PHP Field, Blade view, Alpine layer, integrazione Livewire JS, componente Lit, lifecycle Leaflet e schema dati, trovare tutti i problemi reali e motivarli tecnicamente: duplicazione dello stato, coupling tra Blade e sibling paths latitude/longitude, uso improprio di entangle, sincronizzazione bidirezionale fragile, flag difensivi inutili come _isExternalUpdate e _isSyncingFromExternal, potenziali memory leak da listener globali non rimossi, shouldUpdate usato come toppa, re-render inutili, race conditions tra init della mappa e sync esterno, problemi di resize/fullscreen, testabilità scarsa, mancanza di un contratto dati stabile, documentazione insufficiente, e qualsiasi mismatch rispetto alle best practice ufficiali di Filament, Livewire, Alpine, Lit e Leaflet; devi poi decidere e motivare l’architettura finale migliore tenendo conto che il progetto attuale usa due colonne reali del database chiamate latitude e longitude, ma che per il layer di form la soluzione più pulita può essere un unico state del field chiamato location con struttura minima e stabile, lasciando la trasformazione verso latitude e longitude solo nel submit o nella hydration/dehydration del form se questo migliora robustezza e manutenibilità, e devi spiegare in modo rigoroso vantaggi e svantaggi delle due strategie, scegliendone una sola in modo coerente; se scegli la strategia moderna e più pulita devi fare in modo che il field Filament lavori come singola fonte di verità sul proprio $getStatePath(), usando correttamente $applyStateBindingModifiers solo dove serve e privilegiando il bridge esplicito tramite $wire.$set e $wire.$watch secondo la documentazione ufficiale del $wire object, evitando loop reattivi e mantenendo la UI snella; il Web Component Lit deve essere realmente UI-only, con Shadow DOM, proprietà ben definite, eventi custom semantici come location-changed o coords-changed, CSS isolato e organizzato in modo clean, preferibilmente tramite file separato che esporta css`` o equivalente robusto, senza conoscere direttamente né Livewire né Filament né PHP; Alpine deve fungere solo da adapter sottilissimo tra field state e web component, senza logica business, senza duplicazioni, senza stato ridondante, senza watcher superflui, senza normalizzazioni verbose inutili, e se una parte può essere rimossa per aderire a DRY e KISS va rimossa; devi implementare la mappa con marker draggable, click-to-set, corretto update marker/view, gestione resize, fullscreen toggle robusto con invalidateSize, supporto a layer stradale e satellitare o equivalente se davvero utile e sostenibile, ma ogni feature extra deve essere valutata in base al suo costo architetturale e può essere esclusa se non essenziale alla versione minimale; se latitude e longitude iniziali sono null devi valutare se usare o no geolocalizzazione automatica del browser, ma devi motivare la scelta con attenzione perché può introdurre loop, UX inattesa, permessi browser e fragilità, quindi non implementarla automaticamente solo perché “sembra comoda”: devi decidere in base a robustezza, UX e controllo esplicito dell’utente; per il geocoding e reverse geocoding devi valutare con rigore se lasciarli fuori dalla versione minimale oppure se implementarli come capability opzionale, idealmente lato server o tramite metodi del field esposti in modo pulito se la documentazione Filament lo consente, evitando fetch disordinati e logica distribuita senza controllo; devi produrre documentazione tecnica eccellente nel modulo Geo, negli eventuali temi coinvolti e nell’LLM Wiki del progetto, aggiornando indici, pagine correlate, rationale architetturale, contratto dati, eventi del componente, decisioni su Livewire/Alpine/Lit, flussi di submit/hydration, guida di utilizzo nelle Resource e nei Wizard, troubleshooting, limiti noti, rischi e possibili estensioni, aggiungendo backlink e cross-link utili; se nel progetto esistono docs locali, indici, wiki o regole operative devi leggerli prima, aggiornarli coerentemente e usarli come fonte primaria del contesto progettuale insieme a LLM Wiki; devi anche verificare se nel progetto esistono regole, memories, skills, documentazione nei moduli o nei temi, convenzioni di naming, standard di phpstan/phpmd/phpinsights/pest, e rispettarli aggiornando ciò che serve alla fine del lavoro; il codice finale deve essere production-ready, ultra DRY, ultra KISS, ultra clean code, leggibile, modulare, tipizzato, difendibile in code review, e deve includere almeno MapPicker o LocationPicker PHP class, Blade view del field, web component Lit, eventuale file styles separato, eventuali helper o test necessari, tutto coerente tra loro e senza dipendenze implicite; non devi fermarti finché l’implementazione non è coerente, documentata, testata e allineata alle fonti ufficiali, e devi validarla con PHPStan, PHPMD, PHP Insights e Pest senza warning o errori, oltre a controlli manuali reali del comportamento in frontend; infine devi spiegare con chiarezza perché ogni scelta è stata fatta, cosa è stato scartato, quali alternative erano possibili, perché l’uso di Lit ha o non ha senso rispetto ad Alpine-only in questo caso, quali compromessi sono stati accettati, e come il risultato finale massimizza robustezza, riuso, semplicità e manutenibilità nel tempo.
+### Map Controls (REQUIRED)
+- [x] Fullscreen toggle button (absolute positioned top-left)
+- [x] Current location button ("Usa la mia posizione")
+- [x] Layer switcher (minimum 4 layers)
+- [x] Zoom in button
+- [x] Zoom out button
+- [x] Pan (native Leaflet drag)
+- [x] Click-to-set marker
+- [x] Draggable marker
 
-Agisci come un senior architect e senior full-stack engineer specializzato in Laravel 12, Filament v5, Livewire v4, Alpine.js, Lit 3, Leaflet, clean architecture, moduli Laraxot e code quality enterprise, e crea da zero un custom field Filament riutilizzabile chiamato CoordinatePicker per il modulo Geo del progetto, assumendo che tu non sappia nulla del progetto se non ciò che sto per dirti, quindi devi seguire rigorosamente queste istruzioni, studiare bene le fonti ufficiali e implementare tutto in modo production-ready, ultra DRY, ultra KISS, ultra clean code, tipizzato, difendibile in code review, con responsabilità ben separate tra PHP field, Blade view, Alpine bridge, web component Lit e Leaflet; prima di scrivere codice studia attentamente queste fonti ufficiali e usale come riferimento primario per le scelte architetturali e implementative: Filament custom fields https://filamentphp.com/docs/5.x/forms/custom-fields
- Filament forms overview https://filamentphp.com/docs/5.x/forms/overview
- Livewire 4 JavaScript https://livewire.laravel.com/docs/4.x/javascript
- Livewire 4 properties https://livewire.laravel.com/docs/4.x/properties
- Livewire 4 wire:model https://livewire.laravel.com/docs/4.x/wire-model
- Lit overview https://lit.dev/docs/
- Lit reactive properties https://lit.dev/docs/components/properties/
- Lit events https://lit.dev/docs/components/events/
- Lit styles https://lit.dev/docs/components/styles/
- Leaflet reference https://leafletjs.com/reference.html
- Leaflet quick start https://leafletjs.com/examples/quick-start/
- e se qualche punto ti è poco chiaro cerca e verifica anche le issue/limitazioni reali di Leaflet con Shadow DOM prima di prendere decisioni tecniche sul render root del web component; il progetto usa convenzioni Laraxot, quindi devi rispettare rigorosamente namespace, path e separazione dei layer: il namespace PHP corretto deve essere Modules\Geo\Filament\Forms\Components e non Modules\Geo\Forms\Components, il file PHP del field deve stare in laravel/Modules/Geo/app/Filament/Forms/Components/CoordinatePicker.php, la view Blade del field deve stare in laravel/Modules/Geo/resources/views/filament/forms/components/coordinate-picker.blade.php e la property $view del field deve essere geo::filament.forms.components.coordinate-picker, il web component Lit deve stare in un file JS separato sotto laravel/Modules/Geo/resources/js/components/coordinate-picker-field.js o path equivalente coerente col progetto, senza mischiare codice Filament-specific nel JS del web component; devi costruire un campo Filament v5 chiamato CoordinatePicker da usare nelle Resource e nei Wizard, con sintassi CoordinatePicker::make('coordinates'), che gestisce internamente uno stato composito del field del tipo { latitude: float|null, longitude: float|null }, ma non salva JSON nel database: il database reale continua ad avere due colonne separate latitude e longitude e il field deve essere dehydrated(false), con mapping esplicito finale verso le colonne reali tramite una utility statica extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array; il field PHP deve estendere Filament\Forms\Components\Field, deve avere configurazione fluente pulita e tipizzata almeno per latitudeColumn(), longitudeColumn(), zoom(), center(), reverseGeocoding(), getters corrispondenti getLatitudeColumn(), getLongitudeColumn(), getZoom(), getLatitude(), getLongitude(), hasReverseGeocoding(), deve valorizzare lo state iniziale del field in afterStateHydrated() leggendo prima eventuali colonne reali del record e altrimenti eventuali coordinate di centro configurate, deve usare dehydrateStateUsing solo se davvero necessario ma preferibilmente restare con dehydrated(false) e mapping finale esplicito, deve includere #[ExposedLivewireMethod] su reverseGeocode(float $latitude, float $longitude): ?string e, dato che il metodo restituisce solo un dato a JavaScript senza richiedere re-render Livewire, deve usare anche #[Renderless], e il reverse geocoding deve essere server-side opzionale via Nominatim con timeout prudente e User-Agent valorizzato, handling robusto degli errori e ritorno null in caso di fallimento; il Blade field deve usare x-dynamic-component con :component="$getFieldWrapperView()" e :field="$field", leggere lo state del field con $getState() e i metadati minimi con $getStatePath(), $getKey(), $getZoom(), $hasReverseGeocoding(), costruire una config JSON minimale da passare ad Alpine, usare Alpine solo come bridge sottilissimo e non come secondo source of truth UI, quindi Alpine deve fare solo queste cose: trovare il custom element nel DOM, passargli zoom e coordinate iniziali, ascoltare $wire.$watch(config.statePath, ...) per eventuali aggiornamenti server-side, ascoltare l’evento custom coords-changed emesso dal web component, chiamare this.$wire.$set(config.statePath, { latitude, longitude }, false) usando l’API documentata di Livewire v4, e opzionalmente chiamare this.$wire.callSchemaComponentMethod(config.fieldKey, 'reverseGeocode', { latitude, longitude }) per valorizzare un readout testuale dell’indirizzo; non devi mettere in Alpine uno stato UI ridondante che duplica inutilmente quello del web component, quindi puoi tenere solo lat, lng, address per il readout e per il bridge, ma non devi spostare nel bridge responsabilità di rendering mappa o logica Leaflet; il Blade deve mostrare un piccolo readout visivo di latitudine, longitudine e indirizzo reverse-geocodificato usando classi Filament/Tailwind coerenti, e un messaggio chiaro quando non c’è ancora alcuna posizione impostata; il web component Lit deve essere scritto da zero in modo chiaro e minimalista, deve usare LitElement, reactive properties per latitude, longitude, zoom ed eventualmente expanded/fullscreen pseudo-mode, deve integrare Leaflet in Light DOM se necessario per compatibilità reale con Leaflet e CSS/eventi, quindi se scegli createRenderRoot() { return this; } devi documentare chiaramente che è una scelta tecnica intenzionale e non un errore, non devi accoppiare Leaflet a un id hardcoded del div della mappa ma a una class locale come .coordinate-picker-map cercata tramite this.querySelector('.coordinate-picker-map'), devi inizializzare la mappa in firstUpdated(), devi configurare correttamente le icone di default di Leaflet importando marker-icon.png, marker-icon-2x.png e marker-shadow.png, devi creare almeno un layer stradale OpenStreetMap e un layer satellitare Esri con controllo L.control.layers, devi aggiungere un marker draggable quando ci sono coordinate o quando l’utente clicca sulla mappa, devi sincronizzare marker e vista quando cambiano le proprietà latitude/longitude, devi emettere un solo evento custom coords-changed con detail { latitude, longitude }, bubbles true e composed true, devi distinguere aggiornamenti programmatici da interazioni utente per evitare loop usando un flag minimo e ben motivato come isProgrammaticUpdate, devi pulire la mappa in disconnectedCallback(), devi gestire correttamente il resize quando il componente entra in modalità espansa/fullscreen CSS chiamando map.invalidateSize(), e se implementi una modalità espansa devi chiarire che è una modalità espansa UI e non necessariamente la Fullscreen API del browser; per gli stili del web component devi scegliere un approccio coerente col vincolo Light DOM e con Leaflet: se usi injectStyles() globale fallo in modo idempotente, semplice e documentato, senza duplicare più volte i fogli stile, altrimenti proponi un’alternativa compatibile col bundler del progetto, ma non usare Shadow DOM solo per “pulizia” se poi rompe o complica Leaflet; devi evitare assolutamente questi errori architetturali: usare namespace o view path non Filament-coerenti, usare un id interno come target della mappa invece di una class, usare $wire.set al posto di $wire.$set nel bridge Livewire v4, duplicare lo stato della mappa in Alpine più del necessario, far conoscere al web component dettagli di Livewire o Filament, usare path sibling calcolati a mano per latitude/longitude nel Blade, introdurre loop tra update mappa e update Livewire, rimuovere silenziosamente dati in extractCoordinates() quando il field non è un array, usare naming fuorviante come defaultZoom quando il valore è una vera configurazione del componente, e sporcare il field con responsabilità di business non sue; devi produrre tutti i file completi e coerenti tra loro: 1) il file PHP CoordinatePicker.php con namespace corretto Modules\Geo\Filament\Forms\Components, 2) la Blade coordinate-picker.blade.php con x-data minimale e bridge Livewire/Alpine, 3) il file JS del web component coordinate-picker-field.js completo di Lit + Leaflet, 4) un esempio di utilizzo in una Resource o Wizard con CoordinatePicker::make('coordinates')->zoom(15)->center(...), 5) un esempio di mapping finale tramite CoordinatePicker::extractCoordinates(...), 6) una suite Pest minima ma seria che testi almeno extractCoordinates() nei casi normali, null, stringhe castate a float, custom column names, idempotenza su input senza field, gestione field non array, zoom configurato e di default, center configurato, nomi colonna di default e custom; devi anche scrivere una breve documentazione tecnica nel modulo Geo spiegando l’architettura, il contratto dati del field, come si usa, perché si usa Light DOM per Leaflet, perché Alpine è solo un bridge, come avviene il mapping finale verso latitude e longitude, e quali sono i limiti/estensioni future; infine devi verificare che il codice sia coerente con Filament v5, Livewire v4 e Lit 3, che non introduca warning evidenti, che sia leggibile e modulare, e devi spiegare brevemente le scelte architetturali principali prima di mostrare i file finali.
- 
-/bmad-create-story la mappa in http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step   non mostra il tasto fullscreen, non mostra il tasto per cambiare il layer della mappa, non mostra il tasto posizione corrente, non si vede il marker, nel header i links amministrazione, novita, servizi , vivere il comune, iscrizioni, estate in città , polizia locale , tutti gli argomenti hanno lo sfondo sbagliato, dovrebbero avere lo stesso sfondo del logo, ricordati che ci deve essere un alto html parity fra http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step  e https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html , e un altisssimo visual parity, aiutati con screenshots, con strumenti visuali, se non sai quali installare va in cerca in internet, installati quello che vuoi poi documenta dentro le cartelle docs dentro i moduli e dentro i temi , poi ingesta i documenti nuovi dentro le docs , poi ricontrolla finche' non e' tutto perfetto 
+### Address Search (REQUIRED)
+- [ ] Search box "Cerca un luogo..." (above the map, always visible on mobile)
+- [ ] Debounced input (500ms) → server-side geocoding via Livewire
+- [ ] Dropdown with max 5 results
+- [ ] Result selection: update marker + center map + populate all address fields
+- [ ] Server-side via Nominatim `searchAddress()` on HasCoordinatePicker
 
- bmad-create-story Agisci come un senior architect e senior full-stack engineer specializzato in Laravel 12, Filament v5, Livewire v4, Alpine.js, Lit 3, Leaflet, clean architecture, moduli Laraxot e code quality enterprise, e crea o rifattorizza da zero in modo coordinato e coerente tutti i componenti mappa del modulo Geo, assumendo che tu non sappia nulla del progetto se non ciò che sto per dirti, quindi devi seguire rigorosamente queste istruzioni, studiare bene le fonti ufficiali e implementare tutto in modo production-ready, ultra DRY, ultra KISS, ultra clean code, tipizzato, difendibile in code review, con responsabilità ben separate tra PHP field, Blade view, Alpine bridge, web component Lit e Leaflet; prima di scrivere codice studia attentamente e usa come riferimento primario queste fonti ufficiali: Filament custom fields https://filamentphp.com/docs/5.x/forms/custom-fields
- Filament forms overview https://filamentphp.com/docs/5.x/forms/overview
- Livewire 4 JavaScript https://livewire.laravel.com/docs/4.x/javascript
- Livewire 4 properties https://livewire.laravel.com/docs/4.x/properties
- Livewire 4 wire:model https://livewire.laravel.com/docs/4.x/wire-model
- Lit overview https://lit.dev/docs/
- Lit reactive properties https://lit.dev/docs/components/properties/
- Lit events https://lit.dev/docs/components/events/
- Lit styles https://lit.dev/docs/components/styles/
- Leaflet reference https://leafletjs.com/reference.html
- Leaflet quick start https://leafletjs.com/examples/quick-start/
- e se qualche punto è poco chiaro devi anche cercare e verificare le limitazioni reali di Leaflet con Shadow DOM prima di prendere decisioni sul render root del web component; il progetto usa convenzioni Laraxot, quindi devi rispettare rigorosamente namespace, path e separazione dei layer: tutti i componenti Filament devono stare sotto namespace Modules\Geo\Filament\Forms\Components e non Modules\Geo\Forms\Components, i file PHP devono stare in laravel/Modules/Geo/app/Filament/Forms/Components/, le Blade in laravel/Modules/Geo/resources/views/filament/forms/components/, il JS dei web component in laravel/Modules/Geo/resources/js/components/ o path equivalente coerente col progetto, senza mischiare codice Filament-specific nel JS; devi non solo creare o rifare il nuovo componente principale CoordinatePicker, ma devi anche migliorare e riallineare architetturalmente gli altri componenti esistenti o collegati LatitudeLongitudeInput, MapPicker, PlacePicker e CoordinatePicker, eliminando duplicazioni, incoerenze, naming fuorvianti, bridge diversi tra loro e logiche sparse, con l’obiettivo di ottenere una famiglia coerente di componenti mappa/geografia che condivida il più possibile il core UI e il contratto dati, mantenendo DRY e KISS come vincolo assoluto; devi partire da un’analisi critica dell’esistente e individuare tutto ciò che è sbagliato o fragile: namespace errati, view path errati, duplicazione tra stato del field e sibling paths latitude/longitude, abuso di entangle, troppi watcher Alpine, stato duplicato in Alpine che dovrebbe stare nel web component, bridge Livewire non documentato, uso di $wire.set al posto di $wire.$set in Livewire v4, uso di id hardcoded per agganciare la mappa invece di una class locale, scelte non motivate su Shadow DOM, listener globali non puliti, css injection non idempotente, naming imprecisi come MapPicker quando il valore reale è una coordinata o una place/location, geolocalizzazione automatica non controllata, troppe chiamate Livewire durante drag o aggiornamenti frequenti della mappa, e ogni altra fragilità che trovi; il componente principale da creare o rifattorizzare deve chiamarsi CoordinatePicker, da usare nelle Resource e nei Wizard con sintassi CoordinatePicker::make('coordinates'), e deve gestire internamente uno stato composito del field del tipo { latitude: float|null, longitude: float|null } oppure, dove necessario per PlacePicker, un contratto estendibile ma sempre minimale e stabile, senza salvare JSON nel database: il database reale continua ad avere due colonne separate latitude e longitude e il field deve essere dehydrated(false), con mapping esplicito finale verso le colonne reali tramite una utility statica extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array; il field PHP CoordinatePicker deve estendere Filament\Forms\Components\Field, deve avere configurazione fluente pulita e tipizzata almeno per latitudeColumn(), longitudeColumn(), zoom(), center(), reverseGeocoding(), eventualmente height() se serve in modo coerente, getters corrispondenti, deve valorizzare lo state iniziale in afterStateHydrated() leggendo prima eventuali colonne reali del record e altrimenti eventuali coordinate di centro configurate, deve usare dehydrateStateUsing solo se davvero necessario ma preferibilmente restare con dehydrated(false) e mapping finale esplicito, deve includere #[ExposedLivewireMethod] su reverseGeocode(float $latitude, float $longitude): ?string e, dato che il metodo restituisce solo un dato a JavaScript senza richiedere re-render Livewire, deve usare anche #[Renderless], con reverse geocoding server-side opzionale via Nominatim o provider equivalente robusto, timeout prudente, User-Agent valorizzato e gestione errori rigorosa; il Blade field deve usare x-dynamic-component con :component="$getFieldWrapperView()" e :field="$field", leggere lo state del field con $getState() e i metadati minimi con $getStatePath(), $getKey(), $getZoom(), eventuale altezza e reverseGeocoding, costruire una config JSON minima da passare ad Alpine, usare Alpine solo come bridge sottilissimo e non come secondo source of truth UI, quindi Alpine deve fare solo queste cose: trovare il custom element nel DOM, passargli zoom e coordinate iniziali, ascoltare $wire.$watch(config.statePath, ...) per eventuali aggiornamenti server-side, ascoltare l’evento custom emesso dal web component, chiamare this.$wire.$set(config.statePath, { latitude, longitude }, false) usando l’API documentata di Livewire v4, e opzionalmente chiamare this.$wire.callSchemaComponentMethod(config.fieldKey, 'reverseGeocode', { latitude, longitude }) per valorizzare un readout testuale dell’indirizzo; devi stare molto attento a non fare troppe chiamate Livewire: durante il drag del marker o altri aggiornamenti ad alta frequenza non devi mandare una raffica continua di update al backend, quindi devi progettare il flusso in modo che l’aggiornamento verso Livewire avvenga solo in momenti sensati come dragend, click finale, oppure con una strategia minima e robusta che eviti spam di chiamate e loop reattivi, senza però compromettere la UX; tutte le mappe della famiglia di componenti, quindi LatitudeLongitudeInput, MapPicker, PlacePicker e CoordinatePicker, devono avere un marker spostabile e quando il marker viene spostato devono aggiornarsi le coordinate di latitudine e longitudine in modo coerente, mantenendo il backend sincronizzato con parsimonia e senza fare troppe chiamate Livewire; tutte le mappe devono inoltre avere sempre il tasto per entrare/uscire dalla modalità espansa/full screen e il tasto per centrare sulla posizione corrente dell’utente, con gestione robusta di geolocalizzazione del browser, fallback prudenti, e invalidateSize della mappa quando cambia la dimensione del contenitore; devi implementare il web component Lit da zero o rifattorizzarlo in modo coerente per diventare il core UI riusabile di tutti questi picker, usando LitElement, reactive properties pulite, eventi custom semanticamente chiari, e integrando Leaflet in Light DOM se necessario per compatibilità reale con Leaflet e CSS/eventi, quindi se scegli createRenderRoot() { return this; } devi documentare chiaramente che è una scelta tecnica intenzionale dovuta alla compatibilità con Leaflet e non un errore, non devi agganciare Leaflet a un id hardcoded di un div interno ma a una class locale come .coordinate-picker-map cercata tramite this.querySelector('.coordinate-picker-map'), devi inizializzare la mappa in firstUpdated(), configurare correttamente le icone di default di Leaflet importando marker-icon.png, marker-icon-2x.png e marker-shadow.png, creare almeno un layer stradale OpenStreetMap e un layer satellitare Esri con controllo layers se la feature è mantenuta, aggiungere un marker draggable quando ci sono coordinate o quando l’utente clicca sulla mappa, sincronizzare marker e vista quando cambiano le proprietà latitude/longitude, emettere un solo evento custom pulito come coords-changed con detail { latitude, longitude }, bubbles true e composed true, distinguere aggiornamenti programmatici da interazioni utente per evitare loop usando il minimo indispensabile di flag e logica difensiva, pulire mappa e risorse in disconnectedCallback(), gestire correttamente invalidateSize() quando il componente entra/esce dalla modalità espansa e quando il bottone “centra posizione corrente” modifica il view state; per gli stili del web component devi scegliere un approccio coerente col vincolo Light DOM e con Leaflet: se usi injectStyles() globale fallo in modo idempotente, semplice e documentato, senza duplicare più volte i fogli stile, altrimenti proponi un’alternativa compatibile col bundler del progetto, ma non usare Shadow DOM solo per “pulizia” se poi rompe o complica Leaflet; il bottone full screen o modalità espansa deve essere presente in tutte le mappe e chiaramente accessibile, con titolo e aria-label coerenti, e al cambio stato la mappa deve ridisegnarsi correttamente; il bottone “centra con posizione corrente” deve chiedere la geolocalizzazione del browser solo quando l’utente lo richiede esplicitamente, non automaticamente all’avvio, e deve in caso di successo centrare la mappa, posizionare o spostare il marker e aggiornare le coordinate in modo coerente, idealmente emettendo l’evento finale o eseguendo lo stesso flusso che useresti per un click/drag completato; devi evitare assolutamente questi errori architetturali: usare namespace o view path non Filament-coerenti, usare un id interno come target della mappa invece di una class, usare $wire.set al posto di $wire.$set nel bridge Livewire v4, duplicare lo stato della mappa in Alpine più del necessario, far conoscere al web component dettagli di Livewire o Filament, usare path sibling calcolati a mano per latitude/longitude nel Blade, introdurre loop tra update mappa e update Livewire, fare troppe chiamate Livewire durante drag o update continui, rimuovere silenziosamente dati in extractCoordinates() quando il field non è un array, usare naming fuorviante come defaultZoom quando il valore è una vera configurazione del componente, e sporcare i field con responsabilità di business non loro; devi produrre tutti i file completi e coerenti tra loro: 1) il file PHP CoordinatePicker.php con namespace corretto Modules\Geo\Filament\Forms\Components, 2) la Blade coordinate-picker.blade.php con x-data minimale e bridge Livewire/Alpine, 3) il file JS del web component coordinate-picker-field.js completo di Lit + Leaflet + marker draggable + bottone espandi + bottone centra posizione corrente, 4) il refactor o riallineamento dei componenti LatitudeLongitudeInput, MapPicker e PlacePicker per convergere sulla stessa architettura e ridurre duplicazioni, 5) un esempio di utilizzo in una Resource o Wizard con CoordinatePicker::make('coordinates')->zoom(15)->center(...), 6) un esempio di mapping finale tramite CoordinatePicker::extractCoordinates(...), 7) una suite Pest minima ma seria che testi almeno extractCoordinates() nei casi normali, null, stringhe castate a float, custom column names, idempotenza su input senza field, gestione field non array, zoom configurato e di default, center configurato, nomi colonna di default e custom, 8) documentazione tecnica nel modulo Geo che spieghi l’architettura comune dei picker, il contratto dati, il core condiviso, il perché del bridge minimo Alpine, il perché del Light DOM se adottato, il mapping finale verso latitude e longitude, e i limiti/estensioni future; devi rifattorizzare il tutto con l’obiettivo esplicito di avere il minor numero possibile di implementazioni diverse per le mappe, quindi se puoi estrarre un core o una base comune tra LatitudeLongitudeInput, MapPicker, PlacePicker e CoordinatePicker devi farlo, ma senza overengineering e senza creare astrazioni premature inutili: DRY e KISS prima di tutto; infine devi verificare che il codice sia coerente con Filament v5, Livewire v4 e Lit 3, che non introduca warning evidenti, che sia leggibile e modulare, e devi spiegare brevemente le scelte architetturali principali prima di mostrare i file finali.
+### Structured Address Data (REQUIRED)
+After geocoding pass ALL these fields into the Livewire state:
+- `address` — full display_name
+- `address_details` — raw Nominatim address object
+- `street` / `road`
+- `street_number` / `house_number`
+- `city` / `town` / `municipality`
+- `postcode`
+- `state`
+- `province` / `county`
+- `country`
+- `country_code`
+- `suburb` / `city_district` / `neighbourhood`
+
+### Responsive (REQUIRED)
+- [ ] Mobile 375px — controls visible, 44×44px minimum touch target
+- [ ] Tablet 768px — proper layout, map 60vh
+- [ ] Desktop 1440px — full layout, fixed height configurable
+
+### Translations (REQUIRED)
+All user-visible text MUST use Laravel lang files. Never hardcode Italian (or any language) strings in JS or Blade.
+
+---
+
+## 1. FUNDAMENTAL PRINCIPLES
+
+### Single Source of Truth
+The Filament field exposes a single composite state (e.g. `location`) with shape:
+```php
+[
+    'latitude'       => null,
+    'longitude'      => null,
+    'address'        => '',
+    'address_details'=> null,
+    'street'         => '',
+    'street_number'  => '',
+    'city'           => '',
+    'postcode'       => '',
+    'state'          => '',
+    'province'       => '',
+    'country'        => '',
+    'country_code'   => '',
+    'suburb'         => '',
+]
+```
+DB columns remain `latitude` and `longitude`, populated via explicit mapping in `extractCoordinates()`.
+
+### XotBaseField
+Every custom Filament field in the Geo module MUST extend `Modules\Xot\Filament\Forms\Components\XotBaseField`.
+
+### Sibling Architecture
+Components are siblings, NOT a hierarchy. `LatitudeLongitudeInput` does NOT extend `CoordinatePicker`.
+All use `HasCoordinatePicker` trait for shared configuration logic.
+
+### Leaflet Isolation
+Leaflet attaches to its container via local classes (`.coordinate-picker-map`), NEVER via global IDs.
+Do NOT use `id="map"` or `document.getElementById()`.
+
+### Lit Component — Light DOM preferred
+Use Light DOM (not Shadow DOM) for maximum compatibility with Leaflet CSS, panes and controls.
+Emit semantic events: `coords-changed`, `fullscreen-changed`.
+
+### Alpine Adapter — Minimal Bridge
+Alpine is the thin sync layer between Livewire (`$wire.$set` / `$wire.$watch`) and Lit properties/events.
+Keep it as thin as possible — no business logic in Alpine.
+
+### Livewire — Server Authority
+Livewire handles: persistence, server calls (reverse geocoding / address search via Nominatim), server-side validation.
+
+---
+
+## 2. MOBILE-FIRST & RESPONSIVE
+
+### Breakpoints (Tailwind)
+```css
+/* sm: 640px  md: 768px  lg: 1024px  xl: 1280px */
+```
+
+### Touch Requirements
+- **Minimum touch target**: 44×44px for all interactive elements
+- **No overlap**: controls must never overlap the marker or form fields
+- **Always visible**: controls must not be hidden behind collapsed menus on mobile
+
+### Map Height Strategy
+```js
+// Mobile: dynamic viewport height
+height: '50dvh'
+
+// Tablet
+height: '60vh'
+
+// Desktop: configurable (default 400px)
+height: '400px'
+```
+
+### Layout — Search Box Position
+- **Mobile**: search box ABOVE the map, full width
+- **Desktop**: search box ABOVE the map OR in sidebar if layout allows
+- Do NOT hide the search on mobile — it is the primary interaction on small screens
+
+### Controls Layout
+- All custom controls (geolocation, fullscreen, zoom±) on the LEFT side, stacked vertically
+- Layer switcher on TOP-RIGHT (Leaflet default)
+- Zoom ± Leaflet default controls on BOTTOM-RIGHT OR use custom controls and disable Leaflet default
+
+---
+
+## 3. MULTILINGUA (i18n)
+
+### Translation Keys Required
+
+PHP lang file `lang/{locale}/coordinate-picker.php`:
+```php
+return [
+    'search_placeholder' => 'Cerca un luogo...',
+    'use_my_location'    => 'Usa la mia posizione',
+    'locating'           => 'Localizzando...',
+    'no_position'        => 'Clicca sulla mappa per indicare la posizione',
+    'latitude'           => 'Latitudine',
+    'longitude'          => 'Longitudine',
+    'city'               => 'Città',
+    'fullscreen'         => 'Schermo intero',
+    'close_fullscreen'   => 'Esci da schermo intero',
+    'zoom_in'            => 'Aumenta zoom',
+    'zoom_out'           => 'Diminuisci zoom',
+    'address_found'      => 'Indirizzo trovato',
+    'location_error'     => 'Impossibile ottenere la posizione',
+    'geocode_error'      => 'Indirizzo non trovato',
+    'search_no_results'  => 'Nessun risultato trovato',
+    'layers' => [
+        'street'         => 'Stradale (OSM)',
+        'humanitarian'   => 'Umanitaria (OSM)',
+        'satellite'      => 'Satellitare (Esri)',
+        'topographic'    => 'Topografica (Esri)',
+    ],
+];
+```
+
+Required locales: **it** and **en** (minimum). Add others as needed.
+
+### Using Translations in Blade
+```blade
+<input type="text" placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}">
+<button @click="useCurrentLocation()">{{ __('geo::coordinate-picker.use_my_location') }}</button>
+```
+
+### Passing Labels to Lit
+Since Lit works in JS, pass labels from PHP via Blade as a JSON attribute:
+```blade
+<coordinate-picker-lit
+    :latitude="_lat"
+    :longitude="_lng"
+    zoom="{{ $field->getZoom() }}"
+    height="{{ $field->getHeight() }}"
+    labels='@json([
+        "zoom_in"         => __("geo::coordinate-picker.zoom_in"),
+        "zoom_out"        => __("geo::coordinate-picker.zoom_out"),
+        "fullscreen"      => __("geo::coordinate-picker.fullscreen"),
+        "close_fullscreen"=> __("geo::coordinate-picker.close_fullscreen"),
+        "use_location"    => __("geo::coordinate-picker.use_my_location"),
+        "locating"        => __("geo::coordinate-picker.locating"),
+        "layers" => [
+            "street"      => __("geo::coordinate-picker.layers.street"),
+            "humanitarian"=> __("geo::coordinate-picker.layers.humanitarian"),
+            "satellite"   => __("geo::coordinate-picker.layers.satellite"),
+            "topographic" => __("geo::coordinate-picker.layers.topographic"),
+        ],
+    ])'
+></coordinate-picker-lit>
+```
+
+---
+
+## 4. MAP CONTROLS (IMPLEMENTATION)
+
+### 4 Required Tile Layers
+```js
+// coordinate-picker-lit.js
+
+_initLayers() {
+    // Layer 1: OSM Standard
+    this._layers.street = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }
+    ).addTo(this._map);
+
+    // Layer 2: OSM Humanitarian (HOT)
+    this._layers.humanitarian = L.tileLayer(
+        'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        { attribution: '&copy; OpenStreetMap, Tiles courtesy of HOT', maxZoom: 19 }
+    );
+
+    // Layer 3: Esri World Imagery (Satellite)
+    this._layers.satellite = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { attribution: '&copy; Esri &mdash; Source: Esri, USGS, AeroGRID, IGN', maxZoom: 19 }
+    );
+
+    // Layer 4: Esri World Topographic
+    this._layers.topo = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+        { attribution: '&copy; Esri', maxZoom: 19 }
+    );
+
+    L.control.layers(
+        {
+            [this.labels?.layers?.street      || 'Stradale (OSM)']      : this._layers.street,
+            [this.labels?.layers?.humanitarian || 'Umanitaria (OSM)']   : this._layers.humanitarian,
+            [this.labels?.layers?.satellite    || 'Satellitare (Esri)'] : this._layers.satellite,
+            [this.labels?.layers?.topographic  || 'Topografica (Esri)'] : this._layers.topo,
+        },
+        null,
+        { position: 'topright' }
+    ).addTo(this._map);
+}
+```
+
+### Zoom Controls
+```js
+_zoomIn()  { this._map?.zoomIn(); }
+_zoomOut() { this._map?.zoomOut(); }
+```
+Pair with Leaflet's `zoomControl: false` on map init to avoid duplicate controls.
+
+### Fullscreen Toggle
+```js
+_toggleFullscreen() {
+    this.isExpanded = !this.isExpanded;
+    this.isFullscreen = this.isExpanded;
+
+    if (this.isExpanded) {
+        document.body.style.overflow = 'hidden';
+        this.style.position = 'relative';
+        this.style.zIndex = '2147483647';
+    } else {
+        document.body.style.overflow = '';
+        this.style.removeProperty('position');
+        this.style.removeProperty('z-index');
+    }
+
+    this.dispatchEvent(new CustomEvent('fullscreen-changed', {
+        detail: { isFullscreen: this.isFullscreen },
+        bubbles: true,
+        composed: true,
+    }));
+
+    setTimeout(() => {
+        this._map?.invalidateSize();
+        if (this.isExpanded) this._map?.setZoom(Math.max(this._map.getZoom(), 14));
+    }, 300);
+}
+```
+
+### Current Location (Geolocation) — EXPLICIT ONLY
+```js
+_requestGeolocation() {
+    if (!navigator.geolocation) return;
+    this.isLocating = true;
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            this._handleMapInteraction(pos.coords.latitude, pos.coords.longitude, 'geolocation');
+            this._map?.setView([pos.coords.latitude, pos.coords.longitude], 16);
+            this.isLocating = false;
+        },
+        () => { this.isLocating = false; },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 300000 }
+    );
+}
+```
+**IMPORTANT**: Never call `_requestGeolocation()` automatically on mount. It is an EXPLICIT user action.
+
+### ResizeObserver for invalidateSize
+```js
+this._resizeObserver = new ResizeObserver(() => {
+    window.requestAnimationFrame(() => this._map?.invalidateSize());
+});
+this._resizeObserver.observe(mapContainer);
+setTimeout(() => this._map?.invalidateSize(), 150);
+```
+
+---
+
+## 5. ADDRESS SEARCH (GEOCODING)
+
+### PHP — Server-Side via Livewire
+Add to `HasCoordinatePicker` trait:
+```php
+#[ExposedLivewireMethod]
+#[Renderless]
+public function searchAddress(string $query): array
+{
+    if (strlen(trim($query)) < 3) {
+        return [];
+    }
+
+    try {
+        $response = Http::withHeaders([
+            'User-Agent' => config('app.name', 'Laraxot') . '/1.0',
+        ])
+        ->timeout(10)
+        ->get('https://nominatim.openstreetmap.org/search', [
+            'q'              => $query,
+            'format'         => 'json',
+            'addressdetails' => 1,
+            'limit'          => 5,
+            'countrycodes'   => 'it',
+        ]);
+
+        if (! $response->successful()) {
+            return [];
+        }
+
+        $data = $response->json();
+        return is_array($data) ? $data : [];
+    } catch (\Throwable) {
+        return [];
+    }
+}
+```
+
+### Alpine — Search Integration
+```blade
+{{-- In coordinate-picker.blade.php, inside x-data --}}
+searchQuery: '',
+searchResults: [],
+isSearching: false,
+showResults: false,
+
+async searchAddress() {
+    if (this.searchQuery.length < 3) {
+        this.searchResults = [];
+        this.showResults = false;
+        return;
+    }
+    this.isSearching = true;
+    try {
+        const results = await this.$wire.callSchemaComponentMethod(
+            '{{ $id }}',
+            'searchAddress',
+            { query: this.searchQuery }
+        );
+        this.searchResults = results || [];
+        this.showResults = this.searchResults.length > 0;
+    } catch (e) {
+        this.searchResults = [];
+        this.showResults = false;
+    }
+    this.isSearching = false;
+},
+
+selectSearchResult(result) {
+    const lat = parseFloat(result.lat);
+    const lon = parseFloat(result.lon);
+    this._lat = lat;
+    this._lng = lon;
+    this.searchQuery = result.display_name;
+    this.searchResults = [];
+    this.showResults = false;
+    void this.reverseGeocode(lat, lon);
+},
+```
+
+### Search UI (Blade)
+```blade
+{{-- Search box — above map, full width on mobile --}}
+<div class="relative w-full" x-data>
+    <div class="relative">
+        <input type="text"
+               id="coordinate-picker-search-{{ $id }}"
+               x-model="searchQuery"
+               @input.debounce.500ms="searchAddress()"
+               @keydown.escape="showResults = false"
+               placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}"
+               autocomplete="off"
+               class="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+               aria-label="{{ __('geo::coordinate-picker.search_placeholder') }}"
+               aria-autocomplete="list"
+               aria-controls="search-results-{{ $id }}"
+               :aria-expanded="showResults">
+        <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+        </span>
+        <span x-show="isSearching" class="absolute inset-y-0 right-3 flex items-center">
+            <svg class="h-4 w-4 animate-spin text-gray-400" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+            </svg>
+        </span>
+    </div>
+
+    <ul x-show="showResults"
+        x-transition:enter="transition ease-out duration-150"
+        x-transition:enter-start="opacity-0 -translate-y-1"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        id="search-results-{{ $id }}"
+        class="absolute z-50 mt-1 w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg"
+        role="listbox"
+        @click.outside="showResults = false">
+        <template x-for="(result, idx) in searchResults" :key="idx">
+            <li role="option"
+                class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 focus:bg-primary/10"
+                @click="selectSearchResult(result)"
+                x-text="result.display_name">
+            </li>
+        </template>
+    </ul>
+</div>
+```
+
+---
+
+## 6. STRUCTURED ADDRESS DATA (REVERSE GEOCODING)
+
+### PHP — `reverseGeocode()` Returns
+```php
+// HasCoordinatePicker::reverseGeocode() returns:
+[
+    'display_name' => 'Via Roma 1, Milano, Lombardia, Italia',
+    'street'       => 'Via Roma',
+    'street_number'=> '1',
+    'city'         => 'Milano',
+    'postcode'     => '20100',
+    'state'        => 'Lombardia',
+    'province'     => 'Città metropolitana di Milano',
+    'country'      => 'Italia',
+    'country_code' => 'it',
+    'suburb'       => 'Centro',
+    'structured'   => [...],
+    'raw'          => [...],
+]
+```
+
+### Alpine — handleCoordsChanged (Full State)
+```js
+handleCoordsChanged(event) {
+    const { latitude, longitude } = event.detail;
+    this._suppressUpdate = true;
+    this._lat = latitude;
+    this._lng = longitude;
+
+    const newState = {
+        latitude,
+        longitude,
+        address: this.address,
+        address_details: this.structured,
+        street:        this.structured?.road     || this.structured?.street || '',
+        street_number: this.structured?.house_number || this.structured?.street_number || '',
+        city:          this.structured?.city     || '',
+        postcode:      this.structured?.postcode || '',
+        state:         this.structured?.state    || '',
+        province:      this.structured?.county   || '',
+        country:       this.structured?.country  || '',
+        country_code:  this.structured?.country_code || '',
+        suburb:        this.structured?.city_district || this.structured?.suburb || '',
+    };
+
+    this.$wire.$set('{{ $statePath }}', newState);
+    setTimeout(() => { this._suppressUpdate = false; }, 350);
+    void this.reverseGeocode(latitude, longitude);
+},
+```
+
+### Alpine — reverseGeocode callback (Full State Hydration)
+```js
+async reverseGeocode(lat, lng) {
+    if (!lat || !lng) return;
+    try {
+        const result = await this.$wire.callSchemaComponentMethod(
+            '{{ $id }}',
+            'reverseGeocode',
+            { latitude: lat, longitude: lng }
+        );
+        if (result) {
+            this.address   = result.display_name || '';
+            this.structured = result.structured  || null;
+            this.$wire.$set('{{ $statePath }}', {
+                latitude:      lat,
+                longitude:     lng,
+                address:       this.address,
+                address_details: this.structured,
+                street:        result.street        || '',
+                street_number: result.street_number || '',
+                city:          result.city          || '',
+                postcode:      result.postcode      || '',
+                state:         result.state         || '',
+                province:      result.province      || '',
+                country:       result.country       || '',
+                country_code:  result.country_code  || '',
+                suburb:        result.suburb        || '',
+            });
+        }
+    } catch (_e) { /* swallow: geocoding is best-effort */ }
+}
+```
+
+---
+
+## 7. LIVEWIRE PERFORMANCE
+
+### What Triggers a Livewire Update
+| Event           | Should update Livewire? |
+|-----------------|------------------------|
+| `mousemove`     | Never               |
+| `drag` (during) | Never               |
+| `dragend`       | Yes                 |
+| `click on map`  | Yes                 |
+| `geolocation`   | Yes                 |
+| `address select`| Yes (via reverseGeocode) |
+
+### Debounce Settings
+```js
+// Search input
+@input.debounce.500ms="searchAddress()"
+
+// Suppress Livewire re-entrant updates after $wire.$set
+this._suppressUpdate = true;
+// ... do $wire.$set ...
+setTimeout(() => { this._suppressUpdate = false; }, 350);
+```
+
+### Wire Watch — Avoid Re-entrant Loops
+```js
+init() {
+    this.$wire.$watch('{{ $statePath }}', (val) => {
+        if (this._suppressUpdate) return;
+        this._lat = val?.latitude  ?? null;
+        this._lng = val?.longitude ?? null;
+        this.address    = val?.address    ?? '';
+        this.structured = val?.address_details ?? null;
+    });
+},
+```
+
+---
+
+## 8. ACCESSIBILITY (a11y)
+
+### Required ARIA Labels (all buttons)
+```html
+<button aria-label="Aumenta zoom"                title="Aumenta zoom">+</button>
+<button aria-label="Diminuisci zoom"             title="Diminuisci zoom">-</button>
+<button aria-label="Usa la posizione corrente"   title="Usa la mia posizione">📍</button>
+<button aria-label="Apri mappa a schermo intero" title="Schermo intero">⛶</button>
+<button aria-label="Esci da schermo intero"      title="Esci da schermo intero">✕</button>
+```
+Always use `type="button"` on all map control buttons to prevent accidental form submission.
+
+### Screen Reader Live Region
+```html
+<div aria-live="polite" class="sr-only">
+    <span x-text="`Latitudine: ${_lat}, Longitudine: ${_lng}${address ? ', ' + address : ''}`"></span>
+</div>
+```
+
+### Keyboard Navigation
+- Tab order: search → location button → map → zoom controls
+- `Enter` / `Space` to activate buttons
+- `Escape` to close fullscreen and close search dropdown
+- Search input: `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`
+
+---
+
+## 9. EXAMPLES — CONCRETE USAGE
+
+### Standard form usage
+```php
+CoordinatePicker::make('location')
+    ->latitude('lat')
+    ->longitude('lng')
+    ->zoom(15)
+    ->center(['lat' => 41.9, 'lng' => 12.5])
+    ->reverseGeocoding()
+    ->height('340px')
+```
+
+### Extract coordinates before DB save
+```php
+$data = CoordinatePicker::extractCoordinates(
+    data: $data,
+    fieldName: 'location',
+    latitudeColumn: 'lat',
+    longitudeColumn: 'lng'
+);
+```
+
+### Multiple pickers on same page (no ID conflicts)
+```php
+CoordinatePicker::make('origin')
+CoordinatePicker::make('destination')
+// Both work independently because Leaflet uses .coordinate-picker-map (class), not #map (id)
+```
+
+---
+
+## 10. ARCHITECTURE (HOW)
+
+### PHP Trait: `HasCoordinatePicker`
+Handles fluent methods: `latitude()`, `longitude()`, `zoom()`, `center()`, `height()`, `reverseGeocoding()`.
+Server methods: `reverseGeocode(float $lat, float $lng): ?array`, `searchAddress(string $query): array`.
+
+### Blade View
+Uses `x-dynamic-component` with `:component="$getFieldWrapperView()"`.
+Contains: Alpine x-data, search input, `<coordinate-picker-lit>`, address readout, aria-live region.
+
+### Lit Component: `coordinate-picker-lit.js`
+- Pure UI + Leaflet logic. Stateless w.r.t. server.
+- Light DOM for Leaflet compatibility.
+- Dispatches: `coords-changed`, `fullscreen-changed`.
+- Accepts: `latitude`, `longitude`, `zoom`, `height`, `isExpanded`, `labels` (JSON).
+- Uses `ResizeObserver` for `invalidateSize()`.
+- Cleans up in `disconnectedCallback()`.
+
+### Alpine: Minimal Bridge
+- `init()`: `$wire.$watch`
+- `handleCoordsChanged()`: `$wire.$set`
+- `reverseGeocode()`: server method call
+- `searchAddress()`: server search
+
+---
+
+## 11. BEST PRACTICES ✅
+
+- **Use Light DOM** for Leaflet. Shadow DOM breaks marker icons, CSS panes and layer controls.
+- **One state object** per field: always `{ latitude, longitude, address, street, ... }`.
+- **Debounce search** at 500ms.
+- **Respect Nominatim Usage Policy** — User-Agent header, 1 req/sec max, no bulk geocoding.
+- **Cache reverse geocode** results (Redis, 1h TTL).
+- **Use `#[Renderless]`** on `reverseGeocode` and `searchAddress`.
+- **Use `ResizeObserver`** for `invalidateSize()`.
+- **Provide fallback center** (Rome: 41.9028, 12.4964).
+- **Provide fallback UI** when geolocation denied.
+- **All buttons** must have `type="button"`, `aria-label`, `title`.
+- **Accessibility**: always `<div aria-live="polite" class="sr-only">`.
+- **Layer names** from i18n.
+- **SearchAddress** min query length ≥ 3 chars.
+- **`countrycodes` param** in Nominatim search.
+- **`@keydown.escape`** to close dropdown.
+- **Clean up** in `disconnectedCallback()`.
+
+---
+
+## 12. BAD CASES ❌ — Never Do This
+
+| Bad Practice | Why Wrong | Correct Alternative |
+|---|---|---|
+| `LatitudeLongitudeInput extends CoordinatePicker` | Tight coupling | Sibling pattern |
+| `id="map"` or `document.getElementById()` | ID conflicts | Local class `.coordinate-picker-map` |
+| `wire:entangle` on Lit web component | Event loops | `$wire.$set` + `$wire.$watch` with `_suppressUpdate` |
+| Separate `lat`/`lng` Alpine vars | Breaks SoT | Single state object |
+| Calling Nominatim directly from JS | Exposes IP, no cache | Route through Livewire |
+| `navigator.geolocation` on mount | Invasive prompt | Explicit button only |
+| Livewire on every `mousemove`/`drag` | Performance thrashing | `dragend`, `click`, `geolocation success` only |
+| Hardcoding Italian strings in JS | Breaks i18n | Pass via `labels` JSON attribute |
+| `shouldUpdate()` for state sync | Misuse of Lit hook | `updated()` with `_isProgrammaticUpdate` guard |
+| No `invalidateSize()` after resize | Blank tiles | ResizeObserver + setTimeout |
+
+---
+
+## 13. FALSE FRIENDS ⚠️ — Common Misconceptions
+
+| False Belief | Reality |
+|---|---|
+| Shadow DOM better for encapsulation | Leaflet breaks in Shadow DOM. Use **Light DOM**. |
+| Automatic geolocation on mount | Invasive. Make it explicit. |
+| `shouldUpdate()` for state sync | Only for re-render optimization. |
+| `marker.setLatLng()` immediate after init | Wait for `invalidateSize()` + debounce. |
+| `entangle` simpler than `$wire.$set` | Creates feedback loops. Use explicit sync. |
+| Store lat/lng in Alpine for speed | Breaks SoT. Livewire is the truth. |
+| Geocoding client-only | Must go server-side for rate-limiting. |
+| One Leaflet zoom control enough | Custom controls + `zoomControl: false`. |
+| Layer control optional | 4 layers REQUIRED. |
+| GPS coordinates always floats | Nominatim returns strings. `parseFloat()`. |
+
+---
+
+## 14. FILE REFERENCES
+
+```
+laravel/Modules/Geo/
+├── app/Filament/Forms/Components/
+│   ├── CoordinatePicker.php
+│   ├── MapPicker.php
+│   └── Traits/
+│       └── HasCoordinatePicker.php
+├── resources/
+│   ├── js/components/
+│   │   ├── coordinate-picker-lit.js
+│   │   ├── coordinate-picker-styles.js
+│   │   ├── coordinate-picker-field.js
+│   │   └── map-picker-marker-config.js
+│   └── views/filament/forms/components/
+│       └── coordinate-picker.blade.php
+└── lang/
+    ├── it/coordinate-picker.php
+    └── en/coordinate-picker.php
+
+laravel/Modules/Fixcity/
+└── app/Filament/Widgets/
+    └── CreateTicketWizardWidget.php
+```
+
+---
+
+## 15. TEST CHECKLIST
+
+### Visual — Mobile (375px)
+- [ ] Search box visible and full-width above map
+- [ ] Map renders at 50dvh height
+- [ ] All map control buttons visible
+- [ ] Touch targets ≥ 44×44px
+- [ ] Address readout visible below map
+
+### Visual — Tablet (768px)
+- [ ] Search box above map, full width
+- [ ] Map renders at proper height
+- [ ] Layer switcher accessible
+
+### Visual — Desktop (1440px)
+- [ ] Full sidebar layout
+- [ ] Map at configured height (400px default)
+
+### Functional
+- [ ] Zoom + increases zoom
+- [ ] Zoom − decreases zoom
+- [ ] Fullscreen toggle opens/closes correctly
+- [ ] "Usa la mia posizione" triggers permission prompt
+- [ ] Geolocation updates marker and coordinates
+- [ ] Layer switcher shows 4 layers
+- [ ] Clicking on map places/moves marker
+- [ ] Dragging marker updates on dragend (not during drag)
+- [ ] Search with ≥3 chars shows dropdown
+- [ ] Search result click: marker moves, address fields populated
+- [ ] Reverse geocode: all address fields populated
+- [ ] `province`, `country_code`, `suburb` correctly mapped
+
+### Performance
+- [ ] No Livewire request during drag
+- [ ] Search debounced at 500ms
+- [ ] `invalidateSize()` on container resize
+- [ ] Fullscreen `invalidateSize()` after 300ms
+
+### Accessibility
+- [ ] All buttons have `aria-label`
+- [ ] Screen reader live region updates
+- [ ] Search input has `aria-autocomplete`, `aria-controls`, `aria-expanded`
+- [ ] ESC closes dropdown and fullscreen
+- [ ] Tab order logical
+
+---
+
+## 16. REFERENCE LINKS
+
+| Resource | URL |
+|---|---|
+| Design Comuni — Segnalazione Step 2 | https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html |
+| Design Comuni — Area Personale | https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-area-personale.html |
+| Design Comuni — GitHub | https://github.com/italia/design-comuni-pagine-statiche |
+| Filament v5 — Custom Fields | https://filamentphp.com/docs/5.x/forms/custom-fields |
+| Livewire v4 — JavaScript | https://livewire.laravel.com/docs/4.x/javascript |
+| Lit 3 — Documentation | https://lit.dev/docs/ |
+| Leaflet — Quick Start | https://leafletjs.com/examples/quick-start/ |
+| Leaflet — Shadow DOM Issue | https://github.com/Leaflet/Leaflet/issues/6960 |
+| Nominatim — Usage Policy | https://operations.osmfoundation.org/policies/nominatim/ |
+| Nominatim — Search API | https://nominatim.org/release-docs/develop/api/Search/ |
+| Nominatim — Reverse API | https://nominatim.org/release-docs/develop/api/Reverse/ |
+| Esri Leaflet | https://developers.arcgis.com/esri-leaflet/ |
+| OSM Humanitarian Tiles | https://www.hotosm.org/ |
+| Design Comuni — Bootstrap Italia | https://italia.github.io/bootstrap-italia/ |

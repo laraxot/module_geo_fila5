@@ -892,17 +892,20 @@ function formatValue(key, value) {
 }
 
 function resolveOpenState(openingHours) {
-    if (typeof window.opening_hours !== 'function') {
+    // ZEN: Defensive coding against external library failures.
+    if (!openingHours || typeof window === 'undefined' || typeof window.opening_hours !== 'function') {
         return '';
     }
 
     try {
         const oh = new window.opening_hours(openingHours);
-
+        if (typeof oh.getState !== 'function') return '';
+        
         return oh.getState()
             ? '<br><strong><span style="color:green">Wahrscheinlich gerade geöffnet</span></strong>'
             : '<br><strong><span style="color:red">Wahrscheinlich gerade geschlossen</span></strong>';
-    } catch {
+    } catch (e) {
+        // Silently fail to keep the map working
         return '';
     }
 }

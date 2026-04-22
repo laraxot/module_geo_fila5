@@ -24,36 +24,6 @@ class CoordinatePicker extends XotBaseField
     {
         parent::setUp();
         $this->setUpCoordinatePicker();
-    }
-
-    /**
-     * Static utility to map form data back to individual DB columns.
-     *
-     * @param array<string, mixed> $data
-     *
-     * @return array<string, mixed>
-     */
-    public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array
-    {
-        $coords = $data[$fieldName] ?? null;
-        if (! is_array($coords)) {
-            return $data;
-        }
-
-        $data[$latitudeColumn] = self::extractCoordinateValue($coords['latitude'] ?? null);
-        $data[$longitudeColumn] = self::extractCoordinateValue($coords['longitude'] ?? null);
-
-        unset($data[$fieldName]);
-
-        return $data;
-    }
-
-    private static function extractCoordinateValue(mixed $value): ?float
-    {
-        if ($value === null || $value === '') {
-            return null;
-        }
-
-        return is_numeric($value) ? (float) $value : null;
+        $this->dehydrated(false);
     }
 }

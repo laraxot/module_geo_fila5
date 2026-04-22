@@ -1,5 +1,5 @@
 @php
-/** @var \Modules\Geo\Filament\Forms\Components\MapPicker $field */
+/** @var \Modules\Geo\Filament\Forms\Components\LocationPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
 $state = $field->getState();
@@ -27,7 +27,7 @@ $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
                 });
             },
 
-            handleCoordsChanged(event) {
+            handleLocationChanged(event) {
                 const { latitude, longitude } = event.detail;
                 this._suppressUpdate = true;
                 this._lat = latitude;
@@ -79,35 +79,32 @@ $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
                 }
             }
         }" 
-        class="map-picker-field-wrapper space-y-2" 
-        @coords-changed.stop="handleCoordsChanged($event)"
+        class="location-picker-field-wrapper space-y-2" 
+        @location-changed.stop="handleLocationChanged($event)"
         @fullscreen-changed.stop="handleFullscreenChanged($event)"
     >
-        <map-picker-lit 
-            :latitude="typeof _lat !== 'undefined' && _lat !== null ? _lat : @json($field->getLatitude())"
-            :longitude="typeof _lng !== 'undefined' && _lng !== null ? _lng : @json($field->getLongitude())" 
+        <location-picker-lit 
+            :latitude="_lat !== null ? _lat : @json($field->getLatitude())"
+            :longitude="_lng !== null ? _lng : @json($field->getLongitude())" 
             zoom="{{ $field->getZoom() }}"
             height="{{ $field->getHeight() }}"
-        ></map-picker-lit>
+        ></location-picker-lit>
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] sm:text-xs text-gray-500 bg-gray-50 p-2 rounded-md border border-gray-100"
-            x-show="typeof _isFullscreen === 'undefined' || !_isFullscreen" 
+            x-show="!_isFullscreen" 
             x-transition:enter="transition ease-out duration-200"
             x-transition:leave="transition ease-in duration-150"
         >
             <div class="flex flex-wrap gap-x-4 gap-y-1">
-                <span>Lat: <strong class="text-gray-700" x-text="typeof _lat !== 'undefined' && _lat !== null ? Number(_lat).toFixed(6) : '--'"></strong></span>
-                <span>Lng: <strong class="text-gray-700" x-text="typeof _lng !== 'undefined' && _lng !== null ? Number(_lng).toFixed(6) : '--'"></strong></span>
-                <template x-if="typeof structured !== 'undefined' && structured?.city">
+                <span>Lat: <strong class="text-gray-700" x-text="_lat !== null ? Number(_lat).toFixed(6) : '--'"></strong></span>
+                <span>Lng: <strong class="text-gray-700" x-text="_lng !== null ? Number(_lng).toFixed(6) : '--'"></strong></span>
+                <template x-if="structured?.city">
                     <span>Città: <strong class="text-gray-700" x-text="structured.city"></strong></span>
                 </template>
             </div>
-            <div class="truncate max-w-full sm:max-w-[400px]" x-show="typeof address !== 'undefined' && address" x-bind:title="typeof address !== 'undefined' ? address : ''">
-                <span x-text="typeof address !== 'undefined' ? address : ''"></span>
+            <div class="truncate max-w-full sm:max-w-[400px]" x-show="address" :title="address">
+                <span x-text="address"></span>
             </div>
-            <template x-if="typeof _lat === 'undefined' || _lat === null">
-                <span class="text-orange-500 italic text-xs">{{ __('geo::coordinate-picker.no_position') }}</span>
-            </template>
         </div>
     </div>
 </x-dynamic-component>

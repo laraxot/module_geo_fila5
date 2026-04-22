@@ -1,10 +1,11 @@
 @php
-/** @var \Modules\Geo\Filament\Forms\Components\PlacePicker $field */
+/** @var \Modules\Geo\Filament\Forms\Components\MapLocationInput $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
 $state = $field->getState();
 $initLat = is_array($state) ? ($state['latitude'] ?? null) : null;
 $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
+$height = $field->getHeight() ?: '300px';
 @endphp
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
@@ -22,7 +23,7 @@ $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
                 });
             },
 
-            handlePlaceChanged(event) {
+            handleLocationChanged(event) {
                 const { latitude, longitude } = event.detail;
                 this._suppressUpdate = true;
                 this._lat = latitude;
@@ -31,14 +32,17 @@ $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
                 setTimeout(() => { this._suppressUpdate = false; }, 350);
             }
         }"
-        class="place-picker-field-wrapper"
-        @place-changed.stop="handlePlaceChanged($event)"
+        class="map-location-input-field-wrapper"
+        @location-changed.stop="handleLocationChanged($event)"
     >
-        <place-picker-lit
+        <div class="map-container" style="--map-height: {{ $height }}">
+            <div class="map-location-pane" style="height: 100%;"></div>
+        </div>
+        <map-location-input-lit
             :latitude="_lat !== null ? _lat : @json($field->getLatitude())"
             :longitude="_lng !== null ? _lng : @json($field->getLongitude())"
             zoom="{{ $field->getZoom() }}"
-            height="{{ $field->getHeight() }}"
-        ></place-picker-lit>
+            height="{{ $height }}"
+        ></map-location-input-lit>
     </div>
 </x-dynamic-component>

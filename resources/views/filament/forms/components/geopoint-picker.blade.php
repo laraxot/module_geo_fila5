@@ -1,103 +1,116 @@
 @php
-    /** @var \Modules\Geo\Filament\Forms\Components\GeopointPicker $field */
-    $statePath = $getStatePath();
-    $state     = $getState() ?? [];
-    $initLat   = $state['latitude'] ?? null;
-    $initLng   = $state['longitude'] ?? null;
+/** @var \Modules\Geo\Filament\Forms\Components\GeopointPicker $field */
+$statePath = $field->getStatePath();
+$id = $field->getId();
+$state = $field->getState();
+$initLat = is_array($state) ? ($state['latitude'] ?? null) : null;
+$initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
+// Force valid height
+$height = $field->getHeight() ?: '400px';
 @endphp
 
-<x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
-    <div
-        class="geopoint-picker-wrapper"
-        wire:ignore.self
-        x-data="{
-            lat: @js($initLat),
-            lng: @js($initLng),
+<!-- Remove guard directive to ensure map container persistence -->
+<div class="map-container" style="--map-height: {{ $height }}">
+    <div class="geopoint-leaflet-pane">
+        <!-- Map content will be rendered here by GeopointPickerLit -->
+    </div>
+
+    <div x-data="{
+            _lat: @json($initLat),
+            _lng: @json($initLng),
+            _suppressUpdate: false,
+            _isFullscreen: false,
             address: '',
-            statePath: @js($statePath),
-
-            get picker() { return this.$refs.picker; },
-
-            syncToPicker(loc) {
-                if (!this.picker || typeof this.picker.applyExternalLocation !== 'function') return;
-                this.picker.applyExternalLocation(loc);
-            },
-
-            onLocationChanged(e) {
-                const { latitude, longitude } = e.detail;
-                this.lat = latitude;
-                this.lng = longitude;
-                this.$wire.set(this.statePath, { latitude, longitude });
-            },
+            structured: null,
 
             init() {
-                this.$nextTick(() => {
-                    const current = this.$wire.get(this.statePath);
-                    if (current) {
-                        this.lat = current.latitude ?? this.lat;
-                        this.lng = current.longitude ?? this.lng;
+                // Force current position on load
+                this.$wire.$watch('{{ $statePath }}', (val) => {
+                    if (this._suppressUpdate) return;
+                    this._lat = (val?.latitude !== undefined && val?.latitude !== null) ? parseFloat(val.latitude) : null;
+                    this._lng = (val?.longitude !== undefined && val?.longitude !== null) ? parseFloat(val.longitude) : null;
+                    if (this._lat && this._lng && !this.address) {
+                        void this.reverseGeocode(this._lat, this._lng);
                     }
-                    this.syncToPicker(current);
                 });
-                this.$wire.watch(this.statePath, (val) => {
-                    if (val) {
-                        this.lat = val.latitude ?? this.lat;
-                        this.lng = val.longitude ?? this.lng;
+            },
+
+            handleGeopointChanged(event) {
+                const { latitude, longitude } = event.detail;
+                this._suppressUpdate = true;
+                this._lat = latitude;
+                this._lng = longitude;
+
+                // Update state with structured data
+                const newState = {
+                    latitude,
+                    longitude,
+                    address: this.address,
+                    address_details: this.structured
+                };
+
+                this.$wire.$set('{{ $statePath }}', newState);
+                setTimeout(() => { this._suppressUpdate = false; }, 350);
+
+                @if($field->hasReverseGeocoding())
+                void this.reverseGeocode(latitude, longitude);
+                @endif
+            },
+
+            handleFullscreenChanged(event) {
+                this._isFullscreen = event.detail.isFullscreen;
+            },
+
+            async reverseGeocode(lat, lng) {
+                if (!lat || !lng) return;
+                try {
+                    const result = await this.$wire.callSchemaComponentMethod(
+                        '{{ $id }}',
+                        'reverseGeocode',
+                        { latitude: lat, longitude: lng }
+                    );
+
+                    if (result) {
+                        this.address = result.display_name || '';
+                        this.structured = result.structured || null;
+
+                        // Push structured data back to Livewire state
+                        this.$wire.$set('{{ $statePath }}.address', this.address);
+                        this.$wire.$set('{{ $statePath }}.address_details', this.structured);
+                    } else {
+                        this.address = '';
+                        this.structured = null;
                     }
-                    this.syncToPicker(val);
-                });
+                } catch (_e) {
+                    this.address = '';
+                    this.structured = null;
+                }
             }
         }"
-        @location-changed.stop="onLocationChanged($event)"
+        class="geopoint-picker-field-wrapper space-y-2"
+        @geopoint-changed.stop="handleGeopointChanged($event)"
+        @fullscreen-changed.stop="handleFullscreenChanged($event)"
     >
-        {{-- Coordinate inputs --}}
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div>
-                <x-filament::input.wrapper>
-                    <x-filament::input
-                        type="number"
-                        step="0.000001"
-                        placeholder="{{ __('geo::geopoint-picker.latitude') }}"
-                        x-model.number.debounce.500ms="lat"
-                        x-on:change="$wire.set(statePath + '.latitude', lat)"
-                    />
-                </x-filament::input.wrapper>
-            </div>
-            <div>
-                <x-filament::input.wrapper>
-                    <x-filament::input
-                        type="number"
-                        step="0.000001"
-                        placeholder="{{ __('geo::geopoint-picker.longitude') }}"
-                        x-model.number.debounce.500ms="lng"
-                        x-on:change="$wire.set(statePath + '.longitude', lng)"
-                    />
-                </x-filament::input.wrapper>
-            </div>
-        </div>
-
-        {{-- Indirizzo dedotto (reverse geocoding opzionale) --}}
-        <p class="mb-2 text-sm text-gray-500 min-h-5" x-show="address" x-text="address"></p>
-
-        {{-- Lit Web Component — UI-only, nessuna conoscenza di Livewire --}}
         <geopoint-picker-lit
-            x-ref="picker"
-            latitude="{{ $initLat }}"
-            longitude="{{ $initLng }}"
-            default-latitude="{{ $field->getDefaultLatitude() }}"
-            default-longitude="{{ $field->getDefaultLongitude() }}"
+            :latitude="_lat !== null ? _lat : @json($field->getLatitude())"
+            :longitude="_lng !== null ? _lng : @json($field->getLongitude())"
             zoom="{{ $field->getZoom() }}"
-            height="{{ $field->getHeight() }}"
-            show-search="{{ $field->isSearchVisible() ? 'true' : 'false' }}"
-            @location-changed.stop="onLocationChanged($event)"
-            class="w-full"
+            height="{{ $height }}"
+            show-search="{{ $field->showSearch() ? 'true' : 'false' }}"
         ></geopoint-picker-lit>
 
-        @error($statePath.'.latitude')
-            <p class="text-danger-600 text-xs mt-1">{{ $message }}</p>
-        @enderror
-        @error($statePath.'.longitude')
-            <p class="text-danger-600 text-xs mt-1">{{ $message }}</p>
-        @enderror
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] sm:text-xs text-gray-500 bg-gray-50 p-2 rounded-md border border-gray-100"
+            x-show="!_isFullscreen"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:leave="transition ease-in duration-150"
+        >
+            <div class="flex flex-wrap gap-x-4 gap-y-1">
+                <span>Lat: <strong class="text-gray-700" x-text="_lat !== null ? Number(_lat).toFixed(6) : '--'"></strong></span>
+                <span>Lng: <strong class="text-gray-700" x-text="_lng !== null ? Number(_lng).toFixed(6) : '--'"></strong></span>
+            </div>
+            <div class="truncate max-w-full sm:max-w-[400px]" x-show="address" :title="address">
+                <span x-text="address"></span>
+            </div>
+        </div>
     </div>
-</x-dynamic-component>
+</div>
