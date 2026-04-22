@@ -1,11 +1,13 @@
-import { LitElement, html } from '@theme-lit';
-import L from '@theme-leaflet';
+import { LitElement, html } from 'lit';
+import { guard } from 'lit/directives/guard.js';
+import L from 'leaflet';
 import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
+import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
 
 /**
- * MapPositionerLit - Stateless UI Component for geographic positioning.
- *
- * This is the Web Component backing the MapPositioner Filament field.
+ * MapPositionerLit
+ * ZEN: Stateless UI Component for geographic positioning.
+ * Implementation: Light DOM for stability and unified behavior.
  */
 export class MapPositionerLit extends LitElement {
     static properties = {
@@ -18,7 +20,9 @@ export class MapPositionerLit extends LitElement {
         showSearch: { type: Boolean, attribute: 'show-search' },
     };
 
-    static styles = mapPickerStyles;
+    createRenderRoot() {
+        return this;
+    }
 
     constructor() {
         super();
@@ -34,18 +38,44 @@ export class MapPositionerLit extends LitElement {
         this._marker = null;
         this._layers = {};
         this._mapReady = false;
+        this._loading = false;
+        this._isProgrammaticUpdate = false;
         this._resizeObserver = null;
-        this._initRaf = null;
         this._pendingLocation = null;
     }
 
     render() {
+        const isFullscreen = !!document.fullscreenElement;
+        
         return html`
-            <div class="map-container" style="--map-height: ${this.height}">
-                <div class="map-picker-leaflet-pane" part="map"></div>
+            <style>
+                map-positioner-lit { display: block; width: 100%; }
+                ${mapPickerStyles}
+                .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
+                .ctrl-btn svg { width: 1.5rem; height: 1.5rem; color: #374151; }
+                .ctrl-btn:hover svg { color: #ef4444; }
+            </style>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+            <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
+                
+                ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
+                
                 ${this.showSearch ? this._renderSearch() : ''}
-                <div class="loading-overlay" part="loader">
-                    <div class="loading-spinner"></div>
+                
+                <div class="layer-controls-overlay">
+                    <button class="ctrl-btn" type="button" @click="${this._handleGeolocation}" title="Mia posizione">
+                        ${controlIcons.locate}
+                    </button>
+                    <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomIn()}" title="Zoom In">
+                        ${controlIcons.zoomIn}
+                    </button>
+                    <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomOut()}" title="Zoom Out">
+                        ${controlIcons.zoomOut}
+                    </button>
+                </div>
+
+                <div class="loading-overlay ${this._loading ? 'active' : ''}">
+                    <div class="spinner"></div>
                 </div>
             </div>
         `;
@@ -53,7 +83,7 @@ export class MapPositionerLit extends LitElement {
 
     _renderSearch() {
         return html`
-            <div class="search-box" part="search">
+            <div class="search-box">
                 <input
                     type="text"
                     class="map-picker-search-input"
@@ -61,7 +91,7 @@ export class MapPositionerLit extends LitElement {
                     @keydown="${(e) => e.key === 'Enter' && this._handleSearch()}"
                     autocomplete="off"
                 />
-                <button class="control-btn" @click="${this._handleSearch}" type="button">
+                <button class="ctrl-btn" @click="${this._handleSearch}" type="button" aria-label="Cerca">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
@@ -71,62 +101,35 @@ export class MapPositionerLit extends LitElement {
     }
 
     firstUpdated() {
-        if (typeof ResizeObserver !== 'undefined') {
-            this._resizeObserver = new ResizeObserver(() => this._handleResize());
-            this._resizeObserver.observe(this);
-        }
-        requestAnimationFrame(() => this._handleResize());
-        document.addEventListener('fullscreenchange', () => this.invalidateSize());
+        this._initMap();
+        this._resizeObserver = new ResizeObserver(() => {
+            if (this._map) this._map.invalidateSize();
+        });
+        this._resizeObserver.observe(this);
+        
+        document.addEventListener('fullscreenchange', () => this.requestUpdate());
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-        if (this._resizeObserver) this._resizeObserver.disconnect();
-        if (this._initRaf) cancelAnimationFrame(this._initRaf);
+        this._resizeObserver?.disconnect();
         if (this._map) {
             this._map.remove();
             this._map = null;
         }
     }
 
-    applyExternalLocation(loc) {
-        const normalized = this._normalizeLocation(loc);
-        if (!this._mapReady) {
-            this._pendingLocation = normalized;
-            return;
-        }
-        if (!normalized) {
-            this._removeMarker();
-            return;
-        }
-        this._updateInternal(normalized.latitude, normalized.longitude, false);
-    }
-
-    invalidateSize() {
-        if (this._map) {
-            setTimeout(() => this._map.invalidateSize({ animate: false }), 50);
-        }
-    }
-
-    _handleResize() {
-        const rect = this.getBoundingClientRect();
-        if (rect.width <= 0 || rect.height <= 0) return;
-
-        if (!this._map) {
-            if (this._initRaf) cancelAnimationFrame(this._initRaf);
-            this._initRaf = requestAnimationFrame(() => {
-                this._initRaf = null;
-                this._initMap();
-            });
-        } else {
-            this._map.invalidateSize({ animate: false });
+    updated(changed) {
+        if ((changed.has('latitude') || changed.has('longitude')) && !this._isProgrammaticUpdate) {
+            if (this._mapReady && this.latitude !== null && this.longitude !== null) {
+                this._syncMarkerToState(this.latitude, this.longitude);
+            }
         }
     }
 
     _initMap() {
-        if (this._map) return;
-        const el = this.renderRoot.querySelector('.map-picker-leaflet-pane');
-        if (!el || el._leaflet_id) return;
+        const el = this.querySelector('.map-picker-leaflet-pane');
+        if (!el || this._map) return;
 
         const centerLat = Number(this.latitude ?? this.defaultLatitude);
         const centerLng = Number(this.longitude ?? this.defaultLongitude);
@@ -135,128 +138,94 @@ export class MapPositionerLit extends LitElement {
             center: [centerLat, centerLng],
             zoom: this.zoom,
             zoomControl: false,
+            attributionControl: false
         });
 
-        this._layers.street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap',
-            maxZoom: 19,
-        }).addTo(this._map);
+        this._layers.street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(this._map);
 
-        L.control.zoom({ position: 'bottomright' }).addTo(this._map);
-        this._addCustomToolbar();
-
-        this._map.on('click', (e) => this._updateInternal(e.latlng.lat, e.latlng.lng, true, 'click'));
+        this._map.on('click', (e) => this._handleInteraction(e.latlng.lat, e.latlng.lng, 'click'));
 
         this._mapReady = true;
-        const initialLoc = this._pendingLocation || this._normalizeLocation({ latitude: this.latitude, longitude: this.longitude });
-        this._pendingLocation = null;
-
-        if (initialLoc) {
-            this._updateInternal(initialLoc.latitude, initialLoc.longitude, false);
+        
+        if (this.latitude !== null && this.longitude !== null) {
+            this._syncMarkerToState(this.latitude, this.longitude);
+        } else {
+            void this._handleGeolocation(false);
         }
-        this.invalidateSize();
+
+        setTimeout(() => this._map.invalidateSize(), 350);
     }
 
-    _addCustomToolbar() {
-        const self = this;
-        const Toolbar = L.Control.extend({
-            options: { position: 'topleft' },
-            onAdd() {
-                const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control map-picker-toolbar');
-                L.DomEvent.disableClickPropagation(container);
-                const locateBtn = L.DomUtil.create('button', 'control-btn', container);
-                locateBtn.type = 'button';
-                locateBtn.title = 'Posizione Corrente';
-                locateBtn.innerHTML = controlIcons.locate;
-                locateBtn.onclick = () => self._handleGeolocation();
-                return container;
-            }
-        });
-        new Toolbar().addTo(this._map);
+    _handleInteraction(lat, lng, source = 'manual') {
+        this._isProgrammaticUpdate = true;
+        this.latitude = parseFloat(lat.toFixed(6));
+        this.longitude = parseFloat(lng.toFixed(6));
+        
+        this._syncMarkerToState(this.latitude, this.longitude);
+
+        this.dispatchEvent(new CustomEvent('position-changed', {
+            detail: { latitude: this.latitude, longitude: this.longitude, source },
+            bubbles: true,
+            composed: true,
+        }));
+
+        setTimeout(() => { this._isProgrammaticUpdate = false; }, 100);
     }
 
-    _updateInternal(lat, lng, emit = true, source = 'external') {
+    _syncMarkerToState(lat, lng) {
         if (!this._map) return;
         if (!this._marker) {
-            const icon = L.divIcon({
-                html: `<div class="map-picker-marker">${this._getMarkerSvg()}</div>`,
-                className: '',
-                iconSize: [35, 45],
-                iconAnchor: [17, 45],
-            });
-            this._marker = L.marker([lat, lng], { draggable: true, icon }).addTo(this._map);
-            this._marker.on('dragend', () => {
-                const pos = this._marker.getLatLng();
-                this._updateInternal(pos.lat, pos.lng, true, 'drag');
+            this._marker = L.marker([lat, lng], { 
+                draggable: true,
+                icon: createMapPickerLeafletIcon(L) 
+            }).addTo(this._map);
+            this._marker.on('dragend', (e) => {
+                const pos = e.target.getLatLng();
+                this._handleInteraction(pos.lat, pos.lng, 'drag');
             });
         } else {
             this._marker.setLatLng([lat, lng]);
         }
-
-        if (source !== 'drag') {
-            this._map.setView([lat, lng], this._map.getZoom(), { animate: source !== 'click' });
-        }
-
-        if (emit) {
-            this.dispatchEvent(new CustomEvent('location-changed', {
-                detail: { latitude: lat, longitude: lng, source },
-                bubbles: true,
-                composed: true,
-            }));
-        }
-    }
-
-    _removeMarker() {
-        if (this._marker) {
-            this._marker.remove();
-            this._marker = null;
-        }
-    }
-
-    _normalizeLocation(loc) {
-        if (!loc || typeof loc !== 'object') return null;
-        const lat = Number(loc.latitude ?? loc.lat);
-        const lng = Number(loc.longitude ?? loc.lng);
-        return (Number.isFinite(lat) && Number.isFinite(lng)) ? { latitude: lat, longitude: lng } : null;
+        this._map.setView([lat, lng], this._map.getZoom());
     }
 
     async _handleSearch() {
-        const input = this.renderRoot.querySelector('.map-picker-search-input');
-        if (!input || !input.value.trim()) return;
-        this._setLoading(true);
+        const input = this.querySelector('.map-picker-search-input');
+        if (!input?.value) return;
+        this._loading = true;
+        this.requestUpdate();
         try {
             const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(input.value)}&limit=1`);
             const data = await res.json();
-            if (data && data[0]) {
-                this._updateInternal(parseFloat(data[0].lat), parseFloat(data[0].lon), true, 'search');
+            if (data?.[0]) {
+                const lat = parseFloat(data[0].lat);
+                const lon = parseFloat(data[0].lon);
+                this._handleInteraction(lat, lon, 'search');
+                this._map?.setView([lat, lon], 16);
             }
-        } catch (e) {
-            console.error('Search error:', e);
         } finally {
-            this._setLoading(false);
+            this._loading = false;
+            this.requestUpdate();
         }
     }
 
-    _handleGeolocation() {
+    async _handleGeolocation(emit = true) {
         if (!navigator.geolocation) return;
-        this._setLoading(true);
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                this._updateInternal(pos.coords.latitude, pos.coords.longitude, true, 'geolocation');
-                this._setLoading(false);
-            },
-            () => this._setLoading(false),
-            { enableHighAccuracy: true, timeout: 5000 }
-        );
-    }
-
-    _setLoading(active) {
-        const loader = this.renderRoot.querySelector('.loading-overlay');
-        if (loader) loader.classList.toggle('active', active);
-    }
-
-    _getMarkerSvg() {
-        return `<svg width="35" height="45" viewBox="0 0 35 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 0C7.835 0 0 7.835 0 17.5C0 30.625 17.5 45 17.5 45C17.5 45 35 30.625 35 17.5C35 7.835 27.165 0 17.5 0Z" fill="#3B82F6"/><circle cx="17.5" cy="17.5" r="9.5" fill="#FFFFFF"/><circle cx="17.5" cy="17.5" r="5" fill="#3B82F6"/></svg>`;
+        this._loading = true;
+        this.requestUpdate();
+        return new Promise((resolve) => {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    this._handleInteraction(pos.coords.latitude, pos.coords.longitude, 'geolocation');
+                    if (this._map) this._map.setView([pos.coords.latitude, pos.coords.longitude], 16);
+                    this._loading = false;
+                    this.requestUpdate();
+                    resolve(true);
+                },
+                () => { this._loading = false; this.requestUpdate(); resolve(false); },
+                { enableHighAccuracy: true, timeout: 5000 }
+            );
+        });
     }
 }
 

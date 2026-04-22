@@ -4,18 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
+
 /**
- * MapLocationInput – a thin wrapper around LeafletMarkerMapInput.
+ * MapLocationInput - Simple click-on-map to set location.
  *
- * Purpose: expose a Filament field that shows a Leaflet map with a draggable marker
- * and automatically writes the selected latitude and longitude into sibling fields.
- *
- * Philosophy (Geo module): "Geolocation belongs to the Geo domain, not to the
- * business modules.  This component centralises map handling and keeps the UI
- * consistent across the application."
+ * Zen: The primary interface for rapid location setting.
+ * Implementation: Separate Blade and Lit JS.
  */
-class MapLocationInput extends LeafletMarkerMapInput
+class MapLocationInput extends XotBaseField
 {
-    // No extra logic required – we inherit all behaviour from LeafletMarkerMapInput.
-    // The class exists for semantic clarity and for future customisations.
+    use HasCoordinatePicker;
+
+    protected string $view = 'geo::filament.forms.components.map-location-input';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->setUpCoordinatePicker();
+    }
 }

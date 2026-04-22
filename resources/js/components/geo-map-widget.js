@@ -1,10 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import L from 'leaflet';
 import 'leaflet.markercluster';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet.markercluster/dist/MarkerCluster.css';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
+/**
+ * GeoMapWidget - UI Component for displaying clusters of geographic data.
+ * Zen: Vision. Aggregates information into a meaningful overview.
+ * 
+ * Commandment 4: Thou shalt be encapsulated (Shadow DOM).
+ */
 export class GeoMapWidget extends LitElement {
     static properties = {
         payload: { type: Object },
@@ -23,12 +26,23 @@ export class GeoMapWidget extends LitElement {
             height: 100%;
             min-height: 600px;
             border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
         }
     `;
 
     constructor() {
         super();
         this.payload = null;
+    }
+
+    render() {
+        return html`
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+            <div class="map-container"></div>
+        `;
     }
 
     firstUpdated() {
@@ -56,6 +70,8 @@ export class GeoMapWidget extends LitElement {
         if (this.payload?.geoJson) {
             this._loadData(this.payload.geoJson);
         }
+
+        setTimeout(() => this._map.invalidateSize(), 150);
     }
 
     _loadData(geoJson) {
@@ -63,11 +79,17 @@ export class GeoMapWidget extends LitElement {
         
         const geoJsonLayer = L.geoJSON(geoJson, {
             onEachFeature: (feature, layer) => {
-                const popup = feature.properties.popup;
+                const popup = feature.properties?.popup || {
+                    title: 'POI',
+                    category: '',
+                    address: ''
+                };
                 layer.bindPopup(`
-                    <strong>${popup.title}</strong><br>
-                    ${popup.category}<br>
-                    ${popup.address}
+                    <div style="font-family: inherit;">
+                        <strong style="display: block; margin-bottom: 4px;">${popup.title}</strong>
+                        <span style="color: #6b7280; font-size: 0.85em;">${popup.category}</span><br>
+                        <span style="font-size: 0.9em;">${popup.address}</span>
+                    </div>
                 `);
             }
         });
@@ -75,13 +97,17 @@ export class GeoMapWidget extends LitElement {
         this._clusterGroup.addLayer(geoJsonLayer);
         this._map.addLayer(this._clusterGroup);
         
-        if (geoJson.features.length > 0) {
+        if (geoJson.features?.length > 0) {
             this._map.fitBounds(this._clusterGroup.getBounds());
         }
     }
 
-    render() {
-        return html`<div id="map"></div>`;
+    disconnectedCallback() {
+        if (this._map) {
+            this._map.remove();
+            this._map = null;
+        }
+        super.disconnectedCallback();
     }
 }
 

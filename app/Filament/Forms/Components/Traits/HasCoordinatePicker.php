@@ -6,20 +6,19 @@ namespace Modules\Geo\Filament\Forms\Components\Traits;
 
 use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
- * Rule: No "Default" prefixes.
+ * Rule: No "Default" prefixes for configuration methods.
  * Rule: Unified state {latitude, longitude}.
  */
 trait HasCoordinatePicker
 {
-    protected float $latitude = 41.9028;
+    protected float $centerLatitude = 41.9028;
 
-    protected float $longitude = 12.4964;
+    protected float $centerLongitude = 12.4964;
 
     protected int $zoom = 13;
 
@@ -27,36 +26,34 @@ trait HasCoordinatePicker
 
     protected bool $hasReverseGeocoding = true;
 
-    protected bool $searchVisible = true;
-
     protected string $latitudeColumn = 'latitude';
 
     protected string $longitudeColumn = 'longitude';
+
+    protected bool $geolocateWhenEmpty = false;
 
     protected function setUpCoordinatePicker(): void
     {
         $this->default(['latitude' => null, 'longitude' => null]);
 
-        $this->dehydrated(false);
-
-        $this->afterStateHydrated(function (self $component, mixed $state): void {
-            if (is_array($state) && isset($state['latitude'], $state['longitude'])) {
+        $this->afterStateHydrated(static function (self $component, mixed $state): void {
+            if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {
                 return;
             }
 
             $record = $component->getRecord();
             if ($record instanceof Model) {
                 $component->state([
-                    'latitude' => self::normalizeCoordinate($record->getAttribute($this->latitudeColumn)),
-                    'longitude' => self::normalizeCoordinate($record->getAttribute($this->longitudeColumn)),
+                    'latitude' => self::normalizeCoordinate($record->getAttribute($component->getLatitudeColumn())),
+                    'longitude' => self::normalizeCoordinate($record->getAttribute($component->getLongitudeColumn())),
                 ]);
 
                 return;
             }
 
             $component->state([
-                'latitude' => $this->latitude,
-                'longitude' => $this->longitude,
+                'latitude' => $component->getCenterLatitude(),
+                'longitude' => $component->getCenterLongitude(),
             ]);
         });
     }
@@ -82,32 +79,25 @@ trait HasCoordinatePicker
         return $this;
     }
 
-    public function center(float $latitude, float $longitude): static
+    /**
+     * Set the initial map center.
+     * Supports both center(lat, lng) and center(['lat' => ..., 'lng' => ...]).
+     *
+     * @param float|array<string, float> $latitude
+     */
+    public function center(float|array $latitude, ?float $longitude = null): static
     {
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+        if (\is_array($latitude)) {
+            $this->centerLatitude = $latitude['latitude'] ?? $latitude['lat'] ?? $this->centerLatitude;
+            $this->centerLongitude = $latitude['longitude'] ?? $latitude['lng'] ?? $this->centerLongitude;
+
+            return $this;
+        }
+
+        $this->centerLatitude = $latitude;
+        $this->centerLongitude = $longitude ?? $this->centerLongitude;
 
         return $this;
-    }
-
-    public function defaultCenter(float $latitude, float $longitude): static
-    {
-        return $this->center($latitude, $longitude);
-    }
-
-    public function defaultLocation(float $latitude, float $longitude): static
-    {
-        return $this->center($latitude, $longitude);
-    }
-
-    public function defaultZoom(int $zoom): static
-    {
-        return $this->zoom($zoom);
-    }
-
-    public function mapHeight(string $height): static
-    {
-        return $this->height($height);
     }
 
     public function reverseGeocoding(bool $condition = true): static
@@ -117,16 +107,16 @@ trait HasCoordinatePicker
         return $this;
     }
 
-    public function showSearch(bool $condition = true): static
+    public function height(string $height): static
     {
-        $this->searchVisible = $condition;
+        $this->height = $height;
 
         return $this;
     }
 
-    public function height(string $height): static
+    public function geolocateWhenEmpty(bool $condition = true): static
     {
-        $this->height = $height;
+        $this->geolocateWhenEmpty = $condition;
 
         return $this;
     }
@@ -146,14 +136,14 @@ trait HasCoordinatePicker
         return $this->zoom;
     }
 
-    public function getLatitude(): float
+    public function getCenterLatitude(): float
     {
-        return $this->latitude;
+        return $this->centerLatitude;
     }
 
-    public function getLongitude(): float
+    public function getCenterLongitude(): float
     {
-        return $this->longitude;
+        return $this->centerLongitude;
     }
 
     public function hasReverseGeocoding(): bool
@@ -161,78 +151,146 @@ trait HasCoordinatePicker
         return $this->hasReverseGeocoding;
     }
 
-    public function isSearchVisible(): bool
-    {
-        return $this->searchVisible;
-    }
-
     public function getHeight(): string
     {
         return $this->height;
     }
 
+    public function getGeolocateWhenEmpty(): bool
+    {
+        return $this->geolocateWhenEmpty;
+    }
+
+    /**
+     * Searches for addresses matching the query string via Nominatim.
+     * Server-side to respect rate-limiting and User-Agent policies.
+     *
+     * @return array<int, array<string, mixed>>
+     */
     #[ExposedLivewireMethod]
     #[Renderless]
-    public function reverseGeocode(float $latitude, float $longitude): ?string
+    public function searchAddress(string $query): array
+    {
+        if (\strlen(trim($query)) < 3) {
+            return [];
+        }
+
+        try {
+            $response = Http::withHeaders([
+                'User-Agent' => \sprintf('%s/1.0 (%s)', config('app.name', 'Laraxot'), config('app.url', 'localhost')),
+            ])
+                ->timeout(10)
+                ->get('https://nominatim.openstreetmap.org/search', [
+                    'q' => $query,
+                    'format' => 'json',
+                    'addressdetails' => 1,
+                    'limit' => 5,
+                ]);
+
+            if (! $response->successful()) {
+                return [];
+            }
+
+            $data = $response->json();
+
+            return \is_array($data) ? $data : [];
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    /**
+     * Reverse geocodes coordinates to a structured address.
+     * Returns a rich array for better form integration.
+     */
+    #[ExposedLivewireMethod]
+    #[Renderless]
+    public function reverseGeocode(float $latitude, float $longitude): ?array
     {
         try {
-            $response = Http::withHeaders(['User-Agent' => 'FixCity Geo CoordinatePicker/1.0'])
-                ->timeout(3)
+            $response = Http::withHeaders([
+                'User-Agent' => 'Laraxot/1.0',
+            ])
                 ->get('https://nominatim.openstreetmap.org/reverse', [
                     'lat' => $latitude,
                     'lon' => $longitude,
-                    'format' => 'json',
+                    'format' => 'jsonv2',
+                    'addressdetails' => 1,
+                    'zoom' => 18,
                 ]);
 
-            if (! $response instanceof Response || ! $response->successful()) {
+            if (! $response->successful()) {
                 return null;
             }
 
-            $data = $response->json() ?? [];
-            if (! is_array($data)) {
+            $data = $response->json();
+            if (! \is_array($data)) {
                 return null;
             }
 
-            $displayName = $data['display_name'] ?? null;
+            /** @var array<string, mixed> $address */
+            $address = $data['address'] ?? [];
+            if (! \is_array($address)) {
+                $address = [];
+            }
 
-            return is_string($displayName) && $displayName !== '' ? $displayName : null;
+            return [
+                'display_name' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'street' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
+                'street_number' => self::firstString($address, ['house_number', 'street_number']),
+                'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'county']),
+                'postcode' => self::firstString($address, ['postcode']),
+                'state' => self::firstString($address, ['state', 'region']),
+                'province' => self::firstString($address, ['province', 'county']),
+                'country' => self::firstString($address, ['country']),
+                'country_code' => self::firstString($address, ['country_code']),
+                'suburb' => self::firstString($address, ['suburb', 'neighbourhood', 'quarter', 'city_district']),
+                'structured' => [
+                    'road' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
+                    'house_number' => self::firstString($address, ['house_number', 'street_number']),
+                    'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'county']),
+                    'postcode' => self::firstString($address, ['postcode']),
+                    'state' => self::firstString($address, ['state', 'region']),
+                    'country' => self::firstString($address, ['country']),
+                    'city_district' => self::firstString($address, ['city_district', 'suburb', 'neighbourhood', 'quarter']),
+                ],
+                'raw' => $data,
+            ];
         } catch (\Throwable) {
             return null;
         }
     }
 
-    /** Forward geocoding */
-    #[ExposedLivewireMethod]
-    #[Renderless]
-    public function geocodeAddress(string $address): array
+    /**
+     * @param array<string, mixed> $data
+     * @param array<int, string>   $keys
+     */
+    private static function firstString(array $data, array $keys): string
     {
-        try {
-            $response = Http::withHeaders(['User-Agent' => 'FixCity/1.0'])
-                ->get('https://nominatim.openstreetmap.org/search', [
-                    'q' => $address,
-                    'format' => 'json',
-                    'limit' => 1,
-                ]);
-
-            $data = $response->json() ?? [];
-
-            if (empty($data) || ! isset($data[0]['lat'], $data[0]['lon'])) {
-                return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Not found'];
+        foreach ($keys as $key) {
+            $value = $data[$key] ?? null;
+            if (\is_string($value) && '' !== trim($value)) {
+                return $value;
             }
-
-            return [
-                'latitude' => (float) $data[0]['lat'],
-                'longitude' => (float) $data[0]['lon'],
-                'display_name' => (string) $data[0]['display_name'],
-            ];
-        } catch (\Throwable) {
-            return ['latitude' => $this->latitude, 'longitude' => $this->longitude, 'display_name' => 'Error'];
         }
+
+        return '';
+    }
+
+    public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
+    {
+        $coordinates = $data[$field] ?? null;
+        if (\is_array($coordinates)) {
+            $data[$latColumn] = self::normalizeCoordinate($coordinates['latitude'] ?? null);
+            $data[$lngColumn] = self::normalizeCoordinate($coordinates['longitude'] ?? null);
+        }
+
+        return $data;
     }
 
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

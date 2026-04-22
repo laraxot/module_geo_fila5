@@ -8,47 +8,21 @@ use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 /**
- * Latitude/Longitude coordinate input with validation and map display.
+ * LatitudeLongitudeInput - Dual input fields with map assistance.
  *
- * Provides two text fields for coordinates with optional map widget:
- * - Range validation (-90 to 90 for lat, -180 to 180 for lng)
- * - Interactive map with draggable marker
- * - Current location button
- * - Real-time coordinate updates
- *
- * Owned by Geo module because coordinates are a cross-cutting geo-spatial concern.
- * Rule: Unified state {latitude, longitude}.
+ * Zen: The raw guts of the data for direct manipulation.
+ * Implementation: Separate Blade and Lit JS.
  */
 class LatitudeLongitudeInput extends XotBaseField
 {
     use HasCoordinatePicker;
 
-    /**
-     * Supported JS frameworks for rendering the map component.
-     * - 'blade': Legacy Blade/Alpine implementation (default)
-     * - 'lit': Lit Web Component implementation.
-     */
-    protected const FRAMEWORK_BLADE = 'blade';
-    protected const FRAMEWORK_LIT = 'lit';
-
-    protected string $view = 'geo::filament.forms.components.coordinate-picker';
-
-    protected string $jsFramework = self::FRAMEWORK_BLADE;
-
-    protected float $defaultLatitude = 41.9028;
-
-    protected float $defaultLongitude = 12.4964;
-
-    protected int $defaultZoom = 13;
-
-    protected bool $showMap = true;
+    protected string $view = 'geo::filament.forms.components.latitude-longitude-input';
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->setUpCoordinatePicker();
-
-        // Custom height for this specific input type
-        $this->height('300px');
+        $this->dehydrated(false);
     }
 }

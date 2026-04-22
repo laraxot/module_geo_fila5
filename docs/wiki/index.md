@@ -64,11 +64,14 @@ Indice operativo del wiki Geo.
 | [map-picker-filament-field](./concepts/map-picker-filament-field.md) | Concept | - | 2026-04-21 |
 | [map-picker-locationpicker-architecture](./concepts/map-picker-locationpicker-architecture.md) | Concept | - | 2026-04-21 |
 | [map-picker-runtime-asset-governance](./concepts/map-picker-runtime-asset-governance.md) | Concept | - | 2026-04-21 |
+| [map-picker-address-search-mobile-parity](./concepts/map-picker-address-search-mobile-parity.md) | Concept | prompt map-picker | 2026-04-22 |
 | [mappicker-custom-marker-rule](./concepts/mappicker-custom-marker-rule.md) | Concept | - | 2026-04-21 |
 | [mappicker-runtime-ux](./concepts/mappicker-runtime-ux.md) | Concept | - | 2026-04-21 |
-| [mappicker-xotbasefield-rule](./concepts/mappicker-xotbasefield-rule.md) | Concept | - | 2026-04-21 |
+| [geo-picker-sibling-components-governance](./concepts/geo-picker-sibling-components-governance.md) | Concept | prompt map-picker | 2026-04-22 |
+| [geo-components-stories](./concepts/geo-components-stories.md) | Concept | - | 2026-04-22 |
+| [geo-fields-zen](./concepts/geo-fields-zen.md) | Concept | - | 2026-04-22 |
 | [playwright-visual-testing](./concepts/playwright-visual-testing.md) | Concept | - | 2026-04-21 |
 | [static-geo-map-widget-pattern](./concepts/static-geo-map-widget-pattern.md) | Concept | - | 2026-04-21 |
 | [svg-asset-architecture](./concepts/svg-asset-architecture.md) | Concept | - | 2026-04-21 |
 
-*Ultimo aggiornamento: 2026-04-21*
+*Ultimo aggiornamento: 2026-04-22*

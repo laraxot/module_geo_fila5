@@ -60,9 +60,9 @@ class BuildGeoMapWidgetPayloadAction
                 ])->toArray(),
             ],
             meta: [
-                'totalFeatures' => count($features),
+                'totalFeatures' => \count($features),
                 'availableCategories' => array_values(array_unique(array_filter(array_map(
-                    static fn (array $feature): ?string => $feature['properties']['category'] ?? null,
+                    static fn (array $feature): string => $feature['properties']['category'],
                     $features,
                 )))),
             ],
@@ -114,7 +114,7 @@ class BuildGeoMapWidgetPayloadAction
         $category = data_get($place->placeType, 'slug', 'unknown');
         $title = $this->resolveTitle($place);
         $address = $place->getFormattedAddress();
-        $description = is_string($place->description ?? null) ? $place->description : '';
+        $description = \is_string($place->description ?? null) ? $place->description : '';
         $search = trim(strtolower(implode(' ', array_filter([
             $title,
             $category,
@@ -128,13 +128,13 @@ class BuildGeoMapWidgetPayloadAction
                 'id' => (string) $place->getKey(),
                 'title' => $title,
                 'name' => $title,
-                'category' => is_string($category) ? $category : 'unknown',
+                'category' => \is_string($category) ? $category : 'unknown',
                 'address' => $address,
                 'description' => $description,
                 'search' => $search,
                 'popup' => [
                     'title' => $title,
-                    'category' => is_string($category) ? $category : 'unknown',
+                    'category' => \is_string($category) ? $category : 'unknown',
                     'address' => $address,
                     'description' => $description,
                 ],
@@ -160,8 +160,8 @@ class BuildGeoMapWidgetPayloadAction
             return ['lat' => 45.4642, 'lng' => 9.1900];
         }
 
-        $latitudes = $places->pluck('latitude')->filter(static fn ($value): bool => is_float($value) || is_int($value));
-        $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => is_float($value) || is_int($value));
+        $latitudes = $places->pluck('latitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
+        $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
 
         return [
             'lat' => (float) ($latitudes->average() ?? 45.4642),
@@ -173,7 +173,7 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-        if (is_string($title) && '' !== trim($title)) {
+        if (\is_string($title) && '' !== trim($title)) {
             return trim($title);
         }
 
