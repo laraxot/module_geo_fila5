@@ -1,5 +1,14 @@
 # Geo Wiki Log
 
+## [2026-04-22] fix | Leaflet mappa vuota dopo step wizard — MutationObserver
+- **problema**: cliccare "Avanti" nel wizard Filament lasciava la mappa grigia/vuota
+- **root cause**: Filament wizard nasconde step con `class="hidden"` (Tailwind); Leaflet vedeva container 0×0 al mount; ResizeObserver e IntersectionObserver non intercettano questo
+- **fix**: aggiunto MutationObserver su 6 antenati in `firstUpdated()` di `coordinate-picker-lit.js`; chiama `_refreshMapSize()` con delay 150ms quando `offsetParent !== null`
+- **CDN fix**: rimosso `<link unpkg.com/leaflet.css>` dal render(); aggiunto `import 'leaflet/dist/leaflet.css'` in cima al file
+- **build**: `cd laravel/Themes/Sixteen && npm run build && npm run copy` — 51 moduli, OK
+- **rule**: `bashscripts/ai/.claude/rules/leaflet-wizard-invalidate-size.md`
+- **wiki**: `laravel/Modules/Geo/docs/wiki/concepts/leaflet-wizard-step-invalidate-size.md`
+
 ## [2026-04-22] fix | CoordinatePicker Alpine x-data e prompt quality bar
 - Corretto `coordinate-picker.blade.php`: l'`x-data` usa delimitatori e serializzazione compatibili con stringhe vuote/indirizzi, evitando l'errore Alpine `Unexpected token`.
 - Verificato il markup renderizzato della pagina `tests/segnalazione-crea` con `curl`: `address: ''` resta dentro l'oggetto Alpine senza rompere l'attributo.

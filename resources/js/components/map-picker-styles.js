@@ -34,6 +34,8 @@ export const mapPickerStyles = css`
         width: 100%;
         height: 100%;
         z-index: 1;
+        background: #e5e7eb;
+        opacity: 1;
     }
 
     .layer-controls-overlay {
@@ -49,17 +51,18 @@ export const mapPickerStyles = css`
     .ctrl-btn {
         width: 2.75rem;
         height: 2.75rem;
-        background: #f3f4f6;
-        border: 1px solid #d1d5db;
+        background: #ffffff;
+        border: 1px solid #94a3b8;
         border-radius: 0.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        color: #4b5563;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        color: #17324d;
+        box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
+        opacity: 1;
     }
 
     .ctrl-btn:hover {
