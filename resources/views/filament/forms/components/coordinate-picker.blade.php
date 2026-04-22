@@ -49,15 +49,21 @@ $labels = [
             selectSearchResult(result) {
                 const lat = parseFloat(result.lat);
                 const lon = parseFloat(result.lon);
-                this.state.latitude = lat;
-                this.state.longitude = lon;
                 this.showResults = false;
                 this.searchQuery = result.display_name;
-                @if($field->hasReverseGeocoding())
-                void this.reverseGeocode(lat, lon);
-                @else
-                this.state.address = result.display_name;
-                @endif
+
+                const picker = this.$el.querySelector('coordinate-picker-lit');
+                if (picker && typeof picker.setCoordinates === 'function') {
+                    picker.setCoordinates(lat, lon, 'search');
+                } else {
+                    this.state.latitude = lat;
+                    this.state.longitude = lon;
+                    @if($field->hasReverseGeocoding())
+                    void this.reverseGeocode(lat, lon);
+                    @else
+                    this.state.address = result.display_name;
+                    @endif
+                }
             },
 
             async reverseGeocode(lat, lng) {

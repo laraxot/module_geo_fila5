@@ -113,11 +113,33 @@ export class MapPickerLit extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         document.addEventListener('fullscreenchange', () => this._onFullscreenChange());
+
+        // Observe visibility changes to fix map rendering when step becomes visible
+        this._observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && this._map) {
+                        // Map container became visible, invalidate size to fix rendering
+                        setTimeout(() => this._map.invalidateSize(), 100);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        // Start observing the map container
+        const container = this.querySelector('.map-container');
+        if (container) {
+            this._observer.observe(container);
+        }
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         document.removeEventListener('fullscreenchange', () => this._onFullscreenChange());
+        if (this._observer) {
+            this._observer.disconnect();
+        }
         if (this._map) {
             this._map.remove();
             this._map = null;

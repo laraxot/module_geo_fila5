@@ -18,6 +18,10 @@ Indice operativo del wiki Geo.
 - [no-docs-archive-rule](./concepts/no-docs-archive-rule.md)
 - [wiki-sacred-structure-rule](../../../../../docs/wiki/concepts/wiki-sacred-structure-rule.md)
 
+## Regola Leaflet + Wizard
+
+- [leaflet-wizard-step-invalidate-size](./concepts/leaflet-wizard-step-invalidate-size.md) — MutationObserver per rilevare cambio step wizard; invalidateSize() quando container diventa visibile
+
 ## Troubleshooting recente
 
 | Pagina | Tipo | Argomento |

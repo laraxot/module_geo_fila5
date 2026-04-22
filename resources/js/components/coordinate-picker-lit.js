@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
 
@@ -48,7 +49,9 @@ export class CoordinatePickerField extends LitElement {
         this._layers = {};
         this._isProgrammaticUpdate = false;
         this._resizeObserver = null;
+        this._visibilityObserver = null;
         this._currentLayer = 'street';
+        this._boundRefreshMapSize = () => this._refreshMapSize();
     }
 
     render() {
@@ -63,8 +66,6 @@ export class CoordinatePickerField extends LitElement {
                 .map-container.is-fullscreen .map-picker-leaflet-pane { height: 100vh !important; }
                 .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-            
             <div class="map-container ${this.isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
@@ -103,11 +104,32 @@ export class CoordinatePickerField extends LitElement {
     firstUpdated() {
         this._initMap();
         this._resizeObserver = new ResizeObserver(() => {
-            if (this._map) {
-                setTimeout(() => this._map?.invalidateSize(), 350);
-            }
+            this._refreshMapSize();
         });
         this._resizeObserver.observe(this);
+        this._visibilityObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                this._refreshMapSize();
+            }
+        }, { threshold: 0.01 });
+        this._visibilityObserver.observe(this);
+
+        // Watch parent elements for Filament wizard step class="hidden" toggle
+        this._mutationObserver = new MutationObserver(() => {
+            if (this.offsetParent !== null) {
+                setTimeout(() => this._refreshMapSize(), 150);
+            }
+        });
+        let parent = this.parentElement;
+        for (let i = 0; i < 6 && parent; i++) {
+            this._mutationObserver.observe(parent, { attributes: true, attributeFilter: ['class', 'style', 'hidden'] });
+            parent = parent.parentElement;
+        }
+
+        window.addEventListener('resize', this._boundRefreshMapSize);
+        document.addEventListener('livewire:navigated', this._boundRefreshMapSize);
+        document.addEventListener('livewire:updated', this._boundRefreshMapSize);
+        document.addEventListener('click', this._boundRefreshMapSize, true);
         
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isFullscreen) this._toggleFullscreen();
@@ -121,6 +143,12 @@ export class CoordinatePickerField extends LitElement {
             this._map = null;
         }
         this._resizeObserver?.disconnect();
+        this._visibilityObserver?.disconnect();
+        this._mutationObserver?.disconnect();
+        window.removeEventListener('resize', this._boundRefreshMapSize);
+        document.removeEventListener('livewire:navigated', this._boundRefreshMapSize);
+        document.removeEventListener('livewire:updated', this._boundRefreshMapSize);
+        document.removeEventListener('click', this._boundRefreshMapSize, true);
     }
 
     updated(changed) {
@@ -157,8 +185,36 @@ export class CoordinatePickerField extends LitElement {
             void this._requestGeolocation();
         }
 
-        setTimeout(() => this._map?.invalidateSize(), 350);
+        this._refreshMapSize();
     }
+
+    _refreshMapSize = () => {
+        if (!this._map) {
+            return;
+        }
+
+        [0, 80, 180, 350, 700].forEach((delay) => {
+            setTimeout(() => {
+                window.requestAnimationFrame(() => {
+                    const pane = this.querySelector('.map-picker-leaflet-pane');
+                    const rect = pane?.getBoundingClientRect();
+
+                    if (!rect || rect.width === 0 || rect.height === 0) {
+                        return;
+                    }
+
+                    this._map?.invalidateSize();
+
+                    if (this._lat != null && this._lng != null) {
+                        this._updateMarker(this._lat, this._lng);
+                        this._map?.setView([this._lat, this._lng], Math.max(this._map.getZoom(), this.zoom), {
+                            animate: false,
+                        });
+                    }
+                });
+            }, delay);
+        });
+    };
 
     _handleMapInteraction(lat, lng, source = 'manual') {
         this._isProgrammaticUpdate = true;
@@ -182,6 +238,21 @@ export class CoordinatePickerField extends LitElement {
         setTimeout(() => { this._isProgrammaticUpdate = false; }, 100);
     }
 
+    setCoordinates(lat, lng, source = 'programmatic') {
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+            return;
+        }
+
+        this._handleMapInteraction(lat, lng, source);
+
+        if (this._map) {
+            this._map.setView([lat, lng], Math.max(this._map.getZoom(), 16), {
+                animate: true,
+            });
+            this._refreshMapSize();
+        }
+    }
+
     _updateMarker(lat, lng) {
         if (!this._map) return;
         if (!this._marker) {
@@ -203,7 +274,8 @@ export class CoordinatePickerField extends LitElement {
         const lat = this._lat;
         const lng = this._lng;
         this._updateMarker(lat, lng);
-        this._map.setView([lat, lng], this._map.getZoom());
+        this._map.setView([lat, lng], Math.max(this._map.getZoom(), this.zoom));
+        this._refreshMapSize();
     }
 
     _switchLayer() {
