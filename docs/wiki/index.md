@@ -21,6 +21,16 @@ Indice operativo del wiki Geo.
 ## Regola Leaflet + Wizard
 
 - [leaflet-wizard-step-invalidate-size](./concepts/leaflet-wizard-step-invalidate-size.md) — MutationObserver per rilevare cambio step wizard; invalidateSize() quando container diventa visibile
+- [filament-admin-panel-map-visibility-contract](./concepts/filament-admin-panel-map-visibility-contract.md) — contratto mappa in panel Filament admin (non frontoffice)
+- [geo-vite-build-contract](./concepts/geo-vite-build-contract.md) — contratto build Vite modulo Geo (entry reali, buildDirectory, verifica)
+- [lit-light-dom-map-controls-and-sync](./concepts/lit-light-dom-map-controls-and-sync.md) — fix controlli mappa Lit + sync lat/lng in Light DOM
+- [admin-map-magnifier-and-controls-visibility](./concepts/admin-map-magnifier-and-controls-visibility.md) — fix lente enorme e visibilità controlli mappa in admin
+- [admin-map-runtime-500-encryption-key-blocker](./concepts/admin-map-runtime-500-encryption-key-blocker.md) — visual check bloccato da errore bootstrap Laravel (cipher/key), non da rendering mappa
+- [reusable-search-ui-component-rule](./concepts/reusable-search-ui-component-rule.md) — il blocco search dei picker va estratto in componente Blade riutilizzabile
+
+## Story 8-56 — map-picker-lit.js admin fix
+
+- [map-picker-lit-admin-fix-8-56](./concepts/map-picker-lit-admin-fix-8-56.md) — 5 bug risolti: vite input mancante, CDN CSS, IntersectionObserver falso amico, SVG senza dimensioni
 
 ## Troubleshooting recente
 
@@ -74,8 +84,19 @@ Indice operativo del wiki Geo.
 | [geo-picker-sibling-components-governance](./concepts/geo-picker-sibling-components-governance.md) | Concept | prompt map-picker | 2026-04-22 |
 | [geo-components-stories](./concepts/geo-components-stories.md) | Concept | - | 2026-04-22 |
 | [geo-fields-zen](./concepts/geo-fields-zen.md) | Concept | - | 2026-04-22 |
+| [geo-picker-runtime-stability-best-practices](./concepts/geo-picker-runtime-stability-best-practices.md) | Concept | runtime + wizard verification | 2026-04-23 |
 | [playwright-visual-testing](./concepts/playwright-visual-testing.md) | Concept | - | 2026-04-21 |
 | [static-geo-map-widget-pattern](./concepts/static-geo-map-widget-pattern.md) | Concept | - | 2026-04-21 |
 | [svg-asset-architecture](./concepts/svg-asset-architecture.md) | Concept | - | 2026-04-21 |
+| [has-coordinate-picker-dry-boundary-rule](./concepts/has-coordinate-picker-dry-boundary-rule.md) | Concept | recent refactor | 2026-04-23 |
+| [psr4-namespace-collision-coordinatepicker](./concepts/psr4-namespace-collision-coordinatepicker.md) | Concept | composer dump-autoload PSR-4 warnings | 2026-04-23 |
+| [field-component-lessons-learned](./concepts/field-component-lessons-learned.md) | Concept | merge conflict resolution + EnumSelect fix | 2026-04-23 |
+| [geopoint-picker-wizard-visibility](./concepts/geopoint-picker-map-invisible-wizard-fix.md) | Concept | map invisibilità dopo wizard step "Avanti" | 2026-04-23 |
 
-*Ultimo aggiornamento: 2026-04-22*
+## Lessons Learned — Merge Conflict & Field Components
+
+| Pagina | Tipo | Argomento |
+|--------|------|-----------|
+| [field-component-lessons-learned](./concepts/field-component-lessons-learned.md) | concept | Best practices, anti-pattern e false friends da merge conflict, EnumSelect fix, `$view` properties |
+
+*Ultimo aggiornamento: 2026-04-23*

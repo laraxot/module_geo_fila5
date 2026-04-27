@@ -3,6 +3,7 @@ import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
 import { controlIcons, mapPickerStyles } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
+import 'leaflet/dist/leaflet.css';
 
 /**
  * GeoLatLngInput
@@ -52,7 +53,6 @@ export class GeoLatLngInput extends LitElement {
                 .input-group label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #6b7280; }
                 .input-group input { padding: 0.625rem 0.875rem; font-size: 0.875rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             
             <div class="geo-latlng-shell">
                 <div class="map-container ${this._isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">

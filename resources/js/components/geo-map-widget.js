@@ -1,11 +1,14 @@
 import { LitElement, html, css } from 'lit';
 import L from 'leaflet';
 import 'leaflet.markercluster';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 /**
  * GeoMapWidget - UI Component for displaying clusters of geographic data.
  * Zen: Vision. Aggregates information into a meaningful overview.
- * 
+ *
  * Commandment 4: Thou shalt be encapsulated (Shadow DOM).
  */
 export class GeoMapWidget extends LitElement {
@@ -38,9 +41,6 @@ export class GeoMapWidget extends LitElement {
 
     render() {
         return html`
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
             <div class="map-container"></div>
         `;
     }

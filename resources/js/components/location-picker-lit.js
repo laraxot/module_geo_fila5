@@ -3,7 +3,7 @@ import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
 import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
-
+import 'leaflet/dist/leaflet.css';
 /**
  * LocationPickerLit
  * ZEN: Standardized geographical picker with address support.
@@ -53,8 +53,7 @@ export class LocationPickerLit extends LitElement {
                 .ctrl-btn:hover svg { color: #ef4444; }
                 .close-fullscreen-btn { background: #ef4444 !important; color: white !important; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-            
+                        
             <div class="map-container ${this.isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}

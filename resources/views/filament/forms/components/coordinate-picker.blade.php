@@ -23,8 +23,11 @@ $labels = [
             isFullscreen: false,
 
             handleCoordsChanged(event) {
-                this.state.latitude = event.detail.latitude;
-                this.state.longitude = event.detail.longitude;
+                this.state = {
+                    ...(this.state ?? {}),
+                    latitude: event.detail.latitude,
+                    longitude: event.detail.longitude,
+                };
 
                 @if($field->hasReverseGeocoding())
                 void this.reverseGeocode(this.state.latitude, this.state.longitude);
@@ -56,12 +59,11 @@ $labels = [
                 if (picker && typeof picker.setCoordinates === 'function') {
                     picker.setCoordinates(lat, lon, 'search');
                 } else {
-                    this.state.latitude = lat;
-                    this.state.longitude = lon;
+                    this.state = { ...(this.state ?? {}), latitude: lat, longitude: lon };
                     @if($field->hasReverseGeocoding())
                     void this.reverseGeocode(lat, lon);
                     @else
-                    this.state.address = result.display_name;
+                    this.state = { ...(this.state ?? {}), address: result.display_name };
                     @endif
                 }
             },
@@ -70,7 +72,7 @@ $labels = [
                 try {
                     const result = await this.$wire.callSchemaComponentMethod('{{ $id }}', 'reverseGeocode', { latitude: lat, longitude: lng });
                     if (result) {
-                        Object.assign(this.state, result);
+                        this.state = { ...(this.state ?? {}), ...result };
                     }
                 } catch (e) {}
             }
@@ -79,38 +81,18 @@ $labels = [
         @coords-changed.stop="handleCoordsChanged($event)"
         @fullscreen-changed.stop="handleFullscreenChanged($event)"
     >
-        {{-- Search Input --}}
-        <div class="relative items-center gap-2" x-show="!isFullscreen">
-            <div class="relative group">
-                <input type="text" x-model="searchQuery" @input.debounce.500ms="searchAddress()"
-                    @keydown.escape="showResults = false"
-                    placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}"
-                    class="fi-input block w-full border-none bg-white py-1.5 pl-10 pr-3 text-sm text-gray-950 shadow-sm ring-1 ring-gray-950/10 transition duration-75 focus-within:ring-2 focus-within:ring-primary-600 dark:bg-white/5 dark:text-white dark:ring-white/20 dark:focus-within:ring-primary-500 rounded-lg">
-                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                    <x-heroicon-o-magnifying-glass class="h-4 w-4" />
-                </div>
-                <div x-show="isSearching" class="absolute right-3 top-1/2 -translate-y-1/2">
-                    <x-filament::loading-indicator class="h-4 w-4" />
-                </div>
-            </div>
-
-            {{-- Results Dropdown --}}
-            <ul x-show="showResults" @click.away="showResults = false"
-                class="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 shadow-lg ring-1 ring-gray-950/5 dark:bg-gray-800 dark:ring-white/10">
-                <template x-for="res in searchResults" :key="res.place_id">
-                    <li @click="selectSearchResult(res)"
-                        class="cursor-pointer px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-white/5">
-                        <span x-text="res.display_name"></span>
-                    </li>
-                </template>
-            </ul>
-        </div>
+        @include('geo::filament.components.address-search-input')
 
         {{-- Lit Component --}}
-        <coordinate-picker-lit :state="state" zoom="{{ $field->getZoom() }}"
-            height="{{ $field->getHeight() }}" 
-            geolocate-when-empty="{{ $field->getGeolocateWhenEmpty() }}"
-            labels='@json($labels)'></coordinate-picker-lit>
+        {{-- 🛡️ wire:ignore CRITICAL: prevents Livewire from destroying map DOM on re-renders --}}
+        <div wire:ignore class="map-container-wrapper" style="height: {{ $field->getHeight() }}px;">
+            <coordinate-picker-lit
+                :state="state"
+                zoom="{{ $field->getZoom() }}"
+                @if($field->getGeolocateWhenEmpty()) geolocate-when-empty @endif
+                labels='@json($labels)'
+            ></coordinate-picker-lit>
+        </div>
 
         {{-- Readout Summary --}}
         <div

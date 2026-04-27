@@ -16,6 +16,10 @@ use Livewire\Attributes\Renderless;
  */
 trait HasCoordinatePicker
 {
+    protected ?string $latitude = null;
+
+    protected ?string $longitude = null;
+
     protected float $centerLatitude = 41.9028;
 
     protected float $centerLongitude = 12.4964;
@@ -35,6 +39,9 @@ trait HasCoordinatePicker
     protected function setUpCoordinatePicker(): void
     {
         $this->default(['latitude' => null, 'longitude' => null]);
+        // Coordinate pickers are UI-only in the frontoffice flows: keep state on the parent form object.
+        // This prevents Filament from persisting transient map state unexpectedly.
+        $this->dehydrated(false);
 
         $this->afterStateHydrated(static function (self $component, mixed $state): void {
             if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {
@@ -51,10 +58,9 @@ trait HasCoordinatePicker
                 return;
             }
 
-            $component->state([
-                'latitude' => $component->getCenterLatitude(),
-                'longitude' => $component->getCenterLongitude(),
-            ]);
+            // No coordinates available yet: keep nulls and let the UI decide how to center
+            // (e.g. geolocation when enabled, otherwise a JS-level fallback).
+            $component->state(['latitude' => null, 'longitude' => null]);
         });
     }
 
@@ -161,6 +167,26 @@ trait HasCoordinatePicker
         return $this->geolocateWhenEmpty;
     }
 
+    public function getLatitude(): ?float
+    {
+        $state = $this->getState();
+        if (! \is_array($state)) {
+            return null;
+        }
+
+        return self::normalizeCoordinate($state['latitude'] ?? null);
+    }
+
+    public function getLongitude(): ?float
+    {
+        $state = $this->getState();
+        if (! \is_array($state)) {
+            return null;
+        }
+
+        return self::normalizeCoordinate($state['longitude'] ?? null);
+    }
+
     /**
      * Searches for addresses matching the query string via Nominatim.
      * Server-side to respect rate-limiting and User-Agent policies.
@@ -176,8 +202,10 @@ trait HasCoordinatePicker
         }
 
         try {
+            $appName = (string) config('app.name', 'Laraxot');
+            $appUrl = (string) config('app.url', 'localhost');
             $response = Http::withHeaders([
-                'User-Agent' => \sprintf('%s/1.0 (%s)', config('app.name', 'Laraxot'), config('app.url', 'localhost')),
+                'User-Agent' => \sprintf('%s/1.0 (%s)', $appName, $appUrl),
             ])
                 ->timeout(10)
                 ->get('https://nominatim.openstreetmap.org/search', [
@@ -193,7 +221,12 @@ trait HasCoordinatePicker
 
             $data = $response->json();
 
-            return \is_array($data) ? $data : [];
+            if (! \is_array($data)) {
+                return [];
+            }
+
+            /** @var array<int, array<string, mixed>> $data */
+            return $data;
         } catch (\Throwable) {
             return [];
         }

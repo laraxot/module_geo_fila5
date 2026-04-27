@@ -1,0 +1,80 @@
+{
+  "_geo-heroicons-BIgEVtnL.js": {
+    "file": "assets/geo-heroicons-BIgEVtnL.js",
+    "name": "geo-heroicons",
+    "imports": [
+      "_map-picker-marker-config-BH3wBAsd.js"
+    ]
+  },
+  "_map-picker-marker-config-BH3wBAsd.js": {
+    "file": "assets/map-picker-marker-config-BH3wBAsd.js",
+    "name": "map-picker-marker-config",
+    "css": [
+      "assets/map-picker-marker-config-BUYAHFr5.css"
+    ],
+    "assets": [
+      "assets/map-picker-marker-fallback-Bu_stv-I.svg",
+      "assets/layers-BWBAp2CZ.png",
+      "assets/layers-2x-Bpkbi35X.png",
+      "assets/marker-icon-hN30_KVU.png"
+    ]
+  },
+  "_map-picker-marker-config-BUYAHFr5.css": {
+    "file": "assets/map-picker-marker-config-BUYAHFr5.css",
+    "src": "_map-picker-marker-config-BUYAHFr5.css"
+  },
+  "node_modules/leaflet/dist/images/layers-2x.png": {
+    "file": "assets/layers-2x-Bpkbi35X.png",
+    "src": "node_modules/leaflet/dist/images/layers-2x.png"
+  },
+  "node_modules/leaflet/dist/images/layers.png": {
+    "file": "assets/layers-BWBAp2CZ.png",
+    "src": "node_modules/leaflet/dist/images/layers.png"
+  },
+  "node_modules/leaflet/dist/images/marker-icon.png": {
+    "file": "assets/marker-icon-hN30_KVU.png",
+    "src": "node_modules/leaflet/dist/images/marker-icon.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-x1XGuNl0.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/components/coordinate-picker-lit.js": {
+    "file": "assets/coordinate-picker-lit-DkypNm4p.js",
+    "name": "coordinate-picker-lit",
+    "src": "resources/js/components/coordinate-picker-lit.js",
+    "isEntry": true,
+    "imports": [
+      "_map-picker-marker-config-BH3wBAsd.js"
+    ]
+  },
+  "resources/js/components/geopoint-picker-lit.js": {
+    "file": "assets/geopoint-picker-lit-BHSee6iG.js",
+    "name": "geopoint-picker-lit",
+    "src": "resources/js/components/geopoint-picker-lit.js",
+    "isEntry": true,
+    "imports": [
+      "_map-picker-marker-config-BH3wBAsd.js",
+      "_geo-heroicons-BIgEVtnL.js"
+    ]
+  },
+  "resources/js/components/map-picker-lit.js": {
+    "file": "assets/map-picker-lit-D0DlyjS7.js",
+    "name": "map-picker-lit",
+    "src": "resources/js/components/map-picker-lit.js",
+    "isEntry": true,
+    "imports": [
+      "_map-picker-marker-config-BH3wBAsd.js",
+      "_geo-heroicons-BIgEVtnL.js"
+    ]
+  },
+  "resources/svg/map-picker-marker-fallback.svg": {
+    "file": "assets/map-picker-marker-fallback-Bu_stv-I.svg",
+    "src": "resources/svg/map-picker-marker-fallback.svg"
+  }
+}

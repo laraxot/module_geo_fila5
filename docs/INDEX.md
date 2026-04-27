@@ -38,6 +38,7 @@
 - [**Sprint Planning**](./SPRINT_PLANNING.md) - Sprint planning and tracking
 - [**Project Management**](./PROJECT.md) - Project management documentation
 - [**PHPStan Fixes**](./PHPSTAN_FIXES.md) - Code quality fixes and improvements
+- [**Vite Build Configuration**](./vite-build-configuration.md) - Vite 7.x + Tailwind 4.x setup per moduli
 - [**Configuration**](./config/config.php) - Module configuration
 
 ### 📁 Stories & Tasks

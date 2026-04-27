@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
-import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
+import 'leaflet/dist/leaflet.css';
+import { mapPickerStylesText, controlIcons } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
+import { geoIcon } from './geo-heroicons.js';
 
 /**
  * MapPickerLit
@@ -54,12 +56,11 @@ export class MapPickerLit extends LitElement {
         return html`
             <style>
                 map-picker-lit { display: block; width: 100%; }
-                ${mapPickerStyles}
+                ${mapPickerStylesText}
                 .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
-                .ctrl-btn svg { width: 1.5rem; height: 1.5rem; color: #374151; }
-                .ctrl-btn:hover svg { color: #ef4444; }
+                .ctrl-btn svg { width: 1.5rem !important; height: 1.5rem !important; min-width: 1.5rem !important; min-height: 1.5rem !important; color: #ffffff !important; }
+                .ctrl-btn:hover svg { color: #60a5fa !important; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
@@ -68,19 +69,19 @@ export class MapPickerLit extends LitElement {
                 
                 <div class="layer-controls-overlay">
                     <button class="ctrl-btn" type="button" @click="${this._toggleFullscreen}" title="Fullscreen">
-                        ${controlIcons.fullscreen}
+                        ${this._renderIcon('arrows-pointing-out')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._handleGeolocation(true)}" title="Mia posizione">
-                        ${controlIcons.locate}
+                        ${this._renderIcon('map-pin')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${this._switchLayer}" title="Cambia Layer">
-                        ${controlIcons.layer}
+                        ${this._renderIcon('squares-2x2')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomIn()}" title="Zoom In">
-                        ${controlIcons.zoomIn}
+                        ${this._renderIcon('plus')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomOut()}" title="Zoom Out">
-                        ${controlIcons.zoomOut}
+                        ${this._renderIcon('minus')}
                     </button>
                 </div>
 
@@ -89,6 +90,10 @@ export class MapPickerLit extends LitElement {
                 </div>
             </div>
         `;
+    }
+
+    _renderIcon(name) {
+        return geoIcon(name);
     }
 
     _renderSearch() {
@@ -102,9 +107,7 @@ export class MapPickerLit extends LitElement {
                     autocomplete="off"
                 />
                 <button class="ctrl-btn" @click="${this._handleSearch}" type="button" aria-label="Cerca">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                    ${this._renderIcon('magnifying-glass')}
                 </button>
             </div>
         `;
@@ -114,32 +117,27 @@ export class MapPickerLit extends LitElement {
         super.connectedCallback();
         document.addEventListener('fullscreenchange', () => this._onFullscreenChange());
 
-        // Observe visibility changes to fix map rendering when step becomes visible
-        this._observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && this._map) {
-                        // Map container became visible, invalidate size to fix rendering
-                        setTimeout(() => this._map.invalidateSize(), 100);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        // Start observing the map container
-        const container = this.querySelector('.map-container');
-        if (container) {
-            this._observer.observe(container);
+        // MutationObserver — rileva toggle class="hidden" del wizard Filament 5 (depth 15)
+        // IntersectionObserver è un false friend: non rileva Tailwind class="hidden"
+        this._mutationObserver = new MutationObserver(() => {
+            if (this.offsetParent !== null && this._map) {
+                setTimeout(() => this._map.invalidateSize(), 150);
+            }
+        });
+        let parent = this.parentElement;
+        for (let i = 0; i < 15 && parent; i++) {
+            this._mutationObserver.observe(parent, {
+                attributes: true,
+                attributeFilter: ['class', 'style', 'hidden'],
+            });
+            parent = parent.parentElement;
         }
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         document.removeEventListener('fullscreenchange', () => this._onFullscreenChange());
-        if (this._observer) {
-            this._observer.disconnect();
-        }
+        this._mutationObserver?.disconnect();
         if (this._map) {
             this._map.remove();
             this._map = null;
@@ -301,6 +299,10 @@ export class MapPickerLit extends LitElement {
         if (this._map) {
             setTimeout(() => this._map.invalidateSize(), 300);
         }
+    }
+
+    _getFullscreenIcon() {
+        return document.fullscreenElement ? 'arrows-pointing-in' : 'arrows-pointing-out';
     }
 }
 

@@ -1,5 +1,83 @@
 # Geo Wiki Log
 
+## [2026-04-27] refactor | story 8-62 — search ui picker estratta in componente riutilizzabile
+- estratto blocco search (`input + loading + risultati`) da `coordinate-picker.blade.php` in `filament/components/address-search-input.blade.php`.
+- il coordinate picker ora include il componente riusabile con `@include('geo::filament.components.address-search-input')`.
+- aggiunta regola wiki: `concepts/reusable-search-ui-component-rule.md`.
+
+## [2026-04-27] verifica | story 8-61 — admin map visual check bloccato da runtime 500
+- eseguito controllo visuale con strumenti browser e screenshot su route admin ticket create.
+- evidenza: pagina in `Internal Server Error` con `Unsupported cipher or incorrect key length` (bootstrap encryption), prima del render mappa.
+- confermata assenza nel DOM di `coordinate-picker-lit`/`map-picker-lit` in questo stato.
+- nuova pagina: `concepts/admin-map-runtime-500-encryption-key-blocker.md`.
+
+## [2026-04-27] fix | story 8-57 — geopoint-picker-lit.js (5 bug)
+- BUG 1: aggiunto `geopoint-picker-lit.js` in `vite.config.js` (non era bundlato)
+- BUG 2: rimosso CDN unpkg Leaflet CSS, aggiunto `import 'leaflet/dist/leaflet.css'`
+- BUG 3: `mapPickerStylesText` (stringa) invece di `mapPickerStyles` (CSSResult); `z-index: 1000 !important` su `.layer-controls-overlay` e `.search-box` — `:host` vars ignorati in Light DOM
+- BUG 4: MutationObserver depth 15 in `firstUpdated()` per rilevare `class="hidden"` wizard
+- BUG 5: creato `geo-heroicons.js` — `geoIcon('name')` per icone Lit (Filament way)
+- `AdminPanelProvider.php`: aggiunto `geopoint-picker` asset
+- BUILD: `npm run build && npm run copy` OK
+- REGOLE: `lit-icons-filament-way.md`, `translation-navigation-placeholder-rule.md`
+
+## [2026-04-27] fix | admin route lens oversize + controls hidden
+- in `coordinate-picker.blade.php` sostituita lente search con SVG inline a dimensione fissa per evitare scaling anomalo.
+- in `coordinate-picker-lit.js` rafforzata visibilità controlli mappa (top/right, z-index, sizing bottoni e icone).
+- in `coordinate-picker-lit.js` corretto `dragend` marker usando `e.target.getLatLng()` con guard.
+- in `map-picker-lit.js` corretto style binding da `mapPickerStyles` a `mapPickerStylesText`.
+- eseguiti `npm run build` + `npm run copy` nel modulo Geo con esito OK.
+- nuova pagina `concepts/admin-map-magnifier-and-controls-visibility.md`.
+
+## [2026-04-27] fix | lit light-dom css + immutable state sync
+- consolidato `CoordinatePicker` Lit per contesto Light DOM: `mapPickerStylesText` usato nel `<style>` inline del componente.
+- in `coordinate-picker.blade.php` aggiornamento stato portato a pattern immutabile (`this.state = { ... }`) per rendere affidabile il refresh di latitude/longitude.
+- rieseguiti `npm run build` e `npm run copy` da `laravel/Modules/Geo` con esito positivo.
+- aggiunta pagina `concepts/lit-light-dom-map-controls-and-sync.md`.
+
+## [2026-04-27] fix | story 8-56 — map-picker-lit.js admin panel (5 bug)
+- BUG 1 FIXED: aggiunto `map-picker-lit.js` agli input di `vite.config.js` (era assente → custom element non registrato)
+- BUG 2 FIXED: rimosso CDN `<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">` dal `render()`, aggiunto `import 'leaflet/dist/leaflet.css'` in cima al file
+- BUG 3 FIXED: sostituito `IntersectionObserver` (false friend) con `MutationObserver` depth 15 in `connectedCallback()` — rileva correttamente class="hidden" wizard Filament
+- BUG 4: marker dragend già presente correttamente — non bug
+- BUG 5 FIXED: aggiunto `width="20" height="20"` all'SVG inline in `_renderSearch()` — elimina lente enorme
+- ASSET: `AdminPanelProvider.php` aggiornato con registrazione `Js::make('map-picker', ...)` per `map-picker-lit.js`
+- BUILD: `npm run build && npm run copy` completato con successo da `laravel/Modules/Geo`
+- VERIFICA PENDINGA: Playwright MCP non funziona in questo ambiente (`/opt/google/chrome/chrome` non trovato)
+- Nuova pagina: `concepts/map-picker-lit-admin-fix-8-56.md`
+
+## [2026-04-27] fix | geo npm build broken entries + js syntax
+- eseguito `npm run build` da `laravel/Modules/Geo` con errore iniziale su entry Vite inesistente (`resources/css/app.css`).
+- corretto `vite.config.js`: `buildDirectory` da `assets/chart` a `assets/geo`, input CSS/JS allineati ai file reali.
+- corretto parse error in `resources/js/components/coordinate-picker-lit.js` (constructor non chiuso).
+- rieseguito build con esito positivo (`vite build` completato, manifest generato in `public/manifest.json`).
+- nuova pagina: `concepts/geo-vite-build-contract.md`.
+
+## [2026-04-27] governance | Filament admin panel map visibility contract
+- aggiunta pagina `concepts/filament-admin-panel-map-visibility-contract.md`.
+- chiarito che i fix mappa frontoffice non sono prova sufficiente per route admin panel.
+- formalizzate regole su visibility timing, `invalidateSize`, redraw mirato e verifica route reale.
+- aggiunta evidenza runtime: `geo-map-widget.js` assente su `public_html/modules/geo/` mentre `geo.js` e' su `public_html/themes/Geo/js/`.
+- registrata root-cause loader: fallback `map-picker-component.js` senza alias `map-picker-lit` nel ramo `resp.ok === false`.
+- eseguita verifica visuale reale route admin tickets/create con conferma fallback runtime attivo (`themes/Geo/js/map-picker-component.js`).
+- fix applicato su provider admin Geo: rimossa registrazione `geo-map-widget.js` (asset non presente).
+- fix applicato su loader runtime: bundle primario `themes/Geo/js/geo.js` + fallback coerente.
+- fix fallback map-picker component: Leaflet locale-first (`/themes/Geo/...`) con CDN solo come backup.
+
+## [2026-04-23] ops | PSR-4 / namespace collision - CoordinatePicker
+- Nuova pagina: `concepts/psr4-namespace-collision-coordinatepicker.md`.
+- Documentata la regola: namespace coerente con path (es. `app/Forms/...` => `Modules\\Geo\\Forms\\...`) per evitare classi skip in `composer dump-autoload`.
+
+## [2026-04-23] governance | HasCoordinatePicker come boundary DRY della famiglia picker
+- documentata la regola `has-coordinate-picker-dry-boundary-rule`
+- nella trait vivono stato/helper condivisi; nelle classi concrete solo comportamento davvero specifico
+- aggiunta sezione best practices, bad practices e false friends per evitare nuove duplicazioni tra sibling picker
+
+## [2026-04-23] governance | Geo picker runtime stability
+- Documentate best practices, bad practices e false friends per i picker Geo in wizard/frontoffice.
+- Fissate le regole su import bundle tema, invalidateSize, flicker control, trait condivisi e divieto di `$view` nei componenti che estendono `XotBaseField`.
+- Nuova pagina: `concepts/geo-picker-runtime-stability-best-practices.md`.
+
 ## [2026-04-22] fix | Leaflet mappa vuota dopo step wizard — MutationObserver
 - **problema**: cliccare "Avanti" nel wizard Filament lasciava la mappa grigia/vuota
 - **root cause**: Filament wizard nasconde step con `class="hidden"` (Tailwind); Leaflet vedeva container 0×0 al mount; ResizeObserver e IntersectionObserver non intercettano questo

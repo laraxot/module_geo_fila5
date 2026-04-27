@@ -68,7 +68,6 @@ export class PlacePickerField extends LitElement {
                 .place-picker-readout__value--set { color: #2563eb; font-weight: 600; }
                 .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             
             <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 ${guard([], () => html`<div class="place-picker-leaflet-pane" style="height: 100%;"></div>`)}

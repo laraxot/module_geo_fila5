@@ -50,7 +50,6 @@ export class MyMap extends LitElement {
 
     render() {
         return html`
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
             <div class="map-wrapper" style="height: ${this.height};">
                 <div class="map-canvas"></div>
             </div>
