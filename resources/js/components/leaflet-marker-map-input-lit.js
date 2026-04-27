@@ -3,6 +3,7 @@ import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
 import { mapPickerStyles } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
+import 'leaflet/dist/leaflet.css';
 
 /**
  * LeafletMarkerMapInputLit
@@ -44,7 +45,6 @@ export class LeafletMarkerMapInputLit extends LitElement {
                 leaflet-marker-map-input-lit { display: block; width: 100%; }
                 ${mapPickerStyles}
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             <div class="map-container" style="--map-height: ${this.height}">
                 ${guard([], () => html`<div class="leaflet-marker-map-pane" style="height: 100%;"></div>`)}
             </div>

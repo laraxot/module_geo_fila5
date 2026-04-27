@@ -1,13 +1,12 @@
 <?php
 
-namespace Modules\Geo\Filament\Forms\Components;
+declare(strict_types=1);
 
+namespace Modules\Geo\Forms\Components;
+
+use Livewire\Attributes\On;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Concerns\InteractsWithWire;
-use Livewire\Component;
-use Livewire\Attributes\On;
-use Livewire\Attributes\Url;
-use InvalidArgumentException;
 
 class CoordinatePicker extends Field
 {
@@ -127,3 +126,5 @@ class CoordinatePicker extends Field
 
         return [$latitudeColumn => $lat, $longitudeColumn => $lng];
     }
+
+}

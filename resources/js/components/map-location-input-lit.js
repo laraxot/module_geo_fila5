@@ -46,7 +46,6 @@ export class MapLocationInputLit extends LitElement {
                 map-location-input-lit { display: block; width: 100%; }
                 ${mapPickerStyles}
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             <div class="map-container" style="--map-height: ${this.height}">
                 html`<div class="map-location-pane" style="height: 100%;"></div>`
                 

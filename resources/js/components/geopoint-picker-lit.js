@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
-import { mapPickerStyles, controlIcons } from './map-picker-styles.js';
+import 'leaflet/dist/leaflet.css';
+import { mapPickerStylesText } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
+import { geoIcon } from './geo-heroicons.js';
 
 /**
  * GeopointPickerLit
@@ -49,32 +51,33 @@ export class GeopointPickerLit extends LitElement {
         return html`
             <style>
                 geopoint-picker-lit { display: block; width: 100%; height: 100%; min-height: 200px; }
-                ${mapPickerStyles}
+                ${mapPickerStylesText}
                 .map-container { min-height: 200px; }
-                .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
+                /* BUG 3 fix: :host CSS vars are ignored in Light DOM — hardcode z-index */
+                .layer-controls-overlay { z-index: 1000 !important; display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
+                .search-box { z-index: 1000 !important; }
                 .ctrl-btn svg { width: 1.5rem; height: 1.5rem; color: #374151; }
                 .ctrl-btn:hover svg { color: #ef4444; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-            
+
             <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${mapHeight}">
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
-                
+
                 <div class="layer-controls-overlay">
                     <button class="ctrl-btn" type="button" @click="${this._toggleFullscreen}" title="Fullscreen">
-                        ${controlIcons.fullscreen}
+                        ${geoIcon('arrows-pointing-out')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._handleGeolocation(true)}" title="Mia posizione">
-                        ${controlIcons.locate}
+                        ${geoIcon('map-pin')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${this._switchLayer}" title="Cambia Layer">
-                        ${controlIcons.layer}
+                        ${geoIcon('squares-2x2')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomIn()}" title="Zoom In">
-                        ${controlIcons.zoomIn}
+                        ${geoIcon('plus')}
                     </button>
                     <button class="ctrl-btn" type="button" @click="${() => this._map?.zoomOut()}" title="Zoom Out">
-                        ${controlIcons.zoomOut}
+                        ${geoIcon('minus')}
                     </button>
                 </div>
 
@@ -91,11 +94,27 @@ export class GeopointPickerLit extends LitElement {
             if (this._map) this._map.invalidateSize();
         });
         this._resizeObserver.observe(this);
+
+        // BUG 4 fix: MutationObserver depth 15 — detects class="hidden" toggle by Filament wizard
+        this._mutationObserver = new MutationObserver(() => {
+            if (this.offsetParent !== null && this._map) {
+                setTimeout(() => this._map.invalidateSize(), 150);
+            }
+        });
+        let parent = this.parentElement;
+        for (let i = 0; i < 15 && parent; i++) {
+            this._mutationObserver.observe(parent, {
+                attributes: true,
+                attributeFilter: ['class', 'style', 'hidden'],
+            });
+            parent = parent.parentElement;
+        }
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this._resizeObserver?.disconnect();
+        this._mutationObserver?.disconnect();
         if (this._map) {
             this._map.remove();
             this._map = null;
@@ -204,6 +223,15 @@ export class GeopointPickerLit extends LitElement {
                 { enableHighAccuracy: true, timeout: 5000 }
             );
         });
+    }
+
+    setCoordinates(lat, lng, source = 'programmatic') {
+        const latitude = parseFloat(lat);
+        const longitude = parseFloat(lng);
+        if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
+        this._handleInteraction(latitude, longitude, source);
+        this._map?.setView([latitude, longitude], Math.max(this._map?.getZoom() || this.zoom, 16), { animate: true });
+        this._refreshMapSize();
     }
 
     _toggleFullscreen() {

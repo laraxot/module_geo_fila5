@@ -55,7 +55,6 @@ export class MapPositionerLit extends LitElement {
                 .ctrl-btn svg { width: 1.5rem; height: 1.5rem; color: #374151; }
                 .ctrl-btn:hover svg { color: #ef4444; }
             </style>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
             <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}

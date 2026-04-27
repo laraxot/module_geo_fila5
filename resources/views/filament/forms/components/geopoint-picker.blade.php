@@ -35,11 +35,56 @@ $height = $field->getHeight() ?: '400px';
                 });
             },
 
-            handleGeopointChanged(event) {
-                const { latitude, longitude } = event.detail;
-                this._suppressUpdate = true;
-                this._lat = latitude;
-                this._lng = longitude;
+                async searchAddress() {
+                    if (!this.searchQuery || this.searchQuery.length < 3) return;
+                    this.isSearching = true;
+                    try {
+                        const results = await this.$wire.callSchemaComponentMethod(
+                            '{{ $id }}',
+                            'searchAddress',
+                            { query: this.searchQuery }
+                        );
+                        if (results && results.length > 0) {
+                            this.searchResults = results;
+                            this.showResults = true;
+                        }
+                    } catch (e) {
+                        console.error('Search failed:', e);
+                    } finally {
+                        this.isSearching = false;
+                    }
+                },
+
+                selectAddress(result) {
+                    const lat = parseFloat(result.lat);
+                    const lng = parseFloat(result.lon);
+                    this._lat = lat;
+                    this._lng = lng;
+                    this.address = result.display_name || '';
+                    this.searchQuery = result.display_name || '';
+                    this.showResults = false;
+                    this.searchResults = [];
+
+                    // Update Livewire state
+                    const newState = {
+                        latitude: lat,
+                        longitude: lng,
+                        address: this.address,
+                    };
+                    this.$wire.$set('{{ $statePath }}', newState);
+
+                    // Move map to selected address
+                    const picker = this.$el.querySelector('geopoint-picker-lit');
+                    if (picker && typeof picker.setCoordinates === 'function') {
+                        picker.setCoordinates(lat, lng, 'search');
+                    }
+                },
+
+                handleGeopointChanged(event) {
+                    const { latitude, longitude } = event.detail;
+                    this._suppressUpdate = true;
+                    this._lat = latitude;
+                    this._lng = longitude;
 
                 // Update state with structured data
                 const newState = {

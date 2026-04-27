@@ -67,7 +67,7 @@ export function createMapPickerLeafletIcon(L, type = 'default') {
     return L.divIcon({
         className: 'map-picker-marker map-picker-marker--custom',
         html: `<div class="map-picker-marker__inner" aria-hidden="true">${markerSvg}</div>`,
-        iconSize: [44, 56],
+        iconSize: [32, 45],
         iconAnchor: [22, 54],
         popupAnchor: [0, -42],
     });
