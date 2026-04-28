@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament\Forms;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
+use Modules\Geo\Tests\TestCase;
 
 /*
  * Test LatitudeLongitudeInput component for story 8-10:

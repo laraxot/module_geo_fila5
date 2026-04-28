@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
@@ -12,6 +12,7 @@ use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
+use Modules\Geo\Tests\TestCase;
 
 test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');

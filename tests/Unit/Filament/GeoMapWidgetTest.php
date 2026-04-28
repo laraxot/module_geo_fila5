@@ -6,7 +6,7 @@ use Modules\Geo\Filament\Pages\Dashboard;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 
 test('geo map widget resolves embedded geojson dataset', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $dataset = $widget->getDataset();
 
     expect($dataset['type'])->toBe('FeatureCollection')
@@ -15,7 +15,7 @@ test('geo map widget resolves embedded geojson dataset', function (): void {
 });
 
 test('geo map widget exposes categories and config', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $config = $widget->getMapConfig();
 
     expect($widget->getCategories())->toContain('farm', 'marketplace', 'beekeeper', 'vending_machine')
@@ -36,14 +36,14 @@ test('geo map widget exposes categories and config', function (): void {
 });
 
 test('geo map widget serializes dataset and config to json', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
 
     expect($widget->getDatasetJson())->toStartWith('{')
         ->and($widget->getConfigJson())->toStartWith('{');
 });
 
 test('geo dashboard registers geo map widget', function (): void {
-    $dashboard = new Dashboard();
+    $dashboard = new Dashboard;
 
     expect($dashboard->getWidgets())->toContain(GeoMapWidget::class);
 });

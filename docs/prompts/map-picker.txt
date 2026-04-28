@@ -1,803 +1,467 @@
-in laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php i form components
-CoordinatePicker, GeopointPicker, LatitudeLongitudeInput, LeafletMarkerMapInput, LocationPicker, MapLocationInput, MapPicker, MapPositioner, PlacePicker
-anche se commentati non devi toglierli !
+# Geo Map Picker Prompt (Canonical)
 
-# Geo Fields – Complete Guide for Geographic Filament Components
-
-> **STACK**: TailwindCSS + AlpineJS + Lit + Livewire + Filament v5 + Laraxot
-> **TARGET**: Mobile-first, responsive, multilingua (i18n)
-> **REFERENCE**: https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
-> **BRANCH**: `dev` only. Never change branch!
+> STACK: TailwindCSS + AlpineJS + Lit + Livewire + Filament v5 + Laraxot
+> PRINCIPLES: DRY + KISS + Clean Code + Single Source of Truth
+> TARGET: mobile-first, responsive, i18n
+> BRANCH: `dev` only
+> REFERENCE: https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
 
 ---
 
-## QUICK START — What We Need
+## 0. Non-Negotiable Guard
 
-### Map Controls (REQUIRED)
-- [x] Fullscreen toggle button (absolute positioned top-left)
-- [x] Current location button ("Usa la mia posizione")
-- [x] Layer switcher (minimum 4 layers)
-- [x] Zoom in button
-- [x] Zoom out button
-- [x] Pan (native Leaflet drag)
-- [x] Click-to-set marker
-- [x] Draggable marker
+In `laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php` the commented form component alternatives:
 
-### Address Search (REQUIRED)
-- [ ] Search box "Cerca un luogo..." (above the map, always visible on mobile)
-- [ ] Debounced input (500ms) → server-side geocoding via Livewire
-- [ ] Dropdown with max 5 results
-- [ ] Result selection: update marker + center map + populate all address fields
-- [ ] Server-side via Nominatim `searchAddress()` on HasCoordinatePicker
+- `CoordinatePicker`
+- `GeopointPicker`
+- `LatitudeLongitudeInput`
+- `LeafletMarkerMapInput`
+- `LocationPicker`
+- `MapLocationInput`
+- `MapPicker`
+- `MapPositioner`
+- `PlacePicker`
 
-### Structured Address Data (REQUIRED)
-After geocoding pass ALL these fields into the Livewire state:
-- `address` — full display_name
-- `address_details` — raw Nominatim address object
+**MUST remain in place even when commented. Never delete them during cleanup or refactor.**
+
+Verified target URLs:
+- Frontoffice wizard: http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step
+- Admin backoffice: http://127.0.0.1:8000/fixcity/admin/tickets/create
+
+---
+
+## 1. Business Goal
+
+Standardize Geo Filament fields so they are stable, reusable, and simple in both frontoffice and backoffice.
+
+Required outcomes:
+
+- one real Filament state path, usually `location`
+- canonical persistence on `location`
+- `location` stored as JSON/array cast on the owner model when a real column exists
+- backward compatibility with `latitude` and `longitude` columns when they exist
+- UI and JS aligned with Leaflet naming `lat` / `lng`
+- reusable sibling components, not a hierarchy
+
+---
+
+## 2. Canonical Data Contract
+
+`CoordinatePicker::make('location')` must work on a single composite payload.
+
+Canonical payload:
+
+```json
+{
+  "lat": 45.4642,
+  "lng": 9.19,
+  "address": "Via Roma 1, Milano, Italia",
+  "provider": "nominatim",
+  "address_details": {},
+  "street": "",
+  "street_number": "",
+  "city": "",
+  "postcode": "",
+  "state": "",
+  "province": "",
+  "country": "",
+  "country_code": "",
+  "suburb": "",
+  "display_name": "",
+  "raw": {}
+}
+```
+
+Rules:
+
+- UI, Alpine, Lit, and Leaflet use `lat` and `lng`
+- legacy DB sync remains:
+  - `latitude = location.lat`
+  - `longitude = location.lng`
+- if input arrives as `latitude` / `longitude`, normalize once
+- do not maintain parallel coordinate contracts longer than necessary
+
+---
+
+## 3. Architectural Rules
+
+- Every Geo field extends `Modules\Xot\Filament\Forms\Components\XotBaseField`
+- `CoordinatePicker` uses one unified `statePath`
+- Geo fields are siblings, never deep inheritance
+- `CoordinatePicker.php` should stay thin and document its runtime Blade owner in comments
+- shared config and server methods live in `HasCoordinatePicker`
+- Livewire is server authority for persistence, geocoding, and reverse geocoding
+- Alpine is a thin adapter only
+- Lit handles map UI and emits semantic events
+- if a JS file exceeds about 200 lines, split it into smaller helpers/modules
+
+---
+
+## 4. Filament Custom Field Contract
+
+Inside the Blade field view:
+
+- read state using `$getStatePath()`
+- obey Filament state binding modifiers
+- use `$getKey()` with `callSchemaComponentMethod()`
+- keep Leaflet isolated from Livewire DOM churn
+
+Do not:
+
+- invent alternate ids for schema method calls
+- duplicate state into extra Alpine variables without reason
+- bind the map in ways that create feedback loops
+
+---
+
+## 5. Owner Model Persistence
+
+For the owner model, for example `Ticket`:
+
+1. `location` must be in `$fillable`
+2. `location` must be cast as `array` or JSON equivalent when the column exists
+3. `location` is the source of truth
+4. `latitude` and `longitude` remain only for retrocompatibility
+5. sync legacy columns explicitly during save/hydration
+
+Expected sync:
+
+```php
+$model->latitude = $location['lat'] ?? null;
+$model->longitude = $location['lng'] ?? null;
+```
+
+If the table does not have a physical `location` column yet, the field contract still stays centered on `location`, and the bridging logic must map it safely to existing persistence columns.
+
+---
+
+## 6. UX Minimum Requirements
+
+Required map controls:
+
+- fullscreen toggle
+- explicit geolocation button
+- layer switcher with at least 4 layers
+- zoom in
+- zoom out
+- click-to-set marker
+- draggable marker with update on `dragend`
+
+Required address search:
+
+- search box above the map
+- always visible on mobile
+- debounce at `500ms`
+- server-side search through Livewire
+- max 5 results
+- selecting a result updates marker, center, and full `location` payload
+
+Required responsive behavior:
+
+- mobile touch targets at least `44x44`
+- mobile search remains visible
+- map height responsive, e.g. `50dvh` mobile, `60vh` tablet, configurable desktop
+- invalidate Leaflet size on resize, wizard step visibility, and fullscreen transitions
+
+Required structured address data:
+
+- `address`
+- `address_details`
+- `street`
+- `street_number`
+- `city`
+- `postcode`
+- `state`
+- `province`
+- `country`
+- `country_code`
+- `suburb`
+
+Normalized source aliases accepted during mapping:
+
 - `street` / `road`
 - `street_number` / `house_number`
 - `city` / `town` / `municipality`
-- `postcode`
-- `state`
 - `province` / `county`
-- `country`
-- `country_code`
 - `suburb` / `city_district` / `neighbourhood`
 
-### Responsive (REQUIRED)
-- [ ] Mobile 375px — controls visible, 44×44px minimum touch target
-- [ ] Tablet 768px — proper layout, map 60vh
-- [ ] Desktop 1440px — full layout, fixed height configurable
-
-### Translations (REQUIRED)
-All user-visible text MUST use Laravel lang files. Never hardcode Italian (or any language) strings in JS or Blade.
-
 ---
 
-## 1. FUNDAMENTAL PRINCIPLES
+## 7. Search and Reverse Geocoding
 
-### Single Source of Truth
-The Filament field exposes a single composite state (e.g. `location`) with shape:
-```php
-[
-    'latitude'       => null,
-    'longitude'      => null,
-    'address'        => '',
-    'address_details'=> null,
-    'street'         => '',
-    'street_number'  => '',
-    'city'           => '',
-    'postcode'       => '',
-    'state'          => '',
-    'province'       => '',
-    'country'        => '',
-    'country_code'   => '',
-    'suburb'         => '',
-]
-```
-DB columns remain `latitude` and `longitude`, populated via explicit mapping in `extractCoordinates()`.
+Server-side only:
 
-### XotBaseField
-Every custom Filament field in the Geo module MUST extend `Modules\Xot\Filament\Forms\Components\XotBaseField`.
+- `searchAddress(string $query): array`
+- `reverseGeocode(float $lat, float $lng): ?array`
 
-### Sibling Architecture
-Components are siblings, NOT a hierarchy. `LatitudeLongitudeInput` does NOT extend `CoordinatePicker`.
-All use `HasCoordinatePicker` trait for shared configuration logic.
+Rules:
 
-### Leaflet Isolation
-Leaflet attaches to its container via local classes (`.coordinate-picker-map`), NEVER via global IDs.
-Do NOT use `id="map"` or `document.getElementById()`.
+- never call Nominatim directly from browser JS
+- always send a valid `User-Agent`
+- respect rate limiting
+- fail silently for UX, but keep code observable and testable
+- prefer scoped search such as `countrycodes=it` when appropriate
+- event payload emitted by the Lit map should be canonical Leaflet-style:
 
-### Lit Component — Light DOM preferred
-Use Light DOM (not Shadow DOM) for maximum compatibility with Leaflet CSS, panes and controls.
-Emit semantic events: `coords-changed`, `fullscreen-changed`.
-
-### Alpine Adapter — Minimal Bridge
-Alpine is the thin sync layer between Livewire (`$wire.$set` / `$wire.$watch`) and Lit properties/events.
-Keep it as thin as possible — no business logic in Alpine.
-
-### Livewire — Server Authority
-Livewire handles: persistence, server calls (reverse geocoding / address search via Nominatim), server-side validation.
-
----
-
-## 2. MOBILE-FIRST & RESPONSIVE
-
-### Breakpoints (Tailwind)
-```css
-/* sm: 640px  md: 768px  lg: 1024px  xl: 1280px */
-```
-
-### Touch Requirements
-- **Minimum touch target**: 44×44px for all interactive elements
-- **No overlap**: controls must never overlap the marker or form fields
-- **Always visible**: controls must not be hidden behind collapsed menus on mobile
-
-### Map Height Strategy
 ```js
-// Mobile: dynamic viewport height
-height: '50dvh'
-
-// Tablet
-height: '60vh'
-
-// Desktop: configurable (default 400px)
-height: '400px'
-```
-
-### Layout — Search Box Position
-- **Mobile**: search box ABOVE the map, full width
-- **Desktop**: search box ABOVE the map OR in sidebar if layout allows
-- Do NOT hide the search on mobile — it is the primary interaction on small screens
-
-### Controls Layout
-- All custom controls (geolocation, fullscreen, zoom±) on the LEFT side, stacked vertically
-- Layer switcher on TOP-RIGHT (Leaflet default)
-- Zoom ± Leaflet default controls on BOTTOM-RIGHT OR use custom controls and disable Leaflet default
-
----
-
-## 3. MULTILINGUA (i18n)
-
-### Translation Keys Required
-
-PHP lang file `lang/{locale}/coordinate-picker.php`:
-```php
-return [
-    'search_placeholder' => 'Cerca un luogo...',
-    'use_my_location'    => 'Usa la mia posizione',
-    'locating'           => 'Localizzando...',
-    'no_position'        => 'Clicca sulla mappa per indicare la posizione',
-    'latitude'           => 'Latitudine',
-    'longitude'          => 'Longitudine',
-    'city'               => 'Città',
-    'fullscreen'         => 'Schermo intero',
-    'close_fullscreen'   => 'Esci da schermo intero',
-    'zoom_in'            => 'Aumenta zoom',
-    'zoom_out'           => 'Diminuisci zoom',
-    'address_found'      => 'Indirizzo trovato',
-    'location_error'     => 'Impossibile ottenere la posizione',
-    'geocode_error'      => 'Indirizzo non trovato',
-    'search_no_results'  => 'Nessun risultato trovato',
-    'layers' => [
-        'street'         => 'Stradale (OSM)',
-        'humanitarian'   => 'Umanitaria (OSM)',
-        'satellite'      => 'Satellitare (Esri)',
-        'topographic'    => 'Topografica (Esri)',
-    ],
-];
-```
-
-Required locales: **it** and **en** (minimum). Add others as needed.
-
-### Using Translations in Blade
-```blade
-<input type="text" placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}">
-<button @click="useCurrentLocation()">{{ __('geo::coordinate-picker.use_my_location') }}</button>
-```
-
-### Passing Labels to Lit
-Since Lit works in JS, pass labels from PHP via Blade as a JSON attribute:
-```blade
-<coordinate-picker-lit
-    :latitude="_lat"
-    :longitude="_lng"
-    zoom="{{ $field->getZoom() }}"
-    height="{{ $field->getHeight() }}"
-    labels='@json([
-        "zoom_in"         => __("geo::coordinate-picker.zoom_in"),
-        "zoom_out"        => __("geo::coordinate-picker.zoom_out"),
-        "fullscreen"      => __("geo::coordinate-picker.fullscreen"),
-        "close_fullscreen"=> __("geo::coordinate-picker.close_fullscreen"),
-        "use_location"    => __("geo::coordinate-picker.use_my_location"),
-        "locating"        => __("geo::coordinate-picker.locating"),
-        "layers" => [
-            "street"      => __("geo::coordinate-picker.layers.street"),
-            "humanitarian"=> __("geo::coordinate-picker.layers.humanitarian"),
-            "satellite"   => __("geo::coordinate-picker.layers.satellite"),
-            "topographic" => __("geo::coordinate-picker.layers.topographic"),
-        ],
-    ])'
-></coordinate-picker-lit>
-```
-
----
-
-## 4. MAP CONTROLS (IMPLEMENTATION)
-
-### 4 Required Tile Layers
-```js
-// coordinate-picker-lit.js
-
-_initLayers() {
-    // Layer 1: OSM Standard
-    this._layers.street = L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }
-    ).addTo(this._map);
-
-    // Layer 2: OSM Humanitarian (HOT)
-    this._layers.humanitarian = L.tileLayer(
-        'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-        { attribution: '&copy; OpenStreetMap, Tiles courtesy of HOT', maxZoom: 19 }
-    );
-
-    // Layer 3: Esri World Imagery (Satellite)
-    this._layers.satellite = L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        { attribution: '&copy; Esri &mdash; Source: Esri, USGS, AeroGRID, IGN', maxZoom: 19 }
-    );
-
-    // Layer 4: Esri World Topographic
-    this._layers.topo = L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-        { attribution: '&copy; Esri', maxZoom: 19 }
-    );
-
-    L.control.layers(
-        {
-            [this.labels?.layers?.street      || 'Stradale (OSM)']      : this._layers.street,
-            [this.labels?.layers?.humanitarian || 'Umanitaria (OSM)']   : this._layers.humanitarian,
-            [this.labels?.layers?.satellite    || 'Satellitare (Esri)'] : this._layers.satellite,
-            [this.labels?.layers?.topographic  || 'Topografica (Esri)'] : this._layers.topo,
-        },
-        null,
-        { position: 'topright' }
-    ).addTo(this._map);
-}
-```
-
-### Zoom Controls
-```js
-_zoomIn()  { this._map?.zoomIn(); }
-_zoomOut() { this._map?.zoomOut(); }
-```
-Pair with Leaflet's `zoomControl: false` on map init to avoid duplicate controls.
-
-### Fullscreen Toggle
-```js
-_toggleFullscreen() {
-    this.isExpanded = !this.isExpanded;
-    this.isFullscreen = this.isExpanded;
-
-    if (this.isExpanded) {
-        document.body.style.overflow = 'hidden';
-        this.style.position = 'relative';
-        this.style.zIndex = '2147483647';
-    } else {
-        document.body.style.overflow = '';
-        this.style.removeProperty('position');
-        this.style.removeProperty('z-index');
-    }
-
-    this.dispatchEvent(new CustomEvent('fullscreen-changed', {
-        detail: { isFullscreen: this.isFullscreen },
-        bubbles: true,
-        composed: true,
-    }));
-
-    setTimeout(() => {
-        this._map?.invalidateSize();
-        if (this.isExpanded) this._map?.setZoom(Math.max(this._map.getZoom(), 14));
-    }, 300);
-}
-```
-
-### Current Location (Geolocation) — EXPLICIT ONLY
-```js
-_requestGeolocation() {
-    if (!navigator.geolocation) return;
-    this.isLocating = true;
-    navigator.geolocation.getCurrentPosition(
-        (pos) => {
-            this._handleMapInteraction(pos.coords.latitude, pos.coords.longitude, 'geolocation');
-            this._map?.setView([pos.coords.latitude, pos.coords.longitude], 16);
-            this.isLocating = false;
-        },
-        () => { this.isLocating = false; },
-        { enableHighAccuracy: true, timeout: 5000, maximumAge: 300000 }
-    );
-}
-```
-**IMPORTANT**: Never call `_requestGeolocation()` automatically on mount. It is an EXPLICIT user action.
-
-### ResizeObserver for invalidateSize
-```js
-this._resizeObserver = new ResizeObserver(() => {
-    window.requestAnimationFrame(() => this._map?.invalidateSize());
-});
-this._resizeObserver.observe(mapContainer);
-setTimeout(() => this._map?.invalidateSize(), 150);
-```
-
----
-
-## 5. ADDRESS SEARCH (GEOCODING)
-
-### PHP — Server-Side via Livewire
-Add to `HasCoordinatePicker` trait:
-```php
-#[ExposedLivewireMethod]
-#[Renderless]
-public function searchAddress(string $query): array
 {
-    if (strlen(trim($query)) < 3) {
-        return [];
-    }
-
-    try {
-        $response = Http::withHeaders([
-            'User-Agent' => config('app.name', 'Laraxot') . '/1.0',
-        ])
-        ->timeout(10)
-        ->get('https://nominatim.openstreetmap.org/search', [
-            'q'              => $query,
-            'format'         => 'json',
-            'addressdetails' => 1,
-            'limit'          => 5,
-            'countrycodes'   => 'it',
-        ]);
-
-        if (! $response->successful()) {
-            return [];
-        }
-
-        $data = $response->json();
-        return is_array($data) ? $data : [];
-    } catch (\Throwable) {
-        return [];
-    }
+  lat: 45.4642,
+  lng: 9.19,
+  source: 'click'
 }
 ```
 
-### Alpine — Search Integration
-```blade
-{{-- In coordinate-picker.blade.php, inside x-data --}}
-searchQuery: '',
-searchResults: [],
-isSearching: false,
-showResults: false,
-
-async searchAddress() {
-    if (this.searchQuery.length < 3) {
-        this.searchResults = [];
-        this.showResults = false;
-        return;
-    }
-    this.isSearching = true;
-    try {
-        const results = await this.$wire.callSchemaComponentMethod(
-            '{{ $id }}',
-            'searchAddress',
-            { query: this.searchQuery }
-        );
-        this.searchResults = results || [];
-        this.showResults = this.searchResults.length > 0;
-    } catch (e) {
-        this.searchResults = [];
-        this.showResults = false;
-    }
-    this.isSearching = false;
-},
-
-selectSearchResult(result) {
-    const lat = parseFloat(result.lat);
-    const lon = parseFloat(result.lon);
-    this._lat = lat;
-    this._lng = lon;
-    this.searchQuery = result.display_name;
-    this.searchResults = [];
-    this.showResults = false;
-    void this.reverseGeocode(lat, lon);
-},
-```
-
-### Search UI (Blade)
-```blade
-{{-- Search box — above map, full width on mobile --}}
-<div class="relative w-full" x-data>
-    <div class="relative">
-        <input type="text"
-               id="coordinate-picker-search-{{ $id }}"
-               x-model="searchQuery"
-               @input.debounce.500ms="searchAddress()"
-               @keydown.escape="showResults = false"
-               placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}"
-               autocomplete="off"
-               class="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
-               aria-label="{{ __('geo::coordinate-picker.search_placeholder') }}"
-               aria-autocomplete="list"
-               aria-controls="search-results-{{ $id }}"
-               :aria-expanded="showResults">
-        <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-        </span>
-        <span x-show="isSearching" class="absolute inset-y-0 right-3 flex items-center">
-            <svg class="h-4 w-4 animate-spin text-gray-400" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-            </svg>
-        </span>
-    </div>
-
-    <ul x-show="showResults"
-        x-transition:enter="transition ease-out duration-150"
-        x-transition:enter-start="opacity-0 -translate-y-1"
-        x-transition:enter-end="opacity-100 translate-y-0"
-        id="search-results-{{ $id }}"
-        class="absolute z-50 mt-1 w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg"
-        role="listbox"
-        @click.outside="showResults = false">
-        <template x-for="(result, idx) in searchResults" :key="idx">
-            <li role="option"
-                class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 focus:bg-primary/10"
-                @click="selectSearchResult(result)"
-                x-text="result.display_name">
-            </li>
-        </template>
-    </ul>
-</div>
-```
+- if temporary compatibility with `latitude` / `longitude` is needed, normalize it once in Alpine or in the shared trait, not across every layer
 
 ---
 
-## 6. STRUCTURED ADDRESS DATA (REVERSE GEOCODING)
+## 8. i18n Requirements
 
-### PHP — `reverseGeocode()` Returns
-```php
-// HasCoordinatePicker::reverseGeocode() returns:
-[
-    'display_name' => 'Via Roma 1, Milano, Lombardia, Italia',
-    'street'       => 'Via Roma',
-    'street_number'=> '1',
-    'city'         => 'Milano',
-    'postcode'     => '20100',
-    'state'        => 'Lombardia',
-    'province'     => 'Città metropolitana di Milano',
-    'country'      => 'Italia',
-    'country_code' => 'it',
-    'suburb'       => 'Centro',
-    'structured'   => [...],
-    'raw'          => [...],
-]
-```
+- never hardcode user-facing strings in JS or Blade
+- all visible labels come from Geo lang files
+- minimum locales: `it` and `en`
+- pass translated labels from Blade to Lit as JSON
 
-### Alpine — handleCoordsChanged (Full State)
-```js
-handleCoordsChanged(event) {
-    const { latitude, longitude } = event.detail;
-    this._suppressUpdate = true;
-    this._lat = latitude;
-    this._lng = longitude;
+Useful key families:
 
-    const newState = {
-        latitude,
-        longitude,
-        address: this.address,
-        address_details: this.structured,
-        street:        this.structured?.road     || this.structured?.street || '',
-        street_number: this.structured?.house_number || this.structured?.street_number || '',
-        city:          this.structured?.city     || '',
-        postcode:      this.structured?.postcode || '',
-        state:         this.structured?.state    || '',
-        province:      this.structured?.county   || '',
-        country:       this.structured?.country  || '',
-        country_code:  this.structured?.country_code || '',
-        suburb:        this.structured?.city_district || this.structured?.suburb || '',
-    };
-
-    this.$wire.$set('{{ $statePath }}', newState);
-    setTimeout(() => { this._suppressUpdate = false; }, 350);
-    void this.reverseGeocode(latitude, longitude);
-},
-```
-
-### Alpine — reverseGeocode callback (Full State Hydration)
-```js
-async reverseGeocode(lat, lng) {
-    if (!lat || !lng) return;
-    try {
-        const result = await this.$wire.callSchemaComponentMethod(
-            '{{ $id }}',
-            'reverseGeocode',
-            { latitude: lat, longitude: lng }
-        );
-        if (result) {
-            this.address   = result.display_name || '';
-            this.structured = result.structured  || null;
-            this.$wire.$set('{{ $statePath }}', {
-                latitude:      lat,
-                longitude:     lng,
-                address:       this.address,
-                address_details: this.structured,
-                street:        result.street        || '',
-                street_number: result.street_number || '',
-                city:          result.city          || '',
-                postcode:      result.postcode      || '',
-                state:         result.state         || '',
-                province:      result.province      || '',
-                country:       result.country       || '',
-                country_code:  result.country_code  || '',
-                suburb:        result.suburb        || '',
-            });
-        }
-    } catch (_e) { /* swallow: geocoding is best-effort */ }
-}
-```
+- `search_placeholder`
+- `use_my_location`
+- `locating`
+- `fullscreen`
+- `close_fullscreen`
+- `zoom_in`
+- `zoom_out`
+- `search_no_results`
+- `location_error`
+- `geocode_error`
+- `layers.street`
+- `layers.humanitarian`
+- `layers.satellite`
+- `layers.topographic`
 
 ---
 
-## 7. LIVEWIRE PERFORMANCE
+## 9. Performance and Loop Guards
 
-### What Triggers a Livewire Update
-| Event           | Should update Livewire? |
-|-----------------|------------------------|
-| `mousemove`     | Never               |
-| `drag` (during) | Never               |
-| `dragend`       | Yes                 |
-| `click on map`  | Yes                 |
-| `geolocation`   | Yes                 |
-| `address select`| Yes (via reverseGeocode) |
-
-### Debounce Settings
-```js
-// Search input
-@input.debounce.500ms="searchAddress()"
-
-// Suppress Livewire re-entrant updates after $wire.$set
-this._suppressUpdate = true;
-// ... do $wire.$set ...
-setTimeout(() => { this._suppressUpdate = false; }, 350);
-```
-
-### Wire Watch — Avoid Re-entrant Loops
-```js
-init() {
-    this.$wire.$watch('{{ $statePath }}', (val) => {
-        if (this._suppressUpdate) return;
-        this._lat = val?.latitude  ?? null;
-        this._lng = val?.longitude ?? null;
-        this.address    = val?.address    ?? '';
-        this.structured = val?.address_details ?? null;
-    });
-},
-```
+- never update Livewire on `mousemove`
+- never update Livewire during drag
+- update only on `click`, `dragend`, explicit geolocation success, and search selection
+- use a guard such as `_suppressUpdate` to prevent re-entrant loops
+- avoid duplicated normalize/mapping logic across PHP, Blade, Alpine, and Lit
 
 ---
 
-## 8. ACCESSIBILITY (a11y)
+## 10. Accessibility
 
-### Required ARIA Labels (all buttons)
-```html
-<button aria-label="Aumenta zoom"                title="Aumenta zoom">+</button>
-<button aria-label="Diminuisci zoom"             title="Diminuisci zoom">-</button>
-<button aria-label="Usa la posizione corrente"   title="Usa la mia posizione">📍</button>
-<button aria-label="Apri mappa a schermo intero" title="Schermo intero">⛶</button>
-<button aria-label="Esci da schermo intero"      title="Esci da schermo intero">✕</button>
-```
-Always use `type="button"` on all map control buttons to prevent accidental form submission.
-
-### Screen Reader Live Region
-```html
-<div aria-live="polite" class="sr-only">
-    <span x-text="`Latitudine: ${_lat}, Longitudine: ${_lng}${address ? ', ' + address : ''}`"></span>
-</div>
-```
-
-### Keyboard Navigation
-- Tab order: search → location button → map → zoom controls
-- `Enter` / `Space` to activate buttons
-- `Escape` to close fullscreen and close search dropdown
-- Search input: `aria-autocomplete="list"`, `aria-controls`, `aria-expanded`
+- all map buttons must use `type="button"`
+- all map buttons must include `aria-label` and `title`
+- ESC closes dropdown and fullscreen
+- keep a logical tab order
+- include a polite live region for coordinates and resolved address
+- search input should expose `aria-autocomplete`, `aria-controls`, and `aria-expanded`
 
 ---
 
-## 9. EXAMPLES — CONCRETE USAGE
+## 11. Simplification Mandate
 
-### Standard form usage
-```php
-CoordinatePicker::make('location')
-    ->latitude('lat')
-    ->longitude('lng')
-    ->zoom(15)
-    ->center(['lat' => 41.9, 'lng' => 12.5])
-    ->reverseGeocoding()
-    ->height('340px')
-```
+If `coordinate-picker-lit.js` grows too much:
 
-### Extract coordinates before DB save
-```php
-$data = CoordinatePicker::extractCoordinates(
-    data: $data,
-    fieldName: 'location',
-    latitudeColumn: 'lat',
-    longitudeColumn: 'lng'
-);
-```
+- extract `layers`
+- extract `controls`
+- extract `events`
+- extract `geolocation`
+- extract `resize / invalidate`
+- extract location normalization helpers
 
-### Multiple pickers on same page (no ID conflicts)
-```php
-CoordinatePicker::make('origin')
-CoordinatePicker::make('destination')
-// Both work independently because Leaflet uses .coordinate-picker-map (class), not #map (id)
-```
+Keep the main Lit file as orchestration, not as a monolith.
+
+Also:
+
+- do not duplicate shared options across multiple pickers
+- move reusable behavior into `HasCoordinatePicker` or shared JS helpers
+- preserve local assets and avoid CDN drift
 
 ---
 
-## 10. ARCHITECTURE (HOW)
+## 12. Quality Gates
 
-### PHP Trait: `HasCoordinatePicker`
-Handles fluent methods: `latitude()`, `longitude()`, `zoom()`, `center()`, `height()`, `reverseGeocoding()`.
-Server methods: `reverseGeocode(float $lat, float $lng): ?array`, `searchAddress(string $query): array`.
+For modified files always run:
 
-### Blade View
-Uses `x-dynamic-component` with `:component="$getFieldWrapperView()"`.
-Contains: Alpine x-data, search input, `<coordinate-picker-lit>`, address readout, aria-live region.
+- `phpstan`
+- `phpmd`
+- `phpinsights`
+- `pest`
+- `playwright`
 
-### Lit Component: `coordinate-picker-lit.js`
-- Pure UI + Leaflet logic. Stateless w.r.t. server.
-- Light DOM for Leaflet compatibility.
-- Dispatches: `coords-changed`, `fullscreen-changed`.
-- Accepts: `latitude`, `longitude`, `zoom`, `height`, `isExpanded`, `labels` (JSON).
-- Uses `ResizeObserver` for `invalidateSize()`.
-- Cleans up in `disconnectedCallback()`.
+Verification scope must include:
 
-### Alpine: Minimal Bridge
-- `init()`: `$wire.$watch`
-- `handleCoordsChanged()`: `$wire.$set`
-- `reverseGeocode()`: server method call
-- `searchAddress()`: server search
+- frontoffice wizard map
+- admin/backoffice map
+- search behavior
+- reverse geocoding behavior
+- fullscreen and resize behavior
+- legacy `latitude` / `longitude` synchronization
 
 ---
 
-## 11. BEST PRACTICES ✅
+## 13. Documentation Workflow
 
-- **Use Light DOM** for Leaflet. Shadow DOM breaks marker icons, CSS panes and layer controls.
-- **One state object** per field: always `{ latitude, longitude, address, street, ... }`.
-- **Debounce search** at 500ms.
-- **Respect Nominatim Usage Policy** — User-Agent header, 1 req/sec max, no bulk geocoding.
-- **Cache reverse geocode** results (Redis, 1h TTL).
-- **Use `#[Renderless]`** on `reverseGeocode` and `searchAddress`.
-- **Use `ResizeObserver`** for `invalidateSize()`.
-- **Provide fallback center** (Rome: 41.9028, 12.4964).
-- **Provide fallback UI** when geolocation denied.
-- **All buttons** must have `type="button"`, `aria-label`, `title`.
-- **Accessibility**: always `<div aria-live="polite" class="sr-only">`.
-- **Layer names** from i18n.
-- **SearchAddress** min query length ≥ 3 chars.
-- **`countrycodes` param** in Nominatim search.
-- **`@keydown.escape`** to close dropdown.
-- **Clean up** in `disconnectedCallback()`.
+Before and after significant changes:
+
+1. study existing docs and wiki in `Modules/Geo` and related modules/themes
+2. align implementation with current project architecture
+3. update module docs
+4. update theme docs when UI contracts change
+5. update wiki index/log and reusable rules
+
+Do not create forbidden doc structures.
 
 ---
 
-## 12. BAD CASES ❌ — Never Do This
+## 14. Bad Practices (Extended)
 
-| Bad Practice | Why Wrong | Correct Alternative |
+| Avoid | Use Instead | Why |
 |---|---|---|
-| `LatitudeLongitudeInput extends CoordinatePicker` | Tight coupling | Sibling pattern |
-| `id="map"` or `document.getElementById()` | ID conflicts | Local class `.coordinate-picker-map` |
-| `wire:entangle` on Lit web component | Event loops | `$wire.$set` + `$wire.$watch` with `_suppressUpdate` |
-| Separate `lat`/`lng` Alpine vars | Breaks SoT | Single state object |
-| Calling Nominatim directly from JS | Exposes IP, no cache | Route through Livewire |
-| `navigator.geolocation` on mount | Invasive prompt | Explicit button only |
-| Livewire on every `mousemove`/`drag` | Performance thrashing | `dragend`, `click`, `geolocation success` only |
-| Hardcoding Italian strings in JS | Breaks i18n | Pass via `labels` JSON attribute |
-| `shouldUpdate()` for state sync | Misuse of Lit hook | `updated()` with `_isProgrammaticUpdate` guard |
-| No `invalidateSize()` after resize | Blank tiles | ResizeObserver + setTimeout |
+| `LatitudeLongitudeInput extends CoordinatePicker` | sibling pattern with shared trait | deep inheritance breaks DRY and makes overrides unpredictable |
+| `id="map"` or `document.getElementById('map')` | `this.querySelector('.map-container')` | IDs are globally unique; multiple maps per page or wizard steps cause conflicts |
+| direct Nominatim calls from browser JS | Livewire server methods `searchAddress()` / `reverseGeocode()` | exposes IP to third party, bypasses User-Agent policy, violates Nominatim ToS |
+| hardcoded UI strings in JS or Blade | Geo lang files passed as JSON to Lit | breaks i18n, blocks translations, maintenance debt |
+| Livewire updates on `drag`, `mousemove`, `move` | update only on `dragend`, `click`, explicit user intent | causes cascading re-renders, infinite loops, freezes map |
+| `@entangle` on Lit component properties | one-way props-down + events-up pattern | `@entangle` with Lit triggers infinite Livewire re-render cycles |
+| giant JS files > 200 lines | split into `layers.js`, `controls.js`, `events.js`, etc. | violates KISS, impossible to unit-test, hard to review |
+| deleting commented picker alternatives | preserve them in consuming widgets | they document the evaluated API surface for future maintainers |
+| CDN/unpkg references for Leaflet or assets | bundle assets locally via Vite | CDN drift breaks offline, changes behavior between environments |
+| using `lat`/`lng` and `latitude`/`longitude` in parallel across layers | normalize once at Alpine or trait boundary | parallel naming contracts cause silent bugs and mapping errors |
+| calling `map.invalidateSize()` inside Livewire lifecycle hooks unconditionally | call only after DOM visibility confirmed | premature invalidate on hidden container returns wrong tile sizes |
+| binding Filament state to JS via extra Alpine intermediary variables | read directly from `$wire.$get($getStatePath())` | creates stale state, desync between Livewire and JS |
+| catching geocoding exceptions globally and swallowing them | log to `Log::warning()`, expose to `$errors` in testable methods | silent failures make integration testing impossible |
+| `map.setView()` on every Livewire render | only move map on explicit user interaction or first mount | causes jumpy UX when component re-renders after unrelated state change |
+| Hardcoding `#0066CC` colors or `heroicon-o-...` names in JS | Makes i18n and theming impossible, couples to single theme | Pass colors/icons from Blade via dataset or lang JSON, use `icon-white` for header controls |
+| `pointer-events: none` on map wrapper or `opacity: 0` overlay | Blocks interaction with map controls, causes "invisible controls" bug | Ensure `pointer-events: auto` on interactive elements, use proper `z-index` and `bg-white` wrapper where needed |
+| Updating Livewire on every marker drag tick | Floods server, race conditions, poor UX | Update on `dragend` only; debounce rapid events |
+| Mixing `latitude`/`longitude` and `location` in same model without sync | Source-of-truth ambiguity, silent data divergence | Keep `location` as source of truth; sync legacy columns explicitly in model observer or save method |
 
 ---
 
-## 13. FALSE FRIENDS ⚠️ — Common Misconceptions
+## 15. Best Practices (What to Do)
 
-| False Belief | Reality |
+| Practice | Implementation |
 |---|---|
-| Shadow DOM better for encapsulation | Leaflet breaks in Shadow DOM. Use **Light DOM**. |
-| Automatic geolocation on mount | Invasive. Make it explicit. |
-| `shouldUpdate()` for state sync | Only for re-render optimization. |
-| `marker.setLatLng()` immediate after init | Wait for `invalidateSize()` + debounce. |
-| `entangle` simpler than `$wire.$set` | Creates feedback loops. Use explicit sync. |
-| Store lat/lng in Alpine for speed | Breaks SoT. Livewire is the truth. |
-| Geocoding client-only | Must go server-side for rate-limiting. |
-| One Leaflet zoom control enough | Custom controls + `zoomControl: false`. |
-| Layer control optional | 4 layers REQUIRED. |
-| GPS coordinates always floats | Nominatim returns strings. `parseFloat()`. |
+| **Single source of truth** | Keep `location` as canonical payload. Legacy `latitude`/`longitude` are secondary, synced explicitly. |
+| **Sibling components, not hierarchy** | All Geo fields extend `XotBaseField`. Share behavior via `HasCoordinatePicker` trait. No deep inheritance. |
+| **Server-side geocoding** | `searchAddress()` and `reverseGeocode()` live in Livewire actions; never call Nominatim from JS. |
+| **Leaflet alignment** | Use `lat`/`lng` in Leaflet and payload; map to `latitude`/`longitude` only at persistence boundary. |
+| **Inline SVG markers** | Define `createMapPickerLeafletIcon(L)` returning `L.divIcon({ html: svg })`. No CDN, no external image files. |
+| **MutationObserver for wizard steps** | In `coordinate-picker-lit.js`, observe ancestor `class`/`hidden` changes and call `map.invalidateSize()` to fix "blank map after Next" issue. |
+| **Debounced server search** | Livewire method `searchAddress()` debounced 500ms; max 5 results; scoped `countrycodes=it` for Italy. |
+| **Pass translations to Lit** | Blade renders JSON: `<div id="geo-labels" data-labels="{{ json_encode(__('geo::labels')) }}"></div>`; Lit reads labels from dataset. |
+| **i18n keys in lang files** | Never hardcode in JS: use `__('geo::search_placeholder')` in Blade, pass to Lit. Minimum locales: `it`, `en`. |
+| **Component-scoped mounting** | Lit component mounts to `this.shadowRoot` or class-scoped element; no global `#map` id. |
+| **Mobile-first responsive map** | Map container: `50dvh` mobile, `60vh` tablet, configurable desktop. Touch targets `44x44`. Search always visible on mobile. |
+| **Full map controls** | Required: fullscreen toggle, geolocate button, layer switcher (street/humanitarian/satellite/topographic), zoom in/out, click/drag marker, address search. |
+| **Graceful failure** | If geolocation fails or Nominatim rate-limits, fail silently with UX indicator, not console errors. |
+| **Accessibility** | All buttons: `type="button"`, `aria-label`, `title`. ESC closes fullscreen/dropdowns. Polite live region for coordinates/address. |
+| **Quality gates before commit** | Run: `phpstan`, `phpmd`, `phpinsights`, `pest`, `playwright`. Verify both frontend wizard and admin ticket create. |
+| **Visual parity verification** | After every change, open URLs in browser: `http://127.0.0.1:8000/it/tests/segnalazione-crea` and `http://127.0.0.1:8000/fixcity/admin/tickets/create`. Use Playwright screenshots to confirm no regression. |
+| **Extraction at 200 lines** | If coordinate-picker-lit.js > ~200 lines, extract: `layers.js`, `controls.js`, `events.js`, `geolocation.js`, `invalidate.js`, `normalize.js`. |
+| **Use `callSchemaComponentMethod()`** | To invoke picker methods from outside (e.g., reset, center), use `$getKey()` + `callSchemaComponentMethod()` rather than global refs. |
 
 ---
 
-## 14. FILE REFERENCES
+## 16. False Friends (Common Missteps)
 
-```
-laravel/Modules/Geo/
-├── app/Filament/Forms/Components/
-│   ├── CoordinatePicker.php
-│   ├── MapPicker.php
-│   └── Traits/
-│       └── HasCoordinatePicker.php
-├── resources/
-│   ├── js/components/
-│   │   ├── coordinate-picker-lit.js
-│   │   ├── coordinate-picker-styles.js
-│   │   ├── coordinate-picker-field.js
-│   │   └── map-picker-marker-config.js
-│   └── views/filament/forms/components/
-│       └── coordinate-picker.blade.php
-└── lang/
-    ├── it/coordinate-picker.php
-    └── en/coordinate-picker.php
-
-laravel/Modules/Fixcity/
-└── app/Filament/Widgets/
-    └── CreateTicketWizardWidget.php
-```
+| False Friend | Symptom | Why It's Wrong | Fix |
+|---|---|---|---|
+| **IntersectionObserver will fix blank map** | Map stays gray after wizard "Next" | `IntersectionObserver` only detects viewport intersection, not `class="hidden"` toggles. Hidden elements can be in viewport but still have zero computed dimensions. | Use `MutationObserver` on ancestor class/style, or force `invalidateSize()` on wizard step show. |
+| **`SchemaView::make()` is a valid summary component** | Summary step renders empty or throws | `SchemaView` is not an Infolist component; wizard summary requires `TextEntry`, `ImageEntry`, `Section` from `Filament\Schemas\Components` and `Filament\Infolists\Components`. | Use `TextEntry::make()->state(fn (Get $g) => $g('field'))`. |
+| **`use Filament\Forms\Components\Section`** | Linter aliases `Section` and causes "Cannot redeclare" or `Section::make()` resolves wrong | In Filament 5, form `Section` is in `Filament\Schemas\Components\Section`, not `Forms`. Linter may alias all three (`FormSection`, `InfolistSection`, `SchemaSection`) and break bare `Section::make()`. | Always `use Filament\Schemas\Components\Section`. Remove other `Section` imports. |
+| **Adding `::make()` items to summary schema as `SchemaView` or `Infolist`** | Runtime error or nothing rendered | `getSummarySchema()` expects Infolist components (`TextEntry`, etc.) + `Filament\Schemas` layout components (`Section`, `Grid`). Not `SchemaView`. | Use correct namespaces and component types. |
+| **`L.Icon.Default` or unpkg marker icons** | Marker icons missing or blocked by adblocker | Leaflet default icons rely on CDN paths; unpkg assets may be blocked or CORS-failed; inconsistent look. | Use inline SVG via `L.divIcon` with local SVG content (see `createMapPickerLeafletIcon`). |
+| **Hardcoding `#0066CC` or `icon-primary` in slim header auth** | Button blends into header or fails UX "Mario Rossi" principle | Slim auth must have visible name, clear affordance, and `icon-white` on blue header. `icon-primary` can be blue-on-blue. | Use `icon-white`, ensure name is prominent, dropdown arrow visible. |
+| **CSS `[data-slug="..."]` page-specific overrides** | Styles only work on one page; breaks when reused | Design Comuni uses global component classes; page-specific CSS is an anti-pattern that harms maintainability. | Make CSS component-scoped; use props/attributes for variants, not page names. |
+| **Livewire updates on `mousemove`** | Severe server load and lag | Each mousemove triggers a Livewire request; server floods, UI freezes. | Use guards; update only on `click`, `dragend`, explicit events. |
+| **Deleting commented picker alternatives** | Future devs can't see evaluated options | The comment block documents considered alternatives; removing it erases intent and learning. | Keep commented list intact as documentation. |
+| **`latitude`/`longitude` in payload alongside `location` without clear sync** | Silent data divergence, stale fields | Dual sources of truth lead to bugs where one is updated and the other not. | Normalize once; persist `location` as source; sync legacy columns explicitly with `hasColumn` guards. |
 
 ---
 
-## 15. TEST CHECKLIST
+## 17. Verified References & Deep Links
 
-### Visual — Mobile (375px)
-- [ ] Search box visible and full-width above map
-- [ ] Map renders at 50dvh height
-- [ ] All map control buttons visible
-- [ ] Touch targets ≥ 44×44px
-- [ ] Address readout visible below map
+- **Design Comuni — Segnalazione Dati (reference UI)**
+  https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
+  (Used for header/auth slim UX, form patterns, spacing, and mobile behavior.)
 
-### Visual — Tablet (768px)
-- [ ] Search box above map, full width
-- [ ] Map renders at proper height
-- [ ] Layer switcher accessible
+- **Filament 5.x — Schemas Section (canonical namespace)**
+  https://filamentphp.com/docs/5.x/schemas/sections
+  (Required reading: `Section`, `Grid`, `Fieldset`, `Tabs`, `Wizard` all live here, not in Forms/Infolists.)
 
-### Visual — Desktop (1440px)
-- [ ] Full sidebar layout
-- [ ] Map at configured height (400px default)
+- **Filament 5.x — Infolist Overview (summary step)**
+  https://filamentphp.com/docs/5.x/infolists/overview
+  (Covers `TextEntry`, `ImageEntry`, and state handling with closures.)
 
-### Functional
-- [ ] Zoom + increases zoom
-- [ ] Zoom − decreases zoom
-- [ ] Fullscreen toggle opens/closes correctly
-- [ ] "Usa la mia posizione" triggers permission prompt
-- [ ] Geolocation updates marker and coordinates
-- [ ] Layer switcher shows 4 layers
-- [ ] Clicking on map places/moves marker
-- [ ] Dragging marker updates on dragend (not during drag)
-- [ ] Search with ≥3 chars shows dropdown
-- [ ] Search result click: marker moves, address fields populated
-- [ ] Reverse geocode: all address fields populated
-- [ ] `province`, `country_code`, `suburb` correctly mapped
+- **Leaflet — invalidateSize() documentation**
+  https://leafletjs.com/reference.html#map-invalidatesize
+  (Explains why maps need `invalidateSize()` when shown after being hidden.)
 
-### Performance
-- [ ] No Livewire request during drag
-- [ ] Search debounced at 500ms
-- [ ] `invalidateSize()` on container resize
-- [ ] Fullscreen `invalidateSize()` after 300ms
+- **Leaflet — DivIcon documentation**
+  https://leafletjs.com/reference.html#divicon
+  (How to create marker icons from HTML/SVG for full control and no CDN dependencies.)
 
-### Accessibility
-- [ ] All buttons have `aria-label`
-- [ ] Screen reader live region updates
-- [ ] Search input has `aria-autocomplete`, `aria-controls`, `aria-expanded`
-- [ ] ESC closes dropdown and fullscreen
-- [ ] Tab order logical
+- **Nominatim — Usage Policy (search/geocode)**
+  https://operations.osmfoundation.org/policies/nominatim/
+  (Required reading for server-side geocoding: User-Agent, rate limits, and caching rules.)
+
+- **Bootstrap Italia — Intestazione Slim (slim header reference)**
+  https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
+  (Same as above: inspect the `intestazione-slim` area for header auth behavior and spacing.)
+
+- **GitHub — coordinate-picker-lit.js (canonical implementation)**
+  file: `laravel/Modules/Geo/resources/js/components/coordinate-picker-lit.js`
+  (Primary Lit component handling map, marker, events, and `invalidateSize()` MutationObserver logic.)
+
+- **GitHub — map-picker-marker-config.js (marker icon factory)**
+  file: `laravel/Modules/Geo/resources/js/components/map-picker-marker-config.js`
+  (Exports `createMapPickerLeafletIcon(L)` returning `L.divIcon` with local SVG.)
+
+- **GitHub — HasCoordinatePicker (shared trait)**
+  file: `laravel/Modules/Geo/app/Traits/HasCoordinatePicker.php`
+  (Contains shared server helpers, normalization, and legacy-column sync logic.)
+
+- **Livewire — Data Binding and Actions**
+  https://livewire.dev/docs/2.x/actions
+  (Reminder: Livewire is server-side authority for persistence and geocoding.)
+
+- **Alpine.js — x-show and MutationObserver patterns**
+  https://alpinejs.dev/directives/show
+  (Review how Alpine `x-show` toggles interact with Leaflet sizing and how we observe parent DOM changes.)
 
 ---
 
-## 16. REFERENCE LINKS
+## 18. Quick Checklist Before Commit
 
-| Resource | URL |
-|---|---|
-| Design Comuni — Segnalazione Step 2 | https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html |
-| Design Comuni — Area Personale | https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-area-personale.html |
-| Design Comuni — GitHub | https://github.com/italia/design-comuni-pagine-statiche |
-| Filament v5 — Custom Fields | https://filamentphp.com/docs/5.x/forms/custom-fields |
-| Livewire v4 — JavaScript | https://livewire.laravel.com/docs/4.x/javascript |
-| Lit 3 — Documentation | https://lit.dev/docs/ |
-| Leaflet — Quick Start | https://leafletjs.com/examples/quick-start/ |
-| Leaflet — Shadow DOM Issue | https://github.com/Leaflet/Leaflet/issues/6960 |
-| Nominatim — Usage Policy | https://operations.osmfoundation.org/policies/nominatim/ |
-| Nominatim — Search API | https://nominatim.org/release-docs/develop/api/Search/ |
-| Nominatim — Reverse API | https://nominatim.org/release-docs/develop/api/Reverse/ |
-| Esri Leaflet | https://developers.arcgis.com/esri-leaflet/ |
-| OSM Humanitarian Tiles | https://www.hotosm.org/ |
-| Design Comuni — Bootstrap Italia | https://italia.github.io/bootstrap-italia/ |
+- [ ] No hardcoded UI strings in JS/Blade — all labels from `lang/` passed to Lit as JSON.
+- [ ] No CDN/unpkg Leaflet assets; marker icons are inline SVG from `resources/svg/`.
+- [ ] `CoordinatePicker` uses single `location` state path; legacy columns synced explicitly.
+- [ ] JS updates Livewire only on intentional events (`click`, `dragend`, search select), never `mousemove`/continuous drag.
+- [ ] `MutationObserver` triggers `map.invalidateSize()` when wizard step visibility changes (depth >= 12 ancestors).
+- [ ] `phpstan`, `phpmd`, `phpinsights`, `pest`, `playwright` all run and pass for modified files.
+- [ ] Visual parity verified: open both `segnalazione-crea` (wizard) and `admin/tickets/create` in browser and compare to Design Comuni reference.
+- [ ] No page-specific CSS selectors; styles are component-scoped and work in any context.
+- [ ] Commented picker alternatives preserved in consuming widget (non-negotiable).
+- [ ] If JS file grew beyond ~200 lines, extract helpers (`layers`, `controls`, etc.).
+
+---
+
+## 19. Expected Output (Reaffirmed)
+
+The final implementation should deliver:
+
+- a single canonical `location` payload
+- Leaflet-aligned `lat` / `lng` naming
+- stable legacy compatibility
+- smaller, clearer JS modules
+- consistent behavior across wizard frontoffice and admin
+- lower regression risk on map rendering and Filament/Livewire binding
+- full accessibility and Design Comuni visual parity
+
+---

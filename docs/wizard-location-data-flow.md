@@ -5,12 +5,12 @@
 **Bug**: La location della mappa non viene passata al salvataggio del ticket nel wizard.
 
 ### Root Cause
-```php
-// In HasCoordinatePicker.php (line 19)
-$this->dehydrated(false); // ❌ IMPEDISCE IL SALVATAGGIO!
-```
+Il problema può avere **due root-cause diversi**, spesso confusi:
 
-Il metodo `dehydrated(false)` marca il campo come "non inviare al server", quindi quando il form viene sottomesso, i dati della mappa vengono ignorati.
+1) **Dehydration disabilitata** (storico): se un field viene marcato `dehydrated(false)`, Livewire non invia lo state al server.
+2) **Mass assignment** (attuale su admin): se il modello Eloquent **non ha `location` in `$fillable`**, Filament/Resource può inviare correttamente lo state, ma `Ticket::create($data)` ignora `location` (non persistito).
+
+In questo repository, la famiglia `CoordinatePicker` (Geo) **è dehydrated** e invia lo state; il bug “in amministrazione non si salva la location” è tipicamente legato al punto (2).
 
 ---
 
@@ -56,7 +56,7 @@ Il metodo `dehydrated(false)` marca il campo come "non inviare al server", quind
 
 ## 🔧 Fix Implementato
 
-### Soluzione: Rimuovere `dehydrated(false)`
+### Soluzione A (storica): Rimuovere `dehydrated(false)`
 
 ```php
 // ❌ BEFORE (bug)
@@ -144,6 +144,17 @@ protected function casts(): array
         'location' => 'array', // o 'json'
     ];
 }
+```
+
+### Mass assignment: `location` deve essere fillable
+
+Se `location` arriva dal form (admin Resource / wizard) ed è un attributo del modello, deve essere ammesso:
+
+```php
+protected $fillable = [
+    // ...
+    'location',
+];
 ```
 
 ---

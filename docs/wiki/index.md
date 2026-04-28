@@ -17,11 +17,15 @@ Indice operativo del wiki Geo.
 
 - [no-docs-archive-rule](./concepts/no-docs-archive-rule.md)
 - [wiki-sacred-structure-rule](../../../../../docs/wiki/concepts/wiki-sacred-structure-rule.md)
+- [phpmd-standalone-phar-rule](../../../../../docs/wiki/concepts/phpmd-standalone-phar-rule.md) — PHPMD del progetto/BMAD va tenuto standalone `.phar`, non via Composer
+- [filament custom field state binding modifiers](./concepts/filament-custom-field-state-binding-modifiers-rule.md) — nei custom field usare `applyStateBindingModifiers()` attorno a `wire:model` / `$entangle()` per rispettare `live()` e `defer()`
+- [second brain discipline for geo](./concepts/second-brain-geo-module-discipline.md) — nel modulo Geo il second brain accumula contratti field/runtime e falsi amici gia' risolti
 
 ## Scopo Mappa in Admin Ticket Create
 
 - [coordinate-picker-purpose](./concepts/coordinate-picker-purpose.md) — scopo mappa in `/fixcity/admin/tickets/create`: selezione precisa luogo, geolocalizzazione, search indirizzo, layer switching
 - [map-purpose](./concepts/map-purpose.md) — finalità mappa in wizard admin: lat/lng ticket, fallback geolocazione, UI controls
+- [map-picker-location-json-contract](./concepts/map-picker-location-json-contract.md) — `location` come payload JSON canonico con `lat/lng`, bridge legacy per `latitude/longitude`
 
 ## Regola Leaflet + Wizard
 
@@ -53,3 +57,9 @@ Indice operativo del wiki Geo.
 
 - [svg-asset-architecture](./concepts/svg-asset-architecture.md) — aggiornato con nuovi file SVG (magnifying-glass, arrows-pointing-out/in, map-pin, squares-2x2, plus, minus)
 - [blade-icons-registration-rule](./concepts/blade-icons-registration-rule.md) — collisioni prefix `geo` evitate: auto-registrazione XotBaseServiceProvider gestisce tutto
+
+## Story 8-65 — CoordinatePicker Filament 5 state binding + save fix
+
+- [coordinate-picker-filament5-save-pattern](./concepts/coordinate-picker-filament5-save-pattern.md) — root cause: `dehydrated(false)` blocca salvataggio; fix con `dehydrateStateUsing()` + Eloquent mutator
+- [filament5-custom-field-entangle-contract](./concepts/filament5-custom-field-entangle-contract.md) — perché `$applyStateBindingModifiers("\$entangle('{$statePath}')")` è OBBLIGATORIO — prova dal codice vendor Filament 5
+- [coordinate-picker-state-binding-rule](./concepts/coordinate-picker-state-binding-rule.md) — **NUOVO**: documentazione completa state binding Filament 5.x: differenza `$applyStateBindingModifiers()` vs `$wire.$entangle()` diretto, gestione modificatori `live()`/`defer()`
