@@ -36,4 +36,8 @@ class GeoServiceProvider extends XotBaseServiceProvider
             ], 'geo');
         }
     }
+
+    // REMOVED: public function register(): void
+    // XotBaseServiceProvider gia' gestisce register() con registerBladeIcons().
+    // Non sovrascrivere: causa doppia registrazione del prefix "geo" nei BladeIcons.
 }

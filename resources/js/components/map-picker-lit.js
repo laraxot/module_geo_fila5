@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { mapPickerStylesText, controlIcons } from './map-picker-styles.js';
+import { mapPickerStyles, mapPickerStylesText } from './map-picker-styles.js';
 import { createMapPickerLeafletIcon } from './map-picker-marker-config.js';
 import { geoIcon } from './geo-heroicons.js';
 
@@ -52,21 +52,21 @@ export class MapPickerLit extends LitElement {
 
     render() {
         const isFullscreen = !!document.fullscreenElement;
-        
+
         return html`
             <style>
                 map-picker-lit { display: block; width: 100%; }
-                ${mapPickerStylesText}
+                ${mapPickerStyles}
                 .layer-controls-overlay { display: flex !important; flex-direction: column !important; gap: 0.5rem !important; }
-                .ctrl-btn svg { width: 1.5rem !important; height: 1.5rem !important; min-width: 1.5rem !important; min-height: 1.5rem !important; color: #ffffff !important; }
+                .ctrl-btn svg { width: 1.25rem !important; height: 1.25rem !important; }
                 .ctrl-btn:hover svg { color: #60a5fa !important; }
             </style>
             <div class="map-container ${isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
-                
+
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
-                
+
                 ${this.showSearch ? this._renderSearch() : ''}
-                
+
                 <div class="layer-controls-overlay">
                     <button class="ctrl-btn" type="button" @click="${this._toggleFullscreen}" title="Fullscreen">
                         ${this._renderIcon('arrows-pointing-out')}
@@ -117,15 +117,14 @@ export class MapPickerLit extends LitElement {
         super.connectedCallback();
         document.addEventListener('fullscreenchange', () => this._onFullscreenChange());
 
-        // MutationObserver — rileva toggle class="hidden" del wizard Filament 5 (depth 15)
-        // IntersectionObserver è un false friend: non rileva Tailwind class="hidden"
+        // MutationObserver — rileva toggle class="hidden" del wizard Filament 5 (depth 20)
         this._mutationObserver = new MutationObserver(() => {
             if (this.offsetParent !== null && this._map) {
                 setTimeout(() => this._map.invalidateSize(), 150);
             }
         });
         let parent = this.parentElement;
-        for (let i = 0; i < 15 && parent; i++) {
+        for (let i = 0; i < 20 && parent; i++) {
             this._mutationObserver.observe(parent, {
                 attributes: true,
                 attributeFilter: ['class', 'style', 'hidden'],
@@ -155,6 +154,16 @@ export class MapPickerLit extends LitElement {
                 this._syncMarkerToState(this.latitude, this.longitude);
             }
         }
+    }
+
+    _refreshMapSize() {
+        [0, 80, 180, 350, 700, 1200].forEach((delay) => {
+            setTimeout(() => {
+                if (this._map && this.offsetParent !== null) {
+                    this._map.invalidateSize();
+                }
+            }, delay);
+        });
     }
 
     _initMap() {
@@ -190,14 +199,14 @@ export class MapPickerLit extends LitElement {
         });
         this._resizeObserver.observe(this);
 
-        setTimeout(() => this._map?.invalidateSize(), 350);
+        this._refreshMapSize();
     }
 
     _handleInteraction(lat, lng, emit = true) {
         this._isProgrammaticUpdate = true;
         this.latitude = parseFloat(lat.toFixed(6));
         this.longitude = parseFloat(lng.toFixed(6));
-        
+
         this._syncMarkerToState(this.latitude, this.longitude);
 
         if (emit) {
@@ -214,9 +223,9 @@ export class MapPickerLit extends LitElement {
     _syncMarkerToState(lat, lng) {
         if (!this._map) return;
         if (!this._marker) {
-            this._marker = L.marker([lat, lng], { 
+            this._marker = L.marker([lat, lng], {
                 draggable: true,
-                icon: createMapPickerLeafletIcon(L) 
+                icon: createMapPickerLeafletIcon(L)
             }).addTo(this._map);
             this._marker.on('dragend', (e) => {
                 const pos = e.target.getLatLng();

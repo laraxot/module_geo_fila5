@@ -39,9 +39,8 @@ trait HasCoordinatePicker
     protected function setUpCoordinatePicker(): void
     {
         $this->default(['latitude' => null, 'longitude' => null]);
-        // Coordinate pickers are UI-only in the frontoffice flows: keep state on the parent form object.
-        // This prevents Filament from persisting transient map state unexpectedly.
-        $this->dehydrated(false);
+        // Note: Removed $this->dehydrated(false) to allow location data to be saved.
+        // The component now properly persists coordinates to the form state.
 
         $this->afterStateHydrated(static function (self $component, mixed $state): void {
             if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {

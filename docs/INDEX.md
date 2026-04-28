@@ -19,8 +19,20 @@
 
 ### 🔧 Integration & Usage
 
+- [**Coordinate Picker Purpose & Architecture**](./coordinate-picker-purpose.md) - Scopo, utilità e implementazione del componente mappa per wizard ticket
+- [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
 - [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
+
+### 🎨 Assets & Icons
+
+**SVG Icons (resources/svg/)**:
+- `magnifying-glass.svg` - Search icon for address input
+- `location.svg` - Geolocation button
+- `layer.svg` - Layer switcher (street/satellite/topo)
+- `crosshair.svg` - Center map crosshair
+- `arrows-pointing-out.svg` / `arrows-pointing-in.svg` - Fullscreen toggle
+- `map-icon-plus.svg` / `map-icon-minus.svg` - Zoom controls
 - [**Web Components & Build Architecture**](./filament-forms-components.md#web-components--litdev) - Lit.dev web component pattern, module vs theme asset separation
 - [**MCP Servers**](./MCP_SERVER_RECOMMENDED.md) - Recommended Model Context Protocol servers
 - [**App Integration**](./app-integration.md) - Integration with main application
