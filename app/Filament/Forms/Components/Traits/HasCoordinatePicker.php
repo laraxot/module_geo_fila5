@@ -8,7 +8,6 @@ use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
-use Webmozart\Assert\Assert;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
@@ -116,7 +115,7 @@ trait HasCoordinatePicker
     /**
      * Set the initial map center.
      *
-     * @param  float|array<string, float>  $lat
+     * @param float|array<string, float> $lat
      */
     public function center(float|array $lat, ?float $lng = null): static
     {
@@ -230,9 +229,9 @@ trait HasCoordinatePicker
         try {
             $appNameConfig = config('app.name');
             $appUrlConfig = config('app.url');
-            $appName = is_string($appNameConfig) && $appNameConfig !== '' ? $appNameConfig : 'Laraxot';
-            $appUrl = is_string($appUrlConfig) && $appUrlConfig !== '' ? $appUrlConfig : 'localhost';
-            
+            $appName = is_string($appNameConfig) && '' !== $appNameConfig ? $appNameConfig : 'Laraxot';
+            $appUrl = is_string($appUrlConfig) && '' !== $appUrlConfig ? $appUrlConfig : 'localhost';
+
             $response = Http::withHeaders([
                 'User-Agent' => sprintf('%s/1.0 (%s)', $appName, $appUrl),
             ])
@@ -325,14 +324,14 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param  array<string, mixed>  $data
-     * @param  array<int, string>  $keys
+     * @param array<string, mixed> $data
+     * @param array<int, string>   $keys
      */
     private static function firstString(array $data, array $keys): string
     {
         foreach ($keys as $key) {
             $value = $data[$key] ?? null;
-            if (is_string($value) && trim($value) !== '') {
+            if (is_string($value) && '' !== trim($value)) {
                 return $value;
             }
         }
@@ -342,7 +341,7 @@ trait HasCoordinatePicker
 
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

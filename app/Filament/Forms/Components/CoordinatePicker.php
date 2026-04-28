@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
  * CoordinatePicker - Geographic selection component.
  *
  * View: geo::filament.forms.components.coordinate-picker
- * 
+ *
  * Standardized on 'lat' and 'lng' keys.
  * JSON-first: saves state as an array/JSON in the defined field.
  */
