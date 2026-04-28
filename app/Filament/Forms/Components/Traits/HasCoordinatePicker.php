@@ -224,7 +224,7 @@ trait HasCoordinatePicker
                 return [];
             }
 
-            /** @var array<int, array<string, mixed>> $data */
+            /* @var array<int, array<string, mixed>> $data */
             return $data;
         } catch (\Throwable) {
             return [];
