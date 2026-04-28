@@ -1,16 +1,9 @@
 {
-  "_geo-heroicons-BIgEVtnL.js": {
-    "file": "assets/geo-heroicons-BIgEVtnL.js",
+  "_geo-heroicons-B3LS9tzj.js": {
+    "file": "assets/geo-heroicons-B3LS9tzj.js",
     "name": "geo-heroicons",
-    "imports": [
-      "_map-picker-marker-config-BH3wBAsd.js"
-    ]
-  },
-  "_map-picker-marker-config-BH3wBAsd.js": {
-    "file": "assets/map-picker-marker-config-BH3wBAsd.js",
-    "name": "map-picker-marker-config",
     "css": [
-      "assets/map-picker-marker-config-BUYAHFr5.css"
+      "assets/geo-heroicons-BUYAHFr5.css"
     ],
     "assets": [
       "assets/map-picker-marker-fallback-Bu_stv-I.svg",
@@ -19,9 +12,9 @@
       "assets/marker-icon-hN30_KVU.png"
     ]
   },
-  "_map-picker-marker-config-BUYAHFr5.css": {
-    "file": "assets/map-picker-marker-config-BUYAHFr5.css",
-    "src": "_map-picker-marker-config-BUYAHFr5.css"
+  "_geo-heroicons-BUYAHFr5.css": {
+    "file": "assets/geo-heroicons-BUYAHFr5.css",
+    "src": "_geo-heroicons-BUYAHFr5.css"
   },
   "node_modules/leaflet/dist/images/layers-2x.png": {
     "file": "assets/layers-2x-Bpkbi35X.png",
@@ -45,32 +38,30 @@
     "isEntry": true
   },
   "resources/js/components/coordinate-picker-lit.js": {
-    "file": "assets/coordinate-picker-lit-DkypNm4p.js",
+    "file": "assets/coordinate-picker-lit-BL9r2wkT.js",
     "name": "coordinate-picker-lit",
     "src": "resources/js/components/coordinate-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_map-picker-marker-config-BH3wBAsd.js"
+      "_geo-heroicons-B3LS9tzj.js"
     ]
   },
   "resources/js/components/geopoint-picker-lit.js": {
-    "file": "assets/geopoint-picker-lit-BHSee6iG.js",
+    "file": "assets/geopoint-picker-lit-DFRJc_96.js",
     "name": "geopoint-picker-lit",
     "src": "resources/js/components/geopoint-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_map-picker-marker-config-BH3wBAsd.js",
-      "_geo-heroicons-BIgEVtnL.js"
+      "_geo-heroicons-B3LS9tzj.js"
     ]
   },
   "resources/js/components/map-picker-lit.js": {
-    "file": "assets/map-picker-lit-D0DlyjS7.js",
+    "file": "assets/map-picker-lit-BzD3U53-.js",
     "name": "map-picker-lit",
     "src": "resources/js/components/map-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_map-picker-marker-config-BH3wBAsd.js",
-      "_geo-heroicons-BIgEVtnL.js"
+      "_geo-heroicons-B3LS9tzj.js"
     ]
   },
   "resources/svg/map-picker-marker-fallback.svg": {

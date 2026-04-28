@@ -22,6 +22,6 @@ class CoordinatePicker extends XotBaseField
     {
         parent::setUp();
         $this->setUpCoordinatePicker();
-        $this->dehydrated(false);
+        $this->dehydrated();
     }
 }

@@ -57,9 +57,9 @@ Height::make('340px') // returns string, but not applied to container
 
 ### C. Correct Deep Observation
 ```js
-// In coordinate-picker-lit.js – set depth to 12+ for Filament 5 steps
+// In coordinate-picker-lit.js – set depth to 20+ for Filament 5 steps
 let parent = this.parentElement;
-for (let i = 0; i < 12 && parent; i++) {
+for (let i = 0; i < 20 && parent; i++) {
     this._mutationObserver.observe(parent, {
         attributes: true,
         attributeFilter: ['class', 'style', 'hidden']
@@ -98,7 +98,7 @@ _initMap() {
 | Practice | Why |
 |---|---|
 | **Fixed height container** (`h-[340px]`) | Guarantees Leaflet can calculate dimensions |
-| **Depth >= 12 MutationObserver** | Captures `class="hidden"` toggle in Filament wizard |
+| **Depth >= 20 MutationObserver** | Captures `class="hidden"` toggle in Filament wizard |
 | **Single active picker** | Prevents CSS class conflicts |
 | **`overflow: visible`** on map container | Allows Leaflet controls to render outside bounds |
 | **Explicit `zoomControl: false`** | Avoids duplicate Leaflet controls |

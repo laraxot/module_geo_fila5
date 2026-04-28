@@ -46,12 +46,27 @@
 - VERIFICA PENDINGA: Playwright MCP non funziona in questo ambiente (`/opt/google/chrome/chrome` non trovato)
 - Nuova pagina: `concepts/map-picker-lit-admin-fix-8-56.md`
 
+## [2026-04-27] fix | SVG assets + Blade icon component + docs study
+- Creati file SVG mancanti in `resources/svg/`: `map-pin.svg`, `squares-2x2.svg`, `plus.svg`, `minus.svg`.
+- `geo-heroicons.js` già aggiornato: import da `../../svg/*.svg?raw` + `html\`${svg}\`` (Filament Way).
+- Creato `resources/views/components/icon.blade.php` per servire SVG via `@include('geo::components.icon')`.
+- `address-search-input.blade.php` aggiornato: usa `<img src="{{ asset('modules/geo/svg/...') }}">` invece di `@svg('geo::...')` (Blade UI Kit non supporta set personalizzati).
+- Eseguito `php artisan view:clear` per pulire cache viste.
+- Studio docs: struttura wiki moduli (`concepts/`, `rules/`, `entities/`, `log.md`, `index.md`) verificata e coerente.
+
 ## [2026-04-27] fix | geo npm build broken entries + js syntax
 - eseguito `npm run build` da `laravel/Modules/Geo` con errore iniziale su entry Vite inesistente (`resources/css/app.css`).
 - corretto `vite.config.js`: `buildDirectory` da `assets/chart` a `assets/geo`, input CSS/JS allineati ai file reali.
 - corretto parse error in `resources/js/components/coordinate-picker-lit.js` (constructor non chiuso).
 - rieseguito build con esito positivo (`vite build` completato, manifest generato in `public/manifest.json`).
 - nuova pagina: `concepts/geo-vite-build-contract.md`.
+
+## [2026-04-27] story | 9-01 map component purpose and business outcome
+- Documentato scopo business della mappa in ticket wizard (`/fixcity/admin/tickets/create`)
+- Architettura a strati: Fixcity (business logic) → Geo (map runtime) → Sixteen (UI styling)
+- Flusso dati: `CoordinatePicker::make('location')` → `coordinate-picker-field.js` → `map-picker-lit.js` → DB
+- BMAD story: `_bmad-output/implementation-artifacts/9-01-map-component-purpose.md`
+- Nuova pagina: `concepts/map-component-purpose-architecture.md`
 
 ## [2026-04-27] governance | Filament admin panel map visibility contract
 - aggiunta pagina `concepts/filament-admin-panel-map-visibility-contract.md`.
@@ -197,3 +212,22 @@
 
 ## [2026-04-21] governance | forbidden folders zero tolerance
 - Collegamento regola root: `../../../../docs/wiki/concepts/forbidden-folders-zero-tolerance-rule.md`.
+
+## [2026-04-27] fix | map-picker-lit.js — MutationObserver depth + refreshMapSize
+- Aumentato MutationObserver depth da 15 a 20 in `map-picker-lit.js` per rilevare `class="hidden"` wizard Filament 5.
+- Aggiunto metodo `_refreshMapSize()` con delay array `[0, 80, 180, 350, 700, 1200]` per gestire ambienti lenti e transizioni Alpine.
+- `_initMap()` ora chiama `this._refreshMapSize()` dopo inizializzazione.
+- Rimosso `IntersectionObserver` da `coordinate-picker-lit.js` (false friend — non rileva `class="hidden"` Tailwind).
+- Aumentato depth da 15 a 20 anche in `coordinate-picker-lit.js`.
+- Build Vite completato: `npm run build && npm run copy` OK.
+
+## [2026-04-27] fix | Blade icon collision — geo:: prefix
+- Errore `CannotRegisterIconSet`: il prefix `geo.` collide con il set `default` (prefix `''`).
+- Fix: `address-search-input.blade.php` ora usa `<img src="{{ asset('modules/geo/svg/magnifying-glass.svg') }}">` invece di `@svg('geo::magnifying-glass')`.
+- Regola: quando il set `default` ha prefix vuoto, non usare `@svg('set::...')` — usare asset diretto.
+
+## [2026-04-27] docs | aggiornamento LLM wiki + regole
+- Verificato che `bashscripts/ai/.claude/rules/` contiene tutte le regole attuali (23 file .md).
+- Verificato che `laravel/Modules/Geo/docs/wiki/` ha struttura canonica: concepts/, entities/, comparisons/, decisions/, troubleshooting/.
+- Verificato che `laravel/Themes/Sixteen/docs/` ha documentazione completa (60+ file .md).
+- Aggiornato `log.md` con sessione odierna.

@@ -1,13 +1,49 @@
-# SVG Asset Architecture — Regola Universale Moduli
+# SVG Asset Architecture — Geo Module
 
 ## REGOLA PERMANENTE (2026-04-20)
 
 ```
-OBBLIGATORIO: laravel/Modules/{NomeModulo}/resources/svg/{nome}.svg
+OBBLIGATORIO: laravel/Modules/Geo/resources/svg/{nome}.svg
 VIETATO: resources/img/, public/images/, public/vendor/, assets/
 ```
 
 Tutti gli SVG di un modulo stanno in `resources/svg/` — nessuna eccezione.
+
+## SVG Icons for Map Controls
+
+I nuovi file SVG per i controlli della mappa (creati 2026-04-27):
+
+```
+laravel/Modules/Geo/resources/svg/magnifying-glass.svg    ← lente ricerca
+laravel/Modules/Geo/resources/svg/arrows-pointing-out.svg  ← fullscreen apri
+laravel/Modules/Geo/resources/svg/arrows-pointing-in.svg   ← fullscreen chiudi
+laravel/Modules/Geo/resources/svg/map-pin.svg              ← geolocalizzazione
+laravel/Modules/Geo/resources/svg/squares-2x2.svg         ← cambio layer
+laravel/Modules/Geo/resources/svg/plus.svg                 ← zoom in
+laravel/Modules/Geo/resources/svg/minus.svg                ← zoom out
+laravel/Modules/Geo/resources/svg/map-marker.svg          ← marker principale
+laravel/Modules/Geo/resources/svg/map-picker-marker.svg  ← marker picker
+```
+
+## Auto-Registrazione Blade Icons
+
+I moduli registrano automaticamente le proprie SVG tramite `XotBaseServiceProvider`.
+Non serve configurare `blade-icons.php` per il modulo Geo — le icone sono
+disponibili tramite il nome file senza prefisso personalizzato.
+
+Per riferimento in Blade: scrivere SVG inline direttamente nel template
+invece di usare `@svg()` per evitare collisioni di prefisso.
+
+## JS Module Usage
+
+In Lit Element components, le icone sono reference tramite `geoIcon()` da `geo-heroicons.js`:
+
+```javascript
+import { geoIcon } from './geo-heroicons.js';
+// Uso: html`<button>${geoIcon('magnifying-glass')}</button>`
+```
+
+`geo-heroicons.js` carica gli SVG tramite Vite `?raw` import da `../../svg/`.
 
 ## Esempi già presenti nel progetto
 
@@ -18,61 +54,8 @@ laravel/Modules/User/resources/svg/role.svg
 laravel/Modules/User/resources/svg/user-profile.svg
 ```
 
-## SVG del modulo Geo
-
-Per marker MapPicker e icone geografiche:
-
-```
-laravel/Modules/Geo/resources/svg/map-marker.svg        ← marker principale
-laravel/Modules/Geo/resources/svg/map-marker-active.svg ← marker selezionato (opzionale)
-```
-
-**Non** in: ~~`resources/img/markers/`~~ ~~`public/images/`~~
-
-## Come usarli
-
-### 1. SVG inline in JS/Lit (preferito per marker Leaflet)
-
-```javascript
-// Importa raw con Vite
-import markerSvg from '../../../svg/map-marker.svg?raw';
-
-// Usa in L.divIcon
-L.divIcon({ html: markerSvg, className: 'map-picker-marker', iconSize: [32, 45], iconAnchor: [16, 45] });
-```
-
-### 2. SVG inline in Blade
-
-```blade
-{!! file_get_contents(module_path('Geo', 'resources/svg/map-marker.svg')) !!}
-```
-
-### 3. SVG come URL pubblico (dopo vendor:publish)
-
-```
-php artisan vendor:publish --tag=geo-assets
-→ public/vendor/geo/svg/map-marker.svg
-```
-
-## Naming convention
-
-- kebab-case: `map-marker.svg`, `geo-icon.svg`, `loading-spinner.svg`
-- Nessuna versione nel nome file — usa cache busting di Vite/Laravel
-- Nessun prefisso modulo nel nome (già nella cartella del modulo)
-
-## Validazione
-
-```bash
-# SVG fuori posizione nei moduli
-find laravel/Modules -name "*.svg" | grep -v "/resources/svg/"
-# Target: 0 risultati per SVG proprietari dei moduli
-
-# SVG Geo esistenti
-ls laravel/Modules/Geo/resources/svg/
-```
-
 ## Riferimenti
 
-- Regola globale: `bashscripts/ai/.claude/rules/svg-asset-location.md`
-- Regola marker: `bashscripts/ai/.claude/rules/map-marker-custom-asset.md`
-- Story 8-27: implementazione marker custom locale per MapPicker
+- `bashscripts/ai/.claude/rules/svg-asset-location.md`
+- `geo-heroicons.js` — registry icone Lit
+- `map-picker-styles.js` — stili e controlli mappa
