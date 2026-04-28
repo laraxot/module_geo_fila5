@@ -271,8 +271,20 @@ trait HasCoordinatePicker
      */
     #[ExposedLivewireMethod]
     #[Renderless]
-    public function reverseGeocode(float $lat, float $lng): ?array
+    public function reverseGeocode(mixed $lat = null, mixed $lng = null): ?array
     {
+        if (is_array($lat)) {
+            $lng = $lat['lng'] ?? $lat['lon'] ?? $lat['longitude'] ?? null;
+            $lat = $lat['lat'] ?? $lat['latitude'] ?? null;
+        }
+
+        if (! is_numeric($lat) || ! is_numeric($lng)) {
+            return null;
+        }
+
+        $lat = (float) $lat;
+        $lng = (float) $lng;
+
         try {
             $response = Http::withHeaders([
                 'User-Agent' => 'Laraxot/1.0',

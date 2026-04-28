@@ -1,4 +1,5 @@
-import { LitElement, html, guard } from 'lit';
+import { LitElement, html } from 'lit';
+import { guard } from 'lit/directives/guard.js';
 import 'leaflet/dist/leaflet.css';
 import { mapPickerStyles } from './map-picker-styles.js';
 import { renderControls, switchLayer, toggleFullscreen, zoomIn, zoomOut, requestGeolocation } from './map-picker-controls.js';

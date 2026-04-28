@@ -48,13 +48,25 @@ $labels = [
 
             handleCoordsChanged(event) {
                 this._suppressUpdate = true;
-                const { lat, lng } = event.detail;
+                const lat = event.detail.lat ?? event.detail.latitude;
+                const lng = event.detail.lng ?? event.detail.longitude;
+
+                if (!Number.isFinite(Number(lat)) || !Number.isFinite(Number(lng))) {
+                    this._suppressUpdate = false;
+                    return;
+                }
                 
                 this.state = {
                     ...(this.state ?? {}),
                     lat: lat,
                     lng: lng,
+                    latitude: lat,
+                    longitude: lng,
                 };
+                this.$wire.set(@js($statePath . '.lat'), lat, false);
+                this.$wire.set(@js($statePath . '.lng'), lng, false);
+                this.$wire.set(@js($statePath . '.latitude'), lat, false);
+                this.$wire.set(@js($statePath . '.longitude'), lng, false);
 
                 @if($field->hasReverseGeocoding())
                 void this.reverseGeocode(lat, lng);
@@ -96,8 +108,15 @@ $labels = [
                     ...(this.state ?? {}), 
                     lat: lat, 
                     lng: lon,
+                    latitude: lat,
+                    longitude: lon,
                     address: result.display_name 
                 };
+                this.$wire.set(@js($statePath . '.lat'), lat, false);
+                this.$wire.set(@js($statePath . '.lng'), lon, false);
+                this.$wire.set(@js($statePath . '.latitude'), lat, false);
+                this.$wire.set(@js($statePath . '.longitude'), lon, false);
+                this.$wire.set(@js($statePath . '.address'), result.display_name, false);
                 
                 @if($field->hasReverseGeocoding())
                 void this.reverseGeocode(lat, lon);
@@ -109,6 +128,9 @@ $labels = [
                     const result = await this.$wire.callSchemaComponentMethod(@js($key), 'reverseGeocode', { lat: lat, lng: lng });
                     if (result) {
                         this.state = { ...(this.state ?? {}), ...result };
+                        Object.entries(result).forEach(([key, value]) => {
+                            this.$wire.set(`${@js($statePath)}.${key}`, value, false);
+                        });
                     }
                 } catch (e) {}
             }
@@ -157,8 +179,9 @@ $labels = [
         <div wire:ignore class="map-container-wrapper overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700" 
              :style="{ height: isFullscreen ? '100vh' : '{{ $field->getHeight() }}' }">
             <coordinate-picker-lit
-                :lat="state?.lat"
-                :lng="state?.lng"
+                :lat="state?.lat ?? state?.latitude"
+                :lng="state?.lng ?? state?.longitude"
+                .state="state"
                 zoom="{{ $field->getZoom() }}"
                 @if($field->getGeolocateWhenEmpty()) geolocate-when-empty @endif
                 .labels='@json($labels)'
@@ -168,8 +191,8 @@ $labels = [
         {{-- Readout Summary --}}
         <div class="rounded-lg bg-gray-50 p-2 text-[11px] text-gray-500 dark:bg-white/5 dark:border-white/10 border border-gray-100">
             <div class="flex flex-wrap gap-x-4">
-                <span>Lat: <strong x-text="state.lat ? Number(state.lat).toFixed(6) : '--'"></strong></span>
-                <span>Lng: <strong x-text="state.lng ? Number(state.lng).toFixed(6) : '--'"></strong></span>
+                <span>Lat: <strong x-text="(state.lat ?? state.latitude) ? Number(state.lat ?? state.latitude).toFixed(6) : '--'"></strong></span>
+                <span>Lng: <strong x-text="(state.lng ?? state.longitude) ? Number(state.lng ?? state.longitude).toFixed(6) : '--'"></strong></span>
             </div>
             <template x-if="state.address">
                 <div class="mt-1 truncate max-w-full" :title="state.address">

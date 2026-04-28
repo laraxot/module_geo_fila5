@@ -38,6 +38,22 @@ export function scheduleLeafletInvalidate(host, map, redrawFn) {
         });
 }
 
+export function refreshMapSize(host) {
+        if (!host._map) return;
+        scheduleLeafletInvalidate(host, host._map, () => {});
+}
+
+export function bindRefreshHandler(host) {
+        const { resizeObserver, mutationObserver } = attachSizeObservers(host, () => refreshMapSize(host));
+        host._resizeObserver = resizeObserver;
+        host._mutationObserver = mutationObserver;
+}
+
+export function cleanupObservers(host) {
+        if (host._resizeObserver) { host._resizeObserver.disconnect(); host._resizeObserver = null; }
+        if (host._mutationObserver) { host._mutationObserver.disconnect(); host._mutationObserver = null; }
+}
+
 export function attachSizeObservers(host, refreshFn) {
         const resizeObserver = new ResizeObserver(refreshFn);
         resizeObserver.observe(host);
