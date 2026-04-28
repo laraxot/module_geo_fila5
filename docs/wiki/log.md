@@ -1,5 +1,69 @@
 # Geo Wiki Log
 
+## [2026-04-28] governance | hard enforcement PHPMD standalone `.phar`
+- ribadita policy del modulo: PHPMD resta tool standalone (`php /home/zorin/.local/bin/phpmd.phar`) e non dipendenza Composer.
+- allineato il modulo alla rimozione effettiva di `phpmd/phpmd` dal `composer.json` Laravel root.
+- obiettivo: quality gates stabili e DRY/KISS tra root, modulo Geo e temi.
+
+## [2026-04-28] governance | recepita regola root PHPMD standalone `.phar`
+- collegato l'indice Geo alla regola root `docs/wiki/concepts/phpmd-standalone-phar-rule.md`.
+- ribadito per il modulo Geo che PHPMD non e' una dipendenza Composer del modulo, ma un tool standalone del workflow.
+- obiettivo: evitare drift documentale nei prompt/story e mantenere quality gates coerenti tra modulo e root.
+
+## [2026-04-28] docs | restored canonical map-picker.txt prompt
+- ricreato `docs/prompts/map-picker.txt` come prompt canonico unico del modulo Geo.
+- consolidati nel file i vincoli emersi dalle versioni progressive:
+  - `location` come payload canonico
+  - naming Leaflet `lat` / `lng`
+  - retrocompatibilità `latitude` / `longitude`
+  - obbligo di mantenere i picker sibling commentati in `CreateTicketWizardWidget.php`
+  - quality gates e mandato di semplificazione JS
+- evitata ulteriore duplicazione concettuale tra varianti prompt sparse.
+
+## [2026-04-28] docs | map picker prompt v4 + canonical location json contract
+- creato `docs/prompts/map-picker-4.txt` come versione migliorata del prompt operativo per la famiglia Geo picker.
+- allineato il prompt alle regole correnti:
+  - `CoordinatePicker::make('location')` usa un solo state path
+  - payload canonico `location` con chiavi Leaflet `lat` / `lng`
+  - `latitude` / `longitude` mantenuti solo per retrocompatibilità
+  - componenti sibling commentati in `CreateTicketWizardWidget.php` da non rimuovere
+  - semplificazione JS tramite moduli quando `coordinate-picker-lit.js` cresce troppo
+- creata pagina wiki `concepts/map-picker-location-json-contract.md`.
+- aggiornato `docs/wiki/index.md` con backlink al nuovo contratto.
+
+## [2026-04-28] docs | second brain discipline localized for Geo
+- created `concepts/second-brain-geo-module-discipline.md`.
+- clarified that the Geo second brain must accumulate field contracts, runtime map rules, troubleshooting, and false friends across the picker family.
+- updated local index with backlink to the new discipline page.
+
+## [2026-04-28] docs | hardening contract CoordinatePicker (best/bad/false friends + verified links)
+- aggiornata `concepts/filament5-custom-field-entangle-contract.md` con sezioni dedicate:
+  - best practices
+  - bad practices
+  - false friends
+  - link verificati ufficiali Filament/Livewire
+- obiettivo: ridurre regressioni su custom fields e mantenere confine DRY+KISS tra modulo Geo e tema.
+- ingest eseguito in QMD index `fixcity` (collection `geo-wiki` aggiornata).
+
+## [2026-04-28] docs | story 8-65 — CoordinatePicker state binding rule + Filament 5 study
+
+- **Studio Filament 5.x**: lettura completa [Custom Fields docs](https://filamentphp.com/docs/5.x/forms/custom-fields) sezione "Obeying state binding modifiers".
+- **Problema**: in `coordinate-picker.blade.php` linea 18 usa `$wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }}` — sintassi corretta ma serviva documentazione del perché NON usare `$wire.$entangle('{{ $getStatePath() }}')`.
+- **Documentazione**: creata `concepts/coordinate-picker-state-binding-rule.md` con:
+  - Regola d'oro: `$applyStateBindingModifiers()` è OBBLIGATORIO per rispettare `live()`/`defer()` sul field
+  - Differenza tecnica: senza modifier → `$entangle` (deferred default); con `live()` → `$entangleLive`; con `defer()` → `$entangleDeferred`
+  - Esempio completo di codice funzionante con `x-data` + `coordinate-picker-lit`
+- **Aggiornamento index**: aggiunto riferimento a `coordinate-picker-state-binding-rule.md` in index.md
+- **Cross-link**: pagina collega a `coordinate-picker-filament5-save-pattern.md` e `coordinate-picker-comprehensive-guide.md`
+
+## [2026-04-28] fix | story 8-64 — CoordinatePicker Filament 5 save pattern (mutator)
+
+- **Problema**: `CoordinatePicker::make('location')` invia `['location' => {latitude, longitude}]` a `Ticket::fill()`, ma il modello ha colonne separate `latitude`/`longitude` senza colonna `location` nel DB — dati persi silenziosamente.
+- **Root cause reale**: assenza di un Eloquent mutator `location()` che smistasse l'array composito nelle colonne reali; il cast `'location' => 'array'` aggravava il problema tentando di scrivere su una colonna inesistente.
+- **Fix**: aggiunto `location(): Attribute` in `Modules\Fixcity\Models\Ticket` con `Attribute::set()` multi-colonna; rimosso `'location' => 'array'` da `casts()`.
+- **Nuova pagina**: `concepts/coordinate-picker-filament5-save-pattern.md` — pattern documentato con motivazione, alternative e flusso dati completo.
+- **Regola permanente**: `bashscripts/ai/.claude/rules/coordinatepicker-multi-column-save.md`.
+
 ## [2026-04-27] refactor | story 8-62 — search ui picker estratta in componente riutilizzabile
 - estratto blocco search (`input + loading + risultati`) da `coordinate-picker.blade.php` in `filament/components/address-search-input.blade.php`.
 - il coordinate picker ora include il componente riusabile con `@include('geo::filament.components.address-search-input')`.

@@ -1,4 +1,4 @@
-mport { geoIcon } from './geo-heroicons.js'/
+import { geoIcon } from './geo-heroicons.js'/
 import { LitElement, html } from 'lit';
 mport { geoIcon } from './geo-heroicons.js'/
 import { guard } from 'lit/directives/guard.js';
