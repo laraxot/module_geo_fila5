@@ -12,7 +12,7 @@ use Modules\Geo\Actions\LocationIQ\GetAddressFromLocationIQAction;
 use Modules\Geo\Datas\AddressData;
 
 beforeEach(function () {
-    $this->action = new GetAddressFromLocationIQAction();
+    $this->action = new GetAddressFromLocationIQAction;
 });
 
 it('throws exception when api key is not configured', function (): void {
