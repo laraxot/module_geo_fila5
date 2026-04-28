@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Forms\Components;
 
-use Livewire\Attributes\On;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Concerns\InteractsWithWire;
+use Livewire\Attributes\On;
 
 class CoordinatePicker extends Field
 {
@@ -24,36 +24,42 @@ class CoordinatePicker extends Field
     public function latitudeColumn(?string $column = null): static
     {
         $this->latitudeColumn = $column;
+
         return $this;
     }
 
     public function longitudeColumn(?string $column = null): static
     {
         $this->longitudeColumn = $column;
+
         return $this;
     }
 
     public function zoom(int $zoom): static
     {
         $this->zoom = $zoom;
+
         return $this;
     }
 
     public function showFullscreenButton(bool $show = true): static
     {
         $this->showFullscreenButton = $show;
+
         return $this;
     }
 
     public function showLocateButton(bool $show = true): static
     {
         $this->showLocateButton = $show;
+
         return $this;
     }
 
     public function enableReverseGeocoding(bool $enable = true): static
     {
         $this->enableReverseGeocoding = $enable;
+
         return $this;
     }
 
@@ -64,7 +70,7 @@ class CoordinatePicker extends Field
 
     public function getStatePath(): string
     {
-        return $this->getName() . '.coordinates';
+        return $this->getName().'.coordinates';
     }
 
     public function getState(): array
@@ -107,12 +113,13 @@ class CoordinatePicker extends Field
         $url = "https://nominatim.openstreetmap.org/reverse?format=json&lat={$latitude}&lon={$longitude}&accept-language=it";
         $response = @file_get_contents($url);
         $data = $response ? json_decode($response, true) : null;
+
         return $data['display_name'] ?? null;
     }
 
     public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array
     {
-        if (!is_array($data) || !isset($data[$fieldName])) {
+        if (! is_array($data) || ! isset($data[$fieldName])) {
             return [$latitudeColumn => null, $longitudeColumn => null];
         }
 
@@ -126,5 +133,4 @@ class CoordinatePicker extends Field
 
         return [$latitudeColumn => $lat, $longitudeColumn => $lng];
     }
-
 }
