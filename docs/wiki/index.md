@@ -30,6 +30,7 @@ Indice operativo del wiki Geo.
 ## Regola Leaflet + Wizard
 
 - [leaflet-wizard-step-invalidate-size](./concepts/leaflet-wizard-step-invalidate-size.md) — MutationObserver per rilevare cambio step wizard; invalidateSize() quando container diventa visibile
+- [coordinate-picker-fullscreen-wizard-contract](./concepts/coordinate-picker-fullscreen-wizard-contract.md) — contratto fullscreen wizard; story 8-74 richiede Fullscreen API + fallback CSS + sync `fullscreenchange`
 - [filament-admin-panel-map-visibility-contract](./concepts/filament-admin-panel-map-visibility-contract.md) — contratto mappa in panel Filament admin (non frontoffice)
 - [geo-vite-build-contract](./concepts/geo-vite-build-contract.md) — contratto build Vite modulo Geo (entry reali, buildDirectory, verifica)
 - [lit-light-dom-map-controls-and-sync](./concepts/lit-light-dom-map-controls-and-sync.md) — fix controlli mappa Lit + sync lat/lng in Light DOM
@@ -52,6 +53,7 @@ Indice operativo del wiki Geo.
 | Pagina | Tipo | Argomento |
 |--------|------|-----------|
 | [geo-module](./overviews/geo-module.md) | overview | Gerarchia geografica italiana, Address, Comune, geocoding, LeafletMarkerMapInput |
+| [lit-raw-svg-rendered-as-text](./troubleshooting/lit-raw-svg-rendered-as-text.md) | troubleshooting | SVG importati con `?raw` nei picker Lit appaiono come testo grezzo sopra la mappa |
 
 ## Nuovi documenti 2026-04-27
 

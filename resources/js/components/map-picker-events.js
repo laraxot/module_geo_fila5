@@ -100,7 +100,7 @@ export function initMap(ctx) {
     if (ctx._lat != null && ctx._lng != null) {
         syncMarkerToProperties(ctx);
     } else if (ctx.geolocateWhenEmpty || (ctx._lat === null && ctx._lng === null)) {
-        void requestGeolocation(ctx);
+        void requestGeolocation(ctx, { showLoading: false });
     }
 
     refreshMapSize(ctx);

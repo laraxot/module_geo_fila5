@@ -1,5 +1,38 @@
 # Geo Wiki Log
 
+## [2026-04-29] sync | address components contract aligned to location-only persistence
+- recepito allineamento owner-side Fixcity: nessun salvataggio top-level `address` su `tickets`, tutto confluisce nel payload `location`.
+- confermato contratto interoperabile con Geo reverse-geocoding: `address_details/addressdetails/address_components` vengono mappati in chiavi stabili (`street`, `street_number`, `zip`, `postcode`, `city`, `province`, `state`, `country`, `country_code`, `suburb`).
+- obiettivo business preservato: coordinate + geocoding strutturato riusabili in admin/frontoffice senza coupling a colonne DB opzionali.
+
+## [2026-04-28] verify | admin/frontoffice screenshot pair for map controls
+- raccolta evidenze screenshot aggiornata per le due route target:
+  - admin: `../../../Themes/Sixteen/scripts/fixcity-admin-ticket-create-map.png`
+  - frontoffice: `../../../Themes/Sixteen/scripts/fixcity-frontoffice-ticket-create-map.png`
+- obiettivo: tenere confrontabile il differenziale di visibilita' controlli mappa tra i due contesti.
+
+## [2026-04-28] sync | admin screenshot diagnostics now reuses .env credentials
+- allineato workflow diagnostico admin al principio no-hardcoded-credentials: script Playwright usa variabili da `laravel/.env`.
+- script coinvolto: `../../../Themes/Sixteen/scripts/inspect-fixcity-admin-ticket-create-map.cjs`.
+- output verificato: screenshot admin route con sessione autenticata e mappa renderizzata.
+
+## [2026-04-28] fix | coordinate picker controls hardening for admin visibility parity
+- recepito bug differenziale: in admin (`/fixcity/admin/tickets/create`) i controlli mappa potevano risultare non visibili, mentre in frontoffice risultavano visibili.
+- fix applicato in:
+  - `resources/js/components/map-picker-controls.js`
+  - `resources/js/components/map-picker-styles.js`
+- hardening introdotto:
+  - fallback testuale per icone controlli (`fullscreen`, `current position`, `layer`, `zoom +/-`) quando SVG non renderizza;
+  - overlay controlli forzato con z-index/visibility/pointer-events robusti.
+- build/copy modulo eseguiti: `npm run build && npm run copy`.
+
+## [2026-04-28] fix | raw SVG icone Lit escaped come testo sopra la mappa
+- root cause individuata nel helper `resources/js/components/geo-heroicons.js`: SVG importati con `?raw` venivano interpolati in Lit come stringhe semplici e quindi mostrati come testo grezzo.
+- fix applicato centralmente con rendering trusted nel helper `geoIcon()`, cosi' tutti i picker (`map-picker-lit` e sibling) ereditano la correzione.
+- hardening aggiunto in `map-picker-styles.js`: layout search box piu' robusto e reset `opacity/filter` sui layer Leaflet per evitare resa schiarita.
+- build/copy eseguiti nel tema Sixteen per pubblicare il bundle aggiornato.
+- nuova pagina: `troubleshooting/lit-raw-svg-rendered-as-text.md`.
+
 ## [2026-04-28] governance | hard enforcement PHPMD standalone `.phar`
 - ribadita policy del modulo: PHPMD resta tool standalone (`php /home/zorin/.local/bin/phpmd.phar`) e non dipendenza Composer.
 - allineato il modulo alla rimozione effettiva di `phpmd/phpmd` dal `composer.json` Laravel root.
@@ -295,3 +328,7 @@
 - Verificato che `laravel/Modules/Geo/docs/wiki/` ha struttura canonica: concepts/, entities/, comparisons/, decisions/, troubleshooting/.
 - Verificato che `laravel/Themes/Sixteen/docs/` ha documentazione completa (60+ file .md).
 - Aggiornato `log.md` con sessione odierna.
+- 2026-04-28: Added rule `filament-admin-coordinate-picker-theme-bundle-rule` after admin map rendered without fullscreen/zoom/geolocation controls while frontoffice worked. Geo now registers the compiled Sixteen theme JS bundle in Filament admin.
+## [2026-04-29] story | coordinate picker fullscreen refinement
+- Aggiunta story 8-74 come refinement del contratto fullscreen wizard per `coordinate-picker-lit`.
+- Requisiti runtime: Fullscreen API quando disponibile, fallback CSS, listener `fullscreenchange`, document class `geo-map-fullscreen-active`, refresh Leaflet tramite helper esistenti.

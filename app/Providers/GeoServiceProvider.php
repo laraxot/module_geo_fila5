@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Providers;
 
 use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
@@ -25,16 +26,53 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
     protected function registerMapAssets(): void
     {
-        // REGOLA: nessun asset da CDN/unpkg.
-        // Non registrare il vecchio bundle JS Geo globale: il tema Sixteen importa
-        // i Web Component Geo nel proprio bundle Vite e il bundle legacy puo'
-        // inizializzare dipendenze storiche non presenti (es. opening_hours).
+        $assets = [];
 
         if (is_file(public_path('themes/Geo/css/leaflet.css'))) {
-            FilamentAsset::register([
-                Css::make('leaflet-css', asset('themes/Geo/css/leaflet.css')),
-            ], 'geo');
+            $assets[] = Css::make('leaflet-css', asset('themes/Geo/css/leaflet.css'));
         }
+
+        $sixteenBundleUrl = $this->getSixteenThemeAppBundleUrl();
+
+        if ($sixteenBundleUrl !== null) {
+            // Admin Filament non carica automaticamente il bundle frontoffice del tema,
+            // ma il CoordinatePicker Lit e i suoi controlli sono definiti li'.
+            $assets[] = Js::make('sixteen-coordinate-picker-bundle', $sixteenBundleUrl)->module();
+        }
+
+        if ($assets !== []) {
+            FilamentAsset::register($assets, 'geo');
+        }
+    }
+
+    protected function getSixteenThemeAppBundleUrl(): ?string
+    {
+        $manifestPath = public_path('themes/Sixteen/manifest.json');
+
+        if (! is_file($manifestPath)) {
+            return null;
+        }
+
+        $manifestRaw = file_get_contents($manifestPath);
+
+        if (! is_string($manifestRaw) || $manifestRaw === '') {
+            return null;
+        }
+
+        /** @var array<string, array{file?: string}>|null $manifest */
+        $manifest = json_decode($manifestRaw, true);
+
+        if (! is_array($manifest)) {
+            return null;
+        }
+
+        $entry = $manifest['resources/js/app.js']['file'] ?? null;
+
+        if (! is_string($entry) || $entry === '') {
+            return null;
+        }
+
+        return asset('themes/Sixteen/'.$entry);
     }
 
     // REMOVED: public function register(): void

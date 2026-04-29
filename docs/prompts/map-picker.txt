@@ -465,3 +465,26 @@ The final implementation should deliver:
 - full accessibility and Design Comuni visual parity
 
 ---
+
+/bmad-create-story
+la mappa devono vedersi bene e funzionare bene sia in 
+http://127.0.0.1:8000/fixcity/admin/tickets/create?step=form.data%3A%3Adata%3A%3Awizard-step
+che in 
+http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step
+
+
+
+ /bmad-create-story studia laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php e laravel/Modules/Fixcity/app/
+  Filament/Resources/TicketResource/Schemas/TicketForm.php , documenta, studia e migliora le cartelle docs dentro i moduli e dentro i
+  temi, le tue rules, le tue memories, le tue skills, studia anche laravel/vendor/filament/actions/src/Concerns/HasWizard.php e laravel/
+  vendor/filament/filament/src/Resources/Pages/Concerns/HasWizard.php , ragiona a fondo , poi CreateTicketWizardWidget .. predera' delle
+  cose da ticketform , e usera' dei trait di filament, dobbiamo rifattorizzare studia a fondo https://www.apogeonline.com/articoli/
+  refactoring-che-cosa-fare-quando-il-codice-puzza-martin-fowler/?srsltid=AfmBOopbv3wNQMPz7xZ_UMrm8kega8rKwzP7reaO7E5L9nez89dCpQpY e
+  https://www.nextre.it/code-refactoring-cose/  documentati su internet , documenta dentro le cartelle docs dentro i moduli e dentro i
+  temi .. e rifattorizza laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php  documentando i 10 attributi della
+  rifattorizzazione punto per punto cosa farai in quel file, ti ricordo che dopo aver modificato un file devi sempre controllarlo con
+  phpstan , phpmd (versione .phar) , phpinsights, pest, playwright (devi avere installato e configurato playwright mcs, e laravel-boost),
+  puoi installarti e configurarti quello che vuoi basta che lo documenti dentro le cartelle docs
+
+
+migliora laravel/Modules/Geo/docs/prompts/map-picker.txt
