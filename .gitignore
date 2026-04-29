@@ -389,3 +389,4 @@ laravel/.claude/
 .cursor/
 *.backup*
 *.pest.php
+.tools/
