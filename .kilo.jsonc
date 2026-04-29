@@ -1,0 +1,224 @@
+// Kilo Code Configuration for PTVX Project
+// Location: ~/.kilo.jsonc (copy to home directory for global settings)
+// Or place in project root: <project>/.kilo.jsonc
+
+{
+  // Project Configuration
+  "projectName": "PTVX - Second Brain Wiki",
+  "projectDescription": "Laravel monorepo with AI-powered wiki and documentation system",
+
+  // AI Provider Configuration
+  "aiProviders": [
+    {
+      "name": "claude",
+      "type": "anthropic",
+      "enabled": true,
+      "apiKey": "${ANTHROPIC_API_KEY}",
+      "models": ["claude-opus-4-7", "claude-sonnet-4-6", "claude-haiku-4-5-20251001"]
+    }
+  ],
+
+  // Default Model Selection
+  "defaultModel": "claude-sonnet-4-6",
+  "models": {
+    "code-analysis": "claude-opus-4-7",
+    "documentation": "claude-sonnet-4-6",
+    "quick-questions": "claude-haiku-4-5-20251001"
+  },
+
+  // Codebase Context
+  "codebaseContext": {
+    "rootPath": "/var/www/_bases/base_ptvx_fila5",
+    "language": "php",
+    "framework": "laravel",
+    "includePatterns": [
+      "laravel/Modules/**/*.php",
+      "laravel/Themes/**/*.blade.php",
+      "docs/wiki/**/*.md",
+      "bashscripts/**/*"
+    ],
+    "excludePatterns": [
+      "node_modules/",
+      "vendor/",
+      ".git/",
+      "storage/",
+      "bootstrap/cache/",
+      "_archive/",
+      "*.log"
+    ]
+  },
+
+  // Wiki & Documentation Integration
+  "wiki": {
+    "enabled": true,
+    "rootPath": "docs/wiki",
+    "collections": [
+      {
+        "name": "project-wiki",
+        "path": "docs/wiki",
+        "description": "Project-level wiki"
+      },
+      {
+        "name": "module-wikis",
+        "path": "laravel/Modules/*/docs/wiki",
+        "description": "All module wikis"
+      },
+      {
+        "name": "theme-wikis",
+        "path": "laravel/Themes/*/docs/wiki",
+        "description": "All theme wikis"
+      },
+      {
+        "name": "bashscript-wikis",
+        "path": "bashscripts/*/docs/wiki",
+        "description": "Bash scripts documentation"
+      }
+    ],
+    "searchEnabled": true,
+    "autoLinkRelated": true
+  },
+
+  // QMD Integration
+  "qmd": {
+    "enabled": true,
+    "collections": {
+      "wiki": {
+        "path": "docs/wiki",
+        "pattern": "**/*.md"
+      },
+      "modules": {
+        "path": "laravel/Modules/*/docs/wiki",
+        "pattern": "**/*.md"
+      },
+      "themes": {
+        "path": "laravel/Themes/*/docs/wiki",
+        "pattern": "**/*.md"
+      }
+    },
+    "embeddingModel": "gemma-300m",
+    "semanticSearchEnabled": true,
+    "performanceTarget": 2000
+  },
+
+  // Context-Mode Integration (kilocli)
+  "contextMode": {
+    "enabled": true,
+    "sandboxProcessing": true,
+    "maxContextLines": 100,
+    "indexOnlyDocs": true,
+    "autoIndexing": true,
+    "overflowPrevention": {
+      "enabled": true,
+      "purgeThreshold": 100000,
+      "guidePath": "docs/wiki/how-to/context-mode-overflow-prevention.md"
+    }
+  },
+
+  // Chat Interface
+  "chat": {
+    "enabled": true,
+    "multifileEditing": true,
+    "contextMentions": true,
+    "gitIntegration": true,
+    "sessionRecording": true
+  },
+
+  // Code Actions & Suggestions
+  "codeActions": {
+    "enabled": true,
+    "autoFormat": false,
+    "linting": true,
+    "suggestions": {
+      "docstrings": true,
+      "refactoring": true,
+      "testing": true
+    }
+  },
+
+  // Testing Integration
+  "testing": {
+    "enabled": true,
+    "frameworks": ["phpunit"],
+    "autoGenerateTests": true,
+    "testPath": "tests"
+  },
+
+  // Git Integration
+  "git": {
+    "enabled": true,
+    "autoCommits": false,
+    "commitMessageGeneration": true,
+    "branchNaming": "conventional",
+    "prDescriptionGeneration": true
+  },
+
+  // Automation & Workflows
+  "automation": {
+    "enabled": true,
+    "mcpServers": [
+      {
+        "name": "qmd-search",
+        "enabled": true,
+        "description": "QMD database for wiki search"
+      },
+      {
+        "name": "context-mode",
+        "enabled": true,
+        "description": "Token compression and FTS5 search"
+      }
+    ]
+  },
+
+  // Project Structure & Standards
+  "standards": {
+    "namingConvention": "snake_case",
+    "docstringFormat": "phpDocumentor",
+    "gitConvention": "conventional-commits",
+    "testConvention": "phpunit",
+    "wikiConvention": "markdown-yaml-frontmatter"
+  },
+
+  // Performance Settings
+  "performance": {
+    "parallelAnalysis": true,
+    "caching": true,
+    "indexing": {
+      "enabled": true,
+      "incremental": true,
+      "updateFrequency": "onSave"
+    },
+    "embedding": {
+      "batchSize": 32,
+      "gpuAcceleration": false,
+      "gpuFallback": true
+    }
+  },
+
+  // IDE Extensions
+  "extensions": {
+    "vscode": {
+      "enabled": true,
+      "syncSettings": true
+    },
+    "jetbrains": {
+      "enabled": true,
+      "syncSettings": true
+    }
+  },
+
+  // Logging & Debugging
+  "logging": {
+    "enabled": true,
+    "level": "info",
+    "outputs": ["console", "file"],
+    "fileLocation": ".kilo/logs"
+  },
+
+  // Development Experience
+  "devExperience": {
+    "quickStart": true,
+    "interactiveSetup": true,
+    "helpOnStartup": false,
+    "tutorialsEnabled": true
+  }
+}

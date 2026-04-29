@@ -25,6 +25,9 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 
 ## How-To Guides
 
+- [qmd-search-guide](./how-to/qmd-search-guide.md) — Complete guide to QMD (Query Markdown Database): installation, search commands, configuration, and performance optimization
+- [module-wiki-documentation](./how-to/module-wiki-documentation.md) — How to create and maintain QMD-indexed documentation in module wikis
+- [theme-wiki-documentation](./how-to/theme-wiki-documentation.md) — How to create and maintain QMD-indexed wikis in theme directories
 - [indexing-module-documentation](./how-to/indexing-module-documentation.md) — Step-by-step guide for indexing module documentation with context-mode
 - [using-wiki-templates](./how-to/using-wiki-templates.md) — How to use provided templates to create consistent documentation across all modules and themes
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md) — Prevent token overflow: use context-mode correctly with sandbox processing
