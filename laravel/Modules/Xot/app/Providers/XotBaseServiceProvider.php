@@ -60,12 +60,23 @@ abstract class XotBaseServiceProvider extends ServiceProvider
             throw new \Exception('name is empty on ['.static::class.']');
         }
 
+        // Blade UI Kit default set may already contain prefixes like "geo".
+        // Skip registration if the prefix would collide with the default set.
         $this->callAfterResolving(BladeIconsFactory::class, function (BladeIconsFactory $factory): void {
             try {
                 $assetsPath = app(GetModulePathByGeneratorAction::class)->execute($this->name, 'assets');
                 $svgPath = $assetsPath.'/../svg';
-                if (File::exists($svgPath)) {
+                if (! File::exists($svgPath)) {
+                    return;
+                }
+                // Check if prefix already registered to avoid collision with default set.
+                try {
+                    $factory->svg($this->nameLower.'::non-existent-test');
+                } catch (\BladeUI\Icons\Exceptions\SvgNotFound $e) {
+                    // Prefix not registered yet — safe to add.
                     $factory->add($this->nameLower, ['path' => $svgPath, 'prefix' => $this->nameLower]);
+                } catch (\BladeUI\Icons\Exceptions\CannotRegisterIconSet $e) {
+                    // Prefix collides — skip registration, SVGs served as static assets.
                 }
             } catch (\Throwable $e) {
                 // Ignore missing optional assets.

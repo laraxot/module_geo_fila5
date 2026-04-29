@@ -87,7 +87,7 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
      */
     protected function wizardMaxStep(): int
     {
-        return max(1, count($this->getWizardSteps()));
+        return max(1, \count($this->getWizardSteps()));
     }
 
     /**
@@ -200,7 +200,15 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
         $steps = $this->getWizardSteps();
         $index = $this->wizardStartStep - 1; // 0-based index
 
-        return $steps[$index]->getName() ?? null;
+        $step = $steps[$index] ?? null;
+
+        if (null === $step) {
+            return null;
+        }
+
+        $label = $step->getLabel();
+
+        return is_string($label) && '' !== $label ? $label : null;
     }
 
     /**
@@ -251,7 +259,21 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
     protected function initWizardState(): void
     {
         $this->wizardStartStep = $this->resolveInitialStepFromQuery();
-        $this->form->fill($this->defaultFormData());
+
+        // Defensive: Filament's InteractsWithForms may initialize the Form at a different
+        // lifecycle moment; avoid fatal errors by falling back to populating $this->data
+        // when the Form instance is not yet available.
+        try {
+            if (isset($this->form) && is_object($this->form) && method_exists($this->form, 'fill')) {
+                $this->form->fill($this->defaultFormData());
+            } else {
+                // Initialize Livewire-bound data array to prevent Entangle errors in Alpine
+                $this->data = $this->defaultFormData();
+            }
+        } catch (\Throwable $e) {
+            // Best-effort fallback to ensure the widget renders even if form->fill fails
+            $this->data = $this->defaultFormData();
+        }
     }
 
     /**
@@ -408,7 +430,7 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
     protected function normalizeWizardFormState(array $state): array
     {
         $key = $this->getWizardSchemaWrapperKey();
-        if (isset($state[$key]) && is_array($state[$key])) {
+        if (isset($state[$key]) && \is_array($state[$key])) {
             return $this->stringKeyed($state[$key]);
         }
 
@@ -467,9 +489,13 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
             return;
         }
 
+        $currentStepIndex = $wizard->getCurrentStepIndex();
+
         $this->callSchemaComponentMethod($key, 'nextStep', [
-            'currentStepIndex' => $wizard->getCurrentStepIndex(),
+            'currentStepIndex' => $currentStepIndex,
         ]);
+
+        $this->wizardStartStep = min($this->wizardMaxStep(), $currentStepIndex + 2);
     }
 
     /**
@@ -483,8 +509,24 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
             return;
         }
 
+        $currentStepIndex = $wizard->getCurrentStepIndex();
+
         $this->callSchemaComponentMethod($key, 'previousStep', [
-            'currentStepIndex' => $wizard->getCurrentStepIndex(),
+            'currentStepIndex' => $currentStepIndex,
+        ]);
+
+        $this->wizardStartStep = max(1, $currentStepIndex);
+    }
+
+    /**
+     * Naviga a uno step specifico per nome.
+     */
+    public function goToStep(string $stepName): void
+    {
+        $key = $this->getWizardComponentKey();
+
+        $this->callSchemaComponentMethod($key, 'goToStep', [
+            'step' => $stepName,
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 **Path**: `Modules/Xot/docs/`  
 **Modulo**: @Modules/Xot  
-**Last Updated**: 2026-03-26  
-**Status**: ✅ COMPLETE
+**Last Updated**: 2026-04-21  
+**Status**: ✅ COMPLETE + BMAD INTEGRATED
 
 ---
 
@@ -12,6 +12,17 @@
 Documentazione completa per il modulo **Xot** - Core architecture del progetto Laraxot.
 
 **Visione**: Fornire le fondamenta architetturali per tutti i moduli (Predict, Blog, User, etc.).
+
+## 🤖 BMad Integration
+
+Questo progetto usa BMad Method per lo sviluppo AI-driven. Le skill sono in `.opencode/skills/`.
+
+**Comandi**:
+```bash
+bmad-help           # AI guida il prossimo passo
+bmad-create-story  # Crea uno story file
+bmad-dev-story    # Implementa una story
+```
 
 ---
 
@@ -44,6 +55,15 @@ docs/
 ---
 
 ## 📄 Documenti Principali
+
+### Regole Fondamentali (CRITICAL!)
+| File | Descrizione | Link |
+|------|-------------|------|
+| no-root-folders-rule.md | Lang/docs/tests nei moduli | [📖](../wiki/concepts/no-root-folders-rule.md) |
+| no-lang-lang-and-no-underscore-docs-rule.md | No lang/lang/ o _docs/ | [📖](../wiki/concepts/no-lang-lang-and-no-underscore-docs-rule.md) |
+| no-root-test-docs-rule.md | Test docs nei moduli/temi | [📖](./concepts/no-root-test-docs-rule.md) |
+| no-root-docs-rule.md | Cartelle docs root VIETATE | [📖](./no-root-docs-rule.md) |
+| DIRECTORY_STRUCTURE_RULES.md | Regole struttura directory | [📖](./DIRECTORY_STRUCTURE_RULES.md) |
 
 ### Architettura
 | File | Descrizione | Link |

@@ -153,7 +153,6 @@ trait EnumTrait
         return [];
     }
 
-    
     public static function toArray(): array
     {
         $cases = static::cases();
@@ -165,5 +164,4 @@ trait EnumTrait
 
         return $result;
     }
-    
 }

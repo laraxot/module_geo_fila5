@@ -54,7 +54,7 @@ For each module, create/update:
 2. **Rename files** - Apply kebab-case consistently
 3. **Remove dates** - Update content, remove date from filename
 4. **Consolidate** - Merge similar/overlapping docs
-5. **Archive obsolete** - Move to `docs/archive/` if needed
+5. **Archive obsolete** - Move to `docs/archived/` if needed
 
 ### Phase 5: Quality Assurance
 1. PHPStan level 10 on all modified code
@@ -146,7 +146,7 @@ done
 
 ## 📝 Notes
 
-- Keep `docs/archive/` for historical documentation
+- Keep `docs/archived/` for historical documentation
 - Document reasons for major architectural decisions
 - Include practical examples in all guides
 - Link related documentation between modules

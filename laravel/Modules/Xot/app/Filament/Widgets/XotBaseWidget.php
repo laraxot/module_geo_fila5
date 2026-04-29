@@ -10,6 +10,8 @@ use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Schemas\Components\Component;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Filament\Widgets\Widget as FilamentWidget;
 use Illuminate\Database\Eloquent\Model;
@@ -28,10 +30,11 @@ use Webmozart\Assert\Assert;
  * @property array<string, mixed>|null $data         Dati del form
  * @property Schema                    $form
  */
-abstract class XotBaseWidget extends FilamentWidget implements HasActions, HasForms
+abstract class XotBaseWidget extends FilamentWidget implements HasActions, /* HasForms, */ HasSchemas
 {
     use InteractsWithActions;
-    use InteractsWithForms;
+    // use InteractsWithForms;
+    use InteractsWithSchemas;
     use TransTrait;
 
     public string $title = '';

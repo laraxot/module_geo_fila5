@@ -49,7 +49,7 @@ class SendMailByRecordAction
         }
 
         $to = $record->email;
-        //$to = 'marco.sottana@gmail.com'; //4 debug non cancellare
+        // $to = 'marco.sottana@gmail.com'; //4 debug non cancellare
         $subject = $record->option('mail_oggetto');
         $bodyHtml = $record->option('mail_testo');
 
