@@ -40,7 +40,7 @@ development_status:
   epic-1-retrospective: optional
   epic-2: in-progress
   2-1-qmd-search-integration: done
-  2-2-bidirectional-cross-referencing: backlog
+  2-2-bidirectional-cross-referencing: ready-for-dev
   2-3-automated-wiki-generation: backlog
   epic-2-retrospective: optional
   epic-3: backlog

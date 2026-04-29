@@ -70,5 +70,8 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-29 18:45:00 UTC] [CREATE] Task 7: Documentation and Finalization — Troubleshooting guide and index updates
 [2026-04-29 19:00:00 UTC] [CREATE] docs/wiki/how-to/wiki-search-troubleshooting.md — Comprehensive troubleshooting guide with diagnostics and solutions
 [2026-04-29 19:15:00 UTC] [UPDATE] Updated wiki/index.md with wiki-search-troubleshooting guide reference
-**Last Activity:** 2026-04-29 19:15:00 UTC  
-**Total Operations:** 36
+[2026-04-29 19:30:00 UTC] [INGEST] Prepared Kilo local indexing prerequisites with Ollama embeddings, local Qdrant, and a detached bootstrap script
+[2026-04-29 19:35:00 UTC] [CREATE] Story 2.2: Bidirectional Cross-Referencing — Comprehensive story context for wiki ↔ code documentation linking
+[2026-04-29 19:35:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.2 as ready-for-dev
+**Last Activity:** 2026-04-29 19:35:00 UTC  
+**Total Operations:** 39
