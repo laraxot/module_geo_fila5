@@ -26,6 +26,7 @@ Welcome to the **Xot** module knowledge base. This wiki is maintained by AI agen
 
 ## Sources
 - [core-architecture-docs](./sources/core-architecture-docs.md): Summary of the highest-signal Xot architecture documents.
+- [context-compression-and-retrieval](./sources/context-compression-and-retrieval.md): Summary of the shared prompt-compression setup for large Xot docs workflows.
 
 ---
 **Main Project Wiki:** [[Project Home]]

@@ -42,6 +42,10 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-29 09:19:00 UTC] [UPDATE] Extended continuous-improvement model with `/bmad-create-story` integration and external benchmark policy
 [2026-04-29 11:55:00 UTC] [INGEST] Installed and configured Token Optimizer MCP for project-shared context compression
 [2026-04-29 12:15:00 UTC] [INGEST] Added context-mode-plugin concept documentation with usage patterns, best practices, troubleshooting, and architecture overview
+[2026-04-29 12:18:00 UTC] [INGEST] Added context-mode-cli-reference guide with quick command reference for all CLI operations
+[2026-04-29 12:20:00 UTC] [INGEST] Added how-to guide for indexing module documentation with context-mode semantic search
+[2026-04-29 12:22:00 UTC] [INGEST] Created module-context-mode-integration.md template in _templates/ for all modules and themes
+[2026-04-29 12:25:00 UTC] [INGEST] Added how-to guide for using wiki templates to create consistent documentation across modules and themes
 
-**Last Activity:** 2026-04-29 12:15:00 UTC  
-**Total Operations:** 17
+**Last Activity:** 2026-04-29 12:25:00 UTC  
+**Total Operations:** 21

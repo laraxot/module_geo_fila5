@@ -19,6 +19,7 @@ _No entities tracked yet._
 
 ## Sources
 
+- [context-compression-and-retrieval](./sources/context-compression-and-retrieval.md) — summary of the shared prompt-compression setup for theme docs workflows
 - [theme-zero-product-and-roadmap-docs](./sources/theme-zero-product-and-roadmap-docs.md) — summary of strategic Theme Zero docs
 
 ## Comparisons
@@ -27,6 +28,6 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-29T07:22:00Z  
-**Total Pages:** 2  
+**Last Updated:** 2026-04-29T11:55:00Z  
+**Total Pages:** 3  
 **Total Raw Sources:** 3

@@ -1,13 +1,29 @@
 ---
-name: Context Compression Setup
-description: Configurazione del sistema di compressione dei prompt per ottimizzare l'uso del contesto
-type: setup
+title: "Context Compression Setup"
+module: "UI"
+type: concept
+created: "2026-04-29T00:00:00Z"
+updated: "2026-04-29T00:00:00Z"
+related:
+  - "[[UI Operating Model]]"
 ---
 
 # Context Compression Setup
 
 ## Panoramica
-Il sistema di compressione dei prompt è progettato per ottimizzare l'uso del contesto in Claude Code, riducendo la dimensione dei prompt mantenendo tutte le informazioni essenziali.
+Il sistema di compressione del contesto ora usa il setup reale del progetto:
+
+- `qmd` per retrieval mirato
+- `@ooples/token-optimizer-mcp` per comprimere e cache-izzare output MCP e tool payload ripetitivi
+
+Questo sostituisce la precedente nota speculativa con una configurazione effettivamente installata.
+
+## Configurazione Reale
+
+- config condivisa: `/.mcp.json`
+- config compatibilita': `/.claude/mcp_servers.json`
+- cache locale: `/.claude/token-optimizer-cache`
+- installazione package: `bashscripts/mcp/package.json`
 
 ## Strumenti Utilizzati
 
@@ -26,36 +42,15 @@ Il sistema di compressione dei prompt è progettato per ottimizzare l'uso del co
   }
   ```
 
-### 2. MCP Server per Document Management
-- **Strumento**: `ListMcpResourcesTool`
-- **Scopo**: Gestire risorse esterne e documenti compressi
+### 2. MCP Token Optimizer
+- **Strumento**: `token-optimizer`
+- **Scopo**: comprimere output voluminosi, ridurre repeated context, spostare contenuti pesanti in cache locale
 
 ### 3. Bash per Scripting
 - **Strumento**: `Bash`
 - **Scopo**: Automatizzare processi di compressione
 
-## File di Configurazione
-
-### settings.json Compressione
-```json
-{
-  "compression": {
-    "enabled": true,
-    "max_context_ratio": 0.8,
-    "compression_methods": [
-      "semantic_search",
-      "keyword_extraction",
-      "summary_generation"
-    ],
-    "fallback_strategies": [
-      "truncate_old_messages",
-      "prioritize_relevant_only"
-    ]
-  }
-}
-```
-
-## Script di Compressione
+## Note Operative
 
 ### script/compress-context.sh
 ```bash
@@ -108,22 +103,7 @@ def extract_essential_context(text):
     return essential[:10]  # Prime 10 linee essenziali
 ```
 
-## Integration con Claude Code
-
-### .claude/settings.json
-```json
-{
-  "hooks": {
-    "before_prompt": "python script/compress-prompt.py --input",
-    "after_response": "qmd embed --update"
-  },
-  "compression": {
-    "auto_compress": true,
-    "threshold_tokens": 8000,
-    "preserve_structure": true
-  }
-}
-```
+Claude Code deve rileggere la config MCP dopo il riavvio del client.
 
 ## Utilizzo
 
@@ -137,33 +117,25 @@ mcp__plugin_qmd_qmd__get "compressed_result.md"
 ```
 
 ### Compressione Automatica
-```bash
-# Abilitare compressione automatica
-echo 'export CLAUDE_COMPRESS=true' >> ~/.bashrc
-```
+La compressione automatica dipende dal server MCP configurato, non da una variabile shell locale.
 
 ## Monitoraggio
 
-### script/monitor-compression.sh
+Controlli minimi:
+
 ```bash
-#!/bin/bash
-# Monitorare l'efficacia della compressione
-
-echo "=== Compression Statistics ==="
-echo "Context size before: $(wc -c < original_prompt.md)"
-echo "Context size after: $(wc -c < compressed_prompt.md)"
-echo "Compression ratio: $(bc <<< "scale=2; $(wc -c < compressed_prompt.md) / $(wc -c < original_prompt.md) * 100")%"
-
-echo "=== Quality Check ==="
-qmd query "verifica completezza informazioni" -c wiki --limit 1
+node -v
+npm view @ooples/token-optimizer-mcp version
+claude mcp list
+claude mcp get token-optimizer
 ```
 
 ## Best Practices
 
-1. **Conservare Metadata**: Mantenere informazioni di contesto essenziali
-2. **Testare Qualità**: Verificare che informazioni non vengano perse
-3. **Adattare al Contesto**: Modificare strategia in base al dominio
-4. **Backup**: Conservare versioni originali per rollback
+1. **Wiki first**: leggere `docs/wiki/` prima dei raw docs
+2. **QMD first**: preferire retrieval mirato a full-read massivi
+3. **Tool compression**: lasciare al token optimizer gli output voluminosi e ripetitivi
+4. **Persistenza**: riportare risultati durevoli nel wiki locale
 
 ## Troubleshooting
 
@@ -173,15 +145,20 @@ qmd query "verifica completezza informazioni" -c wiki --limit 1
 - **Performance**: Ottimizzare query con `limit` appropriato
 
 ### Log di Debug
-```bash
-# Abilitare logging
-export CLAUDE_COMPRESS_DEBUG=true
-python script/compress-prompt.py --debug
-```
+
+Verificare:
+
+- eseguibilita' del binario `token-optimizer-mcp`
+- correttezza di `/.mcp.json`
+- correttezza di `/.claude/mcp_servers.json`
 
 ## Prossimi Passi
 
-1. Implementare compressione automatica nei settings
-2. Aggiungere metriche di qualità
-3. Creare dashboard per monitoring
-4. Testare su workload reali
+1. usare il server su workload reali Claude Code
+2. osservare se diminuiscono i read massivi di raw docs
+3. continuare la riduzione dei file contesto troppo verbosi
+
+## Riferimenti
+
+- `../../../../../docs/ai/claude/context-compression-mcp.md`
+- `../../../../../docs/wiki/sources/context-compression-mcp-setup.md`

@@ -23,6 +23,12 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [context-mode-plugin](./concepts/context-mode-plugin.md) — FTS5-based context compression for managing token overflow in large projects
 - [context-mode-cli-reference](./concepts/context-mode-cli-reference.md) — Quick reference for all context-mode commands and usage patterns
 
+## How-To Guides
+
+- [indexing-module-documentation](./how-to/indexing-module-documentation.md) — Step-by-step guide for indexing module documentation with context-mode
+- [using-wiki-templates](./how-to/using-wiki-templates.md) — How to use provided templates to create consistent documentation across all modules and themes
+- [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md) — Prevent token overflow: use context-mode correctly with sandbox processing
+
 ## Sources
 
 - [docs-landscape-modules-and-themes](./sources/docs-landscape-modules-and-themes.md) — summary of the current documentation landscape
