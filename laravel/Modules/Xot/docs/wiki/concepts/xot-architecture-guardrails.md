@@ -3,7 +3,7 @@ title: "Xot Architecture Guardrails"
 module: "Xot"
 type: concept
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T00:00:00Z"
+updated: "2026-04-29T07:22:00Z"
 related:
   - "[[Actions Over Services]]"
   - "[[XotBaseResource]]"
@@ -48,6 +48,16 @@ These conditions make `docs/wiki/` necessary as the retrieval layer for durable 
 1. Start from this page for foundational Xot constraints.
 2. Open raw docs only for the specific topic being implemented.
 3. Persist any new stable rule back into the Xot wiki and, if cross-cutting, into the root project wiki.
+
+## Xot-local Second Brain Loop
+
+When the task touches cross-module contracts or base abstractions:
+
+1. Start from this page and from `index.md` to frame the architectural purpose first.
+2. Open only the minimum raw docs needed to validate a rule.
+3. Distill the decision into one concise, reusable rule in Xot wiki pages.
+4. Update local `log.md` for traceability.
+5. If the rule affects multiple modules, also persist it in `docs/wiki/` at project root.
 
 ## References
 

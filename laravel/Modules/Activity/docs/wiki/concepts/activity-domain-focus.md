@@ -3,7 +3,7 @@ title: "Activity Domain Focus"
 module: "Activity"
 type: concept
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T00:00:00Z"
+updated: "2026-04-29T07:22:00Z"
 related:
   - "[[Activity Core Sources]]"
 ---
@@ -43,6 +43,16 @@ Start here for module intent, then use the source summary page before opening ra
 - reporting
 - Filament resources
 - database and connection behavior
+
+## Activity-local Second Brain Loop
+
+For audit/event-history work:
+
+1. Start from Activity wiki focus pages to anchor business purpose (auditability and attribution).
+2. Read only the raw slice needed for the concrete bug/feature.
+3. Distill stable findings into one non-duplicated Activity wiki page.
+4. Update `index.md` if discoverability changes and always append `log.md`.
+5. Promote cross-module architectural findings to root `docs/wiki/`.
 
 ## References
 

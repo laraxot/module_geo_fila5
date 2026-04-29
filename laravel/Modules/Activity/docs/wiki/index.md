@@ -11,7 +11,7 @@ updated: "2026-04-15T08:28:40Z"
 
 ## Concepts
 
-- [activity-domain-focus](./concepts/activity-domain-focus.md) — role, audit priorities, and retrieval path for the module
+- [activity-domain-focus](./concepts/activity-domain-focus.md) — role, audit priorities, retrieval path, and local second-brain loop for Activity work
 
 ## Entities
 
@@ -27,6 +27,6 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-29T00:00:00Z  
+**Last Updated:** 2026-04-29T07:22:00Z  
 **Total Pages:** 2  
 **Total Raw Sources:** 3

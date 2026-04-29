@@ -3,7 +3,7 @@ title: "UI Operating Model"
 module: "UI"
 type: concept
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T00:00:00Z"
+updated: "2026-04-29T07:22:00Z"
 related:
   - "[[Theme Integration]]"
   - "[[UI Architecture Sources]]"
@@ -40,6 +40,16 @@ Use the UI wiki first when a task involves:
 - theme integration boundaries
 
 Then open only the raw docs cluster directly tied to the component or interaction being changed.
+
+## UI-local Second Brain Loop
+
+When a task concerns shared interface behavior:
+
+1. Start from UI wiki concepts to clarify user-facing intent and reuse boundaries.
+2. Inspect only raw docs directly related to the component under change.
+3. Distill the outcome into one canonical UI rule/page to avoid duplication.
+4. Update local `log.md` with the architectural rationale.
+5. Escalate cross-module conventions to root `docs/wiki/` when they become global.
 
 ## Risks Seen in Raw Docs
 

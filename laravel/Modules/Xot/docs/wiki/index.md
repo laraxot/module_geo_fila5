@@ -1,7 +1,7 @@
 ---
 module: Xot
 concept: Wiki Index
-last_updated: 2026-04-15
+last_updated: 2026-04-29
 ---
 
 # Xot Module Wiki
@@ -13,7 +13,7 @@ Welcome to the **Xot** module knowledge base. This wiki is maintained by AI agen
 - [[BaseModel]]: The sacred inheritance chain for Eloquent models.
 - [[XotBaseResource]]: Standardizing Filament resources.
 - [[Actions Over Services]]: The mandatory business logic pattern.
-- [xot-architecture-guardrails](./concepts/xot-architecture-guardrails.md): Stable Xot architectural constraints extracted from raw docs.
+- [xot-architecture-guardrails](./concepts/xot-architecture-guardrails.md): Stable Xot constraints plus local second-brain loop for contract-driven decisions.
 
 ## 🔧 Components & Traits
 - [[HasXotTable]]: Automatic table naming.

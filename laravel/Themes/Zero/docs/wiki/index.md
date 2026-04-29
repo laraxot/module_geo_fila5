@@ -11,7 +11,7 @@ updated: "2026-04-15T08:28:52Z"
 
 ## Concepts
 
-- [theme-zero-operating-focus](./concepts/theme-zero-operating-focus.md) — baseline role, guardrails, and retrieval path for the default theme
+- [theme-zero-operating-focus](./concepts/theme-zero-operating-focus.md) — baseline role, guardrails, retrieval path, and local second-brain loop for theme decisions
 
 ## Entities
 
@@ -27,6 +27,6 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-29T00:00:00Z  
+**Last Updated:** 2026-04-29T07:22:00Z  
 **Total Pages:** 2  
 **Total Raw Sources:** 3
