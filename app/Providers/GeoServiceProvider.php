@@ -34,13 +34,13 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         $sixteenBundleUrl = $this->getSixteenThemeAppBundleUrl();
 
-        if ($sixteenBundleUrl !== null) {
+        if (null !== $sixteenBundleUrl) {
             // Admin Filament non carica automaticamente il bundle frontoffice del tema,
             // ma il CoordinatePicker Lit e i suoi controlli sono definiti li'.
             $assets[] = Js::make('sixteen-coordinate-picker-bundle', $sixteenBundleUrl)->module();
         }
 
-        if ($assets !== []) {
+        if ([] !== $assets) {
             FilamentAsset::register($assets, 'geo');
         }
     }
@@ -55,7 +55,7 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         $manifestRaw = file_get_contents($manifestPath);
 
-        if (! is_string($manifestRaw) || $manifestRaw === '') {
+        if (! is_string($manifestRaw) || '' === $manifestRaw) {
             return null;
         }
 
@@ -68,7 +68,7 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         $entry = $manifest['resources/js/app.js']['file'] ?? null;
 
-        if (! is_string($entry) || $entry === '') {
+        if (! is_string($entry) || '' === $entry) {
             return null;
         }
 
