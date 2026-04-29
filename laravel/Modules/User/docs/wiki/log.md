@@ -11,3 +11,7 @@
 - Aggiunta pagina `concepts/user-module-operating-focus.md` per fissare scope, guardrail e priorita' di retrieval.
 - Aggiunta pagina `sources/user-architecture-sources.md` per sintetizzare i raw docs a maggiore segnale.
 - Registrato il rischio di duplicazione diffusa tra raw docs, archive e integration.
+
+## [2026-04-29] update | local second brain operating loop
+- Aggiornata `concepts/user-module-operating-focus.md` con loop locale second brain (retrieve -> distill -> index -> log).
+- Allineato il comportamento documentale del modulo User al ciclo `/bmad-create-story` del progetto.
