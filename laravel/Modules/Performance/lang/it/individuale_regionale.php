@@ -358,6 +358,11 @@ return [
         ],
         'delete' => [
             'tooltip' => 'delete',
+            'icon' => 'delete',
+            'label' => 'delete',
+        ],
+        'edit' => [
+            'tooltip' => 'edit',
         ],
     ],
     'messages' => [
