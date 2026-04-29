@@ -1,0 +1,12 @@
+# Keep Kilo focused on application code and curated docs.
+.agents/
+.kilo/
+.opencode/
+bashscripts/ai/.agents/
+
+# Generated and cached runtime data.
+.claude/token-optimizer-cache/
+node_modules/
+vendor/
+laravel/storage/
+laravel/bootstrap/cache/

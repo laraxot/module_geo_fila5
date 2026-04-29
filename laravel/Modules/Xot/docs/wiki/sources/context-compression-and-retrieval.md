@@ -17,6 +17,9 @@ related:
 - project-shared MCP config now includes `token-optimizer`
 - the optimizer is installed locally under `bashscripts/mcp/`
 - QMD remains the first retrieval layer for docs/wiki, while token optimization reduces repeated or bulky tool context
+- official Kilo guidance confirms that large projects should keep `AGENTS.md` concise, MCP minimal, and noisy folders excluded with `.kilocodeignore` plus `watcher.ignore`
+- repository policy keeps managed indexing disabled until the team intentionally selects a local or cloud indexing path
+- local indexing prerequisites now exist in-repo as Ollama `nomic-embed-text` plus local Qdrant, so Xot can later opt into indexing without new system setup
 
 ## Why Xot Cares
 
@@ -25,6 +28,7 @@ Xot raw docs are among the largest in the repository. The recommended path is:
 1. query Xot wiki first
 2. open only the specific raw cluster needed
 3. rely on token optimization for repeated tooling output
+4. if using Kilo, compact between major topic shifts instead of carrying one giant session through unrelated Xot areas
 
 ## References
 

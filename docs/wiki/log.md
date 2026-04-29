@@ -73,5 +73,7 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-29 19:30:00 UTC] [INGEST] Prepared Kilo local indexing prerequisites with Ollama embeddings, local Qdrant, and a detached bootstrap script
 [2026-04-29 19:35:00 UTC] [CREATE] Story 2.2: Bidirectional Cross-Referencing — Comprehensive story context for wiki ↔ code documentation linking
 [2026-04-29 19:35:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.2 as ready-for-dev
-**Last Activity:** 2026-04-29 19:35:00 UTC  
-**Total Operations:** 39
+[2026-04-29 19:40:00 UTC] [CREATE] Story 2.3: Automated Wiki Generation — Comprehensive story context for automated documentation generation from source code comments
+[2026-04-29 19:40:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.3 as ready-for-dev
+**Last Activity:** 2026-04-29 19:40:00 UTC  
+**Total Operations:** 41

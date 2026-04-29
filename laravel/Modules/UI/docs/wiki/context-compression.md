@@ -22,6 +22,8 @@ Questo sostituisce la precedente nota speculativa con una configurazione effetti
 
 - config condivisa: `/.mcp.json`
 - config compatibilita': `/.claude/mcp_servers.json`
+- config Kilo progetto: `/.kilo/kilo.jsonc`
+- ignore Kilo progetto: `/.kilocodeignore`
 - cache locale: `/.claude/token-optimizer-cache`
 - installazione package: `bashscripts/mcp/package.json`
 
@@ -105,6 +107,15 @@ def extract_essential_context(text):
 
 Claude Code deve rileggere la config MCP dopo il riavvio del client.
 
+Kilo Code deve invece:
+
+- partire da `AGENTS.md` come unica istruzione extra di progetto
+- usare `compaction.auto`, `compaction.prune`, `compaction.reserved`
+- limitare gli MCP a `qmd` e `token-optimizer`
+- ignorare `.agents`, `.kilo`, `.opencode` e cartelle runtime equivalenti
+- lasciare `managedIndexingEnabled=false` finche' non esiste una scelta esplicita tra local indexing e cloud indexing
+- se serve local indexing, il repo ha gia' `nomic-embed-text` e Qdrant locale con bootstrap script dedicato
+
 ## Utilizzo
 
 ### Query Compressa
@@ -157,6 +168,7 @@ Verificare:
 1. usare il server su workload reali Claude Code
 2. osservare se diminuiscono i read massivi di raw docs
 3. continuare la riduzione dei file contesto troppo verbosi
+4. per Kilo, valutare Codebase Indexing solo dopo che i path rumorosi sono esclusi
 
 ## Riferimenti
 

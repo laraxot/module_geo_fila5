@@ -17,6 +17,9 @@ related:
 - the project now exposes a shared MCP token optimizer
 - QMD remains the preferred retrieval layer before raw docs
 - baseline-theme work should stay wiki-first to avoid loading unnecessary historical docs
+- Kilo large-project guidance recommends minimal MCP, concise `AGENTS.md`, and aggressive exclusion of runtime metadata from file access
+- managed indexing remains disabled by repo policy until a deliberate indexing rollout exists
+- local prerequisites are now present if Theme Zero later needs indexing-backed retrieval
 
 ## Theme Guidance
 

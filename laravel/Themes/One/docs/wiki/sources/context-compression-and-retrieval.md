@@ -17,6 +17,9 @@ related:
 - the project now uses a dedicated MCP token optimizer
 - QMD remains the preferred first pass for wiki retrieval
 - theme docs should avoid broad raw-doc loading when a wiki or source summary already exists
+- Kilo large-project guidance recommends keeping only root `AGENTS.md`, using `.kilocodeignore`, and compacting before switching between unrelated theme tasks
+- managed indexing remains disabled by repo policy until a deliberate indexing rollout exists
+- local prerequisites are now present if Theme One later needs indexing-backed retrieval
 
 ## Theme Guidance
 

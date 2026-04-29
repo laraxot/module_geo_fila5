@@ -1,6 +1,7 @@
 {
   "name": "ptvx-project context-mode config",
   "version": "1.0",
+  "compression_level": 2,
   "rules": {
     "batch_execute": {
       "max_output_lines": 100,

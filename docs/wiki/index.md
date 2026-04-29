@@ -54,3 +54,4 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [second-brain-external-benchmarks](./sources/second-brain-external-benchmarks.md) — external benchmarks mapped to repository-local second-brain operations
 - [context-compression-mcp-setup](./sources/context-compression-mcp-setup.md) — setup summary for MCP-based prompt compression in Claude Code
 - [kilo-code-context-and-large-projects](./sources/kilo-code-context-and-large-projects.md) — official Kilo guidance for large-project context control, condensed for this repository
+- [kilo-local-indexing-prerequisites](./sources/kilo-local-indexing-prerequisites.md) — concrete local Ollama and Qdrant setup prepared for Kilo indexing
