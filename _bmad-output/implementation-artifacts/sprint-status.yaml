@@ -38,18 +38,18 @@ development_status:
   1-2-create-wiki-indexing-and-cross-linking-system: backlog
   1-3-establish-documentation-pattern-guidelines: backlog
   epic-1-retrospective: optional
-  epic-2: backlog
-  2-1-audit-and-categorize-existing-module-documentation: backlog
-  2-2-create-core-concept-pages-for-major-modules: backlog
-  2-3-extract-and-document-architectural-patterns-used-across-modules: backlog
+  epic-2: in-progress
+  2-1-qmd-search-integration: done
+  2-2-bidirectional-cross-referencing: backlog
+  2-3-automated-wiki-generation: backlog
   epic-2-retrospective: optional
   epic-3: backlog
-  3-1-create-developer-contribution-workflow-for-wiki-updates: backlog
-  3-2-build-automated-knowledge-freshness-monitoring: backlog
-  3-3-implement-qmd-search-indexing-and-optimization: backlog
-  3-4-create-weekly-wiki-review-and-update-routine: backlog
+  3-1-semantic-search-enhancement: backlog
+  3-2-advanced-filtering-system: backlog
+  3-3-search-result-interface: backlog
   epic-3-retrospective: optional
   epic-4: backlog
-  4-1-document-key-entity-relationships-and-data-flows: backlog
-  4-2-create-learning-paths-for-common-tasks: backlog
+  4-1-automated-documentation-triggers: backlog
+  4-2-documentation-review-cycles: backlog
+  4-3-learning-workflow-templates: backlog
   epic-4-retrospective: optional
