@@ -25,11 +25,20 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 
 ## How-To Guides
 
+### Search and Discovery
+- [wiki-search-guide](./how-to/wiki-search-guide.md) — User guide for wiki-search CLI: keyword search, semantic search, filtering, and results formatting
+- [semantic-search-and-related-pages](./how-to/semantic-search-and-related-pages.md) — Advanced: using semantic similarity to discover related concepts and cross-reference analysis
 - [qmd-search-guide](./how-to/qmd-search-guide.md) — Complete guide to QMD (Query Markdown Database): installation, search commands, configuration, and performance optimization
+- [qmd-indexing-manifest](./how-to/qmd-indexing-manifest.md) — Reference: current QMD indexing status, collection inventory, embedding progress, and maintenance schedule
+
+### Documentation Development
 - [module-wiki-documentation](./how-to/module-wiki-documentation.md) — How to create and maintain QMD-indexed documentation in module wikis
 - [theme-wiki-documentation](./how-to/theme-wiki-documentation.md) — How to create and maintain QMD-indexed wikis in theme directories
 - [indexing-module-documentation](./how-to/indexing-module-documentation.md) — Step-by-step guide for indexing module documentation with context-mode
 - [using-wiki-templates](./how-to/using-wiki-templates.md) — How to use provided templates to create consistent documentation across all modules and themes
+
+### Development Tools and Patterns
+- [kilo-code-setup](./how-to/kilo-code-setup.md) — Installation and configuration of Kilo Code AI assistant with wiki and QMD integration
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md) — Prevent token overflow: use context-mode correctly with sandbox processing
 
 ## Sources
@@ -41,3 +50,4 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [ingest-backlog](./sources/ingest-backlog.md) — prioritized ingest backlog with token-cost estimates (Story 1-4)
 - [second-brain-external-benchmarks](./sources/second-brain-external-benchmarks.md) — external benchmarks mapped to repository-local second-brain operations
 - [context-compression-mcp-setup](./sources/context-compression-mcp-setup.md) — setup summary for MCP-based prompt compression in Claude Code
+- [kilo-code-context-and-large-projects](./sources/kilo-code-context-and-large-projects.md) — official Kilo guidance for large-project context control, condensed for this repository
