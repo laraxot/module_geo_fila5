@@ -9,5 +9,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\EditIndivid
 
 class EditIndividualeDip extends EditIndividuale
 {
-    public static string $resource = IndividualeDipResource::class;
+    protected static string $resource = IndividualeDipResource::class;
 }

@@ -1,0 +1,38 @@
+{
+    "page": "segnalazione-area-personale",
+    "route": "/it/tests/segnalazione-area-personale",
+    "title": "Area Personale",
+    "subtitle": "Le tue segnalazioni",
+    "components": ["breadcrumbs", "dashboard", "stats", "recent_reports"],
+    "blocks": {
+        "breadcrumbs": {
+            "items": [
+                {"label": "Home", "url": "/it"},
+                {"label": "Area personale", "url": "/it/tests/segnalazione-area-personale"}
+            ]
+        },
+        "stats": {
+            "type": "stats.stats",
+            "data": {
+                "stats": [
+                    {"label": "Totale", "value": "12", "icon": "heroicon-o-document-text"},
+                    {"label": "In lavorazione", "value": "3", "icon": "heroicon-o-clock"},
+                    {"label": "Completate", "value": "8", "icon": "heroicon-o-check-circle"},
+                    {"label": "Da pagare", "value": "1", "icon": "heroicon-o-banknotes"}
+                ]
+            }
+        },
+        "recent_reports": {
+            "type": "grid.grid",
+            "data": {
+                "columns": 1,
+                "items": [
+                    {"protocollo": "SEG-2026-001234", "categoria": "Rifiuti", "data": "30/03/2026", "stato": "In lavorazione", "indirizzo": "Via Roma 1"},
+                    {"protocollo": "SEG-2026-001123", "categoria": "Strade", "data": "28/03/2026", "stato": "Completata", "indirizzo": "Piazza Duomo"},
+                    {"protocollo": "SEG-2026-001012", "categoria": "Illuminazione", "data": "25/03/2026", "stato": "Completata", "indirizzo": "Via Garibaldi 15"}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateConsent extends XotBaseCreateRecord
 {
-    public static string $resource = ConsentResource::class;
+    protected static string $resource = ConsentResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndiv
 
 class CreateIndividualePo extends CreateIndividuale
 {
-    public static string $resource = IndividualePoResource::class;
+    protected static string $resource = IndividualePoResource::class;
 }

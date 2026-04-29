@@ -11,7 +11,7 @@ use Override;
 
 class ListMessages extends PtvListMessages
 {
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 
     
 }

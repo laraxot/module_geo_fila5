@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateUser extends XotBaseCreateRecord
 {
-    public static string $resource = UserResource::class;
+    protected static string $resource = UserResource::class;
 }

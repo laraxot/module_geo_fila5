@@ -12,7 +12,7 @@ use Modules\Rating\Filament\Resources\RatingResource as BaseRatingResource;
 
 class RatingResource extends BaseRatingResource
 {
-    public static string $resourceFile = __FILE__;
+    protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = Rating::class;
 

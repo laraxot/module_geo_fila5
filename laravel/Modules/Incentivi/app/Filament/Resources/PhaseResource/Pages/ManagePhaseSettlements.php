@@ -14,7 +14,7 @@ use Override;
 
 class ManagePhaseSettlements extends XotBaseManageRelatedRecords
 {
-    public static string $resource = PhaseResource::class;
+    protected static string $resource = PhaseResource::class;
 
     protected static string $relationship = 'settlements';
 

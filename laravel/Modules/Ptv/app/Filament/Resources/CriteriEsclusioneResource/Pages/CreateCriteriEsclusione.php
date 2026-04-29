@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource;
 
 class CreateCriteriEsclusione extends CreateRecord
 {
-    public static string $resource = CriteriEsclusioneResource::class;
+    protected static string $resource = CriteriEsclusioneResource::class;
 }

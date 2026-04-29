@@ -22,7 +22,7 @@ use Override;
 
 class ManageProjectActivities extends XotBaseManageRelatedRecords
 {
-    public static string $resource = ProjectResource::class;
+    protected static string $resource = ProjectResource::class;
 
     protected static string $relationship = 'activities';
 

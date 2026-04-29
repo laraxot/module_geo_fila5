@@ -11,7 +11,7 @@ use Override;
 
 class ListCoeffs extends PtvBaseYearListRecords
 {
-    public static string $resource = CoeffResource::class;
+    protected static string $resource = CoeffResource::class;
 
     #[Override]
     public function getTableColumns(): array

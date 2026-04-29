@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditPhase extends XotBaseEditRecord
 {
-    public static string $resource = PhaseResource::class;
+    protected static string $resource = PhaseResource::class;
 
     protected function getHeaderActions(): array
     {

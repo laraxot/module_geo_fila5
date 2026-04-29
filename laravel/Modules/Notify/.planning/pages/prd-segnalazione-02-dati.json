@@ -1,0 +1,48 @@
+{
+    "page": "segnalazione-02-dati",
+    "route": "/it/tests/segnalazione-02-dati",
+    "title": "Segnala Disservizio",
+    "subtitle": "Step 2: Dati segnalazione",
+    "step": 2,
+    "total_steps": 4,
+    "components": ["breadcrumbs", "stepper", "form", "map", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Privacy", "completed": true},
+                    {"number": 2, "title": "Dati", "active": true},
+                    {"number": 3, "title": "Riepilogo", "pending": true},
+                    {"number": 4, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "form": {
+            "type": "form.report",
+            "data": {
+                "fields": [
+                    {"name": "categoria", "type": "select", "label": "Categoria", "required": true, "options": ["Rifiuti", "Strade", "Illuminazione", "Verde pubblico"]},
+                    {"name": "indirizzo", "type": "text", "label": "Indirizzo", "required": true},
+                    {"name": "descrizione", "type": "textarea", "label": "Descrizione", "required": true, "rows": 4},
+                    {"name": "foto", "type": "file", "label": "Allega foto", "required": false, "accept": ".jpg,.png", "multiple": true},
+                    {"name": "nome", "type": "text", "label": "Nome", "required": true},
+                    {"name": "cognome", "type": "text", "label": "Cognome", "required": true},
+                    {"name": "email", "type": "email", "label": "Email", "required": true},
+                    {"name": "telefono", "type": "tel", "label": "Telefono", "required": false}
+                ]
+            }
+        },
+        "map": {
+            "type": "map.location",
+            "data": {
+                "title": "Indica la posizione",
+                "default_lat": 41.9028,
+                "default_lng": 12.4964,
+                "zoom": 13
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": true, "full_width": false}
+}

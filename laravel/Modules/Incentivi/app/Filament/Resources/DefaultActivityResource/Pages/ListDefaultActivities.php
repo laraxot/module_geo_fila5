@@ -18,7 +18,7 @@ use Override;
 
 class ListDefaultActivities extends XotBaseListRecords
 {
-    public static string $resource = DefaultActivityResource::class;
+    protected static string $resource = DefaultActivityResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

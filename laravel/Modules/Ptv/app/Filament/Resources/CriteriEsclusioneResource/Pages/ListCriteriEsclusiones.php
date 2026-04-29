@@ -20,7 +20,7 @@ use function Safe\date;
 
 class ListCriteriEsclusiones extends XotBaseListRecords
 {
-    public static string $resource = CriteriEsclusioneResource::class;
+    protected static string $resource = CriteriEsclusioneResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

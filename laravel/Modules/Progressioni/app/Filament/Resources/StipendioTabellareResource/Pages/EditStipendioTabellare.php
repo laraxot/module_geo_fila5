@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditStipendioTabellare extends XotBaseEditRecord
 {
-    public static string $resource = StipendioTabellareResource::class;
+    protected static string $resource = StipendioTabellareResource::class;
 
     protected function getHeaderActions(): array
     {

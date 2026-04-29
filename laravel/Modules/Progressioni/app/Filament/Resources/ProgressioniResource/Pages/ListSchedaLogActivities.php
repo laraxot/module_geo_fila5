@@ -10,5 +10,5 @@ use Modules\Progressioni\Filament\Resources\ProgressioniResource;
 
 class ListSchedaLogActivities extends ListLogActivities
 {
-    public static string $resource = ProgressioniResource::class;
+    protected static string $resource = ProgressioniResource::class;
 }

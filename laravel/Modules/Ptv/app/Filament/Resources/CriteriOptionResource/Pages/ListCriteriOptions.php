@@ -19,7 +19,7 @@ use function Safe\date;
 
 class ListCriteriOptions extends XotBaseListRecords
 {
-    public static string $resource = CriteriOptionResource::class;
+    protected static string $resource = CriteriOptionResource::class;
 
     #[Override]
     public function getTableColumns(): array

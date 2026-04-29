@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ListCondizioniLavoros extends XotBaseListRecords
 {
-    public static string $resource = CondizioniLavoroResource::class;
+    protected static string $resource = CondizioniLavoroResource::class;
 
     #[Override]
     public function getTableColumns(): array

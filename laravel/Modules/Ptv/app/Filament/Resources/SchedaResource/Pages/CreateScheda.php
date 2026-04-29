@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\SchedaResource;
 
 class CreateScheda extends CreateRecord
 {
-    public static string $resource = SchedaResource::class;
+    protected static string $resource = SchedaResource::class;
 }

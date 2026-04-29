@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateIndividuale extends XotBaseCreateRecord
 {
-    public static string $resource = IndividualeResource::class;
+    protected static string $resource = IndividualeResource::class;
 }

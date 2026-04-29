@@ -20,8 +20,8 @@ use Webmozart\Assert\Assert;
  */
 abstract class BaseCompilaScheda extends XotBaseResourcePage
 {
-    // public static string $resource = IndividualeResource::class;
-    public static string $resource = SchedaResource::class;
+    // protected static string $resource = IndividualeResource::class;
+    protected static string $resource = SchedaResource::class;
 
     public string $previousUrl = '#';
 

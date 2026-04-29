@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\StipendioTabellareResource;
 
 class CreateStipendioTabellare extends CreateRecord
 {
-    public static string $resource = StipendioTabellareResource::class;
+    protected static string $resource = StipendioTabellareResource::class;
 }

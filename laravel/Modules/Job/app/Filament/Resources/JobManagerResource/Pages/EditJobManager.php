@@ -13,5 +13,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditJobManager extends XotBaseEditRecord
 {
-    public static string $resource = JobManagerResource::class;
+    protected static string $resource = JobManagerResource::class;
 }

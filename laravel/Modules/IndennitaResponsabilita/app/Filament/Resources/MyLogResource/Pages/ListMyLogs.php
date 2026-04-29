@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\MyLogResource\Pages\ListMyLogs as PtvListMyLo
 
 class ListMyLogs extends PtvListMyLogs
 {
-    public static string $resource = MyLogResource::class;
+    protected static string $resource = MyLogResource::class;
 }

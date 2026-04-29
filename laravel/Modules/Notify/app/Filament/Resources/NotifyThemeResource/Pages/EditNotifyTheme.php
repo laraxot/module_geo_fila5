@@ -13,7 +13,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
  */
 class EditNotifyTheme extends XotBaseEditRecord
 {
-    public static string $resource = NotifyThemeResource::class;
+    protected static string $resource = NotifyThemeResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -18,7 +18,7 @@ use Override;
 
 class ListProjects extends XotBaseListRecords
 {
-    public static string $resource = ProjectResource::class;
+    protected static string $resource = ProjectResource::class;
 
     #[Override]
     public function getTableColumns(): array

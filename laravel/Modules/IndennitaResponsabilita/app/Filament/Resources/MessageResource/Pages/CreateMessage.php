@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\MessageResource\Pages\CreateMessage as PtvCre
 
 class CreateMessage extends PtvCreateMessage
 {
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 }

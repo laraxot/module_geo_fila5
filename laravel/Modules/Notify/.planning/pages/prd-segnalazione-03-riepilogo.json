@@ -1,0 +1,48 @@
+{
+    "page": "segnalazione-03-riepilogo",
+    "route": "/it/tests/segnalazione-03-riepilogo",
+    "title": "Segnala Disservizio",
+    "subtitle": "Step 3: Riepilogo",
+    "step": 3,
+    "total_steps": 4,
+    "components": ["breadcrumbs", "stepper", "summary", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Privacy", "completed": true},
+                    {"number": 2, "title": "Dati", "completed": true},
+                    {"number": 3, "title": "Riepilogo", "active": true},
+                    {"number": 4, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "summary": {
+            "type": "details.details",
+            "data": {
+                "layout": "grouped",
+                "groups": [
+                    {
+                        "title": "Segnalazione",
+                        "items": [
+                            {"label": "Categoria", "value": "Rifiuti"},
+                            {"label": "Indirizzo", "value": "Via Roma 1"},
+                            {"label": "Descrizione", "value": "Cassonetto pieno"}
+                        ]
+                    },
+                    {
+                        "title": "Segnalante",
+                        "items": [
+                            {"label": "Nome", "value": "Mario"},
+                            {"label": "Cognome", "value": "Rossi"},
+                            {"label": "Email", "value": "mario.rossi@email.it"}
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

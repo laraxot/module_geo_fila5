@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIntegparam extends XotBaseEditRecord
 {
-    public static string $resource = IntegparamResource::class;
+    protected static string $resource = IntegparamResource::class;
 }

@@ -1,0 +1,59 @@
+{
+    "page": "novita",
+    "route": "/it/tests/novita",
+    "title": "Novità",
+    "subtitle": "Ultime notizie dal Comune",
+    "components": ["breadcrumbs", "hero", "filters", "news_grid", "pagination"],
+    "blocks": {
+        "breadcrumbs": {
+            "items": [
+                {"label": "Home", "url": "/it"},
+                {"label": "Novità", "url": "/it/tests/novita"}
+            ]
+        },
+        "hero": {
+            "type": "hero.hero",
+            "data": {
+                "title": "Novità",
+                "subtitle": "Ultime notizie dal Comune",
+                "background": "white"
+            }
+        },
+        "filters": {
+            "type": "filter.categories",
+            "data": {
+                "categories": [
+                    {"label": "Tutte", "value": "", "icon": "heroicon-o-newspaper"},
+                    {"label": "Comune", "value": "comune", "icon": "heroicon-o-building-office"},
+                    {"label": "Eventi", "value": "eventi", "icon": "heroicon-o-calendar"},
+                    {"label": "Avvisi", "value": "avvisi", "icon": "heroicon-o-bell"},
+                    {"label": "Bandi", "value": "bandi", "icon": "heroicon-o-document-text"}
+                ]
+            }
+        },
+        "grid": {
+            "type": "grid.grid",
+            "data": {
+                "columns": 3,
+                "gap": "medium"
+            }
+        },
+        "card": {
+            "type": "card.card",
+            "data": {
+                "layout": "vertical",
+                "show_date": true,
+                "show_category": true
+            }
+        }
+    },
+    "sample_news": [
+        {"title": "Nuovo orario uffici comunali", "excerpt": "Dal 1 aprile cambia l'orario di apertura al pubblico", "date": "2026-03-28", "category": "comune", "icon": "heroicon-o-building-office", "url": "#"},
+        {"title": "Festa di primavera", "excerpt": "Domenica prossima festa in piazza per tutti i cittadini", "date": "2026-03-25", "category": "eventi", "icon": "heroicon-o-calendar", "url": "#"},
+        {"title": "Avviso raccolta rifiuti", "excerpt": "Modifica calendario raccolta per pasqua", "date": "2026-03-22", "category": "avvisi", "icon": "heroicon-o-bell", "url": "#"},
+        {"title": "Bando contributi affitti", "excerpt": "Aperti i termini per presentare domande", "date": "2026-03-20", "category": "bandi", "icon": "heroicon-o-document-text", "url": "#"},
+        {"title": "Nuova biblioteca digitale", "excerpt": "Attivato servizio prestito ebook gratuito", "date": "2026-03-18", "category": "comune", "icon": "heroicon-o-building-office", "url": "#"},
+        {"title": "Mercatino dell'artigianato", "excerpt": "Weekend di eventi in centro storico", "date": "2026-03-15", "category": "eventi", "icon": "heroicon-o-calendar", "url": "#"}
+    ],
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CriteriOptionResource;
 
 class CreateCriteriOption extends CreateRecord
 {
-    public static string $resource = CriteriOptionResource::class;
+    protected static string $resource = CriteriOptionResource::class;
 }

@@ -11,7 +11,7 @@ use Override;
 
 class ListCriteriPrecedenzas extends PtvBaseYearListRecords
 {
-    public static string $resource = CriteriPrecedenzaResource::class;
+    protected static string $resource = CriteriPrecedenzaResource::class;
 
     #[Override]
     public function getTableColumns(): array

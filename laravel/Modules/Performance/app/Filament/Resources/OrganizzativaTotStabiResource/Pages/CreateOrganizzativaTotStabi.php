@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateOrganizzativaTotStabi extends XotBaseCreateRecord
 {
-    public static string $resource = OrganizzativaTotStabiResource::class;
+    protected static string $resource = OrganizzativaTotStabiResource::class;
 }

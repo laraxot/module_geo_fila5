@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-# PHPStan Roadmap - Notify Module
-
-> **Date**: [DATE]
-> **Status**: ✅ Fully Compliant (Level 10)
-> **Errors**: 0
-
-## Current Status
-The **Notify** module is fully compliant with PHPStan Level 10. No errors were reported in the latest analysis.
-
-## Maintenance Strategy
-1.  **Strict Typing**: Ensure all new code uses strict types (`declare(strict_types=1);`).
-2.  **Regular Checks**: Run PHPStan before every commit.
-3.  **Documentation**: Keep PHPDocs up-to-date for complex types.
-
-## Future Goals
-- Maintain 0 errors.
-- Periodic review of ignored errors (if any exist in `phpstan.neon`, though none should).
-=======
 # Indice Analisi PHPStan – Progetto Laraxot
 
 ## Descrizione generale
@@ -74,7 +55,7 @@ Questo documento funge da indice centrale e roadmap per l'analisi PHPStan di tut
 
 ### Problema bloccante globale
 
-- **Errore:** Vite manifest not found at: /var/www/html/_bases/base_fixcity_fila3_mono/public_html/assets/chart/manifest.json
+- **Errore:** Vite manifest not found at: /var/www/html/_bases/base_fixcity_fila5_mono/public_html/assets/chart/manifest.json
 - **Effetto:** PHPStan non può analizzare nessun modulo finché non viene generato il manifest degli asset frontend.
 - **Soluzione consigliata:**
   - Prima eseguire `npm install` (o `yarn install`) nella root frontend per installare tutte le dipendenze.
@@ -157,4 +138,3 @@ Realizzare una piattaforma web modulare, estendibile e scalabile, che integra ge
 Per dettagli, consulta la documentazione PHPStan del singolo modulo.
 
 Per ogni dubbio o errore non documentato, consulta la documentazione ufficiale di PHPStan e Larastan, oppure segnala la questione al team di sviluppo.
->>>>>>> f2d809135 (.)

@@ -10,7 +10,7 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 
 class ViewIndennitaResponsabilita extends ViewRecord
 {
-    public static string $resource = IndennitaResponsabilitaResource::class;
+    protected static string $resource = IndennitaResponsabilitaResource::class;
 
     protected function getHeaderActions(): array
     {

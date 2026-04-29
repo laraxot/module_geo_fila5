@@ -5,17 +5,10 @@
 - **Strategy**: Keep HEAD/local (ours) side
 - **Root cause**: Nested stash-on-merge conflicts
 
-<<<<<<< .merge_file_p4dbUg
 ## PHP Files
 - app/Actions/SMS/SendGammuSMSAction.php
 
 ## Documentation Files
-=======
-## PHP Files Resolved
-- app/Actions/SMS/SendGammuSMSAction.php
-
-## Documentation Files Resolved
->>>>>>> .merge_file_DrBdFY
 - docs/appointment-field-namings.md
 - docs/composer-update-fixes.md
 - docs/composer-updatees.md
@@ -59,17 +52,8 @@
 - docs/translation-standards.md
 - docs/whatsapp-integration.md
 
-<<<<<<< .merge_file_p4dbUg
 ## Config Files
 - composer.json
 
-=======
-## Config Files Resolved
-- composer.json
-
-## Translation Files Resolved
-None
-
->>>>>>> .merge_file_DrBdFY
 ## Backlinks
 - [Root conflict resolution report](../../../../docs/conflict-resolution-report.md)

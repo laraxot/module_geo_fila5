@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTreatment extends XotBaseEditRecord
 {
-    public static string $resource = TreatmentResource::class;
+    protected static string $resource = TreatmentResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CoeffResource;
 
 class CreateCoeff extends CreateRecord
 {
-    public static string $resource = CoeffResource::class;
+    protected static string $resource = CoeffResource::class;
 }

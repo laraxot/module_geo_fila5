@@ -12,5 +12,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndivid
  */
 class ListIndividualeDips extends ListIndividuales
 {
-    public static string $resource = IndividualeDipResource::class;
+    protected static string $resource = IndividualeDipResource::class;
 }

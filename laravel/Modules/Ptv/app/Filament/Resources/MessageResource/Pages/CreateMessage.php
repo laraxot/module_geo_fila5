@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\MessageResource;
 
 class CreateMessage extends CreateRecord
 {
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 }

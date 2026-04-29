@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\AssenzeResource;
 
 class CreateAssenza extends CreateRecord
 {
-    public static string $resource = AssenzeResource::class;
+    protected static string $resource = AssenzeResource::class;
 }

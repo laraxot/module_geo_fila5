@@ -15,7 +15,7 @@ use Override;
 
 class ListIndividualeDecurtazioneAssenzes extends PtvBaseYearListRecords
 {
-    public static string $resource = IndividualeDecurtazioneAssenzeResource::class;
+    protected static string $resource = IndividualeDecurtazioneAssenzeResource::class;
 
     #[Override]
     public function getTableColumns(): array

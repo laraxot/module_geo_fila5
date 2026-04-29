@@ -10,5 +10,5 @@ use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaRe
 
 class ListSchedaLogActivities extends ListLogActivities
 {
-    public static string $resource = IndennitaResponsabilitaResource::class;
+    protected static string $resource = IndennitaResponsabilitaResource::class;
 }

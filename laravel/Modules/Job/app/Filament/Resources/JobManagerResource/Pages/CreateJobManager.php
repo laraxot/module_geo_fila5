@@ -13,5 +13,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateJobManager extends XotBaseCreateRecord
 {
-    public static string $resource = JobManagerResource::class;
+    protected static string $resource = JobManagerResource::class;
 }

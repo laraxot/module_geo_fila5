@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIndennitaTipo extends XotBaseEditRecord
 {
-    public static string $resource = IndennitaTipoResource::class;
+    protected static string $resource = IndennitaTipoResource::class;
 
     protected function getHeaderActions(): array
     {

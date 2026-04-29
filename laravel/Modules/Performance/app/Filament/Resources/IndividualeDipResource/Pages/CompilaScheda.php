@@ -17,7 +17,7 @@ use Modules\Xot\Actions\GetTransKeyAction;
  */
 class CompilaScheda extends BaseCompilaScheda
 {
-    public static string $resource = IndividualeDipResource::class;
+    protected static string $resource = IndividualeDipResource::class;
 
    
 }

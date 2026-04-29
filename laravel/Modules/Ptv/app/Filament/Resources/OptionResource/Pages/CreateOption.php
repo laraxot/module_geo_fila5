@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\OptionResource;
 
 class CreateOption extends CreateRecord
 {
-    public static string $resource = OptionResource::class;
+    protected static string $resource = OptionResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\User\Filament\Resources\BaseProfileResource\Pages\ListProfiles as Us
 
 class ListProfiles extends UserListProfiles
 {
-    public static string $resource = ProfileResource::class;
+    protected static string $resource = ProfileResource::class;
 }

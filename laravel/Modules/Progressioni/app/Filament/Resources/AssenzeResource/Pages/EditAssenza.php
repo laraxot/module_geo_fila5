@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditAssenza extends XotBaseEditRecord
 {
-    public static string $resource = AssenzeResource::class;
+    protected static string $resource = AssenzeResource::class;
 
     protected function getHeaderActions(): array
     {

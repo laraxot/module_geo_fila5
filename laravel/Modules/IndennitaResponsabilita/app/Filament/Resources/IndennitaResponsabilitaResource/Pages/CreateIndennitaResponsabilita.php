@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateIndennitaResponsabilita extends XotBaseCreateRecord
 {
-    public static string $resource = IndennitaResponsabilitaResource::class;
+    protected static string $resource = IndennitaResponsabilitaResource::class;
 }

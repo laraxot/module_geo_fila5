@@ -12,7 +12,7 @@ use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteRe
 
 class StabiDirigenteResource extends PtvStabiDirigenteResource
 {
-    public static string $resourceFile = __FILE__;
+    protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = StabiDirigente::class;
 

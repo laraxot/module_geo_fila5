@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CedDiffResource;
 
 class CreateCedDiff extends CreateRecord
 {
-    public static string $resource = CedDiffResource::class;
+    protected static string $resource = CedDiffResource::class;
 }

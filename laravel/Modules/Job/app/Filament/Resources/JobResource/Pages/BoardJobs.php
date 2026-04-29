@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
 
 class BoardJobs extends XotBaseResourcePage
 {
-    public static string $resource = JobResource::class;
+    protected static string $resource = JobResource::class;
 }

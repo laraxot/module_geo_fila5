@@ -407,8 +407,6 @@ consolidamento seguendo le roadmap definite. Focus attuale: completamento docume
 
 ---
 
-**Last Updated**: 2025-10-01  
-**Next Review**: 2025-10-15  
 **Status**: 🚧 IN PROGRESS  
 **Confidence Level**: 85%  
 

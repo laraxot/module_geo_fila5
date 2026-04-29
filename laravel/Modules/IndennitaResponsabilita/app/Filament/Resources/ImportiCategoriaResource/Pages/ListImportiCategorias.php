@@ -14,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListImportiCategorias extends XotBaseListRecords
 {
-    public static string $resource = ImportiCategoriaResource::class;
+    protected static string $resource = ImportiCategoriaResource::class;
 
     /**
      * Get the table columns definition.

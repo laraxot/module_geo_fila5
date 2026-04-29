@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewLettI extends XotBaseViewRecord
 {
-    public static string $resource = LettIResource::class;
+    protected static string $resource = LettIResource::class;
 
     /**
      * @return array<int|string, Component>

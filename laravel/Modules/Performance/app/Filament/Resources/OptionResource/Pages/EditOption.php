@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\OptionResource\Pages\EditOption as PtvEditOpt
 
 class EditOption extends PtvEditOption
 {
-    public static string $resource = OptionResource::class;
+    protected static string $resource = OptionResource::class;
 }

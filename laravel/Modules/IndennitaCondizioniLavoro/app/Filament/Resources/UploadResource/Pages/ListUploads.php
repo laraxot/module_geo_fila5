@@ -13,7 +13,7 @@ use Override;
 
 class ListUploads extends XotBaseListRecords
 {
-    public static string $resource = UploadResource::class;
+    protected static string $resource = UploadResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

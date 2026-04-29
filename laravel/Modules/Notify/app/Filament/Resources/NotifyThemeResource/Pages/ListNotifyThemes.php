@@ -12,7 +12,7 @@ use Override;
 
 class ListNotifyThemes extends XotBaseListRecords
 {
-    public static string $resource = NotifyThemeResource::class;
+    protected static string $resource = NotifyThemeResource::class;
 
     /**
      * Colonne tabella NotifyTheme (condivise con ManageNotifyThemes).

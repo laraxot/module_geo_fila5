@@ -9,5 +9,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndiv
 
 class CreateIndividualeDip extends CreateIndividuale
 {
-    public static string $resource = IndividualeDipResource::class;
+    protected static string $resource = IndividualeDipResource::class;
 }

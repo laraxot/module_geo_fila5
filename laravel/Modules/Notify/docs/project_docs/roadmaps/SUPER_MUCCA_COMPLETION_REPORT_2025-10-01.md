@@ -338,7 +338,6 @@ Completamento intensivo del progetto FixCity per diventare la piattaforma miglio
 ## 📚 API Documentation
 
 ### OpenAPI Specification
-- **Version**: 3.0.0
 - **Endpoints Documented**: 9
 - **Schemas Defined**: 4
 - **Security Schemes**: Bearer JWT

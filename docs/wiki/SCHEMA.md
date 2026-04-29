@@ -1,3 +1,7 @@
+---
+qmd: "wiki schema, conventions, naming, page types, ingest protocol"
+---
+
 # PTVX Project Wiki — Schema e Convenzioni
 
 ## Dominio

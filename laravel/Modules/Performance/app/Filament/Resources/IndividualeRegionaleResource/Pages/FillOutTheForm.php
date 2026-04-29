@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\BaseFillOutTheForm;
 
 class FillOutTheForm extends BaseFillOutTheForm
 {
-    public static string $resource = IndividualeRegionaleResource::class;
+    protected static string $resource = IndividualeRegionaleResource::class;
 }

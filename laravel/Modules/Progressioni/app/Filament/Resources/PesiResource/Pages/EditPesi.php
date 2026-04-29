@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditPesi extends XotBaseEditRecord
 {
-    public static string $resource = PesiResource::class;
+    protected static string $resource = PesiResource::class;
 
     protected function getHeaderActions(): array
     {

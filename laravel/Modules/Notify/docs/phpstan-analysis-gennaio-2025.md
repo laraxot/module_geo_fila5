@@ -1,7 +1,7 @@
 # Analisi PHPStan Completa - Gennaio 2025
 
 ## Panoramica
-Documentazione completa dell'analisi e correzione di tutti gli errori PHPStan nel progetto base_fixcity_fila4_mono, raggiungendo il livello massimo di analisi statica.
+Documentazione completa dell'analisi e correzione di tutti gli errori PHPStan nel progetto base_fixcity_fila5_mono, raggiungendo il livello massimo di analisi statica.
 
 ## Risultati Finali
 - **Errori iniziali**: 30

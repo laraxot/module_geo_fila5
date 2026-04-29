@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages\EditCriteriEs
 
 class EditCriteriEsclusione extends PtvEditCriteriEsclusione
 {
-    public static string $resource = CriteriEsclusioneResource::class;
+    protected static string $resource = CriteriEsclusioneResource::class;
 }

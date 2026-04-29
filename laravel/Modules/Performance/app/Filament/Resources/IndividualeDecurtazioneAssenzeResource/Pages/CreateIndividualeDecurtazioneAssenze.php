@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateIndividualeDecurtazioneAssenze extends XotBaseCreateRecord
 {
-    public static string $resource = IndividualeDecurtazioneAssenzeResource::class;
+    protected static string $resource = IndividualeDecurtazioneAssenzeResource::class;
 }

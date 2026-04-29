@@ -14,7 +14,7 @@ use Override;
 
 class ListNotifications extends XotBaseListRecords
 {
-    public static string $resource = NotificationResource::class;
+    protected static string $resource = NotificationResource::class;
 
     #[Override]
     public function getTableColumns(): array

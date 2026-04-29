@@ -32,7 +32,7 @@ error() {
 }
 
 # Directory base
-BASE_DIR="/var/www/_bases/base_fixcity_fila4_mono"
+BASE_DIR="/var/www/_bases/base_fixcity_fila5_mono"
 LARAVEL_DIR="$BASE_DIR/laravel"
 PROJECT_DOCS_DIR="$BASE_DIR/project_docs"
 

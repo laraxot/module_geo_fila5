@@ -13,7 +13,7 @@ use Override;
 
 class ListIndennitaTipos extends XotBaseListRecords
 {
-    public static string $resource = IndennitaTipoResource::class;
+    protected static string $resource = IndennitaTipoResource::class;
 
     #[Override]
     public function getTableColumns(): array

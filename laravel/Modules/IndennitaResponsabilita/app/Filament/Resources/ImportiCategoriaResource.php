@@ -21,7 +21,7 @@ use Override;
 
 class ImportiCategoriaResource extends XotBaseResource
 {
-    public static string $resourceFile = __FILE__;
+    protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = ImportiCategoria::class;
 

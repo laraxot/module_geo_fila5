@@ -9,7 +9,7 @@ use Modules\Incentivi\Filament\Resources\ProjectResource;
 
 class ViewProjectReport extends ViewRecord
 {
-    public static string $resource = ProjectResource::class;
+    protected static string $resource = ProjectResource::class;
 
     protected string $view = 'incentivi::filament.pages.projects.view-project-report';
 

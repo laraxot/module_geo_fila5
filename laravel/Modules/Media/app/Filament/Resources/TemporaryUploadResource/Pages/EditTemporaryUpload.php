@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditTemporaryUpload extends XotBaseEditRecord
 {
-    public static string $resource = TemporaryUploadResource::class;
+    protected static string $resource = TemporaryUploadResource::class;
 
     /**
      * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>

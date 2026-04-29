@@ -1,0 +1,118 @@
+{
+    "page": "servizi",
+    "route": "/it/servizi",
+    "title": "Servizi",
+    "subtitle": "Tutti i servizi del Comune",
+    "components": [
+        "breadcrumbs",
+        "hero",
+        "search",
+        "filters",
+        "services_grid",
+        "pagination"
+    ],
+    "blocks": {
+        "hero": {
+            "type": "hero.hero",
+            "data": {
+                "title": "Servizi",
+                "subtitle": "Tutti i servizi del Comune",
+                "background": "white"
+            }
+        },
+        "search": {
+            "type": "form.search",
+            "data": {
+                "placeholder": "Cerca servizio...",
+                "action": "/it/servizi"
+            }
+        },
+        "filters": {
+            "type": "filter.categories",
+            "data": {
+                "categories": [
+                    {"label": "Tutti", "value": "", "icon": "heroicon-o-squares-2x2"},
+                    {"label": "Anagrafe", "value": "anagrafe", "icon": "heroicon-o-identification"},
+                    {"label": "Cultura", "value": "cultura", "icon": "heroicon-o-book-open"},
+                    {"label": "Servizi sociali", "value": "sociali", "icon": "heroicon-o-heart"},
+                    {"label": "Mobilità", "value": "mobilita", "icon": "heroicon-o-truck"},
+                    {"label": "Ambiente", "value": "ambiente", "icon": "heroicon-o-globe-alt"}
+                ]
+            }
+        },
+        "grid": {
+            "type": "grid.grid",
+            "data": {
+                "columns": 3,
+                "gap": "medium"
+            }
+        },
+        "card": {
+            "type": "card.card",
+            "data": {
+                "layout": "vertical",
+                "icon_position": "top"
+            }
+        },
+        "pagination": {
+            "type": "navigation.pagination",
+            "data": {
+                "position": "bottom"
+            }
+        }
+    },
+    "sample_services": [
+        {
+            "title": "Certificato di residenza",
+            "description": "Rilascio certificato di residenza online",
+            "icon": "heroicon-o-document-text",
+            "url": "/it/servizi/certificato-residenza",
+            "category": "anagrafe"
+        },
+        {
+            "title": "Iscrizione anagrafica",
+            "description": "Iscrizione all'anagrafe della popolazione residente",
+            "icon": "heroicon-o-user-plus",
+            "url": "/it/servizi/iscrizione-anagrafica",
+            "category": "anagrafe"
+        },
+        {
+            "title": "Prenotazione biblioteca",
+            "description": "Prenota libri e spazi nella biblioteca comunale",
+            "icon": "heroicon-o-library",
+            "url": "/it/servizi/prenotazione-biblioteca",
+            "category": "cultura"
+        },
+        {
+            "title": "Asilo nido",
+            "description": "Iscrizione asilo nido comunale",
+            "icon": "heroicon-o-baby-carriage",
+            "url": "/it/servizi/asilo-nido",
+            "category": "sociali"
+        },
+        {
+            "title": "Permesso di sosta",
+            "description": "Richiesta permesso di sosta per veicoli",
+            "icon": "heroicon-o-truck",
+            "url": "/it/servizi/permesso-sosta",
+            "category": "mobilita"
+        },
+        {
+            "title": "Raccolta differenziata",
+            "description": "Informazioni sulla raccolta differenziata",
+            "icon": "heroicon-o-recycling",
+            "url": "/it/servizi/raccolta-differenziata",
+            "category": "ambiente"
+        }
+    ],
+    "layout": {
+        "container": "container",
+        "sidebar": false,
+        "full_width": false
+    },
+    "seo": {
+        "title": "Servizi - Comune di Example",
+        "description": "Tutti i servizi del Comune di Example",
+        "keywords": ["servizi", "comune", "anagrafe", "cultura", "sociale"]
+    }
+}

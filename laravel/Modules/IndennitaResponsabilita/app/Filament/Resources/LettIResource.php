@@ -22,7 +22,7 @@ use Override;
 
 final class LettIResource extends XotBaseResource
 {
-    public static string $resourceFile = __FILE__;
+    protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = LettI::class;
 

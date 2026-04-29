@@ -28,7 +28,7 @@ class ViewSchedule extends XotBaseResourcePage implements HasTable
     #[Url]
     public ?string $activeTab = null;
 
-    public static string $resource = ScheduleResource::class;
+    protected static string $resource = ScheduleResource::class;
 
     protected string $view = 'filament-panels::resources.pages.list-records';
 

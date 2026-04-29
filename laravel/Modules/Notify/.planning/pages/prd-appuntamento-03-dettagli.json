@@ -1,0 +1,36 @@
+{
+    "page": "appuntamento-03-dettagli",
+    "route": "/it/tests/appuntamento-03-dettagli",
+    "title": "Prenotazione Appuntamento",
+    "subtitle": "Step 3: Inserisci dettagli",
+    "step": 3,
+    "total_steps": 6,
+    "components": ["breadcrumbs", "stepper", "form", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Ufficio", "completed": true},
+                    {"number": 2, "title": "Data e Ora", "completed": true},
+                    {"number": 3, "title": "Dettagli", "active": true},
+                    {"number": 4, "title": "Richiedente", "pending": true},
+                    {"number": 5, "title": "Riepilogo", "pending": true},
+                    {"number": 6, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "form": {
+            "type": "form.details",
+            "data": {
+                "fields": [
+                    {"name": "motivo", "type": "textarea", "label": "Motivo dell'appuntamento", "required": true, "placeholder": "Descrivi brevemente il motivo..."},
+                    {"name": "note", "type": "textarea", "label": "Note aggiuntive", "required": false, "placeholder": "Eventuali note..."},
+                    {"name": "documenti", "type": "file", "label": "Allega documenti", "required": false, "accept": ".pdf,.jpg,.png"}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

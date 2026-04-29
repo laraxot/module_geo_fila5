@@ -100,7 +100,7 @@ protected static ?string $navigationGroup = 'Contenuti';
 
 ### 1. Esegui Migrations
 ```bash
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 php artisan migrate
 ```
 

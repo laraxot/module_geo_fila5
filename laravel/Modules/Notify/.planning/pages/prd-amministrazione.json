@@ -1,0 +1,36 @@
+{
+    "page": "amministrazione",
+    "route": "/it/tests/amministrazione",
+    "title": "Amministrazione",
+    "subtitle": "Organi di governo e uffici",
+    "components": ["breadcrumbs", "hero", "sections", "contacts"],
+    "blocks": {
+        "breadcrumbs": {
+            "items": [
+                {"label": "Home", "url": "/it"},
+                {"label": "Amministrazione", "url": "/it/tests/amministrazione"}
+            ]
+        },
+        "hero": {
+            "type": "hero.hero",
+            "data": {
+                "title": "Amministrazione",
+                "subtitle": "Organi di governo e uffici comunali",
+                "background": "white"
+            }
+        },
+        "sections": {
+            "type": "grid.grid",
+            "data": {
+                "columns": 2,
+                "items": [
+                    {"title": "Organi di governo", "description": "Sindaco, Giunta, Consiglio", "icon": "heroicon-o-building-office", "url": "#"},
+                    {"title": "Aree amministrative", "description": "Settori e uffici", "icon": "heroicon-o-briefcase", "url": "#"},
+                    {"title": "Uffici", "description": "Contatti e orari", "icon": "heroicon-o-map-pin", "url": "#"},
+                    {"title": "Enti e fondazioni", "description": "Enti partecipati", "icon": "heroicon-o-academic-cap", "url": "#"}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

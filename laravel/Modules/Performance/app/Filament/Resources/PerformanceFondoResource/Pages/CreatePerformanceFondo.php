@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreatePerformanceFondo extends XotBaseCreateRecord
 {
-    public static string $resource = PerformanceFondoResource::class;
+    protected static string $resource = PerformanceFondoResource::class;
 }

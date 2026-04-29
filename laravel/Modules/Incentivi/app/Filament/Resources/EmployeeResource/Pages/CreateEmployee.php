@@ -9,7 +9,7 @@ use Modules\Incentivi\Filament\Resources\EmployeeResource;
 
 class CreateEmployee extends CreateRecord
 {
-    public static string $resource = EmployeeResource::class;
+    protected static string $resource = EmployeeResource::class;
 
     protected function getRedirectUrl(): string
     {

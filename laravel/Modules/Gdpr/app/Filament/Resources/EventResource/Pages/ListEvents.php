@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListEvents extends XotBaseListRecords
 {
-    public static string $resource = EventResource::class;
+    protected static string $resource = EventResource::class;
 
     public function getTableColumns(): array
     {

@@ -10,7 +10,7 @@ use Modules\Setting\Filament\Resources\DatabaseConnectionResource;
 
 class ManageDatabaseConnections extends ManageRecords
 {
-    public static string $resource = DatabaseConnectionResource::class;
+    protected static string $resource = DatabaseConnectionResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -12,5 +12,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\ListIndivid
  */
 class ListIndividualePos extends ListIndividuales
 {
-    public static string $resource = IndividualePoResource::class;
+    protected static string $resource = IndividualePoResource::class;
 }

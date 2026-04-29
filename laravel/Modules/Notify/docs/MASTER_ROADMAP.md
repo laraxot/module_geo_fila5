@@ -721,6 +721,4 @@
 ---
 
 **Roadmap Version**: 1.0
-**Last Updated**: October 1, 2025
-**Next Review**: January 1, 2026
 **Owner**: Development Team Lead

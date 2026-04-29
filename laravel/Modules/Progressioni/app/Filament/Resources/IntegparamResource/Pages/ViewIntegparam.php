@@ -15,7 +15,7 @@ use Override;
 
 class ViewIntegparam extends XotBaseViewRecord
 {
-    public static string $resource = IntegparamResource::class;
+    protected static string $resource = IntegparamResource::class;
 
     protected function getHeaderActions(): array
     {

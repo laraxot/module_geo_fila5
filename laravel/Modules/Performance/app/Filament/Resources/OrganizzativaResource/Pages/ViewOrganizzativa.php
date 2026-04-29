@@ -11,7 +11,7 @@ use Modules\Progressioni\Filament\Resources\ProgressioniResource\RelationManager
 
 class ViewOrganizzativa extends ViewRecord
 {
-    public static string $resource = OrganizzativaResource::class;
+    protected static string $resource = OrganizzativaResource::class;
 
     protected function getHeaderActions(): array
     {

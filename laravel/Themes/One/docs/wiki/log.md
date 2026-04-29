@@ -25,5 +25,8 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+[2026-04-29 00:00:00 UTC] [INGEST] Added Theme One operating focus concept from strategy and analysis docs
+[2026-04-29 00:00:00 UTC] [INGEST] Added Theme One product and roadmap source summary for wiki-first retrieval
+
+**Last Activity:** 2026-04-29 00:00:00 UTC  
+**Total Operations:** 2

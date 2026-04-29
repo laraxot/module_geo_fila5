@@ -3,6 +3,8 @@ title: Actions Over Services
 description: Pattern di architettura basato su Actions invece di Services per la logica applicativa
 tags:
   - architecture
+qmd: "actions over services, Spatie QueueableAction, business logic, Laraxot patterns"
+---
   - actions
   - services
   - patterns

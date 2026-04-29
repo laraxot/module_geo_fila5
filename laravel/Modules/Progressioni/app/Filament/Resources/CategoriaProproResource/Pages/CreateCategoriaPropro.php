@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\CategoriaProproResource;
 
 class CreateCategoriaPropro extends CreateRecord
 {
-    public static string $resource = CategoriaProproResource::class;
+    protected static string $resource = CategoriaProproResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Notify\Filament\Resources\MailTemplateResource\Pages\CreateMailTempl
 
 class CreateMailTemplate extends NotifyCreateMailTemplate
 {
-    public static string $resource = MailTemplateResource::class;
+    protected static string $resource = MailTemplateResource::class;
 }

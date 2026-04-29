@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditMessage extends XotBaseEditRecord
 {
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 }

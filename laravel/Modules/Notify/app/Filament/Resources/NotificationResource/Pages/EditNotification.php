@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditNotification extends XotBaseEditRecord
 {
-    public static string $resource = NotificationResource::class;
+    protected static string $resource = NotificationResource::class;
 }

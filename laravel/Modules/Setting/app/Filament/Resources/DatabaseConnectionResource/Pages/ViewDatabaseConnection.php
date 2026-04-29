@@ -13,7 +13,7 @@ use Modules\Setting\Models\DatabaseConnection;
 
 class ViewDatabaseConnection extends ViewRecord
 {
-    public static string $resource = DatabaseConnectionResource::class;
+    protected static string $resource = DatabaseConnectionResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\PesiResource;
 
 class CreatePesi extends CreateRecord
 {
-    public static string $resource = PesiResource::class;
+    protected static string $resource = PesiResource::class;
 }

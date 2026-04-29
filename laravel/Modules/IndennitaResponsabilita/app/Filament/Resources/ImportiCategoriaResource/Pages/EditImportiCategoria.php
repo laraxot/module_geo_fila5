@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditImportiCategoria extends XotBaseEditRecord
 {
-    public static string $resource = ImportiCategoriaResource::class;
+    protected static string $resource = ImportiCategoriaResource::class;
 }

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\MailTemplateResource;
 
 class ListMailTemplates extends NotifyListMailTemplates
 {
-    public static string $resource = MailTemplateResource::class;
+    protected static string $resource = MailTemplateResource::class;
 }

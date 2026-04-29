@@ -9,7 +9,7 @@ use Modules\IndennitaResponsabilita\Filament\Resources\RatingResource;
 
 class CreateRating extends CreateRecord
 {
-    public static string $resource = RatingResource::class;
+    protected static string $resource = RatingResource::class;
 
     // public static function getResource(): string {
 

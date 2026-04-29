@@ -1,0 +1,38 @@
+{
+    "page": "segnalazioni-elenco",
+    "route": "/it/tests/segnalazioni-elenco",
+    "title": "Elenco Segnalazioni",
+    "subtitle": "Tutte le segnalazioni",
+    "components": ["breadcrumbs", "filters", "table", "pagination"],
+    "blocks": {
+        "breadcrumbs": {
+            "items": [
+                {"label": "Home", "url": "/it"},
+                {"label": "Segnalazioni", "url": "/it/tests/segnalazioni-elenco"}
+            ]
+        },
+        "filters": {
+            "type": "filter.categories",
+            "data": {
+                "categories": [
+                    {"label": "Tutte", "value": "", "icon": "heroicon-o-list"},
+                    {"label": "In lavorazione", "value": "lavorazione", "icon": "heroicon-o-clock"},
+                    {"label": "Completate", "value": "completate", "icon": "heroicon-o-check-circle"},
+                    {"label": "Da pagare", "value": "pagare", "icon": "heroicon-o-banknotes"}
+                ]
+            }
+        },
+        "table": {
+            "type": "table.reports",
+            "data": {
+                "columns": ["Protocollo", "Categoria", "Data", "Indirizzo", "Stato", "Azioni"],
+                "rows": [
+                    {"protocollo": "SEG-2026-001234", "categoria": "Rifiuti", "data": "30/03/2026", "indirizzo": "Via Roma 1", "stato": "In lavorazione", "azioni": "Vedi"},
+                    {"protocollo": "SEG-2026-001123", "categoria": "Strade", "data": "28/03/2026", "indirizzo": "Piazza Duomo", "stato": "Completata", "azioni": "Vedi"},
+                    {"protocollo": "SEG-2026-001012", "categoria": "Illuminazione", "data": "25/03/2026", "indirizzo": "Via Garibaldi 15", "stato": "Completata", "azioni": "Vedi"}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

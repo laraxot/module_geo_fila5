@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOption extends XotBaseEditRecord
 {
-    public static string $resource = OptionResource::class;
+    protected static string $resource = OptionResource::class;
 }

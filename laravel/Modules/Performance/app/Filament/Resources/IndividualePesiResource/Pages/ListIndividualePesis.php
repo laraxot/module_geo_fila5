@@ -24,7 +24,7 @@ use function Safe\date;
 
 class ListIndividualePesis extends PtvBaseYearListRecords
 {
-    public static string $resource = IndividualePesiResource::class;
+    protected static string $resource = IndividualePesiResource::class;
 
     
 

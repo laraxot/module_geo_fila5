@@ -10,5 +10,5 @@ use Modules\Incentivi\Filament\Resources\ProjectResource;
 
 class ListSchedaLogActivities extends ListLogActivities
 {
-    public static string $resource = ProjectResource::class;
+    protected static string $resource = ProjectResource::class;
 }

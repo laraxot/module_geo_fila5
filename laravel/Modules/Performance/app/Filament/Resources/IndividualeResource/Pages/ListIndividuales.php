@@ -16,7 +16,7 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
  */
 class ListIndividuales extends ListScheda
 {
-    public static string $resource = IndividualeResource::class;
+    protected static string $resource = IndividualeResource::class;
 
     // @var array<string, mixed> 
     //protected array $data = [];

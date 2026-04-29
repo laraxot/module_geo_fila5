@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCondizioniLavoroAdm extends XotBaseEditRecord
 {
-    public static string $resource = CondizioniLavoroAdmResource::class;
+    protected static string $resource = CondizioniLavoroAdmResource::class;
 
     protected function getHeaderActions(): array
     {

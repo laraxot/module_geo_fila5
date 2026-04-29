@@ -17,7 +17,7 @@ use Override;
 
 class ListEmployees extends XotBaseListRecords
 {
-    public static string $resource = EmployeeResource::class;
+    protected static string $resource = EmployeeResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

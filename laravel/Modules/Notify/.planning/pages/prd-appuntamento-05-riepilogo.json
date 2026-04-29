@@ -1,0 +1,56 @@
+{
+    "page": "appuntamento-05-riepilogo",
+    "route": "/it/tests/appuntamento-05-riepilogo",
+    "title": "Prenotazione Appuntamento",
+    "subtitle": "Step 5: Riepilogo",
+    "step": 5,
+    "total_steps": 6,
+    "components": ["breadcrumbs", "stepper", "summary", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Ufficio", "completed": true},
+                    {"number": 2, "title": "Data e Ora", "completed": true},
+                    {"number": 3, "title": "Dettagli", "completed": true},
+                    {"number": 4, "title": "Richiedente", "completed": true},
+                    {"number": 5, "title": "Riepilogo", "active": true},
+                    {"number": 6, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "summary": {
+            "type": "details.details",
+            "data": {
+                "layout": "grouped",
+                "groups": [
+                    {
+                        "title": "Ufficio",
+                        "items": [
+                            {"label": "Ufficio", "value": "Servizi Demografici"},
+                            {"label": "Sede", "value": "Piano 1, Ufficio 101-105"}
+                        ]
+                    },
+                    {
+                        "title": "Data e Ora",
+                        "items": [
+                            {"label": "Data", "value": "Mercoledì 17 aprile 2026"},
+                            {"label": "Ora", "value": "10:30"}
+                        ]
+                    },
+                    {
+                        "title": "Richiedente",
+                        "items": [
+                            {"label": "Nome", "value": "Mario Rossi"},
+                            {"label": "Email", "value": "mario.rossi@email.it"},
+                            {"label": "Telefono", "value": "+39 333 1234567"}
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

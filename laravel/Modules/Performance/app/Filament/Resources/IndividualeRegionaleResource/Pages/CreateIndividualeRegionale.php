@@ -9,5 +9,5 @@ use Modules\Performance\Filament\Resources\IndividualeResource\Pages\CreateIndiv
 
 class CreateIndividualeRegionale extends CreateIndividuale
 {
-    public static string $resource = IndividualeRegionaleResource::class;
+    protected static string $resource = IndividualeRegionaleResource::class;
 }

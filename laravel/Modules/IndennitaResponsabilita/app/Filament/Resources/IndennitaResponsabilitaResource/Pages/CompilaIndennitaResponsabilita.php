@@ -49,7 +49,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      */
     private const MIN_POSITIVE_RATINGS = 2;
 
-    public static string $resource = IndennitaResponsabilitaResource::class;
+    protected static string $resource = IndennitaResponsabilitaResource::class;
 
     public static ?string $model = IndennitaResponsabilita::class;
 

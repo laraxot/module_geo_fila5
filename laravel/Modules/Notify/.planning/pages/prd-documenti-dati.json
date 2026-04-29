@@ -1,0 +1,53 @@
+{
+    "page": "documenti-dati",
+    "route": "/it/tests/documenti-dati",
+    "title": "Documenti e Dati",
+    "subtitle": "Archivio documenti e open data",
+    "components": ["breadcrumbs", "hero", "search", "categories", "documents"],
+    "blocks": {
+        "breadcrumbs": {
+            "items": [
+                {"label": "Home", "url": "/it"},
+                {"label": "Documenti e Dati", "url": "/it/tests/documenti-dati"}
+            ]
+        },
+        "hero": {
+            "type": "hero.hero",
+            "data": {
+                "title": "Documenti e Dati",
+                "subtitle": "Archivio documenti e open data",
+                "background": "white"
+            }
+        },
+        "search": {
+            "type": "form.search",
+            "data": {
+                "placeholder": "Cerca documento..."
+            }
+        },
+        "categories": {
+            "type": "filter.categories",
+            "data": {
+                "categories": [
+                    {"label": "Tutti", "value": "", "icon": "heroicon-o-document-text"},
+                    {"label": "Delibere", "value": "delibere", "icon": "heroicon-o-document"},
+                    {"label": "Regolamenti", "value": "regolamenti", "icon": "heroicon-o-book-open"},
+                    {"label": "Bilanci", "value": "bilanci", "icon": "heroicon-o-banknotes"},
+                    {"label": "Open Data", "value": "opendata", "icon": "heroicon-o-circle-stack"}
+                ]
+            }
+        },
+        "documents": {
+            "type": "grid.grid",
+            "data": {
+                "columns": 3,
+                "items": [
+                    {"title": "Delibera n. 123/2026", "tipo": "Delibera", "data": "28/03/2026", "icon": "heroicon-o-document", "url": "#"},
+                    {"title": "Regolamento urbanistico", "tipo": "Regolamento", "data": "25/03/2026", "icon": "heroicon-o-book-open", "url": "#"},
+                    {"title": "Bilancio 2026", "tipo": "Bilancio", "data": "20/03/2026", "icon": "heroicon-o-banknotes", "url": "#"}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": false, "full_width": false}
+}

@@ -12,7 +12,7 @@ use Override;
 
 class ListMyLogs extends XotBaseListRecords
 {
-    public static string $resource = MyLogResource::class;
+    protected static string $resource = MyLogResource::class;
 
     #[Override]
     protected function getHeaderActions(): array

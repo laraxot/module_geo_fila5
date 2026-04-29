@@ -165,8 +165,6 @@ class RoadmapMetricsUpdater
 
 ---
 
-**Last Updated**: [Date]  
-**Next Review**: [Date]  
 **Status**: [Status]  
 **Confidence Level**: [X]%  
 ```
@@ -212,8 +210,6 @@ class RoadmapMetricsUpdater
 
 ---
 
-**Last Updated**: [Date]  
-**Next Review**: [Date]  
 **Status**: [Status]  
 **Confidence Level**: [X]%  
 ```

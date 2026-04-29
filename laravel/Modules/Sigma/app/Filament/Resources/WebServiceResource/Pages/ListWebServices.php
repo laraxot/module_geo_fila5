@@ -12,7 +12,7 @@ use Override;
 
 class ListWebServices extends XotBaseListRecords
 {
-    public static string $resource = WebServiceResource::class;
+    protected static string $resource = WebServiceResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -293,7 +293,7 @@ return [
         'spam' => 'Segnalata come spam',
     ],
     'model' => [
-        'label' => 'mail template.model',
+        'label' => 'Mail Template',
     ],
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',

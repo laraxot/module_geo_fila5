@@ -17,7 +17,7 @@ class ListMessages extends XotBaseListRecords
 {
     use HasXotTable;
 
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 
     
 

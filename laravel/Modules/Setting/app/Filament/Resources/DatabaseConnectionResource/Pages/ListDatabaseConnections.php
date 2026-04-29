@@ -19,7 +19,7 @@ use Modules\Setting\Models\DatabaseConnection;
 
 class ListDatabaseConnections extends ListRecords
 {
-    public static string $resource = DatabaseConnectionResource::class;
+    protected static string $resource = DatabaseConnectionResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -56,12 +56,6 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
-        'recipient' => [
-            'label' => 'recipient',
-            'placeholder' => 'recipient',
-            'helper_text' => 'recipient',
-            'description' => 'recipient',
-        ],
     ],
     'actions' => [
         'send_email' => [
@@ -78,16 +72,6 @@ return [
             'tooltip' => 'logout',
             'icon' => 'logout',
             'label' => 'logout',
-        ],
-        'sendEmail' => [
-            'label' => 'sendEmail',
-            'icon' => 'sendEmail',
-            'tooltip' => 'sendEmail',
-        ],
-        'profile' => [
-            'label' => 'profile',
-            'icon' => 'profile',
-            'tooltip' => 'profile',
         ],
     ],
     'messages' => [

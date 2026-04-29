@@ -19,7 +19,7 @@
 **Path**: `Modules/Fixcity/`  
 **Responsabilità**: Core della piattaforma di segnalazioni  
 **Status**: ✅ Attivo - Modulo principale  
-**Docs**: [📖 Fixcity Docs](../../Modules/Fixcity/docs/links.md)
+**Docs**: [📖 Fixcity Docs](../../Modules/Fixcity/docs/README.md) · [Collegamenti](../../Modules/Fixcity/docs/links.md) · [Wizard frontoffice](../../Modules/Fixcity/docs/ticket-wizard-frontoffice.md)
 
 - Gestione segnalazioni cittadini
 - Workflow amministrativo

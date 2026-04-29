@@ -2,11 +2,11 @@
   "collections": {
     "main_docs": {
       "path": "./docs",
-      "description": "Raw docs - progetto PTVX (radice)"
+      "description": "Raw docs - progetto PTVX (radice). Architecture, AI agents, BMAD, PHPStan, scripts, backup. Argomenti: architecture, ai-agents, bmad, phpstan, scripts, troubleshooting, historical notes."
     },
     "main_docs_wiki": {
       "path": "./docs/wiki",
-      "description": "LLM Wiki compilata - progetto PTVX (radice)"
+      "description": "LLM Wiki compilata - progetto PTVX (radice). Concept pages, entity docs, source summaries. Argomenti: second brain, wiki operating model, continuous improvement, module structure, actions over services, architecture guardrails, AI tooling."
     },
     "module_Activity": {
       "path": "./laravel/Modules/Activity/docs",
@@ -266,51 +266,51 @@
     },
     "module_UI": {
       "path": "./laravel/Modules/UI/docs",
-      "description": "Raw docs - modulo UI"
+      "description": "Raw docs - modulo UI. Filament components, Blade components, UI patterns, design system, component extraction governance, theme parity rules."
     },
     "module_UI_wiki": {
       "path": "./laravel/Modules/UI/docs/wiki",
-      "description": "LLM Wiki compilata - modulo UI"
+      "description": "LLM Wiki compilata - modulo UI. UI/UX standards, Blade component patterns, Filament component rules, design system tokens, theme-owned CSS parity."
     },
     "module_User": {
       "path": "./laravel/Modules/User/docs",
-      "description": "Raw docs - modulo User"
+      "description": "Raw docs - modulo User. User model, authentication, roles, permissions, Spatie Laravel Permission, Filament user management."
     },
     "module_User_wiki": {
       "path": "./laravel/Modules/User/docs/wiki",
-      "description": "LLM Wiki compilata - modulo User"
+      "description": "LLM Wiki compilata - modulo User. User entity docs, authentication patterns, role-permission structures, Filament user resource patterns."
     },
     "module_Xot": {
       "path": "./laravel/Modules/Xot/docs",
-      "description": "Raw docs - modulo Xot"
+      "description": "Raw docs - modulo Xot. Base classes, XotBaseResource, XotBasePage, XotBaseWidget, ServiceProvider patterns, Laraxot core architecture, module structure."
     },
     "module_Xot_wiki": {
       "path": "./laravel/Modules/Xot/docs/wiki",
-      "description": "LLM Wiki compilata - modulo Xot"
+      "description": "LLM Wiki compilata - modulo Xot. Entity pages for base classes, concept docs for XotBase patterns, ServiceProvider rules, module architecture decisions."
     },
     "theme_Zero": {
       "path": "./laravel/Themes/Zero/docs",
-      "description": "Raw docs - Tema Zero"
+      "description": "Raw docs - Tema Zero. Architecture, product docs, quality, screenshots, roadmap, wiki bootstrap. Argomenti: theme architecture, product roadmap, UI/UX design, blade components, cinematic effects, particles, Tailwind v4."
     },
     "theme_Zero_wiki": {
       "path": "./laravel/Themes/Zero/docs/wiki",
-      "description": "LLM Wiki compilata - Tema Zero"
+      "description": "LLM Wiki compilata - Tema Zero. Concept pages for theme-owned CSS parity, operating focus, product/roadmap summaries. Argomenti: theme parity rule, CSS/JS assets ownership, cinematic UX, Vite build, Tailwind v4 tokens."
     },
     "theme_One": {
       "path": "./laravel/Themes/One/docs",
-      "description": "Raw docs - Tema One"
+      "description": "Raw docs - Tema One. Roadmap, PRD/product files, troubleshooting, wiki bootstrap. Argomenti: theme architecture, product strategy, troubleshooting guides."
     },
     "theme_One_wiki": {
       "path": "./laravel/Themes/One/docs/wiki",
-      "description": "LLM Wiki compilata - Tema One"
+      "description": "LLM Wiki compilata - Tema One. Operating-focus concept, product/roadmap source summary. Argomenti: theme operating model, product strategy, UI/UX patterns."
     },
     "bashscripts": {
       "path": "./bashscripts/docs",
-      "description": "Raw docs - bashscripts"
+      "description": "Raw docs - bashscripts. Utility scripts, test scripts, module management scripts. Argomenti: bash scripting, module setup, git workflows, maintenance scripts."
     },
     "bashscripts_wiki": {
       "path": "./bashscripts/docs/wiki",
-      "description": "LLM Wiki compilata - bashscripts"
+      "description": "LLM Wiki compilata - bashscripts. Script categories, usage patterns, module-specific script docs. Argomenti: script organization, bash best practices, automation patterns."
     }
   }
 }

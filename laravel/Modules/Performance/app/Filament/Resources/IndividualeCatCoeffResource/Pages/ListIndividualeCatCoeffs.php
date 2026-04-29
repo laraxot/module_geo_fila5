@@ -25,7 +25,7 @@ use function Safe\date;
 
 class ListIndividualeCatCoeffs extends PtvBaseYearListRecords
 {
-    public static string $resource = IndividualeCatCoeffResource::class;
+    protected static string $resource = IndividualeCatCoeffResource::class;
 
     /**
      * Get the list table columns.

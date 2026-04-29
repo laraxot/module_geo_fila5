@@ -3,6 +3,8 @@ title: Struttura dei Moduli
 description: Convenzioni e standard per la struttura dei moduli nel progetto PTVX
 tags:
   - architecture
+qmd: "module structure, directory layout, naming conventions, XotBase, nwidart modules"
+---
   - modules
   - conventions
 created: 2026-04-15

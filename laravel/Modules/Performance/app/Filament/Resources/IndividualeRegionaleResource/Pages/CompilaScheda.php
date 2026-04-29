@@ -10,5 +10,5 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\BaseCompilaScheda;
 
 class CompilaScheda extends BaseCompilaScheda
 {
-    public static string $resource = IndividualeRegionaleResource::class;
+    protected static string $resource = IndividualeRegionaleResource::class;
 }

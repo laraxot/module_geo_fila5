@@ -14,7 +14,7 @@ use Override;
 
 class ListPesis extends PtvBaseYearListRecords
 {
-    public static string $resource = PesiResource::class;
+    protected static string $resource = PesiResource::class;
 
     #[Override]
     public function getTableColumns(): array

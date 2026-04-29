@@ -21,7 +21,7 @@ use Override;
 
 class ListStabiDirigentes extends XotBaseListRecords
 {
-    // public static string $resource = StabiDirigenteResource::class;
+    // protected static string $resource = StabiDirigenteResource::class;
 
     protected function getTableFiltersLayout(): FiltersLayout
     {

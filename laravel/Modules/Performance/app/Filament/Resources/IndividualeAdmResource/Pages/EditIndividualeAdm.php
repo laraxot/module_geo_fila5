@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIndividualeAdm extends XotBaseEditRecord
 {
-    public static string $resource = IndividualeAdmResource::class;
+    protected static string $resource = IndividualeAdmResource::class;
 
     protected function getHeaderActions(): array
     {

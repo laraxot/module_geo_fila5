@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditMyLog extends XotBaseEditRecord
 {
-    public static string $resource = MyLogResource::class;
+    protected static string $resource = MyLogResource::class;
 
     protected function getHeaderActions(): array
     {

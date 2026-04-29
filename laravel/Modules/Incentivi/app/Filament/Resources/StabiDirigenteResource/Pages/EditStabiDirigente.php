@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditStabiDirigente extends XotBaseEditRecord
 {
-    public static string $resource = StabiDirigenteResource::class;
+    protected static string $resource = StabiDirigenteResource::class;
 
     protected function getHeaderActions(): array
     {

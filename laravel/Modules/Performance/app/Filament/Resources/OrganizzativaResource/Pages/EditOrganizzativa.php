@@ -14,7 +14,7 @@ ini_set('max_execution_time', '3600');
 
 class EditOrganizzativa extends XotBaseEditRecord
 {
-    public static string $resource = OrganizzativaResource::class;
+    protected static string $resource = OrganizzativaResource::class;
 
     protected function getHeaderActions(): array
     {

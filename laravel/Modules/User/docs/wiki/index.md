@@ -20,6 +20,8 @@ wiki/
 | Pagina | Tipo | Argomento |
 |--------|------|-----------|
 | [user-module](./overviews/user-module.md) | overview | User, Profile, Team, Spatie RBAC, OAuth, multi-tenancy |
+| [user-module-operating-focus](./concepts/user-module-operating-focus.md) | concept | Scope, guardrails, and retrieval priorities for identity work |
+| [user-architecture-sources](./sources/user-architecture-sources.md) | source | Summary of core identity, strategy, and architecture docs |
 
 ## Raw Sources
 

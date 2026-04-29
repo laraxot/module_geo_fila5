@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\OptionResource\Pages\CreateOption as PtvCreat
 
 class CreateOption extends PtvCreateOption
 {
-    public static string $resource = OptionResource::class;
+    protected static string $resource = OptionResource::class;
 }

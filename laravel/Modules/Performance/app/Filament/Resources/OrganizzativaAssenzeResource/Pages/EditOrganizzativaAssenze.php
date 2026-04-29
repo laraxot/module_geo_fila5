@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditOrganizzativaAssenze extends XotBaseEditRecord
 {
-    public static string $resource = OrganizzativaAssenzeResource::class;
+    protected static string $resource = OrganizzativaAssenzeResource::class;
 
     protected function getHeaderActions(): array
     {

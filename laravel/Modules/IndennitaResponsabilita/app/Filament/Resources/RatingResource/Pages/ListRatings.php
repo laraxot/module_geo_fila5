@@ -21,7 +21,7 @@ use Modules\Rating\Filament\Resources\RatingResource\Pages\ListRatings as BaseLi
 
 class ListRatings extends BaseListRatings
 {
-    public static string $resource = RatingResource::class;
+    protected static string $resource = RatingResource::class;
 
     /**
      * @return array<string, Action|ActionGroup>

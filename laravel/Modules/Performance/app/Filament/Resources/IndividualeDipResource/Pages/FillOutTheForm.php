@@ -16,7 +16,7 @@ use Modules\Xot\Actions\GetTransKeyAction;
  */
 class FillOutTheForm extends BaseFillOutTheForm
 {
-    public static string $resource = IndividualeDipResource::class;
+    protected static string $resource = IndividualeDipResource::class;
 
     /*
     public function getView(): string

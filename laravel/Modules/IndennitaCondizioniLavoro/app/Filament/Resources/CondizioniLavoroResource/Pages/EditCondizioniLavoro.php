@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditCondizioniLavoro extends XotBaseEditRecord
 {
-    public static string $resource = CondizioniLavoroResource::class;
+    protected static string $resource = CondizioniLavoroResource::class;
 }

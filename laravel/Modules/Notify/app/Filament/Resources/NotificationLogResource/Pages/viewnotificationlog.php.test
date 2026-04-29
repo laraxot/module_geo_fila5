@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewNotificationLog extends XotBaseViewRecord
 {
-    public static string $resource = NotificationLogResource::class;
+    protected static string $resource = NotificationLogResource::class;
     
     /**
      * {@inheritdoc}

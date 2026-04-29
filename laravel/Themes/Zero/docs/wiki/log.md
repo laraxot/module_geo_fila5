@@ -25,5 +25,8 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+[2026-04-29 00:00:00 UTC] [INGEST] Added Theme Zero operating focus concept from README and strategy docs
+[2026-04-29 00:00:00 UTC] [INGEST] Added Theme Zero strategic source summary for wiki-first theme retrieval
+
+**Last Activity:** 2026-04-29 00:00:00 UTC  
+**Total Operations:** 2

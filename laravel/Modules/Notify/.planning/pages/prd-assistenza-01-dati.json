@@ -1,0 +1,36 @@
+{
+    "page": "assistenza-01-dati",
+    "route": "/it/tests/assistenza-01-dati",
+    "title": "Richiesta Assistenza",
+    "subtitle": "Step 1: I tuoi dati",
+    "step": 1,
+    "total_steps": 2,
+    "components": ["breadcrumbs", "stepper", "form", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Dati", "active": true},
+                    {"number": 2, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "form": {
+            "type": "form.assistance",
+            "data": {
+                "fields": [
+                    {"name": "nome", "type": "text", "label": "Nome", "required": true},
+                    {"name": "cognome", "type": "text", "label": "Cognome", "required": true},
+                    {"name": "email", "type": "email", "label": "Email", "required": true},
+                    {"name": "telefono", "type": "tel", "label": "Telefono", "required": false},
+                    {"name": "oggetto", "type": "text", "label": "Oggetto", "required": true},
+                    {"name": "messaggio", "type": "textarea", "label": "Messaggio", "required": true, "rows": 5},
+                    {"name": "privacy", "type": "checkbox", "label": "Accetto la privacy policy", "required": true}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": true, "full_width": false}
+}

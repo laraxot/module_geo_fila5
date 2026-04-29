@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditMaxCatecoPosfunAnno extends XotBaseEditRecord
 {
-    public static string $resource = MaxCatecoPosfunAnnoResource::class;
+    protected static string $resource = MaxCatecoPosfunAnnoResource::class;
 }

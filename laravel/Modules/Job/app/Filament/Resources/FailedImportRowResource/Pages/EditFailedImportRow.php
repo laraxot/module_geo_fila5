@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditFailedImportRow extends XotBaseEditRecord
 {
-    public static string $resource = FailedImportRowResource::class;
+    protected static string $resource = FailedImportRowResource::class;
 }

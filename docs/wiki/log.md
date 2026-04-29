@@ -28,6 +28,18 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-15 00:00:00 UTC] [INGEST] Added module structure documentation
 [2026-04-15 00:00:00 UTC] [INGEST] Added actions over services documentation
 [2026-04-15 00:00:00 UTC] [INGEST] Added accessor auto-persistence pattern
+[2026-04-28 00:00:00 UTC] [INGEST] Added second brain operating model for project-level documentation
+[2026-04-28 00:00:00 UTC] [INGEST] Added source summary for docs landscape across modules and themes
+[2026-04-28 00:00:00 UTC] [INGEST] Added architecture guardrails from root docs/architecture sources
+[2026-04-28 00:00:00 UTC] [INGEST] Added AI tooling workflow from root docs/ai sources
+[2026-04-28 00:00:00 UTC] [INGEST] Added BMAD operating model from root docs/bmad sources
+[2026-04-29 00:00:00 UTC] [UPDATE] Refined second brain operating model with actionability, compression, and discoverability rules
+[2026-04-29 00:00:00 UTC] [INGEST] Added continuous-improvement playbook for root, module, and theme documentation maintenance
+[2026-04-29 09:09:00 UTC] [CREATE] Story 1-4: second-brain-efficiency-optimization — QMD context tuning, token-efficient context files, prioritized ingest backlog
+[2026-04-29 00:00:00 UTC] [INGEST] Added reusable second-brain audit checks concept and local audit tool for wiki health
+[2026-04-29 09:19:00 UTC] [RESEARCH] Ingested external second-brain benchmarks (CODE, progressive summarization, LLM wiki) and mapped them to repository operations
+[2026-04-29 09:19:00 UTC] [CREATE] Story 1-5: second-brain-internet-research-and-federated-docs-updates
+[2026-04-29 09:19:00 UTC] [UPDATE] Extended continuous-improvement model with `/bmad-create-story` integration and external benchmark policy
 
-**Last Activity:** 2026-04-15 00:00:00 UTC  
-**Total Operations:** 3
+**Last Activity:** 2026-04-29 09:19:00 UTC  
+**Total Operations:** 15

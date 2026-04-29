@@ -13,7 +13,7 @@ use Override;
 
 class ListSettlements extends XotBaseListRecords
 {
-    public static string $resource = SettlementResource::class;
+    protected static string $resource = SettlementResource::class;
 
     #[Override]
     public function getTableColumns(): array

@@ -9,5 +9,5 @@ use Modules\Progressioni\Filament\Resources\ProgressioniResource;
 
 class CreateProgressioni extends CreateRecord
 {
-    public static string $resource = ProgressioniResource::class;
+    protected static string $resource = ProgressioniResource::class;
 }

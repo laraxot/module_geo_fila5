@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditEvent extends XotBaseEditRecord
 {
-    public static string $resource = EventResource::class;
+    protected static string $resource = EventResource::class;
 }

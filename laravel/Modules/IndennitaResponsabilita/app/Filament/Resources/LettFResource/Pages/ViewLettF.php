@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewLettF extends XotBaseViewRecord
 {
-    public static string $resource = LettFResource::class;
+    protected static string $resource = LettFResource::class;
 
     /**
      * @return array<int|string, Component>

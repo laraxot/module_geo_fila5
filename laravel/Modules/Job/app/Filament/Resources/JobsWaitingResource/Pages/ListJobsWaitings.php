@@ -17,7 +17,7 @@ use Override;
 
 class ListJobsWaitings extends XotBaseListRecords
 {
-    public static string $resource = JobsWaitingResource::class;
+    protected static string $resource = JobsWaitingResource::class;
 
     /**
      * @return array<class-string>

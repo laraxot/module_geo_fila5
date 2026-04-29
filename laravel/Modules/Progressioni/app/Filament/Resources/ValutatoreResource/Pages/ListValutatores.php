@@ -11,7 +11,7 @@ use Override;
 
 class ListValutatores extends PtvBaseYearListRecords
 {
-    public static string $resource = ValutatoreResource::class;
+    protected static string $resource = ValutatoreResource::class;
 
     #[Override]
     public function getTableColumns(): array

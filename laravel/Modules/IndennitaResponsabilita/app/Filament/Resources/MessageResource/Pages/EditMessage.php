@@ -9,5 +9,5 @@ use Modules\Ptv\Filament\Resources\MessageResource\Pages\EditMessage as PtvEditM
 
 class EditMessage extends PtvEditMessage
 {
-    public static string $resource = MessageResource::class;
+    protected static string $resource = MessageResource::class;
 }

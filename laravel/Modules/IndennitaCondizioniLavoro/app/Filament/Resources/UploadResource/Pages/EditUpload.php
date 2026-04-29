@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditUpload extends XotBaseEditRecord
 {
-    public static string $resource = UploadResource::class;
+    protected static string $resource = UploadResource::class;
 
     protected function getHeaderActions(): array
     {

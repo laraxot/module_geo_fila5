@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditIndividualeDecurtazioneAssenze extends XotBaseEditRecord
 {
-    public static string $resource = IndividualeDecurtazioneAssenzeResource::class;
+    protected static string $resource = IndividualeDecurtazioneAssenzeResource::class;
 
     protected function getHeaderActions(): array
     {

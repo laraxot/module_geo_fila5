@@ -254,7 +254,7 @@ FAIL → $this->addError() + rimane su form
 ### 1. Avviare il Server
 
 ```bash
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 php artisan serve --host=127.0.0.1 --port=8000
 ```
 

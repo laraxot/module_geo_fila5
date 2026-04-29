@@ -15,7 +15,7 @@ use Override;
 
 class ListIntegparams extends XotBaseListRecords
 {
-    public static string $resource = IntegparamResource::class;
+    protected static string $resource = IntegparamResource::class;
 
     /**
      * Get the table columns.

@@ -1,0 +1,55 @@
+{
+    "page": "appuntamento-02-data-orario",
+    "route": "/it/tests/appuntamento-02-data-orario",
+    "title": "Prenotazione Appuntamento",
+    "subtitle": "Step 2: Scegli data e ora",
+    "step": 2,
+    "total_steps": 6,
+    "components": ["breadcrumbs", "stepper", "calendar", "time_slots", "navigation"],
+    "blocks": {
+        "stepper": {
+            "type": "steps.steps",
+            "data": {
+                "layout": "horizontal",
+                "steps": [
+                    {"number": 1, "title": "Ufficio", "completed": true},
+                    {"number": 2, "title": "Data e Ora", "active": true},
+                    {"number": 3, "title": "Dettagli", "pending": true},
+                    {"number": 4, "title": "Richiedente", "pending": true},
+                    {"number": 5, "title": "Riepilogo", "pending": true},
+                    {"number": 6, "title": "Conferma", "pending": true}
+                ]
+            }
+        },
+        "calendar": {
+            "type": "calendar.date-picker",
+            "data": {
+                "title": "Seleziona una data",
+                "min_date": "2026-04-01",
+                "max_date": "2026-05-31",
+                "disabled_dates": ["2026-04-05", "2026-04-12", "2026-04-19", "2026-04-25", "2026-05-01"]
+            }
+        },
+        "time_slots": {
+            "type": "form.time-slots",
+            "data": {
+                "title": "Seleziona un orario",
+                "slots": [
+                    {"time": "09:00", "available": true},
+                    {"time": "09:30", "available": true},
+                    {"time": "10:00", "available": false},
+                    {"time": "10:30", "available": true},
+                    {"time": "11:00", "available": true},
+                    {"time": "11:30", "available": false},
+                    {"time": "14:00", "available": true},
+                    {"time": "14:30", "available": true},
+                    {"time": "15:00", "available": true},
+                    {"time": "15:30", "available": false},
+                    {"time": "16:00", "available": true},
+                    {"time": "16:30", "available": true}
+                ]
+            }
+        }
+    },
+    "layout": {"container": "container", "sidebar": true, "full_width": false}
+}

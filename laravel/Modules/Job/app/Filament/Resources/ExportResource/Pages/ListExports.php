@@ -12,7 +12,7 @@ use Override;
 
 class ListExports extends XotBaseListRecords
 {
-    public static string $resource = ExportResource::class;
+    protected static string $resource = ExportResource::class;
 
     /**
      * @return array<string, Column>

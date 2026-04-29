@@ -16,7 +16,7 @@ class SendMailIndennitaResponsabilita extends XotBasePage
     /** @var array<string, mixed> */
     public array $tableFilters = [];
 
-    public static string $resource = IndennitaResponsabilitaResource::class;
+    protected static string $resource = IndennitaResponsabilitaResource::class;
 
     protected string $view = 'indennitaresponsabilita::filament.resources.indennita-responsabilita.pages.send-mail';
 

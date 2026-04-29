@@ -16,7 +16,7 @@ class OrganizzativaMoney extends XotBasePage
 {
     // use InteractsWithRecord;
 
-    public static string $resource = PerformanceFondoResource::class;
+    protected static string $resource = PerformanceFondoResource::class;
 
     /**
      * ---.

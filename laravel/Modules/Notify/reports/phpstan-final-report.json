@@ -1,5 +1,5 @@
-Note: Using configuration file /var/www/_bases/base_fixcity_fila4_mono/laravel/phpstan.neon.
-PHP Fatal error:  Cannot redeclare non static Filament\Widgets\ChartWidget::$heading as static Modules\Fixcity\Filament\Widgets\TicketChartWidget::$heading in /var/www/_bases/base_fixcity_fila4_mono/laravel/Modules/Fixcity/app/Filament/Widgets/TicketChartWidget.php on line 14
+Note: Using configuration file /var/www/_bases/base_fixcity_fila5_mono/laravel/phpstan.neon.
+PHP Fatal error:  Cannot redeclare non static Filament\Widgets\ChartWidget::$heading as static Modules\Fixcity\Filament\Widgets\TicketChartWidget::$heading in /var/www/_bases/base_fixcity_fila5_mono/laravel/Modules/Fixcity/app/Filament/Widgets/TicketChartWidget.php on line 14
 
    Symfony\Component\ErrorHandler\Error\FatalError 
 

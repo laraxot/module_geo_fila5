@@ -18,7 +18,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditProject extends XotBaseEditRecord
 {
-    public static string $resource = ProjectResource::class;
+    protected static string $resource = ProjectResource::class;
 
     protected static ?string $navigationLabel = 'Modifica Progetto';
 

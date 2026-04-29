@@ -688,5 +688,4 @@ tests/Browser/AdminManageTicketTest.php
 ---
 
 **Ultimo aggiornamento**: 2025-10-01
-**Next Review**: 2025-11-01
 **Maintainer**: Development Team

@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditLettI extends XotBaseEditRecord
 {
-    public static string $resource = LettIResource::class;
+    protected static string $resource = LettIResource::class;
 }

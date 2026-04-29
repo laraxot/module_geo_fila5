@@ -18,7 +18,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
  */
 class ViewMyLog extends XotBaseViewRecord
 {
-    public static string $resource = MyLogResource::class;
+    protected static string $resource = MyLogResource::class;
 
     /**
      * Get the actions available for the page.

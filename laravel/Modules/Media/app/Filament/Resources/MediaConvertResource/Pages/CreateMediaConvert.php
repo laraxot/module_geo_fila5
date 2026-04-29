@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateMediaConvert extends XotBaseCreateRecord
 {
-    public static string $resource = MediaConvertResource::class;
+    protected static string $resource = MediaConvertResource::class;
 }

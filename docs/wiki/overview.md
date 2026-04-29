@@ -3,7 +3,8 @@ title: "Wiki Overview"
 module: "ptvx-project"
 type: overview
 created: "2026-04-15T08:28:53Z"
-updated: "2026-04-15T08:28:53Z"
+updated: "2026-04-29T09:15:00Z"
+qmd: "wiki overview, getting started, wiki structure, Karpathy pattern, LLM wiki"
 ---
 
 # ptvx-project Wiki Overview

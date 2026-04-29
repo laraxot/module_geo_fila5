@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditSettlement extends XotBaseEditRecord
 {
-    public static string $resource = SettlementResource::class;
+    protected static string $resource = SettlementResource::class;
 
     protected function getHeaderActions(): array
     {

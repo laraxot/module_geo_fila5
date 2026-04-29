@@ -62,7 +62,7 @@ protected string $view = 'pub_theme::filament.widgets.auth.login';
 
 ```bash
 # Verificare configurazione tema
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 php artisan config:cache
 php artisan view:cache
 ```
@@ -111,7 +111,7 @@ public function mount(): void
 ### Soluzione 5: Cache Viste
 
 ```bash
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 
 # Clear tutti i cache
 php artisan cache:clear
@@ -133,7 +133,7 @@ php artisan view:cache
 
 ```bash
 # Verificare che esista
-ls -la /var/www/_bases/base_fixcity_fila4_mono/laravel/Themes/Sixteen/resources/views/filament/widgets/auth/login.blade.php
+ls -la /var/www/_bases/base_fixcity_fila5_mono/laravel/Themes/Sixteen/resources/views/filament/widgets/auth/login.blade.php
 ```
 
 ✅ **File esiste**: Abbiamo verificato che c'è
@@ -142,7 +142,7 @@ ls -la /var/www/_bases/base_fixcity_fila4_mono/laravel/Themes/Sixteen/resources/
 
 ```bash
 # Cercare dove è definito pub_theme
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 grep -r "pub_theme" config/ app/Providers/
 ```
 

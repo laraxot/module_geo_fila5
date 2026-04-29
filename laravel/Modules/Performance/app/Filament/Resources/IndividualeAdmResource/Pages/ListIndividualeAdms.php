@@ -30,7 +30,7 @@ use function Safe\date;
 
 class ListIndividualeAdms extends ListScheda
 {
-    public static string $resource = IndividualeAdmResource::class;
+    protected static string $resource = IndividualeAdmResource::class;
 
    
 

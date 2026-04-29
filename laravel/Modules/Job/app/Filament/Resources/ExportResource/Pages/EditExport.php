@@ -9,5 +9,5 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditExport extends XotBaseEditRecord
 {
-    public static string $resource = ExportResource::class;
+    protected static string $resource = ExportResource::class;
 }
