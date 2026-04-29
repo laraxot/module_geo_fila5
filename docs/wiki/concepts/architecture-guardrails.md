@@ -9,6 +9,25 @@ related:
   - "[[Module Structure]]"
   - "[[Actions Over Services]]"
   - "[[Second Brain Operating Model]]"
+references:
+  - type: architecture
+    module: User
+    path: laravel/Modules/User/docs/wiki/index.md
+  - type: architecture
+    module: Lang
+    path: laravel/Modules/Lang/docs/wiki/index.md
+  - type: architecture
+    module: Gdpr
+    path: laravel/Modules/Gdpr/docs/wiki/index.md
+  - type: architecture
+    module: Xot
+    path: laravel/Modules/Xot/docs/wiki/index.md
+  - type: architecture
+    theme: Zero
+    path: laravel/Themes/Zero/docs/wiki/index.md
+  - type: architecture
+    theme: One
+    path: laravel/Themes/One/docs/wiki/index.md
 ---
 
 # Architecture Guardrails

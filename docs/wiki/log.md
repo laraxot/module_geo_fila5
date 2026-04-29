@@ -75,5 +75,15 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-29 19:35:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.2 as ready-for-dev
 [2026-04-29 19:40:00 UTC] [CREATE] Story 2.3: Automated Wiki Generation — Comprehensive story context for automated documentation generation from source code comments
 [2026-04-29 19:40:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.3 as ready-for-dev
-**Last Activity:** 2026-04-29 19:40:00 UTC  
-**Total Operations:** 41
+[2026-04-29 20:00:00 UTC] [CREATE] Task 2 Execution - Story 2.2: Implement Wiki → Code Reference Resolution
+[2026-04-29 20:05:00 UTC] [CREATE] docs/scripts/wiki/wiki-reference-generator.sh — Utility script to parse wiki frontmatter, generate bidirectional cross-references, maintain reference graph, and update wiki pages with module/theme links
+[2026-04-29 20:10:00 UTC] [UPDATE] Added `references` field to docs/wiki/concepts/module-structure.md with 8 key modules (User, Lang, Gdpr, Activity, Notify, Performance, Xot, Media, UI) linking to module wiki index pages
+[2026-04-29 20:10:00 UTC] [UPDATE] Added `references` field to docs/wiki/concepts/architecture-guardrails.md with 4 key modules and 2 themes linking to module/theme wiki index pages
+[2026-04-29 20:15:00 UTC] [UPDATE] Documented the current boundary between repository-owned local indexing prerequisites and client-side Kilo indexing activation
+[2026-04-29 20:25:00 UTC] [CREATE] docs/scripts/wiki/wiki-link-renderer.sh — Render wiki references as markdown/HTML with badge styling and proper link formatting
+[2026-04-29 20:30:00 UTC] [UPDATE] Fixed YAML parser in wiki-link-renderer.sh with state machine approach to correctly extract all reference blocks
+[2026-04-29 20:35:00 UTC] [UPDATE] Fixed malformed frontmatter in actions-over-services.md and added 5 module implementation references
+[2026-04-29 20:40:00 UTC] [UPDATE] Added module references to module-wiki-documentation.md (3 references: Xot, Gdpr, Activity)
+[2026-04-29 20:45:00 UTC] [VALIDATION] Tested wiki-link-renderer.sh on all Priority 1 pages — all references render correctly
+**Last Activity:** 2026-04-29 20:45:00 UTC  
+**Total Operations:** 51

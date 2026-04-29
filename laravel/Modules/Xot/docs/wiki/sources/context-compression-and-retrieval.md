@@ -20,6 +20,7 @@ related:
 - official Kilo guidance confirms that large projects should keep `AGENTS.md` concise, MCP minimal, and noisy folders excluded with `.kilocodeignore` plus `watcher.ignore`
 - repository policy keeps managed indexing disabled until the team intentionally selects a local or cloud indexing path
 - local indexing prerequisites now exist in-repo as Ollama `nomic-embed-text` plus local Qdrant, so Xot can later opt into indexing without new system setup
+- final activation of Kilo indexing is still treated as a client-side confirmation step, not yet as a pure repo config contract
 
 ## Why Xot Cares
 

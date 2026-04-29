@@ -3,15 +3,30 @@ title: Actions Over Services
 description: Pattern di architettura basato su Actions invece di Services per la logica applicativa
 tags:
   - architecture
-qmd: "actions over services, Spatie QueueableAction, business logic, Laraxot patterns"
----
   - actions
   - services
   - patterns
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-04-29
+qmd: "actions over services, Spatie QueueableAction, business logic, Laraxot patterns"
 sources:
   - docs/architecture/actions-over-services.md
+references:
+  - type: implementation
+    module: User
+    path: laravel/Modules/User/docs/wiki/index.md
+  - type: implementation
+    module: Gdpr
+    path: laravel/Modules/Gdpr/docs/wiki/index.md
+  - type: implementation
+    module: Activity
+    path: laravel/Modules/Activity/docs/wiki/index.md
+  - type: implementation
+    module: Notify
+    path: laravel/Modules/Notify/docs/wiki/index.md
+  - type: architecture
+    module: Xot
+    path: laravel/Modules/Xot/docs/wiki/index.md
 ---
 
 # Actions Over Services

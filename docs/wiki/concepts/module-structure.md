@@ -4,13 +4,38 @@ description: Convenzioni e standard per la struttura dei moduli nel progetto PTV
 tags:
   - architecture
 qmd: "module structure, directory layout, naming conventions, XotBase, nwidart modules"
----
-  - modules
-  - conventions
 created: 2026-04-15
 updated: 2026-04-15
 sources:
   - docs/architecture/modules.md
+references:
+  - type: concept
+    module: User
+    path: laravel/Modules/User/docs/wiki/index.md
+  - type: concept
+    module: Lang
+    path: laravel/Modules/Lang/docs/wiki/index.md
+  - type: concept
+    module: Gdpr
+    path: laravel/Modules/Gdpr/docs/wiki/index.md
+  - type: concept
+    module: Activity
+    path: laravel/Modules/Activity/docs/wiki/index.md
+  - type: concept
+    module: Notify
+    path: laravel/Modules/Notify/docs/wiki/index.md
+  - type: concept
+    module: Performance
+    path: laravel/Modules/Performance/docs/wiki/index.md
+  - type: concept
+    module: Xot
+    path: laravel/Modules/Xot/docs/wiki/index.md
+  - type: concept
+    module: Media
+    path: laravel/Modules/Media/docs/wiki/index.md
+  - type: concept
+    module: UI
+    path: laravel/Modules/UI/docs/wiki/index.md
 ---
 
 # Struttura dei Moduli

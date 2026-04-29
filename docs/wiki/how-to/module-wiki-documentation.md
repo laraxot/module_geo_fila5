@@ -2,7 +2,19 @@
 name: Module Wiki Documentation Guide
 description: Step-by-step guide for creating and maintaining QMD-indexed documentation in module wikis
 type: how-to
+created: 2026-04-29
+updated: 2026-04-29
 related: [qmd-search-guide.md, indexing-module-documentation.md]
+references:
+  - type: tooling
+    module: Xot
+    path: laravel/Modules/Xot/docs/wiki/index.md
+  - type: example
+    module: Gdpr
+    path: laravel/Modules/Gdpr/docs/wiki/index.md
+  - type: example
+    module: Activity
+    path: laravel/Modules/Activity/docs/wiki/index.md
 ---
 
 # Module Wiki Documentation Guide

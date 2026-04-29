@@ -82,6 +82,28 @@ curl -s http://127.0.0.1:6333/
 ollama list
 ```
 
+## Current Limitation
+
+The repository-side automation now covers the local prerequisites, but not the final Kilo-side binding for embeddings and Qdrant.
+
+Ready in the repository:
+
+- local Qdrant runtime
+- local embedding model in Ollama
+- bootstrap script
+- managed indexing explicitly disabled
+
+Still client-side sensitive:
+
+- selecting the local embedding provider inside Kilo Codebase Indexing
+- confirming whether the running Kilo client expects an explicit Qdrant endpoint or auto-detects the local store
+
+So the safe project rule is:
+
+1. keep prerequisites ready in the repo
+2. keep managed indexing disabled by default
+3. enable final indexing binding only after confirming the exact settings surface in the running Kilo client
+
 ## Operational Guidance
 
 Use Kilo with narrow prompts:

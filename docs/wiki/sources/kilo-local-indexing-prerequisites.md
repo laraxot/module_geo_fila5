@@ -49,6 +49,15 @@ The script:
 
 The repository is now ready for local indexing prerequisites, but managed indexing remains disabled in `/.kilocode/config.json` until the team explicitly chooses an indexing mode.
 
+## Important Limitation
+
+The repository now owns the infrastructure prerequisites, but the last-mile Kilo binding for embeddings plus vector store is still client-side sensitive.
+
+In practice:
+
+- prerequisites are reproducible from the repo
+- final Kilo indexing activation should be verified in the running client before being treated as stable project policy
+
 ## References
 
 - `../../ai/kilo/kilo-large-projects.md`

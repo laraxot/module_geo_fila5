@@ -20,6 +20,7 @@ related:
 - Kilo large-project guidance recommends keeping only root `AGENTS.md`, using `.kilocodeignore`, and compacting before switching between unrelated theme tasks
 - managed indexing remains disabled by repo policy until a deliberate indexing rollout exists
 - local prerequisites are now present if Theme One later needs indexing-backed retrieval
+- final Kilo-side activation is still a client-verified step
 
 ## Theme Guidance
 

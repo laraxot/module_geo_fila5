@@ -20,6 +20,7 @@ related:
 - Kilo large-project guidance recommends minimal MCP, concise `AGENTS.md`, and aggressive exclusion of runtime metadata from file access
 - managed indexing remains disabled by repo policy until a deliberate indexing rollout exists
 - local prerequisites are now present if Theme Zero later needs indexing-backed retrieval
+- final Kilo-side activation is still a client-verified step
 
 ## Theme Guidance
 

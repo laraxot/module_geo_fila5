@@ -115,6 +115,7 @@ Kilo Code deve invece:
 - ignorare `.agents`, `.kilo`, `.opencode` e cartelle runtime equivalenti
 - lasciare `managedIndexingEnabled=false` finche' non esiste una scelta esplicita tra local indexing e cloud indexing
 - se serve local indexing, il repo ha gia' `nomic-embed-text` e Qdrant locale con bootstrap script dedicato
+- l'ultimo binding di Kilo verso embeddings e vector store va comunque verificato nel client Kilo in esecuzione
 
 ## Utilizzo
 
