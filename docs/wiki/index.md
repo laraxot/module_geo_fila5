@@ -40,6 +40,7 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 ### Development Tools and Patterns
 - [kilo-code-setup](./how-to/kilo-code-setup.md) — Installation and configuration of Kilo Code AI assistant with wiki and QMD integration
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md) — Prevent token overflow: use context-mode correctly with sandbox processing
+- [wiki-search-performance](./how-to/wiki-search-performance.md) — Performance optimization: benchmarking, caching strategies, and metrics
 
 ## Sources
 
