@@ -36,14 +36,18 @@ The Media module's MCP configuration enables AI assistants to interact with:
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_<nome progetto>/laravel"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", ". progetto>/laravel"],
+||||||| parent of 53258b2 (.)
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/var/www/_bases/base_laravelpizza/laravel"],
       "description": "Access to Media module files"
     },
     "database": {
       "command": "npx",
       "args": ["-y", "@bytebase/dbhub"],
       "env": {
-        "DATABASE_URL": "sqlite:///var/www/_bases/base_<nome progetto>/laravel/database/database.sqlite"
+        "DATABASE_URL": "sqlite://. progetto>/laravel/database/database.sqlite"
+||||||| parent of 53258b2 (.)
+        "DATABASE_URL": "sqlite:///var/www/_bases/base_laravelpizza/laravel/database/database.sqlite"
       },
       "description": "SQLite database queries"
     }

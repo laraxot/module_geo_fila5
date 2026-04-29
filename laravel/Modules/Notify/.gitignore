@@ -1,248 +1,166 @@
-# Git attributes (legacy files - now handled by .gitignore)
-.gitattributes
-**/.gitattributes
+# ==============================================
+# LARAXOT MODULE NOTIFY - .GITIGNORE
+# ==============================================
+# Modulo Notify Laraxot - Template standardizzato
+# Ultimo aggiornamento: 2025-01-06
+# ==============================================
 
-# System files
-.DS_Store
-*.exe
-*.swp
-*.swo
-*.lock
-*.log
-*.tmp
-*.old
-*.old1
-*.old2
-*.old3
-*.Zone.Identifier
-
-# Dependency directories
+# ==============================================
+# DEPENDENCIES & PACKAGES
+# ==============================================
+vendor/
 /vendor/
 node_modules/
-
-# Dependency logs and cache
-npm-debug.log
-*.cache
-*.phar
+/node_modules/
+/docs/vendor/
 package-lock.json
+yarn.lock
 yarn-error.log
+composer.lock
 
-# Build directories
+# ==============================================
+# BUILD & COMPILED FILES
+# ==============================================
+/build
 /build/
+build/
+dist/
+docs/cache/
 cache/
-tmp/
 
-# Laravel specific files and directories
+# ==============================================
+# CACHE & TEMPORARY FILES
+# ==============================================
+*.cache
+*.lock
+*.phar
+*.jar
+*.tmp
+*.swp
+*.swo
+*.stackdump
+*.exe
+*:Zone.Identifier
+v8-compile-cache-*
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# ==============================================
+# LOG FILES
+# ==============================================
+*.log
+error_log
+npm-debug.log*
+npm-debug.log
+yarn-error.log*
+lerna-debug.log*
+
+# ==============================================
+# LARAVEL SPECIFIC
+# ==============================================
 bootstrap/compiled.php
 app/storage/
 public/storage
 public/hot
 public_html/storage
 public_html/hot
-public_html/assets
-public_html/build
-public_html/css
-public_html/js
-public_html/deploy/config.php
-public_html/modules
-public_html/themes
-public_html/uploads
 storage/*.key
 .env
-laravel/.env
-laravel/storage/*.key
-laravel/storage/media-library
-laravel/build
-laravel/stubs/
-laravel/composer.phar
-laravel/.phive/
-laravel/app/View/Components/vendor/
+.env.*
+!.env.example
 
-# Homestead specific files
+# ==============================================
+# ENVIRONMENT & CONFIGURATION
+# ==============================================
 Homestead.yaml
 Homestead.json
 /.vagrant
-
-# PHPUnit specific files
-.phpunit.result.cache
-
-# PHP CS Fixer
-.php-cs-fixer.cache
-
-# Git specific
-.git-blame-ignore-revs
-.git-rewrite/
-
-# temporary files
-*.stackdump
-psalm.xml
-psalm.xml.dist
-testbench.yaml
-
-# IDEs and editor-specific files
 /.idea
-/.vscode
-/.vscode-server
-.phpstorm.meta.php
-_ide_helper.php
+.phpintel
 
-# Miscellaneous ignored files
-/uploads
-.gnupg/
-.idea
-.vscode-server
-.vscode/launch.json
-.cache
-.vscode/launch.json
-
-# Miscellaneous ignored files
-uploads
-.gnupg/
-.nodenv
-.phpenv
-.ssh
-/error_docs
-/logs
-docker
-*.lock
+# ==============================================
+# GIT SPECIFIC
+# ==============================================
+.git-rewrite/
 .git-rewrite
-uploads
-laravel/stubs/
-laravel/composer.phar
-/public_html/css
-/public_html/js
-/public_html/deploy/config.php
-/public_html/storage
-public_html/modules
-public_html/themes
-/cache
-/tmp
-laravel/.phive/
-laravel/app/View/Components/vendor/
-*.phar
-public_html/uploads/
-laravel/storage/views/*
-laravel/storage/framework/sessions/*
-laravel/database/migrations/
-laravel/resources/lang/vendor/
-storage/framework/views/*
-public_html/vendor/
-laravel/database/migrations/
-./cache/
-laravel/Modules/Chart/public_html/
-laravel/database/fixcity_data.sqlite
-# bashscripts - except AI workflow scripts
-bashscripts/
-!bashscripts/ai/openviking-init.sh
-!bashscripts/ai/.gitkeep
-laravel/resources/views/vendor/
-laravel/lang/vendor/
-laravel/Themes/*/src/
-cache/models/*
-*.tar.gz
+.git-blame-ignore-revs
 
-cache/*
-.git.bfg-report/
-*.jar
-laravel/Themes/One
+# ==============================================
+# SYSTEM FILES
+# ==============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-.agents
-.ai
-.ai-context
-.claude
-.clauderules
-.cursor
-.cursor.*
-.gemini
-.devcontainer
-.windsurf
-.iflow
-.junie
-.phive
-.vscode
-.windsurf
-.windsurf.*
-.ai-context
-.clauderules
+# ==============================================
+# BACKUP FILES
+# ==============================================
+*.old
+*.old1
+*.old2
+*.old*
+*.backup
+*.backup.*
+*.bak
+*.bakcup
+*.new
 
-docs/archive/build-phpinsights/
-laravel/tools/build-phpinsights/
-.agent/
-.antigravity/
-.clinerules/
-.codex/
-.continue/
-.cursorrules/
-.opencode/
-.zai/
+# ==============================================
+# DEVELOPMENT TOOLS
+# ==============================================
+.windsurf/
+.cursor/
+.phpstorm.meta.php
 
-.antigravity
-.cline
-.clinerules
-.codebuddy
-.codex
-.continue
-.cursorrules
+# ==============================================
+# DOCUMENTATION CACHE
+# ==============================================
+docs/phpstan/
+docs/cache/
 
- .zai
-laravel/.antigravity
-laravel/.cline
-laravel/.clinerules
-laravel/.codebuddy
-laravel/.codex
-laravel/.continue
-laravel/.cursorrules
-laravel/.opencode
-laravel/.zai
+# ==============================================
+# OLD DIRECTORIES (LEGACY CLEANUP)
+# ==============================================
+resources/views/Components_old/
+resources/views/Components_old
+database/Migrations_old/
+database/Migrations_old
+database/Seeders_old/
+database/Seeders_old
+database/Factories_old/
+database/Factories_old
+database/Factories_
+database_old/
+database_old
 
-.cursor.*/
-.windsurf.*/laravel/Modules/Xot/lang/lang
-* copy*
-*copy
-*.copy
-* copy.*
-copy_*
-laravel/.cursor
-laravel/.ai
-laravel/.agents
-laravel/.windsurf
-laravel/.iflow
-.agent
-laravel/.agent
-laravel/.clauderules
-.zai
-.opencode
-laravel/.vscode
-.qwen
-laravel/.qwen
-laravel/.junie
-.grok
-laravel/.grok
-laravel/.claude
-laravel/.gemini
-laravel/.ai-context
-laravel/.phive
-# Ralph Loop - except configuration
-.ralph/
-!.ralph/prd.json
-!.ralph/README.md
-laravel/.ralph
-laravel/public/design-comuni/
-bashscripts/ai/.claude/skills/canvas-design/canvas-fonts
-*.*Zone.Identifier
-.kilo
-.gemini
-laravel/.env.testing
+# ==============================================
+# MODULE SPECIFIC - NOTIFY
+# ==============================================
+# File di configurazione locale
+config/local.php
+config/development.php
 
-# Analysis/comparison workfiles (temp scripts, outputs, screenshots at root)
-/memory-bank/
-/output/
-/segnalazione-*/
-/screenshot*.py
-/screenshot*.js
-/take_comparison.js
-/screenshot-group*.js
-/test-homepage*.js
-/*.png
-bashscripts/
-bashscripts/
+# Queue e notifiche
+storage/notifications/
+storage/queue/
+
+# File di test notifiche
+notification_test_data.json
+test_notifications.sql
+
+# ==============================================
+# END OF NOTIFY .GITIGNORE
+# ==============================================
+
+# 🚫 File specifici del progetto
+*.fila2
+*.old
+laravel
+public_html
+lang/lang/
+_docs/
+_docs/

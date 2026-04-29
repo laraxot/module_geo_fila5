@@ -1,4 +1,4 @@
-name: Activity Quality Checks
+name: Notify Quality Checks
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
       - develop
       - main
     paths:
-      - 'laravel/Modules/Activity/**'
+      - 'laravel/Modules/Notify/**'
   pull_request:
     branches:
       - develop
       - main
     paths:
-      - 'laravel/Modules/Activity/**'
+      - 'laravel/Modules/Notify/**'
 
 jobs:
   quality:
@@ -38,13 +38,13 @@ jobs:
       - name: Run PHPStan
         working-directory: laravel
         run: |
-          ./vendor/bin/phpstan analyse Modules/Activity --level=10 --memory-limit=-1 || true
+          ./vendor/bin/phpstan analyse Modules/Notify --level=10 --memory-limit=-1 || true
 
       - name: Run PHPMD
         working-directory: laravel
         run: |
           if [ -f phpmd.phar ]; then
-            php phpmd.phar Modules/Activity text cleancode,codesize,design,naming,unusedcode || true
+            php phpmd.phar Modules/Notify text cleancode,codesize,design,naming,unusedcode || true
           else
             echo "PHPMD not found, skipping..."
           fi
@@ -52,13 +52,13 @@ jobs:
       - name: Run Pint
         working-directory: laravel
         run: |
-          ./vendor/bin/pint Modules/Activity || true
+          ./vendor/bin/pint Modules/Notify || true
 
       - name: Run PHPInsights
         working-directory: laravel
         run: |
           if [ -f vendor/bin/phpinsights ]; then
-            ./vendor/bin/phpinsights analyse Modules/Activity --format=table --no-interaction || true
+            ./vendor/bin/phpinsights analyse Modules/Notify --format=table --no-interaction || true
           else
             echo "PHPInsights not found, skipping..."
           fi

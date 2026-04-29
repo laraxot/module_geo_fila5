@@ -22,6 +22,23 @@
 - 🖼️ **[Media Library](./filament.md)** - La libreria media in Filament.
 - 🛠️ **[Table Actions](./filament-table-actions.md)** - Azioni di massa su file e directory.
 
+## 📋 **Documenti Prodotto & Sviluppo**
+
+### Product
+| File | Scopo |
+|------|-------|
+| PRD.md | Product Requirements |
+| PRODUCT_ROADMAP.md | Roadmap |
+| PRODUCT_STRATEGY.md | Strategy |
+| PRODUCT_LAUNCH_PLAN.md | Launch Plan |
+
+### Development
+| File | Scopo |
+|------|-------|
+| GSD_WORKFLOW.md | GSD Workflow |
+| SPRINT_PLANNING.md | Sprint Planning |
+| USER_RESEARCH.md | User Research |
+
 ## 🧪 **Qualità e Sviluppo**
 - ✅ **[PHPStan Level 10](./phpstan-level10-fixes.md)** - Report di conformità totale.
 - 🔬 **[Testing Guidelines](./testing.md)** - Strategie per testare upload e stream.
@@ -36,6 +53,7 @@
 - [Xot](../../xot/docs/readme.md) - Base framework e Trait `HasMedia`.
 - [CloudStorage](../../cloudstorage/docs/readme.md) - Astrazione per provider cloud.
 - [Cms](../../cms/docs/readme.md) - Integrazione media nei blocchi di contenuto.
+- [AGENTS.md](../../../../AGENTS.md) - Project guidelines
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

@@ -1,229 +1,257 @@
-# 📚 FixCity Platform - Documentation Index
+# Notify Module Documentation
 
-> **Last Updated**: 2026-03-31
-> **Status**: ✅ Active  
-> **Version**: 2.0
+## Overview
+This document serves as the central index for the Notify module, providing guidance on managing notifications within a Laravel application. The Notify module handles various notification channels like email, SMS, and push notifications in a modular and reusable way.
 
----
+## Key Principles
+1. **Modularity**: The Notify module is designed to be reusable across different projects, maintaining generic functionality.
+2. **Extensibility**: Allows for customization and addition of new notification channels without altering core code.
+3. **Reliability**: Ensures notifications are delivered through robust error handling and logging.
 
-## 🎯 Quick Navigation
+## Core Features
+- **Multi-Channel Notifications**: Supports email, SMS, WhatsApp, Telegram, and more.
+- **Template Management**: Provides a system for creating and managing notification templates.
+- **Configuration**: Offers flexible configuration options for different notification providers.
 
-### For Developers
-- 🚀 [Getting Started](quick-start.md)
-- 📄 **Theme Sixteen — parity HTML `<body>`** (Design Comuni: body minimale, scope CSS su wrapper): [html-parity-body-policy.md](../laravel/Themes/Sixteen/docs/html-parity-body-policy.md)
-- 🧭 **Wizard segnalazione-crea — geolocalizzazione step 2 e `?step=`** (doc modulo + story): [ticket-wizard-frontoffice.md](../laravel/Modules/Fixcity/docs/ticket-wizard-frontoffice.md) · [story 7-33](../_bmad-output/implementation-artifacts/7-33-segnalazione-crea-step2-geolocation-use-my-location-and-step-query.md)
-- 📖 [AGENTS.md](../../AGENTS.md) - Main development guide
-- 🏗️ [Architecture](architecture/README.md)
-- 📝 [Conventions](conventions/README.md)
-- 🧪 [Testing](testing/README.md)
+## Implementation Guidelines
 
-### For Product Teams
-- 🗺️ [Product Roadmaps](roadmaps/README.md)
-- 📊 [Analytics](analytics/README.md)
-- 💡 [Feature Requests](feature-requests.md)
+### 1. Module Structure
+- The Notify module follows a standard structure with directories for models, services, providers, and templates to ensure clarity and maintainability.
 
-### For Operations
-- 🔧 [Deployment](deployment/README.md)
-- 🌐 [VHost Apache - fixcity.local](deployment/vhost-fixcity.md)
-- 📈 [Monitoring](monitoring/README.md)
-- 🔒 [Security](security/README.md)
+### 2. Notification Channels
+- Implement various channels for sending notifications, ensuring each channel is configurable and extensible.
+  ```php
+  // Example Channel Configuration
+  return [
+      'sms' => [
+          'driver' => 'netfun',
+          'api_key' => env('SMS_API_KEY'),
+      ],
+  ];
+  ```
 
-### AI Agent Tools
-- ⚡ [Superpowers Framework](superpowers.md) - Agentic skills (TDD, brainstorming, code review)
-- 🧩 [Plugins & Skills](../.opencode/PLUGINS_AND_SKILLS.md) - Full plugin inventory
+### 3. Templates
+- Use templates for consistent notification formatting across different channels.
 
----
+### 4. Error Handling
+- Implement robust error handling to manage failures in notification delivery.
 
-## 📁 Documentation Structure
+## Common Issues and Fixes
+- **Delivery Failures**: Ensure correct configuration of API keys and endpoints for each notification channel.
+- **Template Errors**: Verify template syntax and placeholders to avoid rendering issues.
+- **Performance Bottlenecks**: Use queueing for notification sending to prevent delays in user experience.
 
-```
-docs/
-├── architecture/           # System architecture docs
-├── conventions/            # Coding standards & conventions
-├── deployment/             # Deployment guides
-├── fixes/                  # Bug fixes & solutions
-├── github/                 # GitHub workflows
-├── mcp/                    # MCP configuration
-├── monitoring/             # Monitoring & logging
-├── project/                # Project configuration & vhost
-│   ├── README.md          # Project docs index
-│   └── vhost-configuration.md  # Apache vhost for fixcity.local
-├── quality/                # Quality assurance
-├── regole-critiche/        # Critical rules (Italian)
-├── rules/                  # Governance rules (English)
-│   ├── README.md          # Rules index
-│   └── vhost-governance.md  # VHost mandatory rules
-├── roadmaps/               # Product roadmaps
-├── security/               # Security documentation
-├── superpowers/            # Superpowers framework docs
-│   ├── README.md          # Overview & workflow
-│   ├── installation.md    # Installation guide
-│   ├── workflow.md        # Detailed workflow
-│   └── skills-reference.md # All skills
-├── testing/                # Testing guides
-└── index.md               # This file
-```
+## Documentation and Updates
+- Document any custom implementations or new notification channels in the relevant documentation folder.
+- Update this index if new features or significant changes are introduced to the Notify module.
 
----
+## Links to Related Documentation
+- [Architecture Overview](./architecture.md)
+- [Notification Channels Implementation](./notification_channels_implementation.md)
+- [Email Templates](./email_templates.md)
+- [SMS Implementation](./sms_implementation.md)
+- [Troubleshooting](./troubleshooting.md)
+# Indice della Documentazione - Modulo Notify
 
-## 🔥 Recent Updates
+## Panoramica
+Questo documento serve come indice centrale per il modulo Notify, fornendo una guida per la gestione delle notifiche all'interno di un'applicazione Laravel. Il modulo Notify gestisce vari canali di notifica come email, SMS e push notifications in modo modulare e riutilizzabile.
 
-### 2026-03-31
-- ✅ Superpowers framework installed and configured
-- ✅ Complete Superpowers documentation (4 files)
-- ✅ Apache vhost configuration for fixcity.local
-- ✅ VHost documentation across all layers (project, modules, themes)
-- ✅ Document root governance: public_html/
-- ✅ Governance rules created in docs/rules/
+## Principi Chiave
+1. **Modularità**: Il modulo Notify è progettato per essere riutilizzabile in diversi progetti, mantenendo funzionalità generiche
+2. **Estensibilità**: Consente personalizzazione e aggiunta di nuovi canali di notifica senza alterare il codice principale
+3. **Affidabilità**: Garantisce la consegna delle notifiche attraverso gestione robusta degli errori e logging
 
-### 2026-03-13
-- ✅ Database naming convention standardized
-- ✅ .gitattributes files removed (now in .gitignore)
-- ✅ MCP GitHub configuration added
-- ✅ GitHub Issue #5 created
-- ✅ Ollama optimization guide
+## Funzionalità Principali
+- **Notifiche Multi-Canale**: Supporta email, SMS, WhatsApp, Telegram e altro
+- **Gestione Template**: Fornisce un sistema per creare e gestire template di notifica
+- **Configurazione**: Offre opzioni di configurazione flessibili per diversi provider di notifica
 
----
+## Collegamenti Correlati
+- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Documentazione Generale PTV](../../../../../docs/readme.md)
+- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Documentazione Generale SaluteOra](../../../../../docs/readme.md)
+- [Collegamenti Documentazione](../../../../../docs/collegamenti-documentazione.md)
+- [Standard di Documentazione](../../../../../docs/documentation_standards.md)
+- [Modulo Xot](../../xot/docs/readme.md)
+- [Modulo Lang](../../lang/docs/readme.md)
+- [Modulo UI](../../ui/docs/readme.md)
 
-## 📊 Documentation Status
 
-| Category | Files | Status | Last Updated |
-|----------|-------|--------|--------------|
-| Architecture | 15+ | ✅ Active | 2026-03 |
-| Conventions | 8+ | ✅ Active | 2026-03-13 |
-| Deployment | 5+ | ✅ Active | 2026-02 |
-| Fixes | 12+ | ✅ Active | 2026-03-13 |
-| Quality | 20+ | ✅ Active | 2026-03 |
-| Testing | 10+ | ✅ Active | 2026-02 |
 
----
 
-## 🎓 Learning Paths
+## Categorie Principali
 
-### New Developer Onboarding
-1. [Quick Start](quick-start.md)
-2. [AGENTS.md](../../AGENTS.md)
-3. [Architecture Overview](architecture/overview.md)
-4. [Conventions](conventions/README.md)
-5. [First PR Guide](contributing/first-pr.md)
+### Architettura e Struttura
+- [README](./readme.md) - Panoramica generale del modulo
+- [Architettura](./architecture.md) - Architettura generale del modulo
+- [Struttura](./structure.md) - Struttura delle directory e dei componenti
+- [Modelli](./models.md) - Documentazione dei modelli Eloquent
+- [Eventi](./events.md) - Eventi e listeners
 
-### Module Developer
-1. [Module Structure](modules/structure.md)
-2. [Best Practices](modules/best-practices.md)
-3. [Testing Modules](modules/testing.md)
-4. [Documentation](modules/documentation.md)
+### Sistema Email
+- [Sistema Email Database](./database-mail-system.md) - Sistema di gestione delle email basato su database
+- [Code Email](./database_mail_queue.md) - Sistema di code per l'invio di email
+- [Template Email](./email_templates.md) - Struttura e utilizzo dei template email
+- [Best Practices Email](./email_best_practices.md) - Linee guida per le email
+- [Template Responsivi](./responsive_email_templates.md) - Implementazione di template email responsivi
 
-### DevOps Engineer
-1. [Deployment Guide](deployment/README.md)
-2. [Monitoring Setup](monitoring/setup.md)
-3. [Backup Strategy](operations/backup.md)
-4. [Disaster Recovery](operations/disaster-recovery.md)
+### Canali di Notifica
+- [Implementazione Canali](./notification_channels_implementation.md) - Implementazione dei canali di notifica
+- [SMS](./sms_implementation.md) - Implementazione del canale SMS
+- [WhatsApp](./whatsapp_channel.md) - Implementazione del canale WhatsApp
+- [Telegram](./telegram_channel.md) - Implementazione del canale Telegram
 
----
+### Filament UI
+- [Risorse Filament](./filament-resources.md) - Componenti Filament Resources
+- [Pagine Filament](./filament-pages.md) - Componenti Filament Pages
+- [Convenzioni Filament](./filament_extension_pattern.md) - Pattern di estensione per Filament
 
-## 🔍 Search Tips
+### Configurazione
+- [Struttura Config](./config_structure.md) - Struttura dei file di configurazione
+- [Configurazione SMS](./sms_config_structure.md) - Struttura della configurazione SMS
+- [Principi di Configurazione](./configurations_usage_principles.md) - Principi per l'utilizzo delle configurazioni
 
-### By Topic
-```bash
-# Search all docs
-grep -r "your-topic" docs/
+### Pattern e Architettura
+- [Pattern Factory](./factory_pattern_analysis.md) - Analisi del pattern Factory
+- [Risoluzione Dinamica delle Classi](./dynamic_class_resolution.md) - Pattern di risoluzione dinamica delle classi
+- [Queueable Actions](./queueable-action.md) - Utilizzo di Spatie Queueable Actions
 
-# Search specific category
-grep -r "your-topic" docs/architecture/
+### Standard e Traduzioni
+- [Convenzioni di Naming](./naming_conventions.md) - Standard per i nomi di file e classi
+- [Traduzioni](./translations.md) - Sistema di traduzioni
+- [Standard Traduzioni](./translation_standards.md) - Standard per le chiavi di traduzione
 
-# Search module docs
-grep -r "your-topic" laravel/Modules/*/docs/
-```
+### Testing e Qualità
+- [PHPStan Level 10](./phpstan_level10_fixes.md) - Correzioni per PHPStan Level 10
+- [Testing](./testing.md) - Strategie e approcci per il testing
 
-### By File Type
-```bash
-# Find all README files
-find docs/ -name "README.md"
+## Linee Guida per l'Implementazione
 
-# Find all roadmap files
-find docs/ -name "*roadmap.md"
+### 1. Struttura del Modulo
+Il modulo Notify segue una struttura standard con directory per modelli, servizi, provider e template per garantire chiarezza e manutenibilità.
 
-# Find all convention files
-find docs/ -name "*convention*.md"
+### 2. Canali di Notifica
+Implementare vari canali per l'invio di notifiche, assicurandosi che ogni canale sia configurabile ed estensibile.
+```php
+// Esempio Configurazione Canale
+return [
+    'sms' => [
+        'driver' => 'netfun',
+        'api_key' => env('SMS_API_KEY'),
+    ],
+];
 ```
 
----
+### 3. Template
+Utilizzare template per una formattazione coerente delle notifiche attraverso diversi canali.
 
-## 📝 Contributing to Documentation
+### 4. Gestione Errori
+Implementare una gestione robusta degli errori per gestire i fallimenti nella consegna delle notifiche.
 
-### Writing Guidelines
-1. **Use clear headings** - H1 for title, H2 for sections
-2. **Include examples** - Code blocks with language tags
-3. **Add metadata** - Last updated, status, owner
-4. **Link related docs** - Use relative paths
-5. **Keep it current** - Update when code changes
+## Problemi Comuni e Soluzioni
+- **Fallimenti di Consegna**: Assicurarsi della corretta configurazione di chiavi API e endpoint per ogni canale di notifica
+- **Errori Template**: Verificare sintassi template e placeholder per evitare problemi di rendering
+- **Colli di Bottiglia Performance**: Utilizzare il queueing per l'invio di notifiche per prevenire ritardi nell'esperienza utente
 
-### Documentation Standards
-- **Markdown**: Use GitHub-flavored markdown
-- **Language**: English (technical), Italian (comments)
-- **Format**: .md files with .md extension
-- **Location**: docs/ for project, Module/docs/ for modules
+## Documentazione e Aggiornamenti
+- Documentare qualsiasi implementazione personalizzata o nuovi canali di notifica nella cartella di documentazione pertinente
+- Aggiornare questo indice se vengono introdotte nuove funzionalità o modifiche significative al modulo Notify
+## Documentazione e Aggiornamenti
+- Documentare qualsiasi implementazione personalizzata o nuovi canali di notifica nella cartella di documentazione pertinente
+- Aggiornare questo indice se vengono introdotte nuove funzionalità o modifiche significative al modulo Notify
+## Documentazione e Aggiornamenti
+- Documentare qualsiasi implementazione personalizzata o nuovi canali di notifica nella cartella di documentazione pertinente
+- Aggiornare questo indice se vengono introdotte nuove funzionalità o modifiche significative al modulo Notify
+## Documentazione e Aggiornamenti
+- Documentare qualsiasi implementazione personalizzata o nuovi canali di notifica nella cartella di documentazione pertinente
+- Aggiornare questo indice se vengono introdotte nuove funzionalità o modifiche significative al modulo Notify
+## Documentazione e Aggiornamenti
+- Documentare qualsiasi implementazione personalizzata o nuovi canali di notifica nella cartella di documentazione pertinente
+- Aggiornare questo indice se vengono introdotte nuove funzionalità o modifiche significative al modulo Notify
 
-### Review Process
-1. Write draft
-2. Self-review
-3. Peer review
-4. Merge to main
-5. Announce in #docs channel
+## Sottocartelle
 
----
+### Mail Templates
+- [Index](./mail-templates/index.md) - Indice della documentazione sui template email
+- [Implementazione Slug](./mail-templates/mail_template_slug_implementation.md) - Implementazione del campo slug
 
-## 🛠️ Documentation Tools
+### Notifications
+- [Index](./notifications/index.md) - Indice della documentazione sulle notifiche
 
-### Generation
-- **phpDocumentor**: PHP API docs
-- **Typedoc**: TypeScript docs
-- **Mermaid**: Diagrams
+## Collegamenti alla Documentazione Correlata
+- [Panoramica Architettura](./architecture.md)
+- [Implementazione Canali Notifica](./notification_channels_implementation.md)
+- [Template Email](./email_templates.md)
+- [Implementazione SMS](./sms_implementation.md)
+- [Troubleshooting](./troubleshooting.md)
 
-### Validation
-- **markdownlint**: Markdown linting
-- **prettier**: Formatting
-- **alex**: Inclusive language
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
-### Publishing
-- **GitBook**: Internal wiki
-- **GitHub Pages**: Public docs
-- **Notion**: Team collaboration
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
----
+Ultimo aggiornamento: 14 Maggio 2025
 
-## 📞 Support
+## Risoluzione conflitti e standard
+- Il file `lang/it/notify_theme.php` è stato risolto manualmente mantenendo PSR-12, strict_types, array short syntax e solo chiavi effettive, come richiesto dagli standard PHPStan livello 10.
+- Il file `NOTIFICATION_CHANNELS_IMPLEMENTATION.md` è stato risolto manualmente mantenendo la versione più aggiornata e coerente con le best practice architetturali del modulo Notify.
+- Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
-### Getting Help
-- **Slack**: #documentation
-- **Email**: docs @fixcity.example.com
-- **GitHub**: Create issue with label `documentation`
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
-### Documentation Team
-- **Lead**: @marco76tv
-- **Contributors**: [View contributors](https://github.com/laraxot/base_fixcity_fila5/graphs/contributors)
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
----
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
-## 🔗 External Resources
+## Risoluzione Conflitti e Standard
+- **Gennaio 2025**: Risoluzione sistematica di tutti i conflitti Git nei file di documentazione:
+  - `index.md` - Unificato contenuto italiano e inglese mantenendo struttura completa
+  - `database_mail_queue.md` - Rimossi marcatori conflitto, aggiornati path di sistema
+  - `database_mail_system.md` - Puliti conflitti nelle sezioni bash e riferimenti
+  - `database_mail.md` - Risolti conflitti nei template e riferimenti esterni
+- Il file `lang/it/notify_theme.php` è stato risolto manualmente mantenendo PSR-12, strict_types, array short syntax e solo chiavi effettive, come richiesto dagli standard PHPStan livello 10
+- Il file `NOTIFICATION_CHANNELS_IMPLEMENTATION.md` è stato risolto manualmente mantenendo la versione più aggiornata e coerente con le best practice architetturali del modulo Notify
+- **Filosofia di risoluzione**: Approccio olistico con analisi manuale approfondita, mantenimento integrità architetturale, documentazione bidirezionale aggiornata
+- Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
+Ultimo aggiornamento: 14 Maggio 2025
 
-### Laravel
-- [Laravel Documentation](https://laravel.com/docs)
-- [Laracasts](https://laracasts.com)
-- [Laravel News](https://laravel-news.com)
+## Risoluzione conflitti e standard
+- Il file `lang/it/notify_theme.php` è stato risolto manualmente mantenendo PSR-12, strict_types, array short syntax e solo chiavi effettive, come richiesto dagli standard PHPStan livello 10.
+- Il file `NOTIFICATION_CHANNELS_IMPLEMENTATION.md` è stato risolto manualmente mantenendo la versione più aggiornata e coerente con le best practice architetturali del modulo Notify.
+- Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni"
 
-### PHP
-- [PHP Documentation](https://www.php.net/docs.php)
-- [PHP The Right Way](https://phptherightway.com)
-- [PSR Standards](https://www.php-fig.org/psr/)
-
-### Tools
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Docs](https://docs.github.com)
-- [Markdown Guide](https://www.markdownguide.org)
-
----
-
-**Maintainer**: @marco76tv  
-**Contact**: docs @fixcity.example.com  
-**Last Review**: 2026-03-13
+*Ultimo aggiornamento: Gennaio 2025*
+- Vedi anche: [../../../../../docs/project/README.md](../../../../../docs/project/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+- Vedi anche: [../../../../../docs/project/README.md](../../../../../docs/project/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Vedi anche: [../../../../../docs/README.md](../../../../../docs/readme.md)
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*
+- Per dettagli sulle scelte architetturali e funzionali, consultare la doc globale e la sezione "Standard e Traduzioni".
+*Ultimo aggiornamento: Gennaio 2025*

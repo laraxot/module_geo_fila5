@@ -180,19 +180,7 @@ protected function createApplication()
     $app = parent::createApplication();
     
     $app['config']->set([
-<<<<<<< Updated upstream
 'database.connections.media.database' => 'Quaeris_data_test',
-=======
-<<<<<<< HEAD
-<<<<<<< .merge_file_5ESUsX
-        'database.connections.media.database' => 'healthcare_app_data_test',
-=======
-        'database.connections.media.database' => 'ptvx_data_test',
->>>>>>> .merge_file_Tlc2vv
-=======
-'database.connections.media.database' => 'Quaeris_data_test',
->>>>>>> origin/dev
->>>>>>> Stashed changes
     ]);
     
     return $app;

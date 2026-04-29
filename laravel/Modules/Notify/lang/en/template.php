@@ -17,7 +17,7 @@ return [
             'placeholder' => 'Enter notification subject',
             'help' => 'The subject that will appear in the notification',
             'tooltip' => 'This field is required',
-            'helper_text' => 'Subject displayed in the notification (e.g. email subject)',
+            'helper_text' => 'Oggetto visualizzato nella notifica (es. oggetto email)',
             'description' => '',
         ],
         'body_text' => [
