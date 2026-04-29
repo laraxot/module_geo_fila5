@@ -16,6 +16,7 @@ export function renderControls(ctx) {
         <div class="layer-controls-overlay">
             <button class="ctrl-btn" type="button" @click=${() => ctx._toggleFullscreen()} aria-label="${ctx.isFullscreen ? (l.close_fullscreen || 'Chiudi') : (l.fullscreen || 'Fullscreen')}" title="${ctx.isFullscreen ? (l.close_fullscreen || 'Chiudi') : (l.fullscreen || 'Fullscreen')}">
                 ${ctx.isFullscreen ? geoIcon('arrows-pointing-in') : geoIcon('arrows-pointing-out')}
+                <span class="ctrl-fallback" aria-hidden="true">${ctx.isFullscreen ? '⤢' : '⛶'}</span>
             </button>
 
             <button class="ctrl-btn" type="button" @click=${() => ctx._requestGeolocation()} ?disabled=${ctx.isLocating} aria-label="${l.use_location || 'Mia posizione'}" title="${l.use_location || 'Mia posizione'}">
@@ -23,17 +24,21 @@ export function renderControls(ctx) {
                     ? html`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`
                     : geoIcon('map-pin')
                 }
+                <span class="ctrl-fallback" aria-hidden="true">◎</span>
             </button>
 
             <button class="ctrl-btn" type="button" @click=${() => ctx._switchLayer()} aria-label="${l.switch_layer || 'Cambia Layer'}" title="${l.switch_layer || 'Cambia Layer'}">
                 ${geoIcon('squares-2x2')}
+                <span class="ctrl-fallback" aria-hidden="true">▦</span>
             </button>
 
             <button class="ctrl-btn" type="button" @click=${() => ctx._zoomIn()} aria-label="${l.zoom_in || 'Zoom In'}" title="${l.zoom_in || 'Zoom In'}">
                 ${geoIcon('plus')}
+                <span class="ctrl-fallback" aria-hidden="true">+</span>
             </button>
             <button class="ctrl-btn" type="button" @click=${() => ctx._zoomOut()} aria-label="${l.zoom_out || 'Zoom Out'}" title="${l.zoom_out || 'Zoom Out'}">
                 ${geoIcon('minus')}
+                <span class="ctrl-fallback" aria-hidden="true">−</span>
             </button>
         </div>
     `;
@@ -105,25 +110,37 @@ export function zoomOut(ctx) {
 /**
  * @param {Object} ctx - CoordinatePickerField instance
  */
-export function requestGeolocation(ctx) {
+export function requestGeolocation(ctx, options = {}) {
+    const { showLoading = true } = options;
+
     if (!navigator.geolocation || ctx.isLocating) return;
-    ctx.isLocating = true;
-    ctx.requestUpdate();
+
+    if (showLoading) {
+        ctx.isLocating = true;
+        ctx.requestUpdate();
+    }
 
     navigator.geolocation.getCurrentPosition(
         (pos) => {
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
             ctx._handleMapInteraction(lat, lng, 'geolocation');
-            ctx.isLocating = false;
-            ctx.requestUpdate();
+
+            if (showLoading) {
+                ctx.isLocating = false;
+                ctx.requestUpdate();
+            }
+
             if (ctx._map) {
                 ctx._map.setView([lat, lng], Math.max(ctx._map.getZoom(), 16));
             }
         },
         () => {
-            ctx.isLocating = false;
-            ctx.requestUpdate();
+            if (showLoading) {
+                ctx.isLocating = false;
+                ctx.requestUpdate();
+            }
+
             ctx.geolocated = false;
         },
         { enableHighAccuracy: true, timeout: 5000 }

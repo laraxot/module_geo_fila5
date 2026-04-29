@@ -38,14 +38,26 @@ export const mapPickerStyles = css`
         opacity: 1;
     }
 
+    .map-picker-leaflet-pane .leaflet-container,
+    .map-picker-leaflet-pane .leaflet-pane,
+    .map-picker-leaflet-pane .leaflet-layer,
+    .map-picker-leaflet-pane .leaflet-tile,
+    .map-picker-leaflet-pane .leaflet-tile-pane {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
     .layer-controls-overlay {
         position: absolute;
         top: 1rem;
         left: 1rem;
-        z-index: var(--mp-overlay-z-index);
-        display: flex;
+        z-index: 3001 !important;
+        display: flex !important;
         flex-direction: column;
         gap: 0.75rem;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
     }
 
     .ctrl-btn {
@@ -62,7 +74,10 @@ export const mapPickerStyles = css`
         box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
-        opacity: 1;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative;
+        z-index: 3002;
     }
 
     .ctrl-btn:hover {
@@ -75,6 +90,17 @@ export const mapPickerStyles = css`
     .ctrl-btn svg {
         width: 1.25rem !important;
         height: 1.25rem !important;
+    }
+
+    .ctrl-btn .ctrl-fallback {
+        display: none;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .ctrl-btn:not(:has(svg)) .ctrl-fallback {
+        display: inline-block;
     }
 
     .search-box {
@@ -90,32 +116,56 @@ export const mapPickerStyles = css`
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         max-width: 300px;
+        width: min(300px, calc(100% - 5rem));
+        align-items: center;
     }
 
     .search-box input {
+        flex: 1;
         border: 1px solid #d1d5db;
         border-radius: 0.5rem;
         padding: 0.5rem 0.75rem;
         font-size: 0.875rem;
         width: 100%;
+        min-width: 0;
         outline: none;
+        color: #17324d;
+        background: #ffffff;
+        line-height: 1.25rem;
+    }
+
+    .search-box .ctrl-btn {
+        flex: 0 0 auto;
+        width: 2.75rem;
+        min-width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .search-box .ctrl-btn svg {
+        display: block;
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        flex: 0 0 auto;
     }
 
     .loading-overlay {
         position: absolute;
         inset: 0;
         background: rgba(255, 255, 255, 0.7);
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         z-index: 2000;
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
         transition: opacity 0.3s;
     }
 
     .loading-overlay.active {
+        display: flex;
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
     }
 

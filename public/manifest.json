@@ -1,13 +1,13 @@
 {
-  "_geo-heroicons-BUYAHFr5.css": {
-    "file": "assets/geo-heroicons-BUYAHFr5.css",
-    "src": "_geo-heroicons-BUYAHFr5.css"
+  "_map-picker-marker-config-BUYAHFr5.css": {
+    "file": "assets/map-picker-marker-config-BUYAHFr5.css",
+    "src": "_map-picker-marker-config-BUYAHFr5.css"
   },
-  "_geo-heroicons-Pgpx0nwN.js": {
-    "file": "assets/geo-heroicons-Pgpx0nwN.js",
-    "name": "geo-heroicons",
+  "_map-picker-marker-config-Ckw7hrjZ.js": {
+    "file": "assets/map-picker-marker-config-Ckw7hrjZ.js",
+    "name": "map-picker-marker-config",
     "css": [
-      "assets/geo-heroicons-BUYAHFr5.css"
+      "assets/map-picker-marker-config-BUYAHFr5.css"
     ],
     "assets": [
       "assets/map-picker-marker-fallback-Bu_stv-I.svg",
@@ -38,30 +38,30 @@
     "isEntry": true
   },
   "resources/js/components/coordinate-picker-lit.js": {
-    "file": "assets/coordinate-picker-lit-Bc5ynWtL.js",
+    "file": "assets/coordinate-picker-lit-CzG6hFvo.js",
     "name": "coordinate-picker-lit",
     "src": "resources/js/components/coordinate-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_geo-heroicons-Pgpx0nwN.js"
+      "_map-picker-marker-config-Ckw7hrjZ.js"
     ]
   },
   "resources/js/components/geopoint-picker-lit.js": {
-    "file": "assets/geopoint-picker-lit-Dtym1AYM.js",
+    "file": "assets/geopoint-picker-lit-B7mDnSrs.js",
     "name": "geopoint-picker-lit",
     "src": "resources/js/components/geopoint-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_geo-heroicons-Pgpx0nwN.js"
+      "_map-picker-marker-config-Ckw7hrjZ.js"
     ]
   },
   "resources/js/components/map-picker-lit.js": {
-    "file": "assets/map-picker-lit-D-DWQQkp.js",
+    "file": "assets/map-picker-lit-CFlSVtAH.js",
     "name": "map-picker-lit",
     "src": "resources/js/components/map-picker-lit.js",
     "isEntry": true,
     "imports": [
-      "_geo-heroicons-Pgpx0nwN.js"
+      "_map-picker-marker-config-Ckw7hrjZ.js"
     ]
   },
   "resources/svg/map-picker-marker-fallback.svg": {
