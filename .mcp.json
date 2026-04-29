@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "qmd": {
+      "command": "qmd",
+      "args": [
+        "mcp"
+      ],
+      "env": {}
+    },
+    "token-optimizer": {
+      "command": "${PWD}/bashscripts/mcp/node_modules/.bin/token-optimizer-mcp",
+      "args": [],
+      "env": {
+        "TOKEN_OPTIMIZER_CACHE_DIR": "${PWD}/.claude/token-optimizer-cache"
+      }
+    }
+  }
+}

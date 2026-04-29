@@ -20,6 +20,8 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [second-brain-operating-model](./concepts/second-brain-operating-model.md) — operational model for project memory
 - [second-brain-continuous-improvement](./concepts/second-brain-continuous-improvement.md) — continuous maintenance loop for root, module, and theme docs
 - [second-brain-audit-checks](./concepts/second-brain-audit-checks.md) — reusable lint checks for wiki health and retrieval quality
+- [context-mode-plugin](./concepts/context-mode-plugin.md) — FTS5-based context compression for managing token overflow in large projects
+- [context-mode-cli-reference](./concepts/context-mode-cli-reference.md) — Quick reference for all context-mode commands and usage patterns
 
 ## Sources
 
@@ -29,3 +31,4 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [root-bmad-docs](./sources/root-bmad-docs.md) — summary of the root BMAD docs cluster
 - [ingest-backlog](./sources/ingest-backlog.md) — prioritized ingest backlog with token-cost estimates (Story 1-4)
 - [second-brain-external-benchmarks](./sources/second-brain-external-benchmarks.md) — external benchmarks mapped to repository-local second-brain operations
+- [context-compression-mcp-setup](./sources/context-compression-mcp-setup.md) — setup summary for MCP-based prompt compression in Claude Code
