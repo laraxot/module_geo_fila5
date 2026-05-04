@@ -13,10 +13,15 @@ class CoordinatePicker extends Field
     use InteractsWithWire;
 
     public ?string $latitudeColumn = 'latitude';
+
     public ?string $longitudeColumn = 'longitude';
+
     public int $zoom = 13;
+
     public bool $showFullscreenButton = true;
+
     public bool $showLocateButton = true;
+
     public bool $enableReverseGeocoding = false;
 
     protected string $view = 'geo::filament.forms.components.coordinate-picker';

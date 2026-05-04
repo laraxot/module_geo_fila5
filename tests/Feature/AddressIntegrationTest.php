@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Feature;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Geo\Enums\AddressTypeEnum;
+use Modules\Geo\Tests\TestCase;
 
 /**
  * In-memory Address tests (no factories / DB / container).
@@ -16,7 +17,7 @@ use Modules\Geo\Enums\AddressTypeEnum;
 /**
  * Build an in-memory Address-like object with sane defaults.
  *
- * @param array<string, mixed> $overrides
+ * @param  array<string, mixed>  $overrides
  */
 function makeAddress(array $overrides = []): object
 {
@@ -161,7 +162,7 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if (true === $addr->is_primary) {
+            if ($addr->is_primary === true) {
                 $primary = $addr;
                 break;
             }
