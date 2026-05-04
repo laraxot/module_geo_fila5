@@ -13,7 +13,7 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\RouteData;
 
 beforeEach(function () {
-    $this->action = new OptimizeRouteAction;
+    $this->action = new OptimizeRouteAction();
 });
 
 it('throws exception when api key is not configured', function (): void {

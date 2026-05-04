@@ -12,7 +12,7 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 beforeEach(function () {
-    $action = new GetCoordinatesByAddressAction;
+    $action = new GetCoordinatesByAddressAction();
 });
 
 it('returns null for empty address', function (): void {
