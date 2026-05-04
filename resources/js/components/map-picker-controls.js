@@ -11,9 +11,19 @@ import { geoIcon } from './geo-heroicons.js';
  */
 export function renderControls(ctx) {
     const l = ctx.labels || {};
+    const hasSearchToggle = typeof ctx._toggleSearch === 'function';
 
     return html`
         <div class="layer-controls-overlay">
+            ${hasSearchToggle ? html`
+                <button class="ctrl-btn" type="button"
+                    @click=${() => ctx._toggleSearch()}
+                    aria-label="${l.search || 'Cerca indirizzo'}"
+                    title="${l.search || 'Cerca indirizzo'}">
+                    ${geoIcon('magnifying-glass')}
+                    <span class="ctrl-fallback" aria-hidden="true">🔍</span>
+                </button>
+            ` : ''}
             <button class="ctrl-btn" type="button" @click=${() => ctx._toggleFullscreen()} aria-label="${ctx.isFullscreen ? (l.close_fullscreen || 'Chiudi') : (l.fullscreen || 'Fullscreen')}" title="${ctx.isFullscreen ? (l.close_fullscreen || 'Chiudi') : (l.fullscreen || 'Fullscreen')}">
                 ${ctx.isFullscreen ? geoIcon('arrows-pointing-in') : geoIcon('arrows-pointing-out')}
                 <span class="ctrl-fallback" aria-hidden="true">${ctx.isFullscreen ? '⤢' : '⛶'}</span>
@@ -62,19 +72,36 @@ export function switchLayer(ctx) {
     if (nextLayerObj && !nextLayerObj._map) nextLayerObj.addTo(ctx._map);
 
     ctx._currentLayer = nextLayer;
+    refreshMapSize(ctx, [0, 120, 300]);
 }
 
 /**
  * @param {Object} ctx - CoordinatePickerField instance
  */
-export function toggleFullscreen(ctx) {
-    ctx.isFullscreen = !ctx.isFullscreen;
+export async function toggleFullscreen(ctx) {
+    const container = getMapContainer(ctx);
+    const entering = !ctx.isFullscreen;
 
-    if (ctx.isFullscreen) {
+    if (entering) {
+        ctx._previousBodyOverflow = document.body.style.overflow || '';
+        ctx._previousHtmlOverflow = document.documentElement.style.overflow || '';
+        document.documentElement.classList.add('geo-map-fullscreen-active');
         document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
+        if (container?.requestFullscreen && !document.fullscreenElement) {
+            await container.requestFullscreen().catch(() => undefined);
+        }
     } else {
-        document.body.style.overflow = '';
+        if (document.fullscreenElement && document.exitFullscreen) {
+            await document.exitFullscreen().catch(() => undefined);
+        }
+
+        restoreFullscreenDocumentState(ctx);
     }
+
+    ctx.isFullscreen = entering;
+    ctx.requestUpdate?.();
 
     ctx.dispatchEvent(new CustomEvent('fullscreen-changed', {
         detail: { isFullscreen: ctx.isFullscreen },
@@ -82,9 +109,27 @@ export function toggleFullscreen(ctx) {
         composed: true,
     }));
 
-    if (ctx._map) {
-        setTimeout(() => ctx._map?.invalidateSize(), 350);
+    refreshMapSize(ctx, [0, 160, 380, 700]);
+}
+
+export function syncFullscreenState(ctx) {
+    const container = getMapContainer(ctx);
+    const active = document.fullscreenElement === container;
+
+    if (document.fullscreenElement && !active) {
+        return;
     }
+
+    if (ctx.isFullscreen !== active) {
+        ctx.isFullscreen = active;
+        ctx.requestUpdate?.();
+    }
+
+    if (!active) {
+        restoreFullscreenDocumentState(ctx);
+    }
+
+    refreshMapSize(ctx, [0, 160, 380]);
 }
 
 /**
@@ -93,7 +138,7 @@ export function toggleFullscreen(ctx) {
 export function zoomIn(ctx) {
     if (ctx._map) {
         ctx._map.zoomIn();
-        setTimeout(() => ctx._map?.invalidateSize(), 150);
+        refreshMapSize(ctx, [150]);
     }
 }
 
@@ -103,7 +148,7 @@ export function zoomIn(ctx) {
 export function zoomOut(ctx) {
     if (ctx._map) {
         ctx._map.zoomOut();
-        setTimeout(() => ctx._map?.invalidateSize(), 150);
+        refreshMapSize(ctx, [150]);
     }
 }
 
@@ -124,7 +169,9 @@ export function requestGeolocation(ctx, options = {}) {
         (pos) => {
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
-            ctx._handleMapInteraction(lat, lng, 'geolocation');
+            if (typeof ctx._handleMapInteraction === 'function') {
+                ctx._handleMapInteraction(lat, lng, 'geolocation');
+            }
 
             if (showLoading) {
                 ctx.isLocating = false;
@@ -132,7 +179,10 @@ export function requestGeolocation(ctx, options = {}) {
             }
 
             if (ctx._map) {
-                ctx._map.setView([lat, lng], Math.max(ctx._map.getZoom(), 16));
+                const locateZoom = 12;
+                ctx._map.setView([lat, lng], locateZoom, { animate: false });
+                ctx._isUserCentered = true;
+                refreshMapSize(ctx, [150]);
             }
         },
         () => {
@@ -145,4 +195,27 @@ export function requestGeolocation(ctx, options = {}) {
         },
         { enableHighAccuracy: true, timeout: 5000 }
     );
+}
+
+function getMapContainer(ctx) {
+    return ctx.renderRoot?.querySelector?.('.map-container')
+        || ctx.querySelector?.('.map-container')
+        || null;
+}
+
+function restoreFullscreenDocumentState(ctx) {
+    document.documentElement.classList.remove('geo-map-fullscreen-active');
+    document.body.style.overflow = ctx._previousBodyOverflow || '';
+    document.documentElement.style.overflow = ctx._previousHtmlOverflow || '';
+}
+
+function refreshMapSize(ctx, delays = [0]) {
+    if (typeof ctx._refreshMapSize === 'function') {
+        ctx._refreshMapSize(delays);
+        return;
+    }
+
+    delays.forEach((delay) => {
+        setTimeout(() => ctx._map?.invalidateSize(), delay);
+    });
 }

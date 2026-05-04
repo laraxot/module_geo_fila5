@@ -1,8 +1,9 @@
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import 'leaflet/dist/leaflet.css';
-import { mapPickerStyles } from './map-picker-styles.js';
+import { mapPickerStylesText } from './map-picker-styles.js';
 import { renderControls, switchLayer, toggleFullscreen, zoomIn, zoomOut, requestGeolocation } from './map-picker-controls.js';
+import { renderSearch } from './map-picker-search.js';
 import { initMap, handleMapInteraction, updateMarker, syncMarkerToProperties } from './map-picker-events.js';
 import { refreshMapSize, bindRefreshHandler, cleanupObservers } from './map-picker-resize.js';
 import { resolveStateCoordinates } from './geo-location-utils.js';
@@ -23,6 +24,10 @@ export class CoordinatePickerField extends LitElement {
         labels: { type: Object },
         provider: { type: String },
         showSearch: { type: Boolean, attribute: 'show-search' },
+        searchQuery: { type: String, state: true },
+        searchResults: { type: Array, state: true },
+        showSearchResults: { type: Boolean, state: true },
+        isSearching: { type: Boolean, state: true },
         _isProgrammaticUpdate: { type: Boolean, state: true },
     };
 
@@ -42,7 +47,11 @@ export class CoordinatePickerField extends LitElement {
         this.geolocated = false;
         this.labels = {};
         this.provider = 'osm';
-        this.showSearch = false;
+        this.showSearch = true;
+        this.searchQuery = '';
+        this.searchResults = [];
+        this.showSearchResults = false;
+        this.isSearching = false;
         this._isProgrammaticUpdate = false;
         this._layers = {};
         this._marker = null;
@@ -60,7 +69,7 @@ export class CoordinatePickerField extends LitElement {
         return html`
             <style>
                 coordinate-picker-lit { display: block; width: 100%; height: 100%; min-height: 200px; }
-                ${mapPickerStyles}
+                ${mapPickerStylesText}
                 .map-container { min-height: 200px; }
                 .map-container.is-fullscreen { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100vh !important; border: none !important; border-radius: 0 !important; z-index: 9999 !important; }
                 .map-container.is-fullscreen .map-picker-leaflet-pane { height: 100vh !important; }
@@ -68,6 +77,7 @@ export class CoordinatePickerField extends LitElement {
             </style>
             <div class="map-container ${this.isFullscreen ? 'is-fullscreen' : ''}" style="--map-height: ${this.height}">
                 ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
+                ${this.showSearch ? renderSearch(this) : ''}
                 ${renderControls(this)}
                 <div class="loading-overlay ${this.isLocating ? 'active' : ''}">
                     <div class="spinner"></div>
@@ -113,6 +123,25 @@ export class CoordinatePickerField extends LitElement {
     _syncMarkerToProperties() { syncMarkerToProperties(this); }
     _refreshMapSize() { refreshMapSize(this); }
     _initMap() { initMap(this); }
+
+    _handleSearchSelection(result, lat, lng) {
+        this.state = {
+            ...(this.state || {}),
+            lat,
+            lng,
+            latitude: lat,
+            longitude: lng,
+            address: result.display_name || this.state?.address || '',
+        };
+
+        this._handleMapInteraction(lat, lng, 'search');
+        this._map?.setView([lat, lng], Math.max(this._map.getZoom(), 16));
+    }
+
+    setCoordinates(lat, lng, source = 'programmatic') {
+        this._handleMapInteraction(lat, lng, source);
+        this._map?.setView([lat, lng], Math.max(this._map.getZoom(), this.zoom));
+    }
 }
 
 if (!customElements.get('coordinate-picker-lit')) {

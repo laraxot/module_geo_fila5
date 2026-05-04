@@ -27,10 +27,6 @@ $labels = [
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div x-data="{
             state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
-            searchQuery: '',
-            searchResults: [],
-            isSearching: false,
-            showResults: false,
             isFullscreen: false,
             _suppressUpdate: false,
 
@@ -79,48 +75,14 @@ $labels = [
                 this.isFullscreen = event.detail.isFullscreen;
             },
 
-            async searchAddress() {
-                if (this.searchQuery.length < 3) {
-                    this.showResults = false;
-                    return;
-                }
-                this.isSearching = true;
-                try {
-                    this.searchResults = await this.$wire.callSchemaComponentMethod(@js($key), 'searchAddress', { query: this.searchQuery }) || [];
-                    this.showResults = this.searchResults.length > 0;
-                } finally {
-                    this.isSearching = false;
-                }
-            },
-
-            selectSearchResult(result) {
-                const lat = parseFloat(result.lat);
-                const lon = parseFloat(result.lon);
-                this.showResults = false;
-                this.searchQuery = result.display_name;
-
-                const picker = this.$el.querySelector('coordinate-picker-lit');
-                if (picker) {
-                    picker.setCoordinates(lat, lon, 'search');
-                }
-                
-                this.state = { 
-                    ...(this.state ?? {}), 
-                    lat: lat, 
-                    lng: lon,
-                    latitude: lat,
-                    longitude: lon,
-                    address: result.display_name 
+            handleAddressSelected(event) {
+                const address = event.detail.address || event.detail.result?.display_name || '';
+                if (!address) return;
+                this.state = {
+                    ...(this.state ?? {}),
+                    address: address,
                 };
-                this.$wire.set(@js($statePath . '.lat'), lat, false);
-                this.$wire.set(@js($statePath . '.lng'), lon, false);
-                this.$wire.set(@js($statePath . '.latitude'), lat, false);
-                this.$wire.set(@js($statePath . '.longitude'), lon, false);
-                this.$wire.set(@js($statePath . '.address'), result.display_name, false);
-                
-                @if($field->hasReverseGeocoding())
-                void this.reverseGeocode(lat, lon);
-                @endif
+                this.$wire.set(@js($statePath . '.address'), address, false);
             },
 
             async reverseGeocode(lat, lng) {
@@ -138,43 +100,8 @@ $labels = [
         class="coordinate-picker-field-wrapper space-y-2"
         @coords-changed.stop="handleCoordsChanged($event)"
         @fullscreen-changed.stop="handleFullscreenChanged($event)"
+        @address-selected.stop="handleAddressSelected($event)"
     >
-        {{-- Search Input --}}
-        <div class="relative w-full">
-            <div class="relative">
-                <input type="text"
-                    x-model="searchQuery"
-                    @input.debounce.500ms="searchAddress()"
-                    @keydown.escape="showResults = false"
-                    placeholder="{{ __('geo::coordinate-picker.search_placeholder') }}"
-                    autocomplete="off"
-                    class="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                >
-                <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
-                    <x-heroicon-o-magnifying-glass class="h-4 w-4" />
-                </span>
-                <span x-show="isSearching" class="absolute inset-y-0 right-3 flex items-center">
-                    <svg class="h-4 w-4 animate-spin text-gray-400" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                    </svg>
-                </span>
-            </div>
-
-            <ul x-show="showResults"
-                x-transition
-                class="absolute z-50 mt-1 w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg dark:bg-gray-800 dark:border-gray-700"
-                @click.outside="showResults = false"
-            >
-                <template x-for="(result, idx) in searchResults" :key="idx">
-                    <li class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 dark:text-gray-300 dark:hover:bg-primary/20"
-                        @click="selectSearchResult(result)"
-                        x-text="result.display_name"
-                    ></li>
-                </template>
-            </ul>
-        </div>
-
         {{-- Lit Component Map --}}
         <div wire:ignore class="map-container-wrapper overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700" 
              :style="{ height: isFullscreen ? '100vh' : '{{ $field->getHeight() }}' }">

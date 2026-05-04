@@ -1,490 +1,223 @@
-# Geo Map Picker Prompt (Canonical)
+# GEO MAP PICKER PROMPT (CANONICAL) — v2.1.123.ac1
 
 > STACK: TailwindCSS + AlpineJS + Lit + Livewire + Filament v5 + Laraxot
 > PRINCIPLES: DRY + KISS + Clean Code + Single Source of Truth
 > TARGET: mobile-first, responsive, i18n
 > BRANCH: `dev` only
 > REFERENCE: https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
+> REFERENCE MAP: farmshops.eu direktvermarkter.js
 
 ---
 
-## 0. Non-Negotiable Guard
+## 0. Non-Negotiable Guards
 
-In `laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php` the commented form component alternatives:
+### 0.1 Widget Components Persistence
+In `laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php`, the following commented form component alternatives **MUST** remain in place:
+- `CoordinatePicker`, `GeopointPicker`, `LatitudeLongitudeInput`, `LeafletMarkerMapInput`, `LocationPicker`, `MapLocationInput`, `MapPicker`, `MapPositioner`, `PlacePicker`.
+**Never delete them during cleanup or refactor.**
 
-- `CoordinatePicker`
-- `GeopointPicker`
-- `LatitudeLongitudeInput`
-- `LeafletMarkerMapInput`
-- `LocationPicker`
-- `MapLocationInput`
-- `MapPicker`
-- `MapPositioner`
-- `PlacePicker`
+### 0.2 Canonical Web Root
+The Document Root is strictly: `/var/www/_bases/base_fixcity_fila5/public_html`.
+- **NEVER** use `/laravel/public/` for asset deployment or references.
+- All Vite/Mix builds must deploy to `public_html/assets/geo/`.
 
-**MUST remain in place even when commented. Never delete them during cleanup or refactor.**
-
-Verified target URLs:
-- Frontoffice wizard: http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step
-- Admin backoffice: http://127.0.0.1:8000/fixcity/admin/tickets/create
+### 0.3 Git Forward-Only Discipline
+- **NEVER** revert or reset old versions.
+- Study history for context, but **always roll fixes forward** with new commits.
+- This preserves AI context and ensures a linear audit trail.
 
 ---
 
 ## 1. Business Goal
 
-Standardize Geo Filament fields so they are stable, reusable, and simple in both frontoffice and backoffice.
-
-Required outcomes:
-
-- one real Filament state path, usually `location`
-- canonical persistence on `location`
-- `location` stored as JSON/array cast on the owner model when a real column exists
-- backward compatibility with `latitude` and `longitude` columns when they exist
-- UI and JS aligned with Leaflet naming `lat` / `lng`
-- reusable sibling components, not a hierarchy
+Standardize Geo Filament fields and visualizers to be stable, reusable, and simple.
+- One canonical state path: `location` (JSON/array).
+- DB Sync: `latitude = location.lat`, `longitude = location.lng` (synced explicitly).
+- Shared logic via `HasCoordinatePicker` trait.
 
 ---
 
 ## 2. Canonical Data Contract
 
-`CoordinatePicker::make('location')` must work on a single composite payload.
-
-Canonical payload:
-
+`CoordinatePicker::make('location')` uses a single composite payload:
 ```json
 {
   "lat": 45.4642,
   "lng": 9.19,
-  "address": "Via Roma 1, Milano, Italia",
+  "address": "...",
   "provider": "nominatim",
-  "address_details": {},
-  "street": "",
-  "street_number": "",
-  "city": "",
-  "postcode": "",
-  "state": "",
-  "province": "",
-  "country": "",
-  "country_code": "",
-  "suburb": "",
-  "display_name": "",
+  "street": "...",
+  "street_number": "...",
+  "city": "...",
+  "postcode": "...",
   "raw": {}
 }
 ```
-
 Rules:
-
-- UI, Alpine, Lit, and Leaflet use `lat` and `lng`
-- legacy DB sync remains:
-  - `latitude = location.lat`
-  - `longitude = location.lng`
-- if input arrives as `latitude` / `longitude`, normalize once
-- do not maintain parallel coordinate contracts longer than necessary
+- Use `lat` / `lng` for UI, Alpine, Lit, and Leaflet.
+- Normalize legacy `latitude` / `longitude` input once at the trait/Alpine boundary.
 
 ---
 
 ## 3. Architectural Rules
 
-- Every Geo field extends `Modules\Xot\Filament\Forms\Components\XotBaseField`
-- `CoordinatePicker` uses one unified `statePath`
-- Geo fields are siblings, never deep inheritance
-- `CoordinatePicker.php` should stay thin and document its runtime Blade owner in comments
-- shared config and server methods live in `HasCoordinatePicker`
-- Livewire is server authority for persistence, geocoding, and reverse geocoding
-- Alpine is a thin adapter only
-- Lit handles map UI and emits semantic events
-- if a JS file exceeds about 200 lines, split it into smaller helpers/modules
+- All fields extend `Modules\Xot\Filament\Forms\Components\XotBaseField`.
+- Sibling components, never deep inheritance.
+- **ESM Plugin Safety**: ALWAYS set `window.L = L` before importing Leaflet plugins (`markercluster`, `heat`).
+- **File Limits**: If a JS file exceeds 200 lines, extract `layers.js`, `controls.js`, `events.js`, `geolocation.js`.
 
 ---
 
-## 4. Filament Custom Field Contract
+## 4. UX & Responsive Requirements
 
-Inside the Blade field view:
+### 4.1 Visualizer Parity (farmshops.eu)
+- **Marker Clustering (LOD)**:
+    - Zoom < 8: Show count circle only.
+    - Zoom >= 8: Show count with category dots (color from `properties.type_color`).
+    - `maxClusterRadius`: 80px (<12) / 45px (>=12).
+- **Rich Popups**: Lazy AJAX fetch to `/api/ticket-details/{id}` on marker click.
 
-- read state using `$getStatePath()`
-- obey Filament state binding modifiers
-- use `$getKey()` with `callSchemaComponentMethod()`
-- keep Leaflet isolated from Livewire DOM churn
+### 4.2 Controls & Geolocation
+- Mandatory: Fullscreen, Geolocation, Layer Switcher (4+ layers), Zoom +/-.
+- **Geolocation-First**: Auto-center on user position at map load (zoom 12) if coords are null.
+- Fallback: `fitBounds` on dataset or default center `[41.9028, 12.4964]`.
 
-Do not:
-
-- invent alternate ids for schema method calls
-- duplicate state into extra Alpine variables without reason
-- bind the map in ways that create feedback loops
-
----
-
-## 5. Owner Model Persistence
-
-For the owner model, for example `Ticket`:
-
-1. `location` must be in `$fillable`
-2. `location` must be cast as `array` or JSON equivalent when the column exists
-3. `location` is the source of truth
-4. `latitude` and `longitude` remain only for retrocompatibility
-5. sync legacy columns explicitly during save/hydration
-
-Expected sync:
-
-```php
-$model->latitude = $location['lat'] ?? null;
-$model->longitude = $location['lng'] ?? null;
-```
-
-If the table does not have a physical `location` column yet, the field contract still stays centered on `location`, and the bridging logic must map it safely to existing persistence columns.
+### 4.3 Responsive
+- Map height: `50dvh` mobile / `60vh` tablet / configurable desktop.
+- Touch targets: at least `44x44`.
+- **Search**: Box above map; always visible on mobile; 500ms debounce.
 
 ---
 
-## 6. UX Minimum Requirements
+## 5. Performance & Resource Guards
 
-Required map controls:
-
-- fullscreen toggle
-- explicit geolocation button
-- layer switcher with at least 4 layers
-- zoom in
-- zoom out
-- click-to-set marker
-- draggable marker with update on `dragend`
-
-Required address search:
-
-- search box above the map
-- always visible on mobile
-- debounce at `500ms`
-- server-side search through Livewire
-- max 5 results
-- selecting a result updates marker, center, and full `location` payload
-
-Required responsive behavior:
-
-- mobile touch targets at least `44x44`
-- mobile search remains visible
-- map height responsive, e.g. `50dvh` mobile, `60vh` tablet, configurable desktop
-- invalidate Leaflet size on resize, wizard step visibility, and fullscreen transitions
-
-Required structured address data:
-
-- `address`
-- `address_details`
-- `street`
-- `street_number`
-- `city`
-- `postcode`
-- `state`
-- `province`
-- `country`
-- `country_code`
-- `suburb`
-
-Normalized source aliases accepted during mapping:
-
-- `street` / `road`
-- `street_number` / `house_number`
-- `city` / `town` / `municipality`
-- `province` / `county`
-- `suburb` / `city_district` / `neighbourhood`
+- Update Livewire on `click`, `dragend`, search select only (NEVER on `mousemove` or continuous drag).
+- **MutationObserver**: Depth >= 12 ancestors for Filament 5 wizard x-show detection.
+- `invalidateSize()` with multi-delays: `[0, 80, 180, 350, 700, 1200]`.
 
 ---
 
-## 7. Search and Reverse Geocoding
+## 6. i18n & Accessibility
 
-Server-side only:
-
-- `searchAddress(string $query): array`
-- `reverseGeocode(float $lat, float $lng): ?array`
-
-Rules:
-
-- never call Nominatim directly from browser JS
-- always send a valid `User-Agent`
-- respect rate limiting
-- fail silently for UX, but keep code observable and testable
-- prefer scoped search such as `countrycodes=it` when appropriate
-- event payload emitted by the Lit map should be canonical Leaflet-style:
-
-```js
-{
-  lat: 45.4642,
-  lng: 9.19,
-  source: 'click'
-}
-```
-
-- if temporary compatibility with `latitude` / `longitude` is needed, normalize it once in Alpine or in the shared trait, not across every layer
+- **ZERO** hardcoded strings. All labels from `geo::map` lang files passed as JSON.
+- ARIA: Explicit labels for all buttons, tab navigation logic, polite live regions.
+- Keyboard: ESC closes search results and fullscreen.
 
 ---
 
-## 8. i18n Requirements
-
-- never hardcode user-facing strings in JS or Blade
-- all visible labels come from Geo lang files
-- minimum locales: `it` and `en`
-- pass translated labels from Blade to Lit as JSON
-
-Useful key families:
-
-- `search_placeholder`
-- `use_my_location`
-- `locating`
-- `fullscreen`
-- `close_fullscreen`
-- `zoom_in`
-- `zoom_out`
-- `search_no_results`
-- `location_error`
-- `geocode_error`
-- `layers.street`
-- `layers.humanitarian`
-- `layers.satellite`
-- `layers.topographic`
-
----
-
-## 9. Performance and Loop Guards
-
-- never update Livewire on `mousemove`
-- never update Livewire during drag
-- update only on `click`, `dragend`, explicit geolocation success, and search selection
-- use a guard such as `_suppressUpdate` to prevent re-entrant loops
-- avoid duplicated normalize/mapping logic across PHP, Blade, Alpine, and Lit
-
----
-
-## 10. Accessibility
-
-- all map buttons must use `type="button"`
-- all map buttons must include `aria-label` and `title`
-- ESC closes dropdown and fullscreen
-- keep a logical tab order
-- include a polite live region for coordinates and resolved address
-- search input should expose `aria-autocomplete`, `aria-controls`, and `aria-expanded`
-
----
-
-## 11. Simplification Mandate
-
-If `coordinate-picker-lit.js` grows too much:
-
-- extract `layers`
-- extract `controls`
-- extract `events`
-- extract `geolocation`
-- extract `resize / invalidate`
-- extract location normalization helpers
-
-Keep the main Lit file as orchestration, not as a monolith.
-
-Also:
-
-- do not duplicate shared options across multiple pickers
-- move reusable behavior into `HasCoordinatePicker` or shared JS helpers
-- preserve local assets and avoid CDN drift
-
----
-
-## 12. Quality Gates
-
-For modified files always run:
-
-- `phpstan`
-- `phpmd`
-- `phpinsights`
-- `pest`
-- `playwright`
-
-Verification scope must include:
-
-- frontoffice wizard map
-- admin/backoffice map
-- search behavior
-- reverse geocoding behavior
-- fullscreen and resize behavior
-- legacy `latitude` / `longitude` synchronization
-
----
-
-## 13. Documentation Workflow
-
-Before and after significant changes:
-
-1. study existing docs and wiki in `Modules/Geo` and related modules/themes
-2. align implementation with current project architecture
-3. update module docs
-4. update theme docs when UI contracts change
-5. update wiki index/log and reusable rules
-
-Do not create forbidden doc structures.
-
----
-
-## 14. Bad Practices (Extended)
+## 7. Bad Practices (Zero Tolerance)
 
 | Avoid | Use Instead | Why |
 |---|---|---|
-| `LatitudeLongitudeInput extends CoordinatePicker` | sibling pattern with shared trait | deep inheritance breaks DRY and makes overrides unpredictable |
-| `id="map"` or `document.getElementById('map')` | `this.querySelector('.map-container')` | IDs are globally unique; multiple maps per page or wizard steps cause conflicts |
-| direct Nominatim calls from browser JS | Livewire server methods `searchAddress()` / `reverseGeocode()` | exposes IP to third party, bypasses User-Agent policy, violates Nominatim ToS |
-| hardcoded UI strings in JS or Blade | Geo lang files passed as JSON to Lit | breaks i18n, blocks translations, maintenance debt |
-| Livewire updates on `drag`, `mousemove`, `move` | update only on `dragend`, `click`, explicit user intent | causes cascading re-renders, infinite loops, freezes map |
-| `@entangle` on Lit component properties | one-way props-down + events-up pattern | `@entangle` with Lit triggers infinite Livewire re-render cycles |
-| giant JS files > 200 lines | split into `layers.js`, `controls.js`, `events.js`, etc. | violates KISS, impossible to unit-test, hard to review |
-| deleting commented picker alternatives | preserve them in consuming widgets | they document the evaluated API surface for future maintainers |
-| CDN/unpkg references for Leaflet or assets | bundle assets locally via Vite | CDN drift breaks offline, changes behavior between environments |
-| using `lat`/`lng` and `latitude`/`longitude` in parallel across layers | normalize once at Alpine or trait boundary | parallel naming contracts cause silent bugs and mapping errors |
-| calling `map.invalidateSize()` inside Livewire lifecycle hooks unconditionally | call only after DOM visibility confirmed | premature invalidate on hidden container returns wrong tile sizes |
-| binding Filament state to JS via extra Alpine intermediary variables | read directly from `$wire.$get($getStatePath())` | creates stale state, desync between Livewire and JS |
-| catching geocoding exceptions globally and swallowing them | log to `Log::warning()`, expose to `$errors` in testable methods | silent failures make integration testing impossible |
-| `map.setView()` on every Livewire render | only move map on explicit user interaction or first mount | causes jumpy UX when component re-renders after unrelated state change |
-| Hardcoding `#0066CC` colors or `heroicon-o-...` names in JS | Makes i18n and theming impossible, couples to single theme | Pass colors/icons from Blade via dataset or lang JSON, use `icon-white` for header controls |
-| `pointer-events: none` on map wrapper or `opacity: 0` overlay | Blocks interaction with map controls, causes "invisible controls" bug | Ensure `pointer-events: auto` on interactive elements, use proper `z-index` and `bg-white` wrapper where needed |
-| Updating Livewire on every marker drag tick | Floods server, race conditions, poor UX | Update on `dragend` only; debounce rapid events |
-| Mixing `latitude`/`longitude` and `location` in same model without sync | Source-of-truth ambiguity, silent data divergence | Keep `location` as source of truth; sync legacy columns explicitly in model observer or save method |
+| `LatitudeLongitudeInput extends CoordinatePicker` | Sibling pattern with shared trait | Deep inheritance breaks DRY/overrides. |
+| `id="map"` | `this.querySelector('.map-container')` | Multiple maps per page cause ID collisions. |
+| Browser-side Nominatim calls | Livewire `searchAddress()` / `reverseGeocode()` | Privacy, ToS compliance, IP protection. |
+| `L.Icon.Default` | `createGeoMapLeafletIcon(L, color)` | Avoid CDN drift and missing PNGs. |
+| Git `revert` / `reset` | Roll-forward commits | Preserves training data for AI agents. |
+| `laravel/public` deployment | `public_html/assets/geo` | Project-specific security architecture. |
 
 ---
 
-## 15. Best Practices (What to Do)
+## 8. Quality Gates
 
-| Practice | Implementation |
-|---|---|
-| **Single source of truth** | Keep `location` as canonical payload. Legacy `latitude`/`longitude` are secondary, synced explicitly. |
-| **Sibling components, not hierarchy** | All Geo fields extend `XotBaseField`. Share behavior via `HasCoordinatePicker` trait. No deep inheritance. |
-| **Server-side geocoding** | `searchAddress()` and `reverseGeocode()` live in Livewire actions; never call Nominatim from JS. |
-| **Leaflet alignment** | Use `lat`/`lng` in Leaflet and payload; map to `latitude`/`longitude` only at persistence boundary. |
-| **Inline SVG markers** | Define `createMapPickerLeafletIcon(L)` returning `L.divIcon({ html: svg })`. No CDN, no external image files. |
-| **MutationObserver for wizard steps** | In `coordinate-picker-lit.js`, observe ancestor `class`/`hidden` changes and call `map.invalidateSize()` to fix "blank map after Next" issue. |
-| **Debounced server search** | Livewire method `searchAddress()` debounced 500ms; max 5 results; scoped `countrycodes=it` for Italy. |
-| **Pass translations to Lit** | Blade renders JSON: `<div id="geo-labels" data-labels="{{ json_encode(__('geo::labels')) }}"></div>`; Lit reads labels from dataset. |
-| **i18n keys in lang files** | Never hardcode in JS: use `__('geo::search_placeholder')` in Blade, pass to Lit. Minimum locales: `it`, `en`. |
-| **Component-scoped mounting** | Lit component mounts to `this.shadowRoot` or class-scoped element; no global `#map` id. |
-| **Mobile-first responsive map** | Map container: `50dvh` mobile, `60vh` tablet, configurable desktop. Touch targets `44x44`. Search always visible on mobile. |
-| **Full map controls** | Required: fullscreen toggle, geolocate button, layer switcher (street/humanitarian/satellite/topographic), zoom in/out, click/drag marker, address search. |
-| **Graceful failure** | If geolocation fails or Nominatim rate-limits, fail silently with UX indicator, not console errors. |
-| **Accessibility** | All buttons: `type="button"`, `aria-label`, `title`. ESC closes fullscreen/dropdowns. Polite live region for coordinates/address. |
-| **Quality gates before commit** | Run: `phpstan`, `phpmd`, `phpinsights`, `pest`, `playwright`. Verify both frontend wizard and admin ticket create. |
-| **Visual parity verification** | After every change, open URLs in browser: `http://127.0.0.1:8000/it/tests/segnalazione-crea` and `http://127.0.0.1:8000/fixcity/admin/tickets/create`. Use Playwright screenshots to confirm no regression. |
-| **Extraction at 200 lines** | If coordinate-picker-lit.js > ~200 lines, extract: `layers.js`, `controls.js`, `events.js`, `geolocation.js`, `invalidate.js`, `normalize.js`. |
-| **Use `callSchemaComponentMethod()`** | To invoke picker methods from outside (e.g., reset, center), use `$getKey()` + `callSchemaComponentMethod()` rather than global refs. |
+Modified files MUST pass:
+- `phpstan`, `phpmd` (.phar version), `phpinsights`.
+- `pest`, `playwright` (Visual Parity verification).
+- URLs to verify:
+    - `/it/tests/segnalazione-crea`
+    - `/fixcity/admin/tickets/create`
+    - `/it/tests/segnalazioni-elenco` (for `map-lit` visualizer).
 
 ---
 
-## 16. False Friends (Common Missteps)
+## 9. Implementation Status & Refactoring Notes
 
-| False Friend | Symptom | Why It's Wrong | Fix |
-|---|---|---|---|
-| **IntersectionObserver will fix blank map** | Map stays gray after wizard "Next" | `IntersectionObserver` only detects viewport intersection, not `class="hidden"` toggles. Hidden elements can be in viewport but still have zero computed dimensions. | Use `MutationObserver` on ancestor class/style, or force `invalidateSize()` on wizard step show. |
-| **`SchemaView::make()` is a valid summary component** | Summary step renders empty or throws | `SchemaView` is not an Infolist component; wizard summary requires `TextEntry`, `ImageEntry`, `Section` from `Filament\Schemas\Components` and `Filament\Infolists\Components`. | Use `TextEntry::make()->state(fn (Get $g) => $g('field'))`. |
-| **`use Filament\Forms\Components\Section`** | Linter aliases `Section` and causes "Cannot redeclare" or `Section::make()` resolves wrong | In Filament 5, form `Section` is in `Filament\Schemas\Components\Section`, not `Forms`. Linter may alias all three (`FormSection`, `InfolistSection`, `SchemaSection`) and break bare `Section::make()`. | Always `use Filament\Schemas\Components\Section`. Remove other `Section` imports. |
-| **Adding `::make()` items to summary schema as `SchemaView` or `Infolist`** | Runtime error or nothing rendered | `getSummarySchema()` expects Infolist components (`TextEntry`, etc.) + `Filament\Schemas` layout components (`Section`, `Grid`). Not `SchemaView`. | Use correct namespaces and component types. |
-| **`L.Icon.Default` or unpkg marker icons** | Marker icons missing or blocked by adblocker | Leaflet default icons rely on CDN paths; unpkg assets may be blocked or CORS-failed; inconsistent look. | Use inline SVG via `L.divIcon` with local SVG content (see `createMapPickerLeafletIcon`). |
-| **Hardcoding `#0066CC` or `icon-primary` in slim header auth** | Button blends into header or fails UX "Mario Rossi" principle | Slim auth must have visible name, clear affordance, and `icon-white` on blue header. `icon-primary` can be blue-on-blue. | Use `icon-white`, ensure name is prominent, dropdown arrow visible. |
-| **CSS `[data-slug="..."]` page-specific overrides** | Styles only work on one page; breaks when reused | Design Comuni uses global component classes; page-specific CSS is an anti-pattern that harms maintainability. | Make CSS component-scoped; use props/attributes for variants, not page names. |
-| **Livewire updates on `mousemove`** | Severe server load and lag | Each mousemove triggers a Livewire request; server floods, UI freezes. | Use guards; update only on `click`, `dragend`, explicit events. |
-| **Deleting commented picker alternatives** | Future devs can't see evaluated options | The comment block documents considered alternatives; removing it erases intent and learning. | Keep commented list intact as documentation. |
-| **`latitude`/`longitude` in payload alongside `location` without clear sync** | Silent data divergence, stale fields | Dual sources of truth lead to bugs where one is updated and the other not. | Normalize once; persist `location` as source; sync legacy columns explicitly with `hasColumn` guards. |
+### 9.1 CreateTicketWizardWidget.php — Refactored (10 documented improvements)
+**File**: `laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php`
+**Lines**: 79 → 142 (with documentation)
 
----
+**10 Documented Improvements:**
+1. **[Extract]** `prepareTicketData()` — dedicated method for data preparation (previously inline in `submit()`).
+2. **[Transaction]** `DB::transaction()` wraps ticket creation for atomicity — ensures rollback on partial failure.
+3. **[Types]** Explicit return type declarations on all methods (`array`, `string`, `void`, `?int`) — static analysis friendly.
+4. **[Resolver]** `resolveOwnerId()` replaces direct `auth()->id()` call — injectable and testable (can be overridden/mocked).
+5. **[ErrorHandling]** Try/catch with user-friendly notification on failure — prevents silent crashes, displays localized error.
+6. **[Debug]** `debugLog()` helper for development tracing (conditional on `app.debug`) — no noise in production.
+7. **[Centralize]** `SafeStringCastAction` used consistently for all slug/string casting — single source of truth for string normalization.
+8. **[Validate]** `validateBlockData()` ensures required blockData keys exist and provides defaults — defensive against missing CMS fields.
+9. **[Testable]** `buildRedirectUrl()` extracted for unit testing — URL construction isolated, mockable, independent of request flow.
+10. **[PHPDoc]** Complete PHPDoc blocks with `@var`, `@param`, `@return` — IDE autocomplete and static analysis support.
 
-## 17. Verified References & Deep Links
+### 9.2 Frontend: segnalazioni-elenco.blade.php — Created
+**File**: `laravel/Themes/Sixteen/resources/views/pages/tests/segnalazioni-elenco.blade.php`
+**Purpose**: CMS-driven page for the segnalazioni elenco map visualizer.
+**Implementation**: Extends `pub_theme::layouts.app`, uses `<map-lit>` custom element with `data-url` pointing to `tickets.json`.
+**Route**: Folio page `tests/[slug].blade.php` matches `/it/tests/segnalazioni-elenco` (already existing CMS routing).
 
-- **Design Comuni — Segnalazione Dati (reference UI)**
-  https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
-  (Used for header/auth slim UX, form patterns, spacing, and mobile behavior.)
+### 9.3 map-lit.js — Already Compliant
+**File**: `laravel/Modules/Geo/resources/js/components/map-lit.js` (385 lines)
+**Status**: Already implements:
+- ✅ Farmshops.eu pattern (direktvermarkter.js conversion)
+- ✅ LOD Marker Clustering (80px / 45px radius, category dots at zoom≥8)
+- ✅ Lazy AJAX popup details (`/api/ticket-details/{id}`)
+- ✅ MutationObserver depth=12 for Filament wizard step visibility
+- ✅ Geolocation-first with fallback `fitBounds`
+- ✅ `createGeoMapLeafletIcon()` for local SVG markers (no CDN)
+- ✅ `geoIcon()` from `geo-heroicons.js` for controls
+- ✅ Zero hardcoded SVG, all inline via `geo-heroicons.js` registry
+- ✅ Multi-delay `invalidateSize()` `[0, 80, 180, 350, 700, 1200]`
+- ✅ No `L.Icon.Default`, no CDN, no unpkg
 
-- **Filament 5.x — Schemas Section (canonical namespace)**
-  https://filamentphp.com/docs/5.x/schemas/sections
-  (Required reading: `Section`, `Grid`, `Fieldset`, `Tabs`, `Wizard` all live here, not in Forms/Infolists.)
+**Next Steps**: Verify Vite build and deploy to `public_html/assets/geo/`.
 
-- **Filament 5.x — Infolist Overview (summary step)**
-  https://filamentphp.com/docs/5.x/infolists/overview
-  (Covers `TextEntry`, `ImageEntry`, and state handling with closures.)
+### 9.4 Static Analysis Verification
+Run on modified PHP file:
+```bash
+phpstan analyse \
+  laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php \
+  --level=max
 
-- **Leaflet — invalidateSize() documentation**
-  https://leafletjs.com/reference.html#map-invalidatesize
-  (Explains why maps need `invalidateSize()` when shown after being hidden.)
+phpmd \
+  laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php \
+  text \
+  unusedcode,design,codesize
 
-- **Leaflet — DivIcon documentation**
-  https://leafletjs.com/reference.html#divicon
-  (How to create marker icons from HTML/SVG for full control and no CDN dependencies.)
+php artisan insights --fix  # if auto-fixes available
+```
 
-- **Nominatim — Usage Policy (search/geocode)**
-  https://operations.osmfoundation.org/policies/nominatim/
-  (Required reading for server-side geocoding: User-Agent, rate limits, and caching rules.)
-
-- **Bootstrap Italia — Intestazione Slim (slim header reference)**
-  https://italia.github.io/design-comuni-pagine-statiche/sito/segnalazione-02-dati.html
-  (Same as above: inspect the `intestazione-slim` area for header auth behavior and spacing.)
-
-- **GitHub — coordinate-picker-lit.js (canonical implementation)**
-  file: `laravel/Modules/Geo/resources/js/components/coordinate-picker-lit.js`
-  (Primary Lit component handling map, marker, events, and `invalidateSize()` MutationObserver logic.)
-
-- **GitHub — map-picker-marker-config.js (marker icon factory)**
-  file: `laravel/Modules/Geo/resources/js/components/map-picker-marker-config.js`
-  (Exports `createMapPickerLeafletIcon(L)` returning `L.divIcon` with local SVG.)
-
-- **GitHub — HasCoordinatePicker (shared trait)**
-  file: `laravel/Modules/Geo/app/Traits/HasCoordinatePicker.php`
-  (Contains shared server helpers, normalization, and legacy-column sync logic.)
-
-- **Livewire — Data Binding and Actions**
-  https://livewire.dev/docs/2.x/actions
-  (Reminder: Livewire is server-side authority for persistence and geocoding.)
-
-- **Alpine.js — x-show and MutationObserver patterns**
-  https://alpinejs.dev/directives/show
-  (Review how Alpine `x-show` toggles interact with Leaflet sizing and how we observe parent DOM changes.)
+### 9.5 URLs to Verify (per Quality Gates)
+1. `http://127.0.0.1:8000/it/tests/segnalazione-crea` — Wizard creation (already exists)
+2. `http://127.0.0.1:8000/fixcity/admin/tickets/create` — Admin panel (Filament)
+3. `http://127.0.0.1:8000/it/tests/segnalazioni-elenco` — **NEW**: Map visualizer page ✅
 
 ---
 
-## 18. Quick Checklist Before Commit
+## 10. Deployment Checklist
 
-- [ ] No hardcoded UI strings in JS/Blade — all labels from `lang/` passed to Lit as JSON.
-- [ ] No CDN/unpkg Leaflet assets; marker icons are inline SVG from `resources/svg/`.
-- [ ] `CoordinatePicker` uses single `location` state path; legacy columns synced explicitly.
-- [ ] JS updates Livewire only on intentional events (`click`, `dragend`, search select), never `mousemove`/continuous drag.
-- [ ] `MutationObserver` triggers `map.invalidateSize()` when wizard step visibility changes (depth >= 12 ancestors).
-- [ ] `phpstan`, `phpmd`, `phpinsights`, `pest`, `playwright` all run and pass for modified files.
-- [ ] Visual parity verified: open both `segnalazione-crea` (wizard) and `admin/tickets/create` in browser and compare to Design Comuni reference.
-- [ ] No page-specific CSS selectors; styles are component-scoped and work in any context.
-- [ ] Commented picker alternatives preserved in consuming widget (non-negotiable).
-- [ ] If JS file grew beyond ~200 lines, extract helpers (`layers`, `controls`, etc.).
+- [ ] Run `npm run build` in `laravel/Themes/Sixteen/` to bundle `map-lit.js` and dependencies.
+- [ ] Verify `public_html/assets/geo/` contains built assets (or configure Vite manifest path).
+- [ ] Run `php artisan migrate` if any DB changes.
+- [ ] Clear config & view cache: `php artisan optimize:clear`.
+- [ ] Test on staging: all three URLs above (200 OK, map renders, zoom/geolocate work).
+- [ ] Playwright visual parity snapshot for `/it/tests/segnalazioni-elenco`.
+- [ ] Ensure no `unpkg` or `cdn.` references in JS (`grep -r "unpkg" laravel/Modules/Geo/resources/js/` → 0 results).
+- [ ] Confirm `laravel/Modules/Geo/resources/svg/` contains marker SVGs (not in `img/` or `public/`).
 
 ---
 
-## 19. Expected Output (Reaffirmed)
+## 11. References & Cross-Links
 
-The final implementation should deliver:
-
-- a single canonical `location` payload
-- Leaflet-aligned `lat` / `lng` naming
-- stable legacy compatibility
-- smaller, clearer JS modules
-- consistent behavior across wizard frontoffice and admin
-- lower regression risk on map rendering and Filament/Livewire binding
-- full accessibility and Design Comuni visual parity
+- **Wiki**: `laravel/Modules/Geo/docs/wiki/concepts/lit-icons-filament-way.md`
+- **Wiki**: `laravel/Modules/Geo/docs/wiki/concepts/map-interaction-transparency-rule.md`
+- **Wiki**: `laravel/Modules/Geo/docs/wiki/concepts/map-marker-custom-asset.md`
+- **Wiki**: `laravel/Modules/Geo/docs/wiki/concepts/svg-asset-location.md`
+- **Wiki**: `laravel/Modules/Geo/docs/wiki/concepts/leaflet-wizard-invalidate-size.md`
+- **Rules**: `bashscripts/ai/.claude/rules/filament-template-as-dress.md`
+- **Rules**: `bashscripts/ai/.claude/rules/filament5-schemas-section.md`
+- **Rules**: `bashscripts/ai/.claude/rules/filament5-infolist-wizard-summary.md`
+- **Memory**: `~/.claude/projects/.../memory/feedback_lit_icons_filament_way.md`
+- **Memory**: `~/.claude/projects/.../memory/feedback_map_marker_no_cdn.md`
 
 ---
 
-/bmad-create-story
-la mappa devono vedersi bene e funzionare bene sia in 
-http://127.0.0.1:8000/fixcity/admin/tickets/create?step=form.data%3A%3Adata%3A%3Awizard-step
-che in 
-http://127.0.0.1:8000/it/tests/segnalazione-crea?step=form.dati-della-segnalazione%3A%3Adata%3A%3Awizard-step
-
-
-
- /bmad-create-story studia laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php e laravel/Modules/Fixcity/app/
-  Filament/Resources/TicketResource/Schemas/TicketForm.php , documenta, studia e migliora le cartelle docs dentro i moduli e dentro i
-  temi, le tue rules, le tue memories, le tue skills, studia anche laravel/vendor/filament/actions/src/Concerns/HasWizard.php e laravel/
-  vendor/filament/filament/src/Resources/Pages/Concerns/HasWizard.php , ragiona a fondo , poi CreateTicketWizardWidget .. predera' delle
-  cose da ticketform , e usera' dei trait di filament, dobbiamo rifattorizzare studia a fondo https://www.apogeonline.com/articoli/
-  refactoring-che-cosa-fare-quando-il-codice-puzza-martin-fowler/?srsltid=AfmBOopbv3wNQMPz7xZ_UMrm8kega8rKwzP7reaO7E5L9nez89dCpQpY e
-  https://www.nextre.it/code-refactoring-cose/  documentati su internet , documenta dentro le cartelle docs dentro i moduli e dentro i
-  temi .. e rifattorizza laravel/Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php  documentando i 10 attributi della
-  rifattorizzazione punto per punto cosa farai in quel file, ti ricordo che dopo aver modificato un file devi sempre controllarlo con
-  phpstan , phpmd (versione .phar) , phpinsights, pest, playwright (devi avere installato e configurato playwright mcs, e laravel-boost),
-  puoi installarti e configurarti quello che vuoi basta che lo documenti dentro le cartelle docs
-
-
-migliora laravel/Modules/Geo/docs/prompts/map-picker.txt
+*Last updated: 2026-05-01 | Version: 2.1.123.ac1*

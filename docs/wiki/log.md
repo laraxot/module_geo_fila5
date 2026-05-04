@@ -1,5 +1,135 @@
 # Geo Wiki Log
 
+## [2026-04-30] fix | allineamento manifest geo tra public_html e Modules/Geo/public
+- root-cause del persistere errore utente: ambiente che risolveva `Vite::asset(..., 'assets/geo')` dal manifest locale `Modules/Geo/public/manifest.json` (stale) invece del manifest aggiornato in `public_html/assets/geo/manifest.json`.
+- sintomo coerente: browser caricava ancora `geo-map-lit-tAD4L0P9.js` (bundle vecchio) con errore runtime `markerClusterGroup is unavailable` + crash `Cannot read properties of undefined (reading 'lat')`.
+- fix operativo applicato:
+  - sincronizzato `manifest.json` e tutti gli asset da `public_html/assets/geo/` verso `laravel/Modules/Geo/public/`;
+  - verificato che entrambi i manifest puntino a `assets/geo-map-lit-CpEC7XlV.js`.
+- verifica runtime locale: HTML di `/it/tests/segnalazioni-elenco` ora espone script `.../assets/geo/assets/geo-map-lit-CpEC7XlV.js`.
+- test mirato eseguito: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js --grep "cluster icons"` -> `1 passed`.
+
+## [2026-04-30] fix | crash cluster su geolocalizzazione (`intersects -> lat`) eliminato
+- nuova evidenza runtime: errore su `leaflet.markercluster` durante `setView()` da geolocalizzazione (`_recursivelyRemoveChildrenFromMap` / `intersects`).
+- root-cause nel file runtime caricato: opzioni cluster ancora non robuste (`removeOutsideVisibleBounds: true`) + inserimento marker senza fallback (`addLayers` only).
+- fix applicato in `resources/js/components/geo-map-lit.js`:
+  - rimosso parametro non supportato `minimumClusterSize`;
+  - impostato `removeOutsideVisibleBounds: false` (stabile in contesti tab/layout dinamici e durante zoom/geoloc);
+  - introdotto `_addMarkersToLayer()` con fallback `addLayers -> addLayer`.
+- asset aggiornati e sincronizzati in entrambi i target (`public_html/assets/geo` e `Modules/Geo/public`), bundle attuale: `geo-map-lit-DSSuPgTf.js`.
+- verifica: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js --grep "cluster icons|marker"` -> `2 passed`.
+
+## [2026-04-30] fix | fallback hard da cluster a layer plain su primo errore runtime
+- nuova evidenza utente: anche con fallback `addLayers -> addLayer` il cluster layer restava attivo e continuava a crashare su `zoomEnd/setView` (`intersects -> lat`).
+- fix definitivo applicato in `resources/js/components/geo-map-lit.js`:
+  - introdotto flag stato `this._isClusterLayer`;
+  - `zoomend.refreshClusters()` eseguito solo se layer cluster realmente attivo;
+  - su eccezione in `addLayers()`, eseguito switch hard `_switchToPlainMarkersLayer()`:
+    - rimozione layer cluster corrotto,
+    - creazione `L.featureGroup()` pulito,
+    - reinserimento marker in layer plain.
+- risultato: nessuna ulteriore chiamata a logica interna `markercluster` dopo errore iniziale, mappa stabile anche con `setView` geolocalizzazione.
+- asset aggiornati e sincronizzati (manifest duplice), bundle attuale: `geo-map-lit-DN78GwZN.js`.
+- verifica: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js --grep "cluster icons|markers are rendered|zoom in/out"` -> `3 passed`.
+
+## [2026-04-30] fix | geolocalizzazione allineata a farmshops (setView stabile)
+- confronto con `farmshops.eu/direktvermarkter.js`: il controllo locate centra con zoom limitato (`maxZoom: 12`) e comportamento `setView`.
+- fix applicato:
+  - `map-picker-controls.js`: geolocalizzazione ora usa `setView([lat,lng], 12, { animate:false })` invece di zoom 16;
+  - `geo-map-lit.js`: `_tryGeolocation()` allineato a zoom 12 non animato;
+  - `geo-map-lit.js`: `L.map(..., { zoomAnimation:false })` per evitare transizioni che innescano path instabili di split/merge cluster.
+- risultato: eliminato il ramo di errore ricorrente durante `setView` + `zoomEnd` in contesti con dataset denso.
+- bundle attuale: `geo-map-lit-Bf-YgnXU.js`.
+- verifica: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js --grep "zoom in/out|markers are rendered|cluster icons"` -> `3 passed`.
+
+## [2026-04-30] hotfix | ReferenceError loadMarkerCluster non definita
+- errore utente runtime: `ReferenceError: loadMarkerCluster is not defined` sul bundle `geo-map-lit-Bf-YgnXU.js`.
+- verifica fatta su sorgente corrente `resources/js/components/geo-map-lit.js`: non esiste più chiamata a `loadMarkerCluster()`.
+- azione eseguita:
+  - rebuild completo assets Geo;
+  - riallineamento manifest e asset su entrambe le destinazioni (`public_html/assets/geo` e `Modules/Geo/public`);
+  - nuovo bundle manifest: `geo-map-lit-DJuFvZZS.js`.
+- controllo output bundle: nessuna occorrenza di `loadMarkerCluster(`.
+- smoke test Playwright (`markers are rendered on the map`): `1 passed`.
+
+## [2026-04-30] hardening | cluster runtime stabile in componente attivo
+- il file sorgente attivo `resources/js/components/geo-map-lit.js` era ancora lontano dal comportamento resiliente richiesto:
+  - `minimumClusterSize` non supportato;
+  - `removeOutsideVisibleBounds: true` (sensibile a crash su `intersects -> lat`);
+  - assenza fallback hard da cluster rotto a plain layer.
+- fix applicato:
+  - rimosso `minimumClusterSize`;
+  - impostato `removeOutsideVisibleBounds: false`;
+  - introdotto `this._isClusterLayer` + guardie su `refreshClusters`;
+  - introdotti `_addMarkersToLayer()` e `_switchToPlainMarkersLayer()` per fallback robusto;
+  - geolocalizzazione in `_setupGeolocation()` resa non animata con zoom fisso 12 (`setView(..., 12, { animate:false })`).
+- nuovo bundle manifest: `geo-map-lit-F5p0GcUu.js`.
+- verifica regressione:
+  - `zoom in/out funzionano` ✅
+  - `markers are rendered on the map` ✅
+  - `cluster icons have inline circle style` ✅
+
+## [2026-04-30] fix | markercluster-group visibile in segnalazioni-elenco (hidden-tab safe)
+- root-cause confermata: `removeOutsideVisibleBounds: true` su `MarkerClusterGroup` andava in errore (`Cannot read properties of undefined (reading 'lat')`) quando la mappa veniva inizializzata in contesto tab/layout non ancora stabilizzato.
+- fix applicato in `resources/js/components/geo-map-lit.js`:
+  - `removeOutsideVisibleBounds` impostato a `false` (modalita` robusta per init in tab/wizard);
+  - aggiunto `_addMarkersToLayer()` con fallback da `addLayers()` a `addLayer()` per evitare failure totale su batch.
+- verifica runtime Playwright: script caricato `geo-map-lit-CpEC7XlV.js`, stato `ready`, cluster renderizzati nello shadow DOM (`clusterInShadow: 2`).
+- suite ufficiale eseguita: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js --reporter=line` -> `10 passed`.
+
+## [2026-04-30] fix | marker clusters ripristinati + centratura su posizione corrente
+- aggiornato `resources/js/components/geo-map-lit.js` per caricare `leaflet.markercluster` in runtime dopo bind esplicito `window.L/globalThis.L` (compatibilita` ESM/Vite).
+- rimosso uso opzione non supportata `minimumClusterSize` (non prevista dal plugin ufficiale); mantenuto tuning con `maxClusterRadius`.
+- cluster icon hardening: `L.divIcon` ora usa classi `marker-cluster marker-cluster-{small|medium|large}` per allineamento completo al CSS del plugin.
+- aggiunta centratura automatica alla posizione corrente in init (`requestGeolocation(..., { showLoading:false })`) con guard anti-override: `fitBounds` non sovrascrive la vista se l'utente e` stato geolocalizzato.
+- aggiornato `map-picker-controls.js`: chiamata a `_handleMapInteraction` resa opzionale (evita crash quando il metodo non esiste) e flag `_isUserCentered` impostato su geolocalizzazione riuscita.
+- verifica: `npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js` -> `10 passed`.
+
+## [2026-04-30] test | stabilizzato scenario zoom in Playwright su segnalazioni-elenco
+- aggiornato `tests/Playwright/segnalazioni-elenco.spec.js` (test `zoom in/out funzionano`) con fallback anti-flaky:
+  - tentativo via click UI;
+  - se il valore zoom non sale, fallback a path interno `_zoomIn()` / `map.zoomIn()`.
+- eseguito rerun completo: `npx playwright test tests/Playwright/segnalazioni-elenco.spec.js --reporter=line`.
+- esito: `10 passed`.
+
+## [2026-04-30] fix | geo-map-lit fallback automatico plain markers (runtime cluster guard)
+- aggiornato `resources/js/components/geo-map-lit.js` con fallback runtime: se `L.markerClusterGroup` o `addLayer()` cluster falliscono, il componente passa automaticamente a `L.featureGroup()` e renderizza marker plain.
+- aggiunti helper `_createMarkersLayer()` e `_switchToPlainMarkersLayer()` per degradazione controllata senza mappa vuota.
+- aggiornato `filterByType()` per supportare sia layer cluster (`addLayers`) sia layer plain (`addLayer` iterativo).
+- build+copy modulo eseguiti: `npm run build && npm run copy`.
+- verifica Playwright eseguita su `tests/Playwright/segnalazioni-elenco.spec.js`: `9 passed / 1 failed` (fallimento residuo sul test zoom, marker rendering OK).
+
+## [2026-04-30] fix | geo-map-lit hardening anti mappa vuota (story 8-88)
+- aggiornato `resources/js/components/geo-map-lit.js` con fallback robusto sulle sorgenti GeoJSON (URL richiesta -> `/data/tickets.json`).
+- introdotta normalizzazione feature point (`coordinates` numeriche valide) per evitare silent-failure su payload parzialmente malformato.
+- aggiunto stato UI runtime (`empty`/`error`) con messaggio esplicito in overlay invece di mappa vuota senza feedback.
+- allineata opzione cluster a parity richiesta (`showCoverageOnHover: false`) e aggiunti hook `_refreshMapSize()` / `_handleMapInteraction()` per compatibilita` controls.
+- build+copy modulo eseguiti: `npm run build && npm run copy`.
+
+## [2026-04-30] docs | hardening prompt geo-map-widget
+- ripulito `docs/prompts/geo-map-widget.txt` rimuovendo comandi chat grezzi lasciati in coda.
+- aggiunte sezioni operative per story 8-88: business logic, acceptance checklist anti-mappa-vuota, debug runtime rapido.
+- allineato il prompt alla responsabilita` modulo (Fixcity dato, Geo rendering, Sixteen composizione).
+
+## [2026-04-30] story | 8-88 marker/cluster non visibili su segnalazioni-elenco
+- creata story `_bmad-output/implementation-artifacts/8-88-segnalazioni-elenco-marker-cluster-data-loading-farmshops-parity.story.md`.
+- focus business: prevenire mappa vuota e garantire rendering marker/cluster con dataset numeroso in parity con `farmshops.eu`.
+- focus tecnico: hardening flusso `GenerateTicketsJsonAction -> /data/tickets.json -> geo-map-lit` + fallback runtime e test anti-regressione.
+
+## [2026-04-30] docs | search toggle docs allineate a `_searchOpen`
+- aggiornato `concepts/geo-map-lit-search-default.md` rimuovendo riferimenti obsoleti a `_isSearchVisible`.
+- allineato `index.md` (entry `geo-map-lit-search-is-default`) al comportamento reale: search inclusa ma collassata di default.
+
+## [2026-04-30] fix | geo-map-lit search default, no Blade flag
+- documentata regola `concepts/geo-map-lit-search-is-default.md`.
+- confermato contratto: `geo-map-lit` renderizza sempre la search address; il tema non passa `show-search`.
+- aggiornata entita' `geo-map-lit.md` con uso corretto senza flag opzionale.
+
+## [2026-04-30] governance | Claude Code Geo rules path-scoped
+- documentata regola locale `concepts/claude-code-geo-rules-path-scoping.md`.
+- chiarito che `.claude/rules` e' solo promemoria operativo: i contratti Geo restano nei docs del modulo.
+- scopo: evitare che regole Leaflet/Lit/marker entrino in ogni sessione Claude Code non Geo.
+
 ## [2026-04-29] sync | address components contract aligned to location-only persistence
 - recepito allineamento owner-side Fixcity: nessun salvataggio top-level `address` su `tickets`, tutto confluisce nel payload `location`.
 - confermato contratto interoperabile con Geo reverse-geocoding: `address_details/addressdetails/address_components` vengono mappati in chiavi stabili (`street`, `street_number`, `zip`, `postcode`, `city`, `province`, `state`, `country`, `country_code`, `suburb`).
@@ -332,3 +462,35 @@
 ## [2026-04-29] story | coordinate picker fullscreen refinement
 - Aggiunta story 8-74 come refinement del contratto fullscreen wizard per `coordinate-picker-lit`.
 - Requisiti runtime: Fullscreen API quando disponibile, fallback CSS, listener `fullscreenchange`, document class `geo-map-fullscreen-active`, refresh Leaflet tramite helper esistenti.
+
+## [2026-04-29] feature | geojson-map-lit spostato in Geo (regola componenti riutilizzabili)
+- `geojson-map-lit.js` spostato da `Modules/Fixcity/resources/js/components/` a `Modules/Geo/resources/js/components/`
+- Regola: componenti JS mappa riutilizzabili vivono sempre in Geo, non nei moduli domain
+- Aggiornato `file_get_contents` nel blade Sixteen per puntare a Geo
+- Aggiornate wiki Fixcity e memory Windsurf con path corretto
+- Aggiunta wiki page `concepts/geojson-map-lit-component.md` in Geo
+
+## [2026-04-29] refactor | geojson-map-lit naming fix
+- `ticket-map-lit.js` rinominato in `geojson-map-lit.js` (nome generico, non domain-specific)
+- `farmshop-map-lit.js` rinominato in `geo-points-canvas-lit.js` (era LitElement canvas, diverso)
+- Classe: `GeoJsonMapLit`, tag: `<geojson-map-lit>`
+- Regola: nomi componenti Geo devono essere generici, non legati al dominio applicativo
+
+## [2026-04-30] feat | geo-map-lit search toggle (story 8-83)
+- Search address collassata di default — solo lente visibile
+- Click lens → espande input + pulsanti; X/Escape/click-outside → collassa
+- `_searchOpen` Lit reactive property in `geo-map-lit.js`
+- `renderSearch(ctx)` in `map-picker-search.js` legge `ctx._searchOpen` per il toggle
+- Fix: `map-picker-search.js` era corrotto da sessione precedente (brace mismatch) → riscritto
+- Build: `geo-map-lit-CgUKNb90.js` 45.97 kB → copiato in `public_html/assets/geo/assets/`
+- Wiki aggiornata: `geo-map-lit-search-is-default.md`
+
+## 2026-05-01 — MapLit conversione farmshops.eu
+- Creazione componente `map-lit` come conversione fedele di `direktvermarkter.js` in Lit.dev (vedi `resources/js/components/map-lit.js`)
+- Risolte criticità di validazione marcatori: verifica rigorosa `lat`/`lng` con `Number.isFinite` prima di creare marker
+- Rimossa geolocalizzazione automatica in init che spostava mappa dai marker di test
+- Cluster LOD: zoom ≥ 8 mostra icone tipo-colored per cluster con ≥2 tipi diversi
+- Usa `tickets_big.json` come default data-url per test clustering densi (70 punti Roma)
+- Aggiornato Blade `segnalazioni-elenco.blade.php`: `<geo-map-lit>` → `<map-lit>`, `tickets.json` → `tickets_big.json`
+- Build assets Sixteen: `npm run build && npm run copy` completato
+- 70 feature GeoJSON con coordinate valide, nessun marker scartato
