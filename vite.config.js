@@ -9,8 +9,6 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
     build: {
-        // Directory di output per i file compilati del modulo Chart
-        outDir: './public',
         emptyOutDir: false,
         manifest: "manifest.json",
         rollupOptions: {
@@ -47,7 +45,9 @@ export default defineConfig({
                 resolve(__dirname, 'resources/css/app.css'),
                 resolve(__dirname, 'resources/js/components/coordinate-picker-lit.js'),
                 resolve(__dirname, 'resources/js/components/map-picker-lit.js'),
-                resolve(__dirname, 'resources/js/components/geopoint-picker-lit.js')
+                resolve(__dirname, 'resources/js/components/geopoint-picker-lit.js'),
+                resolve(__dirname, 'resources/js/components/geo-map-lit.js'),
+                resolve(__dirname, 'resources/js/components/map-lit.js')
             ],
             ...refreshPaths,
             refresh: true,
@@ -55,3 +55,9 @@ export default defineConfig({
         tailwindcss(),
     ],
 });
+
+// Add geo-map-lit.js to the list of library entry points so it's bundled
+import.meta.imports = {
+  ...import.meta.imports,
+  '/resources/js/components/geo-map-lit.js': true,
+};
