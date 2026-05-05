@@ -25,7 +25,8 @@ class UpdateCoordinatesResult extends Data
         public readonly int $successCount,
         public readonly int $failureCount,
         public readonly Collection $errors,
-    ) {}
+    ) {
+    }
 
     /**
      * Check if there were any errors during processing.
@@ -71,12 +72,10 @@ class UpdateCoordinatesResult extends Data
     public function getErrorMessages(): array
     {
         /** @var array<int, string> $messages */
-        $messages = $this->errors
+        return $this->errors
             ->map(fn (array $error): string => "{$error['model']}: {$error['error']}")
             ->values()
             ->toArray();
-
-        return $messages;
     }
 
     /**

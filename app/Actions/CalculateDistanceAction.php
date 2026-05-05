@@ -29,13 +29,15 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
      */
     public function __construct(
         private readonly CalculateDistanceMatrixAction $distanceMatrixAction,
-    ) {}
+    ) {
+    }
 
     /**
      * Calcola la distanza e il tempo di percorrenza tra due punti.
      *
      * @param  LocationData  $origin  Punto di origine con coordinate valide
      * @param  LocationData  $destination  Punto di destinazione con coordinate valide
+     *
      * @return array{
      *     distance: array{text: string, value: int},
      *     duration: array{text: string, value: int},

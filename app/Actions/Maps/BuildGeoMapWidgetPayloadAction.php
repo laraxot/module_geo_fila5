@@ -38,26 +38,26 @@ class BuildGeoMapWidgetPayloadAction
                 ],
             ],
             layerConfig: [
-                GeoMapLayerConfigData::from([
+                $this->toStringMixedMap(GeoMapLayerConfigData::from([
                     'key' => 'cluster',
                     'label' => 'Cluster',
                     'enabled' => true,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
+                ])->toArray()),
+                $this->toStringMixedMap(GeoMapLayerConfigData::from([
                     'key' => 'points',
                     'label' => 'Points',
                     'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
+                ])->toArray()),
+                $this->toStringMixedMap(GeoMapLayerConfigData::from([
                     'key' => 'heatmap',
                     'label' => 'Heatmap',
                     'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
+                ])->toArray()),
+                $this->toStringMixedMap(GeoMapLayerConfigData::from([
                     'key' => 'zones',
                     'label' => 'Zones',
                     'enabled' => false,
-                ])->toArray(),
+                ])->toArray()),
             ],
             meta: [
                 'totalFeatures' => \count($features),
@@ -75,14 +75,12 @@ class BuildGeoMapWidgetPayloadAction
     protected function getPlaces(): Collection
     {
         /** @var Collection<int, Place> $places */
-        $places = Place::query()
+        return Place::query()
             ->with(['placeType', 'address'])
             ->whereNotNull('latitude')
             ->whereNotNull('longitude')
             ->limit(3000)
             ->get();
-
-        return $places;
     }
 
     /**
@@ -115,12 +113,13 @@ class BuildGeoMapWidgetPayloadAction
         $title = $this->resolveTitle($place);
         $address = $place->getFormattedAddress();
         $description = \is_string($place->description ?? null) ? $place->description : '';
-        $search = trim(strtolower(implode(' ', array_filter([
+        $searchTerms = array_values(array_filter([
             $title,
             $category,
             $address,
             $description,
-        ]))));
+        ], static fn (mixed $value): bool => \is_string($value) && $value !== ''));
+        $search = trim(strtolower(implode(' ', $searchTerms)));
 
         return [
             'type' => 'Feature',
@@ -151,6 +150,7 @@ class BuildGeoMapWidgetPayloadAction
 
     /**
      * @param  Collection<int, Place>  $places
+     *
      * @return array{lat: float, lng: float}
      */
     private function resolveCenter(Collection $places): array
@@ -182,6 +182,26 @@ class BuildGeoMapWidgetPayloadAction
             return $formattedAddress;
         }
 
-        return 'Place #'.$place->getKey();
+        $placeKey = $place->getKey();
+
+        return 'Place #'.(\is_scalar($placeKey) ? (string) $placeKey : '');
+    }
+
+    /**
+     * @param  array<mixed>  $data
+     *
+     * @return array<string, mixed>
+     */
+    private function toStringMixedMap(array $data): array
+    {
+        $normalized = [];
+
+        foreach ($data as $key => $value) {
+            if (\is_string($key)) {
+                $normalized[$key] = $value;
+            }
+        }
+
+        return $normalized;
     }
 }

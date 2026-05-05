@@ -7,7 +7,6 @@ namespace Modules\Geo\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-
 use function Safe\json_decode;
 use function Safe\json_encode;
 
@@ -15,15 +14,11 @@ class SushiCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
     protected $signature = 'sushi:manage {action : L\'azione da eseguire (refresh|clear|status)}';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
     protected $description = 'Gestisce il database SQLite di Sushi';
 

@@ -277,6 +277,7 @@ trait GeoTrait
 
     /**
      * @param  mixed  $value
+     *
      * @return bool|mixed|string
      */
     /*

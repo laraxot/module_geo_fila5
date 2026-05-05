@@ -7,7 +7,6 @@ namespace Modules\Geo\Actions\Elevation;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\ElevationData;
-
 use function Safe\json_decode;
 
 /**
@@ -19,7 +18,8 @@ readonly class FetchOpenElevationAction
 
     public function __construct(
         private Client $client,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene l'elevazione per un punto.

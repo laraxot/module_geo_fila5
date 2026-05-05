@@ -86,7 +86,7 @@ class Comune extends BaseModel
     public string $jsonDirectory = '';
 
     /** @var array<int, string> */
-    public $translatable = [];
+    public array $translatable = [];
 
     /** @var list<string> */
     protected $fillable = [
@@ -176,6 +176,7 @@ class Comune extends BaseModel
      * Find a comune by name (case insensitive).
      *
      * @param  string  $nome  The name of the comune to find (case insensitive)
+     *
      * @return static|null The found comune or null if not found
      */
     public static function findByNome(string $nome): ?self
@@ -189,6 +190,7 @@ class Comune extends BaseModel
      * Find comuni by CAP code (partial match supported).
      *
      * @param  string  $cap  The CAP code to search for
+     *
      * @return Collection<static> Collection of matching comuni
      */
     public static function findByCap(string $cap): Collection

@@ -7,7 +7,6 @@ namespace Modules\Geo\Actions\TimeZone;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\TimeZoneData;
-
 use function Safe\json_decode;
 
 /**
@@ -23,7 +22,7 @@ class GetTimeZoneAction
 
     public function __construct(?string $apiKey = null)
     {
-        $this->client = new Client;
+        $this->client = new Client();
         $this->apiKey = $apiKey;
     }
 

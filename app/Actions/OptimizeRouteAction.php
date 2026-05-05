@@ -15,12 +15,14 @@ readonly class OptimizeRouteAction
 {
     public function __construct(
         private CalculateDistanceActionContract $calculateDistance,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottimizza l'ordine dei punti minimizzando la distanza totale.
      *
      * @param  Collection<int, LocationData>  $locations
+     *
      * @return Collection<int, LocationData>
      */
     public function execute(Collection $locations): Collection

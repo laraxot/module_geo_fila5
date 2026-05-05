@@ -24,12 +24,14 @@ readonly class GetElevationAction
      */
     public function __construct(
         private GoogleMapsService $googleMapsService,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene l'elevazione per una posizione geografica.
      *
      * @param  LocationData  $location  La posizione di cui ottenere l'elevazione
+     *
      * @return float L'elevazione in metri sul livello del mare
      *
      * @throws ElevationException Se il recupero dell'elevazione fallisce
@@ -66,6 +68,7 @@ readonly class GetElevationAction
      * Formatta l'elevazione in una stringa leggibile.
      *
      * @param  float  $meters  Elevazione in metri
+     *
      * @return string Elevazione formattata con unità di misura
      */
     public function formatElevation(float $meters): string

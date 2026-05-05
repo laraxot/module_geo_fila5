@@ -20,5 +20,6 @@ class GoogleMapAddressComponentData extends Data
         public readonly string $long_name,
         public readonly string $short_name,
         public readonly array $types,
-    ) {}
+    ) {
+    }
 }
