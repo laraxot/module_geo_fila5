@@ -109,25 +109,25 @@ class GetCoordinatesByAddressAction
     /**
      * Execute an HTTP GET request and always return a typed Response.
      *
-     * @param  array<string, mixed>  $params
+     * @param array<string, mixed> $params
      */
     private function makeHttpRequest(string $url, array $params): Response
     {
-        /** @var Response $response */
+        /* @var Response $response */
         return Http::get($url, $params);
     }
 
     private function getFromBing(string $address): ?CoordinatesData
     {
         $apiKey = config('services.bing.maps_api_key');
-        if (! is_string($apiKey) || $apiKey === '') {
+        if (! is_string($apiKey) || '' === $apiKey) {
             return null;
         }
 
         $data = $this->getBingResponse($address, $apiKey);
 
         $coordinates = $this->extractBingCoordinates($data);
-        if ($coordinates === null) {
+        if (null === $coordinates) {
             return null;
         }
 
@@ -199,7 +199,7 @@ class GetCoordinatesByAddressAction
     private function getFromOpenCage(string $address): ?CoordinatesData
     {
         $apiKey = config('services.opencage.api_key');
-        if (! is_string($apiKey) || $apiKey === '') {
+        if (! is_string($apiKey) || '' === $apiKey) {
             return null;
         }
 

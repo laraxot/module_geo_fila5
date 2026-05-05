@@ -13,8 +13,8 @@ use Spatie\LaravelData\Data;
 class RouteData extends Data
 {
     /**
-     * @param  Collection<LocationData>  $waypoints  Punti del percorso ottimizzato
-     * @param  Collection<LocationData>  $originalWaypoints  Punti del percorso originale
+     * @param Collection<LocationData> $waypoints         Punti del percorso ottimizzato
+     * @param Collection<LocationData> $originalWaypoints Punti del percorso originale
      * @param array<array{
      *     distance: array{value: int, text: string},
      *     duration: array{value: int, text: string},

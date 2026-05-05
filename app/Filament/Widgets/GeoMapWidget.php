@@ -115,7 +115,7 @@ final class GeoMapWidget extends Widget
     }
 
     /**
-     * @param  array<string, array|bool|float|int|string|null>  $payload
+     * @param array<string, array|bool|float|int|string|null> $payload
      */
     private function encodeJson(array $payload, string $message): string
     {
