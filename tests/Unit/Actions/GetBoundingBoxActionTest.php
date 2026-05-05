@@ -7,7 +7,7 @@ namespace Modules\Geo\Tests\Unit\Actions;
 use Modules\Geo\Actions\GetBoundingBoxAction;
 
 beforeEach(function () {
-    $action = new GetBoundingBoxAction;
+    $action = new GetBoundingBoxAction();
 });
 
 it('calculates bounding box correctly for milan', function (): void {

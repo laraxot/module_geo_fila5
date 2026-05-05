@@ -12,10 +12,10 @@ use Spatie\LaravelData\Data;
 class LocationData extends Data
 {
     /**
-     * @param  float  $latitude  Latitudine in gradi decimali
-     * @param  float  $longitude  Longitudine in gradi decimali
-     * @param  string|null  $name  Nome opzionale della posizione
-     * @param  string|null  $address  Indirizzo opzionale della posizione
+     * @param float       $latitude  Latitudine in gradi decimali
+     * @param float       $longitude Longitudine in gradi decimali
+     * @param string|null $name      Nome opzionale della posizione
+     * @param string|null $address   Indirizzo opzionale della posizione
      */
     public function __construct(
         public readonly float $latitude,

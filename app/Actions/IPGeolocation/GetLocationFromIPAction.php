@@ -19,7 +19,7 @@ readonly class GetLocationFromIPAction
     /**
      * Ottiene i dati di geolocalizzazione per un indirizzo IP.
      *
-     * @param  string  $ip  Indirizzo IP
+     * @param string $ip Indirizzo IP
      *
      * @return IPLocationData|null Dati di geolocalizzazione o null se non disponibili
      */

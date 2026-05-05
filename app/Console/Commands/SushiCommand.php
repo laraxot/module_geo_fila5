@@ -7,6 +7,7 @@ namespace Modules\Geo\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+
 use function Safe\json_decode;
 use function Safe\json_encode;
 
@@ -125,7 +126,7 @@ class SushiCommand extends Command
     /**
      * Valida i dati di un comune.
      *
-     * @param  array<mixed, mixed>  $comune
+     * @param array<mixed, mixed> $comune
      */
     protected function isValidComuneData(array $comune): bool
     {

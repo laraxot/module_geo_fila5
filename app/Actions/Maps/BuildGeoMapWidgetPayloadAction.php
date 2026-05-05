@@ -74,7 +74,7 @@ class BuildGeoMapWidgetPayloadAction
      */
     protected function getPlaces(): Collection
     {
-        /** @var Collection<int, Place> $places */
+        /* @var Collection<int, Place> $places */
         return Place::query()
             ->with(['placeType', 'address'])
             ->whereNotNull('latitude')
@@ -118,7 +118,7 @@ class BuildGeoMapWidgetPayloadAction
             $category,
             $address,
             $description,
-        ], static fn (mixed $value): bool => \is_string($value) && $value !== ''));
+        ], static fn (mixed $value): bool => \is_string($value) && '' !== $value));
         $search = trim(strtolower(implode(' ', $searchTerms)));
 
         return [
@@ -149,7 +149,7 @@ class BuildGeoMapWidgetPayloadAction
     }
 
     /**
-     * @param  Collection<int, Place>  $places
+     * @param Collection<int, Place> $places
      *
      * @return array{lat: float, lng: float}
      */
@@ -172,13 +172,13 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-        if (\is_string($title) && trim($title) !== '') {
+        if (\is_string($title) && '' !== trim($title)) {
             return trim($title);
         }
 
         $formattedAddress = $place->getFormattedAddress();
 
-        if ($formattedAddress !== '') {
+        if ('' !== $formattedAddress) {
             return $formattedAddress;
         }
 
@@ -188,7 +188,7 @@ class BuildGeoMapWidgetPayloadAction
     }
 
     /**
-     * @param  array<mixed>  $data
+     * @param array<mixed> $data
      *
      * @return array<string, mixed>
      */
