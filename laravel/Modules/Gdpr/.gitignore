@@ -93,6 +93,8 @@ cache/
 # Documentation and cache
 docs/phpstan/
 docs/cache/
+docs/archive/
+docs/archive/**
 cache/
 
 # Development tools
