@@ -20,6 +20,7 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [second-brain-operating-model](./concepts/second-brain-operating-model.md) — operational model for project memory
 - [second-brain-continuous-improvement](./concepts/second-brain-continuous-improvement.md) — continuous maintenance loop for root, module, and theme docs
 - [second-brain-audit-checks](./concepts/second-brain-audit-checks.md) — reusable lint checks for wiki health and retrieval quality
+<<<<<<< HEAD
 - [context-mode-plugin](./concepts/context-mode-plugin.md) — FTS5-based context compression for managing token overflow in large projects
 - [context-mode-cli-reference](./concepts/context-mode-cli-reference.md) — Quick reference for all context-mode commands and usage patterns
 
@@ -43,6 +44,14 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [wiki-search-performance](./how-to/wiki-search-performance.md) — Performance optimization: benchmarking, caching strategies, and metrics
 - [wiki-search-accessibility](./how-to/wiki-search-accessibility.md) — Accessibility features: screen readers, keyboard navigation, ARIA labels, and UX improvements
 - [wiki-search-troubleshooting](./how-to/wiki-search-troubleshooting.md) — Troubleshooting common issues: diagnostics, solutions, and debugging techniques
+=======
+- [second-brain-maintenance-cadence](./concepts/second-brain-maintenance-cadence.md) — daily/weekly/monthly rhythm and trigger-based maintenance protocol
+
+## Federated Pilots
+
+- [user-module-operating-focus](../../laravel/Modules/User/docs/wiki/concepts/user-module-operating-focus.md) — local identity/docs maintenance loop
+- [theme-one-operating-focus](../../laravel/Themes/One/docs/wiki/concepts/theme-one-operating-focus.md) — local theme/docs maintenance loop
+>>>>>>> 063e390e9 (.)
 
 ## Sources
 

@@ -501,6 +501,11 @@ return [
             'icon' => 'gg_anno',
             'tooltip' => 'gg_anno',
         ],
+        'export_pdf' => [
+            'tooltip' => 'export_pdf',
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+        ],
     ],
     'messages' => [
         'import' => [

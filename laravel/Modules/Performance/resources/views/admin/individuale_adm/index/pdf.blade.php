@@ -1,17 +1,22 @@
 @include('ptv::pdf.css')
 <page>
     @include('ptv::pdf.intestazione')
+    
     @php
-        $criteri = $row->criteriValutazione->sortBy('posizione');
+        $row=$rows[0];
+        $criteri = $row->criteriValutazione
+        ->where('post_type',$row->type)
+        ->sortBy('posizione');
     @endphp
     <h4 style="text-align:center;">SISTEMA DI MISURAZIONE E VALUTAZIONE DELLA PERFORMANCE INDIVIDUALE -
         Anno {{ $row->anno }}
         <br />
         {!! $row->option('titolo') !!}
     </h4>
+    
     <table class="morpion" style="width:100%;">
-        <col style="width: 5%;" />
-        <col style="width: 20%" />
+        <col style="width: 4%;" />
+        <col style="width: 22%" />
         <col style="width: 20%;" />
         <col style="width: 7%;text-align:right;" />
         <col style="width: 7%;text-align:right;" />
@@ -33,7 +38,7 @@
                 <td><b>Eccellente</b></td>
             </tr>
         </thead>
-        @foreach ($rows->where('ha_diritto', 1)->get() as $row)
+        @foreach ($rows->where('ha_diritto', 1)->where('totale_punteggio','>',0) as $row)
             <tr>
                 <td>{{ $row->matr }}<br />[{{ $row->id }}]</td>
                 <td>{{ $row->cognome }} {{ $row->nome }}<br /> {{ $row->email }}]</td>

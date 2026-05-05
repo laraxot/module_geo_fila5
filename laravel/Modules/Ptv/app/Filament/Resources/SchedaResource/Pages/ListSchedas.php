@@ -4,56 +4,57 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\SchedaResource\Pages;
 
-use Filament\Actions;
-use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
-use Filament\Actions\BulkAction;
-use Filament\Forms\Components\Select;
-use Filament\Schemas\Components\Utilities\Get;
-use Filament\Schemas\Components\Utilities\Set;
+use Override;
 use Filament\Tables;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\SelectColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\TernaryFilter;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Actions;
+use Parental\HasParent;
+use Parental\HasChildren;
 use Illuminate\Support\Arr;
-use Modules\Performance\Actions\ShowMailSendedAt;
-use Modules\Performance\Models\StabiDirigente;
-use Modules\Ptv\Actions\FixValutatoreIdByAnno;
-use Modules\Ptv\Actions\GetValutatoriOptions;
+use Filament\Actions\Action;
+use Modules\Ptv\Models\Scheda;
+use Filament\Actions\BulkAction;
+use Filament\Actions\ActionGroup;
 use Modules\Ptv\Actions\Populate;
 use Modules\Ptv\Enums\WorkerType;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\SelectColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Modules\Ptv\Actions\GetValutatoriOptions;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
+use Modules\Performance\Models\StabiDirigente;
+use Modules\Ptv\Actions\FixValutatoreIdByAnno;
+use Modules\Ptv\Filament\Columns\PeriodoColumn;
+use Modules\Ptv\Filament\Columns\RepartoColumn;
+use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Performance\Actions\ShowMailSendedAt;
+use Modules\Ptv\Filament\Columns\QualificaColumn;
+use Modules\Xot\Filament\Actions\Table\PdfAction;
+use Modules\Ptv\Filament\Columns\LavoratoreColumn;
+use Modules\Ptv\Filament\Resources\SchedaResource;
+use Modules\UI\Filament\Tables\Columns\GroupColumn;
+use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
+use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
+use Modules\Xot\Filament\Actions\Header\ExportPdfAction;
+use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Ptv\Filament\Actions\Bulk\SendMailBulkAction;
-use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
-use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\PopulateYearAction;
 use Modules\Ptv\Filament\Actions\Header\TrovaEsclusiAction;
-use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
-use Modules\Ptv\Filament\Columns\LavoratoreColumn;
-use Modules\Ptv\Filament\Columns\PeriodoColumn;
-use Modules\Ptv\Filament\Columns\QualificaColumn;
-use Modules\Ptv\Filament\Columns\RepartoColumn;
-use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
-use Modules\Ptv\Filament\Resources\ReportResource\Widgets\FirmaValutatoreWidget;
-use Modules\Ptv\Filament\Resources\SchedaResource;
-use Modules\Ptv\Filament\Resources\SchedaResource\Actions\Header\MakePdfAction;
-use Modules\Ptv\Models\Contracts\SchedaContract;
-use Modules\Ptv\Models\Scheda;
-use Modules\UI\Filament\Tables\Columns\GroupColumn;
-use Modules\Xot\Actions\Filament\Actions\CopyFromLastYearButton;
-use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
-use Modules\Xot\Filament\Actions\Table\PdfAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Override;
-use Parental\HasChildren;
-use Parental\HasParent;
+use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
+use Modules\Xot\Actions\Filament\Actions\CopyFromLastYearButton;
+use Modules\Ptv\Filament\Resources\SchedaResource\Actions\Header\MakePdfAction;
+use Modules\Ptv\Filament\Resources\ReportResource\Widgets\FirmaValutatoreWidget;
 
 
 
@@ -72,7 +73,8 @@ class ListSchedas extends XotBaseListRecords
             'populate_year' => PopulateYearAction::make(),
             'trova_esclusi' => TrovaEsclusiAction::make(),
             'export_xls' => ExportXlsAction::make(),
-            'pdf' => MakePdfAction::make(),
+            //'pdf' => MakePdfAction::make(),
+            'export_pdf' => ExportPdfAction::make('export_pdf'),
             // 'export' => ExportXlsAction::make(), // da togliere campi etc etc
         ];
     }

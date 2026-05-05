@@ -311,6 +311,11 @@ return [
             'tooltip' => 'last_data_assunz',
             'icon' => 'last_data_assunz',
         ],
+        'export_pdf' => [
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+            'tooltip' => 'export_pdf',
+        ],
     ],
     'messages' => [
         'validation' => [

@@ -58,6 +58,13 @@ For Theme One tasks:
 
 This keeps UI strategy aligned with delivery and prevents re-analysis of the same roadmap choices.
 
+### Theme docs continuous checklist
+
+- pre-task: start from local wiki before touching raw theme docs
+- in-task: prefer concise reusable decisions over long narrative duplication
+- post-task: update local concept/source page, index, and log
+- escalation: move to root wiki only when the decision is cross-theme or cross-module
+
 ## References
 
 - [[Theme One Product and Roadmap Docs]]

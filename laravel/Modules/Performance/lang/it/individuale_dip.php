@@ -375,6 +375,11 @@ return [
             'icon' => 'cancel',
             'tooltip' => 'cancel',
         ],
+        'export_pdf' => [
+            'tooltip' => 'export_pdf',
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+        ],
     ],
     'messages' => [
         'validation' => [

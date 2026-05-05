@@ -8,6 +8,7 @@ qmd: "second brain audit, wiki lint, orphan pages, unindexed pages, docs health,
 related:
   - "[[Second Brain Continuous Improvement]]"
   - "[[Second Brain Operating Model]]"
+  - "[[Second Brain Maintenance Cadence]]"
 ---
 
 # Second Brain Audit Checks
@@ -48,3 +49,4 @@ Current checks:
 
 - [[Second Brain Continuous Improvement]]
 - [[Second Brain Operating Model]]
+- [[Second Brain Maintenance Cadence]]

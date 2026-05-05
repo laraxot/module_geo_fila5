@@ -115,8 +115,9 @@ class FirmaValutatoreWidget extends XotBaseWidget
     #[On('valutatoreIdUpdated')]
     public function valutatoreIdUpdated(?array $filters = []): void
     {
+       
         $filtersArray = is_array($filters) ? $filters : ($this->pageFilters ?? []);
-
+       
         if ($filtersArray === []) {
             $this->form->fill([]);
 
@@ -140,7 +141,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
         /** @var array<string, mixed> $where */
         $where = ['id' => $this->valutatore_id];
         $record = $stabiReparClass::firstWhere($where);
-
+        
         if (! $record instanceof Model) {
             $this->record = null;
             /** @var array<string, mixed> $emptyData */
@@ -210,6 +211,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
         /** @var array<string, mixed> $data */
         $data = ['nome_diri' => $nomeDiri];
         $this->record = $record;
+        
         $this->form->fill($data);
     }
 }

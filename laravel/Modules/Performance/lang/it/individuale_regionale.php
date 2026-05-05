@@ -363,6 +363,18 @@ return [
         ],
         'edit' => [
             'tooltip' => 'edit',
+            'icon' => 'edit',
+            'label' => 'edit',
+        ],
+        'export_pdf' => [
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+            'tooltip' => 'export_pdf',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
     ],
     'messages' => [

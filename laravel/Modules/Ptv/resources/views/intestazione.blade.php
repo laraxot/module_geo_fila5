@@ -1,5 +1,5 @@
 
-<img src="{{ $_theme->asset('ptv::img/logo_ptv70px.png') }}" alt="" width='100' height='100'>
+{{-- Logo raster disabled: Html2Pdf blocks external/invalid host paths and file is not present in repository. --}}
 {{--
 <img src="/ptvx/public_html/assets/ptv/img/logo_ptv70px.png">
 --}}

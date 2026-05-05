@@ -94,6 +94,7 @@
   - migrazione rinominata a `2026_04_20_173500_create_profiles_table.php` per riesecuzione idempotente
   - regola documentata in `concepts/profile-migration-uuid-contract.md`
 
+<<<<<<< HEAD
 ## [2026-04-27] discussion | Policy Inheritance Boundary
 - Created: concepts/policy-inheritance-boundary.md (decisione architetturale)
 - Updated: index.md (aggiunto cross-reference)
@@ -102,3 +103,20 @@
 - Best practices documentate: type-hint UserContract, permission dot notation, test con permessi reali
 - Enhancements proposti: canAny(), canAll(), scope(), after() hooks
 - Commit: docs: document policy inheritance boundary decision
+=======
+## [2026-04-29] update | local second brain operating loop
+- Aggiornata `concepts/user-module-operating-focus.md` con loop locale second brain (retrieve -> distill -> index -> log).
+- Allineato il comportamento documentale del modulo User al ciclo `/bmad-create-story` del progetto.
+
+## [2026-04-29] update | user docs continuous checklist
+- Aggiunta checklist operativa locale per enforce continuo pre-task/in-task/post-task.
+- Rafforzata la regola di escalation verso root wiki solo per decisioni cross-module.
+
+## [2026-04-29] update | super-admin icon state clarity
+- Allineata la UI di `livewire/profile/super-admin.blade.php` a icone Heroicon outline distinte (stato super-admin vs negate-super-admin).
+- Rimossa la dipendenza dal `rotate-180` sull'icon-button, sostituita con semantica visiva esplicita e micro-animazione hover.
+
+## [2026-04-29] update | custom svg super-admin icons
+- Creati `resources/svg/superadmin.svg` e `resources/svg/negate-superadmin.svg` nel modulo User.
+- Aggiornate le view badge/profile per usare `user-superadmin` e `user-negate-superadmin` con micro-animazione hover.
+>>>>>>> 063e390e9 (.)

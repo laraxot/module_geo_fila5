@@ -60,6 +60,13 @@ For User-domain tasks, keep this local loop:
 
 This avoids repeating the same identity analysis across sessions and keeps business logic retrieval stable.
 
+### User docs continuous checklist
+
+- pre-task: read local wiki first, then only the raw identity cluster required
+- in-task: write only durable decisions, not temporary exploration noise
+- post-task: update local wiki page, local index, local log
+- escalation: push only cross-module identity governance to root wiki
+
 ## References
 
 - [[User Architecture Sources]]

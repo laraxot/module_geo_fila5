@@ -3,12 +3,13 @@ title: "Second Brain Continuous Improvement"
 module: "ptvx-project"
 type: concept
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T09:09:00Z"
+updated: "2026-04-29T10:32:00Z"
 qmd: "continuous improvement, wiki maintenance, docs ingest, token efficiency, actionability, progressive compression"
 related:
   - "[[Second Brain Operating Model]]"
   - "[[BMAD Operating Model]]"
   - "[[AI Tooling Workflow]]"
+  - "[[Second Brain Maintenance Cadence]]"
 ---
 
 # Second Brain Continuous Improvement
@@ -54,6 +55,23 @@ When a request triggers story creation, the sequence is:
 
 This keeps BMAD delivery and second-brain memory synchronized.
 
+## Execution Checkpoints
+
+Before starting implementation work:
+
+1. open nearest wiki node (root/module/theme)
+2. verify whether an equivalent topic already exists
+3. collect only missing evidence from raw docs and external sources
+
+After completing implementation work:
+
+1. update nearest wiki concept/source page
+2. update nearest `index.md`
+3. append nearest `log.md`
+4. promote only cross-cutting findings to root wiki
+
+This enforces continuous update/study/improvement of module and theme `docs` without creating redundant documents.
+
 ## External Benchmark Policy
 
 External research is allowed only if converted into repository-local rules with explicit mapping:
@@ -71,6 +89,15 @@ Use the root wiki when the finding affects repository-wide architecture, AI work
 Use module wiki pages when the knowledge is bounded to one module's code, APIs, business rules, or implementation constraints.
 
 Use theme wiki pages when the knowledge is bounded to presentation, UX, frontend assets, view composition, or product-copy behavior inside one theme.
+
+## Federated Pilot Anchors
+
+Active pilot pages that implement the same loop locally:
+
+- User module: `../../../laravel/Modules/User/docs/wiki/concepts/user-module-operating-focus.md`
+- Theme One: `../../../laravel/Themes/One/docs/wiki/concepts/theme-one-operating-focus.md`
+
+These anchors make root-to-local traversal explicit and reduce repeated discovery cost.
 
 ## Minimum Quality Checks
 
@@ -96,3 +123,4 @@ An ingest is good enough when:
 - [[Second Brain Operating Model]]
 - [[BMAD Operating Model]]
 - [[AI Tooling Workflow]]
+- [[Second Brain Maintenance Cadence]]
