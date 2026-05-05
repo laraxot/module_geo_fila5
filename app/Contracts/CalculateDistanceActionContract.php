@@ -16,6 +16,7 @@ interface CalculateDistanceActionContract
      *
      * @param  LocationData  $origin  Origin point with valid coordinates
      * @param  LocationData  $destination  Destination point with valid coordinates
+     *
      * @return array{
      *     distance: array{text: string, value: int},
      *     duration: array{text: string, value: int},

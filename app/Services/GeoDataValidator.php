@@ -77,6 +77,7 @@ class GeoDataValidator
      * Ottiene gli errori di validazione.
      *
      * @param  array  $data  Dati da validare
+     *
      * @return array<string, array<int, string>>
      */
     public function getErrors(array $data): array
@@ -84,9 +85,7 @@ class GeoDataValidator
         $validator = Validator::make($data, self::VALIDATION_RULES, self::CUSTOM_MESSAGES);
 
         /** @var array<string, array<int, string>> $errors */
-        $errors = $validator->errors()->toArray();
-
-        return $errors;
+        return $validator->errors()->toArray();
     }
 
     /**

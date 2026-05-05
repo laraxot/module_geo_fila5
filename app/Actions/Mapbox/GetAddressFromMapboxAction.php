@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\AddressData;
-
 use function Safe\json_decode;
 use function Safe\preg_match;
 
@@ -24,7 +23,8 @@ readonly class GetAddressFromMapboxAction
 
     public function __construct(
         private Client $client,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Mapbox.

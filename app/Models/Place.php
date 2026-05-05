@@ -12,7 +12,6 @@ use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
 use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Contracts\ProfileContract;
-
 use function Safe\json_encode;
 
 /**

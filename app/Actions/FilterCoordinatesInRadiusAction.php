@@ -16,16 +16,19 @@ use Modules\Geo\Datas\LocationData;
  * @param  float  $centerLongitude  La longitudine del punto centrale
  * @param  array<array{latitude: string, longitude: string}>  $coordinates  Array di coordinate da filtrare
  * @param  int  $radius  Raggio in metri entro cui filtrare le coordinate
+ *
  * @return array<array{latitude: string, longitude: string}> Le coordinate filtrate
  */
 readonly class FilterCoordinatesInRadiusAction
 {
     public function __construct(
         private CalculateDistanceAction $calculateDistanceAction,
-    ) {}
+    ) {
+    }
 
     /**
      * @param  array<array{latitude: string, longitude: string}>  $coordinates
+     *
      * @return array<array{latitude: string, longitude: string}>
      */
     public function execute(float $centerLatitude, float $centerLongitude, array $coordinates, int $radius): array

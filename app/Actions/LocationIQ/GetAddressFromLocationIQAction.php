@@ -20,6 +20,7 @@ class GetAddressFromLocationIQAction
      * Esegue la ricerca dell'indirizzo su LocationIQ.
      *
      * @param  string  $address  L'indirizzo da cercare
+     *
      * @return AddressData|null I dati dell'indirizzo trovato o null se non trovato
      *
      * @throws \Exception Se la chiave API non è configurata

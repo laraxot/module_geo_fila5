@@ -20,7 +20,6 @@ class GoogleMapsService extends BaseGeoService
     /**
      * Esegue una richiesta di geocodifica inversa.
      *
-     *
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
@@ -43,6 +42,7 @@ class GoogleMapsService extends BaseGeoService
      *
      * @param  array<string>  $origins  Punti di origine (formato: "lat,lng|lat,lng|...")
      * @param  array<string>  $destinations  Punti di destinazione (formato: "lat,lng|lat,lng|...")
+     *
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
@@ -64,7 +64,6 @@ class GoogleMapsService extends BaseGeoService
 
     /**
      * Ottiene l'elevazione per un punto.
-     *
      *
      * @return array<string, mixed>
      *

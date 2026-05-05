@@ -173,7 +173,7 @@ class Address extends BaseModel
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
             /* @phpstan-ignore argument.unresolvableType */
-            ->map(function ($item) {
+            ->map(function ($item): void {
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;

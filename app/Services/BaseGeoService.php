@@ -44,6 +44,7 @@ abstract class BaseGeoService
      * @param  string  $url  URL della richiesta
      * @param  array<string, mixed>  $params  Parametri della richiesta
      * @param  bool  $useCache  Se utilizzare la cache
+     *
      * @return array<string, mixed>
      *
      * @throws \RuntimeException Se la richiesta fallisce

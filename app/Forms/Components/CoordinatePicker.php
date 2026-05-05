@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Modules\Geo\Forms\Components;
 
 use Filament\Forms\Components\Field;
-use Filament\Forms\Concerns\InteractsWithWire;
 use Livewire\Attributes\On;
+
+use function Safe\file_get_contents;
+use function Safe\json_decode;
 
 class CoordinatePicker extends Field
 {
-    use InteractsWithWire;
-
     public ?string $latitudeColumn = 'latitude';
 
     public ?string $longitudeColumn = 'longitude';
@@ -25,6 +25,16 @@ class CoordinatePicker extends Field
     public bool $enableReverseGeocoding = false;
 
     protected string $view = 'geo::filament.forms.components.coordinate-picker';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->rules([
+            'latitude' => ['nullable', 'numeric', 'min:-90', 'max:90'],
+            'longitude' => ['nullable', 'numeric', 'min:-180', 'max:180'],
+        ]);
+    }
 
     public function latitudeColumn(?string $column = null): static
     {
@@ -73,41 +83,31 @@ class CoordinatePicker extends Field
         return $this->enableReverseGeocoding;
     }
 
-    public function getStatePath(): string
+    public function getStatePath(bool $isAbsolute = false): string
     {
         return $this->getName().'.coordinates';
     }
 
     public function getState(): array
     {
+        $state = data_get($this->getLivewire(), $this->getStatePath());
+
         return [
-            'latitude' => $this->getAttribute('latitude'),
-            'longitude' => $this->getAttribute('longitude'),
+            'latitude' => is_array($state) ? ($state['latitude'] ?? null) : null,
+            'longitude' => is_array($state) ? ($state['longitude'] ?? null) : null,
         ];
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->makeRules([
-            'latitude' => ['nullable', 'float', 'min:-90', 'max:90'],
-            'longitude' => ['nullable', 'float', 'min:-180', 'max:180'],
-        ]);
-    }
-
-    protected function mutateState(array $input): void
-    {
-        $this->setAttribute('latitude', $input['latitude'] ?? null);
-        $this->setAttribute('longitude', $input['longitude'] ?? null);
     }
 
     /** Livewire callback, called from JavaScript */
     #[On('coords-changed')]
     public function handleCoordsChanged(array $coords): void
     {
-        $this->setAttribute('latitude', $coords['latitude'] ?? null);
-        $this->setAttribute('longitude', $coords['longitude'] ?? null);
+        $stateRaw = data_get($this->getLivewire(), $this->getStatePath());
+        $state = is_array($stateRaw) ? $stateRaw : [];
+        $state['latitude'] = $coords['latitude'] ?? null;
+        $state['longitude'] = $coords['longitude'] ?? null;
+        $livewire = $this->getLivewire();
+        data_set($livewire, $this->getStatePath(), $state);
     }
 
     /** Exposed for reverse geocoding */
@@ -116,15 +116,29 @@ class CoordinatePicker extends Field
     {
         // Simple Nominatim reverse geocode – fallback to null on error
         $url = "https://nominatim.openstreetmap.org/reverse?format=json&lat={$latitude}&lon={$longitude}&accept-language=it";
-        $response = @file_get_contents($url);
-        $data = $response ? json_decode($response, true) : null;
 
-        return $data['display_name'] ?? null;
+        try {
+            $response = file_get_contents($url);
+        } catch (\Throwable) {
+            return null;
+        }
+        if ($response === '') {
+            return null;
+        }
+
+        /** @var array<string, mixed>|null $data */
+        $data = json_decode($response, true);
+
+        if (! is_array($data)) {
+            return null;
+        }
+
+        return is_string($data['display_name'] ?? null) ? $data['display_name'] : null;
     }
 
     public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array
     {
-        if (! is_array($data) || ! isset($data[$fieldName])) {
+        if (! isset($data[$fieldName])) {
             return [$latitudeColumn => null, $longitudeColumn => null];
         }
 
@@ -137,5 +151,15 @@ class CoordinatePicker extends Field
         $lng = is_numeric($lng) ? (float) $lng : null;
 
         return [$latitudeColumn => $lat, $longitudeColumn => $lng];
+    }
+
+    protected function mutateState(array $input): void
+    {
+        $stateRaw = data_get($this->getLivewire(), $this->getStatePath());
+        $state = is_array($stateRaw) ? $stateRaw : [];
+        $state['latitude'] = $input['latitude'] ?? null;
+        $state['longitude'] = $input['longitude'] ?? null;
+        $livewire = $this->getLivewire();
+        data_set($livewire, $this->getStatePath(), $state);
     }
 }

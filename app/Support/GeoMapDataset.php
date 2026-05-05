@@ -30,7 +30,8 @@ final class GeoMapDataset
 
     public function __construct(
         private readonly string $path,
-    ) {}
+    ) {
+    }
 
     /**
      * @return GeoDataset
@@ -128,6 +129,7 @@ final class GeoMapDataset
 
     /**
      * @param  array<array-key, mixed>  $decoded
+     *
      * @return list<GeoFeature>
      */
     private function normalizeFeatureCollection(array $decoded): array
@@ -158,6 +160,7 @@ final class GeoMapDataset
 
     /**
      * @param  array<array-key, mixed>  $feature
+     *
      * @return GeoFeature|null
      */
     private function normalizeFeature(array $feature): ?array
@@ -195,6 +198,7 @@ final class GeoMapDataset
 
     /**
      * @param  array<array-key, mixed>  $properties
+     *
      * @return GeoProperties|null
      */
     private function normalizeProperties(array $properties): ?array

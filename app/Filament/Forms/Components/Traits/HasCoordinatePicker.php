@@ -32,65 +32,6 @@ trait HasCoordinatePicker
 
     protected bool $geolocateWhenEmpty = false;
 
-    protected function setUpCoordinatePicker(): void
-    {
-        $this->default(['lat' => null, 'lng' => null, 'address' => null]);
-
-        $this->afterStateHydrated(static function (self $component, mixed $state): void {
-            if (is_array($state) && isset($state['lat'], $state['lng'])) {
-                return;
-            }
-
-            $record = $component->getRecord();
-            $fieldName = $component->getName();
-
-            // Case 1: State is already a JSON/Array in the main field
-            if ($record instanceof Model && is_array($val = $record->getAttribute($fieldName))) {
-                $component->state([
-                    'lat' => self::normalizeCoordinate($val['lat'] ?? null),
-                    'lng' => self::normalizeCoordinate($val['lng'] ?? null),
-                    'address' => $val['address'] ?? null,
-                ]);
-
-                return;
-            }
-
-            // Case 2: Mapping from separate columns
-            if ($record instanceof Model && $component->getLatColumn() && $component->getLngColumn()) {
-                $component->state([
-                    'lat' => self::normalizeCoordinate($record->getAttribute($component->getLatColumn())),
-                    'lng' => self::normalizeCoordinate($record->getAttribute($component->getLngColumn())),
-                    'address' => $record->getAttribute('address'), // Fallback for address if it exists
-                ]);
-
-                return;
-            }
-
-            $component->state(['lat' => null, 'lng' => null, 'address' => null]);
-        });
-
-        $this->dehydrateStateUsing(static function (self $component, $state) {
-            return $state;
-        });
-
-        $this->saveRelationshipsUsing(static function (self $component, Model $record, $state) {
-            if (! is_array($state)) {
-                return;
-            }
-
-            $latCol = $component->getLatColumn();
-            $lngCol = $component->getLngColumn();
-
-            // If separate columns are defined, update them
-            if ($latCol && $lngCol) {
-                $record->update([
-                    $latCol => self::normalizeCoordinate($state['lat'] ?? null),
-                    $lngCol => self::normalizeCoordinate($state['lng'] ?? null),
-                ]);
-            }
-        });
-    }
-
     public function latColumn(string $column): static
     {
         $this->latColumn = $column;
@@ -333,6 +274,65 @@ trait HasCoordinatePicker
         } catch (\Throwable) {
             return null;
         }
+    }
+
+    protected function setUpCoordinatePicker(): void
+    {
+        $this->default(['lat' => null, 'lng' => null, 'address' => null]);
+
+        $this->afterStateHydrated(static function (self $component, mixed $state): void {
+            if (is_array($state) && isset($state['lat'], $state['lng'])) {
+                return;
+            }
+
+            $record = $component->getRecord();
+            $fieldName = $component->getName();
+
+            // Case 1: State is already a JSON/Array in the main field
+            if ($record instanceof Model && is_array($val = $record->getAttribute($fieldName))) {
+                $component->state([
+                    'lat' => self::normalizeCoordinate($val['lat'] ?? null),
+                    'lng' => self::normalizeCoordinate($val['lng'] ?? null),
+                    'address' => $val['address'] ?? null,
+                ]);
+
+                return;
+            }
+
+            // Case 2: Mapping from separate columns
+            if ($record instanceof Model && $component->getLatColumn() && $component->getLngColumn()) {
+                $component->state([
+                    'lat' => self::normalizeCoordinate($record->getAttribute($component->getLatColumn())),
+                    'lng' => self::normalizeCoordinate($record->getAttribute($component->getLngColumn())),
+                    'address' => $record->getAttribute('address'), // Fallback for address if it exists
+                ]);
+
+                return;
+            }
+
+            $component->state(['lat' => null, 'lng' => null, 'address' => null]);
+        });
+
+        $this->dehydrateStateUsing(static function (self $component, $state) {
+            return $state;
+        });
+
+        $this->saveRelationshipsUsing(static function (self $component, Model $record, $state): void {
+            if (! is_array($state)) {
+                return;
+            }
+
+            $latCol = $component->getLatColumn();
+            $lngCol = $component->getLngColumn();
+
+            // If separate columns are defined, update them
+            if ($latCol && $lngCol) {
+                $record->update([
+                    $latCol => self::normalizeCoordinate($state['lat'] ?? null),
+                    $lngCol => self::normalizeCoordinate($state['lng'] ?? null),
+                ]);
+            }
+        });
     }
 
     /**

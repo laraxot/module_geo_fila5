@@ -19,12 +19,14 @@ class UpdateClientCoordinatesBulkAction
 
     public function __construct(
         private readonly GetAddressDataFromFullAddressAction $getAddressDataFromFullAddressAction,
-    ) {}
+    ) {
+    }
 
     /**
      * Execute the action to update coordinates for a collection of addresses.
      *
      * @param  Collection<int, Address>  $addresses
+     *
      * @return array{success_count: int, error_messages: array<string>}
      */
     public function execute(Collection $addresses): array
@@ -32,7 +34,7 @@ class UpdateClientCoordinatesBulkAction
         $successCount = 0;
         $errorMessages = [];
 
-        DB::transaction(function () use ($addresses, &$successCount, &$errorMessages) {
+        DB::transaction(function () use ($addresses, &$successCount, &$errorMessages): void {
             foreach ($addresses as $address) {
                 $fullAddress = is_string($address->full_address) ? $address->full_address : '';
                 $addressData = $this->getAddressDataFromFullAddressAction->execute($fullAddress);
@@ -41,7 +43,7 @@ class UpdateClientCoordinatesBulkAction
                     $toArray = $addressData->toArray();
                     /** @var array<string, mixed> $up */
                     $up = Arr::only($toArray, ['latitude', 'longitude']);
-                    /* @var array<string, mixed> $up */
+                    /** @var array<string, mixed> $up */
                     $address->update($up);
                     $successCount++;
 

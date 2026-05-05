@@ -44,7 +44,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
             ->icon('heroicon-o-map-pin')
             ->deselectRecordsAfterCompletion()
             ->action(function (Collection $records): void {
-                /* @var Collection<int, Place> $records */
+                /** @var Collection<int, Place> $records */
                 $this->processRecords($records);
             });
     }

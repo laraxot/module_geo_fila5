@@ -24,5 +24,6 @@ class GeoMapWidgetData extends Data
         public array $initialState,
         public array $layerConfig,
         public array $meta = [],
-    ) {}
+    ) {
+    }
 }
