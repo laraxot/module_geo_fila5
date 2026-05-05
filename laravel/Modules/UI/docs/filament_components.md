@@ -66,5 +66,5 @@
 * [filament-components.md](../../Cms/project_docs/filament-components.md)
 * [filament-components.md](../../../project_docs/rules/filament-components.md)
 
-||||||| parent of 9a84589 (.):docs/archive/filament-components-1.md
+||||||| parent of 9a84589 (.):docs/archived/filament-components-1.md
 * [filament-components.md](../../../docs/rules/filament-components.md)

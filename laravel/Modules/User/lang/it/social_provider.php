@@ -38,6 +38,10 @@ return [
             'helper_text' => 'Nome identificativo del provider',
             'description' => 'Nome del provider social',
         ],
+        'env_guide' => [
+            'label' => 'Guida configurazione .env',
+            'content' => '1) Crea le credenziali OAuth su Google Cloud Console. 2) Aggiungi GOOGLE_CLIENT_ID e GOOGLE_CLIENT_SECRET nel file .env del server. 3) Esegui: php artisan config:clear && php artisan cache:clear && php artisan optimize:clear. 4) Torna qui e attiva il provider.',
+        ],
         'guard_name' => [
             'label' => 'Guard',
             'tooltip' => 'Nome del guard',

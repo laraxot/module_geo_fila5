@@ -1,33 +1,27 @@
----
-title: "Wiki Index"
-module: "UI"
-updated: "2026-04-15T08:28:51Z"
----
+# Wiki Locale Index
 
-# Wiki Index — UI
+## Karpathy LLM Wiki Standard
 
-> **Purpose:** Content-oriented catalog of all wiki pages in this module.  
-> **Replaces embedding-based RAG at moderate scale (~100 sources).**
+- [forbidden-folders-rule](../../../../docs/wiki/concepts/forbidden-folders.md): Strict structural constraints.
+- [llm-wiki-standard](../../../../docs/project/karpathy-llm-wiki-adoption.md): Repository mapping and knowledge lifecycle.
 
-## Concepts
+## Sacred Hierarchy
 
-- [context-compression](./context-compression.md) — UI-facing guide to the shared MCP context-compression stack
-- [ui-operating-model](./concepts/ui-operating-model.md) — role, guardrails, retrieval model, and local second-brain loop for shared UI decisions
+- [concepts/](./concepts/): Architectural patterns and methodologies.
+- [entities/](./entities/): Key models and components.
+- [sources/](./sources/): Research data and external links.
+- [comparisons/](./comparisons/): Alternative implementations.
+- [decisions/](./decisions/): ADL (Architectural Decision Log).
+- [troubleshooting/](./troubleshooting/): Known issues and solutions.
+- [_archive/](./_archive/): Legacy documentation.
+- [_templates/](./_templates/): Standard templates.
 
-## Entities
+## Compiled Pages
 
-_No entities tracked yet._
-
-## Sources
-
-- [ui-architecture-sources](./sources/ui-architecture-sources.md) — summary of the highest-signal UI architecture documents
-
-## Comparisons
-
-_No comparisons synthesized yet._
-
----
-
-**Last Updated:** 2026-04-29T11:55:00Z  
-**Total Pages:** 3  
-**Total Raw Sources:** 4
+| Page | Type | Source | Updated |
+|------|------|--------|---------|
+| [.gitkeep](./concepts/.gitkeep) | Concept | - | 2026-04-21 |
+| [module-filament-component-autoload-rule](./concepts/module-filament-component-autoload-rule.md) | Concept | EnumSelect runtime | 2026-04-23 |
+| [enum-select-contract-and-false-friends](./concepts/enum-select-contract-and-false-friends.md) | Concept | runtime + phpstan | 2026-04-23 |
+| [enumselect-filament-api-collisions](./concepts/enumselect-filament-api-collisions.md) | Concept | runtime fatals (make/enum/getLabel) | 2026-04-23 |
+| [model-states-module-ownership](./concepts/model-states-module-ownership.md) | Concept | ownership modulare e vincoli runtime | 2026-04-28 |

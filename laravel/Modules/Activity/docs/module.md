@@ -134,7 +134,11 @@ Event Store ← Snapshot ← Aggregate ← Event Sourcing
 - **User**: Activity的主体 (user actions)
 - **Limesurvey**: Survey lifecycle tracking
 - **Tenant**: Multi-tenancy isolation
+<<<<<<< HEAD
+- **Quaeris**: Dashboard activity tracking
+=======
 - **healthcare_app**: Dashboard activity tracking
+>>>>>>> 4467550 (.)
 
 ## Lacune e Funzionalità Mancanti
 

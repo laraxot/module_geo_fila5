@@ -26,6 +26,8 @@ return [
 
         'role' => Modules\User\Models\Role::class,
 
+        'team' => Modules\User\Models\Team::class,
+
     ],
 
     'table_names' => [

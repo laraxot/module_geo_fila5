@@ -2,7 +2,7 @@
 title: "Laravel 13 Modular Package Compatibility Matrix"
 module: "Xot"
 created: "2026-04-28"
-updated: "2026-04-28"
+updated: "2026-05-05"
 ---
 
 # Laravel 13 Modular Package Compatibility Matrix
@@ -15,7 +15,8 @@ Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti
 
 | Pacchetto | Owner canonico | Compatibile Laravel 13 | Compatibile PHP 8.3 | Decisione |
 |---|---|---|---|---|
-| `fruitcake/laravel-debugbar` | `Modules/Xot` (`require-dev`) | si (`^13`) | si (`^8.2`) | gia' presente nel lock root come `v4.2.8`; non duplicare altrove |
+| `fruitcake/laravel-debugbar` | `Modules/Xot` (`require-dev`) | si (`illuminate ^11|^12|^13.0`) | si (`^8.2`) | dichiarare solo in Xot come `^4.2.8`; non duplicare nel root o nei temi |
+| `spatie/laravel-pdf` | `Modules/Incentivi` | si dalla linea `^2.8` (`illuminate/contracts ^11|^12|^13`) | si (`^8.2`) | aggiornare da `^1.5` a `^2.8`; non spostare nel root |
 | `spatie/laravel-responsecache` | nessun owner runtime confermato | si (`8.3.x`) | no (`php ^8.4`) | non reinstallare; la linea `7.7.2` resta ferma a `Laravel 12` |
 | `aaronfrancis/fast-paginate` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
 | `fidum/laravel-eloquent-morph-to-one` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
@@ -27,7 +28,8 @@ Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti
 - `fidum/laravel-eloquent-morph-to-one`: `Modules/Xot/app/Actions/Model/Store/MorphToOneAction.php`, `Modules/Xot/app/Actions/Model/Update/MorphToOneAction.php`
 - `spatie/laravel-model-states`: `Modules/UI/app/Filament/Forms/Components/SelectState.php`, `Modules/UI/app/Filament/Tables/Columns/*State*.php`, `Modules/Xot/app/States/*`
 - `spatie/laravel-responsecache`: nessuna integrazione applicativa forte nel codice PHP corrente; presenti solo riferimenti documentali e una riga commentata in `ArtisanService`
-- `fruitcake/laravel-debugbar`: `laravel/config/debugbar.php`, middleware/security bypass e servizi Artisan in Xot
+- `fruitcake/laravel-debugbar`: `Modules/Xot/composer.json`, `laravel/config/debugbar.php`, middleware/security bypass e servizi Artisan in Xot
+- `spatie/laravel-pdf`: `Modules/Incentivi/composer.json`, report PDF del dominio Incentivi
 
 ## Regola operativa
 

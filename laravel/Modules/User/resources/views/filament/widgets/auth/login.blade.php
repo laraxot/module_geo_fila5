@@ -76,19 +76,19 @@
         @endif
 
         <!-- Submit Button - Colori espliciti per visibilità (WCAG AA) -->
-        <button 
-            type="submit" 
+        <button
+            type="submit"
             wire:loading.attr="disabled"
-            class="w-full py-3 px-4 rounded-xl font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ease-in-out shadow-sm hover:shadow-md transform hover:scale-[1.01] active:scale-[0.99] flex justify-center items-center gap-2 group focus:outline-none focus:ring-4 focus:ring-[#1E5A96]/30"
-            style="background: linear-gradient(135deg, #1E5A96 0%, #2D8659 100%);"
-            onmouseover="this.style.background='linear-gradient(135deg, #174a7a 0%, #246b48 100%)'"
-            onmouseout="this.style.background='linear-gradient(135deg, #1E5A96 0%, #2D8659 100%)'"
+            class="w-full py-3 px-5 rounded-xl font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ease-in-out shadow-sm hover:shadow-md transform hover:scale-[1.02] active:scale-[1.00] flex justify-center items-center gap-2 group focus:outline-none focus:ring-4 focus:ring-[#1E5A96]/30"
+            style="background: url('/vendor/geo/img/btn/submit-button-bg.svg') center/cover/auto; background-size: 100%;"
+            onmouseover="this.style.transform='scale(1.03)';"
+            onmouseout="this.style.transform='scale(1.00)';"
         >
             <span wire:loading wire:target="save" class="flex items-center gap-2 italic">
                 <x-filament::icon icon="heroicon-o-arrow-path" class="animate-spin h-5 w-5" aria-hidden="true" />
                 {{ __('user::auth.login.logging_in') }}
             </span>
-            
+
             <div wire:loading.remove wire:target="save" class="flex items-center gap-2">
                 <span>{{ __('user::auth.login.submit') }}</span>
                 <x-filament::icon icon="heroicon-o-arrow-right" class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

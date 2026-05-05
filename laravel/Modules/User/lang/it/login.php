@@ -30,7 +30,7 @@ return [
         'login' => [
             'label' => 'Accedi',
             'success' => 'Accesso effettuato con successo',
-            'error' => 'Credenziali non valide',
+            'error' => 'Le credenziali inserite non sono corrette.',
         ],
         'register' => [
             'label' => 'Registrati',

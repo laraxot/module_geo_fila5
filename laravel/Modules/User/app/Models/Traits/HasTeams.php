@@ -16,6 +16,7 @@ use Modules\User\Models\TeamUser;
 use Modules\User\Models\User;
 use Modules\Xot\Contracts\UserContract as XotUserContract;
 use Modules\Xot\Datas\XotData;
+use Spatie\Permission\Models\Permission;
 
 /**
  * Trait HasTeams.
@@ -338,7 +339,7 @@ trait HasTeams
         // Permissions from Role
         $role = $this->teamRole($team);
         if (null !== $role && $role->permissions) {
-            /** @var \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissionsCollection */
+            /** @var \Illuminate\Database\Eloquent\Collection<int, Permission> $permissionsCollection */
             $permissionsCollection = $role->permissions;
             /** @var array<string> $rolePermissionNames */
             $rolePermissionNames = $permissionsCollection->pluck('name')->toArray();
@@ -427,7 +428,15 @@ trait HasTeams
             'current_team_id' => $team->id,
         ]);
 
-        return $this->save();
+        if (! $this->save()) {
+            return false;
+        }
+
+        \setPermissionsTeamId($team);
+        $this->unsetRelation('roles');
+        $this->unsetRelation('permissions');
+
+        return true;
     }
 
     /**
@@ -454,11 +463,11 @@ trait HasTeams
         return $this->id === $team->user_id;
     }
 
-    /**
+    /*
      * Get all of the teams the user belongs to.
      *
      * @return BelongsToMany<Model&TeamContract, $this, TeamUser, 'pivot'>
-     */
+
     public function teams(): BelongsToMany
     {
         $xot = XotData::make();
@@ -466,7 +475,7 @@ trait HasTeams
 
         return $this->belongsToManyX($teamClass);
     }
-
+    */
     /**
      * Get all of the teams that the user owns.
      */

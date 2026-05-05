@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
@@ -112,7 +113,7 @@ class Team extends BaseTeam
         ];
     }
 
-    public function permissions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function permissions(): HasMany
     {
         return $this->hasMany(TeamPermission::class);
     }

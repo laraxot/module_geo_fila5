@@ -36,6 +36,7 @@ Zero/
 
 ## Collegamenti
 
+- [Spatie Permission Team Context](./spatie-permission-team-context.md)
 - [PHPStan Docs](./phpstan.md)
 - [Configurazione Root](../../../docs/THEME_ZERO.md)
 - [Metodologia GSD](../../../../docs/project/gsd-methodology.md)

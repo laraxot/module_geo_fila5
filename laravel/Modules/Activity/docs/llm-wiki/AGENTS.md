@@ -1,8 +1,8 @@
-# Activity {{TYPE^}} LLM Wiki Agent Instructions
+# Activity Module LLM Wiki Agent Instructions
 
 > **Module/Theme:** Activity
 > **Scope:** Activity-specific knowledge only
-> **Created:** 2026-04-15
+> **Created:** 2026-04-28
 > **Based on:** Karpathy's LLM Wiki pattern
 
 ## Role
@@ -26,8 +26,8 @@ title: "Page Title"
 type: concept|entity|source|comparison|decision|troubleshooting
 sources: ["raw/articles/filename.md"]
 confidence: high|medium|low
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
+created: 2026-04-28
+updated: 2026-04-28
 tags: [tag1, tag2]
 related:
   - concepts/related.md
@@ -55,86 +55,3 @@ related:
 ### Rule 3: Link Heavily
 - Every page MUST have 3+ incoming links
 - Every page MUST have 3+ outgoing links
-- Use wikilinks: `[[concepts/page]]`
-
-### Rule 4: Atomic Commits
-- One ingestion = one commit
-- Message format: `docs: {action} {description}`
-
-## When to Use Module Wiki vs Project Wiki
-
-### Create Module Page If:
-- Concept is unique to Activity
-- Pattern is Activity-specific
-- Decision only affects Activity
-
-### Reference Project Wiki (`../../docs/wiki/`) If:
-- Concept spans multiple modules
-- Pattern is project-wide (e.g., Actions over Services)
-- Decision affects architecture globally
-
-## Workflows
-
-### Ingest
-
-```
-User: "ingest {path-to-raw-file}"
-
-Steps:
-1. Read source from raw/
-2. Extract key concepts, entities, data
-3. Create/update wiki pages
-4. Update index.md and log.md
-5. Commit changes
-```
-
-### Query
-
-```
-User: Ask a question
-
-Steps:
-1. Search index.md for relevant categories
-2. Read matching wiki pages
-3. Synthesize answer with explicit citations
-4. Create new pages for high-value insights
-```
-
-### Lint
-
-```
-User: "lint wiki"
-
-Steps:
-1. Scan for contradictions, orphans, stale claims
-2. Report findings with file paths
-3. Suggest and apply fixes
-4. Commit changes
-```
-
-## Cross-Linking to Project Wiki
-
-When referencing project-wide concepts:
-
-```markdown
-Related:
-- Project-wide: [[../../docs/wiki/concepts/laraxot-architecture]]
-- Module-specific: [[concepts/module-concept]]
-```
-
-## Quality Checklist
-
-### Before Committing
-- [ ] Frontmatter schema is valid
-- [ ] Filename is lowercase-kebab-case.md
-- [ ] Page has at least 1 outgoing link
-- [ ] index.md is updated (if new page)
-- [ ] log.md is updated (if ingestion)
-- [ ] No content duplication (DRY)
-- [ ] Commit message: `docs: {action} {description}`
-
-## Related Documentation
-
-- [Project Wiki Integration](../../docs/wiki/README.md)
-- [Project Wiki Agent Instructions](../../docs/wiki/AGENTS.md)
-- [Module Documentation](../README.md)

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Modules\User\Models\Permission;
 use Modules\User\Models\Role;
+use Modules\User\Models\Team;
 
 return [
     'models' => [
@@ -30,6 +31,7 @@ return [
 
         // 'role' => Spatie\Permission\Models\Role::class,
         'role' => Role::class,
+        'team' => Team::class,
     ],
 
     'table_names' => [

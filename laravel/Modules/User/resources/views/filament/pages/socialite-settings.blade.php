@@ -12,7 +12,7 @@
 --}}
 
 <x-filament-panels::page>
-    <x-filament-panels::form wire:submit.prevent="save">
+    <form wire:submit.prevent="save">
         {{ $this->form }}
         
         <div class="fi-ac gap-3 flex flex-wrap items-center justify-start">
@@ -20,7 +20,7 @@
                 {{ __('user::socialite.actions.save') }}
             </x-filament::button>
         </div>
-    </x-filament-panels::form>
+    </form>
     
     {{-- Help Section --}}
     <div class="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">

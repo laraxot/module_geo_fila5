@@ -2,7 +2,7 @@
 
 ## Overview
 
-Il modulo **User** gestisce l'autenticazione, l'autorizzazione e la gestione utenti completa nel sistema Laraxot PTVX.
+Il modulo **User** gestisce l'autenticazione, l'autorizzazione e la gestione utenti completa nel sistema [PROJECT_NAME] platform.
 
 ## Funzionalità Principali
 
@@ -39,6 +39,7 @@ Modules\User\Models\Tenant
 
 ## Collegamenti
 
+- [Spatie Permission Teams Laravel 13](./spatie-permission-teams-laravel-13.md)
 - [Documentazione Root](../../../docs/USER_MODULE.md)
 - [Regole Trait](./traits.md)
 - [Filament Resources](./filament/)
@@ -50,6 +51,12 @@ Modules\User\Models\Tenant
 - [UI Components](../UI/docs/)
 
 ## Architectural Rules — Violations Fixed
+
+### Profiles migration governance
+- La tabella `profiles` deve avere sia `id` sia `uuid`.
+- Il modulo User usa **una sola migrazione autorevole** per `profiles`: `*_create_profiles_table.php`.
+- Se manca una colonna come `uuid`, si corregge quella migrazione e si aggiorna il timestamp del file; non si crea una migrazione `add_uuid_to_profiles`.
+- Riferimento canonico: [wiki/concepts/profile-migration-uuid-contract.md](./wiki/concepts/profile-migration-uuid-contract.md)
 
 ### No Log calls in production code
 `Log::info()`, `Log::debug()`, `Log::error()` are forbidden in Actions, Models, Services, and Widgets.
@@ -64,6 +71,13 @@ Rule: never commit files with conflict markers. Fix immediately when found.
 ## Requisiti
 
 - PHP 8.3+
-- Laravel 11/12
+- Laravel 12/13
 - Spatie Laravel Permission
 - Filament v5
+
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]

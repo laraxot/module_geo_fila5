@@ -2,67 +2,72 @@
 
 declare(strict_types=1);
 
+/**
+ * Login widget translations in English following 5-element structure
+ * Automatically resolved by LangServiceProvider.
+ */
+
+/*
+ * Login widget translations in English following 5-element structure
+ * Automatically resolved by LangServiceProvider.
+ */
+
 return [
-    'fields' => [
-        'email' => [
-            'label' => 'Email',
-            'placeholder' => 'Enter your email',
-            'help' => 'Enter the email address you used to register',
-            'description' => 'Email address for login',
-            'helper_text' => 'email',
-            'tooltip' => '',
+    'auth' => [
+        'email_address' => [
+            'key' => 'auth.email_address',
+            'text' => 'Email address',
+            'description' => 'Label for the email input field on the login form,\\nused for both OAuth and standard email authentication',
         ],
+
         'password' => [
-            'label' => 'Password',
-            'placeholder' => 'Enter your password',
-            'help' => 'Enter your account password',
-            'description' => 'Password for login',
-            'helper_text' => 'password',
-            'tooltip' => '',
+            'key' => 'auth.password',
+            'text' => 'Password',
+            'description' => 'User password for authentication\\nUsed in combination with Socialite where available',
         ],
+
         'remember' => [
-            'label' => 'Remember me',
-            'placeholder' => 'Keep session active',
-            'help' => 'Select to keep your session active for 30 days',
-            'description' => 'Option to remember login',
-            'helper_text' => 'remember',
-            'tooltip' => '',
+            'key' => 'auth.remember',
+            'text' => 'Remember me',
+            'description' => 'Option to keep session active for 30 days\\nafter login',
+        ],
+
+        'login_success' => [
+            'key' => 'auth.login_success',
+            'text' => 'Login successful',
+            'description' => 'Message displayed after successful authentication',
+        ],
+
+        'login_error' => [
+            'key' => 'auth.login_error',
+            'text' => 'Login error',
+            'description' => 'Error message in case of invalid authentication',
+        ],
+
+        'login_success' => [
+            'key' => 'auth.login_success',
+            'text' => 'Login successful',
+            'description' => 'Message displayed after successful authentication',
+        ],
+
+        'login_error' => [
+            'key' => 'auth.login_error',
+            'text' => 'Login error',
+            'description' => 'Error message in case of invalid authentication',
         ],
     ],
-    'actions' => [
-        'login' => [
-            'label' => 'Login',
-            'tooltip' => 'Click to access your account',
-        ],
-        'showPassword' => [
-            'label' => 'showPassword',
-            'icon' => 'showPassword',
-            'tooltip' => 'showPassword',
-        ],
-        'hidePassword' => [
-            'label' => 'hidePassword',
-            'icon' => 'hidePassword',
-            'tooltip' => 'hidePassword',
-        ],
-    ],
-    'messages' => [
-        'login_success' => 'Login successful',
-        'login_error' => 'Error during login',
-        'validation_error' => 'Validation error',
-        'credentials_incorrect' => 'Incorrect credentials',
-    ],
+
     'ui' => [
-        'login_button' => 'Login',
-        'forgot_password' => 'Forgot password?',
-        'errors_title' => 'Some errors occurred',
+        'login_button' => [
+            'key' => 'ui.login_button',
+            'text' => 'Login',
+            'description' => 'Main button to complete the login process',
+        ],
+
+        'forgot_password' => [
+            'key' => 'ui.forgot_password',
+            'text' => 'Forgot password?',
+            'description' => 'Link to request password reset',
+        ],
     ],
-    'navigation' => [
-        'label' => 'Missing Navigation Label',
-        'plural_label' => 'Missing Navigation Plural Label',
-        'group' => 'Missing Group',
-        'icon' => 'heroicon-o-puzzle-piece',
-        'sort' => 100,
-    ],
-    'label' => 'Missing Label',
-    'plural_label' => 'Missing Plural label',
 ];

@@ -14,8 +14,8 @@ The debugbar was not appearing on `http://127.0.0.1:8000/it/tests/homepage` desp
 
 | Check | Result |
 |-------|--------|
-| Package installed? | ✅ YES (`barryvdh/laravel-debugbar 3.16.5` - same package, old name alias) |
-| Service provider discovered? | ✅ YES (`php artisan package:discover` shows `barryvdh/laravel-debugbar ... DONE`) |
+| Package installed? | YES (`fruitcake/laravel-debugbar 4.2.x`) |
+| Service provider discovered? | YES (`php artisan package:discover` shows Laravel Debugbar as discovered) |
 | Middleware registered? | ✅ YES (`Barryvdh\Debugbar\Middleware\InjectDebugbar` in web middleware group) |
 | Config file exists? | ✅ YES (`laravel/config/debugbar.php`) |
 | `APP_DEBUG` in .env? | ✅ `true` |
@@ -35,7 +35,7 @@ In this project, the Xot module declares debugbar as a dependency in its `compos
 ```json
 {
   "require-dev": {
-    "fruitcake/laravel-debugbar": "^3.16"
+    "fruitcake/laravel-debugbar": "^4.2.8"
   }
 }
 ```
@@ -62,15 +62,20 @@ This means Xot's `require-dev` dependencies are **merged into the root composer.
 
 ### Cleanup: Duplicate Package Names
 
-Xot's `composer.json` previously had BOTH:
+Older Composer attempts used either the previous package name or a Laravel 12-only line:
+
 ```json
 "barryvdh/laravel-debugbar": "^3.14",
 "fruitcake/laravel-debugbar": "^3.16"
 ```
 
-These resolve to the **same package**. `barryvdh/laravel-debugbar` was renamed to `fruitcake/laravel-debugbar` but the old name is kept as an alias for backward compatibility.
+For Laravel 13, use the canonical package name and the 4.2 line:
 
-**Action:** Remove the duplicate `barryvdh/laravel-debugbar` entry, keeping only `fruitcake/laravel-debugbar`.
+```json
+"fruitcake/laravel-debugbar": "^4.2.8"
+```
+
+The root `laravel/composer.json` must not duplicate debugbar. Xot owns the dev-tool declaration and Composer merges it into the root dependency graph.
 
 ## Configuration
 

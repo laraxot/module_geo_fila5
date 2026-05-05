@@ -94,7 +94,7 @@ class LoginWidget extends XotBaseWidget
             $attempt_data = Arr::only($data, ['email', 'password']);
 
             if (! Auth::attempt($attempt_data, $remember)) {
-                throw ValidationException::withMessages(['email' => [__('user::messages.credentials_incorrect')]]);
+                throw ValidationException::withMessages(['email' => [__('user::messages.failed')]]);
             }
 
             session()->regenerate();

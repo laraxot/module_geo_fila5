@@ -3,37 +3,66 @@
 declare(strict_types=1);
 
 return [
-    'fields' => [
-        'email' => [
-            'label' => 'Email',
-            'placeholder' => 'Inserisci la tua email',
-            'help' => 'Inserisci l\'indirizzo email con cui ti sei registrato',
-            'description' => 'Indirizzo email per l\'accesso',
-            'helper_text' => 'email',
-            'tooltip' => '',
+    'auth' => [
+        'email_address' => [
+            'key' => 'auth.email_address',
+            'text' => 'Indirizzo email',
+            'description' => 'Etichetta per il campo email nel modulo di login,\\nutilizzato per l\'autenticazione via OAuth ed email\\nstandard',
         ],
         'password' => [
-            'label' => 'Password',
-            'placeholder' => 'Inserisci la tua password',
-            'help' => 'Inserisci la password del tuo account',
-            'description' => 'Password per l\'accesso',
-            'helper_text' => 'password',
-            'tooltip' => '',
+            'key' => 'auth.password',
+            'text' => 'Password',
+            'description' => 'Password dell\'account per autenticazione\\nutilizzata in combinazione con Socialite dove disponibile',
         ],
         'remember' => [
-            'label' => 'Ricordami',
-            'placeholder' => 'Mantieni la sessione attiva',
-            'help' => 'Seleziona per mantenere la sessione attiva per 30 giorni',
-            'description' => 'Opzione per ricordare l\'accesso',
+            'key' => 'auth.remember',
+            'text' => 'Ricordami',
+            'description' => 'Opzione per mantenere attiva la sessione per 30 giorni dopo il login',
+        ],
+        'login_success' => [
+            'key' => 'auth.login_success',
+            'text' => 'Accesso effettuato con successo',
+            'description' => 'Messaggio visualizzato dopo autenticazione\\nsuccessiva',
+        ],
+        'login_error' => [
+            'key' => 'auth.login_error',
+            'text' => 'Errore durante l\'accesso',
+            'description' => 'Messaggio d\'errore in caso di autenticazione\\nnon valida',
+        ],
+    ],
+    'ui' => [
+        'login_button' => [
+            'key' => 'ui.login_button',
+            'text' => 'Accedi',
+            'description' => 'Pulsante principale per completare il login',
+        ],
+        'forgot_password' => [
+            'key' => 'ui.forgot_password',
+            'text' => 'Password dimenticata?',
+            'description' => 'Link per richiedere reimpostazione password',
+        ],
+    ],
+    'fields' => [
+        'remember' => [
+            'description' => 'remember',
             'helper_text' => 'remember',
-            'tooltip' => '',
+            'placeholder' => 'remember',
+            'label' => 'remember',
+        ],
+        'password' => [
+            'description' => 'password',
+            'helper_text' => 'password',
+            'placeholder' => 'password',
+            'label' => 'password',
+        ],
+        'email' => [
+            'description' => 'email',
+            'helper_text' => 'email',
+            'placeholder' => 'email',
+            'label' => 'email',
         ],
     ],
     'actions' => [
-        'login' => [
-            'label' => 'Accedi',
-            'tooltip' => 'Clicca per accedere al tuo account',
-        ],
         'hidePassword' => [
             'tooltip' => 'hidePassword',
             'icon' => 'hidePassword',
@@ -41,32 +70,8 @@ return [
         ],
         'showPassword' => [
             'tooltip' => 'showPassword',
-            'label' => 'showPassword',
             'icon' => 'showPassword',
+            'label' => 'showPassword',
         ],
     ],
-    'messages' => [
-        'login_success' => 'Accesso effettuato con successo',
-        'login_error' => 'Errore durante l\'accesso',
-        'validation_error' => 'Errore di validazione',
-        'credentials_incorrect' => 'Credenziali non corrette',
-    ],
-    'ui' => [
-        'login_button' => 'Accedi',
-        'forgot_password' => 'Password dimenticata?',
-        'errors_title' => 'Si sono verificati degli errori',
-    ],
-    'navigation' => [
-        'name' => 'Login Widget',
-        'plural' => 'Login Widget',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Login Widget',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'label' => 'Login Widget',
-    'plural_label' => 'Login Widget (Plurale)',
 ];

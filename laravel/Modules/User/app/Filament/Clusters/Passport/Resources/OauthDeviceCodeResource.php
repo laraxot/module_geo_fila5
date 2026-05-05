@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Clusters\Passport\Resources;
 
+use Filament\Actions\Action;
+use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\PageRegistration;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\User\Filament\Clusters\Passport;
@@ -71,52 +77,52 @@ class OauthDeviceCodeResource extends XotBaseResource
     {
         return $table
             ->columns([
-                \Filament\Tables\Columns\TextColumn::make('id')
+                TextColumn::make('id')
                     ->searchable()
                     ->sortable()
                     ->copyable()
                     ->limit(20),
 
-                \Filament\Tables\Columns\TextColumn::make('user_code')
+                TextColumn::make('user_code')
                     ->searchable()
                     ->sortable(),
 
-                \Filament\Tables\Columns\TextColumn::make('user_id')
+                TextColumn::make('user_id')
                     ->searchable()
                     ->sortable(),
 
-                \Filament\Tables\Columns\TextColumn::make('client_id')
+                TextColumn::make('client_id')
                     ->searchable()
                     ->sortable(),
 
-                \Filament\Tables\Columns\TextColumn::make('scopes')
+                TextColumn::make('scopes')
                     ->limit(30),
 
-                \Filament\Tables\Columns\IconColumn::make('revoked')
+                IconColumn::make('revoked')
                     ->boolean()
                     ->color(fn (bool $state): string => $state ? 'danger' : 'success'),
 
-                \Filament\Tables\Columns\TextColumn::make('user_approved_at')
+                TextColumn::make('user_approved_at')
                     ->dateTime()
                     ->sortable(),
 
-                \Filament\Tables\Columns\TextColumn::make('expires_at')
+                TextColumn::make('expires_at')
                     ->dateTime()
                     ->sortable(),
             ])
             ->filters([
-                \Filament\Tables\Filters\Filter::make('revoked')
+                Filter::make('revoked')
                     ->label(static::trans('filters.revoked'))
                     ->query(fn (Builder $query) => $query->where('revoked', true)),
-                \Filament\Tables\Filters\Filter::make('expired')
+                Filter::make('expired')
                     ->label(static::trans('filters.expired'))
                     ->query(fn (Builder $query) => $query->where('expires_at', '<', now())),
-                \Filament\Tables\Filters\Filter::make('valid')
+                Filter::make('valid')
                     ->label(static::trans('filters.valid'))
                     ->query(fn (Builder $query) => $query->where('revoked', false)->where('expires_at', '>', now())),
             ])
             ->recordActions([
-                \Filament\Actions\Action::make('revoke')
+                Action::make('revoke')
                     ->label(static::trans('actions.revoke.label'))
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
@@ -133,13 +139,13 @@ class OauthDeviceCodeResource extends XotBaseResource
                         }
                     })
                     ->visible(fn (mixed $record) => $record instanceof OauthDeviceCode && ! $record->revoked),
-                \Filament\Actions\DeleteAction::make(),
+                DeleteAction::make(),
             ])
             ->defaultSort('expires_at', 'desc');
     }
 
     /**
-     * @return array<string, \Filament\Resources\Pages\PageRegistration>
+     * @return array<string, PageRegistration>
      */
     #[\Override]
     public static function getPages(): array

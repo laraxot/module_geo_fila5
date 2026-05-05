@@ -163,3 +163,6 @@ tests/coverage
 lang/lang/
 _docs/
 _docs/
+tests/coverage/
+tests/coverage.xml/
+activity_coverage.xml

@@ -29,6 +29,7 @@ Incentivi/
 
 ## Collegamenti
 
+- [Upgrade Laravel 13](./laravel-13-upgrade.md)
 - [Documentazione Root](../../../docs/INCENTIVI_MODULE.md)
 - [Regole Architecture](../Xot/docs/architecture/)
 

@@ -7,6 +7,7 @@ namespace Modules\User\Filament\Resources\OauthPersonalAccessClientResource\Page
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Section;
+use Modules\User\Filament\Resources\OauthPersonalAccessClientResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 /**
@@ -14,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
  */
 class ViewOauthPersonalAccessClient extends XotBaseViewRecord
 {
-    protected static string $resource = \Modules\User\Filament\Resources\OauthPersonalAccessClientResource::class;
+    protected static string $resource = OauthPersonalAccessClientResource::class;
 
     /**
      * @return array<string, Component>

@@ -1,6 +1,5 @@
 # Audit "Obbligatorio" in Non-Italian Translation Files
 
-**Data**: 2025-08-08 12:29:30
 **Scope**: Identificazione della parola "obbligatorio" e varianti in file di traduzione non italiani
 
 ## ✅ Risultato Audit

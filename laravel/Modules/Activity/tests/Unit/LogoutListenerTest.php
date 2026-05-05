@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\Test;
 
 class LogoutListenerTest extends TestCase
 {
-
     #[Test]
     public function listener_class_exists(): void
     {
@@ -20,7 +19,7 @@ class LogoutListenerTest extends TestCase
     #[Test]
     public function listener_has_handle_method(): void
     {
-        $listener = new LogoutListener();
+        $listener = new LogoutListener;
         $this->assertTrue(method_exists($listener, 'handle'));
     }
 }

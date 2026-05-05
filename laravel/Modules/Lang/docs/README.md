@@ -1,18 +1,51 @@
-https://github.com/dimsav/laravel-translatable
+# Modulo Lang
 
-https://github.com/Astrotomic/laravel-translatable !!
+## Overview
 
-https://github.com/spatie/laravel-translatable
+Il modulo **Lang** fa parte dell'ecosistema [PROJECT_NAME] platform.
 
-https://blog.quickadminpanel.com/10-best-laravel-packages-for-multi-language-translations/
+## Scopo
 
-## Collegamenti tra versioni di readme.md
-* [readme.md](../../../Gdpr/docs/readme.md)
-* [readme.md](../../../UI/docs/readme.md)
-* [readme.md](../../../Lang/docs/readme.md)
-* [readme.md](../../../Activity/docs/readme.md)
-* [readme.md](../../../Cms/docs/readme.md)
+Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
 
-## Extra risorse da _docs
+## Struttura
 
-(Nessun nuovo link da aggiungere: i link di _docs/readme.txt sono già presenti in questo file)
+```
+Lang/
+├── app/
+│   ├── Models/
+│   ├── Filament/
+│   └── ...
+├── docs/
+├── lang/
+└── resources/
+```
+
+## Dipendenze
+
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/) (se usa autenticazione)
+- [Tenant Module](../Tenant/docs/) (se multi-tenant)
+
+## Collegamenti
+
+- [Documentazione Root](../../../docs/LANG_MODULE.md)
+- [Regole Architecture](../Xot/docs/architecture/)
+
+## Backlinks
+
+- [Indice Moduli](../README.md)
+
+## TODO
+
+- [ ] Completare descrizione funzionalità
+- [ ] Documentare modelli principali
+- [ ] Documentare risorse Filament
+- [ ] Aggiungere esempi codice
+
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]

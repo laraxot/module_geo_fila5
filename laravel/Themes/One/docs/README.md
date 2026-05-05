@@ -31,6 +31,7 @@ ACTIVE_THEME=one
 
 ## Collegamenti
 
+- [Spatie Permission Team Context](./spatie-permission-team-context.md)
 - [Tema Zero](../Zero/docs/) - Tema principale
 - [Configurazione Root](../../../docs/THEME_ONE.md)
 - [Governance Naming Docs/Model](./model-docs-governance.md)

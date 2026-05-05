@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\UI\Tests\Unit\Components;
 
-uses(\Modules\UI\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Illuminate\View\Component;
+use Modules\UI\Tests\TestCase;
 
 test('ui components can be rendered', function () {
     $component = new class extends Component {

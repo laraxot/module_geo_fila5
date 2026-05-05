@@ -7,6 +7,7 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Modules\Xot\Models\Traits\RelationX;
 use Modules\Xot\Traits\Updater;
@@ -44,9 +45,9 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static static                     firstOrCreate(array $attributes, array $values = [])
  * @method static static                     updateOrCreate(array $attributes, array $values = [])
  *
- * @property \Modules\Xot\Contracts\ProfileContract|null $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null $deleter
- * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $deleter
+ * @property ProfileContract|null $updater
  *
  * @method static \Modules\User\Database\Factories\PermissionFactory factory($count = null, $state = [])
  *

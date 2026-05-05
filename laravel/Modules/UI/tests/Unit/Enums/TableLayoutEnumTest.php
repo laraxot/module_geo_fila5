@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\UI\Tests\Unit\Enums;
 
-uses(\Modules\UI\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Tests\TestCase;
 
 it('has enum values', function (): void {
     expect(TableLayoutEnum::LIST->value)->toBe('list');

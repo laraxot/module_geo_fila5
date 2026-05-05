@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\UI\Tests\Unit\Enums;
 
-uses(\Modules\UI\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\UI\Enums\CornerPositionEnum;
 use Modules\UI\Enums\FieldTypeEnum;
 use Modules\UI\Enums\TableLayout;
+use Modules\UI\Tests\TestCase;
 
 // --- CornerPositionEnum ---
 

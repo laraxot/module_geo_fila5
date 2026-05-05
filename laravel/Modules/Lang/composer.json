@@ -1,8 +1,19 @@
 {
-    "name": "laraxot/module_lang_fila3",
-    "description": "",
+    "name": "laraxot/module_lang_fila5",
+    "description": "Internationalization and localization module for the Laraxot ecosystem: translations, languages, and locale management.",
+    "keywords": [
+        "laraxot",
+        "laravel",
+        "filament",
+        "module_lang",
+        "lang",
+        "i18n",
+        "l10n",
+        "translations",
+        "localization"
+    ],
     "license": "MIT",
-    "homepage": "https://github.com/laraxot/module_lang_fila3.git",
+    "homepage": "https://github.com/laraxot/module_lang_fila5.git",
     "authors": [
         {
             "name": "Marco Sottana",
@@ -11,13 +22,12 @@
     ],
     "require": {
         "mcamara/laravel-localization": "*",
-        "lara-zeus/spatie-translatable": "dev-local",
+        "lara-zeus/spatie-translatable": "*",
         "rinvex/countries": "^9.1",
-        "spatie/laravel-sluggable": "*"
+        "spatie/laravel-sluggable": "*",
+        "php": "^8.3"
     },
-    "require-comment": {
-        
-    },
+    "require-comment": {},
     "repositories": [
         {
             "type": "path",
@@ -30,10 +40,17 @@
         {
             "type": "path",
             "url": "../UI"
-        },
+        }
+    ],
+    "repositories-comment": [
         {
             "type": "path",
             "url": "./packages/lara-zeus/spatie-translatable"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org",
+            "canonical": false
         }
     ],
     "autoload": {

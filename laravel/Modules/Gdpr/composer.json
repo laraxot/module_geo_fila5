@@ -42,7 +42,8 @@
         }
     },
     "require": {
-        "statikbe/laravel-cookie-consent": "^1.0"
+        "statikbe/laravel-cookie-consent": "^1.0",
+        "php": "^8.3"
     },
     "require-dev": {},
     "repositories": [

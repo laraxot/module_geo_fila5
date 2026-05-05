@@ -14,5 +14,8 @@
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.3"
+    }
 }

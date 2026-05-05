@@ -19,12 +19,14 @@ $totalStats = [
 foreach ($coverageFiles as $file) {
     if (! file_exists($file)) {
         echo "Warning: {$file} not found\n";
+
         continue;
     }
 
     $xml = simplexml_load_file($file);
     if (! $xml) {
         echo "Warning: Could not parse {$file}\n";
+
         continue;
     }
 

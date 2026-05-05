@@ -1,6 +1,5 @@
 # Italian Text in Non-Italian Translation Files - Audit Report
 
-**Data**: 2025-08-08 11:19:40
 
 ## Problemi Identificati
 

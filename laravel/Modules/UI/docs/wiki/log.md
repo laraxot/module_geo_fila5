@@ -1,32 +1,31 @@
----
-title: "Activity Log"
-module: "UI"
----
+# UI Wiki Log
 
-# Activity Log — UI
+## [2026-04-28] governance | Model States ownership e compatibilita' Laravel 13
+- Nuova pagina: `concepts/model-states-module-ownership.md`.
+- Distinto ownership tecnico (`UI` + `Xot`) da compatibilita' runtime.
+- Verificato che `spatie/laravel-model-states` latest stable richiede `PHP ^8.4`, mentre `2.12.1` si ferma a `Laravel 12`.
 
-> **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
+## [2026-04-23] governance | EnumSelect API collisions (Filament v5)
+- Nuova pagina: `concepts/enumselect-filament-api-collisions.md`.
+- Documentati i fatal tipici: collisione firme `make()/enum()` e collisione visibilita' `getLabel()` quando si estende `Select`.
 
-## Log Entries
+## [2026-04-23] hardening | EnumSelect phpstan/runtime guardrails
+- Aggiornata `concepts/enum-select-contract-and-false-friends.md` con regole aggiuntive emerse dal fix runtime e dal check PHPStan.
+- Inserite best practices su firma `enum(string|Closure|null)` e narrowing `int|string` prima di `tryFrom()`.
+- Esplicitato false friend: `Class ... not found` puo' essere sintomo secondario di fatal in fase di caricamento della classe.
 
-### Format
+## [2026-04-23] governance | Filament component autoload nel modulo UI
+- documentata la regola `module-filament-component-autoload-rule`
+- componenti PHP del modulo UI sotto `app/`; fatal recente `EnumSelect` ricondotto a path autoload errato, non al widget consumer
 
-```
-[YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
-```
+## [2026-04-23] governance | EnumSelect contract, best practices, bad practices, false friends
+- Documentato il contratto minimo di `Modules\UI\Filament\Forms\Components\EnumSelect`.
+- Fissate le regole su firma compatibile di `make(?string $name = null)`, validazione backed enum, fallback label/icon e rischi di autoload/visibilita'.
+- Nuova pagina: `concepts/enum-select-contract-and-false-friends.md`.
 
-**Operations:**
-- `INGEST` — Added raw document to wiki
-- `QUERY` — Answered question from wiki
-- `LINT` — Maintained wiki quality
-- `UPDATE` — Modified existing wiki page
-
----
-
-[2026-04-29 00:00:00 UTC] [INGEST] Added UI operating model concept from shared component and architecture docs
-[2026-04-29 00:00:00 UTC] [INGEST] Added UI architecture source summary and flagged duplication and merge-residue risks
-[2026-04-29 07:22:00 UTC] [UPDATE] Added UI-local second brain loop to operating model and aligned index discoverability text
-[2026-04-29 11:55:00 UTC] [UPDATE] Replaced speculative context-compression notes with the actual project MCP token-optimizer setup
-
-**Last Activity:** 2026-04-29 11:55:00 UTC  
-**Total Operations:** 4
+## [2026-04-15] init | wiki bootstrap
+- Struttura wiki/log.md inizializzata.
+- Layer raw: tutti i file in `docs/` (eccetto `wiki/`).
+- Layer wiki: `docs/wiki/` — LLM-maintained, sintesi ad alto riuso.
+- Schema: `docs/.schema/WIKI_SCHEMA.md`
+- Adozione moduli: `docs/project/llm-wiki-module-adoption.md`

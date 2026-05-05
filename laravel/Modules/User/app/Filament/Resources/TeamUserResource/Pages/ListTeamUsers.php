@@ -6,6 +6,7 @@ namespace Modules\User\Filament\Resources\TeamUserResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
+use Modules\User\Filament\Resources\TeamUserResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 /**
@@ -13,7 +14,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
  */
 class ListTeamUsers extends XotBaseListRecords
 {
-    protected static string $resource = \Modules\User\Filament\Resources\TeamUserResource::class;
+    protected static string $resource = TeamUserResource::class;
 
     /**
      * @return array<string, Action>

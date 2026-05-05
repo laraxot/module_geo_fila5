@@ -7,9 +7,11 @@ namespace Modules\User\Filament\Clusters\Passport\Resources;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\PageRegistration;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -29,7 +31,7 @@ class OauthAccessTokenResource extends XotBaseResource
     /** @phpstan-ignore-next-line Passport wrapper model is valid at runtime, but PHPStan does not fully infer the upstream subtype here. */
     protected static ?string $model = OauthAccessToken::class;
 
-    public static function table(\Filament\Tables\Table $table): \Filament\Tables\Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -152,7 +154,7 @@ class OauthAccessTokenResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, \Filament\Resources\Pages\PageRegistration>
+     * @return array<string, PageRegistration>
      */
     public static function getTableColumns(): array
     {

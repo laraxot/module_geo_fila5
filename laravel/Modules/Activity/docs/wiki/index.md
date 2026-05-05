@@ -11,7 +11,7 @@ updated: "2026-04-15T08:28:40Z"
 
 ## Concepts
 
-- [activity-domain-focus](./concepts/activity-domain-focus.md) — role, audit priorities, retrieval path, and local second-brain loop for Activity work
+_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
 
 ## Entities
 
@@ -19,7 +19,7 @@ _No entities tracked yet._
 
 ## Sources
 
-- [activity-core-sources](./sources/activity-core-sources.md) — summary of the strongest Activity business and architecture docs
+_No sources ingested yet._
 
 ## Comparisons
 
@@ -27,6 +27,6 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-29T07:22:00Z  
-**Total Pages:** 2  
-**Total Raw Sources:** 3
+**Last Updated:** 2026-04-15T08:28:40Z  
+**Total Pages:** 0  
+**Total Raw Sources:** 0

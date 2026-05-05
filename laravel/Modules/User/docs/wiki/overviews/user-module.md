@@ -88,6 +88,13 @@ Role::firstOrCreate(['name' => 'moderator', 'guard_name' => 'web'])
 | OAuth API | Laravel Passport — cluster di risorse |
 | 2FA | Disponibile (vedi `docs/2fa.md`) |
 
+### Socialite governance
+
+- Niente colonne provider-specific su `users` (es. `google_id`).
+- Mapping identita esterna su `SocialiteUser`.
+- Configurazione provider social su `SocialProvider`.
+- Configurazioni enterprise federate su `SsoProvider` quando necessario.
+
 ### Logout
 
 Il logout segue una gestione speciale via Folio + Volt:
@@ -122,3 +129,5 @@ Segue rigorosamente Laraxot:
 - `docs/2fa.md` — autenticazione due fattori
 - `docs/oauth-cluster-implementation.md` — OAuth/Passport cluster
 - `docs/team-user-permissions.md` — permessi team granulari
+- `docs/wiki/concepts/socialite-provider-governance.md` — governance Socialite/SSO
+- `docs/wiki/concepts/socialite-backoffice-google-setup.md` — setup Google OAuth da backoffice

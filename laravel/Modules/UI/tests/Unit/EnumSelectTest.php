@@ -10,7 +10,7 @@ use Modules\UI\Filament\Forms\Components\EnumSelect;
 use PHPUnit\Framework\TestCase;
 
 // Test enums
-enum TestColorEnum: string implements HasLabel, HasIcon
+enum TestColorEnum: string implements HasIcon, HasLabel
 {
     case RED = 'red';
     case GREEN = 'green';

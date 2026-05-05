@@ -15,23 +15,40 @@ return [
     'fields' => [
         'toggleColumns' => [
             'label' => 'toggleColumns',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'edit' => [
             'label' => 'edit',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'resetFilters' => [
             'label' => 'resetFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'content' => [
             'description' => 'content',
             'helper_text' => 'content',
             'placeholder' => 'content',
+            'label' => '',
+            'tooltip' => '',
         ],
         'applyFilters' => [
             'label' => 'applyFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'snapshots' => [
             'fields' => [
@@ -49,12 +66,22 @@ return [
                     ],
                 ],
             ],
+            'label' => '',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'openFilters' => [
             'label' => 'openFilters',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
         'key' => [
             'label' => 'key',
+            'tooltip' => '',
+            'helper_text' => '',
+            'description' => '',
         ],
     ],
     'actions' => [
@@ -65,4 +92,6 @@ return [
             'label' => 'lang',
         ],
     ],
+    'label' => 'Missing Label',
+    'plural_label' => 'Missing Plural label',
 ];

@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Carbon;
@@ -197,7 +198,7 @@ class Profile extends BaseProfile implements HasMedia
     /**
      * Get the teams that the profile belongs to.
      */
-    public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function teams(): BelongsToMany
     {
         return $this->belongsToManyX(Team::class);
     }
