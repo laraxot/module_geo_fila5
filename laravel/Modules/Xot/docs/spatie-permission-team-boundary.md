@@ -28,6 +28,13 @@ On 2026-05-05, Composer metadata shows:
 
 The package is compatible with Laravel 13, so `TeamModelNotConfigured` is not a Laravel version incompatibility. It is a configuration/registrar coherence issue.
 
+Spatie v7 has two separate team concepts that must not be confused:
+
+- model binding: `permission.models.team`, read by `PermissionRegistrar`;
+- active team context: `setPermissionsTeamId()`, resolved by `permission.team_resolver`.
+
+Xot can expose `XotData::getTeamClass()` as the Laraxot convention for the team class, but the Spatie binding still belongs in `config/permission.php` and local config variants.
+
 Vendor contract checked locally:
 
 - `PermissionRegistrar` reads `config('permission.models.team')`;
@@ -60,6 +67,8 @@ php artisan tinker --execute="dump(config('permission.models.team')); dump(app(S
 ```
 
 Both dumps must resolve to `Modules\User\Models\Team`.
+
+When a switch happens in User module code, the application must also set Spatie's active team id and unload stale authorization relations. Without that second step, `current_team_id` and Spatie's registrar can disagree inside the same request or Livewire lifecycle.
 
 ## Related
 

@@ -19,3 +19,9 @@ If a dashboard raises `Spatie\Permission\Exceptions\TeamModelNotConfigured`, fix
 Reference: `Modules/User/docs/spatie-permission-teams-laravel-13.md`.
 
 Source rule: Spatie Permission v7 teams mode requires both `permission.teams = true` and `permission.models.team`.
+
+Spatie Permission v7 also separates configured team model from active team id:
+
+- `permission.models.team` must point to `Modules\User\Models\Team`;
+- `setPermissionsTeamId()` must be called by User-domain code after a team switch;
+- stale `roles` and `permissions` relations must be unloaded before new checks.

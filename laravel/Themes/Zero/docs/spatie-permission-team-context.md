@@ -15,7 +15,9 @@ Modules\User\Models\Team::class
 When a theme renders team switching, dashboards, menus, or auth widgets, it must assume that:
 
 - `permission.teams` is enabled;
+- `permission.models.team` resolves to `Modules\User\Models\Team`;
 - active team context may affect role and permission checks;
+- User module code calls `setPermissionsTeamId()` after a team switch;
 - stale `roles` and `permissions` relations must be reloaded after switching teams;
 - permission checks should use Laravel `can()`/policies instead of hard-coded role names.
 

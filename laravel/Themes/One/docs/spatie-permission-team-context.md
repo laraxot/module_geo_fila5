@@ -16,6 +16,12 @@ Use Laravel authorization APIs (`can()`, policies, Filament authorization hooks)
 
 If team switching is visible in the theme, the active team context is part of authorization state. After switching teams, User module code is responsible for resetting the active Spatie team id and reloading role/permission relations.
 
+Spatie Permission v7 separates the configured team model from the active team id:
+
+- `permission.models.team` must point to `Modules\User\Models\Team`;
+- `setPermissionsTeamId()` must be called by domain code after a team switch;
+- stale `roles` and `permissions` relations must be unloaded before new checks.
+
 ## Troubleshooting
 
 `TeamModelNotConfigured` means Spatie's registrar does not know the team model. This is a User module/config-cache issue, not a theme issue.
