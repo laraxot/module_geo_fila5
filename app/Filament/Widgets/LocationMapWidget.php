@@ -44,7 +44,7 @@ class LocationMapWidget extends Widget
      */
     public function getPlaces(): Collection
     {
-        /* @var Collection<int, Place> */
+        /** @var Collection<int, Place> */
         return Place::with(['placeType'])->get();
     }
 

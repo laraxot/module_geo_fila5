@@ -12,7 +12,7 @@ use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class);
 
-it('clusters locations that are close together', function (): void {
+it('clusters locations that are close together', function(): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 45.4643, longitude: 9.1901); // Very close
     $location3 = new LocationData(latitude: 46.4642, longitude: 10.1900); // Far away
@@ -41,7 +41,7 @@ it('clusters locations that are close together', function (): void {
     expect($clusters[1]['points'])->toHaveCount(1); // Second cluster should have 1 point
 });
 
-it('creates separate clusters for distant locations', function (): void {
+it('creates separate clusters for distant locations', function(): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 47.0000, longitude: 11.0000); // Very far away
     $locations = [$location1, $location2];
@@ -60,7 +60,7 @@ it('creates separate clusters for distant locations', function (): void {
     expect($clusters[1]['points'])->toHaveCount(1);
 });
 
-it('throws exception when location is not LocationData', function (): void {
+it('throws exception when location is not LocationData', function(): void {
     $mockDistanceCalculator = Mockery::mock(CalculateDistanceActionContract::class);
     $action = new ClusterLocationsAction($mockDistanceCalculator);
 
@@ -72,7 +72,7 @@ it('throws exception when location is not LocationData', function (): void {
     }
 });
 
-it('handles single location correctly', function (): void {
+it('handles single location correctly', function(): void {
     $location = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $locations = [$location];
 
@@ -86,7 +86,7 @@ it('handles single location correctly', function (): void {
     expect($clusters[0]['points'][0])->toBe($location);
 });
 
-it('handles empty locations array', function (): void {
+it('handles empty locations array', function(): void {
     $mockDistanceCalculator = Mockery::mock(CalculateDistanceActionContract::class);
     $action = new ClusterLocationsAction($mockDistanceCalculator);
 
@@ -95,7 +95,7 @@ it('handles empty locations array', function (): void {
     expect($clusters)->toBeArray()->toHaveCount(0);
 });
 
-it('works with different max distance parameter', function (): void {
+it('works with different max distance parameter', function(): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 45.4700, longitude: 9.1950); // About 1km apart
     $locations = [$location1, $location2];
@@ -123,7 +123,7 @@ it('works with different max distance parameter', function (): void {
     expect($clusters)->toHaveCount(2);
 });
 
-it('updates cluster centers correctly', function (): void {
+it('updates cluster centers correctly', function(): void {
     $location1 = new LocationData(latitude: 45.0, longitude: 9.0);
     $location2 = new LocationData(latitude: 46.0, longitude: 10.0);
     $locations = [$location1, $location2];

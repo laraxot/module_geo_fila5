@@ -18,7 +18,7 @@ afterEach(function () {
     Mockery::close();
 });
 
-it('fetches elevation successfully', function (): void {
+it('fetches elevation successfully', function(): void {
     // Arrange
     $mockResponse = new Response(
         200,
@@ -53,7 +53,7 @@ it('fetches elevation successfully', function (): void {
         ->and($result->elevation)->toBe(120.5);
 });
 
-it('throws exception for failed API request', function (): void {
+it('throws exception for failed API request', function(): void {
     // Arrange
     $request = new GuzzleHttp\Psr7\Request('POST', 'https://api.open-elevation.com/api/v1/lookup');
     $mockClient
@@ -66,7 +66,7 @@ it('throws exception for failed API request', function (): void {
         ->toThrow(RuntimeException::class, 'Failed to get elevation data');
 });
 
-it('throws exception for invalid response', function (): void {
+it('throws exception for invalid response', function(): void {
     // Arrange
     $mockResponse = new Response(
         200,
@@ -84,7 +84,7 @@ it('throws exception for invalid response', function (): void {
         ->toThrow(RuntimeException::class, 'Invalid elevation data response');
 });
 
-it('handles negative elevation', function (): void {
+it('handles negative elevation', function(): void {
     // Arrange - Dead Sea area (below sea level)
     $mockResponse = new Response(
         200,
@@ -112,7 +112,7 @@ it('handles negative elevation', function (): void {
     expect($result->elevation)->toBe(-430.0);
 });
 
-it('handles high elevation', function (): void {
+it('handles high elevation', function(): void {
     // Arrange - Mount Everest
     $mockResponse = new Response(
         200,
@@ -140,7 +140,7 @@ it('handles high elevation', function (): void {
     expect($result->elevation)->toBe(8848.0);
 });
 
-it('handles zero elevation', function (): void {
+it('handles zero elevation', function(): void {
     // Arrange - Sea level
     $mockResponse = new Response(
         200,
@@ -168,7 +168,7 @@ it('handles zero elevation', function (): void {
     expect($result->elevation)->toBe(0.0);
 });
 
-it('sends correct API payload', function (): void {
+it('sends correct API payload', function(): void {
     // Arrange
     $mockResponse = new Response(
         200,

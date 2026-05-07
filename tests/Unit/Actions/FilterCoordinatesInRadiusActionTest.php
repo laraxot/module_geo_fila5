@@ -18,7 +18,7 @@ afterEach(function () {
     Mockery::close();
 });
 
-it('filters coordinates within radius', function (): void {
+it('filters coordinates within radius', function(): void {
     // Arrange
     $centerLat = 45.4642;
     $centerLng = 9.1900;
@@ -59,7 +59,7 @@ it('filters coordinates within radius', function (): void {
     expect($result)->toHaveCount(2);
 });
 
-it('returns empty array when no coordinates within radius', function (): void {
+it('returns empty array when no coordinates within radius', function(): void {
     // Arrange
     $centerLat = 45.4642;
     $centerLng = 9.1900;
@@ -93,7 +93,7 @@ it('returns empty array when no coordinates within radius', function (): void {
     expect($result)->toHaveCount(0);
 });
 
-it('returns all coordinates when all within radius', function (): void {
+it('returns all coordinates when all within radius', function(): void {
     // Arrange
     $centerLat = 45.4642;
     $centerLng = 9.1900;
@@ -133,7 +133,7 @@ it('returns all coordinates when all within radius', function (): void {
     expect($result)->toHaveCount(3);
 });
 
-it('handles empty coordinates array', function (): void {
+it('handles empty coordinates array', function(): void {
     // Arrange
     $centerLat = 45.4642;
     $centerLng = 9.1900;
@@ -147,7 +147,7 @@ it('handles empty coordinates array', function (): void {
     expect($result)->toHaveCount(0);
 });
 
-it('filters exactly at boundary', function (): void {
+it('filters exactly at boundary', function(): void {
     // Arrange
     $centerLat = 45.4642;
     $centerLng = 9.1900;
