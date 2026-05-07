@@ -122,7 +122,7 @@ class CoordinatePicker extends Field
         } catch (\Throwable) {
             return null;
         }
-        if ($response === '') {
+        if ('' === $response) {
             return null;
         }
 
