@@ -22,7 +22,7 @@ afterEach(function () {
     Mockery::close();
 });
 
-it('calculates distance between two valid locations', function (): void {
+it('calculates distance between two valid locations', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -70,7 +70,7 @@ it('calculates distance between two valid locations', function (): void {
         ->toBe('OK');
 });
 
-it('throws exception for invalid latitude', function (): void {
+it('throws exception for invalid latitude', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 100.0, // Invalid latitude > 90
@@ -89,7 +89,7 @@ it('throws exception for invalid latitude', function (): void {
         ->toThrow(InvalidArgumentException::class, 'Latitudine non valida: 100.000000');
 });
 
-it('throws exception for invalid longitude', function (): void {
+it('throws exception for invalid longitude', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -108,7 +108,7 @@ it('throws exception for invalid longitude', function (): void {
         ->toThrow(InvalidArgumentException::class, 'Longitudine non valida: 200.000000');
 });
 
-it('throws exception for negative latitude', function (): void {
+it('throws exception for negative latitude', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: -100.0, // Invalid latitude < -90
@@ -127,7 +127,7 @@ it('throws exception for negative latitude', function (): void {
         ->toThrow(InvalidArgumentException::class, 'Latitudine non valida: -100.000000');
 });
 
-it('throws exception for negative longitude', function (): void {
+it('throws exception for negative longitude', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -146,7 +146,7 @@ it('throws exception for negative longitude', function (): void {
         ->toThrow(InvalidArgumentException::class, 'Longitudine non valida: -200.000000');
 });
 
-it('throws exception for empty response', function (): void {
+it('throws exception for empty response', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -169,7 +169,7 @@ it('throws exception for empty response', function (): void {
     expect(fn () => $this->action->execute($origin, $destination))->toThrow(DistanceCalculationException::class);
 });
 
-it('throws exception for malformed response', function (): void {
+it('throws exception for malformed response', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -194,7 +194,7 @@ it('throws exception for malformed response', function (): void {
     expect(fn () => $this->action->execute($origin, $destination))->toThrow(DistanceCalculationException::class);
 });
 
-it('throws exception when distance matrix fails', function (): void {
+it('throws exception when distance matrix fails', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -218,7 +218,7 @@ it('throws exception when distance matrix fails', function (): void {
         ->toThrow(DistanceCalculationException::class, 'Errore nel calcolo della distanza: API Error');
 });
 
-it('formats distance in meters correctly', function (): void {
+it('formats distance in meters correctly', function(): void {
     // Arrange
     $meters = 500;
 
@@ -229,7 +229,7 @@ it('formats distance in meters correctly', function (): void {
     expect($result)->toBe('500 m');
 });
 
-it('formats distance in kilometers correctly', function (): void {
+it('formats distance in kilometers correctly', function(): void {
     // Arrange
     $meters = 1500;
 
@@ -240,7 +240,7 @@ it('formats distance in kilometers correctly', function (): void {
     expect($result)->toBe('1.5 km');
 });
 
-it('formats distance with decimal kilometers', function (): void {
+it('formats distance with decimal kilometers', function(): void {
     // Arrange
     $meters = 2500;
 
@@ -251,7 +251,7 @@ it('formats distance with decimal kilometers', function (): void {
     expect($result)->toBe('2.5 km');
 });
 
-it('formats exact kilometer distance', function (): void {
+it('formats exact kilometer distance', function(): void {
     // Arrange
     $meters = 1000;
 
@@ -262,7 +262,7 @@ it('formats exact kilometer distance', function (): void {
     expect($result)->toBe('1.0 km');
 });
 
-it('throws exception for negative distance', function (): void {
+it('throws exception for negative distance', function(): void {
     // Arrange
     $negativeMeters = -100;
 
@@ -271,7 +271,7 @@ it('throws exception for negative distance', function (): void {
         ->toThrow(InvalidArgumentException::class, 'La distanza non può essere negativa');
 });
 
-it('handles zero distance', function (): void {
+it('handles zero distance', function(): void {
     // Arrange
     $zeroMeters = 0;
 
@@ -282,7 +282,7 @@ it('handles zero distance', function (): void {
     expect($result)->toBe('0 m');
 });
 
-it('handles very small distances', function (): void {
+it('handles very small distances', function(): void {
     // Arrange
     $smallMeters = 1;
 
@@ -293,7 +293,7 @@ it('handles very small distances', function (): void {
     expect($result)->toBe('1 m');
 });
 
-it('handles very large distances', function (): void {
+it('handles very large distances', function(): void {
     // Arrange
     $largeMeters = 999999;
 
@@ -304,7 +304,7 @@ it('handles very large distances', function (): void {
     expect($result)->toBe('1000.0 km');
 });
 
-it('handles boundary latitude values', function (): void {
+it('handles boundary latitude values', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 90.0, // Boundary value
@@ -340,7 +340,7 @@ it('handles boundary latitude values', function (): void {
     expect($result)->toBeArray()->and($result['status'])->toBe('OK');
 });
 
-it('handles boundary longitude values', function (): void {
+it('handles boundary longitude values', function(): void {
     // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
@@ -376,7 +376,7 @@ it('handles boundary longitude values', function (): void {
     expect($result)->toBeArray()->and($result['status'])->toBe('OK');
 });
 
-it('handles same origin and destination', function (): void {
+it('handles same origin and destination', function(): void {
     // Arrange
     $sameLocation = new LocationData(
         latitude: 45.4642,

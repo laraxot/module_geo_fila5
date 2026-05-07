@@ -16,19 +16,19 @@ uses(UnitTestCase::class);
 // Istanziazione e configurazione base
 // ---------------------------------------------------------------------------
 
-test('MapPicker can be instantiated', function (): void {
+test('MapPicker can be instantiated', function(): void {
     $field = MapPicker::make('location');
 
     expect($field)->toBeInstanceOf(MapPicker::class);
 });
 
-test('MapPicker extends XotBaseField', function (): void {
+test('MapPicker extends XotBaseField', function(): void {
     $field = MapPicker::make('location');
 
     expect($field)->toBeInstanceOf(XotBaseField::class);
 });
 
-test('MapPicker default state is location array with nullable coordinates', function (): void {
+test('MapPicker default state is location array with nullable coordinates', function(): void {
     $field = MapPicker::make('location');
 
     $default = $field->getDefaultState();
@@ -39,7 +39,7 @@ test('MapPicker default state is location array with nullable coordinates', func
         ->and($default['longitude'])->toBeNull();
 });
 
-test('MapPicker supports fluent defaults and presentation options', function (): void {
+test('MapPicker supports fluent defaults and presentation options', function(): void {
     $field = MapPicker::make('location')
         ->defaultLocation(45.4642, 9.1900)
         ->zoom(14)
@@ -53,19 +53,19 @@ test('MapPicker supports fluent defaults and presentation options', function ():
         ->and($field->isSearchVisible())->toBeFalse();
 });
 
-test('MapPicker uses dedicated blade view', function (): void {
+test('MapPicker uses dedicated blade view', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->getView())->toBe('geo::filament.forms.components.map-picker');
 });
 
-test('MapPicker is dehydrated to form state', function (): void {
+test('MapPicker is dehydrated to form state', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->isDehydrated())->toBeTrue();
 });
 
-test('MapPicker getZoom defaults to 13 when zoom not configured', function (): void {
+test('MapPicker getZoom defaults to 13 when zoom not configured', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->getZoom())->toBe(13);
@@ -75,11 +75,11 @@ test('MapPicker getZoom defaults to 13 when zoom not configured', function (): v
 // LocationPicker alias
 // ---------------------------------------------------------------------------
 
-test('LocationPicker is a MapPicker subclass', function (): void {
+test('LocationPicker is a MapPicker subclass', function(): void {
     expect(LocationPicker::make('location'))->toBeInstanceOf(MapPicker::class);
 });
 
-test('LocationPicker uses map-picker blade view (inherited)', function (): void {
+test('LocationPicker uses map-picker blade view (inherited)', function(): void {
     $field = LocationPicker::make('location');
 
     expect($field->getView())->toBe('geo::filament.forms.components.map-picker');
@@ -89,14 +89,14 @@ test('LocationPicker uses map-picker blade view (inherited)', function (): void 
 // NUOVI TEST — colonne DB configurabili
 // ---------------------------------------------------------------------------
 
-test('MapPicker latitudeColumn and longitudeColumn default to standard names', function (): void {
+test('MapPicker latitudeColumn and longitudeColumn default to standard names', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->getLatitudeColumn())->toBe('latitude')
         ->and($field->getLongitudeColumn())->toBe('longitude');
 });
 
-test('MapPicker latitudeColumn and longitudeColumn setters override defaults', function (): void {
+test('MapPicker latitudeColumn and longitudeColumn setters override defaults', function(): void {
     $field = MapPicker::make('location')
         ->latitudeColumn('lat')
         ->longitudeColumn('lng');
@@ -105,13 +105,13 @@ test('MapPicker latitudeColumn and longitudeColumn setters override defaults', f
         ->and($field->getLongitudeColumn())->toBe('lng');
 });
 
-test('MapPicker latitudeColumn fluent setter returns same instance', function (): void {
+test('MapPicker latitudeColumn fluent setter returns same instance', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->latitudeColumn('coord_lat'))->toBe($field);
 });
 
-test('MapPicker longitudeColumn fluent setter returns same instance', function (): void {
+test('MapPicker longitudeColumn fluent setter returns same instance', function(): void {
     $field = MapPicker::make('location');
 
     expect($field->longitudeColumn('coord_lng'))->toBe($field);
@@ -121,7 +121,7 @@ test('MapPicker longitudeColumn fluent setter returns same instance', function (
 // NUOVI TEST — geocodeAddress (forward geocoding)
 // ---------------------------------------------------------------------------
 
-test('MapPicker geocodeAddress returns expected keys on success', function (): void {
+test('MapPicker geocodeAddress returns expected keys on success', function(): void {
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response([
             [
@@ -141,7 +141,7 @@ test('MapPicker geocodeAddress returns expected keys on success', function (): v
         ->and($result['display_name'])->toBe('Milano, Lombardia, Italia');
 });
 
-test('MapPicker geocodeAddress returns default location when Nominatim returns empty', function (): void {
+test('MapPicker geocodeAddress returns default location when Nominatim returns empty', function(): void {
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response([], 200),
     ]);
@@ -154,7 +154,7 @@ test('MapPicker geocodeAddress returns default location when Nominatim returns e
         ->and($result['display_name'])->toBe('Not found');
 });
 
-test('MapPicker geocodeAddress returns default location on HTTP exception', function (): void {
+test('MapPicker geocodeAddress returns default location on HTTP exception', function(): void {
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response(null, 500),
     ]);
@@ -169,7 +169,7 @@ test('MapPicker geocodeAddress returns default location on HTTP exception', func
 // NUOVI TEST — reverseGeocode
 // ---------------------------------------------------------------------------
 
-test('MapPicker reverseGeocode returns address string', function (): void {
+test('MapPicker reverseGeocode returns address string', function(): void {
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response([
             'display_name' => 'Via Roma, Milano, Italia',
@@ -182,7 +182,7 @@ test('MapPicker reverseGeocode returns address string', function (): void {
     expect($result)->toBeString()->toBe('Via Roma, Milano, Italia');
 });
 
-test('MapPicker reverseGeocode returns empty string on failure', function (): void {
+test('MapPicker reverseGeocode returns empty string on failure', function(): void {
     Http::fake([
         'nominatim.openstreetmap.org/*' => Http::response(null, 500),
     ]);

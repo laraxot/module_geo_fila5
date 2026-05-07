@@ -38,7 +38,7 @@ beforeEach(function () {
     $this->action = new UpdateCoordinatesAction($this->getCoordinatesAction);
 });
 
-it('updates coordinates for a place with valid address', function (): void {
+it('updates coordinates for a place with valid address', function(): void {
     // Create a place without using the factory to avoid PlaceType dependency
     $place = new Place([
         'latitude' => null,
@@ -72,7 +72,7 @@ it('updates coordinates for a place with valid address', function (): void {
     expect($place->longitude)->toBe(9.1900);
 });
 
-it('throws exception when place has no address', function (): void {
+it('throws exception when place has no address', function(): void {
     // Create a place without address
     $place = new Place([
         'latitude' => null,
@@ -84,7 +84,7 @@ it('throws exception when place has no address', function (): void {
     expect(fn () => $this->action->execute($place))->toThrow(RuntimeException::class, 'Place address is required');
 });
 
-it('throws exception when coordinates cannot be retrieved', function (): void {
+it('throws exception when coordinates cannot be retrieved', function(): void {
     // Create a place with address
     $place = new Place([
         'latitude' => null,
@@ -119,7 +119,7 @@ it('throws exception when coordinates cannot be retrieved', function (): void {
     expect(fn () => $this->action->execute($place))->toThrow(RuntimeException::class, 'Could not get coordinates for address: Invalid Address That Does Not Exist');
 });
 
-it('handles null address formatted_address', function (): void {
+it('handles null address formatted_address', function(): void {
     // Create a place with address that has null formatted_address
     $place = new Place([
         'latitude' => null,
@@ -145,7 +145,7 @@ it('handles null address formatted_address', function (): void {
     expect(fn () => $this->action->execute($place))->toThrow(RuntimeException::class, 'Place address is required');
 });
 
-it('updates coordinates with different address', function (): void {
+it('updates coordinates with different address', function(): void {
     // Create a place with address
     $place = new Place([
         'latitude' => null,
