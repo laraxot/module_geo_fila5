@@ -74,6 +74,5 @@ class AddressForm extends XotBaseResourceForm
             'street_number' => TextInput::make('street_number')->maxLength(20),
             'is_primary' => Toggle::make('is_primary')->default(false),
         ];
-
     }
 }

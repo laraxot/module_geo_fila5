@@ -18,25 +18,25 @@ use Modules\Xot\Contracts\ProfileContract;
  * regioni, province, città, CAP, codici ISTAT, ecc.
  * Tutti i dati sono estratti da file JSON e gestiti tramite Sushi.
  *
- * @property string|null $nome
- * @property float|null $codice
+ * @property string|null                  $nome
+ * @property float|null                   $codice
  * @property array<array-key, mixed>|null $zona
  * @property array<array-key, mixed>|null $regione
  * @property array<array-key, mixed>|null $provincia
- * @property string|null $sigla
- * @property string|null $codiceCatastale
+ * @property string|null                  $sigla
+ * @property string|null                  $codiceCatastale
  * @property array<array-key, mixed>|null $cap
- * @property int|null $popolazione
- * @property int|null $id
- * @property string|null $title
- * @property string|null $slug
- * @property string|null $content
- * @property string|null $created_at
- * @property string|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
+ * @property int|null                     $popolazione
+ * @property int|null                     $id
+ * @property string|null                  $title
+ * @property string|null                  $slug
+ * @property string|null                  $content
+ * @property string|null                  $created_at
+ * @property string|null                  $updated_at
+ * @property string|null                  $created_by
+ * @property string|null                  $updated_by
+ * @property ProfileContract|null         $creator
+ * @property ProfileContract|null         $updater
  *
  * @method static Builder<static>|Comune newModelQuery()
  * @method static Builder<static>|Comune newQuery()
@@ -63,12 +63,12 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static ComuneFactory factory($count = null, $state = [])
  *
- * @property int|null $altitudine
+ * @property int|null    $altitudine
  * @property string|null $codice_catastale
- * @property float|null $lat
- * @property float|null $lng
+ * @property float|null  $lat
+ * @property float|null  $lng
  * @property string|null $sigla_provincia
- * @property float|null $superficie
+ * @property float|null  $superficie
  * @property string|null $zona_altimetrica
  *
  * @method static Builder<static>|Comune whereAltitudine($value)
@@ -147,7 +147,7 @@ class Comune extends BaseModel
                     static fn (mixed $v): string => is_scalar($v) ? (string) $v : '',
                     $value,
                 ),
-                static fn (string $s): bool => $s !== '',
+                static fn (string $s): bool => '' !== $s,
             ));
 
             return implode(', ', $parts);
@@ -170,7 +170,7 @@ class Comune extends BaseModel
         return static::all()
             ->pluck('regione')
             ->map(static fn (mixed $r): string => self::geoValueToLabel($r))
-            ->filter(static fn (string $s): bool => $s !== '')
+            ->filter(static fn (string $s): bool => '' !== $s)
             ->unique()
             ->sort()
             ->values();
@@ -186,7 +186,7 @@ class Comune extends BaseModel
         return static::where('regione', $regione)
             ->pluck('provincia')
             ->map(static fn (mixed $p): string => self::geoValueToLabel($p))
-            ->filter(static fn (string $s): bool => $s !== '')
+            ->filter(static fn (string $s): bool => '' !== $s)
             ->unique()
             ->sort()
             ->values();
@@ -205,7 +205,8 @@ class Comune extends BaseModel
     /**
      * Find a comune by name (case insensitive).
      *
-     * @param  string  $nome  The name of the comune to find (case insensitive)
+     * @param string $nome The name of the comune to find (case insensitive)
+     *
      * @return static|null The found comune or null if not found
      */
     public static function findByNome(string $nome): ?self
@@ -221,7 +222,8 @@ class Comune extends BaseModel
     /**
      * Find comuni by CAP code (partial match supported).
      *
-     * @param  string  $cap  The CAP code to search for
+     * @param string $cap The CAP code to search for
+     *
      * @return EloquentCollection<int, Comune>
      */
     public static function findByCap(string $cap): EloquentCollection
@@ -251,7 +253,7 @@ class Comune extends BaseModel
     {
         $comune = static::query()->where('id', $id)->first();
 
-        if ($comune === null) {
+        if (null === $comune) {
             return null;
         }
 

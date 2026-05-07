@@ -24,16 +24,16 @@ class SearchPlacesAction
 
     public function __construct(string $userAgent)
     {
-        $this->client = new Client;
+        $this->client = new Client();
         $this->userAgent = $userAgent.' Application';
     }
 
     /**
      * Cerca luoghi usando una query di ricerca.
      *
-     * @return Collection<int, LocationData>
-     *
      * @throws \RuntimeException Se la richiesta fallisce
+     *
+     * @return Collection<int, LocationData>
      */
     public function execute(string $query, ?string $country = null, int $limit = 10): Collection
     {
@@ -74,9 +74,9 @@ class SearchPlacesAction
     }
 
     /**
-     * @return Collection<int, LocationData>
-     *
      * @throws \RuntimeException Se la risposta non è nel formato atteso
+     *
+     * @return Collection<int, LocationData>
      */
     private function parseResponse(string $response): Collection
     {

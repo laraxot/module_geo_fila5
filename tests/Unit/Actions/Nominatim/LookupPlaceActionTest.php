@@ -15,7 +15,7 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     $this->mockClient = $this->mock(Client::class);
-    $this->action = new LookupPlaceAction;
+    $this->action = new LookupPlaceAction();
 
     // Replace the client instance with our mock
     $reflection = new ReflectionClass($this->action);
@@ -87,7 +87,7 @@ test('lookup place action uses correct user agent header', function (): void {
         ->once()
         ->withArgs(function ($url, $options) {
             return isset($options['headers']['User-Agent'])
-                   && $options['headers']['User-Agent'] === '<main module>/1.0';
+                   && '<main module>/1.0' === $options['headers']['User-Agent'];
         })
         ->andReturn($mockResponse);
 

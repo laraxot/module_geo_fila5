@@ -12,9 +12,9 @@ class GeocodingService
     /**
      * Geocodifica un indirizzo.
      *
-     * @return array{latitude: float, longitude: float, address: string}
-     *
      * @throws \RuntimeException Se l'indirizzo non viene trovato
+     *
+     * @return array{latitude: float, longitude: float, address: string}
      */
     public function geocodeAddress(string $address): array
     {

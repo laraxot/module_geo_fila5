@@ -50,6 +50,5 @@ class LocationForm extends XotBaseResourceForm
             //     ->geolocate()
             //     ->columnSpan(2),
         ];
-
     }
 }

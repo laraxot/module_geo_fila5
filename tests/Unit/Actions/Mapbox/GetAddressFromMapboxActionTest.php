@@ -15,7 +15,7 @@ use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxAction;
 use Modules\Geo\Datas\AddressData;
 
 beforeEach(function () {
-    $this->mockHandler = new MockHandler;
+    $this->mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($this->mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $this->action = new GetAddressFromMapboxAction($client);

@@ -82,7 +82,7 @@ class AddressesField extends Repeater
             })
             ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
                 // Se questo diventa primary, disattiva tutti gli altri
-                if ($state === true) {
+                if (true === $state) {
                     $raw = $get('../../addresses');
                     $addresses = is_array($raw) ? $raw : [];
 
@@ -91,7 +91,7 @@ class AddressesField extends Repeater
                     preg_match('/addresses\.(\d+)\.is_primary/', (string) ($path ?? ''), $matches);
                     $currentIndex = $matches[1] ?? null;
 
-                    if ($currentIndex !== null) {
+                    if (null !== $currentIndex) {
                         // Disattiva is_primary negli altri elementi
                         foreach ($addresses as $index => $address) {
                             $indexStr = app(SafeStringCastAction::class)->execute($index);
