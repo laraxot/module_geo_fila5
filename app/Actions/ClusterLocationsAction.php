@@ -12,15 +12,13 @@ readonly class ClusterLocationsAction
 {
     public function __construct(
         private CalculateDistanceActionContract $distanceCalculator,
-    ) {
-    }
+    ) {}
 
     /**
      * Raggruppa le posizioni in cluster basati sulla distanza.
      *
      * @param  array<LocationData>  $locations  Lista delle posizioni da raggruppare
      * @param  float  $maxDistance  Distanza massima in km tra i punti di un cluster
-     *
      * @return array<array{center: LocationData, points: array<LocationData>}>
      *
      * @throws InvalidLocationException Se i dati della posizione non sono validi

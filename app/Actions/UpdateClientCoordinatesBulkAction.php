@@ -19,14 +19,12 @@ class UpdateClientCoordinatesBulkAction
 
     public function __construct(
         private readonly GetAddressDataFromFullAddressAction $getAddressDataFromFullAddressAction,
-    ) {
-    }
+    ) {}
 
     /**
      * Execute the action to update coordinates for a collection of addresses.
      *
      * @param  Collection<int, Address>  $addresses
-     *
      * @return array{success_count: int, error_messages: array<string>}
      */
     public function execute(Collection $addresses): array

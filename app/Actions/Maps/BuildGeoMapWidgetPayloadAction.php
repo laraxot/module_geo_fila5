@@ -74,7 +74,6 @@ class BuildGeoMapWidgetPayloadAction
      */
     protected function getPlaces(): Collection
     {
-        /** @var Collection<int, Place> $places */
         return Place::query()
             ->with(['placeType', 'address'])
             ->whereNotNull('latitude')
@@ -150,7 +149,6 @@ class BuildGeoMapWidgetPayloadAction
 
     /**
      * @param  Collection<int, Place>  $places
-     *
      * @return array{lat: float, lng: float}
      */
     private function resolveCenter(Collection $places): array
@@ -189,7 +187,6 @@ class BuildGeoMapWidgetPayloadAction
 
     /**
      * @param  array<mixed>  $data
-     *
      * @return array<string, mixed>
      */
     private function toStringMixedMap(array $data): array

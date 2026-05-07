@@ -12,6 +12,7 @@ use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
 use Modules\Geo\Database\Factories\PlaceFactory;
 use Modules\Xot\Contracts\ProfileContract;
+
 use function Safe\json_encode;
 
 /**
@@ -205,13 +206,13 @@ class Place extends BaseModel implements HasGeolocation
     #[\Override]
     public function getLatitude(): ?float
     {
-        /* @phpstan-ignore-line */ return $this->latitude;
+        return $this->getLatitudeAttribute();
     }
 
     #[\Override]
     public function getLongitude(): ?float
     {
-        /* @phpstan-ignore-line */ return $this->longitude;
+        return $this->getLongitudeAttribute();
     }
 
     #[\Override]

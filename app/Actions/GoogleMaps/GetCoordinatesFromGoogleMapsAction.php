@@ -8,8 +8,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
-use function Safe\json_decode;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 /**
  * Action per ottenere le coordinate da un indirizzo tramite Google Maps.
@@ -23,8 +24,7 @@ readonly class GetCoordinatesFromGoogleMapsAction
 
     public function __construct(
         private Client $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Ottiene le coordinate da un indirizzo.

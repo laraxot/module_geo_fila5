@@ -7,6 +7,7 @@ namespace Modules\Geo\Services;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+
 use function Safe\json_decode;
 
 /**
@@ -50,43 +51,50 @@ class GeoDataService
      */
     public function __construct()
     {
-        $this->validator = new GeoDataValidator();
+        $this->validator = new GeoDataValidator;
     }
 
     /**
-     * Ottiene tutte le regioni.
+     * Ottiene tutte le regioni (chiave = codice, valore = nome).
      *
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<string, string>
      */
     public function getRegions(): Collection
     {
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        return Cache::remember(
+        /** @var Collection<string, string> $cached */
+        $cached = Cache::remember(
             self::CACHE_KEY_REGIONS,
             self::CACHE_TTL,
-            fn (): Collection => $this->loadData()->pluck('name', 'code'),
+            fn (): Collection => $this->loadData()->mapWithKeys(static function (array $region): array {
+                $code = $region['code'] ?? '';
+                $name = $region['name'] ?? '';
+                $key = \is_string($code) ? $code : (string) $code;
+                $val = \is_string($name) ? $name : (string) $name;
+
+                return [$key => $val];
+            }),
         );
+
+        return $cached;
     }
 
     /**
      * Ottiene le province di una regione.
      *
      * @param  string  $regionCode  Codice della regione
-     *
      * @return Collection<int, array{name: string, code: string}>
      */
     public function getProvinces(string $regionCode): Collection
     {
         $cacheKey = \sprintf(self::CACHE_KEY_PROVINCES, $regionCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): Collection {
+        /** @var Collection<int, array{name: string, code: string}> $cached */
+        $cached = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): Collection {
             /** @var array<string, mixed>|null $region */
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
-                /** @var Collection<int, array{name: string, code: string}> $empty */
-                return new Collection();
+                return new Collection;
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -110,28 +118,29 @@ class GeoDataService
 
             return $provinceResult;
         });
+
+        return $cached;
     }
 
     /**
-     * Ottiene le città di una provincia.
+     * Ottiene le città di una provincia (chiave = codice, valore = nome).
      *
      * @param  string  $provinceCode  Codice della provincia
-     *
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<string, string>
      */
     public function getCities(string $provinceCode): Collection
     {
         $cacheKey = \sprintf(self::CACHE_KEY_CITIES, $provinceCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
+        /** @var Collection<string, string> $cached */
+        $cached = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
             /** @var array<string, mixed>|null $province */
             $province = $this->loadData()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection();
+                return new Collection;
             }
 
             /** @var array<int, array<string, mixed>> $cities */
@@ -140,11 +149,17 @@ class GeoDataService
             /** @var Collection<int, array<string, mixed>> $citiesCollection */
             $citiesCollection = new Collection($cities);
 
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = $citiesCollection->pluck('name', 'code');
+            return $citiesCollection->mapWithKeys(static function (array $city): array {
+                $code = $city['code'] ?? '';
+                $name = $city['name'] ?? '';
+                $key = \is_string($code) ? $code : (string) $code;
+                $val = \is_string($name) ? $name : (string) $name;
 
-            return $cityResult;
+                return [$key => $val];
+            });
         });
+
+        return $cached;
     }
 
     /**
@@ -157,7 +172,6 @@ class GeoDataService
     {
         $cacheKey = \sprintf(self::CACHE_KEY_CAP, $provinceCode, $cityCode);
 
-        /** @var string|null $result */
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): null|string {
             /** @var array<string, mixed>|null $province */
             $province = $this->loadData()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
@@ -223,7 +237,6 @@ class GeoDataService
         /** @var array<int, array<string, mixed>> $regions */
         $regions = $data['regions'];
 
-        /** @var Collection<int, array<string, mixed>> $result */
         return (new Collection($regions))->values();
     }
 }

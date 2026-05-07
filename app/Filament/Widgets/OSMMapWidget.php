@@ -78,7 +78,6 @@ class OSMMapWidget extends Widget
 
     /**
      * @param  Collection<int, Place>  $places
-     *
      * @return array{lat: float, lng: float}
      */
     protected function getMapCenter(Collection $places): array
