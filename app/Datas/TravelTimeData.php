@@ -21,8 +21,7 @@ class TravelTimeData extends Data
         public readonly string $formatted_duration,
         public readonly string $formatted_distance,
         public readonly string $status = 'OK',
-    ) {
-    }
+    ) {}
 
     /**
      * Crea un'istanza di errore.

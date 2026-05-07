@@ -20,8 +20,7 @@ readonly class LocationDTO
         public float $latitude,
         public float $longitude,
         public ?string $name = null,
-    ) {
-    }
+    ) {}
 
     /**
      * Crea una nuova istanza da un oggetto LocationData.

@@ -148,7 +148,6 @@ class GetAddressFromBingMapsAction
      * Extract location array from Bing Maps API response.
      *
      * @param  array<string, mixed>  $response
-     *
      * @return array<string, mixed>
      *
      * @throws InvalidLocationException
@@ -198,7 +197,6 @@ class GetAddressFromBingMapsAction
      * Extract coordinates from location array.
      *
      * @param  array<string, mixed>  $location
-     *
      * @return array{0: float, 1: float}
      *
      * @throws InvalidLocationException
@@ -228,7 +226,6 @@ class GetAddressFromBingMapsAction
      *
      * @param  array<string, mixed>  $data  Source array
      * @param  string  $key  Field key to extract
-     *
      * @return string|null Validated string value or null if not found/not string
      */
     private function extractStringField(array $data, string $key): ?string

@@ -7,6 +7,7 @@ namespace Modules\Geo\Actions\IPGeolocation;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\IPLocationData;
+
 use function Safe\json_decode;
 
 /**
@@ -20,7 +21,7 @@ class FetchIPLocationAction
 
     public function __construct()
     {
-        $this->client = new Client();
+        $this->client = new Client;
     }
 
     /**

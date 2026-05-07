@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use Modules\Geo\Datas\LocationData;
+
 use function Safe\json_decode;
 
 /**
@@ -23,7 +24,7 @@ class SearchPlacesAction
 
     public function __construct(string $userAgent)
     {
-        $this->client = new Client();
+        $this->client = new Client;
         $this->userAgent = $userAgent.' Application';
     }
 

@@ -23,7 +23,6 @@ class CalculateDistanceMatrixAction
      *
      * @param  Collection<int, LocationData>  $origins  Punti di origine
      * @param  Collection<int, LocationData>  $destinations  Punti di destinazione
-     *
      * @return array<array<array{
      *     distance: array{text: string, value: int},
      *     duration: array{text: string, value: int},

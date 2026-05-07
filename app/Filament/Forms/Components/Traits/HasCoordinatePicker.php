@@ -313,8 +313,23 @@ trait HasCoordinatePicker
             $component->state(['lat' => null, 'lng' => null, 'address' => null]);
         });
 
-        $this->dehydrateStateUsing(static function (self $component, $state) {
-            return $state;
+        $this->dehydrateStateUsing(static function (self $component, mixed $state): ?array {
+            if (! \is_array($state)) {
+                return null;
+            }
+
+            $latitude = $state['latitude'] ?? $state['lat'] ?? null;
+            $longitude = $state['longitude'] ?? $state['lng'] ?? null;
+
+            $normalized = $state;
+            $normalized['latitude'] = \is_numeric($latitude) ? (string) $latitude : null;
+            $normalized['longitude'] = \is_numeric($longitude) ? (string) $longitude : null;
+
+            // Manteniamo compatibilita con codice legacy che legge lat/lng.
+            $normalized['lat'] = \is_numeric($latitude) ? (float) $latitude : null;
+            $normalized['lng'] = \is_numeric($longitude) ? (float) $longitude : null;
+
+            return $normalized;
         });
 
         $this->saveRelationshipsUsing(static function (self $component, Model $record, $state): void {
