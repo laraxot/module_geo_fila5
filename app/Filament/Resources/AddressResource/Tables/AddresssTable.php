@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\base_quaeris_fila5\var\www\_bases\base_quaeris_fila5\laravel\Modules\Geo\app\Filament\Resources\LocationResource\Tables;
+namespace Modules\base_quaeris_fila5\var\www\_bases\base_quaeris_fila5\laravel\Modules\Geo\app\Filament\Resources\AddressResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
-class LocationsTable extends XotBaseResourceTable
+class AddresssTable extends XotBaseResourceTable
 {
     /**
      * @return array<string, Column>
