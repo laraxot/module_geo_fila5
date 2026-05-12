@@ -41,3 +41,10 @@ Geo module owns ALL geo-spatial concerns. Other modules (Fixcity, Transport, Log
 - If a Geo JS file uses bare imports like `lit` or `leaflet`, the theme must expose those dependencies through reachable aliases or a shared reachable `node_modules`.
 - This prevents Rollup/Vite failures when importing Geo files from outside the theme root.
 - If a Geo Web Component wraps a library that depends on global CSS, like Leaflet, prefer light DOM unless the component also reinjects the vendor stylesheet into its shadow root.
+
+## Documentation
+
+- [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
+- [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
+- [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
+- [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout

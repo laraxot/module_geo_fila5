@@ -1,7 +1,7 @@
 ---
 type: concept
 module: Geo
-component: geo-map-lit
+component: map-lit
 created: 2026-04-30
 updated: 2026-04-30
 stories:
@@ -9,11 +9,11 @@ stories:
   - 8-78-segnalazioni-elenco-polish
 ---
 
-# `data-url` Property — `geo-map-lit` Component
+# `data-url` Property — `map-lit` Component
 
 ## Scopo
 
-Aggiunta della proprietà `dataUrl` (attribute `data-url`) al Web Component `<geo-map-lit>` per permettere il caricamento dinamico del file GeoJSON da un URL configurabile.
+Aggiunta della proprietà `dataUrl` (attribute `data-url`) al Web Component `<map-lit>` per permettere il caricamento dinamico del file GeoJSON da un URL configurabile.
 
 ## Problema risolto
 
@@ -24,7 +24,7 @@ Precedentemente l'URL del GeoJSON era hardcoded in `DEFAULT_TICKETS_JSON_URL = '
 ### 1. Dichiarazione proprietà
 
 ```javascript
-// In GeoMapLit class, static properties
+// In MapLit class, static properties
 static properties = {
     // ...altre proprietà...
     dataUrl: { type: String, attribute: 'data-url' },
@@ -48,11 +48,11 @@ _loadGeoJson() {
 ### 3. Uso nella Blade
 
 ```blade
-<geo-map-lit
+<map-lit
     id="segnalazioni-map"
     data-url="/data/tickets.json"
     active-layer="markers"
-></geo-map-lit>
+></map-lit>
 ```
 
 ## Vantaggi
@@ -70,6 +70,6 @@ curl -s http://127.0.0.1:8000/it/tests/segnalazioni-elenco | grep 'data-url'
 
 ## Regole correlate
 
-- [geojson-map-lit-component](../entities/geo-map-lit.md) — entità principale
+- [map-lit-component](./map-lit-component.md) — entità principale per segnalazioni-elenco
 - [static-geo-map-widget-pattern](../concepts/static-geo-map-widget-pattern.md) — pattern per pagine pubbliche
 - [segnalazioni-elenco-map-integration](../../../Themes/Sixteen/docs/wiki/concepts/segnalazioni-elenco-map-integration.md) — integrazione tema
