@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\app\Filament\Resources\AddressResource\Tables;
+namespace Modules\Geo\Filament\Resources\AddressResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

@@ -95,18 +95,18 @@ $labels = [
         </div>
 
         {{-- Readout Summary --}}
-        <div
-            class="rounded-lg bg-gray-50 p-2 text-[11px] text-gray-500 dark:bg-white/5 dark:border-white/10 border border-gray-100">
-            <div class="flex flex-wrap gap-x-4">
-                <span>Lat: <strong x-text="state.latitude ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
-                <span>Lng: <strong x-text="state.longitude ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
-            </div>
-            <template x-if="state.address">
-                <div class="mt-1 truncate max-w-full" :title="state.address">
-                    <x-heroicon-o-map-pin class="inline-block h-3 w-3 mr-1" />
-                    <span x-text="state.address"></span>
+            <div
+                class="rounded-lg bg-gray-50 p-2 text-[11px] text-gray-500 dark:bg-white/5 dark:border-white/10 border border-gray-100">
+                <div class="flex flex-wrap gap-x-4">
+                    <span>Lat: <strong x-text="(state.latitude || state.latitude === 0) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+                    <span>Lng: <strong x-text="(state.longitude || state.longitude === 0) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
                 </div>
-            </template>
-        </div>
+                <template x-if="state.address">
+                    <div class="mt-1 truncate max-w-full" :title="state.address">
+                        <x-heroicon-o-map-pin class="inline-block h-3 w-3 mr-1" />
+                        <span x-text="state.address"></span>
+                    </div>
+                </template>
+            </div>
     </div>
 </x-dynamic-component>
