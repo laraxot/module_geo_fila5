@@ -16,11 +16,17 @@ La fonte canonica dei BMAD agents rimane `.bmad-core/agents/`, caricabile on-dem
 - `bashscripts/ai/.agents/kilo.jsonc` — risolti conflitti `<<<<<<< HEAD` su `compaction.reserved`
 - `bashscripts/ai/rules/context-compression-discipline.md` — risolti conflitti su sezione errore BMAD
 
-### 3. context-mode MCP v1.0.121 installato e configurato
+### 3. context-mode MCP v1.0.121 installato e configurato + Bun runtime
 
 `context-mode` è un plugin MCP che comprime automaticamente il contesto del 98% (315KB → 5.4KB).
 
-**Installazione:**
+**Installazione Bun (3-5x speedup):**
+```bash
+npm install -g bun
+bun --version  # v1.3.13+
+```
+
+**Installazione context-mode:**
 ```bash
 npm install -g context-mode@latest
 context-mode --version  # v1.0.121+
