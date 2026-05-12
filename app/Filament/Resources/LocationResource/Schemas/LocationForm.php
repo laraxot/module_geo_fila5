@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\app\Filament\Resources\LocationResource\Schemas;
+namespace Modules\Geo\Filament\Resources\LocationResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
