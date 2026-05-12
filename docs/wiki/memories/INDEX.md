@@ -13,7 +13,7 @@ module: "root"
 
 | Memory | Description |
 |--------|-------------|
-| _Add entries here as decisions are made_ | |
+| [environment-verification](environment-verification.md) | Env audit and naming cleanup (2026-05) |
 
 ## Usage
 
