@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\app\Filament\Clusters\Socialite\Resources\SocialProviderResource\Schemas;
+namespace Modules\User\Filament\Clusters\Socialite\Resources\SocialProviderResource\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 

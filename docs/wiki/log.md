@@ -98,5 +98,12 @@ module: "ptvx-project"
 [2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — aggiunto trigger Filament ->label()/traduzioni, Filament class extension/XotBase, Filament resource/page/widget
 [2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — aggiunto filament-rules-summary, xotbase-critical-rules, schema-conventions, ai-guidelines
 
-**Last Activity:** 2026-05-12 09:31:00 UTC  
-**Total Operations:** 68
+**Last Activity:** 2026-05-12 09:58:00 UTC  
+[2026-05-12 09:58:00 UTC] [CREATE] docs/wiki/rules/filament-resource-property.md — regola `$resource` è `protected static string` non `public static`; auto-resolve in XotBaseListRecords via namespace
+[2026-05-12 09:58:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — aggiunto trigger `$resource property`, `XotBaseListRecords auto-resolve`, `skill crea filament page`
+[2026-05-12 09:58:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — aggiunto filament-resource-property
+[2026-05-12 09:58:00 UTC] [UPDATE] laravel/Modules/Xot/docs/wiki/rules/INDEX.md — upgrade frontmatter + link regole Filament
+[2026-05-12 09:58:00 UTC] [UPDATE] laravel/Modules/Activity/docs/wiki/rules/INDEX.md — upgrade frontmatter + link xotbase-resource-zen-pattern
+[2026-05-12 09:58:00 UTC] [CREATE] laravel/Modules/Xot/docs/wiki/skills/filament-page-creation.md — skill on-demand: crea ListRecords/Create/Edit/View con XotBase
+[2026-05-12 09:58:00 UTC] [UPDATE] laravel/Modules/Xot/docs/wiki/skills/INDEX.md — upgrade frontmatter + aggiunto filament-page-creation skill
+**Total Operations:** 75

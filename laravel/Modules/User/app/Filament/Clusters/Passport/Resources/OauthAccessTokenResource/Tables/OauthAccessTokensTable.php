@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\app\Filament\Clusters\Passport\Resources\OauthAccessTokenResource\Tables;
+namespace Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

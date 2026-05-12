@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\app\Filament\Resources\FeatureResource\Schemas;
+namespace Modules\User\Filament\Resources\FeatureResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;

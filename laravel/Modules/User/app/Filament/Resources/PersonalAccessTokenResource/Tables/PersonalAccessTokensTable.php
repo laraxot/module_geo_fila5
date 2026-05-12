@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\app\Filament\Resources\PersonalAccessTokenResource\Tables;
+namespace Modules\User\Filament\Resources\PersonalAccessTokenResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

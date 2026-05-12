@@ -17,6 +17,8 @@ module: "root"
 - [xotbase-critical-rules](./xotbase-critical-rules.md) — MAI estendere Filament direttamente, mapping completo XotBase
 - [schema-conventions](./schema-conventions.md) — convenzioni schema: no ->label(), LangServiceProvider
 - [ai-guidelines](./ai-guidelines.md) — linee guida AI per Filament e XotBase
+- [filament-resource-property](./filament-resource-property.md) — `$resource` è `protected static` non `public static`; auto-resolve da XotBaseListRecords
+- [laraxot-module-namespace](./laraxot-module-namespace.md) — MAI `\app\` nel namespace; PSR-4 mappa `app/` → `Modules\<Name>\`
 
 ## Usage
 

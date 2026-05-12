@@ -34,6 +34,10 @@ updated: 2026-05-12
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |
 | Filament class extension / XotBase | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
 | Filament resource/page/widget | `docs/wiki/rules/xotbase-critical-rules.md`, `docs/wiki/rules/ai-guidelines.md` |
+| Filament $resource property / visibilità | `docs/wiki/rules/filament-resource-property.md` |
+| XotBaseListRecords / getResource auto-resolve | `docs/wiki/rules/filament-resource-property.md` |
+| Skill: crea filament page | `laravel/Modules/Xot/docs/wiki/skills/filament-page-creation.md` |
+| Namespace modulo / `\app\` nel namespace | `docs/wiki/rules/laraxot-module-namespace.md` |
 
 ## Usage
 

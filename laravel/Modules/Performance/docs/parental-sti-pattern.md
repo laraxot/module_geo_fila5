@@ -297,7 +297,7 @@ class IndividualeRegionaleResource extends IndividualeResource
 ```php
 class ListIndividualeRegionales extends ListIndividuales
 {
-    public static string $resource = IndividualeRegionaleResource::class;
+    protected static string $resource = IndividualeRegionaleResource::class;
     
     // Eredita tutto dal parent, il global scope del modello
     // garantisce che vengano mostrati solo i record 'regionale'

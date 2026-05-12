@@ -1,4 +1,0 @@
-collections:
-  base_ptvx_fila5:
-    path: /var/www/_bases/base_ptvx_fila5
-    pattern: "**/*.md"

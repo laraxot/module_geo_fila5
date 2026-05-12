@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\app\Filament\Clusters\Passport\Resources\OauthAccessTokenResource\Schemas;
+namespace Modules\User\Filament\Clusters\Passport\Resources\OauthAccessTokenResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;

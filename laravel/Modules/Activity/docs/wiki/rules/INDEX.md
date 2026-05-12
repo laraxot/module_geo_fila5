@@ -1,17 +1,27 @@
-# Activity Module - rules Index
+---
+title: "Rules Index"
+type: "index"
+tags: [rules, filament, activity]
+module: "Activity"
+updated: 2026-05-12
+---
 
-## Purpose
-Index for Activity module rules.
+# Rules — Activity Module Wiki
 
-## On-Demand Loading
+> Regole specifiche modulo Activity. Load on-demand.
+
+## Available Rules
+
+- [xotbase-resource-zen-pattern](../concepts/xotbase-resource-zen-pattern.md) — NON override form()/table(), auto-discovery Schemas/Tables
+- [filament-resource-property](../../../../../docs/wiki/rules/filament-resource-property.md) — `$resource` è `protected static`
+- [filament-rules-summary](../../../../../docs/wiki/rules/filament-rules-summary.md) — no `->label()`, XotBase sempre
+
+## Usage
 
 ```bash
-qmd search "Activity rules" --limit 5
+qmd search "Activity rule" --limit 5
 ```
 
-## See Also
-- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
-- [Root Wiki](../../../docs/wiki/)
-
 ---
-*Updated: 2026-05-11*
+
+**Upstream:** [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
