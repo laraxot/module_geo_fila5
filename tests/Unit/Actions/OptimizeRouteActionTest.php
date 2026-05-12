@@ -12,7 +12,7 @@ use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class);
 
-it('returns same locations when count is 2 or less', function(): void {
+it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 46.4642, longitude: 10.1900);
 
@@ -33,7 +33,7 @@ it('returns same locations when count is 2 or less', function(): void {
     expect($result->skip(1)->first())->toBe($location2);
 });
 
-it('optimizes route for three locations', function(): void {
+it('optimizes route for three locations', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1); // Closer to A
     $locationC = new LocationData(latitude: 47.0, longitude: 11.0); // Far from A and B
@@ -65,7 +65,7 @@ it('optimizes route for three locations', function(): void {
     expect($result->skip(2)->first())->toBe($locationC);
 });
 
-it('handles empty collection', function(): void {
+it('handles empty collection', function (): void {
     $calculateDistance = Mockery::mock(CalculateDistanceActionContract::class);
     $action = new OptimizeRouteAction($calculateDistance);
 
@@ -74,7 +74,7 @@ it('handles empty collection', function(): void {
     expect($result->count())->toBe(0);
 });
 
-it('handles route optimization with multiple locations', function(): void {
+it('handles route optimization with multiple locations', function (): void {
     $locationA = new LocationData(latitude: 0, longitude: 0);
     $locationB = new LocationData(latitude: 1, longitude: 1);
     $locationC = new LocationData(latitude: 2, longitude: 2);
@@ -115,7 +115,7 @@ it('handles route optimization with multiple locations', function(): void {
     expect($result->values()->skip(3)->first())->toBe($locationD);
 });
 
-it('stops optimization when no more locations remain', function(): void {
+it('stops optimization when no more locations remain', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
 
@@ -133,7 +133,7 @@ it('stops optimization when no more locations remain', function(): void {
     expect($result->skip(1)->first())->toBe($locationB);
 });
 
-it('correctly calculates nearest location', function(): void {
+it('correctly calculates nearest location', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1); // Closer
     $locationC = new LocationData(latitude: 47.0, longitude: 11.0); // Farther

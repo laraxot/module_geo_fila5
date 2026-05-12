@@ -10,7 +10,7 @@ beforeEach(function () {
     $action = new GetBoundingBoxAction();
 });
 
-it('calculates bounding box correctly for milan', function(): void {
+it('calculates bounding box correctly for milan', function (): void {
     // Milano: 45.4642, 9.1900
     $result = $action->execute(45.4642, 9.1900, 1.0);
 
@@ -23,7 +23,7 @@ it('calculates bounding box correctly for milan', function(): void {
         ->and($result['max_lon'])->toBeGreaterThan(9.1900);
 });
 
-it('calculates bounding box for rome', function(): void {
+it('calculates bounding box for rome', function (): void {
     // Roma: 41.9028, 12.4964
     $result = $action->execute(41.9028, 12.4964, 5.0);
 
@@ -35,7 +35,7 @@ it('calculates bounding box for rome', function(): void {
         ->and($result['max_lon'])->toBeGreaterThan(12.4964);
 });
 
-it('calculates bounding box with zero distance', function(): void {
+it('calculates bounding box with zero distance', function (): void {
     $result = $action->execute(45.4642, 9.1900, 0);
 
     // With zero distance, min and max should be the same as the center
@@ -45,7 +45,7 @@ it('calculates bounding box with zero distance', function(): void {
     expect($result['max_lon'])->toBe(9.1900);
 });
 
-it('calculates bounding box with larger distance expands more', function(): void {
+it('calculates bounding box with larger distance expands more', function (): void {
     $smallResult = $action->execute(45.4642, 9.1900, 1.0);
     $largeResult = $action->execute(45.4642, 9.1900, 10.0);
 
@@ -54,7 +54,7 @@ it('calculates bounding box with larger distance expands more', function(): void
         ->toBeGreaterThan($smallResult['max_lat'] - $smallResult['min_lat']);
 });
 
-it('handles boundary coordinates at equator', function(): void {
+it('handles boundary coordinates at equator', function (): void {
     $result = $action->execute(0, 0, 1.0);
 
     expect($result)
@@ -65,7 +65,7 @@ it('handles boundary coordinates at equator', function(): void {
         ->and($result['max_lon'])->toBeGreaterThanOrEqual(0);
 });
 
-it('handles boundary coordinates at poles', function(): void {
+it('handles boundary coordinates at poles', function (): void {
     $result = $action->execute(89.0, 0, 1.0);
 
     expect($result)
@@ -73,7 +73,7 @@ it('handles boundary coordinates at poles', function(): void {
         ->and($result['max_lat'])->toBeLessThanOrEqual(90.0);
 });
 
-it('handles boundary coordinates at international date line', function(): void {
+it('handles boundary coordinates at international date line', function (): void {
     $result = $action->execute(0, 179.0, 1.0);
 
     expect($result)
@@ -82,7 +82,7 @@ it('handles boundary coordinates at international date line', function(): void {
         ->and($result['max_lon'])->toBeLessThanOrEqual(180.0);
 });
 
-it('handles negative coordinates', function(): void {
+it('handles negative coordinates', function (): void {
     $result = $action->execute(-33.8688, 151.2093, 5.0); // Sydney
 
     expect($result)

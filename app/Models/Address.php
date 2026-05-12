@@ -179,7 +179,7 @@ class Address extends BaseModel
 
                 return ['codice' => $regione['codice'], 'nome' => $regione['nome']];
             })
-            ->filter(static fn (?array $row): bool => $row !== null);
+            ->filter(static fn (?array $row): bool => null !== $row);
 
         return $res->first();
     }
@@ -202,7 +202,7 @@ class Address extends BaseModel
                     'nome' => $provincia['nome'],
                 ];
             })
-            ->filter(static fn (?array $row): bool => $row !== null);
+            ->filter(static fn (?array $row): bool => null !== $row);
 
         return $res->first();
     }

@@ -13,7 +13,7 @@ beforeEach(function () {
     $this->action = new FormatCoordinatesAction();
 });
 
-it('formats coordinates in decimal format', function(): void {
+it('formats coordinates in decimal format', function (): void {
     $result = $this->action->execute(45.4642, 9.1900, 'decimal');
     expect($result)->toBe('45.464200, 9.190000');
 
@@ -24,7 +24,7 @@ it('formats coordinates in decimal format', function(): void {
     expect($result)->toBe('0.000000, 0.000000');
 });
 
-it('formats coordinates in DMS format', function(): void {
+it('formats coordinates in DMS format', function (): void {
     $result = $this->action->execute(45.4642, 9.1900, 'dms');
     expect($result)->toBe('45°27\'51"N 9°11\'24"E');
 
@@ -35,7 +35,7 @@ it('formats coordinates in DMS format', function(): void {
     expect($result)->toBe('0°0\'0"N 0°0\'0"E');
 });
 
-it('formats coordinates in Google Maps URL format', function(): void {
+it('formats coordinates in Google Maps URL format', function (): void {
     $result = $this->action->execute(45.4642, 9.1900, 'google');
     expect($result)->toBe('https://www.google.com/maps?q=45.4642,9.19');
 
@@ -46,16 +46,16 @@ it('formats coordinates in Google Maps URL format', function(): void {
     expect($result)->toBe('https://www.google.com/maps?q=0,0');
 });
 
-it('uses decimal format as default', function(): void {
+it('uses decimal format as default', function (): void {
     $result = $this->action->execute(45.4642, 9.1900);
     expect($result)->toBe('45.464200, 9.190000');
 });
 
-it('throws exception for unsupported format', function(): void {
+it('throws exception for unsupported format', function (): void {
     expect(fn () => $this->action->execute(45.4642, 9.1900, 'invalid'))->toThrow(InvalidArgumentException::class, 'Formato non supportato');
 });
 
-it('handles edge case coordinates', function(): void {
+it('handles edge case coordinates', function (): void {
     // Test extreme valid coordinates
     $result = $this->action->execute(90, 180, 'decimal');
     expect($result)->toBe('90.000000, 180.000000');
@@ -71,7 +71,7 @@ it('handles edge case coordinates', function(): void {
     expect($result)->toBe('90°0\'0"S 180°0\'0"W');
 });
 
-it('handles high precision coordinates', function(): void {
+it('handles high precision coordinates', function (): void {
     $result = $this->action->execute(45.123456, 9.654321, 'decimal');
     expect($result)->toBe('45.123456, 9.654321');
 

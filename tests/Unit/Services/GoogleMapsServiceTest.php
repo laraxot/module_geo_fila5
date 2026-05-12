@@ -13,11 +13,11 @@ beforeEach(function () {
     $this->service = new GoogleMapsService();
 });
 
-it('can be instantiated', function(): void {
+it('can be instantiated', function (): void {
     expect($this->service)->toBeInstanceOf(GoogleMapsService::class);
 });
 
-it('has correct constants defined', function(): void {
+it('has correct constants defined', function (): void {
     $reflection = new ReflectionClass(GoogleMapsService::class);
     expect($reflection->hasConstant('GEOCODING_URL'))->toBeTrue();
     expect($reflection->hasConstant('DISTANCE_MATRIX_URL'))->toBeTrue();
@@ -29,7 +29,7 @@ it('has correct constants defined', function(): void {
     expect($reflection->getConstant('ELEVATION_URL'))->toBe('https://maps.googleapis.com/maps/api/elevation/json');
 });
 
-it('has required methods', function(): void {
+it('has required methods', function (): void {
     expect(method_exists($this->service, 'reverseGeocode'))->toBeTrue();
     expect(method_exists($this->service, 'getDistanceMatrix'))->toBeTrue();
     expect(method_exists($this->service, 'getElevation'))->toBeTrue();

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 
-test('map picker resolves explicit coordinate fields', function(): void {
+test('map picker resolves explicit coordinate fields', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
         ->latitude('latitude')
@@ -18,7 +18,7 @@ test('map picker resolves explicit coordinate fields', function(): void {
         ->and($field->getZoom())->toBe(12);
 });
 
-test('map picker accepts absolute coordinate paths', function(): void {
+test('map picker accepts absolute coordinate paths', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
         ->latitude('filters.latitude')
@@ -32,7 +32,7 @@ test('map picker accepts absolute coordinate paths', function(): void {
         ->and($field->shouldReverseGeocode())->toBeFalse();
 });
 
-test('map picker keeps bare coordinate paths at root level', function(): void {
+test('map picker keeps bare coordinate paths at root level', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('map_picker')
         ->latitude('latitude')

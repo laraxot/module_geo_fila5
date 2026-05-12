@@ -9,7 +9,7 @@ function geoMapDatasetPath(): string
     return '/var/www/_bases/base_fixcity_fila5/laravel/Modules/Geo/resources/data/geo-map-widget.geojson';
 }
 
-test('geo map dataset normalizes feature collection', function(): void {
+test('geo map dataset normalizes feature collection', function (): void {
     $dataset = new GeoMapDataset(geoMapDatasetPath());
 
     $normalized = $dataset->toArray();
@@ -20,7 +20,7 @@ test('geo map dataset normalizes feature collection', function(): void {
         ->and($normalized['features'][0]['type'])->toBe('Feature');
 });
 
-test('geo map dataset exposes point categories only', function(): void {
+test('geo map dataset exposes point categories only', function (): void {
     $dataset = new GeoMapDataset(geoMapDatasetPath());
 
     expect($dataset->getCategories())->toBe([
@@ -31,7 +31,7 @@ test('geo map dataset exposes point categories only', function(): void {
     ]);
 });
 
-test('geo map dataset computes stats for points and zones', function(): void {
+test('geo map dataset computes stats for points and zones', function (): void {
     $dataset = new GeoMapDataset(geoMapDatasetPath());
 
     expect($dataset->getStats())->toBe([
