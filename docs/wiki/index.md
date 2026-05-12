@@ -4,63 +4,82 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 
 # PTVX Wiki Entry Point
 
-## Core Pages
+> Master catalog — on-demand knowledge pattern. Each section routes via INDEX files.
 
-- [[Project Home]] — entry page for the project wiki
-- [[Second Brain Operating Model]] — how raw docs, wiki pages, schema, and logs work together
+## Rules
+
+- [Trigger Map](./rules/00-TRIGGER_MAP.md) — unified trigger → resource routing
+- [On-Demand Pattern](./rules/on-demand-pattern.md) — Karpathy LLM Wiki pattern
+- [Rules INDEX](./rules/INDEX.md) — rule triggers
+
+## Skills
+
+- [Skills INDEX](./skills/INDEX.md) — available agent skills
+
+## Commands
+
+- [Commands INDEX](./commands/INDEX.md) — CLI reference
+
+## Memories
+
+- [Memories INDEX](./memories/INDEX.md) — reusable decisions and patterns
+
+## Agents
+
+- [Agents INDEX](./agents/INDEX.md) — agent coordination
 
 ## Concepts
 
-- [module-structure](./concepts/module-structure.md) — standard module layout and responsibilities
-- [actions-over-services](./concepts/actions-over-services.md) — preferred business logic pattern
-- [accessor-auto-persistence](./concepts/accessor-auto-persistence.md) — persistence pattern for computed values
-- [architecture-guardrails](./concepts/architecture-guardrails.md) — stable architectural rules and document trust boundaries
-- [ai-tooling-workflow](./concepts/ai-tooling-workflow.md) — shared agent workflow across Claude, Gemini, and iFlow
-- [bmad-operating-model](./concepts/bmad-operating-model.md) — when and how BMAD should be used in this repository
-- [second-brain-operating-model](./concepts/second-brain-operating-model.md) — operational model for project memory
-- [second-brain-continuous-improvement](./concepts/second-brain-continuous-improvement.md) — continuous maintenance loop for root, module, and theme docs
-- [second-brain-audit-checks](./concepts/second-brain-audit-checks.md) — reusable lint checks for wiki health and retrieval quality
-<<<<<<< HEAD
-- [context-mode-plugin](./concepts/context-mode-plugin.md) — FTS5-based context compression for managing token overflow in large projects
-- [context-mode-cli-reference](./concepts/context-mode-cli-reference.md) — Quick reference for all context-mode commands and usage patterns
+- [module-structure](./concepts/module-structure.md)
+- [actions-over-services](./concepts/actions-over-services.md)
+- [accessor-auto-persistence](./concepts/accessor-auto-persistence.md)
+- [architecture-guardrails](./concepts/architecture-guardrails.md)
+- [ai-tooling-workflow](./concepts/ai-tooling-workflow.md)
+- [bmad-operating-model](./concepts/bmad-operating-model.md)
+- [second-brain-operating-model](./concepts/second-brain-operating-model.md)
+- [second-brain-continuous-improvement](./concepts/second-brain-continuous-improvement.md)
+- [second-brain-audit-checks](./concepts/second-brain-audit-checks.md)
+- [second-brain-maintenance-cadence](./concepts/second-brain-maintenance-cadence.md)
+- [context-mode-plugin](./concepts/context-mode-plugin.md)
+- [context-mode-cli-reference](./concepts/context-mode-cli-reference.md)
+- [spatie-permission-teams-laravel-13](./concepts/spatie-permission-teams-laravel-13.md)
+- [laravel13-modular-composer-upgrade](./concepts/laravel13-modular-composer-upgrade.md)
+- [context-mode-usage](./concepts/context-mode-usage.md)
 
 ## How-To Guides
 
 ### Search and Discovery
-- [wiki-search-guide](./how-to/wiki-search-guide.md) — User guide for wiki-search CLI: keyword search, semantic search, filtering, and results formatting
-- [semantic-search-and-related-pages](./how-to/semantic-search-and-related-pages.md) — Advanced: using semantic similarity to discover related concepts and cross-reference analysis
-- [qmd-search-guide](./how-to/qmd-search-guide.md) — Complete guide to QMD (Query Markdown Database): installation, search commands, configuration, and performance optimization
-- [qmd-indexing-manifest](./how-to/qmd-indexing-manifest.md) — Reference: current QMD indexing status, collection inventory, embedding progress, and maintenance schedule
+- [wiki-search-guide](./how-to/wiki-search-guide.md)
+- [semantic-search-and-related-pages](./how-to/semantic-search-and-related-pages.md)
+- [qmd-search-guide](./how-to/qmd-search-guide.md)
+- [qmd-indexing-manifest](./how-to/qmd-indexing-manifest.md)
 
 ### Documentation Development
-- [module-wiki-documentation](./how-to/module-wiki-documentation.md) — How to create and maintain QMD-indexed documentation in module wikis
-- [theme-wiki-documentation](./how-to/theme-wiki-documentation.md) — How to create and maintain QMD-indexed wikis in theme directories
-- [indexing-module-documentation](./how-to/indexing-module-documentation.md) — Step-by-step guide for indexing module documentation with context-mode
-- [using-wiki-templates](./how-to/using-wiki-templates.md) — How to use provided templates to create consistent documentation across all modules and themes
+- [module-wiki-documentation](./how-to/module-wiki-documentation.md)
+- [theme-wiki-documentation](./how-to/theme-wiki-documentation.md)
+- [indexing-module-documentation](./how-to/indexing-module-documentation.md)
+- [using-wiki-templates](./how-to/using-wiki-templates.md)
 
 ### Development Tools and Patterns
-- [kilo-code-setup](./how-to/kilo-code-setup.md) — Installation and configuration of Kilo Code AI assistant with wiki and QMD integration
-- [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md) — Prevent token overflow: use context-mode correctly with sandbox processing
-- [wiki-search-performance](./how-to/wiki-search-performance.md) — Performance optimization: benchmarking, caching strategies, and metrics
-- [wiki-search-accessibility](./how-to/wiki-search-accessibility.md) — Accessibility features: screen readers, keyboard navigation, ARIA labels, and UX improvements
-- [wiki-search-troubleshooting](./how-to/wiki-search-troubleshooting.md) — Troubleshooting common issues: diagnostics, solutions, and debugging techniques
-=======
-- [second-brain-maintenance-cadence](./concepts/second-brain-maintenance-cadence.md) — daily/weekly/monthly rhythm and trigger-based maintenance protocol
+- [kilo-code-setup](./how-to/kilo-code-setup.md)
+- [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md)
+- [wiki-search-performance](./how-to/wiki-search-performance.md)
+- [wiki-search-accessibility](./how-to/wiki-search-accessibility.md)
+- [wiki-search-troubleshooting](./how-to/wiki-search-troubleshooting.md)
 
 ## Federated Pilots
 
-- [user-module-operating-focus](../../laravel/Modules/User/docs/wiki/concepts/user-module-operating-focus.md) — local identity/docs maintenance loop
-- [theme-one-operating-focus](../../laravel/Themes/One/docs/wiki/concepts/theme-one-operating-focus.md) — local theme/docs maintenance loop
->>>>>>> 063e390e9 (.)
+- [user-module-operating-focus](../../laravel/Modules/User/docs/wiki/concepts/user-module-operating-focus.md)
+- [theme-one-operating-focus](../../laravel/Themes/One/docs/wiki/concepts/theme-one-operating-focus.md)
 
 ## Sources
 
-- [docs-landscape-modules-and-themes](./sources/docs-landscape-modules-and-themes.md) — summary of the current documentation landscape
-- [root-architecture-docs](./sources/root-architecture-docs.md) — summary of the root architecture docs cluster
-- [root-ai-docs](./sources/root-ai-docs.md) — summary of the root AI tooling docs cluster
-- [root-bmad-docs](./sources/root-bmad-docs.md) — summary of the root BMAD docs cluster
-- [ingest-backlog](./sources/ingest-backlog.md) — prioritized ingest backlog with token-cost estimates (Story 1-4)
-- [second-brain-external-benchmarks](./sources/second-brain-external-benchmarks.md) — external benchmarks mapped to repository-local second-brain operations
-- [context-compression-mcp-setup](./sources/context-compression-mcp-setup.md) — setup summary for MCP-based prompt compression in Claude Code
-- [kilo-code-context-and-large-projects](./sources/kilo-code-context-and-large-projects.md) — official Kilo guidance for large-project context control, condensed for this repository
-- [kilo-local-indexing-prerequisites](./sources/kilo-local-indexing-prerequisites.md) — concrete local Ollama and Qdrant setup prepared for Kilo indexing
+- [docs-landscape-modules-and-themes](./sources/docs-landscape-modules-and-themes.md)
+- [root-architecture-docs](./sources/root-architecture-docs.md)
+- [root-ai-docs](./sources/root-ai-docs.md)
+- [root-bmad-docs](./sources/root-bmad-docs.md)
+- [ingest-backlog](./sources/ingest-backlog.md)
+- [second-brain-external-benchmarks](./sources/second-brain-external-benchmarks.md)
+- [context-compression-mcp-setup](./sources/context-compression-mcp-setup.md)
+- [kilo-code-context-and-large-projects](./sources/kilo-code-context-and-large-projects.md)
+- [kilo-local-indexing-prerequisites](./sources/kilo-local-indexing-prerequisites.md)

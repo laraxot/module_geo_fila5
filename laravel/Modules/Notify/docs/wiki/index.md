@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< .merge_file_gDMkiZ
 # Knowledge Base Index
 
@@ -134,3 +135,27 @@ Separate git repository with shell scripts and utilities:
 | [module-test-location-rule](./concepts/module-test-location-rule.md) | Concept | - | 2026-04-21 |
 | [phpstan-central-config-rule](./concepts/phpstan-central-config-rule.md) | Concept | - | 2026-04-21 |
 >>>>>>> .merge_file_7yhG1v
+=======
+---
+title: "Notify Wiki Index"
+module: "Notify"
+---
+
+# Notify Module Wiki
+
+## Indices
+- [Rules](rules/INDEX.md)
+- [Skills](skills/INDEX.md)
+- [Commands](commands/INDEX.md)
+- [Memories](memories/INDEX.md)
+- [Concepts](concepts/INDEX.md)
+
+## On-Demand Workflow
+
+```bash
+qmd search "Notify <topic>" --limit 5
+```
+
+---
+*Updated: 2026-05-11*
+>>>>>>> laraxot/dev

@@ -11,14 +11,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListRatingMorphs extends XotBaseListRecords
 {
-    protected static string $resource = RatingMorphResource::class;
-
-    protected function getActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+    public static string $resource = RatingMorphResource::class;
 
     public function getTableColumns(): array
     {
@@ -41,6 +34,13 @@ class ListRatingMorphs extends XotBaseListRecords
             'updated_at' => TextColumn::make('updated_at')
                 ->dateTime()
                 ->sortable(),
+        ];
+    }
+
+    protected function getActions(): array
+    {
+        return [
+            CreateAction::make(),
         ];
     }
 }

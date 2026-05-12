@@ -9,8 +9,6 @@ module: "ptvx-project"
 
 ## Log Entries
 
-_No activity yet. Start by ingesting raw documents._
-
 ### Format
 
 ```
@@ -22,6 +20,7 @@ _No activity yet. Start by ingesting raw documents._
 - `QUERY` — Answered question from wiki
 - `LINT` — Maintained wiki quality
 - `UPDATE` — Modified existing wiki page
+- `CREATE` — Created new wiki structure or tool
 
 ---
 
@@ -35,66 +34,69 @@ _No activity yet. Start by ingesting raw documents._
 [2026-04-28 00:00:00 UTC] [INGEST] Added BMAD operating model from root docs/bmad sources
 [2026-04-29 00:00:00 UTC] [UPDATE] Refined second brain operating model with actionability, compression, and discoverability rules
 [2026-04-29 00:00:00 UTC] [INGEST] Added continuous-improvement playbook for root, module, and theme documentation maintenance
-[2026-04-29 09:09:00 UTC] [CREATE] Story 1-4: second-brain-efficiency-optimization — QMD context tuning, token-efficient context files, prioritized ingest backlog
+[2026-04-29 09:09:00 UTC] [CREATE] Story 1-4: second-brain-efficiency-optimization
 [2026-04-29 00:00:00 UTC] [INGEST] Added reusable second-brain audit checks concept and local audit tool for wiki health
-[2026-04-29 09:19:00 UTC] [RESEARCH] Ingested external second-brain benchmarks (CODE, progressive summarization, LLM wiki) and mapped them to repository operations
+[2026-04-29 09:19:00 UTC] [RESEARCH] Ingested external second-brain benchmarks and mapped them to repository operations
 [2026-04-29 09:19:00 UTC] [CREATE] Story 1-5: second-brain-internet-research-and-federated-docs-updates
-[2026-04-29 09:19:00 UTC] [UPDATE] Extended continuous-improvement model with `/bmad-create-story` integration and external benchmark policy
-<<<<<<< HEAD
-[2026-04-29 11:55:00 UTC] [INGEST] Installed and configured Token Optimizer MCP for project-shared context compression
-[2026-04-29 12:15:00 UTC] [INGEST] Added context-mode-plugin concept documentation with usage patterns, best practices, troubleshooting, and architecture overview
-[2026-04-29 12:18:00 UTC] [INGEST] Added context-mode-cli-reference guide with quick command reference for all CLI operations
-[2026-04-29 12:20:00 UTC] [INGEST] Added how-to guide for indexing module documentation with context-mode semantic search
-[2026-04-29 12:22:00 UTC] [INGEST] Created module-context-mode-integration.md template in _templates/ for all modules and themes
-[2026-04-29 12:25:00 UTC] [INGEST] Added how-to guide for using wiki templates to create consistent documentation across modules and themes
-[2026-04-29 13:05:00 UTC] [INGEST] Documented official Kilo large-project guidance and aligned project/global Kilo context controls
-[2026-04-29 13:18:00 UTC] [UPDATE] Added explicit repository policy to disable Kilo managed indexing until local or cloud indexing is chosen intentionally
-[2026-04-29 14:00:00 UTC] [CREATE] Story 2.1: QMD Search Integration — Implement wiki search with keyword, semantic, and cross-reference features
-[2026-04-29 14:15:00 UTC] [INGEST] Added qmd-indexing-manifest.md documenting current QMD indexing status (14,827 files, 96 vectors embedded, 9,641 pending)
-[2026-04-29 14:30:00 UTC] [CREATE] bashscripts/wiki-search — CLI tool for querying wiki with keyword and semantic search, module/theme filtering, performance metrics
-[2026-04-29 14:45:00 UTC] [INGEST] Added wiki-search-guide.md — Complete user guide for wiki-search CLI with examples, collections reference, advanced queries, troubleshooting
-[2026-04-29 15:00:00 UTC] [CREATE] bashscripts/wiki-relations — Helper script for analyzing wiki cross-references, backlinks, and semantic relationships
-[2026-04-29 15:15:00 UTC] [INGEST] Added semantic-search-and-related-pages.md — Advanced guide for semantic similarity, cross-reference identification, relationship graphs, best practices
-[2026-04-29 15:30:00 UTC] [UPDATE] Enhanced wiki-search with --related flag for discovering backlinks and outgoing page references
-[2026-04-29 15:45:00 UTC] [UPDATE] Reorganized wiki/index.md with categorized how-to guides including new search and discovery section
-[2026-04-29 16:00:00 UTC] [CREATE] Task 4: Performance Optimization — benchmark tools, caching strategies, and metrics
-[2026-04-29 16:15:00 UTC] [CREATE] docs/scripts/wiki/benchmark-search.sh — Comprehensive performance benchmarking tool for keyword/semantic/module searches
-[2026-04-29 16:30:00 UTC] [CREATE] docs/scripts/wiki/cache-manager.sh — Cache initialization, warming, statistics, and real-time monitoring
-[2026-04-29 16:45:00 UTC] [INGEST] Added wiki-search-performance.md — Complete guide for performance optimization, caching, load testing, and monitoring
-[2026-04-29 17:00:00 UTC] [UPDATE] Updated wiki/index.md with wiki-search-performance guide reference
-[2026-04-29 17:15:00 UTC] [CREATE] Task 5: Accessibility & UX — screen readers, keyboard navigation, ARIA labels, accessible output formats
-[2026-04-29 17:30:00 UTC] [CREATE] docs/scripts/wiki/accessible-search.sh — Screen reader optimized search interface with keyboard shortcuts and ARIA support
-[2026-04-29 17:45:00 UTC] [INGEST] Added wiki-search-accessibility.md — Comprehensive guide for accessibility features, keyboard navigation, and UX best practices
-[2026-04-29 18:00:00 UTC] [UPDATE] Updated wiki/index.md with wiki-search-accessibility guide reference
-[2026-04-29 18:15:00 UTC] [CREATE] Task 6: Testing Suite — Comprehensive test infrastructure for wiki-search components
-[2026-04-29 18:30:00 UTC] [CREATE] docs/scripts/wiki/test-suite.sh — Unit, integration, acceptance, edge case, and performance tests
-[2026-04-29 18:45:00 UTC] [CREATE] Task 7: Documentation and Finalization — Troubleshooting guide and index updates
-[2026-04-29 19:00:00 UTC] [CREATE] docs/wiki/how-to/wiki-search-troubleshooting.md — Comprehensive troubleshooting guide with diagnostics and solutions
-[2026-04-29 19:15:00 UTC] [UPDATE] Updated wiki/index.md with wiki-search-troubleshooting guide reference
-[2026-04-29 19:30:00 UTC] [INGEST] Prepared Kilo local indexing prerequisites with Ollama embeddings, local Qdrant, and a detached bootstrap script
-[2026-04-29 19:35:00 UTC] [CREATE] Story 2.2: Bidirectional Cross-Referencing — Comprehensive story context for wiki ↔ code documentation linking
-[2026-04-29 19:35:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.2 as ready-for-dev
-[2026-04-29 19:40:00 UTC] [CREATE] Story 2.3: Automated Wiki Generation — Comprehensive story context for automated documentation generation from source code comments
-[2026-04-29 19:40:00 UTC] [UPDATE] Updated sprint-status.yaml to mark Story 2.3 as ready-for-dev
-[2026-04-29 20:00:00 UTC] [CREATE] Task 2 Execution - Story 2.2: Implement Wiki → Code Reference Resolution
-[2026-04-29 20:05:00 UTC] [CREATE] docs/scripts/wiki/wiki-reference-generator.sh — Utility script to parse wiki frontmatter, generate bidirectional cross-references, maintain reference graph, and update wiki pages with module/theme links
-[2026-04-29 20:10:00 UTC] [UPDATE] Added `references` field to docs/wiki/concepts/module-structure.md with 8 key modules (User, Lang, Gdpr, Activity, Notify, Performance, Xot, Media, UI) linking to module wiki index pages
-[2026-04-29 20:10:00 UTC] [UPDATE] Added `references` field to docs/wiki/concepts/architecture-guardrails.md with 4 key modules and 2 themes linking to module/theme wiki index pages
-[2026-04-29 20:15:00 UTC] [UPDATE] Documented the current boundary between repository-owned local indexing prerequisites and client-side Kilo indexing activation
-[2026-04-29 20:25:00 UTC] [CREATE] docs/scripts/wiki/wiki-link-renderer.sh — Render wiki references as markdown/HTML with badge styling and proper link formatting
-[2026-04-29 20:30:00 UTC] [UPDATE] Fixed YAML parser in wiki-link-renderer.sh with state machine approach to correctly extract all reference blocks
-[2026-04-29 20:35:00 UTC] [UPDATE] Fixed malformed frontmatter in actions-over-services.md and added 5 module implementation references
-[2026-04-29 20:40:00 UTC] [UPDATE] Added module references to module-wiki-documentation.md (3 references: Xot, Gdpr, Activity)
-[2026-04-29 20:45:00 UTC] [VALIDATION] Tested wiki-link-renderer.sh on all Priority 1 pages — all references render correctly
-**Last Activity:** 2026-04-29 20:45:00 UTC  
-**Total Operations:** 51
-=======
-[2026-04-29 09:44:00 UTC] [UPDATE] Added execution checkpoints to enforce continuous docs improvement across root/module/theme and upgraded Story 1-5 to ready-for-dev
-[2026-04-29 10:32:00 UTC] [UPDATE] Closed Story 1-5 as done and added federated pilot anchors in root second-brain pages
-[2026-04-29 10:33:00 UTC] [INGEST] Added second-brain maintenance cadence concept with daily/weekly/monthly rhythm and trigger protocol
+[2026-04-29 09:19:00 UTC] [UPDATE] Extended continuous-improvement model with /bmad-create-story integration and external benchmark policy
+[2026-04-29 09:44:00 UTC] [UPDATE] Added execution checkpoints to enforce continuous docs improvement across root/module/theme
+[2026-04-29 10:32:00 UTC] [UPDATE] Closed Story 1-5 as done and added federated pilot anchors
+[2026-04-29 10:33:00 UTC] [INGEST] Added second-brain maintenance cadence concept with daily/weekly/monthly rhythm
 [2026-04-29 10:33:00 UTC] [CREATE] Story 1-6: second-brain-maintenance-cadence-and-audit-rhythm
-[2026-04-29 10:33:00 UTC] [UPDATE] Linked cadence concept into continuous-improvement and audit-checks pages for cross-navigation
+[2026-04-29 10:33:00 UTC] [UPDATE] Linked cadence concept into continuous-improvement and audit-checks pages
+[2026-04-29 11:55:00 UTC] [INGEST] Installed and configured Token Optimizer MCP
+[2026-04-29 12:15:00 UTC] [INGEST] Added context-mode-plugin concept documentation
+[2026-04-29 12:18:00 UTC] [INGEST] Added context-mode-cli-reference guide
+[2026-04-29 12:20:00 UTC] [INGEST] Added how-to guide for indexing module documentation
+[2026-04-29 12:22:00 UTC] [INGEST] Created module-context-mode-integration.md template
+[2026-04-29 12:25:00 UTC] [INGEST] Added how-to guide for using wiki templates
+[2026-04-29 13:05:00 UTC] [INGEST] Documented official Kilo large-project guidance
+[2026-04-29 13:18:00 UTC] [UPDATE] Added explicit repository policy to disable Kilo managed indexing
+[2026-04-29 14:00:00 UTC] [CREATE] Story 2.1: QMD Search Integration
+[2026-04-29 14:15:00 UTC] [INGEST] Added qmd-indexing-manifest.md
+[2026-04-29 14:30:00 UTC] [CREATE] bashscripts/wiki-search CLI tool
+[2026-04-29 14:45:00 UTC] [INGEST] Added wiki-search-guide.md
+[2026-04-29 15:00:00 UTC] [CREATE] bashscripts/wiki-relations helper script
+[2026-04-29 15:15:00 UTC] [INGEST] Added semantic-search-and-related-pages.md
+[2026-04-29 15:30:00 UTC] [UPDATE] Enhanced wiki-search with --related flag
+[2026-04-29 15:45:00 UTC] [UPDATE] Reorganized wiki/index.md with categorized how-to guides
+[2026-04-29 16:00:00 UTC] [CREATE] Task 4: Performance Optimization
+[2026-04-29 16:15:00 UTC] [CREATE] docs/scripts/wiki/benchmark-search.sh
+[2026-04-29 16:30:00 UTC] [CREATE] docs/scripts/wiki/cache-manager.sh
+[2026-04-29 16:45:00 UTC] [INGEST] Added wiki-search-performance.md
+[2026-04-29 17:00:00 UTC] [UPDATE] Updated wiki/index.md with performance guide
+[2026-04-29 17:15:00 UTC] [CREATE] Task 5: Accessibility & UX
+[2026-04-29 17:30:00 UTC] [CREATE] docs/scripts/wiki/accessible-search.sh
+[2026-04-29 17:45:00 UTC] [INGEST] Added wiki-search-accessibility.md
+[2026-04-29 18:00:00 UTC] [UPDATE] Updated wiki/index.md with accessibility guide
+[2026-04-29 18:15:00 UTC] [CREATE] Task 6: Testing Suite
+[2026-04-29 18:30:00 UTC] [CREATE] docs/scripts/wiki/test-suite.sh
+[2026-04-29 18:45:00 UTC] [CREATE] Task 7: Documentation and Finalization
+[2026-04-29 19:00:00 UTC] [CREATE] docs/wiki/how-to/wiki-search-troubleshooting.md
+[2026-04-29 19:15:00 UTC] [UPDATE] Updated wiki/index.md with troubleshooting guide
+[2026-04-29 19:30:00 UTC] [INGEST] Prepared Kilo local indexing prerequisites
+[2026-04-29 19:35:00 UTC] [CREATE] Story 2.2: Bidirectional Cross-Referencing
+[2026-04-29 19:35:00 UTC] [UPDATE] Updated sprint-status.yaml for Story 2.2
+[2026-04-29 19:40:00 UTC] [CREATE] Story 2.3: Automated Wiki Generation
+[2026-04-29 19:40:00 UTC] [UPDATE] Updated sprint-status.yaml for Story 2.3
+[2026-04-29 20:00:00 UTC] [CREATE] Task 2 Execution - Story 2.2: Wiki → Code Reference Resolution
+[2026-04-29 20:05:00 UTC] [CREATE] docs/scripts/wiki/wiki-reference-generator.sh
+[2026-04-29 20:10:00 UTC] [UPDATE] Added references field to concept pages
+[2026-04-29 20:15:00 UTC] [UPDATE] Documented Kilo indexing boundary
+[2026-04-29 20:25:00 UTC] [CREATE] docs/scripts/wiki/wiki-link-renderer.sh
+[2026-04-29 20:30:00 UTC] [UPDATE] Fixed YAML parser in wiki-link-renderer.sh
+[2026-04-29 20:35:00 UTC] [UPDATE] Fixed malformed frontmatter in actions-over-services.md
+[2026-04-29 20:40:00 UTC] [UPDATE] Added module references to module-wiki-documentation.md
+[2026-04-29 20:45:00 UTC] [VALIDATION] Tested wiki-link-renderer.sh on all Priority 1 pages
+[2026-05-12 00:00:00 UTC] [UPDATE] Aligned wiki to LLM Wiki On-Demand Knowledge Pattern — created rules/, skills/, commands/, memories/, agents/ directories with INDEX files and 00-TRIGGER_MAP.md; resolved merge conflicts in index.md and log.md
+[2026-05-12 09:18:00 UTC] [CREATE] docs/wiki/concepts/llm-wiki-operational-discipline.md — canonical operational rules for LLM wiki pattern (token budget, cache discipline, git policy, bad practices)
+[2026-05-12 09:18:00 UTC] [UPDATE] docs/wiki/concepts/INDEX.md — added llm-wiki-operational-discipline entry
+[2026-05-12 09:18:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — added triggers: llm-wiki discipline, git policy, cache discipline, bootstrap stub size, Laravel upgrade, accessor/mutator
+[2026-05-12 09:18:00 UTC] [CREATE] bashscripts/docs/wiki/{rules,skills,commands,memories,concepts}/INDEX.md — tooling wiki INDEX files per §8 of on-demand pattern
+[2026-05-12 09:18:00 UTC] [UPDATE] CLAUDE.md — replaced embedded rules with ≤50-line stub-only pointing to wiki (on-demand pattern compliant)
 
-**Last Activity:** 2026-04-29 10:33:00 UTC  
-**Total Operations:** 20
->>>>>>> 063e390e9 (.)
+[2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — aggiunto trigger Filament ->label()/traduzioni, Filament class extension/XotBase, Filament resource/page/widget
+[2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — aggiunto filament-rules-summary, xotbase-critical-rules, schema-conventions, ai-guidelines
+
+**Last Activity:** 2026-05-12 09:31:00 UTC  
+**Total Operations:** 68

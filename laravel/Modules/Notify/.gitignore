@@ -121,8 +121,11 @@ Thumbs.db
 # ==============================================
 docs/phpstan/
 docs/cache/
+<<<<<<< HEAD
 docs/archive/
 docs/archive/**
+=======
+>>>>>>> laraxot/dev
 
 # ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)

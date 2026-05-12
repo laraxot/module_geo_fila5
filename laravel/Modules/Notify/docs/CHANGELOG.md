@@ -21,3 +21,7 @@ Tutte le modifiche significative al modulo Notify saranno documentate in questo 
 - Namespace modulo: `Modules\Notify\{Subdirectory}`
 - NO: `Modules\Notify\App\{Subdirectory}`
 - Cartella `app/` è organizzativa, non parte del namespace
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev

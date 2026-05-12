@@ -244,13 +244,9 @@ private function getSolutionForError(?string $errorCode): string
 
 ## Collegamenti
 
-- [Documentazione Generale Media](../README.md)
-- [Best Practice Traduzioni](../../../docs/translation-standards.md)
-- [Convenzioni Laraxot](../../../docs/laraxot_conventions.md)
-||||||| parent of 53258b2 (.)
 - [Documentazione Generale Media](../readme.md)
-- [Best Practice Traduzioni](../../../docs/translation-standards.md)
-- [Convenzioni Laraxot](../../../docs/laraxot_conventions.md)
+- [Best Practice Traduzioni](../../../../docs/translation-standards.md)
+- [Convenzioni Laraxot](../../../../docs/laraxot_conventions.md)
 - [PHPStan Level 10 Fixes](./phpstan_level10_fixes.md)
 
 ---

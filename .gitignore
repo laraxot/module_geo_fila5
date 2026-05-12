@@ -390,3 +390,4 @@ laravel/.claude/
 *.backup*
 *.pest.php
 .tools/
+.claude

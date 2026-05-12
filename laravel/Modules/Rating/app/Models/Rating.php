@@ -8,10 +8,12 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Modules\Media\Models\Media;
 use Modules\Rating\Database\Factories\RatingFactory;
 use Modules\Rating\Enums\RuleEnum;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
+use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 /**
  * Modules\Rating\Models\Rating.
@@ -22,8 +24,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @see https://github.com/spatie/laravel-schemaless-attributes
  * @see /Modules/Rating/docs/schemaless-attributes-errors.md
  *
- * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra_attributes
- * @property RuleEnum                                          $rule
+ * @property SchemalessAttributes $extra_attributes
+ * @property RuleEnum             $rule
  *
  * @method static Builder|Rating newModelQuery()
  * @method static Builder|Rating newQuery()
@@ -66,10 +68,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
  *
- * @property MediaCollection<int, \Modules\Media\Models\Media> $media
- * @property int|null                                          $media_count
- * @property ProfileContract|null                              $creator
- * @property ProfileContract|null                              $updater
+ * @property MediaCollection<int, Media> $media
+ * @property int|null                    $media_count
+ * @property ProfileContract|null        $creator
+ * @property ProfileContract|null        $updater
  *
  * @method static RatingFactory factory($count = null, $state = [])
  *

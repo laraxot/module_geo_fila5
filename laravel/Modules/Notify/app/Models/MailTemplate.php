@@ -85,7 +85,10 @@ class MailTemplate extends SpatieMailTemplate implements MailTemplateInterface
     /** @var list<string> */
     public array $translatable = ['subject', 'html_template', 'text_template', 'sms_template'];
 
+<<<<<<< HEAD
     /** @var string */
+=======
+>>>>>>> laraxot/dev
     protected $connection = 'notify';
 
     /** @var list<string> */

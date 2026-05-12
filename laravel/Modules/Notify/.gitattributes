@@ -3,6 +3,7 @@
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+<<<<<<< HEAD
 
 # Path-based git attributes
 # https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html
@@ -25,4 +26,6 @@ CHANGELOG.md export-ignore
 /phpstan-baseline.neon  export-ignore
 
 # Handle PSD files with LFS (Large File Storage)
+=======
+>>>>>>> laraxot/dev
 *.psd filter=lfs diff=lfs merge=lfs -text

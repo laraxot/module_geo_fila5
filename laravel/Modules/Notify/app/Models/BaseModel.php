@@ -22,6 +22,7 @@ abstract class BaseModel extends Model implements HasMedia
     use InteractsWithMedia;
     use Updater;
 
+<<<<<<< HEAD
     /**
      * Indicates whether attributes are snake cased on arrays.
      *
@@ -41,15 +42,28 @@ abstract class BaseModel extends Model implements HasMedia
     protected $perPage = 30;
 
     /** @var string */
+=======
+    public $incrementing = true;
+
+    public $timestamps = true;
+
+    protected $perPage = 30;
+
+>>>>>>> laraxot/dev
     protected $connection = 'notify';
 
     /** @var list<string> */
     protected $appends = [];
 
+<<<<<<< HEAD
     /** @var string */
     protected $primaryKey = 'id';
 
     /** @var string */
+=======
+    protected $primaryKey = 'id';
+
+>>>>>>> laraxot/dev
     protected $keyType = 'string';
 
     /** @var list<string> */
@@ -62,7 +76,11 @@ abstract class BaseModel extends Model implements HasMedia
      *
      * @return Factory<static>
      */
+<<<<<<< HEAD
     protected static function newFactory()
+=======
+    protected static function newFactory(): Factory
+>>>>>>> laraxot/dev
     {
         return app(GetFactoryAction::class)->execute(static::class);
     }

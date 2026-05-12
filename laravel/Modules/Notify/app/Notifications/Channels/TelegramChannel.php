@@ -12,11 +12,16 @@ class TelegramChannel
 {
     /**
      * Invia la notifica tramite Telegram.
+<<<<<<< HEAD
      *
      * @param  mixed  $notifiable
      * @return void
      */
     public function send($notifiable, Notification $notification)
+=======
+     */
+    public function send(mixed $notifiable, Notification $notification): void
+>>>>>>> laraxot/dev
     {
         if (! method_exists($notification, 'toTelegram')) {
             throw new Exception('Il metodo toTelegram() non è definito nella notifica.');

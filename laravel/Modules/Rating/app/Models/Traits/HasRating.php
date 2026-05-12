@@ -1,9 +1,5 @@
 <?php
 
-/**
- * --.
- */
-
 declare(strict_types=1);
 
 namespace Modules\Rating\Models\Traits;
@@ -18,10 +14,8 @@ use Modules\Rating\Models\RatingMorph;
  */
 trait HasRating
 {
-    //  laravel/Modules/Xot/app/Models/Traits/RelationX.php  poi passare a morphToManyX per standardizzare
     public function ratings(): MorphToMany
     {
-        /* @phpstan-ignore return.type */
         return $this->morphToManyX(Rating::class, 'model');
     }
 
@@ -91,7 +85,7 @@ trait HasRating
                 ->where('user_id', '!=', null)
                 ->where('rating_id', $key)
                 ->count();
-            $result[$key] = round((100 * $a) / $b, 0);
+            $result[$key] = round(100 * $a / $b, 0);
         }
 
         return $result;
@@ -109,7 +103,7 @@ trait HasRating
 
         foreach ($ratings_options as $key => $value) {
             $volume = $this->getVolumeCredit($key);
-            $result[$key] = round(($volume * 100) / $total_volume, 0);
+            $result[$key] = round($volume * 100 / $total_volume, 0);
         }
 
         return $result;

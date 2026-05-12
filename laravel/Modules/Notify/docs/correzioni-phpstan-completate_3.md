@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -97,6 +98,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 50d6b63f (.)
+=======
+>>>>>>> laraxot/dev
 # Risoluzione Conflitti Git e Correzione Errori PHPStan - Modulo Notify
 
 ## Data
@@ -286,6 +289,7 @@ Durante la risoluzione:
 **Verificato**:  S� - PHPStan passa senza errori
 **Testato**:  S� - Analisi completa su 3715 file
 **Committato**: � Da verificare
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> d09cb759 (.)
@@ -491,6 +495,8 @@ Durante la risoluzione:
 >>>>>>> d09cb759 (.)
 >>>>>>> 50d6b63f (.)
 >>>>>>> a55aa5e96 (.)
+=======
+>>>>>>> laraxot/dev
 # ✅ CORREZIONI PHPSTAN COMPLETATE - Modulo Notify
 
 ## 🎯 Obiettivo Raggiunto
@@ -630,6 +636,7 @@ I pattern di type safety implementati possono essere applicati a:
 *Metodologia: Type safety + Riusabilità*  
 *Risultato: 0 errori PHPStan Level 9*
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -934,3 +941,5 @@ I pattern di type safety implementati possono essere applicati a:
 >>>>>>> d09cb759 (.)
 >>>>>>> 50d6b63f (.)
 >>>>>>> a55aa5e96 (.)
+=======
+>>>>>>> laraxot/dev

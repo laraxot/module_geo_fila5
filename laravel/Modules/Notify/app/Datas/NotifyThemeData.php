@@ -16,5 +16,12 @@ class NotifyThemeData extends Data
 
     public string $body_html;
 
+<<<<<<< HEAD
     public array $view_params;
+=======
+    /**
+     * @var array<string, mixed>
+     */
+    public array $view_params = [];
+>>>>>>> laraxot/dev
 }

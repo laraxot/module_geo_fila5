@@ -296,7 +296,7 @@ database_old/migrations
 database_old/seeders
 docs
 docs/actions
-docs/archivedd
+docs/archived
 docs/contracts
 docs/filament
 docs/filament/relation-managers
