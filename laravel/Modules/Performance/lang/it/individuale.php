@@ -290,6 +290,13 @@ return [
         ],
     ],
     'actions' => [
+        'copy_from_individuale' => [
+            'label' => 'Sincronizza da Individuale',
+            'help' => 'Sincronizza le schede organizzative usando i dati della scheda individuale',
+            'icon' => 'copy_from_individuale',
+            'tooltip' => 'Aggiorna o crea le schede organizzative partendo dai dati individuali',
+            'confirm' => 'Confermi la sincronizzazione dei dati da Individuale verso Organizzativa?',
+        ],
         'copy_from_organizzativa' => [
             'label' => 'Copia da Organizzativa',
             'help' => 'Copia i dati dalla scheda organizzativa',

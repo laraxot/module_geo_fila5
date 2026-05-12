@@ -244,6 +244,21 @@ return [
             'icon' => 'profile',
             'tooltip' => 'profile',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+        ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'icon' => 'cancel',
+            'label' => 'cancel',
+        ],
+        'save' => [
+            'tooltip' => 'save',
+            'label' => 'save',
+            'icon' => 'save',
+        ],
     ],
     'messages' => [
         'validation' => [

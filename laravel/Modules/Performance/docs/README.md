@@ -35,8 +35,18 @@ Performance\Models\OrganizzativaTotValutatoreId
 - [Documentazione Root](../../../docs/PERFORMANCE_MODULE.md)
 - [Xot Base](../Xot/docs/)
 - [User Module](../User/docs/)
+- [UpdateGgPresenzaDalalAction](./action-update-gg-presenza-dalal.md)
+- [UpdateGgAnnoAction](./action-update-gg-anno.md)
+- [UpdatepercParttimepondDalal](./action-update-perc-parttimepond-dalal.md)
 
 ## Backlinks
 
 - [Valutazioni](./valutazioni/)
 - [Report](./report/)
+- [Performance fondo record pages](./performance-fondo-record-pages.md)
+- [UpdateGgPresenzaDalalAction](./action-update-gg-presenza-dalal.md)
+- [UpdateGgAnnoAction](./action-update-gg-anno.md)
+- [UpdatepercParttimepondDalal](./action-update-perc-parttimepond-dalal.md)
+- [Model Fillable Checklist](./model-fillable-checklist.md)
+- [Discrepanza Calcolo Quota](./discrepanza-calcolo-quota.md)
+- [Filament Infolist Pattern](./filament-infolist-pattern.md)

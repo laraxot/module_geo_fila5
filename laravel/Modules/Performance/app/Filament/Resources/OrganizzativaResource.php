@@ -10,15 +10,12 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Performance\Filament\Resources\OrganizzativaResource\Pages\CreateOrganizzativa;
-use Modules\Performance\Filament\Resources\OrganizzativaResource\Pages\EditOrganizzativa;
-use Modules\Performance\Filament\Resources\OrganizzativaResource\Pages\ListOrganizzativas;
-use Modules\Performance\Filament\Resources\OrganizzativaResource\Pages\ViewOrganizzativa;
 use Modules\Performance\Models\Organizzativa;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\Ptv\Filament\Resources\BaseSchedaResource;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
 use Override;
 
-class OrganizzativaResource extends XotBaseResource
+class OrganizzativaResource extends BaseSchedaResource
 {
     /** @var class-string<Model>|null */
     protected static ?string $model = Organizzativa::class;
@@ -88,10 +85,9 @@ class OrganizzativaResource extends XotBaseResource
     public static function getPages(): array
     {
         return [
-            'index' => ListOrganizzativas::route('/'),
-            'create' => CreateOrganizzativa::route('/create'),
-            'view' => ViewOrganizzativa::route('/{record}'),
-            'edit' => EditOrganizzativa::route('/{record}/edit'),
+            ...parent::getPages(),
+            // 'fill_out_the_form' => FillOutTheForm::route('/{record}/fill'),
+            'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }
 

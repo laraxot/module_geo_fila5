@@ -149,6 +149,11 @@ return [
             'icon' => 'copy_from_last_year',
             'tooltip' => 'copy_from_last_year',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+        ],
     ],
     'label' => 'organizzativa cat coeff',
 ];

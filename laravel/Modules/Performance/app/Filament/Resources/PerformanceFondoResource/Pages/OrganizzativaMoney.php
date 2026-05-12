@@ -10,13 +10,18 @@ use Modules\Performance\Actions\UpdateHaDirittoAction;
 use Modules\Performance\Filament\Resources\PerformanceFondoResource;
 use Modules\Performance\Models\Organizzativa;
 use Modules\Xot\Actions\GetViewAction;
-use Modules\Xot\Filament\Resources\Pages\XotBasePage;
+use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
-class OrganizzativaMoney extends XotBasePage
+class OrganizzativaMoney extends XotBaseViewRecord
 {
     // use InteractsWithRecord;
 
     protected static string $resource = PerformanceFondoResource::class;
+
+    public function getInfolistSchema(): array
+    {
+        return [];
+    }
 
     /**
      * ---.
@@ -39,8 +44,10 @@ class OrganizzativaMoney extends XotBasePage
      */
     public function getViewData(): array
     {
-        $year = '2024';
-
+        $year = (string) ($this->record->anno ?? 0);
+        app(ActionsOrgaizzativa\UpdateGgAnnoAction::class)->execute($year, 'dip');
+        app(ActionsOrgaizzativa\UpdateGgPresenzaDalalAction::class)->execute($year, 'dip');
+        app(ActionsOrgaizzativa\UpdatepercParttimepondDalal::class)->execute($year, 'dip');
         app(ActionsOrgaizzativa\UpdateAssenzeAction::class)->execute($year, 'dip');
         // app(UpdateHaDirittoAction::class)->execute(Organizzativa::class, $year, 'dip');
         app(ActionsOrgaizzativa\UpdateQuotaTeoricaAction::class)->execute($year, 'dip');

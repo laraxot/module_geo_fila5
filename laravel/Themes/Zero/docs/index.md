@@ -26,6 +26,9 @@ Questo documento serve come indice centrale per il tema Zero, fornendo una guida
 - [Modulo UI](../../Modules/UI/docs/README.md)
 - [Modulo Xot](../../Modules/Xot/docs/README.md)
 
+### Moduli Integrati
+- [Performance Actions Reference](./performance-actions-reference.md) - Riferimento action calcolo performance
+
 ## Categorie Principali
 
 ### Architettura e Struttura

@@ -511,6 +511,7 @@ class Individuale extends BaseIndividualeModel
         'po' => IndividualePo::class,
         'dip' => IndividualeDip::class,
         'regionale' => IndividualeRegionale::class,
+        'individuale_regionale' => IndividualeRegionale::class,
         'dirigente' => IndividualeDirigente::class,
     ];
 

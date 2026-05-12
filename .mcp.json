@@ -1,5 +1,12 @@
 {
   "mcpServers": {
+    "laravel-boost": {
+      "command": "/usr/bin/php8.3",
+      "args": [
+        "${PWD}/laravel/artisan",
+        "boost:mcp"
+      ]
+    },
     "qmd": {
       "command": "qmd",
       "args": [

@@ -144,6 +144,10 @@ abstract class XotBaseResource extends FilamentResource
      */
     final public static function infolist(Schema $schema): Schema
     {
+        $class = static::class.'\Schemas\\'.class_basename(static::getModel()).'Infolist';
+        if (class_exists($class)) {
+            return $class::configure($schema);
+        }
         return $schema->components(static::getInfolistSchema());
     }
 

@@ -22,15 +22,19 @@
 
 ### 2. Configurazione Progetto
 
-**Percorso**: `laravel/.mcp.json` (già configurato)
+**Percorsi**:
 
-Questa configurazione è version-controlled e condivisa con il team.
+- `laravel/.mcp.json` per la configurazione applicativa Laravel condivisa
+- `.mcp.json` per i server MCP condivisi a livello repository
+- `.cursor/mcp.json` per l'allineamento Cursor del progetto
+
+Questi file devono restare coerenti tra loro, soprattutto per `laravel-boost`.
 
 ---
 
 ## Configurazione MCP per PTVX
 
-Il file `laravel/.mcp.json` contiene tutti i server MCP necessari:
+Il file `laravel/.mcp.json` contiene i server MCP applicativi necessari:
 
 - **laravel-boost**: Documentazione e analisi Laravel
 - **filesystem**: Accesso file system del progetto
@@ -40,6 +44,22 @@ Il file `laravel/.mcp.json` contiene tutti i server MCP necessari:
 - **puppeteer**: Test UI e automazione
 - **mysql**: Interazione database MySQL
 - **git**: Operazioni Git
+
+Per `laravel-boost` la configurazione consigliata e' portabile:
+
+```json
+{
+  "mcpServers": {
+    "laravel-boost": {
+      "command": "/usr/bin/php8.3",
+      "args": [
+        "${PWD}/laravel/artisan",
+        "boost:mcp"
+      ]
+    }
+  }
+}
+```
 
 Vedi [Setup MCP](./mcp-setup.md) per dettagli completi.
 

@@ -163,6 +163,11 @@ return [
             'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
         ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'connection_success' => [

@@ -45,12 +45,16 @@ class CopyValutatoreIdFromIndividualeAction extends Action
         $updated = 0;
         $rows = Organizzativa::query()->get();
         foreach ($rows as $row) {
+
+            $where = [
+                'anno' => $row->anno,
+                'ente' => $row->ente,
+                'matr' => $row->matr,
+                'stabi' => $row->stabi,
+            ];
             $ind = Individuale::query()
-                ->where('anno', $row->anno)
-                ->where('ente', $row->ente)
-                ->where('matr', $row->matr)
-                ->where('stabi', $row->stabi)
-                ->first();
+                ->firstWhere($where)
+                ;
             if ($ind && $ind->valutatore_id && $row->valutatore_id !== $ind->valutatore_id) {
                 $row->valutatore_id = $ind->valutatore_id;
                 $row->save();
