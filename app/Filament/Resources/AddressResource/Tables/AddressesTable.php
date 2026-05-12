@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources\AddressResource\Tables;
 
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
+/**
+ * @extends XotBaseResourceTable
+ *
+ * @return array<string, Column>
+ */
 class AddressesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Column>
+     */
     public static function getTableColumns(): array
     {
         return [
