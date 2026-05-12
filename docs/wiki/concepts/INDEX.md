@@ -26,6 +26,7 @@ module: "root"
 - [spatie-permission-teams-laravel-13](./spatie-permission-teams-laravel-13.md)
 - [laravel13-modular-composer-upgrade](./laravel13-modular-composer-upgrade.md)
 - [llm-wiki-operational-discipline](./llm-wiki-operational-discipline.md)
+- [context-overflow-prevention](./context-overflow-prevention.md)
 
 ## Usage
 

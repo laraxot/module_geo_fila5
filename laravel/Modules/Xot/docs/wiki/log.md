@@ -45,6 +45,13 @@ module: "Xot"
 - **scope Xot**: base classes e documentazione framework vanno recuperate tramite QMD/context-mode con snippet minimi quando uno skill BMAD rischia il limite `131072 tokens`.
 - **verifica**: context-mode plugin/MCP connessi; QMD indicizza moduli/temi/root/bashscripts.
 
+## [2026-05-12] ops | opencode compaction overflow hardening
+
+- installato `@tarquinen/opencode-dcp@latest` nel config globale OpenCode.
+- creato `opencode.json` al git root con `compaction.auto=true`, `compaction.prune=true`, `compaction.reserved=40000`.
+- chiarito che il punto operativo corretto e' il git root, non `laravel/opencode.json`.
+- aggiornata la source wiki `sources/context-compression-and-retrieval.md` per riflettere il nuovo setup stabile.
+
 ## [2026-04-22] governance | Filament wizard summary via Infolists
 
 - **regola root**: `docs/wiki/concepts/filament-summary-infolist-rule.md`

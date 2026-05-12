@@ -29,6 +29,7 @@ module: "Zero"
 [2026-04-29 07:22:00 UTC] [UPDATE] Added Theme Zero-local second brain loop and updated wiki index description
 [2026-04-29 11:55:00 UTC] [INGEST] Added Theme Zero-facing summary of shared context-compression and retrieval setup
 [2026-05-12 08:15:00 UTC] [LINT] Linked shared rules/skills indexes for on-demand loading and refreshed theme wiki navigation
+[2026-05-12 08:32:00 UTC] [UPDATE] Aggiornata `sources/context-compression-and-retrieval.md` con il fix strutturale OpenCode: `opencode.json` al git root, compaction esplicita e plugin DCP globale.
 
-**Last Activity:** 2026-05-12 08:15:00 UTC  
-**Total Operations:** 5
+**Last Activity:** 2026-05-12 08:32:00 UTC  
+**Total Operations:** 6

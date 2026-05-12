@@ -3,7 +3,7 @@ title: "Context Compression and Retrieval"
 module: "One"
 type: source
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T00:00:00Z"
+updated: "2026-05-12T10:32:00Z"
 related:
   - "[[Theme One Operating Focus]]"
 ---
@@ -21,10 +21,12 @@ related:
 - managed indexing remains disabled by repo policy until a deliberate indexing rollout exists
 - local prerequisites are now present if Theme One later needs indexing-backed retrieval
 - final Kilo-side activation is still a client-verified step
+- OpenCode now has a git-root `opencode.json` with explicit compaction and watcher ignores for noisy runtime trees
+- the global OpenCode config also loads `@tarquinen/opencode-dcp@latest`, reducing repeated long-session payloads before they reach 262K-class endpoints
 
 ## Theme Guidance
 
-Theme One work often touches strategy, roadmap, charts, PDF, and UX docs. Use the theme wiki first, then rely on the shared compression setup to reduce repeated tool payloads.
+Theme One work often touches strategy, roadmap, charts, PDF, and UX docs. Use the theme wiki first, then rely on the shared compression setup and OpenCode pruning to reduce repeated tool payloads.
 
 ## References
 

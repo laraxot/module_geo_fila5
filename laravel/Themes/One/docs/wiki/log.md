@@ -29,6 +29,7 @@ module: "One"
 [2026-04-29 09:19:00 UTC] [UPDATE] Added theme-local second brain loop to operating focus for faster UX/document retrieval
 [2026-04-29 11:55:00 UTC] [INGEST] Added Theme One-facing summary of shared context-compression and retrieval setup
 [2026-05-12 08:15:00 UTC] [LINT] Resolved merge markers in wiki index/log and linked shared root/Xot rules and skills for on-demand loading
+[2026-05-12 08:32:00 UTC] [UPDATE] Aggiornata `sources/context-compression-and-retrieval.md` con il fix strutturale OpenCode: `opencode.json` al git root, compaction esplicita e plugin DCP globale.
 
-**Last Activity:** 2026-05-12 08:15:00 UTC  
-**Total Operations:** 5
+**Last Activity:** 2026-05-12 08:32:00 UTC  
+**Total Operations:** 6

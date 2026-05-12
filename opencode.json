@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "@tarquinen/opencode-dcp@latest"
+  ],
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 40000
+  },
+  "watcher": {
+    "ignore": [
+      ".git/**",
+      ".cursor/**",
+      ".claude/**",
+      ".opencode/**",
+      "_bmad-output/**",
+      "node_modules/**",
+      "vendor/**",
+      "laravel/storage/logs/**",
+      "laravel/bootstrap/cache/**"
+    ]
+  }
+}

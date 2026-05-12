@@ -9,6 +9,7 @@ Laraxot (PTVX) is a modular HR & Performance evaluation system that aims to be a
 - **PHPStan Level 10** - *Status: Shipped* - *Priority: High*
 - **XotBase Abstractions** - *Status: In Progress* - *Priority: High*
 - **Documentation Standardization** - *Status: In Progress* - *Priority: Medium*
+- **LLM Wiki Alignment & Naming Standardization** - *Status: In Progress* - *Priority: High*
 
 ### Q2 2026: AI & Automation
 - **AI Agent Orchestration** - *Status: Planned* - *Priority: High*
