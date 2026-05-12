@@ -126,6 +126,8 @@ desktop.ini
 .vercel/
 .vscode/
 .windsurf/
+!.windsurf/rules/
+!.windsurf/rules/*.md
 .zai/
 .zai.*/
 .zencoder/

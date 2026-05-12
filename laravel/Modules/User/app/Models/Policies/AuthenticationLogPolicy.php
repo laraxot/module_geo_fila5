@@ -68,21 +68,5 @@ class AuthenticationLogPolicy extends UserBasePolicy
         return $this->hasPermission($user, 'authentication-log.force-delete') || $user->hasRole('super-admin');
     }
 
-    protected function hasPermission(UserContract $user, string $permission): bool
-    {
-        $exists = Permission::query()
-            ->where('name', $permission)
-            ->where('guard_name', 'web')
-            ->exists();
-
-        if (! $exists) {
-            return false;
-        }
-
-        try {
-            return $user->hasPermissionTo($permission);
-        } catch (\Throwable) {
-            return false;
-        }
-    }
+    
 }

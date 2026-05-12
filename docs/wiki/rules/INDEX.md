@@ -19,6 +19,7 @@ module: "root"
 - [ai-guidelines](./ai-guidelines.md) — linee guida AI per Filament e XotBase
 - [filament-resource-property](./filament-resource-property.md) — `$resource` è `protected static` non `public static`; auto-resolve da XotBaseListRecords
 - [laraxot-module-namespace](./laraxot-module-namespace.md) — MAI `\app\` nel namespace; PSR-4 mappa `app/` → `Modules\<Name>\`
+- [context-overflow-prevention](./context-overflow-prevention.md) — 262K token limit; file vietati; tool output compression; emergency recovery
 
 ## Usage
 

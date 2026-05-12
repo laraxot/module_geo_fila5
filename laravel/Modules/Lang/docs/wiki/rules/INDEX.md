@@ -1,17 +1,29 @@
-# Lang Module - rules Index
+---
+title: "Rules Index"
+type: "index"
+tags: [rules, lang, translations, localization]
+module: "Lang"
+updated: 2026-05-12
+---
 
-## Purpose
-Index for Lang module rules.
+# Rules — Lang Module Wiki
 
-## On-Demand Loading
+> Regole ricorrenti del modulo Lang. Load on-demand.
+
+## Available Rules
+- [context-overflow-prevention](../../../../../docs/wiki/rules/context-overflow-prevention.md) — prevenzione 262K token overflow; file vietati; tool output compression
+
+- [translation-key-governance](./translation-key-governance.md) — ownership delle chiavi, struttura semantica e divieto di `->label()`/stringhe inline
+- [laravel12-lang-path-rule](../concepts/laravel12-lang-path-rule.md) — il path canonico resta `lang/` e non `resources/lang/`
+- [schema-conventions](../../../../../docs/wiki/rules/schema-conventions.md) — convenzioni globali per label e traduzioni gestite da `LangServiceProvider`
+- [filament-rules-summary](../../../../../docs/wiki/rules/filament-rules-summary.md) — guardrail Filament che impattano anche il modulo Lang
+
+## Usage
 
 ```bash
-qmd search "Lang rules" --limit 5
+qmd search "Lang module rule translation key" --limit 5
 ```
 
-## See Also
-- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
-- [Root Wiki](../../../docs/wiki/)
-
 ---
-*Updated: 2026-05-11*
+
+**Upstream:** [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)

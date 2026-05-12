@@ -11,6 +11,7 @@ updated: 2026-05-12
 > Regole critiche Xot/Laraxot. Load on-demand.
 
 ## Available Rules
+- [context-overflow-prevention](../../../../../docs/wiki/rules/context-overflow-prevention.md) — prevenzione 262K token overflow; file vietati; tool output compression
 
 - [filament-resource-property](../../../../../docs/wiki/rules/filament-resource-property.md) — `$resource` è `protected static`, auto-resolve via namespace
 - [xotbase-critical-rules](../../../../../docs/wiki/rules/xotbase-critical-rules.md) — MAI estendere Filament direttamente

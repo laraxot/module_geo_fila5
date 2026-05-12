@@ -14,7 +14,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function viewAny(UserContract $user): bool
     {
-        return $user->hasPermissionTo('membership.view.any');
+        return $this->hasPermission($user,'membership.view.any');
     }
 
     /**
@@ -22,7 +22,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function view(UserContract $user, Membership $membership): bool
     {
-        return $user->hasPermissionTo('membership.view')
+        return $this->hasPermission($user,'membership.view')
             || $user->id === $membership->user_id
             || $user->hasRole('super-admin');
     }
@@ -32,7 +32,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function create(UserContract $user): bool
     {
-        return $user->hasPermissionTo('membership.create');
+        return $this->hasPermission($user,'membership.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function update(UserContract $user, Membership $_membership): bool
     {
-        return $user->hasPermissionTo('membership.update') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'membership.update') || $user->hasRole('super-admin');
     }
 
     /**
@@ -48,7 +48,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function delete(UserContract $user, Membership $_membership): bool
     {
-        return $user->hasPermissionTo('membership.delete') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'membership.delete') || $user->hasRole('super-admin');
     }
 
     /**
@@ -56,7 +56,7 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function restore(UserContract $user, Membership $_membership): bool
     {
-        return $user->hasPermissionTo('membership.restore') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'membership.restore') || $user->hasRole('super-admin');
     }
 
     /**
@@ -64,6 +64,6 @@ class MembershipPolicy extends UserBasePolicy
      */
     public function forceDelete(UserContract $user, Membership $membership): bool
     {
-        return $user->hasPermissionTo('membership.force-delete') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'membership.force-delete') || $user->hasRole('super-admin');
     }
 }

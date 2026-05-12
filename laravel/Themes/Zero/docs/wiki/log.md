@@ -11,11 +11,12 @@ module: "Zero"
 
 ### Format
 
-```
+```text
 [YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
 ```
 
 **Operations:**
+
 - `INGEST` — Added raw document to wiki
 - `QUERY` — Answered question from wiki
 - `LINT` — Maintained wiki quality
@@ -27,6 +28,7 @@ module: "Zero"
 [2026-04-29 00:00:00 UTC] [INGEST] Added Theme Zero strategic source summary for wiki-first theme retrieval
 [2026-04-29 07:22:00 UTC] [UPDATE] Added Theme Zero-local second brain loop and updated wiki index description
 [2026-04-29 11:55:00 UTC] [INGEST] Added Theme Zero-facing summary of shared context-compression and retrieval setup
+[2026-05-12 08:15:00 UTC] [LINT] Linked shared rules/skills indexes for on-demand loading and refreshed theme wiki navigation
 
-**Last Activity:** 2026-04-29 11:55:00 UTC  
-**Total Operations:** 4
+**Last Activity:** 2026-05-12 08:15:00 UTC  
+**Total Operations:** 5

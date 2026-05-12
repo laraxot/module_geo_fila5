@@ -12,3 +12,8 @@ module: "Lang"
 - Created module index.md
 - Ready for on-demand loading via QMD
 
+## [2026-05-12] docs | lang wiki routing-first indicization
+
+- riscritti `rules/INDEX.md` e `skills/INDEX.md` per esporre regole e skill realmente caricabili on-demand.
+- aggiunte `rules/translation-key-governance.md` e `skills/translation-key-audit.md`.
+- aggiornato `index.md` con focus operativo su chiavi, path e ownership delle traduzioni.

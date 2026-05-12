@@ -1,7 +1,7 @@
 ---
 title: "Wiki Index"
 module: "Activity"
-updated: "2026-04-15T08:28:40Z"
+updated: "2026-05-12T10:19:00Z"
 ---
 
 # Wiki Index — Activity
@@ -11,7 +11,9 @@ updated: "2026-04-15T08:28:40Z"
 
 ## Concepts
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+- [activity-domain-focus](./concepts/activity-domain-focus.md) — posizionamento del dominio Activity
+- [xotbase-resource-zen-pattern](./concepts/xotbase-resource-zen-pattern.md) — pattern corretto per resource XotBase senza override `form()`/`table()`
+- [schemas-tables-pattern](./concepts/schemas-tables-pattern.md) — separazione Schemas/Tables e auto-discovery di XotBase
 
 ## Entities
 
@@ -19,7 +21,12 @@ _No entities tracked yet._
 
 ## Sources
 
-_No sources ingested yet._
+- [activity-core-sources](./sources/activity-core-sources.md) — sorgenti core del modulo per ingest e retrieval
+
+## On-Demand References
+
+- [rules-index](./rules/INDEX.md) — entrypoint locale per regole ricorrenti del modulo
+- [skills-index](./skills/INDEX.md) — skill on-demand, incluse skill condivise Xot
 
 ## Comparisons
 
@@ -27,6 +34,7 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-15T08:28:40Z  
-**Total Pages:** 0  
-**Total Raw Sources:** 0
+**Last Updated:** 2026-05-12T10:19:00Z  
+**Total Pages:** 4  
+**Total Raw Sources:** 1  
+**Shared References:** 2

@@ -38,7 +38,7 @@ abstract class UserPermissionBasePolicy
         } catch (\Exception $e) {
             // dddx($e);
         }
-        if ($user->hasPermissionTo($permission_name)) {
+        if ($this->hasPermission($user,$permission_name)) {
             return true;
         }
 

@@ -14,7 +14,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function viewAny(UserContract $user): bool
     {
-        // return $user->hasPermissionTo('tenant.view.any');
+        // return $this->hasPermission($user,'tenant.view.any');
         return false;
     }
 
@@ -23,7 +23,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function view(UserContract $user, Tenant $tenant): bool
     {
-        return $user->hasPermissionTo('tenant.view')
+        return $this->hasPermission($user,'tenant.view')
             || $user->tenants->contains($tenant->id)
             || $user->hasRole('super-admin');
     }
@@ -33,7 +33,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function create(UserContract $user): bool
     {
-        return $user->hasPermissionTo('tenant.create');
+        return $this->hasPermission($user,'tenant.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function update(UserContract $user, Tenant $_tenant): bool
     {
-        return $user->hasPermissionTo('tenant.update') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'tenant.update') || $user->hasRole('super-admin');
     }
 
     /**
@@ -49,7 +49,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function delete(UserContract $user, Tenant $_tenant): bool
     {
-        return $user->hasPermissionTo('tenant.delete') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'tenant.delete') || $user->hasRole('super-admin');
     }
 
     /**
@@ -57,7 +57,7 @@ class TenantPolicy extends UserBasePolicy
      */
     public function restore(UserContract $user, Tenant $_tenant): bool
     {
-        return $user->hasPermissionTo('tenant.restore') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'tenant.restore') || $user->hasRole('super-admin');
     }
 
     /**
@@ -65,6 +65,6 @@ class TenantPolicy extends UserBasePolicy
      */
     public function forceDelete(UserContract $user, Tenant $tenant): bool
     {
-        return $user->hasPermissionTo('tenant.force-delete') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'tenant.force-delete') || $user->hasRole('super-admin');
     }
 }

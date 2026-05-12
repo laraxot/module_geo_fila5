@@ -14,7 +14,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function viewAny(UserContract $user): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.view.any');
+        return $this->hasPermission($user,'oauth-access-token.view.any');
     }
 
     /**
@@ -22,7 +22,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function view(UserContract $user, OauthToken $oauthToken): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.view')
+        return $this->hasPermission($user,'oauth-access-token.view')
             || $user->id === $oauthToken->user_id
             || $user->hasRole('super-admin');
     }
@@ -32,7 +32,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function create(UserContract $user): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.create');
+        return $this->hasPermission($user,'oauth-access-token.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function update(UserContract $user, OauthToken $_oauthToken): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.update') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'oauth-access-token.update') || $user->hasRole('super-admin');
     }
 
     /**
@@ -48,7 +48,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function delete(UserContract $user, OauthToken $oauthToken): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.delete')
+        return $this->hasPermission($user,'oauth-access-token.delete')
             || $user->id === $oauthToken->user_id
             || $user->hasRole('super-admin');
     }
@@ -58,7 +58,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function restore(UserContract $user, OauthToken $_oauthToken): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.restore') || $user->hasRole('super-admin');
+        return $this->hasPermission($user,'oauth-access-token.restore') || $user->hasRole('super-admin');
     }
 
     /**
@@ -66,7 +66,7 @@ class OauthTokenPolicy extends UserBasePolicy
      */
     public function forceDelete(UserContract $user, OauthToken $oauthToken): bool
     {
-        return $user->hasPermissionTo('oauth-access-token.force-delete')
+        return $this->hasPermission($user,'oauth-access-token.force-delete')
             || $user->id === $oauthToken->user_id
             || $user->hasRole('super-admin');
     }

@@ -94,16 +94,12 @@
   - migrazione rinominata a `2026_04_20_173500_create_profiles_table.php` per riesecuzione idempotente
   - regola documentata in `concepts/profile-migration-uuid-contract.md`
 
-<<<<<<< HEAD
-## [2026-04-27] discussion | Policy Inheritance Boundary
-- Created: concepts/policy-inheritance-boundary.md (decisione architetturale)
-- Updated: index.md (aggiunto cross-reference)
-- Decision: Mantenere separazione UserBasePolicy vs XotBasePolicy
-- Rationale: Dependency isolation, contract clarity, module boundaries, testing flexibility
-- Best practices documentate: type-hint UserContract, permission dot notation, test con permessi reali
-- Enhancements proposti: canAny(), canAll(), scope(), after() hooks
-- Commit: docs: document policy inheritance boundary decision
-=======
+## [2026-04-27] discussion | policy inheritance boundary
+- Created: `concepts/policy-inheritance-boundary.md` (decisione architetturale).
+- Decision: mantenere separazione `UserBasePolicy` vs `XotBasePolicy`.
+- Rationale: dependency isolation, contract clarity, module boundaries, testing flexibility.
+- Best practices documentate: type-hint `UserContract`, permission dot notation, test con permessi reali.
+
 ## [2026-04-29] update | local second brain operating loop
 - Aggiornata `concepts/user-module-operating-focus.md` con loop locale second brain (retrieve -> distill -> index -> log).
 - Allineato il comportamento documentale del modulo User al ciclo `/bmad-create-story` del progetto.
@@ -119,4 +115,8 @@
 ## [2026-04-29] update | custom svg super-admin icons
 - Creati `resources/svg/superadmin.svg` e `resources/svg/negate-superadmin.svg` nel modulo User.
 - Aggiornate le view badge/profile per usare `user-superadmin` e `user-negate-superadmin` con micro-animazione hover.
->>>>>>> 063e390e9 (.)
+
+## [2026-05-12] docs | user wiki routing-first indicization
+- riscritti `rules/INDEX.md` e `skills/INDEX.md` per esporre davvero regole e skill modulo-specifiche.
+- aggiunta `skills/filament-translation-audit.md` come entrypoint on-demand per audit traduzioni Filament del modulo.
+- aggiornato `index.md` con entrypoint rules/skills e nuovi riferimenti compilati.

@@ -11,11 +11,12 @@ module: "ptvx-project"
 
 ### Format
 
-```
+```text
 [YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
 ```
 
 **Operations:**
+
 - `INGEST` — Added raw document to wiki
 - `QUERY` — Answered question from wiki
 - `LINT` — Maintained wiki quality
@@ -98,7 +99,7 @@ module: "ptvx-project"
 [2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — aggiunto trigger Filament ->label()/traduzioni, Filament class extension/XotBase, Filament resource/page/widget
 [2026-05-12 09:31:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — aggiunto filament-rules-summary, xotbase-critical-rules, schema-conventions, ai-guidelines
 
-**Last Activity:** 2026-05-12 09:58:00 UTC  
+**Last Activity:** 2026-05-12 10:19:00 UTC  
 [2026-05-12 09:58:00 UTC] [CREATE] docs/wiki/rules/filament-resource-property.md — regola `$resource` è `protected static string` non `public static`; auto-resolve in XotBaseListRecords via namespace
 [2026-05-12 09:58:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — aggiunto trigger `$resource property`, `XotBaseListRecords auto-resolve`, `skill crea filament page`
 [2026-05-12 09:58:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — aggiunto filament-resource-property
@@ -106,4 +107,15 @@ module: "ptvx-project"
 [2026-05-12 09:58:00 UTC] [UPDATE] laravel/Modules/Activity/docs/wiki/rules/INDEX.md — upgrade frontmatter + link xotbase-resource-zen-pattern
 [2026-05-12 09:58:00 UTC] [CREATE] laravel/Modules/Xot/docs/wiki/skills/filament-page-creation.md — skill on-demand: crea ListRecords/Create/Edit/View con XotBase
 [2026-05-12 09:58:00 UTC] [UPDATE] laravel/Modules/Xot/docs/wiki/skills/INDEX.md — upgrade frontmatter + aggiunto filament-page-creation skill
-**Total Operations:** 75
+[2026-05-12 10:15:00 UTC] [LINT] Corretto `protected static string $resource` nella documentazione modulo/tema, risolti marker di merge nel wiki Theme One e aggiunti ingressi on-demand a rules/skills per i temi
+[2026-05-12 10:19:00 UTC] [UPDATE] Migliorata l'indicizzazione on-demand dei moduli core: `User` e `Lang` ora espongono regole/skill reali; `Activity` e `Rating` mostrano meglio pattern locali e skill condivise; `docs/wiki/rules/00-TRIGGER_MAP.md` collegato ai nuovi entrypoint modulo-specifici
+**Total Operations:** 77
+[2026-05-12 10:24:00 UTC] [CREATE] .windsurf/rules/context-budget.md — max lines per tool response, never-read file list
+[2026-05-12 10:24:00 UTC] [CREATE] .windsurf/rules/no-bulk-reads.md — forbidden bulk read patterns
+[2026-05-12 10:24:00 UTC] [CREATE] .windsurf/rules/tool-output-compression.md — PHPStan/git/composer output compression
+[2026-05-12 10:24:00 UTC] [CREATE] .windsurf/rules/session-discipline.md — bootstrap, overflow recovery, session split protocol
+[2026-05-12 10:24:00 UTC] [CREATE] docs/wiki/rules/context-overflow-prevention.md — canonical rule 262K token prevention
+[2026-05-12 10:24:00 UTC] [UPDATE] docs/wiki/rules/00-TRIGGER_MAP.md — context overflow triggers
+[2026-05-12 10:24:00 UTC] [UPDATE] docs/wiki/rules/INDEX.md — context-overflow-prevention entry
+[2026-05-12 10:24:00 UTC] [UPDATE] 12× module/theme wiki/rules/INDEX.md — context-overflow-prevention propagated
+[2026-05-12 10:24:00 UTC] [UPDATE] .gitignore — !.windsurf/rules/*.md tracked
