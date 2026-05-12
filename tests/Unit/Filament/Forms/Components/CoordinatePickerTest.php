@@ -13,22 +13,22 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 uses(UnitTestCase::class);
 
-test('CoordinatePicker extends XotBaseField', function(): void {
+test('CoordinatePicker extends XotBaseField', function (): void {
     $this->assertTrue(true); // Prevent static
     expect(CoordinatePicker::make('test'))->toBeInstanceOf(XotBaseField::class);
 });
 
-test('LatitudeLongitudeInput extends XotBaseField', function(): void {
+test('LatitudeLongitudeInput extends XotBaseField', function (): void {
     $this->assertTrue(true); // Prevent static
     expect(LatitudeLongitudeInput::make('test'))->toBeInstanceOf(XotBaseField::class);
 });
 
-test('MapPicker extends XotBaseField', function(): void {
+test('MapPicker extends XotBaseField', function (): void {
     $this->assertTrue(true); // Prevent static
     expect(MapPicker::make('test'))->toBeInstanceOf(XotBaseField::class);
 });
 
-test('CoordinatePicker supports geo-location when empty', function(): void {
+test('CoordinatePicker supports geo-location when empty', function (): void {
     $this->assertTrue(true); // Prevent static
     $field = CoordinatePicker::make('test')
         ->geolocateWhenEmpty(true);
@@ -36,7 +36,7 @@ test('CoordinatePicker supports geo-location when empty', function(): void {
     expect($field->getGeolocateWhenEmpty())->toBeTrue();
 });
 
-test('CoordinatePicker uses clean naming convention (No Default prefixes)', function(): void {
+test('CoordinatePicker uses clean naming convention (No Default prefixes)', function (): void {
     $this->assertTrue(true); // Prevent static
     $field = CoordinatePicker::make('test');
 
@@ -44,7 +44,7 @@ test('CoordinatePicker uses clean naming convention (No Default prefixes)', func
         ->and(method_exists($field, 'getDefaultZoom'))->toBeFalse();
 });
 
-test('LatitudeLongitudeInput has center/zoom methods', function(): void {
+test('LatitudeLongitudeInput has center/zoom methods', function (): void {
     $this->assertTrue(true); // Prevent static
     $field = LatitudeLongitudeInput::make('test')
         ->center(44.0, 10.0);
@@ -53,7 +53,7 @@ test('LatitudeLongitudeInput has center/zoom methods', function(): void {
         ->and($field->getCenterLongitude())->toBe(10.0);
 });
 
-test('CoordinatePicker can extract coordinates from data', function(): void {
+test('CoordinatePicker can extract coordinates from data', function (): void {
     $this->assertTrue(true); // Prevent static
     $data = [
         'coordinates' => [
@@ -68,7 +68,7 @@ test('CoordinatePicker can extract coordinates from data', function(): void {
         ->and($extracted['longitude'])->toBe(9.1900);
 });
 
-test('CoordinatePicker is not dehydrated by default', function(): void {
+test('CoordinatePicker is not dehydrated by default', function (): void {
     $this->assertTrue(true); // Prevent static
     $field = CoordinatePicker::make('test');
 
