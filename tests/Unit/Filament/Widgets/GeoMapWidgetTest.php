@@ -2,19 +2,10 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-uses(LightTestCase::class);
-
-use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
-use Modules\Geo\Datas\Map\GeoMapWidgetData;
-use Modules\Geo\Filament\Widgets\GeoMapWidget;
-use Modules\Geo\Tests\LightTestCase;
-=======
 uses(Modules\Geo\Tests\LightTestCase::class);
 
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
->>>>>>> c3b9b5924 (.)
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 test('geo map widget extends xot base widget', function () {
@@ -42,11 +33,7 @@ test('geo map widget returns payload data object', function () {
     ]);
 
     $this->app->bind(
-<<<<<<< HEAD
-        BuildGeoMapWidgetPayloadAction::class,
-=======
         Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction::class,
->>>>>>> c3b9b5924 (.)
         static fn (): object => new class($payload) {
             public function __construct(private readonly GeoMapWidgetData $payload)
             {

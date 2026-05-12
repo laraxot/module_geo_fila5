@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\base_quaeris_fila5\var\www\_bases\base_quaeris_fila5\laravel\Modules\Geo\app\Filament\Resources\AddressResource\Schemas;
+namespace Modules\Geo\app\Filament\Resources\AddressResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
