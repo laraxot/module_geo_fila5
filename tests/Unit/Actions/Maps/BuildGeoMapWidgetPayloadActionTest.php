@@ -2,21 +2,13 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-uses(LightTestCase::class);
-=======
 uses(Modules\Geo\Tests\LightTestCase::class);
->>>>>>> c3b9b5924 (.)
 
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
-<<<<<<< HEAD
-use Modules\Geo\Tests\LightTestCase;
-=======
->>>>>>> c3b9b5924 (.)
 
 test('build geo map widget payload action returns widget data contract', function () {
     $placeType = new PlaceType();

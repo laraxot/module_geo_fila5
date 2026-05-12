@@ -17,11 +17,8 @@ class LeafletMarkerMapInput extends XotBaseField
 {
     use HasCoordinatePicker;
 
-<<<<<<< HEAD
-=======
     protected string $view = 'geo::filament.forms.components.leaflet-marker-map-input';
 
->>>>>>> c3b9b5924 (.)
     protected function setUp(): void
     {
         parent::setUp();
