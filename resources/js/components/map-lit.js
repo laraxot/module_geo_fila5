@@ -1,20 +1,17 @@
 import { LitElement, html } from 'lit';
 import L from 'leaflet';
-// Pre-plugin initialization: MUST be global for markercluster/heat
 window.L = L;
+globalThis.L = L;
 
 import 'leaflet/dist/leaflet.css';
-import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import 'leaflet.heat';
 
 import { renderControls, switchLayer, toggleFullscreen, zoomIn, zoomOut, requestGeolocation } from './map-picker-controls.js';
 import { renderSearch } from './map-picker-search.js';
 import { buildMapLayers } from './map-picker-layers.js';
 import { mapPickerStylesText } from './map-picker-styles.js';
 import { createGeoMapLeafletIcon } from './map-marker-config.js';
-import { geoIcon } from './geo-heroicons.js';
 
 const DEFAULT_TICKETS_JSON_URL = '/data/tickets.json';
 const DEFAULT_CENTER = [41.9028, 12.4964];
@@ -57,6 +54,7 @@ class MapLit extends LitElement {
         this.isLocating = false;
         this._previousBodyOverflow = '';
         this._previousHtmlOverflow = '';
+        this._geolocRequested = false;
         this.labels = {
             fullscreen: 'Schermo intero',
             close_fullscreen: 'Esci da schermo intero',
@@ -137,9 +135,11 @@ class MapLit extends LitElement {
         this._initMap();
     }
 
-    _initMap() {
+    async _initMap() {
         const container = this.renderRoot.querySelector('.geo-map-leaflet');
         if (!container) return;
+
+        await this._ensureLeafletPlugins();
         
         this._map = L.map(container, {
             center: DEFAULT_CENTER,
@@ -147,6 +147,7 @@ class MapLit extends LitElement {
             minZoom: 3,
             maxZoom: 19,
             zoomControl: false,
+            zoomAnimation: false,
         });
 
         this._layers = buildMapLayers(L);
@@ -158,12 +159,11 @@ class MapLit extends LitElement {
             this._markersLayer = clusterFactory({
                 // Reference: 80px radius < zoom 12, 45px radius >= zoom 12
                 maxClusterRadius: (z) => z < 12 ? 80 : 45,
-                minimumClusterSize: 2,
                 chunkedLoading: true,
                 spiderfyOnMaxZoom: true,
-                showCoverageOnHover: true,
+                showCoverageOnHover: false,
                 zoomToBoundsOnClick: true,
-                removeOutsideVisibleBounds: true,
+                removeOutsideVisibleBounds: false,
                 iconCreateFunction: (cluster) => this._createClusterIcon(cluster),
             });
             this._map.addLayer(this._markersLayer);
@@ -192,6 +192,18 @@ class MapLit extends LitElement {
         requestGeolocation(this, { showLoading: false });
 
         this._loadGeoJson();
+    }
+
+    async _ensureLeafletPlugins() {
+        window.L = L;
+        globalThis.L = L;
+
+        await Promise.all([
+            import('leaflet.markercluster/dist/leaflet.markercluster.js')
+                .catch((error) => console.warn('[map-lit] MarkerCluster plugin unavailable:', error.message)),
+            import('leaflet.heat')
+                .catch((error) => console.warn('[map-lit] Heat plugin unavailable:', error.message)),
+        ]);
     }
 
     _setupMutationObserver() {
@@ -319,9 +331,7 @@ class MapLit extends LitElement {
                     },
                 });
 
-                if (this._markersLayer) {
-                    this._markersLayer.addLayer(this._geojsonLayer);
-                }
+                this._addMarkersToLayer([this._geojsonLayer]);
 
                 // Auto-fit if user didn't permit geolocation
                 setTimeout(() => {
@@ -365,7 +375,28 @@ class MapLit extends LitElement {
         if (!this._markersLayer) return;
         this._markersLayer.clearLayers();
         const filtered = type ? this._allMarkers.filter(m => m.options.typeValue === type) : this._allMarkers;
-        this._markersLayer.addLayers(filtered);
+        this._addMarkersToLayer(filtered);
+    }
+
+    _addMarkersToLayer(markers) {
+        if (!this._markersLayer || !Array.isArray(markers) || markers.length === 0) return;
+
+        if (typeof this._markersLayer.addLayers === 'function') {
+            try {
+                this._markersLayer.addLayers(markers);
+                return;
+            } catch (error) {
+                console.warn('[map-lit] Batch marker add failed, retrying one by one:', error.message);
+            }
+        }
+
+        markers.forEach((marker) => {
+            try {
+                this._markersLayer.addLayer(marker);
+            } catch (error) {
+                console.warn('[map-lit] Marker add skipped:', error.message);
+            }
+        });
     }
 
     disconnectedCallback() {

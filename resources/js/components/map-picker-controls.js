@@ -158,7 +158,8 @@ export function zoomOut(ctx) {
 export function requestGeolocation(ctx, options = {}) {
     const { showLoading = true } = options;
 
-    if (!navigator.geolocation || ctx.isLocating) return;
+    if (!navigator.geolocation || ctx.isLocating || ctx._geolocRequested) return;
+    ctx._geolocRequested = true;
 
     if (showLoading) {
         ctx.isLocating = true;

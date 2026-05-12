@@ -3,8 +3,8 @@ title: "Segnalazioni Elenco — Mappa e Cluster: Diagnosi e Fix"
 type: troubleshooting
 confidence: high
 created: 2026-04-29
-updated: 2026-04-30
-tags: [geo-map-lit, markercluster, geolocation, cache, bundle, deploy, playwright]
+updated: 2026-05-08
+tags: [map-lit, geo-map-lit, markercluster, geolocation, cache, bundle, deploy, playwright]
 related:
   - concepts/geo-map-controls-unification-rule.md
   - concepts/static-geo-map-widget-pattern.md
@@ -13,8 +13,74 @@ related:
 
 # Segnalazioni Elenco — Mappa e Cluster: Diagnosi e Fix
 
-**Status**: ✅ RISOLTO 2026-04-30 (cluster visibili + geolocalizzazione iniziale)
-**Story**: [8-82](./../../../.planning/stories/8-82-geo-map-lit-not-visible-diagnosis.story.md)
+**Status**: ✅ RISOLTO 2026-05-08 — `map-lit` visibile e test Playwright 11/11
+**Storia diagnosi**:
+- Originale: [8-82](./../../../.planning/stories/8-82-geo-map-lit-not-visible-diagnosis.story.md) — risolta 2026-04-30 (bundle obsoleto in cache)
+- Regressione: 8-134 — `<map-lit>` non importato in `Themes/Sixteen/resources/js/app.js` → `HTMLUnknownElement` inerte
+- Regressione: 2026-05-08 — `@include('pub_theme::components.sections.map-lit')` senza partial → HTTP 500
+
+---
+
+## Regressione 2026-05-07 — Custom element non importato
+
+**Sintomo identico**: utente non vede la mappa in `/it/tests/segnalazioni-elenco`.
+
+**Root cause diversa** dalla 8-82:
+- `pages/tests/segnalazioni-elenco.blade.php:11` rende `<map-lit data-url="...">`
+- `Modules/Geo/resources/js/components/map-lit.js` definisce correttamente `customElements.define('map-lit', MapLit)`
+- `Themes/Sixteen/resources/js/app.js` importava `geo-map-lit.js`, `my-map-lit.js`, `map-picker-lit.js` ecc., **ma NON `map-lit.js`**
+- → Bundle del tema non includeva la classe `MapLit`
+- → Browser tratta `<map-lit>` come `HTMLUnknownElement` (display:inline, nessun comportamento)
+
+**Fix definitivo (decisione 2026-05-07)**:
+1. Aggiunto `import '@modules/Geo/resources/js/components/map-lit.js';` in `Themes/Sixteen/resources/js/app.js` (subito dopo l'import di `geo-map-lit.js`)
+2. `cd laravel/Themes/Sixteen && npm run build && npm run copy`
+3. Atomic swap dei bundle hashati in `public_html/themes/Sixteen/assets/` (368 → 8 file prima, poi npm run copy ricostituisce solo i nuovi)
+
+**Decisione architetturale**: il nome canonico per la pagina `segnalazioni-elenco` è `<map-lit>` (NON `<geo-map-lit>` né `<ticket-map-lit>`). Migrazioni di pagine esistenti devono essere additive (mantenere `<map-lit>`), non sostitutive.
+
+---
+
+## Tabella varianti `*-lit.js` in Modules/Geo/resources/js/components/
+
+| File | Custom element | Stato |
+|------|----------------|-------|
+| `map-lit.js` | `<map-lit>` | **canonical** per segnalazioni-elenco |
+| `geo-map-lit.js` | `<geo-map-lit>` | alternativo, presente in app.js, NON usato in segnalazioni-elenco |
+| `my-map-lit.js` | `<my-map-lit>` | demo/sandbox |
+| `map-picker-lit.js` | `<map-picker-lit>` | field Filament wizard (single-point picker) |
+| `coordinate-picker-lit.js` | `<coordinate-picker-lit>` | field Filament composite |
+| `geopoint-picker-lit.js` | `<geopoint-picker-lit>` | field Filament alt |
+| `place-picker-lit.js` | `<place-picker-lit>` | field con address search |
+| `geo-map-lit-final.js` | n/a | orphan — rinominare `.old` |
+| `geo-map-lit-new.js` | n/a | orphan — rinominare `.old` |
+| `geo-map-lit.js.bak`, `.bak-1777577793` | n/a | orphan — rinominare `.old` |
+| `coordinate-picker-lit-stable.js` | n/a | orphan — rinominare `.old` |
+
+> **Regola di prevenzione**: prima di scrivere `<x-lit>` in un Blade, verificare che `Themes/Sixteen/resources/js/app.js` lo importi. Vedi `Themes/Sixteen/docs/wiki/concepts/theme-app-js-lit-import-registry.md` per il registry runtime aggiornato.
+
+## Regressione 2026-05-08 — Include server-side mancante
+
+**Sintomo**: pagina `/it/tests/segnalazioni-elenco` in HTTP 500.
+
+**Root cause**:
+- `pages/tests/segnalazioni-elenco.blade.php` includeva `pub_theme::components.sections.map-lit`;
+- la partial `components/sections/map-lit.blade.php` non esisteva;
+- Laravel cercava una view server-side, quindi il web component non arrivava mai al browser.
+
+**Fix**:
+- creata `Themes/Sixteen/resources/views/components/sections/map-lit.blade.php`;
+- la partial emette solo `<map-lit ...></map-lit>` con `data-url`, altezza e `aria-label` configurabili;
+- allineato il block legacy a `document.querySelector('map-lit')`.
+
+**Verifica**:
+
+```text
+npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+11 passed
+```
+
+Smoke browser: `map-litDefined=true`, elemento 1108x522, Leaflet container 1, tile 15/15, marker 2, cluster 2.
 
 ---
 
