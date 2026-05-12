@@ -45,10 +45,6 @@ class SendAppointmentNotificationAction
             ]);
 
             return false;
-<<<<<<< HEAD
-
-=======
->>>>>>> laraxot/dev
         } catch (Exception $e) {
             Log::error('Errore nell\'invio della notifica di appuntamento', [
                 'type' => $type,

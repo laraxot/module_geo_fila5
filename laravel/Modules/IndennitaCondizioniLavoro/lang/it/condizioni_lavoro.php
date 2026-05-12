@@ -195,6 +195,10 @@ return [
             'icon' => 'save',
             'label' => 'save',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
     ],
     'navigation' => [
         'label' => 'condizioni lavoro/lavoro esterno',

@@ -171,6 +171,36 @@ return [
         'type' => [
             'label' => 'type',
         ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'placeholder' => 'gg_anno',
+            'helper_text' => 'gg_anno',
+            'description' => 'gg_anno',
+        ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'placeholder' => 'gg_effettuati',
+            'helper_text' => 'gg_effettuati',
+            'description' => 'gg_effettuati',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+            'placeholder' => 'posiz',
+            'helper_text' => 'posiz',
+            'description' => 'posiz',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'placeholder' => 'gg_assenza_anno',
+            'helper_text' => 'gg_assenza_anno',
+            'description' => 'gg_assenza_anno',
+        ],
+        'last_data_assunz' => [
+            'label' => 'last_data_assunz',
+            'placeholder' => 'last_data_assunz',
+            'helper_text' => 'last_data_assunz',
+            'description' => 'last_data_assunz',
+        ],
     ],
     'actions' => [
         'evaluate' => [
@@ -241,6 +271,8 @@ return [
         ],
         'cancel' => [
             'tooltip' => 'cancel',
+            'label' => 'cancel',
+            'icon' => 'cancel',
         ],
         'profile' => [
             'tooltip' => 'profile',
@@ -310,11 +342,47 @@ return [
         'last_data_assunz' => [
             'tooltip' => 'last_data_assunz',
             'icon' => 'last_data_assunz',
+            'label' => 'last_data_assunz',
         ],
         'export_pdf' => [
             'label' => 'export_pdf',
             'icon' => 'export_pdf',
             'tooltip' => 'export_pdf',
+        ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+        ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'icon' => 'gg_anno',
+            'tooltip' => 'gg_anno',
+        ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'icon' => 'gg_effettuati',
+            'tooltip' => 'gg_effettuati',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+            'icon' => 'posiz',
+            'tooltip' => 'posiz',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'icon' => 'gg_assenza_anno',
+            'tooltip' => 'gg_assenza_anno',
+        ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
         ],
     ],
     'messages' => [

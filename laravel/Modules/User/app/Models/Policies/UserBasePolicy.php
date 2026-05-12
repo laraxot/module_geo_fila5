@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace Modules\User\Models\Policies;
 
 use Illuminate\Auth\Access\Response;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 use Modules\User\Models\Permission;
 
+/**
+ * @template TModel of Model
+ */
 abstract class UserBasePolicy extends XotBasePolicy
 {
     /**

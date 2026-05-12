@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Messages\MailMessage;
 use Modules\Notify\Actions\NotifyTheme\Get;
 use Modules\Notify\Datas\AttachmentData;
-<<<<<<< HEAD
-=======
 use Modules\Notify\Datas\NotifyThemeData;
->>>>>>> laraxot/dev
 use Spatie\LaravelData\DataCollection;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -34,10 +31,7 @@ class BuildMailMessageAction
 
         $type = 'email';
 
-<<<<<<< HEAD
-=======
         /** @var NotifyThemeData $theme */
->>>>>>> laraxot/dev
         $theme = app(Get::class)->execute($name, $type, $view_params);
         $view_html = 'notify::email';
         // dddx([$theme, $view_params]);

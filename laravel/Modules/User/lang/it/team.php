@@ -237,6 +237,15 @@ return [
             'icon' => 'delete',
             'label' => 'delete',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'edit' => [
+            'tooltip' => 'edit',
+            'icon' => 'edit',
+        ],
     ],
     'plural' => [
         'model' => [

@@ -136,6 +136,9 @@ return [
         'create' => [
             'label' => 'create',
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
     ],
     'model' => [
         'label' => 'criteri option.model',

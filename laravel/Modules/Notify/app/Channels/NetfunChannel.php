@@ -20,33 +20,17 @@ class NetfunChannel
 
     /**
      * Invia la notifica tramite Netfun SMS
-<<<<<<< HEAD
-     *
-     * @param  mixed  $notifiable
-     * @return array|null
-     */
-    public function send($notifiable, Notification $notification)
-    {
-        // Ottieni il numero di telefono dal Notifiable
-        if (! is_object($notifiable) || ! method_exists($notifiable, 'routeNotificationForNetfun')) {
-            return;
-=======
      */
     public function send(mixed $notifiable, Notification $notification): ?array
     {
         // Ottieni il numero di telefono dal Notifiable
         if (! is_object($notifiable) || ! method_exists($notifiable, 'routeNotificationForNetfun')) {
             return null;
->>>>>>> laraxot/dev
         }
 
         $recipient = $notifiable->routeNotificationForNetfun($notification);
         if (! $recipient) {
-<<<<<<< HEAD
-            return;
-=======
             return null;
->>>>>>> laraxot/dev
         }
 
         // Ottieni il messaggio dalla notifica
@@ -67,12 +51,8 @@ class NetfunChannel
 
         // Esegui l'invio tramite la Queueable Action
         // L'esecuzione avverrà in modo asincrono (in background)
-<<<<<<< HEAD
-        return $this->sendSMSAction->onQueue('sms')->execute($smsData); // Esegui sulla coda 'sms'
-=======
         $result = $this->sendSMSAction->onQueue('sms')->execute($smsData);
 
         return is_array($result) ? $result : null;
->>>>>>> laraxot/dev
     }
 }

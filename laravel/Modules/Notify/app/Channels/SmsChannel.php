@@ -39,11 +39,7 @@ class SmsChannel
      *
      * @throws Exception Se la notifica non ha il metodo toSms o il driver non è supportato
      */
-<<<<<<< HEAD
     public function send($notifiable, Notification $notification)
-=======
-    public function send(mixed $notifiable, Notification $notification): ?array
->>>>>>> laraxot/dev
     {
         if (! method_exists($notification, 'toSms')) {
             throw new Exception('Notification does not have toSms method');

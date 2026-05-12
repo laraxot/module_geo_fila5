@@ -246,10 +246,7 @@ class SpatieEmail extends TemplateMailable
 
     public function buildSms(): string
     {
-<<<<<<< HEAD
         /* @phpstan-ignore method.notFound */
-=======
->>>>>>> laraxot/dev
         /** @var MailTemplate $mailTemplate */
         $mailTemplate = $this->getMailTemplate();
         $sms_template = $mailTemplate->sms_template;

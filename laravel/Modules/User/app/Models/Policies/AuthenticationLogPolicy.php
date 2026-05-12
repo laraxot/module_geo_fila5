@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Models\Policies;
 
 use Modules\User\Models\AuthenticationLog;
+use Illuminate\Auth\Access\Response;
 use Modules\User\Models\Permission;
 use Modules\Xot\Contracts\UserContract;
 
@@ -21,7 +22,7 @@ class AuthenticationLogPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(UserContract $user, AuthenticationLog $authenticationLog): bool
+    public function view(UserContract $user, AuthenticationLog $authenticationLog): Response|bool
     {
         return $this->hasPermission($user, 'authentication-log.view')
             || $user->id === $authenticationLog->authenticatable_id

@@ -64,26 +64,11 @@ return [
             'label' => 'Seleziona Tutti',
             'message' => 'Seleziona tutti gli elementi',
         ],
-        'risultati_ottenuti' => [
-            'label' => 'Conseguimento degli obiettivi',
-            'help' => 'Descrizione dei risultati ottenuti',
-        ],
-        'qualita_prestazione' => [
-            'label' => 'Qualità della Prestazione',
-            'help' => 'Valutazione della qualità della prestazione',
-        ],
-        'arricchimento_professionale' => [
-            'label' => 'Arricchimento Professionale',
-            'help' => 'Descrizione dell\'arricchimento professionale',
-        ],
-        'impegno' => [
-            'label' => 'Impegno',
-            'help' => 'Valutazione dell\'impegno',
-        ],
-        'esperienza_acquisita' => [
-            'label' => 'Esperienza Acquisita',
-            'help' => 'Descrizione dell\'esperienza acquisita',
-        ],
+        'risultati_ottenuti' => 'Conseguimento degli obiettivi',
+        'qualita_prestazione' => 'Monitoraggio delle attività afferenti i processi',
+        'arricchimento_professionale' => 'Attuazione di strategie di miglioramento del "clima lavorativo"',
+        'impegno' => 'Organizzazione della programmazione delle attività',
+        'esperienza_acquisita' => 'Focalizzazione dei processi di comunicazione sulla condivisione dei risultati',
         'applyFilters' => [
             'label' => 'applyFilters',
         ],
@@ -505,6 +490,11 @@ return [
             'tooltip' => 'export_pdf',
             'label' => 'export_pdf',
             'icon' => 'export_pdf',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'messages' => [

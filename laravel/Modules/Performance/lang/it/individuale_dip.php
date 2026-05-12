@@ -380,6 +380,11 @@ return [
             'label' => 'export_pdf',
             'icon' => 'export_pdf',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+        ],
     ],
     'messages' => [
         'validation' => [

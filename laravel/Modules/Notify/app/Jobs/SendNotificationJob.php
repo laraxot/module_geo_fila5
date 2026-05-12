@@ -23,7 +23,6 @@ class SendNotificationJob implements ShouldQueue
 
     /**
      * Numero di tentativi massimi.
-<<<<<<< HEAD
      *
      * @var int
      */
@@ -35,15 +34,6 @@ class SendNotificationJob implements ShouldQueue
      * @var int
      */
     public $timeout;
-=======
-     */
-    public int $tries;
-
-    /**
-     * Timeout del job in secondi.
-     */
-    public int $timeout;
->>>>>>> laraxot/dev
 
     /**
      * Crea una nuova istanza del job.

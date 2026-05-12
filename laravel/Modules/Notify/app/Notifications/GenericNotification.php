@@ -68,15 +68,10 @@ class GenericNotification extends Notification implements ShouldQueue
 
     /**
      * Ottiene la rappresentazione mail della notifica.
-<<<<<<< HEAD
      *
      * @param  mixed  $notifiable
      */
     public function toMail($notifiable): MailMessage
-=======
-     */
-    public function toMail(mixed $notifiable): MailMessage
->>>>>>> laraxot/dev
     {
         $mail = (new MailMessage)
             ->subject($this->title)
@@ -85,10 +80,7 @@ class GenericNotification extends Notification implements ShouldQueue
 
         // Aggiungi eventuali azioni se specificate nei dati
         if (isset($this->data['action_text'], $this->data['action_url'])) {
-<<<<<<< HEAD
             /** @phpstan-ignore-next-line */
-=======
->>>>>>> laraxot/dev
             $mail->action((string) $this->data['action_text'], (string) $this->data['action_url']);
         }
 
@@ -105,16 +97,10 @@ class GenericNotification extends Notification implements ShouldQueue
     /**
      * Ottiene la rappresentazione SMS della notifica.
      *
-<<<<<<< HEAD
      * @param  mixed  $notifiable
      * @return array<string, mixed>
      */
     public function toTwilio($notifiable): array
-=======
-     * @return array<string, mixed>
-     */
-    public function toTwilio(mixed $notifiable): array
->>>>>>> laraxot/dev
     {
         $content = "il progetto: {$this->title}\n{$this->message}";
 
@@ -139,16 +125,10 @@ class GenericNotification extends Notification implements ShouldQueue
     /**
      * Ottiene la rappresentazione database della notifica.
      *
-<<<<<<< HEAD
      * @param  mixed  $notifiable
      * @return array<string, mixed>
      */
     public function toDatabase($notifiable): array
-=======
-     * @return array<string, mixed>
-     */
-    public function toDatabase(mixed $notifiable): array
->>>>>>> laraxot/dev
     {
         return [
             'title' => $this->title,
@@ -160,15 +140,10 @@ class GenericNotification extends Notification implements ShouldQueue
 
     /**
      * Ottiene il nome del destinatario per il saluto personalizzato.
-<<<<<<< HEAD
      *
      * @param  mixed  $notifiable
      */
     protected function getRecipientName($notifiable): string
-=======
-     */
-    protected function getRecipientName(mixed $notifiable): string
->>>>>>> laraxot/dev
     {
         // Tenta di ottenere il nome dal destinatario in vari modi
         if (is_object($notifiable) && method_exists($notifiable, 'getFullName')) {

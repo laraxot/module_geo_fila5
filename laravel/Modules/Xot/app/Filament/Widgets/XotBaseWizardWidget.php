@@ -51,8 +51,8 @@ use Illuminate\Support\Str;
  * - **REGOLA AUREA**: NON usare `->label()` o `->tooltip()` espliciti sui campi/azioni
  * - LangServiceProvider configura automaticamente label, placeholder, helperText, tooltip
  * - Pattern chiave: `{namespace}::{widget_name}.{type}.{field_name}.{property}`
- *   - Es: `fixcity::create_ticket_wizard.actions.next.label`
- *   - Es: `fixcity::create_ticket_wizard.fields.address.required`
+ *   - Es: `<moule name>::create_ticket_wizard.actions.next.label`
+ *   - Es: `<moule name>::create_ticket_wizard.fields.address.required`
  * - Il submit button wizard resta centralizzato qui, non nel widget dominio
  *
  * ## Log e Gestione Errori

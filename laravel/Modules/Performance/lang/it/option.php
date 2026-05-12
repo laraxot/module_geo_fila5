@@ -197,6 +197,11 @@ return [
             'icon' => 'save',
             'tooltip' => 'save',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+        ],
     ],
     'model' => [
         'label' => 'option.model',

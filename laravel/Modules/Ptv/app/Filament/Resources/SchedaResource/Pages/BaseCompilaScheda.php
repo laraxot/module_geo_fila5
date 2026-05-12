@@ -50,7 +50,10 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
         $this->record = $model;
         $this->authorizeAccess();
         // *
-        $criteri_valutazione = $this->record->criteriValutazione()->get();
+        $criteri_valutazione = $this->record
+        ->criteriValutazione()
+        ->where('post_type', $this->record->type)
+        ->get();
         
         foreach ($criteri_valutazione as $criterio) {
             $k = $criterio->getAttribute('nome');
@@ -129,42 +132,36 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
     {
         $tot = 0;
 
-        $criteri_valutazione = $this->record->criteriValutazione->where('post_type', $this->record->type);
+        
+        $criteri_valutazione = $this->record
+        ->criteriValutazione()
+        ->where('post_type', $this->record->type)
+        ->get();
+        
         foreach ($criteri_valutazione as $v) {
             $nome = $v->getAttribute('nome');
             if (\is_string($nome)) {
                 $dataValue = $this->data[$nome] ?? 0;
+                
                 if (is_numeric($dataValue)) {
                     $value = (float) $dataValue;
                     $peso = $this->record->getPeso($nome);
+                    
                     $tot += $peso * $value;
                 }
             }
         }
 
         $tot /= 4;
-
+        
         $this->totale = $tot;
     }
 
-    /*
-    public function updating(): void {
-        dddx([
-            'property'=>$property,
-            'value'=>$value
-        ]);
-    }
-    */
-    /*
-    public function updated(): void {
-        dddx([
-            'property'=>$property
-        ]);
-    }
-    */
+   
 
     public function updatedData(): void
     {
+        
         $this->recalculate();
     }
 }

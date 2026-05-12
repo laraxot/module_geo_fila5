@@ -13,21 +13,15 @@ class AnalyzeTranslationFiles extends Command
 {
     /**
      * The name and signature of the console command.
-<<<<<<< HEAD
      *
      * @var string
-=======
->>>>>>> laraxot/dev
      */
     protected $signature = 'notify:analyze-translations';
 
     /**
      * The console command description.
-<<<<<<< HEAD
      *
      * @var string
-=======
->>>>>>> laraxot/dev
      */
     protected $description = 'Analyze translation files in the Notify module to identify inconsistencies';
 

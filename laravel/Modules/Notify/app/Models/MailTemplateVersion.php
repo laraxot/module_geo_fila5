@@ -69,10 +69,7 @@ class MailTemplateVersion extends BaseModel
 {
     use SoftDeletes, Updater;
 
-<<<<<<< HEAD
     /** @var string */
-=======
->>>>>>> laraxot/dev
     protected $connection = 'notify';
 
     /** @var list<string> */

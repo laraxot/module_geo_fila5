@@ -10,6 +10,11 @@ return [
             'error' => 'Errore durante la copia dei valutatori.',
             'confirm' => 'Vuoi copiare il campo valutatore_id da performance_individuale per tutte le righe con stesso anno, ente, matr, stabi?',
         ],
+        'copy_from_organizzativa' => [
+            'label' => 'Copia da organizzativa',
+            'tooltip' => 'Copia i dati da organizzativa',
+            'confirm' => 'Confermi la copia dei dati da organizzativa?',
+        ],
         'create' => [
             'label' => 'create',
             'icon' => 'create',
