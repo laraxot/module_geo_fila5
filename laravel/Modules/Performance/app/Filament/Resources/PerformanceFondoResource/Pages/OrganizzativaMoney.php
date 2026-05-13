@@ -45,33 +45,41 @@ class OrganizzativaMoney extends XotBaseViewRecord
         $year = (string) ($this->record->anno ?? 0);
         $type = 'dip';
         $class = Organizzativa::class;
-        app(ActionsPtv\Check\CheckValutatoreAction::class)->execute($class, $year, $type);
-        app(ActionsOrgaizzativa\UpdateGgAnnoAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateGgPresenzaDalalAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdatepercParttimepondDalal::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateAssenzeAction::class)->execute($year, $type);
+        // app(ActionsPtv\Check\CheckValutatoreAction::class)->execute($class, $year, $type);
+        app(ActionsPtv\Scheda\UpdateGgAnnoAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateGgPresenzaDalalAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateGgPresenzaDalalAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdatepercParttimepondDalal::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdatePercParttimepondDalalAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateAssenzeAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateAssenzeAction::class)->execute($class, $year, $type);
         // app(UpdateHaDirittoAction::class)->execute(Organizzativa::class, $year, 'dip');
-        app(ActionsOrgaizzativa\UpdateQuotaTeoricaAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateBudgetAssegnatoAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateQuotaEffettivaAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateRestiAction::class)->execute($year, $type);
+        // app(ActionsOrgaizzativa\UpdateQuotaTeoricaAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateQuotaTeoricaAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateBudgetAssegnatoAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateBudgetAssegnatoAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateQuotaEffettivaAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateQuotaEffettivaAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateRestiAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateRestiAction::class)->execute($class, $year, $type);
         // app(ActionsOrgaizzativa\UpdateTotStabiAction::class)->execute($year, 'dip');
         // app(ActionsOrgaizzativa\UpdateRestiPondAction::class)->execute($year, 'dip');
-        app(ActionsOrgaizzativa\UpdateTotValutatoreIdAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\UpdateRestiPondByValutatoreIdAction::class)->execute($year, $type);
+        // app(ActionsOrgaizzativa\UpdateTotValutatoreIdAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateTotValutatoreIdAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\UpdateRestiPondByValutatoreIdAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateRestiPondByValutatoreIdAction::class)->execute($class, $year, $type);
 
         // app(ActionsOrgaizzativa\UpdateImportoTotaleAction::class)->execute($year, 'dip');
-        app(ActionsOrgaizzativa\UpdateImportoTotaleByValutatoreIdAction::class)->execute($year, $type);
-        app(ActionsOrgaizzativa\CheckSumAction::class)->execute($year, $type);
-
-        
+        // app(ActionsOrgaizzativa\UpdateImportoTotaleByValutatoreIdAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\UpdateImportoTotaleByValutatoreIdAction::class)->execute($class, $year, $type);
+        // app(ActionsOrgaizzativa\CheckSumAction::class)->execute($year, $type);
+        app(ActionsPtv\Scheda\CheckSumAction::class)->execute($class, $year, $type);
 
         return [
             'title' => 'Organizzativa Money',
             'icon' => 'heroicon-o-currency-euro',
             'year' => $year,
             'type' => $type,
-           
         ];
     }
 }
