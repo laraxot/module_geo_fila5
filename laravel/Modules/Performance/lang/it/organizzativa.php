@@ -151,6 +151,56 @@ return [
             'icon' => 'refresh',
             'tooltip' => 'refresh',
         ],
+        'cancel' => [
+            'tooltip' => 'cancel',
+            'label' => 'cancel',
+            'icon' => 'cancel',
+        ],
+        'last_data_assunz' => [
+            'tooltip' => 'last_data_assunz',
+            'label' => 'last_data_assunz',
+            'icon' => 'last_data_assunz',
+        ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'icon' => 'gg_anno',
+            'tooltip' => 'gg_anno',
+        ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'icon' => 'gg_effettuati',
+            'tooltip' => 'gg_effettuati',
+        ],
+        'posiz' => [
+            'label' => 'posiz',
+            'icon' => 'posiz',
+            'tooltip' => 'posiz',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'icon' => 'gg_assenza_anno',
+            'tooltip' => 'gg_assenza_anno',
+        ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
+        ],
+        'gg_presenza_dalal' => [
+            'label' => 'gg_presenza_dalal',
+            'icon' => 'gg_presenza_dalal',
+            'tooltip' => 'gg_presenza_dalal',
+        ],
+        'gg_assenza_dalal' => [
+            'label' => 'gg_assenza_dalal',
+            'icon' => 'gg_assenza_dalal',
+            'tooltip' => 'gg_assenza_dalal',
+        ],
+        'hh_assenza_dalal' => [
+            'label' => 'hh_assenza_dalal',
+            'icon' => 'hh_assenza_dalal',
+            'tooltip' => 'hh_assenza_dalal',
+        ],
     ],
     'model' => [
         'label' => 'organizzativa.model',
@@ -190,6 +240,9 @@ return [
         ],
         'gg_presenza_dalal' => [
             'label' => 'gg_presenza_dalal',
+            'placeholder' => 'gg_presenza_dalal',
+            'helper_text' => 'gg_presenza_dalal',
+            'description' => 'gg_presenza_dalal',
         ],
         'gg_assenza_dalal' => [
             'label' => 'gg_assenza_dalal',
@@ -362,6 +415,30 @@ return [
             'helper_text' => 'al',
             'description' => 'al',
         ],
+        'gg_anno' => [
+            'label' => 'gg_anno',
+            'placeholder' => 'gg_anno',
+            'helper_text' => 'gg_anno',
+            'description' => 'gg_anno',
+        ],
+        'gg_effettuati' => [
+            'label' => 'gg_effettuati',
+            'placeholder' => 'gg_effettuati',
+            'helper_text' => 'gg_effettuati',
+            'description' => 'gg_effettuati',
+        ],
+        'gg_assenza_anno' => [
+            'label' => 'gg_assenza_anno',
+            'placeholder' => 'gg_assenza_anno',
+            'helper_text' => 'gg_assenza_anno',
+            'description' => 'gg_assenza_anno',
+        ],
+        'last_data_assunz' => [
+            'label' => 'last_data_assunz',
+            'placeholder' => 'last_data_assunz',
+            'helper_text' => 'last_data_assunz',
+            'description' => 'last_data_assunz',
+        ],
     ],
     'label' => 'organizzativa',
     'sections' => [
@@ -388,6 +465,10 @@ return [
         'assenze' => [
             'label' => 'assenze',
             'heading' => 'assenze',
+        ],
+        'criteri' => [
+            'label' => 'criteri',
+            'heading' => 'criteri',
         ],
     ],
 ];

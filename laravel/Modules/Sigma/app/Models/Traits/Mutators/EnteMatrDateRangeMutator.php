@@ -70,7 +70,7 @@ trait EnteMatrDateRangeMutator
      * Metodo separato per il calcolo complesso.
      * Questo mantiene l'accessore pulito e leggibile (Livello 4).
      */
-    protected function getPercPTimeDaterange(): float
+    public function getPercPTimeDaterange(): float
     {
         $rows = $this->qua00fDaterange();
         if ($rows === null) {
@@ -140,7 +140,7 @@ trait EnteMatrDateRangeMutator
      * Metodo separato per il calcolo complesso.
      * Questo mantiene l'accessore pulito e leggibile (Livello 4).
      */
-    protected function getPercParttimeDalal(): ?float
+    public function getPercParttimeDalal(): ?float
     {
         $date_min = $this->dal;
         $date_max = $this->al;
@@ -221,7 +221,7 @@ trait EnteMatrDateRangeMutator
      * Metodo separato per il calcolo complesso.
      * Questo mantiene l'accessore pulito e leggibile (Livello 4).
      */
-    protected function getGgParttimevertDalal(): ?float
+    public function getGgParttimevertDalal(): ?float
     {
         $date_min = $this->dal;
         $date_max = $this->al;
@@ -251,7 +251,7 @@ trait EnteMatrDateRangeMutator
         return is_numeric($value) ? (float) $value : null;
     }
 
-    protected function getGgPresenzaDalal(): ?int
+    public function getGgPresenzaDalal(): ?int
     {
         $date_min = $this->dal;
         $date_max = $this->al;
@@ -345,7 +345,7 @@ trait EnteMatrDateRangeMutator
      * Metodo separato per il calcolo complesso.
      * Questo mantiene l'accessore pulito e leggibile (Livello 4).
      */
-    protected function getCategoriaEco(): ?string
+    public function getCategoriaEco(): ?string
     {
         if ($this->matr === null) {
             return null;

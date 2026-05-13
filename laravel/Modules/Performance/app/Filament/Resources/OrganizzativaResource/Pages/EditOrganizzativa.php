@@ -16,10 +16,5 @@ class EditOrganizzativa extends XotBaseEditRecord
 {
     protected static string $resource = OrganizzativaResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            'delete' => DeleteAction::make(),
-        ];
-    }
+    
 }

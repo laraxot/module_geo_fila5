@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits;
 
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Str;
+use Modules\Sigma\Models\Qua00f;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
-use Modules\Ptv\Models\Traits\HasMyLogs;
-use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Integparam;
-use Modules\Sigma\Models\Qua00f;
+use Modules\Sigma\Datas\GgFilterData;
+use Illuminate\Support\Facades\Schema;
+use Modules\Ptv\Models\Traits\HasMyLogs;
+use Illuminate\Database\Schema\Blueprint;
+use Modules\Sigma\Models\Traits\Scopes\SchedaScope;
 use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
 use Modules\Sigma\Models\Traits\Mutators\SchedaMutator;
 use Modules\Sigma\Models\Traits\Relationships\SchedaRelationship;
-use Modules\Sigma\Models\Traits\Scopes\SchedaScope;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 
 /**
  * Modules\Sigma\Models\Traits\SigmaModelTrait.
@@ -36,6 +37,7 @@ trait SchedaTrait
     use SchedaRelationship; // → CommonRelationship, EnteMatr*Relationship, TquRelationship
     use SchedaScope; // → FunctionExtra, MassExtra, Helper inline
     use HasMyLogs;
+    use EnteMatrDateRangeMutator;
 
     // -------------
     // ⚡ HELPER METHODS: Migrated to SchedaHelper.php (703 lines)

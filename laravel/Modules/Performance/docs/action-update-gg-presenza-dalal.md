@@ -15,7 +15,7 @@ La formula vera di `gg_presenza_dalal` **non** vive in questa action.
 
 La sorgente di verita' e':
 
-- il modello `Modules\Performance\Models\Organizzativa`
+- `Modules\Performance\Models\Organizzativa` estende `BaseIndividualeModel`, che usa il trait Sigma `EnteMatrDateRangeMutator` (nessun trait duplicato sulla figlia: DRY)
 - il mutator Sigma `EnteMatrDateRangeMutator`
 - la relazione `qua00f()`
 - lo scope `withDays(...)`
