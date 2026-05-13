@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Actions\Maps;
 
 use Illuminate\Database\Eloquent\Collection;
-use Modules\Geo\Datas\Map\GeoMapLayerConfigData;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 
@@ -38,26 +37,10 @@ class BuildGeoMapWidgetPayloadAction
                 ],
             ],
             layerConfig: [
-                GeoMapLayerConfigData::from([
-                    'key' => 'cluster',
-                    'label' => 'Cluster',
-                    'enabled' => true,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'points',
-                    'label' => 'Points',
-                    'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'heatmap',
-                    'label' => 'Heatmap',
-                    'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'zones',
-                    'label' => 'Zones',
-                    'enabled' => false,
-                ])->toArray(),
+                ['key' => 'cluster', 'label' => 'Cluster', 'enabled' => true],
+                ['key' => 'points', 'label' => 'Points', 'enabled' => false],
+                ['key' => 'heatmap', 'label' => 'Heatmap', 'enabled' => false],
+                ['key' => 'zones', 'label' => 'Zones', 'enabled' => false],
             ],
             meta: [
                 'totalFeatures' => \count($features),
@@ -116,10 +99,10 @@ class BuildGeoMapWidgetPayloadAction
         $address = $place->getFormattedAddress();
         $description = \is_string($place->description ?? null) ? $place->description : '';
         $search = trim(strtolower(implode(' ', array_filter([
-            $title,
-            $category,
-            $address,
-            $description,
+            (string) $title,
+            (string) $category,
+            (string) $address,
+            (string) $description,
         ]))));
 
         return [
@@ -150,8 +133,7 @@ class BuildGeoMapWidgetPayloadAction
     }
 
     /**
-     * @param Collection<int, Place> $places
-     *
+     * @param  Collection<int, Place>  $places
      * @return array{lat: float, lng: float}
      */
     private function resolveCenter(Collection $places): array
@@ -173,16 +155,16 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-        if (\is_string($title) && '' !== trim($title)) {
+        if (\is_string($title) && trim($title) !== '') {
             return trim($title);
         }
 
         $formattedAddress = $place->getFormattedAddress();
 
-        if ('' !== $formattedAddress) {
+        if ($formattedAddress !== '') {
             return $formattedAddress;
         }
 
-        return 'Place #'.$place->getKey();
+        return 'Place #'.(string) $place->getKey();
     }
 }

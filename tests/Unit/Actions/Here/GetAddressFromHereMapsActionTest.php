@@ -12,7 +12,7 @@ use Modules\Geo\Actions\Here\GetAddressFromHereMapsAction;
 use Modules\Geo\Datas\AddressData;
 
 beforeEach(function () {
-    $this->action = new GetAddressFromHereMapsAction();
+    $this->action = new GetAddressFromHereMapsAction;
 });
 
 it('throws exception when api key is not configured', function (): void {

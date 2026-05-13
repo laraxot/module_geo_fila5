@@ -11,7 +11,8 @@ use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Tests\TestCase;
 
 beforeEach(function () {
-    $this->baseModel = new class extends BaseModel {
+    $this->baseModel = new class extends BaseModel
+    {
         protected $table = 'test_geo_table';
     };
 });
