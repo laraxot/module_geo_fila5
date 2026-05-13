@@ -13,7 +13,7 @@ use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 
 beforeEach(function () {
-    $this->action = new GetAddressFromMapboxLatLngAction();
+    $this->action = new GetAddressFromMapboxLatLngAction;
 });
 
 it('throws exception for invalid latitude below -90', function (): void {

@@ -13,27 +13,27 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
- * @property int                  $id
- * @property string|null          $model_type
- * @property string|null          $model_id
- * @property string|null          $name
- * @property float|null           $lat
- * @property float|null           $lng
- * @property string|null          $street
- * @property string|null          $city
- * @property string|null          $state
- * @property string|null          $zip
- * @property string|null          $formatted_address
- * @property string|null          $description
- * @property bool|null            $processed
- * @property Carbon|null          $created_at
- * @property Carbon|null          $updated_at
- * @property string|null          $updated_by
- * @property string|null          $created_by
- * @property string|null          $deleted_at
- * @property string|null          $deleted_by
+ * @property int $id
+ * @property string|null $model_type
+ * @property string|null $model_id
+ * @property string|null $name
+ * @property float|null $lat
+ * @property float|null $lng
+ * @property string|null $street
+ * @property string|null $city
+ * @property string|null $state
+ * @property string|null $zip
+ * @property string|null $formatted_address
+ * @property string|null $description
+ * @property bool|null $processed
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
  * @property ProfileContract|null $creator
- * @property array                $location
+ * @property array $location
  * @property ProfileContract|null $updater
  *
  * @method static Builder<static>|Location newModelQuery()
@@ -109,9 +109,9 @@ class Location extends BaseModel
      */
     public function scopeWithinDistance(Builder $query, float $latitude, float $longitude, float $distanceInKm): Builder
     {
-        $haversine = "(6371 * acos(cos(radians({$latitude})) * cos(radians(lat)) * cos(radians(lng) - radians({$longitude})) + sin(radians({$latitude})) * sin(radians(lat))))";
+        $haversine = '(6371 * acos(cos(radians(?)) * cos(radians(lat)) * cos(radians(lng) - radians(?)) + sin(radians(?)) * sin(radians(lat))))';
 
-        return $query->whereRaw("{$haversine} <= ?", [$distanceInKm]);
+        return $query->whereRaw("{$haversine} <= ?", [$latitude, $longitude, $latitude, $distanceInKm]);
     }
 
     /**

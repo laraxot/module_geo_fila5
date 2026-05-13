@@ -8,11 +8,6 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
-/**
- * @extends XotBaseResourceTable
- *
- * @return array<string, Column>
- */
 class LocationsTable extends XotBaseResourceTable
 {
     /**
