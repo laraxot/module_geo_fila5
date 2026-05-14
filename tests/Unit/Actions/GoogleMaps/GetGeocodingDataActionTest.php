@@ -15,7 +15,7 @@ use Modules\Geo\Actions\GoogleMaps\GetGeocodingDataAction;
 use Modules\Geo\Datas\GeocodingData;
 
 beforeEach(function () {
-    $this->mockHandler = new MockHandler();
+    $this->mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($this->mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $this->action = new GetGeocodingDataAction($client);

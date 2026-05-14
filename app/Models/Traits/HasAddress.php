@@ -46,7 +46,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-        if (null === $res) {
+        if ($res === null) {
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -66,7 +66,7 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
         $address = sprintf(
@@ -87,13 +87,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-        if (null === $address) {
+        if ($address === null) {
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-        if (null === $locality) {
+        if ($locality === null) {
             return null;
         }
 
@@ -197,13 +197,13 @@ trait HasAddress
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-     * @param array<string, mixed> $data
-     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
+     * @param  array<string, mixed>  $data
+     * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
      */
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
         // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-        if ($setPrimary || 0 === $this->addresses()->count()) {
+        if ($setPrimary || $this->addresses()->count() === 0) {
             $data['is_primary'] = true;
 
             // Rimuovi il flag is_primary da tutti gli altri indirizzi
@@ -212,13 +212,14 @@ trait HasAddress
             }
         }
 
+        /* @phpstan-ignore return.type */
         return $this->addresses()->create($data);
     }
 
     /**
      * Aggiorna l'indirizzo principale.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function updatePrimaryAddress(array $data): ?Address
     {
@@ -275,8 +276,10 @@ trait HasAddress
 
     /**
      * Initialize the trait.
+     *
+     * @return void
      */
-    protected function initializeHasAddress(): void
+    protected function initializeHasAddress()
     {
         // Automatically create a random token
         /** @var array<int, string> $fields */

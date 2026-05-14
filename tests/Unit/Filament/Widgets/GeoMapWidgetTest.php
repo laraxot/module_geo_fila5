@@ -15,7 +15,7 @@ test('geo map widget extends xot base widget', function () {
 });
 
 test('geo map widget exposes expected view', function () {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
 
     expect($widget->render()->name())->toBe('geo::filament.widgets.geo-map-widget');
 });
@@ -36,10 +36,9 @@ test('geo map widget returns payload data object', function () {
 
     $this->app->bind(
         BuildGeoMapWidgetPayloadAction::class,
-        static fn (): object => new class($payload) {
-            public function __construct(private readonly GeoMapWidgetData $payload)
-            {
-            }
+        static fn (): object => new class($payload)
+        {
+            public function __construct(private readonly GeoMapWidgetData $payload) {}
 
             public function execute(): GeoMapWidgetData
             {
@@ -48,7 +47,7 @@ test('geo map widget returns payload data object', function () {
         }
     );
 
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
 
     expect($widget->getPayload())->toBeInstanceOf(GeoMapWidgetData::class);
 });
