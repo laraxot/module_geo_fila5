@@ -15,14 +15,14 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
- * @property int                       $id
- * @property string|null               $name
- * @property ProfileContract|null      $creator
+ * @property int $id
+ * @property string|null $name
+ * @property ProfileContract|null $creator
  * @property Collection<int, Province> $provinces
- * @property int|null                  $provinces_count
- * @property ProfileContract|null      $updater
+ * @property int|null $provinces_count
+ * @property ProfileContract|null $updater
  *
- * @method static RegionFactory          factory($count = null, $state = [])
+ * @method static RegionFactory factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
  * @method static Builder<static>|Region newQuery()
  * @method static Builder<static>|Region query()
@@ -47,6 +47,8 @@ class Region extends BaseModel
 
     /**
      * The data type of the primary key ID.
+     *
+     * @var string
      */
     protected $keyType = 'integer';
 
