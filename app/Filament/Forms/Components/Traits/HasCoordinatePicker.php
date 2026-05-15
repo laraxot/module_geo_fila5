@@ -224,7 +224,7 @@ trait HasCoordinatePicker
                 return [];
             }
 
-            $data = array_filter($data, fn($item): bool => \is_array($item));
+            $data = array_filter($data, fn ($item): bool => \is_array($item));
 
             /** @var array<int, array<string, mixed>> $data */
             return array_values($data);
@@ -270,15 +270,26 @@ trait HasCoordinatePicker
 
             return [
                 'display_name' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'address' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'provider' => 'nominatim',
+                'place_id' => $data['place_id'] ?? null,
+                'osm_type' => $data['osm_type'] ?? null,
+                'osm_id' => $data['osm_id'] ?? null,
+                'licence' => $data['licence'] ?? null,
+                'importance' => is_numeric($data['importance'] ?? null) ? (float) $data['importance'] : null,
+                'type' => $data['type'] ?? null,
+                'class' => $data['category'] ?? $data['class'] ?? null,
+                'boundingbox' => isset($data['boundingbox']) && \is_array($data['boundingbox']) ? $data['boundingbox'] : null,
                 'street' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
                 'street_number' => self::firstString($address, ['house_number', 'street_number']),
-                'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'county']),
+                'zip' => self::firstString($address, ['postcode']),
                 'postcode' => self::firstString($address, ['postcode']),
+                'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'hamlet', 'county']),
+                'suburb' => self::firstString($address, ['suburb', 'neighbourhood', 'quarter', 'city_district']),
+                'province' => self::firstString($address, ['province', 'county', 'state_district']),
                 'state' => self::firstString($address, ['state', 'region']),
-                'province' => self::firstString($address, ['province', 'county']),
                 'country' => self::firstString($address, ['country']),
                 'country_code' => self::firstString($address, ['country_code']),
-                'suburb' => self::firstString($address, ['suburb', 'neighbourhood', 'quarter', 'city_district']),
                 'structured' => [
                     'road' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
                     'house_number' => self::firstString($address, ['house_number', 'street_number']),
@@ -288,6 +299,7 @@ trait HasCoordinatePicker
                     'country' => self::firstString($address, ['country']),
                     'city_district' => self::firstString($address, ['city_district', 'suburb', 'neighbourhood', 'quarter']),
                 ],
+                'address_details' => $address,
                 'raw' => $data,
             ];
         } catch (\Throwable) {

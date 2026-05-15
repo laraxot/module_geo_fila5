@@ -32,10 +32,28 @@ export function scheduleLeafletInvalidate(host, map, redrawFn) {
                                 return;
                         }
 
-                        map.invalidateSize({ animate: false, pan: false });
+                        map.invalidateSize({ animate: false });
+                        recenterOnMarkerAfterResize(host, map, delay);
                         redrawFn();
                 }, delay);
         });
+}
+
+function recenterOnMarkerAfterResize(host, map, delay) {
+        if (!host._shouldRecenterAfterResize || !host._marker) {
+                return;
+        }
+
+        const markerLatLng = host._marker.getLatLng?.();
+        if (!markerLatLng) {
+                return;
+        }
+
+        map.setView(markerLatLng, map.getZoom(), { animate: false });
+
+        if (delay >= 800) {
+                host._shouldRecenterAfterResize = false;
+        }
 }
 
 export function refreshMapSize(host) {

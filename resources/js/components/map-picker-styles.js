@@ -1,4 +1,5 @@
-import { css, html } from 'lit';
+import { css } from 'lit';
+import { geoIcon } from './geo-heroicons.js';
 
 export const mapPickerStyles = css`
     :host {
@@ -26,7 +27,6 @@ export const mapPickerStyles = css`
         left: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
-<<<<<<< HEAD
         z-index: var(--mp-fullscreen-z-index, 999999) !important;
         border-radius: 0 !important;
     }
@@ -34,9 +34,6 @@ export const mapPickerStyles = css`
     .map-container:fullscreen {
         width: 100vw !important;
         height: 100vh !important;
-=======
-        z-index: var(--mp-fullscreen-z-index) !important;
->>>>>>> c3b9b5924 (.)
         border-radius: 0 !important;
     }
 
@@ -48,7 +45,6 @@ export const mapPickerStyles = css`
         opacity: 1;
     }
 
-<<<<<<< HEAD
     .map-picker-leaflet-pane .leaflet-container,
     .map-picker-leaflet-pane .leaflet-pane,
     .map-picker-leaflet-pane .leaflet-layer,
@@ -58,13 +54,10 @@ export const mapPickerStyles = css`
         filter: none !important;
     }
 
-=======
->>>>>>> c3b9b5924 (.)
     .layer-controls-overlay {
         position: absolute;
         top: 1rem;
         left: 1rem;
-<<<<<<< HEAD
         z-index: 3001 !important;
         display: flex !important;
         flex-direction: column;
@@ -72,12 +65,6 @@ export const mapPickerStyles = css`
         opacity: 1 !important;
         visibility: visible !important;
         pointer-events: auto !important;
-=======
-        z-index: var(--mp-overlay-z-index);
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
->>>>>>> c3b9b5924 (.)
     }
 
     .ctrl-btn {
@@ -94,14 +81,10 @@ export const mapPickerStyles = css`
         box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
-<<<<<<< HEAD
         opacity: 1 !important;
         visibility: visible !important;
         position: relative;
         z-index: 3002;
-=======
-        opacity: 1;
->>>>>>> c3b9b5924 (.)
     }
 
     .ctrl-btn:hover {
@@ -116,7 +99,6 @@ export const mapPickerStyles = css`
         height: 1.25rem !important;
     }
 
-<<<<<<< HEAD
     .ctrl-btn .ctrl-fallback {
         display: none;
         font-size: 1rem;
@@ -124,24 +106,21 @@ export const mapPickerStyles = css`
         line-height: 1;
     }
 
-    .ctrl-btn:not(:has(svg)) .ctrl-fallback {
+    .ctrl-btn.no-svg .ctrl-fallback {
         display: inline-block;
     }
 
-=======
->>>>>>> c3b9b5924 (.)
+    .ctrl-btn svg {
+        display: block;
+    }
+
     .search-box {
         position: absolute;
         top: 1rem;
         right: 1rem;
-<<<<<<< HEAD
         z-index: var(--mp-overlay-z-index, 1000);
         display: flex;
         flex-wrap: wrap;
-=======
-        z-index: var(--mp-overlay-z-index);
-        display: flex;
->>>>>>> c3b9b5924 (.)
         gap: 0.5rem;
         background: rgba(255, 255, 255, 0.9);
         padding: 0.5rem;
@@ -149,24 +128,17 @@ export const mapPickerStyles = css`
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         max-width: 300px;
-<<<<<<< HEAD
         width: min(300px, calc(100% - 5rem));
         align-items: center;
     }
 
     .search-box input {
         flex: 1;
-=======
-    }
-
-    .search-box input {
->>>>>>> c3b9b5924 (.)
         border: 1px solid #d1d5db;
         border-radius: 0.5rem;
         padding: 0.5rem 0.75rem;
         font-size: 0.875rem;
         width: 100%;
-<<<<<<< HEAD
         min-width: 0;
         outline: none;
         color: #17324d;
@@ -224,40 +196,26 @@ export const mapPickerStyles = css`
     .map-container.is-fullscreen .layer-controls-overlay,
     .map-container.is-fullscreen .search-box {
         z-index: 3002 !important;
-=======
-        outline: none;
->>>>>>> c3b9b5924 (.)
     }
 
     .loading-overlay {
         position: absolute;
         inset: 0;
         background: rgba(255, 255, 255, 0.7);
-<<<<<<< HEAD
         display: none;
-=======
-        display: flex;
->>>>>>> c3b9b5924 (.)
         align-items: center;
         justify-content: center;
         z-index: 2000;
         opacity: 0;
-<<<<<<< HEAD
         visibility: hidden;
-=======
->>>>>>> c3b9b5924 (.)
         pointer-events: none;
         transition: opacity 0.3s;
     }
 
     .loading-overlay.active {
-<<<<<<< HEAD
         display: flex;
         opacity: 1;
         visibility: visible;
-=======
-        opacity: 1;
->>>>>>> c3b9b5924 (.)
         pointer-events: auto;
     }
 
@@ -278,11 +236,17 @@ export const mapPickerStyles = css`
         font-family: inherit;
     }
 
-    .map-picker-marker {
+    .leaflet-marker-icon.map-picker-marker {
+        background: transparent;
+        border: 0;
+    }
+
+    .map-picker-marker,
+    .map-picker-marker__inner {
         display: block;
-        width: 32px;
-        height: 45px;
-        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        width: 44px;
+        height: 56px;
+        filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.32));
     }
 
     .map-picker-marker svg {
@@ -290,7 +254,6 @@ export const mapPickerStyles = css`
         height: 100%;
         display: block;
     }
-<<<<<<< HEAD
 
     /* Cluster Circle - farmshops.eu style for zoom < 8 */
     .circle, .geo-cluster-circle {
@@ -409,8 +372,6 @@ export const mapPickerStyles = css`
         background: #3a8fb3;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-=======
->>>>>>> c3b9b5924 (.)
 `;
 
 // Light DOM components cannot rely on Lit static styles.
@@ -420,11 +381,11 @@ export const mapPickerStylesText = mapPickerStyles.cssText;
 // controlIcons: name mapping → geoIcon() in geo-heroicons.js
 // DEPRECATED: use geoIcon('name') directly in templates
 export const controlIcons = {
-    zoomIn: 'plus',
-    zoomOut: 'minus',
-    fullscreen: 'arrows-pointing-out',
-    fullscreenExit: 'arrows-pointing-in',
-    locate: 'map-pin',
-    layer: 'squares-2x2',
-    crosshair: 'map-pin',
+    zoomIn: geoIcon('plus'),
+    zoomOut: geoIcon('minus'),
+    fullscreen: geoIcon('arrows-pointing-out'),
+    fullscreenExit: geoIcon('arrows-pointing-in'),
+    locate: geoIcon('map-pin'),
+    layer: geoIcon('squares-2x2'),
+    crosshair: geoIcon('map-pin'),
 };

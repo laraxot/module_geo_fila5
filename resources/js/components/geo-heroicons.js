@@ -1,8 +1,5 @@
 import { html } from 'lit';
-<<<<<<< HEAD
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-=======
->>>>>>> c3b9b5924 (.)
 import magnifyingGlassSvg from '../../svg/magnifying-glass.svg?raw';
 import arrowsPointingOutSvg from '../../svg/arrows-pointing-out.svg?raw';
 import arrowsPointingInSvg from '../../svg/arrows-pointing-in.svg?raw';
@@ -10,13 +7,13 @@ import mapPinSvg from '../../svg/map-pin.svg?raw';
 import squares2x2Svg from '../../svg/squares-2x2.svg?raw';
 import plusSvg from '../../svg/plus.svg?raw';
 import minusSvg from '../../svg/minus.svg?raw';
+import xMarkSvg from '../../svg/x-mark.svg?raw';
 
 /**
  * geo-heroicons.js — "Filament way" icon system for Lit components.
  * Icons referenced by Heroicons name, mirroring <x-heroicon-o-NAME> Blade pattern.
  * SVG files loaded from ../../svg/ via Vite ?raw import.
  * Usage: geoIcon('magnifying-glass') → Lit html template
-<<<<<<< HEAD
  *
  * FIX 2026-04-28: usa unsafeHTML() perché raw SVG string interpolata con html``
  * viene HTML-escaped da Lit (sicurezza XSS) → SVG appare come testo grezzo.
@@ -29,17 +26,7 @@ const icons = {
     'squares-2x2': html`${unsafeHTML(squares2x2Svg)}`,
     'plus': html`${unsafeHTML(plusSvg)}`,
     'minus': html`${unsafeHTML(minusSvg)}`,
-=======
- */
-const icons = {
-    'magnifying-glass': html`${magnifyingGlassSvg}`,
-    'arrows-pointing-out': html`${arrowsPointingOutSvg}`,
-    'arrows-pointing-in': html`${arrowsPointingInSvg}`,
-    'map-pin': html`${mapPinSvg}`,
-    'squares-2x2': html`${squares2x2Svg}`,
-    'plus': html`${plusSvg}`,
-    'minus': html`${minusSvg}`,
->>>>>>> c3b9b5924 (.)
+    'x-mark': html`${unsafeHTML(xMarkSvg)}`,
 };
 
 export function geoIcon(name) {

@@ -11,7 +11,7 @@ import { geoIcon } from './geo-heroicons.js';
  */
 export function renderControls(ctx) {
     const l = ctx.labels || {};
-    const hasSearchToggle = typeof ctx._toggleSearch === 'function';
+    const hasSearchToggle = Boolean(ctx.showSearch) && typeof ctx._toggleSearch === 'function';
 
     return html`
         <div class="layer-controls-overlay">
@@ -81,6 +81,13 @@ export function switchLayer(ctx) {
 export async function toggleFullscreen(ctx) {
     const container = getMapContainer(ctx);
     const entering = !ctx.isFullscreen;
+    
+    console.log('[map-controls] Toggling fullscreen - entering:', entering, 'container:', container ? 'found' : 'not found');
+    
+    if (!container) {
+        console.error('[map-controls] Cannot toggle fullscreen: container not found');
+        return;
+    }
 
     if (entering) {
         ctx._previousBodyOverflow = document.body.style.overflow || '';
@@ -88,15 +95,32 @@ export async function toggleFullscreen(ctx) {
         document.documentElement.classList.add('geo-map-fullscreen-active');
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
-
-        if (container?.requestFullscreen && !document.fullscreenElement) {
-            await container.requestFullscreen().catch(() => undefined);
+        
+        console.log('[map-controls] Attempting to enter fullscreen...');
+        if (container.requestFullscreen && !document.fullscreenElement) {
+            try {
+                await container.requestFullscreen();
+                console.log('[map-controls] Successfully entered fullscreen');
+            } catch (error) {
+                console.error('[map-controls] Failed to enter fullscreen:', error);
+                restoreFullscreenDocumentState(ctx);
+            }
+        } else {
+            console.log('[map-controls] Already in fullscreen or requestFullscreen not available');
         }
     } else {
+        console.log('[map-controls] Exiting fullscreen...');
         if (document.fullscreenElement && document.exitFullscreen) {
-            await document.exitFullscreen().catch(() => undefined);
+            try {
+                await document.exitFullscreen();
+                console.log('[map-controls] Successfully exited fullscreen');
+            } catch (error) {
+                console.error('[map-controls] Failed to exit fullscreen:', error);
+            }
+        } else {
+            console.log('[map-controls] Not in fullscreen or exitFullscreen not available');
         }
-
+        
         restoreFullscreenDocumentState(ctx);
     }
 
@@ -115,12 +139,16 @@ export async function toggleFullscreen(ctx) {
 export function syncFullscreenState(ctx) {
     const container = getMapContainer(ctx);
     const active = document.fullscreenElement === container;
+    
+    console.log('[map-controls] Syncing fullscreen state - container:', container ? 'found' : 'not found', 'active:', active, 'ctx.isFullscreen:', ctx.isFullscreen);
 
     if (document.fullscreenElement && !active) {
+        console.log('[map-controls] Different element is fullscreen, ignoring');
         return;
     }
 
     if (ctx.isFullscreen !== active) {
+        console.log('[map-controls] Updating fullscreen state from', ctx.isFullscreen, 'to', active);
         ctx.isFullscreen = active;
         ctx.requestUpdate?.();
     }
@@ -157,44 +185,74 @@ export function zoomOut(ctx) {
  */
 export function requestGeolocation(ctx, options = {}) {
     const { showLoading = true } = options;
-
-    if (!navigator.geolocation || ctx.isLocating || ctx._geolocRequested) return;
+    
+    if (!navigator.geolocation) {
+        console.error('[map-controls] Geolocation not supported by browser');
+        return;
+    }
+    
+    if (ctx.isLocating) {
+        console.warn('[map-controls] Geolocation already in progress');
+        return;
+    }
+    
+    if (ctx._geolocRequested && !showLoading) {
+        console.warn('[map-controls] Geolocation already requested, skipping duplicate request');
+        return;
+    }
+    
     ctx._geolocRequested = true;
-
+    console.log('[map-controls] Starting geolocation request...');
+    
     if (showLoading) {
         ctx.isLocating = true;
         ctx.requestUpdate();
     }
-
+    
     navigator.geolocation.getCurrentPosition(
         (pos) => {
+            console.log('[map-controls] Geolocation success:', pos.coords);
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
+            
             if (typeof ctx._handleMapInteraction === 'function') {
+                console.log('[map-controls] Calling _handleMapInteraction with:', lat, lng);
                 ctx._handleMapInteraction(lat, lng, 'geolocation');
+            } else {
+                console.error('[map-controls] _handleMapInteraction method not found');
             }
-
+            
+            ctx.geolocated = true;
+            
             if (showLoading) {
                 ctx.isLocating = false;
                 ctx.requestUpdate();
             }
-
+            
             if (ctx._map) {
-                const locateZoom = 12;
+                const locateZoom = Number.isFinite(ctx.zoom) ? Math.max(ctx.zoom, 14) : 15;
+                console.log('[map-controls] Centering map on user location:', lat, lng, 'zoom:', locateZoom);
                 ctx._map.setView([lat, lng], locateZoom, { animate: false });
                 ctx._isUserCentered = true;
                 refreshMapSize(ctx, [150]);
+            } else {
+                console.error('[map-controls] Map not available for centering');
             }
         },
-        () => {
+        (error) => {
+            console.error('[map-controls] Geolocation error:', error);
+            ctx._geolocRequested = false;
             if (showLoading) {
                 ctx.isLocating = false;
                 ctx.requestUpdate();
             }
-
             ctx.geolocated = false;
         },
-        { enableHighAccuracy: true, timeout: 5000 }
+        { 
+            enableHighAccuracy: true, 
+            timeout: 10000, // Increased timeout from 5s to 10s
+            maximumAge: 300000 // 5 minutes cache
+        }
     );
 }
 
