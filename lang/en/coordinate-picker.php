@@ -3,15 +3,19 @@
 declare(strict_types=1);
 
 return [
-    'search_placeholder' => 'Search for a place...',
+    'search' => 'Search address',
+    'search_placeholder' => 'Search address',
+    'close_search' => 'Close search',
     'use_my_location' => 'Use my location',
     'locating' => 'Locating...',
     'no_position' => 'Click on the map to set the position',
     'latitude' => 'Latitude',
     'longitude' => 'Longitude',
+    'address' => 'Address',
     'city' => 'City',
     'fullscreen' => 'Fullscreen',
     'close_fullscreen' => 'Exit fullscreen',
+    'switch_layer' => 'Switch map layer',
     'zoom_in' => 'Zoom in',
     'zoom_out' => 'Zoom out',
     'address_found' => 'Address found',
