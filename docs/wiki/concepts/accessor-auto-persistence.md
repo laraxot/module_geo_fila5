@@ -77,6 +77,6 @@ Usare questo pattern quando un valore derivato è costoso da calcolare e deve es
 
 ## Vedi anche
 
-- [[BaseModel Pattern]] - Pattern di base per i modelli
-- [[Actions Over Services]] - Pattern di azioni invece di servizi
-- [[Accessor Mutator Pattern]] - Pattern completo per accessor e mutator
+- [BaseModel Pattern](../../../laravel/Modules/Xot/docs/wiki/BaseModel.md) — Pattern di base per i modelli
+- [Actions Over Services](actions-over-services.md) — Pattern di azioni invece di servizi
+- [Accessor zen level 3](accessor-zen-level-3.md) — Pattern completo per accessor e mutator

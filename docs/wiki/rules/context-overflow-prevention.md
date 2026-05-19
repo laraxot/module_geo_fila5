@@ -3,11 +3,13 @@ title: "Context Overflow Prevention — 262K Token Limit"
 type: "rule"
 tags: [context, tokens, windsurf, compaction, session]
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-19
 confidence: high
 ---
 
 # Context Overflow Prevention
+
+> **Nota:** narrativa aggiornata (AGENTS stub, MCP context-mode, recovery **Cursor «Compaction exhausted»**) in [context-overflow-prevention (concepts)](../concepts/context-overflow-prevention.md). Questa pagina resta focalizzata su OpenCode/Windsurf e sui pattern CLI.
 
 ## Problem
 
@@ -45,7 +47,7 @@ Project config now pins:
   "compaction": {
     "auto": true,
     "prune": true,
-    "reserved": 40000
+    "reserved": 56000
   }
 }
 ```
@@ -94,11 +96,18 @@ find_by_name(MaxDepth=3, max 20 results)
 grep_search(Includes=["*.php"], SearchPath="Modules/User/app/Policies/")
 ```
 
-### Emergency Recovery (overflow imminent)
+### Emergency Recovery
 
-1. Stop all tool calls
-2. Write 5-bullet summary to `docs/wiki/log.md`
-3. Start new conversation — paste summary as first message
+If the agent shows `Compaction exhausted: context still exceeds model limits after 3 attempts`:
+
+1. Stop all broad tool calls immediately.
+2. Write a short checkpoint to `docs/chat/<slug-argomento>.md` (goal, changed files, blockers, next command).
+3. Start a fresh session and load only: trigger map, relevant issue, checkpoint, and exact files needed.
+4. Use `qmd search --limit 5`; avoid semantic `qmd query` until the working set is small.
+5. Use `rg` only after `.rgignore` is present and with narrow patterns. Do not pass ignored directories (`.cursor`, `.claude`, `.opencode`, `docs/pdf`, `docs/raw/history`) as explicit search paths because that bypasses the safety intent.
+6. Disable unused MCP/tool providers in that session if the client supports it.
+
+Do not keep asking the runtime to compact a polluted context; once compaction fails, recovery is a fresh-session/checkpoint workflow.
 
 ## Session Size Heuristics
 

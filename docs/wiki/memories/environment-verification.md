@@ -31,5 +31,6 @@ updated: 2026-05-12
 - **Theme_One:** Appears to be a legacy or doc-only folder, needs clarification or cleanup.
 
 ## Linked Rules
-- [[llm-wiki-operational-discipline]]
-- [[on-demand-pattern]]
+
+- [llm-wiki-operational-discipline](../concepts/llm-wiki-operational-discipline.md)
+- [on-demand-pattern](../rules/on-demand-pattern.md)

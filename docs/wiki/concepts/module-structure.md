@@ -184,6 +184,6 @@ return [
 
 ## Vedi anche
 
-- [[BaseModel Pattern]] - Pattern di base per i modelli
-- [[Actions Over Services]] - Pattern di azioni invece di servizi
-- [[Translation System]] - Sistema di traduzione automatica
+- [BaseModel Pattern](../../../laravel/Modules/Xot/docs/wiki/BaseModel.md) — Pattern di base per i modelli
+- [Actions Over Services](actions-over-services.md) — Pattern di azioni invece di servizi
+- [Translation standards](../rules/translation-standards.md) — Sistema di traduzione automatica

@@ -37,3 +37,7 @@ _No comparisons synthesized yet._
 **Total Pages:** 3  
 **Total Raw Sources:** 3
 **Shared References:** 2
+
+## Shared Second Brain Discipline
+
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.

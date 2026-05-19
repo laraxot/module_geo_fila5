@@ -1,0 +1,32 @@
+{
+  "_comment": "Stack MCP minimo PTVX — copiare in .mcp.json (root) e/o .cursor/mcp.json. ${PWD} = root repo al launch. Non committare token in env.",
+  "mcpServers": {
+    "context-mode": {
+      "command": "context-mode",
+      "args": [],
+      "env": {}
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"],
+      "env": {}
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {}
+    },
+    "token-optimizer": {
+      "command": "npx",
+      "args": ["-y", "@ooples/token-optimizer-mcp"],
+      "env": {
+        "TOKEN_OPTIMIZER_CACHE_DIR": "${PWD}/.claude/token-optimizer-cache"
+      }
+    },
+    "laravel-boost": {
+      "command": "php",
+      "args": ["${PWD}/laravel/artisan", "boost:mcp"],
+      "env": {}
+    }
+  }
+}

@@ -109,8 +109,8 @@ related:
 ...content...
 
 See also:
-- [[Audit Module]] — Related auditing functionality
-- [[Notification Module]] — For event notifications
+- [Activity module](../../../laravel/Modules/Activity/docs/wiki/) — Related auditing functionality
+- [Notify module](../../../laravel/Modules/Notify/docs/wiki/) — For event notifications
 ```
 
 ## Best Practices
@@ -281,9 +281,9 @@ Index at the parent level:
 
 ## See Also
 
-- [[Context-Mode Plugin]] — How context-mode works
-- [[Context-Mode CLI Reference]] — Command reference
-- [[Second Brain Operating Model]] — Documentation philosophy
+- [Context-Mode Plugin](../concepts/context-mode-plugin.md) — How context-mode works
+- [Context-Mode CLI Reference](../concepts/context-mode-cli-reference.md) — Command reference
+- [Second Brain Operating Model](../concepts/second-brain-operating-model.md) — Documentation philosophy
 - Story 1.1 — Initialize Wiki Directory Structure
 
 ---

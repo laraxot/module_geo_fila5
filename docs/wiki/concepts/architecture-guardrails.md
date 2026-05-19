@@ -5,10 +5,10 @@ type: concept
 created: "2026-04-28T00:00:00Z"
 updated: "2026-04-28T00:00:00Z"
 related:
-  - "[[Project Home]]"
-  - "[[Module Structure]]"
-  - "[[Actions Over Services]]"
-  - "[[Second Brain Operating Model]]"
+  - "../ProjectHome.md"
+  - "module-structure.md"
+  - "actions-over-services.md"
+  - "second-brain-operating-model.md"
 references:
   - type: architecture
     module: User
@@ -91,6 +91,6 @@ Consult this page before:
 
 ## References
 
-- [[Actions Over Services]]
-- [[Module Structure]]
+- [Actions Over Services](actions-over-services.md)
+- [Module Structure](module-structure.md)
 - `../sources/root-architecture-docs.md`

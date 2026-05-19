@@ -1,7 +1,21 @@
+---
+title: "Documentation Template Standard"
+type: rule
+tags: [documentation, template, dry]
+created: 2026-04-01
+updated: 2026-05-20
+related:
+  - "../concepts/markdown-note-minimum-standard.md"
+  - "naming-conventions.md"
+---
+
 # Documentation Template Standard
 
+> **Minimum contract for all new wiki `.md`:** [markdown-note-minimum-standard](../concepts/markdown-note-minimum-standard.md) (HackerNoon [Tip 020](https://hackernoon.com/ai-coding-tip-020-create-a-second-brain)). This page covers layout folders; YAML + atomicity live in that concept.
+
 ## Purpose
-This template ensures all documentation follows DRY and KISS principles across the entire project.
+
+Documentation follows DRY and KISS across the project.
 
 ## Standard Structure
 

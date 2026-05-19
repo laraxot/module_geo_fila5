@@ -1,5 +1,10 @@
 ---
+title: "PTVX Wiki Entry Point"
+type: index
 qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architecture, modules, themes"
+related:
+  - "./rules/00-TRIGGER_MAP.md"
+  - "./concepts/markdown-note-minimum-standard.md"
 ---
 
 # PTVX Wiki Entry Point
@@ -46,6 +51,7 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [context-mode-cli-reference](./concepts/context-mode-cli-reference.md)
 - [spatie-permission-teams-laravel-13](./concepts/spatie-permission-teams-laravel-13.md)
 - [laravel-13-upgrade-analysis](./concepts/laravel-13-upgrade-analysis.md)
+- [markdown-note-minimum-standard](./concepts/markdown-note-minimum-standard.md)
 - [context-mode-usage](./concepts/context-mode-usage.md)
 
 ## How-To Guides
@@ -59,12 +65,14 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 ### Documentation Development
 - [module-wiki-documentation](./how-to/module-wiki-documentation.md)
 - [theme-wiki-documentation](./how-to/theme-wiki-documentation.md)
+- [github-issue-agent-discipline](./how-to/github-issue-agent-discipline.md)
 - [indexing-module-documentation](./how-to/indexing-module-documentation.md)
 - [using-wiki-templates](./how-to/using-wiki-templates.md)
 
 ### Development Tools and Patterns
 - [kilo-code-setup](./how-to/kilo-code-setup.md)
 - [context-mode-setup](./how-to/context-mode-setup.md)
+- [API limite contesto 131072](./how-to/api-context-length-exceeded-131072.md)
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md)
 - [wiki-search-performance](./how-to/wiki-search-performance.md)
 - [wiki-search-accessibility](./how-to/wiki-search-accessibility.md)

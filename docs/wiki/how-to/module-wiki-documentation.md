@@ -1,10 +1,18 @@
 ---
-name: Module Wiki Documentation Guide
-description: Step-by-step guide for creating and maintaining QMD-indexed documentation in module wikis
+title: "Module Wiki Documentation Guide"
 type: how-to
+tags: [module, wiki, qmd, second-brain]
+module: ptvx-project
 created: 2026-04-29
-updated: 2026-04-29
-related: [qmd-search-guide.md, indexing-module-documentation.md]
+updated: 2026-05-20
+qmd: "module wiki documentation, laravel module docs wiki structure"
+related:
+  - "qmd-search-guide.md"
+  - "indexing-module-documentation.md"
+  - "github-issue-agent-discipline.md"
+  - "../concepts/second-brain-operating-model.md"
+  - "../concepts/markdown-note-minimum-standard.md"
+  - "../sources/second-brain-external-benchmarks.md"
 references:
   - type: tooling
     module: Xot
@@ -20,6 +28,18 @@ references:
 # Module Wiki Documentation Guide
 
 Each Laravel module maintains its own wiki at `laravel/Modules/{ModuleName}/docs/wiki/`. This guide explains structure, indexing with QMD, and best practices.
+
+## Standard minimo ogni `.md`
+
+Ogni pagina nuova o revisione sostanziale in `docs/wiki/` del modulo deve seguire [Markdown Note Minimum Standard](../concepts/markdown-note-minimum-standard.md) (YAML + atomicità + `related` con path relativi). Fonte esterna: [HackerNoon — AI Coding Tip 020](https://hackernoon.com/ai-coding-tip-020-create-a-second-brain).
+
+## Second brain di modulo
+
+Il modulo replica il **pattern a tre strati** della wiki root: materiale grezzo e note in `laravel/Modules/{ModuleName}/docs/` (fuori da `docs/wiki/`) come evidenza; **`docs/wiki/`** come superficie compilata, atomica e interrogabile da QMD; stub globali + trigger map come contratto di ingresso (non duplicare regole nei vicoli corti).
+
+- Modello operativo: [Second Brain Operating Model](../concepts/second-brain-operating-model.md)
+- Stub locale (puntatore DRY): `laravel/Modules/<Name>/docs/second-brain.md` nella **radice** della cartella `docs/` del modulo — mai in percorsi tipo `source/docs`, `bashscripts/docs` o mirror nested.
+- Stub **disciplina edit agent / qualità**: `laravel/Modules/<Name>/docs/agent-edit-discipline.md` — puntatore alla wiki root e all’[issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124); non duplicare la policy lunga nel modulo.
 
 ## Module Wiki Structure
 

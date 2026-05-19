@@ -3,6 +3,7 @@ title: "LLM Wiki Hardening Coordination"
 type: "agent-chat"
 tags: [llm-wiki, second-brain, rules, skills, github]
 created: 2026-05-19
+updated: 2026-05-19
 ---
 
 # LLM Wiki Hardening Coordination
@@ -33,6 +34,23 @@ Quality bar for agents:
 4. Log reusable decisions in the nearest `docs/wiki/log.md`.
 5. Refresh QMD after structural wiki edits.
 
+## Update: FASE 6–8 (2026-05-19)
+
+- **Memories:** 13 entry in `docs/wiki/memories/` (target 12–15 raggiunto) — tutte con path relativi, no `[[bare]]`.
+- **llm-wiki.txt:** +9 false friends, +6 verified links, +2 bad practices; sezioni 18–20 già presenti.
+- **Trigger map:** +2 righe (compaction recovery, property_exists memory).
+- **How-to:** `wikilink-cross-reference.md` per migrazione link legacy.
+- **Prossimo:** sostituire `[[...]]` orphan nei concept legacy (batch editoriale); `qmd embed` opzionale.
+
+## Update: Chiusura #122 / #123 (2026-05-20)
+
+- Wikilink batch su cluster canonico second-brain + `ProjectHome.md`.
+- Gate 23/23 dopo rimozione `bashscripts/ai/.agents/node_modules`.
+- Issue chiuse con `gh issue close` — follow-up opzionale: `qmd embed`, template `_templates/` wikilink.
+
+## Update: HackerNoon Tip 020 (2026-05-20)
+
+Standard minimo obbligatorio per ogni `.md` wiki: [`markdown-note-minimum-standard.md`](../wiki/concepts/markdown-note-minimum-standard.md). Allineato a https://hackernoon.com/ai-coding-tip-020-create-a-second-brain — YAML, atomicità, PARA mappato al monorepo, checklist agent.
 
 ## Update: Forbidden Residues
 
@@ -53,7 +71,28 @@ Verified absent locally:
 
 General rule added to prompt: no merge residue files (`*~HEAD`, `*~BASE`, `*~LOCAL`, `*~REMOTE`, `.orig`, `.rej`) and no wiki archive folders. Use git history for the past and active wiki pages for current knowledge.
 
-
 ## Update: Reality Discipline
 
 Removed unverified wording that described `docs/raw/` as immutable/read-only. Current rule: raw docs are source evidence and should be edited conservatively, but agents must verify actual file state and permissions before claiming something is read-only or immutable.
+
+---
+
+## Thread ITA — sync agenti (previously `cursor-sync`)
+
+**Repo:** `git@github.com:provtv/base_ptv_fila5_mono.git` (`provtv/base_ptv_fila5_mono`)
+
+### GitHub
+
+- Issue aperte rilevanti: **#122** ([DOCS] Harden LLM Wiki prompt), **#123** (Second Brain FASE 3–8).
+- Metadati verificati con `gh api repos/provtv/base_ptv_fila5_mono --jq .has_wiki` → **`false`** (nessun GitHub Wiki remoto da clonare).
+- Per issue/PR usare sempre `gh … --repo provtv/base_ptv_fila5_mono`.
+
+### Repo / prompt
+
+- Aggiornato `bashscripts/tools/prompts/llm-wiki.txt`: link verificati con `test -f`, sezioni §17–§20 ripulite da path assenti in root (`mcp.json` globale non presente); aggiunti deep link Filament/context-mode; GitHub workflow esplicito.
+- Gate consigliato: `bashscripts/quality-gates/verify-llm-wiki.sh`.
+
+### Prossimi passi suggeriti
+
+1. Chiudere o commentare #122 dopo revisione umana del prompt.
+2. Allineare #123 (trigger map / skill expansion) senza path inventati — solo verifica filesystem + QMD.

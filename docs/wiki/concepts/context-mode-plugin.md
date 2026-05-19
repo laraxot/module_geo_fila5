@@ -255,8 +255,8 @@ context-mode v1.0.103
 
 ## See Also
 
-- [[Second Brain Operating Model]] — How to structure documentation for best retrieval
-- [[Context Compression MCP Setup]] — Original setup summary
+- [Second Brain Operating Model](second-brain-operating-model.md) — How to structure documentation for best retrieval
+- [Context Compression MCP Setup](../sources/context-compression-mcp-setup.md) — Original setup summary
 - `../../context-mode-guide.md` — Detailed reference guide
 
 ---

@@ -67,7 +67,7 @@ desktop.ini
 # -----------------------------------------------------------------------------
 # 3. AI AGENTS & COPILOT - Directory di contesto AI (NON committare)
 # -----------------------------------------------------------------------------
-# Directory contesto AI - vedi regola: .cursor/rules/file-locking-mandatory.mdc
+# Directory contesto AI - vedi regola: .cursor/rules/cursor-context-discipline.mdc
 .ai/
 .ai-context/
 .aider/
@@ -389,7 +389,10 @@ laravel/database/migrations/
 .qwen/
 docs/legacy/
 .gemini/
-.cursor/
+# Cursor: cartelle locali ignorare; eccezione per rule `.mdc` condivise (disciplina agent)
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 .opencode/
 
 # AI Agent directories (Theme-specific)
@@ -397,7 +400,6 @@ laravel/Themes/Zero/.devcontainer/
 laravel/Themes/Zero/.cursor/
 laravel/.claude/
 .kilo/
-.cursor/
 *.backup*
 *.pest.php
 .tools/

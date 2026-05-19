@@ -6,19 +6,36 @@
   "compaction": {
     "auto": true,
     "prune": true,
-    "reserved": 40000
+    "reserved": 56000
   },
   "watcher": {
     "ignore": [
       ".git/**",
+      ".cache/**",
       ".cursor/**",
       ".claude/**",
       ".opencode/**",
+      ".agents/**",
+      ".windsurf/**",
+      ".roo/**",
+      ".kilocode/**",
       "_bmad-output/**",
       "node_modules/**",
       "vendor/**",
-      "laravel/storage/logs/**",
-      "laravel/bootstrap/cache/**"
+      "laravel/vendor/**",
+      "laravel/node_modules/**",
+      "laravel/storage/**",
+      "laravel/bootstrap/cache/**",
+      "laravel/public/build/**",
+      "docs/pdf/**",
+      "docs/raw/history/**",
+      "bashscripts/ai/skills/**",
+      "**/paste-cache/**",
+      "**/*.lock",
+      "**/*~HEAD",
+      "**/*~head",
+      "**/*.orig",
+      "**/*.rej"
     ]
   }
 }

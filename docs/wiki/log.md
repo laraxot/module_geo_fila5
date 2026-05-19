@@ -145,4 +145,70 @@ module: "ptvx-project"
 
 [2026-05-19 16:30:00 UTC] [LINT] Blocco ignore debris merge (`*~HEAD`, `*~BASE`, …, `*~head`) in ogni `laravel/Modules/<Name>/.gitignore` e `laravel/Themes/<Name>/.gitignore`, più `laravel/.gitignore`; header Notify allineato al commento canonico; `bashscripts/tools/prompts/llm-wiki.txt` §7 (policy + perché duplicare), §11, §12 false friend, §15 nuovi package.
 
-**Total Operations:** 95
+[2026-05-19 17:00:00 UTC] [LINT] `bashscripts/tools/prompts/llm-wiki.txt` — rimossa coda spuria (messaggio utente incollato dopo footer); aggiunta §7.1 blocco `.gitignore` canonico copiabile; checklist §20 per nuovi package; verifica: tutti i `laravel/Modules/*/.gitignore` e `laravel/Themes/*/.gitignore` contengono già il blocco debris.
+
+[2026-05-19 18:15:00 UTC] [UPDATE] Second brain: espanso `sources/second-brain-external-benchmarks.md` (link esterni Karpathy / Obsidian / PARA / IT / critiche / tooling); aggiornati `concepts/second-brain-operating-model.md`, `how-to/module-wiki-documentation.md`, `how-to/theme-wiki-documentation.md`, `concepts/second-brain.md`; `bashscripts/tools/prompts/llm-wiki.txt` §1.1 tre strati, verified links, false friend Obsidian; rimossa altra coda spuria dal prompt.
+
+[2026-05-19 19:00:00 UTC] [CREATE] `docs/second-brain.md` puntatore in ogni `laravel/Modules/<Name>/docs/` e `laravel/Themes/<Name>/docs/` (link relativi alla wiki root); rimossi 48 stub erronei creati sotto path `docs` annidati/non canonici; benchmark esterni: secondo articolo MindStudio (`codeex`); how-to modulo/tema aggiornati.
+
+**Total Operations:** 98
+
+[2026-05-19 20:30:00 UTC] [UPDATE] Cursor/OpenCode compaction: aggiunta `.cursor/rules/compaction-recovery.mdc` (recovery + prevenzione); sezione wiki «Compaction exhausted» in `docs/wiki/concepts/context-overflow-prevention.md`; trigger map e `docs/wiki/rules/context-overflow-prevention.md` puntano alla narrativa canonica; `opencode.json` `compaction.reserved` 40000→56000; `npm install -g context-mode@latest` eseguito sul workspace host.
+
+**Total Operations:** 99
+
+[2026-05-19 21:45:00 UTC] [UPDATE] Disciplina edit: mutex `file.ext.lock` affiancato + pipeline PHPStan / PHPMD (`laravel/tools/phpmd.sh`) / PHPInsights (`laravel/tools/phpinsights.sh`) / Playwright+Puppeteer globali per UI — `docs/wiki/rules/validation-post-edit-rule.md`; `.cursor/rules/file-locking-mandatory.mdc`; `bashscripts/tools/prompts/llm-wiki.txt` §2.1; `docs/wiki/concepts/llm-wiki-operational-discipline.md`; trigger map; `.gitignore` eccezione `!.cursor/rules/**` per versionare le `.mdc`.
+
+**Total Operations:** 100
+
+[2026-05-19 22:30:00 UTC] [UPDATE] GitHub issue `https://github.com/provtv/base_ptv_fila5_mono/issues/124` come audit trail (ragionamenti agent); how-to `docs/wiki/how-to/github-issue-agent-discipline.md`; stub `agent-edit-discipline.md` in 39 cartelle `docs` modulo/tema (+ `Legge104/app/docs`); aggiornati `validation-post-edit-rule.md`, `second-brain-operating-model.md`, how-to modulo/tema, `laravel/Modules/Xot/docs/file-locking-pattern.md` con puntatore canonico; trigger map; commento `gh` su MCP; `llm-wiki.txt` verified link.
+
+**Total Operations:** 101
+
+[2026-05-19 10:40:00 UTC] [CREATE] `docs/chat/2026-05-19-agent-edit-discipline-confronto.md` — confronto obbligatorio tra agenti (anchor `#124`); `llm-wiki.txt` §10 Inter-Agent Collaboration reso esplicito (lettura chat ad avvio task + scrittura dopo decisioni condivise); commento `gh` su #124.
+
+**Total Operations:** 102
+
+[2026-05-19 23:15:00 UTC] [CREATE] FASE 3–5 (issue #123): +9 trigger in `00-TRIGGER_MAP.md`; atomic pages `git-atomic-operations`, `rule-atomicity`, `memory-system-usage`, `skill-discovery`; riscritto `concepts/context-mode-usage.md`; `skills/INDEX.md` strutturato (process/implementation/domain/maintenance); fix wikilink in `memories/environment-verification.md`; rimosso debris `bashscripts/ai/.agents/settings.json.orig` (untracked).
+
+**Total Operations:** 102
+
+[2026-05-19 23:45:00 UTC] [UPDATE] `docs/chat/`: naming **`slug-argomento.md`** (kebab-case); file `agent-edit-discipline.md`, `llm-wiki-hardening.md` (merge ex `cursor-sync`), `gemini-cli.md`; rimossi `2026-05-19-*.md`; `llm-wiki.txt` §10 + checklist §20; `github-issue-agent-discipline.md`; commento `gh` su #124.
+
+**Total Operations:** 103
+
+[2026-05-20 00:10:00 UTC] [UPDATE] `bashscripts/tools/prompts/llm-wiki.txt` — § GitHub (commento issue + path `docs/chat/<slug>.md`); nuova sottosezione «Inter-Agent + GitHub — integrazione»; false friend issue-vs-chat; troubleshooting multi-agente.
+
+**Total Operations:** 104
+
+[2026-05-20 00:35:00 UTC] [CREATE] FASE 6–8 (#123): 12 memories root + INDEX; `llm-wiki.txt` +9 false friends, verified links, bad practices; `how-to/wikilink-cross-reference.md`; trigger map (compaction, wikilink); `docs/chat/llm-wiki-hardening.md`; puntatore Xot memories → root.
+
+**Total Operations:** 105
+
+[2026-05-20 01:00:00 UTC] [UPDATE] Wikilink batch: cluster second-brain + ProjectHome + sources chiave → path relativi; rimosso `bashscripts/ai/.agents/node_modules` (gate); chiusura issue #122/#123.
+
+**Total Operations:** 106
+
+[2026-05-20 00:45:00 UTC] [FIX] Cursor compaction: `laravel/.cursor/rules/laravel-boost.mdc` monolite ~143k righe → stub + backup `laravel/.cursor/laravel-boost-guidelines.FULL.mdc.bak`; `.cursor/rules/cursor-context-discipline.mdc` (merge compaction + lock); wiki/memories/trigger/llm-wiki/Xot/Sigma aggiornati.
+
+**Total Operations:** 106
+
+[2026-05-20 12:00:00 UTC] [CREATE] Standard minimo `.md` da HackerNoon Tip 020: `docs/wiki/concepts/markdown-note-minimum-standard.md`; integrati `second-brain-operating-model.md`, benchmarks esterni, trigger map, `llm-wiki.txt` §1.2 + checklist + quick ref; ripulito prompt da righe spurie in coda.
+
+**Total Operations:** 107
+
+[2026-05-20 13:00:00 UTC] [UPDATE] Rafforzato Tip 020: PARA mapping, good/bad table, checklist agent; frontmatter how-to modulo/tema; memory `markdown-hackernoon-tip-020`; audit checks; `docs-template-standard` YAML header; `llm-wiki.txt` §10 + false friends.
+
+**Total Operations:** 108
+
+[2026-05-20 14:00:00 UTC] [FIX] API 131072 overflow: `laravel/AGENTS.md`/`CLAUDE.md` monoliti → stub; backup `*.embedded-rules.FULL.md.bak`; gate laravel stubs; `context-mode` in `.mcp.json`; wiki/how-to aggiornato; `llm-wiki.txt` §17.
+
+**Total Operations:** 109
+
+[2026-05-20 14:30:00 UTC] [CREATE] Playbook errore API limite **131072** token vs payload (~796k): `docs/wiki/how-to/api-context-length-exceeded-131072.md`; `context-overflow-prevention.md` + `context-compression-mcp-setup.md` + trigger map; `docs/chat/context-api-131072-overflow.md`; issue GitHub dedicata; ampliato `llm-wiki.txt` §5/§17/§18.
+
+**Total Operations:** 110
+
+[2026-05-20 15:00:00 UTC] [CREATE] MCP minimum stack obbligatorio (5): `.mcp.json`, `.cursor/mcp.json`, `docs/wiki/_templates/mcp-minimum-stack.json`, `how-to/mcp-minimum-stack.md`; gate `verify-llm-wiki.sh` sezione MCP; `llm-wiki.txt` §17 + checklist §20.
+
+**Total Operations:** 111

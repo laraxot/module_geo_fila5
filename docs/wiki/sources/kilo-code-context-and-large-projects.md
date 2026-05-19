@@ -5,7 +5,7 @@ type: source
 created: "2026-04-29T00:00:00Z"
 updated: "2026-04-29T00:00:00Z"
 related:
-  - "[[Second Brain Operating Model]]"
+  - "../concepts/second-brain-operating-model.md"
 ---
 
 # Kilo Code Context and Large Projects

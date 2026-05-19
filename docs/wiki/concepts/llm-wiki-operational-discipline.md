@@ -34,6 +34,12 @@ Apply rule / use skill
 Update nearest docs/wiki/log.md
 ```
 
+## Edit mutex e validazione codice
+
+Prima di modificare un file: se esiste **`percorso/file.ext.lock`** nella stessa cartella di `file.ext`, **non** modificare (altro agente/processo attivo). Altrimenti `touch percorso/file.ext.lock`, modifica, poi `rm -f percorso/file.ext.lock` sempre.
+
+Dopo **file PHP** in `laravel/`: PHPStan livello 10, **`laravel/tools/phpmd.sh`**, **`laravel/tools/phpinsights.sh`**; per cambi UI anche **Playwright** e **Puppeteer** installati **globalmente** e suite pertinenti. Dettaglio e filosofia: [`docs/wiki/rules/validation-post-edit-rule.md`](../rules/validation-post-edit-rule.md). Prompt operativo: [`bashscripts/tools/prompts/llm-wiki.txt`](../../../bashscripts/tools/prompts/llm-wiki.txt) §2.1.
+
 ## Cache Discipline
 
 | Path | Status |

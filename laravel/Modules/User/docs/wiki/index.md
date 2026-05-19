@@ -79,3 +79,7 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 | [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
 
 Aggiornato: 2026-05-06
+
+## Shared Second Brain Discipline
+
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.

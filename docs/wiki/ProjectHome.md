@@ -1,6 +1,6 @@
 ---
 concept: Project Home
-last_updated: 2026-04-29
+last_updated: 2026-05-20
 qmd: "project home, ptvx-project, getting started, overview, module structure"
 ---
 
@@ -8,31 +8,34 @@ qmd: "project home, ptvx-project, getting started, overview, module structure"
 
 Welcome to the central knowledge base for the **PTVX** project. This wiki is automatically compiled and maintained by AI agents using the **Karpathy Pattern**.
 
-## 🚀 Core Modules
-These modules form the foundation of the system:
-- [[Xot]]: Core framework wrappers and shared utilities.
-- [[User]]: Identity, authentication, and profiles.
-- [[Tenant]]: Multi-tenancy and data isolation.
-- [[UI]]: Shared Blade and Filament components.
-- [[Lang]]: Internationalization and translation logic.
+## Core Modules
 
-## 🏗️ Architectural Principles
-Global rules that apply to the entire project:
-- [[BaseModel Pattern]]: The sacred inheritance chain.
-- [[Actions Over Services]]: Preferred business logic pattern.
-- [[Database Architecture]]: Managing connections across modules.
-- [[Translation System]]: Automatic localization rules.
+- [Xot](../../laravel/Modules/Xot/docs/wiki/): Core framework wrappers and shared utilities.
+- [User](../../laravel/Modules/User/docs/wiki/): Identity, authentication, and profiles.
+- [Tenant](../../laravel/Modules/Tenant/docs/wiki/): Multi-tenancy and data isolation.
+- [UI](../../laravel/Modules/UI/docs/wiki/): Shared Blade and Filament components.
+- [Lang](../../laravel/Modules/Lang/docs/wiki/): Internationalization and translation logic.
 
-## 📚 Core Patterns
-Essential design patterns for development:
-- [[Module Structure]]: Standard organization for all modules.
-- [[Accessor Auto-Persistence]]: Automatic calculation persistence pattern.
-- [[Accessor Mutator Pattern]]: Complete accessor/mutator implementation guide.
+## Architectural Principles
 
-## 🔧 Developer Guide
-- [[AI Agent Instructions]]: How to maintain this wiki.
-- [[QMD Usage]]: Searching and indexing documentation.
-- [[Testing Strategy]]: Pest and architectural verification.
+- [BaseModel Pattern](../../laravel/Modules/Xot/docs/wiki/BaseModel.md): The sacred inheritance chain.
+- [Actions Over Services](concepts/actions-over-services.md): Preferred business logic pattern.
+- [Database guidelines](rules/database-guidelines.md): Managing connections across modules.
+- [Translation standards](rules/translation-standards.md): Automatic localization rules.
+
+## Core Patterns
+
+- [Module Structure](concepts/module-structure.md): Standard organization for all modules.
+- [Accessor Auto-Persistence](concepts/accessor-auto-persistence.md): Automatic calculation persistence pattern.
+- [Accessor zen level 3](concepts/accessor-zen-level-3.md): Accessor/mutator implementation guide.
+
+## Developer Guide
+
+- [Agents index](agents/INDEX.md): Agent roles and coordination.
+- [On-demand pattern](rules/on-demand-pattern.md): How to maintain this wiki.
+- [QMD search guide](how-to/qmd-search-guide.md): Searching and indexing documentation.
+- [Validation post-edit](rules/validation-post-edit-rule.md): PHPStan, PHPMD, PHPInsights, UI checks.
 
 ---
+
 *This wiki is a living document. Every interaction with an AI agent helps it grow and interlink.*

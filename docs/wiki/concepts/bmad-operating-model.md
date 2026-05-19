@@ -6,9 +6,9 @@ created: "2026-04-28T00:00:00Z"
 updated: "2026-04-29T09:18:00Z"
 qmd: "BMAD method, BMAD operating model, GSD, Ralph, project management, agile"
 related:
-  - "[[Project Home]]"
-  - "[[Second Brain Operating Model]]"
-  - "[[AI Tooling Workflow]]"
+  - "../ProjectHome.md"
+  - "second-brain-operating-model.md"
+  - "ai-tooling-workflow.md"
 ---
 
 # BMAD Operating Model
@@ -79,5 +79,5 @@ When BMAD produces durable conclusions, they should be distilled into the wiki r
 
 ## References
 
-- [[Second Brain Operating Model]]
+- [Second Brain Operating Model](second-brain-operating-model.md)
 - `../sources/root-bmad-docs.md`

@@ -154,6 +154,6 @@ public function store(Request $request, CreateUserAction $action)
 
 ## Vedi anche
 
-- [[BaseModel Pattern]] - Pattern di base per i modelli
-- [[Module Structure]] - Struttura standard dei moduli
-- [[Translation System]] - Sistema di traduzione automatica
+- [BaseModel Pattern](../../../laravel/Modules/Xot/docs/wiki/BaseModel.md) — Pattern di base per i modelli
+- [Module Structure](module-structure.md) — Struttura standard dei moduli
+- [Translation standards](../rules/translation-standards.md) — Sistema di traduzione automatica

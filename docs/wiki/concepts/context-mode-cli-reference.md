@@ -296,7 +296,7 @@ Use context-mode for large projects:
 
 ## See Also
 
-- [[Context-Mode Plugin]] — Detailed concept documentation
+- [Context-Mode Plugin](context-mode-plugin.md) — Detailed concept documentation
 - `/ctx-stats` — Check current savings ratio
 - `/ctx-doctor` — Verify installation health
 

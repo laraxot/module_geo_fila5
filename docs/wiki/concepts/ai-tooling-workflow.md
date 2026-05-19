@@ -6,9 +6,9 @@ created: "2026-04-28T00:00:00Z"
 updated: "2026-04-29T09:18:00Z"
 qmd: "AI tooling, Claude, Gemini, Qwen, shared workflow, MCP servers, agents"
 related:
-  - "[[Project Home]]"
-  - "[[BMAD Operating Model]]"
-  - "[[Second Brain Operating Model]]"
+  - "../ProjectHome.md"
+  - "bmad-operating-model.md"
+  - "second-brain-operating-model.md"
 ---
 
 # AI Tooling Workflow
@@ -72,5 +72,5 @@ The project should maintain shared workflow rules at the wiki layer, while tool-
 
 ## References
 
-- [[Second Brain Operating Model]]
+- [Second Brain Operating Model](second-brain-operating-model.md)
 - `../sources/root-ai-docs.md`

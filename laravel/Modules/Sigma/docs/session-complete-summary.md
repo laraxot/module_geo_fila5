@@ -89,10 +89,8 @@
 
 **Regole AI** (`.cursor/rules/`, `.windsurf/rules/`):
 
-10. **file-locking-mandatory.mdc** (~3KB × 2)
-    - Regola obbligatoria locking
-    - Template workflow
-    - Checklist operativa
+10. **cursor-context-discipline.mdc** (root `.cursor/rules/` — compaction + lock + reminder PHP; file-locking-mandatory rimosso come duplicato)
+    - Regola compatta alwaysApply
 
 **Totale Generale Documentazione**: ~77KB, 11 file
 
@@ -379,7 +377,7 @@ Creati template, implementazione prossima sessione:
 - [File Locking Pattern](../../Xot/docs/file-locking-pattern.md) - Pattern completo
 
 ### Regole AI
-- [.cursor/rules/file-locking-mandatory.mdc](../../../../.cursor/rules/file-locking-mandatory.mdc)
+- [.cursor/rules/cursor-context-discipline.mdc](../../../../.cursor/rules/cursor-context-discipline.mdc)
 - [.windsurf/rules/file-locking-mandatory.mdc](../../../../.windsurf/rules/file-locking-mandatory.mdc)
 
 ### Memoria AI

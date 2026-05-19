@@ -1,25 +1,36 @@
 {
   "mcpServers": {
-    "laravel-boost": {
-      "command": "/usr/bin/php8.3",
-      "args": [
-        "${PWD}/laravel/artisan",
-        "boost:mcp"
-      ]
+    "context-mode": {
+      "command": "context-mode",
+      "args": [],
+      "env": {}
     },
-    "qmd": {
-      "command": "qmd",
-      "args": [
-        "mcp"
-      ],
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"],
+      "env": {}
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
       "env": {}
     },
     "token-optimizer": {
-      "command": "${PWD}/bashscripts/mcp/node_modules/.bin/token-optimizer-mcp",
-      "args": [],
+      "command": "npx",
+      "args": ["-y", "@ooples/token-optimizer-mcp"],
       "env": {
         "TOKEN_OPTIMIZER_CACHE_DIR": "${PWD}/.claude/token-optimizer-cache"
       }
+    },
+    "laravel-boost": {
+      "command": "php",
+      "args": ["${PWD}/laravel/artisan", "boost:mcp"],
+      "env": {}
+    },
+    "qmd": {
+      "command": "qmd",
+      "args": ["mcp"],
+      "env": {}
     }
   }
 }

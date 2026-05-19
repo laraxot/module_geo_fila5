@@ -2,7 +2,7 @@
     "_comment": "Project-agnostic MCP config. Paths use ${PWD} = project root at launch time.",
     "mcpServers": {
         "laravel-boost": {
-            "command": "/usr/bin/php8.3",
+            "command": "php",
             "args": [
                 "${PWD}/laravel/artisan",
                 "boost:mcp"

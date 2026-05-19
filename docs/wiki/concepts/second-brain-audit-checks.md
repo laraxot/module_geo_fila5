@@ -3,12 +3,13 @@ title: "Second Brain Audit Checks"
 module: "ptvx-project"
 type: concept
 created: "2026-04-29T00:00:00Z"
-updated: "2026-04-29T00:00:00Z"
+updated: "2026-05-20T00:00:00Z"
 qmd: "second brain audit, wiki lint, orphan pages, unindexed pages, docs health, raw docs coverage"
 related:
-  - "[[Second Brain Continuous Improvement]]"
-  - "[[Second Brain Operating Model]]"
-  - "[[Second Brain Maintenance Cadence]]"
+  - "second-brain-continuous-improvement.md"
+  - "second-brain-operating-model.md"
+  - "second-brain-maintenance-cadence.md"
+  - "markdown-note-minimum-standard.md"
 ---
 
 # Second Brain Audit Checks
@@ -38,6 +39,14 @@ Current checks:
 - missing source summaries force agents back into raw docs
 - missing logs remove auditability
 
+## Markdown minimum (Tip 020)
+
+On touched wiki pages, spot-check:
+
+- file starts with YAML `---` block (`title`, `type`)
+- `related` uses relative paths, not orphan `[[titles]]` only
+- body follows [markdown-note-minimum-standard](markdown-note-minimum-standard.md)
+
 ## Next Checks To Add
 
 - duplicate-topic detection across raw filenames
@@ -47,6 +56,6 @@ Current checks:
 
 ## References
 
-- [[Second Brain Continuous Improvement]]
-- [[Second Brain Operating Model]]
-- [[Second Brain Maintenance Cadence]]
+- [Second Brain Continuous Improvement](second-brain-continuous-improvement.md)
+- [Second Brain Operating Model](second-brain-operating-model.md)
+- [Second Brain Maintenance Cadence](second-brain-maintenance-cadence.md)

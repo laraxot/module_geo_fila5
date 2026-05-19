@@ -178,7 +178,7 @@ public function get<Nome>Attribute(?type $value): ?type
 ```
 
 **Memoria**: ID 10475806
-**Regole**: `.cursor/rules/file-locking-mandatory.mdc`
+**Regole**: `.cursor/rules/cursor-context-discipline.mdc`
 
 ## Risultati Sessione 29 Gennaio 2025
 

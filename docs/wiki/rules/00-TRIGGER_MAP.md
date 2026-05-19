@@ -3,7 +3,7 @@ title: "Unified Trigger Map"
 type: "rule"
 tags: [trigger-map, on-demand, routing]
 created: 2026-05-12
-updated: 2026-05-19
+updated: 2026-05-20
 ---
 
 # 00-TRIGGER_MAP
@@ -17,6 +17,7 @@ updated: 2026-05-19
 | New module/theme | `docs/wiki/concepts/module-structure.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
+| Nuovo o edit `.md` wiki / standard YAML + atomicità | `docs/wiki/concepts/markdown-note-minimum-standard.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
 | Second brain quality / wiki maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md`, `docs/wiki/concepts/second-brain-audit-checks.md` |
 | Rules on-demand / skill routing | `docs/wiki/rules/on-demand-pattern.md`, `docs/wiki/skills/INDEX.md` |
 | Skill needed | `docs/wiki/skills/INDEX.md` |
@@ -25,8 +26,12 @@ updated: 2026-05-19
 | Pattern/memory recall | `docs/wiki/memories/INDEX.md` |
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
-| Token overflow / 262K / API 400 / compaction | `docs/wiki/concepts/context-overflow-prevention.md` |
+| GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
+| Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
+| Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` |
+| Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md` |
 | LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
+| MCP minimum stack (context-mode, playwright, puppeteer, token-optimizer, laravel-boost) | `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/_templates/mcp-minimum-stack.json` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
 | BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
@@ -42,6 +47,18 @@ updated: 2026-05-19
 | Lang translation keys / translation ownership | `laravel/Modules/Lang/docs/wiki/rules/translation-key-governance.md`, `laravel/Modules/Lang/docs/wiki/skills/translation-key-audit.md` |
 | Activity XotBaseResource zen pattern | `laravel/Modules/Activity/docs/wiki/rules/INDEX.md`, `laravel/Modules/Activity/docs/wiki/concepts/xotbase-resource-zen-pattern.md` |
 | Rating Filament resource zen pattern | `laravel/Modules/Rating/docs/wiki/rules/INDEX.md`, `laravel/Modules/Rating/docs/wiki/concepts/filament-resource-zen-pattern.md` |
+| Git atomic / forward-only commits | `docs/wiki/rules/git-atomic-operations.md` |
+| Memory system / durable decisions | `docs/wiki/how-to/memory-system-usage.md`, `docs/wiki/memories/INDEX.md` |
+| Skill discovery | `docs/wiki/how-to/skill-discovery.md`, `docs/wiki/skills/INDEX.md` |
+| Rule atomicity / one idea per file | `docs/wiki/rules/rule-atomicity.md` |
+| Wiki activity log / audit trail | `docs/wiki/log.md`, `docs/wiki/how-to/github-issue-agent-discipline.md` |
+| Wikilink / cross-reference cleanup | `docs/wiki/how-to/wikilink-cross-reference.md` |
+| Context-mode / ctx compression | `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/context-mode-setup.md` |
+| PHPStan module analysis | `docs/wiki/rules/phpstan-rules.md` |
+| New module wiki bootstrap | `docs/wiki/how-to/module-wiki-documentation.md`, `docs/wiki/concepts/module-structure.md` |
+| property_exists on Eloquent | `docs/wiki/rules/coding-standards.md`, `docs/wiki/memories/eloquent-hasattribute-not-property-exists.md` |
+| Compaction exhausted / Cursor recovery | `docs/wiki/memories/compaction-exhausted-recovery.md`, `.cursor/rules/cursor-context-discipline.mdc`, `laravel/.cursor/rules/laravel-boost.mdc` (stub — non usare monolite `.bak`) |
+| XotBase / no direct Filament extend | `docs/wiki/memories/xotbase-never-extend-filament.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
 
 ## Usage
 

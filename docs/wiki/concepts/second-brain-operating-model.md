@@ -3,13 +3,14 @@ title: "Second Brain Operating Model"
 module: "ptvx-project"
 type: concept
 created: "2026-04-28T00:00:00Z"
-updated: "2026-04-29T09:09:00Z"
+updated: "2026-05-19T18:00:00Z"
 qmd: "second brain, Karpathy wiki, LLM wiki, docs/wiki, raw docs, QMD search strategy, token efficiency"
 related:
-  - "[[Project Home]]"
-  - "[[Module Structure]]"
-  - "[[Actions Over Services]]"
-  - "[[Second Brain Continuous Improvement]]"
+  - "../ProjectHome.md"
+  - "module-structure.md"
+  - "actions-over-services.md"
+  - "second-brain-continuous-improvement.md"
+  - "markdown-note-minimum-standard.md"
 ---
 
 # Second Brain Operating Model
@@ -48,6 +49,7 @@ The wiki must not invent permanence or permissions. Raw docs are source evidence
 | Raw docs | Source evidence to treat conservatively; not guaranteed read-only | `docs/`, `laravel/Modules/*/docs/`, `laravel/Themes/*/docs/` |
 | Compiled wiki | Synthesized knowledge for fast reuse | `docs/wiki/`, `laravel/Modules/*/docs/wiki/`, `laravel/Themes/*/docs/wiki/` |
 | Log | Operational audit trail | `**/docs/wiki/log.md` |
+| GitHub issues (complementare) | Thread decisionali navigabili; non sostituiscono la wiki | [`github-issue-agent-discipline.md`](../how-to/github-issue-agent-discipline.md) |
 | Schema | Local documentation conventions | `**/docs/wiki/SCHEMA.md` |
 
 ## Operating Rules
@@ -71,6 +73,8 @@ The current project model keeps the Karpathy LLM Wiki as the core persistence la
 
 For this repository, that means `docs/wiki/` is not a passive archive. It is a maintained working surface that should make the next engineering task faster.
 
+Letteratura esterna, tutorial Obsidian/Karpathy e link curati (orientamento, non policy): [`../sources/second-brain-external-benchmarks.md`](../sources/second-brain-external-benchmarks.md).
+
 ## QMD Search Strategy (2026 Optimization)
 
 Every agent MUST follow this search hierarchy:
@@ -92,6 +96,8 @@ Every agent MUST follow this search hierarchy:
 Run `qmd embed` after updating context descriptions to re-index with improved semantic matching.
 
 ## Excellence Standard
+
+**Formato file:** ogni nuova o revisione sostanziale di `.md` nella wiki segue il [Markdown Note Minimum Standard](./markdown-note-minimum-standard.md) (YAML front matter + atomicità + link motivati), allineato a HackerNoon *AI Coding Tip 020*.
 
 "Perfect" documentation in this repository means operationally excellent, not verbose. A page is excellent when it is:
 
@@ -134,7 +140,8 @@ This is the minimum cycle required to keep the second brain compounding instead 
 
 ## References
 
-- [[Project Home]]
-- [[Module Structure]]
-- [[Second Brain Continuous Improvement]]
+- [Markdown Note Minimum Standard](./markdown-note-minimum-standard.md)
+- [Project Home](../ProjectHome.md)
+- [Module Structure](module-structure.md)
+- [Second Brain Continuous Improvement](second-brain-continuous-improvement.md)
 - `../sources/docs-landscape-modules-and-themes.md`

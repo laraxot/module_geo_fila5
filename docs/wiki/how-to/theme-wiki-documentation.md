@@ -1,13 +1,34 @@
 ---
-name: Theme Wiki Documentation Guide
-description: Guide for creating and maintaining QMD-indexed wikis in theme directories
+title: "Theme Wiki Documentation Guide"
 type: how-to
-related: [qmd-search-guide.md, module-wiki-documentation.md]
+tags: [theme, wiki, qmd, second-brain]
+module: ptvx-project
+created: 2026-04-29
+updated: 2026-05-20
+qmd: "theme wiki documentation, laravel theme docs wiki structure"
+related:
+  - "qmd-search-guide.md"
+  - "module-wiki-documentation.md"
+  - "github-issue-agent-discipline.md"
+  - "../concepts/second-brain-operating-model.md"
+  - "../concepts/markdown-note-minimum-standard.md"
+  - "../sources/second-brain-external-benchmarks.md"
 ---
 
 # Theme Wiki Documentation Guide
 
 Each Laravel theme maintains its own wiki at `laravel/Themes/{ThemeName}/docs/wiki/`. This guide explains structure, QMD integration, and maintenance.
+
+## Standard minimo ogni `.md`
+
+Come per i moduli: [Markdown Note Minimum Standard](../concepts/markdown-note-minimum-standard.md) — YAML front matter, nota atomica, link con path verificati ([Tip 020](https://hackernoon.com/ai-coding-tip-020-create-a-second-brain)).
+
+## Second brain di tema
+
+Come per i moduli: asset e note operative in `laravel/Themes/{ThemeName}/docs/` (non wiki); **`docs/wiki/`** del tema per sintesi UX, componenti e convenzioni frontend. Stesso ciclo *capture → distill → express* descritto nel [Second Brain Operating Model](../concepts/second-brain-operating-model.md).
+
+- Stub locale (puntatore DRY): `laravel/Themes/<Name>/docs/second-brain.md` nella **radice** di `docs/` del tema.
+- Stub **disciplina edit agent / qualità**: `laravel/Themes/<Name>/docs/agent-edit-discipline.md` — puntatore alla wiki root e all’[issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124).
 
 ## Theme Wiki Structure
 

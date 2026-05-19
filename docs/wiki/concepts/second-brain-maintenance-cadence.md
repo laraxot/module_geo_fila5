@@ -6,9 +6,9 @@ created: "2026-04-29T10:33:00Z"
 updated: "2026-04-29T10:33:00Z"
 qmd: "second brain cadence, weekly audit, root module theme docs, maintenance rhythm"
 related:
-  - "[[Second Brain Continuous Improvement]]"
-  - "[[Second Brain Audit Checks]]"
-  - "[[Second Brain Operating Model]]"
+  - "second-brain-continuous-improvement.md"
+  - "second-brain-audit-checks.md"
+  - "second-brain-operating-model.md"
 ---
 
 # Second Brain Maintenance Cadence
@@ -68,6 +68,6 @@ Un cadence pass e' valido quando:
 
 ## References
 
-- [[Second Brain Continuous Improvement]]
-- [[Second Brain Audit Checks]]
-- [[Second Brain Operating Model]]
+- [Second Brain Continuous Improvement](second-brain-continuous-improvement.md)
+- [Second Brain Audit Checks](second-brain-audit-checks.md)
+- [Second Brain Operating Model](second-brain-operating-model.md)

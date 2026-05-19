@@ -3,11 +3,18 @@ title: "Second Brain Implementation"
 type: "concept"
 tags: [second-brain, knowledge-management, progressive-summarization, workflow]
 created: 2026-04-15
-updated: 2026-05-12
+updated: 2026-05-20
 qmd: "second brain, quick reference, Karpathy, LLM wiki, cheat sheet, QMD search"
+related:
+  - "./second-brain-operating-model.md"
+  - "./markdown-note-minimum-standard.md"
 ---
 
 # Second Brain Implementation for Documentation Management
+
+## Allineamento Laraxot (2026)
+
+Modello operativo da seguire: [`second-brain-operating-model.md`](./second-brain-operating-model.md). Formato minimo per ogni `.md`: [`markdown-note-minimum-standard.md`](./markdown-note-minimum-standard.md) (HackerNoon Tip 020 adattato). Letteratura esterna curata (non policy): [`../sources/second-brain-external-benchmarks.md`](../sources/second-brain-external-benchmarks.md). Sintesi viva in **`docs/wiki/`** per modulo/tema; evitare nuovi `SUMMARY.md` dove esiste già una wiki QMD-indexed.
 
 ## Background
 Tiago Forte's "Second Brain" is a personal knowledge management system designed to externalize thoughts, organize information, and enable reusable knowledge creation. Applying this concept to our Laravel project involves transforming our module and theme documentation into a living knowledge base.

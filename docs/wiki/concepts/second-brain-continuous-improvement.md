@@ -6,10 +6,10 @@ created: "2026-04-29T00:00:00Z"
 updated: "2026-04-29T10:32:00Z"
 qmd: "continuous improvement, wiki maintenance, docs ingest, token efficiency, actionability, progressive compression"
 related:
-  - "[[Second Brain Operating Model]]"
-  - "[[BMAD Operating Model]]"
-  - "[[AI Tooling Workflow]]"
-  - "[[Second Brain Maintenance Cadence]]"
+  - "second-brain-operating-model.md"
+  - "bmad-operating-model.md"
+  - "ai-tooling-workflow.md"
+  - "second-brain-maintenance-cadence.md"
 ---
 
 # Second Brain Continuous Improvement
@@ -134,7 +134,7 @@ An ingest is good enough when:
 
 ## References
 
-- [[Second Brain Operating Model]]
-- [[BMAD Operating Model]]
-- [[AI Tooling Workflow]]
-- [[Second Brain Maintenance Cadence]]
+- [Second Brain Operating Model](second-brain-operating-model.md)
+- [BMAD Operating Model](bmad-operating-model.md)
+- [AI Tooling Workflow](ai-tooling-workflow.md)
+- [Second Brain Maintenance Cadence](second-brain-maintenance-cadence.md)

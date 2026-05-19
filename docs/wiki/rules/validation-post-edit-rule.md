@@ -1,69 +1,75 @@
-# Regola CRITICA: Validazione Obbligatoria Post-Modifica
+---
+title: "validazione post-modifica e mutex lock affiancato"
+type: "rule"
+tags: [phpstan, phpmd, phpinsights, playwright, puppeteer, agent-coordination, quality]
+created: 2025-10-29
+updated: 2026-05-19
+---
 
-## Regola Fondamentale
+# Validazione post-modifica e mutex `.lock` affiancato
 
-**Dopo OGNI modifica a un file PHP, DEVI SEMPRE eseguire la validazione con:**
+## Filosofia
 
-1. **PHPStan livello 10** - Analisi statica rigorosa
-2. **PHPMD** - PHP Mess Detector per code quality  
-3. **PHPInsights** - Analisi completa qualità codice
+- **Lock affiancato** (`file.ext` → `file.ext.lock`): mutex economico tra agenti/processi sullo stesso asset senza server centrale. Se il lock esiste, qualcuno sta già modificando: eviti merge sporchi e regressioni incrociate.
+- **Validazione statica** (PHPStan, PHPMD, PHPInsights): contratto di qualità sul codice che tocchi; riduce debito e sorprese in CI.
+- **Playwright / Puppeteer (globali)**: stesso tooling riusabile tra progetti; quando cambi UI o flussi browser, verifichi comportamento reale, non solo sintassi.
 
-## Workflow Obbligatorio
+Il repo ignora i lock companion con il pattern `*.lock` con eccezioni per `composer.lock`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` (`.gitignore`).
 
-```bash
-# Dopo ogni modifica di file PHP
-cd /var/www/_bases/base_ptvx_fila5_mono/laravel
+## 1. Mutex — ordine obbligatorio
 
-# 1. PHPStan livello 10
-./vendor/bin/phpstan analyze [file-path] --level=10 --memory-limit=2G
+Per ogni file da modificare alla path `PATH` (qualsiasi estensione):
 
-# 2. PHPMD
-./vendor/bin/phpmd [file-path] text cleancode,codesize,controversial,design,naming,unusedcode
+1. Se **`PATH.lock` esiste** → **STOP** (non editare; ripresa quando il lock sparisce).
+2. **`touch PATH.lock`**.
+3. Modifica `PATH`.
+4. **`rm -f PATH.lock`** (sempre, anche su errore — preferibilmente `trap 'rm -f PATH.lock' EXIT` negli script).
 
-# 3. PHPInsights
-php artisan insights [file-path] --min-quality=90 --min-complexity=90 --min-architecture=90 --min-style=90
-```
+## 2. File PHP — controlli dopo la modifica
 
-## Quando Applicare
-
-- ✅ SEMPRE dopo `edit` o `multi_edit` di file PHP
-- ✅ SEMPRE dopo refactoring
-- ✅ SEMPRE prima di considerare completato un task
-- ✅ SEMPRE prima di passare al file successivo
-
-## Cosa Fare se Fallisce
-
-1. Correggere TUTTI gli errori trovati
-2. Ri-eseguire la validazione
-3. Ripetere fino a passare tutti i controlli
-4. Solo DOPO procedere con il file successivo
-
-## Eccezioni
-
-**NESSUNA**. Questa regola vale SEMPRE per OGNI file PHP modificato.
-
-## Script di Validazione Automatica
-
-È disponibile lo script `validate-modified-files.php` per validare tutti i file modificati in batch:
+Lavorare da **`laravel/`** (composer root dell’app).
 
 ```bash
-cd /var/www/_bases/base_ptvx_fila5_mono/laravel
-php validate-modified-files.php
+cd laravel
+
+# 1) PHPStan livello 10 (sostituisci con il path reale sotto laravel/)
+./vendor/bin/phpstan analyse Modules/<Module>/app/Path/File.php --level=10 --memory-limit=2G
+
+# 2) PHPMD — wrapper repo (PHAR in laravel/tools/)
+./tools/phpmd.sh Modules/<Module>/app/Path/File.php text phpmd-ruleset.xml
+
+# 3) PHPInsights — wrapper standalone in laravel/tools/
+./tools/phpinsights.sh analyse Modules/<Module>/app/Path/File.php --no-interaction --min-quality=0 --min-complexity=0 --min-architecture=0 --min-style=0
 ```
 
-## Scopo
+Aggiusta soglie `--min-*` se il modulo ha policy più strette; l’obiettivo è **vedere il report** e non introdurre violazioni nuove rispetto al baseline.
 
-- Garantire qualità del codice
-- Prevenire regressioni
-- Mantenere standard PHPStan livello 10
-- Assicurare best practices
-- Evitare introduzione di nuovi errori
+## 3. Controlli visuali / E2E (installazione globale)
 
-## Note Importanti
+Installazione tipica (una volta per macchina, riusabile tra progetti):
 
-- Gli errori PHPStan potrebbero essere **pre-esistenti**
-- Verificare che le PROPRIE modifiche non abbiano introdotto NUOVI errori
-- Confrontare gli errori prima e dopo la modifica
-- Documentare eventuali errori pre-esistenti che non possono essere corretti immediatamente
+```bash
+npm install -g playwright @playwright/test puppeteer
+# Playwright richiede browser: al primo uso
+npx playwright install
+```
 
-*Ultimo aggiornamento: 29 Ottobre 2025*
+Esegui test E2E o script Puppeteer **del progetto** pertinenti alle pagine modificate (path dipende dal repo; cercare `*.spec.ts`, `tests/Browser`, ecc.).
+
+## 4. File non PHP (es. wiki, prompt)
+
+Niente PHPStan/PHPMD/PHPInsights obbligatori; applica comunque il **mutex lock** se più agenti possono toccare lo stesso file. Per wiki root: `bashscripts/quality-gates/verify-llm-wiki.sh` quando tocchi `docs/wiki/` o questo prompt.
+
+## 5. Trigger
+
+| Trigger | Carica |
+|---------|--------|
+| Edit PHP / qualità / lock agent | questo file |
+| Disciplina prompt LLM Wiki | [`bashscripts/tools/prompts/llm-wiki.txt`](../../../bashscripts/tools/prompts/llm-wiki.txt) §2.1 |
+
+## Vedi anche
+
+- [GitHub issue #124 — ragionamenti disciplina agent](https://github.com/provtv/base_ptv_fila5_mono/issues/124)
+- [GitHub issue come audit trail](../how-to/github-issue-agent-discipline.md)
+- [`docs/wiki/rules/00-TRIGGER_MAP.md`](./00-TRIGGER_MAP.md)
+- Raw storico coordinamento: [`docs/raw/history/MULTI_AGENT_COORDINATION.md`](../../raw/history/MULTI_AGENT_COORDINATION.md)
