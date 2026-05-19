@@ -16,7 +16,7 @@ class JobBatchesTable extends XotBaseResourceTable
     /**
      * @return array<int|string, Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             TextColumn::make('id')->sortable(),

@@ -404,3 +404,4 @@ laravel/.claude/
 *.pest.php
 .tools/
 .claude
+*.backup

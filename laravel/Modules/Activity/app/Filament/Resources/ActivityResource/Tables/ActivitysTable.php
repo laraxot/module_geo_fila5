@@ -12,7 +12,7 @@ class ActivitysTable extends XotBaseResourceTable
     /**
      * @return array<string, \Filament\Tables\Columns\Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
     /**
      * @return array<int\|string, \Filament\Tables\Columns\Column>

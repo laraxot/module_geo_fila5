@@ -57,7 +57,7 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'type' => TextColumn::make('type')
@@ -95,7 +95,7 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             app(GetYearFilter::class)
@@ -106,7 +106,7 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             EditAction::make(),
@@ -114,7 +114,7 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),

@@ -42,7 +42,7 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'tipo' => TextColumn::make('tipo')
@@ -58,7 +58,7 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             app(GetYearFilter::class)
@@ -67,7 +67,7 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             EditAction::make(),
@@ -75,7 +75,7 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),

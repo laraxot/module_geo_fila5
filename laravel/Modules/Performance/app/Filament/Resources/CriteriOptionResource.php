@@ -107,7 +107,7 @@ class CriteriOptionResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             app(GetYearFilter::class)

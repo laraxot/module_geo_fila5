@@ -12,7 +12,7 @@ class SnapshotsTable extends XotBaseResourceTable
     /**
      * @return array<int|string, \Filament\Tables\Columns\Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id')->searchable()->sortable(),

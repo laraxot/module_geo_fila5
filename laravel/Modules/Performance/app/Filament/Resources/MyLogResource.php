@@ -49,7 +49,7 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'id_tbl' => TextColumn::make('id_tbl')
@@ -69,12 +69,12 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [];
     }
 
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             EditAction::make(),
@@ -82,7 +82,7 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),

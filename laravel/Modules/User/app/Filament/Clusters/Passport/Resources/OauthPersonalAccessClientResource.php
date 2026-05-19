@@ -72,7 +72,7 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
      *
      * @return array<string, Tables\Columns\Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'id' => Tables\Columns\TextColumn::make('id')
@@ -99,7 +99,7 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
      *
      * @return array<string, Tables\Filters\BaseFilter>
      */
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             'client_id' => Tables\Filters\SelectFilter::make('client_id')
@@ -113,7 +113,7 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
      *
      * @return array<string, Action>
      */
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             'edit' => EditAction::make(),
@@ -126,7 +126,7 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
      *
      * @return array<string, Action|ActionGroup>
      */
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             'delete' => BulkActionGroup::make([

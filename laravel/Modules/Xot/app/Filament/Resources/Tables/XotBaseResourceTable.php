@@ -3,11 +3,88 @@
 declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Resources\Tables;
+use Filament\Actions;
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\AssociateAction;
+use Filament\Actions\AttachAction;
+use Filament\Actions\BulkAction;
+use Filament\Actions\CreateAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\DetachAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ReplicateAction;
+use Filament\Actions\ViewAction;
+use Filament\Notifications\Notification;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Tables;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Enums\RecordActionsPosition;
+use Filament\Tables\Filters\BaseFilter;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Table;
+use Filament\Widgets\TableWidget;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Str;
+use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
+use Modules\Xot\Filament\Traits\HasXotTable;
+use Modules\Xot\Filament\Traits\TransTrait;
+use Webmozart\Assert\Assert;
 
 abstract class XotBaseResourceTable
 {
+    use HasXotTable;
+
+    final public static function configure(Table $table): Table
+    {
+        $obj=new static();
+        return  $table
+            ->recordTitleAttribute($obj->getTableRecordTitleAttribute())
+            ->heading($obj->getTableHeading())
+            ->columns($obj->layoutView->getTableColumns($obj->getTableColumns(), $obj->getGridTableColumns()))
+            ->contentGrid($obj->layoutView->getTableContentGrid())
+            ->filters($obj->getTableFilters())
+            ->filtersLayout(FiltersLayout::AboveContent)
+            ->filtersFormColumns($obj->getTableFiltersFormColumns())
+            ->persistFiltersInSession()
+            ->headerActions($obj->getTableHeaderActions())
+            ->recordActions($obj->getTableActions())
+            ->toolbarActions($obj->getTableBulkActions())
+            ->recordActionsPosition(RecordActionsPosition::BeforeColumns)
+            ->emptyStateActions($obj->getTableEmptyStateActions())
+            ->striped()
+            ->paginated($obj->getTablePaginated());
+
+        // Configurazioni opzionali personalizzabili
+        $sortColumn = $obj->getDefaultTableSortColumn();
+        $sortDirection = $obj->getDefaultTableSortDirection();
+        if (null !== $sortColumn && null !== $sortDirection) {
+            $table = $table->defaultSort($sortColumn, $sortDirection);
+        }
+
+        $pollInterval = $obj->getTablePollInterval();
+        if (null !== $pollInterval) {
+            $table = $table->poll($pollInterval);
+        }
+
+        return $table;
+    }
+
     /**
      * @return array<int\|string, \Filament\Tables\Columns\Column>
      */
-    abstract public static function getTableColumns(): array;
+    abstract public function getTableColumns(): array;
+
+
+
+    
+
+  
 }

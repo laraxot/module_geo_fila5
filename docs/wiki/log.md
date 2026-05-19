@@ -212,3 +212,13 @@ module: "ptvx-project"
 [2026-05-20 15:00:00 UTC] [CREATE] MCP minimum stack obbligatorio (5): `.mcp.json`, `.cursor/mcp.json`, `docs/wiki/_templates/mcp-minimum-stack.json`, `how-to/mcp-minimum-stack.md`; gate `verify-llm-wiki.sh` sezione MCP; `llm-wiki.txt` §17 + checklist §20.
 
 **Total Operations:** 111
+
+[2026-05-21 00:00:00 UTC] [UPDATE] MCP stack: `laravel-boost` usa `php` su PATH (non path fisso php8.3) in `.mcp.json`, `.cursor/mcp.json`, template, `laravel/.mcp.json`; gate `verify-llm-wiki.sh` controlla `php`; `llm-wiki.txt` §17 + quick ref MCP.
+
+**Total Operations:** 112
+
+[2026-05-19 11:02:00 UTC] [UPDATE] `llm-wiki.txt`: fix typo `npm install -g context-mode playwright /test puppeteer` → `@playwright/test`; §13 verified links aggiunto MCP minimum stack (`how-to/mcp-minimum-stack.md` + template); §17 `laravel-boost` label semplificato, `php laravel/artisan list`; §20 checklist voce MCP minimi. Gate verify-llm-wiki.sh: 39/39 ✅.
+
+[2026-05-19 13:09:00 UTC] [LINT] Housekeeping `docs/wiki/`: rimossi 7 orphan `.lock` (crash agent precedenti) e 9 file `.old` stale (SCHEMA, CONTEXT_MODE_SETUP, second-brain-implementation, second_brain, laravel-13-upgrade-*, namespace-rules, namespace_conventions, naming_conventions). Git history preserva i contenuti. Gate `verify-llm-wiki.sh` 39/39 ✅.
+
+**Total Operations:** 114

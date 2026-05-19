@@ -50,7 +50,7 @@ class OrganizzativaCatCoeffResource extends XotBaseResource
         ];
     }
 
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'lista_propro' => TextColumn::make('lista_propro')
@@ -77,7 +77,7 @@ class OrganizzativaCatCoeffResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             app(GetYearFilter::class)
@@ -86,7 +86,7 @@ class OrganizzativaCatCoeffResource extends XotBaseResource
         ];
     }
 
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             EditAction::make(),
@@ -94,7 +94,7 @@ class OrganizzativaCatCoeffResource extends XotBaseResource
         ];
     }
 
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),

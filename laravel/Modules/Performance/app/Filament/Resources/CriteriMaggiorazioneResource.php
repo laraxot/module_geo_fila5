@@ -68,7 +68,7 @@ class CriteriMaggiorazioneResource extends XotBaseResource
         ];
     }
 
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'anno' => TextColumn::make('anno')
@@ -95,7 +95,7 @@ class CriteriMaggiorazioneResource extends XotBaseResource
         ];
     }
 
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             'anno' => app(GetYearFilter::class)
@@ -103,14 +103,14 @@ class CriteriMaggiorazioneResource extends XotBaseResource
         ];
     }
 
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             'edit' => EditAction::make(),
         ];
     }
 
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             'delete' => DeleteBulkAction::make(),
