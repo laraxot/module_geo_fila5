@@ -32,3 +32,23 @@ Quality bar for agents:
 3. Do not preload large docs; use QMD with `--limit`.
 4. Log reusable decisions in the nearest `docs/wiki/log.md`.
 5. Refresh QMD after structural wiki edits.
+
+
+## Update: Forbidden Residues
+
+Verified absent locally:
+
+- `laravel/Modules/Notify/.agent~HEAD`
+- `laravel/Modules/Notify/.ai-context~HEAD`
+- `laravel/Modules/Notify/.ai~HEAD`
+- `laravel/Modules/Notify/.clauderules~HEAD`
+- `laravel/Modules/Notify/.claude~HEAD`
+- `laravel/Modules/Notify/.cursor~HEAD`
+- `laravel/Modules/Notify/.iflow~HEAD`
+- `laravel/Modules/Notify/.junie~HEAD`
+- `laravel/Modules/Notify/.phive~HEAD`
+- `laravel/Modules/Notify/.windsurf~HEAD`
+- `laravel/Modules/Notify/.zai~HEAD`
+- `laravel/Modules/Media/docs/wiki/_archive/`
+
+General rule added to prompt: no merge residue files (`*~HEAD`, `*~BASE`, `*~LOCAL`, `*~REMOTE`, `.orig`, `.rej`) and no wiki archive folders. Use git history for the past and active wiki pages for current knowledge.

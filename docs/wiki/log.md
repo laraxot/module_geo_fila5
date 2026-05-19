@@ -137,6 +137,8 @@ module: "ptvx-project"
 [2026-05-19 14:35:00 UTC] [UPDATE] Moved root wiki files to concepts/ and how-to/ subdirectories; updated main index.md.
 [2026-05-19 14:40:00 UTC] [UPDATE] Refactored 00-TRIGGER_MAP.md with categorized triggers and improved discoverability.
 
-[2026-05-19 11:50:00 UTC] [LINT] Disciplina nomi cartella LLM Wiki: rinominati percorsi `archive`/`archived`/`backup*` in `legacy`/`superseded`/`snapshot*` nel repo; risolti marker di merge in `laravel/Modules/Notify/docs/wiki/index.md`; aggiornati policy/gitignore/raw index / prompt `llm-wiki.txt` e `on-demand-pattern.md`; `verify-llm-wiki.sh` usa pattern precisi + esclusione `vendor`/`node_modules` — **0 failed, 0 warnings**
+[2026-05-19 12:15:00 UTC] [UPDATE] `bashscripts/tools/prompts/llm-wiki.txt` — workflow GitHub (`gh` + repo `provtv/base_ptv_fila5_mono`, `has_wiki=false` verificato via API), `./docs/chat/` operativo, cache QMD duale, tab deep-link Filament/context-mode; §17 privata di path non presenti nel tree; nuove §18–§20 troubleshooting/routing/health; checklist chiusura task; allineamento issue #122/#123
 
-**Total Operations:** 91
+[2026-05-19 13:10:00 UTC] [LINT] Rimossi da git file debris merge/sync (`*.md~head` in Notify e Media docs, `Notify/.phive~laraxot_dev`); aggiunti ignore `*~HEAD` e `*~head` in `.gitignore` root e `laravel/Modules/Notify/.gitignore`; `laravel/Modules/Media/docs/.gitignore` ignora `wiki/_archive/`; aggiornato `bashscripts/tools/prompts/llm-wiki.txt` (§7 debris + vietato `_archive` sotto `docs/wiki/`, §11–§12, §14 find).
+
+**Total Operations:** 93

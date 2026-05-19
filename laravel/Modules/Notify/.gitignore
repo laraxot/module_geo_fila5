@@ -109,6 +109,15 @@ Thumbs.db
 *.bakcup
 *.new
 
+# Merge / conflict debris (copie backup ~HEAD / ~head / `.tool~branch`)
+*~HEAD
+*~BASE
+*~LOCAL
+*~REMOTE
+*.orig
+*.rej
+*~head
+
 # ==============================================
 # DEVELOPMENT TOOLS
 # ==============================================

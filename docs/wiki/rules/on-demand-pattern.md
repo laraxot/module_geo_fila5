@@ -14,7 +14,7 @@ updated: 2026-05-19
 
 ```text
 docs/
-├── raw/                         # immutable sources (read-only evidence)
+├── raw/                         # source evidence, edit conservatively
 ├── wiki/                        # root synthesized knowledge
 │   ├── index.md                 # master catalog
 │   ├── log.md                   # append-only activity log
@@ -40,6 +40,10 @@ Task triggered
     -> apply rule / use skill / run command
     -> update nearest docs/wiki/log.md
 ```
+
+## Reality Discipline
+
+Do not state filesystem guarantees that were not verified. `docs/raw/` is source evidence and should be edited conservatively, but it is not assumed read-only. Verify actual file state and permissions before making claims.
 
 ## Trigger Resolution Contract
 

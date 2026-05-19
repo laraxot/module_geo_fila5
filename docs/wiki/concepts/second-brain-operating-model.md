@@ -37,11 +37,15 @@ The repository contains a large amount of useful documentation across root, modu
 
 The second brain exists to compile those scattered materials into stable knowledge pages that agents can query before changing code.
 
+## Reality Discipline
+
+The wiki must not invent permanence or permissions. Raw docs are source evidence and should be changed only with care, but they are not assumed immutable or read-only unless the filesystem or repository policy proves it.
+
 ## Repository Mapping
 
 | Layer | Purpose | Primary Paths |
 |---|---|---|
-| Raw docs | Immutable or semi-immutable source material | `docs/`, `laravel/Modules/*/docs/`, `laravel/Themes/*/docs/` |
+| Raw docs | Source evidence to treat conservatively; not guaranteed read-only | `docs/`, `laravel/Modules/*/docs/`, `laravel/Themes/*/docs/` |
 | Compiled wiki | Synthesized knowledge for fast reuse | `docs/wiki/`, `laravel/Modules/*/docs/wiki/`, `laravel/Themes/*/docs/wiki/` |
 | Log | Operational audit trail | `**/docs/wiki/log.md` |
 | Schema | Local documentation conventions | `**/docs/wiki/SCHEMA.md` |
