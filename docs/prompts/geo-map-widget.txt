@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+--- GEO MAP LIT — BMAD Story Prompt & Technical Reference ---
+Last updated: 2026-04-30
+Scope: Modules/Geo — reusable GeoMapWidget + geo-map-lit Web Component
+Audience: Developers implementing or maintaining the map widget
+
+--- ZERO TOLERANCE RULES ---
+1. ZERO CDN — no unpkg, cdnjs, jsdelivr for Leaflet/Lit/markercluster/heat
+2. ZERO labels() in Filament — translations via __() and json_encode
+3. ZERO re-fetch — GeoJSON loaded ONCE, all filtering client-side
+4. ZERO L.Icon.Default — use createGeoMapLeafletIcon(L, color)
+5. ZERO L.control.zoom() / L.control.layers() — use renderControls()
+6. ZERO duplicate module code — use shared ctx-based modules (DRY)
+7. ZERO page-specific CSS selectors — component-scoped only
+8. ZERO inline labels/placeholders in Blade — use __() with translation keys
+9. ZERO show-search attribute — search toggled via _searchOpen internally
+10. RESPONSIVE: verify mobile (390px), tablet (768px), desktop (1280px)
+11. ESM PLUGINS: ALWAYS set window.L = L before importing leaflet plugins
+12. ZERO L.geoJson wrapper — create markers directly, add to cluster group
+
+--- Architecture & Design ---
+Goal: Align /it/tests/segnalazioni-elenco with Design Comuni reference.
+Reference: farmshops.eu direktvermarkter.js
+
+Components:
+- Map: <geo-map-lit> Lit Web Component (Light DOM)
+- Data: Static GeoJSON fetch (/data/tickets.json)
+- Popups: AJAX fetch to /api/ticket-details/{id} on marker click
+
+--- Cluster LOD (farmshops.eu Parity) ---
+- Zoom < 8: Show count circle only (80px diameter)
+- Zoom >= 8: Show count circle with category dots (colored SVG circles)
+- Zoom >= 12: Cluster radius reduces to 45px
+- minimumClusterSize: 2 (no cluster for single markers)
+
+--- Implementation Pattern ---
+```javascript
+// Farmshops.eu pattern: create markers directly
+_loadGeoJson() {
+    fetch(url).then(res => res.json()).then(data => {
+        data.features.forEach(feature => {
+            const coords = feature.geometry?.coordinates;
+            if (!coords || coords.length < 2) return;
+            const latlng = L.latLng(coords[1], coords[0]); // GeoJSON is [lng, lat]
+            const marker = L.marker(latlng, {
+                icon: createGeoMapLeafletIcon(L, feature.properties?.type_color),
+                typeValue: feature.properties?.type,
+            });
+            this._allMarkers.push(marker);
+        });
+        if (this._markersLayer) {
+            this._markersLayer.addLayers(this._allMarkers);
+        }
+    });
+}
+```
+
+--- Documentation Checklist ---
+- [x] laravel/Modules/Geo/docs/wiki/concepts/geo-map-cluster.md
+- [x] laravel/Modules/Fixcity/docs/wiki/concepts/farmshops-clustering-integration.md
+- [x] laravel/Modules/Geo/docs/prompts/geo-map-widget.txt (this file)
+- [ ] Ingest new documents into QMD/Second Brain
+- [ ] Update LLM Wiki index with new entries
+=======
+bmad-create-story Devi creare un Filament v5 widget chiamato GeoMapWidget all’interno del modulo Geo dell’applicazione Laravel, rispettando rigorosamente l’architettura a moduli e senza inserire codice fuori dal dominio GEO. Il widget deve replicare e migliorare profondamente il comportamento del progetto open source https://github.com/CodeforKarlsruhe/farmshops.eu
+ che deve essere studiato a fondo prima di scrivere qualsiasi codice, analizzando in particolare la logica del file direktvermarkter.js e l’intero sistema di gestione dati e mappa. È obbligatorio non inventare funzionalità o librerie inesistenti e non assumere comportamenti non verificati, ma basarsi su standard reali come Leaflet e GeoJSON e verificare sempre le librerie su npm o documentazione ufficiale. Il widget deve mostrare una mappa interattiva basata su Leaflet con caricamento di un unico file GeoJSON contenente massimo circa 3000 punti, caricati una sola volta senza ulteriori chiamate server, replicando il pattern farmshops di dataset statico per performance. Il rendering deve supportare clustering tramite leaflet.markercluster, visualizzazione per zoom con logica LOD (cluster, categoria aggregata, dettaglio), e gestione stateful lato client senza ricaricare dati. Deve includere un sistema di layer multipli (points, cluster, heatmap, zones/poligoni) attivabili tramite UI interna del widget e con possibilità di combinazione layer. Deve includere interazione completa con marker cliccabili che aprono popup, selezione di punti, sincronizzazione con eventuali stati interni e possibilità di filtraggio client-side. Tutta la logica deve essere implementata in un Web Component basato su Lit per isolamento UI, con Leaflet come motore di rendering, senza dipendere da CDN ma solo da npm e build Vite del progetto Laravel. Il widget deve essere altamente modulare, leggibile e scalabile, con separazione tra data layer GeoJSON, rendering layer Leaflet e state management interno. Il sistema deve essere ottimizzato per performance evitando re-render inutili e riducendo al minimo iterazioni su dataset. Deve essere previsto un layer manager interno per gestire attivazione e disattivazione dinamica dei layer. È obbligatorio studiare continuamente le migliori pratiche online su GIS web, Leaflet advanced usage e pattern simili a farmshops, migliorando iterativamente la soluzione. Il lavoro non è considerato completato finché non passa PHPStan, PHPMD, PHP Insights e test Pest senza errori, e non deve contenere codice speculativo o non verificato.
+>>>>>>> c3b9b5924 (.)
