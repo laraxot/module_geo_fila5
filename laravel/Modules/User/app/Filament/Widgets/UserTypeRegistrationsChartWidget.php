@@ -9,8 +9,9 @@ use Flowframe\Trend\TrendValue;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
-class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
+final class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
 {
+    /** @var class-string */
     public string $model;
 
     protected ?string $heading = null;
@@ -20,9 +21,9 @@ class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
     protected static bool $isLazy = true;
 
     #[\Override]
-    public function getHeading(): ?string
+    public function getHeading(): string
     {
-        return static::transClass($this->model, 'widgets.user_type_registrations_chart.heading');
+        return self::transClass($this->model, 'widgets.user_type_registrations_chart.heading');
     }
 
     #[\Override]
@@ -37,10 +38,8 @@ class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
 
         // Verifica se i filtri sono disponibili e validi
         if (is_array($filters) && ! empty($filters)) {
-            /** @phpstan-ignore-next-line */
-            $startDate = ! empty($filters['startDate']) ? Carbon::parse($filters['startDate']) : null;
-            /** @phpstan-ignore-next-line */
-            $endDate = ! empty($filters['endDate']) ? Carbon::parse($filters['endDate']) : null;
+            $startDate = self::parseFilterDate($filters['startDate'] ?? null);
+            $endDate = self::parseFilterDate($filters['endDate'] ?? null);
         }
 
         // Fallback ai valori di default se i filtri non sono disponibili
@@ -63,7 +62,7 @@ class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => static::transClass($this->model, 'widgets.user_type_registrations_chart.label'),
+                        'label' => self::transClass($this->model, 'widgets.user_type_registrations_chart.label'),
                         'data' => $data->map(fn (mixed $value) => $value instanceof TrendValue
                             ? $value->aggregate
                             : 0),
@@ -82,7 +81,7 @@ class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => static::transClass($this->model, 'widgets.user_type_registrations_chart.label'),
+                        'label' => self::transClass($this->model, 'widgets.user_type_registrations_chart.label'),
                         'data' => [],
                         'backgroundColor' => 'rgba(59, 130, 246, 0.5)',
                         'borderColor' => 'rgb(59, 130, 246)',
@@ -99,5 +98,14 @@ class UserTypeRegistrationsChartWidget extends XotBaseChartWidget
     protected function getType(): string
     {
         return 'line';
+    }
+
+    private static function parseFilterDate(mixed $value): ?Carbon
+    {
+        if (! is_string($value) && ! is_int($value) && ! is_float($value)) {
+            return null;
+        }
+
+        return Carbon::parse($value);
     }
 }

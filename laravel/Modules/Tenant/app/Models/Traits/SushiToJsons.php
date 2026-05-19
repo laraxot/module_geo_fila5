@@ -46,7 +46,7 @@ trait SushiToJsons
             $item = [];
 
             // Ensure schema is an array
-            $schema = $this->schema ?? [];
+            $schema = $this->resolveSchema();
 
             /** @var array<string, mixed> $schema */
             foreach ($schema as $name => $type) {
@@ -75,10 +75,7 @@ trait SushiToJsons
         return TenantService::filePath($filename);
     }
 
-    /**
-     * @return ?string
-     */
-    public function getConnectionName()
+    public function getConnectionName(): ?string
     {
         return parent::getConnectionName();
     }
@@ -114,12 +111,10 @@ trait SushiToJsons
             $item = [];
 
             // PHPStan Level 10: Type-safe schema access
-            if (! isset($model->schema) || ! is_iterable($model->schema)) {
+            $schema = $model->resolveSchema();
+            if ($schema === []) {
                 throw new Exception('Schema property must be iterable');
             }
-
-            /** @var iterable<string, mixed> $schema */
-            $schema = $model->schema;
             foreach ($schema as $name => $type) {
                 $value = $data[$name] ?? null;
                 $item[$name] = $value;
@@ -176,6 +171,28 @@ trait SushiToJsons
         });
 
         // ----------------------
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function resolveSchema(): array
+    {
+        $reflection = new \ReflectionObject($this);
+        if (! $reflection->hasProperty('schema')) {
+            return [];
+        }
+
+        $property = $reflection->getProperty('schema');
+        $property->setAccessible(true);
+        $schemaValue = $property->getValue($this);
+
+        if (! is_array($schemaValue)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $schemaValue */
+        return $schemaValue;
     }
 
     // end function boot

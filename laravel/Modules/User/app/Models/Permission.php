@@ -59,10 +59,8 @@ class Permission extends SpatiePermission
     use RelationX;
     use Updater;
 
-    /** @var string */
     protected $connection = 'user';
 
-    /** @var string */
     protected $table = 'permissions';
 
     /** @var list<string> */

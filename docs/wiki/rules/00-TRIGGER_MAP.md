@@ -3,32 +3,32 @@ title: "Unified Trigger Map"
 type: "rule"
 tags: [trigger-map, on-demand, routing]
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-19
 ---
 
 # 00-TRIGGER_MAP
 
-> Canonical routing table: task trigger → wiki resources to load on-demand.
+> Canonical routing table: task trigger -> wiki resources to load on-demand.
 
 ## Triggers
 
 | Trigger | Load |
-|---------|------|
+|---|---|
 | New module/theme | `docs/wiki/concepts/module-structure.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
-| Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
-| Token overflow / 262K / API 400 / compaction | `docs/wiki/concepts/context-overflow-prevention.md` |
-| QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
-| BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
-| Agent coordination | `docs/wiki/agents/INDEX.md` |
+| Second brain quality / wiki maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md`, `docs/wiki/concepts/second-brain-audit-checks.md` |
+| Rules on-demand / skill routing | `docs/wiki/rules/on-demand-pattern.md`, `docs/wiki/skills/INDEX.md` |
 | Skill needed | `docs/wiki/skills/INDEX.md` |
+| Skill authoring / reusable workflow | `docs/wiki/skills/on-demand-skill-maintenance.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Command reference | `docs/wiki/commands/INDEX.md` |
 | Pattern/memory recall | `docs/wiki/memories/INDEX.md` |
-| LLM wiki discipline | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
-| Git policy | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
-| Cache discipline | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
-| Bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
+| Agent coordination | `docs/wiki/agents/INDEX.md` |
+| QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
+| Token overflow / 262K / API 400 / compaction | `docs/wiki/concepts/context-overflow-prevention.md` |
+| LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
+| Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
+| BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
 | Accessor/mutator | `docs/wiki/concepts/accessor-auto-persistence.md` |
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |
@@ -38,8 +38,6 @@ updated: 2026-05-12
 | XotBaseListRecords / getResource auto-resolve | `docs/wiki/rules/filament-resource-property.md` |
 | Skill: crea filament page | `laravel/Modules/Xot/docs/wiki/skills/filament-page-creation.md` |
 | Namespace modulo / `\app\` nel namespace | `docs/wiki/rules/laraxot-module-namespace.md` |
-| Context overflow / token limit / 262K | `docs/wiki/concepts/context-overflow-prevention.md` |
-| Session troppo lunga / compaction error | `docs/wiki/concepts/context-overflow-prevention.md` |
 | User Filament translations / LangServiceProvider | `laravel/Modules/User/docs/wiki/rules/INDEX.md`, `laravel/Modules/User/docs/wiki/skills/filament-translation-audit.md` |
 | Lang translation keys / translation ownership | `laravel/Modules/Lang/docs/wiki/rules/translation-key-governance.md`, `laravel/Modules/Lang/docs/wiki/skills/translation-key-audit.md` |
 | Activity XotBaseResource zen pattern | `laravel/Modules/Activity/docs/wiki/rules/INDEX.md`, `laravel/Modules/Activity/docs/wiki/concepts/xotbase-resource-zen-pattern.md` |
@@ -48,7 +46,5 @@ updated: 2026-05-12
 ## Usage
 
 ```bash
-# Identify trigger → consult this map
 qmd search "<trigger topic>" --limit 5
-# Read matched files, apply rule/use skill
 ```

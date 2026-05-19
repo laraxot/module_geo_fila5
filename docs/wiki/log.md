@@ -124,3 +124,15 @@ module: "ptvx-project"
 [2026-05-12 10:35:00 UTC] [LINT] Verified workspace against LLM Wiki on-demand pattern. Removed forbidden .cache/ and redundant node_modules in .agents/. Renamed root .md files and docs/ folders to comply with lowercase kebab-case standards. Updated docs/roadmap.md.
 
 **Total Operations:** 88
+
+[2026-05-19 12:00:00 UTC] [UPDATE] `bashscripts/tools/prompts/llm-wiki.txt` — estesi best/bad practices e false friends; tabella link verificati ripartita per sezione; rimosso riferimento a `compression-levels.md` inesistente (mirror in `llm-wiki-operational-discipline.md` / `on-demand-pattern.md`); check stub include `AGENTS.md`; trigger namespace allineato a `docs/wiki/rules/laraxot-module-namespace.md`
+
+**Total Operations:** 89
+
+[2026-05-19 11:35:00 UTC] [LINT] Ripristino integrità `bashscripts/tools/prompts/llm-wiki.txt` (rimosso prefisso tabellare accidentale e coda spuria); link verificati corretti (`bashscripts/ai/rules/context-compression-discipline.md`); bad/false friends estesi; check QMD cache allineato a `~/.cache/qmd` OR `qmd-cache`; rimosso `bashscripts/ai/.agents/node_modules`, aggiunto `node_modules/` a `.agents/.gitignore`; `verify-llm-wiki.sh`: stub `AGENTS.md` ≤50 righe, gate QMD cache duale — verify **0 failed**
+
+**Total Operations:** 90
+
+[2026-05-19 14:30:00 UTC] [LINT] Normalized wiki naming convention to kebab-case; renamed duplicates in rules/ to .old.
+[2026-05-19 14:35:00 UTC] [UPDATE] Moved root wiki files to concepts/ and how-to/ subdirectories; updated main index.md.
+[2026-05-19 14:40:00 UTC] [UPDATE] Refactored 00-TRIGGER_MAP.md with categorized triggers and improved discoverability.

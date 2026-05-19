@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseUserResource\Tables;
 
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
@@ -11,7 +12,7 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 class BaseUsersTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, \Filament\Tables\Columns\Column>
+     * @return array<string, Column>
      */
     public static function getTableColumns(): array
     {

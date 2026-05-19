@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Job\app\Filament\Resources\JobsWaitingResource\Tables;
+namespace Modules\Job\Filament\Resources\JobsWaitingResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
@@ -15,9 +15,6 @@ class JobsWaitingsTable extends XotBaseResourceTable
      */
     public static function getTableColumns(): array
     {
-    /**
-     * @return array<int\|string, \Filament\Tables\Columns\Column>
-     */
         return [
             'id' => TextColumn::make('id')->sortable(),
             'name' => TextColumn::make('name')->searchable(),

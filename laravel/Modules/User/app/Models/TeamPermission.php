@@ -56,8 +56,6 @@ class TeamPermission extends BaseModel
 {
     /**
      * The database connection that should be used by the model.
-     *
-     * @var string
      */
     protected $connection = 'user';
 

@@ -25,7 +25,6 @@ use Modules\Xot\Filament\Pages\XotBasePage;
 class Colors extends XotBasePage
 {
     // $data è già definita in XotBasePage, non ridichiarare!
-
     protected string $view = 'user::filament.clusters.appearance.pages.colors';
 
     protected static ?string $cluster = Appearance::class;

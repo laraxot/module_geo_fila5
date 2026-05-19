@@ -10,7 +10,7 @@ Indice operativo del wiki Xot (core framework).
 - [comparisons/](./comparisons/): Implementazioni alternative.
 - [decisions/](./decisions/): ADL (Architectural Decision Log).
 - [troubleshooting/](./troubleshooting/): Problemi noti e soluzioni.
-- [_archive/](./_archive/): Documentazione legacy.
+- Storico modulo fuori dal wiki canonico: [../legacy/](../legacy/) (se presente).
 - [_templates/](./_templates/): Template standard.
 
 ## Regole collegate

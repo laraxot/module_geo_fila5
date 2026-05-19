@@ -28,11 +28,6 @@ class PasswordResetWidget extends XotBaseWidget
     public bool $emailSent = false;
 
     /**
-     * @phpstan-ignore-next-line
-     */
-    protected string $view = 'pub_theme::filament.widgets.auth.password.reset';
-
-    /**
      * Get the form schema for password reset.
      */
     #[\Override]

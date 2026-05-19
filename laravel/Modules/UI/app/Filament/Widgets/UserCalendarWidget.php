@@ -19,18 +19,19 @@ class UserCalendarWidget extends XotBaseWidget
 
     public function getActionName(string $function): string
     {
-        $action_suffix = Str::of($function)->studly()->append('Action')->toString();
+        $actionSuffix = Str::of($function)->studly()->append('Action')->toString();
         $resource = XotData::make()->getUserResourceClassByType($this->type);
         $model = $resource::getModel();
         $modelString = \is_string($model) ? $model : (string) $model;
 
         return Str::of($modelString)
             ->replace('\Models\\', '\\Actions\\')
-            ->append('\\Calendar\\'.$action_suffix)
+            ->append('\\Calendar\\'.$actionSuffix)
             ->toString();
     }
 
     /**
+     * @param array<string, mixed> $fetchInfo
      * @param array<string, mixed> $fetchInfo
      *
      * @return array<int, array<string, mixed>>
@@ -48,16 +49,7 @@ class UserCalendarWidget extends XotBaseWidget
             return [];
         }
 
-        $resultRaw = $actionInstance->execute($fetchInfo);
-
-        if (! self::isValidEventsArray($resultRaw)) {
-            return [];
-        }
-
-        /** @var array<int, array<string, mixed>> $result */
-        $result = $resultRaw;
-
-        return $result;
+        return self::normalizeEventsArray($actionInstance->execute($fetchInfo));
     }
 
     /**
@@ -70,13 +62,7 @@ class UserCalendarWidget extends XotBaseWidget
         if (class_exists($action)) {
             $actionInstance = app($action);
             if (\is_object($actionInstance) && method_exists($actionInstance, 'execute')) {
-                $resultRaw = $actionInstance->execute();
-                if (self::isValidFormSchema($resultRaw)) {
-                    /** @var array<int, TextInput|Grid> $result */
-                    $result = $resultRaw;
-
-                    return $result;
-                }
+                return self::normalizeFormSchema($actionInstance->execute());
             }
         }
 
@@ -100,45 +86,60 @@ class UserCalendarWidget extends XotBaseWidget
     }
 
     /**
-     * Validate that the given value is an array of events with string keys.
+     * Normalize dynamic calendar action output into typed event arrays.
+     *
+     * @return array<int, array<string, mixed>>
      */
-    private static function isValidEventsArray(mixed $value): bool
+    private static function normalizeEventsArray(mixed $value): array
     {
         if (! \is_array($value)) {
-            return false;
+            return [];
         }
 
+        /** @var array<int, array<string, mixed>> $events */
+        $events = [];
         foreach ($value as $event) {
             if (! \is_array($event)) {
-                return false;
+                continue;
             }
 
-            foreach (array_keys($event) as $key) {
+            $normalizedEvent = [];
+            foreach ($event as $key => $eventValue) {
                 if (! \is_string($key)) {
-                    return false;
+                    continue 2;
                 }
+
+                $normalizedEvent[$key] = $eventValue;
             }
+
+            $events[] = $normalizedEvent;
         }
 
-        return true;
+        return $events;
     }
 
-    private static function isValidFormSchema(mixed $value): bool
+    /**
+     * @phpstan-return array<int, TextInput|Grid>
+     */
+    private static function normalizeFormSchema(mixed $value): array
     {
         if (! \is_array($value)) {
-            return false;
+            return [];
         }
 
+        $schema = [];
         foreach ($value as $key => $item) {
             if (! \is_int($key)) {
-                return false;
+                return [];
             }
 
             if (! ($item instanceof TextInput) && ! ($item instanceof Grid)) {
-                return false;
+                return [];
             }
+
+            $schema[] = $item;
         }
 
-        return true;
+        return $schema;
     }
 }

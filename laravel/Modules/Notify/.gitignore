@@ -121,8 +121,8 @@ Thumbs.db
 # ==============================================
 docs/phpstan/
 docs/cache/
-docs/archive/
-docs/archive/**
+docs/legacy/
+docs/legacy/**
 
 # ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)

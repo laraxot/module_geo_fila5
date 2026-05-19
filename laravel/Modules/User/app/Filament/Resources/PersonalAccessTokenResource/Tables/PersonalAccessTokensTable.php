@@ -15,13 +15,22 @@ class PersonalAccessTokensTable extends XotBaseResourceTable
      */
     public static function getTableColumns(): array
     {
-        /*
-         * @return array<int\|string, \Filament\Tables\Columns\Column>
-         */
         return [
             'id' => TextColumn::make('id')->sortable(),
+            'uuid' => TextColumn::make('uuid'),
+            'tokenable_type' => TextColumn::make('tokenable_type'),
+            'tokenable_id' => TextColumn::make('tokenable_id'),
             'name' => TextColumn::make('name')->searchable(),
+            'token' => TextColumn::make('token'),
+            'abilities' => TextColumn::make('abilities'),
+            'last_used_at' => TextColumn::make('last_used_at')->dateTime(),
+            'expires_at' => TextColumn::make('expires_at')->dateTime(),
             'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(),
+            'deleted_at' => TextColumn::make('deleted_at')->dateTime()->toggleable(),
+            'updated_by' => TextColumn::make('updated_by')->toggleable(),
+            'created_by' => TextColumn::make('created_by')->toggleable(),
+            'deleted_by' => TextColumn::make('deleted_by')->toggleable(),
         ];
     }
 }

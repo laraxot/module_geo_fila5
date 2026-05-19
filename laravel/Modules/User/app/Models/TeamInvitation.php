@@ -66,7 +66,6 @@ use Modules\Xot\Datas\XotData;
  */
 class TeamInvitation extends BaseModel
 {
-    /** @var string */
     protected $connection = 'user';
 
     /** @var list<string> */

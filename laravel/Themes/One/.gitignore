@@ -1,3 +1,3 @@
 # Documentation archives are local-only scratch/history.
-docs/archive/
-docs/archive/**
+docs/legacy/
+docs/legacy/**

@@ -25,12 +25,8 @@ use Modules\User\Filament\Widgets\Auth\PasswordResetWidget;
 use Modules\User\Filament\Widgets\Auth\RegisterWidget;
 use Modules\User\Filament\Widgets\Auth\ResetPasswordWidget;
 use Modules\User\Filament\Widgets\Auth\SocialLoginWidget;
-use Modules\User\Models\Permission as UserPermission;
-use Modules\User\Models\Role as UserRole;
-use Modules\User\Models\Team;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Providers\XotBaseServiceProvider;
-use Spatie\Permission\PermissionRegistrar;
 use Webmozart\Assert\Assert;
 
 class UserServiceProvider extends XotBaseServiceProvider
@@ -53,63 +49,11 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerPolicies();
     }
 
-    /**
-     * Registra i widget Livewire auth per le viste Blade/Folio.
-     * In Livewire v4, resolveClassComponentClassName con namespace '::' cerca SOLO in classNamespaces
-     * (non in classComponents), quindi Livewire::component('user::...', class) non funziona.
-     * Usare addComponent($class) che usa hash-based naming, compatibile con @livewire(Class::class).
-     */
-    protected function registerLivewireAuthWidgets(): void
-    {
-        $widgets = [
-            LoginWidget::class,
-            SocialLoginWidget::class,
-            RegisterWidget::class,
-            ResetPasswordWidget::class,
-            PasswordResetWidget::class,
-            ForgotPasswordWidget::class,
-            PasswordResetConfirmWidget::class,
-        ];
-
-        foreach ($widgets as $class) {
-            Livewire::addComponent($class);
-        }
-    }
-
     #[\Override]
     public function register(): void
     {
         parent::register();
-        $this->registerSpatiePermissionModels();
         // $this->registerTeamModelBindings();
-    }
-
-    /**
-     * Keep Spatie Permission aligned with the User module ownership.
-     *
-     * Config cache or provider ordering drift must not leave the registrar without
-     * the team model while `permission.teams` is enabled.
-     */
-    protected function registerSpatiePermissionModels(): void
-    {
-        Config::set('permission.models.permission', UserPermission::class);
-        Config::set('permission.models.role', UserRole::class);
-        Config::set('permission.models.team', Team::class);
-        Config::set('permission.teams', true);
-
-        $configureRegistrar = static function (PermissionRegistrar $registrar): void {
-            $registrar
-                ->setPermissionClass(UserPermission::class)
-                ->setRoleClass(UserRole::class)
-                ->setTeamClass(Team::class)
-                ->initializeCache();
-        };
-
-        $this->app->afterResolving(PermissionRegistrar::class, $configureRegistrar);
-
-        if ($this->app->resolved(PermissionRegistrar::class)) {
-            $configureRegistrar($this->app->make(PermissionRegistrar::class));
-        }
     }
 
     public function registerMailsNotification(): void
@@ -215,6 +159,29 @@ class UserServiceProvider extends XotBaseServiceProvider
 
             return $pwd->getPasswordRule();
         });
+    }
+
+    /**
+     * Registra i widget Livewire auth per le viste Blade/Folio.
+     * In Livewire v4, resolveClassComponentClassName con namespace '::' cerca SOLO in classNamespaces
+     * (non in classComponents), quindi Livewire::component('user::...', class) non funziona.
+     * Usare addComponent($class) che usa hash-based naming, compatibile con @livewire(Class::class).
+     */
+    protected function registerLivewireAuthWidgets(): void
+    {
+        $widgets = [
+            LoginWidget::class,
+            SocialLoginWidget::class,
+            RegisterWidget::class,
+            ResetPasswordWidget::class,
+            PasswordResetWidget::class,
+            ForgotPasswordWidget::class,
+            PasswordResetConfirmWidget::class,
+        ];
+
+        foreach ($widgets as $class) {
+            Livewire::addComponent($class);
+        }
     }
 
     /**

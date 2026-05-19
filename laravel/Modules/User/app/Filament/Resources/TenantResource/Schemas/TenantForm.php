@@ -6,6 +6,7 @@ namespace Modules\User\Filament\Resources\TenantResource\Schemas;
 
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component as SchemaComponent;
 use Filament\Schemas\Components\Section;
 use Illuminate\Support\Str;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
@@ -13,7 +14,7 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 class TenantForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<int|string, SchemaComponent>
      */
     public static function getFormSchema(): array
     {

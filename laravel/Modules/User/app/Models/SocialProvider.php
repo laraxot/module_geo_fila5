@@ -62,7 +62,6 @@ class SocialProvider extends BaseModel
 {
     use SushiToPhpArray;
 
-    /** @var bool */
     public $incrementing = false;
 
     /** @var list<string> */

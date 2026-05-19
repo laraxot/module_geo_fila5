@@ -15,13 +15,19 @@ class SocialProvidersTable extends XotBaseResourceTable
      */
     public static function getTableColumns(): array
     {
-        /*
-         * @return array<int\|string, \Filament\Tables\Columns\Column>
-         */
         return [
             'id' => TextColumn::make('id')->sortable(),
+            'uuid' => TextColumn::make('uuid'),
             'name' => TextColumn::make('name')->searchable(),
+            'slug' => TextColumn::make('slug'),
+            'provider' => TextColumn::make('provider'),
+            'active' => TextColumn::make('active')->badge(),
+            'socialite' => TextColumn::make('socialite')->badge(),
+            'stateless' => TextColumn::make('stateless')->badge(),
             'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(),
+            'updated_by' => TextColumn::make('updated_by')->toggleable(),
+            'created_by' => TextColumn::make('created_by')->toggleable(),
         ];
     }
 }

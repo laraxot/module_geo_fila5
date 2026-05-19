@@ -6,7 +6,7 @@ namespace Modules\Job\Filament\Resources\FailedJobResource\Schemas;
 
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 /**

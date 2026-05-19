@@ -1,14 +1,29 @@
 ---
-title: "Tenant Wiki Activity Log"
+title: "Activity Log"
 module: "Tenant"
 ---
 
-# Tenant - Wiki Activity Log
+# Activity Log — Tenant
 
-## [2026-05-11] Wiki Structure Created
+> **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
-- Created wiki structure: rules/, skills/, commands/, memories/, concepts/
-- Created INDEX.md for each section
-- Created module index.md
-- Ready for on-demand loading via QMD
+## Log Entries
 
+_No activity yet. Start by ingesting raw documents._
+
+### Format
+
+```
+[YYYY-MM-DD HH:MM:SS UTC] [OPERATION] Description
+```
+
+**Operations:**
+- `INGEST` — Added raw document to wiki
+- `QUERY` — Answered question from wiki
+- `LINT` — Maintained wiki quality
+- `UPDATE` — Modified existing wiki page
+
+---
+
+**Last Activity:** None  
+**Total Operations:** 0

@@ -12,6 +12,5 @@ use Laravel\Passport\Token as PassportToken;
  */
 class OauthToken extends PassportToken
 {
-    /** @var string */
     protected $connection = 'user';
 }

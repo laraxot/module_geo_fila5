@@ -47,6 +47,7 @@ return [
             'label' => 'Disconnetti',
             'tooltip' => 'Disconnetti account social',
         ],
+        'save' => 'Salva configurazione',
     ],
     'messages' => [
         'connected' => 'Account social connesso con successo',
@@ -79,9 +80,6 @@ return [
             'scopes' => 'Scopes (permessi)',
             'redirect' => 'URL di redirect (copia in Azure AD)',
         ],
-    ],
-    'actions' => [
-        'save' => 'Salva configurazione',
     ],
     'help' => [
         'title' => 'Guida alla configurazione OAuth',

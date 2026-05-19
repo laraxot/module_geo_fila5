@@ -217,7 +217,6 @@ class UserMassSeeder extends Seeder
         // Crea profili per tutti gli utenti
         $profileFactory = ProfileFactory::new();
         foreach ($users as $user) {
-            // @phpstan-ignore-next-line
             $profileFactory->create([
                 'user_id' => $user->id,
                 'created_at' => $user->created_at,

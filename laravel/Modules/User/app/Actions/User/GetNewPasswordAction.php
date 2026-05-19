@@ -17,7 +17,7 @@ class GetNewPasswordAction
     {
         $user = $record;
 
-        $password = once(function () use ($user) {
+        return once(function () use ($user) {
             $generator = new GetPronounceablePasswordAction();
             $plainPassword = $generator->execute();
             $hasher = app(Hasher::class);
@@ -29,7 +29,5 @@ class GetNewPasswordAction
 
             return $plainPassword;
         });
-
-        return $password;
     }
 }

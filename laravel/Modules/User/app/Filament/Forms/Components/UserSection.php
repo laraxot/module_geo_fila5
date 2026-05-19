@@ -14,11 +14,6 @@ use Filament\Schemas\Components\Section;
 
 class UserSection extends Section
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'user';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -32,5 +27,10 @@ class UserSection extends Section
                 TextInput::make('email'),
             ]),
         ]);
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'user';
     }
 }

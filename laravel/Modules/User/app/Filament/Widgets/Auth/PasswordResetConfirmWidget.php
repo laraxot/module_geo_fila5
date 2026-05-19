@@ -40,11 +40,6 @@ class PasswordResetConfirmWidget extends XotBaseWidget
     public ?string $errorMessage = null;
 
     /**
-     * @phpstan-ignore-next-line
-     */
-    protected string $view = 'pub_theme::filament.widgets.auth.password.reset-confirm';
-
-    /**
      * Mount the widget with token and optional email.
      */
     public function mount(?string $token = null, ?string $email = null): void
@@ -146,8 +141,7 @@ class PasswordResetConfirmWidget extends XotBaseWidget
                 // Redirect after a short delay to show success message
                 $this->js('setTimeout(() => { window.location.href = "'.route('login').'"; }, 3000);');
             } else {
-                /* @phpstan-ignore argument.type */
-                $this->handleResetError($response);
+                $this->handleResetError(is_string($response) ? $response : 'passwords.generic_error');
             }
         } catch (\Exception $e) {
             $this->handleResetError('passwords.generic_error');

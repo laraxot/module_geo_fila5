@@ -26,8 +26,7 @@ class Change extends Component
 
     public XotData $xot;
 
-    /** @var UserContract */
-    public $user;
+    public UserContract $user;
 
     public function mount(): void
     {

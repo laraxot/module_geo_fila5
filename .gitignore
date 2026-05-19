@@ -378,7 +378,7 @@ dump.rdb
 # =============================================================================
 laravel/database/migrations/
 .qwen/
-docs/archive/
+docs/legacy/
 .gemini/
 .cursor/
 .opencode/

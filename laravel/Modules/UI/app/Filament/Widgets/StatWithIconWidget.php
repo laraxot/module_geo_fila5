@@ -13,10 +13,7 @@ final class StatWithIconWidget extends XotBaseWidget
 
     protected string|Htmlable $label;
 
-    /**
-     * @var scalar|Htmlable|\Closure
-     */
-    protected $value;
+    protected string|int|float|bool|Htmlable|\Closure $value;
 
     public function getFormSchema(): array
     {

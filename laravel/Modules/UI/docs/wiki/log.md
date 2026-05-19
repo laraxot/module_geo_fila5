@@ -1,5 +1,10 @@
 # UI Wiki Log
 
+## [2026-05-06] phpstan | Dynamic array normalization
+- Nuova pagina: `concepts/phpstan-dynamic-array-normalization.md`.
+- Documentato pattern per convertire output dinamici action/Livewire in array tipizzati senza `@var` inline, ignore o baseline.
+- Applicato a `UserCalendarWidget`, `InteractiveMap` e `LocationSelector`.
+
 ## [2026-04-28] governance | Model States ownership e compatibilita' Laravel 13
 - Nuova pagina: `concepts/model-states-module-ownership.md`.
 - Distinto ownership tecnico (`UI` + `Xot`) da compatibilita' runtime.

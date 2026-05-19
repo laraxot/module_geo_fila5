@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Modules\Job\app\Filament\Resources\ExportResource\Schemas;
+namespace Modules\Job\Filament\Resources\ExportResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Section;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 class ExportForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<int|string, Component>
      */
     public static function getFormSchema(): array
     {

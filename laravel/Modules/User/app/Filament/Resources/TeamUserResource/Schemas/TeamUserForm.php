@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TeamUserResource\Schemas;
 
+use Filament\Schemas\Components\Component as SchemaComponent;
 use Modules\Xot\Filament\Forms\Components\XotBaseSelect;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
@@ -11,7 +12,7 @@ use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 class TeamUserForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<int|string, SchemaComponent>
      */
     public static function getFormSchema(): array
     {

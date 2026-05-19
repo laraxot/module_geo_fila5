@@ -13,10 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class OauthPersonalAccessClient extends BaseModel
 {
-    /** @var string */
     protected $table = 'oauth_personal_access_clients';
 
-    /** @var string */
     protected $connection = 'user';
 
     /** @var list<string> */

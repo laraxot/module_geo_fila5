@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Carbon\CarbonInterval;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\AuthCode;
 use Laravel\Passport\Client;
@@ -122,13 +121,10 @@ class PassportServiceProvider extends ServiceProvider
         Passport::useAuthCodeModel($authCodeModel);
         Passport::useClientModel($clientModel);
 
-        // @phpstan-ignore-next-line - method_exists check kept for backward compatibility with older Passport versions
-        if (method_exists(Passport::class, 'useDeviceCodeModel')) {
-            $deviceCodeModel = $models['device_code'] ?? OauthDeviceCode::class;
-            Assert::stringNotEmpty($deviceCodeModel);
-            Assert::subclassOf($deviceCodeModel, DeviceCode::class);
-            Passport::useDeviceCodeModel($deviceCodeModel);
-        }
+        $deviceCodeModel = $models['device_code'] ?? OauthDeviceCode::class;
+        Assert::stringNotEmpty($deviceCodeModel);
+        Assert::subclassOf($deviceCodeModel, DeviceCode::class);
+        Passport::useDeviceCodeModel($deviceCodeModel);
     }
 
     /**
@@ -155,8 +151,7 @@ class PassportServiceProvider extends ServiceProvider
         }
 
         if (! empty($scopes)) {
-            // PHPStan: dopo i controlli Assert, l'array è garantito essere array<string, string>
-            /** @var array<string, string> $typedScopes */
+            /** @phpstan-ignore varTag.nativeType */
             $typedScopes = $scopes;
             Passport::tokensCan($typedScopes);
         }

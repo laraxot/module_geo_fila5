@@ -7,12 +7,13 @@ namespace Modules\User\Filament\Resources\BaseUserResource\Schemas;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Component;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 class BaseUserForm extends XotBaseResourceForm
 {
     /**
-     * @return array<string, \Filament\Forms\Components\Component>
+     * @return array<string, Component>
      */
     public static function getFormSchema(): array
     {

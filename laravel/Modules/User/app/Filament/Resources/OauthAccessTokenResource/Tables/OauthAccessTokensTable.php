@@ -15,13 +15,17 @@ class OauthAccessTokensTable extends XotBaseResourceTable
      */
     public static function getTableColumns(): array
     {
-        /*
-         * @return array<int\|string, \Filament\Tables\Columns\Column>
-         */
         return [
             'id' => TextColumn::make('id')->sortable(),
-            'name' => TextColumn::make('name')->searchable(),
+            'user_id' => TextColumn::make('user_id'),
+            'client_id' => TextColumn::make('client_id'),
+            'name' => TextColumn::make('name'),
+            'scopes' => TextColumn::make('scopes'),
+            'revoked' => TextColumn::make('revoked')->badge(),
+            'expires_at' => TextColumn::make('expires_at')->dateTime(),
             'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(),
+            'deleted_at' => TextColumn::make('deleted_at')->dateTime()->toggleable(),
         ];
     }
 }

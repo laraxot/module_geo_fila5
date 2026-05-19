@@ -151,9 +151,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  */
 class User extends BaseUser
 {
-    /** @var string */
-    public $connection = 'user';
-
     /** @var array<string, class-string> */
     protected $childTypes = [
         'master_admin' => self::class,

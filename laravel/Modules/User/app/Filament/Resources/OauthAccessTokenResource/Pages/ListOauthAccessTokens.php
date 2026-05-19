@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\OauthAccessTokenResource\Pages;
 
 use Filament\Actions\Action;
-use Filament\Actions\CreateAction; // Added
+// Added
 use Modules\User\Filament\Resources\OauthAccessTokenResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 

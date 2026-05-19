@@ -35,7 +35,6 @@ class Notification extends BaseNotification
 {
     use HasXotFactory;
 
-    /** @var string */
     protected $connection = 'user';
 
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];

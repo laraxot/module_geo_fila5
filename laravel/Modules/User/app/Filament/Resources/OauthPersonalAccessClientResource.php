@@ -24,7 +24,6 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
  */
 final class OauthPersonalAccessClientResource extends XotBaseResource
 {
-    /** @phpstan-ignore-next-line Resource model is a valid Eloquent subtype, but PHPStan loses the inheritance edge in this context. */
     protected static ?string $model = OauthPersonalAccessClient::class;
 
     protected static ?string $recordTitleAttribute = 'id';
@@ -55,19 +54,6 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
                 ])
                 ->columns(2),
         ];
-    }
-
-    /**
-     * Define the table for the resource.
-     */
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns(self::getTableColumns())
-            ->filters(self::getTableFilters())
-            ->actions(self::getTableActions())
-            ->bulkActions(self::getTableBulkActions())
-            ->defaultSort('created_at', 'desc');
     }
 
     /**

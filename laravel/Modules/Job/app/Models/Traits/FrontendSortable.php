@@ -36,6 +36,8 @@ trait FrontendSortable
             },
             static function (Builder $query) use ($defaultSort): void {
                 foreach ($defaultSort as $key => $direction) {
+                    /** @var 'asc'|'desc' $direction */
+                    $direction = in_array($direction, ['asc', 'desc'], true) ? $direction : 'asc';
                     $query->orderBy($key, $direction);
                 }
             },

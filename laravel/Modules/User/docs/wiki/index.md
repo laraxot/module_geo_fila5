@@ -10,7 +10,7 @@ Indice operativo del wiki User.
 - [comparisons/](./comparisons/): Implementazioni alternative.
 - [decisions/](./decisions/): ADL (Architectural Decision Log).
 - [troubleshooting/](./troubleshooting/): Problemi noti e soluzioni.
-- [_archive/](./_archive/): Documentazione legacy.
+- Storico modulo fuori dal wiki canonico: [../legacy/](../legacy/) (se presente).
 - [_templates/](./_templates/): Template standard.
 
 ## Regole collegate
@@ -19,11 +19,6 @@ Indice operativo del wiki User.
 - [llm-wiki-standard](../../../../docs/project/karpathy-llm-wiki-adoption.md): Mapping repository e ciclo di vita conoscenza.
 - [laravel-socialite](../../../../docs/wiki/concepts/laravel-socialite.md): OAuth social authentication.
 - [laravel-permission](../../../../docs/wiki/concepts/laravel-permission.md): RBAC Spatie Laravel Permission.
-
-## On-Demand Entry Points
-
-- [rules/INDEX](./rules/INDEX.md): regole operative ricorrenti su Filament, traduzioni e proprieta' navigazione.
-- [skills/INDEX](./skills/INDEX.md): skill locali e condivise per audit traduzioni e creazione page Filament.
 
 ## Scopo User Module
 
@@ -54,9 +49,8 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 | [socialite-github-tenant](./concepts/socialite-github-tenant.md) | Concept | OAuth GitHub | 2026-04-27 |
 | [socialite-facebook-tenant](./concepts/socialite-facebook-tenant.md) | Concept | OAuth Facebook | 2026-04-27 |
 | [socialite-linkedin-tenant](./concepts/socialite-linkedin-tenant.md) | Concept | OAuth LinkedIn | 2026-04-27 |
-| [spatie-permission-teams-laravel-13](../spatie-permission-teams-laravel-13.md) | Guide | Spatie teams + Laravel 13 | 2026-05-05 |
-| [no-filament-labels](./rules/no-filament-labels.md) | Rule | Filament senza label inline | 2026-05-12 |
-| [filament-translation-audit](./skills/filament-translation-audit.md) | Skill | Audit traduzioni Filament User | 2026-05-12 |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Widget property types PHPStan | 2026-05-06 |
+| [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 24 Table files populated — XotBaseResourceTable enforcement | 2026-05-07 |
 
 ## Best Practices
 
@@ -82,15 +76,6 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 |--------|------|-----------|
 | [socialite-development](./concepts/socialite-development.md) | Concept | Socialite troubleshooting |
 | [spatie-permission-team-model-not-configured](./troubleshooting/spatie-permission-team-model-not-configured.md) | Troubleshooting | Team model mancante in config permission |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
 
-## Raw Sources
-
-Vedi [[../raw/index|Lista Sorgenti Grezzi]]
-
-## Index Globale
-
-Vedi [[../../../../docs/wiki/index|Index Globale Wiki]]
-
----
-
-Ultimo aggiornamento: 2026-05-12
+Aggiornato: 2026-05-06

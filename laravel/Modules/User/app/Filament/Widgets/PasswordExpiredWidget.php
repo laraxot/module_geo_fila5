@@ -65,7 +65,7 @@ class PasswordExpiredWidget extends XotBaseWidget
         ];
 
         // Ensure list type for PHPStan Level 10
-        /* @var array<int, Component> $result */
+        /* @var array<int, Component> $schema */
         return array_values($schema);
     }
 

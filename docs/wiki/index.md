@@ -30,6 +30,8 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 
 ## Concepts
 
+- [second-brain](./concepts/second-brain.md)
+- [schema](./concepts/schema.md)
 - [module-structure](./concepts/module-structure.md)
 - [actions-over-services](./concepts/actions-over-services.md)
 - [accessor-auto-persistence](./concepts/accessor-auto-persistence.md)
@@ -43,7 +45,7 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 - [context-mode-plugin](./concepts/context-mode-plugin.md)
 - [context-mode-cli-reference](./concepts/context-mode-cli-reference.md)
 - [spatie-permission-teams-laravel-13](./concepts/spatie-permission-teams-laravel-13.md)
-- [laravel13-modular-composer-upgrade](./concepts/laravel13-modular-composer-upgrade.md)
+- [laravel-13-upgrade-analysis](./concepts/laravel-13-upgrade-analysis.md)
 - [context-mode-usage](./concepts/context-mode-usage.md)
 
 ## How-To Guides
@@ -62,6 +64,7 @@ qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architectu
 
 ### Development Tools and Patterns
 - [kilo-code-setup](./how-to/kilo-code-setup.md)
+- [context-mode-setup](./how-to/context-mode-setup.md)
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md)
 - [wiki-search-performance](./how-to/wiki-search-performance.md)
 - [wiki-search-accessibility](./how-to/wiki-search-accessibility.md)

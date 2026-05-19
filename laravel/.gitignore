@@ -25,8 +25,8 @@ docs.backup.*
 docs.archive.*
 
 # Documentation archives are local-only scratch/history.
-**/docs/archive/
-**/docs/archive/**
+**/docs/legacy/
+**/docs/legacy/**
 laravel/config/local/ptvx/database/content/information_schema_tables.json
 bootstrap/cache/*
 config/local/tv/prov/personale2022/database/content/information_schema_tables.json

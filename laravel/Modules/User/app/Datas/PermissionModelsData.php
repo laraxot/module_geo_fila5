@@ -15,6 +15,4 @@ class PermissionModelsData extends Data
 
     // Modules\User\Models\Permission::class;
     public string $role; // Modules\User\Models\Role::class;
-
-    public string $team; // Modules\User\Models\Team::class;
 }

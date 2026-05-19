@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Forms\Components;
 
-use BackedEnum;
 use Filament\Forms\Components\Select;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
@@ -14,18 +13,6 @@ use Filament\Support\Contracts\HasLabel;
  */
 final class EnumSelect extends Select
 {
-    /**
-     * Create a new EnumSelect component.
-     * Signature must match Filament\\Forms\\Components\\Field::make(?string $name = null).
-     */
-    public static function make(?string $name = null): static
-    {
-        /** @var static $component */
-        $component = parent::make($name);
-
-        return $component->native(false);
-    }
-
     protected string|\Closure|null $enumClass = null;
 
     protected bool $showIcons = false;
@@ -39,6 +26,18 @@ final class EnumSelect extends Select
         $this->native(false);
 
         $this->options(fn (): array => $this->generateOptions());
+    }
+
+    /**
+     * Create a new EnumSelect component.
+     * Signature must match Filament\\Forms\\Components\\Field::make(?string $name = null).
+     */
+    public static function make(?string $name = null): static
+    {
+        /** @var static $component */
+        $component = parent::make($name);
+
+        return $component->native(false);
     }
 
     public function enum(string|\Closure|null $enum): static
@@ -60,6 +59,49 @@ final class EnumSelect extends Select
         $this->allowHtml = $allow;
 
         return $this;
+    }
+
+    public function getEnumClass(): ?string
+    {
+        $enumClass = $this->evaluate($this->enumClass);
+
+        return is_string($enumClass) && '' !== $enumClass ? $enumClass : null;
+    }
+
+    public function hasIcons(): bool
+    {
+        return $this->showIcons;
+    }
+
+    public function allowsHtml(): bool
+    {
+        return $this->allowHtml;
+    }
+
+    public function placeholderWhenNoSelection(string $placeholder): static
+    {
+        $this->placeholder($placeholder);
+
+        return $this;
+    }
+
+    public function convertToEnum(mixed $value): ?\BackedEnum
+    {
+        $enumClass = $this->getEnumClass();
+
+        if (null === $enumClass || null === $value || '' === $value) {
+            return null;
+        }
+
+        if (! is_int($value) && ! is_string($value)) {
+            return null;
+        }
+
+        $this->validateEnumClass($enumClass);
+        /** @var class-string<\BackedEnum> $enumClass */
+        $enum = $enumClass::tryFrom($value);
+
+        return $enum instanceof \BackedEnum ? $enum : null;
     }
 
     protected function generateOptions(): array
@@ -154,53 +196,11 @@ final class EnumSelect extends Select
     protected function validateEnumClass(string $enumClass): void
     {
         if (! enum_exists($enumClass)) {
-            throw new \InvalidArgumentException("Enum class [$enumClass] does not exist.");
+            throw new \InvalidArgumentException("Enum class [{$enumClass}] does not exist.");
         }
 
         if (! is_subclass_of($enumClass, \BackedEnum::class)) {
-            throw new \InvalidArgumentException("Enum class [$enumClass] must be a backed enum.");
+            throw new \InvalidArgumentException("Enum class [{$enumClass}] must be a backed enum.");
         }
-    }
-
-    public function getEnumClass(): ?string
-    {
-        $enumClass = $this->evaluate($this->enumClass);
-
-        return is_string($enumClass) && '' !== $enumClass ? $enumClass : null;
-    }
-
-    public function hasIcons(): bool
-    {
-        return $this->showIcons;
-    }
-
-    public function allowsHtml(): bool
-    {
-        return $this->allowHtml;
-    }
-
-    public function placeholderWhenNoSelection(string $placeholder): static
-    {
-        $this->placeholder($placeholder);
-
-        return $this;
-    }
-
-    public function convertToEnum(mixed $value): ?\BackedEnum
-    {
-        $enumClass = $this->getEnumClass();
-
-        if (null === $enumClass || null === $value || '' === $value) {
-            return null;
-        }
-
-        if (! is_int($value) && ! is_string($value)) {
-            return null;
-        }
-
-        $this->validateEnumClass($enumClass);
-        /* @var class-string<BackedEnum> $enumClass */
-
-        return $enumClass::tryFrom($value);
     }
 }

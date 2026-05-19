@@ -87,6 +87,17 @@ Every agent MUST follow this search hierarchy:
 
 Run `qmd embed` after updating context descriptions to re-index with improved semantic matching.
 
+## Excellence Standard
+
+"Perfect" documentation in this repository means operationally excellent, not verbose. A page is excellent when it is:
+
+- **Findable**: reachable from trigger map, index, or QMD query.
+- **Scoped**: root, module, theme, or tooling ownership is clear.
+- **Atomic**: one durable idea or workflow per page.
+- **Actionable**: states what to do, when to do it, and how to verify it.
+- **Auditable**: source paths and `log.md` entry exist.
+- **Low-token**: examples are trimmed unless they are essential to correctness.
+
 ## Continuous Maintenance Loop
 
 Each meaningful documentation pass should follow this loop:
@@ -97,6 +108,8 @@ Each meaningful documentation pass should follow this loop:
 4. update `index.md` so the new knowledge is discoverable
 5. append the operation to `log.md`
 6. leave behind a tighter structure than the one that was found
+7. verify new or changed links with filesystem checks or QMD retrieval
+8. update QMD after structural wiki changes
 
 This is the minimum cycle required to keep the second brain compounding instead of decaying.
 
@@ -110,8 +123,9 @@ This is the minimum cycle required to keep the second brain compounding instead 
 
 - Build source-summary pages for the highest-value docs clusters.
 - Normalize recurring concepts into stable wiki pages instead of leaving them only in raw markdown.
-- Use the BMAD story `1-2-second-brain-docs-ingestion.md` as the implementation brief for systematic ingest.
-- Add recurring health checks for stale, duplicate, orphaned, and non-indexed documentation nodes.
+- Promote repeated chat/prompt workflows into skill pages with verification steps.
+- Keep `00-TRIGGER_MAP.md` aligned with new cross-cutting rules and skills.
+- Add recurring health checks for stale, duplicate, orphaned, oversized, and non-indexed documentation nodes.
 - Apply the same maintenance loop to module and theme `docs/` trees, not only to root documentation.
 
 ## References

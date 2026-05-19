@@ -128,7 +128,7 @@ class OauthDeviceCodeResource extends XotBaseResource
                     ->color('danger')
                     ->requiresConfirmation()
                     ->modalHeading(static::trans('actions.revoke.label'))
-                    ->action(function (mixed $record) {
+                    ->action(function (mixed $record): void {
                         if ($record instanceof OauthDeviceCode) {
                             $record->revoked = true;
                             $record->save();

@@ -26,10 +26,8 @@ class LogoutWidget extends XotBaseWidget
 {
     /**
      * The view for this widget.
-     *
-     * @phpstan-ignore property.defaultValue
      */
-    protected string $view = 'user::widgets.auth.logout-widget';
+    protected string $view = 'user::filament.widgets.auth.logout';
 
     /**
      * Mount the widget and initialize the form.
@@ -47,27 +45,8 @@ class LogoutWidget extends XotBaseWidget
     #[\Override]
     public function getFormSchema(): array
     {
-        $view = 'filament.widgets.auth.logout-message';
-        // @phpstan-ignore-next-line
-        if (! view()->exists($view)) {
-            throw new \Exception('View '.$view.' not found');
-        }
-
         return [
-            'logout_message' => View::make($view)->columnSpanFull(),
-        ];
-    }
-
-    /**
-     * Get form actions for logout widget.
-     *
-     * @return array<Action>
-     */
-    protected function getFormActions(): array
-    {
-        return [
-            $this->getLogoutAction(),
-            $this->getCancelAction(),
+            'logout_message' => View::make('user::filament.widgets.auth.logout-message')->columnSpanFull(),
         ];
     }
 
@@ -92,6 +71,19 @@ class LogoutWidget extends XotBaseWidget
         $this->dispatchPostLogoutEvent();
         $this->logLogoutSuccess($user);
         $this->redirectAfterLogout();
+    }
+
+    /**
+     * Get form actions for logout widget.
+     *
+     * @return array<Action>
+     */
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getLogoutAction(),
+            $this->getCancelAction(),
+        ];
     }
 
     /**

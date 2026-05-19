@@ -6,7 +6,6 @@ namespace Modules\User\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Collection;
@@ -428,15 +427,7 @@ trait HasTeams
             'current_team_id' => $team->id,
         ]);
 
-        if (! $this->save()) {
-            return false;
-        }
-
-        \setPermissionsTeamId($team);
-        $this->unsetRelation('roles');
-        $this->unsetRelation('permissions');
-
-        return true;
+        return $this->save();
     }
 
     /**

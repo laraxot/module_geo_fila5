@@ -3,6 +3,7 @@
 /**
  * Tenant List Management.
  */
+
 declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TenantResource\Pages;

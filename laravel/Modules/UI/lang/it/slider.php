@@ -48,28 +48,4 @@ return [
             'label' => 'Elimina Slider',
         ],
     ],
-    'label' => 'Slider',
-    'plural_label' => 'Slider (Plurale)',
-    'navigation' => [
-        'name' => 'Slider',
-        'plural' => 'Slider',
-        'group' => [
-            'name' => 'General',
-            'description' => 'General Settings',
-        ],
-        'label' => 'Slider',
-        'sort' => 1,
-        'icon' => 'heroicon-o-collection',
-    ],
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Slider',
-        ],
-        'edit' => [
-            'label' => 'Modifica Slider',
-        ],
-        'delete' => [
-            'label' => 'Elimina Slider',
-        ],
-    ],
 ];

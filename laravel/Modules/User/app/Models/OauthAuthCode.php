@@ -30,6 +30,5 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  */
 class OauthAuthCode extends PassportAuthCode
 {
-    /** @var string */
     protected $connection = 'user';
 }

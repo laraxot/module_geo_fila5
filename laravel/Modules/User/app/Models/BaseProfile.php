@@ -7,7 +7,6 @@ namespace Modules\User\Models;
 // // use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
@@ -74,27 +73,6 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     use IsProfileTrait;
     use Notifiable;
     use SchemalessAttributesTrait;
-    // use SoftDeletes;
-
-    /**
-     * The "booted" method of the model.
-     */
-    protected static function booted(): void
-    {
-        static::creating(static function (self $model): void {
-            if (empty($model->uuid)) {
-                $model->uuid = (string) Str::uuid();
-            }
-        });
-    }
-
-    /**
-     * Scope per lookup da API/Android/Postgres (usa uuid, non id).
-     */
-    public function scopeByUuid(Builder $query, string $uuid): Builder
-    {
-        return $query->where('uuid', $uuid);
-    }
 
     /**
      * Undocumented variable.
@@ -134,10 +112,18 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'user',
     ];
 
-    /** @var array */
-    protected $formlessAttributes = [
+    /** @var list<string> */
+    protected array $formlessAttributes = [
         'extra',
     ];
+
+    /**
+     * Scope per lookup da API/Android/Postgres (usa uuid, non id).
+     */
+    public function scopeByUuid(Builder $query, string $uuid): Builder
+    {
+        return $query->where('uuid', $uuid);
+    }
 
     // ✅ CORRETTO: NON implementare scopeWithExtraAttributes() manualmente
     // Il trait SchemalessAttributesTrait lo fornisce automaticamente!
@@ -194,6 +180,19 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         }
 
         return $userLang;
+    }
+    // use SoftDeletes;
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::creating(static function (self $model): void {
+            if (empty($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
+        });
     }
 
     /** @return array<string, string> */

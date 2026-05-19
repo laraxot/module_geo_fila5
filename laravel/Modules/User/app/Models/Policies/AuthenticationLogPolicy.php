@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Models\Policies;
 
 use Modules\User\Models\AuthenticationLog;
-use Illuminate\Auth\Access\Response;
 use Modules\User\Models\Permission;
 use Modules\Xot\Contracts\UserContract;
 
@@ -22,7 +21,7 @@ class AuthenticationLogPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(UserContract $user, AuthenticationLog $authenticationLog): Response|bool
+    public function view(UserContract $user, AuthenticationLog $authenticationLog): bool
     {
         return $this->hasPermission($user, 'authentication-log.view')
             || $user->id === $authenticationLog->authenticatable_id
@@ -69,5 +68,21 @@ class AuthenticationLogPolicy extends UserBasePolicy
         return $this->hasPermission($user, 'authentication-log.force-delete') || $user->hasRole('super-admin');
     }
 
-    
+    protected function hasPermission(UserContract $user, string $permission): bool
+    {
+        $exists = Permission::query()
+            ->where('name', $permission)
+            ->where('guard_name', 'web')
+            ->exists();
+
+        if (! $exists) {
+            return false;
+        }
+
+        try {
+            return $user->hasPermissionTo($permission);
+        } catch (\Throwable) {
+            return false;
+        }
+    }
 }

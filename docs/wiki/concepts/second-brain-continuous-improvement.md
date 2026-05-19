@@ -109,6 +109,18 @@ Every documentation improvement pass should check for these failure modes:
 - stale claims that should be re-verified before reuse
 - temporary analyses that should either be promoted to stable knowledge or left clearly archival
 
+## Skill And Rule Improvement Loop
+
+When improving on-demand rules or skills:
+
+1. Search first with `qmd search "rule:<topic>" --limit 5` or `qmd search "skill:<topic>" --limit 5`.
+2. Tighten existing pages before creating new ones.
+3. Separate constraints from procedures: rules say what must hold; skills say how to act.
+4. Keep indexes short and route-only.
+5. Add verification steps to skills and failure modes to rules.
+6. Promote only cross-cutting triggers to the root trigger map.
+7. Log the decision in the nearest `docs/wiki/log.md`.
+
 ## Definition of Done for a Good Ingest
 
 An ingest is good enough when:
@@ -117,6 +129,8 @@ An ingest is good enough when:
 - the result states where the source truth came from
 - the result removes at least one retrieval or interpretation step for future work
 - the operation is visible in `log.md`
+- rule/skill routing is updated when a new reusable behavior is introduced
+- every added "verified link" was checked as an existing local path or retrievable QMD document
 
 ## References
 

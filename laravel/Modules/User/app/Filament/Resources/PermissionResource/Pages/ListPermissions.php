@@ -108,11 +108,10 @@ class ListPermissions extends XotBaseListRecords
                     Select::make('role')->options(function () use ($roleModel): array {
                         /** @var Builder<Role> $query */
                         $query = $roleModel::query();
-                        /** @var \Illuminate\Support\Collection<string|int, string> $collection */
-                        $collection = $query->pluck('name', 'id');
 
-                        /* @var array<string|int, string> $options */
-                        return $collection->toArray();
+                        return $query->pluck('name', 'id')
+                            ->mapWithKeys(static fn (mixed $name, mixed $id): array => is_string($name) || is_int($name) ? [(string) $id => (string) $name] : [])
+                            ->all();
                     })->required(),
                 ])
                 ->deselectRecordsAfterCompletion(),

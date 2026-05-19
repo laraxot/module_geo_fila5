@@ -196,6 +196,11 @@ class Profile extends BaseProfile implements HasMedia
     use InteractsWithMedia;
 
     /**
+     * The table associated with the model.
+     */
+    protected $table = 'profiles';
+
+    /**
      * Get the teams that the profile belongs to.
      */
     public function teams(): BelongsToMany
@@ -222,13 +227,6 @@ class Profile extends BaseProfile implements HasMedia
             'extra',
         ];
     }
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'profiles';
 
     /**
      * Generate Schema.org ProfilePage/Person JSON-LD structured data.

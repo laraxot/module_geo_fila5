@@ -88,7 +88,7 @@ class OauthRefreshTokenResource extends XotBaseResource
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
-                    ->action(function (mixed $record) {
+                    ->action(function (mixed $record): void {
                         if ($record instanceof OauthRefreshToken && app(RevokeRefreshTokenAction::class)->execute($record)) {
                             Notification::make()
                                 ->title(static::trans('actions.revoke.success'))

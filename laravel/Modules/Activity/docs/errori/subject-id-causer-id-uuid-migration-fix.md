@@ -65,4 +65,4 @@ APP_ENV=testing DB_DATABASE=<nome progetto>_data_test DB_DATABASE_USER=<nome pro
 ## Riferimenti
 
 - [migration-spatie-integration.md](./migration-spatie-integration.md)
-- [errori-migrazione-activity-table-lezioni-1.md](./archive/errori-migrazione-activity-table-lezioni-1.md)
+- [errori-migrazione-activity-table-lezioni-1.md](./legacy/errori-migrazione-activity-table-lezioni-1.md)

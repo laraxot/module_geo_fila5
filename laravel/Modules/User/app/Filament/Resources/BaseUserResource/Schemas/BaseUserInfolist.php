@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceInfolist;
 class BaseUserInfolist extends XotBaseResourceInfolist
 {
     /**
-     * @return array<string, \Filament\Infolists\Components\Component>
+     * @return array<string, TextEntry|IconEntry>
      */
     public static function getInfolistSchema(): array
     {

@@ -14,6 +14,5 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  */
 class OauthRefreshToken extends PassportRefreshToken
 {
-    /** @var string */
     protected $connection = 'user';
 }

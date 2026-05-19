@@ -50,14 +50,13 @@ trait IsProfileTrait
     /**
      * Relazione con l'utente a cui appartiene il profilo.
      *
-     * @return BelongsTo<Model&UserContract, static>
+     * @return BelongsTo<Model&UserContract, $this>
      */
     public function user(): BelongsTo
     {
         /** @var class-string<Model&UserContract> $userClass */
         $userClass = XotData::make()->getUserClass();
 
-        // @phpstan-ignore return.type
         return $this->belongsTo($userClass);
     }
 
@@ -221,18 +220,17 @@ trait IsProfileTrait
     /**
      * Relazione con i dispositivi mobili associati al profilo.
      *
-     * @return BelongsToMany<Device, static>
+     * @return BelongsToMany<Device, $this>
      */
     public function mobileDevices(): BelongsToMany
     {
-        // @phpstan-ignore return.type
         return $this->belongsToManyX(Device::class);
     }
 
     /**
      * Relazione con tutti i dispositivi associati al profilo.
      *
-     * @return BelongsToMany<Device, static>
+     * @return BelongsToMany<Device, $this>
      */
     public function devices(): BelongsToMany
     {
@@ -242,22 +240,20 @@ trait IsProfileTrait
     /**
      * Relazione con gli utenti di dispositivi mobili.
      *
-     * @return HasMany<DeviceUser, static>
+     * @return HasMany<DeviceUser, $this>
      */
     public function mobileDeviceUsers(): HasMany
     {
-        // @phpstan-ignore return.type
         return $this->hasMany(DeviceUser::class, 'profile_id')->where('type', 'mobile');
     }
 
     /**
      * Relazione con gli utenti di dispositivi generici.
      *
-     * @return HasMany<DeviceUser, static>
+     * @return HasMany<DeviceUser, $this>
      */
     public function deviceUsers(): HasMany
     {
-        // @phpstan-ignore return.type
         return $this->hasMany(DeviceUser::class, 'profile_id');
     }
 

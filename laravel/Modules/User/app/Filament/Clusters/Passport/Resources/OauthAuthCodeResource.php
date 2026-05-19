@@ -100,7 +100,7 @@ class OauthAuthCodeResource extends XotBaseResource
                     ->color('danger')
                     ->requiresConfirmation()
                     ->modalHeading(static::trans('actions.revoke.label'))
-                    ->action(function (mixed $record) {
+                    ->action(function (mixed $record): void {
                         if ($record instanceof OauthAuthCode) {
                             $record->revoked = true;
                             $record->save();
