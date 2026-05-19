@@ -136,3 +136,7 @@ module: "ptvx-project"
 [2026-05-19 14:30:00 UTC] [LINT] Normalized wiki naming convention to kebab-case; renamed duplicates in rules/ to .old.
 [2026-05-19 14:35:00 UTC] [UPDATE] Moved root wiki files to concepts/ and how-to/ subdirectories; updated main index.md.
 [2026-05-19 14:40:00 UTC] [UPDATE] Refactored 00-TRIGGER_MAP.md with categorized triggers and improved discoverability.
+
+[2026-05-19 11:50:00 UTC] [LINT] Disciplina nomi cartella LLM Wiki: rinominati percorsi `archive`/`archived`/`backup*` in `legacy`/`superseded`/`snapshot*` nel repo; risolti marker di merge in `laravel/Modules/Notify/docs/wiki/index.md`; aggiornati policy/gitignore/raw index / prompt `llm-wiki.txt` e `on-demand-pattern.md`; `verify-llm-wiki.sh` usa pattern precisi + esclusione `vendor`/`node_modules` — **0 failed, 0 warnings**
+
+**Total Operations:** 91

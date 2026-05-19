@@ -62,7 +62,7 @@ Update nearest docs/wiki/log.md
 ## Git Policy
 
 - **Forward only** — study history with `git log`, `git show`, `git diff <hash>^!`, never restore
-- No `_archive/`, `archive/`, `backup/` folders
+- No cartelle i cui nomi violano il gate `bashscripts/quality-gates/verify-llm-wiki.sh`: `archive`, `_archive`, `archived`, `backup`, `backups`, `backup_*`, `*_backup`, `*-backup`. Per contenuti storici usare `legacy`, `superseded`, `snapshot` / `snapshots`.
 - Atomic commits: one conceptual change per commit
 
 ## Bad Practices
