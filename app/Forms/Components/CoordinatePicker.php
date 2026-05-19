@@ -138,7 +138,7 @@ class CoordinatePicker extends Field
             }
 
             $displayName = $data['display_name'] ?? null;
-            if (! is_string($displayName) || trim($displayName) === '') {
+            if (! is_string($displayName) || '' === trim($displayName)) {
                 return null;
             }
 
