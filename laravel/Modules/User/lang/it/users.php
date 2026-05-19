@@ -60,5 +60,15 @@ return [
             'icon' => 'delete',
             'tooltip' => 'delete',
         ],
+        'changePassword' => [
+            'label' => 'changePassword',
+            'icon' => 'changePassword',
+            'tooltip' => 'changePassword',
+        ],
+        'deactivate' => [
+            'label' => 'deactivate',
+            'icon' => 'deactivate',
+            'tooltip' => 'deactivate',
+        ],
     ],
 ];

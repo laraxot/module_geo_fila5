@@ -183,6 +183,12 @@ trait HasXotTable
      */
     public function table(Table $table): Table
     {
+        return $this->makeByTable($table);
+    }
+
+
+    public function makeByTable(Table $table): Table
+    {
         $class=Str::of(static::class)
         ->replaceLast('\Pages\\List','\Tables\\')
         ->append('Table')

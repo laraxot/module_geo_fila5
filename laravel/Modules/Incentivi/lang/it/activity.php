@@ -183,6 +183,18 @@ return [
         ],
         'layout' => [
             'tooltip' => 'layout',
+            'label' => 'layout',
+            'icon' => 'layout',
+        ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
         ],
     ],
     'sections' => [

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Tables;
 
+use Filament\Actions\Action;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Modules\User\Filament\Actions\ChangePasswordAction;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class UsersTable extends XotBaseResourceTable
@@ -29,6 +32,20 @@ class UsersTable extends XotBaseResourceTable
             'type' => TextColumn::make('type'),
             'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
             'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(),
+        ];
+    }
+
+    #[\Override]
+    public function getTableActions(): array
+    {
+        return [
+            ...parent::getTableActions(),
+            'change_password' => ChangePasswordAction::make()->tooltip('Cambio Password')->iconButton(),
+            'deactivate' => Action::make('deactivate')
+                ->tooltip(__('filament-actions::delete.single.label'))
+                ->color('danger')
+                ->icon('heroicon-o-trash')
+                ->action(static fn (UserContract $user) => $user->delete()),
         ];
     }
 }

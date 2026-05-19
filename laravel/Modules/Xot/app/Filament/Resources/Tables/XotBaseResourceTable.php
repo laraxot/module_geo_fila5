@@ -44,36 +44,9 @@ abstract class XotBaseResourceTable
 
     final public static function configure(Table $table): Table
     {
+        
         $obj=new static();
-        return  $table
-            ->recordTitleAttribute($obj->getTableRecordTitleAttribute())
-            ->heading($obj->getTableHeading())
-            ->columns($obj->layoutView->getTableColumns($obj->getTableColumns(), $obj->getGridTableColumns()))
-            ->contentGrid($obj->layoutView->getTableContentGrid())
-            ->filters($obj->getTableFilters())
-            ->filtersLayout(FiltersLayout::AboveContent)
-            ->filtersFormColumns($obj->getTableFiltersFormColumns())
-            ->persistFiltersInSession()
-            ->headerActions($obj->getTableHeaderActions())
-            ->recordActions($obj->getTableActions())
-            ->toolbarActions($obj->getTableBulkActions())
-            ->recordActionsPosition(RecordActionsPosition::BeforeColumns)
-            ->emptyStateActions($obj->getTableEmptyStateActions())
-            ->striped()
-            ->paginated($obj->getTablePaginated());
-
-        // Configurazioni opzionali personalizzabili
-        $sortColumn = $obj->getDefaultTableSortColumn();
-        $sortDirection = $obj->getDefaultTableSortDirection();
-        if (null !== $sortColumn && null !== $sortDirection) {
-            $table = $table->defaultSort($sortColumn, $sortDirection);
-        }
-
-        $pollInterval = $obj->getTablePollInterval();
-        if (null !== $pollInterval) {
-            $table = $table->poll($pollInterval);
-        }
-
+        $table=$obj->makeByTable($table);
         return $table;
     }
 
