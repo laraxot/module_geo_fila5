@@ -12,7 +12,7 @@ class MediasTable extends XotBaseResourceTable
     /**
      * @return array<string, \Filament\Tables\Columns\Column>
      */
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
     /**
      * @return array<int\|string, \Filament\Tables\Columns\Column>

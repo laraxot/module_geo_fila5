@@ -10,7 +10,7 @@ Indice operativo del wiki Xot (core framework).
 - [comparisons/](./comparisons/): Implementazioni alternative.
 - [decisions/](./decisions/): ADL (Architectural Decision Log).
 - [troubleshooting/](./troubleshooting/): Problemi noti e soluzioni.
-- Storico modulo fuori dal wiki canonico: [../legacy/](../legacy/) (se presente).
+- [_archive/](./_archive/): Documentazione legacy.
 - [_templates/](./_templates/): Template standard.
 
 ## Regole collegate
@@ -61,7 +61,3 @@ Core framework Laraxot: XotBase classes, Actions, PHPStan Level 10, Filament int
 | [xotbasefield-calculated-view-rule](./concepts/xotbasefield-calculated-view-rule.md) | Concept | XotBaseField runtime |
 
 Aggiornato: 2026-04-28
-
-## Shared Second Brain Discipline
-
-- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.

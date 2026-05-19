@@ -405,3 +405,4 @@ laravel/.claude/
 .tools/
 .claude
 *.backup
+*.*~*

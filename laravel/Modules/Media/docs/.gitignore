@@ -1,5 +1,2 @@
 # Local generated documentation archives
-legacy/
-
-# LLM Wiki gate: mai cartelle archive nella wiki modulo (path canonico senza nomi vietati)
-wiki/_archive/
+archive/

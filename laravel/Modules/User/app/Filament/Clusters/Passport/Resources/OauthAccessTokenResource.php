@@ -165,7 +165,7 @@ class OauthAccessTokenResource extends XotBaseResource
     /**
      * @return array<string, Column>
      */
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id')
@@ -240,7 +240,7 @@ class OauthAccessTokenResource extends XotBaseResource
     /**
      * @return array<string, BaseFilter>
      */
-    public function getTableFilters(): array
+    public static function getTableFilters(): array
     {
         return [
             'revoked' => Filter::make('revoked')
@@ -257,7 +257,7 @@ class OauthAccessTokenResource extends XotBaseResource
     /**
      * @return array<string, Action|ActionGroup>
      */
-    public function getTableActions(): array
+    public static function getTableActions(): array
     {
         return [
             'revoke' => Action::make('revoke')
@@ -282,7 +282,7 @@ class OauthAccessTokenResource extends XotBaseResource
     /**
      * @return array<string, BulkAction|ActionGroup>
      */
-    public function getTableBulkActions(): array
+    public static function getTableBulkActions(): array
     {
         return [
             'revoke_all_for_user' => BulkAction::make('revoke_all_for_user')

@@ -14,7 +14,6 @@ use Filament\Resources\Resource as FilamentResource;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Filament\Support\Components\Component;
-use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
@@ -23,9 +22,10 @@ use Modules\Media\Actions\GetAttachmentsSchemaAction;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Actions\ModelClass\CountAction;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Webmozart\Assert\Assert;
 
 use function Safe\glob;
+
+use Webmozart\Assert\Assert;
 
 /**
  * @method static string getUrl(string $name, array<string, mixed> $parameters = [], bool $isAbsolute = true)
@@ -124,16 +124,6 @@ abstract class XotBaseResource extends FilamentResource
             ->columns(static::getFormSchemaColumns());
     }
 
-    public static function table(Table $table): Table{
-        $class = static::class.'\Tables\\'.class_basename(Str::plural(static::getModel())).'Table';
-        if(class_exists($class)){
-            return $class::configure($table);
-        }
-        return $table;
-    }
-
-
-
     public static function getFormSchemaColumns(): int
     {
         return 1;
@@ -158,6 +148,7 @@ abstract class XotBaseResource extends FilamentResource
         if (class_exists($class)) {
             return $class::configure($schema);
         }
+
         return $schema->components(static::getInfolistSchema());
     }
 

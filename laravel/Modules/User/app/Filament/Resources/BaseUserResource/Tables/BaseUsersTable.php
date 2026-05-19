@@ -14,7 +14,7 @@ class BaseUsersTable extends XotBaseResourceTable
     /**
      * @return array<string, Column>
      */
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
         /*
          * @return array<int\|string, \Filament\Tables\Columns\Column>

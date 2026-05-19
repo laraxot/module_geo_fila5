@@ -1,7 +1,5 @@
 # File Locking Pattern - Prevenzione Race Conditions
 
-> **Canonica aggiornata (2026):** policy operativa unica in [`docs/wiki/rules/validation-post-edit-rule.md`](../../../../docs/wiki/rules/validation-post-edit-rule.md) e issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124). Questa pagina resta come contesto storico / filosofia modulo Xot; allinea il workflow al pattern **«se `.lock` esiste → skip; altrimenti touch → edit → rm»**.
-
 ## 🔐 Filosofia
 
 > "Un file alla volta, un maestro alla volta.

@@ -28,7 +28,3 @@ qmd search "Lang <topic>" --limit 5
 ---
 
 Updated: 2026-05-12
-
-## Shared Second Brain Discipline
-
-- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.

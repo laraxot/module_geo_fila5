@@ -70,7 +70,11 @@ class NotificationTemplateResource extends XotBaseResource
         ];
     }
 
+<<<<<<< HEAD
+    public static function getTableColumns(): array
+=======
     public function getTableColumns(): array
+>>>>>>> cc6378f (.)
     {
         return [
             Tables\Columns\TextColumn::make('name'),

@@ -109,6 +109,8 @@ Thumbs.db
 *.bakcup
 *.new
 
+<<<<<<< HEAD
+=======
 # -----------------------------------------------------------------------------
 # Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
 # -----------------------------------------------------------------------------
@@ -120,6 +122,7 @@ Thumbs.db
 *.rej
 *~head
 
+>>>>>>> cc6378f (.)
 # ==============================================
 # DEVELOPMENT TOOLS
 # ==============================================
@@ -132,8 +135,13 @@ Thumbs.db
 # ==============================================
 docs/phpstan/
 docs/cache/
+<<<<<<< HEAD
+docs/archive/
+docs/archive/**
+=======
 docs/legacy/
 docs/legacy/**
+>>>>>>> cc6378f (.)
 
 # ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)

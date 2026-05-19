@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Models;
 
-uses(\Modules\Gdpr\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Gdpr\Models\Event;
+use Modules\Gdpr\Tests\TestCase;
 
 test('event_fillable_attributes', function () {
+    $event = new Event();
     $event = new Event();
     $fillable = $event->getFillable();
 
@@ -22,11 +24,13 @@ test('event_fillable_attributes', function () {
 
 test('event_has_consent_relationship_method', function () {
     $event = new Event();
+    $event = new Event();
 
     expect(method_exists($event, 'consent'))->toBeTrue();
 });
 
 test('event_table_name_is_gdpr_events', function () {
+    $event = new Event();
     $event = new Event();
 
     expect($event->getTable())->toBe('gdpr_events');
@@ -34,11 +38,13 @@ test('event_table_name_is_gdpr_events', function () {
 
 test('event_is_not_incrementing', function () {
     $event = new Event();
+    $event = new Event();
 
     expect($event->getIncrementing())->toBeFalse();
 });
 
 test('event_is_uuid', function () {
+    $event = new Event();
     $event = new Event();
     $traits = class_uses_recursive($event);
 
@@ -47,11 +53,13 @@ test('event_is_uuid', function () {
 
 test('event_has_set_payload_attribute', function () {
     $event = new Event();
+    $event = new Event();
 
     expect(method_exists($event, 'setPayloadAttribute'))->toBeTrue();
 });
 
 test('event_has_set_ip_attribute', function () {
+    $event = new Event();
     $event = new Event();
 
     expect(method_exists($event, 'setIpAttribute'))->toBeTrue();

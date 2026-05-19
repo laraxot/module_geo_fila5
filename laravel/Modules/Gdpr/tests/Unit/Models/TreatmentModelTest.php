@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Models;
 
-uses(\Modules\Gdpr\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Gdpr\Models\Treatment;
+use Modules\Gdpr\Tests\TestCase;
 
 test('treatment_fillable_attributes', function () {
+    $treatment = new Treatment();
     $treatment = new Treatment();
     $fillable = $treatment->getFillable();
 
@@ -24,11 +26,13 @@ test('treatment_fillable_attributes', function () {
 
 test('treatment_is_not_incrementing', function () {
     $treatment = new Treatment();
+    $treatment = new Treatment();
 
     expect($treatment->getIncrementing())->toBeFalse();
 });
 
 test('treatment_is_uuid', function () {
+    $treatment = new Treatment();
     $treatment = new Treatment();
     $traits = class_uses_recursive($treatment);
 
@@ -36,6 +40,7 @@ test('treatment_is_uuid', function () {
 });
 
 test('treatment_extends_base_model', function () {
+    $treatment = new Treatment();
     $treatment = new Treatment();
 
     expect($treatment)->toBeInstanceOf(Modules\Gdpr\Models\BaseModel::class);

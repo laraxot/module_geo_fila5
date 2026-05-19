@@ -31,7 +31,6 @@ use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Str;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
@@ -183,19 +182,6 @@ trait HasXotTable
      */
     public function table(Table $table): Table
     {
-        return $this->makeByTable($table);
-    }
-
-
-    public function makeByTable(Table $table): Table
-    {
-        $class=Str::of(static::class)
-        ->replaceLast('\Pages\\List','\Tables\\')
-        ->append('Table')
-        ->toString();
-        if(class_exists($class)){
-            return $class::configure($table);
-        }
         /*
         $modelClass = $this->getModelClass();
         if (! app(TableExistsByModelClassActions::class)->execute($modelClass)) {

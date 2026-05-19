@@ -9,7 +9,11 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class NotificationsTable extends XotBaseResourceTable
 {
+<<<<<<< HEAD
+    public static function getTableColumns(): array
+=======
     public function getTableColumns(): array
+>>>>>>> cc6378f (.)
     {
     /**
      * @return array<int\|string, \Filament\Tables\Columns\Column>

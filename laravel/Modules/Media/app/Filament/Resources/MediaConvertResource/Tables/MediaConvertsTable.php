@@ -9,7 +9,7 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MediaConvertsTable extends XotBaseResourceTable
 {
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
     /**
      * @return array<int\|string, \Filament\Tables\Columns\Column>

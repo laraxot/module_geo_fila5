@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:91ecdfd0714b20f03bafeab90f3df978bc3479d3365f4399db36cf55e12674c9
-size 872
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <style>
+        .role {
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+        svg:hover .role {
+            transform: scale(1.1);
+        }
+        .badge {
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+        svg:hover .badge {
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <circle class="role" cx="12" cy="12" r="10"/>
+    <path class="role" d="M12 8l3 4h-6l3-4z"/>
+    <path class="badge" d="M12 14l-3 4h6l-3-4z"/>
+</svg>

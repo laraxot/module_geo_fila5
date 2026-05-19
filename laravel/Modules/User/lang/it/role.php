@@ -301,11 +301,6 @@ return [
             'icon' => 'submit',
             'label' => 'submit',
         ],
-        'resetColumnManager' => [
-            'label' => 'resetColumnManager',
-            'icon' => 'resetColumnManager',
-            'tooltip' => 'resetColumnManager',
-        ],
     ],
     'sections' => [
         'basic_info' => [

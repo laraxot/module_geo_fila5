@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Filament\Resources;
 
-uses(\Modules\Gdpr\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Modules\Gdpr\Filament\Resources\ConsentResource;
 use Modules\Gdpr\Models\Consent;
+use Modules\Gdpr\Tests\TestCase;
 
 test('consent_resource_extends_xot_base_resource', function () {
     expect(is_subclass_of(ConsentResource::class, Modules\Xot\Filament\Resources\XotBaseResource::class))->toBeTrue();
 });
 
 test('consent_resource_model_is_consent', function () {
+    $resource = new ConsentResource();
     $resource = new ConsentResource();
     expect($resource->getModel())->toBe(Consent::class);
 });

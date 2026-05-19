@@ -72,7 +72,7 @@ class SsoProviderResource extends XotBaseResource
     /**
      * @return array<string, TextColumn|IconColumn>
      */
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
         return [
             'name' => TextColumn::make('name')
@@ -99,7 +99,7 @@ class SsoProviderResource extends XotBaseResource
     /**
      * @return array<string, EditAction|DeleteAction>
      */
-    public function getTableActions(): array
+    public static function getTableActions(): array
     {
         return [
             'edit' => EditAction::make(),
@@ -110,7 +110,7 @@ class SsoProviderResource extends XotBaseResource
     /**
      * @return array<string, BulkActionGroup>
      */
-    public function getTableBulkActions(): array
+    public static function getTableBulkActions(): array
     {
         return [
             'group' => BulkActionGroup::make([
