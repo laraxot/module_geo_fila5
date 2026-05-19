@@ -3,12 +3,16 @@ title: "LLM Wiki Operational Discipline"
 type: "concept"
 tags: [llm-wiki, karpathy, on-demand, token-budget, git-policy, bootstrap]
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-19
 ---
 
 # LLM Wiki Operational Discipline
 
 > Operational rules derived from the Karpathy LLM Wiki pattern. Wiki = single source of truth. Load on-demand, never pre-load.
+
+## Reality discipline
+
+Verifica sempre path e permessi prima di affermare «è così nel filesystem». Nessun path wiki/read è garantito immutabile: convenzioni di processo ≠ invarianti tecniche. Approfondimento e formulazioni aggiornate: [`bashscripts/tools/prompts/llm-wiki.txt`](../../../bashscripts/tools/prompts/llm-wiki.txt) §3.1.
 
 ## Core Principle
 

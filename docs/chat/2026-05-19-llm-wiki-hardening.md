@@ -52,3 +52,8 @@ Verified absent locally:
 - `laravel/Modules/Media/docs/wiki/_archive/`
 
 General rule added to prompt: no merge residue files (`*~HEAD`, `*~BASE`, `*~LOCAL`, `*~REMOTE`, `.orig`, `.rej`) and no wiki archive folders. Use git history for the past and active wiki pages for current knowledge.
+
+
+## Update: Reality Discipline
+
+Removed unverified wording that described `docs/raw/` as immutable/read-only. Current rule: raw docs are source evidence and should be edited conservatively, but agents must verify actual file state and permissions before claiming something is read-only or immutable.

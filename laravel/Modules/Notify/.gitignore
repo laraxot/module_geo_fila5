@@ -109,7 +109,9 @@ Thumbs.db
 *.bakcup
 *.new
 
-# Merge / conflict debris (copie backup ~HEAD / ~head / `.tool~branch`)
+# -----------------------------------------------------------------------------
+# Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
+# -----------------------------------------------------------------------------
 *~HEAD
 *~BASE
 *~LOCAL

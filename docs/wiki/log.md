@@ -141,4 +141,8 @@ module: "ptvx-project"
 
 [2026-05-19 13:10:00 UTC] [LINT] Rimossi da git file debris merge/sync (`*.md~head` in Notify e Media docs, `Notify/.phive~laraxot_dev`); aggiunti ignore `*~HEAD` e `*~head` in `.gitignore` root e `laravel/Modules/Notify/.gitignore`; `laravel/Modules/Media/docs/.gitignore` ignora `wiki/_archive/`; aggiornato `bashscripts/tools/prompts/llm-wiki.txt` (§7 debris + vietato `_archive` sotto `docs/wiki/`, §11–§12, §14 find).
 
-**Total Operations:** 93
+[2026-05-19 15:10:00 UTC] [UPDATE] `bashscripts/tools/prompts/llm-wiki.txt` — rimosso prefisso tabellare orfano; §3.1 «Reality discipline»: nessun read-only assoluto, convenzioni ≠ invarianti; workflow chiarito (subset QMD); §11 riga `docs/raw/`; §12 nuove false friends (raw read-only, agent isole, reverifica); §15 iterazione prompt; `docs/wiki/concepts/llm-wiki-operational-discipline.md` mirror breve + link relativo al prompt.
+
+[2026-05-19 16:30:00 UTC] [LINT] Blocco ignore debris merge (`*~HEAD`, `*~BASE`, …, `*~head`) in ogni `laravel/Modules/<Name>/.gitignore` e `laravel/Themes/<Name>/.gitignore`, più `laravel/.gitignore`; header Notify allineato al commento canonico; `bashscripts/tools/prompts/llm-wiki.txt` §7 (policy + perché duplicare), §11, §12 false friend, §15 nuovi package.
+
+**Total Operations:** 95
