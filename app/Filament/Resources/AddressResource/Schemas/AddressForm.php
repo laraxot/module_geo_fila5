@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\App\Filament\Resources\AddressResource\Schemas;
+namespace Modules\Geo\Filament\Resources\AddressResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
