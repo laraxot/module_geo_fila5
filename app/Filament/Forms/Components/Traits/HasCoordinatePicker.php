@@ -205,7 +205,7 @@ trait HasCoordinatePicker
      * Searches for addresses matching the query string via Nominatim.
      * Server-side to respect rate-limiting and User-Agent policies.
      *
-     * @return array<int, array<string, mixed>>
+     * @return list<array<string, mixed>>
      */
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -239,10 +239,21 @@ trait HasCoordinatePicker
                 return [];
             }
 
-            $data = array_filter($data, fn ($item): bool => \is_array($item));
+            $filtered = array_values(array_filter($data, static fn (mixed $item): bool => \is_array($item)));
 
-            /* @var array<int, array<string, mixed>> $data */
-            return array_values($data);
+            /** @var list<array<string, mixed>> $results */
+            $results = [];
+            foreach ($filtered as $item) {
+                if (! \is_array($item)) {
+                    continue;
+                }
+
+                /** @var array<string, mixed> $row */
+                $row = $item;
+                $results[] = $row;
+            }
+
+            return $results;
         } catch (\Throwable) {
             return [];
         }
