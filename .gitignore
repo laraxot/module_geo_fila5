@@ -149,6 +149,9 @@ skill/
 # -----------------------------------------------------------------------------
 # 5. AMBIENTE & CONFIGURAZIONI LOCALI
 # -----------------------------------------------------------------------------
+# Artefatti installazione locale (deb estratti, datadir scratch) — usare bashscripts/tools/lamp/
+.local/
+
 # Environment files
 .env
 .env.*
