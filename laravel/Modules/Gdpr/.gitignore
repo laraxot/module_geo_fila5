@@ -87,6 +87,8 @@ cache/
 *.old1
 *.backup
 *.backup.*
+*.backup-*
+*.backup_*
 *.bak
 *.new
 

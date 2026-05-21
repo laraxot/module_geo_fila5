@@ -18,6 +18,9 @@ _ide_helper_models.php
 *.old
 *.bak
 *.backup
+*.backup.*
+*.backup-*
+*.backup_*
 
 public_html/vendor
 public_html/js

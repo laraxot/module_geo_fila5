@@ -113,3 +113,6 @@ junit.xml
 test-output/
 .nyc_output/
 coverage/
+
+# Ignore backup files
+*.backup

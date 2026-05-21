@@ -13,3 +13,9 @@ docs/legacy/**
 *.rej
 *~head
 
+# Backup locali (script conflitti / editor — mai committare)
+*.bak
+*.backup
+*.backup.*
+*.backup-*
+*.backup_*

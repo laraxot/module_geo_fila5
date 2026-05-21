@@ -2,3 +2,6 @@
 
 # Backup files
 *.bak
+
+# Ignore backup files
+*.backup

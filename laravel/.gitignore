@@ -18,9 +18,12 @@ yarn-error.log
 /.idea
 /.vscode
 
-# Backup files
+# Backup files (script conflitti, editor — mai committare)
 *.bak
 *.backup
+*.backup.*
+*.backup-*
+*.backup_*
 docs.backup.*
 docs.archive.*
 

@@ -17,6 +17,8 @@ package-lock.json
 # Backup files
 *.backup
 *.backup.*
+*.backup-*
+*.backup_*
 *.bak
 *.old
 *.old1

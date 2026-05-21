@@ -287,10 +287,16 @@ logs/
 # -----------------------------------------------------------------------------
 # 13. BACKUP & ARCHIVI
 # -----------------------------------------------------------------------------
+# File .backup da script risoluzione conflitti (es. xra.md.backup) — mai in index
 *.bak
 *.backup
 *.backup.*
+*.backup-*
+*.backup_*
 backups/
+# Snapshot locali analisi conflitti (scratch, non versionare)
+analysis/
+analysis/**
 *.old
 *.old1
 *.old2
@@ -403,9 +409,7 @@ laravel/Themes/Zero/.devcontainer/
 laravel/Themes/Zero/.cursor/
 laravel/.claude/
 .kilo/
-*.backup*
 *.pest.php
 .tools/
 .claude
-*.backup
 *.*~*

@@ -1,6 +1,19 @@
 # Local generated documentation archives
-<<<<<<< HEAD
-archive/
-=======
 legacy/
->>>>>>> c426613 (.)
+legacy/**
+
+# Backup locali (script conflitti / editor — mai committare)
+*.bak
+*.backup
+*.backup.*
+*.backup-*
+*.backup_*
+
+# Copie residue merge/rebase
+*~HEAD
+*~BASE
+*~LOCAL
+*~REMOTE
+*.orig
+*.rej
+*~head
