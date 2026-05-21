@@ -50,7 +50,7 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
 
 
     /**
-     * @return array<string, Action>
+     * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
      */
     #[Override]
     protected function getHeaderActions(): array

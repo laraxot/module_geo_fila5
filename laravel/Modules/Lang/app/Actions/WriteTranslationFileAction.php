@@ -89,6 +89,7 @@ class WriteTranslationFileAction
         file_put_contents($tempFile, $phpContent);
 
         // Esegue php -l per validare la sintassi
+        /** @var array<string> $output */
         $output = [];
         $returnCode = 0;
         exec("php -l {$tempFile} 2>&1", $output, $returnCode);
@@ -97,7 +98,7 @@ class WriteTranslationFileAction
         unlink($tempFile);
 
         if (0 !== $returnCode) {
-            $error = implode("\n", $output ?? []);
+            $error = implode("\n", $output);
             throw new \Exception("Sintassi PHP non valida: {$error}");
         }
     }
