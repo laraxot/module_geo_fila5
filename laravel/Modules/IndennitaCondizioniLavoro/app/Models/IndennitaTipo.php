@@ -66,6 +66,7 @@ class IndennitaTipo extends BaseModel
         $safeAnnoStr = (string) $safeAnno;
 
         return $this->hasMany(IndennitaTipoDettaglio::class, 'indennita_tipo_id', 'id')
+            /** @phpstan-ignore argument.type */
             ->whereRaw($safeAnnoStr.' between dal and al');
         // ->whereRaw($this->anno.' between dal and al')
     }

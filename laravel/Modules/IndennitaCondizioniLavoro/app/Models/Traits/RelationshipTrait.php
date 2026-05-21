@@ -55,6 +55,7 @@ trait RelationshipTrait
     */
     public function getIndennitaTipoDettaglioAllAttribute(): Collection
     {
+        /** @phpstan-ignore argument.type */
         return IndennitaTipoDettaglio::whereRaw($this->anno.' between dal and al')->get();
     }
 
