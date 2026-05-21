@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-  </svg>
-=======
 version https://git-lfs.github.com/spec/v1
-oid sha256:261dccfec64eba8752513fed560a2e279217b57ef787dccf68653689048bd005
-size 277
->>>>>>> c426613 (.)
+oid sha256:b2db08cb9c8b7e89749b8ea46368c0c405d2e1dbb1dd582fb4763939d8a94480
+size 447
