@@ -39,10 +39,9 @@ return [
         'trova_esclusi' => [
             'label' => 'Find Excluded',
         ],
-        'fill_out_the_form' => 'fill out',
+        'fill_out_the_form' => 'Fill out',
         'showing_records' => 'Showing :count records of :total',
         'showing_limited_results' => 'Limited results. Use filters to refine your search.',
-        'fill_out_the_form' => 'Fill out',
         'populate_year' => 'Populate year',
         'copy_from_last_year' => 'Copy from last year',
         'trova_esclusi' => [

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $posiz Posizione
  * @property int|null $propro Proprieta/appartenenza
  * @property int|null $matr Matricola dipendente per debug
+ * @property mixed $last_data_assunz Data ultima assunzione (per criterio DateMinAssunz)
  */
 interface ProgressioneSchedaContract extends SchedaContract
 {

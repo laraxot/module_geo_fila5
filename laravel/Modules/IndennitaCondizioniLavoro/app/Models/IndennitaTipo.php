@@ -63,11 +63,9 @@ class IndennitaTipo extends BaseModel
         }
 
         $safeAnno = is_numeric($anno) ? (int) $anno : (int) date('Y');
-        $safeAnnoStr = (string) $safeAnno;
 
         return $this->hasMany(IndennitaTipoDettaglio::class, 'indennita_tipo_id', 'id')
-            /** @phpstan-ignore argument.type */
-            ->whereRaw($safeAnnoStr.' between dal and al');
+            ->whereRaw('? between dal and al', [$safeAnno]);
         // ->whereRaw($this->anno.' between dal and al')
     }
 

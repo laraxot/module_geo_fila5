@@ -87,6 +87,16 @@ private function castWithAction(mixed $value): string
 - **Generic Types**: Aggiornati PHPDoc per generic types corretti
 - **Method Signatures**: Allineate tutte le signature con le classi base
 
+## scan 2026-05-21 (livello max)
+
+**comando:** `cd laravel && ./vendor/bin/phpstan analyse Modules/Lang --no-progress`  
+**esito:** 3 errori segnalati → 0
+
+| file | fix |
+|------|-----|
+| `WriteTranslationFileAction.php` | dopo `exec()`, `$output = is_array($rawOutput) ? $rawOutput : []`; `implode` su `list<string>` filtrata con `is_string` |
+| `TranslationFileForm.php` | PHPDoc `array<string, \Filament\Schemas\Components\Component>` + `getFormSchema()` **static** (allineato a `XotBaseResourceForm`) |
+
 ---
-*Ultimo aggiornamento: Gennaio 2025*
+*Ultimo aggiornamento: 2026-05-21*
 *Stato: ✅ Completato - 0 errori PHPStan*

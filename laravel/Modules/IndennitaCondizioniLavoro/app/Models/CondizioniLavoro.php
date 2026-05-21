@@ -580,7 +580,7 @@ class CondizioniLavoro extends BaseModel
     protected function calculateHhAssenzaAnno(): string
     {
         $asz = $this->asz00k1()->where('aszumi', 'O')
-            ->whereRaw('concat(asztip,"-",aszcod)!="504-13"') // nelle assenze tolgo le trasferte
+            ->whereRaw(DB::raw('concat(asztip,"-",aszcod) != "504-13"')) // nelle assenze tolgo le trasferte
             ->get();
 
         return (string) $asz->sum('aszdur');

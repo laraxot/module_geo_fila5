@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 use Illuminate\View\View;
+/** @phpstan-ignore class.notFound */
 use Modules\Cms\Actions\ResolveLocalizedBlockDataAction;
 use Webmozart\Assert\Assert;
 
@@ -49,6 +50,7 @@ class Block extends Component
             return view('ui::alert', $view_params);
         }
         $view_params = $this->normalizeViewData($this->block['data'] ?? []);
+        /** @phpstan-ignore class.notFound */
         $view_params = app(ResolveLocalizedBlockDataAction::class)->execute($view_params);
         $view_params = $this->normalizeViewData($view_params);
         Assert::string($view, __FILE__.':'.__LINE__.' - '.class_basename(self::class));

@@ -13,6 +13,8 @@ use Modules\Sigma\Models\Traits\Relationships\EnteMatrAnnoRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrDateRangeRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 
+use function Safe\date;
+
 // use Laravel\Scout\Searchable;
 // ----- models------
 // use Modules\IndennitaCondizioniLavoro\Models\IndennitaResponsabilita;
@@ -55,8 +57,9 @@ trait RelationshipTrait
     */
     public function getIndennitaTipoDettaglioAllAttribute(): Collection
     {
-        /** @phpstan-ignore argument.type */
-        return IndennitaTipoDettaglio::whereRaw($this->anno.' between dal and al')->get();
+        $anno = is_numeric($this->anno) ? (int) $this->anno : (int) date('Y');
+
+        return IndennitaTipoDettaglio::whereRaw('? between dal and al', [$anno])->get();
     }
 
     public function stabiDirigente(): HasOne

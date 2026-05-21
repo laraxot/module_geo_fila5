@@ -89,16 +89,21 @@ class WriteTranslationFileAction
         file_put_contents($tempFile, $phpContent);
 
         // Esegue php -l per validare la sintassi
-        /** @var array<string> $output */
-        $output = [];
+        $rawOutput = [];
         $returnCode = 0;
-        exec("php -l {$tempFile} 2>&1", $output, $returnCode);
+        exec("php -l {$tempFile} 2>&1", $rawOutput, $returnCode);
+        $output = is_array($rawOutput) ? $rawOutput : [];
 
-        // Rimuove il file temporaneo
         unlink($tempFile);
 
         if (0 !== $returnCode) {
-            $error = implode("\n", $output);
+            $lines = [];
+            foreach ($output as $line) {
+                if (is_string($line)) {
+                    $lines[] = $line;
+                }
+            }
+            $error = implode("\n", $lines);
             throw new \Exception("Sintassi PHP non valida: {$error}");
         }
     }

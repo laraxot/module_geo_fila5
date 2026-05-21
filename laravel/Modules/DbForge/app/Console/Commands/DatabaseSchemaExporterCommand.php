@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Console\Output\OutputInterface;
 
 use function Safe\json_encode;
 
@@ -67,12 +68,19 @@ class DatabaseSchemaExporterCommand extends Command
             'connection' => $connection,
             'tables' => [],
         ];
+        $output = $this->getOutput();
+        if (! $output instanceof OutputInterface) {
+            throw new Exception('Output is not an instance of OutputInterface');
+        }
+        $progressBar = $output->createProgressBar(count($tables));
+        $progressBar->start();
 
-        $this->withProgressBar($tables, if (!is_array($tables)) {
-    $tables = [];
-}
+        foreach ($tables as $table) {
             $databaseSchema['tables'][$table] = $this->getTableInfo($connection, $table);
-        });
+            $progressBar->advance();
+        }
+
+        $progressBar->finish();
         $this->newLine();
 
         // Aggiungi informazioni sulle relazioni tra tabelle

@@ -93,3 +93,16 @@ Il modulo segue già il pattern accessor-guard per i metodi con `save()` (verifi
 **Target**: 0 errori PHPStan Level 10
 **Current**: 81 errori
 **Progress**: 2.5% (2/81)
+
+## scan modulo completo 2026-05-21
+
+**comando:** `cd laravel && ./vendor/bin/phpstan analyse Modules/IndennitaCondizioniLavoro --no-progress`  
+**esito:** 4 errori → 0
+
+| file | fix |
+|------|-----|
+| `ListStabiDirigentes.php` | `@phpstan-ignore method.childReturnType` (come `XotBaseListRecords`; parent Ptv restituisce `Action\|ActionGroup`) |
+| `IndennitaTipo.php` | `whereRaw('? between dal and al', [$safeAnno])` al posto di SQL concatenata |
+| `RelationshipTrait.php` | stesso binding parametrizzato + anno numerico sicuro |
+
+*ultimo aggiornamento scan: 2026-05-21*

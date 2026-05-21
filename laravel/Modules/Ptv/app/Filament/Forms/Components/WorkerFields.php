@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Forms\Components;
 
+use Closure;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Modules\Xot\Filament\Schemas\Components\XotBaseGroup;
@@ -18,11 +19,11 @@ class WorkerFields extends XotBaseGroup
 
     protected string $emailFieldName = 'email';
 
-    protected bool $isDisabled = false;
+    protected bool|Closure $isDisabled = false;
 
     protected bool $isRequired = false;
 
-    protected int $columns = 4;
+    protected array|null|Closure|int $columns = 4;
 
     public function matrField(string $fieldName): static
     {
@@ -60,7 +61,7 @@ class WorkerFields extends XotBaseGroup
         return $this;
     }
 
-    public function disabled(bool $condition = true): static
+    public function disabled(bool|Closure $condition = true): static
     {
         $this->isDisabled = $condition;
 
@@ -78,7 +79,7 @@ class WorkerFields extends XotBaseGroup
         return $this;
     }
 
-    public function columns(int $columns): static
+    public function columns(array|Closure|int|null $columns): static
     {
         $this->columns = $columns;
 
