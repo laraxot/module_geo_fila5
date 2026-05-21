@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-21 12:00:00 UTC] [LINT] Campagna deduplica docs moduli/temi: script `bashscripts/tools/dedup_module_docs.py` — ~2807 delete, ~349 stub html2pdf/wiki, canonici Media (html2pdf) e Xot (wiki/concepts). How-to: `docs/wiki/how-to/module-docs-deduplication.md`. Issue #124.
+
 ### Format
 
 ```text
@@ -222,3 +224,19 @@ module: "ptvx-project"
 [2026-05-19 13:09:00 UTC] [LINT] Housekeeping `docs/wiki/`: rimossi 7 orphan `.lock` (crash agent precedenti) e 9 file `.old` stale (SCHEMA, CONTEXT_MODE_SETUP, second-brain-implementation, second_brain, laravel-13-upgrade-*, namespace-rules, namespace_conventions, naming_conventions). Git history preserva i contenuti. Gate `verify-llm-wiki.sh` 39/39 ✅.
 
 **Total Operations:** 114
+
+[2026-05-21 12:00:00 UTC] [UPDATE] GitHub issue proattive: policy in `docs/wiki/how-to/github-issue-agent-discipline.md`, memory `docs/wiki/memories/github-issues-proactive.md`, `second-brain-operating-model.md` regola 6, trigger map, `llm-wiki.txt` § GitHub + bad practice + checklist §20; issue #129 (CI lock orfani), #130 (pre-commit PHP); chiusa #128 (compaction/context-mode).
+
+**Total Operations:** 115
+
+[2026-05-21 14:00:00 UTC] [FIX] `spatie/laravel-model-states` 2.14.1 in `Modules/Xot` + `php ^8.4` root/Xot; runtime `php8.4` (8.4 già su host, ext=allineate); PHPStan OK `XotBaseTransition`; memory `spatie-model-states-php84.md`; playbook `llm-wiki.txt`; matrix Xot aggiornata; issue #131.
+
+**Total Operations:** 116
+
+[2026-05-21 15:00:00 UTC] [UPDATE] Passaggio MySQL→MariaDB: `bashscripts/mysql/switch-to-mariadb.sh`, how-to `docs/wiki/how-to/switch-mysql-to-mariadb.md`; `XotBaseMigration` accetta driver `mariadb`; `.env.example` blocco locale; trigger map.
+
+**Total Operations:** 117
+
+[2026-05-21 16:00:00 UTC] [CREATE] LAMP MariaDB: `bashscripts/tools/lamp/` (install-mariadb, check-mariadb, php extensions, laravel-env example); `bashscripts/docs/mariadb-laravel.md`, `ubuntu/lamp.md`; `install-mariadb-system.sh` crea DB Laravel; `db/check_mariadb.sh`; wsl/setup banner MariaDB.
+
+**Total Operations:** 118

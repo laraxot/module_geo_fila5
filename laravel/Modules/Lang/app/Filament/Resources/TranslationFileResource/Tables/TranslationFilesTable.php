@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Lang\app\Filament\Resources\TranslationFileResource\Tables;
+namespace Modules\Lang\Filament\Resources\TranslationFileResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

@@ -49,7 +49,7 @@ On touched wiki pages, spot-check:
 
 ## Next Checks To Add
 
-- duplicate-topic detection across raw filenames
+- duplicate-topic detection across raw filenames (campagna batch: [`module-docs-deduplication.md`](../how-to/module-docs-deduplication.md) + `bashscripts/tools/dedup_module_docs.py`)
 - stale-claim detection from date-heavy pages
 - oversized wiki page detection for token-budget control
 - mismatch detection between `docs-health.md` snapshots and current docs state

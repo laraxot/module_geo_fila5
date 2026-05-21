@@ -1,7 +1,11 @@
-# Docs archive policy
+---
+title: docs archive policy — puntatore
+type: reference
+updated: 2026-05-21
+---
 
-`docs/legacy/` is local-only scratch/history and must not be used as a canonical theme documentation source.
+# Docs archive policy (puntatore)
 
-Active theme knowledge belongs in normal `docs/*.md`, `docs/wiki/**`, or a precise topical subdirectory. This keeps QMD ingestion deterministic and prevents stale duplicate notes from being treated as current UI/theme guidance.
+Policy globale: [../../../../../docs/wiki/concepts/second-brain-continuous-improvement.md](../../../../../docs/wiki/concepts/second-brain-continuous-improvement.md).
 
-The theme `.gitignore` ignores `docs/legacy/`; when a useful archived note is still valid, promote it into a live document outside `legacy` and link it from the local docs index.
+`docs/legacy/` è solo scratch locale; non fonte canonica. Vedi [module-docs-deduplication](../../../../../docs/wiki/how-to/module-docs-deduplication.md).

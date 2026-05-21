@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\app\Filament\Resources\NotificationTemplateResource\Schemas;
+namespace Modules\Notify\Filament\Resources\NotificationTemplateResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;

@@ -27,6 +27,9 @@ updated: 2026-05-20
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
+| Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
+| PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
+| Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
 | Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` |
 | Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md` |

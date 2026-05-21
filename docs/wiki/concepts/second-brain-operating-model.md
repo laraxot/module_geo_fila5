@@ -3,7 +3,7 @@ title: "Second Brain Operating Model"
 module: "ptvx-project"
 type: concept
 created: "2026-04-28T00:00:00Z"
-updated: "2026-05-19T18:00:00Z"
+updated: "2026-05-21T12:00:00Z"
 qmd: "second brain, Karpathy wiki, LLM wiki, docs/wiki, raw docs, QMD search strategy, token efficiency"
 related:
   - "../ProjectHome.md"
@@ -61,7 +61,8 @@ The wiki must not invent permanence or permissions. Raw docs are source evidence
    - project-wide knowledge goes in `docs/wiki/`
    - module-specific knowledge goes in `laravel/Modules/{Module}/docs/wiki/`
    - theme-specific knowledge goes in `laravel/Themes/{Theme}/docs/wiki/`
-5. Treat duplicate raw documents as a signal to synthesize, not to copy.
+5. Treat duplicate raw documents as a signal to synthesize, not to copy. Batch dedup: [`module-docs-deduplication.md`](../how-to/module-docs-deduplication.md).
+6. **GitHub issues (proattivo):** prima di implementare, cercare issue esistenti (`gh issue list --search`); se l’argomento non è coperto, **creare** l’issue senza chiedere permesso all’utente; a fine lavoro commentare o chiudere. Policy: [`github-issue-agent-discipline.md`](../how-to/github-issue-agent-discipline.md).
 
 ## External Principles Adopted
 

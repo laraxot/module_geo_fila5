@@ -3,8 +3,8 @@ title: "github issue come audit trail per decisioni agent"
 type: "how-to"
 tags: [github, gh, issues, agent, documentation, second-brain]
 created: 2026-05-19
-updated: 2026-05-19
-related: [../rules/validation-post-edit-rule.md, ../concepts/second-brain-operating-model.md, ../../../bashscripts/tools/prompts/llm-wiki.txt]
+updated: 2026-05-21
+related: [../rules/validation-post-edit-rule.md, ../concepts/second-brain-operating-model.md, ../memories/github-issues-proactive.md, ../../../bashscripts/tools/prompts/llm-wiki.txt]
 ---
 
 # GitHub issue come audit trail (agent / wiki)
@@ -12,6 +12,15 @@ related: [../rules/validation-post-edit-rule.md, ../concepts/second-brain-operat
 ## Scopo
 
 La wiki (`docs/wiki/`) tiene la **policy sintetica** e i comandi. Le **GitHub issue** offrono thread ricercabili, notifiche e storico decisionale per chi non usa QMD o Cursor — senza duplicare paragrafi lunghi nei moduli.
+
+## Disciplina agent (obbligatoria)
+
+1. **All’inizio del task:** `git remote -v` + `gh issue list --repo provtv/base_ptv_fila5_mono --search "<argomento>" --state all`.
+2. **Argomento senza issue:** creare subito con `gh issue create` (non chiedere conferma all’utente).
+3. **Argomento con issue aperta:** lavorare in quella issue (commento con path wiki + prove); chiudere quando la checklist nel corpo è soddisfatta.
+4. **Fine task:** aggiornare wiki/log + commento issue; **vietato** chiudere la sessione chiedendo «vuoi che crei/chiuda un’issue?».
+
+Memory operativa: [`github-issues-proactive.md`](../memories/github-issues-proactive.md).
 
 ## Issue di riferimento
 

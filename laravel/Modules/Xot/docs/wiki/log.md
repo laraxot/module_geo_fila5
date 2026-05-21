@@ -9,6 +9,13 @@ module: "Xot"
 
 ## Log Entries
 
+## [2026-05-21] governance | deduplica docs cross-modulo
+
+- Owner concetti wiki in `docs/wiki/concepts/`; stub negli altri moduli via `dedup_module_docs.py`.
+- Pagina modulo: `docs/docs-deduplication.md`.
+- How-to progetto: `docs/wiki/how-to/module-docs-deduplication.md`.
+- Issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124).
+
 ## [2026-04-28] dependency | matrice compatibilita' pacchetti Laravel 13 in Xot
 
 - verificata compatibilita' reale dei pacchetti rimossi nel passaggio a Laravel 13 con focus su runtime `php 8.3`.

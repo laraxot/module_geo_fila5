@@ -87,10 +87,18 @@ abstract class XotBaseMigration extends LaravelMigration
         $connectionName = $this->model->getConnectionName();
         // 如果连接名是 'user' 但数据库不存在，使用默认连接
         if ('user' === $connectionName && ! DB::connection($connectionName)->getDatabaseName()) {
-            $connectionName = 'mysql';
+            $default = config('database.default');
+            $connectionName = is_string($default) ? $default : 'mariadb';
         }
 
         return Schema::connection($connectionName);
+    }
+
+    protected function isMysqlFamilyDriver(?string $driver = null): bool
+    {
+        $driver ??= DB::connection($this->model->getConnectionName())->getDriverName();
+
+        return in_array($driver, ['mysql', 'mariadb'], true);
     }
 
     /**
@@ -492,7 +500,7 @@ abstract class XotBaseMigration extends LaravelMigration
                 $blueprint->uuid('uuid')->nullable()->after('id');
             }, $table);
             $conn->table($table)->update(['uuid' => DB::raw('id')]);
-            if ('mysql' === $conn->getDriverName()) {
+            if ($this->isMysqlFamilyDriver($conn->getDriverName())) {
                 $conn->statement('ALTER TABLE '.$table.' MODIFY uuid CHAR(36) NOT NULL');
             }
         }
@@ -554,7 +562,7 @@ abstract class XotBaseMigration extends LaravelMigration
             }
         }
 
-        if ('mysql' === $conn->getDriverName()) {
+        if ($this->isMysqlFamilyDriver($conn->getDriverName())) {
             $db = $conn->getDatabaseName();
             $constraint = $conn->selectOne(
                 "SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS 

@@ -2,14 +2,14 @@
 title: "Laravel 13 Modular Package Compatibility Matrix"
 module: "Xot"
 created: "2026-04-28"
-updated: "2026-05-05"
+updated: "2026-05-21"
 ---
 
 # Laravel 13 Modular Package Compatibility Matrix
 
 ## Scopo
 
-Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti si installano nel modulo owner, ma solo se compatibili con il runtime reale (`Laravel 13` + `PHP 8.3`).
+Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti si installano nel modulo owner, ma solo se compatibili con il runtime reale (`Laravel 13` + **`PHP 8.4`** per linee Spatie recenti).
 
 ## Matrice verificata
 
@@ -20,7 +20,7 @@ Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti
 | `spatie/laravel-responsecache` | nessun owner runtime confermato | si (`8.3.x`) | no (`php ^8.4`) | non reinstallare; la linea `7.7.2` resta ferma a `Laravel 12` |
 | `aaronfrancis/fast-paginate` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
 | `fidum/laravel-eloquent-morph-to-one` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
-| `spatie/laravel-model-states` | `Modules/UI` + `Modules/Xot` | si (`2.13.1`) | no (`php ^8.4`) | bloccato su runtime attuale; `2.12.1` supporta solo `Laravel 10|11|12` |
+| `spatie/laravel-model-states` | `Modules/Xot` (`^2.14`, merge root) | si (`2.14.1`, illuminate ^13) | si con **`php8.4`** | installato 2026-05-21; `2.12.1` non va su L13; `main`/≥2.12.2 richiede PHP 8.4 |
 
 ## Evidenze codice
 

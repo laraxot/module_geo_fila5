@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\app\Filament\Resources\NotificationTemplateResource\Tables;
+namespace Modules\Notify\Filament\Resources\NotificationTemplateResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

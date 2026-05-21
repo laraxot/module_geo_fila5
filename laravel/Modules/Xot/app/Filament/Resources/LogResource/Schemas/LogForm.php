@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\base_quaeris_fila5\var\www\_bases\base_quaeris_fila5\laravel\Modules\Xot\app\Filament\Resources\LogResource\Schemas;
+namespace Modules\Xot\Filament\Resources\LogResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -11,8 +11,9 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 class LogForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<int|string, \Filament\Schemas\Components\Component>
      */
+
     public static function getFormSchema(): array
     {
         return [

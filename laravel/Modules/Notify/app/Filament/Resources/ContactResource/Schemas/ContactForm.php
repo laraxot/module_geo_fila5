@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\app\Filament\Resources\ContactResource\Schemas;
+namespace Modules\Notify\Filament\Resources\ContactResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;

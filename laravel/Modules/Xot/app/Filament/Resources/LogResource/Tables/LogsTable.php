@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\base_quaeris_fila5\var\www\_bases\base_quaeris_fila5\laravel\Modules\Xot\app\Filament\Resources\LogResource\Tables;
+namespace Modules\Xot\Filament\Resources\LogResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
@@ -16,7 +16,7 @@ class LogsTable extends XotBaseResourceTable
     public static function getTableColumns(): array
     {
         /*
-         * @return array<int\|string, \Filament\Tables\Columns\Column>
+         * @return array<int|string, \Filament\Tables\Columns\Column>
          */
         return [
             'id' => TextColumn::make('id')->sortable(),

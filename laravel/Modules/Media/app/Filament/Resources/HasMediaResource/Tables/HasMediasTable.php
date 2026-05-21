@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Media\app\Filament\Resources\HasMediaResource\Tables;
+namespace Modules\Media\Filament\Resources\HasMediaResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
@@ -11,13 +11,10 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 class HasMediasTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, Column>
+     * @return array<int|string, \Filament\Tables\Columns\Column>
      */
     public static function getTableColumns(): array
     {
-    /**
-     * @return array<int\|string, \Filament\Tables\Columns\Column>
-     */
         return [
             'id' => TextColumn::make('id')->sortable(),
             'name' => TextColumn::make('name')->searchable(),

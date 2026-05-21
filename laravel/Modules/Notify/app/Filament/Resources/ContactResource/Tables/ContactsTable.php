@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\app\Filament\Resources\ContactResource\Tables;
+namespace Modules\Notify\Filament\Resources\ContactResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;

@@ -398,10 +398,10 @@ class XotData extends Data implements Wireable
             ->append('Resource')
             ->toString();
 
-        // If the class doesn't exist, try the alternative path (app/Filament/Resources)
+        // If missing, fallback (still PSR-4: NEVER put literal "app\" in the PHP namespace segment)
         if (! class_exists($resourceClass)) {
             $resourceClass =
-                'Modules\\'.$moduleName.'\\app\\Filament\\Resources\\'.class_basename($class).'Resource';
+                'Modules\\'.$moduleName.'\\Filament\\Resources\\'.class_basename($class).'Resource';
         }
 
         if (! class_exists($resourceClass)) {

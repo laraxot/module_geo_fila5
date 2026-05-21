@@ -3,7 +3,7 @@ title: "Memories Index"
 type: "index"
 tags: [memories, patterns, decisions]
 module: "root"
-updated: 2026-05-19
+updated: 2026-05-21
 ---
 
 # Memories — Root Wiki
@@ -17,6 +17,9 @@ updated: 2026-05-19
 | [xotbase-never-extend-filament](xotbase-never-extend-filament.md) | XotBase extensions |
 | [laraxot-namespace-no-app](laraxot-namespace-no-app.md) | Module PSR-4 |
 | [github-wiki-disabled](github-wiki-disabled.md) | Canonical wiki path |
+| [github-issues-proactive](github-issues-proactive.md) | Crea/chiudi issue senza chiedere conferma |
+| [spatie-model-states-php84](spatie-model-states-php84.md) | Xot + model-states 2.14 + PHP 8.4 |
+| [mysql-mariadb-datadir-mismatch](mysql-mariadb-datadir-mismatch.md) | mysql.service fallisce su datadir MariaDB |
 | [mutex-lock-post-edit](mutex-lock-post-edit.md) | Lock + PHP pipeline |
 | [trigger-map-canonical](trigger-map-canonical.md) | Routing |
 | [git-forward-only](git-forward-only.md) | Git discipline |

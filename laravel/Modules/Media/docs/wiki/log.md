@@ -5,6 +5,12 @@ module: "Media"
 
 # Media - Wiki Activity Log
 
+## [2026-05-21] governance | owner html2pdf canonico
+
+- Documentazione Html2Pdf completa solo in `docs/html2pdf/` (+ `README.md`).
+- Altri moduli: stub DRY verso Media. Campagna: `bashscripts/tools/dedup_module_docs.py`.
+- How-to: [module-docs-deduplication](../../../../../docs/wiki/how-to/module-docs-deduplication.md).
+
 ## [2026-05-11] Wiki Structure Created
 
 - Created wiki structure: rules/, skills/, commands/, memories/, concepts/

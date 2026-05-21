@@ -15,5 +15,12 @@ Class Modules\Xot\States\Transitions\XotBaseTransition extends unknown class Spa
 ### Root Cause
 Il package `spatie/laravel-model-states` era documentato come parte dell'architettura ma non era incluso in `composer.json`.
 
-### Solution
+### Solution (2026-05-21)
+
+1. `spatie/laravel-model-states:^2.14` in `Modules/Xot/composer.json` (owner).
+2. `php: ^8.4` in Xot + root `laravel/composer.json`.
+3. `php8.4 composer require` (modulo) + `php8.4 composer update` (root).
+4. Memory: [`docs/wiki/memories/spatie-model-states-php84.md`](../../../../../docs/wiki/memories/spatie-model-states-php84.md).
+
+### Solution (storico)
 1. Aggiunto `
