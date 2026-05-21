@@ -32,6 +32,7 @@ use Modules\Sigma\Models\Traits\Relationships\EnteMatrDateRangeRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro.
@@ -682,23 +683,33 @@ class CondizioniLavoro extends BaseModel
                 $dalFormatted = $obj->dal instanceof Carbon ? $obj->dal->format('Ymd') : '';
                 $alFormatted = $obj->al instanceof Carbon ? $obj->al->format('Ymd') : '';
 
-                $sql = '
-                    (
-                        ('.$dalFormatted.' between qua2kd and qua2ka )
-                        or
-                        ('.$dalFormatted.' >= qua2kd and qua2ka=0 )
-                        or
-                        ('.$alFormatted.' between qua2kd and qua2ka )
-                        or
-                        ('.$alFormatted.' >= qua2kd and qua2ka=0 )
-                        or
-                        (qua2kd between '.$dalFormatted.' and '.$alFormatted.')
-                        or
-                        (qua2ka between '.$dalFormatted.' and '.$alFormatted.')
-                    )
-                    ';
+                $qua00fDateRangeSql = <<<'SQL'
+(
+    (? between qua2kd and qua2ka )
+    or
+    (? >= qua2kd and qua2ka=0 )
+    or
+    (? between qua2kd and qua2ka )
+    or
+    (? >= qua2kd and qua2ka=0 )
+    or
+    (qua2kd between ? and ?)
+    or
+    (qua2ka between ? and ?)
+)
+SQL;
+                $qua00fDateRangeBindings = [
+                    $dalFormatted,
+                    $dalFormatted,
+                    $alFormatted,
+                    $alFormatted,
+                    $dalFormatted,
+                    $alFormatted,
+                    $dalFormatted,
+                    $alFormatted,
+                ];
                 if ($obj->anag && method_exists($obj->anag, 'qua00f')) {
-                    $qua00f = $obj->anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw($sql);
+                    $qua00f = $obj->anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw(DB::raw($qua00fDateRangeSql), $qua00fDateRangeBindings);
                     // echo '<br/>'.$qua00f->count().' - '.$qua00f->first()->propro.'  - '.$qua00f->first()->posfun;
                     if ($qua00f->get()->count() === 1) {
                         $first = $qua00f->first();
@@ -719,7 +730,7 @@ class CondizioniLavoro extends BaseModel
                         echo '<pre>';
                         print_r($qua00f->toSql());
 
-                        $qua00f = $obj->anag->qua00f()->whereRaw($sql)->orderBy('qua2kd')->get();
+                        $qua00f = $obj->anag->qua00f()->whereRaw(DB::raw($qua00fDateRangeSql), $qua00fDateRangeBindings)->orderBy('qua2kd')->get();
 
                         $al_old = $obj->al;
                         if ($qua00f->count() > 0 && isset($qua00f[0]->qua2kd)) {

@@ -30,6 +30,7 @@ use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno.
@@ -237,7 +238,7 @@ class ServizioEsterno extends BaseModel
             return $this->hasMany(self::class, 'id', 'id')->whereRaw('1=0');
         }
 
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $relatedClass */
+        // @phpstan-ignore-next-line argument.templateType (modulo Trasferte opzionale)
         return $this->hasMany($relatedClass, 'matr', 'matr')
             ->where('ente', $this->ente);
     }
@@ -606,26 +607,36 @@ class ServizioEsterno extends BaseModel
                 /** @var string $alFormattedStr */
                 $alFormattedStr = is_string($alFormatted) ? $alFormatted : '';
 
-                $sql = '
-                (
-                    ('.$dalFormattedStr.' between qua2kd and qua2ka )
-                    or
-                    ('.$dalFormattedStr.' >= qua2kd and qua2ka=0 )
-                    or
-                    ('.$alFormattedStr.' between qua2kd and qua2ka )
-                    or
-                    ('.$alFormattedStr.' >= qua2kd and qua2ka=0 )
-                    or
-                    (qua2kd between '.$dalFormattedStr.' and '.$alFormattedStr.')
-                    or
-                    (qua2ka between '.$dalFormattedStr.' and '.$alFormattedStr.')
-                )
-                ';
+                $qua00fDateRangeSql = <<<'SQL'
+(
+    (? between qua2kd and qua2ka )
+    or
+    (? >= qua2kd and qua2ka=0 )
+    or
+    (? between qua2kd and qua2ka )
+    or
+    (? >= qua2kd and qua2ka=0 )
+    or
+    (qua2kd between ? and ?)
+    or
+    (qua2ka between ? and ?)
+)
+SQL;
+                $qua00fDateRangeBindings = [
+                    $dalFormattedStr,
+                    $dalFormattedStr,
+                    $alFormattedStr,
+                    $alFormattedStr,
+                    $dalFormattedStr,
+                    $alFormattedStr,
+                    $dalFormattedStr,
+                    $alFormattedStr,
+                ];
                 if ($obj->anag === null) {
                     throw new Exception('obj-anag is null ['.__LINE__.']['.__FILE__.']');
                 }
 
-                $qua00f = $obj->anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw($sql);
+                $qua00f = $obj->anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw(DB::raw($qua00fDateRangeSql), $qua00fDateRangeBindings);
                 // echo '<br/>'.$qua00f->count().' - '.$qua00f->first()->propro.'  - '.$qua00f->first()->posfun;
                 if ($qua00f->get()->count() === 1) {
                     $first = $qua00f->first();
@@ -645,7 +656,7 @@ class ServizioEsterno extends BaseModel
                     echo "<br/>qualcosa e' andato storto [".__LINE__.']['.__FILE__.']';
                     echo '<pre>';
                     print_r($qua00f->toSql());
-                    $qua00f = $obj->anag->qua00f()->whereRaw($sql)->orderBy('qua2kd')->get();
+                    $qua00f = $obj->anag->qua00f()->whereRaw(DB::raw($qua00fDateRangeSql), $qua00fDateRangeBindings)->orderBy('qua2kd')->get();
 
                     // foreach($qua00f as $v_qua00f){
                     $al_old = $obj->al;
