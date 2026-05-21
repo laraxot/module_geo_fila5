@@ -11,6 +11,8 @@ module: "ptvx-project"
 
 [2026-05-21 14:00:00 UTC] [UPDATE] Rimosso `.local/mariadb-install/` dall’indice git (~125MB deb/binari); aggiunto `.local/` a `.gitignore`. Install offline: `bashscripts/tools/lamp/`.
 
+[2026-05-21 23:00:00 UTC] [DOCS] Filament **v5** canonico: `filament-version-policy.md`, `filament-version.md` in ogni modulo/tema, second-brain aggiornati, llm-wiki false friend, trigger map; doc v4 etichettati storico.
+
 [2026-05-21 22:00:00 UTC] [UPDATE] Policy git branch agenti: `docs/wiki/memories/git-branch-policy-agents.md`; lavoro PHPStan/docs riportato su `dev` da branch spurio `fix/phpstan-indennita-conditions-20260521` (cherry-pick + stash pop).
 
 [2026-05-21 12:00:00 UTC] [LINT] Campagna deduplica docs moduli/temi: script `bashscripts/tools/dedup_module_docs.py` — ~2807 delete, ~349 stub html2pdf/wiki, canonici Media (html2pdf) e Xot (wiki/concepts). How-to: `docs/wiki/how-to/module-docs-deduplication.md`. Issue #124.

@@ -13,19 +13,16 @@ class ContactsTable extends XotBaseResourceTable
     /**
      * @return array<string, Column>
      */
-<<<<<<< HEAD
-    public static function getTableColumns(): array
-=======
     public function getTableColumns(): array
->>>>>>> cc6378f (.)
     {
-    /**
-     * @return array<int\|string, \Filament\Tables\Columns\Column>
-     */
         return [
             'id' => TextColumn::make('id')->sortable(),
-            'name' => TextColumn::make('name')->searchable(),
+            'contact_type' => TextColumn::make('contact_type')->sortable(),
+            'value' => TextColumn::make('value')->searchable(),
+            'user_id' => TextColumn::make('user_id')->sortable(),
+            'verified_at' => TextColumn::make('verified_at')->dateTime()->sortable(),
             'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 }

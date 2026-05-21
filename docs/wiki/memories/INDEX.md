@@ -24,6 +24,7 @@ updated: 2026-05-21
 | [mutex-lock-post-edit](mutex-lock-post-edit.md) | Lock + PHP pipeline |
 | [trigger-map-canonical](trigger-map-canonical.md) | Routing |
 | [git-forward-only](git-forward-only.md) | Git discipline |
+| [filament-version-policy](filament-version-policy.md) | **Filament v5** (non v4) — stack e namespace |
 | [filament-no-explicit-labels](filament-no-explicit-labels.md) | LangServiceProvider |
 | [qmd-search-limit](qmd-search-limit.md) | QMD limits |
 | [docs-chat-slug-per-topic](docs-chat-slug-per-topic.md) | Multi-agent chat |

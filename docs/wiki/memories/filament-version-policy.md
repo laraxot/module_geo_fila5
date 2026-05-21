@@ -1,25 +1,42 @@
+---
+title: policy versione filament v5
+type: memory
+tags: [filament, v5, livewire, schemas, xotbase]
+created: 2026-05-21
+updated: 2026-05-21
+related:
+  - ../rules/filament-rules-summary.md
+  - ../rules/xotbase-critical-rules.md
+  - ../../templates/filament-version.md
+---
+
 # Filament Version Policy — Second Brain Canonical Memory
 
 **Status**: ACTIVE • CRITICAL • PROJECT-WIDE
 
-**Current Stack (2026-05)**
-- **Filament**: v5 (NOT v4)
-- **Livewire**: v4 (Filament v5 requirement)
-- **Schemas package**: primary for layout (`Filament\Schemas\Components\*`)
-- **Forms package**: only for field components (`Filament\Forms\Components\*`)
+## Stack attuale (2026-05)
 
-## Golden Rule
-> All new code, all docblocks, all wiki entries, all skills, and all generated documentation **MUST** declare and use **Filament v5** conventions.
+| Componente | Versione | Note |
+|------------|----------|------|
+| **Filament** | **v5** | `composer`: `filament/filament` ^5.0 — **non v4** |
+| **Livewire** | v4 | Requisito Filament v5 |
+| **Laravel** | 12.x | Monorepo Laraxot |
+| Layout / schema | `filament/schemas` | `Filament\Schemas\Components\*` |
+| Campi form | `filament/forms` | `Filament\Forms\Components\*` |
 
-Never default to "Filament v4" language unless explicitly talking about historical migration work.
+## Regola d’oro
 
-## Correct Namespaces (v5)
-- Layout / structure → `Filament\Schemas\Components\Section`, `Tabs`, `Grid`, `Wizard`, `Component` (base)
-- Form fields → `Filament\Forms\Components\TextInput`, `Select`, `Toggle`, etc.
-- Table columns → `Filament\Tables\Columns\*`
-- Infolists → `Filament\Infolists\Components\*`
+> Codice nuovo, PHPDoc, wiki, skill e prompt devono usare convenzioni **Filament v5**. Non dichiarare «Filament v4» come stack attuale.
 
-Return type example for modern resources:
+I file con nome `filament-4*`, `filament_v4*`, link `filamentphp.com/docs/4.x` sono **solo storico** (migrazione 2025). In cima o nel second-brain del modulo: rimandare a questa memory.
+
+## Namespace corretti (v5)
+
+- Layout → `Filament\Schemas\Components\Section`, `Tabs`, `Grid`, `Component`
+- Form fields → `Filament\Forms\Components\TextInput`, …
+- Table → `Filament\Tables\Columns\*`
+- Infolist → `Filament\Infolists\Components\*` (estendono `Filament\Schemas\Components\Component`)
+
 ```php
 /**
  * @return array<string, \Filament\Schemas\Components\Component>
@@ -27,35 +44,20 @@ Return type example for modern resources:
 public function getFormSchema(): array
 ```
 
-## Historical v4 Documents
-Many legacy files still contain "filament-4", "filament4", "v4 migration" in their names and content.
-These are **archival only** and must be clearly labeled as "pre-v5 migration history".
+## Dove aggiornare
 
-When referencing them, always add a note:
-> "Historical — this document describes the 2025 Filament v4 upgrade. Current target is Filament v5."
-
-## Where to Update When Changing Version
 - `docs/wiki/rules/filament-rules-summary.md`
-- `docs/wiki/memories/filament-version-policy.md` (this file)
-- `docs/templates/module-docs-template.md`
-- `docs/templates/theme-docs-template.md`
-- Every module's `docs/` folder (inject `filament-version.md`)
-- Every theme's `docs/` folder (same)
-- All Filament-related skills under `.agents/skills/` (already mostly v5)
-- Root `docs/development/filament-*.md` files
+- `docs/templates/filament-version.md` (copia per modulo/tema)
+- `laravel/Modules/<Name>/docs/second-brain.md` (link policy)
+- `laravel/Modules/Xot/docs/filament-5-laraxot-rules.md` (autoritativo XotBase)
+- `bashscripts/tools/prompts/llm-wiki.txt` §12 false friends
 
-## Propagation Command (for agents)
-```bash
-# After editing the canonical memory, run something like:
-find laravel/Modules -type d -path '*/docs' -exec cp docs/templates/filament-version.md {}/filament-version.md \;
-find laravel/Themes  -type d -path '*/docs' -exec cp docs/templates/filament-version.md {}/filament-version.md \;
-```
+## Propagazione
 
-## Related Memories & Rules
-- `docs/wiki/rules/filament-rules-summary.md`
-- `docs/wiki/rules/xotbase-critical-rules.md`
-- `docs/wiki/memories/xotbase-never-extend-filament.md`
-- `laravel/Modules/Xot/docs/filament-5-laraxot-rules.md` (authoritative for Xot base classes)
+Ogni `laravel/Modules/<Name>/docs/` e `laravel/Themes/<Name>/docs/` deve avere in `second-brain.md` il link a questa policy (batch 2026-05-21).
 
-**Last updated**: 2026-05-21 by Kilo (AI Software Engineer)
-**Signed**: Kilo — always follow this policy on every edit involving Filament code or docs.
+Stub opzionale: `docs/filament-version.md` da `docs/templates/filament-version.md`.
+
+---
+
+**Firmato:** Cursor Agent (Composer) — 2026-05-21

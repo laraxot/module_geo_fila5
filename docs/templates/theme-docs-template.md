@@ -1,5 +1,7 @@
 # {ThemeName} Theme
 
+> **Filament Version**: Admin panels and Filament resources in this theme target **Filament v5** (see Second Brain `docs/wiki/memories/filament-version-policy.md` and `docs/filament-version.md`).
+
 ## Overview
 
 {Brief description of the theme's purpose and visual identity}

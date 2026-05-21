@@ -64,6 +64,7 @@ The wiki must not invent permanence or permissions. Raw docs are source evidence
 5. Treat duplicate raw documents as a signal to synthesize, not to copy. Batch dedup: [`module-docs-deduplication.md`](../how-to/module-docs-deduplication.md).
 6. **GitHub issues (proattivo):** prima di implementare, cercare issue esistenti (`gh issue list --search`); se l’argomento non è coperto, **creare** l’issue senza chiedere permesso all’utente; a fine lavoro commentare o chiudere. Policy: [`github-issue-agent-discipline.md`](../how-to/github-issue-agent-discipline.md).
 7. **Git branch (agenti):** non creare né cambiare ramo — solo l’utente; lavorare su `dev` (o branch indicato). [`git-branch-policy-agents.md`](../memories/git-branch-policy-agents.md).
+8. **Filament v5:** stack admin = **Filament v5** (non v4). [`filament-version-policy.md`](../memories/filament-version-policy.md).
 
 ## External Principles Adopted
 

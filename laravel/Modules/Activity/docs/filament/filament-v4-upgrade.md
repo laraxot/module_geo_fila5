@@ -1,7 +1,9 @@
 # Filament v4 Upgrade Documentation
 
+> **Storico** — migrazione verso Filament v4 (2025). **Stack attuale del progetto: Filament v5.** Vedi [filament-version.md](../filament-version.md) e [filament-version-policy.md](../../../../docs/wiki/memories/filament-version-policy.md).
+
 ## Overview
-This document outlines the key changes and upgrades implemented for Filament v4 in the Activity module.
+This document outlines the key changes and upgrades implemented for Filament v4 in the Activity module (archival).
 
 ## Key Changes Made
 

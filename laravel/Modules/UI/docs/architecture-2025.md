@@ -18,7 +18,7 @@
 
 ### Primary Purpose
 
-The UI module is a **Filament v4 customization and shared components library** that provides:
+The UI module is a **Filament v5 customization and shared components library** that provides:
 - ✨ Specialized form fields and table columns extending Filament's base components
 - 🧩 Reusable Filament widgets for dashboards and layouts
 - 🎨 Blade view components for frontend integration
@@ -509,7 +509,7 @@ it('can toggle table layout', function () {
 - **Xot Module** - Base classes, actions, traits
 - **User Module** - User data actions
 - **Tenant Module** - Multi-tenancy support
-- **Filament v4** - Admin panel framework
+- **Filament v5** - Admin panel framework
 - **Spatie Packages**:
   - QueueableAction
   - ModelStates
@@ -636,7 +636,7 @@ The UI module is a **well-architected, feature-rich Filament customization layer
 
 **Key Strengths:**
 - 🎨 Rich set of reusable components
-- 🔧 Excellent Filament v4 integration
+- 🔧 Excellent Filament v5 integration
 - 🧪 Good test coverage
 - 📐 Solid architectural patterns
 - ✅ PHPStan Level 10 compliant

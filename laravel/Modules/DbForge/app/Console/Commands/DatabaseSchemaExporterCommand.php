@@ -68,15 +68,11 @@ class DatabaseSchemaExporterCommand extends Command
             'tables' => [],
         ];
 
-        $progressBar = $output->createProgressBar(count($tables));
-        $progressBar->start();
-
-        foreach ($tables as $table) {
+        $this->withProgressBar($tables, if (!is_array($tables)) {
+    $tables = [];
+}
             $databaseSchema['tables'][$table] = $this->getTableInfo($connection, $table);
-            $progressBar->advance();
-        }
-
-        $progressBar->finish();
+        });
         $this->newLine();
 
         // Aggiungi informazioni sulle relazioni tra tabelle

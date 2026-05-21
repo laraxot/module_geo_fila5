@@ -1,5 +1,7 @@
 # {ModuleName} Module
 
+> **Filament Version**: This module targets **Filament v5** (see `docs/filament-version.md` and the Second Brain memory `docs/wiki/memories/filament-version-policy.md`).
+
 ## Overview
 
 {Brief description of the module's purpose and responsibilities}

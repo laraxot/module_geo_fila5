@@ -2,7 +2,7 @@
 
 ## Overview
 
-Il modulo Performance implementa il pattern **Infolist dedicato** introdotto in `XotBaseResource` per la configurazione degli infolist Filament v4.
+Il modulo Performance implementa il pattern **Infolist dedicato** introdotto in `XotBaseResource` per gli infolist **Filament v5** (`Filament\Schemas\Components\Component`).
 
 ## Regola del Pattern
 

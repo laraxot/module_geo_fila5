@@ -1,5 +1,7 @@
 # Riepilogo Regole Filament - PTVX
 
+> **Current Stack**: Filament **v5** (Livewire v4 + Schemas). See canonical memory: `docs/wiki/memories/filament-version-policy.md`
+
 ## 🚨 Regole Critiche Aggiornate
 
 ### 1. Estensione Classi Filament

@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class TreatmentsTable extends XotBaseResourceTable
 {
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'active' => IconColumn::make('active')->boolean(),

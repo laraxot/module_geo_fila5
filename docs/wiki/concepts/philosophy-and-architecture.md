@@ -232,7 +232,7 @@ class User extends Model
 
 ### 5. Deprecated: BadgeColumn
 
-**WHY:** Filament v4 consolidated badge display into TextColumn.
+**WHY:** Da Filament v3/v4 in poi il badge è su `TextColumn` (stack attuale: **Filament v5**).
 
 ```php
 // ❌ DEPRECATED

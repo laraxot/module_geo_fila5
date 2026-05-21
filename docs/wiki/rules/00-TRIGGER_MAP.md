@@ -41,6 +41,7 @@ updated: 2026-05-20
 | Accessor/mutator | `docs/wiki/concepts/accessor-auto-persistence.md` |
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |
 | Filament class extension / XotBase | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
+| Filament versione stack (**v5**, non v4) | `docs/wiki/memories/filament-version-policy.md`, `laravel/Modules/Xot/docs/filament-5-laraxot-rules.md` |
 | Filament resource/page/widget | `docs/wiki/rules/xotbase-critical-rules.md`, `docs/wiki/rules/ai-guidelines.md` |
 | Filament $resource property / visibilità | `docs/wiki/rules/filament-resource-property.md` |
 | XotBaseListRecords / getResource auto-resolve | `docs/wiki/rules/filament-resource-property.md` |
