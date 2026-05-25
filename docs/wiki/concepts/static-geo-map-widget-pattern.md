@@ -49,7 +49,6 @@ Questo pattern replica l'idea chiave di `farmshops.eu`: performance stabili con 
 - `phpmd` via `php tools/phpmd.phar ...`
 - `phpinsights` via `.phar` workflow del progetto
 - `pest` per dataset support object e widget config
-<<<<<<< HEAD
 
 ## Pattern `geo-map-lit` (segnalazioni-elenco pubblico)
 
@@ -85,5 +84,3 @@ $outputPath = base_path('public_html/data/tickets.json');
 - [geo-map-controls-unification-rule](./geo-map-controls-unification-rule.md) — controlli mappa devono essere unificati tra `geo-map-lit` e `coordinate-picker-lit`
 - [geo-vite-build-contract](./geo-vite-build-contract.md)
 - [geo-map-lit entity](../entities/geo-map-lit.md)
-=======
->>>>>>> c3b9b5924 (.)
