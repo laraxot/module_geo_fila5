@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 12:30:00 UTC] [PROCESS] GitHub issue sync: commenti su mono #143 #157-159 #148 #155, Job/Lang/Notify/temi; creata provtv/module_notify_fila5#21.
+
 [2026-05-26 25:00:00 UTC] [UPDATE] Canon Filament `getTableColumns`: solo `public function` (mai static); concept [`xotbase-table-columns-enforcement.md`](concepts/xotbase-table-columns-enforcement.md), §21b `llm-wiki.txt`, `check-get-table-columns-instance.sh`; PHP Job+Notify OK.
 
 [2026-05-26 24:45:00 UTC] [FIX] Git collision **Notify**: 13 SVG (HEAD vs LFS), 6 `*Table.php` (corpo HEAD + `getTableColumns` instance), rimossi `*.php.up`; PHPStan Notify OK; memorie [`merge-collision-filament-table-signature.md`](memories/merge-collision-filament-table-signature.md), [`Notify/.../merge-collision-notify-lessons.md`](../laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md).
