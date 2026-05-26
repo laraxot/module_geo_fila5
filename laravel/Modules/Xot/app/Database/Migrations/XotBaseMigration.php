@@ -86,14 +86,9 @@ abstract class XotBaseMigration extends LaravelMigration
     {
         $connectionName = $this->model->getConnectionName();
         // 如果连接名是 'user' 但数据库不存在，使用默认连接
-<<<<<<< HEAD
         if ('user' === $connectionName && ! DB::connection($connectionName)->getDatabaseName()) {
             $default = config('database.default');
             $connectionName = is_string($default) ? $default : 'mariadb';
-=======
-        if ($connectionName === 'user' && ! DB::connection($connectionName)->getDatabaseName()) {
-            $connectionName = 'mysql';
->>>>>>> 93fecd1d (.)
         }
 
         return Schema::connection($connectionName);

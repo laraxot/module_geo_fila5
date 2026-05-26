@@ -7,7 +7,11 @@ module: "ptvx-project"
 
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
+[2026-05-26 18:00:00 UTC] [UPDATE] Trigger Map: riga canonica **BOOTSTRAP SESSIONE AGENTE**, «Contratto automatico», Enforcement rinforzato; stub `AGENTS.md`/`CLAUDE.md`; INDEX rules; disciplina autocompact agganciata al routing.
+
 ## Log Entries
+
+[2026-05-26 00:20:00 UTC] [UPDATE] MCP portability: rimossi path assoluti workspace da `.cursor/mcp.json` e `.mcp.json`; aggiunto trigger map per config MCP non portabile e regola `${workspaceFolder}` in context-mode setup.
 
 [2026-05-26 16:45:00 UTC] [PROCESS] Autocompact thrashing: how-to unificato `docs/wiki/how-to/autocompact-thrashing-recovery.md`, redirect `kilo-autocompact-…`, stub `agent-edit-discipline` (39 pacchetti), rule `cursor-context-discipline.mdc`, trigger map; fonti esterne forum Cursor + vexp. [UPDATE] Autocompact thrashing: creata issue #138, aggiunto playbook root, trigger map, memoria compaction, guardrail GitHub issue e puntatori DRY negli `agent-edit-discipline.md` di moduli e temi.
 

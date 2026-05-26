@@ -30,13 +30,10 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
     /** @var bool */
     public $timestamps = true;
 
-<<<<<<< HEAD
-=======
     /** @var int */
     protected $perPage = 30;
 
     /** @var string */
->>>>>>> 11e3ccff7 (.)
     protected $connection = 'notify';
 
     /** @var list<string> */
@@ -49,9 +46,6 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
     protected $keyType = 'string';
 
     /** @var list<string> */
-<<<<<<< HEAD
-    protected $hidden = [];
-=======
     protected $hidden = [
         // 'password'
     ];
@@ -65,7 +59,6 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
     {
         return app(GetFactoryAction::class)->execute(static::class);
     }
->>>>>>> 11e3ccff7 (.)
 
     /** @return array<string, string> */
     protected function casts(): array

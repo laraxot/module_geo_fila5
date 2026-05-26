@@ -11,30 +11,45 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp"],
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ],
       "env": {}
     },
     "puppeteer": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
       "env": {}
     },
     "token-optimizer": {
       "command": "npx",
-      "args": ["-y", "@ooples/token-optimizer-mcp"],
+      "args": [
+        "-y",
+        "@ooples/token-optimizer-mcp"
+      ],
       "env": {
         "TOKEN_OPTIMIZER_CACHE_DIR": "${PWD}/.claude/token-optimizer-cache"
       }
     },
     "laravel-boost": {
       "command": "php",
-      "args": ["${PWD}/laravel/artisan", "boost:mcp"],
+      "args": [
+        "${PWD}/laravel/artisan",
+        "boost:mcp"
+      ],
       "env": {}
     },
     "qmd": {
       "command": "qmd",
-      "args": ["mcp"],
+      "args": [
+        "mcp"
+      ],
       "env": {}
     }
-  }
+  },
+  "_comment": "Portable MCP config: never hard-code the local workspace path. Use ${workspaceFolder} so this file can be reused across sibling projects."
 }

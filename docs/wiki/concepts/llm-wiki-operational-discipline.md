@@ -3,7 +3,7 @@ title: "LLM Wiki Operational Discipline"
 type: "concept"
 tags: [llm-wiki, karpathy, on-demand, token-budget, git-policy, bootstrap]
 created: 2026-05-12
-updated: 2026-05-19
+updated: 2026-05-26
 ---
 
 # LLM Wiki Operational Discipline
@@ -23,7 +23,7 @@ Bootstrap stubs (`CLAUDE.md`, `QWEN.md`, `GEMINI.md`, `AGENTS.md`) must be **≤
 ```
 Task triggered
     ↓
-Consult docs/wiki/rules/00-TRIGGER_MAP.md
+Consult `docs/wiki/rules/00-TRIGGER_MAP.md`: **prima** applica la riga **BOOTSTRAP SESSIONE AGENTE**, poi la riga più specifica.
     ↓
 qmd search "<topic>" --limit 5
     ↓

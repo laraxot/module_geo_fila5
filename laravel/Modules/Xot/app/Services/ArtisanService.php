@@ -45,17 +45,10 @@ class ArtisanService
         switch ($act) {
             case 'migrate':
                 $defaultConn = Config::get('database.default');
-<<<<<<< HEAD
                 $purgeConn = \is_string($defaultConn) && '' !== $defaultConn ? $defaultConn : 'mysql';
                 DB::purge($purgeConn);
                 DB::reconnect($purgeConn);
                 if ('' !== $module_name) {
-=======
-                $purgeConn = \is_string($defaultConn) && $defaultConn !== '' ? $defaultConn : 'mysql';
-                DB::purge($purgeConn);
-                DB::reconnect($purgeConn);
-                if ($module_name !== '') {
->>>>>>> 93fecd1d (.)
                     echo '<h3>Module '.$module_name.'</h3>';
 
                     return self::exe('module:migrate '.$module_name.' --force');
