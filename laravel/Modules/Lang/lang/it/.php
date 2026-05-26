@@ -7,8 +7,8 @@ return array (
   array (
     'empty' => 
     array (
-      'label' => 'empty',
-      'heading' => 'empty',
+      'label' => 'empty11',
+      'heading' => 'empty12',
     ),
   ),
   'actions' => 

@@ -39,10 +39,9 @@ return [
         'trova_esclusi' => [
             'label' => 'Trova Esclusi',
         ],
-        'fill_out_the_form' => 'compila',
-        'showing_records' => 'Visualizzati :count record di :total',
-        'showing_limited_results' => 'Risultati limitati. Usa i filtri per raffinare la ricerca.',
         'fill_out_the_form' => 'Compila',
+        'showing_records' => 'Mostra :count record di :total',
+        'showing_limited_results' => 'Risultati limitati. Usa i filtri per affinare la ricerca.',
         'populate_year' => 'Popola anno',
         'copy_from_last_year' => 'Copia dall\'anno precedente',
         'trova_esclusi' => [

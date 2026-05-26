@@ -413,3 +413,4 @@ laravel/.claude/
 .tools/
 .claude
 *.*~*
+laravel/Modules/Lang/packages/lara-zeus/

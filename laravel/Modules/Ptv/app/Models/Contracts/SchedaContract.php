@@ -23,6 +23,11 @@ namespace Modules\Ptv\Models\Contracts;
  * @property int|null $repar Reparto
  * @property string|null $email Email del dipendente
  * @property object|null $valutatore Relazione con il valutatore
+ * @property int|null $propro Codice propro
+ * @property mixed $last_data_assunz Data ultima assunzione
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Ptv\Models\CriteriEsclusione>|null $criteriEsclusione
+ * @property float|null $perf_ind_media Media performance individuale
+ * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
  */
 interface SchedaContract
 {

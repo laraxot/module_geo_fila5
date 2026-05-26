@@ -55,7 +55,6 @@ return [
             'placeholder' => 'title',
         ],
         'valutatore_id' => [
-            'label' => 'Valutatore ID',
             'label' => 'Valutatore Id',
         ],
         'stabi' => [
