@@ -414,3 +414,4 @@ laravel/.claude/
 .claude
 *.*~*
 laravel/Modules/Lang/packages/lara-zeus/
+bashscripts/ai/skills/build-provenance-attestation/scripts/Modules/
