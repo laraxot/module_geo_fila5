@@ -49,6 +49,14 @@ Usare lo stesso contenuto degli altri moduli (es. Activity, User) per uniformit√
 - **run-tests.yml**: `php artisan test` con filter sul modulo o path dei test.
 - **quality.yml**: composizione di Pint, PHPStan, test.
 - **dependabot-auto-merge.yml**: merge automatico dipendenze secondo policy.
+- **dependabot.yml**: composer + github-actions + **npm** se esiste `package.json`.
+
+## Dependabot Security (repo `laraxot/module_*`)
+
+Gli alert non vivono solo nel mono: controllare `https://github.com/laraxot/module_<nome>_fila5/security/dependabot`.
+
+- Script mono: `bashscripts/ci/dependabot-security-repos.sh`
+- Wiki: [`docs/wiki/how-to/dependabot-discipline.md`](../../../../../docs/wiki/how-to/dependabot-discipline.md)
 
 ## Build provenance (SLSA)
 
