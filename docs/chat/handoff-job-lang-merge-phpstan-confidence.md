@@ -23,7 +23,7 @@ related:
 
 | Verifica | Esito |
 |----------|--------|
-| `git grep '^<<<<<<< ' -- '*.php'` su mono | **0** marker in PHP |
+| `git grep '^<<<<<<< '` su mono (ultimo sweep) | **0** marker; ultimo fix **Notify** 2026-05-26 (svg + tabelle) |
 | `phpstan analyse Modules/Job` da `laravel/` | **OK** (305 file) |
 | `phpstan analyse Modules/Lang` | **8 errori** — chiavi duplicate in 2 file lang IT |
 | `php -l` Job policies / tabelle toccate | OK |

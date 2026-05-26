@@ -9,6 +9,10 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 25:00:00 UTC] [UPDATE] Canon Filament `getTableColumns`: solo `public function` (mai static); concept [`xotbase-table-columns-enforcement.md`](concepts/xotbase-table-columns-enforcement.md), §21b `llm-wiki.txt`, `check-get-table-columns-instance.sh`; PHP Job+Notify OK.
+
+[2026-05-26 24:45:00 UTC] [FIX] Git collision **Notify**: 13 SVG (HEAD vs LFS), 6 `*Table.php` (corpo HEAD + `getTableColumns` instance), rimossi `*.php.up`; PHPStan Notify OK; memorie [`merge-collision-filament-table-signature.md`](memories/merge-collision-filament-table-signature.md), [`Notify/.../merge-collision-notify-lessons.md`](../laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md).
+
 [2026-05-26 24:15:00 UTC] [PROCESS] PR Dependabot autonome moduli/temi: §22 `llm-wiki.txt`, how-to [`module-theme-dependabot-pr-autonomy.md`](how-to/module-theme-dependabot-pr-autonomy.md), script `bashscripts/ci/dependabot-merge-module-prs.sh` — sweep ~52 merge OK, ~39 fail (workflow scope / conflitti); Lang vite #10 mergiata su laraxot.
 
 [2026-05-26 23:45:00 UTC] [PROCESS] Issue GitHub moduli/temi: batch 32 meta + 34 discussione ridondanza (`git remote -v`); commenti Job/Lang/Xot; how-to [`module-theme-github-issues.md`](how-to/module-theme-github-issues.md), manifest chat, §21 `llm-wiki.txt`.

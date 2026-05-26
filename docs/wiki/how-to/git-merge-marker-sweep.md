@@ -47,6 +47,14 @@ sed -i '/^<<<<<<< /d;/^>>>>>>> /d;/^=\{7\}$/d' -- path/to/file.md
 
 Sostituire sempre la **semantic merge** quando due versioni dovevano essere conciliate; lo strip è accettabile per residui dopo duplicazione o linee spurie.
 
+### Eccezione Filament `getTableColumns`
+
+Se HEAD ha `static` e incoming ha metodo di istanza: tenere **corpo HEAD**, firma **instance** — vedi [`../memories/merge-collision-filament-table-signature.md`](../memories/merge-collision-filament-table-signature.md).
+
+### SVG vs Git LFS
+
+Se incoming è solo puntatore LFS e HEAD è XML SVG valido: tenere **HEAD** (modulo Notify, 2026-05-26).
+
 ### Config path `docs/`
 
 Il folder `docs/` ospita anche template Composer/PHPStan/PHPUnit (`phpstan.neon.dist`, `phpunit.xml.dist`, `.php_cs.dist.php`). Devono essere **validi sintatticamente**. Se sono pasticcio irreversibile, ricostruirli dai template Laravel in `laravel/` o dai file canonici nella stessa directory (`.php-cs-fixer.dist.php`).

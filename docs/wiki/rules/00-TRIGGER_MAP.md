@@ -41,7 +41,8 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Issue GitHub moduli/temi (`git remote -v` in `Modules/*` / `Themes/*`) | `docs/wiki/how-to/module-theme-github-issues.md`, `docs/chat/module-theme-github-issues-manifest.md` |
 | PR Dependabot moduli/temi (merge autonomo, remote `laraxot`) | `docs/wiki/how-to/module-theme-dependabot-pr-autonomy.md`, `bashscripts/ci/dependabot-merge-module-prs.sh`, `docs/wiki/how-to/dependabot-discipline.md` |
-| Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
+| Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/memories/merge-collision-filament-table-signature.md`, `laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md` |
+| Filament `getTableColumns` / classi `*Table` | `docs/wiki/concepts/xotbase-table-columns-enforcement.md`, `docs/wiki/rules/gettablecolumns-keys-rule.md`, `bashscripts/ci/check-get-table-columns-instance.sh` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
