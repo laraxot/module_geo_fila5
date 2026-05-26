@@ -4,6 +4,8 @@
 
 **TUTTE le colonne in `getTableColumns()` devono avere chiavi stringa esplicite.**
 
+**Firma obbligatoria:** `public function getTableColumns(): array` (metodo di istanza, mai `public static function getTableColumns()`).
+
 ### ❌ ANTI-PATTERN (Vietato)
 
 ```php

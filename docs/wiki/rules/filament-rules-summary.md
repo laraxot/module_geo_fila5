@@ -19,7 +19,7 @@
 
 I seguenti metodi **DEVONO SEMPRE** restituire `array<string, ...>`:
 
-- `getTableColumns()` → `array<string, Column>`
+- `getTableColumns()` → `array<string, Column>`; firma `public function`, mai `public static function`
 - `getFormSchema()` → `array<string, Component>`
 - `getTableBulkActions()` → `array<string, BulkAction>`
 - `getTableActions()` → `array<string, Action>`

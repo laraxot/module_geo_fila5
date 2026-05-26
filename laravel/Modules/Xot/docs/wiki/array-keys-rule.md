@@ -49,7 +49,7 @@ return [
 /**
  * @return array<string, Column>
  */
-public static function getTableColumns(): array
+public function getTableColumns(): array
 {
     return [];
 }
@@ -67,7 +67,7 @@ public static function getTableFilters(): array
 
 ### Table
 ```php
-public static function getTableColumns(): array
+public function getTableColumns(): array
 {
     return [
         'title' => TextColumn::make('title')->searchable()->sortable(),
