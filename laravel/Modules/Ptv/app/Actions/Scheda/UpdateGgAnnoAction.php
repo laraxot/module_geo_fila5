@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Performance\Actions\Organizzativa;
+namespace Modules\Ptv\Actions\Scheda;
 
-use Modules\Performance\Models\Organizzativa as Scheda;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Materializza `gg_anno` sulle schede organizzative ancora vuote o con valore 0.
+ * Materializza `gg_anno` sulle schede ancora vuote o con valore 0.
  *
  * Questa action non contiene la formula di calcolo. Il valore resta delegato
  * al modello, che tramite il mutator calcola `gg_anno`
@@ -27,7 +27,7 @@ class UpdateGgAnnoAction
     /**
      * Materializza il valore per i record con `gg_anno` NULL o 0.
      *
-     * @param  class-string<Scheda>  $class  Classe model da aggiornare
+     * @param  class-string<Model>  $class  Classe model da aggiornare
      * @param  string  $year  Anno di riferimento (es: '2024')
      * @param  string  $type  Tipo dipendente ('dip' per dipendenti, 'po', etc.)
      */

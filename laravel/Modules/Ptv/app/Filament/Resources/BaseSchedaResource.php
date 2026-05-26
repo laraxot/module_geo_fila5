@@ -88,10 +88,16 @@ abstract class BaseSchedaResource extends XotBaseResource
             ])->columns(4),
 
             'assenze_section' => Section::make('assenze')->schema([
-                'gg_assenza_dalal' => TextInput::make('gg_assenza_dalal'),
-                'hh_assenza_dalal' => TextInput::make('hh_assenza_dalal'),
+                'gg_presenza_dalal' => TextInput::make('gg_presenza_dalal')
+                ->suffixAction(FieldRefreshAction::make('gg_presenza_dalal'))
+                ,
+                'gg_assenza_dalal' => TextInput::make('gg_assenza_dalal')
+                ->suffixAction(FieldRefreshAction::make('gg_assenza_dalal')),
+                'hh_assenza_dalal' => TextInput::make('hh_assenza_dalal')
+                ->suffixAction(FieldRefreshAction::make('hh_assenza_dalal')),
+
             ])->columns(4),
-            'criteri_section' => Section::make('criteri')->schema(fn($record)=>static::getFormSchemaCriteri($record))->columns(4),
+           //'criteri_section' => Section::make('criteri')->schema(fn($record)=>static::getFormSchemaCriteri($record))->columns(4),
         ];
         
 

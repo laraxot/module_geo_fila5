@@ -154,6 +154,9 @@ return [
                 ],
             ],
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
     ],
     'messages' => [
         'validation' => [
@@ -190,4 +193,5 @@ return [
     'model' => [
         'label' => 'organizzativa assenze.model',
     ],
+    'label' => 'organizzativa assenze',
 ];

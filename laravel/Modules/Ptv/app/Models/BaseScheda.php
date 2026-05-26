@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Modules\Performance\Models\Performance;
-use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Anag;
-use Modules\Sigma\Models\Traits\SchedaTrait;
-use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Spatie\Activitylog\LogOptions;
+use Modules\Performance\Models\Performance;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Sigma\Models\Traits\SchedaTrait;
+use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Sigma\Models\Traits\SigmaModelTrait;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 
 /**
  * Modules\Ptv\Models\BaseScheda.
@@ -77,6 +78,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     use SchemalessAttributesTrait;
     use \Modules\Progressioni\Models\Traits\ConvertedTrait;
     use SchedaTrait;
+    use EnteMatrDateRangeMutator;
 
      /**
      * Relazioni da eager-loadare sempre per evitare N+1 queries.

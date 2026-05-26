@@ -119,7 +119,7 @@ class UpdateRestiPondByValutatoreIdAction
 
             $totalUpdated += $updated;
 
-            echo "Aggiornati resti_pond per {$updated} dipendenti del valutatore {$valutatore->valutatore_id}, delta: {$delta}\n";
+            echo "<br/>Aggiornati resti_pond per {$updated} dipendenti del valutatore {$valutatore->valutatore_id}, delta: {$delta}\n";
         }
 
         echo "Aggiornati resti_pond per un totale di {$totalUpdated} dipendenti, anno: {$year}, tipo: {$type}\n";

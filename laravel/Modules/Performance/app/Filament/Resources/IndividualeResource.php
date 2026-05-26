@@ -121,13 +121,26 @@ class IndividualeResource extends BaseSchedaResource
 
         $fields = [
             'id',
-            'ente',
             'matr',
             'cognome',
             'nome',
+            'type',
             'email',
             'dal',
             'al',
+            'anno',
+            'ha_diritto',
+            'valutatore_id',
+            'perc_parttimepond_dalal',
+            'gg_presenza_dalal',
+            'gg_assenza_dalal',
+            'hh_assenza_dalal',
+            'quota_teorica',
+            'budget_assegnato',
+            'quota_effettiva',
+            'resti',
+            'resti_pond',
+            'importo_totale',
         ];
         $transKey = app(GetTransKeyAction::class)->execute(static::class);
         $trans = trans($transKey);

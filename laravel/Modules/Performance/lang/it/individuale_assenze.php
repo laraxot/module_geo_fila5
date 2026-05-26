@@ -283,6 +283,12 @@ return [
         ],
         'submit' => [
             'tooltip' => 'submit',
+            'icon' => 'submit',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
         ],
     ],
     'messages' => [

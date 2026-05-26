@@ -292,5 +292,23 @@ return [
     'model' => [
         'label' => 'performance fondo.model',
     ],
+    'pages' => [
+        'organizzativa_money' => [
+            'valutatore_check' => [
+                'title' => [
+                    'label' => 'Organizzativa senza valutatore',
+                ],
+                'description' => [
+                    'label' => 'Righe con valutatore_id non valorizzato per anno :year e tipo :type.',
+                ],
+                'empty' => [
+                    'label' => 'Nessuna riga: tutte le organizzative hanno valutatore_id valorizzato.',
+                ],
+                'row' => [
+                    'label' => 'ID :id — matr :matr — :cognome :nome — stabi :stabi — repar :repar',
+                ],
+            ],
+        ],
+    ],
     'label' => 'performance fondo',
 ];

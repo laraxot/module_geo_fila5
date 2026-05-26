@@ -288,6 +288,12 @@ return [
             'helper_text' => 'gg_anno',
             'description' => 'gg_anno',
         ],
+        'gg_presenza_dalal' => [
+            'label' => 'gg_presenza_dalal',
+            'placeholder' => 'gg_presenza_dalal',
+            'helper_text' => 'gg_presenza_dalal',
+            'description' => 'gg_presenza_dalal',
+        ],
     ],
     'actions' => [
         'copy_from_individuale' => [
@@ -502,6 +508,21 @@ return [
             'label' => 'removeAllFilters',
             'icon' => 'removeAllFilters',
             'tooltip' => 'removeAllFilters',
+        ],
+        'gg_presenza_dalal' => [
+            'label' => 'gg_presenza_dalal',
+            'icon' => 'gg_presenza_dalal',
+            'tooltip' => 'gg_presenza_dalal',
+        ],
+        'gg_assenza_dalal' => [
+            'label' => 'gg_assenza_dalal',
+            'icon' => 'gg_assenza_dalal',
+            'tooltip' => 'gg_assenza_dalal',
+        ],
+        'hh_assenza_dalal' => [
+            'label' => 'hh_assenza_dalal',
+            'icon' => 'hh_assenza_dalal',
+            'tooltip' => 'hh_assenza_dalal',
         ],
     ],
     'messages' => [
