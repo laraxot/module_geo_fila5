@@ -4,7 +4,7 @@ type: how-to
 tags: [theme, wiki, qmd, second-brain]
 module: ptvx-project
 created: 2026-04-29
-updated: 2026-05-20
+updated: 2026-05-26
 qmd: "theme wiki documentation, laravel theme docs wiki structure"
 related:
   - "qmd-search-guide.md"
@@ -28,7 +28,7 @@ Come per i moduli: [Markdown Note Minimum Standard](../concepts/markdown-note-mi
 Come per i moduli: asset e note operative in `laravel/Themes/{ThemeName}/docs/` (non wiki); **`docs/wiki/`** del tema per sintesi UX, componenti e convenzioni frontend. Stesso ciclo *capture → distill → express* descritto nel [Second Brain Operating Model](../concepts/second-brain-operating-model.md).
 
 - Stub locale (puntatore DRY): `laravel/Themes/<Name>/docs/second-brain.md` nella **radice** di `docs/` del tema.
-- Stub **disciplina edit agent / qualità**: `laravel/Themes/<Name>/docs/agent-edit-discipline.md` — puntatore alla wiki root e all’[issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124).
+- Stub **disciplina edit agent / qualità**: `laravel/Themes/<Name>/docs/agent-edit-discipline.md` — puntatori DRY alla wiki root, [issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124), e **`autocompact-thrashing-recovery`** (messaggio IDE *thrashing*).
 
 ## Theme Wiki Structure
 

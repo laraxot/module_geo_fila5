@@ -16,7 +16,7 @@ The debugbar was not appearing on `http://127.0.0.1:8000/it/tests/homepage` desp
 |-------|--------|
 | Package installed? | YES (`fruitcake/laravel-debugbar 4.2.x`) |
 | Service provider discovered? | YES (`php artisan package:discover` shows Laravel Debugbar as discovered) |
-| Middleware registered? | ✅ YES (`Barryvdh\Debugbar\Middleware\InjectDebugbar` in web middleware group) |
+| Response instrumentation? | ✅ YES — `fruitcake/laravel-debugbar` v4 usa listener `Illuminate\Foundation\Http\Events\RequestHandled` + `Terminating` (namespace `Fruitcake\\LaravelDebugbar`, non più `Barryvdh\\Debugbar\\Middleware\\InjectDebugbar` nel middleware stack web globale). |
 | Config file exists? | ✅ YES (`laravel/config/debugbar.php`) |
 | `APP_DEBUG` in .env? | ✅ `true` |
 | `DEBUGBAR_ENABLED` in .env? | ❌ **`false`** — THIS WAS THE PROBLEM |
@@ -129,9 +129,14 @@ DEBUGBAR_ENABLED=false
 1. **Check .env:** `DEBUGBAR_ENABLED=true` (or remove line to follow `APP_DEBUG`)
 2. **Clear config:** `php artisan config:clear`
 3. **Check runtime config:** `php artisan tinker --execute="var_dump(config('debugbar.enabled'));"`
-4. **Verify middleware:** `php artisan tinker --execute="print_r(app('Illuminate\Contracts\Http\Kernel')->getMiddlewareGroups()['web']);"`
-5. **Check package discovery:** `php artisan package:discover 2>&1 | grep -i debug`
-6. **Verify HTML injection:** `curl -s http://127.0.0.1:8000/some-page | grep -i debugbar`
+4. **Provider / stack:** Debugbar non è più un middleware web globale `InjectDebugbar`; in v4 viene montato tramite [`Fruitcake\LaravelDebugbar\ServiceProvider`](https://github.com/fruitcake/laravel-debugbar) e listener sugli eventi HTTP. Ignorare stack trace nei dump HTML storici che citano ancora `Barryvdh\Debugbar\Middleware\InjectDebugbar`.
+
+### Composer nel sotto-progetto `Modules/Xot`
+
+Il `composer.json` del modulo può creare un `Modules/Xot/vendor/` locale. Se una installazione precedente è **parziale** (file mancanti in `vendor/`), `composer dump-autoload` fallisce con «does not appear to be a file nor a folder». In quel caso: `rm -rf laravel/Modules/Xot/vendor`, poi ripetere `composer require` da `Modules/Xot`, quindi `rm -rf vendor` e dalla root `laravel/` eseguire `composer install` o `composer go` secondo la procedura di squadra.
+5. **Tema Sixteen / parity CSS:** il file [`segnalazione-parity.css`](../../../Themes/Sixteen/resources/css/segnalazione-parity.css) è importato da `Themes/Sixteen/resources/css/app.css`. Se `#phpdebugbar` ha `display: none !important` **globale**, la barra resta invisibile anche col backend OK — gli screenshot parity usano solo `body.parity-capture-hide-dev-overlays`.
+6. **Check package discovery:** `php artisan package:discover 2>&1 | grep -i debug`
+7. **Verify HTML injection:** `curl -s http://127.0.0.1:8000/some-page | grep -i debugbar`
 
 ## Security Warning
 

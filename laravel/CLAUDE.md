@@ -5,6 +5,7 @@
 ## Read first
 
 - [Trigger Map](../docs/wiki/rules/00-TRIGGER_MAP.md)
+- [GitHub issue discipline](../docs/wiki/how-to/github-issue-agent-discipline.md)
 - [Context overflow](../docs/wiki/concepts/context-overflow-prevention.md)
 
 ## On-demand

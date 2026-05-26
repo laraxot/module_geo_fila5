@@ -27,6 +27,14 @@
 
 **Fix:** monolite spostato in `laravel/.cursor/laravel-boost-guidelines.FULL.mdc.bak` (non è rule); nella cartella `rules/` resta solo uno **stub** con `alwaysApply: false` + `globs: laravel/**/*.php`. Root: `compaction-recovery` + `file-locking-mandatory` unite in `.cursor/rules/cursor-context-discipline.mdc` (una rule compatta).
 
+## Update — 2026-05-26 «Autocompact is thrashing» (playbook Cursor + DRY)
+
+**Causa ricorrente:** compact ok → subito dopo `Read`/shell con output enorme → contesto di nuovo saturo ×3.
+
+**Fix wiki:** how-to unico [`docs/wiki/how-to/autocompact-thrashing-recovery.md`](../wiki/how-to/autocompact-thrashing-recovery.md) (+ path storico redirect `kilo-autocompact-thrashing-prevention.md`); rule cursor `cursor-context-discipline.mdc`; trigger map ripulita; **stub** `laravel/**/docs/agent-edit-discipline.md` aggiornati (link relativo calcolato).
+
+**Issue tracking:** [#138](https://github.com/provtv/base_ptv_fila5_mono/issues/138).
+
 ## Domande aperte — **rispondete** (append qui o commento #124)
 
 1. **Lock affiancato** (`file.ext.lock`): per voi è sufficiente o preferite lock centralizzato (es. un solo file per ambito modulo)?

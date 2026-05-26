@@ -1,6 +1,7 @@
 ---
 description: CRITICAL RULE - Never replace domain-specific code with generic alternatives
-alwaysApply: true
+alwaysApply: false
+globs: laravel/**/*.php
 ---
 
 # INVIOLABLE: Never Simplify Domain Logic

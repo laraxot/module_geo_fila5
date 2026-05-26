@@ -1,7 +1,7 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: Filament RelationManager e pattern Laraxot
+globs: laravel/**/Filament/**/*.php
+alwaysApply: false
 ---
 ## Regola RelationManager custom: estensione XotBaseRelationManager
 

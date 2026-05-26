@@ -5,9 +5,11 @@ type: concept
 status: approved
 tags: [tokens, context-window, compaction, cursor, mcp]
 created: "2026-05-12T00:00:00Z"
-updated: "2026-05-20T00:00:00Z"
+updated: "2026-05-26T00:00:00Z"
 qmd: "context overflow 262144 131072 compaction context-mode AGENTS stub"
 related:
+  - "../how-to/autocompact-thrashing-recovery.md"
+  - "../how-to/kilo-autocompact-thrashing-prevention.md"
   - "../how-to/api-context-length-exceeded-131072.md"
   - "../how-to/context-mode-overflow-prevention.md"
   - "../../../bashscripts/ai/rules/context-compression-discipline.md"
@@ -35,10 +37,14 @@ The 262144-token context limit is exceeded when AI tools pre-load large files in
 
 ## Definitive Fixes Applied 2026-05-12
 
-### 1. AGENTS.md ridotto a stub (204KB → 18 lines)
+### 1. AGENTS.md ridotto a stub (204KB → ~25 righe)
 
-Il file `bashscripts/ai/AGENTS.md` è stato sostituito da uno stub on-demand di 18 righe.
-La fonte canonica dei BMAD agents rimane `.bmad-core/agents/`, caricabile on-demand via `*agent <name>`.
+Il file `bashscripts/ai/AGENTS.md` deve restare uno **stub on-demand** (≤80 righe). Rigenerazioni BMAD (`npx bmad-method install -i codex`) lo riportano spesso a **~5349 righe / ~205KB** — causa principale di token per chiamata.
+
+- **Stub:** `bashscripts/ai/AGENTS.md`
+- **Backup (non indicizzare):** `bashscripts/ai/AGENTS.bmad-generated.FULL.md.bak`
+- **Gate:** `bashscripts/quality-gates/verify-llm-wiki.sh` (fallisce se >80 righe)
+- Agenti BMAD on-demand: `_bmad/agents/`, `npx bmad-method list:agents`
 
 ### 2. Merge conflicts risolti
 
@@ -102,6 +108,17 @@ echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":
 4. **QMD search --limit 5** mai caricare più di 5 risultati per ricerca
 5. **Bootstrap files ≤50 righe** — CLAUDE.md, GEMINI.md, QWEN.md, AGENTS.md
 6. **Vietato `.cache/` dentro progetto** — usare `~/.cache/`
+7. **Regole `laravel/.cursor/rules/*.mdc`**: con `globs` larghi tipo `**/*.{php,md,sh}` ogni pagina lunga viene **aggiunta al contesto quasi ogni turata** → tenere solo **stub** + link alla wiki (fix 2026-05-26: `git-never-go-back.mdc`, `script-location-mandatory.mdc` slim).
+
+## Claude Code: Autocompact thrashing
+
+Messaggio tipico: `Autocompact is thrashing: the context refilled to the limit within 3 turns of the previous compact, 3 times in a row`.
+
+**Causa:** dopo il compact, un file letto o un output tool troppo grande riempie di nuovo la finestra quasi subito. Il compact non puo' stabilizzare una sessione che continua a caricare payload larghi.
+
+**Fix operativo:** fermare tool larghi, checkpoint in `docs/chat/<slug>.md`, `/clear` se il task precedente non serve piu', oppure `/compact <istruzione mirata>` se serve preservare solo stato essenziale. Poi ripartire con issue GitHub + file esatti + letture a chunk.
+
+Playbook dedicato: [autocompact-thrashing-recovery](../how-to/autocompact-thrashing-recovery.md).
 
 ## Cursor IDE: «Compaction exhausted» (dopo 3 tentativi)
 
@@ -125,9 +142,26 @@ Messaggio tipico: `Compaction exhausted: context still exceeds model limits afte
 
 Per CLI/OpenCode e MCP vedi anche [context-overflow-prevention (rules)](../rules/context-overflow-prevention.md).
 
+## «Autocompact is thrashing» (Cursor, Kilo, stesso sintomo IDE)
+
+Messaggio esatto:
+
+> Autocompact is thrashing: the context refilled to the limit within 3 turns of the previous compact, 3 times in a row.
+
+**Causa diretta:** dopo un compact, **una lettura troppo grande o un output tool** riporta il contesto oltre soglia; ripetuto 3 volte ⇒ loop.
+
+**Soluzione nella codebase:** 
+- **Disciplina obbligatoria automatica** (caricamento via TRIGGER_MAP): [`docs/wiki/rules/autocompact-thrashing-discipline.md`](../rules/autocompact-thrashing-discipline.md)
+- Playbook completo + recovery: [`docs/wiki/how-to/autocompact-thrashing-recovery.md`](../how-to/autocompact-thrashing-recovery.md) (**canonico**)
+- Path storico Kilo-specifico: [`kilo-autocompact-thrashing-prevention.md`](../how-to/kilo-autocompact-thrashing-prevention.md) (alias)
+
+I puntatori DRY nei package stanno in ogni stub `laravel/**/docs/agent-edit-discipline.md` (voce «Autocompact thrashing»).
+
 **Letture utili (esterno):**
 
+- [Forum Cursor — perché summarizing del contesto](https://forum.cursor.com/t/summarizing-chat-context-why/102842/2)
 - [Forum Cursor — «Context is too large»](https://forum.cursor.com/t/context-is-too-large-problem/60479)
+- [Limite contesto ed injection implicita — vexp](https://vexp.dev/blog/cursor-context-window-limitations-fit-more-code-in-less-space)
 - [Cursor — messaggi «condensed to fit»](https://forum.cursor.com/t/this-file-has-been-condensed-to-fit-in-context-message/128120)
 
 ## Trigger Map
@@ -135,5 +169,6 @@ Per CLI/OpenCode e MCP vedi anche [context-overflow-prevention (rules)](../rules
 | Trigger | Load |
 |---------|------|
 | Context overflow / API Error 400 / compaction error / **131072 endpoint limit** | `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/api-context-length-exceeded-131072.md` |
+| Autocompact thrashing / «refilled within 3 turns» / runtime-telemetry spike | `docs/wiki/rules/autocompact-thrashing-discipline.md` (**caricamento automatico obbligatorio**), `docs/wiki/how-to/autocompact-thrashing-recovery.md` (playbook), `docs/wiki/concepts/context-overflow-prevention.md` |
 | AGENTS.md troppo grande / riduzione context | `bashscripts/tools/prompts/llm-wiki.txt` §16 |
 | context-mode / ctx doctor / compressione | `bashscripts/ai/rules/context-compression-discipline.md` |

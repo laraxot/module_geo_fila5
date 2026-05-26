@@ -9,12 +9,64 @@ module: "Xot"
 
 ## Log Entries
 
-## [2026-05-21] governance | deduplica docs cross-modulo
+<<<<<<< HEAD
+=======
+## [2026-05-24] refactor | wizard — normalizzazione stato **rimossa dalla base**
 
-- Owner concetti wiki in `docs/wiki/concepts/`; stub negli altri moduli via `dedup_module_docs.py`.
-- Pagina modulo: `docs/docs-deduplication.md`.
-- How-to progetto: `docs/wiki/how-to/module-docs-deduplication.md`.
-- Issue [#124](https://github.com/provtv/base_ptv_fila5_mono/issues/124).
+- **Motivo progetto**: il submit deve usare **`$this->form->getState()`** così come lo espone Filament/schema, senza helper PHP che appiattiscono wrapper (`wizard`) nel widget base.
+- **Codice**: `XotBaseWizardWidget` contiene solo costruzione `Wizard` + policy `?step=` + vista tema; **nessun** `normalizeWizardFormState()` / `getWizardSchemaWrapperKey()` sulla classe.
+- **Fixcity**: `CreateTicketWizardWidget::submit()` legge `getState()` e fa merge opzionale `owner_id` se auth; vedi [`CreateTicketWizardWidget.php`](../../Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php).
+
+## [2026-05-24] refactor | wizard — normalizzazione stato dentro `XotBaseWizardWidget` (niente trait file) — **superata**
+
+- **Nota storica**: per un breve periodo i metodi `normalizeWizardFormState` erano stati spostati sulla base al posto del trait file; **da 2026-05-24 (direzione corrente)** quei metodi non esistono più: vedi voce sopra.
+
+- **Problema (storicamente)**: `CreateTicketWizardWidget` poteva ancora referenziare `NormalizesWizardFormState` mentre il file `.php` mancava → fatal Composer su molte working tree (`include … No such file`).
+- **Soluzione intermedia (superata)**: metodi `protected` su `XotBaseWizardWidget` al posto del trait.
+- **Soluzione attuale**: nessuna normalizzazione post-`getState()` nella base; schema/dehydrate definiscono la forma.
+
+## [2026-05-23] fix | wizard — riferimento storico errato a trait `NormalizesWizardFormState` (fatal autoload)
+
+- **Canonico oggi**: non creare **`NormalizesWizardFormState.php`**; non usare **`use Modules\Xot\Filament\Traits\NormalizesWizardFormState`**.
+- **Nota storica / superata**: questa voce descriveva un tentativo di ripristino del trait; il trait **non** è parte dell'architettura.
+
+- **Symptomo**: `/it/tests/segnalazione-crea` → errore fetale `Failed to open stream ... NormalizesWizardFormState.php` durante load di `CreateTicketWizardWidget`; niente markup wizard.
+- **Fix (storico)**: rimuovere `use` trait fantasma / allineare al codice corrente; dopo pull eseguire `composer dump-autoload`.
+
+## [2026-05-23] refactor | wizard widget — `HasWizard` sul widget Xot + trait satellite
+
+- **Motivo UX**: ripristinare parità tipo bozza progetto storica (**alias `getParentWizardComponent`**, cancel SPA-aware, vista `pub_theme::components.wizard`).
+- **File**: [`XotBaseWizardWidget.php`](../../app/Filament/Widgets/XotBaseWizardWidget.php); normalizzazione stato submit: metodi `protected` sulla stessa classe (2026-05-24), non più trait dedicato. Verificare eventualmente `DelegatesFilamentWizardSchemaMethods` se ancora presente in tree.
+
+## [2026-05-23] audit | ridondanze codice — scan SHA256 cross-moduli/temi (#89/#90)
+
+- Gruppi byte-identical (SHA256; cross-owner senza `/tests/`): **431** `.php` (**72** cross-owner), **179** Blade (**53** cross-owner). [`redundancy/byte-identical-files-static-scan.md`](redundancy/byte-identical-files-static-scan.md). Hub [`concepts/ridondanze-cross-cutting-codebase.md`](concepts/ridondanze-cross-cutting-codebase.md). Indice wiki root [`code-redundancy-audit.md`](../../../../../docs/wiki/concepts/code-redundancy-audit.md). Commenti `#89`, `#90`, `#80`.
+
+
+## [2026-05-22] docs | DRY second brain + merge doc wizard HasWizard
+
+- **`second-brain-local-discipline`:** solo [`concepts/second-brain-local-discipline.md`](concepts/second-brain-local-discipline.md) mantiene il corpo; negli altri nove moduli stesso basename → stub puntatore canonica.
+- **Wizard refactor:** contenuto consolidato in [`filament-wizard-refactoring.md`](filament-wizard-refactoring.md); [`XotBaseWizardWidget-HasWizard-refactor.md`](XotBaseWizardWidget-HasWizard-refactor.md) ridotto a stub (permalink storici).
+- Hub aggiornato: [`concepts/ridondanze-cross-cutting-codebase.md`](concepts/ridondanze-cross-cutting-codebase.md).
+
+>>>>>>> 93fecd1d (.)
+## [2026-05-21] docs | inventario ridondanze codebase + scaffold docs
+
+- Nuovo hub concettuale [`concepts/ridondanze-cross-cutting-codebase.md`](concepts/ridondanze-cross-cutting-codebase.md): incrocia **`docs/redundancy-report.md`**, duplicazioni `second-brain-local-discipline`, doc wizard quasi gemelle nel tema Sixteen e cluster legacy modulo User; puntatori verso **`filament/redundancy-rules.md`**.
+
+## [2026-05-21] docs | LAMP — `docs/lamp/install.txt` riscritto
+
+- Guida strutturata: Sury PHP 8.4, pacchetti deduplicati, `pdo-dblib`/odbc, sezioni opzionali (imagick/swoole/redis), Xdebug solo dev, Apache `libapache2-mod-php8.4`, `update-alternatives`, link incrociati verso [`wiki/concepts/php84-upgrade-extension-checklist.md`](wiki/concepts/php84-upgrade-extension-checklist.md) e [`docs/README.md`](../README.md).
+
+## [2026-05-21] dependency | model-states installato — PHP 8.4 — #87
+
+- `spatie/laravel-model-states` **2.14.1** in `vendor/`; PHPStan `Modules/Xot/app/States` OK dopo `clear-result-cache`.
+- Comandi reali: `php8.4 … composer update -W` da `laravel/`; **non** `composer run go` (migrations wipe). Lock root generato ma **`.gitignore` `*.lock`**.
+- [`phpstan-fixes-log.md`](concepts/phpstan-fixes-log.md), [checklist PHP 8.4](concepts/php84-upgrade-extension-checklist.md).
+
+## [2026-05-21] docs | checklist PHP 8.4 — prima bozza `composer run go`
+
+- Correzioni intermedie in [`concepts/php84-upgrade-extension-checklist.md`](concepts/php84-upgrade-extension-checklist.md). **Revisione finale** stesso giorno: snippet con `php8.4 … composer update -W` + avviso su `composer run go` distruttivo.
 
 ## [2026-04-28] dependency | matrice compatibilita' pacchetti Laravel 13 in Xot
 

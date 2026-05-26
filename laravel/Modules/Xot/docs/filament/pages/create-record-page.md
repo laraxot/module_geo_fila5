@@ -68,7 +68,7 @@ Riferimenti: [extension-rules.md](../extension-rules.md), [filament.md](../filam
 |----------|------------------|
 | Pannello admin, resource CRUD | `CreateRecord` + trait **`HasWizard`** → `getSteps()` / `hasSkippableSteps()` ([doc](https://filamentphp.com/docs/5.x/resources/creating-records#using-a-wizard)) |
 | Pannello (senza wizard nel trait) | `CreateRecord` → **`XotBaseCreateRecord`** |
-| Frontoffice CMS, wizard multi-step | `XotBaseWizardWidget` + widget dominio (es. `CreateTicketWizardWidget`) — `getWizardSteps()` / `hasSkippableWizardSteps()` |
+| Frontoffice CMS, wizard multi-step | `XotBaseWizardWidget` + widget dominio (es. `CreateTicketWizardWidget`) — `getSteps()` / `hasSkippableWizardSteps()` |
 
 Il flusso pubblico **non** passa da `CreateRecord::create()`; usa Livewire + form schema del widget e redirect gestito in `submit()`. La filosofia DRY è parallela (stesso `Wizard` Filament, step e skippable) ma **contesto e entrypoint** diversi.
 

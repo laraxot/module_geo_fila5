@@ -123,3 +123,4 @@ Do not keep asking the runtime to compact a polluted context; once compaction fa
 - `.windsurf/rules/` — regole IDE caricate automaticamente
 - [llm-wiki-operational-discipline](../concepts/llm-wiki-operational-discipline.md) — token budget §5
 - [00-TRIGGER_MAP](./00-TRIGGER_MAP.md)
+- [autocompact-thrashing-discipline](./autocompact-thrashing-discipline.md) — disciplina obbligatoria automatica su segnale runtime thrashing / telemetria

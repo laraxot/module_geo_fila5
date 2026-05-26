@@ -5,6 +5,8 @@
 ## Read first
 
 - [Trigger Map](../docs/wiki/rules/00-TRIGGER_MAP.md)
+- [GitHub issue discipline](../docs/wiki/how-to/github-issue-agent-discipline.md)
+- [Standard Markdown (obbligatorio per ogni `.md` creato/editato)](../docs/wiki/rules/markdown-documentation-standard.md)
 - [Context overflow](../docs/wiki/concepts/context-overflow-prevention.md)
 - [LLM wiki prompt](../bashscripts/tools/prompts/llm-wiki.txt)
 

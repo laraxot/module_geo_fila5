@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Providers;
 
+use BladeUI\Icons\Exceptions\SvgNotFound;
 use BladeUI\Icons\Factory as BladeIconsFactory;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -72,11 +73,9 @@ abstract class XotBaseServiceProvider extends ServiceProvider
                 // Check if prefix already registered to avoid collision with default set.
                 try {
                     $factory->svg($this->nameLower.'::non-existent-test');
-                } catch (\BladeUI\Icons\Exceptions\SvgNotFound $e) {
+                } catch (SvgNotFound $e) {
                     // Prefix not registered yet — safe to add.
                     $factory->add($this->nameLower, ['path' => $svgPath, 'prefix' => $this->nameLower]);
-                } catch (\BladeUI\Icons\Exceptions\CannotRegisterIconSet $e) {
-                    // Prefix collides — skip registration, SVGs served as static assets.
                 }
             } catch (\Throwable $e) {
                 // Ignore missing optional assets.

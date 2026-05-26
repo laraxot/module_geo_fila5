@@ -33,6 +33,7 @@ use Webmozart\Assert\Assert;
 abstract class XotBaseWidget extends FilamentWidget implements HasActions, /* HasForms, */ HasSchemas
 {
     use InteractsWithActions;
+
     // use InteractsWithForms;
     use InteractsWithSchemas;
     use TransTrait;

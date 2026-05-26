@@ -16,6 +16,8 @@ updated: 2026-05-19
 - [on-demand-pattern](./on-demand-pattern.md) — LLM Wiki, rules, skills, QMD loading
 - [validation-post-edit-rule](./validation-post-edit-rule.md) — mutex `file.ext.lock` affiancato + PHPStan / PHPMD (`laravel/tools`) / PHPInsights / E2E globale
 - [github-issue-agent-discipline](../how-to/github-issue-agent-discipline.md) — issue GitHub come audit trail + `gh`; complementare alla wiki
+- [autocompact-thrashing-discipline](./autocompact-thrashing-discipline.md) — **disciplina obbligatoria automatica** (trigger map + runtime-telemetry). Caricamento automatico su segnale thrashing.
+- [kilo-autocompact-thrashing-prevention](../how-to/kilo-autocompact-thrashing-prevention.md) — alias storico Kilo-specifico (non usare come primario)
 - [laraxot-module-namespace](./laraxot-module-namespace.md) — module namespace without `app`
 - [filament-rules-summary](./filament-rules-summary.md), [xotbase-critical-rules](./xotbase-critical-rules.md), [schema-conventions](./schema-conventions.md), [ai-guidelines](./ai-guidelines.md), [filament-resource-property](./filament-resource-property.md) — Filament/XotBase rules
 - [git-atomic-operations](./git-atomic-operations.md), [rule-atomicity](./rule-atomicity.md) — git forward-only + one-idea-per-rule

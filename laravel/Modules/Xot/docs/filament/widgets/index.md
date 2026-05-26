@@ -148,8 +148,8 @@ Prima di committare un wizard widget, verifica TUTTI i punti:
 - [ ] NO `->tooltip()` espliciti su azioni
 - [ ] NO `Log::error()` nel catch block
 - [ ] Usa `$this->resolveInitialStepFromQuery()` nel mount
-- [ ] Usa `$this->normalizeWizardFormState()` nel submit (se stato annidato)
-- [ ] `getWizardSteps()` e pubblico
+- [ ] Submit/persist: `$this->form->getState()` + solo merge dominio espliciti (nessun normalize generico sulla base)
+- [ ] `getSteps()` e pubblico
 - [ ] Step builders sono privati
 - [ ] Submit button segue pattern corretto (HTML nativo o tema)
 - [ ] Step riepilogo usa Infolists (NON Blade partial)

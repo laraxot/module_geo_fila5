@@ -3,7 +3,7 @@ title: "github issue come audit trail per decisioni agent"
 type: "how-to"
 tags: [github, gh, issues, agent, documentation, second-brain]
 created: 2026-05-19
-updated: 2026-05-21
+updated: 2026-05-26
 related: [../rules/validation-post-edit-rule.md, ../concepts/second-brain-operating-model.md, ../memories/github-issues-proactive.md, ../../../bashscripts/tools/prompts/llm-wiki.txt]
 ---
 
@@ -15,12 +15,26 @@ La wiki (`docs/wiki/`) tiene la **policy sintetica** e i comandi. Le **GitHub is
 
 ## Disciplina agent (obbligatoria)
 
+> **Non ammettere eccezioni:** task solo wiki, solo `.md`, solo trigger map o solo «piccolo refactor documentale» richiedono **ugualmente** `gh` — altrimenti si perde audit trail ricercabile fuori da QMD/Cursor.
+
 1. **All’inizio del task:** `git remote -v` + `gh issue list --repo provtv/base_ptv_fila5_mono --search "<argomento>" --state all`.
 2. **Argomento senza issue:** creare subito con `gh issue create` (non chiedere conferma all’utente).
 3. **Argomento con issue aperta:** lavorare in quella issue (commento con path wiki + prove); chiudere quando la checklist nel corpo è soddisfatta.
 4. **Fine task:** aggiornare wiki/log + commento issue; **vietato** chiudere la sessione chiedendo «vuoi che crei/chiuda un’issue?».
 
 Memory operativa: [`github-issues-proactive.md`](../memories/github-issues-proactive.md).
+
+## Guardrail anti-dimenticanza
+
+Se l'agente scopre di aver iniziato modifiche senza issue:
+
+1. fermare subito gli edit non essenziali;
+2. eseguire `git remote -v`;
+3. cercare issue esistenti con `gh issue list --repo provtv/base_ptv_fila5_mono --search "<argomento>" --state all`;
+4. creare/commentare issue prima di proseguire;
+5. registrare nel commento issue che il thread e' stato aperto in ritardo e quale guardrail e' stato aggiunto.
+
+Esempio operativo: [issue #138](https://github.com/provtv/base_ptv_fila5_mono/issues/138) per Autocompact thrashing.
 
 ## Issue di riferimento
 

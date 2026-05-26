@@ -74,6 +74,7 @@ related:
 - [context-mode-setup](./how-to/context-mode-setup.md)
 - [API limite contesto 131072](./how-to/api-context-length-exceeded-131072.md)
 - [context-mode-overflow-prevention](./how-to/context-mode-overflow-prevention.md)
+- [autocompact-thrashing-recovery](./how-to/autocompact-thrashing-recovery.md)
 - [wiki-search-performance](./how-to/wiki-search-performance.md)
 - [wiki-search-accessibility](./how-to/wiki-search-accessibility.md)
 - [wiki-search-troubleshooting](./how-to/wiki-search-troubleshooting.md)

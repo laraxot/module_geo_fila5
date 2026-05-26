@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Filament\Resources\Schemas;
 
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\Support\Htmlable;
@@ -23,13 +24,22 @@ class XotBaseResourceForm
         return 1;
     }
 
+    /**
+     * @return array<string, Component>
+     */
     public static function getFormSchema(): array
     {
         return [
         ];
     }
 
-    public static function getWizardSteps(): array
+    /**
+     * Elenco degli step Wizard per form multi‑passaggio (nome ufficiale allineato a Filament **`HasWizard::getSteps()`**).
+     * I form lineari lo lasciano vuoto.
+     *
+     * @return array<string, Step>
+     */
+    public static function getSteps(): array
     {
         return [];
     }

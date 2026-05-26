@@ -11,10 +11,9 @@ use Illuminate\Support\Str;
 use Modules\Notify\Datas\RecordNotificationData;
 use Modules\Notify\Notifications\RecordNotification;
 use Modules\Xot\Contracts\UserContract;
-use Spatie\ModelStates\Transition;
 use Webmozart\Assert\InvalidArgumentException;
 
-abstract class XotBaseTransition extends Transition
+abstract class XotBaseTransition
 {
     public function __construct(
         public Model $record,

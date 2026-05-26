@@ -13,6 +13,7 @@ Stub **DRY**: policy nella wiki di progetto; discussione e ragionamenti in GitHu
 - Regola canonica: [../../../../../docs/wiki/rules/validation-post-edit-rule.md](../../../../../docs/wiki/rules/validation-post-edit-rule.md)
 - How-to issue ↔ wiki: [../../../../../docs/wiki/how-to/github-issue-agent-discipline.md](../../../../../docs/wiki/how-to/github-issue-agent-discipline.md)
 - Prompt LLM: [../../../../../bashscripts/tools/prompts/llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt) §2.1
+- Autocompact thrashing (recovery): [../../../../../docs/wiki/how-to/autocompact-thrashing-recovery.md](../../../../../docs/wiki/how-to/autocompact-thrashing-recovery.md)
 
 ## Perché questo file
 

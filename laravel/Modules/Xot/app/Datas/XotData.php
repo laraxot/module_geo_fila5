@@ -234,7 +234,7 @@ class XotData extends Data implements Wireable
             '['.__LINE__.']['.class_basename($this).']['.$class.']',
         );
 
-        /* @var class-string<Model&ProfileContract> */
+        /* @var class-string<Model&ProfileContract> $class */
         return $class;
     }
 

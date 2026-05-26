@@ -3,10 +3,14 @@ title: "Second Brain Local Discipline"
 type: "concept"
 tags: [second-brain, llm-wiki, on-demand, local-docs]
 created: 2026-05-19
-updated: 2026-05-19
+updated: 2026-05-22
 ---
 
 # Second Brain Local Discipline
+
+**Pagina canonica (moduli Laraxot):** unica copia con corpo lungo dei contratti sotto questa intestazione.
+
+Negli altri moduli il file **`second-brain-local-discipline.md`** in **`docs/wiki/concepts/`** è uno **stub** che punta qui; modifiche al contratto vanno sempre applicate prima in **Xot**, poi eventualmente estratto contesto modulo-specifico in altre pagine locali — non nel corpo boilerplate ripetuto.
 
 > Local module/theme wiki discipline. Keep durable knowledge close to the code it explains, and route cross-cutting behavior back to the root wiki.
 

@@ -9,7 +9,13 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 16:45:00 UTC] [PROCESS] Autocompact thrashing: how-to unificato `docs/wiki/how-to/autocompact-thrashing-recovery.md`, redirect `kilo-autocompact-…`, stub `agent-edit-discipline` (39 pacchetti), rule `cursor-context-discipline.mdc`, trigger map; fonti esterne forum Cursor + vexp. [UPDATE] Autocompact thrashing: creata issue #138, aggiunto playbook root, trigger map, memoria compaction, guardrail GitHub issue e puntatori DRY negli `agent-edit-discipline.md` di moduli e temi.
+
+[2026-05-26 15:30:00 UTC] [PROCESS] Rafforzata disciplina **issue GitHub obbligatoria** (anche task solo-docs): blocchi in `.cursor/rules/cursor-context-discipline.mdc`, `.cursor/rules/markdown-documentation-standard.mdc`; link in `AGENTS.md`/`CLAUDE.md`; how-to aggiornato; audit comment su issue `#124`; regola Markdown checklist `gh`.
+
 [2026-05-21 14:00:00 UTC] [UPDATE] Rimosso `.local/mariadb-install/` dall’indice git (~125MB deb/binari); aggiunto `.local/` a `.gitignore`. Install offline: `bashscripts/tools/lamp/`.
+
+[2026-05-26 10:00:00 UTC] [UPDATE] Finalizzato e reso **MANDATORIO** lo standard `markdown-documentation-standard.md` (HackerNoon Tip 020). Applicata rinomina file non conformi (`philosophy-and-ethics.md`), aggiornato `GEMINI.md` root. Audit trail: **issue #139**.
 
 [2026-05-21 23:00:00 UTC] [DOCS] Filament **v5** canonico: `filament-version-policy.md`, `filament-version.md` in ogni modulo/tema, second-brain aggiornati, llm-wiki false friend, trigger map; doc v4 etichettati storico.
 

@@ -61,7 +61,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.2",
         "fakerphp/faker": "^1.24",
-        "fruitcake/laravel-debugbar": "^4.2.8",
+        "fruitcake/laravel-debugbar": "^4.2",
         "larastan/larastan": "*",
         "laravel/boost": "^2.0",
         "laravel/pint": "^1.18",

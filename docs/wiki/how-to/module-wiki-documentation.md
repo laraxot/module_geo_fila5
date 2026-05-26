@@ -4,7 +4,7 @@ type: how-to
 tags: [module, wiki, qmd, second-brain]
 module: ptvx-project
 created: 2026-04-29
-updated: 2026-05-20
+updated: 2026-05-26
 qmd: "module wiki documentation, laravel module docs wiki structure"
 related:
   - "qmd-search-guide.md"
@@ -39,7 +39,7 @@ Il modulo replica il **pattern a tre strati** della wiki root: materiale grezzo 
 
 - Modello operativo: [Second Brain Operating Model](../concepts/second-brain-operating-model.md)
 - Stub locale (puntatore DRY): `laravel/Modules/<Name>/docs/second-brain.md` nella **radice** della cartella `docs/` del modulo — mai in percorsi tipo `source/docs`, `bashscripts/docs` o mirror nested.
-- Stub **disciplina edit agent / qualità**: `laravel/Modules/<Name>/docs/agent-edit-discipline.md` — puntatore alla wiki root e all’[issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124); non duplicare la policy lunga nel modulo.
+- Stub **disciplina edit agent / qualità**: `laravel/Modules/<Name>/docs/agent-edit-discipline.md` — puntatori DRY alla wiki root, [issue #124](https://github.com/provtv/base_ptv_fila5_mono/issues/124), e **`autocompact-thrashing-recovery`** (messaggio IDE *thrashing*) — non duplicare policy lunghe nel modulo.
 
 ## Module Wiki Structure
 

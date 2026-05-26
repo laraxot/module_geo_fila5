@@ -3,7 +3,7 @@ title: "Unified Trigger Map"
 type: "rule"
 tags: [trigger-map, on-demand, routing]
 created: 2026-05-12
-updated: 2026-05-20
+updated: 2026-05-26
 ---
 
 # 00-TRIGGER_MAP
@@ -17,7 +17,7 @@ updated: 2026-05-20
 | New module/theme | `docs/wiki/concepts/module-structure.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
-| Nuovo o edit `.md` wiki / standard YAML + atomicità | `docs/wiki/concepts/markdown-note-minimum-standard.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
+| Nuovo o edit `.md` wiki / standard YAML + atomicità | `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/markdown-note-minimum-standard.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
 | Second brain quality / wiki maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md`, `docs/wiki/concepts/second-brain-audit-checks.md` |
 | Rules on-demand / skill routing | `docs/wiki/rules/on-demand-pattern.md`, `docs/wiki/skills/INDEX.md` |
 | Skill needed | `docs/wiki/skills/INDEX.md` |
@@ -31,10 +31,17 @@ updated: 2026-05-20
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
-| Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` |
-| Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md` |
+| Autocompact thrashing / «refilled within 3 turns» / runtime-telemetry token spike post-compact | `docs/wiki/rules/autocompact-thrashing-discipline.md` (**disciplina obbligatoria — caricamento automatico via trigger**), `docs/wiki/how-to/autocompact-thrashing-recovery.md` (**playbook canonico + recovery**), `docs/wiki/concepts/context-overflow-prevention.md` |
+| Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` \
+  
+  Azioni automatiche: validate file sizes on PR via `scripts/ai_token_guard.py` and fail CI; create issue template `.github/ISSUE_TEMPLATE/linked_issue.md` when model-usage risky. |
+| Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md` \
+  
+  Azioni automatiche: scheduled compaction audits via `.github/workflows/context-index.yml`, agent preflight checks (must call `scripts/ai_token_guard.py` before long reads). |
+| Troppi token per chiamata / AGENTS.md enorme / BMAD rigenerato | `docs/wiki/concepts/context-overflow-prevention.md` §1, `bashscripts/ai/AGENTS.md` (stub), `bashscripts/ai/rules/bmad.md` |
 | LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | MCP minimum stack (context-mode, playwright, puppeteer, token-optimizer, laravel-boost) | `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/_templates/mcp-minimum-stack.json` |
+| Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md`, `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/mcp-minimum-stack.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
 | BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
@@ -57,12 +64,21 @@ updated: 2026-05-20
 | Rule atomicity / one idea per file | `docs/wiki/rules/rule-atomicity.md` |
 | Wiki activity log / audit trail | `docs/wiki/log.md`, `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Wikilink / cross-reference cleanup | `docs/wiki/how-to/wikilink-cross-reference.md` |
-| Context-mode / ctx compression | `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/context-mode-setup.md` |
+| Context-mode / ctx compression / verifica installazione | `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-cli-reference.md` |
 | PHPStan module analysis | `docs/wiki/rules/phpstan-rules.md` |
 | New module wiki bootstrap | `docs/wiki/how-to/module-wiki-documentation.md`, `docs/wiki/concepts/module-structure.md` |
 | property_exists on Eloquent | `docs/wiki/rules/coding-standards.md`, `docs/wiki/memories/eloquent-hasattribute-not-property-exists.md` |
 | Compaction exhausted / Cursor recovery | `docs/wiki/memories/compaction-exhausted-recovery.md`, `.cursor/rules/cursor-context-discipline.mdc`, `laravel/.cursor/rules/laravel-boost.mdc` (stub — non usare monolite `.bak`) |
 | XotBase / no direct Filament extend | `docs/wiki/memories/xotbase-never-extend-filament.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
+
+## Enforcement
+
+When a trigger matches, every agent MUST:
+
+1. load only the resources listed in the matching row;
+2. run `git remote -v` and attach/create the GitHub issue via `docs/wiki/how-to/github-issue-agent-discipline.md`;
+3. avoid broad file reads/tool output until the listed context policy is loaded;
+4. update this map when a repeated failure needs automatic routing.
 
 ## Usage
 

@@ -14,7 +14,7 @@
 
 Questa regola non e negoziabile. E la base del contratto architetturale Laraxot.
 
-**Nota (Filament pannello)**: su `CreateRecord` il trait `HasWizard` usa `getSteps()` / `hasSkippableSteps()` ([doc](https://filamentphp.com/docs/5.x/resources/creating-records#using-a-wizard)). Qui nel widget: `getWizardSteps()` / `hasSkippableWizardSteps()` su `XotBaseWizardWidget` — stesso componente `Wizard`, contesto frontoffice.
+**Nota (Filament pannello)**: su `CreateRecord` il trait `HasWizard` usa `getSteps()` / `hasSkippableSteps()` ([doc](https://filamentphp.com/docs/5.x/resources/creating-records#using-a-wizard)). Qui nel widget: `getSteps()` / `hasSkippableWizardSteps()` su `XotBaseWizardWidget` — stesso componente `Wizard`, contesto frontoffice.
 
 ---
 
@@ -91,36 +91,37 @@ protected function resolveInitialStepFromQuery(): int
     // Tua implementazione custom...  // Duplicazione!
 }
 
-// ✅ CORRETTO
-$this->wizardStartStep = $this->resolveInitialStepFromQuery();  // Ereditato da XotBaseWizardWidget
+// ✅ CORRETTO (pattern attuale Filament)
+// Policy e persist query step gestite da XotBaseWizardWidget::getWizardComponent() + HasWizard
 ```
 
-**Perche**: XotBaseWizardWidget gestisce:
-- Lettura sicura di `?step=` con validazione range 1..N
-- Policy sicurezza (solo local/debug/config-enabled)
-- Normalizzazione stato annidato
+**Perche**: `XotBaseWizardWidget` orchestra `HasWizard`, view tema e (dove abilitato) `persistStepInQueryString`; non introdurre resolver custom paralleli senza ADR.
 
 ---
 
-### 5. NON dimenticherai `normalizeWizardFormState()` nel submit
+### 5. NON aggiungi layer PHP che riscrive tutto lo stato dopo `getState()`
 ```php
-// ❌ SBAGLIATO
+// ❌ DA EVITARE (frattura col contratto Filament)
 public function submit(): void
 {
-    $data = $this->form->getState();
-    // Usa $data direttamente...  // Stato annidato!
+    $flat = $this->someNormalize($this->form->getState()); // duplica / diverge dallo schema
+    Model::create($flat);
 }
 
-// ✅ CORRETTO
+// ✅ PATTERN FIXCITY (ticket wizard)
 public function submit(): void
 {
-    $state = $this->form->getState();
-    $data = $this->normalizeWizardFormState($state);  // Appiattisce stato
-    // Ora $data['address'] funziona correttamente
+    /** @var array<string, mixed> $data */
+    $data = $this->form->getState();
+    $userId = auth()->id();
+    if ($userId !== null) {
+        $data['owner_id'] ??= $userId;
+    }
+    Ticket::create($data);
 }
 ```
 
-**Perche**: Se il Wizard e wrappato da una chiave (es. `data['wizard']['address']`), devi appiattirlo per accedere a `data['address']`.
+**Perche**: la forma delle chiavi deve restare **ownership dello schema/dehydrate**. Se servono chiavi flat sul modello, si corregge **`TicketForm`/component** o cast/mutator sul modello — non una “normalizzazione universale” sulla base widget.
 
 ---
 
@@ -177,10 +178,10 @@ protected function getWizardSubmitAction(): Htmlable
 
 ---
 
-### 9. DEFINIRAI `getWizardSteps()` come metodo pubblico
+### 9. DEFINIRAI `getSteps()` come metodo pubblico
 ```php
 // ✅ CORRETTO
-public function getWizardSteps(): array
+public function getSteps(): array
 {
     return [
         $this->makeStepPrivacy(),
@@ -195,7 +196,7 @@ private function makeStepSummary(): Step { /* ... */ }
 ```
 
 **Perche**: 
-- Separazione delle responsabilita: base class chiama `getWizardSteps()`, dominio definisce gli step
+- Separazione delle responsabilita: base class chiama `getSteps()`, dominio definisce gli step
 - Ogni step builder e privato (incapsulamento dominio-specifico)
 
 ---
@@ -264,8 +265,8 @@ Prima di committare un wizard widget, verifica:
 - [ ] NO `->tooltip()` espliciti su azioni
 - [ ] NO `Log::error()` nel catch block
 - [ ] Usa `$this->resolveInitialStepFromQuery()` nel mount
-- [ ] Usa `$this->normalizeWizardFormState()` nel submit (se stato annidato)
-- [ ] `getWizardSteps()` e pubblico
+- [ ] Submit/persist usa `$this->form->getState()` senza riscrivere tutto il payload in helper generici (solo merge dominio documentati, es. `owner_id`)
+- [ ] `getSteps()` e pubblico
 - [ ] Step builders sono privati
 - [ ] Submit button segue pattern corretto (HTML nativo o tema)
 - [ ] Traduzioni seguono pattern `{namespace}::{widget_name}.*`

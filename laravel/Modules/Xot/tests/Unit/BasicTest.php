@@ -6,8 +6,6 @@ namespace Modules\Xot\Tests\Unit;
 
 use Modules\UI\Models\Asset;
 
-uses(TestCase::class)->in(__DIR__);
-
 it('basic test works', function () {
     $this->assertTrue(true);
 });

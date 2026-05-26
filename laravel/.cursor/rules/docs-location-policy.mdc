@@ -1,7 +1,7 @@
 ---
 description: Policy vincolante sulla posizione delle docs - vietata la root docs, usare solo Modules/*/docs
-alwaysApply: true
-globs: ["**/*"]
+alwaysApply: false
+globs: ["**/*.md", "docs/**"]
 ---
 
 # Policy Posizione Documentazione (Vincolante)

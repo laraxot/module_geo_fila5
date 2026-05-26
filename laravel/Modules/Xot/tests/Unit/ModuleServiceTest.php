@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Modules\Xot\Tests\Unit;
 
 use Modules\Xot\Services\ModuleService;
-use Tests\TestCase;
-
-uses(TestCase::class);
 
 describe('ModuleService', function () {
     beforeEach(function () {

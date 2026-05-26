@@ -5,9 +5,10 @@ type: concept
 status: approved
 tags: [markdown, yaml, front-matter, second-brain, ai-retrieval, documentation]
 created: "2026-05-19T00:00:00Z"
-updated: "2026-05-20T00:00:00Z"
+updated: "2026-05-26T00:00:00Z"
 qmd: "markdown front matter, YAML metadata, atomic note, second brain tip 020, HackerNoon"
 related:
+  - "../rules/markdown-documentation-standard.md"
   - "./second-brain-operating-model.md"
   - "../sources/second-brain-external-benchmarks.md"
   - "../how-to/module-wiki-documentation.md"
@@ -16,6 +17,8 @@ related:
 
 # Standard minimo per note Markdown (.md)
 
+> **Normativa completa:** [Standard Markdown — scrittura e denominazione dei file (.md)](../rules/markdown-documentation-standard.md) — obbligatoria per gli agenti; questo foglio è il riassunto filosofico/minimo più mapping PARA.
+>
 > Contratto minimo allineato a [AI Coding Tip 020 — Create a Second Brain](https://hackernoon.com/ai-coding-tip-020-create-a-second-brain) (Maxi Contieri, 2026): metadati YAML strutturati + note atomiche + collegamenti espliciti al **perché** due concetti si legano. Qui è adattato alle convenzioni **Laraxot / wiki root** (nomi file, `qmd`, federazione modulo/tema).
 
 ## Perché esiste
@@ -105,6 +108,7 @@ Lo spirito **Zettelkasten / atomicità**: **un’idea o workflow durabile per fi
 
 ## Riferimenti
 
+- [Standard Markdown — scrittura e denominazione (norma agenti)](../rules/markdown-documentation-standard.md)
 - [Second Brain Operating Model](./second-brain-operating-model.md)
 - [Second Brain External Benchmarks](../sources/second-brain-external-benchmarks.md) — include il link verificato all’articolo HackerNoon
 - [Module Wiki Documentation](../how-to/module-wiki-documentation.md)
