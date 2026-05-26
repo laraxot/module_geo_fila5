@@ -3,7 +3,7 @@ title: inventario phpstan per modulo
 type: memory
 tags: [phpstan, ci, modules, larastan]
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-26
 related:
   - ../how-to/github-issue-agent-discipline.md
   - ../rules/validation-post-edit-rule.md
@@ -21,7 +21,14 @@ related:
 
 Config: `laravel/phpstan.neon` (level **max**).
 
-## Ultimo scan (2026-05-21)
+## Ultimo scan (2026-05-26 — Job / Lang)
+
+| Modulo | Errori | Note |
+|--------|--------|------|
+| Job | **0** | Verificato post-fix `JobServiceProvider`, PHPDoc `SchedulesTable` / `FailedImportRowsTable`; handoff [`handoff-job-lang-merge-phpstan-confidence.md`](../../chat/handoff-job-lang-merge-phpstan-confidence.md) |
+| Lang | **8** | `array.duplicateKey` in `lang/it/locale_switcher_refresh.php`, `translation_editor.php` |
+
+## Scan precedente (2026-05-21)
 
 | Stato | Modulo | Errori |
 |-------|--------|--------|
@@ -37,7 +44,7 @@ Config: `laravel/phpstan.neon` (level **max**).
 | ERROR | Incentivi | 16 |
 
 | ERROR | Gdpr | 3 |
-| ERROR | Lang | 3 |
+| ERROR | Lang | 8 (agg. 2026-05-26, vedi sezione sopra) |
 | ERROR | MobilitaVolontaria, Notify, Setting | 1 |
 | INCOMPLETE | User, Xot | memoria 512MB esaurita (worker paralleli) |
 

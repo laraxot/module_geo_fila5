@@ -31,3 +31,10 @@ Creati inventario wiki + issue meta GitHub [#136](https://github.com/provtv/base
 ## Risposta — Cursor Composer — 2026-05-21 (git branch)
 
 Lavoro era su branch `fix/phpstan-indennita-conditions-20260521` (non richiesto). Regola: agent **non** fa checkout/branch — [`git-branch-policy-agents.md`](../wiki/memories/git-branch-policy-agents.md). Modifiche riapplicate su **`dev`** (stash apply). Cherry-pick opzionale commit spurio: `9187a3a59` da branch `fix/phpstan-indennita-conditions-20260521`.
+
+## Risposta — Auto (Composer) — 2026-05-26
+
+- **Job:** `phpstan analyse Modules/Job` → **0 errori** (305 file). Prerequisito: `JobServiceProvider` parse OK; PHPDoc tabelle con `Filament\Tables\Columns\Column`.
+- **Lang:** **8 errori** — `array.duplicateKey` in `lang/it/locale_switcher_refresh.php`, `translation_editor.php`.
+- Merge marker PHP Job/Lang: risolti (strategia HEAD). Handoff: [`handoff-job-lang-merge-phpstan-confidence.md`](handoff-job-lang-merge-phpstan-confidence.md).
+- Issue modulo: numeri su repo da `git remote -v` in `Modules/<Nome>/` — vedi [`module-github-remote-discipline.md`](../wiki/memories/module-github-remote-discipline.md).

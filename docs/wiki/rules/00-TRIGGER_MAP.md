@@ -36,6 +36,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Pattern/memory recall | `docs/wiki/memories/INDEX.md` |
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
 | Massima confidenza agente / verifica prima di concludere | `docs/wiki/rules/agent-confidence-protocol.md`, `docs/wiki/memories/agent-confidence-protocol.md` |
+| Ripartenza sessione / handoff agente / «continua da ieri» | `docs/chat/handoff-job-lang-merge-phpstan-confidence.md`, `docs/chat/README.md`, `docs/wiki/memories/module-github-remote-discipline.md` |
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md`, `docs/wiki/concepts/second-brain-operating-model.md` |

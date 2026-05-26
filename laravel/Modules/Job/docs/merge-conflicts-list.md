@@ -50,7 +50,16 @@ Elenco dei file trovati contenenti marker di merge (<<<<<<<, >>>>>>>, .merge_fil
 - [x] `docs/wiki/index.md`, `docs/wiki/log.md` — HEAD
 - [ ] voci template sopra (altri moduli/temi): da verificare con `git grep '^<<<<<<< '`
 
+## Verifica rapida (Job PHP)
+
+```bash
+cd laravel && git grep -n '^<<<<<<< ' -- 'Modules/Job/**/*.php'
+```
+
+Ultimo controllo sessione 2026-05-26: **0** marker in PHP Job.
+
 ## Note
 
 - Regola: ogni modulo e tema deve avere un file `docs/merge-conflicts-list.md` con la lista locale e lo stato di avanzamento.
 - Quando si risolve un file, aggiornare lo stato nella lista e sincronizzare l'LLM Wiki (qmd embed) per ingestione.
+- Issue/PR modulo: `cd laravel/Modules/Job && git remote -v` — vedi [wiki/memories/session-confidence-checkpoint.md](wiki/memories/session-confidence-checkpoint.md).

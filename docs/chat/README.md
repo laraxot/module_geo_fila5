@@ -14,9 +14,13 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - **Contenuto**: breve, actionable; link **relativi** ad altri doc (es. `../wiki/...`, `../../laravel/Modules/.../docs/...`).
 - **Non** duplicare qui la documentazione tecnica permanente: dopo il handoff, consolidare in `docs/` del modulo o in `docs/wiki/` dove appropriato.
 
+## Handoff attivi
+
+- [handoff-job-lang-merge-phpstan-confidence.md](handoff-job-lang-merge-phpstan-confidence.md) — ripartenza agente: Job PHPStan OK, Lang 8 errori, merge sweep
+
 ## Collegamenti
 
 - [Trigger Map](../wiki/rules/00-TRIGGER_MAP.md)
 - [Indice wiki](../wiki/index.md)
 
-*Ultimo aggiornamento: 2026-05*
+*Ultimo aggiornamento: 2026-05-26*

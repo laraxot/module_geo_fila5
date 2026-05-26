@@ -3,6 +3,10 @@
 ## Purpose
 Index for Job module memories.
 
+## Checkpoint sessione (ripartenza agente)
+
+- [session-confidence-checkpoint.md](session-confidence-checkpoint.md) — stato PHPStan, merge, issue modulo via `git remote -v`
+
 ## On-Demand Loading
 
 ```bash
@@ -14,4 +18,4 @@ qmd search "Job memories" --limit 5
 - [Root Wiki](../../../docs/wiki/)
 
 ---
-*Updated: 2026-05-11*
+*Updated: 2026-05-26*
