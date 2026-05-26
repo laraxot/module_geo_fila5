@@ -25,27 +25,33 @@ This applies to **this agent and all future AI agents**.
 ## Why It Matters
 - Security vulnerabilities (e.g. Vite path traversal, as seen in module_dbforge_fila5)
 - Outdated packages leading to maintenance debt
-## Multi-Agent Coordination (Mandatory when multiple agents work on the same ecosystem)
+## Multi-Agent Coordination Protocol (Improved Version)
 
-When the same broad task (Dependabot remediation, PHPStan fixes, etc.) is assigned to multiple AI agents:
+Quando lo stesso task ampio (Dependabot remediation, PHPStan fixes, ecc.) viene assegnato a più agenti AI, si applica questo protocollo per evitare duplicati e mantenere audit trail puliti.
 
-1. **Per-module/theme repo discipline**: 
-   - `cd` into the module/theme folder
-   - `git remote -v` → use the published repo (e.g. `laraxot/module_dbforge_fila5`)
-   - All coordination and audit trail for work on that specific module **must** happen in **that repo's GitHub issues** (not only in the monorepo).
+### 1. Per-module/theme repo discipline
+- `cd` nella cartella del modulo/tema
+- `git remote -v` → usa la repo pubblicata (es. `laraxot/module_dbforge_fila5`)
+- Tutto il coordinamento e l'audit trail per quel modulo **deve** avvenire nelle issue di **quella repo**, non solo nel monorepo.
 
-2. **Lock via issue**:
-   - Before starting heavy work on a module/theme (e.g. PHPStan analyse or batch Dependabot fixes), search for an existing coordination issue with title pattern `[AGENT-COORD] <Task> - <Module/Theme>`.
-   - If none exists, create it (this acts as a distributed lock).
-   - One agent claims the issue at a time.
-   - Always cross-link to the main standing-order issue in the monorepo (e.g. #154).
+### 2. Lock tramite issue di coordinamento
+- Prima di iniziare lavoro pesante su un modulo/tema (es. `phpstan analyse` o fix batch Dependabot), cerca issue con titolo standard:
+  `[AGENT-COORD] <Task> - <NomeModulo/Tema>`
+- Se non esiste, creala tu (funge da lock distribuito).
+- Un solo agente alla volta “claima” l’issue.
+- Linka sempre all’issue standing-order principale del monorepo (es. #154 per Dependabot).
 
-3. **PHPStan rule**: PHPStan must always be launched from the monorepo `laravel/` root:
-   `./vendor/bin/phpstan analyse Modules/<NomeModulo>`
+### 3. Regola PHPStan (obbligatoria)
+PHPStan va lanciato **sempre** dalla root `laravel/` del monorepo:
+```
+./vendor/bin/phpstan analyse Modules/<NomeModulo>
+```
+Mai da dentro la cartella del modulo.
 
-4. **Documentation**: Record in the module/theme's own `docs/wiki/` the coordination issue number and outcome.
+### 4. Documentazione
+Nel `docs/wiki/` del modulo/tema registra il numero dell’issue di coordinamento e l’esito.
 
-This prevents duplicate work and ensures clean audit trails across the distributed ecosystem of 30+ module/theme repositories.
+Questo protocollo si applica a tutti i task pesanti assegnati a più agenti e garantisce zero sovrapposizioni su 30+ repo di moduli/temi.
 - Compliance and reputation for published packages
 
 ## How to Execute

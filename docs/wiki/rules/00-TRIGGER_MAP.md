@@ -32,6 +32,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Skill needed | `docs/wiki/skills/INDEX.md` |
 | Skill authoring / reusable workflow | `docs/wiki/skills/on-demand-skill-maintenance.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Command reference | `docs/wiki/commands/INDEX.md` |
+| Multi-agent coordination / per-module repo lock (Dependabot, PHPStan, heavy tasks) | `docs/wiki/memories/dependabot-audit-permanent-discipline.md` (sezione Multi-Agent Coordination Protocol) + `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Pattern/memory recall | `docs/wiki/memories/INDEX.md` |
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
 | Massima confidenza agente / verifica prima di concludere | `docs/wiki/rules/agent-confidence-protocol.md`, `docs/wiki/memories/agent-confidence-protocol.md` |
