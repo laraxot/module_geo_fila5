@@ -124,7 +124,7 @@ ${DESCRIPTION}
 
       - name: Create trending GitHub issue
         if: matrix.platform == 'github'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.issues.create({

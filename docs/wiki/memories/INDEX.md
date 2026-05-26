@@ -32,6 +32,8 @@ updated: 2026-05-21
 | [compaction-exhausted-recovery](compaction-exhausted-recovery.md) | Context overflow |
 | [markdown-hackernoon-tip-020](markdown-hackernoon-tip-020.md) | YAML + atomic `.md` (Tip 020) |
 | [laravel-bootstrap-stub-not-monolith](laravel-bootstrap-stub-not-monolith.md) | No 2.5MB AGENTS in context |
+| [response-style-sintetico-conciso-italiano](response-style-sintetico-conciso-italiano.md) | **Italiano + sintetico + conciso** (priorità massima) |
+| [dependabot-check-discipline](dependabot-check-discipline.md) | **Dependabot** moduli/temi/mono — controllo periodico |
 
 Guide: [memory-system-usage](../how-to/memory-system-usage.md)
 

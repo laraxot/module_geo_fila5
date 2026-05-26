@@ -1,37 +1,37 @@
-# 🎨 Theme One — Modern Admin Dashboard
+# One: il tema che trasforma complessita in vantaggio operativo
 
-> **Professional admin dashboard theme** with dark mode, responsive design, and Filament integration.
+One theme for Laraxot PTVX: minimal theme skeleton for future frontend development and customization.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE.md)
+## Perche guardarlo adesso
 
----
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-## Caratteristiche
+## Cosa promette
 
-- ✅ **Responsive Design** — Mobile-first responsive layout
-- ✅ **Dark Mode** — Light/dark toggle built-in
-- ✅ **Customizable** — Colors, fonts, branding
-- ✅ **Filament Native** — Seamless integration
-- ✅ **Modern UI** — Clean, professional aesthetics
+Questo tema non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
----
+## Release automation
 
-## 📚 Documentazione
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-| Link | Descrizione |
-|------|-------------|
-| [Customization](./docs/customization.md) | Colors, fonts, branding |
-| [Components](./docs/components.md) | UI component library |
-| [Layouts](./docs/layouts.md) | Page layouts |
+## Documentazione essenziale
 
----
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [Advanced Manage Related Records](./docs/advanced-manage-related-records.md)
+- [Architecture Rules](./docs/architecture-rules.md)
+- [Charts Integration](./docs/charts-integration.md)
+- [Code Quality Tools](./docs/code-quality-tools.md)
+- [Common Errors](./docs/common-errors.md)
+- [Docs Archive Policy](./docs/docs-archive-policy.md)
 
-## 🚀 Setup
+## Filosofia
 
-```bash
-php artisan serve
-```
-
----
-
-**Made with ❤️ by ProvTV Development Team**
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

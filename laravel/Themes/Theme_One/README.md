@@ -1,38 +1,37 @@
-# 🎨 Theme_One — Premium Dashboard Interface
+# Theme_One: il tema che trasforma complessita in vantaggio operativo
 
-> **Enterprise admin dashboard** with advanced customization, multiple layout options, premium branding support.
+Tema Laraxot pensato per trasformare funzionalita complesse in esperienza pronta, documentata e governabile.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE.md)
+## Perche guardarlo adesso
 
----
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-## Caratteristiche
+## Cosa promette
 
-- ✅ **Advanced Customization** — Custom color schemes, fonts, logos
-- ✅ **Multi-Layout Support** — Sidebar, top nav, compact modes
-- ✅ **Premium Components** — Advanced UI library
-- ✅ **Filament Premium** — All Filament Pro features
-- ✅ **Enterprise Ready** — Scale to 1000+ resources
+Questo tema non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
----
+## Release automation
 
-## 📚 Documentazione
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-| Link | Descrizione |
-|------|-------------|
-| [Branding](./docs/branding.md) | Logo, colors, custom assets |
-| [Layouts](./docs/layouts.md) | Navigation patterns |
-| [Components](./docs/components.md) | Premium UI elements |
-| [Plugins](./docs/plugins.md) | Extend with custom features |
+## Documentazione essenziale
 
----
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [Architecture Rules](./docs/architecture-rules.md)
+- [Context Compression](./docs/context-compression.md)
+- [Docs Archive Policy](./docs/docs-archive-policy.md)
+- [Filament Version](./docs/filament-version.md)
+- [Laravel 13 Composer Boundary](./docs/laravel-13-composer-boundary.md)
+- [Laravel 13 Upgrade](./docs/laravel-13-upgrade.md)
+- [Second Brain](./docs/second-brain.md)
 
-## 🚀 Setup
+## Filosofia
 
-```bash
-php artisan serve
-```
-
----
-
-**Made with ❤️ by ProvTV Development Team**
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

@@ -37,20 +37,12 @@ L'utente ha richiesto esplicitamente e ripetutamente (2026-05-26 e sessioni prec
 3. **Prompt base**: il file `bashscripts/tools/prompts/llm-wiki.txt` deve contenere un richiamo forte a questa regola all'inizio della sezione "Communication Rules".
 4. **Tutti gli AGENTS.md / CLAUDE.md / stubs**: devono puntare a questa memoria.
 
-## Trigger Map (da aggiungere)
+## Propagazione (2026-05-26)
 
-Aggiungere nella mappa:
-
-```markdown
-| Stile risposta agenti (sintetico + conciso + italiano obbligatorio) | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md` |
-```
-
-## Propagazione
-
-Questa regola deve essere presente (almeno come puntatore) in:
-- Tutte le cartelle `docs/wiki/` dei moduli (`laravel/Modules/*/docs/wiki/`)
-- Tutte le cartelle `docs/wiki/` dei temi (`laravel/Themes/*/docs/wiki/`)
-- Il prompt `llm-wiki.txt`
+- `.cursor/rules/response-style-italiano-conciso.mdc` (`alwaysApply: true`)
+- BOOTSTRAP in `docs/wiki/rules/00-TRIGGER_MAP.md`
+- Stub: `AGENTS.md`, `CLAUDE.md`, `bashscripts/ai/AGENTS.md`
+- Prompt: `bashscripts/tools/prompts/llm-wiki.txt` §0
 
 ## Violazione
 

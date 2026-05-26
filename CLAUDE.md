@@ -2,6 +2,8 @@
 
 **Risposte:** sempre **italiano**, **sintetico**, **conciso** → [response-style](docs/wiki/memories/response-style-sintetico-conciso-italiano.md)
 
+**Dependabot:** [dependabot-discipline](docs/wiki/how-to/dependabot-discipline.md)
+
 Rules, skills, memories live only in wiki. Load on-demand.
 
 ## Read First

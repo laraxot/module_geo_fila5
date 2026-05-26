@@ -1,152 +1,37 @@
----
-title: User
-module: user
-related: Xot, Notify
-status: production
----
+# User: il modulo che trasforma complessita in vantaggio operativo
 
-# User Module
+User management module for the Laraxot ecosystem: authentication, roles, teams, tenants, and OAuth.
 
-**Module**: `user`
-**Namespace**: `Modules\User\`
-**Status**: ✅ Production
+## Perche guardarlo adesso
 
----
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-## Overview
+## Cosa promette
 
-Il modulo User gestisce l'intero ciclo di vita dell'utente: registrazione, autenticazione multi-metodo (password, OAuth, SSO, OTP), autorizzazione basata su ruoli e permessi (Spatie), organizzazione in team e tenant, tracciamento dispositivi e sessioni.
+Questo modulo non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
-### Key Features
+## Release automation
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-### Module Dependencies
+## Documentazione essenziale
 
-- [Xot](../Xot/README.md) (required)
-- [Notify](../Notify/README.md) (required)
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [00 Index](./docs/00-index.md)
+- [2025 12 01 Teams Migration Laraxot Compliance](./docs/2025-12-01-teams-migration-laraxot-compliance.md)
+- [2Fa Guide](./docs/2fa-guide.md)
+- [2Fa](./docs/2fa.md)
+- [Business Logic Analysis](./docs/BUSINESS-LOGIC-ANALYSIS.md)
+- [Business Logic Deep Dive](./docs/BUSINESS-LOGIC-DEEP-DIVE.md)
 
----
+## Filosofia
 
-## Quick Start
-
-### Installation
-
-```bash
-# Already included in main project
-# No additional setup required
-```
-
-### Basic Usage
-
-```php
-use Modules\User\Models\YourModel;
-
-$item = YourModel::first();
-```
-
-### Configuration
-
-Configuration file: `config/user.php`
-
-Key settings:
-- `setting1` - Description
-- `setting2` - Description
-
----
-
-## Architecture
-
-### Directory Structure
-
-```
-User/
-├── src/
-│   ├── Models/
-│   ├── Controllers/
-│   ├── Resources/
-│   ├── Actions/
-│   └── Traits/
-├── routes/
-│   ├── api.php
-│   └── web.php
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── tests/
-│   ├── Unit/
-│   └── Feature/
-├── config/
-│   └── user.php
-├── docs/
-│   └── README.md
-└── composer.json
-```
-
-### Key Components
-
-
-
----
-
-## API Reference
-
-Reference
-
----
-
-## Usage Examples
-
-### Common Tasks
-
-#### Task 1: Description
-
-```php
-// Code example
-```
-
----
-
-## Testing
-
-### Running Tests
-
-```bash
-# Run all module tests
-composer test -- Modules/User
-```
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-#### Issue: Problem description
-
-**Solution**: How to fix this issue
-
----
-
-## Related Modules
-
-### Dependencies
-
-- [Xot](../Xot/README.md) - Required module
-- [Notify](../Notify/README.md) - Required module
-
-### Dependents
-
-- [Activity](../Activity/README.md) - Depends on this module
-- [Comment](../Comment/README.md) - Depends on this module
-- [Fixcity](../Fixcity/README.md) - Depends on this module
-- [Gdpr](../Gdpr/README.md) - Depends on this module
-- [Notify](../Notify/README.md) - Depends on this module
-- [Rating](../Rating/README.md) - Depends on this module
-- [Tenant](../Tenant/README.md) - Depends on this module
-
----
-
-Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

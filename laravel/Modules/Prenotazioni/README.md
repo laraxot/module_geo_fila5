@@ -1,1 +1,37 @@
-# module_prenotazioni_fila5
+# Prenotazioni: il modulo che trasforma complessita in vantaggio operativo
+
+Booking and reservation management module for the Laraxot ecosystem: room booking, resource scheduling, and appointment management.
+
+## Perche guardarlo adesso
+
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
+
+## Cosa promette
+
+Questo modulo non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
+
+## Release automation
+
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
+
+## Documentazione essenziale
+
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [Architecture Rules](./docs/architecture-rules.md)
+- [Confidence Guidelines](./docs/confidence_guidelines.md)
+- [Docs Archive Policy](./docs/docs-archive-policy.md)
+- [Filament Version](./docs/filament-version.md)
+- [Laravel 13 Upgrade](./docs/laravel-13-upgrade.md)
+- [Launch Plan](./docs/launch-plan.md)
+
+## Filosofia
+
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

@@ -1,142 +1,37 @@
----
-title: Gdpr
-module: gdpr
-related: Xot, User
-status: production
----
+# Gdpr: il modulo che trasforma complessita in vantaggio operativo
 
-# Gdpr Module
+GDPR compliance module for the Laraxot ecosystem: cookie consent, privacy, and data protection.
 
-**Module**: `gdpr`
-**Namespace**: `Modules\Gdpr\`
-**Status**: ✅ Production
+## Perche guardarlo adesso
 
----
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-## Overview
+## Cosa promette
 
-Il modulo GDPR gestisce il ciclo di vita della privacy utente: definisce i trattamenti dati (base giuridica, documenti), raccoglie i consensi (obbligatori e facoltativi), traccia ogni evento con IP e payload crittografati, e fornisce il trait `HasGdpr` per aggiungere il consenso a qualsiasi modello Eloquent.
+Questo modulo non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
-### Key Features
+## Release automation
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-### Module Dependencies
+## Documentazione essenziale
 
-- [Xot](../Xot/README.md) (required)
-- [User](../User/README.md) (required)
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [00 Index](./docs/00-INDEX.md)
+- [00 Index](./docs/00-index.md)
+- [Index](./docs/INDEX.md)
+- [On Demand Pattern](./docs/ON-DEMAND-PATTERN.md)
+- [Performance Optimization](./docs/PERFORMANCE-OPTIMIZATION.md)
+- [Product Launch Plan](./docs/PRODUCT_LAUNCH_PLAN.md)
 
----
+## Filosofia
 
-## Quick Start
-
-### Installation
-
-```bash
-# Already included in main project
-# No additional setup required
-```
-
-### Basic Usage
-
-```php
-use Modules\Gdpr\Models\YourModel;
-
-$item = YourModel::first();
-```
-
-### Configuration
-
-Configuration file: `config/gdpr.php`
-
-Key settings:
-- `setting1` - Description
-- `setting2` - Description
-
----
-
-## Architecture
-
-### Directory Structure
-
-```
-Gdpr/
-├── src/
-│   ├── Models/
-│   ├── Controllers/
-│   ├── Resources/
-│   ├── Actions/
-│   └── Traits/
-├── routes/
-│   ├── api.php
-│   └── web.php
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── tests/
-│   ├── Unit/
-│   └── Feature/
-├── config/
-│   └── gdpr.php
-├── docs/
-│   └── README.md
-└── composer.json
-```
-
-### Key Components
-
-
-
----
-
-## API Reference
-
-Reference
-
----
-
-## Usage Examples
-
-### Common Tasks
-
-#### Task 1: Description
-
-```php
-// Code example
-```
-
----
-
-## Testing
-
-### Running Tests
-
-```bash
-# Run all module tests
-composer test -- Modules/Gdpr
-```
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-#### Issue: Problem description
-
-**Solution**: How to fix this issue
-
----
-
-## Related Modules
-
-### Dependencies
-
-- [Xot](../Xot/README.md) - Required module
-- [User](../User/README.md) - Required module
-
----
-
-Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

@@ -22,7 +22,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 
 | Trigger | Load |
 |---|---|
-| **BOOTSTRAP SESSIONE AGENTE** _(obbligatorio prima di ogni task su file / toolchain / MCP / wiki)_ | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
+| **BOOTSTRAP SESSIONE AGENTE** _(obbligatorio prima di ogni task su file / toolchain / MCP / wiki)_ | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md`, `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | New module/theme | `docs/wiki/concepts/module-structure.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
@@ -34,6 +34,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Command reference | `docs/wiki/commands/INDEX.md` |
 | Pattern/memory recall | `docs/wiki/memories/INDEX.md` |
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
+| Massima confidenza agente / verifica prima di concludere | `docs/wiki/rules/agent-confidence-protocol.md`, `docs/wiki/memories/agent-confidence-protocol.md` |
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
@@ -65,8 +66,11 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | User Filament translations / LangServiceProvider | `laravel/Modules/User/docs/wiki/rules/INDEX.md`, `laravel/Modules/User/docs/wiki/skills/filament-translation-audit.md` |
 | Lang translation keys / translation ownership | `laravel/Modules/Lang/docs/wiki/rules/translation-key-governance.md`, `laravel/Modules/Lang/docs/wiki/skills/translation-key-audit.md` |
 | Stile risposta agenti (sintetico + conciso + italiano obbligatorio) | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md` |
+| Dependabot / security alert `laraxot/module_*` / vite npm / PR app/dependabot | `docs/wiki/how-to/dependabot-discipline.md`, `docs/wiki/memories/dependabot-check-discipline.md`, `bashscripts/ci/dependabot-security-repos.sh`, `bashscripts/ci/dependabot-sweep.sh` |
 | Activity XotBaseResource zen pattern | `laravel/Modules/Activity/docs/wiki/rules/INDEX.md`, `laravel/Modules/Activity/docs/wiki/concepts/xotbase-resource-zen-pattern.md` |
 | Rating Filament resource zen pattern | `laravel/Modules/Rating/docs/wiki/rules/INDEX.md`, `laravel/Modules/Rating/docs/wiki/concepts/filament-resource-zen-pattern.md` |
+| Semantic versioning / auto release / auto changelog / README marketing moduli-temi | `docs/wiki/rules/semantic-release-module-theme-standard.md` |
+| Dependabot audit & remediation (permanent discipline, all modules + themes) | `docs/wiki/memories/dependabot-audit-permanent-discipline.md`, GitHub #154 |
 | Git atomic / forward-only commits | `docs/wiki/rules/git-atomic-operations.md` |
 | Memory system / durable decisions | `docs/wiki/how-to/memory-system-usage.md`, `docs/wiki/memories/INDEX.md` |
 | Skill discovery | `docs/wiki/how-to/skill-discovery.md`, `docs/wiki/skills/INDEX.md` |
@@ -76,6 +80,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Context-mode / ctx compression / verifica installazione | `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-cli-reference.md` |
 | PHPStan module analysis | `docs/wiki/rules/phpstan-rules.md` |
 | New module wiki bootstrap | `docs/wiki/how-to/module-wiki-documentation.md`, `docs/wiki/concepts/module-structure.md` |
+| Module/Theme semantic release + marketing README (vetrina) | `docs/wiki/standards/module-theme-release-showcase-standard.md` + root `.github/workflows/semantic-release.yml` + `module-release.yml` |
 | property_exists on Eloquent | `docs/wiki/rules/coding-standards.md`, `docs/wiki/memories/eloquent-hasattribute-not-property-exists.md` |
 | Compaction exhausted / Cursor recovery | `docs/wiki/memories/compaction-exhausted-recovery.md`, `.cursor/rules/cursor-context-discipline.mdc`, `laravel/.cursor/rules/laravel-boost.mdc` (stub — non usare monolite `.bak`) |
 | XotBase / no direct Filament extend | `docs/wiki/memories/xotbase-never-extend-filament.md`, `docs/wiki/rules/xotbase-critical-rules.md` |

@@ -9,6 +9,10 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 00:50:00 UTC] [UPDATE] Standard release moduli/temi: propagati semantic-release workflow, releaserc, changelog, README marketing e docs locali; issue #153.
+
+[2026-05-26 00:45:00 UTC] [UPDATE] Protocollo massima confidenza agente: regola root, memoria, trigger map e stub nei docs di moduli/temi.
+
 [2026-05-26 00:40:00 UTC] [UPDATE] Regola stile agenti: risposte sempre in italiano, sintetiche e concise; aggiornata trigger map, memoria e stub agenti.
 
 [2026-05-26 21:30:00 UTC] [PROCESS] **Git merge debris / collisioni**: sweep `docs/raw/history/*.md`, ripristino `docs/.php_cs.dist.php`, `docs/phpstan.neon.dist`, `docs/phpunit.xml.dist`; consolidamento `Modules/Xot/docs/filament/infinite-loop-getstepbyname-fix*.md`; how-to [`git-merge-marker-sweep`](how-to/git-merge-marker-sweep.md); Trigger Map + second brain operating model aggiornati.

@@ -23,7 +23,7 @@ jobs:
       - name: Build root artifact
         run: tar -czf project-artifact.tgz .
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@v3
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: project-artifact.tgz
       - name: Bump version and push tag

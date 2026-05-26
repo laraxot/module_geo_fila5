@@ -1,32 +1,37 @@
-# Modulo applicativo Incentivi
+# Incentivi: il modulo che trasforma complessita in vantaggio operativo
 
-Questo Modulo applicativo consente di gestire l'attribuzione degli incentivi ai dipendenti provinciali.
+Employee incentives and bonuses module for the Laraxot ecosystem: performance bonuses, productivity rewards, and PDF reports.
 
+## Perche guardarlo adesso
 
-## Requisiti e Funzionalità richiesti nella Prima Fase
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-L'applicativo Incentivi ha l'obiettivo di permettere ai Settori beneficiari degli incentivi di poter inserire tutti i dati relativi ai loro progetti e le relative attività svolte da ogni componente dei gruppi di lavoro.
-L'inserimento tramite l'applicativo permetterà di:
-evitare errori manuali, facendo in modo che l'utente si limiti a inserire solo i dati strettamente richiesti, effettuando poi i calcoli necessari in modo automatico;
-rendere più rapido il processo di raccolta di questi dati.
-Una volta che i dati verranno caricati, il Personale potrà quindi stampare/esportare il resoconto del Progetto e procedere con la fase di liquidazione.
+## Cosa promette
 
-## Aggiornamenti Recenti
+Questo modulo non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
-### 16 Gennaio 2025
-- ✅ **Implementazione Policies Complete**: Creati prototipi per tutte le policies del modulo
-  - **Policies implementate**: 13 policies complete per tutti i modelli del dominio
-  - **Business logic**: Definita logica di autorizzazione specifica per incentivi
-  - **Struttura base**: Creata IncentiviBasePolicy con metodi helper comuni
-  - **Ruoli specifici**: Definiti ruoli per amministratori, responsabili workgroup, HR, finance
-  - **Stati progetto**: Implementati controlli basati sugli stati dei progetti
-  - **Documentazione**: Creati `policies-implementation.md`, `policies-prototypes.md` e `implementation-commands.md`
-  - **Implementazione fisica**: Tutte le 13 policies create e testate con PHPStan livello 9
-  - **Business logic completa**: Autorizzazioni specifiche per stati progetto, ruoli e workgroup
+## Release automation
 
-## Documentazione Tecnica
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-- [Architettura Modulo](./docs/architettura-modulo.md)
-- [Domain Model](./docs/models/domain-model.md)
-- [Policies Implementation](./docs/policies-implementation.md)
-- [Policies Prototypes](./docs/policies-prototypes.md)
+## Documentazione essenziale
+
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [Index](./docs/INDEX.md)
+- [Readme Testing](./docs/README-TESTING.md)
+- [Study Notes](./docs/STUDY-NOTES.md)
+- [Test Implementation Roadmap](./docs/TEST-IMPLEMENTATION-ROADMAP.md)
+- [Testing Strategy](./docs/TESTING-STRATEGY.md)
+- [Architecture Rules](./docs/architecture-rules.md)
+
+## Filosofia
+
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.

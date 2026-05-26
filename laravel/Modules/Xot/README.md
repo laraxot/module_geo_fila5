@@ -1,94 +1,37 @@
-# 🚀 Xot Module — The Laravel Modular Foundation
+# Xot: il modulo che trasforma complessita in vantaggio operativo
 
-> **Enterprise-grade modular architecture for Laravel.** Xot provides the rock-solid base classes, traits, and patterns that power every module in this ecosystem.
+xot module, heart of the laraxot repository
 
-[![Latest Release](https://img.shields.io/github/v/release/provtv/base_ptv_fila5_mono?style=flat-square)](https://github.com/provtv/base_ptv_fila5_mono/releases)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/provtv/base_ptv_fila5_mono/tests.yml?style=flat-square)](https://github.com/provtv/base_ptv_fila5_mono/actions)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE.md)
+## Perche guardarlo adesso
 
----
+- Riduce attrito operativo con convenzioni Laraxot gia pronte.
+- Porta documentazione, release e changelog nello stesso flusso verificabile.
+- Aiuta team e agenti AI a capire subito scopo, confini e prossime mosse.
+- E pensato per crescere: semantic versioning, auto release e changelog automatico sono gia configurati.
 
-## What is Xot?
+## Cosa promette
 
-**Xot** is the **architectural backbone** of a modular Laravel monorepo:
+Questo modulo non e solo codice: e una vetrina operativa. Mostra dove intervenire, cosa leggere, come rilasciare e come mantenere alta la confidenza tecnica.
 
-- ✅ **Base Classes** for Models, Resources, Services, and Filament components
-- ✅ **Reusable Traits** for common patterns (timestamps, slugs, polymorphic relations)
-- ✅ **Filament Integration** with battle-tested Resource and Table builders
-- ✅ **Service Layer** patterns with Command handlers and event-driven architecture
-- ✅ **Database Migrations** framework for consistent schema evolution
+## Release automation
 
-Think of Xot as your **modular contract**. Every module that extends it speaks the same language.
+- Workflow: [Semantic Release](./.github/workflows/semantic-release.yml)
+- Config: [.releaserc.json](./.releaserc.json)
+- Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
----
+## Documentazione essenziale
 
-## 🎯 Key Features
+- [Second brain locale](./docs/wiki/index.md)
+- [Audit ridondanza](./docs/code-redundancy-audit.md)
+- [Protocollo confidenza](./docs/agent-confidence-protocol.md)
+- [Disciplina agenti](./docs/agent-edit-discipline.md)
+- [00 Index](./docs/00-INDEX.md)
+- [00 Master Index](./docs/00-MASTER-INDEX.md)
+- [00 Index V2](./docs/00-index-v2.md)
+- [00 Index](./docs/00-index.md)
+- [01 Filament 5 Migration Guide](./docs/01-filament-5-migration-guide.md)
+- [01 Index Details](./docs/01-index-details.md)
 
-### 1. **XotBaseModel** — Smart Model Foundation
-```php
-class Post extends XotBaseModel {
-    // Automatic: HasFactory, HasUuids, SoftDeletes, Auditable
-}
-```
+## Filosofia
 
-### 2. **Filament Resources** — Zero-Config CRUD
-```php
-class PostResource extends XotBaseResource {
-    protected static ?string $model = Post::class;
-    // Tables, Forms, Relations auto-configured
-}
-```
-
-### 3. **Service Architecture** — Command Pattern
-```php
-class PublishPostService {
-    public function __invoke(PublishPostCommand $cmd): Post {
-        // Validated, event-driven, auditable
-    }
-}
-```
-
----
-
-## 📚 Documentation
-
-| Document | Purpose |
-|----------|---------|
-| **[Filament Patterns](./docs/filament/)** | Resource, Table, Form builders |
-| **[Bug Fixes & Issues](./docs/filament/xot-base-resource-table-fix.md)** | Recent fixes and learnings |
-| **[Redundancy Analysis](./docs/filament/table-patterns-redundancy-analysis.md)** | Code quality improvements |
-
----
-
-## 🛠️ Quick Start
-
-```bash
-composer require provtv/base_ptv_fila5_mono
-php artisan migrate
-php artisan module:make MyFeature
-```
-
----
-
-## 🏗️ Architecture
-
-```
-Modules/Xot/
-├── app/Models/              (Base classes, Traits)
-├── app/Filament/            (Resources, Tables, Forms)
-├── app/Services/            (Commands, Handlers)
-└── docs/                    (Guides, fixes, patterns)
-```
-
----
-
-## 🚨 Recent Fixes
-
-| Issue | Status | Link |
-|-------|--------|------|
-| Static method context in Filament Tables | ✅ Fixed | [Read](./docs/filament/xot-base-resource-table-fix.md) |
-| Column definition redundancy | 🔍 Analysis | [Details](./docs/filament/table-patterns-redundancy-analysis.md) |
-
----
-
-**Made with ❤️ by ProvTV Development Team**
+Scopo prima del codice. DRY prima dell'orgoglio. KISS prima dell'astrazione. La release automatica non sostituisce il giudizio: lo rende tracciabile.
