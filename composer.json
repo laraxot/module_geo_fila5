@@ -3,6 +3,7 @@
         "laravel/boost": "^2.3"
     },
     "require": {
-        "laravel/framework": "^13.0"
+        "laravel/framework": "^13.0",
+        "phpstan/phpstan": "^2.1"
     }
 }

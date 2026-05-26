@@ -227,33 +227,24 @@ class NotificationTemplate extends BaseModel implements HasMedia
 
     /**
      * Scope a query to only include active templates.
-     *
-     * @param  Builder  $query
-     * @return Builder
      */
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
     }
 
     /**
      * Scope a query to only include templates for a specific channel.
-     *
-     * @param  Builder  $query
-     * @return Builder
      */
-    public function scopeForChannel($query, string $channel)
+    public function scopeForChannel(Builder $query, string $channel): Builder
     {
         return $query->whereJsonContains('channels', $channel);
     }
 
     /**
      * Scope a query to only include templates for a specific category.
-     *
-     * @param  Builder  $query
-     * @return Builder
      */
-    public function scopeForCategory($query, string $category)
+    public function scopeForCategory(Builder $query, string $category): Builder
     {
         return $query->where('category', $category);
     }

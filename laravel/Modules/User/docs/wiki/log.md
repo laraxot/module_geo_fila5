@@ -1,5 +1,9 @@
 # User Wiki Log
 
+## [2026-05-21] docs | inventario Markdown legacy redundancy/phpstan-duplicati
+
+- Nuova pagina [`concepts/ridondanze-docs-legacy-cluster.md`](concepts/ridondanze-docs-legacy-cluster.md): elenco file `redundancy-fixes*.md`, cluster `phpstan-dry-kiss-improvements*`, typo `redundancyes.md`; link verso hub Xot [`ridondanze-cross-cutting-codebase`](../../../Xot/docs/wiki/concepts/ridondanze-cross-cutting-codebase.md).
+
 ## [2026-05-06] phpstan | widget property types e schema normalization
 - risolti errori PHPStan mirati su `PassportDashboard`, `EditUserWidget` e `RegistrationWidget`.
 - regola documentata: proprieta' Livewire tipizzate, `class-string` validati prima dell'assegnazione, nessun default stringa vuota per `class-string`.

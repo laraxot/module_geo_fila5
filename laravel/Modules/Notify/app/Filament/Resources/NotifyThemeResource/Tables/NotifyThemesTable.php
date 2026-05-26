@@ -16,9 +16,14 @@ class NotifyThemesTable extends XotBaseResourceTable
     public function getTableColumns(): array
     {
         return [
-            'id' => TextColumn::make('id')->searchable()->sortable(),
-            'created_at' => TextColumn::make('created_at')->dateTime(),
-            'updated_at' => TextColumn::make('updated_at')->dateTime(),
+            'id' => TextColumn::make('id')->sortable(),
+            'lang' => TextColumn::make('lang')->sortable(),
+            'type' => TextColumn::make('type')->sortable(),
+            'subject' => TextColumn::make('subject')->searchable(),
+            'theme' => TextColumn::make('theme')->sortable(),
+            'from_email' => TextColumn::make('from_email')->searchable(),
+            'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 }

@@ -16,9 +16,14 @@ class MailTemplatesTable extends XotBaseResourceTable
     public function getTableColumns(): array
     {
         return [
-            'id' => TextColumn::make('id')->searchable()->sortable(),
-            'created_at' => TextColumn::make('created_at')->dateTime(),
-            'updated_at' => TextColumn::make('updated_at')->dateTime(),
+            'id' => TextColumn::make('id')->sortable(),
+            'name' => TextColumn::make('name')->searchable()->sortable(),
+            'mailable' => TextColumn::make('mailable')->searchable()->sortable(),
+            'slug' => TextColumn::make('slug')->searchable(),
+            'counter' => TextColumn::make('counter')->sortable(),
+            'version' => TextColumn::make('version')->sortable(),
+            'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
+            'updated_at' => TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 }

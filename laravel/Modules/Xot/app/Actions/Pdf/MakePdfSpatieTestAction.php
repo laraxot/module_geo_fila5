@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Actions\Pdf;
 
+use function Safe\base64_decode;
+
 use Spatie\Browsershot\Browsershot;
 use Spatie\LaravelPdf\Enums\Format;
 use Spatie\LaravelPdf\Facades\Pdf;

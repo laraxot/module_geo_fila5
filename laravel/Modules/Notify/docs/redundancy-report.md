@@ -1,6 +1,3 @@
-- Inventario [ridondanze cross-modulo](../docs/redundancy-report.md)
-- Concetti [ridondanze cross-cutting](../Xot/docs/wiki/concepts/ridondanze-cross-cutting-codebase.md)
-
 # Redundancy Report — Modulo Notify
 
 > Generato: 2026-05-21 | Analisi automatica deep-scan

@@ -42,7 +42,6 @@ function mockXotData(): void
         ->andReturn(\Modules\<nome progetto>\Models\User::class);
 
 
-========
         
     $mockXotData->shouldReceive('make')
         ->andReturn($mockXotData);

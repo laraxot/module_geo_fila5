@@ -86,7 +86,6 @@ $safeValue = is_string($mixedValue) ? $mixedValue : (string) $mixedValue;
 ```php
 // Pattern per programmazione difensiva
 if ($record !== null && isset($record->id)) {
-if ($record !== null && property_exists($record, 'id')) {
     $id = $record->id;
 } else {
     $id = 'N/A';

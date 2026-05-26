@@ -55,10 +55,8 @@ use Override;
  */
 class JobBatch extends BaseModel
 {
-    /** @var bool */
     public $incrementing = false;
 
-    /** @var string */
     protected $keyType = 'string';
 
     protected $fillable = [

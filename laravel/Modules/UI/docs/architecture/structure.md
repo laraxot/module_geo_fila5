@@ -392,7 +392,6 @@ resources/views/components/blocks/pricing/archivied
 resources/views/components/blocks/slider
 resources/views/components/blocks/stats
 resources/views/components/blocks/stats/archived
-resources/views/components/blocks/stats/superseded
 resources/views/components/blocks/testimonials
 resources/views/components/blocks/testimonials/archivied
 resources/views/components/blocks/title

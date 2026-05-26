@@ -132,36 +132,3 @@ Separate git repository with shell scripts and utilities:
 | [module-test-location-rule](./concepts/module-test-location-rule.md) | Concept | - | 2026-04-21 |
 | [phpstan-central-config-rule](./concepts/phpstan-central-config-rule.md) | Concept | - | 2026-04-21 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 5 Table files populated — XotBaseResourceTable enforcement | 2026-05-07 |
----
-title: "Notify Wiki Index"
-module: "Notify"
----
-
-# Notify Module Wiki
-
-## Indices
-
-- [Rules](rules/INDEX.md)
-- [Skills](skills/INDEX.md)
-- [Commands](commands/INDEX.md)
-- [Memories](memories/INDEX.md)
-- [Concepts](concepts/INDEX.md)
-
-## Documentazione storica
-
-Note fuori dal wiki canonico: [../legacy/](../legacy/) nel modulo (se presente).
-
-## On-Demand Workflow
-
-```bash
-qmd search "Notify <topic>" --limit 5
-```
-
----
-*Updated: 2026-05-11*
-
-*Updated: 2026-05-19*
-
-## Shared Second Brain Discipline
-
-- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.

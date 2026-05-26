@@ -12,3 +12,7 @@ module: "Job"
 - Created module index.md
 - Ready for on-demand loading via QMD
 
+## [2026-05-26] Git collision cleanup (PHP)
+
+- Risolti marcatori merge in 13 file PHP (`Policies`, Filament Tables/Forms, Lang `WriteTranslationFileAction`) — strategia HEAD/current.
+- Validazione: `php -l`, PHPMD/Insights su path toccati; PHPStan globale bloccato da fatal preesistente in `Notify/EditMailTemplate`.

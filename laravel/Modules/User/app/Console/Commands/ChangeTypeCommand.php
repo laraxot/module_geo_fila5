@@ -100,7 +100,9 @@ class ChangeTypeCommand extends Command
         $newType = select('Select new user type:', $options);
 
         $newTypeEnum = $typeClass::tryFrom($newType);
-        Assert::notNull($newTypeEnum);
+        if (null === $newTypeEnum) {
+            throw new \InvalidArgumentException('Invalid user type selected.');
+        }
         Assert::isInstanceOf($newTypeEnum, HasLabel::class);
         Assert::isInstanceOf($newTypeEnum, \BackedEnum::class);
 

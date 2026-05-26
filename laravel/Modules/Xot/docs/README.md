@@ -24,6 +24,7 @@ Il modulo **Xot** è il nucleo fondativo dell'intero progetto [PROJECT_NAME] pla
 - `RelationX`: Relazioni many-to-many estese
 
 ## Collegamenti
+- [Installazione stack LAMP / PHP 8.4 (Debian, repo Sury)](./lamp/install.txt)
 - [Vite Configuration](./vite-configuration.md)
 - [Theme Assets Workflow](./theme-assets-workflow.md)
 - [BMAD Method (progetto)](../../../docs/bmad/setup-guide.md) — processo AI/agile e artefatti `_bmad-output/`

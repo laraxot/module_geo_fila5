@@ -116,6 +116,8 @@ Thumbs.db
 docs/phpstan/
 docs/cache/
 /docs/cache
+docs/archive/
+docs/archive/**
 
 # ==============================================
 # OLD DIRECTORIES (LEGACY CLEANUP)
@@ -171,3 +173,6 @@ _docs/
 *.rej
 *~head
 
+
+# Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
+docs/archive/

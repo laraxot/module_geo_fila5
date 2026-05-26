@@ -273,3 +273,5 @@ php artisan lang:debug [--log-missing] [--log-performance]
 **Versione**: 2.0.0
 **Autore**: Team Laraxot
 **Mantenuto da**: Community Laraxot
+
+- [Conflict Resolution](conflict-resolution.md)

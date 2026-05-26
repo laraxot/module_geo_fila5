@@ -13,15 +13,3 @@ Politica LLM‑wiki condivisa: **fonte canonica** con il corpo del contratto nel
 **[second-brain-local-discipline.md](../../../../Xot/docs/wiki/concepts/second-brain-local-discipline.md)**
 
 Aggiornare il contratto generico solo lì; in questa wiki tenere solo decisioni/procedure **specifiche di questo modulo**.
-title: "second-brain-local-discipline — puntatore"
-type: reference
-updated: 2026-05-21
-related:
-  - "../../../../Xot/docs/wiki/concepts/second-brain-local-discipline.md"
----
-
-# second brain local discipline
-
-Stub **DRY** verso wiki modulo **Xot**. Policy: [docs-deduplication](../../../../../../docs/wiki/how-to/module-docs-deduplication.md).
-
-→ [second-brain-local-discipline.md](../../../../Xot/docs/wiki/concepts/second-brain-local-discipline.md)

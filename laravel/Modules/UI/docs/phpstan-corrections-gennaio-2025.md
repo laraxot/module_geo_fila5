@@ -64,9 +64,6 @@ Pagine Resource estendevano direttamente classi Filament invece di XotBase.
 - **`CreateQuestionChart` (Quaeris)**: 
   - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
 - **`EditQuestionChart` (Quaeris)**: 
-- **`CreateQuestionChart` (Quaeris)**: 
-  - Cambiato da `CreateRecord` a `XotBaseCreateRecord`
-- **`EditQuestionChart` (Quaeris)**: 
   - Cambiato da `EditRecord` a `XotBaseEditRecord`
 - **`ViewPageContent` (Cms)**: 
   - Cambiato da `ViewRecord` a `XotBaseViewRecord`
@@ -211,7 +208,6 @@ class ViewLocation extends XotBaseViewRecord
 
 ### Modulo <nome progetto>
 ### Modulo Quaeris
-### Modulo Quaeris
 - `app/Filament/Resources/QuestionChartResource.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/CreateQuestionChart.php`
 - `app/Filament/Resources/SurveyPdfResource/Resources/QuestionCharts/Pages/EditQuestionChart.php`
@@ -241,4 +237,3 @@ class ViewLocation extends XotBaseViewRecord
 - [Regole Architetturali Critiche](../../Xot/docs/critical-architecture-rules.md)
 - [PHPStan Patterns](./phpstan-patterns.md)
 - [PHPStan Compliance](./phpstan-compliance.md)
-

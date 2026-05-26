@@ -7,6 +7,7 @@ namespace Modules\Notify\Filament\Resources\MailTemplateResource\Schemas;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component as SchemaComponent;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\View;
 use Modules\Notify\Filament\Forms\Components\HtmlLayoutPathSelect;
@@ -15,7 +16,7 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 class MailTemplateForm extends XotBaseResourceForm
 {
     /**
-     * @return array<int|string, \Filament\Forms\Components\Component>
+     * @return array<int|string, SchemaComponent>
      */
     public static function getFormSchema(): array
     {

@@ -66,7 +66,6 @@ use Illuminate\Support\Carbon;
  */
 class Export extends BaseExport
 {
-    /** @var string */
     protected $connection = 'job';
 
     protected $fillable = [

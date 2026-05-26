@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ea8cd50e5fb8463e5c7e6cb267b40924ec549ae2ff610015954ba7702a2831b0
-size 868
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+  <style>
+    @keyframes stack {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+      100% { transform: translateY(0); }
+    }
+    .coin {
+      fill: currentColor;
+      transform-origin: center;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    .coin-1 { animation: stack 1.2s infinite; }
+    .coin-2 { animation: stack 1.2s infinite 0.2s; }
+    .coin-3 { animation: stack 1.2s infinite 0.4s; }
+    svg:hover .coin {
+      opacity: 1;
+    }
+  </style>
+  <circle class="coin coin-1" cx="12" cy="16" r="6"/>
+  <circle class="coin coin-2" cx="12" cy="12" r="6"/>
+  <circle class="coin coin-3" cx="12" cy="8" r="6"/>
+  <path class="coin" d="M9 16h6M9 12h6M9 8h6" stroke="white" stroke-width="1.5"/>
+</svg>

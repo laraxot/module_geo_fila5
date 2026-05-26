@@ -4,10 +4,11 @@ type: redundancy
 owner: Modules/Xot
 severity: medium
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-05-25
 tags: [redundancy, static-analysis, blade, scaffolding]
 related:
   - ../concepts/ridondanze-cross-cutting-codebase.md
+  - ./audit-profondo-ridondanze-holistic.md
   - ./xotbase-pattern-abuse.md
   - ../../../../../../docs/wiki/concepts/code-redundancy-audit.md
 issues:
@@ -29,12 +30,23 @@ Questa pagina riassume un **pass statico** (SHA256, file non in `vendor`/`node_m
 
 ## Metodo (riproducibile)
 
-Workspace: `laravel/Modules/*` + `laravel/Themes/*`. Chiave: `(size, sha256(content))`. Gruppo “interessante”: **≥2 path** e **≥2 owner** distinti (owner = nome modulo o nome tema). Output complessivo (2026-05-23):
+Workspace: `laravel/Modules/*` + `laravel/Themes/*`. Chiave: `(size, sha256(content))`. Gruppo “interessante”: **≥2 path** e **≥2 owner** distinti (owner = nome modulo o nome tema). Output pubblicato storico (**2026-05-23**):
 
 | Area | Gruppi duplicati (≥2 file) | Gruppi cross-owner |
 |------|----------------------------|-------------------|
-| `*.php` | 431 | 72 |
-| `*.blade.php` | 179 | 53 |
+| `*.php` | 431\* | 72\* |
+| `*.blade.php` | 179 | **53** |
+
+\* Il conteggio `*.php = 431` era basato sulla convenzione “estensione `.php`”: nelle toolchain che classificano in fretta può essere **mistificato dai file Blade** (anch’essi finiscono in `.php`). Per comparare le metriche leggere sempre il [§ Riesame 2026-05-25](#riesame-metodologia-strict-2026-05-25).
+
+## Riesame metodologia strict (2026-05-25)
+
+Definizioni esplicite (riproducibili anche via script documentato in [`audit-profondo-ridondanze-holistic.md`](./audit-profondo-ridondanze-holistic.md)):
+
+- **`*.blade.php`** — gruppi duplicati: **179**; cross-owner **53** (**stabile vs baseline sopra sulla parte trasversale Blade**).
+- **`.php` puro** (file che terminano in `.php` **ma non** `.blade.php`): gruppi duplicati **247**; cross-owner **17**.
+
+Interpretazione: quando serve un KPI “solo PHP backend”, usare il bucket **pure PHP** per evitare doppioni conteggio Blade; quando si parla delle viste Blade condivise, la colonna **`53`** resta il segnale d’allarme principale perché coincide con anni di scaffolding multi-modulo.
 
 ## Pattern ricorrenti (priorità triage)
 
@@ -57,4 +69,4 @@ Stesso contenuto tra **`Themes/Sixteen/.../components/ui/placeholder.blade.php`*
 
 Issue di riferimento: [#89](https://github.com/laraxot/base_fixcity_fila5/issues/89), [#90](https://github.com/laraxot/base_fixcity_fila5/issues/90).
 
-Hub cross-cutting modulo: [`ridondanze-cross-cutting-codebase.md`](../concepts/ridondanze-cross-cutting-codebase.md).
+Hub cross-cutting modulo: [`ridondanze-cross-cutting-codebase.md`](../concepts/ridondanze-cross-cutting-codebase.md). Glossario rumorosità / merge-marker doc: [`audit-profondo-ridondanze-holistic.md`](./audit-profondo-ridondanze-holistic.md).

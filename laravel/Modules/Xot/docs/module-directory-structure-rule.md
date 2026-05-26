@@ -299,7 +299,7 @@ Questi file devono essere:
 1. Aggiunti al `.gitignore` (root e modulo)
 2. Eliminati dal filesystem
 
-**Stato**: ✅ Pattern aggiunti ai .gitignore (2026-03-13)
+**Stato**: ✅ Pattern `*.backup` / `*.backup.*` in root, `laravel/`, ogni modulo/tema e `docs/.gitignore` (2026-05-21). Vedi anche [gitignore backup files](../../../../docs/wiki/memories/gitignore-backup-files.md).
 
 ---
 

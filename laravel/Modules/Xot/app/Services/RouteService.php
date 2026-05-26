@@ -336,7 +336,10 @@ class RouteService
         $params = $routeCurrent instanceof \Illuminate\Routing\Route ? $routeCurrent->parameters() : [];
         [$containers] = params2ContainerItem($params);
 
-        $params['containers'] = implode('.', $containers);
+        $params['containers'] = implode('.', array_map(
+            static fn (mixed $value): string => is_scalar($value) ? (string) $value : '',
+            array_values($containers),
+        ));
 
         return collect($tmp_arr)
             ->filter(static fn ($item): bool => ! \in_array($item, ['Module', 'Item'], false))

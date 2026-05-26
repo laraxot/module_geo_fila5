@@ -99,19 +99,6 @@ class NotificationLog extends BaseModel
         'tenant_id',
     ];
 
-    protected function casts(): array
-    {
-        return array_merge(parent::casts(), [
-            'data' => 'array',
-            'metadata' => 'array',
-            'sent_at' => 'datetime',
-            'delivered_at' => 'datetime',
-            'failed_at' => 'datetime',
-            'opened_at' => 'datetime',
-            'clicked_at' => 'datetime',
-        ]);
-    }
-
     public function notifiable(): MorphTo
     {
         return $this->morphTo();
@@ -119,10 +106,7 @@ class NotificationLog extends BaseModel
 
     public function template(): BelongsTo
     {
-        /** @var BelongsTo<Model, static> $relation */
-        $relation = $this->belongsTo(NotificationTemplate::class, 'template_id');
-
-        return $relation;
+        return $this->belongsTo(NotificationTemplate::class, 'template_id');
     }
 
     public function scopeWithStatus(Builder $query, string $status): Builder
@@ -160,5 +144,18 @@ class NotificationLog extends BaseModel
         ]);
 
         return $this;
+    }
+
+    protected function casts(): array
+    {
+        return array_merge(parent::casts(), [
+            'data' => 'array',
+            'metadata' => 'array',
+            'sent_at' => 'datetime',
+            'delivered_at' => 'datetime',
+            'failed_at' => 'datetime',
+            'opened_at' => 'datetime',
+            'clicked_at' => 'datetime',
+        ]);
     }
 }

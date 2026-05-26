@@ -15,50 +15,22 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
 {
     use InteractsWithMedia;
 
-    /**
-     * Indicates whether attributes are snake cased on arrays.
-     *
-     * @see https://laravel-news.com/6-eloquent-secrets
-     *
-     * @var bool
-     */
-    public static $snakeAttributes = true;
-
-    /** @var bool */
     public $incrementing = true;
 
-    /** @var bool */
     public $timestamps = true;
 
-    /** @var int */
-    protected $perPage = 30;
-
-    /** @var string */
     protected $connection = 'notify';
 
     /** @var list<string> */
     protected $appends = [];
 
-    /** @var string */
     protected $primaryKey = 'id';
 
     /** @var string */
     protected $keyType = 'string';
 
     /** @var list<string> */
-    protected $hidden = [
-        // 'password'
-    ];
-
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return Factory<static>
-     */
-    protected static function newFactory()
-    {
-        return app(GetFactoryAction::class)->execute(static::class);
-    }
+    protected $hidden = [];
 
     /** @return array<string, string> */
     protected function casts(): array

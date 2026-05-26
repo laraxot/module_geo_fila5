@@ -3,15 +3,12 @@ title: "Ridondanze cross-cutting codebase e dove documentarle"
 type: concept
 tags: [dry, redundancy, xot, documentation]
 created: "2026-05-21"
-updated: "2026-05-21"
-related:
-  - ../../redundancy-report.md
-  - ../../filament/redundancy-rules.md
-updated: "2026-05-22"
+updated: "2026-05-25"
 related:
   - ../../redundancy-report.md
   - ../../filament/redundancy-rules.md
   - ../redundancy/byte-identical-files-static-scan.md
+  - ../redundancy/audit-profondo-ridondanze-holistic.md
   - ../../../../../Themes/docs/ridondanze-documentazione-temi.md
   - ../../../../../Themes/Sixteen/docs/wiki/concepts/ridondanze-documentazione-wizard.md
   - ../../../../../Themes/TwentyOne/docs/wiki/concepts/ridondanze-hub-twentyone-xot.md
@@ -24,11 +21,11 @@ related:
 
 Un solo punto di lettura che **aggrega tipi di ripetizioni** osservati nel monorepo (moduli Laraxot + temi Sixteen/TwentyOne) senza ricopiare lunghi estratti tecnici già pubblicati altrove.
 
-**Audit documentazione:** 2026-05-21–22. **Audit statico file identici:** 2026-05-23. **Schede atomiche** (OAuth, widget auth, DTO, Rating, Fixcity, scaffold temi): indice in [`redundancy-catalog.md`](./redundancy-catalog.md).
+**Audit documentazione:** 2026-05-21–22. **Audit statico file identici:** vedi baseline in [`byte-identical-files-static-scan.md`](../redundancy/byte-identical-files-static-scan.md); **audit olistico 2026-05-25**: [`audit-profondo-ridondanze-holistic.md`](../redundancy/audit-profondo-ridondanze-holistic.md). **Schede atomiche** (OAuth, widget auth, DTO, Rating, Fixcity, scaffold temi): [`redundancy-catalog.md`](./redundancy-catalog.md).
 
 ## Ridondanza byte-identica (checksum), moduli + temi
 
-Pass SHA256 senza interprete AST: **`431`** gruppi di file **`.php`** duplicati, di cui **`72`** con **copie in più owner** (moduli/temi distinti); **`179`** gruppi **`.blade.php`**, **`53`** cross-owner. Sintesi tecnica + pattern (route stub, dashboard Filament, doppioni view in Xot, clock widget): **[byte-identical-files-static-scan.md](../redundancy/byte-identical-files-static-scan.md)**. Tracker issue [#89](https://github.com/laraxot/base_fixcity_fila5/issues/89) / [#90](https://github.com/laraxot/base_fixcity_fila5/issues/90).
+Pass SHA256 senza interprete AST: sintesi e pattern in **[byte-identical-files-static-scan.md](../redundancy/byte-identical-files-static-scan.md)** — include baseline 2026-05-23 e **riesame 2026-05-25**. Tracker [#89](https://github.com/laraxot/base_fixcity_fila5/issues/89) · [#90](https://github.com/laraxot/base_fixcity_fila5/issues/90).
 
 ## Volumi documentazione moduli (indicativo)
 
@@ -41,6 +38,8 @@ Pass SHA256 senza interprete AST: **`431`** gruppi di file **`.php`** duplicati,
 | Fixcity | 202 | dominio prodotto |
 
 ~**57%** dei `.md` modulo è in Xot + User + Notify. Dettaglio temi: **[ridondanze-documentazione-temi.md](../../../../../Themes/docs/ridondanze-documentazione-temi.md)**.
+
+**Debito sintattico Markdown:** più file nei moduli (in particolare **Activity**) e alcuni punti **Xot/UI/Notify/Lang** contengono ancora **marker Git non risolti** (`<<<<<<<`) — bloccano parsing QMD/memorie e sono da trattare come **ridondanza/deriva della stessa pagina**. Inventario sintetico: [`audit-profondo-ridondanze-holistic.md`](../redundancy/audit-profondo-ridondanze-holistic.md).
 
 ## Ridondanze codice critiche (migrazioni e Filament)
 
@@ -66,52 +65,37 @@ Oltre a BaseModel/Filament già in [redundancy-report.md](../../redundancy-repor
 
 Analisi strutturata con classi/File duplicati o path paralleli: **[redundancy-report.md](../../redundancy-report.md)** (ColumnBuilder gemello, AutoLabel vs Lang, ArticleData/BaseRating ospitati nel modulo sbagliato, doppioni `XotBaseRelationManager`/`XotBaseManageRelatedRecords`, note su `HasXotTable`/PHPStan).
 
-Regole anti-ridondanza Filament progetto (non sostituire il report tecnico):
+Regole anti-ridondanza Filament progetto:
 
 - **[redundancy-rules.md](../../filament/redundancy-rules.md)**
 
-Wizard Filament dopo refactor storico (`HasWizard` vs logica manual): evitare triple doc — scegliere **una** delle due come SSoT contenutistico:
+### Wizard Filament dopo refactor (`HasWizard`)
 
-- **[filament-wizard-refactoring.md](../filament-wizard-refactoring.md)** (titolo sintetico)
-- **[XotBaseWizardWidget-HasWizard-refactor.md](../XotBaseWizardWidget-HasWizard-refactor.md)** (~stesso testo storico — **candidate merge**)
+Wizard widget Laraxot: **SSoT contenuti** **[filament-wizard-refactoring.md](../filament-wizard-refactoring.md)** — uso di **`Filament\Resources\Pages\Concerns\HasWizard`** su `XotBaseWizardWidget`; **[XotBaseWizardWidget-HasWizard-refactor.md](../XotBaseWizardWidget-HasWizard-refactor.md)** resta puntatore storico.
 
-Argomento concettuale senza duplicare il refactor:
+Argomento concettuale (studio vendor — filtrare con SSoT sopra):
+
 - **[filament-haswizard-vs-xotbasewizard.md](./filament-haswizard-vs-xotbasewizard.md)**
 
-## Documentazione scaffold LLM‑wiki ripetuta (byte-identiche)
+### Documentazione scaffold LLM-wiki ripetuta (byte-identiche)
 
-Circa **10** copie uguali (stesso checksum) di **`docs/wiki/concepts/second-brain-local-discipline.md`** sotto **`laravel/Modules/*/docs/wiki/concepts/`**.
+Corpo lungo della policy **solo** in modulo Xot — **[second-brain-local-discipline.md](./second-brain-local-discipline.md)** (canonica); negli altri moduli (**Activity, Gdpr, Job, Media, Notify, Rating, Tenant, UI, User**) file omonimo = **stub** verso questa pagina (**Geo** può mantenere variante specifica se presente).
 
-**Politica suggerita (DRY):** una sola pagina vivente nella wiki **del modulo più “core” (Xot)** o nel **wiki root**; negli altri moduli puntare con link relativo o stub di 5 righe. Modificare un solo master evita derive silenziose.
-
-Moduli dove il file è oggi replicato (indicativo, lista da `find …/second-brain-local-discipline.md`): Activity, **Geo** (alternativa più specifica: `second-brain-geo-module-discipline.md`), Gdpr, Job, Media, Notify, Rating, Tenant, UI, User, **Xot** (master suggerito per policy generica).
-Wizard widget Laraxot: SSoT **[filament-wizard-refactoring.md](../filament-wizard-refactoring.md)** — **`Filament\Resources\Pages\Concerns\HasWizard`** su `XotBaseWizardWidget`, normalizzazione stato su **`XotBaseWizardWidget`**, più eventualmente **`DelegatesFilamentWizardSchemaMethods`**. **[XotBaseWizardWidget-HasWizard-refactor.md](../XotBaseWizardWidget-HasWizard-refactor.md)** resta stub puntatore storico.
-
-Argomento concettuale (studio vendor / paragone contesti — filtrare con SSoT sopra):
-
-- **[filament-haswizard-vs-xotbasewizard.md](./filament-haswizard-vs-xotbasewizard.md)** (note esplorative, possono contenere roadmap non implementata)
-
-## Documentazione scaffold LLM‑wiki ripetuta (byte-identiche)
-
-**Stato:** `second-brain-local-discipline.md` era replicato in molti moduli con lo stesso checksum.
-
-**Politica applicata:** corpo lungo solo in modulo **Xot** — **`[second-brain-local-discipline.md](./second-brain-local-discipline.md)`** (canonica); negli altri moduli (**Activity, Gdpr, Job, Media, Notify, Rating, Tenant, UI, User**) il file omonimo è **stub** breve verso la pagina canonica (**Geo** aveva anche variante tema-specifica quando presente nel modulo).
-
-Variare sempre **solo il master Xot**, poi eventualmente aggiornare questo paragrafo se si aggiungono nuovi moduli scaffold.
+Variare sempre **solo il master Xot**, poi aggiornare l’indice dei moduli con stub quando se ne aggiungono altri.
 
 ## Report `redundancy-report.md` quasi ovunque
 
-Molti moduli ospitano un file **`docs/redundancy-report.md`** con contenuto **diverso** per modulo — il nome suggerisce un template batch. Non è errore sintattico ma **ambiguità di naming**: in ricerca (“apri redundancy-report”) bisogna qualificare il modulo.
+Molti moduli ospitano **`docs/redundancy-report.md`** con contenuto **diverso** per modulo — naming da template batch. Non è errore ma **ambiguità**: qualificare sempre il modulo in ricerca.
 
 ## Temi Sixteen / TwentyOne
 
-- **Sixteen:** molte slice su wizard/parity/UI (vedi **`ridondanze-documentazione-wizard.md`** nel wiki tema Sixteen — link incrociato sopra nei `related`).
-- **TwentyOne:** analisi quantitativa più vecchia (**`analisi-metodi-duplicati.md`** + **`dry-kiss-analysis.md`**) più hub breve (**`ridondanze-hub-twentyone-xot.md`**) verso questo documento e verso **`redundancy-report.md`** modulo Xot.
+- **Sixteen:** molte slice su wizard/parity — hub **[ridondanze-documentazione-wizard.md](../../../../../Themes/Sixteen/docs/wiki/concepts/ridondanze-documentazione-wizard.md)** + **[wizard-parity-documentation-map.md](../../../../../Themes/Sixteen/docs/wiki/concepts/wizard-parity-documentation-map.md)**.
+- **TwentyOne:** **`analisi-metodi-duplicati.md`** + **`dry-kiss-analysis.md`** + **[ridondanze-hub-twentyone-xot.md](../../../../../Themes/TwentyOne/docs/wiki/concepts/ridondanze-hub-twentyone-xot.md)**.
 
 ## Modulo User — cluster legacy Markdown
 
-Molte revisioni quasi identiche su “redundancy fixes”/`phpstan dry kiss` dentro **`docs/`** e **`docs/legacy/`** (underscore vs hyphen nel nomefile, duplicazioni `redundancy-fixes*.md`): inventario sintetico in **[ridondanze-docs-legacy-cluster.md](../../../../User/docs/wiki/concepts/ridondanze-docs-legacy-cluster.md)**.
+In **[ridondanze-docs-legacy-cluster.md](../../../../User/docs/wiki/concepts/ridondanze-docs-legacy-cluster.md)** — revisioni quasi identiche (`redundancy-fixes*.md`), underscore vs hyphen, cartella **`docs/legacy/`**.
 
 ## Collegamenti utili progetto root
 
-- [Trigger map](../../../../../../docs/wiki/rules/00-TRIGGER_MAP.md) — non copiare regole lungo qui.
+- [Trigger map](../../../../../../docs/wiki/rules/00-TRIGGER_MAP.md) — non duplicare regole lunghe qui.

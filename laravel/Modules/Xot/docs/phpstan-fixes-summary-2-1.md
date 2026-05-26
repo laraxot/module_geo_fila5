@@ -3,7 +3,6 @@
 ## 🚨 REGOLA CRITICA RISPETTATA 🚨
 
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
-========
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
 
@@ -18,13 +17,10 @@
 
 1. **Xot** - 0 errori (era il più critico con 45% degli errori)
 2. **User** - 0 errori (risolto 1 errore critico)
-========
-========
 3. **<nome modulo>** - 0 errori 
 4. **Geo** - 0 errori
 5. **Cms** - 0 errori
 6. **<main module>** - 0 errori
-========
 3. **SaluteMo** - 0 errori 
 4. **Geo** - 0 errori
 5. **Cms** - 0 errori
@@ -206,8 +202,6 @@ Questi errori non compromettono la funzionalità e possono essere risolti in una
 ## Conclusione
 
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
-========
-========
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.

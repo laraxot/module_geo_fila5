@@ -9,7 +9,7 @@ updated: "2026-05-21"
 
 ## Scopo
 
-Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti si installano nel modulo owner, ma solo se compatibili con il runtime reale (`Laravel 13` + **`PHP 8.4`** per linee Spatie recenti).
+Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti si installano nel modulo owner tramite merge del `composer.json` root. **Baseline runtime:** Laravel **13** con **PHP ≥8.4** per linee aggiornate Spatie incluso `laravel-model-states` ^2.14 ([#87](https://github.com/laraxot/base_fixcity_fila5/issues/87)); `php` di default sulla shell può restare **8.3** finché Composer/Stan usano **`php8.4`**.
 
 ## Matrice verificata
 
@@ -20,7 +20,7 @@ Definire una regola operativa semplice: in progetto modulare Laraxot i pacchetti
 | `spatie/laravel-responsecache` | nessun owner runtime confermato | si (`8.3.x`) | no (`php ^8.4`) | non reinstallare; la linea `7.7.2` resta ferma a `Laravel 12` |
 | `aaronfrancis/fast-paginate` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
 | `fidum/laravel-eloquent-morph-to-one` | `Modules/Xot` | no (stable fino a `illuminate ^12`) | si | bloccato in attesa release stable `^13`; oggi manca dal lock root |
-| `spatie/laravel-model-states` | `Modules/Xot` (`^2.14`, merge root) | si (`2.14.1`, illuminate ^13) | si con **`php8.4`** | installato 2026-05-21; `2.12.1` non va su L13; `main`/≥2.12.2 richiede PHP 8.4 |
+| `spatie/laravel-model-states` | `Modules/UI` + `Modules/Xot` | si (`2.14.1`, `illuminate ^13`) | **no** su solo 8.3 (2.14 richiede `php ^8.4`) | **risolto** 2026-05-21: `php8.4 … composer update -W` da `laravel/`; vendor OK; PHPStan `app/States/` OK. Lock root locale (repo: `*.lock` gitignored). [#87](https://github.com/laraxot/base_fixcity_fila5/issues/87) |
 
 ## Evidenze codice
 

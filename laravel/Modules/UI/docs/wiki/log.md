@@ -1,5 +1,11 @@
 # UI Wiki Log
 
+## [2026-05-21] bugfix | auth register focus perso per overlay header mobile
+- Nuova pagina: `concepts/auth-register-focus-loss-overlay.md`.
+- Root cause identificata in `x-ui.marketing.header`: container mobile fullscreen `fixed` che intercettava i click anche a menu chiuso.
+- Fix: `x-show="mobileMenuOpen"` + `style="display:none"` + `pointer-events-none` da chiuso / `pointer-events-auto` da aperto.
+- Verifica manuale: su `/it/auth/register` focus input stabile e digitazione ripristinata.
+
 ## [2026-05-06] phpstan | Dynamic array normalization
 - Nuova pagina: `concepts/phpstan-dynamic-array-normalization.md`.
 - Documentato pattern per convertire output dinamici action/Livewire in array tipizzati senza `@var` inline, ignore o baseline.

@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.3",
         "calebporzio/sushi": "^2.5",
         "coolsam/panel-modules": "*",
         "doctrine/dbal": "*",
@@ -40,7 +40,7 @@
         "spatie/cpu-load-health-check": "^1.0",
         "spatie/laravel-data": "^4.7",
         "spatie/laravel-health": "^1.29",
-        "spatie/laravel-model-states": "^2.14",
+        "spatie/laravel-model-states": "*",
         "spatie/laravel-model-status": "*",
         "spatie/laravel-package-tools": "*",
         "spatie/laravel-permission": "*",
