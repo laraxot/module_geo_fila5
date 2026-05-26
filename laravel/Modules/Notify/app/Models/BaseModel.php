@@ -4,23 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Models;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Actions\Factory\GetFactoryAction;
-use Modules\Xot\Traits\Updater;
+use Modules\Xot\Models\XotBaseModel;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Class BaseModel.
  */
-abstract class BaseModel extends Model implements HasMedia
+abstract class BaseModel extends XotBaseModel implements HasMedia
 {
-    // use Searchable;
-    use HasFactory;
     use InteractsWithMedia;
-    use Updater;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -37,10 +30,13 @@ abstract class BaseModel extends Model implements HasMedia
     /** @var bool */
     public $timestamps = true;
 
+<<<<<<< HEAD
+=======
     /** @var int */
     protected $perPage = 30;
 
     /** @var string */
+>>>>>>> 11e3ccff7 (.)
     protected $connection = 'notify';
 
     /** @var list<string> */
@@ -53,6 +49,9 @@ abstract class BaseModel extends Model implements HasMedia
     protected $keyType = 'string';
 
     /** @var list<string> */
+<<<<<<< HEAD
+    protected $hidden = [];
+=======
     protected $hidden = [
         // 'password'
     ];
@@ -66,21 +65,13 @@ abstract class BaseModel extends Model implements HasMedia
     {
         return app(GetFactoryAction::class)->execute(static::class);
     }
+>>>>>>> 11e3ccff7 (.)
 
     /** @return array<string, string> */
     protected function casts(): array
     {
-        return [
-            'id' => 'string',
-            'uuid' => 'string',
+        return array_merge(parent::casts(), [
             'published_at' => 'datetime',
-            'verified_at' => 'datetime',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-            'deleted_at' => 'datetime',
-            'updated_by' => 'string',
-            'created_by' => 'string',
-            'deleted_by' => 'string',
-        ];
+        ]);
     }
 }

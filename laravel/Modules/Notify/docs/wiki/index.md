@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_gDMkiZ
+>>>>>>> 11e3ccff7 (.)
 # Knowledge Base Index
 
 > Status: bootstrap
@@ -108,7 +111,10 @@ Separate git repository with shell scripts and utilities:
 ## Archived Queries
 
 - Pending first archived answers
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 11e3ccff7 (.)
 # Wiki Locale Index
 
 ## Karpathy LLM Wiki Standard
@@ -135,6 +141,9 @@ Separate git repository with shell scripts and utilities:
 | [llm-wiki-governance](./concepts/llm-wiki-governance.md) | Concept | - | 2026-04-21 |
 | [module-test-location-rule](./concepts/module-test-location-rule.md) | Concept | - | 2026-04-21 |
 | [phpstan-central-config-rule](./concepts/phpstan-central-config-rule.md) | Concept | - | 2026-04-21 |
+<<<<<<< HEAD
+| [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 5 Table files populated — XotBaseResourceTable enforcement | 2026-05-07 |
+=======
 >>>>>>> .merge_file_7yhG1v
 =======
 =======
@@ -182,3 +191,4 @@ qmd search "Notify <topic>" --limit 5
 
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.
 >>>>>>> cc6378f (.)
+>>>>>>> 11e3ccff7 (.)

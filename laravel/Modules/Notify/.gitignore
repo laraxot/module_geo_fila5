@@ -166,4 +166,21 @@ _docs/
 _docs/
 
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
-docs/archive/
+docs/archive/.devcontainer/
+.planning/
+.ralph
+_bmad-output/
+bashscripts/
+.agent*/
+.agent*
+.ai*
+.claude*
+.c*
+.i*
+.j*
+.p*
+.w*
+.z*
+laravel/
+config/Config
+config/config
