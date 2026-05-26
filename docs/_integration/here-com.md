@@ -1,6 +1,7 @@
-# here_com
+---
+module: theme
+topic: here-com
+canonical: ../../../../Themes/docs/shared-components/here-com.md
+---
 
-<!-- Contenuto migrato da _docs/here_com.txt -->
-
-Depending on your authentication method you either need to add an Authorization header with a Bearer token or a query parameter 
-
+See canonical documentation: ../../../../Themes/docs/shared-components/here-com.md

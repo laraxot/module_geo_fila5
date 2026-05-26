@@ -1,5 +1,7 @@
-# Next (Module Geo)
+---
+module: theme
+topic: next
+canonical: ../../../../Themes/docs/shared-components/02-next-Modules.md
+---
 
-## Features
-
-## Refactors
+See canonical documentation: ../../../../Themes/docs/shared-components/02-next-Modules.md
