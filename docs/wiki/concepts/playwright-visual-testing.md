@@ -1,17 +1,11 @@
 ---
 title: Playwright — Visual Testing MapPicker
-<<<<<<< HEAD
 description: Guida definitiva al testing visivo per componenti mappa (Geo Module) nel 2026
 tags: [playwright, puppeteer, visual-testing, map-picker, leaflet, laravel, pest]
-=======
-description: Uso di Playwright MCP per verificare visualmente il MapPicker e componenti mappa
-tags: [playwright, screenshot, map-picker, leaflet, visual-testing]
->>>>>>> c3b9b5924 (.)
 ---
 
 # Playwright — Visual Testing MapPicker
 
-<<<<<<< HEAD
 Per verificare visualmente i componenti del modulo Geo (Leaflet + Lit Web Components), seguire gli standard di [Visual Control Mastery](../../../../../docs/wiki/concepts/visual-control-mastery.md).
 
 ## 1. Setup per Geo Module
@@ -68,24 +62,3 @@ test('map renders with markers', async ({ page }) => {
 *Vedi anche:*
 - [Visual Control Mastery](../../../../../docs/wiki/concepts/visual-control-mastery.md)
 - [Coordinate Picker Rule](./coordinate-picker-lit-wizard-fullscreen-rule.md)
-=======
-Per verificare visualmente il componente MapPicker (Leaflet + Lit Web Component) usare il Playwright MCP server:
-
-```
-browser_navigate → http://127.0.0.1:8000/it/segnalazione/crea
-browser_screenshot → verifica rendering mappa, marker, controlli fullscreen
-```
-
-## Scenari da verificare
-
-- Mappa inizializzata con marker centrato sulla posizione di default (Roma)
-- Click sulla mappa → marker si sposta, input lat/lng aggiornati
-- Drag del marker → stessa sincronizzazione
-- Toggle fullscreen → mappa si espande, `invalidateSize()` chiamato
-- Switch layer stradale/satellitare
-- Input lat/lng manuale → marker si sposta sulla mappa
-
-## Documentazione di riferimento
-
-Vedere: `docs/wiki/concepts/playwright-mcp-screenshots.md` (root project)
->>>>>>> c3b9b5924 (.)
