@@ -13,7 +13,7 @@ class AddressesTable extends XotBaseResourceTable
     /**
      * @return array<string, Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'name' => TextColumn::make('name')->searchable(),
