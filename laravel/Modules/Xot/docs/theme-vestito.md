@@ -54,7 +54,6 @@ Themes/[ThemeName]/
 │   │   └── pages/
 ├── _healthcare_app_fila5_mono.code-workspace
 ├── _app_fila5_mono.code-workspace
->>>>>>> .merge_file_SeKRJk
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js

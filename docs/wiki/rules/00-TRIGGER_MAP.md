@@ -1,19 +1,28 @@
 ---
 title: "Unified Trigger Map"
-type: "rule"
-tags: [trigger-map, on-demand, routing]
+type: rule
+tags: [trigger-map, on-demand, routing, bootstrap, mandatory-discipline]
 created: 2026-05-12
 updated: 2026-05-26
+qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automatic load"
 ---
 
 # 00-TRIGGER_MAP
 
-> Canonical routing table: task trigger -> wiki resources to load on-demand.
+> **Routing canonico.** Prima il pacchetto **BOOTSTRAP SESSIONE AGENTE** (prima riga della tabella) — così la disciplina diventa **meccanica**, non dalla memoria del modello.
+
+## Contratto automatico (wiki = legge operativa)
+
+1. **Bootstrap** — prima di modificare file nel repo (`.md`, `.php`, config, MCP, ecc.), caricare tutti i path della riga **BOOTSTRAP SESSIONE AGENTE** (prima riga tabella); esclude solo risposte teoricamente «una riga» senza toccare il tree del repo.
+2. **Routing incrementale** — individuare la riga più specifica (Compaction, Filament, MySQL…); caricare solo i path elencati, non intere cartelle.
+3. **Verifica caricamento** — `qmd search "<trigger keywords>" --limit 5` o `Read` puntuali.
+4. **Chiusura** — `docs/wiki/how-to/github-issue-agent-discipline.md` + aggiornare `docs/wiki/log.md` se la policy pubblica cambia.
 
 ## Triggers
 
 | Trigger | Load |
 |---|---|
+| **BOOTSTRAP SESSIONE AGENTE** _(obbligatorio prima di ogni task su file / toolchain / MCP / wiki)_ | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | New module/theme | `docs/wiki/concepts/module-structure.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
@@ -32,16 +41,13 @@ updated: 2026-05-26
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
 | Autocompact thrashing / «refilled within 3 turns» / runtime-telemetry token spike post-compact | `docs/wiki/rules/autocompact-thrashing-discipline.md` (**disciplina obbligatoria — caricamento automatico via trigger**), `docs/wiki/how-to/autocompact-thrashing-recovery.md` (**playbook canonico + recovery**), `docs/wiki/concepts/context-overflow-prevention.md` |
-| Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` \
-  
-  Azioni automatiche: validate file sizes on PR via `scripts/ai_token_guard.py` and fail CI; create issue template `.github/ISSUE_TEMPLATE/linked_issue.md` when model-usage risky. |
-| Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md` \
-  
-  Azioni automatiche: scheduled compaction audits via `.github/workflows/context-index.yml`, agent preflight checks (must call `scripts/ai_token_guard.py` before long reads). |
-| Troppi token per chiamata / AGENTS.md enorme / BMAD rigenerato | `docs/wiki/concepts/context-overflow-prevention.md` §1, `bashscripts/ai/AGENTS.md` (stub), `bashscripts/ai/rules/bmad.md` |
+| Token overflow / API «maximum context length is 131072» | `docs/wiki/how-to/api-context-length-exceeded-131072.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/chat/context-api-131072-overflow.md` _(CI: opzionale `scripts/ai_token_guard.py`; template issue collegato se serve)_ |
+| Token overflow / 262K / API 400 / compaction / Cursor «Compaction exhausted» | `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/memories/compaction-exhausted-recovery.md` _(workflow: `.github/workflows/context-index.yml`; preflight: `scripts/ai_token_guard.py` su letture voluminose)_ |
+| Claude usa troppi token per chiamata / tool output troppo largo / `git status` enorme | `docs/wiki/rules/token-optimization-discipline.md` (**disciplina automatica obbligatoria**), `docs/wiki/rules/autocompact-thrashing-discipline.md`, `docs/wiki/concepts/context-overflow-prevention.md` |
+| AGENTS.md enorme / BMAD rigenerato / bootstrap troppo grande | `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md`, `bashscripts/ai/rules/bmad.md` |
 | LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | MCP minimum stack (context-mode, playwright, puppeteer, token-optimizer, laravel-boost) | `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/_templates/mcp-minimum-stack.json` |
-| Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md`, `docs/wiki/concepts/context-mode-usage.md`, `docs/wiki/how-to/mcp-minimum-stack.md` |
+| Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/rules/token-optimization-discipline.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
 | BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
@@ -70,15 +76,17 @@ updated: 2026-05-26
 | property_exists on Eloquent | `docs/wiki/rules/coding-standards.md`, `docs/wiki/memories/eloquent-hasattribute-not-property-exists.md` |
 | Compaction exhausted / Cursor recovery | `docs/wiki/memories/compaction-exhausted-recovery.md`, `.cursor/rules/cursor-context-discipline.mdc`, `laravel/.cursor/rules/laravel-boost.mdc` (stub — non usare monolite `.bak`) |
 | XotBase / no direct Filament extend | `docs/wiki/memories/xotbase-never-extend-filament.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
+| Tool selection hierarchy / context-safe usage | `docs/wiki/rules/context-safe-tool-usage.md` |
 
-## Enforcement
+## Enforcement (obbligatoria — include bootstrap)
 
-When a trigger matches, every agent MUST:
+Ogni agente DEVE:
 
-1. load only the resources listed in the matching row;
-2. run `git remote -v` and attach/create the GitHub issue via `docs/wiki/how-to/github-issue-agent-discipline.md`;
-3. avoid broad file reads/tool output until the listed context policy is loaded;
-4. update this map when a repeated failure needs automatic routing.
+1. **Eseguire il BOOTSTRAP** (prima riga tabella «BOOTSTRAP SESSIONE AGENTE») prima di modifiche sostanziali o di sequenze di tool che toccano la codebase — **nessuna eccezione** «solo quick fix», salvo reply puramente conversazionale senza accesso al tree.
+2. **Applicare il trigger dominante**: caricare unicamente i file della/e riga/e corrispondente/i; combinare bootstrap + riga specifica se serve.
+3. **`git remote -v`** + **`gh issue list …`** come da `docs/wiki/how-to/github-issue-agent-discipline.md`; commentare l’issue a fine task.
+4. **Evitare** letture/integration di contesto larghi prima di aver caricato le policy delle righe scelte (`Read` chunked, MCP `ctx_*` dove configurato).
+5. **Propagare qui** ogni fallimento ricorrente: nuova riga trigger o aggiornamento path.
 
 ## Usage
 

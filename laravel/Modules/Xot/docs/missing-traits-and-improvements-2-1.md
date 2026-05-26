@@ -71,7 +71,6 @@ class LimeJsonService
 
 // QuaerisService.php
 class QuaerisService
->>>>>>> 551c768c4 (.)
 {
     use SingletonTrait;
     
@@ -546,7 +545,6 @@ class LimeJsonService
 
 // QuaerisService.php
 class QuaerisService
->>>>>>> 551c768c4 (.)
 {
     use SingletonTrait;
     

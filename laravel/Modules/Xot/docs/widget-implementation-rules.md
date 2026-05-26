@@ -491,7 +491,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\Chart\Filament\Widgets;
->>>>>>> .merge_file_E8WnLK
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -549,7 +548,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\Chart\Filament\Widgets;
->>>>>>> .merge_file_E8WnLK
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -628,7 +626,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\Chart\Filament\Widgets;
->>>>>>> .merge_file_E8WnLK
 
 use Filament\Widgets\ChartWidget;
 use Modules\Xot\Filament\Widgets\XotBaseWidget;

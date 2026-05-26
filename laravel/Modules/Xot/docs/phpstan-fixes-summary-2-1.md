@@ -4,13 +4,8 @@
 
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
 ========
-=======
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
-=======
 **NON è stato modificato** `/var/www/html/_bases/<directory progetto>/laravel/phpstan.neon`
->>>>>>> laraxot/develop
->>>>>>> 551c768c4 (.)
->>>>>>>> 38b70c7ba (.):docs/phpstan-fixes-summary-conflict.md
 
 ## Risultati Ottenuti
 
@@ -25,25 +20,15 @@
 2. **User** - 0 errori (risolto 1 errore critico)
 ========
 ========
-=======
->>>>>>> 551c768c4 (.)
->>>>>>>> 38b70c7ba (.):docs/phpstan-fixes-summary-conflict.md
 3. **<nome modulo>** - 0 errori 
 4. **Geo** - 0 errori
 5. **Cms** - 0 errori
 6. **<main module>** - 0 errori
 ========
-=======
->>>>>>> 92bc33604 (.)
-=======
-=======
 3. **SaluteMo** - 0 errori 
 4. **Geo** - 0 errori
 5. **Cms** - 0 errori
 6. **<main module>** - 0 errori
->>>>>>> laraxot/develop
->>>>>>> 551c768c4 (.)
->>>>>>>> 38b70c7ba (.):docs/phpstan-fixes-summary-conflict.md
 
 ## Errori Rimanenti (7)
 
@@ -224,16 +209,9 @@ Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli
 ========
 ========
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
-=======
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
->>>>>>> 92bc33604 (.)
-=======
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, <nome modulo>, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
-=======
 Il progetto ha raggiunto un livello di type safety eccellente con il 99.1% degli errori PHPStan risolti. I moduli critici (Xot, User, SaluteMo, Geo, Cms, <main module>) sono completamente conformi al livello 9 di PHPStan.
->>>>>>> laraxot/develop
->>>>>>> 551c768c4 (.)
->>>>>>>> 38b70c7ba (.):docs/phpstan-fixes-summary-conflict.md
 
 ---
 

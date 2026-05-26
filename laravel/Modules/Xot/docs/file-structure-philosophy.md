@@ -169,7 +169,6 @@ Modules/
 │   └── app/
 └── healthcare_app/
 └── ExternalProject/
->>>>>>> .merge_file_Fnf1T4
     ├── database/
     │   ├── factories/
     │   ├── migrations/

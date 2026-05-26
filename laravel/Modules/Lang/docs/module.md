@@ -61,7 +61,6 @@ The Lang module provides comprehensive localization and translation management:
 - **Cms**: Multi-language content
 - **healthcare_app**: Survey translation
 - **ExternalProject**: Survey translation
->>>>>>> .merge_file_Z858ew
 - **Limesurvey**: Question translation
 - **Xot**: Base localization infrastructure
 - **Filament**: Translation management interface

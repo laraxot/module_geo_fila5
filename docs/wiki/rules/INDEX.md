@@ -3,16 +3,16 @@ title: "Rules Index"
 type: "index"
 tags: [rules, trigger-map, on-demand]
 module: "root"
-updated: 2026-05-19
+updated: 2026-05-26
 ---
 
 # Rules — Root Wiki
 
-> Route through the trigger map first; keep this file summary-only.
+> Passa prima dalla **Trigger Map**; questa pagina resta solo sommario.
 
 ## Routes
 
-- [00-TRIGGER_MAP](./00-TRIGGER_MAP.md) — canonical trigger -> resource routing
+- [00-TRIGGER_MAP](./00-TRIGGER_MAP.md) — routing canonico trigger → wiki; prima riga **BOOTSTRAP SESSIONE AGENTE** = pacchetto disciplina caricato sempre prima delle modifiche
 - [on-demand-pattern](./on-demand-pattern.md) — LLM Wiki, rules, skills, QMD loading
 - [validation-post-edit-rule](./validation-post-edit-rule.md) — mutex `file.ext.lock` affiancato + PHPStan / PHPMD (`laravel/tools`) / PHPInsights / E2E globale
 - [github-issue-agent-discipline](../how-to/github-issue-agent-discipline.md) — issue GitHub come audit trail + `gh`; complementare alla wiki

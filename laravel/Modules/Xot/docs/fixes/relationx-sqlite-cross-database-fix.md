@@ -100,7 +100,6 @@ Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome
 ## Causa Radice
 
 Il trait `RelationX` aggiungeva automaticamente il prefisso del database al nome della tabella pivot (`modulo_data.customer_user`) per le relazioni cross-database. Questo approccio funziona con MySQL ma non con SQLite, che non supporta la sintassi `database.table`.
->>>>>>> .merge_file_8r6DIJ
 
 ## Soluzione Implementata
 
@@ -140,7 +139,6 @@ if ($pivotDbName !== $dbName || $relatedDbName !== $dbName) {
 ### Moduli Affetti
 - **healthcare_app Module**: Customer-User relationships
 - **Modulo con database separato**: Customer-User relationships
->>>>>>> .merge_file_8r6DIJ
 - **User Module**: HasTenants trait functionality
 - **Tutti i moduli**: che usano `belongsToManyX` con database separati
 

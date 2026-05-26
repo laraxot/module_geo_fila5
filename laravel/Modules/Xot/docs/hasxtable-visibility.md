@@ -68,7 +68,6 @@ protected function getTableEmptyStateActions(): array
 3. **Moduli che implementano nested resources con HasXotTable**
    - Nota critica sulla visibilità dei metodi `getTable*()`
    - Aggiunta nota critica sulla visibilità dei metodi `getTable*()`
->>>>>>> 8116fe6a (docs: replace project-specific references with generic placeholders across documentation)
 
 ## Pattern Corretto
 

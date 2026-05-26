@@ -20,7 +20,6 @@
 11. **Notify** - Già a 0 errori
 12. **healthcare_app** - 2 errori corretti
 12. **ModuloEsempio** - 2 errori corretti
->>>>>>> .merge_file_cJoc42
 13. **UI** - 4 errori corretti
 14. **User** - 1 errore critico corretto (BaseUser)
 15. **Xot** - Già a 0 errori
@@ -47,7 +46,6 @@
 - `healthcare_app/app/Filament/Pages/AutoPage.php` - is_object() ridondante
 - `ModuloEsempio/app/Actions/Question/GetValue.php` - getExtra() return type
 - `ModuloEsempio/app/Filament/Pages/AutoPage.php` - is_object() ridondante
->>>>>>> .merge_file_cJoc42
 - `Geo/app/Models/Address.php` - is_string() ridondante in array_filter()
 - `Geo/app/Actions/UpdateClientCoordinatesBulkAction.php` - is_string() ridondante
 
@@ -69,7 +67,6 @@
 2. `UI/docs/phpstan-corrections-january-2026.md`
 3. `healthcare_app/docs/phpstan-corrections-january-2026.md`
 3. `ModuloEsempio/docs/phpstan-corrections-january-2026.md`
->>>>>>> .merge_file_cJoc42
 4. `Geo/docs/phpstan-corrections-january-2026.md`
 5. `Xot/docs/phpstan-january-2026-summary.md` (questo file)
 
@@ -173,5 +170,4 @@ if (null !== $value) {
 - [UI Corrections](../ui/docs/phpstan-corrections-january-2026.md)
 - [healthcare_app Corrections](../healthcare_app/docs/phpstan-corrections-january-2026.md)
 - [PHPStan Code Quality Guide](../phpstan-code-quality-guide.md)
->>>>>>> .merge_file_cJoc42
 - [Geo Corrections](../geo/docs/phpstan-corrections-january-2026.md)

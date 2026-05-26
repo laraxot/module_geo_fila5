@@ -13,4 +13,3 @@ PA users require clear, unambiguous interfaces that work well on varying hardwar
 
 ## 🗺️ Strategic Roadmap (1-2 Years)
 Development of a standalone UI Component Explorer (similar to Storybook) for the Laraxot ecosystem.
->>>>>>> origin/dev

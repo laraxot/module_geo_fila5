@@ -6,6 +6,7 @@ created: "2026-05-26"
 updated: "2026-05-26"
 confidence: high
 related:
+  - "./00-TRIGGER_MAP.md"
   - "./context-overflow-prevention.md"
   - "../how-to/autocompact-thrashing-recovery.md"
   - "../concepts/context-overflow-prevention.md"
@@ -18,7 +19,9 @@ related:
 
 ## Trigger Automatico
 
-Qualsiasi di questi segnali attiva **caricamento immediato obbligatorio** di questa regola + canonico:
+È parte del **routing automatico**: riga dedicata in [`00-TRIGGER_MAP`](./00-TRIGGER_MAP.md) + sempre il pacchetto **BOOTSTRAP SESSIONE AGENTE** quando si intervengono prima sul tree.
+
+Qualsiasi di questi segnali attiva **caricamento immediato obbligatorio** di questa regola + playbook canonico:
 
 - Messaggio runtime: `Autocompact is thrashing: the context refilled to the limit within 3 turns...`
 - `<runtime-telemetry>` che mostra token % in salita rapida dopo compact

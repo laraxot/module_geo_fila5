@@ -325,7 +325,6 @@ public function panel(Panel $panel): Panel
 // ❌ ERRATO - NON registrare asset chart in altri moduli
 // Modules/healthcare_app/app/Providers/Filament/AdminPanelProvider.php
 // Modules/ModuloEsempio/app/Providers/Filament/AdminPanelProvider.php
->>>>>>> .merge_file_ZGnA1X
 // Modules/UI/app/Providers/Filament/AdminPanelProvider.php
 // Themes/Zero/app/Providers/Filament/AdminPanelProvider.php
 

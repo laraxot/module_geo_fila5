@@ -28,7 +28,6 @@ namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources
 
 // ❌ SBAGLIATO
 namespace Modules\ExternalProject\App\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
->>>>>>> .merge_file_0Ph2Jq
 ```
 
 ### 3. **Uso di Schema invece di Form**
@@ -76,7 +75,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
->>>>>>> .merge_file_0Ph2Jq
 
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
@@ -101,7 +99,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\ExternalProject\Filament\Widgets;
->>>>>>> .merge_file_0Ph2Jq
 
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
@@ -174,7 +171,6 @@ namespace Modules\ExternalProject\App\Filament\Widgets;
 
 // ✅ CORRETTO
 namespace Modules\ExternalProject\Filament\Widgets;
->>>>>>> .merge_file_0Ph2Jq
 ```
 
 ## 🔧 Implementazione Corretta
@@ -187,14 +183,12 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
->>>>>>> .merge_file_0Ph2Jq
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 use Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
 use Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
->>>>>>> .merge_file_0Ph2Jq
 
 class ViewQuestionChart extends XotBaseViewRecord
 {
@@ -240,7 +234,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\ExternalProject\Filament\Widgets;
->>>>>>> .merge_file_0Ph2Jq
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;

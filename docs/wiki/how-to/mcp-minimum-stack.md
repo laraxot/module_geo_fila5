@@ -4,7 +4,7 @@ type: how-to
 tags: [mcp, cursor, context-mode, playwright, puppeteer, laravel-boost]
 module: ptvx-project
 created: 2026-05-20
-updated: 2026-05-21
+updated: 2026-05-26
 qmd: "mcp minimum stack context-mode playwright puppeteer token-optimizer laravel-boost"
 related:
   - "../concepts/context-overflow-prevention.md"
@@ -26,9 +26,9 @@ related:
 
 ## File canonici nel repo
 
-- Template: [`mcp-minimum-stack.json`](../_templates/mcp-minimum-stack.json)
-- Cursor progetto: `.cursor/mcp.json`
-- Root / CLI: `.mcp.json` (include anche **qmd** come sesto server opzionale wiki)
+- Template: [`mcp-minimum-stack.json`](../_templates/mcp-minimum-stack.json) — **`${PWD}`** (mai path assoluti nel repo; `CONTEXT_MODE_DIR` = `${PWD}/.claude/context-mode`)
+- **Cursor progetto:** `.cursor/mcp.json` nella root del workspace (copia/spiega dalla template; questo repo usa path assoluti per `CONTEXT_MODE_*`)
+- Root / CLI OpenCode ecc.: `.mcp.json` (qui include anche **qmd** come sesto server opzionale)
 
 Dopo modifica: riavviare MCP in Cursor (Developer: Reload Window o toggle MCP).
 

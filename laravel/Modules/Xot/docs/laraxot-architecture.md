@@ -152,14 +152,12 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
 namespace Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\Pages;
->>>>>>> .merge_file_P23loR
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 use Modules\healthcare_app\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
 use Modules\ExternalProject\Filament\Resources\SurveyPdfResource\Resources\QuestionCharts\QuestionChartResource;
->>>>>>> .merge_file_P23loR
 
 class ViewQuestionChart extends XotBaseViewRecord
 {
@@ -203,7 +201,6 @@ declare(strict_types=1);
 
 namespace Modules\healthcare_app\Filament\Widgets;
 namespace Modules\ExternalProject\Filament\Widgets;
->>>>>>> .merge_file_P23loR
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -267,7 +264,6 @@ namespace Modules\ExternalProject\Filament\Resources;
 
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Modules\ExternalProject\Models\QuestionChart;
->>>>>>> .merge_file_P23loR
 
 class QuestionChartResource extends XotBaseResource
 {

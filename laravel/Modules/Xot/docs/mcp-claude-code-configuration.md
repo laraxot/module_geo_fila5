@@ -4,7 +4,6 @@
 
 Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto healthcare_app Fila4 Mono.
 Claude Code utilizza comandi CLI per configurare i server MCP. Questa guida descrive come configurare i server MCP per il progetto.
->>>>>>> .merge_file_nWfXWo
 
 ## Prerequisiti
 
@@ -21,7 +20,6 @@ Permette l'accesso ai file del progetto.
 ```bash
 claude mcp add --transport http filesystem-healthcare_app http://localhost:8000/mcp/filesystem
 claude mcp add --transport http filesystem http://localhost:8000/mcp/filesystem
->>>>>>> .merge_file_nWfXWo
 ```
 
 **Nota**: Richiede un server MCP HTTP in esecuzione. Per sviluppo locale, utilizzare server STDIO invece.

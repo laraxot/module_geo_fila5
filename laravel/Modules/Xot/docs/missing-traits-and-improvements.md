@@ -697,7 +697,6 @@ class LimeJsonService
 class healthcare_appService
 // ModuloEsempioService.php
 class ModuloEsempioService
->>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 
@@ -1174,7 +1173,6 @@ class LimeJsonService
 class healthcare_appService
 // ModuloEsempioService.php
 class ModuloEsempioService
->>>>>>> .merge_file_mQU6r8
 {
     use SingletonTrait;
 

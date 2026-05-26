@@ -185,16 +185,9 @@ return [
 
 **Component Status**: 📋 Documented - Ready for Implementation  
 **Reusability**: 🔄 High - Cross-module compatible  
-<<<<<<< HEAD
 **Last Updated**: January 2025
-=======
 ||||||| parent of 9a84589 (.):docs/studio-card-selector-implementation-1.md
 **Component Status**: 📋 Documented - Ready for Implementation
 **Reusability**: 🔄 High - Cross-module compatible
 **Last Updated**: January 2025
-=======
 **Last Updated**: January 2025
-=======
->>>>>>> e2330ae (.):docs/studio-card-selector-implementation-1.md
->>>>>>> origin/dev
->>>>>>> 01dce8d29 (initial commit)

@@ -4,7 +4,6 @@
 
 Questo documento fornisce best practices per implementare Filament Nesting in progetti Laraxot, basandosi sulla documentazione ufficiale di Filament 5.x e sulla strategia di implementazione nel modulo healthcare_app.
 Questo documento fornisce best practices per implementare Filament Nesting in progetti Laraxot, basandosi sulla documentazione ufficiale di Filament 5.x e sulla strategia di implementazione nel modulo ExternalProject.
->>>>>>> .merge_file_KE7YG3
 
 ---
 
@@ -416,7 +415,6 @@ protected static bool $shouldRegisterNavigation = false; // ✅
 - **XotBaseResource**: `/Modules/Xot/docs/filament/resources.md`
 - **healthcare_app Nesting Strategy**: `/Modules/healthcare_app/docs/filament-nesting-strategy.md`
 - **ExternalProject Nesting Strategy**: `/Modules/ExternalProject/docs/filament-nesting-strategy.md`
->>>>>>> .merge_file_KE7YG3
 
 ---
 

@@ -273,7 +273,6 @@ if (isset($record->email)) {
 - Media/Filament/Resources (3 file)
 - healthcare_app/Filament (2 file)
 - ExternalProject/Filament (2 file)
->>>>>>> .merge_file_hPNDok
 
 **Impact**: Alto (UI user-facing)
 **Risk**: Medio (bugs visibili)
@@ -403,7 +402,6 @@ if (method_exists($record, 'getUrl')) {
 | Media | 3 | High | Bassa |
 | healthcare_app | 2 | Medium | Bassa |
 | ExternalProject | 2 | Medium | Bassa |
->>>>>>> .merge_file_hPNDok
 | Others | 52 (docs) | Low | Zero |
 
 ### Estimated Effort

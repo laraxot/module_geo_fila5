@@ -44,7 +44,6 @@ function mockXotData(): void
 
 ========
         
->>>>>>>> bb980a213 (.):docs/consolidated/testing_best_practices_uppercase.md
     $mockXotData->shouldReceive('make')
         ->andReturn($mockXotData);
 

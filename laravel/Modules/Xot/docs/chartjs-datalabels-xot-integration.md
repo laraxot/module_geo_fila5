@@ -923,7 +923,6 @@ For a minimal, production-ready example showing 2 labels per bar using `RawJs::m
 
 **`Modules/healthcare_app/Filament/Widgets/SimpleChartWidget.php`**
 **`Modules/ExternalProject/Filament/Widgets/SimpleChartWidget.php`**
->>>>>>> .merge_file_v1Gvow
 
 Key pattern:
 ```php

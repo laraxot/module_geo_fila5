@@ -1,20 +1,38 @@
 ---
 title: "Context-Mode Optimal Setup"
 type: "how-to"
-tags: [context-mode, setup, performance, bun, tokens]
+tags: [context-mode, setup, performance, bun, tokens, cursor-mcp]
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-26
 ---
 
 # Context-Mode Optimal Setup — Complete Guide
 
-> **Status:** ✅ Installed & Configured v1.0.121 + Bun v1.3.13  
-> **Date:** 2026-05-12  
-> **Problem Fixed:** 419K tokens → on-demand atomic loading
+> **Aggiornamento 2026-05-26:** stack MCP in **`.cursor/mcp.json`** con **`${PWD}`** (mai path fissi tipo `/var/www/_bases/base_*` nel repo — la stessa cartella serve più progetti). `CONTEXT_MODE_DIR` = `${PWD}/.claude/context-mode` (Cursor espande `${PWD}` al path assoluto del workspace; `~` **non** espanso). Riavvio MCP dopo modifiche.
+
+> Storico: v1.0.121 era il baseline documentato nel 2026-05.
 
 ---
 
-## 📋 What Was Fixed
+## Cursor — attivazione MCP (portabile tra progetti)
+
+1. File: **`.cursor/mcp.json`** (root repo) definisce il server **`context-mode`** con:
+   - `CONTEXT_MODE_DIR` → `${PWD}/.claude/context-mode`
+   - `CONTEXT_MODE_PROJECT_DIR` → `${PWD}`
+   - `CONTEXT_MODE_EXTERNAL_MCP_NUDGE_EVERY` → `10` (default README; suggerisce `ctx_execute` su payload MCP grandi ogni N chiamate)
+   - **Vietato** committare path assoluti: `${PWD}` è la root del workspace aperta in Cursor.
+2. **`npm install -g context-mode@latest`** sull’host (CI / altro dev deve ripetere).
+3. Cursor: **Developer → Reload Window** (o toggle server MCP) così viene letta la nuova config e la nuova versione globale `context-mode`.
+
+Template generico copiabile: [`docs/wiki/_templates/mcp-minimum-stack.json`](../_templates/mcp-minimum-stack.json).
+
+### Verifica (IDE / agent)
+
+- Tool MCP `ctx_doctor` → tutti `[OK]`; dopo reload la **Version** deve combaciare con `npm list -g context-mode`.
+
+---
+
+## 📋 Cos’era stato sistemato (2026-05-12 baseline)
 
 | Before | After |
 |--------|-------|
@@ -28,7 +46,7 @@ updated: 2026-05-12
 ## ✅ Installation Checklist
 
 - [x] **Bun runtime** — `npm install -g bun` → v1.3.13
-- [x] **context-mode** — upgraded to v1.0.121
+- [ ] **context-mode** — mantenere `npm install -g context-mode@latest` (baseline doc: v1.0.151+)
 - [x] **SQLite/FTS5** — verified working
 - [x] **Hooks configured** — sessionstart, pretooluse, postcompact
 - [x] **Knowledge base purged** — fresh start from 2026-05-12
@@ -59,20 +77,34 @@ updated: 2026-05-12
 
 ## 🚀 Quick Start
 
-### 1. Copy Configuration
+### 1. File già presenti nel repo
+
+| File | Ruolo |
+|------|--------|
+| `.cursor/mcp.json` | Server `context-mode` + stack minimo (playwright, puppeteer, token-optimizer, laravel-boost, qmd) |
+| `.cursor/hooks.json` | Hook Cursor (`preToolUse`, `postToolUse`, `sessionStart`, `stop`, `afterAgentResponse`) |
+| `.cursor/rules/context-mode.mdc` | Routing in contesto (obbligatorio su Cursor) |
+| `.env.local` | Variabili `CONTEXT_MODE_*` (gitignored) |
+| `.cursor/settings.json` | `"context-mode@context-mode": true` nel plugin |
+
+### 2. Installazione host (una tantum)
+
 ```bash
-cp .env.context-mode.example .env.local
-# Personalizza se necessario
+bun add -g context-mode@latest   # preferito; oppure npm install -g context-mode@latest
+export PATH="$HOME/.nvm/versions/node/v25.6.0/bin:$PATH"
+cd "$(npm root -g)/context-mode" && npm rebuild better-sqlite3   # se doctor segnala FTS5 FAIL
+context-mode upgrade --platform cursor   # dalla root repo
 ```
 
-### 2. Verify Installation
-```bash
-# Check Bun
-bun --version  # v1.3.13+
+### 3. Verifica
 
-# Check context-mode
-node "${CLAUDE_PLUGIN_ROOT}/hooks/sessionstart.mjs"  # Should show v1.0.121+
+```bash
+bun --version
+context-mode --version
+# In chat agente: chiedere «ctx doctor» oppure usare tool MCP ctx_doctor
 ```
+
+**Dopo upgrade:** riavviare Cursor (Reload Window) per allineare plugin MCP alla v1.0.151.
 
 ### 3. Load Rules On-Demand
 ```bash

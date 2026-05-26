@@ -4,12 +4,10 @@ module: Xot
 type: concept
 confidence: high
 created: 2026-05-21
-<<<<<<< HEAD
 updated: 2026-05-21
 tags: [redundancy, dry, filament, laraxot, documentation]
 related:
   - ../../../../Modules/docs/redundancy-report.md
-=======
 updated: 2026-05-22
 issues:
   - "https://github.com/laraxot/base_fixcity_fila5/issues/89"
@@ -17,7 +15,6 @@ issues:
 tags: [redundancy, dry, filament, laraxot, documentation]
 related:
   - ../../../../docs/redundancy-report.md
->>>>>>> 93fecd1d (.)
   - ../../duplicate-methods.md
   - ../../duplicate-files-cleanup.md
   - ../../filament/redundancy-rules.md
@@ -32,9 +29,7 @@ Il modulo **Xot** è dove vivono classi base e pattern Filament riusati ovunque.
 
 ## Inventario tecnico trasversale (codice PHP / Filament)
 
-<<<<<<< HEAD
 - **Somma esecutiva e priorità**: [`Modules/docs/redundancy-report.md`](../../../../Modules/docs/redundancy-report.md) (`laravel/Modules/docs/`).
-=======
 - **Somma esecutiva e priorità**: [`Modules/docs/redundancy-report.md`](../../../../docs/redundancy-report.md) (`laravel/Modules/docs/`).
 - **Scan byte-identical (2026-05-23)**: [`../redundancy/byte-identical-files-static-scan.md`](../redundancy/byte-identical-files-static-scan.md).
 
@@ -60,7 +55,6 @@ Il modulo **Xot** è dove vivono classi base e pattern Filament riusati ovunque.
 ## Tracker GitHub (esecuzione)
 
 Epic [#90](https://github.com/laraxot/base_fixcity_fila5/issues/90) · P0 [#100](https://github.com/laraxot/base_fixcity_fila5/issues/100) User · P1 [#101](https://github.com/laraxot/base_fixcity_fila5/issues/101) · Docs [#102](https://github.com/laraxot/base_fixcity_fila5/issues/102)–[#104](https://github.com/laraxot/base_fixcity_fila5/issues/104) · Refactor [#105](https://github.com/laraxot/base_fixcity_fila5/issues/105) [#106](https://github.com/laraxot/base_fixcity_fila5/issues/106) · Cluster [#95](https://github.com/laraxot/base_fixcity_fila5/issues/95)–[#99](https://github.com/laraxot/base_fixcity_fila5/issues/99).
->>>>>>> 93fecd1d (.)
 
 ## Ridondanza *nel design* delle classi Xot (trait / provider)
 
@@ -75,11 +69,8 @@ Varie pagine affrontano lo stesso confronto storico/evolutivo da angolazioni div
 1. **Decisione architettonica unica**: [`filament-haswizard-vs-xotbasewizard.md`](filament-haswizard-vs-xotbasewizard.md)
 2. **Analisi trait**: [`filament-haswizard-traits-analysis.md`](filament-haswizard-traits-analysis.md)
 3. **Studio approfondito**: [`filament-haswizard-study.md`](filament-haswizard-study.md)
-<<<<<<< HEAD
 4. Varianti filosofiche/widget: [`xotbasewizard-widget-vs-filament-haswizard.md`](xotbasewizard-widget-vs-filament-haswizard.md), [`filament-wizard-architecture-right-way.md`](filament-wizard-architecture-right-way.md), [`xotbase-wizard-architecture.md`](xotbase-wizard-architecture.md).
-=======
 4. Varianti filosofiche/widget: [`xotbasewizardwidget-vs-filament-haswizard.md`](xotbasewizardwidget-vs-filament-haswizard.md), [`filament-wizard-architecture-right-way.md`](filament-wizard-architecture-right-way.md), [`xotbase-wizard-architecture.md`](xotbase-wizard-architecture.md).
->>>>>>> 93fecd1d (.)
 
 Prima di aprire un nuovo file su questo tema estendere **uno** degli esistenti e aggiungere link incrociato.
 
@@ -93,9 +84,6 @@ Prima di aprire un nuovo file su questo tema estendere **uno** degli esistenti e
 
 Suddivisione intentionalmente granular dei documenti **`segnalazione-*`**; per orientarsi:
 
-<<<<<<< HEAD
 - [`wizard-parity-documentation-map.md`](../../../../Themes/Sixteen/docs/wiki/concepts/wizard-parity-documentation-map.md)
-=======
 - [`wizard-parity-documentation-map.md`](../../../../../Themes/Sixteen/docs/wiki/concepts/wizard-parity-documentation-map.md)
->>>>>>> 93fecd1d (.)
 
