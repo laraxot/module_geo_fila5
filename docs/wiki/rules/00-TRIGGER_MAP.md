@@ -40,6 +40,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
 | Issue GitHub moduli/temi (`git remote -v` in `Modules/*` / `Themes/*`) | `docs/wiki/how-to/module-theme-github-issues.md`, `docs/chat/module-theme-github-issues-manifest.md` |
+| PR Dependabot moduli/temi (merge autonomo, remote `laraxot`) | `docs/wiki/how-to/module-theme-dependabot-pr-autonomy.md`, `bashscripts/ci/dependabot-merge-module-prs.sh`, `docs/wiki/how-to/dependabot-discipline.md` |
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |

@@ -184,14 +184,3 @@ bashscripts/
 laravel/
 config/Config
 config/config
-.devcontainer/
-.planning/
-laravel/
-.ralph/
-.a*
-.c*
-.i*
-.j*
-.w*
-.z*
-*.tmp

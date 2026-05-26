@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 24:15:00 UTC] [PROCESS] PR Dependabot autonome moduli/temi: §22 `llm-wiki.txt`, how-to [`module-theme-dependabot-pr-autonomy.md`](how-to/module-theme-dependabot-pr-autonomy.md), script `bashscripts/ci/dependabot-merge-module-prs.sh` — sweep ~52 merge OK, ~39 fail (workflow scope / conflitti); Lang vite #10 mergiata su laraxot.
+
 [2026-05-26 23:45:00 UTC] [PROCESS] Issue GitHub moduli/temi: batch 32 meta + 34 discussione ridondanza (`git remote -v`); commenti Job/Lang/Xot; how-to [`module-theme-github-issues.md`](how-to/module-theme-github-issues.md), manifest chat, §21 `llm-wiki.txt`.
 
 [2026-05-26 23:00:00 UTC] [UPDATE] Second brain checkpoint sessione Job/Lang: handoff [`docs/chat/handoff-job-lang-merge-phpstan-confidence.md`](../chat/handoff-job-lang-merge-phpstan-confidence.md), memoria [`module-github-remote-discipline.md`](memories/module-github-remote-discipline.md), inventario PHPStan aggiornato; Job `wiki/memories/session-confidence-checkpoint.md`.

@@ -38,7 +38,12 @@ gh pr list --repo provtv/base_ptv_fila5_mono --author "app/dependabot" --state o
 
 # 4) PR su singolo modulo (esempio DbForge)
 gh pr list --repo laraxot/module_dbforge_fila5 --author "app/dependabot" --state open
+
+# 5) Merge autonomo agente (sweep tutti i moduli/temi con remote laraxot)
+bashscripts/ci/dependabot-merge-module-prs.sh
 ```
+
+Vedi [`module-theme-dependabot-pr-autonomy.md`](module-theme-dependabot-pr-autonomy.md) — l’agente **non** delega all’utente le PR su `laraxot/module_*`.
 
 ## Workflow alert → fix
 
