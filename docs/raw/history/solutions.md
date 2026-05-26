@@ -44,7 +44,6 @@ class ProcessJobAction {
         dispatch(new ProcessLowPriorityJob($job))
             ->onQueue('low')
             ->delay(now()->addMinutes(5));
->>>>>>> c088001a (first)
     }
 }
 ```
@@ -253,7 +252,6 @@ class QueueMonitor {
                 Log::warning("Queue size threshold exceeded", [
                     'queue' => $queue,
                     'size' => $size
->>>>>>> c088001a (first)
                 ]);
             }
         });
@@ -283,7 +281,6 @@ class JobHealthCheck extends Check {
         }
         
         return Result::ok();
->>>>>>> c088001a (first)
     }
 }
 ```
@@ -305,7 +302,6 @@ class ProcessJobTest extends TestCase {
         app(ProcessJobAction::class)->execute($job);
         
         Queue::assertPushedOn('high', ProcessHighPriorityJob::class);
->>>>>>> c088001a (first)
     }
 }
 ```
@@ -325,7 +321,6 @@ class RetryTest extends TestCase {
             'id' => $job->id,
             'attempts' => 1
         ]);
->>>>>>> c088001a (first)
     }
 }
 ```
@@ -349,4 +344,3 @@ class RetryTest extends TestCase {
    - Ottimizzazione indici
    - Review configurazioni
    - Aggiornamento strategie retry 
->>>>>>> c088001a (first)

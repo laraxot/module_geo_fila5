@@ -305,3 +305,18 @@ grep -r "\.navigation" Modules/*/lang/**/*.php
 **Philosophy**: Consistency, <nome progetto>ability, Simplicity
 **Goal**: Create a harmonious, maintainable, and scalable application architecture
 
+---
+
+## 2026-05 Deep Redundancy Audit
+
+**Related living document**: `../../../docs/wiki/audits/code-redundancy-deep-dive-2026-05.md`
+
+This philosophy document defines the *ideal*. The 2026-05 audit examines the gap between the ideal and the actual codebase — not only technical duplication, but the deeper doubts, political tensions, religious rituals of uniformity, and zen questions about whether our current harmony is alive or merely well-rehearsed.
+
+Every module and theme is required to engage with that audit locally (see propagation rule in the audit page).
+
+**Core tension captured in the audit**:
+> Uniformity as liberation vs. uniformity as violence against domain specificity.
+
+Xot, as the central government, carries both the beauty and the burden of this tension.
+

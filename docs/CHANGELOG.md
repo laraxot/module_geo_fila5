@@ -1,4 +1,3 @@
->>>>>>> bbec4378 (first)
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.
@@ -26,4 +25,3 @@ All notable changes to `:package_name` will be documented in this file.
 ---
 
 *Ultimo aggiornamento: 10/2023*
->>>>>>> 59bc4fe7 (first)

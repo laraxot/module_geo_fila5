@@ -4,7 +4,7 @@ type: rule
 tags: [trigger-map, on-demand, routing, bootstrap, mandatory-discipline]
 created: 2026-05-12
 updated: 2026-05-26
-qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automatic load"
+qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automatic load git merge markers"
 ---
 
 # 00-TRIGGER_MAP
@@ -36,6 +36,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Agent coordination | `docs/wiki/agents/INDEX.md` |
 | QMD search | `docs/wiki/how-to/qmd-search-guide.md` |
 | GitHub issue ↔ wiki (audit trail agent) | `docs/wiki/how-to/github-issue-agent-discipline.md` |
+| Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
@@ -63,6 +64,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Namespace modulo / `\app\` nel namespace | `docs/wiki/rules/laraxot-module-namespace.md` |
 | User Filament translations / LangServiceProvider | `laravel/Modules/User/docs/wiki/rules/INDEX.md`, `laravel/Modules/User/docs/wiki/skills/filament-translation-audit.md` |
 | Lang translation keys / translation ownership | `laravel/Modules/Lang/docs/wiki/rules/translation-key-governance.md`, `laravel/Modules/Lang/docs/wiki/skills/translation-key-audit.md` |
+| Stile risposta agenti (sintetico + conciso + italiano obbligatorio) | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md` |
 | Activity XotBaseResource zen pattern | `laravel/Modules/Activity/docs/wiki/rules/INDEX.md`, `laravel/Modules/Activity/docs/wiki/concepts/xotbase-resource-zen-pattern.md` |
 | Rating Filament resource zen pattern | `laravel/Modules/Rating/docs/wiki/rules/INDEX.md`, `laravel/Modules/Rating/docs/wiki/concepts/filament-resource-zen-pattern.md` |
 | Git atomic / forward-only commits | `docs/wiki/rules/git-atomic-operations.md` |
@@ -78,6 +80,8 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Compaction exhausted / Cursor recovery | `docs/wiki/memories/compaction-exhausted-recovery.md`, `.cursor/rules/cursor-context-discipline.mdc`, `laravel/.cursor/rules/laravel-boost.mdc` (stub — non usare monolite `.bak`) |
 | XotBase / no direct Filament extend | `docs/wiki/memories/xotbase-never-extend-filament.md`, `docs/wiki/rules/xotbase-critical-rules.md` |
 | Tool selection hierarchy / context-safe usage | `docs/wiki/rules/context-safe-tool-usage.md` |
+
+| Autocompact thrashing | docs/wiki/solutions/context_overflow_prevention.md, docs/wiki/rules/autocompact-thrashing-discipline.md |
 
 ## Enforcement (obbligatoria — include bootstrap)
 

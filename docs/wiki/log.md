@@ -7,9 +7,13 @@ module: "ptvx-project"
 
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
-[2026-05-26 18:00:00 UTC] [UPDATE] Trigger Map: riga canonica **BOOTSTRAP SESSIONE AGENTE**, «Contratto automatico», Enforcement rinforzato; stub `AGENTS.md`/`CLAUDE.md`; INDEX rules; disciplina autocompact agganciata al routing.
-
 ## Log Entries
+
+[2026-05-26 00:40:00 UTC] [UPDATE] Regola stile agenti: risposte sempre in italiano, sintetiche e concise; aggiornata trigger map, memoria e stub agenti.
+
+[2026-05-26 21:30:00 UTC] [PROCESS] **Git merge debris / collisioni**: sweep `docs/raw/history/*.md`, ripristino `docs/.php_cs.dist.php`, `docs/phpstan.neon.dist`, `docs/phpunit.xml.dist`; consolidamento `Modules/Xot/docs/filament/infinite-loop-getstepbyname-fix*.md`; how-to [`git-merge-marker-sweep`](how-to/git-merge-marker-sweep.md); Trigger Map + second brain operating model aggiornati.
+
+[2026-05-26 18:00:00 UTC] [UPDATE] Trigger Map: riga canonica **BOOTSTRAP SESSIONE AGENTE**, «Contratto automatico», Enforcement rinforzato; stub `AGENTS.md`/`CLAUDE.md`; INDEX rules; disciplina autocompact agganciata al routing.
 
 [2026-05-26 00:20:00 UTC] [UPDATE] MCP portability: rimossi path assoluti workspace da `.cursor/mcp.json` e `.mcp.json`; aggiunto trigger map per config MCP non portabile e regola `${workspaceFolder}` in context-mode setup.
 

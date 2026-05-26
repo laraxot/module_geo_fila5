@@ -8,7 +8,7 @@ updated: 2026-05-21
 tags: [redundancy, dry, filament, laraxot, documentation]
 related:
   - ../../../../Modules/docs/redundancy-report.md
-updated: 2026-05-22
+updated: 2026-05-26
 issues:
   - "https://github.com/laraxot/base_fixcity_fila5/issues/89"
   - "https://github.com/laraxot/base_fixcity_fila5/issues/90"
@@ -26,6 +26,8 @@ sources: []
 ## Scopo
 
 Il modulo **Xot** è dove vivono classi base e pattern Filament riusati ovunque. Questa pagina è **solo un indice**: evita duplicare tabelle e inventari mantenuti altrove.
+
+**Audit PTVX 2026-05-26:** [code-redundancy-philosophy.md](code-redundancy-philosophy.md) (scopo, zen, politica, dubbi) · [redundancy-audit-2026-05-26.md](../redundancy-audit-2026-05-26.md) (P0/P1/P2).
 
 ## Inventario tecnico trasversale (codice PHP / Filament)
 
@@ -50,7 +52,11 @@ Il modulo **Xot** è dove vivono classi base e pattern Filament riusati ovunque.
 | Rating | [`duplicate-ratings-table-migrations.md`](../../../../Rating/docs/wiki/redundancy/duplicate-ratings-table-migrations.md) | Table + migration |
 | Fixcity | [`duplicated-comments-relation-manager.md`](../../../../Fixcity/docs/wiki/redundancy/duplicated-comments-relation-manager.md) | Comments RM ×2 |
 | Sixteen | [`duplicated-blade-blocks.md`](../../../../../Themes/Sixteen/docs/wiki/redundancy/duplicated-blade-blocks.md) | Blade blocks |
-| Themes hub | [`scaffold-llm-wiki-duplication.md`](../../../../../Themes/docs/wiki/redundancy/scaffold-llm-wiki-duplication.md) | ON-DEMAND ×17 moduli |
+| Notify | [`code-redundancy-notify.md`](../../../../Notify/docs/wiki/concepts/code-redundancy-notify.md) | `.php.up`, template doppi |
+| User | [`code-redundancy-user.md`](../../../../User/docs/wiki/concepts/code-redundancy-user.md) | LoginWidget, Passport |
+| UI | [`code-redundancy-ui.md`](../../../../UI/docs/wiki/concepts/code-redundancy-ui.md) | TableLayoutTrait |
+| Theme One | [`code-redundancy-theme.md`](../../../../../Themes/One/docs/wiki/concepts/code-redundancy-theme.md) | Blade login |
+| Theme Zero | [`code-redundancy-theme.md`](../../../../../Themes/Zero/docs/wiki/concepts/code-redundancy-theme.md) | Blade login |
 
 ## Tracker GitHub (esecuzione)
 

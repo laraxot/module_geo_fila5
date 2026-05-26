@@ -148,12 +148,7 @@ protected function loadTranslations($path) {
             yield $this->parseLine($line);
         }
         fclose($handle);
->>>>>>> bbec4378 (first)
     });
-}
-```
-
-        );
 }
 ```
 
@@ -164,7 +159,6 @@ File: `app/Services/ImageProcessingService.php`
 - Resize sincrono delle immagini
 - Memoria insufficiente per immagini grandi
 - Operazioni I/O bloccanti
->>>>>>> c986cc10 (first)
 
 **Soluzioni:**
 ```php
@@ -288,7 +282,6 @@ protected function handleConversion($media) {
 }
 ```
 
->>>>>>> c986cc10 (first)
 ## Monitoring Recommendations
 
 ### 1. Performance Metrics
@@ -311,7 +304,6 @@ Implementare:
 - Error tracking
 - Performance profiling
 - Queue monitoring
->>>>>>> c088001a (first)
 
 ## Immediate Actions
 
@@ -323,7 +315,6 @@ Implementare:
            ->remember("status_{$id}", 
                now()->addMinutes(5),
                fn() => $this->fetchStatus($id)
->>>>>>> c088001a (first)
            );
    }
    ```
@@ -335,7 +326,6 @@ Implementare:
        return $this->queues
            ->each(fn($queue) => 
                $this->balanceQueue($queue)
->>>>>>> c088001a (first)
            );
    }
    ```
@@ -352,4 +342,3 @@ Implementare:
          );
    }
    ```
->>>>>>> c986cc10 (first)

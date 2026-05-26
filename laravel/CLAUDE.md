@@ -1,3 +1,4 @@
+- Risposte: italiano, sintetico, conciso.
 # Laravel — Claude (on-demand stub)
 
 > Same contract as `laravel/AGENTS.md`. No embedded rules — wiki + QMD on-demand.

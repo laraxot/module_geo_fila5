@@ -1,3 +1,8 @@
+# ptvx-local-php84-handler: Apache has a global php8.3-fpm conf, but this app requires PHP >= 8.4.
+<FilesMatch ".+\.ph(?:ar|p|tml)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

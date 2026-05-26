@@ -20,4 +20,3 @@ Tracker gathers a lot of information from your requests to identify and store:
 https://github.com/antonioribeiro/tracker
 
 ---
->>>>>>> e83070fd (.)

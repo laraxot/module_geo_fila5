@@ -9,6 +9,10 @@ module: "One"
 
 ## Log Entries
 
+## [2026-05-26] ops | ptvx.local ripristinato (PHP 8.4 handler)
+
+- Root cause e fix documentati in modulo Xot: [ptvx-local-php84-apache-handler.md](../../../Modules/Xot/docs/wiki/troubleshooting/ptvx-local-php84-apache-handler.md).
+
 ### Format
 
 ```text

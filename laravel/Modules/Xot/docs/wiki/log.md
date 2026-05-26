@@ -9,6 +9,19 @@ module: "Xot"
 
 ## Log Entries
 
+## [2026-05-26] audit | ridondanza codice e documentazione (PTVX)
+
+- **Filosofia:** [concepts/code-redundancy-philosophy.md](concepts/code-redundancy-philosophy.md) — scopo, religione, politica, zen, dubbi aperti.
+- **Audit:** [redundancy-audit-2026-05-26.md](redundancy-audit-2026-05-26.md) — P0/P1/P2; schede Notify, User, UI, Themes One/Zero.
+- **Catalogo:** aggiornato [concepts/redundancy-catalog.md](concepts/redundancy-catalog.md).
+
+## [2026-05-26] fix | ptvx.local HTTP 500 — platform_check PHP 8.4
+
+- **Sintomo:** `http://ptvx.local/` → 500, Composer `platform_check` con PHP 8.3.30 vs richiesta `>= 8.4`.
+- **Causa:** Apache globale su php8.3-fpm; `public_html/.htaccess` aveva `FilesMatch` invalido (`\ >` invece di `$>`), override mod_php 8.4 non attivo.
+- **Fix:** corretto `.htaccess`; `laravel/composer.json` `php` allineato a `^8.4`; template vhost `laravel/config/vhost/ptvx.local.conf`.
+- **Wiki:** [ptvx-local-php84-apache-handler.md](troubleshooting/ptvx-local-php84-apache-handler.md) · Issue [#147](https://github.com/provtv/base_ptv_fila5_mono/issues/147)
+
 ## [2026-05-24] refactor | wizard — normalizzazione stato **rimossa dalla base**
 
 - **Motivo progetto**: il submit deve usare **`$this->form->getState()`** così come lo espone Filament/schema, senza helper PHP che appiattiscono wrapper (`wizard`) nel widget base.

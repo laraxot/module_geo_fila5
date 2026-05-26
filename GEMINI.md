@@ -9,6 +9,7 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - **Markdown Standard**: All `.md` files must follow the [Markdown & Second Brain Standard](docs/wiki/rules/markdown-documentation-standard.md). Strictly lowercase-kebab-case filenames, mandatory YAML front matter, and atomic notes.
 
 ## Read First
+- Risposte: italiano, sintetico, conciso.
 - [Trigger Map](docs/wiki/rules/00-TRIGGER_MAP.md)
 - [GitHub issue discipline](docs/wiki/how-to/github-issue-agent-discipline.md)
 - [Standard Markdown (obbligatorio per `.md`)](docs/wiki/rules/markdown-documentation-standard.md)

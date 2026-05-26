@@ -7,7 +7,6 @@ Il modulo Job gestisce le code e i processi asincroni dell'applicazione. L'anali
 **Problema**: Gestione inefficiente delle code di lavoro
 - Impatto: Latenza nell'elaborazione dei job
 - Causa: Mancanza di prioritizzazione e code sovraccariche
->>>>>>> c088001a (first)
 
 **Soluzione Proposta**:
 ```php
@@ -55,7 +54,6 @@ final class QueueManagerService
             'low' => 300, // 5 minuti
             default => 60 // 1 minuto
         };
->>>>>>> c088001a (first)
     }
 }
 ```
@@ -64,7 +62,6 @@ final class QueueManagerService
 **Problema**: Monitoraggio insufficiente dei job
 - Impatto: Difficoltà nel debugging e ottimizzazione
 - Causa: Mancanza di metriche e logging dettagliato
->>>>>>> c088001a (first)
 
 **Soluzione Proposta**:
 ```php
@@ -121,7 +118,6 @@ final class JobMonitoringService
 **Problema**: Gestione inefficiente dello storage media
 - Impatto: Spazio disco non ottimizzato
 - Causa: Mancanza di politiche di gestione storage
->>>>>>> c986cc10 (first)
 
 **Soluzione Proposta**:
 ```php
@@ -175,7 +171,6 @@ final class MediaStorageService
         
         return $size > 1024 * 1024 && // > 1MB
                str_starts_with($type, 'image/');
->>>>>>> c986cc10 (first)
     }
 }
 ```
@@ -202,7 +197,6 @@ private function setupPerformanceMonitoring(): void
                 ->warning('Alto utilizzo memoria Redis', [
                     'memory' => $stats['used_memory'],
                     'peak' => $stats['used_memory_peak']
->>>>>>> c088001a (first)
                 ]);
         }
     });
@@ -220,7 +214,6 @@ private function setupPerformanceMonitoring(): void
                 ->warning('Job lento rilevato', [
                     'job' => get_class($job),
                     'duration' => $duration
->>>>>>> c088001a (first)
                 ]);
         }
     });
@@ -242,7 +235,6 @@ private function setupPerformanceMonitoring(): void
 ### Fase 3 (Lungo Termine)
 - Implementare scaling automatico
 - Ottimizzare distribuzione job
->>>>>>> c088001a (first)
 - Migliorare resilienza
 
 ## Note Tecniche Aggiuntive
@@ -273,7 +265,6 @@ return [
         'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs'
->>>>>>> c088001a (first)
     ]
 ];
 ```
@@ -310,7 +301,6 @@ final class ImageOptimizer
                 dispatch(new OptimizeImagesJob($chunk))
                     ->onQueue('media-optimization')
             );
->>>>>>> c986cc10 (first)
     }
 }
 ```
@@ -367,7 +357,6 @@ abstract class BaseJob
                 $property->setValue(null);
             }
         }
->>>>>>> c088001a (first)
     }
 }
 ``` 

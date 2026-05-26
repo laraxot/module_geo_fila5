@@ -6,7 +6,6 @@ The User module provides specialized functionality within the Laravel applicatio
 ## Directory Structure
 ```
 Modules/User/
->>>>>>> 55edff60 (.)
 ├── app/
 │   ├── Models/
 │   ├── Http/
@@ -20,7 +19,6 @@ Modules/User/
 ## Key Components
 
 ### Models
->>>>>>> 55edff60 (.)
 - Must extend BaseModel from the module's namespace
 - Follow Laravel Model Array Properties Rules
 - PHPStan Level 7 compliance required
@@ -65,4 +63,3 @@ Modules/User/
 - Integration tests with dependent modules
 - Security testing
 - Performance testing
->>>>>>> 55edff60 (.)

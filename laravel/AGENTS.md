@@ -1,3 +1,4 @@
+- Risposte: italiano, sintetico, conciso.
 # Laravel — AI Agents (on-demand stub)
 
 > **Do not embed rules here.** Full guidelines were moved to backup — they caused API errors (`131072` token limit, ~796k requested).

@@ -10,7 +10,6 @@ Questo documento traccia gli errori PHPStan di livello 7 identificati nel modulo
 Metodo toggleLayout() ha il parametro $livewire senza type hint specificato.
 Cannot call method dispatch() on class-string|object.
 Cannot call method resetTable() on class-string|object.
->>>>>>> a8f30311 (first)
 # Correzioni PHPStan Livello 7 - Modulo User
 
 Questo documento traccia gli errori PHPStan di livello 7 identificati nel modulo User e le relative soluzioni implementate.
@@ -35,7 +34,6 @@ Questo documento traccia gli errori PHPStan di livello 7 identificati nel modulo
 
 ```
 Line 141: Parameter #2 $length of function Safe\fread expects int<1, max>, int given.
->>>>>>> c986cc10 (first)
 ```
 
 ## Soluzioni Implementate
@@ -67,13 +65,11 @@ if ($livewire) {
     
     if (method_exists($livewire, 'resetTable')) {
         $livewire->resetTable();
->>>>>>> a8f30311 (first)
     }
 }
 ```
 
 Questo approccio è più robusto e previene errori a runtime quando l'oggetto `$livewire` non ha i metodi o le proprietà previste.
->>>>>>> a8f30311 (first)
 ### 1. Correzione in Profile.php
 
 Il problema è che i tag PHPDoc facevano riferimento a una classe `Builder` nel namespace `Modules\User\Models` che non esiste. Abbiamo corretto i riferimenti utilizzando il namespace completo per la classe Builder:
@@ -92,4 +88,3 @@ Il problema è che i tag PHPDoc facevano riferimento a una classe `Builder` nel 
 ```
 
 Questo controllo garantisce che `fread()` venga chiamato solo con un valore positivo per il parametro `$length`, evitando anche potenziali loop infiniti nel caso in cui `$bytesToRead` fosse zero o negativo. 
->>>>>>> c986cc10 (first)

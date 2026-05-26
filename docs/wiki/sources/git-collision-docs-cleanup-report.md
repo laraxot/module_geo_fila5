@@ -6,6 +6,7 @@ tags: [git, merge-conflicts, docs, modules, themes, second-brain]
 created: "2026-05-26"
 updated: "2026-05-26"
 related:
+  - "../how-to/git-merge-marker-sweep.md"
   - "../how-to/module-docs-deduplication.md"
   - "../concepts/second-brain-continuous-improvement.md"
   - "../rules/00-TRIGGER_MAP.md"
@@ -33,6 +34,13 @@ issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/140"
 - `Modules/UI`: 10
 - `Modules/User`: 1
 - `Modules/Xot`: 67
+
+## Root `docs/` — template corrotti (maggio 2026)
+
+- Ripuliti `.php_cs.dist.php` (delega a `.php-cs-fixer.dist.php`), `phpstan.neon.dist`, `phpunit.xml.dist` (marcatori e duplicati YAML/XML).
+- Sweep `docs/raw/history/*.md` e `laravel/Modules/User/docs/volt-folio-logout-error.md` (righe `<<<<<<<` / `>>>>>>>`, separatori `=======`).
+- Consolidati `laravel/Modules/Xot/docs/filament/infinite-loop-getstepbyname-fix*.md`; alias maiuscolo redirect.
+- Procedura ripetibile: [`git-merge-marker-sweep.md`](../how-to/git-merge-marker-sweep.md).
 
 ## Follow-Up
 

@@ -1,4 +1,3 @@
->>>>>>> 55edff60 (.)
 # Icone dei Moduli Laravel
 
 ## Struttura e Convenzioni
@@ -215,4 +214,3 @@ Esempio SVG corretto:
 - Verificare la visibilità con diversi spessori di stroke
 - Assicurarsi che le animazioni non interferiscano con il layout
 - Mantenere le dimensioni dei file SVG ottimizzate
->>>>>>> 15ea09e2 (first)

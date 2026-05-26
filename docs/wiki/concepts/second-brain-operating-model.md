@@ -3,10 +3,11 @@ title: "Second Brain Operating Model"
 module: "ptvx-project"
 type: concept
 created: "2026-04-28T00:00:00Z"
-updated: "2026-05-21T12:00:00Z"
+updated: "2026-05-26T12:00:00Z"
 qmd: "second brain, Karpathy wiki, LLM wiki, docs/wiki, raw docs, QMD search strategy, token efficiency"
 related:
   - "../ProjectHome.md"
+  - "../how-to/git-merge-marker-sweep.md"
   - "module-structure.md"
   - "actions-over-services.md"
   - "second-brain-continuous-improvement.md"
@@ -77,6 +78,10 @@ The current project model keeps the Karpathy LLM Wiki as the core persistence la
 For this repository, that means `docs/wiki/` is not a passive archive. It is a maintained working surface that should make the next engineering task faster.
 
 Letteratura esterna, tutorial Obsidian/Karpathy e link curati (orientamento, non policy): [`../sources/second-brain-external-benchmarks.md`](../sources/second-brain-external-benchmarks.md).
+
+## Igiene marcatori Git (breve)
+
+Righe residue `<<<<<<<` / `=======` / `>>>>>>>` rendono markdown e Neon/XML **non affidabili** per agenti e tool. Prima di ingest massivo o refactor: [`git-merge-marker-sweep.md`](../how-to/git-merge-marker-sweep.md) + report [`../sources/git-collision-docs-cleanup-report.md`](../sources/git-collision-docs-cleanup-report.md).
 
 ## QMD Search Strategy (2026 Optimization)
 

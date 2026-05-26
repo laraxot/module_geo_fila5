@@ -5,7 +5,6 @@ Questo documento traccia gli errori PHPStan di livello 10 identificati nel modul
 ## Stato Attuale
 
 Abbiamo completato la maggior parte delle correzioni necessarie per portare il modulo Notify a livello 10 di PHPStan. Rimangono solo alcuni errori in pochi file che possono essere facilmente risolti seguendo i pattern già stabiliti.
->>>>>>> d79d9e57 (first)
 
 ## Errori Principali e Soluzioni
 
@@ -43,7 +42,6 @@ Abbiamo completato la maggior parte delle correzioni necessarie per portare il m
 - Implementare gestione degli errori con try/catch o controlli condizionali
 - Utilizzare tipi di ritorno e parametri espliciti nelle firme dei metodi
 - Utilizzare Reflection API per interagire con oggetti di tipo sconosciuto
->>>>>>> d79d9e57 (first)
 
 ### 3. Parametri di tipo incompatibile
 
@@ -99,7 +97,6 @@ Rimangono alcuni errori da risolvere nei seguenti file:
    Call to an undefined method object::setLocalVars()
    ```
    **Soluzione**: Utilizzare l'API Reflection per chiamare i metodi in modo sicuro, o utilizzare `call_user_func` con controlli espliciti.
->>>>>>> d79d9e57 (first)
 
 ## Principi Applicati nelle Correzioni
 
@@ -109,7 +106,6 @@ Rimangono alcuni errori da risolvere nei seguenti file:
 4. **Gestione degli errori**: Implementare try/catch o controlli condizionali per gestire potenziali errori.
 5. **Asserzioni**: Utilizzare `Assert::string()`, `Assert::isArray()`, ecc. per garantire che i valori siano del tipo corretto.
 6. **Reflection API**: Utilizzare Reflection per interagire con oggetti di tipo sconosciuto quando necessario.
->>>>>>> d79d9e57 (first)
 
 ## Esempi di Correzioni
 
@@ -117,7 +113,6 @@ Rimangono alcuni errori da risolvere nei seguenti file:
 
 ```php
 // Prima
->>>>>>> d79d9e57 (first)
 $url = Str::of($url)->replace(url(''), '')->toString();
 
 // Dopo
@@ -142,7 +137,6 @@ if (!is_object($item) || !property_exists($item, 'profile') ||
 $fullName = $item->profile->full_name;
 ```
 
->>>>>>> d79d9e57 (first)
 ### Esempio 3: Correzione di parametri di tipo incompatibile
 
 ```php
@@ -153,7 +147,6 @@ $fullName = $item->profile->full_name;
 ->options(function (): array {
     return NotifyThemeResource::fieldOptions('lang');
 })
->>>>>>> d79d9e57 (first)
 ```
 
 ## Risultati
@@ -278,7 +271,6 @@ private function evaluateFunction(string $functionString): mixed
 1. Applicare principi simili agli altri file identificati nel modulo.
 2. Eseguire l'analisi PHPStan a livello 10 per verificare che le correzioni risolvano effettivamente gli errori.
 3. Documentare gli schemi e i pattern utilizzati per risolvere problemi simili in futuro. 
->>>>>>> c088001a (first)
 # Correzioni PHPStan Livello 10 - Modulo User
 
 Questo documento traccia gli errori PHPStan di livello 10 identificati nel modulo User e le relative soluzioni implementate.
@@ -599,4 +591,3 @@ Il modello `Media.php` contiene diverse proprietà documentate con tipo `mixed`:
 2. Aggiornare il modello `Media.php` per specificare tipi più precisi per le proprietà attualmente documentate come `mixed`.
 3. Eseguire l'analisi PHPStan a livello 10 per verificare che le correzioni risolvano effettivamente gli errori.
 4. Documentare pattern e soluzioni standard per gestire risorse di file e altri tipi speciali nel progetto. 
->>>>>>> c986cc10 (first)

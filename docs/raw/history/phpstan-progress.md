@@ -40,4 +40,3 @@ Total Errors Found: 82 (Updated at 12:07)
 
 ### Note:
 This analysis was performed at PHPStan Level 1. Higher levels may reveal additional issues that need to be addressed.
->>>>>>> 961ad402 (first)

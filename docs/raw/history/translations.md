@@ -1,4 +1,3 @@
->>>>>>> 55edff60 (.)
 # Traduzioni
 
 ## Sintassi Array
@@ -326,7 +325,6 @@ TextInput::make('cognome')
 Action::make('save')
 Action::make('delete')
 ``` 
->>>>>>> 59bc4fe7 (first)
 ```php
 'messages' => [
     'success' => [
@@ -434,4 +432,3 @@ I permessi principali includono:
 - Eliminazione utenti
 - Impersonificazione utenti
 - Gestione ruoli
->>>>>>> 55edff60 (.)
