@@ -3,7 +3,7 @@ title: "Second Brain Local Discipline"
 type: "concept"
 tags: [second-brain, llm-wiki, on-demand, local-docs]
 created: 2026-05-19
-updated: 2026-05-22
+updated: 2026-05-26
 ---
 
 # Second Brain Local Discipline
@@ -21,6 +21,7 @@ Negli altri moduli il file **`second-brain-local-discipline.md`** in **`docs/wik
 - Source docs are evidence; they are not assumed immutable or technically read-only.
 - Use QMD with `--limit` before opening raw docs or broad file trees.
 - Add reusable local decisions to this wiki and append the nearest `log.md`.
+- Prima di ingest o massicci update, verificare marcatori merge sui file sorgente; procedura root: [`../../../../../../docs/wiki/how-to/git-merge-marker-sweep.md`](../../../../../../docs/wiki/how-to/git-merge-marker-sweep.md).
 
 ## What To Store Here
 
