@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-26 23:45:00 UTC] [PROCESS] Issue GitHub moduli/temi: batch 32 meta + 34 discussione ridondanza (`git remote -v`); commenti Job/Lang/Xot; how-to [`module-theme-github-issues.md`](how-to/module-theme-github-issues.md), manifest chat, §21 `llm-wiki.txt`.
+
 [2026-05-26 23:00:00 UTC] [UPDATE] Second brain checkpoint sessione Job/Lang: handoff [`docs/chat/handoff-job-lang-merge-phpstan-confidence.md`](../chat/handoff-job-lang-merge-phpstan-confidence.md), memoria [`module-github-remote-discipline.md`](memories/module-github-remote-discipline.md), inventario PHPStan aggiornato; Job `wiki/memories/session-confidence-checkpoint.md`.
 
 [2026-05-26 22:15:00 UTC] [UPDATE] Git collision PHP Job/Lang: 14 file risolti con strategia HEAD/current; `git grep` su `*.php` pulito; issue [#143](https://github.com/provtv/base_ptv_fila5_mono/issues/143).

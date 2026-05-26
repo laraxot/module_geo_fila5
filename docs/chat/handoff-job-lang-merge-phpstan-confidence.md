@@ -55,8 +55,9 @@ cd ../.. && git remote -v         # mono: provtv/base_ptv_fila5_mono
 
 ## Issue e tracciamento
 
-- **Mono:** cercare con `gh issue list` su remote da `git remote -v` in root — argomenti: merge collision, PHPStan moduli (#136 meta inventario).
-- **Modulo:** stesso comando dentro `laravel/Modules/<Nome>/` — **non** hardcodare URL `github.com/<org>/` nei `.md` del modulo.
+- **Mono:** `git remote -v` in root → `gh issue list` (merge collision, PHPStan #136).
+- **Moduli/temi:** `git remote -v` in `laravel/Modules/<Nome>` o `Themes/<Nome>` — meta + ridondanza batch 2026-05-26: [`module-theme-github-issues-manifest.md`](module-theme-github-issues-manifest.md), how-to [`../wiki/how-to/module-theme-github-issues.md`](../wiki/how-to/module-theme-github-issues.md).
+- **Doc modulo:** solo `#numero` issue, no URL org fissi.
 
 ## Regole sessione
 

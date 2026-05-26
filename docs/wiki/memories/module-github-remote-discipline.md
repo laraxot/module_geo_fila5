@@ -31,6 +31,10 @@ git remote -v
 
 Fork e mirror (`origin` vs `laraxot`) cambiano; la doc modulo deve restare portabile.
 
+## Operatività `gh`
+
+How-to: [`../how-to/module-theme-github-issues.md`](../how-to/module-theme-github-issues.md). Manifest batch: [`../../chat/module-theme-github-issues-manifest.md`](../../chat/module-theme-github-issues-manifest.md).
+
 ## Origine
 
 Correzione su `laravel/Modules/Job/docs/wiki/log.md` (2026-05-26).

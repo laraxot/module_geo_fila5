@@ -492,6 +492,7 @@ return [
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
         ],
     ],
     'messages' => [
