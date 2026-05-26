@@ -23,7 +23,6 @@ Implementation owner:
 Related theme document:
 
 `laravel/Themes/Sixteen/docs/wiki/concepts/coordinate-picker-fullscreen-wizard-contract.md`
-<<<<<<< HEAD
 
 ## Story 8-74 refinement
 
@@ -48,5 +47,3 @@ Story references:
 
 - `_bmad-output/implementation-artifacts/8-74-segnalazione-crea-map-fullscreen-refinement.md`
 - `.planning/stories/8-74-segnalazione-crea-map-fullscreen-refinement.story.md`
-=======
->>>>>>> c3b9b5924 (.)
