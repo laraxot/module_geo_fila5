@@ -25,6 +25,27 @@ This applies to **this agent and all future AI agents**.
 ## Why It Matters
 - Security vulnerabilities (e.g. Vite path traversal, as seen in module_dbforge_fila5)
 - Outdated packages leading to maintenance debt
+## Multi-Agent Coordination (Mandatory when multiple agents work on the same ecosystem)
+
+When the same broad task (Dependabot remediation, PHPStan fixes, etc.) is assigned to multiple AI agents:
+
+1. **Per-module/theme repo discipline**: 
+   - `cd` into the module/theme folder
+   - `git remote -v` → use the published repo (e.g. `laraxot/module_dbforge_fila5`)
+   - All coordination and audit trail for work on that specific module **must** happen in **that repo's GitHub issues** (not only in the monorepo).
+
+2. **Lock via issue**:
+   - Before starting heavy work on a module/theme (e.g. PHPStan analyse or batch Dependabot fixes), search for an existing coordination issue with title pattern `[AGENT-COORD] <Task> - <Module/Theme>`.
+   - If none exists, create it (this acts as a distributed lock).
+   - One agent claims the issue at a time.
+   - Always cross-link to the main standing-order issue in the monorepo (e.g. #154).
+
+3. **PHPStan rule**: PHPStan must always be launched from the monorepo `laravel/` root:
+   `./vendor/bin/phpstan analyse Modules/<NomeModulo>`
+
+4. **Documentation**: Record in the module/theme's own `docs/wiki/` the coordination issue number and outcome.
+
+This prevents duplicate work and ensures clean audit trails across the distributed ecosystem of 30+ module/theme repositories.
 - Compliance and reputation for published packages
 
 ## How to Execute
