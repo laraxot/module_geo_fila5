@@ -9,6 +9,12 @@ module: "root"
 
 > CLI command reference. Load on-demand.
 
+## BMAD slash (on-demand)
+
+| Resource | Purpose |
+|----------|---------|
+| [bmad-slash-commands](./bmad-slash-commands.md) | Indice `/workflow-init`, `/dev-story`, … → `.claude/commands/bmad/` |
+
 ## Available Commands
 
 | Command | Purpose |

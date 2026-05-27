@@ -77,7 +77,16 @@ BMAD artifacts are not the same thing as the wiki:
 
 When BMAD produces durable conclusions, they should be distilled into the wiki rather than left only in `_bmad-output/`.
 
+## Claude Code (progetto, on-demand)
+
+- **Stub skill** (leggeri): `.claude/skills/bmad/*/SKILL.md` → router [bmad-on-demand-routing](../skills/bmad-on-demand-routing.md)
+- **Corpo completo** (solo se serve): `bmad-skills/bmad-v6/skills/...`
+- **Slash** (solo su invocazione): `.claude/commands/bmad/` → [bmad-slash-commands](../commands/bmad-slash-commands.md)
+- Reinstall: `bashscripts/tools/install-bmad-v6-project.sh`
+- Dettaglio: [bmad-method-integration](../../project/bmad-method-integration.md)
+
 ## References
 
 - [Second Brain Operating Model](second-brain-operating-model.md)
+- [BMAD method integration (progetto)](../../project/bmad-method-integration.md)
 - `../sources/root-bmad-docs.md`

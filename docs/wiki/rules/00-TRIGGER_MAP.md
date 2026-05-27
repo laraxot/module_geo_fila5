@@ -60,7 +60,12 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | MCP config contiene path assoluti workspace / `.cursor/mcp.json` non portabile | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/rules/00-TRIGGER_MAP.md` |
 | Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/rules/token-optimization-discipline.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
-| BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
+| BMAD workflow (generico) | `docs/wiki/concepts/bmad-operating-model.md`, `docs/wiki/skills/bmad-on-demand-routing.md` |
+| BMAD slash `/workflow-init` `/workflow-status` | `docs/wiki/commands/bmad-slash-commands.md`, `.claude/commands/bmad/workflow-init.md` o `workflow-status.md` |
+| BMAD slash planning (`/prd` `/tech-spec` `/product-brief`) | `docs/wiki/skills/bmad-on-demand-routing.md` (pm/analyst), `docs/wiki/commands/bmad-slash-commands.md` |
+| BMAD slash solutioning (`/architecture` `/solutioning-gate-check`) | `docs/wiki/skills/bmad-on-demand-routing.md` (architect), `docs/wiki/commands/bmad-slash-commands.md` |
+| BMAD slash implementation (`/dev-story` `/sprint-planning` `/create-story`) | `docs/wiki/skills/bmad-on-demand-routing.md` (developer/scrum-master), `_bmad-output/project-context.md` |
+| BMAD ufficiale `_bmad` / `bmad-help` / `bmad-dev-story` | `bashscripts/ai/rules/bmad.md`, `_bmad/_config/bmad-help.csv`, `docs/project/bmad-method-integration.md` |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
 | Accessor/mutator | `docs/wiki/concepts/accessor-auto-persistence.md` |
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |
