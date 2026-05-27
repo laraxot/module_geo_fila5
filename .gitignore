@@ -75,6 +75,8 @@ desktop.ini
 .agent.*/
 .agents/
 .agents.*/
+.${PWD}/
+.${PWD}
 .amq/
 .amazonq/
 .antigravity/
