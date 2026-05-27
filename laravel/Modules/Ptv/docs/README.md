@@ -1,35 +1,57 @@
-# Modulo Ptv
+---
+title: documentazione modulo ptv
+module: Ptv
+type: index
+status: approved
+tags: [documentation, readme, modulo, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
+---
 
-## Overview
+# Documentazione — modulo Ptv
 
-Il modulo **Ptv** fa parte dell'ecosistema Laraxot PTVX.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
 ## Scopo
 
-Gestisce le funzionalità specifiche del dominio Ptv.
+Modulo PTV principale per portale HR e gestione integrata risorse umane nel contesto Laraxot.
 
-## Struttura
+## Dove iniziare
 
-```
+- [Wiki locale](./wiki/index.md)
+- [Audit ridondanza (wiki)](./wiki/redundancy-audit.md)
+- [Audit ridondanza](./code-redundancy-audit.md)
+- [Regole architettura](./architecture-rules.md)
+- [Disciplina agenti](./agent-edit-discipline.md)
+
+
+## Struttura tipica
+
+```text
 Ptv/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
+├── README.md          ← vetrina (root package)
 ├── docs/
-├── lang/
-└── resources/
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
-## Dipendenze
+## Namespace / confini
 
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/)
+- Namespace: `Modules\Ptv`
+- Non duplicare qui la filosofia marketing: resta nel README root.
 
 ## Collegamenti
 
-- [Documentazione Root](../../../docs/PTV_MODULE.md)
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../Xot/docs/)
+- [Wiki progetto](../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## Backlinks
+## Per agenti
 
-- [Moduli correlati](../README.md)
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.

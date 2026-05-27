@@ -43,7 +43,7 @@ All module-specific roadmaps remain in their module directories but are listed i
 |----------|------|--------|
 | `product-roadmap.md` | `/laravel/Modules/User/docs/` | ✅ REFERENCED |
 | `roadmap-1-1.md` | `/laravel/Modules/User/docs/` | ✅ REFERENCED |
-| `2025-q4-roadmap.md` | `/laravel/Modules/User/docs/roadmap/` | ✅ REFERENCED |
+| `q4-roadmap.md` | `/laravel/Modules/User/docs/roadmap/` | ✅ REFERENCED |
 
 **Archive**: `/docs/archive/roadmaps/module-roadmaps/User/`
 
@@ -89,7 +89,7 @@ docs/archive/roadmaps/
 │   └── User/
 │       ├── product-roadmap.md
 │       ├── roadmap-1-1.md
-│       ├── 2025-q4-roadmap.md
+│       ├── q4-roadmap.md
 │       └── ... (legacy/ subdirectory)
 └── phase-planning/
     ├── PHASES.md - Index of GSD phases

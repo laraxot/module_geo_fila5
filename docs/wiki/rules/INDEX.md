@@ -15,6 +15,7 @@ updated: 2026-05-26
 - [response-style-sintetico-conciso-italiano](../memories/response-style-sintetico-conciso-italiano.md) — **regola permanente**: tutti gli agenti devono rispondere sempre in italiano, sintetico e conciso (massima priorità)
 - [00-TRIGGER_MAP](./00-TRIGGER_MAP.md) — routing canonico trigger → wiki; prima riga **BOOTSTRAP SESSIONE AGENTE** = pacchetto disciplina caricato sempre prima delle modifiche
 - [on-demand-pattern](./on-demand-pattern.md) — LLM Wiki, rules, skills, QMD loading
+- [theme-module-docs-readme-mandatory](./theme-module-docs-readme-mandatory.md) — `docs/README.md` obbligatorio in ogni `Modules/*/docs` e `Themes/*/docs`
 - [validation-post-edit-rule](./validation-post-edit-rule.md) — mutex `file.ext.lock` affiancato + PHPStan / PHPMD (`laravel/tools`) / PHPInsights / E2E globale
 - [github-issue-agent-discipline](../how-to/github-issue-agent-discipline.md) — issue GitHub come audit trail + `gh`; complementare alla wiki
 - [autocompact-thrashing-discipline](./autocompact-thrashing-discipline.md) — **disciplina obbligatoria automatica** (trigger map + runtime-telemetry). Caricamento automatico su segnale thrashing.

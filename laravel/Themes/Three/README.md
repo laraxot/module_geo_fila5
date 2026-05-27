@@ -21,6 +21,7 @@ Questo tema non e solo codice: e una vetrina operativa. Mostra dove intervenire,
 
 ## Documentazione essenziale
 
+- **[Indice docs (entrypoint)](./docs/README.md)** — obbligatorio per navigazione e agenti
 - [Audit ridondanza](./docs/code-redundancy-audit.md)
 - [Protocollo confidenza](./docs/agent-confidence-protocol.md)
 - [Disciplina agenti](./docs/agent-edit-discipline.md)

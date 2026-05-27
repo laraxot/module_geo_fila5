@@ -294,3 +294,9 @@ composer test -- Modules/Activity
 ---
 
 Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)
+
+
+## Documentazione tecnica
+
+- [Indice docs](./docs/README.md) — mappa knowledge base locale (wiki, audit, regole)
+

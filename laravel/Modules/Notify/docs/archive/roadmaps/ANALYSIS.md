@@ -123,7 +123,6 @@ Identified:
 ├── product-roadmap.md
 ├── roadmap-1-1.md
 ├── roadmap/
-│   ├── 2025-q4-roadmap.md
 │   ├── q4-roadmap.md
 │   ├── q4-roadmap-1.md (variant!)
 │   ├── roadmap.md

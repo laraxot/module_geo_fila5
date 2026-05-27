@@ -23,7 +23,8 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Trigger | Load |
 |---|---|
 | **BOOTSTRAP SESSIONE AGENTE** _(obbligatorio prima di ogni task su file / toolchain / MCP / wiki)_ | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md`, `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
-| New module/theme | `docs/wiki/concepts/module-structure.md` |
+| New module/theme | `docs/wiki/concepts/module-structure.md`, `docs/wiki/rules/theme-module-docs-readme-mandatory.md` |
+| Modulo/tema senza `docs/README.md` / manutenzione cartella `docs/` in `Modules/*` o `Themes/*` | `docs/wiki/rules/theme-module-docs-readme-mandatory.md`, `docs/wiki/rules/markdown-documentation-standard.md` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
 | Nuovo o edit `.md` wiki / standard YAML + atomicità | `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/markdown-note-minimum-standard.md`, `docs/wiki/concepts/second-brain-operating-model.md` |

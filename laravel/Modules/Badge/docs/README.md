@@ -1,44 +1,56 @@
-# Modulo Badge
+---
+title: documentazione modulo badge
+module: Badge
+type: index
+status: approved
+tags: [documentation, readme, modulo, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
+---
 
-## Overview
+# Documentazione — modulo Badge
 
-Il modulo **Badge** fa parte dell'ecosistema Laraxot PTVX.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
 ## Scopo
 
-Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
+Employee badge and ID card management module for the Laraxot ecosystem: physical badges, access credentials, and card issuance.
 
-## Struttura
+## Dove iniziare
 
-```
+- [Wiki locale](./wiki/index.md)
+- [Audit ridondanza](./code-redundancy-audit.md)
+- [Regole architettura](./architecture-rules.md)
+- [Disciplina agenti](./agent-edit-discipline.md)
+
+
+## Struttura tipica
+
+```text
 Badge/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
+├── README.md          ← vetrina (root package)
 ├── docs/
-├── lang/
-└── resources/
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
-## Dipendenze
+## Namespace / confini
 
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/) (se usa autenticazione)
-- [Tenant Module](../Tenant/docs/) (se multi-tenant)
+- Namespace: `Modules\Badge`
+- Non duplicare qui la filosofia marketing: resta nel README root.
 
 ## Collegamenti
 
-- [Documentazione Root](../../../docs/BADGE_MODULE.md)
-- [Regole Architecture](../Xot/docs/architecture/)
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../Xot/docs/)
+- [Wiki progetto](../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## Backlinks
+## Per agenti
 
-- [Indice Moduli](../README.md)
-
-## TODO
-
-- [ ] Completare descrizione funzionalità
-- [ ] Documentare modelli principali
-- [ ] Documentare risorse Filament
-- [ ] Aggiungere esempi codice
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.

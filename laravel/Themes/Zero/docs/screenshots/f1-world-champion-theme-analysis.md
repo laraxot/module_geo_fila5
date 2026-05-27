@@ -16,7 +16,7 @@ laravel/Themes/Zero/docs/screenshots/
 ├── f1-detail-desktop-1920x1080.png
 ├── f1-detail-tablet-768x1024.png
 ├── f1-detail-mobile-375x812.png
-└── f1-world-champion-2026-analysis.md (riferimento)
+└── f1-world-champion-theme-analysis.md (riferimento)
 ```
 
 ---
@@ -115,9 +115,8 @@ small: text-sm (14px)
 
 ## 🔗 Riferimenti
 
-- [Predict Module Docs](../../Modules/Predict/docs/screenshots/f1-world-champion-2026-analysis.md)
-- [Theme Zero Docs](./README.md)
-- [Architecture](./architecture.md)
+- [Theme Zero Docs](../README.md)
+- [Architecture](../architecture.md)
 
 ---
 

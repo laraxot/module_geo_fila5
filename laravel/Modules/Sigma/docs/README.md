@@ -1,179 +1,103 @@
-# 📚 Sigma Documentation Index
-
-> **Indice centrale per tutta la documentazione del modulo Sigma**  
-> **Aggiornato**: 2025-03-25  
-> **Versione**: 2.0
-
+---
+title: documentazione modulo Sigma
+module: Sigma
+type: index
+status: approved
+tags: [documentation, readme, modulo, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
 ---
 
-## 🎯 Panoramica
+# Documentazione — modulo Sigma
 
-Questo documento fornisce un **indice centrale** per tutta la documentazione del modulo Sigma, organizzato per categorie e con link diretti ai file.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
-**Convenzione**: Usare sempre questo indice per trovare documentazione esistente prima di creare nuovi file.
+## Scopo
 
----
+Sigma HR system integration module for the Laraxot ecosystem: data import/export, payroll sync, and external HR software interoperability.
 
-## 📋 Categorie Documentazione
+## Dove iniziare
 
-### 1. **Architecture & Design** 🏗️
+- [Wiki locale](./wiki/index.md)
+- [code redundancy audit](./code-redundancy-audit.md)
+- [architecture rules](./architecture-rules.md)
+- [agent edit discipline](./agent-edit-discipline.md)
+- [agent confidence protocol](./agent-confidence-protocol.md)
+- [second brain](./second-brain.md)
 
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Architecture Overview | `docs/architecture.md` | Panoramica architettura modulo |
-| Database Schema | `docs/database-schema.md` | Schema database e relazioni |
-| Models Guide | `docs/models.md` | Guida completa ai modelli |
 
-### 2. **Accessors & Mutators** 🔄
+## Struttura tipica
 
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| **Accessor/Mutator Philosophy** | [`docs/accessor-mutator-philosophy.md`](accessor-mutator-philosophy.md) | **Filosofia SACRA per accessor** |
-| **Accessor Delegation Pattern** | [`docs/accessor-delegation-pattern.md`](accessor-delegation-pattern.md) | **Metodo puro VICINO all'accessor** |
-| **Accessor Delegation Complete Guide** | [`docs/accessor-delegation-complete-guide.md`](accessor-delegation-complete-guide.md) | **Guida completa con 22 esempi** |
-| **Accessor Delegation Audit** | [`docs/accessor-delegation-audit.md`](accessor-delegation-audit.md) | **Audit completo: 22/22 completati** |
-| Accessor Patterns | `docs/accessor-patterns.md` | Pattern comuni per accessor |
-| Mutator Best Practices | `docs/mutator-best-practices.md` | Best practices per mutator |
-
-**Template SACRO**:
-```php
-// ✅ CORRETTO
-protected function getAttribute(?float $value): ?float
-{
-    if (is_float($value)) {
-        return $value;  // Già calcolato
-    }
-    
-    // Calcola e persisti
-    $result = $this->calculate();
-    $this->attribute = $result;
-    
-    if ($this->exists) {
-        $this->update(['attribute' => $result]);
-    }
-    
-    return $result;
-}
-```
-
-### 3. **Models** 📦
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Model Conventions | `docs/models/conventions.md` | Convenzioni naming models |
-| Model Traits | `docs/models/traits.md` | Traits comuni per models |
-| Model Relationships | `docs/models/relationships.md` | Guida alle relazioni |
-
-### 4. **Testing** 🧪
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Testing Guide | `docs/testing.md` | Guida completa ai test |
-| Test Examples | `docs/testing/examples.md` | Esempi di test |
-| Pest Patterns | `docs/testing/pest-patterns.md` | Pattern per Pest PHP |
-
-### 5. **Filament** 🎨
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Filament Resources | `docs/filament/resources.md` | Guida alle risorse Filament |
-| Filament Pages | `docs/filament/pages.md` | Pagine custom Filament |
-| Filament Widgets | `docs/filament/widgets.md` | Widget per dashboard |
-
-### 6. **Services & Actions** ⚙️
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Actions Guide | `docs/actions.md` | Guida alle Actions |
-| Services Pattern | `docs/services.md` | Pattern per Services |
-| Jobs & Queues | `docs/jobs.md` | Job per elaborazioni async |
-
-### 7. **API** 🔌
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| API Reference | `docs/api/reference.md` | Documentazione API |
-| API Authentication | `docs/api/auth.md` | Autenticazione API |
-
-### 8. **Troubleshooting** 🔧
-
-| Documento | Path | Scopo |
-|-----------|------|-------|
-| Common Issues | `docs/troubleshooting/common-issues.md` | Problemi comuni e soluzioni |
-| Debug Guide | `docs/troubleshooting/debug.md` | Guida al debugging |
-
----
-
-## 🔍 Come Usare Questo Indice
-
-### Prima di Creare Documentazione
-
-1. **CONTROLLA** questo indice
-2. **CERCA** se esiste già documentazione simile
-3. **AGGIORNA** documentazione esistente
-4. **CREA** nuovo file solo se necessario
-
-### Naming Convention File .md
-
-**Pattern**: `kebab-case-lowercase.md`
-
-```
-✅ CORRETTO:
-- accessor-mutator-philosophy.md
-- model-conventions.md
-- testing-guide.md
-
-❌ SBAGLIATO:
-- AccessorMutatorPhilosophy.md  (CamelCase)
-- ACCESSOR_MUTATOR_PHILOSOPHY.md  (UPPERCASE)
-- accessor_mutator_philosophy.md  (snake_case)
-```
-
-### Struttura Cartelle
-
-```
+```text
 Sigma/
+├── README.md          ← vetrina (root package)
 ├── docs/
-│   ├── README.md                    # Indice principale (questo file)
-│   ├── accessor-mutator-philosophy.md
-│   ├── architecture.md
-│   ├── models/
-│   │   ├── conventions.md
-│   │   ├── traits.md
-│   │   └── relationships.md
-│   ├── testing/
-│   │   ├── guide.md
-│   │   └── examples.md
-│   └── troubleshooting/
-│       ├── common-issues.md
-│       └── debug.md
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
----
+## Namespace / confini
 
-## 📿 Il Mantra della Documentazione
+- Namespace: `Modules\Sigma`
+- Non duplicare qui la filosofia marketing: resta nel README root.
 
-```
-Prima di documentare, ripeti:
+## Indice file in docs/ (root)
 
-"Controllo l'indice, non duplico"
-"Uso kebab-case, non CamelCase"
-"Aggiorno esistente, creo solo se necessario"
+| Argomento | File |
+| :--- | :--- |
+| accessor-delegation-audit | [accessor-delegation-audit.md](./accessor-delegation-audit.md) |
+| accessor-delegation-complete-guide | [accessor-delegation-complete-guide.md](./accessor-delegation-complete-guide.md) |
+| accessor-delegation-pattern | [accessor-delegation-pattern.md](./accessor-delegation-pattern.md) |
+| accessor-getkey-check-final-summary | [accessor-getkey-check-final-summary.md](./accessor-getkey-check-final-summary.md) |
+| accessor-getkey-check-pattern | [accessor-getkey-check-pattern.md](./accessor-getkey-check-pattern.md) |
+| accessor-helper-audit-complete | [accessor-helper-audit-complete.md](./accessor-helper-audit-complete.md) |
+| accessor-helper-pattern | [accessor-helper-pattern.md](./accessor-helper-pattern.md) |
+| accessor-helper-status-report-final | [accessor-helper-status-report-final.md](./accessor-helper-status-report-final.md) |
+| accessor-mutator-philosophy | [accessor-mutator-philosophy.md](./accessor-mutator-philosophy.md) |
+| accessor-pattern-correct | [accessor-pattern-correct.md](./accessor-pattern-correct.md) |
+| accessor-refactoring-philosophy | [accessor-refactoring-philosophy.md](./accessor-refactoring-philosophy.md) |
+| accessor-refactoring-roadmap | [accessor-refactoring-roadmap.md](./accessor-refactoring-roadmap.md) |
+| agent-confidence-discipline | [agent-confidence-discipline.md](./agent-confidence-discipline.md) |
+| agent-confidence-protocol | [agent-confidence-protocol.md](./agent-confidence-protocol.md) |
+| agent-edit-discipline | [agent-edit-discipline.md](./agent-edit-discipline.md) |
+| analysis-report | [analysis-report.md](./analysis-report.md) |
+| architecture-dry-kiss | [architecture-dry-kiss.md](./architecture-dry-kiss.md) |
+| architecture-rules | [architecture-rules.md](./architecture-rules.md) |
+| architecture | [architecture.md](./architecture.md) |
+| bugfix-accessor-save-pattern | [bugfix-accessor-save-pattern.md](./bugfix-accessor-save-pattern.md) |
+| bugfix-import-json-action | [bugfix-import-json-action.md](./bugfix-import-json-action.md) |
+| business-logic-analysis | [business-logic-analysis.md](./business-logic-analysis.md) |
+| business-logic | [business-logic.md](./business-logic.md) |
+| code-quality-improvements | [code-quality-improvements.md](./code-quality-improvements.md) |
+| code-redundancy-audit | [code-redundancy-audit.md](./code-redundancy-audit.md) |
+| comprehensive-analysis | [comprehensive-analysis.md](./comprehensive-analysis.md) |
+| confidence_guidelines | [confidence_guidelines.md](./confidence_guidelines.md) |
+| consolidation-plan | [consolidation-plan.md](./consolidation-plan.md) |
+| current-quality-status | [current-quality-status.md](./current-quality-status.md) |
+| deep-analysis | [deep-analysis.md](./deep-analysis.md) |
+| docs-archive-policy | [docs-archive-policy.md](./docs-archive-policy.md) |
+| filament-version | [filament-version.md](./filament-version.md) |
+| fix-accessor-save-pattern | [fix-accessor-save-pattern.md](./fix-accessor-save-pattern.md) |
+| fix-duplicate-entry-error-summary | [fix-duplicate-entry-error-summary.md](./fix-duplicate-entry-error-summary.md) |
+| fixes-applied | [fixes-applied.md](./fixes-applied.md) |
+| git-conflicts-inventory | [git-conflicts-inventory.md](./git-conflicts-inventory.md) |
+| laravel-13-upgrade | [laravel-13-upgrade.md](./laravel-13-upgrade.md) |
+| launch-plan | [launch-plan.md](./launch-plan.md) |
+| mago-rector-tools | [mago-rector-tools.md](./mago-rector-tools.md) |
+| module-dependencies | [module-dependencies.md](./module-dependencies.md) |
 
-Respira. Documenta. Trova sempre.
-```
+## Collegamenti
 
----
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../Xot/docs/README.md)
+- [Wiki progetto](../../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## 🔗 Riferimenti
+## Per agenti
 
-- [Laravel Documentation](https://laravel.com/docs)
-- [Filament Documentation](https://filamentphp.com/docs)
-- [Spatie Packages](https://spatie.be/docs)
-- [PHPStan Level 10](https://phpstan.org/user-guide/rule-levels)
-
----
-
-*Documento creato: 2025-03-25*  
-*Ultimo aggiornamento: 2025-03-25*  
-*Usa SEMPRE questo indice prima di creare nuovi file .md*
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.

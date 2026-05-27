@@ -82,7 +82,6 @@ laravel/Modules/User/docs/
 ├── product-roadmap.md
 ├── roadmap-1-1.md
 ├── roadmap/
-│   ├── 2025-q4-roadmap.md
 │   ├── legacy-roadmap.md
 │   ├── q4-roadmap.md
 │   ├── q4-roadmap-1.md

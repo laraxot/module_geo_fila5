@@ -10,7 +10,6 @@ related:
   - concepts/code-redundancy-philosophy.md
   - concepts/redundancy-catalog.md
   - redundancy-report.md
-  - redundancy-audit.md
 ---
 
 # Audit ridondanza — 2026-05-26 (PTVX)
@@ -75,4 +74,4 @@ related:
 
 ## Storico audit
 
-- [2026-05-21](redundancy-audit.md) — scan precedente (Fixcity tracker)
+_Nessun audit precedente linkabile: rinominati i file per policy “no date nel filename”._

@@ -150,7 +150,7 @@ Moduli che richiedono questa configurazione:
    - `bashscripts/tools/prompts/phpstan.txt` - Regola `$casts` deprecato aggiornata
 
 2. **Documentazione moduli**:
-   - `laravel/Modules/Rating/docs/phpstan-fixes-2026-01.md` - Documentazione correzioni Rating
+   - `laravel/Modules/Rating/docs/phpstan-fixes.md` - Documentazione correzioni Rating
 
 ---
 
