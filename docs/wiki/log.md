@@ -278,3 +278,9 @@ module: "ptvx-project"
 [2026-05-21 16:00:00 UTC] [CREATE] LAMP MariaDB: `bashscripts/tools/lamp/` (install-mariadb, check-mariadb, php extensions, laravel-env example); `bashscripts/docs/mariadb-laravel.md`, `ubuntu/lamp.md`; `install-mariadb-system.sh` crea DB Laravel; `db/check_mariadb.sh`; wsl/setup banner MariaDB.
 
 **Total Operations:** 118
+
+## [2026-05-27] bmad | BMAD Method v6 project-level on-demand install
+- Installato BMAD Method v6.0.2 da `aj-geddes/claude-code-bmad-skills` commit `b5c6403847b32f0facc95943a1aa837c96de31af`.
+- Installazione locale progetto: `.claude/skills/bmad/`, `.claude/commands/bmad/`, `.claude/config/bmad/`.
+- Aggiunti routing wiki on-demand: `docs/wiki/rules/bmad-v6-on-demand.md`, `docs/wiki/commands/bmad-v6.md`, `docs/wiki/skills/INDEX.md`.
+- Aggiornati `docs/wiki/rules/00-TRIGGER_MAP.md`, `docs/wiki/rules/INDEX.md`, `docs/wiki/commands/INDEX.md`.

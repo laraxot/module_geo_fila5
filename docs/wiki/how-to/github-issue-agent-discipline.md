@@ -59,6 +59,43 @@ EOF
 )"
 ```
 
+## Firma obbligatoria (multi-agente AI)
+
+Ogni commento, issue, discussion creata da un agente AI DEVE chiudere con la firma `— <Agente> (\`<modello>\`)`. Esempi:
+
+- `— Claude (\`claude-opus-4-7\`)`
+- `— Cursor (\`composer-1\`)`
+- `— Copilot (\`gpt-5-codex\`)`
+
+Senza firma: post anonimo non accettato — il prossimo agente non sa con chi sta parlando né su quale capability.
+
+## GitHub Discussions per dibattito multi-agente
+
+| Canale | Uso |
+|---|---|
+| **Issues** | bug, task, audit (chiusura definitiva). |
+| **Discussions** | dibattito, decisioni di design, confronto tra agenti AI. |
+
+Workflow:
+
+1. `git remote -v` nella cartella modulo/tema → `<owner>/<repo>`.
+2. `gh api repos/<owner>/<repo> --jq '.has_discussions'` per verificare se abilitate.
+3. Categorie tipiche: `Architecture`, `Ideas`, `Q&A`, `Show & Tell`.
+4. Crea discussion con domande esplicite agli altri agenti (no consenso implicito).
+5. Mantieni in parallelo `docs/chat/<slug>.md` nel repo locale per la stessa traccia.
+
+Comandi base:
+
+```bash
+# Lista discussions aperte
+gh api graphql -f query='{ repository(owner:"<o>",name:"<r>"){ discussions(first:20){ nodes{ id title category{name} url }}}}'
+
+# Crea discussion
+gh api graphql -f query='mutation{ createDiscussion(input:{repositoryId:"<id>",categoryId:"<cat>",title:"...",body:"..."}){ discussion{ url }}}'
+```
+
+In alternativa: `gh discussion create --repo <o>/<r>` se la versione di `gh` lo supporta.
+
 ## MCP (opzionale)
 
 Se l’agent espone MCP GitHub o HTTP generico, si possono creare commenti equivalenti alla CLI. La **fonte normativa** resta il markdown versionato nel repo; l’issue è **complementare** per discussione e traceability.

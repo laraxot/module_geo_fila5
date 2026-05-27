@@ -16,11 +16,10 @@ parameters:
 
     # memoryLimit: -1
     ignoreErrors:
-        # -
-        #   message: '#PHPDoc tag @mixin contains unknown class Modules\\Badge\\Models\\IdeHelper(.*)+\.#'
+# -
+        #   message: '#PHPDoc tag @mixin contains unknown class Modules\\Badge\\Models\\IdeHelper(.*)+\\.'
         # - '#No error to ignore is reported on line#'
-        - '#Static call to instance method Nwidart\\Modules\\Facades\\Module#'
-        - '#Unsafe usage of new static#'
+        # Removed: unmatched ignores causing phpstan warnings
         - '#PHPDoc tag @mixin contains unknown class #'
         - '#Static call to instance method Nwidart#'
         - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#' # Ignora errori di cast da mixed a tipi specifici

@@ -60,6 +60,9 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
     /** @var ?int Step iniziale (1..N) dopo mount o navigazione; null = ancora da risolvere da ?step=. */
     public ?int $wizardStartStep = null;
 
+    /** @var class-string<\Filament\Resources\Resource> */
+    protected static string $resource;
+
     protected int|string|array $columnSpan = 'full';
 
     /**
@@ -80,7 +83,9 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
         $wizard = $wizard->persistStepInQueryString();
 
         if (! inAdmin()) {
-            $wizard = $wizard->view('pub_theme::components.wizard');
+            /** @var view-string $wizardView */
+            $wizardView = 'pub_theme::components.wizard';
+            $wizard = $wizard->view($wizardView);
         }
 
         return $wizard;

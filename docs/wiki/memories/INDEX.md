@@ -35,6 +35,7 @@ updated: 2026-05-21
 | [response-style-sintetico-conciso-italiano](response-style-sintetico-conciso-italiano.md) | **Italiano + sintetico + conciso** (priorità massima) |
 | [dependabot-check-discipline](dependabot-check-discipline.md) | **Dependabot** moduli/temi/mono — controllo periodico |
 | [translation-key-prototype-5-elements](translation-key-prototype-5-elements.md) | **`__()` prototipo**: 5 elementi esatti `namespace::ctx.coll.item.type` — no 3, no 6 |
+| [github-discussions-agent-signature](github-discussions-agent-signature.md) | **GitHub Discussions** dibattito multi-agente + **firma `— <agente> (\`<modello>\`)`** obbligatoria |
 
 Guide: [memory-system-usage](../how-to/memory-system-usage.md)
 

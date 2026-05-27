@@ -44,8 +44,8 @@ class AuthData extends Data
     /**
      * Create a new instance of AuthData with default values.
      */
-    public static function make(): static
+    public static function make(): self
     {
-        return new static();
+        return new self();
     }
 }

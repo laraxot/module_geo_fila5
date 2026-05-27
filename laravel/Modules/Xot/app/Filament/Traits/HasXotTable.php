@@ -120,7 +120,7 @@ trait HasXotTable
      *
      * @return array<string, Tables\Columns\Column>
      */
-    abstract protected function getTableColumns(): array;
+    abstract public function getTableColumns(): array;
 
     /**
      * Get table filters form columns.
@@ -394,7 +394,9 @@ trait HasXotTable
      */
     public function getTableSearch(): ?string
     {
-        return $this->tableSearch ?? null;
+        $tableSearch = $this->tableSearch ?? null;
+
+        return is_string($tableSearch) ? $tableSearch : null;
     }
 
     protected function shouldShowAssociateAction(): bool

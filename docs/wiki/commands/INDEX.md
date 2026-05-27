@@ -17,6 +17,7 @@ module: "root"
 | `qmd query` | Semantic wiki search |
 | `qmd update` | Rebuild QMD index |
 | `qmd multi-get` | Batch retrieve docs |
+| `bmad v6` | Project-level BMAD slash commands: see [bmad-v6](./bmad-v6.md) |
 
 ## Usage
 

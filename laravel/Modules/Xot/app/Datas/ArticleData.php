@@ -45,8 +45,8 @@ class ArticleData extends Data
     /**
      * Create a new instance of ArticleData with default values.
      */
-    public static function make(): static
+    public static function make(): self
     {
-        return new static();
+        return new self();
     }
 }

@@ -95,13 +95,6 @@ abstract class XotBaseMigration extends LaravelMigration
         return Schema::connection($connectionName);
     }
 
-    protected function isMysqlFamilyDriver(?string $driver = null): bool
-    {
-        $driver ??= DB::connection($this->model->getConnectionName())->getDriverName();
-
-        return in_array($driver, ['mysql', 'mariadb'], true);
-    }
-
     /**
      * Commentato perché Doctrine non è supportato nativamente in Laravel.
      * Se hai bisogno di questa funzione, assicurati di installare doctrine/dbal.
