@@ -44,6 +44,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/memories/merge-collision-filament-table-signature.md`, `laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md` |
 | Filament `getTableColumns` / classi `*Table` | `docs/wiki/concepts/xotbase-table-columns-enforcement.md`, `docs/wiki/rules/gettablecolumns-keys-rule.md`, `bashscripts/ci/check-get-table-columns-instance.sh` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
+| PHPStan per modulo / report `phpstan*.md` in `Modules/*/docs` | `bashscripts/tools/prompts/phpstan_module.txt`, `docs/wiki/memories/phpstan-module-markdown-naming.md`, `docs/wiki/rules/markdown-documentation-standard.md` |
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |

@@ -1,3 +1,32 @@
+---
+title: fix phpstan modulo activity
+type: memory
+tags: [phpstan, activity, filament]
+created: 2026-05-21
+updated: 2026-05-27
+status: approved
+related:
+  - ./phpstan-analysis-activity.md
+  - ../../../../docs/wiki/memories/phpstan-modules-inventory.md
+---
+
+# Fix PHPStan — modulo Activity
+
+> Pattern riusabili e ultimo scan; **updated** in YAML — mai date nel nome file.
+
+## Ultimo scan — risolto (0 errori)
+
+**Issue:** [provtv/module_activity_fila5#10](https://github.com/provtv/module_activity_fila5/issues/10)
+
+| Area | Fix applicato |
+|------|----------------|
+| `ListLogActivities.php` | `translationToString()` per `__()` → stringa |
+| `*Form.php` / `ActivityInfolist.php` | `@return array<string, Filament\Schemas\Components\Component>` |
+| `ActivitysTable.php` | PHPDoc duplicato rimosso |
+| `lang/it/snapshot.php` | Chiavi duplicate rimosse |
+
+---
+
 ## phpstan fixes per modulo activity
 
 ### listlogactivities (filament page)

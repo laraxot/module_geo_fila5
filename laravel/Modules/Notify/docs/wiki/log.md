@@ -5,6 +5,11 @@ module: "Notify"
 
 # Notify - Wiki Activity Log
 
+## [2026-05-27] lint | phpstan zero
+
+- `./vendor/bin/phpstan analyse Modules/Notify` → 0 errori (412 file).
+- Commento meta provtv/module_notify_fila5#21.
+
 ## [2026-05-11] Wiki Structure Created
 
 - Created wiki structure: rules/, skills/, commands/, memories/, concepts/

@@ -3,7 +3,7 @@ title: inventario phpstan per modulo
 type: memory
 tags: [phpstan, ci, modules, larastan]
 created: 2026-05-21
-updated: 2026-05-26
+updated: 2026-05-27
 related:
   - ../how-to/github-issue-agent-discipline.md
   - ../rules/validation-post-edit-rule.md
@@ -15,37 +15,50 @@ related:
 ## Comando (da `laravel/`)
 
 ```bash
-./vendor/bin/phpstan analyse Modules/<Module>/ --no-progress
-# User / Xot (grandi): php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/<Module>/ --no-progress
+./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/<Module> --no-progress
+# User / Xot (grandi): php -d memory_limit=2G ./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/<Module> --no-progress
 ```
 
 Config: `laravel/phpstan.neon` (level **max**).
+
+## Verifica mirata (2026-05-27)
+
+| Modulo | Errori | Comando | Issue |
+|--------|--------|---------|-------|
+| Lang | **0** | `./vendor/bin/phpstan analyse Modules/Lang --memory-limit=2G` | [#11](https://github.com/provtv/module_lang_fila5/issues/11) chiusa 2026-05-27 |
+| Media | **0** | `./vendor/bin/phpstan analyse Modules/Media --memory-limit=2G` | [#3](https://github.com/provtv/module_media_fila5/issues/3) commento 2026-05-27 |
+| Notify | **0** | `./vendor/bin/phpstan analyse Modules/Notify --memory-limit=2G` | commento meta [#21](https://github.com/provtv/module_notify_fila5/issues/21) |
+| Gdpr | **0** | `./vendor/bin/phpstan analyse Modules/Gdpr --memory-limit=2G` | [#9](https://github.com/provtv/module_gdpr_fila5/issues/9) risolto 2026-05-27 |
+| Activity | **0** | `./vendor/bin/phpstan analyse Modules/Activity --memory-limit=2G` | [#10](https://github.com/provtv/module_activity_fila5/issues/10) risolto 2026-05-27 |
+| Questionari | **0** | `./vendor/bin/phpstan analyse Modules/Questionari --memory-limit=2G` | `provtv/module_questionari_fila5#3` (commento audit; no issue errori) |
+| DbForge | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/DbForge --no-progress` | `provtv/module_dbforge_fila5#22` gia aperta come coordinamento PHPStan |
+| MobilitaVolontaria | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/MobilitaVolontaria --no-progress` | `provtv/module_mobilitavolontaria_fila5#3` documenta errore storico gia corretto |
+| Setting | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/Setting --no-progress` | `provtv/module_setting_fila5#3` aperta come coordinamento PHPStan |
+
+Nota operativa: `Pdnd` e `Incentivi` esclusi da questo controllo su richiesta utente. Creare/commentare issue solo quando il run produce errori PHPStan attuali.
 
 ## Ultimo scan (2026-05-26 — Job / Lang)
 
 | Modulo | Errori | Note |
 |--------|--------|------|
 | Job | **0** | Verificato post-fix `JobServiceProvider`, PHPDoc `SchedulesTable` / `FailedImportRowsTable`; handoff [`handoff-job-lang-merge-phpstan-confidence.md`](../../chat/handoff-job-lang-merge-phpstan-confidence.md) |
-| Lang | **8** | `array.duplicateKey` in `lang/it/locale_switcher_refresh.php`, `translation_editor.php` |
+| Lang | **0** | verificato 2026-05-27 (ex 8 duplicateKey — risolti) |
 
 ## Scan precedente (2026-05-21)
 
 | Stato | Modulo | Errori |
 |-------|--------|--------|
-| OK | Activity, Badge, CertFisc, ContoAnnuale, DbForge, Europa, Inail, IndennitaCondizioniLavoro, Job, Legge104, Legge109, Mensa, Prenotazioni, PresenzeAssenze, Questionari, Rating, Seo, Sindacati, Tenant | 0 |
+| OK | Activity, Badge, CertFisc, Gdpr, Lang, Media, Notify, ContoAnnuale, DbForge, Europa, Inail, IndennitaCondizioniLavoro, Job, Legge104, Legge109, Mensa, Prenotazioni, PresenzeAssenze, Questionari, Rating, Seo, Sindacati, Tenant | 0 |
 | ERROR | Sigma | 241 |
 | ERROR | Ptv | 96 |
 | ERROR | Pdnd | 67 |
 | ERROR | UI | 49 |
 | ERROR | Progressioni | 35 |
 | ERROR | IndennitaResponsabilita | 33 |
-| ERROR | Media | 33 |
 | ERROR | Performance | 25 |
 | ERROR | Incentivi | 16 |
 
-| ERROR | Gdpr | 3 |
-| ERROR | Lang | 8 (agg. 2026-05-26, vedi sezione sopra) |
-| ERROR | MobilitaVolontaria, Notify, Setting | 1 |
+| OK | Gdpr | 0 (fix 2026-05-27, issue #9) |
 | INCOMPLETE | User, Xot | memoria 512MB esaurita (worker paralleli) |
 
 ## Issue GitHub (coordinamento)
@@ -53,7 +66,7 @@ Config: `laravel/phpstan.neon` (level **max**).
 - Meta: [#136 — inventario e coordinamento agent](https://github.com/provtv/base_ptv_fila5_mono/issues/136)
 - Per-modulo esistenti: #133 Notify, #134 Xot, #135 Media
 - CI / hook: #130, tooling: #126
-- Activity OK: doc `laravel/Modules/Activity/docs/phpstan-fixes-activity.md`
+- Activity: **0 errori** (fix 2026-05-27, issue `#10`) — doc `laravel/Modules/Activity/docs/phpstan-fixes-activity.md`
 
 ## Pattern fix ricorrenti (Activity, 2026-05-21)
 

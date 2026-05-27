@@ -31,6 +31,10 @@ gh issue list --repo "$REPO" --state open
 
 **Notify:** in mono può non avere `origin` nel submodule — verificare prima di `gh`.
 
+## Prototipo issue PHPStan
+
+[`docs/wiki/_templates/phpstan-module-github-issue.md`](../_templates/phpstan-module-github-issue.md) — **una issue per modulo**, tutti gli errori nel corpo. Prompt agente: `bashscripts/tools/prompts/phpstan_module.txt`.
+
 ## PHPStan (da `laravel/`)
 
 ```bash
