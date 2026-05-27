@@ -25,9 +25,10 @@ $al=\Carbon\Carbon::parse($this->getRecord()->anno.'-01-01')->addMonths(4 * ($q 
 <tr><td><b>Dal</b></td><td> {{ $dal->format('d/m/Y') }} - <b>Al</b> {{ $al->format('d/m/Y') }} </td></tr>
 <tr><td><b>Perc P Time Anno:</b> </td><td>{{ number_format($record->perc_p_time_year * 100, 2) }} % </td></tr>
 <tr><td><b>Perc P Time intervallo di date:</b> </td><td>{{ number_format($record->perc_p_time_daterange * 100, 2) }} % </td></tr>
+{{--
 <tr><td><b>Qualifica:</b></td><td> {{ $record->codqua }}] {{ $record->codqua_txt }} </td></tr>
 <tr><td><b>Disciplina:</b> </td><td>{{ $record->disci1 }}]{{ $record->disci1_txt }} </td></tr>
-    
+    --}}
 </table>
 
 <table class="table-auto">

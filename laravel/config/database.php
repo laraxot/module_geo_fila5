@@ -63,6 +63,50 @@ return [
             ]) : [],
         ],
 
+        /*
+         * Extra module connections (used by some models).
+         * Safe defaults: if module-specific env vars are missing, fall back to the main DB_* config.
+         */
+        'db_forge' => [
+            'driver' => 'mysql',
+            'url' => env('DB_FORGE_DB_URL', env('DB_URL')),
+            'host' => env('DB_FORGE_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('DB_FORGE_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('DB_FORGE_DB_DATABASE', env('DB_DATABASE', 'laravel')),
+            'username' => env('DB_FORGE_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('DB_FORGE_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('DB_FORGE_DB_SOCKET', env('DB_SOCKET', '')),
+            'charset' => env('DB_FORGE_DB_CHARSET', env('DB_CHARSET', 'utf8mb4')),
+            'collation' => env('DB_FORGE_DB_COLLATION', env('DB_COLLATION', 'utf8mb4_unicode_ci')),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? \Pdo\Mysql::ATTR_SSL_CA : \PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'gdpr' => [
+            'driver' => 'mysql',
+            'url' => env('GDPR_DB_URL', env('DB_URL')),
+            'host' => env('GDPR_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('GDPR_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('GDPR_DB_DATABASE', env('DB_DATABASE', 'laravel')),
+            'username' => env('GDPR_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('GDPR_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('GDPR_DB_SOCKET', env('DB_SOCKET', '')),
+            'charset' => env('GDPR_DB_CHARSET', env('DB_CHARSET', 'utf8mb4')),
+            'collation' => env('GDPR_DB_COLLATION', env('DB_COLLATION', 'utf8mb4_unicode_ci')),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? \Pdo\Mysql::ATTR_SSL_CA : \PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

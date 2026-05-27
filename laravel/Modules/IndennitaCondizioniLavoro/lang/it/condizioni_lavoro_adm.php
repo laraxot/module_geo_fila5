@@ -184,6 +184,16 @@ return [
             'label' => 'save',
             'icon' => 'save',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
+        ],
     ],
     'label' => 'condizioni lavoro adm',
     'sections' => [

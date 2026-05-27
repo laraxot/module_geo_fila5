@@ -493,8 +493,10 @@ use RuntimeException;
 class Scheda extends BaseModel implements ProgressioneSchedaContract
 {
     use ConvertedTrait;
-    use ProgressioniTrait;
-    use SchedaTrait, SigmaModelTrait {
+    use ProgressioniTrait, SchedaTrait, SigmaModelTrait {
+        // Resolve myLogs() collision: keep canonical HasMyLogs implementation (from SchedaTrait)
+        SchedaTrait::myLogs insteadof ProgressioniTrait;
+
         // Prefer SchedaTrait methods over SigmaModelTrait
         SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
         SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;

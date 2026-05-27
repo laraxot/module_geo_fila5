@@ -18,6 +18,7 @@ class ReplicateIndennita
      */
     public function execute(array $data): void
     {
+        
         $input = $data['anno/valutatore'] ?? $data;
         if (! is_array($input)) {
             throw new InvalidArgumentException('Parametro filtri non valido.');
@@ -43,14 +44,18 @@ class ReplicateIndennita
             'quadrimestre' => $sourceQuadrimestre,
         ];
 
+        
+
         $rows = CondizioniLavoro::query()
             ->where($filters)
             ->whereHas('indennitaTipoDettaglio')
             ->get();
+        
 
         foreach ($rows as $row) {
             $ids = $row->indennitaTipoDettaglio->modelKeys();
             $next = $row->getNextQuadrimestre();
+            
 
             if ($next === null) {
                 continue;
@@ -59,6 +64,8 @@ class ReplicateIndennita
             if ($next->indennitaTipoDettaglio->isEmpty()) {
                 $next->indennitaTipoDettaglio()->sync($ids);
             }
+
+            
         }
 
         Notification::make()
