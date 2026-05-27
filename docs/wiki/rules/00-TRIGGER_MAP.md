@@ -44,6 +44,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/memories/merge-collision-filament-table-signature.md`, `laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md` |
 | Filament `getTableColumns` / classi `*Table` | `docs/wiki/concepts/xotbase-table-columns-enforcement.md`, `docs/wiki/rules/gettablecolumns-keys-rule.md`, `bashscripts/ci/check-get-table-columns-instance.sh` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
+| GitHub Discussions multi-agente / firma agente AI / abilitare discussions su repo `laraxot/*` | `docs/wiki/memories/github-discussions-agent-signature.md` |
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
@@ -57,7 +58,18 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | MCP config contiene path assoluti workspace / `.cursor/mcp.json` non portabile | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/rules/00-TRIGGER_MAP.md` |
 | Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/rules/token-optimization-discipline.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
-| BMAD workflow | `docs/wiki/concepts/bmad-operating-model.md` |
+| BMAD workflow / BMAD v6 project install | `docs/wiki/concepts/bmad-operating-model.md`, `docs/wiki/rules/bmad-v6-on-demand.md`, `docs/wiki/commands/bmad-v6.md` |
+| BMAD slash command `/bmad-*` / `/workflow-init` / `/prd` / `/dev-story` / `/sprint-planning` | `docs/wiki/commands/bmad-v6.md`, `docs/wiki/rules/bmad-v6-on-demand.md` |
+| brief / discovery / stakeholder / product brief | `.claude/skills/bmad/bmm/analyst/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| PRD / tech spec / requirements / MoSCoW / RICE | `.claude/skills/bmad/bmm/pm/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| architecture / tech stack / NFR / system design | `.claude/skills/bmad/bmm/architect/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| user story / sprint planning / story points / velocity | `.claude/skills/bmad/bmm/scrum-master/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| dev story / implement story / code feature BMAD | `.claude/skills/bmad/bmm/developer/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| UX wireframe / user flow / accessibility BMAD | `.claude/skills/bmad/bmm/ux-designer/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| brainstorm / SCAMPER / SWOT / creative ideation | `.claude/skills/bmad/cis/creative-intelligence/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| custom agent / extend BMAD / new workflow | `.claude/skills/bmad/bmb/builder/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
+| Discussione multi-agente AI / confronto su decisione su repo modulo | `docs/wiki/how-to/github-issue-agent-discipline.md` (Discussions + firma `agente + modello`) |
+| Firma commento/issue/discussion repo modulo | `docs/wiki/how-to/github-issue-agent-discipline.md` (suffisso obbligatorio `— <agente> (\`<modello>\`)`) |
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
 | Accessor/mutator | `docs/wiki/concepts/accessor-auto-persistence.md` |
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |
