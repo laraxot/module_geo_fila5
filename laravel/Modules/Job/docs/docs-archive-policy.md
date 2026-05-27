@@ -1,11 +1,7 @@
 ---
-title: docs archive policy — puntatore
-type: reference
-updated: 2026-05-21
+module: theme
+topic: docs-archive-policy
+canonical: ../../../Themes/docs/shared-components/docs-archive-policy-Modules.md
 ---
 
-# Docs archive policy (puntatore)
-
-Policy globale: [../../../../docs/wiki/concepts/second-brain-continuous-improvement.md](../../../../docs/wiki/concepts/second-brain-continuous-improvement.md).
-
-`docs/legacy/` è solo scratch locale; non fonte canonica. Vedi [module-docs-deduplication](../../../../docs/wiki/how-to/module-docs-deduplication.md).
+See canonical documentation: ../../../Themes/docs/shared-components/docs-archive-policy-Modules.md

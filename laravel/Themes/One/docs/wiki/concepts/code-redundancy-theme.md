@@ -36,7 +36,7 @@ File quasi identici:
 
 ## Perplessità
 
-- Cartella `Themes/Theme_One/` parallela a `One/` — chiarire se legacy o errore struttura.
+- ~~Cartella `Themes/Theme_One/` parallela a `One/` — chiarire se legacy o errore struttura.~~ — risolto 2026-05-26: rinominata in `Themes/Three/` (regola: PascalCase singolo, no prefisso `Theme_`).
 
 ## Composer
 

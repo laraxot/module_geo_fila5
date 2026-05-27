@@ -74,7 +74,7 @@ Moduli con `package.json` **devono** avere ecosystem **npm** in `.github/dependa
 ## Dubbi
 
 - Alert ancora OPEN dopo merge PR: default branch remoto ≠ mono locale → sync mancante.
-- `Theme_One/` vs `Themes/One/`: repo tema separato se pubblicato.
+- ~~`Theme_One/` vs `Themes/One/`: repo tema separato se pubblicato.~~ — risolto 2026-05-26: `Theme_One/` rinominato in `Three/` (doc-only, no composer/package separato).
 
 ## Issue
 

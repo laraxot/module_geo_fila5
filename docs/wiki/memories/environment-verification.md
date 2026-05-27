@@ -23,12 +23,12 @@ updated: 2026-05-12
 - **PRD Audit:**
     - Verified all modules and themes have a `prd.md` (or `PRD.md`).
     - Identified a duplicate `prd.md` vs `PRD.md` issue in `Xot` module.
-    - Identified missing PRD in `laravel/Themes/Theme_One`.
+    - Identified missing PRD in `laravel/Themes/Three` (ex `Theme_One`, rinominato 2026-05-26).
 
 ## Technical Insights
 
 - **Xot Documentation:** The `laravel/Modules/Xot/docs/` directory contains thousands of files, many with legacy naming (uppercase). A batch refactoring strategy with link updating is required for full compliance.
-- **Theme_One:** Appears to be a legacy or doc-only folder, needs clarification or cleanup.
+- **Three** (ex `Theme_One`, rinominato 2026-05-26): doc-only folder; nessun composer.json né asset frontend. Conserva governance/release-discipline docs.
 
 ## Linked Rules
 

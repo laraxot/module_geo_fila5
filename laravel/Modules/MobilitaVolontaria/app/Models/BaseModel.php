@@ -35,7 +35,9 @@ abstract class BaseModel extends Model
 
         // Check if the connection exists in config, otherwise fallback to default
         if (config("database.connections.{$connection}") === null) {
-            return config('database.default');
+            $defaultConnection = config('database.default');
+
+            return is_string($defaultConnection) ? $defaultConnection : null;
         }
 
         return $connection;

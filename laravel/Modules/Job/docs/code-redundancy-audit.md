@@ -6,7 +6,7 @@ tags: [code-audit, redundancy, dry, second-brain, module]
 created: "2026-05-26"
 updated: "2026-05-26"
 owner: "Job"
-issue: "150"
+issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
 ---
 
 # Code redundancy audit — Job
@@ -26,7 +26,6 @@ Ridurre rumore, duplicazione e ambiguita' nel codice di questo module, senza per
 | Class/trait/interface name ripetuti nel monorepo | 12 |
 | File grandi >=350 righe | 1 |
 | File PHP con marker Git | 0 |
-| PHPStan `Modules/Job` (mono) | 0 errori (2026-05-26) |
 
 ## Evidenze
 

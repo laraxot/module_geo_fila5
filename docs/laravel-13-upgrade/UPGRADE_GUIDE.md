@@ -25,7 +25,7 @@ Tutti i moduli nella cartella `laravel/Modules/` sono stati aggiornati con:
 ### Temi (3 totali)
 - [x] **Zero**: Aggiornato `composer.json` e documentazione.
 - [x] **One**: Aggiornato `composer.json` e documentazione.
-- [ ] **Theme_One**: Nessun `composer.json` trovato, solo documentazione di stile.
+- [ ] **Three** (ex `Theme_One`, rinominato 2026-05-26): nessun `composer.json` trovato, solo documentazione di stile.
 
 ## Procedura Post-Aggiornamento
 Una volta terminati gli aggiornamenti dei file, eseguire i seguenti comandi dalla directory `laravel/`:

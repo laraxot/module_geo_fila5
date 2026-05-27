@@ -117,12 +117,34 @@ return [
 
 ### Formato: `<namespace>::<contesto>.<collezione>.<chiave>.<tipo>`
 
+> Sinonimi accettati: `<contesto>` = `<attore>`, `<chiave>` = `<item>`, `<tipo>` = `<type>`.
+
+### ⚠️ REGOLA INVALICABILE: ESATTAMENTE 5 ELEMENTI
+
+`<namespace>` + 4 segmenti separati da `.` dopo `::`. **Né di più, né di meno.**
+
+| Chiave | Elementi | Verdetto |
+|---|---|---|
+| `user::auth.register.submit` | 4 | ❌ manca `<tipo>` |
+| `user::auth.register.submit.text` | 5 | ✅ |
+| `user::auth.register.page.kicker.label` | 6 | ❌ un livello in più |
+| `user::widgets.edit_user.actions.save.label` | 6 | ❌ idem |
+
+**Tentazione tipica → errore:** aggiungere un livello intermedio (`.page.`, `.modal.`, `.sections.`) "per chiarezza". Non farlo: riorganizza dentro 4 segmenti.
+
+### Esempi corretti (5 elementi)
+
 ```
-Modules::Xot::navigation.label
+Modules::Xot::navigation.label.text
 Modules::Xot::fields.nome.label
 Modules::Xot::actions.create.success
 Modules::User::user.fields.email.label
+user::auth.register.submit.text
+user::auth.login.email.placeholder
+xot::actions.delete.confirm.heading
 ```
+
+> Memoria operativa: [translation-key-prototype-5-elements](../memories/translation-key-prototype-5-elements.md) — pattern di violazione + quality-gate grep.
 
 ### Namespace per Modulo
 

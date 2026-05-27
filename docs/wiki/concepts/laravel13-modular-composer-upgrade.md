@@ -35,6 +35,6 @@ In this project, most module namespaces are `Modules\Name\...` while PHP files l
 - User auth composer notes: ../../../laravel/Modules/User/docs/laravel-13-auth-composer-notes.md
 - Theme Zero composer boundary: ../../../laravel/Themes/Zero/docs/laravel-13-composer-boundary.md
 - Theme One composer boundary: ../../../laravel/Themes/One/docs/laravel-13-composer-boundary.md
-- Theme_One composer boundary: ../../../laravel/Themes/Theme_One/docs/laravel-13-composer-boundary.md
+- Theme Three composer boundary: ../../../laravel/Themes/Three/docs/laravel-13-composer-boundary.md
 - Official Laravel Modules v13 requirements: https://laravelmodules.com/docs/13/getting-started/requirements
 - Official Laravel Modules v13 installation: https://laravelmodules.com/docs/13/getting-started/installation-and-setup

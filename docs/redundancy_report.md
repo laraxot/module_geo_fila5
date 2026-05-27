@@ -40,7 +40,7 @@ Questo documento riassume le principali ridondanze rilevate nei **moduli** e **t
 | `MobilitaVolontaria`, `Sindacati`, `Notify`, `PresenzeAssenze`, `Xot` | Rimuovere la definizione di `AdminPanelProvider` e farla ereditare da `Core\AdminPanelProvider`. |
 | `User`, `Job` | Consolidare le factory (`UserFactory`, `JobFactory`) in `Core\Factories`. |
 | `Setting`, `Seo` | Verificare se i `Providers` duplicano configurazioni di Filament; centralizzare le impostazioni di Filament in `Core\FilamentServiceProvider`. |
-| Temi (`Theme_One`, `Zero`, `One`) | Creare componenti Blade condivisi (`components/header.blade.php`, `components/footer.blade.php`) per evitare duplicazioni HTML/CSS. |
+| Temi (`Three`, `Zero`, `One`) | Creare componenti Blade condivisi (`components/header.blade.php`, `components/footer.blade.php`) per evitare duplicazioni HTML/CSS. |
 
 ---
 
