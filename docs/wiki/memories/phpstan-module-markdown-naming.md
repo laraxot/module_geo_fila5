@@ -14,7 +14,7 @@ related:
 
 ## Regola
 
-- **Vietato** date nel filename: `phpstan-analysis-2026-05-27.md`, `fixes-january.md`, ecc.
+- **Vietato** date nel filename: `phpstan-analysis.md`, `fixes-january.md`, ecc.
 - **Consentito:** `phpstan-fixes-activity.md`, `phpstan-analysis-gdpr.md`, `phpstan-scan-report.md`
 - Data del run → campo YAML `updated:` + issue GitHub `[PHPStan] N errori — scan YYYY-MM-DD`
 - Prima di creare file: `Glob` / `grep` se esiste già `phpstan*.md` sullo stesso argomento → **aggiornare**, non duplicare
@@ -27,7 +27,7 @@ Solo: `README.md`, `INDEX.md`, `CHANGELOG.md`, `00-TRIGGER_MAP.md` (vedi [standa
 
 | Errato | Corretto |
 |--------|----------|
-| `phpstan-analysis-2026-05-27.md` | contenuto in `phpstan-fixes-activity.md` |
+| `phpstan-analysis.md` | contenuto in `phpstan-fixes-activity.md` |
 | nuovo file per ogni scan | sezione «Ultimo scan» nel doc esistente |
 
 ## Trigger

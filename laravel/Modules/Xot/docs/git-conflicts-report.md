@@ -23,7 +23,7 @@ Generated on: Wed Apr 22 14:04:36 CEST 2026
 * ./Modules/Cms/docs/roadmap/legacy/legacy-roadmap-3.md
 * ./Modules/Cms/docs/quality-status-11.md
 * ./Modules/Cms/docs/errors/git-conflicts-themes-resolution.md
-* ./Modules/Cms/docs/quality-status-2025-11.md
+* ./Modules/Cms/docs/quality-status.md
 * ./Modules/Cms/docs/merge-conflicts-list.md
 * ./Modules/Cms/app/Models/Attachment.php
 * ./Modules/Cms/database/seeders/CmsMassSeeder.php
@@ -39,7 +39,7 @@ Generated on: Wed Apr 22 14:04:36 CEST 2026
 * ./Modules/Notify/docs/wiki/index.md
 * ./Modules/Notify/docs/merge-conflicts-list.md
 * ./Modules/Notify/docs/correzioni-phpstan-completate_3.md
-* ./Modules/Notify/docs/project_docs/riepilogo-risoluzione-conflitti-2025-09-30.md
+* ./Modules/Notify/docs/project_docs/riepilogo-risoluzione-conflitti.md
 * ./Modules/Notify/.planning/debug/knowledge-base.md
 * ./Modules/Notify/.planning/debug/resolved/sqlite-model-contract-fix.md
 * ./Modules/Blog/docs/wiki/README.md
@@ -74,7 +74,7 @@ Generated on: Wed Apr 22 14:04:36 CEST 2026
 * ./Themes/TwentyOne/docs/merge-conflicts-list.md
 * ./Themes/Meetup/docs/merge-conflicts-list.md
 * ./Themes/Sixteen/docs/css-js-parity.md
-* ./Themes/Sixteen/docs/design-comuni/SEGNALAZIONE-FIX-SESSION-2026-04-07.md
+* ./Themes/Sixteen/docs/design-comuni/SEGNALAZIONE-FIX-SESSION.md
 * ./Themes/Sixteen/docs/design-comuni/HTML_PARITY_COMPLETE.md
 * ./Themes/Sixteen/docs/design-comuni/screenshots/comparison/POST-FIX-VERIFICATION.md
 * ./Themes/Sixteen/docs/design-comuni/screenshots/ref-homepage.png

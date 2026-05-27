@@ -133,7 +133,7 @@ SHOW CREATE TABLE ratings;
 | File | Reason |
 |------|--------|
 | collation-error-fix.md | Soluzione code-based sbagliata |
-| CRITICAL-COLLATION-FIX-2025.md | Pattern CAST errato |
+| CRITICAL-COLLATION-FIX.md | Pattern CAST errato |
 | troubleshooting/mysql-collation-json.md | Info sbagliate |
 
 ---
@@ -229,8 +229,8 @@ SHOW CREATE TABLE ratings;
 
 ### Analysis (Still Valid)
 - [docs/START-HERE.md](docs/START-HERE.md)
-- [docs/MASTER-INDEX-2025.md](docs/MASTER-INDEX-2025.md)
-- [IndennitaResponsabilita Analysis](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+- [docs/MASTER-INDEX.md](docs/MASTER-INDEX.md)
+- [IndennitaResponsabilita Analysis](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
 
 ### Fixes

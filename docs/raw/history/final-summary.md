@@ -26,7 +26,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 - ✅ Queries: Return correct results
 
 **Documentation**:
-- [CRITICAL Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md)
+- [CRITICAL Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX.md)
 - [Collation Guide](laravel/Modules/Rating/docs/collation-error-fix.md)
 - [Troubleshooting](docs/troubleshooting/mysql-collation-json.md)
 
@@ -82,7 +82,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 **Documented in**:
 - [Schemaless Final Guide](docs/claude/schemaless-attributes-final.md)
 - [Collation Error Fix](laravel/Modules/Rating/docs/collation-error-fix.md)
-- [CRITICAL Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md)
+- [CRITICAL Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX.md)
 
 ---
 
@@ -92,7 +92,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 
 **Documented in**:
 - [Migration Violations](laravel/Modules/User/docs/migration-violations-tenants.md)
-- [Migration Fix](laravel/Modules/User/docs/migration-fix-tenants-2025.md)
+- [Migration Fix](laravel/Modules/User/docs/migration-fix-tenants.md)
 
 **Violations**:
 1. ❌ Extends Migration (not XotBaseMigration)
@@ -157,15 +157,15 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 ### Start Points
 
 - 🎯 [START-HERE.md](docs/START-HERE.md) - Entry for all roles
-- 🗺️ [MASTER-INDEX-2025.md](docs/MASTER-INDEX-2025.md) - Complete map
-- ✅ [ANALYSIS-COMPLETE-2025-01-02.md](docs/ANALYSIS-COMPLETE-2025-01-02.md)
+- 🗺️ [MASTER-INDEX.md](docs/MASTER-INDEX.md) - Complete map
+- ✅ [ANALYSIS-COMPLETE.md](docs/ANALYSIS-COMPLETE.md)
 
 ### Module Docs
 
 **IndennitaResponsabilita**:
 - [README](laravel/Modules/IndennitaResponsabilita/docs/README.md)
 - [Quick Start](laravel/Modules/IndennitaResponsabilita/docs/QUICK-START.md)
-- [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+- [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) - 18 tasks
 - [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)
 - [Code Quality Analysis](laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)
@@ -174,7 +174,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 
 **Rating**:
 - [README](laravel/Modules/Rating/docs/README.md)
-- [🔥 CRITICAL Collation Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md)
+- [🔥 CRITICAL Collation Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX.md)
 - [Collation Error Fix](laravel/Modules/Rating/docs/collation-error-fix.md)
 - [Scope Fix](laravel/Modules/Rating/docs/schemaless-scope-fix.md)
 - [Trait Consolidation](laravel/Modules/Rating/docs/trait-consolidation-plan.md)
@@ -182,7 +182,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 
 **User**:
 - [Migration Violations](laravel/Modules/User/docs/migration-violations-tenants.md)
-- [Migration Fix](laravel/Modules/User/docs/migration-fix-tenants-2025.md)
+- [Migration Fix](laravel/Modules/User/docs/migration-fix-tenants.md)
 
 ---
 
@@ -272,7 +272,7 @@ cat /var/www/_bases/base_ptvx_fila5_mono/DOCUMENTATION-MAP.txt
 less /var/www/_bases/base_ptvx_fila5_mono/docs/START-HERE.md
 
 # Critical fixes
-less /var/www/_bases/base_ptvx_fila5_mono/laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX-2025.md
+less /var/www/_bases/base_ptvx_fila5_mono/laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX.md
 ```
 
 ---

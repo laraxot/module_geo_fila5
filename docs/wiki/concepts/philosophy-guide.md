@@ -395,7 +395,7 @@ Bellezza significa:
 
 ## Collegamenti Filosofici
 
-- **[Consolidamento Documentazione](./consolidamento-documentazione-2025.md)** - Piano strategico
+- **[Consolidamento Documentazione](./consolidamento-documentazione.md)** - Piano strategico
 - **[Best Practices](./best-practices/)** - Pratiche concrete
 - **[Code Quality](./best-practices/code-quality.md)** - Qualità tecnica
 

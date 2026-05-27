@@ -112,7 +112,7 @@ ROI Refactoring: 6 mesi break-even
 
 ---
 
-### 4. [Theme Analysis 2025](../../Themes/One/docs/theme-analysis-2025.md)
+### 4. [Theme Analysis 2025](../../Themes/One/docs/theme-analysis.md)
 **Linee**: ~400  
 **Status**: Tema minimale, linee guida complete
 

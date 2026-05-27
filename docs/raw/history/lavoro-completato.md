@@ -177,7 +177,7 @@ Server Laravel ATTIVO su http://0.0.0.0:8000
 
 ### Modulo Xot
 
-1. **merge-conflict-resolution-2025-11-04.md**
+1. **merge-conflict-resolution.md**
    - Report tecnico completo
    - Pattern di merge conflicts identificati
    - Script utilizzati
@@ -212,7 +212,7 @@ Server Laravel ATTIVO su http://0.0.0.0:8000
    - Quiz auto-valutazione
    - Tempo lettura stimato
 
-7. **project-best-practices-2025.md**
+7. **project-best-practices.md**
    - Regole fondamentali aggiornate
    - Anti-patterns da evitare
    - Checklist pre-commit
@@ -355,12 +355,12 @@ php artisan list 2>&1 | grep "does not comply"
 - [Essential Reading](./Modules/Xot/docs/essential-reading.md) - Top 10 docs
 
 **Latest Fixes:**
-- [Merge Conflict Resolution](./Modules/Xot/docs/merge-conflict-resolution-2025-11-04.md)
+- [Merge Conflict Resolution](./Modules/Xot/docs/merge-conflict-resolution.md)
 - [Lessons Learned](./Modules/Xot/docs/lessons-learned-2025-11-04-merge-conflicts.md)
 
 **New Rules:**
 - [File Locking Pattern](./Modules/Xot/docs/file-locking-pattern.md) 🔐
-- [Project Best Practices 2025](./Modules/Xot/docs/project-best-practices-2025.md)
+- [Project Best Practices 2025](./Modules/Xot/docs/project-best-practices.md)
 
 **Planning:**
 - [Documentation Consolidation](./Modules/Xot/docs/documentation-consolidation-strategy.md)

@@ -9,7 +9,7 @@ module: "ptvx-project"
 
 ## Log Entries
 
-[2026-05-27 17:30:00 UTC] [FIX] Naming `.md`: rimossi `phpstan-analysis-2026-05-27.md` (Activity/Gdpr); memoria `phpstan-module-markdown-naming.md`; trigger map + `phpstan_module.txt`.
+[2026-05-27 17:30:00 UTC] [FIX] Naming `.md`: rimossi `phpstan-analysis.md` (Activity/Gdpr); memoria `phpstan-module-markdown-naming.md`; trigger map + `phpstan_module.txt`.
 
 [2026-05-27 17:00:00 UTC] [LINT] PHPStan **Media** (135 file): 0 errori; inventario ex-33 corretto.
 

@@ -40,8 +40,8 @@
 
 ## 📚 Documentazione Creata
 
-1. [PHPStan Furious Debate](./phpstan-furious-debate-2025.md) - Il dibattito filosofico
-2. [PHPStan Corrections Summary](./phpstan-corrections-summary-2025.md) - Pattern di correzione
+1. [PHPStan Furious Debate](./phpstan-furious-debate.md) - Il dibattito filosofico
+2. [PHPStan Corrections Summary](./phpstan-corrections-summary.md) - Pattern di correzione
 3. [PHPStan Progress Report](./phpstan-progress-report.md) - Questo file
 
 ## 🧘 Filosofia

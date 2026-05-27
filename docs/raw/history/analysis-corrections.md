@@ -105,7 +105,7 @@ public function scopeWithExtraAttributes(
    - 8 thematic sections
    - Quick checklist
 
-4. **[Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)** (~500 lines)
+4. **[Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** (~500 lines)
    - Executive summary
    - Metrics and ROI
    - Action items prioritized
@@ -145,7 +145,7 @@ public function scopeWithExtraAttributes(
 
 ### Theme Documentation (1 doc)
 
-1. **[Theme One Analysis](../laravel/Themes/One/docs/theme-analysis-2025.md)** (~400 lines)
+1. **[Theme One Analysis](../laravel/Themes/One/docs/theme-analysis.md)** (~400 lines)
    - Recommended structure
    - Best practices
    - Design system
@@ -273,7 +273,7 @@ public function scopeWithExtraAttributes(
 - [Architecture Overview](../docs/architecture/README.md)
 
 ### Module Analysis
-- [IndennitaResponsabilita Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+- [IndennitaResponsabilita Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - [IndennitaResponsabilita Code Quality](../laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)
 - [Rating Module README](../laravel/Modules/Rating/docs/README.md)
 
@@ -367,12 +367,12 @@ docs/
 │   ├── README.md (AI guidelines)
 │   ├── schemaless-attributes-final.md (✅ Correct guide)
 │   └── ... (other AI docs)
-└── analysis-corrections-2025-01-02.md (This file)
+└── analysis-corrections.md (This file)
 
 laravel/Modules/
 ├── IndennitaResponsabilita/docs/
 │   ├── README.md (Updated)
-│   ├── analysis-summary-2025.md (Summary)
+│   ├── analysis-summary.md (Summary)
 │   ├── code-quality-analysis.md (~800 lines)
 │   ├── refactoring-action-plan.md (~1000 lines)
 │   ├── best-practices.md (~600 lines)
@@ -388,7 +388,7 @@ laravel/Modules/
 
 laravel/Themes/
 └── One/docs/
-    └── theme-analysis-2025.md (~400 lines)
+    └── theme-analysis.md (~400 lines)
 ```
 
 ---
@@ -486,7 +486,7 @@ laravel/Themes/
 
 1. **[Root Documentation Hub](../docs/README.md)** - Navigation centrale
 2. **[Claude AI Guidelines](../docs/claude/README.md)** - AI assistant rules
-3. **[IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)** - Module analysis
+3. **[IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** - Module analysis
 
 ### Implementation Guides
 

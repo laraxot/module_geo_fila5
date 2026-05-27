@@ -48,11 +48,11 @@ Stesso scaffolding editoriale ripetuto in più percorsi (testo quasi uguale, lin
 - `docs/redundancy-fixes.md`
 - `docs/redundancy-fixes-january.md`
 - `docs/redundancy-fixes-january-1.md`
-- `docs/redundancy-fixes-january-2026.md`
+- `docs/redundancy-fixes-archive-1.md`
 - `docs/redundancyes.md` (nome con typo storico da evitare in nuovi file)
 - `docs/legacy/historical/redundancy-fixes.md`
 - `docs/legacy/historical/redundancy-fixes-january.md`
-- `docs/legacy/historical/redundancy-fixes-january-2026.md`
+- `docs/legacy/historical/redundancy-fixes-archive-1.md`
 
 Cluster **phpstan dry kiss improvements** quasi identici nel corpo (`docs/legacy/phpstan-dry-kiss-improvements*.md` + variant con suffissi **`-.md`** / **`2025-10-17`).
 

@@ -123,7 +123,7 @@
 
 ### 📝 Meta-Documentazione (3 file)
 
-17. **`Xot/docs/docs-update-2025-12-02.md`** (questo file)
+17. **`Xot/docs/docs-update.md`** (questo file)
     - Riepilogo aggiornamento
     - Statistiche
     - Prossimi passi

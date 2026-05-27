@@ -235,7 +235,7 @@ Ogni sezione `navigation` deve includere:
 ## Collegamenti
 
 - [Errori Comuni Traduzione](errori-comuni-traduzione.md)
-- [Traduzioni Navigation Audit](traduzioni-navigation-2025.md)
+- [Traduzioni Navigation Audit](traduzioni-navigation.md)
 - [Best Practices Traduzioni](../../xot/docs/translation-standards.md)
 - [NavigationLabelTrait Explained](../../xot/docs/filament/navigation-label-trait-explained.md)
 

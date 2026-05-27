@@ -66,6 +66,16 @@ Ridurre rumore, duplicazione e ambiguita' nel codice di questo theme, senza perd
 - I descrittori architetturali navigabili riducono i passi di localizzazione: ogni owner dovrebbe avere mappa scopo -> file chiave.
 - AI utile = recupero mirato, non pre-caricamento: report atomici, QMD, issue e log.
 
+## Moduli Ptv / Sigma (puntatore DRY)
+
+Il tema **non** duplica la logica HR. Decisioni e catalogo:
+
+- [Ptv — audit ridondanza](../../../Modules/Ptv/docs/wiki/redundancy-audit.md)
+- [Catalogo superficie Ptv↔Sigma](../../../Modules/Ptv/docs/wiki/ptv-sigma-shared-surface-catalog.md)
+- [Policy ownership (Xot)](../../../Modules/Xot/docs/wiki/concepts/ptv-sigma-redundancy-ownership.md)
+
+Issue tema: repo `origin` — **#5** (blade). Campagna mono: **#162**.
+
 ## Prossimo passo
 
 Aprire issue mirata per i primi 3 file grandi o per il duplicato cross-owner piu' evidente, poi validare con PHPStan/PHPMD/PHPInsights se si modifica codice.

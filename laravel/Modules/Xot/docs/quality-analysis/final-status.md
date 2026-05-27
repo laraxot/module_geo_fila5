@@ -94,7 +94,7 @@ Analisi sistematica di tutti i moduli con PHPStan livello 10, PHPMD e PHPInsight
 - [Module-by-Module Analysis Plan](./module-by-module-analysis-plan.md)
 - [Module Analysis Workflow](./module-analysis-workflow.md)
 - [Current Status](./current-status.md)
-- [Analysis Summary 2025-01-22](./analysis-summary-2025-01-22.md)
+- [Analysis Summary 2025-01-22](./analysis-summary.md)
 - [All Modules Analysis Summary](./all-modules-analysis-summary.md)
 
 ## 🎓 Lessons Learned

@@ -80,7 +80,7 @@ Il modulo segue già il pattern accessor-guard per i metodi con `save()` (verifi
 
 ## Documentazione Correlata
 - [Accessor Guard Audit](./accessor-guard-audit.md)
-- [PHPStan Improvements 2025](./phpstan-improvements-2025.md)
+- [PHPStan Improvements 2025](./phpstan-improvements.md)
 - [Wire Model Reactivity](./wire-model-input-reactivity.md)
 
 ## Timeline

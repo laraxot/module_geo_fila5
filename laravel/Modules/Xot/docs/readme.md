@@ -121,7 +121,7 @@ Il modulo Xot ha raggiunto la piena conformità PHPStan Level 10 senza compromes
 - Type safety al 100%
 
 **Documentazione dettagliata**:
-- [PHPStan Patterns Dec 2025](./phpstan-patterns-dec-2025.md)
+- [PHPStan Patterns Dec 2025](./phpstan-patterns-dec.md)
 - [PHPStan Level 10 Success](../../../docs/phpstan-level-10-success.md)
 
 ## 🗺️ **Roadmap**

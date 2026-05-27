@@ -1,76 +1,53 @@
-# PHPStan Analysis - Modulo Progressioni
+---
+title: Report Analisi PHPStan - 27 Maggio 2026
+status: action required
+priority: medium
+agent: Gemini CLI
+model: gemini-2.0-flash-thinking-exp-01-21
+---
 
-## Overview
-Analisi sistematica degli errori PHPStan e strategia di risoluzione per il modulo Progressioni.
-
-## Categorizzazione Errori (145 totali)
-
-### 1. Errori Fondamentali - Traits (40+ errori)
-**Files**: `ConvertedTrait.php`, `ProgressioniFunctionTrait.php`
-**Pattern**: Operazioni su `mixed` in calcoli matematici
-**Impatto**: Cascading errors su tutti i modelli che usano questi traits
-**Priorità**: **CRITICA**
-
-#### ConvertedTrait Issues:
-- `convertedIn()`: `$this->$field` senza tipizzazione
-- Operazioni matematiche su valori `mixed`
-- Mancanza di PHPDoc per proprietà dinamiche
-
-#### ProgressioniFunctionTrait Issues:
-- Accesso array su `mixed`: `$item['tipo']`, `$item['codice']`
-- Parsing date su valori `mixed`
-- Operazioni matematiche senza tipi
-
-### 2. Errori Resources - Array Key Types (20+ errori)
-**Pattern**: `array<int,>` vs `array<string,>` nei form schemas
-**Stato**: 2 file già corretti manualmente dall'utente
-**Azione**: Convertire tutti i Resources a string-keyed arrays
-
-### 3. Errori Services/Actions (30+ errori)
-**Pattern**: Property access su `mixed`, parametri non tipizzati
-**Priorità**: Media
-
-### 4. Errori Models (20+ errori)
-**Pattern**: Relazioni non tipizzate, proprietà mancanti
-**Priorità**: Media
+# 🕵️ Report Analisi PHPStan - Modulo Progressioni
 
 ## Stato Attuale
+- **Livello Analisi:** 10 (Max)
+- **Errori Rilevati:** 35
+- **Data:** 27-05-2026
 
-### Progresso Errori PHPStan
-- **Inizio**: 145 errori
-- **Dopo Traits Fondamentali**: 125 errori (-20)
-- **Target**: 0 errori
+## 📋 Dettaglio Errori
 
-### Fasi Completate
-✅ **Fase 1: Fondamenta (Traits)** - COMPLETATA
-- ConvertedTrait: risolto completamente con type guards e assertions
-- ProgressioniFunctionTrait: risolto con type guards per array access e date parsing
-- Impatto: eliminati ~40 errori a cascata su modelli Schede e Progressioni
+### 1. Metodi non trovati / Oggetti mixed (`TrovaEsclusiAction.php`)
+- **Righe:** 327-331
+- **Errore:** `Call to an undefined method ...::ofRangeDate()`, `Cannot call method ... on mixed.`
+- **Causa:** PHPStan non riconosce lo scope o il tipo restituito dalla relazione.
+- **Proposta:** Verificare se `ofRangeDate` è un global scope o un metodo del modello; aggiungere PHPDoc per tipizzare la relazione.
 
-### Pattern Architetturali Documentati
-1. **Dynamic Property Access**: Usare `assert(property_exists($this, $field))` + `@phpstan-ignore-next-line`
-2. **Array Type Guards**: Verificare `is_array($item)` prima di accessi `$item['key']`
-3. **Date Parsing Sicuro**: Wrappare `Carbon::parse()` in try-catch con type guards
+### 2. Tipi in `hasMany()` (`CriteriEsclusione.php`, `MaxCatecoPosfunAnno.php`, etc.)
+- **Errore:** `Parameter #1 $related ... expects class-string<Model>, class-string given.`
+- **Causa:** PHPStan richiede una stringa di classe che estenda explicitamente `Model`.
+- **Proposta:** Usare `::class` invece di stringhe e assicurarsi che il modello sia tipizzato correttamente.
 
-### Prossima Fase: Resources (Quick Wins)
-**Stima**: 15-20 errori
-**Azione**: Convertire rimanenti `array<int,>` a `array<string,>` nei PHPDoc
-**Pattern**: Seguire pattern manuale utente (string-keyed arrays)
+### 3. Funzioni non trovate (`getRouteParameters`)
+- **File:** `EsclusiExtra.php`, `Pesi.php`, `Scheda.php`
+- **Errore:** `Function getRouteParameters not found.`
+- **Causa:** Helper mancante o non caricato in fase di analisi.
+- **Proposta:** Verificare l'esistenza dell'helper o aggiungerlo a `phpstan.neon` (bootstrap).
 
-## Filosofia Architetturale
+### 4. Classi non trovate (`Spatie\Activitylog\LogOptions`, `Assenze`)
+- **File:** `Progressioni.php`, `ProgressioniFunctionTrait.php`
+- **Errore:** `Class ... not found.`
+- **Causa:** Mancanza di import o pacchetti non installati/configurati nel modulo.
+- **Proposta:** Verificare le dipendenze in `composer.json` e aggiungere gli `use` corretti.
 
-Il modulo Progressioni segue questi principi:
-- **Business Logic Centralizzata**: Traits contengono logica complessa di calcolo
-- **Dynamic Properties**: Accesso dinamico a campi database (`$this->$field`)
-- **Type Safety Graduale**: Migrazione progressiva verso tipizzazione rigorosa
-- **Separation of Concerns**: Resources per UI, Traits per logica, Models per dati
+### 5. `whereRaw()` e Literal Strings
+- **File:** `Scheda.php`, `ProgressioniRelationshipTrait.php`
+- **Errore:** `expects ... literal-string, non-falsy-string given.`
+- **Causa:** Concatenazione dinamica di stringhe SQL.
+- **Proposta:** Utilizzare bindings o il pattern `@phpstan-ignore argument.type` se la stringa è sicura (ma preferire bindings).
 
-## Documentazione da Aggiornare
-
-1. `architecture.md` - Pattern di tipizzazione dinamica
-2. `business-logic.md` - Spiegazione calcoli progressioni
-3. `troubleshooting.md` - Errori comuni PHPStan e soluzioni
+## 🚀 Prossimi Passi
+1. Creazione issue GitHub per tracciamento.
+2. Integrazione BMAD Story per la risoluzione.
+3. Fix chirurgici seguendo i pattern Laraxot.
 
 ---
-*Ultimo aggiornamento: 18 Novembre 2025*
-*Status: In Analisi*
+*Firmato: Gemini CLI (Model: gemini-2.0-flash-thinking-exp-01-21)*

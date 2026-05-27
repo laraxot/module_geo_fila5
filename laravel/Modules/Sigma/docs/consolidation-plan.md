@@ -165,8 +165,8 @@ accessor-helper-status-report-final.md
 accessor-helper-audit-complete.md
 quality-verification-notes.md
 session-complete-summary.md
-refactoring-session-2025-01-29.md         # ❌ DATA NEL NOME!
-phpstan-fixes-2025.md                     # ❌ DATA NEL NOME!
+refactoring-session.md         # ❌ DATA NEL NOME!
+phpstan-fixes-archive-1.md                     # ❌ DATA NEL NOME!
 ```
 
 **2. Final Summaries Duplicati**

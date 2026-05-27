@@ -49,7 +49,7 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 | [socialite-github-tenant](./concepts/socialite-github-tenant.md) | Concept | OAuth GitHub | 2026-04-27 |
 | [socialite-facebook-tenant](./concepts/socialite-facebook-tenant.md) | Concept | OAuth Facebook | 2026-04-27 |
 | [socialite-linkedin-tenant](./concepts/socialite-linkedin-tenant.md) | Concept | OAuth LinkedIn | 2026-04-27 |
-| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Widget property types PHPStan | 2026-05-06 |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types.md) | Troubleshooting | Widget property types PHPStan | 2026-05-06 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 24 Table files populated — XotBaseResourceTable enforcement | 2026-05-07 |
 
 ## Best Practices
@@ -76,6 +76,6 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 |--------|------|-----------|
 | [socialite-development](./concepts/socialite-development.md) | Concept | Socialite troubleshooting |
 | [spatie-permission-team-model-not-configured](./troubleshooting/spatie-permission-team-model-not-configured.md) | Troubleshooting | Team model mancante in config permission |
-| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
 
 Aggiornato: 2026-05-06

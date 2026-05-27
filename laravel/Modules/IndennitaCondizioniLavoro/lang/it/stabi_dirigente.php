@@ -168,6 +168,13 @@ return [
             'icon' => 'save',
             'label' => 'save',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+        ],
     ],
     'label' => 'stabi dirigente',
 ];

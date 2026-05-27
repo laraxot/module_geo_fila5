@@ -87,7 +87,7 @@ public function getMobileDeviceTokens(): Collection
 
 ### Documentazione Correlata
 - [PHPStan Level 10 Success](../../../docs/phpstan-level-10-success.md) - Achievement generale progetto
-- [Xot PHPStan Patterns](../../Xot/docs/phpstan-patterns-dec-2025.md) - Pattern comuni
+- [Xot PHPStan Patterns](../../Xot/docs/phpstan-patterns-dec.md) - Pattern comuni
 
 ---
 

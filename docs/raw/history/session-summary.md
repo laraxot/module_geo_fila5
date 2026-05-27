@@ -12,7 +12,7 @@
 - `binaryOp.invalid`: Aggiunti type hints espliciti per concatenazione
 - `return.type`: Corretto template type `static` → `$this` in HasMany
 
-**Documentazione**: `Modules/Sigma/docs/phpstan-fixes-2025.md` aggiornato
+**Documentazione**: `Modules/Sigma/docs/phpstan-fixes-archive-1.md` aggiornato
 
 ---
 

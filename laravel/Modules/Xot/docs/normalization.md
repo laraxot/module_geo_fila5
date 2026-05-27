@@ -65,8 +65,8 @@
 - Altri file con pattern `bugfix-*-2025-*.md`
 
 ### Modulo Lang
-- `riepilogo-correzioni-traduzioni-2025.md` (verificare se esiste `riepilogo-correzioni-traduzioni.md`)
-- `translation-errors-correction-2025.md` (verificare duplicati)
+- `riepilogo-correzioni-traduzioni.md` (verificare se esiste `riepilogo-correzioni-traduzioni.md`)
+- `translation-errors-correction.md` (verificare duplicati)
 
 ### Modulo Xot
 - File in cartella `archive/` (valutare se mantenere date per storico)

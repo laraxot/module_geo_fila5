@@ -8,7 +8,7 @@ created: "2026-05-26"
 updated: "2026-05-26"
 related:
   - redundancy-catalog.md
-  - ../redundancy-audit-2026-05-26.md
+  - ../redundancy-audit.md
   - ../../../../../docs/wiki/concepts/second-brain-operating-model.md
   - ../../../../../docs/wiki/how-to/module-docs-deduplication.md
 issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/151"
@@ -87,6 +87,6 @@ Questo documento fissa **come decidere** cosa tenere, cosa fondere e cosa archiv
 ## Collegamenti
 
 - [Catalogo indice](redundancy-catalog.md)
-- [Audit 2026-05-26](../redundancy-audit-2026-05-26.md)
+- [Audit 2026-05-26](../redundancy-audit.md)
 - [Regole Filament ridondanza](../../filament/redundancy-rules.md)
 - [Deduplica docs root](../../../../../docs/wiki/how-to/module-docs-deduplication.md)

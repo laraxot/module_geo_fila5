@@ -1,7 +1,7 @@
 # Xot Module Documentation Index
 
 ## Core Architecture
-- [Architecture Complete Guide](./architecture-complete-2025.md)
+- [Architecture Complete Guide](./architecture-complete.md)
 - [PHPStan Code Quality Guide](./phpstan-code-quality-guide.md)
 - [Filament Class Extension Rules](./filament-class-extension-rules.md)
 - [Project Philosophy, Religion, Politics, Zen](./project-philosophy-religion-politics-zen.md)

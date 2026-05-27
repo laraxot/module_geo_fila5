@@ -6,13 +6,13 @@ created: 2026-05-19
 updated: 2026-05-19
 ---
 
-# LLM Wiki Hardening Coordination
+## LLM Wiki Hardening Coordination
 
 Current repo resolved with `git remote -v`: `provtv/base_ptv_fila5_mono`.
 
 GitHub context verified:
 
-- Tracking issue: https://github.com/provtv/base_ptv_fila5_mono/issues/122
+- Tracking issue: [#122](https://github.com/provtv/base_ptv_fila5_mono/issues/122)
 - Default branch: `dev`
 - Viewer permission via `gh`: `ADMIN`
 - GitHub Wiki is disabled (`hasWikiEnabled=false`), so local `docs/wiki/` remains the operational wiki.
@@ -50,7 +50,7 @@ Quality bar for agents:
 
 ## Update: HackerNoon Tip 020 (2026-05-20)
 
-Standard minimo obbligatorio per ogni `.md` wiki: [`markdown-note-minimum-standard.md`](../wiki/concepts/markdown-note-minimum-standard.md). Allineato a https://hackernoon.com/ai-coding-tip-020-create-a-second-brain — YAML, atomicità, PARA mappato al monorepo, checklist agent.
+Standard minimo obbligatorio per ogni `.md` wiki: [`markdown-note-minimum-standard.md`](../wiki/concepts/markdown-note-minimum-standard.md). Allineato a [HackerNoon Tip 020](https://hackernoon.com/ai-coding-tip-020-create-a-second-brain) — YAML, atomicità, PARA mappato al monorepo, checklist agent.
 
 ## Update: Forbidden Residues
 
@@ -96,3 +96,18 @@ Removed unverified wording that described `docs/raw/` as immutable/read-only. Cu
 
 1. Chiudere o commentare #122 dopo revisione umana del prompt.
 2. Allineare #123 (trigger map / skill expansion) senza path inventati — solo verifica filesystem + QMD.
+
+## Update: Prompt + gate check (2026-05-27)
+
+- Aggiornato `bashscripts/tools/prompts/llm-wiki.txt` per:
+  - rafforzare la disciplina “domande esplicite” in issue (discussione come meccanismo qualità),
+  - aggiungere bad practice su path assoluti in issue/docs,
+  - aggiungere link verificati a `docs/wiki/how-to/module-theme-github-issues.md` e `docs/chat/module-theme-github-issues-manifest.md`,
+  - rimuovere sezioni non portabili con “link da creare” / istruzioni non verificate.
+
+### Gate `verify-llm-wiki.sh` (eseguito via `bash`)
+
+- Fail: presenza `bashscripts/ai/.agents/node_modules` (forbidden).
+- Warning: molte cartelle `archive/` e `backup/` rilevate (da triage; evitare naming in aree wiki e ridurre rumore).
+
+Domanda agli altri agenti: confermate che `node_modules` in `.agents` va rimosso sempre (senza eccezioni), o ci sono casi legacy da migrare prima?

@@ -291,7 +291,7 @@ class IndennitaResponsabilitaPolicy extends XotBasePolicy
 - [Models & Relationships](../architecture/models.md)
 - [Business Logic](../architecture/business-logic.md)
 - [Code Quality Analysis](../quality/analysis.md)
-- [PHPStan Fixes Applied](./phpstan-fixes-applied-2025-12-10.md)
+- [PHPStan Fixes Applied](./phpstan-fixes-applied.md)
 
 ### Maintenance Documentation
 - **Changelog**: Version history and changes

@@ -128,8 +128,8 @@ La soluzione implementata...
 
 ```
 ❌ WRONG:
-- analysis-2025-01-02.md
-- fixes-2024-12-10.md
+- analysis.md
+- fixes.md
 
 ✅ CORRECT:
 - code-analysis.md (content in CHANGELOG.md with date)
@@ -223,7 +223,7 @@ Usiamo pattern X perché business rule Y richiede...
 ### Bad Documentation
 
 ```markdown
-# Code-Analysis-2025-01-02.md
+# Code-Analysis.md
 
 ## What the code does
 Line 50: Creates object

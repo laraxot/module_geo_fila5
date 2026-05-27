@@ -67,7 +67,7 @@
    - Workflow e calcoli
    - Edge cases
 
-7. **refactoring-session-2025-01-29.md** (~8KB)
+7. **refactoring-session.md** (~8KB)
    - Log sessione refactoring
    - Decisioni prese
    - Metriche qualitative
@@ -371,7 +371,7 @@ Creati template, implementazione prossima sessione:
 - [Refactoring Roadmap](./accessor-refactoring-roadmap.md) - Piano operativo
 - [Fix Duplicate Entry](./fix-duplicate-entry-error-summary.md) - Bug fix
 - [Fix Pattern Guide](./fix-accessor-save-pattern.md) - Guida implementazione
-- [Session Log](./refactoring-session-2025-01-29.md) - Log sessione
+- [Session Log](./refactoring-session.md) - Log sessione
 
 ### Documentazione Xot
 - [File Locking Pattern](../../Xot/docs/file-locking-pattern.md) - Pattern completo

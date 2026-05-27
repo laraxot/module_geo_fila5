@@ -28,9 +28,11 @@ Config: `laravel/phpstan.neon` (level **max**).
 | Lang | **0** | `./vendor/bin/phpstan analyse Modules/Lang --memory-limit=2G` | [#11](https://github.com/provtv/module_lang_fila5/issues/11) chiusa 2026-05-27 |
 | Media | **0** | `./vendor/bin/phpstan analyse Modules/Media --memory-limit=2G` | [#3](https://github.com/provtv/module_media_fila5/issues/3) commento 2026-05-27 |
 | Notify | **0** | `./vendor/bin/phpstan analyse Modules/Notify --memory-limit=2G` | commento meta [#21](https://github.com/provtv/module_notify_fila5/issues/21) |
-| Gdpr | **0** | `./vendor/bin/phpstan analyse Modules/Gdpr --memory-limit=2G` | [#9](https://github.com/provtv/module_gdpr_fila5/issues/9) risolto 2026-05-27 |
-| Activity | **0** | `./vendor/bin/phpstan analyse Modules/Activity --memory-limit=2G` | [#10](https://github.com/provtv/module_activity_fila5/issues/10) risolto 2026-05-27 |
-| Questionari | **0** | `./vendor/bin/phpstan analyse Modules/Questionari --memory-limit=2G` | `provtv/module_questionari_fila5#3` (commento audit; no issue errori) |
+| Activity | **16** | `./vendor/bin/phpstan analyse Modules/Activity --memory-limit=2G` | [#10](https://github.com/provtv/module_activity_fila5/issues/10) - Regressione 2026-05-27 |
+| Gdpr | **16** | `./vendor/bin/phpstan analyse Modules/Gdpr --memory-limit=2G` | [#9](https://github.com/provtv/module_gdpr_fila5/issues/9) - Regressione 2026-05-27 |
+| Progressioni | **35** | `./vendor/bin/phpstan analyse Modules/Progressioni --memory-limit=2G` | [#4](https://github.com/provtv/module_progressioni_fila5/issues/4) - Scan 2026-05-27 |
+| IndennitaResponsabilita | **33** | `./vendor/bin/phpstan analyse Modules/IndennitaResponsabilita --memory-limit=2G` | [#4](https://github.com/provtv/module_indennitaresponsabilita_fila5/issues/4) - Scan 2026-05-27 |
+| Questionari | **0** | `./vendor/bin/phpstan analyse Modules/Questionari --memory-limit=2G` | `provtv/module_questionari_fila5#3` |
 | DbForge | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/DbForge --no-progress` | `provtv/module_dbforge_fila5#22` gia aperta come coordinamento PHPStan |
 | MobilitaVolontaria | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/MobilitaVolontaria --no-progress` | `provtv/module_mobilitavolontaria_fila5#3` documenta errore storico gia corretto |
 | Setting | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/Setting --no-progress` | `provtv/module_setting_fila5#3` aperta come coordinamento PHPStan |

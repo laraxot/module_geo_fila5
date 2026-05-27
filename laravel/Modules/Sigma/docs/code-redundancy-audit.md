@@ -4,9 +4,12 @@ type: source
 status: draft
 tags: [code-audit, redundancy, dry, second-brain, module]
 created: "2026-05-26"
-updated: "2026-05-26"
+updated: "2026-05-27"
 owner: "Sigma"
-issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
+issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/162"
+related:
+  - wiki/redundancy-audit.md
+  - ../Ptv/docs/wiki/ptv-sigma-shared-surface-catalog.md
 ---
 
 # Code redundancy audit — Sigma
@@ -14,6 +17,22 @@ issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
 ## Scopo
 
 Ridurre rumore, duplicazione e ambiguita' nel codice di questo module, senza perdere conoscenza storica.
+
+## Consumer e superficie condivisa
+
+| Modulo consumer | Uso principale |
+|-----------------|----------------|
+| **Ptv** | `BaseScheda` → `SchedaTrait` |
+| **Progressioni** | `Scheda` + conflict `SigmaModelTrait` |
+| **Performance** | `BaseIndividualeModel` → metodi `gg*Tot` |
+
+| Documento | Contenuto |
+|-----------|-----------|
+| [wiki/redundancy-audit.md](wiki/redundancy-audit.md) | God trait, piano decoupling |
+| [Catalogo Ptv↔Sigma](../Ptv/docs/wiki/ptv-sigma-shared-surface-catalog.md) | Metodi e contratti |
+| [Policy ownership (Xot)](../Xot/docs/wiki/concepts/ptv-sigma-redundancy-ownership.md) | Matrice decisionale |
+
+Issue modulo: repo `origin` — **#4** (`SchedaTrait`).
 
 ## Metriche
 

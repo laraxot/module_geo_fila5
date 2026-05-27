@@ -7,7 +7,7 @@ created: "2026-05-26"
 updated: "2026-05-26"
 related:
   - ../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md
-  - ../../../../Xot/docs/wiki/redundancy-audit-2026-05-26.md
+  - ../../../../Xot/docs/wiki/redundancy-audit.md
   - ../../../redundancy-fixes.md
 ---
 
@@ -52,4 +52,4 @@ Risorse presenti sia in `Filament/Resources/` sia in `Filament/Clusters/Passport
 ## Collegamenti
 
 - [Filosofia](../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md)
-- [Audit 2026-05-26](../../../../Xot/docs/wiki/redundancy-audit-2026-05-26.md)
+- [Audit 2026-05-26](../../../../Xot/docs/wiki/redundancy-audit.md)

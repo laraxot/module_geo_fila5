@@ -8,7 +8,7 @@
 
 ## 📚 Essential Reading (30 minutes)
 
-### 1. [Analysis Summary](./analysis-summary-2025.md) (10 min)
+### 1. [Analysis Summary](./analysis-summary.md) (10 min)
 
 **Why**: Understand current state and issues  
 **Key Points**:
@@ -127,7 +127,7 @@ php artisan test Modules/IndennitaResponsabilita/Tests
 - [Best Practices](./best-practices.md) - How to do it
 - [Trait Responsibility](./trait-responsibility-violation.md) - DRY fix
 
-**Root**: [Master Index](../../../docs/MASTER-INDEX-2025.md)
+**Root**: [Master Index](../../../docs/MASTER-INDEX.md)
 
 ---
 
