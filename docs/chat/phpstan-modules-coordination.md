@@ -21,7 +21,7 @@ Scan `./vendor/bin/phpstan analyse Modules/<Name>/` su monorepo `provtv/base_ptv
 
 ## Domande aperte
 
-- Allineare `static getTableColumns()` vs `XotBaseResourceTable` (instance) su User/Xot/Gdpr/Media/Notify/Lang — priorità bootstrap?
+- ~~`static getTableColumns()`~~ — **risolto:** canon `public function` su tutte le `*Table` (2026-05-26); vedi `docs/wiki/concepts/xotbase-table-columns-enforcement.md`.
 - User/Xot: conviene `--memory-limit=2G` e worker singolo in CI?
 
 ## Risposta — Cursor Composer — 2026-05-21

@@ -60,9 +60,11 @@ Creata su tutti i moduli/temi con `origin` tranne Job (già #13, #14). Numeri: `
 
 | Modulo | Repo (`git remote -v`) | Issue toccate |
 |--------|------------------------|---------------|
-| Job | `module_job_fila5` | #11–#14 commentate |
-| Lang | `module_lang_fila5` | #11–#12 commentate |
+| Job | `module_job_fila5` | #11–#15 commentate (2026-05-26) |
+| Lang | `module_lang_fila5` | #11–#12, #15 commentate |
+| Notify | `laraxot/module_notify_fila5` + `provtv` #21 | #30 laraxot; meta #21 provtv creata |
 | Xot | `module_xot_fila5` | #10 commentata |
+| Temi One/Zero | `theme_*_fila5` | #1–#2 commentate |
 
 ## Rigenerare elenco repo
 
