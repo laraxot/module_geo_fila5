@@ -25,7 +25,7 @@ class FieldRefreshAction extends Action
             ->tooltip(__('xot::field_refresh_action.tooltip.label'))
             ->action(function ($record, Set $set): void {
                 $name = $this->getName();
-                if ($name === null) {
+                if (null === $name) {
                     return;
                 }
 
