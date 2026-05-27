@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Sushi\Sushi;
+use function Safe\json_encode;
 
 /**
  * @property string   $name
