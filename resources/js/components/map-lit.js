@@ -9,8 +9,10 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { renderControls, toggleFullscreen, switchLayer, zoomIn, zoomOut, requestGeolocation } from './map/controls.js';
 import { renderSearch, searchUiHandlers } from './map/controls/search.js';
 import { buildMapLayers } from './map/layers.js';
+import { geoIconRaw } from './map/heroicons.js';
 import { mapStylesText } from './map/styles.js';
 import { createGeoMapLeafletIcon } from './map/config.js';
+import { resolveFeatureTicketType } from './map/feature-type.js';
 
 const DEFAULT_TICKETS_JSON_URL = '/data/tickets.json';
 const DEFAULT_CENTER = [41.9028, 12.4964];
@@ -23,19 +25,19 @@ const DEFAULT_ZOOM = 6;
  */
 class MapLit extends LitElement {
     static properties = {
-        filterType:        { type: String },
-        activeLayer:       { type: String },
-        isFullscreen:      { type: Boolean, state: true },
-        height:            { type: String },
-        _searchOpen:       { type: Boolean, state: true },
-        labels:            { type: Object },
-        dataUrl:           { type: String, attribute: 'data-url' },
+        filterType: { type: String },
+        activeLayer: { type: String },
+        isFullscreen: { type: Boolean, state: true },
+        height: { type: String },
+        _searchOpen: { type: Boolean, state: true },
+        labels: { type: Object },
+        dataUrl: { type: String, attribute: 'data-url' },
         // State for shared modules (renderSearch/renderControls)
-        searchQuery:       { type: String,  state: true },
-        searchResults:     { type: Array,   state: true },
+        searchQuery: { type: String, state: true },
+        searchResults: { type: Array, state: true },
         showSearchResults: { type: Boolean, state: true },
-        isSearching:       { type: Boolean, state: true },
-        isLocating:        { type: Boolean, state: true },
+        isSearching: { type: Boolean, state: true },
+        isLocating: { type: Boolean, state: true },
     };
 
     createRenderRoot() { return this; }
@@ -80,6 +82,13 @@ class MapLit extends LitElement {
                 map-lit { display: block; width: 100%; min-height: 320px; }
                 .geo-map-leaflet { width: 100%; height: 100%; min-height: 320px; }
                 .geo-map-marker-wrapper svg { display: block; }
+                .geo-map-marker-pin { position: relative; width: 32px; height: 45px; }
+                .geo-map-marker-glyph-wrap {
+                    position: absolute; left: 50%; top: 11px; transform: translateX(-50%);
+                    width: 14px; height: 14px; display: flex; align-items: center; justify-content: center;
+                    pointer-events: none;
+                }
+                .geo-map-marker-glyph { display: block; object-fit: contain; color: #17324d; filter: brightness(0) saturate(100%); }
                 .leaflet-div-icon { background: transparent !important; border: none !important; }
                 
                 /* farmshops.eu LOD cluster styles */
@@ -103,9 +112,38 @@ class MapLit extends LitElement {
                 .geo-address-search-results li:hover { background: #eef6ff !important; color: #0050a4 !important; }
                 
                 .geo-popup { padding: 2px 0; }
-                .geo-popup-title { display: block; font-size: 14px; margin-bottom: 4px; color: #17324d; font-weight: 700; }
+                .geo-popup-title {
+                    display: block;
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                    color: #17324d;
+                    font-weight: 700;
+                    white-space: normal;
+                    word-break: break-word;
+                    padding-right: 18px; /* avoid overlap with Leaflet close button */
+                }
+                .leaflet-popup-content-wrapper { max-width: min(460px, 88vw); }
+                .leaflet-popup-content {
+                    width: max-content;
+                    min-width: 280px;
+                    max-width: min(430px, 82vw);
+                    margin: 10px 12px;
+                }
                 .geo-popup-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: #fff; margin-bottom: 6px; font-weight: 600; }
                 .geo-popup-description { font-size: 12.5px; line-height: 1.4; color: #4b5563; margin-top: 4px; }
+                .geo-popup-actions { margin-top: 10px; }
+                .geo-popup-details-btn {
+                    display: inline-block;
+                    padding: 6px 10px;
+                    border-radius: 6px;
+                    background: #008758;
+                    color: #fff !important;
+                    text-decoration: none;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 1.2;
+                }
+                .geo-popup-details-btn:hover { background: #006c46; color: #fff !important; }
                 
                 html.geo-map-fullscreen-active, html.geo-map-fullscreen-active body { overflow: hidden !important; }
             </style>
@@ -134,7 +172,7 @@ class MapLit extends LitElement {
         if (!container) return;
 
         await this._ensureLeafletPlugins();
-        
+
         this._map = L.map(container, {
             center: DEFAULT_CENTER,
             zoom: DEFAULT_ZOOM,
@@ -170,7 +208,7 @@ class MapLit extends LitElement {
             const mapH = this._map.getContainer().clientHeight;
             const mapW = this._map.getContainer().clientWidth;
             e.popup.options.maxHeight = Math.floor(mapH * 0.4);
-            e.popup.options.maxWidth  = Math.floor(mapW * 0.9);
+            e.popup.options.maxWidth = Math.floor(mapW * 0.9);
             e.popup.update();
         });
 
@@ -181,7 +219,7 @@ class MapLit extends LitElement {
         });
 
         this._setupMutationObserver();
-        
+
         // Auto-center on geolocation immediately
         requestGeolocation(this, { showLoading: false });
 
@@ -235,7 +273,7 @@ class MapLit extends LitElement {
                     `<svg style="display:inline-block;flex:0 0 auto;" viewBox="0 0 14 14" width="14" height="14">` +
                     `<circle cx="7" cy="7" r="6" fill="${color}" stroke="#fff" stroke-width="1.5"/></svg>`
                 ).join('');
-            
+
             return L.divIcon({
                 html: `<div class="geo-cluster-circle"><strong>${count}</strong><div class="geo-cluster-type-icons">${icons}</div></div>`,
                 className: 'geo-cluster-wrapper',
@@ -258,9 +296,9 @@ class MapLit extends LitElement {
                 if (!data || !Array.isArray(data.features)) return;
 
                 // STRICT VALIDATION: prevents "TypeError: lat"
-                const validFeatures = data.features.filter(f => 
-                    f.geometry && 
-                    Array.isArray(f.geometry.coordinates) && 
+                const validFeatures = data.features.filter(f =>
+                    f.geometry &&
+                    Array.isArray(f.geometry.coordinates) &&
                     f.geometry.coordinates.length >= 2 &&
                     !isNaN(parseFloat(f.geometry.coordinates[0])) &&
                     !isNaN(parseFloat(f.geometry.coordinates[1]))
@@ -268,7 +306,7 @@ class MapLit extends LitElement {
 
                 this._allFeatures = validFeatures;
                 this._allMarkers = [];
-                
+
                 if (this._markersLayer) {
                     this._markersLayer.clearLayers();
                 }
@@ -277,30 +315,32 @@ class MapLit extends LitElement {
                 this._geojsonLayer = L.geoJson({ type: 'FeatureCollection', features: validFeatures }, {
                     pointToLayer: (feature, latlng) => {
                         const p = feature.properties || {};
-                        const type = p.p || p.type || 'other'; // direktvermarkter uses .p
-                        const color = p.type_color || this._getFarmshopColor(type);
-                        
+                        const ticketType = resolveFeatureTicketType(p);
+
                         const marker = L.marker(latlng, {
-                            icon: createGeoMapLeafletIcon(L, color),
-                            typeValue: type,
-                            typeColor: color,
-                            typeLabel: p.type_label || type,
+                            icon: createGeoMapLeafletIcon(L, ticketType.color, ticketType.iconUrl),
+                            typeValue: ticketType.value,
+                            typeColor: ticketType.color,
+                            typeLabel: ticketType.label,
+                            typeIcon: ticketType.icon,
+                            typeIconUrl: ticketType.iconUrl,
                         });
                         this._allMarkers.push(marker);
                         return marker;
                     },
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties || {};
-                        const type = p.p || p.type || 'other';
-                        const color = p.type_color || this._getFarmshopColor(type);
-                        
+                        const ticketType = resolveFeatureTicketType(p);
+                        const color = ticketType.color;
+
                         layer.bindPopup(`
                             <div class="geo-popup">
                                 <strong class="geo-popup-title">${p.title || p.name || ''}</strong>
-                                <span class="geo-popup-badge" style="background:${color}">${p.type_label || type}</span>
+                                <span class="geo-popup-badge" style="background:${color}">${ticketType.label}</span>
                                 <br><small class="text-muted">${p.address || ''}</small>
+                                ${p.url ? `<div class="geo-popup-actions"><a class="geo-popup-details-btn" href="${p.url}" style="display:inline-block !important;padding:6px 10px !important;border-radius:6px !important;background:#008758 !important;color:#fff !important;border:1px solid #008758 !important;text-decoration:none !important;font-size:12px !important;font-weight:600 !important;line-height:1.2 !important;">Dettagli</a></div>` : ''}
                             </div>
-                        `, { maxWidth: 260 });
+                        `, { minWidth: 280, maxWidth: 430 });
 
                         // Lazy details fetch
                         if (p.id) {
@@ -312,14 +352,15 @@ class MapLit extends LitElement {
                                         const popupContent = `
                                             <div class="geo-popup">
                                                 <strong class="geo-popup-title">${detail.title || p.title || ''}</strong>
-                                                <span class="geo-popup-badge" style="background:${color}">${p.type_label || type}</span>
+                                                <span class="geo-popup-badge" style="background:${color}">${ticketType.label}</span>
                                                 <p class="geo-popup-description">${detail.description || ''}</p>
                                                 ${detail.images && detail.images.length > 0 ? `<div class="geo-popup-gallery" style="display:grid;grid-template-columns:1fr;gap:4px;margin-top:8px;">${detail.images.map(img => `<img src="${img}" style="width:100%;height:100px;object-fit:cover;border-radius:4px;">`).join('')}</div>` : ''}
+                                                ${p.url ? `<div class="geo-popup-actions"><a class="geo-popup-details-btn" href="${p.url}" style="display:inline-block !important;padding:6px 10px !important;border-radius:6px !important;background:#008758 !important;color:#fff !important;border:1px solid #008758 !important;text-decoration:none !important;font-size:12px !important;font-weight:600 !important;line-height:1.2 !important;">Dettagli</a></div>` : ''}
                                             </div>
                                         `;
                                         layer.getPopup().setContent(popupContent);
                                     })
-                                    .catch(() => {});
+                                    .catch(() => { });
                             });
                         }
                     },
@@ -344,7 +385,7 @@ class MapLit extends LitElement {
                 this.dispatchEvent(new CustomEvent('geo-map-loaded', {
                     detail: {
                         count: this._allFeatures.length,
-                        types: [...new Set(this._allFeatures.map(f => f.properties?.p || f.properties?.type).filter(Boolean))],
+                        types: [...new Set(this._allFeatures.map(f => resolveFeatureTicketType(f.properties || {}).value).filter(Boolean))],
                     },
                     bubbles: true,
                     composed: true,
@@ -365,10 +406,89 @@ class MapLit extends LitElement {
         return colors[type] || colors['other'];
     }
 
+    _createTypeMarkerIcon(Lref, color, typeIcon) {
+        const iconName = this._heroiconNameFromTypeIcon(typeIcon);
+        const rawIconSvg = iconName ? geoIconRaw(iconName) : '';
+        const iconSvg = this._normalizeMarkerIconSvg(rawIconSvg);
+        if (!iconSvg) {
+            return createGeoMapLeafletIcon(Lref, color);
+        }
+
+        return Lref.divIcon({
+            className: 'leaflet-div-icon',
+            html: `
+                <div style="position:relative;width:34px;height:46px;display:flex;align-items:flex-start;justify-content:center;">
+                    <svg viewBox="0 0 34 46" width="34" height="46" aria-hidden="true">
+                        <path d="M15 0C6.7157 0 0 6.7157 0 15c0 10.3125 12.5625 25.9375 14.0625 27.75.5156.625 1.3594.625 1.875 0C17.4375 40.9375 30 25.3125 30 15 30 6.7157 23.2843 0 15 0z" fill="${color}" />
+                        <circle cx="15" cy="15" r="10.2" fill="#ffffff" />
+                    </svg>
+                    <span style="position:absolute;top:5px;left:0;right:0;z-index:2;display:flex;align-items:center;justify-content:center;">
+                        <span style="display:block;width:16px;height:16px;color:#0b2f4a;">${iconSvg}</span>
+                    </span>
+                </div>
+            `,
+            iconSize: [34, 46],
+            iconAnchor: [17, 46],
+            popupAnchor: [0, -40],
+        });
+    }
+
+    _heroiconNameFromTypeIcon(typeIcon) {
+        const icon = (typeIcon || '').toLowerCase();
+        if (!icon) return '';
+        if (icon.startsWith('heroicon-o-')) {
+            return icon.replace('heroicon-o-', '');
+        }
+        if (icon.startsWith('heroicon-s-')) {
+            return icon.replace('heroicon-s-', '');
+        }
+        if (icon.includes('bus')) return 'truck';
+        if (icon.includes('report')) return 'document-text';
+        if (icon.includes('water') || icon.includes('drop')) return 'archive-box';
+        return icon;
+    }
+
+    _normalizeMarkerIconSvg(svg) {
+        if (typeof svg !== 'string' || svg.trim() === '') {
+            return '';
+        }
+
+        // Force explicit visual attributes so marker icon stays visible regardless of global CSS.
+        return svg
+            .replace(
+                /<svg\b([^>]*)>/i,
+                '<svg$1 width="16" height="16" viewBox="0 0 24 24" style="display:block;overflow:visible;stroke:#0b2f4a;stroke-width:2.1;fill:none;">',
+            )
+            .replace(/\sstroke="currentColor"/gi, ' stroke="#0b2f4a"')
+            .replace(/\sstroke-width="[^"]*"/gi, ' stroke-width="2.1"')
+            .replace(/\sfill="[^"]*"/gi, ' fill="none"');
+    }
+
     filterByType(type) {
+        if (Array.isArray(type)) {
+            this.filterByTypes(type);
+            return;
+        }
         if (!this._markersLayer) return;
         this._markersLayer.clearLayers();
         const filtered = type ? this._allMarkers.filter(m => m.options.typeValue === type) : this._allMarkers;
+        this._addMarkersToLayer(filtered);
+    }
+
+    filterByTypes(types) {
+        if (!this._markersLayer) return;
+        const normalizedTypes = Array.isArray(types)
+            ? types.filter((type) => typeof type === 'string' && type.length > 0)
+            : [];
+
+        this._markersLayer.clearLayers();
+        if (normalizedTypes.length === 0) {
+            this._addMarkersToLayer(this._allMarkers);
+            return;
+        }
+
+        const allowed = new Set(normalizedTypes);
+        const filtered = this._allMarkers.filter((marker) => allowed.has(marker.options.typeValue));
         this._addMarkersToLayer(filtered);
     }
 
