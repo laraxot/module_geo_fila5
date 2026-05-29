@@ -51,6 +51,7 @@ NON aggiungere `<script type="module" src="{{ Vite::asset('...,'assets/geo') }}"
 ## Anti-pattern condannati
 
 - File alias proliferati: `geo-map-lit-final.js`, `geo-map-lit-new.js`, `geo-map-lit.bak.js`, `my-map-lit.js`
+- **Fork nel tema Sixteen:** `Themes/Sixteen/resources/js/components/geo-map-lit-local.js` (vietato — regola progetto [no-theme-map-lit-fork](../../../../../docs/wiki/rules/no-theme-map-lit-fork.md))
 - Custom element duplicati: `<geo-map-lit>`, `<my-map-lit>`, `<ticket-map-lit>`
 - Cross-module Vite asset deploy: `<script src="{{ Vite::asset('...,'assets/geo') }}">`
 - "Compat layer" che mantiene entrambi i nomi attivi → causa "Custom element already defined"
