@@ -9,9 +9,7 @@ on:
       - Release
     types:
       - completed
-    branches:
-      - main
-      - master
+    branches: ["*"]
 
 permissions:
   contents: read
