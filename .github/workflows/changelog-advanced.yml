@@ -59,11 +59,12 @@ jobs:
           echo "to_tag=$(git describe --tags --abbrev=0 ${TO} 2>/dev/null || echo '')" >> "$GITHUB_OUTPUT"
 
       - name: Build structured changelog (PR/commits)
+        if: steps.range.outputs.from != '' || steps.range.outputs.to_tag != ''
         id: changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
           fromTag: ${{ steps.range.outputs.from }}
-          toTag: ${{ steps.range.outputs.to_tag || steps.range.outputs.to }}
+          toTag: ${{ steps.range.outputs.to_tag != '' && steps.range.outputs.to_tag || steps.range.outputs.to }}
           outputFile: docs/chat/changelog-builder-output.md
           fetchViaCommits: true
           includeOpen: false

@@ -17,20 +17,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Period start
+        id: period
+        run: echo "since=$(date -u -d '30 days ago' +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
       - name: Last 30 days analytics
         env:
-          CHANGELOG_FROM_TAG: ""
+          CHANGELOG_SINCE: ${{ steps.period.outputs.since }}
           CHANGELOG_TO_REF: HEAD
           OUTPUT_MD: docs/chat/changelog-contributors-weekly.md
           GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node bashscripts/ci/generate-changelog-report.mjs
+
+      - name: Period footer
         run: |
-          SINCE=$(date -u -d '30 days ago' +%Y-%m-%d 2>/dev/null || date -u -v-30d +%Y-%m-%d)
-          export CHANGELOG_FROM_TAG=""
-          git log --since="$SINCE" --no-merges --pretty=format:%H >/dev/null || true
-          node bashscripts/ci/generate-changelog-report.mjs
           {
             echo ""
-            echo "> Periodo: ultimi 30 giorni (da ${SINCE})"
+            echo "> Periodo: ultimi 30 giorni (da ${{ steps.period.outputs.since }})"
           } >> docs/chat/changelog-contributors-weekly.md
 
       - uses: actions/upload-artifact@v4

@@ -1,4 +1,4 @@
-# Sincronizza CHANGELOG dopo Release (workflow_run: i release da GITHUB_TOKEN non emettono event release)
+# Sincronizza CHANGELOG dopo Release (analytics in changelog-advanced.yml)
 name: Update Changelog
 
 on:

@@ -30,6 +30,11 @@ related:
 | [update-changelog.yml](../../../.github/workflows/update-changelog.yml) | Sync `CHANGELOG.md` post-release | `workflow_run` dopo **Release** |
 | [tag-version.yml](../../../.github/workflows/tag-version.yml) | Dispatch manuale **Release** | `workflow_dispatch`, `repository_dispatch` |
 | [attest-release.yml](../../../.github/workflows/attest-release.yml) | Provenance artifact | `workflow_run` dopo **Release** |
+| [changelog-advanced.yml](../../../.github/workflows/changelog-advanced.yml) | Analytics + contributori + grafici Mermaid | `workflow_run` / dispatch / schedule |
+| [changelog-contributors.yml](../../../.github/workflows/changelog-contributors.yml) | Report settimanale contributori | mercoledì / dispatch |
+| [changelog-git-cliff.yml](../../../.github/workflows/changelog-git-cliff.yml) | Changelog git-cliff | post-release / dispatch |
+
+Dettaglio analytics: [github-actions-changelog-analytics.md](github-actions-changelog-analytics.md)
 
 ## Configurazione
 

@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-03 15:00:00 UTC] [CI] Changelog analytics: `changelog-advanced.yml`, `changelog-contributors.yml`, `changelog-git-cliff.yml`, `generate-changelog-report.mjs`, `cliff.toml`; wiki `github-actions-changelog-analytics.md`.
+
 [2026-06-03 14:30:00 UTC] [CI] Stack semantic release root: `release.yml` (npx semantic-release), `semantic-versioning.yml` (dispatch), `release-drafter`, `update-changelog`, `tag-version`, `attest-release` via workflow_run; doc `github-actions-semantic-release-stack.md`.
 
 [2026-06-03 12:00:00 UTC] [FIX] ParseError Passport `as array<>` + conflitti Activity `<<<<<<<`; gate PHP verificato; memoria `agent-verification-mandatory-no-dovrebbe.md`.
