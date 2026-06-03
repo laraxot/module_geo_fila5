@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-03 12:00:00 UTC] [FIX] ParseError Passport `as array<>` + conflitti Activity `<<<<<<<`; gate PHP verificato; memoria `agent-verification-mandatory-no-dovrebbe.md`.
+
 [2026-06-03 11:30:00 UTC] [UPDATE] `llm-wiki.txt` compattato (1031→123 righe); trigger UI/UX MCP; rimosso `.agents/node_modules`; story `docs/chat/story-166-second-brain-ui-mcp.md`; issue [#166](https://github.com/provtv/base_ptv_fila5_mono/issues/166).
 
 [2026-05-27 18:00:00 UTC] [RULE] `docs/README.md` obbligatorio moduli/temi: creato `Themes/Three/docs/README.md`; regola `theme-module-docs-readme-mandatory.md` + `.cursor/rules/`; trigger map; issue #163.
