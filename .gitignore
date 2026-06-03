@@ -454,3 +454,4 @@ templates/github
 .qdrant-initialized
 .qmd-collection.json
 .qwen
+.vscode
