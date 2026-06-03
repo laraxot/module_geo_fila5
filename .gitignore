@@ -460,3 +460,4 @@ templates/github
 .cursorignore
 .kilocodeignore
 .planning
+_templates
