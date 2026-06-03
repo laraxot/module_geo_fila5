@@ -452,3 +452,4 @@ templates/github
 .opencode
 .phive
 .qdrant-initialized
+.qmd-collection.json
