@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-03 14:30:00 UTC] [CI] Stack semantic release root: `release.yml` (npx semantic-release), `semantic-versioning.yml` (dispatch), `release-drafter`, `update-changelog`, `tag-version`, `attest-release` via workflow_run; doc `github-actions-semantic-release-stack.md`.
+
 [2026-06-03 12:00:00 UTC] [FIX] ParseError Passport `as array<>` + conflitti Activity `<<<<<<<`; gate PHP verificato; memoria `agent-verification-mandatory-no-dovrebbe.md`.
 
 [2026-06-03 11:30:00 UTC] [UPDATE] `llm-wiki.txt` compattato (1031→123 righe); trigger UI/UX MCP; rimosso `.agents/node_modules`; story `docs/chat/story-166-second-brain-ui-mcp.md`; issue [#166](https://github.com/provtv/base_ptv_fila5_mono/issues/166).

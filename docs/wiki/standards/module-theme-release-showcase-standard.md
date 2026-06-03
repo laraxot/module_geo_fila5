@@ -9,8 +9,10 @@ updated: "2026-05-26"
 qmd: "module theme semantic versioning auto release changelog marketing README standard"
 related:
   - "../rules/00-TRIGGER_MAP.md"
-  - "../../.github/workflows/semantic-release.yml"
-  - "../../.github/workflows/module-release.yml"
+  - "../how-to/github-actions-semantic-release-stack.md"
+  - "../../../.github/workflows/release.yml"
+  - "../../../.github/workflows/semantic-release.yml"
+  - "../../../.github/workflows/module-release.yml"
   - "agent-confidence-maximization.md"
 ---
 
@@ -30,7 +32,7 @@ Ogni modulo e tema **deve** avere (o referenziare) un workflow che implementi:
 - (Opzionale ma consigliato) Aggiornamento di `ROADMAP.md` e `VERSION`
 
 **Pattern consigliati** (già esistenti nel monorepo):
-- Riutilizzare o estendere `.github/workflows/semantic-release.yml` e `module-release.yml`
+- Riutilizzare root: `.github/workflows/release.yml` (auto), `semantic-release.yml` (propaga moduli), `module-release.yml`
 - O avere un workflow locale in `<module>/.github/workflows/release.yml` che usa composite action o reusable workflow dalla root
 
 ### 2. README.md di Vetrina (Root del Modulo/Tema)
@@ -80,7 +82,7 @@ Il README deve funzionare da **landing page** quando qualcuno atterra sul reposi
 
 ## Confidenza e Second Brain
 
-Questo standard nasce dopo scoperta (tramite smart tools) che il monorepo possiede già workflow potenti a livello root (`semantic-release.yml`, `module-release.yml`) ma **manca una policy esplicita e distribuita** che obblighi ogni componente a essere un prodotto autonomo con vetrina.
+Il monorepo ha workflow root documentati in [github-actions-semantic-release-stack.md](../how-to/github-actions-semantic-release-stack.md). Manca ancora **copertura uniforme** su ogni modulo/tema (vetrina + release locale).
 
 La documentazione di questo standard nel wiki (root + propagazione in ogni modulo/tema) è parte attiva del processo di **aumento del livello di confidenza** dell'agente e di miglioramento del second brain.
 
@@ -88,6 +90,6 @@ La documentazione di questo standard nel wiki (root + propagazione in ogni modul
 | Trigger | Carica |
 |---------|--------|
 | Creazione/aggiornamento modulo o tema | Questa pagina + templates |
-| Semantic versioning / release per componente | `.github/workflows/semantic-release.yml`, `module-release.yml` + questa pagina |
+| Semantic versioning / release per componente | [github-actions-semantic-release-stack.md](../how-to/github-actions-semantic-release-stack.md) + questa pagina |
 
 **Questo standard è obbligatorio per tutti i nuovi moduli/temi e per l'evoluzione di quelli esistenti.**

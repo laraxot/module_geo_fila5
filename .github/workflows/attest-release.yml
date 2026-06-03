@@ -1,8 +1,15 @@
+# Attestazione artifact dopo Release (workflow_run: event release da GITHUB_TOKEN non è affidabile)
 name: Attest Release Artifacts
 
 on:
-  release:
-    types: [published]
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
+    branches:
+      - main
+      - master
 
 permissions:
   id-token: write
@@ -11,13 +18,16 @@ permissions:
 
 jobs:
   attest:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
       - name: Create release artifact
-        run: |
-          zip -r ${{ github.event.repository.name }}.zip . -x ".git/*" ".github/*"
+        run: zip -r "${{ github.event.repository.name }}.zip" . -x ".git/*" ".github/*"
+
       - name: Attest build provenance
         uses: actions/attest-build-provenance@v4
         with:

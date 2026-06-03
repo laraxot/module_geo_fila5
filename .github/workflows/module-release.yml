@@ -1,6 +1,22 @@
 name: Module Semantic Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      module-name:
+        description: "Module name (es. User, Xot)"
+        required: true
+        type: string
+      module-path:
+        description: "Base path moduli"
+        required: false
+        type: string
+        default: laravel/Modules
+      tag-prefix:
+        description: "Prefisso tag (opzionale)"
+        required: false
+        type: string
+        default: ""
   workflow_call:
     inputs:
       module-name:
@@ -31,7 +47,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: "${{ github.ref }}-${{ github.workflow }}-${{ inputs.module-name }}"
+  group: "${{ github.ref }}-${{ github.workflow }}-${{ inputs.module-name || 'auto' }}"
   cancel-in-progress: true
 
 jobs:
