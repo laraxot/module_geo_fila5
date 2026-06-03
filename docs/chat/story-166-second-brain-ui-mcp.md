@@ -28,7 +28,7 @@ Come agente sul monorepo, voglio un prompt `llm-wiki.txt` compatto e wiki federa
 - [x] Matrice UI tooling documentata (`ui-ai-tooling-on-demand.md`)
 - [x] Trigger map riga UI/UX MCP
 - [x] Rimosso `bashscripts/ai/.agents/node_modules` (gate)
-- [ ] QMD ingest post-modifica strutturale
+- [x] QMD ingest post-modifica strutturale (`qmd update` OK; embed opzionale: 17365 hash)
 - [ ] Commento/issue moduli UI-heavy (es. `theme_*`) con puntatore DRY
 
 ## Dev story — implementazione 2026-06-03

@@ -17,7 +17,6 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Livewire\WithPagination;
@@ -61,17 +60,11 @@ abstract class ListLogActivities extends XotBasePage
 
     public function getBreadcrumb(): string
     {
-<<<<<<< HEAD
-        $breadcrumb = static::$breadcrumb ?? __('activity::activities.breadcrumb');
-
-        return $this->translationValueToString($breadcrumb);
-=======
         if (static::$breadcrumb !== null) {
             return (string) static::$breadcrumb;
         }
 
         return self::translationToString('activity::activities.breadcrumb');
->>>>>>> master
     }
 
     public function getTitle(): string
@@ -82,13 +75,7 @@ abstract class ListLogActivities extends XotBasePage
             ? $recordTitle->toHtml()
             : (string) $recordTitle;
 
-<<<<<<< HEAD
-        $title = __('activity::activities.title', ['record' => $titleString]);
-
-        return $this->translationValueToString($title);
-=======
         return self::translationToString('activity::activities.title', ['record' => $titleString]);
->>>>>>> master
     }
 
     public function getActivities(): LengthAwarePaginator
@@ -255,12 +242,6 @@ abstract class ListLogActivities extends XotBasePage
 
     protected function sendRestoreSuccessNotification(): Notification
     {
-<<<<<<< HEAD
-        $title = __('activity::activities.events.restore_successful');
-        $titleString = $this->translationValueToString($title);
-
-=======
->>>>>>> master
         return Notification::make()
             ->title(self::translationToString('activity::activities.events.restore_successful'))
             ->success()
@@ -269,12 +250,6 @@ abstract class ListLogActivities extends XotBasePage
 
     protected function sendRestoreFailureNotification(?string $message = null): Notification
     {
-<<<<<<< HEAD
-        $title = __('activity::activities.events.restore_failed');
-        $titleString = $this->translationValueToString($title);
-
-=======
->>>>>>> master
         $notification = Notification::make()
             ->title(self::translationToString('activity::activities.events.restore_failed'))
             ->danger();
@@ -284,35 +259,6 @@ abstract class ListLogActivities extends XotBasePage
         }
 
         return $notification->send();
-    }
-
-    private function translationValueToString(mixed $value): string
-    {
-        if ($value instanceof Htmlable) {
-            return $value->toHtml();
-        }
-
-        if (is_array($value)) {
-            $parts = array_map(
-                static fn (mixed $item): string => self::valuePartToString($item),
-                Arr::flatten($value),
-            );
-
-            $parts = array_filter($parts, static fn (string $part): bool => $part !== '');
-
-            return implode(' ', $parts);
-        }
-
-        return self::valuePartToString($value);
-    }
-
-    private static function valuePartToString(mixed $value): string
-    {
-        if (is_scalar($value) || $value instanceof \Stringable) {
-            return (string) $value;
-        }
-
-        return '';
     }
 
     private function resolveActivity(int|string $key): Activity

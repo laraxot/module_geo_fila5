@@ -145,14 +145,14 @@ class PassportServiceProvider extends ServiceProvider
         $scopes = config('user.passport.scopes', []);
         Assert::isArray($scopes);
 
+        $typedScopes = [];
         foreach ($scopes as $key => $value) {
             Assert::stringNotEmpty($key);
             Assert::stringNotEmpty($value);
+            $typedScopes[$key] = $value;
         }
 
-        if (! empty($scopes)) {
-            /** @phpstan-ignore varTag.nativeType */
-            $typedScopes = $scopes as array<string, string>;
+        if ($typedScopes !== []) {
             Passport::tokensCan($typedScopes);
         }
     }
