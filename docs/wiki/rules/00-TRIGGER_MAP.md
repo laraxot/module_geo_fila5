@@ -23,7 +23,9 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Trigger | Load |
 |---|---|
 | **BOOTSTRAP SESSIONE AGENTE** _(obbligatorio prima di ogni task su file / toolchain / MCP / wiki)_ | `docs/wiki/memories/response-style-sintetico-conciso-italiano.md`, `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md`, `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
-| New module/theme | `docs/wiki/concepts/module-structure.md` |
+| New module/theme | `docs/wiki/concepts/module-structure.md`, `docs/wiki/rules/theme-module-docs-readme-mandatory.md` |
+| Modulo/tema senza `docs/README.md` / manutenzione cartella `docs/` in `Modules/*` o `Themes/*` | `docs/wiki/rules/theme-module-docs-readme-mandatory.md`, `docs/wiki/standards/module-theme-readme-dual.md`, `docs/wiki/rules/markdown-documentation-standard.md` |
+| README doppio root + docs / sync batch moduli-temi | `docs/wiki/standards/module-theme-readme-dual.md`, `bashscripts/tools/sync-module-theme-readmes.mjs` |
 | Architecture decision | `docs/wiki/concepts/architecture-guardrails.md`, `docs/wiki/rules/on-demand-pattern.md` |
 | Wiki/doc maintenance | `docs/wiki/concepts/second-brain-operating-model.md`, `docs/wiki/concepts/second-brain-continuous-improvement.md` |
 | Nuovo o edit `.md` wiki / standard YAML + atomicità | `docs/wiki/rules/markdown-documentation-standard.md`, `docs/wiki/concepts/markdown-note-minimum-standard.md`, `docs/wiki/concepts/second-brain-operating-model.md` |
@@ -44,7 +46,11 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | Residui conflitto Git (`<<<<<<<` / `>>>>>>>` / separatori, template `docs/` corrotti) | `docs/wiki/how-to/git-merge-marker-sweep.md`, `docs/wiki/memories/merge-collision-filament-table-signature.md`, `laravel/Modules/Notify/docs/wiki/memories/merge-collision-notify-lessons.md`, `docs/wiki/sources/git-collision-docs-cleanup-report.md` |
 | Filament `getTableColumns` / classi `*Table` | `docs/wiki/concepts/xotbase-table-columns-enforcement.md`, `docs/wiki/rules/gettablecolumns-keys-rule.md`, `bashscripts/ci/check-get-table-columns-instance.sh` |
 | Creare/chiudere issue GitHub senza chiedere all’utente | `docs/wiki/how-to/github-issue-agent-discipline.md`, `docs/wiki/memories/github-issues-proactive.md` |
+<<<<<<< HEAD
 | GitHub Discussions multi-agente / firma agente AI / abilitare discussions su repo `laraxot/*` | `docs/wiki/memories/github-discussions-agent-signature.md` |
+=======
+| PHPStan per modulo / report `phpstan*.md` in `Modules/*/docs` | `bashscripts/tools/prompts/phpstan_module.txt`, `docs/wiki/memories/phpstan-module-markdown-naming.md`, `docs/wiki/rules/markdown-documentation-standard.md` |
+>>>>>>> master
 | PHPStan unknown class Spatie ModelStates / Xot States | `docs/wiki/memories/spatie-model-states-php84.md`, `laravel/Modules/Xot/docs/wiki/concepts/laravel13-modular-package-compatibility-matrix.md` |
 | Passaggio MySQL → MariaDB (WSL / datadir) | `docs/wiki/how-to/switch-mysql-to-mariadb.md`, `bashscripts/mysql/switch-to-mariadb.sh` |
 | Mutex lock affiancato / validazione PHP post-edit | `docs/wiki/rules/validation-post-edit-rule.md` |
@@ -55,9 +61,11 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | AGENTS.md enorme / BMAD rigenerato / bootstrap troppo grande | `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md`, `bashscripts/ai/rules/bmad.md` |
 | LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | MCP minimum stack (context-mode, playwright, puppeteer, token-optimizer, laravel-boost) | `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/_templates/mcp-minimum-stack.json` |
+| UI/UX MCP on-demand (Impeccable, Flowbite, daisyUI Blueprint, Windframe, Tailkit, UI UX Pro Max) | `docs/wiki/concepts/ui-ai-tooling-on-demand.md`, `docs/wiki/concepts/ui-ai-tooling-on-demand-matrix.md`, `docs/wiki/concepts/impeccable-frontend-design-on-demand.md` |
 | MCP config contiene path assoluti workspace / `.cursor/mcp.json` non portabile | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/rules/00-TRIGGER_MAP.md` |
 | Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/rules/token-optimization-discipline.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
+<<<<<<< HEAD
 | BMAD workflow / BMAD v6 project install | `docs/wiki/concepts/bmad-operating-model.md`, `docs/wiki/rules/bmad-v6-on-demand.md`, `docs/wiki/commands/bmad-v6.md` |
 | BMAD slash command `/bmad-*` / `/workflow-init` / `/prd` / `/dev-story` / `/sprint-planning` | `docs/wiki/commands/bmad-v6.md`, `docs/wiki/rules/bmad-v6-on-demand.md` |
 | brief / discovery / stakeholder / product brief | `.claude/skills/bmad/bmm/analyst/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
@@ -70,6 +78,14 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | custom agent / extend BMAD / new workflow | `.claude/skills/bmad/bmb/builder/SKILL.md` (via `docs/wiki/rules/bmad-v6-on-demand.md`) |
 | Discussione multi-agente AI / confronto su decisione su repo modulo | `docs/wiki/how-to/github-issue-agent-discipline.md` (Discussions + firma `agente + modello`) |
 | Firma commento/issue/discussion repo modulo | `docs/wiki/how-to/github-issue-agent-discipline.md` (suffisso obbligatorio `— <agente> (\`<modello>\`)`) |
+=======
+| BMAD workflow (generico) | `docs/wiki/concepts/bmad-operating-model.md`, `docs/wiki/skills/bmad-on-demand-routing.md` |
+| BMAD slash `/workflow-init` `/workflow-status` | `docs/wiki/commands/bmad-slash-commands.md`, `.claude/commands/bmad/workflow-init.md` o `workflow-status.md` |
+| BMAD slash planning (`/prd` `/tech-spec` `/product-brief`) | `docs/wiki/skills/bmad-on-demand-routing.md` (pm/analyst), `docs/wiki/commands/bmad-slash-commands.md` |
+| BMAD slash solutioning (`/architecture` `/solutioning-gate-check`) | `docs/wiki/skills/bmad-on-demand-routing.md` (architect), `docs/wiki/commands/bmad-slash-commands.md` |
+| BMAD slash implementation (`/dev-story` `/sprint-planning` `/create-story`) | `docs/wiki/skills/bmad-on-demand-routing.md` (developer/scrum-master), `_bmad-output/project-context.md` |
+| BMAD ufficiale `_bmad` / `bmad-help` / `bmad-dev-story` | `bashscripts/ai/rules/bmad.md`, `_bmad/_config/bmad-help.csv`, `docs/project/bmad-method-integration.md` |
+>>>>>>> master
 | Laravel upgrade | `docs/wiki/concepts/laravel13-modular-composer-upgrade.md` |
 | Accessor/mutator | `docs/wiki/concepts/accessor-auto-persistence.md` |
 | Filament ->label() / traduzioni | `docs/wiki/rules/filament-rules-summary.md`, `docs/wiki/rules/schema-conventions.md` |

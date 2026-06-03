@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BMAD Method v6 - Project Configuration Template
 # This file is created in {project-root}/bmad/config.yaml during workflow-init
 
@@ -17,4 +18,19 @@ bmm:
 paths:
   docs: "docs"
   stories: "docs/stories"
+=======
+project_name: "base_ptvx_fila5"
+project_type: "web-app"
+project_level: 4
+output_folder: "docs"
+initialized_at: "2026-05-27T12:00:00Z"
+bmm:
+  workflow_status_file: "docs/bmm-workflow-status.yaml"
+  sprint_status_file: "docs/sprint-status.yaml"
+  canonical_sprint_status_file: "_bmad-output/sprint-status.yaml"
+paths:
+  docs: "docs"
+  stories: "_bmad-output/implementation-artifacts"
+  planning: "_bmad-output/planning-artifacts"
+>>>>>>> master
   tests: "tests"

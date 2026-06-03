@@ -1,35 +1,56 @@
-# Modulo Mensa
+---
+title: documentazione modulo mensa
+module: Mensa
+type: index
+status: approved
+tags: [documentation, readme, modulo, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
+---
 
-## Overview
+# Documentazione — modulo Mensa
 
-Il modulo **Mensa** fa parte dell'ecosistema Laraxot PTVX.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
 ## Scopo
 
-Gestisce le funzionalità specifiche del dominio Mensa.
+Company cafeteria and meal voucher management module for the Laraxot ecosystem: meal bookings, vouchers, and dietary preferences.
 
-## Struttura
+## Dove iniziare
 
-```
+- [Wiki locale](./wiki/index.md)
+- [Audit ridondanza](./code-redundancy-audit.md)
+- [Regole architettura](./architecture-rules.md)
+- [Disciplina agenti](./agent-edit-discipline.md)
+
+
+## Struttura tipica
+
+```text
 Mensa/
-├── app/
-│   ├── Models/
-│   ├── Filament/
-│   └── ...
+├── README.md          ← vetrina (root package)
 ├── docs/
-├── lang/
-└── resources/
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
-## Dipendenze
+## Namespace / confini
 
-- [Xot Base](../Xot/docs/)
-- [User Module](../User/docs/)
+- Namespace: `Modules\Mensa`
+- Non duplicare qui la filosofia marketing: resta nel README root.
 
 ## Collegamenti
 
-- [Documentazione Root](../../../docs/MENSA_MODULE.md)
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../Xot/docs/)
+- [Wiki progetto](../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## Backlinks
+## Per agenti
 
-- [Moduli correlati](../README.md)
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.

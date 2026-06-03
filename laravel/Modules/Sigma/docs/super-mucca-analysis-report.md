@@ -245,8 +245,8 @@ Comandamento: "Una responsabilità per classe"
 
 **Violazioni**:
 ```
-❌ refactoring-session-2025-01-29.md
-❌ phpstan-fixes-2025.md
+❌ refactoring-session.md
+❌ phpstan-fixes-archive-1.md
 ```
 
 **Impatto**:
@@ -284,7 +284,7 @@ ETA: 2 settimane
 #### 2. Eliminare File Datati
 ```bash
 Status: 📋 TODO
-Files: refactoring-session-2025-01-29.md, phpstan-fixes-2025.md
+Files: refactoring-session.md, phpstan-fixes-archive-1.md
 Action: Backup → Git History, poi elimina
 ETA: 1 ora
 ```

@@ -10,7 +10,7 @@
 
 ### File con Nomi Non Conformi
 Trovati **30+ file .md** con nomi che violano le regole:
-- Date nei nomi: `phpstan-fixes-january-2025.md`, `roadmap-2025.md`
+- Date nei nomi: `phpstan-fixes-archive-2.md`, `roadmap-archive-1.md`
 - Maiuscole: `ROADMAP_2026.md`, `FILAMENT_4_LARAXOT_RULES.md`
 - Underscore maiuscole: `TRAIT_METHOD_SIGNATURE_RULES.md`
 

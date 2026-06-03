@@ -6,7 +6,7 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - **Session Start**: Every session MUST start with `git remote -v` and `gh issue list`.
 - **Issue Audit Trail**: For every task, find an existing GitHub issue or create a new one (`gh issue create`). Comment with progress and wiki links.
 - **Token Optimization**: Use `context-mode` and chunked reads for files > 80 lines. Follow the [Token Optimization Discipline](docs/wiki/rules/token-optimization-discipline.md) for every session.
-- **Markdown Standard**: All `.md` files must follow the [Markdown & Second Brain Standard](docs/wiki/rules/markdown-documentation-standard.md). Strictly lowercase-kebab-case filenames, mandatory YAML front matter, and atomic notes.
+- **Markdown Standard**: All `.md` files must follow the [Markdown & Second Brain Standard](docs/wiki/rules/markdown-documentation-standard.md). Strictly lowercase-kebab-case filenames, NO dates in filenames, mandatory YAML front matter, and atomic notes. (Exceptions: README.md, CHANGELOG.md).
 
 ## Read First
 - Risposte: italiano, sintetico, conciso.

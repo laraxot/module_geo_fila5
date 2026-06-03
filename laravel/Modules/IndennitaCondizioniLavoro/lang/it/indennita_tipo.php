@@ -74,5 +74,8 @@ return [
         'view' => [
             'label' => 'Visualizza',
         ],
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
     ],
 ];

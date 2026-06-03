@@ -21,8 +21,8 @@
 ### 🔍 I Need to Understand the Code Quality Issues
 
 **Start Here**:
-1. **[✅ Analysis Complete](./ANALYSIS-COMPLETE-2025-01-02.md)** (5 min) - What was done
-2. **[📊 IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)** (15 min) - Key findings
+1. **[✅ Analysis Complete](./ANALYSIS-COMPLETE.md)** (5 min) - What was done
+2. **[📊 IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** (15 min) - Key findings
 3. **[🔧 Rating Module Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md)** (10 min) - What was fixed
 
 **Time**: 30 minutes → Full understanding!
@@ -43,7 +43,7 @@
 ### 🎨 I'm Working on Themes
 
 **Read This**:
-1. **[🎨 Theme Analysis 2025](../laravel/Themes/One/docs/theme-analysis-2025.md)** (20 min) - Complete guide
+1. **[🎨 Theme Analysis 2025](../laravel/Themes/One/docs/theme-analysis.md)** (20 min) - Complete guide
 2. **[📚 UI Components](./ui_components/README.md)** (10 min) - Reusable components
 
 **Time**: 30 minutes → Theme development ready!
@@ -69,15 +69,15 @@
 | Document | Topic | Time | Priority |
 |----------|-------|------|----------|
 | [Root README](./README.md) | Navigation hub | 10 min | 🔴 |
-| [Master Index](./MASTER-INDEX-2025.md) | Complete map | 5 min | 🔴 |
+| [Master Index](./MASTER-INDEX.md) | Complete map | 5 min | 🔴 |
 | [Claude Architecture](./claude/architecture-rules.md) | Core rules | 15 min | 🔴 |
-| [Analysis Complete](./ANALYSIS-COMPLETE-2025-01-02.md) | Recent work | 5 min | 🟡 |
+| [Analysis Complete](./ANALYSIS-COMPLETE.md) | Recent work | 5 min | 🟡 |
 
 ### Tier 2: Module Specific
 
 | Module | Entry Point | Analysis | Plan |
 |--------|-------------|----------|------|
-| IndennitaResponsabilita | [README](../laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md) | [Refactoring](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
+| IndennitaResponsabilita | [README](../laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md) | [Refactoring](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
 | Rating | [README](../laravel/Modules/Rating/docs/README.md) | [Scope Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md) | [Consolidation](../laravel/Modules/Rating/docs/trait-consolidation-plan.md) |
 | Xot | [README](../laravel/Modules/Xot/docs/README.md) | N/A | N/A |
 
@@ -190,8 +190,8 @@ class MyPage extends Modules\Xot\Filament\Pages\XotBasePage { }
 
 | Category | Link |
 |----------|------|
-| **Master Index** | [Complete Map](./MASTER-INDEX-2025.md) |
-| **Analysis** | [Complete 2025](./ANALYSIS-COMPLETE-2025-01-02.md) |
+| **Master Index** | [Complete Map](./MASTER-INDEX.md) |
+| **Analysis** | [Complete 2025](./ANALYSIS-COMPLETE.md) |
 | **Claude AI** | [Guidelines](./claude/README.md) |
 | **Architecture** | [Rules](./claude/architecture-rules.md) |
 | **Module Index** | [All Modules](./claude/module-list.md) |
@@ -210,16 +210,16 @@ cd /var/www/_bases/base_ptvx_fila5_mono/laravel
 php artisan test --coverage
 
 # View Docs
-cat docs/MASTER-INDEX-2025.md
-cat README-ANALYSIS-2025.md
+cat docs/MASTER-INDEX.md
+cat README-ANALYSIS.md
 ```
 
 ---
 
 ## 💡 Pro Tips
 
-1. **Use Master Index**: All docs are linked from [MASTER-INDEX-2025.md](./MASTER-INDEX-2025.md)
-2. **Check Analysis First**: [ANALYSIS-COMPLETE-2025-01-02.md](./ANALYSIS-COMPLETE-2025-01-02.md) has the summary
+1. **Use Master Index**: All docs are linked from [MASTER-INDEX.md](./MASTER-INDEX.md)
+2. **Check Analysis First**: [ANALYSIS-COMPLETE.md](./ANALYSIS-COMPLETE.md) has the summary
 3. **Follow Action Plan**: [Refactoring Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) has step-by-step tasks
 4. **PHPStan is King**: Always run Level 10 before commit
 5. **Documentation Matters**: Update docs when you change code

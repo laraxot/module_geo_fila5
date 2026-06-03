@@ -159,7 +159,7 @@ $result = $model->traitMethod();
 
 - [PHPStan Code Quality Guide](./phpstan-code-quality-guide.md)
 - [Riepilogo Precedente](./phpstan-january-2026-summary.md)
-- [healthcare_app Corrections Parte 1](../healthcare_app/docs/phpstan-corrections-january-2026.md)
+- [healthcare_app Corrections Parte 1](../healthcare_app/docs/phpstan-corrections-archive-1.md)
 - [healthcare_app Corrections Parte 2](../healthcare_app/docs/phpstan-corrections-january-2026-part2.md)
 
 ---

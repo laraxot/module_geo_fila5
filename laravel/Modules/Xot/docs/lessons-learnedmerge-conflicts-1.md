@@ -113,7 +113,7 @@ ps -p $PID  # ✅ Running!
 ### 9. **MIGLIORAMENTO**
 
 Creati 3 nuovi documenti:
-1. `merge-conflict-resolution-2025-11-04.md` - Report tecnico dettagliato
+1. `merge-conflict-resolution.md` - Report tecnico dettagliato
 2. `file-locking-pattern.md` - Nuova regola fondamentale
 3. `lessons-learned-2025-11-04-merge-conflicts.md` - Questo documento
 
@@ -237,7 +237,7 @@ public null|string $var = null;
 
 ## 💾 Documentazione Creata
 
-1. **merge-conflict-resolution-2025-11-04.md**
+1. **merge-conflict-resolution.md**
    - Report tecnico completo
    - Pattern identificati
    - Script utilizzati
@@ -313,7 +313,7 @@ Al processo sistematico di **comprensione → studio → dibattito → implement
 
 ## 📚 References
 
-- [Merge Conflict Resolution Report](./merge-conflict-resolution-2025-11-04.md)
+- [Merge Conflict Resolution Report](./merge-conflict-resolution.md)
 - [File Locking Pattern](./file-locking-pattern.md)
 - [Service Providers](./service-providers.md)
 - [Laraxot Architecture Rules](./laraxot-architecture-rules.md)

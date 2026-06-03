@@ -91,7 +91,7 @@ Identified:
 ├── product-roadmap.md (different file!)
 ├── ROADMAP.md
 ├── roadmap.md (different file!)
-├── roadmap-2025.md
+├── roadmap-archive-1.md
 ├── roadmap-and-issues.md
 ├── roadmap-vision.md
 ├── roadmap-.md (suspicious name)
@@ -123,7 +123,6 @@ Identified:
 ├── product-roadmap.md
 ├── roadmap-1-1.md
 ├── roadmap/
-│   ├── 2025-q4-roadmap.md
 │   ├── q4-roadmap.md
 │   ├── q4-roadmap-1.md (variant!)
 │   ├── roadmap.md
@@ -140,7 +139,7 @@ Identified:
     └── historical/
         ├── roadmap-complete.md
         ├── roadmap-1.md
-        ├── roadmap-2025.md
+        ├── roadmap-archive-1.md
         ├── roadmap-conflict.md
         ├── phpstan-* (2 files)
         └── login-widget-* (1 file)

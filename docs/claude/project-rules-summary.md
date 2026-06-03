@@ -91,7 +91,7 @@ bashscripts/quality-assurance/check.sh
 
 ```
 # ❌ NEVER
-Analysis-2025-01-02.md  # Date in name
+Analysis.md  # Date in name
 CODE_QUALITY.md         # Uppercase
 MyDocument.md           # PascalCase
 

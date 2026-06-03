@@ -46,7 +46,7 @@ Da identificare e correggere sistematicamente.
 ## 📚 Riferimenti
 
 - [PHPStan Errors Philosophy](./phpstan-errors-philosophy.md)
-- [PHPStan Furious Debate](./phpstan-furious-debate-2025.md)
+- [PHPStan Furious Debate](./phpstan-furious-debate.md)
 - [Filament 4 Actions Namespace](./filament-4-actions-namespace.md)
 - [OAuth Resources Corrections](./phpstan-corrections-oauth-resources.md)
 

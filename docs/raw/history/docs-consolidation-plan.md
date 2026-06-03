@@ -20,10 +20,10 @@
 #### 1. Date-Based Files (33 files)
 **Anti-pattern**: Historical date stamps mixed with content
 ```
-dry-kiss-analysis-2025-10-15.md
-phpstan-fixes-2025-10-13.md
-translation-refactor-complete-summary-2025-08-08.md
-enum-translation-pattern-implementation-2025-01-27.md
+dry-kiss-analysis-archive-1.md
+phpstan-fixes.md
+translation-refactor-complete-summary.md
+enum-translation-pattern-implementation.md
 ```
 
 **Solution**: Remove dates, use semantic versioning or CHANGELOG.md
@@ -163,9 +163,9 @@ Modules/ModuleName/
 **PHPStan Guides** (Found in 8+ modules)
 ```
 Activity/docs/phpstan-analysis.md
-Gdpr/docs/phpstan-fixes-2025-10-13.md
-Tenant/docs/phpstan-fixes-2025-10-13.md
-Xot/docs/phpstan-fixes-2025-01-06.md
+Gdpr/docs/phpstan-fixes.md
+Tenant/docs/phpstan-fixes.md
+Xot/docs/phpstan-fixes.md
 ```
 
 **Solution**: Single source in Xot module
@@ -191,10 +191,10 @@ Other modules reference via link
 
 **DRY-KISS Analysis Files** (Found in 10+ modules)
 ```
-Activity/docs/dry-kiss-analysis-2025-10-15.md
-Gdpr/docs/dry-kiss-analysis-2025-10-15.md
-Job/docs/dry-kiss-analysis-2025-10-15.md
-Lang/docs/dry-kiss-analysis-2025-10-15.md
+Activity/docs/dry-kiss-analysis-archive-1.md
+Gdpr/docs/dry-kiss-analysis-archive-1.md
+Job/docs/dry-kiss-analysis-archive-1.md
+Lang/docs/dry-kiss-analysis-archive-1.md
 ```
 
 **Solution**: Remove all dated analysis files
@@ -241,9 +241,9 @@ tar -czf docs-backup-$(date +%Y%m%d).tar.gz Modules/*/docs Themes/*/docs
 **Files with Dates** (33 files):
 ```bash
 # Example conversions
-mv dry-kiss-analysis-2025-10-15.md dry-kiss-analysis.md
-mv phpstan-fixes-2025-10-13.md phpstan-fixes.md
-mv translation-refactor-complete-summary-2025-08-08.md translation-refactor-summary.md
+mv dry-kiss-analysis-archive-1.md dry-kiss-analysis.md
+mv phpstan-fixes.md phpstan-fixes.md
+mv translation-refactor-complete-summary.md translation-refactor-summary.md
 ```
 
 **Files with UPPERCASE** (241 files):
@@ -363,39 +363,39 @@ Add documentation policy section:
 
 ### Date-Stamped Files (33 total)
 ```
-Modules/Activity/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Gdpr/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Gdpr/docs/phpstan-fixes-2025-10-01.md
-Modules/Gdpr/docs/phpstan-fixes-2025-10-13.md
-Modules/IndennitaResponsabilita/docs/translation-audit-2025-10-22.md
-Modules/Job/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Lang/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Lang/docs/enum-translation-pattern-implementation-2025-01-27.md
-Modules/Lang/docs/lang-service-translation-updates-2025-01-06.md
-Modules/Lang/docs/translation-refactor-complete-summary-2025-08-08.md
-Modules/Media/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Notify/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Tenant/docs/dry-kiss-analysis-2025-10-15.md
-Modules/Tenant/docs/phpstan-fixes-2025-10-13.md
-Modules/UI/docs/bugfix-icons-missing-2025-01-27.md
-Modules/UI/docs/bugfix-table-layout-action-2025-01-27.md
-Modules/UI/docs/dry-kiss-analysis-2025-10-15.md
-Modules/User/docs/bug-fixes/parse-error-orphan-methods-2025-01-27.md
-Modules/User/docs/dry-kiss-analysis-2025-10-15.md
-Modules/User/docs/fixes/base-classes-corrections-2025-10-15.md
-Modules/User/docs/git-conflicts-resolution-2025-01-27.md
-Modules/User/docs/phpstan-dry-kiss-improvements-2025-10-17.md
-Modules/User/docs/translation-city-field-refactor-2025-08-08.md
-Modules/Xot/docs/base-classes-additional-fix-2025-10-15.md
-Modules/Xot/docs/consolidated/git-conflicts-resolution-2025-01-06.md
-Modules/Xot/docs/consolidated/lessons-learned-2025-08-25.md
-Modules/Xot/docs/dry-kiss-model-refactoring-2025-10-15.md
-Modules/Xot/docs/git-conflicts-resolution-2025-01-06.md
-Modules/Xot/docs/lessons-learned-2025-08-25.md
-Modules/Xot/docs/phpstan-analysis-2025-08-18.md
-Modules/Xot/docs/phpstan-fixes-2025-01-06.md
-Modules/Xot/docs/phpstan-fixes-summary-2025-08-18.md
-Modules/Xot/docs/phpstan-level-10-dry-kiss-analysis-2025-10-17.md
+Modules/Activity/docs/dry-kiss-analysis-archive-1.md
+Modules/Gdpr/docs/dry-kiss-analysis-archive-1.md
+Modules/Gdpr/docs/phpstan-fixes-archive-1.md
+Modules/Gdpr/docs/phpstan-fixes.md
+Modules/IndennitaResponsabilita/docs/translation-audit.md
+Modules/Job/docs/dry-kiss-analysis-archive-1.md
+Modules/Lang/docs/dry-kiss-analysis-archive-1.md
+Modules/Lang/docs/enum-translation-pattern-implementation.md
+Modules/Lang/docs/lang-service-translation-updates.md
+Modules/Lang/docs/translation-refactor-complete-summary.md
+Modules/Media/docs/dry-kiss-analysis-archive-1.md
+Modules/Notify/docs/dry-kiss-analysis-archive-1.md
+Modules/Tenant/docs/dry-kiss-analysis-archive-1.md
+Modules/Tenant/docs/phpstan-fixes.md
+Modules/UI/docs/bugfix-icons-missing.md
+Modules/UI/docs/bugfix-table-layout-action.md
+Modules/UI/docs/dry-kiss-analysis-archive-1.md
+Modules/User/docs/bug-fixes/parse-error-orphan-methods-archive-1.md
+Modules/User/docs/dry-kiss-analysis-archive-1.md
+Modules/User/docs/fixes/base-classes-corrections-archive-1.md
+Modules/User/docs/git-conflicts-resolution-archive-1.md
+Modules/User/docs/phpstan-dry-kiss-improvements-archive-1.md
+Modules/User/docs/translation-city-field-refactor-archive-1.md
+Modules/Xot/docs/base-classes-additional-fix.md
+Modules/Xot/docs/consolidated/git-conflicts-resolution.md
+Modules/Xot/docs/consolidated/lessons-learned.md
+Modules/Xot/docs/dry-kiss-model-refactoring.md
+Modules/Xot/docs/git-conflicts-resolution.md
+Modules/Xot/docs/lessons-learned.md
+Modules/Xot/docs/phpstan-analysis.md
+Modules/Xot/docs/phpstan-fixes.md
+Modules/Xot/docs/phpstan-fixes-summary.md
+Modules/Xot/docs/phpstan-level-10-dry-kiss-analysis.md
 ```
 
 ### UPPERCASE Files (241 total - top priority samples)

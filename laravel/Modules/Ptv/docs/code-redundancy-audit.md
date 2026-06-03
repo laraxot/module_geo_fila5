@@ -4,9 +4,12 @@ type: source
 status: draft
 tags: [code-audit, redundancy, dry, second-brain, module]
 created: "2026-05-26"
-updated: "2026-05-26"
+updated: "2026-05-27"
 owner: "Ptv"
-issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
+issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/162"
+related:
+  - wiki/redundancy-audit.md
+  - wiki/ptv-sigma-shared-surface-catalog.md
 ---
 
 # Code redundancy audit — Ptv
@@ -14,6 +17,16 @@ issue: "https://github.com/provtv/base_ptv_fila5_mono/issues/150"
 ## Scopo
 
 Ridurre rumore, duplicazione e ambiguita' nel codice di questo module, senza perdere conoscenza storica.
+
+## Ptv ↔ Sigma (superficie condivisa)
+
+| Documento | Contenuto |
+|-----------|-----------|
+| [wiki/redundancy-audit.md](wiki/redundancy-audit.md) | Visione, dipendenze, piano |
+| [wiki/ptv-sigma-shared-surface-catalog.md](wiki/ptv-sigma-shared-surface-catalog.md) | Catalogo contratti, trait, metodi |
+| [Policy ownership (Xot)](../Xot/docs/wiki/concepts/ptv-sigma-redundancy-ownership.md) | Bucket core-hr / integration / domain / presentation |
+
+Issue modulo: aprire/commentare su repo `origin` (`git remote -v` in `laravel/Modules/Ptv`) — **#4**.
 
 ## Metriche
 

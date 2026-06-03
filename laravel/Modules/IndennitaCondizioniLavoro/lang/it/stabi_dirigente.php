@@ -27,6 +27,9 @@ return [
         ],
         'anno' => [
             'label' => 'anno',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+            'description' => 'anno',
         ],
         'applyFilters' => [
             'label' => 'applyFilters',
@@ -87,6 +90,12 @@ return [
         ],
         'toggleColumns' => [
             'label' => 'toggleColumns',
+        ],
+        'rep' => [
+            'label' => 'rep',
+        ],
+        'diri' => [
+            'label' => 'diri',
         ],
     ],
     'actions' => [
@@ -167,6 +176,26 @@ return [
             'tooltip' => 'save',
             'icon' => 'save',
             'label' => 'save',
+        ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'import_valutatori_' => [
+            'label' => 'import_valutatori_',
+            'icon' => 'import_valutatori_',
+            'tooltip' => 'import_valutatori_',
         ],
     ],
     'label' => 'stabi dirigente',

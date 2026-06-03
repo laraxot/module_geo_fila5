@@ -253,8 +253,8 @@ After scope fix:
 ```
 docs/
 ├── README.md (Updated - Navigation hub)
-├── analysis-corrections-2025-01-02.md (Summary)
-├── code-quality-verification-2025-01-02.md (This file)
+├── analysis-corrections.md (Summary)
+├── code-quality-verification.md (This file)
 └── claude/
     ├── README.md (Updated)
     ├── schemaless-attributes-final.md (✅ Correct)
@@ -267,7 +267,7 @@ docs/
 laravel/Modules/
 ├── IndennitaResponsabilita/docs/
 │   ├── README.md (Updated)
-│   ├── analysis-summary-2025.md
+│   ├── analysis-summary.md
 │   ├── code-quality-analysis.md
 │   ├── refactoring-action-plan.md
 │   ├── best-practices.md
@@ -285,7 +285,7 @@ laravel/Modules/
 ```
 laravel/Themes/
 └── One/docs/
-    └── theme-analysis-2025.md
+    └── theme-analysis.md
 ```
 
 ---
@@ -396,7 +396,7 @@ laravel/Themes/
 
 ### For Quality
 - [Code Quality Analysis](../laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)
-- [Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+- [Analysis Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 
 ---
 

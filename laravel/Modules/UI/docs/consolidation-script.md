@@ -11,7 +11,7 @@ cd laravel/Modules/UI/docs
 rm -f advanced_form_components.md
 rm -f blade_data_handling.md
 rm -f naming_conventions.md
-rm -f phpstan_fixes_2025.md
+rm -f phpstan-fixes-archive-5.md
 ```
 
 ## File Duplicati da Eliminare
@@ -56,7 +56,7 @@ rm -f naming_conventions.md
 rm -f naming_rules.md
 
 # PHPStan
-rm -f phpstan_fixes_2025.md
+rm -f phpstan-fixes-archive-5.md
 rm -f phpstan_corrections_summary.md
 rm -f phpstan_radio_badge_fix.md
 
@@ -87,7 +87,7 @@ mv dry-kiss-analysis-[DATE].md archive/dry-kiss-analysis.md 2>/dev/null
 mv phpstan-level-10-cleanup-[DATE].md archive/phpstan-level-10-cleanup.md 2>/dev/null
 
 # Consolidare file PHPStan con date
-# phpstan-fixes-gennaio-2025.md → consolidare in phpstan-compliance.md
+# phpstan-fixes-archive-1.md → consolidare in phpstan-compliance.md
 ```
 
 ## File con Maiuscole da Rinominare

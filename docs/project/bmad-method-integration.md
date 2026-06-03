@@ -18,12 +18,26 @@ Questo progetto usa **BMAD Method V6** (Build More Architect Dreams) — un fram
 
 ## Installazione Attuale
 
+Due layer complementari:
+
+| Layer | Versione | Percorso | Uso |
+|-------|----------|----------|-----|
+| BMAD-METHOD ufficiale | 6.2.0 | `_bmad/`, `_bmad-output/` | Workflow completi, `bmad-help`, artefatti planning |
+| Claude Code native (aj-geddes) | 6.0.2 | `.claude/skills/bmad/`, `.claude/commands/bmad/` | Slash command e skill in sessione Claude/Cursor |
+
+Reinstallazione layer Claude (progetto, **stub on-demand**):
+
+```bash
+bashscripts/tools/install-bmad-v6-project.sh
 ```
-Versione:  6.2.0
-Moduli:    core + bmm (BMad Method)
-IDE:       claude-code + windsurf + cursor (via rules/workflows)
-Data:      2026-03-18
-```
+
+- Stub: `.claude/skills/bmad/*/SKILL.md` (router wiki, non corpo completo)
+- Full skill: `bmad-skills/bmad-v6/skills/` (caricare solo se serve)
+- Router second brain: `docs/wiki/skills/bmad-on-demand-routing.md`
+
+Fonte vendored: `bmad-skills/` ([aj-geddes/claude-code-bmad-skills](https://github.com/aj-geddes/claude-code-bmad-skills)).
+
+Config progetto: `bmad/config.yaml`, contesto in `bmad/context/`, output agenti in `bmad/outputs/`.
 
 ### Struttura Directory
 

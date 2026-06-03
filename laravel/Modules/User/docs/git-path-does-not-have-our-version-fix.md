@@ -79,5 +79,5 @@ git -c core.editor="echo" rebase --continue
 
 ## Riferimenti
 
-- [passport-pages-fix](../../../docs/FIX_REPORTS/passport-pages-fix-2026-03-17.md)
+- [passport-pages-fix](../../../docs/FIX_REPORTS/passport-pages-fix.md)
 - [oauth-access-token-removal](oauth-access-token-removal.md)

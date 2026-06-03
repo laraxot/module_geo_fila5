@@ -180,7 +180,7 @@ $totValue = isset($result->tot) ? (int) $result->tot : 0;
 ### File Aggiornati
 - ✅ `.cursor/rules/phpstan-rules.md`
 - ✅ `docs/phpstan-level10-fixes.md`
-- ✅ `Modules/Sigma/docs/current-quality-status-2025-11.md`
+- ✅ `Modules/Sigma/docs/current-quality-status.md`
 - ✅ `Modules/Sigma/docs/phpstan-level10-achievement.md` (questo file)
 
 ### Memorie AI

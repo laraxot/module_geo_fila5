@@ -178,7 +178,7 @@ class MyResource extends XotBaseResource
 - `UPPERCASE.md`
 - `MixedCase.md`
 - `file_with_underscores.md`
-- `analysis-2025-01-02.md` (date nel nome)
+- `analysis.md` (date nel nome)
 
 ### Location Files .md
 

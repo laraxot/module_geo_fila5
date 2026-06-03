@@ -1,45 +1,99 @@
-# Tema One - Documentazione
+---
+title: documentazione tema One
+module: One
+type: index
+status: approved
+tags: [documentation, readme, tema, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
+---
 
-## Overview
+# Documentazione — tema One
 
-Il tema **One** è un tema alternativo per l'applicazione Laraxot PTVX.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
 ## Scopo
 
-Fornisce un'interfaccia utente alternativa con layout e stili diversi dal tema Zero.
+One theme for Laraxot PTVX: minimal theme skeleton for future frontend development and customization.
 
-## Struttura
+## Dove iniziare
 
-```
+- [Wiki locale](./wiki/index.md)
+- [code redundancy audit](./code-redundancy-audit.md)
+- [architecture rules](./architecture-rules.md)
+- [agent edit discipline](./agent-edit-discipline.md)
+- [agent confidence protocol](./agent-confidence-protocol.md)
+- [second brain](./second-brain.md)
+
+
+## Struttura tipica
+
+```text
 One/
-├── app/
-├── config/
+├── README.md          ← vetrina (root package)
 ├── docs/
-├── lang/
-├── resources/
-│   └── views/
-└── routes/
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
-## Utilizzo
+## Namespace / confini
 
-Per attivare il tema One, configurare nel file `.env`:
+- Namespace: `Themes\One`
+- Non duplicare qui la filosofia marketing: resta nel README root.
 
-```env
-ACTIVE_THEME=one
-```
+## Indice file in docs/ (root)
+
+| Argomento | File |
+| :--- | :--- |
+| advanced-manage-related-records | [advanced-manage-related-records.md](./advanced-manage-related-records.md) |
+| agent-confidence-discipline | [agent-confidence-discipline.md](./agent-confidence-discipline.md) |
+| agent-confidence-protocol | [agent-confidence-protocol.md](./agent-confidence-protocol.md) |
+| agent-edit-discipline | [agent-edit-discipline.md](./agent-edit-discipline.md) |
+| architecture-rules | [architecture-rules.md](./architecture-rules.md) |
+| charts-integration | [charts-integration.md](./charts-integration.md) |
+| code-quality-tools | [code-quality-tools.md](./code-quality-tools.md) |
+| code-redundancy-audit | [code-redundancy-audit.md](./code-redundancy-audit.md) |
+| common-errors | [common-errors.md](./common-errors.md) |
+| docs-archive-policy | [docs-archive-policy.md](./docs-archive-policy.md) |
+| docs-deduplication | [docs-deduplication.md](./docs-deduplication.md) |
+| dry-kiss-analysis | [dry-kiss-analysis.md](./dry-kiss-analysis.md) |
+| filament-version | [filament-version.md](./filament-version.md) |
+| html2pdf-integration | [html2pdf-integration.md](./html2pdf-integration.md) |
+| laravel-13-composer-boundary | [laravel-13-composer-boundary.md](./laravel-13-composer-boundary.md) |
+| laravel-13-upgrade | [laravel-13-upgrade.md](./laravel-13-upgrade.md) |
+| launch-plan | [launch-plan.md](./launch-plan.md) |
+| model-docs-governance | [model-docs-governance.md](./model-docs-governance.md) |
+| phpstan-level10-analysis | [phpstan-level10-analysis.md](./phpstan-level10-analysis.md) |
+| prd | [prd.md](./prd.md) |
+| product-launch-plan | [product-launch-plan.md](./product-launch-plan.md) |
+| product-requirements | [product-requirements.md](./product-requirements.md) |
+| product-strategy | [product-strategy.md](./product-strategy.md) |
+| readonly-field-styling | [readonly-field-styling.md](./readonly-field-styling.md) |
+| release-marketing-standard | [release-marketing-standard.md](./release-marketing-standard.md) |
+| roadmap | [roadmap.md](./roadmap.md) |
+| schema | [schema.md](./schema.md) |
+| second-brain | [second-brain.md](./second-brain.md) |
+| spatie-permission-team-context | [spatie-permission-team-context.md](./spatie-permission-team-context.md) |
+| spatie-permission-teams-boundary | [spatie-permission-teams-boundary.md](./spatie-permission-teams-boundary.md) |
+| sprint-planning-meeting | [sprint-planning-meeting.md](./sprint-planning-meeting.md) |
+| sprint-planning | [sprint-planning.md](./sprint-planning.md) |
+| strategy | [strategy.md](./strategy.md) |
+| theme-analysis | [theme-analysis.md](./theme-analysis.md) |
+| troubleshooting | [troubleshooting.md](./troubleshooting.md) |
+| user-research | [user-research.md](./user-research.md) |
 
 ## Collegamenti
 
-- [Spatie Permission Team Context](./spatie-permission-team-context.md)
-- [Tema Zero](../Zero/docs/) - Tema principale
-- [Configurazione Root](../../../docs/THEME_ONE.md)
-- [Governance Naming Docs/Model](./model-docs-governance.md)
-- [Metodologia GSD](../../../../docs/project/gsd-methodology.md)
-- [GSD templates locali](../../../../.gsd/README.md)
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../../../Modules/Xot/docs/README.md)
+- [Wiki progetto](../../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## Backlinks
+## Per agenti
 
-- [Xot Module](../../Modules/Xot/docs/)
-- [UI Module](../../Modules/UI/docs/)
-- [Progressioni Rename Scheda](../../Modules/Progressioni/docs/rename-schede-to-scheda.md)
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.

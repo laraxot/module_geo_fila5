@@ -181,7 +181,7 @@
 ### Essential Reading
 
 1. **[START-HERE.md](docs/START-HERE.md)** - Entry point
-2. **[MASTER-INDEX-2025.md](docs/MASTER-INDEX-2025.md)** - Complete map
+2. **[MASTER-INDEX.md](docs/MASTER-INDEX.md)** - Complete map
 3. **[CORRECT-SCHEMALESS-SOLUTION.md](docs/CORRECT-SCHEMALESS-SOLUTION.md)** - Critical
 4. **[APOLOGY-AND-CORRECT-SOLUTION.txt](APOLOGY-AND-CORRECT-SOLUTION.txt)** - Lesson
 
@@ -189,7 +189,7 @@
 
 | Module | README | Critical Docs |
 |--------|--------|---------------|
-| IndennitaResponsabilita | [README](laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Analysis](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md), [Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
+| IndennitaResponsabilita | [README](laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Analysis](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md), [Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
 | Rating | [README](laravel/Modules/Rating/docs/README.md) | [🔥 Collation Fix](laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md) |
 | User | [README](laravel/Modules/User/docs/README.md) | [Migration Violations](laravel/Modules/User/docs/migration-violations-tenants.md) |
 

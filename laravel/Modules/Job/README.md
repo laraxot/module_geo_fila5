@@ -38,3 +38,9 @@ We welcome contributions! Please read [CONTRIBUTING](docs/contributing.md) first
 ---
 
 Crafted with ❤️ by the development team.
+
+
+## Documentazione tecnica
+
+- [Indice docs](./docs/README.md) — mappa knowledge base locale (wiki, audit, regole)
+

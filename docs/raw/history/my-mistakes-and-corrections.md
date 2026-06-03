@@ -66,7 +66,7 @@ $ratings = Rating::where('extra_attributes->anno', 2025)->get();
 ### Eliminati ✅
 
 - ❌ `collation-error-fix.md` - Soluzione code-based sbagliata
-- ❌ `CRITICAL-COLLATION-FIX-2025.md` - Pattern errato
+- ❌ `CRITICAL-COLLATION-FIX.md` - Pattern errato
 - ❌ `docs/troubleshooting/mysql-collation-json.md` - Info sbagliate
 - ❌ `.cursor/rules/schemaless-collation-fix.mdc` - Rule errata
 

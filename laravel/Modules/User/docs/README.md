@@ -1,89 +1,107 @@
-# Modulo User - Documentazione Completa
+---
+title: documentazione modulo User
+module: User
+type: index
+status: approved
+tags: [documentation, readme, modulo, second-brain]
+updated: "2026-05-27"
+related:
+  - ../README.md
+---
 
-## Overview
+# Documentazione — modulo User
 
-Il modulo **User** gestisce l'autenticazione, l'autorizzazione e la gestione utenti completa nel sistema [PROJECT_NAME] platform.
+> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
 
-## Funzionalità Principali
+## Scopo
 
-### Autenticazione
-- Login multi-tenant
-- Gestione sessioni sicure
-- Two-factor authentication (opzionale)
+User management module for the Laraxot ecosystem: authentication, roles, teams, tenants, and OAuth.
 
-### Autorizzazione
-- RBAC (Role-Based Access Control) via Spatie Permission
-- Teams e Tenant isolation
-- Policy Filament integrate
+## Dove iniziare
 
-### Modelli
+- [Wiki locale](./wiki/index.md)
+- [code redundancy audit](./code-redundancy-audit.md)
+- [architecture rules](./architecture-rules.md)
+- [agent edit discipline](./agent-edit-discipline.md)
+- [agent confidence protocol](./agent-confidence-protocol.md)
+- [second brain](./second-brain.md)
 
-```php
-// User base model
-Modules\User\Models\User extends BaseModel
 
-// Team management
-Modules\User\Models\Team
+## Struttura tipica
 
-// Tenant isolation  
-Modules\User\Models\Tenant
+```text
+User/
+├── README.md          ← vetrina (root package)
+├── docs/
+│   ├── README.md      ← questo indice
+│   └── wiki/          ← second brain (se presente)
+├── app/ o resources/
+└── composer.json
 ```
 
-## Trait Disponibili
+## Namespace / confini
 
-| Trait | Scopo | Requisiti |
-|-------|-------|-----------|
-| `HasTeams` | Gestione team multipli | `HasRoles` |
-| `HasTenants` | Multi-tenancy Filament | `HasRoles` |
-| `HasAuthenticationLogTrait` | Logging autenticazioni | - |
+- Namespace: `Modules\User`
+- Non duplicare qui la filosofia marketing: resta nel README root.
+
+## Indice file in docs/ (root)
+
+| Argomento | File |
+| :--- | :--- |
+| 00-index | [00-index.md](./00-index.md) |
+| 2fa-guide | [2fa-guide.md](./2fa-guide.md) |
+| 2fa | [2fa.md](./2fa.md) |
+| BUSINESS-LOGIC-ANALYSIS | [BUSINESS-LOGIC-ANALYSIS.md](./BUSINESS-LOGIC-ANALYSIS.md) |
+| BUSINESS-LOGIC-DEEP-DIVE | [BUSINESS-LOGIC-DEEP-DIVE.md](./BUSINESS-LOGIC-DEEP-DIVE.md) |
+| BUSINESS_LOGIC_ANALYSIS | [BUSINESS_LOGIC_ANALYSIS.md](./BUSINESS_LOGIC_ANALYSIS.md) |
+| MODEL-INHERITANCE-FIXES | [MODEL-INHERITANCE-FIXES.md](./MODEL-INHERITANCE-FIXES.md) |
+| MODEL_INHERITANCE_FIXES | [MODEL_INHERITANCE_FIXES.md](./MODEL_INHERITANCE_FIXES.md) |
+| ON-DEMAND-PATTERN | [ON-DEMAND-PATTERN.md](./ON-DEMAND-PATTERN.md) |
+| PERFORMANCE-OPTIMIZATION | [PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md) |
+| PRODUCT_LAUNCH_PLAN | [PRODUCT_LAUNCH_PLAN.md](./PRODUCT_LAUNCH_PLAN.md) |
+| PRODUCT_ROADMAP | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) |
+| PRODUCT_STRATEGY | [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md) |
+| PROJECT-STRUCTURE | [PROJECT-STRUCTURE.md](./PROJECT-STRUCTURE.md) |
+| QMD-SETUP | [QMD-SETUP.md](./QMD-SETUP.md) |
+| QUERY_OPTIMIZATION_ANALYSIS | [QUERY_OPTIMIZATION_ANALYSIS.md](./QUERY_OPTIMIZATION_ANALYSIS.md) |
+| REDUNDANCY_ANALYSIS | [REDUNDANCY_ANALYSIS.md](./REDUNDANCY_ANALYSIS.md) |
+| SPRINT_PLANNING | [SPRINT_PLANNING.md](./SPRINT_PLANNING.md) |
+| USER_RESEARCH | [USER_RESEARCH.md](./USER_RESEARCH.md) |
+| WIDGET-RENDERING-ANALYSIS | [WIDGET-RENDERING-ANALYSIS.md](./WIDGET-RENDERING-ANALYSIS.md) |
+| accessor-delegation-pattern | [accessor-delegation-pattern.md](./accessor-delegation-pattern.md) |
+| actions-path-convention | [actions-path-convention.md](./actions-path-convention.md) |
+| actions-structure-1 | [actions-structure-1.md](./actions-structure-1.md) |
+| actions-structure-2 | [actions-structure-2.md](./actions-structure-2.md) |
+| actions-structure | [actions-structure.md](./actions-structure.md) |
+| actions | [actions.md](./actions.md) |
+| actions_structure | [actions_structure.md](./actions_structure.md) |
+| activitylog-moderation-best-practices | [activitylog-moderation-best-practices.md](./activitylog-moderation-best-practices.md) |
+| activitylog | [activitylog.md](./activitylog.md) |
+| advanced-user-architecture | [advanced-user-architecture.md](./advanced-user-architecture.md) |
+| agent-confidence-discipline | [agent-confidence-discipline.md](./agent-confidence-discipline.md) |
+| agent-confidence-protocol | [agent-confidence-protocol.md](./agent-confidence-protocol.md) |
+| agent-edit-discipline | [agent-edit-discipline.md](./agent-edit-discipline.md) |
+| ai-methodologies | [ai-methodologies.md](./ai-methodologies.md) |
+| analisi-metodi-duplicati | [analisi-metodi-duplicati.md](./analisi-metodi-duplicati.md) |
+| analisi-metodiuplicati | [analisi-metodiuplicati.md](./analisi-metodiuplicati.md) |
+| analysis | [analysis.md](./analysis.md) |
+| architecture-rules | [architecture-rules.md](./architecture-rules.md) |
+| architecture | [architecture.md](./architecture.md) |
+| architecture_rules | [architecture_rules.md](./architecture_rules.md) |
 
 ## Collegamenti
 
-- [Documentazione Root](../../../docs/USER_MODULE.md)
-- [Regole Trait](./traits.md)
-- [Filament Resources](./filament/)
+- [README root (vetrina)](../README.md)
+- [Xot (framework base)](../Xot/docs/README.md)
+- [Wiki progetto](../../../../docs/wiki/README.md)
+- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
 
-## Backlinks
+## Per agenti
 
-- [Xot Base](../Xot/docs/)
-- [Tenant Module](../Tenant/docs/)
-- [UI Components](../UI/docs/)
+1. Leggere scopo in questo file.
+2. Aprire `docs/wiki/index.md` se esiste.
+3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
 
-## Architectural Rules — Violations Fixed
+## Panoramica estesa
 
-### Profiles migration governance
-- La tabella `profiles` deve avere sia `id` sia `uuid`.
-- Il modulo User usa **una sola migrazione autorevole** per `profiles`: `*_create_profiles_table.php`.
-- Se manca una colonna come `uuid`, si corregge quella migrazione e si aggiorna il timestamp del file; non si crea una migrazione `add_uuid_to_profiles`.
-- Riferimento canonico: [wiki/concepts/profile-migration-uuid-contract.md](./wiki/concepts/profile-migration-uuid-contract.md)
-
-### No Log calls in production code
-`Log::info()`, `Log::debug()`, `Log::error()` are forbidden in Actions, Models, Services, and Widgets.
-Found and removed from `RegisterWidget`. Laravel logs unhandled exceptions automatically.
-See: [no-log-in-production.md](./no-log-in-production.md)
-
-### Git merge conflicts in migrations
-46 migration files in `database/migrations/` had unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`).
-These break PHP syntax and halt PHPStan entirely. All were resolved.
-Rule: never commit files with conflict markers. Fix immediately when found.
-
-## Requisiti
-
-- PHP 8.3+
-- Laravel 11/12
-- Spatie Laravel Permission
-- Filament v5
-
-
-## Standard Rules & Workflow
-
-- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
-- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
-- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]
-
-## Documentation
-
-- [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
-- [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
-- [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
-- [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
+- [overview-extended.md](./overview-extended.md) — contenuto storico da `readme.md` (kebab-case unificato)

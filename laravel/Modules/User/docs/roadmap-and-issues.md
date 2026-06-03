@@ -370,7 +370,7 @@ php artisan queue:prune-failed --hours=48
 ## 🔗 Collegamenti
 
 - [← User Module README](./readme.md)
-- [← PHPStan Fixes 2025-10-01](./phpstan-fixes-2025-10-01.md)
+- [← PHPStan Fixes 2025-10-01](./phpstan-fixes-archive-1.md)
 - [← Project Roadmap](../../../docs/project-analysis-and-roadmap.md)
 - [← Root Documentation](../../../docs/index.md)
 

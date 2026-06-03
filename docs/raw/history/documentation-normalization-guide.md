@@ -39,8 +39,8 @@ filament-resources.md        # Descrittivo e chiaro
 ARCHITECTURE.md              # Maiuscole
 Architecture.md              # CamelCase
 business_logic.md            # Underscore (preferire trattini)
-filament-resources-2025.md   # Date nel nome
-phpstan-fixes-2025-01-06.md  # Date specifiche
+filament-resources.md   # Date nel nome
+phpstan-fixes.md  # Date specifiche
 ```
 
 ## Struttura Standard per Modulo
@@ -218,8 +218,8 @@ Riferimento a [testing.md](testing.md)
 ### Esempio 1: File PHPStan
 **Prima:**
 - `phpstan-fixes.md`
-- `phpstan-fixes-2025.md`
-- `phpstan-fixes-2025-01-06.md`
+- `phpstan-fixes-archive-1.md`
+- `phpstan-fixes.md`
 - `PHPSTAN_FIXES.md`
 
 **Dopo:**

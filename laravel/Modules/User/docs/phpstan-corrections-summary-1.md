@@ -145,7 +145,7 @@
 
 ## 📚 Riferimenti
 
-- [PHPStan Furious Debate](./phpstan-furious-debate-2025.md)
+- [PHPStan Furious Debate](./phpstan-furious-debate.md)
 - [PHPStan Errors Philosophy](./phpstan-errors-philosophy.md)
 - [Filament 4 Actions Namespace](./filament-4-actions-namespace.md)
 

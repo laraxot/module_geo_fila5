@@ -50,8 +50,8 @@ git-conflicts-resolution-[DATE].md
 **Dopo**:
 ```
 archive/phpstan/phpstan-fixes-jan2025.md  (archiviato)
-archive/lessons-learned-aug2025.md         (archiviato)
-phpstan-level10-success-nov2025.md         (attuale)
+archive/lessons-learned-aug-archive-1.md         (archiviato)
+phpstan-level10-success-nov-archive-1.md         (attuale)
 ```
 
 ### 3. Consolidamento Duplicati (12 file eliminati)
@@ -78,7 +78,7 @@ phpstan-level10-success-nov2025.md         (attuale)
 **Struttura migliorata**:
 ```
 docs/
-├── phpstan-level10-success-nov2025.md  (attuale)
+├── phpstan-level10-success-nov-archive-1.md  (attuale)
 ├── phpstan-workflow.md                  (procedura)
 └── archive/
     └── phpstan/
@@ -122,7 +122,7 @@ public static string $projectBasePath = '../../../docs/standards/php-inheritance
 ```
 docs/
 ├── README.md                          (indice principale)
-├── phpstan-level10-success-nov2025.md (ultimo successo)
+├── phpstan-level10-success-nov-archive-1.md (ultimo successo)
 ├── phpstan-workflow.md                (procedura corrente)
 ├── eloquent-magic-properties-rule.md  (regole Eloquent)
 ├── git-forward-only-rule.md           (regola Git)
@@ -194,7 +194,7 @@ Documentato in: `git-forward-only-rule.md`
 **Vietato**: `git checkout HEAD --`, `git reset`, `git revert` (senza discussione)
 
 ### File .lock Pattern
-Documentato in: `phpstan-level10-success-nov2025.md`
+Documentato in: `phpstan-level10-success-nov-archive-1.md`
 
 **Regola**: Creare `.lock` prima di modificare file
 
@@ -248,7 +248,7 @@ find . -name "readme.md" -o -name "Readme.md"
 
 ## 🔗 Collegamenti Correlati
 
-- [PHPStan Level 10 Success](./phpstan-level10-success-nov2025.md) - Successo PHPStan
+- [PHPStan Level 10 Success](./phpstan-level10-success-nov-archive-1.md) - Successo PHPStan
 - [Eloquent Magic Properties Rule](./eloquent-magic-properties-rule.md) - Regola property_exists
 - [Git Forward Only Rule](./git-forward-only-rule.md) - Regola Git
 - [Naming Conventions](./naming-conventions.md) - Convenzioni naming

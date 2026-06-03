@@ -7,7 +7,7 @@ created: "2026-05-26"
 updated: "2026-05-26"
 related:
   - ../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md
-  - ../../../redundancy-audit-2026-05-21.md
+  - ../../../redundancy-audit.md
   - ../../../redundancy-report.md
 ---
 
@@ -40,4 +40,4 @@ Componenti Filament estesi (`XotBaseField`, layout tabella, icone), enum layout,
 ## Collegamenti
 
 - [Filosofia](../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md)
-- [Audit trasversale](../../../../Xot/docs/wiki/redundancy-audit-2026-05-26.md)
+- [Audit trasversale](../../../../Xot/docs/wiki/redundancy-audit.md)

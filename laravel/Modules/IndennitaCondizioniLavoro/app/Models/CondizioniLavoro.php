@@ -846,6 +846,8 @@ SQL;
             $where['anno'] += 1;
         }
 
+        
+
         return CondizioniLavoro::firstWhere($where);
     }
 }// end class

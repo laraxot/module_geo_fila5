@@ -315,7 +315,7 @@ test('it can create and manage tenants', function (): void {
 4. ✅ `Pest.php` - Fix TenantUser rimossi, funzioni helper tipizzate
 5. ✅ `TestCase.php` - Fix CreatesApplication, rimosso loadLaravelMigrations()
 6. ✅ `CreatesApplication.php` - Creato trait mancante in `Modules/Xot/tests/`
-7. ✅ `phpstan-analysis-2025-01-27.md` - Documentazione aggiornata
+7. ✅ `phpstan-analysis.md` - Documentazione aggiornata
 
 ### Errori Rimanenti: 289
 

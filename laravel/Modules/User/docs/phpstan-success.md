@@ -55,4 +55,4 @@ Tutte le correzioni seguono rigorosamente:
 
 - [Filament Class Extension Rules](../../../../.cursor/rules/filament-class-extension-rules.mdc)
 - [PHPStan Progress Report](./phpstan-progress-report.md)
-- [PHPStan Corrections Summary](./phpstan-corrections-summary-2025.md)
+- [PHPStan Corrections Summary](./phpstan-corrections-summary.md)

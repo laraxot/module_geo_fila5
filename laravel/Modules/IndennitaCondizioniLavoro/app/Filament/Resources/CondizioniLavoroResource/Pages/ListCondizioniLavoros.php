@@ -168,8 +168,8 @@ class ListCondizioniLavoros extends XotBaseListRecords
                     // Ensure data structure matches expected type (quadrimestre must be int|string, not null)
                     $quadrimestre = isset($data['quadrimestre']) && (is_int($data['quadrimestre']) || is_string($data['quadrimestre'])) ? $data['quadrimestre'] : '1';
                     $populateData = ['anno' => $anno, 'quadrimestre' => $quadrimestre];
-                    app(Populate::class)->execute($populateData);
-                    app(FixValutatoreIdByAnno::class)->execute('IndennitaCondizioniLavoro', 'CondizioniLavoro', $anno);
+                    //app(Populate::class)->execute($populateData);
+                    //app(FixValutatoreIdByAnno::class)->execute('IndennitaCondizioniLavoro', 'CondizioniLavoro', $anno);
 
                     $query = $query->where($data);
 

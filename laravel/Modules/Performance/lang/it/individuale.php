@@ -478,6 +478,7 @@ return [
         ],
         'submit' => [
             'tooltip' => 'submit',
+            'icon' => 'submit',
         ],
         'gg_effettuati' => [
             'label' => 'gg_effettuati',

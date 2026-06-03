@@ -87,7 +87,7 @@ public function scopeWithExtraAttributes(
    - DO/DON'T patterns
    - ~600 lines
 
-4. **[Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)**
+4. **[Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)**
    - Executive summary
    - ~500 lines
 
@@ -119,7 +119,7 @@ public function scopeWithExtraAttributes(
 
 ### Theme One (1 doc)
 
-1. **[Theme Analysis 2025](laravel/Themes/One/docs/theme-analysis-2025.md)**
+1. **[Theme Analysis 2025](laravel/Themes/One/docs/theme-analysis.md)**
    - Structure recommendations
    - Best practices
    - ~400 lines
@@ -129,8 +129,8 @@ public function scopeWithExtraAttributes(
 1. **[Root README](docs/README.md)** - Updated with complete navigation
 2. **[Claude README](docs/claude/README.md)** - Updated links
 3. **[Schemaless Final](docs/claude/schemaless-attributes-final.md)** - Correct guide
-4. **[Analysis Corrections](docs/analysis-corrections-2025-01-02.md)** - Summary
-5. **[Quality Verification](docs/code-quality-verification-2025-01-02.md)** - PHPMD results
+4. **[Analysis Corrections](docs/analysis-corrections.md)** - Summary
+5. **[Quality Verification](docs/code-quality-verification.md)** - PHPMD results
 
 ---
 
@@ -249,7 +249,7 @@ public function scopeWithExtraAttributes(
 
 ### For Developers
 
-1. Start with [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+1. Start with [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 2. Read [Refactoring Action Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
 3. Follow [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)
 4. Implement tasks incrementally
@@ -257,7 +257,7 @@ public function scopeWithExtraAttributes(
 ### For Tech Lead
 
 1. Review [Code Quality Analysis](laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)
-2. Assess [Quality Verification](docs/code-quality-verification-2025-01-02.md)
+2. Assess [Quality Verification](docs/code-quality-verification.md)
 3. Approve [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
 4. Assign resources
 
@@ -275,8 +275,8 @@ public function scopeWithExtraAttributes(
 **Central Hub**: [docs/README.md](docs/README.md)
 
 **Key Documents**:
-- Analysis: [This file](docs/analysis-corrections-2025-01-02.md)
-- Module: [IndennitaResponsabilita](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+- Analysis: [This file](docs/analysis-corrections.md)
+- Module: [IndennitaResponsabilita](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - Rating: [Rating Module](laravel/Modules/Rating/docs/README.md)
 - AI Rules: [Claude Guidelines](docs/claude/README.md)
 

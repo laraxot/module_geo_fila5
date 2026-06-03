@@ -12,7 +12,11 @@ use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 class SnapshotForm extends XotBaseResourceForm
 {
     /**
+<<<<<<< HEAD
      * @return array<int|string, Component>
+=======
+     * @return array<string, Component>
+>>>>>>> master
      */
     public static function getFormSchema(): array
     {

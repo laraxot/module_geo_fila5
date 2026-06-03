@@ -16,6 +16,7 @@ related:
 > **Fonte canonica.** Tabelle esempi, obblighi agente, eccezioni e checklist per **nome** e **contenuto** dei `.md` vivono in un solo posto:
 
 - [Standard Markdown — scrittura e denominazione dei file (.md)](./markdown-documentation-standard.md) (vedi anche sezione denominazione nel documento principale).
+- Report PHPStan modulo: [phpstan-module-markdown-naming.md](../memories/phpstan-module-markdown-naming.md)
 
 Questo file resta come **punto di ingresso** storico (`naming-conventions-markdown`) e per backlink dal resto della wiki.
 

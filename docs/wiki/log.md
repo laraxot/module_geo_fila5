@@ -9,6 +9,28 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-05-27 18:00:00 UTC] [RULE] `docs/README.md` obbligatorio moduli/temi: creato `Themes/Three/docs/README.md`; regola `theme-module-docs-readme-mandatory.md` + `.cursor/rules/`; trigger map; issue #163.
+
+[2026-05-27 17:30:00 UTC] [FIX] Naming `.md`: rimossi `phpstan-analysis.md` (Activity/Gdpr); memoria `phpstan-module-markdown-naming.md`; trigger map + `phpstan_module.txt`.
+
+[2026-05-27 17:00:00 UTC] [LINT] PHPStan **Media** (135 file): 0 errori; inventario ex-33 corretto.
+
+[2026-05-27 16:30:00 UTC] [LINT] PHPStan **Notify** (412 file) + **Lang** (134 file): già 0 errori; Lang issue #11 chiusa.
+
+[2026-05-27 16:00:00 UTC] [FIX] PHPStan **Gdpr**: 16→0 errori; issue #9 chiusa; listener duplicato rimosso; inventario aggiornato.
+
+[2026-05-27 15:00:00 UTC] [UPDATE] `phpstan_module.txt`: sezione BMAD per agente (install, comandi, campagna PHPStan×BMAD); template issue + chat coordinamento allineati.
+
+[2026-05-27 14:00:00 UTC] [UPDATE] `bashscripts/tools/prompts/phpstan_module.txt`: best/bad practices, false friends, no `--level=` CLI, link verificati, blocco note duplicate rimosso.
+
+[2026-05-27 13:00:00 UTC] [FIX] Campagna PHPStan: prompt `phpstan_module.txt` riscritto; prototipo issue `docs/wiki/_templates/phpstan-module-github-issue.md`; **Activity** 16→0 errori, issue #10 chiusa.
+
+[2026-05-27 12:30:00 UTC] [LINT] PHPStan **Activity** (demo): 16 errori / 129 file; issue [`provtv/module_activity_fila5#10`](https://github.com/provtv/module_activity_fila5/issues/10); inventario aggiornato (non più OK).
+
+[2026-05-27 12:00:00 UTC] [LINT] PHPStan **Questionari** (modulo a caso): 0 errori / 10 file; commento `provtv/module_questionari_fila5#3`, mono #136; inventario [`phpstan-modules-inventory.md`](memories/phpstan-modules-inventory.md).
+
+[2026-05-27 00:00:00 UTC] [UPDATE] PHPStan moduli: verificati `DbForge`, `MobilitaVolontaria`, `Setting` con `phpstan.neon` + `--level=max`, tutti 0 errori; esclusi `Pdnd` e `Incentivi`; aggiornati inventario e chat coordinamento.
+
 [2026-05-26 12:30:00 UTC] [PROCESS] GitHub issue sync: commenti su mono #143 #157-159 #148 #155, Job/Lang/Notify/temi; creata provtv/module_notify_fila5#21.
 
 [2026-05-26 25:00:00 UTC] [UPDATE] Canon Filament `getTableColumns`: solo `public function` (mai static); concept [`xotbase-table-columns-enforcement.md`](concepts/xotbase-table-columns-enforcement.md), §21b `llm-wiki.txt`, `check-get-table-columns-instance.sh`; PHP Job+Notify OK.

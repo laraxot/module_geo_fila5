@@ -139,7 +139,7 @@ use Filament\Tables\Actions\ViewAction; // Namespace sbagliato
 
 1. ✅ `xotbase-resource-getpages-automatic.md`: Filosofia DRY per `getPages()` automatico
 2. ✅ `resources-array-keys-philosophy.md`: Filosofia per chiavi stringhe sempre
-3. ✅ `resources-corrections-summary-2025-01-22.md`: Questo documento
+3. ✅ `resources-corrections-summary.md`: Questo documento
 
 ## Lezioni Apprese
 

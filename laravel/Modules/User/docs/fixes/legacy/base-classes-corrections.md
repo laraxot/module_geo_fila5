@@ -224,7 +224,7 @@ php artisan test --filter=ModelTest
    - Esempi pratici
    - Checklist per nuovi modelli
 
-2. **`docs/fixes/base-classes-corrections-2025-10-15.md`** (QUESTO FILE)
+2. **`docs/fixes/base-classes-corrections-archive-1.md`** (QUESTO FILE)
    - Riepilogo correzioni
    - Motivazioni tecniche
    - Before/After comparisons

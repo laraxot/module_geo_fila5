@@ -28,7 +28,7 @@ Questo documento descrive il processo sistematico per normalizzare i nomi dei fi
 - BugfixIconsMissing.md (maiuscole)
 - bugfix-icons-missing-[DATE].md (data nel nome)
 - bugfix_icons_missing.md (underscore invece di trattini)
-- bugfix-icons-missing-2025.md (anno nel nome)
+- bugfix-icons-missing.md (anno nel nome)
 ```
 
 ## Processo di Normalizzazione
@@ -202,7 +202,7 @@ Per processi futuri, considerare script di automazione:
 ## Riferimenti
 
 - [Regole Naming File](../file-naming-rules.md)
-- [Piano Consolidamento Documentazione](../../../../../docs/consolidamento-documentazione-2025.md)
+- [Piano Consolidamento Documentazione](../../../../../docs/consolidamento-documentazione.md)
 - [Filosofia DRY + KISS](../../../../../docs/philosophy-guide.md)
 
 ---

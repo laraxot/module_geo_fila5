@@ -9,7 +9,7 @@ module: "Questionari"
 
 ## Log Entries
 
-_No activity yet. Start by ingesting raw documents._
+[2026-05-27 12:00:00 UTC] [LINT] PHPStan `level=max` via `laravel/phpstan.neon` su `Modules/Questionari` → **0 errori** (10 file). Esclusi Pdnd/Incentivi per policy scan. Commento: provtv/module_questionari_fila5#3.
 
 ### Format
 
@@ -25,5 +25,5 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+**Last Activity:** 2026-05-27 LINT PHPStan  
+**Total Operations:** 1

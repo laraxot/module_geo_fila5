@@ -24,9 +24,9 @@
 
 ### For Refactoring
 
-1. [📊 IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)
+1. [📊 IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 2. [📋 Refactoring Action Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
-3. [✅ Quality Verification](./code-quality-verification-2025-01-02.md)
+3. [✅ Quality Verification](./code-quality-verification.md)
 
 ---
 
@@ -39,7 +39,7 @@
 - ✅ **15 documents** created (~6,000 lines)
 - ✅ **PHPMD** confirms analysis accuracy (95%+)
 
-**Master Summary**: [Analysis Complete](./ANALYSIS-COMPLETE-2025-01-02.md)
+**Master Summary**: [Analysis Complete](./ANALYSIS-COMPLETE.md)
 
 ---
 
@@ -50,10 +50,10 @@
 ```
 docs/
 ├── README.md ⭐ Main hub
-├── MASTER-INDEX-2025.md (This file)
-├── ANALYSIS-COMPLETE-2025-01-02.md ⭐ Recent work
-├── analysis-corrections-2025-01-02.md
-├── code-quality-verification-2025-01-02.md
+├── MASTER-INDEX.md (This file)
+├── ANALYSIS-COMPLETE.md ⭐ Recent work
+├── analysis-corrections.md
+├── code-quality-verification.md
 ├── claude/ ⭐ AI guidelines
 │   ├── README.md
 │   ├── architecture-rules.md ⚠️ CRITICAL
@@ -75,7 +75,7 @@ docs/
 laravel/Modules/
 ├── IndennitaResponsabilita/docs/ ⭐ ANALYZED
 │   ├── README.md (Updated)
-│   ├── analysis-summary-2025.md ⭐ Start here
+│   ├── analysis-summary.md ⭐ Start here
 │   ├── code-quality-analysis.md (~800 lines)
 │   ├── refactoring-action-plan.md (~1000 lines)
 │   ├── best-practices.md (~600 lines)
@@ -95,7 +95,7 @@ laravel/Modules/
 ```
 laravel/Themes/
 ├── One/docs/
-│   └── theme-analysis-2025.md ⭐ Guidelines
+│   └── theme-analysis.md ⭐ Guidelines
 └── Zero/docs/
 ```
 
@@ -203,10 +203,10 @@ TextInput::make('name') // Auto-translated
 
 1. **[Root README](./README.md)** - Navigation hub
 2. **[Claude Architecture Rules](./claude/architecture-rules.md)** - ⚠️ CRITICAL rules
-3. **[Analysis Complete 2025](./ANALYSIS-COMPLETE-2025-01-02.md)** - Recent analysis summary
+3. **[Analysis Complete 2025](./ANALYSIS-COMPLETE.md)** - Recent analysis summary
 4. **[Schemaless Final](./claude/schemaless-attributes-final.md)** - Correct schemaless usage
 5. **[Eloquent Properties](./claude/eloquent-properties.md)** - property_exists issue
-6. **[IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md)** - Module analysis
+6. **[IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** - Module analysis
 7. **[Refactoring Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)** - Action items
 8. **[Rating Module](../laravel/Modules/Rating/docs/README.md)** - Fixed module
 9. **[Common Pitfalls](./claude/common-pitfalls.md)** - Avoid these
@@ -421,7 +421,7 @@ php artisan test --coverage --min=85
 
 | Module | README | Key Docs |
 |--------|--------|----------|
-| IndennitaResponsabilita | [README](../laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary-2025.md), [Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
+| IndennitaResponsabilita | [README](../laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md), [Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
 | Rating | [README](../laravel/Modules/Rating/docs/README.md) | [Scope Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md), [Consolidation](../laravel/Modules/Rating/docs/trait-consolidation-plan.md) |
 | Xot | [README](../laravel/Modules/Xot/docs/README.md) | Core framework |
 | User | [README](../laravel/Modules/User/docs/README.md) | Auth & users |

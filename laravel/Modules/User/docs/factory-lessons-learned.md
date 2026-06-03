@@ -145,7 +145,7 @@ done
 
 ## Collegamenti
 
-- [Factory Audit Root](../../../../docs/project/factory-audit-2025.md)
+- [Factory Audit Root](../../../../docs/project/factory-audit.md)
 - [Missing Factories Audit](./missing-factories-audit.md)
 - [Geo Factory Audit](../../geo/project_docs/missing-factories-audit.md)
 - [Laravel Factory Best Practices](../../../../docs/project/laravel-factory-best-practices.md)

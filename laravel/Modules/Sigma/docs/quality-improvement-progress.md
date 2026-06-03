@@ -45,7 +45,7 @@ $lista_propro = $params['lista_propro'] ?? null;
 ### 2. Documentazione Strategica
 
 **Documenti Creati/Aggiornati**:
-- `quality-improvement-strategy-2025.md` - Piano strategico completo
+- `quality-improvement-strategy.md` - Piano strategico completo
 - `accessor-pattern-correct.md` - Pattern business logic verificato
 - `phpstan-level10-strategy.md` - Strategia errori PHPStan
 - `architecture.md` - Architettura Delegation Cascade Pattern
@@ -171,6 +171,6 @@ public function getCoalesceDateRangeByArray(array $params): string
 **Status**: 🚀 PROGRESSO SIGNIFICATIVO
 
 **Vedi anche**:
-- [Quality Improvement Strategy](./quality-improvement-strategy-2025.md)
+- [Quality Improvement Strategy](./quality-improvement-strategy.md)
 - [PHPStan Level 10 Strategy](./phpstan-level10-strategy.md)
 - [Accessor Pattern Correct](./accessor-pattern-correct.md)

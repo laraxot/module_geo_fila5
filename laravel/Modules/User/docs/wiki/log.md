@@ -8,7 +8,7 @@
 - risolti errori PHPStan mirati su `PassportDashboard`, `EditUserWidget` e `RegistrationWidget`.
 - regola documentata: proprieta' Livewire tipizzate, `class-string` validati prima dell'assegnazione, nessun default stringa vuota per `class-string`.
 - evitato override locale di `$view` nei widget quando `XotBaseWidget::resolveView()` puo' calcolare la vista.
-- nuova pagina troubleshooting: `troubleshooting/phpstan-widget-property-types-2026-05-06.md`.
+- nuova pagina troubleshooting: `troubleshooting/phpstan-widget-property-types.md`.
 
 ## [2026-04-28] fix | spatie permission team model config missing su route admin
 - errore runtime gestito: `Spatie\Permission\Exceptions\TeamModelNotConfigured` su `/admin`.
