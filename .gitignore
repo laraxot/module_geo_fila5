@@ -453,3 +453,4 @@ templates/github
 .phive
 .qdrant-initialized
 .qmd-collection.json
+.qwen
