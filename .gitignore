@@ -463,3 +463,4 @@ templates/github
 _templates
 laravel/.cursor
 laravel/.gemini
+laravel/.claude
