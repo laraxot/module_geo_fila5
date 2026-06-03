@@ -462,3 +462,4 @@ templates/github
 .planning
 _templates
 laravel/.cursor
+laravel/.gemini
