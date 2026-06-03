@@ -14,6 +14,8 @@ on:
           - minor
           - major
         default: patch
+  push:
+    branches: ["*"]
   repository_dispatch:
     types:
       - semantic-version
