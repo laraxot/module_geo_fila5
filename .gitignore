@@ -464,3 +464,4 @@ _templates
 laravel/.cursor
 laravel/.gemini
 laravel/.claude
+laravel/.qwen
