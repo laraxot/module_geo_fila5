@@ -57,6 +57,7 @@ qmd: "trigger map bootstrap sessione agente ROUTING mandatory discipline automat
 | AGENTS.md enorme / BMAD rigenerato / bootstrap troppo grande | `docs/wiki/concepts/context-overflow-prevention.md`, `docs/wiki/concepts/llm-wiki-operational-discipline.md`, `bashscripts/ai/rules/bmad.md` |
 | LLM wiki discipline / git policy / cache discipline / bootstrap stub size | `docs/wiki/concepts/llm-wiki-operational-discipline.md` |
 | MCP minimum stack (context-mode, playwright, puppeteer, token-optimizer, laravel-boost) | `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/_templates/mcp-minimum-stack.json` |
+| UI/UX MCP on-demand (Impeccable, Flowbite, daisyUI Blueprint, Windframe, Tailkit, UI UX Pro Max) | `docs/wiki/concepts/ui-ai-tooling-on-demand.md`, `docs/wiki/concepts/ui-ai-tooling-on-demand-matrix.md`, `docs/wiki/concepts/impeccable-frontend-design-on-demand.md` |
 | MCP config contiene path assoluti workspace / `.cursor/mcp.json` non portabile | `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/how-to/mcp-minimum-stack.md`, `docs/wiki/rules/00-TRIGGER_MAP.md` |
 | Attivare/configurare context-mode MCP / `ctx` o `context-mode` non trovato | `docs/wiki/rules/token-optimization-discipline.md`, `docs/wiki/how-to/context-mode-setup.md`, `docs/wiki/concepts/context-mode-optimal-configuration.md` |
 | Permission/RBAC | `docs/wiki/concepts/spatie-permission-teams-laravel-13.md` |
