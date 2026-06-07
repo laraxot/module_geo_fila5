@@ -1,3 +1,4 @@
+SELECT ST_CONTAINS(@g,@p);
 ---
 module: theme
 topic: polygon-mysql

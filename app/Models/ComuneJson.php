@@ -453,9 +453,8 @@ class ComuneJson extends GeoJsonModel
             'regione_codice' => [
                 $requiredRule,
                 'string',
-                static function ($_attribute, $value, $fail): void {
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
                     if (\is_string($value) && ! static::allRegions()->has($value)) {
-                        /* @phpstan-ignore callable.nonCallable */
                         $fail('La regione selezionata non è valida.');
                     }
                 },
@@ -463,9 +462,8 @@ class ComuneJson extends GeoJsonModel
             'provincia_codice' => [
                 $requiredRule,
                 'string',
-                static function ($_attribute, $value, $fail): void {
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
                     if (\is_string($value) && ! static::allProvinces()->has($value)) {
-                        /* @phpstan-ignore callable.nonCallable */
                         $fail('La provincia selezionata non è valida.');
                     }
                 },
@@ -473,9 +471,8 @@ class ComuneJson extends GeoJsonModel
             'comune_nome' => [
                 $requiredRule,
                 'string',
-                static function ($_attribute, $value, $fail): void {
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
                     if (\is_string($value) && ! empty($value) && static::searchByName($value, 1)->isEmpty()) {
-                        /* @phpstan-ignore callable.nonCallable */
                         $fail('Il comune selezionato non è valido.');
                     }
                 },
@@ -483,9 +480,8 @@ class ComuneJson extends GeoJsonModel
             'cap' => [
                 $requiredRule,
                 'string',
-                static function ($_attribute, $value, $fail): void {
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
                     if (\is_string($value) && ! empty($value) && ! static::isValidCap($value)) {
-                        /* @phpstan-ignore callable.nonCallable */
                         $fail('Il CAP inserito non è valido.');
                     }
                 },

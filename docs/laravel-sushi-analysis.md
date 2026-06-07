@@ -73,20 +73,24 @@ class Comune extends Model
 {
     use Sushi;
     
+    
     /**
      * Indica a Sushi di non utilizzare timestamps
      */
     public $timestamps = false;
+    
     
     /**
      * Dimensione dei chunk per l'inserimento (ottimizzato per SQLite)
      */
     public $sushiInsertChunkSize = 50;
     
+    
     /**
      * Cache duration in seconds (1 week)
      */
     protected const CACHE_TTL = 604800;
+    
     
     /**
      * Definisce le colonne del modello con i rispettivi tipi
@@ -101,6 +105,7 @@ class Comune extends Model
         'popolazione' => 'integer'
     ];
     
+    
     /**
      * Definisce i cast per le colonne JSON
      */
@@ -110,6 +115,7 @@ class Comune extends Model
         'cap' => 'array',
     ];
     
+    
     /**
      * Ottiene i dati dal file JSON con caching
      */
@@ -118,10 +124,12 @@ class Comune extends Model
         $path = module_path('Geo', 'resources/json/comuni.json');
         $cacheKey = 'geo_comuni_json_' . md5($path);
         
+        
         return Cache::rememberForever($cacheKey, function () use ($path) {
             return json_decode(file_get_contents($path), true);
         });
     }
+    
     
     /**
      * Indica a Sushi di memorizzare i dati nella cache
@@ -131,6 +139,7 @@ class Comune extends Model
         return true;
     }
     
+    
     /**
      * File di riferimento per invalidare la cache
      */
@@ -138,6 +147,7 @@ class Comune extends Model
     {
         return module_path('Geo', 'resources/json/comuni.json');
     }
+    
     
     /**
      * Personalizza la tabella dopo la migrazione
@@ -148,6 +158,7 @@ class Comune extends Model
         $table->index(['regione->codice', 'provincia->codice']);
     }
     
+    
     /**
      * Scope per filtrare per regione
      */
@@ -157,6 +168,7 @@ class Comune extends Model
                      ->orderBy('nome');
     }
     
+    
     /**
      * Scope per filtrare per provincia
      */
@@ -165,6 +177,7 @@ class Comune extends Model
         return $query->where('provincia->codice', $provinceCode)
                      ->orderBy('nome');
     }
+    
     
     /**
      * Scope per cercare per nome
@@ -181,6 +194,14 @@ class Comune extends Model
         return $query;
     }
     
+
+        if ($limit > 0) {
+            $query->limit($limit);
+        }
+
+        return $query;
+    }
+
     /**
      * Scope per filtrare per CAP
      */
@@ -189,6 +210,7 @@ class Comune extends Model
         return $query->whereJsonContains('cap', $cap);
     }
     
+    
     /**
      * Verifica se il CAP è valido
      */
@@ -196,10 +218,12 @@ class Comune extends Model
     {
         $cacheKey = 'geo_valid_cap_' . md5($cap);
         
+        
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($cap) {
             return static::byCap($cap)->exists();
         });
     }
+    
     
     /**
      * Ottiene la gerarchia completa di un comune
@@ -229,6 +253,26 @@ class Comune extends Model
                 return null;
             }
             
+
+        $cacheKey = 'geo_gerarchia_' . md5((string)$cap . (string)$comune);
+
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($cap, $comune) {
+            $query = static::query();
+
+            if ($cap) {
+                $query->byCap($cap);
+            }
+
+            if ($comune) {
+                $query->where('nome', 'like', '%' . $comune . '%');
+            }
+
+            $result = $query->first();
+
+            if (!$result) {
+                return null;
+            }
+
             return [
                 'regione' => $result->regione,
                 'provincia' => $result->provincia,
@@ -237,6 +281,7 @@ class Comune extends Model
             ];
         });
     }
+    
     
     /**
      * Restituisce le regole di validazione per i form
@@ -255,12 +300,14 @@ class Comune extends Model
         ];
     }
     
+    
     /**
      * Pulisce tutta la cache
      */
     public static function clearCache(): array
     {
         $clearedKeys = [];
+        
         
         // Pulisci la cache dei dati JSON
         $jsonCacheKey = 'geo_comuni_json_' . md5(module_path('Geo', 'resources/json/comuni.json'));
@@ -271,6 +318,11 @@ class Comune extends Model
         static::clearSushiCache();
         $clearedKeys[] = 'sushi_cache';
         
+
+        // Pulisci la cache di Sushi
+        static::clearSushiCache();
+        $clearedKeys[] = 'sushi_cache';
+
         // Pulisci le chiavi di cache specifiche
         $searchPatterns = [
             'geo_search_',
@@ -279,6 +331,7 @@ class Comune extends Model
             'geo_region_',
             'geo_province_',
         ];
+        
         
         foreach ($searchPatterns as $pattern) {
             for ($i = 0; $i < 10; $i++) {
@@ -290,12 +343,17 @@ class Comune extends Model
         return $clearedKeys;
     }
     
+
+        return $clearedKeys;
+    }
+
     /**
      * Restituisce tutte le regioni
      */
     public static function getRegioni(): Collection
     {
         $cacheKey = 'geo_regioni_all';
+        
         
         return Cache::remember($cacheKey, self::CACHE_TTL, function () {
             return static::query()
@@ -306,12 +364,14 @@ class Comune extends Model
         });
     }
     
+    
     /**
      * Restituisce tutte le province di una regione
      */
     public static function getProvinceByRegione(string $regioneCode): Collection
     {
         $cacheKey = 'geo_province_by_regione_' . $regioneCode;
+        
         
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regioneCode) {
             return static::byRegion($regioneCode)
@@ -322,12 +382,14 @@ class Comune extends Model
         });
     }
     
+    
     /**
      * Restituisce tutti i comuni di una provincia
      */
     public static function getCittaByProvincia(string $provinciaCode): Collection
     {
         $cacheKey = 'geo_citta_by_provincia_' . $provinciaCode;
+        
         
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinciaCode) {
             return static::byProvince($provinciaCode)
@@ -338,12 +400,14 @@ class Comune extends Model
         });
     }
     
+    
     /**
      * Restituisce tutti i CAP di una città
      */
     public static function getCapByCitta(string $citta): Collection
     {
         $cacheKey = 'geo_cap_by_citta_' . md5($citta);
+        
         
         return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($citta) {
             return static::where('nome', $citta)
@@ -500,5 +564,6 @@ Per procedere, si consiglia di:
 
 ---
 
+*Documento creato il: 28/05/2025*
 *Documento creato il: 28/05/2025*  
 *Autore: Team <main module>*

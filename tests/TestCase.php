@@ -32,10 +32,6 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        config(['xra.pub_theme' => 'Meetup']);
-        config(['xra.main_module' => 'User']);
-
-        XotData::make()->update([
             'pub_theme' => 'Meetup',
             'main_module' => 'User',
         ]);

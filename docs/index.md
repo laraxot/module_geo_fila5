@@ -92,6 +92,13 @@
 - [**Media**](../modules/media/docs/readme.md) - Documentazione modulo gestione media
 - [**UI**](../modules/ui/docs/readme.md) - Documentazione modulo componenti UI
 - [**Xot**](../modules/xot/docs/readme.md) - Documentazione modulo base
+- [**<nome progetto>**](../Modules/<nome progetto>/docs/README.md) - Documentazione modulo core sanitario
+- [**<nome progetto>**](../Modules/<nome progetto>/docs/README.md) - Documentazione modulo core sanitario
+- [**User**](../Modules/User/docs/README.md) - Documentazione modulo gestione utenti
+- [**Geo**](../Modules/Geo/docs/README.md) - Documentazione modulo dati geografici
+- [**Media**](../Modules/Media/docs/README.md) - Documentazione modulo gestione media
+- [**UI**](../Modules/UI/docs/README.md) - Documentazione modulo componenti UI
+- [**Xot**](../Modules/Xot/docs/README.md) - Documentazione modulo base
 
 ## 🗺️ Geo Filament Components
 
@@ -117,6 +124,7 @@
 
 ---
 
+**Ultimo aggiornamento**: Gennaio 2025
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata

@@ -40,6 +40,7 @@ class Comune extends GeoJsonModel
         return static::loadData()->pluck('regione')->unique()->values();
     }
     
+    
     // Recupera le province di una regione
     public static function getProvince(string $codiceRegione): Collection
     {
@@ -49,6 +50,7 @@ class Comune extends GeoJsonModel
             ->unique()
             ->values();
     }
+    
     
     // Recupera le città di una provincia
     public static function getCitta(string $codiceProvincia): Collection
@@ -60,6 +62,7 @@ class Comune extends GeoJsonModel
             ->values();
     }
     
+    
     // Recupera i CAP di una città
     public static function getCap(string $codiceCitta): Collection
     {
@@ -70,11 +73,13 @@ class Comune extends GeoJsonModel
             ->values();
     }
     
+    
     // Cerca comuni per nome (funzionalità aggiuntiva)
     public static function cercaPerNome(string $nome): Collection
     {
         return static::loadData()
             ->filter(fn($item) => str_contains(
+                strtolower($item['comune']['nome']),
                 strtolower($item['comune']['nome']), 
                 strtolower($nome)
             ));
@@ -140,6 +145,7 @@ Select::make('region')
     ->afterStateUpdated(fn (Set $set) => $set('province', null)),
 
 Select::make('province')
+    ->options(fn (Get $get) =>
     ->options(fn (Get $get) => 
         Province::byRegion($get('region'))->pluck('nome', 'codice'))
     ->visible(fn (Get $get) => filled($get('region'))),
@@ -152,6 +158,7 @@ Select::make('region')
     ->afterStateUpdated(fn (Set $set) => $set('province', null)),
 
 Select::make('province')
+    ->options(fn (Get $get) =>
     ->options(fn (Get $get) => 
         Comune::getProvince($get('region'))->pluck('nome', 'codice'))
     ->visible(fn (Get $get) => filled($get('region'))),

@@ -17,6 +17,11 @@ Schema::create('addresses', function (Blueprint $table) {
     $table->string('name')->nullable()->comment('Nome identificativo dell\'indirizzo');
     $table->text('description')->nullable()->comment('Descrizione opzionale');
     
+
+    // Campi informativi
+    $table->string('name')->nullable()->comment('Nome identificativo dell\'indirizzo');
+    $table->text('description')->nullable()->comment('Descrizione opzionale');
+
     // Campi indirizzo (evitando prefissi ridondanti)
     $table->string('route')->nullable()->comment('Via/Piazza');
     $table->string('street_number')->nullable()->comment('Numero civico');
@@ -26,6 +31,7 @@ Schema::create('addresses', function (Blueprint $table) {
     $table->string('administrative_area_level_1')->nullable()->comment('Stato/Paese');
     $table->string('country', 2)->nullable()->comment('Codice paese ISO');
     $table->string('postal_code', 20)->nullable()->comment('CAP');
+    
     
     // Dati di geocoding
     $table->text('formatted_address')->nullable();
@@ -40,6 +46,14 @@ Schema::create('addresses', function (Blueprint $table) {
     // Dati aggiuntivi
     $table->json('extra_data')->nullable();
     
+
+    // Campi tipo indirizzo
+    $table->string('type', 50)->nullable()->index()->comment('Tipo indirizzo (home, work, etc.)');
+    $table->boolean('is_primary')->default(false)->index();
+
+    // Dati aggiuntivi
+    $table->json('extra_data')->nullable();
+
     // Timestamps e soft delete
     $table->timestamps();
     $table->softDeletes();
@@ -66,6 +80,7 @@ use Modules\Geo\Contracts\HasGeolocation;
 
 /**
  * Class Address - Modello per gli indirizzi conforme a schema.org/PostalAddress.
+ *
  * 
  * @see https://schema.org/PostalAddress
  */
@@ -150,6 +165,7 @@ class Address extends BaseModel implements HasGeolocation
         return $this->morphTo();
     }
     
+    
     /**
      * Ottiene la latitudine.
      */
@@ -229,6 +245,12 @@ class Address extends BaseModel implements HasGeolocation
      * 
      * @see https://schema.org/PostalAddress
      * 
+
+    /**
+     * Restituisce i dati in formato Schema.org PostalAddress.
+     *
+     * @see https://schema.org/PostalAddress
+     *
      * @return array<string, mixed>
      */
     public function toSchemaOrg(): array
@@ -260,6 +282,7 @@ class Address extends BaseModel implements HasGeolocation
             'description' => $description,
             'street_number' => $components->get('street_number')['long_name'] ?? null,
             'route' => $components->get('route')['long_name'] ?? null,
+            'locality' => $components->get('locality')['long_name'] ??
             'locality' => $components->get('locality')['long_name'] ?? 
                          $components->get('administrative_area_level_3')['long_name'] ?? null,
             'administrative_area_level_3' => $components->get('administrative_area_level_2')['long_name'] ?? null, // Provincia

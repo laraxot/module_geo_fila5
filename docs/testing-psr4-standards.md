@@ -263,4 +263,10 @@ Prima di committare file di test:
 
 ---
 
+- [Testing PSR-4 Compliance - Modulo Xot](../Modules/Xot/docs/testing-psr4-compliance.md)
+- [Testing Guide - Modulo <nome modulo>](../Modules/<nome modulo>/docs/testing.md)
+
+---
+
+*Ultimo aggiornamento: 2025-01-06*
 *Standard: PSR-4, PHPStan livello 9+, Laraxot conventions*

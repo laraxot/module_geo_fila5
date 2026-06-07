@@ -110,4 +110,6 @@ Questo documento elenca tutti i file che contengono conflitti di merge  nel modu
 
 ---
 
+**Ultimo aggiornamento**: Gennaio 2025
+**Stato**: In corso di analisi
 **Stato**: In corso di analisi 

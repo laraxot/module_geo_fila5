@@ -191,6 +191,7 @@ Mantenere un log delle classi rimosse/rinominate:
 
 ## Changelog Classi
 
+### 2025-07-31
 ### [DATE]
 - `Modules\Fixcity\Models\Profile` → `Modules\User\Models\User`
 - Motivo: Consolidamento moduli utente
@@ -249,6 +250,15 @@ Includere controlli PHPStan nella pipeline:
 
 - [PHPStan Class Discovery](https://phpstan.org/user-guide/discovering-symbols)
 - [Laravel Autoloading](https://laravel.com/project_docs/structure#autoloading)
+- [Modules/Geo/project_docs/README.md](./README.md)
+
+## Backlink
+
+- [Root PHPStan Rules](../../../project_docs/phpstan_rules.md)
+- [Geo Module Structure](./structure.md)
+- [Employee PHPStan Covariance](../../Employee/project_docs/phpstan_covariance_issues.md)
+
+*Ultimo aggiornamento: 2025-07-31*
 - [Modules/Geo/project_docs/README.md](./readme.md)
 
 ## Backlink
@@ -256,4 +266,3 @@ Includere controlli PHPStan nella pipeline:
 - [Root PHPStan Rules](../../../../docs/project/phpstan_rules.md)
 - [Geo Module Structure](./structure.md)
 - [Employee PHPStan Covariance](../../employee/project_docs/phpstan_covariance_issues.md)
-

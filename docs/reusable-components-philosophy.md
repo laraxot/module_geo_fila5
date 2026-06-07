@@ -1,5 +1,6 @@
 # Filosofia dei Componenti Riutilizzabili
 
+**Data**: 2025-12-12
 **Modulo**: Geo
 **Status**: 📚 **DOCUMENTAZIONE**
 
