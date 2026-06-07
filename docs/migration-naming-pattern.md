@@ -1,3 +1,5 @@
+- [Documentazione Laravel sulle Migrazioni](https://laravel.com/docs/migrations)
+- [Xot Module Documentation Standards](../../../Xot/docs/documentation-standards.md)
 ---
 module: theme
 topic: migration-naming-pattern

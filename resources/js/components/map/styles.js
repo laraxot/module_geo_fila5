@@ -279,24 +279,26 @@ export const mapStyles = css`
         display: block;
     }
 
-    /* Cluster Circle - farmshops.eu style for zoom < 8 */
+    /* Cluster Circle - farmshops.eu style (no transform hover: fa "scappare" dal anchor Leaflet) */
     .circle, .geo-cluster-circle {
         color: #4ca7ce;
         border: 3px solid #4ca7ce;
         background: #ffffff;
         border-radius: 50%;
+        width: 80px;
+        height: 80px;
         font-family: 'Titillium Web', sans-serif;
         font-weight: 700;
         font-size: 18px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 500;
+        box-sizing: border-box;
     }
     .circle:hover, .geo-cluster-circle:hover {
-        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.22);
     }
     .circle strong, .geo-cluster-circle strong {
         line-height: 1;
@@ -311,10 +313,76 @@ export const mapStyles = css`
         margin-top: 4px;
     }
 
-    /* Leaflet cluster wrapper — remove default background */
+    .geo-cluster-type-icons svg,
+    .geo-cluster-type-icons img,
+    .geo-cluster-type-dot {
+        display: block !important;
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+        min-width: 14px !important;
+        min-height: 14px !important;
+        flex: 0 0 auto !important;
+        object-fit: contain;
+    }
+
+    .geo-map-legend {
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        font-size: 13px;
+        line-height: 1.4;
+        max-height: min(220px, 40vh);
+        overflow-y: auto;
+        pointer-events: auto;
+    }
+
+    .geo-map-legend-title {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #5c6f82;
+    }
+
+    .geo-map-legend-items {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .geo-map-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .geo-map-legend-color {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .geo-map-legend-label {
+        font-size: 12px;
+        color: #17324d;
+        line-height: 1.2;
+    }
+
+    /* Leaflet cluster wrapper — anchor stabile, no transform */
     .leaflet-marker-icon.geo-cluster-wrapper {
-        background: transparent;
-        border: none;
+        background: transparent !important;
+        border: none !important;
+    }
+    .leaflet-marker-icon.geo-cluster-wrapper > div {
+        transform-origin: center center;
     }
 
     /* Popup - farmshops.eu structure */

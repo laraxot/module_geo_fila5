@@ -37,6 +37,11 @@ class LocationSelect extends Select
             // Clear dependent fields when parent changes
             $path = $this->getStatePath();
             
+
+        $this->afterStateUpdated(function ($state, callable $set) {
+            // Clear dependent fields when parent changes
+            $path = $this->getStatePath();
+
             if ($path === 'region_id') {
                 $set('province_id', null);
                 $set('city_id', null);
@@ -50,10 +55,12 @@ class LocationSelect extends Select
         });
     }
     
+    
     public static function make(string $name): static
     {
         return parent::make($name)->searchable()->reactive();
     }
+    
     
     public function getRegionSelect(): static
     {
@@ -66,6 +73,7 @@ class LocationSelect extends Select
             ->required()
             ->reactive();
     }
+    
     
     public function getProvinceSelect(): static
     {
@@ -83,6 +91,7 @@ class LocationSelect extends Select
             ->reactive();
     }
     
+    
     public function getCitySelect(): static
     {
         return $this->make('city_id')
@@ -98,6 +107,7 @@ class LocationSelect extends Select
             ->required()
             ->reactive();
     }
+    
     
     public function getCapSelect(): static
     {
@@ -144,6 +154,13 @@ public function panel(Panel $panel): Panel
                             LocationSelect::make('city_id')
                                 ->getCitySelect(),
                                 
+
+                            LocationSelect::make('province_id')
+                                ->getProvinceSelect(),
+
+                            LocationSelect::make('city_id')
+                                ->getCitySelect(),
+
                             LocationSelect::make('cap')
                                 ->getCapSelect(),
                         ]),
@@ -191,6 +208,7 @@ public static function form(Form $form): Form
         ->schema([
             // Other fields...
             
+            
             Forms\Components\Fieldset::make(__('geo::location.location'))
                 ->schema([
                     LocationSelect::make('region_id')
@@ -205,6 +223,16 @@ public static function form(Form $form): Form
                     LocationSelect::make('cap')
                         ->getCapSelect(),
                         
+
+                    LocationSelect::make('province_id')
+                        ->getProvinceSelect(),
+
+                    LocationSelect::make('city_id')
+                        ->getCitySelect(),
+
+                    LocationSelect::make('cap')
+                        ->getCapSelect(),
+
                     Forms\Components\TextInput::make('address')
                         ->label(__('geo::location.address'))
                         ->required(),
@@ -238,6 +266,7 @@ class ImportGeoData extends Command
     {
         $json = json_decode(file_get_contents(module_path('Geo', 'resources/json/comuni.json')), true);
         
+        
         DB::transaction(function () use ($json) {
             foreach ($json as $item) {
                 // Import region
@@ -245,6 +274,7 @@ class ImportGeoData extends Command
                     ['code' => $item['regione']['codice']],
                     ['name' => $item['regione']['nome']]
                 );
+                
                 
                 // Import province
                 $province = Province::firstOrCreate(
@@ -255,6 +285,7 @@ class ImportGeoData extends Command
                     ]
                 );
                 
+                
                 // Import city
                 $city = City::firstOrCreate(
                     ['code' => $item['codice']],
@@ -263,6 +294,7 @@ class ImportGeoData extends Command
                         'province_id' => $province->id,
                     ]
                 );
+                
                 
                 // Import CAPs
                 foreach ($item['cap'] as $capCode) {
@@ -274,6 +306,7 @@ class ImportGeoData extends Command
                     );
                 }
             }
+            
             
             $this->info('Geographical data imported successfully!');
         });
@@ -347,15 +380,22 @@ class LocationSelectTest extends TestCase
             ->assertSuccessful()
             ->assertSee('Region');
             
+
+        $this->get(route('filament.resources.addresses.create'))
+            ->assertSuccessful()
+            ->assertSee('Region');
+
         // Test region selection
         $this->post(route('filament.resources.addresses.get-province-options'), [
             'region_id' => $region->id
         ])->assertJson([$province->id => $province->name]);
         
+        
         // Test city selection
         $this->post(route('filament.resources.addresses.get-city-options'), [
             'province_id' => $province->id
         ])->assertJson([$city->id => $city->name]);
+        
         
         // Test CAP selection
         $this->post(route('filament.resources.addresses.get-cap-options'), [

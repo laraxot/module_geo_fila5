@@ -56,6 +56,7 @@ Select::make('region')
 use Modules\Geo\Models\Province;
 
 Select::make('province')
+    ->options(fn (Get $get) =>
     ->options(fn (Get $get) => 
         Province::where('region_id', $get('region'))
             ->orderBy('name')
@@ -74,6 +75,7 @@ Select::make('province')
 use Modules\Geo\Models\City;
 
 Select::make('city')
+    ->options(fn (Get $get) =>
     ->options(fn (Get $get) => 
         City::where('province_id', $get('province'))
             ->orderBy('name')
@@ -92,6 +94,7 @@ Select::make('city')
 use Modules\Geo\Models\Cap;
 
 Select::make('cap')
+    ->options(fn (Get $get) =>
     ->options(fn (Get $get) => 
         Cap::where('city_id', $get('city'))
             ->orderBy('code')
@@ -152,6 +155,7 @@ public function getFormSchema(): array
                     ->selectablePlaceholder(false),
 
                 'province' => Select::make('province')
+                    ->options(fn (Get $get) =>
                     ->options(fn (Get $get) => 
                         Province::where('region_id', $get('region'))
                             ->orderBy('name')
@@ -165,6 +169,7 @@ public function getFormSchema(): array
                     ->selectablePlaceholder(false),
 
                 'city' => Select::make('city')
+                    ->options(fn (Get $get) =>
                     ->options(fn (Get $get) => 
                         City::where('province_id', $get('province'))
                             ->orderBy('name')
@@ -178,6 +183,7 @@ public function getFormSchema(): array
                     ->selectablePlaceholder(false),
 
                 'cap' => Select::make('cap')
+                    ->options(fn (Get $get) =>
                     ->options(fn (Get $get) => 
                         Cap::where('city_id', $get('city'))
                             ->orderBy('code')
@@ -211,6 +217,10 @@ public function getFormSchema(): array
 
 ## Collegamenti
 - [Documentazione Squire](https://github.com/squirephp/squire)
+- [Best Practices Filament](../../../docs/filament-best-practices.md)
+- [Clean Code](../../../docs/clean-code.md)
+
+**Nota:** Il namespace corretto per LocationForm è `Modules\Geo\Filament\Forms\LocationForm`. Non usare mai `Modules\Geo\App\Filament\Forms\LocationForm`.
 - [Best Practices Filament](../../../../docs/project/filament-best-practices.md)
 - [Clean Code](../../../../docs/project/clean-code.md)
 

@@ -1,6 +1,7 @@
 # GeoMapLit — Farmshops.eu Parity Implementation
 
-**Last updated**: 2026-04-30
+**Last updated**: 2026-06-03  
+**Ricostruzione completa:** [geo-map-lit-reconstruction-guide.md](./geo-map-lit-reconstruction-guide.md)
 **Story**: 8-81 (COMPLETED ✅)
 **Reference**: https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/direktvermarkter.js
 
@@ -177,3 +178,38 @@ Popup on click → AJAX fetch /api/ticket-details/{id}
 2. Verify cluster rendering at different zoom levels
 3. Test popup content and AJAX detail fetch
 4. Document any remaining issues in Known Issues section
+
+---
+
+## Aggiornamento 2026-06 — implementazione corrente
+
+> **Nota:** la sezione `L.geoJson` con `pointToLayer` sopra è il pattern farmshops originale.
+> Su Fixcity (STORY-122+) i marker sono aggiunti **singolarmente** a `markerClusterGroup`
+> per stabilità con `refreshClusters` e filtri `filterByTypes`.
+
+Implementazione attuale in `map-lit.js`:
+
+- `features.forEach` → `L.marker` → `this._markersLayer.addLayer(marker)`
+- Cluster config: vedi [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md)
+- Elemento DOM canonico: `<map-lit>` (non `<geo-map-lit>`)
+
+Test Playwright:
+
+- `tests/Playwright/map-lit-cluster-hover-stability.spec.js`
+- `tests/Playwright/map-lit-gps-cluster-stability.spec.js`
+
+### Marker icon-first e popup (2026-06)
+
+Riferimento UX: [farmshops.eu](https://github.com/CodeforKarlsruhe/farmshops.eu) — icona tipologia dominante, contenitore minimo.
+
+| Elemento | Implementazione Fixcity |
+|----------|-------------------------|
+| Marker | `createGeoMapLeafletIcon` — `__inner` 36px stato, `__glyph-pad` 28px, glifo 22px, `__point` 8px ([geo-map-marker-status-background.md](./geo-map-marker-status-background.md)) |
+| Popup click | Leaflet `bindPopup` + block `popup`; header **`<div class="popup__header">`** ([geo-map-popup-bem.md](./geo-map-popup-bem.md)) |
+| UX click | Popup immediato da GeoJSON; arricchimento AJAX se `p.id` |
+
+CSS tema: `07-map-clusters-and-leaflet.css` — glifo marker 22px; no transform su `.leaflet-marker-icon`.
+
+Ricostruzione completa: [geo-map-lit-reconstruction-guide.md](./geo-map-lit-reconstruction-guide.md).
+
+Build tema: `laravel/Themes/Sixteen` → `npm run build` → `map-lit-*.js` in `public_html/themes/Sixteen/assets/`.

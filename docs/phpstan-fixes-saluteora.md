@@ -301,3 +301,4 @@ use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 - [Memorie: Casting Actions](.cursor/memories/casting-actions.mdc)
 
 ---
+Ultimo aggiornamento: 2025-01-06

@@ -126,6 +126,10 @@ public static function getFormSchema(): array
         'administrative_area_level_2' => Select::make('administrative_area_level_2')
             ->label('Provincia')
             ->options(fn (callable $get) => 
+
+        'administrative_area_level_2' => Select::make('administrative_area_level_2')
+            ->label('Provincia')
+            ->options(fn (callable $get) =>
                 GeoJsonModel::getProvincesForSelect($get('administrative_area_level_1')))
             ->reactive()
             ->required()
@@ -134,6 +138,10 @@ public static function getFormSchema(): array
         'administrative_area_level_3' => Select::make('administrative_area_level_3')
             ->label('Comune')
             ->options(fn (callable $get) => 
+
+        'administrative_area_level_3' => Select::make('administrative_area_level_3')
+            ->label('Comune')
+            ->options(fn (callable $get) =>
                 GeoJsonModel::getComuniForSelect($get('administrative_area_level_2')))
             ->reactive()
             ->required()
@@ -142,6 +150,10 @@ public static function getFormSchema(): array
         'postal_code' => Select::make('postal_code')
             ->label('CAP')
             ->options(fn (callable $get) => 
+
+        'postal_code' => Select::make('postal_code')
+            ->label('CAP')
+            ->options(fn (callable $get) =>
                 GeoJsonModel::getCapsForSelect($get('administrative_area_level_3')))
             ->required()
             ->disabled(fn (callable $get) => !$get('administrative_area_level_3')),
@@ -170,6 +182,7 @@ public function formatItalianAddress(): string
 {
     $parts = [];
     
+    
     // Nome via e numero civico
     if (!empty($this->route)) {
         $addressLine = $this->route;
@@ -178,6 +191,7 @@ public function formatItalianAddress(): string
         }
         $parts[] = $addressLine;
     }
+    
     
     // CAP, Comune e Provincia
     $locationLine = '';
@@ -188,6 +202,10 @@ public function formatItalianAddress(): string
     if (!empty($this->administrative_area_level_3)) {
         $locationLine .= $this->administrative_area_level_3;
         
+
+    if (!empty($this->administrative_area_level_3)) {
+        $locationLine .= $this->administrative_area_level_3;
+
         // Aggiungi sigla provincia tra parentesi
         if (!empty($this->administrative_area_level_2)) {
             $locationLine .= ' (' . $this->administrative_area_level_2 . ')';
@@ -198,10 +216,16 @@ public function formatItalianAddress(): string
         $parts[] = $locationLine;
     }
     
+
+    if (!empty($locationLine)) {
+        $parts[] = $locationLine;
+    }
+
     // Paese (se diverso dall'Italia, altrimenti implicito)
     if (!empty($this->country) && strtoupper($this->country) !== 'ITALIA' && strtoupper($this->country_code) !== 'IT') {
         $parts[] = strtoupper($this->country);
     }
+    
     
     return implode("\n", $parts);
 }
@@ -260,6 +284,7 @@ public function populateFromGoogleComponents(array $components): self
         $value = $component['long_name'] ?? '';
         $shortValue = $component['short_name'] ?? '';
         
+        
         if (in_array('postal_code', $types)) {
             $this->postal_code = $value;
         } elseif (in_array('administrative_area_level_1', $types)) {
@@ -282,6 +307,7 @@ public function populateFromGoogleComponents(array $components): self
             $this->country_code = $shortValue;
         }
     }
+    
     
     return $this;
 }
@@ -316,6 +342,10 @@ public function geocode(): bool
     // Utilizzo di un servizio di geocodifica
     $result = app(GeocodingService::class)->geocode($address);
     
+
+    // Utilizzo di un servizio di geocodifica
+    $result = app(GeocodingService::class)->geocode($address);
+
     if ($result && isset($result['latitude'], $result['longitude'])) {
         $this->latitude = $result['latitude'];
         $this->longitude = $result['longitude'];
@@ -324,6 +354,10 @@ public function geocode(): bool
         return true;
     }
     
+
+        return true;
+    }
+
     return false;
 }
 ```

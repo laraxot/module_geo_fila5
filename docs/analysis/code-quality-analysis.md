@@ -1,3 +1,5 @@
+**Next Review**: After fixing Cms module syntax error
+**Target Completion**: 2025-11-20
 ---
 module: theme
 topic: code-quality-analysis

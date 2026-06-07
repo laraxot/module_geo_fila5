@@ -473,5 +473,6 @@ public function address(): BelongsTo
 
 ---
 
+*Ultimo aggiornamento: Dicembre 2024*
 
 **Il componente AddressesField rappresenta un esempio eccellente di applicazione del principio DRY e di progettazione orientata al riutilizzo nel contesto Filament.**

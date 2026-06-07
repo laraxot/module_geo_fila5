@@ -192,4 +192,3 @@ Questo approccio incarna lo zen della semplicità, nascondendo la complessità d
 - [Filosofia Completa Laraxot](../../xot/docs/philosophy-complete.md)
 - [Regole Critiche di Architettura](../../xot/docs/critical-architecture-rules.md)
 - [Documentazione Geo README](./readme.md)
-

@@ -134,13 +134,14 @@ class Comune extends BaseModel
     /**
      * Get all regions.
      *
-     * @return Collection<string>
+     * @return Collection<int, non-empty-string>
      */
     public static function getRegioni(): Collection
     {
-        /* @phpstan-ignore return.type */
         return static::all()
             ->pluck('regione')
+            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
+            ->map(static fn (mixed $value): string => (string) $value)
             ->unique()
             ->sort()
             ->values();
@@ -149,13 +150,14 @@ class Comune extends BaseModel
     /**
      * Get all provinces for a region.
      *
-     * @return Collection<string>
+     * @return Collection<int, non-empty-string>
      */
     public static function getProvinceByRegione(string $regione): Collection
     {
-        /* @phpstan-ignore return.type */
         return static::where('regione', $regione)
             ->pluck('provincia')
+            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
+            ->map(static fn (mixed $value): string => (string) $value)
             ->unique()
             ->sort()
             ->values();
@@ -164,12 +166,14 @@ class Comune extends BaseModel
     /**
      * Get all comuni for a province.
      *
-     * @return Collection<static>
+     * @return Collection<int, self>
      */
     public static function getComuniByProvincia(string $provincia): Collection
     {
-        /* @phpstan-ignore return.type */
-        return static::where('provincia', $provincia)->orderBy('nome')->get();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, self> $comuni */
+        $comuni = static::where('provincia', $provincia)->orderBy('nome')->get();
+
+        return $comuni;
     }
 
     /**
@@ -179,11 +183,11 @@ class Comune extends BaseModel
      *
      * @return static|null The found comune or null if not found
      */
-    public static function findByNome(string $nome): ?self
+    public static function findByNome(string $nome): ?static
     {
-        /* @phpstan-ignore return.type */
-        return static::all()
-            ->first(fn ($comune) => strtolower($comune->nome ?? '') === strtolower($nome));
+        return static::query()
+            ->get()
+            ->first(fn (self $comune): bool => strtolower($comune->nome ?? '') === strtolower($nome));
     }
 
     /**
@@ -191,25 +195,35 @@ class Comune extends BaseModel
      *
      * @param string $cap The CAP code to search for
      *
-     * @return Collection<static> Collection of matching comuni
+     * @return \Illuminate\Database\Eloquent\Collection<int, self> Collection of matching comuni
      */
     public static function findByCap(string $cap): Collection
     {
-        /* @phpstan-ignore return.type */
-        return static::where('cap', 'like', "%{$cap}%")->get();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, self> $comuni */
+        $comuni = static::where('cap', 'like', "%{$cap}%")->get();
+
+        return $comuni;
     }
 
     /**
      * Find a city by ID.
      *
-     * @return array{id: int, nome: string, provincia: string, regione: string, cap: string, codice_catastale: string, popolazione: int, altitudine: int, superficie: float, lat: float, lng: float, zona_altimetrica: string}|null
+     * @return array<string, mixed>|null
      */
     public static function findComune(int $id): ?array
     {
         $comune = static::query()->where('id', $id)->first();
 
-        /* @phpstan-ignore return.type */
-        return $comune ? $comune->toArray() : null;
+        if (! $comune instanceof self) {
+            return null;
+        }
+
+        $data = $comune->getAttributes();
+
+        return array_map(
+            static fn (mixed $value): mixed => $value,
+            $data,
+        );
     }
 
     /**

@@ -185,6 +185,7 @@ trait SushiToJsons
     {
         $path = $this->getJsonFile();
         
+        
         if (!File::exists($path)) {
             return [];
         }
@@ -302,10 +303,14 @@ class SushiCommand extends Command
         try {
             $path = base_path('database/content/comuni.json');
             
+            
             if (!File::exists($path)) {
                 $this->error('File comuni.json non trovato');
                 return 1;
             }
+
+            $data = json_decode(File::get($path), true);
+
             
             $data = json_decode(File::get($path), true);
             
@@ -313,6 +318,9 @@ class SushiCommand extends Command
                 $this->error('Errore nel parsing del file JSON: ' . json_last_error_msg());
                 return 1;
             }
+
+            DB::table('comuni')->truncate();
+
             
             DB::table('comuni')->truncate();
             
@@ -329,6 +337,7 @@ class SushiCommand extends Command
                     'updated_at' => $comune['updated_at'] ?? now(),
                 ]);
             }
+            
             
             $this->info('Database SQLite di Sushi aggiornato con successo');
             return 0;
@@ -360,11 +369,13 @@ class SushiCommand extends Command
             $count = DB::table('comuni')->count();
             $this->info("Numero di comuni: {$count}");
             
+            
             $regioni = DB::table('comuni')
                 ->select('regione')
                 ->distinct()
                 ->count();
             $this->info("Numero di regioni: {$regioni}");
+            
             
             $province = DB::table('comuni')
                 ->select('provincia')
@@ -372,11 +383,13 @@ class SushiCommand extends Command
                 ->count();
             $this->info("Numero di province: {$province}");
             
+            
             $cap = DB::table('comuni')
                 ->select('cap')
                 ->distinct()
                 ->count();
             $this->info("Numero di CAP: {$cap}");
+            
             
             return 0;
         } catch (\Exception $e) {
@@ -417,6 +430,7 @@ class ComuneTest extends TestCase
     {
         parent::setUp();
         
+        
         $this->testData = [
             [
                 'id' => 1,
@@ -442,6 +456,7 @@ class ComuneTest extends TestCase
             ],
         ];
         
+        
         File::put(
             base_path('database/content/comuni.json'),
             json_encode($this->testData, JSON_PRETTY_PRINT)
@@ -459,6 +474,7 @@ class ComuneTest extends TestCase
     public function it_can_load_comuni_from_json()
     {
         $comuni = Comune::all();
+        
         
         $this->assertCount(2, $comuni);
         $this->assertEquals('Milano', $comuni[0]->comune);

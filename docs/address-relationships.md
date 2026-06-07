@@ -129,6 +129,7 @@ trait HasAddresses
         return $this->morphMany(Address::class, 'addressable');
     }
     
+    
     /**
      * Get the primary address for this model.
      */
@@ -137,6 +138,7 @@ trait HasAddresses
         return $this->morphOne(Address::class, 'addressable')
             ->where('is_primary', true);
     }
+    
     
     /**
      * Get addresses of a specific type.
@@ -147,6 +149,7 @@ trait HasAddresses
             ->where('type', $type);
     }
     
+    
     /**
      * Get the home address for this model.
      */
@@ -155,6 +158,7 @@ trait HasAddresses
         return $this->morphOne(Address::class, 'addressable')
             ->where('type', Address::TYPE_HOME);
     }
+    
     
     /**
      * Get the work address for this model.
@@ -165,6 +169,7 @@ trait HasAddresses
             ->where('type', Address::TYPE_WORK);
     }
     
+    
     /**
      * Get the billing address for this model.
      */
@@ -173,6 +178,7 @@ trait HasAddresses
         return $this->morphOne(Address::class, 'addressable')
             ->where('type', Address::TYPE_BILLING);
     }
+    
     
     /**
      * Get the shipping address for this model.
@@ -191,6 +197,7 @@ Utilizzo del trait:
 class Doctor extends Model
 {
     use HasAddresses;
+    
     
     // ... altri metodi e proprietà
 }
@@ -224,10 +231,12 @@ class AddressForm
                         ->label('address-form.fields.street_address')
                         ->required(),
                         
+                        
                     Forms\Components\TextInput::make('address_line2')
                         ->label('address-form.fields.address_line2'),
                 ])
                 ->columns(2),
+                
                 
             Forms\Components\Grid::make()
                 ->schema([
@@ -236,11 +245,13 @@ class AddressForm
                 ])
                 ->columns(3),
                 
+                
             Forms\Components\Grid::make()
                 ->schema([
                     Forms\Components\TextInput::make('postal_code')
                         ->label('address-form.fields.postal_code')
                         ->required(),
+                        
                         
                     Forms\Components\Select::make('type')
                         ->label('address-form.fields.type')
@@ -250,6 +261,7 @@ class AddressForm
                         ->default(Address::TYPE_HOME)
                         ->required(),
                         
+                        
                     Forms\Components\Toggle::make('is_primary')
                         ->label('address-form.fields.is_primary')
                         ->default(false),
@@ -257,6 +269,7 @@ class AddressForm
                 ->columns(3),
         ];
     }
+    
     
     public static function saveAddress(Model $model, array $data): void
     {
@@ -276,6 +289,7 @@ class AddressForm
                 'country_code' => $data['country_code'] ?? 'IT',
             ]
         );
+        
         
         // Se questo è l'indirizzo principale, imposta tutti gli altri come non principali
         if ($data['is_primary'] ?? false) {
@@ -313,6 +327,7 @@ trait HasAddress
     {
         return json_decode($this->attributes['address_data'] ?? '{}', true);
     }
+    
     
     public function setAddressAttribute(array $value): void
     {

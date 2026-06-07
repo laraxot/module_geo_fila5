@@ -72,6 +72,7 @@ class GooglePlacesService
     {
         $cacheKey = $this->cachePrefix . md5($query . $country);
         
+        
         return cache()->remember($cacheKey, $this->cacheTtl, function () use ($query, $country) {
             return $this->performApiCall($query, $country);
         });
@@ -80,6 +81,7 @@ class GooglePlacesService
     public function getPlaceDetails(string $placeId): ?array
     {
         $cacheKey = $this->cachePrefix . 'details_' . $placeId;
+        
         
         return cache()->remember($cacheKey, $this->cacheTtl * 7, function () use ($placeId) {
             return $this->performDetailsCall($placeId);
@@ -92,6 +94,7 @@ class GooglePlacesService
         if (!$this->checkRateLimit()) {
             throw new RateLimitExceededException();
         }
+        
         
         // API call con retry logic
         return retry(3, function () use ($query, $country) {
@@ -125,6 +128,11 @@ class GoogleApiRateLimiter
             return false;
         }
         
+
+        if ($current >= $this->maxCallsPerMinute) {
+            return false;
+        }
+
         cache()->put($key, $current + 1, 120); // 2 minuti
         return true;
     }
@@ -214,6 +222,7 @@ class AddressFactory extends Factory
 - [ ] **Documentazione** generalizzata
 - [ ] **Script check** passa senza errori
 
+### Performance
 ### Performance  
 - [ ] **Google API calls** < 500ms
 - [ ] **Address validation** < 50ms
@@ -292,7 +301,7 @@ php artisan geo:test-api-integration
 
 ## Collegamenti
 
+*Ultimo aggiornamento: gennaio 2025*
 - [Analisi Moduli Globale](../../../../docs/modules_analysis_and_optimization.md)
 - [Google Places Integration](google-places.md)
 - [Address Model Documentation](models/address.md)
-

@@ -1,5 +1,6 @@
 # Risoluzione Conflitti Git - Modulo Geo
 
+## Data: 2025-01-06
 ## Data: [DATE]
 
 ## File Corretti
@@ -154,4 +155,6 @@ php artisan lang:check
 
 **Ultimo aggiornamento**: [DATE]
 **Autore**: Sistema di correzione automatica
+### 1. Controllo Conflitti
+```bash
 **Stato**: ✅ Completato
