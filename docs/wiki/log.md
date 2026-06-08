@@ -1,9 +1,26 @@
+## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
+
+- Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), [llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt)
+- GitHub: [#272](https://github.com/laraxot/base_fixcity_fila5/issues/272) / [D#273](https://github.com/laraxot/base_fixcity_fila5/discussions/273)
+
 ---
 title: "Geo Wiki Activity Log"
 module: "Geo"
 ---
 
 # Geo - Wiki Activity Log
+
+## [2026-06-03] bmad | STORY-132 — filename JS solo inglese
+
+- [js-file-english-naming-rule.md](rules/js-file-english-naming-rule.md) · [js-file-english-naming-standing-rule.md](memories/js-file-english-naming-standing-rule.md)
+- Rename pianificato: `popup-segnalazione.js` → `popup-ticket.js` ([STORY-132](../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md))
+
+## [2026-06-03] docs | map-lit ricostruzione + registro correzioni
+
+- [geo-map-lit-reconstruction-guide.md](concepts/geo-map-lit-reconstruction-guide.md) — SSoT `marker-config.js` (`__shell`, `__inner`, `__point`, 40×44).
+- [geo-map-fixes-registry.md](concepts/geo-map-fixes-registry.md) — INC-1…8, mermaid rebuild, deprecazioni.
+- Hub root: [map-lit-reconstruction-hub.md](../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md).
+- Aggiornati: marker/popup runbook, tema leak header, indici Geo/Sixteen, ingest root.
 
 ## [2026-05-15] Toolbar: registry in `render-controls.js`
 

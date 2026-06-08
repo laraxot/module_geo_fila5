@@ -19,9 +19,7 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
       const withIcon = markers.filter((m) => m.options?.typeIconUrl);
       const samples = withIcon.slice(0, 5).map((m) => ({
         type: m.options.typeValue,
-        typeIcon: m.options.typeIcon,
         typeIconUrl: m.options.typeIconUrl,
-        typeColor: m.options.typeColor,
       }));
 
       return {
@@ -42,10 +40,18 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     expect(status.withIconUrl).toBeGreaterThan(0);
 
     for (const sample of status.samples) {
-      const img = page.locator(
-        `.geo-map-marker-glyph[src="${sample.typeIconUrl}"]`
+      const imgGlyph = page.locator(
+        `.geo-map-marker-glyph--img[src="${sample.typeIconUrl}"]`
       ).first();
-      await expect(img).toHaveCount(1, { timeout: 5000 });
+
+      expect(await imgGlyph.count()).toBeGreaterThan(0);
+      expect(sample.typeIconUrl).toContain('/assets/fixcity/svg/');
+
+      const box = await imgGlyph.boundingBox();
+      expect(box?.width ?? 0).toBeGreaterThanOrEqual(20);
+      expect(box?.width ?? 0).toBeLessThanOrEqual(36);
+      expect(box?.height ?? 0).toBeGreaterThanOrEqual(20);
+      expect(box?.height ?? 0).toBeLessThanOrEqual(36);
     }
   });
 
@@ -73,7 +79,7 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     expect(urls.size).toBeGreaterThanOrEqual(2);
   });
 
-  test('GeoJSON usa struttura type annidata con value, label, color, icon, iconUrl', async ({ request }) => {
+  test('GeoJSON type annidato: value, label, iconUrl fixcity (no heroicon duplicato)', async ({ request }) => {
     const res = await request.get('http://127.0.0.1:8000/data/tickets.json');
     test.skip(!res.ok(), 'tickets.json non disponibile');
 
@@ -86,11 +92,9 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     expect(typeof first.properties.type).toBe('object');
     expect(first.properties.type).toHaveProperty('value');
     expect(first.properties.type).toHaveProperty('label');
-    expect(first.properties.type).toHaveProperty('color');
-    expect(first.properties.type).toHaveProperty('icon');
     expect(first.properties.type).toHaveProperty('iconUrl');
-
-    // Verifica icon sia heroicon valido
-    expect(first.properties.type.icon).toMatch(/^heroicon-o-[a-z-]+$/);
+    expect(first.properties.type.iconUrl).toContain('/assets/fixcity/svg/');
+    expect(first.properties.type).not.toHaveProperty('icon');
+    expect(first.properties.type).not.toHaveProperty('color');
   });
 });

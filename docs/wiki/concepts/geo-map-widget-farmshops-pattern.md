@@ -9,10 +9,14 @@ sources:
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/popupcontent.js
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/update_data.js
 confidence: high
-updated: 2026-04-17
+updated: 2026-06-03
+related:
+  - ./farmshops-eu-applicability-fixcity.md
 ---
 
 # GeoMapWidget Farmshops Pattern
+
+> Sintesi applicabilità 2026: [farmshops-eu-applicability-fixcity.md](./farmshops-eu-applicability-fixcity.md) · STORY-064
 
 ## Decisione
 
@@ -99,6 +103,13 @@ Questo stato è sufficiente per:
 - uso di CDN fuori dalla pipeline npm/Vite del progetto;
 - dataset spezzato in molte chiamate se il volume resta nell’ordine di ~3000 punti;
 - coupling diretto tra Web Component e query backend.
+
+## UX marker e popup (2026-06)
+
+- **Tipologia** → icona grande nel marker (`TicketTypeEnum` path pubblico).
+- **Stato** → colore bordo/puntatore + badge nel popup (`TicketStatusEnum`).
+- Click marker → **popup Leaflet** ricco (dati locali + opzionale `/api/ticket-details/{id}`); «Scheda completa» apre il modal esistente.
+- Dettaglio implementazione: [geo-map-lit-farmshops-parity.md](./geo-map-lit-farmshops-parity.md#marker-icon-first--popup-card-2026-06-03).
 
 ## Implicazioni pratiche per il repo
 
