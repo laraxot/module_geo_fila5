@@ -1,4 +1,4 @@
-const SAFE_HEX_COLOR = /^#[0-9a-f]{3}([0-9a-f]{3})?$/i;
+/** @deprecated Usare map/marker-config.js — export canonico con glifo inline. */
 
 export function normalizeGeoMapColor(color, fallback = '#0066cc') {
     return SAFE_HEX_COLOR.test(String(color || '')) ? color : fallback;

@@ -38,6 +38,9 @@ Modules/Geo/resources/js/components/
     ├── heroicons.js              ← SVG controlli mappa (`geoIcon`)
     ├── styles.js                 ← CSS condiviso (`mapStyles`, `mapStylesText`)
     ├── resize-after-action.js    ← invalidateSize dopo azioni controllo
+    ├── popup-ticket.js           ← popup marker map-lit (STORY-132; era popup-segnalazione.js)
+    ├── marker-config.js          ← divIcon marker (import da map-lit)
+    ├── icon-glyph.js
     └── controls/
         ├── render-controls.js    ← solo registry `OVERLAY_PARTS` → moduli sotto `controls/`
         ├── search.js             ← Nominatim, `renderSearch`, `searchUiHandlers`, `renderToggleButton`
@@ -66,10 +69,21 @@ Nella stessa cartella `map/` possono esistere file legacy Vue (es. `Map1.vue`): 
 | `./map/styles.js` | **Deprecated** — re-export verso `./map/styles.js` |
 | `./map-picker-marker-config.js` | Solo icona marker picker |
 
+### Filename: solo inglese (standing rule)
+
+Sotto `map/` e tutto `resources/js/`: **vietato** segmenti italiani nel path (`segnalazione`, `mappa`, `filtro`, …).
+
+| Deprecato | Canonico |
+|----------|----------|
+| `popup-segnalazione.js` | `popup-ticket.js` |
+
+Dettaglio: [js-file-english-naming-rule.md](../rules/js-file-english-naming-rule.md) · [STORY-132](../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md)
+
 ### Vietato
 
 - `map-picker-controls.js`, `map-controls.js`, `map/styles.js` in nuovo codice root `components/` (spostati in `map/`; il file styles root resta solo compatibilità).
 - Duplicare `map/` nel tema senza allineare il mirror `Themes/Sixteen/resources/js/components/modules/Geo/map/`.
+- Nuovi file `*-segnalazione*.js` o export `buildSegnalazione*`.
 
 ## Import corretti (`coordinate-picker-lit`)
 

@@ -1,4 +1,14 @@
+---
+title: "Geo Module Documentation"
+type: documentation
+tags: [module, documentation]
+created: 2026-06-05
+updated: 2026-06-05
+---
+
 # Geo Module Documentation
+
+> 🇮🇹 [Biglietto da visita (IT)](../README.md) · 🇬🇧 [Business card (EN)](./readme-en.md)
 
 Handles geographic data, maps, geocoding, and location-based services.
 
@@ -44,6 +54,15 @@ Geo module owns ALL geo-spatial concerns. Other modules (Fixcity, Transport, Log
 
 ## Documentation
 
+- [Ricostruzione map-lit da docs](./wiki/concepts/geo-map-lit-reconstruction-guide.md) — Contratto unico marker + popup + build
+- [Registro correzioni map-lit](./wiki/concepts/geo-map-fixes-registry.md) — INC-1…8, deprecazioni, ordine rebuild
+- [Hub root progetto](../../../../docs/wiki/memories/map-lit-reconstruction-hub.md) — ingresso da wiki globale
+- [BEM modifier + DOM (popup/mappa)](./wiki/rules/bem-modifier-dom-contract.md) — Regola standing: no `.block--loading .block__footer { display:none }`
+- [Geo map popup BEM](./wiki/concepts/geo-map-popup-bem.md) — Block `popup`, loading senza footer nel DOM
+- [Popup vuoto header](./wiki/troubleshooting/map-popup-header-whitespace-fix.md) — `header { min-height: 222px }` vs `.popup__header`
+- [Marker stato + pad](./wiki/concepts/geo-map-marker-status-background.md) — `__shell`/`__inner`/`__point`, glifo 22px
+- [Incidenti /it 2026-06](./wiki/troubleshooting/map-lit-it-incidents-2026-06.md) — Runbook STORY-121…129
+- [CI semantic release](./wiki/concepts/ci-semantic-release.md) — Tag `geo-v*`, monorepo workflow
 - [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
 - [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
 - [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
