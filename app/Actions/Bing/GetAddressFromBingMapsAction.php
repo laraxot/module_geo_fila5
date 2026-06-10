@@ -55,6 +55,8 @@ class GetAddressFromBingMapsAction
     }
 
     /**
+     * @return array<mixed>
+     *
      * @throws InvalidLocationException
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array

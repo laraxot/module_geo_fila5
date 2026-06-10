@@ -6,7 +6,7 @@
 
 ## Regola
 
-Per la pagina `/it/tests/segnalazioni-elenco` e qualsiasi altra pagina pubblica/admin che renderizza una mappa Leaflet con marker delle segnalazioni, il custom element canonico è **`<map-lit>`**, definito da `laravel/Modules/Geo/resources/js/components/map-lit.js` (linea 382: `customElements.define('map-lit', MapLit)`).
+Per la pagina `/it/tests/ticket-list` e qualsiasi altra pagina pubblica/admin che renderizza una mappa Leaflet con marker delle segnalazioni, il custom element canonico è **`<map-lit>`**, definito da `laravel/Modules/Geo/resources/js/components/map-lit.js` (linea 382: `customElements.define('map-lit', MapLit)`).
 
 ## Why
 
@@ -58,15 +58,15 @@ NON aggiungere `<script type="module" src="{{ Vite::asset('...,'assets/geo') }}"
 
 ## Pattern consolidato (post-fix Story 8-133)
 
-I tre Blade owner per `/it/tests/segnalazioni-elenco` usano tutti `<map-lit>`:
-1. `Themes/Sixteen/resources/views/pages/tests/segnalazioni-elenco.blade.php` → `@include('pub_theme::components.sections.map-lit')`
+I tre Blade owner per `/it/tests/ticket-list` usano tutti `<map-lit>`:
+1. `Themes/Sixteen/resources/views/pages/tests/ticket-list.blade.php` → `@include('pub_theme::components.sections.map-lit')`
 2. `Themes/Sixteen/resources/views/components/sections/map-lit.blade.php` → partial canonico riusabile
-3. `Themes/Sixteen/resources/views/components/blocks/tests/segnalazioni-elenco.blade.php` → `<map-lit>` linea 118
+3. `Themes/Sixteen/resources/views/components/blocks/tests/ticket-list.blade.php` → `<map-lit>` linea 118
 4. `Themes/Sixteen/resources/views/components/blocks/segnalazioni/layout.blade.php` → `<map-lit>` linea 201 (CMS block)
 
 ## Riferimenti
 
 - File canonico: `laravel/Modules/Geo/resources/js/components/map-lit.js`
 - Memory feedback: `~/.claude/projects/-var-www--bases-base-fixcity-fila5/memory/feedback_map_lit_canonical_name.md`
-- Story 8-133: `_bmad-output/implementation-artifacts/8-133-segnalazioni-elenco-map-not-visible-geo-vite-asset-deploy.md`
+- Story 8-133: `_bmad-output/implementation-artifacts/8-133-ticket-list-map-not-visible-geo-vite-asset-deploy.md`
 - Wiki correlate (deprecated callout da aggiungere): `geo-map-lit-implementation.md`, `geo-map-lit-marker-clusters.md`, `geo-map-lit-reference.md`

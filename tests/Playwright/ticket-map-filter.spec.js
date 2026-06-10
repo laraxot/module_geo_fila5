@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-const ELENCO_URL = 'http://127.0.0.1:8000/it/tests/segnalazioni-elenco';
+const ELENCO_URL = 'http://127.0.0.1:8000/it/tests/ticket-list';
 
 /**
  * STORY-092 — /it homepage civica (no ticket-layout).
- * STORY-100 — elenco canonico + filtro mappa su tests/segnalazioni-elenco.
+ * STORY-100 — elenco canonico + filtro mappa su tests/ticket-list.
  */
 test.describe('STORY-092 — /it homepage civica', () => {
   test('nessun ticket-layout né map-lit sulla homepage', async ({ page }) => {
@@ -16,7 +16,7 @@ test.describe('STORY-092 — /it homepage civica', () => {
     test.skip(response === null || !response.ok(), 'App non raggiungibile su :8000');
 
     await expect(page.locator('map-lit#block-map')).toHaveCount(0);
-    await expect(page.locator('#segnalazioni-elenco-root')).toHaveCount(0);
+    await expect(page.locator('#ticket-list-root')).toHaveCount(0);
     await expect(page).toHaveTitle(/Il mio Comune|My Municipality/i);
   });
 });

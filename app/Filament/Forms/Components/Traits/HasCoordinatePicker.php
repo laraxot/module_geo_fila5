@@ -262,6 +262,8 @@ trait HasCoordinatePicker
     /**
      * Reverse geocodes coordinates to a structured address.
      * Returns a rich array for better form integration.
+     *
+     * @return array<string, mixed>|null
      */
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -349,6 +351,11 @@ trait HasCoordinatePicker
         return '';
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
     {
         $coordinates = $data[$field] ?? null;

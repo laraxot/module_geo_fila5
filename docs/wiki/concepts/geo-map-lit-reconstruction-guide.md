@@ -14,7 +14,7 @@ Se il codice JS/CSS della mappa su `/it` andasse perso, questa pagina è il **co
 
 | Pezzo | Valore |
 |-------|--------|
-| Pagina | `/it`, `body[data-page="segnalazioni-elenco"]` |
+| Pagina | `/it`, `body[data-page="ticket-list"]` |
 | Componente | `<map-lit id="block-map" data-url="/data/tickets.json">` |
 | SSoT dati | `public_html/data/tickets.json` ← `GenerateTicketsJsonAction` (Fixcity) |
 | Filtri sidebar | `SegnalazioniFilterViewModel` + evento `filters-changed` |
@@ -185,6 +185,6 @@ Issue modulo: [module_geo_fila5#4](https://github.com/laraxot/module_geo_fila5/i
 
 - [geo-map-lit-farmshops-parity.md](./geo-map-lit-farmshops-parity.md)
 - [geo-map-popup-leaflet-boundary.md](../../../../../Themes/Sixteen/docs/wiki/concepts/geo-map-popup-leaflet-boundary.md)
-- [segnalazioni-elenco-map-integration.md](../../../../../Themes/Sixteen/docs/wiki/concepts/segnalazioni-elenco-map-integration.md)
+- [ticket-list-map-integration.md](../../../../../Themes/Sixteen/docs/wiki/concepts/ticket-list-map-integration.md)
 - [map-lit-vite-build-troubleshooting.md](../../../../../Themes/Sixteen/docs/wiki/concepts/map-lit-vite-build-troubleshooting.md)
 - Wiki root memoria: [map-lit-marker-cluster-farmshops-pattern.md](../../../../../../docs/wiki/memories/map-lit-marker-cluster-farmshops-pattern.md)

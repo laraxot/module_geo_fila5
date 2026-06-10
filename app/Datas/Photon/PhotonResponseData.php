@@ -10,6 +10,9 @@ use Spatie\LaravelData\DataCollection;
 
 class PhotonResponseData extends Data
 {
+    /**
+     * @param DataCollection<int, PhotonFeatureData>|null $features
+     */
     public function __construct(
         #[DataCollectionOf(PhotonFeatureData::class)]
         public ?DataCollection $features,

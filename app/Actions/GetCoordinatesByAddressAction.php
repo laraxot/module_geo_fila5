@@ -137,6 +137,11 @@ class GetCoordinatesByAddressAction
         );
     }
 
+    /**
+     * @param array<mixed> $data
+     *
+     * @return array<mixed>|null
+     */
     private function extractBingCoordinates(array $data): ?array
     {
         $resourceSets = $data['resourceSets'] ?? null;

@@ -39,15 +39,20 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
+    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\ProvinceFactory> */
     use HasXotFactory;
     use Sushi;
 
+    /** @var array<string, string> */
     protected array $schema = [
         'region_id' => 'integer',
         'id' => 'integer',
         'name' => 'string',
     ];
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         $rows = Comune::select('regione->codice as region_id', 'provincia->codice as id', 'provincia->nome as name')
@@ -55,28 +60,43 @@ class Province extends BaseModel
             ->orderBy('provincia->nome')
             ->get();
 
-        /* @var array<int, array<string, mixed>> */
-        return $rows->toArray();
+        return $rows
+            ->map(static fn (Comune $row): array => $row->attributesToArray())
+            ->values()
+            ->all();
     }
 
+    /**
+     * @return BelongsTo<Region, $this>
+     */
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
     }
 
+    /**
+     * @return HasMany<Locality, $this>
+     */
     public function localities(): HasMany
     {
         return $this->hasMany(Locality::class);
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
 
-        return self::where('region_id', $region)
-            ->orderBy('name')
-            ->get()
-            ->pluck('name', 'id')
-            ->toArray();
+        $keys = [];
+        $values = [];
+
+        foreach (self::where('region_id', $region)->orderBy('name')->get() as $item) {
+            $keys[] = (string) $item->id;
+            $values[] = (string) ($item->name ?? '');
+        }
+
+        return array_combine($keys, $values) ?: [];
     }
 }

@@ -13,6 +13,9 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 #[MapOutputName(SnakeCaseMapper::class)]
 class PhotonAddressData extends Data
 {
+    /**
+     * @param array<string, mixed> $coordinates
+     */
     public function __construct(
         public ?string $country,
         public ?string $city,
