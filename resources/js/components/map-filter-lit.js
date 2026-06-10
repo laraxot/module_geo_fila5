@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * map-filter-lit
  * Web component per filtrare i marker del map-lit per tipo.
- * Usato insieme a <map-lit> nella pagina segnalazioni-elenco.
+ * Usato insieme a <map-lit> nella pagina ticket-list.
  *
  * @example
  * <map-filter-lit map-id="ticket-map"></map-filter-lit>

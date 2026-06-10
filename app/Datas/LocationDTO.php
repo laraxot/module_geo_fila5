@@ -15,6 +15,9 @@ readonly class LocationDTO
     ) {
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

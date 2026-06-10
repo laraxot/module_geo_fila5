@@ -29,7 +29,7 @@ import { renderSearch, searchUiHandlers } from './map/controls/search.js';
 import { buildMapLayers } from './map/layers.js';
 import { mapStylesText } from './map/styles.js';
 import { createGeoMapLeafletIcon, markerCardStylesText } from './map/config.js';
-import { buildClusterTypeDotHtml } from './map/icon-glyph.js';
+import { buildMarkerGlyphHtml } from './map/icon-glyph.js';
 import { resolveFeatureTicketType } from './map/feature-type.js';
 import { resolveFeatureTicketStatus } from './map/feature-status.js';
 import {
@@ -373,15 +373,15 @@ class MapLit extends LitElement {
         const clusterSize = L.point(80, 80);
 
         if (zoom >= 8) {
-            const statusesPresent = {};
+            const typeIcons = {};
             markers.forEach(m => {
-                const s = m.options.statusValue;
-                if (s && !statusesPresent[s]) {
-                    statusesPresent[s] = m.options.statusColor || '#607d8b';
+                const url = m.options.typeIconUrl;
+                if (url && !typeIcons[url]) {
+                    typeIcons[url] = true;
                 }
             });
-            const icons = Object.entries(statusesPresent)
-                .map(([, color]) => buildClusterTypeDotHtml(color))
+            const icons = Object.keys(typeIcons)
+                .map(url => buildMarkerGlyphHtml(url, 14))
                 .join('');
 
             return L.divIcon({

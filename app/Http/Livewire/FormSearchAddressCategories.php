@@ -24,10 +24,12 @@ class FormSearchAddressCategories extends Component
     // public \Illuminate\Support\HtmlString $slot;
     public string $name = 'address';
 
+    /** @var array<string, mixed> */
     public array $form_data = [];
 
     public bool $showActivityTypes = false;
 
+    /** @var Collection<int, mixed> */
     public Collection $enabledTypes;
 
     public bool $warningSuggestedAddresses = false;
@@ -141,11 +143,16 @@ class FormSearchAddressCategories extends Component
         $this->warningCivicNumber = false;
         $this->showActivityTypes = false;
 
-        $data = json_decode($val0, true, 512, JSON_THROW_ON_ERROR);
-        if (! \is_array($data)) {
-            $data = [];
+        $decoded = json_decode($val0, true, 512, JSON_THROW_ON_ERROR);
+        $merged = $this->form_data;
+        if (\is_array($decoded)) {
+            foreach ($decoded as $key => $value) {
+                if (\is_string($key)) {
+                    $merged[$key] = $value;
+                }
+            }
         }
-        $this->form_data = array_merge($this->form_data, $data);
+        $this->form_data = $merged;
         $this->form_data[$this->name] = $val0;
         $this->form_data[$this->name.'_value'] = $val1;
 

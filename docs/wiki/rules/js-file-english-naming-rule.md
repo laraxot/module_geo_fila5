@@ -46,8 +46,8 @@ Nei path sotto `Modules/Geo/resources/js/` (e mirror tema se presente) **ogni se
 
 - URL `/it/segnalazione/crea` — routing prodotto
 - `__('fixcity::segnalazione.*')` — traduzioni
-- `data-page="segnalazioni-elenco"` — slug pagina parity Design Comuni
-- Commenti `// Reference: segnalazioni-elenco.html`
+- `data-page="ticket-list"` — slug pagina parity Design Comuni
+- Commenti `// Reference: ticket-list.html`
 
 ---
 
