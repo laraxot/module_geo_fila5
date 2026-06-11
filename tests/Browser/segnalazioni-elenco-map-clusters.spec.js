@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/test';
+const { test, expect } = require('@playwright/test');
 
 test.describe('Segnalazioni Elenco Map Marker Clusters Test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://127.0.0.1:8000/it/tests/ticket-list');
+    await page.goto('http://127.0.0.1:8000/it/tests/segnalazioni-elenco');
   });
 
   test('marker clusters should have circular farmshosp.eu style', async ({ page }) => {

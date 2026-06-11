@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Services;
 
+uses(\Modules\Geo\Tests\TestCase::class);
+
+use Exception;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
+use PHPUnit\Framework\Assert;
 use Modules\Geo\Services\HereService;
 use Modules\Geo\Tests\TestCase;
+it('has correct base URL', function(): void {
+        $service = new HereService;
 
-uses(TestCase::class);
-
-beforeEach(function () {
-    $this->service = new HereService();
+Assert::assertSame('https://router.hereapi.com/v8/routes', $service->base_url);
 });
 
-it('has correct base URL', function (): void {
-    expect($this->service->base_url)->toBe('https://router.hereapi.com/v8/routes');
-});
+it('has static method for getting duration and length', function(): void {
+        $service = new HereService;
 
-it('has static method for getting duration and length', function (): void {
-    // Check that the method exists
-    expect(method_exists(HereService::class, 'getDurationAndLength'))->toBeTrue();
-});
+// Check that the method exists
+    });

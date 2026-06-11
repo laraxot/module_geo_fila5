@@ -1,56 +1,100 @@
 import { test, expect } from '@playwright/test';
 
-const mapLit = (page) => page.locator('#segnalazioni-elenco-root map-lit#ticket-map');
-
-test.describe('map-lit su /it (STORY-029)', () => {
+test.describe('GeoMapLit Component Tests', () => {
   test.beforeEach(async ({ page }) => {
-    const response = await page.goto('http://127.0.0.1:8000/it', {
-      waitUntil: 'networkidle',
-      timeout: 30000,
+    await page.goto('http://127.0.0.1:8000/it/tests/segnalazioni-listed');
+  });
+
+  test('renders listen component', async ({ page }) => {
+    const mapComponent = page.locator('geo-map-lit');
+    await expect(mapComponent).toBeVisible();
+
+    const size = await mapComponent.boundingBox();
+    expect(size.height).not.toBeNull();
+    expect(size.height).toBeGreaterThan(300);
+  });
+
+  test('map container has correct height', async ({ page }) => {
+    const mapBox = page.locator('.map-box');
+    expect(mapBox).toBeVisible();
+
+    const style = await mapBox.evaluate(el => {
+      const cs = window.getComputedStyle(el);
+      return {
+        height: cs.height,
+        position: cs.position
+      };
     });
-    test.skip(response === null || !response.ok(), 'App non raggiungibile');
 
-    await page.locator('.nav-tabs').getByRole('tab', { name: 'Mappa' }).click();
-    await mapLit(page).waitFor({ state: 'visible', timeout: 15000 });
+    expect(style.height).toBe('450px');
   });
 
-  test('map-lit visibile con altezza minima', async ({ page }) => {
-    const box = await mapLit(page).boundingBox();
-    expect(box?.height ?? 0).toBeGreaterThan(300);
+  test('leaflet map initializes', async ({ page }) => {
+    await page.waitForSelector('.leaflet-container', { timeout: 10000 });
+    const container = page.locator('.leaflet-container');
+    expect(container).toBeVisible();
+
+    const tiles = page.locator('.leaflet-tile');
+    await expect(tiles.first()).toBeVisible({ timeout: 10000 });
   });
 
-  test('leaflet inizializza con tile', async ({ page }) => {
-    const container = mapLit(page).locator('.leaflet-container');
-    await expect(container).toBeVisible({ timeout: 10000 });
-    await expect(mapLit(page).locator('.leaflet-tile').first()).toBeVisible({ timeout: 15000 });
+  test('map controls visible', async ({ page }) => {
+    await page.waitForSelector('.leaflet-container', { timeout: 10000 });
+
+    const controls = page.locator('.leaflet-control');
+    await expect(controls).toBeVisible();
+
+    const zoomIn = page.locator('.ctrl-btn:nth-match(1)');
+    const zoomOut = page.locator('.ctrl-btn:nth-match(2)');
+    const layerSwitch = page.locator('.ctrl-btn:nth-match(3)');
+    const geoloc = page.locator('.ctrl-btn:nth-match(4)');
+
+    await expect(zoomIn).toBeVisible();
+    await expect(zoomOut).toBeVisible();
+    await expect(layerSwitch).toBeVisible();
+    await expect(geoloc).toBeVisible();
   });
 
-  test('marker da tickets.json', async ({ page }) => {
-    await mapLit(page).locator('.leaflet-marker-icon').first().waitFor({ timeout: 15000 });
-    const count = await mapLit(page).locator('.leaflet-marker-icon').count();
+  test('markers render from GeoJSON', async ({ page }) => {
+    await page.waitForSelector('.leaflet-container', { timeout: 10000 });
+    await page.waitForSelector('.leaflet-marker-icon', { timeout: 10000 });
+
+    const markers = page.locator('.leaflet-marker-icon');
+    const count = await markers.count();
     expect(count).toBeGreaterThan(0);
   });
 
-  test('cluster marker presente a zoom basso', async ({ page }) => {
-    await mapLit(page).evaluate((el) => {
-      if (el._map) {
-        el._map.setZoom(6);
-      }
-    });
-    await page.waitForTimeout(800);
-    const cluster = mapLit(page).locator('.marker-cluster, .geo-cluster-wrapper');
-    await expect(cluster.first()).toBeVisible({ timeout: 10000 });
+  test('filter by type dropdown works', async ({ page }) => {
+    const select = page.locator('select');
+    await expect(select).toBeVisible();
+
+    const initialCount = await page.locator('.leaflet-marker-icon').count();
+    await select.selectOption({ index: 1 });
+    await page.waitForTimeout(1000);
+    const filteredCount = await page.locator('.leaflet-marker-icon').count();
+    expect(filteredCount).toBeGreaterThanOrEqual(0);
   });
 
-  test('filtro checkbox riduce marker visibili', async ({ page }) => {
-    test.skip(true, 'Filtri sidebar: coperto da segnalazioni-elenco-filters-parity.spec.js');
-  });
+  test('responsive to resize', async ({ page }) => {
+    await page.waitForSelector('.leaflet-container', { timeout: 10000 });
 
-  test('responsive al resize viewport', async ({ page }) => {
-    const before = await mapLit(page).locator('.leaflet-container').boundingBox();
+    const initial = await page.locator('.leaflet-container').boundingBox();
     await page.setViewportSize({ width: 800, height: 600 });
-    await page.waitForTimeout(500);
-    const after = await mapLit(page).locator('.leaflet-container').boundingBox();
-    expect(after?.width ?? 0).toBeGreaterThanOrEqual(Math.min(before?.width ?? 0, 700));
+    await page.waitForTimeout(1000);
+    const after = await page.locator('.leaflet-container').boundingBox();
+    expect(after.width).toBeGreaterThanOrEqual(600);
   });
-});
+
+  test('heatmap toggle works', async ({ page }) => {
+    await page.waitForSelector('.leaflet-container', { timeout: 10000 });
+    const layerControl = page.locator('.leaflet-control-layers');
+    if (await layerControl.isVisible()) {
+      await layerControl.click();
+      const heatOption = page.locator('text=Heatmap');
+      if (await heatOption.isVisible()) {
+        await heatOption.click();
+        await page.waitForTimeout(1000);
+      }
+    }
+    await expect(page.locator('.leaflet-container')).toBeVisible();
+  });

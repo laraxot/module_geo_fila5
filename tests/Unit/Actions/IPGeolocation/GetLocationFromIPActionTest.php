@@ -4,51 +4,76 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\IPLocationData;
-
-beforeEach(function () {
-    $this->fetchAction = Mockery::mock(FetchIPLocationAction::class);
-    $this->action = new GetLocationFromIPAction($this->fetchAction);
-});
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+use RuntimeException;
 
 it('delegates to fetch action and returns result', function (): void {
-    $this->fetchAction
-        ->shouldReceive('execute')
-        ->once()
-        ->with('8.8.8.8')
-        ->andReturn(new IPLocationData(
-            ip: '8.8.8.8',
-            city: 'Ashburn',
-            region: null,
-            country: 'US',
-            countryName: 'United States',
-            latitude: null,
-            longitude: null,
-            timezone: null,
-            isp: null,
-        ));
+    $fetchAction = new FetchIPLocationReturningStub(new IPLocationData(
+        ip: '8.8.8.8',
+        city: 'Ashburn',
+        region: null,
+        country: 'US',
+        countryName: 'United States',
+        latitude: null,
+        longitude: null,
+        timezone: null,
+        isp: null,
+    ));
+    $action = new GetLocationFromIPAction($fetchAction);
 
-    $result = $this->action->execute('8.8.8.8');
+    $result = $action->execute('8.8.8.8');
 
-    expect($result)
-        ->toBeInstanceOf(IPLocationData::class)
-        ->and($result->ip)->toBe('8.8.8.8')
-        ->and($result->city)->toBe('Ashburn');
+    Assert::assertInstanceOf(IPLocationData::class, $result);
+    Assert::assertSame('8.8.8.8', $result->ip);
+    Assert::assertSame('Ashburn', $result->city);
 });
 
-it('returns null when fetch action returns null', function (): void {
-    $this->fetchAction
-        ->shouldReceive('execute')
-        ->once()
-        ->with('192.168.1.1')
-        ->andThrow(new RuntimeException('not found'));
+it('propagates exception when fetch action throws', function (): void {
+    $fetchAction = new FetchIPLocationThrowingStub(new RuntimeException('not found'));
+    $action = new GetLocationFromIPAction($fetchAction);
 
-    expect(fn () => $this->action->execute('192.168.1.1'))
-        ->toThrow(RuntimeException::class);
+    try {
+        $action->execute('192.168.1.1');
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (RuntimeException $exception) {
+        Assert::assertSame('not found', $exception->getMessage());
+    }
 });
+
+/**
+ * @internal
+ */
+final class FetchIPLocationReturningStub extends FetchIPLocationAction
+{
+    public function __construct(
+        private readonly IPLocationData $locationData,
+    ) {
+    }
+
+    public function execute(string $ip): IPLocationData
+    {
+        return $this->locationData;
+    }
+}
+
+/**
+ * @internal
+ */
+final class FetchIPLocationThrowingStub extends FetchIPLocationAction
+{
+    public function __construct(
+        private readonly RuntimeException $exception,
+    ) {
+    }
+
+    public function execute(string $ip): IPLocationData
+    {
+        throw $this->exception;
+    }
+}

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests;
 
+use Exception;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Modules\Geo\Providers\GeoServiceProvider;
 use Modules\Xot\Providers\XotServiceProvider;
@@ -17,7 +21,10 @@ abstract class UnitTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    protected function getPackageProviders($app): array
+    /**
+     * @return array<int, class-string>
+     */
+    protected function getPackageProviders(Application $app): array
     {
         return [
             XotServiceProvider::class,
