@@ -14,6 +14,7 @@ use Modules\Xot\Filament\Pages\XotBasePage;
  */
 class DotswanMap extends XotBasePage
 {
+    /** @var array{lat: float, lng: float} */
     public array $location;
 
     /**

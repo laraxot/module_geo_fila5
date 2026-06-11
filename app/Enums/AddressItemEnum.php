@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Enums;
 
-use Modules\Xot\Traits\EnumTrait;
-use Filament\Forms\Components\TextInput;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
+use Modules\Xot\Traits\EnumTrait;
 
 /**
  * Enum per i campi standard di indirizzo.

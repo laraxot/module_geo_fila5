@@ -14,6 +14,9 @@ class HereService
 
     // https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
+    /**
+     * @return array<mixed>|null
+     */
     public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array
     {
         $api_key = TenantService::config('services.here.api_key');
@@ -46,13 +49,24 @@ class HereService
         if (! is_array($json['routes'])) {
             return null;
         }
-        if (! isset($json['routes'][0])) {
+        $firstRoute = $json['routes'][0] ?? null;
+        if (! is_array($firstRoute)) {
             return null;
         }
 
-        // @phpstan-ignore offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible
-        Assert::isArray($res = $json['routes'][0]['sections']['0']['summary']);
+        $sections = $firstRoute['sections'] ?? null;
+        if (! is_array($sections)) {
+            return null;
+        }
 
-        return $res;
+        $section = $sections[0] ?? $sections['0'] ?? null;
+        if (! is_array($section)) {
+            return null;
+        }
+
+        $summary = $section['summary'] ?? null;
+        Assert::isArray($summary);
+
+        return $summary;
     }
 }

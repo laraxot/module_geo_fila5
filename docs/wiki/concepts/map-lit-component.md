@@ -27,7 +27,7 @@ I popup implementano il pattern di caricamento lazy:
 
 ## Integrazione Tecnica
 
-- **Owner markup Sixteen**: `Themes/Sixteen/resources/views/pages/tests/segnalazioni-elenco.blade.php` include `pub_theme::components.sections.map-lit`, mentre `Themes/Sixteen/resources/views/components/blocks/segnalazioni/layout.blade.php` usa `<map-lit data-url="/data/tickets.json">`.
+- **Owner markup Sixteen**: `Themes/Sixteen/resources/views/pages/tests/ticket-list.blade.php` include `pub_theme::components.sections.map-lit`, mentre `Themes/Sixteen/resources/views/components/blocks/segnalazioni/layout.blade.php` usa `<map-lit data-url="/data/tickets.json">`.
 - **Partial tema**: `Themes/Sixteen/resources/views/components/sections/map-lit.blade.php` esiste per evitare che `@include('pub_theme::components.sections.map-lit')` diventi un 500 server-side. La partial deve solo emettere il web component, non duplicare logica Leaflet.
 - **Registrazione tema**: `Themes/Sixteen/resources/js/app.js` deve importare `@modules/Geo/resources/js/components/map-lit.js`; se manca, il tag resta un elemento HTML sconosciuto e la mappa non si inizializza.
 - **Build Sixteen**: dopo ogni modifica agli import mappa eseguire `npm run build` e `npm run copy` dal tema Sixteen.
@@ -37,7 +37,7 @@ I popup implementano il pattern di caricamento lazy:
 
 ## False Friend
 
-`<geo-map-lit>` e' un componente Geo ancora presente, ma per la pagina pubblica `http://127.0.0.1:8000/it/tests/segnalazioni-elenco` il tag corretto e' `<map-lit>`.
+`<geo-map-lit>` e' un componente Geo ancora presente, ma per la pagina pubblica `http://127.0.0.1:8000/it/tests/ticket-list` il tag corretto e' `<map-lit>`.
 Le due cause tipiche di mappa invisibile sono:
 - `customElements.get('map-lit')` falso: manca l'import nel bundle Sixteen.
 - HTTP 500 `View [components.sections.map-lit] not found`: esiste un include server-side senza partial tema.
@@ -45,7 +45,7 @@ Le due cause tipiche di mappa invisibile sono:
 ## Verifica 2026-05-08
 
 ```text
-npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+npx playwright test Modules/Geo/tests/Playwright/ticket-list.spec.js
 11 passed
 ```
 

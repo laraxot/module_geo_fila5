@@ -64,6 +64,9 @@ class OSMMapWidget extends Widget
         ]);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function getData(): array
     {
         /** @var Collection<int, Place> $places */

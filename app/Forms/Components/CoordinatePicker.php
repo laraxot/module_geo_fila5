@@ -80,6 +80,9 @@ class CoordinatePicker extends Field
         return $this->getName().'.coordinates';
     }
 
+    /**
+     * @return array<string, float|null>
+     */
     public function getState(): array
     {
         return [
@@ -95,12 +98,18 @@ class CoordinatePicker extends Field
         $this->rules(['nullable', 'array']);
     }
 
+    /**
+     * @param array<string, mixed> $input
+     */
     protected function mutateState(array $input): void
     {
         $this->latitude = isset($input['latitude']) ? (float) $input['latitude'] : null;
         $this->longitude = isset($input['longitude']) ? (float) $input['longitude'] : null;
     }
 
+    /**
+     * @param array<string, mixed> $coords
+     */
     #[On('coords-changed')]
     public function handleCoordsChanged(array $coords): void
     {
@@ -153,6 +162,11 @@ class CoordinatePicker extends Field
         }
     }
 
+    /**
+     * @param array<mixed> $data
+     *
+     * @return array<string, float|null>
+     */
     public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array
     {
         if (! isset($data[$fieldName])) {

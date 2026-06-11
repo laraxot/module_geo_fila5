@@ -11,7 +11,7 @@ use Modules\Geo\Support\GeoMapDataset;
  * @phpstan-type GeoDataset array{type: string, features: list<array{
  *     type: string,
  *     properties: array<string, scalar|null>,
- *     geometry: array{type: string, coordinates: array}
+ *     geometry: array{type: string, coordinates: array<mixed>}
  * }>}
  * @phpstan-type GeoMapConfig array{
  *     defaultZoom: int,
@@ -115,7 +115,7 @@ final class GeoMapWidget extends Widget
     }
 
     /**
-     * @param array<string, array|bool|float|int|string|null> $payload
+     * @param array<string, mixed> $payload
      */
     private function encodeJson(array $payload, string $message): string
     {

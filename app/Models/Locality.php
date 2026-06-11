@@ -6,7 +6,6 @@ namespace Modules\Geo\Models;
 
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Arr;
 use Modules\Geo\Database\Factories\LocalityFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
@@ -39,6 +38,7 @@ class Locality extends BaseModel
 {
     use Sushi;
 
+    /** @var array<string, string> */
     protected array $schema = [
         'region_id' => 'integer',
         'province_id' => 'integer',
@@ -47,6 +47,9 @@ class Locality extends BaseModel
         'postal_code' => 'json',
     ];
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         $rows = Comune::select(
@@ -58,13 +61,17 @@ class Locality extends BaseModel
         )
             ->distinct()
             ->orderBy('nome')
-            ->get()
-            ->map(static fn ($row) => $row);
+            ->get();
 
-        /* @var array<int, array<string, mixed>> */
-        return $rows->toArray();
+        return $rows
+            ->map(static fn (Comune $row): array => $row->attributesToArray())
+            ->values()
+            ->all();
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
@@ -78,12 +85,24 @@ class Locality extends BaseModel
 
         $city = $get('locality');
 
-        return self::where('region_id', $region)
-            ->where('province_id', $province)
-            ->pluck('name', 'id')
-            ->toArray();
+        $keys = [];
+        $values = [];
+
+        foreach (
+            self::where('region_id', $region)
+                ->where('province_id', $province)
+                ->get() as $item
+        ) {
+            $keys[] = (string) $item->id;
+            $values[] = (string) ($item->name ?? '');
+        }
+
+        return array_combine($keys, $values) ?: [];
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function getPostalCodeOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
@@ -104,22 +123,24 @@ class Locality extends BaseModel
             ->orderBy('postal_code')
             ->get(); // ->pluck('postal_code', 'postal_code')
         // ->toArray()
-        /** @var array<int, array<string, mixed>> $arr */
-        $arr = $res->toArray();
-        $arr = Arr::mapWithKeys($arr, static function (array $item) {
-            if (! isset($item['postal_code']) || ! \is_array($item['postal_code'])) {
-                return [];
+        /** @var array<string, string> $options */
+        $options = [];
+
+        foreach ($res as $item) {
+            $postalCode = $item->postal_code ?? null;
+            if (! \is_array($postalCode)) {
+                continue;
             }
-            /** @var array<int, string> $postalCodes */
-            $postalCodes = array_values((array) $item['postal_code']);
 
-            $result = array_combine($postalCodes, $postalCodes);
+            foreach ($postalCode as $code) {
+                if (\is_string($code) || is_numeric($code)) {
+                    $codeString = (string) $code;
+                    $options[$codeString] = $codeString;
+                }
+            }
+        }
 
-            /* @var array<string, string> $result */
-            return $result;
-        });
-
-        return $arr ?? [];
+        return $options;
     }
 
     /**
