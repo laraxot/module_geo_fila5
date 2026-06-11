@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
-use Exception;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use RuntimeException;
-use PHPUnit\Framework\Assert;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GetCoordinatesAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\TestCase;
-it('returns coordinates for valid address', function(): void {
-        $action = new GetCoordinatesAction;
+use PHPUnit\Framework\Assert;
 
-// Arrange
+it('returns coordinates for valid address', function (): void {
+    $action = new GetCoordinatesAction();
+
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
     $expectedLatitude = 45.4642;
     $expectedLongitude = 9.1900;
@@ -53,10 +51,10 @@ it('returns coordinates for valid address', function(): void {
     Assert::assertSame($address, $result->address);
 });
 
-it('throws exception when api key missing', function(): void {
-        $action = new GetCoordinatesAction;
+it('throws exception when api key missing', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
     Config::set('services.google.maps.key', null);
 
@@ -64,15 +62,15 @@ it('throws exception when api key missing', function(): void {
     try {
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not found', $exception->getMessage());
     }
 });
 
-it('throws exception when api request fails', function(): void {
-        $action = new GetCoordinatesAction;
+it('throws exception when api request fails', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     Config::set('services.google.maps.key', 'test-api-key');
@@ -84,15 +82,15 @@ it('throws exception when api request fails', function(): void {
     try {
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get coordinates from Google Maps API', $exception->getMessage());
     }
 });
 
-it('returns null for invalid address', function(): void {
-        $action = new GetCoordinatesAction;
+it('returns null for invalid address', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Invalid Address That Does Not Exist';
 
     $mockResponse = [
@@ -112,10 +110,10 @@ it('returns null for invalid address', function(): void {
     Assert::assertNull($result);
 });
 
-it('returns null for over query limit status', function(): void {
-        $action = new GetCoordinatesAction;
+it('returns null for over query limit status', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     $mockResponse = [
@@ -135,10 +133,10 @@ it('returns null for over query limit status', function(): void {
     Assert::assertNull($result);
 });
 
-it('returns null for request denied status', function(): void {
-        $action = new GetCoordinatesAction;
+it('returns null for request denied status', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     $mockResponse = [
@@ -158,10 +156,10 @@ it('returns null for request denied status', function(): void {
     Assert::assertNull($result);
 });
 
-it('handles empty results array', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles empty results array', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     $mockResponse = [
@@ -181,10 +179,10 @@ it('handles empty results array', function(): void {
     Assert::assertNull($result);
 });
 
-it('handles multiple results and returns first', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles multiple results and returns first', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma, Italia';
     $expectedLatitude = 45.4642;
     $expectedLongitude = 9.1900;
@@ -225,10 +223,10 @@ it('handles multiple results and returns first', function(): void {
     Assert::assertSame($expectedLongitude, $result->longitude);
 });
 
-it('handles special characters in address', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles special characters in address', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia - Ufficio 4° piano';
     $expectedLatitude = 45.4642;
     $expectedLongitude = 9.1900;
@@ -260,10 +258,10 @@ it('handles special characters in address', function(): void {
     Assert::assertSame($address, $result->address);
 });
 
-it('handles numeric coordinates correctly', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles numeric coordinates correctly', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = '123 Main St, New York, NY';
     $expectedLatitude = 40.7128;
     $expectedLongitude = -74.0060;
@@ -296,10 +294,10 @@ it('handles numeric coordinates correctly', function(): void {
     Assert::assertSame($expectedLongitude, $result->longitude);
 });
 
-it('handles very long addresses', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles very long addresses', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = str_repeat('Via Roma 123, Milano, Italia - ', 50).'Ufficio 4° piano';
     $expectedLatitude = 45.4642;
     $expectedLongitude = 9.1900;
@@ -331,10 +329,10 @@ it('handles very long addresses', function(): void {
     Assert::assertSame($address, $result->address);
 });
 
-it('handles coordinates with high precision', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles coordinates with high precision', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Precise Location Test';
     $expectedLatitude = 45.4642034;
     $expectedLongitude = 9.1900001;
@@ -367,10 +365,10 @@ it('handles coordinates with high precision', function(): void {
     Assert::assertSame($expectedLongitude, $result->longitude);
 });
 
-it('handles network timeout gracefully', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles network timeout gracefully', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     Config::set('services.google.maps.key', 'test-api-key');
@@ -382,15 +380,15 @@ it('handles network timeout gracefully', function(): void {
     try {
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get coordinates from Google Maps API', $exception->getMessage());
     }
 });
 
-it('handles invalid json response', function(): void {
-        $action = new GetCoordinatesAction;
+it('handles invalid json response', function (): void {
+    $action = new GetCoordinatesAction();
 
-// Arrange
+    // Arrange
     $address = 'Via Roma 123, Milano, Italia';
 
     Config::set('services.google.maps.key', 'test-api-key');
@@ -399,5 +397,4 @@ it('handles invalid json response', function(): void {
     ]);
 
     // Act & Assert
-
 });

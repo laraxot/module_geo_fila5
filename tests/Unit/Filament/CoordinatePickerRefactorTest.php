@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
-use function Safe\file;
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use PHPUnit\Framework\Assert;
-use ReflectionMethod;
 
-function geoReadMethodBody(ReflectionMethod $ref): string
+use function Safe\file;
+
+function geoReadMethodBody(\ReflectionMethod $ref): string
 {
     $fileName = $ref->getFileName();
     Assert::assertNotFalse($fileName);
@@ -46,25 +46,25 @@ test('LatitudeLongitudeInput usa il trait HasCoordinatePicker', function (): voi
 });
 
 test('HasCoordinatePicker::setUpCoordinatePicker non chiama dehydrated', function (): void {
-    $ref = new ReflectionMethod(HasCoordinatePicker::class, 'setUpCoordinatePicker');
+    $ref = new \ReflectionMethod(HasCoordinatePicker::class, 'setUpCoordinatePicker');
 
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
 test('MapPicker::setUp chiama dehydrated', function (): void {
-    $ref = new ReflectionMethod(MapPicker::class, 'setUp');
+    $ref = new \ReflectionMethod(MapPicker::class, 'setUp');
 
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
 test('CoordinatePicker::setUp chiama dehydrated', function (): void {
-    $ref = new ReflectionMethod(CoordinatePicker::class, 'setUp');
+    $ref = new \ReflectionMethod(CoordinatePicker::class, 'setUp');
 
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
 test('LatitudeLongitudeInput::setUp NON chiama dehydrated', function (): void {
-    $ref = new ReflectionMethod(LatitudeLongitudeInput::class, 'setUp');
+    $ref = new \ReflectionMethod(LatitudeLongitudeInput::class, 'setUp');
 
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });

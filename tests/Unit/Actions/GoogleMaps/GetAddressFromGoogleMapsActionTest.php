@@ -4,76 +4,64 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\GoogleMaps\GetAddressFromGoogleMapsAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-it('throws exception when api key is not configured', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-config(['services.google.maps_api_key' => null]);
+it('throws exception when api key is not configured', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
+
+    config(['services.google.maps_api_key' => null]);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('API key non configurata', $exception->getMessage());
-
     }
 });
 
-it('throws exception when api key is empty', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+it('throws exception when api key is empty', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
 
-config(['services.google.maps_api_key' => '']);
+    config(['services.google.maps_api_key' => '']);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException) {
     }
 });
 
-it('throws exception when api response is not successful', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+it('throws exception when api response is not successful', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('Richiesta fallita', $exception->getMessage());
-
     }
 });
 
-it('throws exception when no results found', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+it('throws exception when no results found', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -82,22 +70,18 @@ config(['services.google.maps_api_key' => 'test_key']);
     ]);
 
     try {
-
         $action->execute('NonExistentPlace123');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('Nessun risultato', $exception->getMessage());
-
     }
 });
 
-it('returns address data for valid address', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+it('returns address data for valid address', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -150,10 +134,10 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('Lombardia', $result->state);
 });
 
-it('handles missing optional address components', function(): void {
-        $action = new GetAddressFromGoogleMapsAction;
+it('handles missing optional address components', function (): void {
+    $action = new GetAddressFromGoogleMapsAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([

@@ -18,7 +18,8 @@ uses(TestCase::class);
 /**
  * Build an in-memory address array with sane defaults.
  *
- * @param  array<string, mixed>  $overrides
+ * @param array<string, mixed> $overrides
+ *
  * @return array<string, mixed>
  */
 function makeAddress(array $overrides = []): array
@@ -52,7 +53,7 @@ function makeAddress(array $overrides = []): array
 /**
  * Compose a displayable full address from array parts.
  *
- * @param  array<string, mixed>  $address
+ * @param array<string, mixed> $address
  */
 function formatFullAddress(array $address): string
 {
@@ -89,7 +90,7 @@ describe('Address Integration', function () {
         Assert::assertTrue($address['is_primary']);
     });
 
-it('generates proper full address from components', function () {
+    it('generates proper full address from components', function () {
         $address = makeAddress([
             'route' => 'Via Giuseppe Verdi',
             'street_number' => '42',
@@ -107,7 +108,7 @@ it('generates proper full address from components', function () {
         Assert::assertStringContainsString('20121', $fullAddress);
     });
 
-it('handles geolocation data correctly', function () {
+    it('handles geolocation data correctly', function () {
         $milan = makeAddress([
             'latitude' => 45.4642,
             'longitude' => 9.1900,
@@ -117,7 +118,7 @@ it('handles geolocation data correctly', function () {
         Assert::assertSame(9.1900, $milan['longitude']);
     });
 
-it('can store Google Places API data', function () {
+    it('can store Google Places API data', function () {
         $address = makeAddress([
             'place_id' => 'ChIJu46S-ZZjhkcRLuFvLjVZ400',
             'formatted_address' => 'Piazza del Duomo, 20121 Milano MI, Italy',
@@ -137,7 +138,7 @@ it('can store Google Places API data', function () {
         Assert::assertSame(4.5, $extraData['rating']);
     });
 
-it('supports multiple addresses per entity', function () {
+    it('supports multiple addresses per entity', function () {
         $patient = ['id' => 2001, 'type' => 'patient'];
 
         $homeAddress = makeAddress([
@@ -160,7 +161,7 @@ it('supports multiple addresses per entity', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if ($addr['is_primary'] === true) {
+            if (true === $addr['is_primary']) {
                 $primary = $addr;
                 break;
             }
@@ -169,7 +170,7 @@ it('supports multiple addresses per entity', function () {
         Assert::assertSame($homeAddress['id'], $primary['id']);
     });
 
-it('handles soft deletion correctly', function () {
+    it('handles soft deletion correctly', function () {
         $address = makeAddress();
 
         $address['deleted_at'] = date('c');

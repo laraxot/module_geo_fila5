@@ -2,13 +2,10 @@
 
 declare(strict_types=1);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
+use PHPUnit\Framework\Assert;
 
-test('map picker resolves explicit coordinate fields', function(): void {
+test('map picker resolves explicit coordinate fields', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
         ->latitudeColumn('latitude')
@@ -34,7 +31,7 @@ test('map picker resolves explicit coordinate fields', function(): void {
     Assert::assertSame(12, $field->getZoom());
 });
 
-test('map picker accepts absolute coordinate paths', function(): void {
+test('map picker accepts absolute coordinate paths', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
         ->latitudeColumn('filters.latitude')
@@ -59,7 +56,7 @@ test('map picker accepts absolute coordinate paths', function(): void {
     Assert::assertFalse($field->hasReverseGeocoding());
 });
 
-test('map picker keeps bare coordinate paths at root level', function(): void {
+test('map picker keeps bare coordinate paths at root level', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('map_picker')
         ->latitudeColumn('latitude')

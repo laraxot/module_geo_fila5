@@ -45,7 +45,7 @@ class AddressesField extends Repeater
             return [];
         }
 
-        /** @var list<array<string, mixed>> $addresses */
+        /* @var list<array<string, mixed>> $addresses */
         return array_values($addresses);
     }
 

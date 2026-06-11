@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\DataTransferObjects;
 
-use PHPUnit\Framework\Assert;
-use ReflectionClass;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\DataTransferObjects\LocationDTO;
+use PHPUnit\Framework\Assert;
 
 describe('LocationDTO', function () {
     test('can be instantiated with required fields', function () {
@@ -25,7 +24,7 @@ describe('LocationDTO', function () {
         Assert::assertNull($dto->name);
     });
 
-test('can be instantiated with optional name', function () {
+    test('can be instantiated with optional name', function () {
         $dto = new LocationDTO(
             latitude: 41.9028,
             longitude: 12.4964,
@@ -35,7 +34,7 @@ test('can be instantiated with optional name', function () {
         Assert::assertSame('Rome', $dto->name);
     });
 
-test('fromLocationData creates instance from LocationData', function () {
+    test('fromLocationData creates instance from LocationData', function () {
         $locationData = new LocationData(
             latitude: 45.4654,
             longitude: 9.1866,
@@ -54,7 +53,7 @@ test('fromLocationData creates instance from LocationData', function () {
         Assert::assertSame('Milan', $dto->name);
     });
 
-test('toLocationData converts to LocationData instance', function () {
+    test('toLocationData converts to LocationData instance', function () {
         $dto = new LocationDTO(
             latitude: 45.4654,
             longitude: 9.1866,
@@ -74,14 +73,14 @@ test('toLocationData converts to LocationData instance', function () {
         Assert::assertNull($locationData->address);
     });
 
-test('properties are readonly via readonly class', function () {
+    test('properties are readonly via readonly class', function () {
         $dto = new LocationDTO(latitude: 41.9028, longitude: 12.4964);
-        $reflection = new ReflectionClass($dto);
+        $reflection = new \ReflectionClass($dto);
 
         Assert::assertTrue($reflection->isReadOnly());
     });
 
-test('round trip fromLocationData -> toLocationData preserves data', function () {
+    test('round trip fromLocationData -> toLocationData preserves data', function () {
         $original = new LocationData(
             latitude: 43.7696,
             longitude: 11.2558,
@@ -99,7 +98,7 @@ test('round trip fromLocationData -> toLocationData preserves data', function ()
         Assert::assertSame($original->name, $converted->name);
     });
 
-test('handles null name in LocationData', function () {
+    test('handles null name in LocationData', function () {
         $locationData = new LocationData(
             latitude: 41.9028,
             longitude: 12.4964,
