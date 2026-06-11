@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests;
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Modules\Geo\Providers\GeoServiceProvider;

@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use RuntimeException;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\RouteData;
-it('throws exception when api key is not configured', function(): void {
-        $action = new OptimizeRouteAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-config(['services.google.maps.key' => null]);
+it('throws exception when api key is not configured', function (): void {
+    $action = new OptimizeRouteAction();
+
+    config(['services.google.maps.key' => null]);
 
     $locations = [
         new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
@@ -28,22 +25,18 @@ config(['services.google.maps.key' => null]);
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
     try {
-
         $action->execute($locations, $origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('API key not found', $exception->getMessage());
-
     }
 });
 
-it('returns empty array for empty locations', function(): void {
-        $action = new OptimizeRouteAction;
+it('returns empty array for empty locations', function (): void {
+    $action = new OptimizeRouteAction();
 
-config(['services.google.maps.key' => 'test_key']);
+    config(['services.google.maps.key' => 'test_key']);
 
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
@@ -52,10 +45,10 @@ config(['services.google.maps.key' => 'test_key']);
     Assert::assertEmpty($result);
 });
 
-it('returns empty array when api returns no routes', function(): void {
-        $action = new OptimizeRouteAction;
+it('returns empty array when api returns no routes', function (): void {
+    $action = new OptimizeRouteAction();
 
-config(['services.google.maps.key' => 'test_key']);
+    config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['routes' => []], 200),
@@ -71,10 +64,10 @@ config(['services.google.maps.key' => 'test_key']);
     Assert::assertEmpty($result);
 });
 
-it('returns route data for valid request', function(): void {
-        $action = new OptimizeRouteAction;
+it('returns route data for valid request', function (): void {
+    $action = new OptimizeRouteAction();
 
-config(['services.google.maps.key' => 'test_key']);
+    config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -128,10 +121,10 @@ config(['services.google.maps.key' => 'test_key']);
     Assert::assertSame(36000, $result[0]->totalDuration);
 });
 
-it('throws exception when api request fails', function(): void {
-        $action = new OptimizeRouteAction;
+it('throws exception when api request fails', function (): void {
+    $action = new OptimizeRouteAction();
 
-config(['services.google.maps.key' => 'test_key']);
+    config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(null, 500),
@@ -144,14 +137,10 @@ config(['services.google.maps.key' => 'test_key']);
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
     try {
-
         $action->execute($locations, $origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get directions', $exception->getMessage());
-
     }
 });

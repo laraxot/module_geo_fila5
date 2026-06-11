@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
 test('address can be created', function (): void {
     $address = AddressFactory::new()->createOne();
 
@@ -22,7 +20,7 @@ test('address can be created', function (): void {
 });
 
 test('address has fillable attributes', function (): void {
-    $address = new Address;
+    $address = new Address();
     $fillable = $address->getFillable();
 
     Assert::assertContains('route', $fillable);
@@ -32,7 +30,7 @@ test('address has fillable attributes', function (): void {
 });
 
 test('address has casts defined', function (): void {
-    $address = new Address;
+    $address = new Address();
     $casts = $address->getCasts();
 
     Assert::assertArrayHasKey('latitude', $casts);
@@ -42,13 +40,13 @@ test('address has casts defined', function (): void {
 });
 
 test('address has proper table name', function (): void {
-    $address = new Address;
+    $address = new Address();
 
     Assert::assertSame('addresses', $address->getTable());
 });
 
 test('address morphs to parent model', function (): void {
-    $address = new Address;
+    $address = new Address();
 
     Assert::assertInstanceOf(MorphTo::class, $address->model());
     Assert::assertInstanceOf(MorphTo::class, $address->addressable());

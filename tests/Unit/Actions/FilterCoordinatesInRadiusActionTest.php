@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
+uses(TestCase::class);
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
@@ -44,7 +40,7 @@ final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixActi
         unset($origins, $destinations);
 
         $response = $this->responses[$this->callIndex] ?? [[]];
-        $this->callIndex++;
+        ++$this->callIndex;
 
         return $response;
     }

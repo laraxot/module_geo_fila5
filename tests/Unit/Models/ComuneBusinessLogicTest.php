@@ -6,14 +6,13 @@ namespace Modules\Geo\Tests\Unit\Models;
 
 uses(\Modules\Geo\Tests\TestCase::class);
 
-use function Safe\class_uses;
-
 use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Comune;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
+
+use function Safe\class_uses;
 
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
@@ -56,14 +55,14 @@ describe('Comune Business Logic', function () {
 
     test('comune has schema definition for structured geographic data', function () {
         $comune = new Comune();
-        $reflection = new ReflectionClass($comune);
+        $reflection = new \ReflectionClass($comune);
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
 
         $schema = $schemaProperty->getValue($comune);
         Assert::assertIsArray($schema);
-        /** @var array<string, mixed> $schema */
+        /* @var array<string, mixed> $schema */
         Assert::assertSame('json', $schema['zona']);
         Assert::assertSame('json', $schema['provincia']);
         Assert::assertSame('json', $schema['regione']);

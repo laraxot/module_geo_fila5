@@ -6,14 +6,14 @@ namespace Modules\Geo\Tests\Unit\Models;
 
 uses(\Modules\Geo\Tests\TestCase::class);
 
-use function Safe\class_uses;
-
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Province;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
+
+use function Safe\class_uses;
+
 use Sushi\Sushi;
 
 describe('Province Business Logic', function () {
@@ -35,14 +35,14 @@ describe('Province Business Logic', function () {
 
     test('province has schema definition for geographic hierarchy', function () {
         $province = new Province();
-        $reflection = new ReflectionClass($province);
+        $reflection = new \ReflectionClass($province);
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
 
         $schema = $schemaProperty->getValue($province);
         Assert::assertIsArray($schema);
-        /** @var array<string, mixed> $schema */
+        /* @var array<string, mixed> $schema */
         Assert::assertSame('integer', $schema['region_id']);
         Assert::assertSame('integer', $schema['id']);
         Assert::assertSame('string', $schema['name']);
