@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Traits\HasAddress;
 

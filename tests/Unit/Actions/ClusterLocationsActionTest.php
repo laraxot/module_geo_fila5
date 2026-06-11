@@ -10,9 +10,8 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use ReflectionMethod;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 /**
  * @internal
@@ -98,12 +97,9 @@ it('creates separate clusters for distant locations', function (): void {
     Assert::assertCount(1, $clusters[1]['points']);
 });
 
-/**
- * @param mixed $locations
- */
 function invokeClusterLocations(ClusterLocationsAction $action, mixed $locations, float $maxDistance = 1.0): mixed
 {
-    $method = new ReflectionMethod(ClusterLocationsAction::class, 'execute');
+    $method = new \ReflectionMethod(ClusterLocationsAction::class, 'execute');
 
     return $method->invoke($action, $locations, $maxDistance);
 }

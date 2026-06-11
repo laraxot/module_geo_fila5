@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Support;
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 

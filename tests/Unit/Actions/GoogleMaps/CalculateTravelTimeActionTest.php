@@ -4,54 +4,47 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use RuntimeException;
-use InvalidArgumentException;
-use function Safe\json_encode;
-use PHPUnit\Framework\Assert;
 use GuzzleHttp\Client;
-use Modules\Geo\Tests\LightTestCase;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\CalculateTravelTimeAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\TravelTimeData;
-it('throws exception when api key is not configured', function(): void {
-        $mockHandler = new MockHandler;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\json_encode;
+
+it('throws exception when api key is not configured', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => null]);
+    config(['services.google.maps_api_key' => null]);
 
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
     try {
-
         $action->execute($origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not configured', $exception->getMessage());
-
     }
 });
 
-it('throws exception when origin and destination are the same', function(): void {
-        $mockHandler = new MockHandler;
+it('throws exception when origin and destination are the same', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $location = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
 
@@ -59,13 +52,13 @@ config(['services.google.maps_api_key' => 'test_key']);
         ->toThrow(\InvalidArgumentException::class);
 });
 
-it('returns error travel time data for failed api request', function(): void {
-        $mockHandler = new MockHandler;
+it('returns error travel time data for failed api request', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(500, [], 'Server Error'));
 
@@ -79,13 +72,13 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('REQUEST_FAILED', $result->status);
 });
 
-it('returns error for invalid response status', function(): void {
-        $mockHandler = new MockHandler;
+it('returns error for invalid response status', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'INVALID_REQUEST',
@@ -101,13 +94,13 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('INVALID_RESPONSE', $result->status);
 });
 
-it('returns error when no route found', function(): void {
-        $mockHandler = new MockHandler;
+it('returns error when no route found', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
@@ -128,13 +121,13 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('NO_ROUTE', $result->status);
 });
 
-it('returns travel time data for valid route', function(): void {
-        $mockHandler = new MockHandler;
+it('returns travel time data for valid route', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
@@ -167,13 +160,13 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('OK', $result->status);
 });
 
-it('uses duration as fallback for duration in traffic', function(): void {
-        $mockHandler = new MockHandler;
+it('uses duration as fallback for duration in traffic', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'status' => 'OK',
