@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use function Safe\file_get_contents;
+uses(LightTestCase::class);
 
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 use ReflectionClass;
+
+use function Safe\file_get_contents;
 
 test('geo map widget blade renders dataset powered custom element without inline asset tag', function (): void {
     $html = file_get_contents(__DIR__.'/../../../resources/views/filament/widgets/geo-map-widget.blade.php');

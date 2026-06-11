@@ -4,18 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Elevation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Exception;
-use InvalidArgumentException;
 use Modules\Geo\Actions\Elevation\GetElevationAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
+
 /**
  * @internal
  */
@@ -35,7 +32,7 @@ final class GoogleMapsServiceElevationStub extends GoogleMapsService
      */
     public function getElevation(float $latitude, float $longitude): array
     {
-        if ($this->exception !== null) {
+        if (null !== $this->exception) {
             throw $this->exception;
         }
 
@@ -70,7 +67,7 @@ it('throws exception for invalid latitude', function (): void {
     try {
         $action->execute(new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'));
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
     }
 });
@@ -81,7 +78,7 @@ it('throws exception for invalid longitude', function (): void {
     try {
         $action->execute(new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Invalid Location'));
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
     }
 });
@@ -92,7 +89,7 @@ it('throws exception for negative latitude', function (): void {
     try {
         $action->execute(new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'));
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
     }
 });
@@ -103,7 +100,7 @@ it('throws exception for negative longitude', function (): void {
     try {
         $action->execute(new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Invalid Location'));
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
     }
 });
@@ -131,7 +128,7 @@ it('throws exception for invalid response structure', function (): void {
 });
 
 it('throws exception when service throws generic exception', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub([], new Exception('Network error')));
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub([], new \Exception('Network error')));
 
     try {
         $action->execute(new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'));

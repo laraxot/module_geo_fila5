@@ -4,25 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Services;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use ReflectionClass;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
-it('can be instantiated', function(): void {
-        $service = new GoogleMapsService;
+use PHPUnit\Framework\Assert;
 
-Assert::assertInstanceOf(GoogleMapsService::class, $service);
+it('can be instantiated', function (): void {
+    $service = new GoogleMapsService();
+
+    Assert::assertInstanceOf(GoogleMapsService::class, $service);
 });
 
-it('has correct constants defined', function(): void {
-        $service = new GoogleMapsService;
+it('has correct constants defined', function (): void {
+    $service = new GoogleMapsService();
 
-$reflection = new ReflectionClass(GoogleMapsService::class);
+    $reflection = new \ReflectionClass(GoogleMapsService::class);
     Assert::assertTrue($reflection->hasConstant('GEOCODING_URL'));
     Assert::assertTrue($reflection->hasConstant('DISTANCE_MATRIX_URL'));
     Assert::assertTrue($reflection->hasConstant('ELEVATION_URL'));
@@ -33,7 +30,6 @@ $reflection = new ReflectionClass(GoogleMapsService::class);
     Assert::assertSame('https://maps.googleapis.com/maps/api/elevation/json', $reflection->getConstant('ELEVATION_URL'));
 });
 
-it('has required methods', function(): void {
-        $service = new GoogleMapsService;
-
-        });
+it('has required methods', function (): void {
+    $service = new GoogleMapsService();
+});

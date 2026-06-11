@@ -8,14 +8,12 @@ use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Geo\Models\Comune;
 use Modules\Geo\Models\Region;
-use Modules\Geo\Tests\TestCase;
 
 /*
  * |--------------------------------------------------------------------------
  * | Test Case
  * |--------------------------------------------------------------------------
  */
-
 
 /*
  * |--------------------------------------------------------------------------
@@ -48,6 +46,6 @@ function createComune(array $attributes = []): Comune
  */
 function typedMock(string $class): MockInterface
 {
-    /** @var T&MockInterface */
+    /* @var T&MockInterface */
     return Mockery::mock($class);
 }

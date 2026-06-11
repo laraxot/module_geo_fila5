@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Exception;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Actions\ClusterLocationsAction;
 use Modules\Geo\Actions\FormatCoordinatesAction;
 use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
@@ -17,12 +13,14 @@ use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Actions\UpdateCoordinatesAction;
 use Modules\Geo\Actions\ValidateCoordinatesAction;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
 test('UpdateCoordinatesAction can be instantiated', function () {
     // Wrap in try-catch to handle any dependency issues
     try {
         $action = app(UpdateCoordinatesAction::class);
         Assert::assertInstanceOf(UpdateCoordinatesAction::class, $action);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         // If there are dependency issues, check if the class exists
         Assert::assertTrue(class_exists(UpdateCoordinatesAction::class));
     }
@@ -32,7 +30,7 @@ test('ClusterLocationsAction can be instantiated', function () {
     try {
         $action = app(ClusterLocationsAction::class);
         Assert::assertInstanceOf(ClusterLocationsAction::class, $action);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         // If there are dependency issues, check if the class exists
         Assert::assertTrue(class_exists(ClusterLocationsAction::class));
     }
@@ -48,7 +46,7 @@ test('OptimizeRouteAction can be instantiated', function () {
     try {
         $action = app(OptimizeRouteAction::class);
         Assert::assertInstanceOf(OptimizeRouteAction::class, $action);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
         // If there are dependency issues, check if the class exists
         Assert::assertTrue(class_exists(OptimizeRouteAction::class));
     }

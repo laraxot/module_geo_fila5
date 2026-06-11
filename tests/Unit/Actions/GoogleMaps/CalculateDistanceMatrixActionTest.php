@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use PHPUnit\Framework\Assert;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-it('throws exception when google maps api key is not configured', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-config(['services.google.maps_api_key' => null]);
+it('throws exception when google maps api key is not configured', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => null]);
 
     $origins = collect([
         new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
@@ -29,22 +27,18 @@ config(['services.google.maps_api_key' => null]);
     ]);
 
     try {
-
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('API key non configurata', $exception->getMessage());
-
     }
 });
 
-it('throws exception when api key is empty string', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('throws exception when api key is empty string', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => '']);
+    config(['services.google.maps_api_key' => '']);
 
     $origins = collect([
         new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
@@ -55,19 +49,17 @@ config(['services.google.maps_api_key' => '']);
     ]);
 
     try {
-
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException) {
     }
 });
 
-it('throws exception when api response is not successful', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('throws exception when api response is not successful', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['status' => 'REQUEST_DENIED'], 403),
@@ -82,22 +74,18 @@ config(['services.google.maps_api_key' => 'test_key']);
     ]);
 
     try {
-
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('Richiesta fallita', $exception->getMessage());
-
     }
 });
 
-it('throws exception when response status is not OK', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('throws exception when response status is not OK', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['status' => 'ZERO_RESULTS'], 200),
@@ -112,22 +100,18 @@ config(['services.google.maps_api_key' => 'test_key']);
     ]);
 
     try {
-
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('Stato della risposta non valido', $exception->getMessage());
-
     }
 });
 
-it('throws exception when response has no rows', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('throws exception when response has no rows', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['status' => 'OK', 'rows' => []], 200),
@@ -142,22 +126,18 @@ config(['services.google.maps_api_key' => 'test_key']);
     ]);
 
     try {
-
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
-
     } catch (GoogleMapsApiException $exception) {
-
         Assert::assertSame('Nessun risultato', $exception->getMessage());
-
     }
 });
 
-it('returns distance matrix for valid locations', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('returns distance matrix for valid locations', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -192,10 +172,10 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame('OK', $result[0][0]['status']);
 });
 
-it('handles multiple origins and destinations', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('handles multiple origins and destinations', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -239,10 +219,10 @@ config(['services.google.maps_api_key' => 'test_key']);
     Assert::assertSame(250000, $result[1][1]['distance']['value']);
 });
 
-it('handles zero results status', function(): void {
-        $action = new CalculateDistanceMatrixAction;
+it('handles zero results status', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-config(['services.google.maps_api_key' => 'test_key']);
+    config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([

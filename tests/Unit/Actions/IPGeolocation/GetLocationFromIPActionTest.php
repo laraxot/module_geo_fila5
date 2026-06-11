@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\IPLocationData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use RuntimeException;
 
 it('delegates to fetch action and returns result', function (): void {
     $fetchAction = new FetchIPLocationReturningStub(new IPLocationData(
@@ -35,13 +34,13 @@ it('delegates to fetch action and returns result', function (): void {
 });
 
 it('propagates exception when fetch action throws', function (): void {
-    $fetchAction = new FetchIPLocationThrowingStub(new RuntimeException('not found'));
+    $fetchAction = new FetchIPLocationThrowingStub(new \RuntimeException('not found'));
     $action = new GetLocationFromIPAction($fetchAction);
 
     try {
         $action->execute('192.168.1.1');
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('not found', $exception->getMessage());
     }
 });
@@ -68,7 +67,7 @@ final class FetchIPLocationReturningStub extends FetchIPLocationAction
 final class FetchIPLocationThrowingStub extends FetchIPLocationAction
 {
     public function __construct(
-        private readonly RuntimeException $exception,
+        private readonly \RuntimeException $exception,
     ) {
     }
 

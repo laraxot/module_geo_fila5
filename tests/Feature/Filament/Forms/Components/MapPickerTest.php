@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Feature\Filament\Forms\Components;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
