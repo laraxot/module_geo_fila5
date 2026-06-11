@@ -117,6 +117,9 @@ readonly class GetGeocodingDataAction
             return GeocodingData::error($data['status']);
         }
 
-        return GeocodingData::fromGoogleResponse($data);
+        return GeocodingData::fromGoogleResponse([
+            'status' => $data['status'],
+            'results' => $data['results'],
+        ]);
     }
 }

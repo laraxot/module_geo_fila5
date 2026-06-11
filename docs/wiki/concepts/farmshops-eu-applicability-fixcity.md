@@ -10,9 +10,9 @@ sources:
   - ./geo-map-widget-farmshops-pattern.md
   - ../../../farmshops-integration-analysis.md
 confidence: high
-updated: 2026-05-29
+updated: 2026-06-10
 related:
-  - ../../../../Fixcity/docs/wiki/concepts/segnalazioni-elenco-map-architecture.md
+  - ../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md
   - ../../../../../docs/stories/STORY-064-farmshops-eu-study-second-brain.md
 ---
 
@@ -26,7 +26,7 @@ Documenti correlati (non duplicare qui l’analisi lunga):
 
 - [geo-map-widget-farmshops-pattern.md](./geo-map-widget-farmshops-pattern.md) — decisione architetturale Geo
 - [farmshops-integration-analysis.md](../../../farmshops-integration-analysis.md) — analisi estesa
-- [segnalazioni-elenco-map-architecture.md](../../../../Fixcity/docs/wiki/concepts/segnalazioni-elenco-map-architecture.md) — flusso `tickets.json` + `map-lit`
+- [ticket-list-map-architecture.md](../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md) — flusso `tickets.json` + `map-lit`
 
 ## Architettura farmshops (verificata su repo)
 
@@ -102,3 +102,21 @@ Verificato su `/it` dopo allineamento a [direktvermarkter.js](https://github.com
 | `removeOutsideVisibleBounds` | `false` su Fixcity | GPS lontano da ticket — STORY-124 |
 
 Incidenti: [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md)
+
+---
+
+## Aggiornamento 2026-06-10 — confronto fine sorgente + verifica empirica popup
+
+Studio architettura BMAD: `_bmad-output/architecture-map-farmshops-parity-2026-06-10.md` (decisioni A1–A5 con trade-off e traceability — non duplicare qui).
+
+**CSS farmshops verificato** (`css/style.css`): `#offen` verde / `#geschlossen` rosso; `a.button` blu `#4ca7ce`; `.leaflet-popup-content-wrapper` border-radius 0, Verdana 10px; resize popup su `popupopen` con `maxHeight = 0.8 * mapH`, `maxWidth = 0.95 * mapW` (Fixcity: 0.4 / 0.9).
+
+**Difetti reali misurati live su `/it`** (Puppeteer, non parity gap):
+
+| # | Difetto | Misura | Fix (vedi doc BMAD) |
+|---|---------|--------|---------------------|
+| 1 | Controlli custom coprono il popup aperto | `.layer-controls-overlay` z-index 3001 > popup pane 700 | A1 — `autoPanPaddingTopLeft` |
+| 2 | Badge stato sovrapposto al titolo nell'header popup | header 440px, titolo senza riserva spazio badge+close | A2 — header flex + line-clamp |
+| 3 | Popup vuoto se aperto via `openPopup()` programmatico | contentLen 0 (fill solo su `click`, come farmshops `once("click")`) | A3 — fill su `popupopen` |
+
+Confermato: marker Fixcity (colore=stato + glifo=tipo) già **superiore** a farmshops (solo tipo); cluster già parity — non toccare (vedi sezione 2026-06 sopra).

@@ -33,7 +33,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null          $deleted_at
  * @property string|null          $deleted_by
  * @property ProfileContract|null $creator
- * @property array                $location
+ * @property array{lat: float|null, lng: float|null} $location
  * @property ProfileContract|null $updater
  *
  * @method static Builder<static>|Location newModelQuery()
@@ -88,6 +88,9 @@ class Location extends BaseModel
     /**
      * Get the latitude and longitude attributes.
      */
+    /**
+     * @return array<string, string>
+     */
     public static function getLatLngAttributes(): array
     {
         return [
@@ -106,6 +109,11 @@ class Location extends BaseModel
 
     /**
      * Scope to filter by a specific distance from a given point.
+     */
+    /**
+     * @param Builder<static> $query
+     *
+     * @return Builder<static>
      */
     public function scopeWithinDistance(Builder $query, float $latitude, float $longitude, float $distanceInKm): Builder
     {
@@ -131,6 +139,9 @@ class Location extends BaseModel
 
     /**
      * Accessor for the "location" attribute.
+     */
+    /**
+     * @return Attribute<array<string, mixed>, array<string, mixed>|null>
      */
     protected function location(): Attribute
     {

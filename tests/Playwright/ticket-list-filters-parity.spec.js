@@ -2,11 +2,11 @@ import { test, expect } from '@playwright/test';
 
 /**
  * STORY-053 — facet sidebar vs tickets.json (SSoT mappa).
- * URL canonica post STORY-092: /it/tests/segnalazioni-elenco.
+ * URL canonica post STORY-092: /it/tests/ticket-list.
  */
 test.describe('Segnalazioni elenco — filtri facet da tickets.json', () => {
   test.beforeEach(async ({ page }) => {
-    const response = await page.goto('http://127.0.0.1:8000/it/tests/segnalazioni-elenco', {
+    const response = await page.goto('http://127.0.0.1:8000/it/tests/ticket-list', {
       waitUntil: 'domcontentloaded',
       timeout: 30000,
     });

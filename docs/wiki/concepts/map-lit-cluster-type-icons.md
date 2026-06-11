@@ -2,7 +2,9 @@
 
 ## Scopo
 
-Nei cluster zoom ≥ 8 mostrare **diversità tipologica** con pallini colore piccoli (pattern farmshops), senza iniettare SVG Heroicon grezzi (es. trash) che il CSS globale del tema può ingrandire.
+Nei cluster zoom ≥ 8 mostrare **diversità tipologica** con **icone tipo** (`iconUrl` da `TicketTypeEnum`, come [farmshops.eu](https://github.com/CodeforKarlsruhe/farmshops.eu) mostra farm/market/automat), non colori **stato**.
+
+**Gap 2026-06-06:** `_createClusterIcon` usa ancora `statusColor` — vedi [farmshops-cluster-type-icons-study.md](./farmshops-cluster-type-icons-study.md) e STORY-284.
 
 ## Sintomo (#12 / #13)
 

@@ -29,7 +29,7 @@ import { renderSearch, searchUiHandlers } from './map/controls/search.js';
 import { buildMapLayers } from './map/layers.js';
 import { mapStylesText } from './map/styles.js';
 import { createGeoMapLeafletIcon, markerCardStylesText } from './map/config.js';
-import { buildClusterTypeDotHtml } from './map/icon-glyph.js';
+import { buildClusterTypeTileHtml } from './map/icon-glyph.js';
 import { resolveFeatureTicketType } from './map/feature-type.js';
 import { resolveFeatureTicketStatus } from './map/feature-status.js';
 import {
@@ -260,11 +260,21 @@ class MapLit extends LitElement {
         }
 
         this._map.on('popupopen', (e) => {
-            const mapW = this._map.getContainer().clientWidth;
+            const container = this._map.getContainer();
+            const mapW = container.clientWidth;
+            const mapH = container.clientHeight;
+            // farmshops.eu: maxHeight 0.8 × mappa, maxWidth 0.95 × mappa
             e.popup.options.maxWidth = Math.floor(mapW * 0.95);
-            e.popup.options.maxHeight = null;
+            e.popup.options.maxHeight = Math.floor(mapH * 0.8);
             e.popup.update();
             this._wirePopupActions(e.popup);
+        });
+
+        // farmshops.eu: LOD cluster (conteggio vs icone tipo) si aggiorna al cambio zoom
+        this._map.on('zoomend', () => {
+            if (typeof this._markersLayer?.refreshClusters === 'function') {
+                this._markersLayer.refreshClusters();
+            }
         });
 
         this._setupMutationObserver();
@@ -373,15 +383,20 @@ class MapLit extends LitElement {
         const clusterSize = L.point(80, 80);
 
         if (zoom >= 8) {
-            const statusesPresent = {};
-            markers.forEach(m => {
-                const s = m.options.statusValue;
-                if (s && !statusesPresent[s]) {
-                    statusesPresent[s] = m.options.statusColor || '#607d8b';
+            const typeByValue = new Map();
+            markers.forEach((m) => {
+                const value = m.options.typeValue;
+                if (!value || typeByValue.has(value)) {
+                    return;
                 }
+                typeByValue.set(value, {
+                    iconUrl: m.options.typeIconUrl,
+                    label: m.options.typeLabel,
+                });
             });
-            const icons = Object.entries(statusesPresent)
-                .map(([, color]) => buildClusterTypeDotHtml(color))
+            const icons = [...typeByValue.values()]
+                .slice(0, 4)
+                .map((t) => buildClusterTypeTileHtml(t.iconUrl, t.label, 16))
                 .join('');
 
             return L.divIcon({
@@ -745,8 +760,16 @@ class MapLit extends LitElement {
             }
 
             const showPopup = (detail) => {
+                if (detail) {
+                    layer._geoDetailCache = detail;
+                }
                 this._openFeaturePopup(layer, p, ticketType, ticketStatus, detail, coords);
             };
+
+            if (layer._geoDetailCache) {
+                showPopup(layer._geoDetailCache);
+                return;
+            }
 
             if (p.id) {
                 this._openFeaturePopupLoading(layer, ticketType, ticketStatus);
@@ -895,7 +918,8 @@ class MapLit extends LitElement {
             return;
         }
 
-        if (this.getAttribute('legend-mode') === 'sidebar') {
+        const legendMode = (this.getAttribute('legend-mode') || 'off').toLowerCase();
+        if (legendMode === 'off' || legendMode === 'sidebar') {
             if (this._legendControl) {
                 this._map.removeControl(this._legendControl);
                 this._legendControl = null;

@@ -55,6 +55,9 @@ class GetAddressFromMapboxLatLngAction
         return $apiKey;
     }
 
+    /**
+     * @return array<mixed>
+     */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
         $response = Http::get(self::BASE_URL."/{$longitude},{$latitude}.json", [
@@ -83,6 +86,9 @@ class GetAddressFromMapboxLatLngAction
         return $data;
     }
 
+    /**
+     * @param array<mixed> $response
+     */
     private function parseResponse(array $response): MapboxMapData
     {
         /** @var array<int, array{center?: array{float, float}, text?: string, address?: string, context?: array<int, array{id?: string, text?: string, short_code?: string}>}> $features */

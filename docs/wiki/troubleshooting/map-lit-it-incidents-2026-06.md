@@ -10,7 +10,7 @@ Second brain operativo per STORY-121/122/123/124: mappa elenco segnalazioni, clu
 
 | Pezzo | Valore |
 |-------|--------|
-| Pagina | `/it` / `/it/#` (`data-page=segnalazioni-elenco`) |
+| Pagina | `/it` / `/it/#` (`data-page=ticket-list`) |
 | Componente | `<map-lit id="block-map" data-url="/data/tickets.json">` |
 | SSoT JSON | `public_html/data/tickets.json` (mappa + facet filtri sidebar) |
 | Filtri | `SegnalazioniFilterViewModel` ← stesso JSON; pin + `iconUrl` in sidebar (STORY-127) |

@@ -6,6 +6,9 @@ namespace Modules\Geo\Actions;
 
 class GetBoundingBoxAction
 {
+    /**
+     * @return array<string, float>
+     */
     public function execute(float $latitude, float $longitude, float $distanceKm): array
     {
         $earthRadius = 6371; // km

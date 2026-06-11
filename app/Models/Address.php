@@ -120,6 +120,8 @@ class Address extends BaseModel
 
     /**
      * Get the parent model.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function model(): MorphTo
     {
@@ -128,6 +130,8 @@ class Address extends BaseModel
 
     /**
      * Relazione polimorfica (alternativa con nome più descrittivo).
+     *
+     * @return MorphTo<Model, $this>
      */
     public function addressable(): MorphTo
     {
@@ -164,15 +168,16 @@ class Address extends BaseModel
      * return $this->belongsTo(Regione::class, 'administrative_area_level_1', 'name');
      * }
      */
+    /**
+     * @return array{codice: mixed, nome: mixed}|null
+     */
     public function getRegione(): ?array
     {
-        /** @phpstan-ignore method.unresolvableReturnType */
         $res = Comune::select('regione')
             ->distinct()
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            /* @phpstan-ignore argument.unresolvableType */
             ->map(function ($item) {
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
@@ -186,32 +191,42 @@ class Address extends BaseModel
         return $res->first();
     }
 
+    /**
+     * @return array{codice: string, nome: string}|null
+     */
     public function getProvincia(): ?array
     {
-        /** @phpstan-ignore method.unresolvableReturnType */
         $res = Comune::select('provincia')
             ->distinct()
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-            /* @phpstan-ignore argument.unresolvableType */
-            ->map(fn ($item) => [
-                /* @phpstan-ignore offsetAccess.notFound */
-                'codice' => $item->provincia['codice'],
-                /* @phpstan-ignore offsetAccess.notFound */
-                'nome' => $item->provincia['nome'],
-            ]);
+            ->map(function ($item): array {
+                $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
+
+                return [
+                    'codice' => is_string($provincia['codice'] ?? null) ? $provincia['codice'] : '',
+                    'nome' => is_string($provincia['nome'] ?? null) ? $provincia['nome'] : '',
+                ];
+            });
 
         return $res->first();
     }
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getLocality(): ?array
     {
-        /* @phpstan-ignore-next-line */
-        return Comune::where('codice', $this->locality)
+        $comune = Comune::where('codice', $this->locality)
             ->distinct()
-            ->first()
-            ?->toArray();
+            ->first();
+
+        if (null === $comune) {
+            return null;
+        }
+
+        return $comune->attributesToArray();
     }
 
     /**
@@ -374,6 +389,11 @@ class Address extends BaseModel
     /**
      * Scope per cercare indirizzi nelle vicinanze.
      */
+    /**
+     * @param Builder<static> $query
+     *
+     * @return Builder<static>
+     */
     public function scopeNearby(Builder $query, float $latitude, float $longitude, float $radiusKm = 10): Builder
     {
         return $query
@@ -388,6 +408,11 @@ class Address extends BaseModel
     /**
      * Scope a query to only include primary addresses.
      */
+    /**
+     * @param Builder<static> $query
+     *
+     * @return Builder<static>
+     */
     public function scopePrimary(Builder $query): Builder
     {
         return $query->where('is_primary', true);
@@ -395,6 +420,11 @@ class Address extends BaseModel
 
     /**
      * Scope a query to filter by address type.
+     */
+    /**
+     * @param Builder<static> $query
+     *
+     * @return Builder<static>
      */
     public function scopeOfType(Builder $query, string|AddressTypeEnum $type): Builder
     {

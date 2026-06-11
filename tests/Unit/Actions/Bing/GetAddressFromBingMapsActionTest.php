@@ -4,62 +4,84 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Bing;
 
+uses(\Modules\Geo\Tests\LightTestCase::class);
+
+use Exception;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Assert;
 use Modules\Geo\Actions\Bing\GetAddressFromBingMapsAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
-
-it('throws exception when api key is not configured', function (): void {
+it('throws exception when api key is not configured', function(): void {
     config(['services.bing.maps_api_key' => null]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'API key di Bing Maps non configurata');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('API key di Bing Maps non configurata', $exception->getMessage());
+    }
 });
 
-it('throws exception for invalid latitude range', function (): void {
+it('throws exception for invalid latitude range', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(91.0, 9.1900))
-        ->toThrow(InvalidLocationException::class);
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(91.0, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException) {
+    }
 });
 
-it('throws exception for invalid longitude range', function (): void {
+it('throws exception for invalid longitude range', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.0, 181.0))
-        ->toThrow(InvalidLocationException::class);
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.0, 181.0);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException) {
+    }
 });
 
-it('throws exception when api response is not successful', function (): void {
+it('throws exception when api response is not successful', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Richiesta a Bing Maps fallita');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Richiesta a Bing Maps fallita', $exception->getMessage());
+    }
 });
 
-it('throws exception when api response is not valid json', function (): void {
+it('throws exception when api response is not valid json', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response('not valid json', 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Risposta JSON non valida');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Risposta JSON non valida', $exception->getMessage());
+    }
 });
 
-it('throws exception when no results in response', function (): void {
+it('throws exception when no results in response', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -70,12 +92,16 @@ it('throws exception when no results in response', function (): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Nessun risultato trovato');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Nessun risultato trovato', $exception->getMessage());
+    }
 });
 
-it('throws exception when point is missing in response', function (): void {
+it('throws exception when point is missing in response', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -88,12 +114,16 @@ it('throws exception when point is missing in response', function (): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Point mancante');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Point mancante', $exception->getMessage());
+    }
 });
 
-it('throws exception when coordinates are missing in response', function (): void {
+it('throws exception when coordinates are missing in response', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -107,12 +137,16 @@ it('throws exception when coordinates are missing in response', function (): voi
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Coordinate mancanti');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Coordinate mancanti', $exception->getMessage());
+    }
 });
 
-it('throws exception when address is missing in response', function (): void {
+it('throws exception when address is missing in response', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -125,12 +159,16 @@ it('throws exception when address is missing in response', function (): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(InvalidLocationException::class, 'Indirizzo mancante');
+    $action = new GetAddressFromBingMapsAction;
+    try {
+        $action->execute(45.4642, 9.1900);
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('Indirizzo mancante', $exception->getMessage());
+    }
 });
 
-it('returns address data for valid coordinates', function (): void {
+it('returns address data for valid coordinates', function(): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -152,17 +190,24 @@ it('returns address data for valid coordinates', function (): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction();
+    $action = new GetAddressFromBingMapsAction;
     $result = $action->execute(45.4642, 9.1900);
 
-    expect($result)
-        ->toBeInstanceOf(AddressData::class)
-        ->and($result->latitude)->toBe(45.4642)
-        ->and($result->longitude)->toBe(9.1900)
-        ->and($result->country)->toBe('Italia')
-        ->and($result->city)->toBe('Milano')
-        ->and($result->postal_code)->toBe('20100')
-        ->and($result->street)->toBe('Via Roma 1')
-        ->and($result->state)->toBe('Lombardia')
-        ->and($result->country_code)->toBe('IT');
+    Assert::assertInstanceOf(AddressData::class, $result);
+
+    Assert::assertSame(45.4642, $result->latitude);
+
+    Assert::assertSame(9.1900, $result->longitude);
+
+    Assert::assertSame('Italia', $result->country);
+
+    Assert::assertSame('Milano', $result->city);
+
+    Assert::assertSame('20100', $result->postal_code);
+
+    Assert::assertSame('Via Roma 1', $result->street);
+
+    Assert::assertSame('Lombardia', $result->state);
+
+    Assert::assertSame('IT', $result->country_code);
 });

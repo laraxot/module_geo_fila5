@@ -18,7 +18,7 @@ Audience: Developers implementing or maintaining the map widget
 12. ZERO L.geoJson wrapper — create markers directly, add to cluster group
 
 --- Architecture & Design ---
-Goal: Align /it/tests/segnalazioni-elenco with Design Comuni reference.
+Goal: Align /it/tests/ticket-list with Design Comuni reference.
 Reference: farmshops.eu direktvermarkter.js
 
 Components:
