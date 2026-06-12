@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-uses(LightTestCase::class);
+namespace Modules\Geo\Tests\Unit\Filament\Widgets;
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 use Filament\Widgets\Widget;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;

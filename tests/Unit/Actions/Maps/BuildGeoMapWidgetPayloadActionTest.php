@@ -10,7 +10,7 @@ use Modules\Geo\Models\PlaceType;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-uses(LightTestCase::class);
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 test('build geo map widget payload action returns widget data contract', function () {
     $placeType = new PlaceType();

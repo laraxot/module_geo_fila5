@@ -8,9 +8,9 @@ use Modules\Geo\Models\Comune;
 use Modules\Geo\Models\Region;
 
 /*
- * |--------------------------------------------------------------------------
- * | Test Case
- * |--------------------------------------------------------------------------
+ * Bootstrap Pest — modulo Geo.
+ * Ogni file test dichiara uses(\Modules\Geo\Tests\TestCase::class) o LightTestCase/UnitTestCase FQCN.
+ * Vietato uses()->in() qui (PHPStan method.internalClass).
  */
 
 /*

@@ -7,7 +7,7 @@ use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 use ReflectionClass;
 
-uses(LightTestCase::class);
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 use function Safe\file_get_contents;
 
