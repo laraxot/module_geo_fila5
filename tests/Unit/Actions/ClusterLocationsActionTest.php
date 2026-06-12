@@ -11,7 +11,7 @@ use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 /**
  * @internal
