@@ -8,7 +8,7 @@ use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-uses(LightTestCase::class);
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
