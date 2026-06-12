@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(TestCase::class);
+uses(\Modules\Geo\Tests\TestCase::class);
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +23,7 @@ describe('Location Business Logic', function () {
     });
 
     test('location has factory trait for testing', function () {
-        $traits = class_uses(TestCase::class);
+        $traits = class_uses(\Modules\Geo\Tests\TestCase::class);
 
         Assert::assertArrayHasKey(HasFactory::class, $traits);
     });

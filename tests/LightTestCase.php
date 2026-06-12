@@ -7,9 +7,9 @@ namespace Modules\Geo\Tests;
 use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
- * @property object|null $action
+ * LightTestCase - Base test class for Geo module.
+ * Extends XotBaseTestCase for common test functionality.
  */
 abstract class LightTestCase extends XotBaseTestCase
 {
-    public ?object $action = null;
 }

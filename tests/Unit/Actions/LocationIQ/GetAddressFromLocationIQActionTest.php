@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\LocationIQ;
 
-uses(LightTestCase::class);
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\LocationIQ\GetAddressFromLocationIQAction;

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Feature\Filament\Forms\Components;
 
-uses(LightTestCase::class);
-
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
+
+uses(LightTestCase::class);
 
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');

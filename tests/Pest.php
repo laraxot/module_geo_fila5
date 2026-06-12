@@ -44,8 +44,10 @@ function createComune(array $attributes = []): Comune
  *
  * @return T&MockInterface
  */
-function typedMock(string $class): MockInterface
+function typedMock(string $class)
 {
-    /* @var T&MockInterface */
-    return Mockery::mock($class);
+    /** @var T&MockInterface */
+    $mock = Mockery::mock($class);
+
+    return $mock;
 }
