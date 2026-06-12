@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Mockery;
-use Mockery\MockInterface;
 use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Geo\Models\Comune;
@@ -35,19 +33,4 @@ function createRegion(array $attributes = []): Region
 function createComune(array $attributes = []): Comune
 {
     return ComuneFactory::new()->createOne($attributes);
-}
-
-/**
- * @template T of object
- *
- * @param class-string<T> $class
- *
- * @return T&MockInterface
- */
-function typedMock(string $class)
-{
-    /** @var T&MockInterface */
-    $mock = Mockery::mock($class);
-
-    return $mock;
 }

@@ -7,7 +7,7 @@ use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 use ReflectionClass;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
 use function Safe\file_get_contents;
 
@@ -23,7 +23,7 @@ test('geo map widget blade renders dataset powered custom element without inline
 
 test('geo map widget uses the expected blade view', function (): void {
     $widget = new GeoMapWidget();
-    $reflection = new ReflectionClass($widget);
+    $reflection = new \ReflectionClass($widget);
     $property = $reflection->getProperty('view');
     $property->setAccessible(true);
 
