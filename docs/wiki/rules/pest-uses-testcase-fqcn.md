@@ -12,7 +12,7 @@ discussions:
 related:
   - ../../../../docs/wiki/rules/testing-modules-pest.md
   - ../../../../docs/wiki/PHPSTAN-INDEX.md
-  - ../concepts/module-testcase-xotbase-hierarchy.md
+  - ../../../Xot/docs/wiki/rules/module-testcase-xotbase-hierarchy.md
 ---
 
 # Pest `uses()` — FQCN obbligatorio
