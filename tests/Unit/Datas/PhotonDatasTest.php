@@ -11,8 +11,7 @@ use Modules\Geo\Datas\Photon\PhotonResponseData;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 test('PhotonAddressData can be instantiated', function (): void {
     $address = PhotonAddressData::from([
         'city' => 'Rome',

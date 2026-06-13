@@ -12,7 +12,7 @@ use Modules\Geo\Services\GoogleMapsService;
 final class GoogleMapsServiceElevationStub extends GoogleMapsService
 {
     /**
-     * @param  array<string, mixed>  $elevationResponse
+     * @param array<string, mixed> $elevationResponse
      */
     public function __construct(
         private array $elevationResponse = [],

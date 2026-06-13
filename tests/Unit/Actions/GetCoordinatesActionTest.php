@@ -12,8 +12,7 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('returns coordinates for valid address', function (): void {
     $action = new GetCoordinatesAction();
 

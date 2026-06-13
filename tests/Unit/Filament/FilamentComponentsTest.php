@@ -13,8 +13,7 @@ use Modules\Geo\Filament\Widgets\LocationWidget;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');
 });

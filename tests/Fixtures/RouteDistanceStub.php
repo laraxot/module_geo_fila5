@@ -13,7 +13,7 @@ use Modules\Geo\Datas\LocationData;
 final class RouteDistanceStub implements CalculateDistanceActionContract
 {
     /**
-     * @param  array<string, int>  $distances
+     * @param array<string, int> $distances
      */
     public function __construct(
         private int $defaultMeters = 1000,

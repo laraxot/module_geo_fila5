@@ -11,8 +11,7 @@ use Modules\Geo\Tests\Fixtures\FetchIPLocationThrowingStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('delegates to fetch action and returns result', function (): void {
     $fetchAction = new FetchIPLocationReturningStub(new IPLocationData(
         ip: '8.8.8.8',

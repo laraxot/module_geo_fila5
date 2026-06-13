@@ -8,8 +8,7 @@ use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 /*
  * Test LatitudeLongitudeInput component for story 8-10:
  * - Bidirectional sync between map marker and coordinate inputs

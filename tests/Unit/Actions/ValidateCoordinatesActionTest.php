@@ -8,8 +8,7 @@ use Modules\Geo\Actions\ValidateCoordinatesAction;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('validates valid coordinates correctly', function (): void {
     $action = new ValidateCoordinatesAction();
 
