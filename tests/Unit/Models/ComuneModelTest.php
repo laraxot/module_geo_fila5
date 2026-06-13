@@ -11,18 +11,18 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
 
-final class ComuneTest extends TestCase
+final class ComuneModelTest extends TestCase
 {
-    /** @var array<int, array<string, mixed>> */
-    public array $testData = [];
+    /** @var list<array<string, mixed>> */
+    private array $comuneFixtures = [];
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->testData = [
+        $this->comuneFixtures = [
             [
                 'id' => 1,
                 'regione' => 'Lombardia',
@@ -49,7 +49,7 @@ final class ComuneTest extends TestCase
 
         File::put(
             base_path('database/content/comuni.json'),
-            json_encode($this->testData, JSON_PRETTY_PRINT)
+            json_encode($this->comuneFixtures, JSON_PRETTY_PRINT)
         );
     }
 

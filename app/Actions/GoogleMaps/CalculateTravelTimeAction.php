@@ -32,6 +32,7 @@ readonly class CalculateTravelTimeAction
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
      * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
@@ -56,6 +57,7 @@ readonly class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
      * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void

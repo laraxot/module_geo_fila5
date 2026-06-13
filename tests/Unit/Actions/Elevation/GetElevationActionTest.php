@@ -9,41 +9,9 @@ uses(\Modules\Geo\Tests\LightTestCase::class);
 use Modules\Geo\Actions\Elevation\GetElevationAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
-use Modules\Geo\Services\GoogleMapsService;
+use Modules\Geo\Tests\Fixtures\GoogleMapsServiceElevationStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-
-/**
- * @internal
- */
-final class GoogleMapsServiceElevationStub extends GoogleMapsService
-{
-    /**
-     * @param array<string, mixed> $elevationResponse
-     */
-    public function __construct(
-        private array $elevationResponse = [],
-        private ?\Throwable $exception = null,
-    ) {
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    public function getElevation(float $latitude, float $longitude): array
-    {
-        if (null !== $this->exception) {
-            throw $this->exception;
-        }
-
-        return $this->elevationResponse;
-    }
-
-    protected function getServiceName(): string
-    {
-        return 'google_maps';
-    }
-}
 
 it('gets elevation for valid location', function (): void {
     $action = new GetElevationAction(new GoogleMapsServiceElevationStub([

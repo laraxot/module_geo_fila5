@@ -6,44 +6,12 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\OptimizeRouteAction;
-use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\Fixtures\RouteDistanceStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(\Modules\Geo\Tests\TestCase::class);
-
-/**
- * @internal
- */
-final class RouteDistanceStub implements CalculateDistanceActionContract
-{
-    /**
-     * @param array<string, int> $distances
-     */
-    public function __construct(
-        private int $defaultMeters = 1000,
-        private array $distances = [],
-    ) {
-    }
-
-    public function execute(LocationData $origin, LocationData $destination): array
-    {
-        $key = $origin->latitude.','.$origin->longitude.'|'.$destination->latitude.','.$destination->longitude;
-        $value = $this->distances[$key] ?? $this->defaultMeters;
-
-        return [
-            'distance' => ['text' => (string) $value, 'value' => $value],
-            'duration' => ['text' => '0 min', 'value' => 0],
-            'status' => 'OK',
-        ];
-    }
-
-    public function formatDistance(int $meters): string
-    {
-        return $meters.' m';
-    }
-}
 
 it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
