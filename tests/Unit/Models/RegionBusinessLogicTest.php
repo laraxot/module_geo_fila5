@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Geo\Models\BaseModel;
@@ -17,6 +15,8 @@ use function Safe\class_uses;
 
 use Sushi\Sushi;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 describe('Region Business Logic', function () {
     test('region extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Region());

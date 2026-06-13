@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\IPLocationData;
 use Modules\Geo\Tests\Fixtures\FetchIPLocationReturningStub;
@@ -13,6 +11,8 @@ use Modules\Geo\Tests\Fixtures\FetchIPLocationThrowingStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('delegates to fetch action and returns result', function (): void {
     $fetchAction = new FetchIPLocationReturningStub(new IPLocationData(
         ip: '8.8.8.8',

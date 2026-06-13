@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament\Forms\Components;
 
-uses(\Modules\Geo\Tests\UnitTestCase::class);
-
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Filament\Forms\Components\LocationPicker;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
@@ -13,6 +11,8 @@ use Modules\Geo\Tests\UnitTestCase;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\UnitTestCase::class);
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 

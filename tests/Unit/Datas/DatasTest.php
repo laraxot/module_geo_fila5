@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Datas\BingMapData;
 use Modules\Geo\Datas\CoordinatesData;
@@ -25,6 +23,8 @@ use Modules\Geo\Datas\UpdateCoordinatesResult;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 test('CoordinatesData can be instantiated', function () {
     Assert::assertTrue(class_exists(CoordinatesData::class));
 

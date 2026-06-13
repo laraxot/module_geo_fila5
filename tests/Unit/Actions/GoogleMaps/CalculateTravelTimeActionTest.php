@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -17,6 +15,8 @@ use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();

@@ -23,7 +23,7 @@ describe('Location Business Logic', function () {
     });
 
     test('location has factory trait for testing', function () {
-        $traits = class_uses(\Modules\Geo\Tests\TestCase::class);
+        $traits = class_uses(Location::class);
 
         Assert::assertArrayHasKey(HasFactory::class, $traits);
     });

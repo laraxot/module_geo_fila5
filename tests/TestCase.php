@@ -39,8 +39,6 @@ abstract class TestCase extends XotBaseTestCase
 {
     use DatabaseTransactions;
 
-    public ?object $action = null;
-
     public ?MockInterface $mockDistanceMatrixAction = null;
 
     public ?MockInterface $fetchAction = null;
@@ -51,13 +49,9 @@ abstract class TestCase extends XotBaseTestCase
 
     public ?MockHandler $mockHandler = null;
 
-    public ?GoogleMapsService $service = null;
-
     public ?HereService $hereService = null;
 
     public ?Address $address = null;
-
-    public ?BaseModel $baseModel = null;
 
     /** @var array<string, mixed> */
     public array $testData = [];

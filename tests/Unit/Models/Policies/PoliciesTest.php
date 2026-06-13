@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models\Policies;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Models\Policies\CountyPolicy;
 use Modules\Geo\Models\Policies\GeoNamesCapPolicy;
 use Modules\Geo\Models\Policies\LocalityPolicy;
@@ -15,6 +13,8 @@ use Modules\Geo\Models\Policies\StatePolicy;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 test('StatePolicy can be instantiated', function () {
     $policy = new StatePolicy();
 

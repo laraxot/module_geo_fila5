@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
 use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixQueueStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 it('filters coordinates within radius', function (): void {
     $stub = new CalculateDistanceMatrixQueueStub([
         [[['distance' => ['value' => 1000], 'duration' => ['value' => 100], 'status' => 'OK']]],

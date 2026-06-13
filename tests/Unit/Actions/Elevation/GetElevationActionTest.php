@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Elevation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use Modules\Geo\Actions\Elevation\GetElevationAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
@@ -13,6 +11,8 @@ use Modules\Geo\Tests\Fixtures\GoogleMapsServiceElevationStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('gets elevation for valid location', function (): void {
     $action = new GetElevationAction(new GoogleMapsServiceElevationStub([
         'results' => [

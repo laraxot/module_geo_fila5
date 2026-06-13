@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Datas\LocationData;
@@ -13,6 +11,8 @@ use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('throws exception when google maps api key is not configured', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
