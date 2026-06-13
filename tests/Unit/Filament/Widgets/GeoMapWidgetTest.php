@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament\Widgets;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
 use Filament\Widgets\Widget;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;

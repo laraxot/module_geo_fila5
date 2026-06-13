@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament\Forms\Components;
 
-uses(\Modules\Geo\Tests\UnitTestCase::class);
+uses(UnitTestCase::class);
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Filament\Forms\Components\LocationPicker;
