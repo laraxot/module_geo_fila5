@@ -14,7 +14,6 @@ use function Safe\class_uses;
 
 use Sushi\Sushi;
 
-
 uses(\Modules\Geo\Tests\TestCase::class);
 describe('Province Business Logic', function () {
     test('province extends base model', function () {

@@ -11,8 +11,7 @@ use Modules\Geo\Tests\Fixtures\GoogleMapsServiceElevationStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('gets elevation for valid location', function (): void {
     $action = new GetElevationAction(new GoogleMapsServiceElevationStub([
         'results' => [

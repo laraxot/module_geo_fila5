@@ -14,7 +14,7 @@ use Modules\Geo\Datas\LocationData;
 final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixAction
 {
     /**
-     * @param  list<array<mixed>>  $responses
+     * @param list<array<mixed>> $responses
      */
     public function __construct(
         private array $responses = [],
@@ -24,8 +24,8 @@ final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixActi
     private int $callIndex = 0;
 
     /**
-     * @param  Collection<int, LocationData>  $origins
-     * @param  Collection<int, LocationData>  $destinations
+     * @param Collection<int, LocationData> $origins
+     * @param Collection<int, LocationData> $destinations
      *
      * @return array<mixed>
      */

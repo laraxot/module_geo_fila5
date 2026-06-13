@@ -11,8 +11,7 @@ use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     config(['services.bing.maps_api_key' => null]);
 

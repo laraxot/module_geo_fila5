@@ -16,7 +16,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
