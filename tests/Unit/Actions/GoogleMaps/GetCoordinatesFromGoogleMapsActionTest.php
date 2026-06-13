@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
@@ -19,6 +17,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
@@ -77,7 +77,7 @@ it('throws exception for guzzle exception', function (): void {
 
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
-        Assert::assertSame('Failed to get coordinates', $exception->getMessage());
+        Assert::assertSame('Failed to get coordinates from address', $exception->getMessage());
     }
 });
 
@@ -99,7 +99,7 @@ it('throws exception when no coordinates found', function (): void {
 
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
-        Assert::assertSame('No coordinates found', $exception->getMessage());
+        Assert::assertSame('No coordinates found for address', $exception->getMessage());
     }
 });
 
@@ -120,7 +120,7 @@ it('throws exception when status is not OK', function (): void {
 
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
-        Assert::assertSame('No coordinates found', $exception->getMessage());
+        Assert::assertSame('No coordinates found for address', $exception->getMessage());
     }
 });
 

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
@@ -19,6 +17,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);

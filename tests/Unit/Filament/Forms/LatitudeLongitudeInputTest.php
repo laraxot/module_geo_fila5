@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament\Forms;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 /*
  * Test LatitudeLongitudeInput component for story 8-10:
  * - Bidirectional sync between map marker and coordinate inputs

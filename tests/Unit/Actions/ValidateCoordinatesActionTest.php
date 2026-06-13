@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Actions\ValidateCoordinatesAction;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 it('validates valid coordinates correctly', function (): void {
     $action = new ValidateCoordinatesAction();
 

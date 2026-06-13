@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\LocationIQ;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\LocationIQ\GetAddressFromLocationIQAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $action = new GetAddressFromLocationIQAction();
 

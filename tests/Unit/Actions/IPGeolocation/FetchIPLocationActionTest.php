@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -17,6 +15,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+
+uses(\Modules\Geo\Tests\LightTestCase::class);
 /**
  * @return array{0: FetchIPLocationAction, 1: MockHandler}
  */

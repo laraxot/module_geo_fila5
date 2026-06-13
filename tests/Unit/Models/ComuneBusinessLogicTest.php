@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Comune;
@@ -14,6 +12,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\class_uses;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Comune());

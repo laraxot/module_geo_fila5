@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Services;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Services\HereService;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+
+uses(\Modules\Geo\Tests\TestCase::class);
 it('has correct base URL', function (): void {
     $service = new HereService();
 
