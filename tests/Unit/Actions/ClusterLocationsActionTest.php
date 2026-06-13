@@ -5,68 +5,14 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\ClusterLocationsAction;
-use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Geo\Tests\Fixtures\ClusterDistanceStub;
+use Modules\Geo\Tests\Fixtures\FixedPairDistanceStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(\Modules\Geo\Tests\TestCase::class);
-
-/**
- * @internal
- */
-final class ClusterDistanceStub implements CalculateDistanceActionContract
-{
-    public function __construct(
-        private int $defaultMeters = 150000,
-    ) {
-    }
-
-    public function execute(LocationData $origin, LocationData $destination): array
-    {
-        $closePair = abs($origin->latitude - 45.4642) < 0.01
-            && abs($destination->latitude - 45.4642) < 0.01;
-
-        $value = $closePair ? 100 : $this->defaultMeters;
-
-        return [
-            'distance' => ['text' => (string) $value, 'value' => $value],
-            'duration' => ['text' => '0 min', 'value' => 0],
-            'status' => 'OK',
-        ];
-    }
-
-    public function formatDistance(int $meters): string
-    {
-        return $meters.' m';
-    }
-}
-
-/**
- * @internal
- */
-final class FixedPairDistanceStub implements CalculateDistanceActionContract
-{
-    public function __construct(
-        private int $meters,
-    ) {
-    }
-
-    public function execute(LocationData $origin, LocationData $destination): array
-    {
-        return [
-            'distance' => ['text' => (string) $this->meters, 'value' => $this->meters],
-            'duration' => ['text' => '0 min', 'value' => 0],
-            'status' => 'OK',
-        ];
-    }
-
-    public function formatDistance(int $meters): string
-    {
-        return $meters.' m';
-    }
-}
 
 it('clusters locations that are close together', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);

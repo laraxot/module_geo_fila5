@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
@@ -19,6 +17,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+uses(LightTestCase::class);
+
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
@@ -29,7 +29,6 @@ it('throws exception when api key is not configured', function (): void {
 
     try {
         $action->execute('Milano, Italia');
-
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not configured', $exception->getMessage());
@@ -44,8 +43,12 @@ it('throws exception for empty address', function (): void {
 
     config(['services.google.maps_api_key' => 'test_key']);
 
-    expect(fn (): LocationData => $action->execute(''))
-        ->toThrow(\InvalidArgumentException::class, 'Address cannot be empty');
+    try {
+        $action->execute('');
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertSame('Address cannot be empty', $exception->getMessage());
+    }
 });
 
 it('throws exception for too long address', function (): void {
@@ -58,8 +61,12 @@ it('throws exception for too long address', function (): void {
 
     $longAddress = str_repeat('a', 1001);
 
-    expect(fn (): LocationData => $action->execute($longAddress))
-        ->toThrow(\InvalidArgumentException::class, 'Address is too long');
+    try {
+        $action->execute($longAddress);
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertSame('Address is too long', $exception->getMessage());
+    }
 });
 
 it('throws exception for guzzle exception', function (): void {
@@ -74,7 +81,6 @@ it('throws exception for guzzle exception', function (): void {
 
     try {
         $action->execute('Milano, Italia');
-
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get coordinates', $exception->getMessage());
@@ -96,14 +102,13 @@ it('throws exception when no coordinates found', function (): void {
 
     try {
         $action->execute('NonExistentPlace');
-
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
         Assert::assertSame('No coordinates found', $exception->getMessage());
     }
 });
 
-it('throws exception when status is not OK', function (): void {
+it('throws exception when status is not ok', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
@@ -117,7 +122,6 @@ it('throws exception when status is not OK', function (): void {
 
     try {
         $action->execute('NonExistentPlace');
-
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
         Assert::assertSame('No coordinates found', $exception->getMessage());
@@ -147,11 +151,8 @@ it('returns location data for valid address', function (): void {
     $result = $action->execute('Milano, Italia');
 
     Assert::assertInstanceOf(LocationData::class, $result);
-
     Assert::assertSame('Milano, Italia', $result->address);
-
     Assert::assertSame(45.4642, $result->latitude);
-
     Assert::assertSame(9.1900, $result->longitude);
 });
 
@@ -178,8 +179,6 @@ it('handles address with special characters', function (): void {
     $result = $action->execute('Piazza del Popolo, Roma, Italia');
 
     Assert::assertInstanceOf(LocationData::class, $result);
-
     Assert::assertSame(41.9028, $result->latitude);
-
     Assert::assertSame(12.4964, $result->longitude);
 });

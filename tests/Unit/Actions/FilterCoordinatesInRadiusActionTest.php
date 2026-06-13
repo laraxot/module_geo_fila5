@@ -6,45 +6,11 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 uses(\Modules\Geo\Tests\TestCase::class);
 
-use Illuminate\Support\Collection;
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
-use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixQueueStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-/**
- * @internal
- */
-final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixAction
-{
-    /**
-     * @param list<array<mixed>> $responses
-     */
-    public function __construct(
-        private array $responses = [],
-    ) {
-    }
-
-    private int $callIndex = 0;
-
-    /**
-     * @param Collection<int, LocationData> $origins
-     * @param Collection<int, LocationData> $destinations
-     *
-     * @return array<mixed>
-     */
-    public function execute(Collection $origins, Collection $destinations): array
-    {
-        unset($origins, $destinations);
-
-        $response = $this->responses[$this->callIndex] ?? [[]];
-        ++$this->callIndex;
-
-        return $response;
-    }
-}
 
 it('filters coordinates within radius', function (): void {
     $stub = new CalculateDistanceMatrixQueueStub([

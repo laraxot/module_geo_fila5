@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -17,6 +15,8 @@ use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
+
+uses(LightTestCase::class);
 
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
@@ -31,7 +31,6 @@ it('throws exception when api key is not configured', function (): void {
 
     try {
         $action->execute($origin, $destination);
-
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not configured', $exception->getMessage());
@@ -48,8 +47,12 @@ it('throws exception when origin and destination are the same', function (): voi
 
     $location = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
 
-    expect(fn (): TravelTimeData => $action->execute($location, $location))
-        ->toThrow(\InvalidArgumentException::class);
+    try {
+        $action->execute($location, $location);
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertSame('Origin and destination cannot be the same location', $exception->getMessage());
+    }
 });
 
 it('returns error travel time data for failed api request', function (): void {
@@ -68,7 +71,6 @@ it('returns error travel time data for failed api request', function (): void {
     $result = $action->execute($origin, $destination);
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
-
     Assert::assertSame('REQUEST_FAILED', $result->status);
 });
 
@@ -90,7 +92,6 @@ it('returns error for invalid response status', function (): void {
     $result = $action->execute($origin, $destination);
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
-
     Assert::assertSame('INVALID_RESPONSE', $result->status);
 });
 
@@ -117,7 +118,6 @@ it('returns error when no route found', function (): void {
     $result = $action->execute($origin, $destination);
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
-
     Assert::assertSame('NO_ROUTE', $result->status);
 });
 
@@ -146,17 +146,11 @@ it('returns travel time data for valid route', function (): void {
     $result = $action->execute($origin, $destination);
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
-
     Assert::assertSame(19800, $result->duration_seconds);
-
     Assert::assertSame(21000, $result->duration_in_traffic_seconds);
-
     Assert::assertSame(572000, $result->distance_meters);
-
     Assert::assertSame('5 hours 30 mins', $result->formatted_duration);
-
     Assert::assertSame('572 km', $result->formatted_distance);
-
     Assert::assertSame('OK', $result->status);
 });
 
@@ -184,6 +178,5 @@ it('uses duration as fallback for duration in traffic', function (): void {
     $result = $action->execute($origin, $destination);
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
-
     Assert::assertSame(19800, $result->duration_in_traffic_seconds);
 });

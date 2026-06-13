@@ -6,9 +6,10 @@ namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
 uses(\Modules\Geo\Tests\LightTestCase::class);
 
-use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\IPLocationData;
+use Modules\Geo\Tests\Fixtures\FetchIPLocationReturningStub;
+use Modules\Geo\Tests\Fixtures\FetchIPLocationThrowingStub;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
@@ -44,35 +45,3 @@ it('propagates exception when fetch action throws', function (): void {
         Assert::assertSame('not found', $exception->getMessage());
     }
 });
-
-/**
- * @internal
- */
-final class FetchIPLocationReturningStub extends FetchIPLocationAction
-{
-    public function __construct(
-        private readonly IPLocationData $locationData,
-    ) {
-    }
-
-    public function execute(string $ip): IPLocationData
-    {
-        return $this->locationData;
-    }
-}
-
-/**
- * @internal
- */
-final class FetchIPLocationThrowingStub extends FetchIPLocationAction
-{
-    public function __construct(
-        private readonly \RuntimeException $exception,
-    ) {
-    }
-
-    public function execute(string $ip): IPLocationData
-    {
-        throw $this->exception;
-    }
-}
