@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models\Contracts;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Sigma\Models\Asz00k1;
 
 /**
  * Contract specifico per le schede utilizzate nelle progressioni temporali variabili.
@@ -18,6 +20,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $propro Proprieta/appartenenza
  * @property int|null $matr Matricola dipendente per debug
  * @property mixed $last_data_assunz Data ultima assunzione (per criterio DateMinAssunz)
+ *
+ * @phpstan-require-extends Model
+ *
+ * @mixin \Eloquent
  */
 interface ProgressioneSchedaContract extends SchedaContract
 {
@@ -48,6 +54,8 @@ interface ProgressioneSchedaContract extends SchedaContract
     /**
      * Relazione con le assenze del dipendente.
      * Restituisce una relazione con metodi di scope per filtri temporali.
+     *
+     * @return HasMany<Asz00k1, $this>
      */
     public function asz(): HasMany;
 }

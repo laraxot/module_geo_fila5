@@ -42,6 +42,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property string|null $phone
  * @property string|null $address
  * @property int|null $user_id
+ * @property int|null $valutatore_id
  * @property string|null $premise
  * @property string|null $premise_short
  * @property string|null $locality

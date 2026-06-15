@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -70,7 +71,9 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
 
         $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
         Assert::classExists($modelClass);
+        Assert::subclassOf($modelClass, Model::class);
 
+        /** @var class-string<Model> $modelClass */
         return $this->hasMany($modelClass, 'anno', 'anno');
     }
 
@@ -82,8 +85,10 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
     public function criteriOptions(): HasMany
     {
         $class = Str::of(static::class)->beforeLast('\\')->append('\\CriteriOption')->toString();
+        Assert::classExists($class);
+        Assert::subclassOf($class, Model::class);
 
-        /** @phpstan-ignore-next-line */
+        /** @var class-string<Model> $class */
         return $this->hasMany($class, 'anno', 'anno');
     }
 

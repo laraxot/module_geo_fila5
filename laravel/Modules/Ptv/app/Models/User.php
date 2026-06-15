@@ -67,14 +67,14 @@ use Modules\User\Models\BaseUser;
  * @property-read int|null $tenants_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthToken> $tokens
  * @property-read int|null $tokens_count
- * @method static Builder<static>|User childrenWith(array $relations)
- * @method static Builder<static>|User childrenWithCount(array $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWith(array $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWithCount(array $relations)
  * @method static \Modules\Ptv\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
- * @method static Builder<static>|User permission($permissions, bool $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User permission($permissions, bool $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
- * @method static Builder<static>|User role($roles, ?string $guard = null, bool $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User role($roles, ?string $guard = null, bool $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCurrentTeamId($value)
@@ -101,8 +101,8 @@ use Modules\User\Models\BaseUser;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedBy($value)
- * @method static Builder<static>|User withoutPermission($permissions)
- * @method static Builder<static>|User withoutRole($roles, ?string $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, ?string $guard = null)
  * @property string|null $uuid
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUuid($value)
  * @mixin \Eloquent

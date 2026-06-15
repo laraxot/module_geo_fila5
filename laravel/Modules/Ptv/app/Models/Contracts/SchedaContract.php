@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models\Contracts;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Contract per le schede di valutazione del personale nelle progressioni temporali variabili.
  * Definisce le proprietà essenziali per la gestione dei criteri di esclusione e valutazione.
+ *
+ * @phpstan-require-extends Model
  *
  * @property int $ente Codice ente
  * @property int $matr Matricola dipendente
@@ -28,6 +32,8 @@ namespace Modules\Ptv\Models\Contracts;
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Ptv\Models\CriteriEsclusione>|null $criteriEsclusione
  * @property float|null $perf_ind_media Media performance individuale
  * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
+ *
+ * @mixin \Eloquent
  */
 interface SchedaContract
 {

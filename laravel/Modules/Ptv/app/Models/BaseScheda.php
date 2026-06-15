@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Modules\Sigma\Models\Anag;
-use Spatie\Activitylog\LogOptions;
-use Modules\Performance\Models\Performance;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Modules\Performance\Models\Individuale;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Sigma\Models\Traits\SchedaTrait;
 use Modules\Ptv\Models\Contracts\SchedaContract;
@@ -67,7 +65,7 @@ use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
  * @property object|null $maxCatecoPosfun
  * @property object|null $pesi
  * @property object|null $stipendioTabellare
- * @property Collection<int, Performance> $performanceIndividuale
+ * @property Collection<int, Individuale> $performanceIndividuale
  * @property Collection<int, \Illuminate\Database\Eloquent\Model> $criteriOptions
  * @property int $n_perf_ind
  */
@@ -124,31 +122,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public int $n_perf_ind = 3;
 
     protected $table = 'schede';
-    
-    /**
-     * Configure the activity logger options.
-     *
-     * NOTA: Questo metodo è stato creato per risolvere un errore critico di Spatie Activity Log.
-     *
-     * PROBLEMA: Durante l'accesso a mutator/attribute, Spatie cerca di accedere a
-     *           attributeRawValues che è null, causando:
-     *           "Attempt to read property 'attributeRawValues' on null"
-     *
-     * SOLUZIONE: Disabilito completamente il logging per questo modello loggando solo 'id'.
-     *            I modelli figli possono sovrascrivere questo metodo se necessitano di logging.
-     *
-     * @see \Modules\Activity\docs\errori\duplicate-entry-accessor-save.md
-     * @see \Modules\Sigma\app\Models\Traits\SchedaTrait.php
-     */
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logOnly(['id'])  // Log only ID to effectively disable logging
-            ->logOnlyDirty()   // Solo campi effettivamente modificati
-            ->dontSubmitEmptyLogs();  // Non salvare log vuoti
-    }
-   
-   
 
     /**
      * Get avversari with the same category.
@@ -222,16 +195,11 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Performance individuale relationship.
      *
-     * @return HasMany
+     * @return HasMany<Individuale, $this>
      */
-    public function performanceIndividuale()
+    public function performanceIndividuale(): HasMany
     {
-        // This is a placeholder implementation - the actual relationship may vary
-        $perfClass = str_replace('Ptv\\', 'Performance\\', static::class);
-        $perfClass = str_replace('Models\\BaseScheda', 'Models\\Performance', $perfClass);
-
-        // Defaulting to Performance model
-        return $this->hasMany(Performance::class, 'matr', 'matr')
+        return $this->hasMany(Individuale::class, 'matr', 'matr')
             ->where('ente', $this->ente ?? 90);
     }
 
