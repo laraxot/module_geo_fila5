@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Modules\Sigma\Models\Anag;
+use Modules\Sigma\Models\Asz00k1;
 use Modules\Performance\Models\Individuale;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Sigma\Models\Traits\SchedaTrait;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
@@ -122,6 +124,20 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     public int $n_perf_ind = 3;
 
     protected $table = 'schede';
+
+    /**
+     * Assenze ASZ Sigma del dipendente — contratto DRY per tutte le schede (Ptv, Progressioni, …).
+     *
+     * @return HasMany<Asz00k1, $this>
+     */
+    public function asz(): HasMany
+    {
+        $tbl = app(Asz00k1::class)->getTable();
+
+        return $this->hasMany(Asz00k1::class, 'matr', 'matr')
+            ->where($tbl.'.ente', $this->ente)
+            ->where($tbl.'.aszann', '');
+    }
 
     /**
      * Get avversari with the same category.

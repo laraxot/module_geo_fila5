@@ -16,6 +16,8 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 
 ## Handoff attivi
 
+- [handoff-asz-relationship-revert.md](handoff-asz-relationship-revert.md) — revert bypass `Asz00k1::query()` → `$scheda->asz()`
+- [handoff-phpstan-modules-zero.md](handoff-phpstan-modules-zero.md) — bootstrap 2026-06-15: PHPStan 0 su tutti i moduli
 - [handoff-job-lang-merge-phpstan-confidence.md](handoff-job-lang-merge-phpstan-confidence.md) — ripartenza agente: Job PHPStan OK, Lang 8 errori, merge sweep
 - [module-theme-github-issues-manifest.md](module-theme-github-issues-manifest.md) — elenco issue meta/ridondanza su repo modulo/tema (batch 2026-05-26)
 - [dependabot-pr-merge-log.md](dependabot-pr-merge-log.md) — sweep merge PR Dependabot su remote `laraxot` (aggiornare con `bashscripts/ci/dependabot-merge-module-prs.sh`)

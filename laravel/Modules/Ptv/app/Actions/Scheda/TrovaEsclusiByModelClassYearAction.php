@@ -6,8 +6,9 @@ namespace Modules\Ptv\Actions\Scheda;
 
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Spatie\QueueableAction\QueueableAction;
@@ -34,7 +35,7 @@ class TrovaEsclusiByModelClassYearAction
 
         $rows = $query->get();
 
-        if (! ($rows instanceof Collection)) {
+        if (! ($rows instanceof EloquentCollection)) {
             return;
         }
 
@@ -62,7 +63,7 @@ class TrovaEsclusiByModelClassYearAction
 
         $criteri_esclusione = $criteriEsclusioneQuery->get();
 
-        if (! ($criteri_esclusione instanceof Collection)) {
+        if (! ($criteri_esclusione instanceof EloquentCollection)) {
             return;
         }
 
@@ -99,8 +100,7 @@ class TrovaEsclusiByModelClassYearAction
                         break;
                 }
 
-                // @phpstan-ignore-next-line property.notFound - value_real is set dynamically
-                $item->value_real = $value;
+                $item->setAttribute('value_real', $value);
 
                 return $item;
             })
@@ -108,16 +108,7 @@ class TrovaEsclusiByModelClassYearAction
             ->pluck('value_real', 'name');
 
         foreach ($rows as $row) {
-            // Type narrowing: ensure criteri_esclusione is Collection of Models with name and value
-            /** @var Collection<int, Model&object{name: string, value: mixed}> $validatedCriteriEsclusione */
-            $validatedCriteriEsclusione = $criteri_esclusione;
-
-            // Type narrowing: ensure criteri_option is Collection of Models
-            /** @var Collection<int, Model> $validatedCriteriOption */
-            $validatedCriteriOption = $criteri_option;
-
-            // @phpstan-ignore-next-line instanceof.alwaysTrue - row is already Model from Collection type
-            app(Check::class)->execute($row, $validatedCriteriEsclusione, $validatedCriteriOption);
+            app(Check::class)->execute($row, $criteri_esclusione, $criteri_option);
         }
     }
 }

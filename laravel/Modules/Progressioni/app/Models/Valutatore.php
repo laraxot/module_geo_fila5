@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -87,9 +88,11 @@ class Valutatore extends PtvValutatore
             ->append('\\Scheda')
             ->toString();
 
-        Assert::classExists($schedaClass);
+        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
+        Assert::subclassOf($modelClass, Model::class);
 
-        return $this->hasMany($schedaClass, 'valutatore_id', 'id');
+        /** @var class-string<Model> $modelClass */
+        return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
     public function benificiariProgressione(): HasMany

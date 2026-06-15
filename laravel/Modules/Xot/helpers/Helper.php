@@ -179,6 +179,40 @@ if (! function_exists('inAdmin')) {
     }
 }
 
+if (! function_exists('getRouteParameters')) {
+    /**
+     * Parametri della route corrente (es. anno, stabi, repar nei contesti admin progressioni).
+     *
+     * @return array<string, mixed>
+     */
+    function getRouteParameters(): array
+    {
+        if (app()->runningInConsole()) {
+            return [];
+        }
+
+        $route = Route::current();
+        if ($route === null) {
+            return [];
+        }
+
+        $params = $route->parameters();
+        if (! is_array($params)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = [];
+        foreach ($params as $key => $value) {
+            if (is_string($key)) {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+}
+
 if (! function_exists('isHome')) {
     function isHome(): bool
     {

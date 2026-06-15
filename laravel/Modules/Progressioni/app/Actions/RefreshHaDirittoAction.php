@@ -7,6 +7,7 @@ namespace Modules\Progressioni\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\Progressioni;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Spatie\QueueableAction\QueueableAction;
@@ -50,10 +51,9 @@ class RefreshHaDirittoAction
                 'value' => $item->value,
             ];
         });
-        $module_name = 'Progressioni';
-        $criteri_option_class = '\Modules\\'.$module_name.'\Models\CriteriOption';
-        /** @var Collection<int, Model> $criteri_option */
-        $criteri_option = Collection::make($criteri_option_class::where('anno', $record->anno)->get()->all());
+        $criteri_option = Collection::make(
+            CriteriOption::where('anno', $record->anno)->get()->all()
+        );
 
         app(Check::class)->execute($record, $criteri_esclusione, $criteri_option);
     }

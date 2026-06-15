@@ -11,7 +11,7 @@ updated: "2026-04-15T08:28:49Z"
 
 ## Concepts
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+- [asz-scheda-relationship](./concepts/asz-scheda-relationship.md) — relazione `asz()` verso `Asz00k1`, scope `ofRangeDate`
 
 ## Entities
 

@@ -18,7 +18,8 @@ use Modules\Performance\Models\Individuale;
 use Modules\Progressioni\Database\Factories\SchedaFactory;
 use Modules\Progressioni\Models\Traits\ConvertedTrait;
 use Modules\Progressioni\Models\Traits\ProgressioniTrait;
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
+use Modules\Ptv\Models\BaseScheda;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Actions\MassUpdateCategoriaEcoAction;
 use Modules\Sigma\Actions\MassUpdateCognomeNomeAction;
 use Modules\Sigma\Actions\MassUpdatePosizTxtAction;
@@ -490,28 +491,9 @@ use RuntimeException;
  * @method static Builder<static>|Scheda whereRefreshedAt($value)
  * @mixin \Eloquent
  */
-class Scheda extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseScheda
 {
-    use ConvertedTrait;
-    use ProgressioniTrait, SchedaTrait, SigmaModelTrait {
-        // Resolve myLogs() collision: keep canonical HasMyLogs implementation (from SchedaTrait)
-        SchedaTrait::myLogs insteadof ProgressioniTrait;
-
-        // Prefer SchedaTrait methods over SigmaModelTrait
-        SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaInSedeTot insteadof SigmaModelTrait;
-        // Rimuovo precedenze non necessarie: i metodi non sono in conflitto con ProgressioniTrait
-    }
-
-    public string $from_field = 'dal';
-
-    public string $to_field = 'al';
-
-    public int $n_perf_ind = 3;
+    use ProgressioniTrait;
 
     protected $table = 'schede';
 
@@ -988,12 +970,12 @@ class Scheda extends BaseModel implements ProgressioneSchedaContract
         $stabi = $params['stabi'];
         $repar = $params['repar'];
 
-        $sql = '(
-            ('.(string) $anno.' between year(rep2kd) and year(rep2ka))
-            or
-            ('.(string) $anno.' >= year(rep2kd) and rep2ka=0)
-		)';
-        $rows0 = Rep00f::where('repst1', $stabi)->where('repre1', $repar)->whereRaw($sql)->whereRaw('repann=""');
+        $rows0 = Rep00f::where('repst1', $stabi)
+            ->where('repre1', $repar)
+            ->where(function (Builder $query) use ($anno): void {
+                $query->whereRaw('(? between year(rep2kd) and year(rep2ka)) or (? >= year(rep2kd) and rep2ka = 0)', [$anno, $anno]);
+            })
+            ->whereRaw('repann=""');
         foreach ($rows0->get() as $row) {
             $parz = ['ente' => $row->ente,
                 'matr' => $row->matr,
@@ -1017,40 +999,17 @@ class Scheda extends BaseModel implements ProgressioneSchedaContract
             }
 
             if ($obj->propro === 0 || $obj->propro === null) {
-                $sql = '
-				(
-					('.$obj->dal.' between qua2kd and qua2ka )
-					or
-					('.$obj->dal.' >= qua2kd and qua2ka=0 )
-					or
-					('.$obj->al.' between qua2kd and qua2ka )
-					or
-					('.$obj->al.' >= qua2kd and qua2ka=0 )
-					or
-					(qua2kd between '.$obj->dal.' and '.$obj->al.')
-					or
-					(qua2ka between '.$obj->dal.' and '.$obj->al.')
-				)
-				';
-                /*
-                $sql = '
-                (
-                    ('.$obj->dal->format('Ymd').' between qua2kd and qua2ka )
-                    or
-                    ('.$obj->dal->format('Ymd').' >= qua2kd and qua2ka=0 )
-                    or
-                    ('.$obj->al->format('Ymd').' between qua2kd and qua2ka )
-                    or
-                    ('.$obj->al->format('Ymd').' >= qua2kd and qua2ka=0 )
-                    or
-                    (qua2kd between '.$obj->dal->format('Ymd').' and '.$obj->al->format('Ymd').')
-                    or
-                    (qua2ka between '.$obj->dal->format('Ymd').' and '.$obj->al->format('Ymd').')
-                )
-                ';
-                */
-
-                $qua00f = $obj->anag?->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw($sql);
+                $dal = $obj->dal;
+                $al = $obj->al;
+                $qua00f = $obj->anag?->qua00f()
+                    ->select('propro', 'posfun', 'posiz')
+                    ->distinct()
+                    ->where(function (Builder $query) use ($dal, $al): void {
+                        $query->whereRaw(
+                            '(? between qua2kd and qua2ka) or (? >= qua2kd and qua2ka = 0) or (? between qua2kd and qua2ka) or (? >= qua2kd and qua2ka = 0) or (qua2kd between ? and ?) or (qua2ka between ? and ?)',
+                            [$dal, $dal, $al, $al, $dal, $al, $dal, $al]
+                        );
+                    });
                 // echo '<br/>'.$qua00f->count().' - '.$qua00f->first()->propro.'  - '.$qua00f->first()->posfun;
                 if ($qua00f && $qua00f->get()->count() === 1) {
                     $firstRecord = $qua00f->first();
@@ -1070,7 +1029,15 @@ class Scheda extends BaseModel implements ProgressioneSchedaContract
                     echo '<pre>';
                     print_r($qua00f ? $qua00f->toSql() : 'N/A');
                     $anag = $obj->anag;
-                    $qua00f = $anag ? $anag->qua00f()->whereRaw($sql)->orderBy('qua2kd')->get() : collect();
+                    $qua00f = $anag ? $anag->qua00f()
+                        ->where(function (Builder $query) use ($dal, $al): void {
+                            $query->whereRaw(
+                                '(? between qua2kd and qua2ka) or (? >= qua2kd and qua2ka = 0) or (? between qua2kd and qua2ka) or (? >= qua2kd and qua2ka = 0) or (qua2kd between ? and ?) or (qua2ka between ? and ?)',
+                                [$dal, $dal, $al, $al, $dal, $al, $dal, $al]
+                            );
+                        })
+                        ->orderBy('qua2kd')
+                        ->get() : collect();
 
                     // foreach($qua00f as $v_qua00f){
                     $al_old = $obj->al;
@@ -1174,7 +1141,7 @@ class Scheda extends BaseModel implements ProgressioneSchedaContract
         });
         if (isset($posfun)) {
             // if (isset($posfun) && substr($posfun, -1)!=substr($this->attributes['posfun'], -1) ) {
-            $qua00f->whereRaw('SUBSTR(posfun,-1)='.(string) $posfun);
+            $qua00f->whereRaw('SUBSTR(posfun,-1)=?', [(string) $posfun]);
         }
 
         if (isset($date_max)) {
@@ -1219,12 +1186,6 @@ class Scheda extends BaseModel implements ProgressioneSchedaContract
     {
         // Default implementation - this should be computed based on actual business logic
         return 0;
-    }
-
-    public function asz(): HasMany
-    {
-        // Return the correct relationship type using the asz00k1 method
-        return $this->asz00k1();
     }
 
     /**

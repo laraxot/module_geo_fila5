@@ -317,12 +317,11 @@ class TrovaEsclusiAction
             throw new Exception('min_gg_asz_tip_cod_escluso_subito is not set');
         }
 
-        $asz_al = Carbon::parse((string) $data_presenza_al)->format('Ymd');
-        $asz_dal = Carbon::parse((string) $data_presenza_al)
+        $asz_al = (int) Carbon::parse((string) $data_presenza_al)->format('Ymd');
+        $asz_dal = (int) Carbon::parse((string) $data_presenza_al)
             ->subDays((int) $min_gg_asz_tip_cod_escluso_subito)
             ->format('Ymd');
 
-        /** @phpstan-ignore-next-line */
         $tmp = $scheda->asz()
             ->ofRangeDate($asz_dal, $asz_al)
             ->select('asztip', 'aszcod')

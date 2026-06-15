@@ -26,7 +26,6 @@ use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrYearRelationship;
 use Modules\Sigma\Models\Wstr01lx;
-use Spatie\Activitylog\LogOptions;
 
 /**
  * Modules\Progressioni\Models\Progressioni.
@@ -156,7 +155,7 @@ use Spatie\Activitylog\LogOptions;
  * @property int|null $ana02f_count
  * @property Ana10f|null $ana10f
  * @property Anag|null $anag
- * @property Collection<int, Assenze> $assenze
+ * @property Collection<int, Assenza> $assenze
  * @property int|null $assenze_count
  * @property Collection<int, Asz00k1> $asz
  * @property int|null $asz_count
@@ -555,31 +554,6 @@ class Progressioni extends BaseScheda
     ];
 
     public int $n_perf_ind = 3;
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            // ->logAll()  // Traccia tutti i campi
-            /*
-            ->logExcept([
-                // Escludo attributi con accessor che chiamano $this->save()
-                // per evitare errori "Duplicate Entry" durante serializzazione
-                'propro',                           // getProproAttribute() - linea 617
-                'gg',                               // getGgAttribute() - linea 241
-                'gg_asz',                           // getGgAszAttribute() - linea 265
-                'gg_no_asz',                        // getGgNoAszAttribute()
-                'valore_differenziale_rapportato_pt', // getValoreDifferenzialeRapportatoPtAttribute() - linea 1227
-                'punt_progressione_finale',         // getPuntProgressioneFinaleAttribute() - linea 1365
-                'valutatore_id',                    // getValutatoreIdAttribute() - linea 1392
-                'perf_ind_media',                   // getPerfIndMediaAttribute() - linea 1891
-                'perf_ind_count_last_3_years',      // getPerfIndCountLast3YearsAttribute() - linea 1911
-                'excellences_count_last_3years',    // getExcellencesCountLast3yearsAttribute()
-                'posizione_eco',                    // getPosizioneEcoAttribute() in SchedaMutator
-            ])
-            */
-            ->logOnlyDirty()  // Solo campi effettivamente modificati
-            ->dontSubmitEmptyLogs();  // Non salvare log vuoti
-    }
 
     /**
      * Imposta il flag diritto alla progressione.

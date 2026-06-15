@@ -59,7 +59,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 ### 2. Progressioni (`Modules\Progressioni`)
 
-**Utilizzo Principale**: `Scheda` estende `SchedaTrait` con conflict resolution
+**Utilizzo Principale**: `Scheda` estende `BaseScheda` (che implementa `SchedaContract`)
 
 **File Chiave**:
 - `app/Models/Scheda.php`
@@ -67,19 +67,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 **Pattern di Utilizzo**:
 ```php
-class Scheda extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseScheda
 {
-    use ConvertedTrait;
-    use ProgressioniTrait;
-    use SchedaTrait, SigmaModelTrait {
-        // Conflict resolution: prefer SchedaTrait methods
-        SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggAssenzaInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaFuoriSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::hhAssenzaInSedeTot insteadof SigmaModelTrait;
-    }
+    use ProgressioniTrait; // Contiene asz() con filtro ente, criteriEsclusione, etc.
     
     public int $n_perf_ind = 3; // Configurazione media performance
 }
@@ -327,9 +317,7 @@ Risultato persistito
 
 ## Gestione Conflict Resolution
 
-### Progressioni: Conflict Trait
-
-Quando `Progressioni\Scheda` usa sia `SchedaTrait` che `SigmaModelTrait`, utilizza conflict resolution:
+> **Nota (2026-06-15):** Progressioni\Scheda ora estende BaseScheda direttamente, eliminando i conflitti trait. `ProgressioneSchedaContract` rimosso - Scheda eredita SchedaContract da BaseScheda.
 
 ```php
 use SchedaTrait, SigmaModelTrait {

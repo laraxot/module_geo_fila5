@@ -1,5 +1,11 @@
 # UI Wiki Log
 
+## [2026-06-15] docs | block rendering e catena consumer
+
+- Nuova pagina: [`concepts/block-rendering-and-optional-services.md`](concepts/block-rendering-and-optional-services.md).
+- Mappati consumer: `<x-render.block>` (User home, UI blocks v1/v2), `InteractiveMap` + contratti map/geocoding.
+- `GetAllBlocksAction`: catalogo Filament Blocks cross-modulo (nessun caller PHP diretto nel mono; usato per inventario componenti).
+
 ## [2026-06-15] phpstan | contratti opzionali per mappa e block resolver
 
 - `InteractiveMap` non importa piu servizi `Geo` assenti; usa contratti UI locali.

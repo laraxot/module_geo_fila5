@@ -26,6 +26,23 @@ Complete inventory of wiki documentation indexed for semantic and keyword search
 
 ## Primary Collections for PTVX
 
+### Collectioni PTVX (da registrare)
+
+Il mono `base_ptvx_fila5` non ha ancora collection QMD dedicate. Dalla root progetto:
+
+```bash
+cd /var/www/_bases/base_ptvx_fila5
+qmd collection add ptvx-wiki docs/wiki
+qmd collection add ptvx-mod-ui laravel/Modules/UI/docs
+qmd collection add ptvx-mod-ptv laravel/Modules/Ptv/docs
+qmd collection add ptvx-mod-xot laravel/Modules/Xot/docs
+qmd update -c ptvx-wiki -c ptvx-mod-ui -c ptvx-mod-ptv -c ptvx-mod-xot
+```
+
+Verificare con `qmd collection show ptvx-wiki` che il path punti a `docs/wiki`, non a una cartella vuota omonima.
+
+**Ultimo ingest wiki (2026-06-15):** pagine `block-rendering-and-optional-services`, `phpstan-scheda-actions`, `has-relationship-model-class`; pattern root `phpstan-optional-contracts`.
+
 ### Collection: `wiki` (qmd://wiki/)
 **Purpose:** Root project wiki and cross-cutting concepts  
 **Pattern:** `docs/wiki/**/*.md`  

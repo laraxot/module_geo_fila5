@@ -50,40 +50,40 @@ parameters:
         - ./*/*.blade.php
         #- ./config/local/*/database.php
         # Moduli in ordine alfabetico:
-        - ./Modules/Activity/*
-        - ./Modules/Badge/*
-        - ./Modules/CertFisc/*
-        - ./Modules/ContoAnnuale/*
-        - ./Modules/DbForge/*
-        - ./Modules/Europa/*
-        - ./Modules/Gdpr/*
-        - ./Modules/Inail/*
-        - ./Modules/Incentivi/*
-        - ./Modules/IndennitaCondizioniLavoro/*
-        - ./Modules/IndennitaResponsabilita/*
-        - ./Modules/Job/*
-        - ./Modules/Lang/*
-        - ./Modules/Legge104/*
-        - ./Modules/Legge109/*
-        - ./Modules/Media/*
-        - ./Modules/Mensa/*
-        - ./Modules/MobilitaVolontaria/*
-        - ./Modules/Notify/*
-        - ./Modules/Pdnd/*
-        - ./Modules/Performance/*
-        - ./Modules/Prenotazioni/*
-        - ./Modules/PresenzeAssenze/*
-        - ./Modules/Progressioni/*
+        #- ./Modules/Activity/*
+        #- ./Modules/Badge/*
+        #- ./Modules/CertFisc/*
+        #- ./Modules/ContoAnnuale/*
+        #- ./Modules/DbForge/*
+        #- ./Modules/Europa/*
+        #- ./Modules/Gdpr/*
+        #- ./Modules/Inail/*
+        #- ./Modules/Incentivi/*
+        #- ./Modules/IndennitaCondizioniLavoro/*
+        #- ./Modules/IndennitaResponsabilita/*
+        #- ./Modules/Job/*
+        #- ./Modules/Lang/*
+        #- ./Modules/Legge104/*
+        #- ./Modules/Legge109/*
+        #- ./Modules/Media/*
+        #- ./Modules/Mensa/*
+        #- ./Modules/MobilitaVolontaria/*
+        #- ./Modules/Notify/*
+        #- ./Modules/Pdnd/*
+        #- ./Modules/Performance/*
+        #- ./Modules/Prenotazioni/*
+        #- ./Modules/PresenzeAssenze/*
+        #- ./Modules/Progressioni/*
         # - ./Modules/Ptv/*
-        - ./Modules/Questionari/*
-        - ./Modules/Rating/*
-        - ./Modules/Setting/*
-        - ./Modules/Sigma/*
-        - ./Modules/Sindacati/*
+        #- ./Modules/Questionari/*
+        #- ./Modules/Rating/*
+        #- ./Modules/Setting/*
+        #- ./Modules/Sigma/*
+        #- ./Modules/Sindacati/*
         #- ./Modules/Tenant/*
         #- ./Modules/UI/*
-        - ./Modules/User/*
-        - ./Modules/Xot/*
+        #- ./Modules/User/*
+        #- ./Modules/Xot/*
 
     bootstrapFiles:
         - ./phpstan_constants.php

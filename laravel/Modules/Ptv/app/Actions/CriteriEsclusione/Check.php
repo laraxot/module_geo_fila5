@@ -7,7 +7,6 @@ namespace Modules\Ptv\Actions\CriteriEsclusione;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Modules\Ptv\Models\CriteriEsclusione;
 use Spatie\QueueableAction\QueueableAction;
 
 class Check
@@ -18,10 +17,10 @@ class Check
      * Verifica i criteri di esclusione per una scheda.
      *
      * @param  Model  $scheda  La scheda da verificare
-     * @param  Collection<int, CriteriEsclusione>  $criteriEsclusione  Collezione dei criteri di esclusione
-     * @param  Collection<int, Model>  $criteriOption  Collezione delle opzioni dei criteri
+     * @param  iterable<int, Model>  $criteriEsclusione  Criteri di esclusione (modello modulo-specifico)
+     * @param  Collection  $criteriOption  Opzioni criteri (tipicamente pluck name => value_real)
      */
-    public function execute(Model $scheda, Collection $criteriEsclusione, Collection $criteriOption): void
+    public function execute(Model $scheda, iterable $criteriEsclusione, Collection $criteriOption): void
     {
         $motivi = [];
         foreach ($criteriEsclusione as $criterio) {

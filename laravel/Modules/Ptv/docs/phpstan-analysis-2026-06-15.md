@@ -2,8 +2,9 @@
 title: "PHPStan Analysis - Ptv Module"
 module: "Ptv"
 date: "2026-06-15"
-status: "in-progress"
-errors_found: 133
+status: "resolved"
+errors_found: 0
+resolution_note: "ListaAszTipCodEsclusoSubito usa $scheda->asz()->ofRangeDate() — mai Asz00k1::query() bypass"
 ---
 
 # PHPStan Analysis — Ptv Module (2026-06-15)

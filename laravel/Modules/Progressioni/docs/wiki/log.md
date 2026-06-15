@@ -9,7 +9,9 @@ module: "Progressioni"
 
 ## Log Entries
 
-_No activity yet. Start by ingesting raw documents._
+[2026-06-15] [UPDATE] Gate PHPStan: 34→0 errori; doc [phpstan-progressioni-gate](./concepts/phpstan-progressioni-gate.md); helper `getRouteParameters` in Xot
+
+[2026-06-15] [LINT] `php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules` → OK
 
 ### Format
 
@@ -25,5 +27,5 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+**Last Activity:** 2026-06-15  
+**Total Operations:** 2

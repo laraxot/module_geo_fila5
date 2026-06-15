@@ -11,7 +11,8 @@ updated: "2026-04-15T08:28:47Z"
 
 ## Concepts
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+- [phpstan-scheda-actions](./concepts/phpstan-scheda-actions.md) — action batch su schede, relazioni `asz()`, PHPStan
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — contratto wiki locale
 
 ## Entities
 
@@ -27,8 +28,8 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-15T08:28:47Z  
-**Total Pages:** 0  
+**Last Updated:** 2026-06-15  
+**Total Pages:** 2  
 **Total Raw Sources:** 0
 
 ## Shared Second Brain Discipline

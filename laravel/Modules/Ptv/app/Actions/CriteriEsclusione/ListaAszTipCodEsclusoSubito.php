@@ -6,8 +6,7 @@ namespace Modules\Ptv\Actions\CriteriEsclusione;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
-use Modules\Sigma\Models\Asz00k1;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class ListaAszTipCodEsclusoSubito
@@ -17,46 +16,37 @@ class ListaAszTipCodEsclusoSubito
     /**
      * Verifica se la scheda ha diritto in base alla lista ASZ tipo codice escluso subito.
      *
-     * @param  ProgressioneSchedaContract  $scheda  La scheda da verificare
+     * @param  SchedaContract  $scheda  La scheda da verificare
      * @param  string  $value  Valore del criterio (lista separata da virgole)
      * @param  Collection<string, mixed>  $option  Collezione delle opzioni del criterio
      * @return string Motivo di esclusione o stringa vuota se ha diritto
      */
-    public function execute(ProgressioneSchedaContract $scheda, string $value, Collection $option): string
+    public function execute(SchedaContract $scheda, string $value, Collection $option): string
     {
         $dataPresenzaAl = $option->get('data_presenza_al');
         if (! $dataPresenzaAl instanceof Carbon) {
             return '';
         }
 
-        $asz_al = $dataPresenzaAl->format('Ymd');
+        $asz_al = (int) $dataPresenzaAl->format('Ymd');
 
         $minGgAszTipCodEsclusoSubito = $option->get('min_gg_asz_tip_cod_escluso_subito');
         if (! is_numeric($minGgAszTipCodEsclusoSubito)) {
             return '';
         }
 
-        $asz_dal = $dataPresenzaAl
+        $asz_dal = (int) $dataPresenzaAl
             ->subDays((int) $minGgAszTipCodEsclusoSubito)
             ->format('Ymd');
 
-        $matr = $scheda->matr;
-        if (! is_int($matr) && ! is_string($matr)) {
-            return '';
-        }
-
-        $table = (new Asz00k1)->getTable();
-        $tmp = Asz00k1::query()
-            ->where($table.'.matr', $matr)
-            ->where($table.'.ente', $scheda->ente ?? 90)
-            ->where($table.'.aszann', '')
-            ->ofRangeDate((int) $asz_dal, (int) $asz_al)
+        /** @var array<int, array<string, mixed>> $tmp */
+        $tmp = $scheda->asz()
+            ->ofRangeDate($asz_dal, $asz_al)
             ->select('asztip', 'aszcod')
             ->distinct()
             ->get()
             ->toArray();
 
-        /** @var array<int, array<string, mixed>> $tmp */
         $valueList = collect(explode(',', $value))->filter()->values();
         $tmp1 = collect($tmp)
             ->map(static fn ($item): string => (string) $item['asztip'].'-'.(string) $item['aszcod'])

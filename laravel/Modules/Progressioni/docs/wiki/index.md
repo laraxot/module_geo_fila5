@@ -1,7 +1,7 @@
 ---
 title: "Wiki Index"
 module: "Progressioni"
-updated: "2026-04-15T08:28:47Z"
+updated: "2026-06-15"
 ---
 
 # Wiki Index — Progressioni
@@ -11,7 +11,11 @@ updated: "2026-04-15T08:28:47Z"
 
 ## Concepts
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+  - [phpstan-progressioni-gate](./concepts/phpstan-progressioni-gate.md) — gate PHPStan 0 errori, pattern hasMany/ASZ/route helper
+  - [eloquent-relationship-encapsulation](../../../../../docs/wiki/rules/eloquent-relationship-encapsulation.md) — regola cardinale (link root)
+- [organizzativa-money](./concepts/organizzativa-money.md)
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md)
+- [context-overflow-prevention](./concepts/context-overflow-prevention.md)
 
 ## Entities
 
@@ -27,8 +31,8 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-15T08:28:47Z  
-**Total Pages:** 0  
+**Last Updated:** 2026-06-15  
+**Total Pages:** 4  
 **Total Raw Sources:** 0
 
 ## Shared Second Brain Discipline

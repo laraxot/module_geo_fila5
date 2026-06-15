@@ -14,11 +14,14 @@ module: "Ptv"
 - **Prima:** ~133 errori PHPStan su `Modules/Ptv` (primo ingresso in scope `phpstan analyse Modules`).
 - **Dopo:** 0 errori su `Modules/Ptv` e `Modules` intero.
 - **Pattern applicati:**
-  - `SchedaContract` / `ProgressioneSchedaContract`: `@phpstan-require-extends Model`, `@mixin \Eloquent`, proprietà relazione documentate.
+   - `SchedaContract`: `@phpstan-require-extends Model`, `@mixin \Eloquent`, proprietà relazione documentate (`asz`).
+   - `ProgressioneSchedaContract`: **rimosso** (2026-06-15) — superfluo, Scheda estende BaseScheda che implementa SchedaContract.
   - `EloquentModelResolver`: narrowing `class-string<Model>` per action generiche su schede Performance.
   - `BaseScheda::performanceIndividuale()`: relazione verso `Modules\Performance\Models\Individuale` (classe `Performance` inesistente).
   - Rimosso `getActivitylogOptions()` da `BaseScheda` (trait `LogsActivity` disabilitato, pacchetto activitylog assente in vendor).
-  - `ListaAszTipCodEsclusoSubito`: query diretta su `Asz00k1` con `ofRangeDate` invece di scope su `HasMany` non tipizzato.
+  - `SchedaContract`: `@method asz()` + `BaseScheda::asz()` — unico contratto (ProgressioneSchedaContract eliminato).
+  - `ListaAszTipCodEsclusoSubito`: `$scheda->asz()->ofRangeDate()` con type-hint `SchedaContract`.
+  - `Check::execute()`: parametro `$criteriEsclusione` come `iterable<int, Model>` per compatibilità Eloquent Collection cross-modulo (covarianza template).
 - **Riferimenti:** [phpstan-optional-contracts](../../../../docs/wiki/patterns/phpstan-optional-contracts.md)
 
 
@@ -36,5 +39,5 @@ module: "Ptv"
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+**Last Activity:** 2026-06-15 — PHPStan Ptv remediation  
+**Total Operations:** 1

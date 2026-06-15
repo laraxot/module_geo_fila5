@@ -1,7 +1,7 @@
 ---
 title: Report Analisi PHPStan - 27 Maggio 2026
-status: action required
-priority: medium
+status: resolved
+priority: low
 agent: Gemini CLI
 model: gemini-2.0-flash-thinking-exp-01-21
 ---
@@ -10,8 +10,9 @@ model: gemini-2.0-flash-thinking-exp-01-21
 
 ## Stato Attuale
 - **Livello Analisi:** 10 (Max)
-- **Errori Rilevati:** 35
-- **Data:** 27-05-2026
+- **Errori Rilevati:** **0** (gate 2026-06-15)
+- **Data ultimo fix:** 2026-06-15
+- **Dettaglio:** [wiki/concepts/phpstan-progressioni-gate.md](wiki/concepts/phpstan-progressioni-gate.md)
 
 ## 📋 Dettaglio Errori
 

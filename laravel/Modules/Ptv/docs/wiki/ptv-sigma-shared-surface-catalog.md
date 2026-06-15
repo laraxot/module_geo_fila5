@@ -25,7 +25,7 @@ Inventario **ripetibile** di contratti, trait e metodi tra `Ptv` e `Sigma` (più
 | Simbolo | Path Ptv | Path Sigma | Bucket | Perché esiste | Owner proposto |
 |---------|----------|------------|--------|---------------|----------------|
 | `SchedaContract` | `app/Models/Contracts/SchedaContract.php` | `app/Contracts/SchedaContract.php` | domain-ptv / core-hr | Ptv definisce API scheda valutazione; Sigma ha stub vuoto | Contratto unificato in **Xot** |
-| `ProgressioneSchedaContract` | `app/Models/Contracts/ProgressioneSchedaContract.php` | — | domain-ptv | Estensione criteri progressione | **Ptv** (fino a split HR-core) |
+| `ProgressioneSchedaContract` | **rimosso** (2026-06-15) | Consolidato in `SchedaContract` | domain-ptv | Superfluo: Scheda estende BaseScheda che implementa SchedaContract | **Dep** |
 
 ## Accoppiamento trait (hard dependency)
 

@@ -205,7 +205,7 @@ trait ProgressioniRelationshipTrait
     public function pesi(): HasOne
     {
         return $this->hasOne(Pesi::class, 'anno', 'anno')
-            ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)');
+            ->whereRaw('find_in_set(?, lista_propro)', [(string) $this->propro]);
     }
 
     /*
@@ -239,23 +239,14 @@ trait ProgressioniRelationshipTrait
         // return CodiciAspettative::where('anno',$this->anno);
     }
 
-    /**
+/**
      * @return HasMany<Asz00k1, $this>
      */
-    public function asz(): HasMany
-    {
-        $tbl = app(Asz00k1::class)->getTable();
-
-        return $this->hasMany(Asz00k1::class, 'matr', 'matr')
-            ->where($tbl.'.ente', $this->ente)
-            ->whereRaw($tbl.'.aszann=""');
-    }
-
     public function aszEff(): HasMany
     {
         $lista_codici_aspettative = $this->listaCodiciAspettative();
         $asz = $this->asz()
-            ->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.$lista_codici_aspettative.'")');
+            ->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_codici_aspettative]);
 
         return $asz;
     }

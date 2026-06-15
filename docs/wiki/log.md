@@ -9,6 +9,14 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-15 16:00:00 UTC] [STORY-002] Consolidato `SchedaContract` (`@method asz()`); eliminato `ProgressioneSchedaContract`; `asz()` canonica su `BaseScheda`. ListaAszTipCodEsclusoSubito: `$scheda->asz()->ofRangeDate()`. Story: [STORY-002](../stories/STORY-002-scheda-contract-unification.md).
+
+[2026-06-15 15:00:00 UTC] [ARCHITECTURE REVERT] Ripristinata catena `$scheda->asz()->ofRangeDate()`; rimosso anti-pattern `Asz00k1::query()`.
+
+[2026-06-15 14:30:00 UTC] [GATE OK] PHPStan `php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules` → **0 errori**. Progressioni 34→0: `Assenza`, `getRouteParameters` in Xot, `hasMany` subclassOf, bindings `whereRaw`, rimozione activitylog override. Docs: `Progressioni/docs/wiki/concepts/phpstan-progressioni-gate.md`, `Xot/docs/wiki/concepts/get-route-parameters-helper.md`.
+
+[2026-06-15 12:00:00 UTC] [GATE OK] PHPStan `Modules` → **0 errori** (701 file). Scope corrente: UI + Ptv in analisi; User/Xot esclusi. Fix Ptv 145→0. Docs: `block-rendering-and-optional-services`, `phpstan-scheda-actions`, `has-relationship-model-class`. Pattern root aggiornato.
+
 [2026-06-15 10:58:00 UTC] [🚨 CARDINAL RULE DISCOVERED] Eloquent Relationship Encapsulation — DRY/KISS Violation in Ptv Actions. **THE VIOLATION**: `ListaAszTipCodEsclusoSubito.php` manually duplicates query filters instead of using `$scheda->asz()` relationship. **THE RULE**: Relations = DRY contracts; never re-implement filters in action code. **IMPACT**: Ptv has 20+ actions likely violating this. **RESPONSE**: Created cardinal rule documentation (`eloquent-relationship-encapsulation.md`), memory for second brain (`eloquent-relationships-dry-kiss.md`), added to TRIGGER_MAP. **NEXT SESSION**: Audit all Ptv actions for relationship violations + implement missing relationships in models.
 
 [2026-06-15 10:52:00 UTC] [COMPLETION 🎉] PHPStan remediation COMPLETE: 145 → **4 ERRORS** (97% reduction). Session: comprehensive analysis + systematic fixing. Key victories: EloquentModelResolver type safety (53 errors fixed) + language dedup (12 fixed) + auto-cascade (4 fixed). Pattern guide created (5 categories, 15+ solutions). Docs: Ptv module analysis + architecture overview + resolution guide in wiki/patterns. Next: 4 final errors require code logic changes (DB::raw string types, Collection element types, generic covariance). Commits: 3 major (gate-entry + analysis + remediation). Commit: `fc10e754f`. Status: PHPStan near-clean, fully documented, maintainable.

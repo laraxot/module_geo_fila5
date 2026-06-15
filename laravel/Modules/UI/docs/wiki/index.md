@@ -26,3 +26,4 @@
 | [enumselect-filament-api-collisions](./concepts/enumselect-filament-api-collisions.md) | Concept | runtime fatals (make/enum/getLabel) | 2026-04-23 |
 | [model-states-module-ownership](./concepts/model-states-module-ownership.md) | Concept | ownership modulare e vincoli runtime | 2026-04-28 |
 | [phpstan-dynamic-array-normalization](./concepts/phpstan-dynamic-array-normalization.md) | Concept | Normalizzazione array dinamici UI per PHPStan senza inline @var/ignore | 2026-05-06 |
+| [block-rendering-and-optional-services](./concepts/block-rendering-and-optional-services.md) | Concept | Catena Block/Map, contratti Geo/Cms opzionali, consumer Blade | 2026-06-15 |

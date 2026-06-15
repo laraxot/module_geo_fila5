@@ -113,15 +113,10 @@ class TrovaEsclusiByYearAction
                 continue;
             }
 
-            // Type narrowing: ensure criteri_esclusione is Collection of Models with name and value
-            /** @var Collection<int, CriteriEsclusione> $validatedCriteriEsclusione */
-            $validatedCriteriEsclusione = $criteri_esclusione;
-
-            // Type narrowing: ensure criteri_option is Collection of Models
-            /** @var Collection<int, Model> $validatedCriteriOption */
+            /** @var Collection<int|string, mixed> $validatedCriteriOption */
             $validatedCriteriOption = $criteri_option;
 
-            app(Check::class)->execute($row, $validatedCriteriEsclusione, $validatedCriteriOption);
+            app(Check::class)->execute($row, $criteri_esclusione, $validatedCriteriOption);
         }
     }
 }

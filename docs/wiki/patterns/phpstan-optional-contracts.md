@@ -34,7 +34,9 @@ Usare invece:
 - `UI`: `InteractiveMap` dipende da `MapServiceContract` e `GeocodingServiceContract`, non da `Modules\Geo\Services\*` assenti.
 - `UI`: `ResolveLocalizedBlockDataAction` delega al modulo `Cms` solo se disponibile.
 - `User`: `CanComment` non vive in `User`; il modulo `User` non dipende da `Comment`.
-- `Xot`: `UserContract` e `ProfileContract` dichiarano relation generic con `$this`, allineate alle implementazioni Eloquent.
+- `Xot`: `HasRelationshipModelClass` separa `getModelClass()` per RelationManager/ManageRelatedRecords da `HasXotTable`.
+- `Ptv`: `EloquentModelResolver` + contratti scheda `@phpstan-require-extends Model` per action generiche su Performance.
+- `Progressioni`: `Assert::subclassOf` su `hasMany` dinamici; `Assenza` (non `Assenze`); **`$scheda->asz()->ofRangeDate()`** nelle action (mai query manuale ASZ); helper `getRouteParameters()` in Xot.
 
 ## Verifica
 

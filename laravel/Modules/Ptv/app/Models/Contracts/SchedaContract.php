@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Sigma\Models\Asz00k1;
 
 /**
  * Contract per le schede di valutazione del personale nelle progressioni temporali variabili.
@@ -33,12 +35,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $perf_ind_media Media performance individuale
  * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
  *
+ * @method HasMany<Asz00k1, Model> asz() Relazione ASZ — implementata in BaseScheda
+ *
  * @mixin \Eloquent
  */
 interface SchedaContract
 {
-    // Methods inherited from Eloquent Model:
-    // - save(array $options = [])
-    // - setHaDirittoAttribute(?int $value): void
-    // - setMotivoAttribute(?string $value): void
 }
