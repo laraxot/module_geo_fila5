@@ -148,6 +148,18 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'is_active' => [
+            'label' => 'is_active',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
     ],
     'navigation' => [
         'name' => 'Tenants',

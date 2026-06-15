@@ -13,6 +13,7 @@ use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -29,8 +30,8 @@ use Modules\Progressioni\Filament\Resources\ProgressioniResource;
 use Modules\Progressioni\Models\Progressioni;
 use Modules\Ptv\Actions\Filament\Actions\PopulateYearButton;
 use Modules\Ptv\Actions\Filament\Actions\TrovaEsclusiButton;
-use Modules\Ptv\Actions\GetValutatoriOptions;
 // use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Ptv\Actions\GetValutatoriOptions;
 use Modules\Ptv\Actions\PopulateByYearAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Header\MergeDoubleRowCatecoYearAction;
@@ -168,7 +169,7 @@ class ListProgressionis extends XotBaseListRecords
                         ->reactive(),
                     Select::make('valutatore_id')
                         ->label('valutatore')
-                        ->options(function (\Filament\Schemas\Components\Utilities\Get $get, \Filament\Schemas\Components\Utilities\Set $set): array {
+                        ->options(function (\Filament\Schemas\Components\Utilities\Get $get, Set $set): array {
                             /** @var int|string|null $anno */
                             $anno = $get('anno');
 

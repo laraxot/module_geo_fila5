@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
+        'name' => 'Log Sistema',
+        'plural' => 'Log Sistema',
         'label' => 'Log Sistema',
-        'group' => 'Indennità',
+        'group' => [
+            'name' => 'Indennità',
+            'description' => 'Gestione indennità di responsabilità',
+        ],
         'sort' => 43,
         'icon' => 'heroicon-o-document-text',
     ],

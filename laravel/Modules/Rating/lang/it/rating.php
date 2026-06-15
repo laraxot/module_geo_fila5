@@ -97,6 +97,21 @@ return [
         'type' => [
             'label' => 'type',
         ],
+        'slug' => [
+            'label' => 'slug',
+        ],
+        'rule' => [
+            'label' => 'rule',
+        ],
+        'order_column' => [
+            'label' => 'order_column',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
     ],
     'actions' => [
         'enable' => [

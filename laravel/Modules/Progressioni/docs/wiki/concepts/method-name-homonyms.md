@@ -17,7 +17,7 @@ related:
 | Categoria | Metodi |
 |-----------|--------|
 | `A_filament_framework` | 21 |
-| `B_sigma_relationship_homonym` | 2 |
+| `B_sigma_relationship_homonym` | 3 |
 | `C_sigma_gg_business` | 2 |
 | `D_field_metadata_contract` | 3 |
 | `E_scheda_stack` | 43 |
@@ -32,6 +32,12 @@ related:
 Hook Filament/Laravel ripetuti — **non** debito. Elenco omesso.
 
 ### `B_sigma_relationship_homonym`
+
+#### `peso` — relazione vs business (fix 2026-06-15)
+
+- `ProgressioniRelationshipTrait::peso()` — `HasOne` verso `Pesi` (alias di `pesi()`)
+- `Scheda::resolveCoeffPesoFromParams()` — ex `peso(array $params)`; non usare il nome `peso()` per logica non-relazione
+- Vedi [scheda-peso-relationship-homonym.md](../../../scheda-peso-relationship-homonym.md)
 
 #### `anag` — 7 classi
 

@@ -222,6 +222,11 @@ return [
             'icon' => 'list_log_activities',
             'label' => 'list_log_activities',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
     ],
     'fields' => [
         'name' => [
@@ -663,6 +668,18 @@ return [
             'placeholder' => 'gg_integ_params',
             'helper_text' => 'gg_integ_params',
             'description' => 'gg_integ_params',
+        ],
+        'excellences_2026' => [
+            'label' => 'excellences_2026',
+            'placeholder' => 'excellences_2026',
+            'helper_text' => 'excellences_2026',
+            'description' => 'excellences_2026',
+        ],
+        'perf_ind_2026' => [
+            'label' => 'perf_ind_2026',
+            'placeholder' => 'perf_ind_2026',
+            'helper_text' => 'perf_ind_2026',
+            'description' => 'perf_ind_2026',
         ],
     ],
     'schede' => [

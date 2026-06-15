@@ -16,6 +16,54 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'uuid' => [
+            'label' => 'uuid',
+        ],
+        'user_id' => [
+            'label' => 'user_id',
+        ],
+        'device' => [
+            'label' => 'device',
+        ],
+        'platform' => [
+            'label' => 'platform',
+        ],
+        'browser' => [
+            'label' => 'browser',
+        ],
+        'ip' => [
+            'label' => 'ip',
+        ],
+        'is_desktop' => [
+            'label' => 'is_desktop',
+        ],
+        'is_mobile' => [
+            'label' => 'is_mobile',
+        ],
+        'is_phone' => [
+            'label' => 'is_phone',
+        ],
+        'is_robot' => [
+            'label' => 'is_robot',
+        ],
+        'is_tablet' => [
+            'label' => 'is_tablet',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
+        'updated_by' => [
+            'label' => 'updated_by',
+        ],
+        'created_by' => [
+            'label' => 'created_by',
+        ],
     ],
     'navigation' => [
         'name' => 'Devices',

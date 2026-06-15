@@ -34,6 +34,27 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'user_id' => [
+            'label' => 'user_id',
+        ],
+        'nickname' => [
+            'label' => 'nickname',
+        ],
+        'token' => [
+            'label' => 'token',
+        ],
+        'refresh_token' => [
+            'label' => 'refresh_token',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
     ],
     'navigation' => [
         'name' => 'Socialite Users',

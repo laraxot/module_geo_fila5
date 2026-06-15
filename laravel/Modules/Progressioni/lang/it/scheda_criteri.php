@@ -465,6 +465,9 @@ return [
         'resetFilters' => [
             'tooltip' => 'resetFilters',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'messages' => [
         'welcome' => 'Benvenuto nella gestione delle schede criteri',

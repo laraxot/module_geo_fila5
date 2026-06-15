@@ -156,6 +156,9 @@ return [
             'icon' => 'applyFilters',
             'label' => 'applyFilters',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'tabs' => [
         'index' => [

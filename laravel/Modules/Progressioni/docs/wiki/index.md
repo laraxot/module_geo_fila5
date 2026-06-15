@@ -24,6 +24,7 @@ updated: "2026-06-15"
 ## Rules
 
 - [contract-aggregation-pattern](./rules/contract-aggregation-pattern.md) — consumer: estende `Ptv\BaseScheda`, niente contratto locale
+- [database-connection-progressione](../database-connection-progressione.md) — `$connection = 'progressione'`; override su modelli Ptv
 
 ## Entities
 
@@ -40,7 +41,7 @@ _No comparisons synthesized yet._
 ---
 
 **Last Updated:** 2026-06-15  
-**Total Pages:** 5  
+**Total Pages:** 6  
 **Total Raw Sources:** 0
 
 ## Shared Second Brain Discipline

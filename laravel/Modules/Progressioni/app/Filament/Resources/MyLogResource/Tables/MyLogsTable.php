@@ -1,0 +1,50 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\Progressioni\Filament\Resources\MyLogResource\Tables;
+
+use Filament\Tables\Columns\TextColumn;
+use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
+
+class MyLogsTable extends XotBaseResourceTable
+{
+    public function getTableColumns(): array
+    {
+        return [
+            'id' => TextColumn::make('id')
+                ->sortable(),
+            'id_tbl' => TextColumn::make('id_tbl')
+                ->numeric()
+                ->sortable(),
+            'tbl' => TextColumn::make('tbl')
+                ->searchable()
+                ->sortable(),
+            'id_approvaz' => TextColumn::make('id_approvaz')
+                ->numeric()
+                ->sortable(),
+            'note' => TextColumn::make('note')
+                ->searchable()
+                ->sortable(),
+            'obj' => TextColumn::make('obj')
+                ->searchable()
+                ->sortable(),
+            'act' => TextColumn::make('act')
+                ->searchable()
+                ->sortable(),
+            'datemod' => TextColumn::make('datemod')
+                ->sortable(),
+            'handle' => TextColumn::make('handle')
+                ->searchable()
+                ->sortable(),
+            'created_at' => TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+            'updated_at' => TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+        ];
+    }
+}

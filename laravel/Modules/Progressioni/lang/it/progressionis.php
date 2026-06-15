@@ -33,16 +33,26 @@ return [
         'parent.name' => 'Padre',
         'parent_name' => 'Padre',
         'assets' => 'assets',
-        'id' => 'ID',
+        'id' => [
+            'label' => 'id',
+        ],
         'id_placeholder' => ' ',
-        'cognome' => 'Cognome',
+        'cognome' => [
+            'label' => 'cognome',
+        ],
         'cognome_placeholder' => ' ',
         'nome' => 'Nome',
         'nome_placeholder' => ' ',
         'ente' => 'ente',
-        'matr' => 'matr',
-        'ha_diritto' => 'ha_diritto',
-        'motivo' => 'motivo',
+        'matr' => [
+            'label' => 'matr',
+        ],
+        'ha_diritto' => [
+            'label' => 'ha_diritto',
+        ],
+        'motivo' => [
+            'label' => 'motivo',
+        ],
         'motivo_placeholder' => ' ',
         'stabi' => 'stabi',
         'stabi_txt' => 'stabi_txt',
@@ -55,7 +65,36 @@ return [
         'qua2kd' => 'qua2kd',
         'qua2ka' => 'qua2ka',
         'categoria_eco' => 'categoria_eco',
-        'anno' => 'anno',
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'criteri' => [
+            'label' => 'criteri',
+        ],
+        'gg' => [
+            'label' => 'gg',
+        ],
+        'gg_no_asz' => [
+            'label' => 'gg_no_asz',
+        ],
+        'gg_asz' => [
+            'label' => 'gg_asz',
+        ],
+        'gg_cateco_no_posfun_no_asz' => [
+            'label' => 'gg_cateco_no_posfun_no_asz',
+        ],
+        'eta' => [
+            'label' => 'eta',
+        ],
+        'periodo' => [
+            'label' => 'periodo',
+        ],
+        'dal' => [
+            'label' => 'dal',
+        ],
+        'al' => [
+            'label' => 'al',
+        ],
     ],
     'schede' => [
         'field' => [

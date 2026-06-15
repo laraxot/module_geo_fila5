@@ -14,13 +14,10 @@ return [
         'icon' => 'heroicon-o-chat-bubble-left-right',
         'label' => 'Messaggi',
     ],
-    // Messaggi di importazione
     'import_ced_diff' => 'Importa CED Diff',
     'choose_xls_file' => 'Scegli il file XLS',
     'import_completed' => 'Importazione completata con successo.',
     'confirm_create_table' => 'Vuoi creare una nuova tabella con i dati importati?',
-
-    // Messaggi di successo
     'success' => 'Operazione completata con successo',
     'created' => 'Record creato con successo',
     'updated' => 'Record aggiornato con successo',
@@ -30,8 +27,6 @@ return [
     'export_success' => 'Esportazione completata con successo',
     'upload_success' => 'File caricato con successo',
     'download_success' => 'Download completato con successo',
-
-    // Messaggi di errore
     'error' => 'Si è verificato un errore',
     'error_occurred' => 'Si è verificato un errore durante l\'operazione',
     'not_found' => 'Record non trovato',
@@ -41,15 +36,11 @@ return [
     'export_error' => 'Errore durante l\'esportazione',
     'upload_error' => 'Errore durante il caricamento del file',
     'download_error' => 'Errore durante il download',
-
-    // Messaggi di avviso
     'warning' => 'Attenzione',
     'confirm_delete' => 'Sei sicuro di voler eliminare questo elemento?',
     'confirm_action' => 'Sei sicuro di voler eseguire questa azione?',
     'unsaved_changes' => 'Hai modifiche non salvate. Vuoi continuare?',
     'data_loss_warning' => 'Questa azione potrebbe causare la perdita di dati',
-
-    // Messaggi informativi
     'info' => 'Informazione',
     'loading' => 'Caricamento in corso...',
     'processing' => 'Elaborazione in corso...',
@@ -57,8 +48,6 @@ return [
     'no_results' => 'Nessun risultato trovato',
     'select_items' => 'Seleziona gli elementi da processare',
     'items_selected' => 'Elementi selezionati',
-
-    // Messaggi di validazione
     'validation' => [
         'required' => 'Il campo :attribute è obbligatorio',
         'email' => 'Il campo :attribute deve essere un indirizzo email valido',
@@ -80,8 +69,6 @@ return [
         'in' => 'Il valore del campo :attribute non è valido',
         'not_in' => 'Il valore del campo :attribute non è valido',
     ],
-
-    // Messaggi specifici per progressioni
     'progression' => [
         'created' => 'Progressione creata con successo',
         'updated' => 'Progressione aggiornata con successo',
@@ -91,8 +78,6 @@ return [
         'pending' => 'Progressione in attesa di approvazione',
         'completed' => 'Progressione completata con successo',
     ],
-
-    // Messaggi per file e upload
     'file' => [
         'upload_success' => 'File caricato con successo',
         'upload_error' => 'Errore durante il caricamento del file',
@@ -102,13 +87,34 @@ return [
         'download_success' => 'Download completato con successo',
         'download_error' => 'Errore durante il download',
     ],
-
-    // Messaggi per operazioni batch
     'batch' => [
         'processing' => 'Elaborazione in corso...',
         'completed' => 'Elaborazione completata',
         'partial_success' => 'Alcune operazioni sono fallite',
         'all_success' => 'Tutte le operazioni completate con successo',
         'all_failed' => 'Tutte le operazioni sono fallite',
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'id',
+        ],
+        'type' => [
+            'label' => 'type',
+        ],
+        'title' => [
+            'label' => 'title',
+        ],
+        'txt' => [
+            'label' => 'txt',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
     ],
 ];

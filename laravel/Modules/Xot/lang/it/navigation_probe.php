@@ -3,5 +3,15 @@
 declare(strict_types=1);
 
 return [
-    'navigation' => ['icon' => 'navigation probe.navigation', 'group' => 'navigation probe.navigation', 'sort' => 59],
+    'navigation' => [
+        'name' => 'Navigation Probe',
+        'plural' => 'Navigation Probe',
+        'label' => 'Navigation Probe',
+        'group' => [
+            'name' => 'Sistema',
+            'description' => 'Fixture di test per la navigazione Filament',
+        ],
+        'sort' => 59,
+        'icon' => 'heroicon-o-beaker',
+    ],
 ];

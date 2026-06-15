@@ -6,12 +6,17 @@ namespace Modules\Progressioni\Filament\Resources\SchedaResource\Pages;
 
 use Filament\Actions\DeleteAction;
 use Modules\Progressioni\Filament\Resources\SchedaResource;
-use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
+use Modules\Ptv\Filament\Resources\SchedaResource\Pages\BaseEditScheda;
+use Override;
 
-class EditScheda extends XotBaseEditRecord
+class EditScheda extends BaseEditScheda
 {
     protected static string $resource = SchedaResource::class;
 
+    /**
+     * @return array<string, DeleteAction>
+     */
+    #[Override]
     protected function getHeaderActions(): array
     {
         return [

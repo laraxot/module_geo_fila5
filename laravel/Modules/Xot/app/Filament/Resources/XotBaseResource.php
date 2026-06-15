@@ -14,6 +14,7 @@ use Filament\Resources\Resource as FilamentResource;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Filament\Support\Components\Component;
+use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\View;
@@ -23,10 +24,9 @@ use Modules\Media\Actions\GetAttachmentsSchemaAction;
 use Modules\Xot\Actions\GetTransKeyAction;
 use Modules\Xot\Actions\ModelClass\CountAction;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
+use Webmozart\Assert\Assert;
 
 use function Safe\glob;
-
-use Webmozart\Assert\Assert;
 
 /**
  * @method static string getUrl(string $name, array<string, mixed> $parameters = [], bool $isAbsolute = true)
@@ -40,7 +40,7 @@ abstract class XotBaseResource extends FilamentResource
     protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     /**
-     * @param array<string, bool|float|int|string|null> $params
+     * @param  array<string, bool|float|int|string|null>  $params
      */
     public static function trans(string $key, bool $exceptionIfNotExist = false, array $params = []): string
     {
@@ -80,7 +80,7 @@ abstract class XotBaseResource extends FilamentResource
      */
     public static function getModel(): string
     {
-        if (null !== static::$model) {
+        if (static::$model !== null) {
             $res = static::$model;
             Assert::subclassOf(
                 $res,
@@ -112,7 +112,8 @@ abstract class XotBaseResource extends FilamentResource
     final public static function form(Schema $schema): Schema
     {
         // return AuthorForm::configure($schema);
-        $form_class = static::class.'\Schemas\\'.class_basename(static::getModel()).'Form';
+        $name = class_basename(static::getModel());
+        $form_class = static::class.'\Schemas\\'.$name.'Form';
         if (class_exists($form_class)) {
             $configured = $form_class::configure($schema);
             Assert::isInstanceOf($configured, Schema::class);
@@ -126,6 +127,21 @@ abstract class XotBaseResource extends FilamentResource
         return $schema
             ->components($components)
             ->columns(static::getFormSchemaColumns());
+    }
+
+    public static function table(Table $table): Table
+    {
+        $name = class_basename(static::getModel());
+        $name_plural = Str::plural($name);
+        $class = static::class.'\Tables\\'.$name_plural.'Table';
+        if (class_exists($class)) {
+            $configured = $class::configure($table);
+            Assert::isInstanceOf($configured, Table::class);
+
+            return $configured;
+        }
+
+        return $table;
     }
 
     public static function getFormSchemaColumns(): int
@@ -240,7 +256,7 @@ abstract class XotBaseResource extends FilamentResource
         $filesResult = glob($path.\DIRECTORY_SEPARATOR.'*RelationManager.php');
 
         // PHPStan: glob() with valid pattern returns array
-        if ([] === $filesResult) {
+        if ($filesResult === []) {
             return [];
         }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Filament\Resources;
 
 use Filament\Actions\Action;
+use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -12,33 +13,25 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
-use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CompilaScheda;
-use Modules\Ptv\Filament\Resources\SchedaResource\Pages\CreateScheda;
-use Modules\Ptv\Filament\Resources\SchedaResource\Pages\EditScheda;
-use Modules\Ptv\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Ptv\Models\Scheda;
 use Modules\Xot\Filament\Actions\Form\FieldRefreshAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
-use ReflectionClass;
-use Webmozart\Assert\Assert;
 
 abstract class BaseSchedaResource extends XotBaseResource
 {
-    //protected static ?string $model = Scheda::class;
+    // protected static ?string $model = Scheda::class;
 
     #[Override]
     /**
-     * @return array<string, \Filament\Forms\Components\Component>
+     * @return array<string, Component>
      */
     public static function getFormSchema(): array
     {
-        
-        $schema= [
+        $schema = [
             'id' => TextInput::make('id')->disabled(),
 
             'diritto_section' => Section::make('diritto')
@@ -103,21 +96,18 @@ abstract class BaseSchedaResource extends XotBaseResource
 
             'assenze_section' => Section::make('assenze')->schema([
                 'gg_presenza_dalal' => TextInput::make('gg_presenza_dalal')
-                ->suffixAction(FieldRefreshAction::make('gg_presenza_dalal'))
-                ,
+                    ->suffixAction(FieldRefreshAction::make('gg_presenza_dalal')),
                 'gg_assenza_dalal' => TextInput::make('gg_assenza_dalal')
-                ->suffixAction(FieldRefreshAction::make('gg_assenza_dalal')),
+                    ->suffixAction(FieldRefreshAction::make('gg_assenza_dalal')),
                 'hh_assenza_dalal' => TextInput::make('hh_assenza_dalal')
-                ->suffixAction(FieldRefreshAction::make('hh_assenza_dalal')),
+                    ->suffixAction(FieldRefreshAction::make('hh_assenza_dalal')),
 
             ])->columns(4),
-           //'criteri_section' => Section::make('criteri')->schema(fn($record)=>static::getFormSchemaCriteri($record))->columns(4),
+            // 'criteri_section' => Section::make('criteri')->schema(fn($record)=>static::getFormSchemaCriteri($record))->columns(4),
         ];
-        
 
         return $schema;
     }
-
 
     public static function getFormSchemaCriteri(SchedaContract $record): array
     {
@@ -136,13 +126,12 @@ abstract class BaseSchedaResource extends XotBaseResource
 
             $schema[$field] = TextInput::make($field)
                 ->suffixAction(FieldRefreshAction::make($field));
-            //'propro' => TextInput::make('propro')
+            // 'propro' => TextInput::make('propro')
             //        ->suffixAction(FieldRefreshAction::make('propro')),
         }
-        
+
         return $schema;
     }
-
 
     /**
      * @return array<string, RelationManager>
@@ -163,7 +152,7 @@ abstract class BaseSchedaResource extends XotBaseResource
         ];
     }
 
-     /**
+    /**
      * @return class-string<Model>
      */
     public static function getModel(): string

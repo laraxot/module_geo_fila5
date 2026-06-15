@@ -125,6 +125,9 @@ return [
         'reorderRecords' => [
             'label' => 'reorderRecords',
         ],
+        'profile' => [
+            'tooltip' => 'profile',
+        ],
     ],
     'tabs' => [
         'index' => [

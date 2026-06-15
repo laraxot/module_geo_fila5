@@ -829,9 +829,12 @@ Elenco dei metodi duplicati (cross-file e cross-modulo) che coinvolgono il modul
 
 **File in Progressioni:**
 
-- `./laravel/Modules/Progressioni/app/Models/Scheda.php`
+- `ProgressioniRelationshipTrait::peso()` — relazione `HasOne` verso `Pesi` (tabella `peso`)
+- `Scheda::resolveCoeffPesoFromParams()` — calcolo coefficiente da `coeff` (ex `peso(array $params)`)
 
-[Riflessione: Presente in 2 moduli — valutare se la logica è identica (refactoring) o volutamente diversa (override)]
+**Fix (2026):** il metodo business su `Scheda` non deve chiamarsi `peso()`: Laravel lo interpreta come relazione in `attributesToArray()` e rompe `CompilaScheda` (`ArgumentCountError`). Vedi [scheda-peso-relationship-homonym.md](scheda-peso-relationship-homonym.md).
+
+[Riflessione: in Performance `peso()` è solo relazione; in Progressioni la logica coeff è stata rinominata]
 
 ---
 

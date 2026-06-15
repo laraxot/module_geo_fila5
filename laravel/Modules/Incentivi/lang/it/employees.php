@@ -22,5 +22,29 @@ return [
         'cognome' => [
             'label' => 'cognome',
         ],
+        'matricola' => [
+            'label' => 'matricola',
+        ],
+        'full_name' => [
+            'label' => 'full_name',
+        ],
+        'tipologia' => [
+            'label' => 'tipologia',
+        ],
+        'codice_fiscale' => [
+            'label' => 'codice_fiscale',
+        ],
+        'posizione_inail' => [
+            'label' => 'posizione_inail',
+        ],
+        'tqu00f' => [
+            'label' => 'tqu00f',
+        ],
+        'tqu00f_desc1' => [
+            'label' => 'tqu00f_desc1',
+        ],
+        'tqu00f_desc2' => [
+            'label' => 'tqu00f_desc2',
+        ],
     ],
 ];

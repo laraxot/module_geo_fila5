@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
+        'name' => 'System Log',
+        'plural' => 'System Logs',
         'label' => 'System Logs',
-        'group' => 'Allowance',
-        'icon' => 'heroicon-o-clipboard-document-list',
+        'group' => [
+            'name' => 'Allowance',
+            'description' => 'Responsibility allowance management',
+        ],
         'sort' => 43,
+        'icon' => 'heroicon-o-clipboard-document-list',
     ],
 
     'fields' => [

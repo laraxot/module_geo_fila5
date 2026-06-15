@@ -112,6 +112,30 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'uuid' => [
+            'label' => 'uuid',
+        ],
+        'slug' => [
+            'label' => 'slug',
+        ],
+        'provider' => [
+            'label' => 'provider',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
+        'updated_by' => [
+            'label' => 'updated_by',
+        ],
+        'created_by' => [
+            'label' => 'created_by',
+        ],
     ],
     'navigation' => [
         'name' => 'Social Providers',

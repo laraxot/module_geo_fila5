@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'navigation' => [
         'name' => 'Assenza',
@@ -69,6 +71,27 @@ return [
         ],
         'check' => [
             'label' => 'check',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'tipo' => [
+            'label' => 'tipo',
+        ],
+        'codice' => [
+            'label' => 'codice',
+        ],
+        'descr' => [
+            'label' => 'descr',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'umi' => [
+            'label' => 'umi',
+        ],
+        'dur' => [
+            'label' => 'dur',
         ],
     ],
     'actions' => [

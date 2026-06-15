@@ -10,32 +10,31 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Route;
 use InvalidArgumentException;
 use Modules\Performance\Models\Individuale;
 use Modules\Progressioni\Database\Factories\SchedaFactory;
-use Modules\Progressioni\Models\Traits\ConvertedTrait;
 use Modules\Progressioni\Models\Traits\ProgressioniTrait;
 use Modules\Ptv\Models\BaseScheda;
+use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Actions\MassUpdateCategoriaEcoAction;
 use Modules\Sigma\Actions\MassUpdateCognomeNomeAction;
 use Modules\Sigma\Actions\MassUpdatePosizTxtAction;
 use Modules\Sigma\Actions\MassUpdateStabiTxtReparTxtAction;
+use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00f;
 use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Repart;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Tqu00f;
-use Modules\Sigma\Models\Traits\SchedaTrait;
-use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
 use Modules\Xot\Services\HtmlService;
 use RuntimeException;
@@ -288,6 +287,7 @@ use RuntimeException;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
+ *
  * @method static SchedaFactory factory($count = null, $state = [])
  * @method static Builder|Scheda newModelQuery()
  * @method static Builder|Scheda newQuery()
@@ -416,6 +416,7 @@ use RuntimeException;
  * @method static Builder|Scheda whereValutatoreId($value)
  * @method static Builder|Scheda whereVincitore($value)
  * @method static Builder|Scheda withDays(int $date_min, int $date_max)
+ *
  * @property int|null $gg_cateco
  * @property float|null $gg_no_asz
  * @property int|null $gg_cateco_no_posfun_no_asz
@@ -442,8 +443,8 @@ use RuntimeException;
  * @property float|null $gg_integ_params_asz
  * @property-read Collection<int, Asz00k1> $aszEff
  * @property-read int|null $asz_eff_count
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
  * @property-read string|null $codice_fiscale
  * @property-read string $from_field
  * @property-read int|null $gg_cateco_sup
@@ -457,9 +458,10 @@ use RuntimeException;
  * @property-read float|null $perf_ind2030
  * @property-read string|null $sesso
  * @property-read string $to_field
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read Collection<int, Integparam> $integParams
  * @property-read int|null $integ_params_count
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|Scheda ofEnte(int $ente)
  * @method static Builder<static>|Scheda ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|Scheda whereGgAszCateco($value)
@@ -488,11 +490,14 @@ use RuntimeException;
  * @method static Builder<static>|Scheda wherePerfInd2030($value)
  * @method static Builder<static>|Scheda wherePerfInd3($value)
  * @method static Builder<static>|Scheda whereRefreshedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Scheda extends BaseScheda
 {
     use ProgressioniTrait;
+
+    protected $connection = 'progressione';
 
     protected $table = 'schede';
 
@@ -756,9 +761,13 @@ class Scheda extends BaseScheda
     //*/
 
     /**
-     * { item_description }.
+     * Calcola il coefficiente peso da propro/posfun tramite tabella coeff.
+     *
+     * Non usare il nome `peso()`: riservato alla relazione HasOne verso `Pesi` (SchedaTrait, CompilaScheda).
+     *
+     * @param  array<string, mixed>  $params
      */
-    public function peso(array $params): int
+    public function resolveCoeffPesoFromParams(array $params): int
     {
         extract($params);
 
@@ -1208,10 +1217,10 @@ class Scheda extends BaseScheda
      */
     public function ggInSedeTot($data): ?int
     {
-        if ($data instanceof \Modules\Sigma\Datas\GgFilterData) {
+        if ($data instanceof GgFilterData) {
             $result = $this->anag?->ggInSedeTot($data);
         } else {
-            $filterData = \Modules\Sigma\Datas\GgFilterData::from($data);
+            $filterData = GgFilterData::from($data);
             $result = $this->anag?->ggInSedeTot($filterData);
         }
 

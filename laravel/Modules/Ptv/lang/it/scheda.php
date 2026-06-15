@@ -129,6 +129,14 @@ return [
         ],
     ],
     'navigation' => [
-        'label' => 'scheda.navigation',
+        'name' => 'Scheda valutazione',
+        'plural' => 'Schede valutazione',
+        'label' => 'Scheda valutazione',
+        'group' => [
+            'name' => 'PTV',
+            'description' => 'Gestione schede di valutazione del personale',
+        ],
+        'sort' => 93,
+        'icon' => 'heroicon-o-document-text',
     ],
 ];

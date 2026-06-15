@@ -4,23 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources;
 
+use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\RelationManagers\RelationManager;
 use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\CompilaScheda;
-use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\CreateScheda;
-use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\EditScheda;
-use Modules\Progressioni\Filament\Resources\SchedaResource\Pages\ListScheda;
 use Modules\Progressioni\Models\Scheda;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\Ptv\Filament\Resources\BaseSchedaResource;
 use Override;
 
-class SchedaResource extends XotBaseResource
+class SchedaResource extends BaseSchedaResource
 {
     protected static ?string $model = Scheda::class;
 
     #[Override]
     /**
-     * @return array<string, \Filament\Forms\Components\Component>
+     * @return array<string, Component>
      */
     public static function getFormSchema(): array
     {
@@ -77,9 +75,7 @@ class SchedaResource extends XotBaseResource
     public static function getPages(): array
     {
         return [
-            'index' => ListScheda::route('/'),
-            'create' => CreateScheda::route('/create'),
-            'edit' => EditScheda::route('/{record}/edit'),
+            ...parent::getPages(),
             'compila' => CompilaScheda::route('/{record}/compila'),
         ];
     }

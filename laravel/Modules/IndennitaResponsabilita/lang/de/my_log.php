@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
+        'name' => 'Systemprotokoll',
+        'plural' => 'Systemprotokolle',
         'label' => 'Systemprotokolle',
-        'group' => 'Zulage',
-        'icon' => 'heroicon-o-clipboard-document-list',
+        'group' => [
+            'name' => 'Zulage',
+            'description' => 'Verwaltung der Verantwortungszulagen',
+        ],
         'sort' => 43,
+        'icon' => 'heroicon-o-clipboard-document-list',
     ],
 
     'fields' => [

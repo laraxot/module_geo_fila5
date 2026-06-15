@@ -58,6 +58,33 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'uuid' => [
+            'label' => 'uuid',
+        ],
+        'description' => [
+            'label' => 'description',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
+        ],
+        'updated_at' => [
+            'label' => 'updated_at',
+        ],
+        'deleted_at' => [
+            'label' => 'deleted_at',
+        ],
+        'updated_by' => [
+            'label' => 'updated_by',
+        ],
+        'created_by' => [
+            'label' => 'created_by',
+        ],
+        'deleted_by' => [
+            'label' => 'deleted_by',
+        ],
     ],
     'navigation' => [
         'name' => 'Features',

@@ -7,30 +7,17 @@ namespace Modules\Performance\Filament\Resources\OrganizzativaResource\Schemas;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
-use Modules\Ptv\Filament\Infolists\AssenzeSection;
 use Modules\Ptv\Filament\Infolists\AszEffSection;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceInfolist;
 
 /**
  * Infolist dedicato per la risorsa Organizzativa.
  *
- * Estende XotBaseResourceInfolist e implementa getInfolistSchema()
- * per definire la struttura dell'infolist.
- *
- * Pattern: {ResourceNamespace}\Schemas\{ModelName}Infolist
- * Esempio: OrganizzativaResource\Schemas\OrganizzativaInfolist
- *
- * @see \Modules\Xot\Filament\Resources\Schemas\XotBaseResourceInfolist
- * @see \Modules\Xot\Filament\Resources\XotBaseResource::infolist()
+ * @see XotBaseResourceInfolist
  */
 class OrganizzativaInfolist extends XotBaseResourceInfolist
 {
-    
-
     /**
-     * Definisce lo schema dell'infolist.
-     *
      * @return array<string, Component>
      */
     public static function getInfolistSchema(): array
@@ -81,8 +68,7 @@ class OrganizzativaInfolist extends XotBaseResourceInfolist
                     TextEntry::make('importo_totale'),
                 ])
                 ->columns(3),
-            //'assenze' => AssenzeSection::make('assenze'),
-            'asz'=> AszEffSection::make('asz')->columnSpanFull(),
+            'asz' => AszEffSection::make('asz')->columnSpanFull(),
         ];
     }
 }

@@ -16,6 +16,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 
 ## Handoff attivi
 
+- [handoff-scheda-peso-homonym.md](handoff-scheda-peso-homonym.md) — fix `Scheda::peso()` su CompilaScheda (ArgumentCountError)
 - [handoff-asz-relationship-revert.md](handoff-asz-relationship-revert.md) — revert bypass `Asz00k1::query()` → `$scheda->asz()`
 - [handoff-phpstan-modules-zero.md](handoff-phpstan-modules-zero.md) — bootstrap 2026-06-15: PHPStan 0 su tutti i moduli
 - [handoff-phpstan-random-scan-2026-06-15.md](handoff-phpstan-random-scan-2026-06-15.md) — scan random + swarm, moduli esclusi Pdnd/Incentivi
@@ -28,4 +29,4 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - [Trigger Map](../wiki/rules/00-TRIGGER_MAP.md)
 - [Indice wiki](../wiki/index.md)
 
-*Ultimo aggiornamento: 2026-05-26*
+*Ultimo aggiornamento: 2026-06-15*

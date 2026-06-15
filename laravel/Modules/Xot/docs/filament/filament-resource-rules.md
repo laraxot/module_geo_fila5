@@ -1,7 +1,9 @@
 ---
-module: theme
+module: Xot
 topic: filament-resource-rules
-canonical: ../../../../Themes/docs/shared-components/filament-resource-rules-Modules.md
+canonical: ../filament-resource-rules.md
 ---
 
-See canonical documentation: ../../../../Themes/docs/shared-components/filament-resource-rules-Modules.md
+Documentazione canonica: [filament-resource-rules.md](../filament-resource-rules.md)
+
+Regole `getPages()`: [getpages-redundancy-rule.md](./getpages-redundancy-rule.md)

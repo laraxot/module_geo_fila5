@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\CedDiffResource\Pages;
 
-use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkAction;
@@ -31,7 +30,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
     protected static string $resource = CedDiffResource::class;
 
     /**
-     * @return array<string, Actions\Action>
+     * @return array<string, Action>
      */
     #[Override]
     protected function getHeaderActions(): array

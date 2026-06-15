@@ -4,7 +4,15 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'group' => '.navigation',
+        'name' => 'PDND',
+        'plural' => 'PDND',
+        'label' => 'PDND',
+        'group' => [
+            'name' => 'Servizi Esterni',
+            'description' => 'Integrazione con servizi PDND e anagrafe nazionale',
+        ],
+        'sort' => 50,
+        'icon' => 'heroicon-o-globe-alt',
     ],
     'sections' => [
         'empty' => [

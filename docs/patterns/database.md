@@ -78,3 +78,13 @@ Ensure the corresponding Model has the correct properties:
 - `protected $table`
 - `protected $fillable`
 - `protected function casts(): array`
+
+### Cross-module inheritance (connection override)
+
+When a domain module extends a model from another module (e.g. `Progressioni\Models\Scheda extends Ptv\Models\BaseScheda`), the parent `BaseModel` may declare a **different** connection (`ptv`). The consumer must override:
+
+```php
+protected $connection = 'progressione';
+```
+
+See [Progressioni database connection](../../laravel/Modules/Progressioni/docs/database-connection-progressione.md) and [Ptv scheda contract inheritance](../../laravel/Modules/Ptv/docs/wiki/concepts/scheda-contract-inheritance.md).

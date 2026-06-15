@@ -14,17 +14,17 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 class JobBatchesTable extends XotBaseResourceTable
 {
     /**
-     * @return array<int|string, Column>
+     * @return array<string, Column>
      */
     public function getTableColumns(): array
     {
         return [
-            TextColumn::make('id')->sortable(),
-            TextColumn::make('name')->searchable()->sortable(),
-            TextColumn::make('total_jobs')->sortable(),
-            TextColumn::make('pending_jobs')->sortable(),
-            TextColumn::make('failed_jobs')->sortable(),
-            TextColumn::make('created_at')->dateTime()->sortable(),
+            'id' => TextColumn::make('id')->sortable(),
+            'name' => TextColumn::make('name')->searchable()->sortable(),
+            'total_jobs' => TextColumn::make('total_jobs')->sortable(),
+            'pending_jobs' => TextColumn::make('pending_jobs')->sortable(),
+            'failed_jobs' => TextColumn::make('failed_jobs')->sortable(),
+            'created_at' => TextColumn::make('created_at')->dateTime()->sortable(),
         ];
     }
 }

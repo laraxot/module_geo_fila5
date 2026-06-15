@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 return [
     'navigation' => [
-        'label' => 'my log.navigation',
-        'group' => 'my log.navigation',
-        'icon' => 'my log.navigation',
-        'sort' => 100,
+        'name' => 'Log',
+        'plural' => 'Log',
+        'label' => 'Log',
+        'group' => [
+            'name' => 'Sistema',
+            'description' => 'Monitoraggio e tracciamento attività di sistema',
+        ],
+        'sort' => 99,
+        'icon' => 'heroicon-o-clipboard-document-list',
     ],
 ];

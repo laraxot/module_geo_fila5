@@ -79,6 +79,27 @@ return [
         'layout' => [
             'label' => 'layout',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'parent_id' => [
+            'label' => 'parent_id',
+        ],
+        'label' => [
+            'label' => 'label',
+        ],
+        'descr' => [
+            'label' => 'descr',
+        ],
+        'post_type' => [
+            'label' => 'post_type',
+        ],
+        'posizione' => [
+            'label' => 'posizione',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
     ],
     'actions' => [
         'import' => [
@@ -115,20 +136,28 @@ return [
             'label' => 'Nuovo criterio',
             'success' => 'Criterio di valutazione creato con successo',
             'error' => 'Errore durante la creazione del criterio',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica criterio',
             'success' => 'Criterio di valutazione aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del criterio',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina criterio',
             'success' => 'Criterio di valutazione eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del criterio',
             'confirmation' => 'Sei sicuro di voler eliminare questo criterio? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza criterio',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -138,6 +167,57 @@ return [
         'profile' => [
             'tooltip' => 'profile',
             'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'tab' => [

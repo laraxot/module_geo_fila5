@@ -23,8 +23,8 @@ use Modules\Progressioni\Models\MaxCatecoPosfunAnno;
 use Modules\Progressioni\Models\Message;
 use Modules\Progressioni\Models\MyLog;
 use Modules\Progressioni\Models\Pesi;
-use Modules\Progressioni\Models\SchedaCriteri;
 use Modules\Progressioni\Models\Scheda;
+use Modules\Progressioni\Models\SchedaCriteri;
 use Modules\Progressioni\Models\StabiDirigente;
 use Modules\Progressioni\Models\StipendioTabellare;
 use Modules\Progressioni\Models\Valutatore;
@@ -208,6 +208,18 @@ trait ProgressioniRelationshipTrait
             ->whereRaw('find_in_set(?, lista_propro)', [(string) $this->propro]);
     }
 
+    /**
+     * Riga pesi criteri per anno e lista_propro (alias di `pesi()`).
+     *
+     * Nome allineato a Performance e a SchedaTrait (`$this->peso`).
+     *
+     * @return HasOne<Pesi, $this>
+     */
+    public function peso(): HasOne
+    {
+        return $this->pesi();
+    }
+
     /*
         public function valutatore(): BelongsTo
         {
@@ -239,7 +251,7 @@ trait ProgressioniRelationshipTrait
         // return CodiciAspettative::where('anno',$this->anno);
     }
 
-/**
+    /**
      * @return HasMany<Asz00k1, $this>
      */
     public function aszEff(): HasMany

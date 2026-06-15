@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Filament\Resources;
 
 use Filament\Resources\Pages\PageRegistration;
 use Modules\Notify\Filament\Resources\MailTemplateResource as NotifyBaseMailTemplateResource;
+use Modules\Progressioni\Providers\Filament\AdminPanelProvider;
 use Modules\Sigma\Models\Integparam;
 use Override;
 
@@ -17,7 +18,7 @@ use Override;
  *
  * ⚠️ IMPORTANTE: Richiede SpatieTranslatablePlugin registrato nel panel!
  *
- * @see \Modules\Progressioni\Providers\Filament\AdminPanelProvider
+ * @see AdminPanelProvider
  */
 class MailTemplateResource extends NotifyBaseMailTemplateResource
 {

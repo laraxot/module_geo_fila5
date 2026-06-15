@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources;
 
+use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Modules\Progressioni\Filament\Resources\CriteriPrecedenzaResource\Pages\CreateCriteriPrecedenza;
@@ -19,7 +20,7 @@ class CriteriPrecedenzaResource extends XotBaseResource
 
     #[Override]
     /**
-     * @return array<string, \Filament\Forms\Components\Component>
+     * @return array<string, Component>
      */
     public static function getFormSchema(): array
     {

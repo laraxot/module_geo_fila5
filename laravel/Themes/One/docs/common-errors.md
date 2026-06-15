@@ -22,3 +22,9 @@
   2. In alternativa, usare un **accessor piatto** sul modello o una **TextColumn standard** fuori da GroupColumn.
 - **Riferimento**: dettagli completi in [group-column-fix](../../Modules/UI/docs/group-column-fix.md).
 
+## modello Scheda su database errato (progressioni)
+
+- **Sintomo**: liste Filament Progressioni vuote, relazioni `valutatore`/`schede` incoerenti, o query che colpiscono il DB `ptv` invece di `progressione`.
+- **Causa**: `Scheda` estende `Ptv\Models\BaseScheda` e senza override eredita `protected $connection = 'ptv'`.
+- **Soluzione**: `protected $connection = 'progressione';` sul modello consumer. Vedi [database-connection-progressione](../../Modules/Progressioni/docs/database-connection-progressione.md).
+- **Impatto tema**: il tema One non configura connessioni DB; il fix è solo lato modulo Progressioni/Ptv. Monitorare questo file se compaiono dati mancanti dopo refactor cross-modulo.

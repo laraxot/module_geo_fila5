@@ -36,6 +36,21 @@ return [
             'description' => 'Data e ora dell\'ultima modifica al team',
             'tooltip' => '',
         ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'uuid' => [
+            'label' => 'uuid',
+        ],
+        'user_id' => [
+            'label' => 'user_id',
+        ],
+        'slug' => [
+            'label' => 'slug',
+        ],
+        'description' => [
+            'label' => 'description',
+        ],
     ],
     'actions' => [
         'create' => [

@@ -12,6 +12,7 @@ discussions:
   - "https://github.com/provtv/module_progressioni_fila5/discussions/1"
 related:
   - ../../../Ptv/docs/wiki/concepts/scheda-contract-inheritance.md
+  - ../database-connection-progressione.md
   - ../../../../../../docs/wiki/rules/contract-interface-stacking.md
   - ../../../../../../docs/wiki/rules/module-hierarchy-inheritance-pattern.md
   - ../../Sigma/docs/wiki/rules/contract-inheritance-no-redeclare.md
@@ -42,7 +43,10 @@ interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract
 abstract class BaseScheda extends BaseModel implements SchedaContract {}
 
 // Progressioni — solo dominio
-class Scheda extends BaseScheda {}
+class Scheda extends BaseScheda
+{
+    protected $connection = 'progressione';
+}
 ```
 
 ## Vietato
