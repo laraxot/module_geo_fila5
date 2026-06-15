@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-use Illuminate\Support\Collection;
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\DistanceCalculationException;
@@ -12,8 +11,7 @@ use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixActionStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('calculates distance between two valid locations', function (): void {
     $expectedResponse = [
         [

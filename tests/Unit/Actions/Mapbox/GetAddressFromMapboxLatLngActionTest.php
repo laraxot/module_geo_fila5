@@ -11,8 +11,7 @@ use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('throws exception for invalid latitude below -90', function (): void {
     $action = new GetAddressFromMapboxLatLngAction();
 

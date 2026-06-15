@@ -8,8 +8,7 @@ use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('can be instantiated', function (): void {
     $service = new GoogleMapsService();
 

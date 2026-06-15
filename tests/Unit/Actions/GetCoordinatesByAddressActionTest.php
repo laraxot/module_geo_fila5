@@ -10,8 +10,7 @@ use Modules\Geo\Actions\GetCoordinatesByAddressAction;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('returns null for empty address', function (): void {
     $action = new GetCoordinatesByAddressAction();
 

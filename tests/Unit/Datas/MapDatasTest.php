@@ -11,8 +11,7 @@ use Modules\Geo\Datas\Map\SizeData;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 test('IconData can be instantiated', function (): void {
     $icon = IconData::from([
         'url' => 'https://example.com/icon.png',

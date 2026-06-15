@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
 use PHPUnit\Framework\Assert;
+
 use function Safe\json_encode;
 
 /**
@@ -44,7 +45,7 @@ function comuneModelFixtures(): array
 uses(\Modules\Geo\Tests\TestCase::class);
 
 beforeEach(function (): void {
-    /** @var \Modules\Geo\Tests\TestCase $this */
+    /* @var \Modules\Geo\Tests\TestCase $this */
     File::put(
         base_path('database/content/comuni.json'),
         json_encode(comuneModelFixtures(), JSON_PRETTY_PRINT)
