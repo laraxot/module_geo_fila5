@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-15 22:40:00 UTC] [🚨 CARDINAL RULE ESTABLISHED] Eloquent BaseModel Hierarchy — Never Direct Eloquent Extension. **THE RULE**: Never `extends Illuminate\Database\Eloquent\Model` directly; always `extends BaseModel` of the module (which extends XotBaseModel). Gerarchia: `Model→XotBaseModel→BaseModel→[Type]BaseModel→ConcreteModel`. **WHY**: DRY (traits/behaviors centralized), KISS (no duplication), explicit contract (discoverability), testability (mock module-specific), true modularity (self-contained, portable). **ARTIFACTS**: Rule (`eloquent-basemodel-hierarchy.md`), Memory (`eloquent-basemodel-hierarchy.md`), Sigma module docs (`basemodel-hierarchy.md`), Audit script (`audit-eloquent-basemodel-hierarchy.sh`), TRIGGER_MAP updated. **AUDIT RESULT**: ✅ 25/25 modules compliant (0 violations). **CONFIDENCE**: 95% (brainstorm + architecture philosophy + code review). **NEXT**: Enforce via PHPStan + CI, memorize for all future architecture decisions. Commit: `be6086fdf`.
+
 [2026-06-15 21:30:00 UTC] [ARCHITECTURE] CommonScope: confermato pattern model-owned (`abstract` su trait, implementazione per modello). Aggiunto `Qua03f` + `CommonScope`. Memory `common-scope-range-fields-on-model.md`, cursor rule, audit `audit-common-scope-range-fields.sh`, llm-wiki §22. PHPStan Sigma 0.
 
 [2026-06-15 21:00:00 UTC] [DEV STACK] Redis `systemctl enable --now redis-server` (sudo); `artisan serve` :8000 OK (/, /admin/login, /up → 200/302). PHPStan Sigma senza override env OK con Redis attivo. Gate PHPStan: `CACHE_STORE=file` obbligatorio se Redis down.
