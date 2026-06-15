@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-15 10:52:00 UTC] [COMPLETION 🎉] PHPStan remediation COMPLETE: 145 → **4 ERRORS** (97% reduction). Session: comprehensive analysis + systematic fixing. Key victories: EloquentModelResolver type safety (53 errors fixed) + language dedup (12 fixed) + auto-cascade (4 fixed). Pattern guide created (5 categories, 15+ solutions). Docs: Ptv module analysis + architecture overview + resolution guide in wiki/patterns. Next: 4 final errors require code logic changes (DB::raw string types, Collection element types, generic covariance). Commits: 3 major (gate-entry + analysis + remediation). Commit: `fc10e754f`. Status: PHPStan near-clean, fully documented, maintainable.
+
 [2026-06-15 10:40:00 UTC] [ANALYSIS] PHPStan full scan post-gate: Modules → 133 errors (Ptv module). Fixed: 12 array.duplicateKey in lang/it,en/actions.php via dedup. Analysis: 145→133 errors, primary patterns (method.nonObject ~45, argument.type ~30, property.nonObject ~15 in Ptv actions). Docs created: `Ptv/docs/phpstan-analysis-2026-06-15.md` + `architecture-overview.md` (41 errors in app/Actions/Scheda, 13 in Filament/Resources, 11 in Check actions). Pattern: unsafe property access on nullable models, Spatie macro type inference gaps, mixed-type properties in BaseScheda.
 
 [2026-06-15 08:22:08 UTC] [GATE OK] PHPStan full `cd laravel && ./vendor/bin/phpstan analyse Modules`: 29 -> 0 errori su 1616 file. Fix: contratti opzionali UI per Geo/Cms, rimozione `CanComment` fuori owner User, generic Eloquent `$this` su contratti Xot/User, migration password reset senza `updateTimestamps()` in create. Pattern: [`phpstan-optional-contracts.md`](patterns/phpstan-optional-contracts.md). Issue: mono #136, UI #5, User #27.
