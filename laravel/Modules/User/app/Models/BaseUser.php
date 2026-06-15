@@ -252,22 +252,15 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
         return $fullName;
     }
 
+    /**
+     * @return HasOne<Model&ProfileContract, $this>
+     */
     #[\Override]
     public function profile(): HasOne
     {
         $profileClass = XotData::make()->getProfileClass();
-        if (class_exists($profileClass)) {
-            return $this->hasOne($profileClass);
-        }
 
-        // Try direct module class if XotData failed
-        $directClass = 'Modules\User\Models\Profile';
-        if (class_exists($directClass)) {
-            return $this->hasOne($directClass);
-        }
-
-        // Fallback: stay on current model if nothing found
-        return $this->hasOne(static::class, 'id', 'id')->whereRaw('1=0');
+        return $this->hasOne($profileClass);
     }
 
     /**
@@ -334,7 +327,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     /**
      * Get the devices associated with the user.
      *
-     * @return BelongsToMany<Device, static>
+     * @return BelongsToMany<Device, $this>
      */
     public function devices(): BelongsToMany
     {

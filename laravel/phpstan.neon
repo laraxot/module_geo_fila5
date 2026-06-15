@@ -74,7 +74,7 @@ parameters:
         - ./Modules/Prenotazioni/*
         - ./Modules/PresenzeAssenze/*
         - ./Modules/Progressioni/*
-        - ./Modules/Ptv/*
+        # - ./Modules/Ptv/*
         - ./Modules/Questionari/*
         - ./Modules/Rating/*
         - ./Modules/Setting/*
@@ -82,7 +82,7 @@ parameters:
         - ./Modules/Sindacati/*
         #- ./Modules/Tenant/*
         #- ./Modules/UI/*
-        #- ./Modules/User/*
+        - ./Modules/User/*
         - ./Modules/Xot/*
 
     bootstrapFiles:

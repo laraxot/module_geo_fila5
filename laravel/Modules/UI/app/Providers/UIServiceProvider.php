@@ -29,6 +29,20 @@ class UIServiceProvider extends XotBaseServiceProvider
 
     protected string $module_ns = __NAMESPACE__;
 
+    public function register(): void
+    {
+        parent::register();
+
+        $this->app->singleton(
+            \Modules\UI\Contracts\MapServiceContract::class,
+            \Modules\UI\Services\Map\NullMapService::class,
+        );
+        $this->app->singleton(
+            \Modules\UI\Contracts\GeocodingServiceContract::class,
+            \Modules\UI\Services\Map\NullGeocodingService::class,
+        );
+    }
+
     /**
      * Boot del service provider.
      *

@@ -57,6 +57,7 @@ related:
 ## Patterns
 
 - [XotBaseResourceTable configure pattern](./patterns/xotbase-resource-table-configure.md)
+- [PHPStan optional contracts](./patterns/phpstan-optional-contracts.md)
 
 ## How-To Guides
 

@@ -14,6 +14,13 @@ discussions:
 
 ---
 
+## [2026-06-15] phpstan | generic contratti User/Profile
+
+- `UserContract::profile()` e `UserContract::tenants()` allineati alle relazioni Eloquent con declaring model `$this`.
+- `ProfileContract::user()` allineato a `BelongsTo<Model&UserContract, $this>`.
+- Motivo: Larastan non tratta i template relation come covarianti; il contratto deve descrivere lo stesso declaring model restituito da `hasOne()` / `belongsTo()`.
+- Verifica: `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori.
+
 ## [2026-06-13] docs | Hub platform-completion-roadmap + gate PHPStan zero
 
 - Creato [overviews/platform-completion-roadmap.md](overviews/platform-completion-roadmap.md) — SSoT completamento 16 moduli + 4 temi.

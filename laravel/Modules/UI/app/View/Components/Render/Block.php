@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use Modules\Cms\Actions\ResolveLocalizedBlockDataAction;
+use Modules\UI\Actions\Block\ResolveLocalizedBlockDataAction;
 use Webmozart\Assert\Assert;
 
 /**

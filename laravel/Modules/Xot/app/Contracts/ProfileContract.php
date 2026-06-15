@@ -78,7 +78,7 @@ interface ProfileContract extends HasMedia
 
     public function toggleSuperAdmin(): void;
 
-    /** @return BelongsTo<Model, Model> */
+    /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo;
 
     public function isSuperAdmin(): bool;

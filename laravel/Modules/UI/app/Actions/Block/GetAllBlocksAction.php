@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Actions\Block;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Xot\Actions\File\GetClassNameByPathAction;
@@ -26,8 +25,17 @@ final class GetAllBlocksAction
 
         $files = File::glob(base_path('Modules').'/*/'.$relativePath.'/../Filament/Blocks/*.php');
 
-        /** @var array<int, mixed> $blocks */
-        $blocks = Arr::map($files, function (string $path) {
+        if (! is_array($files)) {
+            return ComponentFileData::collection([]);
+        }
+
+        $blocks = [];
+
+        foreach ($files as $path) {
+            if (! is_string($path)) {
+                continue;
+            }
+
             $path = realpath($path);
             $class = app(GetClassNameByPathAction::class)->execute($path);
 
@@ -38,13 +46,13 @@ final class GetAllBlocksAction
 
             $module = Str::of($class)->between('Modules\\', '\Filament\\')->toString();
 
-            return [
+            $blocks[] = [
                 'name' => $name,
                 'class' => $class,
                 'module' => $module,
                 'path' => $path,
             ];
-        });
+        }
 
         return ComponentFileData::collection($blocks);
     }

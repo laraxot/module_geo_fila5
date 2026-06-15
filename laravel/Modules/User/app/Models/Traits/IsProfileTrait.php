@@ -49,10 +49,11 @@ trait IsProfileTrait
 
     /**
      * Relazione con l'utente a cui appartiene il profilo.
+     *
+     * @return BelongsTo<Model&UserContract, $this>
      */
     public function user(): BelongsTo
     {
-        /** @var class-string<Model&UserContract> $userClass */
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);

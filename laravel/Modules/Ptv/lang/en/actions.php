@@ -33,21 +33,13 @@ return [
         'compila' => [
             'label' => 'Fill out',
         ],
-        'copy_from_last_year' => 'Copy from previous year',
-        'merge_double_row_cateco_yea' => 'Merge duplicate rows',
-        'populate_year' => 'Populate year',
-        'trova_esclusi' => [
-            'label' => 'Find Excluded',
-        ],
-        'fill_out_the_form' => 'Fill out',
-        'showing_records' => 'Showing :count records of :total',
-        'showing_limited_results' => 'Limited results. Use filters to refine your search.',
-        'populate_year' => 'Populate year',
         'copy_from_last_year' => 'Copy from last year',
+        'merge_double_row_cateco_year' => 'Merge double Cateco rows by year',
+        'populate_year' => 'Populate year',
         'trova_esclusi' => [
             'label' => 'Find excluded',
         ],
-        'merge_double_row_cateco_year' => 'Merge double Cateco rows by year',
+        'fill_out_the_form' => 'Fill out',
         'showing_records' => 'Showing :count of :total records',
         'showing_limited_results' => 'Only the first 50 records are shown. Adjust filters to narrow results.',
         'enable' => [
@@ -94,7 +86,6 @@ return [
             'more_records' => 'and :count more records...',
             'modal_title' => 'Delete Cessati Records',
             'modal_heading' => 'Delete Cessati Records',
-            'modal_title' => 'Delete Cessati Records',
             'modal_description' => 'Delete records that exist in Indennità Responsabilità but not in Rep00f for the selected year',
             'confirm_delete' => 'Delete Records',
             'submit_label' => 'Delete Records',

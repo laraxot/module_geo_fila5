@@ -33,21 +33,13 @@ return [
         'compila' => [
             'label' => 'Compila',
         ],
-        'copy_from_last_year' => 'Copia da anno precedente',
-        'merge_double_row_cateco_yea' => 'Unisci righe duplicate',
-        'populate_year' => 'Popola anno',
-        'trova_esclusi' => [
-            'label' => 'Trova Esclusi',
-        ],
-        'fill_out_the_form' => 'Compila',
-        'showing_records' => 'Mostra :count record di :total',
-        'showing_limited_results' => 'Risultati limitati. Usa i filtri per affinare la ricerca.',
-        'populate_year' => 'Popola anno',
         'copy_from_last_year' => 'Copia dall\'anno precedente',
+        'merge_double_row_cateco_year' => 'Unisci doppie righe Cateco per anno',
+        'populate_year' => 'Popola anno',
         'trova_esclusi' => [
             'label' => 'Trova esclusi',
         ],
-        'merge_double_row_cateco_year' => 'Unisci doppie righe Cateco per anno',
+        'fill_out_the_form' => 'Compila',
         'showing_records' => 'Visualizzazione :count di :total record',
         'showing_limited_results' => 'Mostrati solo i primi 50 record. Modifica i filtri per restringere i risultati.',
         'enable' => [
@@ -94,7 +86,6 @@ return [
             'more_records' => 'e altri :count record...',
             'modal_title' => 'Cancella Record Cessati',
             'modal_heading' => 'Cancella Record Cessati',
-            'modal_title' => 'Cancella Record Cessati',
             'modal_description' => 'Cancella i record presenti in Indennità Responsabilità ma non in Rep00f per l\'anno selezionato',
             'confirm_delete' => 'Cancella Record',
             'submit_label' => 'Cancella Record',

@@ -7,10 +7,21 @@ updated: "2026-06-15"
 tags: [reflection, phpstan, xot, quality-gate]
 related:
   - "./patterns/xotbase-resource-table-configure.md"
+  - "./patterns/phpstan-optional-contracts.md"
   - "./memories/phpstan-modules-inventory.md"
 ---
 
 # Reflective Notes
+
+## 2026-06-15 — PHPStan dipendenze opzionali e generic Eloquent
+
+**Perche e successo:** il full scan analizzava solo i moduli non esclusi, ma `UI` e `User` importavano contratti di moduli assenti (`Geo`, `Cms`, `Comment`) o dichiaravano relazioni Eloquent con generic non allineati alla non-covarianza Larastan.
+
+**Come evitarlo:** il modulo consumer deve esporre contratti locali o action-bridge verso moduli opzionali. I contratti Eloquent cross-modulo devono usare il declaring model `$this`, non `Model` generico, quando la relazione nasce da `$this->hasOne()` o `$this->belongsToManyX()`.
+
+**Prova:** `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori su 1616 file con `phpstan.neon` corrente.
+
+**Pattern collegato:** [`phpstan-optional-contracts.md`](patterns/phpstan-optional-contracts.md).
 
 ## 2026-06-15 — PHPStan Xot `new static()`
 

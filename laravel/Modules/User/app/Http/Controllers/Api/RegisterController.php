@@ -50,7 +50,9 @@ class RegisterController extends XotBaseController
             $messages,
         );
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors()->toArray());
+            return $this->sendError('Validation Error.', [
+                'errors' => $validator->errors()->toArray(),
+            ]);
         }
 
         /** @var array<string, mixed> $input */

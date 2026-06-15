@@ -1,5 +1,13 @@
 # User Wiki Log
 
+## [2026-06-15] phpstan | Comment boundary e generic Eloquent
+
+- Rimosso `app/Contracts/CanComment.php`: `User` non dipende da `Comment`.
+- `RegisterController` passa a `sendError()` un array associativo.
+- Relazioni tenant/profile/device allineate a generic Eloquent con `$this`.
+- Migration `password_resets`: `created_at` diretto nel create, senza helper update-only.
+- Verifica: `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori.
+
 ## [2026-05-21] docs | inventario Markdown legacy redundancy/phpstan-duplicati
 
 - Nuova pagina [`concepts/ridondanze-docs-legacy-cluster.md`](concepts/ridondanze-docs-legacy-cluster.md): elenco file `redundancy-fixes*.md`, cluster `phpstan-dry-kiss-improvements*`, typo `redundancyes.md`; link verso hub Xot [`ridondanze-cross-cutting-codebase`](../../../Xot/docs/wiki/concepts/ridondanze-cross-cutting-codebase.md).

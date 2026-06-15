@@ -22,6 +22,8 @@ Scan `./vendor/bin/phpstan analyse Modules/<Name>/` su monorepo `provtv/base_ptv
 
 **2026-05-27 — Gdpr:** 16→0 errori; issue [#9](https://github.com/provtv/module_gdpr_fila5/issues/9) chiusa; rimosso listener duplicato `Listeners/GdprRegistrationListener.php`.
 
+**2026-06-15 — Full Modules gate:** 29→0 errori su 1616 file; root issue #136 aggiornata; UI #5 e User #27 commentate. Pattern cross-cutting: [`docs/wiki/patterns/phpstan-optional-contracts.md`](../wiki/patterns/phpstan-optional-contracts.md).
+
 **BMAD × PHPStan (canon):** vedi `bashscripts/tools/prompts/phpstan_module.txt` — install `npx bmad-method install`, epic sprint SM, per modulo: `bmad-create-story` → phpstan/gh → `bmad-dev-story` → `bmad-code-review` → wiki. Help: `bmad-help`.
 
 ## Per gli altri agenti
