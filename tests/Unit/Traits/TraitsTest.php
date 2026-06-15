@@ -9,8 +9,7 @@ use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 test('HasAddresses trait can be used', function (): void {
     Assert::assertTrue(trait_exists(HasAddresses::class));
 

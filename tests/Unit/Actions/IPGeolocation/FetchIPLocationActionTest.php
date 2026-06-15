@@ -15,8 +15,7 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 /**
  * @return array{0: FetchIPLocationAction, 1: MockHandler}
  */

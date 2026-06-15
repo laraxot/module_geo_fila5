@@ -14,7 +14,7 @@ use Modules\Geo\Datas\LocationData;
 final class CalculateDistanceMatrixActionStub extends CalculateDistanceMatrixAction
 {
     /**
-     * @param  array<array<array{distance: array{text: string, value: int}, duration: array{text: string, value: int}, status: string}>>  $response
+     * @param array<array<array{distance: array{text: string, value: int}, duration: array{text: string, value: int}, status: string}>> $response
      */
     public function __construct(
         private array $response = [],
@@ -23,8 +23,8 @@ final class CalculateDistanceMatrixActionStub extends CalculateDistanceMatrixAct
     }
 
     /**
-     * @param  Collection<int, LocationData>  $origins
-     * @param  Collection<int, LocationData>  $destinations
+     * @param Collection<int, LocationData> $origins
+     * @param Collection<int, LocationData> $destinations
      *
      * @return array<array<array{distance: array{text: string, value: int}, duration: array{text: string, value: int}, status: string}>>
      */

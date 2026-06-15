@@ -10,8 +10,7 @@ use Modules\Geo\Services\HereService;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 test('GeoService can be instantiated', function () {
     $service = app(GeoService::class);
 

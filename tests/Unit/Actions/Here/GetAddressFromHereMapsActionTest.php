@@ -10,8 +10,7 @@ use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
+uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $action = new GetAddressFromHereMapsAction();
 

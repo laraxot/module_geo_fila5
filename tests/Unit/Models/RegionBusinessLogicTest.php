@@ -15,7 +15,6 @@ use function Safe\class_uses;
 
 use Sushi\Sushi;
 
-
 uses(\Modules\Geo\Tests\TestCase::class);
 describe('Region Business Logic', function () {
     test('region extends base model', function () {

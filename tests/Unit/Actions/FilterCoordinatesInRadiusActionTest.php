@@ -10,8 +10,7 @@ use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixQueueStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('filters coordinates within radius', function (): void {
     $stub = new CalculateDistanceMatrixQueueStub([
         [[['distance' => ['value' => 1000], 'duration' => ['value' => 100], 'status' => 'OK']]],

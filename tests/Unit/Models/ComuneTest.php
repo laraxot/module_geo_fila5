@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\App;
 use Modules\Geo\Tests\TestCase;
 use Modules\Tenant\Services\TenantService;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 /**
  * @return list<array<string, mixed>>
  */

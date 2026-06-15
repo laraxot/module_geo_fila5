@@ -8,8 +8,7 @@ use Modules\Geo\Actions\FormatCoordinatesAction;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 it('formats coordinates in decimal format', function (): void {
     $action = new FormatCoordinatesAction();
 
