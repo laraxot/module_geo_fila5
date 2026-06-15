@@ -22,9 +22,11 @@ public static function configure(Table $table): Table {
     return $this->table($table);  // $this non esiste in static!
 }
 
-// ✅ CORRETTO
+// ✅ CORRETTO (PHPStan level-max: no new static() in abstract class)
 public static function configure(Table $table): Table {
-    return (new static())->table($table);
+    /** @var static $tableConfigurator */
+    $tableConfigurator = app(static::class);
+    return $tableConfigurator->table($table);
 }
 ```
 
@@ -43,14 +45,16 @@ public static function configure(Table $table): Table {
  use Modules\Xot\Filament\Traits\HasXotTable;
 
 -    return $this->table($table);
-+    return (new static())->table($table);
++    /** @var static $tableConfigurator */
++    $tableConfigurator = app(static::class);
++    return $tableConfigurator->table($table);
 ```
 
 ## Zen Filosofico
 
 > **"Un metodo statico chiama `$this` — è come cercare il proprio riflesso in uno specchio rotto."**
 
-Il pattern statico in PHP non ha accesso al contesto dell'istanza. La soluzione `new static()` è il *template method pattern* in versione moderna: crea un'istanza temporanea, usa il suo contesto, poi la scarta.
+Il pattern statico in PHP non ha accesso al contesto dell'istanza. Da PHPStan 2 level-max, `new static()` in una classe astratta è vietato (`new.staticInAbstractClassStaticMethod`). La risoluzione via `app(static::class)` delega al container Laravel l'istanza concreta quando `configure()` è invocato da una sottoclasse (es. `EventsTable::configure()`).
 
 ## Risorse Affette
 

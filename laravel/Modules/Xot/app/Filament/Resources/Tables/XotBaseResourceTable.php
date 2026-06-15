@@ -7,6 +7,7 @@ namespace Modules\Xot\Filament\Resources\Tables;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Table;
 use Modules\Xot\Filament\Traits\HasXotTable;
+use Webmozart\Assert\Assert;
 
 abstract class XotBaseResourceTable
 {
@@ -14,7 +15,14 @@ abstract class XotBaseResourceTable
 
     public static function configure(Table $table): Table
     {
-        return (new static())->table($table);
+        if (self::class === static::class) {
+            throw new \LogicException('XotBaseResourceTable::configure() must be called on a concrete table class.');
+        }
+
+        $instance = app(static::class);
+        Assert::isInstanceOf($instance, self::class);
+
+        return $instance->table($table);
     }
 
     /**
