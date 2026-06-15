@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * Router per `php artisan serve` — document root = public_html (non laravel/public).
  *
- * @author   Taylor Otwell <taylor@laravel.com>
+ * @see App\Application::publicPath()
+ * @see public_html/index.php
  */
+
+$publicPath = realpath(__DIR__.'/../public_html') ?: __DIR__.'/../public_html';
+
 $uri = urldecode(
-    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? ''
 );
 
-// This file allows us to emulate Apache's "mod_rewrite" functionality from the
-// built-in PHP web server. This provides a convenient way to test a Laravel
-// application without having installed a "real" web server software here.
-if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
+if ($uri !== '/' && file_exists($publicPath.$uri)) {
     return false;
 }
 
-require_once __DIR__.'/public/index.php';
+require $publicPath.'/index.php';
