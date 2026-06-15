@@ -24,7 +24,7 @@ Scan `./vendor/bin/phpstan analyse Modules/<Name>/` su monorepo `provtv/base_ptv
 
 **2026-06-15 — Full Modules gate:** 29→0 errori su 1616 file; root issue #136 aggiornata; UI #5 e User #27 commentate. Pattern cross-cutting: [`docs/wiki/patterns/phpstan-optional-contracts.md`](../wiki/patterns/phpstan-optional-contracts.md).
 
-**2026-06-15 — Sigma architecture:** `Qua00f`, `Asz00f`, `Asz00k1`, `Qua03f`, `Rep00f` → `BaseDateRangeModel`; contract solo-model in `Modules\Sigma\Models\Contracts\SigmaDateRangeFields`; `phpstan-modules-swarm.sh Sigma` → **0 errori**. Audit: Sigma #3, discussion #5, mono #136.
+**2026-06-15 — Sigma architecture:** `Qua00f`, `Asz00f`, `Asz00k1`, `Qua03f`, `Rep00f` → `BaseDateRangeModel`; contract solo-model in `Modules\Sigma\Models\Contracts\DateRangeFieldsContract`; `phpstan-modules-swarm.sh Sigma` → **0 errori**. Audit: Sigma #3, discussion #5, mono #136.
 
 **BMAD × PHPStan (canon):** vedi `bashscripts/tools/prompts/phpstan_module.txt` — install `npx bmad-method install`, epic sprint SM, per modulo: `bmad-create-story` → phpstan/gh → `bmad-dev-story` → `bmad-code-review` → wiki. Help: `bmad-help`.
 

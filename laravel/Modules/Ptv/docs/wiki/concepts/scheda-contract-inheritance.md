@@ -7,6 +7,7 @@ updated: 2026-06-15
 qmd: "Ptv BaseScheda SchedaContract implements figlio extends gerarchia"
 related:
   - ../../../../../../docs/wiki/rules/module-hierarchy-inheritance-pattern.md
+  - ../../../../../../docs/wiki/rules/contract-interface-stacking.md
   - ./phpstan-scheda-actions.md
   - ../log.md
 ---
@@ -21,8 +22,8 @@ Il modulo **Ptv** possiede la gerarchia scheda condivisa: contratto, relazioni S
 
 | Layer | Dichiarazione |
 |-------|----------------|
-| `SchedaContract` | interface in `Ptv\Models\Contracts` |
-| `BaseScheda` | `implements SchedaContract` + `asz()` |
+| `SchedaContract` | `interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract` in `Ptv\Models\Contracts` |
+| `BaseScheda` | `implements SchedaContract` **solo** (transitivo via extends dell'interfaccia) + `asz()` + trait `HasEnteMatrRelationHelpers` |
 | `Progressioni\Scheda` | `extends BaseScheda` **solo** |
 
 ## Perché (business + zen)

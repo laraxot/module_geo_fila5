@@ -24,9 +24,9 @@ related:
 Modules\Sigma\
 ├── app/
 │   ├── Models/Contracts/         ← Model-level contracts
-│   │   └── SigmaDateRangeFields   ✅ Implemented by BaseDateRangeModel
+│   │   └── DateRangeFieldsContract   ✅ Implemented by BaseDateRangeModel
 │   ├── Models/
-│   │   ├── BaseDateRangeModel (implements SigmaDateRangeFields)
+│   │   ├── BaseDateRangeModel (implements DateRangeFieldsContract)
 │   │   ├── Qua03f (extends BaseDateRangeModel)
 │   │   ├── Qua00f (extends BaseDateRangeModel)
 │   │   └── ...
@@ -34,9 +34,11 @@ Modules\Sigma\
 │       └── (exposed to other modules)
 ```
 
-## SigmaDateRangeFields
+## DateRangeFieldsContract
 
-**Location:** `Modules\Sigma\Models\Contracts\SigmaDateRangeFields`
+**Location:** `Modules\Sigma\Models\Contracts\DateRangeFieldsContract`
+
+**Naming:** suffisso `Contract` (vietato `SigmaDateRangeFields`). Vedi [contract-naming-suffix](../../../../../../docs/wiki/rules/contract-naming-suffix.md).
 
 **Implementers:**
 - `Modules\Sigma\Models\BaseDateRangeModel` (unico punto)
@@ -52,11 +54,23 @@ Concrete date-range models (`Qua03f`, `Qua00f`, `Asz00f`, `Asz00k1`, `Rep00f`, `
 ```php
 namespace Modules\Sigma\Models;
 
-use Modules\Sigma\Models\Contracts\SigmaDateRangeFields;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
 
 class BaseDateRangeModel extends BaseModel 
-    implements SigmaDateRangeFields { }
+    implements DateRangeFieldsContract { }
 ```
+
+## Contract Stacking (Composite Contract)
+
+I contratti compositi estendono più contratti base. Il model implementa solo il contratto di dominio.
+
+```php
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract {}
+
+abstract class BaseScheda extends BaseModel implements SchedaContract { }
+```
+
+Vedi [contract-interface-stacking](../../../../../../docs/wiki/rules/contract-interface-stacking.md).
 
 ## Regola Placement
 
@@ -69,5 +83,5 @@ class BaseDateRangeModel extends BaseModel
 ---
 
 **Pattern:** Nested Scoping (DDD)
-**Compliance:** ✅ SigmaDateRangeFields correctly placed
+**Compliance:** ✅ DateRangeFieldsContract correctly placed
 **Reference:** `docs/wiki/rules/contract-placement-nested-scoping.md`

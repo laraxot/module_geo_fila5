@@ -177,7 +177,7 @@ Elenco dei metodi duplicati (cross-file e cross-modulo) che coinvolgono il modul
 **File in Sigma:**
 
 - `./laravel/Modules/Sigma/app/Models/BaseModel.php`
-- `./laravel/Modules/Sigma/app/Models/Contracts/SigmaEnteMatrFields.php`
+- `./laravel/Modules/Sigma/app/Models/Contracts/EnteMatrFieldsContract.php`
 - `./laravel/Modules/Sigma/app/Models/Dipt00f.php`
 - `./laravel/Modules/Sigma/app/Models/Wstr01lx.php`
 - `./laravel/Modules/Sigma/app/Models/Wstr02f.php`
@@ -308,7 +308,7 @@ Elenco dei metodi duplicati (cross-file e cross-modulo) che coinvolgono il modul
 **File in Sigma:**
 
 - `./laravel/Modules/Sigma/app/Models/BaseModel.php`
-- `./laravel/Modules/Sigma/app/Models/Contracts/SigmaEnteMatrFields.php`
+- `./laravel/Modules/Sigma/app/Models/Contracts/EnteMatrFieldsContract.php`
 - `./laravel/Modules/Sigma/app/Models/Dipt00f.php`
 - `./laravel/Modules/Sigma/app/Models/Wstr01lx.php`
 - `./laravel/Modules/Sigma/app/Models/Wstr02f.php`

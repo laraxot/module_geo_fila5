@@ -16,7 +16,7 @@ namespace Modules\Sigma\Models\Contracts;
  *
  * @see \Modules\Sigma\Models\BaseModel::hasManyByEnteMatr()
  */
-interface SigmaEnteMatrFields
+interface EnteMatrFieldsContract
 {
     public function matrField(): string;
 

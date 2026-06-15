@@ -41,7 +41,13 @@ qmd update -c ptvx-wiki -c ptvx-mod-ui -c ptvx-mod-ptv -c ptvx-mod-xot
 
 Verificare con `qmd collection show ptvx-wiki` che il path punti a `docs/wiki`, non a una cartella vuota omonima.
 
-**Ultimo ingest wiki (2026-06-15):** pagine `block-rendering-and-optional-services`, `phpstan-scheda-actions`, `has-relationship-model-class`; pattern root `phpstan-optional-contracts`.
+**Ultimo ingest wiki (2026-06-15):** `contract-interface-stacking`, `has-ente-matr-relation-helpers`, censimento omonimi/relazioni duplicate; collection tema `ptvx-theme-one`, `ptvx-theme-zero`.
+
+```bash
+cd /var/www/_bases/base_ptvx_fila5
+qmd update -c ptvx-wiki -c ptvx-rules -c mod-ptv-wiki -c mod-sigma-wiki -c mod-progressioni-wiki -c ptvx-theme-one -c ptvx-theme-zero -c ptvx-theme-three
+qmd collection add laravel/Themes/One/docs/wiki --name ptvx-theme-one   # prima installazione
+```
 
 ### Collection: `wiki` (qmd://wiki/)
 **Purpose:** Root project wiki and cross-cutting concepts  

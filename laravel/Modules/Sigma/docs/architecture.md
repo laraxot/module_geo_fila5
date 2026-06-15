@@ -27,10 +27,28 @@ Illuminate\Database\Eloquent\Model
 
 ### Contratti (Contracts)
 
+**Naming**: suffisso `Contract`, MAI prefisso modulo (il namespace è sufficiente).
+
 | Contratto | Metodi | Implementato da |
 |---|---|---|
-| `SigmaEnteMatrFields` | `matrField()`, `enteField()` | `BaseModel` (default `'matr'`/`'ente'`) |
-| `SigmaDateRangeFields` | `rangeFromField()`, `rangeToField()`, `annFieldName()` | `BaseDateRangeModel` (abstract, override su ogni modello) |
+| `EnteMatrFieldsContract` | `matrField()`, `enteField()`, `yearField()` | `BaseModel` (default `'matr'`/`'ente'`) |
+| `DateRangeFieldsContract` | `rangeFromField()`, `rangeToField()`, `annFieldName()` | `BaseDateRangeModel`; Ptv via `SchedaContract` |
+| `SchedaContract` (Ptv) | extends `EnteMatrFieldsContract` + `DateRangeFieldsContract` | `BaseScheda` |
+
+### Principio: Composizione Contratti (interface extends interface)
+
+```php
+// ❌ SBAGLIATO — la classe elenca tutti i contratti manualmente
+abstract class BaseScheda extends BaseModel implements SchedaContract, EnteMatrFieldsContract, DateRangeFieldsContract
+
+// ✅ CORRETTO — il contratto composito eredita dagli altri
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract {}
+abstract class BaseScheda extends BaseModel implements SchedaContract
+```
+
+La classe dichiara **un solo** `implements` (il contratto di livello più alto). I sub-contratti sono ereditati dall'interface. Questo è DRY: se il requisito cambia, si aggiorna solo l'interface.
+
+Filtro anno attivo sulle relazioni: `HasEnteMatrRelationHelpers::applyRelatedActiveAnnFilter()` legge `annFieldName()` dal modello related — **non** serve un contratto dedicato `QuaRelationAnn*`.
 
 I trait di relazione (`EnteMatrRelationship`, `EnteMatrAnnoRelationship`, ecc.) usano `$this->matrField()` e `$this->{$this->enteField()}` invece di stringhe hardcodate. Il metodo `hasManyByEnteMatr()` in `BaseModel` è il DRY helper per le relazioni HasMany standard.
 

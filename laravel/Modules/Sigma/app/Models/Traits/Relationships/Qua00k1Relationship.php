@@ -12,7 +12,8 @@ use Modules\Sigma\Models\Qua00k1;
  *
  * @phpstan-require-extends \Modules\Sigma\Models\BaseModel
  *
- * @see \Modules\Sigma\Models\Contracts\SigmaQuaRelationAnnFields
+ * Filtro `quaann` attivo via {@see \Modules\Sigma\Models\BaseModel::applyRelatedActiveAnnFilter}
+ * su {@see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract}.
  */
 trait Qua00k1Relationship
 {

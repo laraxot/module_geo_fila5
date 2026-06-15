@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\Progressioni\Contracts\SchedaContract;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\Progressioni;
 

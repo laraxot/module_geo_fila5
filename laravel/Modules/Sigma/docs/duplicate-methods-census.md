@@ -39,7 +39,7 @@ Metodi che appaiono multipli perché definiti nel contratto/base e overriddati n
 | `rangeToField()` | 9 | Idem |
 | `annFieldName()` | 9 | Idem |
 | `casts()` | 8 | Override Laravel standard |
-| `matrField()` | 5 | Contratto SigmaEnteMatrFields + override |
+| `matrField()` | 5 | Contratto EnteMatrFieldsContract + override |
 | `enteField()` | 5 | Idem |
 
 **Riflessione**: Questi sono corretti. Il polimorfismo per design richiede override. Non sono duplicati da eliminare.

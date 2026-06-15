@@ -9,6 +9,8 @@ module: "One"
 
 ## Log Entries
 
+[2026-06-15] [DOCS] Allineamento censimento omonimi metodi — [method-name-homonyms](./concepts/method-name-homonyms.md), [php-method-name-homonyms-theme-impact](./concepts/php-method-name-homonyms-theme-impact.md). Indice root: [method-name-homonym-census](../../../../docs/wiki/method-name-homonym-census.md).
+
 ## [2026-05-26] ops | ptvx.local ripristinato (PHP 8.4 handler)
 
 - Root cause e fix documentati in modulo Xot: [ptvx-local-php84-apache-handler.md](../../../Modules/Xot/docs/wiki/troubleshooting/ptvx-local-php84-apache-handler.md).

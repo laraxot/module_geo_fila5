@@ -21,14 +21,14 @@ related:
 
 ## Scopo
 
-`BaseDateRangeModel` implementa `Models\Contracts\SigmaDateRangeFields` e aggancia `CommonScope`.
+`BaseDateRangeModel` implementa `Models\Contracts\DateRangeFieldsContract` e aggancia `CommonScope`.
 
 `CommonScope` centralizza la **logica** degli scope (`ofRangeDate`, `ofYear`, `ofEnteYear`, …).  
 I **nomi colonna** (`asz2kd`, `qua2ka`, `dal`, …) restano responsabilità del singolo modello.
 
 ## Implementazione
 
-Base: `app/Models/BaseDateRangeModel.php` — implementa `app/Models/Contracts/SigmaDateRangeFields.php`.
+Base: `app/Models/BaseDateRangeModel.php` — implementa `app/Models/Contracts/DateRangeFieldsContract.php`.
 
 Trait: `app/Models/Traits/Scopes/CommonScope.php` — tre metodi `abstract public`.
 

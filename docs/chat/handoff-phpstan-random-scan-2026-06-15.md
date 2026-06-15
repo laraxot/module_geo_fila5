@@ -15,7 +15,7 @@ related:
 ## Stato
 
 - Scan seriale random (35 moduli): **OK** salvo moduli **esclusi** in `phpstan.neon` → `No files found`: `Pdnd`, `Incentivi` (non errori codice).
-- Swarm 8 job: race su cache/file (`Could not read SigmaDateRangeFields.php`) → **default `SWARM_JOBS=4`**, max 8.
+- Swarm 8 job: race su cache/file (`Could not read DateRangeFieldsContract.php`) → **default `SWARM_JOBS=4`**, max 8.
 - Verifica isolata: **Sigma 0**, **Performance 0**, **User 0**, **Notify 0**.
 
 ## Comandi canonici

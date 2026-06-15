@@ -6,12 +6,15 @@ namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 
 /**
  * Contract per le schede di valutazione del personale nelle progressioni temporali variabili.
  * Definisce le proprietà essenziali per la gestione dei criteri di esclusione e valutazione.
+ *
+ * Estende EnteMatrFieldsContract e DateRangeFieldsContract per ereditare matrField/enteField/yearField
+ * e rangeFromField/rangeToField/annFieldName — usati nei trait CommonScope e HasEnteMatrRelationHelpers.
  *
  * @phpstan-require-extends Model
  *
@@ -36,11 +39,11 @@ use Modules\Sigma\Models\Asz00k1;
  * @property float|null $perf_ind_media Media performance individuale
  * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
  *
- * @method HasMany<Asz00k1, Model> asz() Relazione ASZ — implementata in BaseScheda
- * @method MorphMany myLogs() Log invio mail — trait HasMyLogs su BaseScheda
+ * @method HasMany<\Modules\Sigma\Models\Asz00k1, Model> asz() Relazione ASZ — implementata in BaseScheda
+ * @method \Illuminate\Database\Eloquent\Relations\MorphMany myLogs() Log invio mail — trait HasMyLogs su BaseScheda
  *
  * @mixin \Eloquent
  */
-interface SchedaContract
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract
 {
 }

@@ -13,7 +13,7 @@ related:
 
 ## Implementato
 
-- Contratto `Modules\Sigma\Models\Contracts\SigmaEnteMatrFields`
+- Contratto `Modules\Sigma\Models\Contracts\EnteMatrFieldsContract`
 - Default su `BaseModel` + helper `hasManyByEnteMatr` / `hasOneByEnteMatr`
 - `EnteMatrRelationship` refactorato
 - Override: `Dipt00f`, `Wstr01lx`, `Wstr02f`

@@ -965,7 +965,7 @@ class Scheda extends BaseScheda
             throw new RuntimeException('[repar] is not set');
         }
 
-        $anno = $params['anno'];
+        $anno = (int) $params['anno'];
         $stabi = $params['stabi'];
         $repar = $params['repar'];
 

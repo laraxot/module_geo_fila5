@@ -9,8 +9,8 @@ use Modules\Sigma\Models\Qua00f;
 /**
  * Trait EnteMatrDateRangeRelationship.
  *
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
  *
  * @property string $from_field Nome campo data inizio (via proprietà o accessor)
  * @property string $to_field Nome campo data fine (via proprietà o accessor)

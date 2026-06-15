@@ -17,11 +17,16 @@ updated: "2026-04-15T08:28:49Z"
 - [ente-matr-field-ownership](./concepts/ente-matr-field-ownership.md) — `matrField()` / `enteField()`, `hasManyByEnteMatr`
 - [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (203 nel modulo Sigma)
 - [sto00f-date-range](./concepts/sto00f-date-range.md) — `st2kas`/`st2kdi`/`stann` → `BaseDateRangeModel`
+- [has-ente-matr-relation-helpers](./concepts/has-ente-matr-relation-helpers.md) — trait condiviso `hasManyByEnteMatr` (Sigma + Ptv `BaseScheda`)
+- [mcq-contract-inheritance](./concepts/mcq-contract-inheritance.md) — 5 domande MCQ su contract inheritance
 
 ## Rules
 
 - [contract-inheritance-no-redeclare](./rules/contract-inheritance-no-redeclare.md) — child NON ridichiarano `implements` già sul parent
 - [model-contracts-placement](./rules/model-contracts-placement.md) — contract nel folder del layer implementatore
+- [contract-interface-stacking](../../../../../../docs/wiki/rules/contract-interface-stacking.md) — contratto composito `extends`; model single-implements (`BaseScheda` via Ptv)
+- [contract-naming-suffix](../../../../../../docs/wiki/rules/contract-naming-suffix.md) — suffisso `Contract`, MAI prefisso modulo
+- [no-pass-model-known](./rules/no-pass-model-known.md) — MAI passare come parametro ciò che il modello espone via contratto
 
 ## Entities
 
@@ -36,7 +41,7 @@ _No comparisons synthesized yet._
 ---
 
 **Last Updated:** 2026-06-15  
-**Total Pages:** 8  
+**Total Pages:** 11  
 **Total Raw Sources:** 8
 
 ## Shared Second Brain Discipline

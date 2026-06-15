@@ -27,7 +27,7 @@ I modelli Sigma leggono tabelle legacy sulla connessione `generale`. Estendere `
 ```
 XotBaseModel
   └── BaseModel              # connessione generale, cast comuni
-        └── BaseDateRangeModel   # Models\Contracts\SigmaDateRangeFields + CommonScope + timestamps=false
+        └── BaseDateRangeModel   # Models\Contracts\DateRangeFieldsContract + CommonScope + timestamps=false
               ├── Asz00k1, Asz00f, Qua00f, Qua03f, Rep00f, Sto00f, Dipt00f
 ```
 
@@ -45,11 +45,11 @@ Tutti gli altri modelli Sigma → `extends BaseModel`.
 
 ## Implementazione range
 
-`BaseDateRangeModel` implementa `Models\Contracts\SigmaDateRangeFields`. Su ogni figlio concreto: tre metodi `public` con literal-string dei nomi colonna. Vedi [common-scope-date-range-ownership](./common-scope-date-range-ownership.md).
+`BaseDateRangeModel` implementa `Models\Contracts\DateRangeFieldsContract`. Su ogni figlio concreto: tre metodi `public` con literal-string dei nomi colonna. Vedi [common-scope-date-range-ownership](./common-scope-date-range-ownership.md).
 
 ## Regola child-implements
 
-⚠️ **I figli NON devono ridichiarare `implements Contracts\SigmaDateRangeFields`.**  
+⚠️ **I figli NON devono ridichiarare `implements Contracts\DateRangeFieldsContract`.**  
 L'interfaccia è già nella catena di ereditarietà via `BaseDateRangeModel`.  
 Ridichiararla è: DRY violation, fuorviante, manutenzione doppia. Vedi [contract-inheritance-no-redeclare](../rules/contract-inheritance-no-redeclare.md).
 

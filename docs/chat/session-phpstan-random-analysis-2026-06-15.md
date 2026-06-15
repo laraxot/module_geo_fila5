@@ -53,9 +53,9 @@ _(aggiornare durante la sessione)_
 
 ### 🔧 Fix Applicati
 - **Sigma CommonScope**: metodi `rangeFromField()`, `rangeToField()`, `annFieldName()` pubblici e owner sul model
-- **BaseDateRangeModel**: estende `BaseModel`, usa `CommonScope`, implementa `Modules\Sigma\Models\Contracts\SigmaDateRangeFields`
+- **BaseDateRangeModel**: estende `BaseModel`, usa `CommonScope`, implementa `Modules\Sigma\Models\Contracts\DateRangeFieldsContract`
 - **Qua00f / Asz00f / Asz00k1 / Qua03f / Rep00f**: estendono `BaseDateRangeModel`, non `Illuminate\Database\Eloquent\Model`
-- **SigmaDateRangeFields**: spostato sotto `app/Models/Contracts/` perché valido solo per model
+- **DateRangeFieldsContract**: spostato sotto `app/Models/Contracts/` perché valido solo per model
 
 ## Chat multi-agente
 Coordinamento via `docs/chat/phpstan-results-collector-2026-06-15.md`

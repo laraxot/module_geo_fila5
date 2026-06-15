@@ -40,6 +40,21 @@ BaseScheda (main evaluation record)
 - **Criteri***: Business rule evaluators (Noposiz, Nodisci, Noposfun, etc.)
 - **User**: Extended with Spatie roles (valutatore, admin, super-admin)
 
+## Contratti e Composizione Interface
+
+`SchedaContract` è il contratto composito che unifica i sub-contratti Sigma:
+
+```php
+// Modules/Ptv/app/Models/Contracts/SchedaContract.php
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract {}
+
+// BaseScheda implementa SOLO il composito
+abstract class BaseScheda extends BaseModel implements SchedaContract
+```
+
+**Regola**: MAI elencare multipli contratti su una classe se esiste un composito.
+I sub-contratti sono definiti in `Modules\Sigma\Models\Contracts\`.
+
 ## Action-Based Architecture
 
 ### Pattern: Command Pattern via Actions

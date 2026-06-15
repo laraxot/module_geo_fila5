@@ -82,7 +82,7 @@ Ogni modello "parla" il proprio dialect: `Sto00f` usa `stann`, `Qua00f` usa `qua
 ### Evoluzione
 
 1. **Fase 1**: Hardcoded `'matr'`, `'ente'` in ogni modello
-2. **Fase 2**: Introduzione `SigmaEnteMatrFields` contract
+2. **Fase 2**: Introduzione `EnteMatrFieldsContract` contract
 3. **Fase 3**: Helper `hasManyByEnteMatr()` in `BaseModel`
 4. **Fase 4**: Trait condiviso `EnteMatrRelationship`
 5. **Fase 5**: Filtro ann automatico via `applyRelatedActiveAnnFilter()`
@@ -99,5 +99,5 @@ Ogni modello "parla" il proprio dialect: `Sto00f` usa `stann`, `Qua00f` usa `qua
 ## Collegamenti
 
 - [Architecture](./architecture.md)
-- [SigmaEnteMatrFields Contract](../Contracts/SigmaEnteMatrFields.php)
-- [SigmaDateRangeFields Contract](../Contracts/SigmaDateRangeFields.php)
+- [EnteMatrFieldsContract Contract](../Contracts/EnteMatrFieldsContract.php)
+- [DateRangeFieldsContract Contract](../Contracts/DateRangeFieldsContract.php)

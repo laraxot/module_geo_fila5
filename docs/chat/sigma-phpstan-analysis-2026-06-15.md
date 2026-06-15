@@ -7,7 +7,7 @@
 ## Errore Principale
 
 ```
-Internal error: Interface "Modules\Sigma\Contracts\SigmaDateRangeFields"
+Internal error: Interface "Modules\Sigma\Contracts\DateRangeFieldsContract"
 not found while analysing file
 /var/www/_bases/base_ptvx_fila5/laravel/Modules/Sigma/app/Models/Rep00f.php
 ```
@@ -15,7 +15,7 @@ not found while analysing file
 ## Diagnostica
 
 ### Interfaccia Mancante
-- **Nome:** `SigmaDateRangeFields`
+- **Nome:** `DateRangeFieldsContract`
 - **Namespace:** `Modules\Sigma\Contracts`
 - **Stato:** Non esiste nel modulo
 - **Referenziata in:**
@@ -27,14 +27,14 @@ not found while analysing file
 ```
 /var/www/_bases/base_ptvx_fila5/laravel/Modules/Sigma/app/Contracts/
 ├── SchedaContract.php  (UNICA interfaccia presente)
-└── [MANCANTE: SigmaDateRangeFields.php]
+└── [MANCANTE: DateRangeFieldsContract.php]
 ```
 
 ## Azione Richiesta
 
-Creare l'interfaccia `SigmaDateRangeFields` in:
+Creare l'interfaccia `DateRangeFieldsContract` in:
 ```
-Modules/Sigma/app/Contracts/SigmaDateRangeFields.php
+Modules/Sigma/app/Contracts/DateRangeFieldsContract.php
 ```
 
 **Contenuto suggerito:**
@@ -43,7 +43,7 @@ Modules/Sigma/app/Contracts/SigmaDateRangeFields.php
 
 namespace Modules\Sigma\Contracts;
 
-interface SigmaDateRangeFields
+interface DateRangeFieldsContract
 {
     // Definire i metodi richiesti dalle classi che implementano questa interfaccia
     // Analizzare Rep00f.php, Qua00f.php, Qua03f.php per capire l'intenzione

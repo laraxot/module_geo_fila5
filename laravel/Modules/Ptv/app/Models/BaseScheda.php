@@ -8,15 +8,12 @@ use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00k1;
 use Modules\Performance\Models\Individuale;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\Sigma\Models\Traits\Concerns\HasEnteMatrRelationHelpers;
 use Modules\Sigma\Models\Traits\SchedaTrait;
 use Modules\Ptv\Models\Contracts\SchedaContract;
-use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
-use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 
 /**
  * Modules\Ptv\Models\BaseScheda.
@@ -74,11 +71,10 @@ use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 // @see Modules/Xot/docs/spatie-schemaless-attributes.md
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
-    //use LogsActivity;
+    use HasEnteMatrRelationHelpers;
     use SchemalessAttributesTrait;
     use \Modules\Progressioni\Models\Traits\ConvertedTrait;
     use SchedaTrait;
-    use EnteMatrDateRangeMutator;
 
      /**
      * Relazioni da eager-loadare sempre per evitare N+1 queries.
@@ -118,17 +114,32 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
     public string $to_field = 'al';
 
-    protected function rangeFromField(): string
+    public function matrField(): string
+    {
+        return 'matr';
+    }
+
+    public function enteField(): string
+    {
+        return 'ente';
+    }
+
+    public function yearField(): string
+    {
+        return 'anno';
+    }
+
+    public function rangeFromField(): string
     {
         return 'dal';
     }
 
-    protected function rangeToField(): string
+    public function rangeToField(): string
     {
         return 'al';
     }
 
-    protected function annFieldName(): string
+    public function annFieldName(): string
     {
         return 'anno';
     }

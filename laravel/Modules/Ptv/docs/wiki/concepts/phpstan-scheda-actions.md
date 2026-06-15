@@ -54,6 +54,14 @@ PHPStan **non** giustifica bypass delle relazioni. Vedi root wiki:
 - [eloquent-relationship-encapsulation.md](../../../../../docs/wiki/rules/eloquent-relationship-encapsulation.md)
 - [scheda-asz-relationship-query.md](../../../../../docs/wiki/patterns/scheda-asz-relationship-query.md)
 
+### 6. Contract stacking + trait Sigma (2026-06-15)
+
+`SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`. `BaseScheda implements SchedaContract` **solo** + `HasEnteMatrRelationHelpers` + `SchedaTrait`.
+
+Risolve `class.missingImplements` su trait `EnteMatrAnnoRelationship`, `EnteMatrDateRangeRelationship`, `CommonScope`.
+
+Vedi [contract-interface-stacking.md](../../../../../docs/wiki/rules/contract-interface-stacking.md) e [has-ente-matr-relation-helpers.md](../../../Sigma/docs/wiki/concepts/has-ente-matr-relation-helpers.md).
+
 ## Action ad alto impatto (per audit futuro)
 
 | Action | Scopo |

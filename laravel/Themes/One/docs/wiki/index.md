@@ -13,6 +13,7 @@ updated: "2026-05-12T10:15:00Z"
 
 - [theme-one-operating-focus](./concepts/theme-one-operating-focus.md) — operating position, guardrails, and interpretation of Theme One strategy
 - [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (0 nel tema; logica nei moduli)
+- [php-method-name-homonyms-theme-impact](./concepts/php-method-name-homonyms-theme-impact.md) — impatto omonimi PHP sul tema vs moduli
 
 ## Entities
 
@@ -25,6 +26,7 @@ _No entities tracked yet._
 
 ## Shared Rules On-Demand
 
+- [contract-interface-stacking](../../../../../docs/wiki/rules/contract-interface-stacking.md) — pattern contratti compositi (impatto indiretto su modelli usati dal tema)
 - [filament-resource-property](../../../../../docs/wiki/rules/filament-resource-property.md) — `$resource` nelle page Filament resta `protected static string`, con auto-resolve via `XotBaseListRecords`
 - [xotbase-critical-rules](../../../../../docs/wiki/rules/xotbase-critical-rules.md) — guardrail XotBase/Laraxot da riusare anche nelle page e risorse del tema
 

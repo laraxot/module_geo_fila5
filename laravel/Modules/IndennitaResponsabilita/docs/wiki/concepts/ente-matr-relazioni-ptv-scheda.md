@@ -18,7 +18,7 @@ related:
 
 `LettF` / `LettI` estendono `Modules\Ptv\Models\BaseScheda` (connessione `ptv`), non `Modules\Sigma\Models\BaseModel` (connessione `generale`).
 
-`hasManyByEnteMatr()` vive solo su **Sigma `BaseModel`** (`SigmaEnteMatrFields` + filtro `*ann`).
+`hasManyByEnteMatr()` vive solo su **Sigma `BaseModel`** (`EnteMatrFieldsContract` + filtro `*ann`).
 
 ## Decisione (2026-06-15)
 

@@ -59,7 +59,7 @@ abstract class BaseModel extends XotBaseModel
 // laravel/Modules/Sigma/app/Models/BaseDateRangeModel.php
 
 abstract class BaseDateRangeModel extends BaseModel
-    implements \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
+    implements \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
 {
     use CommonScope;
     public $timestamps = false;
@@ -68,7 +68,7 @@ abstract class BaseDateRangeModel extends BaseModel
 
 **Responsabilità:**
 - Centralizza il trait CommonScope
-- Implementa contratto `Models\Contracts\SigmaDateRangeFields`
+- Implementa contratto `Models\Contracts\DateRangeFieldsContract`
 - Toglie i timestamps (legacy format)
 
 Modelli che usano intervalli date → estendono BaseDateRangeModel:
@@ -113,6 +113,18 @@ grep -r "extends.*Eloquent\\Model\|extends Model" app/Models/*.php \
 | **Testing** | Mock BaseModel behaviors senza toccare Eloquent |
 | **Manutenzione** | Cambi a BaseModel si propagano a 100+ modelli |
 
+### Contract Stacking (Composite Contract)
+
+I contratti compositi estendono contratti base. Il model implementa solo il contratto di dominio.
+
+```php
+// ✅ CORRETTO: contratto composito + model single-implements
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract {}
+abstract class BaseScheda extends BaseModel implements SchedaContract { }
+```
+
+Vedi [contract-interface-stacking](../../../../../../docs/wiki/rules/contract-interface-stacking.md).
+
 ## Anti-Pattern (NEVER)
 
 ```php
@@ -120,14 +132,35 @@ grep -r "extends.*Eloquent\\Model\|extends Model" app/Models/*.php \
 class Qua03f extends Model { }
 class Qua03f extends Eloquent\Model { }
 
-// ❌ Ridichiarare implements già presente sul parent
-class Qua00f extends BaseDateRangeModel implements Contracts\SigmaDateRangeFields { }
+// ❌ ERRORE CRITICO: NON ridichiarare implements
+// BaseDateRangeModel GIÀ implementa DateRangeFieldsContract!
+class Qua00f extends BaseDateRangeModel implements Contracts\DateRangeFieldsContract { }
+
+// ❌ Model implementa 3 contratti in riga (stacking violato)
+abstract class BaseScheda extends BaseModel
+    implements SchedaContract, EnteMatrFieldsContract, DateRangeFieldsContract { }
 
 // ✅ Corretti
-class Qua03f extends BaseDateRangeModel { }
-class BaseDateRangeModel extends BaseModel implements SigmaDateRangeFields { }
-class BaseModel extends XotBaseModel implements SigmaEnteMatrFields { }
+class Qua03f extends BaseDateRangeModel { }                    // Nessun implements
+class BaseDateRangeModel extends BaseModel implements DateRangeFieldsContract { }
+class BaseModel extends XotBaseModel implements EnteMatrFieldsContract { }
 ```
+
+### Spiegazione Regola
+
+**BaseDateRangeModel** è dichiarato così:
+
+```php
+abstract class BaseDateRangeModel extends BaseModel implements DateRangeFieldsContract
+```
+
+Estendendo `BaseDateRangeModel`, **automaticamente** si ottiene l'implementazione del contratto.
+Aggiungere `implements DateRangeFieldsContract` è:
+- **REDUNDANTE** (duplicazione inutile)
+- **Violazione DRY**
+- **Potenziale conflitto** se le firme dei metodi differiscono
+
+**Regola CARDINAL:** Estendere `BaseDateRangeModel` → **non** aggiungere mai `implements` per `DateRangeFieldsContract`.
 
 ---
 

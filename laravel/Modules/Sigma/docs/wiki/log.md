@@ -9,13 +9,15 @@ module: "Sigma"
 
 ## Log Entries
 
-[2026-06-15] [UPDATE] `SigmaEnteMatrFields`: `matrField()`/`enteField()` + helper `hasManyByEnteMatr`/`hasOneByEnteMatr`. Vedi [ente-matr-field-ownership](./concepts/ente-matr-field-ownership.md).
+[2026-06-15] [REFACTOR] `HasEnteMatrRelationHelpers` estratto da `BaseModel`; riusato su `Ptv\BaseScheda`. Vedi [has-ente-matr-relation-helpers](./concepts/has-ente-matr-relation-helpers.md).
+
+[2026-06-15] [UPDATE] `EnteMatrFieldsContract`: `matrField()`/`enteField()` + helper `hasManyByEnteMatr`/`hasOneByEnteMatr`. Vedi [ente-matr-field-ownership](./concepts/ente-matr-field-ownership.md).
 
 [2026-06-15] [UPDATE] `Sto00f extends BaseDateRangeModel` — `st2kas`/`st2kdi`/`stann`; no `BaseDateRangeModelCarbon`. Vedi [sto00f-date-range](./concepts/sto00f-date-range.md).
 
 [2026-06-15] [LINT] Regola CARDINAL documentata: `.cursor/rules/eloquent-basemodel-hierarchy.mdc`, memoria wiki, audit `audit-eloquent-basemodel-hierarchy.sh` (rg). `Qua00f extends BaseDateRangeModel` confermato.
 
-[2026-06-15] [UPDATE] Ereditarietà modelli: zero `extends Model`; `BaseDateRangeModel implements Models\Contracts\SigmaDateRangeFields`; `Asz00k1`, `Asz00f`, `Qua00f`, `Qua03f`, `Rep00f` estendono il base senza ripetere `implements`. Vedi [sigma-model-inheritance](./concepts/sigma-model-inheritance.md).
+[2026-06-15] [UPDATE] Ereditarietà modelli: zero `extends Model`; `BaseDateRangeModel implements Models\Contracts\DateRangeFieldsContract`; `Asz00k1`, `Asz00f`, `Qua00f`, `Qua03f`, `Rep00f` estendono il base senza ripetere `implements`. Vedi [sigma-model-inheritance](./concepts/sigma-model-inheritance.md).
 
 [2026-06-15] [UPDATE] `Sto00f extends BaseDateRangeModel` — `st2kas`/`st2kdi`/`stann`; no `BaseDateRangeModelCarbon`. Vedi [sto00f-date-range](./concepts/sto00f-date-range.md).
 
@@ -25,7 +27,11 @@ module: "Sigma"
 
 [2026-06-15] [UPDATE] `Sto00f extends BaseDateRangeModel`: aggiunti `rangeFromField()='st2kas'`, `rangeToField()='st2kdi'`, `annFieldName()='stann'`; rimossi `scopeOfYear`/`scopeOfEnteYear` override (forniti da `CommonScope`). Aggiornati docs `architecture.md`, `sigma-model-inheritance.md`, `common-scope-date-range-ownership.md`, `basemodel-hierarchy.md`.
 
-[2026-06-15] [FIX] `Qua00f`/`Rep00f`: rimosso `implements Contracts\SigmaDateRangeFields` ridondante (già su `BaseDateRangeModel`). Nuova regola: [contract-inheritance-no-redeclare](./rules/contract-inheritance-no-redeclare.md). Vedi anche [sigma-model-inheritance](../concepts/sigma-model-inheritance.md).
+[2026-06-15] [RULE] Naming contratti: `DateRangeFieldsContract` canon; vietato `SigmaDateRangeFields`. Vedi [contract-naming-suffix](../../../../../../docs/wiki/rules/contract-naming-suffix.md).
+
+[2026-06-15] [RULE] Composizione interface: `SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`. La classe implementa UN solo contratto (il composito). Vedi architecture.md §Composizione Contratti.
+
+[2026-06-15] [RULE] MAI passare come parametro ciò che il modello espone via contratto. `hasManyByEnteMatr()` interroga `annFieldName()` sul related — non riceve stringhe duplicate.
 
 ### Format
 
@@ -41,5 +47,9 @@ module: "Sigma"
 
 ---
 
-**Last Activity:** 2026-06-15 — PHPStan Sigma 0 errori  
-**Total Operations:** 1
+**Last Activity:** 2026-06-15 — Contract rename + stacking pattern
+**Total Operations:** 3
+
+[2026-06-15] [RENAME] Contratti Sigma: `SigmaDateRangeFields`→`DateRangeFieldsContract`, `SigmaEnteMatrFields`→`EnteMatrFieldsContract`, `SigmaQuaRelationAnnFields`→`QuaRelationAnnFieldsContract`. Tutti suffisso `Contract`, senza prefisso `Sigma`.
+
+[2026-06-15] [STACKING] `SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`. Model implementa solo contratto composito. Regola: `docs/wiki/rules/contract-interface-stacking.md`. `SigmaQuaRelationAnnFields` eliminato.

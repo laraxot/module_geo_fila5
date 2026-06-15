@@ -5,10 +5,11 @@ module: Sigma
 tags: [ente, matr, relationships, dry, contract]
 created: 2026-06-15
 updated: 2026-06-15
-qmd: "SigmaEnteMatrFields matrField enteField hasManyByEnteMatr qua00f"
+qmd: "EnteMatrFieldsContract matrField enteField hasManyByEnteMatr qua00f"
 related:
   - ./sigma-model-inheritance.md
   - ./common-scope-date-range-ownership.md
+  - ./has-ente-matr-relation-helpers.md
   - ../../../../../../docs/wiki/rules/model-owned-date-range-fields.md
 ---
 
@@ -35,7 +36,7 @@ Su tabelle legacy i nomi **non** sono sempre `ente`/`matr` (`Dipt00f`: `enteap`/
 
 ## Contratto
 
-`Modules\Sigma\Models\Contracts\SigmaEnteMatrFields`:
+`Modules\Sigma\Models\Contracts\EnteMatrFieldsContract`:
 
 | Metodo | Default `BaseModel` | Esempio `Dipt00f` |
 |--------|---------------------|------------------|
@@ -46,7 +47,7 @@ Su tabelle legacy i nomi **non** sono sempre `ente`/`matr` (`Dipt00f`: `enteap`/
 
 `BaseModel::hasManyByEnteMatr($relatedClass)` — usa `matrField()` / `enteField()` sul parent.
 
-Se il correlato implementa `SigmaDateRangeFields`, `hasManyByEnteMatr` applica automaticamente `where(annFieldName(), '')` leggendo il nome colonna **dal modello target** — mai passare `'quaann'` come parametro esterno.
+Se il correlato implementa `DateRangeFieldsContract`, `hasManyByEnteMatr` applica automaticamente `where(annFieldName(), '')` leggendo il nome colonna **dal modello target** — mai passare `'quaann'` come parametro esterno.
 
 Vedi [model-owned-ann-field-relationships](../../../../../../docs/wiki/rules/model-owned-ann-field-relationships.md).
 
@@ -58,7 +59,7 @@ Vedi [model-owned-ann-field-relationships](../../../../../../docs/wiki/rules/mod
 |--------|--------|
 | Chiavi figlio | Solo parent (`matrField`/`enteField`) — figlio default `matr`/`ente` |
 | Sto00f | `use EnteMatrRelationship` |
-| Annullamento | `annFieldName()` sul modello target (`SigmaDateRangeFields`) |
+| Annullamento | `annFieldName()` sul modello target (`DateRangeFieldsContract`) |
 | Rep00f::qua00f | `hasManyByEnteMatr` + `ofRangeDate` (rimosso ente `'90'`) |
 | Rollout | Campagna incrementale + audit script |
 

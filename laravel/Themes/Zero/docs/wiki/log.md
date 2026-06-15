@@ -9,6 +9,8 @@ module: "Zero"
 
 ## Log Entries
 
+[2026-06-15] [DOCS] Censimento omonimi metodi — [method-name-homonyms](./concepts/method-name-homonyms.md). Business logic nei moduli, non nel tema.
+
 ## [2026-05-26] ops | ptvx.local ripristinato (PHP 8.4 handler)
 
 - Vedi [ptvx-local-php84-apache-handler.md](../../../Modules/Xot/docs/wiki/troubleshooting/ptvx-local-php84-apache-handler.md) (modulo Xot).

@@ -10,7 +10,7 @@ use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Sto00f;
 
 /**
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
  *
  * @property int|null $anno
  */

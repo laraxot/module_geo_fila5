@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Date;
  * Scope condivisi per intervalli date — logica query qui, nomi colonne sul modello.
  *
  * Ogni consumer deve estendere BaseDateRangeModel e implementare
- * {@see \Modules\Sigma\Models\Contracts\SigmaDateRangeFields}.
+ * {@see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract}.
  *
- * @see \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
+ * @see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
  */
 trait CommonScope
 {

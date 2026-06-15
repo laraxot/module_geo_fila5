@@ -31,7 +31,7 @@ Activity, Badge, CertFisc, ContoAnnuale, DbForge, Europa, Gdpr, Inail, Indennita
 
 | Modulo | Status | Issue | Priority | Action |
 |--------|--------|-------|----------|--------|
-| **Sigma** | ❌ ERROR | Internal error: Interface `SigmaDateRangeFields` not found (Qua03f.php) | 🔴 | Fix PHPDoc / Contract |
+| **Sigma** | ❌ ERROR | Internal error: Interface `DateRangeFieldsContract` not found (Qua03f.php) | 🔴 | Fix PHPDoc / Contract |
 | **User** | ❌ ERROR | (analisi in corso) | 🔴 | Await agent result |
 | **Xot** | ❌ ERROR | (analisi in corso) | 🔴 | Await agent result |
 | **Activity** | ❌ SKIP | "No files found to analyse" | 🟡 | Check structure |

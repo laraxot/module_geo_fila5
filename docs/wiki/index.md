@@ -62,6 +62,7 @@ related:
 ## Analysis
 
 - [method-name-homonym-census](./method-name-homonym-census.md) — omonimi metodi PHP cross-class (689), JSON + schede modulo/tema
+- [elenco-relazioni-metodi-duplicate](../elenco-relazioni-metodi-duplicate.md) — 69 metodi che restituiscono relazioni Eloquent duplicate
 
 ## How-To Guides
 

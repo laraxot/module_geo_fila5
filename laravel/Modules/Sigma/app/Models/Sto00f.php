@@ -11,10 +11,91 @@ use Illuminate\Database\Eloquent\Collection;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\Relationships\Qua00k1Relationship;
 
+/**
+ * Modules\Sigma\Models\Sto00f.
+ *
+ * @property int $id
+ * @property int $ente
+ * @property int $matr
+ * @property int $stass
+ * @property int $stdim
+ * @property int $stupd
+ * @property int $tipass
+ * @property int $tipdim
+ * @property string $stann
+ * @property int $stotia
+ * @property int $stotil
+ * @property int $stodaa
+ * @property int $stodal
+ * @property string $stonua
+ * @property string $stonul
+ * @property int $st2kas
+ * @property int $st2kdi
+ * @property int $st2ku
+ * @property int $sto2ka
+ * @property int $sto2kd
+ * @property int $matina
+ * @property int $sto001
+ * @property string $sto002
+ * @property string $sto003
+ * @property int $sto004
+ * @property int $sto005
+ * @property string|null $desctipass
+ * @property string|null $desctipdim
+ * @property string|null $tipoprovvass
+ * @property string|null $tipoprovvdi
+ * @property-read Collection<int, Qua00f> $qua00f
+ * @property-read int|null $qua00f_count
+ * @property-read Collection<int, Qua00k1> $qua00k1
+ * @property-read int|null $qua00k1_count
+ * @property-read Collection<int, Rep00f> $rep00f
+ * @property-read int|null $rep00f_count
+ * @property-read int|null $anno
+ * @method static Builder|Sto00f newModelQuery()
+ * @method static Builder|Sto00f newQuery()
+ * @method static Builder|Sto00f ofDate(int $date)
+ * @method static Builder|Sto00f ofEnte(int $ente)
+ * @method static Builder|Sto00f ofEnteYear(?int $ente, ?int $year)
+ * @method static Builder|Sto00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
+ * @method static Builder|Sto00f ofQuarter(int $quarter, int $year)
+ * @method static Builder|Sto00f ofRangeDate(int $date_start, int $date_end)
+ * @method static Builder|Sto00f ofYear(?int $year)
+ * @method static Builder|Sto00f query()
+ * @method static Builder|Sto00f whereDesctipass($value)
+ * @method static Builder|Sto00f whereDesctipdim($value)
+ * @method static Builder|Sto00f whereEnte($value)
+ * @method static Builder|Sto00f whereId($value)
+ * @method static Builder|Sto00f whereMatina($value)
+ * @method static Builder|Sto00f whereMatr($value)
+ * @method static Builder|Sto00f whereSt2kas($value)
+ * @method static Builder|Sto00f whereSt2kdi($value)
+ * @method static Builder|Sto00f whereSt2ku($value)
+ * @method static Builder|Sto00f whereStann($value)
+ * @method static Builder|Sto00f whereStass($value)
+ * @method static Builder|Sto00f whereStdim($value)
+ * @method static Builder|Sto00f whereSto001($value)
+ * @method static Builder|Sto00f whereSto002($value)
+ * @method static Builder|Sto00f whereSto003($value)
+ * @method static Builder|Sto00f whereSto004($value)
+ * @method static Builder|Sto00f whereSto005($value)
+ * @method static Builder|Sto00f whereSto2ka($value)
+ * @method static Builder|Sto00f whereSto2kd($value)
+ * @method static Builder|Sto00f whereStodaa($value)
+ * @method static Builder|Sto00f whereStodal($value)
+ * @method static Builder|Sto00f whereStonua($value)
+ * @method static Builder|Sto00f whereStonul($value)
+ * @method static Builder|Sto00f whereStotia($value)
+ * @method static Builder|Sto00f whereStotil($value)
+ * @method static Builder|Sto00f whereStupd($value)
+ * @method static Builder|Sto00f whereTipass($value)
+ * @method static Builder|Sto00f whereTipdim($value)
+ * @method static Builder|Sto00f whereTipoprovvass($value)
+ * @method static Builder|Sto00f whereTipoprovvdi($value)
+ * @mixin \Eloquent
+ */
 class Sto00f extends BaseDateRangeModel
 {
     use EnteMatrRelationship;
-    use Qua00k1Relationship;
     use Qua00k1Relationship;
 
     protected $fillable = [

@@ -18,6 +18,10 @@ $this->hasMany(Model::class, 'matr', 'matr')
     ->whereRaw('xxxann=""');
 ```
 
+## Scoperta importante
+
+**Wstr02f** e **Asz00k1** usano gia' `$this->enteField()` e `$this->matrField()` — esistono in trait condiviso!
+
 ## Catalogo metodi (40 trovati)
 
 | Modulo | File | Metodo | Linea | Pattern |
@@ -38,39 +42,13 @@ $this->hasMany(Model::class, 'matr', 'matr')
 | Sigma | Qua00k1.php | rep00f | 170 | ente+ann="" |
 | Sigma | Qua03f.php | qua00f | 212 | ente+matr+ann="" |
 | Sigma | Rep00f.php | rep00f | 255 | ente+matr+ann="" |
-| Sigma | Wstr02f.php | wstr00f | 251 | ente+matr |
+| Sigma | Wstr02f.php | wstr00f | 240 | **Usa enteField/matrField** |
 
 ## Reflection
 
-### DRY vietato
-Ogni model ripete lo stesso pattern di relazione. Questo duplica:
-- Logica `where('ente', $this->ente)`
-- Logica `whereRaw('xxxann=""')`
-- Logica `ofRangeDate()`/`ofYear()`
+### DRY parziale
+- Wstr02f/Asz00k1: ✅ usano trait con enteField/matrField
+- Altri model: ❌ pattern hardcoded
 
-### Soluzione (implementata)
-
-`BaseModel::hasManyByEnteMatr($related)` + `applyRelatedActiveAnnFilter()`:
-
-- Legge `annFieldName()` dal **modello target** (`SigmaDateRangeFields`)
-- Nessun parametro `'quaann'` / `'repann'` dall'esterno
-
-```php
-// ✅ Corretto — Qua00f possiede annFieldName()
-return $this->hasManyByEnteMatr(Qua00f::class);
-
-// Con intervallo date
-return $this->hasManyByEnteMatr(Qua00f::class)->ofRangeDate($dalYmd, $alYmd);
-```
-
-```php
-// ❌ Vietato — duplica metadata del modello
-$this->relatedByAnno(Qua00f::class, 'quaann');
-$this->relatedByRange(Qua00f::class, 'quaann', 'qua2kd', 'qua2ka');
-```
-
-Vedi [model-owned-ann-field-relationships](../../../../../../docs/wiki/rules/model-owned-ann-field-relationships.md).
-
-## Status
-- LettF.php: ✅ refactoring parziale
-- Altre 15 model: ⏳ handoff in `docs/chat/handoff-matr-ente-field-abstraction.md`
+### Soluzione
+Centralizzare in trait `EnteMatrRelationship` esistente, usarlo in tutti i model.

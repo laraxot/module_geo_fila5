@@ -19,7 +19,7 @@ Pattern centralizzato per relazioni HasMany che uniscono `matricola` + `ente` ev
 ## Architettura
 
 ```
-BaseModel (implementa SigmaEnteMatrFields)
+BaseModel (implementa EnteMatrFieldsContract)
     ├── matrField() = 'matr' (override opzionale)
     ├── enteField() = 'ente' (override opzionale)
     └── hasManyByEnteMatr(RelatedClass)

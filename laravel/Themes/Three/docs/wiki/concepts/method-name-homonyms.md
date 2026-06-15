@@ -6,7 +6,7 @@ updated: 2026-06-15
 related:
   - ../../../../docs/wiki/method-name-homonym-census.md
   - ../../../Modules/Xot/docs/wiki/concepts/code-redundancy-philosophy.md
-  - ./code-redundancy-theme.md
+  - ../../One/docs/wiki/concepts/code-redundancy-theme.md
 ---
 
 # Censimento omonimi metodi — Theme Three

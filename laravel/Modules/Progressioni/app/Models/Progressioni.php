@@ -23,8 +23,6 @@ use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Repart;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Tqu00f;
-use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
-use Modules\Sigma\Models\Traits\Relationships\EnteMatrYearRelationship;
 use Modules\Sigma\Models\Wstr01lx;
 
 /**

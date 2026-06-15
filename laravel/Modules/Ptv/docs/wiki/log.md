@@ -9,6 +9,13 @@ module: "Ptv"
 
 ## Log Entries
 
+### 2026-06-15 — BaseScheda contract stacking (PHPStan trait)
+
+- `SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`; `BaseScheda implements SchedaContract` solo.
+- Trait `HasEnteMatrRelationHelpers` (Sigma) su `BaseScheda` per relazioni ente/matr.
+- Gate: `./vendor/bin/phpstan analyse Modules/Ptv` → 0 errori.
+- Doc: [scheda-contract-inheritance](./concepts/scheda-contract-inheritance.md), [contract-interface-stacking](../../../../docs/wiki/rules/contract-interface-stacking.md).
+
 ### 2026-06-15 — PHPStan livello max (modulo Ptv)
 
 - **Prima:** ~133 errori PHPStan su `Modules/Ptv` (primo ingresso in scope `phpstan analyse Modules`).
@@ -39,5 +46,7 @@ module: "Ptv"
 
 ---
 
-**Last Activity:** 2026-06-15 — PHPStan Ptv remediation  
-**Total Operations:** 1
+**Last Activity:** 2026-06-15 — Contract stacking su SchedaContract  
+**Total Operations:** 2
+
+[2026-06-15] [STACKING] `SchedaContract` ora `extends EnteMatrFieldsContract, DateRangeFieldsContract`. `BaseScheda implements SchedaContract` solo (rimossi `implements ` extra). Contratto composito in `Ptv/app/Models/Contracts/SchedaContract.php`.

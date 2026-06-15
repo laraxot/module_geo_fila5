@@ -1,5 +1,5 @@
 ---
-title: "Handoff — SigmaEnteMatrFields"
+title: "Handoff — EnteMatrFieldsContract"
 type: chat-handoff
 module: Sigma
 created: 2026-06-15
@@ -7,11 +7,11 @@ related:
   - ../../laravel/Modules/Sigma/docs/wiki/concepts/ente-matr-field-ownership.md
 ---
 
-# SigmaEnteMatrFields — implementato
+# EnteMatrFieldsContract — implementato
 
 ## Fatto
 
-- Contratto `SigmaEnteMatrFields` (`matrField`, `enteField`)
+- Contratto `EnteMatrFieldsContract` (`matrField`, `enteField`)
 - `BaseModel::hasManyByEnteMatr()`
 - Refactor `EnteMatrRelationship`, `Dipt00f`, `Sto00f`, `Asz00k1`
 - Repo: `git@github.com:laraxot/module_sigma_fila5.git`

@@ -419,8 +419,10 @@ class Rep00f extends BaseDateRangeModel {
 5. **Maintainability:** Document why fix was needed, not just that it was applied
 6. **Polymorphism over Branching:** Use method overrides in models, not match/switch in traits
 7. **Module BaseModel:** MAI `extends Model` direttamente — usare `BaseModel` del modulo (→ `BaseDateRangeModel` per modelli con date range)
-8. **Contracts over Hardcoding:** Usare contratti (`SigmaEnteMatrFields`, `SigmaDateRangeFields`) con metodi (`matrField()`, `enteField()`, `rangeFromField()`) invece di stringhe hardcodate nei trait
+8. **Contracts over Hardcoding:** Usare contratti (`EnteMatrFieldsContract`, `DateRangeFieldsContract`) con metodi (`matrField()`, `enteField()`, `rangeFromField()`) invece di stringhe hardcodate nei trait
 9. **Never pass what the model knows:** MAI passare come parametro ciò che il modello related espone via contratto (es. `annFieldName()`). Il helper interroga il modello, non riceve duplicati.
+10. **Contract naming:** Suffisso `Contract`, MAI prefisso modulo nel nome classe (il namespace è sufficiente). Es: `DateRangeFieldsContract`, non `SigmaDateRangeFields`.
+11. **Interface composition:** Se una classe richiede più contratti correlati, creare un'interface composita (`SchedaContract extends A, B`) e implementare solo quella. La classe ha UN solo `implements`.
 
 ---
 

@@ -2,13 +2,13 @@
 
 ## Scoperto
 
-`Qua00f` e `Rep00f` avevano `implements Contracts\SigmaDateRangeFields` ridondante:
-- `BaseDateRangeModel` già implementa `SigmaDateRangeFields`
+`Qua00f` e `Rep00f` avevano `implements Contracts\DateRangeFieldsContract` ridondante:
+- `BaseDateRangeModel` già implementa `DateRangeFieldsContract`
 - L'interfaccia si eredita via OOP
 
 ## Fix
 
-Rimosso `implements Contracts\SigmaDateRangeFields` da:
+Rimosso `implements Contracts\DateRangeFieldsContract` da:
 - `laravel/Modules/Sigma/app/Models/Qua00f.php:135`
 - `laravel/Modules/Sigma/app/Models/Rep00f.php:143`
 
@@ -33,7 +33,7 @@ Memoria `learned-pattern` salvata: "Contract Inheritance — No Re-declare"
 ## Stato
 
 Altri 5 modelli Sigma (Asz00k1, Asz00f, Qua03f, Dipt00f, Sto00f) erano già corretti.  
-`SigmaEnteMatrFields` su BaseModel — nessun figlio lo ridichiara → ok.
+`EnteMatrFieldsContract` su BaseModel — nessun figlio lo ridichiara → ok.
 
 ## Prossimi passi possibili
 

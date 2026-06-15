@@ -14,7 +14,7 @@ namespace Modules\Sigma\Models\Contracts;
  * @see Modules\Sigma\Models\BaseDateRangeModel
  * @see Modules\Sigma\Models\Traits\Scopes\CommonScope
  */
-interface SigmaDateRangeFields
+interface DateRangeFieldsContract
 {
     /**
      * Nome della colonna che rappresenta la data di inizio intervallo (formato Ymd).

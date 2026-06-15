@@ -25,12 +25,12 @@ related:
 
 ```php
 // ✅ CORRETTO — BaseDateRangeModel implements, figlio eredita
-abstract class BaseDateRangeModel extends BaseModel implements SigmaDateRangeFields { }
+abstract class BaseDateRangeModel extends BaseModel implements DateRangeFieldsContract { }
 
 class Qua00f extends BaseDateRangeModel { }  // eredita l'implementazione
 
 // ❌ SBAGLIATO — ridondante, fuorviante
-class Qua00f extends BaseDateRangeModel implements Contracts\SigmaDateRangeFields { }
+class Qua00f extends BaseDateRangeModel implements Contracts\DateRangeFieldsContract { }
 ```
 
 ## Perché
@@ -46,8 +46,8 @@ class Qua00f extends BaseDateRangeModel implements Contracts\SigmaDateRangeField
 
 | File | Prima | Dopo |
 |------|-------|------|
-| `Qua00f.php:135` | `extends BaseDateRangeModel implements Contracts\SigmaDateRangeFields` | `extends BaseDateRangeModel` |
-| `Rep00f.php:143` | `extends BaseDateRangeModel implements Contracts\SigmaDateRangeFields` | `extends BaseDateRangeModel` |
+| `Qua00f.php:135` | `extends BaseDateRangeModel implements Contracts\DateRangeFieldsContract` | `extends BaseDateRangeModel` |
+| `Rep00f.php:143` | `extends BaseDateRangeModel implements Contracts\DateRangeFieldsContract` | `extends BaseDateRangeModel` |
 
 Altri 5 modelli (`Asz00k1`, `Asz00f`, `Qua03f`, `Dipt00f`, `Sto00f`) erano già corretti.
 

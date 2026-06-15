@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Sigma\Models\Qua00f;
 
 /**
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
  *
  * @property int|null $anno
  */

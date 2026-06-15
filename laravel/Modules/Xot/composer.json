@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": "^8.3",
+        "awobaz/compoships": "^3.0",
         "calebporzio/sushi": "^2.5",
         "coolsam/panel-modules": "*",
         "doctrine/dbal": "*",
