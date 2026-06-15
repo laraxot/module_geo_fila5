@@ -19,7 +19,6 @@ use Modules\Progressioni\Database\Factories\SchedaFactory;
 use Modules\Progressioni\Models\Traits\ConvertedTrait;
 use Modules\Progressioni\Models\Traits\ProgressioniTrait;
 use Modules\Ptv\Models\BaseScheda;
-use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Actions\MassUpdateCategoriaEcoAction;
 use Modules\Sigma\Actions\MassUpdateCognomeNomeAction;
 use Modules\Sigma\Actions\MassUpdatePosizTxtAction;

@@ -84,7 +84,7 @@ trait RelationshipTrait
     public function peso(): HasOne
     {
         return $this->hasOne(IndividualePesi::class, 'anno', 'anno')
-            ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)')
+            ->whereRaw('find_in_set(?, lista_propro)', [(string) $this->propro])
             ->where('type', $this->type);
     }
 

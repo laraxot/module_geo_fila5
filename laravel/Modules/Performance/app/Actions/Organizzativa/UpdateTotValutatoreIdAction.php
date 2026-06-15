@@ -111,14 +111,19 @@ class UpdateTotValutatoreIdAction
     protected function updateTotals(string $year, string $type): void
     {
         foreach ($this->fields as $field) {
-            // Calcola i totali aggregati per valutatore
+            $sumSql = match ($field) {
+                'budget_assegnato' => 'SUM(budget_assegnato) as total',
+                'quota_effettiva' => 'SUM(quota_effettiva) as total',
+                'resti' => 'SUM(resti) as total',
+                default => throw new \InvalidArgumentException("Unknown field: {$field}"),
+            };
             $totals = $this->model
                 ->where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->whereNotNull('valutatore_id')
                 ->select('valutatore_id')
-                ->selectRaw("SUM({$field}) as total")
+                ->selectRaw($sumSql)
                 ->groupBy('valutatore_id')
                 ->get();
 

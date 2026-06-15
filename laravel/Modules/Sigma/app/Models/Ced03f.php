@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -58,7 +57,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Ced03f whereTotsav($value)
  * @mixin \Eloquent
  */
-class Ced03f extends Model
+class Ced03f extends BaseModel
 {
     protected $fillable = [
         'id',

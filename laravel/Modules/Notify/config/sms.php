@@ -14,7 +14,7 @@ return [
      * |
      */
 
-    'default' => env('SMS_DRIVER', 'smsfactor'),
+    'default' => 'smsfactor',
     /*
      * |--------------------------------------------------------------------------
      * | SMS Drivers
@@ -28,43 +28,38 @@ return [
 
     'drivers' => [
         'smsfactor' => [
-            'token' => env('SMSFACTOR_TOKEN'),
-            'base_url' => env('SMSFACTOR_BASE_URL', 'https://api.smsfactor.com'),
+            'token' => null,
+            'base_url' => 'https://api.smsfactor.com',
         ],
         'twilio' => [
-            'account_sid' => env('TWILIO_ACCOUNT_SID'),
-            'auth_token' => env('TWILIO_AUTH_TOKEN'),
+            'account_sid' => null,
+            'auth_token' => null,
         ],
         'nexmo' => [
-            'key' => env('NEXMO_KEY'),
-            'secret' => env('NEXMO_SECRET'),
+            'key' => null,
+            'secret' => null,
         ],
         'plivo' => [
-            'auth_id' => env('PLIVO_AUTH_ID'),
-            'auth_token' => env('PLIVO_AUTH_TOKEN'),
+            'auth_id' => null,
+            'auth_token' => null,
         ],
         'gammu' => [
-            'path' => env('GAMMU_PATH', '/usr/bin/gammu'),
-            'config' => env('GAMMU_CONFIG', '/etc/gammurc'),
+            'path' => '/usr/bin/gammu',
+            'config' => '/etc/gammurc',
         ],
         'netfun' => [
-            // Token API fornito da Netfun (obbligatorio)
-            'token' => env('NETFUN_TOKEN'),
-            // Endpoint REST ufficiale Netfun (batch)
-            'api_url' => env('NETFUN_API_URL', 'https://v2.smsviainternet.it/api/rest/v1/sms-batch.json'),
-            // Opzionale: callback per report di consegna
-            // 'callback_url' => env('NETFUN_CALLBACK_URL'),
-            // Circuit breaker specifico per Netfun (se necessario)
+            'token' => null,
+            'api_url' => 'https://v2.smsviainternet.it/api/rest/v1/sms-batch.json',
             'circuit_breaker' => [
-                'threshold' => env('NETFUN_CIRCUIT_BREAKER_THRESHOLD', 5),
-                'timeout' => env('NETFUN_CIRCUIT_BREAKER_TIMEOUT', 60),
+                'threshold' => 5,
+                'timeout' => 60,
             ],
         ],
         'agiletelecom' => [
-            'username' => env('AGILETELECOM_USERNAME'),
-            'password' => env('AGILETELECOM_PASSWORD'),
-            'sender' => env('AGILETELECOM_SENDER', 'MyApp'),
-            'endpoint' => env('AGILETELECOM_API_URL', 'https://secure.agiletelecom.com/services/sms/send'),
+            'username' => null,
+            'password' => null,
+            'sender' => 'MyApp',
+            'endpoint' => 'https://secure.agiletelecom.com/services/sms/send',
         ],
     ],
     /*
@@ -77,7 +72,7 @@ return [
      * |
      */
 
-    'debug' => env('SMS_DEBUG', false),
+    'debug' => false,
     /*
      * |--------------------------------------------------------------------------
      * | SMS Queue
@@ -89,7 +84,7 @@ return [
      * |
      */
 
-    'queue' => env('SMS_QUEUE', 'default'),
+    'queue' => 'default',
     /*
      * |--------------------------------------------------------------------------
      * | SMS Retry Configuration
@@ -101,8 +96,8 @@ return [
      */
 
     'retry' => [
-        'attempts' => env('SMS_RETRY_ATTEMPTS', 3),
-        'delay' => env('SMS_RETRY_DELAY', 60),
+        'attempts' => 3,
+        'delay' => 60,
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -115,9 +110,9 @@ return [
      */
 
     'rate_limit' => [
-        'enabled' => env('SMS_RATE_LIMIT_ENABLED', true),
-        'max_attempts' => env('SMS_RATE_LIMIT_MAX_ATTEMPTS', 60),
-        'decay_minutes' => env('SMS_RATE_LIMIT_DECAY_MINUTES', 1),
+        'enabled' => true,
+        'max_attempts' => 60,
+        'decay_minutes' => 1,
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -130,9 +125,9 @@ return [
      */
 
     'circuit_breaker' => [
-        'enabled' => env('SMS_CIRCUIT_BREAKER_ENABLED', true),
-        'threshold' => env('SMS_CIRCUIT_BREAKER_THRESHOLD', 5),
-        'timeout' => env('SMS_CIRCUIT_BREAKER_TIMEOUT', 60),
+        'enabled' => true,
+        'threshold' => 5,
+        'timeout' => 60,
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -144,7 +139,7 @@ return [
      * |
      */
 
-    'timeout' => env('SMS_TIMEOUT', 30),
+    'timeout' => 30,
     /*
      * |--------------------------------------------------------------------------
      * | SMS Logging
@@ -156,8 +151,8 @@ return [
      */
 
     'logging' => [
-        'enabled' => env('SMS_LOGGING_ENABLED', true),
-        'channel' => env('SMS_LOGGING_CHANNEL', 'stack'),
+        'enabled' => true,
+        'channel' => 'stack',
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -170,7 +165,7 @@ return [
      */
 
     'validation' => [
-        'enabled' => env('SMS_VALIDATION_ENABLED', true),
-        'pattern' => env('SMS_VALIDATION_PATTERN', '/^\+[1-9]\d{1,14}$/'),
+        'enabled' => true,
+        'pattern' => '/^\+[1-9]\d{1,14}$/',
     ],
 ];

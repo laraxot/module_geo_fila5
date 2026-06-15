@@ -8,12 +8,29 @@
 
 Il modulo Sigma implementa un'architettura basata su **Delegation Cascade Pattern** per gestire calcoli complessi per le progressioni di carriera nella Pubblica Amministrazione.
 
+### Gerarchia Modelli
+
+```
+Illuminate\Database\Eloquent\Model
+  └── XotBaseModel                          # Modulo Xot
+        └── BaseModel                       # Connessione 'generale', casts comuni
+              └── BaseDateRangeModel        # CommonScope, timestamps=false
+                    ├── Asz00k1             # rangeFromField()='asz2kd'
+                    ├── Asz00f              # rangeFromField()='asz2kd' + SigmaModelTrait
+                    ├── Qua00f              # rangeFromField()='qua2kd'
+                    ├── Qua03f              # rangeFromField()='q32kd'
+                    └── Rep00f              # rangeFromField()='rep2kd'
+```
+
+**Regola**: MAI `extends Model` direttamente. Usare `BaseModel` o `BaseDateRangeModel`.
+
 ### Componenti Principali
 
 ```
 Sigma Module
 ├── Models/
 │   ├── BaseModel.php              # Base per tutti i modelli Sigma
+│   ├── BaseDateRangeModel.php     # Base per modelli con date range (dal/al/ann)
 │   ├── Anag.php                   # Anagrafica dipendenti (317 modelli totali)
 │   └── Traits/
 │       ├── SchedaTrait.php        # ⚡ Orchestrator principale

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
@@ -63,7 +62,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|Mov01k2 whereMov2kz($value)
  * @mixin \Eloquent
  */
-class Mov01k2 extends Model
+class Mov01k2 extends BaseModel
 {
     protected $fillable = [
         'id',

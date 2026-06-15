@@ -12,6 +12,7 @@ updated: "2026-04-15T08:28:47Z"
 ## Concepts
 
 - [phpstan-scheda-actions](./concepts/phpstan-scheda-actions.md) — action batch su schede, relazioni `asz()`, PHPStan
+- [scheda-contract-inheritance](./concepts/scheda-contract-inheritance.md) — `implements SchedaContract` solo su `BaseScheda`
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — contratto wiki locale
 
 ## Entities

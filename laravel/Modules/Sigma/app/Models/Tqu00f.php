@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -42,7 +41,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Tqu00f whereTqann($value)
  * @mixin \Eloquent
  */
-class Tqu00f extends Model
+class Tqu00f extends BaseModel
 {
     protected $fillable = [
         'id',

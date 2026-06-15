@@ -74,6 +74,21 @@ class SchedaCriteri extends BaseModel
 
     public string $to_field = 'al';
 
+    protected function rangeFromField(): string
+    {
+        return 'dal';
+    }
+
+    protected function rangeToField(): string
+    {
+        return 'al';
+    }
+
+    protected function annFieldName(): string
+    {
+        return 'anno';
+    }
+
     /*
     public $valutaz_fields=['esperienza_acquisita','risultati_ottenuti',
             'arricchimento_professionale','impegno','qualita_prestazione'];

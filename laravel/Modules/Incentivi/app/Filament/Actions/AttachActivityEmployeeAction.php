@@ -68,7 +68,7 @@ class AttachActivityEmployeeAction extends AttachAction
                     }
                 })
                 ->recordSelectOptionsQuery(
-                    function (Builder $query, $livewire): Builder {
+                    function (Builder $query, RelationManager $livewire): Builder {
                         $ownerRecord = $livewire->getOwnerRecord();
                         $projectId = null;
 

@@ -7,7 +7,6 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Date;
 
@@ -63,7 +62,7 @@ use Illuminate\Support\Facades\Date;
  * @method static Builder|Wstr01lx whereWyorat($value)
  * @mixin \Eloquent
  */
-class Wstr01lx extends Model
+class Wstr01lx extends BaseModel
 {
     protected $fillable = [
         'id',

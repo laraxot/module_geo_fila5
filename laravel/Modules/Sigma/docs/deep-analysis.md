@@ -299,20 +299,17 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 **Utilizzo**: `Schede` estende `SchedaTrait` con conflict resolution
 
-**Pattern**:
+**Pattern** (2026-06-15 — STORY-002):
 ```php
-class Scheda extends BaseModel implements ProgressioneSchedaContract
+// BaseScheda (Ptv) implementa SchedaContract; il figlio solo extends
+class Scheda extends BaseScheda
 {
-    use SchedaTrait, SigmaModelTrait {
-        // Conflict resolution: prefer SchedaTrait methods
-        SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
-        // ... altri metodi
-    }
-    
-    public int $n_perf_ind = 3; // Configurazione media performance
+    use ProgressioniTrait;
+    public int $n_perf_ind = 3;
 }
 ```
+
+Canon: [module-hierarchy-inheritance-pattern](../../../../docs/wiki/rules/module-hierarchy-inheritance-pattern.md)
 
 **Modelli Sigma Utilizzati**:
 - `Anag`, `Ana02f`, `Ana10f`

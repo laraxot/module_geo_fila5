@@ -7,14 +7,12 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Date;
 use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
 // ----------traits ---
-use Modules\Sigma\Models\Traits\Scopes\CommonScope;
 
 /**
  * Modules\Sigma\Models\Asz00k1.
@@ -127,10 +125,8 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @method static Builder<static>|Asz00k1 ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @mixin \Eloquent
  */
-class Asz00k1 extends Model
+class Asz00k1 extends BaseDateRangeModel
 {
-    use CommonScope;
-
     // use SigmaModelTrait;
     use FunctionExtra;
 
@@ -177,20 +173,36 @@ class Asz00k1 extends Model
         'asz005',
     ];
 
-    protected $connection = 'generale'; // this will use the specified database connection
-
     // protected $table = 'asz00k1';
-    protected $table = 'asz00f';
-
-    // !!! finche' abbiamo solo questa tabella da webservice
-    public $timestamps = false;
+    protected $table = 'asz00f'; // !!! finche' abbiamo solo questa tabella da webservice
 
     // -------------------------------------------------------------------------
+    public const FROM_FIELD = 'asz2kd';
+
+    public const TO_FIELD = 'asz2ka';
+
+    public const ANN_FIELD = 'aszann';
+
     public static string $from_field = 'asz2kd';
 
     public static string $to_field = 'asz2ka';
 
     public static string $ann_field = 'aszann';
+
+    public function rangeFromField(): string
+    {
+        return 'asz2kd';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'asz2ka';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'aszann';
+    }
 
     // -------------------------------------------------------------------------
 
@@ -211,7 +223,7 @@ class Asz00k1 extends Model
 
         return $this->hasMany(Qua00f::class, 'matr', 'matr')
             ->where($table.'.ente', $this->ente)
-            ->whereRaw($table.".quaann = '' ")
+            ->where($table.'.quaann', '')
             ->select(['id', 'matr', 'ente', 'qua2kd', 'qua2ka', 'propro', 'posfun', 'posiz']);
     }
 
@@ -224,7 +236,7 @@ class Asz00k1 extends Model
 
         return $this->hasMany(Qua00f::class, 'matr', 'matr')
             ->where($table.'.ente', $this->ente)
-            ->whereRaw($table.".quaann = '' ");
+            ->where($table.'.quaann', '');
     }
 
     /**
@@ -259,37 +271,29 @@ class Asz00k1 extends Model
         /* @var string $table */
 
         return $query0->join('qua00f', static function (JoinClause $join) use ($lista_propro, $posfun, $table): void {
-            /** @var JoinClause $join */
-            $sql = '(
+            $join
+                ->on('qua00f.ente', '=', $table.'.ente')
+                ->on('qua00f.matr', '=', $table.'.matr')
+                ->where('qua00f.quaann', '')
+                ->whereRaw('find_in_set(qua00f.propro, ?)', [$lista_propro])
+                ->whereRaw(
+                    '(
 (asz2kd BETWEEN qua2kd AND qua2ka)
 OR
 (asz2kd >= qua2kd AND qua2ka=0)
 OR
 (qua2kd BETWEEN asz2kd AND asz2ka)
-)';
-            /** @var string $listaProproStr */
-            $listaProproStr = $lista_propro;
-            /** @var string $tableStr */
-            $tableStr = (string) $table;
-
-            $join
-                ->on('qua00f.ente', '=', $tableStr.'.ente')
-                ->whereRaw('qua00f.matr ='.$tableStr.'.matr')
-                ->whereRaw('qua00f.quaann =""')
-                ->whereRaw('find_in_set(qua00f.propro,"'.$listaProproStr.'")')
-                ->whereRaw($sql);
+)',
+                );
             if (isset($posfun)) {
-                // $join->where('posfun', $posfun);
-                /** @var string $posfunStr */
-                $posfunStr = $posfun;
-                $join->whereRaw('SUBSTR(posfun,-1,1)='.substr($posfunStr, -1, 1).'');
+                $join->whereRaw('SUBSTR(posfun,-1,1)=?', [substr($posfun, -1, 1)]);
             }
         });
     }
 
     protected function scopeOfListaTipoCodice(Builder $query, string $lista_tipo_codice): void
     {
-        $query->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.$lista_tipo_codice.'")');
+        $query->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_tipo_codice]);
     }
 
     // ------------------------------------------------------------
@@ -517,13 +521,25 @@ OR
     }
 
     // ------ SCOPES --------
+    protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
+    {
+        if ($date_min === null || $date_max === null) {
+            return $query;
+        }
+
+        return $query->selectRaw(
+            'greatest(datediff(if(asz2ka=0 or asz2ka>?, ?, asz2ka), if(asz2kd<?, ?, asz2kd))+1, 0) AS days',
+            [$date_max, $date_max, $date_min, $date_min],
+        );
+    }
+
     protected function scopeOfCodici(Builder $query, array|string $lista_codici): Builder
     {
         if (\is_array($lista_codici)) {
-            $lista_codici = implode(',', $lista_codici);
+            $lista_codici = implode(',', array_map(static fn (mixed $codice): string => (string) $codice, $lista_codici));
         }
 
-        return $query->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.$lista_codici.'")');
+        return $query->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_codici]);
     }
 
     // ----------------------------------------------------------------------

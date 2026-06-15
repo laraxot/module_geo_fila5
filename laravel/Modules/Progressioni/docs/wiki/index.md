@@ -13,6 +13,7 @@ updated: "2026-06-15"
 
   - [phpstan-progressioni-gate](./concepts/phpstan-progressioni-gate.md) — gate PHPStan 0 errori, pattern hasMany/ASZ/route helper
   - [eloquent-relationship-encapsulation](../../../../../docs/wiki/rules/eloquent-relationship-encapsulation.md) — regola cardinale (link root)
+  - [module-hierarchy-inheritance-pattern](../../../../../docs/wiki/rules/module-hierarchy-inheritance-pattern.md) — `Scheda extends BaseScheda` senza `implements` ridondante
 - [organizzativa-money](./concepts/organizzativa-money.md)
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md)
 - [context-overflow-prevention](./concepts/context-overflow-prevention.md)

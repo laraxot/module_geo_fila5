@@ -6,7 +6,6 @@ namespace Modules\Sigma\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
@@ -147,7 +146,7 @@ use stdClass;
  * @method static Builder|Wstr02f whereW2vesc($value)
  * @mixin \Eloquent
  */
-class Wstr02f extends Model
+class Wstr02f extends BaseModel
 {
     protected $fillable = [
         'id',

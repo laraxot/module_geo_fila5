@@ -128,9 +128,15 @@ private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
     $risultato = $c030Service->cercaPerCodiceFiscale($codiceFiscale);
 
     // Cittadino non registrato in ANPR
-    if (isset($risultato['errori']) && is_array($risultato['errori'])) {
-        foreach ($risultato['errori'] as $err) {
-            if (($err['codiceErroreAnomalia'] ?? '') === 'EN122') {
+    $errori = $risultato['errori'] ?? null;
+    if (is_array($errori)) {
+        foreach ($errori as $err) {
+            if (! is_array($err)) {
+                continue;
+            }
+
+            $codiceErrore = $err['codiceErroreAnomalia'] ?? '';
+            if (is_string($codiceErrore) && $codiceErrore === 'EN122') {
                 $this->messaggioInfo = 'Il codice fiscale inserito non risulta registrato in ANPR.';
                 return null;
             }
@@ -142,9 +148,28 @@ private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
         throw new Exception('Errore di sistema durante la ricerca su C030');
     }
 
-    return $risultato['lista_soggetti'][0]['identificativi']['idANPR']
-        ?? $risultato['lista_soggetti'][0]['idANPR']
-        ?? null;
+    return $this->extractIdAnprFromC030Risultato($risultato);
+}
+
+private function extractIdAnprFromC030Risultato(array $risultato): ?string
+{
+    $listaSoggetti = $risultato['lista_soggetti'] ?? null;
+    if (! is_array($listaSoggetti) || ! isset($listaSoggetti[0]) || ! is_array($listaSoggetti[0])) {
+        return null;
+    }
+
+    $primoSoggetto = $listaSoggetti[0];
+    $identificativi = $primoSoggetto['identificativi'] ?? null;
+    if (is_array($identificativi)) {
+        $idAnpr = $identificativi['idANPR'] ?? null;
+        if (is_string($idAnpr) && $idAnpr !== '') {
+            return $idAnpr;
+        }
+    }
+
+    $idAnprDiretto = $primoSoggetto['idANPR'] ?? $primoSoggetto['id_anpr'] ?? null;
+
+    return is_string($idAnprDiretto) && $idAnprDiretto !== '' ? $idAnprDiretto : null;
 }
 
 
@@ -168,19 +193,24 @@ private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
     {
         $listaSoggetti = $risultato['lista_soggetti'] ?? [];
 
-        if (empty($listaSoggetti)) {
+        if (! is_array($listaSoggetti) || $listaSoggetti === []) {
             $this->esitoPositivo = false;
             $this->notifyWarning('Nessun soggetto trovato');
             return;
         }
 
         $primoSoggetto = $listaSoggetti[0];
+        if (! is_array($primoSoggetto)) {
+            $this->esitoPositivo = false;
+            $this->notifyWarning('Nessun soggetto trovato');
+            return;
+        }
 
         $this->datiCittadino = [
-            'generalita'     => $primoSoggetto['generalita'] ?? [],
-            'stato_civile'   => $primoSoggetto['stato_civile'] ?? [],
-            'identificativi' => $primoSoggetto['identificativi'] ?? [],
-            'info_ente'      => $primoSoggetto['info_soggetto_ente'] ?? [],
+            'generalita'     => is_array($primoSoggetto['generalita'] ?? null) ? $primoSoggetto['generalita'] : [],
+            'stato_civile'   => is_array($primoSoggetto['stato_civile'] ?? null) ? $primoSoggetto['stato_civile'] : [],
+            'identificativi' => is_array($primoSoggetto['identificativi'] ?? null) ? $primoSoggetto['identificativi'] : [],
+            'info_ente'      => is_array($primoSoggetto['info_soggetto_ente'] ?? null) ? $primoSoggetto['info_soggetto_ente'] : [],
         ];
 
         $this->esitoPositivo = true;
@@ -243,17 +273,24 @@ private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
     protected function formatErrorBody(array $risultato): string
     {
         $errori = $risultato['errori'] ?? [];
-        if (empty($errori)) {
+        if (! is_array($errori) || $errori === []) {
             return 'Errore sconosciuto';
         }
 
-        $lines = array_map(static fn(array $e) => sprintf(
-            'Codice: %s | Messaggio: %s',
-            $e['codiceErroreAnomalia'] ?? 'N/A',
-            $e['testoErroreAnomalia'] ?? 'N/A'
-        ), $errori);
+        $lines = [];
+        foreach ($errori as $errore) {
+            if (! is_array($errore)) {
+                continue;
+            }
 
-        return implode("\n", $lines);
+            $lines[] = sprintf(
+                'Codice: %s | Messaggio: %s',
+                (string) ($errore['codiceErroreAnomalia'] ?? 'N/A'),
+                (string) ($errore['testoErroreAnomalia'] ?? 'N/A')
+            );
+        }
+
+        return $lines === [] ? 'Errore sconosciuto' : implode("\n", $lines);
     }
 
     protected function getForms(): array { return ['pdndForm']; }

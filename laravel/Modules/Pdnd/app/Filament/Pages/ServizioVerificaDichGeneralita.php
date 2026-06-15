@@ -22,6 +22,8 @@ use Modules\Pdnd\Services\PdndClientService;
 use Modules\User\Models\User;
 use Modules\Xot\Filament\Pages\XotBasePage;
 
+use function Safe\preg_replace;
+
 /**
  * @property Schema $pdndForm
  */
@@ -105,8 +107,7 @@ class ServizioVerificaDichGeneralita extends XotBasePage
                     $idAnprValue = $listaSoggetti[0]['id_anpr'] ?? 'N/A';
                 }
 
-                $cleaned = preg_replace('/[^\w\s-]/', '', (string) $idAnprValue);
-                $this->idAnpr = $cleaned;
+                $this->idAnpr = preg_replace('/[^\w\s-]/', '', (string) $idAnprValue);
 
                 // dddx($c030Service);
 
@@ -135,8 +136,7 @@ class ServizioVerificaDichGeneralita extends XotBasePage
                         $risultatoVerifica = $risultatoVerificaValue;
 
                         // Assicurati che sia una stringa semplice
-                        $cleanedRisultato = preg_replace('/[^\w\s-]/', '', (string) $risultatoVerifica);
-                        $this->risultatoVerifica = $cleanedRisultato;
+                        $this->risultatoVerifica = preg_replace('/[^\w\s-]/', '', (string) $risultatoVerifica);
                     }
 
                     Notification::make()

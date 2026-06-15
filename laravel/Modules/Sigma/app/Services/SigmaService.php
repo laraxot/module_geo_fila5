@@ -71,7 +71,7 @@ class SigmaService
         $txtd_array = TxtdService::toArray($file_txtd);
         $txtd_fields = TxtdService::getFieldsNames(['data' => $txtd_array]);
 
-        $fields_up_list = implode(', ', $txtd_fields);
+        $fields_up_list = implode(', ', array_map(static fn (mixed $field): string => (string) $field, $txtd_fields));
         if (\count($txtd_fields) < 2) {
             return
                 '<h3>File scaricato male ['

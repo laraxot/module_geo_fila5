@@ -114,7 +114,7 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder<static>|Asz00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @mixin \Eloquent
  */
-class Asz00f extends BaseModel
+class Asz00f extends BaseDateRangeModel
 {
     use SigmaModelTrait;
 
@@ -166,9 +166,30 @@ class Asz00f extends BaseModel
 
     // public $timestamps = false;
 
+    public const FROM_FIELD = 'asz2kd';
+
+    public const TO_FIELD = 'asz2ka';
+
+    public const ANN_FIELD = 'aszann';
+
     public string $from_field = 'asz2kd';
 
     public string $to_field = 'asz2ka';
+
+    public function rangeFromField(): string
+    {
+        return 'asz2kd';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'asz2ka';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'aszann';
+    }
 
     public function codici(): HasOne
     {
@@ -191,13 +212,25 @@ class Asz00f extends BaseModel
     }
 
     // ------ SCOPES --------
+    protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
+    {
+        if ($date_min === null || $date_max === null) {
+            return $query;
+        }
+
+        return $query->selectRaw(
+            'greatest(datediff(if(asz2ka=0 or asz2ka>?, ?, asz2ka), if(asz2kd<?, ?, asz2kd))+1, 0) AS days',
+            [$date_max, $date_max, $date_min, $date_min],
+        );
+    }
+
     protected function scopeOfCodici(Builder $query, array|string $lista_codici = []): Builder
     {
         if (\is_array($lista_codici)) {
-            $lista_codici = implode(',', $lista_codici);
+            $lista_codici = implode(',', array_map(static fn (mixed $codice): string => (string) $codice, $lista_codici));
         }
 
-        return $query->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.$lista_codici.'")');
+        return $query->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_codici]);
     }
 
     /*
@@ -222,7 +255,7 @@ class Asz00f extends BaseModel
     protected static function booted(): void
     {
         static::addGlobalScope('ann', static function (Builder $builder) {
-            $builder->whereRaw("aszann = '' ");
+            $builder->where('aszann', '');
         });
     }
 }

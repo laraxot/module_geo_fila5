@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 // ----------traits ---
@@ -86,7 +85,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Sto00f whereTipoprovvdi($value)
  * @mixin \Eloquent
  */
-class Sto00f extends Model
+class Sto00f extends BaseModel
 {
     protected $fillable = [
         'id',

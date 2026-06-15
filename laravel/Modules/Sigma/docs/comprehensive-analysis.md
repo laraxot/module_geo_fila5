@@ -150,22 +150,16 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 **File Chiave**: `Modules/Progressioni/app/Models/Scheda.php`
 
-**Pattern di Utilizzo**:
+**Pattern di Utilizzo** (2026-06-15):
 ```php
-class Scheda extends BaseModel implements ProgressioneSchedaContract
+class Scheda extends BaseScheda
 {
-    use ConvertedTrait;
     use ProgressioniTrait;
-    use SchedaTrait, SigmaModelTrait {
-        // Conflict resolution: prefer SchedaTrait methods
-        SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
-        SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
-        // ... altri metodi
-    }
-    
-    public int $n_perf_ind = 3; // Configurazione media performance
+    public int $n_perf_ind = 3;
 }
 ```
+
+`SchedaContract` è su `BaseScheda` — vedi [module-hierarchy-inheritance-pattern](../../../../docs/wiki/rules/module-hierarchy-inheritance-pattern.md).
 
 **Modelli Sigma Utilizzati**:
 - `Anag`, `Ana02f`, `Ana10f`

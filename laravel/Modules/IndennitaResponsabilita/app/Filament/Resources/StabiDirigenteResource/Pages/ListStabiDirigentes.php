@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pages;
 
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\TextInput;
 use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
@@ -18,7 +19,7 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
     protected static string $resource = StabiDirigenteResource::class;
 
     /**
-     * @return array<Action>
+     * @return array<string, Action|ActionGroup>
      */
     #[Override]
     protected function getHeaderActions(): array

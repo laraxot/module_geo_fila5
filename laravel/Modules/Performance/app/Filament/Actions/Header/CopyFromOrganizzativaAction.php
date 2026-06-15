@@ -115,7 +115,7 @@ class CopyFromOrganizzativaAction extends Action
     public function isVisible(): bool
     {
         // Visible solo per utenti autorizzati
-        return Auth::user()->isSuperAdmin();
+        return Auth::user()?->isSuperAdmin() ?? false;
     }
 
     /**

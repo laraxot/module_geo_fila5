@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models\Traits\Extras;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Collection;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00k1;
@@ -34,6 +38,244 @@ trait FunctionExtra
         }
 
         return false;
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $rows
+     * @return array<string, mixed>
+     */
+    private static function indexedRowsToAssoc(array $rows): array
+    {
+        $assoc = [];
+        foreach (array_values($rows) as $index => $row) {
+            $assoc['row_'.$index] = $row;
+        }
+
+        return $assoc;
+    }
+
+    /**
+     * @param  array<int|string, mixed>|Collection  $items
+     * @return array<int, array<string, mixed>>
+     */
+    private static function normalizeRowList(array|Collection $items): array
+    {
+        $normalized = [];
+        $source = $items instanceof Collection ? $items->all() : $items;
+
+        foreach ($source as $item) {
+            if (! \is_array($item)) {
+                continue;
+            }
+
+            $row = [];
+            foreach ($item as $key => $value) {
+                $row[(string) $key] = $value;
+            }
+
+            $normalized[] = $row;
+        }
+
+        return $normalized;
+    }
+
+    /**
+     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $query
+     */
+    private static function applyQua00fCoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
+    {
+        $dateMin = $data->date_min;
+        $dateMax = $data->date_max;
+
+        if ($dateMin instanceof Carbon && $dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka), if(qua2kd=0 or qua2kd<?, ?, qua2kd))+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd'), $dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMin instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(qua2ka, if(qua2kd=0 or qua2kd<?, ?, qua2kd))+1,0)),0) as tot',
+                [$dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka), qua2kd)+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd')],
+            );
+
+            return;
+        }
+
+        $query->selectRaw('COALESCE(sum(greatest(datediff(qua2ka, qua2kd)+1,0)),0) as tot');
+    }
+
+    /**
+     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $query
+     * @param  array<string, mixed>  $params
+     */
+    private static function applyQua00fCoalesceTotSelectFromArray(Builder|Relation $query, array $params): void
+    {
+        $dateMin = $params['date_min'] ?? null;
+        $dateMax = $params['date_max'] ?? null;
+
+        if (\is_object($dateMin) && $dateMin instanceof Carbon) {
+            $dateMin = $dateMin->format('Ymd');
+        }
+
+        if (\is_object($dateMax) && $dateMax instanceof Carbon) {
+            $dateMax = $dateMax->format('Ymd');
+        }
+
+        if (is_string($dateMin) && is_string($dateMax)) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka), if(qua2kd=0 or qua2kd<?, ?, qua2kd))+1,0)),0) as tot',
+                [$dateMax, $dateMax, $dateMin, $dateMin],
+            );
+
+            return;
+        }
+
+        if (is_string($dateMin)) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(qua2ka, if(qua2kd=0 or qua2kd<?, ?, qua2kd))+1,0)),0) as tot',
+                [$dateMin, $dateMin],
+            );
+
+            return;
+        }
+
+        if (is_string($dateMax)) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka), qua2kd)+1,0)),0) as tot',
+                [$dateMax, $dateMax],
+            );
+
+            return;
+        }
+
+        $query->selectRaw('COALESCE(sum(greatest(datediff(qua2ka, qua2kd)+1,0)),0) as tot');
+    }
+
+    /**
+     * @param  Builder<Qua03f>|Relation<Qua03f, covariant Model, *>  $query
+     */
+    private static function applyQua03fCoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
+    {
+        $dateMin = $data->date_min;
+        $dateMax = $data->date_max;
+
+        if ($dateMin instanceof Carbon && $dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(q32ka=0 or q32ka>?, ?, q32ka), if(q32kd=0 or q32kd<?, ?, q32kd))+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd'), $dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMin instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(q32ka, if(q32kd=0 or q32kd<?, ?, q32kd))+1,0)),0) as tot',
+                [$dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(q32ka=0 or q32ka>?, ?, q32ka), q32kd)+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd')],
+            );
+
+            return;
+        }
+
+        $query->selectRaw('COALESCE(sum(greatest(datediff(q32ka, q32kd)+1,0)),0) as tot');
+    }
+
+    /**
+     * @param  Builder<Asz00k1>|Relation<Asz00k1, covariant Model, *>  $query
+     */
+    private static function applyAsz00k1CoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
+    {
+        $dateMin = $data->date_min;
+        $dateMax = $data->date_max;
+
+        if ($dateMin instanceof Carbon && $dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(asz2ka=0 or asz2ka>?, ?, asz2ka), if(asz2kd=0 or asz2kd<?, ?, asz2kd))+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd'), $dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMin instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(asz2ka, if(asz2kd=0 or asz2kd<?, ?, asz2kd))+1,0)),0) as tot',
+                [$dateMin->format('Ymd'), $dateMin->format('Ymd')],
+            );
+
+            return;
+        }
+
+        if ($dateMax instanceof Carbon) {
+            $query->selectRaw(
+                'COALESCE(sum(greatest(datediff(if(asz2ka=0 or asz2ka>?, ?, asz2ka), asz2kd)+1,0)),0) as tot',
+                [$dateMax->format('Ymd'), $dateMax->format('Ymd')],
+            );
+
+            return;
+        }
+
+        $query->selectRaw('COALESCE(sum(greatest(datediff(asz2ka, asz2kd)+1,0)),0) as tot');
+    }
+
+    /**
+     * @param  Builder<Qua00f>  $qua00f
+     */
+    private static function applyQua00fProproFilters(
+        Builder $qua00f,
+        ?string $lista_propro,
+        ?string $lista_propro_sup,
+        ?string $posfun,
+    ): void {
+        if (! is_string($lista_propro)) {
+            return;
+        }
+
+        if (is_string($lista_propro_sup)) {
+            if (is_string($posfun)) {
+                $qua00f->whereRaw(
+                    '((FIND_IN_SET(propro, ?) AND SUBSTR(posfun,-1)=?) OR FIND_IN_SET(propro, ?))',
+                    [$lista_propro, substr($posfun, -1), $lista_propro_sup],
+                );
+
+                return;
+            }
+
+            $qua00f->whereRaw('find_in_set(propro, ?)', [$lista_propro.','.$lista_propro_sup]);
+
+            return;
+        }
+
+        if (is_string($posfun)) {
+            $qua00f->whereRaw('find_in_set(propro, ?)', [$lista_propro]);
+            $qua00f->whereRaw('SUBSTR(posfun,-1)=?', [substr($posfun, -1)]);
+
+            return;
+        }
+
+        $qua00f->whereRaw('find_in_set(propro, ?)', [$lista_propro]);
     }
 
     public static function getCoalesceDateRange(GgFilterData $data): string
@@ -149,29 +391,7 @@ trait FunctionExtra
         $qua00f = $qua00fRelation;
 
         if (is_string($lista_propro)) {
-            if (is_string($lista_propro_sup)) {
-                if (is_string($posfun)) {
-                    $qua00f->whereRaw('(
-                        (FIND_IN_SET( propro,"'
-                    .(string) $lista_propro
-                    .'") AND SUBSTR(posfun,-1)='
-                    .substr((string) $posfun, -1)
-                    .')
-                        or  FIND_IN_SET(propro,"'
-                    .(string) $lista_propro_sup
-                    .'")
-                    )');
-                } else {
-                    // non c'e' posfun
-                    $qua00f->whereRaw('find_in_set(propro,"'.(string) $lista_propro.','.(string) $lista_propro_sup.'")');
-                }
-            } elseif (is_string($posfun)) {
-                // non c'e' sup ma c'e' posfun
-                $qua00f->whereRaw('find_in_set(propro,"'.(string) $lista_propro.'")');
-                $qua00f->whereRaw('SUBSTR(posfun,-1)='.substr((string) $posfun, -1));
-            } else {
-                $qua00f->whereRaw('find_in_set(propro,"'.(string) $lista_propro.'")');
-            }
+            self::applyQua00fProproFilters($qua00f, $lista_propro, $lista_propro_sup, $posfun);
         }
 
         if (is_string($posiz)) {
@@ -183,11 +403,10 @@ trait FunctionExtra
         }
 
         if ($date_min instanceof Carbon) {
-            $qua00f->whereRaw('( qua2ka >='.$date_min->format('Ymd').' or qua2ka=0 )');
+            $qua00f->whereRaw('(qua2ka >= ? or qua2ka = 0)', [$date_min->format('Ymd')]);
         }
 
-        $select = Qua00f::getCoalesceDateRange($data);
-        $qua00f->selectRaw($select.' as tot');
+        self::applyQua00fCoalesceTotSelect($qua00f, $data);
 
         $result = $qua00f->first();
         if ($result === null) {
@@ -223,8 +442,12 @@ trait FunctionExtra
          */
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public function ggInSedeTotByArray(array $params): ?int
     {
+        /** @var array<string, mixed> $params */
         $date_min = $params['date_min'] ?? null;
         $date_max = $params['date_max'] ?? null;
         $lista_propro = $params['lista_propro'] ?? null;
@@ -251,29 +474,12 @@ trait FunctionExtra
         $qua00f = $qua00fRelation;
 
         if (isset($lista_propro) && is_string($lista_propro)) {
-            if (isset($lista_propro_sup) && is_string($lista_propro_sup)) {
-                if (isset($posfun) && is_string($posfun)) {
-                    $qua00f->whereRaw('(
-                        (FIND_IN_SET( propro,"'
-                    .$lista_propro
-                    .'") AND SUBSTR(posfun,-1)='
-                    .substr((string) $posfun, -1)
-                    .')
-                        or  FIND_IN_SET(propro,"'
-                    .$lista_propro_sup
-                    .'")
-                    )');
-                } else {
-                    // non c'e' posfun
-                    $qua00f->whereRaw('find_in_set(propro,"'.$lista_propro.','.$lista_propro_sup.'")');
-                }
-            } elseif (isset($posfun) && is_string($posfun)) {
-                // non c'e' sup ma c'e' posfun
-                $qua00f->whereRaw('find_in_set(propro,"'.$lista_propro.'")');
-                $qua00f->whereRaw('SUBSTR(posfun,-1)='.substr((string) $posfun, -1));
-            } else {
-                $qua00f->whereRaw('find_in_set(propro,"'.$lista_propro.'")');
-            }
+            self::applyQua00fProproFilters(
+                $qua00f,
+                $lista_propro,
+                isset($lista_propro_sup) && is_string($lista_propro_sup) ? $lista_propro_sup : null,
+                isset($posfun) && is_string($posfun) ? $posfun : null,
+            );
         }
 
         if (isset($posiz) && is_string($posiz)) {
@@ -285,11 +491,10 @@ trait FunctionExtra
         }
 
         if (isset($date_min) && is_string($date_min)) {
-            $qua00f->whereRaw('( qua2ka >='.$date_min.' or qua2ka=0 )');
+            $qua00f->whereRaw('(qua2ka >= ? or qua2ka = 0)', [$date_min]);
         }
 
-        $select = Qua00f::getCoalesceDateRangeByArray($params);
-        $qua00f->selectRaw($select.' as tot');
+        self::applyQua00fCoalesceTotSelectFromArray($qua00f, $params);
 
         $result = $qua00f->first();
         if ($result === null) {
@@ -305,6 +510,9 @@ trait FunctionExtra
     }
 
     // ---------------------------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public function ggFuoriSedeTot(array $params): ?int
     {
         // These helper calculations are only valid on Anag instances,
@@ -329,12 +537,11 @@ trait FunctionExtra
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua03f, static> $qua */
         $qua = $this->qua03f();
         if (isset($lista_propro) && is_string($lista_propro)) {
-            $qua->whereRaw('find_in_set(q3pro,"'.(string) $lista_propro.'")');
+            $qua->whereRaw('find_in_set(q3pro, ?)', [$lista_propro]);
         }
 
         if (isset($posfun) && is_string($posfun)) {
-            // if (isset($posfun) && substr($posfun, -1)!=substr($this->attributes['posfun'], -1) ) {
-            $qua->whereRaw('SUBSTR(q3fun,-1)='.substr((string) $posfun, -1));
+            $qua->whereRaw('SUBSTR(q3fun,-1)=?', [substr($posfun, -1)]);
         }
 
         if (isset($date_max) && is_string($date_max)) {
@@ -345,8 +552,7 @@ trait FunctionExtra
             $qua->where('q32ka', '>=', (string) $date_min);
         }
         $data = GgFilterData::from($params);
-        $select = Qua03f::getCoalesceDateRange($data);
-        $qua->selectRaw($select.' as tot');
+        self::applyQua03fCoalesceTotSelect($qua, $data);
 
         $result = $qua->first();
         if ($result === null) {
@@ -411,7 +617,7 @@ trait FunctionExtra
          * }
          */
         if (isset($lista_tipo_codice) && is_string($lista_tipo_codice)) {
-            $asz->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.(string) $lista_tipo_codice.'")');
+            $asz->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_tipo_codice]);
         }
 
         if (isset($date_max) && is_string($date_max)) {
@@ -419,11 +625,10 @@ trait FunctionExtra
         }
 
         if (isset($date_min) && is_string($date_min)) {
-            $asz->whereRaw('( asz2ka >='.(string) $date_min.' or asz2ka=0 )');
+            $asz->whereRaw('(asz2ka >= ? or asz2ka = 0)', [$date_min]);
         }
         $data = GgFilterData::from($params);
-        $select = Asz00k1::getCoalesceDateRange($data);
-        $asz->selectRaw($select.' as tot');
+        self::applyAsz00k1CoalesceTotSelect($asz, $data);
 
         $result = $asz->first();
         if ($result === null) {
@@ -435,74 +640,9 @@ trait FunctionExtra
         return (int) $tot;
     }
 
-    public function ggAssenzaInSedeTot(GgFilterData $data): int
+    public function ggAssenzaInSedeTot(GgFilterData $_data): int
     {
         return 0; // solo adesso per debug perche' sta causando problemi di performance
-        // These helper calculations are only valid on Anag instances,
-        // which provide the required asz00k1() relationship.
-        if (! $this instanceof Anag) {
-            return 0;
-        }
-
-        $date_min = $data->date_min;
-        $date_max = $data->date_max;
-        $lista_propro = $data->lista_propro;
-        $lista_propro_sup = $data->lista_propro_sup;
-        $posfun = $data->posfun;
-        $posiz = $data->posiz;
-        $lista_tipo_codice = $data->lista_tipo_codice;
-
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Asz00k1, static> $aszRelation */
-        $aszRelation = $this->asz00k1();
-        /** @var \Illuminate\Database\Eloquent\Builder<Asz00k1> $asz */
-        $asz = $aszRelation;
-
-        if (is_string($lista_propro)) {
-            /*
-             * $asz->whereHas('qua00f', function($query) use($lista_propro) {
-             * $query->whereRaw('find_in_set(propro,"'.$lista_propro.'")');
-             * });
-             */
-            if (is_string($posfun)) {
-                /* @phpstan-ignore-next-line method.notFound - Scope method defined in Asz00k1 model */
-                $asz->ofListaProproPosfun($lista_propro, $posfun);
-            } else {
-                /* @phpstan-ignore-next-line method.notFound - Scope method defined in Asz00k1 model */
-                $asz->ofListaProproPosfun($lista_propro);
-            }
-        }
-
-        // dddx($asz->get());
-
-        $asz->where('aszumi', 'G');
-        /*
-         * if(isset($posfun)){
-         * //if (isset($posfun) && substr($posfun, -1)!=substr($this->attributes['posfun'], -1) ) {
-         * $qua00f->whereRaw('SUBSTR(posfun,-1)='.substr($posfun,-1));
-         * }
-         */
-        if (is_string($lista_tipo_codice)) {
-            $asz->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.(string) $lista_tipo_codice.'")');
-        }
-
-        if ($date_max instanceof Carbon) {
-            $asz->where('asz2kd', '<=', $date_max->format('Ymd'));
-        }
-
-        if ($date_min instanceof Carbon) {
-            $asz->whereRaw('( asz2ka >='.$date_min->format('Ymd').' or asz2ka=0 )');
-        }
-        $select = Asz00k1::getCoalesceDateRange($data);
-        $asz->selectRaw($select.' as tot');
-
-        $result = $asz->first();
-        if ($result === null) {
-            return 0;
-        }
-
-        $tot = $result->tot ?? 0;
-
-        return (int) $tot;
     }
 
     // -------------------------------------------------------------------------------
@@ -565,25 +705,14 @@ trait FunctionExtra
 
         // *
         foreach ($ris as $k => $v) {
-            $vRep = $v['rep'] ?? null;
-            $vQua = $v['qua'] ?? null;
-            if ($vRep === null || $vQua === null) {
+            if (($v['qua'] ?? null) === null) {
                 continue;
             }
-            if (! \is_array($vRep)) {
-                continue;
-            }
-            if ($vQua instanceof \Illuminate\Support\Collection) {
-                $vQuaArray = $vQua->all();
-            } elseif (\is_array($vQua)) {
-                $vQuaArray = $vQua;
-            } else {
-                continue;
-            }
-            /** @var array{rep: array<int, array<string, mixed>>, qua: array<int, array<string, mixed>>} $vTyped */
-            $vTyped = ['rep' => $vRep, 'qua' => $vQuaArray];
-            // if($vTyped['rep']->count()!=1 || $vTyped['qua']->count()!=1){
-            foreach ($vTyped['rep'] as &$rep) {
+
+            $repItems = self::normalizeRowList($v['rep']);
+            $quaItems = self::normalizeRowList($v['qua']);
+
+            foreach ($repItems as &$rep) {
                 if (! \is_array($rep)) {
                     continue;
                 }
@@ -594,7 +723,7 @@ trait FunctionExtra
                 $repTyped['dal'] = $repTyped['rep2kd'] > $inizioanno ? $repTyped['rep2kd'] : $inizioanno;
                 $repTyped['al'] = $repTyped['rep2ka'] < $fineanno && $repTyped['rep2ka'] !== 0 ? $repTyped['rep2ka'] : $fineanno;
                 $rep = $repTyped;
-                foreach ($vTyped['qua'] as $qua) {
+                foreach ($quaItems as $qua) {
                     if (! \is_array($qua)) {
                         continue;
                     }
@@ -628,10 +757,7 @@ trait FunctionExtra
                         if (! isset($ris[$k]['merge'])) {
                             $ris[$k]['merge'] = [];
                         }
-                        /** @var array<int, array<string, mixed>> $mergeArray */
-                        $mergeArray = $ris[$k]['merge'];
-                        $mergeArray[] = $tmp;
-                        $ris[$k]['merge'] = $mergeArray;
+                        $ris[$k]['merge'][] = $tmp;
                         //
                         // if($v['rep']->count()!=1 || $v['qua']->count()!=1){
                         // echo '<br/>Check '.$k.' ';
@@ -696,8 +822,10 @@ trait FunctionExtra
         // return $ris;
         $ris2 = [];
         foreach ($ris as $ri) {
-            if (isset($ri['merge'])) {
-                $ris2 = array_merge_recursive($ris2, $ri['merge']);
+            if (isset($ri['merge']) && \is_array($ri['merge'])) {
+                /** @var array<int, array<string, mixed>> $mergeRows */
+                $mergeRows = $ri['merge'];
+                $ris2 = array_merge_recursive($ris2, $mergeRows);
             }
         }
 
@@ -785,7 +913,10 @@ trait FunctionExtra
         /** @var array<int, array<string, mixed>> $perf_coll_all */
         $perf_coll_all = $perf_coll->all();
 
-        $results = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute($rows_coll_all, $perf_coll_all);
+        $results = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute(
+            self::indexedRowsToAssoc($rows_coll_all),
+            self::indexedRowsToAssoc($perf_coll_all),
+        );
 
         /** @var array<int, array<string, mixed>> $resultsTyped */
         $resultsTyped = \is_array($results) ? $results : [];
@@ -885,7 +1016,10 @@ trait FunctionExtra
         $perfArray2 = $perf_coll->all();
         /** @var array<int, array<string, mixed>> $rowsArray2 */
         $rowsArray2 = $rows_coll->all();
-        $results2 = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute($perfArray2, $rowsArray2);
+        $results2 = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute(
+            self::indexedRowsToAssoc($perfArray2),
+            self::indexedRowsToAssoc($rowsArray2),
+        );
         echo '<h3> Fix Sub :'.\count($results2).'</h3>';
         echo '<pre>';
         print_r($results2);

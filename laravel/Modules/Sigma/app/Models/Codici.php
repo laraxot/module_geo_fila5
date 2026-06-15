@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -24,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Codici whereTipo($value)
  * @mixin \Eloquent
  */
-class Codici extends Model
+class Codici extends BaseModel
 {
     protected $fillable = ['id', 'tipo', 'codice', 'desc1'];
 

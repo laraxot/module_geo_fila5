@@ -65,7 +65,7 @@ trait RelationshipTrait
 
         return $this->hasOne(ImportiCategoria::class, 'ente', 'ente')
             ->where('anno', $anno)
-            ->whereRaw('find_in_set("'.$propro.'",lista_propro)');
+            ->whereRaw('find_in_set(?, lista_propro)', [(string) $propro]);
     }
 
     public function categoriaPropro(): HasOne
@@ -87,7 +87,7 @@ trait RelationshipTrait
         if ($row === null) {
             $rowOld = ImportiCategoria::where('ente', $this->ente)
                 ->where('anno', $this->anno - 1)
-                ->whereRaw('find_in_set("'.$this->propro.'",lista_propro)')
+                ->whereRaw('find_in_set(?, lista_propro)', [(string) $this->propro])
                 ->first();
 
             if ($rowOld !== null) {

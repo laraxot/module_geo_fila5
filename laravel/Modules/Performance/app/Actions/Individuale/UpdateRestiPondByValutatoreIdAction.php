@@ -124,13 +124,10 @@ class UpdateRestiPondByValutatoreIdAction
             // END";
             // 'resti_pond' => DB::raw("quota_effettiva * {$delta} * {$pesoPunteggio}")
 
-            $updated = Scheda::where('anno', $year)
-                ->where('type', $type)
-                ->where('ha_diritto', '>', 0)
-                ->where('valutatore_id', $valutatore->valutatore_id)
-                ->update([
-                    'resti_pond' => \DB::raw("quota_effettiva * {$delta} * (CASE WHEN totale_punteggio > 0 THEN totale_punteggio/100 ELSE 0.01 END)"),
-                ]);
+            $updated = DB::update(
+                'UPDATE '.(new Scheda)->getTable().' SET resti_pond = quota_effettiva * ? * (CASE WHEN totale_punteggio > 0 THEN totale_punteggio/100 ELSE 0.01 END) WHERE anno = ? AND type = ? AND ha_diritto > 0 AND valutatore_id = ?',
+                [$delta, $year, $type, $valutatore->valutatore_id],
+            );
 
             // Calcola il totale ponderato per questo valutatore
             $totaleValutatore = Scheda::where('anno', $year)

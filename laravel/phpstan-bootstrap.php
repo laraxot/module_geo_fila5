@@ -48,3 +48,8 @@ if (! defined('IMAGETYPE_JPEG') && ! defined('PHPSTAN_GD_STUB')) {
 // if (! class_exists('Modules\Geo\Models\Comune') && file_exists(__DIR__.'/phpstan-stubs/GeoComune.php')) {
 //    require_once __DIR__.'/phpstan-stubs/GeoComune.php';
 // }
+
+require_once __DIR__.'/phpstan-stubs/UserIdeHelperStubs.php';
+require_once __DIR__.'/phpstan-stubs/NotifyIdeHelperStubs.php';
+require_once __DIR__.'/phpstan-stubs/MediaIdeHelperStubs.php';
+require_once __DIR__.'/phpstan-stubs/TenantIdeHelperStubs.php';

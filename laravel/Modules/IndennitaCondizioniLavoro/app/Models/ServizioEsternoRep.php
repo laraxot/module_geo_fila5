@@ -160,4 +160,19 @@ class ServizioEsternoRep extends Model
     public string $from_field = 'rep2kd';
 
     public string $to_field = 'rep2ka';
+
+    protected function rangeFromField(): string
+    {
+        return 'rep2kd';
+    }
+
+    protected function rangeToField(): string
+    {
+        return 'rep2ka';
+    }
+
+    protected function annFieldName(): string
+    {
+        return 'repann';
+    }
 }

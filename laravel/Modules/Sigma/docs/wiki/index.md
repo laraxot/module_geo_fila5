@@ -12,6 +12,8 @@ updated: "2026-04-15T08:28:49Z"
 ## Concepts
 
 - [asz-scheda-relationship](./concepts/asz-scheda-relationship.md) — relazione `asz()` verso `Asz00k1`, scope `ofRangeDate`
+- [common-scope-date-range-ownership](./concepts/common-scope-date-range-ownership.md) — `rangeFromField` sul modello, non `match` nel trait
+- [sigma-model-inheritance](./concepts/sigma-model-inheritance.md) — `BaseModel` / `BaseDateRangeModel`, mai `extends Model`
 
 ## Entities
 

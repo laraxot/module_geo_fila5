@@ -6,6 +6,7 @@ namespace Modules\Performance\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Modules\Performance\Models\Individuale;
 use Modules\Sigma\Datas\GgFilterData;
 
@@ -36,15 +37,8 @@ trait MutatorTrait
             return 0;
         }
 
-        $arr = Arr::map($lista_tipo_codice_assenze, static function ($item): string {
-            /** @var string $item */
-            return "'{$item}'";
-        });
-        /** @var array<string> $arr */
-        $list = implode(',', $arr);
-
         $asz00k1s = $this->asz00k1()
-            ->whereRaw("CONCAT(asztip, '-', aszcod) IN (".$list.')')
+            ->whereIn(DB::raw("CONCAT(asztip, '-', aszcod)"), $lista_tipo_codice_assenze)
             ->selectRaw('COALESCE(sum(CAST(aszdur AS DECIMAL(10,2))),0) as aszdur_sum')
             ->whereBetween('asz2kd', [$date_min, $date_max])
             ->where('aszumi', 'G')
@@ -102,15 +96,8 @@ trait MutatorTrait
             return 0.0;
         }
 
-        $arr = Arr::map($lista_tipo_codice_assenze, static function ($item): string {
-            /** @var string $item */
-            return "'{$item}'";
-        });
-        /** @var array<string> $arr */
-        $list = implode(',', $arr);
-
         $value = $this->asz00k1()
-            ->whereRaw("CONCAT(asztip, '-', aszcod) IN (".$list.')')
+            ->whereIn(DB::raw("CONCAT(asztip, '-', aszcod)"), $lista_tipo_codice_assenze)
             ->selectRaw('COALESCE(sum(CAST(aszdur AS DECIMAL(10,2))),0) as aszdur_sum')
             ->whereBetween('asz2kd', [$date_min, $date_max])
             ->where('aszumi', 'O')

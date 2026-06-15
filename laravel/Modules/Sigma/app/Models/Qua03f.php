@@ -6,7 +6,6 @@ namespace Modules\Sigma\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Date;
 use Modules\Progressioni\Models\CategoriaPropro;
@@ -126,7 +125,7 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
  * @method static Builder|Qua03f whereQ3voc5($value)
  * @mixin \Eloquent
  */
-class Qua03f extends Model
+class Qua03f extends BaseDateRangeModel
 {
     // use SigmaModelTrait;
     use FunctionExtra;
@@ -185,12 +184,7 @@ class Qua03f extends Model
         'q3005',
     ];
 
-    protected $connection = 'generale';
-
-    // this will use the specified database connection
     protected $table = 'qua03f';
-
-    public $timestamps = false;
 
     // -------------------------------------------------------------------------
     public static string $from_field = 'q32kd';
@@ -198,6 +192,21 @@ class Qua03f extends Model
     public static string $to_field = 'q32ka';
 
     public static string $ann_field = 'q3ann';
+
+    public function rangeFromField(): string
+    {
+        return 'q32kd';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'q32ka';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'q3ann';
+    }
 
     // -------------------------------------------------------------------------
     public function Tqu00f(): HasOne
@@ -379,7 +388,7 @@ class Qua03f extends Model
     // ----------------------------------------------------------
     protected function getCategoriaEcoAttribute(?string $value): ?string
     {
-        $row = CategoriaPropro::whereRaw('find_in_set('.$this->q3pro.',lista_propro)')->first();
+        $row = CategoriaPropro::whereRaw('find_in_set(?, lista_propro)', [$this->q3pro])->first();
         if ($row === null) {
             echo '<h3> Aggiungi ['.$this->q3pro.'] a CategoriaPropro </h3>';
 

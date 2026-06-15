@@ -355,3 +355,34 @@
 
 **Tutti i moduli verificati**: ✅ **0 errori PHPStan livello 10**
 
+---
+
+## Sessione Giugno 2026 — PHPStan Level MAX (da phpstan.neon root)
+
+> **Data**: 15 Giugno 2026  
+> **Comando**: `./vendor/bin/phpstan analyse Modules/Sigma` (usa phpstan.neon root, level max)  
+> **Errori iniziali**: 141 → **0**
+
+### Pattern Architetturale Applicato
+
+**Problema**: `match(static::class)` in `CommonScope` trait → 57 errori `match.alwaysFalse`
+
+**Soluzione**: Polimorfismo puro — trait fornisce solo default, ogni modello sovrascrive:
+
+```php
+// Trait CommonScope — solo default
+protected function rangeFromField(): string { return 'dal'; }
+
+// Ogni modello override
+class Asz00k1 { protected function rangeFromField(): string { return 'asz2kd'; } }
+class Rep00f   { protected function rangeFromField(): string { return 'rep2kd'; } }
+```
+
+### Fix Applicati
+
+1. **CommonScope.php**: Rimosso match/constant/property_exists → metodi con default semplici
+2. **Asz00k1, Asz00f, Qua00f, Rep00f**: Aggiunti override `rangeFromField()`, `rangeToField()`, `annFieldName()`
+3. **FunctionExtra.php**: Fix `argument.type` su Builder PHPDoc (covariant), rimosso deadCode dopo `return 0;`
+4. **CommonScope.php L172,203,209**: Fix bug reale — `where($int, '>=', $field)` → `where($field, '<=', $int)`
+5. **DiffAssocRecursiveAction.php** (Xot): PHPDoc `array<string, mixed>` → `array<int|string, mixed>`
+

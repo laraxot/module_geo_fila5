@@ -35,7 +35,7 @@ trait EnteMatrRelationship
      */
     public function wstr01lx(): HasMany
     {
-        return $this->hasMany(Wstr01lx::class, 'wtmatr', 'matr')->where('enteap', $this->ente)->whereRaw('wtannu=""');
+        return $this->hasMany(Wstr01lx::class, 'wtmatr', 'matr')->where('enteap', $this->ente)->where('wtannu', '');
     }
 
     /**
@@ -43,7 +43,7 @@ trait EnteMatrRelationship
      */
     public function wstr01lxYear(): HasMany
     {
-        return $this->wstr01lx()->whereRaw('year(wtdata)="'.$this->anno.'"');
+        return $this->wstr01lx()->whereRaw('year(wtdata) = ?', [(string) $this->anno]);
     }
 
     /**
@@ -100,7 +100,7 @@ trait EnteMatrRelationship
      */
     public function qua03f(): HasMany
     {
-        return $this->hasMany(Qua03f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw("q3ann = '' ");
+        return $this->hasMany(Qua03f::class, 'matr', 'matr')->where('ente', $this->ente)->where('q3ann', '');
     }
 
     /**
@@ -108,7 +108,7 @@ trait EnteMatrRelationship
      */
     public function asz00f(): HasMany
     {
-        return $this->hasMany(Asz00f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw("aszann = '' ");
+        return $this->hasMany(Asz00f::class, 'matr', 'matr')->where('ente', $this->ente)->where('aszann', '');
     }
 
     /**
@@ -120,7 +120,7 @@ trait EnteMatrRelationship
 
         return $this->hasMany(Asz00k1::class, 'matr', 'matr')
             ->where($table.'.ente', $this->ente)
-            ->whereRaw($table.".aszann = '' ");
+            ->where($table.'.aszann', '');
     }
 
     /**

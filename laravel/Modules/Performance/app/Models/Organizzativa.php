@@ -524,23 +524,21 @@ class Organizzativa extends BaseIndividualeModel
         $lista_codici_aspettative = $this->listaCodiciAspettative();
 
         $asz = $this->asz()
-            ->whereRaw('find_in_set(concat(asztip,"-",aszcod),"'.$lista_codici_aspettative.'")');
+            ->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_codici_aspettative]);
 
         return $asz;
     }
 
     /**
-     * @return HasMany<Asz00k1, static>
+     * @return HasMany<Asz00k1, $this>
      */
     public function asz(): HasMany
     {
         $tbl = app(Asz00k1::class)->getTable();
 
-        // @phpstan-ignore-next-line
-        // @phpstan-ignore-next-line
         return $this->hasMany(Asz00k1::class, 'matr', 'matr')
             ->where($tbl.'.ente', $this->ente)
-            ->whereRaw($tbl.'.aszann=""')
+            ->where($tbl.'.aszann', '')
             ->where('asz2kd', '>', $this->getDateMin());
     }
 

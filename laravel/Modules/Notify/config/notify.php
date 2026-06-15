@@ -13,11 +13,11 @@ return [
      * |
      */
     'company' => [
-        'name' => env('COMPANY_NAME', 'Default Company'),
-        'team' => env('COMPANY_TEAM', 'Default Team'),
-        'webhook_base' => env('WEBHOOK_BASE_URL', 'https://api.example.com'),
-        'clinic_name' => env('CLINIC_NAME', 'Default Clinic'),
-        'repository_url' => env('REPOSITORY_URL', 'https://github.com/example/repo'),
+        'name' => 'Default Company',
+        'team' => 'Default Team',
+        'webhook_base' => 'https://api.example.com',
+        'clinic_name' => 'Default Clinic',
+        'repository_url' => 'https://github.com/example/repo',
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -61,10 +61,10 @@ return [
      * |
      */
     'email' => [
-        'default_from_address' => env('MAIL_FROM_ADDRESS', 'noreply@example.com'),
-        'default_from_name' => env('MAIL_FROM_NAME', '{{company_name}}'),
-        'default_admin_email' => env('ADMIN_EMAIL', 'admin@{{company_name}}.com'),
-        'default_developer_email' => env('DEVELOPER_EMAIL', 'developer@{{company_name}}.com'),
+        'default_from_address' => config('mail.from.address', 'noreply@example.com'),
+        'default_from_name' => config('mail.from.name', '{{company_name}}'),
+        'default_admin_email' => 'admin@example.com',
+        'default_developer_email' => 'developer@example.com',
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -75,8 +75,8 @@ return [
      * |
      */
     'paths' => [
-        'default_avatar_path' => env('DEFAULT_AVATAR_PATH', '/images/avatars/default.svg'),
-        'default_image_path' => env('DEFAULT_IMAGE_PATH', '/images/default.jpg'),
+        'default_avatar_path' => '/images/avatars/default.svg',
+        'default_image_path' => '/images/default.jpg',
     ],
     /*
      * |--------------------------------------------------------------------------

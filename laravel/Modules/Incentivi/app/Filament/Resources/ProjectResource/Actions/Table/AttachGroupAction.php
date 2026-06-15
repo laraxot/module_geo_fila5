@@ -57,12 +57,14 @@ class AttachGroupAction extends Action
                 // });
 
                 $employees = $workgroup->employees;
-                $employeeIds = $employees->pluck('id')->toArray();
-
-                $alreadyAttached = $project->employees()
-                    ->whereIn('employee_id', $employeeIds)
-                    ->pluck('employee_id')
-                    ->toArray();
+                $employeeIds = array_map(static fn (mixed $id): string => (string) $id, $employees->pluck('id')->all());
+                $alreadyAttached = array_map(
+                    static fn (mixed $id): string => (string) $id,
+                    $project->employees()
+                        ->whereIn('employee_id', $employeeIds)
+                        ->pluck('employee_id')
+                        ->all(),
+                );
 
                 $newIds = array_diff($employeeIds, $alreadyAttached);
 

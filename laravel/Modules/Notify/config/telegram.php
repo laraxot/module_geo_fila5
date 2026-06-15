@@ -11,7 +11,7 @@ return [
      * | Supported drivers: "official", "botman", "nutgram"
      * |
      */
-    'default' => env('TELEGRAM_DRIVER', 'official'),
+    'default' => 'official',
     /*
      * |--------------------------------------------------------------------------
      * | Telegram Drivers
@@ -19,19 +19,19 @@ return [
      */
     'drivers' => [
         'official' => [
-            'token' => env('TELEGRAM_BOT_TOKEN'),
-            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org'),
+            'token' => null,
+            'api_url' => 'https://api.telegram.org',
         ],
         'botman' => [
-            'token' => env('TELEGRAM_BOT_TOKEN'),
-            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org'),
-            'webhook_url' => env('TELEGRAM_WEBHOOK_URL'),
+            'token' => null,
+            'api_url' => 'https://api.telegram.org',
+            'webhook_url' => null,
         ],
         'nutgram' => [
-            'token' => env('TELEGRAM_BOT_TOKEN'),
-            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org'),
-            'webhook_url' => env('TELEGRAM_WEBHOOK_URL'),
-            'polling' => env('TELEGRAM_POLLING', false),
+            'token' => null,
+            'api_url' => 'https://api.telegram.org',
+            'webhook_url' => null,
+            'polling' => false,
         ],
     ],
     /*
@@ -39,19 +39,19 @@ return [
      * | Global Debug Mode
      * |--------------------------------------------------------------------------
      */
-    'debug' => env('TELEGRAM_DEBUG', false),
+    'debug' => false,
     /*
      * |--------------------------------------------------------------------------
      * | Telegram Queue
      * |--------------------------------------------------------------------------
      */
-    'queue' => env('TELEGRAM_QUEUE', 'default'),
+    'queue' => 'default',
     /*
      * |--------------------------------------------------------------------------
      * | Global Timeout
      * |--------------------------------------------------------------------------
      */
-    'timeout' => env('TELEGRAM_TIMEOUT', 30),
+    'timeout' => 30,
     /*
      * |--------------------------------------------------------------------------
      * | Default Parse Mode
@@ -60,15 +60,15 @@ return [
      * | Supported modes: "Markdown", "MarkdownV2", "HTML"
      * |
      */
-    'parse_mode' => env('TELEGRAM_PARSE_MODE', 'HTML'),
+    'parse_mode' => 'HTML',
     /*
      * |--------------------------------------------------------------------------
      * | Retry Configuration
      * |--------------------------------------------------------------------------
      */
     'retry' => [
-        'attempts' => env('TELEGRAM_RETRY_ATTEMPTS', 3),
-        'delay' => env('TELEGRAM_RETRY_DELAY', 60),
+        'attempts' => 3,
+        'delay' => 60,
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -76,8 +76,8 @@ return [
      * |--------------------------------------------------------------------------
      */
     'rate_limit' => [
-        'enabled' => env('TELEGRAM_RATE_LIMIT_ENABLED', true),
-        'max_attempts' => env('TELEGRAM_RATE_LIMIT_MAX_ATTEMPTS', 30),
-        'decay_minutes' => env('TELEGRAM_RATE_LIMIT_DECAY_MINUTES', 1),
+        'enabled' => true,
+        'max_attempts' => 30,
+        'decay_minutes' => 1,
     ],
 ];

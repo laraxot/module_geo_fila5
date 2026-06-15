@@ -41,6 +41,9 @@ class UpdateActivitiesEmployeesAction
         $importo = is_numeric($importoValue) ? floatval($importoValue) : 0.0;
 
         foreach ($employees as $employee) {
+            if (! $employee instanceof Model) {
+                continue;
+            }
             $this->updateEmployeePivot($employee, $importo);
         }
     }
@@ -50,13 +53,7 @@ class UpdateActivitiesEmployeesAction
      */
     private function updateEmployeePivot(Model $employee, float $importo): void
     {
-        // Type narrowing: ensure employee is an object
-        if (! is_object($employee)) {
-            return;
-        }
-
-        // Access pivot property safely
-        $pivot = isset($employee->pivot) ? $employee->pivot : null;
+        $pivot = $employee->pivot ?? null;
         if ($pivot === null || ! is_object($pivot)) {
             return;
         }

@@ -88,13 +88,19 @@ class UpdateTotValutatoreIdAction
         // 4. Dopo la modifica, verificare che la somma dei totali per tutti i valutatori sia coerente con la quota individuale del fondo.
         // 5. Aggiornare la documentazione e i test automatici dopo la modifica.
         foreach ($this->fields as $field) {
+            $sumSql = match ($field) {
+                'budget_assegnato' => 'SUM(budget_assegnato) as total',
+                'quota_effettiva' => 'SUM(quota_effettiva) as total',
+                'resti' => 'SUM(resti) as total',
+                default => throw new \InvalidArgumentException("Unknown field: {$field}"),
+            };
             $totals = $this->model
                 ->where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->whereNotNull('valutatore_id')
                 ->select('valutatore_id')
-                ->selectRaw("SUM({$field}) as total")
+                ->selectRaw($sumSql)
                 ->groupBy('valutatore_id')
                 ->get();
             foreach ($totals as $total) {

@@ -4,44 +4,85 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Events;
 
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 
 /**
- * Evento per il salvataggio dei dati di valutazione
+ * Evento per il salvataggio dei dati di valutazione.
  */
 class DatiSalvati implements ShouldBroadcast
 {
+    /** @var array<string, mixed> */
+    public array $vecchiDati;
+
+    /** @var array<string, mixed> */
+    public array $nuoviDati;
+
     /**
-     * Record modificato
+     * @param  array<string, mixed>|null  $vecchiDati
+     * @param  array<string, mixed>|null  $nuoviDati
      */
     public function __construct(
         public IndennitaResponsabilita $record,
-        public array $vecchiDati = [],
-        public array $nuoviDati = []
+        ?array $vecchiDati = null,
+        ?array $nuoviDati = null,
     ) {
-        $this->record = $record;
-        $this->vecchiDati = $record->only(['matr', 'cognome', 'email', 'responsabilita_di_spesa', 'realizzazione_piani_programmi', 'supporto_decisioni_dirigente', 'note']);
-        $this->nuoviDati = $this->form->only(['matr', 'cognome', 'email', 'responsabilita_di_spesa', 'realizzazione_piani_programmi', 'supporto_decisioni_dirigente', 'note']);
+        $fields = [
+            'matr',
+            'cognome',
+            'email',
+            'responsabilita_di_spesa',
+            'realizzazione_piani_programmi',
+            'supporto_decisioni_dirigente',
+            'note',
+        ];
+
+        $this->vecchiDati = $vecchiDati ?? $record->only($fields);
+        $this->nuoviDati = $nuoviDati ?? $this->vecchiDati;
     }
 
     /**
-     * Dati che sono cambiati
+     * @return array<string, mixed>
      */
     public function getVecchiDati(): array
     {
-        return array_diff_assoc($this->vecchiDati, $this->nuoviDati);
+        return $this->diffChanged($this->vecchiDati, $this->nuoviDati);
     }
 
     /**
-     * Dati nuovi inseriti
+     * @return array<string, mixed>
      */
     public function getNuoviDati(): array
     {
-        return array_diff_assoc($this->nuoviDati, $this->vecchiDati);
+        return $this->diffChanged($this->nuoviDati, $this->vecchiDati);
     }
 
     /**
-     * Get nome per broadcasting
+     * @param  array<string, mixed>  $from
+     * @param  array<string, mixed>  $against
+     * @return array<string, mixed>
+     */
+    private function diffChanged(array $from, array $against): array
+    {
+        $changed = [];
+
+        foreach ($from as $key => $value) {
+            if (! array_key_exists($key, $against)) {
+                $changed[$key] = $value;
+
+                continue;
+            }
+
+            if ((string) $value !== (string) $against[$key]) {
+                $changed[$key] = $value;
+            }
+        }
+
+        return $changed;
+    }
+
+    /**
+     * @return array<int, string>
      */
     public function broadcastOn(): array
     {

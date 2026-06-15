@@ -6,6 +6,7 @@ namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\Sigma\Models\Asz00k1;
 
 /**
@@ -36,6 +37,7 @@ use Modules\Sigma\Models\Asz00k1;
  * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
  *
  * @method HasMany<Asz00k1, Model> asz() Relazione ASZ — implementata in BaseScheda
+ * @method MorphMany myLogs() Log invio mail — trait HasMyLogs su BaseScheda
  *
  * @mixin \Eloquent
  */

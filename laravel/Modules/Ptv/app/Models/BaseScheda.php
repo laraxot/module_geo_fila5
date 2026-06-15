@@ -118,6 +118,33 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
     public string $to_field = 'al';
 
+    protected function rangeFromField(): string
+    {
+        return 'dal';
+    }
+
+    protected function rangeToField(): string
+    {
+        return 'al';
+    }
+
+    protected function annFieldName(): string
+    {
+        return 'anno';
+    }
+
+    protected function scopeWithDays(\Illuminate\Database\Eloquent\Builder $query, ?int $date_min, ?int $date_max): \Illuminate\Database\Eloquent\Builder
+    {
+        if ($date_min === null || $date_max === null) {
+            return $query;
+        }
+
+        return $query->selectRaw(
+            'greatest(datediff(if(al=0 or al>?, ?, al), if(dal<?, ?, dal))+1, 0) AS days',
+            [$date_max, $date_max, $date_min, $date_min],
+        );
+    }
+
     /**
      * Number of performance years considered for aggregate calculations.
      */

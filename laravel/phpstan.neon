@@ -13,34 +13,22 @@ parameters:
         #- Themes
 
     level: max
+    #parallel:
+    #    maximumNumberOfProcesses: 34
+    #    jobSize: 1
+    #    minimumNumberOfJobsPerProcess: 1
 
     ignoreErrors:
-        #   message: '#PHPDoc tag @mixin contains unknown class Modules\\Badge\\Models\\IdeHelper(.*)+\\.'
-        # - '#No error to ignore is reported on line#'
-        # Removed: unmatched ignores causing phpstan warnings
-        - '#PHPDoc tag @mixin contains unknown class #'
-        - '#Static call to instance method Nwidart#'
+        # - '#Static call to instance method Nwidart#'
+        - '#is used zero times and is not analysed#'
+        # - "#^Unsafe usage of new static#"
         - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#' # Ignora errori di cast da mixed a tipi specifici
-        - identifier: missingType.iterableValue
         - identifier: missingType.generics
-        - identifier: larastan.noEnvCallsOutsideOfConfig
-        - identifier: trait.unused
-        - identifier: method.unused
-        # OauthClient::user() return type - Laraxot compatibility (XotData::getUserClass() vs Passport)
-        - { message: '#Return type .*OauthClient::user\(\).*should be compatible with.*Laravel\\Passport\\Client::user\(\)#', identifier: method.childReturnType }
-        # Eloquent relation covariance: BelongsToMany, HasOne, BelongsTo template params are not covariant
-        # This is a known limitation of Laravel's type system and is not a real bug
-        - identifier: return.type
-          message: '#(BelongsToMany|HasOne|BelongsTo|Pivot|covariant)#'
-        - identifier: method.childReturnType
-          message: '#(BelongsToMany|HasOne|BelongsTo|Pivot|covariant)#'
-        # Classes from optional/external modules (not installed in this environment)
-        - identifier: class.notFound
-          message: '#Modules\\(Cms|Comment|Geo|Badge|Timbra)\\#'
+        - identifier: missingType.iterableValue
+        # - identifier: method.unused
 
     excludePaths:
         - ./*/vendor/*
-        - ./*/Tests/*
         - ./*/tests/*
         - ./*/build/*
         - ./*/docs/*
@@ -58,7 +46,7 @@ parameters:
         #- ./Modules/Europa/*
         #- ./Modules/Gdpr/*
         #- ./Modules/Inail/*
-        #- ./Modules/Incentivi/*
+        - ./Modules/Incentivi/*
         #- ./Modules/IndennitaCondizioniLavoro/*
         #- ./Modules/IndennitaResponsabilita/*
         #- ./Modules/Job/*
@@ -69,7 +57,7 @@ parameters:
         #- ./Modules/Mensa/*
         #- ./Modules/MobilitaVolontaria/*
         #- ./Modules/Notify/*
-        #- ./Modules/Pdnd/*
+        - ./Modules/Pdnd/*
         #- ./Modules/Performance/*
         #- ./Modules/Prenotazioni/*
         #- ./Modules/PresenzeAssenze/*

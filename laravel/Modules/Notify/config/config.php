@@ -27,19 +27,19 @@ return [
      */
 
     // Logo URL for email headers
-    'logo_url' => env('MAIL_LOGO_URL', null),
+    'logo_url' => null,
     // Footer text for all emails
-    // 'footer_text' => env('MAIL_FOOTER_TEXT', '© ' . date('Y') . ' ' . config('app.name') . '. All rights reserved.'),
+    // 'footer_text' => '© ' . date('Y') . ' ' . config('app.name') . '. All rights reserved.',
 
     // Social media links
     'social_links' => [
-        'facebook' => env('MAIL_SOCIAL_FACEBOOK', null),
-        'twitter' => env('MAIL_SOCIAL_TWITTER', null),
-        'instagram' => env('MAIL_SOCIAL_INSTAGRAM', null),
-        'linkedin' => env('MAIL_SOCIAL_LINKEDIN', null),
+        'facebook' => null,
+        'twitter' => null,
+        'instagram' => null,
+        'linkedin' => null,
     ],
     // Unsubscribe URL
-    'unsubscribe_url' => env('MAIL_UNSUBSCRIBE_URL', null),
+    'unsubscribe_url' => null,
     /*
      * |--------------------------------------------------------------------------
      * | Mail Templates

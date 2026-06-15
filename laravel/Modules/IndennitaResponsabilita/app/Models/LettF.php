@@ -113,7 +113,7 @@ use Validator;
  * @property-read string|null $last_data_assunz
  * @property-read string|null $lista_propro
  * @property-read string|null $lista_propro_sup
- * @property-read \Modules\IndennitaResponsabilita\Models\Collection $my_rating
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaResponsabilita\Models\Rating> $my_rating
  * @property-read string|null $nome
  * @property-read int|float $perc_p_time_daterange
  * @property-read int|float $perc_p_time_year
@@ -367,19 +367,20 @@ class LettF extends BaseScheda
         $dal = $this->dalf->format('Ymd');
         $al = $this->alf->format('Ymd');
 
-        $sql = '(
-            ('.$dal.' between qua2kd and qua2ka) OR
-            ('.$dal.' >= qua2kd AND qua2ka=0) OR
-            ('.$al.' between qua2kd and qua2ka) OR
-            ('.$al.' >= qua2kd AND qua2ka=0) OR
-            (qua2kd between '.$dal.' and '.$al.') OR
-            (qua2ka between '.$dal.' and '.$al.')
-        )';
-
         return $this->hasMany(Qua00f::class, 'matr', 'matr')
             ->where('ente', $this->ente)
             ->whereRaw('quaann=""')
-            ->whereRaw($sql);
+            ->whereRaw(
+                '(
+            (? between qua2kd and qua2ka) OR
+            (? >= qua2kd AND qua2ka=0) OR
+            (? between qua2kd and qua2ka) OR
+            (? >= qua2kd AND qua2ka=0) OR
+            (qua2kd between ? and ?) OR
+            (qua2ka between ? and ?)
+        )',
+                [$dal, $dal, $al, $al, $dal, $al, $dal, $al],
+            );
     }
 
     /**

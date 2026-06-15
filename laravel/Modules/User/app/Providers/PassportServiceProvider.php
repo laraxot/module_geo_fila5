@@ -152,7 +152,7 @@ class PassportServiceProvider extends ServiceProvider
             $typedScopes[$key] = $value;
         }
 
-        if ($typedScopes !== []) {
+        if ([] !== $typedScopes) {
             Passport::tokensCan($typedScopes);
         }
     }

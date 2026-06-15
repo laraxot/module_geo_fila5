@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Models\XotBaseModel;
 
 /**
  * Class BaseModel.
  *
- * BaseModel per il modulo Sigma che gestisce l'integrazione con sistemi esterni.
- * Estende Model direttamente per compatibilità con sistemi legacy.
+ * Base del modulo Sigma: connessione `generale`, cast condivisi, integrazione legacy.
  */
 abstract class BaseModel extends XotBaseModel
 {

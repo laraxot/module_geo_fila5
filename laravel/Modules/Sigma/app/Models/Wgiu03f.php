@@ -6,7 +6,6 @@ namespace Modules\Sigma\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Date;
 
@@ -68,7 +67,7 @@ use Illuminate\Support\Facades\Date;
  * @method static Builder|Wgiu03f whereStdata($value)
  * @mixin \Eloquent
  */
-class Wgiu03f extends Model
+class Wgiu03f extends BaseModel
 {
     protected $fillable = [
         'id',

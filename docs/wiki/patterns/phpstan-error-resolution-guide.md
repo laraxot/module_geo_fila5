@@ -361,6 +361,56 @@ grep "✏️" phpstan-output.log | cut -d'/' -f2-4 | sort | uniq -c
 
 ---
 
+## Error Category N: match.alwaysFalse in Traits
+
+### Problem
+```php
+// In trait — PHPStan analyzes each arm in context of each concrete class
+return match (static::class) {
+    Asz00k1::class => 'asz2kd',  // ❌ always false when analyzing Rep00f
+    Qua00f::class => 'qua2kd',   // ❌ always false when analyzing Rep00f
+    Rep00f::class => 'rep2kd',   // ✅ only this is true for Rep00f
+    default => 'dal',
+};
+```
+
+### Symptoms
+- "Match arm comparison between class-string<static(X)> and 'Y' is always false"
+- PHPStan identifier: `match.alwaysFalse`
+- Multiplied by N models × M arms = many errors
+
+### Root Cause
+PHPStan analyzes traits in the context of **each concrete class** that uses them. In context of `Rep00f`, `static::class` is `class-string<Rep00f>`, so comparing to `Asz00k1::class` is always false.
+
+### Solution: Polymorphic Override (PREFERRED)
+```php
+// ✅ Trait provides only defaults
+trait CommonScope {
+    protected function rangeFromField(): string { return 'dal'; }
+    protected function rangeToField(): string { return 'al'; }
+}
+
+// ✅ Each model overrides with its own value
+class Rep00f extends Model {
+    use CommonScope;
+    protected function rangeFromField(): string { return 'rep2kd'; }
+    protected function rangeToField(): string { return 'rep2ka'; }
+}
+```
+
+### Why This Pattern
+- OCP: new models don't require trait changes
+- LSP: each class describes itself
+- 100% PHPStan-clean at level max
+- No `@phpstan-ignore` needed
+
+### Anti-patterns (NEVER use)
+- `match(static::class)` in traits → match.alwaysFalse
+- `property_exists($this, 'x')` on non-nullable → function.alreadyNarrowedType
+- `$this->staticProp` → staticProperty.nonStaticAccess
+
+---
+
 ## Key Principles
 
 1. **Fix from Root:** Address the cause, not the symptom
@@ -368,9 +418,11 @@ grep "✏️" phpstan-output.log | cut -d'/' -f2-4 | sort | uniq -c
 3. **Documentation:** Record patterns in module docs/
 4. **Gradual Remediation:** Fix low-hanging fruit first
 5. **Maintainability:** Document why fix was needed, not just that it was applied
+6. **Polymorphism over Branching:** Use method overrides in models, not match/switch in traits
+7. **Module BaseModel:** MAI `extends Model` direttamente — usare `BaseModel` del modulo (→ `BaseDateRangeModel` per modelli con date range)
 
 ---
 
 **Last Updated:** 2026-06-15  
-**Usage:** Reference for Ptv, User, UI, and other module remediation  
+**Usage:** Reference for Ptv, User, UI, Sigma, and other module remediation  
 **Applicable Level:** PHPStan max (level 9)

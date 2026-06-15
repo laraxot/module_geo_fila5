@@ -7,13 +7,11 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Date;
 use Modules\Progressioni\Models\CategoriaPropro;
 use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
-use Modules\Sigma\Models\Traits\Scopes\CommonScope;
 
 /**
  * Modules\Sigma\Models\Qua00f.
@@ -134,11 +132,8 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * @property-read int|null $rep00f_count
  * @mixin \Eloquent
  */
-class Qua00f extends Model
+class Qua00f extends BaseDateRangeModel
 {
-    use CommonScope;
-
-    // -----------------------------------------------
     // use SigmaModelTrait;
     use FunctionExtra;
 
@@ -190,19 +185,35 @@ class Qua00f extends Model
         'qua005',
     ];
 
-    protected $connection = 'generale';
-
-    // this will use the specified database connection
     protected $table = 'qua00f';
 
-    public $timestamps = false;
-
     // -----------------------------------------------
+    public const FROM_FIELD = 'qua2kd';
+
+    public const TO_FIELD = 'qua2ka';
+
+    public const ANN_FIELD = 'quaann';
+
     public static string $from_field = 'qua2kd';
 
     public static string $to_field = 'qua2ka';
 
     public static string $ann_field = 'quaann';
+
+    public function rangeFromField(): string
+    {
+        return 'qua2kd';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'qua2ka';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'quaann';
+    }
 
     /**
      * The attributes that should be cast.
@@ -231,28 +242,22 @@ class Qua00f extends Model
         $qua2kd = (int) ($this->qua2kd ?? 0);
         $qua2ka = (int) ($this->qua2ka ?? 0);
 
-        $sql =
-            '('
-            .\chr(13)
-            .'('
-            .$qua2kd
-            .' between dtdal and dtal ) or ('
-            .$qua2kd
-            .' >= dtdal and dtal=0)';
-
-        if ($qua2ka === 0) {
-            $sql .= ' or (dtdal >= '.$qua2kd.')';
-        } else {
-            $sql .= ' or (dtdal between '.$qua2kd.' and '.$qua2ka.')';
-        }
-
-        $sql .= \chr(13).')';
-
         /** @var HasMany<Dipt00f, Qua00f> $relation */
         $relation = $this->hasMany(Dipt00f::class, 'dtmatr', 'matr')
             ->where('enteap', $this->ente)
-            ->whereRaw('dtannu=""')
-            ->whereRaw($sql);
+            ->where('dtannu', '');
+
+        if ($qua2ka === 0) {
+            $relation->whereRaw(
+                '((? between dtdal and dtal) or (? >= dtdal and dtal = 0) or (dtdal >= ?))',
+                [$qua2kd, $qua2kd, $qua2kd],
+            );
+        } else {
+            $relation->whereRaw(
+                '((? between dtdal and dtal) or (? >= dtdal and dtal = 0) or (dtdal between ? and ?))',
+                [$qua2kd, $qua2kd, $qua2kd, $qua2ka],
+            );
+        }
 
         return $relation;
     }
@@ -269,7 +274,7 @@ class Qua00f extends Model
             ->where('cont', $this->cont)
             ->where('tipco', $this->tipco)
             ->where('ruolo', $this->ruolo)
-            ->whereRaw('tqann=""');
+            ->where('tqann', '');
 
         return $relation;
     }
@@ -304,7 +309,7 @@ class Qua00f extends Model
         /** @var HasMany<Rep00f, Qua00f> $relation */
         $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
             ->where('ente', $this->ente)
-            ->whereRaw('repann=""')
+            ->where('repann', '')
             ->ofRangeDate($this->qua2kd, $this->qua2ka);
 
         return $relation;
@@ -320,14 +325,12 @@ class Qua00f extends Model
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
-    protected function scopeOfYear(Builder $query, int $year): Builder
+    protected function scopeOfYear(Builder $query, ?int $year): Builder
     {
-        $sql = '(
-            ('.$year.' between year(qua2kd) and year(qua2ka) ) or
-            ('.$year.' >= year(qua2kd) and qua2ka=0 )
-        )';
-
-        return $query->whereRaw($sql);
+        return $query->where(static function (Builder $q) use ($year): void {
+            $q->whereRaw('(? between year(qua2kd) and year(qua2ka))', [$year])
+                ->orWhereRaw('(? >= year(qua2kd) and qua2ka = 0)', [$year]);
+        });
     }
 
     /**
@@ -338,13 +341,10 @@ class Qua00f extends Model
     {
         return $query
             ->where('ente', $ente)
-            ->whereRaw('quaann=""')
+            ->where('quaann', '')
             ->where(static function (Builder $q) use ($year): void {
-                $sql = '(
-                ('.$year.' between year(qua2kd) and year(qua2ka) ) or
-                ('.$year.' >= year(qua2kd) and qua2ka=0 )
-            )';
-                $q->whereRaw($sql);
+                $q->whereRaw('(? between year(qua2kd) and year(qua2ka))', [$year])
+                    ->orWhereRaw('(? >= year(qua2kd) and qua2ka = 0)', [$year]);
             });
     }
 
@@ -354,19 +354,10 @@ class Qua00f extends Model
      */
     protected function scopeWithDays(Builder $query, int $date_min, int $date_max): Builder
     {
-        $days =
-            'greatest(datediff(if(qua2ka=0 or qua2ka>'
-            .$date_max
-            .','
-            .$date_max
-            .',qua2ka),if(qua2kd<'
-            .$date_min
-            .','
-            .$date_min
-            .',qua2kd))+1,0) ';
-
-        // return $query->selectRaw("{$days} AS days");
-        return $query->selectRaw(sprintf('*,%s AS days', $days));
+        return $query->selectRaw(
+            '*, greatest(datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka), if(qua2kd<?, ?, qua2kd))+1, 0) AS days',
+            [$date_max, $date_max, $date_min, $date_min],
+        );
     }
 
     /**
@@ -819,7 +810,7 @@ class Qua00f extends Model
     protected function getCategoriaEcoAttribute(): ?string
     {
         // *
-        $row = CategoriaPropro::whereRaw('find_in_set('.$this->propro.',lista_propro)')->first();
+        $row = CategoriaPropro::whereRaw('find_in_set(?, lista_propro)', [$this->propro])->first();
         if ($row === null) {
             echo '<h3>Aggiungi propro['.$this->propro.'] a CategoriaPropro</h3>';
             exit('['.__LINE__.']['.__FILE__.']');
@@ -876,13 +867,10 @@ class Qua00f extends Model
 
         $qua00f = self::query()
             ->where(static function (Builder $q) use ($anno): void {
-                $sql = '(
-                    ('.$anno.' between year(qua2kd) and year(qua2ka) ) or
-                    ('.$anno.' >= year(qua2kd) and qua2ka=0 )
-                )';
-                $q->whereRaw($sql);
+                $q->whereRaw('(? between year(qua2kd) and year(qua2ka))', [$anno])
+                    ->orWhereRaw('(? >= year(qua2kd) and qua2ka = 0)', [$anno]);
             })
-            ->whereRaw('quaann=""')
+            ->where('quaann', '')
             ->where('ente', $ente)
             ->get();
         $group_by = ['ente', 'matr', 'propro', 'posfun', 'posiz', 'disci1'];
@@ -918,7 +906,7 @@ class Qua00f extends Model
             // *
             $tmp = [];
             foreach ($group_by as $v) {
-                $tmp[] = $item[$v];
+                $tmp[] = (string) ($item[$v] ?? '');
             }
 
             return implode('-', $tmp);

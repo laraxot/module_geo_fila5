@@ -116,13 +116,7 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
             'ambiente' => self::AMBIENTE_ANPR,
         ]));
 
-        $risultatoC030 = $c030Service->cercaPerCodiceFiscale($codiceFiscale);
-
-        // Estrazione idANPR (struttura identica a C007/C015)
-        return $risultatoC030['lista_soggetti'][0]['identificativi']['idANPR']
-            ?? $risultatoC030['lista_soggetti'][0]['idANPR']
-            ?? $risultatoC030['idAnpr']
-            ?? null;
+        return $c030Service->getIdAnpr($codiceFiscale);
     }
 
 
@@ -145,19 +139,24 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
     {
         $listaSoggetti = $risultato['lista_soggetti'] ?? [];
 
-        if (empty($listaSoggetti)) {
+        if (! is_array($listaSoggetti) || $listaSoggetti === []) {
             $this->esitoPositivo = false;
             $this->notifyWarning('Nessun soggetto trovato');
             return;
         }
 
         $primoSoggetto = $listaSoggetti[0];
+        if (! is_array($primoSoggetto)) {
+            $this->esitoPositivo = false;
+            $this->notifyWarning('Nessun soggetto trovato');
+            return;
+        }
 
         $this->datiCittadino = [
-            'generalita'     => $primoSoggetto['generalita'] ?? [],
-            'stato_civile'   => $primoSoggetto['stato_civile'] ?? [],
-            'identificativi' => $primoSoggetto['identificativi'] ?? [],
-            'info_ente'      => $primoSoggetto['info_soggetto_ente'] ?? [],
+            'generalita'     => is_array($primoSoggetto['generalita'] ?? null) ? $primoSoggetto['generalita'] : [],
+            'stato_civile'   => is_array($primoSoggetto['stato_civile'] ?? null) ? $primoSoggetto['stato_civile'] : [],
+            'identificativi' => is_array($primoSoggetto['identificativi'] ?? null) ? $primoSoggetto['identificativi'] : [],
+            'info_ente'      => is_array($primoSoggetto['info_soggetto_ente'] ?? null) ? $primoSoggetto['info_soggetto_ente'] : [],
         ];
 
         $this->esitoPositivo = true;
@@ -207,17 +206,24 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
     protected function formatErrorBody(array $risultato): string
     {
         $errori = $risultato['errori'] ?? [];
-        if (empty($errori)) {
+        if (! is_array($errori) || $errori === []) {
             return 'Errore sconosciuto';
         }
 
-        $lines = array_map(static fn(array $e) => sprintf(
-            'Codice: %s | Messaggio: %s',
-            $e['codiceErroreAnomalia'] ?? 'N/A',
-            $e['testoErroreAnomalia'] ?? 'N/A'
-        ), $errori);
+        $lines = [];
+        foreach ($errori as $errore) {
+            if (! is_array($errore)) {
+                continue;
+            }
 
-        return implode("\n", $lines);
+            $lines[] = sprintf(
+                'Codice: %s | Messaggio: %s',
+                (string) ($errore['codiceErroreAnomalia'] ?? 'N/A'),
+                (string) ($errore['testoErroreAnomalia'] ?? 'N/A')
+            );
+        }
+
+        return $lines === [] ? 'Errore sconosciuto' : implode("\n", $lines);
     }
 
     protected function getForms(): array { return ['pdndForm']; }

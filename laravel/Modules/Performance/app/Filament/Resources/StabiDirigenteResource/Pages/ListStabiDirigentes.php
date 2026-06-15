@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Performance\Filament\Resources\StabiDirigenteResource\Pages;
 
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\TextInput;
 use Modules\Performance\Filament\Resources\StabiDirigenteResource;
 use Modules\Performance\Models\Individuale;
@@ -19,7 +20,7 @@ class ListStabiDirigentes extends PtvListStabiDirigentes
 
 
      /**
-     * @return array<string, Action>
+     * @return array<string, Action|ActionGroup>
      */
     #[Override]
     protected function getHeaderActions(): array

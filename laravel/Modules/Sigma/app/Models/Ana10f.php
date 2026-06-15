@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -137,7 +136,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Ana10f whereTitstu($value)
  * @mixin \Eloquent
  */
-class Ana10f extends Model
+class Ana10f extends BaseModel
 {
     protected $fillable = [
         'id',

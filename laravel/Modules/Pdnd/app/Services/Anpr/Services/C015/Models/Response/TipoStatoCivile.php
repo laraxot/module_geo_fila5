@@ -24,9 +24,9 @@ class TipoStatoCivile
     public static function fromArray(array $data): self
     {
         return new self(
-            statoCivile: $data['statoCivile'] ?? null,
-            noteStatoCivile: $data['noteStatoCivile'] ?? null,
-            statoCivileND: $data['statoCivileND'] ?? null
+            statoCivile: isset($data['statoCivile']) && is_string($data['statoCivile']) ? $data['statoCivile'] : null,
+            noteStatoCivile: isset($data['noteStatoCivile']) && is_string($data['noteStatoCivile']) ? $data['noteStatoCivile'] : null,
+            statoCivileND: isset($data['statoCivileND']) && is_string($data['statoCivileND']) ? $data['statoCivileND'] : null,
         );
     }
 }

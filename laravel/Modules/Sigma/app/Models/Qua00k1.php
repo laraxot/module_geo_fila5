@@ -6,7 +6,6 @@ namespace Modules\Sigma\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 // ----------traits ---
@@ -103,7 +102,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|Qua00k1 whereTipco($value)
  * @mixin \Eloquent
  */
-class Qua00k1 extends Model
+class Qua00k1 extends BaseModel
 {
     protected $fillable = [
         'id',

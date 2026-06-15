@@ -6,7 +6,6 @@ namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
 use Modules\Sigma\Models\Traits\Mutators\CommonMutator;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
@@ -178,7 +177,7 @@ ini_set('memory_limit', '1512M');
  * @property-read int|null $integ_params_count
  * @mixin \Eloquent
  */
-class Anag extends Model
+class Anag extends BaseModel
 {
     use CommonMutator;
     use CommonRelationship;

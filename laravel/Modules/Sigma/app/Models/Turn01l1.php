@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -88,7 +87,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Turn01l1 whereT1turn($value)
  * @mixin \Eloquent
  */
-class Turn01l1 extends Model
+class Turn01l1 extends BaseModel
 {
     protected $fillable = [
         'id',

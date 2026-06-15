@@ -122,14 +122,14 @@ class EmployeesRelationManager extends XotBaseRelationManager
     public function getTableHeaderActions(): array
     {
         return [
-           AttachActivityEmployeeAction::make(),
+           'attach' => AttachActivityEmployeeAction::make(),
         ];
     }
 
     public function getTableActions(): array
     {
         return [
-            EditAction::make()
+            'edit' => EditAction::make()
                 ->icon('heroicon-o-pencil')
                 ->before(function (EditAction $action, RelationManager $livewire, Model $record, array $data): void {
                     $activity = $livewire->getOwnerRecord();
@@ -200,7 +200,7 @@ class EmployeesRelationManager extends XotBaseRelationManager
                         ->dehydrated(),
                 ]),
 
-            DetachAction::make(),
+            'detach' => DetachAction::make(),
         ];
     }
 }

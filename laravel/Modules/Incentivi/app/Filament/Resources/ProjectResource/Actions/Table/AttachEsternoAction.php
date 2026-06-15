@@ -11,6 +11,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables\Contracts\HasTable;
 use Modules\Incentivi\Models\Employee;
+use Modules\Incentivi\Models\Project;
 use Modules\Xot\Enums\GenderEnum;
 
 class AttachEsternoAction extends Action
@@ -23,7 +24,7 @@ class AttachEsternoAction extends Action
             ->label('Aggiungi Consulente Esterno')
             ->color('gray')
             ->icon('heroicon-s-user-circle')
-            ->schema(fn () => [
+            ->schema(fn (): array => [
                 TextInput::make('cognome')
                     ->required()->string(),
                 TextInput::make('nome')
@@ -32,19 +33,25 @@ class AttachEsternoAction extends Action
                     ->options(GenderEnum::class)
                     ->required(),
             ])
-            ->after(function ($action, $data, HasTable $livewire) {
-                // Type guard: ensure $livewire implements ManageRelatedRecords to access getOwnerRecord()
+            ->after(function ($action, array $data, HasTable $livewire): void {
                 if (! $livewire instanceof ManageRelatedRecords) {
                     return;
                 }
 
                 $project = $livewire->getOwnerRecord();
+                if (! $project instanceof Project) {
+                    return;
+                }
+
+                $cognome = is_string($data['cognome'] ?? null) ? $data['cognome'] : '';
+                $nome = is_string($data['nome'] ?? null) ? $data['nome'] : '';
+                $sesso = $data['sesso'] ?? null;
 
                 $employee = Employee::create([
-                    'matricola' =>  00001,
-                    'cognome' => $data['cognome'],
-                    'nome' => $data['nome'],
-                    'sesso' => $data['sesso'],
+                    'matricola' => 1,
+                    'cognome' => $cognome,
+                    'nome' => $nome,
+                    'sesso' => $sesso,
                     'tipologia' => 'E',
                     'codice_fiscale' => null,
                     'posizione_inail' => null,

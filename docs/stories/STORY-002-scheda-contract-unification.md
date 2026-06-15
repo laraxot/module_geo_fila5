@@ -60,13 +60,13 @@ Ptv\Scheda              ← vuota / minima
 - [x] `ListaAszTipCodEsclusoSubito` usa `SchedaContract` + `$scheda->asz()->ofRangeDate()`
 - [x] PHPStan `Modules` → 0 errori (`memory_limit=2G`)
 - [x] Regola cardinale documentata: [eloquent-relationship-encapsulation.md](../wiki/rules/eloquent-relationship-encapsulation.md)
+- [x] Regola gerarchia: [module-hierarchy-inheritance-pattern.md](../wiki/rules/module-hierarchy-inheritance-pattern.md) — `implements` solo su `BaseScheda`
 
 ### Rimanente
 
 - [ ] `Legge104\Scheda extends BaseScheda` (oggi `BaseModel` isolato)
 - [ ] Audit action Ptv/Progressioni per altri bypass query
-- [ ] Aggiornare doc Sigma obsolete (`implements ProgressioneSchedaContract`)
-- [ ] `module-hierarchy-inheritance-pattern.md` in wiki root
+- [x] Aggiornare doc Sigma obsolete (`implements ProgressioneSchedaContract`)
 
 ---
 

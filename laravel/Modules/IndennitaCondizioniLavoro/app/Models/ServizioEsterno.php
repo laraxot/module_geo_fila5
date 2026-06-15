@@ -221,6 +221,21 @@ class ServizioEsterno extends BaseModel
         ];
     }
 
+    protected function rangeFromField(): string
+    {
+        return 'dal';
+    }
+
+    protected function rangeToField(): string
+    {
+        return 'al';
+    }
+
+    protected function annFieldName(): string
+    {
+        return 'anno';
+    }
+
     // ------ relationship ----------
 
     public function reparts(): HasMany

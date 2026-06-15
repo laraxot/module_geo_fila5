@@ -33,7 +33,7 @@ trait MassExtra
 
         $fallbackMap = [
             \Modules\Performance\Models\BaseIndividualeModel::class => [
-                \Modules\Performance\Models\Performance::class,
+                \Modules\Performance\Models\Individuale::class,
                 \Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita::class,
                 \Modules\IndennitaResponsabilita\Models\LettF::class,
                 \Modules\IndennitaResponsabilita\Models\LettI::class,

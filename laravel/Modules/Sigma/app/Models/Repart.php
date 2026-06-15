@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -28,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Repart whereStabi($value)
  * @mixin \Eloquent
  */
-class Repart extends Model
+class Repart extends BaseModel
 {
     protected $fillable = ['id', 'ente', 'stabi', 'repar', 'dest1', 'dest2'];
 

@@ -1,0 +1,10 @@
+# Gate wrapper — NON sostituisce phpstan.neon (immutabile).
+# Include config canonica. Riduce parallel ma i worker possono restare a 512M:
+# preferire bash bashscripts/tools/phpstan-modules-gate.sh (scan sequenziale).
+includes:
+    - phpstan.neon
+
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 1
+        jobSize: 20

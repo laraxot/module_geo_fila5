@@ -10,6 +10,8 @@ use Modules\Pdnd\Services\Anpr\Services\C015\Models\Request\TipoCriteriRicercaE0
 use Modules\Pdnd\Services\Anpr\Services\C015\Models\Request\TipoDatiRichiestaE002;
 use Modules\Pdnd\Services\Anpr\Services\C015\Models\Response\RispostaE002OK;
 use Modules\Pdnd\Services\Anpr\Services\C015\Models\Response\RispostaKO;
+use Modules\Pdnd\Services\Anpr\Services\C015\Models\Response\TipoInfoSoggettoEnte;
+use Modules\Pdnd\Services\Anpr\Services\C015\Models\Response\TipoListaSoggetti;
 use Modules\Pdnd\Services\Anpr\Shared\Models\Common\TipoErroriAnomalia;
 use Modules\Pdnd\Services\Anpr\Shared\Traits\HasPdndClient;
 use Modules\Pdnd\Services\PdndClientService;
@@ -124,6 +126,10 @@ class C015Service
     private function processE002Response(array $response, RichiestaE002 $richiesta): array
     {
         $bodyRaw = $response['body'] ?? '{}';
+        if (! is_string($bodyRaw)) {
+            $bodyRaw = '{}';
+        }
+
         /** @var array<string, mixed> $responseArray */
         $responseArray = json_decode($bodyRaw, true);
 
@@ -170,29 +176,39 @@ class C015Service
         ];
     }
 
-    private function extractSoggettiData($listaSoggetti): array
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    private function extractSoggettiData(?TipoListaSoggetti $listaSoggetti): array
     {
-        if (!$listaSoggetti || empty($listaSoggetti->datiSoggetto)) {
+        if ($listaSoggetti === null || $listaSoggetti->datiSoggetto === null || $listaSoggetti->datiSoggetto === []) {
             return [];
         }
 
-        return array_map(function ($soggetto) {
-            return [
+        $soggetti = [];
+        foreach ($listaSoggetti->datiSoggetto as $soggetto) {
+            $soggetti[] = [
                 'generalita' => $soggetto->generalita?->toArray() ?? [],
                 'stato_civile' => $soggetto->statoCivile?->toArray() ?? [],
                 'identificativi' => $soggetto->identificativi?->toArray() ?? [],
                 'info_soggetto_ente' => $this->extractInfoSoggettoEnte($soggetto->infoSoggettoEnte ?? []),
             ];
-        }, $listaSoggetti->datiSoggetto);
+        }
+
+        return $soggetti;
     }
 
+    /**
+     * @param  array<int, TipoInfoSoggettoEnte>  $items
+     * @return array<int, array<string, string|null>>
+     */
     private function extractInfoSoggettoEnte(array $items): array
     {
-        return array_map(fn($item) => [
-            'chiave' => $item->chiave ?? null,
-            'valore' => $item->valore?->value ?? null,
-            'valore_testo' => $item->valoreTesto ?? null,
-            'valore_data' => $item->valoreData ?? null,
+        return array_map(static fn (TipoInfoSoggettoEnte $item): array => [
+            'chiave' => $item->chiave,
+            'valore' => $item->valore?->value,
+            'valore_testo' => $item->valoreTesto,
+            'valore_data' => $item->valoreData,
         ], $items);
     }
 

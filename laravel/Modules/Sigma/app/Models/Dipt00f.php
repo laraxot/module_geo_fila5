@@ -7,7 +7,6 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -59,7 +58,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read int|null $rep00f_count
  * @mixin \Eloquent
  */
-class Dipt00f extends Model
+class Dipt00f extends BaseModel
 {
     protected $fillable = [
         'id',

@@ -6,6 +6,7 @@ namespace Modules\Performance\Filament\Resources\IndividualeAdmResource\Pages;
 
 use Filament\Actions;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -88,7 +89,7 @@ class ListIndividualeAdms extends ListScheda
     /**
      * Get the header actions for the list page.
      *
-     * @return array<string, Action>
+     * @return array<string, Action|ActionGroup>
      */
     #[Override]
     public function getHeaderActions(): array

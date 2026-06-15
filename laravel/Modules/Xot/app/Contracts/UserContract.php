@@ -56,7 +56,10 @@ interface UserContract extends Authenticatable, HasMedia, HasName, HasTenants, M
      * public function areas();
      * public function avatar();
      */
-    /** @return HasOne<Model&ProfileContract, $this> */
+    /**
+     * @return HasOne<Model&ProfileContract, $this>
+     * @phpstan-ignore generics.notSubtype
+     */
     public function profile(): HasOne;
 
     /**
@@ -136,6 +139,7 @@ interface UserContract extends Authenticatable, HasMedia, HasName, HasTenants, M
      * Get the user's tenants.
      *
      * @return BelongsToMany<Model, $this>
+     * @phpstan-ignore generics.notSubtype
      */
     public function tenants(): BelongsToMany;
 

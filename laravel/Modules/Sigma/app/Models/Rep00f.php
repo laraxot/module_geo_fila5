@@ -7,14 +7,12 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 // ----------traits ---
 use Illuminate\Support\Collection;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
-use Modules\Sigma\Models\Traits\Scopes\CommonScope;
 use stdClass;
 
 /**
@@ -142,10 +140,9 @@ use stdClass;
  * @property-read int|null $qua00f_count
  * @mixin \Eloquent
  */
-class Rep00f extends Model
+class Rep00f extends BaseDateRangeModel
 {
     // use SigmaModelTrait;
-    use CommonScope;
     use EnteMatrMutator;
     use EnteMatrRelationship;
 
@@ -186,17 +183,33 @@ class Rep00f extends Model
         'rep005',
     ];
 
-    protected $connection = 'generale';
-
-    // this will use the specified database connection
     protected $table = 'rep00f';
 
-    public $timestamps = false;
-
     // protected $dates=['rep2kd','rep2ka'];
+    public const FROM_FIELD = 'rep2kd';
+
+    public const TO_FIELD = 'rep2ka';
+
+    public const ANN_FIELD = 'repann';
+
     public string $from_field = 'rep2kd';
 
     public string $to_field = 'rep2ka';
+
+    public function rangeFromField(): string
+    {
+        return 'rep2kd';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'rep2ka';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'repann';
+    }
 
     // ----------- RelationShip
     /**
@@ -331,18 +344,28 @@ class Rep00f extends Model
     }
 
     // --------- SCOPES --------------
+    protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
+    {
+        if ($date_min === null || $date_max === null) {
+            return $query;
+        }
+
+        return $query->selectRaw(
+            'greatest(datediff(if(rep2ka=0 or rep2ka>?, ?, rep2ka), if(rep2kd<?, ?, rep2kd))+1, 0) AS days',
+            [$date_max, $date_max, $date_min, $date_min],
+        );
+    }
+
     /**
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
     protected function scopeOfYear(Builder $query, int $year): Builder
     {
-        $sql = '(
-			('.$year.' between year(rep2kd) and year(rep2ka) ) or
-			('.$year.' >= year(rep2kd) and rep2ka=0 )
-		)';
-
-        return $query->whereRaw($sql);
+        return $query->where(static function (Builder $q) use ($year): void {
+            $q->whereRaw('(? between year(rep2kd) and year(rep2ka))', [$year])
+                ->orWhereRaw('(? >= year(rep2kd) and rep2ka = 0)', [$year]);
+        });
     }
 
     /**
@@ -351,12 +374,10 @@ class Rep00f extends Model
      */
     protected function scopeOfDate(Builder $query, int $date): Builder
     {
-        $sql = '(
-			('.$date.' between rep2kd and rep2ka ) or
-			('.$date.' >= rep2kd and rep2ka=0 )
-		)';
-
-        return $query->whereRaw($sql);
+        return $query->where(static function (Builder $q) use ($date): void {
+            $q->whereRaw('(? between rep2kd and rep2ka)', [$date])
+                ->orWhereRaw('(? >= rep2kd and rep2ka = 0)', [$date]);
+        });
     }
 
     /**

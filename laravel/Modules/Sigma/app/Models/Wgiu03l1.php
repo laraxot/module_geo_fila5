@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 // ----------traits ---
 /**
@@ -64,7 +63,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Wgiu03l1 whereStdata($value)
  * @mixin \Eloquent
  */
-class Wgiu03l1 extends Model
+class Wgiu03l1 extends BaseModel
 {
     protected $fillable = [
         'id',

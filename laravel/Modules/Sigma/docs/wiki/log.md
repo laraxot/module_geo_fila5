@@ -9,7 +9,9 @@ module: "Sigma"
 
 ## Log Entries
 
-_No activity yet. Start by ingesting raw documents._
+[2026-06-15] [LINT] Gate PHPStan livello max su `Modules/Sigma`: 0 errori. Pattern: `whereRaw` con binding `?`, `selectRaw` letterale per aggregati gg.
+
+[2026-06-15] [UPDATE] Architettura `CommonScope`: `rangeFromField` / `rangeToField` / `annFieldName` **abstract** nel trait, implementati su ogni modello (no `match(static::class)`). Vedi [common-scope-date-range-ownership](./concepts/common-scope-date-range-ownership.md).
 
 ### Format
 
@@ -25,5 +27,5 @@ _No activity yet. Start by ingesting raw documents._
 
 ---
 
-**Last Activity:** None  
-**Total Operations:** 0
+**Last Activity:** 2026-06-15 — PHPStan Sigma 0 errori  
+**Total Operations:** 1

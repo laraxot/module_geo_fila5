@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Components;
 
-use Filament\Forms\Components\Component;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -13,11 +12,11 @@ use Illuminate\Contracts\View\View;
  * Fornisce feedback visivo immediato sullo stato delle operazioni
  * con colori contestuali e animazioni appropriate.
  */
-class ProgressIndicator extends Component
+class ProgressIndicator
 {
     public string $step;
 
-    public string $status; // 'loading', 'validating', 'completed', 'error'
+    public string $status;
 
     public string $message;
 
@@ -27,7 +26,7 @@ class ProgressIndicator extends Component
         string $step,
         string $status = 'loading',
         string $message = '',
-        bool $showIcon = true
+        bool $showIcon = true,
     ) {
         $this->step = $step;
         $this->status = $status;
@@ -35,9 +34,6 @@ class ProgressIndicator extends Component
         $this->showIcon = $showIcon;
     }
 
-    /**
-     * Determina il colore di sfondo basato sullo stato.
-     */
     protected function getBackgroundColor(): string
     {
         return match ($this->status) {
@@ -49,9 +45,6 @@ class ProgressIndicator extends Component
         };
     }
 
-    /**
-     * Determina il colore del testo.
-     */
     protected function getTextColor(): string
     {
         return match ($this->status) {
@@ -63,9 +56,6 @@ class ProgressIndicator extends Component
         };
     }
 
-    /**
-     * Determina l'icona da visualizzare.
-     */
     protected function getIcon(): string
     {
         return match ($this->status) {
@@ -77,9 +67,6 @@ class ProgressIndicator extends Component
         };
     }
 
-    /**
-     * Determina il testo di stato predefinito.
-     */
     protected function getDefaultMessage(): string
     {
         return match ($this->status) {
@@ -91,21 +78,15 @@ class ProgressIndicator extends Component
         };
     }
 
-    /**
-     * Restituisce il messaggio completo.
-     */
     protected function getFullMessage(): string
     {
-        if (empty($this->message)) {
+        if ($this->message === '') {
             return $this->getDefaultMessage();
         }
 
         return $this->message;
     }
 
-    /**
-     * Determina se mostrare animazione.
-     */
     protected function shouldAnimate(): bool
     {
         return in_array($this->status, ['loading', 'validating'], true);
@@ -113,51 +94,33 @@ class ProgressIndicator extends Component
 
     public function render(): View
     {
-        $bgColor = $this->getBackgroundColor();
-        $textColor = $this->getTextColor();
-        $icon = $this->getIcon();
-        $message = $this->getFullMessage();
-        $animate = $this->shouldAnimate();
-
         return view('indennitaresponsabilita::filament.components.progress-indicator', [
             'step' => $this->step,
             'status' => $this->status,
-            'bgColor' => $bgColor,
-            'textColor' => $textColor,
-            'icon' => $icon,
-            'message' => $message,
+            'bgColor' => $this->getBackgroundColor(),
+            'textColor' => $this->getTextColor(),
+            'icon' => $this->getIcon(),
+            'message' => $this->getFullMessage(),
             'showIcon' => $this->showIcon,
-            'animate' => $animate,
+            'animate' => $this->shouldAnimate(),
         ]);
     }
 
-    /**
-     * Crea un'istanza per stato di caricamento.
-     */
     public static function loading(string $step, string $message = ''): self
     {
         return new self($step, 'loading', $message);
     }
 
-    /**
-     * Crea un'istanza per stato di validazione.
-     */
     public static function validating(string $step, string $message = ''): self
     {
         return new self($step, 'validating', $message);
     }
 
-    /**
-     * Crea un'istanza per stato completato.
-     */
     public static function completed(string $step, string $message = ''): self
     {
         return new self($step, 'completed', $message);
     }
 
-    /**
-     * Crea un'istanza per stato di errore.
-     */
     public static function error(string $step, string $message = ''): self
     {
         return new self($step, 'error', $message);

@@ -89,7 +89,7 @@ class AwsTest extends XotBasePage
     {
         return [
             Section::make('IAM Permissions Test')->schema([
-                TextInput::make('iam_user')->default(env('AWS_ACCESS_KEY_ID')),
+                TextInput::make('iam_user')->default(config('filesystems.disks.s3.key')),
                 Actions::make([
                     Action::make('test_iam_credentials')->action('testIamCredentials'),
                     Action::make('test_iam_policies')->color('warning')->action('testIamPolicies'),

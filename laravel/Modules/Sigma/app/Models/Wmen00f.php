@@ -7,7 +7,6 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Date;
 use stdClass;
@@ -75,7 +74,7 @@ use stdClass;
  * @method static Builder|Wmen00f whereMntmen($value)
  * @mixin \Eloquent
  */
-class Wmen00f extends Model
+class Wmen00f extends BaseModel
 {
     protected $fillable = [
         'id',

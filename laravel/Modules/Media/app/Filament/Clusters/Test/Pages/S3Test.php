@@ -278,12 +278,9 @@ class S3Test extends XotBasePage
                 'AWS_DEFAULT_REGION' => config('filesystems.disks.s3.region'),
                 'AWS_BUCKET' => config('filesystems.disks.s3.bucket'),
                 'AWS_USE_PATH_STYLE_ENDPOINT' => config('filesystems.disks.s3.use_path_style_endpoint', 'false'),
-                'CLOUDFRONT_BASE_URL' => config(
-                    'services.cloudfront.base_url',
-                    env('CLOUDFRONT_RESOURCE_KEY_BASE_URL'),
-                ),
-                'CLOUDFRONT_KEYPAIR_ID' => config('services.cloudfront.key_pair_id', env('CLOUDFRONT_KEYPAIR_ID')),
-                'CLOUDFRONT_PRIVATE_KEY' => config('services.cloudfront.private_key') || env('CLOUDFRONT_PRIVATE_KEY')
+                'CLOUDFRONT_BASE_URL' => config('services.cloudfront.base_url'),
+                'CLOUDFRONT_KEYPAIR_ID' => config('services.cloudfront.key_pair_id'),
+                'CLOUDFRONT_PRIVATE_KEY' => config('services.cloudfront.private_key')
                     ? '✅ Present'
                     : '❌ Missing',
             ],
@@ -520,9 +517,9 @@ class S3Test extends XotBasePage
     {
         try {
             // Test CloudFront configuration
-            $baseUrl = config('services.cloudfront.base_url', env('CLOUDFRONT_RESOURCE_KEY_BASE_URL'));
-            $keyPairId = config('services.cloudfront.key_pair_id', env('CLOUDFRONT_KEYPAIR_ID'));
-            $privateKey = config('services.cloudfront.private_key', env('CLOUDFRONT_PRIVATE_KEY'));
+            $baseUrl = config('services.cloudfront.base_url');
+            $keyPairId = config('services.cloudfront.key_pair_id');
+            $privateKey = config('services.cloudfront.private_key');
 
             if (! $baseUrl || ! $keyPairId || ! $privateKey) {
                 return [

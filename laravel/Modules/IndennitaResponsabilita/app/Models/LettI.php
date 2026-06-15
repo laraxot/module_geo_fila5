@@ -582,13 +582,9 @@ class LettI extends BaseScheda
         if ($stabi === null || $repar === null) {
             return;
         }
-        $sql = '(
-    		('.$anno.' between year(rep2kd) and year(rep2ka))
-    		or
-    		('.$anno.' >= year(rep2kd) and rep2ka=0)
-    	)';
-        /** @var Builder<Rep00f> $rows0 */
-        $rows0 = Rep00f::where('repst1', $stabi)->where('repre1', $repar)->whereRaw($sql)->whereRaw('repann=""');
+        $rows0 = Rep00f::where('repst1', $stabi)->where('repre1', $repar)
+            ->whereRaw('(? between year(rep2kd) and year(rep2ka)) or (? >= year(rep2kd) and rep2ka=0)', [$anno, $anno])
+            ->whereRaw('repann=""');
         foreach ($rows0->get() as $row) {
             $parz = ['ente' => $row->ente,
                 'matr' => $row->matr,
@@ -618,28 +614,30 @@ class LettI extends BaseScheda
             }
 
             if ($obj->propro === 0 || $obj->propro === null) {
-                $sql = '
-                (
-                    ('.$obj->dalf->format('Ymd').' between qua2kd and qua2ka )
-                    or
-                    ('.$obj->dalf->format('Ymd').' >= qua2kd and qua2ka=0 )
-                    or
-                    ('.$obj->alf->format('Ymd').' between qua2kd and qua2ka )
-                    or
-                    ('.$obj->alf->format('Ymd').' >= qua2kd and qua2ka=0 )
-                    or
-                    (qua2kd between '.$obj->dalf->format('Ymd').' and '.$obj->alf->format('Ymd').')
-                    or
-                    (qua2ka between '.$obj->dalf->format('Ymd').' and '.$obj->alf->format('Ymd').')
-                )
-                ';
+                $dalfYmd = $obj->dalf->format('Ymd');
+                $alfYmd = $obj->alf->format('Ymd');
                 /** @var Anag|null $anag */
                 $anag = $obj->anag;
                 if ($anag === null) {
                     continue;
                 }
                 /** @var Builder<Qua00f> $qua00fQuery */
-                $qua00fQuery = $anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw($sql);
+                $qua00fQuery = $anag->qua00f()->select('propro', 'posfun', 'posiz')->distinct()->whereRaw(
+                    '(
+                    (? between qua2kd and qua2ka )
+                    or
+                    (? >= qua2kd and qua2ka=0 )
+                    or
+                    (? between qua2kd and qua2ka )
+                    or
+                    (? >= qua2kd and qua2ka=0 )
+                    or
+                    (qua2kd between ? and ?)
+                    or
+                    (qua2ka between ? and ?)
+                )',
+                    [$dalfYmd, $dalfYmd, $alfYmd, $alfYmd, $dalfYmd, $alfYmd, $dalfYmd, $alfYmd],
+                );
                 /** @var Collection<int, Qua00f> $qua00fCollection */
                 $qua00fCollection = $qua00fQuery->get();
                 // echo '<br/>'.$qua00f->count().' - '.$qua00f->first()->propro.'  - '.$qua00f->first()->posfun;
@@ -659,7 +657,22 @@ class LettI extends BaseScheda
                     echo '<pre>';
                     print_r($qua00fQuery->toSql());
                     /** @var Collection<int, Qua00f> $qua00f */
-                    $qua00f = $anag->qua00f()->whereRaw($sql)->orderBy('qua2kd')->get();
+                    $qua00f = $anag->qua00f()->whereRaw(
+                        '(
+                    (? between qua2kd and qua2ka )
+                    or
+                    (? >= qua2kd and qua2ka=0 )
+                    or
+                    (? between qua2kd and qua2ka )
+                    or
+                    (? >= qua2kd and qua2ka=0 )
+                    or
+                    (qua2kd between ? and ?)
+                    or
+                    (qua2ka between ? and ?)
+                )',
+                        [$dalfYmd, $dalfYmd, $alfYmd, $alfYmd, $dalfYmd, $alfYmd, $dalfYmd, $alfYmd],
+                    )->orderBy('qua2kd')->get();
 
                     // foreach($qua00f as $v_qua00f){
                     if ($qua00f->count() < 2) {

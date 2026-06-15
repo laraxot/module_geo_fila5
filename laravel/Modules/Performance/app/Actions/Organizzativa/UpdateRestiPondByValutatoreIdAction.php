@@ -109,13 +109,10 @@ class UpdateRestiPondByValutatoreIdAction
             $delta = (float) $valutatore->delta_min_punteggio + 0.00114;
 
             // Aggiorna i resti_pond per i dipendenti di questo valutatore
-            $updated = Scheda::where('anno', $year)
-                ->where('type', $type)
-                ->where('ha_diritto', '>', 0)
-                ->where('valutatore_id', $valutatore->valutatore_id)
-                ->update([
-                    'resti_pond' => DB::raw("quota_effettiva * {$delta}"),
-                ]);
+            $updated = DB::update(
+                'UPDATE '.(new Scheda)->getTable().' SET resti_pond = quota_effettiva * ? WHERE anno = ? AND type = ? AND ha_diritto > 0 AND valutatore_id = ?',
+                [$delta, $year, $type, $valutatore->valutatore_id],
+            );
 
             $totalUpdated += $updated;
 

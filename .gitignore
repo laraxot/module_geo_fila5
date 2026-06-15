@@ -465,3 +465,4 @@ laravel/.cursor
 laravel/.gemini
 laravel/.claude
 laravel/.qwen
+${PWD}/

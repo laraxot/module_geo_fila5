@@ -121,7 +121,20 @@ class PdndClientService
             // chaimata API E-SERVICE
             /** @var array<string, mixed> $bodyArrayTyped */
             $bodyArrayTyped = $bodyArray;
-            $response = $this->client->postApi($token, $bodyArrayTyped, $endpoint);
+
+            $previousApiUrl = null;
+            if ($endpoint !== '') {
+                $previousApiUrl = $this->client->getApiUrl();
+                $this->client->setApiUrl($endpoint);
+            }
+
+            try {
+                $response = $this->client->postApi($token, $bodyArrayTyped);
+            } finally {
+                if ($previousApiUrl !== null) {
+                    $this->client->setApiUrl($previousApiUrl);
+                }
+            }
 
             return $response;
         } catch (Exception $e) {

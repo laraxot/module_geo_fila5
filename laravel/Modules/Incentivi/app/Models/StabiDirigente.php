@@ -155,20 +155,17 @@ class StabiDirigente extends BaseModel
      */
     public function getStabiAttribute(?int $value): ?int
     {
-        // ✅ Livello 4: Controllo se il valore esiste già dal DB
-        if (($value !== null && $value != 0) || $this->getKey() === null) {
+        $recordKey = $this->getKey();
+
+        if (($value !== null && $value != 0) || $recordKey === null) {
             return $value;
         }
 
-        // ✅ Livello 4: Delego il calcolo a metodo separato
         $value = $this->getStabi();
 
-        // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
-        if ($this->getKey() !== null) {
-            static::withoutEvents(function () use ($value): void {
-                $this->update(['stabi' => $value]);
-            });
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['stabi' => $value]);
+        });
 
         return $value;
     }
@@ -200,17 +197,17 @@ class StabiDirigente extends BaseModel
      */
     public function getReparAttribute(?int $value): ?int
     {
-        if (($value !== null) || $this->getKey() === null) {
+        $recordKey = $this->getKey();
+
+        if (($value !== null) || $recordKey === null) {
             return $value;
         }
 
         $value = 0;
 
-        if ($this->getKey() !== null) {
-            static::withoutEvents(function () use ($value): void {
-                $this->update(['repar' => $value]);
-            });
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['repar' => $value]);
+        });
 
         return $value;
     }
@@ -220,20 +217,17 @@ class StabiDirigente extends BaseModel
      */
     public function getEnteAttribute(?int $value): ?int
     {
-        if (($value !== null) || $this->getKey() === null) {
+        $recordKey = $this->getKey();
+
+        if (($value !== null) || $recordKey === null) {
             return $value;
         }
 
         $value = 90;
 
-        if ($this->getKey() !== null) {
-           
-                    static::withoutEvents(function () use ($value): void {
-                        $this->update(['ente' => $value]);
-                    });
-           
-           
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['ente' => $value]);
+        });
 
         return $value;
     }

@@ -9,25 +9,29 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Date;
 
+/**
+ * Scope condivisi per intervalli date — logica query qui, nomi colonne sul modello.
+ *
+ * Ogni consumer deve estendere BaseDateRangeModel e definire i nomi colonna sul modello.
+ *
+ * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+ */
 trait CommonScope
 {
-    // ------ SCOPES --------
+    /**
+     * @return literal-string
+     */
+    abstract public function rangeFromField(): string;
 
     /**
-     * Get from field name.
+     * @return literal-string
      */
-    protected function getFromFieldAttribute(): string
-    {
-        return $this->from_field ?? 'dal';
-    }
+    abstract public function rangeToField(): string;
 
     /**
-     * Get to field name.
+     * @return literal-string
      */
-    protected function getToFieldAttribute(): string
-    {
-        return $this->to_field ?? 'al';
-    }
+    abstract public function annFieldName(): string;
 
     protected function scopeOfQuarter(Builder $query, ?int $quarter, ?int $year): Builder
     {
@@ -47,19 +51,12 @@ trait CommonScope
         }
 
         $to = $to->addMonths(3)->subDay();
-        $sql =
-            ''
-            .$this->from_field
-            .' >= '
-            .$from->format('Ymd')
-            .' and
-            '
-            .$this->to_field
-            .' <= '
-            .$to->format('Ymd')
-            .'';
+        $fromField = $this->rangeFromField();
+        $toField = $this->rangeToField();
 
-        return $query->whereRaw($sql);
+        return $query
+            ->where($fromField, '>=', (int) $from->format('Ymd'))
+            ->where($toField, '<=', (int) $to->format('Ymd'));
     }
 
     protected function scopeOfFourMonthPeriod(Builder $query, ?int $fourMonthPeriod, ?int $year): Builder
@@ -80,19 +77,12 @@ trait CommonScope
         }
 
         $to = $to->addMonths(3)->subDay();
-        $sql =
-            ''
-            .$this->from_field
-            .' >= '
-            .$from->format('Ymd')
-            .' and
-            '
-            .$this->to_field
-            .' <= '
-            .$to->format('Ymd')
-            .'';
+        $fromField = $this->rangeFromField();
+        $toField = $this->rangeToField();
 
-        return $query->whereRaw($sql);
+        return $query
+            ->where($fromField, '>=', (int) $from->format('Ymd'))
+            ->where($toField, '<=', (int) $to->format('Ymd'));
     }
 
     /**
@@ -104,18 +94,16 @@ trait CommonScope
             return $query;
         }
 
-        // If the model has an 'anno' column, use that for filtering
         if (isset($this->getAttributes()['anno'])) {
             return $query->where('anno', $year);
         }
 
-        // Otherwise, use the date range fields
-        $from_field = $this->from_field ?? 'dal';
-        $to_field = $this->to_field ?? 'al';
+        $fromField = $this->rangeFromField();
+        $toField = $this->rangeToField();
 
-        return $query->where(static function ($q) use ($year, $from_field, $to_field) {
-            $q->where($from_field, '<=', ($year * 10000) + 1231)->where(static function ($q2) use ($year, $to_field) {
-                $q2->where($to_field, '>=', ($year * 10000) + 101)->orWhere($to_field, '=', 0);
+        return $query->where(static function ($q) use ($year, $fromField, $toField): void {
+            $q->where($fromField, '<=', ($year * 10000) + 1231)->where(static function ($q2) use ($year, $toField): void {
+                $q2->where($toField, '>=', ($year * 10000) + 101)->orWhere($toField, '=', 0);
             });
         });
     }
@@ -125,9 +113,10 @@ trait CommonScope
         if ($ente === null || $year === null) {
             return $query;
         }
-        $query = $query->where('ente', $ente)->whereRaw('quaann=""');
 
-        // Delegate to scopeOfYear without chaining on Builder
+        $annField = $this->annFieldName();
+        $query = $query->where('ente', $ente)->where($annField, '');
+
         return $this->scopeOfYear($query, $year);
     }
 
@@ -138,8 +127,6 @@ trait CommonScope
         }
 
         return $query->where('ente', $ente);
-
-        // ->whereRaw('quaann=""');
     }
 
     protected function scopeOfDate(Builder $query, ?int $date): Builder
@@ -148,30 +135,19 @@ trait CommonScope
             return $query;
         }
 
-        $sql =
-            '(
-            ('
-            .$date
-            .' between '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .' ) or
-            ('
-            .$date
-            .' >= '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .'=0 )
-        )';
+        $fromField = $this->rangeFromField();
+        $toField = $this->rangeToField();
 
-        return $query->whereRaw($sql);
+        return $query->where(static function (Builder $q) use ($date, $fromField, $toField): void {
+            $q->where(static function (Builder $inner) use ($date, $fromField, $toField): void {
+                $inner->where($fromField, '<=', $date)->where($toField, '>=', $date);
+            })->orWhere(static function (Builder $inner) use ($date, $fromField, $toField): void {
+                $inner->where($fromField, '<=', $date)->where($toField, '=', 0);
+            });
+        });
     }
 
     /**
-     * Scope a query to only include records within a date range.
-     *
      * @param  int|null  $date_start  Start date in Ymd format
      * @param  int|null  $date_end  End date in Ymd format (0 means no end date)
      */
@@ -181,90 +157,31 @@ trait CommonScope
             return $query;
         }
 
+        $fromField = $this->rangeFromField();
+        $toField = $this->rangeToField();
+
         if ($date_end === null || $date_end === 0) {
-            $sql = '(('.$this->to_field.' >= '.$date_start.') or ('.$this->to_field.' =0))';
-
-            return $query->whereRaw($sql);
+            return $query->where(static function (Builder $q) use ($date_start, $toField): void {
+                $q->where($toField, '>=', $date_start)->orWhere($toField, '=', 0);
+            });
         }
 
-        $sql =
-            '
-        (
-            (
-                ('
-            .$date_start
-            .' between '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .' ) or
-                ('
-            .$date_start
-            .' >= '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .'=0 )
-            ) or
-            (
-                ('
-            .$date_end
-            .' between '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .' ) or
-                ('
-            .$date_end
-            .' >= '
-            .$this->from_field
-            .' and '
-            .$this->to_field
-            .'=0 )
-            ) or
-
-                ('
-            .$this->from_field
-            .' between '
-            .$date_start
-            .' and '
-            .$date_end
-            .' )
-
-
-        )';
-
-        return $query->whereRaw($sql);
-    }
-
-    protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
-    {
-        if ($date_min === null || $date_max === null) {
-            return $query;
-        }
-
-        $days =
-            'greatest(datediff(if('
-            .$this->to_field
-            .'=0 or '
-            .$this->to_field
-            .'>'
-            .$date_max
-            .','
-            .$date_max
-            .','
-            .$this->to_field
-            .'),
-            if('
-            .$this->from_field
-            .'<'
-            .$date_min
-            .','
-            .$date_min
-            .','
-            .$this->from_field
-            .'))+1,0) ';
-
-        return $query->selectRaw(sprintf('*,%s AS days', $days));
+        return $query->where(static function (Builder $q) use ($date_start, $date_end, $fromField, $toField): void {
+            $q->where(static function (Builder $inner) use ($date_start, $fromField, $toField): void {
+                $inner->where(static function (Builder $i) use ($date_start, $fromField, $toField): void {
+                    $i->where($fromField, '<=', $date_start)->where($toField, '>=', $date_start);
+                })->orWhere(static function (Builder $i) use ($date_start, $fromField, $toField): void {
+                    $i->where($fromField, '<=', $date_start)->where($toField, '=', 0);
+                });
+            })->orWhere(static function (Builder $inner) use ($date_end, $fromField, $toField): void {
+                $inner->where(static function (Builder $i) use ($date_end, $fromField, $toField): void {
+                    $i->where($fromField, '<=', $date_end)->where($toField, '>=', $date_end);
+                })->orWhere(static function (Builder $i) use ($date_end, $fromField, $toField): void {
+                    $i->where($fromField, '<=', $date_end)->where($toField, '=', 0);
+                });
+            })->orWhere(static function (Builder $inner) use ($date_start, $date_end, $fromField): void {
+                $inner->whereBetween($fromField, [$date_start, $date_end]);
+            });
+        });
     }
 }

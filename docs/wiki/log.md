@@ -9,6 +9,18 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-15 21:30:00 UTC] [ARCHITECTURE] CommonScope: confermato pattern model-owned (`abstract` su trait, implementazione per modello). Aggiunto `Qua03f` + `CommonScope`. Memory `common-scope-range-fields-on-model.md`, cursor rule, audit `audit-common-scope-range-fields.sh`, llm-wiki §22. PHPStan Sigma 0.
+
+[2026-06-15 21:00:00 UTC] [DEV STACK] Redis `systemctl enable --now redis-server` (sudo); `artisan serve` :8000 OK (/, /admin/login, /up → 200/302). PHPStan Sigma senza override env OK con Redis attivo. Gate PHPStan: `CACHE_STORE=file` obbligatorio se Redis down.
+
+[2026-06-15 20:00:00 UTC] [TOOLING] `bashscripts/tools/phpstan-modules-gate.sh` — gate sequenziale 35/35 moduli PASS (OOM fix per `analyse Modules/`). Doc: `docs/wiki/troubleshooting/phpstan-parallel-worker-oom.md`. Wrapper opzionale `laravel/phpstan-gate.neon` (parallel=1).
+
+[2026-06-15 19:15:00 UTC] [ARCHITECTURE] Regola gerarchia Scheda: `implements SchedaContract` **solo** su `BaseScheda`; figli `class Scheda extends BaseScheda` (no `implements` ridondante). Wiki: `docs/wiki/rules/module-hierarchy-inheritance-pattern.md`, memory `scheda-contract-inheritance-on-base-only.md`, cursor rule, audit `bashscripts/tools/audit-scheda-contract-inheritance.sh` PASS. STORY-002 aggiornata; Sigma deep/comprehensive-analysis allineati; import inutile rimosso da `Progressioni\Scheda`. Pending: `Legge104\Scheda`.
+
+[2026-06-15 18:45:00 UTC] [GATE OK] PHPStan livello max: **35/35 moduli** → 0 errori (scan per-modulo). Comando: `CACHE_DRIVER=file SESSION_DRIVER=file php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/<Modulo>`. Fix batch: Sigma (`FunctionExtra`, `CommonScope`), Pdnd (ANPR DTO), Performance/IndennitaResponsabilita (`whereRaw` bindings), User/Notify/Tenant/Media (stub IdeHelper in `phpstan-stubs/`, config senza `env()`), `ProfileContract::user()` senza generics su interface. Bootstrap: `phpstan-bootstrap.php` carica stub. **Nota:** `phpstan.neon` in working tree ha meno `ignoreErrors` della versione index — fix forward-only nel codice, non ripristino neon.
+
+[2026-06-15 17:30:00 UTC] [ARCHITECTURE] `CommonScope`: `rangeFromField` / `rangeToField` / `annFieldName` **abstract** sul trait, implementati su ogni modello (vietato `match(static::class)`). Regola: `docs/wiki/rules/model-owned-date-range-fields.md`; Sigma wiki: `laravel/Modules/Sigma/docs/wiki/concepts/common-scope-date-range-ownership.md`.
+
 [2026-06-15 16:00:00 UTC] [STORY-002] Consolidato `SchedaContract` (`@method asz()`); eliminato `ProgressioneSchedaContract`; `asz()` canonica su `BaseScheda`. ListaAszTipCodEsclusoSubito: `$scheda->asz()->ofRangeDate()`. Story: [STORY-002](../stories/STORY-002-scheda-contract-unification.md).
 
 [2026-06-15 15:00:00 UTC] [ARCHITECTURE REVERT] Ripristinata catena `$scheda->asz()->ofRangeDate()`; rimosso anti-pattern `Asz00k1::query()`.

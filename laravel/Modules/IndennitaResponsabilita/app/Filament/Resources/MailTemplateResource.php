@@ -45,7 +45,7 @@ class MailTemplateResource extends NotifyBaseMailTemplateResource
     #[Override]
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()
+        return MailTemplate::query()
             ->where(function (Builder $query): void {
                 $query->where('slug', 'like', 'indennitaresponsabilita-%');
             });

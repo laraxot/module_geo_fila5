@@ -8,11 +8,14 @@ use Modules\Pdnd\Services\Anpr\Services\C015\Models\Common\TipoGeneralita;
 
 class TipoDatiSoggettiEnte
 {
+    /**
+     * @param  array<int, TipoInfoSoggettoEnte>|null  $infoSoggettoEnte
+     */
     public function __construct(
         public readonly ?TipoGeneralita $generalita = null,
         public readonly ?TipoStatoCivile $statoCivile = null,
         public readonly ?TipoIdentificativi $identificativi = null,
-        public readonly ?array $infoSoggettoEnte = null  // array<TipoInfoSoggettoEnte>
+        public readonly ?array $infoSoggettoEnte = null,
     ) {}
 
     public function toArray(): array
@@ -21,7 +24,7 @@ class TipoDatiSoggettiEnte
 
         if ($this->infoSoggettoEnte !== null) {
             $data['infoSoggettoEnte'] = array_map(
-                static fn (TipoInfoSoggettoEnte $info) => $info->toArray(),
+                static fn (TipoInfoSoggettoEnte $info): array => $info->toArray(),
                 $this->infoSoggettoEnte
             );
         }
@@ -29,15 +32,38 @@ class TipoDatiSoggettiEnte
         return $data;
     }
 
-public static function fromArray(array $data): self
+    public static function fromArray(array $data): self
     {
+        $generalita = null;
+        if (isset($data['generalita']) && is_array($data['generalita'])) {
+            $generalita = TipoGeneralita::fromArray($data['generalita']);
+        }
+
+        $statoCivile = null;
+        if (isset($data['statoCivile']) && is_array($data['statoCivile'])) {
+            $statoCivile = TipoStatoCivile::fromArray($data['statoCivile']);
+        }
+
+        $identificativi = null;
+        if (isset($data['identificativi']) && is_array($data['identificativi'])) {
+            $identificativi = TipoIdentificativi::fromArray($data['identificativi']);
+        }
+
+        $infoSoggettoEnte = null;
+        if (isset($data['infoSoggettoEnte']) && is_array($data['infoSoggettoEnte'])) {
+            $mappedInfo = array_map(
+                static fn (mixed $item): TipoInfoSoggettoEnte => TipoInfoSoggettoEnte::fromArray(is_array($item) ? $item : []),
+                $data['infoSoggettoEnte']
+            );
+            /** @var array<int, TipoInfoSoggettoEnte> $infoSoggettoEnte */
+            $infoSoggettoEnte = array_values($mappedInfo);
+        }
+
         return new self(
-            generalita: isset($data['generalita']) ? TipoGeneralita::fromArray($data['generalita']) : null,
-            statoCivile: isset($data['statoCivile']) ? TipoStatoCivile::fromArray($data['statoCivile']) : null,
-            identificativi: isset($data['identificativi']) ? TipoIdentificativi::fromArray($data['identificativi']) : null,
-            infoSoggettoEnte: isset($data['infoSoggettoEnte']) 
-                ? array_map([TipoInfoSoggettoEnte::class, 'fromArray'], $data['infoSoggettoEnte']) 
-                : null
+            generalita: $generalita,
+            statoCivile: $statoCivile,
+            identificativi: $identificativi,
+            infoSoggettoEnte: $infoSoggettoEnte,
         );
     }
 
@@ -86,7 +112,10 @@ public static function fromArray(array $data): self
             return [];
         }
 
-        return $this->infoSoggettoEnte;
+        /** @var array<int, TipoInfoSoggettoEnte> $infoSoggettoEnte */
+        $infoSoggettoEnte = $this->infoSoggettoEnte;
+
+        return $infoSoggettoEnte;
     }
 
     /**

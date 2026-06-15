@@ -68,7 +68,6 @@ class ListDefaultActivities extends XotBaseListRecords
                 ->placeholder('DA ASSEGNARE'),
             'anno_competenza' => TextColumn::make('anno_competenza')
                 ->searchable(),
-            'quota_percentuale' => TextColumn::make('quota_percentuale'),
         ];
     }
 
