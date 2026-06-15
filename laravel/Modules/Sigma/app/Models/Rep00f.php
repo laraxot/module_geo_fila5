@@ -63,7 +63,7 @@ use stdClass;
  * @method static Builder|Rep00f newQuery()
  * @method static Builder|Rep00f ofDate(int $date)
  * @method static Builder|Rep00f ofEnteRangeDate(int $ente, int $date_start, int $date_end)
- * @method static Builder|Rep00f ofEnteYear(int $ente, int $year)
+ * @method static Builder|Rep00f ofEnteYear(?int $ente, ?int $year)
  * @method static Builder|Rep00f ofQuarter(int $quarter, int $year)
  * @method static Builder|Rep00f ofRangeDate(int $date_start, int $date_end)
  * @method static Builder|Rep00f ofYear(int $year)
@@ -360,8 +360,12 @@ class Rep00f extends BaseDateRangeModel
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
-    protected function scopeOfYear(Builder $query, int $year): Builder
+    protected function scopeOfYear(Builder $query, ?int $year): Builder
     {
+        if ($year === null) {
+            return $query;
+        }
+
         return $query->where(static function (Builder $q) use ($year): void {
             $q->whereRaw('(? between year(rep2kd) and year(rep2ka))', [$year])
                 ->orWhereRaw('(? >= year(rep2kd) and rep2ka = 0)', [$year]);
@@ -372,8 +376,12 @@ class Rep00f extends BaseDateRangeModel
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
-    protected function scopeOfDate(Builder $query, int $date): Builder
+    protected function scopeOfDate(Builder $query, ?int $date): Builder
     {
+        if ($date === null) {
+            return $query;
+        }
+
         return $query->where(static function (Builder $q) use ($date): void {
             $q->whereRaw('(? between rep2kd and rep2ka)', [$date])
                 ->orWhereRaw('(? >= rep2kd and rep2ka = 0)', [$date]);
@@ -384,8 +392,12 @@ class Rep00f extends BaseDateRangeModel
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
-    protected function scopeOfEnteYear(Builder $query, int $ente, int $year): Builder
+    protected function scopeOfEnteYear(Builder $query, ?int $ente, ?int $year): Builder
     {
+        if ($ente === null || $year === null) {
+            return $query;
+        }
+
         // 267    Call to an undefined method Illuminate\Database\Eloquent\Builder<Illuminate\Database\Eloquent\Model>::ofYear().
         return $query->where('ente', $ente)->whereRaw('repann=""')->ofYear($year);
     }

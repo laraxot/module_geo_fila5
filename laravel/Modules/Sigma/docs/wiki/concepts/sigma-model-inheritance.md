@@ -9,7 +9,7 @@ qmd: "sigma BaseModel BaseDateRangeModel extends Model vietato CommonScope"
 related:
   - ./common-scope-date-range-ownership.md
   - ../../architecture.md
-  - ../../../../../../docs/wiki/rules/model-extension-rules.md
+  - ../../../../../../docs/wiki/rules/module-model-base-inheritance.md
 ---
 
 # Ereditarietà modelli Sigma
@@ -23,7 +23,7 @@ I modelli Sigma leggono tabelle legacy sulla connessione `generale`. Estendere `
 ```
 XotBaseModel
   └── BaseModel              # connessione generale, cast comuni
-        └── BaseDateRangeModel   # CommonScope + timestamps=false
+        └── BaseDateRangeModel   # Models\Contracts\SigmaDateRangeFields + CommonScope + timestamps=false
               ├── Asz00k1, Asz00f, Qua00f, Qua03f, Rep00f
 ```
 
@@ -41,7 +41,7 @@ Tutti gli altri modelli Sigma → `extends BaseModel`.
 
 ## Implementazione range
 
-Su ogni `BaseDateRangeModel` concreto: tre metodi `protected` con literal-string dei nomi colonna. Vedi [common-scope-date-range-ownership](./common-scope-date-range-ownership.md).
+`BaseDateRangeModel` implementa `Models\Contracts\SigmaDateRangeFields`. Su ogni figlio concreto: tre metodi `public` con literal-string dei nomi colonna. Vedi [common-scope-date-range-ownership](./common-scope-date-range-ownership.md).
 
 ## Audit rapido
 
@@ -53,5 +53,5 @@ Deve restituire zero match.
 
 ## Collegamenti
 
-- [model-extension-rules](../../../../../../docs/wiki/rules/model-extension-rules.md)
+- [module-model-base-inheritance](../../../../../../docs/wiki/rules/module-model-base-inheritance.md)
 - [common-scope-date-range-ownership](./common-scope-date-range-ownership.md)

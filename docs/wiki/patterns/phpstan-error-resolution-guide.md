@@ -384,17 +384,16 @@ PHPStan analyzes traits in the context of **each concrete class** that uses them
 
 ### Solution: Polymorphic Override (PREFERRED)
 ```php
-// ✅ Trait provides only defaults
+// ✅ Trait defines only the contract and shared logic
 trait CommonScope {
-    protected function rangeFromField(): string { return 'dal'; }
-    protected function rangeToField(): string { return 'al'; }
+    abstract public function rangeFromField(): string;
+    abstract public function rangeToField(): string;
 }
 
-// ✅ Each model overrides with its own value
-class Rep00f extends Model {
-    use CommonScope;
-    protected function rangeFromField(): string { return 'rep2kd'; }
-    protected function rangeToField(): string { return 'rep2ka'; }
+// ✅ Each model extends the module base and provides its own value
+class Rep00f extends BaseDateRangeModel {
+    public function rangeFromField(): string { return 'rep2kd'; }
+    public function rangeToField(): string { return 'rep2ka'; }
 }
 ```
 

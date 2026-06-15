@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models;
 
+use Modules\Sigma\Models\Contracts\SigmaDateRangeFields;
 use Modules\Sigma\Models\Traits\Scopes\CommonScope;
 
 /**
@@ -12,7 +13,7 @@ use Modules\Sigma\Models\Traits\Scopes\CommonScope;
  * Centralizza CommonScope e timestamps legacy; ogni sottoclasse implementa
  * rangeFromField(), rangeToField(), annFieldName() (contratto del trait).
  */
-abstract class BaseDateRangeModel extends BaseModel
+abstract class BaseDateRangeModel extends BaseModel implements SigmaDateRangeFields
 {
     use CommonScope;
 

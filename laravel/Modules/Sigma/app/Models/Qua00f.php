@@ -337,7 +337,7 @@ class Qua00f extends BaseDateRangeModel
      * @param  Builder<self>  $query
      * @return Builder<self>
      */
-    protected function scopeOfEnteYear(Builder $query, int $ente, int $year): Builder
+    protected function scopeOfEnteYear(Builder $query, ?int $ente, ?int $year): Builder
     {
         return $query
             ->where('ente', $ente)
