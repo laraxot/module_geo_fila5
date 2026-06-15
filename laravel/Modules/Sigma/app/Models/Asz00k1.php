@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Date;
+use Modules\Sigma\Models\Contracts\SigmaDateRangeFields;
 use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
 // ----------traits ---
 

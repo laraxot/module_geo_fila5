@@ -7,7 +7,8 @@ created: 2026-06-15
 updated: 2026-06-15
 qmd: "sigma basemodel hierarchy xotbase eloquent"
 related:
-  - ../../../../docs/wiki/rules/eloquent-basemodel-hierarchy.md
+  - ../../../../../../docs/wiki/rules/module-model-base-inheritance.md
+  - ../../../../../../docs/wiki/rules/models-contracts-placement.md
   - ../concepts/common-scope-date-range-ownership.md
   - ../index.md
 ---
@@ -54,7 +55,7 @@ abstract class BaseModel extends XotBaseModel
 // laravel/Modules/Sigma/app/Models/BaseDateRangeModel.php
 
 abstract class BaseDateRangeModel extends BaseModel
-    implements SigmaDateRangeFields
+    implements \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
 {
     use CommonScope;
     public $timestamps = false;
@@ -63,7 +64,7 @@ abstract class BaseDateRangeModel extends BaseModel
 
 **Responsabilità:**
 - Centralizza il trait CommonScope
-- Implementa contratto SigmaDateRangeFields
+- Implementa contratto `Models\Contracts\SigmaDateRangeFields`
 - Toglie i timestamps (legacy format)
 
 Modelli che usano intervalli date → estendono BaseDateRangeModel:
