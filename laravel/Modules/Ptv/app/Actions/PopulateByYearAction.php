@@ -75,14 +75,22 @@ class PopulateByYearAction
         // Custom function to find differences in multidimensional arrays
         $adds = [];
         foreach ($workersArrayTyped as $key => $value) {
-            if (! array_key_exists($key, $schedeDataArrayTyped) || ! empty(array_diff($value, $schedeDataArrayTyped[$key]))) {
+            $existing = $schedeDataArrayTyped[$key] ?? [];
+            if (! is_array($existing)) {
+                $existing = [];
+            }
+            if (! array_key_exists($key, $schedeDataArrayTyped) || $this->hasArrayDiff($value, $existing)) {
                 $adds[$key] = $value;
             }
         }
 
         $subs = [];
         foreach ($schedeDataArrayTyped as $key => $value) {
-            if (! array_key_exists($key, $workersArrayTyped) || ! empty(array_diff($value, $workersArrayTyped[$key]))) {
+            $existing = $workersArrayTyped[$key] ?? [];
+            if (! is_array($existing)) {
+                $existing = [];
+            }
+            if (! array_key_exists($key, $workersArrayTyped) || $this->hasArrayDiff($value, $existing)) {
                 $subs[$key] = $value;
             }
         }
@@ -124,5 +132,33 @@ class PopulateByYearAction
             'subs' => $subs,
         ]);
         */
+    }
+
+    /**
+     * @param  array<string, mixed>  $left
+     * @param  array<string, mixed>  $right
+     */
+    private function hasArrayDiff(array $left, array $right): bool
+    {
+        foreach ($left as $key => $value) {
+            if (! array_key_exists($key, $right)) {
+                return true;
+            }
+
+            $rightValue = $right[$key];
+            if (is_scalar($value) && is_scalar($rightValue)) {
+                if ((string) $value !== (string) $rightValue) {
+                    return true;
+                }
+
+                continue;
+            }
+
+            if ($value !== $rightValue) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

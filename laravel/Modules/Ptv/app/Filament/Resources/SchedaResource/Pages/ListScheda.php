@@ -27,6 +27,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Widgets\WidgetConfiguration;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -104,7 +105,7 @@ class ListScheda extends XotBaseListRecords
              
             'mail_sended_at' => TextColumn::make('mail_sended_at')
                     ->html()
-                    ->default(fn($record)=>app(ShowMailSendedAt::class)->execute($record)),
+                    ->default(fn (SchedaContract $record): string => app(ShowMailSendedAt::class)->execute($record)),
                     
             /*
             'motivo_invio_email' => GroupColumn::make('motivo/invio_email')->schema([

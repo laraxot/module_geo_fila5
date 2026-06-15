@@ -6,7 +6,9 @@ namespace Modules\Ptv\Actions\Scheda;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Modules\Ptv\Support\EloquentModelResolver;
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 /**
  * Ridistribuisce i fondi residui (resti) in base al valutatore_id.
@@ -22,47 +24,49 @@ class UpdateRestiPondByValutatoreIdAction
      */
     public function execute(string $class, string $year, string $type): void
     {
-       $totValutatoreIdClass=$class.'TotValutatoreId';
+        $totValutatoreIdClass = EloquentModelResolver::siblingClass($class, 'TotValutatoreId');
+        Assert::classExists($totValutatoreIdClass);
+        Assert::subclassOf($totValutatoreIdClass, Model::class);
 
-        // Reset dei resti ponderati
         $count = $class::where('anno', $year)
             ->where('type', $type)
             ->update(['resti_pond' => 0]);
         echo "Resettati resti_pond per {$count} record, anno: {$year}, tipo: {$type}\n";
 
-        // Recupera tutti i valutatori con i relativi delta
+        /** @var class-string<Model> $totValutatoreIdClass */
         $valutatori = $totValutatoreIdClass::where('anno', $year)->get();
         $totalUpdated = 0;
 
-        // Per ogni valutatore, aggiorna i resti_pond dei dipendenti associati
         foreach ($valutatori as $valutatore) {
-            if (is_null($valutatore->valutatore_id)) {
+            Assert::isInstanceOf($valutatore, Model::class);
+            $valutatoreId = $valutatore->getAttribute('valutatore_id');
+            if (! is_numeric($valutatoreId)) {
                 echo 'Valutatore senza ID trovato durante aggiornamento resti_pond';
                 continue;
             }
 
-            if (is_null($valutatore->delta_min_punteggio)) {
-                echo "Valutatore ID {$valutatore->valutatore_id} ha delta_min_punteggio NULL";
+            $deltaMinPunteggio = $valutatore->getAttribute('delta_min_punteggio');
+            if (! is_numeric($deltaMinPunteggio)) {
+                echo 'Valutatore ID '.$valutatoreId.' ha delta_min_punteggio NULL';
                 continue;
             }
 
-            $delta = (float) $valutatore->delta_min_punteggio + 0.00114;
+            $delta = (float) $deltaMinPunteggio + 0.00114;
 
             $updated = $class::where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
-                ->where('valutatore_id', $valutatore->valutatore_id)
+                ->where('valutatore_id', (int) $valutatoreId)
                 ->update([
                     'resti_pond' => DB::raw("quota_effettiva * {$delta}"),
                 ]);
 
-            $totalUpdated += $updated;
-            echo "<br/>Aggiornati resti_pond per {$updated} dipendenti del valutatore {$valutatore->valutatore_id}, delta: {$delta}\n";
+            $totalUpdated += (int) $updated;
+            echo '<br/>Aggiornati resti_pond per '.$updated.' dipendenti del valutatore '.$valutatoreId.', delta: '.$delta."\n";
         }
 
         echo "Aggiornati resti_pond per un totale di {$totalUpdated} dipendenti, anno: {$year}, tipo: {$type}\n";
 
-        // Verifica della somma totale dei resti
         $totResti = (float) $class::where('anno', $year)
             ->where('type', $type)
             ->where('ha_diritto', '>', 0)

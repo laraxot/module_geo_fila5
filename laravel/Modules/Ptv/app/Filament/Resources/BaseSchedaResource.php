@@ -11,6 +11,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
@@ -46,9 +47,22 @@ abstract class BaseSchedaResource extends XotBaseResource
                         ->label('')
                         ->tooltip('ricalcola')
                         ->icon('heroicon-o-arrow-path')
-                        ->action(function ($record) {
-                            $validatedCriteriEsclusione=$record->criteriEsclusione->where('value', '!=', 0);
-                            $validatedCriteriOption=$record->getCriteriOptions();
+                        ->action(function (SchedaContract $record): void {
+                            $criteriEsclusione = $record->criteriEsclusione;
+                            if ($criteriEsclusione === null) {
+                                return;
+                            }
+
+                            $validatedCriteriEsclusione = $criteriEsclusione->where('value', '!=', 0);
+                            if (! $record instanceof Model || ! method_exists($record, 'getCriteriOptions')) {
+                                return;
+                            }
+
+                            $validatedCriteriOption = $record->getCriteriOptions();
+                            if (! $validatedCriteriOption instanceof Collection) {
+                                return;
+                            }
+
                             app(Check::class)->execute($record, $validatedCriteriEsclusione, $validatedCriteriOption);
                         }),
                 ])
@@ -109,8 +123,17 @@ abstract class BaseSchedaResource extends XotBaseResource
     {
         $schema = [];
 
-        $fields=$record->criteriEsclusione->where('field_name','!=','')->pluck('field_name')->unique()->toArray();
-        foreach($fields as $field){
+        $criteriEsclusione = $record->criteriEsclusione;
+        if ($criteriEsclusione === null) {
+            return $schema;
+        }
+
+        $fields = $criteriEsclusione->where('field_name', '!=', '')->pluck('field_name')->unique()->toArray();
+        foreach ($fields as $field) {
+            if (! is_string($field) || $field === '') {
+                continue;
+            }
+
             $schema[$field] = TextInput::make($field)
                 ->suffixAction(FieldRefreshAction::make($field));
             //'propro' => TextInput::make('propro')

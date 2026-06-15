@@ -39,8 +39,11 @@ class AnnoValutatoreFilter extends Filter
 
             Select::make('valutatore_id')
                 ->label('valutatore')
-                ->options(static function (Get $get, Set $set, $livewire): array {
-                    //dddx($livewire->getResource());
+                ->options(static function (Get $get, Set $set, mixed $livewire): array {
+                    if (! is_object($livewire)) {
+                        return [];
+                    }
+
                     $module_name = Str::of(get_class($livewire))->between('Modules\\', '\Filament\\')->toString();
                     $anno = $get('anno');
                     $annoValue = is_string($anno) || is_int($anno) ? $anno : null;

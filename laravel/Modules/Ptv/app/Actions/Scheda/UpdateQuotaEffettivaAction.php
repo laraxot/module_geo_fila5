@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Actions\Scheda;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Ptv\Support\EloquentModelResolver;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -19,7 +20,7 @@ class UpdateQuotaEffettivaAction
      */
     public function execute(string $class, string $year, string $type): void
     {
-        $model = app($class);
+        $model = EloquentModelResolver::newInstance($class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 

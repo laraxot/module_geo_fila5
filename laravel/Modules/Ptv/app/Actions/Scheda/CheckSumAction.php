@@ -30,6 +30,10 @@ class CheckSumAction
             ->where('anno', $year)
             ->where('type', $type)
             ->first());
+        Assert::isInstanceOf($imp, Model::class);
+
+        $totAttribute = $imp->getAttribute('tot');
+        $totDistribuita = is_numeric($totAttribute) ? (float) $totAttribute : 0.0;
 
         $fondo = PerformanceFondo::firstOrCreate(['anno' => $year]);
         $quota = (float) $fondo->{$quota_field};
@@ -37,8 +41,8 @@ class CheckSumAction
         echo '
         <table border="1">
             <tr><th>Quota :</th><th align="right">'.number_format($quota, 2).'</th></tr>
-            <tr><th>Quota Distribuita :</th><th align="right">'.number_format((float) $imp->tot, 2).'</th></tr>
-            <tr><th>Diff : </th><th align="right">'.number_format($quota - (float) $imp->tot, 2).'</th></tr>;
+            <tr><th>Quota Distribuita :</th><th align="right">'.number_format($totDistribuita, 2).'</th></tr>
+            <tr><th>Diff : </th><th align="right">'.number_format($quota - $totDistribuita, 2).'</th></tr>;
         </table>';
     }
 }

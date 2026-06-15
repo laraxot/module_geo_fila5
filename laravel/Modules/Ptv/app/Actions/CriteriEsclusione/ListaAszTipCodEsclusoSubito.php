@@ -7,7 +7,7 @@ namespace Modules\Ptv\Actions\CriteriEsclusione;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Modules\Ptv\Models\Contracts\ProgressioneSchedaContract;
-use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Sigma\Models\Asz00k1;
 use Spatie\QueueableAction\QueueableAction;
 
 class ListaAszTipCodEsclusoSubito
@@ -24,7 +24,6 @@ class ListaAszTipCodEsclusoSubito
      */
     public function execute(ProgressioneSchedaContract $scheda, string $value, Collection $option): string
     {
-        // $asz_al = Carbon::parse($data_presenza_al)->format('Ymd');
         $dataPresenzaAl = $option->get('data_presenza_al');
         if (! $dataPresenzaAl instanceof Carbon) {
             return '';
@@ -32,7 +31,6 @@ class ListaAszTipCodEsclusoSubito
 
         $asz_al = $dataPresenzaAl->format('Ymd');
 
-        // $asz_dal = Carbon::parse($data_presenza_al)
         $minGgAszTipCodEsclusoSubito = $option->get('min_gg_asz_tip_cod_escluso_subito');
         if (! is_numeric($minGgAszTipCodEsclusoSubito)) {
             return '';
@@ -42,13 +40,22 @@ class ListaAszTipCodEsclusoSubito
             ->subDays((int) $minGgAszTipCodEsclusoSubito)
             ->format('Ymd');
 
-        // @phpstan-ignore-next-line method.notFound
-        $tmp = $scheda->asz()
-            ->ofRangeDate($asz_dal, $asz_al)
+        $matr = $scheda->matr;
+        if (! is_int($matr) && ! is_string($matr)) {
+            return '';
+        }
+
+        $table = (new Asz00k1)->getTable();
+        $tmp = Asz00k1::query()
+            ->where($table.'.matr', $matr)
+            ->where($table.'.ente', $scheda->ente ?? 90)
+            ->where($table.'.aszann', '')
+            ->ofRangeDate((int) $asz_dal, (int) $asz_al)
             ->select('asztip', 'aszcod')
             ->distinct()
             ->get()
             ->toArray();
+
         /** @var array<int, array<string, mixed>> $tmp */
         $valueList = collect(explode(',', $value))->filter()->values();
         $tmp1 = collect($tmp)
@@ -58,10 +65,8 @@ class ListaAszTipCodEsclusoSubito
             ->intersect($valueList)
             ->count();
 
-        // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
         if (isset($scheda->matr) && $scheda->matr === 23698) {
-            // dddx(explode(',',$lista_asz_tip_cod_escluso_subito));
-            // dddx($tmp1);
+            // debug hook per matricola nota
         }
 
         if ($tmp1 > 0) {

@@ -55,7 +55,7 @@ interface ProgressioneSchedaContract extends SchedaContract
      * Relazione con le assenze del dipendente.
      * Restituisce una relazione con metodi di scope per filtri temporali.
      *
-     * @return HasMany<Asz00k1, $this>
+     * @return HasMany<Asz00k1, Model>
      */
     public function asz(): HasMany;
 }

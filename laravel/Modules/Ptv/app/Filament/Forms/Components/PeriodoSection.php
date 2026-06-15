@@ -8,41 +8,49 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Forms\Components;
 
-use Filament\Schemas\Components\Grid;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 
 class PeriodoSection extends Section
 {
-   public array $add=[];
+    /** @var array<string, TextInput|TextEntry> */
+    public array $add = [];
 
     public static function getDefaultName(): ?string
     {
         return 'PeriodoSection';
     }
 
-    public function add(array $array):self{
-        $this->add=array_merge($this->add,$array);
+    /**
+     * @param  array<string, TextInput|TextEntry>  $array
+     */
+    public function add(array $array): self
+    {
+        $this->add = array_merge($this->add, $array);
+
         return $this;
     }
 
-    public function getSchema():array{
-        $schema=[
-                'dal'=>TextInput::make('dal'),
-                'al'=>TextInput::make('al'),
-                'anno'=>TextInput::make('anno'),
-                ...$this->add,
+    /**
+     * @return array<string, TextInput|TextEntry>
+     */
+    public function getSchema(): array
+    {
+        return [
+            'dal' => TextInput::make('dal'),
+            'al' => TextInput::make('al'),
+            'anno' => TextInput::make('anno'),
+            ...$this->add,
         ];
-        
-        return $schema;
     }
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->schema(fn()=>[
+        $this->schema([
             Grid::make(4)->schema($this->getSchema()),
         ]);
     }

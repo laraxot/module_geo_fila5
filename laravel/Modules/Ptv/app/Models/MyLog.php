@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models;
 
+use function Safe\unserialize;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;

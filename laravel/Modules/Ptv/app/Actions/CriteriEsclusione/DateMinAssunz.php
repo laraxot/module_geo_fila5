@@ -13,10 +13,9 @@ class DateMinAssunz
 
     public function execute(SchedaContract $scheda, string $value): string
     {
-        if($scheda->last_data_assunz>$value){
-            return 'no date min assunz [my:'.$scheda->last_data_assunz.'][min:'.$value.']';
-        }else{
-            
+        $lastDataAssunz = $scheda->last_data_assunz;
+        if ($lastDataAssunz !== null && (string) $lastDataAssunz > $value) {
+            return 'no date min assunz [my:'.(string) $lastDataAssunz.'][min:'.$value.']';
         }
 
         return '';

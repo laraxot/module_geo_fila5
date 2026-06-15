@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Ptv\Actions\Scheda;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Performance\Models\Organizzativa;
 use Modules\Performance\Models\OrganizzativaCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;
+use Modules\Ptv\Support\EloquentModelResolver;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -28,7 +28,7 @@ class UpdateQuotaTeoricaAction
         
         $quota_field='quota_'.strtolower(class_basename($class));
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app($class);
+        $model = EloquentModelResolver::newInstance($class);
         $tbl = $model->getTable();
         $conn = $model->getConnection();
 
@@ -40,6 +40,7 @@ class UpdateQuotaTeoricaAction
         $html = '';
         $html .= '<table border="1">';
         foreach ($rows as $k => $row) {
+            Assert::isInstanceOf($row, Model::class);
             if ($k === 0) {
                 $html .= '<tr>';
                 foreach ($fields as $field) {
@@ -49,8 +50,8 @@ class UpdateQuotaTeoricaAction
             }
             $html .= '<tr>';
             foreach ($fields as $field) {
-                $tmp = $row->{$field};
-                $html .= '<td>'.$tmp.'</td>';
+                $attribute = $row->getAttribute($field);
+                $html .= '<td>'.(is_scalar($attribute) ? (string) $attribute : '').'</td>';
             }
             $html .= '</tr>';
         }
@@ -88,13 +89,16 @@ class UpdateQuotaTeoricaAction
         Assert::notNull($res = CatCoeff::selectRaw('sum(tot_giorni_pt_coeff) as tot')
             ->where('anno', $year)
             ->first());
-        echo '<h3>tot_giorni_pt_coeff :['.$res->tot.']</h3>';
+        Assert::isInstanceOf($res, Model::class);
+        $totGiorni = $res->getAttribute('tot');
+        $totGiorniFloat = is_numeric($totGiorni) ? (float) $totGiorni : 0.0;
+        echo '<h3>tot_giorni_pt_coeff :['.$totGiorniFloat.']</h3>';
 
         $fondo = PerformanceFondo::firstOrCreate(['anno' => $year]);
         $quota = (float) $fondo->{$quota_field};
         echo '<h3>quota :'.number_format($quota, 2, ',', "'").'</h3>';
 
-        $delta = $quota * 365 / $res->tot + 0.0;
+        $delta = $totGiorniFloat > 0 ? $quota * 365 / $totGiorniFloat + 0.0 : 0.0;
         echo '<h3> delta = quota * 365 / tot_giorni_pt_coeff </h3>';
         echo '<h3>Delta:['.$delta.'] </h3>';
 

@@ -23,7 +23,7 @@ class WorkerFields extends XotBaseGroup
 
     protected bool $isRequired = false;
 
-    protected array|null|Closure|int $columns = 4;
+    protected int $gridColumnCount = 4;
 
     public function matrField(string $fieldName): static
     {
@@ -79,10 +79,9 @@ class WorkerFields extends XotBaseGroup
         return $this;
     }
 
-    public function columns(array|Closure|int|null $columns): static
+    public function gridColumns(int $columns): static
     {
-        $this->columns = $columns;
-
+        $this->gridColumnCount = $columns;
         $this->refreshSchema();
 
         return $this;
@@ -98,7 +97,7 @@ class WorkerFields extends XotBaseGroup
     protected function refreshSchema(): void
     {
         $this->schema([
-            Grid::make($this->columns)->schema([
+            Grid::make($this->gridColumnCount)->schema([
                 TextInput::make($this->matrFieldName)
                     ->disabled($this->isDisabled)
                     ->required($this->isRequired),
