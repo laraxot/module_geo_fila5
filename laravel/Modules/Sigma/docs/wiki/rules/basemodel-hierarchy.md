@@ -6,6 +6,10 @@ tags: [architecture, eloquent, models, basemodel, hierarchy]
 created: 2026-06-15
 updated: 2026-06-15
 qmd: "sigma basemodel hierarchy xotbase eloquent"
+issues:
+  - "https://github.com/provtv/module_sigma_fila5/issues/3"
+discussions:
+  - "https://github.com/provtv/module_sigma_fila5/discussions/5"
 related:
   - ../../../../../../docs/wiki/rules/module-model-base-inheritance.md
   - ../../../../../../docs/wiki/rules/models-contracts-placement.md
@@ -68,7 +72,7 @@ abstract class BaseDateRangeModel extends BaseModel
 - Toglie i timestamps (legacy format)
 
 Modelli che usano intervalli date → estendono BaseDateRangeModel:
-- Qua03f, Qua00f, Asz00f, Asz00k1, Rep00f, …
+- Qua03f, Qua00f, Asz00f, Asz00k1, Rep00f, Sto00f, Dipt00f
 
 ### 3. ConcreteModel — Implementazione
 
@@ -116,10 +120,13 @@ grep -r "extends.*Eloquent\\Model\|extends Model" app/Models/*.php \
 class Qua03f extends Model { }
 class Qua03f extends Eloquent\Model { }
 
+// ❌ Ridichiarare implements già presente sul parent
+class Qua00f extends BaseDateRangeModel implements Contracts\SigmaDateRangeFields { }
+
 // ✅ Corretti
 class Qua03f extends BaseDateRangeModel { }
-class BaseDateRangeModel extends BaseModel { }
-class BaseModel extends XotBaseModel { }
+class BaseDateRangeModel extends BaseModel implements SigmaDateRangeFields { }
+class BaseModel extends XotBaseModel implements SigmaEnteMatrFields { }
 ```
 
 ---

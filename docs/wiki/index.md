@@ -59,6 +59,10 @@ related:
 - [XotBaseResourceTable configure pattern](./patterns/xotbase-resource-table-configure.md)
 - [PHPStan optional contracts](./patterns/phpstan-optional-contracts.md)
 
+## Analysis
+
+- [method-name-homonym-census](./method-name-homonym-census.md) — omonimi metodi PHP cross-class (689), JSON + schede modulo/tema
+
 ## How-To Guides
 
 ### Search and Discovery

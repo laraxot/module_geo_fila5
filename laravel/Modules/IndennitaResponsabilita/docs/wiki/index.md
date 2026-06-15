@@ -11,7 +11,9 @@ updated: "2026-04-15T08:28:43Z"
 
 ## Concepts
 
-_No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
+- [relationship-date-range-naming](./concepts/relationship-date-range-naming.md) — `qua00fRetribuzioneDateRange` vs `qua00f()`, scope `ofRangeDate`
+- [ente-matr-relazioni-ptv-scheda](./concepts/ente-matr-relazioni-ptv-scheda.md) — perché LettF non usa `hasManyByEnteMatr` (Ptv vs Sigma)
+- [php-method-name-collisions-lettf](./concepts/php-method-name-collisions-lettf.md) — caso `Qua00f()` / collisione case PHP
 
 ## Entities
 
@@ -27,8 +29,8 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-15T08:28:43Z  
-**Total Pages:** 0  
+**Last Updated:** 2026-06-15  
+**Total Pages:** 3  
 **Total Raw Sources:** 0
 
 ## Shared Second Brain Discipline

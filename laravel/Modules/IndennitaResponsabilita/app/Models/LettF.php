@@ -23,9 +23,9 @@ use Validator;
  * @property ImportiCategoria|null $importi
  * @property int $id
  * @property int|null $valutatore_id
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Qua00f> $Qua00f
- * @property-read int|null $qua00f_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Rep00f> $Rep00f
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fRetribuzioneDateRange
+ * @property-read int|null $qua00f_retribuzione_date_range_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Rep00f> $rep00fByAnno
  * @property-read int|null $rep00f_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Sto00f> $Sto00fYear
  * @property-read int|null $sto00f_year_count
@@ -337,50 +337,67 @@ class LettF extends BaseScheda
             ->where('note', 'sendMailLettF');
     }
 
-    public function Rep00f(): HasMany
+    public function rep00fByAnno(): HasMany
     {
         /** @var int|null $anno */
         $anno = $this->anno ?? null;
         if ($anno === null) {
-            return $this->hasMany(Rep00f::class, 'matr', 'matr')
+            /** @var HasMany<Rep00f, LettF> $relation */
+            $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
                 ->where('ente', $this->ente)
                 ->whereRaw('repann=""')
-                ->whereRaw('1=0'); // Return empty result if anno is null
+                ->whereRaw('1=0');
+
+            return $relation;
         }
 
-        return $this->hasMany(Rep00f::class, 'matr', 'matr')
+        /** @var HasMany<Rep00f, LettF> $relation */
+        $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
             ->where('ente', $this->ente)
             ->whereRaw('repann=""')
             ->ofYear($anno);
+
+        return $relation;
     }
 
-    public function Qua00f(): HasMany
+    /**
+     * Qua00f nel range retribuzione (dalf/alf).
+     *
+     * Distinto da {@see qua00fDaterange()} (trait Sigma, campi dal/al).
+     * Nome non `qua00fDateRange`: in PHP collide con `qua00fDaterange`.
+     *
+     * @return HasMany<Qua00f, LettF>
+     */
+    public function qua00fRetribuzioneDateRange(): HasMany
+    {
+        [$dalYmd, $alYmd] = $this->retribuzioneRangeYmd();
+
+        /** @var HasMany<Qua00f, LettF> $relation */
+        $relation = $this->hasMany(Qua00f::class, 'matr', 'matr')
+            ->where('ente', $this->ente)
+            ->whereRaw('quaann=""')
+            ->ofRangeDate($dalYmd, $alYmd);
+
+        return $relation;
+    }
+
+    /**
+     * @return array{0: int, 1: int}
+     */
+    protected function retribuzioneRangeYmd(): array
     {
         if ($this->dalf === null) {
-            $this->dalf = Carbon::createFromDate($this->anno, 1, 1);
+            $this->dalf = Carbon::createFromDate((int) $this->anno, 1, 1);
         }
 
         if ($this->alf === null) {
-            $this->alf = Carbon::createFromDate($this->anno, 12, 31);
+            $this->alf = Carbon::createFromDate((int) $this->anno, 12, 31);
         }
 
-        $dal = $this->dalf->format('Ymd');
-        $al = $this->alf->format('Ymd');
-
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')
-            ->where('ente', $this->ente)
-            ->whereRaw('quaann=""')
-            ->whereRaw(
-                '(
-            (? between qua2kd and qua2ka) OR
-            (? >= qua2kd AND qua2ka=0) OR
-            (? between qua2kd and qua2ka) OR
-            (? >= qua2kd AND qua2ka=0) OR
-            (qua2kd between ? and ?) OR
-            (qua2ka between ? and ?)
-        )',
-                [$dal, $dal, $al, $al, $dal, $al, $dal, $al],
-            );
+        return [
+            (int) $this->dalf->format('Ymd'),
+            (int) $this->alf->format('Ymd'),
+        ];
     }
 
     /**

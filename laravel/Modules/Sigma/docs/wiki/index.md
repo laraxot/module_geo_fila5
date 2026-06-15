@@ -14,10 +14,16 @@ updated: "2026-04-15T08:28:49Z"
 - [asz-scheda-relationship](./concepts/asz-scheda-relationship.md) — relazione `asz()` verso `Asz00k1`, scope `ofRangeDate`
 - [common-scope-date-range-ownership](./concepts/common-scope-date-range-ownership.md) — `rangeFromField` sul modello, non `match` nel trait
 - [sigma-model-inheritance](./concepts/sigma-model-inheritance.md) — `BaseModel` / `BaseDateRangeModel`, mai `extends Model`
+- [ente-matr-field-ownership](./concepts/ente-matr-field-ownership.md) — `matrField()` / `enteField()`, `hasManyByEnteMatr`
+- [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (203 nel modulo Sigma)
+- [sto00f-date-range](./concepts/sto00f-date-range.md) — `st2kas`/`st2kdi`/`stann` → `BaseDateRangeModel`
+
+## Rules
+
+- [contract-inheritance-no-redeclare](./rules/contract-inheritance-no-redeclare.md) — child NON ridichiarano `implements` già sul parent
+- [model-contracts-placement](./rules/model-contracts-placement.md) — contract nel folder del layer implementatore
 
 ## Entities
-
-_No entities tracked yet._
 
 ## Sources
 
@@ -29,9 +35,9 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-04-15T08:28:49Z  
-**Total Pages:** 0  
-**Total Raw Sources:** 0
+**Last Updated:** 2026-06-15  
+**Total Pages:** 8  
+**Total Raw Sources:** 8
 
 ## Shared Second Brain Discipline
 

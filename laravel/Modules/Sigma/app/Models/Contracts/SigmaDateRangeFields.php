@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Contracts;
 
-/***
+/**
  * Contratto per modelli Sigma che gestiscono intervalli date (dal/al + anno).
  *
  * Modelli che implementano questo contratto devono utilizzare il trait
@@ -14,7 +14,8 @@ namespace Modules\Sigma\Models\Contracts;
  * @see Modules\Sigma\Models\BaseDateRangeModel
  * @see Modules\Sigma\Models\Traits\Scopes\CommonScope
  */
-interface SigmaDateRangeFields {
+interface SigmaDateRangeFields
+{
     /**
      * Nome della colonna che rappresenta la data di inizio intervallo (formato Ymd).
      *

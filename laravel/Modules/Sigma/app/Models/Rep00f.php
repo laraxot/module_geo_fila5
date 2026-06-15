@@ -255,9 +255,7 @@ class Rep00f extends BaseDateRangeModel
     public function qua00f(): HasMany
     {
         /** @var HasMany<Qua00f, Rep00f> $relation */
-        $relation = $this->hasMany(Qua00f::class, 'matr', 'matr')
-            ->where('ente', '90') // $this->ente non ce la fa
-            ->whereRaw('quaann=""')
+        $relation = $this->hasManyByEnteMatr(Qua00f::class)
             ->ofRangeDate($this->rep2kd, $this->rep2ka);
 
         return $relation;

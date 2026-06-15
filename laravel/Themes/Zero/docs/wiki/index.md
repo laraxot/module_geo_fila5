@@ -12,6 +12,7 @@ updated: "2026-05-12T10:15:00Z"
 ## Concepts
 
 - [theme-zero-operating-focus](./concepts/theme-zero-operating-focus.md) — baseline role, guardrails, retrieval path, and local second-brain loop for theme decisions
+- [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (0 nel tema; logica nei moduli)
 
 ## Entities
 

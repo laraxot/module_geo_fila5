@@ -3,7 +3,7 @@ title: "Sessione analisi casuale PHPStan — 2026-06-15 14:09 UTC"
 type: chat
 tags: [phpstan, swarm, session, random-analysis]
 created: 2026-06-15T14:09:00Z
-updated: 2026-06-15T14:09:00Z
+updated: 2026-06-15T12:43:36Z
 related:
   - ../wiki/memories/phpstan-modules-inventory.md
   - ../wiki/how-to/phpstan-modules-swarm.md
@@ -29,21 +29,21 @@ _(aggiornare durante la sessione)_
 
 | Modulo | Status | Errori | Agente | ETA |
 |--------|--------|--------|--------|-----|
-| Sigma | 🔄 In Progress | ? | laravel-debugger | ~5min |
+| Sigma | ✅ OK | 0 | Codex GPT-5 | completato |
 | Ptv | 🔄 In Progress | ? | laravel-architecture-reviewer | ~5min |
 | UI | 🔄 In Progress | ? | laravel-code-reviewer | ~3min |
 | Xot | 🔄 In Progress | ? | laravel-security-auditor | ~5min |
 | User | 🔄 In Progress | ? | laravel-security-auditor | ~5min |
-| (swarm) | 🔄 In Progress | ? | swarm-6job | ~2min | |
+| (swarm) | ✅ OK parziale | 0 errori codice; `Pdnd`/`Incentivi` senza file analizzabili | swarm-8job | completato |
 
 ## Pattern emergenti
 
-### ✅ Swarm Completo (30/35 OK)
+### ✅ Swarm Completo (32 OK)
 - **Activity, Badge, CertFisc, ContoAnnuale, DbForge, Europa, Gdpr, Inail, IndennitaCondizioniLavoro, IndennitaResponsabilita, Job, Lang, Legge104, Legge109, Media, Mensa, MobilitaVolontaria, Notify, Performance, Prenotazioni, PresenzeAssenze, Progressioni, Ptv, Questionari, Rating, Seo, Setting, Sindacati, Tenant, UI** — tutti 0 errori
 
 ### ⚠️ Agenti Paralleli Completati
 1. **Ptv** ✅ 0 errori
-2. **Sigma** 🔄 (risolve visibilità metodi, timeout test)
+2. **Sigma** ✅ 0 errori (`bash bashscripts/tools/phpstan-modules-swarm.sh Sigma`)
 3. **UI** ✅ 0 errori
 4. **Xot** ✅ 0 errori
 5. **User** ✅ 0 errori
@@ -52,9 +52,10 @@ _(aggiornare durante la sessione)_
 8. **Gdpr** ✅ 0 errori
 
 ### 🔧 Fix Applicati
-- **Sigma CommonScope**: reso pubblico `rangeFromField()`, `rangeToField()`, `annFieldName()`
-- **Qua00f**: reso nullable `$year` in `scopeOfYear()`, `$ente`/`$year` in `scopeOfEnteYear()`
-- **Eliminato** file interfaccia SigmaDateRangeFields non utilizzato
+- **Sigma CommonScope**: metodi `rangeFromField()`, `rangeToField()`, `annFieldName()` pubblici e owner sul model
+- **BaseDateRangeModel**: estende `BaseModel`, usa `CommonScope`, implementa `Modules\Sigma\Models\Contracts\SigmaDateRangeFields`
+- **Qua00f / Asz00f / Asz00k1 / Qua03f / Rep00f**: estendono `BaseDateRangeModel`, non `Illuminate\Database\Eloquent\Model`
+- **SigmaDateRangeFields**: spostato sotto `app/Models/Contracts/` perché valido solo per model
 
 ## Chat multi-agente
 Coordinamento via `docs/chat/phpstan-results-collector-2026-06-15.md`
@@ -63,5 +64,5 @@ Coordinamento via `docs/chat/phpstan-results-collector-2026-06-15.md`
 
 **Agente:** Claude Haiku 4.5  
 **Data inizio:** 2026-06-15 14:09 UTC  
-**Data aggiornamento:** 2026-06-15 14:25 UTC  
-**Stato:** Final Summary in Progress
+**Data aggiornamento:** 2026-06-15 12:43 UTC  
+**Stato:** Sigma completato; documentazione e issue aggiornate

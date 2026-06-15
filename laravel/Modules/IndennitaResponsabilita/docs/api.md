@@ -62,7 +62,8 @@ Modello per le comunicazioni formali.
 #### Relazioni
 
 - `Rep00f()`: HasMany con `Sigma\Models\Rep00f`
-- `Qua00f()`: HasMany con `Sigma\Models\Qua00f`
+- `qua00fRetribuzioneDateRange()`: HasMany verso `Sigma\Models\Qua00f` filtrata su `dalf`/`alf` via `ofRangeDate`
+- `rep00fByAnno()`: HasMany verso `Sigma\Models\Rep00f` filtrata per anno
 
 ### LettI (Lettere Interne)
 

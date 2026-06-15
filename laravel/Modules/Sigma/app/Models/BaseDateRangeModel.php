@@ -18,4 +18,20 @@ abstract class BaseDateRangeModel extends BaseModel implements SigmaDateRangeFie
     use CommonScope;
 
     public $timestamps = false;
+
+    protected function getAnnoAttribute(): ?int
+    {
+        return $this->attributes['anno'] ?? $this->extractAnnoFromRange();
+    }
+
+    protected function extractAnnoFromRange(): ?int
+    {
+        $fromField = $this->rangeFromField();
+        $fromValue = $this->attributes[$fromField] ?? null;
+        if (is_numeric($fromValue) && strlen((string) $fromValue) >= 4) {
+            return (int) substr((string) $fromValue, 0, 4);
+        }
+
+        return null;
+    }
 }

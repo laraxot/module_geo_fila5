@@ -216,6 +216,16 @@ class Wstr02f extends BaseModel
 
     public $timestamps = false;
 
+    public function matrField(): string
+    {
+        return 'w2matr';
+    }
+
+    public function enteField(): string
+    {
+        return 'enteap';
+    }
+
     public function casts(): array
     {
         return [
@@ -226,23 +236,23 @@ class Wstr02f extends BaseModel
     // ----------relationship-----------
     public function anag(): HasOne
     {
-        return $this->hasOne(Anag::class, 'matr', 'w2matr')->where('ente', $this->enteap);
+        return $this->hasOneByEnteMatr(Anag::class);
     }
 
     public function wstr01lx(): HasMany
     {
-        return $this->hasMany(Wstr01lx::class, 'wtmatr', 'w2matr')
+        return $this->hasMany(Wstr01lx::class, 'wtmatr', $this->matrField())
             ->whereRaw('wtannu=""')
-            ->where('enteap', $this->enteap)
+            ->where('enteap', $this->{$this->enteField()})
             // ->where('wtdata', $this->stdata->format('Ymd'));
             ->where('wtdata', $this->stdata);
     }
 
     public function wmen00f(): HasMany
     {
-        return $this->hasMany(Wmen00f::class, 'mnmatr', 'w2matr')
+        return $this->hasMany(Wmen00f::class, 'mnmatr', $this->matrField())
             ->whereRaw('mnannu=""')
-            ->where('enteap', $this->enteap)
+            ->where('enteap', $this->{$this->enteField()})
             // ->where('mndata', $this->stdata->format('Ymd'));
             ->where('mndata', $this->stdata);
     }

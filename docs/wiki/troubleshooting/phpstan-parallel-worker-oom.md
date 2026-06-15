@@ -34,6 +34,9 @@ PHPStan avvia **N worker** (≈ numero core). Ogni worker ha budget memoria prop
 # Gate canonico — sequenziale per modulo
 bash bashscripts/tools/phpstan-modules-gate.sh
 
+# Swarm parallelo (preferito se serve velocità)
+SWARM_JOBS=4 bash bashscripts/tools/phpstan-modules-swarm.sh
+
 # Singolo modulo
 bash bashscripts/tools/phpstan-modules-gate.sh Ptv
 
@@ -50,6 +53,12 @@ parameters:
 ```
 
 Più `--memory-limit=2G` sul CLI. File wrapper opzionale: `laravel/phpstan-gate.neon` (include `phpstan.neon`).
+
+## Race cache con swarm (non OOM)
+
+Sintomo: errori interni `Could not read file …` su moduli grandi (Sigma, Performance) con `SWARM_JOBS>1` e `tmpDir` condiviso `/tmp/phpstan/`.
+
+Fix: `phpstan-modules-swarm.sh` genera neon per-worker con `tmpDir` isolato. Vedi [phpstan-modules-swarm.md](../how-to/phpstan-modules-swarm.md).
 
 ## Vietato agli agenti
 

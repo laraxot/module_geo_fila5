@@ -6,6 +6,10 @@ tags: [sigma, basemodel, architecture, dry]
 created: 2026-06-15
 updated: 2026-06-15
 qmd: "sigma BaseModel BaseDateRangeModel extends Model vietato CommonScope"
+issues:
+  - "https://github.com/provtv/module_sigma_fila5/issues/3"
+discussions:
+  - "https://github.com/provtv/module_sigma_fila5/discussions/5"
 related:
   - ./common-scope-date-range-ownership.md
   - ../../architecture.md
@@ -24,7 +28,7 @@ I modelli Sigma leggono tabelle legacy sulla connessione `generale`. Estendere `
 XotBaseModel
   └── BaseModel              # connessione generale, cast comuni
         └── BaseDateRangeModel   # Models\Contracts\SigmaDateRangeFields + CommonScope + timestamps=false
-              ├── Asz00k1, Asz00f, Qua00f, Qua03f, Rep00f
+              ├── Asz00k1, Asz00f, Qua00f, Qua03f, Rep00f, Sto00f, Dipt00f
 ```
 
 Tutti gli altri modelli Sigma → `extends BaseModel`.
@@ -42,6 +46,12 @@ Tutti gli altri modelli Sigma → `extends BaseModel`.
 ## Implementazione range
 
 `BaseDateRangeModel` implementa `Models\Contracts\SigmaDateRangeFields`. Su ogni figlio concreto: tre metodi `public` con literal-string dei nomi colonna. Vedi [common-scope-date-range-ownership](./common-scope-date-range-ownership.md).
+
+## Regola child-implements
+
+⚠️ **I figli NON devono ridichiarare `implements Contracts\SigmaDateRangeFields`.**  
+L'interfaccia è già nella catena di ereditarietà via `BaseDateRangeModel`.  
+Ridichiararla è: DRY violation, fuorviante, manutenzione doppia. Vedi [contract-inheritance-no-redeclare](../rules/contract-inheritance-no-redeclare.md).
 
 ## Audit rapido
 

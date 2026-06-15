@@ -12,6 +12,7 @@ updated: "2026-05-12T10:15:00Z"
 ## Concepts
 
 - [theme-one-operating-focus](./concepts/theme-one-operating-focus.md) — operating position, guardrails, and interpretation of Theme One strategy
+- [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (0 nel tema; logica nei moduli)
 
 ## Entities
 

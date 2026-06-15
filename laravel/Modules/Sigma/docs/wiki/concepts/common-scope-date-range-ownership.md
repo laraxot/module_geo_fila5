@@ -6,6 +6,10 @@ tags: [commonscope, phpstan, architecture, dry]
 created: 2026-06-15
 updated: 2026-06-15
 qmd: "Sigma CommonScope rangeFromField rangeToField annFieldName model ownership"
+issues:
+  - "https://github.com/provtv/module_sigma_fila5/issues/3"
+discussions:
+  - "https://github.com/provtv/module_sigma_fila5/discussions/5"
 related:
   - ../../../../../../docs/wiki/rules/model-owned-date-range-fields.md
   - ./sigma-model-inheritance.md
@@ -28,7 +32,7 @@ Base: `app/Models/BaseDateRangeModel.php` — implementa `app/Models/Contracts/S
 
 Trait: `app/Models/Traits/Scopes/CommonScope.php` — tre metodi `abstract public`.
 
-Modelli Sigma diretti: `Asz00k1`, `Asz00f`, `Qua00f`, `Qua03f`, `Rep00f`.
+Modelli Sigma diretti: `Asz00k1`, `Asz00f`, `Qua00f`, `Qua03f`, `Rep00f`, `Sto00f`, `Dipt00f`.
 
 Schede Ptv/Progressioni/Performance: `BaseScheda` (`dal` / `al` / `anno`).
 

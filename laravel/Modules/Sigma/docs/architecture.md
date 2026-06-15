@@ -19,10 +19,32 @@ Illuminate\Database\Eloquent\Model
                     ├── Asz00f              # rangeFromField()='asz2kd' + SigmaModelTrait
                     ├── Qua00f              # rangeFromField()='qua2kd'
                     ├── Qua03f              # rangeFromField()='q32kd'
-                    └── Rep00f              # rangeFromField()='rep2kd'
+                    ├── Rep00f              # rangeFromField()='rep2kd'
+                    └── Sto00f              # rangeFromField()='st2kas'
 ```
 
 **Regola**: MAI `extends Model` direttamente. Usare `BaseModel` o `BaseDateRangeModel`.
+
+### Contratti (Contracts)
+
+| Contratto | Metodi | Implementato da |
+|---|---|---|
+| `SigmaEnteMatrFields` | `matrField()`, `enteField()` | `BaseModel` (default `'matr'`/`'ente'`) |
+| `SigmaDateRangeFields` | `rangeFromField()`, `rangeToField()`, `annFieldName()` | `BaseDateRangeModel` (abstract, override su ogni modello) |
+
+I trait di relazione (`EnteMatrRelationship`, `EnteMatrAnnoRelationship`, ecc.) usano `$this->matrField()` e `$this->{$this->enteField()}` invece di stringhe hardcodate. Il metodo `hasManyByEnteMatr()` in `BaseModel` è il DRY helper per le relazioni HasMany standard.
+
+### Principio: MAI passare ciò che il modello sa già
+
+```php
+// ❌ SBAGLIATO — 'quaann' è ridondante, Qua00f lo sa già
+$this->relatedByAnno(Qua00f::class, 'quaann');
+
+// ✅ CORRETTO — hasManyByEnteMatr chiede al modello via contratto
+$this->hasManyByEnteMatr(Qua00f::class);
+```
+
+`hasManyByEnteMatr()` chiama `applyRelatedActiveAnnFilter()` che interroga `$instance->annFieldName()` sul modello related. Il modello è l'unica fonte di verità per i propri nomi colonna.
 
 ### Componenti Principali
 

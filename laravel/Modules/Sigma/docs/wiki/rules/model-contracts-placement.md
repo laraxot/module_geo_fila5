@@ -6,6 +6,10 @@ tags: [contract, placement, models, architecture]
 created: 2026-06-15
 updated: 2026-06-15
 qmd: "sigma model contracts placement sigmadate​range​fields"
+issues:
+  - "https://github.com/provtv/module_sigma_fila5/issues/3"
+discussions:
+  - "https://github.com/provtv/module_sigma_fila5/discussions/5"
 related:
   - ../../../../docs/wiki/rules/contract-placement-nested-scoping.md
   - ../../../../docs/wiki/memories/contract-placement-nested-scoping.md
@@ -20,11 +24,11 @@ related:
 Modules\Sigma\
 ├── app/
 │   ├── Models/Contracts/         ← Model-level contracts
-│   │   └── SigmaDateRangeFields   ✅ Impl by BaseDateRangeModel, Qua03f, etc
+│   │   └── SigmaDateRangeFields   ✅ Implemented by BaseDateRangeModel
 │   ├── Models/
 │   │   ├── BaseDateRangeModel (implements SigmaDateRangeFields)
-│   │   ├── Qua03f (implements SigmaDateRangeFields)
-│   │   ├── Qua00f (implements SigmaDateRangeFields)
+│   │   ├── Qua03f (extends BaseDateRangeModel)
+│   │   ├── Qua00f (extends BaseDateRangeModel)
 │   │   └── ...
 │   └── Contracts/                ← Module-level contracts (if any)
 │       └── (exposed to other modules)
@@ -35,19 +39,16 @@ Modules\Sigma\
 **Location:** `Modules\Sigma\Models\Contracts\SigmaDateRangeFields`
 
 **Implementers:**
-- `Modules\Sigma\Models\BaseDateRangeModel`
-- `Modules\Sigma\Models\Qua03f`
-- `Modules\Sigma\Models\Qua00f`
-- `Modules\Sigma\Models\Asz00f`
-- `Modules\Sigma\Models\Asz00k1`
-- `Modules\Sigma\Models\Rep00f`
+- `Modules\Sigma\Models\BaseDateRangeModel` (unico punto)
+
+Concrete date-range models (`Qua03f`, `Qua00f`, `Asz00f`, `Asz00k1`, `Rep00f`, `Sto00f`, `Dipt00f`) extend `BaseDateRangeModel` **senza ridichiarare `implements`** — l'interfaccia si eredita. Vedi [contract-inheritance-no-redeclare](./contract-inheritance-no-redeclare.md).
 
 **Why `Models/Contracts/`?**
 - Governs **models specifically**, not module-level
 - Implementers are all in `Models/` folder
 - Cognitive proximity: when reading `Qua03f`, you find contract in `Models/Contracts/`
 
-**Import in Implementations:**
+**Import in Base Implementation:**
 ```php
 namespace Modules\Sigma\Models;
 

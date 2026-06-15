@@ -11,9 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Date;
-use Modules\Sigma\Models\Contracts\SigmaDateRangeFields;
 use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
-// ----------traits ---
 
 /**
  * Modules\Sigma\Models\Asz00k1.
@@ -222,8 +220,7 @@ class Asz00k1 extends BaseDateRangeModel
     {
         $table = (new Qua00f)->getTable();
 
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')
-            ->where($table.'.ente', $this->ente)
+        return $this->hasManyByEnteMatr(Qua00f::class)
             ->where($table.'.quaann', '')
             ->select(['id', 'matr', 'ente', 'qua2kd', 'qua2ka', 'propro', 'posfun', 'posiz']);
     }
@@ -235,8 +232,7 @@ class Asz00k1 extends BaseDateRangeModel
     {
         $table = (new Qua00f)->getTable();
 
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')
-            ->where($table.'.ente', $this->ente)
+        return $this->hasManyByEnteMatr(Qua00f::class)
             ->where($table.'.quaann', '');
     }
 

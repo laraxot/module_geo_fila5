@@ -28,4 +28,6 @@ Verifica che le action non duplichino filtri già presenti nelle relazioni Eloqu
 bash bashscripts/tools/audit-eloquent-relationship-duplication.sh
 ```
 
+Rileva anche `whereRaw` con `qua2kd` (sostituire con `ofRangeDate` su modelli `CommonScope`).
+
 Canon: [eloquent-relationship-encapsulation.md](../rules/eloquent-relationship-encapsulation.md)

@@ -305,18 +305,7 @@ class CondizioniLavoro extends BaseModel
             ->withPivot($pivot_fields);
     }
 
-    /*
-    public function qua00f(): void {
-        $sql='(
-            ('.$this->anno.' between year(qua2kd) and year(qua2ka)) or
-            ('.$this->anno.' >= year(qua2kd) and qua2ka=0)
-        )';
-        return $this->hasMany(Qua00f::class,'matr','matr')
-            ->where('ente',$this->ente)
-            ->whereRaw('quaann=""')
-            ->whereRaw($sql);
-    }
-    */
+    
 
     // -------- mutators ------------
 

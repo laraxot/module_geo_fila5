@@ -78,6 +78,7 @@ Sigma/
 | consolidation-plan | [consolidation-plan.md](./consolidation-plan.md) |
 | current-quality-status | [current-quality-status.md](./current-quality-status.md) |
 | deep-analysis | [deep-analysis.md](./deep-analysis.md) |
+| duplicate-methods-census | [duplicate-methods-census.md](./duplicate-methods-census.md) |
 | docs-archive-policy | [docs-archive-policy.md](./docs-archive-policy.md) |
 | filament-version | [filament-version.md](./filament-version.md) |
 | fix-accessor-save-pattern | [fix-accessor-save-pattern.md](./fix-accessor-save-pattern.md) |

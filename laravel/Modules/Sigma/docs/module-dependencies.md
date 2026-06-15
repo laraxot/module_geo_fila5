@@ -59,21 +59,28 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
 
 ### 2. Progressioni (`Modules\Progressioni`)
 
-**Utilizzo Principale**: `Scheda` estende `BaseScheda` (che implementa `SchedaContract`)
+**Utilizzo Principale**: `Scheda` estende `BaseScheda` (che implementa `SchedaContract`).
 
 **File Chiave**:
-- `app/Models/Scheda.php`
-- `app/Models/Progressioni.php`
+- `app/Models/Scheda.php` (eredita da BaseScheda)
 
 **Pattern di Utilizzo**:
 ```php
 class Scheda extends BaseScheda
 {
-    use ProgressioniTrait; // Contiene asz() con filtro ente, criteriEsclusione, etc.
-    
-    public int $n_perf_ind = 3; // Configurazione media performance
+    use ProgressioniTrait; // Contiene aszEff(), criteriEsclusione, etc.
 }
 ```
+
+---
+
+## Sigma Module — Refactor Prioritario (Story separata)
+
+**Problema:** Model `Asz00k1`, `Qua00f`, `Qua03f`, `Rep00f` estendono `Model` invece di `BaseDateRangeModel`.
+
+**Errore:** Violazione architettura Sigma — tutti i model con date range devono ereditare da `BaseDateRangeModel`.
+
+**Soluzione:** Refactoring mirato su 15+ model, sostituendo `extends Model` con `extends BaseDateRangeModel`.
 
 **Modelli Sigma Utilizzati**:
 - `Modules\Sigma\Models\Anag`

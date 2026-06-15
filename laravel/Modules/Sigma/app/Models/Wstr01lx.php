@@ -96,12 +96,20 @@ class Wstr01lx extends BaseModel
     // protected static $single_date=true;
     public $timestamps = false;
 
-    // protected $dates=['wtdata'];
+    public function matrField(): string
+    {
+        return 'wtmatr';
+    }
+
+    public function enteField(): string
+    {
+        return 'enteap';
+    }
 
     // ------------------------------------
     public function anag(): HasOne
     {
-        return $this->hasOne(Anag::class, 'matr', 'wtmatr')->where('ente', $this->enteap);
+        return $this->hasOneByEnteMatr(Anag::class);
     }
 
     // ----------mutators----------

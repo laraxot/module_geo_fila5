@@ -9,10 +9,8 @@ use Modules\Sigma\Models\Qua00f;
 /**
  * Trait EnteMatrDateRangeRelationship.
  *
- * Questo trait richiede che i modelli che lo usano abbiano:
- * - Proprietà pubblica `string $from_field` (es. Rep00f)
- * - Oppure accessor `getFromFieldAttribute()` (via CommonScope)
- * - Stesso per `to_field`
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaDateRangeFields
  *
  * @property string $from_field Nome campo data inizio (via proprietà o accessor)
  * @property string $to_field Nome campo data fine (via proprietà o accessor)
@@ -99,7 +97,7 @@ trait EnteMatrDateRangeRelationship
 		)';
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')
+        return $this->hasManyByEnteMatr(Qua00f::class)
             ->selectRaw('ente,matr,propro,posfun,posiz,disci1,codqua
                 ,cont,tipco,ruolo
 				,if(oree=0,36,oree) as oree
@@ -116,7 +114,6 @@ trait EnteMatrDateRangeRelationship
             .',qua2kd))+1 as giorni
 				')
             ->whereRaw('quaann=""')
-            ->where('ente', $this->ente)
             ->whereRaw($sql);
     }
 }

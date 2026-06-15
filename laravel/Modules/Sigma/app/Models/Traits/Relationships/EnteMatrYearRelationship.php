@@ -7,6 +7,11 @@ namespace Modules\Sigma\Models\Traits\Relationships;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Sigma\Models\Qua00f;
 
+/**
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
+ *
+ * @property int|null $anno
+ */
 trait EnteMatrYearRelationship
 {
     // --- relationship ---------
@@ -22,7 +27,7 @@ trait EnteMatrYearRelationship
         $inizioanno = ($this->anno * 10000) + 101;
         $fineanno = ($this->anno * 10000) + 1231;
 
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')
+        return $this->hasMany(Qua00f::class, 'matr', $this->matrField())
             ->selectRaw('ente,matr,propro,posfun,posiz
 				,if(oree=0,36,oree) as oree
 				,if(oret=0,36,oret) as oret
@@ -43,7 +48,7 @@ trait EnteMatrYearRelationship
             .',qua2kd))+1 as giorni
 				')
             ->whereRaw('quaann=""')
-            ->where('ente', $this->ente)
+            ->where('ente', $this->{$this->enteField()})
             ->whereRaw($sql);
     }
 }

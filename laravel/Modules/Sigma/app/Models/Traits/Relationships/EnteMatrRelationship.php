@@ -19,115 +19,72 @@ use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Wstr01lx;
 
-/**
- * Trait EnteMatrRelationship.
- *
- * @property int|null $anno
- * @property int|null $ente
- * @property string|null $matr
- */
 trait EnteMatrRelationship
 {
-    /**
-     * @return HasMany<Wstr01lx, $this>
-     *
-     * @phpstan-ignore-next-line return.type - Template type TDeclaringModel not covariant
-     */
     public function wstr01lx(): HasMany
     {
-        return $this->hasMany(Wstr01lx::class, 'wtmatr', 'matr')->where('enteap', $this->ente)->where('wtannu', '');
+        $enteField = $this->enteField();
+        $matrField = $this->matrField();
+
+        return $this->hasMany(Wstr01lx::class, 'wtmatr', $matrField)
+            ->where('enteap', $this->{$enteField})
+            ->where('wtannu', '');
     }
 
-    /**
-     * @return HasMany<Wstr01lx, $this>
-     */
     public function wstr01lxYear(): HasMany
     {
-        return $this->wstr01lx()->whereRaw('year(wtdata) = ?', [(string) $this->anno]);
+        return $this->wstr01lx()
+            ->whereRaw('year(wtdata) = ?', [(string) $this->anno]);
     }
 
-    /**
-     * Shared anagrafica relationship.
-     *
-     * Child models (with FK) override to BelongsTo, parent models keep HasOne.
-     */
     public function anag(): HasOne|BelongsTo
     {
-        return $this->hasOne(Anag::class, 'matr', 'matr')->where('ente', $this->ente);
+        return $this->hasOneByEnteMatr(Anag::class);
     }
 
-    /**
-     * @return HasMany<Ana02f, $this>
-     */
     public function ana02f(): HasMany
     {
-        return $this->hasMany(Ana02f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw("anaann = '' ");
+        return $this->hasManyByEnteMatr(Ana02f::class)
+            ->whereRaw("anaann = '' ");
     }
 
     public function ana10f(): HasOne
     {
-        return $this->hasOne(Ana10f::class, 'matr', 'matr')->where('ente', $this->ente);
+        return $this->hasOneByEnteMatr(Ana10f::class);
     }
 
-    /**
-     * @return HasMany<Qua00f, $this>
-     */
     public function qua00f(): HasMany
     {
-        return $this->hasMany(Qua00f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw('quaann=""');
+        return $this->hasManyByEnteMatr(Qua00f::class);
     }
 
-    /**
-     * @return HasMany<Rep00f, $this>
-     */
     public function rep00f(): HasMany
     {
-        return $this->hasMany(Rep00f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw("repann = '' ");
-
-        // ->whereNotNull('repann')
+        return $this->hasManyByEnteMatr(Rep00f::class);
     }
 
-    /**
-     * @return HasMany<Sto00f, $this>
-     */
     public function sto00f(): HasMany
     {
-        return $this->hasMany(Sto00f::class, 'matr', 'matr')->where('ente', $this->ente)->whereRaw("stann = '' ");
+        return $this->hasManyByEnteMatr(Sto00f::class);
     }
 
-    /**
-     * @return HasMany<Qua03f, $this>
-     */
     public function qua03f(): HasMany
     {
-        return $this->hasMany(Qua03f::class, 'matr', 'matr')->where('ente', $this->ente)->where('q3ann', '');
+        return $this->hasManyByEnteMatr(Qua03f::class);
     }
 
-    /**
-     * @return HasMany<Asz00f, $this>
-     */
     public function asz00f(): HasMany
     {
-        return $this->hasMany(Asz00f::class, 'matr', 'matr')->where('ente', $this->ente)->where('aszann', '');
+        return $this->hasManyByEnteMatr(Asz00f::class);
     }
 
-    /**
-     * @return HasMany<Asz00k1, $this>
-     */
     public function asz00k1(): HasMany
     {
-        $table = (new Asz00k1)->getTable();
-
-        return $this->hasMany(Asz00k1::class, 'matr', 'matr')
-            ->where($table.'.ente', $this->ente)
-            ->where($table.'.aszann', '');
+        return $this->hasManyByEnteMatr(Asz00k1::class);
     }
 
-    /**
-     * @return HasMany<Integparam, $this>
-     */
     public function integParams(): HasMany
     {
-        return $this->hasMany(Integparam::class, 'matr', 'matr')->where('ente', $this->ente);
+        return $this->hasManyByEnteMatr(Integparam::class);
     }
 }

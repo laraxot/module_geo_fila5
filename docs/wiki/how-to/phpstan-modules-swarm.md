@@ -25,7 +25,13 @@ related:
 
 ```bash
 cd /var/www/_bases/base_ptvx_fila5
-SWARM_RANDOM=1 SWARM_JOBS=8 bash bashscripts/tools/phpstan-modules-swarm.sh
+SWARM_JOBS=4 bash bashscripts/tools/phpstan-modules-swarm.sh
+```
+
+Ordine moduli random (default `SWARM_RANDOM=1`):
+
+```bash
+SWARM_RANDOM=0 SWARM_JOBS=4 bash bashscripts/tools/phpstan-modules-swarm.sh
 ```
 
 Singolo modulo:
@@ -40,13 +46,20 @@ Env automatici: `CACHE_DRIVER=file CACHE_STORE=file SESSION_DRIVER=file` (no Red
 
 | Variabile | Default | Note |
 |-----------|---------|------|
-| `SWARM_JOBS` | `nproc/2` (max 12) | 8 stabile su 45GB RAM |
+| `SWARM_JOBS` | `4` (max 8) | 4 stabile; 8 più veloce ma più RAM |
 | `PHPSTAN_MEMORY` | `2G` | Per processo modulo |
-| `SWARM_RANDOM` | `0` | `1` randomizza la coda dei moduli |
+| `SWARM_RANDOM` | `1` | `0` = ordine glob `Modules/*/` |
+
+## Isolamento cache (anti-race)
+
+Ogni worker genera un neon effimero in `/tmp/phpstan-swarm-$$/` con `tmpDir` dedicato (`cache-<Modulo>/`). Evita errori interni «Could not read file» quando più PHPStan condividevano `/tmp/phpstan/`.
+
+Moduli esclusi in `phpstan.neon` (`Pdnd`, `Incentivi`) → `[SKIP] excluded`, non contano come FAIL.
 
 ## Benchmark (2026-06-15)
 
-- Swarm 8 job: **35/35 OK**, wall **~83s**
+- Swarm 4 job + cache isolata: **33 OK + 2 SKIP**, wall **~342s** (Sigma/Performance/Xot OK)
+- Swarm 8 job (cache condivisa, legacy): falsi FAIL su race I/O
 - Gate sequenziale: **~7 min**
 
 ## Vietato

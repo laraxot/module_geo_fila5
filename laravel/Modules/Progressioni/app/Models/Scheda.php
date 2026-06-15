@@ -971,9 +971,7 @@ class Scheda extends BaseScheda
 
         $rows0 = Rep00f::where('repst1', $stabi)
             ->where('repre1', $repar)
-            ->where(function (Builder $query) use ($anno): void {
-                $query->whereRaw('(? between year(rep2kd) and year(rep2ka)) or (? >= year(rep2kd) and rep2ka = 0)', [$anno, $anno]);
-            })
+            ->ofYear($anno)
             ->whereRaw('repann=""');
         foreach ($rows0->get() as $row) {
             $parz = ['ente' => $row->ente,

@@ -9,6 +9,11 @@ use Modules\Sigma\Models\Asz00k1;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Sto00f;
 
+/**
+ * @phpstan-require-implements \Modules\Sigma\Models\Contracts\SigmaEnteMatrFields
+ *
+ * @property int|null $anno
+ */
 trait EnteMatrAnnoRelationship
 {
     /**
@@ -26,7 +31,7 @@ trait EnteMatrAnnoRelationship
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $relation */
-        $relation = $this->hasMany(Qua00f::class, 'matr', 'matr');
+        $relation = $this->hasMany(Qua00f::class, 'matr', $this->matrField());
 
         return $relation
             ->selectRaw('ente,matr,propro,posfun,posiz
@@ -49,7 +54,7 @@ trait EnteMatrAnnoRelationship
             .',qua2kd))+1 as giorni
 				')
             ->whereRaw('quaann=""')
-            ->where('ente', $this->ente)
+            ->where('ente', $this->{$this->enteField()})
             ->whereRaw($sql);
     }
 
@@ -66,7 +71,7 @@ trait EnteMatrAnnoRelationship
         $fineanno = ($this->anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
-        return $this->hasMany(Sto00f::class, 'matr', 'matr')
+        return $this->hasMany(Sto00f::class, 'matr', $this->matrField())
             ->selectRaw('ente,matr
 				,if(st2kas<'
             .$inizioanno
@@ -85,7 +90,7 @@ trait EnteMatrAnnoRelationship
             .',st2kas))+1 as giorni
 				')
             ->whereRaw('stann=""')
-            ->where('ente', $this->ente)
+            ->where('ente', $this->{$this->enteField()})
             ->whereRaw($sql);
     }
 
@@ -96,8 +101,8 @@ trait EnteMatrAnnoRelationship
     {
         // Asz00k1::indexIfNotExistsStatic(['ente','matr','aszann','asz2kd','asz2ka']);
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
-        return $this->hasMany(Asz00k1::class, 'matr', 'matr')
-            ->where('ente', $this->ente)
+        return $this->hasMany(Asz00k1::class, 'matr', $this->matrField())
+            ->where('ente', $this->{$this->enteField()})
             ->whereRaw('aszann=""')
             ->whereRaw($this->anno.' between year(asz2kd) and year(asz2ka) ');
     }

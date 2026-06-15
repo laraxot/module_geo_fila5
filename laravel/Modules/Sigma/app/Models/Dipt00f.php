@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 
 // ----------traits ---
 /**
@@ -58,8 +58,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read int|null $rep00f_count
  * @mixin \Eloquent
  */
-class Dipt00f extends BaseModel
+class Dipt00f extends BaseDateRangeModel
 {
+    use EnteMatrRelationship;
+
     protected $fillable = [
         'id',
         'enteap',
@@ -74,58 +76,49 @@ class Dipt00f extends BaseModel
         'dtcom4',
     ];
 
-    protected $connection = 'generale';
-
-    // this will use the specified database connection
     protected $table = 'dipt00f';
 
-    public $timestamps = false;
+    public const FROM_FIELD = 'dtdal';
+
+    public const TO_FIELD = 'dtal';
+
+    public const ANN_FIELD = 'dtannu';
+
+    public function rangeFromField(): string
+    {
+        return 'dtdal';
+    }
+
+    public function rangeToField(): string
+    {
+        return 'dtal';
+    }
+
+    public function annFieldName(): string
+    {
+        return 'dtannu';
+    }
+
+    public function matrField(): string
+    {
+        return 'dtmatr';
+    }
+
+    public function enteField(): string
+    {
+        return 'enteap';
+    }
 
     // -------relationship----
     /**
-     * Relazione con anagrafica dipendente.
-     *
-     * @return HasOne<Anag, Dipt00f>
-     */
-    public function anag(): HasOne
-    {
-        // @phpstan-ignore-next-line - Template type TDeclaringModel is not covariant
-        return $this->hasOne(Anag::class, 'matr', 'dtmatr')->where('ente', $this->enteap);
-    }
-
-    /**
-     * Relazione con turni dipendente.
-     *
      * @return HasMany<Turn01l1, Dipt00f>
      */
     public function turn01l1(): HasMany
     {
-        // @phpstan-ignore-next-line - Template type TDeclaringModel is not covariant
-        return $this->hasMany(Turn01l1::class, 't1codi', 'dtturn')->where('enteap', $this->enteap);
-    }
+        /** @var HasMany<Turn01l1, Dipt00f> $relation */
+        $relation = $this->hasMany(Turn01l1::class, 't1codi', 'dtturn')
+            ->where('enteap', $this->{$this->enteField()});
 
-    /**
-     * @return HasMany<Qua00f, Dipt00f>
-     */
-    public function qua00f(): HasMany
-    {
-        /** @phpstan-ignore-next-line Template type TDeclaringModel is not covariant */
-        return $this->hasMany(Qua00f::class, 'matr', 'dtmatr')
-            ->where('ente', $this->enteap)
-            ->whereRaw('quaann=""');
-    }
-
-    /**
-     * @return HasMany<Rep00f, Dipt00f>
-     */
-    public function rep00f(): HasMany
-    {
-        /** @var HasMany<Rep00f, Dipt00f> $relation */
-        $relation = $this->hasMany(Rep00f::class, 'matr', 'dtmatr')
-            ->where('ente', $this->enteap)
-            ->whereRaw('repann=""');
-
-        /** @phpstan-ignore-next-line Template type TDeclaringModel is not covariant */
         return $relation;
     }
 

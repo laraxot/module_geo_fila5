@@ -241,10 +241,11 @@ class Qua00f extends BaseDateRangeModel
     {
         $qua2kd = (int) ($this->qua2kd ?? 0);
         $qua2ka = (int) ($this->qua2ka ?? 0);
+        $dipt = new Dipt00f;
 
         /** @var HasMany<Dipt00f, Qua00f> $relation */
-        $relation = $this->hasMany(Dipt00f::class, 'dtmatr', 'matr')
-            ->where('enteap', $this->ente)
+        $relation = $this->hasMany(Dipt00f::class, $dipt->matrField(), $this->matrField())
+            ->where($dipt->enteField(), $this->{$this->enteField()})
             ->where('dtannu', '');
 
         if ($qua2ka === 0) {
@@ -285,7 +286,7 @@ class Qua00f extends BaseDateRangeModel
     public function ana10f(): HasOne
     {
         /** @var HasOne<Ana10f, Qua00f> $relation */
-        $relation = $this->hasOne(Ana10f::class, 'matr', 'matr')->where('ente', $this->ente);
+        $relation = $this->hasOneByEnteMatr(Ana10f::class);
 
         return $relation;
     }
@@ -296,7 +297,7 @@ class Qua00f extends BaseDateRangeModel
     public function ana02f(): HasMany
     {
         /** @var HasMany<Ana02f, Qua00f> $relation */
-        $relation = $this->hasMany(Ana02f::class, 'matr', 'matr')->where('ente', $this->ente);
+        $relation = $this->hasManyByEnteMatr(Ana02f::class);
 
         return $relation;
     }
@@ -307,8 +308,7 @@ class Qua00f extends BaseDateRangeModel
     public function rep00f(): HasMany
     {
         /** @var HasMany<Rep00f, Qua00f> $relation */
-        $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
-            ->where('ente', $this->ente)
+        $relation = $this->hasManyByEnteMatr(Rep00f::class)
             ->where('repann', '')
             ->ofRangeDate($this->qua2kd, $this->qua2ka);
 
@@ -866,10 +866,7 @@ class Qua00f extends BaseDateRangeModel
         $ente = (int) $params['ente'];
 
         $qua00f = self::query()
-            ->where(static function (Builder $q) use ($anno): void {
-                $q->whereRaw('(? between year(qua2kd) and year(qua2ka))', [$anno])
-                    ->orWhereRaw('(? >= year(qua2kd) and qua2ka = 0)', [$anno]);
-            })
+            ->ofYear($anno)
             ->where('quaann', '')
             ->where('ente', $ente)
             ->get();
