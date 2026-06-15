@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Ptv\Actions\Scheda;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Modules\Ptv\Support\EloquentModelResolver;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -53,16 +52,30 @@ class UpdateRestiPondByValutatoreIdAction
 
             $delta = (float) $deltaMinPunteggio + 0.00114;
 
-            $updated = $class::where('anno', $year)
+            $class::query()
+                ->where('anno', $year)
                 ->where('type', $type)
                 ->where('ha_diritto', '>', 0)
                 ->where('valutatore_id', (int) $valutatoreId)
-                ->update([
-                    'resti_pond' => DB::raw("quota_effettiva * {$delta}"),
-                ]);
+                ->select(['id', 'quota_effettiva'])
+                ->chunkById(200, function ($rows) use ($class, $delta, &$totalUpdated): void {
+                    foreach ($rows as $row) {
+                        if (! $row instanceof Model) {
+                            continue;
+                        }
 
-            $totalUpdated += (int) $updated;
-            echo '<br/>Aggiornati resti_pond per '.$updated.' dipendenti del valutatore '.$valutatoreId.', delta: '.$delta."\n";
+                        $quotaEffettiva = $row->getAttribute('quota_effettiva');
+                        if (! is_numeric($quotaEffettiva)) {
+                            continue;
+                        }
+
+                        $class::whereKey($row->getKey())->update([
+                            'resti_pond' => (float) $quotaEffettiva * $delta,
+                        ]);
+                        $totalUpdated++;
+                    }
+                });
+            echo '<br/>Aggiornati resti_pond per dipendenti del valutatore '.$valutatoreId.', delta: '.$delta."\n";
         }
 
         echo "Aggiornati resti_pond per un totale di {$totalUpdated} dipendenti, anno: {$year}, tipo: {$type}\n";

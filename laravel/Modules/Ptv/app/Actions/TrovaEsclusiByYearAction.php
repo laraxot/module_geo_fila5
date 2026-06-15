@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Ptv\Models\CriteriEsclusione;
 use Illuminate\Support\Str;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Spatie\QueueableAction\QueueableAction;
@@ -113,7 +114,7 @@ class TrovaEsclusiByYearAction
             }
 
             // Type narrowing: ensure criteri_esclusione is Collection of Models with name and value
-            /** @var Collection<int, Model&object{name: string, value: mixed}> $validatedCriteriEsclusione */
+            /** @var Collection<int, CriteriEsclusione> $validatedCriteriEsclusione */
             $validatedCriteriEsclusione = $criteri_esclusione;
 
             // Type narrowing: ensure criteri_option is Collection of Models
