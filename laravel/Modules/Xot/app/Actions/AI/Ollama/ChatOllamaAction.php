@@ -103,6 +103,15 @@ class ChatOllamaAction
         }
     }
 
+    /**
+     * @return array{
+     *     content: string,
+     *     thinking: string|null,
+     *     done: bool,
+     *     tokens: array{prompt: int, generated: int, total: int},
+     *     duration: array{total: int, prompt: int, generation: int}
+     * }
+     */
     public function executeOptimized(string $message): array
     {
         return $this->execute($message, [
@@ -117,6 +126,15 @@ class ChatOllamaAction
         ]);
     }
 
+    /**
+     * @return array{
+     *     content: string,
+     *     thinking: string|null,
+     *     done: bool,
+     *     tokens: array{prompt: int, generated: int, total: int},
+     *     duration: array{total: int, prompt: int, generation: int}
+     * }
+     */
     public function executeMinimal(string $message): array
     {
         return $this->execute($message, [

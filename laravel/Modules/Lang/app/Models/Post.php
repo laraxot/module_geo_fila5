@@ -118,6 +118,7 @@ use Spatie\Sluggable\SlugOptions;
 class Post extends BaseModel
 {
     use HasSlug;
+    /** @phpstan-use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
     use HasXotFactory;
 
     // use Cachable;
@@ -141,7 +142,7 @@ class Post extends BaseModel
     public static $snakeAttributes = true;
 
     /** @var bool */
-    public $incrementing = true;
+    public $incrementing = false;
 
     /** @var int */
     protected $perPage = 30;
@@ -161,6 +162,13 @@ class Post extends BaseModel
         'subtitle',
         'post_type',
         'txt',
+        'content',
+        'excerpt',
+        'slug',
+        'status',
+        'published_at',
+        'locale',
+        'category',
         // ------ IMAGE ---------
         'image_src',
         'image_alt',
@@ -199,6 +207,10 @@ class Post extends BaseModel
     }
 
     // -------- relationship ------
+
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function linkable(): MorphTo
     {
         return $this->morphTo('post');
@@ -307,6 +319,9 @@ class Post extends BaseModel
         return $value ?? '';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toSearchableArray(): array
     {
         return $this->only(self::SEARCHABLE_FIELDS);

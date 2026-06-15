@@ -8,14 +8,12 @@ use Filament\Tables\Enums\PaginationMode;
 use Illuminate\Contracts\Pagination\CursorPaginator;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 trait CanPaginate
 {
-    /**
-     * @var int|string|null
-     */
-    public $recordsPerPage;
+    public int|string|null $recordsPerPage = null;
 
     protected int|string|null $defaultRecordsPerPageSelectOption = null;
 
@@ -28,9 +26,13 @@ trait CanPaginate
         $this->resetLivewirePage();
     }
 
-    public function getRecordsPerPage(): int|string|null
+    public function getRecordsPerPage(): int|string
     {
-        return $this->recordsPerPage;
+        if ($this->recordsPerPage !== null) {
+            return $this->recordsPerPage;
+        }
+
+        return $this->getDefaultRecordsPerPageSelectOption();
     }
 
     public function getTablePage(): int
@@ -47,7 +49,7 @@ trait CanPaginate
 
         $pageOptions = $this->getRecordsPerPageSelectOptions();
 
-        if (is_array($pageOptions) && in_array($option, $pageOptions)) {
+        if (in_array($option, $pageOptions)) {
             return (int) $option;
         }
 
@@ -69,7 +71,10 @@ trait CanPaginate
     }
 
     /**
-     * PHPStan Level 10: Include LengthAwarePaginator in return type.
+     * @template TModel of Model
+     *
+     * @param  Builder<TModel>  $query
+     * @return Paginator<int, TModel>|CursorPaginator<int, TModel>|LengthAwarePaginator<int, TModel>
      */
     protected function paginateQuery(Builder $query): Paginator|CursorPaginator|LengthAwarePaginator
     {
@@ -93,7 +98,7 @@ trait CanPaginate
 
         $total = $query->toBase()->getCountForPagination();
 
-        /** @var LengthAwarePaginator $records */
+        /** @var LengthAwarePaginator<int, TModel> $records */
         $records = $query->paginate(
             perPage: $perPage === 'all' ? $total : (int) $perPage,
             pageName: $this->getPaginationPageName(),
@@ -104,9 +109,9 @@ trait CanPaginate
     }
 
     /**
-     * @return array<int|string>|null
+     * @return array<int|string>
      */
-    protected function getRecordsPerPageSelectOptions(): ?array
+    protected function getRecordsPerPageSelectOptions(): array
     {
         return [10, 25, 50];
     }

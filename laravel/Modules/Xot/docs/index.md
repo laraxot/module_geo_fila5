@@ -1,6 +1,9 @@
 # 📚 Index of Xot Module Documentation
 
 ## 🎯 Quick Start
+- [**README.md**](README.md) - General overview
+- [**Architecture**](architecture/architecture.md) - System architecture
+- [**Best Practices**](best-practices/best-practices.md) - Development guidelines
 - [**README.md**](readme.md) - General overview
 - [**Architecture**](architecture/architecture.md) - System architecture
 - [**Best Practices**](best-practices/best-practices.md) - Development guidelines

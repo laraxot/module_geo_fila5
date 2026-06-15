@@ -30,8 +30,7 @@ abstract class XotBaseTransition
         $stateClassName = Str::of($class)->afterLast('To')->toString();
         $newStateClass = $stateNamespace.'\\'.$stateClassName;
 
-        /* @phpstan-ignore-next-line */
-        $this->record->state = new $newStateClass($this->record);
+        $this->record->setAttribute('state', new $newStateClass($this->record));
         $this->record->save();
 
         return $this->record;

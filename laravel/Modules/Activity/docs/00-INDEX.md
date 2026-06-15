@@ -1,5 +1,7 @@
 # Activity Module - Documentation Index
 
+> **Nota**: La documentazione canonica e il second brain del modulo vivono in [docs/wiki/index.md](./wiki/index.md).
+
 Path: laravel/Modules/Activity/docs/
 Modulo: @Modules/Activity
 

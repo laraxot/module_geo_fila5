@@ -17,6 +17,4 @@ related:
 
 Resources: Export, FailedImportRow, FailedJob, Import, JobBatch, JobManager, Job, JobsWaiting, Schedule
 
-Reference implementation: `FailedJobsTable.php` — firma **`public function getTableColumns(): array`** (mai `static`), chiavi stringa, colonne `id`, `connection`, `queue`, `failed_at`.
-
-Canon progetto: [`docs/wiki/concepts/xotbase-table-columns-enforcement.md`](../../../../../../docs/wiki/concepts/xotbase-table-columns-enforcement.md).
+Reference implementation: `FailedJobsTable.php` with `id`, `connection`, `queue`, `failed_at` — all Job Table files follow this pattern.

@@ -953,4 +953,3 @@ Pattern:
 3.  Impostare `animation: false` nelle opzioni Chart.js per la stampa.
 
 Vedi: **[Dashboard Best Practices](../../../limesurvey/docs/dashboard-best-practices.md)**.
-

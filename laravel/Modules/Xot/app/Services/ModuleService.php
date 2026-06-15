@@ -16,9 +16,14 @@ use stdClass;
  */
 class ModuleService
 {
-    public string $name;
+    public string $name = '';
 
     private static ?self $_instance = null;
+
+    public function __construct(string $name = '')
+    {
+        $this->name = $name;
+    }
 
     /**
      * getInstance.

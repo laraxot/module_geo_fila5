@@ -1,13 +1,87 @@
 ---
 title: "Activity Log"
+type: log
+module: Xot
+tags: [xot, phpstan, pest, qmd]
+created: 2026-04-20
+updated: 2026-06-13
+qmd: "Xot log phpstan pest bridge discipline"
+issues:
+  - "https://github.com/laraxot/module_xot_fila5/issues/28"
+discussions:
+  - "https://github.com/laraxot/module_xot_fila5/discussions/29"
+---
+
+---
+
+## [2026-06-13] docs | Hub platform-completion-roadmap + gate PHPStan zero
+
+- Creato [overviews/platform-completion-roadmap.md](overviews/platform-completion-roadmap.md) — SSoT completamento 16 moduli + 4 temi.
+- Aggiornati [PHPSTAN-BEST-PRACTICES.md](PHPSTAN-BEST-PRACTICES.md), [phpstan-pest-bridge-discipline.md](concepts/phpstan-pest-bridge-discipline.md).
+- Fix test: `FileActionsTest`, `GetClassNameByPathActionTest` (pattern `@var` / `assertIsString`).
+- Base [#372](https://github.com/laraxot/base_fixcity_fila5/issues/372).
+
+## [2026-06-12] testing | Pest global class imports
+
+- Aggiunto `rules/pest-global-class-imports.md`.
+- Durante STORY-345 i run coverage hanno evidenziato warning PHP da `use ReflectionClass;` in test senza namespace.
+- Regola: rimuovere l'import globale inutile; l'uso diretto `new ReflectionClass(...)` resta valido nei file global namespace.
+## [2026-06-10] testing | Module TestCase XotBase hierarchy
+
+- Aggiunto `rules/module-testcase-xotbase-hierarchy.md`.
+- Decisione verificata: XotBaseTestCase non estende `Nwidart\Modules\Tests\BaseTestCase` perche' la classe non esiste in `nwidart/laravel-modules v13.0.0`.
+- Activity/Xot TestCase usano XotBaseTestCase; transazioni e connessioni restano nei TestCase dei moduli.
+
+
+## [2026-06-10] testing | module TestCase hierarchy XotBase
+
+- Canon: `Modules/<Module>/tests/TestCase.php` -> `Modules\Xot\Tests\XotBaseTestCase` -> `Illuminate\Foundation\Testing\TestCase`.
+- Scartata ipotesi `Nwidart\Modules\Tests\BaseTestCase`: nel package installato v13.0.0 e' dev-only/non autoloadata.
+- Nuove pagine: `rules/module-testcase-xotbase-hierarchy.md`, `memories/testcase-hierarchy-nwidart-dev-only.md`.
+- Coordinamento: issue Xot #33, discussion Xot #34.
+
+## [2026-06-10] phpstan | Pest bridge discipline
+
+- Aggiunto `concepts/phpstan-pest-bridge-discipline.md`.
+- Xot puo' ospitare helper/bridge riusabili, ma i test dei moduli restano Pest e `laravel/phpstan.neon` resta dell'utente.
+
+## [2026-06-07] phpstan | DTO factory self per run Modules no-flag
+
+- `cd laravel && ./vendor/bin/phpstan analyse Modules` -> **4993 file, [OK] No errors**.
+- DTO Xot concreti: factory `make()` con ritorno `self` e `new self()`, evitando `new static()` e PHPDoc `@var static` usati solo per placare PHPStan.
+- Coinvolti: `ArticleData`, `AuthData`, `CookieData`, `FilemanagerData`, `MailData`, `NotificationData`, `OptionData`, `PwaData`, `RouteData`, `SearchEngineData`, `SubscriptionData`.
+
+## [2026-06-07] quality | PHPStan shared Xot patterns
+
+- Full gate root: `cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1` → **4993 file, zero errori**.
+- Pattern Xot: `formClass(): ?class-string` invece di stringa vuota, `getFormFill()` normalizzato a `array<string,mixed>`, `view-string` locale prima di `->view()`, dynamic fillable via hook `getDynamicFillableEnums()`.
+- Propagazione: `Client` override hook dynamic fillable; `XotBaseResource::getPages()` evita shape sealed per risorse con pagine extra.
+
+## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
+
+- Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), [llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt)
+- GitHub: [#272](https://github.com/laraxot/base_fixcity_fila5/issues/272) / [D#273](https://github.com/laraxot/base_fixcity_fila5/discussions/273)
+
+---
+title: "Activity Log"
 module: "Xot"
 ---
 
 # Activity Log — Xot
 
+## [2026-06-05] docs | AI harness canon + stub moduli allineati
+
+- [ai-harness-xot-discipline.md](concepts/ai-harness-xot-discipline.md) — owner harness PHPStan/XotBase
+- Stub second-brain in 9+ moduli puntano a canon Xot + mappa HackerNoon #272
+
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
 ## Log Entries
+
+## [2026-05-26] docs | codice nominale pivot / ThemeComposer / ProfileFactory scan
+
+- **Verifica sorgenti + script**: scaffold `Dashboard`/`RouteServiceProvider` per modulo (**atteso** moduli Laravel); divergenza reale famiglia **`BasePivot`** vs **`XotBasePivot`**; **`ProfileFactory`** basename ripetuto con hash diverso (User/Gdpr/Fixcity); **Cms ThemeComposer** duplicato nel path `resources/views/` fuori da PSR-4.
+- **Deliverable**: [`redundancy/audit-profondo-ridondanze-holistic.md`](redundancy/audit-profondo-ridondanze-holistic.md) §5; modulo Cms **[`docs/redundancy-report.md`](../../../../Cms/docs/redundancy-report.md)** §5; [`concepts/redundancy-catalog.md`](concepts/redundancy-catalog.md) (riga Cms).
 
 ## [2026-05-25] docs | audit profondo ridondanze — second brain ripulito da merge-marker
 

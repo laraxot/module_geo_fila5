@@ -17,7 +17,7 @@ use Filament\Tables\Columns\TextColumn;
  *
  * Usage:
  * ```php
- * public function getTableColumns(): array
+ * public static function getTableColumns(): array
  * {
  *     return array_merge(
  *         ColumnBuilder::timestamps(),

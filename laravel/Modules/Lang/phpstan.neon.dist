@@ -31,4 +31,3 @@ parameters:
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     checkImplicitMixed: false
-

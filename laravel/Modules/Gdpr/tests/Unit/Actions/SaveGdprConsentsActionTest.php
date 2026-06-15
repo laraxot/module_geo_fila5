@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Actions;
 
-uses(TestCase::class);
-
 use Modules\Gdpr\Actions\SaveGdprConsentsAction;
 use Modules\Gdpr\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-test('SaveGdprConsentsAction can be instantiated', function () {
+uses(TestCase::class);
+
+test('SaveGdprConsentsAction can be instantiated', function (): void {
     $action = new SaveGdprConsentsAction();
-    $action = new SaveGdprConsentsAction();
-    expect($action)->toBeInstanceOf(SaveGdprConsentsAction::class);
+    Assert::assertInstanceOf(SaveGdprConsentsAction::class, $action);
 });
 
-test('SaveGdprConsentsAction execute method exists', function () {
+test('SaveGdprConsentsAction execute method exists', function (): void {
     $action = new SaveGdprConsentsAction();
-    $action = new SaveGdprConsentsAction();
-    expect(method_exists($action, 'execute'))->toBeTrue();
+    Assert::assertTrue((new \ReflectionClass($action))->hasMethod('execute'));
 });

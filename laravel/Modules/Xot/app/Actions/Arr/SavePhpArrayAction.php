@@ -13,6 +13,9 @@ class SavePhpArrayAction
 {
     use QueueableAction;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function execute(array $data, string $filename): bool
     {
         $exported = VarExporter::export($data);

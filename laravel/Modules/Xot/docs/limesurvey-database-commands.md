@@ -36,6 +36,7 @@ SELECT
     DATE(submitdate) as response_date,
     COUNT(*) as daily_responses
 FROM lime_survey_[SURVEY_ID]
+WHERE submitdate BETWEEN '2023-01-01' AND '2023-12-31'
 WHERE submitdate BETWEEN '[DATE]' AND '[DATE]'
 GROUP BY DATE(submitdate)
 ORDER BY response_date;
@@ -89,6 +90,7 @@ $exists = DB::connection('limesurvey')->getSchemaBuilder()->hasTable($tableName)
 $responses = DB::connection('limesurvey')
     ->table($tableName)
     ->whereNotNull('submitdate')
+    ->whereBetween('submitdate', ['2023-01-01', '2023-12-31'])
     ->whereBetween('submitdate', ['[DATE]', '[DATE]'])
     ->count();
 
@@ -131,6 +133,7 @@ SHOW INDEX FROM lime_survey_[SURVEY_ID];
 ### 2. Query Optimization
 ```sql
 -- Use EXPLAIN to analyze slow queries
+EXPLAIN SELECT COUNT(*) FROM lime_survey_[SURVEY_ID] WHERE submitdate > '2023-01-01';
 EXPLAIN SELECT COUNT(*) FROM lime_survey_[SURVEY_ID] WHERE submitdate > '[DATE]';
 
 -- Optimize large table queries

@@ -89,6 +89,10 @@ Analisi sistematica di tutti i moduli con PHPStan livello 10, PHPMD e PHPInsight
 - [UI Module Quality Report](../../ui/docs/quality-analysis/ui-module-quality-report.md)
 - [Performance Module Quality Report](../../performance/docs/quality-analysis/performance-module-quality-report.md)
 - [Activity Module Quality Report](../../activity/docs/quality-analysis/activity-module-quality-report.md)
+- [User Module Quality Report](../../User/docs/quality-analysis/user-module-quality-report.md)
+- [UI Module Quality Report](../../UI/docs/quality-analysis/ui-module-quality-report.md)
+- [Performance Module Quality Report](../../Performance/docs/quality-analysis/performance-module-quality-report.md)
+- [Activity Module Quality Report](../../Activity/docs/quality-analysis/activity-module-quality-report.md)
 
 ### Documentazione Analisi
 - [Module-by-Module Analysis Plan](./module-by-module-analysis-plan.md)
@@ -124,4 +128,5 @@ Analisi sistematica di tutti i moduli con PHPStan livello 10, PHPMD e PHPInsight
 ---
 
 **Status**: ✅ **PHPStan Livello 10 Perfetto** - 0 errori su tutti i moduli
+**Data**: 2025-01-22
 **Analista**: AI Assistant

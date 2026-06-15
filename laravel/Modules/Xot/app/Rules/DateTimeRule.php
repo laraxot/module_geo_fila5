@@ -7,6 +7,8 @@ namespace Modules\Xot\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Carbon;
 
+use function Safe\preg_replace;
+
 /**
  * Class DateTimeRule.
  */

@@ -9,6 +9,10 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-15 10:05:00 UTC] [GATE] SESSIONE GATE DI INGRESSO: PHPStan ✅ ZERO (confermato re-run); wiki/chat ✅ letto; GitHub audit ✅ (merge conflict `phpstan-modules-coordination.md` risolto); prossimi punti 5-6 (aggiorna tutto, poi procedi).
+
+[2026-06-15 09:50:00 UTC] [FIX] PHPStan gate root: `./vendor/bin/phpstan analyse Modules` -> 0 errori (892 file, `phpstan.neon` corrente); fix `XotBaseResourceTable::configure()` + base `XotBaseSchemaWidget` senza modificare `phpstan.neon`; pattern [`xotbase-resource-table-configure.md`](patterns/xotbase-resource-table-configure.md).
+
 [2026-06-03 15:00:00 UTC] [CI] Changelog analytics: `changelog-advanced.yml`, `changelog-contributors.yml`, `changelog-git-cliff.yml`, `generate-changelog-report.mjs`, `cliff.toml`; wiki `github-actions-changelog-analytics.md`.
 
 [2026-06-03 14:30:00 UTC] [CI] Stack semantic release root: `release.yml` (npx semantic-release), `semantic-versioning.yml` (dispatch), `release-drafter`, `update-changelog`, `tag-version`, `attest-release` via workflow_run; doc `github-actions-semantic-release-stack.md`.

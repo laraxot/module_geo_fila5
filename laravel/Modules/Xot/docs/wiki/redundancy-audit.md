@@ -42,7 +42,7 @@ related:
 | P1-1 | `MailTemplate` vs `NotificationTemplate` | [Notify](../Notify/docs/wiki/concepts/code-redundancy-notify.md) |
 | P1-2 | `TableLayoutTrait` ×2 namespace | [UI](../UI/docs/wiki/concepts/code-redundancy-ui.md) |
 | P1-3 | Login blade One ≈ Zero | [One](../../../Themes/One/docs/wiki/concepts/code-redundancy-theme.md) |
-| P1-4 | ~~`Theme_One` vs `One`~~ — risolto 2026-05-26: rinominato `Theme_One/` → `Three/` (regola: PascalCase singolo, no prefisso `Theme_`) | Themes — perplessità #2 in filosofia |
+| P1-4 | `Theme_One` vs `One` | Themes — perplessità #2 in filosofia |
 | P1-5 | `UserResource` omonimo Ptv/User | Documentare namespace |
 | P1-6 | `CriteriOptionResource` ×3 | Ptv — valutare base condivisa |
 | P1-7 | ColumnBuilder ×2 in Xot | [redundancy-report.md](redundancy-report.md) §1 |

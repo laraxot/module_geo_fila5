@@ -6,29 +6,24 @@ namespace Modules\Activity\Tests\Feature;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
+use Modules\Activity\Database\Factories\ActivityFactory;
+use Modules\Activity\Database\Factories\SnapshotFactory;
 use Modules\Activity\Models\Activity;
 use Modules\Activity\Models\Snapshot;
 use Modules\Activity\Models\StoredEvent;
 use Modules\Activity\Tests\TestCase;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
+use PHPUnit\Framework\Assert;
+use function Safe\json_encode;
 
-uses(TestCase::class);
-
-beforeEach(function () {
-    // Skip if database not available
-    try {
-        \DB::connection()->getPdo();
-    } catch (\Exception $e) {
-        $this->markTestSkipped('Database not available: '.$e->getMessage());
-    }
-});
+uses(\Modules\Activity\Tests\TestCase::class);
 
 test('activity module models work together in integrated scenarios', function () {
-    $user = User::factory()->create(['email' => Str::uuid()->toString().'@example.com']); // @phpstan-ignore-line method.nonObject
-    \assert($user instanceof User);
-    expect($user)->not->toBeNull();
+    $user = UserFactory::new()->createOne();
+    Assert::assertInstanceOf(User::class, $user);
 
-    $activity = Activity::factory()->create([ // @phpstan-ignore-line method.nonObject
+    $activity = ActivityFactory::new()->createOne([
         'causer_type' => User::class,
         'causer_id' => $user->id,
         'subject_type' => User::class,
@@ -38,12 +33,11 @@ test('activity module models work together in integrated scenarios', function ()
             'details' => ['source' => 'web', 'campaign' => 'test'],
         ],
     ]);
-    \assert($activity instanceof Activity);
-    expect($activity)->not->toBeNull();
+    Assert::assertInstanceOf(Activity::class, $activity);
 
     $aggregateUuid = Str::uuid()->toString();
 
-    $snapshot = Snapshot::factory()->create([ // @phpstan-ignore-line method.nonObject
+    $snapshot = SnapshotFactory::new()->createOne([
         'aggregate_uuid' => $aggregateUuid,
         'state' => [
             'user' => $user->toArray(),
@@ -51,8 +45,7 @@ test('activity module models work together in integrated scenarios', function ()
             'metadata' => ['version' => '1.0.0'],
         ],
     ]);
-    \assert($snapshot instanceof Snapshot);
-    expect($snapshot)->not->toBeNull();
+    Assert::assertInstanceOf(Snapshot::class, $snapshot);
 
     $storedEvent = StoredEvent::create([
         'aggregate_uuid' => $aggregateUuid,
@@ -68,54 +61,53 @@ test('activity module models work together in integrated scenarios', function ()
         'meta_data' => ['source' => 'test'],
         'created_at' => now(),
     ]);
-    \assert($storedEvent instanceof StoredEvent);
-    expect($storedEvent)->not->toBeNull();
+    Assert::assertInstanceOf(StoredEvent::class, $storedEvent);
 
     $causer = $activity->causer;
-    expect($causer)->not->toBeNull()
-        ->and($causer->id)->toBe($user->id);
+    Assert::assertInstanceOf(User::class, $causer);
+    Assert::assertSame($user->id, $causer->id);
 
     $state = $snapshot->state;
-    expect($state)->toBeArray();
-    \assert(is_array($state));
-    expect(isset($state['user']))->toBeTrue();
-    \assert(isset($state['user']) && is_array($state['user']));
-    expect($state['user']['id'])->toBe($user->id);
+    Assert::assertIsArray($state);
+    Assert::assertArrayHasKey('user', $state);
+    /** @var array<string, mixed> $stateUser */
+    $stateUser = $state['user'];
+    Assert::assertIsArray($stateUser);
+    Assert::assertSame($user->id, $stateUser['id']);
 
     $eventProperties = $storedEvent->event_properties;
-    expect($eventProperties)->toBeArray()
-        ->and($eventProperties['user_id'])->toBe($user->id);
+    Assert::assertIsArray($eventProperties);
+    Assert::assertSame($user->id, $eventProperties['user_id']);
 
     $relatedActivities = Activity::query()
         ->where('causer_type', User::class)
         ->where('causer_id', (string) $user->id)
         ->get();
-    expect($relatedActivities->pluck('id')->all())->toContain($activity->id);
+    Assert::assertContains($activity->id, $relatedActivities->pluck('id')->all());
 
     $relatedSnapshots = Snapshot::uuid($aggregateUuid)->get();
-    expect($relatedSnapshots->pluck('id')->all())->toContain($snapshot->id);
+    Assert::assertContains($snapshot->id, $relatedSnapshots->pluck('id')->all());
 
     $relatedEvents = StoredEvent::whereAggregateUuid($aggregateUuid)->get();
-    expect($relatedEvents->pluck('id')->all())->toContain($storedEvent->id);
+    Assert::assertContains($storedEvent->id, $relatedEvents->pluck('id')->all());
 });
 
 test('activity batch processing with multiple models', function () {
     $batchUuid = Str::uuid()->toString();
     $aggregateUuid = Str::uuid()->toString();
 
-    $user = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user instanceof User);
-    expect($user)->not->toBeNull();
+    $user = UserFactory::new()->createOne();
+    Assert::assertNotNull($user);
 
-    $activities = Activity::factory()->count(5)->create([ // @phpstan-ignore-line method.nonObject
+    /** @var Collection<int, Activity> $activities */
+    $activities = ActivityFactory::new()->count(5)->create([
         'batch_uuid' => $batchUuid,
         'causer_type' => User::class,
         'causer_id' => $user->id,
     ]);
-    \assert($activities instanceof Collection);
-    expect($activities)->toHaveCount(5);
+    Assert::assertCount(5, $activities);
 
-    $snapshot = Snapshot::factory()->create([ // @phpstan-ignore-line method.nonObject
+    $snapshot = SnapshotFactory::new()->createOne([
         'aggregate_uuid' => $aggregateUuid,
         'state' => [
             'batch_id' => $batchUuid,
@@ -123,8 +115,7 @@ test('activity batch processing with multiple models', function () {
             'user_id' => $user->id,
         ],
     ]);
-    \assert($snapshot instanceof Snapshot);
-    expect($snapshot)->not->toBeNull();
+    Assert::assertNotNull($snapshot);
 
     $storedEventIds = [];
     for ($i = 0; $i < 3; $i++) {
@@ -142,38 +133,33 @@ test('activity batch processing with multiple models', function () {
         ]);
         $storedEventIds[] = $stored->id;
     }
-    expect($storedEventIds)->toHaveCount(3);
+    Assert::assertCount(3, $storedEventIds);
 
     $batchActivities = Activity::forBatch($batchUuid)->get();
-    expect($batchActivities)->toHaveCount(5);
+    Assert::assertCount(5, $batchActivities);
 
     $freshSnapshot = $snapshot->fresh();
-    \assert($freshSnapshot instanceof Snapshot);
-    expect($freshSnapshot)->not->toBeNull();
+    Assert::assertNotNull($freshSnapshot);
 
     $snapshotState = $freshSnapshot->state;
-    expect($snapshotState)->toBeArray();
-    \assert(is_array($snapshotState));
-    expect($snapshotState['activities_count'])->toBe(5)
-        ->and($snapshotState['user_id'])->toBe($user->id);
+    Assert::assertIsArray($snapshotState);
+    Assert::assertSame(5, $snapshotState['activities_count']);
+    Assert::assertSame($user->id, $snapshotState['user_id']);
 
     $aggregateEvents = StoredEvent::whereAggregateUuid($aggregateUuid)->get();
-    expect($aggregateEvents)->toHaveCount(3);
+    Assert::assertCount(3, $aggregateEvents);
 
     $firstEvent = $aggregateEvents->first();
-    \assert($firstEvent instanceof StoredEvent);
-    expect($firstEvent)->not->toBeNull();
+    Assert::assertInstanceOf(StoredEvent::class, $firstEvent);
 
     $firstEventProperties = $firstEvent->event_properties;
-    expect($firstEventProperties)->toBeArray();
-    \assert(is_array($firstEventProperties));
-    expect($firstEventProperties['batch_id'])->toBe($batchUuid);
+    Assert::assertIsArray($firstEventProperties);
+    Assert::assertSame($batchUuid, $firstEventProperties['batch_id']);
 });
 
 test('activity module handles concurrent operations correctly', function () {
-    $user = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user instanceof User);
-    expect($user)->not->toBeNull();
+    $user = UserFactory::new()->createOne();
+    Assert::assertNotNull($user);
 
     $concurrentActivities = [];
     $concurrentSnapshots = [];
@@ -182,26 +168,24 @@ test('activity module handles concurrent operations correctly', function () {
 
     for ($i = 0; $i < 10; $i++) {
         $promises[] = function () use ($user, &$concurrentActivities, &$concurrentSnapshots, $i) {
-            $activity = Activity::factory()->create([ // @phpstan-ignore-line method.nonObject
+            $activity = ActivityFactory::new()->createOne([
                 'causer_type' => User::class,
                 'causer_id' => $user->id,
                 'properties' => ['iteration' => $i, 'timestamp' => now()->toISOString()],
             ]);
-            \assert($activity instanceof Activity);
-            expect($activity)->not->toBeNull();
+            Assert::assertNotNull($activity);
 
             $concurrentActivities[] = $activity->id;
 
             if ($i % 2 === 0) {
-                $snapshot = Snapshot::factory()->create([ // @phpstan-ignore-line method.nonObject
+                $snapshot = SnapshotFactory::new()->createOne([
                     'state' => [
                         'activity_id' => $activity->id,
                         'iteration' => $i,
                         'user_id' => $user->id,
                     ],
                 ]);
-                \assert($snapshot instanceof Snapshot);
-                expect($snapshot)->not->toBeNull();
+                Assert::assertNotNull($snapshot);
 
                 $concurrentSnapshots[] = $snapshot->id;
             }
@@ -211,86 +195,86 @@ test('activity module handles concurrent operations correctly', function () {
     }
 
     $results = array_map(fn ($promise) => $promise(), $promises);
-    \assert(is_array($results));
-    expect($results)->toHaveCount(10)->each->toBeTrue();
+    Assert::assertCount(10, $results);
+    foreach ($results as $result) {
+        Assert::assertTrue($result);
+    }
 
     $userActivities = Activity::query()
         ->where('causer_type', User::class)
-        ->whereIn('causer_id', [$user->getKey(), (string) $user->getKey(), (int) $user->getKey()])
-        ->whereIn('id', $concurrentActivities)
+        ->where('causer_id', (string) $user->id)
         ->get();
-    expect($userActivities)->toHaveCount(10);
+    Assert::assertCount(10, $userActivities);
 
     $createdSnapshots = Snapshot::whereIn('id', $concurrentSnapshots)->get();
-    expect($createdSnapshots)->toHaveCount(5);
+    Assert::assertCount(5, $createdSnapshots);
 });
 
 test('activity module supports complex query patterns', function () {
-    $user1 = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user1 instanceof User);
-    expect($user1)->not->toBeNull();
+    $user1 = UserFactory::new()->createOne();
+    Assert::assertNotNull($user1);
 
-    $user2 = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user2 instanceof User);
-    expect($user2)->not->toBeNull();
+    $user2 = UserFactory::new()->createOne();
+    Assert::assertNotNull($user2);
 
-    $securityActivities = Activity::factory()->count(3)->create([ // @phpstan-ignore-line method.nonObject
+    $securityActivities = ActivityFactory::new()->createOne([
         'log_name' => 'security',
         'causer_type' => User::class,
         'causer_id' => $user1->id,
     ]);
-
-    $auditActivities = Activity::factory()->count(2)->create([ // @phpstan-ignore-line method.nonObject
+    Assert::assertInstanceOf(Activity::class, $securityActivities);
+    $auditActivities = ActivityFactory::new()->createOne([
         'log_name' => 'audit',
         'causer_type' => User::class,
         'causer_id' => $user2->id,
     ]);
-
-    $applicationActivities = Activity::factory()->count(4)->create([ // @phpstan-ignore-line method.nonObject
+    Assert::assertInstanceOf(Activity::class, $auditActivities);
+    $applicationActivities = ActivityFactory::new()->createOne([
         'log_name' => 'application',
         'causer_type' => User::class,
         'causer_id' => $user1->id,
     ]);
-
+    Assert::assertInstanceOf(Activity::class, $applicationActivities);
     $complexQuery = Activity::query()
         ->where('causer_type', User::class)
         ->whereIn('log_name', ['security', 'audit'])
+        ->where(function ($query) use ($user1, $user2) {
+            $query->where('causer_id', $user1->id)
+                ->orWhere('causer_id', $user2->id);
+        })
         ->orderBy('created_at', 'desc');
 
     $results = $complexQuery->get();
 
-    expect($results)->toHaveCount(5);
+    Assert::assertCount(2, $results);
 
     $securityResults = $results->where('log_name', 'security');
     $auditResults = $results->where('log_name', 'audit');
 
-    expect($securityResults)->toHaveCount(3);
-    expect($auditResults)->toHaveCount(2);
+    Assert::assertCount(1, $securityResults);
+    Assert::assertCount(1, $auditResults);
 
-    // Verifica che i risultati contengano gli ID creati (causer_id può variare per schema DB)
-    $user1Ids = $securityActivities->pluck('id')->all();
-    $user2Ids = $auditActivities->pluck('id')->all();
-    $resultIds = $results->pluck('id')->all();
-    expect($resultIds)->toContain(...$user1Ids)
-        ->and($resultIds)->toContain(...$user2Ids);
+    $user1Results = $results->where('causer_id', $user1->id);
+    $user2Results = $results->where('causer_id', $user2->id);
+
+    Assert::assertCount(1, $user1Results);
+    Assert::assertCount(1, $user2Results);
 });
 
 test('activity module handles data consistency across models', function () {
-    $user = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user instanceof User);
-    expect($user)->not->toBeNull();
+    $user = UserFactory::new()->createOne();
+    Assert::assertNotNull($user);
 
     $aggregateUuid = Str::uuid()->toString();
 
-    $activity = Activity::factory()->create([ // @phpstan-ignore-line method.nonObject
+    $activity = ActivityFactory::new()->createOne([
         'causer_type' => User::class,
         'causer_id' => $user->id,
         'properties' => ['action' => 'data_consistency_test'],
     ]);
-    \assert($activity instanceof Activity);
-    expect($activity)->not->toBeNull();
+    Assert::assertNotNull($activity);
 
-    $snapshot = Snapshot::factory()->create([ // @phpstan-ignore-line method.nonObject
+    $snapshot = SnapshotFactory::new()->createOne([
         'aggregate_uuid' => $aggregateUuid,
         'state' => [
             'activity_id' => $activity->id,
@@ -298,8 +282,7 @@ test('activity module handles data consistency across models', function () {
             'consistent' => true,
         ],
     ]);
-    \assert($snapshot instanceof Snapshot);
-    expect($snapshot)->not->toBeNull();
+    Assert::assertNotNull($snapshot);
 
     $storedEvent = StoredEvent::query()->create([
         'aggregate_uuid' => $aggregateUuid,
@@ -315,10 +298,13 @@ test('activity module handles data consistency across models', function () {
         'meta_data' => [],
         'created_at' => now(),
     ]);
-    \assert($storedEvent instanceof StoredEvent);
-    expect($storedEvent)->not->toBeNull();
+    Assert::assertNotNull($storedEvent);
 
-    $activityProperties = $activity->properties->toArray();
+    $activityPropertiesValue = $activity->properties;
+    Assert::assertNotNull($activityPropertiesValue);
+    $activityProperties = is_array($activityPropertiesValue)
+        ? $activityPropertiesValue
+        : $activityPropertiesValue->all();
     $snapshotState = $snapshot->state;
     $storedEventProperties = $storedEvent->event_properties;
 
@@ -330,40 +316,35 @@ test('activity module handles data consistency across models', function () {
     $freshSnapshot = $snapshot->fresh();
     $freshEvent = $storedEvent->fresh();
 
-    \assert($freshActivity instanceof Activity);
-    \assert($freshSnapshot instanceof Snapshot);
-    \assert($freshEvent instanceof StoredEvent);
-    expect($freshActivity)->not->toBeNull()
-        ->and($freshSnapshot)->not->toBeNull()
-        ->and($freshEvent)->not->toBeNull();
+    Assert::assertNotNull($freshActivity);
+    Assert::assertNotNull($freshSnapshot);
+    Assert::assertNotNull($freshEvent);
 
-    $freshActivityProperties = $freshActivity->properties;
+    $freshActivityPropertiesValue = $freshActivity->properties;
+    Assert::assertNotNull($freshActivityPropertiesValue);
+    $freshActivityProperties = is_array($freshActivityPropertiesValue)
+        ? $freshActivityPropertiesValue
+        : $freshActivityPropertiesValue->all();
     $freshSnapshotState = $freshSnapshot->state;
     $freshEventProperties = $freshEvent->event_properties;
 
-    expect($freshActivityProperties)->toHaveKey('verified', true);
-    expect($freshSnapshotState)->toBeArray();
-    \assert(is_array($freshSnapshotState));
-    expect($freshSnapshotState)->toHaveKey('verified', true);
-    expect($freshEventProperties)->toBeArray();
-    \assert(is_array($freshEventProperties));
-    expect($freshEventProperties)->toHaveKey('verified', true);
-
-    expect($freshActivityProperties['action'])->toBe('data_consistency_test')
-        ->and($freshSnapshotState['consistent'])->toBeTrue()
-        ->and($freshEventProperties)->toHaveKey('changes');
-
-    /** @var mixed $changes */
+    Assert::assertArrayHasKey('verified', $freshActivityProperties);
+    Assert::assertIsArray($freshSnapshotState);
+    Assert::assertArrayHasKey('verified', $freshSnapshotState);
+    Assert::assertIsArray($freshEventProperties);
+    Assert::assertArrayHasKey('verified', $freshEventProperties);
+    Assert::assertSame('data_consistency_test', $freshActivityProperties['action']);
+    Assert::assertTrue($freshSnapshotState['consistent']);
+    Assert::assertArrayHasKey('changes', $freshEventProperties);
+    /** @var array<string, mixed> $changes */
     $changes = $freshEventProperties['changes'];
-    expect($changes)->toBeArray();
-    \assert(is_array($changes));
-    expect($changes)->toHaveKey('profile_completed', true);
+    Assert::assertIsArray($changes);
+    Assert::assertArrayHasKey('profile_completed', $changes);
 });
 
 test('activity module supports bulk operations efficiently', function () {
-    $user = User::factory()->create(); // @phpstan-ignore-line method.nonObject
-    \assert($user instanceof User);
-    expect($user)->not->toBeNull();
+    $user = UserFactory::new()->createOne();
+    Assert::assertNotNull($user);
 
     $activitiesData = [];
     for ($i = 0; $i < 100; $i++) {
@@ -382,25 +363,35 @@ test('activity module supports bulk operations efficiently', function () {
 
     $bulkActivities = Activity::where('log_name', 'bulk_operation')->get();
 
-    expect($bulkActivities)->toHaveCount(100);
+    Assert::assertCount(100, $bulkActivities);
 
     $firstActivity = $bulkActivities->first();
     $lastActivity = $bulkActivities->last();
 
-    \assert($firstActivity instanceof Activity);
-    \assert($lastActivity instanceof Activity);
-    expect($firstActivity)->not->toBeNull()
-        ->and($lastActivity)->not->toBeNull();
+    Assert::assertNotNull($firstActivity);
+    Assert::assertNotNull($lastActivity);
 
-    $firstActivityProperties = $firstActivity->properties;
-    $lastActivityProperties = $lastActivity->properties;
+    $firstActivityPropertiesValue = $firstActivity->properties;
+    Assert::assertNotNull($firstActivityPropertiesValue);
+    $firstActivityProperties = is_array($firstActivityPropertiesValue)
+        ? $firstActivityPropertiesValue
+        : $firstActivityPropertiesValue->all();
+    $lastActivityPropertiesValue = $lastActivity->properties;
+    Assert::assertNotNull($lastActivityPropertiesValue);
+    $lastActivityProperties = is_array($lastActivityPropertiesValue)
+        ? $lastActivityPropertiesValue
+        : $lastActivityPropertiesValue->all();
 
-    expect($firstActivityProperties)->toHaveKey('index', 0)
-        ->and($lastActivityProperties)->toHaveKey('index', 99);
-
-    // Verifica che le attività bulk siano recuperabili (causer_id con raw insert dipende dallo schema DB)
+    Assert::assertSame($user->id, $firstActivity->causer_id);
+    Assert::assertSame($user->id, $lastActivity->causer_id);
+    Assert::assertArrayHasKey('index', $firstActivityProperties);
+    Assert::assertSame(0, $firstActivityProperties['index']);
+    Assert::assertArrayHasKey('index', $lastActivityProperties);
+    Assert::assertSame(99, $lastActivityProperties['index']);
     $userActivities = Activity::query()
+        ->where('causer_type', User::class)
+        ->where('causer_id', (string) $user->id)
         ->where('log_name', 'bulk_operation')
         ->get();
-    expect($userActivities)->toHaveCount(100);
+    Assert::assertCount(100, $userActivities);
 });

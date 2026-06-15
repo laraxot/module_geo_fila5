@@ -112,6 +112,10 @@ grep -A 10 "'navigation' =>" Modules/*/lang/it/*.php | grep -E "(label|group|ico
 ```
 
 ### Audit Gennaio 2026
+**Data**: 2026-01-22
+**Modulo**: User
+**File corretti**: 11 file con traduzioni `.navigation` sistemate
+**Documentazione**: [User/docs/navigation-translations-fixes-january-2026.md](../../User/docs/navigation-translations-fixes-january-2026.md)
 **Modulo**: User
 **File corretti**: 11 file con traduzioni `.navigation` sistemate
 **Documentazione**: [User/docs/navigation-translations-fixes-archive-1.md](../../user/docs/navigation-translations-fixes-archive-1.md)
@@ -154,4 +158,4 @@ When creating a new module:
 ---
 
 **Maintained by**: Xot Module (Core Laraxot Engine)
-
+**Last Updated**: 2025-11-17

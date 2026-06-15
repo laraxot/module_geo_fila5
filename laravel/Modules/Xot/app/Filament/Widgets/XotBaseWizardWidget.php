@@ -15,7 +15,8 @@ use Modules\Xot\Filament\Traits\HasXotFormAction;
  * **Perche esiste (visione / filosofia / religione / zen)**:
  *
  * ## Separazione delle Responsabilita
- * - `XotBaseWidget` = contratto generico (form lineare, tabelle, statistiche)
+ * - `XotBaseWidget` = contratto generico (senza schema: azioni, viste, traduzioni)
+ * - `XotBaseSchemaWidget` = contratto con schema (form lineare, getFormSchema)
  * - `XotBaseWizardWidget` = specializzazione per wizard multi-step
  *   - Gestisce: navigazione step, persistenza `?step=`, submit/render coerenti col vendor
  * - Widget dominio (es. CreateTicketWizardWidget) = campi specifici e business logic
@@ -50,7 +51,7 @@ use Modules\Xot\Filament\Traits\HasXotFormAction;
  * @see LangServiceProvider
  * @see AutoLabelAction
  */
-abstract class XotBaseWizardWidget extends XotBaseWidget
+abstract class XotBaseWizardWidget extends XotBaseSchemaWidget
 {
     use HasWizard {
         getWizardComponent as getParentWizardComponent;
@@ -59,9 +60,6 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
 
     /** @var ?int Step iniziale (1..N) dopo mount o navigazione; null = ancora da risolvere da ?step=. */
     public ?int $wizardStartStep = null;
-
-    /** @var class-string<\Filament\Resources\Resource> */
-    protected static string $resource;
 
     protected int|string|array $columnSpan = 'full';
 
@@ -85,7 +83,9 @@ abstract class XotBaseWizardWidget extends XotBaseWidget
         if (! inAdmin()) {
             /** @var view-string $wizardView */
             $wizardView = 'pub_theme::components.wizard';
-            $wizard = $wizard->view($wizardView);
+            if (view()->exists($wizardView)) {
+                $wizard = $wizard->view($wizardView);
+            }
         }
 
         return $wizard;

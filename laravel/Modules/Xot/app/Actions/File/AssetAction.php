@@ -8,6 +8,9 @@ use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Xot\Datas\XotData;
+
+use function Safe\copy;
+
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 

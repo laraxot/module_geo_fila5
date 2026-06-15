@@ -589,6 +589,9 @@ Implementare:
 ## 🔗 Collegamenti
 
 **Documentazione Root**:
+- [User/docs/phpstan-level10-fixes.md](../../User/docs/phpstan-level10-fixes.md)
+- [Tenant/docs/phpstan-level10-fixes.md](../../Tenant/docs/phpstan-level10-fixes.md)
+- [Notify/docs/eloquent-properties-best-practices.md](../../Notify/docs/eloquent-properties-best-practices.md)
 - [../../../../docs/code-quality/eloquent-magic-properties.md](../../../../docs/code-quality/eloquent-magic-properties.md)
 - [../../../../docs/phpstan/level-10-guide.md](../../../../docs/phpstan/level-10-guide.md)
 

@@ -134,7 +134,7 @@ DEBUGBAR_ENABLED=false
 ### Composer nel sotto-progetto `Modules/Xot`
 
 Il `composer.json` del modulo può creare un `Modules/Xot/vendor/` locale. Se una installazione precedente è **parziale** (file mancanti in `vendor/`), `composer dump-autoload` fallisce con «does not appear to be a file nor a folder». In quel caso: `rm -rf laravel/Modules/Xot/vendor`, poi ripetere `composer require` da `Modules/Xot`, quindi `rm -rf vendor` e dalla root `laravel/` eseguire `composer install` o `composer go` secondo la procedura di squadra.
-5. **Tema Sixteen / parity CSS:** il file [`segnalazione-parity.css`](../../../Themes/Sixteen/resources/css/segnalazione-parity.css) è importato da `Themes/Sixteen/resources/css/app.css`. Se `#phpdebugbar` ha `display: none !important` **globale**, la barra resta invisibile anche col backend OK — gli screenshot parity usano solo `body.parity-capture-hide-dev-overlays`.
+5. **Tema Sixteen / parity CSS:** il file [`ticket-parity.css`](../../../Themes/Sixteen/resources/css/ticket-parity.css) è importato da `Themes/Sixteen/resources/css/app.css`. Se `#phpdebugbar` ha `display: none !important` **globale**, la barra resta invisibile anche col backend OK — gli screenshot parity usano solo `body.parity-capture-hide-dev-overlays`.
 6. **Check package discovery:** `php artisan package:discover 2>&1 | grep -i debug`
 7. **Verify HTML injection:** `curl -s http://127.0.0.1:8000/some-page | grep -i debugbar`
 

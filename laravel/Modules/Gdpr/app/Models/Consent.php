@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\Gdpr\Models\Consent.
@@ -83,9 +84,16 @@ class Consent extends BaseModel
 {
     use HasUuids;
 
-    // protected $table = 'consent';
-
     public $incrementing = false;
+
+    protected static function booted(): void
+    {
+        static::creating(function (Consent $consent): void {
+            if (blank($consent->user_type)) {
+                $consent->user_type = XotData::make()->getUserClass();
+            }
+        });
+    }
 
     public $fillable = [
         'id',
@@ -101,6 +109,9 @@ class Consent extends BaseModel
         'user_agent',
     ];
 
+    /**
+     * @return BelongsTo<Treatment, $this>
+     */
     public function treatment(): BelongsTo
     {
         return $this->belongsTo(Treatment::class);

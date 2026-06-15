@@ -16,14 +16,25 @@ use function Safe\json_encode;
 use Sushi\Sushi;
 
 /**
- * @property int                          $id
- * @property string|null                  $name
- * @property string|null                  $description
- * @property bool|null                    $status
- * @property int|null                     $priority
- * @property string|null                  $path
- * @property string|null                  $icon
- * @property array<array-key, mixed>|null $colors
+ * @property int                             $id
+ * @property string|null                     $name
+ * @property string|null                     $slug
+ * @property string|null                     $version
+ * @property string|null                     $description
+ * @property bool|null                       $status
+ * @property bool|null                       $enabled
+ * @property bool|null                       $is_active
+ * @property int|null                        $priority
+ * @property string|null                     $path
+ * @property string|null                     $icon
+ * @property array<array-key, mixed>|null    $colors
+ * @property array<array-key, mixed>|null    $dependencies
+ * @property array<array-key, mixed>|null    $config
+ * @property array<array-key, mixed>|null    $metadata
+ * @property \Illuminate\Support\Carbon|null $activation_date
+ * @property \Illuminate\Support\Carbon|null $deactivation_date
+ * @property \Illuminate\Support\Carbon|null $installation_date
+ * @property array<array-key, mixed>|null    $update_history
  *
  * @method static Builder<static>|Module newModelQuery()
  * @method static Builder<static>|Module newQuery()
@@ -51,13 +62,23 @@ final class Module extends BaseModel
 
     protected $fillable = [
         'name',
-        // 'alias',
-        // 'description',
+        'slug',
+        'version',
+        'description',
         'status',
+        'enabled',
+        'is_active',
         'priority',
         'path',
         'icon',
         'colors',
+        'dependencies',
+        'config',
+        'metadata',
+        'activation_date',
+        'deactivation_date',
+        'installation_date',
+        'update_history',
     ];
 
     /**
@@ -102,10 +123,29 @@ final class Module extends BaseModel
             'name' => 'string',
             'description' => 'string',
             'status' => 'boolean',
+            'enabled' => 'boolean',
             'priority' => 'integer',
             'path' => 'string',
             'icon' => 'string',
             'colors' => 'array',
         ];
+    }
+
+    public function isEnabled(): bool
+    {
+        if (null !== $this->enabled) {
+            return (bool) $this->enabled;
+        }
+
+        if (null !== $this->status) {
+            return (bool) $this->status;
+        }
+
+        return (bool) ($this->is_active ?? false);
+    }
+
+    public function isDisabled(): bool
+    {
+        return ! $this->isEnabled();
     }
 }

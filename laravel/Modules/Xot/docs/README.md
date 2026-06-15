@@ -1,107 +1,203 @@
----
-title: documentazione modulo Xot
-module: Xot
-type: index
-status: approved
-tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
-related:
-  - ../README.md
----
+# 🏗️ **Xot Module** - Il Cuore del Framework Laraxot
 
-# Documentazione — modulo Xot
+[![Laravel 12.x](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com/)
+[![Filament 4.x](https://img.shields.io/badge/Filament-4.x-blue.svg)](https://filamentphp.com/)
+[![PHP 8.3](https://img.shields.io/badge/PHP-8.3-blueviolet.svg)](https://www.php.net/)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
+[![Modular Architecture](https://img.shields.io/badge/Architecture-Modular%20Monolith-yellow.svg)](https://martinfowler.com/articles/modular-monolith.html)
 
-> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
+> **🚀 Modulo Xot**: Framework base e cuore architetturale di Laraxot - fornisce classi base, traits, convenzioni e infrastruttura core per tutti i moduli dell'ecosistema.
 
-## Scopo
+## 📋 **Panoramica**
 
-xot module, heart of the laraxot repository
+Il modulo **Xot** è il **framework base** di Laraxot PTVX, un ecosistema modulare basato su **Laravel 12** e **Filament 4**, progettato per applicazioni enterprise. Fornisce gli strumenti fondamentali e i pattern architetturali per garantire coerenza, estensibilità e manutenibilità in tutto il progetto.
 
-## Dove iniziare
+### Principi Fondamentali
+- **Modularità**: Ogni funzionalità è organizzata in moduli indipendenti e autoconsistenti.
+- **Coerenza**: Adozione di una struttura uniforme, convenzioni di naming e best practice standardizzate.
+- **Estensibilità**: Progettato per facilitare l'aggiunta di nuovi moduli e l'espansione delle funzionalità esistenti.
+- **Manutenibilità**: Codice pulito, ben documentato e supportato da strumenti di analisi statica.
 
-- [Wiki locale](./wiki/index.md)
-- [code redundancy audit](./code-redundancy-audit.md)
-- [architecture rules](./architecture-rules.md)
-- [agent edit discipline](./agent-edit-discipline.md)
-- [agent confidence protocol](./agent-confidence-protocol.md)
-- [second brain](./second-brain.md)
+## ⚡ **Architettura Core**
 
+### 🏗️ **Base Classes Pattern**
+Tutti i componenti principali dei moduli devono estendere le classi base fornite da Xot per ereditare funzionalità comuni e garantire coerenza.
 
-## Struttura tipica
+```php
+// Esempio di una Resource Filament
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
-```text
-Xot/
-├── README.md          ← vetrina (root package)
-├── docs/
-│   ├── README.md      ← questo indice
-│   └── wiki/          ← second brain (se presente)
-├── app/ o resources/
-└── composer.json
+class UserResource extends XotBaseResource
+{
+    protected static ?string $model = User::class;
+
+    // Il metodo table() e form() NON devono essere sovrascritti
+    // se non per aggiungere logica specifica, ma la base
+    // è già fornita da XotBaseResource.
+}
 ```
 
-## Namespace / confini
+### 🔧 **Traits Ecosystem**
+Xot fornisce un ricco ecosistema di Trait per aggiungere funzionalità comuni ai modelli e ad altre classi.
+- **HasXotTable**: Aggiunge funzionalità avanzate alle tabelle Filament.
+- **HasUuid**: Gestisce automaticamente UUID come chiavi primarie.
+- **HasMedia**: Integra Spatie Media Library con convenzioni standard.
+- **HasStates**: Fornisce una gestione degli stati per i modelli.
+- **TransTrait**: Semplifica le traduzioni dinamiche.
 
-- Namespace: `Modules\Xot`
-- Non duplicare qui la filosofia marketing: resta nel README root.
+### 📦 **Service Provider Pattern**
+I Service Provider di ogni modulo estendono `XotBaseServiceProvider`, che automatizza la registrazione di:
+- Migrations, Views, Translations, e Config
+- Routes (web.php, api.php)
+- Filament Resources, Pages, e Widgets
+- Comandi Artisan e Policies
 
-## Indice file in docs/ (root)
+## 🎯 **Funzionalità Principali**
 
-| Argomento | File |
-| :--- | :--- |
-| 00-INDEX | [00-INDEX.md](./00-INDEX.md) |
-| 00-MASTER-INDEX | [00-MASTER-INDEX.md](./00-MASTER-INDEX.md) |
-| 00-index-v2 | [00-index-v2.md](./00-index-v2.md) |
-| 00-index | [00-index.md](./00-index.md) |
-| 01-filament-5-migration-guide | [01-filament-5-migration-guide.md](./01-filament-5-migration-guide.md) |
-| 01-index-details | [01-index-details.md](./01-index-details.md) |
-| 01-indexetails | [01-indexetails.md](./01-indexetails.md) |
-| CODE_QUALITY_ANALYSIS | [CODE_QUALITY_ANALYSIS.md](./CODE_QUALITY_ANALYSIS.md) |
-| COMMON_FILAMENT_TRAIT_CONFLICTS | [COMMON_FILAMENT_TRAIT_CONFLICTS.md](./COMMON_FILAMENT_TRAIT_CONFLICTS.md) |
-| COMPREHENSIVE_CODE_ANALYSIS | [COMPREHENSIVE_CODE_ANALYSIS.md](./COMPREHENSIVE_CODE_ANALYSIS.md) |
-| COMPREHENSIVE_IMPROVEMENT_RECOMMENDATIONS | [COMPREHENSIVE_IMPROVEMENT_RECOMMENDATIONS.md](./COMPREHENSIVE_IMPROVEMENT_RECOMMENDATIONS.md) |
-| DAISYUI | [DAISYUI.md](./DAISYUI.md) |
-| DIRECTORY_STRUCTURE_RULES | [DIRECTORY_STRUCTURE_RULES.md](./DIRECTORY_STRUCTURE_RULES.md) |
-| DRY_KISS_REFACTORING | [DRY_KISS_REFACTORING.md](./DRY_KISS_REFACTORING.md) |
-| LARAXOT_ARCHITECTURE_RULES | [LARAXOT_ARCHITECTURE_RULES.md](./LARAXOT_ARCHITECTURE_RULES.md) |
-| LICENSE | [LICENSE.md](./LICENSE.md) |
-| MCP_SERVERS | [MCP_SERVERS.md](./MCP_SERVERS.md) |
-| MIGRATION_PHILOSOPHY | [MIGRATION_PHILOSOPHY.md](./MIGRATION_PHILOSOPHY.md) |
-| MISSING_TRAITS_AND_IMPROVEMENTS | [MISSING_TRAITS_AND_IMPROVEMENTS.md](./MISSING_TRAITS_AND_IMPROVEMENTS.md) |
-| MODEL_INHERITANCE_AUDIT | [MODEL_INHERITANCE_AUDIT.md](./MODEL_INHERITANCE_AUDIT.md) |
-| MODERN_TECH_STACK_OPTIMIZATION | [MODERN_TECH_STACK_OPTIMIZATION.md](./MODERN_TECH_STACK_OPTIMIZATION.md) |
-| ON-DEMAND-PATTERN | [ON-DEMAND-PATTERN.md](./ON-DEMAND-PATTERN.md) |
-| PERFORMANCE-OPTIMIZATION | [PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md) |
-| PERFORMANCE_GUIDELINES | [PERFORMANCE_GUIDELINES.md](./PERFORMANCE_GUIDELINES.md) |
-| PRD | [PRD.md](./PRD.md) |
-| PRODUCT_LAUNCH_PLAN | [PRODUCT_LAUNCH_PLAN.md](./PRODUCT_LAUNCH_PLAN.md) |
-| PRODUCT_ROADMAP | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) |
-| PRODUCT_STRATEGY | [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md) |
-| PROJECT-STRUCTURE | [PROJECT-STRUCTURE.md](./PROJECT-STRUCTURE.md) |
-| QMD-SETUP | [QMD-SETUP.md](./QMD-SETUP.md) |
-| REDUNDANCY_ANALYSIS | [REDUNDANCY_ANALYSIS.md](./REDUNDANCY_ANALYSIS.md) |
-| SCRIPT_RISOLUZIONE_CONFLITTI | [SCRIPT_RISOLUZIONE_CONFLITTI.md](./SCRIPT_RISOLUZIONE_CONFLITTI.md) |
-| SPRINT_PLANNING | [SPRINT_PLANNING.md](./SPRINT_PLANNING.md) |
-| TRANSLATION_STRUCTURE | [TRANSLATION_STRUCTURE.md](./TRANSLATION_STRUCTURE.md) |
-| UNDERSCORE_DOCS_RULE | [UNDERSCORE_DOCS_RULE.md](./UNDERSCORE_DOCS_RULE.md) |
-| USER_RESEARCH | [USER_RESEARCH.md](./USER_RESEARCH.md) |
-| WIDGET_IMPLEMENTATION_RULES | [WIDGET_IMPLEMENTATION_RULES.md](./WIDGET_IMPLEMENTATION_RULES.md) |
-| XOTBASE_ARCHITECTURE_PHILOSOPHY | [XOTBASE_ARCHITECTURE_PHILOSOPHY.md](./XOTBASE_ARCHITECTURE_PHILOSOPHY.md) |
-| about | [about.md](./about.md) |
-| access-level-parameter-fix | [access-level-parameter-fix.md](./access-level-parameter-fix.md) |
+### ⚡ **Actions Framework**
+Un pattern standardizzato per incapsulare la business logic in classi riutilizzabili e testabili.
+```php
+use Modules\Xot\Actions\XotBaseAction;
+
+class CreateUserAction extends XotBaseAction
+{
+    public function execute(array $data): User
+    {
+        $user = User::create($data);
+        $this->logActivity('user.created', $user); // Logging automatico
+        event(new UserCreated($user)); // Dispatching eventi
+        return $user;
+    }
+}
+```
+
+### 🏷️ **Enums System**
+Le Enum di Xot implementano `XotBaseEnum`, che fornisce traduzioni automatiche e altri helper.
+```php
+use Modules\Xot\Enums\XotBaseEnum;
+
+enum UserStatus: string implements XotBaseEnum
+{
+    case ACTIVE = 'active';
+    case INACTIVE = 'inactive';
+
+    public function getLabel(): string
+    {
+        // Traduzione gestita centralmente
+        return __('xot::enums.user_status.'.$this->value);
+    }
+}
+```
+
+## 🛠️ **Sviluppo e Qualità**
+
+### Convenzioni
+- **Namespace**: I namespace dei moduli **NON** devono includere il segmento `app`.
+- **Tipizzazione Forte**: Utilizzo di `declare(strict_types=1);` e type hints rigorosi in tutto il codice.
+- **File di Traduzione**: Seguire la struttura espansa `['label' => '...', 'tooltip' => '...']`.
+
+### Strumenti di Qualità
+- **PHPStan**: Livello 10. La configurazione è in `phpstan.neon`.
+- **Pest**: Utilizzato per i test della business logic nei moduli core.
+- **Laravel Pint**: Formattazione del codice secondo lo standard PSR-12 e le convenzioni Laraxot.
+
+Esegui i controlli di qualità dalla root del progetto Laravel:
+```bash
+./vendor/bin/phpstan analyse Modules/Xot --level=max
+./vendor/bin/pest Modules/Xot/tests
+./vendor/bin/pint
+```
+
+### 🏆 PHPStan Level 10 Compliance (Dicembre 2025)
+
+**Status**: ✅ **0 Errori** (16 → 0)
+**Approccio**: Fix, Don't Ignore
+**Baseline**: Nessuno
+
+Il modulo Xot ha raggiunto la piena conformità PHPStan Level 10 senza compromessi:
+- Zero baseline entries
+- Nessuna modifica a phpstan.neon
+- Solo correzioni reali del codice
+- Type safety al 100%
+
+**Documentazione dettagliata**:
+- [PHPStan Patterns Dec 2025](./phpstan-patterns-dec-2025.md)
+- [PHPStan Level 10 Success](../../../docs/phpstan-level-10-success.md)
+
+## 🗺️ **Roadmap**
+1.  **Consolidamento Documentazione**: Unificare e semplificare la documentazione di tutti i moduli (obiettivo: 500 → 120 file).
+2.  **Automazione Script di Merge**: Creare script per la gestione automatica dei conflitti comuni e la validazione pre-commit.
+3.  **Aumento Test Coverage**: Portare la copertura dei test per i moduli core sopra il 90%.
+4.  **Dashboard Health Check**: Introdurre una dashboard per monitorare lo stato di salute e la compliance di tutti i moduli.
+
+## 🔗 **Link Utili**
+- [CHANGELOG](./CHANGELOG.md)
+- [Guida alla Risoluzione dei Conflitti Git](../../../bashscripts/docs/git-conflict-resolution-guide.md)
+- [Convenzioni sui Namespace](./namespace_conventions.md)
+- [Linee Guida per il Testing](./testing.md)
+---
+title: "Xot Module Documentation"
+type: documentation
+tags: [module, documentation]
+created: 2026-06-05
+updated: 2026-06-05
+---
+
+# Modulo Xot - Documentazione
+
+## Overview
+
+Il modulo **Xot** è il nucleo fondativo dell'intero progetto [PROJECT_NAME] platform. Fornisce classi base, trait, servizi e configurazioni condivise da tutti gli altri moduli.
+
+## Architettura
+
+### Classi Base Principali
+
+| Classe | Scopo | Estende |
+|--------|-------|---------|
+| `XotBaseModel` | Modello base per tutti i moduli | `Illuminate\Database\Eloquent\Model` |
+| `XotBaseMigration` | Migrazioni anonime standardizzate | `Illuminate\Database\Migrations\Migration` |
+| `XotBaseResource` | Risorse Filament base | `Filament\Resources\Resource` |
+| `XotBaseServiceProvider` | ServiceProvider modulare | `Illuminate\Support\ServiceProvider` |
+| `XotBaseWidget` | Widget Filament base | `Filament\Widgets\Widget` |
+| `XotBaseWizardWidget` | Widget con form wizard multi-step (Filament `Wizard` / `Step`) | `XotBaseWidget` |
+
+### Trait Fondamentali
+
+- `HasXotTable`: Gestione tabelle Filament centralizzata
+- `InteractsWithForms`: Gestione form nei widget
+- `RelationX`: Relazioni many-to-many estese
 
 ## Collegamenti
+- [Installazione stack LAMP / PHP 8.4 (Debian, repo Sury)](./lamp/install.txt)
+- [Vite Configuration](./vite-configuration.md)
+- [Theme Assets Workflow](./theme-assets-workflow.md)
+- [BMAD Method (progetto)](../../../docs/bmad/setup-guide.md) — processo AI/agile e artefatti `_bmad-output/`
 
-- [README root (vetrina)](../README.md)
-- [Xot (framework base)](../Xot/docs/README.md)
-- [Wiki progetto](../../../../docs/wiki/README.md)
-- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
+- [Documentazione Root](../../../docs/XOT_MODULE.md)
+- [Regole Architettura](./architecture/)
+- [PHPStan Configuration](./phpstan/)
 
-## Per agenti
+## Regole Critiche
 
-1. Leggere scopo in questo file.
-2. Aprire `docs/wiki/index.md` se esiste.
-3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
+1. **MAI estendere direttamente classi Laravel/Filament** - Usare sempre wrapper Xot
+2. **Configurazione PHPStan solo in `laravel/phpstan.neon`**
+3. **Tutte le migrazioni devono usare classi anonime**
 
-## Panoramica estesa
+## Backlinks
 
-- [overview-extended.md](./overview-extended.md) — contenuto storico da `readme.md` (kebab-case unificato)
+- [User Module](../User/docs/)
+- [UI Module](../UI/docs/)
+- [Tenant Module](../Tenant/docs/)
+
+## LLM Wiki Workflow
+
+- Canonical wiki layer: [../../../../docs/wiki/README.md](../../../../docs/wiki/README.md)
+- Governance page: [../../../../docs/wiki/concepts/llm-wiki-governance.md](../../../../docs/wiki/concepts/llm-wiki-governance.md)
+
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]

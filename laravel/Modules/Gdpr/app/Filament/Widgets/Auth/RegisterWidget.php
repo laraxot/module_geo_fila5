@@ -58,6 +58,11 @@ class RegisterWidget extends XotBaseWidget
         return ! Auth::check();
     }
 
+    protected function getView(): string
+    {
+        return 'filament.widgets.auth.register';
+    }
+
     public function getFormSchema(): array
     {
         // Not used - custom Blade view handles form rendering
@@ -100,11 +105,9 @@ class RegisterWidget extends XotBaseWidget
         app(HandleSuccessfulRegistrationAction::class)->execute($user, $this);
     }
 
-    protected function getView(): string
-    {
-        return 'filament.widgets.auth.register';
-    }
-
+    /**
+     * @param array<string, mixed> $formData
+     */
     protected function logRegistrationAttempt(array $formData): void
     {
         $email = app(SafeStringCastAction::class)->execute($formData['email']);

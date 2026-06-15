@@ -1,5 +1,6 @@
 # Troubleshooting: Livewire 404 Error
 
+**Data**: 11 Novembre 2025
 **Errore**: `404 Not Found` su `/livewire/update`
 
 ## 🔍 Problema

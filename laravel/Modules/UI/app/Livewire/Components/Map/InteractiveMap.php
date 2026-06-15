@@ -131,8 +131,12 @@ final class InteractiveMap extends Component
         try {
             $mapService = app(MapService::class);
             $filters = $this->getMapFilters();
-            $this->markers = $mapService->getMarkers($filters);
-            $this->stats = $mapService->getMapStats($filters);
+            $markers = $mapService->getMarkers($filters);
+            Assert::isArray($markers);
+            $this->markers = $markers;
+            $stats = $mapService->getMapStats($filters);
+            Assert::isArray($stats);
+            $this->stats = $stats;
         } catch (\Exception $e) {
             $this->addError('map', 'Errore nel caricamento dei marker: '.$e->getMessage());
             $this->markers = [];

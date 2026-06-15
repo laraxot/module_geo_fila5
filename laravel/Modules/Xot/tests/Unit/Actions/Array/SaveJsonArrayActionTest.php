@@ -5,6 +5,17 @@ declare(strict_types=1);
 namespace Modules\Xot\Tests\Unit\Actions\Array;
 
 use Modules\Xot\Actions\Array\SaveJsonArrayAction;
+use Modules\Xot\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\file_get_contents;
+use function Safe\glob;
+use function Safe\json_decode;
+use function Safe\mkdir;
+use function Safe\rmdir;
+use function Safe\unlink;
+
+uses(TestCase::class);
 
 beforeEach(function (): void {
     $this->action = app(SaveJsonArrayAction::class);
@@ -13,17 +24,22 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
-    if (isset($this->tempDir) && is_dir($this->tempDir)) {
-        foreach (glob($this->tempDir.'/*') ?: [] as $file) {
-            unlink($file);
+    $tempDir = $this->tempDir;
+    if (isset($tempDir) && is_string($tempDir) && is_dir($tempDir)) {
+        foreach (glob($tempDir.'/*') ?: [] as $file) {
+            if (is_string($file)) {
+                unlink($file);
+            }
         }
-        rmdir($this->tempDir);
+        rmdir($tempDir);
     }
 });
 
-it('saves array to json', function (): void {
-    $path = $this->tempDir.'/d.json';
-    $result = $this->action->execute(['k' => 'v'], $path);
-    expect($result)->toBeTrue();
-    expect(json_decode(file_get_contents($path), true))->toBe(['k' => 'v']);
+describe('Save Json Array Action', function (): void {
+    test('saves array to json', function (): void {
+        $path = $this->tempDir.'/d.json';
+        $result = app(SaveJsonArrayAction::class)->execute(['k' => 'v'], $path);
+        Assert::assertTrue($result);
+        Assert::assertSame(['k' => 'v'], json_decode(file_get_contents($path), true));
+    });
 });

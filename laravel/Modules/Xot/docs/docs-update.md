@@ -225,6 +225,15 @@ Aggiornamento massivo documentazione progetto con:
 ### bashscripts
 
 - [bashscripts README](../../../bashscripts/readme.md)
+- [Xot Module](./README.md) - Questo file
+- [Tenant Module](../../Tenant/docs/README.md)
+- [IndennitaResponsabilita Module](../../IndennitaResponsabilita/docs/README.md)
+- [Sigma Module](../../Sigma/docs/README.md)
+- [Rating Module](../../Rating/docs/README.md)
+
+### bashscripts
+
+- [bashscripts README](../../../bashscripts/README.md)
 - [Script Documentation](../../../bashscripts/docs/)
 
 ### External

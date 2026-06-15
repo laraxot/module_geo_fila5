@@ -1,5 +1,6 @@
 # Analisi DRY e KISS - Architettura Modelli
 
+**Data**: 2025-10-15
 **Autore**: Claude Code Analysis
 **Obiettivo**: Identificare duplicazioni e complessità per rendere l'architettura più DRY (Don't Repeat Yourself) e KISS (Keep It Simple, Stupid)
 
@@ -350,6 +351,7 @@ Manutenibilità: +40%
 - [Laravel Model Connections](https://laravel.com/docs/12.x/eloquent#database-connections)
 - [XotBasePivot Implementation](../../app/Models/XotBasePivot.php) - Auto-discovery già implementato
 - [XotBaseMorphPivot Implementation](../../app/Models/XotBaseMorphPivot.php) - Auto-discovery già implementato
+- [CLAUDE.md](../../../CLAUDE.md) - Convenzioni architetturali
 - [CLAUDE.md](../../../claude.md) - Convenzioni architetturali
 
 ## 🎓 Lezioni Apprese
@@ -366,6 +368,7 @@ Manutenibilità: +40%
 **Next**: Implementare Soluzione 1 e 2 (Priorità ALTA)
 # Analisi DRY e KISS - Architettura Modelli
 
+**Data**: 2025-10-15
 **Autore**: Claude Code Analysis
 **Obiettivo**: Identificare duplicazioni e complessità per rendere l'architettura più DRY (Don't Repeat Yourself) e KISS (Keep It Simple, Stupid)
 
@@ -716,6 +719,7 @@ Manutenibilità: +40%
 - [Laravel Model Connections](https://laravel.com/docs/12.x/eloquent#database-connections)
 - [XotBasePivot Implementation](../../app/Models/XotBasePivot.php) - Auto-discovery già implementato
 - [XotBaseMorphPivot Implementation](../../app/Models/XotBaseMorphPivot.php) - Auto-discovery già implementato
+- [CLAUDE.md](../../../CLAUDE.md) - Convenzioni architetturali
 - [CLAUDE.md](../../../claude.md) - Convenzioni architetturali
 
 ## 🎓 Lezioni Apprese

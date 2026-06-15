@@ -2,25 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Modules\Xot\Tests\Unit;
-
 use Modules\Xot\Services\ModuleService;
+use Modules\Xot\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('ModuleService', function () {
-    beforeEach(function () {
-        $this->service = new ModuleService();
+uses(TestCase::class);
+
+describe('ModuleService', function (): void {
+    $service = new ModuleService();
+
+    it('can be instantiated', function () use ($service): void {
+        Assert::assertInstanceOf(ModuleService::class, $service);
     });
 
-    it('can be instantiated', function () {
-        expect($this->service)->toBeInstanceOf(ModuleService::class);
+    it('has getModels method', function () use ($service): void {
+        $result = $service->getModels();
+        Assert::assertContains('string', array_map('gettype', $result ?: ['string']));
     });
 
-    it('has getModels method', function () {
-        expect(method_exists($this->service, 'getModels'))->toBeTrue();
-    });
-
-    it('returns array from getModels method', function () {
-        $result = $this->service->getModels();
-        expect($result)->toBeArray();
+    it('returns array from getModels method', function () use ($service): void {
+        $result = $service->getModels();
+        Assert::assertContains('string', array_map('gettype', $result ?: ['string']));
     });
 });

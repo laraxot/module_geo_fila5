@@ -5,6 +5,16 @@ declare(strict_types=1);
 namespace Modules\Xot\Tests\Unit\Actions\Arr;
 
 use Modules\Xot\Actions\Arr\SavePhpArrayAction;
+use Modules\Xot\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\file_get_contents;
+use function Safe\glob;
+use function Safe\mkdir;
+use function Safe\rmdir;
+use function Safe\unlink;
+
+uses(TestCase::class);
 
 beforeEach(function (): void {
     $this->action = app(SavePhpArrayAction::class);
@@ -16,28 +26,32 @@ beforeEach(function (): void {
 
 afterEach(function (): void {
     if (isset($this->tempDir) && file_exists($this->tempDir)) {
-        $files = glob($this->tempDir.'/*');
-        if (false !== $files) {
-            array_map('unlink', $files);
+        $dir = $this->tempDir;
+        $files = glob($dir.'/*');
+        foreach ($files as $file) {
+            $this->assertIsString($file);
+            unlink($file);
         }
-        rmdir($this->tempDir);
+        rmdir($dir);
     }
 });
 
-it('saves array to php file', function (): void {
-    $data = ['a' => 1, 'b' => 'test'];
-    $path = $this->tempDir.'/data.php';
+describe('Save Php Array Action', function (): void {
+    test('saves array to php file', function (): void {
+        $data = ['a' => 1, 'b' => 'test'];
+        $path = $this->tempDir.'/data.php';
 
-    $result = $this->action->execute($data, $path);
+        $result = app(SavePhpArrayAction::class)->execute($data, $path);
 
-    expect($result)->toBeTrue();
-    $loaded = require $path;
-    expect($loaded)->toBe($data);
-});
+        Assert::assertTrue($result);
+        $loaded = require $path;
+        Assert::assertSame($data, $loaded);
+    });
 
-it('saved file has strict types', function (): void {
-    $path = $this->tempDir.'/strict.php';
-    $this->action->execute(['x' => 1], $path);
+    test('saved file has strict types', function (): void {
+        $path = $this->tempDir.'/strict.php';
+        app(SavePhpArrayAction::class)->execute(['x' => 1], $path);
 
-    expect(file_get_contents($path))->toContain('declare(strict_types=1)');
+        Assert::assertStringContainsString('declare(strict_types=1)', file_get_contents($path));
+    });
 });

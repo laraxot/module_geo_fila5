@@ -34,10 +34,8 @@ class SafeArrayByModelCastAction
         $data = [];
         foreach ($model->getAttributes() as $key => $value) {
             try {
-                $data[$key] = $model->$key;
-
-                /* @phpstan-ignore-next-line */
-            } catch (\ValueError|\Error $e) {
+                $data[$key] = $model->getAttribute($key);
+            } catch (\ValueError|\Error) {
             }
         }
 

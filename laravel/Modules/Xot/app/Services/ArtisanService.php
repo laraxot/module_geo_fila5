@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use function Safe\define;
 use function Safe\fopen;
 use function Safe\preg_match_all;
+use function Safe\realpath;
 
 use Webmozart\Assert\Assert;
 

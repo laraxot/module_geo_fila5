@@ -53,6 +53,7 @@ class TranslationFile extends BaseModel
         'content',
     ];
 
+    /** @var array<string, string> */
     protected array $form = [
         'key' => 'string',
         'path' => 'string',
@@ -61,11 +62,15 @@ class TranslationFile extends BaseModel
         'content' => 'json',
     ];
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         $files = app(GetAllTranslationAction::class)->execute();
 
-        return Arr::map($files, function ($item) {
+        /** @var array<int, array<string, mixed>> $result */
+        $result = Arr::map($files, function ($item) {
             if (! is_array($item)) {
                 return [];
             }
@@ -101,6 +106,8 @@ class TranslationFile extends BaseModel
             // dddx($item);
             return $item;
         });
+
+        return $result;
     }
 
     /**

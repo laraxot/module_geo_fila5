@@ -105,7 +105,7 @@ abstract class XotBaseResource extends FilamentResource
     }
 
     /**
-     * @return array<string, Component>
+     * @return array<int|string, \Filament\Schemas\Components\Component>
      */
     abstract public static function getFormSchema(): array;
 
@@ -210,13 +210,10 @@ abstract class XotBaseResource extends FilamentResource
         /** @var class-string<Page> $view */
         $view = $view;
 
-        /** @var array<string, PageRegistration> $pages */
-        $pages = [
-            'index' => $index::route('/'),
-            'create' => $create::route('/create'),
-            'edit' => $edit::route('/{record}/edit'),
-            // 'view' => $view::route('/{record}'),
-        ];
+        $pages = [];
+        $pages['index'] = $index::route('/');
+        $pages['create'] = $create::route('/create');
+        $pages['edit'] = $edit::route('/{record}/edit');
 
         if (class_exists($view)) {
             $pages['view'] = $view::route('/{record}');

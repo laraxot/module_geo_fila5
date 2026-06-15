@@ -11,6 +11,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Contracts\Support\Htmlable;
+use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotForm;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
@@ -20,8 +21,11 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
+    use HasRelationshipModelClass;
     use HasXotForm;
-    use HasXotTable;
+    use HasXotTable {
+        HasRelationshipModelClass::getModelClass insteadof HasXotTable;
+    }
     use NavigationLabelTrait;
 
     protected static string $recordTitleAttribute = 'name';

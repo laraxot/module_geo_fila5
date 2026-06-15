@@ -418,6 +418,10 @@ return [
 - [Best Practices Laravel 12](./laravel_12_guide.md)
 - [Pattern Filament](./filament_patterns.md)
 - [Performance Optimization](./performance_guide.md)
+- [Architettura Moduli](./ARCHITECTURE.md)
+- [Best Practices Laravel 12](./LARAVEL_12_GUIDE.md)
+- [Pattern Filament](./FILAMENT_PATTERNS.md)
+- [Performance Optimization](./PERFORMANCE_GUIDE.md)
 
 ## 📊 Metriche di Qualità
 
@@ -435,6 +439,7 @@ return [
 
 ---
 
+**Data Analisi**: 2025-01-06
 **Data Analisi**: [DATE]
 **Analista**: AI Code Review System
 **Priorità**: CRITICA - Richiede intervento immediato

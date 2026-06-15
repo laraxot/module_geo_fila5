@@ -1,56 +1,53 @@
 ---
-title: documentazione modulo gdpr
-module: Gdpr
-type: index
-status: approved
-tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
-related:
-  - ../README.md
+title: "Gdpr Module Documentation"
+type: documentation
+tags: [module, documentation]
+created: 2026-06-05
+updated: 2026-06-05
 ---
 
-# Documentazione — modulo Gdpr
+# Modulo Gdpr
 
-> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
+## Overview
+
+Il modulo **Gdpr** fa parte dell'ecosistema Laraxot PTVX.
 
 ## Scopo
 
-Conformità GDPR completa con gestione consensi, privacy policy e diritti utente
+Gestisce le funzionalità specifiche del dominio Gdpr.
 
-## Dove iniziare
+## Struttura
 
-- [Wiki locale](./wiki/index.md)
-- [Audit ridondanza](./code-redundancy-audit.md)
-- [Regole architettura](./architecture-rules.md)
-- [Disciplina agenti](./agent-edit-discipline.md)
-
-
-## Struttura tipica
-
-```text
+```
 Gdpr/
-├── README.md          ← vetrina (root package)
+├── app/
+│   ├── Models/
+│   ├── Filament/
+│   └── ...
 ├── docs/
-│   ├── README.md      ← questo indice
-│   └── wiki/          ← second brain (se presente)
-├── app/ o resources/
-└── composer.json
+├── lang/
+└── resources/
 ```
 
-## Namespace / confini
+## Dipendenze
 
-- Namespace: `Modules\Gdpr`
-- Non duplicare qui la filosofia marketing: resta nel README root.
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/)
 
 ## Collegamenti
 
-- [README root (vetrina)](../README.md)
-- [Xot (framework base)](../Xot/docs/)
-- [Wiki progetto](../../../docs/wiki/README.md)
-- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
+- [Documentazione Root](../../../docs/GDPR_MODULE.md)
 
-## Per agenti
+## Backlinks
 
-1. Leggere scopo in questo file.
-2. Aprire `docs/wiki/index.md` se esiste.
-3. Seguire [disciplina issue GitHub](../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
+- [Moduli correlati](../README.md)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
+
+## Documentation
+
+- [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
+- [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
+- [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
+- [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout

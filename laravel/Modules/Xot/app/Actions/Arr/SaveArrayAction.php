@@ -10,6 +10,9 @@ class SaveArrayAction
 {
     use QueueableAction;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function execute(array $data, string $filename, string $format = 'php'): bool
     {
         return match ($format) {

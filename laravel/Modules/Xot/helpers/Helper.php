@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Filament\Facades\Filament;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -133,6 +134,7 @@ if (! function_exists('dddx')) {
 }
 
 if (! function_exists('getFilename')) {
+    /** @param array<string, mixed> $params */
     function getFilename(array $params): string
     {
         $tmp = debug_backtrace();
@@ -152,6 +154,7 @@ if (! function_exists('req_uri')) {
 }
 
 if (! function_exists('in_admin')) {
+    /** @param array<string, mixed> $params */
     function in_admin(array $params = []): bool
     {
         return inAdmin($params);
@@ -159,6 +162,7 @@ if (! function_exists('in_admin')) {
 }
 
 if (! function_exists('inAdmin')) {
+    /** @param array<string, mixed> $params */
     function inAdmin(array $params = []): bool
     {
         if (isset($params['in_admin'])) {
@@ -267,6 +271,7 @@ if (! function_exists('params2ContainerItem')) {
 }
 
 if (! function_exists('getModelFields')) {
+    /** @return array<int, string> */
     function getModelFields(Model $model): array
     {
         return $model->getConnection()->getSchemaBuilder()->getColumnListing($model->getTable());
@@ -345,9 +350,17 @@ if (! function_exists('getModuleNameFromModelName')) {
 }
 
 if (! function_exists('getAllModules')) {
+    /** @return array<string, mixed> */
     function getAllModules(): array
     {
-        return Module::all();
+        $modules = Module::all();
+        $normalized = [];
+
+        foreach ($modules as $name => $module) {
+            $normalized[(string) $name] = $module;
+        }
+
+        return $normalized;
     }
 }
 
@@ -386,6 +399,7 @@ if (! function_exists('authId')) {
 }
 
 if (! function_exists('trans_string')) {
+    /** @param array<string, mixed> $replace */
     function trans_string(string $key, array $replace = [], ?string $locale = null): string
     {
         $safeReplace = [];
@@ -400,5 +414,132 @@ if (! function_exists('trans_string')) {
         $result = __($key, $safeReplace, $locale);
 
         return is_string($result) ? $result : $key;
+    }
+}
+
+if (! function_exists('isJson')) {
+    function isJson(string $string): bool
+    {
+        return json_validate($string);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Pest Laravel Helper Stubs
+|--------------------------------------------------------------------------
+|
+| Stubs for Pest global testing functions.
+| These eliminate 'function not found' errors from PHPStan.
+|
+*/
+
+if (! function_exists('actingAs')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function actingAs(Authenticatable|int|string|null $user = null, ?string $driver = null): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('get')) {
+    /**
+     * @param array<string, mixed> $options
+     *
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function get(string $uri = '', array $options = []): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('post')) {
+    /**
+     * @param array<string, mixed> $options
+     *
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function post(string $uri, mixed $data = [], array $options = []): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('put')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function put(string $uri, mixed $data = []): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('patch')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function patch(string $uri, mixed $data = []): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('delete')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function delete(string $uri): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('head')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function head(string $uri): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('options')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function options(string $uri): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('followingRedirects')) {
+    /**
+     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     */
+    function followingRedirects(int $number = 5): Illuminate\Testing\TestResponse
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('test')) {
+    /** @param  string  $title  @param  \Closure  $callback  @return void */
+    function test(string $title, Closure $callback): void
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
+    }
+}
+
+if (! function_exists('describe')) {
+    /** @param  string  $title  @param  \Closure  $callback  @return void */
+    function describe(string $title, Closure $callback): void
+    {
+        throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
 }

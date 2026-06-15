@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Lang\Actions;
 
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class ReadTranslationFileAction
 {
@@ -36,8 +37,16 @@ class ReadTranslationFileAction
             throw new \Exception("File di traduzione non valido: {$filePath}");
         }
 
-        /* @phpstan-ignore return.type */
-        return $translations;
+        Assert::isArray($translations);
+
+        foreach (array_keys($translations) as $translationKey) {
+            Assert::string($translationKey);
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = $translations;
+
+        return $result;
     }
 
     /**

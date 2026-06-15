@@ -14,15 +14,11 @@ use Illuminate\Support\Js;
  */
 trait HasXotFormAction
 {
-    /**
-     * @return class-string
-     */
+    protected static string $resource = '';
+
     public static function getResource(): string
     {
-        /** @var class-string $resource */
-        $resource = static::$resource;
-
-        return $resource;
+        return static::$resource;
     }
 
     protected function getCancelFormAction(): Action

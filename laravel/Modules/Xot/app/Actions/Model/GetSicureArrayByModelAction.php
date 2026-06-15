@@ -25,10 +25,8 @@ class GetSicureArrayByModelAction
             $data = [];
             foreach ($model->getAttributes() as $key => $value) {
                 try {
-                    $data[$key] = $this->$key;
-
-                    /* @phpstan-ignore-next-line */
-                } catch (\ValueError $e) {
+                    $data[(string) $key] = $model->getAttribute((string) $key);
+                } catch (\ValueError) {
                 }
             }
 

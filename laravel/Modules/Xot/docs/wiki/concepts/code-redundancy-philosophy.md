@@ -70,7 +70,7 @@ Questo documento fissa **come decidere** cosa tenere, cosa fondere e cosa archiv
 | # | Perplessità | Modulo | Azione proposta |
 |---|-------------|--------|-----------------|
 | 1 | `MailTemplateResource` vs `NotificationTemplateResource` — convergenza futura? | Notify | ADR + product owner |
-| 2 | ~~`Theme_One/` vs `Themes/One/` — alias o copia morta?~~ — risolto 2026-05-26: `Theme_One/` rinominato in `Three/` (regola naming: PascalCase singolo, no prefisso `Theme_`) | Themes | — |
+| 2 | `Theme_One/` vs `Themes/One/` — alias o copia morta? | Themes | Inventario directory + delete o redirect doc |
 | 3 | Merge Composer: `Themes/*/composer.json` **non** nel merge root | Xot/DevOps | Documentare autoload theme esplicito |
 | 4 | Test su `Widgets\LoginWidget` mentre runtime usa `Widgets\Auth\LoginWidget` | User | Allineare test al path canonico |
 | 5 | Risorse `CriteriOptionResource` ×3 (Ptv, Performance, Progressioni) — estrarre base Ptv? | Ptv | Spike refactor o documentare differenze |

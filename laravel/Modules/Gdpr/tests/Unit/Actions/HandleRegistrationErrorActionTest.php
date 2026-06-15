@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Actions;
 
-uses(TestCase::class);
-
 use Modules\Gdpr\Actions\Registration\HandleRegistrationErrorAction;
 use Modules\Gdpr\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-test('HandleRegistrationErrorAction can be instantiated', function () {
+uses(TestCase::class);
+
+test('HandleRegistrationErrorAction can be instantiated', function (): void {
     $action = new HandleRegistrationErrorAction();
-    $action = new HandleRegistrationErrorAction();
-    expect($action)->toBeInstanceOf(HandleRegistrationErrorAction::class);
+    Assert::assertInstanceOf(HandleRegistrationErrorAction::class, $action);
 });
 
-test('HandleRegistrationErrorAction execute method exists', function () {
+test('HandleRegistrationErrorAction execute method exists', function (): void {
     $action = new HandleRegistrationErrorAction();
-    $action = new HandleRegistrationErrorAction();
-    expect(method_exists($action, 'execute'))->toBeTrue();
+    Assert::assertTrue((new \ReflectionClass($action))->hasMethod('execute'));
 });

@@ -124,6 +124,7 @@ Codice pratico.
 
 ## Collegamenti
 - [Doc correlata](./relativa.md)
+*Ultimo aggiornamento: [data]*
 - [Root docs](../../../../docs/correlata.md)
 
 ```
@@ -202,3 +203,4 @@ DOPO:
 `#DRY` `#KISS` `#refactoring` `#documentation` `#xot-module` `#consolidation`
 
 ---
+*Ultimo aggiornamento: Gennaio 2025 - Ottimizzazione DRY + KISS*

@@ -155,6 +155,7 @@ docs/
 
 ### Tra moduli (Xot → User)
 ```markdown
+[user docs](../../User/docs/user-guide.md)
 [user docs](../../user/docs/user-guide.md)
 ```
 
@@ -417,6 +418,7 @@ docs/
 
 ### Tra moduli (Xot → User)
 ```markdown
+[user docs](../../User/docs/user-guide.md)
 [user docs](../../user/docs/user-guide.md)
 ```
 

@@ -26,6 +26,7 @@ final class GetAllBlocksAction
 
         $files = File::glob(base_path('Modules').'/*/'.$relativePath.'/../Filament/Blocks/*.php');
 
+        /** @var array<int, mixed> $blocks */
         $blocks = Arr::map($files, function (string $path) {
             $path = realpath($path);
             $class = app(GetClassNameByPathAction::class)->execute($path);

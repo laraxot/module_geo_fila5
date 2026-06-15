@@ -4,67 +4,75 @@ declare(strict_types=1);
 
 namespace Modules\Lang\Tests\Unit\Actions;
 
-uses(TestCase::class);
-
 use Illuminate\Support\Collection;
 use Modules\Lang\Actions\TransCollectionAction;
 use Modules\Lang\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-beforeEach(function () {
-    $this->action = new TransCollectionAction();
-});
+uses(TestCase::class);
+
+function makeTransCollectionAction(): TransCollectionAction
+{
+    return new TransCollectionAction();
+}
 
 describe('TransCollectionAction Business Logic', function () {
     test('converts collection elements to strings without transKey', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection([1, 2, 3]);
-        $result = $this->action->execute($input, null);
+        $result = makeTransCollectionAction()->execute($input, null);
 
-        expect($result)->toBeInstanceOf(Collection::class);
-        // TransArrayAction converts numbers to strings via SafeStringCastAction
-        expect($result->toArray())->toBe(['1', '2', '3']);
+        Assert::assertInstanceOf(Collection::class, $result);
+        Assert::assertSame(['1', '2', '3'], $result->toArray());
     });
 
     test('handles collection with string items', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection(['a', 'b', 'c']);
-        $result = $this->action->execute($input, null);
+        $result = makeTransCollectionAction()->execute($input, null);
 
-        expect($result)->toBeInstanceOf(Collection::class);
+        Assert::assertInstanceOf(Collection::class, $result);
     });
 
     test('handles empty collection', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection([]);
-        $result = $this->action->execute($input, null);
+        $result = makeTransCollectionAction()->execute($input, null);
 
-        expect($result)->toBeInstanceOf(Collection::class);
-        expect($result)->toBeEmpty();
+        Assert::assertInstanceOf(Collection::class, $result);
+        Assert::assertEmpty($result);
     });
 
     test('translates collection elements with transKey when translation exists', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection(['test_key']);
-        $result = $this->action->execute($input, 'test');
+        $result = makeTransCollectionAction()->execute($input, 'test');
 
-        expect($result)->toBeInstanceOf(Collection::class);
-        expect($result)->toHaveCount(1);
+        Assert::assertInstanceOf(Collection::class, $result);
+        Assert::assertCount(1, $result);
     });
 
     test('returns original value when translation does not exist', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection(['nonexistent_key']);
-        $result = $this->action->execute($input, 'nonexistent');
+        $result = makeTransCollectionAction()->execute($input, 'nonexistent');
 
-        expect($result)->toBeInstanceOf(Collection::class);
+        Assert::assertInstanceOf(Collection::class, $result);
     });
 
     test('handles numeric collection elements', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection([100, 200, 300]);
-        $result = $this->action->execute($input, null);
+        $result = makeTransCollectionAction()->execute($input, null);
 
-        expect($result)->toBeInstanceOf(Collection::class);
+        Assert::assertInstanceOf(Collection::class, $result);
     });
 
     test('handles associative collection', function () {
+        /** @var Collection<int|string, mixed> $input */
         $input = new Collection(['key1' => 'value1', 'key2' => 'value2']);
-        $result = $this->action->execute($input, null);
+        $result = makeTransCollectionAction()->execute($input, null);
 
-        expect($result)->toBeInstanceOf(Collection::class);
+        Assert::assertInstanceOf(Collection::class, $result);
     });
 });

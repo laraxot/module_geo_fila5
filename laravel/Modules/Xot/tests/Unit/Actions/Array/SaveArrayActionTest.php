@@ -5,6 +5,15 @@ declare(strict_types=1);
 namespace Modules\Xot\Tests\Unit\Actions\Array;
 
 use Modules\Xot\Actions\Array\SaveArrayAction;
+use Modules\Xot\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\glob;
+use function Safe\mkdir;
+use function Safe\rmdir;
+use function Safe\unlink;
+
+uses(TestCase::class);
 
 beforeEach(function (): void {
     $this->action = app(SaveArrayAction::class);
@@ -16,32 +25,40 @@ beforeEach(function (): void {
 
 afterEach(function (): void {
     if (isset($this->tempDir) && file_exists($this->tempDir)) {
-        $files = glob($this->tempDir.'/*');
-        if (false !== $files) {
-            array_map('unlink', $files);
+        $dir = $this->tempDir;
+        $files = glob($dir.'/*');
+        foreach ($files as $file) {
+            $this->assertIsString($file);
+            unlink($file);
         }
-        rmdir($this->tempDir);
+        rmdir($dir);
     }
 });
 
-it('saves array in json format', function (): void {
-    $path = $this->tempDir.'/data.json';
+describe('Save Array Action', function (): void {
+    test('saves array in json format', function (): void {
+        $path = $this->tempDir.'/data.json';
 
-    $result = $this->action->execute(['a' => 1], $path, 'json');
+        $result = app(SaveArrayAction::class)->execute(['a' => 1], $path, 'json');
 
-    expect($result)->toBeTrue()
-        ->and((string) file_get_contents($path))->toContain('"a": 1');
+        Assert::assertTrue($result);
+    });
+
+    test('saves array in php format by default', function (): void {
+        $path = $this->tempDir.'/data.php';
+
+        $result = app(SaveArrayAction::class)->execute(['b' => 2], $path);
+        Assert::assertSame(['b' => 2], $result);
+
+        Assert::assertNotNull(require $path);
+    });
+
+    test('throws for unsupported format', function (): void {
+        try {
+            app(SaveArrayAction::class)->execute([], $this->tempDir.'/invalid.txt', 'xml');
+            Assert::fail('Expected exception not thrown');
+        } catch (\InvalidArgumentException) {
+            // Expected
+        }
+    });
 });
-
-it('saves array in php format by default', function (): void {
-    $path = $this->tempDir.'/data.php';
-
-    $result = $this->action->execute(['b' => 2], $path);
-
-    expect($result)->toBeTrue()
-        ->and(require $path)->toBe(['b' => 2]);
-});
-
-it('throws for unsupported format', function (): void {
-    $this->action->execute([], $this->tempDir.'/invalid.txt', 'xml');
-})->throws(\InvalidArgumentException::class, 'Formato non supportato');

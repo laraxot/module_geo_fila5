@@ -46,8 +46,6 @@ trait HasTenants
 
     /**
      * Get all of the tenants the user belongs to.
-     *
-     * @return BelongsToMany<Model, Pivot>
      */
     public function tenants(): BelongsToMany
     {

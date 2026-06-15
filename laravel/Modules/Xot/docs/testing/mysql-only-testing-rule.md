@@ -3,6 +3,8 @@
 **Status**: ✅ REGOLA ASSOLUTA - NESSUNA ECCEZIONE  
 **Priorità**: MASSIMA
 
+> **Sync operativo:** `./bashscripts/tools/sync-env-testing.sh` — wiki [architecture-env-testing-parity.md](../../../../docs/wiki/bmad/architecture-env-testing-parity.md) · [env-testing-parity-copy-env.md](../wiki/concepts/env-testing-parity-copy-env.md)
+
 ## 🚨 Principio Fondamentale
 
 > **Il file `.env.testing` è la fonte unica di verità per la configurazione dei test.**

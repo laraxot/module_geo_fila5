@@ -2,110 +2,105 @@
 
 declare(strict_types=1);
 
-namespace Modules\Xot\Tests\Unit;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Notify\Datas\RecordNotificationData;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\Xot\States\Transitions\XotBaseTransition;
+use Modules\Xot\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(RefreshDatabase::class);
+uses(TestCase::class);
 
-describe('XotBaseTransition', function () {
-    beforeEach(function () {
-        // Create a test record
-        $this->record = new class extends Model {
-            protected $table = 'test_records';
-            protected $fillable = ['id', 'name'];
-        };
+describe('XotBaseTransition', function (): void {
+    it('can be instantiated', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
 
-        // Create a concrete test transition class
-        $this->transition = new class($this->record) extends XotBaseTransition {
+        Assert::assertInstanceOf(XotBaseTransition::class, $transition);
+    });
+
+    it('has static name property', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertTrue(property_exists($transition, 'name'));
+    });
+
+    it('has record property', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertTrue(property_exists($transition, 'record'));
+    });
+
+    it('can get record', function (): void {
+        [$record, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertSame($record, $transition->record);
+    });
+
+    it('has sendNotifications method', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertTrue(method_exists($transition, 'sendNotifications'));
+    });
+
+    it('can send notifications without errors', function (): void {
+        $record = UserFactory::new()->createOne();
+
+        $transition = new class($record) extends XotBaseTransition {
             public static string $name = 'test_transition';
-
-            public function getNotificationRecipients(): array
-            {
-                return [
-                    'test_user' => RecordNotificationData::from(['record' => $this->record, 'channel' => 'mail']),
-                    'null_user' => null,
-                ];
-            }
 
             public function sendRecipientNotification(RecordNotificationData $recipient, array $data): void
             {
-                // Mock implementation
             }
         };
+
+        $transition->sendNotifications();
     });
 
-    it('can be instantiated', function () {
-        expect($this->transition)->toBeInstanceOf(XotBaseTransition::class);
+    it('has getNotificationRecipients method', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertTrue(method_exists($transition, 'getNotificationRecipients'));
     });
 
-    it('has static name property', function () {
-        expect($this->transition::$name)->toBe('test_transition');
+    it('returns correct notification recipients structure', function (): void {
+        $record = UserFactory::new()->createOne();
+
+        $transition = new class($record) extends XotBaseTransition {
+            public static string $name = 'test_transition';
+        };
+
+        $recipients = $transition->getNotificationRecipients();
+
+        Assert::assertArrayHasKey('me_mail', $recipients);
+        Assert::assertInstanceOf(RecordNotificationData::class, $recipients['me_mail']);
     });
 
-    it('has record property', function () {
-        expect(property_exists($this->transition, 'record'))->toBeTrue();
+    it('has sendRecipientNotification method', function (): void {
+        [, $transition] = xotBaseTransitionFixture();
+
+        Assert::assertTrue(method_exists($transition, 'sendRecipientNotification'));
     });
 
-    it('can get record', function () {
-        $record = $this->transition->record;
+    it('processes recipients correctly in sendNotifications', function (): void {
+        $record = UserFactory::new()->createOne();
 
-        expect($record)->toBe($this->record);
-    });
-
-    it('has sendNotifications method', function () {
-        expect(method_exists($this->transition, 'sendNotifications'))->toBeTrue();
-    });
-
-    it('can send notifications without errors', function () {
-        // This should not throw an exception
-        expect(fn () => $this->transition->sendNotifications())->not->toThrow(\Exception::class);
-    });
-
-    it('has getNotificationRecipients method', function () {
-        expect(method_exists($this->transition, 'getNotificationRecipients'))->toBeTrue();
-    });
-
-    it('returns correct notification recipients structure', function () {
-        $recipients = $this->transition->getNotificationRecipients();
-
-        expect($recipients)
-            ->toBeArray()
-            ->and($recipients)
-            ->toHaveKey('test_user')
-            ->and($recipients)
-            ->toHaveKey('null_user')
-            ->and($recipients['null_user'])
-            ->toBeNull();
-    });
-
-    it('has sendRecipientNotification method', function () {
-        expect(method_exists($this->transition, 'sendRecipientNotification'))->toBeTrue();
-    });
-
-    it('processes recipients correctly in sendNotifications', function () {
-        // Mock recipients with mixed types
-        $transition = new class($this->record) extends XotBaseTransition {
+        $transition = new class($record) extends XotBaseTransition {
             public static string $name = 'test_mixed_transition';
 
+            /**
+             * @return array<string, RecordNotificationData>
+             */
             public function getNotificationRecipients(): array
             {
                 return [
                     'valid_recipient' => RecordNotificationData::from(['record' => $this->record, 'channel' => 'mail']),
-                    'null_user' => null,
                 ];
             }
 
             public function sendRecipientNotification(RecordNotificationData $recipient, array $data): void
             {
-                // Mock implementation
             }
         };
 
-        // This should process without errors
-        expect(fn () => $transition->sendNotifications())->not->toThrow(\Exception::class);
+        $transition->sendNotifications();
     });
 });

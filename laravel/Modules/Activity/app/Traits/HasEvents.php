@@ -10,11 +10,17 @@ use Modules\Activity\Models\StoredEvent;
 
 trait HasEvents
 {
+    /**
+     * @return MorphMany<StoredEvent, $this>
+     */
     public function storedEvents(): MorphMany
     {
         return $this->morphMany(StoredEvent::class, 'aggregate');
     }
 
+    /**
+     * @return MorphMany<Snapshot, $this>
+     */
     public function snapshots(): MorphMany
     {
         return $this->morphMany(Snapshot::class, 'aggregate');

@@ -29,9 +29,11 @@ class EditTranslationFile extends XotBaseEditRecord
     {
         return [
             Section::make('content')->schema(function ($record): array {
-                if (is_object($record) && isset($record->content)) {
-                    $content = is_array($record->content) ? $record->content : [];
+                if (is_object($record) && isset($record->content) && is_array($record->content)) {
+                    /** @var array<string, mixed> $content */
+                    $content = $record->content;
                 } else {
+                    /** @var array<string, mixed> $content */
                     $content = [];
                 }
 
@@ -40,6 +42,11 @@ class EditTranslationFile extends XotBaseEditRecord
         ];
     }
 
+    /**
+     * @param array<string, mixed> $array
+     *
+     * @return array<int, Section|TextInput>
+     */
     public function makeFromArray(array $array, string $prefix = ''): array
     {
         $fields = [];

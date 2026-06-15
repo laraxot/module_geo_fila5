@@ -85,6 +85,13 @@ class GenerateOllamaAction
         }
     }
 
+    /**
+     * @return array{
+     *     response: string,
+     *     done: bool,
+     *     tokens: array{prompt: int, generated: int}
+     * }
+     */
     public function executeOptimized(string $prompt): array
     {
         return $this->execute($prompt, [
@@ -97,6 +104,13 @@ class GenerateOllamaAction
         ]);
     }
 
+    /**
+     * @return array{
+     *     response: string,
+     *     done: bool,
+     *     tokens: array{prompt: int, generated: int}
+     * }
+     */
     public function executeMinimal(string $prompt): array
     {
         return $this->execute($prompt, [

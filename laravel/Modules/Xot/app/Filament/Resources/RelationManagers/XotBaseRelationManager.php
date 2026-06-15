@@ -21,6 +21,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use stdClass;
 use Webmozart\Assert\Assert;
@@ -30,7 +31,10 @@ use Webmozart\Assert\Assert;
  */
 abstract class XotBaseRelationManager extends FilamentRelationManager
 {
-    use HasXotTable;
+    use HasRelationshipModelClass;
+    use HasXotTable {
+        HasRelationshipModelClass::getModelClass insteadof HasXotTable;
+    }
 
     protected static string $relationship = '';
 
@@ -90,6 +94,7 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
         return $schema->components($components);
     }
 
+    /** @return array<int|string, Component> */
     public function getFormSchema(): array
     {
         return $this->getResource()::getFormSchema();
@@ -226,22 +231,16 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
     {
         $actions = [];
         $me = $this;
-        // @phpstan-ignore function.alreadyNarrowedType
-        if (method_exists($me, 'canAttach')) {
-            $actions['attach'] = AttachAction::make()
-                ->icon('heroicon-o-link')
-                ->iconButton()
-                ->tooltip(__('user::actions.attach.label'))
-                ->visible(static fn (?Model $_record): bool => $me->canAttach());
-        }
-        // @phpstan-ignore function.alreadyNarrowedType
-        if (method_exists($me, 'canCreate')) {
-            $actions['create'] = CreateAction::make()
-                ->icon('heroicon-o-plus')
-                ->iconButton()
-                ->tooltip(static::trans('actions.create.tooltip'))
-                ->visible(static fn (?Model $_record): bool => $me->canCreate());
-        }
+        $actions['attach'] = AttachAction::make()
+            ->icon('heroicon-o-link')
+            ->iconButton()
+            ->tooltip(__('user::actions.attach.label'))
+            ->visible(static fn (?Model $_record): bool => $me->canAttach());
+        $actions['create'] = CreateAction::make()
+            ->icon('heroicon-o-plus')
+            ->iconButton()
+            ->tooltip(static::trans('actions.create.tooltip'))
+            ->visible(static fn (?Model $_record): bool => $me->canCreate());
 
         return $actions;
     }

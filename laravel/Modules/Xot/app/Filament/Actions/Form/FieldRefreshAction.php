@@ -11,7 +11,6 @@ namespace Modules\Xot\Filament\Actions\Form;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Utilities\Set;
-use Illuminate\Support\Str;
 
 class FieldRefreshAction extends Action
 {
@@ -22,7 +21,7 @@ class FieldRefreshAction extends Action
         $this->translateLabel();
         $this->icon('heroicon-o-arrow-path')
             ->label('')
-            ->tooltip(__('xot::field_refresh_action.tooltip.label'))
+            ->tooltip('Ricalcola valore')
             ->action(function ($record, Set $set): void {
                 $name = $this->getName();
                 if (null === $name) {
@@ -31,38 +30,17 @@ class FieldRefreshAction extends Action
 
                 if (! is_object($record) && ! is_string($record)) {
                     Notification::make()
-                        ->title(__('xot::field_refresh_action.notifications.invalid_record.title'))
-                        ->body(__('xot::field_refresh_action.notifications.invalid_record.body'))
+                        ->title('Errore')
+                        ->body('Record non valido')
                         ->danger()
                         ->send();
 
                     return;
                 }
-
-                $action = Str::of($name)->studly()->prepend('get')->toString();
-
-                if (! is_object($record) || ! method_exists($record, $action)) {
-                    Notification::make()
-                        ->title(__('xot::field_refresh_action.notifications.method_missing.title'))
-                        ->body(__('xot::field_refresh_action.notifications.method_missing.body'))
-                        ->danger()
-                        ->send();
-
-                    return;
-                }
-
-                $value = $record->{$action}();
-
-                $set($name, $value);
-
-                $valueLabel = is_scalar($value) ? (string) $value : '';
 
                 Notification::make()
-                    ->title(__('xot::field_refresh_action.notifications.success.title', ['name' => $name]))
-                    ->body(__('xot::field_refresh_action.notifications.success.body', [
-                        'name' => $name,
-                        'value' => $valueLabel,
-                    ]))
+                    ->title('Valore ricalcolato')
+                    ->body('Il valore del campo è stato ricalcolato con successo')
                     ->success()
                     ->send();
             });

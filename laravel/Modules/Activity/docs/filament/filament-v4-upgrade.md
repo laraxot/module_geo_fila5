@@ -1,9 +1,8 @@
+- [Filament v4 Schema Documentation](https://filamentphp.com/docs/4.x/forms/fields)
 # Filament v4 Upgrade Documentation
 
-> **Storico** — migrazione verso Filament v4 (2025). **Stack attuale del progetto: Filament v5.** Vedi [filament-version.md](../filament-version.md) e [filament-version-policy.md](../../../../docs/wiki/memories/filament-version-policy.md).
-
 ## Overview
-This document outlines the key changes and upgrades implemented for Filament v4 in the Activity module (archival).
+This document outlines the key changes and upgrades implemented for Filament v4 in the Activity module.
 
 ## Key Changes Made
 
@@ -51,3 +50,10 @@ public static function getFormSchema(): array
 
 - [Filament v4 Upgrade Guide](https://filamentphp.com/docs/4.x/upgrade-guide)
 - [Filament v4 Schema Documentation](https://filamentphp.com/docs/4.x/forms/fields)
+---
+module: theme
+topic: filament-v4-upgrade
+canonical: ../../../../Themes/docs/shared-components/FILAMENT_V4_UPGRADE.md
+---
+
+See canonical documentation: ../../../../Themes/docs/shared-components/FILAMENT_V4_UPGRADE.md

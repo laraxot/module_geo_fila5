@@ -49,8 +49,6 @@ trait IsProfileTrait
 
     /**
      * Relazione con l'utente a cui appartiene il profilo.
-     *
-     * @return BelongsTo<Model&UserContract, $this>
      */
     public function user(): BelongsTo
     {

@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Feature;
 
+use Modules\Gdpr\Tests\TestCase;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
+use PHPUnit\Framework\Assert;
 
-beforeEach(function () {
-    // Clean database before each test
+uses(TestCase::class);
+
+beforeEach(function (): void {
     User::query()->delete();
 });
 
-it('can access database connection', function () {
+it('can access database connection', function (): void {
     $count = User::count();
-    expect($count)->toBeInt();
+
+    Assert::assertIsInt($count);
 });
 
-it('can create user via factory', function () {
-    $user = User::factory()->create([
+it('can create user via factory', function (): void {
+    $user = UserFactory::new()->createOne([
         'email' => 'test@example.com',
         'first_name' => 'Test',
         'last_name' => 'User',
     ]);
 
-    expect($user->email)->toBe('test@example.com');
+    Assert::assertSame('test@example.com', $user->email);
 });

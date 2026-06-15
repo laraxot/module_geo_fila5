@@ -57,6 +57,7 @@ public function getListTableColumns(): array
             ->label('Dati Lavoratore')
             ->view('filament.tables.columns.worker-data'), // Esempio di vista custom
     ];
+    // Definisce le colonne per il layout lista
 }
 
 public function getGridTableColumns(): array
@@ -78,6 +79,10 @@ public function getGridTableColumns(): array
 - **❌ ERRATO**: Array con indici numerici diretti.
 - **✅ CORRETTO**: `return ['column_key' => TextColumn::make('column_name'), ...];`
 
+
+    // Definisce le colonne per il layout griglia
+}
+```
 
 ### Filtri
 ```php

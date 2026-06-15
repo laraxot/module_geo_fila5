@@ -61,10 +61,10 @@
 
 ## 📚 Documentazione Creata
 
-1. `Activity/docs/phpstan-corrections-archive-1.md`
-2. `UI/docs/phpstan-corrections-archive-1.md`
-3. `healthcare_app/docs/phpstan-corrections-archive-1.md`
-4. `Geo/docs/phpstan-corrections-archive-1.md`
+1. `Activity/docs/phpstan-corrections-january-2026.md`
+2. `UI/docs/phpstan-corrections-january-2026.md`
+3. `healthcare_app/docs/phpstan-corrections-january-2026.md`
+4. `Geo/docs/phpstan-corrections-january-2026.md`
 5. `Xot/docs/phpstan-january-2026-summary.md` (questo file)
 
 ## 🎯 Pattern Documentati
@@ -163,7 +163,11 @@ if (null !== $value) {
 ## 🔗 Collegamenti
 
 - [PHPStan Code Quality Guide](./phpstan-code-quality-guide.md)
-- [Activity Corrections](../activity/docs/phpstan-corrections-archive-1.md)
-- [UI Corrections](../ui/docs/phpstan-corrections-archive-1.md)
-- [healthcare_app Corrections](../healthcare_app/docs/phpstan-corrections-archive-1.md)
-- [Geo Corrections](../geo/docs/phpstan-corrections-archive-1.md)
+- [Activity Corrections](../Activity/docs/phpstan-corrections-january-2026.md)
+- [UI Corrections](../UI/docs/phpstan-corrections-january-2026.md)
+- [Quaeris Corrections](../Quaeris/docs/phpstan-corrections-january-2026.md)
+- [Geo Corrections](../Geo/docs/phpstan-corrections-january-2026.md)
+- [Activity Corrections](../activity/docs/phpstan-corrections-january-2026.md)
+- [UI Corrections](../ui/docs/phpstan-corrections-january-2026.md)
+- [healthcare_app Corrections](../healthcare_app/docs/phpstan-corrections-january-2026.md)
+- [Geo Corrections](../geo/docs/phpstan-corrections-january-2026.md)

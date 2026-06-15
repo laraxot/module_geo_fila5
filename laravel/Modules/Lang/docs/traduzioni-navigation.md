@@ -101,3 +101,6 @@ Molte traduzioni utilizzano ancora il pattern `.navigation` invece di traduzioni
 - [Best Practices Traduzioni](../../Xot/docs/TRANSLATION_RULES.md)
 
 *Ultimo aggiornamento: 6 Gennaio 2025*
+- [Best Practices Traduzioni](../../Xot/docs/TRANSLATION_RULES.md)
+
+*Ultimo aggiornamento: 6 Gennaio 2025*

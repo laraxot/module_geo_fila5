@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Modules\Xot\Actions\Factory;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Spatie\QueueableAction\QueueableAction;
@@ -31,6 +32,8 @@ class GetFactoryAction
      * @param string $model_class the class name of the model
      *
      * @throws \Exception Generating Factory [factory_class] press [F5] to refresh page [__LINE__][__FILE__]
+     *
+     * @return Factory<covariant Model>
      */
     public function execute(string $model_class): Factory
     {
@@ -40,7 +43,6 @@ class GetFactoryAction
         $factory_class = $this->getFactoryClass($model_class);
 
         if (class_exists($factory_class)) {
-            /** @var Factory $factory */
             $factory = $factory_class::new();
 
             // Verifichiamo che il risultato sia effettivamente un'istanza di Factory

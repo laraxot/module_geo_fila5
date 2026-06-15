@@ -111,7 +111,7 @@ trait HasXotTable
     public function getGridTableColumns(): array
     {
         return [
-            Stack::make($this->getTableColumns()),
+            Stack::make(array_values($this->getTableColumns())),
         ];
     }
 
@@ -120,7 +120,7 @@ trait HasXotTable
      *
      * @return array<string, Tables\Columns\Column>
      */
-    abstract public function getTableColumns(): array;
+    abstract protected function getTableColumns(): array;
 
     /**
      * Get table filters form columns.
@@ -146,11 +146,13 @@ trait HasXotTable
     protected function getTableHeading(): ?string
     {
         $key = static::getKeyTrans('table.heading');
-        /** @var string|array<int|string,mixed>|null $trans */
-        // @phpstan-ignore-next-line
         $trans = trans($key);
 
-        return is_string($trans) && $trans !== $key ? $trans : null;
+        if (! is_string($trans)) {
+            return null;
+        }
+
+        return $trans !== $key ? $trans : null;
     }
 
     /**
@@ -198,9 +200,9 @@ trait HasXotTable
         $table = $table
             ->recordTitleAttribute($this->getTableRecordTitleAttribute())
             ->heading($this->getTableHeading())
-            ->columns($this->layoutView->getTableColumns($this->getTableColumns(), $this->getGridTableColumns()))
+            ->columns($this->layoutView->getTableColumns(array_values($this->getTableColumns()), $this->getGridTableColumns()))
             ->contentGrid($this->layoutView->getTableContentGrid())
-            ->filters($this->getTableFilters())
+            ->filters($this->getTableFilters()) // @phpstan-ignore argument.type
             ->filtersLayout(FiltersLayout::AboveContent)
             ->filtersFormColumns($this->getTableFiltersFormColumns())
             ->persistFiltersInSession()
@@ -356,32 +358,15 @@ trait HasXotTable
      */
     public function getModelClass(): string
     {
-        // @phpstan-ignore-next-line
-        if (method_exists($this, 'getRelationship')) {
-            $relationship = $this->getRelationship();
-            if ($relationship instanceof Relation) {
-                /* @var class-string<Model> */
-                return get_class($relationship->getModel());
-            }
-        }
-
-        if (method_exists($this, 'getModel')) {
+        /** @phpstan-ignore-next-line function.alreadyNarrowedType */
+if (method_exists($this, 'getModel')) {
             $model = $this->getModel();
-            // @phpstan-ignore-next-line
-            if (is_string($model)) {
-                Assert::classExists($model);
+            Assert::string($model);
+            Assert::classExists($model);
+            Assert::subclassOf($model, Model::class);
 
-                // Assert::isAOf($model, Model::class);
-                /* @var class-string<Model> */
-                // @phpstan-ignore-next-line
-                return $model;
-            }
-            // @phpstan-ignore-next-line
-            if ($model instanceof Model) {
-                /* @var class-string<Model> */
-                // @phpstan-ignore-next-line
-                return $model::class;
-            }
+            /* @var class-string<Model> $model */
+            return $model;
         }
 
         throw new \Exception('No model found in '.class_basename(self::class).'::'.__FUNCTION__);
@@ -394,9 +379,9 @@ trait HasXotTable
      */
     public function getTableSearch(): ?string
     {
-        $tableSearch = $this->tableSearch ?? null;
+        $search = $this->tableSearch ?? null;
 
-        return is_string($tableSearch) ? $tableSearch : null;
+        return null !== $search ? (string) $search : null;
     }
 
     protected function shouldShowAssociateAction(): bool

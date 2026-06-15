@@ -118,8 +118,10 @@ class WriteTranslationFileAction
 
         // Pulisce la cache delle traduzioni
         if (app()->bound('translation.loader')) {
-            /* @phpstan-ignore method.notFound */
-            app('translation.loader')->flush();
+            $loader = app('translation.loader');
+            if (method_exists($loader, 'flush')) {
+                $loader->flush();
+            }
         }
     }
 }

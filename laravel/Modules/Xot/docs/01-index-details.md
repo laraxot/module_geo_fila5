@@ -24,6 +24,13 @@
 
 ## Quality & Improvement
 - [Quality Improvements Summary [DATE]](./quality-improvements-summary-[DATE].md)
+- [PHPStan Analysis 2025-01-27](./phpstan-analysis-2025-01-27.md)
+- [PHPStan Analysis 2025-12-17](./phpstan-analysis-2025-12-17.md)
+- [PHPStan Analysis 2025-12-18](./phpstan-analysis-2025-12-18.md)
+- [PHPStan Specific Patterns](./phpstan-specific-patterns.md)
+
+## Quality & Improvement
+- [Quality Improvements Summary 2025-11-18](./quality-improvements-summary-2025-11-18.md)
 - [Laraxot Meetup Service Provider Refactor](./laraxot-meetup-service-provider-refactor.md)
 - [PHPStan Fix Meetup Service Provider](./phpstan-fix-meetup-service-provider.md)
 
@@ -39,4 +46,5 @@
 - [Architectural Rules Directory](./architectural_rules/)
 
 ---
+*Last updated: 2025-12-18*
 *

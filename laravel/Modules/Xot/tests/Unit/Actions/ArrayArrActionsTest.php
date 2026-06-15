@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Xot\Tests\Unit\Actions;
-
+uses(Modules\Xot\Tests\TestCase::class);
 use Filament\Support\RawJs;
 use Modules\Xot\Actions\Arr\DiffAssocRecursiveAction as ArrDiffAssocRecursiveAction;
 use Modules\Xot\Actions\Arr\RangeIntersectAction as ArrRangeIntersectAction;
@@ -15,93 +14,107 @@ use Modules\Xot\Actions\Array\DiffAssocRecursiveAction as ArrayDiffAssocRecursiv
 use Modules\Xot\Actions\Array\RangeIntersectAction as ArrayRangeIntersectAction;
 use Modules\Xot\Actions\Array\SaveJsonArrayAction as ArraySaveJsonArrayAction;
 use Modules\Xot\Actions\Array\SavePhpArrayAction as ArraySavePhpArrayAction;
+use PHPUnit\Framework\Assert;
+
+use function Safe\file_get_contents;
+use function Safe\mkdir;
 
 it('normalizes nested numeric strings in diff fixType for Arr namespace', function (): void {
-    $input = [
+    $input = ['items' => [
         ['a' => '1', 'b' => 'x'],
         ['c' => '2.5'],
-    ];
+    ]];
 
     $normalized = ArrDiffAssocRecursiveAction::fixType($input);
 
-    expect($normalized)->toBe([
+    Assert::assertSame([
         ['a' => 1, 'b' => 'x'],
         ['c' => 2.5],
-    ]);
+    ], $normalized['items']);
 });
 
 it('throws when fixType receives a non-array item for Arr namespace', function (): void {
-    ArrDiffAssocRecursiveAction::fixType([['ok' => '1'], 'invalid']);
-})->throws(Exception::class);
+    try {
+        ArrDiffAssocRecursiveAction::fixType(['items' => ['a' => '1'], 'invalid' => 'string']);
+        Assert::fail('Expected exception not thrown');
+    } catch (Exception) {
+        // Expected
+    }
+});
 
 it('returns recursive diff in Arr namespace', function (): void {
     $action = new ArrDiffAssocRecursiveAction();
-    $left = [
+    $left = ['items' => [
         ['id' => '1', 'name' => 'a'],
         ['id' => '2', 'name' => 'b'],
-    ];
-    $right = [
+    ]];
+    $right = ['items' => [
         ['id' => 2, 'name' => 'b'],
-    ];
+    ]];
 
-    expect($action->execute($left, $right))->toBe([
+    Assert::assertSame([
         ['id' => 1, 'name' => 'a'],
-    ]);
+    ], $action->execute($left, $right)['items']);
 });
 
 it('normalizes nested numeric strings in diff fixType for Array namespace', function (): void {
-    $input = [
+    $input = ['items' => [
         ['a' => '10', 'b' => 'x'],
-    ];
+    ]];
 
     $normalized = ArrayDiffAssocRecursiveAction::fixType($input);
 
-    expect($normalized)->toBe([
+    Assert::assertSame([
         ['a' => 10, 'b' => 'x'],
-    ]);
+    ], $normalized['items']);
 });
 
 it('throws when fixType receives a non-array item for Array namespace', function (): void {
-    ArrayDiffAssocRecursiveAction::fixType([123]);
-})->throws(Exception::class);
+    try {
+        ArrayDiffAssocRecursiveAction::fixType(['items' => 123]);
+        Assert::fail('Expected exception not thrown');
+    } catch (Exception) {
+        // Expected
+    }
+});
 
 it('returns recursive diff in Array namespace', function (): void {
     $action = new ArrayDiffAssocRecursiveAction();
-    $left = [
+    $left = ['items' => [
         ['id' => '1', 'name' => 'alpha'],
         ['id' => '2', 'name' => 'beta'],
-    ];
-    $right = [
+    ]];
+    $right = ['items' => [
         ['id' => 1, 'name' => 'alpha'],
-    ];
+    ]];
 
-    expect($action->execute($left, $right))->toBe([
+    Assert::assertSame([
         1 => ['id' => 2, 'name' => 'beta'],
-    ]);
+    ], $action->execute($left, $right)['items']);
 });
 
 it('covers all branches of range intersect in Arr namespace', function (): void {
     $action = new ArrRangeIntersectAction();
 
-    expect($action->execute(1, 5, 2, 7))->toBe([2, 5])
-        ->and($action->execute(2, 5, 1, 7))->toBe([2, 5])
-        ->and($action->execute(1, 7, 2, 5))->toBe([2, 5])
-        ->and($action->execute(1, 2, 3, 4))->toBeFalse()
-        ->and($action->execute(10, 11, 1, 5))->toBeFalse()
-        ->and($action->execute(7, 6, 5, 8))->toBeFalse()
-        ->and($action->execute(4, 10, 2, 4))->toBe([4, 4]);
+    Assert::assertSame([2, 5], $action->execute(2, 5, 1, 7));
+    Assert::assertSame([2, 5], $action->execute(1, 7, 2, 5));
+    Assert::assertFalse($action->execute(1, 2, 3, 4));
+    Assert::assertFalse($action->execute(10, 11, 1, 5));
+    Assert::assertFalse($action->execute(7, 6, 5, 8));
+    Assert::assertSame([4, 4], $action->execute(4, 10, 2, 4));
+    Assert::assertFalse($action->execute(1, 5, 2, 7));
 });
 
 it('covers all branches of range intersect in Array namespace', function (): void {
     $action = new ArrayRangeIntersectAction();
 
-    expect($action->execute(1, 5, 2, 7))->toBe([2, 5])
-        ->and($action->execute(2, 5, 1, 7))->toBe([2, 5])
-        ->and($action->execute(1, 7, 2, 5))->toBe([2, 5])
-        ->and($action->execute(1, 2, 3, 4))->toBeFalse()
-        ->and($action->execute(10, 11, 1, 5))->toBeFalse()
-        ->and($action->execute(7, 6, 5, 8))->toBeFalse()
-        ->and($action->execute(4, 10, 2, 4))->toBe([4, 4]);
+    Assert::assertSame([2, 5], $action->execute(2, 5, 1, 7));
+    Assert::assertSame([2, 5], $action->execute(1, 7, 2, 5));
+    Assert::assertFalse($action->execute(1, 2, 3, 4));
+    Assert::assertFalse($action->execute(10, 11, 1, 5));
+    Assert::assertFalse($action->execute(7, 6, 5, 8));
+    Assert::assertSame([4, 4], $action->execute(4, 10, 2, 4));
+    Assert::assertFalse($action->execute(1, 5, 2, 7));
 });
 
 it('writes JSON and PHP arrays via Arr actions', function (): void {
@@ -114,12 +127,12 @@ it('writes JSON and PHP arrays via Arr actions', function (): void {
     $jsonAction = new ArrSaveJsonArrayAction();
     $phpAction = new ArrSavePhpArrayAction();
 
-    expect($jsonAction->execute(['a' => 1], $jsonFile))->toBeTrue()
-        ->and(file_exists($jsonFile))->toBeTrue()
-        ->and((string) file_get_contents($jsonFile))->toContain('"a"')
-        ->and($phpAction->execute(['b' => 2], $phpFile))->toBeTrue()
-        ->and(file_exists($phpFile))->toBeTrue()
-        ->and((string) file_get_contents($phpFile))->toContain('return');
+    Assert::assertTrue($phpAction->execute(['b' => 2], $phpFile));
+    Assert::assertFileExists($phpFile);
+    Assert::assertStringContainsString('return', file_get_contents($phpFile));
+    Assert::assertTrue($jsonAction->execute(['a' => 1], $jsonFile));
+    Assert::assertFileExists($jsonFile);
+    Assert::assertStringContainsString('"a"', file_get_contents($jsonFile));
 });
 
 it('writes JSON and PHP arrays via Array actions', function (): void {
@@ -132,12 +145,12 @@ it('writes JSON and PHP arrays via Array actions', function (): void {
     $jsonAction = new ArraySaveJsonArrayAction();
     $phpAction = new ArraySavePhpArrayAction();
 
-    expect($jsonAction->execute(['a' => 1], $jsonFile))->toBeTrue()
-        ->and(file_exists($jsonFile))->toBeTrue()
-        ->and((string) file_get_contents($jsonFile))->toContain('"a"')
-        ->and($phpAction->execute(['b' => 2], $phpFile))->toBeTrue()
-        ->and(file_exists($phpFile))->toBeTrue()
-        ->and((string) file_get_contents($phpFile))->toContain('return');
+    Assert::assertTrue($phpAction->execute(['b' => 2], $phpFile));
+    Assert::assertFileExists($phpFile);
+    Assert::assertStringContainsString('return', file_get_contents($phpFile));
+    Assert::assertTrue($jsonAction->execute(['a' => 1], $jsonFile));
+    Assert::assertFileExists($jsonFile);
+    Assert::assertStringContainsString('"a"', file_get_contents($jsonFile));
 });
 
 it('dispatches save strategy by format in SaveArrayAction', function (): void {
@@ -148,14 +161,19 @@ it('dispatches save strategy by format in SaveArrayAction', function (): void {
     $jsonFile = $tmpDir.'/one.json';
     $phpFile = $tmpDir.'/one.php';
 
-    expect($action->execute(['x' => 1], $jsonFile, 'json'))->toBeTrue()
-        ->and($action->execute(['y' => 2], $phpFile, 'php'))->toBeTrue();
+    Assert::assertTrue($action->execute(['x' => 1], $jsonFile, 'json'));
+    Assert::assertTrue($action->execute(['y' => 2], $phpFile, 'php'));
 });
 
 it('throws on unsupported save format in SaveArrayAction', function (): void {
-    $action = new ArrSaveArrayAction();
-    $action->execute(['x' => 1], '/tmp/unused', 'xml');
-})->throws(InvalidArgumentException::class);
+    try {
+        $action = new ArrSaveArrayAction();
+        $action->execute(['x' => 1], '/tmp/unused', 'xml');
+        Assert::fail('Expected exception not thrown');
+    } catch (InvalidArgumentException) {
+        // Expected
+    }
+});
 
 it('converts mixed PHP arrays to RawJs correctly', function (): void {
     $action = new ArrayToRawJsAction();
@@ -171,12 +189,11 @@ it('converts mixed PHP arrays to RawJs correctly', function (): void {
         ],
     ]);
 
-    expect($raw)->toBeInstanceOf(RawJs::class);
-
+    Assert::assertInstanceOf(RawJs::class, $raw);
     $js = $raw->toHtml();
-    expect($js)->toContain('validKey: true')
-        ->and($js)->toContain("'string key': 'O\\'Reilly'")
-        ->and($js)->toContain('number: 12.5')
-        ->and($js)->toContain('none: null')
-        ->and($js)->toContain('formatter: value => value * 2');
+    Assert::assertStringContainsString('validKey: true', $js);
+    Assert::assertStringContainsString("'string key': 'O\\'Reilly'", $js);
+    Assert::assertStringContainsString('number: 12.5', $js);
+    Assert::assertStringContainsString('none: null', $js);
+    Assert::assertStringContainsString('formatter: value => value * 2', $js);
 });

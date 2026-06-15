@@ -38,7 +38,8 @@ $this->tableUpdate(function (Blueprint $table): void {
 Prima di eseguire i test, migrare il DB di test:
 
 ```bash
-APP_ENV=testing DB_DATABASE=<nome progetto>_data_test DB_DATABASE_USER=<nome progetto>_user_test php artisan migrate:fresh --force
+# Dati sacri: mai migrate:fresh né --force
+APP_ENV=testing DB_DATABASE=<nome progetto>_data_test DB_DATABASE_USER=<nome progetto>_user_test php artisan migrate
 ```
 
 ## Riferimenti

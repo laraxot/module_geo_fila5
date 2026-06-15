@@ -19,8 +19,6 @@ trait IsTenant
 {
     /**
      * Get all users associated with this tenant.
-     *
-     * @return BelongsToMany<Model&UserContract, static>
      */
     public function users(): BelongsToMany
     {

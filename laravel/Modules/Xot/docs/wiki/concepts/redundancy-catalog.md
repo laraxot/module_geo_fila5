@@ -4,7 +4,7 @@ module: Xot
 type: concept
 confidence: high
 created: 2026-05-21
-updated: 2026-05-25
+updated: 2026-05-26
 issues:
   - "https://github.com/laraxot/base_fixcity_fila5/issues/89"
   - "https://github.com/laraxot/base_fixcity_fila5/issues/90"
@@ -46,6 +46,7 @@ Il modulo **Xot** ospita classi base e pattern Filament riusati ovunque. Questa 
 | Media | [`duplicated-media-relation-manager.md`](../../../../Media/docs/wiki/redundancy/duplicated-media-relation-manager.md) | ×3 |
 | Media | [`has-media-form-duplication.md`](../../../../Media/docs/wiki/redundancy/has-media-form-duplication.md) | HasMediaForm |
 | Rating | [`duplicate-ratings-table-migrations.md`](../../../../Rating/docs/wiki/redundancy/duplicate-ratings-table-migrations.md) | Table + migration |
+| Cms | [`redundancy-report.md`](../../../../Cms/docs/redundancy-report.md) | BaseTreeModel, BaseModelLang, ThemeComposer clone, Appearance |
 | Fixcity | [`duplicated-comments-relation-manager.md`](../../../../Fixcity/docs/wiki/redundancy/duplicated-comments-relation-manager.md) | Comments RM ×2 |
 | Fixcity | [`fixcity-cross-module-duplicate-surfaces.md`](../../../../Fixcity/docs/wiki/redundancy/fixcity-cross-module-duplicate-surfaces.md) | Superfici copy con altri moduli |
 | Sixteen | [`duplicated-blade-blocks.md`](../../../../../Themes/Sixteen/docs/wiki/redundancy/duplicated-blade-blocks.md) | Blade blocks |

@@ -1,5 +1,6 @@
 # PHPStan Code Quality Guide - Laraxot
 
+**Ultimo aggiornamento**: 2025-01-10
 **Ultimo aggiornamento**: [DATE]
 **Principi**: DRY + KISS + SOLID + Robust
 **Stack**: Laravel 12 + Filament 4 + PHP 8.3 + Laraxot

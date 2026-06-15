@@ -243,6 +243,11 @@ abstract class XotBaseResourceTable
 }
 ```
 
+### PHPStan-safe configure() on abstract table bases
+
+Do not instantiate abstract table bases with `new static()` inside static methods.
+Use container resolution plus an explicit base-class guard and type assertion, so `configure()` remains safe for concrete table classes and PHPStan level max.
+
 ### XotBaseResourceInfolist (Updated)
 
 ```php

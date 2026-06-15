@@ -3,7 +3,7 @@ title: inventario phpstan per modulo
 type: memory
 tags: [phpstan, ci, modules, larastan]
 created: 2026-05-21
-updated: 2026-05-27
+updated: 2026-06-15
 related:
   - ../how-to/github-issue-agent-discipline.md
   - ../rules/validation-post-edit-rule.md
@@ -36,6 +36,9 @@ Config: `laravel/phpstan.neon` (level **max**).
 | DbForge | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/DbForge --no-progress` | `provtv/module_dbforge_fila5#22` gia aperta come coordinamento PHPStan |
 | MobilitaVolontaria | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/MobilitaVolontaria --no-progress` | `provtv/module_mobilitavolontaria_fila5#3` documenta errore storico gia corretto |
 | Setting | **0** | `./vendor/bin/phpstan analyse -c phpstan.neon --level=max Modules/Setting --no-progress` | `provtv/module_setting_fila5#3` aperta come coordinamento PHPStan |
+| Xot | **0** | `./vendor/bin/phpstan analyse Modules` con `phpstan.neon` corrente (892 file) | [root #134](https://github.com/provtv/base_ptv_fila5_mono/issues/134) chiuso 2026-06-15 |
+
+**GATE DI INGRESSO (2026-06-15 10:05 UTC):** PHPStan root re-run → **0 errori** (892 file, 904 files analyzed); HasXotTable trait fix applicato (instanceof → method_exists check); merge conflict risolto in `phpstan-modules-coordination.md`.
 
 Nota operativa: `Pdnd` e `Incentivi` esclusi da questo controllo su richiesta utente. Creare/commentare issue solo quando il run produce errori PHPStan attuali.
 

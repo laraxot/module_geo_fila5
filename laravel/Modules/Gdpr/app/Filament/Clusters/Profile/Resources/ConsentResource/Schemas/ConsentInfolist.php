@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Modules\Gdpr\Filament\Clusters\Profile\Resources\ConsentResource\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Component;
 
 class ConsentInfolist
 {
+    /**
+     * @return array<string, Component>
+     */
     public static function getInfolistSchema(): array
     {
         return [

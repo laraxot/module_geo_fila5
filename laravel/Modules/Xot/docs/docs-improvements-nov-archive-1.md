@@ -155,6 +155,7 @@ docs/
 
 ### Tra moduli (Xot → User)
 ```markdown
+[user docs](../../User/docs/user-guide.md)
 [user docs](../../user/docs/user-guide.md)
 ```
 
@@ -260,4 +261,3 @@ find . -name "readme.md" -o -name "Readme.md"
 2. **Applicare a tutti i moduli**: Replicare miglioramenti in Modules/*/docs/
 3. **Verificare backlink**: Assicurare collegamenti bidirezionali
 4. **Index centrali**: Creare README.md con indici per navigazione rapida
-

@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
+
+use function Safe\copy;
+
 use Webmozart\Assert\Assert;
 
 /**
@@ -286,21 +289,6 @@ abstract class XotBaseMigration extends LaravelMigration
         }
 
         return 0;
-    }
-
-    public function timestamps(Blueprint $table, bool $hasSoftDeletes = false): void
-    {
-        $xot = XotData::make();
-        $userClass = $xot->getUserClass();
-
-        $table->timestamps();
-        $table->foreignIdFor($userClass, 'user_id')->nullable();
-        $table->foreignIdFor($userClass, 'updated_by')->nullable();
-        $table->foreignIdFor($userClass, 'created_by')->nullable();
-
-        if ($hasSoftDeletes) {
-            $table->softDeletes();
-        }
     }
 
     public function updateTimestamps(Blueprint $table, bool $hasSoftDeletes = false): void

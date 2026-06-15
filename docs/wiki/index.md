@@ -54,6 +54,10 @@ related:
 - [markdown-note-minimum-standard](./concepts/markdown-note-minimum-standard.md)
 - [context-mode-usage](./concepts/context-mode-usage.md)
 
+## Patterns
+
+- [XotBaseResourceTable configure pattern](./patterns/xotbase-resource-table-configure.md)
+
 ## How-To Guides
 
 ### Search and Discovery

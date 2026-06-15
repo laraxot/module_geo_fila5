@@ -14,6 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Override;
 
@@ -26,7 +27,10 @@ use Override;
  */
 abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
-    use HasXotTable;
+    use HasRelationshipModelClass;
+    use HasXotTable {
+        HasRelationshipModelClass::getModelClass insteadof HasXotTable;
+    }
     use InteractsWithForms;
     // protected static string $resource;
 

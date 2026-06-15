@@ -29,6 +29,19 @@ related:
 
 ## phpstan fixes per modulo activity
 
+**Stato attuale (2026-06-10)**: `./vendor/bin/phpstan analyse Modules/Activity` → **0 errori** (livello max, senza baseline e senza modifiche a `phpstan.neon`).
+
+### test pest/phpunit (causa principale delle segnalazioni)
+
+- **Contesto**: il codice `app/` era già conforme; oltre 1000 errori erano nei test (Pest + factory + asserzioni migrate male).
+- **Factory**: `Model::factory()->create()` è `mixed` per PHPStan → usare `XxxFactory::new()->createOne()` per un record e `->count(n)->create()` per batch.
+- **Asserzioni**: sostituire `expect()` e `$this->assert*` nelle closure Pest con `PHPUnit\Framework\Assert` (PHPStan tipizza `$this` come `TestCall`, non `TestCase`).
+- **Modelli concreti**: evitare `new BaseModel` (astratto) → `TestActivityModel` o classi in `tests/Fixtures/`.
+- **Relazioni / mock Filament**: stub concreti in `tests/Fixtures/` (es. `ListLogActivitiesActionStubs.php`) al posto di `Mockery` dove PHPStan non risolve l'unione.
+- **Logout senza utente**: creare `Logout` con utente reale e azzerare `user` via `ReflectionClass` (il costruttore non accetta `null`).
+- **Properties schemaless**: normalizzare `array|Collection` prima di `assertArrayHasKey` / `array_merge`.
+- **Script di supporto** (fuori da `Modules/Activity` per non essere analizzati): `laravel/scripts/activity/fix-phpstan-tests.php`.
+
 ### listlogactivities (filament page)
 
 - **Problemi rilevati**:
@@ -111,3 +124,4 @@ $activities = \Modules\Activity\Database\Factories\ActivityFactory::new()
 - **Translation files**: Chiavi duplicate rimosse
 - **PHPStan Level 9**: Compliance ripristinata
 
+*Ultimo aggiornamento: gennaio 2025*

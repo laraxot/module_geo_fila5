@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Gdpr\Tests\Unit\Actions;
 
-uses(TestCase::class);
-
 use Illuminate\Support\Facades\Hash;
 use Modules\Gdpr\Actions\Validation\ValidateUserDataAction;
 use Modules\Gdpr\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 test('ValidateUserDataAction returns valid user data', function () {
     $action = new ValidateUserDataAction();
-    $action = new ValidateUserDataAction();
-
-    // Use unique email to avoid uniqueness constraint issues
     $uniqueEmail = 'test'.uniqid().'@example.com';
 
     $formData = [
@@ -26,19 +24,22 @@ test('ValidateUserDataAction returns valid user data', function () {
 
     $result = $action->execute($formData);
 
-    expect($result)->toBeArray()
-        ->toHaveKeys(['first_name', 'last_name', 'email', 'password', 'type', 'lang', 'email_verified_at'])
-        ->first_name->toBe('John')
-        ->last_name->toBe('Doe')
-        ->email->toBe($uniqueEmail)
-        ->type->toBe('customer_user')
-        ->email_verified_at->not->toBeNull();
+    Assert::assertArrayHasKey('first_name', $result);
+    Assert::assertArrayHasKey('last_name', $result);
+    Assert::assertArrayHasKey('email', $result);
+    Assert::assertArrayHasKey('password', $result);
+    Assert::assertArrayHasKey('type', $result);
+    Assert::assertArrayHasKey('lang', $result);
+    Assert::assertArrayHasKey('email_verified_at', $result);
+    Assert::assertSame('John', $result['first_name']);
+    Assert::assertSame('Doe', $result['last_name']);
+    Assert::assertSame($uniqueEmail, $result['email']);
+    Assert::assertSame('customer_user', $result['type']);
+    Assert::assertNotNull($result['email_verified_at']);
 });
 
 test('ValidateUserDataAction hashes password', function () {
     $action = new ValidateUserDataAction();
-    $action = new ValidateUserDataAction();
-
     $uniqueEmail = 'test'.uniqid().'@example.com';
 
     $formData = [
@@ -50,5 +51,6 @@ test('ValidateUserDataAction hashes password', function () {
 
     $result = $action->execute($formData);
 
-    expect(Hash::check('plainpassword', $result['password']))->toBeTrue();
+    Assert::assertIsString($result['password']);
+    Assert::assertTrue(Hash::check('plainpassword', $result['password']));
 });

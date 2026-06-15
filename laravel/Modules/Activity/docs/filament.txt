@@ -1,2 +1,7 @@
-https://laraveldaily.com/post/filament-activity-logs-three-packages-comparison-review
+---
+module: theme
+topic: filament
+canonical: ../../../Themes/docs/shared-components/filament-Modules.txt
+---
 
+See canonical documentation: ../../../Themes/docs/shared-components/filament-Modules.txt

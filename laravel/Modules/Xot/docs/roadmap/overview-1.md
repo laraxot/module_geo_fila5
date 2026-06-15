@@ -1,7 +1,7 @@
-# Roadmap overview (Module Xot)
+---
+module: theme
+topic: overview-1
+canonical: ../../../../Themes/docs/shared-components/00-overview-Modules.md
+---
 
-## Scope
-
-## Goals
-
-## Non-goals
+See canonical documentation: ../../../../Themes/docs/shared-components/00-overview-Modules.md

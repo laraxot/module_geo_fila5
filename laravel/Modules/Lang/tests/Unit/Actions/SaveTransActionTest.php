@@ -6,20 +6,18 @@ namespace Modules\Lang\Tests\Unit\Actions;
 
 use Modules\Lang\Actions\SaveTransAction;
 use Modules\Lang\Tests\TestCase;
-use Modules\Xot\Actions\Arr\SaveArrayAction;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
 describe('SaveTransAction', function (): void {
     test('it has execute method', function (): void {
-        $action = new SaveTransAction(
-            app(SaveArrayAction::class),
-        );
+        $action = app(SaveTransAction::class);
 
-        expect(method_exists($action, 'execute'))->toBeTrue();
+        Assert::assertTrue(is_callable([$action, 'execute']));
     });
 
     test('action is invokable via app', function (): void {
-        expect(app(SaveTransAction::class))->toBeInstanceOf(SaveTransAction::class);
+        Assert::assertInstanceOf(SaveTransAction::class, app(SaveTransAction::class));
     });
 });

@@ -38,6 +38,7 @@ ${cat /mnt/f/var/www/healthcare_app/laravel/Modules/Xot/_docs/scope.txt}
 ### Versione HEAD
 
 ## Collegamenti tra versioni di models.md
+* [models.md](../../../Notify/docs/models.md)
 * [models.md](../../../notify/docs/models.md)
 
 ### Versione Incoming

@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\Builder;
 trait FrontendSortable
 {
     /**
-     * @param  array<string, string>  $defaultSort
+     * @param  Builder<static>  $query
      * @param  array<string>  $sortableColumns
+     * @param  array<string, string>  $defaultSort
+     * @return Builder<static>
      */
     public function scopeSortableBy(
         Builder $query,

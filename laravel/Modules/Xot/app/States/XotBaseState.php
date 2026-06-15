@@ -28,7 +28,6 @@ abstract class XotBaseState implements StateContract
 
     public static function getName(): string
     {
-        /* @phpstan-ignore-next-line */
         return static::$name ?? Str::of(class_basename(static::class))->snake()->toString();
     }
 
@@ -172,6 +171,9 @@ abstract class XotBaseState implements StateContract
         return false;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public static function getOptions(): array
     {
         if (! method_exists(static::class, 'getStateMapping')) {
@@ -182,14 +184,17 @@ abstract class XotBaseState implements StateContract
         if (! \is_object($mapping) || ! method_exists($mapping, 'toArray')) {
             return [];
         }
-        /** @var array<int|string, mixed> $states */
+        /** @var array<string, mixed> $states */
         $states = $mapping->toArray();
 
-        $states = Arr::map($states, fn ($_stateClass, $state) => static::transClass(
+        $labels = Arr::map($states, fn ($_stateClass, $state) => static::transClass(
             static::class,
             'states.'.(is_string($state) ? $state : (string) $state).'.label',
         ));
 
-        return $states;
+        /** @var array<string, mixed> $result */
+        $result = $labels;
+
+        return $result;
     }
 }

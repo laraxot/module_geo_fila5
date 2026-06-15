@@ -142,8 +142,8 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property string|null          $fiscal_code
  * @property string|null          $notes
  *
- * @method static Builder<static>|Profile                         childrenWith(array $relations)
- * @method static Builder<static>|Profile                         childrenWithCount(array $relations)
+ * @method static Builder<static>|Profile                         childrenWith(array<int|string, mixed> $relations)
+ * @method static Builder<static>|Profile                         childrenWithCount(array<int|string, mixed> $relations)
  * @method static \Modules\Gdpr\Database\Factories\ProfileFactory factory($count = null, $state = [])
  * @method static Builder<static>|Profile                         whereFiscalCode($value)
  * @method static Builder<static>|Profile                         whereNotes($value)
