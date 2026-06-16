@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
 use Modules\Geo\Datas\Photon\PhotonFeatureData;
 use Modules\Geo\Datas\Photon\PhotonPropertiesData;
 use Modules\Geo\Datas\Photon\PhotonResponseData;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 test('PhotonAddressData can be instantiated', function (): void {
     $address = PhotonAddressData::from([
         'city' => 'Rome',

@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Datas\BingMapData;
 use Modules\Geo\Datas\CoordinatesData;
@@ -27,6 +22,8 @@ use Modules\Geo\Datas\TravelTimeData;
 use Modules\Geo\Datas\UpdateCoordinatesResult;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 test('CoordinatesData can be instantiated', function () {
     Assert::assertTrue(class_exists(CoordinatesData::class));
 

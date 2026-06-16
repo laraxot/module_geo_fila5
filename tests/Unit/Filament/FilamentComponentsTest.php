@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
@@ -17,9 +11,11 @@ use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');
-
 });
 
 test('MapPicker can be instantiated', function () {
@@ -34,7 +30,6 @@ test('MapPicker can be instantiated', function () {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
-
 });
 
 test('LocationWidget can be instantiated', function () {
@@ -51,5 +46,4 @@ test('GeoMapWidget can be instantiated', function () {
 
 test('UpdateCoordinatesBulkAction can be instantiated', function () {
     $action = UpdateCoordinatesBulkAction::make('update_coordinates');
-
 });

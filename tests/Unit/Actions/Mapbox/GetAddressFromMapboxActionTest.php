@@ -4,93 +4,80 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use Exception;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
-use RuntimeException;
-use function Safe\json_encode;
-use PHPUnit\Framework\Assert;
 use GuzzleHttp\Client;
-use Modules\Geo\Tests\LightTestCase;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxAction;
 use Modules\Geo\Datas\AddressData;
-it('throws exception when api key is not configured', function(): void {
-        $mockHandler = new MockHandler;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\json_encode;
+
+uses(LightTestCase::class);
+it('throws exception when api key is not configured', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => null]);
+    config(['services.mapbox.access_token' => null]);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Mapbox access token not configured', $exception->getMessage());
-
     }
 });
 
-it('throws exception for empty address', function(): void {
-        $mockHandler = new MockHandler;
+it('throws exception for empty address', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     try {
-
         $action->execute('');
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Address cannot be empty', $exception->getMessage());
-
     }
 });
 
-it('throws exception for too long address', function(): void {
-        $mockHandler = new MockHandler;
+it('throws exception for too long address', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     $longAddress = str_repeat('a', 1001);
 
     try {
-
         $action->execute($longAddress);
 
         Assert::fail('Expected RuntimeException was not thrown');
-
-    } catch (RuntimeException $exception) {
-
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Address is too long', $exception->getMessage());
-
     }
 });
 
-it('throws exception for guzzle exception', function(): void {
-        $mockHandler = new MockHandler;
+it('throws exception for guzzle exception', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new RequestException('Error', new Request('GET', 'http://test')));
 
@@ -99,13 +86,13 @@ config(['services.mapbox.access_token' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns null when no features in response', function(): void {
-        $mockHandler = new MockHandler;
+it('returns null when no features in response', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'features' => [],
@@ -116,13 +103,13 @@ config(['services.mapbox.access_token' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns address data for valid response', function(): void {
-        $mockHandler = new MockHandler;
+it('returns address data for valid response', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'features' => [[
@@ -159,13 +146,13 @@ config(['services.mapbox.access_token' => 'test_key']);
     Assert::assertSame('MI', $result->state);
 });
 
-it('handles address without house number', function(): void {
-        $mockHandler = new MockHandler;
+it('handles address without house number', function (): void {
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-config(['services.mapbox.access_token' => 'test_key']);
+    config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
         'features' => [[

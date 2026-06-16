@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use function Safe\json_encode;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -18,8 +12,10 @@ use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Datas\IPLocationData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
-use RuntimeException;
+
+use function Safe\json_encode;
+
+uses(LightTestCase::class);
 /**
  * @return array{0: FetchIPLocationAction, 1: MockHandler}
  */
@@ -29,7 +25,7 @@ function createFetchIPLocationActionWithMock(): array
     $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
     $action = new FetchIPLocationAction();
 
-    $reflection = new ReflectionClass($action);
+    $reflection = new \ReflectionClass($action);
     $property = $reflection->getProperty('client');
     $property->setAccessible(true);
     $property->setValue($action, $client);
@@ -71,7 +67,7 @@ it('throws runtime exception when API returns failure status', function (): void
     try {
         $action->execute('invalid-ip');
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertStringContainsString('Failed to get IP location', $exception->getMessage());
     }
 });
@@ -84,7 +80,7 @@ it('throws runtime exception on HTTP error', function (): void {
     try {
         $action->execute('8.8.8.8');
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertStringContainsString('Failed to get IP location', $exception->getMessage());
     }
 });

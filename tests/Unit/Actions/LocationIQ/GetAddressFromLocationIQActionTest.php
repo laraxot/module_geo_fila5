@@ -4,38 +4,31 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\LocationIQ;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Exception;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\LocationIQ\GetAddressFromLocationIQAction;
 use Modules\Geo\Datas\AddressData;
-it('throws exception when api key is not configured', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-config(['services.locationiq.key' => null]);
+uses(LightTestCase::class);
+it('throws exception when api key is not configured', function (): void {
+    $action = new GetAddressFromLocationIQAction();
+
+    config(['services.locationiq.key' => null]);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected Exception was not thrown');
-
-    } catch (Exception $exception) {
-
+    } catch (\Exception $exception) {
         Assert::assertSame('LocationIQ API key not configured', $exception->getMessage());
-
     }
 });
 
-it('returns null when api response is not successful', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('returns null when api response is not successful', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(null, 500),
@@ -46,10 +39,10 @@ config(['services.locationiq.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns null when no results found', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('returns null when no results found', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([], 200),
@@ -60,10 +53,10 @@ config(['services.locationiq.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns null when first result is empty', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('returns null when first result is empty', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([[]], 200),
@@ -74,10 +67,10 @@ config(['services.locationiq.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns address data for valid response', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('returns address data for valid response', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([[
@@ -128,10 +121,10 @@ config(['services.locationiq.key' => 'test_key']);
     Assert::assertSame('Lombardia', $result->state);
 });
 
-it('uses default country when missing', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('uses default country when missing', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([[
@@ -150,10 +143,10 @@ config(['services.locationiq.key' => 'test_key']);
     Assert::assertSame('IT', $result->country_code);
 });
 
-it('falls back to town and village for city', function(): void {
-        $action = new GetAddressFromLocationIQAction;
+it('falls back to town and village for city', function (): void {
+    $action = new GetAddressFromLocationIQAction();
 
-config(['services.locationiq.key' => 'test_key']);
+    config(['services.locationiq.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([[

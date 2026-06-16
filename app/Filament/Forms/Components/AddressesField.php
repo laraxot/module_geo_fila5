@@ -45,8 +45,39 @@ class AddressesField extends Repeater
             return [];
         }
 
-        /** @var list<array<string, mixed>> $addresses */
-        return array_values($addresses);
+        /** @var list<array<string, mixed>> $normalized */
+        $normalized = [];
+
+        foreach ($addresses as $address) {
+            if (! is_array($address)) {
+                continue;
+            }
+
+            $normalized[] = self::normalizeAddressRow($address);
+        }
+
+        return $normalized;
+    }
+
+    /**
+     * @param array<mixed> $address
+     *
+     * @return array<string, mixed>
+     */
+    private static function normalizeAddressRow(array $address): array
+    {
+        /** @var array<string, mixed> $normalized */
+        $normalized = [];
+
+        foreach ($address as $key => $value) {
+            if (! is_string($key)) {
+                continue;
+            }
+
+            $normalized[$key] = $value;
+        }
+
+        return $normalized;
     }
 
     protected function setUp(): void

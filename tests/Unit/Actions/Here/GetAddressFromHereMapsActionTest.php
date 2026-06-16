@@ -4,38 +4,31 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Here;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Exception;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\Here\GetAddressFromHereMapsAction;
 use Modules\Geo\Datas\AddressData;
-it('throws exception when api key is not configured', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-config(['services.here.key' => null]);
+uses(LightTestCase::class);
+it('throws exception when api key is not configured', function (): void {
+    $action = new GetAddressFromHereMapsAction();
+
+    config(['services.here.key' => null]);
 
     try {
-
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected Exception was not thrown');
-
-    } catch (Exception $exception) {
-
+    } catch (\Exception $exception) {
         Assert::assertSame('Here Maps API key not configured', $exception->getMessage());
-
     }
 });
 
-it('returns null when api response is not successful', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+it('returns null when api response is not successful', function (): void {
+    $action = new GetAddressFromHereMapsAction();
 
-config(['services.here.key' => 'test_key']);
+    config(['services.here.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
@@ -46,10 +39,10 @@ config(['services.here.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns null when no position in response', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+it('returns null when no position in response', function (): void {
+    $action = new GetAddressFromHereMapsAction();
 
-config(['services.here.key' => 'test_key']);
+    config(['services.here.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -67,10 +60,10 @@ config(['services.here.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns null when no address in response', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+it('returns null when no address in response', function (): void {
+    $action = new GetAddressFromHereMapsAction();
 
-config(['services.here.key' => 'test_key']);
+    config(['services.here.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -88,10 +81,10 @@ config(['services.here.key' => 'test_key']);
     Assert::assertNull($result);
 });
 
-it('returns address data for valid response', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+it('returns address data for valid response', function (): void {
+    $action = new GetAddressFromHereMapsAction();
 
-config(['services.here.key' => 'test_key']);
+    config(['services.here.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -130,10 +123,10 @@ config(['services.here.key' => 'test_key']);
     Assert::assertSame('1', $result->street_number);
 });
 
-it('uses default country when missing', function(): void {
-        $action = new GetAddressFromHereMapsAction;
+it('uses default country when missing', function (): void {
+    $action = new GetAddressFromHereMapsAction();
 
-config(['services.here.key' => 'test_key']);
+    config(['services.here.key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([

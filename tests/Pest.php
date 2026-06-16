@@ -2,20 +2,16 @@
 
 declare(strict_types=1);
 
-use Mockery;
-use Mockery\MockInterface;
 use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Geo\Models\Comune;
 use Modules\Geo\Models\Region;
-use Modules\Geo\Tests\TestCase;
 
 /*
- * |--------------------------------------------------------------------------
- * | Test Case
- * |--------------------------------------------------------------------------
+ * Bootstrap Pest — modulo Geo.
+ * Ogni file test dichiara uses(\Modules\Geo\Tests\TestCase::class) o LightTestCase/UnitTestCase FQCN.
+ * Vietato uses()->in() qui (PHPStan method.internalClass).
  */
-
 
 /*
  * |--------------------------------------------------------------------------
@@ -37,17 +33,4 @@ function createRegion(array $attributes = []): Region
 function createComune(array $attributes = []): Comune
 {
     return ComuneFactory::new()->createOne($attributes);
-}
-
-/**
- * @template T of object
- *
- * @param class-string<T> $class
- *
- * @return T&MockInterface
- */
-function typedMock(string $class): MockInterface
-{
-    /** @var T&MockInterface */
-    return Mockery::mock($class);
 }

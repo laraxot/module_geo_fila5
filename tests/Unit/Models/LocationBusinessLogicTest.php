@@ -4,40 +4,38 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Modules\Geo\Tests\TestCase;
-use PHPUnit\Framework\Assert;
-use ReflectionClass;
-use function Safe\class_uses;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Location;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\class_uses;
+
+uses(TestCase::class);
+
 describe('Location Business Logic', function () {
     test('location extends base model', function () {
-        $parent = (new ReflectionClass(Location::class))->getParentClass();
-        Assert::assertInstanceOf(ReflectionClass::class, $parent);
+        $parent = (new \ReflectionClass(Location::class))->getParentClass();
+        Assert::assertInstanceOf(\ReflectionClass::class, $parent);
         Assert::assertSame(BaseModel::class, $parent->getName());
     });
 
-test('location has factory trait for testing', function () {
-        $traits = class_uses(\Modules\Geo\Tests\TestCase::class);
+    test('location has factory trait for testing', function () {
+        $traits = class_uses(Location::class);
 
         Assert::assertArrayHasKey(HasFactory::class, $traits);
     });
 
-test('location can be queried within distance scope', function () {
+    test('location can be queried within distance scope', function () {
         $query = Location::withinDistance(45.4642, 9.1900, 10.0);
 
         Assert::assertInstanceOf(Builder::class, $query);
     });
 
-test('location has geographic coordinate properties', function () {
-        $location = new Location;
+    test('location has geographic coordinate properties', function () {
+        $location = new Location();
         $location->lat = 45.4642;
         $location->lng = 9.1900;
 
@@ -45,8 +43,8 @@ test('location has geographic coordinate properties', function () {
         Assert::assertSame(9.1900, $location->lng);
     });
 
-test('location can store address components', function () {
-        $location = new Location;
+    test('location can store address components', function () {
+        $location = new Location();
         $location->street = 'Via Roma 123';
         $location->city = 'Milano';
         $location->state = 'Lombardia';
@@ -58,33 +56,33 @@ test('location can store address components', function () {
         Assert::assertSame('20121', $location->zip);
     });
 
-test('location has processing status tracking', function () {
-        $location = new Location;
+    test('location has processing status tracking', function () {
+        $location = new Location();
         $location->processed = true;
 
         Assert::assertSame(true, $location->processed);
     });
 
-test('location can store formatted address', function () {
-        $location = new Location;
+    test('location can store formatted address', function () {
+        $location = new Location();
         $location->formatted_address = 'Via Roma 123, 20121 Milano MI, Italy';
 
         Assert::assertSame('Via Roma 123, 20121 Milano MI, Italy', $location->formatted_address);
     });
 
-test('location can be queried by city', function () {
+    test('location can be queried by city', function () {
         $query = Location::whereCity('Milano');
 
         Assert::assertInstanceOf(Builder::class, $query);
     });
 
-test('location can be queried by coordinates', function () {
+    test('location can be queried by coordinates', function () {
         $query = Location::whereLat(45.4642)->whereLng(9.1900);
 
         Assert::assertInstanceOf(Builder::class, $query);
     });
 
-test('location can be queried by processing status', function () {
+    test('location can be queried by processing status', function () {
         $query = Location::whereProcessed(true);
 
         Assert::assertInstanceOf(Builder::class, $query);

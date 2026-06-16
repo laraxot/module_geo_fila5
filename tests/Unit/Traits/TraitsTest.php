@@ -4,22 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Modules\Geo\Tests\TestCase;
 use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
 
+uses(TestCase::class);
 test('HasAddresses trait can be used', function (): void {
     Assert::assertTrue(trait_exists(HasAddresses::class));
 
-    $reflection = new ReflectionClass(HasAddresses::class);
+    $reflection = new \ReflectionClass(HasAddresses::class);
     Assert::assertTrue($reflection->hasMethod('addresses'));
     Assert::assertTrue($reflection->hasMethod('primaryAddress'));
 });
@@ -27,6 +21,6 @@ test('HasAddresses trait can be used', function (): void {
 test('HandlesCoordinates trait can be used', function (): void {
     Assert::assertTrue(trait_exists(HandlesCoordinates::class));
 
-    $reflection = new ReflectionClass(HandlesCoordinates::class);
+    $reflection = new \ReflectionClass(HandlesCoordinates::class);
     Assert::assertTrue($reflection->hasMethod('formatCoordinates'));
 });

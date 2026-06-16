@@ -4,21 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Bing;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
 use Modules\Geo\Actions\Bing\GetAddressFromBingMapsAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\LightTestCase;
-it('throws exception when api key is not configured', function(): void {
+use PHPUnit\Framework\Assert;
+
+uses(LightTestCase::class);
+it('throws exception when api key is not configured', function (): void {
     config(['services.bing.maps_api_key' => null]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -27,10 +24,10 @@ it('throws exception when api key is not configured', function(): void {
     }
 });
 
-it('throws exception for invalid latitude range', function(): void {
+it('throws exception for invalid latitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(91.0, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -38,10 +35,10 @@ it('throws exception for invalid latitude range', function(): void {
     }
 });
 
-it('throws exception for invalid longitude range', function(): void {
+it('throws exception for invalid longitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.0, 181.0);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -49,14 +46,14 @@ it('throws exception for invalid longitude range', function(): void {
     }
 });
 
-it('throws exception when api response is not successful', function(): void {
+it('throws exception when api response is not successful', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -65,14 +62,14 @@ it('throws exception when api response is not successful', function(): void {
     }
 });
 
-it('throws exception when api response is not valid json', function(): void {
+it('throws exception when api response is not valid json', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response('not valid json', 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -81,7 +78,7 @@ it('throws exception when api response is not valid json', function(): void {
     }
 });
 
-it('throws exception when no results in response', function(): void {
+it('throws exception when no results in response', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -92,7 +89,7 @@ it('throws exception when no results in response', function(): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -101,7 +98,7 @@ it('throws exception when no results in response', function(): void {
     }
 });
 
-it('throws exception when point is missing in response', function(): void {
+it('throws exception when point is missing in response', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -114,7 +111,7 @@ it('throws exception when point is missing in response', function(): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -123,7 +120,7 @@ it('throws exception when point is missing in response', function(): void {
     }
 });
 
-it('throws exception when coordinates are missing in response', function(): void {
+it('throws exception when coordinates are missing in response', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -137,7 +134,7 @@ it('throws exception when coordinates are missing in response', function(): void
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -146,7 +143,7 @@ it('throws exception when coordinates are missing in response', function(): void
     }
 });
 
-it('throws exception when address is missing in response', function(): void {
+it('throws exception when address is missing in response', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -159,7 +156,7 @@ it('throws exception when address is missing in response', function(): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -168,7 +165,7 @@ it('throws exception when address is missing in response', function(): void {
     }
 });
 
-it('returns address data for valid coordinates', function(): void {
+it('returns address data for valid coordinates', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -190,7 +187,7 @@ it('returns address data for valid coordinates', function(): void {
         ], 200),
     ]);
 
-    $action = new GetAddressFromBingMapsAction;
+    $action = new GetAddressFromBingMapsAction();
     $result = $action->execute(45.4642, 9.1900);
 
     Assert::assertInstanceOf(AddressData::class, $result);
