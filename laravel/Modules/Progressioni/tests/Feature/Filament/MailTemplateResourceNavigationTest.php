@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Modules\Progressioni\Tests\TestCase;
+
+uses(TestCase::class);
+
 use Filament\Facades\Filament;
 use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Livewire\Livewire;
@@ -10,13 +14,11 @@ use Modules\Progressioni\Filament\Resources\MailTemplateResource;
 use Modules\Progressioni\Filament\Resources\MailTemplateResource\Pages\ListMailTemplates;
 use Modules\Xot\Datas\XotData;
 
-use function Pest\Laravel\actingAs;
-
 beforeEach(function () {
     $this->user = XotData::make()->getUserClass()::factory()->create();
     $this->user->assignRole('progressioni::admin');
 
-    actingAs($this->user);
+    $this->actingAs($this->user);
 
     // Set panel corrente
     Filament::setCurrentPanel(

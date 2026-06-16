@@ -52,10 +52,10 @@ Namespace:
 | :--- | :---: | :--- |
 | 1 – Scaffold | ✅ | Creare `Schemas/` e `Tables/` con classi vuote |
 | 2 – Spostamento | ✅ | Copiare schema da Resource / List / View → classi dedicate ([script](../../../bashscripts/progressioni/populate-filament-schemas.php), [doc](../../../bashscripts/docs/progressioni/populate-filament-schemas.md)) |
-| 3 – Delega | ⏳ | Resource e List delegano a Form/Table **solo quando la fase 3 è completata**; guida pilota: [Assenze](./filament-resource-wire-assenze.md) (wire **non** ancora applicato) |
+| 3 – Delega | ⏳ | Resource e List delegano a Form/Table **solo quando la fase 3 è completata**; guida pilota: [Assenza](./filament-resource-wire-assenza.md) (wire **non** ancora applicato) |
 | 4 – Pulizia | ⏳ | Rimuovere metodi inline duplicati; rimuovere `getPages()` ridondanti (script `analyze-redundant-getpages.php`) |
 
-**Priorità fase 3:** pilota Assenze (guida pronta) → risorse CRUD semplici → List con override → `ProgressioniResource` / `SchedaResource`.
+**Priorità fase 3:** pilota Assenza (guida pronta) → risorse CRUD semplici → List con override → `ProgressioniResource` / `SchedaResource`.
 
 **Durante fasi 1–2:** non modificare `*Resource.php` né `Pages/List*` per delegare; restano la sorgente di verità fino al wire manuale.
 
@@ -63,7 +63,7 @@ Namespace:
 
 | Resource | Form | Infolist | Table |
 | :--- | :--- | :--- | :--- |
-| AssenzeResource | AssenzaForm | AssenzeInfolist | AssenzeTable |
+| AssenzaResource | AssenzaForm | AssenzaInfolist | AssenzasTable |
 | CategoriaProproResource | CategoriaProproForm | CategoriaProproInfolist | CategoriaProprosTable |
 | CedDiffResource | CedDiffForm | CedDiffInfolist | CedDiffsTable |
 | CoeffResource | CoeffForm | CoeffInfolist | CoeffsTable |
@@ -80,7 +80,31 @@ Namespace:
 | PesiResource | PesiForm | PesiInfolist | PesisTable |
 | ProgressioniResource | ProgressioniForm | ProgressioniInfolist | ProgressionisTable |
 | SchedaCriteriResource | SchedaCriteriForm | SchedaCriteriInfolist | SchedaCriterisTable |
-| SchedaResource | SchedaForm | SchedaInfolist | SchedasTable |
+| SchedaResource | SchedaForm → estende `Ptv\...\BaseSchedaForm` | SchedaInfolist → estende `Ptv\...\BaseSchedaInfolist` | SchedasTable → estende `Ptv\...\BaseSchedasTable` |
+
+### SchedaResource: form condiviso con Ptv
+
+`Modules\Progressioni\Filament\Resources\SchedaResource\Schemas\SchedaForm` **estende** `Modules\Ptv\Filament\Resources\SchedaResource\Schemas\BaseSchedaForm` (non `XotBaseResourceForm` direttamente).
+
+- Schema Progressioni: override completo `getFormSchema()` (campi flat assenze/categoria).
+- Ptv: `SchedaForm` thin su `BaseSchedaForm` (sezioni diritto/lavoratore/qualifica).
+
+### SchedaResource: infolist condiviso con Ptv
+
+`Modules\Progressioni\Filament\Resources\SchedaResource\Schemas\SchedaInfolist` **estende** `Modules\Ptv\Filament\Resources\SchedaResource\Schemas\BaseSchedaInfolist` (non `XotBaseResourceInfolist` direttamente).
+
+- Schema Progressioni: override completo `getInfolistSchema()` (campi flat assenze/categoria).
+- Ptv: `SchedaInfolist` thin su `BaseSchedaInfolist` (default Ptv).
+
+### SchedaResource: tabella condivisa con Ptv
+
+`Modules\Progressioni\Filament\Resources\SchedaResource\Tables\SchedasTable` **estende** `Modules\Ptv\Filament\Resources\SchedaResource\Tables\BaseSchedasTable` (non `XotBaseResourceTable` direttamente).
+
+- Colonne, bulk e azioni riga: override Progressioni dove serve; filtri vuoti fino al wire fase 3 su `ListSchedas`.
+- Pagine: `ListSchedas` / `EditScheda` / `CreateScheda` estendono le rispettive `Base*` in Ptv.
+
+Dettaglio ereditarietà: [Ptv — scheda-resource-pages-inheritance](../../Ptv/docs/scheda-resource-pages-inheritance.md).
+
 | StabiDirigenteResource | StabiDirigenteForm | StabiDirigenteInfolist | StabiDirigentesTable |
 | StipendioTabellareResource | StipendioTabellareForm | StipendioTabellareInfolist | StipendioTabellaresTable |
 | ValutatoreResource | ValutatoreForm | ValutatoreInfolist | ValutatoresTable |
@@ -138,7 +162,7 @@ class ProgressioniForm extends \Filament\Forms\Form { }
 - [Themes One – filament-resource-schemas-tables](../../../Themes/One/docs/filament-resource-schemas-tables.md)
 - [Themes Zero – filament-resource-schemas-tables](../../../Themes/Zero/docs/filament-resource-schemas-tables.md)
 - [Themes Three – filament-resource-schemas-tables](../../../Themes/Three/docs/filament-resource-schemas-tables.md)
-- [Cursor rule](../../../.cursor/rules/filament-resource-schemas-tables.mdc)
+- [Ptv — scheda-resource-pages-inheritance](../../Ptv/docs/scheda-resource-pages-inheritance.md) — `BaseSchedaForm`, `BaseSchedasTable` / pagine Scheda
 - [bashscripts — populate-filament-schemas](../../../bashscripts/docs/progressioni/populate-filament-schemas.md)
 
 *Ultimo aggiornamento: giugno 2025*

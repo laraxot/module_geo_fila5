@@ -109,4 +109,16 @@ return [
             'description' => 'value',
         ],
     ],
+    'navigation' => [
+        'name' => 'Assenza',
+        'plural' => 'Assenze',
+        'group' => [
+            'name' => 'Gestione Progressioni',
+            'description' => 'Gestione completa delle progressioni di carriera',
+        ],
+        'sort' => 4,
+        'icon' => 'heroicon-o-calendar-days',
+        'label' => 'Assenza',
+    ],
+    'label' => 'assenza',
 ];

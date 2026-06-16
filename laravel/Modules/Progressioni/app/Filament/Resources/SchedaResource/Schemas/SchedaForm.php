@@ -6,9 +6,9 @@ namespace Modules\Progressioni\Filament\Resources\SchedaResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
-use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
+use Modules\Ptv\Filament\Resources\SchedaResource\Schemas\BaseSchedaForm;
 
-class SchedaForm extends XotBaseResourceForm
+class SchedaForm extends BaseSchedaForm
 {
     /**
      * @return array<string, Component>

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\SchedaResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\BulkAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Modules\Performance\Actions\ShowMailSendedAt;
@@ -82,7 +84,7 @@ abstract class BaseSchedasTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, Filter>
+     * @return array<string, AnnoValutatoreFilter|SelectFilter|TernaryFilter>
      */
     public function getTableFilters(): array
     {
@@ -96,7 +98,7 @@ abstract class BaseSchedasTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, \Filament\Tables\Actions\Action|\Filament\Tables\Actions\ActionGroup>
+     * @return array<string, Action|ActionGroup>
      */
     public function getTableActions(): array
     {
@@ -115,7 +117,7 @@ abstract class BaseSchedasTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, \Filament\Tables\Actions\BulkAction>
+     * @return array<string, BulkAction>
      */
     public function getTableBulkActions(): array
     {

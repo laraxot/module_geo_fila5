@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\AssenzeResource\Schemas;
+namespace Modules\Progressioni\Filament\Resources\AssenzaResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;

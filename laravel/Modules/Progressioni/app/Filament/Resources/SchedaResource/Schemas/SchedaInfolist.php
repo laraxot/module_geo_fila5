@@ -6,9 +6,9 @@ namespace Modules\Progressioni\Filament\Resources\SchedaResource\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
-use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceInfolist;
+use Modules\Ptv\Filament\Resources\SchedaResource\Schemas\BaseSchedaInfolist;
 
-class SchedaInfolist extends XotBaseResourceInfolist
+class SchedaInfolist extends BaseSchedaInfolist
 {
     /**
      * @return array<string, Component>

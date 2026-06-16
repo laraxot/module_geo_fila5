@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\AssenzeResource\Tables;
+namespace Modules\Progressioni\Filament\Resources\AssenzaResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
-class AssenzeTable extends XotBaseResourceTable
+class AssenzasTable extends XotBaseResourceTable
 {
     /**
      * @return array<string, Column>

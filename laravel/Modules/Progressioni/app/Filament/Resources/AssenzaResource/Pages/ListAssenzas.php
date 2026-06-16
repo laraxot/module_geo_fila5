@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Modules\Progressioni\Filament\Resources\AssenzeResource\Pages;
+namespace Modules\Progressioni\Filament\Resources\AssenzaResource\Pages;
 
 use Filament\Tables\Columns\TextColumn;
-use Modules\Progressioni\Filament\Resources\AssenzeResource;
+use Modules\Progressioni\Filament\Resources\AssenzaResource;
 use Modules\Ptv\Filament\Resources\Pages\PtvBaseYearListRecords;
 use Override;
 
-class ListAssenzes extends PtvBaseYearListRecords
+class ListAssenzas extends PtvBaseYearListRecords
 {
-    protected static string $resource = AssenzeResource::class;
+    protected static string $resource = AssenzaResource::class;
 
     #[Override]
     public function getTableColumns(): array

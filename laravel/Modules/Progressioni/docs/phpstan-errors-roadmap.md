@@ -14,7 +14,7 @@
 Tutti gli errori sono dello stesso tipo: `getHeaderActions()` deve restituire array associativo con chiavi stringa.
 
 **File interessati** (tutti Edit*):
-1. `EditAssenze.php`
+1. `EditAssenza.php`
 2. `EditCategoriaPropro.php`
 3. `EditCedDiff.php`
 4. `EditCoeff.php`

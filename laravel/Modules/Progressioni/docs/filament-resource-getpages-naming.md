@@ -14,9 +14,9 @@ Regola completa: [Xot — getPages ridondante](../../Xot/docs/filament/getpages-
 | Page con nome singolare diverso dal `$name` della Resource | **Mantenere** override finché non si rinomina |
 | Presenza di `view` o pagine custom | **Mantenere** override |
 
-`$name` = nome classe Resource senza `Resource` (es. `Assenze` da `AssenzeResource`).
+`$name` = nome classe Resource senza `Resource` (es. `Assenza` da `AssenzaResource`).
 
-## Pilota: `AssenzeResource` vs `CoeffResource`
+## Pilota: `AssenzaResource` vs `CoeffResource`
 
 ### `CoeffResource` — override rimovibile
 
@@ -24,13 +24,14 @@ Regola completa: [Xot — getPages ridondante](../../Xot/docs/filament/getpages-
 - Page presenti: stessi nomi
 - **Azione consigliata:** eliminare `getPages()` da `CoeffResource.php` dopo smoke test su list/create/edit
 
-### `AssenzeResource` — override necessario (stato attuale)
+### `AssenzaResource` — naming allineato (giugno 2025)
 
-- Page attese: `ListAssenzes`, `CreateAssenze`, `EditAssenze`
-- Page presenti: `ListAssenza`, `CreateAssenza`, `EditAssenza`
-- **Azione consigliata:** mantenere `getPages()` oppure rinominare le tre Page (e aggiornare riferimenti) prima di rimuovere l'override
+- `$name` implicito: `Assenza`
+- Page attese dalla base: `ListAssenzas`, `CreateAssenza`, `EditAssenza`
+- Page presenti: stessi nomi (dopo rename da `AssenzeResource` / `ListAssenza`)
+- **Azione consigliata:** rimuovere `getPages()` da `AssenzaResource.php` dopo smoke test; l'override esplicito è ridondante ma innocuo
 
-Collegamento wire fase 3 (schemas/tables): [filament-resource-wire-assenze.md](./filament-resource-wire-assenze.md) — indipendente dalla regola `getPages`, ma stesso pilota Resource.
+Collegamento wire fase 3 (schemas/tables): [filament-resource-wire-assenza.md](./filament-resource-wire-assenza.md) — indipendente dalla regola `getPages`, ma stesso pilota Resource.
 
 ## Resource Progressioni analizzate (script)
 
@@ -43,13 +44,12 @@ php ../bashscripts/filament/analyze-redundant-getpages.php | rg Progressioni
 
 ### Tipicamente `SAFE_TO_REMOVE` (solo CRUD standard + naming ok)
 
-Include, tra le altre: `CoeffResource`, `CategoriaProproResource`, `CedDiffResource`, `CriteriOptionResource`, `CriteriPrecedenzaResource`, `CriteriValutazioneResource`, `EsclusiExtraResource`, `MaxCatecoPosfunAnnoResource`, `MyLogResource`, `PesiResource`, `SchedaCriteriResource`, `StabiDirigenteResource`, `StipendioTabellareResource`, `ValutatoreResource`.
+Include, tra le altre: `AssenzaResource`, `CoeffResource`, `CategoriaProproResource`, `CedDiffResource`, `CriteriOptionResource`, `CriteriPrecedenzaResource`, `CriteriValutazioneResource`, `EsclusiExtraResource`, `MaxCatecoPosfunAnnoResource`, `MyLogResource`, `PesiResource`, `SchedaCriteriResource`, `StabiDirigenteResource`, `StipendioTabellareResource`, `ValutatoreResource`.
 
 ### Tipicamente `MUST_KEEP`
 
 | Resource | Motivo |
 | :--- | :--- |
-| `AssenzeResource` | Naming Page `*Assenza` vs plural `Assenzes` |
 | `CriteriEsclusioneResource` | Chiavi duplicate / non standard nello override |
 | `CriteriMaggiorazioneResource` | Chiavi duplicate nello override |
 | `ProgressioniResource` | Solo pagine custom (`ListSchedaLogActivities`) |
@@ -61,7 +61,7 @@ Verificare sempre con lo script prima di ogni rimozione: lo stato del codice pu�
 ## Ordine di intervento consigliato
 
 1. Rimuovere `getPages()` dalle Resource in `SAFE_TO_REMOVE` (batch per PR piccole).
-2. Allineare naming `AssenzeResource` / Page Assenza (decisione di dominio: singolare vs plurale nel modello).
+2. Completare wire fase 3 su `AssenzaResource` (delega Form/Table).
 3. Documentare in questa pagina ogni Resource che passa da `MUST_KEEP` a conforme.
 
 ## `SchedaResource` — ereditarietà pagine

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\SchedaResource\Tables;
 
+use Filament\Actions\BulkAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -78,7 +79,7 @@ class SchedasTable extends BaseSchedasTable
     }
 
     /**
-     * @return array<string, \Filament\Tables\Actions\BulkAction>
+     * @return array<string, BulkAction>
      */
     #[Override]
     public function getTableBulkActions(): array
