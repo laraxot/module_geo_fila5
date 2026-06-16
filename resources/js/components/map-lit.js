@@ -237,6 +237,9 @@ class MapLit extends LitElement {
         this._layers = buildMapLayers(L);
         this._layers[this._currentLayer].addTo(this._map);
 
+        // A5: scala metrica (km/m) in basso a sinistra, niente miglia
+        L.control.scale({ imperial: false }).addTo(this._map);
+
         // Reference: direktvermarkter.js custom cluster group
         const clusterFactory = L.markerClusterGroup || (window.L && window.L.markerClusterGroup);
         console.log('[map-lit] clusterFactory available:', typeof clusterFactory === 'function', L.MarkerClusterGroup);
@@ -263,9 +266,9 @@ class MapLit extends LitElement {
             const container = this._map.getContainer();
             const mapW = container.clientWidth;
             const mapH = container.clientHeight;
-            // farmshops.eu: maxHeight 0.8 × mappa, maxWidth 0.95 × mappa
+            // farmshops.eu: maxHeight 0.65 × mappa (A4), maxWidth 0.95 × mappa
             e.popup.options.maxWidth = Math.floor(mapW * 0.95);
-            e.popup.options.maxHeight = Math.floor(mapH * 0.8);
+            e.popup.options.maxHeight = Math.floor(mapH * 0.65);
             e.popup.update();
             this._wirePopupActions(e.popup);
         });
@@ -708,6 +711,7 @@ class MapLit extends LitElement {
                 className: 'popup-wrapper',
                 maxWidth: 420,
                 minWidth: 300,
+                autoPanPaddingTopLeft: L.point(72, 16),
             });
             layer.bindPopup(popup);
         }
@@ -748,10 +752,13 @@ class MapLit extends LitElement {
         const lat = Number(coordsRaw?.[1]);
         const coords = { lat, lng };
 
-        layer.bindPopup('', {
+        // A1: autoPanPaddingTopLeft evita che il popup finisca sotto header/zoom
+        // A3: pre-bind con skeleton (no popup vuoto al primo click)
+        layer.bindPopup(buildTicketPopupLoadingHtml(ticketType, ticketStatus), {
             className: 'popup-wrapper',
             maxWidth: 380,
             minWidth: 300,
+            autoPanPaddingTopLeft: L.point(72, 16),
         });
 
         layer.on('click', (event) => {
@@ -759,11 +766,20 @@ class MapLit extends LitElement {
                 L.DomEvent.stopPropagation(event);
             }
 
+            const popup = this._ensureFeaturePopup(layer);
+
             const showPopup = (detail) => {
                 if (detail) {
                     layer._geoDetailCache = detail;
                 }
-                this._openFeaturePopup(layer, p, ticketType, ticketStatus, detail, coords);
+                const html = buildTicketPopupHtml(p, ticketType, ticketStatus, detail, coords);
+                popup.setContent(html);
+                popup._geoFeatureProps = p;
+                popup._geoTicketType = ticketType;
+                popup._geoTicketStatus = ticketStatus;
+                popup._geoTicketDetail = detail;
+                popup.update();
+                this._wirePopupActions(popup);
             };
 
             if (layer._geoDetailCache) {
@@ -772,7 +788,10 @@ class MapLit extends LitElement {
             }
 
             if (p.id) {
-                this._openFeaturePopupLoading(layer, ticketType, ticketStatus);
+                // Reset skeleton prima del fetch (re-click dopo close senza cache)
+                popup.setContent(buildTicketPopupLoadingHtml(ticketType, ticketStatus));
+                popup._geoFeatureProps = null;
+                popup.update();
                 fetch(`/api/ticket-details/${p.id}`)
                     .then((res) => (res.ok ? res.json() : null))
                     .then((detail) => showPopup(detail))
