@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Services;
 
 use Illuminate\Support\Str;
-use ReflectionClass;
 use RuntimeException;
 
 /**
@@ -115,7 +114,7 @@ class SmsService
 
         // Utilizziamo reflection per chiamare i metodi in modo sicuro
         try {
-            $reflectionClass = new ReflectionClass($instance);
+            $reflectionClass = new \ReflectionClass($instance);
 
             // Chiamiamo setLocalVars
             $setLocalVarsMethod = $reflectionClass->getMethod('setLocalVars');

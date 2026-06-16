@@ -5,11 +5,77 @@ declare(strict_types=1);
 namespace Modules\Notify\Tests\Unit\Traits;
 
 use Filament\Facades\Filament;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Tests\TestCase;
+use Modules\Notify\Traits\HasNotificationRateLimiting;
+use Modules\Notify\Traits\HasNotificationTracking;
+use Modules\Notify\Traits\HasTenantNotifications;
 use Modules\Tenant\Models\Tenant;
 use PHPUnit\Framework\Assert;
 
 uses(\Modules\Notify\Tests\TestCase::class);
+
+final class NotifyRateLimitDummy
+{
+    use HasNotificationRateLimiting;
+
+    public function key(string $type, mixed $identifier): string
+    {
+        return $this->getNotificationRateLimitKey($type, $identifier);
+    }
+
+    public function reset(string $key): void
+    {
+        $this->resetNotificationRateLimit($key);
+    }
+
+    public function shouldSend(string $key): bool
+    {
+        return $this->shouldSendNotification($key);
+    }
+
+    public function remaining(string $key): int
+    {
+        return $this->getNotificationRateLimitRemainingAttempts($key);
+    }
+
+    public function retryAfter(string $key): int
+    {
+        return $this->getNotificationRateLimitRetryAfter($key);
+    }
+}
+
+final class NotifyTrackingDummy
+{
+    use HasNotificationTracking;
+
+    public function addTrackingPublic(string $html, string $trackingId): string
+    {
+        return $this->addTracking($html, $trackingId);
+    }
+
+    public function trackingId(): string
+    {
+        return $this->generateTrackingId();
+    }
+
+    public function trackingEnabled(): bool
+    {
+        return $this->isTrackingEnabled();
+    }
+}
+
+final class NotifyTenantDummyModel extends Model
+{
+    use HasTenantNotifications;
+
+    public ?string $tenant_id = null;
+
+    public function getTable(): string
+    {
+        return 'notify_tenant_dummy_models';
+    }
+}
 
 describe('Notify Traits Coverage', function (): void {
     test('_notification_rate_limiting_helpers_work_with_limiter', function (): void {

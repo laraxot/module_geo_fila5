@@ -19,8 +19,13 @@ class SpareImportoTotaleAction
 
     public function execute(float $amount, Get $get, Set $set): void
     {
-        $tipoValue = (object) $get('tipo');
-        $tipoIncentivo = is_string($tipoValue->value) ? $tipoValue->value : (string) $tipoValue->value;
+        $tipoValue = $get('tipo');
+        $tipoRaw = is_array($tipoValue) ? ($tipoValue['value'] ?? '') : (is_object($tipoValue) ? ($tipoValue->value ?? '') : $tipoValue);
+        $tipoIncentivo = match (true) {
+            is_string($tipoRaw) => $tipoRaw,
+            is_int($tipoRaw), is_float($tipoRaw) => (string) $tipoRaw,
+            default => '',
+        };
 
         $percentage = CapitalPercentage::where('tipologia', $tipoIncentivo)
             ->where('da', '<=', $amount)

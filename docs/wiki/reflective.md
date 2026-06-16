@@ -23,6 +23,14 @@ related:
 
 **Prova:** `phpstan analyse Modules/Tenant|Notify` → 0 errori, nessun crash; `pest Modules/Tenant/tests/Unit/ApplicationPublicPathCoverageTest.php` → 3 passed.
 
+## 2026-06-16 — Binding TestCase per-file: l'import deve precedere `uses()`
+
+**Perche e successo:** rimosso il `pest()->extend()->in()` globale di Tenant, la suite non collezionava piu (`TestCaseClassOrTraitNotFound`). Cause nei singoli file: (a) `uses(TestCase::class)` **prima** della riga `use Modules\Tenant\Tests\TestCase;` → `TestCase::class` si risolve namespace-relative (`...\Unit\Models\TestCase`); (b) `uses(Tests\TestCase::class)` senza import → stringa verso classe inesistente; (c) file senza alcun `uses()`. Il `->in()` globale mascherava tutto questo.
+
+**Come evitarlo:** in Pest l'import del TestCase **deve stare prima** della chiamata `uses()` (il `::class` e' risolto a compile-time ma un `use` posto dopo non si applica alla call gia' compilata sopra). Ogni test deve avere `uses(\…\TestCase::class)` con import corretto. Non affidarsi a binding globali `->in()` se il `Pest.php` e' eager-autoloaded.
+
+**Scoperta collaterale (non risolta — fuori scope PHPStan-zero):** sbloccata la collection sono emersi drift test↔implementazione **pre-esistenti** mascherati dalla suite non avviabile: `GetTenantNameActionTest` (l'azione ritorna il path host-reversed solo se esiste la cartella `config/` corrispondente — logica multi-tenant intenzionale), `ResolveTenantModelClassActionTest` (mock con FQCN fittizi filtrati da `class_exists`). Richiedono fixture di dominio dedicate.
+
 ## 2026-06-16 — Regressione `App\Application::publicPath()` (realpath rimosso)
 
 **Perche e successo:** `publicPath()` era stato semplificato a `return $publicRoot.'/'.$path` perdendo la canonicalizzazione `realpath`. Il test di copertura (mai eseguito davvero per il binding rotto sopra) codificava la spec corretta a 3 rami: (1) candidate esiste → `realpath(candidate)`; (2) solo `public_html` esiste → `realpath(root).'/'.segment`; (3) niente esiste → fallback normalizzato. L'import `Safe\Exceptions\FilesystemException` + `//use function Safe\realpath` erano residui della versione corretta.
