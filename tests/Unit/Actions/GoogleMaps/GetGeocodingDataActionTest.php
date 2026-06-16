@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use function Safe\json_encode;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
@@ -18,8 +14,10 @@ use Modules\Geo\Actions\GoogleMaps\GetGeocodingDataAction;
 use Modules\Geo\Datas\GeocodingData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use RuntimeException;
 
+use function Safe\json_encode;
+
+uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
@@ -31,7 +29,7 @@ it('throws exception when api key is not configured', function (): void {
     try {
         $action->execute('Milano, Italia');
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Chiave API Google Maps non configurata', $exception->getMessage());
     }
 });
@@ -47,7 +45,7 @@ it('throws exception for empty address', function (): void {
     try {
         $action->execute('');
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Indirizzo non può essere vuoto', $exception->getMessage());
     }
 });
@@ -65,7 +63,7 @@ it('throws exception for too long address', function (): void {
     try {
         $action->execute($longAddress);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Indirizzo troppo lungo', $exception->getMessage());
     }
 });

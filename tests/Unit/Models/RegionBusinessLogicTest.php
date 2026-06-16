@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use function Safe\class_uses;
-
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Region;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
+
+use function Safe\class_uses;
+
 use Sushi\Sushi;
 
+uses(\Modules\Geo\Tests\TestCase::class);
 describe('Region Business Logic', function () {
     test('region extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Region());
@@ -42,14 +41,14 @@ describe('Region Business Logic', function () {
 
     test('region has schema definition for geographic data', function () {
         $region = new Region();
-        $reflection = new ReflectionClass($region);
+        $reflection = new \ReflectionClass($region);
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
 
         $schema = $schemaProperty->getValue($region);
         Assert::assertIsArray($schema);
-        /** @var array<string, mixed> $schema */
+        /* @var array<string, mixed> $schema */
         Assert::assertSame('integer', $schema['id']);
         Assert::assertSame('string', $schema['name']);
     });

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests;
 
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -22,27 +19,25 @@ use Modules\Xot\Datas\XotData;
 use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
- * @property object|null $action
- * @property MockInterface|null $mockDistanceMatrixAction
- * @property MockInterface|null $fetchAction
- * @property MockInterface|null $mockClient
- * @property MockInterface|null $getCoordinatesAction
- * @property MockHandler|null $mockHandler
+ * @property object|null            $action
+ * @property MockInterface|null     $mockDistanceMatrixAction
+ * @property MockInterface|null     $fetchAction
+ * @property MockInterface|null     $mockClient
+ * @property MockInterface|null     $getCoordinatesAction
+ * @property MockHandler|null       $mockHandler
  * @property GoogleMapsService|null $service
- * @property HereService|null $hereService
- * @property Address|null $address
- * @property BaseModel|null $baseModel
- * @property array<string, mixed> $testData
- * @property array<string, mixed> $italianAddress
- * @property array<string, mixed> $geocodingResult
- * @property array<string, mixed> $weatherData
- * @property array<string, mixed> $place
+ * @property HereService|null       $hereService
+ * @property Address|null           $address
+ * @property BaseModel|null         $baseModel
+ * @property array<string, mixed>   $testData
+ * @property array<string, mixed>   $italianAddress
+ * @property array<string, mixed>   $geocodingResult
+ * @property array<string, mixed>   $weatherData
+ * @property array<string, mixed>   $place
  */
 abstract class TestCase extends XotBaseTestCase
 {
     use DatabaseTransactions;
-
-    public ?object $action = null;
 
     public ?MockInterface $mockDistanceMatrixAction = null;
 
@@ -54,13 +49,9 @@ abstract class TestCase extends XotBaseTestCase
 
     public ?MockHandler $mockHandler = null;
 
-    public ?GoogleMapsService $service = null;
-
     public ?HereService $hereService = null;
 
     public ?Address $address = null;
-
-    public ?BaseModel $baseModel = null;
 
     /** @var array<string, mixed> */
     public array $testData = [];

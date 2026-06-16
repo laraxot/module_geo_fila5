@@ -4,147 +4,116 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use Exception;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Http;
-use PHPUnit\Framework\Assert;
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxLatLngAction;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-it('throws exception for invalid latitude below -90', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-try {
-
-    $action->execute(-91.0, 9.1900);
-
-    Assert::fail('Expected InvalidLocationException was not thrown');
-
-} catch (InvalidLocationException $exception) {
-
-    Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
-
-}
-});
-
-it('throws exception for invalid latitude above 90', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
-
-try {
-
-    $action->execute(91.0, 9.1900);
-
-    Assert::fail('Expected InvalidLocationException was not thrown');
-
-} catch (InvalidLocationException $exception) {
-
-    Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
-
-}
-});
-
-it('throws exception for invalid longitude below -180', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
-
-try {
-
-    $action->execute(45.0, -181.0);
-
-    Assert::fail('Expected InvalidLocationException was not thrown');
-
-} catch (InvalidLocationException $exception) {
-
-    Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
-
-}
-});
-
-it('throws exception for invalid longitude above 180', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
-
-try {
-
-    $action->execute(45.0, 181.0);
-
-    Assert::fail('Expected InvalidLocationException was not thrown');
-
-} catch (InvalidLocationException $exception) {
-
-    Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
-
-}
-});
-
-it('throws exception when api key is not configured', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
-
-config(['services.mapbox.api_key' => null]);
+uses(LightTestCase::class);
+it('throws exception for invalid latitude below -90', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
     try {
-
-        $action->execute(45.4642, 9.1900);
+        $action->execute(-91.0, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
-
     } catch (InvalidLocationException $exception) {
-
-        Assert::assertSame('API key di Mapbox non configurata', $exception->getMessage());
-
+        Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
     }
 });
 
-it('throws exception when api response is not successful', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('throws exception for invalid latitude above 90', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    try {
+        $action->execute(91.0, 9.1900);
+
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
+    }
+});
+
+it('throws exception for invalid longitude below -180', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
+
+    try {
+        $action->execute(45.0, -181.0);
+
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
+    }
+});
+
+it('throws exception for invalid longitude above 180', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
+
+    try {
+        $action->execute(45.0, 181.0);
+
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
+    }
+});
+
+it('throws exception when api key is not configured', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
+
+    config(['services.mapbox.api_key' => null]);
+
+    try {
+        $action->execute(45.4642, 9.1900);
+
+        Assert::fail('Expected InvalidLocationException was not thrown');
+    } catch (InvalidLocationException $exception) {
+        Assert::assertSame('API key di Mapbox non configurata', $exception->getMessage());
+    }
+});
+
+it('throws exception when api response is not successful', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
+
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
     try {
-
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
-
     } catch (InvalidLocationException $exception) {
-
         Assert::assertSame('Richiesta a Mapbox fallita', $exception->getMessage());
-
     }
 });
 
-it('throws exception when response is not valid json', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('throws exception when response is not valid json', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response('not valid json', 200),
     ]);
 
     try {
-
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
-
     } catch (InvalidLocationException $exception) {
-
         Assert::assertSame('Risposta di Mapbox non valida', $exception->getMessage());
-
     }
 });
 
-it('throws exception when no features in response', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('throws exception when no features in response', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -153,22 +122,18 @@ config(['services.mapbox.api_key' => 'test_key']);
     ]);
 
     try {
-
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
-
     } catch (InvalidLocationException $exception) {
-
         Assert::assertSame('Nessun risultato trovato', $exception->getMessage());
-
     }
 });
 
-it('returns address data for valid coordinates', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('returns address data for valid coordinates', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -216,10 +181,10 @@ config(['services.mapbox.api_key' => 'test_key']);
     Assert::assertSame('Lombardia', $result->state);
 });
 
-it('handles boundary coordinate values', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('handles boundary coordinate values', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([
@@ -242,10 +207,10 @@ config(['services.mapbox.api_key' => 'test_key']);
     Assert::assertSame(180.0, $result->longitude);
 });
 
-it('handles missing context items', function(): void {
-        $action = new GetAddressFromMapboxLatLngAction;
+it('handles missing context items', function (): void {
+    $action = new GetAddressFromMapboxLatLngAction();
 
-config(['services.mapbox.api_key' => 'test_key']);
+    config(['services.mapbox.api_key' => 'test_key']);
 
     Http::fake([
         '*' => Http::response([

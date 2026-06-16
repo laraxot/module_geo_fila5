@@ -14,7 +14,7 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 test('GoogleMapGeometryData can be instantiated', function () {
     $geometry = GoogleMapGeometryData::from([

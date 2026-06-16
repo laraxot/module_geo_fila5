@@ -914,40 +914,18 @@ class MapLit extends LitElement {
     }
 
     _syncMapLegend(features) {
-        if (!this._map) {
-            return;
-        }
-
-        const legendMode = (this.getAttribute('legend-mode') || 'off').toLowerCase();
+        // LEGEND REMOVED: Stati segnalazione già visualizzati nei filtri laterali (sidebar)
+        // Questo metodo è disabilitato per evitare ridondanza con i filtri di sinistra nella versione desktop.
+        // legend-mode="off" o "sidebar" nasconde la legenda; "status-collapsed" mostra una legenda collassata.
+        const legendMode = this.getAttribute('legend-mode') || 'off';
         if (legendMode === 'off' || legendMode === 'sidebar') {
             if (this._legendControl) {
                 this._map.removeControl(this._legendControl);
                 this._legendControl = null;
             }
-
             return;
         }
-
-        const types = collectLegendStatusesFromFeatures(features);
-        const title = this.labels?.legend_title ?? 'Stati segnalazione';
-
-        if (types.length === 0) {
-            if (this._legendControl) {
-                this._map.removeControl(this._legendControl);
-                this._legendControl = null;
-            }
-            return;
-        }
-
-        if (!this._legendControl) {
-            this._legendControl = mountMapLegend(L, this._map, types, {
-                title,
-                position: 'bottomleft',
-            });
-            return;
-        }
-
-        refreshMapLegend(this._legendControl, types, title);
+        // Per altri valori (es. status-collapsed) potrebbe essere implementata una legenda collassata
     }
 
     filterByTypes(types) {

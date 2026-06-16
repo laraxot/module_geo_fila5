@@ -4,51 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-
-uses(\Modules\Geo\Tests\TestCase::class);
-
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
-use Exception;
-use Illuminate\Support\Collection;
-use InvalidArgumentException;
 use Modules\Geo\Actions\CalculateDistanceAction;
-use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\DistanceCalculationException;
+use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixActionStub;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-/**
- * @internal
- */
-final class CalculateDistanceMatrixActionStub extends CalculateDistanceMatrixAction
-{
-    /**
-     * @param array<array<array{distance: array{text: string, value: int}, duration: array{text: string, value: int}, status: string}>> $response
-     */
-    public function __construct(
-        private array $response = [],
-        private ?\Throwable $exception = null,
-    ) {
-    }
-
-    /**
-     * @param Collection<int, LocationData> $origins
-     * @param Collection<int, LocationData> $destinations
-     *
-     * @return array<array<array{distance: array{text: string, value: int}, duration: array{text: string, value: int}, status: string}>>
-     */
-    public function execute(Collection $origins, Collection $destinations): array
-    {
-        if ($this->exception !== null) {
-            throw $this->exception;
-        }
-
-        return $this->response;
-    }
-}
-
+uses(TestCase::class);
 it('calculates distance between two valid locations', function (): void {
     $expectedResponse = [
         [
@@ -92,7 +55,7 @@ it('throws exception for invalid latitude', function (): void {
             new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
         );
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertSame('Latitudine non valida: 100.000000', $exception->getMessage());
     }
 });
@@ -106,7 +69,7 @@ it('throws exception for invalid longitude', function (): void {
             new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
         );
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertSame('Longitudine non valida: 200.000000', $exception->getMessage());
     }
 });
@@ -120,7 +83,7 @@ it('throws exception for negative latitude', function (): void {
             new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
         );
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertSame('Latitudine non valida: -100.000000', $exception->getMessage());
     }
 });
@@ -134,7 +97,7 @@ it('throws exception for negative longitude', function (): void {
             new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
         );
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertSame('Longitudine non valida: -200.000000', $exception->getMessage());
     }
 });
@@ -168,7 +131,7 @@ it('throws exception for malformed response', function (): void {
 });
 
 it('throws exception when distance matrix fails', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub([], new Exception('API Error')));
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub([], new \Exception('API Error')));
 
     try {
         $action->execute(
@@ -211,7 +174,7 @@ it('throws exception for negative distance', function (): void {
     try {
         $action->formatDistance(-100);
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (InvalidArgumentException $exception) {
+    } catch (\InvalidArgumentException $exception) {
         Assert::assertSame('La distanza non può essere negativa', $exception->getMessage());
     }
 });

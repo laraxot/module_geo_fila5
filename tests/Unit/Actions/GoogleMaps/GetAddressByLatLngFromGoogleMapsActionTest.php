@@ -4,24 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-use function Safe\json_encode;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use InvalidArgumentException;
 use Modules\Geo\Actions\GoogleMaps\GetAddressByLatLngFromGoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use RuntimeException;
-use Throwable;
 
+use function Safe\json_encode;
+
+uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
@@ -33,7 +29,7 @@ it('throws exception when api key is not configured', function (): void {
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not configured', $exception->getMessage());
     }
 });
@@ -49,8 +45,8 @@ it('throws exception for invalid latitude below -90', function (): void {
     try {
         $action->execute(-91.0, 9.1900);
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (Throwable $exception) {
-        Assert::assertInstanceOf(InvalidArgumentException::class, $exception);
+    } catch (\Throwable $exception) {
+        Assert::assertInstanceOf(\InvalidArgumentException::class, $exception);
         Assert::assertSame('Invalid latitude', $exception->getMessage());
     }
 });
@@ -66,8 +62,8 @@ it('throws exception for invalid latitude above 90', function (): void {
     try {
         $action->execute(91.0, 9.1900);
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (Throwable $exception) {
-        Assert::assertInstanceOf(InvalidArgumentException::class, $exception);
+    } catch (\Throwable $exception) {
+        Assert::assertInstanceOf(\InvalidArgumentException::class, $exception);
         Assert::assertSame('Invalid latitude', $exception->getMessage());
     }
 });
@@ -83,8 +79,8 @@ it('throws exception for invalid longitude below -180', function (): void {
     try {
         $action->execute(45.0, -181.0);
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (Throwable $exception) {
-        Assert::assertInstanceOf(InvalidArgumentException::class, $exception);
+    } catch (\Throwable $exception) {
+        Assert::assertInstanceOf(\InvalidArgumentException::class, $exception);
         Assert::assertSame('Invalid longitude', $exception->getMessage());
     }
 });
@@ -100,8 +96,8 @@ it('throws exception for invalid longitude above 180', function (): void {
     try {
         $action->execute(45.0, 181.0);
         Assert::fail('Expected InvalidArgumentException was not thrown');
-    } catch (Throwable $exception) {
-        Assert::assertInstanceOf(InvalidArgumentException::class, $exception);
+    } catch (\Throwable $exception) {
+        Assert::assertInstanceOf(\InvalidArgumentException::class, $exception);
         Assert::assertSame('Invalid longitude', $exception->getMessage());
     }
 });
@@ -119,7 +115,7 @@ it('throws exception for guzzle exception', function (): void {
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get address from coordinates', $exception->getMessage());
     }
 });
@@ -140,7 +136,7 @@ it('throws exception when no results found', function (): void {
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('No address found', $exception->getMessage());
     }
 });
@@ -161,7 +157,7 @@ it('throws exception for invalid response status', function (): void {
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('No address found', $exception->getMessage());
     }
 });

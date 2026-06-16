@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-use Exception;
-use function Safe\json_encode;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
@@ -15,7 +13,8 @@ use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Elevation\FetchOpenElevationAction;
 use Modules\Geo\Datas\ElevationData;
 use PHPUnit\Framework\Assert;
-use RuntimeException;
+
+use function Safe\json_encode;
 
 /**
  * @return array{0: FetchOpenElevationAction, 1: MockHandler}
@@ -57,12 +56,12 @@ it('throws exception for failed API request', function (): void {
     [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
 
     $request = new Request('POST', 'https://api.open-elevation.com/api/v1/lookup');
-    $mockHandler->append(RequestException::create($request, null, new Exception('Connection failed')));
+    $mockHandler->append(RequestException::create($request, null, new \Exception('Connection failed')));
 
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get elevation data', $exception->getMessage());
     }
 });
@@ -75,7 +74,7 @@ it('throws exception for invalid response', function (): void {
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
-    } catch (RuntimeException $exception) {
+    } catch (\RuntimeException $exception) {
         Assert::assertSame('Invalid elevation data response', $exception->getMessage());
     }
 });

@@ -1,4 +1,86 @@
-# Geo Module Documentation Index
+---
+title: "Geo Module Documentation Index"
+module: "Geo"
+type: index
+created: 2026-06-11
+updated: 2026-06-11
+---
+
+# 📚 Geo Module - Documentation Index
+
+**Quick Navigation**: [Overview](#overview) | [Setup](#setup) | [Architecture](#architecture) | [Testing](#testing) | [Resources](#resources)
+
+---
+
+## Overview
+
+- **Status**: Stable
+- **Test Coverage**: Good (69 tests: 66 unit + 3 feature)
+- **Repository**: `git@github.com:laraxot/module_geo_fila5.git`
+- **Last Updated**: 2026-06-11
+- **Purpose**: Geographic data management, location services, and spatial queries
+
+**Module Stats**:
+- Models: 34 geographic entities
+- Test Files: 69 (66 unit + 3 feature)
+- Documentation Files: 561
+
+---
+
+## Setup
+
+### Installation
+```bash
+php artisan module:install Geo
+```
+
+### Configuration
+Location: `config/geo.php`
+
+---
+
+## Testing
+
+### Coverage Status
+**Current**: Good (69 tests)  
+- Unit Tests: 66 files
+- Feature Tests: 3 files  
+
+### Running Tests
+```bash
+cd laravel
+./vendor/bin/pest Modules/Geo/tests/ --coverage
+```
+
+---
+
+## Architecture
+
+### Core Models (34 Total)
+- **Address** — `app/Models/Address.php`
+- **Location** — `app/Models/Location.php`
+- **Locality** — `app/Models/Locality.php`
+- **Province** — `app/Models/Province.php`
+- **Region** — `app/Models/Region.php`
+- **ComuneJson** — `app/Models/ComuneJson.php`
+- **Place** — `app/Models/Place.php` (with geolocation)
+
+### Key Actions
+- **GetCoordinatesFromAddressAction** — Geocoding logic
+- **GetAddressFromNominatimAction** — Nominatim integration
+- **GetAddressFromGoogleMapsAction** — Google Maps integration
+- **GetAddressFromMapboxAction** — Mapbox integration
+- **CalculateDistanceAction** — Distance calculations
+
+### Core Filament Components
+- **AddressInput** — Single address input with geolocation
+- **AddressField** — Full address section with cascading selects
+- **AddressesField** — Repeater for multiple addresses
+- **LeafletMarkerMapInput** — Interactive map with draggable marker
+- **AddressResource** — CRUD for addresses
+- **LocationResource** — CRUD for locations
+
+---
 
 ## Documentation Structure
 

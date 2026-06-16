@@ -201,6 +201,8 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
     const statusColor = escapeHtml(ticketStatus.color || '#607d8b');
     const detailUrl = String(properties.detail_url || properties.url || '').trim();
     const hasDetailUrl = detailUrl !== '' && detailUrl.startsWith('/');
+    const addressRaw = formatAddress(properties);
+    const address = escapeHtml(addressRaw !== '' ? addressRaw : labels.noAddress);
 
     const images = Array.isArray(detail?.images)
         ? detail.images
