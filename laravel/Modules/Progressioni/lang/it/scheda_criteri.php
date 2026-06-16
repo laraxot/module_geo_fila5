@@ -327,6 +327,7 @@ return [
             'error' => 'Errore durante l\'eliminazione della scheda criteri',
             'confirmation' => 'Sei sicuro di voler eliminare questa scheda criteri? Questa azione è irreversibile.',
             'tooltip' => 'delete',
+            'icon' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza Scheda Criteri',
@@ -467,6 +468,10 @@ return [
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'messages' => [

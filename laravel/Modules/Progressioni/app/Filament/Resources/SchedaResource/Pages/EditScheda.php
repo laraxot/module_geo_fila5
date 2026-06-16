@@ -13,14 +13,5 @@ class EditScheda extends BaseEditScheda
 {
     protected static string $resource = SchedaResource::class;
 
-    /**
-     * @return array<string, DeleteAction>
-     */
-    #[Override]
-    protected function getHeaderActions(): array
-    {
-        return [
-            'delete' => DeleteAction::make(),
-        ];
-    }
+   
 }

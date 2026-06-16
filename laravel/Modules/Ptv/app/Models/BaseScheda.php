@@ -317,7 +317,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function isPo(): bool
     {
-        dddx('a');//functiontrait
         return (int) ($this->posfun ?? 0) >= 100;
     }
 
@@ -328,7 +327,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function isRegionale(): bool
     {
-        dddx('c');//functiontrait
         return (int) ($this->disci1 ?? 0) === 203;
     }
 

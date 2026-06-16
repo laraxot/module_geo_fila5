@@ -196,6 +196,12 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
         ],
     ],
     'tabs' => [

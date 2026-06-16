@@ -38,4 +38,14 @@ return [
             'label' => 'updated_at',
         ],
     ],
+    'actions' => [
+        'delete' => [
+            'tooltip' => 'delete',
+            'icon' => 'delete',
+            'label' => 'delete',
+        ],
+        'layout' => [
+            'tooltip' => 'layout',
+        ],
+    ],
 ];

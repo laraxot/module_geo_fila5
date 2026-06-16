@@ -3,16 +3,27 @@
 declare(strict_types=1);
 
 return [
+    'navigation' => [
+        'name' => 'Valutazione',
+        'plural' => 'Valutazioni',
+        'group' => [
+            'name' => 'Gestione Progressioni',
+            'description' => 'Gestione completa delle progressioni di carriera',
+        ],
+        'sort' => 95,
+        'icon' => 'heroicon-o-rectangle-stack',
+        'label' => 'Valutazioni',
+    ],
     'actions' => [
+        'copy_from_last_year' => [
+            'tooltip' => 'copy_from_last_year',
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+        ],
         'create' => [
             'label' => 'create',
             'icon' => 'create',
             'tooltip' => 'create',
-        ],
-        'copy_from_last_year' => [
-            'label' => 'copy_from_last_year',
-            'icon' => 'copy_from_last_year',
-            'tooltip' => 'copy_from_last_year',
         ],
         'view' => [
             'label' => 'view',
@@ -79,49 +90,40 @@ return [
             'icon' => 'logout',
             'tooltip' => 'logout',
         ],
-        'removeAllFilters' => [
-            'tooltip' => 'removeAllFilters',
-        ],
     ],
     'fields' => [
         'id' => [
             'label' => 'id',
         ],
-        'tipo' => [
-            'label' => 'tipo',
+        'title' => [
+            'label' => 'title',
         ],
-        'codice' => [
-            'label' => 'codice',
+        'rule' => [
+            'label' => 'rule',
         ],
-        'descr' => [
-            'label' => 'descr',
+        'is_disabled' => [
+            'label' => 'is_disabled',
+        ],
+        'is_readonly' => [
+            'label' => 'is_readonly',
+        ],
+        'extra_attributes' => [
+            'type' => [
+                'label' => 'extra_attributes.type',
+            ],
+            'anno' => [
+                'label' => 'extra_attributes.anno',
+            ],
+        ],
+        'filter' => [
+            'label' => 'filter',
         ],
         'anno' => [
             'label' => 'anno',
-        ],
-        'umi' => [
-            'label' => 'umi',
-        ],
-        'dur' => [
-            'label' => 'dur',
-        ],
-        'value' => [
-            'label' => 'value',
-            'placeholder' => 'value',
-            'helper_text' => 'value',
-            'description' => 'value',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+            'description' => 'anno',
         ],
     ],
-    'navigation' => [
-        'name' => 'Assenza',
-        'plural' => 'Assenze',
-        'group' => [
-            'name' => 'Gestione Progressioni',
-            'description' => 'Gestione completa delle progressioni di carriera',
-        ],
-        'sort' => 4,
-        'icon' => 'heroicon-o-calendar-days',
-        'label' => 'Assenza',
-    ],
-    'label' => 'assenza',
+    'label' => 'rating',
 ];

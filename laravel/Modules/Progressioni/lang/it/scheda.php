@@ -90,6 +90,16 @@ return [
             'icon' => 'reorderRecords',
             'tooltip' => 'reorderRecords',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+        ],
+        'zip_schede' => [
+            'tooltip' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'label' => 'zip_schede',
+        ],
     ],
     'label' => 'scheda',
     'fields' => [
@@ -176,6 +186,21 @@ return [
             'placeholder' => 'valutatore_id',
             'helper_text' => 'valutatore_id',
             'description' => 'valutatore_id',
+        ],
+        'mail_sended_at' => [
+            'label' => 'mail_sended_at',
+        ],
+        'type' => [
+            'label' => 'type',
+        ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
+        'value' => [
+            'description' => 'value',
+            'helper_text' => 'value',
+            'placeholder' => 'value',
+            'label' => 'value',
         ],
     ],
 ];
