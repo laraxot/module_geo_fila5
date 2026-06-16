@@ -85,6 +85,44 @@ public static function getPages(): array
 
 Analisi: le Page sono `ListCoeffs`, `CreateCoeff`, `EditCoeff` — allineate alla base. Il metodo `getPages()` nella Resource è ridondante.
 
+## Caso cross-module / multi-connessione (⚠️ critico)
+
+Quando un **base Resource astratto** vive in un modulo (es. `Rating\Filament\Resources\BaseRatingMorphResource`) ed è esteso da Resource di **altri moduli/pannelli** (es. `Progressioni\Filament\Resources\RatingMorphResource`), un `getPages()` esplicito nella base è **dannoso**, non solo ridondante.
+
+Motivo: l'override ritorna le Page del modulo base (`Rating\...\Pages\ListRatingMorphs`), il cui `$resource` punta alla Resource del modulo base → `getModel()` risolve il **model del modulo base** (`Rating\RatingMorph`, connessione `rating`). Il pannello figlio (Progressioni) finisce così a interrogare la tabella sulla connessione sbagliata.
+
+```php
+// ❌ Base condivisa con getPages() esplicito → i figli usano le Page/model del modulo base
+abstract class BaseRatingMorphResource extends XotBaseResource
+{
+    protected static ?string $model = RatingMorph::class; // Rating
+    public static function getPages(): array
+    {
+        return [ 'index' => Rating\...\ListRatingMorphs::route('/'), /* ... */ ];
+    }
+}
+```
+
+```php
+// ✅ Base condivisa SENZA getPages() → l'auto-resolve usa static::class\Pages\
+abstract class BaseRatingMorphResource extends XotBaseResource
+{
+    protected static ?string $model = RatingMorph::class; // default modulo base
+}
+
+// Il consumer override solo il model; le sue Page risolvono il model corretto
+class RatingMorphResource extends BaseRatingMorphResource // Progressioni
+{
+    protected static ?string $model = \Modules\Progressioni\Models\RatingMorph::class; // conn progressione
+}
+```
+
+`XotBaseResource::getPages()` usa `static::class.'\Pages\\'`: la late static binding fa sì che ogni Resource figlia risolva le **proprie** Page (`Progressioni\...\Pages\ListRatingMorphs`), il cui `$resource` punta alla Resource del proprio modulo → model e connessione corretti.
+
+**Precondizione:** ogni modulo consumer deve avere le proprie Page (`{Resource}\Pages\List{plural}`, `Create{name}`, `Edit{name}`) con `protected static string $resource = <ResourceDelProprioModulo>::class`.
+
+Sintomo tipico della violazione: `SQLSTATE[42S02] Base table or view not found ... (Connection: <modulo base>)` su una rotta di un altro pannello, con route controller che punta alle Page del modulo base.
+
 ## Verifica automatica
 
 Script di analisi (non modifica file):

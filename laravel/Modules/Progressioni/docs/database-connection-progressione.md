@@ -74,12 +74,32 @@ class Scheda extends BaseScheda
 protected $connection = null;
 ```
 
+## Binding Resource/Page → connessione (Filament)
+
+La connessione effettiva usata da un pannello Filament dipende dal **model risolto dalla Page**, non solo dall'`$connection` del model Progressioni.
+
+Le Resource Rating (`RatingResource`, `RatingMorphResource`) estendono basi astratte del **modulo Rating** (`BaseRatingResource`, `BaseRatingMorphResource`). Se la base override `getPages()` con le Page del modulo Rating, il pannello `progressioni::admin` finisce a usare `Rating\Rating` / `Rating\RatingMorph` (connessione `rating` → `ptv_lara`) invece dei model Progressioni.
+
+Regola:
+
+1. Le basi Rating **non** devono override `getPages()` (auto-resolve via `static::class\Pages\`).
+2. Progressioni deve avere le proprie Page (`RatingResource/Pages/...`, `RatingMorphResource/Pages/...`) con `protected static string $resource = Modules\Progressioni\...\<Resource>::class`.
+3. Il model Progressioni override `protected $connection = 'progressione';`.
+
+Così il pannello Progressioni risolve `Progressioni\RatingMorph` (conn `progressione`, tabella `rating_morphs`).
+
+Dettaglio e anti-pattern: [Xot — getPages cross-module](../Xot/docs/filament/getpages-redundancy-rule.md).
+
 ## Verifica rapida
 
 ```bash
 cd laravel
 php artisan tinker --execute="echo (new \\Modules\\Progressioni\\Models\\Scheda)->getConnectionName();"
 # atteso: progressione
+
+# Resource Filament → model/connessione effettivi del pannello
+php artisan tinker --execute="\$m=\\Modules\\Progressioni\\Filament\\Resources\\RatingMorphResource::getModel(); echo \$m.' '.(new \$m)->getConnectionName();"
+# atteso: Modules\Progressioni\Models\RatingMorph progressione
 ```
 
 ## Collegamenti

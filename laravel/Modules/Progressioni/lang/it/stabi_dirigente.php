@@ -65,6 +65,19 @@ return [
         ],
         'created_at' => [
             'description' => 'created_at',
+            'label' => 'created_at',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'stabi' => [
+            'label' => 'stabi',
+        ],
+        'dirigente' => [
+            'label' => 'dirigente',
+        ],
+        'anno' => [
+            'label' => 'anno',
         ],
     ],
     'actions' => [
@@ -102,20 +115,28 @@ return [
             'label' => 'Nuovo dirigente',
             'success' => 'Dirigente di stabilimento creato con successo',
             'error' => 'Errore durante la creazione del dirigente',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica dirigente',
             'success' => 'Dirigente di stabilimento aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del dirigente',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina dirigente',
             'success' => 'Dirigente di stabilimento eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del dirigente',
             'confirmation' => 'Sei sicuro di voler eliminare questo dirigente? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza dirigente',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'logout' => [
             'label' => 'logout',
@@ -124,9 +145,57 @@ return [
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
         ],
         'profile' => [
             'tooltip' => 'profile',
+            'icon' => 'profile',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'tabs' => [

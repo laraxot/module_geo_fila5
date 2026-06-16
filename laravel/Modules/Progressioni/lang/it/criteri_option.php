@@ -149,6 +149,9 @@ return [
             'icon' => 'profile',
             'label' => 'profile',
         ],
+        'reorderRecords' => [
+            'tooltip' => 'reorderRecords',
+        ],
     ],
     'tabs' => [
         'index' => [

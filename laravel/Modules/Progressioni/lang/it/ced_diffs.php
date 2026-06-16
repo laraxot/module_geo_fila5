@@ -68,4 +68,31 @@ return [
             'label' => 'repar_txt',
         ],
     ],
+    'actions' => [
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
+    ],
 ];

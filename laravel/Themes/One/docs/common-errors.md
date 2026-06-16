@@ -28,3 +28,11 @@
 - **Causa**: `Scheda` estende `Ptv\Models\BaseScheda` e senza override eredita `protected $connection = 'ptv'`.
 - **Soluzione**: `protected $connection = 'progressione';` sul modello consumer. Vedi [database-connection-progressione](../../Modules/Progressioni/docs/database-connection-progressione.md).
 - **Impatto tema**: il tema One non configura connessioni DB; il fix è solo lato modulo Progressioni/Ptv. Monitorare questo file se compaiono dati mancanti dopo refactor cross-modulo.
+
+## Resource Filament su connessione errata per `getPages()` cross-module
+
+- **Sintomo**: rotta di un pannello (es. `progressioni/admin/rating-morphs`) va in errore `SQLSTATE[42S02] Base table or view not found ... (Connection: rating, Database: ptv_lara)`, e il route controller punta a `Modules\Rating\...\Pages\ListRatingMorphs` invece che alle Page del modulo corrente.
+- **Causa**: il base Resource astratto del modulo Rating (`BaseRatingResource`/`BaseRatingMorphResource`), esteso da Progressioni, override `getPages()` ritornando le Page del modulo Rating → il pannello risolve `Rating\RatingMorph` (conn `rating`) invece di `Progressioni\RatingMorph` (conn `progressione`).
+- **Soluzione**: rimuovere `getPages()` dalle basi condivise (auto-resolve via `static::class\Pages\`); ogni modulo consumer deve avere le proprie Page con `$resource` puntato alla Resource del proprio modulo. Vedi [Xot — getPages cross-module](../../Modules/Xot/docs/filament/getpages-redundancy-rule.md) e [database-connection-progressione](../../Modules/Progressioni/docs/database-connection-progressione.md).
+- **Nota correlata**: le Resource che estendono `XotBaseResource` non devono dichiarare `$navigationIcon` (né altri attributi gestiti dal LangServiceProvider). Vedi [forbidden-resource-attributes](../../Modules/Xot/docs/forbidden-resource-attributes.md).
+- **Impatto tema**: nessuna modifica lato tema; il fix è architetturale lato Resource/Page.
