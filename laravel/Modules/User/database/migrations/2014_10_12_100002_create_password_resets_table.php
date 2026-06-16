@@ -17,7 +17,8 @@ return new class extends XotBaseMigration {
             $table->string('uuid', 36)->nullable()->index();
             $table->string('email')->index();
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            // $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
 
         // -- UPDATE --

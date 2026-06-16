@@ -1,14 +1,7 @@
-# widgets_structure - User
+---
+module: theme
+topic: widgets-structure-1
+canonical: ../../../Themes/docs/shared-components/widgets_structure.md
+---
 
-## Overview
-
-Documentazione per widgets_structure nel modulo User.
-
-## Dettagli
-
-[Da completare]
-
-## Collegamenti
-
-- [Modulo Principale](../README.md)
-
+See canonical documentation: ../../../Themes/docs/shared-components/widgets_structure.md

@@ -2,22 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions\Passport;
-
+uses(Modules\User\Tests\TestCase::class);
+use Mockery;
 use Modules\User\Actions\Passport\CreateGenericClientAction;
 use Modules\User\Actions\Passport\CreatePasswordClientAction;
 use Modules\User\Actions\Passport\CreatePersonalAccessClientAction;
 use Modules\User\Models\OauthClient;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('Create specific passport client actions', function (): void {
+    afterEach(function (): void {
+        Mockery::close();
+        app()->forgetInstance(CreateGenericClientAction::class);
+        app()->forgetInstance(CreatePasswordClientAction::class);
+        app()->forgetInstance(CreatePersonalAccessClientAction::class);
+    });
+
     it('delegates password client creation to generic action', function (): void {
         $expectedClient = new OauthClient();
 
-        $genericAction = Mockery::mock(CreateGenericClientAction::class);
-        $genericAction->shouldReceive('execute')->once()->andReturn($expectedClient);
+        $genericAction = \typedMock(CreateGenericClientAction::class);
+        $genericAction->allows(['execute' => $expectedClient]);
 
         app()->instance(CreateGenericClientAction::class, $genericAction);
 
@@ -26,14 +31,14 @@ describe('Create specific passport client actions', function (): void {
             redirect: 'https://example.test/callback',
         );
 
-        expect($result)->toBe($expectedClient);
+        Assert::assertSame($expectedClient, $result);
     });
 
     it('delegates personal access client creation to generic action', function (): void {
         $expectedClient = new OauthClient();
 
-        $genericAction = Mockery::mock(CreateGenericClientAction::class);
-        $genericAction->shouldReceive('execute')->once()->andReturn($expectedClient);
+        $genericAction = \typedMock(CreateGenericClientAction::class);
+        $genericAction->allows(['execute' => $expectedClient]);
 
         app()->instance(CreateGenericClientAction::class, $genericAction);
 
@@ -42,6 +47,6 @@ describe('Create specific passport client actions', function (): void {
             redirect: 'https://example.test/callback',
         );
 
-        expect($result)->toBe($expectedClient);
+        Assert::assertSame($expectedClient, $result);
     });
 });

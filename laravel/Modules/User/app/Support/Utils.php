@@ -133,11 +133,14 @@ class Utils
         return FilamentShieldData::make()->filament_user->name;
     }
 
+    /**
+     * @return list<string>
+     */
     public static function getGeneralResourcePermissionPrefixes(): array
     {
         Assert::isArray($res = config('filament-shield.permission_prefixes.resource'), 'wip');
 
-        return $res;
+        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
     }
 
     public static function getPagePermissionPrefix(): string
@@ -209,25 +212,34 @@ class Utils
         config(['filament-shield.exclude.enabled' => false]);
     }
 
+    /**
+     * @return list<string>
+     */
     public static function getExcludedResouces(): array
     {
         Assert::isArray($res = config('filament-shield.exclude.resources'));
 
-        return $res;
+        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
     }
 
+    /**
+     * @return list<string>
+     */
     public static function getExcludedPages(): array
     {
         Assert::isArray($res = config('filament-shield.exclude.pages'));
 
-        return $res;
+        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
     }
 
+    /**
+     * @return list<string>
+     */
     public static function getExcludedWidgets(): array
     {
         Assert::isArray($res = config('filament-shield.exclude.widgets'));
 
-        return $res;
+        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
     }
 
     public static function isRolePolicyRegistered(): bool
@@ -254,6 +266,9 @@ class Utils
             : '';
     }
 
+    /**
+     * @return list<string>
+     */
     public static function getResourcePermissionPrefixes(string $resourceFQCN): array
     {
         $res = static::doesResourceHaveCustomPermissions($resourceFQCN)
@@ -261,7 +276,7 @@ class Utils
             : static::getGeneralResourcePermissionPrefixes();
         Assert::isArray($res);
 
-        return $res;
+        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
     }
 
     public static function getRoleModel(): string

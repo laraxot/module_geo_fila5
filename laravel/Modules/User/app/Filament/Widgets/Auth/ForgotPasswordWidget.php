@@ -4,34 +4,33 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Widgets\Auth;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Password;
-// use Filament\Forms\Components\TextInput as FormsTextInput;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\User\Filament\Widgets\Auth\Schemas\UserForm;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
+ * ForgotPasswordWidget — invio link reset via email.
+ *
+ * Schema da `Schemas\UserForm::getForgotPasswordFormSchema()` — SSoT.
+ *
  * @property Schema $form
  */
-class ForgotPasswordWidget extends XotBaseWidget
+class ForgotPasswordWidget extends XotBaseSchemaWidget
 {
     protected string $view = 'user::widgets.auth.forgot-password-widget';
 
     /**
-     * Get the form schema for this widget.
-     *
-     * @return array<string, Component>
+     * @return class-string<UserForm>
      */
-    #[\Override]
-    public function getFormSchema(): array
+    protected static function formClass(): string
     {
-        return [
-            'email' => TextInput::make('email')
-                ->email()
-                ->required()
-                ->maxLength(255),
-        ];
+        return UserForm::class;
+    }
+
+    protected static function schemaMethod(): string
+    {
+        return 'getForgotPasswordFormSchema';
     }
 
     public function sendResetLink(): void

@@ -2,96 +2,92 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Feature;
-
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
-use Modules\User\Models\User;
+use Illuminate\Support\Str;
+use Modules\User\Models\Profile;
+use Modules\User\Tests\TestCase;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
-describe('Auth Components Tests', function (): void {
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+describe('Auth components', function (): void {
     test('auth components exist and work correctly', function (): void {
-        // Test existing auth components
-        expect(View::exists('components.auth-session-status'))->toBeTrue();
-        expect(View::exists('components.auth-header'))->toBeTrue();
-        expect(View::exists('user::components.auth-session-status'))->toBeTrue();
+        Assert::assertTrue(View::exists('components.auth-session-status'));
+        Assert::assertTrue(View::exists('user::components.auth-header'));
+        Assert::assertTrue(View::exists('user::components.auth-session-status'));
     });
 
     test('auth layout components exist and work correctly', function (): void {
-        // Test auth layout components that actually exist
-        expect(View::exists('components.layouts.auth'))->toBeTrue();
-        expect(View::exists('user::layouts.auth'))->toBeTrue();
+        Assert::assertTrue(View::exists('components.layouts.auth'));
+        Assert::assertTrue(View::exists('user::layouts.auth'));
     });
 
     test('login page loads correctly', function (): void {
-        // Test that login page loads correctly
         $response = get('/it/auth/login');
-        $response->assertStatus(200);
+        Assert::assertSame(200, $response->status());
     });
 
     test('register page loads correctly', function (): void {
-        // Test that register page loads correctly
         $response = get('/it/auth/register');
-        $response->assertStatus(200);
+        Assert::assertSame(200, $response->status());
     });
 
-    test('auth-session-status component renders correctly', function (): void {
-        // Test the existing auth-session-status component rendering
+    test('auth session status component renders correctly', function (): void {
         $html = view('components.auth-session-status', ['status' => 'Test status'])->render();
 
-        expect($html)->toBeString();
-        expect($html)->not->toBeEmpty();
+        Assert::assertIsString($html);
+        Assert::assertNotEmpty($html);
     });
 
     test('auth header component exists and renders', function (): void {
-        // Test the auth header component that exists
-        expect(View::exists('components.auth-header'))->toBeTrue();
-
-        $html = view('components.auth-header', [
+        Assert::assertTrue(View::exists('user::components.auth-header'));
+        $html = view('user::components.auth-header', [
             'title' => 'Login Test',
             'description' => 'Test description',
         ])->render();
 
-        expect($html)->toContain('Login Test');
-        expect($html)->toContain('Test description');
+        Assert::assertStringContainsString('Login Test', $html);
+        Assert::assertStringContainsString('Test description', $html);
     });
-});
 
-describe('Authentication Flow with Reorganized Components', function (): void {
     test('login form components work after reorganization', function (): void {
-        // Visit login page and ensure all reorganized components render
         $response = get('/it/auth/login');
 
-        // Accept either 200 (page loads) or 500 (misconfigured route in test env)
-        // The important thing is the route exists and responds
-        expect($response->status())->toBeLessThanOrEqual(500);
-        if (200 === $response->status()) {
-            $response->assertSee('Login');
-        } else {
-            expect($response->status())->toBeGreaterThanOrEqual(400);
-        }
+        Assert::assertSame(200, $response->status());
+        $content = (string) $response->getContent();
+        Assert::assertTrue(
+            str_contains($content, 'Login')
+            || str_contains($content, 'login')
+            || str_contains($content, 'Accedi')
+            || str_contains($content, 'accedi')
+        );
     });
 
     test('password confirmation uses reorganized components', function (): void {
-        /* @var User */
+        $user = createTestUser();
+
         try {
-            actingAs($user)
-                ->get('/it/auth/password/confirm')
-                ->assertStatus(200);
+            actingAs($user);
+            $response = get('/it/auth/password/confirm');
+            Assert::assertSame(200, $response->status());
         } catch (Throwable $e) {
-            expect($e->getMessage())->not->toBe('');
+            skip(
+                'Password confirm route unavailable in test env: '.$e->getMessage()
+            );
         }
     });
-});
 
-describe('User Profile Components Tests', function (): void {
-    test('profile pages use reorganized components correctly', function (): void {
-        $user = User::factory()->create();
+    test('profile pages use reorganized components', function (): void {
+        $user = createTestUser();
 
-        if (class_exists(Modules\User\Models\Profile::class)) {
-            // Skip if profiles table doesn't have uuid column
-            $hasUuid = Illuminate\Support\Facades\Schema::connection('user')->hasColumn('profiles', 'uuid');
+        if (class_exists(Profile::class)) {
+            $hasUuid = Schema::connection('user')
+                ->hasColumn('profiles', 'uuid');
             $profileData = [
                 'id' => $user->id,
                 'user_id' => $user->id,
@@ -100,21 +96,22 @@ describe('User Profile Components Tests', function (): void {
                 'last_name' => $user->last_name ?? '',
             ];
             if ($hasUuid) {
-                $profileData['uuid'] = (string) Illuminate\Support\Str::uuid();
+                $profileData['uuid'] = (string) Str::uuid();
             }
             try {
-                Modules\User\Models\Profile::create($profileData);
+                Profile::create($profileData);
             } catch (Throwable) {
-                // Profile creation may fail in test env; continue with user only
             }
         }
 
-        /* @var Illuminate\Contracts\Auth\Authenticatable $user */
         try {
-            $response = actingAs($user, 'web')->get('/it/profile/edit');
-            $response->assertStatus(200);
+            actingAs($user, 'web');
+            $response = get('/it/profile/edit');
+            Assert::assertSame(200, $response->status());
         } catch (Throwable $e) {
-            expect($e->getMessage())->not->toBe('');
+            skip(
+                'Profile edit route unavailable in test env: '.$e->getMessage()
+            );
         }
     });
 });

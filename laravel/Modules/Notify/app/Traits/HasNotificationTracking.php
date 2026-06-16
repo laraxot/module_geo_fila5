@@ -6,6 +6,8 @@ namespace Modules\Notify\Traits;
 
 use Illuminate\Support\Str;
 
+use function Safe\preg_replace_callback;
+
 trait HasNotificationTracking
 {
     /**
@@ -20,7 +22,7 @@ trait HasNotificationTracking
             return $html;
         }
 
-        $route = route(config('notify.tracking.pixel.route'), ['id' => $trackingId]);
+        $route = route((string) config('notify.tracking.pixel.route'), ['id' => $trackingId]);
         $pixel = '<img src="'.$route.'" alt="" width="1" height="1" style="display:none">';
 
         return $html.$pixel;
@@ -38,28 +40,30 @@ trait HasNotificationTracking
             return $html;
         }
 
-        return preg_replace_callback(
+        $result = preg_replace_callback(
             '/<a\s+(?:[^>]*?\s+)?href=(["\'])(.*?)\1/i',
-            function ($matches) use ($trackingId) {
-                $url = $matches[2];
+            function (array $matches) use ($trackingId): string {
+                $url = (string) $matches[2];
 
                 // Ignora link di unsubscribe, anchor e link relativi
                 if (
                     Str::contains($url, ['unsubscribe', 'mailto:', 'tel:', '#']) ||
                         ! Str::startsWith($url, ['http://', 'https://'])
                 ) {
-                    return $matches[0];
+                    return (string) $matches[0];
                 }
 
-                $trackingUrl = route(config('notify.tracking.links.route'), [
+                $trackingUrl = route((string) config('notify.tracking.links.route'), [
                     'id' => $trackingId,
                     'url' => $url,
                 ]);
 
-                return str_replace($url, $trackingUrl, $matches[0]);
+                return str_replace($url, $trackingUrl, (string) $matches[0]);
             },
             $html,
         );
+
+        return $result ?? $html;
     }
 
     /**
@@ -88,7 +92,7 @@ trait HasNotificationTracking
      */
     protected function isTrackingEnabled(): bool
     {
-        return config('notify.tracking.enabled', false);
+        return (bool) config('notify.tracking.enabled', false);
     }
 
     /**
@@ -96,7 +100,7 @@ trait HasNotificationTracking
      */
     protected function isPixelTrackingEnabled(): bool
     {
-        return $this->isTrackingEnabled() && config('notify.tracking.pixel.enabled', false);
+        return $this->isTrackingEnabled() && (bool) config('notify.tracking.pixel.enabled', false);
     }
 
     /**
@@ -104,6 +108,6 @@ trait HasNotificationTracking
      */
     protected function isLinkTrackingEnabled(): bool
     {
-        return $this->isTrackingEnabled() && config('notify.tracking.links.enabled', false);
+        return $this->isTrackingEnabled() && (bool) config('notify.tracking.links.enabled', false);
     }
 }

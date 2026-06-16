@@ -72,7 +72,7 @@ class SsoProviderResource extends XotBaseResource
     /**
      * @return array<string, TextColumn|IconColumn>
      */
-    public function getTableColumns(): array
+    public static function getTableColumns(): array
     {
         return [
             'name' => TextColumn::make('name')

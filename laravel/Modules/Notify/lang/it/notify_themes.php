@@ -159,30 +159,6 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
-        'id' => [
-            'label' => 'id',
-        ],
-        'lang' => [
-            'label' => 'lang',
-        ],
-        'type' => [
-            'label' => 'type',
-        ],
-        'subject' => [
-            'label' => 'subject',
-        ],
-        'theme' => [
-            'label' => 'theme',
-        ],
-        'from_email' => [
-            'label' => 'from_email',
-        ],
-        'created_at' => [
-            'label' => 'created_at',
-        ],
-        'updated_at' => [
-            'label' => 'updated_at',
-        ],
     ],
     'actions' => [
         'preview' => [

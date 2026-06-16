@@ -52,7 +52,7 @@ final class SendTwilioSMSAction implements SmsActionContract
      * Execute the action.
      *
      * @param  SmsData  $smsData  I dati del messaggio SMS
-     * @return array Risultato dell'operazione
+     * @return array<string, mixed> Risultato dell'operazione
      *
      * @throws Exception In caso di errore durante l'invio
      */

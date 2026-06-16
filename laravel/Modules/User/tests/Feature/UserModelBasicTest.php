@@ -6,83 +6,82 @@ namespace Modules\User\Tests\Feature;
 
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-// Simple test to verify basic functionality
 uses(TestCase::class);
 
-test('user model can be created', function () {
-    $user = new User();
+describe('User Model Basic', function (): void {
+    test('user model can be created', function (): void {
+        /** @var TestCase $this */
+        $user = new User();
 
-    expect($user)->toBeInstanceOf(User::class);
-});
+        Assert::assertInstanceOf(User::class, $user);
+    });
 
-test('user model can access connection', function () {
-    $user = new User();
+    test('user model can access connection', function (): void {
+        $user = new User();
 
-    expect($user->getConnectionName())->toBe('user');
-});
+        Assert::assertSame('user', $user->getConnectionName());
+    });
 
-test('user model can create basic record', function () {
-    $userData = [
-        'name' => 'Test User',
-        'first_name' => 'Test',
-        'last_name' => 'User',
-        'email' => 'test-'.uniqid().'@example.com',
-        'password' => bcrypt('password'),
-        'lang' => 'it',
-        'is_active' => true,
-    ];
+    test('user model can create basic record', function (): void {
+        $this->skipUnlessUsersTableReady();
 
-    $user = User::create($userData);
+        $user = createTestUser([
+            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
+            'lang' => 'it',
+            'is_active' => true,
+        ]);
 
-    expect($user)->toBeInstanceOf(User::class);
-    expect($user->name)->toBe('Test User');
-    expect($user->email)->toBe($userData['email']);
-    expect($user->lang)->toBe('it');
-    expect($user->is_active)->toBe(true);
+        Assert::assertInstanceOf(User::class, $user);
+        Assert::assertSame('Test User', $user->name);
+        Assert::assertNotEmpty($user->email);
+        Assert::assertSame('it', $user->lang);
+        Assert::assertSame(true, $user->is_active);
+    });
 
-    // Clean up
-    $user->delete();
-});
+    test('user model can query records', function (): void {
+        $this->skipUnlessUsersTableReady();
 
-test('user model can query records', function () {
-    // Create some test data
-    User::create([
-        'name' => 'User 1',
-        'email' => 'user1-'.uniqid().'@example.com',
-        'password' => bcrypt('password'),
-    ]);
-    User::create([
-        'name' => 'User 2',
-        'email' => 'user2-'.uniqid().'@example.com',
-        'password' => bcrypt('password'),
-    ]);
+        $user1 = createTestUser(['name' => 'User 1']);
+        $user2 = createTestUser(['name' => 'User 2']);
 
-    $users = User::all();
+        $users = User::query()->whereIn('id', [$user1->id, $user2->id])->get();
 
-    expect($users)->toHaveCount(2);
-});
+        Assert::assertCount(2, $users);
+    });
 
-test('user model can filter records', function () {
-    // Create test data
-    User::create(['name' => 'Active User', 'is_active' => true, 'email' => 'active-'.uniqid().'@example.com', 'password' => bcrypt('password')]);
-    User::create(['name' => 'Inactive User', 'is_active' => false, 'email' => 'inactive-'.uniqid().'@example.com', 'password' => bcrypt('password')]);
+    test('user model can filter records', function (): void {
+        $this->skipUnlessUsersTableReady();
 
-    $activeUsers = User::where('is_active', true)->get();
+        $activeUser = createTestUser([
+            'name' => 'Active User',
+            'is_active' => true,
+        ]);
+        $inactiveUser = createTestUser([
+            'name' => 'Inactive User',
+            'is_active' => false,
+        ]);
 
-    expect($activeUsers)->toHaveCount(1);
-    expect($activeUsers->first()->name)->toBe('Active User');
-});
+        $activeUsers = User::query()
+            ->whereIn('id', [$activeUser->id, $inactiveUser->id])
+            ->where('is_active', true)
+            ->get();
 
-test('user model can update records', function () {
-    $user = User::create([
-        'name' => 'Original Name',
-        'email' => 'original-'.uniqid().'@example.com',
-        'password' => bcrypt('password'),
-    ]);
+        Assert::assertCount(1, $activeUsers);
+        Assert::assertSame('Active User', $activeUsers->first()?->name);
+    });
 
-    $user->name = 'Updated Name';
-    $user->save();
+    test('user model can update records', function (): void {
+        $this->skipUnlessUsersTableReady();
 
-    expect($user->name)->toBe('Updated Name');
+        $user = createTestUser(['name' => 'Original Name']);
+
+        $user->name = 'Updated Name';
+        $user->save();
+
+        Assert::assertSame('Updated Name', $user->name);
+    });
 });

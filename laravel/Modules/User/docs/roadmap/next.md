@@ -1,5 +1,7 @@
-# Next (Module User)
+---
+module: theme
+topic: next
+canonical: ../../../../Themes/docs/shared-components/02-next.md
+---
 
-## Features
-
-## Refactors
+See canonical documentation: ../../../../Themes/docs/shared-components/02-next.md

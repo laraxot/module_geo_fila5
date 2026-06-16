@@ -14,8 +14,10 @@ class SocialProviderData extends Data
 {
     public string $name; // ' => 'Facebook',
 
+    /** @var array<int, string>|null */
     public ?array $scopes = null;
 
+    /** @var array<string, mixed>|null */
     public ?array $parameters = null;
 
     public bool $stateless = true;

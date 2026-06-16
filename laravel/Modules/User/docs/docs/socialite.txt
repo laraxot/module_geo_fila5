@@ -1,7 +1,7 @@
--------------------------------------------------------------------------------------------------------------
-How to customize Laravel filament login page
-https://dev.to/mfazail/how-to-customize-laravel-filament-login-page-455n
--------------------------------------------------------------------------------------------------------------
+---
+module: theme
+topic: socialite
+canonical: ../../../../Themes/docs/shared-components/socialite.txt
+---
 
-https://github.com/DutchCodingCompany/filament-socialite
-
+See canonical documentation: ../../../../Themes/docs/shared-components/socialite.txt

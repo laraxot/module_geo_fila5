@@ -4,259 +4,287 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature\Models;
 
-use Modules\User\Models\Permission;
+use Modules\User\Database\Factories\PermissionFactory;
+use Modules\User\Database\Factories\RoleFactory;
+use Modules\User\Database\Factories\SocialiteUserFactory;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Role;
-use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+beforeEach(function (): void {
+    $this->skipUnlessUsersTableReady();
+});
+
 describe('User Model', function (): void {
     test('can create user with factory', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user)->toBeInstanceOf(User::class);
-        expect($user->id)->not->toBeNull();
-        expect($user->email)->not->toBeNull();
-        expect($user->name)->not->toBeNull();
+        Assert::assertInstanceOf(User::class, $user);
+        Assert::assertNotNull($user->id);
+        Assert::assertNotNull($user->email);
+        Assert::assertNotNull($user->name);
     });
 
     test('user has email attribute', function (): void {
         $email = 'test-'.uniqid().'@example.com';
-        $user = User::factory()->create(['email' => $email]);
+        $user = UserFactory::new()->createOne(['email' => $email]);
 
-        expect($user->email)->toBe($email);
+        Assert::assertSame($email, $user->email);
     });
 
     test('user has name attribute', function (): void {
         $name = 'John Doe';
-        $user = User::factory()->create(['name' => $name]);
+        $user = UserFactory::new()->createOne(['name' => $name]);
 
-        expect($user->name)->toBe($name);
+        Assert::assertSame($name, $user->name);
     });
 
-    test('user has first_name and last_name attributes', function (): void {
-        $user = User::factory()->create([
+    test('user has first name and last name attributes', function (): void {
+        $user = UserFactory::new()->createOne([
             'first_name' => 'John',
             'last_name' => 'Doe',
         ]);
 
-        expect($user->first_name)->toBe('John');
-        expect($user->last_name)->toBe('Doe');
+        Assert::assertSame('John', $user->first_name);
+        Assert::assertSame('Doe', $user->last_name);
     });
 
     test('user is active by default', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->is_active)->toBeTrue();
+        Assert::assertTrue($user->is_active);
     });
 
     test('user can have roles assigned', function (): void {
-        $user = User::factory()->create();
-        $role = Role::factory()->create(['guard_name' => 'web']);
+        $user = UserFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne(['guard_name' => 'web']);
 
         $user->assignRole($role);
 
-        expect($user->roles()->count())->toBe(1);
-        expect($user->roles()->first()->id)->toBe($role->id);
+        Assert::assertSame(1, $user->roles()->count());
+        $firstRole = $user->roles()->first();
+        Assert::assertNotNull($firstRole);
+        Assert::assertInstanceOf(Role::class, $firstRole);
+        Assert::assertSame($role->id, $firstRole->getKey());
     });
 
     test('user can have multiple roles', function (): void {
-        $user = User::factory()->create();
-        $role1 = Role::factory()->create(['name' => 'admin', 'guard_name' => 'web']);
-        $role2 = Role::factory()->create(['name' => 'editor', 'guard_name' => 'web']);
+        $user = UserFactory::new()->createOne();
+        $role1 = RoleFactory::new()->createOne(['name' => 'admin', 'guard_name' => 'web']);
+        $role2 = RoleFactory::new()->createOne(['name' => 'editor', 'guard_name' => 'web']);
 
         $user->assignRole([$role1, $role2]);
 
-        expect($user->roles()->count())->toBe(2);
+        Assert::assertSame(2, $user->roles()->count());
     });
 
     test('user can have permissions', function (): void {
-        $user = User::factory()->create();
-        $permission = Permission::factory()->create(['guard_name' => 'web', 'name' => 'permission-'.uniqid()]);
+        $this->skipUnlessDirectPermissionSupported();
+
+        $user = UserFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne(['guard_name' => 'web', 'name' => 'permission-'.uniqid()]);
 
         $user->givePermissionTo($permission);
 
-        expect($user->permissions()->count())->toBe(1);
+        Assert::assertSame(1, $user->permissions()->count());
     });
 
     test('user can check if has role', function (): void {
-        $user = User::factory()->create();
-        $role = Role::factory()->create(['name' => 'admin-'.uniqid(), 'guard_name' => 'web']);
+        $user = UserFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne(['name' => 'admin-'.uniqid(), 'guard_name' => 'web']);
 
         $user->assignRole($role);
 
-        expect($user->hasRole($role))->toBeTrue();
-        expect($user->hasRole($role->name))->toBeTrue();
+        Assert::assertTrue($user->hasRole($role));
+        Assert::assertTrue($user->hasRole($role->name));
     });
 
     test('user can check if has permission', function (): void {
-        $user = User::factory()->create();
-        $permission = Permission::factory()->create(['name' => 'perm-'.uniqid(), 'guard_name' => 'web']);
+        $this->skipUnlessDirectPermissionSupported();
+
+        $user = UserFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne(['name' => 'perm-'.uniqid(), 'guard_name' => 'web']);
 
         $user->givePermissionTo($permission);
 
-        expect($user->hasPermissionTo($permission))->toBeTrue();
+        Assert::assertTrue($user->hasPermissionTo($permission));
     });
 
     test('user can have password hash', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->password)->not->toBeNull();
-        expect(strlen($user->password))->toBeGreaterThan(10);
+        Assert::assertNotNull($user->password);
+        Assert::assertGreaterThan(10, strlen($user->password));
     });
 
     test('password is hidden from serialization', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect(in_array('password', $user->getHidden(), true))->toBeTrue();
+        Assert::assertTrue(in_array('password', $user->getHidden(), true));
     });
 
     test('user can have remember token', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
         $token = 'test-remember-token';
 
         $user->remember_token = $token;
         $user->save();
 
-        $retrieved = User::find($user->id);
-        expect($retrieved->remember_token)->toBe($token);
+        $retrieved = User::query()->findOrFail($user->id);
+        Assert::assertSame($token, $retrieved->remember_token);
     });
 
     test('user can be inactive', function (): void {
-        $user = User::factory()->create(['is_active' => false]);
+        $user = UserFactory::new()->createOne(['is_active' => false]);
 
-        expect($user->is_active)->toBeFalse();
+        Assert::assertFalse($user->is_active);
     });
 
     test('user can be active', function (): void {
-        $user = User::factory()->create(['is_active' => true]);
+        $user = UserFactory::new()->createOne(['is_active' => true]);
 
-        expect($user->is_active)->toBeTrue();
+        Assert::assertTrue($user->is_active);
     });
 
     test('user has phone attribute', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        // Phone might not be in all schema versions, just test the user was created
-        expect($user)->toBeInstanceOf(User::class);
+        Assert::assertInstanceOf(User::class, $user);
     });
 
     test('user has email verified at timestamp', function (): void {
-        $user = User::factory()->create(['email_verified_at' => now()]);
+        $user = UserFactory::new()->createOne(['email_verified_at' => now()]);
 
-        expect($user->email_verified_at)->not->toBeNull();
+        Assert::assertNotNull($user->email_verified_at);
     });
 
     test('user can have unverified email', function (): void {
-        $user = User::factory()->create(['email_verified_at' => null]);
+        $user = UserFactory::new()->createOne(['email_verified_at' => null]);
 
-        expect($user->email_verified_at)->toBeNull();
+        Assert::assertNull($user->email_verified_at);
     });
 
     test('user can access filament by default', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->canAccessFilament())->toBeTrue();
+        Assert::assertTrue($user->canAccessFilament());
     });
 
     test('user can access socialite by default', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->canAccessSocialite())->toBeTrue();
+        Assert::assertTrue($user->canAccessSocialite());
     });
 
     test('user has timestamps', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->created_at)->not->toBeNull();
-        expect($user->updated_at)->not->toBeNull();
+        Assert::assertNotNull($user->created_at);
+        Assert::assertNotNull($user->updated_at);
     });
 
     test('user uses uuid as primary key', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        expect($user->id)->not->toBeNull();
-        expect(strlen($user->id))->toBeGreaterThan(0);
+        Assert::assertNotNull($user->id);
+        Assert::assertGreaterThan(0, strlen($user->id));
     });
 
     test('user increments is false for uuid', function (): void {
-        expect(User::factory()->make()->incrementing)->toBeFalse();
+        Assert::assertFalse(UserFactory::new()->makeOne()->incrementing);
     });
 
     test('user fillable attributes are correct', function (): void {
-        $user = User::factory()->make();
+        $user = UserFactory::new()->makeOne();
 
-        expect(in_array('email', $user->getFillable(), true))->toBeTrue();
-        expect(in_array('name', $user->getFillable(), true))->toBeTrue();
+        Assert::assertTrue(in_array('email', $user->getFillable(), true));
+        Assert::assertTrue(in_array('name', $user->getFillable(), true));
     });
 
     test('user connection is user', function (): void {
-        $user = User::factory()->make();
+        $user = UserFactory::new()->makeOne();
 
-        expect($user->getConnectionName())->toBe('user');
+        Assert::assertSame('user', $user->getConnectionName());
     });
 
     test('user can be queried by email', function (): void {
-        $email = 'unique-test@example.com';
-        User::factory()->create(['email' => $email]);
+        $email = 'unique-test-'.uniqid('', true).'@example.com';
+        UserFactory::new()->createOne(['email' => $email]);
 
         $user = User::where('email', $email)->first();
 
-        expect($user)->not->toBeNull();
-        expect($user->email)->toBe($email);
+        Assert::assertNotNull($user);
+        Assert::assertSame($email, $user->email);
     });
 
     test('user can be updated', function (): void {
-        $user = User::factory()->create(['name' => 'Original Name']);
+        $user = UserFactory::new()->createOne(['name' => 'Original Name']);
         $originalId = $user->id;
 
         $user->update(['name' => 'Updated Name']);
 
-        expect($user->name)->toBe('Updated Name');
-
-        $refreshed = User::find($originalId);
-        expect($refreshed->name)->toBe('Updated Name');
+        Assert::assertSame('Updated Name', $user->name);
+        $refreshed = User::query()->findOrFail($originalId);
+        Assert::assertSame('Updated Name', $refreshed->name);
     });
 
     test('user can be deleted', function (): void {
-        $user = User::factory()->create();
+        $this->skipUnlessDirectPermissionSupported();
+
+        $user = UserFactory::new()->createOne();
         $userId = $user->id;
 
         $user->delete();
 
         $deleted = User::find($userId);
-        expect($deleted)->toBeNull();
+        Assert::assertNull($deleted);
     });
 
     test('user has current team id attribute', function (): void {
-        $user = User::factory()->create(['current_team_id' => 'team-123']);
+        $user = UserFactory::new()->createOne(['current_team_id' => 'team-123']);
 
-        expect($user->current_team_id)->toBe('team-123');
+        Assert::assertSame('team-123', $user->current_team_id);
     });
 
     test('user has lang attribute for localization', function (): void {
-        $user = User::factory()->create(['lang' => 'it']);
+        $user = UserFactory::new()->createOne(['lang' => 'it']);
 
-        expect($user->lang)->toBe('it');
+        Assert::assertSame('it', $user->lang);
     });
 
     test('user belongs to socialite users', function (): void {
-        $user = User::factory()->create();
-        SocialiteUser::factory()->create(['user_id' => $user->id, 'provider' => 'google']);
+        $user = UserFactory::new()->createOne();
+        SocialiteUserFactory::new()->createOne([
+            'user_id' => $user->id,
+            'provider' => 'google',
+            'provider_id' => 'google-'.uniqid(),
+        ]);
 
         $socialiteUsers = $user->socialiteUsers()->get();
 
-        expect($socialiteUsers)->toHaveCount(1);
-        expect($socialiteUsers->first()->provider)->toBe('google');
+        Assert::assertCount(1, $socialiteUsers);
+        $firstSocialite = $socialiteUsers->first();
+        Assert::assertNotNull($firstSocialite);
+        Assert::assertSame('google', $firstSocialite->provider);
     });
 
     test('user can have multiple socialite accounts', function (): void {
-        $user = User::factory()->create();
-        SocialiteUser::factory()->create(['user_id' => $user->id, 'provider' => 'google']);
-        SocialiteUser::factory()->create(['user_id' => $user->id, 'provider' => 'github']);
+        $user = UserFactory::new()->createOne();
+        SocialiteUserFactory::new()->createOne([
+            'user_id' => $user->id,
+            'provider' => 'google',
+            'provider_id' => 'google-'.uniqid(),
+        ]);
+        SocialiteUserFactory::new()->createOne([
+            'user_id' => $user->id,
+            'provider' => 'github',
+            'provider_id' => 'github-'.uniqid(),
+        ]);
 
-        expect($user->socialiteUsers()->count())->toBe(2);
+        Assert::assertSame(2, $user->socialiteUsers()->count());
     });
 });

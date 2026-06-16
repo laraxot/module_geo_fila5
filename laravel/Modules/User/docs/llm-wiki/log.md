@@ -19,4 +19,11 @@
 
 ---
 
+## [2026-06-04] ingest | Filament widget validation + KISS create
+- Updated: `concepts/filament-widget-no-validate-form.md` (alias)
+- RegisterWidget: `getState()` + `XotData::getUserClass()::create()` — rimosso `RegisterFoUserAction`
+- ADR: `docs/wiki/decisions/filament-widget-linear-crud-model-create.md`
+
+---
+
 _Log entries appended chronologically below_

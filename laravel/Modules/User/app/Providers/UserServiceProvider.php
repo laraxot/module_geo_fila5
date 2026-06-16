@@ -53,7 +53,48 @@ class UserServiceProvider extends XotBaseServiceProvider
     public function register(): void
     {
         parent::register();
+        $this->mergeSocialProviderCredentialsFromEnv();
         // $this->registerTeamModelBindings();
+    }
+
+    /**
+     * Merge OAuth client credentials from Laravel services config into user.social-providers.
+     * Credentials live in config/services.php (env allowed there); module config stays env-free.
+     */
+    protected function mergeSocialProviderCredentialsFromEnv(): void
+    {
+        /** @var list<string> $providers */
+        $providers = [
+            'facebook',
+            'twitter',
+            'linkedin',
+            'google',
+            'github',
+            'gitlab',
+            'bitbucket',
+            'slack',
+            'apple',
+            'microsoft',
+            'pinterest',
+            'reddit',
+            'tiktok',
+            'twitch',
+        ];
+
+        foreach ($providers as $provider) {
+            /** @var array<string, mixed> $serviceConfig */
+            $serviceConfig = config("services.{$provider}", []);
+
+            $clientId = $serviceConfig['client_id'] ?? null;
+            if (is_string($clientId) && '' !== $clientId) {
+                Config::set("user.social-providers.{$provider}.client_id", $clientId);
+            }
+
+            $clientSecret = $serviceConfig['client_secret'] ?? null;
+            if (is_string($clientSecret) && '' !== $clientSecret) {
+                Config::set("user.social-providers.{$provider}.client_secret", $clientSecret);
+            }
+        }
     }
 
     public function registerMailsNotification(): void

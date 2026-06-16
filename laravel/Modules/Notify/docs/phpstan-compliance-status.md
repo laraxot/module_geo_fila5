@@ -1,7 +1,9 @@
 # PHPStan Level 10 Compliance Status
 
-**Last Updated**: 2025-12-10
-**Status**: ✅ FULLY COMPLIANT (0 errors)
+**Last Updated**: 2026-06-13 (sessione test doubles + helper manager)
+**Status**: ✅ FULLY COMPLIANT (0 errors, level max)
+
+Baseline STORY-289: 279 → 0. Pattern: `notify-env.php` + `MergesNotifyConfigFromEnv`, PushNotificationService PHPDoc.
 
 ## Summary
 The Notify module is now fully compliant with PHPStan Level 10 analysis. All static analysis errors have been resolved, ensuring type safety and code quality.
@@ -29,7 +31,12 @@ if ($response instanceof \GuzzleHttp\Promise\PromiseInterface) {
 # Result: [OK] No errors
 ```
 
-## Best Practices Implemented
+## Test suite (2026-06-13)
+
+- Helper `notificationManager()` su `Modules\Notify\Tests\TestCase`
+- Doubles trait: `tests/Unit/Traits/NotifyTraitTestDoubles.php`
+- Doc: [wiki/concepts/phpstan-pest-test-doubles.md](wiki/concepts/phpstan-pest-test-doubles.md)
+
 
 1. **HTTP Client Safety**: Proper handling of async HTTP responses
 2. **Union Type Management**: Safe handling of PromiseInterface|Response unions

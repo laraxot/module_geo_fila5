@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Database\Seeder;
 use Modules\User\Models\Role;
 
-class RolesSeeder extends Seeder
+final class RolesSeeder extends Seeder
 {
     /**
      * Table headers for output display.
@@ -26,10 +26,22 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [];
+        $roles = [
+            ['name' => 'super-admin', 'guard_name' => 'web'],
+            ['name' => 'admin', 'guard_name' => 'web'],
+            ['name' => 'moderator', 'guard_name' => 'web'],
+            ['name' => 'editor', 'guard_name' => 'web'],
+            ['name' => 'user', 'guard_name' => 'web'],
+            ['name' => 'guest', 'guard_name' => 'web'],
+        ];
+
+        $createdRoles = [];
+        foreach ($roles as $roleData) {
+            $createdRoles[] = Role::firstOrCreate($roleData);
+        }
 
         // Display results in a table format
-        $this->displayResults($roles);
+        $this->displayResults($createdRoles);
     }
 
     /**
@@ -44,7 +56,7 @@ class RolesSeeder extends Seeder
         $command->table(
             self::$OUTPUT_TABLE_HEADERS,
             collect($roles)
-                ->map(fn (Role $role, int $index) => [
+                ->map(static fn (Role $role, int $index) => [
                     $index + 1,
                     $role->name,
                     $role->guard_name,

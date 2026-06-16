@@ -1,14 +1,7 @@
-# module_structure - User
+---
+module: theme
+topic: module-structure-1
+canonical: ../../../Themes/docs/shared-components/module_structure.md
+---
 
-## Overview
-
-Documentazione per module_structure nel modulo User.
-
-## Dettagli
-
-[Da completare]
-
-## Collegamenti
-
-- [Modulo Principale](../README.md)
-
+See canonical documentation: ../../../Themes/docs/shared-components/module_structure.md

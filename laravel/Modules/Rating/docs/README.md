@@ -1,56 +1,68 @@
 ---
-title: documentazione modulo rating
-module: Rating
-type: index
-status: approved
-tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
-related:
-  - ../README.md
+title: "Rating Module Documentation"
+type: documentation
+tags: [module, documentation]
+created: 2026-06-05
+updated: 2026-06-05
 ---
 
-# Documentazione — modulo Rating
+# Modulo Rating
 
-> **Mappa knowledge base locale.** Il [README in root](../README.md) è la vetrina (valore, release, onboarding); questo file indica **dove** trovare regole, wiki e audit per chi sviluppa o per gli agenti AI.
+## Overview
+
+Il modulo **Rating** fa parte dell'ecosistema [PROJECT_NAME] platform.
 
 ## Scopo
 
-Rating and evaluation module for the Laraxot ecosystem with schemaless attributes support.
+Questo modulo gestisce [DESCRIZIONE SPECIFICA DA COMPLETARE].
 
-## Dove iniziare
+## Struttura
 
-- [Wiki locale](./wiki/index.md)
-- [Audit ridondanza](./code-redundancy-audit.md)
-- [Regole architettura](./architecture-rules.md)
-- [Disciplina agenti](./agent-edit-discipline.md)
-
-
-## Struttura tipica
-
-```text
+```
 Rating/
-├── README.md          ← vetrina (root package)
+├── app/
+│   ├── Models/
+│   ├── Filament/
+│   └── ...
 ├── docs/
-│   ├── README.md      ← questo indice
-│   └── wiki/          ← second brain (se presente)
-├── app/ o resources/
-└── composer.json
+├── lang/
+└── resources/
 ```
 
-## Namespace / confini
+## Dipendenze
 
-- Namespace: `Modules\Rating`
-- Non duplicare qui la filosofia marketing: resta nel README root.
+- [Xot Base](../Xot/docs/)
+- [User Module](../User/docs/) (se usa autenticazione)
+- [Tenant Module](../Tenant/docs/) (se multi-tenant)
 
 ## Collegamenti
 
-- [README root (vetrina)](../README.md)
-- [Xot (framework base)](../Xot/docs/)
-- [Wiki progetto](../../../docs/wiki/README.md)
-- [Standard README doppio](../../../../docs/wiki/standards/module-theme-readme-dual.md)
+- [Documentazione Root](../../../docs/RATING_MODULE.md)
+- [Regole Architecture](../Xot/docs/architecture/)
 
-## Per agenti
+## Backlinks
 
-1. Leggere scopo in questo file.
-2. Aprire `docs/wiki/index.md` se esiste.
-3. Seguire [disciplina issue GitHub](../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
+- [Indice Moduli](../README.md)
+
+## TODO
+
+- [ ] Completare descrizione funzionalità
+- [ ] Documentare modelli principali
+- [ ] Documentare risorse Filament
+- [ ] Aggiungere esempi codice
+
+- [Conflict Resolution](conflict-resolution.md)
+
+
+## Standard Rules & Workflow
+
+- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
+- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
+- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]
+
+## Documentation
+
+- [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
+- [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
+- [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
+- [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout

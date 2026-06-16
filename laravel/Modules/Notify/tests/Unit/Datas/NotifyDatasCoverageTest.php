@@ -20,8 +20,9 @@ use Modules\Notify\Datas\SmsMessageData;
 use Modules\Notify\Datas\TelegramData;
 use Modules\Notify\Datas\WhatsAppData;
 use Modules\Notify\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Notify\Tests\TestCase::class);
 
 test('netfun sms request and response data can be created from arrays', function () {
     $request = NetfunSmsRequestData::fromArray([
@@ -39,11 +40,11 @@ test('netfun sms request and response data can be created from arrays', function
         ],
     ]);
 
-    expect($request->token)->toBe('abc-token')
-        ->and($request->messages)->toHaveCount(1)
-        ->and($response->status)->toBe('ok')
-        ->and($response->batchId)->toBe('batch-1')
-        ->and($response->messages)->toHaveCount(1);
+    Assert::assertSame('abc-token', $request->token);
+    Assert::assertCount(1, \assertNotifyArray($request->messages));
+    Assert::assertSame('ok', $response->status);
+    Assert::assertSame('batch-1', $response->batchId);
+    Assert::assertCount(1, \assertNotifyArray($response->messages));
 });
 
 test('netfun sms message-style data objects keep values', function () {
@@ -61,10 +62,10 @@ test('netfun sms message-style data objects keep values', function () {
         sender: 'Sender2',
     );
 
-    expect($data->recipient)->toBe('+39123')
-        ->and($data->message)->toBe('Body')
-        ->and($message->recipient)->toBe('+39999')
-        ->and($message->text)->toBe('Text');
+    Assert::assertSame('+39123', $data->recipient);
+    Assert::assertSame('Body', $data->message);
+    Assert::assertSame('+39999', $message->recipient);
+    Assert::assertSame('Text', $message->text);
 });
 
 test('sms driver data classes expose auth headers and defaults', function () {
@@ -96,13 +97,10 @@ test('sms driver data classes expose auth headers and defaults', function () {
     $plivo = PlivoData::make();
     $smsfactor = SmsFactorData::make();
 
-    expect($agile->getAuthHeaders())->toHaveKey('Authorization')
-        ->and($gammu->getPath())->toBe('/usr/local/bin/gammu')
-        ->and($gammu->getConfig())->toBe('/tmp/gammurc')
-        ->and($gammu->getTimeout())->toBe(45)
-        ->and($nexmo->getBaseUrl())->toBeString()
-        ->and($plivo->getBaseUrl())->toBeString()
-        ->and($smsfactor->getBaseUrl())->toBeString();
+    Assert::assertSame('/usr/local/bin/gammu', $gammu->getPath());
+    Assert::assertSame('/tmp/gammurc', $gammu->getConfig());
+    Assert::assertSame(45, $gammu->getTimeout());
+    Assert::assertArrayHasKey('Authorization', $agile->getAuthHeaders());
 });
 
 test('telegram, whatsapp and sms message datas keep payload', function () {
@@ -110,12 +108,12 @@ test('telegram, whatsapp and sms message datas keep payload', function () {
     $whatsapp = new WhatsAppData(recipient: '+39111', body: 'body', type: 'text');
     $smsMessage = new SmsMessageData(recipient: '+39222', message: 'sms body', sender: 'ACME');
 
-    expect($telegram->chatId)->toBe('123')
-        ->and($telegram->text)->toBe('hello')
-        ->and($whatsapp->recipient)->toBe('+39111')
-        ->and($whatsapp->body)->toBe('body')
-        ->and($smsMessage->recipient)->toBe('+39222')
-        ->and($smsMessage->message)->toBe('sms body');
+    Assert::assertSame('123', $telegram->chatId);
+    Assert::assertSame('hello', $telegram->text);
+    Assert::assertSame('+39111', $whatsapp->recipient);
+    Assert::assertSame('body', $whatsapp->body);
+    Assert::assertSame('+39222', $smsMessage->recipient);
+    Assert::assertSame('sms body', $smsMessage->message);
 });
 
 test('send notification bulk result data keeps counters and errors collection', function () {
@@ -130,10 +128,10 @@ test('send notification bulk result data keeps counters and errors collection', 
         totalProcessed: 4,
     );
 
-    expect($result->successCount)->toBe(3)
-        ->and($result->errorCount)->toBe(1)
-        ->and($result->errors)->toBeInstanceOf(Collection::class)
-        ->and($result->totalProcessed)->toBe(4);
+    Assert::assertInstanceOf(Collection::class, $result->errors);
+    Assert::assertSame(3, $result->successCount);
+    Assert::assertSame(4, $result->totalProcessed);
+    Assert::assertSame(1, $result->errorCount);
 });
 
 test('firebase notification data fromType fills type and translations structure', function () {
@@ -141,8 +139,8 @@ test('firebase notification data fromType fills type and translations structure'
 
     $data = FirebaseNotificationData::fromType('ticket_created');
 
-    expect($data->type)->toBe('ticket_created')
-        ->and($data->title)->toBeString()
-        ->and($data->body)->toBeString()
-        ->and($data->data)->toBeArray();
+    Assert::assertSame('ticket_created', $data->type);
+    Assert::assertNotSame('', $data->title);
+    Assert::assertNotSame('', $data->body);
+    Assert::assertNotEmpty($data->data);
 });

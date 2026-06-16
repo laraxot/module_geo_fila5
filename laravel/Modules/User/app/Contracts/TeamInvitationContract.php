@@ -19,15 +19,15 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null  $updated_at
  * @property TeamContract $team
  *
- * @method static Builder|TeamInvitationContract newModelQuery()
- * @method static Builder|TeamInvitationContract newQuery()
- * @method static Builder|TeamInvitationContract query()
- * @method static Builder|TeamInvitationContract whereCreatedAt($value)
- * @method static Builder|TeamInvitationContract whereEmail($value)
- * @method static Builder|TeamInvitationContract whereId($value)
- * @method static Builder|TeamInvitationContract whereRole($value)
- * @method static Builder|TeamInvitationContract whereTeamId($value)
- * @method static Builder|TeamInvitationContract whereUpdatedAt($value)
+ * @method static Builder<Model> newModelQuery()
+ * @method static Builder<Model> newQuery()
+ * @method static Builder<Model> query()
+ * @method static Builder<Model> whereCreatedAt($value)
+ * @method static Builder<Model> whereEmail($value)
+ * @method static Builder<Model> whereId($value)
+ * @method static Builder<Model> whereRole($value)
+ * @method static Builder<Model> whereTeamId($value)
+ * @method static Builder<Model> whereUpdatedAt($value)
  *
  * @phpstan-require-extends Model
  *

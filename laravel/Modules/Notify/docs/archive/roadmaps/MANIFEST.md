@@ -59,7 +59,7 @@ laravel/Modules/Activity/docs/
 ├── phpstan-override-fix-roadmap.md
 ├── phpstan-roadmap.md
 ├── product-roadmap.md
-├── roadmap-archive-1.md
+├── roadmap-2025.md
 ├── roadmap-and-issues.md
 ├── roadmap-vision.md
 ├── roadmap.md
@@ -82,6 +82,7 @@ laravel/Modules/User/docs/
 ├── product-roadmap.md
 ├── roadmap-1-1.md
 ├── roadmap/
+│   ├── 2025-q4-roadmap.md
 │   ├── legacy-roadmap.md
 │   ├── q4-roadmap.md
 │   ├── q4-roadmap-1.md
@@ -100,7 +101,7 @@ laravel/Modules/User/docs/
         ├── roadmap-complete.md
         ├── roadmap-conflict.md
         ├── roadmap-1.md
-        ├── roadmap-archive-1.md
+        ├── roadmap-2025.md
         ├── phpstan-error-roadmap.md
         ├── phpstan-errors-resolution-roadmap.md
         ├── phpstan-fixes-roadmap.md

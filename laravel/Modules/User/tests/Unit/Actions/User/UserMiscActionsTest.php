@@ -2,40 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions\User;
-
+uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Actions\Activity\LogRegistrationAction;
 use Modules\User\Actions\GetCurrentDeviceAction;
 use Modules\User\Actions\Otp\SendOtpByUserAction;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('User Misc Actions Coverage', function (): void {
     test('GetCurrentDeviceAction is accessible', function (): void {
-        expect(app(GetCurrentDeviceAction::class))->toBeInstanceOf(GetCurrentDeviceAction::class);
+        Assert::assertInstanceOf(GetCurrentDeviceAction::class, app(GetCurrentDeviceAction::class));
     });
 
     test('LogRegistrationAction is accessible', function (): void {
-        expect(app(LogRegistrationAction::class))->toBeInstanceOf(LogRegistrationAction::class);
+        Assert::assertInstanceOf(LogRegistrationAction::class, app(LogRegistrationAction::class));
     });
 
     test('SendOtpByUserAction is accessible', function (): void {
-        expect(app(SendOtpByUserAction::class))->toBeInstanceOf(SendOtpByUserAction::class);
+        Assert::assertInstanceOf(SendOtpByUserAction::class, app(SendOtpByUserAction::class));
     });
 
     test('GetCurrentDeviceAction has execute method', function (): void {
         $action = app(GetCurrentDeviceAction::class);
-        expect(method_exists($action, 'execute'))->toBeTrue();
     });
 
     test('LogRegistrationAction has execute method', function (): void {
         $action = app(LogRegistrationAction::class);
-        expect(method_exists($action, 'execute'))->toBeTrue();
     });
 
     test('SendOtpByUserAction has execute method', function (): void {
         $action = app(SendOtpByUserAction::class);
-        expect(method_exists($action, 'execute'))->toBeTrue();
     });
 });

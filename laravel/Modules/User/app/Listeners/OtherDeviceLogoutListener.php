@@ -6,9 +6,12 @@ namespace Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\OtherDeviceLogout;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\User\Contracts\HasAuthentications;
 use Modules\User\Models\AuthenticationLog;
+use Modules\User\Support\AuthenticationLogQuery;
 
 // use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 
@@ -23,24 +26,27 @@ class OtherDeviceLogoutListener
 
     public function handle(OtherDeviceLogout $event): void
     {
-        if ($event->user && $event->user instanceof HasAuthentications) {
+        if ($event->user instanceof Model && $event->user instanceof HasAuthentications) {
             $user = $event->user;
             $ip = $this->request->ip();
-
             $userAgent = $this->request->userAgent();
-            $authenticationLog = $user->authentications()->whereIpAddress($ip)->whereUserAgent($userAgent)->first();
 
-            if (! $authenticationLog) {
+            $logQuery = AuthenticationLogQuery::forAuthenticatable($user);
+
+            $authenticationLog = $logQuery
+                ->where('ip_address', $ip)
+                ->where('user_agent', $userAgent)
+                ->first();
+
+            if (! $authenticationLog instanceof AuthenticationLog) {
                 $authenticationLog = new AuthenticationLog([
                     'ip_address' => $ip,
                     'user_agent' => $userAgent,
                 ]);
             }
 
-            // Performance optimization: Bulk update instead of N+1 individual updates
-            // This reduces 50+ queries to a single UPDATE query
-            $user->authentications()
-                ->whereLoginSuccessful(true)
+            $logQuery
+                ->where('login_successful', true)
                 ->whereNull('logout_at')
                 ->where('id', '!=', $authenticationLog->getKey())
                 ->update([
@@ -63,14 +69,15 @@ class OtherDeviceLogoutListener
         $newUserAgent = $this->request->userAgent();
 
         $user = $event->user;
-        if (! $user || ! ($user instanceof HasAuthentications)) {
+        if (! $user instanceof Model || ! $user instanceof HasAuthentications) {
             return;
         }
 
-        $logs = $user
-            ->authentications()
+        $loginQuery = AuthenticationLogQuery::forAuthenticatable($user);
+
+        $loginQuery
             ->orderByDesc('login_at')
-            ->where(function ($query) use ($newIP, $newUserAgent): void {
+            ->where(function (Builder $query) use ($newIP, $newUserAgent): void {
                 $query->where('ip_address', '!=', $newIP)->orWhere('user_agent', '!=', $newUserAgent);
             })
             ->where('login_successful', true)

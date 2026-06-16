@@ -17,18 +17,21 @@ class GetProviderScopesAction
 
     /**
      * Execute the action.
+     *
+     * @return array<int, string>
      */
     public function execute(string $provider): array
     {
-        /**
-         * @var array|\ArrayAccess
-         */
         $services = config('services');
+        if (! is_array($services)) {
+            return [];
+        }
+
         $scopes = Arr::get($services, $provider.'.scopes');
         if (! \is_array($scopes)) {
             return [];
         }
 
-        return $scopes;
+        return array_values(array_map(static fn (mixed $scope): string => (string) $scope, $scopes));
     }
 }

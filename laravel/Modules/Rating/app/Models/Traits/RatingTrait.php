@@ -100,9 +100,7 @@ trait RatingTrait
         if (null !== $value) {
             return $value;
         }
-        // Method Illuminate\Support\Collection<int,Modules\Rating\Models\Rating>::count() invoked with 1 parameter, 0 required.
-        // $value = $this->ratings->count('pivot.rating');
-        $value = $this->ratings->count(); // ?? forse fare filtro
+        $value = $this->ratings->count();
         $this->ratings_count = $value;
 
         // Guard: modello deve avere PK per salvare

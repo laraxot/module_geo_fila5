@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Feature\Auth;
-
+uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Filament\Widgets\Auth\SocialLoginWidget;
-use Modules\Xot\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('Microsoft Login Button', function () {
     test('social login widget renders correctly when microsoft is configured', function () {
@@ -16,9 +13,9 @@ describe('Microsoft Login Button', function () {
         $widget = new SocialLoginWidget();
         $providers = $widget->getProviders();
 
-        expect($providers)->toHaveCount(1);
-        expect($providers[0]['driver'])->toBe('microsoft');
-        expect($providers[0]['label'])->toBe(__('user::auth.social.microsoft'));
+        Assert::assertCount(1, $providers);
+        Assert::assertSame('microsoft', $providers[0]['driver']);
+        Assert::assertSame(__('user::auth.social.microsoft'), $providers[0]['label']);
     });
 
     test('social login widget returns empty when no providers configured', function () {
@@ -29,11 +26,11 @@ describe('Microsoft Login Button', function () {
         $widget = new SocialLoginWidget();
         $providers = $widget->getProviders();
 
-        expect($providers)->toBeEmpty();
+        Assert::assertEmpty($providers);
     });
 
     test('socialite microsoft redirect route exists', function () {
         $url = route('socialite.oauth.redirect', ['provider' => 'microsoft']);
-        expect($url)->toContain('microsoft');
+        Assert::assertStringContainsString((string) 'microsoft', (string) $url);
     });
 });

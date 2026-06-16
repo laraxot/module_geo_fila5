@@ -9,13 +9,13 @@ use Illuminate\Database\Seeder;
 
 class UserDatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call([
+            UserSeeder::class,
+            DemoUserSeeder::class,
+        ]);
     }
 }

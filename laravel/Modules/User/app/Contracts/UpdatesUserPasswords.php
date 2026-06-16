@@ -14,5 +14,8 @@ use Modules\Xot\Contracts\UserContract;
  */
 interface UpdatesUserPasswords
 {
+    /**
+     * @param array<string, mixed> $input
+     */
     public function update(UserContract $userContract, array $input): void;
 }

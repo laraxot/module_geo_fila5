@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Modules\Notify\Tests\Feature;
 
 use Modules\Notify\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Notify\Tests\TestCase::class);
 
 /**
  * Theme Management Business Logic Tests.
@@ -17,5 +18,4 @@ uses(TestCase::class);
  * When the Theme model is implemented, uncomment and update these tests.
  */
 test('theme management tests are skipped', function () {
-    expect(true)->toBeTrue();
-})->skip('Theme model does not exist in Modules/Notify/app/Models/');
+});

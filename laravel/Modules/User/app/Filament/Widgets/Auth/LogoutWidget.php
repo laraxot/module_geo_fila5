@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
  * Logout widget for user session termination.
@@ -22,7 +22,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  * event dispatching, and audit logging following Laraxot
  * architectural patterns and security best practices.
  */
-class LogoutWidget extends XotBaseWidget
+class LogoutWidget extends XotBaseSchemaWidget
 {
     /**
      * The view for this widget.
@@ -42,7 +42,6 @@ class LogoutWidget extends XotBaseWidget
      *
      * @return array<string, Component>
      */
-    #[\Override]
     public function getFormSchema(): array
     {
         return [

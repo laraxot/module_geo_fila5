@@ -14,5 +14,8 @@ use Modules\Xot\Contracts\UserContract;
  */
 interface ResetsUserPasswords
 {
+    /**
+     * @param array<string, mixed> $input
+     */
     public function reset(UserContract $userContract, array $input): void;
 }

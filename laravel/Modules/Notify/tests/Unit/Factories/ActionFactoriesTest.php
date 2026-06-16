@@ -10,8 +10,9 @@ use Modules\Notify\Factories\SmsActionFactory;
 use Modules\Notify\Factories\TelegramActionFactory;
 use Modules\Notify\Factories\WhatsAppActionFactory;
 use Modules\Notify\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+uses(\Modules\Notify\Tests\TestCase::class);
 
 test('sms action factory creates netfun driver instance', function () {
     config()->set('sms.drivers.netfun.token', 'token-123');
@@ -19,26 +20,31 @@ test('sms action factory creates netfun driver instance', function () {
     $factory = new SmsActionFactory;
     $action = $factory->create('netfun');
 
-    expect($action)->toBeInstanceOf(SmsActionContract::class);
+    Assert::assertInstanceOf(SmsActionContract::class, $action);
 });
 
 test('sms action factory throws for unsupported driver', function () {
-    $factory = new SmsActionFactory;
-
-    $factory->create('definitely-unsupported-driver');
-})->throws(\Exception::class);
+    \assertNotifyThrows(
+        fn () => (new SmsActionFactory)->create('definitely-unsupported-driver'),
+        \Exception::class,
+    );
+});
 
 test('telegram action factory throws when selected class does not implement interface', function () {
     config()->set('services.telegram.token', 'telegram-token');
 
-    $factory = new TelegramActionFactory;
-    $factory->create('official');
-})->throws(\Exception::class);
+    \assertNotifyThrows(
+        fn () => (new TelegramActionFactory)->create('official'),
+        \Exception::class,
+    );
+});
 
 test('telegram action factory throws for unsupported driver', function () {
-    $factory = new TelegramActionFactory;
-    $factory->create('unsupported');
-})->throws(\Exception::class);
+    \assertNotifyThrows(
+        fn () => (new TelegramActionFactory)->create('unsupported'),
+        \Exception::class,
+    );
+});
 
 test('whatsapp action factory creates twilio driver instance', function () {
     config()->set('services.twilio.account_sid', 'sid-123');
@@ -47,11 +53,12 @@ test('whatsapp action factory creates twilio driver instance', function () {
     $factory = new WhatsAppActionFactory;
     $action = $factory->create('twilio');
 
-    expect($action)->toBeInstanceOf(WhatsAppProviderActionInterface::class);
+    Assert::assertInstanceOf(WhatsAppProviderActionInterface::class, $action);
 });
 
 test('whatsapp action factory throws for unsupported driver', function () {
-    $factory = new WhatsAppActionFactory;
-
-    $factory->create('unsupported');
-})->throws(\Exception::class);
+    \assertNotifyThrows(
+        fn () => (new WhatsAppActionFactory)->create('unsupported'),
+        \Exception::class,
+    );
+});

@@ -13,10 +13,10 @@ use Livewire\Features\SupportRedirects\Redirector;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Datas\XotData;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 use Webmozart\Assert\Assert;
 
-class RegistrationWidget extends XotBaseWidget
+class RegistrationWidget extends XotBaseSchemaWidget
 {
     public string $type = '';
 
@@ -32,8 +32,9 @@ class RegistrationWidget extends XotBaseWidget
 
     protected int|string|array $columnSpan = 'full';
 
-    public function mount(string $type): void
+    public function mount(string $type = ''): void
     {
+        parent::mount();
         $this->type = $type;
         $resourceClass = XotData::make()->getUserResourceClassByType($type);
         Assert::classExists($resourceClass);
@@ -110,7 +111,6 @@ class RegistrationWidget extends XotBaseWidget
     /**
      * @return array<int|string, Component>
      */
-    #[\Override]
     public function getFormSchema(): array
     {
         return self::normalizeFormSchema($this->resource::getFormSchemaWidget());

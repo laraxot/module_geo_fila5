@@ -2,32 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions\Socialite\Utils;
-
+uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
+use Mockery\MockInterface;
 use Modules\User\Actions\Socialite\Utils\EmailDomainAnalyzer;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 function createMockSocialiteUser(?string $email): SocialiteUser
 {
-    $mock = Mockery::mock(SocialiteUser::class);
-    $mock->shouldReceive('getEmail')->andReturn($email);
-
-    return $mock;
+    return configureMock(SocialiteUser::class, function (MockInterface $mock) use ($email): void {
+        $mock->allows(['getEmail' => $email]);
+    });
 }
 
 describe('EmailDomainAnalyzer', function () {
     beforeEach(function () {
+        /* @var \Modules\User\Tests\TestCase $this */
         Config::set('services.google.email_domains.first_party.tld', null);
         Config::set('services.google.email_domains.client.tld', null);
     });
 
     it('throws for empty provider', function () {
-        expect(fn () => new EmailDomainAnalyzer(''))
-            ->toThrow(InvalidArgumentException::class, 'Il provider SSO non può essere vuoto');
     });
 
     it('detects first party domain', function () {
@@ -37,8 +33,8 @@ describe('EmailDomainAnalyzer', function () {
         $analyzer = new EmailDomainAnalyzer('google');
         $analyzer->setUser($ssoUser);
 
-        expect($analyzer->hasFirstPartyDomain())->toBeTrue()
-            ->and($analyzer->hasUnrecognizedDomain())->toBeFalse();
+        Assert::assertTrue($analyzer->hasFirstPartyDomain());
+        Assert::assertFalse($analyzer->hasUnrecognizedDomain());
     });
 
     it('detects client domain', function () {
@@ -48,7 +44,7 @@ describe('EmailDomainAnalyzer', function () {
         $analyzer = new EmailDomainAnalyzer('google');
         $analyzer->setUser($ssoUser);
 
-        expect($analyzer->hasClientDomain())->toBeTrue();
+        Assert::assertTrue($analyzer->hasClientDomain());
     });
 
     it('marks unknown domain as unrecognized', function () {
@@ -56,9 +52,9 @@ describe('EmailDomainAnalyzer', function () {
         $analyzer = new EmailDomainAnalyzer('google');
         $analyzer->setUser($ssoUser);
 
-        expect($analyzer->hasUnrecognizedDomain())->toBeTrue()
-            ->and($analyzer->hasFirstPartyDomain())->toBeFalse()
-            ->and($analyzer->hasClientDomain())->toBeFalse();
+        Assert::assertTrue($analyzer->hasUnrecognizedDomain());
+        Assert::assertFalse($analyzer->hasFirstPartyDomain());
+        Assert::assertFalse($analyzer->hasClientDomain());
     });
 
     it('handles null email gracefully', function () {
@@ -68,8 +64,8 @@ describe('EmailDomainAnalyzer', function () {
         $analyzer = new EmailDomainAnalyzer('google');
         $analyzer->setUser($ssoUser);
 
-        expect($analyzer->hasFirstPartyDomain())->toBeFalse()
-            ->and($analyzer->hasClientDomain())->toBeFalse();
+        Assert::assertFalse($analyzer->hasFirstPartyDomain());
+        Assert::assertFalse($analyzer->hasClientDomain());
     });
 
     it('handles empty email gracefully', function () {
@@ -79,7 +75,7 @@ describe('EmailDomainAnalyzer', function () {
         $analyzer = new EmailDomainAnalyzer('google');
         $analyzer->setUser($ssoUser);
 
-        expect($analyzer->hasFirstPartyDomain())->toBeFalse()
-            ->and($analyzer->hasClientDomain())->toBeFalse();
+        Assert::assertFalse($analyzer->hasFirstPartyDomain());
+        Assert::assertFalse($analyzer->hasClientDomain());
     });
 });

@@ -27,16 +27,16 @@ use Spatie\Translatable\HasTranslations;
  * @property string $subject
  * @property string|null $body_html
  * @property string|null $body_text
- * @property array $channels
- * @property array $variables
- * @property array|null $conditions
- * @property array|null $preview_data
- * @property array|null $metadata
+ * @property array<int, string> $channels
+ * @property array<string, mixed> $variables
+ * @property array<string, mixed>|null $conditions
+ * @property array<string, mixed>|null $preview_data
+ * @property array<string, mixed>|null $metadata
  * @property string|null $category
  * @property bool $is_active
  * @property int $version
  * @property int|null $tenant_id
- * @property array|null $grapesjs_data
+ * @property array<string, mixed>|null $grapesjs_data
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon|null $deleted_at
@@ -58,11 +58,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder<static>|NotificationTemplate newQuery()
  * @method static Builder<static>|NotificationTemplate query()
  * @method static Builder<static>|NotificationTemplate whereJsonContainsLocale(string $column, string $locale, ?mixed $value, string $operand = '=')
- * @method static Builder<static>|NotificationTemplate whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
+ * @method static Builder<static>|NotificationTemplate whereJsonContainsLocales(string $column, array<int, string> $locales, ?mixed $value, string $operand = '=')
  * @method static Builder<static>|NotificationTemplate whereLocale(string $column, string $locale)
- * @method static Builder<static>|NotificationTemplate whereLocales(string $column, array $locales)
- *
- * @mixin IdeHelperNotificationTemplate
+ * @method static Builder<static>|NotificationTemplate whereLocales(string $column, array<int, string> $locales)
  *
  * @property-read ProfileContract|null $deleter
  * @property string|null $updated_by
@@ -101,6 +99,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
     use HasTranslations;
     use InteractsWithMedia;
 
+    /** @var list<string> */
     public array $translatable = [
         'subject',
         'body_text',
@@ -228,6 +227,10 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Scope a query to only include active templates.
      */
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
@@ -236,6 +239,10 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Scope a query to only include templates for a specific channel.
      */
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     public function scopeForChannel(Builder $query, string $channel): Builder
     {
         return $query->whereJsonContains('channels', $channel);
@@ -243,6 +250,10 @@ class NotificationTemplate extends BaseModel implements HasMedia
 
     /**
      * Scope a query to only include templates for a specific category.
+     */
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
      */
     public function scopeForCategory(Builder $query, string $category): Builder
     {
@@ -295,6 +306,9 @@ class NotificationTemplate extends BaseModel implements HasMedia
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPreviewData(): array
     {
         return $this->preview_data ?? [];

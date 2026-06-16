@@ -8,6 +8,9 @@ use Filament\Infolists\Components\TextEntry;
 
 class SocialiteUserInfolist
 {
+    /**
+     * @return array<string, TextEntry>
+     */
     public static function getInfolistSchema(): array
     {
         return [

@@ -7,6 +7,9 @@ namespace Modules\User\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\SocialiteUser;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\User\Models\SocialiteUser>
+ */
 class SocialiteUserFactory extends Factory
 {
     /**

@@ -4,49 +4,40 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Widgets\Auth;
 
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\Field;
-use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\User\Filament\Widgets\Auth\Schemas\UserForm;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
  * LoginWidget: widget login con form Filament e "vestito" demandato al template tema.
- * - Estende XotBaseWidget
- * - Usa solo componenti Filament importati
- * - Validazione e sicurezza integrate
- * - Facilmente estendibile (2FA, captcha, login social).
  *
- * VIETATO: ->label(), ->placeholder(), ->helperText(). Le traduzioni sono gestite
- * automaticamente da LangServiceProvider tramite i file in Modules/User/lang/.
- * Vedi .cursor/rules/no-filament-labels.mdc
- * Traduzioni: LangServiceProvider risolve automaticamente da user::login_widget
- * (lang/it/login_widget.php). MAI usare ->label(), ->placeholder(), ->helperText().
+ * Religione Schema!=Widget: schema da `UserForm::getLoginFormSchema()` (SSoT).
+ * Submit: `$this->form->getState()` — no `validateForm()`.
+ * il widget resta "thin": solo orchestrazione submit + Auth::attempt.
+ *
+ * MAI: ->label(), ->placeholder(), ->helperText() — traduzioni automatiche
+ * da LangServiceProvider tramite `user::login_widget` (lang/it/login_widget.php).
+ *
+ * @property Schema $form
  */
-class LoginWidget extends XotBaseWidget
+class LoginWidget extends XotBaseSchemaWidget
 {
     /**
-     * @return array<string, Field>
+     * @return class-string<UserForm>
      */
-    #[\Override]
-    public function getFormSchema(): array
+    protected static function formClass(): string
     {
-        return [
-            'email' => TextInput::make('email')
-                ->email()
-                ->required()
-                ->autofocus(),
-            'password' => TextInput::make('password')
-                ->password()
-                ->revealable()
-                ->required(),
-            'remember' => Checkbox::make('remember'),
-        ];
+        return UserForm::class;
+    }
+
+    protected static function schemaMethod(): string
+    {
+        return 'getLoginFormSchema';
     }
 
     public function login(): void
     {
-        // try {
         /** @var array<string, mixed> $data */
         $data = $this->form->getState();
 
@@ -59,23 +50,17 @@ class LoginWidget extends XotBaseWidget
 
         if (Auth::attempt($credentials, $remember)) {
             session()->regenerate();
-            redirect()->intended('/');
+            $redirectUrl = \Illuminate\Support\Facades\Route::has('dashboard')
+                ? route('dashboard')
+                : url('/'.app()->getLocale());
+            $this->redirect($redirectUrl);
         }
 
         $this->addError('data.email', __('user::login.actions.login.error'));
-        // } catch (ValidationException $e) {
-        // dddx([
-        //    'credentials' => $credentials,
-        //    'remember' => $remember,
-        //    'e' => $e,
-        // ]);
-        // La validazione Filament gestisce automaticamente gli errori
-        // throw $e;
-        // }
     }
 
     /**
-     * Invocato dal form della view (wire:submit.prevent="save"); delega a login().
+     * Compat: il template tema usa `wire:submit.prevent="save"`.
      */
     public function save(): void
     {

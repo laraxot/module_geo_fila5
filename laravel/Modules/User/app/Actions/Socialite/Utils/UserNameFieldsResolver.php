@@ -111,8 +111,12 @@ final readonly class UserNameFieldsResolver
         return $emailPart->after('.')->trim()->title();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getRawUserData(User $idpUser): array
     {
+        /** @var array<string, mixed> $raw */
         $raw = [];
         try {
             $reflection = new \ReflectionClass($idpUser);
@@ -121,14 +125,18 @@ final readonly class UserNameFieldsResolver
                 $method->setAccessible(true);
                 $rawValue = $method->invoke($idpUser);
                 if (is_array($rawValue)) {
-                    $raw = $rawValue;
+                    foreach ($rawValue as $key => $value) {
+                        $raw[(string) $key] = $value;
+                    }
                 }
             } elseif ($reflection->hasProperty('user')) {
                 $property = $reflection->getProperty('user');
                 $property->setAccessible(true);
                 $userData = $property->getValue($idpUser);
                 if (is_array($userData)) {
-                    $raw = $userData;
+                    foreach ($userData as $key => $value) {
+                        $raw[(string) $key] = $value;
+                    }
                 }
             }
         } catch (\ReflectionException $e) {

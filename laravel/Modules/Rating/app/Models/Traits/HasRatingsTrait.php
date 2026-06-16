@@ -127,6 +127,7 @@ trait HasRatingsTrait
      * Get ratings filtered by extra_attributes.
      *
      * @param array<string, mixed> $filters
+     * @param array<string, mixed> $filters
      *
      * @return Collection<int, Rating>
      */

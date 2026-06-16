@@ -1,40 +1,17 @@
-<?php
+<div>
+    <form wire:submit="save">
+        {{ $this->form }}
 
-declare(strict_types=1);
-
-?>
-@php
-    $form = $getForm();
-@endphp
-
-<div class="space-y-6">
-    <div class="text-center">
-        <h2 class="text-2xl font-bold tracking-tight">
-            {{ __('user::auth.register.title.text') }}
-        </h2>
-        <p class="mt-2 text-sm text-gray-600">
-            {{ __('user::auth.register.subtitle.text') }}
-        </p>
-    </div>
-
-    <form wire:submit="register" class="space-y-6">
-        {{ $form }}
-
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mt-4">
             <div class="text-sm">
                 <a href="{{ route('login') }}" class="font-medium text-primary-600 hover:text-primary-500">
-                    {{ __('user::auth.register.already_have_account.text') }}
+                    {{ __('user::auth.register.login.text') }}
                 </a>
             </div>
-        </div>
 
-        <div>
-            <x-filament::button
-                type="submit"
-                class="w-full"
-            >
+            <button type="submit" class="inline-flex items-center px-4 py-2 bg-primary-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-700 focus:bg-primary-700 active:bg-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150">
                 {{ __('user::auth.register.submit.text') }}
-            </x-filament::button>
+            </button>
         </div>
     </form>
 </div>

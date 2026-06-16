@@ -6,9 +6,9 @@ tags: [redundancy, notify, filament, templates]
 created: "2026-05-26"
 updated: "2026-05-26"
 related:
-  - ../../../redundancy-audit.md
+  - ../../../redundancy-audit-2026-05-21.md
   - ../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md
-  - ../../../../Xot/docs/wiki/redundancy-audit.md
+  - ../../../../Xot/docs/wiki/redundancy-audit-2026-05-26.md
 ---
 
 # Ridondanza — Notify
@@ -48,9 +48,9 @@ Nove file `*.php.up` — backup pre-migrazione Filament 3/5, **duplicano** class
 
 ## Audit precedente
 
-- [redundancy-audit.md](../../../redundancy-audit.md) — fragment email case, config annidate.
+- [redundancy-audit-2026-05-21.md](../../../redundancy-audit-2026-05-21.md) — fragment email case, config annidate.
 
 ## Collegamenti
 
 - [Filosofia trasversale](../../../../Xot/docs/wiki/concepts/code-redundancy-philosophy.md)
-- [Audit 2026-05-26](../../../../Xot/docs/wiki/redundancy-audit.md)
+- [Audit 2026-05-26](../../../../Xot/docs/wiki/redundancy-audit-2026-05-26.md)

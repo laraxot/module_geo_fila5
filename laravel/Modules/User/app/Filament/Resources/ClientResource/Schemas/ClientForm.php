@@ -57,6 +57,9 @@ class ClientForm extends XotBaseResourceForm
         return false;
     }
 
+    /**
+     * @return array<int, never>
+     */
     protected static function getResourceFormComponents(): array
     {
         return [];

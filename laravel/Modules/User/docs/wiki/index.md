@@ -1,6 +1,32 @@
+---
+title: "User Module Wiki Index"
+type: index
+module: User
+tags: [user, wiki, index, auth, socialite, permissions]
+created: 2026-04-15
+updated: 2026-06-05
+qmd: "user module wiki index auth socialite permissions filament forms"
+issues:
+  - "https://github.com/laraxot/base_fixcity_fila5/issues/272"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+  - ../../../../docs/wiki/bmad/architecture.md
+  - ../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md
+  - ./concepts/second-brain-local-discipline.md
+---
+
 # User Module LLM Wiki
 
 Indice operativo del wiki User.
+
+## AI / second brain (root)
+
+- [ai-harness-user-discipline](./concepts/ai-harness-user-discipline.md)
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md) — tips 001–022
+- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md) — pilastri schema/doc
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — stub → canon Xot
 
 ## Struttura canonica (sacred)
 
@@ -17,6 +43,7 @@ Indice operativo del wiki User.
 
 - [forbidden-folders-rule](../../../../docs/wiki/concepts/forbidden-folders.md): Vincoli strutturali strict.
 - [llm-wiki-standard](../../../../docs/project/karpathy-llm-wiki-adoption.md): Mapping repository e ciclo di vita conoscenza.
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md): Mappa tips 001-022.
 - [laravel-socialite](../../../../docs/wiki/concepts/laravel-socialite.md): OAuth social authentication.
 - [laravel-permission](../../../../docs/wiki/concepts/laravel-permission.md): RBAC Spatie Laravel Permission.
 
@@ -29,6 +56,9 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 | Pagina | Tipo | Argomento | Data |
 |--------|------|-----------|------|
 | [socialite-development](./concepts/socialite-development.md) | Concept | Socialite multi-provider | 2026-04-21 |
+| [filament-widget-resource-form-delegation](./concepts/filament-widget-resource-form-delegation.md) | Concept | RegisterWidget → UserForm (DRY) | 2026-06-04 |
+| [filament-widget-no-validate-form](./concepts/filament-widget-no-validate-form.md) | Concept | Submit: getState(), no validateForm | 2026-06-04 |
+| [filament-widget-linear-crud-model-create](./concepts/filament-widget-linear-crud-model-create.md) | Concept | `getUserClass()::create($data)`, no Action | 2026-06-04 |
 | [filament-langserviceprovider-governance](./concepts/filament-langserviceprovider-governance.md) | Concept | LangServiceProvider | 2026-04-21 |
 | [login-page-design-comuni](./concepts/login-page-design-comuni.md) | Concept | Login Design Comuni | 2026-04-21 |
 | [profile-migration-uid-contract](./concepts/profile-migration-uid-contract.md) | Concept | Profile UID | 2026-04-21 |
@@ -49,7 +79,7 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 | [socialite-github-tenant](./concepts/socialite-github-tenant.md) | Concept | OAuth GitHub | 2026-04-27 |
 | [socialite-facebook-tenant](./concepts/socialite-facebook-tenant.md) | Concept | OAuth Facebook | 2026-04-27 |
 | [socialite-linkedin-tenant](./concepts/socialite-linkedin-tenant.md) | Concept | OAuth LinkedIn | 2026-04-27 |
-| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types.md) | Troubleshooting | Widget property types PHPStan | 2026-05-06 |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Widget property types PHPStan | 2026-05-06 |
 | [xotbase-table-columns-enforcement](./concepts/xotbase-table-columns-enforcement.md) | Concept | 24 Table files populated — XotBaseResourceTable enforcement | 2026-05-07 |
 
 ## Best Practices
@@ -76,6 +106,6 @@ Gestione utenti, profili, ruoli, permessi e autenticazione social (Socialite).
 |--------|------|-----------|
 | [socialite-development](./concepts/socialite-development.md) | Concept | Socialite troubleshooting |
 | [spatie-permission-team-model-not-configured](./troubleshooting/spatie-permission-team-model-not-configured.md) | Troubleshooting | Team model mancante in config permission |
-| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
+| [phpstan-widget-property-types-2026-05-06](./troubleshooting/phpstan-widget-property-types-2026-05-06.md) | Troubleshooting | Tipizzazione widget Livewire/Filament |
 
 Aggiornato: 2026-05-06

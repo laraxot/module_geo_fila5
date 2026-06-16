@@ -49,6 +49,9 @@ class EventServiceProvider extends XotBaseEventServiceProvider
         ],
     ];
 
+    /**
+     * @var array<int, class-string>
+     */
     protected $subscribe = [
         // Aggiungi qui i subscriber specifici del modulo
     ];

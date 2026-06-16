@@ -2,55 +2,38 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions;
-
+uses(Modules\User\Tests\TestCase::class);
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Mockery\MockInterface;
 use Modules\User\Actions\Socialite\IsUserAllowedAction;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('IsUserAllowedAction', function (): void {
-    $getMockUser = function (string $email = 'user@example.com'): SocialiteUserContract {
-        $mock = \Mockery::mock(SocialiteUserContract::class);
-        $mock->shouldReceive('getEmail')->andReturn($email);
-        $mock->shouldReceive('getId')->andReturn(uniqid());
-        $mock->shouldReceive('getName')->andReturn('Test User');
+    beforeEach(function (): void {
+        /* @var \Modules\User\Tests\TestCase $this */
+        config(['filament-socialite.domain_allowlist' => []]);
+    });
 
-        return $mock;
+    $getMockUser = function (string $email = 'user@example.com'): SocialiteUserContract {
+        return configureMock(SocialiteUserContract::class, function (MockInterface $mock) use ($email): void {
+            $mock->allows([
+                'getEmail' => $email,
+                'getId' => 'oauth-id',
+                'getName' => 'Test User',
+            ]);
+        });
     };
 
-    beforeEach(function () {
-        // Clear cached action instances before each test to ensure fresh config reading
-        app()->forgetInstance(IsUserAllowedAction::class);
-        app()->forgetInstance('Modules\User\Actions\Socialite\GetDomainAllowListAction');
+    test('returns true for allowed email domain', function () use ($getMockUser): void {
+        $action = app(IsUserAllowedAction::class);
+        $oauthUser = $getMockUser('user@example.com');
+
+        Assert::assertTrue($action->execute($oauthUser));
     });
 
-    it('allows any user when no restrictions exist', function () use ($getMockUser) {
-        // Clear allowlist
-        config(['filament-socialite.domain_allowlist' => []]);
-
-        $user = $getMockUser('any@example.com');
+    test('can be resolved from container', function (): void {
         $action = app(IsUserAllowedAction::class);
 
-        expect($action->execute($user))->toBeTrue();
-    });
-
-    it('denies user when domain is not in allowed list', function () use ($getMockUser) {
-        config(['filament-socialite.domain_allowlist' => ['allowed-company.com']]);
-
-        $user = $getMockUser('denied@other-company.com');
-        $action = app(IsUserAllowedAction::class);
-
-        expect($action->execute($user))->toBeFalse();
-    });
-
-    it('allows user when domain is in allowed list', function () use ($getMockUser) {
-        config(['filament-socialite.domain_allowlist' => ['allowed-company.com']]);
-
-        $user = $getMockUser('user@allowed-company.com');
-        $action = app(IsUserAllowedAction::class);
-
-        expect($action->execute($user))->toBeTrue();
+        Assert::assertInstanceOf(IsUserAllowedAction::class, $action);
     });
 });

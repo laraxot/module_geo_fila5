@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Widgets;
 
 use Illuminate\Support\Facades\Auth;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
-class UserDropdown extends XotBaseWidget
+class UserDropdown extends XotBaseSchemaWidget
 {
     /**
      * The view for this widget.

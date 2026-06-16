@@ -134,6 +134,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     use HasSpatiePermission;
     use HasTeams;
     use HasUuids;
+    /** @phpstan-use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
     use HasXotFactory;
     use InteractsWithMedia;
     use Notifiable;
@@ -259,8 +260,25 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     public function profile(): HasOne
     {
         $profileClass = XotData::make()->getProfileClass();
+        if (class_exists($profileClass)) {
+            /** @var HasOne<Model&ProfileContract, $this> $relation */
+            $relation = $this->hasOne($profileClass);
 
-        return $this->hasOne($profileClass);
+            return $relation;
+        }
+
+        $directClass = 'Modules\User\Models\Profile';
+        if (class_exists($directClass)) {
+            /** @var HasOne<Model&ProfileContract, $this> $relation */
+            $relation = $this->hasOne($directClass);
+
+            return $relation;
+        }
+
+        /** @var HasOne<Model&ProfileContract, $this> $relation */
+        $relation = $this->hasOne(static::class, 'id', 'id')->whereRaw('1=0');
+
+        return $relation;
     }
 
     /**
@@ -319,6 +337,12 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
         return (string) ($this->name ?? $this->email);
     }
 
+    /**
+     * @return Collection<int, Team>
+     */
+    /**
+     * @return Collection<int, Team>
+     */
     public function treeSons(): Collection
     {
         return $this->teams ?? new Collection();
@@ -327,7 +351,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     /**
      * Get the devices associated with the user.
      *
-     * @return BelongsToMany<Device, $this>
+     * @return BelongsToMany<Device, $this, Pivot, 'pivot'>
      */
     public function devices(): BelongsToMany
     {

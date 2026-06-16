@@ -82,8 +82,5 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkOctaneCompatibility: false
     checkModelProperties: false
-    bootstrapFiles:
-        - ./phpstan_constants.php
-        - ../../vendor/autoload.php
     bootstrapped: false
 

@@ -2,29 +2,29 @@
 type: concept
 module: User
 confidence: high
-updated: 2026-04-20
+updated: 2026-06-05
 ---
 
 # Profile Migration UUID Contract
 
-## Regola
+## Regola (runtime User)
 
-La tabella `profiles` deve rispettare il contratto Laraxot:
+`BaseProfile` genera `uuid` in `creating`. Il contratto richiede colonna `uuid` nella tabella `profiles` del DB usato dal modello concreto.
 
-- `id`: chiave primaria interna database
-- `uuid`: identificatore esterno/pubblico
+## Owner schema in Fixcity (questo progetto)
 
-Se il modello `Profile` salva o cerca `uuid`, la migrazione canonica della tabella
-deve dichiarare e backfillare la colonna tramite `tableUpdate()`.
+Per connessione `fixcity`, **owner migrazione = modulo Fixcity** (non User):
 
-## One Table = One Migration
+- `laravel/Modules/Fixcity/database/migrations/2026_06_10_123000_create_profiles_table.php`
 
-Per `profiles` esiste una sola migrazione autorevole:
+Le migrazioni `create_profiles_table` in User/Blog sono state archiviate in `_bak/*.merged` per rispettare 1 modello = 1 migrazione owner.
 
-- `laravel/Modules/User/database/migrations/*_create_profiles_table.php`
+Vedi [profiles-ownership-boundary-rule](./profiles-ownership-boundary-rule.md) e [Fixcity profiles-uuid-contract](../../../Fixcity/docs/wiki/concepts/profiles-uuid-contract.md).
 
-La manutenzione schema non si fa con nuove migrazioni `add_*` o `fix_*`.
-Si modifica la migrazione canonica, poi si aggiorna il timestamp del file per far rieseguire l'`up()` idempotente.
+## One table = one migration
+
+- niente `add_*` / `repair_*` su `profiles`
+- evoluzione: edit file owner Fixcity + **bump timestamp** nel nome file
 
 ## Fix 2026-04-20
 
@@ -57,5 +57,6 @@ La prima domanda corretta e':
 ## Riferimenti
 
 - `laravel/Modules/User/app/Models/BaseProfile.php`
-- `laravel/Modules/User/database/migrations/2026_04_28_120000_create_profiles_table.php`
+- `laravel/Modules/Fixcity/database/migrations/2026_06_10_123000_create_profiles_table.php`
+- [architecture-one-migration-per-model](../../../../../docs/wiki/bmad/architecture-one-migration-per-model.md)
 - `laravel/Modules/Xot/docs/database/migration-base-rules.md`

@@ -1,8 +1,7 @@
-https://github.com/nowendwell/laravel-terms
-https://github.com/nowendwell/laravel-terms
+---
+module: theme
+topic: terms-and-conditions-1
+canonical: ../../../Themes/docs/shared-components/terms_and_conditions.txt
+---
 
-
-
-https://dev.to/filamentmastery/adding-terms-and-conditions-acceptance-to-filament-registration-2nhc
-
-
+See canonical documentation: ../../../Themes/docs/shared-components/terms_and_conditions.txt

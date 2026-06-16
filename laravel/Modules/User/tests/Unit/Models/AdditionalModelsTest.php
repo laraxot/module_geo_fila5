@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Models;
-
-uses(TestCase::class);
-
+uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Models\Authentication;
 use Modules\User\Models\AuthenticationLog;
 use Modules\User\Models\Device;
@@ -27,109 +24,109 @@ use Modules\User\Models\SocialProvider;
 use Modules\User\Models\SsoProvider;
 use Modules\User\Models\TeamInvitation;
 use Modules\User\Models\TeamPermission;
-use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
 test('Notification model can be instantiated', function () {
     $model = new Notification();
-    expect($model)->toBeInstanceOf(Notification::class);
+    Assert::assertInstanceOf(Notification::class, $model);
 });
 
 test('OauthAccessToken model can be instantiated', function () {
     $model = new OauthAccessToken();
-    expect($model)->toBeInstanceOf(OauthAccessToken::class);
+    Assert::assertInstanceOf(OauthAccessToken::class, $model);
 });
 
 test('OauthClient model can be instantiated', function () {
     $model = new OauthClient();
-    expect($model)->toBeInstanceOf(OauthClient::class);
+    Assert::assertInstanceOf(OauthClient::class, $model);
 });
 
 test('OauthAuthCode model can be instantiated', function () {
     $model = new OauthAuthCode();
-    expect($model)->toBeInstanceOf(OauthAuthCode::class);
+    Assert::assertInstanceOf(OauthAuthCode::class, $model);
 });
 
 test('OauthRefreshToken model can be instantiated', function () {
     $model = new OauthRefreshToken();
-    expect($model)->toBeInstanceOf(OauthRefreshToken::class);
+    Assert::assertInstanceOf(OauthRefreshToken::class, $model);
 });
 
 test('OauthPersonalAccessClient model can be instantiated', function () {
     $model = new OauthPersonalAccessClient();
-    expect($model)->toBeInstanceOf(OauthPersonalAccessClient::class);
+    Assert::assertInstanceOf(OauthPersonalAccessClient::class, $model);
 });
 
 test('OauthToken model can be instantiated', function () {
     $model = new OauthToken();
-    expect($model)->toBeInstanceOf(OauthToken::class);
+    Assert::assertInstanceOf(OauthToken::class, $model);
 });
 
 test('OauthDeviceCode model can be instantiated', function () {
     $model = new OauthDeviceCode();
-    expect($model)->toBeInstanceOf(OauthDeviceCode::class);
+    Assert::assertInstanceOf(OauthDeviceCode::class, $model);
 });
 
 test('TeamPermission model can be instantiated', function () {
     $model = new TeamPermission();
-    expect($model)->toBeInstanceOf(TeamPermission::class);
+    Assert::assertInstanceOf(TeamPermission::class, $model);
 });
 
 test('TeamInvitation model can be instantiated', function () {
     $model = new TeamInvitation();
-    expect($model)->toBeInstanceOf(TeamInvitation::class);
+    Assert::assertInstanceOf(TeamInvitation::class, $model);
 });
 
 test('AuthenticationLog model can be instantiated', function () {
     $model = new AuthenticationLog();
-    expect($model)->toBeInstanceOf(AuthenticationLog::class);
+    Assert::assertInstanceOf(AuthenticationLog::class, $model);
 });
 
 test('Authentication model can be instantiated', function () {
     $model = new Authentication();
-    expect($model)->toBeInstanceOf(Authentication::class);
+    Assert::assertInstanceOf(Authentication::class, $model);
 });
 
 test('SocialiteUser model can be instantiated', function () {
     $model = new SocialiteUser();
-    expect($model)->toBeInstanceOf(SocialiteUser::class);
+    Assert::assertInstanceOf(SocialiteUser::class, $model);
 });
 
 test('SocialProvider model can be instantiated', function () {
     $model = new SocialProvider();
-    expect($model)->toBeInstanceOf(SocialProvider::class);
+    Assert::assertInstanceOf(SocialProvider::class, $model);
 });
 
 test('SsoProvider model can be instantiated', function () {
     $model = new SsoProvider();
-    expect($model)->toBeInstanceOf(SsoProvider::class);
+    Assert::assertInstanceOf(SsoProvider::class, $model);
 });
 
 test('Feature model can be instantiated', function () {
     $model = new Feature();
-    expect($model)->toBeInstanceOf(Feature::class);
+    Assert::assertInstanceOf(Feature::class, $model);
 });
 
 test('Extra model can be instantiated', function () {
     $model = new Extra();
-    expect($model)->toBeInstanceOf(Extra::class);
+    Assert::assertInstanceOf(Extra::class, $model);
 });
 
 test('Device model can be instantiated', function () {
     $model = new Device();
-    expect($model)->toBeInstanceOf(Device::class);
+    Assert::assertInstanceOf(Device::class, $model);
 });
 
 test('DeviceProfile model can be instantiated', function () {
     $model = new DeviceProfile();
-    expect($model)->toBeInstanceOf(DeviceProfile::class);
+    Assert::assertInstanceOf(DeviceProfile::class, $model);
 });
 
 test('DeviceUser model can be instantiated', function () {
     $model = new DeviceUser();
-    expect($model)->toBeInstanceOf(DeviceUser::class);
+    Assert::assertInstanceOf(DeviceUser::class, $model);
 });
 
 test('PasswordReset model can be instantiated', function () {
     $model = new PasswordReset();
-    expect($model)->toBeInstanceOf(PasswordReset::class);
+    Assert::assertInstanceOf(PasswordReset::class, $model);
 });

@@ -179,7 +179,7 @@ Durante l'audit delle traduzioni, sono state identificate numerose traduzioni ch
 ## Documentazione Aggiornata
 
 ### Moduli con Documentazione Aggiornata
-1. **Lang Module**: `laravel/Modules/Lang/docs/translation-errors-correction-archive-1.md`
+1. **Lang Module**: `laravel/Modules/Lang/docs/translation_errors_correction_2025.md`
 2. **<nome progetto> Module**: `laravel/Modules/<nome progetto>/docs/translation_refactor_summary_2025.md`
 
 ### Collegamenti Bidirezionali
@@ -431,7 +431,7 @@ Durante l'audit delle traduzioni, sono state identificate numerose traduzioni ch
 ## Documentazione Aggiornata
 
 ### Moduli con Documentazione Aggiornata
-1. **Lang Module**: `laravel/Modules/Lang/docs/translation-errors-correction-archive-1.md`
+1. **Lang Module**: `laravel/Modules/Lang/docs/translation_errors_correction_2025.md`
 2. **<nome progetto> Module**: `laravel/Modules/<nome progetto>/docs/translation_refactor_summary_2025.md`
 
 ### Collegamenti Bidirezionali

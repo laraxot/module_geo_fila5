@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit;
-
-uses(TestCase::class);
-
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Notifications\GenericNotification;
 use Modules\Notify\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(\Modules\Notify\Tests\TestCase::class);
 
 // Basic unit tests focusing on business logic of recipient name resolution
 
@@ -28,7 +28,7 @@ describe('GenericNotification getRecipientName', function (): void {
         $method = $ref->getMethod('getRecipientName');
         $method->setAccessible(true);
 
-        expect($method->invoke($notification, $notifiable))->toBe('John Doe');
+        Assert::assertSame('John Doe', $method->invoke($notification, $notifiable));
     });
 
     it('uses Eloquent model full_name when present and non-empty', function (): void {
@@ -45,7 +45,7 @@ describe('GenericNotification getRecipientName', function (): void {
         $method = $ref->getMethod('getRecipientName');
         $method->setAccessible(true);
 
-        expect($method->invoke($notification, $model))->toBe('Jane Roe');
+        Assert::assertSame('Jane Roe', $method->invoke($notification, $model));
     });
 
     it('falls back to first_name then name then default', function (): void {
@@ -71,8 +71,8 @@ describe('GenericNotification getRecipientName', function (): void {
         $method = $ref->getMethod('getRecipientName');
         $method->setAccessible(true);
 
-        expect($method->invoke($notification, $model1))->toBe('Alice');
-        expect($method->invoke($notification, $model2))->toBe('Bob');
-        expect($method->invoke($notification, $model3))->toBe('Utente');
+        Assert::assertSame('Alice', $method->invoke($notification, $model1));
+        Assert::assertSame('Bob', $method->invoke($notification, $model2));
+        Assert::assertSame('Utente', $method->invoke($notification, $model3));
     });
 });

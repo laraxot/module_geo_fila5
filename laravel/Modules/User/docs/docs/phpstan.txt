@@ -1,2 +1,7 @@
-https://staabm.github.io/2024/01/15/phpstan-require-extends-implements.html
+---
+module: theme
+topic: phpstan
+canonical: ../../../../Themes/docs/shared-components/phpstan.txt
+---
 
+See canonical documentation: ../../../../Themes/docs/shared-components/phpstan.txt

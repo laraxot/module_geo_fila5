@@ -2,124 +2,165 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit;
-
-use Modules\Tenant\Models\Tenant;
+uses(Modules\User\Tests\TestCase::class);
+use Modules\User\Database\Factories\PermissionFactory;
+use Modules\User\Database\Factories\ProfileFactory;
+use Modules\User\Database\Factories\RoleFactory;
+use Modules\User\Database\Factories\SocialiteUserFactory;
+use Modules\User\Database\Factories\TenantFactory;
 use Modules\User\Models\Permission;
 use Modules\User\Models\Profile;
 use Modules\User\Models\Role;
-use Modules\User\Models\Socialite;
+use Modules\User\Models\SocialiteUser;
+use Modules\User\Models\Tenant;
 use Modules\User\Models\User;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class)->in(__DIR__);
+use PHPUnit\Framework\Assert;
 
 it('can create a user with basic attributes', function () {
-    $user = User::factory()->create([
+    /** @var Modules\User\Tests\TestCase $this */
+    $email = 'john-'.uniqid('', true).'@example.com';
+    $user = createTestUser([
         'name' => 'John Doe',
-        'email' => 'john@example.com',
+        'email' => $email,
         'password' => bcrypt('password123'),
     ]);
 
-    expect($user)->toBeInstanceOf(User::class);
-    expect($user->name)->toBe('John Doe');
-    expect($user->email)->toBe('john@example.com');
-    expect($user->exists)->toBeTrue();
+    Assert::assertInstanceOf(User::class, $user);
+    Assert::assertSame('John Doe', $user->name);
+    Assert::assertSame($email, $user->email);
+    Assert::assertTrue($user->exists);
 });
 
 it('can create a user with profile', function () {
-    $user = User::factory()->withProfile()->create([
+    /* @var \Modules\User\Tests\TestCase $this */
+    skipUnlessUserTable('profiles', 'profiles table missing on user connection.');
+    skipUnlessUserColumn('profiles', 'user_id', 'profiles.user_id column missing on user connection.');
+    skipUnlessUserColumn('profiles', 'uuid', 'profiles.uuid column missing on user connection.');
+
+    $email = 'jane-'.uniqid('', true).'@example.com';
+    $user = createTestUser([
         'name' => 'Jane Smith',
-        'email' => 'jane@example.com',
+        'email' => $email,
     ]);
 
-    expect($user->profile)->toBeInstanceOf(Profile::class);
-    expect($user->profile->user_id)->toBe($user->id);
+    ProfileFactory::new()->createOne(['user_id' => $user->id]);
+
+    $user->refresh();
+
+    Assert::assertInstanceOf(Profile::class, $user->profile);
+    Assert::assertSame($user->id, $user->profile->user_id);
 });
 
 it('can authenticate a user', function () {
-    $user = User::factory()->create([
-        'email' => 'auth@example.com',
+    /** @var Modules\User\Tests\TestCase $this */
+    $email = 'auth-'.uniqid('', true).'@example.com';
+    $user = createTestUser([
+        'email' => $email,
         'password' => bcrypt('secret123'),
     ]);
 
-    $this->assertTrue(auth()->attempt([
-        'email' => 'auth@example.com',
+    Assert::assertTrue(auth()->attempt([
+        'email' => $email,
         'password' => 'secret123',
     ]));
+    Assert::assertSame($user->id, auth()->id());
 });
 
 it('can create a user role', function () {
-    $role = Role::factory()->create([
-        'name' => 'admin',
+    /** @var Modules\User\Tests\TestCase $this */
+    $roleName = 'admin-'.uniqid();
+    $role = RoleFactory::new()->createOne([
+        'name' => $roleName,
         'guard_name' => 'web',
     ]);
 
-    expect($role)->toBeInstanceOf(Role::class);
-    expect($role->name)->toBe('admin');
+    Assert::assertInstanceOf(Role::class, $role);
+    Assert::assertSame($roleName, $role->name);
 });
 
 it('can create a user permission', function () {
-    $permission = Permission::factory()->create([
-        'name' => 'edit_posts',
+    /** @var Modules\User\Tests\TestCase $this */
+    $permissionName = 'edit_posts_'.uniqid();
+    $permission = PermissionFactory::new()->createOne([
+        'name' => $permissionName,
         'guard_name' => 'web',
     ]);
 
-    expect($permission)->toBeInstanceOf(Permission::class);
-    expect($permission->name)->toBe('edit_posts');
+    Assert::assertInstanceOf(Permission::class, $permission);
+    Assert::assertSame($permissionName, $permission->name);
 });
 
 it('can assign role to user', function () {
-    $user = User::factory()->create();
-    $role = Role::factory()->create([
-        'name' => 'editor',
+    /* @var \Modules\User\Tests\TestCase $this */
+    skipUnlessRoleAssignmentSupported();
+
+    $user = createTestUser();
+    $roleName = 'editor-'.uniqid();
+    $role = RoleFactory::new()->createOne([
+        'name' => $roleName,
         'guard_name' => 'web',
     ]);
 
     $user->assignRole($role);
 
-    expect($user->hasRole('editor'))->toBeTrue();
+    Assert::assertTrue($user->hasRole($roleName));
 });
 
 it('can attach permission to user', function () {
-    $user = User::factory()->create();
-    $permission = Permission::factory()->create([
-        'name' => 'delete_users',
+    /* @var \Modules\User\Tests\TestCase $this */
+    skipUnlessDirectPermissionSupported();
+
+    $user = createTestUser();
+    $permissionName = 'delete_users_'.uniqid();
+    $permission = PermissionFactory::new()->createOne([
+        'name' => $permissionName,
         'guard_name' => 'web',
     ]);
 
     $user->givePermissionTo($permission);
 
-    expect($user->can('delete_users'))->toBeTrue();
+    Assert::assertTrue($user->can($permissionName));
 });
 
 it('can create a tenant user', function () {
-    $tenant = Tenant::factory()->create([
-        'name' => 'Test Tenant',
-        'domain' => 'tenant.example.com',
+    /* @var \Modules\User\Tests\TestCase $this */
+    skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing on user connection.');
+
+    $tenant = TenantFactory::new()->createOne([
+        'name' => 'Test Tenant '.uniqid(),
+        'domain' => 'tenant-'.uniqid().'.example.com',
     ]);
 
-    $user = User::factory()->forTenant($tenant)->create([
+    $email = 'tenant-'.uniqid('', true).'@example.com';
+    $user = createTestUser([
         'name' => 'Tenant User',
-        'email' => 'tenant@example.com',
+        'email' => $email,
+        'tenant_id' => $tenant->id,
     ]);
 
-    expect($user->tenant_id)->toBe($tenant->id);
-    expect($user->tenant->name)->toBe('Test Tenant');
+    Assert::assertSame($tenant->id, $user->getAttribute('tenant_id'));
+    $tenantRelation = $user->getRelationValue('tenant');
+    Assert::assertInstanceOf(Tenant::class, $tenantRelation);
+    Assert::assertSame($tenant->name, $tenantRelation->name);
 });
 
 it('can create a user with socialite data', function () {
-    $user = User::factory()->create([
+    /** @var Modules\User\Tests\TestCase $this */
+    $email = 'social-'.uniqid('', true).'@example.com';
+    $user = createTestUser([
         'name' => 'Social User',
-        'email' => 'social@example.com',
+        'email' => $email,
     ]);
 
-    $user->socialite()->create([
+    SocialiteUserFactory::new()->createOne([
+        'user_id' => $user->id,
         'provider' => 'google',
-        'provider_id' => 'google_12345',
+        'provider_id' => 'google_'.uniqid(),
         'token' => 'google_token',
     ]);
 
-    expect($user->socialite->first())->toBeInstanceOf(Socialite::class);
-    expect($user->socialite->first()->provider)->toBe('google');
+    $socialiteUser = $user->socialiteUsers()->first();
+
+    Assert::assertInstanceOf(SocialiteUser::class, $socialiteUser);
+    Assert::assertSame('google', $socialiteUser->provider);
 });

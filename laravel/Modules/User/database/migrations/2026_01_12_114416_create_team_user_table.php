@@ -28,8 +28,6 @@ return new class extends XotBaseMigration {
 
             // Indice univoco per evitare duplicati team_id + user_id
             $table->unique(['team_id', 'user_id']);
-            $table->softDeletes();
-            $table->timestamps();
         });
 
         // -- UPDATE --

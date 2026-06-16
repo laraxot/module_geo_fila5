@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Scope;
 
 /**
  * Scope che limita le query ai record associati al tenant corrente.
+ *
+ * @implements Scope<Model>
  */
 class TenantScope implements Scope
 {

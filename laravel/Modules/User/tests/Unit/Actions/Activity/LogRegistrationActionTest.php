@@ -2,53 +2,58 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions\Activity;
-
+use Illuminate\Support\Facades\DB;
 use Modules\User\Actions\Activity\LogRegistrationAction;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
-use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Assert;
 
-class LogRegistrationActionTest extends TestCase
-{
-    #[Test]
-    public function itLogsRegistrationWithDefaultProperties(): void
-    {
-        $user = new User(['type' => 'standard']);
-        $user->forceFill(['id' => 1]);
+uses(TestCase::class);
 
-        $action = new LogRegistrationAction();
-        $action->execute($user);
-
-        $this->assertTrue(true);
+beforeEach(function (): void {
+    /** @var TestCase $this */
+    if (! $this->userTableExists('activity_log')) {
+        $this->skipTest('activity_log table missing on sqlite test database.');
     }
+});
 
-    #[Test]
-    public function itLogsRegistrationWithCustomProperties(): void
-    {
-        $user = new User(['type' => 'premium']);
-        $user->forceFill(['id' => 2]);
+test('it logs registration with default properties', function (): void {
+    $user = new User(['type' => 'customer_user']);
+    $user->forceFill(['id' => 1]);
 
-        $action = new LogRegistrationAction();
-        $action->execute($user, ['referral' => 'newsletter', 'source' => 'landing']);
+    $before = DB::connection('user')->table('activity_log')->count();
 
-        $this->assertTrue(true);
-    }
+    $action = new LogRegistrationAction();
+    $action->execute($user);
 
-    #[Test]
-    public function itLogsRegistrationWithDifferentUserTypes(): void
-    {
-        $standardUser = new User(['type' => 'standard']);
-        $standardUser->forceFill(['id' => 3]);
+    Assert::assertSame($before + 1, DB::connection('user')->table('activity_log')->count());
+});
 
-        $adminUser = new User(['type' => 'admin']);
-        $adminUser->forceFill(['id' => 4]);
+test('it logs registration with custom properties', function (): void {
+    $user = new User(['type' => 'premium']);
+    $user->forceFill(['id' => 2]);
 
-        $action = new LogRegistrationAction();
+    $action = new LogRegistrationAction();
+    $action->execute($user, ['referral' => 'newsletter', 'source' => 'landing']);
 
-        $action->execute($standardUser);
-        $action->execute($adminUser);
+    $row = DB::connection('user')->table('activity_log')->orderByDesc('id')->first();
+    Assert::assertNotNull($row);
+    Assert::assertStringContainsString((string) 'newsletter', (string) (string) $row->properties);
+});
 
-        $this->assertTrue(true);
-    }
-}
+test('it logs registration with different user types', function (): void {
+    $customerUser = new User(['type' => 'customer_user']);
+    $customerUser->forceFill(['id' => 3]);
+
+    $adminUser = new User(['type' => 'admin']);
+    $adminUser->forceFill(['id' => 4]);
+
+    $action = new LogRegistrationAction();
+
+    $before = DB::connection('user')->table('activity_log')->count();
+
+    $action->execute($customerUser);
+    $action->execute($adminUser);
+
+    Assert::assertSame($before + 2, DB::connection('user')->table('activity_log')->count());
+});

@@ -1,6 +1,7 @@
-https://github.com/Althinect/filament-spatie-roles-permissions
-https://github.com/ryangjchandler/filament-profile
+---
+module: theme
+topic: filament
+canonical: ../../../../Themes/docs/shared-components/filament.txt
+---
 
-https://github.com/andrewdwallo/filament-companies
-
-
+See canonical documentation: ../../../../Themes/docs/shared-components/filament.txt

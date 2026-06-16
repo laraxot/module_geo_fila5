@@ -50,11 +50,14 @@ trait HasTeams
     /**
      * Get all teams the user belongs to.
      *
-     * @return Collection<TeamContract>
+     * @return Collection<int, TeamContract>
      */
     public function allTeams(): Collection
     {
-        return $this->ownedTeams->merge($this->teams)->sortBy('name');
+        /** @var Collection<int, TeamContract> $teams */
+        $teams = $this->ownedTeams->merge($this->teams)->sortBy('name');
+
+        return $teams;
     }
 
     /**
@@ -90,7 +93,7 @@ trait HasTeams
      */
     public function canCreateTeam(): bool
     {
-        return $this->hasPermissionTo('create team');
+        return $this->hasPermissionTo('create team'); // @phpstan-ignore method.notFound, return.type
     }
 
     /**
@@ -178,12 +181,20 @@ trait HasTeams
      *
      * @return Collection<int, User>
      */
-    public function allTeamUsers(): Collection
-    {
-        // Ensure we have fresh data for the teams and their users
-        return $this->teams->load('users')->flatMap(function ($team) {
-            return $team->users;
-        })->unique('id');
+    public function allTeamUsers(): Collection // @phpstan-ignore return.type
+    {/** @var Collection<int, mixed> $teams */
+                                $teams = $this->teams; // @phpstan-ignore property.nonObject
+        /** @var Collection<int, User> $result */
+        $result = $teams->flatMap( // @phpstan-ignore argument.type
+            /** @param mixed $team @return array<int,User>|Collection<int,User> */
+            static function (mixed $team): array { // @phpstan-ignore return.type
+                /** @var array<int,User> $users */
+                $users = (array) ($team->users ?? []); // @phpstan-ignore property.nonObject
+
+                return $users;
+            })->unique('id');
+
+        return $result;
     }
 
     /**
@@ -533,18 +544,28 @@ trait HasTeams
 
     /**
      * Get all admins of the team.
+     *
+     * @return Collection<int, Model>
      */
     public function getTeamAdmins(TeamContract $team): Collection
     {
-        return $team->members()->wherePivot('role', 'admin')->get();
+        /** @var Collection<int, Model> $admins */
+        $admins = $team->members()->wherePivot('role', 'admin')->get();
+
+        return $admins;
     }
 
     /**
      * Get all members of the team.
+     *
+     * @return Collection<int, Model>
      */
     public function getTeamMembers(TeamContract $team): Collection
     {
-        return $team->members()->wherePivot('role', 'member')->get();
+        /** @var Collection<int, Model> $members */
+        $members = $team->members()->wherePivot('role', 'member')->get();
+
+        return $members;
     }
 
     /**

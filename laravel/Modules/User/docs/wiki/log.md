@@ -1,12 +1,22 @@
+- 2026-06-10: notifications-folio-page + notifications-folio-route — `route('notifications')`, vietato `area-personale.notifiche`
+## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
+
+- Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), [llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt)
+- GitHub: [#272](https://github.com/laraxot/base_fixcity_fila5/issues/272) / [D#273](https://github.com/laraxot/base_fixcity_fila5/discussions/273)
+
 # User Wiki Log
 
-## [2026-06-15] phpstan | Comment boundary e generic Eloquent
+## [2026-06-05] arch | profiles schema — owner Fixcity, non User
+- migrazioni `create_profiles_table` User archiviate in `database/migrations/_bak/*.merged`
+- concept aggiornato: `concepts/profile-migration-uuid-contract.md` punta a migrazione Fixcity
+- riferimento: `docs/wiki/bmad/architecture-one-migration-per-model.md`
 
-- Rimosso `app/Contracts/CanComment.php`: `User` non dipende da `Comment`.
-- `RegisterController` passa a `sendError()` un array associativo.
-- Relazioni tenant/profile/device allineate a generic Eloquent con `$this`.
-- Migration `password_resets`: `created_at` diretto nel create, senza helper update-only.
-- Verifica: `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori.
+## [2026-06-04] bugfix | profiles.uuid su connection fixcity (sqlite locale)
+- errore: `table profiles has no column named uuid` in `XotData::getProfileModelByUserId()` dopo login/registrazione
+- causa: tabella `profiles` legacy su `fixcity_data.sqlite` senza colonna `uuid`, mentre `BaseProfile::booted()` la valorizza in insert
+- ~~fix operativo con `--path`~~ **storico — vietato oggi**; canonico: `php artisan migrate` ([dati sacri](../../../../docs/wiki/rules/data-sacred-no-destructive-db.md))
+- verifica: `getProfileModelByUserId()` crea profilo con `uuid`; schema sqlite include indice `profiles_uuid_index`
+- riferimento: `concepts/profile-migration-uuid-contract.md`
 
 ## [2026-05-21] docs | inventario Markdown legacy redundancy/phpstan-duplicati
 
@@ -16,7 +26,7 @@
 - risolti errori PHPStan mirati su `PassportDashboard`, `EditUserWidget` e `RegistrationWidget`.
 - regola documentata: proprieta' Livewire tipizzate, `class-string` validati prima dell'assegnazione, nessun default stringa vuota per `class-string`.
 - evitato override locale di `$view` nei widget quando `XotBaseWidget::resolveView()` puo' calcolare la vista.
-- nuova pagina troubleshooting: `troubleshooting/phpstan-widget-property-types.md`.
+- nuova pagina troubleshooting: `troubleshooting/phpstan-widget-property-types-2026-05-06.md`.
 
 ## [2026-04-28] fix | spatie permission team model config missing su route admin
 - errore runtime gestito: `Spatie\Permission\Exceptions\TeamModelNotConfigured` su `/admin`.
@@ -40,7 +50,7 @@
 - fix applicato: rimosso `after()` dal create; `after()` resta nel `tableUpdate()`
   idempotente (ALTER path).
 - verifica:
-  `php artisan migrate --path=Modules/User/database/migrations/2026_04_28_120000_create_profiles_table.php --realpath --force`
+  ~~`migrate ... --force`~~ — **vietato**; owner `profiles` ora Fixcity; usare `php artisan migrate` senza `--force` ([dati sacri](../../../../docs/wiki/rules/data-sacred-no-destructive-db.md))
   eseguito con esito `DONE`.
 - docs aggiornati: `concepts/profile-migration-uuid-contract.md`.
 
@@ -113,3 +123,15 @@
 - Best practices documentate: type-hint UserContract, permission dot notation, test con permessi reali
 - Enhancements proposti: canAny(), canAll(), scope(), after() hooks
 - Commit: docs: document policy inheritance boundary decision
+
+## 2026-06-10 — session learnings
+
+- Notifiche: runtime User, schema Notify; `NotificationSchema::isReadable()` per guard FO
+- Folio: `name('notifications')`; vietato `area-personale.notifiche`
+- `user:super-admin`: `--email` + ask + fallback WSL (no Laravel Prompts)
+- Profiles: owner Fixcity `2026_06_10_123000_create_profiles_table` — vedi profile-migration-uuid-contract
+
+## 2026-06-10 — Folio owner pattern docs
+
+- INDEX Folio FO con cross-link Cms
+- Catena notifications: Notify schema → User page → Sixteen link

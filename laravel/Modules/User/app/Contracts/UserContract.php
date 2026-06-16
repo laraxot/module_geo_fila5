@@ -6,8 +6,10 @@ namespace Modules\User\Contracts;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Laravel\Passport\PersonalAccessTokenResult;
 use Laravel\Passport\Token;
 use Laravel\Passport\TransientToken;
@@ -25,11 +27,15 @@ interface UserContract extends Authenticatable
 
     /**
      * Get the current team of the user's context.
+     *
+     * @return BelongsTo<Model, Model>
      */
     public function currentTeam(): BelongsTo;
 
     /**
      * Get all of the teams the user belongs to.
+     *
+     * @return BelongsToMany<Model, Model>
      */
     public function teams(): BelongsToMany;
 
@@ -81,26 +87,50 @@ interface UserContract extends Authenticatable
 
     /**
      * Get the user's roles.
+     *
+     * @return BelongsToMany<Model, Model>
      */
     public function roles(): BelongsToMany;
 
     /**
      * Determine if the user has the given role.
+     *
+     * @param string|array<int, string>|Role|\Illuminate\Support\Collection<int, Role> $roles
      */
     public function hasRole(string|array|Role|\Illuminate\Support\Collection $roles, ?string $guard = null): bool;
 
     /**
      * Get the user's authentication logs.
+     *
+     * @return MorphMany<Model, Model>
      */
-    public function authentications(): BelongsToMany;
+    public function authentications(): MorphMany;
+
+    /**
+     * Comments authored by this user as commentator.
+     *
+     * @return MorphMany<Model, Model>
+     */
+    public function commentatorComments(): MorphMany;
+
+    /**
+     * Reactions authored by this user as commentator.
+     *
+     * @return MorphMany<Model, Model>
+     */
+    public function reactions(): MorphMany;
 
     /**
      * Get the user's socialite accounts.
+     *
+     * @return BelongsToMany<Model, Model>
      */
     public function socialiteUsers(): BelongsToMany;
 
     /**
      * Get the user's owned teams.
+     *
+     * @return BelongsToMany<Model, Model>
      */
     public function ownedTeams(): BelongsToMany;
 
@@ -116,6 +146,8 @@ interface UserContract extends Authenticatable
 
     /**
      * Get all of the teams the user owns or belongs to.
+     *
+     * @return Collection<int, Model>
      */
     public function allTeams(): Collection;
 
@@ -133,11 +165,15 @@ interface UserContract extends Authenticatable
      * Create a new personal access token for the user.
      *
      * @param array<int, string> $scopes
+     *
+     * @return PersonalAccessTokenResult<Token>
      */
     public function createToken(string $name, array $scopes = []): PersonalAccessTokenResult;
 
     /**
      * Get the user's tenants.
+     *
+     * @return BelongsToMany<Model, Model>
      */
     public function tenants(): BelongsToMany;
 

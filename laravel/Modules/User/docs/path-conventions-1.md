@@ -1,14 +1,7 @@
-# path_conventions - User
+---
+module: theme
+topic: path-conventions-1
+canonical: ../../../Themes/docs/shared-components/path_conventions.md
+---
 
-## Overview
-
-Documentazione per path_conventions nel modulo User.
-
-## Dettagli
-
-[Da completare]
-
-## Collegamenti
-
-- [Modulo Principale](../README.md)
-
+See canonical documentation: ../../../Themes/docs/shared-components/path_conventions.md

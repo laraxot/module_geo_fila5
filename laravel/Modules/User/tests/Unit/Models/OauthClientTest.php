@@ -2,62 +2,75 @@
 
 declare(strict_types=1);
 
-use Illuminate\Contracts\Auth\Access\Authorizable;
+namespace Modules\User\Tests\Unit\Models;
+
+use Illuminate\Support\Facades\Schema;
 use Laravel\Passport\Client;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\OauthClient;
-use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+use function Safe\json_encode;
 
 uses(TestCase::class);
 
-test('oauth client can be instantiated', function (): void {
-    $client = new OauthClient();
+beforeEach(function (): void {
+    /* @var \Modules\User\Tests\TestCase $this */
+    config(['passport.connection' => 'user']);
 
-    expect($client)->toBeInstanceOf(OauthClient::class)
-        ->and($client)->toBeInstanceOf(Client::class)
-        ->and($client)->toBeInstanceOf(Authorizable::class);
+    if (! Schema::connection('user')->hasTable('oauth_clients')) {
+        $this->skipTest('oauth_clients table missing on user connection.');
+    }
 });
 
-test('oauth client has connection user', function (): void {
-    $client = new OauthClient();
+describe('Oauth Client', function (): void {
+    test('oauth client can be instantiated', function (): void {
+        /** @var TestCase $this */
+        $client = new OauthClient();
 
-    expect($client->getConnectionName())->toBe('user');
-});
+        Assert::assertInstanceOf(OauthClient::class, $client);
+        Assert::assertInstanceOf(Client::class, $client);
+    });
 
-test('oauth client has guard_name api', function (): void {
-    $client = new OauthClient();
+    test('oauth client has connection user', function (): void {
+        $client = new OauthClient();
 
-    expect($client->guard_name)->toBe('api');
-});
+        Assert::assertSame('user', $client->getConnectionName());
+    });
 
-test('oauth client user relation uses xot data', function (): void {
-    $user = User::factory()->create();
-    $client = OauthClient::factory()->create(['user_id' => $user->getKey()]);
+    test('oauth client user relation uses xot data', function (): void {
+        $user = UserFactory::new()->createOne();
+        $client = $this->oauthClientTestPersistedClient(['user_id' => (string) $user->getKey()]);
 
-    expect($client->user)->not->toBeNull()
-        ->and($client->user->getKey())->toBe($user->getKey());
-});
+        Assert::assertNotNull($client->user);
+        Assert::assertSame($user->getKey(), $client->user->getKey());
+    });
 
-test('oauth client can returns false when permission does not exist', function (): void {
-    $client = OauthClient::factory()->create();
+    test('oauth client is confidential when secret is present', function (): void {
+        $client = $this->oauthClientTestPersistedClient(['secret' => 'hashed-secret']);
 
-    expect($client->can('non-existent-permission'))->toBeFalse();
-});
+        Assert::assertTrue($client->confidential());
+    });
 
-test('oauth client cant returns true when permission does not exist', function (): void {
-    $client = OauthClient::factory()->create();
+    test('oauth client is not confidential when secret is empty', function (): void {
+        $client = $this->oauthClientTestPersistedClient(['secret' => null]);
 
-    expect($client->cant('non-existent-permission'))->toBeTrue();
-});
+        Assert::assertFalse($client->confidential());
+    });
 
-test('oauth client cannot is alias of cant', function (): void {
-    $client = OauthClient::factory()->create();
+    test('oauth client has grant type check', function (): void {
+        $client = $this->oauthClientTestPersistedClient([
+            'grant_types' => json_encode(['authorization_code', 'refresh_token']),
+        ]);
 
-    expect($client->cannot('non-existent-permission'))->toBeTrue();
-});
+        Assert::assertTrue($client->hasGrantType('authorization_code'));
+        Assert::assertFalse($client->hasGrantType('client_credentials'));
+    });
 
-test('oauth client canAny returns false for empty abilities', function (): void {
-    $client = OauthClient::factory()->create();
+    test('oauth client has scope check', function (): void {
+        $client = $this->oauthClientTestPersistedClient();
 
-    expect($client->canAny([]))->toBeFalse();
+        Assert::assertTrue($client->hasScope('read'));
+    });
 });

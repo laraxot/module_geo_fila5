@@ -1,15 +1,7 @@
-# Filament Resources - User
+---
+module: theme
+topic: filament_4x_compatibility
+canonical: ../../../../Themes/docs/shared-components/filament_4x_compatibility.md
+---
 
-## Risorse Disponibili
-
-### ListResources
-
-### Create/Edit Pages
-
-## Widget
-
-## Collegamenti
-
-- [Modulo Principale](../README.md)
-- [Xot Filament](../../Xot/docs/filament/)
-
+See canonical documentation: ../../../../Themes/docs/shared-components/filament_4x_compatibility.md

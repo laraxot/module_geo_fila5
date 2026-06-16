@@ -38,8 +38,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder|Feature whereUpdatedBy($value)
  * @method static Builder|Feature whereValue($value)
  *
- * @mixin IdeHelperFeature
- *
  * @property ProfileContract|null $deleter
  *
  * @method static \Modules\User\Database\Factories\FeatureFactory factory($count = null, $state = [])

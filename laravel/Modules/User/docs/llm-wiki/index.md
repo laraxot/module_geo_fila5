@@ -8,7 +8,7 @@
 
 ## Concepts
 
-_No concept pages created yet_
+- [filament-widget-no-validate-form](concepts/filament-widget-no-validate-form.md) — alias → ADR submit/getState (no `validateForm`)
 
 ## Entities
 
@@ -34,8 +34,8 @@ _No troubleshooting pages created yet_
 
 ## Statistics
 
-- **Total Pages**: 0
-- **Last Ingestion**: None yet
+- **Total Pages**: 1
+- **Last Ingestion**: 2026-06-04
 - **Last Lint**: None yet
 
 ## Project Wiki Cross-References

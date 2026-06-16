@@ -49,9 +49,6 @@ use Modules\Xot\Datas\XotData;
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
- * @mixin IdeHelperTeamInvitation
- *
  * @property ProfileContract|null $deleter
  * @property Carbon|null          $accepted_at
  * @property Carbon|null          $declined_at
@@ -78,9 +75,7 @@ class TeamInvitation extends BaseModel
     ];
 
     /**
-     * Get the team that the invitation belongs to.
-     *  BelongsTo<the related model, the current model>
-     * -return BelongsTo<TeamContract, TeamInvitation> No TeamContract ..
+     * @return BelongsTo<Model, $this>
      */
     public function team(): BelongsTo
     {

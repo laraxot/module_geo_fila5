@@ -18,6 +18,7 @@ use Modules\Xot\Filament\Pages\XotBasePage;
  */
 class Logo extends XotBasePage
 {
+    /** @var array<string, mixed>|null */
     public ?array $logoData = [];
 
     protected string $view = 'user::filament.clusters.appearance.pages.logo';
@@ -77,6 +78,9 @@ class Logo extends XotBasePage
         $this->form->fill($data);
     }
 
+    /**
+     * @return array<Action>
+     */
     protected function getUpdateLogoFormActions(): array
     {
         return [

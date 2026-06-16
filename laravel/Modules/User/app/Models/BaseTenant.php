@@ -65,7 +65,7 @@ abstract class BaseTenant extends BaseModel implements HasAvatar, HasMedia, Tena
     /**
      * Ottiene tutti i membri associati al tenant.
      *
-     * @return BelongsToMany<Model, $this>
+     * @return BelongsToMany<Model, $this, \Illuminate\Database\Eloquent\Relations\Pivot, 'pivot'>
      */
     public function members(): BelongsToMany
     {
@@ -78,7 +78,7 @@ abstract class BaseTenant extends BaseModel implements HasAvatar, HasMedia, Tena
     /**
      * Ottiene tutti gli utenti associati al tenant.
      *
-     * @return BelongsToMany<Model, $this>
+     * @return BelongsToMany<Model, $this, \Illuminate\Database\Eloquent\Relations\Pivot, 'pivot'>
      */
     public function users(): BelongsToMany
     {

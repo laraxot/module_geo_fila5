@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Widgets\Auth;
 
 use Filament\Schemas\Components\Component;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
  * SocialLoginWidget: Widget riutilizzabile per pulsanti login OAuth (Google, Microsoft).
@@ -14,11 +14,11 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  * Usabile in login, register e altre pagine auth.
  *
  * Regole Laraxot:
- * - Estende XotBaseWidget
+ * - Estende XotBaseSchemaWidget
  * - Traduzioni da user::auth.social
  * - Route: socialite.oauth.redirect
  */
-class SocialLoginWidget extends XotBaseWidget
+class SocialLoginWidget extends XotBaseSchemaWidget
 {
     protected string $view = 'user::filament.widgets.auth.social-login';
 
@@ -27,12 +27,14 @@ class SocialLoginWidget extends XotBaseWidget
      *
      * @return array<string, Component>
      */
-    #[\Override]
     public function getFormSchema(): array
     {
         return [];
     }
 
+    /**
+     * @return list<array{driver: string, label: string, icon: string, color: string}>
+     */
     public function getProviders(): array
     {
         $providers = [];

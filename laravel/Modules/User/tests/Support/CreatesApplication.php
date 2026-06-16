@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Xot\Tests;
+namespace Modules\User\Tests\Support;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;

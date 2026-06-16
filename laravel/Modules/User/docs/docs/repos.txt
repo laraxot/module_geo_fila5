@@ -1,1 +1,7 @@
-https://github.com/solutionforest/filament-access-management
+---
+module: theme
+topic: repos
+canonical: ../../../../Themes/docs/shared-components/repos.txt
+---
+
+See canonical documentation: ../../../../Themes/docs/shared-components/repos.txt

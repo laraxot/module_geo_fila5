@@ -15,16 +15,16 @@ use Modules\User\Models\OauthToken;
  *
  * @property Collection<int, OauthAuthCode> $authCodes
  * @property int|null                       $auth_codes_count
- * @property array                          $grant_types
+ * @property list<string>                   $grant_types
  * @property User                           $owner
  * @property string|null                    $plain_secret
- * @property array                          $redirect_uris
+ * @property list<string>                   $redirect_uris
  * @property string|null                    $secret
  * @property Collection<int, OauthToken>    $tokens
  * @property int|null                       $tokens_count
  * @property \Modules\User\Models\User|null $user
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Client existsIn(array $haystack)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client existsIn(array<int, mixed> $haystack)
  * @method static \Laravel\Passport\Database\Factories\ClientFactory   factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newQuery()

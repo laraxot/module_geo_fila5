@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Widgets\Auth;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -14,70 +12,39 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\User\Filament\Widgets\Auth\Schemas\UserForm;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
- * Reset password widget for user password reset functionality.
+ * ResetPasswordWidget — token + nuova password (click sul link email).
  *
- * Handles password reset functionality with token validation,
- * proper security measures, and user feedback. Follows Laraxot
- * architectural patterns and security best practices.
+ * Schema da `Schemas\UserForm::getResetPasswordFormSchema()` — SSoT.
  *
- * @property Schema $form Form container from XotBaseWidget
+ * @property Schema $form
  */
-class ResetPasswordWidget extends XotBaseWidget
+class ResetPasswordWidget extends XotBaseSchemaWidget
 {
-    /**
-     * The view for this widget.
-     */
     protected string $view = 'user::widgets.auth.reset-password-widget';
 
     /**
-     * Get the form schema for password reset.
-     *
-     * Uses string keys for Filament form compatibility and follows
-     * the pattern established in widget documentation.
-     *
-     * @return array<string, Component>
+     * @return class-string<UserForm>
      */
-    public function getFormSchema(): array
+    protected static function formClass(): string
     {
-        return [
-            'email' => TextInput::make('email')
-                ->email()
-                ->required()
-                ->autocomplete('email'),
-            'password' => TextInput::make('password')
-                ->password()
-                ->required()
-                ->minLength(8)
-                ->same('password_confirmation')
-                ->autocomplete('new-password'),
-            'password_confirmation' => TextInput::make('password_confirmation')
-                ->password()
-                ->required()
-                ->autocomplete('new-password'),
-        ];
+        return UserForm::class;
     }
 
-    /**
-     * Mount the widget and initialize the form.
-     */
+    protected static function schemaMethod(): string
+    {
+        return 'getResetPasswordFormSchema';
+    }
+
     public function mount(): void
     {
         $this->form->fill();
     }
 
     /**
-     * Configure the form for this widget.
-     */
-
-    /**
-     * Handle password reset with proper security and error handling.
-     *
-     * Implements Laravel's password reset functionality with explicit
-     * type casting for security and proper error feedback.
-     *
      * @return RedirectResponse|void
      */
     public function resetPassword()

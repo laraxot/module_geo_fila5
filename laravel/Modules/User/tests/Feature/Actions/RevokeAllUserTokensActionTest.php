@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Feature\Actions;
-
+uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\User\Actions\Passport\RevokeAllUserTokensAction;
-use Modules\User\Models\User;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use Modules\User\Database\Factories\UserFactory;
+use PHPUnit\Framework\Assert;
 
 describe('RevokeAllUserTokensAction', function (): void {
     test('revokes all user tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -56,19 +53,18 @@ describe('RevokeAllUserTokensAction', function (): void {
             ],
         ]);
 
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count())->toBe(2);
-
+        Assert::assertSame(2, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count());
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe(2);
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count())->toBe(0);
+        Assert::assertSame(2, $revoked);
+        Assert::assertSame(0, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count());
     });
 
     test('handles user with no tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe(0);
+        Assert::assertSame(0, $revoked);
     });
 });

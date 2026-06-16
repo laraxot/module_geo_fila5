@@ -9,35 +9,38 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Notifiable;
 use Modules\User\Models\BaseUser;
 use Modules\User\Tests\TestCase;
+use Modules\User\Tests\Unit\Models\Fixtures\TestBaseUser;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-beforeEach(function () {
-    $this->baseUser = new class extends BaseUser {
-        protected $table = 'test_users';
-    };
-});
+describe('Base User', function (): void {
+    test('base user extends eloquent model', function (): void {
+        $baseUser = new TestBaseUser();
+        Assert::assertInstanceOf(Model::class, $baseUser);
+    });
 
-test('base user extends eloquent model', function () {
-    expect($this->baseUser)->toBeInstanceOf(Model::class);
-});
+    test('base user has correct table name', function (): void {
+        $baseUser = new TestBaseUser();
+        Assert::assertSame('test_users', $baseUser->getTable());
+    });
 
-test('base user has correct table name', function () {
-    expect($this->baseUser->getTable())->toBe('test_users');
-});
+    test('base user can be instantiated', function (): void {
+        $baseUser = new TestBaseUser();
+        Assert::assertInstanceOf(BaseUser::class, $baseUser);
+    });
 
-test('base user can be instantiated', function () {
-    expect($this->baseUser)->toBeInstanceOf(BaseUser::class);
-});
+    test('base user has proper inheritance chain', function (): void {
+        $baseUser = new TestBaseUser();
+        Assert::assertInstanceOf(BaseUser::class, $baseUser);
+        Assert::assertInstanceOf(Model::class, $baseUser);
+    });
 
-test('base user has proper inheritance chain', function () {
-    expect($this->baseUser)->toBeInstanceOf(BaseUser::class);
-    expect($this->baseUser)->toBeInstanceOf(Model::class);
-});
+    test('base user has authentication traits', function (): void {
+        $baseUser = new TestBaseUser();
+        Assert::assertInstanceOf(User::class, $baseUser);
+        $traits = \class_uses_recursive($baseUser);
 
-test('base user has authentication traits', function () {
-    $traits = class_uses($this->baseUser);
-
-    expect($traits)->toContain(User::class);
-    expect($traits)->toContain(Notifiable::class);
+        Assert::assertContains(Notifiable::class, $traits);
+    });
 });

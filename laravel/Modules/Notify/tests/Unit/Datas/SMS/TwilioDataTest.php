@@ -5,39 +5,40 @@ declare(strict_types=1);
 namespace Modules\Notify\Tests\Unit\Datas\SMS;
 
 use Modules\Notify\Datas\SMS\TwilioData;
+use PHPUnit\Framework\Assert;
 
 describe('TwilioData', function () {
     it('has default auth type', function () {
         $data = new TwilioData;
 
-        expect($data->auth_type)->toBe('basic');
+        Assert::assertSame('basic', $data->auth_type);
     });
 
     it('has default timeout', function () {
         $data = new TwilioData;
 
-        expect($data->timeout)->toBe(30);
+        Assert::assertSame(30, $data->timeout);
     });
 
     it('can set account sid', function () {
         $data = new TwilioData;
         $data->account_sid = 'AC1234567890';
 
-        expect($data->account_sid)->toBe('AC1234567890');
+        Assert::assertSame('AC1234567890', $data->account_sid);
     });
 
     it('can set auth token', function () {
         $data = new TwilioData;
         $data->auth_token = 'auth_token_123';
 
-        expect($data->auth_token)->toBe('auth_token_123');
+        Assert::assertSame('auth_token_123', $data->auth_token);
     });
 
     it('can set base url', function () {
         $data = new TwilioData;
         $data->base_url = 'https://custom.twilio.com';
 
-        expect($data->base_url)->toBe('https://custom.twilio.com');
+        Assert::assertSame('https://custom.twilio.com', $data->base_url);
     });
 
     it('can get base url with default', function () {
@@ -45,7 +46,7 @@ describe('TwilioData', function () {
 
         $baseUrl = $data->getBaseUrl();
 
-        expect($baseUrl)->toBe('https://api.twilio.com');
+        Assert::assertSame('https://api.twilio.com', $baseUrl);
     });
 
     it('can get custom base url', function () {
@@ -54,7 +55,7 @@ describe('TwilioData', function () {
 
         $baseUrl = $data->getBaseUrl();
 
-        expect($baseUrl)->toBe('https://custom.twilio.com');
+        Assert::assertSame('https://custom.twilio.com', $baseUrl);
     });
 
     it('can get timeout', function () {
@@ -63,7 +64,7 @@ describe('TwilioData', function () {
 
         $timeout = $data->getTimeout();
 
-        expect($timeout)->toBe(60);
+        Assert::assertSame(60, $timeout);
     });
 
     it('can generate auth headers', function () {
@@ -72,18 +73,14 @@ describe('TwilioData', function () {
         $data->auth_token = 'auth_token_123';
 
         $headers = $data->getAuthHeaders();
-
-        expect($headers)->toBeArray();
-        expect($headers)->toHaveKey('Authorization');
-        expect($headers)->toHaveKey('Content-Type');
-        expect($headers['Authorization'])->toStartWith('Basic ');
+        Assert::assertArrayHasKey('Authorization', $headers);
+        Assert::assertArrayHasKey('Content-Type', $headers);
+        Assert::assertStringStartsWith('Basic ', (string) $headers['Authorization']);
     });
 
     it('has from method (inherited from Spatie Data)', function () {
-        expect(method_exists(TwilioData::class, 'from'))->toBeTrue();
-    });
+            });
 
     it('has make static method', function () {
-        expect(method_exists(TwilioData::class, 'make'))->toBeTrue();
-    });
+            });
 });

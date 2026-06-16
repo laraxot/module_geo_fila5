@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 
 /**
  * LoginWidget: Widget di login conforme alle regole Windsurf/Xot.
@@ -23,20 +23,8 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  *
  * @property array<string, mixed>|null $data
  */
-class LoginWidget extends XotBaseWidget
+class LoginWidget extends XotBaseSchemaWidget
 {
-    public function __construct()
-    {
-        /** @var view-string $view */
-        $view = 'pub_theme::filament.widgets.auth.login';
-        $this->view = $view;
-
-        parent::__construct();
-    }
-
-    /**
-     * Inizializza il widget quando viene montato.
-     */
     public function mount(): void
     {
         $this->form->fill();
@@ -47,7 +35,6 @@ class LoginWidget extends XotBaseWidget
      *
      * @return array<int, Component>
      */
-    #[\Override]
     public function getFormSchema(): array
     {
         return [
@@ -68,7 +55,6 @@ class LoginWidget extends XotBaseWidget
      *
      * @return array<string, mixed>
      */
-    #[\Override]
     public function getFormFill(): array
     {
         return [
@@ -80,7 +66,6 @@ class LoginWidget extends XotBaseWidget
     /**
      * Handle login form submission.
      */
-    #[\Override]
     public function save(): void
     {
         try {
@@ -142,7 +127,6 @@ class LoginWidget extends XotBaseWidget
     /**
      * Get the form model.
      */
-    #[\Override]
     protected function getFormModel(): ?Model
     {
         return null;

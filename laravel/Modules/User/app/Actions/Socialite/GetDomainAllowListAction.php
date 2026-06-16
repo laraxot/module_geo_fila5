@@ -22,6 +22,8 @@ class GetDomainAllowListAction
 
     /**
      * Execute the action.
+     *
+     * @return array<int, string>
      */
     public function execute(): array
     {
@@ -31,7 +33,7 @@ class GetDomainAllowListAction
         }
 
         if (\is_array($res)) {
-            return $res;
+            return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
         }
 
         throw new \Exception('check config filament-socialite.domain_allowlist');

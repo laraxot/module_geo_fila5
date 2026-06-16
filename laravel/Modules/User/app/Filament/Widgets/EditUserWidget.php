@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportRedirects\Redirector;
 use Modules\Xot\Datas\XotData;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
 use Webmozart\Assert\Assert;
 
 /**
@@ -29,7 +29,7 @@ use Webmozart\Assert\Assert;
  * @property string $action
  * @property Model  $record
  */
-class EditUserWidget extends XotBaseWidget
+class EditUserWidget extends XotBaseSchemaWidget
 {
     public string $type = '';
 
@@ -46,8 +46,9 @@ class EditUserWidget extends XotBaseWidget
     /**
      * Initialize the widget with user type and optional user ID.
      */
-    public function mount(string $type, ?string $userId = null): void
+    public function mount(string $type = '', ?string $userId = null): void
     {
+        parent::mount();
         $this->type = $type;
         $resourceClass = XotData::make()->getUserResourceClassByType($type);
         Assert::classExists($resourceClass);

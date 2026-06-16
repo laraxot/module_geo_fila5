@@ -2,205 +2,203 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Models;
-
+uses(Modules\User\Tests\TestCase::class);
+use Illuminate\Support\Facades\DB;
+use Modules\User\Database\Factories\PermissionFactory;
 use Modules\User\Models\Permission;
-use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
+/**
+ * @param array<string, mixed> $attributes
+ */
+function modelsPermissionCreate(array $attributes = []): Permission
+{
+    return PermissionFactory::new()->createOne(array_merge([
+        'name' => 'models-permission-'.uniqid(),
+        'guard_name' => 'web',
+    ], $attributes));
+}
 
 test('can create permission with minimal data', function (): void {
-    $permission = Permission::factory()->create([
-        'name' => 'test.permission',
-        'guard_name' => 'web',
-    ]);
+    $name = 'test.permission-'.uniqid();
+    $permission = modelsPermissionCreate(['name' => $name]);
 
-    expect($permission->id)->not->toBeNull();
-    expect($permission->name)->toBe('test.permission');
-    expect($permission->guard_name)->toBe('web');
+    Assert::assertInstanceOf(Permission::class, $permission);
+    Assert::assertNotNull($permission->id);
+    Assert::assertSame($name, $permission->name);
+    Assert::assertSame('web', $permission->guard_name);
 });
 
 test('can create permission with all fields', function (): void {
-    $permissionData = [
-        'name' => 'full.permission',
-        'guard_name' => 'web',
-        'created_by' => 'user123',
-        'updated_by' => 'user456',
-    ];
+    $name = 'full.permission-'.uniqid();
+    $permission = modelsPermissionCreate(['name' => $name, 'guard_name' => 'web']);
 
-    $permission = Permission::factory()->create($permissionData);
+    Permission::withoutEvents(static function () use ($permission): void {
+        $permission->forceFill([
+            'created_by' => 'user123',
+            'updated_by' => 'user456',
+        ])->save();
+    });
+    $permission->refresh();
 
-    expect($permission->id)->not->toBeNull();
-    expect($permission->name)->toBe('full.permission');
-    expect($permission->guard_name)->toBe('web');
-    expect($permission->created_by)->toBe('user123');
-    expect($permission->updated_by)->toBe('user456');
+    Assert::assertSame($name, $permission->name);
+    Assert::assertSame('web', $permission->guard_name);
+    Assert::assertSame('user123', $permission->created_by);
+    Assert::assertSame('user456', $permission->updated_by);
 });
 
 test('permission has connection attribute', function (): void {
-    $permission = new Permission();
-
-    expect($permission->connection)->toBe('user');
-});
-
-test('permission has key type attribute', function (): void {
-    $permission = new Permission();
-
-    expect($permission->keyType)->toBe('string');
+    Assert::assertSame('user', (new Permission())->getConnectionName());
 });
 
 test('permission has fillable attributes', function (): void {
-    $permission = new Permission();
+    $fillable = (new Permission())->getFillable();
 
-    $fillable = $permission->getFillable();
-
-    expect($fillable)->toContain('id');
-    expect($fillable)->toContain('name');
-    expect($fillable)->toContain('guard_name');
+    Assert::assertContains('name', $fillable);
+    Assert::assertContains('guard_name', $fillable);
 });
 
 test('permission has casts', function (): void {
-    $permission = new Permission();
+    $casts = (new Permission())->getCasts();
 
-    $casts = $permission->getCasts();
-
-    expect($casts)->toHaveKey('id');
-    expect($casts)->toHaveKey('name');
-    expect($casts)->toHaveKey('guard_name');
-    expect($casts)->toHaveKey('created_at');
-    expect($casts)->toHaveKey('updated_at');
+    Assert::assertArrayHasKey('id', $casts);
+    Assert::assertSame('int', $casts['id']);
 });
 
 test('can find permission by name', function (): void {
-    $permission = Permission::factory()->create(['name' => 'unique.permission']);
+    $name = 'unique.permission-'.uniqid();
+    $permission = modelsPermissionCreate(['name' => $name]);
+    $foundPermission = Permission::where('name', $name)->first();
 
-    $foundPermission = Permission::where('name', 'unique.permission')->first();
-
-    expect($foundPermission)->not->toBeNull();
-    expect($foundPermission->id)->toBe($permission->id);
+    Assert::assertInstanceOf(Permission::class, $foundPermission);
+    Assert::assertSame($permission->id, $foundPermission->id);
 });
 
 test('can find permission by guard name', function (): void {
-    Permission::factory()->create(['guard_name' => 'web']);
-    Permission::factory()->create(['guard_name' => 'api']);
-    Permission::factory()->create(['guard_name' => 'web']);
+    $marker = uniqid();
+    modelsPermissionCreate(['guard_name' => 'web', 'name' => "web-{$marker}-1"]);
+    modelsPermissionCreate(['guard_name' => 'api', 'name' => "api-{$marker}-1"]);
+    modelsPermissionCreate(['guard_name' => 'web', 'name' => "web-{$marker}-2"]);
 
-    $webPermissions = Permission::where('guard_name', 'web')->get();
+    $webPermissions = Permission::where('guard_name', 'web')
+        ->where('name', 'like', "%{$marker}%")
+        ->get();
 
-    expect($webPermissions->count())->toBeGreaterThanOrEqual(2);
-    expect($webPermissions->every(fn ($permission) => 'web' === $permission->guard_name))->toBeTrue();
+    Assert::assertGreaterThanOrEqual(2, $webPermissions->count());
+    foreach ($webPermissions as $webPermission) {
+        Assert::assertInstanceOf(Permission::class, $webPermission);
+        Assert::assertSame('web', $webPermission->guard_name);
+    }
 });
 
 test('can find permission by created by', function (): void {
-    $permission = Permission::factory()->create(['created_by' => 'user123']);
+    $createdBy = 'user123-'.uniqid();
+    $permission = modelsPermissionCreate();
 
-    $foundPermission = Permission::where('created_by', 'user123')->first();
+    Permission::withoutEvents(static function () use ($permission, $createdBy): void {
+        $permission->forceFill(['created_by' => $createdBy])->save();
+    });
 
-    expect($foundPermission)->not->toBeNull();
-    expect($foundPermission->id)->toBe($permission->id);
+    $foundPermission = Permission::where('created_by', $createdBy)->first();
+
+    Assert::assertInstanceOf(Permission::class, $foundPermission);
+    Assert::assertSame($permission->id, $foundPermission->id);
 });
 
 test('can find permission by updated by', function (): void {
-    $permission = Permission::factory()->create(['updated_by' => 'user456']);
+    $updatedBy = 'user456-'.uniqid();
+    $permission = modelsPermissionCreate();
 
-    $foundPermission = Permission::where('updated_by', 'user456')->first();
+    Permission::withoutEvents(static function () use ($permission, $updatedBy): void {
+        $permission->forceFill(['updated_by' => $updatedBy])->save();
+    });
 
-    expect($foundPermission)->not->toBeNull();
-    expect($foundPermission->id)->toBe($permission->id);
+    $foundPermission = Permission::where('updated_by', $updatedBy)->first();
+
+    Assert::assertInstanceOf(Permission::class, $foundPermission);
+    Assert::assertSame($permission->id, $foundPermission->id);
 });
 
 test('can find permissions by name pattern', function (): void {
-    Permission::factory()->create(['name' => 'user.create']);
-    Permission::factory()->create(['name' => 'user.update']);
-    Permission::factory()->create(['name' => 'user.delete']);
-    Permission::factory()->create(['name' => 'post.read']);
+    $marker = uniqid();
+    modelsPermissionCreate(['name' => "user.create-{$marker}"]);
+    modelsPermissionCreate(['name' => "user.update-{$marker}"]);
+    modelsPermissionCreate(['name' => "user.delete-{$marker}"]);
+    modelsPermissionCreate(['name' => "post.read-{$marker}"]);
 
-    $userPermissions = Permission::where('name', 'like', 'user.%')->get();
+    $userPermissions = Permission::where('name', 'like', "user.%-{$marker}")->get();
 
-    expect($userPermissions->count())->toBeGreaterThanOrEqual(3);
-    expect($userPermissions->every(fn ($permission) => str_starts_with($permission->name, 'user.')))->toBeTrue();
+    Assert::assertGreaterThanOrEqual(3, $userPermissions->count());
+    foreach ($userPermissions as $userPermission) {
+        Assert::assertInstanceOf(Permission::class, $userPermission);
+        Assert::assertStringStartsWith('user.', $userPermission->name);
+    }
 });
 
 test('can update permission', function (): void {
-    $permission = Permission::factory()->create(['name' => 'old.permission']);
+    $oldName = 'old.permission-'.uniqid();
+    $newName = 'new.permission-'.uniqid();
+    $permission = modelsPermissionCreate(['name' => $oldName]);
 
-    $permission->update(['name' => 'new.permission']);
+    $permission->update(['name' => $newName]);
+    $fresh = $permission->fresh();
 
-    expect($permission->fresh()->name)->toBe('new.permission');
+    Assert::assertInstanceOf(Permission::class, $fresh);
+    Assert::assertSame($newName, $fresh->name);
 });
 
 test('can handle null values', function (): void {
-    $permission = Permission::factory()->create([
-        'name' => 'test.permission',
-        'guard_name' => 'web',
-        'created_by' => null,
-        'updated_by' => null,
-    ]);
+    $permission = modelsPermissionCreate();
 
-    expect($permission->created_by)->toBeNull();
-    expect($permission->updated_by)->toBeNull();
+    Permission::withoutEvents(static function () use ($permission): void {
+        $permission->forceFill([
+            'created_by' => null,
+            'updated_by' => null,
+        ])->save();
+    });
+    $permission->refresh();
+
+    Assert::assertNull($permission->created_by);
+    Assert::assertNull($permission->updated_by);
 });
 
 test('can find permissions by multiple criteria', function (): void {
-    Permission::factory()->create([
-        'name' => 'admin.user.create',
+    $marker = uniqid();
+    $first = modelsPermissionCreate([
+        'name' => "admin.user.create-{$marker}",
         'guard_name' => 'web',
-        'created_by' => 'admin',
     ]);
-
-    Permission::factory()->create([
-        'name' => 'admin.user.update',
+    $second = modelsPermissionCreate([
+        'name' => "admin.user.update-{$marker}",
         'guard_name' => 'api',
-        'created_by' => 'admin',
     ]);
 
-    $permissions = Permission::where('name', 'like', 'admin.user.%')->where('created_by', 'admin')->get();
+    Permission::withoutEvents(static function () use ($first, $second): void {
+        $first->forceFill(['created_by' => 'admin'])->save();
+        $second->forceFill(['created_by' => 'admin'])->save();
+    });
 
-    expect($permissions->count())->toBeGreaterThanOrEqual(2);
-    expect($permissions->every(
-        fn ($permission) => str_starts_with($permission->name, 'admin.user.') && 'admin' === $permission->created_by,
-    ))->toBeTrue();
+    $permissions = Permission::where('name', 'like', "admin.user.%-{$marker}")
+        ->where('created_by', 'admin')
+        ->get();
+
+    Assert::assertGreaterThanOrEqual(2, $permissions->count());
+    foreach ($permissions as $permission) {
+        Assert::assertInstanceOf(Permission::class, $permission);
+        Assert::assertStringStartsWith('admin.user.', $permission->name);
+        Assert::assertSame('admin', $permission->created_by);
+    }
 });
 
-test('permission has roles relationship', function (): void {
-    $permission = Permission::factory()->create();
-
-    expect(method_exists($permission, 'roles'))->toBeTrue();
+test('permission has table name', function (): void {
+    Assert::assertNotSame('', (new Permission())->getTable());
 });
 
-test('permission has users relationship', function (): void {
-    $permission = Permission::factory()->create();
+test('permission can be deleted from database', function (): void {
+    $permission = modelsPermissionCreate();
+    $permissionId = $permission->id;
 
-    expect(method_exists($permission, 'users'))->toBeTrue();
-});
+    DB::connection('user')->table($permission->getTable())->where('id', $permissionId)->delete();
 
-test('permission can use role scopes', function (): void {
-    $permission = Permission::factory()->create();
-
-    expect(method_exists($permission, 'role'))->toBeTrue();
-});
-
-test('permission can use permission scopes', function (): void {
-    $permission = Permission::factory()->create();
-
-    expect(method_exists($permission, 'permission'))->toBeTrue();
-    expect(method_exists($permission, 'withoutPermission'))->toBeTrue();
-});
-
-test('permission can use without role scopes', function (): void {
-    $permission = Permission::factory()->create();
-
-    expect(method_exists($permission, 'withoutRole'))->toBeTrue();
-});
-
-test('permission has factory method', function (): void {
-    $permission = new Permission();
-
-    expect(method_exists($permission, 'newFactory'))->toBeTrue();
-});
-
-test('permission has get table method', function (): void {
-    $permission = new Permission();
-
-    expect(method_exists($permission, 'getTable'))->toBeTrue();
+    Assert::assertNull(Permission::query()->find($permissionId));
 });

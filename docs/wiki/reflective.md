@@ -3,7 +3,7 @@ title: "Reflective Notes"
 type: reflection-log
 status: active
 created: "2026-06-15"
-updated: "2026-06-15"
+updated: "2026-06-16"
 tags: [reflection, phpstan, xot, quality-gate]
 related:
   - "./patterns/xotbase-resource-table-configure.md"
@@ -12,6 +12,32 @@ related:
 ---
 
 # Reflective Notes
+
+## 2026-06-16 — `pest()->extend()` in `Pest.php` eager-autoloaded crasha PHPStan
+
+**Perche e successo:** `Tenant` registra `tests/Pest.php` in `composer.json > autoload-dev.files` (serve per esporre gli helper `createTenant()`/`makeTenant()` quando CI lancia `pest Modules/Tenant/tests` — Pest **non** auto-carica il `Pest.php` di un modulo non presente nei testsuite di `phpunit.xml`). Ma quel `Pest.php` chiamava anche `pest()->extend(TestCase::class)->in(...)`: il `PendingCall::__destruct` invoca `TestSuite::getInstance()` e, in eager-autoload fuori dal runner Pest (PHPStan/artisan), lancia `InvalidPestCommand` → crash.
+
+**Diagnosi chiave:** la chiamata `->in()` era **ridondante** — 23/24 test Tenant gia' dichiarano `uses(TestCase::class)` per file (pattern corretto, identico a `User`/`Notify`). Solo 1 file (`ApplicationPublicPathCoverageTest`) mancava il `uses()` e si appoggiava al binding globale.
+
+**Come evitarlo:** in `Pest.php` eager-autoloaded mettere **solo** funzioni helper pure (nessuna pending call `pest()`/`expect()->extend()`). Il binding del TestCase va per-file con `uses(TestCase::class)`. Fix forward-only: rimosso `pest()->extend()->in()` da `Tenant/Pest.php`, aggiunto `uses()` al file mancante, ripristinato l'autoload `files` (Notify non aveva mai `pest()`: pure helpers, gia' safe).
+
+**Prova:** `phpstan analyse Modules/Tenant|Notify` → 0 errori, nessun crash; `pest Modules/Tenant/tests/Unit/ApplicationPublicPathCoverageTest.php` → 3 passed.
+
+## 2026-06-16 — Regressione `App\Application::publicPath()` (realpath rimosso)
+
+**Perche e successo:** `publicPath()` era stato semplificato a `return $publicRoot.'/'.$path` perdendo la canonicalizzazione `realpath`. Il test di copertura (mai eseguito davvero per il binding rotto sopra) codificava la spec corretta a 3 rami: (1) candidate esiste → `realpath(candidate)`; (2) solo `public_html` esiste → `realpath(root).'/'.segment`; (3) niente esiste → fallback normalizzato. L'import `Safe\Exceptions\FilesystemException` + `//use function Safe\realpath` erano residui della versione corretta.
+
+**Come evitarlo:** quando un test "coverage" fallisce dopo un fix di binding, verificare se codifica una spec piu' ricca dell'implementazione corrente. Usare `Safe\realpath` (lancia `FilesystemException` su path assente) per restare compatibili col safe-rule PHPStan invece di `realpath()` nativo (flaggato unsafe).
+
+**Prova:** 3/3 test verdi; `phpstan analyse app/Application.php` → 0 errori; `/admin/login` HTTP 200 (asset via `publicPath`).
+
+## 2026-06-16 — Cache risultati PHPStan stale = errori fantasma
+
+**Perche e successo:** primo giro su `User` riportava 14 errori `class.notFound` su `App\Models\User` in `CreateUserAction.php`, ma il file **non** referenzia piu quella classe (grep vuoto). Erano voci nella result-cache `/tmp/phpstan` da una sessione precedente, servite finche non invalidate.
+
+**Come evitarlo:** in audit "porta a ZERO" eseguire sempre `./vendor/bin/phpstan clear-result-cache` prima della verifica finale. Mai usare `2>/dev/null` nel loop di conteggio: maschera i crash OOM dei worker paralleli e falsa lo "0 errori". I worker paralleli ignorano `--memory-limit` CLI (cap interno ~512M): per audit affidabile analizzare **per-modulo** sequenziale.
+
+**Prova:** `clear-result-cache` + audit per-modulo (2G) → 0 errori, 0 crash su tutti i 33 moduli con `phpstan.neon` corrente (non modificato).
 
 ## 2026-06-15 — Ingresso Ptv in scope PHPStan
 

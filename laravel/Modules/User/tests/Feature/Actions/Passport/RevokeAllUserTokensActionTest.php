@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Feature\Actions\Passport;
-
+uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\User\Actions\Passport\RevokeAllUserTokensAction;
-use Modules\User\Models\User;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use Modules\User\Database\Factories\UserFactory;
+use PHPUnit\Framework\Assert;
 
 describe('RevokeAllUserTokensAction', function (): void {
     test('revokes all user tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -56,24 +53,23 @@ describe('RevokeAllUserTokensAction', function (): void {
             ],
         ]);
 
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count())->toBe(2);
-
+        Assert::assertSame(2, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count());
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe(2);
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count())->toBe(0);
+        Assert::assertSame(2, $revoked);
+        Assert::assertSame(0, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 0)->count());
     });
 
     test('handles user with no tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe(0);
+        Assert::assertSame(0, $revoked);
     });
 
     test('revokes tokens by user id string', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -107,11 +103,11 @@ describe('RevokeAllUserTokensAction', function (): void {
 
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user->id);
 
-        expect($revoked)->toBe(1);
+        Assert::assertSame(1, $revoked);
     });
 
     test('does not revoke already revoked tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -155,12 +151,12 @@ describe('RevokeAllUserTokensAction', function (): void {
 
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe(1);
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 1)->count())->toBe(2);
+        Assert::assertSame(1, $revoked);
+        Assert::assertSame(2, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user->id)->where('revoked', 1)->count());
     });
 
     test('returns count of revoked tokens', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -198,12 +194,12 @@ describe('RevokeAllUserTokensAction', function (): void {
 
         $revoked = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($revoked)->toBe($tokenCount);
+        Assert::assertSame($tokenCount, $revoked);
     });
 
     test('revokes tokens for specific user only', function (): void {
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
+        $user1 = UserFactory::new()->createOne();
+        $user2 = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -247,12 +243,12 @@ describe('RevokeAllUserTokensAction', function (): void {
 
         app(RevokeAllUserTokensAction::class)->execute($user1);
 
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user1->id)->where('revoked', 0)->count())->toBe(0);
-        expect(DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user2->id)->where('revoked', 0)->count())->toBe(1);
+        Assert::assertSame(0, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user1->id)->where('revoked', 0)->count());
+        Assert::assertSame(1, DB::connection('user')->table('oauth_access_tokens')->where('user_id', (string) $user2->id)->where('revoked', 0)->count());
     });
 
     test('handles multiple consecutive revocations', function (): void {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
         $clientId = (string) Str::uuid();
         DB::connection('user')->table('oauth_clients')->insert([
@@ -287,7 +283,7 @@ describe('RevokeAllUserTokensAction', function (): void {
         $firstRevoke = app(RevokeAllUserTokensAction::class)->execute($user);
         $secondRevoke = app(RevokeAllUserTokensAction::class)->execute($user);
 
-        expect($firstRevoke)->toBe(1);
-        expect($secondRevoke)->toBe(0);
+        Assert::assertSame(1, $firstRevoke);
+        Assert::assertSame(0, $secondRevoke);
     });
 });

@@ -22,6 +22,7 @@ class Change extends Component
 {
     // use HasUserProperty;
 
+    /** @var array<int, array<string, mixed>> */
     public array $teams = [];
 
     public XotData $xot;
@@ -41,7 +42,10 @@ class Change extends Component
         $this->user = $authUser;
         /** @var Collection<int, TeamContract> $allTeams */
         $allTeams = $this->user->allTeams();
-        $this->teams = $allTeams->toArray();
+        $this->teams = $allTeams
+            ->values()
+            ->map(static fn (TeamContract $team): array => $team->toArray())
+            ->all();
     }
 
     /**

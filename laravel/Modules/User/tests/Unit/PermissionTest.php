@@ -2,217 +2,258 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit;
-
+uses(Modules\User\Tests\TestCase::class);
+use Illuminate\Support\Facades\DB;
+use Modules\User\Database\Factories\PermissionFactory;
+use Modules\User\Database\Factories\RoleFactory;
 use Modules\User\Models\Permission;
 use Modules\User\Models\Role;
-use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
-beforeEach(function (): void {
-    $this->permission = Permission::factory()->create([
-        'name' => 'test-permission',
+/**
+ * @param array<string, mixed> $attributes
+ */
+function createTestPermission(array $attributes = []): Permission
+{
+    return PermissionFactory::new()->createOne(array_merge([
+        'name' => 'test-permission-'.uniqid(),
         'guard_name' => 'web',
-    ]);
-});
+    ], $attributes));
+}
+
+/**
+ * @param array<string, mixed> $attributes
+ */
+function createTestRoleForPermission(array $attributes = []): Role
+{
+    return RoleFactory::new()->createOne(array_merge([
+        'name' => 'test-role-'.uniqid(),
+        'guard_name' => 'web',
+    ], $attributes));
+}
 
 test('permission can be created', function (): void {
-    expect($this->permission)->toBeInstanceOf(Permission::class);
-    expect($this->permission->name)->toBe('test-permission');
-    expect($this->permission->guard_name)->toBe('web');
+    $name = 'test-permission-'.uniqid();
+    $permission = createTestPermission(['name' => $name]);
+
+    Assert::assertInstanceOf(Permission::class, $permission);
+    Assert::assertSame($name, $permission->name);
+    Assert::assertSame('web', $permission->guard_name);
 });
 
 test('permission has correct fillable attributes', function (): void {
-    $fillable = $this->permission->getFillable();
+    $permission = createTestPermission();
+    $fillable = $permission->getFillable();
 
-    expect($fillable)->toContain('name');
-    expect($fillable)->toContain('guard_name');
-    expect($fillable)->toContain('display_name');
-    expect($fillable)->toContain('description');
+    Assert::assertContains('name', $fillable);
+    Assert::assertContains('guard_name', $fillable);
+    Assert::assertContains('display_name', $fillable);
+    Assert::assertContains('description', $fillable);
 });
 
 test('permission has correct table configuration', function (): void {
-    $table = $this->permission->getTable();
+    $table = createTestPermission()->getTable();
 
-    expect($table)->toBeString();
-    expect($table)->not->toBeEmpty();
+    Assert::assertNotSame('', $table);
 });
 
 test('permission has correct casts', function (): void {
-    $casts = $this->permission->getCasts();
+    $casts = createTestPermission()->getCasts();
 
-    expect($casts)->toHaveKey('id');
-
-    expect($casts['id'])->toBe('int'); // Spatie Permission uses int ID by default
+    Assert::assertArrayHasKey('id', $casts);
+    Assert::assertSame('int', $casts['id']);
 });
 
 test('permission can be updated', function (): void {
-    $this->permission->update([
-        'name' => 'updated-permission',
+    $permission = createTestPermission();
+    $updatedName = 'updated-permission-'.uniqid();
+
+    $permission->update([
+        'name' => $updatedName,
         'guard_name' => 'api',
     ]);
+    $permission->refresh();
 
-    $this->permission->refresh();
-
-    expect($this->permission->name)->toBe('updated-permission');
-    expect($this->permission->guard_name)->toBe('api');
+    Assert::assertSame($updatedName, $permission->name);
+    Assert::assertSame('api', $permission->guard_name);
 });
 
 test('permission can be deleted', function (): void {
-    $permissionId = $this->permission->id;
+    $permission = createTestPermission();
+    $permissionId = $permission->id;
 
-    $this->permission->delete();
+    DB::connection('user')->table($permission->getTable())->where('id', $permissionId)->delete();
 
-    expect(Permission::find($permissionId))->toBeNull();
+    Assert::assertNull(Permission::query()->find($permissionId));
 });
 
 test('permission can be assigned to roles', function (): void {
-    $role = Role::factory()->create([
-        'name' => 'test-role',
-        'guard_name' => 'web',
-    ]);
+    $permission = createTestPermission();
+    $role = createTestRoleForPermission();
 
-    $role->givePermissionTo($this->permission);
+    $role->givePermissionTo($permission);
 
-    expect($role->hasPermissionTo($this->permission))->toBeTrue();
-    expect($this->permission->roles)->toHaveCount(1);
+    Assert::assertTrue($role->hasPermissionTo($permission));
+    Assert::assertCount(1, $permission->roles);
 });
 
 test('permission can be assigned to multiple roles', function (): void {
-    $role1 = Role::factory()->create(['name' => 'role-1']);
-    $role2 = Role::factory()->create(['name' => 'role-2']);
+    $permission = createTestPermission();
+    $role1 = createTestRoleForPermission(['name' => 'role-1-'.uniqid()]);
+    $role2 = createTestRoleForPermission(['name' => 'role-2-'.uniqid()]);
 
-    $this->permission->assignRole($role1);
-    $this->permission->assignRole($role2);
+    $permission->assignRole($role1);
+    $permission->assignRole($role2);
 
-    expect($this->permission->roles)->toHaveCount(2);
-    expect($this->permission->hasRole($role1))->toBeTrue();
-    expect($this->permission->hasRole($role2))->toBeTrue();
+    Assert::assertCount(2, $permission->roles);
+    Assert::assertTrue($permission->hasRole($role1));
+    Assert::assertTrue($permission->hasRole($role2));
 });
 
 test('permission can be found by name', function (): void {
-    $foundPermission = Permission::where('name', 'test-permission')->first();
+    $name = 'test-permission-'.uniqid();
+    $permission = createTestPermission(['name' => $name]);
+    $foundPermission = Permission::where('name', $name)->first();
 
-    expect($foundPermission)->toBeInstanceOf(Permission::class);
-    expect($foundPermission->id)->toBe($this->permission->id);
+    Assert::assertInstanceOf(Permission::class, $foundPermission);
+    Assert::assertSame($permission->id, $foundPermission->id);
 });
 
 test('permission can be found by guard', function (): void {
-    $webPermissions = Permission::where('guard_name', 'web')->get();
+    $permission = createTestPermission();
+    $webPermissions = Permission::where('guard_name', 'web')->where('id', $permission->id)->get();
 
-    expect($webPermissions)->toHaveCount(1);
-    expect($webPermissions->first()->id)->toBe($this->permission->id);
+    Assert::assertCount(1, $webPermissions);
+    $first = $webPermissions->first();
+    Assert::assertInstanceOf(Permission::class, $first);
+    Assert::assertSame($permission->id, $first->id);
 });
 
 test('permission has timestamps', function (): void {
-    expect($this->permission->created_at)->not->toBeNull();
-    expect($this->permission->updated_at)->not->toBeNull();
+    $permission = createTestPermission();
+
+    Assert::assertNotNull($permission->created_at);
+    Assert::assertNotNull($permission->updated_at);
 });
 
 test('permission can be created with factory', function (): void {
-    $permission = Permission::factory()->create();
+    $permission = PermissionFactory::new()->createOne([
+        'name' => 'factory-permission-'.uniqid(),
+        'guard_name' => 'web',
+    ]);
 
-    expect($permission)->toBeInstanceOf(Permission::class);
-    expect($permission->name)->not->toBeEmpty();
-    expect($permission->guard_name)->not->toBeEmpty();
+    Assert::assertInstanceOf(Permission::class, $permission);
+    Assert::assertNotSame('', $permission->name);
+    Assert::assertNotSame('', $permission->guard_name);
 });
 
 test('permission can be created with specific attributes', function (): void {
-    $permission = Permission::factory()->create([
-        'name' => 'custom-permission',
+    $permission = PermissionFactory::new()->createOne([
+        'name' => 'custom-permission-'.uniqid(),
         'guard_name' => 'custom-guard',
     ]);
 
-    expect($permission->name)->toBe('custom-permission');
-    expect($permission->guard_name)->toBe('custom-guard');
+    Assert::assertStringContainsString('custom-permission-', $permission->name);
+    Assert::assertSame('custom-guard', $permission->guard_name);
 });
 
 test('permission can check if it has role', function (): void {
-    $role = Role::factory()->create(['name' => 'test-role']);
+    $permission = createTestPermission();
+    $role = createTestRoleForPermission();
 
-    expect($this->permission->hasRole($role))->toBeFalse();
+    Assert::assertFalse($permission->hasRole($role));
 
-    $this->permission->assignRole($role);
+    $permission->assignRole($role);
 
-    expect($this->permission->hasRole($role))->toBeTrue();
+    Assert::assertTrue($permission->hasRole($role));
 });
 
 test('permission can check if it has any roles', function (): void {
-    expect($this->permission->hasAnyRole([]))->toBeFalse();
+    $permission = createTestPermission();
 
-    $role = Role::factory()->create(['name' => 'test-role']);
-    $this->permission->assignRole($role);
+    Assert::assertFalse($permission->hasAnyRole([]));
 
-    expect($this->permission->hasAnyRole([$role]))->toBeTrue();
+    $role = createTestRoleForPermission();
+    $permission->assignRole($role);
+
+    Assert::assertTrue($permission->hasAnyRole([$role]));
 });
 
 test('permission can check if it has all roles', function (): void {
-    $role1 = Role::factory()->create(['name' => 'role-1']);
-    $role2 = Role::factory()->create(['name' => 'role-2']);
+    $permission = createTestPermission();
+    $role1 = createTestRoleForPermission(['name' => 'role-1-'.uniqid()]);
+    $role2 = createTestRoleForPermission(['name' => 'role-2-'.uniqid()]);
 
-    $this->permission->syncRoles([$role1, $role2]);
+    $permission->syncRoles([$role1, $role2]);
 
-    expect($this->permission->hasAllRoles([$role1, $role2]))->toBeTrue();
-    expect($this->permission->hasAllRoles([$role1]))->toBeTrue();
-    expect($this->permission->hasAllRoles([$role1, $role2, 'non-existent']))->toBeFalse();
+    Assert::assertTrue($permission->hasAllRoles([$role1, $role2]));
+    Assert::assertTrue($permission->hasAllRoles([$role1]));
+    Assert::assertFalse($permission->hasAllRoles([$role1, $role2, 'non-existent']));
 });
 
 test('permission can be revoked from role', function (): void {
-    $role = Role::factory()->create(['name' => 'test-role']);
+    $permission = createTestPermission();
+    $role = createTestRoleForPermission();
 
-    $this->permission->assignRole($role);
-    expect($this->permission->hasRole($role))->toBeTrue();
+    $permission->assignRole($role);
+    Assert::assertTrue($permission->hasRole($role));
 
-    $this->permission->removeRole($role);
-    expect($this->permission->hasRole($role))->toBeFalse();
+    $permission->removeRole($role);
+    Assert::assertFalse($permission->hasRole($role));
 });
 
 test('permission can be synced with roles', function (): void {
-    $role1 = Role::factory()->create(['name' => 'role-1']);
-    $role2 = Role::factory()->create(['name' => 'role-2']);
-    $role3 = Role::factory()->create(['name' => 'role-3']);
+    $permission = createTestPermission();
+    $role1 = createTestRoleForPermission(['name' => 'role-1-'.uniqid()]);
+    $role2 = createTestRoleForPermission(['name' => 'role-2-'.uniqid()]);
+    $role3 = createTestRoleForPermission(['name' => 'role-3-'.uniqid()]);
 
-    // Initially assign role1 and role2
-    $this->permission->syncRoles([$role1, $role2]);
-    expect($this->permission->roles)->toHaveCount(2);
+    $permission->syncRoles([$role1, $role2]);
+    Assert::assertCount(2, $permission->roles);
 
-    // Sync to only role2 and role3
-    $this->permission->syncRoles([$role2, $role3]);
-    expect($this->permission->roles)->toHaveCount(2);
-    expect($this->permission->hasRole($role1))->toBeFalse();
-    expect($this->permission->hasRole($role2))->toBeTrue();
-    expect($this->permission->hasRole($role3))->toBeTrue();
+    $permission->syncRoles([$role2, $role3]);
+    Assert::assertCount(2, $permission->roles);
+    Assert::assertFalse($permission->hasRole($role1));
+    Assert::assertTrue($permission->hasRole($role2));
+    Assert::assertTrue($permission->hasRole($role3));
 });
 
 test('permission can be filtered by created_by', function (): void {
-    Permission::withoutEvents(function (): void {
-        $this->permission->forceFill(['created_by' => 'user-123'])->save();
+    $permission = createTestPermission();
+    $createdBy = 'user-123-'.uniqid();
+
+    Permission::withoutEvents(static function () use ($permission, $createdBy): void {
+        $permission->forceFill(['created_by' => $createdBy])->save();
     });
 
-    $found = Permission::where('created_by', 'user-123')->first();
-    expect($found)->not->toBeNull();
-    expect((int) $found->id)->toBe((int) $this->permission->id);
+    $found = Permission::where('created_by', $createdBy)->first();
+    Assert::assertInstanceOf(Permission::class, $found);
+    Assert::assertSame((int) $permission->id, (int) $found->id);
 });
 
 test('permission can be filtered by updated_by', function (): void {
-    Permission::withoutEvents(function (): void {
-        $this->permission->forceFill(['updated_by' => 'user-456'])->save();
+    $permission = createTestPermission();
+    $updatedBy = 'user-456-'.uniqid();
+
+    Permission::withoutEvents(static function () use ($permission, $updatedBy): void {
+        $permission->forceFill(['updated_by' => $updatedBy])->save();
     });
 
-    $found = Permission::where('updated_by', 'user-456')->first();
-    expect($found)->not->toBeNull();
-    expect((int) $found->id)->toBe((int) $this->permission->id);
+    $found = Permission::where('updated_by', $updatedBy)->first();
+    Assert::assertInstanceOf(Permission::class, $found);
+    Assert::assertSame((int) $permission->id, (int) $found->id);
 });
 
 test('permission handles null metadata values', function (): void {
-    Permission::withoutEvents(function (): void {
-        $this->permission->forceFill([
+    $permission = createTestPermission();
+
+    Permission::withoutEvents(static function () use ($permission): void {
+        $permission->forceFill([
             'created_by' => null,
             'updated_by' => null,
         ])->save();
     });
 
-    expect($this->permission->created_by)->toBeNull();
-    expect($this->permission->updated_by)->toBeNull();
+    Assert::assertNull($permission->created_by);
+    Assert::assertNull($permission->updated_by);
 });

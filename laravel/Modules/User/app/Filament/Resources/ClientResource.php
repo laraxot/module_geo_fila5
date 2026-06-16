@@ -99,6 +99,8 @@ class ClientResource extends XotBaseResource
 
     /**
      * Get resource form components.
+     *
+     * @return array<int, never>
      */
     protected static function getResourceFormComponents(): array
     {

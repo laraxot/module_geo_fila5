@@ -1,7 +1,7 @@
 # Package Dependency Chaos Map (Lang)
 
 ## Catalogo completo
-- [Composer Packages Full Catalog (2026-03-02)](../../Xot/docs/composer-packages-full-catalog.md)
+- [Composer Packages Full Catalog (2026-03-02)](../../Xot/docs/composer-packages-full-catalog-2026-03-02.md)
 
 ## Pacchetti studiati rilevanti
 - `mcamara/laravel-localization`

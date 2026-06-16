@@ -2,37 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions;
-
+uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Contracts\Events\Dispatcher;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Actions\Socialite\RegisterOauthUserAction;
 use Modules\User\Events\Registered;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('RegisterOauthUserAction', function (): void {
+    /**
+     * @param array<string, mixed> $attributes
+     */
     $getMockUser = function (array $attributes = []): SocialiteUserContract {
-        $unique = uniqid();
-        $data = array_merge([
-            'id' => 'id-'.$unique,
-            'name' => 'Mario Rossi',
-            'email' => 'user'.$unique.'@example.com',
-            'avatar' => 'https://example.com/avatar.jpg',
-            'nickname' => 'user'.$unique,
-        ], $attributes);
+        /** @var array<string, mixed> $normalizedAttributes */
+        $normalizedAttributes = $attributes;
 
-        $mock = \Mockery::mock(SocialiteUserContract::class);
-        $mock->shouldReceive('getId')->andReturn($data['id']);
-        $mock->shouldReceive('getName')->andReturn($data['name']);
-        $mock->shouldReceive('getEmail')->andReturn($data['email']);
-        $mock->shouldReceive('getAvatar')->andReturn($data['avatar']);
-        $mock->shouldReceive('getNickname')->andReturn($data['nickname']);
-
-        return $mock;
+        return mockSocialiteOauthUser($normalizedAttributes);
     };
 
     it('registers oauth user successfully', function () use ($getMockUser): void {
@@ -40,16 +27,14 @@ describe('RegisterOauthUserAction', function (): void {
         $email = $oauthUser->getEmail();
         $action = app(RegisterOauthUserAction::class);
 
-        expect(User::where('email', $email)->exists())->toBeFalse();
-
+        Assert::assertFalse(User::where('email', $email)->exists());
         $socialiteUser = $action->execute('google', $oauthUser);
 
-        expect($socialiteUser)->toBeInstanceOf(SocialiteUser::class);
-        expect($socialiteUser->email)->toBe($email);
-
+        Assert::assertInstanceOf(SocialiteUser::class, $socialiteUser);
+        Assert::assertSame($email, $socialiteUser->email);
         $user = User::where('email', $email)->first();
-        expect($user)->not->toBeNull();
-        expect($user->name)->toBe('Mario'); // App splits name
+        Assert::assertNotNull($user);
+        Assert::assertSame('Mario', $user->name); // App splits name
     });
 
     it('dispatches registered event', function () use ($getMockUser): void {
@@ -64,8 +49,8 @@ describe('RegisterOauthUserAction', function (): void {
         $action = app(RegisterOauthUserAction::class);
         $socialiteUser = $action->execute('github', $oauthUser);
 
-        expect($dispatchedEvents)->toHaveCount(1);
-        expect($dispatchedEvents[0]->socialiteUser->id)->toBe($socialiteUser->id);
+        Assert::assertCount(1, $dispatchedEvents);
+        Assert::assertSame($socialiteUser->id, $dispatchedEvents[0]->socialiteUser->id);
     });
 
     it('registers users with different emails successfully', function () use ($getMockUser): void {
@@ -79,8 +64,8 @@ describe('RegisterOauthUserAction', function (): void {
         $googleSocialite = $action->execute('google', $googleUser);
         $githubSocialite = $action->execute('github', $githubUser);
 
-        expect(User::where('email', $email1)->exists())->toBeTrue();
-        expect(User::where('email', $email2)->exists())->toBeTrue();
-        expect($googleSocialite->user_id)->not->toBe($githubSocialite->user_id);
+        Assert::assertTrue(User::where('email', $email1)->exists());
+        Assert::assertTrue(User::where('email', $email2)->exists());
+        Assert::assertNotSame($githubSocialite->user_id, $googleSocialite->user_id);
     });
 });

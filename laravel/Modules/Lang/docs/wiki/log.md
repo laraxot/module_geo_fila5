@@ -32,11 +32,6 @@ discussions:
 - Created module index.md
 - Ready for on-demand loading via QMD
 
-## [2026-05-27] lint | phpstan zero
-
-- `./vendor/bin/phpstan analyse Modules/Lang` → 0 errori (134 file).
-- Issue provtv/module_lang_fila5#11 chiusa (ex duplicateKey già risolti).
-
 ## [2026-05-12] docs | lang wiki routing-first indicization
 
 - riscritti `rules/INDEX.md` e `skills/INDEX.md` per esporre regole e skill realmente caricabili on-demand.

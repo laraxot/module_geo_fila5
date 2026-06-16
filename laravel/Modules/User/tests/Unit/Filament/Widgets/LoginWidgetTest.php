@@ -2,49 +2,43 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Filament\Widgets;
-
+uses(Modules\User\Tests\TestCase::class);
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Modules\User\Filament\Widgets\LoginWidget;
-use Modules\User\Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 describe('LoginWidget', function (): void {
     test('login widget can be instantiated', function (): void {
         $widget = new LoginWidget();
 
-        expect($widget)->toBeInstanceOf(LoginWidget::class);
+        Assert::assertInstanceOf(LoginWidget::class, $widget);
     });
 
     test('login widget has correct form schema', function (): void {
         $widget = new LoginWidget();
         $schema = $widget->getFormSchema();
 
-        expect($schema)->toHaveCount(3);
-
+        Assert::assertCount(3, $schema);
         $emailField = $schema[0];
-        expect($emailField)->toBeInstanceOf(TextInput::class);
-        expect($emailField->getName())->toBe('email');
-        expect($emailField->isEmail())->toBeTrue();
-
+        Assert::assertInstanceOf(TextInput::class, $emailField);
+        Assert::assertSame('email', $emailField->getName());
+        Assert::assertTrue($emailField->isEmail());
         $passwordField = $schema[1];
-        expect($passwordField)->toBeInstanceOf(TextInput::class);
-        expect($passwordField->getName())->toBe('password');
-
+        Assert::assertInstanceOf(TextInput::class, $passwordField);
+        Assert::assertSame('password', $passwordField->getName());
         $rememberField = $schema[2];
-        expect($rememberField)->toBeInstanceOf(Toggle::class);
-        expect($rememberField->getName())->toBe('remember');
+        Assert::assertInstanceOf(Toggle::class, $rememberField);
+        Assert::assertSame('remember', $rememberField->getName());
     });
 
     test('login widget form fill has correct defaults', function (): void {
         $widget = new LoginWidget();
         $fillData = $widget->getFormFill();
 
-        expect($fillData)->toHaveKey('email');
-        expect($fillData)->toHaveKey('remember');
-        expect($fillData['remember'])->toBeTrue();
+        Assert::assertArrayHasKey('email', $fillData);
+        Assert::assertArrayHasKey('remember', $fillData);
+        Assert::assertTrue($fillData['remember']);
     });
 
     test('login widget has correct view property', function (): void {
@@ -54,12 +48,12 @@ describe('LoginWidget', function (): void {
         $property->setAccessible(true);
         $view = $property->getValue($widget);
 
-        expect($view)->toBe('pub_theme::filament.widgets.auth.login');
+        Assert::assertSame('pub_theme::filament.widgets.auth.login', $view);
     });
 
     test('login widget extends xot base widget', function (): void {
         $widget = new LoginWidget();
 
-        expect($widget)->toBeInstanceOf(Modules\Xot\Filament\Widgets\XotBaseWidget::class);
+        Assert::assertInstanceOf(Modules\Xot\Filament\Widgets\XotBaseSchemaWidget::class, $widget);
     });
 });

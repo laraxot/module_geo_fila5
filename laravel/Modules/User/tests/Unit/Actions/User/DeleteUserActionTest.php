@@ -2,13 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit\Actions\User;
-
+uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Actions\User\DeleteUserAction;
 use Modules\User\Models\User;
-use Tests\TestCase;
-
-uses(TestCase::class);
+use PHPUnit\Framework\Assert;
 
 it('returns failure when password is incorrect', function (): void {
     // Create a mock user with a hashed password
@@ -17,6 +14,6 @@ it('returns failure when password is incorrect', function (): void {
     $action = app(DeleteUserAction::class);
     $result = $action->execute($user, 'wrong-password');
 
-    expect($result['success'])->toBeFalse();
-    expect($result['message'])->toContain('password');
+    Assert::assertFalse($result['success']);
+    Assert::assertStringContainsString((string) 'password', (string) $result['message']);
 });

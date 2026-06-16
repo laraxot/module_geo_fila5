@@ -135,27 +135,6 @@ return [
             'helper_text' => '',
             'description' => '',
         ],
-        'id' => [
-            'label' => 'id',
-        ],
-        'contact_type' => [
-            'label' => 'contact_type',
-        ],
-        'value' => [
-            'label' => 'value',
-        ],
-        'user_id' => [
-            'label' => 'user_id',
-        ],
-        'verified_at' => [
-            'label' => 'verified_at',
-        ],
-        'created_at' => [
-            'label' => 'created_at',
-        ],
-        'updated_at' => [
-            'label' => 'updated_at',
-        ],
     ],
     'actions' => [
         'test_notification' => [

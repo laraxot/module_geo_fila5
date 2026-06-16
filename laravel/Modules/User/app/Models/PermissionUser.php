@@ -15,8 +15,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|PermissionUser newQuery()
  * @method static Builder<static>|PermissionUser query()
  *
- * @mixin IdeHelperPermissionUser
- *
  * @property ProfileContract|null $deleter
  *
  * @method static \Modules\User\Database\Factories\PermissionUserFactory factory($count = null, $state = [])

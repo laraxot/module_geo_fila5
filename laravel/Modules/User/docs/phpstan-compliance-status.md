@@ -1,7 +1,9 @@
 # PHPStan Level 10 Compliance Status
 
-**Last Updated**: 2026-03-10
-**Status**: ✅ FULLY COMPLIANT (0 errors)
+**Last Updated**: 2026-06-09 (STORY-288)
+**Status**: ✅ `Modules/User/app` compliant (0 errors, level max). Full `Modules/User` include `tests/` (~6700 debito Pest — fix in corso STORY-288).
+
+Baseline STORY-288: 234 → 0. Pattern: social-providers env in ServiceProvider, Contracts Model generics, AuthenticationLogQuery typed.
 
 ## Summary
 On 2026-03-10 the User module was re-verified and brought back to a clean PHPStan state after a Passport/OAuth recovery batch.

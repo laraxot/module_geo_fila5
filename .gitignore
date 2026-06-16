@@ -466,3 +466,4 @@ laravel/.gemini
 laravel/.claude
 laravel/.qwen
 ${PWD}/
+*.Identifier

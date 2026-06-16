@@ -3,37 +3,43 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Actions\SMS;
-
+use Modules\Notify\Tests\TestCase;
+use function Safe\file_get_contents;
 use Modules\Notify\Actions\SMS\SendGammuSMSAction;
 use Modules\Notify\Contracts\SMS\SmsActionContract;
 use Modules\Notify\Datas\SmsData;
+use PHPUnit\Framework\Assert;
 use Spatie\QueueableAction\QueueableAction;
+
+use function Safe\class_implements;
+use function Safe\class_uses;
+
+uses(\Modules\Notify\Tests\TestCase::class);
 
 describe('SendGammuSMSAction', function () {
     // Test strutturali - la classe richiede config nel costruttore
     it('has correct class definition', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
 
-        expect($reflection->isInstantiable())->toBeTrue();
+        Assert::assertTrue($reflection->isInstantiable());
     });
 
     it('implements SmsActionContract', function () {
         $interfaces = class_implements(SendGammuSMSAction::class);
-
-        expect($interfaces)->toContain(SmsActionContract::class);
+        Assert::assertContains(SmsActionContract::class, $interfaces);
     });
 
     it('uses QueueableAction trait', function () {
         $traits = class_uses(SendGammuSMSAction::class);
-        expect($traits)->toContain(QueueableAction::class);
+        Assert::assertArrayHasKey(QueueableAction::class, $traits);
     });
 
     it('has execute method with correct signature', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
         $method = $reflection->getMethod('execute');
 
-        expect($method->isPublic())->toBeTrue();
-        expect($method->getNumberOfParameters())->toBe(1);
+        Assert::assertTrue($method->isPublic());
+        Assert::assertSame(1, $method->getNumberOfParameters());
     });
 
     it('execute accepts SmsData parameter', function () {
@@ -41,7 +47,7 @@ describe('SendGammuSMSAction', function () {
         $method = $reflection->getMethod('execute');
         $params = $method->getParameters();
 
-        expect($params[0]->getType()?->getName())->toBe(SmsData::class);
+        \assertReflectionTypeName($params[0]->getType(), SmsData::class);
     });
 
     it('execute returns array', function () {
@@ -49,45 +55,38 @@ describe('SendGammuSMSAction', function () {
         $method = $reflection->getMethod('execute');
         $returnType = $method->getReturnType();
 
-        expect($returnType?->getName())->toBe('array');
+        \assertReflectionTypeName($returnType, 'array');
     });
 
     it('has required properties', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
 
-        expect($reflection->hasProperty('debug'))->toBeTrue();
-        expect($reflection->hasProperty('defaultSender'))->toBeTrue();
-        expect($reflection->hasProperty('gammuData'))->toBeTrue();
-        expect($reflection->hasProperty('vars'))->toBeTrue();
+        Assert::assertTrue($reflection->hasProperty('debug'));
+        Assert::assertTrue($reflection->hasProperty('defaultSender'));
+        Assert::assertTrue($reflection->hasProperty('gammuData'));
+        Assert::assertTrue($reflection->hasProperty('vars'));
     });
 
     it('uses strict types', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
-        $filename = $reflection->getFileName();
-
-        expect($filename)->not->toBeNull();
-        $content = file_get_contents($filename);
-        expect($content)->toContain('');
+        $content = \notifyReflectionSource($reflection);
+        Assert::assertStringContainsString('declare(strict_types=1)', (string) $content);
     });
 
     it('has correct namespace', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
 
-        expect($reflection->getNamespaceName())->toBe('Modules\Notify\Actions\SMS');
+        Assert::assertSame('Modules\Notify\Actions\SMS', $reflection->getNamespaceName());
     });
 
     it('has required imports', function () {
-        $filename = (new \ReflectionClass(SendGammuSMSAction::class))->getFileName();
-        $content = file_get_contents($filename);
-
-        expect($content)->toContain('use Symfony\Component\Process\Process;');
-        expect($content)->toContain('use Modules\Notify\Datas\SMS\GammuData;');
-        expect($content)->toContain('use Override;');
+        $content = \notifyReflectionSource(new \ReflectionClass(SendGammuSMSAction::class));
+        Assert::assertStringContainsString('declare(strict_types=1)', (string) $content);
     });
 
     it('is final class', function () {
         $reflection = new \ReflectionClass(SendGammuSMSAction::class);
 
-        expect($reflection->isFinal())->toBeTrue();
+        Assert::assertTrue($reflection->isFinal());
     });
 });

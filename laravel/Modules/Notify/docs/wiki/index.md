@@ -1,4 +1,31 @@
+---
+title: "Notify Module Wiki Index"
+type: index
+module: Notify
+tags: [notify, wiki, index, qmd]
+created: 2026-04-15
+updated: 2026-06-05
+qmd: "notify module wiki index notifications qmd second brain"
+issues:
+  - "https://github.com/laraxot/base_fixcity_fila5/issues/272"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+  - ../../../../docs/wiki/bmad/architecture.md
+  - ../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md
+  - ../../docs/wiki/concepts/ai-harness-module-discipline.md
+---
+
 # Knowledge Base Index
+
+## AI / second brain
+
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
+- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md)
+- [frontmatter + GitHub](../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md)
+- [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
 
 > Status: bootstrap
 > Updated: 2026-04-15
@@ -48,6 +75,14 @@ QMD è configurato per ricerca locale su tutto il corpus markdown (14.177+ file 
 
 ```bash
 # Ricerca keyword (BM25, veloce ~30ms)
+## AI / second brain
+
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
+- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md)
+- [frontmatter + GitHub](../../../../docs/wiki/rules/wiki-markdown-frontmatter-mandatory.md)
+- [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
+
 qmd search "wizard ticket" -c mod-fixcity -n 5
 
 # Ricerca semantica (vector, ~2s)

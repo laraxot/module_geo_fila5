@@ -16,4 +16,4 @@ All notable changes to this project will be documented in this file.
 - Sixteen theme: Rebuilt assets with map-lit component included
 
 ### Related Documentation
-- Geo module: `docs/wiki/concepts/segnalazioni-elenco-map-visibility-issue.md` (map regression)
+- Geo module: `docs/wiki/concepts/ticket-list-map-visibility-issue.md` (map regression)

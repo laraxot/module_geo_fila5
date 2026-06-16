@@ -1,14 +1,7 @@
-# two_factor - User
+---
+module: theme
+topic: two-factor-1
+canonical: ../../../../Themes/docs/shared-components/two-factor.md
+---
 
-## Overview
-
-Documentazione per two_factor nel modulo User.
-
-## Dettagli
-
-[Da completare]
-
-## Collegamenti
-
-- [Modulo Principale](../README.md)
-
+See canonical documentation: ../../../../Themes/docs/shared-components/two-factor.md

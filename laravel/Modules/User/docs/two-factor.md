@@ -1,5 +1,7 @@
-# two_factor
+---
+module: theme
+topic: two-factor
+canonical: ../../../Themes/docs/shared-components/two_factor.md
+---
 
-<!-- Contenuto migrato da _docs/two_factor.txt -->
-
-https://engineering.teknasyon.com/two-factor-authentication-in-laravel-applications-dbee2c8eab98
+See canonical documentation: ../../../Themes/docs/shared-components/two_factor.md

@@ -18,15 +18,16 @@ use Webmozart\Assert\Assert;
 use function Safe\json_encode;
 
 /**
- * Servizio per notifiche push avanzate
+ * Servizio per notifiche push avanzate.
  *
- * Gestisce l'invio di notifiche push attraverso
- * multiple piattaforme e canali.
+ * Gestisce l'invio di notifiche push attraverso multiple piattaforme e canali.
  */
 class PushNotificationService
 {
+    /** @var array<string, array<string, mixed>> */
     private array $config;
 
+    /** @var list<string> */
     private array $platforms = ['fcm', 'apns', 'webpush'];
 
     public function __construct()
@@ -50,7 +51,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push a un singolo dispositivo
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, array<string, mixed>>
      */
     public function sendToDevice(string $token, array $notification, array $data = []): array
     {
@@ -79,13 +82,15 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push a multiple dispositivi
+     * @param  list<string>  $tokens
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, array<string, mixed>>
      */
     public function sendToDevices(array $tokens, array $notification, array $data = []): array
     {
         $results = [];
 
-        // Raggruppa token per piattaforma
         $tokensByPlatform = $this->groupTokensByPlatform($tokens);
 
         foreach ($tokensByPlatform as $platform => $platformTokens) {
@@ -113,7 +118,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push a un topic
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, array<string, mixed>>
      */
     public function sendToTopic(string $topic, array $notification, array $data = []): array
     {
@@ -141,14 +148,15 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push a tutti gli utenti
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     public function sendToAll(array $notification, array $data = []): array
     {
-        // Ottieni tutti i token attivi
         $tokens = $this->getAllActiveTokens();
 
-        if (empty($tokens)) {
+        if ($tokens === []) {
             return [
                 'success' => false,
                 'message' => 'No active tokens found',
@@ -159,13 +167,14 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push programmata
+     * @param  list<string>  $tokens
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
      */
     public function scheduleNotification(array $tokens, array $notification, array $data, DateTime $scheduleTime): string
     {
         $jobId = uniqid('push_', true);
 
-        // Salva notifica programmata
         Cache::put("scheduled_push:{$jobId}", [
             'tokens' => $tokens,
             'notification' => $notification,
@@ -173,7 +182,6 @@ class PushNotificationService
             'schedule_time' => $scheduleTime->getTimestamp(),
         ], $scheduleTime);
 
-        // Programma job Laravel
         SendScheduledPushNotification::dispatch($jobId)
             ->delay($scheduleTime);
 
@@ -181,30 +189,36 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push con template
+     * @param  list<string>  $tokens
+     * @param  array<string, mixed>  $variables
+     * @return array<string, array<string, mixed>>
      */
     public function sendWithTemplate(string $templateId, array $tokens, array $variables = []): array
     {
         $template = $this->getTemplate($templateId);
 
-        if (! $template) {
+        if ($template === null) {
             throw new Exception("Template {$templateId} not found");
         }
 
         $notification = $this->processTemplate($template, $variables);
+        /** @var array<string, mixed> $data */
         $data = isset($template['data']) && is_array($template['data']) ? $template['data'] : [];
 
         return $this->sendToDevices($tokens, $notification, $data);
     }
 
     /**
-     * Invia notifica push con targeting avanzato
+     * @param  array<string, mixed>  $criteria
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     public function sendWithTargeting(array $criteria, array $notification, array $data = []): array
     {
         $tokens = $this->getTokensByCriteria($criteria);
 
-        if (empty($tokens)) {
+        if ($tokens === []) {
             return [
                 'success' => false,
                 'message' => 'No tokens found matching criteria',
@@ -215,7 +229,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica push a una specifica piattaforma
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendToPlatform(string $platform, string $token, array $notification, array $data): array
     {
@@ -228,7 +244,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica FCM
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendFCMNotification(string $token, array $notification, array $data): array
     {
@@ -256,12 +274,14 @@ class PushNotificationService
             'Content-Type' => 'application/json',
         ])->post($url, $payload);
 
-        // Ensure we have a Response, not Promise
         if ($response instanceof PromiseInterface) {
             $response = $response->wait();
         }
 
-        /** @var Response $response */
+        if (! $response instanceof Response) {
+            throw new Exception('FCM request returned unexpected response type');
+        }
+
         if ($response->successful()) {
             $responseData = $response->json();
 
@@ -276,25 +296,12 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica APNS
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendAPNSNotification(string $token, array $notification, array $data): array
     {
-        $payload = [
-            'aps' => [
-                'alert' => [
-                    'title' => $notification['title'],
-                    'body' => $notification['body'],
-                ],
-                'sound' => $notification['sound'] ?? 'default',
-                'badge' => $notification['badge'] ?? 1,
-                'category' => $notification['category'] ?? 'GENERAL',
-            ],
-            'data' => $data,
-        ];
-
-        // Implementazione APNS (richiede certificato)
-        // Per semplicità, simuliamo la risposta
         return [
             'success' => true,
             'message' => 'APNS notification sent (simulated)',
@@ -303,11 +310,13 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica Web Push
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendWebPushNotification(string $token, array $notification, array $data): array
     {
-        $payload = json_encode([
+        json_encode([
             'title' => $notification['title'],
             'body' => $notification['body'],
             'icon' => $notification['icon'] ?? '/icons/icon-192x192.png',
@@ -318,8 +327,6 @@ class PushNotificationService
             'silent' => $notification['silent'] ?? false,
         ]);
 
-        // Implementazione Web Push (richiede VAPID)
-        // Per semplicità, simuliamo la risposta
         return [
             'success' => true,
             'message' => 'Web Push notification sent (simulated)',
@@ -328,7 +335,10 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica batch a una piattaforma
+     * @param  list<string>  $tokens
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendBatchToPlatform(string $platform, array $tokens, array $notification, array $data): array
     {
@@ -366,11 +376,12 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica topic a una piattaforma
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendTopicToPlatform(string $platform, string $topic, array $notification, array $data): array
     {
-        // Implementazione specifica per piattaforma
         return match ($platform) {
             'fcm' => $this->sendFCMTopicNotification($topic, $notification, $data),
             'apns' => $this->sendAPNSTopicNotification($topic, $notification, $data),
@@ -380,7 +391,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica FCM topic
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendFCMTopicNotification(string $topic, array $notification, array $data): array
     {
@@ -404,12 +417,14 @@ class PushNotificationService
             'Content-Type' => 'application/json',
         ])->post($url, $payload);
 
-        // Ensure we have a Response, not Promise
         if ($response instanceof PromiseInterface) {
             $response = $response->wait();
         }
 
-        /** @var Response $response */
+        if (! $response instanceof Response) {
+            throw new Exception('FCM topic request returned unexpected response type');
+        }
+
         if ($response->successful()) {
             $responseData = $response->json();
 
@@ -423,7 +438,8 @@ class PushNotificationService
     }
 
     /**
-     * Raggruppa token per piattaforma
+     * @param  list<string>  $tokens
+     * @return array<string, list<string>>
      */
     private function groupTokensByPlatform(array $tokens): array
     {
@@ -438,12 +454,8 @@ class PushNotificationService
         return $grouped;
     }
 
-    /**
-     * Rileva piattaforma dal token
-     */
     private function detectPlatform(string $token): string
     {
-        // Logica di rilevamento piattaforma basata sul formato del token
         if (strlen($token) === 64 && ctype_xdigit($token)) {
             return 'apns';
         }
@@ -455,20 +467,19 @@ class PushNotificationService
     }
 
     /**
-     * Ottieni tutti i token attivi
+     * @return list<string>
      */
     private function getAllActiveTokens(): array
     {
-        // Implementazione per recuperare token dal database
-        // Per semplicità, restituiamo array vuoto
         return [];
     }
 
     /**
-     * Ottieni template notifica
+     * @return array<string, mixed>|null
      */
     private function getTemplate(string $templateId): ?array
     {
+        /** @var array<string, array<string, mixed>> $templates */
         $templates = [
             'ticket_created' => [
                 'title' => 'Nuovo Ticket Creato',
@@ -494,7 +505,9 @@ class PushNotificationService
     }
 
     /**
-     * Processa template con variabili
+     * @param  array<string, mixed>  $template
+     * @param  array<string, mixed>  $variables
+     * @return array<string, mixed>
      */
     private function processTemplate(array $template, array $variables): array
     {
@@ -514,17 +527,18 @@ class PushNotificationService
     }
 
     /**
-     * Ottieni token per criteri
+     * @param  array<string, mixed>  $criteria
+     * @return list<string>
      */
     private function getTokensByCriteria(array $criteria): array
     {
-        // Implementazione per filtrare token basato su criteri
-        // Per semplicità, restituiamo array vuoto
         return [];
     }
 
     /**
-     * Invia notifica APNS topic
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendAPNSTopicNotification(string $topic, array $notification, array $data): array
     {
@@ -536,7 +550,9 @@ class PushNotificationService
     }
 
     /**
-     * Invia notifica Web Push topic
+     * @param  array<string, mixed>  $notification
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
      */
     private function sendWebPushTopicNotification(string $topic, array $notification, array $data): array
     {

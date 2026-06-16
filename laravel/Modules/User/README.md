@@ -1,158 +1,56 @@
----
-title: User
-module: user
-related: Xot, Notify
-status: production
----
+# 👤 User
 
-# User Module
+[![Domain-Auth](https://img.shields.io/badge/Domain-Auth%20%26%20Teams-1565C0.svg)](#)
+[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+[![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
+[![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
+[![PSR-12](https://img.shields.io/badge/Code-PSR--12-blue.svg)](https://www.php-fig.org/psr/psr-12/)
+[![Strict Types](https://img.shields.io/badge/PHP-strict__types-1-informational.svg)](#)
+[![Laraxot Modules](https://img.shields.io/badge/Architecture-Modular-purple.svg)](#)
+[![FixCity Platform](https://img.shields.io/badge/Platform-FixCity-008758.svg)](#)
 
-**Module**: `user`
-**Namespace**: `Modules\User\`
-**Status**: ✅ Production
-
----
-
-## Overview
-
-Il modulo User gestisce l'intero ciclo di vita dell'utente: registrazione, autenticazione multi-metodo (password, OAuth, SSO, OTP), autorizzazione basata su ruoli e permessi (Spatie), organizzazione in team e tenant, tracciamento dispositivi e sessioni.
-
-### Key Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
-### Module Dependencies
-
-- [Xot](../Xot/README.md) (required)
-- [Notify](../Notify/README.md) (required)
+> **Chi entra, cosa può fare, su quale team.** Auth AGID-ready, ruoli Spatie, profili — senza compromessi sicurezza.
 
 ---
 
-## Quick Start
+## Perché esiste
 
-### Installation
+Identità e autorizzazione per cittadini, operatori e multi-tenant.
 
-```bash
-# Already included in main project
-# No additional setup required
-```
+## Superpoteri
 
-### Basic Usage
+- Login widget Filament + Folio/Volt
+- Ruoli e permessi Spatie
+- Team, inviti, profilo
+- Integrazione GDPR e activity log
 
-```php
-use Modules\User\Models\YourModel;
+## Certificazioni
 
-$item = YourModel::first();
-```
+| Certificazione | Stato |
+|----------------|-------|
+| PHPStan livello 10 | Target progetto |
+| `declare(strict_types=1)` | Su nuovo codice PHP |
+| Filament 5 + XotBase | Admin enterprise |
+| Test PHPUnit / Pest | Suite modulo |
+| Documentazione wiki | Cartella `docs/` |
 
-### Configuration
+## Vuoi entrare nel team?
 
-Configuration file: `config/user.php`
+Security-minded dev? Qui si definisce **chi è autorizzato** su FixCity.
 
-Key settings:
-- `setting1` - Description
-- `setting2` - Description
-
----
-
-## Architecture
-
-### Directory Structure
-
-```
-User/
-├── src/
-│   ├── Models/
-│   ├── Controllers/
-│   ├── Resources/
-│   ├── Actions/
-│   └── Traits/
-├── routes/
-│   ├── api.php
-│   └── web.php
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── tests/
-│   ├── Unit/
-│   └── Feature/
-├── config/
-│   └── user.php
-├── docs/
-│   └── README.md
-└── composer.json
-```
-
-### Key Components
-
-
+Stack frontoffice: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filament v5** — vedi [STORY-133](../../../docs/stories/STORY-133-frontend-stack-religion-tailwind-alpine-lit.md).
 
 ---
 
-## API Reference
+## Documentazione
 
-Reference
-
----
-
-## Usage Examples
-
-### Common Tasks
-
-#### Task 1: Description
-
-```php
-// Code example
-```
+| Lingua | Link |
+|--------|------|
+| 🇮🇹 Presentazione | Questo file (`README.md`) |
+| 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
+| 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
 
 ---
 
-## Testing
-
-### Running Tests
-
-```bash
-# Run all module tests
-composer test -- Modules/User
-```
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-#### Issue: Problem description
-
-**Solution**: How to fix this issue
-
----
-
-## Related Modules
-
-### Dependencies
-
-- [Xot](../Xot/README.md) - Required module
-- [Notify](../Notify/README.md) - Required module
-
-### Dependents
-
-- [Activity](../Activity/README.md) - Depends on this module
-- [Comment](../Comment/README.md) - Depends on this module
-- [Fixcity](../Fixcity/README.md) - Depends on this module
-- [Gdpr](../Gdpr/README.md) - Depends on this module
-- [Notify](../Notify/README.md) - Depends on this module
-- [Rating](../Rating/README.md) - Depends on this module
-- [Tenant](../Tenant/README.md) - Depends on this module
-
----
-
-Navigation: [Project Home](../../docs/INDEX.md) | [Modules](../../docs/modules/README.md)
-
-
-## Documentazione tecnica
-
-- [Indice docs](./docs/README.md) — mappa knowledge base locale (wiki, audit, regole)
-
+**Modulo** `user` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5

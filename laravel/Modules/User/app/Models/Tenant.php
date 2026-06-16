@@ -29,19 +29,16 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property TenantUser                                  $pivot
  * @property EloquentCollection<int, User>               $users
  * @property int|null                                    $users_count
- *
- * @mixin IdeHelperTenant
- *
- * @property string               $id
- * @property string               $name
- * @property string|null          $slug
- * @property string|null          $domain
- * @property string|null          $database
- * @property int                  $is_active
- * @property Carbon|null          $created_at
- * @property Carbon|null          $updated_at
- * @property Carbon|null          $deleted_at
- * @property ProfileContract|null $deleter
+ * @property string                                      $id
+ * @property string                                      $name
+ * @property string|null                                 $slug
+ * @property string|null                                 $domain
+ * @property string|null                                 $database
+ * @property int                                         $is_active
+ * @property Carbon|null                                 $created_at
+ * @property Carbon|null                                 $updated_at
+ * @property Carbon|null                                 $deleted_at
+ * @property ProfileContract|null                        $deleter
  *
  * @method static Builder<static>|Tenant whereCreatedAt($value)
  * @method static Builder<static>|Tenant whereDatabase($value)
