@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\IndennitaResponsabilita\Models\Rating;
-use Modules\IndennitaResponsabilita\Models\RatingMorph;
+use Modules\Progressioni\Models\Rating;
+use Modules\Progressioni\Models\RatingMorph;
 use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 

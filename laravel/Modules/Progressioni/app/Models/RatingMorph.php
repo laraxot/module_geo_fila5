@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Models\Profile;
 use Modules\Rating\Models\Rating;
-use Modules\Rating\Models\RatingMorph as PtvRatingMorphModel;
 use Modules\User\Models\User;
-use Modules\Xot\Models\BaseRatingMorph;
+use Modules\Rating\Models\BaseRatingMorph;
 
 /**
  * Modules\Progressioni\Models\RatingMorph

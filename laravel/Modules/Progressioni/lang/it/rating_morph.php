@@ -14,4 +14,9 @@ return [
         'icon' => 'heroicon-o-rectangle-stack',
         'label' => 'Valutazioni Assegnate',
     ],
+    'actions' => [
+        'logout' => [
+            'tooltip' => 'logout',
+        ],
+    ],
 ];
