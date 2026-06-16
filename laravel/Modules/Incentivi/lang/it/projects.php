@@ -52,4 +52,9 @@ return [
             'label' => 'updated_at',
         ],
     ],
+    'actions' => [
+        'delete' => [
+            'tooltip' => 'delete',
+        ],
+    ],
 ];
