@@ -33,6 +33,8 @@ use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
 use Illuminate\Support\Facades\DB;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro.
@@ -193,7 +195,7 @@ use Illuminate\Support\Facades\DB;
  * @property-read \Modules\IndennitaCondizioniLavoro\Models\StabiDirigente|null $valutatore
  * @mixin \Eloquent
  */
-class CondizioniLavoro extends BaseModel
+class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, EnteMatrFieldsContract
 {
     use EnteMatrMutator;
     use HasValutatore;
@@ -259,17 +261,32 @@ class CondizioniLavoro extends BaseModel
         ];
     }
 
-    protected function rangeFromField(): string
+    public function rangeFromField(): string
     {
         return 'dal';
     }
 
-    protected function rangeToField(): string
+    public function rangeToField(): string
     {
         return 'al';
     }
 
-    protected function annFieldName(): string
+    public function annFieldName(): string
+    {
+        return 'anno';
+    }
+
+    public function matrField(): string
+    {
+        return 'matr';
+    }
+
+    public function enteField(): string
+    {
+        return 'ente';
+    }
+
+    public function yearField(): string
     {
         return 'anno';
     }

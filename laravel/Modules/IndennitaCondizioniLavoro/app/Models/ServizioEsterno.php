@@ -31,6 +31,8 @@ use Modules\Sigma\Models\Sto00f;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
 use Modules\Sigma\Models\Wstr01lx;
 use Illuminate\Support\Facades\DB;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 
 /**
  * Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno.
@@ -191,7 +193,7 @@ use Illuminate\Support\Facades\DB;
  * @property-read int|null $trasferte_count
  * @mixin \Eloquent
  */
-class ServizioEsterno extends BaseModel
+class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, EnteMatrFieldsContract
 {
     use MutatorTrait, RelationshipTrait, SigmaModelTrait {
         MutatorTrait::getFromFieldAttribute insteadof SigmaModelTrait;
@@ -221,17 +223,32 @@ class ServizioEsterno extends BaseModel
         ];
     }
 
-    protected function rangeFromField(): string
+    public function rangeFromField(): string
     {
         return 'dal';
     }
 
-    protected function rangeToField(): string
+    public function rangeToField(): string
     {
         return 'al';
     }
 
-    protected function annFieldName(): string
+    public function annFieldName(): string
+    {
+        return 'anno';
+    }
+
+    public function matrField(): string
+    {
+        return 'matr';
+    }
+
+    public function enteField(): string
+    {
+        return 'ente';
+    }
+
+    public function yearField(): string
     {
         return 'anno';
     }

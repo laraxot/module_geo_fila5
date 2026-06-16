@@ -622,7 +622,9 @@ class LettI extends BaseScheda
                     continue;
                 }
                 /** @var Builder<Qua00f> $qua00fQuery */
-                $qua00fQuery = $anag->qua00f()
+                $qua00fQuery = $anag->qua00f();
+                /** @var Builder<Qua00f> $qua00fQuery */
+                $qua00fQuery = $qua00fQuery
                     ->select('propro', 'posfun', 'posiz')
                     ->distinct()
                     ->ofRangeDate($dalfInt, $alfInt);
@@ -644,11 +646,14 @@ class LettI extends BaseScheda
                     echo "<br/>qualcosa e' andato storto [".__LINE__.']['.__FILE__.']';
                     echo '<pre>';
                     print_r($qua00fQuery->toSql());
-                    /** @var Collection<int, Qua00f> $qua00f */
-                    $qua00f = $anag->qua00f()
+                    /** @var Builder<Qua00f> $qua00fQuery2 */
+                    $qua00fQuery2 = $anag->qua00f();
+                    /** @var Builder<Qua00f> $qua00fQuery2 */
+                    $qua00fQuery2 = $qua00fQuery2
                         ->ofRangeDate($dalfInt, $alfInt)
-                        ->orderBy('qua2kd')
-                        ->get();
+                        ->orderBy('qua2kd');
+                    /** @var Collection<int, Qua00f> $qua00f */
+                    $qua00f = $qua00fQuery2->get();
 
                     // foreach($qua00f as $v_qua00f){
                     if ($qua00f->count() < 2) {
