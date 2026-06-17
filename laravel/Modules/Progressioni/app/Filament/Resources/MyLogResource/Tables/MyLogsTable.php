@@ -4,11 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\MyLogResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\CreateAction;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MyLogsTable extends XotBaseResourceTable
 {
+    /**
+     * Convertito da ListMyLogs::getHeaderActions() al contesto classe Table.
+     *
+     * @return array<string, Action>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         return [

@@ -24,6 +24,57 @@ use Modules\Rating\Filament\Resources\RatingResource\Tables\BaseRatingsTable;
 class RatingsTable extends BaseRatingsTable
 {
     /**
+     * Convertito da ListRatings::getTableHeaderActions() al contesto classe Table:
+     * `$this->getModel()` → riferimento esplicito al model `Rating::class`.
+     *
+     * @return array<string, Action|ActionGroup>
+     */
+    #[Override]
+    public function getTableHeaderActions(): array
+    {
+        /** @var array<string, Action|ActionGroup> $parentActions */
+        $parentActions = parent::getTableHeaderActions();
+        /** @var array<string, string|int|bool|null>|null $tableFilters */
+        $tableFilters = $this->tableFilters ?? [];
+        /** @var string|int|bool|null $annoRaw */
+        $annoRaw = Arr::get($tableFilters, 'filter.anno');
+        /** @var int|null $anno */
+        $anno = is_numeric($annoRaw) ? (int) $annoRaw : null;
+
+        return [
+            ...$parentActions,
+            'copy_from_last_year' => Action::make('copy_from_last_year')
+                ->action(function () use ($anno): void {
+                    if ($anno === null) {
+                        return;
+                    }
+                    $anno_prec = $anno - 1;
+                    /** @var class-string<Rating> $model */
+                    $model = Rating::class;
+                    /** @var Collection<int, Rating> $rows */
+                    $rows = $model::query()
+                        ->where('extra_attributes->anno', $anno_prec)
+                        ->get();
+                    foreach ($rows as $row) {
+                        /** @var array<string, mixed> $data */
+                        $data = $row->toArray();
+                        /** @var array<string, mixed> $data_where */
+                        $data_where = Arr::only($data, ['title']);
+                        unset($data['id']);
+
+                        /** @var Rating $rowCreated */
+                        $rowCreated = $model::query()->firstOrCreate($data_where, $data);
+
+                        if ($rowCreated->extra_attributes !== null) {
+                            $rowCreated->extra_attributes->set('anno', $anno);
+                            $rowCreated->save();
+                        }
+                    }
+                }),
+        ];
+    }
+
+    /**
      * @return array<string, Column>
      */
     public function getTableColumns(): array

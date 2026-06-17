@@ -4,15 +4,63 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\CedDiffResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ImportAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Progressioni\Filament\Imports\CedDiffImporter;
+use Modules\Progressioni\Models\CedDiff;
+use Modules\Progressioni\Models\Scheda;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class CedDiffsTable extends XotBaseResourceTable
 {
+    /**
+     * Convertito da ListCedDiffs::getHeaderActions() (azioni pagina) al contesto
+     * classe Table: metodo `getTableHeaderActions()` cablato da HasXotTable in ->headerActions().
+     *
+     * @return array<string, Action>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+            'import' => ImportAction::make()
+                ->importer(CedDiffImporter::class)
+                ->label(__('progressioni::messages.import_ced_diff'))
+                ->modalHeading(__('progressioni::messages.import_modal_heading'))
+                ->successNotificationTitle(__('progressioni::messages.import_success'))
+                ->color('success'),
+            'escludi' => Action::make('escludi da progressione')
+                ->schema([
+                    TextInput::make('anno')
+                        ->numeric()
+                        ->required(),
+                ])
+                ->action(function (array $data): void {
+                    $matricole = CedDiff::all()->pluck('matricola')->toArray();
+
+                    $rows = Scheda::where('anno', $data['anno'])
+                        ->whereIn('matr', $matricole)
+                        ->get();
+                    foreach ($rows as $row) {
+                        $motivo_arr = explode(',', (string) $row->motivo);
+                        $motivo_arr[] = 'gradino';
+                        $motivo_arr = array_unique($motivo_arr);
+                        $motivo_arr = array_filter($motivo_arr);
+                        $row->ha_diritto = 0;
+                        $row->motivo = implode(',', $motivo_arr);
+                        $row->save();
+                    }
+                }),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         return [

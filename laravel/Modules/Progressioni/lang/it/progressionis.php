@@ -26,6 +26,61 @@ return [
                 'parent_name' => 'Nome area livello superiore',
             ],
         ],
+        'create' => [
+            'label' => 'create',
+            'icon' => 'create',
+            'tooltip' => 'create',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'list_log_activities' => [
+            'label' => 'list_log_activities',
+            'icon' => 'list_log_activities',
+            'tooltip' => 'list_log_activities',
+        ],
+        'send-mail' => [
+            'label' => 'send-mail',
+            'icon' => 'send-mail',
+            'tooltip' => 'send-mail',
+        ],
+        'zip-schede' => [
+            'label' => 'zip-schede',
+            'icon' => 'zip-schede',
+            'tooltip' => 'zip-schede',
+        ],
+        'populate_year' => [
+            'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
+        ],
+        'merge_double_row_cateco_year' => [
+            'label' => 'merge_double_row_cateco_year',
+            'icon' => 'merge_double_row_cateco_year',
+            'tooltip' => 'merge_double_row_cateco_year',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
+        ],
+        'ricalcola' => [
+            'label' => 'ricalcola',
+            'icon' => 'ricalcola',
+            'tooltip' => 'ricalcola',
+        ],
     ],
     'fields' => [
         'name' => 'Nome',
@@ -49,6 +104,9 @@ return [
         ],
         'ha_diritto' => [
             'label' => 'ha_diritto',
+            'placeholder' => 'ha_diritto',
+            'helper_text' => 'ha_diritto',
+            'description' => 'ha_diritto',
         ],
         'motivo' => [
             'label' => 'motivo',
@@ -67,6 +125,9 @@ return [
         'categoria_eco' => 'categoria_eco',
         'anno' => [
             'label' => 'anno',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+            'description' => 'anno',
         ],
         'criteri' => [
             'label' => 'criteri',
@@ -94,6 +155,15 @@ return [
         ],
         'al' => [
             'label' => 'al',
+        ],
+        'anno/valutatore' => [
+            'label' => 'anno/valutatore',
+        ],
+        'valutatore_id' => [
+            'label' => 'valutatore_id',
+            'placeholder' => 'valutatore_id',
+            'helper_text' => 'valutatore_id',
+            'description' => 'valutatore_id',
         ],
     ],
     'schede' => [
