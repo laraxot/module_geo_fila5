@@ -30,7 +30,6 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
@@ -132,11 +131,6 @@ trait HasXotTable
         return min($count, 6);
     }
 
-    protected function getTableFiltersLayout(): FiltersLayout
-    {
-        return FiltersLayout::AboveContent;
-    }
-
     /**
      * Get table record title attribute.
      */
@@ -189,7 +183,6 @@ trait HasXotTable
      */
     public function table(Table $table): Table
     {
-        
         /*
         $modelClass = $this->getModelClass();
         if (! app(TableExistsByModelClassActions::class)->execute($modelClass)) {
@@ -209,7 +202,7 @@ trait HasXotTable
             ->columns($this->layoutView->getTableColumns(array_values($this->getTableColumns()), $this->getGridTableColumns()))
             ->contentGrid($this->layoutView->getTableContentGrid())
             ->filters($this->getTableFilters()) // @phpstan-ignore argument.type
-            ->filtersLayout($this->getTableFiltersLayout())
+            ->filtersLayout(FiltersLayout::AboveContent)
             ->filtersFormColumns($this->getTableFiltersFormColumns())
             ->persistFiltersInSession()
             ->headerActions($this->getTableHeaderActions())
@@ -364,7 +357,7 @@ trait HasXotTable
      */
     public function getModelClass(): string
     {
-        /** @phpstan-ignore-next-line function.alreadyNarrowedType */
+        /* @phpstan-ignore-next-line function.alreadyNarrowedType */
         if (method_exists($this, 'getModel')) {
             $model = $this->getModel();
             Assert::string($model);

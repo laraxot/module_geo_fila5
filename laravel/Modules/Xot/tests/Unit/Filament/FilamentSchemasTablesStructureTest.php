@@ -6,7 +6,6 @@ namespace Modules\Xot\Tests\Unit\Filament;
 
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 use Modules\Xot\Tests\TestCase;
-use ReflectionClass;
 
 uses(TestCase::class);
 
@@ -38,7 +37,7 @@ function filamentConcreteResourceClasses(): array
             continue;
         }
 
-        $ref = new ReflectionClass($class);
+        $ref = new \ReflectionClass($class);
         if ($ref->isAbstract()) {
             continue;
         }
@@ -52,7 +51,7 @@ function filamentConcreteResourceClasses(): array
 function filamentResolveModelBasename(string $resourceFile, string $resourceName): string
 {
     $content = file_get_contents($resourceFile);
-    if ($content !== false) {
+    if (false !== $content) {
         foreach (explode("\n", $content) as $line) {
             $trimmed = ltrim($line);
             if (str_starts_with($trimmed, '//') || str_starts_with($trimmed, '*')) {
@@ -80,13 +79,13 @@ function filamentSchemaIsPopulated(string $path, string $method): bool
     }
 
     $content = file_get_contents($path);
-    if ($content === false || ! preg_match('/function\s+'.preg_quote($method, '/').'\s*\([^)]*\)[^{]*\{([^}]*)\}/s', $content, $m)) {
+    if (false === $content || ! preg_match('/function\s+'.preg_quote($method, '/').'\s*\([^)]*\)[^{]*\{([^}]*)\}/s', $content, $m)) {
         return false;
     }
 
     $body = trim($m[1]);
 
-    return $body !== '' && $body !== 'return [];' && $body !== "return [\n        ];";
+    return '' !== $body && 'return [];' !== $body && "return [\n        ];" !== $body;
 }
 
 test('every concrete filament resource has populated schemas and table classes', function (): void {
