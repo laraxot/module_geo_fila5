@@ -9,6 +9,8 @@ module: "IndennitaCondizioniLavoro"
 
 ## Log Entries
 
+[2026-06-17 10:45:00 UTC] [FIX] `RelationshipTrait`: aggiunto `HasEnteMatrRelationHelpers` — `EnteMatrRelationship` richiede `hasManyByEnteMatr()` assente su `BaseModel` modulo (non Sigma). Fix errore `CompilaCondizioniLavoro` / `asz00k1()`. Vedi [ente-matr-relation-helpers](./concepts/ente-matr-relation-helpers.md).
+
 _No activity yet. Start by ingesting raw documents._
 
 ### Format

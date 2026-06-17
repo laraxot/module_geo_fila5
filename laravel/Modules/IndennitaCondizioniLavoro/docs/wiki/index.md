@@ -11,6 +11,8 @@ updated: "2026-04-15T08:28:43Z"
 
 ## Concepts
 
+- [ente-matr-relation-helpers](./concepts/ente-matr-relation-helpers.md) — `HasEnteMatrRelationHelpers` su `RelationshipTrait`
+
 _No concepts ingested yet. Drop raw documents in `../raw/articles/` and run ingest._
 
 ## Entities
