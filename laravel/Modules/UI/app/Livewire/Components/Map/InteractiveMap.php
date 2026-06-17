@@ -6,8 +6,8 @@ namespace Modules\UI\Livewire\Components\Map;
 
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Modules\UI\Contracts\GeocodingServiceContract;
-use Modules\UI\Contracts\MapServiceContract;
+use Modules\Geo\Services\GeocodingService;
+use Modules\Geo\Services\MapService;
 use Webmozart\Assert\Assert;
 
 /**
@@ -18,10 +18,12 @@ use Webmozart\Assert\Assert;
  */
 final class InteractiveMap extends Component
 {
+    /** @var array{0: float, 1: float} */
     public array $center = [45.4642, 9.1900]; // Milano
 
     public int $zoom = 10;
 
+    /** @var array<int, array<string, mixed>> */
     public array $markers = [];
 
     /** @var array<string, mixed> */
@@ -36,8 +38,10 @@ final class InteractiveMap extends Component
         'location_types' => [],
     ];
 
+    /** @var array<string, mixed>|null */
     public ?array $selectedMarker = null;
 
+    /** @var array<string, mixed> */
     public array $stats = [];
 
     public bool $showControls = true;
@@ -59,8 +63,8 @@ final class InteractiveMap extends Component
     ];
 
     /**
-     * @param array<string, mixed> $filters
-     * @param array<string, mixed> $filters
+     * @param array{0: float, 1: float}|null $center
+     * @param array<string, mixed>           $filters
      */
     public function mount(?array $center = null, ?int $zoom = null, array $filters = []): void
     {
@@ -115,6 +119,9 @@ final class InteractiveMap extends Component
     /**
      * Aggiorna i bounds della mappa.
      */
+    /**
+     * @param array<string, float> $bounds
+     */
     public function updateBounds(array $bounds): void
     {
         $this->filters['bounds'] = $bounds;
@@ -129,14 +136,10 @@ final class InteractiveMap extends Component
         $this->isLoading = true;
 
         try {
-            $mapService = app(MapServiceContract::class);
+            $mapService = app(MapService::class);
             $filters = $this->getMapFilters();
-            $markers = $mapService->getMarkers($filters);
-            Assert::isArray($markers);
-            $this->markers = $markers;
-            $stats = $mapService->getMapStats($filters);
-            Assert::isArray($stats);
-            $this->stats = $stats;
+            $this->markers = $mapService->getMarkers($filters);
+            $this->stats = $mapService->getMapStats($filters);
         } catch (\Exception $e) {
             $this->addError('map', 'Errore nel caricamento dei marker: '.$e->getMessage());
             $this->markers = [];
@@ -160,7 +163,7 @@ final class InteractiveMap extends Component
     public function exportData(string $format = 'json'): void
     {
         try {
-            $mapService = app(MapServiceContract::class);
+            $mapService = app(MapService::class);
             $data = $mapService->exportData($this->getMapFilters(), $format);
 
             $filename = 'map_export_'.now()->format('Y_m_d_H_i_s').'.'.$format;
@@ -190,7 +193,7 @@ final class InteractiveMap extends Component
         }
 
         try {
-            $geocodingService = app(GeocodingServiceContract::class);
+            $geocodingService = app(GeocodingService::class);
             $result = $geocodingService->geocodeAddress($this->searchQuery);
             Assert::isArray($result, 'Geocoding result must be array');
 
@@ -213,6 +216,8 @@ final class InteractiveMap extends Component
 
     /**
      * Ottiene suggerimenti per la ricerca.
+     *
+     * @return array<int, array<string, mixed>>
      */
     public function getSuggestions(): array
     {
@@ -221,7 +226,7 @@ final class InteractiveMap extends Component
         }
 
         try {
-            $geocodingService = app(GeocodingServiceContract::class);
+            $geocodingService = app(GeocodingService::class);
 
             /** @var array<int, array<string, mixed>> $suggestions */
             $suggestions = $geocodingService->getSuggestions($this->searchQuery);
@@ -320,13 +325,18 @@ final class InteractiveMap extends Component
 
     /**
      * Ottiene le proprietà computate.
+     *
+     * @return array<string, int>
      */
     public function getMarkersByTypeProperty(): array
     {
-        return collect($this->markers)
+        /** @var array<string, int> $grouped */
+        $grouped = collect($this->markers)
             ->groupBy('type')
             ->map(static fn ($markers) => $markers->count())
-            ->toArray();
+            ->all();
+
+        return $grouped;
     }
 
     public function getVisibleMarkersCountProperty(): int

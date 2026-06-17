@@ -13,6 +13,7 @@ use Filament\Tables\Columns\IconColumn;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\StateContract as XotStateContract;
 
 class IconStateColumn extends IconColumn
@@ -110,7 +111,7 @@ class IconStateColumn extends IconColumn
                             return false;
                         }
 
-                        $newStateClass = Arr::get($statesArray, (string) $newState);
+                        $newStateClass = Arr::get($statesArray, SafeStringCastAction::cast($newState));
                         if (! is_string($newStateClass) || ! class_exists($newStateClass)) {
                             return false;
                         }

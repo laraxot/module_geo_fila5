@@ -43,20 +43,26 @@ class OpeningHoursRule implements ValidationRule
                 continue;
             }
 
+            /** @var array<string, mixed> $typedDayHours */
+            $typedDayHours = $dayHours;
+
             // Type narrowing per dayLabel
             $dayLabelString = \is_string($dayLabel) ? $dayLabel : (string) $dayLabel;
 
             // Valida ogni sessione (mattina e pomeriggio)
-            $this->validateSession($dayHours, 'morning', $dayLabelString, $fail);
-            $this->validateSession($dayHours, 'afternoon', $dayLabelString, $fail);
+            $this->validateSession($typedDayHours, 'morning', $dayLabelString, $fail);
+            $this->validateSession($typedDayHours, 'afternoon', $dayLabelString, $fail);
 
             // Valida la coerenza tra sessioni dello stesso giorno
-            $this->validateDayLogic($dayHours, $dayLabelString, $fail);
+            $this->validateDayLogic($typedDayHours, $dayLabelString, $fail);
         }
     }
 
     /**
      * Valida la coerenza tra le sessioni dello stesso giorno.
+     */
+    /**
+     * @param array<string, mixed> $dayHours
      */
     private function validateDayLogic(array $dayHours, string $dayLabel, \Closure $fail): void
     {
@@ -73,6 +79,9 @@ class OpeningHoursRule implements ValidationRule
 
     /**
      * Valida una sessione specifica (mattina o pomeriggio).
+     */
+    /**
+     * @param array<string, mixed> $dayHours
      */
     private function validateSession(array $dayHours, string $session, string $dayLabel, \Closure $fail): void
     {

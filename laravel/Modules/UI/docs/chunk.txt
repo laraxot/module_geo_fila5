@@ -1,1 +1,7 @@
-https://github.com/owainjones74/filament-chunked-file-uploads/tree/main
+---
+module: theme
+topic: chunk
+canonical: ../../../Themes/docs/shared-components/chunk.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/chunk.md

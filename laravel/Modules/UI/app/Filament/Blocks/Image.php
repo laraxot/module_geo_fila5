@@ -33,6 +33,9 @@ class Image
     /**
      * @return array<string, string>
      */
+    /**
+     * @return array<string, string>
+     */
     public static function getRatios(): array
     {
         return [
@@ -51,6 +54,9 @@ class Image
         };
     }
 
+    /**
+     * @return array<int, \Filament\Schemas\Components\Component>
+     */
     public static function getFormSchema(): array
     {
         return [

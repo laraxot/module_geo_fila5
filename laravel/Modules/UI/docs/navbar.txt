@@ -1,9 +1,7 @@
-https://tw-elements.com/docs/standard/navigation/navbar/
+---
+module: theme
+topic: navbar
+canonical: ../../../Themes/docs/shared-components/navbar.md
+---
 
-https://flowbite.com/docs/components/navbar/
-
-https://tailwindflex.com/tag/navbar
-
-https://freefrontend.com/tailwind-navbars/
-
-
+See canonical documentation: ../../../Themes/docs/shared-components/navbar.md

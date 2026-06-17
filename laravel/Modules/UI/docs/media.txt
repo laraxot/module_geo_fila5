@@ -1,5 +1,7 @@
-https://naxon.dev/blog/laravel-media-library-load-only-1st-picture-efficiently
+---
+module: theme
+topic: media
+canonical: ../../../Themes/docs/shared-components/media.md
+---
 
-https://www.answeroverflow.com/m/1158821463168659496
-
-
+See canonical documentation: ../../../Themes/docs/shared-components/media.md

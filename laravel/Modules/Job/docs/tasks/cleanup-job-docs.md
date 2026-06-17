@@ -14,7 +14,7 @@ Sfoltire l'enorme documentazione del modulo Job (120+ file), eliminando duplicat
 - [ ] Rimuovere tutti i file con estensione `.txt` se duplicati dei `.md`.
 - [ ] Eliminare i file con dimensione 1 byte o nulli.
 - [ ] Archiviare file storici o di analisi specifica in `archive/`.
-- [ ] Consolidare le varie roadmap (`roadmap-archive-1.md`) in `roadmap.md`.
+- [ ] Consolidare le varie roadmap (`roadmap-2025.md`) in `roadmap.md`.
 - [ ] Aggiornare `00-index.md` con i percorsi corretti.
 
 ## 🔗 Riferimenti

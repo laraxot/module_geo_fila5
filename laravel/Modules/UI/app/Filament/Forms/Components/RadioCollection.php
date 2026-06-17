@@ -15,6 +15,7 @@ final class RadioCollection extends XotBaseField
     /**
      * Callback per ottenere gli studi.
      */
+    /** @var \Closure|Collection<int|string, mixed>|null */
     protected \Closure|Collection|null $options = null;
 
     protected string $itemView;
@@ -23,6 +24,9 @@ final class RadioCollection extends XotBaseField
 
     /**
      * Set the options collection for the radio buttons.
+     */
+    /**
+     * @param \Closure|Collection<int|string, mixed>|null $options
      */
     public function options(\Closure|Collection|null $options): static
     {

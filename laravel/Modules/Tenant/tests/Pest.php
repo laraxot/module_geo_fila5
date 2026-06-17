@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Modules\Tenant\Models\Tenant;
+use Modules\Tenant\Tests\TestCase;
 use Webmozart\Assert\Assert;
 
 /*
@@ -10,12 +11,13 @@ use Webmozart\Assert\Assert;
  * | Test Case
  * |--------------------------------------------------------------------------
  * |
- * | Ogni file test dichiara esplicitamente uses(\Modules\Tenant\Tests\TestCase::class).
- * | Vietato pest()->extend(...)->in(...) qui: questo Pest.php e' caricato eager
- * | dall'autoload `files` di composer per esporre gli helper, e una pending call
- * | pest() crasherebbe ogni tool basato su vendor/autoload.php (PHPStan, artisan).
+ * | The closure you provide to your test functions is always bound to a specific PHPUnit test
+ * | case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
+ * | need to change it using the "pest()" function to bind a different classes or traits.
  * |
  */
+
+pest()->extend(TestCase::class)->in('Feature', 'Unit', 'Integration', 'Performance');
 
 /*
  * |--------------------------------------------------------------------------

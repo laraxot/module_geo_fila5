@@ -8,6 +8,7 @@ use Filament\Tables\Columns\Column;
 
 class GroupColumn extends Column
 {
+    /** @var array<int|string, mixed> */
     public array $form = [];
 
     /**
@@ -27,9 +28,11 @@ class GroupColumn extends Column
         // Component initialization logic
     }
 
+    /**
+     * @return array<Column>
+     */
     public function getFields(): array
     {
-        /* @var array<string, mixed> */
         return $this->schema;
     }
 

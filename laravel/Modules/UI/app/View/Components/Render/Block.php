@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use Modules\UI\Actions\Block\ResolveLocalizedBlockDataAction;
+use Modules\Cms\Actions\ResolveLocalizedBlockDataAction;
 use Webmozart\Assert\Assert;
 
 /**
@@ -19,6 +19,9 @@ class Block extends Component
 {
     public ?string $view = null;
 
+    /**
+     * @param array<string, mixed> $block
+     */
     public function __construct(
         public array $block,
         public ?Model $model = null,

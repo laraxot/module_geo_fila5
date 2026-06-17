@@ -1,21 +1,7 @@
-https://github.com/whitecube/nova-flexible-content
+---
+module: theme
+topic: blocks
+canonical: ../../../Themes/docs/shared-components/blocks.md
+---
 
-
-https://filamentphp.com/plugins/statik-flexible-content-blocks
-
-
-
-https://tailblocks.cc/
-https://tailwindcomponents.com/
-https://flowbite.com/docs/getting-started/introduction/
-https://merakiui.com/
-https://tailwindui.com/
-https://www.tailwindtoolbox.com/
-https://tw-elements.com/docs/standard/navigation/navbar/
-
-
-
-
-https://freefrontend.com/tailwind-navbars/
-
-https://preline.co/docs/mega-menu.html
+See canonical documentation: ../../../Themes/docs/shared-components/blocks.md

@@ -1,7 +1,7 @@
-https://github.com/tecnickcom/TCPDF
+---
+module: theme
+topic: qrcode
+canonical: ../../../Themes/docs/shared-components/qrcode.md
+---
 
-simplesoftwareio/simple-qrcode  
-https://laravel-news.com/package/simplesoftwareio-simple-qrcode
-
-
-https://github.com/giauphan/laravel-qr-code
+See canonical documentation: ../../../Themes/docs/shared-components/qrcode.md

@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace Modules\UI\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Modules\UI\Models\Category;
 
+/**
+ * @extends Factory<Category>
+ */
 class CategoryFactory extends Factory
 {
     /**
@@ -21,6 +25,14 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        /** @var string $title */
+        $title = fake()->sentence(2);
+
+        return [
+            'title' => $title,
+            'slug' => Str::slug((string) $title).'-'.fake()->unique()->numerify('###'),
+            'is_active' => 1,
+            'sort_order' => 0,
+        ];
     }
 }

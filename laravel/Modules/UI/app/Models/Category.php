@@ -16,6 +16,7 @@ use Modules\Xot\Models\BaseModel;
  */
 /**
  * @property string               $id
+ * @property string|null          $name
  * @property string               $title
  * @property string               $slug
  * @property int|null             $parent_id

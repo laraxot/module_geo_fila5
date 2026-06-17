@@ -9,6 +9,7 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Columns\Column;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\On;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\StateContract;
 
 /**
@@ -61,13 +62,13 @@ final class IconStateSplitColumn extends Column
                 continue;
             }
 
-            $labelString = (string) $stateInstance->label();
+            $labelString = SafeStringCastAction::cast($stateInstance->label());
 
             $result[$stateKey] = [
                 'class' => $stateInstance,
-                'icon' => (string) $stateInstance->icon(),
+                'icon' => SafeStringCastAction::cast($stateInstance->icon()),
                 'label' => $labelString,
-                'color' => (string) $stateInstance->color(),
+                'color' => SafeStringCastAction::cast($stateInstance->color()),
                 'tooltip' => $labelString,
             ];
         }
@@ -212,7 +213,7 @@ final class IconStateSplitColumn extends Column
             ->icon('heroicon-m-plus')
             ->color('primary')
             ->action(static function () use ($record): void {
-                $recordId = $record && isset($record->id) ? ((string) $record->id) : 'N/A';
+                $recordId = $record && isset($record->id) ? SafeStringCastAction::cast($record->id) : 'N/A';
                 Notification::make()
                     ->title(__('ui::actions.prova.title'))
                     ->body(__('ui::actions.prova.body', ['id' => $recordId]))
@@ -234,7 +235,7 @@ final class IconStateSplitColumn extends Column
             return null;
         }
 
-        $recordId = \is_int($recordIdRaw) ? $recordIdRaw : (string) $recordIdRaw;
+        $recordId = \is_int($recordIdRaw) ? $recordIdRaw : SafeStringCastAction::cast($recordIdRaw);
         $stateClass = $stateData['class'];
         $stateClassName = $stateClass::class;
 

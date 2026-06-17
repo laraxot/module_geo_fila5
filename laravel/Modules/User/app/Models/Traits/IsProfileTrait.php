@@ -31,6 +31,7 @@ use Modules\User\Models\Device;
 use Modules\User\Models\DeviceUser;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
@@ -55,6 +56,7 @@ trait IsProfileTrait
      */
     public function user(): BelongsTo
     {
+        /** @var class-string<Model&UserContract> $userClass */
         $userClass = XotData::make()->getUserClass();
 
         /** @var BelongsTo<Model, Model> $relation */
