@@ -138,29 +138,55 @@ class Comune extends BaseModel
     /**
      * Get all regions.
      *
-     * @return Collection<int, mixed>
+     * @return Collection<int, array<array-key, mixed>>
      */
     public static function getRegioni(): Collection
     {
-        return static::all()
-            ->pluck('regione')
+        $regioni = [];
+
+        foreach (static::all() as $comune) {
+            $regione = $comune->regione;
+            if (! is_array($regione)) {
+                continue;
+            }
+
+            $regioni[] = $regione;
+        }
+
+        /** @var Collection<int, array<array-key, mixed>> $result */
+        $result = collect($regioni)
             ->unique()
             ->sort()
             ->values();
+
+        return $result;
     }
 
     /**
      * Get all provinces for a region.
      *
-     * @return Collection<int, mixed>
+     * @return Collection<int, array<array-key, mixed>>
      */
     public static function getProvinceByRegione(string $regione): Collection
     {
-        return static::where('regione', $regione)
-            ->pluck('provincia')
+        $province = [];
+
+        foreach (static::where('regione', $regione)->get() as $comune) {
+            $provincia = $comune->provincia;
+            if (! is_array($provincia)) {
+                continue;
+            }
+
+            $province[] = $provincia;
+        }
+
+        /** @var Collection<int, array<array-key, mixed>> $result */
+        $result = collect($province)
             ->unique()
             ->sort()
             ->values();
+
+        return $result;
     }
 
     /**
