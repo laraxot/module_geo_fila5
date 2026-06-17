@@ -26,7 +26,13 @@
 - [ ] Documentazione API aggiornata
 
 ### ⚠️ Note per Moduli Ereditanti
+
+I moduli figli **non** estendono le classi concrete Ptv (`MessageResource`, `CriteriEsclusioneResource`, …): estendono le `Base*` astratte in `Modules\Ptv\Filament\Resources\`.
+
+Vedi [filament-resource-base-inheritance.md](./filament-resource-base-inheritance.md) e [audit](./filament-resource-base-inheritance-audit.md).
+
 Poiché `MyLogResource` di PTV è ereditato da altri moduli:
+
 - **Benefici automatici**: Miglioramenti performance v4
 - **Controlli necessari**: Verificare che moduli figli non abbiano override incompatibili
 - **Testing**: Test completo flusso ereditarietà

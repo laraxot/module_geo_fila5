@@ -8,18 +8,17 @@ use Modules\Incentivi\Filament\Resources\StabiDirigenteResource\Pages\CreateStab
 use Modules\Incentivi\Filament\Resources\StabiDirigenteResource\Pages\EditStabiDirigente;
 use Modules\Incentivi\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes;
 use Modules\Incentivi\Models\StabiDirigente;
-use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteResource;
+use Modules\Ptv\Filament\Resources\BaseStabiDirigenteResource;
 use Override;
 
-class StabiDirigenteResource extends PtvStabiDirigenteResource
+class StabiDirigenteResource extends BaseStabiDirigenteResource
 {
     protected static ?string $model = StabiDirigente::class;
 
     #[Override]
     public static function getRelations(): array
     {
-        return [
-        ];
+        return [];
     }
 
     #[Override]

@@ -13,9 +13,9 @@ use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
 use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
 use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
 use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource;
-use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes as PtvListStabiDirigentes;
+use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\BaseListStabiDirigentes;
 
-class ListStabiDirigentes extends PtvListStabiDirigentes
+class ListStabiDirigentes extends BaseListStabiDirigentes
 {
     protected static string $resource = StabiDirigenteResource::class;
 

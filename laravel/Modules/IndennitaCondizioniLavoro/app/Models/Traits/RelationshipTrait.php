@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 use Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio;
 use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
+use Modules\Sigma\Models\Traits\Concerns\HasEnteMatrRelationHelpers;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrAnnoRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrDateRangeRelationship;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
@@ -26,6 +27,7 @@ use function Safe\date;
 
 trait RelationshipTrait
 {
+    use HasEnteMatrRelationHelpers;
     use EnteMatrAnnoRelationship;
     use EnteMatrDateRangeRelationship;
     use EnteMatrRelationship;

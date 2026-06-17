@@ -1,16 +1,13 @@
 <?php
 
 declare(strict_types=1);
-/**
- * ---.
- */
 
 namespace Modules\Incentivi\Filament\Resources\StabiDirigenteResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
 use Modules\Incentivi\Filament\Resources\StabiDirigenteResource;
+use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\BaseCreateStabiDirigente;
 
-class CreateStabiDirigente extends CreateRecord
+class CreateStabiDirigente extends BaseCreateStabiDirigente
 {
     protected static string $resource = StabiDirigenteResource::class;
 }

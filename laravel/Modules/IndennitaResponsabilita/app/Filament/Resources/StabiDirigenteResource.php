@@ -8,20 +8,22 @@ use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pa
 use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pages\EditStabiDirigente;
 use Modules\IndennitaResponsabilita\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes;
 use Modules\IndennitaResponsabilita\Models\StabiDirigente;
-use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteResource;
+use Modules\Ptv\Filament\Resources\BaseStabiDirigenteResource;
+use Override;
 
-class StabiDirigenteResource extends PtvStabiDirigenteResource
+class StabiDirigenteResource extends BaseStabiDirigenteResource
 {
     protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = StabiDirigente::class;
 
+    #[Override]
     public static function getRelations(): array
     {
-        return [
-        ];
+        return [];
     }
 
+    #[Override]
     public static function getPages(): array
     {
         return [

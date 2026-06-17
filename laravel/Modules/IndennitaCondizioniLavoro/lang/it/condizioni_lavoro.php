@@ -200,6 +200,11 @@ return [
             'icon' => 'resetColumnManager',
             'label' => 'resetColumnManager',
         ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+        ],
     ],
     'navigation' => [
         'label' => 'condizioni lavoro/lavoro esterno',

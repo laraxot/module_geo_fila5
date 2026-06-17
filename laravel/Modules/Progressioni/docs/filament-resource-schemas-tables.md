@@ -105,6 +105,15 @@ Namespace:
 
 Dettaglio ereditarietà: [Ptv — scheda-resource-pages-inheritance](../../Ptv/docs/scheda-resource-pages-inheritance.md).
 
+### CriteriEsclusioneResource: resource condivisa con Ptv
+
+`Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource` **estende** `Modules\Ptv\Filament\Resources\BaseCriteriEsclusioneResource` (non la concreta `Ptv\CriteriEsclusioneResource`).
+
+- Resource figlia: solo `$model` Progressioni.
+- Pages / Form / Table / Infolist: thin su rispettive `Base*` in `Ptv\...\CriteriEsclusioneResource\`.
+
+Regola generale moduli figli: [Ptv — filament-resource-base-inheritance](../../Ptv/docs/filament-resource-base-inheritance.md).
+
 | StabiDirigenteResource | StabiDirigenteForm | StabiDirigenteInfolist | StabiDirigentesTable |
 | StipendioTabellareResource | StipendioTabellareForm | StipendioTabellareInfolist | StipendioTabellaresTable |
 | ValutatoreResource | ValutatoreForm | ValutatoreInfolist | ValutatoresTable |

@@ -11,10 +11,10 @@ use Modules\Performance\Filament\Resources\StabiDirigenteResource;
 use Modules\Performance\Models\Individuale;
 use Modules\Performance\Models\StabiDirigente;
 use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
-use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\ListStabiDirigentes as PtvListStabiDirigentes;
+use Modules\Ptv\Filament\Resources\StabiDirigenteResource\Pages\BaseListStabiDirigentes;
 use Override;
 
-class ListStabiDirigentes extends PtvListStabiDirigentes
+class ListStabiDirigentes extends BaseListStabiDirigentes
 {
     protected static string $resource = StabiDirigenteResource::class;
 

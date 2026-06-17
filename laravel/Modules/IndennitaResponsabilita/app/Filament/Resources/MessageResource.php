@@ -8,10 +8,10 @@ use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\Cre
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\EditMessage;
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pages\ListMessages;
 use Modules\IndennitaResponsabilita\Models\Message;
-use Modules\Ptv\Filament\Resources\MessageResource as PtvMessageResource;
+use Modules\Ptv\Filament\Resources\BaseMessageResource;
 use Override;
 
-class MessageResource extends PtvMessageResource
+class MessageResource extends BaseMessageResource
 {
     protected static string $resourceFile = __FILE__;
 

@@ -6,10 +6,10 @@ namespace Modules\IndennitaResponsabilita\Filament\Resources\MessageResource\Pag
 
 use Filament\Actions\CreateAction;
 use Modules\IndennitaResponsabilita\Filament\Resources\MessageResource;
-use Modules\Ptv\Filament\Resources\MessageResource\Pages\ListMessages as PtvListMessages;
+use Modules\Ptv\Filament\Resources\MessageResource\Pages\BaseListMessages;
 use Override;
 
-class ListMessages extends PtvListMessages
+class ListMessages extends BaseListMessages
 {
     protected static string $resource = MessageResource::class;
 

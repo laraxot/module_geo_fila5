@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
-use Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource\Pages;
 use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
-use Modules\Ptv\Filament\Resources\StabiDirigenteResource as PtvStabiDirigenteResource;
+use Modules\Ptv\Filament\Resources\BaseStabiDirigenteResource;
 use Override;
 
-class StabiDirigenteResource extends PtvStabiDirigenteResource
+class StabiDirigenteResource extends BaseStabiDirigenteResource
 {
     protected static ?string $model = StabiDirigente::class;
 
@@ -22,14 +21,4 @@ class StabiDirigenteResource extends PtvStabiDirigenteResource
             'quadrimestre' => TextInput::make('quadrimestre'),
         ];
     }
-    /*
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListStabiDirigentes::route('/'),
-            'create' => Pages\CreateStabiDirigente::route('/create'),
-            'edit' => Pages\EditStabiDirigente::route('/{record}/edit'),
-        ];
-    }
-        */
 }
