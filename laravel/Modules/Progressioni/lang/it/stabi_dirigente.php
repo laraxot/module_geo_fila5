@@ -151,6 +151,7 @@ return [
         'profile' => [
             'tooltip' => 'profile',
             'icon' => 'profile',
+            'label' => 'profile',
         ],
         'copy_from_last_year' => [
             'label' => 'copy_from_last_year',

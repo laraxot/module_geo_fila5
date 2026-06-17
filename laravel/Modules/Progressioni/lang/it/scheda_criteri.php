@@ -314,12 +314,16 @@ return [
             'success' => 'Scheda criteri creata con successo',
             'error' => 'Errore durante la creazione della scheda criteri',
             'confirmation' => 'Sei sicuro di voler creare questa scheda criteri?',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica Scheda Criteri',
             'success' => 'Scheda criteri aggiornata con successo',
             'error' => 'Errore durante l\'aggiornamento della scheda criteri',
             'confirmation' => 'Sei sicuro di voler modificare questa scheda criteri?',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina Scheda Criteri',
@@ -333,6 +337,8 @@ return [
             'label' => 'Visualizza Scheda Criteri',
             'success' => 'Dettagli scheda criteri caricati',
             'error' => 'Errore durante il caricamento dei dettagli',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'duplicate' => [
             'label' => 'Duplica Scheda Criteri',
@@ -427,6 +433,8 @@ return [
         ],
         'copy_from_last_year' => [
             'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -465,13 +473,33 @@ return [
         ],
         'resetFilters' => [
             'tooltip' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'label' => 'resetFilters',
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
         ],
         'removeAllFilters' => [
             'tooltip' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
         ],
     ],
     'messages' => [

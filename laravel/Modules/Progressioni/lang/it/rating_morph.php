@@ -17,6 +17,7 @@ return [
     'actions' => [
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
         ],
     ],
 ];

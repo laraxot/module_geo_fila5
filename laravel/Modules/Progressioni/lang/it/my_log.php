@@ -187,6 +187,9 @@ return [
             'icon' => 'profile',
             'tooltip' => 'profile',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'tabs' => [
         'index' => [

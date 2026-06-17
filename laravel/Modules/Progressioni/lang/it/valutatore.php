@@ -307,6 +307,7 @@ return [
         'logout' => [
             'label' => 'logout',
             'tooltip' => 'logout',
+            'icon' => 'logout',
         ],
         'reorderRecords' => [
             'label' => 'reorderRecords',

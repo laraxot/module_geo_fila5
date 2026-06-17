@@ -66,6 +66,31 @@ return [
             'description' => 'created_at',
             'helper_text' => 'created_at',
             'placeholder' => 'created_at',
+            'label' => 'created_at',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'parent_id' => [
+            'label' => 'parent_id',
+        ],
+        'order_direction' => [
+            'label' => 'order_direction',
+        ],
+        'label' => [
+            'label' => 'label',
+        ],
+        'descr' => [
+            'label' => 'descr',
+        ],
+        'post_type' => [
+            'label' => 'post_type',
+        ],
+        'posizione' => [
+            'label' => 'posizione',
+        ],
+        'anno' => [
+            'label' => 'anno',
         ],
     ],
     'actions' => [
@@ -103,20 +128,28 @@ return [
             'label' => 'Nuovo criterio',
             'success' => 'Criterio di precedenza creato con successo',
             'error' => 'Errore durante la creazione del criterio',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica criterio',
             'success' => 'Criterio di precedenza aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del criterio',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina criterio',
             'success' => 'Criterio di precedenza eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del criterio',
             'confirmation' => 'Sei sicuro di voler eliminare questo criterio? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza criterio',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -158,6 +191,28 @@ return [
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'tabs' => [

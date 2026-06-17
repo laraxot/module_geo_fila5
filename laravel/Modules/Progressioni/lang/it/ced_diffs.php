@@ -67,6 +67,12 @@ return [
         'repar_txt' => [
             'label' => 'repar_txt',
         ],
+        'anno' => [
+            'label' => 'anno',
+            'placeholder' => 'anno',
+            'helper_text' => 'anno',
+            'description' => 'anno',
+        ],
     ],
     'actions' => [
         'create' => [
@@ -93,6 +99,21 @@ return [
             'label' => 'delete',
             'icon' => 'delete',
             'tooltip' => 'delete',
+        ],
+        'import' => [
+            'label' => 'import',
+            'icon' => 'import',
+            'tooltip' => 'import',
+        ],
+        'downloadExample' => [
+            'label' => 'downloadExample',
+            'icon' => 'downloadExample',
+            'tooltip' => 'downloadExample',
+        ],
+        'escludi da progressione' => [
+            'label' => 'escludi da progressione',
+            'icon' => 'escludi da progressione',
+            'tooltip' => 'escludi da progressione',
         ],
     ],
 ];

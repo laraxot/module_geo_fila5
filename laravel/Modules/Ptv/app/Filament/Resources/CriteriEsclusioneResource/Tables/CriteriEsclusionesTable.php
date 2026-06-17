@@ -14,70 +14,7 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 use function Safe\date;
 
-class CriteriEsclusionesTable extends XotBaseResourceTable
+class CriteriEsclusionesTable extends BaseCriteriEsclusionesTable
 {
-    public function getTableHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'copy_from_last_year' => CopyFromLastYearAction::make(),
-        ];
-    }
-
-    public function getTableColumns(): array
-    {
-        // Column types are inferred by Filament v4
-        return [
-            'is_enabled' => ToggleColumn::make('is_enabled'),
-            'name' => TextColumn::make('name')
-                ->searchable()
-                ->sortable(),
-            'field_name' => TextColumn::make('field_name')
-                ->searchable()
-                ->sortable(),
-            'op' => TextColumn::make('op')
-                ->searchable()
-                ->sortable(),
-            'value' => TextColumn::make('value')
-                ->searchable()
-                ->sortable(),
-            'anno' => TextColumn::make('anno')
-                ->numeric()
-                ->sortable(),
-            'created_at' => TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            'updated_at' => TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-        ];
-    }
-
-    public function getTableFilters(): array
-    {
-        return [
-            'anno' => SelectFilter::make('anno')
-                ->options(function () {
-                    $currentYear = (int) date('Y');
-
-                    return [
-                        $currentYear => $currentYear,
-                        $currentYear - 1 => $currentYear - 1,
-                        $currentYear - 2 => $currentYear - 2,
-                    ];
-                }),
-        ];
-    }
-
-    public function getTableBulkActions(): array
-    {
-        // @phpstan-ignore-next-line return.type
-        return [
-            ...parent::getTableBulkActions(),
-            CheckCriterioEsclusioneBulkAction::make(),
-            // DeleteBulkAction::make(),
-        ];
-    }
+   
 }

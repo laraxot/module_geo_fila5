@@ -144,31 +144,111 @@ return [
             'label' => 'Nuovo criterio',
             'success' => 'Criterio di esclusione creato con successo',
             'error' => 'Errore durante la creazione del criterio',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica criterio',
             'success' => 'Criterio di esclusione aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del criterio',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina criterio',
             'success' => 'Criterio di esclusione eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del criterio',
             'confirmation' => 'Sei sicuro di voler eliminare questo criterio? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza criterio',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'copy_from_last_year' => [
             'label' => 'copy_from_last_year',
         ],
         'copy_from_last_year_' => [
             'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
         ],
         'logout' => [
             'tooltip' => 'logout',
             'icon' => 'logout',
             'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'icon' => 'profile',
+            'label' => 'profile',
+        ],
+        'removeAllFilters' => [
+            'tooltip' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+        ],
+        'CheckCriterioEsclusioneBulkAction' => [
+            'label' => 'CheckCriterioEsclusioneBulkAction',
+            'icon' => 'CheckCriterioEsclusioneBulkAction',
+            'tooltip' => 'CheckCriterioEsclusioneBulkAction',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
+        ],
+        'cancel' => [
+            'label' => 'cancel',
+            'icon' => 'cancel',
+            'tooltip' => 'cancel',
+        ],
+        'submit' => [
+            'label' => 'submit',
+            'icon' => 'submit',
+            'tooltip' => 'submit',
         ],
     ],
     'tabs' => [
@@ -208,4 +288,5 @@ return [
         'helper_text' => 'Rappresentazione del modello dati utilizzato per definire i criteri di esclusione dalle progressioni',
         'help' => 'Modello che definisce la struttura dati per i criteri di esclusione',
     ],
+    'label' => 'criteri esclusione',
 ];

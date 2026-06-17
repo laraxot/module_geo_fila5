@@ -67,6 +67,22 @@ return [
         'anno' => [
             'description' => 'anno',
             'helper_text' => 'anno',
+            'label' => 'anno',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'type' => [
+            'label' => 'type',
+        ],
+        'title' => [
+            'label' => 'title',
+        ],
+        'txt' => [
+            'label' => 'txt',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
         ],
     ],
     'actions' => [
@@ -200,6 +216,21 @@ return [
             'tooltip' => 'layout',
             'icon' => 'layout',
             'label' => 'layout',
+        ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'tabs' => [

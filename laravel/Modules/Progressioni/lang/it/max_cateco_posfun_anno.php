@@ -116,6 +116,21 @@ return [
         'delete' => [
             'label' => 'delete',
         ],
+        'cateco' => [
+            'label' => 'cateco',
+        ],
+        'max_gg_tot_pond' => [
+            'label' => 'max_gg_tot_pond',
+        ],
+        'aventi_diritto' => [
+            'label' => 'aventi_diritto',
+        ],
+        'aventi_diritto_perc' => [
+            'label' => 'aventi_diritto_perc',
+        ],
+        'aventi_diritto_eff' => [
+            'label' => 'aventi_diritto_eff',
+        ],
     ],
     'actions' => [
         'create' => [
@@ -123,23 +138,31 @@ return [
             'success' => 'Massimo creato con successo',
             'error' => 'Errore durante la creazione del massimo',
             'confirmation' => 'Sei sicuro di voler creare questo massimo?',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica Massimo',
             'success' => 'Massimo aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del massimo',
             'confirmation' => 'Sei sicuro di voler modificare questo massimo?',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina Massimo',
             'success' => 'Massimo eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del massimo',
             'confirmation' => 'Sei sicuro di voler eliminare questo massimo? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza Massimo',
             'success' => 'Dettagli massimo caricati',
             'error' => 'Errore durante il caricamento dei dettagli',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'duplicate' => [
             'label' => 'Duplica Massimo',
@@ -198,6 +221,57 @@ return [
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'messages' => [
@@ -297,4 +371,5 @@ return [
             'description' => 'Log delle operazioni',
         ],
     ],
+    'label' => 'max cateco posfun anno',
 ];

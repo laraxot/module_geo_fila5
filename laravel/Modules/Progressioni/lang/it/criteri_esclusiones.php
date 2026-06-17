@@ -50,5 +50,10 @@ return [
             'icon' => 'CheckCriterioEsclusioneBulkAction',
             'tooltip' => 'CheckCriterioEsclusioneBulkAction',
         ],
+        'copy_from_last_year_' => [
+            'tooltip' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'label' => 'copy_from_last_year_',
+        ],
     ],
 ];

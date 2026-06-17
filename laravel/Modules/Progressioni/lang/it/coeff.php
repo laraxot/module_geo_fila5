@@ -199,6 +199,9 @@ return [
             'placeholder' => 'value',
             'label' => 'value',
         ],
+        'anno' => [
+            'label' => 'anno',
+        ],
     ],
     'actions' => [
         'create' => [
@@ -206,23 +209,31 @@ return [
             'success' => 'Coefficiente creato con successo',
             'error' => 'Errore durante la creazione del coefficiente',
             'confirmation' => 'Sei sicuro di voler creare questo coefficiente?',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica Coefficiente',
             'success' => 'Coefficiente aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento del coefficiente',
             'confirmation' => 'Sei sicuro di voler modificare questo coefficiente?',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina Coefficiente',
             'success' => 'Coefficiente eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del coefficiente',
             'confirmation' => 'Sei sicuro di voler eliminare questo coefficiente? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza Coefficiente',
             'success' => 'Dettagli coefficiente caricati',
             'error' => 'Errore durante il caricamento dei dettagli',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'duplicate' => [
             'label' => 'Duplica Coefficiente',
@@ -307,6 +318,71 @@ return [
             'tooltip' => 'logout',
             'icon' => 'logout',
             'label' => 'logout',
+        ],
+        'profile' => [
+            'tooltip' => 'profile',
+            'label' => 'profile',
+            'icon' => 'profile',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
+        ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
+        ],
+        'cancel' => [
+            'label' => 'cancel',
+            'icon' => 'cancel',
+            'tooltip' => 'cancel',
         ],
     ],
     'messages' => [
@@ -439,4 +515,5 @@ return [
             'description' => 'Log delle operazioni',
         ],
     ],
+    'label' => 'coeff',
 ];

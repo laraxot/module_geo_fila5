@@ -81,6 +81,8 @@ return [
         ],
         'removeAllFilters' => [
             'tooltip' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'label' => 'removeAllFilters',
         ],
     ],
     'fields' => [

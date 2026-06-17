@@ -61,6 +61,31 @@ return [
         'updated_at' => [
             'description' => 'updated_at',
             'helper_text' => 'updated_at',
+            'label' => 'updated_at',
+        ],
+        'id' => [
+            'label' => 'id',
+        ],
+        'ente' => [
+            'label' => 'ente',
+        ],
+        'matr' => [
+            'label' => 'matr',
+        ],
+        'cognome' => [
+            'label' => 'cognome',
+        ],
+        'nome' => [
+            'label' => 'nome',
+        ],
+        'motivo' => [
+            'label' => 'motivo',
+        ],
+        'anno' => [
+            'label' => 'anno',
+        ],
+        'created_at' => [
+            'label' => 'created_at',
         ],
     ],
     'actions' => [
@@ -98,23 +123,82 @@ return [
             'label' => 'Nuovo elemento',
             'success' => 'Elemento escluso creato con successo',
             'error' => 'Errore durante la creazione dell\'elemento',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica elemento',
             'success' => 'Elemento escluso aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento dell\'elemento',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina elemento',
             'success' => 'Elemento escluso eliminato con successo',
             'error' => 'Errore durante l\'eliminazione dell\'elemento',
             'confirmation' => 'Sei sicuro di voler eliminare questo elemento? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza elemento',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'logout' => [
             'tooltip' => 'logout',
+            'icon' => 'logout',
+        ],
+        'copy_from_last_year' => [
+            'label' => 'copy_from_last_year',
+            'icon' => 'copy_from_last_year',
+            'tooltip' => 'copy_from_last_year',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'openColumnManager' => [
+            'label' => 'openColumnManager',
+            'icon' => 'openColumnManager',
+            'tooltip' => 'openColumnManager',
+        ],
+        'resetColumnManager' => [
+            'label' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'tooltip' => 'resetColumnManager',
+        ],
+        'reorderRecords' => [
+            'label' => 'reorderRecords',
+            'icon' => 'reorderRecords',
+            'tooltip' => 'reorderRecords',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'tabs' => [
@@ -143,4 +227,5 @@ return [
         'max' => 'Il campo :attribute non può superare :max caratteri',
         'unique' => 'Il valore del campo :attribute è già presente',
     ],
+    'label' => 'esclusi extra',
 ];

@@ -149,6 +149,9 @@ return [
             'tooltip' => 'openColumnManager',
             'icon' => 'openColumnManager',
         ],
+        'resetColumnManager' => [
+            'tooltip' => 'resetColumnManager',
+        ],
     ],
     'filters' => [
         'ente' => [

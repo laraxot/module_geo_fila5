@@ -152,6 +152,9 @@ return [
             'icon' => 'logout',
             'label' => 'logout',
         ],
+        'profile' => [
+            'tooltip' => 'profile',
+        ],
     ],
     'tabs' => [
         'index' => [

@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource\Pages;
 
 use Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource;
-use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages\ListCriteriEsclusiones as PtvListCriteriEsclusiones;
+use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages\BaseListCriteriEsclusiones;
+use Filament\Resources\Pages\ListRecords as FilamentListRecords;
 
-class ListCriteriEsclusiones extends PtvListCriteriEsclusiones
+class ListCriteriEsclusiones extends BaseListCriteriEsclusiones
 {
     protected static string $resource = CriteriEsclusioneResource::class;
 }

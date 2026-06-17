@@ -39,5 +39,10 @@ return [
             'icon' => 'delete',
             'tooltip' => 'delete',
         ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
     ],
 ];

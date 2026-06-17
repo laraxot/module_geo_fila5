@@ -7,7 +7,7 @@ namespace Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages;
 use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
-class EditCriteriEsclusione extends BaseEditCriteriEsclusione
+abstract class BaseEditCriteriEsclusione extends XotBaseEditRecord
 {
     protected static string $resource = CriteriEsclusioneResource::class;
 }
