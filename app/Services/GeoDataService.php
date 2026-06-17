@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\File;
 
 use function Safe\json_decode;
 
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+
 /**
  * Servizio per la gestione dei dati geografici.
  *
@@ -107,8 +109,8 @@ class GeoDataService
                     $code = $province['code'] ?? '';
 
                     return [
-                        'name' => \is_string($name) ? $name : (string) $name,
-                        'code' => \is_string($code) ? $code : (string) $code,
+                        'name' => \is_string($name) ? $name : SafeStringCastAction::cast($name),
+                        'code' => \is_string($code) ? $code : SafeStringCastAction::cast($code),
                     ];
                 })
                 ->values();

@@ -8,6 +8,7 @@ use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
@@ -216,8 +217,8 @@ trait HasCoordinatePicker
         }
 
         try {
-            $appName = (string) config('app.name', 'Laraxot');
-            $appUrl = (string) config('app.url', 'localhost');
+            $appName = SafeStringCastAction::cast(config('app.name', 'Laraxot'));
+            $appUrl = SafeStringCastAction::cast(config('app.url', 'localhost'));
             $response = Http::withHeaders([
                 'User-Agent' => \sprintf('%s/1.0 (%s)', $appName, $appUrl),
             ])
