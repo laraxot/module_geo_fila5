@@ -13,13 +13,5 @@ class EditAssenza extends XotBaseEditRecord
 {
     protected static string $resource = AssenzaResource::class;
 
-    /**
-     * @return array<string, Action>
-     */
-    protected function getHeaderActions(): array
-    {
-        return [
-            'delete' => DeleteAction::make(),
-        ];
-    }
+    
 }

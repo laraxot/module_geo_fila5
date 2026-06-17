@@ -44,11 +44,9 @@ class PopulateYearAction extends Action
                 $tableFilters = is_array($livewire->tableFilters) ? $livewire->tableFilters : [];
                 
                 $year = Arr::get($tableFilters, 'anno.value');
-                // 2023
                 $fieldname = 'anno';
                 if ($year == null) {
                     $year = Arr::get($tableFilters, 'year.value');
-                    // 2023
                     $fieldname = 'year';
                 }
                 if ($year == null) {
@@ -60,7 +58,7 @@ class PopulateYearAction extends Action
                     $fieldname = 'anno';
                 }
                 
-
+                
                 $yearInt = is_numeric($year) ? (int) $year : 0;
                 
                 app(PopulateByYearAction::class)->execute($modelClass, $fieldname, $yearInt);

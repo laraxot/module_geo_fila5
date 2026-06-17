@@ -13,8 +13,20 @@ Themes/One/app/Filament/Resources/{ResourceName}/
 │   └── {Entity}Infolist.php
 ├── Tables/
 │   └── {Entities}Table.php
+├── Widgets/                    # opzionale — stats overview su List*
+│   └── {Entity}StatsOverview.php
 └── {ResourceName}.php
 ```
+
+## Widget stats su List*
+
+Per riepiloghi in testata lista (Filament 5 [stats overview](https://filamentphp.com/docs/5.x/widgets/stats-overview)):
+
+- Widget in `{ResourceName}/Widgets/`, estende `XotBaseStatsOverviewWidget`
+- `List{plural}::getHeaderWidgets()` + `{Resource}::getWidgets()`
+- Logica query in Action dedicata (non nel widget)
+
+Esempio modulo: [Asz00f stats Progressioni](../../Modules/Progressioni/docs/wiki/concepts/asz00f-filament-stats-overview.md).
 
 ## Regole
 

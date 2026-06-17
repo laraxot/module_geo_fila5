@@ -63,6 +63,7 @@ Namespace:
 
 | Resource | Form | Infolist | Table |
 | :--- | :--- | :--- | :--- |
+| Asz00fResource | Asz00fForm | Asz00fInfolist | Asz00fsTable |
 | AssenzaResource | AssenzaForm | AssenzaInfolist | AssenzasTable |
 | CategoriaProproResource | CategoriaProproForm | CategoriaProproInfolist | CategoriaProprosTable |
 | CedDiffResource | CedDiffForm | CedDiffInfolist | CedDiffsTable |
@@ -119,6 +120,10 @@ Select con opzioni fisse: enum + `EnumTrait`, mai array inline — [Ptv — fila
 | StabiDirigenteResource | StabiDirigenteForm | StabiDirigenteInfolist | StabiDirigentesTable |
 | StipendioTabellareResource | StipendioTabellareForm | StipendioTabellareInfolist | StipendioTabellaresTable |
 | ValutatoreResource | ValutatoreForm | ValutatoreInfolist | ValutatoresTable |
+
+### Asz00fResource — widget stats overview
+
+`Asz00fStatsOverview` in `Asz00fResource/Widgets/`; wire su `ListAsz00fs::getHeaderWidgets()`. Dettaglio: [asz00f-filament-stats-overview](./wiki/concepts/asz00f-filament-stats-overview.md).
 
 ## Esempio scaffold (corretto)
 

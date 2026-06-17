@@ -132,6 +132,11 @@ trait HasXotTable
         return min($count, 6);
     }
 
+    protected function getTableFiltersLayout(): FiltersLayout
+    {
+        return FiltersLayout::AboveContent;
+    }
+
     /**
      * Get table record title attribute.
      */
@@ -184,6 +189,7 @@ trait HasXotTable
      */
     public function table(Table $table): Table
     {
+        
         /*
         $modelClass = $this->getModelClass();
         if (! app(TableExistsByModelClassActions::class)->execute($modelClass)) {
@@ -203,7 +209,7 @@ trait HasXotTable
             ->columns($this->layoutView->getTableColumns(array_values($this->getTableColumns()), $this->getGridTableColumns()))
             ->contentGrid($this->layoutView->getTableContentGrid())
             ->filters($this->getTableFilters()) // @phpstan-ignore argument.type
-            ->filtersLayout(FiltersLayout::AboveContent)
+            ->filtersLayout($this->getTableFiltersLayout())
             ->filtersFormColumns($this->getTableFiltersFormColumns())
             ->persistFiltersInSession()
             ->headerActions($this->getTableHeaderActions())
@@ -359,7 +365,7 @@ trait HasXotTable
     public function getModelClass(): string
     {
         /** @phpstan-ignore-next-line function.alreadyNarrowedType */
-if (method_exists($this, 'getModel')) {
+        if (method_exists($this, 'getModel')) {
             $model = $this->getModel();
             Assert::string($model);
             Assert::classExists($model);

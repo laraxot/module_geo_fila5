@@ -88,6 +88,8 @@ return [
         ],
         'trova_esclusi' => [
             'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
         ],
         'populate_year' => [
             'label' => 'populate_year',
@@ -226,6 +228,36 @@ return [
             'tooltip' => 'resetColumnManager',
             'icon' => 'resetColumnManager',
             'label' => 'resetColumnManager',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'export_pdf' => [
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+            'tooltip' => 'export_pdf',
+        ],
+        'compila' => [
+            'label' => 'compila',
+            'icon' => 'compila',
+            'tooltip' => 'compila',
+        ],
+        'pdf' => [
+            'label' => 'pdf',
+            'icon' => 'pdf',
+            'tooltip' => 'pdf',
+        ],
+        'send_mail' => [
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+            'tooltip' => 'send_mail',
+        ],
+        'zip_schede' => [
+            'label' => 'zip_schede',
+            'icon' => 'zip_schede',
+            'tooltip' => 'zip_schede',
         ],
     ],
     'fields' => [
@@ -680,6 +712,18 @@ return [
             'placeholder' => 'perf_ind_2026',
             'helper_text' => 'perf_ind_2026',
             'description' => 'perf_ind_2026',
+        ],
+        'value' => [
+            'description' => 'value',
+            'label' => 'value',
+            'placeholder' => 'value',
+            'helper_text' => 'value',
+        ],
+        'id/motivo' => [
+            'label' => 'id/motivo',
+        ],
+        'type' => [
+            'label' => 'type',
         ],
     ],
     'schede' => [

@@ -29,6 +29,10 @@ Scope `ofRangeDate(int $dal, int $al)` definito su `Asz00k1` — invocabile sull
 
 Modulo **Ptv** (`ListaAszTipCodEsclusoSubito`) riceve `SchedaContract` e **deve** usare `asz()`, mai `Asz00k1::query()` diretto.
 
+## Widget admin Asz00f
+
+Per consultazione tabella `asz00f` in Filament Progressioni: [asz00f-filament-stats-overview.md](../../../Progressioni/docs/wiki/concepts/asz00f-filament-stats-overview.md) — stats su record con `aszann = ''`.
+
 ## Collegamenti root
 
 - [scheda-asz-relationship-query.md](../../../../docs/wiki/patterns/scheda-asz-relationship-query.md)
