@@ -7,7 +7,9 @@ namespace Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Schemas;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
+use Modules\Ptv\Enums\ComparisonOperatorEnum;
 use Modules\Ptv\Enums\CriteriEsclusioneEnum;
+use Modules\Ptv\Enums\RuleValueTypeEnum;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 abstract class BaseCriteriEsclusioneForm extends XotBaseResourceForm
@@ -21,25 +23,9 @@ abstract class BaseCriteriEsclusioneForm extends XotBaseResourceForm
             'id' => TextInput::make('id')->disabled(),
             'name' => Select::make('name')->options(CriteriEsclusioneEnum::class),
             'field_name' => TextInput::make('field_name'),
-            'op' => Select::make('op')
-                ->options([
-                    '=' => 'Uguale a',
-                    '!=' => 'Diverso da',
-                    '>' => 'Maggiore di',
-                    '<' => 'Minore di',
-                    '>=' => 'Maggiore o uguale a',
-                    '<=' => 'Minore o uguale a',
-                    'LIKE' => 'Contiene',
-                    'NOT LIKE' => 'Non contiene',
-                ]),
+            'op' => Select::make('op')->options(ComparisonOperatorEnum::class),
             'value' => TextInput::make('value')->required(),
-            'type' => Select::make('type')
-                ->options([
-                    'string' => 'Stringa',
-                    'int' => 'Intero',
-                    'date' => 'Data',
-                    'list' => 'Lista',
-                ]),
+            'type' => Select::make('type')->options(RuleValueTypeEnum::class),
             'anno' => TextInput::make('anno')->numeric()->required(),
         ];
     }

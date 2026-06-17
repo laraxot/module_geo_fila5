@@ -22,12 +22,16 @@
 - ✅ `rating.php` - Rating
 - ✅ `import_valutatori.php` - Importazione valutatori
 - ✅ `criteri_esclusione_enum.php` - Enum criteri esclusione
+- ✅ `comparison_operator_enum.php` - Operatori di confronto (riusabile)
+- ✅ `rule_value_type_enum.php` - Tipo valore in regola (riusabile)
 
 ### Tedesco (de)
 - ✅ `actions.php` - Azioni
 - ✅ `stabi_dirigente.php` - Dirigenti di stabilimento
 - ✅ `worker.php` - Lavoratori
 - ✅ `criteri_esclusione_enum.php` - Enum criteri esclusione
+- ✅ `comparison_operator_enum.php` - Operatori di confronto (riusabile)
+- ✅ `rule_value_type_enum.php` - Tipo valore in regola (riusabile)
 
 ## Struttura Traduzioni
 

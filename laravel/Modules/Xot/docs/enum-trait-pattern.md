@@ -120,6 +120,14 @@ use TransTrait;
 5. Rimuovere `getLabel()`, `getColor()`, `getIcon()`, `getDescription()` manuali solo quando tutte le chiavi `values` sono presenti.
 6. Mantenere metodi di dominio non standard (`label()`, `color()`, `options()`, `getDefault()`) se sono parte del contratto applicativo esistente.
 
+## Naming — concetto riutilizzabile
+
+Il nome dell'enum descrive **il concetto** (es. `ComparisonOperatorEnum`, `RuleValueTypeEnum`), non il primo form/risorsa che lo consuma (❌ `CriteriEsclusioneOpEnum`).
+
+Prefisso entità ammesso solo se i casi sono **specifici** di quell'aggregato (es. `CriteriEsclusioneEnum` per i nomi criterio).
+
+Dettaglio modulo Ptv: [enum-naming-reusable](../../Ptv/docs/enum-naming-reusable.md).
+
 ## Riferimenti
 
 - Regola root: `docs/wiki/rules/enum-trait-required.md`

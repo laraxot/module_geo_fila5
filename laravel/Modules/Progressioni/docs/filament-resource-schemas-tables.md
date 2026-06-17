@@ -114,6 +114,8 @@ Dettaglio ereditarietà: [Ptv — scheda-resource-pages-inheritance](../../Ptv/d
 
 Regola generale moduli figli: [Ptv — filament-resource-base-inheritance](../../Ptv/docs/filament-resource-base-inheritance.md).
 
+Select con opzioni fisse: enum + `EnumTrait`, mai array inline — [Ptv — filament-select-options-enum](../../Ptv/docs/filament-select-options-enum.md). Naming enum sul concetto: [enum-naming-reusable](../../Ptv/docs/enum-naming-reusable.md).
+
 | StabiDirigenteResource | StabiDirigenteForm | StabiDirigenteInfolist | StabiDirigentesTable |
 | StipendioTabellareResource | StipendioTabellareForm | StipendioTabellareInfolist | StipendioTabellaresTable |
 | ValutatoreResource | ValutatoreForm | ValutatoreInfolist | ValutatoresTable |

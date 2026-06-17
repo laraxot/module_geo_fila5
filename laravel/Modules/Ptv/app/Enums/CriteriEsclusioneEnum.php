@@ -8,12 +8,12 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Livewire\Wireable;
-use Modules\Xot\Filament\Traits\TransTrait;
+use Modules\Xot\Traits\EnumTrait;
 use Spatie\LaravelData\Concerns\WireableData;
 
 enum CriteriEsclusioneEnum: string implements HasColor, HasIcon, HasLabel, Wireable
 {
-    use TransTrait;
+    use EnumTrait;
     use WireableData;
 
     case min_gg_posiz_1_in_sede = 'min_gg_posiz_1_in_sede';
@@ -34,22 +34,6 @@ enum CriteriEsclusioneEnum: string implements HasColor, HasIcon, HasLabel, Wirea
     case min_gg_cateco_posfun_in_sede_no_asz = 'min_gg_cateco_posfun_in_sede_no_asz';
 
     case min_gg_integ_params = 'min_gg_integ_params';
+    case min_gg_integ_params_no_asz = 'min_gg_integ_params_no_asz';
 
-    public function getLabel(): string
-    {
-        return $this->transClass(self::class, $this->value.'.label');
-    }
-
-    public function getColor(): string
-    {
-        return $this->transClass(self::class, $this->value.'.color');
-    }
-
-    /**
-     * Get the icon associated with the user type for UI display.
-     */
-    public function getIcon(): string
-    {
-        return $this->transClass(self::class, $this->value.'.icon');
-    }
 }
