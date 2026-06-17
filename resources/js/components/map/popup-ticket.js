@@ -354,6 +354,10 @@ export const popupTicketStylesText = `
     .popup__title--headline {
         font-size: 1.0625rem !important;
         line-height: 1.3 !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
     .popup__wrapper {
         padding: 0.5rem 1rem 0.65rem;
