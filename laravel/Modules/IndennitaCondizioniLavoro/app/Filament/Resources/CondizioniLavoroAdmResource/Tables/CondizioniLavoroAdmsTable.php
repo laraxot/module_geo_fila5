@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\CondizioniLavoroAdmResource\Tables;
 
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
@@ -11,6 +12,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 use Modules\Ptv\Filament\Tables\Columns\ValutatoreColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
@@ -18,6 +20,31 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class CondizioniLavoroAdmsTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        return [
+            ...parent::getTableHeaderActions(),
+            /*
+            'exportPdf' => Action::make('exportPdf')
+                ->label('Pdf ')
+                ->icon('heroicon-s-document')
+                ->action(function () {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+                    return app(MakePdf::class)->execute($tableFilters);
+                }),
+            */
+            'replicate' => Action::make('replicate')
+                ->label('')
+                ->icon('heroicon-o-clipboard-document-list')
+                ->tooltip('ricopia da quadrimentre precendente')
+                ->action(function (): void {
+                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
+
+                    app(ReplicateIndennita::class)->execute($tableFilters);
+                }),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         /** @var array{lavoratore: Column, valutatore: Column, indennitaTipoDettaglio: Column, quadrimestre: Column, anno: Column} */

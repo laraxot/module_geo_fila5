@@ -5,10 +5,19 @@ declare(strict_types=1);
 namespace Modules\Incentivi\Filament\Resources\CapitalPercentageResource\Tables;
 
 use Filament\Tables\Columns\TextColumn;
+use Modules\Incentivi\Filament\Resources\CapitalPercentageResource\Actions\CapitalPercentageSeederAction;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class CapitalPercentagesTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        $parentActions = parent::getTableHeaderActions();
+        $parentActions['capital_percentage_seeder'] = CapitalPercentageSeederAction::make('Carica Percentuali Fondo');
+
+        return $parentActions;
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

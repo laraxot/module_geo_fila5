@@ -6,10 +6,24 @@ namespace Modules\User\Filament\Resources\RoleResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class RolesTable extends XotBaseResourceTable
 {
+    public function getTableFilters(): array
+    {
+        return [
+            'guard_name' => SelectFilter::make('guard_name')
+                ->options([
+                    'web' => 'Web',
+                    'api' => 'API',
+                    'sanctum' => 'Sanctum',
+                ])
+                ->multiple(),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

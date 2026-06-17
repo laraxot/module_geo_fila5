@@ -6,10 +6,26 @@ namespace Modules\User\Filament\Resources\SsoProviderResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class SsoProvidersTable extends XotBaseResourceTable
 {
+    public function getTableFilters(): array
+    {
+        return [
+            'type' => SelectFilter::make('type')->options([
+                'saml' => 'SAML',
+                'oidc' => 'OIDC',
+                'oauth' => 'OAuth',
+            ]),
+            'is_active' => SelectFilter::make('is_active')->options([
+                true => 'Active',
+                false => 'Inactive',
+            ]),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

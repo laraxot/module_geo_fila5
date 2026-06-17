@@ -36,9 +36,4 @@ class ActivitiesTable extends XotBaseResourceTable
                 ->limit(50),
         ];
     }
-
-    public function getTableActions(): array
-    {
-        return parent::getTableActions();
-    }
 }

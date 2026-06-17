@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\IndividualeAdmResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SelectColumn;
@@ -16,6 +18,7 @@ use Modules\Performance\Models\StabiDirigente;
 use Modules\Ptv\Enums\WorkerType;
 use Modules\Ptv\Filament\Actions\Bulk\SendMailBulkAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
+use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Columns\LavoratoreColumn;
 use Modules\Ptv\Filament\Columns\PeriodoColumn;
@@ -30,6 +33,17 @@ use function Safe\date;
 
 class IndividualeAdmsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Action|ActionGroup>
+     */
+    public function getTableHeaderActions(): array
+    {
+        $actions = parent::getTableHeaderActions();
+        $actions['copy'] = CopyFromLastYearAction::make();
+
+        return $actions;
+    }
+
     public function getTableColumns(): array
     {
         return [

@@ -6,10 +6,21 @@ namespace Modules\User\Filament\Resources\SocialProviderResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class SocialProvidersTable extends XotBaseResourceTable
 {
+    public function getTableFilters(): array
+    {
+        return [
+            'active' => SelectFilter::make('active')->options([
+                true => 'Active',
+                false => 'Inactive',
+            ]),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

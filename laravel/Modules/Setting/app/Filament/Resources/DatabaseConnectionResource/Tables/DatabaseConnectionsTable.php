@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Setting\Filament\Resources\DatabaseConnectionResource\Tables;
 
+use Filament\Actions\CreateAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -11,6 +12,16 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class DatabaseConnectionsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, CreateAction>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\MyLogResource\Tables;
 
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
@@ -14,6 +15,16 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class MyLogsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, CreateAction>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create_log' => CreateAction::make(),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         return [

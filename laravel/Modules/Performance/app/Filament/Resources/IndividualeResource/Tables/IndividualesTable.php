@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\IndividualeResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Modules\Performance\Actions\ShowMailSendedAt;
+use Modules\Performance\Filament\Actions\Header\CopyFromOrganizzativaAction;
 use Modules\Performance\Filament\Resources\IndividualeResource;
 use Modules\Performance\Models\StabiDirigente;
 use Modules\Ptv\Enums\WorkerType;
@@ -29,6 +32,17 @@ use Parental\HasParent;
 
 class IndividualesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Action|ActionGroup>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            ...parent::getTableHeaderActions(),
+            'copy_from_organizzativa' => CopyFromOrganizzativaAction::make('copy_from_organizzativa'),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         return [

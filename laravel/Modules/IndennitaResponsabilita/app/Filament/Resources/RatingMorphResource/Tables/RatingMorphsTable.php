@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Filament\Resources\RatingMorphResource\Tables;
 
+use Filament\Actions\CreateAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class RatingMorphsTable extends XotBaseResourceTable
@@ -30,6 +35,40 @@ class RatingMorphsTable extends XotBaseResourceTable
             'updated_at' => TextColumn::make('updated_at')
                 ->dateTime()
                 ->sortable(),
+        ];
+    }
+
+    public function getTableFilters(): array
+    {
+        return [
+            'type' => SelectFilter::make('ratingable_type')
+                ->options([
+                    'post' => 'Post',
+                    'user' => 'User',
+                    'comment' => 'Comment',
+                ]),
+        ];
+    }
+
+    public function getTableActions(): array
+    {
+        return [
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+        ];
+    }
+
+    public function getTableBulkActions(): array
+    {
+        return [
+            'delete' => DeleteBulkAction::make(),
+        ];
+    }
+
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
         ];
     }
 }

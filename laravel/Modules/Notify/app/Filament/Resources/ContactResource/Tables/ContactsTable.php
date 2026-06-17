@@ -6,10 +6,22 @@ namespace Modules\Notify\Filament\Resources\ContactResource\Tables;
 
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ContactsTable extends XotBaseResourceTable
 {
+    public function getTableFilters(): array
+    {
+        return [
+            'active' => Filter::make('active')->query(fn (Builder $query): Builder => $query->where('active', true)),
+            'inactive' => Filter::make('inactive')->query(
+                fn (Builder $query): Builder => $query->where('active', false),
+            ),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

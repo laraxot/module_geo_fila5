@@ -10,18 +10,45 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Gate;
 use Modules\IndennitaResponsabilita\Actions\MakePdfByRecord;
+use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource;
 use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\Ptv\Filament\Actions\Bulk\SendSchedaBulkAction;
 use Modules\Ptv\Filament\Actions\Bulk\ZipSchedaBulkAction;
+use Modules\Ptv\Filament\Actions\Header\DeleteCessatiAction;
 use Modules\Ptv\Filament\Actions\Scheda\CompilaAction;
 use Modules\Ptv\Filament\Actions\Table\RecordPdfAction;
 use Modules\Ptv\Filament\Filters\AnnoValutatoreFilter;
 use Modules\Ptv\Filament\Tables\Columns\PeriodoColumn;
 use Modules\Ptv\Filament\Tables\Columns\WorkerColumn;
+use Modules\Xot\Filament\Actions\Header\ExportPdfAction;
+use Modules\Xot\Filament\Actions\Header\ExportXlsAction;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class IndennitaResponsabilitasTable extends XotBaseResourceTable
 {
+    /**
+     * Convertito da ListIndennitaResponsabilitas::getHeaderActions() (azioni pagina)
+     * al contesto classe Table: metodo `getTableHeaderActions()` cablato da
+     * HasXotTable::table() in ->headerActions().
+     *
+     * @return array<string, Action>
+     */
+    public function getTableHeaderActions(): array
+    {
+        /** @var array<string, string|int|bool|null>|null $filtersForUrl */
+        $filtersForUrl = $this->tableFilters;
+
+        return [
+            'SendMail' => Action::make('SendMail')
+                ->icon('heroicon-o-paper-airplane')
+                ->url(fn () => IndennitaResponsabilitaResource::getUrl('send-mail', $filtersForUrl ?? []))
+                ->visible(false),
+            'DeleteCessatiAction' => DeleteCessatiAction::make(),
+            'exportXls' => ExportXlsAction::make('exportXls'),
+            'exportPdf1' => ExportPdfAction::make('exportPdf1'),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

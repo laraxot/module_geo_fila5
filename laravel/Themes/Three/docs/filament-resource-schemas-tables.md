@@ -21,6 +21,7 @@ Themes/Three/app/Filament/Resources/{ResourceName}/
 - Classi base Xot (`XotBaseResourceForm`, `XotBaseResourceInfolist`, `XotBaseResourceTable`).
 - Array con chiavi stringa; niente label hardcoded sui componenti.
 - **`getPages()`:** omettere se solo CRUD standard e naming Page allineato — [regola Xot](../../Modules/Xot/docs/filament/getpages-redundancy-rule.md).
+- **Copia Page → `*Table`:** `getHeaderActions()` → `getTableHeaderActions()`, `$this->getModel()` → FQCN, `$this->tableFilters ?? []`, niente `#[Override]`. **NON** creare override `return parent::getTableXxx();` o `return [];` (= default, viola DRY+KISS). Dettaglio: [Progressioni](../../Modules/Progressioni/docs/filament-resource-schemas-tables.md#copia-metodi-tabella-page--classe-table-override-utili-vs-inutili).
 
 ## Riferimenti
 

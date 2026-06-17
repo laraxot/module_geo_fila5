@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\StabiDirigenteResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Performance\Models\Individuale;
+use Modules\Performance\Models\StabiDirigente;
+use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
@@ -13,6 +19,21 @@ use function Safe\date;
 
 class StabiDirigentesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Action|ActionGroup>
+     */
+    public function getTableHeaderActions(): array
+    {
+        $actions = parent::getTableHeaderActions();
+        $actions['import_valutatori'] = ImportValutatoriAction::make('import_valutatori')
+            ->addFields([
+                'anno' => TextInput::make('anno'),
+            ])->setStabiDirigenteModel(StabiDirigente::class)
+            ->setSchedaModel(Individuale::class);
+
+        return $actions;
+    }
+
     public function getTableColumns(): array
     {
         return [

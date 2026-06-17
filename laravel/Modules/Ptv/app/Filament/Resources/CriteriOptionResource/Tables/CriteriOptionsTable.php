@@ -4,16 +4,26 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\CriteriOptionResource\Tables;
 
+use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 use function Safe\date;
 
 class CriteriOptionsTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+            'copy_from_last_year' => CopyFromLastYearAction::make(),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

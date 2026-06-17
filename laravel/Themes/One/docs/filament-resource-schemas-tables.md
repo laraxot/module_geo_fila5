@@ -23,6 +23,15 @@ Themes/One/app/Filament/Resources/{ResourceName}/
 - Chiavi stringa negli array restituiti dai metodi get*.
 - **`getPages()`:** omettere se la Resource ha solo `index` / `create` / `edit` e le Page seguono `List{plural}`, `Create{name}`, `Edit{name}` — [regola Xot](../../Modules/Xot/docs/filament/getpages-redundancy-rule.md).
 
+## Copia metodi tabella Page → `*Table`: override utili vs inutili
+
+Spostando la config tabella dalla Page `List*` alla classe `*Table`:
+
+- `getHeaderActions()` (Page) → `getTableHeaderActions()` (Table); `$this->getModel()` → FQCN esplicito; `$this->tableFilters` → `$this->tableFilters ?? []`. Niente `#[Override]`.
+- **NON** creare metodi che sarebbero solo `return parent::getTableXxx();` (passthrough) o `return [];` (vuoto): equivalgono al default di `HasXotTable` → violano DRY+KISS. Override solo se aggiunge azioni/filtri/colonne custom.
+
+Dettaglio e anti-pattern: [Progressioni — filament-resource-schemas-tables](../../Modules/Progressioni/docs/filament-resource-schemas-tables.md#copia-metodi-tabella-page--classe-table-override-utili-vs-inutili).
+
 ## Riferimenti
 
 - [Xot — getPages ridondanza](../../Modules/Xot/docs/filament/getpages-redundancy-rule.md)

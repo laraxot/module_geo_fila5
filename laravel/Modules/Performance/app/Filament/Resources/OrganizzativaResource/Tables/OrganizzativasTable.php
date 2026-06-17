@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\OrganizzativaResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Modules\Performance\Actions\ShowMailSendedAt;
+use Modules\Performance\Filament\Actions\Header\CopyFromIndividualeAction;
+use Modules\Performance\Filament\Actions\Header\CopyValutatoreIdFromIndividualeAction;
 use Modules\Performance\Filament\Resources\OrganizzativaResource;
 use Modules\Performance\Models\StabiDirigente;
 use Modules\Ptv\Enums\WorkerType;
@@ -29,6 +33,18 @@ use Parental\HasParent;
 
 class OrganizzativasTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Action|ActionGroup>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            ...parent::getTableHeaderActions(),
+            'copy_valutatore_id_from_individuale' => CopyValutatoreIdFromIndividualeAction::make('copy_valutatore_id_from_individuale'),
+            'copy_from_individuale' => CopyFromIndividualeAction::make('copy_from_individuale'),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         return [

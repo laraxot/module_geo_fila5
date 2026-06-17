@@ -4,12 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TeamUserResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\CreateAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class TeamUsersTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, Action>
+     */
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+        ];
+    }
+
     /**
      * @return array<string, Column>
      */

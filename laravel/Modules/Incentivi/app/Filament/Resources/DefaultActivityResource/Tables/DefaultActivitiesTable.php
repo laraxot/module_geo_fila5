@@ -6,10 +6,19 @@ namespace Modules\Incentivi\Filament\Resources\DefaultActivityResource\Tables;
 
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Incentivi\Filament\Resources\DefaultActivityResource\Actions\DefaultActivitiesSeederAction;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class DefaultActivitiesTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        $actions = parent::getTableHeaderActions();
+        $actions['default_activities_seeder'] = DefaultActivitiesSeederAction::make();
+
+        return $actions;
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

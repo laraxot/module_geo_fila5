@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\StabiDirigenteResource\Tables;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
+use Modules\IndennitaCondizioniLavoro\Models\StabiDirigente;
+use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
@@ -15,6 +19,24 @@ use function Safe\date;
 
 class StabiDirigentesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
+     *
+     * @phpstan-ignore method.childReturnType
+     */
+    public function getTableHeaderActions(): array
+    {
+        $actions = parent::getTableHeaderActions();
+        $actions['import_valutatori_'] = ImportValutatoriAction::make('import_valutatori_')
+            ->addFields([
+                'anno' => TextInput::make('anno'),
+                'quadrimestre' => TextInput::make('quadrimestre'),
+            ])->setStabiDirigenteModel(StabiDirigente::class)
+            ->setSchedaModel(CondizioniLavoro::class);
+
+        return $actions;
+    }
+
     /**
      * @return array<string, Column>
      */

@@ -135,9 +135,46 @@ class ProgressioniForm extends XotBaseResourceForm
 }
 ```
 
+## Copia metodi tabella Page → classe `*Table`: override utili vs inutili
+
+Quando si sposta la configurazione tabella dalla Page `List*` alla classe `*Table` (estesa da `XotBaseResourceTable`, trait `HasXotTable`), copiare un metodo **solo se aggiunge logica custom** rispetto al default di `HasXotTable`/al parent.
+
+### Conversioni obbligatorie nella copia
+
+| Origine (Page) | Destinazione (`*Table`) |
+| :--- | :--- |
+| `getHeaderActions()` (header di pagina) | `getTableHeaderActions()` (cablato da `HasXotTable::table()`) |
+| `$this->getModel()` | FQCN esplicito del model (es. `Rating::class`) — la classe Table non ha `getModel()` |
+| `$this->tableFilters` | `$this->tableFilters ?? []` (null-safe); filtri annidati via `Arr::get($f, 'anno/valutatore')` |
+
+- **Niente `#[Override]`** nella `*Table`: `XotBaseResourceTable` non dichiara questi metodi (eccetto `getTableColumns`).
+
+### NON copiare (override inutile, viola DRY+KISS)
+
+Un metodo è inutile e va **omesso** se equivale al comportamento ereditato:
+
+```php
+// ❌ Passthrough puro: identico al default del parent → NON aggiungerlo
+public function getTableActions(): array
+{
+    return parent::getTableActions();
+}
+
+// ❌ Array vuoto: identico al default di HasXotTable (filters/bulk vuoti)
+public function getTableFilters(): array
+{
+    return [];
+}
+```
+
+**Regola generale:** copia un metodo nella `*Table` **iff** il corpo contiene azioni/colonne/filtri specifici. Se dopo la conversione resta solo `return parent::getTableXxx();` o `return [];`, **non** creare il metodo (il default lo fornisce già). Vale anche per `getTableHeaderActions`: il default `HasXotTable` fornisce già `create` + toggle layout, quindi un override va aggiunto solo per azioni aggiuntive/custom (import, populate, seeder, ecc.).
+
 ## Anti-pattern
 
 ```php
+// ❌ Override passthrough inutile nella *Table
+public function getTableActions(): array { return parent::getTableActions(); }
+
 // ❌ Schema inline nella Resource dopo la migrazione completata
 public static function getFormSchema(): array { return [ TextInput::make('foo') ]; }
 

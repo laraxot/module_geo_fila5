@@ -6,11 +6,20 @@ namespace Modules\Incentivi\Filament\Resources\WorkgroupResource\Tables;
 
 use Filament\Actions\ReplicateAction;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Incentivi\Filament\Resources\WorkgroupResource\Actions\WorkgroupSeederAction;
 use Modules\Incentivi\Models\Workgroup;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class WorkgroupsTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        return [
+            ...parent::getTableHeaderActions(),
+            'WorkgroupSeederAction' => WorkgroupSeederAction::make(),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

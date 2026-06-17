@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Filament\Resources\UploadResource\Tables;
 
+use Filament\Actions\CreateAction;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class UploadsTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

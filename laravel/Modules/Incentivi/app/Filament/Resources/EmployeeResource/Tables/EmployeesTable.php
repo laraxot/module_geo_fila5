@@ -6,11 +6,21 @@ namespace Modules\Incentivi\Filament\Resources\EmployeeResource\Tables;
 
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Incentivi\Filament\Resources\EmployeeResource\Actions\UploadEmpoyeesAction;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class EmployeesTable extends XotBaseResourceTable
 {
+    public function getTableHeaderActions(): array
+    {
+        return [
+            // ...parent::getTableHeaderActions(),
+            'Carica/Aggiorna Dipendenti' => UploadEmpoyeesAction::make('Carica/Aggiorna Dipendenti')
+                ->visible(fn () => auth()->check() && auth()->user()?->isSuperAdmin()),
+        ];
+    }
+
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

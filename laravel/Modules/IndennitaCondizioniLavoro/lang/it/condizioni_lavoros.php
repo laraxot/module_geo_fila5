@@ -17,4 +17,11 @@ return [
             'label' => 'anno',
         ],
     ],
+    'actions' => [
+        'delete' => [
+            'tooltip' => 'delete',
+            'icon' => 'delete',
+            'label' => 'delete',
+        ],
+    ],
 ];
