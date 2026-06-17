@@ -7,10 +7,9 @@ namespace Modules\Geo\Services;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
-
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Servizio per la gestione dei dati geografici.
