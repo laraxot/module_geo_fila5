@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Support;
 
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
 /**
@@ -120,7 +121,7 @@ final class PestAssert
     public static function contains(mixed $needle, mixed $actual): void
     {
         if (is_string($actual)) {
-            Assert::assertStringContainsString((string) $needle, $actual);
+            Assert::assertStringContainsString(SafeStringCastAction::cast($needle), $actual);
 
             return;
         }
@@ -136,7 +137,7 @@ final class PestAssert
     public static function notContains(mixed $needle, mixed $actual): void
     {
         if (is_string($actual)) {
-            Assert::assertStringNotContainsString((string) $needle, $actual);
+            Assert::assertStringNotContainsString(SafeStringCastAction::cast($needle), $actual);
 
             return;
         }
@@ -221,7 +222,7 @@ final class PestAssert
     public static function matches(mixed $pattern, mixed $actual): void
     {
         Assert::assertIsString($pattern);
-        Assert::assertMatchesRegularExpression($pattern, (string) $actual);
+        Assert::assertMatchesRegularExpression($pattern, SafeStringCastAction::cast($actual));
     }
 
     public static function matchesArray(mixed $expectedSubset, mixed $actual): void
@@ -273,7 +274,7 @@ final class PestAssert
             Assert::fail('Expected a non-empty prefix.');
         }
 
-        Assert::assertStringStartsWith($prefix, (string) $actual);
+        Assert::assertStringStartsWith($prefix, SafeStringCastAction::cast($actual));
     }
 
     public static function endsWith(mixed $suffix, mixed $actual): void
@@ -284,7 +285,7 @@ final class PestAssert
             Assert::fail('Expected a non-empty suffix.');
         }
 
-        Assert::assertStringEndsWith($suffix, (string) $actual);
+        Assert::assertStringEndsWith($suffix, SafeStringCastAction::cast($actual));
     }
 
     public static function file(mixed $path): void

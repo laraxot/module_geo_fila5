@@ -14,7 +14,11 @@ final class ListLogActivitiesActionTestResource
     public static function getUrl(string $name, array $parameters = []): string
     {
         $record = $parameters['record'] ?? null;
-        $key = $record instanceof Model ? (string) $record->getKey() : '';
+        $key = '';
+        if ($record instanceof Model) {
+            $modelKey = $record->getKey();
+            $key = is_scalar($modelKey) ? (string) $modelKey : '';
+        }
 
         return '/log-activity/'.$name.'/'.$key;
     }

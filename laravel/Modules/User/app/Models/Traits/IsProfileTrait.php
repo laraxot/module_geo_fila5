@@ -50,16 +50,14 @@ trait IsProfileTrait
     /**
      * Relazione con l'utente a cui appartiene il profilo.
      *
-     * @return BelongsTo<Model, Model>
-     *
-     * @phpstan-return BelongsTo<Model, Model>
+     * @return BelongsTo<Model&UserContract, Model>
      */
     public function user(): BelongsTo
     {
         /** @var class-string<Model&UserContract> $userClass */
         $userClass = XotData::make()->getUserClass();
 
-        /** @var BelongsTo<Model, Model> $relation */
+        /** @var BelongsTo<Model&UserContract, Model> $relation */
         $relation = $this->belongsTo($userClass);
 
         return $relation;

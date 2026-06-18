@@ -140,7 +140,10 @@ class Utils
     {
         Assert::isArray($res = config('filament-shield.permission_prefixes.resource'), 'wip');
 
-        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
+        return array_values(array_map(
+            static fn (mixed $item): string => Assert::string($item),
+            $res
+        ));
     }
 
     public static function getPagePermissionPrefix(): string
@@ -219,7 +222,10 @@ class Utils
     {
         Assert::isArray($res = config('filament-shield.exclude.resources'));
 
-        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
+        return array_values(array_map(
+            static fn (mixed $item): string => Assert::string($item),
+            $res
+        ));
     }
 
     /**
@@ -229,7 +235,10 @@ class Utils
     {
         Assert::isArray($res = config('filament-shield.exclude.pages'));
 
-        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
+        return array_values(array_map(
+            static fn (mixed $item): string => Assert::string($item),
+            $res
+        ));
     }
 
     /**
@@ -239,7 +248,10 @@ class Utils
     {
         Assert::isArray($res = config('filament-shield.exclude.widgets'));
 
-        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
+        return array_values(array_map(
+            static fn (mixed $item): string => Assert::string($item),
+            $res
+        ));
     }
 
     public static function isRolePolicyRegistered(): bool
@@ -276,7 +288,10 @@ class Utils
             : static::getGeneralResourcePermissionPrefixes();
         Assert::isArray($res);
 
-        return array_values(array_map(static fn (mixed $item): string => (string) $item, $res));
+        return array_values(array_map(
+            static fn (mixed $item): string => Assert::string($item),
+            $res
+        ));
     }
 
     public static function getRoleModel(): string

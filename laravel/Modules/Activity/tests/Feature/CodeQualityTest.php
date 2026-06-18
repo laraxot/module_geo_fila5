@@ -48,7 +48,9 @@ function activityAssertPhpFileHasValidSyntax(string $filePath): void
     exec('php -l '.escapeshellarg($filePath).' 2>&1', $outputLines, $resultCode);
 
     Assert::assertIsArray($outputLines);
-    $lines = array_map(static fn (mixed $line): string => (string) $line, $outputLines);
+    $lines = array_map(static function (mixed $line): string {
+        return is_string($line) ? $line : '';
+    }, $outputLines);
     Assert::assertSame(0, $resultCode, "File {$filePath} ha errori di sintassi: ".implode("\n", $lines));
 }
 

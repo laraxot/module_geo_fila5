@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Actions\ModelClass;
 
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+
 use function Safe\file;
 
 use Spatie\QueueableAction\QueueableAction;
@@ -26,7 +28,7 @@ class GetMethodBodyAction
 
         $body = '';
         foreach (\array_slice($source, $start_line, $length) as $line) {
-            $body .= (string) $line;
+            $body .= SafeStringCastAction::cast($line);
         }
 
         return $body;

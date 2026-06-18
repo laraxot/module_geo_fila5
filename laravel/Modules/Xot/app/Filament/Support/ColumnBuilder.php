@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Builder for common Filament table columns.
@@ -71,7 +72,7 @@ class ColumnBuilder
             ->sortable()
             ->searchable()
             ->limit(50)
-            ->tooltip(static fn ($record) => \is_object($record) && isset($record->title) ? (string) $record->title : '')
+            ->tooltip(static fn ($record) => \is_object($record) && isset($record->title) ? SafeStringCastAction::cast($record->title) : '')
             ->toggleable();
     }
 
@@ -110,7 +111,7 @@ class ColumnBuilder
         return TextColumn::make('description')
             ->label(__('xot::fields.description.label'))
             ->limit($limit)
-            ->tooltip(static fn ($record) => \is_object($record) && isset($record->description) ? (string) $record->description : '')
+            ->tooltip(static fn ($record) => \is_object($record) && isset($record->description) ? SafeStringCastAction::cast($record->description) : '')
             ->toggleable();
     }
 

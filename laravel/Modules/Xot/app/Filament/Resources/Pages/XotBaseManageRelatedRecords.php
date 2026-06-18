@@ -11,6 +11,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Contracts\Support\Htmlable;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotForm;
 use Modules\Xot\Filament\Traits\HasXotTable;
@@ -44,7 +45,7 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     {
         $value = $this->record->{static::$recordTitleAttribute};
 
-        return (string) $value;
+        return SafeStringCastAction::cast($value);
     }
 
     public function schema(Schema $schema): Schema

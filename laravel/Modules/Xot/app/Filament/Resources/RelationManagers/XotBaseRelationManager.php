@@ -20,6 +20,7 @@ use Filament\Tables\Columns\Layout\Component as LayoutComponent;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotTable;
@@ -155,7 +156,7 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
 
             // $column è già verificato come instance di Column|LayoutComponent sopra
             $name = method_exists($column, 'getName') ? $column->getName() : (string) spl_object_hash($column);
-            $nameStr = \is_string($name) ? $name : (string) $name;
+            $nameStr = SafeStringCastAction::cast($name);
             $assoc[$nameStr] = $column;
         }
 

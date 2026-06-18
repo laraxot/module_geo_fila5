@@ -8,6 +8,7 @@ use Filament\Forms\Components\Textarea;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\StateContract;
 use Modules\Xot\Filament\Traits\TransTrait;
 
@@ -189,7 +190,7 @@ abstract class XotBaseState implements StateContract
 
         $labels = Arr::map($states, fn ($_stateClass, $state) => static::transClass(
             static::class,
-            'states.'.(is_string($state) ? $state : (string) $state).'.label',
+            'states.'.SafeStringCastAction::cast($state).'.label',
         ));
 
         /** @var array<string, mixed> $result */

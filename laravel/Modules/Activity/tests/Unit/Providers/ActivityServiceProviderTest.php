@@ -24,7 +24,9 @@ test('activity service provider exposes expected metadata', function (): void {
     $moduleNs->setAccessible(true);
 
     Assert::assertSame('Activity', $name->getValue($provider));
-    Assert::assertStringContainsString('Modules/Activity', (string) $moduleDir->getValue($provider));
+    $moduleDirValue = $moduleDir->getValue($provider);
+    $moduleDirString = is_string($moduleDirValue) ? $moduleDirValue : (string) $moduleDirValue;
+    Assert::assertStringContainsString('Modules/Activity', $moduleDirString);
     Assert::assertSame('Modules\\Activity\\Providers', $moduleNs->getValue($provider));
 });
 

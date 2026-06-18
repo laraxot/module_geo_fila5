@@ -14,9 +14,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Translation\ArrayLoader;
 use Illuminate\Translation\Translator;
 use Mockery\MockInterface;
-use Modules\Tenant\Database\Factories\TenantFactory;
-use Modules\Tenant\Models\Tenant;
+use Modules\User\Database\Factories\TenantFactory;
 use Modules\User\Database\Factories\UserFactory;
+use Modules\User\Models\Tenant;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Database\Factories\ModuleFactory;
 use Modules\Xot\Datas\XotData;
@@ -240,7 +240,10 @@ abstract class XotBaseTestCase extends BaseTestCase
      */
     protected static function createTestTenant(array $attributes = []): Tenant
     {
-        return TenantFactory::new()->createOne($attributes);
+        /** @var Tenant $tenant */
+        $tenant = TenantFactory::new()->createOne($attributes);
+
+        return $tenant;
     }
 
     /**

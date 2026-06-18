@@ -94,10 +94,10 @@ class CollectionExport implements FromCollection, ShouldQueue, WithHeadings, Wit
             return array_values(Arr::map($res, function ($value, $_key): string {
                 if ($value instanceof \BackedEnum) {
                     if (method_exists($value, 'getLabel')) {
-                        return (string) $value->getLabel();
+                        return SafeStringCastAction::cast($value->getLabel());
                     }
 
-                    return (string) $value->value;
+                    return SafeStringCastAction::cast($value->value);
                 }
 
                 return SafeStringCastAction::cast($value);

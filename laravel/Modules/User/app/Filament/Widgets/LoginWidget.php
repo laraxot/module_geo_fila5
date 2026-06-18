@@ -25,6 +25,20 @@ use Modules\Xot\Filament\Widgets\XotBaseSchemaWidget;
  */
 class LoginWidget extends XotBaseSchemaWidget
 {
+    /**
+     * Blade view del widget nel modulo User.
+     * IMPORTANTE: quando il widget viene usato con @livewire() direttamente nelle Blade,
+     * il path deve essere senza il namespace del modulo (senza "user::").
+     *
+     * @see \Modules\User\docs\WIDGETS_STRUCTURE.md - Sezione B
+     *
+     * @var view-string
+     */
+    protected string $view = 'pub_theme::filament.widgets.auth.login';
+
+    /**
+     * Inizializza il widget quando viene montato.
+     */
     public function mount(): void
     {
         $this->form->fill();

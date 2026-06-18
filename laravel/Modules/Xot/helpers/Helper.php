@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Datas\XotData;
@@ -442,7 +443,7 @@ if (! function_exists('trans_string')) {
                 continue;
             }
 
-            $safeReplace[$k] = (is_scalar($v) || null === $v) ? $v : (string) $v;
+            $safeReplace[$k] = (is_scalar($v) || null === $v) ? $v : SafeStringCastAction::cast($v);
         }
 
         $result = __($key, $safeReplace, $locale);

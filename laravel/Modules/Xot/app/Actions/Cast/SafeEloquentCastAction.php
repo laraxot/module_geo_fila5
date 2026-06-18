@@ -78,7 +78,7 @@ class SafeEloquentCastAction
             return $default ?? '';
         }
 
-        return (string) $value;
+        return SafeStringCastAction::cast($value);
     }
 
     /**

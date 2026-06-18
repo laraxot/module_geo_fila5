@@ -37,7 +37,11 @@ trait CanPaginate
 
     public function getTablePage(): int
     {
-        return (int) $this->getPage($this->getPaginationPageName());
+        $page = $this->getPage($this->getPaginationPageName());
+        if (is_numeric($page)) {
+            return (int) $page;
+        }
+        return 1;
     }
 
     public function getDefaultRecordsPerPageSelectOption(): int|string
@@ -49,13 +53,14 @@ trait CanPaginate
 
         $pageOptions = $this->getRecordsPerPageSelectOptions();
 
-        if (in_array($option, $pageOptions)) {
+        if (is_numeric($option) && in_array($option, $pageOptions)) {
             return (int) $option;
         }
 
         session()->remove($this->getPerPageSessionKey());
 
-        return (int) ($pageOptions[0] ?? 10);
+        $firstOption = $pageOptions[0] ?? 10;
+        return is_numeric($firstOption) ? (int) $firstOption : 10;
     }
 
     public function getPaginationPageName(): string

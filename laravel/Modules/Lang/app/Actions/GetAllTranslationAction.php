@@ -32,8 +32,8 @@ class GetAllTranslationAction
         $files = glob($path);
 
         /** @var array<int, array<string, mixed>> $result */
-        $result = Arr::map($files, function ($file) {
-            $fileStr = is_string($file) ? $file : (string) $file;
+        $result = Arr::map($files, function (string $file) {
+            $fileStr = $file;
             $moduleLower = Str::of($fileStr)
                 ->between('Modules/', '/lang/')
                 ->lower()

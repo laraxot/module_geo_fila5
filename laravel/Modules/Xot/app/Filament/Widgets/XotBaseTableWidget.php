@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Livewire\Attributes\On;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Modules\Xot\Filament\Traits\TransTrait;
 
@@ -61,10 +62,10 @@ abstract class XotBaseTableWidget extends FilamentTableWidget
     public function getTableRecordKey(Model|array $record): string
     {
         if (\is_array($record)) {
-            return (string) ($record['_id'] ?? $record['id'] ?? '');
+            return SafeStringCastAction::cast($record['_id'] ?? $record['id'] ?? '');
         }
 
-        return (string) ($record->_id ?? $record->id ?? '');
+        return SafeStringCastAction::cast($record->_id ?? $record->id ?? '');
     }
 
     public function getTableSearch(): ?string

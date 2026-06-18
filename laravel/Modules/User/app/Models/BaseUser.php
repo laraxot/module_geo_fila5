@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -26,8 +24,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\HasApiTokens;
+use Modules\Comment\Models\Concerns\InteractsWithComments;
+use Modules\Comment\Models\Contracts\CanComment;
 use Modules\User\Models\Traits\HasAuthenticationLogTrait;
+use Modules\User\Models\Traits\HasCommentatorRelations;
+use Modules\User\Models\Traits\HasDevices;
 use Modules\User\Models\Traits\HasModules;
+use Modules\User\Models\Traits\HasSocialite;
 use Modules\User\Models\Traits\HasSpatiePermission;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Contracts\ProfileContract;
@@ -125,18 +128,22 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  *
  * @mixin \Eloquent
  */
-abstract class BaseUser extends Authenticatable implements HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
+abstract class BaseUser extends Authenticatable implements CanComment, HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
 {
     use HasApiTokens;
     use HasAuthenticationLogTrait;
+    use HasCommentatorRelations;
     use HasChildren;
+    use HasDevices;
     use HasModules;
+    use HasSocialite;
     use HasSpatiePermission;
     use HasTeams;
     use HasUuids;
     /** @phpstan-use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
     use HasXotFactory;
     use InteractsWithMedia;
+    use InteractsWithComments;
     use Notifiable;
 
     // use SoftDeletes;
@@ -255,6 +262,8 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
 
     /**
      * @return HasOne<Model&ProfileContract, $this>
+     *
+     * @phpstan-return HasOne<Model&ProfileContract, $this>
      */
     #[\Override]
     public function profile(): HasOne
@@ -267,6 +276,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
             return $relation;
         }
 
+        // Try direct module class if XotData failed
         $directClass = 'Modules\User\Models\Profile';
         if (class_exists($directClass)) {
             /** @var HasOne<Model&ProfileContract, $this> $relation */
@@ -275,6 +285,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
             return $relation;
         }
 
+        // Fallback: stay on current model if nothing found
         /** @var HasOne<Model&ProfileContract, $this> $relation */
         $relation = $this->hasOne(static::class, 'id', 'id')->whereRaw('1=0');
 
@@ -317,11 +328,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
     }
 
-    public function canAccessSocialite(): bool
-    {
-        return true;
-    }
-
     public function detach(Model $model): void
     {
         $this->teams()->detach($model);
@@ -346,38 +352,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     public function treeSons(): Collection
     {
         return $this->teams ?? new Collection();
-    }
-
-    /**
-     * Get the devices associated with the user.
-     *
-     * @return BelongsToMany<Device, $this, Pivot, 'pivot'>
-     */
-    public function devices(): BelongsToMany
-    {
-        return $this->belongsToManyX(Device::class);
-    }
-
-    /**
-     * Get the socialite users associated with the user.
-     *
-     * @return HasMany<SocialiteUser, $this>
-     */
-    public function socialiteUsers(): HasMany
-    {
-        return $this->hasMany(SocialiteUser::class);
-    }
-
-    public function getProviderField(string $provider, string $field): string
-    {
-        $socialiteUser = $this->socialiteUsers()->firstWhere(['provider' => $provider]);
-        if (null === $socialiteUser) {
-            throw new \Exception('SocialiteUser not found');
-        }
-
-        $res = $socialiteUser->{$field};
-
-        return (string) $res;
     }
 
     /**

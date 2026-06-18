@@ -9,6 +9,7 @@ use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Webmozart\Assert\Assert;
 
 /**
@@ -144,7 +145,7 @@ abstract class XotBaseSchemaWidget extends XotBaseWidget implements HasSchemas
         $fillable = $model->getFillable();
         $appends = $model->getAppends();
         $attributes = $model->attributesToArray();
-        $keys = array_values(array_map(static fn (mixed $f): string => (string) $f, array_merge($fillable, $appends)));
+        $keys = array_values(array_map(static fn (mixed $f): string => SafeStringCastAction::cast($f), array_merge($fillable, $appends)));
         /** @var array<string, mixed> $fields */
         $fields = array_fill_keys($keys, null);
 

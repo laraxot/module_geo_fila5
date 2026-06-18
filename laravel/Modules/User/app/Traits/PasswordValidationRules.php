@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\User\Traits;
 
-use Illuminate\Contracts\Validation\Rule;
-use Modules\User\Rules\Password;
+use Illuminate\Validation\Rules\Password;
 
+/**
+ * Shared password validation rules for forms and Livewire components.
+ */
 trait PasswordValidationRules
 {
     /**
      * Get the validation rules used to validate passwords.
      *
-     * @return array<int, (Rule|array|string)>
+     * @return array<int, Password|array<int, string>|string>
      */
     protected function passwordRules(): array
     {
-        return ['required', 'string', new Password(), 'confirmed'];
+        return ['required', 'string', Password::default(), 'confirmed'];
     }
 }

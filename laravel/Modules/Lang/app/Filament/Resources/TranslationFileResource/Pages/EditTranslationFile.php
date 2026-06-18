@@ -52,21 +52,22 @@ class EditTranslationFile extends XotBaseEditRecord
         $fields = [];
 
         foreach ($array as $key => $value) {
-            $fullKey = '' === $prefix ? $key : ($prefix.'.'.$key);
+            $keyStr = (string) $key;
+            $fullKey = '' === $prefix ? $keyStr : ($prefix.'.'.$keyStr);
 
             if (is_array($value)) {
                 /** @var array<string, mixed> $childArray */
                 $childArray = $value;
                 /** @var array<Htmlable|string> $childSchema */
                 $childSchema = self::makeFromArray($childArray, $fullKey);
-                $fields[] = Section::make($key)
+                $fields[] = Section::make($keyStr)
                     ->label($fullKey)
                     ->schema($childSchema)
                     ->columns(2);
             } else {
                 $fields[] = TextInput::make($fullKey)
                     // ->label($fullKey)
-                    ->label($key)
+                    ->label($keyStr)
                     ->default($value);
             }
         }

@@ -10,8 +10,8 @@ declare(strict_types=1);
  * test files. Runtime Pest remains unchanged because this file is a static
  * analysis bridge under the analyzed Modules tree, not a Pest bootstrap file.
  */
-// Generated at: 2026-06-13T11:07:53+00:00
-// Namespaces: 205.
+// Generated at: 2026-06-17T15:23:42+00:00
+// Namespaces: 208.
 
 namespace Modules\AI\Tests;
 
@@ -4382,6 +4382,110 @@ function uses(string ...$classes): void
 }
 
 namespace Modules\Media\Tests;
+
+use Closure;
+use Modules\Xot\Tests\Support\PestExpectation;
+
+function expect(mixed $value = null): PestExpectation
+{
+    return new PestExpectation($value);
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function test(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function it(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function describe(string $description, Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function beforeEach(Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function afterEach(Closure $closure): void
+{
+}
+
+/**
+ * @param class-string ...$classes
+ */
+function uses(string ...$classes): void
+{
+}
+
+namespace Modules\Media\Tests\Feature;
+
+use Closure;
+use Modules\Xot\Tests\Support\PestExpectation;
+
+function expect(mixed $value = null): PestExpectation
+{
+    return new PestExpectation($value);
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function test(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function it(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function describe(string $description, Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function beforeEach(Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Media\Tests\TestCase $closure
+ */
+function afterEach(Closure $closure): void
+{
+}
+
+/**
+ * @param class-string ...$classes
+ */
+function uses(string ...$classes): void
+{
+}
+
+namespace Modules\Media\Tests\Filament\Resources;
 
 use Closure;
 use Modules\Xot\Tests\Support\PestExpectation;
@@ -10569,6 +10673,58 @@ function uses(string ...$classes): void
 }
 
 namespace Modules\Xot\Tests\Unit\Datas;
+
+use Closure;
+use Modules\Xot\Tests\Support\PestExpectation;
+
+function expect(mixed $value = null): PestExpectation
+{
+    return new PestExpectation($value);
+}
+
+/**
+ * @param-closure-this \Modules\Xot\Tests\TestCase $closure
+ */
+function test(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Xot\Tests\TestCase $closure
+ */
+function it(string $description, ?Closure $closure = null): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Xot\Tests\TestCase $closure
+ */
+function describe(string $description, Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Xot\Tests\TestCase $closure
+ */
+function beforeEach(Closure $closure): void
+{
+}
+
+/**
+ * @param-closure-this \Modules\Xot\Tests\TestCase $closure
+ */
+function afterEach(Closure $closure): void
+{
+}
+
+/**
+ * @param class-string ...$classes
+ */
+function uses(string ...$classes): void
+{
+}
+
+namespace Modules\Xot\Tests\Unit\Filament;
 
 use Closure;
 use Modules\Xot\Tests\Support\PestExpectation;

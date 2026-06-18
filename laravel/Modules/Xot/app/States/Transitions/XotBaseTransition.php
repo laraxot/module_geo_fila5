@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Modules\Notify\Datas\RecordNotificationData;
 use Modules\Notify\Notifications\RecordNotification;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\UserContract;
 use Webmozart\Assert\InvalidArgumentException;
 
@@ -73,7 +74,7 @@ abstract class XotBaseTransition
     public function getNotificationSlug(UserContract $recipient): string
     {
         $typeEnum = $recipient->type;
-        $type = $typeEnum instanceof \BackedEnum ? (string) $typeEnum->value : 'unknown';
+        $type = $typeEnum instanceof \BackedEnum ? SafeStringCastAction::cast($typeEnum->value) : 'unknown';
 
         $slug =
             class_basename($this->record).

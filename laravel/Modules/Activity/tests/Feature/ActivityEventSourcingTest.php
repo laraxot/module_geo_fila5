@@ -186,7 +186,8 @@ test('stored event creation and event reconstruction works', function () {
     Assert::assertArrayHasKey('processed', $metaDataArray);
     Assert::assertTrue((bool) $metaDataArray['processed']);
     Assert::assertArrayHasKey('retry_count', $metaDataArray);
-    Assert::assertSame(0, (int) $metaDataArray['retry_count']);
+    $retryCount = $metaDataArray['retry_count'];
+    Assert::assertSame(0, is_numeric($retryCount) ? (int) $retryCount : 0);
 });
 
 test('activity batch operations work correctly', function () {

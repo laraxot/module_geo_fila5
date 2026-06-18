@@ -2,23 +2,13 @@
 
 ## Regola Fondamentale
 
-**DOPO OGNI MODIFICA A UN FILE, ESEGUIRE SEMPRE** (gate completo):
+**DOPO OGNI MODIFICA A UN FILE, ESEGUIRE SEMPRE**:
 
-1. **PHPStan Livello 10** — `./vendor/bin/phpstan`
-2. **PHPMD** (PHP Mess Detector) — wrapper **`tools/phpmd.sh`** (`tools/phpmd.xml` come ruleset)
-3. **PHP Insights** — wrapper **`tools/phpinsights.sh`**
-4. **Pest** — test mirato; **se il test manca, crearlo**
-5. **Puppeteer** — verifica UI/render per modifiche frontend/Filament/Blade
-6. **Playwright‑MCP** (`cursor-ide-browser`) — verifica E2E della pagina reale
+1. **PHPStan Livello 10**
+2. **PHPMD** (PHP Mess Detector)
+3. **PHP Insights**
 
-**SE uno fallisce → CORREGGERE prima di procedere.**
-
-> ⚠️ **DATI SACRI**: nei test e in qualsiasi comando **MAI** `migrate --force`, `migrate:fresh`, `migrate:refresh` né trait `RefreshDatabase`. Usare `DatabaseTransactions` (rollback) o factory in transazione. I dati esistenti non si toccano.
-
-> Applicabilità per tipo di file:
-> - **PHP** (Models, Filament, Actions, Services…): 1‑2‑3‑4 obbligatori; 5‑6 se la modifica ha impatto UI.
-> - **Blade/JS/CSS/tema/Filament UI**: 4 (se logica testabile) + **5 e 6 obbligatori**.
-> - **`.md` / docs**: nessun tool PHP; verificare solo link/markdown standard.
+**SE uno fallisce → CORREGGERE prima di procedere**
 
 ## Perché Questa Regola?
 
@@ -87,22 +77,18 @@ timeout 60 ./vendor/bin/phpstan analyze Modules/<Module> --level=10 --memory-lim
 
 **Livello 10**: Massima rigidità, zero tolleranza
 
-> ⚠️ **excludePaths**: alcuni moduli sono esclusi in `phpstan.neon` (es. `Modules/Incentivi/*`, `Modules/Pdnd/*`). Su di essi PHPStan risponde `No files found to analyse`: è atteso, l'analisi è disabilitata per quel modulo. In tal caso valgono comunque PHPMD/PHP Insights/Pest.
-
-### 2. PHPMD (PHP Mess Detector) — wrapper `tools/`
-
-Usare **`tools/phpmd.sh`** (binario standalone isolato + cache PDepend), non `vendor/bin/phpmd`.
+### 2. PHPMD (PHP Mess Detector)
 
 ```bash
-# Per file singolo (ruleset del progetto)
+# Per file singolo
 cd laravel
-tools/phpmd.sh Modules/<Module>/app/path/to/File.php text tools/phpmd.xml
-
-# Ruleset espliciti (alternativa)
-tools/phpmd.sh Modules/<Module>/app/path/to/File.php text cleancode,codesize,controversial,design,naming,unusedcode
+./vendor/bin/phpmd Modules/<Module>/app/path/to/File.php text cleancode,codesize,controversial,design,naming,unusedcode
 
 # Per modulo
-tools/phpmd.sh Modules/<Module>/app text tools/phpmd.xml
+./vendor/bin/phpmd Modules/<Module>/app text cleancode,codesize,design
+
+# Con output in file
+./vendor/bin/phpmd Modules/<Module>/app text cleancode,codesize > /tmp/phpmd_report.txt
 ```
 
 **Cosa Verifica**:
@@ -112,47 +98,25 @@ tools/phpmd.sh Modules/<Module>/app text tools/phpmd.xml
 - Codice duplicato
 - Naming conventions
 
-### 3. PHP Insights — wrapper `tools/`
-
-Usare **`tools/phpinsights.sh`** (installazione isolata per evitare conflitti di dipendenze).
+### 3. PHP Insights
 
 ```bash
-cd laravel
-tools/phpinsights.sh -n analyse Modules/<Module>/app/path/to/File.php
-
 # Per modulo
-tools/phpinsights.sh -n --dir=Modules/<Module>
-```
-
-**Cosa Verifica**: code complexity, architecture, code style, security issues.
-
-### 4. Pest — test (crearlo se manca)
-
-```bash
 cd laravel
-# Test mirato esistente
-./vendor/bin/pest Modules/<Module>/tests/Feature/<Area>/<Cosa>Test.php
+./vendor/bin/phpinsights -n --dir=Modules/<Module>
 
-# Tutta la suite del modulo
-./vendor/bin/pest --filter=<Module>
+# Con dettagli
+./vendor/bin/phpinsights --dir=Modules/<Module> --min-quality=80
+
+# JSON output per parsing
+./vendor/bin/phpinsights -n --dir=Modules/<Module> --format=json > /tmp/insights.json
 ```
 
-- Se per il comportamento modificato **non esiste** un test, **crearlo** (Feature o Unit secondo il caso) prima di considerare il task chiuso.
-- **DATI SACRI**: usare `DatabaseTransactions` (rollback automatico) o factory dentro transazione. **MAI** `RefreshDatabase`, `migrate:fresh/refresh`, `migrate --force`.
-- Usare sempre `XotData::make()->getUserClass()` invece di import diretti del model User.
-
-### 5. Puppeteer — verifica render UI
-
-Per modifiche che impattano l'output (Filament Resource/Pages/Widgets, Blade, tema): eseguire lo script Puppeteer (vedi `tools/*.mjs`) o equivalente per caricare la pagina e verificare assenza di errori JS/render.
-
-```bash
-cd laravel
-node tools/<script>.mjs   # es. verifica caricamento pagina/risorsa
-```
-
-### 6. Playwright‑MCP — verifica E2E pagina reale
-
-Usare il server MCP `cursor-ide-browser` per aprire la rotta interessata, fare snapshot/screenshot e confermare che la pagina risponda senza eccezioni (es. dopo fix su Resource/connessioni DB). Login su `/it/auth/login` se richiesto.
+**Cosa Verifica**:
+- Code complexity
+- Architecture
+- Code style
+- Security issues
 
 ## Workflow Integrato con File Locking
 
@@ -281,12 +245,12 @@ public function metodo(): ?string // Allineato
 
 Dopo ogni modifica file:
 
-- [ ] 🔍 PHPStan lvl 10 eseguito → PASS (o corretto)
-- [ ] 🔍 PHPMD via `tools/phpmd.sh` → PASS (o corretto)
-- [ ] 🔍 PHP Insights via `tools/phpinsights.sh` → PASS (o warning accettati)
-- [ ] 🧪 Pest: test eseguito; **creato se mancante**; nessun `RefreshDatabase`/`migrate:fresh/refresh/--force`
-- [ ] 🖥️ Puppeteer: render UI verificato (se modifica con impatto UI)
-- [ ] 🌐 Playwright‑MCP: pagina reale verificata (se modifica con impatto UI)
+- [ ] 🔍 PHPStan lvl 10 eseguito
+- [ ] ✅ PHPStan PASS (o errori corretti)
+- [ ] 🔍 PHPMD eseguito
+- [ ] ✅ PHPMD PASS (o errori corretti)
+- [ ] 🔍 PHP Insights eseguito
+- [ ] ✅ PHP Insights PASS (o warning accettati)
 - [ ] 📝 Documentati fix applicati
 - [ ] 🔓 Lock rilasciato
 

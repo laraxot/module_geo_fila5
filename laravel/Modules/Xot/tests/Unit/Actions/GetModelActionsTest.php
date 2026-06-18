@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 uses(Modules\Xot\Tests\TestCase::class);
 use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Actions\GetModelByModelTypeAction;
 use Modules\Xot\Actions\GetModelClassByModelTypeAction;
 use Modules\Xot\Actions\GetModelTypeByModelAction;
@@ -60,7 +61,7 @@ it('loads model by id when record exists', function (): void {
     $result = app(GetModelByModelTypeAction::class)->execute('demo', '123');
 
     Assert::assertInstanceOf(DemoModel::class, $result);
-    Assert::assertSame(123, (int) $result->getKey());
+    Assert::assertSame(123, SafeIntCastAction::cast($result->getKey()));
 });
 
 it('throws when model id is provided but record is missing', function (): void {

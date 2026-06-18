@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Xot\Actions\Array;
 
 use Filament\Support\RawJs;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\preg_match;
 
@@ -62,6 +63,6 @@ class ArrayToRawJsAction
             return (string) $value;
         }
 
-        return "'".str_replace(['\\', "'"], ['\\\\', "\\'"], (string) $value)."'";
+        return "'".str_replace(['\\', "'"], ['\\\\', "\\'"], SafeStringCastAction::cast($value))."'";
     }
 }

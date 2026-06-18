@@ -20,7 +20,7 @@ related:
 
 ## Log Entries
 
-[2026-06-18 10:55:00 UTC] [FIX] `MakePdf` e `ReplicateIndennita`: contratto `?array` per `tableFilters` Filament `array|null`, validazione interna e test su input null. PHPStan modulo: 3 -> 0 errori. Vedi [filament-tablefilters-nullable](./concepts/filament-tablefilters-nullable.md).
+[2026-06-18 10:55:00 UTC] [FIX] `MakePdf` e `ReplicateIndennita`: contratto `?array` per `tableFilters` Filament `array|null`, validazione interna e test su input null. PHPStan modulo: 3 -> 0 errori. Pest mirato filtri: 13 passed; Pest completo modulo bloccato da test legacy DB/mock Eloquent non allineati (`Model::$resolver` nullo), non introdotti dal fix. Vedi [filament-tablefilters-nullable](./concepts/filament-tablefilters-nullable.md).
 
 [2026-06-17 10:45:00 UTC] [FIX] `RelationshipTrait`: aggiunto `HasEnteMatrRelationHelpers` — `EnteMatrRelationship` richiede `hasManyByEnteMatr()` assente su `BaseModel` modulo (non Sigma). Fix errore `CompilaCondizioniLavoro` / `asz00k1()`. Vedi [ente-matr-relation-helpers](./concepts/ente-matr-relation-helpers.md).
 

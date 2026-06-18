@@ -75,11 +75,16 @@ class TranslationFile extends BaseModel
                 return [];
             }
 
-            $item['id'] = isset($item['key']) ? (string) $item['key'] : '';
-            $item['name'] = isset($item['path']) ? basename((string) $item['path'], '.php') : '';
+            $key = $item['key'] ?? null;
+            $keyStr = is_string($key) ? $key : (string) $key;
+            $item['id'] = isset($item['key']) ? $keyStr : '';
+
+            $pathValue = $item['path'] ?? null;
+            $pathStr = is_string($pathValue) ? $pathValue : (string) $pathValue;
+            $item['name'] = isset($item['path']) ? basename($pathStr, '.php') : '';
 
             if (isset($item['path'])) {
-                $path = (string) $item['path'];
+                $path = $pathStr;
                 if (File::exists($path)) {
                     try {
                         $content = File::getRequire($path);

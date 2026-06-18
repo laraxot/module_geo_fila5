@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Tests\Support;
 
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
+/**
+ * @property self $not Negated expectation (resolved via __get).
+ */
 final class PestExpectation
 {
     public function __construct(
@@ -151,8 +155,8 @@ final class PestExpectation
         foreach ($needles as $needle) {
             if (is_string($this->value)) {
                 $this->negated
-                    ? Assert::assertStringNotContainsString((string) $needle, $this->value)
-                    : Assert::assertStringContainsString((string) $needle, $this->value);
+                    ? Assert::assertStringNotContainsString(SafeStringCastAction::cast($needle), $this->value)
+                    : Assert::assertStringContainsString(SafeStringCastAction::cast($needle), $this->value);
 
                 continue;
             }
@@ -227,8 +231,8 @@ final class PestExpectation
     public function toMatch(string $pattern): self
     {
         $this->negated
-            ? Assert::assertDoesNotMatchRegularExpression($pattern, (string) $this->value)
-            : Assert::assertMatchesRegularExpression($pattern, (string) $this->value);
+            ? Assert::assertDoesNotMatchRegularExpression($pattern, SafeStringCastAction::cast($this->value))
+            : Assert::assertMatchesRegularExpression($pattern, SafeStringCastAction::cast($this->value));
 
         return $this;
     }
@@ -306,8 +310,8 @@ final class PestExpectation
         }
 
         $this->negated
-            ? Assert::assertStringStartsNotWith($prefix, (string) $this->value)
-            : Assert::assertStringStartsWith($prefix, (string) $this->value);
+            ? Assert::assertStringStartsNotWith($prefix, SafeStringCastAction::cast($this->value))
+            : Assert::assertStringStartsWith($prefix, SafeStringCastAction::cast($this->value));
 
         return $this;
     }
@@ -319,8 +323,8 @@ final class PestExpectation
         }
 
         $this->negated
-            ? Assert::assertStringEndsNotWith($suffix, (string) $this->value)
-            : Assert::assertStringEndsWith($suffix, (string) $this->value);
+            ? Assert::assertStringEndsNotWith($suffix, SafeStringCastAction::cast($this->value))
+            : Assert::assertStringEndsWith($suffix, SafeStringCastAction::cast($this->value));
 
         return $this;
     }

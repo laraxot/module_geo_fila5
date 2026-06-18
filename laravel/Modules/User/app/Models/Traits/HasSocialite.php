@@ -10,8 +10,6 @@ use Modules\User\Models\SocialiteUser;
 trait HasSocialite
 {
     /**
-     * Get the socialite users associated with the user.
-     *
      * @return HasMany<SocialiteUser, $this>
      */
     public function socialiteUsers(): HasMany

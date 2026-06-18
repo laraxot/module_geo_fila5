@@ -1,7 +1,14 @@
 ---
 title: "PTVX Wiki Entry Point"
 type: index
+tags: [wiki, second-brain, index, qmd]
+created: 2026-05-26
+updated: 2026-06-18
 qmd: "ptvx-project, wiki, second brain, Karpathy pattern, QMD search, architecture, modules, themes"
+issues:
+  - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 related:
   - "./rules/00-TRIGGER_MAP.md"
   - "./concepts/markdown-note-minimum-standard.md"

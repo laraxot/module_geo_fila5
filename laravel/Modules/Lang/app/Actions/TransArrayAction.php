@@ -31,7 +31,7 @@ class TransArrayAction
             if (is_array($result)) {
                 $stringResult = [];
                 foreach ($result as $key => $value) {
-                    $stringResult[$key] = (string) $value;
+                    $stringResult[$key] = is_string($value) ? $value : '';
                 }
 
                 return $stringResult;
@@ -46,7 +46,7 @@ class TransArrayAction
         if (is_array($result)) {
             $stringResult = [];
             foreach ($result as $key => $value) {
-                $stringResult[$key] = (string) $value;
+                $stringResult[$key] = is_string($value) ? $value : '';
             }
 
             return $stringResult;

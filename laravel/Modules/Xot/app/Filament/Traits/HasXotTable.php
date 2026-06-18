@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
 use Webmozart\Assert\Assert;
 
@@ -380,7 +381,7 @@ trait HasXotTable
     {
         $search = $this->tableSearch ?? null;
 
-        return null !== $search ? (string) $search : null;
+        return null !== $search ? SafeStringCastAction::cast($search) : null;
     }
 
     protected function shouldShowAssociateAction(): bool

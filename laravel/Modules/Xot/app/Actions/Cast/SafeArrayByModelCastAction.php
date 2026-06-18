@@ -21,7 +21,7 @@ class SafeArrayByModelCastAction
             $res = $model->attributesToArray();
 
             return $res;
-        } catch (\ValueError|\Error|\Exception $e) {
+        } catch (\ValueError|\Error $e) {
             return $this->safeExecute($model);
         }
     }

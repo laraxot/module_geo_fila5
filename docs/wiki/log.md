@@ -1,6 +1,15 @@
 ---
 title: "Activity Log"
 module: "ptvx-project"
+type: log
+tags: [wiki, second-brain, log, qmd]
+created: 2026-05-26
+updated: 2026-06-18
+qmd: "ptvx project wiki activity log second brain phpstan modules"
+issues:
+  - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 ---
 
 # Activity Log — ptvx-project
@@ -9,7 +18,7 @@ module: "ptvx-project"
 
 ## Log Entries
 
-[2026-06-18 10:55:00 UTC] [PHPSTAN] Scan sequenziale `./vendor/bin/phpstan analyse Modules/<Modulo>` su 19 moduli: 18 OK, `IndennitaCondizioniLavoro` 3 errori `argument.type` su `tableFilters` `array|null` -> fix action `?array` + test null; pattern [`phpstan/filament-tablefilters-nullable.md`](phpstan/filament-tablefilters-nullable.md). Issue mono #136.
+[2026-06-18 10:55:00 UTC] [PHPSTAN] Scan sequenziale `./vendor/bin/phpstan analyse Modules/<Modulo>` su 19 moduli: 18 OK, `IndennitaCondizioniLavoro` 3 errori `argument.type` su `tableFilters` `array|null` -> fix action `?array` + test null; rerun post-fix 19/19 OK. Pest mirato filtri 13 passed; Pest completo del modulo bloccato da test legacy non allineati a Laravel/Eloquent. Pattern [`phpstan/filament-tablefilters-nullable.md`](phpstan/filament-tablefilters-nullable.md). Issue mono #136.
 
 [2026-06-15 24:30:00 UTC] [QMD OK] Ingest PTVX dopo `qmd cleanup`: 8 collection (`ptvx-wiki`, `mod-ptv/sigma/progressioni-wiki`, `ptvx-theme-one/zero/three`, `ptvx-rules`). Smoke: `HasEnteMatrRelationHelpers`, `contract-interface-stacking`.
 

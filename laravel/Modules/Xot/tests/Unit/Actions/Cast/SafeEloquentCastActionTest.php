@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 uses(Modules\Xot\Tests\TestCase::class);
 use Modules\Xot\Actions\Cast\SafeEloquentCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
 it('checks attribute presence and emptiness', function (): void {
@@ -52,7 +53,7 @@ it('checks condition and fallback helpers', function (): void {
     [$action, $model] = safeEloquentCastFixture();
     $model->setAttribute('nickname', 'SuperMario');
 
-    Assert::assertTrue($action->hasAttributeCondition($model, 'age', fn (mixed $v): bool => '42' === (string) $v));
+    Assert::assertTrue($action->hasAttributeCondition($model, 'age', fn (mixed $v): bool => '42' === SafeStringCastAction::cast($v)));
     Assert::assertSame('Mario', $action->getAttributeWithFallback($model, 'name', 'missing', 'string'));
     Assert::assertSame('SuperMario', $action->getAttributeWithFallback($model, 'missing', 'nickname', 'string'));
 });

@@ -76,16 +76,23 @@ class PassportServiceProvider extends ServiceProvider
         $tokens = config('user.passport.tokens', []);
         Assert::isArray($tokens);
 
+        $accessToken = $tokens['access_token'] ?? 15;
+        Assert::integer($accessToken);
+        $refreshToken = $tokens['refresh_token'] ?? 30;
+        Assert::integer($refreshToken);
+        $personalAccessToken = $tokens['personal_access_token'] ?? 6;
+        Assert::integer($personalAccessToken);
+
         Passport::tokensExpireIn(
-            CarbonInterval::days((int) ($tokens['access_token'] ?? 15))
+            CarbonInterval::days($accessToken)
         );
 
         Passport::refreshTokensExpireIn(
-            CarbonInterval::days((int) ($tokens['refresh_token'] ?? 30))
+            CarbonInterval::days($refreshToken)
         );
 
         Passport::personalAccessTokensExpireIn(
-            CarbonInterval::months((int) ($tokens['personal_access_token'] ?? 6))
+            CarbonInterval::months($personalAccessToken)
         );
     }
 

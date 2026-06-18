@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -106,7 +107,7 @@ class CreateTableIndexByModelClassColumnsAction
         $formName = $connection->getDatabaseName();
         $result = $connection->selectOne($query, [$formName, $tableName, $indexName]);
 
-        $count = is_object($result) && isset($result->{'COUNT(*)'}) ? (int) $result->{'COUNT(*)'} : 0;
+        $count = is_object($result) && isset($result->{'COUNT(*)'}) ? SafeIntCastAction::cast($result->{'COUNT(*)'}) : 0;
 
         return $count > 0;
     }

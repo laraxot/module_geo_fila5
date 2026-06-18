@@ -104,7 +104,7 @@ class SafeObjectCastAction
 
         $value = $object->{$property};
 
-        return (string) $value;
+        return SafeStringCastAction::cast($value);
     }
 
     /**

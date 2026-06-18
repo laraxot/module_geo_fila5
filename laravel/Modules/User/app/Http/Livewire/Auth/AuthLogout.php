@@ -17,9 +17,6 @@ class AuthLogout extends Component
 
     public function render(): View
     {
-        /** @var view-string */
-        $viewName = 'livewire.auth.logout';
-
-        return view($viewName);
+        return view('livewire.auth.logout');
     }
 }

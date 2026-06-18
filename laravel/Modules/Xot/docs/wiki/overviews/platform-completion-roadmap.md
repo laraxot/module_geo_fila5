@@ -3,13 +3,16 @@ title: "Piattaforma Fixcity — roadmap completamento (SSoT)"
 type: overview
 tags: [xot, platform, roadmap, phpstan, pest, completion, gate]
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-17
 qmd: "completare progetto Fixcity roadmap PHPStan Pest moduli temi gate ingresso chef"
 issues:
   - "https://github.com/laraxot/base_fixcity_fila5/issues/372"
+  - "https://github.com/laraxot/base_fixcity_fila5/issues/383"
 discussions:
   - "https://github.com/laraxot/base_fixcity_fila5/discussions/353"
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/392"
 related:
+  - ../../../../../docs/stories/STORY-367-platform-completion-programme.md
   - ../../../Fixcity/docs/wiki/overviews/completion-roadmap.md
   - ../../../../Themes/Sixteen/docs/wiki/overviews/completion-roadmap.md
   - ../concepts/phpstan-pest-bridge-discipline.md
@@ -25,7 +28,7 @@ Documento **hub** dopo gate ingresso chef (2026-06-13). Ogni modulo/tema ha dett
 
 | Check | Comando | Stato 2026-06-13 |
 |-------|---------|------------------|
-| PHPStan 16 moduli | `cd laravel && php -d memory_limit=2048M ./vendor/bin/phpstan analyse Modules` | ✅ **[OK] No errors** (6275 file) |
+| PHPStan 16 moduli | `cd laravel && php -d memory_limit=2048M ./vendor/bin/phpstan analyse Modules` | ✅ **[OK] No errors** (6344 file, 2026-06-17) |
 | `phpstan.neon` | Solo utente | 🔒 intoccabile |
 | Pest moduli toccati | `cd laravel && ./vendor/bin/pest --filter=…` | 🔄 dopo ogni batch |
 | Naming test login | 15 file scope-distinct, zero lowercase duplicati | ✅ |
@@ -103,6 +106,16 @@ Documento **hub** dopo gate ingresso chef (2026-06-13). Ogni modulo/tema ha dett
 - CI GitHub Actions (phpstan + pest + pint)
 - Docker compose documentato
 - Playwright FO critico
+
+### M6 — Prodotto PA (scopo + target) 🔄
+- SSoT scopo/target: [fixcity-scopo-e-target.md](../../../../../docs/wiki/concepts/fixcity-scopo-e-target.md)
+- Epic BMAD: [STORY-367](../../../../../docs/stories/STORY-367-platform-completion-programme.md) child **389–395**
+- Design Comuni parity ([#416](https://github.com/laraxot/base_fixcity_fila5/issues/416))
+- Workflow ticket + Activity ([#420](https://github.com/laraxot/base_fixcity_fila5/issues/420))
+- Filament BO ([#422](https://github.com/laraxot/base_fixcity_fila5/issues/422))
+- WCAG + i18n ([#424](https://github.com/laraxot/base_fixcity_fila5/issues/424))
+- Production readiness ([#426](https://github.com/laraxot/base_fixcity_fila5/issues/426))
+- Timeline cittadino ([#400](https://github.com/laraxot/base_fixcity_fila5/issues/400))
 
 ## Workflow agente (gate chef)
 
