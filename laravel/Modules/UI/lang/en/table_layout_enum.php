@@ -5,24 +5,24 @@ declare(strict_types=1);
 return [
     'values' => [
         'list' => [
-            'label' => 'Lista',
+            'label' => 'List',
             'color' => 'primary',
             'icon' => 'heroicon-o-list-bullet',
-            'description' => 'Layout a lista tradizionale con righe di tabella',
-            'tooltip' => 'Visualizza i dati in formato tabella strutturata',
-            'helper_text' => 'Ideale per visualizzare molti dati in modo organizzato',
+            'description' => 'Traditional list layout with table rows',
+            'tooltip' => 'Display data in structured table format',
+            'helper_text' => 'Ideal for viewing many records in an organized way',
         ],
         'grid' => [
-            'label' => 'Griglia',
+            'label' => 'Grid',
             'color' => 'secondary',
             'icon' => 'heroicon-o-squares-2x2',
-            'description' => 'Layout a griglia responsive con card',
-            'tooltip' => 'Visualizza i dati in formato card responsive',
-            'helper_text' => 'Ideale per visualizzare pochi dati con focus visivo',
+            'description' => 'Responsive grid layout with cards',
+            'tooltip' => 'Display data in responsive card format',
+            'helper_text' => 'Ideal for viewing fewer records with visual focus',
         ],
     ],
     'label' => 'Table Layout Enum',
-    'plural_label' => 'Table Layout Enum (Plurale)',
+    'plural_label' => 'Table Layout Enum (Plural)',
     'navigation' => [
         'name' => 'Table Layout Enum',
         'plural' => 'Table Layout Enum',
@@ -36,19 +36,19 @@ return [
     ],
     'fields' => [
         'id' => [
-            'label' => 'Identificativo',
-            'tooltip' => 'Identificativo univoco del record',
+            'label' => 'ID',
+            'tooltip' => 'Unique record identifier',
             'helper_text' => '',
             'description' => '',
         ],
         'created_at' => [
-            'label' => 'Data Creazione',
+            'label' => 'Created At',
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
         ],
         'updated_at' => [
-            'label' => 'Ultima Modifica',
+            'label' => 'Updated At',
             'tooltip' => '',
             'helper_text' => '',
             'description' => '',
@@ -56,13 +56,13 @@ return [
     ],
     'actions' => [
         'create' => [
-            'label' => 'Crea Table Layout Enum',
+            'label' => 'Create Table Layout Enum',
         ],
         'edit' => [
-            'label' => 'Modifica Table Layout Enum',
+            'label' => 'Edit Table Layout Enum',
         ],
         'delete' => [
-            'label' => 'Elimina Table Layout Enum',
+            'label' => 'Delete Table Layout Enum',
         ],
     ],
 ];

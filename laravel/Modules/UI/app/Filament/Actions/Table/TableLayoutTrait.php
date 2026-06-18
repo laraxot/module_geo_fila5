@@ -35,7 +35,7 @@ trait TableLayoutTrait
             }
         }
 
-        return TableLayoutEnum::GRID;
+        return TableLayoutEnum::LIST;
     }
 
     /**

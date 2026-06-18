@@ -106,12 +106,33 @@ trait HasXotTable
     /**
      * Get grid table columns.
      *
+     * In content-grid ogni riga mostra label e valore sulla stessa linea (es. «Ente: 123»).
+     *
      * @return array<int, Tables\Columns\Column|Stack>
      */
     public function getGridTableColumns(): array
     {
+        $columns = [];
+
+        foreach (array_values($this->getTableColumns()) as $column) {
+            $gridColumn = clone $column;
+
+            if ($gridColumn instanceof TextColumn) {
+                $label = $column->getLabel();
+                $labelText = $label instanceof \Illuminate\Contracts\Support\Htmlable
+                    ? strip_tags($label->toHtml())
+                    : (string) $label;
+
+                $gridColumn->formatStateUsing(
+                    fn (mixed $state): string => $labelText.': '.(null === $state || '' === $state ? '—' : (string) $state),
+                );
+            }
+
+            $columns[] = $gridColumn;
+        }
+
         return [
-            Stack::make(array_values($this->getTableColumns())),
+            Stack::make($columns)->space(1),
         ];
     }
 

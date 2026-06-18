@@ -36,9 +36,13 @@ public function getTableHeaderActions(): array
     // - Create
     // - Associate (opzionale)
     // - Attach (opzionale)
-    // - Layout Toggle
+    // - Layout Toggle (TableLayoutToggleTableAction — lista ↔ griglia)
 }
 ```
+
+### Layout lista / griglia
+
+La proprietà Livewire `$layoutView` (`TableLayoutEnum`) guida colonne e `contentGrid()`. Il bottone **Cambia layout** deve mantenerla allineata alla sessione. Dettaglio: [contratto layout tabella](../table-layout-toggle-contract.md), [bugfix UI](../../../UI/docs/bugfix-table-layout-toggle-not-working.md).
 
 ### Colonne
 ```php

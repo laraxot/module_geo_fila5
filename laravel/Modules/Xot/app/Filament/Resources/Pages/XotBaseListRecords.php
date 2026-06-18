@@ -11,7 +11,9 @@ use Filament\Resources\Pages\ListRecords as FilamentListRecords;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Traits\HasTableLayoutPage;
 use Modules\Xot\Actions\ModelClass\UpdateCountAction;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Webmozart\Assert\Assert;
@@ -24,11 +26,19 @@ use Webmozart\Assert\Assert;
  * @property ?string         $slug
  * @property TableLayoutEnum $layoutView
  */
-abstract class XotBaseListRecords extends FilamentListRecords
+abstract class XotBaseListRecords extends FilamentListRecords implements HasTableLayoutView
 {
+    use HasTableLayoutPage;
     use HasXotTable;
 
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+
+    public function mount(): void
+    {
+        parent::mount();
+
+        $this->mountTableLayoutFromSession();
+    }
 
     /**
      * Get the resource class name.

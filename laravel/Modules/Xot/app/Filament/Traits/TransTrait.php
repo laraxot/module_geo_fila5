@@ -117,7 +117,22 @@ trait TransTrait
         /** @var array<string, mixed>|Translator|string $result */
         $result = trans($key_full);
 
-        return is_string($result) ? $result : $key_full;
+        if ($key_full === $result) {
+            $group = Str::of($key_full)->before('.')->toString();
+            $item = Str::of($key_full)->after($group.'.')->toString();
+            /** @var array<string, mixed>|Translator|string $group_arr */
+            $group_arr = trans($group);
+            if (is_array($group_arr)) {
+                $transValue = Arr::get($group_arr, $item);
+                if (is_string($transValue) || is_numeric($transValue)) {
+                    return is_string($transValue) ? $transValue : (string) $transValue;
+                }
+            }
+
+            return 'fix:'.$key_full;
+        }
+
+        return is_string($result) ? $result : 'fix:'.$key_full;
     }
 
     /**

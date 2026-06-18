@@ -33,16 +33,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         return self::LIST;
     }
 
-    public function getTooltip(): string
-    {
-        return $this->transClass(self::class, $this->value.'.tooltip');
-    }
-
-    public function getHelperText(): string
-    {
-        return $this->transClass(self::class, $this->value.'.helper_text');
-    }
-
+    
     public function toggle(): self
     {
         return match ($this) {

@@ -33,6 +33,17 @@ trait EnumTrait
         return $this->transClass(static::class, 'values.'.$this->value.'.description');
     }
 
+    public function getTooltip(): string
+    {
+        return $this->transClass(self::class, 'values.'.$this->value.'.tooltip');
+    }
+
+    public function getHelperText(): string
+    {
+        return $this->transClass(self::class, 'values.'.$this->value.'.helper_text');
+    }
+
+
     /**
      * @return array<string>
      */

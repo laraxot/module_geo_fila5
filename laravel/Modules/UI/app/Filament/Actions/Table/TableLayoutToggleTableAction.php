@@ -6,6 +6,8 @@ namespace Modules\UI\Filament\Actions\Table;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
+use Modules\UI\Contracts\HasTableLayoutView;
+use Modules\UI\Enums\TableLayoutEnum;
 
 final class TableLayoutToggleTableAction extends Action implements HasTableLayout
 {
@@ -15,12 +17,10 @@ final class TableLayoutToggleTableAction extends Action implements HasTableLayou
     {
         parent::setUp();
 
-        $current = $this->getCurrentLayout();
-
-        $this->label(__('ui::table_layout.actions.toggle.label'))
-            ->tooltip($current->getLabel())
-            ->color($current->getColor())
-            ->icon($current->getIcon())
+        $this->iconButton()
+            ->label('')
+            ->tooltip(fn (): string => $this->resolveTargetLayout()->getLabel())
+            ->icon(fn (): string => $this->resolveTargetLayout()->getIcon())
             ->action($this->toggleLayout(...));
     }
 
@@ -29,15 +29,41 @@ final class TableLayoutToggleTableAction extends Action implements HasTableLayou
         return 'table_layout_toggle';
     }
 
-    protected function toggleLayout(?ListRecords $livewire): void
+    protected function toggleLayout(): void
     {
-        $currentLayout = $this->getCurrentLayout();
-        $newLayout = $currentLayout->toggle();
+        $livewire = $this->getLivewire();
+
+        if (! $livewire instanceof HasTableLayoutView) {
+            return;
+        }
+
+        $newLayout = $this->resolveLayout($livewire)->toggle();
 
         $this->setTableLayout($newLayout);
+        $livewire->layoutView = $newLayout;
 
         if ($livewire instanceof ListRecords) {
-            $livewire->dispatch('$refresh');
+            $livewire->resetTable();
         }
+    }
+
+    private function resolveTargetLayout(?HasTableLayoutView $livewire = null): TableLayoutEnum
+    {
+        return $this->resolveLayout($livewire)->toggle();
+    }
+
+    private function resolveLayout(?HasTableLayoutView $livewire = null): TableLayoutEnum
+    {
+        if ($livewire instanceof HasTableLayoutView) {
+            return $livewire->layoutView;
+        }
+
+        $component = $this->getLivewire();
+
+        if ($component instanceof HasTableLayoutView) {
+            return $component->layoutView;
+        }
+
+        return $this->getCurrentLayout();
     }
 }
