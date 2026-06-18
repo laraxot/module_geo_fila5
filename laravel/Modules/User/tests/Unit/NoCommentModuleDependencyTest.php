@@ -2,19 +2,36 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Unit;
+test('it does not reference the comment module anywhere under user app', function (): void {
+    $appPath = dirname(__DIR__, 2).'/app';
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($appPath, FilesystemIterator::SKIP_DOTS)
+    );
 
-use Modules\User\Tests\TestCase;
+    foreach ($iterator as $file) {
+        if (! $file->isFile() || $file->getExtension() !== 'php') {
+            continue;
+        }
 
-uses(TestCase::class);
+        if (str_ends_with($file->getFilename(), '.old')) {
+            continue;
+        }
 
-describe('No Comment Module Dependency', function (): void {
-    test('it does not reference the comment module anywhere under user app', function (): void {
-        /* @var \Modules\User\Tests\TestCase $this */
-        $this->skipTest('User module integrates Comment traits in production — dependency check disabled for test DB.');
-    });
+        $contents = (string) file_get_contents($file->getPathname());
 
-    test('it loads base user without comment traits', function (): void {
-        $this->skipTest('User module integrates Comment traits in production — dependency check disabled for test DB.');
-    });
+        expect($contents)
+            ->not->toContain('Modules\\Comment\\')
+            ->not->toContain('InteractsWithComments')
+            ->not->toContain('HasCommentatorRelations');
+    }
+});
+
+test('base user model does not use comment traits', function (): void {
+    $baseUserPath = dirname(__DIR__, 2).'/app/Models/BaseUser.php';
+    $contents = (string) file_get_contents($baseUserPath);
+
+    expect($contents)
+        ->not->toContain('HasCommentatorRelations')
+        ->not->toContain('CanComment')
+        ->not->toContain('InteractsWithComments');
 });

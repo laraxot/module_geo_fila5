@@ -25,7 +25,6 @@ use Illuminate\Support\Str;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\HasApiTokens;
 use Modules\User\Models\Traits\HasAuthenticationLogTrait;
-use Modules\User\Models\Traits\HasCommentatorRelations;
 use Modules\User\Models\Traits\HasDevices;
 use Modules\User\Models\Traits\HasModules;
 use Modules\User\Models\Traits\HasSocialite;
@@ -130,7 +129,6 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
 {
     use HasApiTokens;
     use HasAuthenticationLogTrait;
-    use HasCommentatorRelations;
     use HasChildren;
     use HasDevices;
     use HasModules;

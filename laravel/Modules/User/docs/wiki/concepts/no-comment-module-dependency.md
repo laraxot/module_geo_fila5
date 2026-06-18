@@ -48,7 +48,7 @@ Il modulo **Comment** (o dominio business: Blog, Job, …) estende o compone il 
 
 ## Fix applicato
 
-Rimosso da `BaseUser.php`: `CanComment`, `InteractsWithComments` (fatal quando Comment assente).
+Rimosso da `BaseUser.php`: `CanComment`, `InteractsWithComments`, trait `HasCommentatorRelations` (fatal quando Comment assente).
 
 ## Verifica (CI / locale)
 

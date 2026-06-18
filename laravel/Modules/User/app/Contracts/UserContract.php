@@ -107,20 +107,6 @@ interface UserContract extends Authenticatable
     public function authentications(): MorphMany;
 
     /**
-     * Comments authored by this user as commentator.
-     *
-     * @return MorphMany<Model, Model>
-     */
-    public function commentatorComments(): MorphMany;
-
-    /**
-     * Reactions authored by this user as commentator.
-     *
-     * @return MorphMany<Model, Model>
-     */
-    public function reactions(): MorphMany;
-
-    /**
      * Get the user's socialite accounts.
      *
      * @return BelongsToMany<Model, Model>
