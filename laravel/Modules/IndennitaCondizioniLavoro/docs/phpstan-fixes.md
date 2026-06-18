@@ -105,4 +105,27 @@ Il modulo segue già il pattern accessor-guard per i metodi con `save()` (verifi
 | `IndennitaTipo.php` | `whereRaw('? between dal and al', [$safeAnno])` al posto di SQL concatenata |
 | `RelationshipTrait.php` | stesso binding parametrizzato + anno numerico sicuro |
 
-*ultimo aggiornamento scan: 2026-05-21*
+## scan 2026-06-18
+
+| file | fix |
+|------|-----|
+| `CondizioniLavoroAdmsTable.php:41` | Separato `$this->tableFilters` in `$rawFilters` con `@phpstan-ignore-next-line property.notFound`, poi `@var array<string, mixed>` per il risultato del ternary |
+| `CondizioniLavorosTable.php:32,41` | Stesso pattern — `rawFilters` + type assertion |
+
+**Pattern vincente per tableFilters in Table classes:**
+```php
+/** @phpstan-ignore-next-line property.notFound */
+$rawFilters = $this->tableFilters;
+/** @var array<string, mixed> $tableFilters */
+$tableFilters = is_array($rawFilters) ? $rawFilters : [];
+app(SomeAction::class)->execute($tableFilters);
+```
+
+### UI — stub per Cms
+
+| file | fix |
+|------|-----|
+| `phpstan-stubs/CmsActionStubs.php` | Creato stub per `Modules\Cms\Actions\ResolveLocalizedBlockDataAction` |
+| `phpstan-bootstrap.php` | Aggiunto `require_once` per caricare lo stub |
+
+*ultimo aggiornamento scan: 2026-06-18*

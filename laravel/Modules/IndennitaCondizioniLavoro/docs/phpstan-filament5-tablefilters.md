@@ -1,97 +1,78 @@
-# PHPStan Filament 5 - tableFilters Property Issue
+---
+title: "PHPStan Filament tableFilters"
+module: "IndennitaCondizioniLavoro"
+type: guide
+tags: [phpstan, filament, tablefilters, actions]
+created: 2026-06-18
+updated: 2026-06-18
+qmd: "phpstan filament tableFilters nullable array null makepdf replicateindennita"
+issues:
+  - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - "./wiki/concepts/filament-tablefilters-nullable.md"
+  - "./phpstan-improvements.md"
+---
 
-**Status**: ⏳ Pending Analysis  
-**Date**: 2026-06-18  
-**Issue Type**: `property.notFound`  
-**Severity**: Medium (functionality works, but type checking fails)
+# PHPStan Filament tableFilters
+
+**Status**: resolved
+**Updated**: 2026-06-18
+**Issue Type**: `argument.type` with `array|null` input
+**Severity**: medium
 
 ## Problem
 
-Files use `$this->tableFilters` to access filter values applied to Filament tables:
-- `CondizioniLavoroAdmsTable.php:41` — Pass to ReplicateIndennita action
-- `CondizioniLavorosTable.php:32, 41` — Pass to MakePdf and ReplicateIndennita actions
+Filament header actions use `$this->tableFilters` to access table filters:
 
-### Code Pattern
+- `CondizioniLavoroAdmsTable.php` passes filters to `ReplicateIndennita`.
+- `CondizioniLavorosTable.php` passes filters to `MakePdf` and `ReplicateIndennita`.
+
+`$this->tableFilters` can be `array|null`, while the action contracts previously accepted only `array<string, mixed>`.
+
+## Applied Solution
+
+The action contracts now match the real input surface and validate it internally:
+
 ```php
-$tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-app(ReplicateIndennita::class)->execute($tableFilters);
-```
-
-### Root Cause
-- `$this->tableFilters` is a **public property of Livewire component**, not declared in class
-- PHPStan cannot infer its type (appears as `mixed` or undefined)
-- Property is provided by base class `XotBaseResourceTable` which inherits from Filament's Table behavior
-
-## Solution Options
-
-### Option A: Add PHPDoc Type Hint (RECOMMENDED)
-Define property as PHPDoc above usage:
-```php
-/** @var array<string, mixed>|null $tableFilters */
-$tableFilters = $this->tableFilters ?? [];
-```
-
-**Pros**: 
-- ✅ Preserves functionality
-- ✅ Tells PHPStan about expected type
-- ✅ Minimal code change
-- ✅ Follows Xot module pattern (see ExportXlsAction)
-
-**Cons**: 
-- Doesn't declare property formally in class
-
-### Option B: Declare Property in Class
-```php
-class CondizioniLavoroAdmsTable extends XotBaseResourceTable
+/**
+ * @param array<string, mixed>|null $data
+ */
+public function execute(?array $data): void
 {
-    /** @var array<string, mixed>|null */
-    public $tableFilters;
+    $input = $data['anno/valutatore'] ?? $data;
+
+    if (! is_array($input)) {
+        throw new InvalidArgumentException('Parametro filtri non valido.');
+    }
 }
 ```
 
-**Pros**: 
-- ✅ Formal property declaration
-- ✅ IDE autocomplete
+## Why
 
-**Cons**: 
-- ✗ May conflict with parent class property
-- ✗ Redundant if parent already defines it
+Adding only a local `@var array<string, mixed>` around `$this->tableFilters` can hide the nullable branch. The safer contract is explicit `?array` on the action plus domain validation before accessing filter keys.
 
-### Option C: Use Xot Helper Method (if available)
-Check if `XotBaseResourceTable` provides accessor method for filters.
+## Relationship to Xot
 
-**Status**: Need to investigate Xot base class
+Xot export actions also read `tableFilters` from Filament/Livewire contexts. When a module action receives those filters directly, the receiving action should declare the nullable boundary or the caller should normalize before the call.
 
-## Relationship to Xot Module
+## Impact
 
-The property is used throughout Xot for export functionality:
-- `ExportXlsAction.php` — accesses `$livewire->tableFilters`
-- `ExportPdfAction.php` — accesses `$livewire->tableFilters`
-- `ExportXlsTableAction.php` — accesses `$livewire->tableFilters`
+**Functionality**: filters are still accepted nested (`anno/valutatore`) or flat.
+**Type Safety**: PHPStan module scan passes.
+**User Impact**: invalid or missing filters throw controlled `InvalidArgumentException`.
 
-Xot module already handles `tableFilters` in these actions, suggesting it's stable API.
+## Verification
 
-## Recommended Fix
+```bash
+cd laravel
+./vendor/bin/phpstan analyse Modules/IndennitaCondizioniLavoro
+./vendor/bin/pest Modules/IndennitaCondizioniLavoro/tests
+```
 
-1. **Investigate** `XotBaseResourceTable` class structure
-2. **Check** if property is documented in base class
-3. **Apply** Option A (PHPDoc) as minimal fix
-4. **Test** that PDF export and replicate functions still work with actual filter values
-5. **Document** the Filament 5 API quirk in wiki
+## Related
 
-## Impact Assessment
-
-**Functionality**: ✅ Works (filters passed correctly at runtime)  
-**Type Safety**: ❌ PHPStan errors (property not typed)  
-**User Impact**: None (feature works as designed)
-
-## Related Files
-
-- `Actions/MakePdf.php` — Receives tableFilters
-- `Actions/ReplicateIndennita.php` — Receives tableFilters  
-- Modules/Xot — Uses same pattern in export actions
-
-## See Also
-
-- `/docs/best-practices/filament-guide.md` — Filament patterns
-- Modules/Xot/app/Filament/Actions/Header/ExportXlsAction.php — Reference implementation
+- [Wiki concept](./wiki/concepts/filament-tablefilters-nullable.md)
+- [Root PHPStan pattern](../../../../docs/wiki/phpstan/filament-tablefilters-nullable.md)
+- `Modules/Xot/app/Filament/Actions/Header/ExportXlsAction.php`

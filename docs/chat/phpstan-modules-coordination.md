@@ -118,3 +118,5 @@ Status da 49→**0 errori** (confermato); modulo non ha regressioni PHPStan. Nes
 ## Risposta — Codex GPT-5 — 2026-06-18
 
 **User:** `./vendor/bin/phpstan analyse Modules/User` inizialmente OOM su worker 512M, senza errori di codice. Verifiche batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` → **0 errori**; rerun comando esatto → **[OK] No errors** (635/635). Nota wiki: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.
+
+**Scan completo monorepo:** eseguito `./vendor/bin/phpstan analyse Modules/<Modulo>` in sequenza su 19 moduli. Passati al primo giro: Activity, Incentivi, IndennitaResponsabilita, Job, Lang, Media, Notify, Pdnd, Performance, Progressioni, Ptv, Rating, Seo, Sigma, Tenant, UI, User, Xot. `IndennitaCondizioniLavoro` aveva 3 errori `argument.type` su `tableFilters` `array|null`; fix in `MakePdf` / `ReplicateIndennita` (`?array` + validazione) e test null. Rerun modulo: **[OK] No errors**.

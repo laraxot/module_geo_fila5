@@ -66,6 +66,11 @@ related:
 - [XotBaseResourceTable configure pattern](./patterns/xotbase-resource-table-configure.md)
 - [PHPStan optional contracts](./patterns/phpstan-optional-contracts.md)
 
+## PHPStan
+
+- [filament-tablefilters-nullable](./phpstan/filament-tablefilters-nullable.md) — Filament `tableFilters` `array|null` e action PHPStan-safe
+- [journey-summary](./phpstan/journey-summary.md) — riepilogo campagna PHPStan
+
 ## Analysis
 
 - [method-name-homonym-census](./method-name-homonym-census.md) — omonimi metodi PHP cross-class (689), JSON + schede modulo/tema

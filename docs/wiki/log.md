@@ -9,6 +9,8 @@ module: "ptvx-project"
 
 ## Log Entries
 
+[2026-06-18 10:55:00 UTC] [PHPSTAN] Scan sequenziale `./vendor/bin/phpstan analyse Modules/<Modulo>` su 19 moduli: 18 OK, `IndennitaCondizioniLavoro` 3 errori `argument.type` su `tableFilters` `array|null` -> fix action `?array` + test null; pattern [`phpstan/filament-tablefilters-nullable.md`](phpstan/filament-tablefilters-nullable.md). Issue mono #136.
+
 [2026-06-15 24:30:00 UTC] [QMD OK] Ingest PTVX dopo `qmd cleanup`: 8 collection (`ptvx-wiki`, `mod-ptv/sigma/progressioni-wiki`, `ptvx-theme-one/zero/three`, `ptvx-rules`). Smoke: `HasEnteMatrRelationHelpers`, `contract-interface-stacking`.
 
 [2026-06-15 24:10:00 UTC] [DOCS+QMD] Aggiornati wiki Ptv/Sigma/Progressioni/Theme One+Zero: `contract-interface-stacking`, `has-ente-matr-relation-helpers`, indici e log modulo. Ingest QMD: `ptvx-wiki`, `ptvx-rules`, `mod-ptv-wiki`, `mod-sigma-wiki`, `mod-progressioni-wiki`, `ptvx-theme-one`, `ptvx-theme-zero`.
