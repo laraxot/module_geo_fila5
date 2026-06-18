@@ -38,6 +38,7 @@ class CondizioniLavoroAdmsTable extends XotBaseResourceTable
                 ->icon('heroicon-o-clipboard-document-list')
                 ->tooltip('ricopia da quadrimentre precendente')
                 ->action(function (): void {
+                    /** @var array<string, mixed> */
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
 
                     app(ReplicateIndennita::class)->execute($tableFilters);

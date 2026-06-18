@@ -35,7 +35,7 @@ class IndennitaResponsabilitasTable extends XotBaseResourceTable
      */
     public function getTableHeaderActions(): array
     {
-        /** @var array<string, string|int|bool|null>|null $filtersForUrl */
+        /** @var array<string, mixed> */
         $filtersForUrl = $this->tableFilters;
 
         return [
@@ -124,7 +124,7 @@ class IndennitaResponsabilitasTable extends XotBaseResourceTable
     {
         // dddx($this->tableFilters);
         /** @var array<string, mixed> $tableFilters */
-        $tableFilters = $this->tableFilters ?? [];
+        $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
 
         /** @var array<string, mixed> $annoValutatoreFilter */
         $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
