@@ -115,20 +115,28 @@ return [
             'label' => 'Nuovo Parametro',
             'success' => 'Parametro di integrazione creato con successo',
             'error' => 'Errore durante la creazione del parametro',
+            'icon' => 'create',
+            'tooltip' => 'create',
         ],
         'edit' => [
             'label' => 'Modifica Parametro',
             'success' => 'Parametro di integrazione modificato con successo',
             'error' => 'Errore durante la modifica del parametro',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
         ],
         'delete' => [
             'label' => 'Elimina Parametro',
             'success' => 'Parametro di integrazione eliminato con successo',
             'error' => 'Errore durante l\'eliminazione del parametro',
             'confirmation' => 'Sei sicuro di voler eliminare questo parametro? Questa azione è irreversibile.',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
         ],
         'view' => [
             'label' => 'Visualizza Parametro',
+            'icon' => 'view',
+            'tooltip' => 'view',
         ],
         'logout' => [
             'tooltip' => 'logout',
@@ -148,9 +156,42 @@ return [
         'openColumnManager' => [
             'tooltip' => 'openColumnManager',
             'icon' => 'openColumnManager',
+            'label' => 'openColumnManager',
         ],
         'resetColumnManager' => [
             'tooltip' => 'resetColumnManager',
+            'icon' => 'resetColumnManager',
+            'label' => 'resetColumnManager',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'icon' => 'layout',
+            'tooltip' => 'layout',
+        ],
+        'applyFilters' => [
+            'label' => 'applyFilters',
+            'icon' => 'applyFilters',
+            'tooltip' => 'applyFilters',
+        ],
+        'openFilters' => [
+            'label' => 'openFilters',
+            'icon' => 'openFilters',
+            'tooltip' => 'openFilters',
+        ],
+        'resetFilters' => [
+            'label' => 'resetFilters',
+            'icon' => 'resetFilters',
+            'tooltip' => 'resetFilters',
+        ],
+        'applyTableColumnManager' => [
+            'label' => 'applyTableColumnManager',
+            'icon' => 'applyTableColumnManager',
+            'tooltip' => 'applyTableColumnManager',
+        ],
+        'removeAllFilters' => [
+            'label' => 'removeAllFilters',
+            'icon' => 'removeAllFilters',
+            'tooltip' => 'removeAllFilters',
         ],
     ],
     'filters' => [
@@ -176,6 +217,18 @@ return [
         'parametri' => [
             'label' => 'Parametri di Configurazione',
             'description' => 'Valori e configurazioni specifiche del parametro',
+        ],
+        'Dati Anagrafici' => [
+            'label' => 'Dati Anagrafici',
+            'heading' => 'Dati Anagrafici',
+        ],
+        'Validità Temporale' => [
+            'label' => 'Validità Temporale',
+            'heading' => 'Validità Temporale',
+        ],
+        'Parametri' => [
+            'label' => 'Parametri',
+            'heading' => 'Parametri',
         ],
     ],
     'messages' => [

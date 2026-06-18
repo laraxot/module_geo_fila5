@@ -8,6 +8,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Support\Components\Component;
 use Filament\Tables;
 use Illuminate\Support\Str;
+use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotTable;
@@ -15,7 +16,7 @@ use Modules\Xot\Filament\Traits\HasXotTable;
 /**
  * @property class-string<XotBaseResource> $resource
  */
-abstract class XotBaseRelationManager extends RelationManager
+abstract class XotBaseRelationManager extends RelationManager implements HasTableLayoutView
 {
     use HasRelationshipModelClass;
     use HasXotTable {

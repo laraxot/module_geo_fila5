@@ -23,12 +23,15 @@ Le liste Filament che usano `HasXotTable` espongono il bottone **Cambia layout**
 
 Senza sync mount/toggle → il bottone appare ma non cambia la vista (bug documentato in [UI bugfix](../../UI/docs/bugfix-table-layout-toggle-not-working.md)).
 
-## Integrazione nelle ListRecords
+## Integrazione
 
-`XotBaseListRecords` usa il trait `HasTableLayoutPage` (UI) per:
+Ogni componente Livewire che usa `HasXotTable` ottiene automaticamente:
 
-- `mount()` → `$this->layoutView = getCurrentLayout()`
-- allineamento default `LIST` con `TableLayoutEnum::init()`
+- proprietà `$layoutView`
+- sync sessione in `bootHasXotTable()`
+- toggle lista/griglia in header tabella
+
+Le classi base (`XotBaseListRecords`, `XotBaseRelationManager`, `XotBaseTableWidget`, …) implementano `HasTableLayoutView` per il contratto con l’azione UI.
 
 ## Collegamenti
 

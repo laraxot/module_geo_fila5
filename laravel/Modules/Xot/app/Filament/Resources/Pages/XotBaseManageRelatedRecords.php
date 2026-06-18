@@ -11,6 +11,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Contracts\Support\Htmlable;
+use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotForm;
@@ -20,7 +21,7 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 /**
  * Base page for Filament related-record managers.
  */
-abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
+abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords implements HasTableLayoutView
 {
     use HasRelationshipModelClass;
     use HasXotForm;

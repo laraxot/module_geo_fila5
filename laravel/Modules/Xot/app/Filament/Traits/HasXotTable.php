@@ -30,8 +30,10 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Livewire\Component;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\UI\Filament\Traits\HasTableLayoutPage;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\Model\TableExistsByModelClassActions;
 use Webmozart\Assert\Assert;
@@ -49,9 +51,19 @@ use Webmozart\Assert\Assert;
  */
 trait HasXotTable
 {
+    use HasTableLayoutPage;
     use TransTrait;
 
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+
+    public function bootHasXotTable(): void
+    {
+        if (! $this instanceof Component) {
+            return;
+        }
+
+        $this->mountTableLayoutFromSession();
+    }
 
     protected static bool $canReplicate = false;
 
@@ -118,7 +130,7 @@ trait HasXotTable
             $gridColumn = clone $column;
 
             if ($gridColumn instanceof TextColumn) {
-                $label = $column->getLabel();
+                $label = $gridColumn->getLabel();
                 $labelText = $label instanceof \Illuminate\Contracts\Support\Htmlable
                     ? strip_tags($label->toHtml())
                     : (string) $label;
