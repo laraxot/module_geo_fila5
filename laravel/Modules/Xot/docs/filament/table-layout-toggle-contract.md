@@ -31,7 +31,7 @@ Ogni componente Livewire che usa `HasXotTable` ottiene automaticamente:
 - sync sessione in `bootHasXotTable()`
 - toggle lista/griglia in header tabella
 
-Le classi base (`XotBaseListRecords`, `XotBaseRelationManager`, `XotBaseTableWidget`, …) implementano `HasTableLayoutView` per il contratto con l’azione UI.
+Ogni componente Livewire con `HasXotTable` espone `$layoutView` (`TableLayoutEnum`); l’azione toggle la rileva via `property_exists` senza interface dedicate.
 
 ## Collegamenti
 

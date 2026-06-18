@@ -6,8 +6,8 @@ namespace Modules\UI\Filament\Actions\Table;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ListRecords;
-use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Traits\HasTableLayoutPage;
 
 final class TableLayoutToggleTableAction extends Action implements HasTableLayout
 {
@@ -33,35 +33,43 @@ final class TableLayoutToggleTableAction extends Action implements HasTableLayou
     {
         $livewire = $this->getLivewire();
 
-        if (! $livewire instanceof HasTableLayoutView) {
+        if (! is_object($livewire) || ! HasTableLayoutPage::isLayoutCapable($livewire)) {
             return;
         }
 
         $newLayout = $this->resolveLayout($livewire)->toggle();
 
         $this->setTableLayout($newLayout);
-        $livewire->layoutView = $newLayout;
+        HasTableLayoutPage::applyLayoutTo($livewire, $newLayout);
 
         if ($livewire instanceof ListRecords) {
             $livewire->resetTable();
         }
     }
 
-    private function resolveTargetLayout(?HasTableLayoutView $livewire = null): TableLayoutEnum
+    private function resolveTargetLayout(?object $livewire = null): TableLayoutEnum
     {
         return $this->resolveLayout($livewire)->toggle();
     }
 
-    private function resolveLayout(?HasTableLayoutView $livewire = null): TableLayoutEnum
+    private function resolveLayout(?object $livewire = null): TableLayoutEnum
     {
-        if ($livewire instanceof HasTableLayoutView) {
-            return $livewire->layoutView;
+        if (is_object($livewire)) {
+            $layout = HasTableLayoutPage::readLayoutFrom($livewire);
+
+            if ($layout instanceof TableLayoutEnum) {
+                return $layout;
+            }
         }
 
         $component = $this->getLivewire();
 
-        if ($component instanceof HasTableLayoutView) {
-            return $component->layoutView;
+        if (is_object($component)) {
+            $layout = HasTableLayoutPage::readLayoutFrom($component);
+
+            if ($layout instanceof TableLayoutEnum) {
+                return $layout;
+            }
         }
 
         return $this->getCurrentLayout();

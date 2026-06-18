@@ -20,7 +20,6 @@ use Filament\Tables\Columns\Layout\Component as LayoutComponent;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
@@ -31,7 +30,7 @@ use Webmozart\Assert\Assert;
 /**
  * @property class-string<Model> $resource
  */
-abstract class XotBaseRelationManager extends FilamentRelationManager implements HasTableLayoutView
+abstract class XotBaseRelationManager extends FilamentRelationManager
 {
     use HasRelationshipModelClass;
     use HasXotTable {

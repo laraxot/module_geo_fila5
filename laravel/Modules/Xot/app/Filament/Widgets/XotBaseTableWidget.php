@@ -11,12 +11,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Livewire\Attributes\On;
-use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Modules\Xot\Filament\Traits\TransTrait;
 
-abstract class XotBaseTableWidget extends FilamentTableWidget implements HasTableLayoutView
+abstract class XotBaseTableWidget extends FilamentTableWidget
 {
     // use TransTrait;
     use HasXotTable;

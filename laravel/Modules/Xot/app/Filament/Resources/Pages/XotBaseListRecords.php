@@ -11,7 +11,6 @@ use Filament\Resources\Pages\ListRecords as FilamentListRecords;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\Xot\Actions\ModelClass\UpdateCountAction;
 use Modules\Xot\Filament\Traits\HasXotTable;
@@ -25,7 +24,7 @@ use Webmozart\Assert\Assert;
  * @property ?string         $slug
  * @property TableLayoutEnum $layoutView
  */
-abstract class XotBaseListRecords extends FilamentListRecords implements HasTableLayoutView
+abstract class XotBaseListRecords extends FilamentListRecords
 {
     use HasXotTable;
 

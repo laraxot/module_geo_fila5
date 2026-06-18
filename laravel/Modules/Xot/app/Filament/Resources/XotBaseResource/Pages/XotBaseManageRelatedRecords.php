@@ -14,7 +14,6 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\UI\Contracts\HasTableLayoutView;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotTable;
@@ -27,7 +26,7 @@ use Override;
  *
  * @template TModel of Model
  */
-abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords implements HasTableLayoutView
+abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
 {
     use HasRelationshipModelClass;
     use HasXotTable {
