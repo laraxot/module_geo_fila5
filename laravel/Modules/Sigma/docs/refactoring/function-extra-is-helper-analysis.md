@@ -45,6 +45,20 @@ public function hhAssenzaFuoriSedeTot(array $params): int  // stub, return 0
 
 **Conclusione**: ✅ **FunctionExtra è un HELPER trait!**
 
+## Incidente 2026-06-18: tipo vs relazione
+
+`ggInSedeTot` passa `$this->qua00f()` (HasMany) ai helper privati. `applyQua00fCoalesceTotSelect` accettava già `Builder|Relation`; `applyQua00fProproFilters` no → TypeError su Trova esclusi.
+
+**Fix corretto:** allineare la firma, non `getQuery()` (perderebbe FK `ente`+`matr`).
+
+Dettaglio percorsi alternativi: [function-extra-relation-query-pattern](../wiki/concepts/function-extra-relation-query-pattern.md)
+
+## lista_tipo_codice: array → stringa CSV
+
+`getListaTipoCodiceAspettative()` restituisce `array<int, string>` (es. `['505-97']`). `GgFilterData::$lista_tipo_codice` è `?string` per `find_in_set(concat(asztip,"-",aszcod), ?)`.
+
+Normalizzazione centralizzata in `GgFilterData::prepareForPipeline()` + `normalizeListaTipoCodice()`. Non passare array grezzo a `GgFilterData::from()` senza pipeline — la DTO lo gestisce.
+
 ### Dove Dovrebbe Stare?
 
 **PRIMA (attuale)**:

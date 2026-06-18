@@ -72,6 +72,7 @@ related:
 
 - [XotBaseResourceTable configure pattern](./patterns/xotbase-resource-table-configure.md)
 - [PHPStan optional contracts](./patterns/phpstan-optional-contracts.md)
+- [Bugfix business logic before type](./patterns/bugfix-business-logic-before-type.md)
 
 ## PHPStan
 

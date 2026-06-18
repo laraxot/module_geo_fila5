@@ -8,21 +8,67 @@ use Carbon\Carbon;
 use Spatie\LaravelData\Data;
 
 /**
- * Undocumented class.
+ * Parametri filtro per calcoli giorni presenza/assenza (FunctionExtra).
+ *
+ * `lista_tipo_codice` in input può essere array (da getListaTipoCodiceAspettative)
+ * o stringa CSV per find_in_set su concat(asztip,"-",aszcod).
  */
 class GgFilterData extends Data
 {
-    public ?string $lista_propro = null; // ' => $categoria->lista_propro,
+    public ?string $lista_propro = null;
 
-    public ?string $lista_propro_sup = null; // ' => $categoria->lista_propro_sup,
+    public ?string $lista_propro_sup = null;
 
-    public ?string $posfun = null; // 'posfun'=>$this->posfun,
+    public ?string $posfun = null;
 
-    public ?string $posiz = null; // 'posiz'=>$this->posiz,
+    public ?string $posiz = null;
 
-    public ?Carbon $date_min = null; // 'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
+    public ?Carbon $date_min = null;
 
-    public ?Carbon $date_max = null; // 'date_max' => $this->criteriOptionsArr('data_presenza_al'),
+    public ?Carbon $date_max = null;
 
-    public ?string $lista_tipo_codice = null; // 'lista_tipo_codice'=>$this->getListaTipoCodiceAspettative(),
+    public ?string $lista_tipo_codice = null;
+
+    /**
+     * Converte array tipo-codice (es. ['505-97', '506-12']) in CSV per find_in_set.
+     */
+    public static function normalizeListaTipoCodice(mixed $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        if (is_string($value)) {
+            return $value === '' ? null : $value;
+        }
+
+        if (! is_array($value)) {
+            return null;
+        }
+
+        $parts = [];
+        foreach ($value as $item) {
+            if (is_string($item) && $item !== '') {
+                $parts[] = $item;
+            }
+        }
+
+        return $parts === [] ? null : implode(',', $parts);
+    }
+
+    /**
+     * @param  array<string, mixed>  $properties
+     * @return array<string, mixed>
+     */
+    public static function prepareForPipeline(array $properties): array
+    {
+        if (array_key_exists('lista_tipo_codice', $properties)) {
+            $properties['lista_tipo_codice'] = self::normalizeListaTipoCodice($properties['lista_tipo_codice']);
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = parent::prepareForPipeline($properties);
+
+        return $result;
+    }
 }

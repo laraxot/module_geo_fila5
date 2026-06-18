@@ -33,11 +33,15 @@ class TrovaEsclusiAction extends Action
                 if (! ($livewire instanceof ListRecords)) {
                     return false;
                 }
-
+                
                 $resource = $livewire->getResource();
+                $user = auth()->user();
+                return $user->isSuperAdmin();
+                /*
                 $canCreate = $resource::can('create');
 
                 return is_bool($canCreate) ? $canCreate : false;
+                */
             })
             ->action(function ($livewire, $record, $action): void {
                 if (! ($livewire instanceof ListRecords)) {
@@ -69,7 +73,6 @@ class TrovaEsclusiAction extends Action
                     $fieldname = 'anno';
                 }
 
-                
 
                 $yearInt = is_numeric($year) ? (int) $year : 0;
 

@@ -241,10 +241,10 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Qua00f>  $qua00f
+     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $qua00f
      */
     private static function applyQua00fProproFilters(
-        Builder $qua00f,
+        Builder|Relation $qua00f,
         ?string $lista_propro,
         ?string $lista_propro_sup,
         ?string $posfun,
@@ -387,7 +387,7 @@ trait FunctionExtra
         }
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
         $qua00fRelation = $this->qua00f();
-        /** @var \Illuminate\Database\Eloquent\Builder<Qua00f> $qua00f */
+        /** @var Relation<Qua00f, static> $qua00f */
         $qua00f = $qua00fRelation;
 
         if (is_string($lista_propro)) {
@@ -470,7 +470,7 @@ trait FunctionExtra
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
         // @phpstan-ignore-next-line method.notFound - Method checked above with method_exists
         $qua00fRelation = $this->qua00f();
-        /** @var \Illuminate\Database\Eloquent\Builder<Qua00f> $qua00f */
+        /** @var Relation<Qua00f, static> $qua00f */
         $qua00f = $qua00fRelation;
 
         if (isset($lista_propro) && is_string($lista_propro)) {
@@ -577,7 +577,7 @@ trait FunctionExtra
         $date_max = $params['date_max'] ?? null;
         $lista_propro = $params['lista_propro'] ?? null;
         $posfun = $params['posfun'] ?? null;
-        $lista_tipo_codice = $params['lista_tipo_codice'] ?? null;
+        $lista_tipo_codice = GgFilterData::normalizeListaTipoCodice($params['lista_tipo_codice'] ?? null);
 
         if (\is_object($date_min) && $date_min instanceof Carbon) {
             $date_min = $date_min->format('Ymd');

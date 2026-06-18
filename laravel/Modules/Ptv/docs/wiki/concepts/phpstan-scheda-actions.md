@@ -36,7 +36,7 @@ File: `app/Support/EloquentModelResolver.php`.
 
 ### 2. Contratti scheda con `@phpstan-require-extends Model`
 
-`SchedaContract` espone `@property` relazione (`criteriEsclusione`, `asz`, …) consumate da `BaseSchedaResource` e action criteri esclusione.
+`SchedaContract` espone `@property` relazione (`criteriEsclusione`, `asz`, …) e static getter per anno — vedi [getter-by-year-naming](./getter-by-year-naming.md).
 
 ### 3. Modulo Performance opzionale nel mono
 
@@ -70,6 +70,17 @@ Vedi [contract-interface-stacking.md](../../../../../docs/wiki/rules/contract-in
 | `UpdateRestiPondByValutatoreIdAction` | Aggiorna resti ponderati per valutatore |
 | `CheckValutatoreAction` | Validazione coerenza valutatore su scheda |
 | `ListaAszTipCodEsclusoSubito` | Criteri esclusione ASZ — **`$scheda->asz()->ofRangeDate()`** (mai `Asz00k1::query()`) |
+| `Check` | Orchestratore criteri — primo argomento **`SchedaContract`**; esito via **`persistCriteriEsclusioneEsito()`** (verifica `$fillable` per `ha_diritto` + `motivo`) |
+
+Action in `CriteriEsclusione/`: type-hint scheda sempre `SchedaContract` (implementazioni concrete estendono `BaseScheda`).
+
+### 7. Dispatch dinamico `Check` (name → action class)
+
+`Check` risolve `Str::studly($criterio->name)` → `Modules\Ptv\Actions\CriteriEsclusione\{Class}`.
+
+- **Fail-fast** — nessun `continue` silenzioso: criterio non-`Model`, `name` vuoto, action assente o senza `execute` → `InvalidArgumentException` con messaggio che include `name` e FQCN action atteso.
+- Ogni `CriteriEsclusioneEnum` deve avere la corrispondente action (test: `CriteriEsclusioneEnumActionRegistryTest`).
+- Esempio storico: `min_gg_integ_params_no_asz` → `MinGgIntegParamsNoAsz` (usa accessor `gg_esperienza_no_asz`, non `MinGgIntegParams` che calcola da `Integparam`).
 
 ## Verifica
 

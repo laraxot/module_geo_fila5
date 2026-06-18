@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models\Contracts;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection as SupportCollection;
 use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
 use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
+use Modules\Xot\Contracts\ModelContract;
 
 /**
  * Contract per le schede di valutazione del personale nelle progressioni temporali variabili.
@@ -15,6 +18,8 @@ use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
  *
  * Estende EnteMatrFieldsContract e DateRangeFieldsContract per ereditare matrField/enteField/yearField
  * e rangeFromField/rangeToField/annFieldName — usati nei trait CommonScope e HasEnteMatrRelationHelpers.
+ *
+ * Ogni implementazione concreta estende `Illuminate\Database\Eloquent\Model` (via `ModelContract`).
  *
  * @phpstan-require-extends Model
  *
@@ -44,6 +49,25 @@ use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
  *
  * @mixin \Eloquent
  */
-interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract
+interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract, ModelContract
 {
+    /**
+     * Criteri di esclusione attivi per anno (config campagna valutazione).
+     *
+     * @return EloquentCollection<int, Model>|null null se il modello modulo Criteri* non esiste
+     */
+    public static function getCriteriEsclusioneByYear(int $year, string $fieldName = 'anno'): ?EloquentCollection;
+
+    /**
+     * Opzioni criteri tipizzate per anno (name => value_real).
+     *
+     * @return SupportCollection<string, mixed>|null null se il modello modulo Criteri* non esiste
+     */
+    public static function getCriteriOptionsParsedByYear(int $year, string $fieldName = 'anno'): ?SupportCollection;
+
+    /**
+     * Persiste l'esito del check criteri esclusione (`ha_diritto`, `motivo`).
+     * Richiede che entrambi i campi siano in `$fillable` del modello concreto.
+     */
+    public function persistCriteriEsclusioneEsito(bool $haDiritto, string $motivo): void;
 }

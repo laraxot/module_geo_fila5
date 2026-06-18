@@ -9,6 +9,10 @@ module: "Sigma"
 
 ## Log Entries
 
+[2026-06-18] [BUGFIX] `GgFilterData::lista_tipo_codice`: `prepareForPipeline` normalizza array da `getListaTipoCodiceAspettative()` in CSV per `find_in_set`. Test `GgFilterDataTest`.
+
+[2026-06-18] [BUGFIX-DOC] `applyQua00fProproFilters` TypeError: pattern relazione `qua00f`, percorsi alternativi A–F. Vedi [function-extra-relation-query-pattern](./concepts/function-extra-relation-query-pattern.md). Collegamento Ptv: [trova-esclusi-gg-cascade](../../../../Ptv/docs/wiki/concepts/trova-esclusi-gg-cascade.md).
+
 [2026-06-15] [REFACTOR] `HasEnteMatrRelationHelpers` estratto da `BaseModel`; riusato su `Ptv\BaseScheda`. Vedi [has-ente-matr-relation-helpers](./concepts/has-ente-matr-relation-helpers.md).
 
 [2026-06-15] [UPDATE] `EnteMatrFieldsContract`: `matrField()`/`enteField()` + helper `hasManyByEnteMatr`/`hasOneByEnteMatr`. Vedi [ente-matr-field-ownership](./concepts/ente-matr-field-ownership.md).

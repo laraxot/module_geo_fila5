@@ -18,6 +18,7 @@ updated: "2026-04-15T08:28:49Z"
 - [method-name-homonyms](./concepts/method-name-homonyms.md) — censimento omonimi metodi (203 nel modulo Sigma)
 - [sto00f-date-range](./concepts/sto00f-date-range.md) — `st2kas`/`st2kdi`/`stann` → `BaseDateRangeModel`
 - [has-ente-matr-relation-helpers](./concepts/has-ente-matr-relation-helpers.md) — trait condiviso `hasManyByEnteMatr` (Sigma + Ptv `BaseScheda`)
+- [function-extra-relation-query-pattern](./concepts/function-extra-relation-query-pattern.md) — `ggInSedeTot` / `qua00f`, `Builder|Relation`, percorsi fix
 - [mcq-contract-inheritance](./concepts/mcq-contract-inheritance.md) — 5 domande MCQ su contract inheritance
 
 ## Rules
@@ -40,8 +41,8 @@ _No comparisons synthesized yet._
 
 ---
 
-**Last Updated:** 2026-06-15  
-**Total Pages:** 11  
+**Last Updated:** 2026-06-18  
+**Total Pages:** 12  
 **Total Raw Sources:** 8
 
 ## Shared Second Brain Discipline

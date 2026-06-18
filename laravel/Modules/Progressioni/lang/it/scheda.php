@@ -100,6 +100,51 @@ return [
             'icon' => 'zip_schede',
             'label' => 'zip_schede',
         ],
+        'send_mail' => [
+            'tooltip' => 'send_mail',
+            'label' => 'send_mail',
+            'icon' => 'send_mail',
+        ],
+        'copy_from_last_year_' => [
+            'label' => 'copy_from_last_year_',
+            'icon' => 'copy_from_last_year_',
+            'tooltip' => 'copy_from_last_year_',
+        ],
+        'populate_year' => [
+            'label' => 'populate_year',
+            'icon' => 'populate_year',
+            'tooltip' => 'populate_year',
+        ],
+        'trova_esclusi' => [
+            'label' => 'trova_esclusi',
+            'icon' => 'trova_esclusi',
+            'tooltip' => 'trova_esclusi',
+        ],
+        'export_xls' => [
+            'label' => 'export_xls',
+            'icon' => 'export_xls',
+            'tooltip' => 'export_xls',
+        ],
+        'export_pdf' => [
+            'label' => 'export_pdf',
+            'icon' => 'export_pdf',
+            'tooltip' => 'export_pdf',
+        ],
+        'view' => [
+            'label' => 'view',
+            'icon' => 'view',
+            'tooltip' => 'view',
+        ],
+        'edit' => [
+            'label' => 'edit',
+            'icon' => 'edit',
+            'tooltip' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+            'icon' => 'delete',
+            'tooltip' => 'delete',
+        ],
     ],
     'label' => 'scheda',
     'fields' => [
@@ -201,6 +246,9 @@ return [
             'helper_text' => 'value',
             'placeholder' => 'value',
             'label' => 'value',
+        ],
+        'anno_valutatore' => [
+            'label' => 'anno_valutatore',
         ],
     ],
 ];

@@ -554,6 +554,8 @@ class Scheda extends BaseScheda
         'gg_integ_params',
         'gg_integ_params_asz',
         'gg_esperienza_no_asz', // gg_cateco_posf_no_asz se non c'e' gg_integ_params
+        'ha_diritto',
+        'motivo',
     ];
 
     /**

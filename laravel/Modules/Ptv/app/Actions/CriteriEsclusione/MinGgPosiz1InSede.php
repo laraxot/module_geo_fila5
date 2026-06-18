@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class MinGgPosiz1InSede
 {
     use QueueableAction;
 
-    public function execute(Model $scheda, string $value, Collection $criteriOption): string
+    public function execute(SchedaContract $scheda, string $value, Collection $criteriOption): string
     {
         $gg_posiz_1_in_sede = isset($scheda->gg_posiz_1_in_sede) ? $scheda->gg_posiz_1_in_sede : 0;
         $gg_posiz_1_in_sede_int = is_numeric($gg_posiz_1_in_sede) ? intval((string) $gg_posiz_1_in_sede) : 0;

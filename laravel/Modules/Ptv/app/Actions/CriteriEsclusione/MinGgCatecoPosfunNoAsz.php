@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Override;
 
 class MinGgCatecoPosfunNoAsz extends BaseCriterioEsclusione
 {
     #[Override]
-    public function execute(Model $scheda, string $value, Collection $criteriOption): string
+    public function execute(SchedaContract $scheda, string $value, Collection $criteriOption): string
     {
         $gg_cateco_posfun_no_asz = isset($scheda->gg_cateco_posfun_no_asz) ? $scheda->gg_cateco_posfun_no_asz : 0;
         $gg_cateco_posfun_no_asz = is_numeric($gg_cateco_posfun_no_asz) ? (int) $gg_cateco_posfun_no_asz : 0;

@@ -5,7 +5,7 @@ type: concept
 status: approved
 tags: [agent, confidence, verification, docs, second-brain]
 created: "2026-05-26"
-updated: "2026-05-26"
+updated: "2026-06-18"
 related:
   - "../../../../../docs/wiki/rules/00-TRIGGER_MAP.md"
   - "../../../../../docs/wiki/how-to/github-issue-agent-discipline.md"
@@ -58,3 +58,15 @@ Questi temi non guidano decisioni tecniche nel repo. La filosofia utile qui e op
 ## Contratto di risposta
 
 Rispondere in italiano, sintetico e conciso. Nel finale indicare: file modificati, issue, verifiche, lock rimossi, rischio residuo.
+
+## Bugfix: business logic prima del tipo
+
+Prima di correggere `TypeError` o errori PHPStan:
+
+1. Tracciare la catena business fino al modello/query owner.
+2. Elencare percorsi alternativi (non solo quello che fa sparire l'errore).
+3. Scartare fix che rompono vincoli relazione (es. `getQuery()` su `HasMany` senza FK).
+4. Documentare decisione nella wiki del modulo owner.
+
+Canon progetto: [bugfix-business-logic-before-type.md](../../../../../docs/wiki/patterns/bugfix-business-logic-before-type.md)  
+Memoria: [bugfix-business-logic-before-type.md](../../../../../docs/wiki/second-brain/bugfix-business-logic-before-type.md)

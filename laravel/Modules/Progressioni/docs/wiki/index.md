@@ -1,7 +1,7 @@
 ---
 title: "Wiki Index"
 module: "Progressioni"
-updated: "2026-06-15"
+updated: "2026-06-18"
 ---
 
 # Wiki Index — Progressioni
@@ -20,6 +20,7 @@ updated: "2026-06-15"
 - [organizzativa-money](./concepts/organizzativa-money.md)
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md)
 - [context-overflow-prevention](./concepts/context-overflow-prevention.md)
+- [trova-esclusi-ui-cascade](./concepts/trova-esclusi-ui-cascade.md) — stub UI → cascata Ptv/Sigma
 
 ## Rules
 

@@ -71,6 +71,7 @@ Before closing a docs update in this module/theme:
 4. Frontmatter: `issues` + `discussions` URL **numerati e pertinenti** — `validate-wiki-frontmatter.sh`.
 5. Link it from `index.md` when it should be discoverable by future agents.
 6. Append `log.md` for reusable decisions.
+7. On bugfix/runtime errors: apply [bugfix-business-logic-before-type.md](../../../../../../docs/wiki/patterns/bugfix-business-logic-before-type.md) before patching types.
 
 ## Root References
 

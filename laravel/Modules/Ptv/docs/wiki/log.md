@@ -9,6 +9,48 @@ module: "Ptv"
 
 ## Log Entries
 
+### 2026-06-18 — Trova esclusi: cascata giorni e bugfix Sigma
+
+- TypeError in `FunctionExtra::applyQua00fProproFilters` bloccava azione Trova esclusi su schede Progressioni.
+- Doc cascata Ptv: [trova-esclusi-gg-cascade](./concepts/trova-esclusi-gg-cascade.md)
+- Fix owner Sigma: [function-extra-relation-query-pattern](../../../../Sigma/docs/wiki/concepts/function-extra-relation-query-pattern.md)
+- Pattern agente: [bugfix-business-logic-before-type](../../../../../../docs/wiki/patterns/bugfix-business-logic-before-type.md)
+
+### 2026-06-18 — persistCriteriEsclusioneEsito (fillable ha_diritto/motivo)
+
+- `Check` non fa più `update()` diretto: delega a `SchedaContract::persistCriteriEsclusioneEsito()` con verifica `$fillable`.
+- `Progressioni\Models\Scheda`: aggiunti `ha_diritto`, `motivo` a `$fillable`.
+- Test: `PersistCriteriEsclusioneEsitoTest`.
+
+### 2026-06-18 — Check fail-fast (no continue silenziosi)
+
+- `Check`: criterio invalido / action mancante → `InvalidArgumentException` (non più `continue`).
+- Test: `CheckSchedaContractTest` (fail-fast).
+
+### 2026-06-18 — MinGgIntegParamsNoAsz + guard Check
+
+- Crash Trova esclusi: criterio DB `min_gg_integ_params_no_asz` senza action; ripristinato `class_exists` in `Check`.
+- Nuova action: `MinGgIntegParamsNoAsz` (accessor `gg_esperienza_no_asz`).
+- Test registry enum → action: `CriteriEsclusioneEnumActionRegistryTest`.
+
+### 2026-06-18 — Check criteri esclusione su SchedaContract
+
+- `Check::execute` e `CheckCriterioEsclusioneContract` usano `SchedaContract` (allineate le action figlie ancora su `Model`).
+- Doc: [phpstan-scheda-actions](./concepts/phpstan-scheda-actions.md)
+
+### 2026-06-18 — Convenzione getter ByYear su SchedaContract
+
+- Rinominati: `getCriteriEsclusioneByYear`, `getCriteriOptionsParsedByYear` (no `load*ForYear`).
+- Wiki: [getter-by-year-naming](./concepts/getter-by-year-naming.md), [trova-esclusi-criteri-by-year](./concepts/trova-esclusi-criteri-by-year.md)
+- Test: `Modules/Ptv/tests/Unit/Models/BaseSchedaCriteriByYearTest.php`
+
+### 2026-06-18 — Analisi refactor criteri anno (TrovaEsclusi)
+
+- Proposta: estrarre get `criteri_esclusione` / `criteri_options` da `TrovaEsclusiByModelClassYearAction`.
+- Analisi: [analisi-trova-esclusi-criteri-refactor](../../../../../../docs/chat/analisi-trova-esclusi-criteri-refactor.md)
+- Wiki: [trova-esclusi-criteri-by-year](./concepts/trova-esclusi-criteri-by-year.md)
+- Script GH: `bashscripts/ai/gh-ptv-trova-esclusi-criteri-refactor-audit.sh`
+
 ### 2026-06-15 — BaseScheda contract stacking (PHPStan trait)
 
 - `SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`; `BaseScheda implements SchedaContract` solo.

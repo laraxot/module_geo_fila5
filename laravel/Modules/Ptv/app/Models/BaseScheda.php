@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models;
 
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection as SupportCollection;
+use Illuminate\Support\Str;
+use InvalidArgumentException;
+use Modules\Performance\Models\Individuale;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00k1;
-use Modules\Performance\Models\Individuale;
-use Illuminate\Database\Eloquent\Collection;
 use Modules\Sigma\Models\Traits\Concerns\HasEnteMatrRelationHelpers;
 use Modules\Sigma\Models\Traits\SchedaTrait;
-use Modules\Ptv\Models\Contracts\SchedaContract;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 
 /**
@@ -282,6 +289,114 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     }
 
     /**
+     * Criteri di esclusione attivi per anno (value != 0) — config campagna valutazione.
+     *
+     * @return EloquentCollection<int, Model>|null null se il modello modulo non esiste
+     */
+    public static function getCriteriEsclusioneByYear(int $year, string $fieldName = 'anno'): ?EloquentCollection
+    {
+        $modelClass = static::resolveCriteriEsclusioneModelClass();
+        if ($modelClass === null) {
+            return null;
+        }
+
+        /** @var EloquentCollection<int, Model> $result */
+        $result = $modelClass::query()
+            ->where($fieldName, $year)
+            ->where('value', '!=', 0)
+            ->get();
+
+        return $result;
+    }
+
+    /**
+     * Opzioni criteri tipizzate per anno (name => value_real) — usate da Check criteri esclusione.
+     *
+     * @return SupportCollection<string, mixed>|null null se il modello modulo non esiste
+     */
+    public static function getCriteriOptionsParsedByYear(int $year, string $fieldName = 'anno'): ?SupportCollection
+    {
+        $modelClass = static::resolveCriteriOptionModelClass();
+        if ($modelClass === null) {
+            return null;
+        }
+
+        $rows = $modelClass::query()->where($fieldName, $year)->get();
+        if (! ($rows instanceof EloquentCollection)) {
+            return null;
+        }
+
+        return static::parseCriteriOptionsCollection($rows);
+    }
+
+    /**
+     * @return class-string<Model>|null
+     */
+    protected static function resolveCriteriEsclusioneModelClass(): ?string
+    {
+        $class = Str::of(static::class)->beforeLast('\\Models\\')->append('\\Models\\CriteriEsclusione')->toString();
+        if (! class_exists($class) || ! is_subclass_of($class, Model::class)) {
+            return null;
+        }
+
+        return $class;
+    }
+
+    /**
+     * @return class-string<Model>|null
+     */
+    protected static function resolveCriteriOptionModelClass(): ?string
+    {
+        $class = Str::of(static::class)->beforeLast('\\Models\\')->append('\\Models\\CriteriOption')->toString();
+        if (! class_exists($class) || ! is_subclass_of($class, Model::class)) {
+            return null;
+        }
+
+        return $class;
+    }
+
+    /**
+     * @param  EloquentCollection<int, Model>  $rows
+     * @return SupportCollection<string, mixed>
+     */
+    protected static function parseCriteriOptionsCollection(EloquentCollection $rows): SupportCollection
+    {
+        return $rows
+            ->map(static function (Model $item): Model {
+                $item->setAttribute('value_real', static::parseCriteriOptionTypedValue($item));
+
+                return $item;
+            })
+            ->pluck('value_real', 'name');
+    }
+
+    protected static function parseCriteriOptionTypedValue(Model $item): mixed
+    {
+        $type = isset($item->type) && is_string($item->type) ? $item->type : '';
+        $itemValue = $item->getAttribute('value');
+
+        return match ($type) {
+            'list' => is_string($itemValue) ? explode(',', $itemValue) : [],
+            'int' => is_numeric($itemValue) ? (int) (string) $itemValue : 0,
+            'date' => static::parseCriteriOptionDateValue($itemValue),
+            default => '',
+        };
+    }
+
+    protected static function parseCriteriOptionDateValue(mixed $value): mixed
+    {
+        if ($value === null || ! is_string($value)) {
+            return $value;
+        }
+
+        try {
+            return Carbon::parse($value);
+        } catch (Exception) {
+            return null;
+        }
+    }
+
+    /**
      * Criteri options relationship.
      *
      * @return HasMany
@@ -345,5 +460,27 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         // Example: return $query->where('calculated_data->some_key', 'some_value');
 
         return $query; // Return the modified (or unmodified) query builder
+    }
+
+    /**
+     * Persiste esito check criteri esclusione. Fail-fast se `ha_diritto` o `motivo` non sono fillable.
+     */
+    public function persistCriteriEsclusioneEsito(bool $haDiritto, string $motivo): void
+    {
+        $attributes = [
+            'ha_diritto' => $haDiritto ? 1 : 0,
+            'motivo' => $motivo,
+        ];
+
+        $fillable = $this->getFillable();
+        foreach (array_keys($attributes) as $field) {
+            if (! in_array($field, $fillable, true)) {
+                throw new InvalidArgumentException(
+                    'Campo `'.$field.'` assente da $fillable in '.static::class,
+                );
+            }
+        }
+
+        $this->update($attributes);
     }
 }

@@ -9,6 +9,8 @@ module: "Progressioni"
 
 ## Log Entries
 
+[2026-06-18] [DOC] Trova esclusi UI: stub [trova-esclusi-ui-cascade](./concepts/trova-esclusi-ui-cascade.md) → cascata Ptv/Sigma. Pattern agente root: [bugfix-business-logic-before-type](../../../../../docs/wiki/patterns/bugfix-business-logic-before-type.md).
+
 [2026-06-15] [UPDATE] Allineato [contract-aggregation-pattern](./rules/contract-aggregation-pattern.md): owner Ptv (`SchedaContract`/`BaseScheda`), Progressioni `extends` solo. Rimossi riferimenti obsoleti `Sigma*Fields`.
 
 [2026-06-15] [UPDATE] Gate PHPStan: 34→0 errori; doc [phpstan-progressioni-gate](./concepts/phpstan-progressioni-gate.md); helper `getRouteParameters` in Xot

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Ptv\Actions\CriteriEsclusione;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Integparam;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -14,7 +14,7 @@ class MinGgIntegParams
 {
     use QueueableAction;
 
-    public function execute(Model $scheda, string $value, Collection $criteriOption): string
+    public function execute(SchedaContract $scheda, string $value, Collection $criteriOption): string
     {
         // ✅ isset() invece di property_exists() - funziona per attributi magici Eloquent
         $ente = isset($scheda->ente) ? $scheda->ente : null;

@@ -18,6 +18,10 @@ discussions:
 
 ## Log Entries
 
+[2026-06-18 15:00:00 UTC] [GITHUB-PENDING] Issue/discussion Sigma FunctionExtra: script `bashscripts/ai/gh-sigma-trova-esclusi-audit.sh` → `provtv/module_sigma_fila5`. Bloccato: `gh auth login` non eseguito su host agente. Body: `docs/chat/github-issue-sigma-function-extra-trova-esclusi-body.md`.
+
+[2026-06-18 14:00:00 UTC] [PATTERN] Bugfix discipline: business logic prima del tipo — pattern [`patterns/bugfix-business-logic-before-type.md`](patterns/bugfix-business-logic-before-type.md), memoria [`second-brain/bugfix-business-logic-before-type.md`](second-brain/bugfix-business-logic-before-type.md). Caso `FunctionExtra::applyQua00fProproFilters` (Sigma): percorsi A–F documentati; fix `Builder|Relation` coerente con relazione `qua00f`. Wiki modulo: Sigma, Ptv (cascata Trova esclusi), Progressioni (stub UI).
+
 [2026-06-18 10:55:00 UTC] [PHPSTAN] Scan sequenziale `./vendor/bin/phpstan analyse Modules/<Modulo>` su 19 moduli: 18 OK, `IndennitaCondizioniLavoro` 3 errori `argument.type` su `tableFilters` `array|null` -> fix action `?array` + test null; rerun post-fix 19/19 OK. Pest mirato filtri 13 passed; Pest completo del modulo bloccato da test legacy non allineati a Laravel/Eloquent. Pattern [`phpstan/filament-tablefilters-nullable.md`](phpstan/filament-tablefilters-nullable.md). Issue mono #136.
 
 [2026-06-15 24:30:00 UTC] [QMD OK] Ingest PTVX dopo `qmd cleanup`: 8 collection (`ptvx-wiki`, `mod-ptv/sigma/progressioni-wiki`, `ptvx-theme-one/zero/three`, `ptvx-rules`). Smoke: `HasEnteMatrRelationHelpers`, `contract-interface-stacking`.
