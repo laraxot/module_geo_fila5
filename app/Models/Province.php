@@ -84,7 +84,7 @@ class Province extends BaseModel
             $regionId = $regione['codice'] ?? null;
             $id = $provincia['codice'] ?? null;
             $name = $provincia['nome'] ?? null;
-            if ($regionId === null || $id === null || $name === null) {
+            if (null === $regionId || null === $id || null === $name) {
                 continue;
             }
 
