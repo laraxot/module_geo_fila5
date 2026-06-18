@@ -35,10 +35,13 @@ class IndennitaResponsabilitasTable extends XotBaseResourceTable
      */
     public function getTableHeaderActions(): array
     {
+        /** @var array<string, string|int|bool|null>|null $filtersForUrl */
+        $filtersForUrl = $this->tableFilters;
+
         return [
             'SendMail' => Action::make('SendMail')
                 ->icon('heroicon-o-paper-airplane')
-                ->url(fn () => IndennitaResponsabilitaResource::getUrl('send-mail', []))
+                ->url(fn () => IndennitaResponsabilitaResource::getUrl('send-mail', $filtersForUrl ?? []))
                 ->visible(false),
             'DeleteCessatiAction' => DeleteCessatiAction::make(),
             'exportXls' => ExportXlsAction::make('exportXls'),
