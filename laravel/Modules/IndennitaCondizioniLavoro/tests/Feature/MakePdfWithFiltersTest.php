@@ -63,6 +63,13 @@ test('make_pdf action throws exception when tableFilters missing anno', function
         ->toThrow(InvalidArgumentException::class);
 });
 
+test('make_pdf action throws exception when tableFilters are null', function () {
+    $action = new MakePdf();
+
+    expect(fn () => $action->execute(null))
+        ->toThrow(InvalidArgumentException::class);
+});
+
 test('make_pdf action throws exception when tableFilters missing valutatore_id', function () {
     // Arrange
     $invalidFilters = [

@@ -14,11 +14,10 @@ class ReplicateIndennita
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>|null  $data
      */
-    public function execute(array $data): void
+    public function execute(?array $data): void
     {
-        
         $input = $data['anno/valutatore'] ?? $data;
         if (! is_array($input)) {
             throw new InvalidArgumentException('Parametro filtri non valido.');
@@ -44,18 +43,14 @@ class ReplicateIndennita
             'quadrimestre' => $sourceQuadrimestre,
         ];
 
-        
-
         $rows = CondizioniLavoro::query()
             ->where($filters)
             ->whereHas('indennitaTipoDettaglio')
             ->get();
-        
 
         foreach ($rows as $row) {
             $ids = $row->indennitaTipoDettaglio->modelKeys();
             $next = $row->getNextQuadrimestre();
-            
 
             if ($next === null) {
                 continue;
@@ -64,8 +59,6 @@ class ReplicateIndennita
             if ($next->indennitaTipoDettaglio->isEmpty()) {
                 $next->indennitaTipoDettaglio()->sync($ids);
             }
-
-            
         }
 
         Notification::make()

@@ -89,6 +89,13 @@ test('replicate action throws exception when tableFilters missing quadrimestre',
         ->toThrow(InvalidArgumentException::class);
 });
 
+test('replicate action throws exception when tableFilters are null', function () {
+    $action = new ReplicateIndennita();
+
+    expect(fn () => $action->execute(null))
+        ->toThrow(InvalidArgumentException::class);
+});
+
 test('replicate action accepts flattened data array as fallback', function () {
     // Arrange: test del fallback path
     $flatData = [
