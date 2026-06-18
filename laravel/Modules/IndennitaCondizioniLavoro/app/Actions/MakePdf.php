@@ -16,9 +16,9 @@ class MakePdf
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>|null  $data
      */
-    public function execute(array $data): StreamedResponse
+    public function execute(?array $data): StreamedResponse
     {
         $filtersInput = $data['anno/valutatore'] ?? $data;
         if (! is_array($filtersInput)) {
