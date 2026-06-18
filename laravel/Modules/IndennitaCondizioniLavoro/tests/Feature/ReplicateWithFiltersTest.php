@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use InvalidArgumentException;
 use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
 
 test('replicate action extracts anno from nested tableFilters', function () {
