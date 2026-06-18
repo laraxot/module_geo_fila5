@@ -467,3 +467,4 @@ laravel/.claude
 laravel/.qwen
 ${PWD}/
 *.Identifier
+laravel/Modules/Notify/.openviking
