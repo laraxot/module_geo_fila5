@@ -374,3 +374,5 @@ module: "ptvx-project"
 [2026-06-18] [ARCHITECTURE] Module root folders forbidden — regola canonica: cartelle `Actions/`, `Application/`, `Database/` (PascalCase), `Events/`, `Listeners/` non devono esistere nella root del modulo; tutto il PHP sotto `app/`, DB sotto `database/`. Artefatti: `docs/wiki/rules/module-root-php-folders-forbidden.md`, memory Xot `module-app-only-directory-structure.md`, User `module-root-folder-violations.md`, TRIGGER_MAP aggiornato. Violazione residua: solo `Modules/User/`.
 
 [2026-06-18] [RULE] PHPStan single config — solo `laravel/phpstan.neon`; vietato creare wrapper `.neon` (`phpstan-gate.neon` rimosso). Regola: `docs/wiki/rules/phpstan-single-neon-config.md`, memory Xot, TRIGGER_MAP, gate script aggiornato.
+
+[2026-06-18] [GATE OK] User PHPStan — primo `./vendor/bin/phpstan analyse Modules/User` OOM 512M; batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` OK; run finale esatto `Modules/User` OK 635/635. Nota locale: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.

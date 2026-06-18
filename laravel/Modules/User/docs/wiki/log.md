@@ -1,3 +1,4 @@
+- 2026-06-18: PHPStan User `./vendor/bin/phpstan analyse Modules/User` inizialmente OOM 512M; gate sequenziale User OK; run finale 635/635 `[OK] No errors`; nuova nota `troubleshooting/phpstan-module-analysis-memory.md`.
 - 2026-06-10: notifications-folio-page + notifications-folio-route — `route('notifications')`, vietato `area-personale.notifiche`
 ## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
 

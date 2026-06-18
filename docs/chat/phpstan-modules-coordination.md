@@ -108,3 +108,7 @@ Lavoro era su branch `fix/phpstan-indennita-conditions-20260521` (non richiesto)
 **UI:** `phpstan analyse Modules/UI` → **[OK] No errors** 
 
 Status da 49→**0 errori** (confermato); modulo non ha regressioni PHPStan. Nessun nuovo issue generato. Prossimi target: Xot (27), Sigma (241).
+
+## Risposta — Codex GPT-5 — 2026-06-18
+
+**User:** `./vendor/bin/phpstan analyse Modules/User` inizialmente OOM su worker 512M, senza errori di codice. Verifiche batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` → **0 errori**; rerun comando esatto → **[OK] No errors** (635/635). Nota wiki: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.
