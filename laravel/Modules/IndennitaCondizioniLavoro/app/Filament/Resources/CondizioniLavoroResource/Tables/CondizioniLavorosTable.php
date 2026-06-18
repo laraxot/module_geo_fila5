@@ -29,8 +29,6 @@ class CondizioniLavorosTable extends XotBaseResourceTable
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
                 ->action(function (): Response {
-                    /** @var array<string, mixed>|null $tableFilters */
-                    /** @phpstan-ignore-next-line property.notFound */
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
 
                     return app(MakePdf::class)->execute($tableFilters);
@@ -40,8 +38,6 @@ class CondizioniLavorosTable extends XotBaseResourceTable
                 ->icon('heroicon-o-clipboard-document-list')
                 ->tooltip('ricopia da quadrimentre precendente')
                 ->action(function (): void {
-                    /** @var array<string, mixed>|null $tableFilters */
-                    /** @phpstan-ignore-next-line property.notFound */
                     $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
                     app(ReplicateIndennita::class)->execute($tableFilters);
                 }),
