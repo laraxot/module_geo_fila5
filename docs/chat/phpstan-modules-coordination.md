@@ -3,7 +3,13 @@ title: coordinamento phpstan moduli
 type: chat
 tags: [phpstan, multi-agent]
 created: 2026-05-21
+updated: 2026-06-18
+qmd: "phpstan modules coordination multi-agent user xot gate"
 issue: 136
+issues:
+  - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 ---
 
 # Coordinamento PHPStan — moduli Laraxot

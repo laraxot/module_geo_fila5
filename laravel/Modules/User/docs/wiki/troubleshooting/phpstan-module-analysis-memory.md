@@ -9,6 +9,8 @@ qmd: "User phpstan analyse Modules/User OOM 512M cache gate"
 issues:
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/102"
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 related:
   - "../../../../../../docs/wiki/troubleshooting/phpstan-parallel-worker-oom.md"
   - "../../../../Xot/docs/phpstan-config-immutability.md"
