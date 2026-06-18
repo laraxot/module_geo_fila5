@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\AddressData;
 use Modules\Geo\Datas\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 
 /**
  * Classe per ottenere l'indirizzo da Bing Maps.
@@ -217,8 +218,8 @@ class GetAddressFromBingMapsAction
         }
 
         return [
-            0 => (float) $coordinates[0],
-            1 => (float) $coordinates[1],
+            0 => SafeFloatCastAction::cast($coordinates[0]),
+            1 => SafeFloatCastAction::cast($coordinates[1]),
         ];
     }
 

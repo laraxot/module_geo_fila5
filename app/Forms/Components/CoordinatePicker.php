@@ -7,6 +7,8 @@ namespace Modules\Geo\Forms\Components;
 use Filament\Forms\Components\Field;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 class CoordinatePicker extends Field
 {
@@ -103,8 +105,8 @@ class CoordinatePicker extends Field
      */
     protected function mutateState(array $input): void
     {
-        $this->latitude = isset($input['latitude']) ? (float) $input['latitude'] : null;
-        $this->longitude = isset($input['longitude']) ? (float) $input['longitude'] : null;
+        $this->latitude = isset($input['latitude']) ? SafeFloatCastAction::cast($input['latitude']) : null;
+        $this->longitude = isset($input['longitude']) ? SafeFloatCastAction::cast($input['longitude']) : null;
     }
 
     /**
@@ -113,8 +115,8 @@ class CoordinatePicker extends Field
     #[On('coords-changed')]
     public function handleCoordsChanged(array $coords): void
     {
-        $this->latitude = isset($coords['latitude']) ? (float) $coords['latitude'] : null;
-        $this->longitude = isset($coords['longitude']) ? (float) $coords['longitude'] : null;
+        $this->latitude = isset($coords['latitude']) ? SafeFloatCastAction::cast($coords['latitude']) : null;
+        $this->longitude = isset($coords['longitude']) ? SafeFloatCastAction::cast($coords['longitude']) : null;
     }
 
     /**
@@ -125,7 +127,7 @@ class CoordinatePicker extends Field
     {
         try {
             $response = Http::withHeaders([
-                'User-Agent' => \sprintf('%s/1.0 (%s)', (string) config('app.name', 'Laraxot'), (string) config('app.url', 'localhost')),
+                'User-Agent' => \sprintf('%s/1.0 (%s)', SafeStringCastAction::cast(config('app.name', 'Laraxot')), SafeStringCastAction::cast(config('app.url', 'localhost'))),
             ])
                 ->timeout(10)
                 ->get('https://nominatim.openstreetmap.org/reverse', [
