@@ -145,6 +145,16 @@ return [
             'icon' => 'delete',
             'tooltip' => 'delete',
         ],
+        'save' => [
+            'label' => 'save',
+            'icon' => 'save',
+            'tooltip' => 'save',
+        ],
+        'cancel' => [
+            'label' => 'cancel',
+            'icon' => 'cancel',
+            'tooltip' => 'cancel',
+        ],
     ],
     'label' => 'scheda',
     'fields' => [

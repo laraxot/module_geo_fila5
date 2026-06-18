@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Modules\Performance\Models\Individuale;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Anag;
@@ -460,27 +459,5 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         // Example: return $query->where('calculated_data->some_key', 'some_value');
 
         return $query; // Return the modified (or unmodified) query builder
-    }
-
-    /**
-     * Persiste esito check criteri esclusione. Fail-fast se `ha_diritto` o `motivo` non sono fillable.
-     */
-    public function persistCriteriEsclusioneEsito(bool $haDiritto, string $motivo): void
-    {
-        $attributes = [
-            'ha_diritto' => $haDiritto ? 1 : 0,
-            'motivo' => $motivo,
-        ];
-
-        $fillable = $this->getFillable();
-        foreach (array_keys($attributes) as $field) {
-            if (! in_array($field, $fillable, true)) {
-                throw new InvalidArgumentException(
-                    'Campo `'.$field.'` assente da $fillable in '.static::class,
-                );
-            }
-        }
-
-        $this->update($attributes);
     }
 }

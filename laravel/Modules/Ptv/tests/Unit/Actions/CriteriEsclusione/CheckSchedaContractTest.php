@@ -49,4 +49,8 @@ describe('Check criteri esclusione', function (): void {
         expect(fn () => app(Check::class)->execute($scheda, [$criterio], Collection::make()))
             ->toThrow(InvalidArgumentException::class, 'Action criterio esclusione non trovata');
     });
+
+    it('richiede ha_diritto e motivo in fillable prima di update', function (): void {
+        expect((new Scheda())->getFillable())->toContain('ha_diritto', 'motivo');
+    });
 });

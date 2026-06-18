@@ -64,10 +64,4 @@ interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract
      * @return SupportCollection<string, mixed>|null null se il modello modulo Criteri* non esiste
      */
     public static function getCriteriOptionsParsedByYear(int $year, string $fieldName = 'anno'): ?SupportCollection;
-
-    /**
-     * Persiste l'esito del check criteri esclusione (`ha_diritto`, `motivo`).
-     * Richiede che entrambi i campi siano in `$fillable` del modello concreto.
-     */
-    public function persistCriteriEsclusioneEsito(bool $haDiritto, string $motivo): void;
 }
