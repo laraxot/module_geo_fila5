@@ -19,11 +19,13 @@ Modulo PTV principale per portale HR e gestione integrata risorse umane nel cont
 
 ## Dove iniziare
 
+- **[Architecture Patterns](./architecture-patterns.md)** — Case workflows, state machines, 65+ actions
+- **[Architecture Overview](./architecture-overview.md)** — Technical deep dive
+- **[Documentation Index](./INDEX.md)** — Complete table of contents
 - [Wiki locale](./wiki/index.md)
 - [Audit ridondanza (wiki)](./wiki/redundancy-audit.md)
 - [Audit ridondanza](./code-redundancy-audit.md)
 - [Regole architettura](./architecture-rules.md)
-- [Disciplina agenti](./agent-edit-discipline.md)
 
 
 ## Struttura tipica

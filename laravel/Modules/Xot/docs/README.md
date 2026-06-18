@@ -24,6 +24,14 @@ To ensure consistent autoloading and architectural integrity, all modules must f
 - **database/**: strictly lowercase.
 - **Forbidden**: Capitalized directories at the root level (e.g., `Actions/`, `Database/`) are forbidden.
 
+## 📚 **Quick Navigation**
+
+- **[Architecture Patterns](./architecture-patterns.md)** — Complete design patterns, class hierarchies, traits ecosystem
+- **[Documentation Index](./INDEX.md)** — Full table of contents and component reference
+- **[XOTBASE_ARCHITECTURE_PHILOSOPHY.md](./XOTBASE_ARCHITECTURE_PHILOSOPHY.md)** — Core design philosophy
+
+---
+
 ## ⚡ **Architettura Core**
 
 ### 🏗️ **Base Classes Pattern**

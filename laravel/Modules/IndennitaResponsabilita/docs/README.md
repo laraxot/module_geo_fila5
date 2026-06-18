@@ -19,7 +19,10 @@ Responsibility allowances module for the Laraxot ecosystem: position-based bonus
 
 ## Dove iniziare
 
+- **[Architecture Patterns](./architecture-patterns.md)** — Design patterns, workflows, approval chains
+- **[Documentation Index](./INDEX.md)** — Table of contents e navigazione completa
 - [Wiki locale](./wiki/index.md)
+- [PHPStan Analysis](./phpstan-analysis.md)
 - [Audit ridondanza](./code-redundancy-audit.md)
 - [Regole architettura](./architecture-rules.md)
 - [Disciplina agenti](./agent-edit-discipline.md)

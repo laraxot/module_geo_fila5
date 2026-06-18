@@ -19,7 +19,10 @@ Work conditions allowances module for the Laraxot ecosystem: hazard pay, shift d
 
 ## Dove iniziare
 
+- **[Architecture Patterns](./architecture-patterns.md)** — Domain design, eligibility rules, payroll integration
+- **[Documentation Index](./INDEX.md)** — Complete table of contents
 - [Wiki locale](./wiki/index.md)
+- [PHPStan Fixes](./phpstan-fixes.md)
 - [Audit ridondanza](./code-redundancy-audit.md)
 - [Regole architettura](./architecture-rules.md)
 - [Disciplina agenti](./agent-edit-discipline.md)

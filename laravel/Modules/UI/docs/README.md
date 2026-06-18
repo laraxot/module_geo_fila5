@@ -12,6 +12,11 @@ updated: 2026-06-05
 
 Il modulo **UI** fornisce componenti Blade, widget Filament e asset condivisi per tutti i moduli e temi.
 
+**Quick Start:**
+- **[Architecture Patterns](./architecture-patterns.md)** — Design system, component hierarchy, theming
+- **[Disabled Components](./disabled-components.md)** — Deprecation info & migration paths
+- **[Design Comuni Implementation](./DESIGN_COMUNI_IMPLEMENTATION.md)** — Integration guide
+
 ## Struttura Componenti
 
 ```
