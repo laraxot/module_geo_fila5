@@ -1,4 +1,22 @@
+---
+title: "User Wiki Log"
+type: log
+module: User
+tags: [user, wiki, log, phpstan, boundary]
+created: 2026-04-15
+updated: 2026-06-18
+qmd: "user module wiki log phpstan no comment dependency"
+issues:
+  - "https://github.com/provtv/base_ptv_fila5_mono/issues/102"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - ./concepts/no-comment-module-dependency.md
+  - ./rules/can-comment-retired-wrong-placement.md
+---
+
 - 2026-06-18: PHPStan User `./vendor/bin/phpstan analyse Modules/User` inizialmente OOM 512M; gate sequenziale User OK; run finale 635/635 `[OK] No errors`; nuova nota `troubleshooting/phpstan-module-analysis-memory.md`.
+- 2026-06-18: rimosso coupling residuo User -> Comment: `BaseUser` non usa piu' `HasCommentatorRelations`, `UserContract` non espone metodi Comment, trait disattivata eliminata. Verifica: `bashscripts/tools/check-user-no-comment-dependency.sh`, `pest Modules/User/tests/Unit/NoCommentModuleDependencyTest.php`, PHPStan User/Progressioni.
 - 2026-06-10: notifications-folio-page + notifications-folio-route — `route('notifications')`, vietato `area-personale.notifiche`
 ## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
 
