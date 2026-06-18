@@ -3,7 +3,7 @@
 > **Regola di Struttura per Cartelle Moduli Laravel**
 > 
 > **Status:** Active
-> **Last Updated:** 2026-03-13
+> **Last Updated:** 2026-06-18
 > **Owner:** Development Team
 
 ---
@@ -122,18 +122,26 @@ laravel/Modules/Gdpr/
 **SBAGLIATO:**
 ```
 laravel/Modules/User/
-├── Models/             ❌ SBAGLIATO!
-├── Controllers/        ❌ SBAGLIATO!
 ├── Actions/            ❌ SBAGLIATO!
+├── Application/        ❌ SBAGLIATO!
+├── Database/           ❌ SBAGLIATO! (usare database/ minuscolo)
+├── Events/             ❌ SBAGLIATO!
+├── Listeners/          ❌ SBAGLIATO!
+├── Models/             ❌ SBAGLIATO!
 ```
 
 **CORRETTO:**
 ```
 laravel/Modules/User/
 ├── app/
-│   ├── Models/         ✅ CORRETTO
-│   ├── Controllers/    ✅ CORRETTO
-│   └── Actions/        ✅ CORRETTO
+│   ├── Actions/        ✅ CORRETTO
+│   ├── Application/    ✅ CORRETTO
+│   ├── Events/         ✅ CORRETTO
+│   ├── Listeners/      ✅ CORRETTO
+│   └── Models/         ✅ CORRETTO
+├── database/           ✅ CORRETTO (minuscolo)
+│   ├── migrations/
+│   └── factories/
 ```
 
 ---
@@ -334,6 +342,7 @@ laravel/Modules/Gdpr/
 | Modulo | Violazione | Status | Fix Date |
 |--------|------------|--------|----------|
 | Gdpr | `Enums/` nella root | ✅ Risolto | 2026-03-13 |
+| User | `Actions/`, `Application/`, `Database/`, `Events/`, `Listeners/` nella root | ✅ Risolto | 2026-06-18 |
 
 ---
 

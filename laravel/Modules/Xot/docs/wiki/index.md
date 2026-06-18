@@ -26,6 +26,7 @@ Indice operativo del wiki Xot (core framework).
 
 ## Struttura canonica (sacred)
 
+- [module-directory-structure-rule.md](../module-directory-structure-rule.md) — regola cartelle modulo (PHP solo in `app/`)
 - [concepts/](./concepts/): Pattern architetturali e metodologie Xot/Laraxot.
 - [entities/](./entities/): Modelli e componenti chiave.
 - [sources/](./sources/): Dati di ricerca e link esterni.

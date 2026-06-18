@@ -12,7 +12,8 @@ qmd: "User CanComment app Contracts wrong Models Contracts retired"
 
 `CanComment` era capability **solo Model** ma finì in `app/Contracts/` — viola [models-contracts-placement](../../../../docs/wiki/rules/models-contracts-placement.md).
 
-- Ritirato: `app/Models/Contracts/CanComment.php.old`
+- Ritirato: `app/Contracts/CanComment.php` → `app/Contracts/CanComment.php.old`
+- Precedente archivio: `app/Models/Contracts/CanComment.php.old`
 - SSOT: `Modules\Comment\Models\Contracts\CanComment`
 - `BaseUser implements Comment\Models\Contracts\CanComment`
 

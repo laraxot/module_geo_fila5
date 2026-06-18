@@ -14,8 +14,15 @@ related:
 ## Rules
 
 - [Trigger Map](./rules/00-TRIGGER_MAP.md) — unified trigger → resource routing
+- [module-root-php-folders-forbidden](./rules/module-root-php-folders-forbidden.md) — PHP solo sotto `app/` nei moduli
+- [phpstan-single-neon-config](./rules/phpstan-single-neon-config.md) — solo `laravel/phpstan.neon`, mai altri `.neon`
 - [On-Demand Pattern](./rules/on-demand-pattern.md) — Karpathy LLM Wiki pattern
 - [Rules INDEX](./rules/INDEX.md) — rule triggers
+
+## BMAD
+
+- [architecture](./bmad/architecture.md) — indice decisioni architetturali (ADR)
+- [workflow](./bmad/workflow.md) — fasi BMAD on-demand
 
 ## Skills
 

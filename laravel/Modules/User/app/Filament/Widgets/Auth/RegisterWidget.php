@@ -6,6 +6,7 @@ namespace Modules\User\Filament\Widgets\Auth;
 
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Activity\Support\ActivityLogSchema;
@@ -100,7 +101,7 @@ class RegisterWidget extends XotBaseSchemaWidget
 
     protected function handleSuccessfulRegistration(Authenticatable $user): void
     {
-        if (config('auth.must_verify_email') && method_exists($user, 'sendEmailVerificationNotification')) {
+        if (config('auth.must_verify_email') && $user instanceof MustVerifyEmail) {
             $user->sendEmailVerificationNotification();
         }
 

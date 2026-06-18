@@ -59,6 +59,15 @@ Modules\User\Models\Tenant
 
 ## Architectural Rules — Violations Fixed
 
+### Module Directory Structure Standard
+In compliance with the [Global Rule](../../../docs/wiki/rules/module-root-php-folders-forbidden.md), all root-level capitalized directories (`Actions/`, `Application/`, `Database/`, `Events/`, `Listeners/`) have been moved into `app/` or renamed to lowercase `database/`. 
+- **app/**: Home for all PHP functional code (mapped via PSR-4).
+- **database/**: Strictly lowercase for migrations/factories/seeders.
+
+### PHPStan Memory Management
+Per evitare crash dei parallel workers su analisi massive, usare sempre:
+`php -d memory_limit=-1 ./vendor/bin/phpstan analyse [target] --memory-limit=-1`
+
 ### Profiles migration governance
 - La tabella `profiles` deve avere sia `id` sia `uuid`.
 - Il modulo User usa **una sola migrazione autorevole** per `profiles`: `*_create_profiles_table.php`.

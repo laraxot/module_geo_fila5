@@ -18,6 +18,12 @@ Il modulo **Xot** è il **framework base** di Laraxot PTVX, un ecosistema modula
 - **Estensibilità**: Progettato per facilitare l'aggiunta di nuovi moduli e l'espansione delle funzionalità esistenti.
 - **Manutenibilità**: Codice pulito, ben documentato e supportato da strumenti di analisi statica.
 
+### 🏗️ **Module Directory Structure Standard**
+To ensure consistent autoloading and architectural integrity, all modules must follow this structure:
+- **app/**: Contains all PHP code (Actions, Models, etc.). Mapped to `Modules\{Module}\` in `composer.json`.
+- **database/**: strictly lowercase.
+- **Forbidden**: Capitalized directories at the root level (e.g., `Actions/`, `Database/`) are forbidden.
+
 ## ⚡ **Architettura Core**
 
 ### 🏗️ **Base Classes Pattern**
@@ -89,7 +95,13 @@ enum UserStatus: string implements XotBaseEnum
 }
 ```
 
-## 🛠️ **Sviluppo e Qualità**
+### 🛠️ **Sviluppo e Qualità**
+
+### Analisi Statica (PHPStan)
+Per garantire la stabilità di tutto l'ecosistema, l'analisi deve essere eseguita con memoria illimitata per evitare crash dei parallel workers:
+```bash
+php -d memory_limit=-1 ./vendor/bin/phpstan analyse Modules/
+```
 
 ### Convenzioni
 - **Namespace**: I namespace dei moduli **NON** devono includere il segmento `app`.

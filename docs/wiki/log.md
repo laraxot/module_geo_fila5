@@ -370,3 +370,7 @@ module: "ptvx-project"
 [2026-06-15] [RENAME] Sigma contratti — `SigmaDateRangeFields`→`DateRangeFieldsContract`, `SigmaEnteMatrFields`→`EnteMatrFieldsContract`, `SigmaQuaRelationAnnFields`→`QuaRelationAnnFieldsContract` (34+25+3 file). Regola: `contract-naming-suffix.md`. Memory + TRIGGER_MAP aggiornati.
 
 [2026-06-15] [ARCHITECTURE] Contract stacking pattern — `SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract`. `BaseScheda implements SchedaContract` solo. Nuova regola `contract-interface-stacking.md`. Fix test Progressioni (import path errato).
+
+[2026-06-18] [ARCHITECTURE] Module root folders forbidden — regola canonica: cartelle `Actions/`, `Application/`, `Database/` (PascalCase), `Events/`, `Listeners/` non devono esistere nella root del modulo; tutto il PHP sotto `app/`, DB sotto `database/`. Artefatti: `docs/wiki/rules/module-root-php-folders-forbidden.md`, memory Xot `module-app-only-directory-structure.md`, User `module-root-folder-violations.md`, TRIGGER_MAP aggiornato. Violazione residua: solo `Modules/User/`.
+
+[2026-06-18] [RULE] PHPStan single config — solo `laravel/phpstan.neon`; vietato creare wrapper `.neon` (`phpstan-gate.neon` rimosso). Regola: `docs/wiki/rules/phpstan-single-neon-config.md`, memory Xot, TRIGGER_MAP, gate script aggiornato.

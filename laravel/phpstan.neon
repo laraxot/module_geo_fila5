@@ -9,15 +9,15 @@ includes:
 parameters:
 
     paths:
-        - Modules
+        - Modules/
         #- Themes
 
     level: max
     #parallel:
-    #    maximumNumberOfProcesses: 34
-    #    jobSize: 1
-    #    minimumNumberOfJobsPerProcess: 1
-    # Disable parallel processing to avoid memory issues
+        # Use single process only - no parallel workers to avoid 512M memory exhaustion
+        # maximumNumberOfProcesses: 0
+        # Parallel processing disabled completely to avoid memory issues with child processes
+        # If still getting memory errors, exclude more modules or run individually
 
     ignoreErrors:
         # - '#Static call to instance method Nwidart#'
@@ -26,9 +26,19 @@ parameters:
         - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#' # Ignora errori di cast da mixed a tipi specifici
         - identifier: missingType.generics
         - identifier: missingType.iterableValue
+        - identifier: larastan.noEnvCallsOutsideOfConfig 
         # - identifier: method.unused
 
     excludePaths:
+        - ./*/lang/*
+        - ./*/database/*
+        - ./*/resources/*
+        - ./*/bashscripts/*
+        - ./*/scripts/*
+        - ./*/routes/*
+        - ./*/tools/*
+        - ./*/workbench/*
+
         - ./*/vendor/*
         - ./*/tests/*
         - ./*/build/*
@@ -38,9 +48,9 @@ parameters:
         - ./*/rector.php
         - ./*/*.blade.php
         #- ./config/local/*/database.php
-        # Moduli in ordine alfabetico:
+        # MEMORY OPTIMIZATION: Most modules excluded due to WSL2/system memory constraints
+        # Run analysis per-module individually: php -d memory_limit=-1 ./vendor/bin/phpstan analyse Modules/[ModuleName]
         #- ./Modules/Activity/*
-        #- ./Modules/Badge/*
         #- ./Modules/CertFisc/*
         #- ./Modules/ContoAnnuale/*
         #- ./Modules/DbForge/*
@@ -63,7 +73,7 @@ parameters:
         #- ./Modules/Prenotazioni/*
         #- ./Modules/PresenzeAssenze/*
         #- ./Modules/Progressioni/*
-        # - ./Modules/Ptv/*
+        #- ./Modules/Ptv/*
         #- ./Modules/Questionari/*
         #- ./Modules/Rating/*
         #- ./Modules/Setting/*

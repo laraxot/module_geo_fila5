@@ -6,6 +6,8 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - **Session Start**: Every session MUST start with `git remote -v` and `gh issue list`.
 - **Issue Audit Trail**: For every task, find an existing GitHub issue or create a new one (`gh issue create`). Comment with progress and wiki links.
 - **Token Optimization**: Use `context-mode` and chunked reads for files > 80 lines. Follow the [Token Optimization Discipline](docs/wiki/rules/token-optimization-discipline.md) for every session.
+- **Module Structure**: All functional code (Actions, Events, Listeners, Application, Models, etc.) MUST reside within the `app/` directory of the module. The `database/` directory must be strictly lowercase. Root-level capitalized directories (e.g., `Actions/`, `Database/`) are forbidden.
+- **PHPStan Memory**: For heavy analyses (e.g., `Modules/` root), ALWAYS use `php -d memory_limit=-1 ./vendor/bin/phpstan`. Avoid relying solely on `--memory-limit=-1` as parallel workers may hit subprocess limits (e.g., 512M).
 - **Markdown Standard**: All `.md` files must follow the [Markdown & Second Brain Standard](docs/wiki/rules/markdown-documentation-standard.md). Strictly lowercase-kebab-case filenames, NO dates in filenames, mandatory YAML front matter, and atomic notes. (Exceptions: README.md, CHANGELOG.md).
 
 ## Read First
