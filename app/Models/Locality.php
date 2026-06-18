@@ -82,7 +82,7 @@ class Locality extends BaseModel
             $provinceId = $provincia['codice'] ?? null;
             $id = $item['codice'] ?? $item['id'] ?? null;
             $name = $item['nome'] ?? null;
-            if ($regionId === null || $provinceId === null || $id === null || $name === null) {
+            if (null === $regionId || null === $provinceId || null === $id || null === $name) {
                 continue;
             }
 
