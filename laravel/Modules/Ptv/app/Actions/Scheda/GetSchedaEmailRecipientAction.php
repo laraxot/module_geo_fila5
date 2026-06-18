@@ -41,21 +41,17 @@ class GetSchedaEmailRecipientAction
         // Priorità 2: Email da anagrafica (se relazione esiste)
         if (method_exists($scheda, 'anag')) {
             // Carica relazione se non già caricata
-            if (method_exists($scheda, 'relationLoaded') && ! $scheda->relationLoaded('anag')) {
-                if (method_exists($scheda, 'load')) {
-                    $scheda->load('anag');
-                }
+            if (! $scheda->relationLoaded('anag')) {
+                $scheda->load('anag');
             }
 
             // Estrai email da anagrafica
-            if (method_exists($scheda, 'getAttribute')) {
-                /** @var mixed $anag */
-                $anag = $scheda->getAttribute('anag');
-                if (is_object($anag) && isset($anag->email) && is_string($anag->email)) {
-                    $email = trim($anag->email);
-                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        return $email;
-                    }
+            /** @var mixed $anag */
+            $anag = $scheda->getAttribute('anag');
+            if (is_object($anag) && isset($anag->email) && is_string($anag->email)) {
+                $email = trim($anag->email);
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    return $email;
                 }
             }
         }

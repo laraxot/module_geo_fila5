@@ -60,10 +60,6 @@ class UpdateRestiPondByValutatoreIdAction
                 ->select(['id', 'quota_effettiva'])
                 ->chunkById(200, function ($rows) use ($class, $delta, &$totalUpdated): void {
                     foreach ($rows as $row) {
-                        if (! $row instanceof Model) {
-                            continue;
-                        }
-
                         $quotaEffettiva = $row->getAttribute('quota_effettiva');
                         if (! is_numeric($quotaEffettiva)) {
                             continue;

@@ -22,20 +22,18 @@ class GetSentEmailListHtml
     {
         $html = '';
 
-        if (method_exists($record, 'myLogs')) {
-            $myLogsRelation = $record->myLogs();
-            if ($myLogsRelation instanceof Relation) {
-                $logsQuery = $myLogsRelation->where('act', 'sendMail');
-                if ($logsQuery instanceof Builder) {
-                    $logs = $logsQuery->get();
-                    if ($logs instanceof Collection) {
-                        foreach ($logs as $row) {
-                            if ($row instanceof Model && isset($row->updated_at)) {
-                                $updatedAt = $row->updated_at;
-                                $updatedAtStr = is_string($updatedAt) ? $updatedAt : (is_object($updatedAt) && method_exists($updatedAt, '__toString') ? (string) $updatedAt : '');
-                                if ($updatedAtStr !== '') {
-                                    $html .= '<br/>'.$updatedAtStr;
-                                }
+        $myLogsRelation = $record->myLogs();
+        if ($myLogsRelation instanceof Relation) {
+            $logsQuery = $myLogsRelation->where('act', 'sendMail');
+            if ($logsQuery instanceof Builder) {
+                $logs = $logsQuery->get();
+                if ($logs instanceof Collection) {
+                    foreach ($logs as $row) {
+                        if ($row instanceof Model && isset($row->updated_at)) {
+                            $updatedAt = $row->updated_at;
+                            $updatedAtStr = is_string($updatedAt) ? $updatedAt : (is_object($updatedAt) && method_exists($updatedAt, '__toString') ? (string) $updatedAt : '');
+                            if ($updatedAtStr !== '') {
+                                $html .= '<br/>'.$updatedAtStr;
                             }
                         }
                     }
