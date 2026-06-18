@@ -53,3 +53,13 @@ require_once __DIR__.'/phpstan-stubs/UserIdeHelperStubs.php';
 require_once __DIR__.'/phpstan-stubs/NotifyIdeHelperStubs.php';
 require_once __DIR__.'/phpstan-stubs/MediaIdeHelperStubs.php';
 require_once __DIR__.'/phpstan-stubs/TenantIdeHelperStubs.php';
+
+// Stub per Pest - previene che TestSuite::getInstance() venga chiamato durante l'autoload
+if (! function_exists('pest')) {
+    function pest() {
+        return new class {
+            public function extend(string $class) { return $this; }
+            public function in(...$paths) { return $this; }
+        };
+    }
+}

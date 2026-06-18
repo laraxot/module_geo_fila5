@@ -86,12 +86,7 @@ public function send(): void
     } catch (Exception $e) {
         $this->erroreMessaggio = $e->getMessage();
 
-        Notification::make()
-            ->title('Errore durante l\'accertamento')
-            ->body($e->getMessage())
-            ->danger()
-            ->persistent()
-            ->send();
+        $this->notifyError('Errore durante l\'accertamento', $e->getMessage());
     }
 }
 
@@ -225,12 +220,7 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
     $this->erroreMessaggio = $messaggio;
     $this->messaggioInfo   = '';
 
-    Notification::make()
-        ->title('Errore durante l\'accertamento')
-        ->body($messaggio)
-        ->danger()
-        ->persistent()
-        ->send();
+    $this->notifyError('Errore durante l\'accertamento', $messaggio);
 }
 
     private function notifySuccess(): void

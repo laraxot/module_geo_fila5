@@ -35,7 +35,7 @@ class JobBatchesTable extends XotBaseResourceTable
     public function getTableHeaderActions(): array
     {
         return [
-            Action::make('prune_batches')
+            'prune_batches' => Action::make('prune_batches')
                 ->requiresConfirmation()
                 ->color('danger')
                 ->action(static function (): void {

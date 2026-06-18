@@ -32,9 +32,9 @@ class ModulesTable extends XotBaseResourceTable
     public function getTableActions(): array
     {
         return [
-            ViewAction::make(),
-            EditAction::make(),
-            DeleteAction::make()->requiresConfirmation(),
+            'view' => ViewAction::make(),
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make()->requiresConfirmation(),
         ];
     }
 

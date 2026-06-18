@@ -11,7 +11,7 @@ use Modules\Rating\Enums\RuleEnum;
 use Modules\Rating\Models\BaseRating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Progressioni\Database\Factories\RatingFactory;
+use Modules\Rating\Database\Factories\RatingFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
 /**

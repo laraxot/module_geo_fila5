@@ -34,8 +34,8 @@ class RatingsTable extends BaseRatingsTable
     {
         /** @var array<string, Action|ActionGroup> $parentActions */
         $parentActions = parent::getTableHeaderActions();
-        /** @var array<string, string|int|bool|null>|null $tableFilters */
-        $tableFilters = $this->tableFilters ?? [];
+        /** @var array<string, string|int|bool|null> $tableFilters */
+        $tableFilters = (array) ($this->tableFilters ?? []);
         /** @var string|int|bool|null $annoRaw */
         $annoRaw = Arr::get($tableFilters, 'filter.anno');
         /** @var int|null $anno */

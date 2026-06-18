@@ -37,22 +37,22 @@ class DefaultActivityForm extends XotBaseResourceForm
                 ->inline()
                 ->inlineLabel(false)
                 ->live(),
-            Select::make('liquidazione_fasi')
+            'liquidazione_fasi' => Select::make('liquidazione_fasi')
                 ->options([
                     'Prima' => 'Prima fase',
                     'Seconda' => 'Seconda fase',
                     'Entrambe' => 'Entrambe',
                 ])
                 ->hidden(fn (Get $get): bool => ! $get('appartiene_a_liquidazione_a_fasi')),
-            TextInput::make('quota_percentuale')
+            'quota_percentuale' => TextInput::make('quota_percentuale')
                 ->required()
                 ->suffix('%'),
-            TextInput::make('importo')
+            'importo' => TextInput::make('importo')
                 ->required()
                 ->suffix('€')
                 ->disabled()
                 ->placeholder('DA ASSEGNARE'),
-            TextInput::make('anno_competenza')
+            'anno_competenza' => TextInput::make('anno_competenza')
                 ->required()
                 ->maxLength(4),
         ];
