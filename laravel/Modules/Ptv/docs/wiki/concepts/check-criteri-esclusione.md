@@ -12,7 +12,7 @@ related:
   - ./getter-by-year-naming.md
   - ./phpstan-scheda-actions.md
   - ./scheda-contract-inheritance.md
-  - ../../../../../../docs/wiki/rules/domain-method-naming-no-persist.md
+  - ../../../../../../docs/wiki/patterns/domain-method-naming-no-persist.md
 ---
 
 # Check criteri esclusione

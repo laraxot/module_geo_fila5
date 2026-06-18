@@ -18,6 +18,8 @@ discussions:
 
 ## Log Entries
 
+[2026-06-18 16:00:00 UTC] [PTV] Trova esclusi / Check: rimosso `persist*`; regola [`patterns/domain-method-naming-no-persist.md`](patterns/domain-method-naming-no-persist.md); wiki Ptv [`check-criteri-esclusione`](../../laravel/Modules/Ptv/docs/wiki/concepts/check-criteri-esclusione.md). GH: `bashscripts/ai/gh-trova-esclusi-session-audit.sh` — **pending** `gh auth login`.
+
 [2026-06-18 15:00:00 UTC] [GITHUB-PENDING] Issue/discussion Sigma FunctionExtra: script `bashscripts/ai/gh-sigma-trova-esclusi-audit.sh` → `provtv/module_sigma_fila5`. Bloccato: `gh auth login` non eseguito su host agente. Body: `docs/chat/github-issue-sigma-function-extra-trova-esclusi-body.md`.
 
 [2026-06-18 14:00:00 UTC] [PATTERN] Bugfix discipline: business logic prima del tipo — pattern [`patterns/bugfix-business-logic-before-type.md`](patterns/bugfix-business-logic-before-type.md), memoria [`second-brain/bugfix-business-logic-before-type.md`](second-brain/bugfix-business-logic-before-type.md). Caso `FunctionExtra::applyQua00fProproFilters` (Sigma): percorsi A–F documentati; fix `Builder|Relation` coerente con relazione `qua00f`. Wiki modulo: Sigma, Ptv (cascata Trova esclusi), Progressioni (stub UI).

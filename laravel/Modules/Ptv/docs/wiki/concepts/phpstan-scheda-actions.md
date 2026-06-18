@@ -70,7 +70,7 @@ Vedi [contract-interface-stacking.md](../../../../../docs/wiki/rules/contract-in
 | `UpdateRestiPondByValutatoreIdAction` | Aggiorna resti ponderati per valutatore |
 | `CheckValutatoreAction` | Validazione coerenza valutatore su scheda |
 | `ListaAszTipCodEsclusoSubito` | Criteri esclusione ASZ — **`$scheda->asz()->ofRangeDate()`** (mai `Asz00k1::query()`) |
-| `Check` | Orchestratore criteri — primo argomento **`SchedaContract`**; esito via **`persistCriteriEsclusioneEsito()`** (verifica `$fillable` per `ha_diritto` + `motivo`) |
+| `Check` | Orchestratore criteri — `SchedaContract`; fail-fast dispatch; `update()` dopo verifica `$fillable` (`ha_diritto`, `motivo`) — **no** `persist*` su model |
 
 Action in `CriteriEsclusione/`: type-hint scheda sempre `SchedaContract` (implementazioni concrete estendono `BaseScheda`).
 

@@ -316,6 +316,10 @@ This allows easy migration:
 <x-nav-link href="/home" :active="request()->is('/')">Home</x-nav-link>
 ```
 
+## PHP dominio (cross-repo)
+
+Convenzioni backend condivise mono-repo (non Blade): vietato `persist*` su model dominio; action scheda su `SchedaContract`; getter `get*ByYear`. Vedi [domain-method-naming-no-persist](../../../../docs/wiki/patterns/domain-method-naming-no-persist.md) e [check-criteri-esclusione](../../../Modules/Ptv/docs/wiki/concepts/check-criteri-esclusione.md).
+
 ## References
 
 - [Laravel Blade Documentation](https://laravel.com/docs/blade)

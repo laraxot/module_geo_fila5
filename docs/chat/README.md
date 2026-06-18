@@ -22,7 +22,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - [handoff-phpstan-random-scan-2026-06-15.md](handoff-phpstan-random-scan-2026-06-15.md) — scan random + swarm, moduli esclusi Pdnd/Incentivi
 - [handoff-job-lang-merge-phpstan-confidence.md](handoff-job-lang-merge-phpstan-confidence.md) — ripartenza agente: Job PHPStan OK, Lang 8 errori, merge sweep
 - [handoff-table-layout-toggle-not-working.md](handoff-table-layout-toggle-not-working.md) — toggle lista/griglia: sync layoutView + issue GitHub
-- [handoff-function-extra-relation-typeerror.md](handoff-function-extra-relation-typeerror.md) — Trova esclusi: `Builder|Relation` + `GgFilterData`; script `bashscripts/ai/gh-sigma-trova-esclusi-audit.sh`
+- [handoff-trova-esclusi-check-sessione.md](handoff-trova-esclusi-check-sessione.md) — Check, fillable, no persist*, script GH sessione
 - [analisi-trova-esclusi-criteri-refactor.md](analisi-trova-esclusi-criteri-refactor.md) — refactor load criteri su BaseScheda vs CriteriOption (analisi + contesto)
 - [github-issue-ptv-criteri-year-load-refactor-body.md](github-issue-ptv-criteri-year-load-refactor-body.md) — body issue `module_ptv_fila5`
 - [module-theme-github-issues-manifest.md](module-theme-github-issues-manifest.md) — elenco issue meta/ridondanza su repo modulo/tema (batch 2026-05-26)

@@ -16,11 +16,11 @@ module: "Ptv"
 - Fix owner Sigma: [function-extra-relation-query-pattern](../../../../Sigma/docs/wiki/concepts/function-extra-relation-query-pattern.md)
 - Pattern agente: [bugfix-business-logic-before-type](../../../../../../docs/wiki/patterns/bugfix-business-logic-before-type.md)
 
-### 2026-06-18 — persistCriteriEsclusioneEsito (fillable ha_diritto/motivo)
+### 2026-06-18 — Check: fillable + no persist*
 
-- `Check` non fa più `update()` diretto: delega a `SchedaContract::persistCriteriEsclusioneEsito()` con verifica `$fillable`.
-- `Progressioni\Models\Scheda`: aggiunti `ha_diritto`, `motivo` a `$fillable`.
-- Test: `PersistCriteriEsclusioneEsitoTest`.
+- Rimosso `persistCriteriEsclusioneEsito`; `Check::assertAttributesAreFillable()` + `update()`.
+- Regola agente: [domain-method-naming-no-persist](../../../../../../docs/wiki/patterns/domain-method-naming-no-persist.md)
+- Wiki: [check-criteri-esclusione](./concepts/check-criteri-esclusione.md)
 
 ### 2026-06-18 — Check fail-fast (no continue silenziosi)
 

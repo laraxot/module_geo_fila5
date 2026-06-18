@@ -2,7 +2,7 @@
 
 ## Stato
 
-**Implementato** (2026-06-18): `SchedaContract::getCriteriEsclusioneByYear()` + `getCriteriOptionsParsedByYear()`; action snellita. Test: `Modules/Ptv/tests/Unit/Models/BaseSchedaCriteriByYearTest.php`. Convenzione: [getter-by-year-naming](../../laravel/Modules/Ptv/docs/wiki/concepts/getter-by-year-naming.md).
+**Implementato** (2026-06-18): `getCriteriEsclusioneByYear` / `getCriteriOptionsParsedByYear`; `Check` con `SchedaContract`, fail-fast, `assertAttributesAreFillable` + `update()` (no `persist*`). Test: `BaseSchedaCriteriByYearTest`, `CriteriEsclusioneEnumActionRegistryTest`.
 
 ## Problema
 
