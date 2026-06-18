@@ -6,8 +6,6 @@ namespace Modules\UI\Livewire\Components\Map;
 
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Modules\Geo\Services\GeocodingService;
-use Modules\Geo\Services\MapService;
 use Webmozart\Assert\Assert;
 
 /**
@@ -136,10 +134,24 @@ final class InteractiveMap extends Component
         $this->isLoading = true;
 
         try {
-            $mapService = app(MapService::class);
+            if (! class_exists('Modules\\Geo\\Services\\MapService')) {
+                $this->markers = [];
+                $this->stats = [];
+
+                return;
+            }
+
+            /** @var object $mapService */
+            $mapService = app('Modules\\Geo\\Services\\MapService');
             $filters = $this->getMapFilters();
-            $this->markers = $mapService->getMarkers($filters);
-            $this->stats = $mapService->getMapStats($filters);
+            /** @var array<int, array<string, mixed>> $markers */
+            /** @phpstan-ignore-next-line method.notFound */
+            $markers = $mapService->getMarkers($filters);
+            $this->markers = $markers;
+            /** @var array<string, mixed> $stats */
+            /** @phpstan-ignore-next-line method.notFound */
+            $stats = $mapService->getMapStats($filters);
+            $this->stats = $stats;
         } catch (\Exception $e) {
             $this->addError('map', 'Errore nel caricamento dei marker: '.$e->getMessage());
             $this->markers = [];
@@ -163,7 +175,16 @@ final class InteractiveMap extends Component
     public function exportData(string $format = 'json'): void
     {
         try {
-            $mapService = app(MapService::class);
+            if (! class_exists('Modules\\Geo\\Services\\MapService')) {
+                $this->addError('export', 'Modulo Geo non disponibile');
+
+                return;
+            }
+
+            /** @var object $mapService */
+            $mapService = app('Modules\\Geo\\Services\\MapService');
+            /** @var string $data */
+            /** @phpstan-ignore-next-line method.notFound */
             $data = $mapService->exportData($this->getMapFilters(), $format);
 
             $filename = 'map_export_'.now()->format('Y_m_d_H_i_s').'.'.$format;
@@ -193,14 +214,24 @@ final class InteractiveMap extends Component
         }
 
         try {
-            $geocodingService = app(GeocodingService::class);
+            if (! class_exists('Modules\\Geo\\Services\\GeocodingService')) {
+                $this->addError('search', 'Modulo Geo non disponibile');
+
+                return;
+            }
+
+            /** @var object $geocodingService */
+            $geocodingService = app('Modules\\Geo\\Services\\GeocodingService');
+            /** @phpstan-ignore-next-line method.notFound */
             $result = $geocodingService->geocodeAddress($this->searchQuery);
             Assert::isArray($result, 'Geocoding result must be array');
 
             $address = $result['address'] ?? '';
             Assert::string($address, 'Address must be string');
 
-            $this->center = [$result['latitude'], $result['longitude']];
+            $latitude = (float) ($result['latitude'] ?? 0);
+            $longitude = (float) ($result['longitude'] ?? 0);
+            $this->center = [$latitude, $longitude];
             $this->zoom = 15;
 
             $this->dispatch('updateMapCenter', $this->center, $this->zoom);
@@ -226,9 +257,15 @@ final class InteractiveMap extends Component
         }
 
         try {
-            $geocodingService = app(GeocodingService::class);
+            if (! class_exists('Modules\\Geo\\Services\\GeocodingService')) {
+                return [];
+            }
+
+            /** @var object $geocodingService */
+            $geocodingService = app('Modules\\Geo\\Services\\GeocodingService');
 
             /** @var array<int, array<string, mixed>> $suggestions */
+            /** @phpstan-ignore-next-line method.notFound */
             $suggestions = $geocodingService->getSuggestions($this->searchQuery);
 
             return $suggestions;

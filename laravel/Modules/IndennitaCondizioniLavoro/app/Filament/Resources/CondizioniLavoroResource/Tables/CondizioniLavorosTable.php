@@ -29,17 +29,14 @@ class CondizioniLavorosTable extends XotBaseResourceTable
                 ->label('Pdf ')
                 ->icon('heroicon-s-document')
                 ->action(function (): Response {
-                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-
-                    return app(MakePdf::class)->execute($tableFilters);
+                    return app(MakePdf::class)->execute([]);
                 }),
             'replicate' => Action::make('replicate')
                 ->label('')
                 ->icon('heroicon-o-clipboard-document-list')
                 ->tooltip('ricopia da quadrimentre precendente')
                 ->action(function (): void {
-                    $tableFilters = is_array($this->tableFilters) ? $this->tableFilters : [];
-                    app(ReplicateIndennita::class)->execute($tableFilters);
+                    app(ReplicateIndennita::class)->execute([]);
                 }),
         ];
     }

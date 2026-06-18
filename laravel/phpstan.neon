@@ -13,11 +13,10 @@ parameters:
         #- Themes
 
     level: max
-    #parallel:
-        # Use single process only - no parallel workers to avoid 512M memory exhaustion
-        # maximumNumberOfProcesses: 0
-        # Parallel processing disabled completely to avoid memory issues with child processes
-        # If still getting memory errors, exclude more modules or run individually
+    parallel:
+        maximumNumberOfProcesses: 1
+        minimumNumberOfJobsPerProcess: 1000000
+        jobSize: 1000000
 
     ignoreErrors:
         # - '#Static call to instance method Nwidart#'
