@@ -87,7 +87,7 @@ class Region extends BaseModel
                 continue;
             }
 
-            if ($id === null || $name === null) {
+            if (null === $id || null === $name) {
                 continue;
             }
 
