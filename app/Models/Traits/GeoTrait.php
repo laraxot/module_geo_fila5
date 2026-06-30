@@ -112,10 +112,6 @@ trait GeoTrait
     /** @phpstan-ignore-next-line */
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> e3f0965 (.)
         $sql = "ST_Contains(
         ST_GeomFromText(
        concat('POLYGON((',

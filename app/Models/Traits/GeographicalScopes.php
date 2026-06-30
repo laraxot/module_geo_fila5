@@ -11,10 +11,13 @@ trait GeographicalScopes
 {
     /**
      * Scope per calcolare la distanza tra due punti.
+<<<<<<< HEAD
      * <<<<<<< HEAD.
      *
      * =======
      * >>>>>>> e3f0965 (.)
+=======
+>>>>>>> 225c1bf (delete .claude-flow/)
      *
      * @phpstan-ignore-next-line
      */
@@ -25,10 +28,13 @@ trait GeographicalScopes
 
     /**
      * Scope per ordinare i risultati per distanza.
+<<<<<<< HEAD
      * <<<<<<< HEAD.
      *
      * =======
      * >>>>>>> e3f0965 (.)
+=======
+>>>>>>> 225c1bf (delete .claude-flow/)
      *
      * @phpstan-ignore-next-line
      */
