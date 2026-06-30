@@ -11,7 +11,10 @@ trait GeographicalScopes
 {
     /**
      * Scope per calcolare la distanza tra due punti.
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e3f0965 (.)
      * @phpstan-ignore-next-line
      */
     public function scopeWithDistance(Builder $query, float $latitude, float $longitude): Builder
@@ -21,7 +24,10 @@ trait GeographicalScopes
 
     /**
      * Scope per ordinare i risultati per distanza.
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e3f0965 (.)
      * @phpstan-ignore-next-line
      */
     public function scopeOrderByDistance(Builder $query, float $latitude, float $longitude): Builder

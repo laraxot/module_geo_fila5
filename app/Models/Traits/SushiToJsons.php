@@ -12,6 +12,9 @@ use function Safe\json_encode;
 
 use Sushi\Sushi;
 
+use function Safe\json_decode;
+use function Safe\json_encode;
+
 trait SushiToJsons
 {
     use Sushi;
@@ -95,7 +98,11 @@ trait SushiToJsons
         if (! is_array($itemData)) {
             return false;
         }
+<<<<<<< HEAD
         /* @var array<string, mixed> $itemData */
+=======
+        /** @var array<string, mixed> $itemData */
+>>>>>>> e3f0965 (.)
         $data[$index] = array_merge($itemData, $attributes);
 
         return $this->saveToJson($data);
@@ -171,7 +178,11 @@ trait SushiToJsons
 
         foreach ($data as $index => $item) {
             if (is_array($item) && array_key_exists('id', $item) && $item['id'] === $id) {
+<<<<<<< HEAD
                 /* @var int $index */
+=======
+                /** @var int $index */
+>>>>>>> e3f0965 (.)
                 return $index;
             }
         }
