@@ -6,10 +6,11 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-use Sushi\Sushi;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
+
+use Sushi\Sushi;
 
 /** @phpstan-ignore trait.unused */
 trait SushiToJsons
@@ -95,7 +96,7 @@ trait SushiToJsons
         if (! is_array($itemData)) {
             return false;
         }
-        /** @var array<string, mixed> $itemData */
+        /* @var array<string, mixed> $itemData */
         $data[$index] = array_merge($itemData, $attributes);
 
         return $this->saveToJson($data);
@@ -171,7 +172,7 @@ trait SushiToJsons
 
         foreach ($data as $index => $item) {
             if (is_array($item) && array_key_exists('id', $item) && $item['id'] === $id) {
-                /** @var int $index */
+                /* @var int $index */
                 return $index;
             }
         }

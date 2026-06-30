@@ -11,9 +11,10 @@ use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
+
+use Webmozart\Assert\Assert;
 
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Photon.
@@ -27,7 +28,8 @@ readonly class GetAddressFromPhotonAction
 
     public function __construct(
         private Client $client,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Photon.

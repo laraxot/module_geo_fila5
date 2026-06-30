@@ -87,7 +87,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-     * @param  array<mixed>  $response
+     * @param array<mixed> $response
      */
     private function parseResponse(array $response): MapboxMapData
     {

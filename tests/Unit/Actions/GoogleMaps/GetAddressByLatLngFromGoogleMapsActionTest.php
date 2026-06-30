@@ -19,7 +19,7 @@ use function Safe\json_encode;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -35,7 +35,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception for invalid latitude below -90', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -52,7 +52,7 @@ it('throws exception for invalid latitude below -90', function (): void {
 });
 
 it('throws exception for invalid latitude above 90', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -69,7 +69,7 @@ it('throws exception for invalid latitude above 90', function (): void {
 });
 
 it('throws exception for invalid longitude below -180', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -86,7 +86,7 @@ it('throws exception for invalid longitude below -180', function (): void {
 });
 
 it('throws exception for invalid longitude above 180', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -103,7 +103,7 @@ it('throws exception for invalid longitude above 180', function (): void {
 });
 
 it('throws exception for guzzle exception', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -121,7 +121,7 @@ it('throws exception for guzzle exception', function (): void {
 });
 
 it('throws exception when no results found', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -142,7 +142,7 @@ it('throws exception when no results found', function (): void {
 });
 
 it('throws exception for invalid response status', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -163,7 +163,7 @@ it('throws exception for invalid response status', function (): void {
 });
 
 it('returns location data for valid coordinates', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -192,7 +192,7 @@ it('returns location data for valid coordinates', function (): void {
 });
 
 it('handles boundary latitude values', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
@@ -219,7 +219,7 @@ it('handles boundary latitude values', function (): void {
 });
 
 it('handles boundary longitude values', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);

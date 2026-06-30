@@ -8,9 +8,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Location\LocationData;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
+
+use Webmozart\Assert\Assert;
 
 /**
  * Action per ottenere le coordinate da un indirizzo tramite Google Maps.
@@ -24,13 +25,14 @@ readonly class GetCoordinatesFromGoogleMapsAction
 
     public function __construct(
         private Client $client,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene le coordinate da un indirizzo.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(string $address): LocationData
     {
@@ -100,7 +102,7 @@ readonly class GetCoordinatesFromGoogleMapsAction
          * } $data */
         $data = json_decode($response, true);
 
-        if ($data['status'] !== 'OK' || empty($data['results'][0]['geometry']['location'])) {
+        if ('OK' !== $data['status'] || empty($data['results'][0]['geometry']['location'])) {
             throw new \RuntimeException('No coordinates found for address');
         }
 

@@ -11,7 +11,7 @@ use Modules\Geo\Models\Traits\HasPlaceTrait;
 use Modules\Geo\Traits\HasAddresses;
 
 /**
- * @internal PHPStan probes — tests/ excluded from scan.
+ * @internal PHPStan probes — tests/ excluded from scan
  *
  * @property int|string|null $id
  * @property mixed|null      $address
