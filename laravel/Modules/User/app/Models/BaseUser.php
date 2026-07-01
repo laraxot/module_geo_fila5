@@ -40,6 +40,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 use Parental\HasChildren;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Filament\Models\Contracts\FilamentUser;
 
 /**
  * Base User Model.
@@ -127,7 +128,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  *
  * @mixin \Eloquent
  */
-abstract class BaseUser extends Authenticatable implements HasAuthentications, HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
+abstract class BaseUser extends Authenticatable implements FilamentUser, HasAuthentications, HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
 {
     use HasApiTokens;
     use HasAuthenticationLogTrait;
@@ -234,12 +235,14 @@ abstract class BaseUser extends Authenticatable implements HasAuthentications, H
         return (string) ($this->getAttribute('provider') ?? config('auth.guards.api.provider', 'users'));
     }
 
+    /* 
     public function canAccessFilament(?Panel $panel = null): bool
     {
+         dddx($panel->getId());
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
     }
-
+    */ 
     /**
      * Get the user's name for Filament.
      */
@@ -312,6 +315,7 @@ abstract class BaseUser extends Authenticatable implements HasAuthentications, H
 
     public function canAccessPanel(Panel $panel): bool
     {
+        
         // $panel->default('admin');
         if ('admin' !== $panel->getId()) {
             $role = $panel->getId();

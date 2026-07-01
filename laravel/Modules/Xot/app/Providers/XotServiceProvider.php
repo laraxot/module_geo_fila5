@@ -10,25 +10,31 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TimePicker;
 use Filament\Infolists\Components\Entry;
+use Filament\Panel;
 use Filament\Support\Components\Component;
 use Filament\Support\Facades\FilamentColor;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\BaseFilter;
 use Illuminate\Database\Events\MigrationsEnded;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 use Modules\Xot\Console\Commands\GenerateFilamentResources;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Mixins\PanelMixin;
 use Modules\Xot\Support\PaDesignColors;
 use Modules\Xot\View\Composers\XotComposer;
+use Nwidart\Modules\Facades\Module;
+use Nwidart\Modules\Module as NwidartModule;
+use Webmozart\Assert\Assert;
 
 use function Safe\realpath;
-
-use Webmozart\Assert\Assert;
 
 /**
  * Class XotServiceProvider.
@@ -54,6 +60,7 @@ class XotServiceProvider extends XotBaseServiceProvider
         $this->registerPaFilamentColors();
         $this->registerXotLivewireComponents();
         $this->registerProviders();
+        $this->registerFilamentPanelMacros();
     }
 
     #[\Override]
@@ -65,6 +72,13 @@ class XotServiceProvider extends XotBaseServiceProvider
         // $this->registerExceptionHandlersRepository();
         // $this->extendExceptionHandler();
         $this->registerCommands();
+
+       
+    }
+    
+    public function registerFilamentPanelMacros(): void
+    {
+        Panel::mixin(new \Modules\Xot\Mixins\PanelMixin());
     }
 
     public function registerProviders(): void

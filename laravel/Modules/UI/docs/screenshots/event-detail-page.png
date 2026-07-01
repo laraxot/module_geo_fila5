@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c62a2eced7aa566efbb6f4b76a93497ff21031bc54e749bda9ece3dbe4a81801
-size 216
+---
+module: theme
+topic: event-detail-page
+canonical: ../../../../Themes/docs/shared-components/event-detail-page.png
+---
+
+See canonical documentation: ../../../../Themes/docs/shared-components/event-detail-page.png

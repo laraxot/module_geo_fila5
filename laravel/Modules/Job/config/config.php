@@ -2,4 +2,7 @@
 
 declare(strict_types=1);
 
-return [];
+return [
+    'name' => 'Job',
+    'icon' => 'heroicon-o-briefcase',
+];
