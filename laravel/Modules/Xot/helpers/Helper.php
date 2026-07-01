@@ -296,7 +296,11 @@ if (! function_exists('params2ContainerItem')) {
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
+<<<<<<< HEAD
             if (! empty($matches)) {
+=======
+            if (isset($matches[1], $matches[2])) {
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
                 $sk = $matches[1];
                 $sv = $matches[2];
                 ${$sk}[$sv] = $v;

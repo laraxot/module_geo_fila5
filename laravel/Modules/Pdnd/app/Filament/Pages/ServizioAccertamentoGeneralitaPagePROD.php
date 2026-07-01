@@ -91,7 +91,6 @@ public function send(): void
 }
 
 
-
     // ====================== FLUSSO C030 → C015 ======================
 private function accertamentoGeneralita(string $codiceFiscale): array
 {
@@ -166,7 +165,6 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
 
     return is_string($idAnprDiretto) && $idAnprDiretto !== '' ? $idAnprDiretto : null;
 }
-
 
 
     private function createC015Service(): C015Service

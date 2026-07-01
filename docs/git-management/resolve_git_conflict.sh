@@ -61,23 +61,14 @@ You are an expert PHP developer tasked with fixing and optimizing the following 
 2. Remove git conflict markers (<<<<<<<, =======, >>>>>>>) if present
 
 
-
 2. Remove git conflict markers (<<<<<<<, =======, >>>>>>>) if present
 2. Remove git conflict markers (<<<<<<<, =======, >>>>>>>) if present
-
-
-
-
 
 
 2. Remove git conflict markers if present
 
 
-
-
 2. Remove git conflict markers if present
-
-
 
 
 2. Remove git conflict markers if present

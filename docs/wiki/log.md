@@ -4,7 +4,7 @@ module: "ptvx-project"
 type: log
 tags: [wiki, second-brain, log, qmd]
 created: 2026-05-26
-updated: 2026-06-18
+updated: 2026-07-01
 qmd: "ptvx project wiki activity log second brain phpstan modules"
 issues:
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
@@ -17,6 +17,8 @@ discussions:
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
 ## Log Entries
+
+[2026-07-01 15:50:00 UTC] [GIT] Sweep marcatori merge: 3 file residui in `module_xot_fila5` (`architecture-rules.md`, `conflict-resolution-progress.md`, `conflict-resolution-report.md`). Path docs → `../../Xot/docs/` (PascalCase modulo). Verifica globale `rg '^<<<<<<< ' laravel/Modules docs` → **0**. Progress log Xot aggiornato; how-to [`git-merge-marker-sweep`](how-to/git-merge-marker-sweep.md) esteso con sweep submodule.
 
 [2026-07-01 13:30:00 UTC] [PHPSTAN] Scan 16 moduli (esclusi Incentivi/Pdnd): 11 già OK, 5 con errori fixati. Media (2) `new.nonObject` → cast class-string. Ptv (4) `argument.type` SchedaContract/User null → instanceof guard + null-safe. Sigma (37) `generics.lessTypes` + `argument.type` Relation → `HasMany<*,*>` + `*,*`. UI (13) `class.notFound` Geo (mancante) → `.old` rename dead InteractiveMap. User (1) `new.nonObject` → return class-string. Xot (3) view-string + isset ridondante → rimossi. Tutti 16/16 OK lvl max. Pattern phpstan-relation-generics-wildcard.md. Aggiornato journey-summary.
 
@@ -398,4 +400,8 @@ discussions:
 
 [2026-06-18] [GATE OK] User PHPStan — primo `./vendor/bin/phpstan analyse Modules/User` OOM 512M; batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` OK; run finale esatto `Modules/User` OK 635/635. Nota locale: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.
 
+<<<<<<< HEAD
 [2026-07-06] [RULE] Infrastructural→Dominio dipendenza vietata — UI non deve importare da GEO (o altro modulo dominio). InteractiveMap.php (UI) rinominato in .old perché apparteneva a GEO. Regola aggiunta a `laravel/Modules/UI/docs/dependencies.md`.
+=======
+[2026-07-01] [FIX] Git collision sweep — rimossi marker residui in Xot PHP (`XotServiceProvider`, `Helper`) e docs Job/Notify/Tenant/User; aggiornato report `docs/wiki/sources/git-collision-docs-cleanup-report.md`; verifica `git grep` marker OK.
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)

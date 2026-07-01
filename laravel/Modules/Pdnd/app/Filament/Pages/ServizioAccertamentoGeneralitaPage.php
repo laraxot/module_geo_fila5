@@ -81,7 +81,6 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
     }
 
 
-
     // ====================== FLUSSO C030 → C015 ======================
     private function accertamentoGeneralita(string $codiceFiscale): array
     {

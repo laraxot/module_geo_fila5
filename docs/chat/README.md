@@ -24,6 +24,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - [handoff-job-lang-merge-phpstan-confidence.md](handoff-job-lang-merge-phpstan-confidence.md) — ripartenza agente: Job PHPStan OK, Lang 8 errori, merge sweep
 - [handoff-table-layout-toggle-not-working.md](handoff-table-layout-toggle-not-working.md) — toggle lista/griglia: sync layoutView + issue GitHub
 - [handoff-trova-esclusi-check-sessione.md](handoff-trova-esclusi-check-sessione.md) — Check, fillable, no persist*, script GH sessione
+- [handoff-xot-git-conflicts-phpstan.md](handoff-xot-git-conflicts-phpstan.md) — sweep marker git modulo Xot + PHPStan 0 (2026-07-01)
 - [analisi-trova-esclusi-criteri-refactor.md](analisi-trova-esclusi-criteri-refactor.md) — refactor load criteri su BaseScheda vs CriteriOption (analisi + contesto)
 - [github-issue-ptv-criteri-year-load-refactor-body.md](github-issue-ptv-criteri-year-load-refactor-body.md) — body issue `module_ptv_fila5`
 - [module-theme-github-issues-manifest.md](module-theme-github-issues-manifest.md) — elenco issue meta/ridondanza su repo modulo/tema (batch 2026-05-26)

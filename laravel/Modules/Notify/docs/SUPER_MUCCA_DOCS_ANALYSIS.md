@@ -204,5 +204,3 @@ touch laravel/Modules/Seo/docs/README.md
 *"Non avrai altro path all'infuori del relativo"* - Commandamento Laraxot
 
 
-
-

@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Mixins;
 
+<<<<<<< HEAD
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Nwidart\Modules\Facades\Module;
+=======
+use Closure;
+use Filament\Panel;
+use Modules\Xot\Support\PanelModuleResolver;
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
 use Nwidart\Modules\Module as NwidartModule;
 use Webmozart\Assert\Assert;
 
 /**
+<<<<<<< HEAD
  * @method string               getId()
  * @method string               getName()
  * @method NwidartModule        getModule()
@@ -89,10 +96,32 @@ class PanelMixin
             Assert::string($name, '['.__LINE__.']['.class_basename($this).']');
 
             return $name;
+=======
+ * Macro Filament Panel → modulo nwidart (delega a PanelModuleResolver).
+ */
+class PanelMixin
+{
+    public function getName(): Closure
+    {
+        return function (): string {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::moduleName($this);
+        };
+    }
+
+    public function getModule(): Closure
+    {
+        return function (): NwidartModule {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::module($this);
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
         };
     }
 
     /**
+<<<<<<< HEAD
      * @return \Closure
      */
     public function getNavigationIcon()
@@ -103,16 +132,61 @@ class PanelMixin
             Assert::string($icon, '['.__LINE__.']['.class_basename($this).']');
 
             return $icon;
+=======
+     * @return Closure(): array<string, mixed>
+     */
+    public function getConfig(): Closure
+    {
+        return function (): array {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::config($this);
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
         };
     }
 
     /**
+<<<<<<< HEAD
      * @return \Closure
      */
     public function getNavigationSort()
+=======
+     * @return Closure(): array<string, mixed>
+     */
+    public function getModuleConfig(): Closure
+    {
+        return function (): array {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::moduleConfig($this);
+        };
+    }
+
+    public function getNavigationLabel(): Closure
+    {
+        return function (): string {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::navigationLabel($this);
+        };
+    }
+
+    public function getNavigationIcon(): Closure
+    {
+        return function (): string {
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::navigationIcon($this);
+        };
+    }
+
+    public function getNavigationSort(): Closure
+>>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
     {
         return function (): int {
-            return 0;
+            Assert::isInstanceOf($this, Panel::class);
+
+            return PanelModuleResolver::navigationSort($this);
         };
     }
 }

@@ -1,10 +1,24 @@
 # Git Conflict Inventory
 
-- Date: 2026-04-28
+- Date: 2026-07-01 (sweep completato)
 - Owner: Modules/Xot
-- Files with conflict markers: 66
+- Files with conflict markers (storico 2026-04-28): 66
+- Stato sweep `base_ptvx_fila5`: **0 marker** in tree (verificato `grep -rl '^<<<<<<< '`)
 
-## Files
+## Sweep 2026-07-01
+
+| Area | File | Risoluzione |
+|------|------|-------------|
+| SVG | 56× `public_html/images/*.svg` | Pointer Git LFS (incoming) |
+| PHP test | `FixStructureTest.pest.php`, `GenerateDbDocumentationCommandTest.pest.php` | HEAD valido, rimossa duplicazione corrotta |
+| Lang | `lang/it/test.php` | Struttura espansa + campi `alpha`/`beta` |
+| Provider | `XotServiceProvider`, `PanelMixin`, `PanelModuleResolver` | Mixin registrato, delega resolver |
+| Config | `bmad/config.yaml`, `.gitignore` | Merge manuale |
+| Docs | `docs/git/logs/conflict-resolution-*.md`, `bashscripts/docs/architecture-rules.md` | Marker rimossi, link relativi |
+
+Canon procedura: [`../../../../docs/wiki/how-to/git-merge-marker-sweep.md`](../../../../docs/wiki/how-to/git-merge-marker-sweep.md)
+
+## Files (inventario storico 2026-04-28)
 
 - docs/ai-prompt-fundamental.md
 - docs/base-model.md
