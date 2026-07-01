@@ -14,7 +14,9 @@ parameters:
 
     level: max
     parallel:
-        maximumNumberOfProcesses: 1
+        jobSize: 50
+        maximumNumberOfProcesses: 2
+        minimumNumberOfJobsPerProcess: 1
 
     ignoreErrors:
         # - '#Static call to instance method Nwidart#'
@@ -35,6 +37,7 @@ parameters:
         - ./*/routes/*
         - ./*/tools/*
         - ./*/workbench/*
+        - ./*/extras/*
 
         - ./*/vendor/*
         - ./*/tests/*
