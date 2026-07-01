@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Geo\Models\Address;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
 class AddressSeeder extends Seeder
 {
     public function run(): void
     {
+        xotSeedModelOnce(Address::class);
     }
 }

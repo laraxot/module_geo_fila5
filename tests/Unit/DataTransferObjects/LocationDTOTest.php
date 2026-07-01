@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\DataTransferObjects;
 
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\DataTransferObjects\LocationDTO;
 use PHPUnit\Framework\Assert;
 

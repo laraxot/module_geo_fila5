@@ -14,14 +14,14 @@ use function Safe\json_encode;
 
 final class ComuneTest extends TestCase
 {
-    /** @var array<int, array<string, mixed>> */
-    public array $testData = [];
+    /** @var list<array<string, mixed>> */
+    private array $comuneFixtureRows = [];
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->testData = [
+        $this->comuneFixtureRows = [
             [
                 'id' => 1,
                 'regione' => 'Lombardia',
@@ -48,7 +48,7 @@ final class ComuneTest extends TestCase
 
         File::put(
             base_path('database/content/comuni.json'),
-            json_encode($this->testData, JSON_PRETTY_PRINT)
+            json_encode($this->comuneFixtureRows, JSON_PRETTY_PRINT)
         );
     }
 
@@ -59,7 +59,7 @@ final class ComuneTest extends TestCase
         parent::tearDown();
     }
 
-    public function testItCanLoadComuniFromJson(): void
+    public function test_it_can_load_comuni_from_json(): void
     {
         $comuni = Comune::all();
 
@@ -72,7 +72,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Sesto San Giovanni', $last->nome);
     }
 
-    public function testItCanFilterComuniByRegion(): void
+    public function test_it_can_filter_comuni_by_region(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byRegion('Lombardia')->get();
@@ -89,7 +89,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Lombardia', $last->regione);
     }
 
-    public function testItCanFilterComuniByProvince(): void
+    public function test_it_can_filter_comuni_by_province(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byProvince('Milano')->get();
@@ -106,7 +106,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Milano', $last->provincia);
     }
 
-    public function testItCanFilterComuniByCap(): void
+    public function test_it_can_filter_comuni_by_cap(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byCap('20100')->get();
@@ -119,7 +119,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20100', $first->cap);
     }
 
-    public function testItCanFilterComuniByName(): void
+    public function test_it_can_filter_comuni_by_name(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byName('Milano')->get();
@@ -132,7 +132,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Milano', $first->nome);
     }
 
-    public function testItCanFilterComuniByExactName(): void
+    public function test_it_can_filter_comuni_by_exact_name(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byExactName('Milano')->get();
@@ -145,7 +145,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Milano', $first->nome);
     }
 
-    public function testItCanFilterComuniByNameAndProvince(): void
+    public function test_it_can_filter_comuni_by_name_and_province(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameAndProvince('Milano', 'Milano')->get();
@@ -160,7 +160,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Milano', $first->provincia);
     }
 
-    public function testItCanFilterComuniByNameAndRegion(): void
+    public function test_it_can_filter_comuni_by_name_and_region(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameAndRegion('Milano', 'Lombardia')->get();
@@ -175,7 +175,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Lombardia', $first->regione);
     }
 
-    public function testItCanFilterComuniByNameProvinceAndRegion(): void
+    public function test_it_can_filter_comuni_by_name_province_and_region(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameProvinceAndRegion('Milano', 'Milano', 'Lombardia')->get();
@@ -192,7 +192,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('Lombardia', $first->regione);
     }
 
-    public function testItCanFilterComuniByNameAndCap(): void
+    public function test_it_can_filter_comuni_by_name_and_cap(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameAndCap('Milano', '20100')->get();
@@ -207,7 +207,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20100', $first->cap);
     }
 
-    public function testItCanFilterComuniByNameProvinceAndCap(): void
+    public function test_it_can_filter_comuni_by_name_province_and_cap(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameProvinceAndCap('Milano', 'Milano', '20100')->get();
@@ -224,7 +224,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20100', $first->cap);
     }
 
-    public function testItCanFilterComuniByNameRegionAndCap(): void
+    public function test_it_can_filter_comuni_by_name_region_and_cap(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameRegionAndCap('Milano', 'Lombardia', '20100')->get();
@@ -241,7 +241,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20100', $first->cap);
     }
 
-    public function testItCanFilterComuniByNameProvinceRegionAndCap(): void
+    public function test_it_can_filter_comuni_by_name_province_region_and_cap(): void
     {
         /** @phpstan-ignore-next-line -- Dynamic scope */
         $comuni = Comune::byNameProvinceRegionAndCap('Milano', 'Milano', 'Lombardia', '20100')->get();
@@ -260,7 +260,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20100', $first->cap);
     }
 
-    public function testItCanCreateANewComune(): void
+    public function test_it_can_create_a_new_comune(): void
     {
         $comune = Comune::create([
             'regione' => 'Lombardia',
@@ -280,7 +280,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame(9.1900, $comune->lng);
     }
 
-    public function testItCanUpdateAnExistingComune(): void
+    public function test_it_can_update_an_existing_comune(): void
     {
         $comune = Comune::first();
         /* @phpstan-ignore-next-line -- $comune may be null from first() */
@@ -295,7 +295,7 @@ final class ComuneTest extends TestCase
         Assert::assertSame('20121', $comune->cap);
     }
 
-    public function testItCanDeleteAnExistingComune(): void
+    public function test_it_can_delete_an_existing_comune(): void
     {
         $comune = Comune::first();
         /** @phpstan-ignore-next-line -- $comune may be null from first() */
