@@ -6,10 +6,11 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-use Sushi\Sushi;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
+
+use Sushi\Sushi;
 
 /** @phpstan-ignore trait.unused */
 trait SushiToJsons
@@ -37,7 +38,7 @@ trait SushiToJsons
     /**
      * Salva i dati nel file JSON.
      *
-     * @param  array<int, array<string, mixed>>  $data
+     * @param array<int, array<string, mixed>> $data
      */
     public function saveToJson(array $data): bool
     {
@@ -58,7 +59,7 @@ trait SushiToJsons
     /**
      * Crea un nuovo record.
      *
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function create(array $attributes = []): static
     {
@@ -79,14 +80,14 @@ trait SushiToJsons
     /**
      * Aggiorna un record esistente.
      *
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function update(array $attributes = [], array $options = []): bool
     {
         $data = $this->loadFromJson();
         $index = $this->findIndex($this->getKey());
 
-        if ($index === null) {
+        if (null === $index) {
             return false;
         }
 
@@ -109,7 +110,7 @@ trait SushiToJsons
         $data = $this->loadFromJson();
         $index = $this->findIndex($this->getKey());
 
-        if ($index === null) {
+        if (null === $index) {
             return false;
         }
 

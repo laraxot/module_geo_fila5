@@ -17,7 +17,7 @@ it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 46.4642, longitude: 10.1900);
 
-    $action = new OptimizeRouteAction(new RouteDistanceStub);
+    $action = new OptimizeRouteAction(new RouteDistanceStub());
 
     Assert::assertCount(1, $action->execute(collect([$location1])));
     Assert::assertCount(2, $action->execute(collect([$location1, $location2])));
@@ -46,7 +46,7 @@ it('handles empty collection', function (): void {
     /** @var Collection<int, LocationData> $emptyLocations */
     $emptyLocations = collect([]);
 
-    $result = (new OptimizeRouteAction(new RouteDistanceStub))->execute($emptyLocations);
+    $result = (new OptimizeRouteAction(new RouteDistanceStub()))->execute($emptyLocations);
 
     Assert::assertInstanceOf(Collection::class, $result);
     Assert::assertSame(0, $result->count());
