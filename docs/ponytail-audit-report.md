@@ -3,7 +3,7 @@ title: "Ponytail audit — report over-engineering (codebase)"
 type: architecture
 tags: [ponytail, audit, yagni, over-engineering, planning]
 created: 2026-06-30
-updated: 2026-06-30
+updated: 2026-07-01
 qmd: "ponytail audit report over-engineering riduzione codice vincoli predis compoships"
 issues:
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/173"
@@ -33,7 +33,38 @@ Audit repo-wide (modalità ponytail-audit): solo over-engineering e complessità
 | Post-edit su ogni `.php` | PHPStan L10, PHPMD (`./tools/phpmd.sh`), PHP Insights (`./tools/phpinsights.sh`), Pest se assente |
 | Docs | Aggiornare `docs` modulo/tema + ingest QMD dopo ogni modifica documentale |
 
-## Findings codice (sessione agent — ranked)
+## Findings codice (refresh 2026-07-01 — ranked)
+
+Validazione grep: voci Tier A ancora presenti; `.bak` monolith agent ridotto a `bashscripts/ai/AGENTS.bmad-generated.FULL.md.bak` (~5.3k righe); `Services/` = 59 file / ~5.2k LOC (esclusi Pdnd/Incentivi); `compoships` ancora zero uso PHP.
+
+### Output ponytail (ranked, biggest first)
+
+1. `yagni` Layer `app/Services/` legacy vs religione `QueueableAction`. Migrazione al tocco feature, non big-bang. [`laravel/Modules/*/app/Services/`]
+2. `delete` Backup regole agente BMAD. Git history. [`bashscripts/ai/AGENTS.bmad-generated.FULL.md.bak`]
+3. `shrink` Tre `Safe*CastAction` core (~915 LOC). Una action + discriminante sorgente. [`laravel/Modules/Xot/app/Actions/Cast/SafeEloquentCastAction.php` + Attribute + Object]
+4. `yagni` `CriteriPrecedenzaService` Ptv ≈ Progressioni (solo namespace). Un Action in Progressioni (owner modello). [`Ptv` + `Progressioni` Services]
+5. `yagni` `CriteriValutazioneService` Performance ≈ Progressioni. Stesso pattern. [`Performance` + `Progressioni` Services]
+6. `shrink` `GetFactoryAction` (~191 LOC). `Model::factory()` via `HasFactory` / trait snello. [`laravel/Modules/Xot/app/Actions/Factory/GetFactoryAction.php`]
+7. `delete` `GetAllModuleTranslationAction` — zero caller, clone di `GetAllTranslationAction`. Tenere `GetAllTranslationAction`. [`laravel/Modules/Lang/app/Actions/GetAllModuleTranslationAction.php`]
+8. `delete` `ProfileTest` stub (`echo 'ciao'`), zero caller. Niente. [`laravel/Modules/Xot/app/Services/ProfileTest.php`]
+9. `delete` Gerarchia `Translators/*` — classi vuote, zero import. API Lang quando serve. [`laravel/Modules/Xot/app/Services/Translators/`]
+10. `delete` Test `CriteriEsclusioneService` — classe assente. Rimuovi test. [`laravel/Modules/Performance/tests/`]
+11. `delete` `StabiDirigenteContract` in `Models/Contracts/` — mai importato; canonico `Ptv\Contracts`. [`laravel/Modules/Ptv/app/Models/Contracts/StabiDirigenteContract.php`]
+12. `delete` `composer.json` stack Assetic/Less/Twig orfano. Niente. [`laravel/Modules/Xot/app/Services/composer.json`]
+13. `delete` Doppio test Pest `GetAllTranslationActionTest` (path `tests/unit` vs `tests/Unit`). Un file. [`laravel/Modules/Lang/tests/`]
+14. `yagni` `SaveOwnershipRelationUseCaseContract` + `GetAllOwnersRelationshipUseCaseContract` — zero impl. Action dirette o delete. [`laravel/Modules/User/app/Application/UseCases/Owners/`]
+15. `yagni` Stack mappa UI: contratti + `NullMapService`/`NullGeocodingService` senza binding in provider. Registra null object o elimina stub. [`laravel/Modules/UI/app/Services/Map/`]
+16. `delete` `composer.json` tema sotto `User/resources/views/`. Path `Themes/One/`. [`laravel/Modules/User/resources/views/composer.json`]
+17. `shrink` 16× `phpstan_constants.php` per modulo. Un bootstrap Xot. [`laravel/Modules/*/phpstan_constants.php`]
+18. `native` `awobaz/compoships` in deps, zero modelli — **adozione** su relazioni multi-FK (non rimuovere). Doc pilot Sigma/Ptv. [`laravel/Modules/Xot/composer.json`]
+19. `yagni` `sentry/sentry-laravel` root + `aws/aws-sdk-php` Notify — verificare uso CI/staging prima di taglio. [`laravel/composer.json`, `Modules/Notify/composer.json`]
+20. `delete` `phpstan-modules-random.sh` — wrapper deprecato verso gate. Solo aggiornare doc che lo citano. [`bashscripts/tools/phpstan-modules-random.sh`]
+
+**net:** ~12.400 linee e ~0–2 dipendenze possibili se approvati tutti i tier; **fase 1 (Tier A #7–13):** ~350 linee, 0 dep critiche.
+
+---
+
+## Findings codice (sessione 2026-06-30 — tabella storica)
 
 ### Tier A — quick win, basso rischio
 
