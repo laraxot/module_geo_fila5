@@ -22,13 +22,13 @@ describe('Address Model', function () {
     });
 
     it('has correct fillable attributes', function () {
-        $address = new Address;
+        $address = new Address();
 
         Assert::assertInstanceOf(Address::class, $address);
     });
 
     it('implements HasGeolocation contract', function () {
-        $address = new Address;
+        $address = new Address();
 
         Assert::assertInstanceOf(HasGeolocation::class, $address);
     });

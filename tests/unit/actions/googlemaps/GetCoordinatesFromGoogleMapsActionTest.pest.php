@@ -20,7 +20,7 @@ use function Safe\json_encode;
 uses(LightTestCase::class);
 
 it('throws exception when api key is not configured', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -36,7 +36,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception for empty address', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -52,7 +52,7 @@ it('throws exception for empty address', function (): void {
 });
 
 it('throws exception for too long address', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -70,7 +70,7 @@ it('throws exception for too long address', function (): void {
 });
 
 it('throws exception for guzzle exception', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -88,7 +88,7 @@ it('throws exception for guzzle exception', function (): void {
 });
 
 it('throws exception when no coordinates found', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -109,7 +109,7 @@ it('throws exception when no coordinates found', function (): void {
 });
 
 it('throws exception when status is not ok', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -129,7 +129,7 @@ it('throws exception when status is not ok', function (): void {
 });
 
 it('returns location data for valid address', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);
@@ -157,7 +157,7 @@ it('returns location data for valid address', function (): void {
 });
 
 it('handles address with special characters', function (): void {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetCoordinatesFromGoogleMapsAction($client);

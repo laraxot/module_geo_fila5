@@ -13,7 +13,7 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => null]);
 
@@ -27,7 +27,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception when api key is empty', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => '']);
 
@@ -40,7 +40,7 @@ it('throws exception when api key is empty', function (): void {
 });
 
 it('throws exception when api response is not successful', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -58,7 +58,7 @@ it('throws exception when api response is not successful', function (): void {
 });
 
 it('throws exception when no results found', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -78,7 +78,7 @@ it('throws exception when no results found', function (): void {
 });
 
 it('returns address data for valid address', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -134,7 +134,7 @@ it('returns address data for valid address', function (): void {
 });
 
 it('handles missing optional address components', function (): void {
-    $action = new GetAddressFromGoogleMapsAction;
+    $action = new GetAddressFromGoogleMapsAction();
 
     config(['services.google.maps_api_key' => 'test_key']);
 

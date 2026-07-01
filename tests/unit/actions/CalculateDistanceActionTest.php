@@ -47,7 +47,7 @@ it('calculates distance between two valid locations', function (): void {
 });
 
 it('throws exception for invalid latitude', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     try {
         $action->execute(
@@ -61,7 +61,7 @@ it('throws exception for invalid latitude', function (): void {
 });
 
 it('throws exception for invalid longitude', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     try {
         $action->execute(
@@ -75,7 +75,7 @@ it('throws exception for invalid longitude', function (): void {
 });
 
 it('throws exception for negative latitude', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     try {
         $action->execute(
@@ -89,7 +89,7 @@ it('throws exception for negative latitude', function (): void {
 });
 
 it('throws exception for negative longitude', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     try {
         $action->execute(
@@ -145,31 +145,31 @@ it('throws exception when distance matrix fails', function (): void {
 });
 
 it('formats distance in meters correctly', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('500 m', $action->formatDistance(500));
 });
 
 it('formats distance in kilometers correctly', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('1.5 km', $action->formatDistance(1500));
 });
 
 it('formats distance with decimal kilometers', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('2.5 km', $action->formatDistance(2500));
 });
 
 it('formats exact kilometer distance', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('1.0 km', $action->formatDistance(1000));
 });
 
 it('throws exception for negative distance', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     try {
         $action->formatDistance(-100);
@@ -180,19 +180,19 @@ it('throws exception for negative distance', function (): void {
 });
 
 it('handles zero distance', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('0 m', $action->formatDistance(0));
 });
 
 it('handles very small distances', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('1 m', $action->formatDistance(1));
 });
 
 it('handles very large distances', function (): void {
-    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = new CalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     Assert::assertSame('1000.0 km', $action->formatDistance(999999));
 });

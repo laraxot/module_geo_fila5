@@ -11,7 +11,7 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 it('returns AddressData when first service succeeds', function (): void {
-    $action = new GetAddressDataFromFullAddressAction;
+    $action = new GetAddressDataFromFullAddressAction();
 
     // As this action depends on multiple external services which are difficult to mock,
     // we can test that it at least has the correct structure and properties
@@ -21,20 +21,20 @@ it('returns AddressData when first service succeeds', function (): void {
 });
 
 it('initializes with empty errors collection', function (): void {
-    $action = new GetAddressDataFromFullAddressAction;
+    $action = new GetAddressDataFromFullAddressAction();
 
-    $action = new GetAddressDataFromFullAddressAction;
+    $action = new GetAddressDataFromFullAddressAction();
 
     Assert::assertInstanceOf(Collection::class, $action->getErrors());
     Assert::assertSame(0, $action->getErrors()->count());
 });
 
 it('executes without throwing error for basic call', function (): void {
-    $action = new GetAddressDataFromFullAddressAction;
+    $action = new GetAddressDataFromFullAddressAction();
 
     // This tests that the action can be instantiated and executed without critical errors
     // Since it depends on external services, we can't easily test the full functionality
-    $action = new GetAddressDataFromFullAddressAction;
+    $action = new GetAddressDataFromFullAddressAction();
 
     // The execute method should handle missing services gracefully
     $result = $action->execute('Test Address');
