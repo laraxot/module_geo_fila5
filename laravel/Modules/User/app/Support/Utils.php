@@ -268,13 +268,14 @@ class Utils
 
     /**
      * @return class-string|string
-     *
-     * @psalm-return ''|class-string
      */
     public static function showModelPath(string $resourceFQCN): string
     {
-        return config('filament-shield.shield_resource.show_model_path', true)
-            ? (new ($resourceFQCN::getModel())())::class
+        $modelClass = $resourceFQCN::getModel();
+
+        /** @var class-string $modelClass */
+        return config('filament-shield.shield_resource.show_model_path', true) && is_string($modelClass)
+            ? $modelClass
             : '';
     }
 

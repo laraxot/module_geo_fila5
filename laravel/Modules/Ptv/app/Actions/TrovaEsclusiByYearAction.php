@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Modules\Ptv\Models\CriteriEsclusione;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 use Illuminate\Support\Str;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Spatie\QueueableAction\QueueableAction;
@@ -103,7 +104,9 @@ class TrovaEsclusiByYearAction
             ->pluck('value_real', 'name');
 
         foreach ($rows as $row) {
-            // Type narrowing: $row is already Model from Collection type, no need for instanceof check
+            if (! $row instanceof SchedaContract) {
+                continue;
+            }
 
             if (! ($criteri_esclusione instanceof Collection)) {
                 continue;

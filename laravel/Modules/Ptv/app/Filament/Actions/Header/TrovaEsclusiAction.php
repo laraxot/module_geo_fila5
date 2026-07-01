@@ -15,6 +15,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Arr;
 use Modules\Ptv\Actions\Scheda\TrovaEsclusiByModelClassYearAction;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 
 class TrovaEsclusiAction extends Action
 {
@@ -36,7 +37,7 @@ class TrovaEsclusiAction extends Action
                 
                 $resource = $livewire->getResource();
                 $user = auth()->user();
-                return $user->isSuperAdmin();
+                return $user?->isSuperAdmin() ?? false;
                 /*
                 $canCreate = $resource::can('create');
 
@@ -50,9 +51,8 @@ class TrovaEsclusiAction extends Action
 
                 $resource = $livewire->getResource();
                 $modelClass = $resource::getModel();
-                
 
-                if (! is_string($modelClass)) {
+                if (! is_string($modelClass) || ! is_a($modelClass, SchedaContract::class, true)) {
                     return;
                 }
 

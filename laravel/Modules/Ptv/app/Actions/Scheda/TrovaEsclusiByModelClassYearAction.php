@@ -41,6 +41,9 @@ class TrovaEsclusiByModelClassYearAction
 
 
         foreach ($rows as $row) {
+            if (! $row instanceof SchedaContract) {
+                continue;
+            }
             app(Check::class)->execute($row, $criteriEsclusione, $criteriOption);
         }
     }

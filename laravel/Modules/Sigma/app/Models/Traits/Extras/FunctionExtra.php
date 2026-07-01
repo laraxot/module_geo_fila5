@@ -80,7 +80,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $query
+     * @param  Builder<Qua00f>|Relation<Qua00f, *, *>  $query
      */
     private static function applyQua00fCoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
     {
@@ -118,7 +118,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $query
+     * @param  Builder<Qua00f>|Relation<Qua00f, *, *>  $query
      * @param  array<string, mixed>  $params
      */
     private static function applyQua00fCoalesceTotSelectFromArray(Builder|Relation $query, array $params): void
@@ -165,7 +165,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Qua03f>|Relation<Qua03f, covariant Model, *>  $query
+     * @param  Builder<Qua03f>|Relation<Qua03f, *, *>  $query
      */
     private static function applyQua03fCoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
     {
@@ -203,7 +203,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Asz00k1>|Relation<Asz00k1, covariant Model, *>  $query
+     * @param  Builder<Asz00k1>|Relation<Asz00k1, *, *>  $query
      */
     private static function applyAsz00k1CoalesceTotSelect(Builder|Relation $query, GgFilterData $data): void
     {
@@ -241,7 +241,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  Builder<Qua00f>|Relation<Qua00f, covariant Model, *>  $qua00f
+     * @param  Builder<Qua00f>|Relation<Qua00f, *, *>  $qua00f
      */
     private static function applyQua00fProproFilters(
         Builder|Relation $qua00f,
@@ -387,7 +387,6 @@ trait FunctionExtra
         }
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
         $qua00fRelation = $this->qua00f();
-        /** @var Relation<Qua00f, static> $qua00f */
         $qua00f = $qua00fRelation;
 
         if (is_string($lista_propro)) {
@@ -470,7 +469,6 @@ trait FunctionExtra
         /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
         // @phpstan-ignore-next-line method.notFound - Method checked above with method_exists
         $qua00fRelation = $this->qua00f();
-        /** @var Relation<Qua00f, static> $qua00f */
         $qua00f = $qua00fRelation;
 
         if (isset($lista_propro) && is_string($lista_propro)) {
@@ -616,7 +614,7 @@ trait FunctionExtra
          * $qua00f->whereRaw('SUBSTR(posfun,-1)='.substr($posfun,-1));
          * }
          */
-        if (isset($lista_tipo_codice) && is_string($lista_tipo_codice)) {
+        if ($lista_tipo_codice !== '') {
             $asz->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_tipo_codice]);
         }
 
