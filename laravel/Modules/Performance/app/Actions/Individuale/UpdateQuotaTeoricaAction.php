@@ -40,8 +40,7 @@ class UpdateQuotaTeoricaAction
             ->get();
 
         $fields = ['gg_presenza_dalal', 'perc_parttimepond_dalal'];
-        $html = '';
-        $html .= '<table border="1">';
+        $html = '<table border="1">';
         foreach ($rows as $k => $row) {
             if ($k === 0) {
                 $html .= '<tr>';
@@ -62,7 +61,7 @@ class UpdateQuotaTeoricaAction
         }
 
         $html .= '</table>';
-        // echo $html;
+        \Illuminate\Support\Facades\Log::debug('UpdateQuotaTeoricaAction debug table', ['html' => $html]);
 
         $where = 'ha_diritto>0 and anno="'.$year.'" and type = "'.$type.'"';
 

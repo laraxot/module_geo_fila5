@@ -39,7 +39,7 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
-    protected array $middleware = [
+    protected $middleware = [
         // \Modules\UI\Http\Middleware\TrustHosts::class,
         // TrustProxies::class, // Not available in Laravel 11+
         HandleCors::class,
@@ -54,7 +54,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected array $middlewareGroups = [
+    protected $middlewareGroups = [
         'web' => [
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
@@ -78,7 +78,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
-    protected array $middlewareAliases = [
+    protected $middlewareAliases = [
         'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'auth.session' => AuthenticateSession::class,

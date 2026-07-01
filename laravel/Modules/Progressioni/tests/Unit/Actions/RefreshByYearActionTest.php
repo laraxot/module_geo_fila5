@@ -38,12 +38,12 @@ function createMockProgressioni(int $id, ?string $refreshedAt): Model
             $this->attributes['refreshed_at'] = $refreshedAt;
         }
 
-        public function getAttribute(): void
+        public function getAttribute($key): mixed
         {
             return $this->attributes[$key] ?? null;
         }
 
-        public function getKey(): void
+        public function getKey(): mixed
         {
             return $this->attributes['id'];
         }
