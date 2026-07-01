@@ -15,37 +15,37 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 test('State model can be instantiated', function () {
-    $state = new State();
+    $state = new State;
 
     Assert::assertInstanceOf(State::class, $state);
 });
 
 test('County model can be instantiated', function () {
-    $county = new County();
+    $county = new County;
 
     Assert::assertInstanceOf(County::class, $county);
 });
 
 test('Locality model can be instantiated', function () {
-    $locality = new Locality();
+    $locality = new Locality;
 
     Assert::assertInstanceOf(Locality::class, $locality);
 });
 
 test('Place model can be instantiated', function () {
-    $place = new Place();
+    $place = new Place;
 
     Assert::assertInstanceOf(Place::class, $place);
 });
 
 test('PlaceType model can be instantiated', function () {
-    $placeType = new PlaceType();
+    $placeType = new PlaceType;
 
     Assert::assertInstanceOf(PlaceType::class, $placeType);
 });
 
 test('GeoNamesCap model can be instantiated', function () {
-    $geoNamesCap = new GeoNamesCap();
+    $geoNamesCap = new GeoNamesCap;
 
     Assert::assertInstanceOf(GeoNamesCap::class, $geoNamesCap);
 });

@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Geo\Models\Comune;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
 class ComuneSeeder extends Seeder
 {
     public function run(): void
     {
+        xotSeedModelOnce(Comune::class);
     }
 }

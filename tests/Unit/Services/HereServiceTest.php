@@ -10,13 +10,13 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 it('has correct base URL', function (): void {
-    $service = new HereService();
+    $service = new HereService;
 
     Assert::assertSame('https://router.hereapi.com/v8/routes', $service->base_url);
 });
 
 it('has static method for getting duration and length', function (): void {
-    $service = new HereService();
+    $service = new HereService;
 
     // Check that the method exists
 });
