@@ -24,9 +24,9 @@ Con `./vendor/bin/phpstan analyse Modules/` e molti file (es. 3000+), parallel d
 
 ## Causa
 
-1. **`--memory-limit=-1` è controproducente** — i worker figli restano spesso a **512M** (`536870912` bytes).
-2. PHPStan avvia **N worker** (≈ numero core). Ogni worker ha budget memoria proprio.
-3. `phpstan.neon` senza `parallel` esplicito → default multi-process.
+1. **Worker paralleli a 512M** — senza `--memory-limit` PHPStan usa 512M per worker.
+2. **`ini_set('memory_limit', …)` a livello file** — durante l'analisi PHPStan esegue il top-level del sorgente e **abbassa** il limite (es. `EditPerformanceFondo.php` → esattamente `536870912` bytes). Spostare `ini_set` dentro `mount()` / metodi, mai in cima al file.
+3. PHPStan avvia **N worker** se `parallel.maximumNumberOfProcesses` > 1.
 4. **Xdebug attivo** aumenta il consumo: usare `php -d xdebug.mode=off`.
 
 ## Fix immediato (monolite)
