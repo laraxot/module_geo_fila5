@@ -12,7 +12,7 @@ use Modules\Geo\Datas\Geocoding\PlaceData;
 use Modules\Geo\Datas\GeoData;
 use Modules\Geo\Datas\Location\CoordinatesData;
 use Modules\Geo\Datas\Location\IPLocationData;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\LocationDTO;
 use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Datas\MapPlatforms\MapboxMapData;

@@ -6,7 +6,7 @@ namespace Modules\Geo\Actions\Nominatim;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
@@ -21,13 +21,13 @@ class LookupPlaceAction
 
     public function __construct()
     {
-        $this->client = new Client();
+        $this->client = new Client;
     }
 
     /**
      * Cerca un luogo usando il suo OSM ID.
      *
-     * @param string $osmId ID OpenStreetMap del luogo
+     * @param  string  $osmId  ID OpenStreetMap del luogo
      *
      * @throws GuzzleException
      * @throws \RuntimeException

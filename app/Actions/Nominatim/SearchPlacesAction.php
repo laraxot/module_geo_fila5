@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
@@ -24,16 +24,17 @@ class SearchPlacesAction
 
     public function __construct(string $userAgent)
     {
-        $this->client = new Client();
+        $this->client = new Client;
         $this->userAgent = $userAgent.' Application';
     }
 
     /**
      * Cerca luoghi usando una query di ricerca.
      *
-     * @throws \RuntimeException Se la richiesta fallisce
      *
      * @return Collection<int, LocationData>
+     *
+     * @throws \RuntimeException Se la richiesta fallisce
      */
     public function execute(string $query, ?string $country = null, int $limit = 10): Collection
     {
@@ -74,9 +75,9 @@ class SearchPlacesAction
     }
 
     /**
-     * @throws \RuntimeException Se la risposta non è nel formato atteso
-     *
      * @return Collection<int, LocationData>
+     *
+     * @throws \RuntimeException Se la risposta non è nel formato atteso
      */
     private function parseResponse(string $response): Collection
     {

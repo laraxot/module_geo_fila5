@@ -11,11 +11,15 @@ namespace Modules\Geo\Services;
 // https://www.databasejournal.com/features/mysql/mysql-calculating-distance-based-on-latitude-and-longitude.html
 // http://blog.canispater.com/2017/05/laravel-5-distance-spatial-query-part-2/
 // https://scotch.io/tutorials/achieving-geo-search-with-laravel-scout-and-algolia
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Class GeoService.
  */
 class GeoService
 {
+    use QueueableAction;
+
     public static string $latitude_field = 'latitude';
 
     public static string $longitude_field = 'longitude';
@@ -30,7 +34,7 @@ class GeoService
     public static function getInstance(): self
     {
         if (! self::$_instance instanceof GeoService) {
-            self::$_instance = new self();
+            self::$_instance = new self;
         }
 
         return self::$_instance;
@@ -98,16 +102,16 @@ class GeoService
         if ($lat1 === $lat2 && $lon1 === $lon2) {
             return 0;
         }
-        if (null === $lat1) {
+        if ($lat1 === null) {
             return null;
         }
-        if (null === $lon1) {
+        if ($lon1 === null) {
             return null;
         }
-        if (null === $lat2) {
+        if ($lat2 === null) {
             return null;
         }
-        if (null === $lon2) {
+        if ($lon2 === null) {
             return null;
         }
         $theta = $lon1 - $lon2;
@@ -117,7 +121,7 @@ class GeoService
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
-        if (null === $unit) {
+        if ($unit === null) {
             $unit = 'K'; // default
         }
         $unit = strtoupper($unit);
@@ -158,7 +162,7 @@ class GeoService
      * Undocumented function.
      */
     /**
-     * @param array<mixed> $polygon
+     * @param  array<mixed>  $polygon
      */
     public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
     {
@@ -200,7 +204,7 @@ class GeoService
 
     public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool
     {
-        if (null === $polygon || '' === $polygon) {
+        if ($polygon === null || $polygon === '') {
             return false;
         }
 
@@ -215,4 +219,6 @@ class GeoService
 
         return false;
     }
+
+    public function execute(): void {}
 }

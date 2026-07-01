@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Fixtures;
 
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 
 /**
  * @internal
@@ -13,13 +13,12 @@ use Modules\Geo\Datas\Location\LocationData;
 final class RouteDistanceStub implements CalculateDistanceActionContract
 {
     /**
-     * @param array<string, int> $distances
+     * @param  array<string, int>  $distances
      */
     public function __construct(
         private int $defaultMeters = 1000,
         private array $distances = [],
-    ) {
-    }
+    ) {}
 
     public function execute(LocationData $origin, LocationData $destination): array
     {

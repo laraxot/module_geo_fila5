@@ -6,14 +6,14 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\RouteData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
-    $action = new OptimizeRouteAction();
+    $action = new OptimizeRouteAction;
 
     config(['services.google.maps.key' => null]);
 
@@ -33,7 +33,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('returns empty array for empty locations', function (): void {
-    $action = new OptimizeRouteAction();
+    $action = new OptimizeRouteAction;
 
     config(['services.google.maps.key' => 'test_key']);
 
@@ -45,7 +45,7 @@ it('returns empty array for empty locations', function (): void {
 });
 
 it('returns empty array when api returns no routes', function (): void {
-    $action = new OptimizeRouteAction();
+    $action = new OptimizeRouteAction;
 
     config(['services.google.maps.key' => 'test_key']);
 
@@ -64,7 +64,7 @@ it('returns empty array when api returns no routes', function (): void {
 });
 
 it('returns route data for valid request', function (): void {
-    $action = new OptimizeRouteAction();
+    $action = new OptimizeRouteAction;
 
     config(['services.google.maps.key' => 'test_key']);
 
@@ -121,7 +121,7 @@ it('returns route data for valid request', function (): void {
 });
 
 it('throws exception when api request fails', function (): void {
-    $action = new OptimizeRouteAction();
+    $action = new OptimizeRouteAction;
 
     config(['services.google.maps.key' => 'test_key']);
 
