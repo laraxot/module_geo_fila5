@@ -22,7 +22,7 @@ use Spatie\Permission\Contracts\Role;
  * @property string                            $id
  * @property int|null                          $current_team_id
  * @property TeamContract|null                 $currentTeam
- * @property EloquentCollection<int, Team>     $teams
+ * @property EloquentCollection<int, Team>     $membershipTeams
  * @property EloquentCollection<int, Team>     $ownedTeams
  * @property EloquentCollection<int, TeamUser> $teamUsers
  * @property XotUserContract|null              $owner
@@ -66,7 +66,7 @@ class MockUserWithTeams extends Model
     /**
      * @return BelongsToMany<Team, $this>
      */
-    public function teams(): BelongsToMany
+    public function membershipTeams(): BelongsToMany
     {
         return $this->belongsToManyX(Team::class);
     }

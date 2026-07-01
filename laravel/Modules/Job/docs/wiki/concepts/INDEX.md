@@ -1,17 +1,33 @@
 # Job Module - concepts Index
 
 ## Purpose
-Index for Job module concepts.
+
+Indice concetti Job per LLM Wiki e agenti.
+
+## Concetti canonici
+
+| Concetto | File |
+|----------|------|
+| Policy modello Laravel | [model-policy-laravel-contract.md](./model-policy-laravel-contract.md) |
+| Ponytail audit (delta) | [ponytail-audit.md](./ponytail-audit.md) |
+| PHPStan modulo | [phpstan-compliance.md](./phpstan-compliance.md) |
+| XotBase table columns | [xotbase-table-columns-enforcement.md](./xotbase-table-columns-enforcement.md) |
+
+## Incidenti
+
+| Argomento | File |
+|-----------|------|
+| Ripristino policy ponytail | [policy-restoration-incident.md](./policy-restoration-incident.md) |
+
+## Hub progetto
+
+- [docs/wiki/concepts/model-policy-laravel-contract.md](../../../../../../docs/wiki/concepts/model-policy-laravel-contract.md)
 
 ## On-Demand Loading
 
 ```bash
-qmd search "Job concepts" --limit 5
+qmd search "Job policy Laravel" --limit 5
 ```
 
-## See Also
-- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
-- [Root Wiki](../../../docs/wiki/)
-
 ---
-*Updated: 2026-05-11*
+*Updated: 2026-06-30*

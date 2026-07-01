@@ -21,7 +21,7 @@ class TrovaEsclusiAction
         $criteri_esclusione = [$name => $value];
         $criteri_option = [];
 
-        [$ha_diritto, $motivo] = $action->execute($model, $criteri_esclusione, $criteri_option);
+        [, $motivo] = $action->execute($model, $criteri_esclusione, $criteri_option);
 
         return $motivo;
     }

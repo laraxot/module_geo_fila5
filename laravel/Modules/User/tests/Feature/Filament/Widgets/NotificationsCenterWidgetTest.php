@@ -2,19 +2,22 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Filament\Widgets\Auth\NotificationsCenterWidget;
+use Modules\User\Tests\TestCase;
+
+use function Pest\Laravel\get;
+
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
+
 it('redirects guests from notifiche page', function (): void {
-    /** @var Modules\User\Tests\TestCase $this */
-    $response = $this->get('/it/area-personale/notifications');
+    $response = get('/it/area-personale/notifications');
 
     $response->assertRedirect();
 });
 
 it('uses notifications center widget view', function (): void {
-    /** @var Modules\User\Tests\TestCase $this */
     $widget = new NotificationsCenterWidget();
     $reflection = new ReflectionClass($widget);
     $property = $reflection->getProperty('view');

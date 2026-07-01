@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Organizzativa;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Modules\Performance\Models\Organizzativa as Scheda;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -43,9 +42,6 @@ class UpdateImportoTotaleByValutatoreIdAction
      */
     public function execute(string $year, string $type = 'dip'): void
     {
-        // Ottieni il nome della tabella
-        $tbl = $this->model->getTable();
-
         // Log dell'inizio dell'operazione
         echo "<br/>Aggiornamento importo totale per valutatore_id, anno: {$year}, tipo: {$type}\n";
 

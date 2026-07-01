@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:49fbd4479abe9d7589655597c5bb773cc5f2767eecbf6688079fbcca73157fee
-size 367
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
+    <path d="M12 2L2 12l10 10 10-10L12 2z"/>
+    <line x1="12" y1="8" x2="12" y2="12"/>
+    <line x1="12" y1="16" x2="12" y2="16"/>
+</svg>

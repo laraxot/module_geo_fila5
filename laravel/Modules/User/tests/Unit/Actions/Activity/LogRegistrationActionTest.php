@@ -11,9 +11,8 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
-    /** @var TestCase $this */
-    if (! $this->userTableExists('activity_log')) {
-        $this->skipTest('activity_log table missing on sqlite test database.');
+    if (! userTableExists('activity_log')) {
+        pestSkip('activity_log table missing on sqlite test database.');
     }
 });
 

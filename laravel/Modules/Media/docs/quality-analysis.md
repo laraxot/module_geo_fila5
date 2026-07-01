@@ -6,16 +6,10 @@
 
 ## Aggiornamento verifica 2026-07-01
 
-- **PHPStan** (`level: max`): **0 errori** confermati (incluso `Http/Requests/CreateTemporaryUploadFromDirectS3UploadRequest.php:60` — il presunto errore "Cannot instantiate class using mixed" segnalato in un run precedente non si è ripresentato in un run pulito: è un falso positivo dovuto a OOM parziale, il codice usa già `class-string<Media>` + `@var Media $mediaModel` per il narrowing).
-- **PHPMD** (`tools/phpmd.sh Modules/Media/app`): rimossa dead code:
-  - `Actions/SaveAttachmentsAction.php::executeOLD()` — metodo legacy non referenziato, conteneva una `dddx()` di debug (dump&die) pericolosa se mai invocata; rimosso interamente insieme all'import `Exception` non più usato.
-  - `Actions/S3/UploadFileAction.php` — variabile `$acl` calcolata ma mai usata: ora riutilizzata nella chiamata a `ObjectUploader` al posto del cast duplicato.
-  - `Actions/Video/ConvertVideoByConvertDataAction.php` — variabile `$msg` costruita e mai usata nella callback `onProgress`: sostituita con un log reale (`Log::debug`).
-  - `Filament/Clusters/Test/Pages/AwsTest.php` (righe 139, 271, 331) e `S3Test.php` (`$tests` mai usato, `$category` mai usato nel loop): rimosse variabili morte.
-  - `Models/Policies/MediaBasePolicy.php` — `$xotData = XotData::make()` mai usato: rimosso insieme all'import.
-  - Non toccati: `StaticAccess` (100+ occorrenze, idiomatico Laravel/Facade), naming snake_case pre-esistente, complessità di `AddAttachmentAction::formHandlerCallback()` e `VideoEntry` — refactoring architetturale fuori scope.
-- **PHPInsights**: punteggi invariati nella sostanza (Code 83, Complexity 88.9, Architecture 88.2, Style 84.3) — non è stato eseguito `--fix` automatico su questo modulo perché nel modulo Lang ha introdotto regressioni PHPStan (return type narrowing perso, native type hint su property che sovrascrivono property non tipizzate della classe padre); i fix qui sono stati applicati manualmente e in modo mirato.
-- **Test**: creato/corretto `tests/Unit/Actions/SaveAttachmentsActionTest.php` (bug preesistente: `uses(Tests\TestCase::class)` con namespace non qualificato, ora `\Modules\Media\Tests\TestCase::class`). Esecuzione bloccata in questo sandbox da un problema di infrastruttura pre-esistente e non imputabile al codice: manca il file `database/database.sqlite` richiesto dai test (nessuna migrazione eseguita in questo ambiente); non è stato eseguito `migrate`/`migrate:fresh` per rispettare la regola "dati sacri".
+- **PHPStan** (`level: max`): **0 errori** confermati, incluso `Http/Requests/CreateTemporaryUploadFromDirectS3UploadRequest.php:60` (il presunto errore "Cannot instantiate class using mixed" di un run precedente era un falso positivo da OOM parziale; il codice usa già `class-string<Media>` + `@var Media $mediaModel`).
+- **PHPMD**: rimossa dead code (variabili/proprietà mai lette): `Actions/SaveAttachmentsAction.php::executeOLD()` (metodo legacy non referenziato con `dddx()` di debug, rimosso), `Actions/S3/UploadFileAction.php` (`$acl` ora riusato), `Actions/Video/ConvertVideoByConvertDataAction.php` (`$msg` ora loggato), `Filament/Clusters/Test/Pages/AwsTest.php` e `S3Test.php` (variabili morte `$result`/`$tests`/`$category`), `Models/Policies/MediaBasePolicy.php` (`$xotData` mai usato). Non toccati: `StaticAccess`, naming snake_case, complessità architetturale (`AddAttachmentAction`, `VideoEntry`).
+- **PHPInsights**: punteggi sostanzialmente invariati (Code 83, Complexity 88.9, Architecture 88.2, Style 84.3); nessun `--fix` automatico eseguito su questo modulo (nel modulo Lang ha causato regressioni PHPStan).
+- **Test**: corretto bug preesistente in `tests/Unit/Actions/SaveAttachmentsActionTest.php` (`uses(Tests\TestCase::class)` con namespace non qualificato). Esecuzione `pest` bloccata in questo sandbox da un problema di infrastruttura pre-esistente (manca `database/database.sqlite`), non imputabile al codice.
 
 ---
 

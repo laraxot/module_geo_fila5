@@ -13,7 +13,7 @@ abstract class TenantBasePolicy
 
     public function before(UserContract $user, string $ability): ?bool
     {
-        if ($user->hasRole('super-admin')) {
+        if ($ability !== '' && $user->hasRole('super-admin')) {
             return true;
         }
 

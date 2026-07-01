@@ -109,7 +109,7 @@ test('it correctly checks team ownership', function (): void {
 test('it uses belongs to many x for teams relationship', function (): void {
     ['user' => $user] = pestHasTeamsBootstrapFixture();
 
-    Assert::assertInstanceOf(BelongsToMany::class, $user->teams());
+    Assert::assertInstanceOf(BelongsToMany::class, $user->membershipTeams());
 });
 
 test('it correctly manages current team', function (): void {

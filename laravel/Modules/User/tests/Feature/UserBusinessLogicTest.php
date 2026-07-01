@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Modules\User\Database\Factories\PermissionFactory;
+use Modules\User\Database\Factories\ProfileFactory;
 use Modules\User\Database\Factories\RoleFactory;
 use Modules\User\Database\Factories\TeamFactory;
 use Modules\User\Models\Profile;
@@ -97,8 +100,8 @@ describe('User Business Logic', function (): void {
         $underageUser = createTestUser();
         $adultUser = createTestUser();
 
-        $underageUser->profile()->create(['birth_date' => $underageBirthDate]);
-        $adultUser->profile()->create(['birth_date' => $adultBirthDate]);
+        ProfileFactory::new()->createOne(['user_id' => $underageUser->id, 'birth_date' => $underageBirthDate]);
+        ProfileFactory::new()->createOne(['user_id' => $adultUser->id, 'birth_date' => $adultBirthDate]);
 
         $underageProfile = $underageUser->profile;
         $adultProfile = $adultUser->profile;
@@ -114,11 +117,11 @@ describe('User Business Logic', function (): void {
 
     test('enforces team membership limits', function (): void {
         $user = createTestUser();
-        /** @var \Illuminate\Database\Eloquent\Collection<int, Team> $teams */
+        /** @var Collection<int, Team> $teams */
         $teams = TeamFactory::new()->count(5)->create();
 
         foreach ($teams as $team) {
-            $user->teams()->attach($team->id);
+            $user->membershipTeams()->attach($team->id);
         }
 
         $freshUser = $user->fresh();
@@ -219,8 +222,8 @@ describe('User Business Logic', function (): void {
         }
 
         $user = createTestUser();
-        /** @var Profile $profile */
-        $profile = $user->profile()->create([
+        $profile = ProfileFactory::new()->createOne([
+            'user_id' => $user->id,
             'first_name' => 'Mario',
             'last_name' => 'Rossi',
         ]);
@@ -301,7 +304,7 @@ describe('User Business Logic', function (): void {
         $user = createTestUser();
         $staleTimestamp = now()->subMinutes(30);
 
-        \Illuminate\Support\Facades\DB::connection('user')->table('users')
+        DB::connection('user')->table('users')
             ->where('id', $user->id)
             ->update(['updated_at' => $staleTimestamp]);
 

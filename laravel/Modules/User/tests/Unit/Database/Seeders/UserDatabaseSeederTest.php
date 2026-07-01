@@ -29,7 +29,7 @@ final class UserDatabaseSeederTest extends TestCase
         $seeder->run();
 
         // Verify that roles were created
-        $this->assertDatabaseHas('roles', [
+        $this->assertDatabaseHasRow('roles', [
             'name' => 'super-admin',
             'guard_name' => 'web',
         ], 'user');

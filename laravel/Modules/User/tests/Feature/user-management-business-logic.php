@@ -8,6 +8,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Database\Factories\PermissionFactory;
+use Modules\User\Database\Factories\ProfileFactory;
 use Modules\User\Database\Factories\RoleFactory;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Profile;
@@ -207,7 +208,8 @@ describe('User Management Business Logic', function (): void {
 
     test('can update user profile', function (): void {
         $user = UserFactory::new()->createOne();
-        $createdProfile = $user->profile()->create([
+        $createdProfile = ProfileFactory::new()->createOne([
+            'user_id' => $user->id,
             'phone' => '+39 123 456 7890',
             'address' => 'Via Roma 123, Milano',
         ]);
@@ -232,7 +234,8 @@ describe('User Management Business Logic', function (): void {
 
     test('can delete user with profile', function (): void {
         $user = UserFactory::new()->createOne();
-        $createdProfile = $user->profile()->create([
+        $createdProfile = ProfileFactory::new()->createOne([
+            'user_id' => $user->id,
             'phone' => '+39 123 456 7890',
         ]);
         Assert::assertInstanceOf(Profile::class, $createdProfile);
@@ -255,7 +258,8 @@ describe('User Management Business Logic', function (): void {
 
     test('can force delete user', function (): void {
         $user = UserFactory::new()->createOne();
-        $createdProfile = $user->profile()->create([
+        $createdProfile = ProfileFactory::new()->createOne([
+            'user_id' => $user->id,
             'phone' => '+39 123 456 7890',
         ]);
         Assert::assertInstanceOf(Profile::class, $createdProfile);

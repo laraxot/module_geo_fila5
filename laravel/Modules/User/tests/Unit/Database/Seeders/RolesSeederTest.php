@@ -37,7 +37,7 @@ final class RolesSeederTest extends TestCase
 
         // Assert
         foreach ($expectedRoles as $roleName) {
-            $this->assertDatabaseHas('roles', [
+            $this->assertDatabaseHasRow('roles', [
                 'name' => $roleName,
                 'guard_name' => 'web',
             ], 'user');

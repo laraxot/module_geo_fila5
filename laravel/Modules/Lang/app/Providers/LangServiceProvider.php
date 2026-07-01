@@ -48,17 +48,17 @@ class LangServiceProvider extends XotBaseServiceProvider
 
     public function registerFilamentLabel(): void
     {
-        Select::configureUsing(static function (Select $component) {
+        Select::configureUsing(function (Select $component) {
             $component->placeholder(__('filament-forms::components.select.placeholder'));
 
             return $component;
         });
-        Field::configureUsing(static function (Field $component) {
+        Field::configureUsing(function (Field $component) {
             $component = app(AutoLabelAction::class)->execute($component, 'label');
             Assert::isInstanceOf($component, Field::class);
 
             $validationMessages = __('user::validation');
-            if (is_array($validationMessages) && $validationMessages !== []) {
+            if (is_array($validationMessages) && [] !== $validationMessages) {
                 /** @var array<string, string> $typedMessages */
                 $typedMessages = [];
                 foreach ($validationMessages as $key => $value) {
@@ -67,7 +67,7 @@ class LangServiceProvider extends XotBaseServiceProvider
                     }
                 }
 
-                if ($typedMessages !== []) {
+                if ([] !== $typedMessages) {
                     $component->validationMessages($typedMessages);
                 }
             }
@@ -78,21 +78,23 @@ class LangServiceProvider extends XotBaseServiceProvider
             return app(AutoLabelAction::class)->execute($component, 'description');
         });
 
-        Entry::configureUsing(static function (Entry $component) {
-            return app(AutoLabelAction::class)->execute($component, 'label');
+        Entry::configureUsing(function (Entry $component) {
+            $component = app(AutoLabelAction::class)->execute($component, 'label');
+
+            return $component;
         });
 
-        Section::configureUsing(static function (Section $component) {
+        Section::configureUsing(function (Section $component) {
             $component = app(AutoLabelAction::class)->execute($component);
 
             return app(AutoLabelAction::class)->execute($component, 'heading');
         });
 
-        BaseFilter::configureUsing(static function (BaseFilter $component) {
+        BaseFilter::configureUsing(function (BaseFilter $component) {
             return app(AutoLabelAction::class)->execute($component);
         });
 
-        Column::configureUsing(static function (Column $component) {
+        Column::configureUsing(function (Column $component) {
             $component = app(AutoLabelAction::class)->execute($component);
             Assert::isInstanceOf($component, Column::class);
 
@@ -100,13 +102,13 @@ class LangServiceProvider extends XotBaseServiceProvider
             // ->wrap()
         });
 
-        Step::configureUsing(static function (Step $component) {
+        Step::configureUsing(function (Step $component) {
             return app(AutoLabelAction::class)->execute($component);
 
             // ->translateLabel()
         });
 
-        Action::configureUsing(static function (Action $component) {
+        Action::configureUsing(function (Action $component) {
             $component = app(AutoLabelAction::class)->execute($component);
             $component = app(AutoLabelAction::class)->execute($component, 'icon');
             $component = app(AutoLabelAction::class)->execute($component, 'tooltip');
@@ -120,7 +122,7 @@ class LangServiceProvider extends XotBaseServiceProvider
             'getRecord' => $component->getRecord(),
             ]);
             */
-            if (method_exists($component, 'getRecord') && $component->getRecord() === null) {
+            if (method_exists($component, 'getRecord') && null === $component->getRecord()) {
                 if (method_exists($component, 'button')) {
                     $component->button();
                 }
@@ -147,7 +149,7 @@ class LangServiceProvider extends XotBaseServiceProvider
 
     public function registerTranslator(): void
     {
-        $this->app->singleton('translator', static function (Container $app): TranslatorService {
+        $this->app->singleton('translator', function (Container $app): TranslatorService {
             $loader = $app['translation.loader'];
 
             // When registering the translator component, we'll need to set the default
@@ -173,7 +175,7 @@ class LangServiceProvider extends XotBaseServiceProvider
     {
         $components = [Field::class, BaseFilter::class, Placeholder::class, Column::class, Entry::class];
         foreach ($components as $component) {
-            $component::configureUsing(static function (Component $translatable): void {
+            $component::configureUsing(function (Component $translatable): void {
                 if (method_exists($translatable, 'translateLabel')) {
                     $translatable->translateLabel();
                 }

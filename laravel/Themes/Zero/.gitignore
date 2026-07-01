@@ -18,9 +18,6 @@ _ide_helper_models.php
 *.old
 *.bak
 *.backup
-*.backup.*
-*.backup-*
-*.backup_*
 
 public_html/vendor
 public_html/js
@@ -79,19 +76,3 @@ node_modules/
 # PHPStan output files
 phpstan*.json
 _docs/
-
-# Documentation archives are local-only scratch/history.
-docs/legacy/
-docs/legacy/**
-
-# -----------------------------------------------------------------------------
-# Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
-# -----------------------------------------------------------------------------
-*~HEAD
-*~BASE
-*~LOCAL
-*~REMOTE
-*.orig
-*.rej
-*~head
-

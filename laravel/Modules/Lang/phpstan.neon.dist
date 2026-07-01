@@ -21,8 +21,8 @@ parameters:
 
 
     scanFiles:
-        # - ./helpers/Helper.php
-        # - ./vendor/laraxot/module_xot/helpers/Helper.php
+        # - ./Helpers/Helper.php
+        # - ./vendor/laraxot/module_xot/Helpers/Helper.php
 
     tmpDir: build/phpstan
     reportUnmatchedIgnoredErrors: false
@@ -31,3 +31,4 @@ parameters:
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     checkImplicitMixed: false
+

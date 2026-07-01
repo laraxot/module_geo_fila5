@@ -1,0 +1,65 @@
+---
+title: "NO git restore — studia vecchia versione"
+type: rule
+tags: [git, recovery, study, refactoring]
+created: 2026-01-21
+updated: 2026-01-21
+qmd: never use git restore always study old version create better
+issues: []
+discussions: []
+related: []
+---
+
+# NO git restore — studia vecchia versione
+
+## Regola assoluta
+
+**MAI** usare `git restore` per recuperare file.
+
+Git va solo in avanti. Se hai cancellato o modificato un file critico (composer.json, module.json, package.json, .github/, etc.):
+
+1. Studia la vecchia versione con `git show`
+2. Capisci perché esisteva
+3. Crea una versione migliorata
+4. Applica la correzione
+
+## Comandi corretti
+
+```bash
+# Studia vecchia versione
+git show HEAD:Modules/<Modulo>/composer.json
+
+# Studia diff per capire cosa è cambiato
+git diff HEAD -- Modules/<Modulo>/composer.json
+
+# Crea versione migliorata basata sulla vecchia
+# (scrivi il file nuovo)
+```
+
+## Vietato
+
+```bash
+# ❌ MAI FARE
+git restore Modules/<Modulo>/composer.json
+git checkout -- Modules/<Modulo>/composer.json
+```
+
+## Perché
+
+- Git è monodirezionale: restore ignora la storia e il contesto
+- Studiare la vecchia versione ti fa capire il "perché"
+- Creare una versione migliorata è un'opportunità di refactor
+- Evita di ripetere errori passati
+
+## File critici da proteggere
+
+- `composer.json` (nwidart module definition)
+- `module.json` (laravel-modules metadata)
+- `package.json` (frontend dependencies)
+- `.github/` (GitHub Actions, templates)
+- Config files nwidart-specific
+
+## Canon
+
+- Regola on-demand attiva sempre
+- Studia → Capisci → Migliora → Applica

@@ -1,30 +1,39 @@
-# 📚 JOB Module - Documentation Index
+# 📚 **Indice Documentazione Modulo Job**
 
-**Path**: `laravel/Modules/Job/docs/`  
-**Modulo**: @Modules/Job
+**Status**: ✅ PHPStan Level 10 Compliant
+**Module Version**: 2.3.0
 
-## 📄 Documenti
+## 🎯 **Lettura Essenziale**
+1. [README.md](./readme.md) - Panoramica completa, Multi-Queue e Scheduling.
+2. [roadmap.md](./roadmap.md) - Visione evolutiva e obiettivi 2026.
+3. [philosophy.md](./philosophy.md) - La gestione "Zen" dei flussi asincroni.
 
-### Product
-| File | Scopo |
-|------|-------|
-| PRD.md | Product Requirements |
-| PRODUCT_ROADMAP.md | Roadmap |
-| PRODUCT_STRATEGY.md | Strategy |
-| PRODUCT_LAUNCH_PLAN.md | Launch Plan |
+## 🏗️ **Core Logic & Services**
+- ⚡ **[Queue Management](./queueable-action.md)** - Guida alla gestione delle code e dei worker.
+- 🕒 **[Scheduling System](./schedule.md)** - Configurazione di cron job e task pianificati.
+- 🧬 **[Batch Processing](./analysis.md)** - Elaborazione massiva di job concatenati.
 
-### Development
-| File | Scopo |
-|------|-------|
-| GSD_WORKFLOW.md | GSD Workflow |
-| SPRINT_PLANNING.md | Sprint Planning |
-| USER_RESEARCH.md | User Research |
+## 📊 **Monitoring & Reports**
+- 📈 **[Job Monitor UI](./filament.md)** - Dashboard di monitoraggio in Filament.
+- 📄 **[PDF Reports](./job-reports.md)** - Generazione di log e statistiche in PDF (HTML2PDF).
+- 🔗 **[Soketi & Socket.io](./soketi.md)** - Real-time monitoring tramite websocket.
 
-## 🔗 Riferimenti
+## 🧪 **Qualità e Sviluppo**
+- ✅ **[PHPStan Level 10](./phpstan-level-10-compliance.md)** - Conformità e fix specifici.
+- 🔬 **[Testing Strategy](./testing.md)** - Approccio Pest per i flussi di coda.
+- 🧹 **[PHPMD & Complexity](./cyclomatic-complexity-report.md)** - Analisi della pulizia del codice.
 
-- [Xot Module](../Xot/docs/00-index.md) - Base classes
-- [AGENTS.md](../../../../AGENTS.md) - Project guidelines
+## 📦 **Pacchetti Composer**
+- [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot, spipu/html2pdf (via Xot)
+
+## 🔗 **Moduli Correlati**
+- [Xot](../../xot/docs/readme.md) - Base framework e Page classes.
+- [Activity](../../activity/docs/readme.md) - Tracciamento log esecuzione.
+- [Notify](../../notify/docs/readme.md) - Notifiche fallimento job.
 
 ---
+*Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
 
-**Ultimo Aggiornamento**: 2026-03-24
+## Dependency Intelligence
+
+- [Dependency intelligence](dependency-intelligence.md)

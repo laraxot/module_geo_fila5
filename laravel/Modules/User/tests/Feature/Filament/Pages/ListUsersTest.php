@@ -35,7 +35,7 @@ beforeEach(function (): void {
 
     $users = UserFactory::new()
         ->count(3)
-        ->create([
+        ->createOne([
             'type' => UserType::MasterAdmin,
         ]);
 

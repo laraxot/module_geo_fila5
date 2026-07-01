@@ -207,13 +207,6 @@ trait FunctionTrait
 
         $name = Str::snake(Str::before(Str::after($func, 'get'), 'Attribute'));
         if (! \is_object($this->peso)) {
-            $msg = [
-                'propro' => $this->propro,
-                'anno' => $this->anno,
-                'qua2k' => $this->qua2kd,
-            ];
-
-            // dddx($msg);
             return null;
         }
 

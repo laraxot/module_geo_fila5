@@ -2,12 +2,17 @@
 
 declare(strict_types=1);
 
+namespace Modules\User\Tests\Unit;
+
+use function Safe\file_get_contents;
+
 test('it does not reference the comment module anywhere under user app', function (): void {
     $appPath = dirname(__DIR__, 2).'/app';
-    $iterator = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($appPath, FilesystemIterator::SKIP_DOTS)
+    $iterator = new \RecursiveIteratorIterator(
+        new \RecursiveDirectoryIterator($appPath, \FilesystemIterator::SKIP_DOTS)
     );
 
+    /** @var \SplFileInfo $file */
     foreach ($iterator as $file) {
         if (! $file->isFile() || 'php' !== $file->getExtension()) {
             continue;
@@ -17,7 +22,7 @@ test('it does not reference the comment module anywhere under user app', functio
             continue;
         }
 
-        $contents = (string) file_get_contents($file->getPathname());
+        $contents = file_get_contents($file->getPathname());
 
         expect($contents)
             ->not->toContain('Modules\\Comment\\')
@@ -28,7 +33,7 @@ test('it does not reference the comment module anywhere under user app', functio
 
 test('base user model does not use comment traits', function (): void {
     $baseUserPath = dirname(__DIR__, 2).'/app/Models/BaseUser.php';
-    $contents = (string) file_get_contents($baseUserPath);
+    $contents = file_get_contents($baseUserPath);
 
     expect($contents)
         ->not->toContain('HasCommentatorRelations')

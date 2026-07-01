@@ -27,6 +27,9 @@ class FailedJobsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, Action>
+     */
     public function getTableHeaderActions(): array
     {
         return [

@@ -9,8 +9,8 @@ Use `laravel/Themes/Zero/composer.json` only for theme-owned PHP dependencies or
 ## Laravel 13 migration impact
 
 - Do not add `laravel/framework`, `nwidart/laravel-modules`, Passport, permissions, or debugbar to this theme composer.
-- Debugbar is a cross-application dev tool owned by `Modules/Xot/composer.json` as `fruitcake/laravel-debugbar:^4.2.8`; themes must not declare `barryvdh/laravel-debugbar` or `fruitcake/laravel-debugbar`.
-- If the theme composer has PHP autoload or runtime PHP dependencies, decide whether `Themes/*/composer.json` must be added to the root merge-plugin include list.
+- Debugbar e' tool dev cross-app in `Modules/Xot/composer.json` (`fruitcake/laravel-debugbar`); i temi non lo dichiarano.
+- **Non** aggiungere `Themes/*/composer.json` al merge root: autoload runtime via Xot (`RegisterRuntimePsr4NamespacesAction`). Vedi [theme-composer-boundary](../TwentyOne/docs/wiki/concepts/theme-composer-boundary.md).
 - Keep Filament widget logic in modules; the theme only renders module-provided widgets and views.
 
 ## Verification

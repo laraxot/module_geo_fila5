@@ -25,7 +25,7 @@ use PHPUnit\Framework\Assert;
 
 describe('Socialite utility actions', function (): void {
     it('returns allow list when configured as string', function (): void {
-        config(['filament-socialite.domain_allowlist' => 'example.com']);
+        config(['socialite.domain_allowlist' => 'example.com']);
 
         $result = app(GetDomainAllowListAction::class)->execute();
 
@@ -33,15 +33,31 @@ describe('Socialite utility actions', function (): void {
     });
 
     it('returns allow list when configured as array', function (): void {
-        config(['filament-socialite.domain_allowlist' => ['a.com', 'b.com']]);
+        config(['socialite.domain_allowlist' => ['a.com', 'b.com']]);
 
         $result = app(GetDomainAllowListAction::class)->execute();
 
         Assert::assertSame(['a.com', 'b.com'], $result);
     });
 
+    it('returns empty array when domain allowlist not configured', function (): void {
+        config(['socialite.domain_allowlist' => null]);
+
+        $result = app(GetDomainAllowListAction::class)->execute();
+
+        Assert::assertSame([], $result);
+    });
+
     it('returns registration flag from config', function (): void {
-        config(['filament-socialite.registration' => true]);
+        config(['socialite.registration' => true]);
+
+        $result = app(IsRegistrationEnabledAction::class)->execute();
+
+        Assert::assertTrue($result);
+    });
+
+    it('returns true as default when registration config is missing', function (): void {
+        config(['socialite.registration' => null]);
 
         $result = app(IsRegistrationEnabledAction::class)->execute();
 

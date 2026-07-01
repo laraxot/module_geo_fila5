@@ -25,7 +25,7 @@ Memoria operativa per ripartire domani senza perdere contesto.
 
 | Path | Nota |
 |------|------|
-| `app/Models/Policies/*.php` (8) | Vuote su `JobBasePolicy` |
+| `app/Models/Policies/*.php` (16) | Una policy per modello; logica in policy file o `JobBasePolicy::before()` — **non eliminare** |
 | `app/Providers/JobServiceProvider.php` | Parse fix; queue hooks commentati |
 | `app/Filament/Resources/.../Tables/JobsTable.php` | HEAD, colonne keyed static |
 | `app/Filament/Resources/.../Tables/FailedJobsTable.php` | idem |

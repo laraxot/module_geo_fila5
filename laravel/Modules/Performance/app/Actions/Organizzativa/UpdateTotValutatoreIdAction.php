@@ -93,7 +93,7 @@ class UpdateTotValutatoreIdAction
 
         // Crea record per ogni valutatore
         foreach ($valutatoriIds as $valutatoreId) {
-            $res = TotValutatoreId::create([
+            TotValutatoreId::create([
                 'valutatore_id' => $valutatoreId,
                 'anno' => $year,
             ]);

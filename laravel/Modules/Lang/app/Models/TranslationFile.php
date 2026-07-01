@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\File;
 use Modules\Lang\Actions\GetAllTranslationAction;
 use Modules\Lang\Database\Factories\TranslationFileFactory;
 use Modules\Xot\Contracts\ProfileContract;
+
 use function Safe\json_encode;
+
 use Sushi\Sushi;
 
 /**
@@ -67,7 +69,8 @@ class TranslationFile extends BaseModel
     {
         $files = app(GetAllTranslationAction::class)->execute();
 
-        $result = Arr::map($files, static function ($item): array {
+        /** @var array<int, array<string, mixed>> $result */
+        $result = Arr::map($files, function ($item) {
             if (! is_array($item)) {
                 return [];
             }
@@ -108,7 +111,6 @@ class TranslationFile extends BaseModel
             // dddx($item);
             return $item;
         });
-        /** @var array<int, array<string, mixed>> $result */
 
         return $result;
     }

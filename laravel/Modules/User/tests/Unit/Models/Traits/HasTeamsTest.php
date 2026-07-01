@@ -110,7 +110,7 @@ test('has teams trait integration with real user model', function (): void {
 });
 
 test('has teams trait user model exposes teams relation', function (): void {
-    Assert::assertInstanceOf(BelongsToMany::class, (new User())->teams());
+    Assert::assertInstanceOf(BelongsToMany::class, (new User())->membershipTeams());
 });
 
 test('has teams trait empty teams collection', function (): void {

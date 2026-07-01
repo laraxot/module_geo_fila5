@@ -5,11 +5,19 @@ declare(strict_types=1);
 namespace Modules\Lang\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Lang\Models\TranslationFile;
 
+/**
+ * TranslationFile è Sushi (GetAllTranslationAction) — seeder scalda l'indice file lang.
+ */
 class TranslationFileSeeder extends Seeder
 {
     public function run(): void
     {
-        // Stub per parità modulo — i dati sono sacri, mai migrate:fresh.
+        $count = TranslationFile::query()->count();
+
+        if (null !== $this->command) {
+            $this->command->info("TranslationFileSeeder: {$count} file lang indicizzati via Sushi.");
+        }
     }
 }

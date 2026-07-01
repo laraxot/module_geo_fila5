@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo;
-use Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\MutatorTrait;
 use Modules\IndennitaCondizioniLavoro\Models\Traits\RelationshipTrait;
 use Modules\Ptv\Models\Profile;
@@ -318,7 +316,7 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
     public function getTotXPtimeAttribute(?float $value): ?float
     {
         $tot = $this->tot ?? 0.0;
-        $percPTime = isset($this->perc_p_time_daterange) ? $this->perc_p_time_daterange : null;
+        $percPTime = $this->perc_p_time_daterange ?? null;
         $ptime = is_numeric($percPTime) ? (float) $percPTime : 0.0;
 
         return $tot * $ptime;
@@ -585,8 +583,8 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
     	)';
         $rows0 = Rep00f::where('repst1', $stabi)->where('repre1', $repar)->whereRaw($sql)->whereRaw('repann=""');
         foreach ($rows0->get() as $row) {
-            $rep2kdRaw = isset($row->rep2kd) ? $row->rep2kd : null;
-            $rep2kaRaw = isset($row->rep2ka) ? $row->rep2ka : null;
+            $rep2kdRaw = $row->rep2kd ?? null;
+            $rep2kaRaw = $row->rep2ka ?? null;
             // Type narrowing: toCarbonOrNull accepts mixed but returns Carbon|null
             /** @var \Carbon\Carbon|null $rep2kdDate */
             $rep2kdDate = self::toCarbonOrNull($rep2kdRaw);
@@ -619,8 +617,8 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
 
             if ($obj->propro === 0 || $obj->propro === null) {
                 // Type narrowing: ensure dal and al are valid before calling toCarbonOrNull
-                $dalRaw = isset($obj->dal) ? $obj->dal : null;
-                $alRaw = isset($obj->al) ? $obj->al : null;
+                $dalRaw = $obj->dal ?? null;
+                $alRaw = $obj->al ?? null;
                 // toCarbonOrNull() returns ?Carbon, add explicit type annotation
                 /** @var \Carbon\Carbon|null $dalCarbon */
                 $dalCarbon = self::toCarbonOrNull($dalRaw);

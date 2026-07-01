@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Xot\Tests;
+namespace Modules\User\Tests\Support;
 
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
@@ -10,9 +10,9 @@ use Illuminate\Foundation\Application;
 use function Safe\realpath;
 
 /**
- * PHPStan-visible CreatesApplication trait for XotBaseTestCase.
+ * PHPStan-visible CreatesApplication trait for User test support.
  *
- * Mirrors Modules/Xot/tests/CreatesApplication.php with proper namespace.
+ * Mirrors the application bootstrap contract with a PSR-4 compliant User test namespace.
  */
 trait CreatesApplication
 {

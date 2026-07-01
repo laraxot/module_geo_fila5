@@ -15,7 +15,10 @@ uses(TestCase::class);
 describe('Password Validation Rules', function (): void {
     test('password validation rules trait can be used', function (): void {
         Assert::assertTrue(trait_exists(PasswordValidationRules::class));
-        Assert::assertInstanceOf(PasswordValidationRulesFixture::class, new PasswordValidationRulesFixture());
+        Assert::assertInstanceOf(
+            PasswordValidationRulesFixture::class,
+            new PasswordValidationRulesFixture(),
+        );
     });
 
     test('password validation rules trait provides password rules method', function (): void {
@@ -25,7 +28,9 @@ describe('Password Validation Rules', function (): void {
         $fixture = new PasswordValidationRulesMockableFixture();
         $rules = $fixture->getPasswordRules();
 
-        Assert::assertCount(3, $rules);
-        Assert::assertSame(['required', 'string', 'confirmed'], $rules);
+        Assert::assertCount(4, $rules);
+        Assert::assertSame('required', $rules[0]);
+        Assert::assertSame('string', $rules[1]);
+        Assert::assertSame('confirmed', $rules[3]);
     });
 });

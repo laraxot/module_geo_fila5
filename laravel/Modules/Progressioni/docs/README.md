@@ -4,7 +4,7 @@ module: Progressioni
 type: index
 status: approved
 tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
+updated: "2026-07-01"
 related:
   - ../README.md
 ---
@@ -16,6 +16,18 @@ related:
 ## Scopo
 
 Career progression management module for the Laraxot ecosystem: promotions, salary advancements, and professional development tracking.
+
+## Stato qualità (2026-07-01)
+
+- **PHPStan** (`level: max`, config immutabile): `./vendor/bin/phpstan analyse Modules/Progressioni --memory-limit=4G` → **0 errori**. Il presunto errore in `TrovaEsclusiAction.php` segnalato in un run precedente era un falso positivo da OOM su run parziale.
+- **PHPMD** (`cleancode,codesize,design,naming,unusedcode,controversial`): violazioni residue principalmente `CamelCase*` su campi/variabili che rispecchiano nomi colonna DB legacy (`valutaz_fields`, `stabi_dirigente_parz`, ecc.) e complessità elevata in `Scheda.php` (`validate()`, `updateFields()`, `ggInSedeTotByArray()`) e `ProgressioniFunctionTrait.php`. Non rinominate/rifattorizzate per il rischio di rompere integrazioni con DB legacy e assenza di copertura test adeguata: debito tecnico noto, non introdotto in questa sessione.
+- **Fix applicati in questa sessione**:
+  - `app/Models/Scheda.php::updateVincitori()` — rimossa variabile morta `$res` (risultato `update()` mai utilizzato).
+  - `app/Models/Traits/ProgressioniFunctionTrait.php` — rimosso loop morto che assegnava `$a` senza mai leggerlo.
+  - `tests/Unit/Actions/RefreshByYearActionTest.php` — corretta firma errata (`: void` con `return`) nel mock anonimo di `Model::getAttribute()`/`getKey()` che mandava in fatal error l'intera suite Pest del modulo.
+  - Stile/formattazione: applicato `./vendor/bin/pint Modules/Progressioni` (regole non rischiose, preset `laravel`: import ordering, PHPDoc, graffe, blank lines). Nessuna modifica di semantica.
+- **PHPInsights**: punteggio Style passato da 74.7 a 88 pts dopo Pint. Architecture resta basso (~59 pts) principalmente per la regola "classes must be final or abstract", non applicata perché impatterebbe l'intera gerarchia dei model/Filament Resources del modulo (rischio regressione su estendibilità/mock nei test).
+- **Pest**: `./vendor/bin/pest Modules/Progressioni/tests` esegue (dopo il fix del mock rotto) ma la maggior parte dei test falla con `LogicException: bootIfNotBooted ... while it is being booted` — problema di infrastruttura test pre-esistente (assenza DB sqlite di test), non introdotto né risolto in questa sessione per rispetto della regola "mai toccare il DB in modo distruttivo/migrate". Non sono stati aggiunti nuovi test dedicati per le due micro-correzioni sopra (rimozione codice morto, nessun cambio di comportamento osservabile).
 
 ## Dove iniziare
 

@@ -58,7 +58,7 @@ class AssignTeamCommand extends Command
             // }
         );
 
-        $user->teams()->sync($rows);
+        $user->membershipTeams()->sync($rows);
         /*
          * foreach ($rows as $row) {
          * $role = Role::firstOrCreate(['name' => $row]);
@@ -67,7 +67,7 @@ class AssignTeamCommand extends Command
          */
         $this->info('Teams :'.implode(', ', $rows).' assigned to '.$email);
 
-        $rows = $user->teams()->get()->toArray();
+        $rows = $user->membershipTeams()->get()->toArray();
 
         if (\count($rows) > 0) {
             Assert::isArray($rows[0]);

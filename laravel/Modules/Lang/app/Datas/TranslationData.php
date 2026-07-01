@@ -27,12 +27,12 @@ class TranslationData extends Data
 
     public function getFilename(): string
     {
-        if ($this->filename !== null) {
+        if (null !== $this->filename) {
             return $this->filename;
         }
         $hints = app('translator')->getLoader()->namespaces();
         $path = collect($hints)->get($this->namespace);
-        if ($path === null) {
+        if (null === $path) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
@@ -58,8 +58,10 @@ class TranslationData extends Data
         if (! is_array($data)) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
-        /** @var array<string, mixed> $data */
 
-        return $data;
+        /** @var array<string, mixed> $result */
+        $result = $data;
+
+        return $result;
     }
 }

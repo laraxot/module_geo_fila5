@@ -18,7 +18,7 @@ class TranslationEditor extends XotBaseField
     {
         parent::setUp();
 
-        $this->afterStateHydrated(static function (TranslationEditor $component, $state): void {
+        $this->afterStateHydrated(function (TranslationEditor $component, $state): void {
             $component->state($state ?? []);
         });
     }

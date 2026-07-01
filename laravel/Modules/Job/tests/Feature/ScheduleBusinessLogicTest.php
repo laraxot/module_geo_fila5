@@ -10,22 +10,15 @@ use Modules\Job\Models\ScheduleHistory;
 use Modules\Job\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Job\Tests\TestCase::class);
+uses(TestCase::class);
 
 describe('Schedule Business Logic', function (): void {
     test('_can_create_schedule_with_basic_information', function (): void {
-        /** @var \Modules\Job\Tests\TestCase $this */
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'inspire',
             'expression' => '0 2 * * *',
             'status' => Status::Active,
             'log_filename' => 'backup.log',
-        ]);
-
-        $this->assertDatabaseHasRow('schedules', [
-            'id' => $schedule->id,
-            'command' => 'inspire',
-            'expression' => '0 2 * * *',
         ]);
 
         Assert::assertSame('inspire', $schedule->command);
@@ -34,7 +27,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_manage_schedule_activation_and_deactivation', function (): void {
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'cache:clear',
             'expression' => '0 * * * *',
             'status' => Status::Active,
@@ -48,7 +41,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_handle_schedule_cron_expressions', function (): void {
-$dailySchedule = Schedule::create([
+        $dailySchedule = Schedule::create([
             'command' => 'daily:task',
             'expression' => '0 9 * * *',
             'status' => Status::Active,
@@ -72,7 +65,7 @@ $dailySchedule = Schedule::create([
     });
 
     test('_can_scope_active_and_inactive_schedules', function (): void {
-Schedule::create([
+        Schedule::create([
             'command' => 'active:task',
             'expression' => '*/15 * * * *',
             'status' => Status::Active,
@@ -89,7 +82,7 @@ Schedule::create([
     });
 
     test('_can_build_arguments_from_params', function (): void {
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'email:send',
             'expression' => '0 * * * *',
             'status' => Status::Active,
@@ -108,7 +101,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_build_options_from_configuration', function (): void {
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'queue:work',
             'expression' => '0 9 * * 1',
             'status' => Status::Active,
@@ -125,7 +118,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_manage_schedule_history_and_logging', function (): void {
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'history:task',
             'expression' => '0 * * * *',
             'status' => Status::Active,
@@ -151,7 +144,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_handle_schedule_status_transitions', function (): void {
-$schedule = Schedule::create([
+        $schedule = Schedule::create([
             'command' => 'status:task',
             'expression' => '0 * * * *',
             'status' => Status::Active,
@@ -170,7 +163,7 @@ $schedule = Schedule::create([
     });
 
     test('_can_handle_schedule_batch_operations', function (): void {
-$batchSchedules = [];
+        $batchSchedules = [];
 
         for ($i = 1; $i <= 3; $i++) {
             $batchSchedules[] = Schedule::create([

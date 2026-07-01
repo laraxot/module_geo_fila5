@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\HasApiTokens;
+use Modules\User\Contracts\HasAuthentications;
 use Modules\User\Models\Traits\HasAuthenticationLogTrait;
 use Modules\User\Models\Traits\HasDevices;
 use Modules\User\Models\Traits\HasModules;
@@ -61,8 +63,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @property ProfileContract|null                                      $profile
  * @property Collection<int, Role>                                     $roles
  * @property int|null                                                  $roles_count
- * @property Collection<int, Team>                                     $teams
- * @property int|null                                                  $teams_count
+ * @property Collection<int, Team>                                     $membershipTeams
+ * @property int|null                                                  $membership_teams_count
  * @property Collection<int, Tenant>                                   $tenants
  * @property int|null                                                  $tenants_count
  * @property Collection<int, OauthToken>                               $tokens
@@ -125,7 +127,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  *
  * @mixin \Eloquent
  */
-abstract class BaseUser extends Authenticatable implements HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
+abstract class BaseUser extends Authenticatable implements HasAuthentications, HasMedia, HasName, HasTenants, MustVerifyEmail, OAuthenticatable, UserContract
 {
     use HasApiTokens;
     use HasAuthenticationLogTrait;
@@ -133,11 +135,15 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
     use HasDevices;
     use HasModules;
     use HasSocialite;
-    use HasSpatiePermission;
-    use HasTeams;
+    use HasSpatiePermission, HasTeams {
+        HasSpatiePermission::teams insteadof HasTeams;
+        HasTeams::teams as membershipTeams;
+    }
     use HasUuids;
-    /** @phpstan-use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
+
+    /** @phpstan-use HasXotFactory<Factory<static>> */
     use HasXotFactory;
+
     use InteractsWithMedia;
     use Notifiable;
 
@@ -325,12 +331,12 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
 
     public function detach(Model $model): void
     {
-        $this->teams()->detach($model);
+        $this->membershipTeams()->detach($model);
     }
 
     public function attach(Model $model): void
     {
-        $this->teams()->attach($model);
+        $this->membershipTeams()->attach($model);
     }
 
     public function treeLabel(): string
@@ -346,7 +352,7 @@ abstract class BaseUser extends Authenticatable implements HasMedia, HasName, Ha
      */
     public function treeSons(): Collection
     {
-        return $this->teams ?? new Collection();
+        return $this->membershipTeams ?? new Collection();
     }
 
     /**

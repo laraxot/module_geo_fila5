@@ -46,3 +46,12 @@ qmd search "Job <topic>" --limit 5
 ## Shared Second Brain Discipline
 
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) — local docs/wiki operating contract aligned with root LLM Wiki discipline.
+
+## Composer / nwidart
+
+- [composer-root-minimal-nwidart](concepts/composer-root-minimal-nwidart.md) — root skeleton nwidart (modello fixcity)
+
+## Guardrail policy
+
+- [model-policy-laravel-contract](./concepts/model-policy-laravel-contract.md)
+- [policy-restoration-incident](./concepts/policy-restoration-incident.md)

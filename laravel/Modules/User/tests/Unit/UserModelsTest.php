@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Database\Factories\PermissionFactory;
 use Modules\User\Database\Factories\ProfileFactory;
 use Modules\User\Database\Factories\RoleFactory;
@@ -14,10 +13,12 @@ use Modules\User\Models\Role;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\Tenant;
 use Modules\User\Models\User;
+use Modules\User\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
+
 it('can create a user with basic attributes', function () {
-    /** @var Modules\User\Tests\TestCase $this */
     $email = 'john-'.uniqid('', true).'@example.com';
     $user = createTestUser([
         'name' => 'John Doe',
@@ -32,7 +33,6 @@ it('can create a user with basic attributes', function () {
 });
 
 it('can create a user with profile', function () {
-    /* @var \Modules\User\Tests\TestCase $this */
     skipUnlessUserTable('profiles', 'profiles table missing on user connection.');
     skipUnlessUserColumn('profiles', 'user_id', 'profiles.user_id column missing on user connection.');
     skipUnlessUserColumn('profiles', 'uuid', 'profiles.uuid column missing on user connection.');
@@ -52,7 +52,6 @@ it('can create a user with profile', function () {
 });
 
 it('can authenticate a user', function () {
-    /** @var Modules\User\Tests\TestCase $this */
     $email = 'auth-'.uniqid('', true).'@example.com';
     $user = createTestUser([
         'email' => $email,
@@ -67,7 +66,6 @@ it('can authenticate a user', function () {
 });
 
 it('can create a user role', function () {
-    /** @var Modules\User\Tests\TestCase $this */
     $roleName = 'admin-'.uniqid();
     $role = RoleFactory::new()->createOne([
         'name' => $roleName,
@@ -79,7 +77,6 @@ it('can create a user role', function () {
 });
 
 it('can create a user permission', function () {
-    /** @var Modules\User\Tests\TestCase $this */
     $permissionName = 'edit_posts_'.uniqid();
     $permission = PermissionFactory::new()->createOne([
         'name' => $permissionName,
@@ -91,7 +88,6 @@ it('can create a user permission', function () {
 });
 
 it('can assign role to user', function () {
-    /* @var \Modules\User\Tests\TestCase $this */
     skipUnlessRoleAssignmentSupported();
 
     $user = createTestUser();
@@ -107,7 +103,6 @@ it('can assign role to user', function () {
 });
 
 it('can attach permission to user', function () {
-    /* @var \Modules\User\Tests\TestCase $this */
     skipUnlessDirectPermissionSupported();
 
     $user = createTestUser();
@@ -123,7 +118,6 @@ it('can attach permission to user', function () {
 });
 
 it('can create a tenant user', function () {
-    /* @var \Modules\User\Tests\TestCase $this */
     skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing on user connection.');
 
     $tenant = TenantFactory::new()->createOne([
@@ -145,7 +139,6 @@ it('can create a tenant user', function () {
 });
 
 it('can create a user with socialite data', function () {
-    /** @var Modules\User\Tests\TestCase $this */
     $email = 'social-'.uniqid('', true).'@example.com';
     $user = createTestUser([
         'name' => 'Social User',

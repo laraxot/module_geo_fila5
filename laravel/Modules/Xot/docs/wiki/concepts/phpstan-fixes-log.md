@@ -154,3 +154,17 @@ Rimosso `Modules/Xot/app/Filament/Widgets/TestWidget.php`:
 cd laravel && php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Xot --level=10
 # [OK] No errors
 ```
+
+## Fix #5 (2026-07-01): Laravel 13 — tipi nativi su proprietà ereditate
+
+### EventServiceProvider (Lang, Progressioni, Rating, Sigma, Tenant, Ptv)
+
+Rimosso tipo nativo su `$listen` / `$shouldDiscoverEvents` dove la base Laravel non lo definisce. Vedi [Lang troubleshooting](../../Lang/docs/wiki/troubleshooting/phpstan-fixes.md).
+
+### `BaseScheda::$with` (Ptv)
+
+`protected array $with` → `protected $with` con `@var list<string>` — `Model::$with` non è tipizzato in Laravel 13.
+
+### `EnteMatrRelationship::anag()` (Sigma)
+
+Return `HasOne` (non `HasOne|BelongsTo`) — `hasOneByEnteMatr()` restituisce sempre `HasOne`; union incompatibile con `BaseScheda::anag(): HasOne`.

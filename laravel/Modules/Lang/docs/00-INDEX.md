@@ -1,30 +1,43 @@
-# 📚 LANG Module - Documentation Index
+# 📚 **Indice Documentazione Modulo Lang**
 
-**Path**: `laravel/Modules/Lang/docs/`  
-**Modulo**: @Modules/Lang
+**Status**: ✅ PHPStan Level 10 Compliant
+**Module Version**: 1.5.0
 
-## 📄 Documenti
+## 🎯 **Lettura Essenziale**
+1. [README.md](./README.md) - Panoramica del sistema di internazionalizzazione.
+2. [roadmap.md](./roadmap.md) - Evoluzione 2026: Traduzioni AI e centralizzazione.
+3. [philosophy.md](./philosophy.md) - La lingua come infrastruttura: filosofia Laraxot.
 
-### Product
-| File | Scopo |
-|------|-------|
-| PRD.md | Product Requirements |
-| PRODUCT_ROADMAP.md | Roadmap |
-| PRODUCT_STRATEGY.md | Strategy |
-| PRODUCT_LAUNCH_PLAN.md | Launch Plan |
+## 🏗️ **Configurazione e Setup**
+- 🌍 **[Locale Management](./locale-management.md)** - Gestione delle lingue attive e default.
+- 🛣️ **[Route Localization](./laravel-localization-folio-integration.md)** - Integrazione con Folio e Volt per URL localizzati.
+- ⚙️ **[Service Provider](./lang-service-provider-improvements.md)** - Architettura del caricamento dinamico delle traduzioni.
 
-### Development
-| File | Scopo |
-|------|-------|
-| GSD_WORKFLOW.md | GSD Workflow |
-| SPRINT_PLANNING.md | Sprint Planning |
-| USER_RESEARCH.md | User Research |
+## 🏷️ **Naming & Standards**
+- 🚫 **[No Hardcoded Labels](./filament-label.md)** - Perché non usiamo mai `->label()` o `->placeholder()`.
+- 🗂️ **[Translation Keys](./translation-keys-best-practices.md)** - Convenzioni per la struttura delle chiavi (module::file.key).
+- 📜 **[Enum Translation](./enum-translation-pattern-implementation.md)** - Pattern per la traduzione automatica degli Enum.
 
-## 🔗 Riferimenti
+## 🚀 **Funzionalità Avanzate**
+- ⚡ **[Auto-Registration](./autoregistration-commands.md)** - Comandi Artisan per scoprire e registrare nuove chiavi.
+- 🤖 **[Automatic Translations](./automatic-translations.md)** - (DAB) Integrazione con motori di traduzione esterna.
+- 📝 **[Translation File Editor](./translation-file-editor.md)** - UI per la modifica dei file `.php` di lingua.
 
-- [Xot Module](../Xot/docs/00-index.md) - Base classes
-- [AGENTS.md](../../../../AGENTS.md) - Project guidelines
+## 🧪 **Qualità e Testing**
+- ✅ **[PHPStan Analysis](./phpstan-analysis-lang.md)** - Report di conformità Level 10.
+- 🔬 **[Testing Guidelines](./testing.md)** - Verifica della presenza delle chiavi di traduzione.
+- 🐒 **[Chaos Monkey Translation Fallbacks](./chaos-monkey-translation-fallbacks.md)** - Protocollo di recovery su regressioni i18n.
+
+## 🧹 **Manutenzione**
+- 🗑️ **[Cleanup Plan](./docs-naming-convention-fix.md)** - Rimozione dei 260+ file obsoleti.
+
+## 🔗 **Moduli Correlati**
+- [Xot](../../xot/docs/readme.md) - Base framework e classi `XotBaseChartWidget`.
+- [UI](../../ui/docs/readme.md) - Componenti Blade e Filament che consumano le traduzioni.
 
 ---
+*Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
 
-**Ultimo Aggiornamento**: 2026-03-24
+## Dependency Intelligence
+
+- [Dependency intelligence](dependency-intelligence.md)

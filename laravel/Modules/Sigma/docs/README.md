@@ -4,7 +4,7 @@ module: Sigma
 type: index
 status: approved
 tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
+updated: "2026-07-01"
 related:
   - ../README.md
 ---
@@ -16,6 +16,16 @@ related:
 ## Scopo
 
 Sigma HR system integration module for the Laraxot ecosystem: data import/export, payroll sync, and external HR software interoperability.
+
+## Stato qualità (2026-07-01)
+
+- **PHPStan** (`level: max`): `./vendor/bin/phpstan analyse Modules/Sigma --memory-limit=4G` → **0 errori**. L'errore precedentemente segnalato in `app/Models/Traits/Extras/FunctionExtra.php:617` (`is_string()` sempre vero) **non si è riprodotto** su un run pulito: era un falso positivo da OOM di un run parziale precedente.
+- **PHPMD**: modulo grande (46k righe), violazioni residue soprattutto complessità elevata (`ImportJsonAction::execute()` NPath 37440, `SyncModelAction::execute()`), `ElseExpression` e naming legacy DB (`matr`, `qua2kd`, `propro`, ecc.). Non rifattorizzate: `ImportJsonAction`/`SyncModelAction` gestiscono logiche di import HR legacy critiche, un refactoring della complessità richiederebbe una suite di test di integrazione che non esiste — rischio troppo alto per uno scope di solo cleanup.
+- **Fix applicati in questa sessione**:
+  - `app/Actions/WebService/ImportJsonAction.php` — rimossa variabile morta `$n_rows` (risultato di `$pdo->exec()` mai letto).
+  - Stile/formattazione: applicato `./vendor/bin/pint Modules/Sigma` (preset `laravel`, regole non rischiose). **Nota**: inizialmente era stato provato `phpinsights --fix`, che ha introdotto proprietà tipizzate su `protected $fillable`/`$listen`/`$connection`/`$table` in conflitto con le property non tipizzate di `Illuminate\Database\Eloquent\Model` (fatal error "must not be defined") e centinaia di conversioni `== null` → `=== null` con rischio di cambio di comportamento su confronti legacy. Le modifiche sono state **annullate** (`git checkout`) e sostituite con Pint, che usa solo regole di formattazione non rischiose.
+- **PHPInsights**: Style migliorato dopo Pint (verificato con `composer.lock` copiato temporaneamente nel modulo per bypassare un bug noto del tool quando analizza una sotto-directory).
+- **Pest**: `./vendor/bin/pest Modules/Sigma/tests` → **3 test, tutti passano** (non richiedono DB).
 
 ## Dove iniziare
 

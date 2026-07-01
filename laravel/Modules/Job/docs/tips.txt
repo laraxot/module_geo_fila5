@@ -1,7 +1,1 @@
----
-module: theme
-topic: tips
-canonical: ../../../Themes/docs/shared-components/tips.txt
----
-
-See canonical documentation: ../../../Themes/docs/shared-components/tips.txt
+https://dudi.dev/optimize-laravel-database-queries/

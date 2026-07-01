@@ -55,7 +55,7 @@ class ThemeComposer
             $regionalParts = explode('_', $regional);
             $regionalCode = $regionalParts[0] ?? 'en';
 
-            if ($regionalCode === 'en') {
+            if ('en' === $regionalCode) {
                 $regionalCode = 'gb';
             }
 
@@ -93,7 +93,7 @@ class ThemeComposer
     {
         $currentLocale = app()->getLocale();
 
-        return $this->languages()->filter(static function (mixed $item) use ($currentLocale): bool {
+        return $this->languages()->filter(function (mixed $item) use ($currentLocale): bool {
             // Ensure the item is an instance of LangData
             if (! $item instanceof LangData) {
                 throw new \Exception(sprintf('Expected instance of LangData, got %s', is_object($item) ? $item::class : gettype($item)));
@@ -122,7 +122,7 @@ class ThemeComposer
         // Verifichiamo che il valore del campo sia una stringa o lo convertiamo in modo sicuro
         $value = $lang->{$field};
         if (! is_string($value)) {
-            return $field === 'id' ? $currentLocale : '';
+            return 'id' === $field ? $currentLocale : '';
         }
 
         return $value;

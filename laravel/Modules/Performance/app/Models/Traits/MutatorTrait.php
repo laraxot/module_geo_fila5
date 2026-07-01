@@ -82,8 +82,6 @@ trait MutatorTrait
     {
         $lista_tipo_codice_assenze = $this->listaTipoCodiceAssenze();
 
-        $aszdur = "(hour(replace(aszdur,'.',':')))+((minute(replace(aszdur,'.',':')))/60)";
-
         $date_min = $this->dal;
         $date_max = $this->al;
 

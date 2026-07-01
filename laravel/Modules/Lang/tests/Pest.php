@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\DB;
 use Modules\Lang\Database\Factories\TranslationFactory;
 use Modules\Lang\Models\Translation;
+use PHPUnit\Framework\Assert;
 
 use function Safe\file_put_contents;
 use function Safe\unlink;
@@ -49,4 +51,18 @@ function cleanupTranslationFile(string $filePath): void
     if (file_exists($filePath)) {
         unlink($filePath);
     }
+}
+
+/**
+ * @param array<string, mixed> $data
+ */
+function langAssertDatabaseHasRow(string $table, array $data, ?string $connection = 'lang'): void
+{
+    $query = DB::connection($connection)->table($table);
+
+    foreach ($data as $column => $value) {
+        $query->where((string) $column, $value);
+    }
+
+    Assert::assertTrue($query->exists());
 }

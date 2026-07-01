@@ -54,6 +54,7 @@ class UpdateQuotaTeoricaAction
         }
 
         $html .= '</table>';
+        \Illuminate\Support\Facades\Log::debug('UpdateQuotaTeoricaAction (organizzativa) debug table', ['html' => $html]);
 
         $where = 'ha_diritto>0 and anno="'.$year.'" and type = "'.$type.'"';
 

@@ -22,7 +22,7 @@ class DomainPolicy extends TenantBasePolicy
      */
     public function view(UserContract $user, Domain $domain): bool
     {
-        return $user->hasPermissionTo('domain.view');
+        return $domain->exists && $user->hasPermissionTo('domain.view');
     }
 
     /**
@@ -38,7 +38,7 @@ class DomainPolicy extends TenantBasePolicy
      */
     public function update(UserContract $user, Domain $domain): bool
     {
-        return $user->hasPermissionTo('domain.update');
+        return $domain->exists && $user->hasPermissionTo('domain.update');
     }
 
     /**
@@ -46,7 +46,7 @@ class DomainPolicy extends TenantBasePolicy
      */
     public function delete(UserContract $user, Domain $domain): bool
     {
-        return $user->hasPermissionTo('domain.delete');
+        return $domain->exists && $user->hasPermissionTo('domain.delete');
     }
 
     /**
@@ -54,7 +54,7 @@ class DomainPolicy extends TenantBasePolicy
      */
     public function restore(UserContract $user, Domain $domain): bool
     {
-        return $user->hasPermissionTo('domain.restore');
+        return $domain->exists && $user->hasPermissionTo('domain.restore');
     }
 
     /**
@@ -62,6 +62,6 @@ class DomainPolicy extends TenantBasePolicy
      */
     public function forceDelete(UserContract $user, Domain $domain): bool
     {
-        return $user->hasPermissionTo('domain.forceDelete');
+        return $domain->exists && $user->hasPermissionTo('domain.forceDelete');
     }
 }

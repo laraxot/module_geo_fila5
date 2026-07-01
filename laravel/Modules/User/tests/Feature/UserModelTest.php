@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 use Modules\User\Database\Factories\PermissionFactory;
@@ -52,7 +54,7 @@ describe('User Model', function (): void {
     });
 
     test('has factory', function (): void {
-        /** @var \Illuminate\Database\Eloquent\Collection<int, User> $users */
+        /** @var Collection<int, User> $users */
         $users = UserFactory::new()->count(3)->create();
 
         Assert::assertCount(3, $users);
@@ -124,7 +126,7 @@ describe('User Model', function (): void {
 
     test('can have teams', function (): void {
         $user = $this->requireUser();
-        Assert::assertInstanceOf(BelongsToMany::class, $user->teams());
+        Assert::assertInstanceOf(BelongsToMany::class, $user->membershipTeams());
     });
 
     test('can own teams', function (): void {
@@ -137,7 +139,7 @@ describe('User Model', function (): void {
         $team = TeamFactory::new()->createOne(['user_id' => $user->id]);
         $user->update(['current_team_id' => $team->id]);
 
-        Assert::assertInstanceOf(BelongsToMany::class, $user->teams());
+        Assert::assertInstanceOf(BelongsToMany::class, $user->membershipTeams());
     });
 
     test('can have roles', function (): void {
@@ -152,7 +154,7 @@ describe('User Model', function (): void {
 
     test('can have profile', function (): void {
         $user = $this->requireUser();
-        Assert::assertInstanceOf(\Illuminate\Database\Eloquent\Relations\HasOne::class, $user->profile());
+        Assert::assertInstanceOf(HasOne::class, $user->profile());
     });
 
     test('can have devices', function (): void {
@@ -190,7 +192,7 @@ describe('User Model', function (): void {
     test('can join ateam', function (): void {
         $user = $this->requireUser();
         $team = TeamFactory::new()->createOne();
-        $user->teams()->attach($team);
+        $user->membershipTeams()->attach($team);
 
         $freshModel1 = $user->fresh();
         Assert::assertNotNull($freshModel1);
@@ -200,8 +202,8 @@ describe('User Model', function (): void {
     test('can leave ateam', function (): void {
         $user = $this->requireUser();
         $team = TeamFactory::new()->createOne();
-        $user->teams()->attach($team);
-        $user->teams()->detach($team);
+        $user->membershipTeams()->attach($team);
+        $user->membershipTeams()->detach($team);
 
         $freshModel2 = $user->fresh();
         Assert::assertNotNull($freshModel2);

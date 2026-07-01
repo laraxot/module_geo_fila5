@@ -24,11 +24,11 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     UserFactory::new()
-                ->create([
-                    'type' => UserType::MasterAdmin,
-                    'email' => 'admin-'.uniqid().'@example.com',
-                    'password' => Hash::make('password123'),
-                ]);
+        ->createOne([
+            'type' => UserType::MasterAdmin,
+            'email' => 'admin-'.uniqid().'@example.com',
+            'password' => Hash::make('password123'),
+        ]);
 });
 
 describe('User Resource', function (): void {

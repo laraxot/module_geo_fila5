@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions\Organizzativa;
 
 use Modules\Performance\Models\Organizzativa as Scheda;
-use Modules\Performance\Models\OrganizzativaCatCoeff as CatCoeff;
 use Modules\Performance\Models\PerformanceFondo;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -22,11 +21,6 @@ class CheckSumAction
      */
     public function execute(string $year, string $type): void
     {
-        $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
-        $model = app(Scheda::class);
-        $tbl = $model->getTable();
-        $conn = $model->getConnection();
-
         Assert::notNull($imp = Scheda::selectRaw('sum(importo_totale) as tot')
             ->where('ha_diritto', '>', 0)
             ->where('anno', $year)
