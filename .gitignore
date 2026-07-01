@@ -404,6 +404,8 @@ docs/legacy/
 .cursor/*
 !.cursor/rules/
 !.cursor/rules/**
+# Ponytail upstream clone (bashscripts/tools/ponytail-sync.sh) — non versionare
+ponytail-source/
 .opencode/
 
 # AI Agent directories (Theme-specific)

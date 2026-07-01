@@ -13,14 +13,7 @@ use Modules\Sigma\Models\Traits\Relationships\CommonRelationship;
 // ----------traits ---
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 
-use function Safe\ini_set;
-
 // ----------services --
-
-ini_set('max_execution_time', '600');
-ini_set('memory_limit', '1512M');
-
-// ----------- models -----------
 /**
  * Modules\Sigma\Models\Anag.
  *

@@ -10,11 +10,14 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 use function Safe\ini_set;
 
-ini_set('max_execution_time', '3600');
-
 class EditOrganizzativa extends XotBaseEditRecord
 {
     protected static string $resource = OrganizzativaResource::class;
 
-    
+    public function mount(int|string $record): void
+    {
+        ini_set('max_execution_time', '3600');
+
+        parent::mount($record);
+    }
 }

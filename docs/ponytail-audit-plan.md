@@ -20,6 +20,7 @@ related:
 **Stato:** discussione — nessuna modifica codice finché non approviamo punto per punto.
 
 **Report findings:** [ponytail-audit-report.md](./ponytail-audit-report.md)  
+**Setup tool:** [wiki/how-to/ponytail-setup.md](./wiki/how-to/ponytail-setup.md)  
 **GitHub:** [issue #173](https://github.com/provtv/base_ptv_fila5_mono/issues/173) · [discussion #174](https://github.com/provtv/base_ptv_fila5_mono/discussions/174)
 
 ## Vincoli non negoziabili
