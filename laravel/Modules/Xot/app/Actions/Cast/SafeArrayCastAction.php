@@ -142,7 +142,20 @@ class SafeArrayCastAction
     {
         $array = $this->execute($value, $default);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
         return array_intersect_key($array, array_flip($allowedKeys));
+=======
+=======
+>>>>>>> laraxot/dev
+        // Filtra solo le chiavi permesse
+        $flippedKeys = array_flip(array_filter($allowedKeys, fn ($key) => is_string($key) || is_int($key)));
+
+        return array_intersect_key($array, $flippedKeys);
+<<<<<<< HEAD
+>>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
     }
 
     /**

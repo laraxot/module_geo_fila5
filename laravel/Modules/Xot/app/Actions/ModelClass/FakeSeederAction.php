@@ -48,9 +48,23 @@ class FakeSeederAction
 
         $chunks->each(function (Collection $chunk) use ($modelClass): void {
             /** @var array<int, array<string, mixed>> $data */
+<<<<<<< HEAD
+<<<<<<< HEAD
             $data = $chunk->map(
                 static fn (Model $item): array => $item->getAttributes(),
             )->all();
+=======
+=======
+>>>>>>> laraxot/dev
+            $data = $chunk->map(function ($item) {
+                assert($item instanceof Model);
+
+                return $item->getAttributes();
+            })->all();
+<<<<<<< HEAD
+>>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
             $modelClass::insert($data);
         });
 

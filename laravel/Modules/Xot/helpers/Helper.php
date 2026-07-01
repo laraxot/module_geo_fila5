@@ -294,7 +294,15 @@ if (! function_exists('params2ContainerItem')) {
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
+<<<<<<< HEAD
+<<<<<<< HEAD
             if (isset($matches[1], $matches[2])) {
+=======
+            if (! empty($matches)) {
+>>>>>>> laraxot/dev
+=======
+            if (! empty($matches)) {
+>>>>>>> laraxot/dev
                 $sk = $matches[1];
                 $sv = $matches[2];
                 ${$sk}[$sv] = $v;

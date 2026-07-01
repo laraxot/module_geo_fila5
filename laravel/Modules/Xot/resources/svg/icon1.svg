@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
      fill="none" 
@@ -94,3 +96,13 @@
     <!-- Base architecture -->
     <rect x="10" y="10" width="4" height="4" rx="0.5" opacity="0.2" fill="currentColor" />
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d9af1d9f576b3265a0f2fe6009f116a43aee85445c7c6508fbbdc74aab50d65
+size 3323
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d9af1d9f576b3265a0f2fe6009f116a43aee85445c7c6508fbbdc74aab50d65
+size 3323
+>>>>>>> laraxot/dev

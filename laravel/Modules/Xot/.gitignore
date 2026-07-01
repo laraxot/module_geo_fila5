@@ -171,4 +171,8 @@ _docs/
 *~REMOTE
 *.orig
 *.rej
+<<<<<<< HEAD
+*~headlang/lang/
+=======
 *~head
+>>>>>>> laraxot/dev

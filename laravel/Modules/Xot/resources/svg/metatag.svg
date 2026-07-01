@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
   <style>
@@ -31,3 +33,13 @@
   <path class="tag" d="M7.5 5.6L5 7l1.4 2.5L5 12l2.5 1.4L9 16l2.5-1.4L14 16l1.4-2.5L18 12l-1.4-2.5L18 7l-2.5-1.4L14 3l-2.5 1.4L9 3 7.5 5.6z"/>
   <path class="code" d="M11 7h2v2h-2zM11 11h2v2h-2zM11 15h2v2h-2z" fill-opacity="0.6"/>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:d703b7b467c31f92c3ab42b06b0def2b8e6f1282a06f3e9a7fbc75a07b90c037
+size 950
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:d703b7b467c31f92c3ab42b06b0def2b8e6f1282a06f3e9a7fbc75a07b90c037
+size 950
+>>>>>>> laraxot/dev

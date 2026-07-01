@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
   <style>
@@ -36,3 +38,13 @@
   <path class="circle" d="M12 7v5l3 3"/>
   <circle class="dot" cx="12" cy="12" r="1"/>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:c32b161da800aa17553160c82577be5475da1a7e90f0e8a4ffe0766a69a825ca
+size 1021
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:c32b161da800aa17553160c82577be5475da1a7e90f0e8a4ffe0766a69a825ca
+size 1021
+>>>>>>> laraxot/dev

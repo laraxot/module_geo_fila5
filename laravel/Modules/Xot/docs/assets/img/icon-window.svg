@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="38px" height="31px" viewBox="0 0 38 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
@@ -18,3 +20,13 @@
         </g>
     </g>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:01007adb08080b64aceb5655212b8c9f63dcc904b80cbf562a84a120e1863c6f
+size 1384
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:01007adb08080b64aceb5655212b8c9f63dcc904b80cbf562a84a120e1863c6f
+size 1384
+>>>>>>> laraxot/dev

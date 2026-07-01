@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <svg width="13px" height="13px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs></defs>
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -6,3 +8,13 @@
         </g>
     </g>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:f085e0f418586ac54120c6eb04139789df063e742a7d070719ea0c8069b6d070
+size 971
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:f085e0f418586ac54120c6eb04139789df063e742a7d070719ea0c8069b6d070
+size 971
+>>>>>>> laraxot/dev

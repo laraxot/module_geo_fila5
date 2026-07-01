@@ -19,7 +19,13 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Modules\User\Filament\Pages\MyProfilePage;
 use Modules\Xot\Actions\Filament\GetModulesNavigationItems;
+<<<<<<< HEAD
+<<<<<<< HEAD
 use Modules\Xot\Actions\Filament\GetPanelsNavigationItems;
+=======
+>>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 use Modules\Xot\Actions\Panel\ApplyMetatagToPanelAction;
 use Modules\Xot\Filament\Pages\MainDashboard;
 
@@ -99,8 +105,16 @@ abstract class XotBaseMainPanelProvider extends PanelProvider
                 Authenticate::class,
             ]);
         $navs = app(GetModulesNavigationItems::class)->execute();
+<<<<<<< HEAD
+<<<<<<< HEAD
         $navs1 = app(GetPanelsNavigationItems::class)->execute();
         $panel->navigationItems($navs1);
+=======
+        $panel->navigationItems($navs);
+>>>>>>> laraxot/dev
+=======
+        $panel->navigationItems($navs);
+>>>>>>> laraxot/dev
 
         // Temporaneamente disabilitato per debug tenancy
         // $profile_url = MyProfilePage::getUrl(panel: $panel->getId());

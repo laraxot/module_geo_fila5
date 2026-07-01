@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
   <style>
@@ -33,3 +35,13 @@
   <path class="body" d="M6 8h12v12H6z"/>
   <circle class="keyhole" cx="12" cy="14" r="2" fill="white"/>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:6ee9cc191878b9b1a38aeadd3a73d3b12395173f4c2d4861c43bdaa481a9b8c0
+size 950
+>>>>>>> laraxot/dev
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:6ee9cc191878b9b1a38aeadd3a73d3b12395173f4c2d4861c43bdaa481a9b8c0
+size 950
+>>>>>>> laraxot/dev
