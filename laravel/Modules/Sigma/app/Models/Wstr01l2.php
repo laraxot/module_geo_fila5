@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Wstr01l2.
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $wtcomp
  * @property string|null $wtcom1
  * @property string|null $wtcom2
+ *
  * @method static Builder|Wstr01l2 newModelQuery()
  * @method static Builder|Wstr01l2 newQuery()
  * @method static Builder|Wstr01l2 query()
@@ -52,10 +54,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wstr01l2 whereWtteor($value)
  * @method static Builder|Wstr01l2 whereWxorat($value)
  * @method static Builder|Wstr01l2 whereWyorat($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Wstr01l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Wstr01l2 extends BaseModel

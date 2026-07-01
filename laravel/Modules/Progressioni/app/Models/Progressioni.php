@@ -7,16 +7,19 @@ namespace Modules\Progressioni\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use Modules\Activity\Models\Activity;
 use Modules\Performance\Models\Individuale;
 use Modules\Progressioni\Database\Factories\ProgressioniFactory;
 use Modules\Progressioni\Models\Traits\ConvertedTrait;
 use Modules\Progressioni\Models\Traits\ProgressioniTrait;
 use Modules\Ptv\Models\BaseScheda;
+use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Models\Ana02f;
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00f;
 use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
@@ -266,6 +269,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property int|null $wstr01lx_count
  * @property Collection<int, Wstr01lx> $wstr01lxYear
  * @property int|null $wstr01lx_year_count
+ *
  * @method static ProgressioniFactory factory($count = null, $state = [])
  * @method static Builder|Progressioni newModelQuery()
  * @method static Builder|Progressioni newQuery()
@@ -394,6 +398,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|Progressioni whereValutatoreId($value)
  * @method static Builder|Progressioni whereVincitore($value)
  * @method static Builder|Progressioni withDays(int $date_min, int $date_max)
+ *
  * @property int|null $gg_cateco
  * @property float|null $gg_no_asz
  * @property int|null $gg_cateco_no_posfun_no_asz
@@ -418,12 +423,12 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property int|null $gg_integ_params
  * @property int|null $gg_esperienza_no_asz
  * @property float|null $gg_integ_params_asz
- * @property-read Collection<int, \Modules\Activity\Models\Activity> $activities
+ * @property-read Collection<int, Activity> $activities
  * @property-read int|null $activities_count
  * @property-read Collection<int, Asz00k1> $aszEff
  * @property-read int|null $asz_eff_count
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
  * @property-read string|null $codice_fiscale
  * @property-read string $from_field
  * @property-read int|null $gg_cateco_sup
@@ -437,9 +442,10 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property-read float|null $perf_ind2030
  * @property-read string|null $sesso
  * @property-read string $to_field
- * @property-read Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read Collection<int, Integparam> $integParams
  * @property-read int|null $integ_params_count
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $updater
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Progressioni ofEnte(int $ente)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Progressioni ofFourMonthPeriod(int $fourMonthPeriod, int $year)
  * @method static Builder<static>|Progressioni whereGgAszCateco($value)
@@ -469,6 +475,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder<static>|Progressioni wherePerfInd3($value)
  * @method static Builder<static>|Progressioni whereRefreshedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Progressioni withCalculatedData()
+ *
  * @mixin \Eloquent
  */
 class Progressioni extends BaseScheda

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ali14f.
@@ -142,6 +143,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $lib5
  * @property string|null $lib6
  * @property string|null $lib7
+ *
  * @method static Builder|Ali14f newModelQuery()
  * @method static Builder|Ali14f newQuery()
  * @method static Builder|Ali14f query()
@@ -278,10 +280,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ali14f whereXflag($value)
  * @method static Builder|Ali14f whereXrepa($value)
  * @method static Builder|Ali14f whereXstab($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ali14fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ali14f extends BaseModel

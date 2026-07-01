@@ -99,6 +99,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $ana037
  * @property string $ana038
  * @property string $ana039
+ *
  * @method static Builder|Ana02f newModelQuery()
  * @method static Builder|Ana02f newQuery()
  * @method static Builder|Ana02f query()
@@ -191,6 +192,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana02f whereTopo($value)
  * @method static Builder|Ana02f whereTopod($value)
  * @method static Builder|Ana02f whereUtente($value)
+ *
  * @mixin \Eloquent
  */
 class Ana02f extends BaseModel

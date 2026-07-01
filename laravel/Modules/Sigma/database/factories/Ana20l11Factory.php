@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Ana20l11;
 
 class Ana20l11Factory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Ana20l11::class;
+    protected $model = Ana20l11::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Ana20l11Factory extends Factory
         return [];
     }
 }
-

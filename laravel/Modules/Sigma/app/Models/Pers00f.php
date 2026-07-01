@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Pers00f.
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $PERIGA
  * @property string|null $PEPROV
  * @property string|null $PEPERS
+ *
  * @method static Builder|Pers00f newModelQuery()
  * @method static Builder|Pers00f newQuery()
  * @method static Builder|Pers00f query()
@@ -24,10 +26,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Pers00f wherePEPGM($value)
  * @method static Builder|Pers00f wherePEPROV($value)
  * @method static Builder|Pers00f wherePERIGA($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Pers00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Pers00f extends BaseModel

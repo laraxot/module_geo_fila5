@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Asz02l3;
 
 class Asz02l3Factory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Asz02l3::class;
+    protected $model = Asz02l3::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Asz02l3Factory extends Factory
         return [];
     }
 }
-

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Sost00l3.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $sspro
  * @property string|null $sspos
  * @property string|null $sosann
+ *
  * @method static Builder|Sost00l3 newModelQuery()
  * @method static Builder|Sost00l3 newQuery()
  * @method static Builder|Sost00l3 query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Sost00l3 whereSspro($value)
  * @method static Builder|Sost00l3 whereSsrep($value)
  * @method static Builder|Sost00l3 whereSssta($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Sost00l3Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Sost00l3 extends BaseModel

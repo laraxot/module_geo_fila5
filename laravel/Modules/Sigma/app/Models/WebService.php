@@ -8,11 +8,12 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Unique;
+use Modules\Ptv\Models\Profile;
 use Modules\Tenant\Models\Traits\SushiToCsv;
 
 /**
  * WebService Model
- * 
+ *
  * Represents a web service configuration in the system.
  * Uses SushiToCsv trait for CSV-based persistence.
  *
@@ -25,15 +26,17 @@ use Modules\Tenant\Models\Traits\SushiToCsv;
  * @property DateTimeInterface $updated_at
  * @property int|string|null $created_by
  * @property int|string|null $updated_by
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|WebService active()
  * @method static \Modules\Sigma\Database\Factories\WebServiceFactory factory($count = null, $state = [])
  * @method static Builder<static>|WebService newModelQuery()
  * @method static Builder<static>|WebService newQuery()
  * @method static Builder<static>|WebService query()
  * @method static Builder<static>|WebService whereId($value)
+ *
  * @mixin \Eloquent
  */
 class WebService extends BaseModel

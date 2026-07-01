@@ -24,6 +24,7 @@ use Sushi\Sushi;
  * @property int|null $container_widgets_count
  * @property Collection $widgets
  * @property int|null $widgets_count
+ *
  * @method static HomeFactory factory($count = null, $state = [])
  * @method static Builder|Home newModelQuery()
  * @method static Builder|Home newQuery()
@@ -34,9 +35,11 @@ use Sushi\Sushi;
  * @method static Builder|Home whereId($value)
  * @method static Builder|Home whereName($value)
  * @method static Builder|Home whereUpdatedBy($value)
+ *
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Home extends BaseModel

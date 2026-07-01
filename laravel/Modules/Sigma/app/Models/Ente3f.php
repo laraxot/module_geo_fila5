@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ente3f.
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $tipent
  * @property string|null $valuta
  * @property string|null $arroto
+ *
  * @method static Builder|Ente3f newModelQuery()
  * @method static Builder|Ente3f newQuery()
  * @method static Builder|Ente3f query()
@@ -32,10 +34,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ente3f whereId($value)
  * @method static Builder|Ente3f whereTipent($value)
  * @method static Builder|Ente3f whereValuta($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ente3fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ente3f extends BaseModel

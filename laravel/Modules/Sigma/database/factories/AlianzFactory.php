@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Alianz;
 
 class AlianzFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Alianz::class;
+    protected $model = Alianz::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class AlianzFactory extends Factory
         return [];
     }
 }
-

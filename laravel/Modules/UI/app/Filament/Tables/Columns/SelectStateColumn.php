@@ -8,6 +8,8 @@ use Filament\Tables\Columns\SelectColumn;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use ReflectionClass;
+use ReflectionException;
 
 class SelectStateColumn extends SelectColumn
 {
@@ -16,7 +18,7 @@ class SelectStateColumn extends SelectColumn
         parent::setUp();
         $this->options(function (Model $record, mixed $state): array {
             $name = $this->getName();
-            if (null === $state) {
+            if ($state === null) {
                 if (! method_exists($record, 'getDefaultStateFor')) {
                     return [];
                 }
@@ -53,14 +55,15 @@ class SelectStateColumn extends SelectColumn
                 if (class_exists($stateClass)) {
                     $stateNameProperty = null;
                     try {
-                        $reflection = new \ReflectionClass($stateClass);
+                        $reflection = new ReflectionClass($stateClass);
                         if ($reflection->hasProperty('name')) {
                             $nameProperty = $reflection->getStaticPropertyValue('name');
                             $stateNameProperty = \is_string($nameProperty) ? $nameProperty : null;
                         }
-                    } catch (\ReflectionException) {
+                    } catch (ReflectionException) {
+                        // Intentionally ignored: fall back to $stateNameProperty === null below.
                     }
-                    if (null !== $stateNameProperty) {
+                    if ($stateNameProperty !== null) {
                         $statesValues = array_values($states);
                         /** @var list<int|string> $statesValuesTyped */
                         $statesValuesTyped = $statesValues;

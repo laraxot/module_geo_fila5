@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Cor02l2.
@@ -68,6 +69,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $comob
  * @property string|null $comoc
  * @property string|null $comod
+ *
  * @method static Builder|Cor02l2 newModelQuery()
  * @method static Builder|Cor02l2 newQuery()
  * @method static Builder|Cor02l2 query()
@@ -130,10 +132,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cor02l2 whereTipo02($value)
  * @method static Builder|Cor02l2 whereValpos($value)
  * @method static Builder|Cor02l2 whereValuta($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Cor02l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cor02l2 extends BaseModel

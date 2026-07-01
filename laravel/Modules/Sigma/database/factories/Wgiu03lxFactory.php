@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Wgiu03lx;
 
 class Wgiu03lxFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Wgiu03lx::class;
+    protected $model = Wgiu03lx::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Wgiu03lxFactory extends Factory
         return [];
     }
 }
-

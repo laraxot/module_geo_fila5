@@ -4,6 +4,4 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources;
 
-class CriteriOptionResource extends BaseCriteriOptionResource
-{
-}
+class CriteriOptionResource extends BaseCriteriOptionResource {}

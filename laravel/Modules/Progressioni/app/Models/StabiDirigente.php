@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Modules\Progressioni\Database\Factories\StabiDirigenteFactory;
+use Modules\Ptv\Models\Profile;
 use Modules\Ptv\Models\StabiDirigente as PtvStabiDirigenteModel;
 use Modules\Sigma\Models\Repart;
 use Webmozart\Assert\Assert;
@@ -40,11 +41,12 @@ use Webmozart\Assert\Assert;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
+ * @property-read Collection<int, Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Repart|null $repart
  * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
+ *
  * @method static StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
@@ -71,9 +73,11 @@ use Webmozart\Assert\Assert;
  * @method static Builder|StabiDirigente whereUpdatedBy($value)
  * @method static Builder|StabiDirigente whereUpdatedIp($value)
  * @method static Builder|StabiDirigente whereValutatoreId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class StabiDirigente extends PtvStabiDirigenteModel

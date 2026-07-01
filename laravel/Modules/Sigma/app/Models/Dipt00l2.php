@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Dipt00l2.
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dtcom2
  * @property string|null $dtcom3
  * @property string|null $dtcom4
+ *
  * @method static Builder|Dipt00l2 newModelQuery()
  * @method static Builder|Dipt00l2 newQuery()
  * @method static Builder|Dipt00l2 query()
@@ -34,10 +36,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dipt00l2 whereDtturn($value)
  * @method static Builder|Dipt00l2 whereEnteap($value)
  * @method static Builder|Dipt00l2 whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Dipt00l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Dipt00l2 extends BaseModel

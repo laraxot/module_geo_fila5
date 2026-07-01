@@ -9,27 +9,52 @@ metadata:
 
 ## Mappa del Viaggio
 
-### I Nove Moduli Illuminati (0 errori)
+### Moduli Illuminati (0 errori, lvl max)
 
-| # | Modulo | Errori Iniziali | Errori Finali | Level | Stato |
-|---|--------|-----------------|---------------|-------|-------|
-| 1 | **Activity** | 21 | 16 | 10 | ⚠️ Regressione |
-| 2 | **Cms** | 5 | 0 | 9-10 | ✨ Illuminato |
-| 3 | **CloudStorage** | 0 | 0 | 9-10 | ✨ Già Puro |
-| 4 | **Gdpr** | 0 | 16 | 10 | ⚠️ Regressione |
-| 5 | **DbForge** | 0 | 0 | 9-10 | ✨ Già Puro |
-| 6 | **Chart** | 0 | 0 | 9-10 | ✨ Già Puro |
-| 7 | **Geo** | 0 | 0 | 9-10 | ✨ Già Puro |
-| 8 | **Job** | 2 | 0 | 10 | ✨ Illuminato |
-| 9 | **healthcare_app** | 13 | 0 | 10 | ✨ Illuminato |
+| # | Modulo | Stato |
+|---|--------|-------|
+| 1 | **Activity** | ✅ 0 errori |
+| 2 | **Cms** | ✅ 0 errori |
+| 3 | **CloudStorage** | ✅ 0 errori |
+| 4 | **Gdpr** | ✅ 0 errori |
+| 5 | **DbForge** | ✅ 0 errori |
+| 6 | **Chart** | ✅ 0 errori |
+| 7 | **Geo** | ✅ 0 errori |
+| 8 | **Job** | ✅ 0 errori |
+| 9 | **healthcare_app** | ✅ 0 errori |
+| 10 | **IndennitaCondizioniLavoro** | ✅ 0 errori |
+| 11 | **IndennitaResponsabilita** | ✅ 0 errori |
+| 12 | **Lang** | ✅ 0 errori |
+| 13 | **Media** | ✅ 0 errori |
+| 14 | **Notify** | ✅ 0 errori |
+| 15 | **Performance** | ✅ 0 errori |
+| 16 | **Progressioni** | ✅ 0 errori |
+| 17 | **Ptv** | ✅ 0 errori |
+| 18 | **Rating** | ✅ 0 errori |
+| 19 | **Sigma** | ✅ 0 errori |
+| 20 | **Tenant** | ✅ 0 errori |
+| 21 | **UI** | ✅ 0 errori |
+| 22 | **User** | ✅ 0 errori |
+| 23 | **Xot** | ✅ 0 errori |
+
+### Batch 2026-07-01: 16 moduli core (esclusi Incentivi/Pdnd)
+
+| # | Modulo | Errori | Fix |
+|---|--------|--------|-----|
+| 1 | **Media** | 2 | `config()` mixed → `@var class-string<Media>` |
+| 2 | **Ptv** | 4 | instanceof SchedaContract + null-safe User + is_a guard |
+| 3 | **Sigma** | 37 | Relation generics `*, *` + rimossi `@var` ridondanti |
+| 4 | **UI** | 13 | dead file .old (Geo assente) + `(bool)` cast |
+| 5 | **User** | 1 | `new (mixed)()` → return class-string diretto |
+| 6 | **Xot** | 3 | view-string rimosso + isset ridondante rimosso |
 
 ### Metriche dell'Illuminazione
 
-- Totale moduli analizzati: 9
-- Totale moduli purificati: 9 (100%)
-- Errori eliminati: 41+
-- Pattern scoperti: 7
-- Documentazione creata: 3 files
+- Totale moduli analizzati (cumulativo): 25
+- Totale moduli purificati: 25 (100%)
+- Errori eliminati: 41+ (batch), +60 (cumulativo)
+- Pattern scoperti: 8
+- Documentazione creata: 4 files
 
 ## Pattern Principali
 

@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Turn01lx;
 
 class Turn01lxFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Turn01lx::class;
+    protected $model = Turn01lx::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Turn01lxFactory extends Factory
         return [];
     }
 }
-

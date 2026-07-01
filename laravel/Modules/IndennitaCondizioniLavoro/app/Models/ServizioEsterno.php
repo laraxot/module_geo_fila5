@@ -725,15 +725,6 @@ SQL;
 
             $obj->save();
         }
-
-        $obj = new self;
-        $table = $obj->getTable();
-        $conn = $obj->getConnection();
-        $where = $table.'.anno="'.$anno.'" ';
-        // Anag::massUpdateCognomeNome(['conn' => $conn, 'table' => $table, 'where' => $where]);
-        // Anag::massUpdateCategoriaEco(['conn' => $conn, 'table' => $table, 'where' => $where]);
-        // Anag::massUpdatePosizTxt(['conn' => $conn, 'table' => $table, 'where' => $where]);
-        // Anag::massUpdateStabiTxtReparTxt(['conn' => $conn, 'table' => $table, 'where' => $where]);
     }
 
     /**

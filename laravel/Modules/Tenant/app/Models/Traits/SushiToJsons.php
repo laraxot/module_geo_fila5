@@ -13,10 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
 use Modules\Tenant\Services\TenantService;
-use Sushi\Sushi;
-
+use ReflectionObject;
 use function Safe\json_encode;
 use function Safe\unlink;
+use Sushi\Sushi;
 
 trait SushiToJsons
 {
@@ -35,7 +35,7 @@ trait SushiToJsons
         /** @var array<int, array<string, mixed>> $rows */
         $rows = [];
 
-        foreach ($files as $id => $file) {
+        foreach ($files as $file) {
             if (! is_string($file)) {
                 continue;
             }
@@ -46,10 +46,10 @@ trait SushiToJsons
             $item = [];
 
             // Ensure schema is an array
+            /** @var array<string, mixed> $schema */
             $schema = $this->resolveSchema();
 
-            /** @var array<string, mixed> $schema */
-            foreach ($schema as $name => $type) {
+            foreach (array_keys($schema) as $name) {
                 $value = $json[$name] ?? null;
                 if (is_array($value)) {
                     $value = json_encode($value, JSON_PRETTY_PRINT);
@@ -89,7 +89,7 @@ trait SushiToJsons
          * During a model create Eloquent will also update the updated_at field so
          * need to have the updated_by field here as well.
          */
-        static::creating(function ($model): void {
+        static::creating(static function ($model): void {
             /** @var static $model */
             if (! $model instanceof Model) {
                 throw new InvalidArgumentException('Model must be an instance of Illuminate\Database\Eloquent\Model');
@@ -115,7 +115,7 @@ trait SushiToJsons
             if ($schema === []) {
                 throw new Exception('Schema property must be iterable');
             }
-            foreach ($schema as $name => $type) {
+            foreach (array_keys($schema) as $name) {
                 $value = $data[$name] ?? null;
                 $item[$name] = $value;
             }
@@ -135,7 +135,7 @@ trait SushiToJsons
         /*
          * updating.
          */
-        static::updating(function ($model): void {
+        static::updating(static function ($model): void {
             /** @var static $model */
             if (! $model instanceof Model) {
                 throw new InvalidArgumentException('Model must be an instance of Illuminate\Database\Eloquent\Model');
@@ -158,7 +158,7 @@ trait SushiToJsons
          * For deletes we need to save the model first with the deleted_by field
          */
 
-        static::deleting(function ($model): void {
+        static::deleting(static function ($model): void {
             /** @var static $model */
             if (! $model instanceof Model) {
                 throw new InvalidArgumentException('Model must be an instance of Illuminate\Database\Eloquent\Model');
@@ -178,7 +178,7 @@ trait SushiToJsons
      */
     private function resolveSchema(): array
     {
-        $reflection = new \ReflectionObject($this);
+        $reflection = new ReflectionObject($this);
         if (! $reflection->hasProperty('schema')) {
             return [];
         }

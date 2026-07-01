@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Datelab.
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $eladal
  * @property string|null $elaal
  * @property string|null $testo
+ *
  * @method static Builder|Datelab newModelQuery()
  * @method static Builder|Datelab newQuery()
  * @method static Builder|Datelab query()
@@ -26,10 +28,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Datelab wherePayann($value)
  * @method static Builder|Datelab wherePaymon($value)
  * @method static Builder|Datelab whereTesto($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\DatelabFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Datelab extends BaseModel

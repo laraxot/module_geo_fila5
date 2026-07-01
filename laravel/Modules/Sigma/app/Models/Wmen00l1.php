@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Wmen00l1.
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mncom2
  * @property int|null $mncom3
  * @property string|null $ixterm
+ *
  * @method static Builder|Wmen00l1 newModelQuery()
  * @method static Builder|Wmen00l1 newQuery()
  * @method static Builder|Wmen00l1 query()
@@ -56,10 +58,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wmen00l1 whereMnp3($value)
  * @method static Builder|Wmen00l1 whereMnp4($value)
  * @method static Builder|Wmen00l1 whereMntmen($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Wmen00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Wmen00l1 extends BaseModel

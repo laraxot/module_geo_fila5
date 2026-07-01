@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Ced51f;
 
 class Ced51fFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Ced51f::class;
+    protected $model = Ced51f::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Ced51fFactory extends Factory
         return [];
     }
 }
-

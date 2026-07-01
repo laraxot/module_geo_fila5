@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Asp00f.
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ASP2KF
  * @property string|null $ASP2KC
  * @property string|null $ASP2KP
+ *
  * @method static Builder|Asp00f newModelQuery()
  * @method static Builder|Asp00f newQuery()
  * @method static Builder|Asp00f query()
@@ -30,10 +32,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asp00f whereId($value)
  * @method static Builder|Asp00f whereMATR($value)
  * @method static Builder|Asp00f whereTIPASP($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Asp00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Asp00f extends BaseModel

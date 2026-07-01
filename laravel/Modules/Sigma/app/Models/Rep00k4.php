@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Rep00k4.
@@ -43,6 +44,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $rep003
  * @property int $rep004
  * @property int $rep005
+ *
  * @method static Builder|Rep00k4 newModelQuery()
  * @method static Builder|Rep00k4 newQuery()
  * @method static Builder|Rep00k4 query()
@@ -80,10 +82,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Rep00k4 whereRepre2($value)
  * @method static Builder|Rep00k4 whereRepst1($value)
  * @method static Builder|Rep00k4 whereRepst2($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Rep00k4Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Rep00k4 extends BaseModel

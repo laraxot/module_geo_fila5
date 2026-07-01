@@ -6,6 +6,16 @@
 
 ---
 
+## Aggiornamento verifica 2026-07-01
+
+- **PHPStan** (`level: max`, config repo `phpstan.neon`): **0 errori** confermati.
+- **PHPMD** (`tools/phpmd.sh Modules/Lang/app`): nessuna violazione critica nuova; restano soprattutto `StaticAccess` (uso Facade, idiomatico Laravel), `CyclomaticComplexity`/`ExcessiveMethodLength` su `AutoLabelAction::execute()` e `LangServiceProvider::registerFilamentLabel()` — non toccati per evitare refactoring architetturale rischioso non richiesto.
+- **PHPInsights** (`tools/phpinsights.sh analyse Modules/Lang/app --no-interaction`): Style passato da 96.4% a 97.6% dopo fix mirati (import ordinati, spacing use-statement, yoda comparison). Code/Complexity/Architecture invariati (88/80.9/76.5) — i miglioramenti restanti richiederebbero refactoring architetturale (classi `final`, rimozione trait, split metodi lunghi) fuori scope per questo intervento.
+- **Fix puntuale**: `Services/TranslatorService.php::get()` — il tipo di ritorno dichiarato `string|array<string, mixed>` non era provabile da PHPStan dopo `is_array()` (il valore arriva da `Translator::get()` nativo, tipizzato solo `string|array` senza generics). Corretto in `string|array<array-key, mixed>`, aderente al reale garantito, nessun cambio di comportamento. Aggiunto test `tests/Unit/Services/TranslatorServiceTest.php`.
+- **Nota ambientale**: durante la verifica, un processo/agente esterno concorrente ha modificato in tempo reale file di altri moduli (es. `Modules/Ptv`), causando temporaneamente fatal error a runtime (bootstrap Laravel) non imputabili a questo modulo; non ha impattato lo stato finale di Lang.
+
+---
+
 ## Executive Summary
 
 The Lang module has been analyzed using three quality assurance tools:

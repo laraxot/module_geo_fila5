@@ -17,20 +17,29 @@ final class ActivityLogSchema
             return false;
         }
 
-        $connection = config('activitylog.database_connection');
-        if (! is_string($connection) || $connection === '') {
-            $default = config('database.default');
-            $connection = is_string($default) ? $default : 'mysql';
-        }
-
-        $table = config('activitylog.table_name', 'activity_log');
-        if (! is_string($table) || $table === '') {
-            $table = 'activity_log';
-        }
-
-        $schema = Schema::connection($connection);
+        $schema = Schema::connection(self::resolveConnection());
+        $table = self::resolveTable();
 
         return $schema->hasTable($table)
             && $schema->hasColumn($table, 'attribute_changes');
+    }
+
+    private static function resolveConnection(): string
+    {
+        $connection = config('activitylog.database_connection');
+        if (is_string($connection) && $connection !== '') {
+            return $connection;
+        }
+
+        $default = config('database.default');
+
+        return is_string($default) ? $default : 'mysql';
+    }
+
+    private static function resolveTable(): string
+    {
+        $table = config('activitylog.table_name', 'activity_log');
+
+        return is_string($table) && $table !== '' ? $table : 'activity_log';
     }
 }

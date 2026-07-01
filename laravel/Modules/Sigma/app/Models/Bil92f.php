@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Bil92f.
@@ -46,6 +47,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $tone1
  * @property string|null $tone2
  * @property string|null $tone3
+ *
  * @method static Builder|Bil92f newModelQuery()
  * @method static Builder|Bil92f newQuery()
  * @method static Builder|Bil92f query()
@@ -86,10 +88,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Bil92f whereTone3($value)
  * @method static Builder|Bil92f whereTotcom($value)
  * @method static Builder|Bil92f whereVoce($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Bil92fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Bil92f extends BaseModel

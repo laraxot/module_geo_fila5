@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Orar00lx.
@@ -116,6 +117,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $oxpaus
  * @property int|null $oxinte
  * @property int|null $oxmrit
+ *
  * @method static Builder|Orar00lx newModelQuery()
  * @method static Builder|Orar00lx newQuery()
  * @method static Builder|Orar00lx query()
@@ -226,10 +228,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Orar00lx whereOxusc2($value)
  * @method static Builder|Orar00lx whereOxusc3($value)
  * @method static Builder|Orar00lx whereOxusc4($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Orar00lxFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Orar00lx extends BaseModel

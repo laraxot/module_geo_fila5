@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $clafun
  * @property int $flagcf
  * @property int $cedist
+ *
  * @method static Builder|Ced03f newModelQuery()
  * @method static Builder|Ced03f newQuery()
  * @method static Builder|Ced03f query()
@@ -55,6 +56,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced03f whereSvocfi($value)
  * @method static Builder|Ced03f whereTotale($value)
  * @method static Builder|Ced03f whereTotsav($value)
+ *
  * @mixin \Eloquent
  */
 class Ced03f extends BaseModel

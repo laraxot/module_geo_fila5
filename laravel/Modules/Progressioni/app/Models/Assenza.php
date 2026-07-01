@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\AssenzaFactory;
+use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Models\Asz00f;
 
 // use Modules\Xot\Services\ModelService; // DEPRECATED: Class not found
@@ -28,6 +29,7 @@ use Modules\Sigma\Models\Asz00f;
  * @property Carbon|null $updated_at
  * @property Collection<int, Asz00f> $asz00fs
  * @property int|null $asz00fs_count
+ *
  * @method static AssenzaFactory factory($count = null, $state = [])
  * @method static Builder|Assenza newModelQuery()
  * @method static Builder|Assenza newQuery()
@@ -43,9 +45,11 @@ use Modules\Sigma\Models\Asz00f;
  * @method static Builder|Assenza whereUmi($value)
  * @method static Builder|Assenza whereUpdatedAt($value)
  * @method static Builder|Assenza whereUpdatedBy($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class Assenza extends BaseModel

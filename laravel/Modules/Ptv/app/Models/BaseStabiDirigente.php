@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -21,10 +22,12 @@ use Webmozart\Assert\Assert;
  * @property string|null $nome_diri
  * @property string|null $nome_stabi
  * @property Repart|null $repart
+ *
  * @method static \Modules\Ptv\Database\Factories\StabiDirigenteFactory factory($count = null, $state = [])
  * @method static Builder|StabiDirigente newModelQuery()
  * @method static Builder|StabiDirigente newQuery()
  * @method static Builder|StabiDirigente query()
+ *
  * @property int $id
  * @property int|null $stabi
  * @property int|null $repar
@@ -40,6 +43,7 @@ use Webmozart\Assert\Assert;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|StabiDirigente whereAnno($value)
  * @method static Builder|StabiDirigente whereBudget($value)
  * @method static Builder|StabiDirigente whereCreatedAt($value)
@@ -57,15 +61,19 @@ use Webmozart\Assert\Assert;
  * @method static Builder|StabiDirigente whereUpdatedAt($value)
  * @method static Builder|StabiDirigente whereUpdatedBy($value)
  * @method static Builder|StabiDirigente whereValutatoreId($value)
+ *
  * @property Profile|null $creator
  * @property Profile|null $updater
  * @property int $n_diritto_excellence
+ *
  * @method static Builder<static>|StabiDirigente whereNDirittoExcellence($value)
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $benificiariProgressione
+ *
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Scheda> $schedas
+ * @property-read Collection<int, Scheda> $schedas
  * @property-read int|null $schedas_count
+ *
  * @mixin \Eloquent
  */
 abstract class BaseStabiDirigente extends BaseModel

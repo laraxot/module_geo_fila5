@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Aliqu5l2.
@@ -37,6 +38,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $desart
  * @property string|null $lib001
  * @property string|null $lib002
+ *
  * @method static Builder|Aliqu5l2 newModelQuery()
  * @method static Builder|Aliqu5l2 newQuery()
  * @method static Builder|Aliqu5l2 query()
@@ -68,10 +70,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Aliqu5l2 whereQ3voc1($value)
  * @method static Builder|Aliqu5l2 whereSstco1($value)
  * @method static Builder|Aliqu5l2 whereStrco1($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Aliqu5l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Aliqu5l2 extends BaseModel

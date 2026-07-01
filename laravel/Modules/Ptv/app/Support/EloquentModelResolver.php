@@ -22,7 +22,7 @@ final class EloquentModelResolver
     {
         Assert::subclassOf($class, Model::class);
 
-        return new $class();
+        return new $class;
     }
 
     /**

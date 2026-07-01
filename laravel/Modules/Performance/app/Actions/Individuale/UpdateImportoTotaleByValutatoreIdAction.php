@@ -42,16 +42,6 @@ class UpdateImportoTotaleByValutatoreIdAction
     {
         $count = 0;
         $totalImporto = 0;
-        $totalPunteggio = 0;
-
-        // Calcola il totale del punteggio per la normalizzazione
-        $totalPunteggio = (float) Scheda::where('anno', $year)
-            ->where('type', $type)
-            ->where('ha_diritto', '>', 0)
-            ->sum('totale_punteggio');
-
-        // Se non ci sono punteggi, usiamo 100 come valore di default
-        $normalizationFactor = $totalPunteggio > 0 ? $totalPunteggio / 100 : 1;
 
         $schede = Scheda::where('anno', $year)
             ->where('type', $type)

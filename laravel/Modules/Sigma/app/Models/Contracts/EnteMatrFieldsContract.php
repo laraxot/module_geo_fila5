@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Contracts;
 
+use Modules\Sigma\Models\BaseModel;
+
 /**
  * Contratto per modelli Sigma ancorati a ente + matricola.
  *
@@ -14,7 +16,7 @@ namespace Modules\Sigma\Models\Contracts;
  * Non sono accessor Eloquent: restituiscono il nome colonna, non il valore.
  * Per i valori usare `$model->matr` / `$model->ente` o `getMatrAttribute()`.
  *
- * @see \Modules\Sigma\Models\BaseModel::hasManyByEnteMatr()
+ * @see BaseModel::hasManyByEnteMatr()
  */
 interface EnteMatrFieldsContract
 {

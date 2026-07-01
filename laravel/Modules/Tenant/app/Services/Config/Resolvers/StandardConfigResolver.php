@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Modules\Tenant\Services\Config\Resolvers;
 
 use Exception;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
 use Modules\Tenant\Services\Config\Contracts\ConfigResolverInterface;
 use Modules\Tenant\Services\TenantService;
 
@@ -31,7 +29,7 @@ class StandardConfigResolver implements ConfigResolverInterface
 
         // Handle database configuration specially
         if ($key === 'database') {
-            $databaseResolver = new DatabaseConfigResolver;
+            $databaseResolver = new DatabaseConfigResolver();
             $extraConf = $databaseResolver->resolve($key, $extraConf);
 
             if (! is_array($extraConf)) {
@@ -45,7 +43,7 @@ class StandardConfigResolver implements ConfigResolverInterface
         $result = config($key);
 
         if ($result === null && $default !== null) {
-            $this->handleMissingConfig($key, $group, $extraConf, $default);
+            $this->handleMissingConfig($key);
         }
 
         if (! is_numeric($result) && ! is_string($result) && ! is_array($result) && $result !== null) {
@@ -110,18 +108,8 @@ class StandardConfigResolver implements ConfigResolverInterface
         return $result;
     }
 
-    /**
-     * @param  array<string, mixed>  $extraConf
-     */
-    private function handleMissingConfig(
-        string $key,
-        string $group,
-        array $extraConf,
-        string|int|array|null $default
-    ): void {
-        $index = Str::after($key, $group.'.');
-        $data = Arr::set($extraConf, $index, $default);
-
+    private function handleMissingConfig(string $key): void
+    {
         // In production, we might want to save this default
         // For now, we just throw an exception to maintain backward compatibility
         throw new Exception('Configuration key not found: '.$key);

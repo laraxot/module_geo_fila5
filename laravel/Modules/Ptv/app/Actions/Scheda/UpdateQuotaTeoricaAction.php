@@ -25,8 +25,7 @@ class UpdateQuotaTeoricaAction
      */
     public function execute(string $class, string $year, string $type): void
     {
-        
-        $quota_field='quota_'.strtolower(class_basename($class));
+        $quota_field = 'quota_'.strtolower(class_basename($class));
         $tbl_categoria_coeff = app(CatCoeff::class)->getTable();
         $model = EloquentModelResolver::newInstance($class);
         $tbl = $model->getTable();

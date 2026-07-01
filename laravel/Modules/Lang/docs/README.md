@@ -121,3 +121,22 @@ Lang/
 - [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
 - [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
 - [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
+---
+
+## ✅ PHPStan Status — Verifica 2026-07-01
+
+| Data | Livello | Errori |
+|------|---------|--------|
+| 2026-07-01 | max | **0** |
+
+```bash
+./vendor/bin/phpstan analyze Modules/Lang --level=max --memory-limit=512M
+# [OK] No errors
+```
+
+Modulo conforme alle regole Laraxot:
+- Classi Filament estendono XotBase (mai direttamente Filament)
+- Nessun label/placeholder/tooltip hardcoded
+- Nessun BadgeColumn (usa TextColumn::make()->badge())
+- Actions usano QueueableAction pattern
+- Nessun Service tradizionale

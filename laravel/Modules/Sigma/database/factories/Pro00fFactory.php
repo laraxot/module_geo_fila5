@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Pro00f;
 
 class Pro00fFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Pro00f::class;
+    protected $model = Pro00f::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Pro00fFactory extends Factory
         return [];
     }
 }
-

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Repa2f.
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $liv10
  * @property string|null $liv11
  * @property string|null $coirap
+ *
  * @method static Builder|Repa2f newModelQuery()
  * @method static Builder|Repa2f newQuery()
  * @method static Builder|Repa2f query()
@@ -44,10 +46,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repa2f whereLiv9($value)
  * @method static Builder|Repa2f whereRepar($value)
  * @method static Builder|Repa2f whereStabi($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Repa2fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Repa2f extends BaseModel

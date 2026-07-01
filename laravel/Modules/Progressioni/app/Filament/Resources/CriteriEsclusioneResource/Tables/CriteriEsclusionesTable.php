@@ -6,6 +6,4 @@ namespace Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource\Tabl
 
 use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Tables\BaseCriteriEsclusionesTable;
 
-class CriteriEsclusionesTable extends BaseCriteriEsclusionesTable
-{
-}
+class CriteriEsclusionesTable extends BaseCriteriEsclusionesTable {}

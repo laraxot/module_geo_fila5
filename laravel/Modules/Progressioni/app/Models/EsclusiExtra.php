@@ -7,6 +7,7 @@ namespace Modules\Progressioni\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\EsclusiExtraFactory;
+use Modules\Ptv\Models\Profile;
 use Modules\Sigma\Actions\MassUpdateCognomeNomeAction;
 use Modules\Sigma\Models\Anag;
 
@@ -30,6 +31,7 @@ use Modules\Sigma\Models\Anag;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
+ *
  * @method static EsclusiExtraFactory factory($count = null, $state = [])
  * @method static Builder|EsclusiExtra newModelQuery()
  * @method static Builder|EsclusiExtra newQuery()
@@ -50,9 +52,11 @@ use Modules\Sigma\Models\Anag;
  * @method static Builder|EsclusiExtra whereUpdatedAt($value)
  * @method static Builder|EsclusiExtra whereUpdatedBy($value)
  * @method static Builder|EsclusiExtra whereUpdatedIp($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class EsclusiExtra extends BaseModel

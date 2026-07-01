@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Repart1l;
 
 class Repart1lFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Repart1l::class;
+    protected $model = Repart1l::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Repart1lFactory extends Factory
         return [];
     }
 }
-

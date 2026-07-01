@@ -81,7 +81,7 @@ class ImportJsonAction
             $rowsCount = is_array($rows) ? count($rows) : (is_object($rows) ? count(get_object_vars($rows)) : 0);
             if ($rowsCount > 5) {
                 $sql = 'truncate table '.$dbname.'.'.$tbl_name;
-                $n_rows = $pdo->exec($sql);
+                $pdo->exec($sql);
             }
         } catch (Exception $exception) {
             /** @var string $errorMsg */

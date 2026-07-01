@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Cod01f.
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $CODIC3
  * @property string|null $CODIC4
  * @property string|null $CODIC5
+ *
  * @method static Builder|Cod01f newModelQuery()
  * @method static Builder|Cod01f newQuery()
  * @method static Builder|Cod01f query()
@@ -30,10 +32,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cod01f whereCODREG($value)
  * @method static Builder|Cod01f whereId($value)
  * @method static Builder|Cod01f whereTIPO($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Cod01fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cod01f extends BaseModel

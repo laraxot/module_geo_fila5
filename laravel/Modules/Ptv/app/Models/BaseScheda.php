@@ -6,6 +6,7 @@ namespace Modules\Ptv\Models;
 
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Str;
 use Modules\Performance\Models\Individuale;
+use Modules\Progressioni\Models\Traits\ConvertedTrait;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Sigma\Models\Anag;
 use Modules\Sigma\Models\Asz00k1;
@@ -71,18 +73,18 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property object|null $pesi
  * @property object|null $stipendioTabellare
  * @property Collection<int, Individuale> $performanceIndividuale
- * @property Collection<int, \Illuminate\Database\Eloquent\Model> $criteriOptions
+ * @property Collection<int, Model> $criteriOptions
  * @property int $n_perf_ind
  */
 // @see Modules/Xot/docs/spatie-schemaless-attributes.md
 abstract class BaseScheda extends BaseModel implements SchedaContract
 {
+    use ConvertedTrait;
     use HasEnteMatrRelationHelpers;
-    use SchemalessAttributesTrait;
-    use \Modules\Progressioni\Models\Traits\ConvertedTrait;
     use SchedaTrait;
+    use SchemalessAttributesTrait;
 
-     /**
+    /**
      * Relazioni da eager-loadare sempre per evitare N+1 queries.
      *
      * ⚡ PERFORMANCE CRITICAL: Fix DOPPIO LIVELLO N+1
@@ -150,7 +152,7 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         return 'anno';
     }
 
-    protected function scopeWithDays(\Illuminate\Database\Eloquent\Builder $query, ?int $date_min, ?int $date_max): \Illuminate\Database\Eloquent\Builder
+    protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
     {
         if ($date_min === null || $date_max === null) {
             return $query;
@@ -223,23 +225,23 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      *
      * @return HasOne
      */
-    //public function maxCatecoPosfun()
-    //{
-        // This is a placeholder implementation - the actual relationship may vary
+    // public function maxCatecoPosfun()
+    // {
+    // This is a placeholder implementation - the actual relationship may vary
     //    return $this->hasOne(static::class);
-    //}
+    // }
 
     /*
      * Pesi relationship.
      *
      * @return HasOne  pesi plurale, non ha senso
      */
-    //public function pesi(): HasOne
-    //{
-       
-        // This is a placeholder implementation - the actual relationship may vary
+    // public function pesi(): HasOne
+    // {
+
+    // This is a placeholder implementation - the actual relationship may vary
     //    return $this->hasOne(static::class);
-    //}
+    // }
 
     /**
      * Stipendio tabellare relationship.
@@ -268,10 +270,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
      */
     public function perfInd(int $anno): ?float
     {
-
-
-
-
         $tbl = 'performance_individuale';
         $perf_ind = $this->performanceIndividuale()->selectRaw('( COALESCE(sum('.$tbl.'.totale_punteggio * (datediff('.$tbl.'.al,'.$tbl.'.dal)+1))/( sum(datediff('.$tbl.'.al,'.$tbl.'.dal)+1)  ),0) ) as perf_ind')
             ->where('anno', $anno)
@@ -406,8 +404,6 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         return $this->hasMany(static::class);
     }
 
-   
-
     /**
      * Get the attributes that should be cast.
      *
@@ -416,12 +412,12 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     protected function casts(): array
     {
         return array_merge(parent::casts(), [
-            //'calculated_data' => SchemalessAttributes::class,
+            // 'calculated_data' => SchemalessAttributes::class,
         ]);
     }
 
     protected array $schemalessAttributes = [
-        //'calculated_data',
+        // 'calculated_data',
     ];
 
     /**
@@ -447,11 +443,12 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Scope a query to interact with calculated_data schemaless attribute.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder<static> $query
-     * @return \Illuminate\Database\Eloquent\Builder<static>
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     *
      * @see Modules/IndennitaResponsabilita/docs/schemaless-attributes.md#errore-5-tipo-di-ritorno-errato-per-scope-metodi-basescheda
      */
-    public function scopeWithCalculatedData(\Illuminate\Database\Eloquent\Builder $query): \Illuminate\Database\Eloquent\Builder
+    public function scopeWithCalculatedData(Builder $query): Builder
     {
         // This scope should modify the query builder, not return the attribute directly.
         // If the intention was to filter or add conditions based on calculated_data,

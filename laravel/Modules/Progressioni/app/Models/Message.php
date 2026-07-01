@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Progressioni\Models\Message.
@@ -19,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|Message newModelQuery()
  * @method static Builder|Message newQuery()
  * @method static Builder|Message query()
@@ -31,11 +33,15 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Message whereType($value)
  * @method static Builder|Message whereUpdatedAt($value)
  * @method static Builder|Message whereUpdatedBy($value)
+ *
  * @mixin Builder
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Progressioni\Database\Factories\MessageFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Message extends BaseModel

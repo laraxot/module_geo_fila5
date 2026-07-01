@@ -7,6 +7,7 @@ namespace Modules\Ptv\Actions\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Activity\Models\Activity;
 use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Sigma\Models\Traits\SchedaTrait;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -99,7 +100,7 @@ class LogSchedaEmailSentAction
      *
      * @return array<string, mixed>
      *
-     * @see \Modules\Sigma\Models\Traits\SchedaTrait
+     * @see SchedaTrait
      * @see \Modules\Ptv\docs\performance\base-scheda-performance-bottleneck.md
      */
     private function extractSchedaData(SchedaContract $scheda): array

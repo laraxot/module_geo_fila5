@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Cenc0f;
 
 class Cenc0fFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Cenc0f::class;
+    protected $model = Cenc0f::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Cenc0fFactory extends Factory
         return [];
     }
 }
-

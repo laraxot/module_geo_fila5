@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Helpers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
+use Modules\Ptv\Models\BaseScheda;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
@@ -64,7 +66,7 @@ trait SchedaHelper
     {
         // Guard: data presenza al deve esistere
         $data_presenza_al = $this->criteriOptionsArr('data_presenza_al');
-        if ($data_presenza_al == null || ! ($data_presenza_al instanceof \Carbon\Carbon)) {
+        if ($data_presenza_al == null || ! ($data_presenza_al instanceof Carbon)) {
             return null;
         }
 
@@ -74,7 +76,7 @@ trait SchedaHelper
         }
 
         // Setup periodo annuale
-        /** @var \Carbon\Carbon $data_presenza_alTyped */
+        /** @var Carbon $data_presenza_alTyped */
         $data_presenza_alTyped = $data_presenza_al;
         $anno = $data_presenza_alTyped->year;
         $parz = [
@@ -265,7 +267,7 @@ trait SchedaHelper
         $somma_gg = 0;
 
         foreach ($rows as $row) {
-            /** @var \Modules\Ptv\Models\BaseScheda $row */
+            /** @var BaseScheda $row */
             $totale = isset($row->totale) && is_numeric($row->totale) ? (float) $row->totale : 0.0;
             $gg = isset($row->gg) && is_numeric($row->gg) ? (int) $row->gg : 0;
             $somma_totale_per_gg += $totale * (float) $gg;

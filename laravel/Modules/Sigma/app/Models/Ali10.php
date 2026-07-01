@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ali10.
@@ -49,6 +50,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $equip
  * @property string|null $seqxx
  * @property string|null $seqyy
+ *
  * @method static Builder|Ali10 newModelQuery()
  * @method static Builder|Ali10 newQuery()
  * @method static Builder|Ali10 query()
@@ -92,10 +94,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ali10 whereSess1($value)
  * @method static Builder|Ali10 whereStab($value)
  * @method static Builder|Ali10 whereTip1($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ali10Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ali10 extends BaseModel

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Anzianitum.
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Anzianitum newModelQuery()
  * @method static Builder|Anzianitum newQuery()
  * @method static Builder|Anzianitum query()
+ *
  * @property int $id
  * @property string|null $ente
  * @property string|null $matr
@@ -23,6 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $anno
  * @property string|null $giorni_in_fascia
  * @property string|null $giorni_in_pa
+ *
  * @method static Builder|Anzianitum whereAnno($value)
  * @method static Builder|Anzianitum whereEnte($value)
  * @method static Builder|Anzianitum whereGiorni($value)
@@ -34,10 +37,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Anzianitum wherePosfun($value)
  * @method static Builder|Anzianitum wherePropro($value)
  * @method static Builder|Anzianitum wherePuntAnz($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\AnzianitumFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Anzianitum extends BaseModel

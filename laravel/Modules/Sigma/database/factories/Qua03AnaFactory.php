@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Qua03Ana;
 
 class Qua03AnaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Qua03Ana::class;
+    protected $model = Qua03Ana::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Qua03AnaFactory extends Factory
         return [];
     }
 }
-

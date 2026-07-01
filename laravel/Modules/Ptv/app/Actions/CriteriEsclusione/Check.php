@@ -71,6 +71,5 @@ class Check
             'ha_diritto' => $ha_diritto,
             'motivo' => $motivo,
         ]);
-        
     }
 }

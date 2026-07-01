@@ -59,6 +59,7 @@ use stdClass;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Repart> $reparts
  * @property-read int|null $reparts_count
  * @property-read Repart|null $stabi
+ *
  * @method static Builder|Rep00f newModelQuery()
  * @method static Builder|Rep00f newQuery()
  * @method static Builder|Rep00f ofDate(int $date)
@@ -103,6 +104,7 @@ use stdClass;
  * @method static Builder|Rep00f whereRepst1($value)
  * @method static Builder|Rep00f whereRepst2($value)
  * @method static Builder|Rep00f withDays(int $date_min, int $date_max)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Ana02f> $ana02f
  * @property-read int|null $ana02f_count
  * @property-read Ana10f|null $ana10f
@@ -129,15 +131,20 @@ use stdClass;
  * @property-read int|null $wstr01lx_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Wstr01lx> $wstr01lxYear
  * @property-read int|null $wstr01lx_year_count
+ *
  * @method static Builder|Rep00f ofEnte(int $ente)
+ *
  * @property-read string $from_field
  * @property-read string|null $nome_diri
  * @property-read string $to_field
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Integparam> $integParams
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Integparam> $integParams
  * @property-read int|null $integ_params_count
+ *
  * @method static Builder<static>|Rep00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Sigma\Models\Qua00f> $qua00f
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00f
  * @property-read int|null $qua00f_count
+ *
  * @mixin \Eloquent
  */
 class Rep00f extends BaseDateRangeModel

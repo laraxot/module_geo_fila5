@@ -7,6 +7,7 @@ namespace Modules\Progressioni\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Database\Factories\MyLogFactory;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Progressioni\Models\MyLog.
@@ -25,6 +26,7 @@ use Modules\Ptv\Database\Factories\MyLogFactory;
  * @property string|null $updated_by
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static MyLogFactory factory($count = null, $state = [])
  * @method static Builder|MyLog newModelQuery()
  * @method static Builder|MyLog newQuery()
@@ -43,13 +45,16 @@ use Modules\Ptv\Database\Factories\MyLogFactory;
  * @method static Builder|MyLog whereTbl($value)
  * @method static Builder|MyLog whereUpdatedAt($value)
  * @method static Builder|MyLog whereUpdatedBy($value)
+ *
  * @property int|null $model_id
  * @property string|null $model_type
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|MyLog whereModelId($value)
  * @method static Builder<static>|MyLog whereModelType($value)
+ *
  * @mixin \Eloquent
  */
 class MyLog extends \Modules\Ptv\Models\MyLog

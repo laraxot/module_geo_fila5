@@ -42,7 +42,7 @@ class PopulateYearAction extends Action
                 }
 
                 $tableFilters = is_array($livewire->tableFilters) ? $livewire->tableFilters : [];
-                
+
                 $year = Arr::get($tableFilters, 'anno.value');
                 $fieldname = 'anno';
                 if ($year == null) {
@@ -53,14 +53,13 @@ class PopulateYearAction extends Action
                     $year = Arr::get($tableFilters, 'anno/valutatore.anno');
                     $fieldname = 'anno';
                 }
-                 if ($year == null) {
+                if ($year == null) {
                     $year = Arr::get($tableFilters, 'anno_valutatore.anno');
                     $fieldname = 'anno';
                 }
-                
-                
+
                 $yearInt = is_numeric($year) ? (int) $year : 0;
-                
+
                 app(PopulateByYearAction::class)->execute($modelClass, $fieldname, $yearInt);
                 Notification::make()
                     ->title('Successfully')

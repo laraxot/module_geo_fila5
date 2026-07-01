@@ -37,7 +37,7 @@ class LocaleSwitcherRefresh extends Action
                     ->reactive()
                     ->required(),
             ])
-            ->action(function (array $data) {
+            ->action(static function (array $data) {
                 $locale = $data['locale'] ?? 'en';
                 $locale = is_string($locale) ? $locale : 'en';
 

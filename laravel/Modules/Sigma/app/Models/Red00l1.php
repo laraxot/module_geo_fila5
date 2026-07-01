@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Red00l1.
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $redfam
  * @property string|null $reddip
  * @property string|null $flaga
+ *
  * @method static Builder|Red00l1 newModelQuery()
  * @method static Builder|Red00l1 newQuery()
  * @method static Builder|Red00l1 query()
@@ -34,10 +36,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Red00l1 whereRedfam($value)
  * @method static Builder|Red00l1 whereStatoc($value)
  * @method static Builder|Red00l1 whereTipnuc($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Red00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Red00l1 extends BaseModel

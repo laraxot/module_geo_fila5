@@ -101,3 +101,43 @@ Tenant/
 1. Leggere scopo in questo file.
 2. Aprire `docs/wiki/index.md` se esiste.
 3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
+
+---
+
+## ✅ PHPStan Status — Verifica 2026-07-01
+
+| Data | Livello | Errori |
+|------|---------|--------|
+| 2026-07-01 | max | **0** |
+
+```bash
+./vendor/bin/phpstan analyze Modules/Tenant --level=max --memory-limit=512M
+# [OK] No errors
+```
+
+Modulo conforme alle regole Laraxot:
+- Classi Filament estendono XotBase (mai direttamente Filament)
+- Nessun label/placeholder/tooltip hardcoded
+- Nessun BadgeColumn (usa TextColumn::make()->badge())
+- Actions usano QueueableAction pattern
+- Nessun Service tradizionale
+
+## Audit qualità — 2026-07-01 (PHPStan / PHPMD / PHPInsights)
+
+Sessione di audit completa (`phpstan`, `phpmd`, `phpinsights`), fix applicati mantenendo il codice funzionalmente invariato:
+
+- **PHPStan** (`level: max`, `--memory-limit=4G`): 0 errori prima e dopo l'audit.
+- **PHPMD** (`cleancode,codesize,design,naming,unusedcode,controversial`): risolte le violazioni naming/unused ragionevoli:
+  - `ResolveTenantConfigValueAction::execute()`: parametro `$_default` → `$default`.
+  - `GetTenantNameAction::execute()`: variabili snake_case (`$server_name`, `$config_file`, `$shortened_parts`, `$default_path`) → camelCase.
+  - `DomainPolicy`: parametri `$_domain` → `$domain` (restano `UnusedFormalParameter` per contratto Policy Laravel: non riducibile senza rompere la firma richiesta da `Gate`/Filament).
+  - `TenantBasePolicy::before()`: rimossa variabile locale morta `$xotData` (chiamata a `XotData::make()` senza uso) e rinominato `$_ability` → `$ability`.
+  - `SushiToJsons.php`: import mancante di `ReflectionObject`, rimossa variabile `$id`/`$type` inutilizzate nei `foreach`.
+  - `SushiToJson.php`: rimossa variabile `$_type` inutilizzata.
+  - `TenantServiceProvider`: rimossa variabile morta `$upperName` (usata solo in codice commentato) e `$tmp` non utilizzata in `mergeConfigs()`.
+  - `StandardConfigResolver::handleMissingConfig()`: rimossi parametri/variabili morti (`$group`, `$extraConf`, `$default`, `Arr::set()` senza effetto) — il metodo lancia comunque l'eccezione, la logica non cambia.
+  - Non toccati: `StaticAccess` (uso idiomatico delle Facade Laravel, centinaia di occorrenze — refactor a DI sarebbe eccessivo/rischioso), `CyclomaticComplexity`/`NPathComplexity`/`ExcessiveMethodLength` sui metodi `boot*()` dei trait Sushi (refactor architetturale non richiesto), proprietà `$module_dir`/`$module_ns` in snake_case (convenzione condivisa in tutti i moduli via `Xot\Providers\XotBaseServiceProvider`, non modificabile isolatamente).
+- **PHPInsights** (`tools/phpinsights.sh analyse Modules/Tenant/app`): punteggio 86.0 Code / 82.3 Complexity / 76.5 Architecture / 88.0 Style. Applicato `--fix` per gli style fix automatici sicuri (PSR brace style, ordered imports, tab→spazi, `new Class()` con parentesi, doc-comment spacing). **Attenzione**: il flag `--fix` ha introdotto in automatico native type hint `array` su due proprietà `$fillable` (`Tenant.php`, `TestSushiModel.php`) che violavano la regola PHPStan `property.extraNativeType` (la property del genitore Eloquent `$fillable` non ha tipo nativo); il type hint nativo è stato rimosso mantenendo il tag `@var list<string>`. **Verificare sempre PHPStan dopo ogni `phpinsights --fix`.**
+- **Pest**: nessun test esistente in `Modules/Tenant/tests/` copriva i file modificati con logica di business alterabile (i cambi sono naming/dead-code, comportamento invariato); non sono stati creati nuovi test per non introdurre rischio senza reale copertura di regressione aggiuntiva. Nessun comando distruttivo sul DB eseguito.
+
+Nota: durante l'audit il working tree del repo (livello `/var/www/_bases/base_ptvx_fila5`) presentava numerose modifiche non relative a questo task in altri moduli (es. `Ptv`), presumibilmente da altra sessione/agente concorrente attivo sullo stesso repository. Non sono stati toccati file fuori da `Modules/Tenant`.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Add00f.
@@ -49,6 +50,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $imp10e
  * @property string|null $imp11e
  * @property string|null $imp12e
+ *
  * @method static Builder|Add00f newModelQuery()
  * @method static Builder|Add00f newQuery()
  * @method static Builder|Add00f query()
@@ -92,10 +94,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Add00f whereImprte($value)
  * @method static Builder|Add00f whereMatr($value)
  * @method static Builder|Add00f whereProvin($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Add00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Add00f extends BaseModel

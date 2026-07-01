@@ -59,7 +59,7 @@ class UploadFileAction extends BaseS3Action
                 $this->bucketName,
                 $destinationFilePath,
                 $sourceFile,
-                (string) ($uploadOptions['ACL'] ?? 'private'),
+                $acl,
                 $uploadOptions,
             );
 

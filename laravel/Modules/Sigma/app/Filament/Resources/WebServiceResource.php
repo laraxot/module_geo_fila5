@@ -35,7 +35,7 @@ class WebServiceResource extends XotBaseResource
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table

@@ -12,7 +12,6 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Section;
 use Modules\Rating\Enums\RuleEnum;
-use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 use Modules\Rating\Filament\Resources\RatingResource\Schemas\BaseRatingForm;
 
 class RatingForm extends BaseRatingForm

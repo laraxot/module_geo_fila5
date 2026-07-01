@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits;
 
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Modules\Progressioni\Models\CategoriaPropro;
+use Modules\Progressioni\Models\SchedaCriteri;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Integparam;
 use Modules\Sigma\Models\Qua00f;
@@ -124,7 +127,7 @@ trait SchedaExtraFieldTrait
         if ($this->calculated_data->has($fieldname) && ! request()->input('refresh', 0)) {
             return $this->calculated_data->get($fieldname);
         }
-        
+
         if ($this->getKey() == null) {
             return null;
         }
@@ -255,7 +258,7 @@ trait SchedaExtraFieldTrait
         } else {
             $calculated_value = $value;
         }
-        
+
         // Store in schemaless attributes
         $this->calculated_data->set('valutatore_txt', $calculated_value);
 
@@ -655,15 +658,15 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggInSedeTot() or returns null.
      *
-     * @param  \Modules\Sigma\Datas\GgFilterData|array<string, mixed>  $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggInSedeTot($data): ?int
     {
-        if ($data instanceof \Modules\Sigma\Datas\GgFilterData) {
+        if ($data instanceof GgFilterData) {
             return $this->anag?->ggInSedeTot($data);
         }
 
-        $filterData = \Modules\Sigma\Datas\GgFilterData::from($data);
+        $filterData = GgFilterData::from($data);
 
         return $this->anag?->ggInSedeTot($filterData);
     }
@@ -683,15 +686,15 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaInSedeTot() or returns 0.
      *
-     * @param  \Modules\Sigma\Datas\GgFilterData|array<string, mixed>  $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggAssenzaInSedeTot($data): int
     {
-        if ($data instanceof \Modules\Sigma\Datas\GgFilterData) {
+        if ($data instanceof GgFilterData) {
             return $this->anag?->ggAssenzaInSedeTot($data) ?? 0;
         }
 
-        $filterData = \Modules\Sigma\Datas\GgFilterData::from($data);
+        $filterData = GgFilterData::from($data);
 
         return $this->anag?->ggAssenzaInSedeTot($filterData) ?? 0;
     }
@@ -811,7 +814,7 @@ trait SchedaExtraFieldTrait
 
         // Setup categoria e lista aspettative
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $lista_aspettative = $this->getListaTipoCodiceAspettative();
@@ -879,7 +882,7 @@ trait SchedaExtraFieldTrait
 
         // dddx($value);
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $lista_aspettative = $this->getListaTipoCodiceAspettative();
@@ -1166,7 +1169,7 @@ trait SchedaExtraFieldTrait
         }
 
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         // dddx($categoria->lista_propro);
@@ -1219,7 +1222,7 @@ trait SchedaExtraFieldTrait
         if ($this->getKey() == null) {
             return null;
         }
-        
+
         $value = $this->getGgCateco();
 
         // Store in schemaless attributes
@@ -1231,7 +1234,7 @@ trait SchedaExtraFieldTrait
     public function getGgCatecoPosfunInSede(): ?int
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             dddx($this->getPropro());
             dddx([
                 'scheda' => $this,
@@ -1337,7 +1340,7 @@ trait SchedaExtraFieldTrait
         }
         // 730
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         // dddx($categoria->lista_propro);
@@ -1371,7 +1374,7 @@ trait SchedaExtraFieldTrait
             return null;
         }
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         // dddx($categoria->lista_propro);
@@ -1415,7 +1418,7 @@ trait SchedaExtraFieldTrait
         }
 
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $value = $this->anag?->ggFuoriSedeTot([
@@ -1780,7 +1783,7 @@ trait SchedaExtraFieldTrait
         }
 
         $tot = 0.0;
-        /** @var \Modules\Progressioni\Models\SchedaCriteri|object $v */
+        /** @var SchedaCriteri|object $v */
         foreach ($scheda_criteri as $v) {
             // $v è un oggetto SchedaCriteri con field_name, converted_in, peso
             $field_name = isset($v->field_name) && is_string($v->field_name) ? $v->field_name : null;
@@ -1834,7 +1837,7 @@ trait SchedaExtraFieldTrait
     protected function getPuntProgressioneFinaleAttribute(?float $value): ?float
     {
         $old_value = $value; // This old value was probably for debugging or comparison, now it's less relevant for persistence
-        
+
         // Check if value exists in schemaless attributes and is not being refreshed
         if ($this->calculated_data->has('punt_progressione_finale') && ! request()->input('refresh', 0) && ($old_value === $this->calculated_data->get('punt_progressione_finale'))) {
             return $this->calculated_data->get('punt_progressione_finale');
@@ -1936,7 +1939,7 @@ trait SchedaExtraFieldTrait
     protected function getListaProproAttribute(?string $_value): ?string
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
 
@@ -1946,7 +1949,7 @@ trait SchedaExtraFieldTrait
     protected function getListaProproSupAttribute(?string $_value): ?string
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
 
@@ -1977,7 +1980,7 @@ trait SchedaExtraFieldTrait
         $conn = $this->getConnection();
         $fieldname = 'ptime';
         if (! Schema::connection($conn->getName())->hasColumn($table, $fieldname)) {
-            Schema::connection($conn->getName())->table($table, static function (\Illuminate\Database\Schema\Blueprint $tableBlueprint) use ($fieldname): void {
+            Schema::connection($conn->getName())->table($table, static function (Blueprint $tableBlueprint) use ($fieldname): void {
                 $tableBlueprint->decimal($fieldname, 10, 4);
             });
         }
@@ -2205,8 +2208,7 @@ trait SchedaExtraFieldTrait
      * Accessor per gg_asz_tip_cod_escluso_subito (giorni assenza per tipo codice escluso subito).
      * Delega calcolo a getGgAszTipCodEsclusoSubito().
      *
-     * @param int|null $_value Valore cached dal DB (non usato)
-     *
+     * @param  int|null  $_value  Valore cached dal DB (non usato)
      * @return null Sempre null (non implementato)
      */
     protected function getGgAszTipCodEsclusoSubitoAttribute(?int $_value): ?int
@@ -2266,7 +2268,7 @@ trait SchedaExtraFieldTrait
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
             'posiz' => '1',
         ];
-        $data = \Modules\Sigma\Datas\GgFilterData::from($parz);
+        $data = GgFilterData::from($parz);
         $value = $this->anag->ggInSedeTot($data);
         // ✅ Check: record must exist before save()
         if ($this->getKey() == null) {
@@ -2598,7 +2600,7 @@ trait SchedaExtraFieldTrait
         // aggiornare campo con il valore minimo ..
         // dddx(['rows'=>$rows,'data_presenza_al'=>$data_presenza_al]);
 
-        if (! ($last_integ->anv2kd instanceof \Carbon\Carbon)) {
+        if (! ($last_integ->anv2kd instanceof Carbon)) {
             return null;
         }
 

@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Jprog01l;
 
 class Jprog01lFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Jprog01l::class;
+    protected $model = Jprog01l::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Jprog01lFactory extends Factory
         return [];
     }
 }
-

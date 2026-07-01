@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 
 // ----------traits ---
@@ -36,6 +37,7 @@ use Illuminate\Support\Facades\Date;
  * @property int $wtcom2
  * @property string $ixterm
  * @property-read Anag|null $anag
+ *
  * @method static Builder|Wstr01lx newModelQuery()
  * @method static Builder|Wstr01lx newQuery()
  * @method static Builder|Wstr01lx query()
@@ -60,6 +62,7 @@ use Illuminate\Support\Facades\Date;
  * @method static Builder|Wstr01lx whereWtteor($value)
  * @method static Builder|Wstr01lx whereWxorat($value)
  * @method static Builder|Wstr01lx whereWyorat($value)
+ *
  * @mixin \Eloquent
  */
 class Wstr01lx extends BaseModel
@@ -199,15 +202,15 @@ class Wstr01lx extends BaseModel
     /**
      * Calcola la durata totale in minuti a partire dalle timbrature.
      *
-     * @param  array{timbr: \Illuminate\Support\Collection<int, self>}  $params
+     * @param  array{timbr: Collection<int, self>}  $params
      */
     public function durata(array $params): float
     {
-        if (! isset($params['timbr']) || ! $params['timbr'] instanceof \Illuminate\Support\Collection) {
+        if (! isset($params['timbr']) || ! $params['timbr'] instanceof Collection) {
             throw new Exception('Parameter "timbr" must be a Collection');
         }
 
-        /** @var \Illuminate\Support\Collection<int, self> $timbr */
+        /** @var Collection<int, self> $timbr */
         $timbr = $params['timbr'];
 
         $sens1 = $timbr->where('wtsens', 1)->pluck('wtorat');

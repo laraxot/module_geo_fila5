@@ -9,6 +9,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
@@ -32,7 +33,7 @@ class ImportCedDiffAction extends Action
                     // ->disk('cache')
                     ->label(__('progressioni::messages.choose_xls_file'))
                     ->required()
-                    ->afterStateUpdated(function (\Filament\Schemas\Components\Utilities\Set $set, TemporaryUploadedFile $state) {
+                    ->afterStateUpdated(function (Set $set, TemporaryUploadedFile $state) {
                         $set('fileRealPath', $state->getRealPath());
                     }),
                 Hidden::make('fileRealPath'),

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Repa1l1.
@@ -39,6 +40,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $aggstr
  * @property string|null $aggser
  * @property string|null $aggtip
+ *
  * @method static Builder|Repa1l1 newModelQuery()
  * @method static Builder|Repa1l1 newQuery()
  * @method static Builder|Repa1l1 query()
@@ -72,10 +74,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repa1l1 whereStabi($value)
  * @method static Builder|Repa1l1 whereStrcod($value)
  * @method static Builder|Repa1l1 whereTipcod($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Repa1l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Repa1l1 extends BaseModel

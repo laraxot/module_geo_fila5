@@ -6,7 +6,6 @@ namespace Modules\Progressioni\Filament\Resources\RatingResource\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Component;
-use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceInfolist;
 use Modules\Rating\Filament\Resources\RatingResource\Schemas\BaseRatingInfolist;
 
 class RatingInfolist extends BaseRatingInfolist

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Qua00k2.
@@ -51,6 +52,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $qua003
  * @property int|null $qua004
  * @property int|null $qua005
+ *
  * @method static Builder|Qua00k2 newModelQuery()
  * @method static Builder|Qua00k2 newQuery()
  * @method static Builder|Qua00k2 query()
@@ -96,10 +98,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua00k2 whereSropro($value)
  * @method static Builder|Qua00k2 whereSuolo($value)
  * @method static Builder|Qua00k2 whereTipco($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Qua00k2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Qua00k2 extends BaseModel

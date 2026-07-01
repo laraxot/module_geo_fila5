@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\ValueObject\PhpVersion;
+use RectorLaravel\Set\LaravelSetList;
 
 /**
  * Rector Configuration for Sigma Module
@@ -30,15 +32,15 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     // PHP version target
-    $rectorConfig->phpVersion(\Rector\ValueObject\PhpVersion::PHP_83);
+    $rectorConfig->phpVersion(PhpVersion::PHP_83);
 
     // Rule sets
     $laravelSets = [];
 
-    if (class_exists(\RectorLaravel\Set\LaravelSetList::class)) {
-        $laravelSets[] = \RectorLaravel\Set\LaravelSetList::LARAVEL_100; // Laravel 10.0 rules
-        $laravelSets[] = \RectorLaravel\Set\LaravelSetList::LARAVEL_CODE_QUALITY; // Laravel code quality improvements
-        $laravelSets[] = \RectorLaravel\Set\LaravelSetList::LARAVEL_ARRAY_STR_FUNCTION_TO_STATIC_CALL; // Convert array/str functions to static calls
+    if (class_exists(LaravelSetList::class)) {
+        $laravelSets[] = LaravelSetList::LARAVEL_100; // Laravel 10.0 rules
+        $laravelSets[] = LaravelSetList::LARAVEL_CODE_QUALITY; // Laravel code quality improvements
+        $laravelSets[] = LaravelSetList::LARAVEL_ARRAY_STR_FUNCTION_TO_STATIC_CALL; // Convert array/str functions to static calls
     }
 
     $rectorConfig->sets(array_merge($laravelSets, [

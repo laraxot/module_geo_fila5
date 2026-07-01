@@ -19,6 +19,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @property int|null $children_count
  * @property mixed $type
  * @property Message|null $parent
+ *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Builder|Message breadthFirst()
  * @method static Builder|Message depthFirst()
@@ -37,6 +38,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Builder|Message whereDepth($operator, $value = null)
  * @method static Builder|Message withGlobalScopes(array $scopes)
  * @method static Builder|Message withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
+ *
  * @property-read Collection|Message[] $ancestors The model's recursive parents.
  * @property-read int|null $ancestors_count
  * @property-read Collection|Message[] $ancestorsAndSelf The model's recursive parents and itself.
@@ -56,9 +58,11 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @property-read int|null $siblings_count
  * @property-read Collection|Message[] $siblingsAndSelf All the parent's children.
  * @property-read int|null $siblings_and_self_count
+ *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Builder|Message doesntHaveChildren()
  * @method static Collection<int, static> get($columns = ['*'])
+ *
  * @property int $id
  * @property int|null $user_id
  * @property string|null $title
@@ -70,6 +74,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Collection<int, static> get($columns = ['*'])
  * @method static Builder|Message whereAnno($value)
@@ -90,11 +95,13 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Collection<int, static> get($columns = ['*'])
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Collection<int, static> get($columns = ['*'])
+ *
  * @property int $depth
  * @property string $path
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class Message extends BaseModel

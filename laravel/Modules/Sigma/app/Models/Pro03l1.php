@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Pro03l1.
@@ -34,6 +35,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $p3flg2
  * @property string|null $p3com1
  * @property string|null $p3com2
+ *
  * @method static Builder|Pro03l1 newModelQuery()
  * @method static Builder|Pro03l1 newQuery()
  * @method static Builder|Pro03l1 query()
@@ -62,10 +64,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Pro03l1 whereP3ind7($value)
  * @method static Builder|Pro03l1 whereP3matr($value)
  * @method static Builder|Pro03l1 whereP3reco($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Pro03l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Pro03l1 extends BaseModel

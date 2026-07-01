@@ -21,7 +21,6 @@ class CheckValutatoreAction
      * @param  class-string<Model>  $class
      * @param  string  $year  Anno di riferimento
      * @param  string  $type  Tipo di scheda (es. 'dip')
-     *
      * @return array<int, array{id: int, ha_diritto: int|null, matr: int|null, cognome: string|null, nome: string|null, stabi: int|null, repar: int|null, valutatore_id: int|null}>
      */
     public function execute(string $class, string $year, string $type): array

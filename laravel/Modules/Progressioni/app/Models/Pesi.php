@@ -7,6 +7,7 @@ namespace Modules\Progressioni\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\PesiFactory;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Progressioni\Models\Pesi.
@@ -24,6 +25,7 @@ use Modules\Progressioni\Database\Factories\PesiFactory;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static PesiFactory factory($count = null, $state = [])
  * @method static Builder|Pesi newModelQuery()
  * @method static Builder|Pesi newQuery()
@@ -41,9 +43,11 @@ use Modules\Progressioni\Database\Factories\PesiFactory;
  * @method static Builder|Pesi wherePesoRisultatiOttenuti($value)
  * @method static Builder|Pesi whereUpdatedAt($value)
  * @method static Builder|Pesi whereUpdatedBy($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class Pesi extends BaseModel

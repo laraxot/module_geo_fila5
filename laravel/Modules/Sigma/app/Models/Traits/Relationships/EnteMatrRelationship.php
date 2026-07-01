@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Relationships;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\Sigma\Models\Ana02f;
@@ -37,7 +36,7 @@ trait EnteMatrRelationship
             ->whereRaw('year(wtdata) = ?', [(string) $this->anno]);
     }
 
-    public function anag(): HasOne|BelongsTo
+    public function anag(): HasOne
     {
         return $this->hasOneByEnteMatr(Anag::class);
     }

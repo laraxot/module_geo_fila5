@@ -6,7 +6,9 @@ namespace Modules\Ptv\Filament\Resources\MyLogResource\Pages;
 
 use Filament\Actions;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Ptv\Filament\Resources\MyLogResource;
 use Modules\Ptv\Models\MyLog;
@@ -17,7 +19,7 @@ abstract class BaseListMyLogs extends XotBaseListRecords
     protected static string $resource = MyLogResource::class;
 
     /**
-     * @return array<string, \Filament\Tables\Columns\Column>
+     * @return array<string, Column>
      */
     public function getTableColumns(): array
     {
@@ -49,7 +51,7 @@ abstract class BaseListMyLogs extends XotBaseListRecords
     }
 
     /**
-     * @return array<int, \Filament\Tables\Filters\BaseFilter>
+     * @return array<int, BaseFilter>
      */
     public function getTableFilters(): array
     {

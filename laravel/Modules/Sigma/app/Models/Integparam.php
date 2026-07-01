@@ -7,6 +7,7 @@ namespace Modules\Sigma\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Date;
+use Modules\Ptv\Models\Profile;
 use Override;
 
 /**
@@ -25,6 +26,7 @@ use Override;
  * @property float $anvqta Quantità (default 0.00)
  * @property string $anvvoc Vocabolario
  * @property string $anvdes Descrizione
+ *
  * @method static Builder|Integparam newModelQuery()
  * @method static Builder|Integparam newQuery()
  * @method static Builder|Integparam query()
@@ -41,11 +43,13 @@ use Override;
  * @method static Builder|Integparam whereAnvqta($value)
  * @method static Builder|Integparam whereAnvvoc($value)
  * @method static Builder|Integparam whereAnvdes($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
  * @property-read string $full_name
  * @property-read string $validity_period
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|Integparam byEnte(string $ente)
  * @method static Builder<static>|Integparam byMatricola(string $matr)
  * @method static Builder<static>|Integparam byParametro(string $parametro)
@@ -53,6 +57,7 @@ use Override;
  * @method static Builder<static>|Integparam byVocabolario(string $vocabolario)
  * @method static \Modules\Sigma\Database\Factories\IntegparamFactory factory($count = null, $state = [])
  * @method static Builder<static>|Integparam validInPeriod($startDate, $endDate)
+ *
  * @mixin \Eloquent
  */
 class Integparam extends BaseModel

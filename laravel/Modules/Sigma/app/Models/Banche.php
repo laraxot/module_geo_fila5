@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Banche.
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $banca
  * @property string|null $agenz
  * @property string|null $desban
+ *
  * @method static Builder|Banche newModelQuery()
  * @method static Builder|Banche newQuery()
  * @method static Builder|Banche query()
@@ -20,10 +22,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Banche whereBanca($value)
  * @method static Builder|Banche whereDesban($value)
  * @method static Builder|Banche whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\BancheFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Banche extends BaseModel

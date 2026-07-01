@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Mutators;
 
+use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Modules\Sigma\Models\Codici;
+use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Tqu00f;
 use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
 
@@ -71,12 +74,10 @@ trait SchedaMutator
      */
     protected function getCodquaAttribute(?int $value): ?int
     {
-        
         if ($value !== null) {
-            return  $value;
+            return $value;
         }
 
-        
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getCodqua();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
@@ -85,9 +86,9 @@ trait SchedaMutator
                 $this->update(['codqua' => $value]);
             });
         }
+
         return $value;
     }
-
 
     protected function getCodquaTxt(): ?string
     {
@@ -100,17 +101,15 @@ trait SchedaMutator
         */
     }
 
-
     protected function getCodquaTxtAttributeTmp(?string $value): ?string
     {
-        //dddx($this->integParams()->toRawSql());
-        
+        // dddx($this->integParams()->toRawSql());
+
         return $this->tqu00f()->first()->liv;
         if ($value !== null) {
             return $value;
         }
 
-        
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getCodquaTxt();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
@@ -119,6 +118,7 @@ trait SchedaMutator
                 $this->update(['codqua_txt' => $value]);
             });
         }
+
         return $value;
     }
 
@@ -128,7 +128,7 @@ trait SchedaMutator
          $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
          dddx($qua00f);
     }
-    
+
 
     protected function getClafunAttribute(?int $value): ?int
     {
@@ -143,7 +143,7 @@ trait SchedaMutator
             });
         }
         return $value;
-        
+
     }
     */
 
@@ -209,7 +209,7 @@ trait SchedaMutator
     protected function getTipco(): int|string|null
     {
         $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
-        if (! ($qua00f instanceof \Modules\Sigma\Models\Qua00f)) {
+        if (! ($qua00f instanceof Qua00f)) {
             return null;
         }
 
@@ -262,7 +262,7 @@ trait SchedaMutator
     protected function getPosizioneEco(): ?string
     {
         $tqu00f = $this->tqu00f;
-        if (! ($tqu00f instanceof \Modules\Sigma\Models\Tqu00f)) {
+        if (! ($tqu00f instanceof Tqu00f)) {
             return null;
         }
 
@@ -278,8 +278,7 @@ trait SchedaMutator
      * Accessor per posizione_eco (posizione economica da tqu00f).
      * Delega calcolo a getPosizioneEco().
      *
-     * @param string|null $value Valore cached dal DB
-     *
+     * @param  string|null  $value  Valore cached dal DB
      * @return string|null Posizione economica calcolata
      */
     protected function getPosizioneEcoAttribute(?string $value): ?string
@@ -336,8 +335,7 @@ trait SchedaMutator
      * Accessor per perc_parttimepond_anno (percentuale part-time ponderata anno).
      * Delega calcolo a getPercParttimepondAnno().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Percentuale calcolata
      */
     protected function getPercParttimepondAnnoAttribute(?float $value = null): ?float
@@ -434,8 +432,7 @@ trait SchedaMutator
      * Accessor per disci1_txt (descrizione disciplina 1 da Codici).
      * Delega calcolo a getDisci1Txt().
      *
-     * @param string|null $value Valore cached dal DB
-     *
+     * @param  string|null  $value  Valore cached dal DB
      * @return string|null Descrizione calcolata
      */
     protected function getDisci1TxtAttribute(?string $value): ?string
@@ -464,7 +461,7 @@ trait SchedaMutator
             // Se tabella non ha colonna, la crea (legacy behavior)
             $fieldname = 'disci1_txt';
             if (! Schema::connection($this->getConnectionName())->hasColumn($this->getTable(), $fieldname)) {
-                Schema::connection($this->getConnectionName())->table($this->getTable(), static function (\Illuminate\Database\Schema\Blueprint $table) use (
+                Schema::connection($this->getConnectionName())->table($this->getTable(), static function (Blueprint $table) use (
                     $fieldname,
                 ): void {
                     $table->string($fieldname);
@@ -512,7 +509,7 @@ trait SchedaMutator
             return null;
         }
         $qua00f_curr = $qua00fRelation->first();
-        if (! ($qua00f_curr instanceof \Modules\Sigma\Models\Qua00f)) {
+        if (! ($qua00f_curr instanceof Qua00f)) {
             return null;
         }
 
@@ -525,8 +522,8 @@ trait SchedaMutator
         // ⚠️ DO NOT call update() inside accessor - may causes infinite loop
         // Just set the raw attribute value without triggering events
         $this->attributes['disci1'] = $value;
-        if($this->getKey()!=null){
-            $this->update(['disci1'=>$value]);
+        if ($this->getKey() != null) {
+            $this->update(['disci1' => $value]);
         }
 
         return $value;
@@ -618,7 +615,7 @@ trait SchedaMutator
         $date_max = $this->criteriOptionsArr('data_presenza_al');
 
         // Verifica che $date_max sia una Carbon instance
-        if (! ($date_max instanceof \Carbon\Carbon)) {
+        if (! ($date_max instanceof Carbon)) {
             return 0.0;
         }
 
@@ -633,8 +630,7 @@ trait SchedaMutator
      * Accessor per eta (età anagrafica).
      * Delega calcolo a getEta().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Età calcolata
      */
     protected function getEtaAttribute(?float $value): ?float
@@ -700,32 +696,31 @@ trait SchedaMutator
     // */
     public function getWorkerType(): string
     {
-        
         if ($this->isPo()) {
             return 'po';
         }
         if ($this->isRegionale()) {
             return 'regionale';
-        } 
+        }
+
         return 'dip';
     }
 
-
     public function getTypeAttribute(?string $value)
     {
-        
-        if($value!=null){
-           return $value;
+        if ($value != null) {
+            return $value;
         }
-        $value=$this->getWorkerType();
-       
+        $value = $this->getWorkerType();
+
         if ($this->getKey() !== null) {
             static::withoutEvents(function () use ($value): void {
-                //$this->update(['type' => $value]);
+                // $this->update(['type' => $value]);
                 $this->attributes['type'] = $value;
                 $this->save();
             });
         }
+
         return $value;
     }
 }

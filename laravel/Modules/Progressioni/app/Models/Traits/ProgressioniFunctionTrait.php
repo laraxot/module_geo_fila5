@@ -436,12 +436,6 @@ trait ProgressioniFunctionTrait
             return 0.0;
         }
 
-        foreach ($rows as $row) {
-            if (is_object($row) && isset($row->totale_punteggio)) {
-                $a = $row->totale_punteggio ?? 0;
-            }
-        }
-
         $tbl = 'performance_individuale';
         $sql = '( COALESCE(sum('.$tbl.'.totale_punteggio * (datediff('.$tbl.'.al,'.$tbl.'.dal)+1))/( sum(datediff('.$tbl.'.al,'.$tbl.'.dal)+1)  ),0) ) as perf_ind';
         // $sql1=(B.ha_diritto>0 or B.posfun>=100)
@@ -497,12 +491,13 @@ trait ProgressioniFunctionTrait
 
         return $stabi_0->valutatore_id;
     }
+
     /*
     public function isPo(): bool
     {
         return $this->posfun >= 100;
     }
-    
+
     public function isRegionale(): bool
     {
         return $this->disci1 === 203;

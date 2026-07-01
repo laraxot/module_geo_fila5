@@ -4,18 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models;
 
+use Modules\Ptv\Models\Profile;
+
 /**
  * Model representing the available tables for Sigma sync.
  *
  * @property int $id
  * @property string $tbl
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\TableListFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TableList query()
+ *
  * @mixin \Eloquent
  */
 class TableList extends BaseModel

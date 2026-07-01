@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Irp21l1.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $irpinv
  * @property string|null $irptip
  * @property string|null $iann21
+ *
  * @method static Builder|Irp21l1 newModelQuery()
  * @method static Builder|Irp21l1 newQuery()
  * @method static Builder|Irp21l1 query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Irp21l1 whereIrpseq($value)
  * @method static Builder|Irp21l1 whereIrptip($value)
  * @method static Builder|Irp21l1 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Irp21l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Irp21l1 extends BaseModel

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Anagdic.
@@ -71,6 +72,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $comna2
  * @property string|null $comre2
  * @property string|null $comdo2
+ *
  * @method static Builder|Anagdic newModelQuery()
  * @method static Builder|Anagdic newQuery()
  * @method static Builder|Anagdic query()
@@ -136,10 +138,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Anagdic whereTitstu($value)
  * @method static Builder|Anagdic whereTopo($value)
  * @method static Builder|Anagdic whereTopod($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\AnagdicFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Anagdic extends BaseModel

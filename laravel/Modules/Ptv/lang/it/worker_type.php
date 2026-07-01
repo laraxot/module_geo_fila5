@@ -23,7 +23,7 @@ return [
         'icon' => 'heroicon-o-user',
         'color' => 'info',
     ],
-    'values'=>[
+    'values' => [
         'dip' => [
             'label' => 'Dipendente',
             'icon' => 'heroicon-o-user',
@@ -44,5 +44,5 @@ return [
             'icon' => 'heroicon-o-user',
             'color' => 'info',
         ],
-    ]
+    ],
 ];

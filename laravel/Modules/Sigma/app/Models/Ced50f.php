@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ced50f.
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ordced
  * @property string|null $orduff
  * @property string|null $ordnas
+ *
  * @method static Builder|Ced50f newModelQuery()
  * @method static Builder|Ced50f newQuery()
  * @method static Builder|Ced50f query()
@@ -44,10 +46,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced50f wherePropro($value)
  * @method static Builder|Ced50f whereRepre2($value)
  * @method static Builder|Ced50f whereRepst2($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ced50fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ced50f extends BaseModel

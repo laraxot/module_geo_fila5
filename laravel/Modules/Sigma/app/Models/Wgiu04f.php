@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Wgiu04f.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $g4com4
  * @property int|null $g4com5
  * @property string|null $g4com6
+ *
  * @method static Builder|Wgiu04f newModelQuery()
  * @method static Builder|Wgiu04f newQuery()
  * @method static Builder|Wgiu04f query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wgiu04f whereG4qtar($value)
  * @method static Builder|Wgiu04f whereG4sequ($value)
  * @method static Builder|Wgiu04f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Wgiu04fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Wgiu04f extends BaseModel

@@ -18,8 +18,7 @@ use Modules\Xot\Actions\ModelClass\CopyFromLastYearAction as CopyFromLastYearByF
 
 class CopyFromLastYearAction extends Action
 {
-
-    public ?string $yearFieldName=null;
+    public ?string $yearFieldName = null;
 
     public static function getDefaultName(): ?string
     {
@@ -54,7 +53,7 @@ class CopyFromLastYearAction extends Action
                     $fieldname = 'year';
                 }
                 if (is_string($this->yearFieldName)) {
-                    $fieldname=$this->yearFieldName;
+                    $fieldname = $this->yearFieldName;
                 }
 
                 app(CopyFromLastYearByFieldnameAction::class)->execute($modelClass, $fieldname, is_string($year) ? $year : '');

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Wmeneczf.
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mecaus
  * @property string|null $mecom1
  * @property string|null $mecom2
+ *
  * @method static Builder|Wmeneczf newModelQuery()
  * @method static Builder|Wmeneczf newQuery()
  * @method static Builder|Wmeneczf query()
@@ -32,10 +34,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Wmeneczf whereMefla1($value)
  * @method static Builder|Wmeneczf whereMematr($value)
  * @method static Builder|Wmeneczf whereMeorat($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\WmeneczfFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Wmeneczf extends BaseModel

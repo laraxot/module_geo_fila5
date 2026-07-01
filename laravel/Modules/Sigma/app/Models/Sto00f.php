@@ -51,6 +51,7 @@ use Modules\Sigma\Models\Traits\Relationships\Qua00k1Relationship;
  * @property-read Collection<int, Rep00f> $rep00f
  * @property-read int|null $rep00f_count
  * @property-read int|null $anno
+ *
  * @method static Builder|Sto00f newModelQuery()
  * @method static Builder|Sto00f newQuery()
  * @method static Builder|Sto00f ofDate(int $date)
@@ -91,6 +92,7 @@ use Modules\Sigma\Models\Traits\Relationships\Qua00k1Relationship;
  * @method static Builder|Sto00f whereTipdim($value)
  * @method static Builder|Sto00f whereTipoprovvass($value)
  * @method static Builder|Sto00f whereTipoprovvdi($value)
+ *
  * @mixin \Eloquent
  */
 class Sto00f extends BaseDateRangeModel

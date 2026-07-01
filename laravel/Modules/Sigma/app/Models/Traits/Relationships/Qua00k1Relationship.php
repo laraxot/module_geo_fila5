@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Sigma\Models\BaseModel;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
 use Modules\Sigma\Models\Qua00k1;
 
 /**
  * Relazione HasMany verso Qua00k1 con filtro anno vuoto.
  *
- * @phpstan-require-extends \Modules\Sigma\Models\BaseModel
+ * @phpstan-require-extends BaseModel
  *
- * Filtro `quaann` attivo via {@see \Modules\Sigma\Models\BaseModel::applyRelatedActiveAnnFilter}
- * su {@see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract}.
+ * Filtro `quaann` attivo via {@see BaseModel::applyRelatedActiveAnnFilter}
+ * su {@see DateRangeFieldsContract}.
  */
 trait Qua00k1Relationship
 {

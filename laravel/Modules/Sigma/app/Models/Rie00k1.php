@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Rie00k1.
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $rie003
  * @property string|null $rie004
  * @property string|null $rie005
+ *
  * @method static Builder|Rie00k1 newModelQuery()
  * @method static Builder|Rie00k1 newQuery()
  * @method static Builder|Rie00k1 query()
@@ -36,10 +38,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Rie00k1 whereRieaa($value)
  * @method static Builder|Rie00k1 whereRieann($value)
  * @method static Builder|Rie00k1 whereRietip($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Rie00k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Rie00k1 extends BaseModel

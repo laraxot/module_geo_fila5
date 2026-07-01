@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $repar
  * @property string $dest1
  * @property string $dest2
+ *
  * @method static Builder|Repart newModelQuery()
  * @method static Builder|Repart newQuery()
  * @method static Builder|Repart query()
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repart whereId($value)
  * @method static Builder|Repart whereRepar($value)
  * @method static Builder|Repart whereStabi($value)
+ *
  * @mixin \Eloquent
  */
 class Repart extends BaseModel

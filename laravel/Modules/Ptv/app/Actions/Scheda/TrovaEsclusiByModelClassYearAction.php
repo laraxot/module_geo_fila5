@@ -14,7 +14,7 @@ class TrovaEsclusiByModelClassYearAction
     use QueueableAction;
 
     /**
-     * @param class-string<SchedaContract> $modelClass
+     * @param  class-string<SchedaContract>  $modelClass
      */
     public function execute(string $modelClass, string $fieldName, int $year): void
     {
@@ -33,12 +33,10 @@ class TrovaEsclusiByModelClassYearAction
 
         $criteriEsclusione = $modelClass::getCriteriEsclusioneByYear($year, $fieldName);
         $criteriOption = $modelClass::getCriteriOptionsParsedByYear($year, $fieldName);
-        
 
         if ($criteriEsclusione === null || $criteriOption === null) {
             return;
         }
-
 
         foreach ($rows as $row) {
             if (! $row instanceof SchedaContract) {

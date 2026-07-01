@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $mov004
  * @property int $mov005
  * @property-read Codici|null $codici
+ *
  * @method static Builder|Mov01k2 newModelQuery()
  * @method static Builder|Mov01k2 newQuery()
  * @method static Builder|Mov01k2 query()
@@ -60,6 +61,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static Builder|Mov01k2 whereMov005($value)
  * @method static Builder|Mov01k2 whereMov2kn($value)
  * @method static Builder|Mov01k2 whereMov2kz($value)
+ *
  * @mixin \Eloquent
  */
 class Mov01k2 extends BaseModel

@@ -10,5 +10,4 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\BaseListSchedas;
 class ListProgressionis extends BaseListSchedas
 {
     protected static string $resource = ProgressioniResource::class;
-    
 }

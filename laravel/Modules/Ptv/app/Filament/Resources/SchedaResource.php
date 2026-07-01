@@ -4,8 +4,4 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources;
 
-
-class SchedaResource extends BaseSchedaResource
-{
-    
-}
+class SchedaResource extends BaseSchedaResource {}

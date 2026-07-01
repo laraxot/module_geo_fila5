@@ -21,9 +21,6 @@ class LogModelUpdatedAction
         public Model $model,
         public ?Model $user = null,
     ) {
-        if ($user !== null) {
-            // Type already narrowed to Model|null, assertion not needed
-        }
     }
 
     public function execute(): Activity

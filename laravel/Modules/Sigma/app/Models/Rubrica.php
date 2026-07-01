@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Rubrica.
@@ -39,6 +40,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $reparto
  * @property string|null $ufficio
  * @property string|null $note
+ *
  * @method static Builder|Rubrica newModelQuery()
  * @method static Builder|Rubrica newQuery()
  * @method static Builder|Rubrica query()
@@ -72,10 +74,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Rubrica whereUfficio($value)
  * @method static Builder|Rubrica whereViaAb($value)
  * @method static Builder|Rubrica whereViaUff($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\RubricaFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Rubrica extends BaseModel

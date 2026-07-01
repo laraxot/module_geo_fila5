@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\ProgressioniResource\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\Select;
@@ -38,7 +39,7 @@ class ProgressionisTable extends XotBaseResourceTable
      * - metodo `getTableHeaderActions()` (cablato da HasXotTable::table() in ->headerActions())
      * - lettura filtri via `$this->tableFilters` + `Arr::get('anno/valutatore')` (pattern SchedasTable)
      *
-     * @return array<string, \Filament\Actions\Action>
+     * @return array<string, Action>
      */
     public function getTableHeaderActions(): array
     {

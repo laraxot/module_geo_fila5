@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Acco6f.
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $matr
  * @property int $aumdal
  * @property int $aumimp
+ *
  * @method static Builder|Acco6f newModelQuery()
  * @method static Builder|Acco6f newQuery()
  * @method static Builder|Acco6f query()
@@ -22,10 +24,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Acco6f whereEnte($value)
  * @method static Builder|Acco6f whereId($value)
  * @method static Builder|Acco6f whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Acco6fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Acco6f extends BaseModel

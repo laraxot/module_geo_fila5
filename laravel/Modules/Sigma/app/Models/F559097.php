@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\F559097.
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $field1111111
  * @property string|null $reparto
  * @property string|null $field11111111
+ *
  * @method static Builder|F559097 newModelQuery()
  * @method static Builder|F559097 newQuery()
  * @method static Builder|F559097 query()
@@ -56,10 +58,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|F559097 whereReparto($value)
  * @method static Builder|F559097 whereStabilimento($value)
  * @method static Builder|F559097 whereVoce($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\F559097Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class F559097 extends BaseModel

@@ -6,12 +6,13 @@ namespace Modules\Ptv\Actions\CriteriEsclusione;
 
 use Illuminate\Support\Collection;
 use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
 use Override;
 
 /**
  * Giorni minimi da parametri integrativi al netto delle assenze (gg_esperienza_no_asz).
  *
- * @see \Modules\Sigma\Models\Traits\Helpers\SchedaHelper::getGgEsperienzaNoAsz()
+ * @see SchedaHelper::getGgEsperienzaNoAsz()
  */
 class MinGgIntegParamsNoAsz extends BaseCriterioEsclusione
 {

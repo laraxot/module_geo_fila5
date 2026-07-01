@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $mov003
  * @property int $mov004
  * @property int $mov005
+ *
  * @method static Builder|Mov01k1 newModelQuery()
  * @method static Builder|Mov01k1 newQuery()
  * @method static Builder|Mov01k1 query()
@@ -59,6 +60,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mov01k1 whereMov005($value)
  * @method static Builder|Mov01k1 whereMov2kn($value)
  * @method static Builder|Mov01k1 whereMov2kz($value)
+ *
  * @mixin \Eloquent
  */
 class Mov01k1 extends BaseModel

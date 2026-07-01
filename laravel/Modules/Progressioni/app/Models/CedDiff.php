@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Models;
 
+use Illuminate\Support\Carbon;
+use Modules\Ptv\Models\Profile;
+
 /**
  * @property string $id
  * @property string|null $matricola
@@ -29,13 +32,14 @@ namespace Modules\Progressioni\Models;
  * @property string|null $stabi_txt
  * @property string|null $reparto
  * @property string|null $repar_txt
- * @property \Illuminate\Support\Carbon|null $created_at
+ * @property Carbon|null $created_at
  * @property string|null $created_by
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $updated_at
  * @property string|null $updated_by
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Progressioni\Database\Factories\CedDiffFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CedDiff newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CedDiff newQuery()
@@ -68,6 +72,7 @@ namespace Modules\Progressioni\Models;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CedDiff whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CedDiff whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CedDiff whereVoce($value)
+ *
  * @mixin \Eloquent
  */
 class CedDiff extends BaseModel

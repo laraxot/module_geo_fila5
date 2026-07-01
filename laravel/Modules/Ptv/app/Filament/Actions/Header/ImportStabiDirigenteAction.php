@@ -12,6 +12,7 @@ use Filament\Actions\Action;
 // Header actions must be an instance of Filament\Actions\Action, or Filament\Actions\ActionGroup.
 // use Filament\Tables\Actions\Action;
 use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Sigma\Models\Rep00f;
 
 class ImportStabiDirigenteAction extends Action
@@ -33,7 +34,7 @@ class ImportStabiDirigenteAction extends Action
                     if (! is_string($model) || ! class_exists($model)) {
                         throw new \Exception('Invalid model class');
                     }
-                    /** @var class-string<\Illuminate\Database\Eloquent\Model> $modelClass */
+                    /** @var class-string<Model> $modelClass */
                     $modelClass = $model;
                     $anno = 2025;
                     $rows = Rep00f::select('repst1')->where('repre1', '!=', 0)->distinct()->ofEnteYear(90, $anno)->get();

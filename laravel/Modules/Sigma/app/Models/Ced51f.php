@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ced51f.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $co7
  * @property string|null $co8
  * @property string|null $co9
+ *
  * @method static Builder|Ced51f newModelQuery()
  * @method static Builder|Ced51f newQuery()
  * @method static Builder|Ced51f query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced51f whereEnte($value)
  * @method static Builder|Ced51f whereId($value)
  * @method static Builder|Ced51f whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ced51fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ced51f extends BaseModel

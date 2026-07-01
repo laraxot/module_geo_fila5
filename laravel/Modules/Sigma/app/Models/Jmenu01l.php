@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Jmenu01l.
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $nmfhab
  * @property string|null $nmmhab
  * @property string|null $tpohab
+ *
  * @method static Builder|Jmenu01l newModelQuery()
  * @method static Builder|Jmenu01l newQuery()
  * @method static Builder|Jmenu01l query()
@@ -32,10 +34,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Jmenu01l whereNmmhab($value)
  * @method static Builder|Jmenu01l whereSinfab($value)
  * @method static Builder|Jmenu01l whereTpohab($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Jmenu01lFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Jmenu01l extends BaseModel

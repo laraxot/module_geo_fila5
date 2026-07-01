@@ -53,7 +53,7 @@ class EditTranslationFile extends XotBaseEditRecord
 
         foreach ($array as $key => $value) {
             $keyStr = (string) $key;
-            $fullKey = '' === $prefix ? $keyStr : ($prefix.'.'.$keyStr);
+            $fullKey = $prefix === '' ? $keyStr : ($prefix.'.'.$keyStr);
 
             if (is_array($value)) {
                 /** @var array<string, mixed> $childArray */

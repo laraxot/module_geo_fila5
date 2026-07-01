@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Filament\Resources\Asz00fResource\Pages;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Progressioni\Filament\Resources\Asz00fResource;
@@ -29,9 +29,8 @@ class ListAsz00fs extends XotBaseListRecords
         ];
     }
 
-    
     /**
-     * @return array<string, \Filament\Tables\Columns\Column>
+     * @return array<string, Column>
      */
     #[Override]
     public function getTableColumns(): array

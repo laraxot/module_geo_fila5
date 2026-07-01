@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Worar01f.
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $ordal
  * @property int|null $oral
  * @property string|null $wsc3b
+ *
  * @method static Builder|Worar01f newModelQuery()
  * @method static Builder|Worar01f newQuery()
  * @method static Builder|Worar01f query()
@@ -26,10 +28,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Worar01f whereOrcodi($value)
  * @method static Builder|Worar01f whereOrdal($value)
  * @method static Builder|Worar01f whereWsc3b($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Worar01fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Worar01f extends BaseModel

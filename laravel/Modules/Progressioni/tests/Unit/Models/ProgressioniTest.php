@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\Progressioni;
+use Modules\Ptv\Models\Contracts\SchedaContract;
 
 test('progressioni model extends correct base model', function () {
     $model = new Progressioni;

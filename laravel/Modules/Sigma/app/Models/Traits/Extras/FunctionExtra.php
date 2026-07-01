@@ -7,7 +7,9 @@ namespace Modules\Sigma\Models\Traits\Extras;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use Modules\Sigma\Datas\GgFilterData;
 use Modules\Sigma\Models\Anag;
@@ -15,7 +17,8 @@ use Modules\Sigma\Models\Asz00k1;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
-
+use Modules\Xot\Actions\Array\DiffAssocRecursiveAction;
+use Modules\Xot\Actions\Array\RangeIntersectAction;
 
 trait FunctionExtra
 {
@@ -385,7 +388,7 @@ trait FunctionExtra
         if (! method_exists($this, 'qua00f')) {
             return null;
         }
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
+        /** @var HasMany<Qua00f, static> $qua00fRelation */
         $qua00fRelation = $this->qua00f();
         $qua00f = $qua00fRelation;
 
@@ -466,7 +469,7 @@ trait FunctionExtra
         if (! method_exists($this, 'qua00f')) {
             return null;
         }
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $qua00fRelation */
+        /** @var HasMany<Qua00f, static> $qua00fRelation */
         // @phpstan-ignore-next-line method.notFound - Method checked above with method_exists
         $qua00fRelation = $this->qua00f();
         $qua00f = $qua00fRelation;
@@ -532,7 +535,7 @@ trait FunctionExtra
             $date_max = $date_max->format('Ymd');
         }
 
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua03f, static> $qua */
+        /** @var HasMany<Qua03f, static> $qua */
         $qua = $this->qua03f();
         if (isset($lista_propro) && is_string($lista_propro)) {
             $qua->whereRaw('find_in_set(q3pro, ?)', [$lista_propro]);
@@ -585,9 +588,9 @@ trait FunctionExtra
             $date_max = $date_max->format('Ymd');
         }
 
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Asz00k1, static> $aszRelation */
+        /** @var HasMany<Asz00k1, static> $aszRelation */
         $aszRelation = $this->asz00k1();
-        /** @var \Illuminate\Database\Eloquent\Builder<Asz00k1> $asz */
+        /** @var Builder<Asz00k1> $asz */
         $asz = $aszRelation;
 
         if (isset($lista_propro) && is_string($lista_propro)) {
@@ -669,9 +672,9 @@ trait FunctionExtra
     // ---------------------------------------------------------------------------------------------
     /**
      * @param  array<string, mixed>  $params
-     * @return \Illuminate\Support\Collection<int, array<string, mixed>>
+     * @return Collection<int, array<string, mixed>>
      */
-    public static function rep00fQua00fAnnoCollection(array $params): \Illuminate\Support\Collection
+    public static function rep00fQua00fAnnoCollection(array $params): Collection
     {
         // Avoid using extract() which creates dynamic variables.
         // Instead, access array elements directly.
@@ -689,7 +692,7 @@ trait FunctionExtra
         // dddx($qua00f_coll->count());//422 - 426
         // dddx($perf_qua_coll);
         $ris = [];
-        /** @var \Illuminate\Support\Collection<int, array<string, mixed>>|null $rep00f_collTyped */
+        /** @var Collection<int, array<string, mixed>>|null $rep00f_collTyped */
         $rep00f_collTyped = $rep00f_coll;
         if ($rep00f_collTyped !== null) {
             foreach ($rep00f_collTyped as $k => $rep) {
@@ -742,7 +745,7 @@ trait FunctionExtra
                     $quaDal = $quaTyped['dal'];
                     /** @var int $quaAl */
                     $quaAl = $quaTyped['al'];
-                    $intersect = app(\Modules\Xot\Actions\Array\RangeIntersectAction::class)->execute($repDal, $repAl, $quaDal, $quaAl);
+                    $intersect = app(RangeIntersectAction::class)->execute($repDal, $repAl, $quaDal, $quaAl);
                     // echo '<pre>';print_r($intersect);echo '</pre>';
                     if ($intersect !== false && \is_array($intersect)) {
                         /** @var array<int, int> $intersectTyped */
@@ -827,7 +830,7 @@ trait FunctionExtra
             }
         }
 
-        /** @var \Illuminate\Support\Collection<int, array<string, mixed>> $result */
+        /** @var Collection<int, array<string, mixed>> $result */
         $result = collect($ris2)->values()->map(static function ($item): array {
             if (! \is_array($item)) {
                 return [];
@@ -867,7 +870,7 @@ trait FunctionExtra
         // $this->fixQua($params);
         /** @var array<string, mixed> $paramsTyped */
         $paramsTyped = $params;
-        /** @var \Illuminate\Support\Collection<int, array<string, mixed>> $rows_coll */
+        /** @var Collection<int, array<string, mixed>> $rows_coll */
         $rows_coll = Anag::rep00fQua00fAnnoCollection($paramsTyped);
 
         $first_row = $rows_coll->first();
@@ -911,7 +914,7 @@ trait FunctionExtra
         /** @var array<int, array<string, mixed>> $perf_coll_all */
         $perf_coll_all = $perf_coll->all();
 
-        $results = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute(
+        $results = app(DiffAssocRecursiveAction::class)->execute(
             self::indexedRowsToAssoc($rows_coll_all),
             self::indexedRowsToAssoc($perf_coll_all),
         );
@@ -988,7 +991,7 @@ trait FunctionExtra
                             echo '</pre>';
                             // dddx($v);
                             // $up = new self();
-                            /** @var \Illuminate\Database\Eloquent\Builder<static> $up */
+                            /** @var Builder<static> $up */
                             $up = static::query();
                             foreach ($i_perf0 as $ku => $vu) {
                                 if (! \is_string($ku)) {
@@ -1014,7 +1017,7 @@ trait FunctionExtra
         $perfArray2 = $perf_coll->all();
         /** @var array<int, array<string, mixed>> $rowsArray2 */
         $rowsArray2 = $rows_coll->all();
-        $results2 = app(\Modules\Xot\Actions\Array\DiffAssocRecursiveAction::class)->execute(
+        $results2 = app(DiffAssocRecursiveAction::class)->execute(
             self::indexedRowsToAssoc($perfArray2),
             self::indexedRowsToAssoc($rowsArray2),
         );
@@ -1131,7 +1134,7 @@ trait FunctionExtra
             $fieldTypeTyped = $fieldType;
 
             // Using a more explicit approach instead of extract() to avoid dynamic variable creation
-            \Schema::connection($conn->getName())->table($table, static function (\Illuminate\Database\Schema\Blueprint $table) use ($fieldTypeTyped, $fieldNameTyped): void {
+            \Schema::connection($conn->getName())->table($table, static function (Blueprint $table) use ($fieldTypeTyped, $fieldNameTyped): void {
                 // Add field based on the type
                 switch ($fieldTypeTyped) {
                     case 'string':

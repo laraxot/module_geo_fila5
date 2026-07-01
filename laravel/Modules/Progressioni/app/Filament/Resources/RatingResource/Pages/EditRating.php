@@ -7,7 +7,6 @@ namespace Modules\Progressioni\Filament\Resources\RatingResource\Pages;
 use Filament\Actions\DeleteAction;
 use Modules\Progressioni\Filament\Resources\RatingResource;
 use Modules\Rating\Filament\Resources\RatingResource\Pages\BaseEditRating;
-use Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord;
 
 class EditRating extends BaseEditRating
 {

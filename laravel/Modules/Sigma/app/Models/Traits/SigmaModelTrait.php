@@ -8,6 +8,7 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
 use Modules\Sigma\Models\Traits\Extras\MassExtra;
 use Modules\Sigma\Models\Traits\Mutators\CommonMutator;
 use Modules\Sigma\Models\Traits\Relationships\CommonRelationship;
+
 // --- traits ---
 /**
  * Modules\Sigma\Models\Traits\SigmaModelTrait.

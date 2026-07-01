@@ -7,8 +7,10 @@ namespace Modules\Ptv\Filament\Resources;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\Pages\PageRegistration;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Support\Components\Component;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Ptv\Filament\Resources\MyLogResource\Pages\ListMyLogs;
 use Modules\Ptv\Filament\Resources\MyLogResource\Pages\ViewMyLog;
@@ -22,7 +24,7 @@ abstract class BaseMyLogResource extends XotBaseResource
     protected static ?int $navigationSort = 99;
 
     /**
-     * @return array<int, \Filament\Support\Components\Component>
+     * @return array<int, Component>
      */
     public static function getFormSchema(): array
     {
@@ -66,7 +68,7 @@ abstract class BaseMyLogResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, \Filament\Resources\Pages\PageRegistration>
+     * @return array<string, PageRegistration>
      */
     public static function getPages(): array
     {

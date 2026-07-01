@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Addc1f;
 
 class Addc1fFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Addc1f::class;
+    protected $model = Addc1f::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Addc1fFactory extends Factory
         return [];
     }
 }
-

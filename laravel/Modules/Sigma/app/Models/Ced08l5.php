@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ced08l5.
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $orestr
  * @property string|null $congua
  * @property string|null $congeu
+ *
  * @method static Builder|Ced08l5 newModelQuery()
  * @method static Builder|Ced08l5 newQuery()
  * @method static Builder|Ced08l5 query()
@@ -36,10 +38,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced08l5 whereSmatr($value)
  * @method static Builder|Ced08l5 whereSvocfi($value)
  * @method static Builder|Ced08l5 whereTotale($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ced08l5Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ced08l5 extends BaseModel

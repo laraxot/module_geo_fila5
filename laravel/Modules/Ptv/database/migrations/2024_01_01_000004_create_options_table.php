@@ -7,9 +7,9 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Migration to create the options table in the Ptv module.
- * 
- * This table is used by the Option model to store hierarchical configuration 
- * and evaluation options. It supports adjacency lists (parent_id) and 
+ *
+ * This table is used by the Option model to store hierarchical configuration
+ * and evaluation options. It supports adjacency lists (parent_id) and
  * manual sorting (pos).
  */
 return new class extends XotBaseMigration
@@ -32,7 +32,7 @@ return new class extends XotBaseMigration
                 $table->integer('year')->nullable()->index();
                 $table->string('txt')->nullable();
                 $table->string('txt1')->nullable();
-                
+
                 $table->timestamps();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();

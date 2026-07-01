@@ -7,9 +7,10 @@ namespace Modules\Ptv\Filament\Resources;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Modules\Ptv\Models\StabiDirigente;
+use Modules\Xot\Filament\Actions\Form\FieldRefreshAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 use Override;
-use Modules\Xot\Filament\Actions\Form\FieldRefreshAction;
+
 abstract class BaseStabiDirigenteResource extends XotBaseResource
 {
     protected static ?string $model = StabiDirigente::class;

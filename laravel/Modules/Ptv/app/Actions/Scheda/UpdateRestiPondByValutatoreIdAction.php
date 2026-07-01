@@ -41,12 +41,14 @@ class UpdateRestiPondByValutatoreIdAction
             $valutatoreId = $valutatore->getAttribute('valutatore_id');
             if (! is_numeric($valutatoreId)) {
                 echo 'Valutatore senza ID trovato durante aggiornamento resti_pond';
+
                 continue;
             }
 
             $deltaMinPunteggio = $valutatore->getAttribute('delta_min_punteggio');
             if (! is_numeric($deltaMinPunteggio)) {
                 echo 'Valutatore ID '.$valutatoreId.' ha delta_min_punteggio NULL';
+
                 continue;
             }
 

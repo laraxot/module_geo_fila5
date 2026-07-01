@@ -83,6 +83,7 @@ use stdClass;
  * @property-read int|null $wmen00f_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Wstr01lx> $wstr01lx
  * @property-read int|null $wstr01lx_count
+ *
  * @method static Builder|Wstr02f newModelQuery()
  * @method static Builder|Wstr02f newQuery()
  * @method static Builder|Wstr02f query()
@@ -144,6 +145,7 @@ use stdClass;
  * @method static Builder|Wstr02f whereW2turn($value)
  * @method static Builder|Wstr02f whereW2vent($value)
  * @method static Builder|Wstr02f whereW2vesc($value)
+ *
  * @mixin \Eloquent
  */
 class Wstr02f extends BaseModel
@@ -344,7 +346,7 @@ class Wstr02f extends BaseModel
         if (! \is_object($pausa30) || ! isset($pausa30->time_end)) {
             return 0.0;
         }
-        /** @var \Carbon\Carbon|null $timeEnd */
+        /** @var Carbon|null $timeEnd */
         $timeEnd = $pausa30->time_end;
         if (! $timeEnd instanceof Carbon) {
             return 0.0;

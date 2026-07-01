@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Est22l1.
@@ -93,6 +94,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab22
  * @property string|null $mese22
  * @property string|null $ann22
+ *
  * @method static Builder|Est22l1 newModelQuery()
  * @method static Builder|Est22l1 newQuery()
  * @method static Builder|Est22l1 query()
@@ -180,10 +182,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est22l1 whereVoce8e($value)
  * @method static Builder|Est22l1 whereVocfoe($value)
  * @method static Builder|Est22l1 whereVocfoi($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Est22l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est22l1 extends BaseModel

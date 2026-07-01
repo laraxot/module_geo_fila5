@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Est23f.
@@ -38,6 +39,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab23
  * @property string|null $mese23
  * @property string|null $ann23
+ *
  * @method static Builder|Est23f newModelQuery()
  * @method static Builder|Est23f newQuery()
  * @method static Builder|Est23f query()
@@ -70,10 +72,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est23f whereVoce2s($value)
  * @method static Builder|Est23f whereVoce3s($value)
  * @method static Builder|Est23f whereVoce4s($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Est23fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est23f extends BaseModel

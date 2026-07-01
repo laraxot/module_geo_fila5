@@ -3,13 +3,14 @@
 namespace Modules\Progressioni\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Progressioni\Models\CedDiff;
 
 class CedDiffFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Progressioni\Models\CedDiff::class;
+    protected $model = CedDiff::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class CedDiffFactory extends Factory
         return [];
     }
 }
-

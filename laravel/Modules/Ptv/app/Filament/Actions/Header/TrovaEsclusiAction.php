@@ -34,9 +34,10 @@ class TrovaEsclusiAction extends Action
                 if (! ($livewire instanceof ListRecords)) {
                     return false;
                 }
-                
+
                 $resource = $livewire->getResource();
                 $user = auth()->user();
+
                 return $user?->isSuperAdmin() ?? false;
                 /*
                 $canCreate = $resource::can('create');
@@ -67,17 +68,14 @@ class TrovaEsclusiAction extends Action
                     $fieldname = 'year';
                 }
 
-                 if ($year == null) {
+                if ($year == null) {
                     $year = Arr::get($tableFilters, 'anno_valutatore.anno');
                     // 2023
                     $fieldname = 'anno';
                 }
 
-
                 $yearInt = is_numeric($year) ? (int) $year : 0;
 
-
-                
                 app(TrovaEsclusiByModelClassYearAction::class)->execute($modelClass, $fieldname, $yearInt);
 
                 Notification::make()

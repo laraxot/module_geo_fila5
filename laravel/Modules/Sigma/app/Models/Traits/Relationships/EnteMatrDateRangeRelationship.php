@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Relationships;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 use Modules\Sigma\Models\Qua00f;
 
 /**
  * Trait EnteMatrDateRangeRelationship.
  *
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
+ * @phpstan-require-implements EnteMatrFieldsContract
+ * @phpstan-require-implements DateRangeFieldsContract
  *
  * @property string $from_field Nome campo data inizio (via proprietà o accessor)
  * @property string $to_field Nome campo data fine (via proprietà o accessor)
@@ -21,9 +24,9 @@ trait EnteMatrDateRangeRelationship
     /**
      * Get Qua00f records for date range.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Sigma\Models\Qua00f, static>|null
+     * @return HasMany<Qua00f, static>|null
      */
-    public function qua00fDaterange(): ?\Illuminate\Database\Eloquent\Relations\HasMany
+    public function qua00fDaterange(): ?HasMany
     {
         // Accesso a from_field: prima proprietà pubblica, poi accessor Eloquent, poi default
         // @phpstan-ignore-next-line - Dynamic property access: from_field può essere proprietà o accessor

@@ -4,19 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources\Pages;
 
-use Filament\Actions\Action;
-use Filament\Actions\CreateAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Enums\RecordActionsPosition;
-use Filament\Tables\Table;
 use Illuminate\Support\Arr;
-use Modules\Ptv\Actions\CriteriEsclusione\CheckCriterio;
-use Modules\Ptv\Filament\Actions\Bulk\CheckCriterioEsclusioneBulkAction;
 use Modules\Ptv\Filament\Actions\Header\CopyFromLastYearAction;
-use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Xot\Actions\Filament\Filter\GetYearFilter;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Override;
@@ -25,8 +16,8 @@ use function Safe\date;
 
 abstract class PtvBaseYearListRecords extends XotBaseListRecords
 {
+    public string $yearFieldName = 'anno';
 
-    public string $yearFieldName='anno';
     #[Override]
     protected function getHeaderActions(): array
     {
@@ -65,7 +56,4 @@ abstract class PtvBaseYearListRecords extends XotBaseListRecords
             'anno' => TextColumn::make('anno'),
         ];
     }
-
-
-   
 }

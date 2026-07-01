@@ -134,6 +134,7 @@ class SendFirebasePushNotificationPage extends XotBasePage
                 'token' => $data['token'],
                 'title' => $data['title'],
                 'type' => $data['notification_type'],
+                'notification_data' => $notificationData->toArray(),
             ]);
         } catch (Exception $e) {
             // Loggare l'errore

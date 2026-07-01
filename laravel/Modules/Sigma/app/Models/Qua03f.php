@@ -69,6 +69,7 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
  * @property int $q3005
  * @property-read Tqu00f|null $Tqu00f
  * @property-read string|null $categoria_eco
+ *
  * @method static Builder|Qua03f newModelQuery()
  * @method static Builder|Qua03f newQuery()
  * @method static Builder|Qua03f query()
@@ -123,6 +124,7 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
  * @method static Builder|Qua03f whereQ3voc3($value)
  * @method static Builder|Qua03f whereQ3voc4($value)
  * @method static Builder|Qua03f whereQ3voc5($value)
+ *
  * @mixin \Eloquent
  */
 class Qua03f extends BaseDateRangeModel

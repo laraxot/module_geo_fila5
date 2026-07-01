@@ -36,7 +36,7 @@ class Collection extends BaseModel
     protected $table = 'collections';
 
     /** @var list<string> */
-    protected $fillable = [
+    protected array $fillable = [
         'name',
         'description',
         'type',

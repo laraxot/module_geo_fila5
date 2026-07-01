@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models\Contracts;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection as SupportCollection;
+use Modules\Ptv\Models\CriteriEsclusione;
 use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
 use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 use Modules\Xot\Contracts\ModelContract;
@@ -40,7 +42,7 @@ use Modules\Xot\Contracts\ModelContract;
  * @property object|null $valutatore Relazione con il valutatore
  * @property int|null $propro Codice propro
  * @property mixed $last_data_assunz Data ultima assunzione
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Ptv\Models\CriteriEsclusione>|null $criteriEsclusione
+ * @property Collection<int, CriteriEsclusione>|null $criteriEsclusione
  * @property float|null $perf_ind_media Media performance individuale
  * @property int|null $excellences_count_last_3_years Conteggio eccellenze ultimi 3 anni
  *
@@ -49,7 +51,7 @@ use Modules\Xot\Contracts\ModelContract;
  *
  * @mixin \Eloquent
  */
-interface SchedaContract extends EnteMatrFieldsContract, DateRangeFieldsContract, ModelContract
+interface SchedaContract extends DateRangeFieldsContract, EnteMatrFieldsContract, ModelContract
 {
     /**
      * Criteri di esclusione attivi per anno (config campagna valutazione).

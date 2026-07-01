@@ -15,7 +15,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function compila(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function compila(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return true;
     }
@@ -24,7 +24,7 @@ class StabiDirigentePolicy extends XotBasePolicy
      * Determine whether the user can view any models.
      */
     #[Override]
-    public function viewAny(UserContract $user): bool
+    public function viewAny(UserContract $_user): bool
     {
         return false;
     }
@@ -32,7 +32,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function view(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return false;
     }
@@ -40,7 +40,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(UserContract $user): bool
+    public function create(UserContract $_user): bool
     {
         return false;
     }
@@ -48,7 +48,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function update(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return true;
     }
@@ -56,7 +56,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function delete(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return false;
     }
@@ -64,7 +64,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function restore(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return false;
     }
@@ -72,7 +72,7 @@ class StabiDirigentePolicy extends XotBasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function forceDelete(UserContract $_user, CondizioniLavoro $_condizioniLavoro): bool
     {
         return false;
     }

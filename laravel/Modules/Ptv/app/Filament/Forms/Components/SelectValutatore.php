@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 // Added
+use Modules\Ptv\Models\StabiDirigente;
 use Modules\Xot\Filament\Forms\Components\XotBaseSelect;
 use Webmozart\Assert\Assert;
 
@@ -50,7 +51,7 @@ class SelectValutatore extends XotBaseSelect
             // Fallback if module name cannot be determined
             $module_name = 'Xot'; // Default module or throw exception
         }
-        /** @var class-string<\Modules\Ptv\Models\StabiDirigente> $valutatore */
+        /** @var class-string<StabiDirigente> $valutatore */
         $valutatore = 'Modules\\'.$module_name.'\\Models\\StabiDirigente';
 
         $this->options(function () use ($valutatore) {
@@ -59,7 +60,7 @@ class SelectValutatore extends XotBaseSelect
                 ->whereRaw('valutatore_id = id')
                 ->get();
             foreach ($rows as $row) {
-                /** @var \Modules\Ptv\Models\StabiDirigente $row */
+                /** @var StabiDirigente $row */
                 $data[$row->id] = $row->id.']'.$row->nome_diri; // . implode('-',$this->getWhere());
             }
 

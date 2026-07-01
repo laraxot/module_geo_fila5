@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
-use Illuminate\Support\Str;
+use Modules\Ptv\Models\Profile;
 use Webmozart\Assert\Assert;
 
 /**
@@ -30,6 +31,7 @@ use Webmozart\Assert\Assert;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static CriteriEsclusioneFactory factory($count = null, $state = [])
  * @method static Builder|CriteriEsclusione newModelQuery()
  * @method static Builder|CriteriEsclusione newQuery()
@@ -45,15 +47,19 @@ use Webmozart\Assert\Assert;
  * @method static Builder|CriteriEsclusione whereUpdatedAt($value)
  * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
  * @method static Builder|CriteriEsclusione whereValue($value)
+ *
  * @mixin Builder
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read Collection<int, \Modules\Progressioni\Models\CriteriOption> $criteriOptions
+ *
+ * @property-read Profile|null $creator
+ * @property-read Collection<int, CriteriOption> $criteriOptions
  * @property-read int|null $criteri_options_count
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $schede
+ * @property-read Profile|null $deleter
+ * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|CriteriEsclusione whereIsEnabled($value)
+ *
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusioneContract

@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 use Modules\Sigma\Models\Qua00f;
 
 /**
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
+ * @phpstan-require-implements EnteMatrFieldsContract
  *
  * @property int|null $anno
  */

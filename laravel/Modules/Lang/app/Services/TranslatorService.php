@@ -14,15 +14,14 @@ use Modules\Lang\Models\Translation;
 
 class TranslatorService extends LaravelTranslator
 {
-    /** @var Dispatcher */
-    protected $events;
+    protected Dispatcher $events;
 
     /**
      * Get the translation for the given key.
      *
      * @param array<string, mixed> $replace
      *
-     * @return string|array<string, mixed>
+     * @return string|array<array-key, mixed>
      */
     public function get(mixed $key, array $replace = [], mixed $locale = null, mixed $fallback = true): string|array
     {
@@ -33,13 +32,6 @@ class TranslatorService extends LaravelTranslator
 
             // Reget with fallback
             $result = parent::get($key, $replace, $locale, $fallback);
-        }
-
-        if (is_array($result)) {
-            /** @var array<string, mixed> $arrayResult */
-            $arrayResult = $result;
-
-            return $arrayResult;
         }
 
         return $result;

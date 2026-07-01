@@ -121,3 +121,36 @@ Baseline 205 → 0. Batch Contracts/Datas/Traits (14), Actions (43), Models/Fila
 Pattern: `BelongsTo<Model&ProfileContract, $this>`, `array<string, mixed>`, `EnumTrait::toArray()` → `array<int|string, string>`.
 
 Chat: `docs/chat/story-287-xot-phpstan-session.md` · Issues: module_xot #32, base #313
+
+## Fix #4 (2026-07-01): sweep moduli — TestWidget ponytail
+
+### Contesto
+
+Sweep `php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/<modulo> --level=10` su 16 moduli (esclusi `Incentivi`, `Pdnd`).
+
+### Risultato
+
+| Modulo | Errori |
+|--------|--------|
+| Activity, IndennitaCondizioniLavoro, IndennitaResponsabilita, Job, Lang, Media, Notify, Performance, Progressioni, Ptv, Rating, Sigma, Tenant, UI, User, Xot | 0 |
+
+### Azione unica codice
+
+Rimosso `Modules/Xot/app/Filament/Widgets/TestWidget.php`:
+
+- `property.defaultValue` su `$view` (`view-string`) — vista blade inesistente
+- Duplicato di `Modules/UI/Filament/Widgets/TestWidget` (unico usato in `UI/Filament/Pages/Dashboard.php`)
+- Pattern ponytail: codice morto → delete, non PHPDoc/`@phpstan-ignore`
+
+### Note operative
+
+- `User` richiede `php -d memory_limit=4G` (OOM worker 512M altrimenti)
+- `Helper.php` `params2ContainerItem()`: `preg_match` già senza `is_string()` ridondante su `$matches[1|2]`
+- Sigma `FunctionExtra`: `GgFilterData::normalizeListaTipoCodice()` restituisce `?string` — guard `isset && is_string` ridondante già assente
+
+### Verifica
+
+```bash
+cd laravel && php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Xot --level=10
+# [OK] No errors
+```

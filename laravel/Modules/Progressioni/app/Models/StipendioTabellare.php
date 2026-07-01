@@ -7,6 +7,7 @@ namespace Modules\Progressioni\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\StipendioTabellareFactory;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Progressioni\Models\StipendioTabellare.
@@ -27,6 +28,7 @@ use Modules\Progressioni\Database\Factories\StipendioTabellareFactory;
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+ *
  * @method static StipendioTabellareFactory factory($count = null, $state = [])
  * @method static Builder|StipendioTabellare newModelQuery()
  * @method static Builder|StipendioTabellare newQuery()
@@ -47,9 +49,11 @@ use Modules\Progressioni\Database\Factories\StipendioTabellareFactory;
  * @method static Builder|StipendioTabellare wherePtime($value)
  * @method static Builder|StipendioTabellare whereUpdatedAt($value)
  * @method static Builder|StipendioTabellare whereUpdatedBy($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class StipendioTabellare extends BaseModel

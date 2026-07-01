@@ -136,8 +136,6 @@ class Post extends BaseModel
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see  https://laravel-news.com/6-eloquent-secrets
-     *
-     * @var bool
      */
     public static $snakeAttributes = true;
 
@@ -151,6 +149,7 @@ class Post extends BaseModel
     /** @var string */
     protected $connection = 'lang';
 
+    /** @var list<string> */
     /** @var list<string> */
     protected $fillable = [
         'id',
@@ -183,6 +182,7 @@ class Post extends BaseModel
         'image_resize_src', // buffer
     ];
 
+    /** @var list<string> */
     /** @var list<string> */
     protected $appends = [];
 
@@ -249,7 +249,7 @@ class Post extends BaseModel
      */
     public function getTitleAttribute(?string $value): ?string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
 
@@ -271,7 +271,7 @@ class Post extends BaseModel
 
         $this->title = $value;
 
-        if (null !== $this->getKey()) {
+        if ($this->getKey() !== null) {
             $this->update([
                 'title' => $value,
             ]);
@@ -285,11 +285,11 @@ class Post extends BaseModel
      */
     public function getGuidAttribute(?string $value): ?string
     {
-        if (\is_string($value) && '' !== $value && ! str_contains($value, ' ')) {
+        if (\is_string($value) && $value !== '' && ! str_contains($value, ' ')) {
             return $value;
         }
         $value = $this->title;
-        if ('' === $value) {
+        if ($value === '') {
             // Assicuriamoci che i valori siano stringhe prima della concatenazione
             $postType = isset($this->attributes['post_type']) && is_string($this->attributes['post_type'])
                 ? $this->attributes['post_type']
@@ -299,13 +299,13 @@ class Post extends BaseModel
                 : '';
             $value = $postType.' '.$postId;
         }
-        if (null === $value) {
+        if ($value === null) {
             $value = 'u-'.random_int(1, 1000);
         }
         $value = Str::slug($value);
         $this->guid = $value;
 
-        if (null !== $this->getKey()) {
+        if ($this->getKey() !== null) {
             $this->update([
                 'guid' => $value,
             ]);

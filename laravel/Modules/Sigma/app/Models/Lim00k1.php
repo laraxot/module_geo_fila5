@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Lim00k1.
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $li003
  * @property string|null $li004
  * @property string|null $li005
+ *
  * @method static Builder|Lim00k1 newModelQuery()
  * @method static Builder|Lim00k1 newQuery()
  * @method static Builder|Lim00k1 query()
@@ -52,10 +54,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Lim00k1 whereLtlim($value)
  * @method static Builder|Lim00k1 whereMatr($value)
  * @method static Builder|Lim00k1 whereTipa($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Lim00k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Lim00k1 extends BaseModel

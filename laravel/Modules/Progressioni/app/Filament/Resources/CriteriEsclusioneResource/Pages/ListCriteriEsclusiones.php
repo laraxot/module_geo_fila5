@@ -6,7 +6,6 @@ namespace Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource\Page
 
 use Modules\Progressioni\Filament\Resources\CriteriEsclusioneResource;
 use Modules\Ptv\Filament\Resources\CriteriEsclusioneResource\Pages\BaseListCriteriEsclusiones;
-use Filament\Resources\Pages\ListRecords as FilamentListRecords;
 
 class ListCriteriEsclusiones extends BaseListCriteriEsclusiones
 {

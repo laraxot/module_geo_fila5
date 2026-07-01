@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Jprog01l.
@@ -32,6 +33,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $nmfhac
  * @property string|null $nmmhac
  * @property string|null $tpohac
+ *
  * @method static Builder|Jprog01l newModelQuery()
  * @method static Builder|Jprog01l newQuery()
  * @method static Builder|Jprog01l query()
@@ -58,10 +60,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Jprog01l wherePyjqac($value)
  * @method static Builder|Jprog01l whereTpohac($value)
  * @method static Builder|Jprog01l whereTppgac($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Jprog01lFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Jprog01l extends BaseModel

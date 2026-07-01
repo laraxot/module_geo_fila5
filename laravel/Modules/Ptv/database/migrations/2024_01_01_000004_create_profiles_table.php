@@ -32,7 +32,7 @@ return new class extends XotBaseMigration
                 if ($this->getColumnType('user_id') == 'int') {
                     $table->string('user_id', 36)->nullable()->change();
                 }
-                if (!$this->hasColumn('uuid')) {
+                if (! $this->hasColumn('uuid')) {
                     $table->string('uuid', 36)->nullable();
                 }
                 $this->updateTimestamps(table: $table, hasSoftDeletes: true);

@@ -155,7 +155,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         ->reactive(),
                     Select::make('valutatore_id')
                         ->label('valutatore')
-                        ->options(static fn (callable $get, callable $set) => app(GetValutatoriOptionsByWhere::class)
+                        ->options(static fn (callable $get) => app(GetValutatoriOptionsByWhere::class)
                             ->execute('IndennitaCondizioniLavoro', ['anno' => $get('anno'), 'quadrimestre' => $get('quadrimestre')])),
                 ])
                 ->query(static function (Builder $query, array $data): Builder {
@@ -165,11 +165,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return $query->where('id', 0);
                     }
 
-                    // Ensure data structure matches expected type (quadrimestre must be int|string, not null)
-                    $quadrimestre = isset($data['quadrimestre']) && (is_int($data['quadrimestre']) || is_string($data['quadrimestre'])) ? $data['quadrimestre'] : '1';
-                    $populateData = ['anno' => $anno, 'quadrimestre' => $quadrimestre];
-                    //app(Populate::class)->execute($populateData);
-                    //app(FixValutatoreIdByAnno::class)->execute('IndennitaCondizioniLavoro', 'CondizioniLavoro', $anno);
+                    // NOTE: Populate/FixValutatoreIdByAnno calls intentionally disabled here (legacy behaviour).
 
                     $query = $query->where($data);
 

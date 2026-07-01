@@ -10,7 +10,7 @@ namespace Modules\Sigma\Models\Traits\Scopes;
  * Responsabilità: Aggregazione scopes (delegation cascade).
  * Include CommonScope per scope generici.
  *
- * @see \Modules\Sigma\Models\Traits\Scopes\CommonScope
+ * @see CommonScope
  */
 trait SchedaScope
 {

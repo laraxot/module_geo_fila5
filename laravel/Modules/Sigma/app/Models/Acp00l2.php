@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Acp00l2.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $acpimp
  * @property string $acpeur
  * @property string $acpann
+ *
  * @method static Builder|Acp00l2 newModelQuery()
  * @method static Builder|Acp00l2 newQuery()
  * @method static Builder|Acp00l2 query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Acp00l2 whereEnte($value)
  * @method static Builder|Acp00l2 whereId($value)
  * @method static Builder|Acp00l2 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Acp00l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Acp00l2 extends BaseModel

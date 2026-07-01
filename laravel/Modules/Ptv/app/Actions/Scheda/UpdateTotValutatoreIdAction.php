@@ -72,6 +72,7 @@ class UpdateTotValutatoreIdAction
                 $valutatoreId = $total->getAttribute('valutatore_id');
                 if (! is_numeric($valutatoreId)) {
                     echo 'Valutatore ID null trovato durante aggiornamento totali';
+
                     continue;
                 }
 

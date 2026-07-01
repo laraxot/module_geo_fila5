@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
@@ -40,12 +40,13 @@ use Webmozart\Assert\Assert;
  * @property string|null $deleted_ip
  * @property string|null $created_ip
  * @property string|null $updated_ip
- * @property-read Collection<int, \Modules\Progressioni\Models\Scheda> $benificiariProgressione
+ * @property-read Collection<int, Scheda> $benificiariProgressione
  * @property-read int|null $benificiari_progressione_count
  * @property-read Valutatore|null $boss
  * @property-read Repart|null $repart
  * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
+ *
  * @method static mixed factory($count = null, $state = [])
  * @method static Builder|Valutatore newModelQuery()
  * @method static Builder|Valutatore newQuery()
@@ -72,15 +73,20 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Valutatore whereUpdatedBy($value)
  * @method static Builder|Valutatore whereUpdatedIp($value)
  * @method static Builder|Valutatore whereValutatoreId($value)
+ *
  * @property int $n_diritto_excellence
  * @property-read Profile|null $creator
  * @property-read Profile|null $updater
+ *
  * @method static Builder<static>|Valutatore whereNDirittoExcellence($value)
+ *
  * @property string|null $post_type
  * @property int|null $post_id
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $deleter
+ *
  * @method static Builder<static>|Valutatore wherePostId($value)
  * @method static Builder<static>|Valutatore wherePostType($value)
+ *
  * @mixin \Eloquent
  */
 class Valutatore extends BaseModel

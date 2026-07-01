@@ -822,7 +822,7 @@ class Scheda extends BaseScheda
         foreach ($maxcatecoposfun as $item) {
             $schede_obj = $item->schede();
             $limit = $item->aventi_diritto_eff;
-            $res = $schede_obj->update(['vincitore' => 0]);
+            $schede_obj->update(['vincitore' => 0]);
             $vincitori = $schede_obj->select('id', 'matr', 'cognome', 'nome', 'categoria_ecoval', 'posfunval', 'vincitore')->distinct()
                 ->where('ha_diritto', 1)->orderBy('totale', 'desc')->groupBy('matr')
                 ->where('totale', '>', 0)->limit($limit);

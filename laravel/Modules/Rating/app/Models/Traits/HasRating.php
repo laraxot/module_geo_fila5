@@ -16,7 +16,7 @@ trait HasRating
     /** @return MorphToMany<Rating, $this, RatingMorph, 'pivot'> */
     public function ratings(): MorphToMany
     {
-        $pivot = new RatingMorph();
+        $pivot = new RatingMorph;
 
         return $this->morphToMany(Rating::class, 'model', $pivot->getTable())
             ->using(RatingMorph::class)
@@ -101,11 +101,11 @@ trait HasRating
     {
         $ratings_options = $this->getOptionRatingsIdTitle();
         $result = [];
-        foreach ($ratings_options as $key => $value) {
+        foreach (array_keys($ratings_options) as $key) {
             $b = RatingMorph::where('model_id', $this->id)
                 ->where('user_id', '!=', null)
                 ->count();
-            if (0 === $b) {
+            if ($b === 0) {
                 $b = 1;
             }
 
@@ -130,7 +130,7 @@ trait HasRating
             $total_volume = 1;
         }
 
-        foreach ($ratings_options as $key => $value) {
+        foreach (array_keys($ratings_options) as $key) {
             $volume = $this->getVolumeCredit(is_int($key) ? $key : (int) $key);
             $result[$key] = round($volume * 100 / $total_volume, 0);
         }
@@ -143,7 +143,7 @@ trait HasRating
         $query = RatingMorph::where('model_id', $this->id)
             ->where('user_id', '!=', null);
 
-        if (null !== $rating_id) {
+        if ($rating_id !== null) {
             $query->where('rating_id', $rating_id);
         }
 

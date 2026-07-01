@@ -12,6 +12,4 @@ class RatingResource extends BaseRatingResource
     protected static string $resourceFile = __FILE__;
 
     protected static ?string $model = Rating::class;
-
-    
 }

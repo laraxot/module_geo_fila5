@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Models;
 
-use function Safe\unserialize;
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Database\Factories\MyLogFactory;
+
+use function Safe\unserialize;
 
 /**
  * Modules\Ptv\Models\MyLog.
@@ -18,6 +18,7 @@ use Modules\Ptv\Database\Factories\MyLogFactory;
  * @method static Builder|MyLog newModelQuery()
  * @method static Builder|MyLog newQuery()
  * @method static Builder|MyLog query()
+ *
  * @property int $id
  * @property int|null $id_tbl
  * @property string|null $tbl
@@ -34,6 +35,7 @@ use Modules\Ptv\Database\Factories\MyLogFactory;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static Builder|MyLog whereAct($value)
  * @method static Builder|MyLog whereCreatedAt($value)
  * @method static Builder|MyLog whereCreatedBy($value)
@@ -50,9 +52,11 @@ use Modules\Ptv\Database\Factories\MyLogFactory;
  * @method static Builder|MyLog whereTbl($value)
  * @method static Builder|MyLog whereUpdatedAt($value)
  * @method static Builder|MyLog whereUpdatedBy($value)
+ *
  * @property Profile|null $creator
  * @property Profile|null $updater
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class MyLog extends BaseModel

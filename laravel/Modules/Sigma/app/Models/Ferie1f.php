@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ferie1f.
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $f1dat3
  * @property string|null $f1fas
  * @property string|null $f1ann
+ *
  * @method static Builder|Ferie1f newModelQuery()
  * @method static Builder|Ferie1f newQuery()
  * @method static Builder|Ferie1f query()
@@ -36,10 +38,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ferie1f whereF1tip($value)
  * @method static Builder|Ferie1f whereId($value)
  * @method static Builder|Ferie1f whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ferie1fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ferie1f extends BaseModel

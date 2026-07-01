@@ -68,7 +68,7 @@ trait SushiToCsv
             /**
              * @param  self  $model
              */
-            function ($model): void {
+            static function ($model): void {
                 Assert::isInstanceOf($model, self::class);
                 /** @var int $maxId */
                 $maxId = $model->max('id') ?? 0;
@@ -106,7 +106,7 @@ trait SushiToCsv
             /**
              * @param  self  $model
              */
-            function ($model): void {
+            static function ($model): void {
                 Assert::isInstanceOf($model, self::class);
                 $rows = $model->getSushiRows();
                 /** @var array<int|string, array<string, mixed>> $rowsByKey */
@@ -159,7 +159,7 @@ trait SushiToCsv
             /**
              * @param  self  $model
              */
-            function ($model): void {
+            static function ($model): void {
                 Assert::isInstanceOf($model, self::class);
                 $rows = $model->getSushiRows();
                 /** @var array<int|string, array<string, mixed>> $rowsByKey */

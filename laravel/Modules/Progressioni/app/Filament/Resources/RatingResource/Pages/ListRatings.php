@@ -19,7 +19,6 @@ use Modules\Progressioni\Models\Rating;
 use Modules\Rating\Filament\Resources\RatingResource\Pages\BaseListRatings;
 use Override;
 
-
 class ListRatings extends BaseListRatings
 {
     protected static string $resource = RatingResource::class;
@@ -132,10 +131,10 @@ class ListRatings extends BaseListRatings
     {
         $currentYear = Carbon::now()->year;
         $years = [];
-        for ($year = $currentYear; $year >= $currentYear-2; $year--) {
+        for ($year = $currentYear; $year >= $currentYear - 2; $year--) {
             $years[$year] = (string) $year;
         }
+
         return $years;
-       
     }
 }

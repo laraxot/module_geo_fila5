@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Qua03l1.
@@ -38,6 +39,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $q3dat
  * @property string|null $q3num
  * @property string|null $q3ann
+ *
  * @method static Builder|Qua03l1 newModelQuery()
  * @method static Builder|Qua03l1 newQuery()
  * @method static Builder|Qua03l1 query()
@@ -70,10 +72,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Qua03l1 whereQ3voc3($value)
  * @method static Builder|Qua03l1 whereQ3voc4($value)
  * @method static Builder|Qua03l1 whereQ3voc5($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Qua03l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Qua03l1 extends BaseModel

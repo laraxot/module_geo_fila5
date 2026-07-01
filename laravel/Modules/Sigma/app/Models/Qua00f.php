@@ -72,6 +72,7 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
  * @property string $to_field
  * @property mixed $turno
  * @property Tqu00f|null $tqu00f
+ *
  * @method static Builder|Qua00f newModelQuery()
  * @method static Builder|Qua00f newQuery()
  * @method static Builder|Qua00f ofDate(int $date)
@@ -126,10 +127,14 @@ use Modules\Sigma\Models\Traits\Extras\FunctionExtra;
  * @method static Builder|Qua00f withDays(int $date_min, int $date_max)
  * @method static Builder|Qua00f withPercPtime()
  * @method static Builder|Qua00f ofEnte(int $ente)
+ *
  * @property-read int|null $ana02f_count
+ *
  * @method static Builder<static>|Qua00f ofFourMonthPeriod(int $fourMonthPeriod, int $year)
- * @property-read Collection<int, \Modules\Sigma\Models\Rep00f> $rep00f
+ *
+ * @property-read Collection<int, Rep00f> $rep00f
  * @property-read int|null $rep00f_count
+ *
  * @mixin \Eloquent
  */
 class Qua00f extends BaseDateRangeModel

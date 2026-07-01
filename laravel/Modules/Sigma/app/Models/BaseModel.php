@@ -16,6 +16,7 @@ use Modules\Xot\Models\XotBaseModel;
 abstract class BaseModel extends XotBaseModel implements EnteMatrFieldsContract
 {
     use HasEnteMatrRelationHelpers;
+
     /**
      * Connessione database da utilizzare.
      * Utilizza la connessione 'generale' per compatibilità con sistemi esterni.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Abbm00f.
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $raanno
  * @property int $ramese
  * @property int $raminu
+ *
  * @method static Builder|Abbm00f newModelQuery()
  * @method static Builder|Abbm00f newQuery()
  * @method static Builder|Abbm00f query()
@@ -24,10 +26,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Abbm00f whereRamatr($value)
  * @method static Builder|Abbm00f whereRamese($value)
  * @method static Builder|Abbm00f whereRaminu($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Abbm00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Abbm00f extends BaseModel

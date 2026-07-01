@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -30,6 +30,7 @@ use Webmozart\Assert\Assert;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ *
  * @method static CriteriEsclusioneFactory factory($count = null, $state = [])
  * @method static Builder|CriteriEsclusione newModelQuery()
  * @method static Builder|CriteriEsclusione newQuery()
@@ -45,13 +46,15 @@ use Webmozart\Assert\Assert;
  * @method static Builder|CriteriEsclusione whereUpdatedAt($value)
  * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
  * @method static Builder|CriteriEsclusione whereValue($value)
+ *
  * @property Profile|null $creator
- * @property \Illuminate\Database\Eloquent\Collection<int, CriteriOption> $criteriOptions
+ * @property EloquentCollection<int, CriteriOption> $criteriOptions
  * @property int|null $criteri_options_count
  * @property Profile|null $updater
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
+ * @property-read Profile|null $deleter
  * @property-read EloquentCollection<int, Scheda> $schede
  * @property-read int|null $schede_count
+ *
  * @mixin \Eloquent
  */
 class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract

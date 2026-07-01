@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Ptv\Filament\Filters;
 
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Filament\Schemas\Components\Utilities\Get;
-use Filament\Schemas\Components\Utilities\Set;
 use Modules\Ptv\Actions\GetValutatoriOptions;
 
 class AnnoValutatoreFilter extends Filter
@@ -23,10 +23,9 @@ class AnnoValutatoreFilter extends Filter
     protected function setUp(): void
     {
         parent::setUp();
-        //$trace = debug_backtrace();
-        //$caller = $trace[4]['class'] ?? '';
-        //$module_name = Str::of($caller)->between('Modules\\', '\Filament\\')->toString();
-        
+        // $trace = debug_backtrace();
+        // $caller = $trace[4]['class'] ?? '';
+        // $module_name = Str::of($caller)->between('Modules\\', '\Filament\\')->toString();
 
         $current_year = intval(date('Y'));
         $year_range = range($current_year - 2, $current_year);
@@ -47,7 +46,6 @@ class AnnoValutatoreFilter extends Filter
                     $module_name = Str::of(get_class($livewire))->between('Modules\\', '\Filament\\')->toString();
                     $anno = $get('anno');
                     $annoValue = is_string($anno) || is_int($anno) ? $anno : null;
-                    
 
                     return app(GetValutatoriOptions::class)->execute($module_name, $annoValue);
                 })

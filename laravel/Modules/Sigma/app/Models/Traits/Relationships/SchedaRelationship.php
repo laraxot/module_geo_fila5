@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Relationships;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
@@ -35,7 +36,7 @@ trait SchedaRelationship
             ->append('\Models\CategoriaPropro')
             ->toString();
 
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $categoriaProproClass */
+        /** @var class-string<Model> $categoriaProproClass */
         // @phpstan-ignore-next-line argument.type,argument.templateType - Dynamic class name construction
         return $this->hasOne($categoriaProproClass, 'anno', 'anno')->whereRaw('find_in_set("'
         .$this->propro
@@ -51,7 +52,7 @@ trait SchedaRelationship
             ->append('\Models\StabiDirigente')
             ->toString();
 
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $stabiDirigenteClass */
+        /** @var class-string<Model> $stabiDirigenteClass */
         // @phpstan-ignore-next-line argument.type,argument.templateType - Dynamic class name construction
         return $this->hasOne($stabiDirigenteClass, 'stabi', 'stabi')
             ->where('repar', $this->repar)
@@ -85,7 +86,7 @@ trait SchedaRelationship
             ->append('\Models\StabiDirigente')
             ->toString();
 
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $stabiDirigenteClass */
+        /** @var class-string<Model> $stabiDirigenteClass */
         // @phpstan-ignore-next-line argument.type,argument.templateType - Dynamic class name construction
         return $this->belongsTo($stabiDirigenteClass);
     }

@@ -31,7 +31,7 @@ class FieldOption extends BaseModel
     protected $table = 'field_options';
 
     /** @var list<string> */
-    protected $fillable = [
+    protected array $fillable = [
         'field_id',
         'label',
         'value',

@@ -29,8 +29,8 @@ final class Navbar extends Component
          */
         $view = app(GetViewAction::class)->execute();
         dddx($view);
-        $view_params = [];
+        $viewParams = [];
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

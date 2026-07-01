@@ -35,7 +35,7 @@ trait EnteStabiMutator
         if (($value !== null && $value != 0) || $this->getKey() === null) {
             return $value;
         }
-        
+
         $value = $this->getStabi();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
@@ -43,6 +43,7 @@ trait EnteStabiMutator
                 $this->update(['stabi' => $value]);
             });
         }
+
         return $value;
     }
 
@@ -68,7 +69,7 @@ trait EnteStabiMutator
         if (($value !== null && $value != 0) || $this->getKey() === null) {
             return $value;
         }
-        
+
         $value = $this->getRepar();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
         if ($this->getKey() !== null) {
@@ -76,17 +77,15 @@ trait EnteStabiMutator
                 $this->update(['repar' => $value]);
             });
         }
+
         return $value;
     }
 
-
     protected function getStabiTxtAttribute(?string $value): ?string
     {
-        
         if ($value !== null) {
             return $value;
         }
-
 
         $stabi = $this->reparts->where('repar', 0)->first();
         if (! \is_object($stabi)) {

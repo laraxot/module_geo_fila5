@@ -18,7 +18,7 @@ test('Asz00fStatsOverview exposes three stat cards from action', function () {
     ));
     app()->instance(GetAsz00fActiveStatsAction::class, $mock);
 
-    $widget = new Asz00fStatsOverview();
+    $widget = new Asz00fStatsOverview;
     $method = new ReflectionMethod(Asz00fStatsOverview::class, 'getStats');
     $stats = $method->invoke($widget);
 

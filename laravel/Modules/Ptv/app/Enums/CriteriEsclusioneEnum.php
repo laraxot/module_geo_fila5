@@ -35,5 +35,4 @@ enum CriteriEsclusioneEnum: string implements HasColor, HasIcon, HasLabel, Wirea
 
     case min_gg_integ_params = 'min_gg_integ_params';
     case min_gg_integ_params_no_asz = 'min_gg_integ_params_no_asz';
-
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Composers;
 
+use Exception;
 use Illuminate\View\View;
 
 final class ThemeComposer
@@ -35,7 +36,7 @@ final class ThemeComposer
     {
         $view = "ui::svg.flags.{$lang}";
         if (! view()->exists($view)) {
-            throw new \Exception('view not exits ['.$view.']');
+            throw new Exception('view not exits ['.$view.']');
         }
 
         return view($view);

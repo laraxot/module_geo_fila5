@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Wstr01l2;
 
 class Wstr01l2Factory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Wstr01l2::class;
+    protected $model = Wstr01l2::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Wstr01l2Factory extends Factory
         return [];
     }
 }
-

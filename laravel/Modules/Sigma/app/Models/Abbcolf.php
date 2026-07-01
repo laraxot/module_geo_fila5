@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Abbcolf.
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $emeli5
  * @property int $emeen6
  * @property string $emeli6
+ *
  * @method static Builder|Abbcolf newModelQuery()
  * @method static Builder|Abbcolf newQuery()
  * @method static Builder|Abbcolf query()
@@ -40,10 +42,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Abbcolf whereEmeli6($value)
  * @method static Builder|Abbcolf whereEnte($value)
  * @method static Builder|Abbcolf whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\AbbcolfFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Abbcolf extends BaseModel

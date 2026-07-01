@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Cp05f.
@@ -39,6 +40,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $field26
  * @property string|null $field27
  * @property string|null $field28
+ *
  * @method static Builder|Cp05f newModelQuery()
  * @method static Builder|Cp05f newQuery()
  * @method static Builder|Cp05f query()
@@ -72,10 +74,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cp05f whereField8($value)
  * @method static Builder|Cp05f whereField9($value)
  * @method static Builder|Cp05f whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Cp05fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cp05f extends BaseModel

@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\RatingResource\Tables;
 
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
-use Modules\Progressioni\Filament\Resources\RatingResource;
 use Modules\Progressioni\Models\Rating;
-use Override;
 use Modules\Rating\Filament\Resources\RatingResource\Tables\BaseRatingsTable;
+use Override;
 
 class RatingsTable extends BaseRatingsTable
 {
@@ -101,7 +99,6 @@ class RatingsTable extends BaseRatingsTable
         ];
     }
 
-
     /**
      * @return array<string, Filter>
      */
@@ -138,10 +135,10 @@ class RatingsTable extends BaseRatingsTable
     {
         $currentYear = Carbon::now()->year;
         $years = [];
-        for ($year = $currentYear; $year >= $currentYear-2; $year--) {
+        for ($year = $currentYear; $year >= $currentYear - 2; $year--) {
             $years[$year] = (string) $year;
         }
+
         return $years;
-       
     }
 }

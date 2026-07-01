@@ -54,7 +54,7 @@ trait SushiToPhpArray
          * During a model create Eloquent will also update the updated_at field so
          * need to have the updated_by field here as well.
          */
-        static::creating(function ($model): void {
+        static::creating(static function ($model): void {
             // Type safety for $model in closure
             if (! $model instanceof Model) {
                 return;
@@ -66,7 +66,7 @@ trait SushiToPhpArray
         /*
          * updating.
          */
-        static::updating(function ($model): void {
+        static::updating(static function ($model): void {
             // Type safety for $model in closure
             if (! $model instanceof Model) {
                 return;
@@ -81,7 +81,7 @@ trait SushiToPhpArray
          * For deletes we need to save the model first with the deleted_by field
          */
 
-        static::deleting(function ($model): void {
+        static::deleting(static function ($model): void {
             // Type safety for $model in closure
             if (! $model instanceof Model) {
                 return;

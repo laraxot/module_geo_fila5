@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Asz00k10.
@@ -49,6 +50,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $asz003
  * @property int|null $asz004
  * @property int|null $asz005
+ *
  * @method static Builder|Asz00k10 newModelQuery()
  * @method static Builder|Asz00k10 newQuery()
  * @method static Builder|Asz00k10 query()
@@ -92,10 +94,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Asz00k10 whereEnte($value)
  * @method static Builder|Asz00k10 whereId($value)
  * @method static Builder|Asz00k10 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Asz00k10Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Asz00k10 extends BaseModel

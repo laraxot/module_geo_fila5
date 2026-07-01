@@ -10,6 +10,7 @@ use Filament\Facades\Filament;
 use Livewire\Livewire;
 use Modules\Progressioni\Filament\Resources\Asz00fResource;
 use Modules\Progressioni\Filament\Resources\Asz00fResource\Pages\ListAsz00fs;
+use Modules\Progressioni\Filament\Resources\Asz00fResource\Widgets\Asz00fStatsOverview;
 use Modules\Xot\Datas\XotData;
 
 beforeEach(function () {
@@ -43,7 +44,7 @@ test('Asz00fResource exposes standard crud pages', function () {
 
 test('Asz00fResource registers stats overview widget', function () {
     expect(Asz00fResource::getWidgets())
-        ->toContain(\Modules\Progressioni\Filament\Resources\Asz00fResource\Widgets\Asz00fStatsOverview::class);
+        ->toContain(Asz00fStatsOverview::class);
 });
 
 test('ListAsz00fs page renders successfully', function () {

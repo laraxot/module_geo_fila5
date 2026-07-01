@@ -15,7 +15,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseResourcePage;
 use Webmozart\Assert\Assert;
 
 /**
- * @property Schema      $form
+ * @property Schema $form
  * @property Individuale $record
  */
 abstract class BaseCompilaScheda extends XotBaseResourcePage
@@ -42,7 +42,7 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
     ];
 
     /**
-     * @param int|string $record
+     * @param  int|string  $record
      */
     public function mount($record): void
     {
@@ -51,17 +51,17 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
         $this->authorizeAccess();
         // *
         $criteri_valutazione = $this->record
-        ->criteriValutazione()
-        ->where('post_type', $this->record->type)
-        ->get();
-        
+            ->criteriValutazione()
+            ->where('post_type', $this->record->type)
+            ->get();
+
         foreach ($criteri_valutazione as $criterio) {
             $k = $criterio->getAttribute('nome');
             if (\is_string($k)) {
                 $this->data[$k] = data_get($this->record, $k, 0);
             }
         }
-        
+
         // */
         $this->excellence = (bool) $this->record->excellence;
         $this->totale = (float) $this->record->totale_punteggio;
@@ -75,7 +75,6 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
      */
     protected function getViewData(): array
     {
-       
         return [
             // 'criteri_options_root' => $criteri_options_root,
             'view' => $this->getView(),
@@ -117,9 +116,9 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
         // $this->authorizeAccess();
         // $this->record->fill($this->data);
         // $this->record->save();
-        
-        $res=$this->record->update($data);
-        
+
+        $res = $this->record->update($data);
+
         // $this->redirect(route('admin.'.$this->getRoutePrefix().'.edit', $this->record->getKey()));
 
         Notification::make()
@@ -132,36 +131,32 @@ abstract class BaseCompilaScheda extends XotBaseResourcePage
     {
         $tot = 0;
 
-        
         $criteri_valutazione = $this->record
-        ->criteriValutazione()
-        ->where('post_type', $this->record->type)
-        ->get();
-        
+            ->criteriValutazione()
+            ->where('post_type', $this->record->type)
+            ->get();
+
         foreach ($criteri_valutazione as $v) {
             $nome = $v->getAttribute('nome');
             if (\is_string($nome)) {
                 $dataValue = $this->data[$nome] ?? 0;
-                
+
                 if (is_numeric($dataValue)) {
                     $value = (float) $dataValue;
                     $peso = $this->record->getPeso($nome);
-                    
+
                     $tot += $peso * $value;
                 }
             }
         }
 
         $tot /= 4;
-        
+
         $this->totale = $tot;
     }
 
-   
-
     public function updatedData(): void
     {
-        
         $this->recalculate();
     }
 }

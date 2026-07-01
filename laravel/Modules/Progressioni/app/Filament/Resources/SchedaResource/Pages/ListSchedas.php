@@ -10,7 +10,4 @@ use Modules\Ptv\Filament\Resources\SchedaResource\Pages\BaseListSchedas;
 class ListSchedas extends BaseListSchedas
 {
     protected static string $resource = SchedaResource::class;
-
-    
-   
 }

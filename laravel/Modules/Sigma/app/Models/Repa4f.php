@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Repa4f.
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $coirap
  * @property string|null $r4dai
  * @property string|null $r4daf
+ *
  * @method static Builder|Repa4f newModelQuery()
  * @method static Builder|Repa4f newQuery()
  * @method static Builder|Repa4f query()
@@ -48,10 +50,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Repa4f whereR4dai($value)
  * @method static Builder|Repa4f whereRepar($value)
  * @method static Builder|Repa4f whereStabi($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Repa4fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Repa4f extends BaseModel

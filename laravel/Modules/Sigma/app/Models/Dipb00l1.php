@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Dipb00l1.
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dbcom2
  * @property int|null $dbcom3
  * @property int|null $dbcom4
+ *
  * @method static Builder|Dipb00l1 newModelQuery()
  * @method static Builder|Dipb00l1 newQuery()
  * @method static Builder|Dipb00l1 query()
@@ -34,10 +36,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Dipb00l1 whereDbmatr($value)
  * @method static Builder|Dipb00l1 whereEnteap($value)
  * @method static Builder|Dipb00l1 whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Dipb00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Dipb00l1 extends BaseModel

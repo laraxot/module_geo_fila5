@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use InvalidArgumentException;
 use Modules\Progressioni\Actions\MakePdfByRecord;
 use Modules\Progressioni\Models\Progressioni;
-use Modules\Progressioni\Models\Scheda as Scheda;
+use Modules\Progressioni\Models\Scheda;
 
 class SchedaMail extends Mailable
 {

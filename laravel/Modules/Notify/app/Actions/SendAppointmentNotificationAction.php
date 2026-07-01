@@ -34,9 +34,6 @@ class SendAppointmentNotificationAction
         array $additionalData = []
     ): bool {
         try {
-            // Carica il paziente con le relazioni necessarie
-            $patient = null; // Patient::with('user')->find($appointment->patient_id);
-
             // Since patient models are not available in this project,
             // we return early with logging
             Log::debug('Notification service not fully implemented - missing Patient models', [

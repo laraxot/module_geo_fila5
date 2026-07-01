@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Alicedj.
@@ -72,6 +73,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $q16
  * @property string|null $tot670
  * @property string|null $tot679
+ *
  * @method static Builder|Alicedj newModelQuery()
  * @method static Builder|Alicedj newQuery()
  * @method static Builder|Alicedj query()
@@ -138,10 +140,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Alicedj whereV7($value)
  * @method static Builder|Alicedj whereV8($value)
  * @method static Builder|Alicedj whereV9($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\AlicedjFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Alicedj extends BaseModel

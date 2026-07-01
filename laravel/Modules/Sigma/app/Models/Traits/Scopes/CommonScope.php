@@ -8,15 +8,17 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Date;
+use Modules\Sigma\Models\Contracts\DateRangeFieldsContract;
 
 /**
  * Scope condivisi per intervalli date — logica query qui, nomi colonne sul modello.
  *
  * Ogni consumer deve estendere BaseDateRangeModel e implementare
- * {@see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract}.
+ * {@see DateRangeFieldsContract}.
  *
- * @see \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\DateRangeFieldsContract
+ * @see DateRangeFieldsContract
+ *
+ * @phpstan-require-implements DateRangeFieldsContract
  */
 trait CommonScope
 {

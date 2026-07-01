@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ana00k20.
@@ -71,6 +72,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $comna2
  * @property string|null $comre2
  * @property string|null $comdo2
+ *
  * @method static Builder|Ana00k20 newModelQuery()
  * @method static Builder|Ana00k20 newQuery()
  * @method static Builder|Ana00k20 query()
@@ -136,10 +138,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ana00k20 whereTitstu($value)
  * @method static Builder|Ana00k20 whereTopo($value)
  * @method static Builder|Ana00k20 whereTopod($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ana00k20Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ana00k20 extends BaseModel

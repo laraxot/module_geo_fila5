@@ -4,7 +4,7 @@ module: Performance
 type: index
 status: approved
 tags: [documentation, readme, modulo, second-brain]
-updated: "2026-05-27"
+updated: "2026-07-01"
 related:
   - ../README.md
 ---
@@ -100,3 +100,40 @@ Performance/
 1. Leggere scopo in questo file.
 2. Aprire `docs/wiki/index.md` se esiste.
 3. Seguire [disciplina issue GitHub](../../../../docs/wiki/how-to/github-issue-agent-discipline.md) prima di modifiche sostanziali.
+
+## ✅ PHPStan Status
+
+| Data | Livello | Errori |
+|------|---------|--------|
+| 2026-07-01 | max | **0** |
+
+```bash
+./vendor/bin/phpstan analyze Modules/Performance --level=max --memory-limit=512M
+# [OK] No errors
+```
+
+## Fix Applicati (2026-07-01)
+
+- Nessun fix necessario: il modulo era già conforme alle regole Laraxot
+- Actions Individuale e Organizzativa usano correttamente QueueableAction
+- Nessun label hardcoded nei campi Filament
+
+## Architettura Classi Principali
+
+```
+Performance/
+├── app/
+│   ├── Actions/
+│   │   ├── Individuale/ (CheckSum, UpdateAssenze, UpdateBudget, UpdateTotValutatore, ...)
+│   │   ├── Organizzativa/ (CheckSum, CopyValutatoreId, ...)
+│   │   ├── GetHaDirittoMotivoAction.php
+│   │   ├── HasExcellenceByYearAction.php
+│   │   ├── MakePdfByRecord.php
+│   │   └── OrganizzativaSpreadMoneyByYearAction.php
+│   ├── Models/
+│   │   ├── PerformanceIndividuale.php
+│   │   ├── PerformanceOrganizzativa.php
+│   │   └── FondoPerformance.php
+│   └── Filament/Resources/
+└── docs/README.md (questo file)
+```

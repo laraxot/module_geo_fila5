@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Inq00l1.
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $strvoc
  * @property string|null $stvocn
  * @property string|null $inann
+ *
  * @method static Builder|Inq00l1 newModelQuery()
  * @method static Builder|Inq00l1 newQuery()
  * @method static Builder|Inq00l1 query()
@@ -28,10 +30,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Inq00l1 whereInqdal($value)
  * @method static Builder|Inq00l1 whereStrvoc($value)
  * @method static Builder|Inq00l1 whereStvocn($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Inq00l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Inq00l1 extends BaseModel

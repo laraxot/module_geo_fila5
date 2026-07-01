@@ -21,14 +21,15 @@ class ResolveTenantConfigValueAction
      * Works consistently in web, console, queue, and scheduler contexts.
      *
      * @param  string  $key  Config key (e.g., 'app.name', 'mail.driver')
-     * @param  string|int|array<mixed>|null  $_default  Default value if config not found
+     * @param  string|int|array<mixed>|null  $default  Default value if config not found
+     *
      * @return float|int|string|array<mixed>|null Resolved configuration value
      *
      * @throws Exception If config key is invalid or value type is unexpected
      *
      * @see docs/resolve-tenant-config-console-debate.md
      */
-    public function execute(string $key, string|int|array|null $_default = null): float|int|string|array|null
+    public function execute(string $key, string|int|array|null $default = null): float|int|string|array|null
     {
         $group = Arr::first(explode('.', $key));
         if ($group === null || $group === '') {
@@ -53,7 +54,7 @@ class ResolveTenantConfigValueAction
 
         Config::set($group, $mergeConf);
 
-        $res = config($key, $_default);
+        $res = config($key, $default);
 
         if (is_numeric($res) || \is_string($res) || \is_array($res) || $res === null) {
             return $res;

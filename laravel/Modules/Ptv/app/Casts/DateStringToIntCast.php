@@ -26,7 +26,7 @@ class DateStringToIntCast implements Cast
      *
      * @param  mixed  $value  Valore da convertire (stringa data, intero, o null)
      * @param  array<string, mixed>  $properties
-     * @return int|null|\Spatie\LaravelData\Casts\Uncastable Intero nel formato YYYYMMDD, null, o Uncastable se non può essere convertito
+     * @return int|null|Uncastable Intero nel formato YYYYMMDD, null, o Uncastable se non può essere convertito
      */
     public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed
     {

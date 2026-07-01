@@ -6,11 +6,12 @@ namespace Modules\Sigma\Models\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Sigma\Models\Asz00k1;
+use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
 use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Sto00f;
 
 /**
- * @phpstan-require-implements \Modules\Sigma\Models\Contracts\EnteMatrFieldsContract
+ * @phpstan-require-implements EnteMatrFieldsContract
  *
  * @property int|null $anno
  */
@@ -30,7 +31,7 @@ trait EnteMatrAnnoRelationship
         $fineanno = ($this->anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
-        /** @var \Illuminate\Database\Eloquent\Relations\HasMany<Qua00f, static> $relation */
+        /** @var HasMany<Qua00f, static> $relation */
         $relation = $this->hasMany(Qua00f::class, 'matr', $this->matrField());
 
         return $relation

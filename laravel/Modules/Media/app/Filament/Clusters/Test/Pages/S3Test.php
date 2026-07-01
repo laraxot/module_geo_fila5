@@ -385,13 +385,6 @@ class S3Test extends XotBasePage
      */
     private function test_s3_permissions(): array
     {
-        $tests = [
-            'ListBucket' => 's3:ListBucket',
-            'PutObject' => 's3:PutObject',
-            'GetObject' => 's3:GetObject',
-            'DeleteObject' => 's3:DeleteObject',
-        ];
-
         $results = [
             'title' => '🔒 S3 Permissions',
             'status' => 'info',
@@ -594,7 +587,7 @@ class S3Test extends XotBasePage
         }
 
         $output = [];
-        foreach ($this->debugResults as $category => $result) {
+        foreach ($this->debugResults as $result) {
             if (! is_array($result) || ! isset($result['title'], $result['status'], $result['data'])) {
                 continue;
             }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Accinal2.
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $accann
  * @property int $accaa
  * @property int $accmm
+ *
  * @method static Builder|Accinal2 newModelQuery()
  * @method static Builder|Accinal2 newQuery()
  * @method static Builder|Accinal2 query()
@@ -30,10 +32,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Accinal2 whereImpeur($value)
  * @method static Builder|Accinal2 whereImpina($value)
  * @method static Builder|Accinal2 whereMatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Accinal2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Accinal2 extends BaseModel

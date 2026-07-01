@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ente0f.
@@ -126,6 +127,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $C00008
  * @property string|null $C00009
  * @property string|null $C00010
+ *
  * @method static Builder|Ente0f newModelQuery()
  * @method static Builder|Ente0f newQuery()
  * @method static Builder|Ente0f query()
@@ -246,10 +248,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ente0f whereSMRL1($value)
  * @method static Builder|Ente0f whereSMRL2($value)
  * @method static Builder|Ente0f whereTIPSTA($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ente0fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ente0f extends BaseModel

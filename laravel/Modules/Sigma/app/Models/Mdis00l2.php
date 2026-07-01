@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Mdis00l2.
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $mdcom3
  * @property string|null $mdcom4
  * @property string|null $mdcom5
+ *
  * @method static Builder|Mdis00l2 newModelQuery()
  * @method static Builder|Mdis00l2 newQuery()
  * @method static Builder|Mdis00l2 query()
@@ -44,10 +46,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Mdis00l2 whereMdflg1($value)
  * @method static Builder|Mdis00l2 whereMdindi($value)
  * @method static Builder|Mdis00l2 whereMdmatr($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Mdis00l2Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Mdis00l2 extends BaseModel

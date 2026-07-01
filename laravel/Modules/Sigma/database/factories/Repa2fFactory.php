@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Repa2f;
 
 class Repa2fFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Repa2f::class;
+    protected $model = Repa2f::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class Repa2fFactory extends Factory
         return [];
     }
 }
-

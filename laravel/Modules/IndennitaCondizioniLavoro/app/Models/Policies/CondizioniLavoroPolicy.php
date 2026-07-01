@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaCondizioniLavoro\Models\Policies;
 
-use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro;
-use Modules\User\Models\User;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 use Override;
@@ -15,7 +13,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function compila(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function compila(): bool
     {
         return true;
     }
@@ -32,7 +30,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function view(): bool
     {
         return false;
     }
@@ -40,7 +38,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(UserContract $user): bool
+    public function create(): bool
     {
         return false;
     }
@@ -48,7 +46,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function update(): bool
     {
         return false; // puo' far modifica solo superadmin
     }
@@ -56,7 +54,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function delete(): bool
     {
         return false;
     }
@@ -64,7 +62,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function restore(): bool
     {
         return false;
     }
@@ -72,7 +70,7 @@ class CondizioniLavoroPolicy extends XotBasePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(UserContract $user, CondizioniLavoro $condizioniLavoro): bool
+    public function forceDelete(): bool
     {
         return false;
     }

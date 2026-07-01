@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
 use Illuminate\Support\Str;
+use Modules\Progressioni\Database\Factories\MaxCatecoPosfunAnnoFactory;
+use Modules\Ptv\Models\Profile;
 use Webmozart\Assert\Assert;
 
 /**
@@ -30,6 +31,7 @@ use Webmozart\Assert\Assert;
  * @property string|null $updated_by
  * @property-read Collection<int, Scheda> $schede
  * @property-read int|null $schede_count
+ *
  * @method static MaxCatecoPosfunAnnoFactory factory($count = null, $state = [])
  * @method static Builder|MaxCatecoPosfunAnno newModelQuery()
  * @method static Builder|MaxCatecoPosfunAnno newQuery()
@@ -46,9 +48,11 @@ use Webmozart\Assert\Assert;
  * @method static Builder|MaxCatecoPosfunAnno wherePosfun($value)
  * @method static Builder|MaxCatecoPosfunAnno whereUpdatedAt($value)
  * @method static Builder|MaxCatecoPosfunAnno whereUpdatedBy($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class MaxCatecoPosfunAnno extends BaseModel

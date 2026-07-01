@@ -4,40 +4,43 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits;
 
-use Illuminate\Support\Str;
-use Modules\Sigma\Models\Qua00f;
+use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
-use Modules\Sigma\Models\Integparam;
-use Modules\Sigma\Datas\GgFilterData;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
+use Modules\Progressioni\Models\CategoriaPropro;
+use Modules\Progressioni\Models\SchedaCriteri;
 use Modules\Ptv\Models\Traits\HasMyLogs;
-use Illuminate\Database\Schema\Blueprint;
-use Modules\Sigma\Models\Traits\Scopes\SchedaScope;
+use Modules\Sigma\Datas\GgFilterData;
+use Modules\Sigma\Models\Integparam;
+use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Traits\Helpers\SchedaHelper;
+use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 use Modules\Sigma\Models\Traits\Mutators\SchedaMutator;
 use Modules\Sigma\Models\Traits\Relationships\SchedaRelationship;
-use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
+use Modules\Sigma\Models\Traits\Scopes\SchedaScope;
 
 /**
  * Modules\Sigma\Models\Traits\SigmaModelTrait.
  *
  * @property float $percparttime
- * @property int   $giorni_parttimevert
- * @property int   $giorni_presenza
+ * @property int $giorni_parttimevert
+ * @property int $giorni_presenza
  */
 trait SchedaTrait
 {
-    // → CommonScope
+    use EnteMatrDateRangeMutator; // → FunctionExtra, MassExtra, Helper inline
+    use HasMyLogs; // → CommonScope
     use SchedaHelper; // ⚡ DELEGATION CASCADE PATTERN (DRY + KISS + SRP)
     // SchedaTrait = Pure Orchestrator, delega implementazioni ai trait specifici
 
     // ⚡ DELEGATION CASCADE PATTERN (4 domain-specific trait)
     use SchedaMutator; // → CommonMutator, EnteMatr*Mutator
-    use SchedaRelationship; // → CommonRelationship, EnteMatr*Relationship, TquRelationship
-    use SchedaScope; // → FunctionExtra, MassExtra, Helper inline
-    use HasMyLogs;
-    use EnteMatrDateRangeMutator;
+    use SchedaRelationship;
+    // → CommonRelationship, EnteMatr*Relationship, TquRelationship
+    use SchedaScope;
 
     // -------------
     // ⚡ HELPER METHODS: Migrated to SchedaHelper.php (703 lines)
@@ -57,8 +60,7 @@ trait SchedaTrait
      * Accessor per gg_integ_params_asz (giorni integrazione parametri assenze).
      * Delega calcolo a getGgIntegParamsAsz().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Giorni integrazione parametri calcolati
      */
     // Helper methods delegated to SchedaHelper - removed duplicates
@@ -66,19 +68,19 @@ trait SchedaTrait
     protected function getGgIntegParamsAszAttribute(?float $value): ?float
     {
         // Cache hit
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgIntegParamsAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -94,26 +96,25 @@ trait SchedaTrait
      * Accessor per gg_esperienza_no_asz (giorni esperienza senza assenze).
      * Delega calcolo a getGgEsperienzaNoAsz().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni esperienza netti calcolati
      */
     protected function getGgEsperienzaNoAszAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgEsperienzaNoAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -125,18 +126,18 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunNoAszAttribute(?int $value): ?int
     {
-        if (null != $value && ! request()->input('refresh', 0)) {
+        if ($value != null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
 
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -154,7 +155,7 @@ trait SchedaTrait
          * }
          */
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -168,7 +169,7 @@ trait SchedaTrait
     {
         // *
 
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
@@ -178,11 +179,11 @@ trait SchedaTrait
          */
         $models = config('xra.model');
         $post_type = collect($models)->search(static::class);
-        if (false === $post_type) {
+        if ($post_type === false) {
             $post_type = Str::snake(class_basename($this));
         }
 
-        if ('progressioni' === $post_type) {
+        if ($post_type === 'progressioni') {
             // tabella generica
             if ($this->isPo()) {
                 $post_type = 'po';
@@ -194,7 +195,7 @@ trait SchedaTrait
         }
 
         // Guard: record deve esistere
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return (string) $post_type;
         }
 
@@ -218,7 +219,7 @@ trait SchedaTrait
      */
     protected function getPosfunval(): ?int
     {
-        if (null == $this->posfun) {
+        if ($this->posfun == null) {
             return null;
         }
 
@@ -229,26 +230,25 @@ trait SchedaTrait
      * Accessor per posfunval (valore numerico posizione funzionale).
      * Delega calcolo a getPosfunval().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Valore posizione funzionale calcolato
      */
     protected function getPosfunvalAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: record deve esistere
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getPosfunval();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -268,14 +268,14 @@ trait SchedaTrait
      */
     protected function getValutatoreTxt(): ?string
     {
-        if (null === $this->valutatore) {
+        if ($this->valutatore === null) {
             return null;
         }
 
         $id = $this->valutatore?->id ?? '';
         $nome_diri = $this->valutatore?->nome_diri ?? '';
 
-        if ('' === $id || '' === $nome_diri) {
+        if ($id === '' || $nome_diri === '') {
             return null;
         }
 
@@ -286,21 +286,20 @@ trait SchedaTrait
      * Accessor per valutatore_txt (stringa identificativa valutatore).
      * Delega calcolo a getValutatoreTxt().
      *
-     * @param string|null $value Valore cached dal DB
-     *
+     * @param  string|null  $value  Valore cached dal DB
      * @return string|null Stringa identificativa calcolata
      */
     protected function getValutatoreTxtAttribute(?string $value): ?string
     {
         // Cache hit (con refresh opzionale)
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getValutatoreTxt();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -331,8 +330,7 @@ trait SchedaTrait
      * Accessor per posizione (posizione in classifica categoria economica).
      * Delega calcolo a getPosizione().
      *
-     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
-     *
+     * @param  int|null  $_value  Valore cached dal DB (non usato, sempre ricalcolato)
      * @return int Posizione in classifica calcolata
      */
     protected function getPosizioneAttribute(?int $_value): int
@@ -357,25 +355,24 @@ trait SchedaTrait
      * Accessor per gg (giorni totali presenza).
      * Delega calcolo a getGg().
      *
-     * @param int|null $_value Valore cached dal DB (ignorato, sempre ricalcolato)
-     *
+     * @param  int|null  $_value  Valore cached dal DB (ignorato, sempre ricalcolato)
      * @return int Giorni totali calcolati
      */
     protected function getGgAttribute(?int $_value): ?int
     {
         // Guard: dipendenze devono esistere
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
 
-        if (201661 == $this->matr) {
+        if ($this->matr == 201661) {
             dddx([
                 'gg_in_sede' => $this->gg_in_sede,
                 'gg_fuori_sede' => $this->gg_fuori_sede,
@@ -395,26 +392,25 @@ trait SchedaTrait
      * Accessor per gg_asz (totale giorni assenza).
      * Delega calcolo a getGgAsz().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Totale giorni assenza calcolati
      */
     protected function getGgAszAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -428,19 +424,18 @@ trait SchedaTrait
      * Accessor per gg_no_asz (giorni totali senza assenze).
      * Delega calcolo a getGgNoAsz().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Giorni netti calcolati
      */
     protected function getGgNoAszAttribute(?float $value): ?float
     {
         // Cache hit (accetta anche 0.0 come valore valido con refresh)
-        if (null !== $value && 0.0 !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && $value !== 0.0 && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -463,7 +458,7 @@ trait SchedaTrait
      */
     protected function getGgFuoriSedeNoAsz(): ?float
     {
-        if (null == $this->gg_fuori_sede) {
+        if ($this->gg_fuori_sede == null) {
             return null;
         }
 
@@ -477,26 +472,25 @@ trait SchedaTrait
      * Accessor per gg_fuori_sede_no_asz (giorni fuori sede senza assenze).
      * Delega calcolo a getGgFuoriSedeNoAsz().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Giorni fuori sede netti calcolati
      */
     protected function getGgFuoriSedeNoAszAttribute(?float $value): ?float
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getGgFuoriSedeNoAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -510,26 +504,25 @@ trait SchedaTrait
      * Accessor per hh_asz (totale ore assenza).
      * Delega calcolo a getHhAsz().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Totale ore assenza calcolate
      */
     protected function getHhAszAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getHhAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -541,20 +534,20 @@ trait SchedaTrait
 
     protected function getHhAszInSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -571,7 +564,7 @@ trait SchedaTrait
         $value = $this->anag?->hhAssenzaInSedeTot($parz);
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -583,19 +576,19 @@ trait SchedaTrait
 
     protected function getHhAszFuoriSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -613,7 +606,7 @@ trait SchedaTrait
 
         if (\in_array('hh_asz_fuori_sede', $this->getFillable(), false)) {
             // ✅ Check: record must exist before save()
-            if (null == $this->getKey()) {
+            if ($this->getKey() == null) {
                 return (int) $value;
             }
 
@@ -637,13 +630,13 @@ trait SchedaTrait
     protected function getGgAszInSede(): ?int
     {
         // Guard: dipendenze devono esistere
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -667,26 +660,25 @@ trait SchedaTrait
      * Accessor per gg_asz_in_sede (giorni assenza in sede).
      * Delega calcolo a getGgAszInSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni assenza in sede calcolati
      */
     protected function getGgAszInSedeAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: record deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getGgAszInSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -707,13 +699,13 @@ trait SchedaTrait
     protected function getGgAszFuoriSede(): ?int
     {
         // Guard: dipendenze devono esistere
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -735,7 +727,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     public function ggAssenzaFuoriSedeTot(array $params): int
     {
@@ -746,7 +738,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     public function hhAssenzaFuoriSedeTot(array $params): int
     {
@@ -757,7 +749,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggInSedeTot() or returns null.
      *
-     * @param GgFilterData|array<string, mixed> $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggInSedeTot($data): ?int
     {
@@ -774,7 +766,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggFuoriSedeTot() or returns null.
      *
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     public function ggFuoriSedeTot(array $params): ?int
     {
@@ -785,7 +777,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaInSedeTot() or returns 0.
      *
-     * @param GgFilterData|array<string, mixed> $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggAssenzaInSedeTot($data): int
     {
@@ -802,7 +794,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaInSedeTot() or returns 0.
      *
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     public function hhAssenzaInSedeTot(array $params): int
     {
@@ -813,26 +805,25 @@ trait SchedaTrait
      * Accessor per gg_asz_fuori_sede (giorni assenza fuori sede).
      * Delega calcolo a getGgAszFuoriSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni assenza fuori sede calcolati
      */
     protected function getGgAszFuoriSedeAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: record deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getGgAszFuoriSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -860,26 +851,25 @@ trait SchedaTrait
      * Accessor per gg_asz_cateco (giorni assenza categoria economica totali).
      * Delega calcolo a getGgAszCateco().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int Giorni assenza cateco totali calcolati
      */
     protected function getGgAszCatecoAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: record deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getGgAszCateco();
 
-        if (2160000 == $this->matr) {
+        if ($this->matr == 2160000) {
             dddx([
                 'gg_asz_cateco_in_sede' => $this->gg_asz_cateco_in_sede,
                 'gg_asz_cateco_fuori_sede' => $this->gg_asz_cateco_fuori_sede,
@@ -903,19 +893,19 @@ trait SchedaTrait
     protected function getGgAszCatecoInSede(): ?int
     {
         // Guard: dipendenze devono esistere
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
         // Setup categoria e lista aspettative
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $lista_aspettative = $this->getListaTipoCodiceAspettative();
@@ -938,26 +928,25 @@ trait SchedaTrait
      * Accessor per gg_asz_cateco_in_sede (giorni assenza cateco in sede).
      * Delega calcolo a getGgAszCatecoInSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni assenza cateco in sede calcolati
      */
     protected function getGgAszCatecoInSedeAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: record deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getGgAszCatecoInSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -969,22 +958,22 @@ trait SchedaTrait
 
     public function getGgAszCatecoPosfunInSede(): ?int
     {
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
         // dddx($value);
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $lista_aspettative = $this->getListaTipoCodiceAspettative();
@@ -1003,10 +992,10 @@ trait SchedaTrait
 
     protected function getGgAszCatecoPosfunInSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -1022,19 +1011,18 @@ trait SchedaTrait
      * Accessor per gg_cateco_no_asz (giorni categoria economica senza assenze).
      * Delega calcolo a getGgCatecoNoAsz().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni cateco netti calcolati
      */
     protected function getGgCatecoNoAszAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null != $value && ! request()->input('refresh', 0)) {
+        if ($value != null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -1049,16 +1037,16 @@ trait SchedaTrait
 
     public function getPropro(): ?int
     {
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null == $this->dal && is_numeric($this->anno)) {
+        if ($this->dal == null && is_numeric($this->anno)) {
             $this->dal = ($this->anno * 10000) + 101;
         }
-        if (null == $this->al && is_numeric($this->anno)) {
+        if ($this->al == null && is_numeric($this->anno)) {
             $this->al = ($this->anno * 10000) + 1231;
         }
-        if (null == $this->qua2kd && is_numeric($this->anno)) {
+        if ($this->qua2kd == null && is_numeric($this->anno)) {
             $rows = Qua00f::where('ente', $this->ente)->where('matr', $this->matr)->get();
 
             // ---
@@ -1072,11 +1060,11 @@ trait SchedaTrait
 
     protected function getProproAttribute(?int $value): ?int
     {
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -1090,16 +1078,16 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunInSedeNoAszAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -1123,7 +1111,7 @@ trait SchedaTrait
         }
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1138,7 +1126,7 @@ trait SchedaTrait
         // f($this->gg_cateco_posfun_in_sede==null){
         //    dddx($this->getGgCatecoPosfunInSede());
         // }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -1147,19 +1135,19 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
@@ -1182,7 +1170,7 @@ trait SchedaTrait
     protected function getGgCatecoSup(): ?int
     {
         // Guard: prerequisiti
-        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
+        if ($this->matr == null || $this->qua2kd == null || $this->propro == null) {
             return null;
         }
 
@@ -1196,26 +1184,25 @@ trait SchedaTrait
      * Accessor per gg_cateco_sup (giorni categoria economica superiore totali).
      * Delega calcolo a getGgCatecoSup().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni cateco_sup totali calcolati
      */
     protected function getGgCatecoSupAttribute(?int $value): ?int
     {
         // Cache hit (con refresh opzionale)
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getGgCatecoSup();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -1236,7 +1223,7 @@ trait SchedaTrait
     protected function getGgCatecoSupInSede(): ?int
     {
         // Guard: prerequisiti
-        if (null == $this->matr || null == $this->propro) {
+        if ($this->matr == null || $this->propro == null) {
             return null;
         }
 
@@ -1253,26 +1240,25 @@ trait SchedaTrait
      * Accessor per gg_cateco_sup_in_sede (giorni categoria economica superiore in sede).
      * Delega calcolo a getGgCatecoSupInSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni cateco_sup in sede calcolati
      */
     protected function getGgCatecoSupInSedeAttribute(?int $value): ?int
     {
         // Cache hit (con refresh opzionale)
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getGgCatecoSupInSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -1292,7 +1278,7 @@ trait SchedaTrait
      */
     protected function getGgCatecoNoPosfunNoAsz(): ?int
     {
-        if (null === $this->gg_cateco_no_asz || null === $this->gg_cateco_posfun_no_asz) {
+        if ($this->gg_cateco_no_asz === null || $this->gg_cateco_posfun_no_asz === null) {
             return null;
         }
 
@@ -1303,26 +1289,25 @@ trait SchedaTrait
      * Accessor per gg_cateco_no_posfun_no_asz (giorni categoria economica senza posfun e senza assenze).
      * Delega calcolo a getGgCatecoNoPosfunNoAsz().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni cateco_no_posfun_no_asz calcolati
      */
     protected function getGgCatecoNoPosfunNoAszAttribute(?int $value): ?int
     {
         // Cache hit (con refresh opzionale)
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getGgCatecoNoPosfunNoAsz();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -1334,15 +1319,15 @@ trait SchedaTrait
 
     public function getGgCatecoInSede(): ?int
     {
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         // dddx($categoria->lista_propro);
@@ -1363,10 +1348,10 @@ trait SchedaTrait
 
     protected function getGgCatecoInSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -1385,10 +1370,10 @@ trait SchedaTrait
 
     protected function getGgCatecoAttribute(?int $value): ?int
     {
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
@@ -1403,7 +1388,7 @@ trait SchedaTrait
     public function getGgCatecoPosfunInSede(): ?int
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             dddx($this->getPropro());
             dddx([
                 'scheda' => $this,
@@ -1427,20 +1412,20 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunInSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
         $value = $this->getGgCatecoPosfunInSede();
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1452,14 +1437,14 @@ trait SchedaTrait
 
     protected function getGgAszCatecoFuoriSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
         // 730
         $value = 0; // DA FARE !
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1478,14 +1463,14 @@ trait SchedaTrait
 
     protected function getGgAszCatecoPosfunFuoriSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         $value = $this->getGgAszCatecoPosfunFuoriSede();
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1506,12 +1491,12 @@ trait SchedaTrait
     protected function getGgCatecoSupFuoriSede(): ?int
     {
         // Guard: prerequisiti
-        if (null == $this->matr || null == $this->qua2kd || null == $this->propro) {
+        if ($this->matr == null || $this->qua2kd == null || $this->propro == null) {
             return null;
         }
 
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
 
@@ -1526,26 +1511,25 @@ trait SchedaTrait
      * Accessor per gg_cateco_sup_fuori_sede (giorni categoria economica superiore fuori sede).
      * Delega calcolo a getGgCatecoSupFuoriSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni cateco_sup fuori sede calcolati
      */
     protected function getGgCatecoSupFuoriSedeAttribute(?int $value): ?int
     {
         // Cache hit (con refresh opzionale)
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro (VICINO!)
         $value = $this->getGgCatecoSupFuoriSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -1557,14 +1541,14 @@ trait SchedaTrait
 
     public function getGgCatecoFuoriSede(): ?int
     {
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         // dddx($categoria->lista_propro);
@@ -1582,14 +1566,14 @@ trait SchedaTrait
 
     protected function getGgCatecoFuoriSedeAttribute(?int $value): ?int
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         } // 730
 
         $value = $this->getGgCatecoFuoriSede();
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1601,18 +1585,18 @@ trait SchedaTrait
 
     public function getGgCatecoPosfunFuoriSede(): ?int
     {
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->qua2kd) {
+        if ($this->qua2kd == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
 
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
         $value = $this->anag?->ggFuoriSedeTot([
@@ -1628,14 +1612,14 @@ trait SchedaTrait
 
     protected function getGgCatecoPosfunFuoriSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         $value = $this->getGgCatecoPosfunFuoriSede();
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1649,26 +1633,25 @@ trait SchedaTrait
      * Accessor per gg_assenza_anno (giorni assenza annuale).
      * Delega calcolo a getGgAssenzaAnno().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni assenza calcolati
      */
     protected function getGgAssenzaAnnoAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgAssenzaAnno();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -1700,7 +1683,7 @@ trait SchedaTrait
      */
     protected function getGgAszCatecoPosfun(): ?int
     {
-        if (null === $this->gg_asz_cateco_posfun_in_sede && null === $this->gg_asz_cateco_posfun_fuori_sede) {
+        if ($this->gg_asz_cateco_posfun_in_sede === null && $this->gg_asz_cateco_posfun_fuori_sede === null) {
             return null;
         }
 
@@ -1714,8 +1697,7 @@ trait SchedaTrait
      * Accessor per gg_asz_cateco_posfun (giorni assenza categoria economica + posfun totali).
      * Delega calcolo a getGgAszCatecoPosfun().
      *
-     * @param int|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
-     *
+     * @param  int|null  $_value  Valore cached dal DB (non usato, sempre ricalcolato)
      * @return int|null Giorni assenza cateco_posfun totali calcolati
      */
     protected function getGgAszCatecoPosfunAttribute(?int $_value): ?int
@@ -1842,7 +1824,7 @@ trait SchedaTrait
     /**
      * Undocumented function.
      *
-     * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
+     * @param  mixed  $_value  Unused parameter (required by Laravel accessor pattern)
      */
 
     /**
@@ -1870,8 +1852,7 @@ trait SchedaTrait
      * Accessor per aventi_diritto (aventi diritto alla progressione).
      * Delega calcolo a getAventiDiritto().
      *
-     * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
-     *
+     * @param  mixed  $_value  Unused parameter (required by Laravel accessor pattern)
      * @return int|null Numero aventi diritto calcolato
      */
     protected function getAventiDirittoAttribute(mixed $_value): ?int
@@ -1905,8 +1886,7 @@ trait SchedaTrait
      * Accessor per aventi_diritto_eff (aventi diritto effettivi alla progressione).
      * Delega calcolo a getAventiDirittoEff().
      *
-     * @param mixed $_value Unused parameter (required by Laravel accessor pattern)
-     *
+     * @param  mixed  $_value  Unused parameter (required by Laravel accessor pattern)
      * @return int|null Numero aventi diritto effettivi calcolato
      */
     protected function getAventiDirittoEffAttribute(mixed $_value): ?int
@@ -1917,25 +1897,25 @@ trait SchedaTrait
 
     protected function getValoreDifferenzialeRapportatoPtAttribute(?float $value): ?float
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
 
         // ✅ Check: record deve esistere prima di save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
         $value = $this->costo_fascia_up * $this->ptime;
 
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -1947,13 +1927,13 @@ trait SchedaTrait
 
     protected function getPesoEsperienzaAcquisitaAttribute(?int $value): ?int
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
-        if (null == $this->propro) {
+        if ($this->propro == null) {
             return null;
         }
         $pesi = $this->peso;
@@ -1977,19 +1957,18 @@ trait SchedaTrait
      *
      * IMPORTANTE: Calcolo aggregato su TUTTE le schede anno+matr.
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float Punteggio ponderato calcolato
      */
     protected function getTotalePondAttribute(?float $value): ?float
     {
         // Cache hit
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -2006,24 +1985,24 @@ trait SchedaTrait
     {
         // schedaCriteri può essere una Collection o null
         $scheda_criteri = $this->schedaCriteri ?? null;
-        if (null === $scheda_criteri || ! is_iterable($scheda_criteri)) {
+        if ($scheda_criteri === null || ! is_iterable($scheda_criteri)) {
             return 0.0;
         }
 
         $tot = 0.0;
-        /** @var \Modules\Progressioni\Models\SchedaCriteri|object $v */
+        /** @var SchedaCriteri|object $v */
         foreach ($scheda_criteri as $v) {
             // $v è un oggetto SchedaCriteri con field_name, converted_in, peso
             $field_name = isset($v->field_name) && is_string($v->field_name) ? $v->field_name : null;
             $converted_in = isset($v->converted_in) && is_numeric($v->converted_in) ? (int) $v->converted_in : null;
             $peso = isset($v->peso) && is_numeric($v->peso) ? (float) $v->peso : null;
 
-            if (null === $field_name || null === $converted_in || null === $peso) {
+            if ($field_name === null || $converted_in === null || $peso === null) {
                 continue;
             }
 
             $converted = $this->convertedIn($field_name, $converted_in);
-            if (null === $converted) {
+            if ($converted === null) {
                 continue;
             }
             $converted_peso = ($converted * (float) $peso) / 10;
@@ -2081,7 +2060,7 @@ trait SchedaTrait
         // dddx(['old_value' => $old_value, 'value' => $value]);
         if ($old_value !== $value) {
             // ✅ Check: record deve esistere prima di save()
-            if (null == $this->getKey()) {
+            if ($this->getKey() == null) {
                 return round($value, 3);
             }
 
@@ -2111,7 +2090,7 @@ trait SchedaTrait
         // Se stabi dirigente ha già valutatore, usalo
         /** @var object{valutatore_id?: int|null} $stabi_diri */
         $valutatore_id = isset($stabi_diri->valutatore_id) ? $stabi_diri->valutatore_id : null;
-        if (null !== $valutatore_id) {
+        if ($valutatore_id !== null) {
             return (int) $valutatore_id;
         }
 
@@ -2131,9 +2110,9 @@ trait SchedaTrait
         }
 
         $stabi_valutatore_id = isset($stabi->valutatore_id) ? $stabi->valutatore_id : null;
-        if (null === $stabi_valutatore_id) {
+        if ($stabi_valutatore_id === null) {
             $stabi_id = isset($stabi->id) ? $stabi->id : null;
-            if (null !== $stabi_id && isset($stabi->valutatore_id)) {
+            if ($stabi_id !== null && isset($stabi->valutatore_id)) {
                 $stabi->valutatore_id = $stabi_id;
                 $stabi->save();
 
@@ -2148,8 +2127,7 @@ trait SchedaTrait
      * Accessor per valutatore_id con auto-assegnazione se mancante.
      * Delega calcolo a getValutatoreId().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null ID valutatore calcolato
      */
     protected function getValutatoreIdAttribute(?int $value): ?int
@@ -2160,14 +2138,14 @@ trait SchedaTrait
         }
 
         // Guard: record deve esistere prima di save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
         // Delega calcolo al metodo helper puro
         $value = $this->getValutatoreId();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2209,7 +2187,7 @@ trait SchedaTrait
     protected function getListaPropro(): ?string
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
 
@@ -2220,8 +2198,7 @@ trait SchedaTrait
      * Accessor per lista_propro (lista propro da categoria economica).
      * Delega calcolo a getListaPropro().
      *
-     * @param string|null $_value Valore cached dal DB (non usato)
-     *
+     * @param  string|null  $_value  Valore cached dal DB (non usato)
      * @return string|null Lista propro calcolata
      */
     protected function getListaProproAttribute(?string $_value): ?string
@@ -2240,7 +2217,7 @@ trait SchedaTrait
     protected function getListaProproSup(): ?string
     {
         $categoria = $this->categoriaPropro;
-        if (! ($categoria instanceof \Modules\Progressioni\Models\CategoriaPropro)) {
+        if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
 
@@ -2251,8 +2228,7 @@ trait SchedaTrait
      * Accessor per lista_propro_sup (lista propro superiore da categoria economica).
      * Delega calcolo a getListaProproSup().
      *
-     * @param string|null $_value Valore cached dal DB (non usato)
-     *
+     * @param  string|null  $_value  Valore cached dal DB (non usato)
      * @return string|null Lista propro sup calcolata
      */
     protected function getListaProproSupAttribute(?string $_value): ?string
@@ -2265,19 +2241,18 @@ trait SchedaTrait
      * Accessor per ptime (coefficiente part-time ponderato).
      * Delega calcolo a getPtime().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Coefficiente part-time calcolato
      */
     protected function getPtimeAttribute(?float $value): ?float
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -2294,7 +2269,7 @@ trait SchedaTrait
         // Delega calcolo al metodo puro
         $value = $this->getPtime();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2376,7 +2351,7 @@ trait SchedaTrait
     {
         $tmp = $this->stipendioTabellare;
         // $tmp è HasOne, quindi può essere un Model o null
-        if (null === $tmp || ! \is_object($tmp) || ! isset($tmp->importo_stipendio_annuo)) {
+        if ($tmp === null || ! \is_object($tmp) || ! isset($tmp->importo_stipendio_annuo)) {
             return null;
         }
 
@@ -2387,8 +2362,7 @@ trait SchedaTrait
      * Accessor per importo_stipendio_annuo (importo stipendio annuo da tabellare).
      * Delega calcolo a getImportoStipendioAnnuo().
      *
-     * @param float|null $_value Valore cached dal DB (non usato)
-     *
+     * @param  float|null  $_value  Valore cached dal DB (non usato)
      * @return float|null Importo stipendio annuo calcolato
      */
     protected function getImportoStipendioAnnuoAttribute(?float $_value): ?float
@@ -2401,26 +2375,25 @@ trait SchedaTrait
      * Accessor per gg_in_sede (giorni presenza in sede).
      * Delega calcolo a getGgInSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni in sede calcolati
      */
     protected function getGgInSedeAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgInSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2434,8 +2407,7 @@ trait SchedaTrait
      * Accessor per gg_in_sede_no_asz (giorni in sede senza assenze).
      * Delega calcolo a getGgInSedeNoAsz().
      *
-     * @param float|null $_value Valore cached dal DB (non usato, sempre ricalcolato)
-     *
+     * @param  float|null  $_value  Valore cached dal DB (non usato, sempre ricalcolato)
      * @return float Giorni in sede netti calcolati
      */
     protected function getGgInSedeNoAszAttribute(?float $_value): ?float
@@ -2444,7 +2416,7 @@ trait SchedaTrait
         // Motivazione: dipende da gg_in_sede, gg_asz_in_sede, hh_asz_in_sede che cambiano
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -2461,26 +2433,25 @@ trait SchedaTrait
      * Accessor per gg_presenza_anno (giorni presenza annuale).
      * Delega calcolo a getGgPresenzaAnno().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni presenza calcolati
      */
     protected function getGgPresenzaAnnoAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgPresenzaAnno();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2494,26 +2465,25 @@ trait SchedaTrait
      * Accessor per gg_anno (giorni effettivi presenza annua).
      * Delega calcolo a getGgAnno().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni effettivi calcolati
      */
     protected function getGgAnnoAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgAnno();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2540,8 +2510,7 @@ trait SchedaTrait
      * Accessor per gg_asz_tip_cod_escluso_subito (giorni assenza per tipo codice escluso subito).
      * Delega calcolo a getGgAszTipCodEsclusoSubito().
      *
-     * @param int|null $_value Valore cached dal DB (non usato)
-     *
+     * @param  int|null  $_value  Valore cached dal DB (non usato)
      * @return null Sempre null (non implementato)
      */
     protected function getGgAszTipCodEsclusoSubitoAttribute(?int $_value): ?int
@@ -2554,26 +2523,25 @@ trait SchedaTrait
      * Accessor per gg_fuori_sede (giorni presenza fuori sede).
      * Delega calcolo a getGgFuoriSede().
      *
-     * @param int|null $value Valore cached dal DB
-     *
+     * @param  int|null  $value  Valore cached dal DB
      * @return int|null Giorni fuori sede calcolati
      */
     protected function getGgFuoriSedeAttribute(?int $value): ?int
     {
         // Cache hit
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getGgFuoriSede();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2585,11 +2553,11 @@ trait SchedaTrait
 
     protected function getGgPosiz1InSedeAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        if (null == $this->matr) {
+        if ($this->matr == null) {
             return null;
         }
 
@@ -2605,7 +2573,7 @@ trait SchedaTrait
         $data = GgFilterData::from($parz);
         $value = $this->anag->ggInSedeTot($data);
         // ✅ Check: record must exist before save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return $value;
         }
 
@@ -2617,15 +2585,15 @@ trait SchedaTrait
 
     public function funcYear(string $func, ?float $value): ?float
     {
-        if (null !== $value && ! request()->input('refresh', false)) {
+        if ($value !== null && ! request()->input('refresh', false)) {
             return $value;
         }
 
-        if (null === $this->matr) {
+        if ($this->matr === null) {
             return null;
         }
 
-        if (null === $this->qua2kd) {
+        if ($this->qua2kd === null) {
             return null;
         }
 
@@ -2641,14 +2609,14 @@ trait SchedaTrait
 
         $res = $this->$name($anno);
 
-        if (null === $res || ! is_numeric($res)) {
+        if ($res === null || ! is_numeric($res)) {
             return null;
         }
 
         $result = (float) $res;
 
         // ✅ Check: record must exist before save()
-        if (null === $this->getKey()) {
+        if ($this->getKey() === null) {
             return $result;
         }
 
@@ -2753,12 +2721,12 @@ trait SchedaTrait
     public function perfIndMedia(): ?float
     {
         $data = [];
-        for ($i = 1; $i <= $this->n_perf_ind; ++$i) {
+        for ($i = 1; $i <= $this->n_perf_ind; $i++) {
             $anno = $this->anno - $i;
             $ris = $this->perfInd($anno);
             $field = 'perf_ind_'.$anno;
 
-            if (null !== $this->getKey()) {
+            if ($this->getKey() !== null) {
                 // Persist con update chirurgico (salva SOLO questo campo, previene loop)
                 $this->update([$field => $ris]);
             }
@@ -2768,10 +2736,10 @@ trait SchedaTrait
             }
         }
 
-        if (0 === count($data)) {
+        if (count($data) === 0) {
             $value = null;
 
-            if (null !== $this->getKey()) {
+            if ($this->getKey() !== null) {
                 // Persist con update chirurgico (salva SOLO questo campo, previene loop)
                 $this->update(['perf_ind_media' => $value]);
             }
@@ -2796,7 +2764,7 @@ trait SchedaTrait
     {
         $data = [];
 
-        for ($i = 1; $i <= $this->n_perf_ind; ++$i) {
+        for ($i = 1; $i <= $this->n_perf_ind; $i++) {
             $anno = $this->anno - $i;
             $ris = $this->perfInd($anno);
 
@@ -2805,7 +2773,7 @@ trait SchedaTrait
             }
         }
 
-        if (0 === count($data)) {
+        if (count($data) === 0) {
             return null;
         }
 
@@ -2816,26 +2784,25 @@ trait SchedaTrait
      * Accessor per perf_ind_media (media performance individuale).
      * Delega calcolo a getPerfIndMedia().
      *
-     * @param float|null $value Valore cached dal DB
-     *
+     * @param  float|null  $value  Valore cached dal DB
      * @return float|null Media performance calcolata (arrotondata a 2 decimali)
      */
     protected function getPerfIndMediaAttribute(?float $value): ?float
     {
         // Cache hit (con arrotondamento per consistenza)
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return round($value, 2);
         }
 
         // Guard: modello deve avere PK per salvare
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
         // Delega calcolo al metodo puro
         $value = $this->getPerfIndMedia();
 
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 
@@ -2847,12 +2814,12 @@ trait SchedaTrait
 
     protected function getPerfIndCountLast3YearsAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
         // ✅ Check: record deve esistere prima di save()
-        if (null == $this->getKey()) {
+        if ($this->getKey() == null) {
             return null;
         }
 
@@ -2885,7 +2852,7 @@ trait SchedaTrait
 
     protected function getExcellencesCountLast3yearsAttribute(?int $value): ?int
     {
-        if (null !== $value && ! request()->input('refresh', 0)) {
+        if ($value !== null && ! request()->input('refresh', 0)) {
             return $value;
         }
 
@@ -2913,7 +2880,7 @@ trait SchedaTrait
             return match ($type) {
                 'list' => is_string($value) ? explode(',', $value) : [],
                 'int' => is_numeric($value) ? (int) $value : 0,
-                'date' => (null !== $value && (is_string($value) || is_int($value) || $value instanceof \DateTimeInterface)) ? Date::parse($value) : null,
+                'date' => ($value !== null && (is_string($value) || is_int($value) || $value instanceof \DateTimeInterface)) ? Date::parse($value) : null,
                 default => $value,
             };
         });
@@ -2925,7 +2892,7 @@ trait SchedaTrait
             ->where('matr', $this->matr)
             ->latest('anv2ka')
             ->first();
-        if (null === $last_integ) {
+        if ($last_integ === null) {
             return null;
         }
 
@@ -2934,7 +2901,7 @@ trait SchedaTrait
         // aggiornare campo con il valore minimo ..
         // dddx(['rows'=>$rows,'data_presenza_al'=>$data_presenza_al]);
 
-        if (! ($last_integ->anv2kd instanceof \Carbon\Carbon)) {
+        if (! ($last_integ->anv2kd instanceof Carbon)) {
             return null;
         }
 

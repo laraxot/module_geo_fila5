@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Voc00f.
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $codcal
  * @property int|null $codasc
  * @property int|null $impbil
+ *
  * @method static Builder|Voc00f newModelQuery()
  * @method static Builder|Voc00f newQuery()
  * @method static Builder|Voc00f query()
@@ -32,10 +34,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Voc00f whereTipcal($value)
  * @method static Builder|Voc00f whereTipret($value)
  * @method static Builder|Voc00f whereVocret($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Voc00fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Voc00f extends BaseModel

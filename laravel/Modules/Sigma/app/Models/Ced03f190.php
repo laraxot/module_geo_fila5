@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Ced03f190.
@@ -30,6 +31,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $clafun
  * @property string|null $flagcf
  * @property string|null $cedist
+ *
  * @method static Builder|Ced03f190 newModelQuery()
  * @method static Builder|Ced03f190 newQuery()
  * @method static Builder|Ced03f190 query()
@@ -54,10 +56,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Ced03f190 whereSvocfi($value)
  * @method static Builder|Ced03f190 whereTotale($value)
  * @method static Builder|Ced03f190 whereTotsav($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Ced03f190Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Ced03f190 extends BaseModel

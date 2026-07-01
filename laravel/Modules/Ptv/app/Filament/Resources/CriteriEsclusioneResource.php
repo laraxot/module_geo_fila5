@@ -4,6 +4,4 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Resources;
 
-class CriteriEsclusioneResource extends BaseCriteriEsclusioneResource
-{
-}
+class CriteriEsclusioneResource extends BaseCriteriEsclusioneResource {}

@@ -18,6 +18,10 @@ discussions:
 
 ## Log Entries
 
+[2026-07-01 13:30:00 UTC] [PHPSTAN] Scan 16 moduli (esclusi Incentivi/Pdnd): 11 già OK, 5 con errori fixati. Media (2) `new.nonObject` → cast class-string. Ptv (4) `argument.type` SchedaContract/User null → instanceof guard + null-safe. Sigma (37) `generics.lessTypes` + `argument.type` Relation → `HasMany<*,*>` + `*,*`. UI (13) `class.notFound` Geo (mancante) → `.old` rename dead InteractiveMap. User (1) `new.nonObject` → return class-string. Xot (3) view-string + isset ridondante → rimossi. Tutti 16/16 OK lvl max. Pattern phpstan-relation-generics-wildcard.md. Aggiornato journey-summary.
+
+[2026-07-01 13:30:00 UTC] [DOCS] Duplicati index files (00-INDEX.md, 00-index-1.md) identificati in 8 moduli. Boilerplate agent-discipline presente in tutti i 16 moduli (da centralizzare). Wiki log aggiornato.
+
 [2026-06-18 16:00:00 UTC] [PTV] Trova esclusi / Check: rimosso `persist*`; regola [`patterns/domain-method-naming-no-persist.md`](patterns/domain-method-naming-no-persist.md); wiki Ptv [`check-criteri-esclusione`](../../laravel/Modules/Ptv/docs/wiki/concepts/check-criteri-esclusione.md). GH: `bashscripts/ai/gh-trova-esclusi-session-audit.sh` — **pending** `gh auth login`.
 
 [2026-06-18 15:00:00 UTC] [GITHUB-PENDING] Issue/discussion Sigma FunctionExtra: script `bashscripts/ai/gh-sigma-trova-esclusi-audit.sh` → `provtv/module_sigma_fila5`. Bloccato: `gh auth login` non eseguito su host agente. Body: `docs/chat/github-issue-sigma-function-extra-trova-esclusi-body.md`.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Valo1l1.
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $va1003
  * @property string|null $va1004
  * @property string|null $va1005
+ *
  * @method static Builder|Valo1l1 newModelQuery()
  * @method static Builder|Valo1l1 newQuery()
  * @method static Builder|Valo1l1 query()
@@ -46,10 +48,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Valo1l1 whereVa1ora($value)
  * @method static Builder|Valo1l1 whereVa1rap($value)
  * @method static Builder|Valo1l1 whereVa1s($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Valo1l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Valo1l1 extends BaseModel

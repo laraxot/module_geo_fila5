@@ -96,18 +96,10 @@ class SendSpatieEmailPage extends XotBasePage
          *
          */
         $user = $this->getUser();
-        $attachments = [
-            [
-                'path' => public_path('images/avatars/default-3.svg'),
-                'as' => 'logo.png',
-                'mime' => 'image/png',
-            ],
-            [
-                'path' => public_path('images/avatars/default-3.svg'),
-                'as' => 'logo.png',
-                'mime' => 'image/png',
-            ],
-        ];
+        // Esempio di attachments per SpatieEmail (funzionalità non attiva, vedi commento sotto):
+        // $attachments = [
+        //     ['path' => public_path('images/avatars/default-3.svg'), 'as' => 'logo.png', 'mime' => 'image/png'],
+        // ];
         // Mail::to($data['recipient'])->locale('it')->send((new SpatieEmail($user,'due'))->addAttachments($attachments));
         /*
          * // Create and send the email

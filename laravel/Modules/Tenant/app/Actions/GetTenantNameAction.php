@@ -30,37 +30,37 @@ class GetTenantNameAction
 
         $default = Str::after($default, '//');
 
-        $server_name = $this->getServerName($default);
-        $server_name = Str::of($server_name)->replace('www.', '')->toString();
+        $serverName = $this->getServerName($default);
+        $serverName = Str::of($serverName)->replace('www.', '')->toString();
 
         /** @var Collection<int, string> $parts */
-        $parts = collect(explode('.', $server_name))
-            ->map(fn (string $part): string => Str::slug($part))
+        $parts = collect(explode('.', $serverName))
+            ->map(static fn (string $part): string => Str::slug($part))
             ->reverse()
             ->values();
 
         // Prova il percorso completo
-        $config_file = $this->buildConfigPath($parts);
-        if (file_exists($config_file)) {
+        $configFile = $this->buildConfigPath($parts);
+        if (file_exists($configFile)) {
             return $parts->implode('/');
         }
 
         // Prova il percorso senza l'ultimo segmento se ci sono più di 2 parti
         if ($parts->count() > 2) {
-            /** @var Collection<int, string> $shortened_parts */
-            $shortened_parts = $parts->slice(0, -1);
-            $config_file = $this->buildConfigPath($shortened_parts);
-            if (file_exists($config_file)) {
-                return $shortened_parts->implode('/');
+            /** @var Collection<int, string> $shortenedParts */
+            $shortenedParts = $parts->slice(0, -1);
+            $configFile = $this->buildConfigPath($shortenedParts);
+            if (file_exists($configFile)) {
+                return $shortenedParts->implode('/');
             }
         }
 
         // Fallback al default
         $part = explode('.', $default);
         $inverted = array_reverse($part);
-        $default_path = implode('/', $inverted);
-        if ($default_path !== '' && file_exists(base_path('config/'.$default_path))) {
-            return $default_path;
+        $defaultPath = implode('/', $inverted);
+        if ($defaultPath !== '' && file_exists(base_path('config/'.$defaultPath))) {
+            return $defaultPath;
         }
 
         return 'localhost';
@@ -70,6 +70,7 @@ class GetTenantNameAction
      * Ottiene il nome del server con fallback al default.
      *
      * @param  string  $default  Il valore di default da usare
+     *
      * @return string Il nome del server
      */
     private function getServerName(string $default): string
@@ -89,6 +90,7 @@ class GetTenantNameAction
      * Costruisce il percorso di configurazione.
      *
      * @param  Collection<int, string>  $parts  Le parti del percorso
+     *
      * @return string Il percorso completo
      */
     private function buildConfigPath(Collection $parts): string

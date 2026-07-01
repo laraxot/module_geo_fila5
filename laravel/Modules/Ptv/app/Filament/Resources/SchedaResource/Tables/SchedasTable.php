@@ -7,6 +7,4 @@ namespace Modules\Ptv\Filament\Resources\SchedaResource\Tables;
 /**
  * Tabella SchedaResource nel modulo Ptv (implementazione di default).
  */
-class SchedasTable extends BaseSchedasTable
-{
-}
+class SchedasTable extends BaseSchedasTable {}

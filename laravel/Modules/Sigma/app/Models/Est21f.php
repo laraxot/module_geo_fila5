@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Est21f.
@@ -41,6 +42,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $elab21
  * @property string|null $mese21
  * @property string|null $ann21
+ *
  * @method static Builder|Est21f newModelQuery()
  * @method static Builder|Est21f newQuery()
  * @method static Builder|Est21f query()
@@ -76,10 +78,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est21f whereVoce3c($value)
  * @method static Builder|Est21f whereVoce4c($value)
  * @method static Builder|Est21f whereVocfor($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Est21fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est21f extends BaseModel

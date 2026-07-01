@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Eccez01l.
@@ -32,6 +33,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $ecpauf
  * @property string|null $ecpaum
  * @property string|null $ecpaus
+ *
  * @method static Builder|Eccez01l newModelQuery()
  * @method static Builder|Eccez01l newQuery()
  * @method static Builder|Eccez01l query()
@@ -58,10 +60,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Eccez01l whereEcttur($value)
  * @method static Builder|Eccez01l whereEnteap($value)
  * @method static Builder|Eccez01l whereId($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Eccez01lFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Eccez01l extends BaseModel

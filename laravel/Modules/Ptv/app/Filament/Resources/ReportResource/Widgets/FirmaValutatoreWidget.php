@@ -8,6 +8,7 @@ use Error;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\Alignment;
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +19,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Override;
 
 /**
- * @property \Filament\Schemas\Schema $form
+ * @property Schema $form
  */
 class FirmaValutatoreWidget extends XotBaseWidget
 {
@@ -115,9 +116,8 @@ class FirmaValutatoreWidget extends XotBaseWidget
     #[On('valutatoreIdUpdated')]
     public function valutatoreIdUpdated(?array $filters = []): void
     {
-       
         $filtersArray = is_array($filters) ? $filters : ($this->pageFilters ?? []);
-       
+
         if ($filtersArray === []) {
             $this->form->fill([]);
 
@@ -141,7 +141,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
         /** @var array<string, mixed> $where */
         $where = ['id' => $this->valutatore_id];
         $record = $stabiReparClass::firstWhere($where);
-        
+
         if (! $record instanceof Model) {
             $this->record = null;
             /** @var array<string, mixed> $emptyData */
@@ -211,7 +211,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
         /** @var array<string, mixed> $data */
         $data = ['nome_diri' => $nomeDiri];
         $this->record = $record;
-        
+
         $this->form->fill($data);
     }
 }

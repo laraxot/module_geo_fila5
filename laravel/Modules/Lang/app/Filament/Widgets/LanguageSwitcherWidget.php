@@ -105,7 +105,7 @@ class LanguageSwitcherWidget extends XotBaseSchemaWidget
         // Aggiunge la lingua all'URL
         $path = request()->getPathInfo();
 
-        return url($locale.('/' === $path ? '' : $path));
+        return url($locale.($path === '/' ? '' : $path));
     }
 
     /**

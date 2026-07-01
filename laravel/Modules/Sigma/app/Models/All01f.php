@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\All01f.
@@ -249,6 +250,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $dim02
  * @property string|null $dim03
  * @property string|null $dim04
+ *
  * @method static Builder|All01f newModelQuery()
  * @method static Builder|All01f newQuery()
  * @method static Builder|All01f query()
@@ -492,10 +494,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|All01f wherePtm02($value)
  * @method static Builder|All01f wherePtm03($value)
  * @method static Builder|All01f wherePtm04($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\All01fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class All01f extends BaseModel

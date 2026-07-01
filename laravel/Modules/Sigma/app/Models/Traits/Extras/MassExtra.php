@@ -4,9 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\Sigma\Models\Traits\Extras;
 
+use Illuminate\Database\Connection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\LettF;
+use Modules\IndennitaResponsabilita\Models\LettI;
+use Modules\Performance\Models\BaseIndividualeModel;
+use Modules\Performance\Models\Individuale;
+use Modules\Progressioni\Models\Scheda;
+use Modules\Progressioni\Models\SchedaCriteri;
+use Modules\Ptv\Models\BaseScheda;
 use Modules\Sigma\Models\Ana10f;
 use Modules\Sigma\Models\Asz00k1;
 use Modules\Sigma\Models\Codici;
@@ -32,15 +42,15 @@ trait MassExtra
         }
 
         $fallbackMap = [
-            \Modules\Performance\Models\BaseIndividualeModel::class => [
-                \Modules\Performance\Models\Individuale::class,
-                \Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita::class,
-                \Modules\IndennitaResponsabilita\Models\LettF::class,
-                \Modules\IndennitaResponsabilita\Models\LettI::class,
+            BaseIndividualeModel::class => [
+                Individuale::class,
+                IndennitaResponsabilita::class,
+                LettF::class,
+                LettI::class,
             ],
-            \Modules\Ptv\Models\BaseScheda::class => [
-                \Modules\Progressioni\Models\Scheda::class,
-                \Modules\Progressioni\Models\SchedaCriteri::class,
+            BaseScheda::class => [
+                Scheda::class,
+                SchedaCriteri::class,
             ],
         ];
 
@@ -76,7 +86,7 @@ trait MassExtra
         }
 
         $model = $params['model'] ?? null;
-        if ($model instanceof \Illuminate\Database\Eloquent\Model) {
+        if ($model instanceof Model) {
             $table = $model->getTable();
             $conn = $model->getConnection();
         }
@@ -92,10 +102,10 @@ trait MassExtra
         if (! is_string($table) || $table === '') {
             throw new \Exception('table is not defined ['.__LINE__.']['.class_basename(self::class).']');
         }
-        if ($conn === null || ! ($conn instanceof \Illuminate\Database\Connection)) {
+        if ($conn === null || ! ($conn instanceof Connection)) {
             throw new \Exception('conn is not defined ['.__LINE__.']['.class_basename(self::class).']');
         }
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         // $table and $where are already validated as non-empty-string above
         $tableTyped = $table;
@@ -136,7 +146,7 @@ trait MassExtra
          * }
          */
         $fieldname = 'categoria_eco';
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         // $table is already validated as non-empty-string above (getTable() returns string)
         $tableTyped = $table;
@@ -175,7 +185,7 @@ trait MassExtra
         // $tbl->indexIfNotExists(['tipo', 'codice']);
 
         $fieldname = 'posiz_txt';
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         // $table is already validated as non-empty-string above (getTable() returns string)
         $tableTyped = $table;
@@ -270,7 +280,7 @@ trait MassExtra
          */
         $conn1 = $tbl->getConnection();
         $tblName = $tbl->getTable();
-        /** @var \Illuminate\Database\Connection $conn1Typed */
+        /** @var Connection $conn1Typed */
         $conn1Typed = $conn1;
         /** @var string $tblNameTyped */
         $tblNameTyped = $tblName;
@@ -290,7 +300,7 @@ trait MassExtra
 
         // $table is already validated as non-empty-string above (getTable() returns string)
         $tableTyped = $table;
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         // $where is already validated as non-empty-string above
         $whereTyped = $where;
@@ -1267,7 +1277,7 @@ trait MassExtra
         $table_aspettativeTyped = $table_aspettative;
         /** @var non-empty-string $lista_codici_aspettativeTyped */
         $lista_codici_aspettativeTyped = $lista_codici_aspettative;
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         $sql = 'drop table if exists '.$table_aspettativeTyped.';';
         $res = $connTyped->statement($sql);
@@ -1446,7 +1456,7 @@ trait MassExtra
 
         /** @var non-empty-string $table_aspettativeTyped */
         $table_aspettativeTyped = $table_aspettative;
-        /** @var \Illuminate\Database\Connection $connTyped */
+        /** @var Connection $connTyped */
         $connTyped = $conn;
         $sql = 'drop table if exists '.$table_aspettativeTyped.';';
         $res = $connTyped->statement($sql);

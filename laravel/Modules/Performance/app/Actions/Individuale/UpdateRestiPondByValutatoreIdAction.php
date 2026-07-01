@@ -83,9 +83,6 @@ class UpdateRestiPondByValutatoreIdAction
             ->where('ha_diritto', '>', 0)
             ->sum('totale_punteggio');
 
-        // Se non ci sono punteggi, usiamo 100 come valore di default
-        $normalizationFactor = $totalePunteggio > 0 ? $totalePunteggio / 100 : 1;
-
         echo '<h3>Ridistribuzione resti per valutatore con punteggio individuale</h3>';
         echo "<table border='1' cellpadding='4' cellspacing='0' style='border-collapse:collapse; margin:8px 0;'>";
         echo "<tr style='background:#eee;font-weight:bold;'><th>Valutatore ID</th><th>Delta</th><th>Dipendenti</th><th>Totale Ponderato</th></tr>";

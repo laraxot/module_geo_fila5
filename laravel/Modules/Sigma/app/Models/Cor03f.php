@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Cor03f.
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $vocen
  * @property string|null $ist
  * @property string|null $qtasn
+ *
  * @method static Builder|Cor03f newModelQuery()
  * @method static Builder|Cor03f newQuery()
  * @method static Builder|Cor03f query()
@@ -42,10 +44,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Cor03f whereTabe($value)
  * @method static Builder|Cor03f whereVocen($value)
  * @method static Builder|Cor03f whereVocep($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Cor03fFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Cor03f extends BaseModel

@@ -7,7 +7,6 @@ namespace Modules\Progressioni\Filament\Resources;
 use Modules\Progressioni\Models\RatingMorph;
 use Modules\Rating\Filament\Resources\BaseRatingMorphResource;
 
-
 class RatingMorphResource extends BaseRatingMorphResource
 {
     protected static string $resourceFile = __FILE__;

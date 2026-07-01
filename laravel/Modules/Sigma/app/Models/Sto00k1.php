@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Sto00k1.
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $sto003
  * @property int|null $sto004
  * @property int|null $sto005
+ *
  * @method static Builder|Sto00k1 newModelQuery()
  * @method static Builder|Sto00k1 newQuery()
  * @method static Builder|Sto00k1 query()
@@ -64,10 +66,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Sto00k1 whereStupd($value)
  * @method static Builder|Sto00k1 whereTipass($value)
  * @method static Builder|Sto00k1 whereTipdim($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Sto00k1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Sto00k1 extends BaseModel

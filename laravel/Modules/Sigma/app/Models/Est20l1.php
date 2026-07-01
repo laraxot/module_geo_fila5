@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Modules\Ptv\Models\Profile;
 
 /**
  * Modules\Sigma\Models\Est20l1.
@@ -42,6 +43,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $libe1
  * @property string|null $libe2
  * @property string|null $ann20
+ *
  * @method static Builder|Est20l1 newModelQuery()
  * @method static Builder|Est20l1 newQuery()
  * @method static Builder|Est20l1 query()
@@ -78,10 +80,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Est20l1 whereTarif1($value)
  * @method static Builder|Est20l1 whereTarif2($value)
  * @method static Builder|Est20l1 whereTarif3($value)
- * @property-read \Modules\Ptv\Models\Profile|null $creator
- * @property-read \Modules\Ptv\Models\Profile|null $deleter
- * @property-read \Modules\Ptv\Models\Profile|null $updater
+ *
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ *
  * @method static \Modules\Sigma\Database\Factories\Est20l1Factory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Est20l1 extends BaseModel

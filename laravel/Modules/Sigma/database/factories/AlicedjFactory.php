@@ -3,13 +3,14 @@
 namespace Modules\Sigma\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Sigma\Models\Alicedj;
 
 class AlicedjFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Sigma\Models\Alicedj::class;
+    protected $model = Alicedj::class;
 
     /**
      * Define the model's default state.
@@ -19,4 +20,3 @@ class AlicedjFactory extends Factory
         return [];
     }
 }
-

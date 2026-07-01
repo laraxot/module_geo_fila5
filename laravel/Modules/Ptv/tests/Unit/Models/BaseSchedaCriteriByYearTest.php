@@ -6,6 +6,7 @@ namespace Modules\Ptv\Tests\Unit\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Collection;
 use Modules\Progressioni\Models\CriteriEsclusione;
 use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\Scheda;
@@ -37,7 +38,7 @@ describe('BaseScheda criteri per anno', function (): void {
             new CriteriOption(['name' => 'data_invalida', 'type' => 'date', 'value' => 'not-a-date']),
         ]);
 
-        /** @var \Illuminate\Support\Collection<string, mixed> $parsed */
+        /** @var Collection<string, mixed> $parsed */
         $parsed = $parseCollection->invoke(null, $rows);
 
         expect($parsed->get('lista_propro'))->toBe(['714', '704']);

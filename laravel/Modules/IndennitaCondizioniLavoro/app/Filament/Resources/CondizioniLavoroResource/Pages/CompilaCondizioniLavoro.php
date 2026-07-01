@@ -75,10 +75,10 @@ class CompilaCondizioniLavoro extends XotBaseResourcePage
         /** @var CondizioniLavoro $record */
         $record = $this->getRecord();
         if ($record->anno >= 2023) {
-            $q = $record->quadrimestre;
-            $dal = Carbon::parse($record->anno.'-01-01')->addMonths(4 * ($q - 1));
-            $al = Carbon::parse($record->anno.'-01-01')->addMonths(4 * $q)->subDays(1);
-            $res = tap($record)->update(['dal' => $dal, 'al' => $al]);
+            $quadrimestre = $record->quadrimestre;
+            $dal = Carbon::parse($record->anno.'-01-01')->addMonths(4 * ($quadrimestre - 1));
+            $al = Carbon::parse($record->anno.'-01-01')->addMonths(4 * $quadrimestre)->subDays(1);
+            $record->update(['dal' => $dal, 'al' => $al]);
         }
 
         $data = $this->mutateFormDataBeforeFill($data);

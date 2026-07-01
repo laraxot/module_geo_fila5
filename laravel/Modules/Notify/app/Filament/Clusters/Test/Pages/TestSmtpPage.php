@@ -18,7 +18,6 @@ use Illuminate\Support\Arr;
 use Modules\Notify\Datas\EmailData;
 use Modules\Notify\Datas\SmtpData;
 use Modules\Notify\Filament\Clusters\Test;
-use Modules\Xot\Datas\XotData;
 use Modules\Xot\Filament\Pages\XotBasePage;
 use Override;
 use Webmozart\Assert\Assert;
@@ -46,37 +45,27 @@ class TestSmtpPage extends XotBasePage
 
     public function emailForm(Schema $schema): Schema
     {
-        Assert::isArray($mail_config = config('mail'));
-        $smtpConfig = Arr::get($mail_config, 'mailers.smtp');
-
         $this->emailData['subject'] = 'test';
-        $defaultEmail = XotData::make()->super_admin;
 
         return $schema->components([
             Section::make('SMTP')
                 ->schema([
                     TextInput::make('host'),
-                    // ->default($smtpConfig['host'])
+                    // Valori di default disabilitati: usare Arr::get(config('mail'), 'mailers.smtp') se riattivati.
                     TextInput::make('port')->numeric(),
-                    // ->default($smtpConfig['port'])
                     TextInput::make('username'),
-                    // ->default($smtpConfig['username'])
                     TextInput::make('password'),
-                    // ->default($smtpConfig['password'])
                     TextInput::make('encryption'),
-                    // ->default($smtpConfig['encryption'])
                 ])
                 ->columns(3),
             Section::make('MAIL')
                 ->schema([
                     TextInput::make('from_email')
-                        // ->default(config('mail.from.address', $defaultEmail))
+                        // Valore di default disabilitato: usare XotData::make()->super_admin se riattivato.
                         ->email()
                         ->required(),
                     TextInput::make('from'),
-                    // ->default(config('mail.from.name'))
                     TextInput::make('recipient')
-                        // ->default($defaultEmail)
                         ->email()
                         ->required(),
                     TextInput::make('subject')->default('test')->required(),

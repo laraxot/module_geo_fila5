@@ -107,14 +107,14 @@ class TenantServiceProvider extends XotBaseServiceProvider
             }
 
             $name = $module->getSnakeName();
-            $upperName = strtoupper($name);
 
             if (isset($connections[$default]) && ! isset($connections[$name])) {
                 /** @var array<string, mixed> $moduleConfig */
                 $moduleConfig = $connections[$default];
 
                 // Note: Module-specific env variables disabled for SQLite compatibility
-                // If needed, uncomment and adjust for your database driver:
+                // If needed, uncomment and adjust for your database driver, building
+                // an upper-case module name (strtoupper($name)) for the env() keys:
                 // $moduleConfig['database'] = env("DB_DATABASE_{$upperName}", $moduleConfig['database']);
                 // $moduleConfig['username'] = env("DB_USERNAME_{$upperName}", $moduleConfig['username']);
                 // $moduleConfig['password'] = env("DB_PASSWORD_{$upperName}", $moduleConfig['password']);
@@ -156,7 +156,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
 
             $configName = $config['name'];
             if (is_string($configName)) {
-                $tmp = TenantService::config($configName);
+                TenantService::config($configName);
             }
         }
     }

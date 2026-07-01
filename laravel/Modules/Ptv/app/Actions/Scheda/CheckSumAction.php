@@ -23,7 +23,7 @@ class CheckSumAction
      */
     public function execute(string $class, string $year, string $type): void
     {
-        $quota_field='quota_'.strtolower(class_basename($class));
+        $quota_field = 'quota_'.strtolower(class_basename($class));
 
         Assert::notNull($imp = $class::selectRaw('sum(importo_totale) as tot')
             ->where('ha_diritto', '>', 0)
