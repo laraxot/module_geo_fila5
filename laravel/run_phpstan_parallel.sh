@@ -1,10 +1,37 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Esegui PHPStan su tutti i moduli (esclusi Incentivi e Pdnd), uno alla volta.
+# Uso:
+#   ./run_phpstan_parallel.sh               # tutti i moduli
+#   ./run_phpstan_parallel.sh Modules/Job   # singolo modulo
+set -euo pipefail
+
 cd /var/www/_bases/base_ptvx_fila5/laravel
-modules=$(ls -d Modules/*/ | grep -v -E 'Incentivi|Pdnd')
-echo "$modules" > modules_to_analyze.txt
-while IFS= read -r dir; do
-    echo "Running PHPStan on $dir"
-    ./vendor/bin/phpstan analyse "$dir" --level max --error-format=json 2>&1 &
-done < modules_to_analyze.txt
-wait
-echo "All done"
+
+PHPSTAN="php -d memory_limit=-1 ./vendor/bin/phpstan analyse --memory-limit=-1 --no-progress"
+
+if [ -n "${1:-}" ]; then
+    # Singolo modulo
+    echo "=== PHPStan: $1 ==="
+    $PHPSTAN "$1"
+    exit $?
+fi
+
+# Tutti i moduli, esclusi Incentivi e Pdnd
+ERRORS=()
+for dir in Modules/*/; do
+    module=$(basename "$dir")
+    [[ "$module" == "Incentivi" || "$module" == "Pdnd" ]] && continue
+    echo ""
+    echo "=== PHPStan: $module ==="
+    if ! $PHPSTAN "$dir"; then
+        ERRORS+=("$module")
+    fi
+done
+
+echo ""
+if [ ${#ERRORS[@]} -eq 0 ]; then
+    echo "✅ Tutti i moduli: nessun errore"
+else
+    echo "❌ Moduli con errori: ${ERRORS[*]}"
+    exit 1
+fi

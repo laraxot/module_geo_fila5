@@ -3,7 +3,7 @@ title: "PHPStan swarm — analisi parallela per modulo"
 type: how-to
 tags: [phpstan, swarm, parallel, larastan]
 created: 2026-06-15
-updated: 2026-06-15
+updated: 2026-07-01
 qmd: "phpstan swarm parallel moduli SWARM_JOBS gate"
 related:
   - ../memories/phpstan-modules-inventory.md
@@ -25,8 +25,10 @@ related:
 
 ```bash
 cd /var/www/_bases/base_ptvx_fila5
-SWARM_JOBS=4 bash bashscripts/tools/phpstan-modules-swarm.sh
+SWARM_JOBS=2 bash bashscripts/tools/phpstan-modules-swarm.sh
 ```
+
+Esclusi default: `Incentivi`, `Pdnd` (`SWARM_SKIP_MODULES`). Neon effimero: `parallel.maximumNumberOfProcesses: 0` + `tmpDir` isolato per worker.
 
 Ordine moduli random (default `SWARM_RANDOM=1`):
 

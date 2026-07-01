@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
-use Modules\Xot\Contracts\UserContract;
+use Modules\User\Models\BaseUser;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -37,9 +37,12 @@ class AssignTeamCommand extends Command
     {
         $xot = XotData::make();
         $email = text('email ?');
-        $user_class = $xot->getUserClass();
-        /** @var UserContract */
         $user = XotData::make()->getUserByEmail($email);
+        if (! $user instanceof BaseUser) {
+            $this->error('Il modello utente non supporta membership team.');
+
+            return;
+        }
 
         $teamClass = $xot->getTeamClass();
 
@@ -67,9 +70,12 @@ class AssignTeamCommand extends Command
          */
         $this->info('Teams :'.implode(', ', $rows).' assigned to '.$email);
 
-        $rows = $user->membershipTeams()->get()->toArray();
+        $membershipTeams = $user->membershipTeams()->get();
+        $rows = $membershipTeams
+            ->map(static fn ($team): array => $team->toArray())
+            ->all();
 
-        if (\count($rows) > 0) {
+        if ($rows !== []) {
             Assert::isArray($rows[0]);
             $headers = array_keys($rows[0]);
 
