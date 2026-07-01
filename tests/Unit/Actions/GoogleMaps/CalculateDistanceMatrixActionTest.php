@@ -6,14 +6,14 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 it('throws exception when google maps api key is not configured', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => null]);
 
@@ -35,7 +35,7 @@ it('throws exception when google maps api key is not configured', function (): v
 });
 
 it('throws exception when api key is empty string', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => '']);
 
@@ -56,7 +56,7 @@ it('throws exception when api key is empty string', function (): void {
 });
 
 it('throws exception when api response is not successful', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -82,7 +82,7 @@ it('throws exception when api response is not successful', function (): void {
 });
 
 it('throws exception when response status is not OK', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -108,7 +108,7 @@ it('throws exception when response status is not OK', function (): void {
 });
 
 it('throws exception when response has no rows', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -134,7 +134,7 @@ it('throws exception when response has no rows', function (): void {
 });
 
 it('returns distance matrix for valid locations', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -172,7 +172,7 @@ it('returns distance matrix for valid locations', function (): void {
 });
 
 it('handles multiple origins and destinations', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -219,7 +219,7 @@ it('handles multiple origins and destinations', function (): void {
 });
 
 it('handles zero results status', function (): void {
-    $action = new CalculateDistanceMatrixAction();
+    $action = new CalculateDistanceMatrixAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 

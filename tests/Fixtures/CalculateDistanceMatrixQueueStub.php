@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Fixtures;
 
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 
 /**
  * @internal
@@ -14,19 +14,17 @@ use Modules\Geo\Datas\Location\LocationData;
 final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixAction
 {
     /**
-     * @param list<array<mixed>> $responses
+     * @param  list<array<mixed>>  $responses
      */
     public function __construct(
         private array $responses = [],
-    ) {
-    }
+    ) {}
 
     private int $callIndex = 0;
 
     /**
-     * @param Collection<int, LocationData> $origins
-     * @param Collection<int, LocationData> $destinations
-     *
+     * @param  Collection<int, LocationData>  $origins
+     * @param  Collection<int, LocationData>  $destinations
      * @return array<mixed>
      */
     public function execute(Collection $origins, Collection $destinations): array
@@ -34,7 +32,7 @@ final class CalculateDistanceMatrixQueueStub extends CalculateDistanceMatrixActi
         unset($origins, $destinations);
 
         $response = $this->responses[$this->callIndex] ?? [[]];
-        ++$this->callIndex;
+        $this->callIndex++;
 
         return $response;
     }

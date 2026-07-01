@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions\Elevation;
 
 use Modules\Geo\Actions\Elevation\GetElevationAction;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
 use Modules\Geo\Tests\Fixtures\GoogleMapsServiceElevationStub;
 use Modules\Geo\Tests\LightTestCase;
@@ -29,7 +29,7 @@ it('gets elevation for valid location', function (): void {
 });
 
 it('throws exception for invalid latitude', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     try {
         $action->execute(new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'));
@@ -40,7 +40,7 @@ it('throws exception for invalid latitude', function (): void {
 });
 
 it('throws exception for invalid longitude', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     try {
         $action->execute(new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Invalid Location'));
@@ -51,7 +51,7 @@ it('throws exception for invalid longitude', function (): void {
 });
 
 it('throws exception for negative latitude', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     try {
         $action->execute(new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'));
@@ -62,7 +62,7 @@ it('throws exception for negative latitude', function (): void {
 });
 
 it('throws exception for negative longitude', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     try {
         $action->execute(new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Invalid Location'));
@@ -106,25 +106,25 @@ it('throws exception when service throws generic exception', function (): void {
 });
 
 it('formats elevation correctly', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     Assert::assertSame('1234.5 m s.l.m.', $action->formatElevation(1234.5));
 });
 
 it('formats elevation with zero value', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     Assert::assertSame('0.0 m s.l.m.', $action->formatElevation(0));
 });
 
 it('formats negative elevation correctly', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     Assert::assertSame('-430.0 m s.l.m.', $action->formatElevation(-430.0));
 });
 
 it('handles high elevation correctly', function (): void {
-    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub);
 
     Assert::assertSame('8848.0 m s.l.m.', $action->formatElevation(8848.0));
 });

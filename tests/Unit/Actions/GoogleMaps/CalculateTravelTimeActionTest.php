@@ -9,7 +9,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\CalculateTravelTimeAction;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
@@ -19,7 +19,7 @@ use function Safe\json_encode;
 uses(LightTestCase::class);
 
 it('throws exception when api key is not configured', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -39,7 +39,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception when origin and destination are the same', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -53,7 +53,7 @@ it('throws exception when origin and destination are the same', function (): voi
 });
 
 it('returns error travel time data for failed api request', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -73,7 +73,7 @@ it('returns error travel time data for failed api request', function (): void {
 });
 
 it('returns error for invalid response status', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -95,7 +95,7 @@ it('returns error for invalid response status', function (): void {
 });
 
 it('returns error when no route found', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -122,7 +122,7 @@ it('returns error when no route found', function (): void {
 });
 
 it('returns travel time data for valid route', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);
@@ -161,7 +161,7 @@ it('returns travel time data for valid route', function (): void {
 });
 
 it('uses duration as fallback for duration in traffic', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new CalculateTravelTimeAction($client);

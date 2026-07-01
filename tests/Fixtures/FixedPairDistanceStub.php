@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Fixtures;
 
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
-use Modules\Geo\Datas\Location\LocationData;
+use Modules\Geo\Datas\LocationData;
 
 /**
  * @internal
@@ -14,8 +14,7 @@ final class FixedPairDistanceStub implements CalculateDistanceActionContract
 {
     public function __construct(
         private int $meters,
-    ) {
-    }
+    ) {}
 
     public function execute(LocationData $origin, LocationData $destination): array
     {

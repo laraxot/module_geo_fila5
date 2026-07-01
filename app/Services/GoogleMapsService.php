@@ -10,12 +10,15 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Servizio per le interazioni con l'API di Google Maps.
  */
 class GoogleMapsService
 {
+    use QueueableAction;
+
     private const GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     private const DISTANCE_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
@@ -42,14 +45,13 @@ class GoogleMapsService
     /**
      * Esegue una richiesta HTTP con rate limiting, cache e retry.
      *
-     * @param string               $method   Metodo HTTP (GET, POST, etc.)
-     * @param string               $url      URL della richiesta
-     * @param array<string, mixed> $params   Parametri della richiesta
-     * @param bool                 $useCache Se utilizzare la cache
+     * @param  string  $method  Metodo HTTP (GET, POST, etc.)
+     * @param  string  $url  URL della richiesta
+     * @param  array<string, mixed>  $params  Parametri della richiesta
+     * @param  bool  $useCache  Se utilizzare la cache
+     * @return array<string, mixed>
      *
      * @throws \RuntimeException Se la richiesta fallisce
-     *
-     * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
     {
@@ -58,7 +60,7 @@ class GoogleMapsService
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-            if (null !== $cached) {
+            if ($cached !== null) {
                 return $cached;
             }
         }
@@ -130,9 +132,9 @@ class GoogleMapsService
     /**
      * Genera una chiave di cache per la richiesta.
      *
-     * @param string               $method Metodo HTTP
-     * @param string               $url    URL della richiesta
-     * @param array<string, mixed> $params Parametri della richiesta
+     * @param  string  $method  Metodo HTTP
+     * @param  string  $url  URL della richiesta
+     * @param  array<string, mixed>  $params  Parametri della richiesta
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {
@@ -146,9 +148,10 @@ class GoogleMapsService
     /**
      * Esegue una richiesta di geocodifica inversa.
      *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
+     *
+     * @throws GoogleMapsApiException Se la richiesta fallisce
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -166,12 +169,11 @@ class GoogleMapsService
     /**
      * Calcola la matrice delle distanze.
      *
-     * @param array<string> $origins      Punti di origine (formato: "lat,lng|lat,lng|...")
-     * @param array<string> $destinations Punti di destinazione (formato: "lat,lng|lat,lng|...")
+     * @param  array<string>  $origins  Punti di origine (formato: "lat,lng|lat,lng|...")
+     * @param  array<string>  $destinations  Punti di destinazione (formato: "lat,lng|lat,lng|...")
+     * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
-     *
-     * @return array<string, mixed>
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -191,9 +193,10 @@ class GoogleMapsService
     /**
      * Ottiene l'elevazione per un punto.
      *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
+     *
+     * @throws GoogleMapsApiException Se la richiesta fallisce
      */
     public function getElevation(float $latitude, float $longitude): array
     {
@@ -211,4 +214,6 @@ class GoogleMapsService
     {
         return 'google_maps';
     }
+
+    public function execute(): void {}
 }

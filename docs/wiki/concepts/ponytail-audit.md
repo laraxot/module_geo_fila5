@@ -1,11 +1,9 @@
 # Ponytail audit — Geo
 
-**Run:** 2026-06-30
+**Delta modulo only here.** Ranked list, gate e remediation globale negli hub progetto.
 
-Documento canonico: [ponytail-audit-over-engineering.md](../../ponytail-audit-over-engineering.md)
+- [Hub audit](../../../../../../docs/audit/ponytail-audit.md)
+- [Remediation](../../../../../../docs/project/ponytail-audit-remediation.md)
+- [Findings Geo](../../ponytail-audit-over-engineering.md)
 
-## Sintesi
-
-- `GeocodingServiceInterface` → già `.bak`
-- 7 provider geocoding in loop — YAGNI (un driver da config)
-- `LocationDTO` duplicati → `.bak`, usare `LocationData`
+Aggiornare solo finding e stato specifici di questo modulo.

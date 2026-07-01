@@ -4,17 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Service per geocoding e reverse geocoding.
  */
 class GeocodingService
 {
+    use QueueableAction;
+
     /**
      * Geocodifica un indirizzo.
      *
-     * @throws \RuntimeException Se l'indirizzo non viene trovato
      *
      * @return array{latitude: float, longitude: float, address: string}
+     *
+     * @throws \RuntimeException Se l'indirizzo non viene trovato
      */
     public function geocodeAddress(string $address): array
     {
@@ -30,4 +35,6 @@ class GeocodingService
     {
         return [];
     }
+
+    public function execute(): void {}
 }

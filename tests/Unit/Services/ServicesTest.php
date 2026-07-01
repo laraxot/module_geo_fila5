@@ -6,7 +6,6 @@ namespace Modules\Geo\Tests\Unit\Services;
 
 use Modules\Geo\Services\GeoService;
 use Modules\Geo\Services\GoogleMapsService;
-use Modules\Geo\Services\HereService;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
@@ -21,10 +20,4 @@ test('GoogleMapsService can be instantiated', function () {
     $service = app(GoogleMapsService::class);
 
     Assert::assertInstanceOf(GoogleMapsService::class, $service);
-});
-
-test('HereService can be instantiated', function () {
-    $service = app(HereService::class);
-
-    Assert::assertInstanceOf(HereService::class, $service);
 });
