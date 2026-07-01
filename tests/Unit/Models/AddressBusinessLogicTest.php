@@ -12,10 +12,11 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 describe('Address Business Logic', function () {
-    test('address extends base model', function () {});
+    test('address extends base model', function () {
+    });
 
     test('address has expected fillable fields for postal address', function () {
-        $address = new Address;
+        $address = new Address();
         $expectedFillable = [
             'model_type',
             'model_id',
@@ -42,7 +43,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address has correct casts for geolocation and structured data', function () {
-        $address = new Address;
+        $address = new Address();
         $casts = $address->getCasts();
 
         Assert::assertSame('float', $casts['latitude']);
@@ -53,23 +54,23 @@ describe('Address Business Logic', function () {
     });
 
     test('address has polymorphic model relationship', function () {
-        $address = new Address;
+        $address = new Address();
     });
 
     test('address can get region data from comune', function () {
-        $address = new Address;
+        $address = new Address();
     });
 
     test('address can get province data from comune', function () {
-        $address = new Address;
+        $address = new Address();
     });
 
     test('address can get locality data from comune', function () {
-        $address = new Address;
+        $address = new Address();
     });
 
     test('address can format full address attribute', function () {
-        $address = new Address;
+        $address = new Address();
         $address->route = 'Via Roma';
         $address->street_number = '123';
         $address->locality = 'Milano';
@@ -79,7 +80,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can format street address attribute', function () {
-        $address = new Address;
+        $address = new Address();
         $address->route = 'Via Roma';
         $address->street_number = '123';
 
@@ -87,7 +88,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can get geolocation coordinates', function () {
-        $address = new Address;
+        $address = new Address();
         $address->latitude = 45.4642;
         $address->longitude = 9.1900;
 
@@ -96,7 +97,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can export to schema org format', function () {
-        $address = new Address;
+        $address = new Address();
         $address->name = 'Test Address';
         $address->route = 'Via Roma';
         $address->street_number = '123';

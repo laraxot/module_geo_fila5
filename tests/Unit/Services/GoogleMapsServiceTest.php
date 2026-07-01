@@ -10,13 +10,13 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 it('can be instantiated', function (): void {
-    $service = new GoogleMapsService;
+    $service = new GoogleMapsService();
 
     Assert::assertInstanceOf(GoogleMapsService::class, $service);
 });
 
 it('has correct constants defined', function (): void {
-    $service = new GoogleMapsService;
+    $service = new GoogleMapsService();
 
     $reflection = new \ReflectionClass(GoogleMapsService::class);
     Assert::assertTrue($reflection->hasConstant('GEOCODING_URL'));
@@ -30,5 +30,5 @@ it('has correct constants defined', function (): void {
 });
 
 it('has required methods', function (): void {
-    $service = new GoogleMapsService;
+    $service = new GoogleMapsService();
 });
