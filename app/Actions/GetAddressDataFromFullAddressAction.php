@@ -61,6 +61,8 @@ class GetAddressDataFromFullAddressAction
             'opencage' => GetAddressFromOpenCageAction::class,
         ];
 
+        // ponytail: single driver via config('geo.driver') is sufficient for production.
+        // The full chain falls through only when driver is not configured.
         $preferred = config('geo.driver');
         if (\is_string($preferred) && \array_key_exists($preferred, $services)) {
             $preferredClass = $services[$preferred];

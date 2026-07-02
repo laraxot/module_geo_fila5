@@ -6,6 +6,9 @@ namespace Modules\Geo\Datas\Geocoding;
 
 use Spatie\LaravelData\Data;
 
+// ponytail: root-level Modules\Geo\Datas\PlaceData was identical — deleted.
+// Use this canonical version in Modules\Geo\Datas\Geocoding namespace.
+
 /**
  * Data object per la gestione delle informazioni sui luoghi.
  *

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Datas;
 
+/**
+ * @deprecated Use \Modules\Geo\Datas\LocationData instead (Spatie Data pattern).
+ *             This plain DTO duplicates LocationData which has the same coordinates
+ *             plus Spatie's from()/toArray() for free.
+ */
 readonly class LocationDTO
 {
     public function __construct(

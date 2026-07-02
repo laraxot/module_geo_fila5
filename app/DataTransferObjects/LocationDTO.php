@@ -8,6 +8,10 @@ use Modules\Geo\Datas\LocationData;
 
 /**
  * Data Transfer Object per le posizioni geografiche.
+ *
+ * @deprecated Use \Modules\Geo\Datas\LocationData instead (Spatie Data pattern).
+ *             This DTO exists only for the `fromLocationData`/`toLocationData`
+ *             bridge pattern. Prefer LocationData directly.
  */
 readonly class LocationDTO
 {

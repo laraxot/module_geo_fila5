@@ -6,6 +6,9 @@ namespace Modules\Geo\Datas\Location;
 
 use Spatie\LaravelData\Data;
 
+// ponytail: root-level Modules\Geo\Datas\IPLocationData was identical — deleted.
+// Use this canonical version in Modules\Geo\Datas\Location namespace.
+
 /**
  * Data object per la gestione delle informazioni di geolocalizzazione IP.
  *

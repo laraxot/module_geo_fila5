@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 use Modules\Geo\Datas\LocationData;
 use Spatie\LaravelData\Data;
 
+// ponytail: root-level Modules\Geo\Datas\RouteData was identical — deleted.
+// Use this canonical version in Modules\Geo\Datas\Routing namespace.
+
 /**
  * DTO per i dati di un percorso ottimizzato.
  */

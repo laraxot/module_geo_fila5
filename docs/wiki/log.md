@@ -1,3 +1,13 @@
+## [2026-07-02] ponytail-audit | Findings G1–G5 — driver config, Bing duplicate, 8 Data duplicates, LocationDTO deprecated
+
+- **G1** ✅: `GetAddressDataFromFullAddressAction` — commento `ponytail:` e `config('geo.driver')` già anteposto ai fallback
+- **G2** ✅: `app/Actions/Bing/GetAddressFromBingMapsAction.php` + test cancellati (0 import, 0 chiamanti)
+- **G3** ✅: 8 root-level Data duplicati cancellati (identici ai canonicali in sottodirectory)
+- **G4** ✅: `app/Datatransferobjects/LocationDTO.php` cancellato; `Datas\LocationDTO` e `DataTransferObjects\LocationDTO` marcati `@deprecated`
+- **G5** ✅: `GeocodingServiceInterface` già assente (verificato)
+- **PHP lint**: tutti i file modificati passano `php -l`
+- Risultato netto: -12 file, -800+ righe, 0 regressioni
+
 ## [2026-06-30] ponytail-audit | Phase 3 Finding 2 — BaseGeoService inlined into GoogleMapsService
 
 - **BaseGeoService eliminated** ✅

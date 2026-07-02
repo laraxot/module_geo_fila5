@@ -6,6 +6,9 @@ namespace Modules\Geo\Datas\Elevation;
 
 use Spatie\LaravelData\Data;
 
+// ponytail: root-level Modules\Geo\Datas\ElevationData was identical — deleted.
+// Use this canonical version in Modules\Geo\Datas\Elevation namespace.
+
 /**
  * Data object per la gestione delle informazioni sull'elevazione.
  *
