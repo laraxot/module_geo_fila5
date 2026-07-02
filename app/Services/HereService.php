@@ -6,7 +6,6 @@ namespace Modules\Geo\Services;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Tenant\Services\TenantService;
-use Webmozart\Assert\Assert;
 
 class HereService
 {
@@ -14,6 +13,9 @@ class HereService
 
     // https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array
     {
         $api_key = TenantService::config('services.here.api_key');
@@ -30,9 +32,6 @@ class HereService
 
         $base_url = 'https://router.hereapi.com/v8/routes';
         $response = Http::get($base_url, $data);
-        if (! method_exists($response, 'json')) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
-        }
         $json = $response->json();
         if (! \is_array($json)) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
@@ -43,16 +42,36 @@ class HereService
 
             return null;
         }
-        if (! is_array($json['routes'])) {
-            return null;
-        }
-        if (! isset($json['routes'][0])) {
+
+        $routes = $json['routes'];
+        if (! \is_array($routes) || ! isset($routes[0]) || ! \is_array($routes[0])) {
             return null;
         }
 
-        // @phpstan-ignore offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible, offsetAccess.nonOffsetAccessible
-        Assert::isArray($res = $json['routes'][0]['sections']['0']['summary']);
+        $route = $routes[0];
+        if (! isset($route['sections']) || ! \is_array($route['sections'])) {
+            return null;
+        }
 
-        return $res;
+        $sections = $route['sections'];
+        if (! isset($sections['0']) || ! \is_array($sections['0'])) {
+            return null;
+        }
+
+        $section = $sections['0'];
+        if (! isset($section['summary']) || ! \is_array($section['summary'])) {
+            return null;
+        }
+
+        $summary = [];
+        foreach ($section['summary'] as $key => $value) {
+            if (! \is_string($key)) {
+                continue;
+            }
+
+            $summary[$key] = $value;
+        }
+
+        return $summary;
     }
 }
