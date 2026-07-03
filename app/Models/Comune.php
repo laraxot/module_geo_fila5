@@ -140,7 +140,7 @@ class Comune extends BaseModel
     {
         return static::all()
             ->pluck('regione')
-            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
+            ->filter(static fn (mixed $value): bool => is_string($value) && '' !== $value)
             ->map(static fn (mixed $value): string => (string) $value)
             ->unique()
             ->sort()
@@ -156,7 +156,7 @@ class Comune extends BaseModel
     {
         return static::where('regione', $regione)
             ->pluck('provincia')
-            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
+            ->filter(static fn (mixed $value): bool => is_string($value) && '' !== $value)
             ->map(static fn (mixed $value): string => (string) $value)
             ->unique()
             ->sort()

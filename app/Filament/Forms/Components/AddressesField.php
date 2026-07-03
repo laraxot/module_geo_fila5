@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Closure;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -70,7 +69,7 @@ class AddressesField extends Repeater
             ->default(function (Get $get): bool {
                 return count(self::addressesFromGet($get)) <= 1;
             })
-            ->afterStateUpdated(function ($state, Closure $set, Get $get, Component $component): void {
+            ->afterStateUpdated(function ($state, \Closure $set, Get $get, Component $component): void {
                 if (true === $state) {
                     $addresses = self::addressesFromGet($get);
 
