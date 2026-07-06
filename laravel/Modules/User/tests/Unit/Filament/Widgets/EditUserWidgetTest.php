@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Filament\Widgets\EditUserWidget;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 describe('EditUserWidget', function (): void {
     test('edit user widget can be instantiated', function (): void {

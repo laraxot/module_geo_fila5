@@ -18,6 +18,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var TestCase $this */
     try {
         $panel = Filament::getPanel('user::admin');
     } catch (\Exception $e) {
@@ -32,21 +33,25 @@ beforeEach(function (): void {
 
 describe('Create User', function (): void {
     test('create user page has correct resource', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         Assert::assertSame(UserResource::class, $createUserPage->getResource());
     });
 
     test('create user page extends correct base class', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         Assert::assertInstanceOf(XotBaseCreateRecord::class, $createUserPage);
     });
 
     test('create user page can be instantiated', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         Assert::assertInstanceOf(CreateUser::class, $createUserPage);
     });
 
     test('create user page has correct navigation label', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         $label = $createUserPage->getNavigationLabel();
 
@@ -54,6 +59,7 @@ describe('Create User', function (): void {
     });
 
     test('create user page has correct title', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         $title = $createUserPage->getTitle();
 
@@ -61,6 +67,7 @@ describe('Create User', function (): void {
     });
 
     test('create user page has correct breadcrumbs structure', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         try {
             $breadcrumbs = $createUserPage->getBreadcrumbs();
@@ -70,6 +77,7 @@ describe('Create User', function (): void {
     });
 
     test('create user page can be accessed', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         Assert::assertInstanceOf(CreateUser::class, $createUserPage);
     });
@@ -107,6 +115,7 @@ describe('Create User', function (): void {
     });
 
     test('create user page follows filament conventions', function (): void {
+        /** @var TestCase $this */
         $createUserPage = $this->requireCreateUserPage();
         Assert::assertSame(UserResource::class, $createUserPage->getResource());
         Assert::assertSame(XotData::make()->getUserClass(), $createUserPage->getModel());

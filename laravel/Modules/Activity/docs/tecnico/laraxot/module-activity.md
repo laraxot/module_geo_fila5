@@ -1,4 +1,8 @@
-# Modulo Activity
+---
+module: theme
+topic: module-activity
+canonical: ../../../../../Themes/docs/shared-components/module-activity.md
+---
 
 ## Overview
 Il modulo Activity fornisce un sistema completo di logging e monitoraggio delle attività nel sistema.

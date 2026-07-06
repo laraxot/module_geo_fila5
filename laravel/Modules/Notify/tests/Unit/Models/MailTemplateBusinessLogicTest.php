@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Models;
-use Mockery;
-use function Safe\class_uses;
-use Illuminate\Contracts\Mail\Mailable;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Notify\Models\MailTemplate;
@@ -14,7 +12,9 @@ use PHPUnit\Framework\Assert;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Translatable\HasTranslations;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+use function Safe\class_uses;
+
+uses(TestCase::class);
 
 describe('MailTemplate Business Logic', function () {
     test('mail template extends spatie mail template', function () {
@@ -40,7 +40,7 @@ describe('MailTemplate Business Logic', function () {
     });
 
     test('mail template can store template content', function () {
-        $mailTemplate = new MailTemplate;
+        $mailTemplate = new MailTemplate();
         $mailTemplate->name = 'Welcome Email';
         $mailTemplate->subject = 'Welcome to our platform';
         $mailTemplate->html_template = '<h1>Welcome!</h1>';
@@ -51,28 +51,29 @@ describe('MailTemplate Business Logic', function () {
     });
 
     test('mail template can link to mailable class', function () {
-        $mailTemplate = new MailTemplate;
+        $mailTemplate = new MailTemplate();
         $mailTemplate->mailable = 'App\\Mail\\WelcomeMail';
 
         Assert::assertSame('App\\Mail\\WelcomeMail', $mailTemplate->mailable);
     });
 
     test('mail template has version tracking', function () {
-        $mailTemplate = new MailTemplate;
+        $mailTemplate = new MailTemplate();
         $mailTemplate->version = 2;
 
         Assert::assertSame(2, $mailTemplate->version);
     });
 
     test('mail template can store optional text template', function () {
-        $mailTemplate = new MailTemplate;
+        $mailTemplate = new MailTemplate();
         $mailTemplate->text_template = 'Welcome! This is plain text.';
 
         Assert::assertSame('Welcome! This is plain text.', $mailTemplate->text_template);
     });
 
     test('mail template can be queried by mailable', function () {
-        $mailable = new class extends \Illuminate\Mail\Mailable
+        /** @var TestCase $this */
+        $mailable = new class() extends \Illuminate\Mail\Mailable
         {
             public function build(): static
             {
@@ -90,7 +91,7 @@ describe('MailTemplate Business Logic', function () {
     });
 
     test('mail template has creator and updater tracking', function () {
-        $mailTemplate = new MailTemplate;
+        $mailTemplate = new MailTemplate();
         $mailTemplate->created_by = 'user-1';
         $mailTemplate->updated_by = 'user-2';
 

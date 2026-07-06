@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Traits\PasswordValidationRules;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 test('PasswordValidationRules trait can be used', function (): void {
     Assert::assertTrue(trait_exists(PasswordValidationRules::class));

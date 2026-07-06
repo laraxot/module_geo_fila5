@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Console\Command;
 use Modules\User\Console\Commands\ChangeTypeCommand;
 use Modules\Xot\Datas\XotData;
 use PHPUnit\Framework\Assert;
 use ReflectionNamedType;
+
+uses(Modules\User\Tests\TestCase::class);
 
 function changeTypeCommandInstance(): ChangeTypeCommand
 {

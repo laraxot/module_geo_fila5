@@ -63,15 +63,7 @@ class HandlersRepository
     {
         return array_filter(
             $this->reporters,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            fn (callable $handler): bool => $this->handlesException($handler, $e),
-=======
             fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
-=======
-            fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
         );
     }
 
@@ -84,15 +76,7 @@ class HandlersRepository
     {
         return array_filter(
             $this->renderers,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            fn (callable $handler): bool => $this->handlesException($handler, $e),
-=======
             fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
-=======
-            fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
         );
     }
 
@@ -105,15 +89,7 @@ class HandlersRepository
     {
         return array_filter(
             $this->consoleRenderers,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            fn (callable $handler): bool => $this->handlesException($handler, $e),
-=======
             fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
-=======
-            fn (mixed $handler) => is_callable($handler) && $this->handlesException($handler, $e),
->>>>>>> laraxot/dev
         );
     }
 

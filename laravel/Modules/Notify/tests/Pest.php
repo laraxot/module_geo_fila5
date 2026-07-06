@@ -50,19 +50,21 @@ function assertNotifyTableMissing(string $table, array $where): void
     Assert::assertFalse($query->exists());
 }
 
-/**
- * @template T of Model
- *
- * @param  T  $model
- * @param  class-string<T>  $class
- * @return T
- */
-function assertFreshModel(Model $model, string $class)
-{
-    $fresh = $model->fresh();
-    Assert::assertInstanceOf($class, $fresh);
+if (! function_exists('assertFreshModel')) {
+    /**
+     * @template T of Model
+     *
+     * @param  T  $model
+     * @param  class-string<T>  $class
+     * @return T
+     */
+    function assertFreshModel(Model $model, string $class)
+    {
+        $fresh = $model->fresh();
+        Assert::assertInstanceOf($class, $fresh);
 
-    return $fresh;
+        return $fresh;
+    }
 }
 
 /**

@@ -52,6 +52,7 @@ describe('Send notification flow', function (): void {
     });
 
     test('send action can be invoked with mocked handle', function (): void {
+        /** @var TestCase $this */
         NotificationTemplateFactory::new()->createOne([
             'code' => 'action-send-template',
             'is_active' => true,
@@ -79,6 +80,7 @@ describe('Send notification flow', function (): void {
     });
 
     test('send action throws when template missing', function (): void {
+        /** @var TestCase $this */
         $this->expectApplicationException(Exception::class);
 
         $recipient = UserFactory::new()->createOne();

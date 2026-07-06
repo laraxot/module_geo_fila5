@@ -242,6 +242,14 @@ UI Module
 └── Uses: Spatie packages (QueueableAction, ModelStates, LaravelData)
 ```
 
+> **REGOLA CRITICA:** Il modulo UI è una dipendenza condivisa da tutti i moduli.
+> UI **NON deve dipendere** da moduli domain-specific (es. Geo, Activity, Media).
+> La dipendenza è unidirezionale: `Xot ← UI ← (Geo, User, Tenant, ecc.)`.
+>
+> Componenti geografici (mappe interattive, geocoding, marker) appartengono al
+> modulo **Geo**, non al modulo UI.
+> Vedere: [`docs/dependency-rules.md`](./dependency-rules.md)
+
 ### Key Traits & Interfaces
 
 **TableLayoutTrait**
@@ -515,6 +523,14 @@ it('can toggle table layout', function () {
   - ModelStates
   - LaravelData
 - **BladeUI Icons** - Icon management
+
+### Moduli che NON devono essere dipendenze di UI
+
+- ❌ **Geo Module** - Componenti geografici appartengono a Geo, che dipende da UI (non viceversa)
+- ❌ **Activity Module** - Domain-specific
+- ❌ **Media Module** - Domain-specific
+
+Vedere: [`docs/dependency-rules.md`](./dependency-rules.md)
 
 ---
 

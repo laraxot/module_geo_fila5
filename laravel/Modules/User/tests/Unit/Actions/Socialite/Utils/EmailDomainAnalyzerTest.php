@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Mockery\MockInterface;
 use Modules\User\Actions\Socialite\Utils\EmailDomainAnalyzer;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 function createMockSocialiteUser(?string $email): SocialiteUser
 {

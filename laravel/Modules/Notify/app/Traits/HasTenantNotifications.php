@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\Notify\Models\NotificationLog;
 
+/** @phpstan-ignore trait.unused */
 trait HasTenantNotifications
 {
     /**

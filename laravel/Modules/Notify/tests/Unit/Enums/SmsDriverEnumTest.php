@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Enums;
+
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
@@ -10,18 +11,12 @@ use Modules\Notify\Enums\SmsDriverEnum;
 use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 it('has correct cases', function (): void {
-    Assert::assertCount(7, SmsDriverEnum::cases());
+    Assert::assertCount(1, SmsDriverEnum::cases());
 
     Assert::assertSame('smsfactor', SmsDriverEnum::SMSFACTOR->value);
-    Assert::assertSame('twilio', SmsDriverEnum::TWILIO->value);
-    Assert::assertSame('nexmo', SmsDriverEnum::NEXMO->value);
-    Assert::assertSame('plivo', SmsDriverEnum::PLIVO->value);
-    Assert::assertSame('gammu', SmsDriverEnum::GAMMU->value);
-    Assert::assertSame('netfun', SmsDriverEnum::NETFUN->value);
-    Assert::assertSame('agiletelecom', SmsDriverEnum::AGILETELECOM->value);
 });
 
 it('implements filament contracts', function (): void {
@@ -53,7 +48,7 @@ it('each case has unique value', function (): void {
 
 it('cases returns all enum instances', function (): void {
     $cases = SmsDriverEnum::cases();
-    Assert::assertCount(7, $cases);
+    Assert::assertCount(1, $cases);
 
     foreach ($cases as $case) {
         Assert::assertInstanceOf(SmsDriverEnum::class, $case);

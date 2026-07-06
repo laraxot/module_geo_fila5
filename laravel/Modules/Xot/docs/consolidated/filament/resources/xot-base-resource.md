@@ -14,7 +14,19 @@ La classe `XotBaseResource` è progettata per centralizzare e standardizzare l'i
    public static function table(Table $table): Table { ... }
    ```
 
-2. **Non implementare `getPages()`** se servono solo `index` / `create` / `edit` **e** le classi Page rispettano la convenzione della base (`List{plural}`, `Create{name}`, `Edit{name}`). Dettaglio ed esempi: [getpages-redundancy-rule.md](../../../filament/getpages-redundancy-rule.md).
+2. **Non implementare `getPages()` se contiene solo le route standard**:
+
+   ```php
+   // ❌ ERRATO: Non implementare questo metodo se restituisce solo le pagine standard
+   public static function getPages(): array
+   {
+       return [
+           'index' => Pages\ListRecords::route('/'),
+           'create' => Pages\CreateRecord::route('/create'),
+           'edit' => Pages\EditRecord::route('/{record}/edit'),
+       ];
+   }
+   ```
 
 3. **Non implementare `getRelations()` se restituisce un array vuoto**:
 
@@ -54,7 +66,7 @@ class MyResource extends XotBaseResource
 
 È legittimo sovrascrivere questi metodi SOLO quando è necessario un comportamento personalizzato non standard:
 
-1. `getPages()` — pagine custom, `view` esplicita, o naming Page non allineato alla convenzione base
+1. `getPages()` - Solo se si aggiungono pagine personalizzate o si modifica il comportamento delle pagine standard
 2. `getRelations()` - Solo se la risorsa ha relazioni da mostrare
 3. `form()` / `table()` - Solo se è necessario un comportamento che non può essere ottenuto attraverso `getFormSchema()` o `getListTableColumns()`
 

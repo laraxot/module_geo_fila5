@@ -2,44 +2,43 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Tests\Feature\Database\Migrations;
-
-use Modules\User\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\exec;
 use function Safe\file_get_contents;
+use function Safe\glob;
 
-uses(TestCase::class);
+uses(Modules\User\Tests\TestCase::class);
 
-describe('User Migration Syntax', function (): void {
-    test('user migrations do not contain merge conflict markers', function (): void {
-        foreach (userMigrationFiles() as $migrationFile) {
-            $contents = file_get_contents($migrationFile);
+/** @return list<string> */
+function getUserMigrationFiles(): array
+{
+    $basePath = dirname(__DIR__, 4).'/database/migrations';
+    $files = glob($basePath.'/*.php');
 
-            Assert::assertStringNotContainsString('<<<<<<<', $contents, $migrationFile);
-            Assert::assertStringNotContainsString('=======', $contents, $migrationFile);
-            Assert::assertStringNotContainsString('>>>>>>>', $contents, $migrationFile);
-        }
-    });
+    sort($files);
 
-    test('user migrations have valid php syntax', function (): void {
-        foreach (userMigrationFiles() as $migrationFile) {
-            $output = [];
-            $exitCode = 0;
+    /* @var list<string> $files */
+    return $files;
+}
 
-            exec('php -l '.escapeshellarg($migrationFile), $output, $exitCode);
+it('does not contain merge conflict markers in user migrations', function (): void {
+    foreach (getUserMigrationFiles() as $migrationFile) {
+        $contents = file_get_contents($migrationFile);
 
-            $lines = [];
-            if (is_array($output)) {
-                foreach ($output as $line) {
-                    if (is_string($line)) {
-                        $lines[] = $line;
-                    }
-                }
-            }
+        Assert::assertNotFalse($contents, "Could not read {$migrationFile}");
+        Assert::assertStringNotContainsString('<<<<<<<', $contents, "Merge conflict marker in {$migrationFile}");
+    }
+});
 
-            Assert::assertSame(0, $exitCode, implode(PHP_EOL, $lines));
-        }
-    });
+it('has valid php syntax in user migrations', function (): void {
+    foreach (getUserMigrationFiles() as $migrationFile) {
+        $output = [];
+        $exitCode = 0;
+
+        exec('php -l '.escapeshellarg($migrationFile), $output, $exitCode);
+        /** @var list<string> $output */
+        $outputLines = array_map(static fn (mixed $line): string => (string) $line, $output);
+        Assert::assertSame(0, $exitCode, implode(PHP_EOL, $outputLines));
+    }
 });

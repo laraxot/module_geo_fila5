@@ -37,6 +37,14 @@ abstract class XotBaseRelationManager extends FilamentRelationManager
         HasRelationshipModelClass::getModelClass insteadof HasXotTable;
     }
 
+    /**
+     * @param array<string, bool|float|int|string|null> $params
+     */
+    public static function trans(string $key, bool $exceptionIfNotExist = false, array $params = []): string
+    {
+        return static::$resource::trans($key, $exceptionIfNotExist, $params);
+    }
+
     protected static string $relationship = '';
 
     /** @var class-string<XotBaseResource> */

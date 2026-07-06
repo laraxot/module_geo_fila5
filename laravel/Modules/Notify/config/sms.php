@@ -10,36 +10,6 @@ return [
             'token' => null,
             'base_url' => 'https://api.smsfactor.com',
         ],
-        'twilio' => [
-            'account_sid' => null,
-            'auth_token' => null,
-        ],
-        'nexmo' => [
-            'key' => null,
-            'secret' => null,
-        ],
-        'plivo' => [
-            'auth_id' => null,
-            'auth_token' => null,
-        ],
-        'gammu' => [
-            'path' => '/usr/bin/gammu',
-            'config' => '/etc/gammurc',
-        ],
-        'netfun' => [
-            'token' => null,
-            'api_url' => 'https://v2.smsviainternet.it/api/rest/v1/sms-batch.json',
-            'circuit_breaker' => [
-                'threshold' => 5,
-                'timeout' => 60,
-            ],
-        ],
-        'agiletelecom' => [
-            'username' => null,
-            'password' => null,
-            'sender' => 'MyApp',
-            'endpoint' => 'https://secure.agiletelecom.com/services/sms/send',
-        ],
     ],
 
     'debug' => false,

@@ -14,6 +14,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var TestCase $this */
     $this->setupFilamentAdminPanel();
 
     $this->admin = UserFactory::new()->createOne([
@@ -49,26 +50,32 @@ describe('User Resource', function (): void {
     });
 
     test('list users page covered by dedicated test', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Livewire table UserResource richiede panel admin completo — coperto da Feature/Filament/Pages/ListUsersTest');
     });
 
     test('create user page covered by dedicated test', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Livewire create UserResource richiede panel admin completo — coperto da Feature/Filament/Pages/CreateUserTest');
     });
 
     test('edit user page covered by dedicated test', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Livewire edit UserResource richiede panel admin completo + policy');
     });
 
     test('view user page covered by dedicated test', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Livewire view UserResource richiede panel admin completo + policy');
     });
 
     test('bulk actions requires full admin panel', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Bulk actions UserResource richiedono panel admin completo + azioni registrate');
     });
 
     test('security covered by create user test', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('Security Livewire UserResource richiede panel admin completo — validazione coperta da CreateUserTest');
     });
 });

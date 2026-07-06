@@ -58,13 +58,6 @@ abstract class XotBasePanelProvider extends PanelProvider
             // ->tenant($teamClass)
             // ->tenant($teamClass,ownershipRelationship:'users')
             // ->tenant($teamClass)
-<<<<<<< HEAD
-<<<<<<< HEAD
-            ->icons(['navigation'=>'heroicon-o-cube'])
-=======
->>>>>>> laraxot/dev
-=======
->>>>>>> laraxot/dev
             ->id($moduleLow.'::admin')
             ->path($moduleLow.'/admin')
             // Configure Filament discovery for module components (unconditional; dirs are expected to exist)
@@ -108,12 +101,4 @@ abstract class XotBasePanelProvider extends PanelProvider
 
         return $ns.'\\'.$this->module;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> laraxot/dev
-=======
->>>>>>> laraxot/dev
 }

@@ -96,6 +96,7 @@ class SendTelegramPage extends XotBasePage
     {
         try {
             $data = $this->telegramForm->getState();
+            $user = $this->getUser();
 
             $message = is_string($data['text']) ? $data['text'] : '';
 

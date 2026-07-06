@@ -7,17 +7,16 @@ namespace Modules\Notify\Tests\Feature;
 use Modules\Notify\Database\Factories\NotificationTemplateFactory;
 use Modules\Notify\Database\Factories\NotificationTemplateVersionFactory;
 use Modules\Notify\Models\NotificationTemplate;
-use Modules\Notify\Models\NotificationTemplateVersion;
 use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use RuntimeException;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 describe('Notification Template Version Business Logic', function (): void {
     test('_can_create_template_version_with_basic_information', function (): void {
-        /** @var \Modules\Notify\Tests\TestCase $this */
-$template = NotificationTemplateFactory::new()->createOne();
+        /** @var TestCase $this */
+        $template = NotificationTemplateFactory::new()->createOne();
 
         $version = NotificationTemplateVersionFactory::new()->createOne([
             'template_id' => $template->id,
@@ -44,7 +43,7 @@ $template = NotificationTemplateFactory::new()->createOne();
     });
 
     test('_can_manage_template_version_relationships', function (): void {
-$template = NotificationTemplateFactory::new()->createOne();
+        $template = NotificationTemplateFactory::new()->createOne();
         $version = NotificationTemplateVersionFactory::new()->createOne([
             'template_id' => $template->id,
         ]);
@@ -54,7 +53,7 @@ $template = NotificationTemplateFactory::new()->createOne();
     });
 
     test('_can_restore_template_from_version', function (): void {
-$template = NotificationTemplateFactory::new()->createOne([
+        $template = NotificationTemplateFactory::new()->createOne([
             'subject' => 'Versione Originale',
             'body_html' => '<p>Contenuto originale</p>',
         ]);
@@ -86,7 +85,8 @@ $template = NotificationTemplateFactory::new()->createOne([
     });
 
     test('_throws_exception_when_restoring_without_template', function (): void {
-$version = NotificationTemplateVersionFactory::new()->createOne([
+        /** @var TestCase $this */
+        $version = NotificationTemplateVersionFactory::new()->createOne([
             'template_id' => 999999,
         ]);
         $this->expectApplicationException(RuntimeException::class);

@@ -13,7 +13,7 @@ use Modules\Notify\Enums\WhatsAppDriverEnum;
 use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 test('contact type enum exposes expected cases and column definitions', function () {
     Assert::assertCount(6, ContactTypeEnum::cases());
@@ -41,10 +41,10 @@ test('notification type enum maps icon and color', function () {
 });
 
 test('sms driver enum default and presentation methods return strings', function () {
-    config()->set('sms.default', 'twilio');
+    config()->set('sms.default', 'smsfactor');
 
-    Assert::assertCount(7, SmsDriverEnum::cases());
-    Assert::assertSame(SmsDriverEnum::TWILIO, SmsDriverEnum::getDefault());
+    Assert::assertCount(1, SmsDriverEnum::cases());
+    Assert::assertSame(SmsDriverEnum::SMSFACTOR, SmsDriverEnum::getDefault());
     foreach (SmsDriverEnum::cases() as $case) {
         Assert::assertNotEmpty($case->getDescription());
     }

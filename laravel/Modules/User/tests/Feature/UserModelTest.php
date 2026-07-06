@@ -21,6 +21,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var TestCase $this */
     $this->user = UserFactory::new()->createOne([
         'email' => 'user-'.uniqid('', true).'@example.com',
     ]);
@@ -44,11 +45,13 @@ describe('User Model', function (): void {
     });
 
     test('generates uuid for id', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertNotEmpty($user->id);
     });
 
     test('uses user database connection', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertIsString($user->getConnectionName());
     });
@@ -125,16 +128,19 @@ describe('User Model', function (): void {
     });
 
     test('can have teams', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(BelongsToMany::class, $user->membershipTeams());
     });
 
     test('can own teams', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(HasMany::class, $user->ownedTeams());
     });
 
     test('can have current team', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $team = TeamFactory::new()->createOne(['user_id' => $user->id]);
         $user->update(['current_team_id' => $team->id]);
@@ -143,53 +149,63 @@ describe('User Model', function (): void {
     });
 
     test('can have roles', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(BelongsToMany::class, $user->roles());
     });
 
     test('can have permissions', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(BelongsToMany::class, $user->permissions());
     });
 
     test('can have profile', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(HasOne::class, $user->profile());
     });
 
     test('can have devices', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(BelongsToMany::class, $user->devices());
     });
 
     test('can have authentication logs', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(MorphMany::class, $user->authentications());
     });
 
     test('can have oauth clients', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $relation = $user->clients();
         Assert::assertInstanceOf(MorphMany::class, $relation);
     });
 
     test('can have oauth tokens', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $relation = $user->tokens();
         Assert::assertInstanceOf(HasMany::class, $relation);
     });
 
     test('can have notifications', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(MorphMany::class, $user->notifications());
     });
 
     test('can have socialite users', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(HasMany::class, $user->socialiteUsers());
     });
 
     test('can join ateam', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $team = TeamFactory::new()->createOne();
         $user->membershipTeams()->attach($team);
@@ -200,6 +216,7 @@ describe('User Model', function (): void {
     });
 
     test('can leave ateam', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $team = TeamFactory::new()->createOne();
         $user->membershipTeams()->attach($team);
@@ -211,6 +228,7 @@ describe('User Model', function (): void {
     });
 
     test('can own multiple teams', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         TeamFactory::new()->count(3)->create(['user_id' => $user->id]);
 
@@ -220,6 +238,7 @@ describe('User Model', function (): void {
     });
 
     test('can switch current team', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $team1 = TeamFactory::new()->createOne(['user_id' => $user->id]);
         $team2 = TeamFactory::new()->createOne(['user_id' => $user->id]);
@@ -233,6 +252,7 @@ describe('User Model', function (): void {
     });
 
     test('permission skip check', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableExists('model_has_permission')) {
             $this->skipTest('model_has_permission table missing on user connection.');
         }
@@ -246,6 +266,7 @@ describe('User Model', function (): void {
     });
 
     test('can have direct permissions', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableExists('model_has_permission')) {
             $this->skipTest('model_has_permission table missing on user connection.');
         }
@@ -259,6 +280,7 @@ describe('User Model', function (): void {
     });
 
     test('can check multiple permissions', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableExists('model_has_permission')) {
             $this->skipTest('model_has_permission table missing on user connection.');
         }
@@ -274,6 +296,7 @@ describe('User Model', function (): void {
     });
 
     test('can check any permission', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableExists('model_has_permission')) {
             $this->skipTest('model_has_permission table missing on user connection.');
         }
@@ -289,11 +312,13 @@ describe('User Model', function (): void {
     });
 
     test('implements has media interface', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(User::class, $user);
     });
 
     test('can have media attached', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         Assert::assertInstanceOf(MorphMany::class, $user->media());
     });

@@ -54,11 +54,7 @@ public static function getModelLabel(): string
 ```php
 // ❌ NON DICHIARARE QUESTI METODI
 public static function table(Table $table): Table
-<<<<<<< HEAD
 public static function getListTableColumns(): array
-=======
-public static function getTableColumns(): array
->>>>>>> dev
 ```
 
 ## Cosa Dichiarare

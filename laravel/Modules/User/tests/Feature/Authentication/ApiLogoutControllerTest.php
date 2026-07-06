@@ -16,6 +16,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var TestCase $this */
     $this->skipUnlessUserTable('device_user');
     $this->skipUnlessUserTable('devices');
 
@@ -39,6 +40,7 @@ beforeEach(function (): void {
 
 describe('Api Logout Controller', function (): void {
     test('api logout revokes current personal access token and marks device logout time', function (): void {
+        /** @var TestCase $this */
         $user = $this->requireUser();
         $privateKey = storage_path('oauth-private.key');
         $publicKey = storage_path('oauth-public.key');

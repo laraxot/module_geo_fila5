@@ -6,6 +6,7 @@ namespace Modules\Notify\Traits;
 
 use Illuminate\Cache\RateLimiter;
 
+/** @phpstan-ignore trait.unused */
 trait HasNotificationRateLimiting
 {
     /**

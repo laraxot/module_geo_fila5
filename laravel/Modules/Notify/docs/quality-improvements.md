@@ -1,19 +1,5 @@
 # Miglioramenti Qualità Codice - Modulo Notify
 
-## Aggiornamento 2026-07-01
-
-- **PHPStan** (`level: max`): **0 errori** confermati.
-- **PHPMD** (`tools/phpmd.sh Modules/Notify/app`): rimosse tutte le `UnusedLocalVariable` rilevate:
-  - `Actions/SendAppointmentNotificationAction.php` — `$patient` morto (feature stub, modelli SaluteOra non presenti nel progetto).
-  - `Emails/SpatieEmail.php::getAttachmentFromData()` — `$as` duplicava `$asForMethod`, rimosso.
-  - `Filament/Clusters/Test/Pages/SendFirebasePushNotificationPage.php` — `$notificationData` ora effettivamente loggato invece di restare inutilizzato.
-  - `Filament/Clusters/Test/Pages/SendSpatieEmailPage.php` — `$attachments` dead code commentato (funzionalità disattivata via commento preesistente).
-  - `Filament/Clusters/Test/Pages/SendTelegramPage.php` e `SendWhatsAppPage.php` — `$user` non usato rimosso (chiamata `getUser()` superflua).
-  - `Filament/Clusters/Test/Pages/TestSmtpPage.php` — `$smtpConfig`/`$defaultEmail` non usati (i default erano già commentati nello schema); rimosso anche import `XotData` divenuto superfluo.
-  - Non toccati: `StaticAccess` (idiomatico Laravel/Facade), naming snake_case pre-esistente, complessità architetturale — fuori scope per evitare refactoring rischioso.
-- **PHPInsights**: Code 85, Complexity 83.8, Architecture 76.5, Style 79.5 — nessun `--fix` automatico eseguito (nel modulo Lang ha causato regressioni PHPStan, vedi `Modules/Lang/docs/quality-analysis.md`).
-- **Test**: nessun test mancante aggiunto per i file toccati (rimozioni di dead code senza cambio di comportamento pubblico); esecuzione `pest` bloccata in questo sandbox da un problema di infrastruttura pre-esistente (manca `database/database.sqlite`), non imputabile al codice — non eseguito `migrate`/`migrate:fresh` per rispettare la regola "dati sacri".
-
 ## Data
 2025-01-06
 

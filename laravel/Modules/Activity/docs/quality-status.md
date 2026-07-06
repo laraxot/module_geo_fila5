@@ -4,30 +4,6 @@
 
 Modulo completamente compliant con PHPStan livello max (10).
 
-## 🔧 Sessione 2026-07-01 (audit qualità 4 moduli)
-
-- **PHPStan** (`level: max`, root `phpstan.neon`): 0 errori. Nessuna modifica necessaria.
-- **PHPMD** (`tools/phpmd.sh`, ruleset cleancode,codesize,design,naming,unusedcode,controversial): corretti
-  - `ActivityLogger.php`: rimosso parametro inutilizzato `$_key` in `mapWithKeys`.
-  - `ListLogActivities.php`: rinominate variabili corte `$v` → `$value` (4 occorrenze) in closure di `array_map`.
-  - `CanPaginate.php`: rinominata proprietà troppo lunga `$defaultRecordsPerPageSelectOption` → `$defaultPerPage` (aggiornati anche `tests/Fixtures/CanPaginateHarness.php` e `tests/Feature/FilamentTest.php`).
-  - `LogoutListener.php`: estratti metodi privati `buildProperties()` e `resolveSessionDuration()` per ridurre la complessità ciclomatica del metodo `handle()`.
-  - `ActivityLogSchema.php`: estratti metodi privati `resolveConnection()` e `resolveTable()` per ridurre la complessità di `isWritable()`.
-  - `LogModelCreatedAction.php`, `LogModelDeletedAction.php`, `LogModelUpdatedAction.php`: rimosso `if` vuoto (dead code, empty statement) nel costruttore.
-  - Rimasti (accettati, non risolti perché richiederebbero refactoring architetturale rischioso): `CouplingBetweenObjects` su `ActivityLogger` (14) e `ListLogActivities` (18); `StaticAccess` su Facade/Filament (pattern idiomatico Laravel/Filament, non un bug).
-- **PHP Insights**: il comando corretto per questo repo è `./vendor/bin/phpinsights analyse Modules/Activity -n --disable-security-check --composer=./composer.lock` (l'opzione `--dir` non esiste in questa versione; senza `--composer=./composer.lock` fallisce con `composer.lock not found` perché cerca il lock file nella dir del modulo). Punteggio dopo i fix: Code 99%, Complexity 96%, Architecture 88.2%, Style 100% (su un run pulito; i numeri oscillano leggermente in base a righe/commenti quando si estraggono metodi). Rimangono violazioni di stile minori (public properties, `new class` senza parentesi nelle migration `_bak`, mixed type hint nelle factories) non toccate perché a basso rischio/beneficio o su file di backup non attivi (`database/migrations/_bak/`).
-- **Pest**: bloccato a livello di ambiente per l'intera app (non solo Activity): manca il file `database/fixcity_data.sqlite` richiesto da `Modules/Xot/tests/XotBaseTestCase.php:272` (connessione sqlite condivisa, no RefreshDatabase). Errore: `SQLiteDatabaseDoesNotExistException`. Non è stato creato/migrato alcun DB (vietato dalla policy dati sacri) — verificare con l'utente come ripristinare il fixture DB per poter eseguire la suite.
-
-### BUG CRITICO trovato e corretto: `$moduleDir`/`$moduleNs` non erano le proprietà lette dalla classe base
-
-`Modules/Xot/app/Providers/XotBaseServiceProvider.php` e `XotBaseRouteServiceProvider.php` dichiarano e USANO internamente le proprietà `protected string $module_dir` e `protected string $module_ns` (snake_case, non rinominabili senza toccare Xot). Un fix PHPMD precedente (documentato in `phpmd-fixes.md` come "CamelCase Property Names - COMPLETED") aveva rinominato in `ActivityServiceProvider.php` e `RouteServiceProvider.php` queste proprietà in `$moduleDir`/`$moduleNs` (camelCase). Poiché in PHP l'override di proprietà è basato sul nome esatto, questo NON sovrascriveva le proprietà della classe base: creava proprietà "ombra" mai lette, mentre `XotBaseServiceProvider::boot()`/`register()` continuavano a usare i propri `$module_dir`/`$module_ns` ereditati (puntanti a `Modules/Xot/app/Providers`, non a `Modules/Activity/...`).
-
-**Verificato con reflection a runtime**: prima del fix, `(new ActivityServiceProvider($app))->module_dir` risolveva a `Modules/Xot/app/Providers` invece di `Modules/Activity/app/Providers`. Conseguenza pratica: `loadMigrationsFrom($this->module_dir.'/../../database/migrations')` in `XotBaseServiceProvider::boot()` caricava (ridondantemente) le migrations di Xot invece di quelle di Activity, e la resa dei path in `XotBaseRouteServiceProvider` per le route era analogamente compromessa.
-
-**Fix applicato**: ripristinati i nomi snake_case `$module_dir`/`$module_ns` in entrambi i file, con commento esplicito che ne vieta il rename futuro. Verificato via reflection che ora `module_dir` risolve correttamente alla directory del modulo Activity. `phpstan` resta a 0 errori dopo il fix.
-
-**Nota per gli altri moduli**: `IndennitaCondizioniLavoro`, `IndennitaResponsabilita` e `Job` usano già correttamente `$module_dir`/`$module_ns` (snake_case) nei loro Providers — la violazione PHPMD `CamelCasePropertyName` su queste proprietà è stata intenzionalmente NON corretta in nessuno dei 4 moduli per lo stesso motivo (rischio di rompere il caricamento di migrations/route). Si consiglia di correggere `phpmd-fixes.md` per rimuovere il riferimento al fix camelCase ormai riconosciuto come errato.
-
 ## 📊 Static Analysis Results
 
 ### PHPStan Level MAX ✅

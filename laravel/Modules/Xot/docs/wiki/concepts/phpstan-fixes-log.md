@@ -1,3 +1,9 @@
+## [2026-07-06] membershipTeams non appartiene a UserContract
+
+- `membershipTeams()` e un alias concreto di `HasTeams::teams()` su `BaseUser`, non una capability cross-module richiesta da `Modules\Xot\Contracts\UserContract`.
+- Non dichiararlo nel contratto Xot: `BelongsToMany` e invariante su `TDeclaringModel` e l interfaccia non puo esprimere correttamente `` come `$this` sul model concreto; sull interfaccia non e dichiarabile senza violare il bound `Model`.
+- Lasciare il tipo preciso sul trait/model User e sulle fixture che lo testano.
+
 # PHPStan Fixes Log - Story 8-121
 
 > **Story**: 8-121 - PHPStan Full Compliance (Zero Errors, No Ignoring)
@@ -121,50 +127,3 @@ Baseline 205 → 0. Batch Contracts/Datas/Traits (14), Actions (43), Models/Fila
 Pattern: `BelongsTo<Model&ProfileContract, $this>`, `array<string, mixed>`, `EnumTrait::toArray()` → `array<int|string, string>`.
 
 Chat: `docs/chat/story-287-xot-phpstan-session.md` · Issues: module_xot #32, base #313
-
-## Fix #4 (2026-07-01): sweep moduli — TestWidget ponytail
-
-### Contesto
-
-Sweep `php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/<modulo> --level=10` su 16 moduli (esclusi `Incentivi`, `Pdnd`).
-
-### Risultato
-
-| Modulo | Errori |
-|--------|--------|
-| Activity, IndennitaCondizioniLavoro, IndennitaResponsabilita, Job, Lang, Media, Notify, Performance, Progressioni, Ptv, Rating, Sigma, Tenant, UI, User, Xot | 0 |
-
-### Azione unica codice
-
-Rimosso `Modules/Xot/app/Filament/Widgets/TestWidget.php`:
-
-- `property.defaultValue` su `$view` (`view-string`) — vista blade inesistente
-- Duplicato di `Modules/UI/Filament/Widgets/TestWidget` (unico usato in `UI/Filament/Pages/Dashboard.php`)
-- Pattern ponytail: codice morto → delete, non PHPDoc/`@phpstan-ignore`
-
-### Note operative
-
-- `User` richiede `php -d memory_limit=4G` (OOM worker 512M altrimenti)
-- `Helper.php` `params2ContainerItem()`: `preg_match` già senza `is_string()` ridondante su `$matches[1|2]`
-- Sigma `FunctionExtra`: `GgFilterData::normalizeListaTipoCodice()` restituisce `?string` — guard `isset && is_string` ridondante già assente
-
-### Verifica
-
-```bash
-cd laravel && php -d memory_limit=4G ./vendor/bin/phpstan analyse Modules/Xot --level=10
-# [OK] No errors
-```
-
-## Fix #5 (2026-07-01): Laravel 13 — tipi nativi su proprietà ereditate
-
-### EventServiceProvider (Lang, Progressioni, Rating, Sigma, Tenant, Ptv)
-
-Rimosso tipo nativo su `$listen` / `$shouldDiscoverEvents` dove la base Laravel non lo definisce. Vedi [Lang troubleshooting](../../Lang/docs/wiki/troubleshooting/phpstan-fixes.md).
-
-### `BaseScheda::$with` (Ptv)
-
-`protected array $with` → `protected $with` con `@var list<string>` — `Model::$with` non è tipizzato in Laravel 13.
-
-### `EnteMatrRelationship::anag()` (Sigma)
-
-Return `HasOne` (non `HasOne|BelongsTo`) — `hasOneByEnteMatr()` restituisce sempre `HasOne`; union incompatibile con `BaseScheda::anag(): HasOne`.

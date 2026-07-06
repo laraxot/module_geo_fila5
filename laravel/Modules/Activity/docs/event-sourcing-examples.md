@@ -1,4 +1,8 @@
-# Practical Event Sourcing Examples for Healthcare
+---
+module: theme
+topic: event-sourcing-examples
+canonical: ../../../Themes/docs/shared-components/event-sourcing-examples-duplicate.md
+---
 
 ## Table of Contents
 - [Patient Management](#patient-management)

@@ -78,7 +78,7 @@ final class SendNetfunSMSAction implements SmsActionContract
 
         $body = [
             'api_token' => $this->token,
-            'sender' => $smsData->from ?? $this->defaultSender,
+            'sender' => $smsData->from ?: $this->defaultSender,
             'text_template' => $textTemplate,
             'async' => true,
             'utf8_enabled' => true,

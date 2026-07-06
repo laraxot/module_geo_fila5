@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Actions\User\CreateUserAction;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 describe('CreateUserAction', function (): void {
     test('action is accessible via app', function (): void {

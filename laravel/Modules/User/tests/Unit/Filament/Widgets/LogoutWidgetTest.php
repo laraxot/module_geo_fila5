@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Filament\Widgets\LogoutWidget;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 describe('LogoutWidget', function (): void {
     test('logout widget can be instantiated', function (): void {

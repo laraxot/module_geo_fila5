@@ -1,3 +1,10 @@
+- [Critical Errors Documentation](../../SaluteOra/docs/critical-errors-resolved.md)
+
+---
+
+**Autore**: AI Assistant  
+**Data**: Gennaio 2025  
+**Versione**: 1.0  
 ---
 module: theme
 topic: team_bindings_fix

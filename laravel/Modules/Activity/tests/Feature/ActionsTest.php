@@ -15,7 +15,7 @@ use PHPUnit\Framework\Assert;
 
 uses(\Modules\Activity\Tests\TestCase::class);
 
-function createUser(): User
+function createActionsTestUser(): User
 {
     return (new UserFactory)->createOne();
 }
@@ -23,7 +23,7 @@ function createUser(): User
 describe('ActivityLogger', function (): void {
 
     test('logs simple activity', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $activity = $logger->log('test_event', $user);
 
@@ -33,7 +33,7 @@ describe('ActivityLogger', function (): void {
     });
 
     test('logs created event', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $model = (new UserFactory)->createOne();
 
@@ -45,7 +45,7 @@ describe('ActivityLogger', function (): void {
     });
 
     test('logs updated event', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $model = (new UserFactory)->createOne();
 
@@ -57,7 +57,7 @@ describe('ActivityLogger', function (): void {
     });
 
     test('logs deleted event', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $model = (new UserFactory)->createOne();
 
@@ -69,7 +69,7 @@ describe('ActivityLogger', function (): void {
     });
 
     test('logs login event', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $activity = $logger->login($user);
 
@@ -79,7 +79,7 @@ describe('ActivityLogger', function (): void {
     });
 
     test('logs logout event', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $logger = new ActivityLogger;
         $activity = $logger->logout($user);
 
@@ -92,7 +92,7 @@ describe('ActivityLogger', function (): void {
 describe('LogActivityAction', function (): void {
 
     test('creates activity with user', function (): void {
-        $user = createUser();
+        $user = createActionsTestUser();
         $action = new LogActivityAction(
             type: 'test_type',
             user: $user,

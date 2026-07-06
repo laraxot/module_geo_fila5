@@ -27,17 +27,28 @@ class AddressField extends XotBaseField
     {
         parent::setUp();
 
-        // NOTE: relationship data is currently only validated for presence here;
-        // wiring it into the component state is tracked as a follow-up (see saveRelationships()).
         $this->afterStateHydrated(function (AddressField $_component, mixed $record): void {
+            $data = [
+                'country' => null,
+                'street' => null,
+                'city' => null,
+                'state' => null,
+                'zip' => null,
+            ];
+
             if (! $record instanceof Model) {
                 return;
             }
 
             $relationship = $this->getRelationship();
             if ($relationship && $record->relationLoaded($relationship)) {
-                $record->getRelationValue($relationship);
+                $address = $record->getRelationValue($relationship);
+                if (null !== $address && is_object($address) && method_exists($address, 'toArray')) {
+                    $data = $address->toArray();
+                }
             }
+
+            // }
         });
 
         $this->dehydrated(false);

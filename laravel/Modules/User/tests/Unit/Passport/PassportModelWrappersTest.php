@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\Passport;
 use Modules\User\Models\OauthAuthCode;
@@ -13,6 +12,8 @@ use Modules\User\Models\OauthToken;
 use PHPUnit\Framework\Assert;
 
 use function Safe\glob;
+
+uses(Modules\User\Tests\TestCase::class);
 
 test('every eloquent passport model has a local oauth wrapper', function (): void {
     /** @var list<string> $files */

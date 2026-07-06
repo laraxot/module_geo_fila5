@@ -1,3 +1,4 @@
+- [Filament Resource Guidelines](../../../Modules/Xot/docs/rules/filament-resource-guidelines.md)
 ---
 module: theme
 topic: registration_widget

@@ -3,19 +3,19 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Actions\NotifyTheme\Attachment;
-use Modules\Notify\Tests\TestCase;
-use function Safe\file_get_contents;
+
 use Modules\Notify\Actions\NotifyTheme\Attachment\Pdf;
 use Modules\Notify\Datas\AttachmentData;
+use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\class_uses;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 describe('NotifyTheme\Attachment\Pdf', function () {
-        it('can be instantiated', function () {
+    it('can be instantiated', function () {
         Assert::assertTrue(class_exists(Pdf::class));
     });
 

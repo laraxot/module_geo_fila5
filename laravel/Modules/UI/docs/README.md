@@ -12,11 +12,6 @@ updated: 2026-06-05
 
 Il modulo **UI** fornisce componenti Blade, widget Filament e asset condivisi per tutti i moduli e temi.
 
-**Quick Start:**
-- **[Architecture Patterns](./architecture-patterns.md)** — Design system, component hierarchy, theming
-- **[Disabled Components](./disabled-components.md)** — Deprecation info & migration paths
-- **[Design Comuni Implementation](./DESIGN_COMUNI_IMPLEMENTATION.md)** — Integration guide
-
 ## Struttura Componenti
 
 ```
@@ -125,22 +120,3 @@ MIT
 - [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
 - [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
 - [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
----
-
-## ✅ PHPStan Status — Verifica 2026-07-01
-
-| Data | Livello | Errori |
-|------|---------|--------|
-| 2026-07-01 | max | **0** |
-
-```bash
-./vendor/bin/phpstan analyze Modules/UI --level=max --memory-limit=512M
-# [OK] No errors
-```
-
-Modulo conforme alle regole Laraxot:
-- Classi Filament estendono XotBase (mai direttamente Filament)
-- Nessun label/placeholder/tooltip hardcoded
-- Nessun BadgeColumn (usa TextColumn::make()->badge())
-- Actions usano QueueableAction pattern
-- Nessun Service tradizionale

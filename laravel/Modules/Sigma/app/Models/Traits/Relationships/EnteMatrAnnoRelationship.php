@@ -22,12 +22,15 @@ trait EnteMatrAnnoRelationship
      */
     public function qua00fYear(): HasMany
     {
+        /** @var string $sql */
         $sql = '(
 		('.$this->anno.' between year(qua2kd) and year(qua2ka) )or
 		('.$this->anno.' >= year(qua2kd) and qua2ka=0)
 		)';
 
+        /** @var int $inizioanno */
         $inizioanno = ($this->anno * 10000) + 101;
+        /** @var int $fineanno */
         $fineanno = ($this->anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
@@ -64,11 +67,14 @@ trait EnteMatrAnnoRelationship
      */
     public function Sto00fYear(): HasMany
     {
+        /** @var string $sql */
         $sql = '(
 		('.$this->anno.' between year(st2kas) and year(st2kdi) )or
 		('.$this->anno.' >= year(st2kas) and st2kdi=0)
 	)';
+        /** @var int $inizioanno */
         $inizioanno = ($this->anno * 10000) + 101;
+        /** @var int $fineanno */
         $fineanno = ($this->anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
@@ -105,6 +111,6 @@ trait EnteMatrAnnoRelationship
         return $this->hasMany(Asz00k1::class, 'matr', $this->matrField())
             ->where('ente', $this->{$this->enteField()})
             ->whereRaw('aszann=""')
-            ->whereRaw($this->anno.' between year(asz2kd) and year(asz2ka) ');
+            ->whereRaw((string) $this->anno.' between year(asz2kd) and year(asz2ka) ');
     }
 }

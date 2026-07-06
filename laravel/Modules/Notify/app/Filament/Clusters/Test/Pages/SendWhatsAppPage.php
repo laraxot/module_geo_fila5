@@ -106,6 +106,7 @@ class SendWhatsAppPage extends XotBasePage
     {
         try {
             $data = $this->whatsappForm->getState();
+            $user = $this->getUser();
 
             $message = is_string($data['message']) ? $data['message'] : '';
 

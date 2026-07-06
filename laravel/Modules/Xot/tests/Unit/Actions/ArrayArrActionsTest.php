@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Filament\Support\RawJs;
 use Modules\Xot\Actions\Arr\DiffAssocRecursiveAction as ArrDiffAssocRecursiveAction;
 use Modules\Xot\Actions\Arr\RangeIntersectAction as ArrRangeIntersectAction;
@@ -14,10 +13,13 @@ use Modules\Xot\Actions\Array\DiffAssocRecursiveAction as ArrayDiffAssocRecursiv
 use Modules\Xot\Actions\Array\RangeIntersectAction as ArrayRangeIntersectAction;
 use Modules\Xot\Actions\Array\SaveJsonArrayAction as ArraySaveJsonArrayAction;
 use Modules\Xot\Actions\Array\SavePhpArrayAction as ArraySavePhpArrayAction;
+use Modules\Xot\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file_get_contents;
 use function Safe\mkdir;
+
+uses(TestCase::class);
 
 it('normalizes nested numeric strings in diff fixType for Arr namespace', function (): void {
     $input = ['items' => [

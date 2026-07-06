@@ -397,3 +397,5 @@ discussions:
 [2026-06-18] [RULE] PHPStan single config — solo `laravel/phpstan.neon`; vietato creare wrapper `.neon` (`phpstan-gate.neon` rimosso). Regola: `docs/wiki/rules/phpstan-single-neon-config.md`, memory Xot, TRIGGER_MAP, gate script aggiornato.
 
 [2026-06-18] [GATE OK] User PHPStan — primo `./vendor/bin/phpstan analyse Modules/User` OOM 512M; batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` OK; run finale esatto `Modules/User` OK 635/635. Nota locale: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.
+
+[2026-07-06] [RULE] Infrastructural→Dominio dipendenza vietata — UI non deve importare da GEO (o altro modulo dominio). InteractiveMap.php (UI) rinominato in .old perché apparteneva a GEO. Regola aggiunta a `laravel/Modules/UI/docs/dependencies.md`.

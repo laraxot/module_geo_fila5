@@ -18,7 +18,7 @@ uses(\Modules\Activity\Tests\TestCase::class);
 /**
  * @param  array<string, mixed>  $attributes
  */
-function createUser(array $attributes = []): User
+function createActivityLifecycleUser(array $attributes = []): User
 {
     return (new UserFactory)->createOne($attributes);
 }
@@ -26,7 +26,7 @@ function createUser(array $attributes = []): User
 test('Activity Lifecycle Actions', function () {
 
     test('can log model creation via LogModelCreatedAction', function () {
-        $user = createUser(['name' => 'New User']);
+        $user = createActivityLifecycleUser(['name' => 'New User']);
         $action = new LogModelCreatedAction(model: $user);
         $activity = $action->execute();
 
@@ -37,7 +37,7 @@ test('Activity Lifecycle Actions', function () {
     });
 
     test('can log model update via LogModelUpdatedAction', function () {
-        $user = createUser(['name' => 'Old Name']);
+        $user = createActivityLifecycleUser(['name' => 'Old Name']);
         $user->name = 'New Name';
         // Note: in memory changes only for this test, as LogModelUpdatedAction uses getChanges()
         $user->syncChanges();
@@ -51,7 +51,7 @@ test('Activity Lifecycle Actions', function () {
     });
 
     test('can log model deletion via LogModelDeletedAction', function () {
-        $user = createUser();
+        $user = createActivityLifecycleUser();
         $action = new LogModelDeletedAction(model: $user);
         $activity = $action->execute();
 
@@ -61,7 +61,7 @@ test('Activity Lifecycle Actions', function () {
     });
 
     test('can log user logout via LogUserLogoutAction', function () {
-        $user = createUser(['name' => 'Logged Out User']);
+        $user = createActivityLifecycleUser(['name' => 'Logged Out User']);
         $action = new LogUserLogoutAction(user: $user);
         $activity = $action->execute();
 

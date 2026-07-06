@@ -105,6 +105,8 @@ Thumbs.db
 *.old2
 *.backup
 *.backup.*
+*.backup-*
+*.backup_*
 *.bak
 *.bakcup
 *.new
@@ -180,3 +182,10 @@ activity_coverage.xml
 *.orig
 *.rej
 *~head
+tests/coverage/
+tests/coverage.xml/
+activity_coverage.xml
+*~head
+agentdb.rvf
+build/
+docs/legacy

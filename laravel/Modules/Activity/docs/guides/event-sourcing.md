@@ -1,4 +1,8 @@
-# event sourcing comprehensive guide
+---
+module: theme
+topic: event-sourcing
+canonical: ../../../../Themes/docs/shared-components/event-sourcing.md
+---
 
 ## introduction to event sourcing
 

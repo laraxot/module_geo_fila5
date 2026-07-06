@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Modules\Notify\Actions\SendNotificationAction;
+use Modules\Notify\Database\Factories\NotificationTemplateFactory;
 use Modules\Notify\Models\NotificationTemplate;
 use Modules\Notify\Notifications\GenericNotification;
 use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 /**
  * @param  array<string, mixed>  $attributes
@@ -50,8 +51,8 @@ function makeDummySendNotificationRecipient(array $attributes = []): Model
 }
 
 beforeEach(function (): void {
-    /** @var \Modules\Notify\Tests\TestCase $this */
-        $schema = Schema::connection('notify');
+    /** @var TestCase $this */
+    $schema = Schema::connection('notify');
 
     if (! $schema->hasTable('notification_templates')) {
         $schema->create('notification_templates', function (Blueprint $table): void {
@@ -79,7 +80,7 @@ beforeEach(function (): void {
 });
 
 test('send notification action throws when template is missing', function (): void {
-        /** @var \Modules\Notify\Tests\TestCase $this */
+    /** @var TestCase $this */
     $recipient = makeDummySendNotificationRecipient(['email' => 'user@example.test']);
 
     \assertNotifyThrows(
@@ -89,7 +90,7 @@ test('send notification action throws when template is missing', function (): vo
 });
 
 test('send notification action returns false when template should not send', function (): void {
-    NotificationTemplate::query()->create([
+    NotificationTemplateFactory::new()->createOne([
         'id' => (string) Str::uuid(),
         'name' => 'Welcome',
         'code' => 'welcome-template',
@@ -111,7 +112,7 @@ test('send notification action returns false when template should not send', fun
 });
 
 test('send notification action dispatches database notification from template channels', function (): void {
-    NotificationTemplate::query()->create([
+    NotificationTemplateFactory::new()->createOne([
         'id' => (string) Str::uuid(),
         'name' => 'Welcome',
         'code' => 'welcome-template',

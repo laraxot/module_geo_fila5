@@ -69,7 +69,7 @@ final class SendPlivoSMSAction implements SmsActionContract
             $to = '+39'.$to;
         }
 
-        $from = $smsData->from ?? $this->defaultSender;
+        $from = $smsData->from ?: $this->defaultSender;
 
         // Plivo richiede l'autenticazione Basic
         $client = new Client([

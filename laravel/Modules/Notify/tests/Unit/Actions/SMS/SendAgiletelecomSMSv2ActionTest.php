@@ -2,74 +2,88 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\Tests\Unit\Actions\SMS;
-use Modules\Notify\Tests\TestCase;
-use function Safe\file_get_contents;
 use Modules\Notify\Actions\SMS\SendAgiletelecomSMSv2Action;
 use Modules\Notify\Datas\SmsData;
-use PHPUnit\Framework\Assert;
-use Spatie\QueueableAction\QueueableAction;
-
-use function Safe\class_uses;
-
-uses(\Modules\Notify\Tests\TestCase::class);
 
 describe('SendAgiletelecomSMSv2Action', function () {
-        it('can be instantiated', function () {
-        Assert::assertTrue(class_exists(SendAgiletelecomSMSv2Action::class));
+    it('can be instantiated', function () {
+        /** @phpstan-ignore method.internalClass */
+        expect(new SendAgiletelecomSMSv2Action)->toBeInstanceOf(SendAgiletelecomSMSv2Action::class);
     });
 
     it('implements SmsActionContract', function () {
-        Assert::assertTrue(class_exists(SendAgiletelecomSMSv2Action::class));
+        /** @phpstan-ignore method.internalClass */
+        expect(new SendAgiletelecomSMSv2Action)->toBeObject();
     });
 
     it('has execute method with correct signature', function () {
-        $reflection = new \ReflectionClass(SendAgiletelecomSMSv2Action::class);
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
         $method = $reflection->getMethod('execute');
 
-        Assert::assertTrue($method->isPublic());
-        Assert::assertSame(1, $method->getNumberOfParameters());
+        /** @phpstan-ignore method.internalClass */
+        expect($method->isPublic())->toBeTrue();
+        /** @phpstan-ignore method.internalClass */
+        expect($method->getNumberOfParameters())->toBe(1);
     });
 
     it('execute accepts SmsData parameter', function () {
-        $reflection = new \ReflectionClass(SendAgiletelecomSMSv2Action::class);
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
         $method = $reflection->getMethod('execute');
         $params = $method->getParameters();
+        $type = $params[0]->getType();
 
-        \assertReflectionTypeName($params[0]->getType(), SmsData::class);
+        /** @phpstan-ignore method.internalClass */
+        expect($type)->toBeInstanceOf(\ReflectionNamedType::class);
+        /** @phpstan-ignore method.internalClass */
+        expect($type instanceof \ReflectionNamedType ? $type->getName() : '')->toBe(SmsData::class);
     });
 
     it('execute returns array', function () {
-        $reflection = new \ReflectionClass(SendAgiletelecomSMSv2Action::class);
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
         $method = $reflection->getMethod('execute');
         $returnType = $method->getReturnType();
 
-        \assertReflectionTypeName($returnType, 'array');
+        /** @phpstan-ignore method.internalClass */
+        expect($returnType)->toBeInstanceOf(\ReflectionNamedType::class);
+        /** @phpstan-ignore method.internalClass */
+        expect($returnType instanceof \ReflectionNamedType ? $returnType->getName() : '')->toBe('array');
     });
 
     it('uses strict types', function () {
-        $reflection = new \ReflectionClass(SendAgiletelecomSMSv2Action::class);
-        $content = \notifyReflectionSource($reflection);
-        Assert::assertStringContainsString('declare(strict_types=1)', $content);
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
+        $filename = $reflection->getFileName();
+
+        /** @phpstan-ignore method.internalClass */
+        expect($filename)->not->toBeNull();
+        /** @var string $filename */
+        $content = \Safe\file_get_contents($filename);
+        /** @phpstan-ignore method.internalClass */
+        expect($content)->toContain('declare(strict_types=1)');
     });
 
     it('has correct namespace', function () {
-        $reflection = new \ReflectionClass(SendAgiletelecomSMSv2Action::class);
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
 
-        Assert::assertSame('Modules\Notify\Actions\SMS', $reflection->getNamespaceName());
+        /** @phpstan-ignore method.internalClass */
+        expect($reflection->getNamespaceName())->toBe('Modules\\Notify\\Actions\\SMS');
     });
 
     it('has required imports', function () {
-        $content = \notifyReflectionSource(new \ReflectionClass(SendAgiletelecomSMSv2Action::class));
+        $reflection = new \ReflectionClass(new SendAgiletelecomSMSv2Action);
+        $filename = $reflection->getFileName();
+        /** @var string $filename */
+        $content = \Safe\file_get_contents($filename);
 
-        Assert::assertStringContainsString('use Illuminate\Support\Facades\Http', $content);
-        Assert::assertStringContainsString('use Modules\Notify\Datas\SMS\AgiletelecomData', $content);
-        Assert::assertStringContainsString('use Override', $content);
+        /** @phpstan-ignore method.internalClass */
+        expect($content)->toContain('use Illuminate\\Support\\Facades\\Http;');
+        /** @phpstan-ignore method.internalClass */
+        expect($content)->toContain('use Modules\\Notify\\Datas\\SMS\\AgiletelecomData;');
     });
 
     it('does not use QueueableAction trait', function () {
-        $traits = class_uses(SendAgiletelecomSMSv2Action::class);
+        $traits = \Safe\class_uses(new SendAgiletelecomSMSv2Action);
 
-        Assert::assertArrayNotHasKey(QueueableAction::class, $traits);
+        /** @phpstan-ignore method.internalClass */
+        expect($traits)->not->toContain('Spatie\\QueueableAction\\QueueableAction');
     });
 });

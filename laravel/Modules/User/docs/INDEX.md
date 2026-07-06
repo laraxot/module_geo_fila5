@@ -1,74 +1,79 @@
----
-title: "User Module Documentation Index"
-module: "User"
-type: index
-created: 2026-06-11
-updated: 2026-06-11
----
-
-# 📚 User Module - Documentation Index
-
-**Quick Navigation**: [Overview](#overview) | [Testing](#testing) | [Models](#models) | [Resources](#resources)
-
----
+# User Module Documentation
 
 ## Overview
+This document serves as the central index for the User module, providing guidance on managing user-related functionality within a Laravel application. The User module handles authentication, authorization, profile management, and related features in a modular and reusable way.
 
-- **Status**: Stable
-- **Test Coverage**: Excellent (119 tests: 79 unit + 40 feature)
-- **Repository**: `git@github.com:laraxot/module_user_fila5.git`
-- **Last Updated**: 2026-06-11
-- **Purpose**: User management, authentication, and profile management
+## Key Principles
+1. **Modularity**: The User module is designed to be reusable across different projects, maintaining generic functionality.
+2. **Extensibility**: Allows for customization and extension to meet specific project needs without altering core code.
+3. **Security**: Implements best practices for authentication, session management, and data protection.
 
-**Module Stats**:
-- Models: 104 (largest model count)
-- Test Files: 119 (79 unit + 40 feature)
-- Documentation Files: 1228
+## Core Features
+- **Authentication**: Handles user login, logout, and session management.
+- **Authorization**: Manages roles and permissions for access control.
+- **Profile Management**: Provides functionality for user profile creation and updates.
+- **Integration**: Works seamlessly with other modules like Notify for notifications.
 
----
+## Implementation Guidelines
 
-## Testing
+### 1. Module Structure
+- The User module follows a standard structure with directories for models, controllers, services, and views to ensure clarity and maintainability.
 
-### Coverage Status
-**Current**: Excellent (119 tests)  
-- Unit Tests: 79 files
-- Feature Tests: 40 files  
-**Target**: Maintain 80%+
+### 2. BaseUser Model
+- Use the `BaseUser` model as the foundation for user-related data and logic, extending it as needed for specific types.
+  ```php
+  namespace Modules\User\Models;
 
-### Running Tests
-```bash
-cd laravel
-./vendor/bin/pest Modules/User/tests/ --coverage
-```
+  class User extends BaseUser
+  {
+      // Custom user logic
+  }
+  ```
 
----
+### 3. Authentication
+- Implement authentication using Laravel's built-in systems or custom solutions integrated with Filament for admin interfaces.
 
-## Models (104 Total)
+### 4. Routing
+- Define user-related routes in a dedicated `routes` directory, ensuring they are prefixed with the appropriate locale.
 
-User module provides extensive model definitions for:
-- User profiles and accounts
-- Authentication and authorization
-- Role and permission management
-- User preferences and settings
+## Common Issues and Fixes
+- **Authentication Failures**: Ensure correct configuration of auth providers and middleware for user routes.
+- **Permission Conflicts**: Verify role and permission assignments to avoid access issues.
+- **Session Expiry**: Implement proper session management to handle user logout and timeouts securely.
+- **Git "path does not have our version"**: Durante rebase, file "deleted by us" (OauthAccessToken pages). Vedi [git-path-does-not-have-our-version-fix](./git-path-does-not-have-our-version-fix.md).
 
----
+## Documentation and Updates
+- Document any custom implementations or deviations from standard User module practices in the relevant documentation folder.
+- Update this index if new features or significant changes are introduced to the User module.
 
-## Quick Commands
+## Links to Related Documentation
+- [Composer Dependencies](./composer-dependencies.md) - Dipendenze OAuth/login in Modules/User/composer.json (mai nel root)
+- [Auth Social Login Translations](./auth-social-login-translations.md) - Traduzioni e UI pulsanti social (Google, GitHub, Microsoft)
+- [BaseUser Model](./BaseUser.md)
+- [Authentication Pages Implementation](./AUTH_PAGES_IMPLEMENTATION.md)
+- [Profile Management](./PROFILE_MANAGEMENT.md)
+- [Routing Best Practices](./ROUTING_BEST_PRACTICES.md)
+- [Session Management](./SESSION_MANAGEMENT.md)
 
-```bash
-./vendor/bin/pest Modules/User/tests/ --coverage
-./vendor/bin/phpstan analyse Modules/User/
-./vendor/bin/pint Modules/User/
-```
+## Sottocartelle
 
----
+### Models
+- [Index](./Models/INDEX.md) - Indice della documentazione sui modelli
+- [Documentazione Traits](./traits/INDEX.md) - Documentazione sui trait utilizzati
 
-## Resources
+### Folio e Blade
+- [Documentazione Blade](./blade/INDEX.md) - Documentazione sui template Blade
+- [Componenti](./components/INDEX.md) - Documentazione sui componenti
 
-- [GitHub Repository](https://github.com/laraxot/module_user_fila5)
-- [Issues & Discussions](https://github.com/laraxot/module_user_fila5/issues)
+## Roadmap e Sviluppo Futuro
+- [Roadmap](./roadmap.md) - Piano di sviluppo futuro del modulo User
 
----
+## Note sulla Manutenzione
+Questa documentazione viene aggiornata regolarmente. Prima di apportare modifiche al codice, consultare la documentazione pertinente e aggiornare i documenti correlati.
 
-**Last Updated**: 2026-06-11  
-*Generated by Module Documentation Improver Agent*
+Ultimo aggiornamento: 14 Maggio 2025
+Ultimo aggiornamento: 14 Maggio 2025
+
+# Indice Documentazione User
+
+- [filament-best-practices.mdc](./filament-best-practices.mdc) — **Regola fondamentale:** chi estende XotBaseResource NON deve dichiarare $navigationGroup, $navigationLabel, né il metodo statico table(Table $table): Table. Seguire sempre questa regola per evitare errori di override e garantire coerenza tra i moduli.

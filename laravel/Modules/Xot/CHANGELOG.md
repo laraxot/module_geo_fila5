@@ -39,13 +39,13 @@ All notable changes to `:package_name` will be documented in this file.
 #### Added
 - **File Locking Pattern** - Nuova regola fondamentale per modifiche sicure
 - **Documentazione:**
-  - `merge-conflict-resolution.md` - Report tecnico
+  - `merge-conflict-resolution-2025-11-04.md` - Report tecnico
   - `lessons-learned-2025-11-04-merge-conflicts.md` - Processo filosofico
   - `file-locking-pattern.md` - Pattern documentation
   - `documentation-consolidation-strategy.md` - Piano riduzione docs
   - `index.md` - Indice navigazione 2,560 docs
   - `essential-reading.md` - Top 10 docs da leggere
-  - `project-best-practices.md` - Best practices aggiornate
+  - `project-best-practices-2025.md` - Best practices aggiornate
 
 #### Removed
 - Centinaia di linee duplicate da merge conflicts
@@ -126,10 +126,9 @@ All notable changes to `:package_name` will be documented in this file.
 
 ### Documenti Correlati
 - [README.md](./docs/README.md) - Entry point
-- [README.md](./docs/README.md) - Entry point
 - [File Locking Pattern](./docs/file-locking-pattern.md) - Nuova regola
 - [Architecture Rules](./docs/laraxot-architecture-rules.md) - Regole base
-- [Merge Conflict Resolution](./docs/merge-conflict-resolution.md) - Latest fix
+- [Merge Conflict Resolution](./docs/merge-conflict-resolution-2025-11-04.md) - Latest fix
 
 ### Repository
 - **Branch:** develop

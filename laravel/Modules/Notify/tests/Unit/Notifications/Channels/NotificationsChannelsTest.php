@@ -6,17 +6,19 @@ namespace Modules\Notify\Tests\Unit\Notifications\Channels;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
-use Modules\Notify\Actions\NetfunSendAction;
 use Modules\Notify\Contracts\CanThemeNotificationContract;
+use Modules\Notify\Contracts\SMS\SmsActionContract;
 use Modules\Notify\Datas\SmsData;
-use Modules\Notify\Tests\Fixtures\NetfunChannelNotifiableDummy;
+use Modules\Notify\Factories\SmsActionFactory;
 use Modules\Notify\Notifications\Channels\NetfunChannel;
 use Modules\Notify\Notifications\Channels\TelegramChannel;
 use Modules\Notify\Notifications\ThemeNotification;
+use Modules\Notify\Tests\Fixtures\NetfunChannelNotifiableDummy;
 use Modules\Notify\Tests\TestCase;
+use Mockery;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 function makeThemeNotificationDummy(): ThemeNotification
 {
@@ -57,14 +59,21 @@ function makeTelegramNotifiableDummy(): object
 }
 
 test('netfun notifications channel sends and increases counter', function () {
-    app()->instance(NetfunSendAction::class, new class extends NetfunSendAction
-    {
-        public function __construct() {}
+    config()->set('sms.default', 'smsfactor');
+    config()->set('sms.drivers.smsfactor.token', 'token-123');
 
-        /** @return array{status_code: int, status_txt: string} */
-        public function execute(SmsData $smsData): array
+    app()->instance(SmsActionFactory::class, new class extends SmsActionFactory
+    {
+        public function create(?string $driver = null): SmsActionContract
         {
-            return ['status_code' => 200, 'status_txt' => 'ok'];
+            return new class implements SmsActionContract
+            {
+                /** @return array{status_code: int, status_txt: string} */
+                public function execute(SmsData $smsData): array
+                {
+                    return ['status_code' => 200, 'status_txt' => 'ok'];
+                }
+            };
         }
     });
 

@@ -27,7 +27,7 @@ class IconPicker extends TextInput
         $packsKeys = $packs;
         $packsCombined = array_combine($packsKeys, $packsKeys);
         /** @var array<string, string> $packs */
-        $packs = $packsCombined ? $packsCombined : [];
+        $packs = $packsCombined ?: [];
 
         $this->suffixAction(
             Action::make('icon')

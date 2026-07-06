@@ -196,3 +196,5 @@ config/config
 
 ruvector.db
 .ai*
+_bmad
+agentdb.rvf

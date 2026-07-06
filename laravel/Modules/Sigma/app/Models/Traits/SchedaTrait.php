@@ -272,8 +272,8 @@ trait SchedaTrait
             return null;
         }
 
-        $id = $this->valutatore?->id ?? '';
-        $nome_diri = $this->valutatore?->nome_diri ?? '';
+        $id = $this->valutatore->id ?? '';
+        $nome_diri = $this->valutatore->nome_diri ?? '';
 
         if ($id === '' || $nome_diri === '') {
             return null;
@@ -561,7 +561,9 @@ trait SchedaTrait
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
 
-        $value = $this->anag?->hhAssenzaInSedeTot($parz);
+        $result = $this->anag?->hhAssenzaInSedeTot($parz);
+        /** @var int|null $value */
+        $value = $result;
 
         // ✅ Check: record must exist before save()
         if ($this->getKey() == null) {
@@ -602,7 +604,9 @@ trait SchedaTrait
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
-        $value = $this->anag?->hhAssenzaFuoriSedeTot($parz);
+        $result = $this->anag?->hhAssenzaFuoriSedeTot($parz);
+        /** @var int|null $value */
+        $value = $result;
 
         if (\in_array('hh_asz_fuori_sede', $this->getFillable(), false)) {
             // ✅ Check: record must exist before save()
@@ -653,7 +657,10 @@ trait SchedaTrait
         $data = GgFilterData::from($parz);
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag?->ggAssenzaInSedeTot($data);
+        $result = $this->anag?->ggAssenzaInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     /**
@@ -720,7 +727,10 @@ trait SchedaTrait
         ];
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag?->ggAssenzaFuoriSedeTot($parz);
+        $result = $this->anag?->ggAssenzaFuoriSedeTot($parz);
+
+        /** @var int|null */
+        return $result;
     }
 
     /**
@@ -731,7 +741,10 @@ trait SchedaTrait
      */
     public function ggAssenzaFuoriSedeTot(array $params): int
     {
-        return $this->anag?->ggAssenzaFuoriSedeTot($params) ?? 0;
+        /** @var int|null $result */
+        $result = $this->anag?->ggAssenzaFuoriSedeTot($params);
+
+        return $result ?? 0;
     }
 
     /**
@@ -742,7 +755,10 @@ trait SchedaTrait
      */
     public function hhAssenzaFuoriSedeTot(array $params): int
     {
-        return $this->anag?->hhAssenzaFuoriSedeTot($params) ?? 0;
+        /** @var int|null $result */
+        $result = $this->anag?->hhAssenzaFuoriSedeTot($params);
+
+        return $result ?? 0;
     }
 
     /**
@@ -754,12 +770,18 @@ trait SchedaTrait
     public function ggInSedeTot($data): ?int
     {
         if ($data instanceof GgFilterData) {
-            return $this->anag?->ggInSedeTot($data);
+            /** @var int|null $result */
+            $result = $this->anag?->ggInSedeTot($data);
+
+            return $result;
         }
 
         $filterData = GgFilterData::from($data);
 
-        return $this->anag?->ggInSedeTot($filterData);
+        /** @var int|null $result */
+        $result = $this->anag?->ggInSedeTot($filterData);
+
+        return $result;
     }
 
     /**
@@ -770,7 +792,10 @@ trait SchedaTrait
      */
     public function ggFuoriSedeTot(array $params): ?int
     {
-        return $this->anag?->ggFuoriSedeTot($params);
+        /** @var int|null $result */
+        $result = $this->anag?->ggFuoriSedeTot($params);
+
+        return $result;
     }
 
     /**
@@ -782,12 +807,18 @@ trait SchedaTrait
     public function ggAssenzaInSedeTot($data): int
     {
         if ($data instanceof GgFilterData) {
-            return $this->anag?->ggAssenzaInSedeTot($data) ?? 0;
+            /** @var int|null $result */
+            $result = $this->anag?->ggAssenzaInSedeTot($data);
+
+            return $result ?? 0;
         }
 
         $filterData = GgFilterData::from($data);
 
-        return $this->anag?->ggAssenzaInSedeTot($filterData) ?? 0;
+        /** @var int|null $result */
+        $result = $this->anag?->ggAssenzaInSedeTot($filterData);
+
+        return $result ?? 0;
     }
 
     /**
@@ -798,7 +829,10 @@ trait SchedaTrait
      */
     public function hhAssenzaInSedeTot(array $params): int
     {
-        return $this->anag?->hhAssenzaInSedeTot($params) ?? 0;
+        /** @var int|null $result */
+        $result = $this->anag?->hhAssenzaInSedeTot($params);
+
+        return $result ?? 0;
     }
 
     /**
@@ -921,7 +955,10 @@ trait SchedaTrait
         $data = GgFilterData::from($parz);
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag?->ggAssenzaInSedeTot($data);
+        $result = $this->anag?->ggAssenzaInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     /**
@@ -985,7 +1022,9 @@ trait SchedaTrait
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
         $data = GgFilterData::from($parz);
-        $value = $this->anag?->ggAssenzaInSedeTot($data);
+        $result = $this->anag?->ggAssenzaInSedeTot($data);
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }
@@ -1052,10 +1091,12 @@ trait SchedaTrait
             // ---
         }
 
-        return $this->qua00f
+        /** @var int|null $propro */
+        $propro = $this->qua00f
             ->where('qua2kd', $this->qua2kd)
             ->first()
             ?->propro;
+        return $propro;
     }
 
     protected function getProproAttribute(?int $value): ?int
@@ -1233,7 +1274,10 @@ trait SchedaTrait
         ];
         $data = GgFilterData::from($parz);
 
-        return $this->anag?->ggInSedeTot($data);
+        $result = $this->anag?->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     /**
@@ -1343,7 +1387,10 @@ trait SchedaTrait
 
         // $parz['value'] = $value;
         // dddx($parz);
-        return $this->anag?->ggInSedeTot($data);
+        $result = $this->anag?->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getGgCatecoInSedeAttribute(?int $value): ?int
@@ -1407,7 +1454,10 @@ trait SchedaTrait
         ];
         $data = GgFilterData::from($parz);
 
-        return $this->anag?->ggInSedeTot($data);
+        $result = $this->anag?->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getGgCatecoPosfunInSedeAttribute(?int $value): ?int
@@ -1500,11 +1550,14 @@ trait SchedaTrait
             return null;
         }
 
-        return $this->anag?->ggFuoriSedeTot([
+        $result = $this->anag?->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro_sup ?? '',
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
+
+        /** @var int|null */
+        return $result;
     }
 
     /**

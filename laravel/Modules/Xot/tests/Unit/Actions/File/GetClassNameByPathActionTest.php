@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\File\GetClassNameByPathAction;
 use PHPUnit\Framework\Assert;
 
 use function Safe\tempnam;
+
+uses(Modules\Xot\Tests\TestCase::class);
 
 it('gets class name from path correctly', function (): void {
     $tempFile = tempnam(sys_get_temp_dir(), 'test_class_');

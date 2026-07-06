@@ -1,3 +1,6 @@
+- [Correzione XotBaseResource: Modules/Xot/docs/fileupload-components.md](../../Xot/docs/fileupload-components.md)
+- [Registration Widget base: registration-widget.md](./registration-widget.md)
+
 ---
 module: theme
 topic: registration_widget_fileupload_fix

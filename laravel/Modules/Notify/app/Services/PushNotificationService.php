@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Modules\Notify\Jobs\SendScheduledPushNotification;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
@@ -24,6 +25,8 @@ use function Safe\json_encode;
  */
 class PushNotificationService
 {
+    use QueueableAction;
+
     /** @var array<string, array<string, mixed>> */
     private array $config;
 

@@ -21,6 +21,7 @@ trait HasValutatore
             ->append('\Models\StabiDirigente')
             ->toString();
 
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> $class */
         return $this->belongsTo($class, 'valutatore_id', 'valutatore_id');
     }
 }

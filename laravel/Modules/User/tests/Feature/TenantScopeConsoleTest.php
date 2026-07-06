@@ -21,6 +21,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var TestCase $this */
     $this->skipUnlessUsersTableReady();
     $this->tenant1 = TenantFactory::new()->createOne(['name' => 'Tenant 1 '.uniqid()]);
     $this->tenant2 = TenantFactory::new()->createOne(['name' => 'Tenant 2 '.uniqid()]);
@@ -64,6 +65,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('allows querying all users in console context without tenant filter', function (): void {
+        /** @var TestCase $this */
         $tenant1 = $this->requireTenant1();
         $tenant2 = $this->requireTenant2();
         $this->skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing — tenant scope tests skipped.');
@@ -86,6 +88,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('automatically sets tenant id when creating user in http context', function (): void {
+        /** @var TestCase $this */
         $tenant1 = $this->requireTenant1();
         $this->skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing — tenant scope tests skipped.');
 
@@ -105,6 +108,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('filters users by tenant in http context', function (): void {
+        /** @var TestCase $this */
         $tenant1 = $this->requireTenant1();
         $tenant2 = $this->requireTenant2();
         $this->skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing — tenant scope tests skipped.');
@@ -159,6 +163,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('allows manual tenant id assignment in console context', function (): void {
+        /** @var TestCase $this */
         $tenant1 = $this->requireTenant1();
         $this->skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing — tenant scope tests skipped.');
 
@@ -176,6 +181,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('allows querying users by specific tenant in console', function (): void {
+        /** @var TestCase $this */
         $tenant1 = $this->requireTenant1();
         $tenant2 = $this->requireTenant2();
         $this->skipUnlessUserColumn('users', 'tenant_id', 'users.tenant_id column missing — tenant scope tests skipped.');
@@ -197,6 +203,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('does not crash when booting in console context', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $email = 'boot-test-'.uniqid('', true).'@example.com';
@@ -213,6 +220,7 @@ describe('Tenant Scope Console', function (): void {
     });
 
     test('skips tenant assignment in console context during creating event', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $email = 'creating-event-'.uniqid('', true).'@example.com';

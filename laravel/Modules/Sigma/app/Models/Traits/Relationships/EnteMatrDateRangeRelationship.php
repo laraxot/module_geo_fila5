@@ -91,6 +91,7 @@ trait EnteMatrDateRangeRelationship
         $dalInt = (int) $dal;
         $alInt = (int) $al;
 
+        // @phpstan-ignore parameterByRef.type
         $sql = '(
 		('.$dalInt.' between qua2kd and qua2ka ) or
 		('.$dalInt.' >= year(qua2kd) and qua2ka=0) or
@@ -101,6 +102,7 @@ trait EnteMatrDateRangeRelationship
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
         return $this->hasManyByEnteMatr(Qua00f::class)
+            // @phpstan-ignore argument.type, parameterByRef.type
             ->selectRaw('ente,matr,propro,posfun,posiz,disci1,codqua
                 ,cont,tipco,ruolo
 				,if(oree=0,36,oree) as oree

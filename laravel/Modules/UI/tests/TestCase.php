@@ -7,9 +7,9 @@ namespace Modules\UI\Tests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\DB;
-use Modules\Fixcity\Models\User;
 use Modules\UI\Providers\UIServiceProvider;
 use Modules\UI\Tests\Support\EnsuresUiDatabaseSchema;
+use Modules\User\Models\User;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Tests\XotBaseTestCase;
 

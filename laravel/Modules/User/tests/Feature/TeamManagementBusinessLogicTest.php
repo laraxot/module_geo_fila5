@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +16,8 @@ use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
+
+uses(Modules\User\Tests\TestCase::class);
 
 function teamMgmtBizUserTableHasColumn(string $table, string $column): bool
 {

@@ -20,12 +20,7 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
      */
     protected string $moduleNamespace = 'Modules\Activity\Http\Controllers';
 
-    // NOTE: i nomi devono restare snake_case ($module_dir/$module_ns) perche'
-    // XotBaseRouteServiceProvider legge internamente proprio queste proprieta'
-    // (vedi Modules/Xot/app/Providers/XotBaseRouteServiceProvider.php). Un rename
-    // in camelCase creerebbe proprieta' ombra mai lette dalla classe base,
-    // rompendo silenziosamente la registrazione delle route del modulo.
-    protected string $module_dir = __DIR__;
+    protected string $moduleDir = __DIR__;
 
-    protected string $module_ns = __NAMESPACE__;
+    protected string $moduleNs = __NAMESPACE__;
 }

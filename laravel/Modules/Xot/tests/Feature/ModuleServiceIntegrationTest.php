@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Modules\Xot\Services\ModuleService;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\Xot\Tests\TestCase::class);
 
 describe('ModuleService Integration', function () {
     beforeEach(function () {

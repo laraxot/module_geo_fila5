@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Actions\User\DeleteUserAction;
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 it('returns failure when password is incorrect', function (): void {
     // Create a mock user with a hashed password

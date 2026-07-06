@@ -7,6 +7,7 @@ namespace Modules\Activity\Tests\Feature;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Activity\Database\Factories\ActivityFactory;
+use Modules\Activity\Database\Factories\StoredEventFactory;
 use Modules\Activity\Models\Activity;
 use Modules\Activity\Models\Snapshot;
 use Modules\Activity\Models\StoredEvent;
@@ -16,7 +17,7 @@ use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
 
-uses(\Modules\Activity\Tests\TestCase::class);
+uses(TestCase::class);
 
 test('activity event sourcing lifecycle works correctly', function () {
     $user = UserFactory::new()->createOne();
@@ -374,7 +375,7 @@ test('stored event handles complex event properties with nested arrays', functio
         ],
     ];
 
-    $storedEvent = StoredEvent::query()->create([
+    $storedEvent = StoredEventFactory::new()->createOne([
         'aggregate_uuid' => Str::uuid()->toString(),
         'aggregate_version' => 1,
         'event_version' => 1,

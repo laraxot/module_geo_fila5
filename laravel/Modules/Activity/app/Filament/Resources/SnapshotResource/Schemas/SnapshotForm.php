@@ -17,18 +17,14 @@ class SnapshotForm extends XotBaseResourceForm
     public static function getFormSchema(): array
     {
         return [
-            'model_type' => TextInput::make('model_type')
+            'aggregate_uuid' => TextInput::make('aggregate_uuid')
                 ->required()
-                ->maxLength(255),
-            'model_id' => TextInput::make('model_id')
+                ->maxLength(36),
+            'aggregate_version' => TextInput::make('aggregate_version')
                 ->numeric()
                 ->required(),
             'state' => KeyValue::make('state')
                 ->columnSpanFull(),
-            'created_by_type' => TextInput::make('created_by_type')
-                ->maxLength(255),
-            'created_by_id' => TextInput::make('created_by_id')
-                ->numeric(),
         ];
     }
 }

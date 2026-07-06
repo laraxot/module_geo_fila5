@@ -11,10 +11,6 @@ use Modules\Notify\Datas\NetfunSmsMessage;
 use Modules\Notify\Datas\NetfunSmsRequestData;
 use Modules\Notify\Datas\NetfunSmsResponseData;
 use Modules\Notify\Datas\SendNotificationBulkResultData;
-use Modules\Notify\Datas\SMS\AgiletelecomData;
-use Modules\Notify\Datas\SMS\GammuData;
-use Modules\Notify\Datas\SMS\NexmoData;
-use Modules\Notify\Datas\SMS\PlivoData;
 use Modules\Notify\Datas\SMS\SmsFactorData;
 use Modules\Notify\Datas\SmsMessageData;
 use Modules\Notify\Datas\TelegramData;
@@ -22,7 +18,7 @@ use Modules\Notify\Datas\WhatsAppData;
 use Modules\Notify\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(\Modules\Notify\Tests\TestCase::class);
+uses(TestCase::class);
 
 test('netfun sms request and response data can be created from arrays', function () {
     $request = NetfunSmsRequestData::fromArray([
@@ -69,38 +65,13 @@ test('netfun sms message-style data objects keep values', function () {
 });
 
 test('sms driver data classes expose auth headers and defaults', function () {
-    config()->set('sms.drivers.agiletelecom', [
-        'username' => 'u',
-        'password' => 'p',
-        'auth_type' => 'basic',
-    ]);
-    config()->set('sms.drivers.gammu', [
-        'path' => '/usr/local/bin/gammu',
-        'config' => '/tmp/gammurc',
-        'timeout' => 45,
-    ]);
-    config()->set('sms.drivers.nexmo', [
-        'key' => 'k',
-        'secret' => 's',
-    ]);
-    config()->set('sms.drivers.plivo', [
-        'auth_id' => 'aid',
-        'auth_token' => 'atok',
-    ]);
     config()->set('sms.drivers.smsfactor', [
         'token' => 'tok',
     ]);
 
-    $agile = AgiletelecomData::make();
-    $gammu = GammuData::make();
-    $nexmo = NexmoData::make();
-    $plivo = PlivoData::make();
     $smsfactor = SmsFactorData::make();
 
-    Assert::assertSame('/usr/local/bin/gammu', $gammu->getPath());
-    Assert::assertSame('/tmp/gammurc', $gammu->getConfig());
-    Assert::assertSame(45, $gammu->getTimeout());
-    Assert::assertArrayHasKey('Authorization', $agile->getAuthHeaders());
+    Assert::assertArrayHasKey('Authorization', $smsfactor->getAuthHeaders());
 });
 
 test('telegram, whatsapp and sms message datas keep payload', function () {

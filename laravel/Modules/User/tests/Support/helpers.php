@@ -260,19 +260,21 @@ function mockSocialiteOauthUser(array $attributes = []): Laravel\Socialite\Contr
     });
 }
 
-/**
- * @template T of object
- *
- * @param class-string<T> $class
- *
- * @return T&MockInterface
- */
-function typedMock(string $class): MockInterface
-{
-    /** @var T&MockInterface $mock */
-    $mock = Mockery::mock($class);
+if (! function_exists('typedMock')) {
+    /**
+     * @template T of object
+     *
+     * @param class-string<T> $class
+     *
+     * @return T&MockInterface
+     */
+    function typedMock(string $class): MockInterface
+    {
+        /** @var T&MockInterface $mock */
+        $mock = Mockery::mock($class);
 
-    return $mock;
+        return $mock;
+    }
 }
 
 /**

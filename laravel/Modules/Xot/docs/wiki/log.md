@@ -4,7 +4,7 @@ type: log
 module: Xot
 tags: [xot, phpstan, pest, qmd]
 created: 2026-04-20
-updated: 2026-06-13
+updated: 2026-06-29
 qmd: "Xot log phpstan pest bridge discipline"
 issues:
   - "https://github.com/laraxot/module_xot_fila5/issues/28"
@@ -12,7 +12,13 @@ discussions:
   - "https://github.com/laraxot/module_xot_fila5/discussions/29"
 ---
 
----
+## [2026-06-29] phpstan | HasXotTable grid label/state normalization
+
+- `getGridTableColumns()` normalizza label e state tramite helper string-safe invece di cast/branch inline su `Htmlable|string|null` e `HasLabel`.
+- PHPMD follow-up: aggiunti import espliciti per `Exception`, `HasLabel`, `Stringable`; rimossi import inutilizzati; eliminato commento inline `@var` superfluo.
+- Motivo: PHPStan moltiplicava `function.alreadyNarrowedType`, `binaryOp.invalid` e `method.nonObject` nei contesti Filament che usano `HasXotTable`.
+- Verifica: `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori su 6428 file.
+- Verifica PHPMD: `cd laravel && ./tools/phpmd.sh Modules/Xot/app/Filament/Traits/HasXotTable.php text phpmd.ruleset.xml` -> exit 0.
 
 ## [2026-06-15] phpstan | getRouteParameters helper
 

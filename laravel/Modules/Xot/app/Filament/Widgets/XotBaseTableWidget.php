@@ -17,9 +17,9 @@ use Modules\Xot\Filament\Traits\TransTrait;
 
 abstract class XotBaseTableWidget extends FilamentTableWidget
 {
-    // use TransTrait;
     use HasXotTable;
     use InteractsWithPageFilters;
+    use TransTrait;
 
     /**
      * Ascolta evento di aggiornamento filtri.

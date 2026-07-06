@@ -24,8 +24,8 @@ Xot e' il posto giusto per pattern condivisi di test/static analysis, ma il brid
 - Pest resta il framework test.
 - PHPStan resta governato dal solo `laravel/phpstan.neon` utente.
 - Bridge/helper condivisi devono rendere tipizzabili le assertion ricorrenti, non mascherare errori.
-- Bridge `PestFunctionBridge.php`: `uses|test|it|describe` → `void`; `expect()` → `PestExpectation` (evita `function.resultUnused` e catene `function.void`).
-- Bridge `PestFunctionBridge.php`: `uses|test|it|describe` → `void`; `expect()` → `PestExpectation` (evita `function.resultUnused` e catene `function.void`).
+- Bridge `PestFunctionBridge.php`: `uses|test|it|describe` -> `void`; `expect()` -> `PestExpectation` (evita `function.resultUnused` e catene `function.void`).
+- Se il bridge genera piu namespace nello stesso file, usare sempre blocchi bracketed `namespace Foo { ... }`; i namespace semicolon ripetuti dopo funzioni causano `phpstan.parse`.
 - `uses(\Modules\<M>\Tests\TestCase::class)` sempre **dopo** gli `import use` nel file Pest.
 
 ## Helper XotBaseTestCase (usare nei moduli)

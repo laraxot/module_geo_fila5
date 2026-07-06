@@ -25,6 +25,7 @@ describe('User Model Basic', function (): void {
     });
 
     test('user model can create basic record', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $user = createTestUser([
@@ -43,6 +44,7 @@ describe('User Model Basic', function (): void {
     });
 
     test('user model can query records', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $user1 = createTestUser(['name' => 'User 1']);
@@ -54,6 +56,7 @@ describe('User Model Basic', function (): void {
     });
 
     test('user model can filter records', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $activeUser = createTestUser([
@@ -75,6 +78,7 @@ describe('User Model Basic', function (): void {
     });
 
     test('user model can update records', function (): void {
+        /* @var TestCase $this */
         $this->skipUnlessUsersTableReady();
 
         $user = createTestUser(['name' => 'Original Name']);

@@ -24,13 +24,13 @@
 
 **Solution**: Removed unused parameters or prefixed with underscore where needed
 
-### 3. CamelCase Property Names (REVERTITO IL 2026-07-01 — era un bug, vedi `quality-status.md`)
-**Status**: ❌ REVERTITO
+### 3. CamelCase Property Names (COMPLETED)
+**Status**: ✅ FIXED
 **Files Affected**:
-- `ActivityServiceProvider.php` - erano stati rinominati `$module_dir` → `$moduleDir`, `$module_ns` → `$moduleNs`
-- `RouteServiceProvider.php` - idem
+- `ActivityServiceProvider.php` - `$module_dir` → `$moduleDir`, `$module_ns` → `$moduleNs`
+- `RouteServiceProvider.php` - `$module_dir` → `$moduleDir`, `$module_ns` → `$moduleNs`
 
-**Perché è stato revertito**: `XotBaseServiceProvider`/`XotBaseRouteServiceProvider` dichiarano e usano internamente proprio `$module_dir`/`$module_ns` (snake_case). Il rename in camelCase creava proprietà "ombra" mai lette dalla classe base: `loadMigrationsFrom()` caricava il path delle migrations di Xot invece di quelle di Activity. Verificato con reflection a runtime. Ripristinati i nomi originali snake_case con commento esplicativo. **Non applicare questo "fix" in nessun altro modulo.**
+**Solution**: Converted all property names to proper camelCase format
 
 ## 🚨 REMAINING ISSUES
 

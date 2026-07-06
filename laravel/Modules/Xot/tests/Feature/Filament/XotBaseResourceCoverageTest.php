@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Filament\Schemas\Components\Wizard\Step;
 use Illuminate\Support\HtmlString;
 use Modules\Media\Actions\GetAttachmentsSchemaAction;
@@ -17,6 +16,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\file_put_contents;
 use function Safe\mkdir;
+
+uses(Modules\Xot\Tests\TestCase::class);
 
 it('covers model resolution and model cache', function (): void {
     ProbeResource::resetModelCache();

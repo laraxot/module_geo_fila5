@@ -17,12 +17,12 @@ use Modules\User\Database\Factories\RoleFactory;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
-use PHPUnit\Framework\Assert;
+use Modules\User\Tests\Traits\HasUserTestCase;
 
-uses(TestCase::class);
+uses(TestCase::class, HasUserTestCase::class);
 
-beforeEach(function (): void {
-    $user = UserFactory::new()->createOne([
+beforeEach(function () {
+    $user = UserFactory::new()->create([
         'password' => Hash::make('password123'),
         'is_active' => true,
         'email_verified_at' => now(),
@@ -31,41 +31,41 @@ beforeEach(function (): void {
     $this->user = $user;
 });
 
-describe('User Authentication', function (): void {
-    test('can authenticate with valid credentials', function (): void {
-        $user = $this->requireUser();
+describe('User Authentication', function () {
+    it('can authenticate with valid credentials', function () {
         $result = Auth::attempt([
-            'email' => $user->email,
+            'email' => $this->requireUser()->email,
             'password' => 'password123',
         ]);
 
-        Assert::assertSame(true, $result);
-        Assert::assertSame($user->id, Auth::user()?->id);
+        expect($result)->toBe(true);
+        expect(Auth::user()?->id)->toBe($this->requireUser()->id);
     });
 
-    test('cannot authenticate with invalid password', function (): void {
-        $user = $this->requireUser();
+    it('cannot authenticate with invalid password', function () {
         $result = Auth::attempt([
-            'email' => $user->email,
+            'email' => $this->requireUser()->email,
             'password' => 'wrongpassword',
         ]);
 
-        Assert::assertSame(false, $result);
-        Assert::assertNull(Auth::user());
+        expect($result)->toBe(false);
+        expect(Auth::user())->toBeNull();
     });
 
-    test('cannot authenticate with non existent email', function (): void {
+    it('cannot authenticate with non-existent email', function () {
         $result = Auth::attempt([
             'email' => 'nonexistent@example.com',
             'password' => 'password123',
         ]);
 
-        Assert::assertSame(false, $result);
-        Assert::assertNull(Auth::user());
+        expect($result)->toBe(false);
+        expect(Auth::user())->toBeNull();
     });
 
-    test('cannot authenticate inactive user', function (): void {
-        $inactiveUser = UserFactory::new()->createOne([
+    it('cannot authenticate inactive user', function () {
+        /** @var User $inactiveUser */
+        /** @var User $inactiveUser */
+        $inactiveUser = UserFactory::new()->create([
             'password' => Hash::make('password123'),
             'is_active' => false,
         ]);
@@ -77,113 +77,124 @@ describe('User Authentication', function (): void {
             'is_active' => true,
         ]);
 
-        Assert::assertSame(false, $result);
+        expect($result)->toBe(false);
     });
 
-    test('can logout user', function (): void {
-        $user = $this->requireUser();
-        Auth::login($user);
-        Assert::assertSame(true, Auth::check());
+    it('can logout user', function () {
+        Auth::login($this->requireUser());
+        expect(Auth::check())->toBe(true);
+
         Auth::logout();
-        Assert::assertSame(false, Auth::check());
+        expect(Auth::check())->toBe(false);
     });
+});
 
-    test('can hash password on creation', function (): void {
-        $user = UserFactory::new()->createOne([
+describe('User Password Management', function () {
+    it('can hash password on creation', function () {
+        /** @var User $user */
+        /** @var User $user */
+        $user = UserFactory::new()->create([
             'password' => Hash::make('testpassword'),
         ]);
         \assert($user instanceof User);
 
-        Assert::assertSame(true, Hash::check('testpassword', $user->password));
+        expect(Hash::check('testpassword', $user->password))->toBe(true);
     });
 
-    test('can change password', function (): void {
-        $user = $this->requireUser();
+    it('can change password', function () {
         $newPassword = 'newpassword123';
-        $user->update([
+        $this->requireUser()->update([
             'password' => Hash::make($newPassword),
         ]);
 
-        $freshUser = $user->fresh();
-        Assert::assertNotNull($freshUser);
-        Assert::assertSame(true, Hash::check($newPassword, $freshUser->password));
-        Assert::assertSame(false, Hash::check('password123', $freshUser->password));
+        expect(Hash::check($newPassword, $this->requireFreshUser($this->requireUser())->password))->toBe(true);
+        expect(Hash::check('password123', $this->requireFreshUser($this->requireUser())->password))->toBe(false);
     });
 
-    test('can check password expiration', function (): void {
-        $user = UserFactory::new()->createOne([
+    it('can check password expiration', function () {
+        /** @var User $user */
+        $user = UserFactory::new()->create([
             'password_expires_at' => now()->subDays(1),
         ]);
-        Assert::assertNotNull($user->password_expires_at);
+        \assert($user instanceof User);
+        $passwordExpiresAt = $user->password_expires_at;
+        \assert(null !== $passwordExpiresAt);
 
-        $expiresAt = $user->password_expires_at;
-        Assert::assertTrue($expiresAt->isPast());
+        expect($passwordExpiresAt->isPast())->toBe(true);
     });
 
-    test('can set password expiration', function (): void {
-        $user = $this->requireUser();
+    it('can set password expiration', function () {
         $expirationDate = now()->addDays(90);
-        $user->update([
+        $this->requireUser()->update([
             'password_expires_at' => $expirationDate,
         ]);
 
-        Assert::assertSame(
-            $expirationDate->toDateString(),
-            $user->fresh()?->password_expires_at?->toDateString(),
-        );
-    });
+        $passwordExpiresAt = $this->requireFreshUser($this->requireUser())->password_expires_at;
+        \assert(null !== $passwordExpiresAt);
 
-    test('can generate remember token', function (): void {
-        $user = $this->requireUser();
+        expect($passwordExpiresAt->toDateString())
+            ->toBe($expirationDate->toDateString());
+    });
+});
+
+describe('User Remember Token', function () {
+    it('can generate remember token', function () {
         $token = Str::random(60);
-        $user->forceFill(['remember_token' => $token])->save();
+        $this->requireUser()->forceFill(['remember_token' => $token])->save();
 
-        Assert::assertNotNull($freshUser = $user->fresh());
-        Assert::assertSame($token, $freshUser->remember_token);
+        expect($this->requireFreshUser($this->requireUser())->remember_token)->toBe($token);
     });
 
-    test('can authenticate using remember token', function (): void {
-        $user = $this->requireUser();
+    it('can authenticate using remember token', function () {
         $token = Str::random(60);
-        $user->forceFill(['remember_token' => $token])->save();
+        $this->requireUser()->forceFill(['remember_token' => $token])->save();
 
-        $user = User::where('email', $user->email)->where('remember_token', $token)->first();
+        $user = User::where('email', $this->requireUser()->email)->where('remember_token', $token)->first();
 
-        Assert::assertNotNull($user);
-        Assert::assertSame($user->id, $user->id);
+        expect($user)->not->toBeNull();
+        \assert($user instanceof User);
+        expect($user->id)->toBe($this->requireUser()->id);
     });
+});
 
-    test('can mark email as verified', function (): void {
-        $user = UserFactory::new()->createOne([
+describe('User Email Verification', function () {
+    it('can mark email as verified', function () {
+        /** @var User $user */
+        $user = UserFactory::new()->create([
             'email_verified_at' => null,
         ]);
         \assert($user instanceof User);
 
-        Assert::assertNull($user->email_verified_at);
+        expect($user->email_verified_at)->toBeNull();
+
         $user->markEmailAsVerified();
 
-        $freshModel0 = $user->fresh();
-        Assert::assertNotNull($freshModel0);
-        Assert::assertNotNull($freshModel0->email_verified_at);
+        $fresh = $user->fresh();
+        \assert(null !== $fresh);
+
+        expect($fresh->email_verified_at)->not->toBeNull();
     });
 
-    test('can check if email is verified', function (): void {
-        $verifiedUser = UserFactory::new()->createOne([
+    it('can check if email is verified', function () {
+        /** @var User $verifiedUser */
+        $verifiedUser = UserFactory::new()->create([
             'email_verified_at' => now(),
         ]);
         \assert($verifiedUser instanceof User);
 
-        $unverifiedUser = UserFactory::new()->createOne([
+        /** @var User $unverifiedUser */
+        $unverifiedUser = UserFactory::new()->create([
             'email_verified_at' => null,
         ]);
         \assert($unverifiedUser instanceof User);
 
-        Assert::assertSame(true, $verifiedUser->hasVerifiedEmail());
-        Assert::assertSame(false, $unverifiedUser->hasVerifiedEmail());
+        expect($verifiedUser->hasVerifiedEmail())->toBe(true);
+        expect($unverifiedUser->hasVerifiedEmail())->toBe(false);
     });
 
-    test('can send email verification notification', function (): void {
-        $user = UserFactory::new()->createOne([
+    it('can send email verification notification', function () {
+        /** @var User $user */
+        $user = UserFactory::new()->create([
             'email_verified_at' => null,
         ]);
         \assert($user instanceof User);
@@ -194,170 +205,155 @@ describe('User Authentication', function (): void {
 
         Notification::assertSentTo($user, VerifyEmail::class);
     });
+});
 
-    test('can assign and check roles', function (): void {
-        $user = $this->requireUser();
-        $this->skipUnlessRoleAssignmentSupported();
-        $uid = uniqid();
-        $adminRole = RoleFactory::new()->createOne(['name' => 'admin-'.$uid]);
-        $editorRole = RoleFactory::new()->createOne(['name' => 'editor-'.$uid]);
+describe('User Authorization', function () {
+    it('can assign and check roles', function () {
+        $adminRole = RoleFactory::new()->createOne(['name' => 'admin']);
+        $editorRole = RoleFactory::new()->createOne(['name' => 'editor']);
 
-        $user->assignRole($adminRole);
+        $this->requireUser()->assignRole($adminRole);
 
-        Assert::assertSame(true, $user->hasRole('admin-'.$uid));
-        Assert::assertSame(false, $user->hasRole('editor-'.$uid));
-        Assert::assertSame(true, $user->hasRole($adminRole));
+        expect($this->requireUser()->hasRole('admin'))->toBe(true);
+        expect($this->requireUser()->hasRole('editor'))->toBe(false);
+        expect($this->requireUser()->hasRole($adminRole))->toBe(true);
     });
 
-    test('can assign and check permissions', function (): void {
-        $user = $this->requireUser();
-        $this->skipUnlessDirectPermissionSupported();
-        $uid = uniqid();
-        $editPermission = PermissionFactory::new()->createOne(['name' => 'edit posts '.$uid]);
-        $deletePermission = PermissionFactory::new()->createOne(['name' => 'delete posts '.$uid]);
+    it('can assign and check permissions', function () {
+        $editPermission = PermissionFactory::new()->createOne(['name' => 'edit posts']);
+        $deletePermission = PermissionFactory::new()->createOne(['name' => 'delete posts']);
 
-        $user->givePermissionTo($editPermission);
+        $this->requireUser()->givePermissionTo($editPermission);
 
-        Assert::assertSame(true, $user->hasPermissionTo('edit posts '.$uid));
-        Assert::assertSame(false, $user->hasPermissionTo('delete posts '.$uid));
-        Assert::assertSame(true, $user->hasPermissionTo($editPermission));
+        expect($this->requireUser()->hasPermissionTo('edit posts'))->toBe(true);
+        expect($this->requireUser()->hasPermissionTo('delete posts'))->toBe(false);
+        expect($this->requireUser()->hasPermissionTo($editPermission))->toBe(true);
     });
 
-    test('can inherit permissions from roles', function (): void {
-        $user = $this->requireUser();
-        $this->skipUnlessRoleAssignmentSupported();
-        $this->skipUnlessDirectPermissionSupported();
-        $uid = uniqid();
-        $role = RoleFactory::new()->createOne(['name' => 'editor '.$uid]);
-        $permission = PermissionFactory::new()->createOne(['name' => 'edit posts '.$uid]);
+    it('can inherit permissions from roles', function () {
+        $role = RoleFactory::new()->createOne(['name' => 'editor']);
+        $permission = PermissionFactory::new()->createOne(['name' => 'edit posts']);
 
         $role->givePermissionTo($permission);
-        $user->assignRole($role);
+        $this->requireUser()->assignRole($role);
 
-        Assert::assertSame(true, $user->hasPermissionTo('edit posts '.$uid));
+        expect($this->requireUser()->hasPermissionTo('edit posts'))->toBe(true);
     });
 
-    test('can check multiple permissions', function (): void {
-        $user = $this->requireUser();
-        $this->skipUnlessDirectPermissionSupported();
-        $uid = uniqid();
-        $permission1 = PermissionFactory::new()->createOne(['name' => 'edit posts '.$uid]);
-        $permission2 = PermissionFactory::new()->createOne(['name' => 'delete posts '.$uid]);
+    it('can check multiple permissions', function () {
+        $permission1 = PermissionFactory::new()->createOne(['name' => 'edit posts']);
+        $permission2 = PermissionFactory::new()->createOne(['name' => 'delete posts']);
 
-        $user->givePermissionTo([$permission1, $permission2]);
+        $this->requireUser()->givePermissionTo([$permission1, $permission2]);
 
-        Assert::assertSame(true, $user->hasAllPermissions(['edit posts '.$uid, 'delete posts '.$uid]));
-        Assert::assertSame(true, $user->hasAnyPermission(['edit posts '.$uid, 'publish posts '.$uid]));
+        expect($this->requireUser()->hasAllPermissions(['edit posts', 'delete posts']))->toBe(true);
+        expect($this->requireUser()->hasAnyPermission(['edit posts', 'publish posts']))->toBe(true);
     });
 
-    test('can remove roles and permissions', function (): void {
-        $user = $this->requireUser();
-        $this->skipUnlessRoleAssignmentSupported();
-        $this->skipUnlessDirectPermissionSupported();
-        $uid = uniqid();
-        $role = RoleFactory::new()->createOne(['name' => 'editor '.$uid]);
-        $permission = PermissionFactory::new()->createOne(['name' => 'edit posts '.$uid]);
+    it('can remove roles and permissions', function () {
+        $role = RoleFactory::new()->createOne(['name' => 'editor']);
+        $permission = PermissionFactory::new()->createOne(['name' => 'edit posts']);
 
-        $user->assignRole($role);
-        $user->givePermissionTo($permission);
+        $this->requireUser()->assignRole($role);
+        $this->requireUser()->givePermissionTo($permission);
 
-        Assert::assertSame(true, $user->hasRole('editor '.$uid));
-        Assert::assertSame(true, $user->hasPermissionTo('edit posts '.$uid));
-        $user->removeRole($role);
-        $user->revokePermissionTo($permission);
+        expect($this->requireUser()->hasRole('editor'))->toBe(true);
+        expect($this->requireUser()->hasPermissionTo('edit posts'))->toBe(true);
 
-        Assert::assertSame(false, $user->hasRole('editor '.$uid));
-        Assert::assertSame(false, $user->hasPermissionTo('edit posts '.$uid));
+        $this->requireUser()->removeRole($role);
+        $this->requireUser()->revokePermissionTo($permission);
+
+        expect($this->requireUser()->hasRole('editor'))->toBe(false);
+        expect($this->requireUser()->hasPermissionTo('edit posts'))->toBe(false);
+    });
+});
+
+describe('User OAuth Authentication', function () {
+    it('can have oauth clients', function () {
+        expect($this->requireUser()->clients())->toBeInstanceOf(MorphMany::class);
     });
 
-    test('can have oauth clients', function (): void {
-        $user = $this->requireUser();
-        Assert::assertInstanceOf(MorphMany::class, $user->clients());
+    it('can have oauth tokens', function () {
+        expect($this->requireUser()->tokens())->toBeInstanceOf(HasMany::class);
     });
 
-    test('can have oauth tokens', function (): void {
-        $user = $this->requireUser();
-        Assert::assertInstanceOf(HasMany::class, $user->tokens());
+    it('can find user for passport', function () {
+        $user = User::findForPassport($this->requireUser()->email);
+
+        expect($user)->not->toBeNull();
+        \assert($user instanceof User);
+        expect($user->id)->toBe($this->requireUser()->id);
     });
 
-    test('can find user for passport', function (): void {
-        $user = $this->requireUser();
-        $user = User::findForPassport($user->email);
+    it('can validate password for passport', function () {
+        $isValid = $this->requireUser()->validateForPassportPasswordGrant('password123');
 
-        Assert::assertNotNull($user);
-        Assert::assertSame($user->id, $user->id);
+        expect($isValid)->toBe(true);
+    });
+});
+
+describe('User Authentication Logging', function () {
+    it('can log authentication attempts', function () {
+        expect($this->requireUser()->authentications())->toBeInstanceOf(MorphMany::class);
     });
 
-    test('can validate password for passport', function (): void {
-        $user = $this->requireUser();
-        $isValid = $user->validateForPassportPasswordGrant('password123');
+    it('can get latest authentication log', function () {
+        expect($this->requireUser()->latestAuthentication())
+            ->toBeInstanceOf(MorphOne::class);
+    });
+});
 
-        Assert::assertSame(true, $isValid);
+describe('User Session Management', function () {
+    it('can store user in session', function () {
+        Auth::login($this->requireUser());
+
+        expect(Auth::check())->toBe(true);
+        expect(Auth::id())->toBe($this->requireUser()->id);
     });
 
-    test('can log authentication attempts', function (): void {
-        $user = $this->requireUser();
-        Assert::assertInstanceOf(MorphMany::class, $user->authentications());
+    it('can remember user across sessions', function () {
+        Auth::login($this->requireUser(), true);
+
+        expect($this->requireFreshUser($this->requireUser())->remember_token)->not->toBeNull();
     });
 
-    test('can get latest authentication log', function (): void {
-        $user = $this->requireUser();
-        Assert::assertInstanceOf(MorphOne::class, $user->latestAuthentication());
-    });
+    it('can clear user session on logout', function () {
+        Auth::login($this->requireUser());
+        expect(Auth::check())->toBe(true);
 
-    test('can store user in session', function (): void {
-        $user = $this->requireUser();
-        Auth::login($user);
-
-        Assert::assertSame(true, Auth::check());
-        Assert::assertSame($user->id, Auth::id());
-    });
-
-    test('can remember user across sessions', function (): void {
-        $user = $this->requireUser();
-        Auth::login($user, true);
-
-        $fresh = $user->fresh();
-        Assert::assertNotNull($fresh);
-        Assert::assertNotNull($fresh->remember_token);
-    });
-
-    test('can clear user session on logout', function (): void {
-        $user = $this->requireUser();
-        Auth::login($user);
-        Assert::assertSame(true, Auth::check());
         Auth::logout();
-        Assert::assertSame(false, Auth::check());
+        expect(Auth::check())->toBe(false);
+    });
+});
+
+describe('User Two Factor Authentication', function () {
+    it('can enable two factor authentication', function () {
+        $this->requireUser()->update(['is_otp' => true]);
+
+        expect($this->requireFreshUser($this->requireUser())->is_otp)->toBe(true);
     });
 
-    test('can enable two factor authentication', function (): void {
-        $user = $this->requireUser();
-        $user->update(['is_otp' => true]);
+    it('can disable two factor authentication', function () {
+        $this->requireUser()->update(['is_otp' => false]);
 
-        Assert::assertNotNull($freshUser = $user->fresh());
-        Assert::assertSame(true, $freshUser->is_otp);
+        expect($this->requireFreshUser($this->requireUser())->is_otp)->toBe(false);
     });
 
-    test('can disable two factor authentication', function (): void {
-        $user = $this->requireUser();
-        $user->update(['is_otp' => false]);
-
-        Assert::assertNotNull($freshUser = $user->fresh());
-        Assert::assertSame(false, $freshUser->is_otp);
-    });
-
-    test('handles otp authentication workflow', function (): void {
-        $user = UserFactory::new()->createOne([
+    it('handles otp authentication workflow', function () {
+        /** @var User $user */
+        $user = UserFactory::new()->create([
             'is_otp' => true,
             'password' => Hash::make('password123'),
         ]);
         \assert($user instanceof User);
 
-        Auth::attempt([
+        // First step: password authentication
+        $result = Auth::attempt([
             'email' => $user->email,
             'password' => 'password123',
         ]);
 
-        Assert::assertSame(true, $user->is_otp);
+        // Should handle OTP requirement
+        expect($user->is_otp)->toBe(true);
     });
 });

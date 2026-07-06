@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\AuthCode;
 use Laravel\Passport\Client;
@@ -15,6 +14,8 @@ use Modules\User\Models\OauthDeviceCode;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\User\Models\OauthToken;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 /**
  * @param class-string $wrapperClass

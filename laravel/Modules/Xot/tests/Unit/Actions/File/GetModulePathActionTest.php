@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\File\GetModulePathAction;
 use Nwidart\Modules\Facades\Module;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\Xot\Tests\TestCase::class);
 
 it('gets module path from facade correctly', function (): void {
     /* @var \Modules\Xot\Tests\TestCase $this */

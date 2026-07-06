@@ -18,6 +18,7 @@ uses(TestCase::class);
 describe('Login User Action', function (): void {
     test('authenticates connected socialite user and dispatches event', function (): void {
         /* @var \Modules\User\Tests\TestCase $this */
+        /* @var TestCase $this */
         Event::fake([SocialiteUserConnected::class]);
 
         $user = UserFactory::new()->createOne();
@@ -38,6 +39,7 @@ describe('Login User Action', function (): void {
     });
 
     test('throws when related user is not authenticatable', function (): void {
+        /** @var TestCase $this */
         $socialiteUser = new SocialiteUser([
             'provider' => 'test-provider',
             'provider_id' => 'provider-id-2',

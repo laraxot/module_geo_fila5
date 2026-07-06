@@ -23,7 +23,7 @@ final class VideoSpatie
             ->schema([
                 Hidden::make('img_uuid')
                     ->default(Str::uuid()->toString(...))
-                    ->formatStateUsing(static fn ($state) => $state ?? Str::uuid()->toString())
+                    ->formatStateUsing(fn ($state) => $state ?? Str::uuid()->toString())
                     ->live(),
                 // ->required(),
 
@@ -41,8 +41,8 @@ final class VideoSpatie
                     ->previewable()
                     ->downloadable()
                     // ->rules(Rule::dimensions()->maxWidth(600)->maxHeight(800))
-                    ->collection(static fn (Get $get) => $get('img_uuid'))
-                    ->afterStateUpdated(static function (
+                    ->collection(fn (Get $get) => $get('img_uuid'))
+                    ->afterStateUpdated(function (
                         HasForms $_livewire,
                         SpatieMediaLibraryFileUpload $_component,
                         TemporaryUploadedFile $state,
@@ -52,10 +52,10 @@ final class VideoSpatie
                         // Call to an undefined method Filament\Forms\Contracts\HasForms::validateOnly().
                         // $livewire->validateOnly($component->getStatePath());
                         Assert::string(
-                            $collectionName = $get('img_uuid'),
+                            $collection_name = $get('img_uuid'),
                             '['.__LINE__.']['.class_basename(self::class).']',
                         );
-                        $record->addMedia($state)->withResponsiveImages()->toMediaCollection($collectionName);
+                        $record->addMedia($state)->withResponsiveImages()->toMediaCollection($collection_name);
                     }),
                 /*
                  * Select::make('ratio')
@@ -72,7 +72,7 @@ final class VideoSpatie
                 // ->customProperties(fn(Forms\Get $get) => ['gallery_id' => $get('gallery_id')]),
                 // Forms\Components\SpatieMediaLibraryFileUpload::make('media_id')
             ])
-            ->columns($context === 'form' ? 2 : 1);
+            ->columns('form' === $context ? 2 : 1);
     }
 
     /**

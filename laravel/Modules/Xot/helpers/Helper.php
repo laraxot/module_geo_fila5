@@ -5,12 +5,14 @@ declare(strict_types=1);
 use Filament\Facades\Filament;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Illuminate\Testing\TestResponse;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Contracts\ProfileContract;
@@ -294,15 +296,7 @@ if (! function_exists('params2ContainerItem')) {
         foreach ($params as $k => $v) {
             $pattern = '/(container|item)(\d+)/';
             preg_match($pattern, $k, $matches);
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (isset($matches[1], $matches[2])) {
-=======
             if (! empty($matches)) {
->>>>>>> laraxot/dev
-=======
-            if (! empty($matches)) {
->>>>>>> laraxot/dev
                 $sk = $matches[1];
                 $sv = $matches[2];
                 ${$sk}[$sv] = $v;
@@ -479,9 +473,9 @@ if (! function_exists('isJson')) {
 
 if (! function_exists('actingAs')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function actingAs(Authenticatable|int|string|null $user = null, ?string $driver = null): Illuminate\Testing\TestResponse
+    function actingAs(Authenticatable|int|string|null $user = null, ?string $driver = null): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -491,9 +485,9 @@ if (! function_exists('get')) {
     /**
      * @param array<string, mixed> $options
      *
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function get(string $uri = '', array $options = []): Illuminate\Testing\TestResponse
+    function get(string $uri = '', array $options = []): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -503,9 +497,9 @@ if (! function_exists('post')) {
     /**
      * @param array<string, mixed> $options
      *
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function post(string $uri, mixed $data = [], array $options = []): Illuminate\Testing\TestResponse
+    function post(string $uri, mixed $data = [], array $options = []): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -513,9 +507,9 @@ if (! function_exists('post')) {
 
 if (! function_exists('put')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function put(string $uri, mixed $data = []): Illuminate\Testing\TestResponse
+    function put(string $uri, mixed $data = []): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -523,9 +517,9 @@ if (! function_exists('put')) {
 
 if (! function_exists('patch')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function patch(string $uri, mixed $data = []): Illuminate\Testing\TestResponse
+    function patch(string $uri, mixed $data = []): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -533,9 +527,9 @@ if (! function_exists('patch')) {
 
 if (! function_exists('delete')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function delete(string $uri): Illuminate\Testing\TestResponse
+    function delete(string $uri): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -543,9 +537,9 @@ if (! function_exists('delete')) {
 
 if (! function_exists('head')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function head(string $uri): Illuminate\Testing\TestResponse
+    function head(string $uri): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -553,9 +547,9 @@ if (! function_exists('head')) {
 
 if (! function_exists('options')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function options(string $uri): Illuminate\Testing\TestResponse
+    function options(string $uri): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }
@@ -563,9 +557,9 @@ if (! function_exists('options')) {
 
 if (! function_exists('followingRedirects')) {
     /**
-     * @return Illuminate\Testing\TestResponse<Illuminate\Http\Response>
+     * @return TestResponse<Response>
      */
-    function followingRedirects(int $number = 5): Illuminate\Testing\TestResponse
+    function followingRedirects(int $number = 5): TestResponse
     {
         throw new RuntimeException('Stub: This function is meant for static analysis only.');
     }

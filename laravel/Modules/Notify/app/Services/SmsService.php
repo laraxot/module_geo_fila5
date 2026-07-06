@@ -6,6 +6,7 @@ namespace Modules\Notify\Services;
 
 use Illuminate\Support\Str;
 use ReflectionClass;
+use ReflectionException;
 use RuntimeException;
 
 /**
@@ -144,7 +145,7 @@ class SmsService
             }
 
             $this->mergeVars($typedResult);
-        } catch (\ReflectionException $e) {
+        } catch (ReflectionException $e) {
             throw new RuntimeException('Errore durante la chiamata dei metodi: '.$e->getMessage());
         }
 

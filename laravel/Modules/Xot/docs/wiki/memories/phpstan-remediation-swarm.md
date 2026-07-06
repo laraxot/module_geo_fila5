@@ -3,7 +3,7 @@ title: "PHPStan Remediation Swarm — Lessons"
 type: concept
 tags: [phpstan, larastan, remediation, xot, techplanner]
 created: 2026-06-06
-updated: 2026-07-01
+updated: 2026-06-06
 qmd: "phpstan remediation swarm TechPlanner main_module XotData Larastan BelongsTo Profile"
 issues:
   - "https://github.com/laraxot/module_xot_fila5/issues/28"
@@ -80,8 +80,6 @@ config(['xra.main_module' => 'TechPlanner']);
 
 **Fix:** Rely on `XotBaseWidget::resolveView()` + `GetViewByClassAction` (view at `seo::filament.widgets.social-share`). Do not duplicate a string `$view` default unless it is a class constant PHPStan can narrow.
 
-**Ponytail (YAGNI):** `Modules/Xot/Filament/Widgets/TestWidget` rimosso (2026-07-01) — duplicato morto di `Modules/UI/Filament/Widgets/TestWidget`, vista `xot::filament.widgets.test` assente, nessun riferimento nel codice. `property.defaultValue` su `view-string` senza file blade → eliminare, non annotare.
-
 ## 8. `BuildTimelineVisualizationAction` — Carbon vs string
 
 **Symptom:** `format()` on `Carbon|string` for `WorkHour::$timestamp`.
@@ -104,15 +102,11 @@ config(['xra.main_module' => 'TechPlanner']);
 
 ```bash
 cd laravel
-php -d memory_limit=4G ./vendor/bin/phpstan clear-result-cache
-for m in Activity IndennitaCondizioniLavoro IndennitaResponsabilita Job Lang Media Notify Performance Progressioni Ptv Rating Sigma Tenant UI User Xot; do
-  php -d memory_limit=4G ./vendor/bin/phpstan analyse "Modules/$m" --level=10 --no-progress
-done
+./vendor/bin/phpstan clear-result-cache
+./vendor/bin/phpstan analyse --no-progress
 ```
 
-Esclusi da sweep progetto: `Incentivi`, `Pdnd`. Temi: path `Themes/` commentato in `phpstan.neon` — analisi per-tema solo se abilitato.
-
-Target: **0 errori** per modulo, baseline vuota. Worker paralleli: usare `php -d memory_limit=4G` (default worker 512M → OOM su `User`).
+Target: **0 errors**, empty baseline.
 
 ## False friends (do not “fix”)
 

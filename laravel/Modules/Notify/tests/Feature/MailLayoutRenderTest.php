@@ -13,7 +13,7 @@ use PHPUnit\Framework\Assert;
 uses(\Modules\Notify\Tests\TestCase::class);
 
 it('resolves christmas professional layout when context is christmas', function (): void {
-    Config::set('xra.pub_theme', 'Zero');
+    Config::set('xra.pub_theme', 'TwentyOne');
 
     app()->instance(GetThemeContextAction::class, new class extends GetThemeContextAction
     {

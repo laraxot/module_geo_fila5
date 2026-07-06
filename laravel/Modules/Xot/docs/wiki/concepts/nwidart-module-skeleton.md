@@ -18,17 +18,16 @@ Xot è il modulo base Laraxot: la regola skeleton vale per **tutti** i moduli, n
 
 Vedi hub repo: [nwidart-module-skeleton-contract.md](../../../../docs/wiki/concepts/nwidart-module-skeleton-contract.md)
 
-## Guard e restore
+## Ripristino (forward-only)
 
 ```bash
+bash bashscripts/tools/study-nwidart-missing-files.sh Xot
+# git show HEAD:laravel/Modules/Xot/... → riscrivi versione migliorata
 bash bashscripts/tools/guard-nwidart-module-skeleton.sh
-bash bashscripts/tools/restore-nwidart-deleted-files.sh Xot
 ```
 
-## Ponytail
+**Vietato:** `git restore`, `git checkout HEAD --`, script `restore-nwidart-deleted-files.sh`.
 
-Gli script `ponytail-wave5-archive.sh` e `ponytail-purge-bak-files.sh` rifiutano o verificano path protetti. Non archiviare mai `composer.json`, `module.json`, `package.json`, `.github/`, `*ServiceProvider.php`.
+Incidente 2026-07-01: provider e `.github` eliminati per errore → recuperati studiando storico e riscrivendo, non con restore.
 
-## Incidente 2026-07-01
-
-Provider e `.github` eliminati per errore durante audit → ripristinati da `git checkout HEAD -- laravel/Modules/{Modulo}`.
+Hub: [git-forward-only-study-old-version.md](../../../../docs/wiki/concepts/git-forward-only-study-old-version.md)

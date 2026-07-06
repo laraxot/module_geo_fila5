@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 use Modules\Activity\Database\Factories\ActivityFactory;
 use Modules\Activity\Database\Factories\SnapshotFactory;
+use Modules\Activity\Database\Factories\StoredEventFactory;
 use Modules\Activity\Models\Activity;
 use Modules\Activity\Models\Snapshot;
 use Modules\Activity\Models\StoredEvent;
@@ -15,9 +16,10 @@ use Modules\Activity\Tests\TestCase;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use PHPUnit\Framework\Assert;
+
 use function Safe\json_encode;
 
-uses(\Modules\Activity\Tests\TestCase::class);
+uses(TestCase::class);
 
 test('activity module models work together in integrated scenarios', function () {
     $user = UserFactory::new()->createOne();
@@ -284,7 +286,7 @@ test('activity module handles data consistency across models', function () {
     ]);
     Assert::assertNotNull($snapshot);
 
-    $storedEvent = StoredEvent::query()->create([
+    $storedEvent = StoredEventFactory::new()->createOne([
         'aggregate_uuid' => $aggregateUuid,
         'aggregate_version' => 1,
         'event_version' => 1,
@@ -298,15 +300,21 @@ test('activity module handles data consistency across models', function () {
         'meta_data' => [],
         'created_at' => now(),
     ]);
-    Assert::assertNotNull($storedEvent);
+    Assert::assertInstanceOf(StoredEvent::class, $storedEvent);
 
     $activityPropertiesValue = $activity->properties;
     Assert::assertNotNull($activityPropertiesValue);
     $activityProperties = is_array($activityPropertiesValue)
         ? $activityPropertiesValue
         : $activityPropertiesValue->all();
-    $snapshotState = $snapshot->state;
-    $storedEventProperties = $storedEvent->event_properties;
+    $snapshotStateValue = $snapshot->state;
+    Assert::assertNotNull($snapshotStateValue);
+    $snapshotState = is_array($snapshotStateValue)
+        ? $snapshotStateValue
+        : $snapshotStateValue->all();
+    $storedEventPropertiesValue = $storedEvent->event_properties;
+    Assert::assertIsArray($storedEventPropertiesValue);
+    $storedEventProperties = $storedEventPropertiesValue;
 
     $activity->update(['properties' => array_merge($activityProperties, ['verified' => true])]);
     $snapshot->update(['state' => array_merge($snapshotState, ['verified' => true])]);

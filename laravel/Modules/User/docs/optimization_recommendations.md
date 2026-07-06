@@ -1,3 +1,4 @@
+*Ultimo aggiornamento: gennaio 2025*
 ---
 module: theme
 topic: optimization_recommendations

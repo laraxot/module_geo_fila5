@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
@@ -38,15 +37,11 @@ class AssignTeamCommand extends Command
         $xot = XotData::make();
         $email = text('email ?');
         $user = XotData::make()->getUserByEmail($email);
-        if (! $user instanceof BaseUser) {
-            $this->error('Il modello utente non supporta membership team.');
-
-            return;
-        }
+        Assert::isInstanceOf($user, BaseUser::class);
 
         $teamClass = $xot->getTeamClass();
 
-        /** @var array<int|string, string>|Collection<int|string, string> */
+        /** @var array<int|string, string> $opts */
         $opts = $teamClass::pluck('name', 'id')->toArray();
 
         $rows = multiselect(
@@ -70,12 +65,9 @@ class AssignTeamCommand extends Command
          */
         $this->info('Teams :'.implode(', ', $rows).' assigned to '.$email);
 
-        $membershipTeams = $user->membershipTeams()->get();
-        $rows = $membershipTeams
-            ->map(static fn ($team): array => $team->toArray())
-            ->all();
+        $rows = $user->membershipTeams()->get()->toArray();
 
-        if ($rows !== []) {
+        if (\count($rows) > 0) {
             Assert::isArray($rows[0]);
             $headers = array_keys($rows[0]);
 

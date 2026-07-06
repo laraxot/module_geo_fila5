@@ -20,6 +20,7 @@ trait HasMyLogs
             ->append('\Models\MyLog')
             ->toString();
 
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> $log_class */
         return $this->morphMany($log_class, 'model');
     }
 }

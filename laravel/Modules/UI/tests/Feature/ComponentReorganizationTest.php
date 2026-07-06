@@ -111,8 +111,11 @@ describe('Component Rendering Tests', function (): void {
     });
 
     test('reorganized components can be rendered in blade templates', function (): void {
+        Assert::assertTrue(View::exists('pub_theme::components.forms.input'));
+        /** @var view-string $viewName */
+        $viewName = 'pub_theme::components.forms.input';
         try {
-            $html = view('pub_theme::components.forms.input', [
+            $html = view($viewName, [
                 'name' => 'test',
                 'type' => 'text',
                 'value' => 'test-value',
@@ -129,8 +132,10 @@ describe('Component Rendering Tests', function (): void {
             Assert::markTestSkipped('pub_theme utilities.button view is not available in this install.');
         }
 
+        /** @var view-string $viewName */
+        $viewName = 'pub_theme::components.utilities.button';
         try {
-            $html = view('pub_theme::components.utilities.button', [
+            $html = view($viewName, [
                 'type' => 'button',
             ])->render();
         } catch (\Throwable $e) {
@@ -145,8 +150,10 @@ describe('Component Rendering Tests', function (): void {
             Assert::markTestSkipped('pub_theme data-display.card view is not available in this install.');
         }
 
+        /** @var view-string $viewName */
+        $viewName = 'pub_theme::components.data-display.card';
         try {
-            $html = view('pub_theme::components.data-display.card', [
+            $html = view($viewName, [
                 'title' => 'Test Card',
                 'subtitle' => 'Test Subtitle',
             ])->render();

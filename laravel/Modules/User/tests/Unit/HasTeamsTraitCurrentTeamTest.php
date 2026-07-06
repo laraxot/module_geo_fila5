@@ -13,6 +13,7 @@ uses(TestCase::class);
 
 beforeEach(function (): void {
     /* @var \Modules\User\Tests\TestCase $this */
+    /* @var TestCase $this */
     $this->skipUnlessUsersTableReady();
 });
 
@@ -65,6 +66,7 @@ describe('Has Teams Trait Current Team', function (): void {
     });
 
     test('has teams switch team can change current team', function (): void {
+        /** @var TestCase $this */
         $user = hasTeamsCurrentCreateUser();
         $team1 = hasTeamsCurrentCreateTeam($user, ['name' => 'Team 1', 'personal_team' => false]);
         $team2 = hasTeamsCurrentCreateTeam($user, ['name' => 'Team 2', 'personal_team' => true]);

@@ -33,6 +33,16 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         return self::LIST;
     }
 
+    public function getTooltip(): string
+    {
+        return $this->transClass(self::class, $this->value.'.tooltip');
+    }
+
+    public function getHelperText(): string
+    {
+        return $this->transClass(self::class, $this->value.'.helper_text');
+    }
+
     public function toggle(): self
     {
         return match ($this) {
@@ -43,12 +53,12 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
 
     public function isGridLayout(): bool
     {
-        return $this === self::GRID;
+        return self::GRID === $this;
     }
 
     public function isListLayout(): bool
     {
-        return $this === self::LIST;
+        return self::LIST === $this;
     }
 
     /**
@@ -78,8 +88,6 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
      * This method replaces the old debug_backtrace approach with explicit
      * parameter passing for better type safety and testability.
      *
-     * @param array<Column|ColumnGroup|Component> $listColumns Columns for list layout
-     * @param array<Column|ColumnGroup|Component> $gridColumns Columns for grid layout
      * @param array<Column|ColumnGroup|Component> $listColumns Columns for list layout
      * @param array<Column|ColumnGroup|Component> $gridColumns Columns for grid layout
      *

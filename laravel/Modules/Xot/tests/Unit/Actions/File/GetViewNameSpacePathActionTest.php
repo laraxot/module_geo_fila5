@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
-uses(Modules\Xot\Tests\TestCase::class);
 use Modules\Xot\Actions\File\GetViewNameSpacePathAction;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
+
 it('gets view namespace path from theme fallback correctly', function (): void {
-    /** @var Modules\Xot\Tests\TestCase $this */
+    /** @var TestCase $this */
     $ns = 'pub_theme';
     $themeName = 'TestTheme';
 

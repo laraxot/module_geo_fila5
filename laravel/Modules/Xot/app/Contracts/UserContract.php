@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\Contracts\OAuthenticatable;
 use Laravel\Passport\PersonalAccessTokenResult;
 use Laravel\Passport\Token;
@@ -28,21 +29,21 @@ use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 /**
  * Modules\Xot\Contracts\UserContract.
  *
- * @property string|null                     $id
- * @property string|null                     $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string|null                     $first_name
- * @property string|null                     $last_name
- * @property string|null                     $full_name
- * @property string|null                     $name
- * @property string|null                     $phone
- * @property string|null                     $type
- * @property string|null                     $current_team_id
- * @property TeamContract                    $currentTeam
- * @property ProfileContract|null            $profile
- * @property Collection<int, UserRole>       $roles
- * @property Collection<int, Team>           $teams
- * @property Collection<int, Tenant>         $tenants
+ * @property string|null               $id
+ * @property string|null               $email
+ * @property Carbon|null               $email_verified_at
+ * @property string|null               $first_name
+ * @property string|null               $last_name
+ * @property string|null               $full_name
+ * @property string|null               $name
+ * @property string|null               $phone
+ * @property string|null               $type
+ * @property string|null               $current_team_id
+ * @property TeamContract              $currentTeam
+ * @property ProfileContract|null      $profile
+ * @property Collection<int, UserRole> $roles
+ * @property Collection<int, Team>     $teams
+ * @property Collection<int, Tenant>   $tenants
  *
  * @phpstan-require-extends Model
  *
@@ -135,6 +136,15 @@ interface UserContract extends Authenticatable, HasMedia, HasName, HasTenants, M
      * @return BelongsToMany<Model, Model>
      */
     public function teams(): BelongsToMany;
+
+    /**
+     * Get the teams the user belongs to (excluding owned teams).
+     *
+     * Aliased from HasTeams::teams() on BaseUser via `use ... { HasTeams::teams as membershipTeams; }`.
+     *
+     * @return BelongsToMany<Model&TeamContract, Model, \Illuminate\Database\Eloquent\Relations\Pivot, 'pivot'>
+     */
+    public function membershipTeams(): BelongsToMany;
 
     /**
      * Get the user's tenants.

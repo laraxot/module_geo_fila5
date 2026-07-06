@@ -249,10 +249,12 @@ describe('User Management Business Logic', function (): void {
     });
 
     test('can soft delete user', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('User model does not use SoftDeletes.');
     });
 
     test('can restore soft deleted user', function (): void {
+        /* @var TestCase $this */
         $this->skipTest('User model does not use SoftDeletes.');
     });
 
@@ -355,6 +357,7 @@ describe('User Management Business Logic', function (): void {
     });
 
     test('can validate user email uniqueness', function (): void {
+        /* @var TestCase $this */
         UserFactory::new()->createOne(['email' => 'test@example.com']);
 
         try {

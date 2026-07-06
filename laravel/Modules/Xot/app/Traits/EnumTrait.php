@@ -43,13 +43,6 @@ trait EnumTrait
         return $this->transClass(self::class, 'values.'.$this->value.'.helper_text');
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> laraxot/dev
-=======
->>>>>>> laraxot/dev
     /**
      * @return array<string>
      */

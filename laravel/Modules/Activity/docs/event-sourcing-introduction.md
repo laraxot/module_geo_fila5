@@ -1,3 +1,9 @@
+---
+module: theme
+topic: event-sourcing-introduction
+canonical: ../../../Themes/docs/shared-components/event-sourcing-introduction-duplicate.md
+---
+
 # Event Sourcing in `<nome progetto>`
 
 ## Introduction to Event Sourcing

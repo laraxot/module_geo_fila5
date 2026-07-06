@@ -36,6 +36,8 @@ class NetfunSendAction
     }
 
     /**
+     * Execute the action.
+     *
      * @return array<string, mixed>
      */
     public function execute(SmsData $smsData): array

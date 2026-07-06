@@ -25,6 +25,7 @@ describe('Safe Array By Model Cast Action', function (): void {
     });
 
     test('falls back to safe execute on error', function (): void {
+        /** @var TestCase $this */
         $model = $this->createUnitMock(Model::class);
         $model->method('attributesToArray')->willThrowException(new \Exception('Mock error'));
         $model->method('getAttributes')->willReturn(['name' => 'Fallback']);

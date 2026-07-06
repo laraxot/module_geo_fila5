@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 use function Safe\preg_replace_callback;
 
+/** @phpstan-ignore trait.unused */
 trait HasNotificationTracking
 {
     /**

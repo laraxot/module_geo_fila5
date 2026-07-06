@@ -3,14 +3,12 @@
 declare(strict_types=1);
 
 namespace Modules\Notify\Tests\Unit\Channels;
-use function Safe\file_get_contents;
-use Modules\Notify\Channels\NetfunChannel;
 
+use Modules\Notify\Channels\NetfunChannel;
 use PHPUnit\Framework\Assert;
+
 describe('NetfunChannel', function () {
     it('can be instantiated', function () {
-        // NetfunChannel requires SendNetfunSMSAction in constructor
-        // but we can test structure via reflection
         $reflection = new \ReflectionClass(NetfunChannel::class);
         Assert::assertTrue($reflection->isInstantiable());
     });
@@ -34,10 +32,10 @@ describe('NetfunChannel', function () {
         Assert::assertStringContainsString('declare(strict_types=1)', $content);
     });
 
-    it('has protected sendSMSAction property', function () {
+    it('has private factory dependency', function () {
         $reflection = new \ReflectionClass(NetfunChannel::class);
-        $property = $reflection->getProperty('sendSMSAction');
+        $property = $reflection->getProperty('factory');
 
-        Assert::assertTrue($property->isProtected());
+        Assert::assertTrue($property->isPrivate());
     });
 });

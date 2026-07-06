@@ -112,7 +112,11 @@ class SendNetfunSmsPage extends XotBasePage
     {
         $data = $this->smsForm->getState();
 
-        $smsData = SmsData::from($data);
+        $smsData = SmsData::from([
+            'recipient' => (string) ($data['recipient'] ?? ''),
+            'body' => (string) ($data['body'] ?? ''),
+            'from' => (string) ($data['from'] ?? ''),
+        ]);
         $provider = $data['provider'] ?? 'netfun';
 
         try {
@@ -145,11 +149,13 @@ class SendNetfunSmsPage extends XotBasePage
         }
     }
 
-    /** @return array<string, \Filament\Actions\Action> */
+    /**
+     * @return array<int, Action>
+     */
     protected function getSmsFormActions(): array
     {
         return [
-            'submit' => Action::make('sendSms')->label(__('notify::sms.actions.send'))->submit('sendSms'),
+            Action::make('sendSms')->label(__('notify::sms.actions.send'))->submit('sendSms'),
         ];
     }
 

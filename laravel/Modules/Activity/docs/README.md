@@ -181,6 +181,12 @@ php artisan test --testsuite=Activity
 php artisan activity:test-events
 ```
 
+## 🎛️ **Filament Integration**
+
+- **ListLogActivitiesAction** - Action per visualizzare lo storico attività da tabella Resource
+- **ListLogActivities** - Pagina dettaglio log con paginazione custom
+- **ActivityServiceProvider** - Registrazione moduli, route, view, traduzioni
+
 ## 📚 **Documentazione Completa**
 
 ### 🏗️ **Architettura**
@@ -597,22 +603,3 @@ Activity/
 
 ## AI Workflows
 - [AI Methodologies](./ai-methodologies.md)
----
-
-## ✅ PHPStan Status — Verifica 2026-07-01
-
-| Data | Livello | Errori |
-|------|---------|--------|
-| 2026-07-01 | max | **0** |
-
-```bash
-./vendor/bin/phpstan analyze Modules/Activity --level=max --memory-limit=512M
-# [OK] No errors
-```
-
-Modulo conforme alle regole Laraxot:
-- Classi Filament estendono XotBase (mai direttamente Filament)
-- Nessun label/placeholder/tooltip hardcoded
-- Nessun BadgeColumn (usa TextColumn::make()->badge())
-- Actions usano QueueableAction pattern
-- Nessun Service tradizionale

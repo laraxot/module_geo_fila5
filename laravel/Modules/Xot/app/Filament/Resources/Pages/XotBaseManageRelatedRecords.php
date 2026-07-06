@@ -10,7 +10,6 @@ use Filament\Resources\Pages\ManageRelatedRecords as FilamentManageRelatedRecord
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Contracts\Support\Htmlable;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Traits\HasRelationshipModelClass;
 use Modules\Xot\Filament\Traits\HasXotForm;
@@ -59,19 +58,6 @@ abstract class XotBaseManageRelatedRecords extends FilamentManageRelatedRecords
     public function getFormSchema(): array
     {
         return [];
-    }
-
-    protected function getTableHeading(): Htmlable|string|null
-    {
-        return $this->getTableHeadingFromTrait();
-    }
-
-    private function getTableHeadingFromTrait(): ?string
-    {
-        $key = static::getKeyTrans('table.heading');
-        $trans = trans($key);
-
-        return is_string($trans) && $trans !== $key ? $trans : null;
     }
 
     /**

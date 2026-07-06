@@ -39,6 +39,19 @@ At theme root level, these folders MUST NOT exist:
 - ❌ `Listeners/`
 - ❌ `Database/` (capitalized)
 
+## Regola Dipendenza Moduli
+
+La dipendenza tra moduli è **unidirezionale**:
+
+```
+Xot ← UI ← Geo, User, Tenant, Activity, …
+```
+
+- Il modulo **UI non dipende** da Geo (o altri moduli domain-specific)
+- Il modulo **Geo può dipendere** da UI
+- Componenti geografici (mappe, geocoding, `LocationSelector` con `Comune`) → `Modules/Geo/`
+- Ref: [`Modules/UI/docs/dependency-rules.md`](../../../../Modules/UI/docs/dependency-rules.md)
+
 ---
 
-*Updated: June 2026*
+*Updated: 2026-07-06*

@@ -20,11 +20,14 @@ trait HasStabiDirigente
         $module_low = Str::lower($module);
         $related_key = config($module_low.'::field_map.StabiDirigente.fields.related_key');
 
+        /** @var string|null $related_key */
+
         $class = Str::of($static_class)
             ->before('\Models\\')
             ->append('\Models\StabiDirigente')
             ->toString();
 
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> $class */
         return $this->hasMany($class, 'stabi', $related_key);
     }
 }

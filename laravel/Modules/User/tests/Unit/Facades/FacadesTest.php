@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-uses(Modules\User\Tests\TestCase::class);
 use Modules\User\Facades\FilamentShield;
 use PHPUnit\Framework\Assert;
+
+uses(Modules\User\Tests\TestCase::class);
 
 test('FilamentShield facade can be accessed', function () {
     Assert::assertTrue(class_exists(FilamentShield::class));

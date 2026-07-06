@@ -17,6 +17,7 @@ use function Safe\unlink;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+    /* @var \Modules\Xot\Tests\TestCase $this */
     $this->action = app(SavePhpArrayAction::class);
     $this->tempDir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'pest_test_'.uniqid();
     if (! file_exists($this->tempDir)) {
@@ -25,6 +26,7 @@ beforeEach(function (): void {
 });
 
 afterEach(function (): void {
+    /** @var TestCase $this */
     if (isset($this->tempDir) && file_exists($this->tempDir)) {
         $dir = $this->tempDir;
         $files = glob($dir.'/*');
@@ -38,6 +40,7 @@ afterEach(function (): void {
 
 describe('Save Php Array Action', function (): void {
     test('saves array to php file', function (): void {
+        /** @var TestCase $this */
         $data = ['a' => 1, 'b' => 'test'];
         $path = $this->tempDir.'/data.php';
 
@@ -49,6 +52,7 @@ describe('Save Php Array Action', function (): void {
     });
 
     test('saved file has strict types', function (): void {
+        /** @var TestCase $this */
         $path = $this->tempDir.'/strict.php';
         app(SavePhpArrayAction::class)->execute(['x' => 1], $path);
 

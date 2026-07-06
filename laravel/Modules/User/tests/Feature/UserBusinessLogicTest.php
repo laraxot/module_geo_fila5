@@ -21,6 +21,7 @@ uses(TestCase::class);
 
 describe('User Business Logic', function (): void {
     test('enforces password complexity requirements', function (): void {
+        /** @var TestCase $this */
         $weakPassword = '123456';
         $strongPassword = 'SecurePass123!';
 
@@ -40,6 +41,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces username uniqueness when required', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableHasColumn('users', 'username')) {
             $email = 'alias-'.uniqid('', true).'@example.com';
             createTestUser(['email' => $email]);
@@ -86,6 +88,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces age restrictions for certain operations', function (): void {
+        /* @var TestCase $this */
         if (! Schema::connection('fixcity')->hasColumn('profiles', 'uuid')) {
             $this->skipTest('profiles.uuid column missing — Profile model requires uuid.');
         }
@@ -116,6 +119,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces team membership limits', function (): void {
+        /** @var TestCase $this */
         $user = createTestUser();
         /** @var Collection<int, Team> $teams */
         $teams = TeamFactory::new()->count(5)->create();
@@ -134,6 +138,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces team role hierarchy', function (): void {
+        /** @var TestCase $this */
         $user = createTestUser();
         $team = TeamFactory::new()->createOne();
 
@@ -147,6 +152,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces team ownership rules', function (): void {
+        /** @var TestCase $this */
         $owner = createTestUser();
         $member = createTestUser();
         $team = TeamFactory::new()->createOne(['user_id' => $owner->id]);
@@ -173,6 +179,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces permission conflicts', function (): void {
+        /** @var TestCase $this */
         if (! $this->userTableExists('model_has_permission')) {
             $this->skipTest('model_has_permission table missing on user connection.');
         }
@@ -217,6 +224,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces referential integrity for user relationships', function (): void {
+        /* @var TestCase $this */
         if (! Schema::connection('fixcity')->hasColumn('profiles', 'uuid')) {
             $this->skipTest('profiles.uuid column missing — Profile model requires uuid.');
         }
@@ -258,6 +266,7 @@ describe('User Business Logic', function (): void {
     });
 
     test('enforces audit trail for sensitive operations', function (): void {
+        /** @var TestCase $this */
         $user = createTestUser();
         $originalEmail = $user->email;
         $originalUpdatedAt = $user->updated_at;

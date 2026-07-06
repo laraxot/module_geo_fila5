@@ -82,6 +82,9 @@ trait EnteMatrRelationship
         return $this->hasManyByEnteMatr(Asz00k1::class);
     }
 
+    /**
+     * @return HasMany<Integparam, $this>
+     */
     public function integParams(): HasMany
     {
         return $this->hasManyByEnteMatr(Integparam::class);
