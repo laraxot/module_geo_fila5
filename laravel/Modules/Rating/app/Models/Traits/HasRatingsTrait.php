@@ -157,7 +157,6 @@ trait HasRatingsTrait
      */
     public function getRatingsWhere(array $filters): Collection
     {
-        /** @var Builder $query */
         $query = $this->ratings();
 
         foreach ($filters as $key => $filterValue) {
@@ -170,6 +169,9 @@ trait HasRatingsTrait
         return $result;
     }
 
+    /**
+     * @param array<string, mixed> $where
+     */
     public function syncRatingsWhere(array $where): Collection
     {
         $ratingClass = $this->getRatingClass();

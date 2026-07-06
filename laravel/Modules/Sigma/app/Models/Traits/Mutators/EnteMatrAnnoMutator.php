@@ -12,6 +12,7 @@ trait EnteMatrAnnoMutator
 {
     protected function getPercPTimeYearAttribute(mixed $_value): int|float
     {
+        /** @var HasMany<Qua00f, $this> $rows */
         $rows = $this->qua00fYear();
         $array = $rows->get()->toArray();
 
@@ -47,6 +48,7 @@ trait EnteMatrAnnoMutator
 
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
+        /** @var HasMany<Qua00f, $this> $rows */
         $rows = $this->qua00f()
             ->withDays($date_min, $date_max)
             ->withPercPtime()
@@ -96,8 +98,10 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
+        /** @var HasMany<Asz00k1, $this> $aszRelation */
+        $aszRelation = $this->asz00k1();
         /** @var Collection<int, Asz00k1> $collection */
-        $collection = $this->asz00k1()
+        $collection = $aszRelation
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->withDays($date_min, $date_max)
@@ -134,7 +138,9 @@ trait EnteMatrAnnoMutator
      */
     protected function getGgPTimeVertYearAttribute(mixed $_value): int|float
     {
-        $asz = $this->asz00k1Year()
+        /** @var HasMany<Asz00k1, $this> $aszRelation */
+        $aszRelation = $this->asz00k1Year();
+        $asz = $aszRelation
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->get();
@@ -159,8 +165,10 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
+        /** @var HasMany<Asz00k1, $this> $aszRelation */
+        $aszRelation = $this->asz00k1();
         /** @var Collection<int, Asz00k1> $collection */
-        $collection = $this->asz00k1()
+        $collection = $aszRelation
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->withDays($date_min, $date_max)
