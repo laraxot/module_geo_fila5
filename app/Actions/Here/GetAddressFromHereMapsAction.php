@@ -7,8 +7,10 @@ namespace Modules\Geo\Actions\Here;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\HereMap\HereMapResponseData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 
 class GetAddressFromHereMapsAction
 {
@@ -45,11 +47,11 @@ class GetAddressFromHereMapsAction
         }
 
         return AddressData::from([
-            'latitude' => (float) ($responseData->position['lat'] ?? 0),
-            'longitude' => (float) ($responseData->position['lng'] ?? 0),
+            'latitude' => SafeFloatCastAction::cast($responseData->position['lat'] ?? 0),
+            'longitude' => SafeFloatCastAction::cast($responseData->position['lng'] ?? 0),
             'country' => $responseData->address['countryName'] ?? 'Italia',
             'city' => $responseData->address['city'] ?? '',
-            'postal_code' => (int) ($responseData->address['postalCode'] ?? 0),
+            'postal_code' => SafeIntCastAction::cast($responseData->address['postalCode'] ?? 0),
             'street' => $responseData->address['street'] ?? '',
             'street_number' => $responseData->address['houseNumber'] ?? '',
         ]);

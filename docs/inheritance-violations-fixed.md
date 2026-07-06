@@ -11,9 +11,6 @@
 // Modules/Geo/app/Models/BaseModel.php
 abstract class BaseModel extends Model
 {
-    use \Modules\Xot\Models\Traits\HasXotFactory;  // ← GIÀ PRESENTE QUI
-    use Updater;
-
     use HasFactory;  // ← GIÀ PRESENTE QUI
     use Updater;
     
@@ -24,7 +21,6 @@ abstract class BaseModel extends Model
 ### Modelli con Violazioni
 1. **Province.php** - ❌ `use HasFactory` duplicato → ✅ CORRETTO
 2. **PlaceType.php** - ❌ `use HasFactory` + `newFactory()` → ✅ CORRETTO
-3. **State.php** - ❌ `use HasFactory` duplicato → ✅ CORRETTO
 3. **State.php** - ❌ `use HasFactory` duplicato → ✅ CORRETTO  
 4. **Place.php** - ❌ `use HasFactory` duplicato → ✅ CORRETTO
 5. **Comune.php** - ❌ `use HasFactory` duplicato → ✅ CORRETTO
@@ -37,8 +33,6 @@ abstract class BaseModel extends Model
 // ❌ PRIMA - Con duplicazioni
 class PlaceType extends BaseModel
 {
-    use \Modules\Xot\Models\Traits\HasXotFactory;  // DUPLICAZIONE!
-
     use HasFactory;  // DUPLICAZIONE!
     
     protected static function newFactory(): \Modules\Geo\Database\Factories\PlaceTypeFactory
@@ -52,7 +46,6 @@ class PlaceType extends BaseModel
 {
     // NIENTE trait duplicati!
     // NIENTE metodi newFactory()!
-    
     
     protected $fillable = [
         'name',
@@ -88,7 +81,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 - **Catena ereditarietà** pulita e prevedibile
 - **Manutenzione** centralizzata in BaseModel
 
-### Performance
 ### Performance  
 - **Nessun overhead** trait duplicati
 - **Memory usage** ottimizzato
@@ -122,7 +114,6 @@ grep -r "use HasFactory" Modules/*/app/Models/ | grep -v BaseModel
 ### Altri Moduli da Verificare
 Questo pattern di violazione potrebbe esistere in altri moduli:
 - **User**: BaseUser vs User, Doctor, Patient
-- **<main module>**: BaseModel vs modelli specifici
 - **<main module>**: BaseModel vs modelli specifici  
 - **Notify**: BaseModel vs modelli notifica
 - **Cms**: BaseModel vs modelli content

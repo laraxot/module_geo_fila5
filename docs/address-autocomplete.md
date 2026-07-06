@@ -18,14 +18,17 @@ https://github.com/tmentink/jquery.geocomplete
 https://stackoverflow.com/questions/65873447/googles-place-autocomplete-address-form-typescript-error-on-indexing-geocoder
 
 
-https://www.studentstutorial.com/jquery/google_places_autocomplete
-
-https://github.com/tmentink/jquery.geocomplete
-
-https://stackoverflow.com/questions/65873447/googles-place-autocomplete-address-form-typescript-error-on-indexing-geocoder
-
 https://www.npmjs.com/package/use-places-autocomplete
 
 https://github.com/wellyshen/use-places-autocomplete
 
 https://www.w3docs.com/learn-javascript/places-autocomplete.html
+
+
+
+
+
+
+
+
+

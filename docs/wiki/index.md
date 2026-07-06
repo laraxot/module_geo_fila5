@@ -42,8 +42,9 @@ related:
 - [map-lit-it-incidents-2026-06.md](troubleshooting/map-lit-it-incidents-2026-06.md) — STORY-121…129 runbook
 - [map-popup-header-whitespace-fix.md](troubleshooting/map-popup-header-whitespace-fix.md) — vuoto popup header→Tipologia
 - [farmshops-eu-applicability-fixcity.md](concepts/farmshops-eu-applicability-fixcity.md) — pattern cluster
+- [farmshops-cluster-type-icons-study.md](concepts/farmshops-cluster-type-icons-study.md) — STORY-284 gap stato→icone tipo
 - [map-lit-legend-types.md](concepts/map-lit-legend-types.md) — STORY-094 legenda tipologie
-- [map-lit-cluster-type-icons.md](concepts/map-lit-cluster-type-icons.md) — pallini 14px cluster
+- [map-lit-cluster-type-icons.md](concepts/map-lit-cluster-type-icons.md) — icone tipo cluster 14px (non stato)
 - [map-legend-status-semantics.md](concepts/map-legend-status-semantics.md) — STORY-125 stato vs tipologia
 - [geo-map-popup-bem.md](concepts/geo-map-popup-bem.md) — block `popup`, `<div class="popup__header">`
 - [geo-map-marker-status-background.md](concepts/geo-map-marker-status-background.md) — marker stato + pad bianco + punta
@@ -60,3 +61,7 @@ qmd search "Geo <topic>" --limit 5
 
 ---
 *Updated: 2026-06-03 — ricostruzione map-lit, marker pin, popup header fix*
+
+## Composer / nwidart
+
+- [composer-root-minimal-nwidart](concepts/composer-root-minimal-nwidart.md) — root skeleton nwidart (modello fixcity)

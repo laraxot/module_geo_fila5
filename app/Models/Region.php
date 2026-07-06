@@ -7,9 +7,10 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\File;
 use Modules\Geo\Database\Factories\RegionFactory;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
@@ -35,15 +36,9 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
+    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
     use HasXotFactory;
     use Sushi;
-
-    /**
-     * The factory class for this model.
-     *
-     * @var class-string<Factory>
-     */
-    protected static $factory = RegionFactory::class;
 
     /**
      * The data type of the primary key ID.
@@ -52,31 +47,92 @@ class Region extends BaseModel
      */
     protected $keyType = 'integer';
 
+    /** @var array<string, string> */
     protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
     ];
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
-        $rows = Comune::select('regione->codice as id', 'regione->nome as name')
-            ->distinct()
-            ->orderBy('regione->nome')
-            ->get();
+        $path = module_path('Geo', 'resources/json/comuni.json');
+        if (! file_exists($path)) {
+            return [];
+        }
 
-        return $rows->toArray();
+        $items = File::json($path);
+        if (! is_array($items)) {
+            return [];
+        }
+
+        /** @var array<string, array{id: mixed, name: string}> $unique */
+        $unique = [];
+
+        foreach ($items as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            $regione = $item['regione'] ?? null;
+            if (is_string($regione)) {
+                $id = $regione;
+                $name = $regione;
+            } elseif (is_array($regione)) {
+                $id = $regione['codice'] ?? null;
+                $name = $regione['nome'] ?? null;
+            } else {
+                continue;
+            }
+
+            if (null === $id || null === $name) {
+                continue;
+            }
+
+            $key = SafeStringCastAction::cast($id);
+            if (! isset($unique[$key])) {
+                $unique[$key] = [
+                    'id' => $id,
+                    'name' => SafeStringCastAction::cast($name),
+                ];
+            }
+        }
+
+        $rows = array_values($unique);
+        usort(
+            $rows,
+            static fn (array $a, array $b): int => strcmp(
+                SafeStringCastAction::cast($a['name'] ?? ''),
+                SafeStringCastAction::cast($b['name'] ?? ''),
+            ),
+        );
+
+        return $rows;
     }
 
+    /**
+     * @return HasMany<Province, $this>
+     */
     public function provinces(): HasMany
     {
         return $this->hasMany(Province::class);
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function getOptions(Get $get): array
     {
-        return self::orderBy('name')
-            ->get()
-            ->pluck('name', 'id')
-            ->toArray();
+        $keys = [];
+        $values = [];
+
+        foreach (self::orderBy('name')->get() as $item) {
+            $keys[] = SafeStringCastAction::cast($item->id);
+            $values[] = SafeStringCastAction::cast($item->name ?? '');
+        }
+
+        return array_combine($keys, $values) ?: [];
     }
 }

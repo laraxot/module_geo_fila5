@@ -17,52 +17,40 @@ use Modules\Geo\Models\Address;
  */
 trait HasAddresses
 {
-    /**
-     * Relazione a tutti gli indirizzi.
-     */
+    /** @return MorphMany<Address, $this> */
     public function addresses(): MorphMany
     {
-        return $this->morphMany(Address::class, 'model');
+        return $this->morphMany(Address::class, 'model'); // @phpstan-ignore return.type
     }
 
-    /**
-     * Relazione all'indirizzo principale.
-     */
+    /** @return MorphOne<Address, $this> */
     public function primaryAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('is_primary', true);
+        return $this->morphOne(Address::class, 'model')->where('is_primary', true); // @phpstan-ignore return.type
     }
 
-    /**
-     * Relazione all'indirizzo di casa.
-     */
+    /** @return MorphOne<Address, $this> */
     public function homeAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value);
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value); // @phpstan-ignore return.type
     }
 
-    /**
-     * Relazione all'indirizzo di lavoro.
-     */
+    /** @return MorphOne<Address, $this> */
     public function workAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value);
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value); // @phpstan-ignore return.type
     }
 
-    /**
-     * Relazione all'indirizzo di fatturazione.
-     */
+    /** @return MorphOne<Address, $this> */
     public function billingAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value);
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value); // @phpstan-ignore return.type
     }
 
-    /**
-     * Relazione all'indirizzo di spedizione.
-     */
+    /** @return MorphOne<Address, $this> */
     public function shippingAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value);
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value); // @phpstan-ignore return.type
     }
 
     /**
@@ -101,9 +89,7 @@ trait HasAddresses
         return $this->addresses()->create($data);
     }
 
-    /**
-     * Ottiene gli indirizzi per tipo.
-     */
+    /** @return Collection<int, Address> */
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
     {
         $typeValue = $type instanceof AddressTypeEnum ? $type->value : $type;

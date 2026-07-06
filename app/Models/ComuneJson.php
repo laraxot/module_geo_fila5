@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Cache;
  * @see docs/geo-json-model.md Documentazione tecnica del modello base
  */
 /**
- * @mixin Builder
+ * @mixin Builder<*>
  */
 class ComuneJson extends GeoJsonModel
 {

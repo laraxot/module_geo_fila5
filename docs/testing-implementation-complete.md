@@ -300,9 +300,6 @@ jobs:
 
 - [Strategia di Testing Moduli](testing-strategy-modules.md) - Strategia completa
 - [Test Autenticazione](../tests/Feature/Auth/) - Pattern di riferimento esistenti
-- [Documentazione <nome progetto>](../Modules/<nome progetto>/docs/README.md) - Funzionalità business
-- [Documentazione <nome progetto>](../Modules/<nome progetto>/docs/README.md) - Funzionalità business
-- [Documentazione User](../Modules/User/docs/README.md) - Modulo core
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
 - [Documentazione User](../modules/user/docs/readme.md) - Modulo core
@@ -328,7 +325,6 @@ jobs:
 
 ---
 
-**Ultimo aggiornamento**: 28 Gennaio 2025
 **Stato**: ✅ Implementazione Completa
 **Responsabile**: Team Development
 **Review**: Richiesta per validazione e deployment

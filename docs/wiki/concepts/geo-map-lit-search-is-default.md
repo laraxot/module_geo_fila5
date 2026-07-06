@@ -9,7 +9,7 @@ Cliccandolo, la search box si espande. Si chiude con il pulsante X, tasto Escape
 
 ## Perché il toggle
 
-La ricerca copre troppo spazio quando aperta di default sulla mappa segnalazioni-elenco.
+La ricerca copre troppo spazio quando aperta di default sulla mappa ticket-list.
 Il pattern toggle (lens → expand → close) è lo stesso usato dai controlli fullscreen/zoom:
 i controlli mappa non occupano spazio permanente, appaiono on-demand.
 

@@ -7,13 +7,6 @@ Quando progettiamo la tabella per il modello `Address`, è importante considerar
 ### Migrazione Proposta
 
 ```php
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-use Modules\Geo\Enums\AddressItemEnum;
-
-public function up(): void
-{
-    Schema::create('addresses', function (Blueprint $table): void {
 public function up(): void
 {
     Schema::create('addresses', function (Blueprint $table) {
@@ -43,31 +36,10 @@ public function up(): void
         // Dati aggiuntivi
         $table->json('extra_data')->nullable()->comment('Dati aggiuntivi in formato JSON');
         
-
-        // Tutti i componenti dell'indirizzo definiti da AddressItemEnum (route, locality, ...)
-        AddressItemEnum::columns($table);
-
-        // Dati aggiuntivi
-        $table->json('extra_data')->nullable()->comment('Dati aggiuntivi in formato JSON');
-
         // Timestamp standard
         $table->timestamps();
     });
 }
-```
-
-Per rollback o refactor, è possibile usare:
-
-```php
-Schema::table('addresses', function (Blueprint $table): void {
-    AddressItemEnum::dropColumns($table);
-});
-```
-
-e ottenere la lista delle colonne standard (utile per select dinamiche, validazioni, DTO, ecc.) con:
-
-```php
-$columns = AddressItemEnum::getColumnNames();
 ```
 
 ## Convenzioni di Naming
@@ -80,7 +52,6 @@ Nella tua domanda hai giustamente notato:
 > $table->string('address_region', 100)->nullable()->comment('Regione/Provincia');
 > $table->string('postal_code', 20)->nullable()->comment('Codice postale');
 > $table->string('address_country', 2)->nullable()->comment('Codice paese ISO 3166-1 alpha-2');`
->
 > 
 > ripetere "address" quando siamo già nella tabella address?
 

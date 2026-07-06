@@ -25,7 +25,7 @@ class BingMapData extends Data
      *         addressLine: ?string,
      *         countryRegionIso2: ?string,
      *         neighborhood: ?string,
-     *         houseNumber?: ?string
+     *         houseNumber: ?string
      *     }
      * } $data
      */
@@ -50,7 +50,7 @@ class BingMapData extends Data
      *         addressLine: ?string,
      *         countryRegionIso2: ?string,
      *         neighborhood: ?string,
-     *         houseNumber?: ?string
+     *         houseNumber: ?string
      *     }
      * }
      */

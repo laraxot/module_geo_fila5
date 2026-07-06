@@ -119,7 +119,6 @@ Thumbs.db
 # ==============================================
 # LANGUAGE FILES
 # ==============================================
-lang/lang/
 resources/lang/
 
 # ==============================================
@@ -173,3 +172,7 @@ _docs/
 *.orig
 *.rej
 *~head
+
+agentdb.rvf
+.claude-flow/
+test-results

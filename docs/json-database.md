@@ -128,7 +128,6 @@ class GeoDataService
     {
         $cities = $this->getCities($provinceCode);
         
-        
         $city = collect($cities)
             ->firstWhere('id', $cityCode);
 
@@ -167,7 +166,6 @@ class LocationForm
                         ->selectablePlaceholder(false),
 
                     'province' => Select::make('province')
-                        ->options(fn (Get $get) =>
                         ->options(fn (Get $get) => 
                             $geoService->getProvinces($get('region'))
                         )
@@ -179,7 +177,6 @@ class LocationForm
                         ->selectablePlaceholder(false),
 
                     'city' => Select::make('city')
-                        ->options(fn (Get $get) =>
                         ->options(fn (Get $get) => 
                             $geoService->getCities($get('province'))
                         )
@@ -191,7 +188,6 @@ class LocationForm
                         ->selectablePlaceholder(false),
 
                     'cap' => Select::make('cap')
-                        ->options(fn (Get $get) =>
                         ->options(fn (Get $get) => 
                             collect($geoService->getCities($get('province')))
                                 ->firstWhere('id', $get('city'))['cap']
@@ -270,9 +266,6 @@ class GeoDataValidator
    - API esterna
 
 ## Collegamenti
-- [Documentazione Squire](../../Geo/project_docs/squire-integration.md)
-- [Best Practices Filament](../../../project_docs/filament-best-practices.md)
-- [Clean Code](../../../project_docs/clean-code.md)
 - [Documentazione Squire](../../geo/project_docs/squire-integration.md)
 - [Best Practices Filament](../../../../docs/project/filament-best-practices.md)
 - [Clean Code](../../../../docs/project/clean-code.md) 

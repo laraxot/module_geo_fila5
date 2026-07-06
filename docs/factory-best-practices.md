@@ -476,8 +476,6 @@ Al completamento di tutte le best practices:
 - [PHPStan Analysis Business Logic](../phpstan-analysis-business-logic.md)
 - [Business Logic Factory & Seeder Audit](../business-logic-factory-seeder-audit.md)
 - [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
-- [<nome progetto> Factory Issues Analysis](../laravel/Modules/<nome progetto>/docs/factory-issues-analysis.md)
-- [<nome progetto> Factory Issues Analysis](../laravel/Modules/<nome progetto>/docs/factory-issues-analysis.md)
 - [<nome progetto> Factory Issues Analysis](../laravel/modules/<nome progetto>/docs/factory-issues-analysis.md)
 - [<nome progetto> Factory Issues Analysis](../laravel/modules/<nome progetto>/docs/factory-issues-analysis.md)
 
@@ -486,4 +484,3 @@ Al completamento di tutte le best practices:
 **Stato**: Best practices definite, implementazione in corso
 **Priorità**: Type safety e schema alignment (ALTA)
 **Responsabile**: AI Assistant
-**Ultimo Aggiornamento**: 2025-01-06

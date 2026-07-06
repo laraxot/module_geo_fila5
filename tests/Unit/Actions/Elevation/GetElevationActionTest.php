@@ -7,202 +7,134 @@ namespace Modules\Geo\Tests\Unit\Actions\Elevation;
 use Modules\Geo\Actions\Elevation\GetElevationAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
-use Modules\Geo\Services\GoogleMapsService;
+use Modules\Geo\Tests\Fixtures\GoogleMapsServiceElevationStub;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-beforeEach(function () {
-    $mockGoogleMapsService = Mockery::mock(GoogleMapsService::class);
-    $action = new GetElevationAction($this->mockGoogleMapsService);
-});
-
-afterEach(function () {
-    Mockery::close();
-});
-
+uses(LightTestCase::class);
 it('gets elevation for valid location', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: 9.1900,
-        address: 'Milano, Italia',
-    );
-
-    $mockResponse = [
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub([
         'results' => [
             ['elevation' => 120.5, 'resolution' => 5.0],
         ],
-    ];
+    ]));
 
-    $mockGoogleMapsService
-        ->shouldReceive('getElevation')
-        ->once()
-        ->with(45.4642, 9.1900)
-        ->andReturn($mockResponse);
+    $location = new LocationData(
+        latitude: 45.4642,
+        longitude: 9.1900,
+        address: 'Milano, Italia',
+    );
 
-    // Act
-    $result = $action->execute($location);
-
-    // Assert
-    expect($result)->toBe(120.5);
+    Assert::assertSame(120.5, $action->execute($location));
 });
 
 it('throws exception for invalid latitude', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 100.0, // Invalid latitude > 90
-        longitude: 9.1900,
-        address: 'Invalid Location',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Act & Assert
-    expect(fn () => $action->execute($location))
-        ->toThrow(InvalidArgumentException::class, 'Latitudine non valida');
+    try {
+        $action->execute(new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'));
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
+    }
 });
 
 it('throws exception for invalid longitude', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: 200.0, // Invalid longitude > 180
-        address: 'Invalid Location',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Act & Assert
-    expect(fn () => $action->execute($location))
-        ->toThrow(InvalidArgumentException::class, 'Longitudine non valida');
+    try {
+        $action->execute(new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Invalid Location'));
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
+    }
 });
 
 it('throws exception for negative latitude', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: -100.0,
-        longitude: 9.1900,
-        address: 'Invalid Location',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Act & Assert
-    expect(fn () => $action->execute($location))
-        ->toThrow(InvalidArgumentException::class, 'Latitudine non valida');
+    try {
+        $action->execute(new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'));
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertStringContainsString('Latitudine non valida', $exception->getMessage());
+    }
 });
 
 it('throws exception for negative longitude', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: -200.0,
-        address: 'Invalid Location',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Act & Assert
-    expect(fn () => $action->execute($location))
-        ->toThrow(InvalidArgumentException::class, 'Longitudine non valida');
+    try {
+        $action->execute(new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Invalid Location'));
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertStringContainsString('Longitudine non valida', $exception->getMessage());
+    }
 });
 
 it('throws exception for empty response', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: 9.1900,
-        address: 'Milano, Italia',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub(['results' => []]));
 
-    $mockGoogleMapsService
-        ->shouldReceive('getElevation')
-        ->once()
-        ->andReturn(['results' => []]);
-
-    // Act & Assert
-    expect(fn () => $action->execute($location));
+    try {
+        $action->execute(new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'));
+        Assert::fail('Expected ElevationException was not thrown');
+    } catch (ElevationException $exception) {
+        Assert::assertSame('Nessun dato di elevazione trovato', $exception->getMessage());
+    }
 });
 
 it('throws exception for invalid response structure', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: 9.1900,
-        address: 'Milano, Italia',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub(['results' => ['invalid']]));
 
-    $mockGoogleMapsService
-        ->shouldReceive('getElevation')
-        ->once()
-        ->andReturn(['results' => ['invalid']]);
-
-    // Act & Assert
-    expect(fn () => $action->execute($location));
+    try {
+        $action->execute(new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'));
+        Assert::fail('Expected ElevationException was not thrown');
+    } catch (ElevationException $exception) {
+        Assert::assertSame('Struttura risposta elevazione non valida', $exception->getMessage());
+    }
 });
 
 it('throws exception when service throws generic exception', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 45.4642,
-        longitude: 9.1900,
-        address: 'Milano, Italia',
-    );
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub([], new \Exception('Network error')));
 
-    $mockGoogleMapsService
-        ->shouldReceive('getElevation')
-        ->once()
-        ->andThrow(new Exception('Network error'));
-
-    // Act & Assert
-    expect(fn () => $action->execute($location))
-        ->toThrow(ElevationException::class, 'Errore nel recupero dell\'elevazione');
+    try {
+        $action->execute(new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'));
+        Assert::fail('Expected ElevationException was not thrown');
+    } catch (ElevationException $exception) {
+        Assert::assertSame('Errore nel recupero dell\'elevazione', $exception->getMessage());
+    }
 });
 
 it('formats elevation correctly', function (): void {
-    // Act
-    $result = $action->formatElevation(1234.5);
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Assert
-    expect($result)->toBe('1234.5 m s.l.m.');
+    Assert::assertSame('1234.5 m s.l.m.', $action->formatElevation(1234.5));
 });
 
 it('formats elevation with zero value', function (): void {
-    // Act
-    $result = $action->formatElevation(0);
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Assert
-    expect($result)->toBe('0.0 m s.l.m.');
+    Assert::assertSame('0.0 m s.l.m.', $action->formatElevation(0));
 });
 
 it('formats negative elevation correctly', function (): void {
-    // Act (for locations below sea level like Dead Sea)
-    $result = $action->formatElevation(-430.0);
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Assert
-    expect($result)->toBe('-430.0 m s.l.m.');
+    Assert::assertSame('-430.0 m s.l.m.', $action->formatElevation(-430.0));
 });
 
 it('handles high elevation correctly', function (): void {
-    // Act (Mount Everest)
-    $result = $action->formatElevation(8848.0);
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub());
 
-    // Assert
-    expect($result)->toBe('8848.0 m s.l.m.');
+    Assert::assertSame('8848.0 m s.l.m.', $action->formatElevation(8848.0));
 });
 
 it('handles boundary latitude values', function (): void {
-    // Arrange
-    $location = new LocationData(
-        latitude: 90.0, // North pole
-        longitude: 0.0,
-        address: 'North Pole',
-    );
-
-    $mockResponse = [
+    $action = new GetElevationAction(new GoogleMapsServiceElevationStub([
         'results' => [
             ['elevation' => 0.0, 'resolution' => 1.0],
         ],
-    ];
+    ]));
 
-    $mockGoogleMapsService
-        ->shouldReceive('getElevation')
-        ->once()
-        ->andReturn($mockResponse);
-
-    // Act
-    $result = $action->execute($location);
-
-    // Assert
-    expect($result)->toBe(0.0);
+    Assert::assertSame(0.0, $action->execute(new LocationData(latitude: 90.0, longitude: 0.0, address: 'North Pole')));
 });

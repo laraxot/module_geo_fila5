@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Service per la gestione dei marker e delle statistiche della mappa.
  */
 class MapService
 {
+    use QueueableAction;
+
     /**
      * Ottiene i marker in base ai filtri.
      *
@@ -43,5 +47,9 @@ class MapService
     public function exportData(array $filters = [], string $format = 'json'): array|string
     {
         return [];
+    }
+
+    public function execute(): void
+    {
     }
 }

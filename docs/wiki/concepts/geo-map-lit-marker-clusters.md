@@ -84,7 +84,7 @@ _createClusterIcon(cluster) {
 ### Story di riferimento
 
 - Story 8-81: geo-map-lit: farmshops.eu parity — implementazione marker cluster ispirati a direktvermarkter.js
-- Story 8-78: geo-map-lit segnalazioni-elenco + controlli unificati
+- Story 8-78: geo-map-lit ticket-list + controlli unificati
 - Story 8-79: Fix controlli mappa e ricerca indirizzo
 
 ### Validazione

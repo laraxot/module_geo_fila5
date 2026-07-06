@@ -6,9 +6,6 @@ namespace Modules\Geo\Datas\Geocoding;
 
 use Spatie\LaravelData\Data;
 
-// ponytail: root-level Modules\Geo\Datas\AddressData was identical — deleted.
-// Use this canonical version in Modules\Geo\Datas\Geocoding namespace.
-
 /**
  * Data Transfer Object per i dati degli indirizzi.
  */

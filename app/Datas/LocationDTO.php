@@ -15,6 +15,9 @@ readonly class LocationDTO
     ) {
     }
 
+    /**
+     * @return array{latitude: float, longitude: float, address: string|null, city: string|null, country: string|null}
+     */
     public function toArray(): array
     {
         return [

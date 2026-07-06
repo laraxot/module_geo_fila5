@@ -10,6 +10,7 @@ const LABELS = {
         status: 'Stato',
         type: 'Tipologia',
         address: 'Indirizzo',
+        code: 'Codice segnalazione',
         detail: 'Dettaglio',
         images: 'Immagini',
         close: 'Chiudi',
@@ -21,6 +22,7 @@ const LABELS = {
         status: 'Status',
         type: 'Report type',
         address: 'Address',
+        code: 'Report code',
         detail: 'Details',
         images: 'Images',
         close: 'Close',
@@ -88,7 +90,7 @@ function buildTypeRow(ticketType, labels, { skipIfHeaderIcon = false } = {}) {
     `;
 }
 
-function buildMapLinksRow(coords, labels) {
+function buildMapLinksHtml(coords, labels) {
     const lat = Number(coords?.lat);
     const lng = Number(coords?.lng);
     if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
@@ -97,14 +99,33 @@ function buildMapLinksRow(coords, labels) {
 
     const google = `https://www.google.com/maps?q=${lat},${lng}`;
     const osm = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=17/${lat}/${lng}`;
+    const ors = `https://maps.openrouteservice.org/directions?n1=${lng}&n2=${lat}&n3=14&a=null,null,${lng},${lat}&b=0&c=0&k1=it-IT&k2=km`;
 
     return `
-        <div class="popup__row popup__row--maps">
+        <div class="popup__links-block">
             <span class="popup__row-label">${escapeHtml(labels.openMaps)}</span>
             <div class="popup__map-links">
-                <a href="${google}" target="_blank" rel="noopener noreferrer" class="popup__map-link">Google Maps</a>
                 <a href="${osm}" target="_blank" rel="noopener noreferrer" class="popup__map-link">OpenStreetMap</a>
+                <a href="${ors}" target="_blank" rel="noopener noreferrer" class="popup__map-link">OpenRouteService</a>
+                <a href="${google}" target="_blank" rel="noopener noreferrer" class="popup__map-link">Google Maps</a>
             </div>
+        </div>
+    `;
+}
+
+/** Layout farmshops `#wrapper`: indirizzo + link mappe affiancati. */
+function buildAddressLinksWrapper(properties, coords, labels) {
+    const addressRaw = formatAddress(properties);
+    const address = escapeHtml(addressRaw !== '' ? addressRaw : labels.noAddress);
+    const mapLinks = buildMapLinksHtml(coords, labels);
+
+    return `
+        <div class="popup__wrapper">
+            <div class="popup__address-block">
+                <span class="popup__row-label">${escapeHtml(labels.address)}</span>
+                <p class="popup__row-value popup__address">${address}</p>
+            </div>
+            ${mapLinks}
         </div>
     `;
 }
@@ -121,6 +142,20 @@ function buildStatusBadge(ticketStatus, labels) {
     `;
 }
 
+function buildTicketCodeRow(properties, labels) {
+    const code = String(properties.code || properties.ticket_code || '').trim();
+    if (code === '') {
+        return '';
+    }
+
+    return `
+        <div class="popup__row popup__row--code">
+            <span class="popup__row-label">${escapeHtml(labels.code)}</span>
+            <p class="popup__row-value popup__code">${escapeHtml(code)}</p>
+        </div>
+    `;
+}
+
 /**
  * @param {Record<string, unknown>} properties
  * @param {{ label: string, value: string, iconUrl?: string|null }} ticketType
@@ -132,13 +167,21 @@ function buildStatusBadge(ticketStatus, labels) {
 export function buildTicketPopupLoadingHtml(ticketType, ticketStatus) {
     const labels = getPopupLabels();
     const statusColor = escapeHtml(ticketStatus.color || '#607d8b');
+    const headerTypeIcon = buildTypeIconHtml(ticketType, 48);
+    const headerBarClass = headerTypeIcon
+        ? 'popup__header-bar popup__header-bar--with-icon'
+        : 'popup__header-bar';
+
     return `
         <article class="popup popup--loading" style="--status-color:${statusColor}" aria-busy="true" data-popup-state="loading">
             <div class="popup__accent" aria-hidden="true"></div>
             <div class="popup__header">
-                <div class="popup__header-bar">
-                    ${buildStatusBadge(ticketStatus, labels)}
-                    <div class="popup__skeleton popup__skeleton--title"></div>
+                <div class="${headerBarClass}">
+                    ${headerTypeIcon ? `<div class="popup__header-icon" aria-hidden="true">${headerTypeIcon}</div>` : ''}
+                    <div class="popup__header-text">
+                        <div class="popup__skeleton popup__skeleton--title"></div>
+                        ${buildStatusBadge(ticketStatus, labels)}
+                    </div>
                 </div>
             </div>
             <div class="popup__body">
@@ -152,27 +195,20 @@ export function buildTicketPopupLoadingHtml(ticketType, ticketStatus) {
 export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detail = null, coords = {}) {
     const labels = getPopupLabels();
     const title = escapeHtml(detail?.title || properties.title || properties.name || '—');
-    const addressRaw = formatAddress(properties);
-    const address = escapeHtml(addressRaw !== '' ? addressRaw : labels.noAddress);
     const description = escapeHtml(
         detail?.description || properties.description || properties.content || '',
     );
     const statusColor = escapeHtml(ticketStatus.color || '#607d8b');
     const detailUrl = String(properties.detail_url || properties.url || '').trim();
     const hasDetailUrl = detailUrl !== '' && detailUrl.startsWith('/');
+    const addressRaw = formatAddress(properties);
+    const address = escapeHtml(addressRaw !== '' ? addressRaw : labels.noAddress);
 
     const images = Array.isArray(detail?.images)
         ? detail.images
         : Array.isArray(properties.images)
             ? properties.images
             : [];
-
-    const imagesHtml = images.length > 0
-        ? `<div class="popup__gallery">${images
-            .slice(0, 3)
-            .map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="popup__img">`)
-            .join('')}</div>`
-        : '';
 
     const descriptionBlock = description
         ? `<p class="popup__description">${description}</p>`
@@ -182,27 +218,44 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
         ? `<a href="${escapeHtml(detailUrl)}" class="popup__link popup__link--primary">${escapeHtml(labels.openDetail)}</a>`
         : `<button type="button" class="popup__link popup__link--primary" data-popup-open-detail>${escapeHtml(labels.openDetail)}</button>`;
 
-    const mapLinksRow = buildMapLinksRow(coords, labels);
-    const typeRow = buildTypeRow(ticketType, labels);
+    const addressLinksBlock = buildAddressLinksWrapper(properties, coords, labels);
+    const typeRow = buildTypeRow(ticketType, labels, { skipIfHeaderIcon: true });
+    const codeRow = buildTicketCodeRow(properties, labels);
+    const headerTypeIcon = buildTypeIconHtml(ticketType, 44);
+    const headerBarClass = headerTypeIcon ? 'popup__header-bar popup__header-bar--with-icon' : 'popup__header-bar';
+    const addressPreview = addressRaw !== ''
+        ? `<p class="popup__address-preview">${address}</p>`
+        : '';
+    const heroImage = images.length > 0
+        ? `<div class="popup__hero"><img src="${escapeHtml(images[0])}" alt="" loading="lazy" class="popup__hero-img"></div>`
+        : '';
+    const galleryRest = images.length > 1
+        ? `<div class="popup__gallery">${images
+            .slice(1, 4)
+            .map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="popup__img">`)
+            .join('')}</div>`
+        : '';
 
     return `
         <article class="popup" style="--status-color:${statusColor}" role="dialog" aria-label="${title}">
             <div class="popup__accent" aria-hidden="true"></div>
-            <div class="popup__header">
-                <div class="popup__header-bar">
-                    <div class="popup__title" role="heading" aria-level="2">${title}</div>
-                    ${buildStatusBadge(ticketStatus, labels)}
+            ${heroImage}
+            <div class="popup__header popup__header--headline">
+                <div class="${headerBarClass}">
+                    ${headerTypeIcon ? `<div class="popup__header-icon" aria-hidden="true">${headerTypeIcon}</div>` : ''}
+                    <div class="popup__header-text">
+                        ${buildStatusBadge(ticketStatus, labels)}
+                        <h2 class="popup__title popup__title--headline">${title}</h2>
+                        ${addressPreview}
+                    </div>
                 </div>
             </div>
             <div class="popup__body">
                 ${typeRow}
-                <div class="popup__row">
-                    <span class="popup__row-label">${escapeHtml(labels.address)}</span>
-                    <p class="popup__row-value">${address}</p>
-                </div>
-                ${mapLinksRow}
+                ${codeRow}
+                ${addressLinksBlock}
                 ${descriptionBlock}
-                ${imagesHtml}
+                ${galleryRest}
             </div>
             <footer class="popup__footer">
                 ${detailLink}
@@ -282,6 +335,41 @@ export const popupTicketStylesText = `
         position: relative;
         z-index: 1;
     }
+    .popup__hero {
+        position: relative;
+        z-index: 1;
+        max-height: 140px;
+        overflow: hidden;
+        background: #eef2f6;
+    }
+    .popup__hero-img {
+        display: block;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+    .popup__header--headline {
+        padding: 0.65rem 2.25rem 0.75rem 0.85rem !important;
+    }
+    .popup__title--headline {
+        font-size: 1.0625rem !important;
+        line-height: 1.3 !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .popup__wrapper {
+        padding: 0.5rem 1rem 0.65rem;
+        border-bottom: 1px solid #eef2f6;
+    }
+    .popup__address-block {
+        margin-bottom: 0.35rem;
+    }
+    .popup__address-block .popup__row-value {
+        font-weight: 500;
+        font-size: 0.875rem;
+    }
     .leaflet-popup.popup-wrapper .popup__header,
     .dc-homepage-parity .leaflet-popup.popup-wrapper .popup__header,
     .popup__header {
@@ -304,21 +392,64 @@ export const popupTicketStylesText = `
         row-gap: 0;
         min-height: 0;
     }
+    .popup__header-bar--with-icon {
+        grid-template-columns: auto 1fr;
+        align-items: flex-start;
+        gap: 0.65rem;
+    }
+    .popup__header-icon {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 10px;
+        background: color-mix(in srgb, var(--status-color, #007a52) 8%, #fff);
+        border: 1px solid color-mix(in srgb, var(--status-color, #007a52) 28%, #e8eef4);
+        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+    .popup__header-icon .popup__type-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    .popup__header-text {
+        grid-column: 2;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
     .popup__title {
         margin: 0 !important;
         padding: 0 !important;
-        grid-column: 1;
-        grid-row: 1;
         min-width: 0;
         font-size: 1.0625rem !important;
         font-weight: 700 !important;
         line-height: 1.25 !important;
         color: #17324d;
     }
+    .popup__address-preview {
+        margin: 0;
+        font-size: 0.8125rem;
+        line-height: 1.35;
+        color: #5c6f82;
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
     .popup__header-bar .popup__status {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: end;
+        justify-self: start;
+    }
+    .popup__code {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 0.875rem;
+        letter-spacing: 0.02em;
+        color: #5c6f82;
     }
     .popup__status {
         display: inline-flex;
@@ -384,6 +515,7 @@ export const popupTicketStylesText = `
         line-height: 1.35;
         color: #17324d;
         word-break: break-word;
+        overflow-wrap: anywhere;
         font-weight: 600;
     }
     .popup__type-value {
@@ -424,14 +556,17 @@ export const popupTicketStylesText = `
         transform: translateY(-1px);
     }
     .popup__description {
-        margin: 0;
-        padding: 0 1.25rem 0.85rem;
-        font-size: 0.95rem;
-        line-height: 1.55;
+        margin: 0.25rem 1rem 0.85rem;
+        padding: 0.65rem 0.85rem;
+        font-size: 0.9375rem;
+        line-height: 1.5;
         color: #334155;
-        background: color-mix(in srgb, var(--status-color, #607d8b) 3%, #fff);
+        background: color-mix(in srgb, var(--status-color, #607d8b) 6%, #fff);
         border-radius: 8px;
-        margin-top: 0.25rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .popup__gallery {
         display: flex;
@@ -481,9 +616,9 @@ export const popupTicketStylesText = `
     }
     .popup__footer {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        padding: 0.85rem 1.25rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem 0.9rem;
         border-top: 1px solid #e8eef4;
         background: #f8fafc;
         position: relative;
@@ -491,7 +626,8 @@ export const popupTicketStylesText = `
     }
     .popup__link {
         flex: 1 1 auto;
-        min-width: 8rem;
+        width: 100%;
+        min-width: 0;
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
         font-weight: 600;

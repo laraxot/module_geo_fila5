@@ -23,10 +23,10 @@ All tests (Playwright, Pest, PHPUnit) must live inside their respective owner's 
 - Evita duplicazioni e conflitti tra moduli.
 - Allineato con architettura Laraxot modulare.
 
-## Esempio: segnalazioni-elenco
+## Esempio: ticket-list
 
-- **Prima**: `tests/Playwright/segnalazioni-elenco.spec.js` (sbagliato)
-- **Dopo**: `laravel/Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js` (corretto)
+- **Prima**: `tests/Playwright/ticket-list.spec.js` (sbagliato)
+- **Dopo**: `laravel/Modules/Geo/tests/Playwright/ticket-list.spec.js` (corretto)
 
 ## Migrazione
 

@@ -11,11 +11,15 @@ namespace Modules\Geo\Services;
 // https://www.databasejournal.com/features/mysql/mysql-calculating-distance-based-on-latitude-and-longitude.html
 // http://blog.canispater.com/2017/05/laravel-5-distance-spatial-query-part-2/
 // https://scotch.io/tutorials/achieving-geo-search-with-laravel-scout-and-algolia
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Class GeoService.
  */
 class GeoService
 {
+    use QueueableAction;
+
     public static string $latitude_field = 'latitude';
 
     public static string $longitude_field = 'longitude';
@@ -157,6 +161,9 @@ class GeoService
     /**
      * Undocumented function.
      */
+    /**
+     * @param array<mixed> $polygon
+     */
     public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
     {
         $i = $j = $c = 0;
@@ -211,5 +218,9 @@ class GeoService
         }
 
         return false;
+    }
+
+    public function execute(): void
+    {
     }
 }

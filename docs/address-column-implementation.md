@@ -1,6 +1,5 @@
 # AddressColumn Implementation Plan
 
-**Date**: 2025-12-12
 **Date**: [DATE]
 **Module**: Geo
 **Status**: 📋 **PLANNING**

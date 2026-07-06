@@ -6,7 +6,7 @@ created: 2026-04-30
 updated: 2026-04-30
 stories:
   - 8-81-geo-map-lit-farmshops-parity
-  - 8-78-segnalazioni-elenco-polish
+  - 8-78-ticket-list-polish
 ---
 
 # `data-url` Property — `map-lit` Component
@@ -65,11 +65,11 @@ _loadGeoJson() {
 
 ```bash
 # Verifica che il componente legga l'URL dal data attribute
-curl -s http://127.0.0.1:8000/it/tests/segnalazioni-elenco | grep 'data-url'
+curl -s http://127.0.0.1:8000/it/tests/ticket-list | grep 'data-url'
 ```
 
 ## Regole correlate
 
-- [map-lit-component](./map-lit-component.md) — entità principale per segnalazioni-elenco
+- [map-lit-component](./map-lit-component.md) — entità principale per ticket-list
 - [static-geo-map-widget-pattern](../concepts/static-geo-map-widget-pattern.md) — pattern per pagine pubbliche
-- [segnalazioni-elenco-map-integration](../../../Themes/Sixteen/docs/wiki/concepts/segnalazioni-elenco-map-integration.md) — integrazione tema
+- [ticket-list-map-integration](../../../Themes/Sixteen/docs/wiki/concepts/ticket-list-map-integration.md) — integrazione tema

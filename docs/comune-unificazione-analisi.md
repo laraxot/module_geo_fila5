@@ -62,9 +62,3 @@
 ---
 
 Responsabile: Cascade AI 
-- [Xot/module-structure.md](../../Xot/project_docs/module-structure.md)
-
----
-
-**Ultimo aggiornamento:** {{date('Y-m-d')}}
-Responsabile: Cascade AI

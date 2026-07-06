@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Closure;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Modules\Geo\Filament\Resources\AddressResource;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
@@ -34,6 +34,52 @@ class AddressesField extends Repeater
 {
     // protected string $view = 'geo::filament.forms.components.addresses-field';
 
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function repeaterAddresses(Get $get): array
+    {
+        $addresses = $get('../../addresses');
+
+        if (! is_array($addresses)) {
+            return [];
+        }
+
+        /** @var list<array<string, mixed>> $normalized */
+        $normalized = [];
+
+        foreach ($addresses as $address) {
+            if (! is_array($address)) {
+                continue;
+            }
+
+            $normalized[] = self::normalizeAddressRow($address);
+        }
+
+        return $normalized;
+    }
+
+    /**
+     * @param array<mixed> $address
+     *
+     * @return array<string, mixed>
+     */
+    private static function normalizeAddressRow(array $address): array
+    {
+        /** @var array<string, mixed> $normalized */
+        $normalized = [];
+
+        foreach ($address as $key => $value) {
+            if (! is_string($key)) {
+                continue;
+            }
+
+            $normalized[$key] = $value;
+        }
+
+        return $normalized;
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -57,28 +103,25 @@ class AddressesField extends Repeater
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
             ->maxLength(255)
-            ->visible(function (Get $get): bool {
-                return count(self::addressesFromGet($get)) > 1;
-            })
+            ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->live();
 
         // Campo is_primary: logica complessa per esclusività
         $baseSchema['is_primary'] = Toggle::make('is_primary')
-            ->visible(function (Get $get): bool {
-                return count(self::addressesFromGet($get)) > 1;
-            })
-            ->default(function (Get $get): bool {
-                return count(self::addressesFromGet($get)) <= 1;
-            })
-            ->afterStateUpdated(function ($state, Closure $set, Get $get, Component $component): void {
+            ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
+            ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
+            ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
+                // Se questo diventa primary, disattiva tutti gli altri
                 if (true === $state) {
-                    $addresses = self::addressesFromGet($get);
+                    $addresses = self::repeaterAddresses($get);
 
+                    // Estrae l'indice dal path del componente (es. "addresses.0.is_primary")
                     $path = $component->getStatePath();
                     preg_match('/addresses\.(\d+)\.is_primary/', $path ?? '', $matches);
                     $currentIndex = $matches[1] ?? null;
 
                     if (null !== $currentIndex) {
+                        // Disattiva is_primary negli altri elementi
                         foreach ($addresses as $index => $address) {
                             $indexStr = app(SafeStringCastAction::class)->execute($index);
                             $currentIndexStr = app(SafeStringCastAction::class)
@@ -92,7 +135,8 @@ class AddressesField extends Repeater
             })
             ->live()
             ->dehydrateStateUsing(function ($state, Get $get): bool {
-                if (count(self::addressesFromGet($get)) <= 1) {
+                // Se c'è un solo elemento, forza sempre true
+                if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;
                 }
 
@@ -100,15 +144,5 @@ class AddressesField extends Repeater
             });
 
         return $baseSchema;
-    }
-
-    /**
-     * @return array<int|string, mixed>
-     */
-    private static function addressesFromGet(Get $get): array
-    {
-        $addresses = $get('../../addresses');
-
-        return is_array($addresses) ? $addresses : [];
     }
 }

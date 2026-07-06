@@ -346,4 +346,4 @@ closeSearch() → _searchOpen = false
 
 - [[location-capture-map-wizard]] - Workflow business della mappa
 - [[segnalazione-crea-geolocate-when-empty]] - Contract Fixcity
-- [[segnalazioni-elenco-map-architecture]] - Architettura map-lit per segnalazioni-elenco
+- [[ticket-list-map-architecture]] - Architettura map-lit per ticket-list

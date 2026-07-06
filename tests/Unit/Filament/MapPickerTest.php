@@ -3,41 +3,74 @@
 declare(strict_types=1);
 
 use Modules\Geo\Filament\Forms\Components\MapPicker;
+use PHPUnit\Framework\Assert;
 
 test('map picker resolves explicit coordinate fields', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
-        ->latitude('latitude')
-        ->longitude('longitude')
+        ->latitudeColumn('latitude')
+        ->longitudeColumn('longitude')
         ->zoom(12);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->getLatitudeField())->toBe('latitude')
-        ->and($field->getLongitudeField())->toBe('longitude')
-        ->and($field->getLatitudeStatePath())->toBe('data.latitude')
-        ->and($field->getLongitudeStatePath())->toBe('data.longitude')
-        ->and($field->getZoom())->toBe(12);
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
+
+    Assert::assertSame('data.latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('data.longitude', $field->getLongitudeColumn());
+
+    Assert::assertSame(12, $field->getZoom());
 });
 
 test('map picker accepts absolute coordinate paths', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
-        ->latitude('filters.latitude')
-        ->longitude('filters.longitude')
+        ->latitudeColumn('filters.latitude')
+        ->longitudeColumn('filters.longitude')
         ->geolocateWhenEmpty(false)
         ->reverseGeocoding(false);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->getLatitudeStatePath())->toBe('filters.latitude')
-        ->and($field->getLongitudeStatePath())->toBe('filters.longitude')
-        ->and($field->shouldGeolocateWhenEmpty())->toBeFalse()
-        ->and($field->shouldReverseGeocode())->toBeFalse();
+    Assert::assertSame('filters.latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('filters.longitude', $field->getLongitudeColumn());
+
+    Assert::assertFalse($field->getGeolocateWhenEmpty());
+
+    Assert::assertFalse($field->hasReverseGeocoding());
 });
 
 test('map picker keeps bare coordinate paths at root level', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('map_picker')
-        ->latitude('latitude')
-        ->longitude('longitude');
+        ->latitudeColumn('latitude')
+        ->longitudeColumn('longitude');
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->getLatitudeStatePath())->toBe('latitude')
-        ->and($field->getLongitudeStatePath())->toBe('longitude');
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
 });

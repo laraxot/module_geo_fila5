@@ -5,7 +5,7 @@ component: testing
 created: 2026-04-30
 updated: 2026-04-30
 stories:
-  - 8-78-segnalazioni-elenco-polish
+  - 8-78-ticket-list-polish
   - 8-79-geo-map-controls-unification
 ---
 
@@ -32,7 +32,7 @@ laravel/Modules/<NomeModulo>/tests/Browser/
 
 Esempio per modulo Geo:
 ```
-laravel/Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+laravel/Modules/Geo/tests/Playwright/ticket-list.spec.js
 laravel/Modules/Geo/tests/Playwright/geo-map-lit.spec.js
 ```
 
@@ -71,20 +71,20 @@ laravel/Modules/Geo/
 I test di un modulo non dipendono da setup di altri moduli:
 ```javascript
 // ❌ SBAGLIATO: test in root che richiede setup globale
-// /tests/Playwright/segnalazioni-elenco.spec.js
+// /tests/Playwright/ticket-list.spec.js
 
 test('map loads', async ({ page }) => {
-    await page.goto('/it/tests/segnalazioni-elenco');
+    await page.goto('/it/tests/ticket-list');
     // ...
 });
 
 // ✅ CORRETTO: test nel modulo Geo
-// laravel/Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+// laravel/Modules/Geo/tests/Playwright/ticket-list.spec.js
 
 import { test, expect } from '@playwright/test';
 
 test('map loads', async ({ page }) => {
-    await page.goto('/it/tests/segnalazioni-elenco');
+    await page.goto('/it/tests/ticket-list');
     await expect(page.locator('geo-map-lit')).toBeVisible();
 });
 ```
@@ -123,7 +123,7 @@ laravel/
 │   │   ├── tests/
 │   │   │   ├── Feature/
 │   │   │   └── Playwright/
-│   │   │       ├── segnalazioni-elenco.spec.js
+│   │   │       ├── ticket-list.spec.js
 │   │   │       └── geo-map-lit.spec.js
 │   │   └── docs/
 │   └── User/
@@ -147,7 +147,7 @@ laravel/
 
 ### Posizione Corretta
 ```
-laravel/Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+laravel/Modules/Geo/tests/Playwright/ticket-list.spec.js
 ```
 
 ### Contenuto Esempio
@@ -156,7 +156,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Segnalazioni Elenco - Map Component', () => {
     test('should display geo-map-lit component', async ({ page }) => {
-        await page.goto('/it/tests/segnalazioni-elenco');
+        await page.goto('/it/tests/ticket-list');
         
         const mapElement = page.locator('geo-map-lit');
         await expect(mapElement).toBeVisible();
@@ -164,7 +164,7 @@ test.describe('Segnalazioni Elenco - Map Component', () => {
     });
 
     test('should load markers from GeoJSON', async ({ page }) => {
-        await page.goto('/it/tests/segnalazioni-elenco');
+        await page.goto('/it/tests/ticket-list');
         
         // Aspetta che la mappa carichi
         await page.waitForSelector('.leaflet-marker-icon');
@@ -176,7 +176,7 @@ test.describe('Segnalazioni Elenco - Map Component', () => {
     });
 
     test('should have zoom controls', async ({ page }) => {
-        await page.goto('/it/tests/segnalazioni-elenco');
+        await page.goto('/it/tests/ticket-list');
         
         const zoomInBtn = page.locator('.geo-map-btn-zoom-in');
         const zoomOutBtn = page.locator('.geo-map-btn-zoom-out');
@@ -212,7 +212,7 @@ npm install
 npm test
 
 # Esegui test specifico
-npx playwright test segnalazioni-elenco.spec.js
+npx playwright test ticket-list.spec.js
 ```
 
 ## Regole per Nuovi Test
@@ -247,11 +247,11 @@ Se trovi test nella root:
 find tests/Playwright -name "*.spec.js" -o -name "*.spec.ts"
 
 # 2. Determina il modulo di appartenenza
-# Es: segnalazioni-elenco.spec.js → modulo Geo
+# Es: ticket-list.spec.js → modulo Geo
 
 # 3. Sposta nel modulo
 mkdir -p laravel/Modules/Geo/tests/Playwright
-mv tests/Playwright/segnalazioni-elenco.spec.js laravel/Modules/Geo/tests/Playwright/
+mv tests/Playwright/ticket-list.spec.js laravel/Modules/Geo/tests/Playwright/
 
 # 4. Aggiorna import/require se necessario
 # 5. Verifica che i test passino nel nuovo contesto

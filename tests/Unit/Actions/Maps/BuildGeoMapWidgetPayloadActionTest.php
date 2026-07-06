@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-uses(LightTestCase::class);
-
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
 use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+
+uses(LightTestCase::class);
 
 test('build geo map widget payload action returns widget data contract', function () {
     $placeType = new PlaceType();
-    $placeType->slug = 'farm';
+    $placeType->setAttribute('slug', 'farm');
 
     $place = new Place();
     $place->id = 42;
@@ -43,15 +44,25 @@ test('build geo map widget payload action returns widget data contract', functio
 
     $payload = $action->execute();
 
-    expect($payload)->toBeInstanceOf(GeoMapWidgetData::class)
-        ->and($payload->geoJson)->toHaveKey('type')
-        ->and($payload->geoJson['type'])->toBe('FeatureCollection')
-        ->and($payload->geoJson)->toHaveKey('features')
-        ->and($payload->geoJson['features'])->toHaveCount(1)
-        ->and($payload->geoJson['features'][0]['properties']['category'])->toBe('farm')
-        ->and($payload->geoJson['features'][0]['properties']['title'])->toBe('Cascina Demo')
-        ->and($payload->initialState)->toHaveKeys(['center', 'zoom', 'selectedId', 'activeLayers', 'filters'])
-        ->and($payload->initialState['center'])->toBe(['lat' => 45.4642, 'lng' => 9.1900])
-        ->and($payload->layerConfig)->toHaveCount(4)
-        ->and($payload->meta['totalFeatures'])->toBe(1);
+    Assert::assertInstanceOf(GeoMapWidgetData::class, $payload);
+
+    $geoJson = $payload->geoJson;
+    Assert::assertArrayHasKey('type', $geoJson);
+    Assert::assertSame('FeatureCollection', $geoJson['type']);
+    Assert::assertArrayHasKey('features', $geoJson);
+    Assert::assertIsArray($geoJson['features']);
+    $features = $geoJson['features'];
+    Assert::assertCount(1, $features);
+
+    $feature = $features[0];
+    Assert::assertIsArray($feature);
+    Assert::assertArrayHasKey('properties', $feature);
+    Assert::assertIsArray($feature['properties']);
+    $properties = $feature['properties'];
+    Assert::assertSame('farm', $properties['category']);
+    Assert::assertSame('Cascina Demo', $properties['title']);
+
+    Assert::assertSame(['lat' => 45.4642, 'lng' => 9.1900], $payload->initialState['center']);
+    Assert::assertCount(4, $payload->layerConfig);
+    Assert::assertSame(1, $payload->meta['totalFeatures']);
 });

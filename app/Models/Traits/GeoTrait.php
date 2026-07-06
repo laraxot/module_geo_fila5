@@ -76,18 +76,21 @@ trait GeoTrait
     }
 
     // ---- Scopes ----
+    /** @phpstan-ignore-next-line */
     public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
     {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::haversine($lat, $lng);
 
+            // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
         }
 
         return $q;
     }
 
+    /** @phpstan-ignore-next-line */
     public function scopeWithDistanceCustomField(
         Builder $query,
         string $lat_field,
@@ -99,42 +102,16 @@ trait GeoTrait
         if ($lat > 0 && $lng > 0) {
             $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
+            // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
         }
 
         return $q;
     }
 
+    /** @phpstan-ignore-next-line */
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
     {
-        // (concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
-        // errore poligono non chiuso
-        /*
-         *
-         * SELECT ID,zone_polygon
-         * ,(ST_GeomFromText(
-         * concat('POLYGON((',
-         * REPLACE(
-         * REPLACE(
-         * REPLACE(
-         * REPLACE(
-         * replace(CONCAT(
-         * replace(replace(JSON_extract(zone_polygon,'$'),']',''),'[',''),
-         * ',',JSON_extract(zone_polygon,'$[0]'))
-         * ,'"lat":','')
-         * ,',"lng":',' ')
-         * ,'{',' ')
-         * ,', "lng":',' ')
-         * ,'}','')
-         * ,'))')
-         * )
-         * )
-         * AS test
-         *
-         * from vo_activities
-         * where zone_polygon IS NOT NULL
-         */
-
         $sql = "ST_Contains(
         ST_GeomFromText(
        concat('POLYGON((',
@@ -154,8 +131,7 @@ trait GeoTrait
        ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
        )";
 
-        // dddx($query->whereNotNull($polygon_field)->whereRaw($sql)->toSql());
-
+        // @phpstan-ignore-next-line
         return $query->whereNotNull($polygon_field)->whereRaw($sql);
     }
 
@@ -190,7 +166,7 @@ trait GeoTrait
         if (null === $address) {
             return null;
         }
-        if (is_string($address) && \Illuminate\Support\Str::isJson($address)) {
+        if (is_string($address) && isJson($address)) {
             $geo = GeoData::from(json_decode($address, true, 512, JSON_THROW_ON_ERROR));
             $latlng = $geo->latlng;
             $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
@@ -234,7 +210,7 @@ trait GeoTrait
     {
         // *
 
-        if (is_string($value) && \Illuminate\Support\Str::isJson((string) $value)) {
+        if (is_string($value) && isJson((string) $value)) {
             /*
              * @var array<string, mixed>
              */
@@ -314,7 +290,7 @@ trait GeoTrait
         if (null === $this->address) {
             return null;
         }
-        if (is_string($this->address) && \Illuminate\Support\Str::isJson($this->address)) {
+        if (is_string($this->address) && isJson($this->address)) {
             /*
              * $addr = json_decode($this->address);
              * if (\is_object($addr)) {

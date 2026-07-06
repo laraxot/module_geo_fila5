@@ -137,4 +137,3 @@ Quando si migra da vecchi schemi che utilizzano prefissi ridondanti, è importan
 2. Verificare la compatibilità con i form esistenti
 3. Aggiornare eventuali validazioni
 4. Creare una migrazione che rinomini i campi in modo appropriato
-4. Creare una migrazione che rinomini i campi in modo appropriato

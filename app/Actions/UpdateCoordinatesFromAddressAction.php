@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -37,13 +37,15 @@ class UpdateCoordinatesFromAddressAction
 
     /**
      * Collection per memorizzare eventuali errori durante l'esecuzione.
+     *
+     * @var Collection<int, string>
      */
     private Collection $errors;
 
     public function __construct(
         private readonly GetAddressDataFromFullAddressAction $getAddressDataAction,
     ) {
-        $this->errors = collect();
+        $this->errors = new Collection();
     }
 
     /**
@@ -56,7 +58,7 @@ class UpdateCoordinatesFromAddressAction
     public function execute(Model $model): bool
     {
         // Reset errori per questa esecuzione
-        $this->errors = collect();
+        $this->errors = new Collection();
 
         // Ottieni l'indirizzo completo dal modello
         $fullAddress = $this->getFullAddressFromModel($model);

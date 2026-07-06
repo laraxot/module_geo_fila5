@@ -1,6 +1,5 @@
 # Fix: Geo TestCase - Database Connection Configuration
 
-**Data**: 2025-01-22
 **Problema**: Test Geo falliscono con InvalidArgumentException per database connection 'geo'
 **Principio**: Il sito funziona, quindi il test deve riflettere il comportamento reale
 
@@ -82,7 +81,6 @@ protected function setUp(): void
 ## 🔗 Collegamenti
 
 - [Testing Rules](testing-rules.md)
-- [Activity TestCase Fix](../../Activity/docs/testing-testcase-database-connection-fix.md)
 - [Activity TestCase Fix](../../activity/docs/testing-testcase-database-connection-fix.md)
 - [User TestCase](../../User/tests/TestCase.php)
 

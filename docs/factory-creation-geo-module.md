@@ -101,8 +101,6 @@ public function milano(): static
 
 ## 🔗 COLLEGAMENTI
 
-- [Factory Lessons Learned CRITICAL](../../../docs/factory-lessons-learned-CRITICAL.md)
-- [Geo Module README](./README.md)
 - [Factory Lessons Learned CRITICAL](../../../../docs/factory-lessons-learned-critical.md)
 - [Geo Module README](./readme.md)
 - [Geographic Data Documentation](./geographic-data.md)
@@ -117,7 +115,6 @@ public function milano(): static
 
 **MODULO GEO COMPLETAMENTE RIPRISTINATO!**
 
-*Creato: 2025-01-06*
 *Creato: [DATE]*
 *Modulo: Geo - 8/8 factory necessarie completate*
 *Status: ✅ ERRORE GRAVISSIMO RISOLTO*

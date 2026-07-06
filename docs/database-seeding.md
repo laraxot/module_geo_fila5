@@ -222,8 +222,6 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ## Collegamenti e Riferimenti
 
-- [README BashScripts](../bashscripts/README.md)
-- [Quick Start Seeding](../bashscripts/database/seeding/QUICK_START.md)
 - [README BashScripts](../bashscripts/readme.md)
 - [Quick Start Seeding](../bashscripts/database/seeding/quick_start.md)
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
@@ -233,7 +231,6 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ---
 
-**Ultimo aggiornamento**: Gennaio 2025
 **Versione**: 2.0
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome modulo>
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome progetto>

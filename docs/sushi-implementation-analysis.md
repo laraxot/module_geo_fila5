@@ -82,18 +82,15 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
 {
     use Sushi;
     
-    
     /**
      * Disable auto-incrementing IDs
      */
     public $incrementing = false;
     
-    
     /**
      * The "type" of the auto-incrementing ID.
      */
     protected $keyType = 'string';
-    
     
     /**
      * The attributes that should be cast.
@@ -104,7 +101,6 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
         'cap' => 'array',
         'popolazione' => 'integer',
     ];
-    
     
     /**
      * Cache duration in seconds (1 week)
@@ -118,13 +114,11 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
     {
         $cacheKey = 'sushi_comuni_data';
         
-        
         return Cache::remember($cacheKey, $this->sushiCacheDuration, function () {
             $path = module_path('Geo', 'Resources/json/comuni.json');
             return json_decode(File::get($path), true);
         });
     }
-    
     
     /**
      * Get the connection for the model.
@@ -134,19 +128,16 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
         return 'sushi';
     }
     
-    
     // Relazioni
     public function regione()
     {
         return $this->belongsTo(Regione::class, 'regione.codice', 'codice');
     }
     
-    
     public function provincia()
     {
         return $this->belongsTo(Provincia::class, 'provincia.codice', 'codice');
     }
-    
     
     // Scope
     public function scopeByRegion($query, string $regionCode)
@@ -154,12 +145,10 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
         return $query->where('regione->codice', $regionCode);
     }
     
-    
     public function scopeByProvince($query, string $provinceCode)
     {
         return $query->where('provincia->codice', $provinceCode);
     }
-    
     
     // Metodi statici per compatibilità
     public static function allRegions()
@@ -171,7 +160,6 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
             ->pluck('nome', 'codice');
     }
     
-    
     public static function getProvincesByRegion(string $regionCode)
     {
         return static::query()
@@ -181,7 +169,6 @@ class ComuneSushi extends \Illuminate\Database\Eloquent\Model
             ->get()
             ->pluck('nome', 'codice');
     }
-    
     
     /**
      * Clear all cached data
@@ -299,6 +286,5 @@ Basandoci sull'analisi, raccomandiamo l'adozione di Laravel Sushi per il modello
 ## Link Correlati
 - [Documentazione Ufficiale Sushi](https://github.com/calebporzio/sushi)
 - [Guida alla Migrazione](migration-guide.md)
-- [Benchmark Dettagliati](benchmarks/README.md)
 - [Benchmark Dettagliati](benchmarks/readme.md)
 - [Documentazione GeoJsonModel](geo-json-model.md)

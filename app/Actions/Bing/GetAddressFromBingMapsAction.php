@@ -7,9 +7,10 @@ namespace Modules\Geo\Actions\Bing;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\AddressData;
-use Modules\Geo\Datas\BingMapData;
+use Modules\Geo\Datas\Geocoding\AddressData;
+use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 
 /**
  * Classe per ottenere l'indirizzo da Bing Maps.
@@ -56,6 +57,8 @@ class GetAddressFromBingMapsAction
 
     /**
      * @throws InvalidLocationException
+     *
+     * @return array<mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -215,8 +218,8 @@ class GetAddressFromBingMapsAction
         }
 
         return [
-            0 => (float) $coordinates[0],
-            1 => (float) $coordinates[1],
+            0 => SafeFloatCastAction::cast($coordinates[0]),
+            1 => SafeFloatCastAction::cast($coordinates[1]),
         ];
     }
 

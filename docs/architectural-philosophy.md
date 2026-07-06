@@ -215,7 +215,6 @@ $success = $action->execute($client);
 
 ---
 
-**Last Updated**: December 2025
 
 **Architectural Version**: 2.0
 **Compliance**: PHPStan Level 10 ✅

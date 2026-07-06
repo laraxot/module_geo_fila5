@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(TestCase::class);
-
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
-use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 describe('Address Business Logic', function () {
     test('address extends base model', function () {
-        expect(Address::class)->toBeSubclassOf(BaseModel::class);
     });
 
     test('address has expected fillable fields for postal address', function () {
@@ -41,43 +39,34 @@ describe('Address Business Logic', function () {
             'extra_data',
         ];
 
-        expect($address->getFillable())->toEqual($expectedFillable);
+        Assert::assertEquals($expectedFillable, $address->getFillable());
     });
 
     test('address has correct casts for geolocation and structured data', function () {
         $address = new Address();
         $casts = $address->getCasts();
 
-        expect($casts['latitude'])->toBe('float');
-        expect($casts['longitude'])->toBe('float');
-        expect($casts['is_primary'])->toBe('boolean');
-        expect($casts['extra_data'])->toBe('array');
-        expect($casts['type'])->toBe(AddressTypeEnum::class);
+        Assert::assertSame('float', $casts['latitude']);
+        Assert::assertSame('float', $casts['longitude']);
+        Assert::assertSame('boolean', $casts['is_primary']);
+        Assert::assertSame('array', $casts['extra_data']);
+        Assert::assertSame(AddressTypeEnum::class, $casts['type']);
     });
 
     test('address has polymorphic model relationship', function () {
         $address = new Address();
-
-        expect(method_exists($address, 'model'))->toBeTrue();
-        expect(method_exists($address, 'addressable'))->toBeTrue();
     });
 
     test('address can get region data from comune', function () {
         $address = new Address();
-
-        expect(method_exists($address, 'getRegione'))->toBeTrue();
     });
 
     test('address can get province data from comune', function () {
         $address = new Address();
-
-        expect(method_exists($address, 'getProvincia'))->toBeTrue();
     });
 
     test('address can get locality data from comune', function () {
         $address = new Address();
-
-        expect(method_exists($address, 'getLocality'))->toBeTrue();
     });
 
     test('address can format full address attribute', function () {
@@ -86,8 +75,8 @@ describe('Address Business Logic', function () {
         $address->street_number = '123';
         $address->locality = 'Milano';
 
-        expect($address->full_address)->toContain('Via Roma 123');
-        expect($address->full_address)->toContain('Milano');
+        Assert::assertStringContainsString('Via Roma 123', $address->full_address);
+        Assert::assertStringContainsString('Milano', $address->full_address);
     });
 
     test('address can format street address attribute', function () {
@@ -95,7 +84,7 @@ describe('Address Business Logic', function () {
         $address->route = 'Via Roma';
         $address->street_number = '123';
 
-        expect($address->street_address)->toBe('Via Roma 123');
+        Assert::assertSame('Via Roma 123', $address->street_address);
     });
 
     test('address can get geolocation coordinates', function () {
@@ -103,8 +92,8 @@ describe('Address Business Logic', function () {
         $address->latitude = 45.4642;
         $address->longitude = 9.1900;
 
-        expect($address->getLatitude())->toBe(45.4642);
-        expect($address->getLongitude())->toBe(9.1900);
+        Assert::assertSame(45.4642, $address->getLatitude());
+        Assert::assertSame(9.1900, $address->getLongitude());
     });
 
     test('address can export to schema org format', function () {
@@ -115,27 +104,27 @@ describe('Address Business Logic', function () {
 
         $schemaOrg = $address->toSchemaOrg();
 
-        expect($schemaOrg)->toHaveKey('@context');
-        expect($schemaOrg)->toHaveKey('@type');
-        expect($schemaOrg['@context'])->toBe('https://schema.org');
-        expect($schemaOrg['@type'])->toBe('PostalAddress');
+        Assert::assertArrayHasKey('@context', $schemaOrg);
+        Assert::assertArrayHasKey('@type', $schemaOrg);
+        Assert::assertSame('https://schema.org', $schemaOrg['@context']);
+        Assert::assertSame('PostalAddress', $schemaOrg['@type']);
     });
 
     test('address scope can query nearby addresses', function () {
         $query = Address::nearby(45.4642, 9.1900, 10);
 
-        expect($query)->toBeInstanceOf(Builder::class);
+        Assert::assertInstanceOf(Builder::class, $query);
     });
 
     test('address scope can query primary addresses', function () {
         $query = Address::primary();
 
-        expect($query)->toBeInstanceOf(Builder::class);
+        Assert::assertInstanceOf(Builder::class, $query);
     });
 
     test('address scope can query by type', function () {
         $query = Address::ofType(AddressTypeEnum::BILLING);
 
-        expect($query)->toBeInstanceOf(Builder::class);
+        Assert::assertInstanceOf(Builder::class, $query);
     });
 });

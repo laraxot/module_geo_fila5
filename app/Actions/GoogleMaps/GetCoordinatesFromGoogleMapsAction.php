@@ -31,7 +31,8 @@ readonly class GetCoordinatesFromGoogleMapsAction
     /**
      * Ottiene le coordinate da un indirizzo.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(string $address): LocationData
     {
@@ -54,7 +55,7 @@ readonly class GetCoordinatesFromGoogleMapsAction
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata
+     * @throws \InvalidArgumentException Se i dati non sono validi
      */
     private function validateInput(string $address): void
     {

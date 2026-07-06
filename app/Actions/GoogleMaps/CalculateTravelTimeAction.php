@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\TravelTimeData;
+use Modules\Geo\Datas\Routing\TravelTimeData;
 
 use function Safe\json_decode;
 
@@ -32,7 +32,8 @@ readonly class CalculateTravelTimeAction
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -56,7 +57,8 @@ readonly class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {

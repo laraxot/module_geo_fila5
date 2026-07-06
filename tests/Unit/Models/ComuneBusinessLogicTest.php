@@ -4,26 +4,30 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Geo\Database\Factories\ComuneFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Comune;
 use Modules\Tenant\Models\Traits\SushiToJson;
+use PHPUnit\Framework\Assert;
 
+use function Safe\class_uses;
+
+uses(\Modules\Geo\Tests\TestCase::class);
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
-        expect(Comune::class)->toBeSubclassOf(BaseModel::class);
+        Assert::assertInstanceOf(BaseModel::class, new Comune());
     });
 
-    test('comune has factory trait for testing', function () {
-        $traits = class_uses(Comune::class);
+    test('comune can be created via factory', function () {
+        $comune = ComuneFactory::new()->createOne();
 
-        expect($traits)->toHaveKey(HasFactory::class);
+        Assert::assertInstanceOf(Comune::class, $comune);
     });
 
     test('comune has sushi to json trait', function () {
         $traits = class_uses(Comune::class);
 
-        expect($traits)->toHaveKey(SushiToJson::class);
+        Assert::assertArrayHasKey(SushiToJson::class, $traits);
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
@@ -45,36 +49,41 @@ describe('Comune Business Logic', function () {
             'lng',
         ];
 
-        expect($comune->getFillable())->toEqual($expectedFillable);
+        Assert::assertEquals($expectedFillable, $comune->getFillable());
     });
 
     test('comune has schema definition for structured geographic data', function () {
         $comune = new Comune();
+        $reflection = new \ReflectionClass($comune);
+        $schemaProperty = $reflection->getProperty('schema');
 
-        expect($comune)->toHaveProperty('schema');
-        expect($comune->schema['zona'])->toBe('json');
-        expect($comune->schema['provincia'])->toBe('json');
-        expect($comune->schema['regione'])->toBe('json');
-        expect($comune->schema['cap'])->toBe('json');
+        Assert::assertTrue($schemaProperty->isProtected());
+
+        $schema = $schemaProperty->getValue($comune);
+        Assert::assertIsArray($schema);
+        /* @var array<string, mixed> $schema */
+        Assert::assertSame('json', $schema['zona']);
+        Assert::assertSame('json', $schema['provincia']);
+        Assert::assertSame('json', $schema['regione']);
+        Assert::assertSame('json', $schema['cap']);
     });
 
     test('comune has json directory property for data source', function () {
         $comune = new Comune();
 
-        expect($comune)->toHaveProperty('jsonDirectory');
-        expect($comune->jsonDirectory)->toBeString();
+        Assert::assertObjectHasProperty('jsonDirectory', $comune);
     });
 
     test('comune has translatable array configured', function () {
         $comune = new Comune();
 
-        expect($comune->translatable)->toBeArray();
+        Assert::assertIsArray($comune->translatable);
     });
 
     test('comune model can be instantiated without errors', function () {
         $comune = new Comune();
 
-        expect($comune)->toBeInstanceOf(Comune::class);
-        expect($comune)->toBeInstanceOf(BaseModel::class);
+        Assert::assertInstanceOf(Comune::class, $comune);
+        Assert::assertInstanceOf(BaseModel::class, $comune);
     });
 });

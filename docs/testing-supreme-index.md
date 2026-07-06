@@ -23,7 +23,6 @@ Questa è la regola fondamentale che ha precedenza ASSOLUTA su qualsiasi altra c
 - **[Laravel AI Guidelines - Testing Priority](../laravel/.ai/guidelines/testing-priority-rule.md)**
 
 ### 📁 Regole per Modulo
-- **[<nome progetto> Testing Guidelines](../laravel/Modules/<nome progetto>/docs/testing-guidelines.md)**
 - **[<nome progetto> Testing Guidelines](../laravel/modules/<nome progetto>/docs/testing-guidelines.md)**
 
 ### ⚙️ Regole Sistema
@@ -108,6 +107,5 @@ Queste regole si applicano a:
 
 **Questa è la REGOLA SUPREMA del progetto <nome progetto> e ha precedenza su qualsiasi altra considerazione di testing.**
 
-**Ultimo aggiornamento**: Gennaio 2025
 **Status**: REGOLA SUPREMA E NON NEGOZIABILE
 **Applicabilità**: UNIVERSALE - tutto il progetto

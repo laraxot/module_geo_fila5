@@ -3,7 +3,7 @@ title: Geocoding — driver configurabile + pulizia duplicati orfani
 type: decision
 tags: [geo, geocoding, ponytail, config, actions]
 created: 2026-06-30
-updated: 2026-07-02
+updated: 2026-06-30
 qmd: false
 issues: https://github.com/laraxot/base_predict_fila5/issues/221
 discussions: https://github.com/laraxot/base_predict_fila5/discussions/222
@@ -60,36 +60,36 @@ nessun provider sia "vivo".
    classe "driver" generica per tutti i 44 file avrebbe richiesto riscrivere
    tutte le integrazioni — fuori scope per un task "senza rompere nulla" e
    YAGNI finché nessuna in produzione le usa comunque.
-3. **Duplicati orfani cancellati** dopo verifica con `rg` che non avessero
-   alcun chiamante in tutto il repo:
-   - **G2**: `app/Actions/Bing/GetAddressFromBingMapsAction.php` — cancellato
-     (0 import da altri file, 0 chiamanti). `BingMaps\` (forward geocode)
-     resta come unico action Bing. Se serve reverse geocode, si ripristina
-     da git o si implementa su richiesta — YAGNI.
-   - **G3**: 8 root-level Data duplicati cancellati (`AddressData.php`,
-     `GeocodingData.php`, `PlaceData.php`, `ElevationData.php`,
-     `ElevationResultDTO.php`, `IPLocationData.php`, `CoordinatesData.php`,
-     `RouteData.php`). Identici ai canonicali in `Datas/Geocoding/`,
-     `Datas/Elevation/`, `Datas/Location/`, `Datas/Routing/` — 0 import.
-   - **G4**: `app/Datatransferobjects/LocationDTO.php` cancellato (duplicato
-     esatto di `DataTransferObjects/LocationDTO.php`). Entrambi i LocationDTO
-     marcati `@deprecated` → usare `Datas\LocationData` (Spatie Data).
-   - I file già gestiti in sessioni precedenti
-     (`FilterCoordinatesInRadius.php`, `ClusterLocationsAction.wip`,
-     `clusterlocationsaction.wip`) restano nello stato `.bak` precedente.
-4. **Risolto** (G2): `Bing\GetAddressFromBingMapsAction` (reverse geocode,
-   coordinate → indirizzo) non aveva alcun chiamante in tutto il repo
-   (verificato con `rg`). Cancellato. `BingMaps\` resta (forward geocode,
-   usato dal dispatcher). Se serve reverse geocode in futuro, si può
-   ripristinare da git.
+3. **Duplicati orfani rinominati `.bak`** (mai cancellati), perché senza
+   alcun chiamante in tutto il repo (verificato con `rg`) ed effettivamente
+   ridondanti rispetto a un'altra classe già attiva:
+   - `app/Actions/FilterCoordinatesInRadius.php` → `.bak`: duplicato non
+     suffissato (manca `Action`) di `FilterCoordinatesInRadiusAction`, con
+     **bug di logica invertita** (`>= $raggio` invece di `<= $raggio`, tiene
+     le coordinate FUORI dal raggio) e codice morto commentato in coda. La
+     classe realmente usata da `app/Rules/FilterCoordinatesInRadius.php` è
+     già `FilterCoordinatesInRadiusAction`, non questa.
+   - `app/Actions/ClusterLocationsAction.wip` e
+     `app/Actions/clusterlocationsaction.wip` → `.bak`: due copie identiche
+     fra loro, estensione `.wip` quindi mai caricate da Composer/PSR-4,
+     versione superata di `ClusterLocationsAction.php` (DTO/import diversi,
+     già sostituiti).
+4. **Non toccato, segnalato per decisione prodotto**: `Bing\GetAddressFromBingMapsAction`
+   (reverse geocode, coordinate → indirizzo) vs
+   `BingMaps\GetAddressFromBingMapsAction` (forward geocode, indirizzo →
+   coordinate, usata dal dispatcher). Stesso nome di classe, namespace
+   diversi, **comportamento diverso** (non sono duplicati funzionali).
+   `Bing\...` non ha chiamanti fuori dal proprio test. L'audit G2 suggeriva
+   di "tenere `BingMaps\`", ma rinominare `Bing\...` in `.bak` rimuoverebbe
+   l'unica implementazione di reverse-geocode via Bing — una decisione di
+   prodotto, non un refactor sicuro. Lasciato così, documentato qui.
 
 ## Conseguenze
 
 - **Positive**: il provider preferito si cambia da env (`GEO_DRIVER`) senza
   toccare codice; zero rischio di rottura perché l'ordine di default replica
-  esattamente quello hardcoded precedente; cancellati 1 action duplicato, 8
-  Data duplicati, 1 DataTransferObject duplicato; marcati `@deprecated` 2
-  LocationDTO.
+  esattamente quello hardcoded precedente; un solo duplicato buggato e due
+  file scratch `.wip` in meno nel modulo.
 - **Negative**: le ~40 action provider "vive ma mai chiamate da nessuno"
   restano nel modulo — non sono state toccate perché nessuna era
   funzionalmente ridondante rispetto a un'altra (ogni provider integra
@@ -97,10 +97,11 @@ nessun provider sia "vivo".
   riduzione del numero di file richiederebbe una decisione di prodotto su
   quali provider servono davvero in produzione (nessuno ha chiavi API
   visibili nel repo).
-- **Risolto**: `app/Actions/Bing/GetAddressFromBingMapsAction.php` cancellato
-  (0 chiamanti, vedi punto 4). L'ambiguità di naming con `BingMaps\` non è più
-  un problema.
+- **Neutro**: `app/Actions/Bing/GetAddressFromBingMapsAction.php` resta
+  un'ambiguità di naming (stesso nome, namespace diverso, comportamento
+  diverso da `BingMaps\...`) da risolvere in un task successivo con input di
+  prodotto.
 
 ## Partecipanti
 
-- Claude (agente di consolidamento, sessioni 2026-06-30 e 2026-07-02)
+- Claude (agente di consolidamento, sessione 2026-06-30)

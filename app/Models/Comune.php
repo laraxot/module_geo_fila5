@@ -106,6 +106,7 @@ class Comune extends BaseModel
         'lng',
     ];
 
+    /** @var array<string, string> */
     protected array $schema = [
         'id' => 'integer',
         'title' => 'json',
@@ -126,6 +127,9 @@ class Comune extends BaseModel
         return module_path('Geo', 'resources/json/comuni.json');
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         return $this->getSushiRows();
@@ -134,43 +138,65 @@ class Comune extends BaseModel
     /**
      * Get all regions.
      *
-     * @return Collection<int, non-empty-string>
+     * @return Collection<int, array<array-key, mixed>>
      */
     public static function getRegioni(): Collection
     {
-        return static::all()
-            ->pluck('regione')
-            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
-            ->map(static fn (mixed $value): string => (string) $value)
+        $regioni = [];
+
+        foreach (static::all() as $comune) {
+            $regione = $comune->regione;
+            if (! is_array($regione)) {
+                continue;
+            }
+
+            $regioni[] = $regione;
+        }
+
+        /** @var Collection<int, array<array-key, mixed>> $result */
+        $result = collect($regioni)
             ->unique()
             ->sort()
             ->values();
+
+        return $result;
     }
 
     /**
      * Get all provinces for a region.
      *
-     * @return Collection<int, non-empty-string>
+     * @return Collection<int, array<array-key, mixed>>
      */
     public static function getProvinceByRegione(string $regione): Collection
     {
-        return static::where('regione', $regione)
-            ->pluck('provincia')
-            ->filter(static fn (mixed $value): bool => is_string($value) && $value !== '')
-            ->map(static fn (mixed $value): string => (string) $value)
+        $province = [];
+
+        foreach (static::where('regione', $regione)->get() as $comune) {
+            $provincia = $comune->provincia;
+            if (! is_array($provincia)) {
+                continue;
+            }
+
+            $province[] = $provincia;
+        }
+
+        /** @var Collection<int, array<array-key, mixed>> $result */
+        $result = collect($province)
             ->unique()
             ->sort()
             ->values();
+
+        return $result;
     }
 
     /**
      * Get all comuni for a province.
      *
-     * @return Collection<int, self>
+     * @return Collection<int, static>
      */
     public static function getComuniByProvincia(string $provincia): Collection
     {
-        /** @var \Illuminate\Database\Eloquent\Collection<int, self> $comuni */
+        /** @var Collection<int, static> $comuni */
         $comuni = static::where('provincia', $provincia)->orderBy('nome')->get();
 
         return $comuni;
@@ -183,11 +209,13 @@ class Comune extends BaseModel
      *
      * @return static|null The found comune or null if not found
      */
-    public static function findByNome(string $nome): ?static
+    public static function findByNome(string $nome): ?self
     {
-        return static::query()
-            ->get()
-            ->first(fn (self $comune): bool => strtolower($comune->nome ?? '') === strtolower($nome));
+        /** @var static|null $comune */
+        $comune = static::all()
+            ->first(fn (self $item): bool => strtolower($item->nome ?? '') === strtolower($nome));
+
+        return $comune;
     }
 
     /**
@@ -195,11 +223,11 @@ class Comune extends BaseModel
      *
      * @param string $cap The CAP code to search for
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int, self> Collection of matching comuni
+     * @return Collection<int, static> Collection of matching comuni
      */
     public static function findByCap(string $cap): Collection
     {
-        /** @var \Illuminate\Database\Eloquent\Collection<int, self> $comuni */
+        /** @var Collection<int, static> $comuni */
         $comuni = static::where('cap', 'like', "%{$cap}%")->get();
 
         return $comuni;
@@ -218,12 +246,17 @@ class Comune extends BaseModel
             return null;
         }
 
-        $data = $comune->getAttributes();
+        /** @var array<string, mixed> $data */
+        $data = [];
+        foreach ($comune->toArray() as $key => $value) {
+            if (! is_string($key)) {
+                continue;
+            }
 
-        return array_map(
-            static fn (mixed $value): mixed => $value,
-            $data,
-        );
+            $data[$key] = $value;
+        }
+
+        return $data;
     }
 
     /**

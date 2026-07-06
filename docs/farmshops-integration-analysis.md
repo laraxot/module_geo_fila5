@@ -1,6 +1,5 @@
 # 🗺️ Farmshops.eu Integration Analysis
 
-**Date:** 2025-10-02
 **Module:** Geo
 **Status:** Analysis & Proposal
 
@@ -25,7 +24,6 @@
 | **Linguaggio** | JavaScript |
 | **Stars** | 40 |
 | **Forks** | 10 |
-| **Ultimo Update** | 2025-09-23 |
 | **Ultimo Update** | [DATE] |
 | **Homepage** | https://farmshops.eu |
 
@@ -617,7 +615,6 @@ Realtà aumentata per visualizzare punti di interesse tramite fotocamera smartph
 ---
 
 **📝 Documento preparato da:** Super Mucca 🐮
-**📅 Data:** 2025-10-02
 **📅 Data:** [DATE]
 **📧 Contatto:** geo-team@fixcity.com
 

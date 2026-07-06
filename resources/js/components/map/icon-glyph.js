@@ -44,6 +44,22 @@ export function buildMarkerGlyphHtml(iconUrl, sizePx = DEFAULT_GLYPH_SIZE_PX, op
 /**
  * Pallino colore per cluster (stato workflow).
  */
+/**
+ * Tile tipologia nel cluster (farmshops: img/hof.png dentro il cerchio a zoom ≥ 8).
+ */
+export function buildClusterTypeTileHtml(iconUrl, label = '', size = CLUSTER_DOT_SIZE_PX) {
+    const glyph = buildMarkerGlyphHtml(iconUrl, size, { monochrome: false });
+    if (!glyph) {
+        return '';
+    }
+
+    const title = String(label || '').replace(/"/g, '&quot;');
+
+    return (
+        `<span class="geo-cluster-type-tile" title="${title}" aria-hidden="true">${glyph}</span>`
+    );
+}
+
 export function buildClusterTypeDotHtml(color, size = CLUSTER_DOT_SIZE_PX) {
     const fill = normalizeHexColor(color);
     const n = Number(size) || CLUSTER_DOT_SIZE_PX;

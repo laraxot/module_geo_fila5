@@ -19,7 +19,7 @@ class AddressField extends Section
     protected function setUp(): void
     {
         parent::setUp();
-        $this->schema(array_values($this->getAddressFormSchema()));
+        $this->schema($this->getAddressFormSchema());
         $this->columns(2);
     }
 
@@ -52,6 +52,8 @@ class AddressField extends Section
     }
 
     /**
+     * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
+     *
      * @param array<string, Component> $schema
      *
      * @return array<string, Component>
@@ -59,18 +61,9 @@ class AddressField extends Section
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
-            if (method_exists($field, 'live')) {
-                $field->live(false);
-            }
-
-            if (method_exists($field, 'afterStateUpdated')) {
-                $field->afterStateUpdated(null);
-            }
-
-            if (method_exists($field, 'disabled')) {
-                $field->disabled(false);
-            }
-
+            $field->live(false);
+            $field->afterStateUpdated(null);
+            $field->disabled(false);
             $schema[$key] = $field;
         }
 

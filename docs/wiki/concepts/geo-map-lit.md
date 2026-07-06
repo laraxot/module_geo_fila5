@@ -8,7 +8,7 @@ type: concept
 
 ## Overview
 
-`geo-map-lit.js` is a Lit Web Component that renders a Leaflet map with marker clustering (using `leaflet.markercluster`) for the segnalazioni-elenco page. It follows the farmshops.eu pattern.
+`geo-map-lit.js` is a Lit Web Component that renders a Leaflet map with marker clustering (using `leaflet.markercluster`) for the ticket-list page. It follows the farmshops.eu pattern.
 
 ## Changes (2026-04-29)
 

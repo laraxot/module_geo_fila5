@@ -14,6 +14,9 @@ class HereService
 
     // https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
 
+    /**
+     * @return array<string, mixed>|null
+     */
     public static function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array
     {
         $api_key = TenantService::config('services.here.api_key');
@@ -61,6 +64,13 @@ class HereService
             return null;
         }
 
-        return $summary;
+        $result = [];
+        foreach ($summary as $key => $value) {
+            if (is_string($key)) {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
     }
 }

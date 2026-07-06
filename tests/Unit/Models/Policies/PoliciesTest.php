@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models\Policies;
 
-uses(TestCase::class);
-
 use Modules\Geo\Models\Policies\CountyPolicy;
 use Modules\Geo\Models\Policies\GeoNamesCapPolicy;
 use Modules\Geo\Models\Policies\LocalityPolicy;
@@ -13,39 +11,41 @@ use Modules\Geo\Models\Policies\PlacePolicy;
 use Modules\Geo\Models\Policies\PlaceTypePolicy;
 use Modules\Geo\Models\Policies\StatePolicy;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 test('StatePolicy can be instantiated', function () {
     $policy = new StatePolicy();
 
-    expect($policy)->toBeInstanceOf(StatePolicy::class);
+    Assert::assertInstanceOf(StatePolicy::class, $policy);
 });
 
 test('CountyPolicy can be instantiated', function () {
     $policy = new CountyPolicy();
 
-    expect($policy)->toBeInstanceOf(CountyPolicy::class);
+    Assert::assertInstanceOf(CountyPolicy::class, $policy);
 });
 
 test('LocalityPolicy can be instantiated', function () {
     $policy = new LocalityPolicy();
 
-    expect($policy)->toBeInstanceOf(LocalityPolicy::class);
+    Assert::assertInstanceOf(LocalityPolicy::class, $policy);
 });
 
 test('PlacePolicy can be instantiated', function () {
     $policy = new PlacePolicy();
 
-    expect($policy)->toBeInstanceOf(PlacePolicy::class);
+    Assert::assertInstanceOf(PlacePolicy::class, $policy);
 });
 
 test('PlaceTypePolicy can be instantiated', function () {
     $policy = new PlaceTypePolicy();
 
-    expect($policy)->toBeInstanceOf(PlaceTypePolicy::class);
+    Assert::assertInstanceOf(PlaceTypePolicy::class, $policy);
 });
 
 test('GeoNamesCapPolicy can be instantiated', function () {
     $policy = new GeoNamesCapPolicy();
 
-    expect($policy)->toBeInstanceOf(GeoNamesCapPolicy::class);
+    Assert::assertInstanceOf(GeoNamesCapPolicy::class, $policy);
 });

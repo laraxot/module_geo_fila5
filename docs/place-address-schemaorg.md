@@ -97,9 +97,3 @@ Schema::create('addresses', function (Blueprint $table) {
 ---
 
 Responsabile: Cascade AI 
-- [README.md](./README.md)
-
----
-
-**Ultimo aggiornamento:** 2025-05-29
-Responsabile: Cascade AI

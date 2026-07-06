@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const ELENCO_URL = 'http://127.0.0.1:8000/it/tests/segnalazioni-elenco';
+const ELENCO_URL = 'http://127.0.0.1:8000/it/tests/ticket-list';
 
 test.describe('STORY-062/065 — tab Mappa/Elenco (Bootstrap Italia)', () => {
   test.beforeEach(async ({ page }) => {

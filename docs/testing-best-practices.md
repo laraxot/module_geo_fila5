@@ -180,8 +180,6 @@ it('previene appuntamenti sovrapposti', function () {
     // Crea appuntamento esistente
     Appointment::factory()->create([
         'doctor_id' => $doctor->id,
-        'starts_at' => '2024-01-01 10:00:00',
-        'ends_at' => '2024-01-01 10:30:00',
         'starts_at' => '[DATE] 10:00:00',
         'ends_at' => '[DATE] 10:30:00',
     ]);
@@ -189,8 +187,6 @@ it('previene appuntamenti sovrapposti', function () {
     // Prova a creare appuntamento sovrapposto
     $response = $this->postJson('/api/appointments', [
         'doctor_id' => $doctor->id,
-        'starts_at' => '2024-01-01 10:15:00', // Sovrappone
-        'ends_at' => '2024-01-01 10:45:00',
         'starts_at' => '[DATE] 10:15:00', // Sovrappone
         'ends_at' => '[DATE] 10:45:00',
     ]);
@@ -531,16 +527,12 @@ describe('Appointment Business Rules', function () {
     it('prevents overlapping appointments for same doctor', function () {
         $existing = (object) [
             'doctor_id' => 1,
-            'start_time' => '2024-01-01 10:00:00',
-            'end_time' => '2024-01-01 10:30:00'
             'start_time' => '[DATE] 10:00:00',
             'end_time' => '[DATE] 10:30:00'
         ];
 
         $new = (object) [
             'doctor_id' => 1,
-            'start_time' => '2024-01-01 10:15:00',
-            'end_time' => '2024-01-01 10:45:00'
             'start_time' => '[DATE] 10:15:00',
             'end_time' => '[DATE] 10:45:00'
         ];
@@ -557,8 +549,6 @@ describe('Appointment Business Rules', function () {
 describe('Edge Cases', function () {
     it('handles year boundary dates', function () {
         $appointment = (object) [
-            'start_time' => '2024-12-31 23:00:00',
-            'end_time' => '2025-01-01 01:00:00'
             'start_time' => '[DATE] 23:00:00',
             'end_time' => '[DATE] 01:00:00'
         ];
@@ -612,12 +602,5 @@ describe('Edge Cases', function () {
 
 ---
 
-- [Best Practices Modulo <nome modulo>](../../laravel/Modules/<nome modulo>/docs/testing-best-practices.md)
-- [Best Practices Modulo <nome progetto>](../../laravel/Modules/<nome progetto>/docs/testing-best-practices.md)
-- [Testing Modulo Geo](../../laravel/Modules/Geo/docs/testing.md)
-
----
-
-**Ultimo aggiornamento**: Gennaio 2025
 **Versione**: 1.0
 **Compatibilità**: Pest 2.x+, Laravel 12.x, PHP 8.3+

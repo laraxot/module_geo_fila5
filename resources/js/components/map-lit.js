@@ -29,7 +29,7 @@ import { renderSearch, searchUiHandlers } from './map/controls/search.js';
 import { buildMapLayers } from './map/layers.js';
 import { mapStylesText } from './map/styles.js';
 import { createGeoMapLeafletIcon, markerCardStylesText } from './map/config.js';
-import { buildClusterTypeDotHtml } from './map/icon-glyph.js';
+import { buildClusterTypeTileHtml } from './map/icon-glyph.js';
 import { resolveFeatureTicketType } from './map/feature-type.js';
 import { resolveFeatureTicketStatus } from './map/feature-status.js';
 import {
@@ -237,6 +237,9 @@ class MapLit extends LitElement {
         this._layers = buildMapLayers(L);
         this._layers[this._currentLayer].addTo(this._map);
 
+        // A5: scala metrica (km/m) in basso a sinistra, niente miglia
+        L.control.scale({ imperial: false }).addTo(this._map);
+
         // Reference: direktvermarkter.js custom cluster group
         const clusterFactory = L.markerClusterGroup || (window.L && window.L.markerClusterGroup);
         console.log('[map-lit] clusterFactory available:', typeof clusterFactory === 'function', L.MarkerClusterGroup);
@@ -260,11 +263,21 @@ class MapLit extends LitElement {
         }
 
         this._map.on('popupopen', (e) => {
-            const mapW = this._map.getContainer().clientWidth;
+            const container = this._map.getContainer();
+            const mapW = container.clientWidth;
+            const mapH = container.clientHeight;
+            // farmshops.eu: maxHeight 0.65 × mappa (A4), maxWidth 0.95 × mappa
             e.popup.options.maxWidth = Math.floor(mapW * 0.95);
-            e.popup.options.maxHeight = null;
+            e.popup.options.maxHeight = Math.floor(mapH * 0.65);
             e.popup.update();
             this._wirePopupActions(e.popup);
+        });
+
+        // farmshops.eu: LOD cluster (conteggio vs icone tipo) si aggiorna al cambio zoom
+        this._map.on('zoomend', () => {
+            if (typeof this._markersLayer?.refreshClusters === 'function') {
+                this._markersLayer.refreshClusters();
+            }
         });
 
         this._setupMutationObserver();
@@ -373,15 +386,20 @@ class MapLit extends LitElement {
         const clusterSize = L.point(80, 80);
 
         if (zoom >= 8) {
-            const statusesPresent = {};
-            markers.forEach(m => {
-                const s = m.options.statusValue;
-                if (s && !statusesPresent[s]) {
-                    statusesPresent[s] = m.options.statusColor || '#607d8b';
+            const typeByValue = new Map();
+            markers.forEach((m) => {
+                const value = m.options.typeValue;
+                if (!value || typeByValue.has(value)) {
+                    return;
                 }
+                typeByValue.set(value, {
+                    iconUrl: m.options.typeIconUrl,
+                    label: m.options.typeLabel,
+                });
             });
-            const icons = Object.entries(statusesPresent)
-                .map(([, color]) => buildClusterTypeDotHtml(color))
+            const icons = [...typeByValue.values()]
+                .slice(0, 4)
+                .map((t) => buildClusterTypeTileHtml(t.iconUrl, t.label, 16))
                 .join('');
 
             return L.divIcon({
@@ -693,6 +711,7 @@ class MapLit extends LitElement {
                 className: 'popup-wrapper',
                 maxWidth: 420,
                 minWidth: 300,
+                autoPanPaddingTopLeft: L.point(72, 16),
             });
             layer.bindPopup(popup);
         }
@@ -733,10 +752,13 @@ class MapLit extends LitElement {
         const lat = Number(coordsRaw?.[1]);
         const coords = { lat, lng };
 
-        layer.bindPopup('', {
+        // A1: autoPanPaddingTopLeft evita che il popup finisca sotto header/zoom
+        // A3: pre-bind con skeleton (no popup vuoto al primo click)
+        layer.bindPopup(buildTicketPopupLoadingHtml(ticketType, ticketStatus), {
             className: 'popup-wrapper',
             maxWidth: 380,
             minWidth: 300,
+            autoPanPaddingTopLeft: L.point(72, 16),
         });
 
         layer.on('click', (event) => {
@@ -744,12 +766,32 @@ class MapLit extends LitElement {
                 L.DomEvent.stopPropagation(event);
             }
 
+            const popup = this._ensureFeaturePopup(layer);
+
             const showPopup = (detail) => {
-                this._openFeaturePopup(layer, p, ticketType, ticketStatus, detail, coords);
+                if (detail) {
+                    layer._geoDetailCache = detail;
+                }
+                const html = buildTicketPopupHtml(p, ticketType, ticketStatus, detail, coords);
+                popup.setContent(html);
+                popup._geoFeatureProps = p;
+                popup._geoTicketType = ticketType;
+                popup._geoTicketStatus = ticketStatus;
+                popup._geoTicketDetail = detail;
+                popup.update();
+                this._wirePopupActions(popup);
             };
 
+            if (layer._geoDetailCache) {
+                showPopup(layer._geoDetailCache);
+                return;
+            }
+
             if (p.id) {
-                this._openFeaturePopupLoading(layer, ticketType, ticketStatus);
+                // Reset skeleton prima del fetch (re-click dopo close senza cache)
+                popup.setContent(buildTicketPopupLoadingHtml(ticketType, ticketStatus));
+                popup._geoFeatureProps = null;
+                popup.update();
                 fetch(`/api/ticket-details/${p.id}`)
                     .then((res) => (res.ok ? res.json() : null))
                     .then((detail) => showPopup(detail))
@@ -891,39 +933,18 @@ class MapLit extends LitElement {
     }
 
     _syncMapLegend(features) {
-        if (!this._map) {
-            return;
-        }
-
-        if (this.getAttribute('legend-mode') === 'sidebar') {
-            if (this._legendControl) {
-                this._map.removeControl(this._legendControl);
-                this._legendControl = null;
-            }
-
-            return;
-        }
-
-        const types = collectLegendStatusesFromFeatures(features);
-        const title = this.labels?.legend_title ?? 'Stati segnalazione';
-
-        if (types.length === 0) {
+        // LEGEND REMOVED: Stati segnalazione già visualizzati nei filtri laterali (sidebar)
+        // Questo metodo è disabilitato per evitare ridondanza con i filtri di sinistra nella versione desktop.
+        // legend-mode="off" o "sidebar" nasconde la legenda; "status-collapsed" mostra una legenda collassata.
+        const legendMode = this.getAttribute('legend-mode') || 'off';
+        if (legendMode === 'off' || legendMode === 'sidebar') {
             if (this._legendControl) {
                 this._map.removeControl(this._legendControl);
                 this._legendControl = null;
             }
             return;
         }
-
-        if (!this._legendControl) {
-            this._legendControl = mountMapLegend(L, this._map, types, {
-                title,
-                position: 'bottomleft',
-            });
-            return;
-        }
-
-        refreshMapLegend(this._legendControl, types, title);
+        // Per altri valori (es. status-collapsed) potrebbe essere implementata una legenda collassata
     }
 
     filterByTypes(types) {

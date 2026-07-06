@@ -7,8 +7,10 @@ namespace Modules\Geo\Actions\Photon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 
 use function Safe\json_decode;
 
@@ -51,11 +53,11 @@ readonly class GetAddressFromPhotonAction
             $longitude = $photonData->coordinates['longitude'] ?? 0.0;
 
             return new AddressData(
-                latitude: is_float($latitude) ? $latitude : (float) $latitude,
-                longitude: is_float($longitude) ? $longitude : (float) $longitude,
+                latitude: SafeFloatCastAction::cast($latitude),
+                longitude: SafeFloatCastAction::cast($longitude),
                 country: $photonData->country,
                 city: $photonData->city,
-                postal_code: (int) ($photonData->postcode ?: 0),
+                postal_code: SafeIntCastAction::cast($photonData->postcode ?: 0),
                 street: $photonData->street,
                 street_number: $photonData->housenumber,
             );

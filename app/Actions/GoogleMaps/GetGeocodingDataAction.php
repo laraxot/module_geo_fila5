@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions\GoogleMaps;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use Modules\Geo\Datas\GeocodingData;
+use Modules\Geo\Datas\Geocoding\GeocodingData;
 
 use function Safe\json_decode;
 
@@ -117,6 +117,9 @@ readonly class GetGeocodingDataAction
             return GeocodingData::error($data['status']);
         }
 
-        return GeocodingData::fromGoogleResponse($data);
+        return GeocodingData::fromGoogleResponse([
+            'status' => $data['status'],
+            'results' => $data['results'],
+        ]);
     }
 }

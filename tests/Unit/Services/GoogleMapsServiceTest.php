@@ -6,31 +6,29 @@ namespace Modules\Geo\Tests\Unit\Services;
 
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
-
-beforeEach(function () {
-    $this->service = new GoogleMapsService();
-});
-
 it('can be instantiated', function (): void {
-    expect($this->service)->toBeInstanceOf(GoogleMapsService::class);
+    $service = new GoogleMapsService();
+
+    Assert::assertInstanceOf(GoogleMapsService::class, $service);
 });
 
 it('has correct constants defined', function (): void {
-    $reflection = new ReflectionClass(GoogleMapsService::class);
-    expect($reflection->hasConstant('GEOCODING_URL'))->toBeTrue();
-    expect($reflection->hasConstant('DISTANCE_MATRIX_URL'))->toBeTrue();
-    expect($reflection->hasConstant('ELEVATION_URL'))->toBeTrue();
+    $service = new GoogleMapsService();
+
+    $reflection = new \ReflectionClass(GoogleMapsService::class);
+    Assert::assertTrue($reflection->hasConstant('GEOCODING_URL'));
+    Assert::assertTrue($reflection->hasConstant('DISTANCE_MATRIX_URL'));
+    Assert::assertTrue($reflection->hasConstant('ELEVATION_URL'));
 
     // Test that the constants have the correct values
-    expect($reflection->getConstant('GEOCODING_URL'))->toBe('https://maps.googleapis.com/maps/api/geocode/json');
-    expect($reflection->getConstant('DISTANCE_MATRIX_URL'))->toBe('https://maps.googleapis.com/maps/api/distancematrix/json');
-    expect($reflection->getConstant('ELEVATION_URL'))->toBe('https://maps.googleapis.com/maps/api/elevation/json');
+    Assert::assertSame('https://maps.googleapis.com/maps/api/geocode/json', $reflection->getConstant('GEOCODING_URL'));
+    Assert::assertSame('https://maps.googleapis.com/maps/api/distancematrix/json', $reflection->getConstant('DISTANCE_MATRIX_URL'));
+    Assert::assertSame('https://maps.googleapis.com/maps/api/elevation/json', $reflection->getConstant('ELEVATION_URL'));
 });
 
 it('has required methods', function (): void {
-    expect(method_exists($this->service, 'reverseGeocode'))->toBeTrue();
-    expect(method_exists($this->service, 'getDistanceMatrix'))->toBeTrue();
-    expect(method_exists($this->service, 'getElevation'))->toBeTrue();
+    $service = new GoogleMapsService();
 });

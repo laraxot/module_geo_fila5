@@ -1,77 +1,3 @@
-# PHPStan Fixes for Geo Module
-
-This document outlines the PHPStan-related fixes and improvements made to the Geo module to ensure type safety and code quality at PHPStan level 9.
-
-## Fixed Issues
-
-### 1. GetCoordinatesByAddressAction
-
-- **Issue**: PHPDoc parse errors in array shape definitions
-- **Fix**: Corrected array shape annotations to be compatible with PHPStan
-- **Changes**:
-  - Updated return type hints for API response methods
-  - Added proper type assertions for API responses
-  - Ensured consistent array structure in return values
-
-### 2. GoogleMaps Actions
-
-- **Issue**: Property access on mixed types and return type mismatches
-- **Fix**: Added proper type hints and assertions
-- **Changes**:
-  - Added missing import for `GoogleMapAddressComponentData`
-  - Improved type safety in `getComponent` method
-  - Added proper PHPDoc blocks for complex return types
-
-### 3. Mapbox Actions
-
-- **Issue**: Argument type mismatches and array shape issues
-- **Fix**: Ensured correct array structure for MapboxMapData
-- **Changes**:
-  - Updated array structure to match expected shape
-  - Added proper type hints for context items
-  - Improved error handling for missing or malformed data
-
-## Best Practices Implemented
-
-1. **Type Safety**
-   - Added strict type declarations
-   - Used proper PHPDoc type hints for arrays and collections
-   - Added runtime type assertions where needed
-
-2. **Error Handling**
-   - Added proper exception handling for API responses
-   - Improved validation of input parameters
-   - Added meaningful error messages
-
-3. **Code Organization**
-   - Grouped related functionality into methods
-   - Improved method documentation
-   - Used consistent naming conventions
-
-## Testing
-
-All changes have been verified with PHPStan level 9. To run the analysis:
-
-```bash
-./vendor/bin/phpstan analyse Modules/Geo --level=9
-```
-
-## Dependencies
-
-- PHP 8.2+
-- Laravel 10.x
-- PHPStan 1.10.x
-- spatie/laravel-data
-
-## Related Documentation
-
-- [PHPStan Documentation](https://phpstan.org/)
-- [Laravel Data Documentation](https://spatie.be/project_docs/laravel-data/v3/introduction)
-- [Geo Module Architecture](architecture.md)
-
-
---- Merged from phpstan-fixes-2025-01-27.md ---
-
 # Correzioni PHPStan Modulo Geo - 2025-01-27
 
 **Data**: 2025-01-27  
@@ -161,78 +87,96 @@ Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
 
 - [Documentazione Compatibilità Filament 4.x](./filament_4x_compatibility.md)
 - [Documentazione Widget Disabilitati](./widgets/disabled_widgets.md)
-- [Laravel Data Documentation](https://spatie.be/docs/laravel-data/v3/introduction)
-- [Geo Module Architecture](architecture.md)
-# PHPStan Fixes for Geo Module
-
-This document outlines the PHPStan-related fixes and improvements made to the Geo module to ensure type safety and code quality at PHPStan level 9.
-
-## Fixed Issues
-
-### 1. GetCoordinatesByAddressAction
-
-- **Issue**: PHPDoc parse errors in array shape definitions
-- **Fix**: Corrected array shape annotations to be compatible with PHPStan
-- **Changes**:
-  - Updated return type hints for API response methods
-  - Added proper type assertions for API responses
-  - Ensured consistent array structure in return values
-
-### 2. GoogleMaps Actions
-
-- **Issue**: Property access on mixed types and return type mismatches
-- **Fix**: Added proper type hints and assertions
-- **Changes**:
-  - Added missing import for `GoogleMapAddressComponentData`
-  - Improved type safety in `getComponent` method
-  - Added proper PHPDoc blocks for complex return types
-
-### 3. Mapbox Actions
-
-- **Issue**: Argument type mismatches and array shape issues
-- **Fix**: Ensured correct array structure for MapboxMapData
-- **Changes**:
-  - Updated array structure to match expected shape
-  - Added proper type hints for context items
-  - Improved error handling for missing or malformed data
-
-## Best Practices Implemented
-
-1. **Type Safety**
-   - Added strict type declarations
-   - Used proper PHPDoc type hints for arrays and collections
-   - Added runtime type assertions where needed
-
-2. **Error Handling**
-   - Added proper exception handling for API responses
-   - Improved validation of input parameters
-   - Added meaningful error messages
-
-3. **Code Organization**
-   - Grouped related functionality into methods
-   - Improved method documentation
-   - Used consistent naming conventions
-
-## Testing
-
-All changes have been verified with PHPStan level 9. To run the analysis:
-
-```bash
-./vendor/bin/phpstan analyse Modules/Geo --level=9
-```
-
-## Dependencies
-
-- PHP 8.2+
-- Laravel 10.x
-- PHPStan 1.10.x
-- spatie/laravel-data
-
-## Related Documentation
-
-- [PHPStan Documentation](https://phpstan.org/)
-- [Laravel Data Documentation](https://spatie.be/docs/laravel-data/v3/introduction)
-- [Geo Module Architecture](architecture.md)
 - [Piano Migrazione Filament](../../../docs/filament_4x_migration_plan.md)
 
-*Ultimo aggiornamento: 2025-01-27*
+---
+
+# PHPStan Zero Errors Achievement - 2026-06-13
+
+**Data**: 2026-06-13  
+**PHPStan Level**: max  
+**Status**: ✅ ZERO ERRORS  
+
+## 🎯 Correzioni PHPStan Modules Analysis
+
+### 1. Dead Catch Block Resolution
+
+**Problema**:
+```
+Dead catch - InvalidArgumentException is never thrown in the try block
+```
+
+**File**: `tests/Unit/Actions/GoogleMaps/GetCoordinatesFromGoogleMapsActionTest.pest.php`
+
+**Causa**: La funzione `GetCoordinatesFromGoogleMapsAction` usa `Webmozart\Assert\Assert` che lancia `InvalidArgumentException`, ma i docstring non lo documentavano.
+
+**Soluzione**:
+1. Aggiunto `@throws \InvalidArgumentException` ai docstring di:
+   - `validateInput()` — valida input
+   - `execute()` — metodo pubblico
+
+**File Modificato**:
+- `app/Actions/GoogleMaps/GetCoordinatesFromGoogleMapsAction.php`
+
+```php
+/**
+ * Valida i dati di input.
+ * @throws \InvalidArgumentException Se i dati non sono validi
+ */
+private function validateInput(string $address): void
+
+/**
+ * Ottiene le coordinate da un indirizzo.
+ * @throws \InvalidArgumentException Se i dati non sono validi
+ * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+ */
+public function execute(string $address): LocationData
+```
+
+### 2. Pest Class Resolution Fix
+
+**Problema**:
+```
+The class `Modules\Geo\Tests\Unit\Actions\GoogleMaps\LightTestCase` was not found
+```
+
+**Causa**: Pest risolve i class name relative al namespace del file test
+
+**Soluzione**: Usare fully qualified class name in `uses()`:
+
+```php
+// Prima (errato)
+uses(LightTestCase::class);
+
+// Dopo (corretto)
+uses(\Modules\Geo\Tests\LightTestCase::class);
+```
+
+**File Modificati**:
+- `tests/Unit/Actions/GoogleMaps/CalculateTravelTimeActionTest.pest.php`
+- `tests/Unit/Actions/GoogleMaps/GetCoordinatesFromGoogleMapsActionTest.pest.php`
+
+## 📚 Key Learning: Webmozart Assert
+
+La libreria `Webmozart\Assert\Assert` lancia `InvalidArgumentException` per validazioni:
+
+```php
+Assert::notEmpty($apiKey, '...');     // → InvalidArgumentException
+Assert::maxLength($address, 1000, '...'); // → InvalidArgumentException
+```
+
+Sempre documentare in docstring: `@throws \InvalidArgumentException`
+
+## ✅ Validazione
+
+```bash
+./vendor/bin/phpstan analyse Modules/Geo
+# Result: [OK] No errors
+```
+
+## 🔗 Related Rules
+
+- [Webmozart Assert Exception Types](../../../docs/wiki/rules/webmozart-assert-exceptions.md)
+- [Pest Fully Qualified Class Names](../../../docs/wiki/skills/pest-fqn-resolution.md)
+
+*Ultimo aggiornamento: 2026-06-13*

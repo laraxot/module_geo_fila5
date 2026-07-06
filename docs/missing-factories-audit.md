@@ -2,7 +2,6 @@
 
 ## Situazione Critica Identificata
 
-**Data audit**: 2025-01-06
 **Data audit**: [DATE]
 **Gravità**: CRITICA - 8 factory mancanti su 11 models
 
@@ -147,8 +146,6 @@
 
 ## Collegamenti
 
-- [README Modulo Geo](./README.md)
-- [Factory Audit Root](../../../docs/factory-audit-2025.md)
 - [README Modulo Geo](./readme.md)
 - [Factory Audit Root](../../../../docs/factory-audit-2025.md)
 - [Address Implementation](./address-implementation.md)
@@ -156,4 +153,3 @@
 
 ---
 **Errore gravissimo da non ripetere mai più**
-*Ultimo aggiornamento: 2025-01-06*

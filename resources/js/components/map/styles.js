@@ -281,8 +281,8 @@ export const mapStyles = css`
 
     /* Cluster Circle - farmshops.eu style (no transform hover: fa "scappare" dal anchor Leaflet) */
     .circle, .geo-cluster-circle {
-        color: #4ca7ce;
-        border: 3px solid #4ca7ce;
+        color: #17324d;
+        border: 3px solid #007a52;
         background: #ffffff;
         border-radius: 50%;
         width: 80px;
@@ -325,6 +325,26 @@ export const mapStyles = css`
         min-height: 14px !important;
         flex: 0 0 auto !important;
         object-fit: contain;
+    }
+
+    .geo-cluster-type-tile {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        background: #fff;
+        border: 1px solid #d9e2f0;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+        flex: 0 0 auto;
+    }
+
+    .geo-cluster-type-tile img {
+        width: 14px !important;
+        height: 14px !important;
+        filter: none !important;
+        opacity: 1 !important;
     }
 
     .geo-map-legend {

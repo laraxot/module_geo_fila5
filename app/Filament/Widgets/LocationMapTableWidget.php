@@ -25,6 +25,9 @@ class LocationMapTableWidget extends BaseWidget
             ->columns($this->getTableColumns());
     }
 
+    /**
+     * @return Builder<Location>
+     */
     protected function getTableQuery(): Builder
     {
         return Location::query()->latest();

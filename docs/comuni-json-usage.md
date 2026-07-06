@@ -58,14 +58,10 @@ class ImportGeoData extends Command
     {
         $path = module_path('Geo', 'resources/json/comuni.json');
         
-        
         if (!file_exists($path)) {
             $this->error("comuni.json not found at: {$path}");
             return 1;
         }
-
-        $json = json_decode(file_get_contents($path), true);
-
         
         $json = json_decode(file_get_contents($path), true);
         
@@ -79,19 +75,12 @@ class ImportGeoData extends Command
         DB::transaction(function () use ($json) {
             $bar = $this->output->createProgressBar(count($json));
             
-
-        $this->info('Starting import of Italian geographical data...');
-
-        DB::transaction(function () use ($json) {
-            $bar = $this->output->createProgressBar(count($json));
-
             foreach ($json as $item) {
                 // Import region
                 $region = Region::firstOrCreate(
                     ['code' => $item['regione']['codice']],
                     ['name' => $item['regione']['nome']]
                 );
-                
                 
                 // Import province
                 $province = Province::firstOrCreate(
@@ -104,7 +93,6 @@ class ImportGeoData extends Command
                     ]
                 );
                 
-                
                 // Import city
                 $city = City::firstOrCreate(
                     ['code' => $item['codice']],
@@ -116,7 +104,6 @@ class ImportGeoData extends Command
                         'population' => $item['popolazione'] ?? null,
                     ]
                 );
-                
                 
                 // Import CAPs
                 foreach (($item['cap'] ?? []) as $capCode) {
@@ -134,13 +121,6 @@ class ImportGeoData extends Command
             $bar->finish();
             $this->newLine(2);
             
-
-                $bar->advance();
-            }
-
-            $bar->finish();
-            $this->newLine(2);
-
             $this->info('Geographical data imported successfully!');
             $this->info(sprintf(
                 '- %d regions\n- %d provinces\n- %d cities\n- %d CAPs',
@@ -150,7 +130,6 @@ class ImportGeoData extends Command
                 Cap::count()
             ));
         });
-        
         
         return 0;
     }
@@ -197,13 +176,11 @@ public static function form(Form $form): Form
         ->schema([
             // Other fields...
             
-            
             Forms\Components\Card::make()
                 ->schema([
                     Forms\Components\TextInput::make('address')
                         ->label(__('geo::location.address'))
                         ->required(),
-                        
                         
                     Forms\Components\Grid::make(2)
                         ->schema([
@@ -216,13 +193,6 @@ public static function form(Form $form): Form
                             LocationSelect::make('city_id')
                                 ->getCitySelect(),
                                 
-
-                            LocationSelect::make('province_id')
-                                ->getProvinceSelect(),
-
-                            LocationSelect::make('city_id')
-                                ->getCitySelect(),
-
                             LocationSelect::make('cap')
                                 ->getCapSelect(),
                         ]),

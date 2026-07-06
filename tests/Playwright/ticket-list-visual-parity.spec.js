@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const screenshotDir = path.resolve(
   __dirname,
-  '../../../../docs/project/visual-comparison/segnalazioni-elenco-it',
+  '../../../../docs/project/visual-comparison/ticket-list-it',
 );
 
 const viewports = [
@@ -14,7 +14,7 @@ const viewports = [
   { name: 'desktop', width: 1280, height: 900 },
 ];
 
-const elencoPaths = ['/it/', '/en/', '/it/tests/segnalazioni-elenco'];
+const elencoPaths = ['/it/', '/en/', '/it/tests/ticket-list'];
 
 test.describe('STORY-109 — elenco segnalazioni vs Design Comuni', () => {
   for (const elencoPath of elencoPaths) {
@@ -31,7 +31,7 @@ test.describe('STORY-109 — elenco segnalazioni vs Design Comuni', () => {
 
         test.skip(response === null || !response.ok(), 'App non raggiungibile');
 
-        await page.waitForSelector('#main-container[data-page="segnalazioni-elenco"]', {
+        await page.waitForSelector('#main-container[data-page="ticket-list"]', {
           timeout: 15000,
         });
         await page.locator('#main-container map-lit#block-map').waitFor({
@@ -44,7 +44,7 @@ test.describe('STORY-109 — elenco segnalazioni vs Design Comuni', () => {
           fullPage: true,
         });
 
-        await expect(page.locator('body[data-page="segnalazioni-elenco"]')).toBeVisible();
+        await expect(page.locator('body[data-page="ticket-list"]')).toBeVisible();
 
         const geo = await page.request.get('http://127.0.0.1:8000/data/tickets.json');
         test.skip(!geo.ok(), 'API GeoJSON non disponibile');

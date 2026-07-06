@@ -258,5 +258,3 @@ Prima di considerare completata la risoluzione:
 ## ✅ Update Febbraio 2026
 - **CalculateDistanceAction.php**: Risolto errore critico di namespace collision (PHPStan) e violazioni di complessità/stile (PHPMD/PHPInsights). Rifattorizzato per usare `final`, importazioni corrette e rimozione di complessità inutile.
 
-*Ultimo aggiornamento: Gennaio 2025*  
-*⚠️ File critico: AddressItemEnum.php (67 errori)*

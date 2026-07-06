@@ -53,12 +53,10 @@ class Comune extends Model
 {
     use Sushi;
     
-    
     /**
      * Indica a Sushi di non utilizzare timestamps
      */
     public $timestamps = false;
-    
     
     /**
      * Definisce le colonne del modello
@@ -70,7 +68,6 @@ class Comune extends Model
         'popolazione' => 'integer',
     ];
     
-    
     /**
      * Carica i dati dal file JSON
      */
@@ -79,12 +76,10 @@ class Comune extends Model
         $path = module_path('Geo', 'resources/json/comuni.json');
         $cacheKey = 'geo_comuni_json_' . md5($path);
         
-        
         return cache()->rememberForever($cacheKey, function () use ($path) {
             return json_decode(file_get_contents($path), true);
         });
     }
-    
     
     /**
      * Scope per filtrare per regione
@@ -95,7 +90,6 @@ class Comune extends Model
                      ->orderBy('nome');
     }
     
-    
     /**
      * Scope per filtrare per provincia
      */
@@ -105,7 +99,6 @@ class Comune extends Model
                      ->orderBy('nome');
     }
     
-    
     /**
      * Scope per cercare per nome
      */
@@ -114,7 +107,6 @@ class Comune extends Model
         return $query->where('nome', 'like', '%' . $name . '%')
                      ->orderBy('nome');
     }
-    
     
     /**
      * Scope per filtrare per CAP
@@ -126,7 +118,6 @@ class Comune extends Model
         return $query->whereRaw("JSON_CONTAINS(cap, '\"$cap\"')");
     }
     
-    
     /**
      * Verifica se il CAP è valido
      */
@@ -135,7 +126,6 @@ class Comune extends Model
         return self::byCap($cap)->exists();
     }
     
-    
     /**
      * Relazione con la regione
      */
@@ -143,7 +133,6 @@ class Comune extends Model
     {
         // Implementazione della relazione se necessario
     }
-    
     
     /**
      * Relazione con la provincia
@@ -195,11 +184,6 @@ public static function searchByName(string $name, int $limit = 0): Collection
         $query->limit($limit);
     }
     
-
-    if ($limit > 0) {
-        $query->limit($limit);
-    }
-
     return $query->get();
 }
 ```
@@ -321,9 +305,6 @@ use Sushi\Sushi;
 class Comune extends Model
 {
     use Sushi;
-
-    public $timestamps = false;
-
     
     public $timestamps = false;
     
@@ -331,7 +312,6 @@ class Comune extends Model
      * Durata della cache in secondi (1 settimana)
      */
     protected const CACHE_TTL = 604800;
-    
     
     /**
      * Definisce le colonne del modello
@@ -343,7 +323,6 @@ class Comune extends Model
         'popolazione' => 'integer',
     ];
     
-    
     /**
      * Ottiene i dati dal file JSON con caching
      */
@@ -351,7 +330,6 @@ class Comune extends Model
     {
         $path = module_path('Geo', 'resources/json/comuni.json');
         $cacheKey = 'geo_comuni_json_' . md5($path);
-        
         
         return Cache::rememberForever($cacheKey, function () use ($path) {
             return json_decode(file_get_contents($path), true);
@@ -362,11 +340,6 @@ class Comune extends Model
     
     // + implementazione dei metodi attuali per compatibilità
     
-
-    // Scopes Eloquent per query comuni
-
-    // + implementazione dei metodi attuali per compatibilità
-
     /**
      * Pulisce tutta la cache
      */

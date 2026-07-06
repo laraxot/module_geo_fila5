@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Services;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Service per geocoding e reverse geocoding.
  */
 class GeocodingService
 {
+    use QueueableAction;
+
     /**
      * Geocodifica un indirizzo.
      *
@@ -29,5 +33,9 @@ class GeocodingService
     public function getSuggestions(string $query): array
     {
         return [];
+    }
+
+    public function execute(): void
+    {
     }
 }

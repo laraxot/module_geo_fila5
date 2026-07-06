@@ -82,7 +82,7 @@ flowchart TD
 | Marker stato/tipo | [geo-map-marker-status-background.md](./geo-map-marker-status-background.md) |
 | Tema — leak header | [global-header-css-leak-leaflet-popup.md](../../../../../Themes/Sixteen/docs/wiki/troubleshooting/global-header-css-leak-leaflet-popup.md) |
 | Tema — confine marker | [geo-map-marker-civic-pin-theme-boundary.md](../../../../../Themes/Sixteen/docs/wiki/concepts/geo-map-marker-civic-pin-theme-boundary.md) |
-| Tema — integrazione pagina | [segnalazioni-elenco-map-integration.md](../../../../../Themes/Sixteen/docs/wiki/concepts/segnalazioni-elenco-map-integration.md) |
+| Tema — integrazione pagina | [ticket-list-map-integration.md](../../../../../Themes/Sixteen/docs/wiki/concepts/ticket-list-map-integration.md) |
 | Root progetto | [map-lit-reconstruction-hub.md](../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md) |
 | JSON + filtri | [map-lit-tickets-json-ssot.md](../../../../../Themes/docs/shared-components/map-lit-tickets-json-ssot.md) |
 

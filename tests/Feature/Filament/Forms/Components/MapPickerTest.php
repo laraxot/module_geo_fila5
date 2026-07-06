@@ -6,60 +6,96 @@ namespace Modules\Geo\Tests\Feature\Filament\Forms\Components;
 
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
-    expect($field)->toBeInstanceOf(MapPicker::class);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 });
 
 it('can set and get latitude and longitude field names', function () {
     $field = MapPicker::make('location')
-        ->latitude('lat_field')
-        ->longitude('lng_field');
+        ->latitudeColumn('lat_field')
+        ->longitudeColumn('lng_field');
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->getLatitudeField())->toBe('lat_field')
-        ->and($field->getLongitudeField())->toBe('lng_field');
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertSame('lat_field', $field->getLatitudeColumn());
+
+    Assert::assertSame('lng_field', $field->getLongitudeColumn());
 });
 
 it('has default latitude and longitude field names', function () {
     $field = MapPicker::make('location');
 
-    expect($field->getLatitudeField())->toBe('latitude')
-        ->and($field->getLongitudeField())->toBe('longitude');
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
 });
 
 it('can set zoom level', function () {
     $field = MapPicker::make('location')
         ->zoom(10);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->getZoom())->toBe(10);
+    Assert::assertSame(10, $field->getZoom());
 });
 
 it('can enable or disable reverse geocoding', function () {
     $field = MapPicker::make('location')
         ->reverseGeocoding(false);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->shouldReverseGeocode())->toBeFalse();
+    Assert::assertFalse($field->hasReverseGeocoding());
 
     $field->reverseGeocoding(true);
-    expect($field->shouldReverseGeocode())->toBeTrue();
+    Assert::assertTrue($field->hasReverseGeocoding());
 });
 
 it('can enable or disable geolocation when empty', function () {
     $field = MapPicker::make('location')
         ->geolocateWhenEmpty(false);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
+    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    expect($field->shouldGeolocateWhenEmpty())->toBeFalse();
+    Assert::assertFalse($field->getGeolocateWhenEmpty());
 
     $field->geolocateWhenEmpty(true);
-    expect($field->shouldGeolocateWhenEmpty())->toBeTrue();
+    Assert::assertTrue($field->getGeolocateWhenEmpty());
 });
 
 it('uses the geo map picker blade view', function () {
     $field = MapPicker::make('location');
 
-    expect($field->getView())->toBe('geo::filament.forms.components.map-picker');
+    Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
 });

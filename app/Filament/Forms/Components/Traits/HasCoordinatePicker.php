@@ -8,6 +8,7 @@ use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
@@ -216,8 +217,8 @@ trait HasCoordinatePicker
         }
 
         try {
-            $appName = (string) config('app.name', 'Laraxot');
-            $appUrl = (string) config('app.url', 'localhost');
+            $appName = SafeStringCastAction::cast(config('app.name', 'Laraxot'));
+            $appUrl = SafeStringCastAction::cast(config('app.url', 'localhost'));
             $response = Http::withHeaders([
                 'User-Agent' => \sprintf('%s/1.0 (%s)', $appName, $appUrl),
             ])
@@ -262,6 +263,8 @@ trait HasCoordinatePicker
     /**
      * Reverse geocodes coordinates to a structured address.
      * Returns a rich array for better form integration.
+     *
+     * @return array<string, mixed>|null
      */
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -349,6 +352,11 @@ trait HasCoordinatePicker
         return '';
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
     {
         $coordinates = $data[$field] ?? null;

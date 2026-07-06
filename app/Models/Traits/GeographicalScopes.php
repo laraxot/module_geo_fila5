@@ -5,43 +5,51 @@ declare(strict_types=1);
 namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Expression;
 
+/** @phpstan-ignore trait.unused */
 trait GeographicalScopes
 {
     /**
      * Scope per calcolare la distanza tra due punti.
+     *
+     * @phpstan-ignore-next-line
      */
     public function scopeWithDistance(Builder $query, float $latitude, float $longitude): Builder
     {
-        return $query->select('*')->selectRaw(
-            $this->getDistanceSql(withAlias: true),
-            [$latitude, $longitude, $latitude],
-        );
+        return $query->select('*', $this->getDistanceExpression($latitude, $longitude, 'distance'));
     }
 
     /**
      * Scope per ordinare i risultati per distanza.
+     *
+     * @phpstan-ignore-next-line
      */
     public function scopeOrderByDistance(Builder $query, float $latitude, float $longitude): Builder
     {
-        return $query->orderByRaw(
-            $this->getDistanceSql(),
-            [$latitude, $longitude, $latitude],
-        );
+        return $query->orderBy($this->getDistanceExpression($latitude, $longitude));
     }
 
-    private function getDistanceSql(bool $withAlias = false): string
-    {
-        $sql = '
+    /** @phpstan-ignore-next-line */
+    public function getDistanceExpression(
+        float $latitude,
+        float $longitude,
+        ?string $alias = null,
+    ): Expression|\Illuminate\Contracts\Database\Query\Expression {
+        $sql = "
             (6371 * acos(
-                cos(radians(?)) *
+                cos(radians({$latitude})) *
                 cos(radians(latitude)) *
-                cos(radians(longitude) - radians(?)) +
-                sin(radians(?)) *
+                cos(radians(longitude) - radians({$longitude})) +
+                sin(radians({$latitude})) *
                 sin(radians(latitude))
             ))
-        ';
+        ";
+        if (null !== $alias) {
+            $sql .= " AS {$alias}";
+        }
 
-        return $withAlias ? $sql.' AS distance' : $sql;
+        // @phpstan-ignore-next-line
+        return new Expression($sql);
     }
 }

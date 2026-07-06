@@ -6,9 +6,6 @@ namespace Modules\Geo\Datas\Geocoding;
 
 use Spatie\LaravelData\Data;
 
-// ponytail: root-level Modules\Geo\Datas\GeocodingData was identical — deleted.
-// Use this canonical version in Modules\Geo\Datas\Geocoding namespace.
-
 /**
  * DTO per i dati di geocodifica di un indirizzo.
  */

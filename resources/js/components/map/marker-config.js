@@ -3,13 +3,12 @@ import { buildMarkerGlyphHtml } from './icon-glyph.js';
 const SAFE_HEX_COLOR = /^#[0-9a-f]{3}([0-9a-f]{3})?$/i;
 
 /**
- * Pin mappa Fixcity: icona bianca su corpo colorato (stato), punta = ancoraggio esatto.
- * Criteri UX: colore dominante, icona bianca, target 44px, punta immobile, silhouette pulita.
+ * Marker mappa Fixcity — farmshops ExtraMarkers `shape: square` + STORY-130 (corpo = stato).
+ * Quadrato arrotondato, icona tipologia bianca su fill stato; ancoraggio al centro (come farmshops).
  */
-const MARKER_WIDTH = 44;
+const MARKER_WIDTH = 40;
 const MARKER_BODY_SIZE = 40;
-const MARKER_POINTER_HEIGHT = 10;
-const MARKER_TOTAL_HEIGHT = MARKER_BODY_SIZE + MARKER_POINTER_HEIGHT;
+const MARKER_TOTAL_HEIGHT = MARKER_BODY_SIZE;
 const MARKER_GLYPH_SIZE = 26;
 const MARKER_STATUS_FILL_ALPHA = 0.94;
 const MARKER_GLOW_ALPHA = 0.38;
@@ -54,18 +53,17 @@ export function createGeoMapLeafletIcon(L, color = '#0066cc', iconUrl = null, ty
     const fallbackDot = glyph ? '' : buildTypeInitial(typeLabel);
 
     return L.divIcon({
-        html: `<div class="geo-map-marker-card" style="--status-color:${statusColor};--status-fill:${statusFillRgba};--status-glow:${statusGlowRgba}" aria-hidden="true">
+        html: `<div class="geo-map-marker-card geo-map-marker-card--square" style="--status-color:${statusColor};--status-fill:${statusFillRgba};--status-glow:${statusGlowRgba}" aria-hidden="true">
             <div class="geo-map-marker-card__shell">
                 <div class="geo-map-marker-card__inner">
                     <div class="geo-map-marker-card__glyph">${glyph}${fallbackDot}</div>
                 </div>
-                <span class="geo-map-marker-card__point" aria-hidden="true"></span>
             </div>
         </div>`,
         className: 'geo-map-marker-wrapper geo-map-marker-wrapper--card',
         iconSize: [MARKER_WIDTH, MARKER_TOTAL_HEIGHT],
-        iconAnchor: [MARKER_WIDTH / 2, MARKER_TOTAL_HEIGHT],
-        popupAnchor: [0, -MARKER_TOTAL_HEIGHT + 2],
+        iconAnchor: [MARKER_WIDTH / 2, MARKER_BODY_SIZE / 2],
+        popupAnchor: [0, -MARKER_BODY_SIZE / 2],
     });
 }
 
@@ -91,10 +89,13 @@ export const markerCardStylesText = `
         align-items: center;
         width: 100%;
     }
+    .geo-map-marker-card--square {
+        height: ${MARKER_BODY_SIZE}px;
+    }
     .geo-map-marker-card__inner {
         width: ${MARKER_BODY_SIZE}px;
         height: ${MARKER_BODY_SIZE}px;
-        border-radius: 50%;
+        border-radius: 12%;
         background: linear-gradient(
             155deg,
             color-mix(in srgb, var(--status-color, #607d8b) 92%, #fff) 0%,
@@ -127,34 +128,6 @@ export const markerCardStylesText = `
         object-fit: contain !important;
         /* Bianco su sfondo colorato per massima leggibilità */
         filter: brightness(0) saturate(100%) invert(1) !important;
-    }
-    .geo-map-marker-card__point {
-        position: relative;
-        display: block;
-        width: 20px;
-        height: ${MARKER_POINTER_HEIGHT}px;
-        margin-top: -1px;
-    }
-    .geo-map-marker-card__point::before,
-    .geo-map-marker-card__point::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 0;
-        height: 0;
-        transform: translateX(-50%);
-    }
-    .geo-map-marker-card__point::before {
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 11px solid #fff;
-        filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.18));
-    }
-    .geo-map-marker-card__point::after {
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: ${MARKER_POINTER_HEIGHT}px solid var(--status-color, #607d8b);
     }
     .geo-map-marker-card__initial {
         font-size: 1.125rem;

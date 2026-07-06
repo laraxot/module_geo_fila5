@@ -119,7 +119,6 @@ Tutti i modelli attivi che necessitano factory le hanno.
 
 ### Dati Gestiti
 - **Regioni**: 20 regioni italiane
-- **Province**: 110+ province italiane
 - **Province**: 110+ province italiane  
 - **Comuni**: 8000+ comuni italiani
 - **CAP**: Sistema CAP completo
@@ -181,8 +180,6 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 
 ### Moduli Collegati
 - [<main module> Module](../../<main module>/docs/modelli_factory_seeder_analisi.md)
-- [User Module](../../User/docs/modelli_factory_seeder_analisi.md)
-- [Cms Module](../../Cms/docs/modelli_factory_seeder_analisi.md)
 - [User Module](../../user/docs/modelli_factory_seeder_analisi.md)
 - [Cms Module](../../cms/docs/modelli_factory_seeder_analisi.md)
 
@@ -191,6 +188,5 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 - [Codici Postali](https://www.poste.it/cap.html)
 - [OpenStreetMap](https://www.openstreetmap.org/)
 
-*Ultimo aggiornamento: Gennaio 2025*
 *Analisi completa di 12 modelli attivi, 1 modello obsoleto identificato*
 *Sistema geografico completo per Italia con supporto internazionale*

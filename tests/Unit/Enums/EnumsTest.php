@@ -4,59 +4,39 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Enums;
 
-uses(TestCase::class);
-
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 test('AddressItemEnum has expected cases', function () {
-    expect(class_exists(AddressItemEnum::class))->toBeTrue();
+    $cases = AddressItemEnum::cases();
+    $values = array_map(static fn (AddressItemEnum $case): string => $case->value, $cases);
 
-    try {
-        $cases = AddressItemEnum::cases();
-        expect($cases)->toBeArray();
-
-        // Check if some expected values exist
-        $values = array_map(fn ($case) => $case->value, $cases);
-        expect(in_array('locality', $values))->toBeTrue();
-        expect(in_array('city', $values))->toBeTrue();
-    } catch (Exception $e) {
-        // If enum doesn't exist as expected, just check class exists
-        expect(true)->toBeTrue();
-    }
+    Assert::assertContains('locality', $values);
+    Assert::assertContains('postal_code', $values);
+    Assert::assertContains('latitude', $values);
 });
 
 test('AddressTypeEnum has expected cases', function () {
-    expect(class_exists(AddressTypeEnum::class))->toBeTrue();
+    $cases = AddressTypeEnum::cases();
+    $values = array_map(static fn (AddressTypeEnum $case): string => $case->value, $cases);
 
-    try {
-        $cases = AddressTypeEnum::cases();
-        expect($cases)->toBeArray();
-
-        // Check if some expected values exist
-        $values = array_map(fn ($case) => $case->value, $cases);
-        expect(in_array('home', $values))->toBeTrue();
-        expect(in_array('work', $values))->toBeTrue();
-    } catch (Exception $e) {
-        // If enum doesn't exist as expected, just check class exists
-        expect(true)->toBeTrue();
-    }
+    Assert::assertContains('home', $values);
+    Assert::assertContains('work', $values);
+    Assert::assertContains('billing', $values);
 });
 
 test('AddressItemEnum getLabel method exists', function () {
-    if (class_exists(AddressItemEnum::class)) {
-        expect(method_exists(AddressItemEnum::class, 'getLabel'))->toBeTrue();
-    } else {
-        expect(true)->toBeTrue(); // Pass if class doesn't exist
-    }
+    $label = AddressItemEnum::LOCALITY->getLabel();
+
+    Assert::assertNotEmpty($label);
 });
 
 test('AddressTypeEnum has label method', function () {
-    if (class_exists(AddressTypeEnum::class)) {
-        // Check if the enum has the label method (which is the correct method name)
-        expect(method_exists(AddressTypeEnum::class, 'label'))->toBeTrue();
-    } else {
-        expect(true)->toBeTrue(); // Pass if class doesn't exist
-    }
+    $label = AddressTypeEnum::HOME->getLabel();
+
+    Assert::assertNotEmpty($label);
 });

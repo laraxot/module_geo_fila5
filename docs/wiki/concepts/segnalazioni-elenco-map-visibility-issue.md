@@ -23,10 +23,10 @@ related:
 
 ## Regressione 2026-05-07 — Custom element non importato
 
-**Sintomo identico**: utente non vede la mappa in `/it/tests/segnalazioni-elenco`.
+**Sintomo identico**: utente non vede la mappa in `/it/tests/ticket-list`.
 
 **Root cause diversa** dalla 8-82:
-- `pages/tests/segnalazioni-elenco.blade.php:11` rende `<map-lit data-url="...">`
+- `pages/tests/ticket-list.blade.php:11` rende `<map-lit data-url="...">`
 - `Modules/Geo/resources/js/components/map-lit.js` definisce correttamente `customElements.define('map-lit', MapLit)`
 - `Themes/Sixteen/resources/js/app.js` importava `geo-map-lit.js`, `my-map-lit.js`, `map-picker-lit.js` ecc., **ma NON `map-lit.js`**
 - → Bundle del tema non includeva la classe `MapLit`
@@ -37,7 +37,7 @@ related:
 2. `cd laravel/Themes/Sixteen && npm run build && npm run copy`
 3. Atomic swap dei bundle hashati in `public_html/themes/Sixteen/assets/` (368 → 8 file prima, poi npm run copy ricostituisce solo i nuovi)
 
-**Decisione architetturale**: il nome canonico per la pagina `segnalazioni-elenco` è `<map-lit>` (NON `<geo-map-lit>` né `<ticket-map-lit>`). Migrazioni di pagine esistenti devono essere additive (mantenere `<map-lit>`), non sostitutive.
+**Decisione architetturale**: il nome canonico per la pagina `ticket-list` è `<map-lit>` (NON `<geo-map-lit>` né `<ticket-map-lit>`). Migrazioni di pagine esistenti devono essere additive (mantenere `<map-lit>`), non sostitutive.
 
 ---
 
@@ -45,8 +45,8 @@ related:
 
 | File | Custom element | Stato |
 |------|----------------|-------|
-| `map-lit.js` | `<map-lit>` | **canonical** per segnalazioni-elenco |
-| `geo-map-lit.js` | `<geo-map-lit>` | alternativo, presente in app.js, NON usato in segnalazioni-elenco |
+| `map-lit.js` | `<map-lit>` | **canonical** per ticket-list |
+| `geo-map-lit.js` | `<geo-map-lit>` | alternativo, presente in app.js, NON usato in ticket-list |
 | `my-map-lit.js` | `<my-map-lit>` | demo/sandbox |
 | `map-picker-lit.js` | `<map-picker-lit>` | field Filament wizard (single-point picker) |
 | `coordinate-picker-lit.js` | `<coordinate-picker-lit>` | field Filament composite |
@@ -61,10 +61,10 @@ related:
 
 ## Regressione 2026-05-08 — Include server-side mancante
 
-**Sintomo**: pagina `/it/tests/segnalazioni-elenco` in HTTP 500.
+**Sintomo**: pagina `/it/tests/ticket-list` in HTTP 500.
 
 **Root cause**:
-- `pages/tests/segnalazioni-elenco.blade.php` includeva `pub_theme::components.sections.map-lit`;
+- `pages/tests/ticket-list.blade.php` includeva `pub_theme::components.sections.map-lit`;
 - la partial `components/sections/map-lit.blade.php` non esisteva;
 - Laravel cercava una view server-side, quindi il web component non arrivava mai al browser.
 
@@ -76,7 +76,7 @@ related:
 **Verifica**:
 
 ```text
-npx playwright test Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js
+npx playwright test Modules/Geo/tests/Playwright/ticket-list.spec.js
 11 passed
 ```
 
@@ -86,7 +86,7 @@ Smoke browser: `map-litDefined=true`, elemento 1108x522, Leaflet container 1, ti
 
 ## Sintomo
 
-L'utente segnalava: "non vedo la mappa in `/it/tests/segnalazioni-elenco`".
+L'utente segnalava: "non vedo la mappa in `/it/tests/ticket-list`".
 
 ---
 
@@ -155,7 +155,7 @@ cp public/assets/$NEWJS ../../../public_html/assets/geo/assets/
 cp public/manifest.json ../../../public_html/assets/geo/manifest.json
 
 echo "Deployed: $NEWJS"
-curl -s http://127.0.0.1:8000/it/tests/segnalazioni-elenco | grep "geo-map-lit-"
+curl -s http://127.0.0.1:8000/it/tests/ticket-list | grep "geo-map-lit-"
 # Must match $NEWJS
 ```
 
@@ -232,7 +232,7 @@ Bundle unico in public_html: geo-map-lit-WZfa7jvI.js
 ## Playwright Post-Fallback (2026-04-30)
 
 ```
-tests/Playwright/segnalazioni-elenco.spec.js: 10/10 ✅
+tests/Playwright/ticket-list.spec.js: 10/10 ✅
 - zoom test stabilizzato con fallback anti-flaky (click UI + fallback `_zoomIn()`/`map.zoomIn()`)
 - markers are rendered on the map: PASS
 - cluster icons style check: PASS (quando cluster disponibile)
@@ -241,7 +241,7 @@ tests/Playwright/segnalazioni-elenco.spec.js: 10/10 ✅
 ## Playwright Post-Cluster-Fix (2026-04-30)
 
 ```
-Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js: 10/10 ✅
+Modules/Geo/tests/Playwright/ticket-list.spec.js: 10/10 ✅
 - cluster icons style check: PASS
 - markers are rendered on the map: PASS
 - map controls + zoom + fullscreen: PASS
@@ -256,8 +256,8 @@ Modules/Geo/tests/Playwright/segnalazioni-elenco.spec.js: 10/10 ✅
 ## Testing
 ```bash
 # Manual verification
-open http://127.0.0.1:8000/it/tests/segnalazioni-elenco
+open http://127.0.0.1:8000/it/tests/ticket-list
 
 # Playwright test
-npx playwright test tests/Playwright/segnalazioni-elenco.spec.js
+npx playwright test tests/Playwright/ticket-list.spec.js
 ```

@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions\GoogleMaps;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
@@ -111,8 +111,8 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param DataCollection<GoogleMapAddressComponentData> $components
-     * @param array<string>                                 $types
+     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+     * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {

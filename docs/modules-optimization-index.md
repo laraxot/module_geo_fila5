@@ -15,13 +15,11 @@
 
 ### 🔴 PRIORITÀ CRITICA
 
-#### [Modulo Xot](../laravel/Modules/Xot/docs/optimization_recommendations.md)
 #### [Modulo Xot](../laravel/modules/xot/docs/optimization_recommendations.md)
 **Problema**: PathHelper hardcoded compromette framework base
 **Azione**: Refactoring PathHelper con configurazioni dinamiche
 **Tempo**: 2 ore | **Impatto**: Sblocca riusabilità framework
 
-#### [Modulo Notify](../laravel/Modules/Notify/docs/optimization_recommendations.md)
 #### [Modulo Notify](../laravel/modules/notify/docs/optimization_recommendations.md)
 **Problema**: 336 occorrenze hardcoded + 150+ file docs frammentati
 **Azione**: Correzione test + consolidamento documentazione
@@ -29,13 +27,11 @@
 
 ### 🟡 PRIORITÀ ALTA
 
-#### [Modulo User](../laravel/Modules/User/docs/optimization_recommendations.md)
 #### [Modulo User](../laravel/modules/user/docs/optimization_recommendations.md)
 **Problema**: README gigantesco (955 righe) + 141 occorrenze hardcoded
 **Azione**: Ristrutturazione completa + rimozione hardcoding
 **Tempo**: 1 giorno | **Impatto**: Modulo auth riutilizzabile
 
-#### [Modulo Cms](../laravel/Modules/Cms/docs/optimization_recommendations.md)
 #### [Modulo Cms](../laravel/modules/cms/docs/optimization_recommendations.md)
 **Problema**: 194 occorrenze hardcoded + content troppo specifico
 **Azione**: Generalizzazione content + organizzazione docs
@@ -43,28 +39,22 @@
 
 ### 🟢 PRIORITÀ NORMALE
 
-#### [Modulo UI](../laravel/Modules/UI/docs/optimization_recommendations.md)
 #### [Modulo UI](../laravel/modules/ui/docs/optimization_recommendations.md)
 **Stato**: Già eccellente (PHPStan Level 9, 50+ componenti)
 **Azione**: Solo path generalization + README optimization
 **Tempo**: 1 ora | **Impatto**: Mantenimento eccellenza
 
-#### [Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/optimization_recommendations.md)
-#### [Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/optimization_recommendations.md)
 #### [Modulo <nome progetto>](../laravel/modules/<nome progetto>/docs/optimization_recommendations.md)
 #### [Modulo <nome progetto>](../laravel/modules/<nome progetto>/docs/optimization_recommendations.md)
 **Stato**: Funzionalmente completo e robusto
 **Azione**: Documentation update + performance optimization
 **Tempo**: 4 ore | **Impatto**: Migliora manutenibilità
 
-#### [Modulo Geo](../laravel/Modules/Geo/docs/optimization_recommendations.md)
 #### [Modulo Geo](../laravel/modules/geo/docs/optimization_recommendations.md)
 **Stato**: Funzionalità complete con Google API
 **Azione**: Generalizzazione docs + Google API caching
 **Tempo**: 3 ore | **Impatto**: Modulo geo riutilizzabile
 
-#### [Modulo <nome modulo>](../laravel/Modules/<nome modulo>/docs/optimization_recommendations.md)
-#### [Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/optimization_recommendations.md)
 #### [Modulo <nome modulo>](../laravel/modules/<nome modulo>/docs/optimization_recommendations.md)
 #### [Modulo <nome progetto>](../laravel/modules/<nome progetto>/docs/optimization_recommendations.md)
 **Stato**: Buona specializzazione mobile
@@ -170,6 +160,5 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 - [Report Sintesi](optimization_summary_report.md)
 - [Script Controlli](../bashscripts/check_module_reusability.sh)
 
-*Ultimo aggiornamento: gennaio 2025*
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*

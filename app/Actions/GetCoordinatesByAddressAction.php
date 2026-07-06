@@ -7,7 +7,8 @@ namespace Modules\Geo\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\CoordinatesData;
+use Modules\Geo\Datas\Location\CoordinatesData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 
 class GetCoordinatesByAddressAction
 {
@@ -132,11 +133,16 @@ class GetCoordinatesByAddressAction
         }
 
         return new CoordinatesData(
-            latitude: (float) ($coordinates[0] ?? 0),
-            longitude: (float) ($coordinates[1] ?? 0),
+            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
+            longitude: SafeFloatCastAction::cast($coordinates[1] ?? 0),
         );
     }
 
+    /**
+     * @param array<mixed> $data
+     *
+     * @return array<mixed>|null
+     */
     private function extractBingCoordinates(array $data): ?array
     {
         $resourceSets = $data['resourceSets'] ?? null;

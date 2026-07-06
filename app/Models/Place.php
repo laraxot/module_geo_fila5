@@ -182,6 +182,9 @@ class Place extends BaseModel implements HasGeolocation
     /**
      * Get the linked model.
      */
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function linked(): MorphTo
     {
         return $this->morphTo('post');
@@ -190,6 +193,9 @@ class Place extends BaseModel implements HasGeolocation
     /**
      * Get the place type.
      */
+    /**
+     * @return BelongsTo<PlaceType, $this>
+     */
     public function placeType(): BelongsTo
     {
         return $this->belongsTo(PlaceType::class, 'type_id');
@@ -197,6 +203,9 @@ class Place extends BaseModel implements HasGeolocation
 
     /**
      * Get the address.
+     */
+    /**
+     * @return BelongsTo<Address, $this>
      */
     public function address(): BelongsTo
     {

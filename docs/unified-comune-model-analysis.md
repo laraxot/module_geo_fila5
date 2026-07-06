@@ -29,7 +29,6 @@
 
 ### Struttura Proposta
 ```php
-class Comune extends GeoJsonModel
 class Comune extends GeoJsonModel 
 {
     // Tutti i dati in un'unica struttura
@@ -40,7 +39,6 @@ class Comune extends GeoJsonModel
     public static function getProvinceByRegione($regione) { /* ... */ }
     public static function getComuniByProvincia($provincia) { /* ... */ }
     public static function getCapByComune($comune) { /* ... */ }
-    
     
     // Metodo unificato
     public static function getDatiCompleti($filtri = []) { /* ... */ }
@@ -85,7 +83,6 @@ class Comune extends GeoJsonModel
 | Tempo di Esecuzione  | 100ms           | 65ms             | +35%      |
 | Utilizzo Memoria     | 25MB            | 18MB             | +28%      |
 | Manutenzione         | Media           | Alta             | +40%      |
-
 
 
 ## Raccomandazione (90% Favorevole)

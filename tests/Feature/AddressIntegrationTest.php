@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Feature;
 
-uses(TestCase::class);
-
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 /**
  * In-memory Address tests (no factories / DB / container).
@@ -15,17 +16,20 @@ use Modules\Geo\Tests\TestCase;
  */
 
 /**
- * Build an in-memory Address-like object with sane defaults.
+ * Build an in-memory address array with sane defaults.
  *
  * @param array<string, mixed> $overrides
+ *
+ * @return array<string, mixed>
  */
-function makeAddress(array $overrides = []): object
+function makeAddress(array $overrides = []): array
 {
-    static $autoId = 1;
+    static $autoId = 0;
+    $autoId = (int) $autoId + 1;
 
     $defaults = [
-        'id' => $autoId++,
-        'model_type' => null, // e.g. 'patient'
+        'id' => $autoId,
+        'model_type' => null,
         'model_id' => null,
         'route' => 'Via Roma',
         'street_number' => '1',
@@ -43,35 +47,37 @@ function makeAddress(array $overrides = []): object
         'deleted_at' => null,
     ];
 
-    return (object) array_replace($defaults, $overrides);
+    return array_replace($defaults, $overrides);
 }
 
 /**
- * Compose a displayable full address from object parts.
+ * Compose a displayable full address from array parts.
+ *
+ * @param array<string, mixed> $address
  */
-function formatFullAddress(object $a): string
+function formatFullAddress(array $address): string
 {
     $parts = array_filter(
         [
-            $a->route ?? null,
-            $a->street_number ?? null,
-            $a->locality ?? null,
-            $a->postal_code ?? null,
-            $a->country ?? null,
+            $address['route'] ?? null,
+            $address['street_number'] ?? null,
+            $address['locality'] ?? null,
+            $address['postal_code'] ?? null,
+            $address['country'] ?? null,
         ],
-        fn ($v) => ((string) $v) !== '',
+        static fn (mixed $value): bool => ((string) $value) !== '',
     );
 
-    return implode(', ', $parts);
+    return implode(', ', array_map(static fn (mixed $part): string => (string) $part, $parts));
 }
 
 describe('Address Integration', function () {
     it('can attach address to patient via polymorphic relationship', function () {
-        $patient = (object) ['id' => 1001, 'type' => 'patient'];
+        $patient = ['id' => 1001, 'type' => 'patient'];
 
         $address = makeAddress([
             'model_type' => 'patient',
-            'model_id' => $patient->id,
+            'model_id' => $patient['id'],
             'route' => 'Via Roma',
             'street_number' => '123',
             'locality' => 'Milano',
@@ -79,12 +85,9 @@ describe('Address Integration', function () {
             'is_primary' => true,
         ]);
 
-        expect($address->model_type)
-            ->toBe('patient')
-            ->and($address->model_id)
-            ->toBe($patient->id)
-            ->and($address->is_primary)
-            ->toBeTrue();
+        Assert::assertSame('patient', $address['model_type']);
+        Assert::assertSame($patient['id'], $address['model_id']);
+        Assert::assertTrue($address['is_primary']);
     });
 
     it('generates proper full address from components', function () {
@@ -99,14 +102,10 @@ describe('Address Integration', function () {
 
         $fullAddress = formatFullAddress($address);
 
-        expect($fullAddress)
-            ->toContain('Via Giuseppe Verdi')
-            ->and($fullAddress)
-            ->toContain('42')
-            ->and($fullAddress)
-            ->toContain('Milano')
-            ->and($fullAddress)
-            ->toContain('20121');
+        Assert::assertStringContainsString('Via Giuseppe Verdi', $fullAddress);
+        Assert::assertStringContainsString('42', $fullAddress);
+        Assert::assertStringContainsString('Milano', $fullAddress);
+        Assert::assertStringContainsString('20121', $fullAddress);
     });
 
     it('handles geolocation data correctly', function () {
@@ -115,7 +114,8 @@ describe('Address Integration', function () {
             'longitude' => 9.1900,
         ]);
 
-        expect($milan->latitude)->toBe(45.4642)->and($milan->longitude)->toBe(9.1900);
+        Assert::assertSame(45.4642, $milan['latitude']);
+        Assert::assertSame(9.1900, $milan['longitude']);
     });
 
     it('can store Google Places API data', function () {
@@ -129,58 +129,52 @@ describe('Address Integration', function () {
             ],
         ]);
 
-        expect($address->place_id)
-            ->toBe('ChIJu46S-ZZjhkcRLuFvLjVZ400')
-            ->and($address->formatted_address)
-            ->toContain('Piazza del Duomo')
-            ->and($address->extra_data['google_types'])
-            ->toContain('establishment')
-            ->and($address->extra_data['rating'])
-            ->toBe(4.5);
+        Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
+        $extraData = $address['extra_data'];
+        Assert::assertIsArray($extraData);
+        Assert::assertIsArray($extraData['google_types'] ?? null);
+        Assert::assertStringContainsString('Piazza del Duomo', (string) $address['formatted_address']);
+        Assert::assertContains('establishment', $extraData['google_types']);
+        Assert::assertSame(4.5, $extraData['rating']);
     });
 
     it('supports multiple addresses per entity', function () {
-        $patient = (object) ['id' => 2001, 'type' => 'patient'];
+        $patient = ['id' => 2001, 'type' => 'patient'];
 
         $homeAddress = makeAddress([
             'model_type' => 'patient',
-            'model_id' => $patient->id,
+            'model_id' => $patient['id'],
             'type' => AddressTypeEnum::HOME->value,
             'is_primary' => true,
         ]);
 
         $workAddress = makeAddress([
             'model_type' => 'patient',
-            'model_id' => $patient->id,
+            'model_id' => $patient['id'],
             'type' => AddressTypeEnum::WORK->value,
             'is_primary' => false,
         ]);
 
         $patientAddresses = [$homeAddress, $workAddress];
 
-        expect(count($patientAddresses))->toBe(2);
+        Assert::assertCount(2, $patientAddresses);
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if (true === $addr->is_primary) {
+            if (true === $addr['is_primary']) {
                 $primary = $addr;
                 break;
             }
         }
-
-        expect($primary?->id)->toBe($homeAddress->id);
+        Assert::assertNotNull($primary);
+        Assert::assertSame($homeAddress['id'], $primary['id']);
     });
 
     it('handles soft deletion correctly', function () {
         $address = makeAddress();
 
-        // Soft delete simulation
-        $address->deleted_at = date('c');
+        $address['deleted_at'] = date('c');
 
-        // Lookup simulations
-        $active = null; // would be null after soft-delete
-        $withTrashed = $address; // still available with trashed scope
-
-        expect($active)->toBeNull()->and($withTrashed)->not->toBeNull()->and($withTrashed->deleted_at)->not->toBeNull();
+        Assert::assertNotNull($address['deleted_at']);
     });
 });

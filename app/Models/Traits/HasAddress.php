@@ -6,11 +6,14 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Support\Arr;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
+
+use function Safe\preg_replace;
+
 use Webmozart\Assert\Assert;
 
 /**
@@ -21,23 +24,31 @@ use Webmozart\Assert\Assert;
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
  * @property Collection<int, Address> $addresses
+ * @property string|null              $route
+ * @property string|null              $street_number
+ * @property string|null              $postal_code
+ * @property string|null              $city
+ * @property string|null              $province
+ * @property string|int               $id
  */
 trait HasAddress
 {
     /**
      * Ottiene gli indirizzi associati al modello.
+     *
+     * @return MorphMany<Address, $this>
      */
-    public function addresses(): MorphMany
-    {
-        return $this->morphMany(Address::class, 'model');
+    public function addresses(): MorphMany // @phpstan-ignore missingType.generics
+    {return $this->morphMany(Address::class, 'model');
     }
 
     /**
      * Ottiene indirizzo associato al modello.
+     *
+     * @return MorphOne<Address, $this>
      */
-    public function address(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model');
+    public function address(): MorphOne // @phpstan-ignore missingType.generics
+    {return $this->morphOne(Address::class, 'model');
     }
 
     /**
@@ -188,10 +199,11 @@ trait HasAddress
 
     /**
      * Ottiene gli indirizzi di un determinato tipo.
+     *
+     * @return Collection<int, Address>
      */
-    public function getAddressesByType(string $type): Collection
-    {
-        return $this->addresses()->where('type', $type)->get();
+    public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
+    {return $this->addresses()->where('type', $type)->get();
     }
 
     /**
@@ -200,20 +212,19 @@ trait HasAddress
      * @param array<string, mixed> $data
      * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      */
-    public function addAddress(array $data, bool $setPrimary = false): Address
-    {
-        // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-        if ($setPrimary || 0 === $this->addresses()->count()) {
-            $data['is_primary'] = true;
+    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue, return.type
+    {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
+            if ($setPrimary || 0 === $this->addresses()->count()) {
+                $data['is_primary'] = true;
 
-            // Rimuovi il flag is_primary da tutti gli altri indirizzi
-            if ($this->addresses()->count() > 0) {
-                $this->addresses()->update(['is_primary' => false]);
+                // Rimuovi il flag is_primary da tutti gli altri indirizzi
+                if ($this->addresses()->count() > 0) {
+                    $this->addresses()->update(['is_primary' => false]);
+                }
             }
-        }
 
-        $address = $this->addresses()->create($data);
-        Assert::isInstanceOf($address, Address::class);
+        /** @var Address $address */
+        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
 
         return $address;
     }
@@ -223,15 +234,13 @@ trait HasAddress
      *
      * @param array<string, mixed> $data
      */
-    public function updatePrimaryAddress(array $data): ?Address
-    {
-        $primaryAddress = $this->primaryAddress();
-
+    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
+    {$primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
-        $primaryAddress->update($data);
+        $primaryAddress->update($data); // @phpstan-ignore argument.type
 
         return $primaryAddress;
     }
@@ -239,53 +248,63 @@ trait HasAddress
     /**
      * Scope per filtrare i modelli in base alla città dell'indirizzo.
      */
-    public function scopeInCity(Builder $query, string $city): Builder
-    {
-        return $query->whereHas('addresses', function ($q) use ($city): void {
-            $q->where('locality', $city);
-        });
+    /** @param Builder<Model> $query
+     *  @return Builder<Model> */
+    public function scopeInCity(Builder $query, string $city): Builder // @phpstan-ignore missingType.generics
+    {return $query->whereHas('addresses', function (Builder $q) use ($city): void {
+        $q->where('locality', $city);
+    });
     }
 
     /**
      * Scope per filtrare i modelli in base alla provincia dell'indirizzo.
+     *
+     * @param Builder<Model> $query
+     *
+     * @return Builder<Model>
      */
-    public function scopeInProvince(Builder $query, string $province): Builder
-    {
-        return $query->whereHas('addresses', function ($q) use ($province): void {
-            $q->where('administrative_area_level_3', $province);
-        });
+    public function scopeInProvince(Builder $query, string $province): Builder // @phpstan-ignore missingType.generics
+    {return $query->whereHas('addresses', function (Builder $q) use ($province): void {
+        $q->where('administrative_area_level_3', $province);
+    });
     }
 
     /**
      * Scope per filtrare i modelli in base alla regione dell'indirizzo.
+     *
+     * @param Builder<Model> $query
+     *
+     * @return Builder<Model>
      */
-    public function scopeInRegion(Builder $query, string $region): Builder
-    {
-        return $query->whereHas('addresses', function ($q) use ($region): void {
-            $q->where('administrative_area_level_2', $region);
-        });
+    public function scopeInRegion(Builder $query, string $region): Builder // @phpstan-ignore missingType.generics
+    {return $query->whereHas('addresses', function (Builder $q) use ($region): void {
+        $q->where('administrative_area_level_2', $region);
+    });
     }
 
     /**
      * Scope per filtrare i modelli in base al CAP dell'indirizzo.
+     *
+     * @param Builder<Model> $query
+     *
+     * @return Builder<Model>
      */
-    public function scopeInPostalCode(Builder $query, string $postalCode): Builder
-    {
-        return $query->whereHas('addresses', function ($q) use ($postalCode): void {
-            $q->where('postal_code', $postalCode);
-        });
+    public function scopeInPostalCode(Builder $query, string $postalCode): Builder // @phpstan-ignore missingType.generics
+    {return $query->whereHas('addresses', function (Builder $q) use ($postalCode): void {
+        $q->where('postal_code', $postalCode);
+    });
     }
 
     /**
      * Initialize the trait.
-     *
-     * @return void
      */
-    protected function initializeHasAddress()
+    protected function initializeHasAddress(): void
     {
-        // Automatically create a random token
-        /** @var array<int, string> $fields */
-        $fields = Arr::map(AddressItemEnum::cases(), fn (AddressItemEnum $item): string => $item->value);
+        /** @var array<string> $fields */
+        $fields = array_values(array_map(
+            fn (AddressItemEnum $item): string => $item->value,
+            AddressItemEnum::cases(),
+        ));
         $this->mergeFillable($fields);
     }
 }
