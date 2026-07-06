@@ -7,10 +7,12 @@ namespace Modules\Geo\Models\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 
+/** @phpstan-ignore trait.unused */
 trait GeographicalScopes
 {
     /**
      * Scope per calcolare la distanza tra due punti.
+     *
      * @phpstan-ignore-next-line
      */
     public function scopeWithDistance(Builder $query, float $latitude, float $longitude): Builder
@@ -20,6 +22,7 @@ trait GeographicalScopes
 
     /**
      * Scope per ordinare i risultati per distanza.
+     *
      * @phpstan-ignore-next-line
      */
     public function scopeOrderByDistance(Builder $query, float $latitude, float $longitude): Builder

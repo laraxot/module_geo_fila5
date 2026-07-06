@@ -7,22 +7,21 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-use Tests\TestCase;
-
 final class ComuneTest extends TestCase
 {
-    /** @var array<int, array<string, mixed>> */
-    public array $testData = [];
+    /** @var list<array<string, mixed>> */
+    private array $comuneFixtureRows = [];
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->testData = [
+        $this->comuneFixtureRows = [
             [
                 'id' => 1,
                 'regione' => 'Lombardia',
@@ -49,7 +48,7 @@ final class ComuneTest extends TestCase
 
         File::put(
             base_path('database/content/comuni.json'),
-            json_encode($this->testData, JSON_PRETTY_PRINT)
+            json_encode($this->comuneFixtureRows, JSON_PRETTY_PRINT)
         );
     }
 

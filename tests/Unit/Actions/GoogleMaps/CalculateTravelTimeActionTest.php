@@ -10,7 +10,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\CalculateTravelTimeAction;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\TravelTimeData;
+use Modules\Geo\Datas\Routing\TravelTimeData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 

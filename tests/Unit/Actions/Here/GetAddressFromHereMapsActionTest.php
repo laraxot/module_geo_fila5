@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Unit\Actions\Here;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\Here\GetAddressFromHereMapsAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 

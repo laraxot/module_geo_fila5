@@ -13,7 +13,6 @@ use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Providers\GeoServiceProvider;
 use Modules\Geo\Services\GoogleMapsService;
-use Modules\Geo\Services\HereService;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Tests\XotBaseTestCase;
@@ -26,7 +25,6 @@ use Modules\Xot\Tests\XotBaseTestCase;
  * @property MockInterface|null     $getCoordinatesAction
  * @property MockHandler|null       $mockHandler
  * @property GoogleMapsService|null $service
- * @property HereService|null       $hereService
  * @property Address|null           $address
  * @property BaseModel|null         $baseModel
  * @property array<string, mixed>   $testData
@@ -48,8 +46,6 @@ abstract class TestCase extends XotBaseTestCase
     public ?MockInterface $getCoordinatesAction = null;
 
     public ?MockHandler $mockHandler = null;
-
-    public ?HereService $hereService = null;
 
     public ?Address $address = null;
 

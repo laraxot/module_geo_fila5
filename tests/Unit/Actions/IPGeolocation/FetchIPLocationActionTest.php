@@ -9,7 +9,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
-use Modules\Geo\Datas\IPLocationData;
+use Modules\Geo\Datas\Location\IPLocationData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 

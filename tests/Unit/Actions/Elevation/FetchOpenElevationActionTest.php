@@ -11,7 +11,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Elevation\FetchOpenElevationAction;
-use Modules\Geo\Datas\ElevationData;
+use Modules\Geo\Datas\Elevation\ElevationData;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;

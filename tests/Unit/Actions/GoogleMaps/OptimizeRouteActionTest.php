@@ -7,7 +7,7 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\RouteData;
+use Modules\Geo\Datas\Routing\RouteData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 

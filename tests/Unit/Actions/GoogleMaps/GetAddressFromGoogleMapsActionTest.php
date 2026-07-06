@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\GetAddressFromGoogleMapsAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;

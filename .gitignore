@@ -174,3 +174,5 @@ _docs/
 *~head
 
 agentdb.rvf
+.claude-flow/
+test-results

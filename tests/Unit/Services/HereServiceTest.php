@@ -6,17 +6,15 @@ namespace Modules\Geo\Tests\Unit\Services;
 
 use Modules\Geo\Services\HereService;
 use Modules\Geo\Tests\TestCase;
-use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
+
 it('has correct base URL', function (): void {
     $service = new HereService();
-
-    Assert::assertSame('https://router.hereapi.com/v8/routes', $service->base_url);
+    expect($service->base_url)->toBe('https://router.hereapi.com/v8/routes');
 });
 
-it('has static method for getting duration and length', function (): void {
-    $service = new HereService();
-
-    // Check that the method exists
+it('has getDurationAndLength method', function (): void {
+    $reflection = new \ReflectionClass(HereService::class);
+    expect($reflection->hasMethod('getDurationAndLength'))->toBeTrue();
 });

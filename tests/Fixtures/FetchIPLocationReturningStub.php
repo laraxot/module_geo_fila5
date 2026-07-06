@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Fixtures;
 
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
-use Modules\Geo\Datas\IPLocationData;
+use Modules\Geo\Datas\Location\IPLocationData;
 
 /**
  * @internal

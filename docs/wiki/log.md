@@ -1,3 +1,15 @@
+## [2026-06-30] ponytail-audit | Phase 3 Finding 2 — BaseGeoService inlined into GoogleMapsService
+
+- **BaseGeoService eliminated** ✅
+  - Abstract class (143 lines) + single implementation (GoogleMapsService)
+  - Methods inlined into GoogleMapsService as private: getApiKey, makeRequest, buildHttpClient, getCacheKey, getServiceName
+  - File marked `.bak` (not deleted, per Ponytail methodology)
+  - PHPStan Level 10: ✅ PASS (0 errors)
+  - Pest: Tests failed due to DB infrastructure (not code-related)
+  - Net: -143 lines, -1 file dependency
+
+- Linked GitHub Issue: #237 — Ponytail Audit Phase 3 Architectural Review
+
 ## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
 
 - Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), [llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt)

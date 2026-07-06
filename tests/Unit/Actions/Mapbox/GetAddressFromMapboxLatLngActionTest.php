@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxLatLngAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;

@@ -61,3 +61,7 @@ qmd search "Geo <topic>" --limit 5
 
 ---
 *Updated: 2026-06-03 — ricostruzione map-lit, marker pin, popup header fix*
+
+## Composer / nwidart
+
+- [composer-root-minimal-nwidart](concepts/composer-root-minimal-nwidart.md) — root skeleton nwidart (modello fixcity)

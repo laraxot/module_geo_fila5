@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Unit\Actions\LocationIQ;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\LocationIQ\GetAddressFromLocationIQAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 

@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\CoordinatesData;
+use Modules\Geo\Datas\Location\CoordinatesData;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 
 class GetCoordinatesByAddressAction

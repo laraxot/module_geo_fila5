@@ -11,7 +11,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\GetGeocodingDataAction;
-use Modules\Geo\Datas\GeocodingData;
+use Modules\Geo\Datas\Geocoding\GeocodingData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
