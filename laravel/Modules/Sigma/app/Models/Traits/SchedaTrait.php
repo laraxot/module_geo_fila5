@@ -1606,13 +1606,16 @@ trait SchedaTrait
         }
         // dddx($categoria->lista_propro);
         // $criteri = $this->criteriEsclusione;
-        $value = $this->anag?->ggFuoriSedeTot([
+        $result = $this->anag?->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro ?? '',
             'lista_propro_sup' => $categoria->lista_propro_sup ?? '',
             // 'posfun'=>$this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
+
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }
@@ -1652,13 +1655,16 @@ trait SchedaTrait
         if (! ($categoria instanceof CategoriaPropro)) {
             return null;
         }
-        $value = $this->anag?->ggFuoriSedeTot([
+        $result = $this->anag?->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro ?? '',
             'lista_propro_sup' => $categoria->lista_propro_sup ?? '',
             'posfun' => $this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
+
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }
@@ -2624,6 +2630,7 @@ trait SchedaTrait
             'posiz' => '1',
         ];
         $data = GgFilterData::from($parz);
+        /** @var int|null $value */
         $value = $this->anag->ggInSedeTot($data);
         // ✅ Check: record must exist before save()
         if ($this->getKey() == null) {
