@@ -57,6 +57,9 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -95,6 +98,9 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -106,6 +112,9 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -114,6 +123,9 @@ class IndividualePesiResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [

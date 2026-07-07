@@ -23,6 +23,9 @@ class MyLogResource extends XotBaseResource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return array<string, mixed>
+     */
     #[Override]
     public static function getFormSchema(): array
     {
@@ -49,6 +52,9 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -69,11 +75,17 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -82,6 +94,9 @@ class MyLogResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [

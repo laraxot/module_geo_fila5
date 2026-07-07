@@ -160,6 +160,9 @@ trait FunctionTrait
         return static::$cached_criteri_esclusione[$year];
     }
 
+    /**
+     * @return array{int, string}
+     */
     public function getHaDirittoEMotivo(): array
     {
         $anno = $this->anno;
