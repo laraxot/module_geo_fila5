@@ -66,7 +66,7 @@ class MaxCatecoPosfunAnno extends BaseModel
     protected $fillable = ['cateco', 'posfun', 'anno', 'max_gg_tot_pond', 'aventi_diritto', 'aventi_diritto_perc', 'aventi_diritto_eff'];
 
     // ------- relationship -------
-    p/**
+    /**
      * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
      */
     ublic function schede(): HasMany

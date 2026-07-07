@@ -93,7 +93,7 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return (float) $res;
     }
 
-    p/**
+    /**
      * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
      */
     ublic function schede(): HasMany
@@ -110,7 +110,7 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
-    p/**
+    /**
      * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
      */
     ublic function benificiariProgressione(): HasMany

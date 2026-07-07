@@ -28,11 +28,15 @@ class CheckSumAction
             ->first());
         $fondo = PerformanceFondo::firstOrCreate(['anno' => $year]);
         $quota = (float) $fondo->quota_organizzativa;
+        // Trade-off: selectRaw() with 'as tot' creates a dynamic property that PHPStan cannot infer.
+        // The property is documented in @property on Organizzativa model, but only exists on query results.
+        /** @phpstan-ignore-next-line property.notFound */
+        $totValue = (float) $imp->tot;
         echo '
 		<table border="1">
 			<tr><th>Quota :</th><th align="right">'.number_format($quota, 2).'</th></tr>
-			<tr><th>Quota Distribuita :</th><th align="right">'.number_format((float) $imp->tot, 2).'</th></tr>
-			<tr><th>Diff : </th><th align="right">'.number_format($quota - $imp->tot, 2).'</th></tr>;
+			<tr><th>Quota Distribuita :</th><th align="right">'.number_format($totValue, 2).'</th></tr>
+			<tr><th>Diff : </th><th align="right">'.number_format($quota - $totValue, 2).'</th></tr>;
 		</table>';
     }
 }

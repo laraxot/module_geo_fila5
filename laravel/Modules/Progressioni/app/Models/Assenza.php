@@ -68,7 +68,7 @@ class Assenza extends BaseModel
         // return $this->hasManyThrough(Scheda::class, Asz00f::class);
     }
 
-    p/**
+    /**
      * @return HasMany<\Modules\Sigma\Models\Asz00f, $this>
      */
     ublic function asz00fs(): HasMany

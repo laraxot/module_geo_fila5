@@ -199,7 +199,7 @@ trait ProgressioniRelationshipTrait
             ->where('posfun', $this->posfunval);
     }
 
-    p/**
+    /**
      * @return Collection<int, string>
      */
     ublic function allStabiRepars(): Collection

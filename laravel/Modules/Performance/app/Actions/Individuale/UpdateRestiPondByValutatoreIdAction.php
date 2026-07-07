@@ -227,8 +227,14 @@ class UpdateRestiPondByValutatoreIdAction
         echo '</tr>';
 
         foreach ($distribuzione as $riga) {
+            // Trade-off: selectRaw() creates dynamic properties (num_dipendenti, tot_resti_pond, fascia_punteggio)
+            // via SQL aliases. These are documented in @property on Individuale model but PHPStan cannot
+            // statically infer them since they only exist on query result objects, not database rows.
+            /** @phpstan-ignore-next-line property.notFound */
             $numDipendenti = (int) $riga->num_dipendenti;
+            /** @phpstan-ignore-next-line property.notFound */
             $totRestiPond = (float) $riga->tot_resti_pond;
+            /** @phpstan-ignore-next-line property.notFound */
             $fasciaPunteggio = (int) $riga->fascia_punteggio;
 
             $percentDipendenti = ($numDipendenti / (int) $distribuzione->sum('num_dipendenti')) * 100;
@@ -236,6 +242,7 @@ class UpdateRestiPondByValutatoreIdAction
             $mediaPerDipendente = $numDipendenti > 0 ? $totRestiPond / $numDipendenti : 0;
 
             echo '<tr>';
+            /** @phpstan-ignore-next-line property.notFound */
             echo '<td>'.($riga->fascia_punteggio === null ? 'N/A' : $fasciaPunteggio.'-'.($fasciaPunteggio + 9)).'</td>';
             echo '<td>['.$numDipendenti.']</td>';
             echo '<td>['.((float) $percentDipendenti).']%</td>';

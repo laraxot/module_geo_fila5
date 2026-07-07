@@ -1,10 +1,11 @@
 includes:
-    #- ./phpstan-baseline.neon
-    - ./vendor/larastan/larastan/extension.neon
+    # - ./phpstan-baseline.neon  # DISABLED: Gli errori vanno corretti, non ignorati!
+    - ./vendor/larastan/larastan/extension.neon  
     - ./vendor/nesbot/carbon/extension.neon
     - ./vendor/phpstan/phpstan/conf/bleedingEdge.neon
     - ./vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     - ./vendor/pestphp/pest/extension.neon
+
 
 parameters:
 
