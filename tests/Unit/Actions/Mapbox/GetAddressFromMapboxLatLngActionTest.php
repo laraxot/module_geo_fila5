@@ -9,7 +9,7 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxLatLngAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 
 beforeEach(function () {

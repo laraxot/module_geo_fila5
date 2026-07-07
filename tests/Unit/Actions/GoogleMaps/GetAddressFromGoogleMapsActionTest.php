@@ -9,7 +9,7 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 use Modules\Geo\Actions\GoogleMaps\GetAddressFromGoogleMapsAction;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 
 beforeEach(function () {
