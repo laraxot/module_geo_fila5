@@ -57,7 +57,7 @@ class GgFilterData extends Data
     }
 
     /**
-     * @param  array  $properties
+     * @param  array<string, mixed>  $properties
      * @return array<string, mixed>
      */
     public static function prepareForPipeline(array $properties): array

@@ -13,9 +13,9 @@ class DiffAssocRecursiveAction
     /**
      * Execute recursive array_diff_assoc operation.
      *
-     * @param  array  $array1
-     * @param  array  $array2
-     * @return array<string, mixed>
+     * @param  array<array-key, mixed>  $array1
+     * @param  array<array-key, mixed>  $array2
+     * @return array<array-key, mixed>
      */
     public function execute(array $array1, array $array2): array
     {
@@ -25,9 +25,9 @@ class DiffAssocRecursiveAction
     /**
      * Recursive array_diff_assoc implementation.
      *
-     * @param  array  $array1
-     * @param  array  $array2
-     * @return array<string, mixed>
+     * @param  array<array-key, mixed>  $array1
+     * @param  array<array-key, mixed>  $array2
+     * @return array<array-key, mixed>
      */
     private function arrayDiffAssocRecursive(array $array1, array $array2): array
     {
@@ -38,8 +38,8 @@ class DiffAssocRecursiveAction
                 if (! isset($array2[$key]) || ! is_array($array2[$key])) {
                     $difference[$key] = $value;
                 } else {
-                    /** @var array<string, mixed> $value */
-                    /** @var array<string, mixed> $array2Value */
+                    /** @var array<array-key, mixed> $value */
+                    /** @var array<array-key, mixed> $array2Value */
                     $array2Value = $array2[$key];
                     $newDiff = $this->arrayDiffAssocRecursive($value, $array2Value);
                     if (! empty($newDiff)) {

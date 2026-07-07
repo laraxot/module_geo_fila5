@@ -21,7 +21,7 @@ class SyncModelAction
      *
      * @param  string  $tbl  Nome della tabella
      * @param  Model  $model  Modello da sincronizzare
-     * @param  array  $only  Campi da includere
+     * @param  array<array-key, string>  $only  Campi da includere
      * @return int Numero di record sincronizzati
      */
     public function execute(string $tbl, Model $model, array $only = []): int

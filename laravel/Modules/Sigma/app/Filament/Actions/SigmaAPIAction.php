@@ -75,8 +75,15 @@ class SigmaAPIAction extends Action
                 $modelClass = $resource::getModel();
                 /** @var Model $modelInstance */
                 $modelInstance = app($modelClass);
-                /** @var array<string, mixed> $only */
-                $only = $data['only'] ?? [];
+                $only = [];
+                $rawOnly = $data['only'] ?? null;
+                if (is_array($rawOnly)) {
+                    foreach ($rawOnly as $field) {
+                        if (is_string($field)) {
+                            $only[] = $field;
+                        }
+                    }
+                }
                 app(SyncModelAction::class)->execute('ANA10F', $modelInstance, $only);
 
                 // dddx($employees);

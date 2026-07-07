@@ -549,10 +549,16 @@ class Progressioni extends BaseScheda
         ];
     }
 
-    /** @var array<int, string> */ public array $valutaz_fields = ['esperienza_acquisita', 'risultati_ottenuti',
+    /**
+     * @var array<int, string>
+     */
+    public array $valutaz_fields = ['esperienza_acquisita', 'risultati_ottenuti',
         'arricchimento_professionale', 'impegno', 'qualita_prestazione', ];
 
-    /** @var array<int, string> */ public array $xls_fields = ['ente', 'matr', 'cognome', 'nome', 'propro', 'posfun', 'categoria_ecoval', 'posfunval', 'stabi', 'repar', 'anno',
+    /**
+     * @var array<int, string>
+     */
+    public array $xls_fields = ['ente', 'matr', 'cognome', 'nome', 'propro', 'posfun', 'categoria_ecoval', 'posfunval', 'stabi', 'repar', 'anno',
         'email', 'esperienza_acquisita', 'risultati_ottenuti',
         'arricchimento_professionale', 'impegno', 'qualita_prestazione', 'totale', 'totale_pond', 'ha_diritto', 'motivo',
         'excellences_count_last_3_years',

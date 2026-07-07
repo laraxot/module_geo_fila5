@@ -15,8 +15,10 @@ class WebService extends XotBasePage
 
     public string $msg = '...';
 
+    /** @var list<string> */
     public array $formats = ['file', 'xml', 'json'];
 
+    /** @var list<string> */
     public array $tbls = [
         // ----------------------------------
 

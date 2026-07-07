@@ -31,8 +31,8 @@ class ExtractZip extends XotBasePage
     public function getFormSchema(): array
     {
         return [
-            TextInput::make('disk')->default('cache')->required(),
-            TextInput::make('path')->default('PTV_Asz00f.zip')->required(),
+            'disk' => TextInput::make('disk')->default('cache')->required(),
+            'path' => TextInput::make('path')->default('PTV_Asz00f.zip')->required(),
         ];
     }
 

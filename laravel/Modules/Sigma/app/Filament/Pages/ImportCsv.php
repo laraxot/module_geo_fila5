@@ -29,10 +29,10 @@ class ImportCsv extends XotBasePage
     public function getFormSchema(): array
     {
         return [
-            TextInput::make('db')->default('generale')->required(),
-            TextInput::make('tbl')->required(),
-            TextInput::make('disk')->default('cache')->required(),
-            TextInput::make('path')->default('PTV_Asz00f.csv')->required(),
+            'db' => TextInput::make('db')->default('generale')->required(),
+            'tbl' => TextInput::make('tbl')->required(),
+            'disk' => TextInput::make('disk')->default('cache')->required(),
+            'path' => TextInput::make('path')->default('PTV_Asz00f.csv')->required(),
         ];
     }
 
