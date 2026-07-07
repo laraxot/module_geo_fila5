@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
+use Modules\Ptv\Models\BaseCriteriEsclusione;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
 use Modules\Ptv\Models\Profile;
@@ -62,7 +63,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin \Eloquent
  */
-class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusioneContract
+class CriteriEsclusione extends BaseCriteriEsclusione 
 {
     protected $connection = 'progressione';
 
