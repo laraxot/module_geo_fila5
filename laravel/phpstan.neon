@@ -82,7 +82,7 @@ parameters:
         #- ./vendor/amenadiel/jpgraph/src/config.inc.php
 
     scanFiles:
-        - ./Modules/Xot/helpers/Helper.php
+        - ./Modules/Xot/app/Helpers/Helper.php
 
     stubFiles:
         # - ./Modules/Xot/stubs/filament-panel.stub
