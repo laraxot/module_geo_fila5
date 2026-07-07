@@ -14,6 +14,9 @@ use function Safe\date;
 
 class CriteriEsclusionesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -45,6 +48,9 @@ class CriteriEsclusionesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -61,9 +67,11 @@ class CriteriEsclusionesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
-        // @phpstan-ignore-next-line return.type
         return [
             ...parent::getTableBulkActions(),
             CheckCriterioEsclusioneBulkAction::make(),

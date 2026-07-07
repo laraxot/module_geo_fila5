@@ -263,10 +263,6 @@ class MetatagData extends Data implements Wireable
     }
 
     /**
-     * Get the theme colors.
-     * This method reflects the semantic purpose of getting theme colors,
-     * rather than exposing the raw color data structure.
-     *
      * @return array<string, string>
      */
     public function getThemeColors(): array

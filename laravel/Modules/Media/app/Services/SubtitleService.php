@@ -100,7 +100,9 @@ class SubtitleService
     }
 
     /**
-     * restituisce i sottotitoli, dal file ..
+     * Restituisce i sottotitoli dal file.
+     *
+     * @return array<int, array<string, float|int|string|mixed>>
      */
     public function get(): array
     {
