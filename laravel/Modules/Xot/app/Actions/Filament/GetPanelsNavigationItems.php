@@ -7,6 +7,7 @@ namespace Modules\Xot\Actions\Filament;
 use Filament\Facades\Filament;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Navigation\NavigationItem;
+use Filament\Panel;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueueableAction\QueueableAction;
 

@@ -94,6 +94,9 @@ parameters:
     scanFiles:
         - ./Modules/Xot/helpers/Helper.php
 
+    stubFiles:
+        - ./Modules/Xot/stubs/filament-panel.stub
+
     mixinExcludeClasses:
         - ./Modules/Badge/Models
         - IdeHelperTimbra

@@ -29,6 +29,7 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\UI\Enums\TableLayoutEnum;
@@ -309,10 +310,7 @@ trait HasXotTable
             $relationship = $this->getRelationship();
             Assert::object($relationship);
 
-            // Both Builder and Relation are objects with these methods in RelationManager context
-            if (method_exists($relationship, 'getTable')
-                && method_exists($relationship, 'getPivotClass')
-            ) {
+            if ($relationship instanceof BelongsToMany) {
                 $pivotClass = $relationship->getPivotClass();
 
                 // Type guard: ensure pivotClass is object/string with getKeyName method
