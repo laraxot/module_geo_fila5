@@ -66,7 +66,7 @@ class EsclusiExtra extends BaseModel
     protected $table = 'esclusi_progressione';
 
     /** @return array<mixed> */
-        public function updateFields(): array
+        public function updateFields(): array<string, mixed>
     {
         $params = getRouteParameters();
         $parz = [];

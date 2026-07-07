@@ -19,7 +19,7 @@ class RatingForm extends BaseRatingForm
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'extra_attributes.type' => TextInput::make('extra_attributes.type'),

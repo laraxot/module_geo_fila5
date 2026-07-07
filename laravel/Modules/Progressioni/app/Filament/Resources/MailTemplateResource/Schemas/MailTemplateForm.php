@@ -18,7 +18,7 @@ class MailTemplateForm extends XotBaseResourceForm
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'mailable_slug_group' => Group::make()

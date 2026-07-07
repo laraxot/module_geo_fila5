@@ -57,7 +57,7 @@ class GetAsz00fActiveStatsAction
      * @param  Collection<int, mixed>  $values
      * @return list<int>
      */
-    private function pluckDistinctIntegers(Collection $values): array
+    private function pluckDistinctIntegers(Collection $values): array<string, mixed>
     {
         return array_values(
             $values

@@ -16,7 +16,7 @@ class MessageResource extends BaseMessageResource
     protected static ?string $model = Message::class;
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListMessages::route('/'),

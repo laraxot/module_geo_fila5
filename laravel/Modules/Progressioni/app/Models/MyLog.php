@@ -19,7 +19,7 @@ use Modules\Ptv\Models\Profile;
  * @property string|null $note
  * @property string|null $obj
  * @property string|null $act
- * @property array|null $data
+ * @property array<string, mixed>|null $data
  * @property string|null $datemod
  * @property string|null $handle
  * @property string|null $created_by

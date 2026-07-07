@@ -7,6 +7,9 @@ namespace Modules\Progressioni\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Progressioni\Models\Valutatore;
 
+/**
+ * @extends Factory<\Modules\Progressioni\Models\Valutatore>
+ */
 class ValutatoreFactory extends Factory
 {
     /**

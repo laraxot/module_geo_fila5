@@ -10,9 +10,9 @@ use Request;
 class CriteriValutazioneService
 {
     /**
-     * Undocumented function.
+     * @return array<int, object{name: string|null, label: string|null, type: string}>
      */
-    public static function getFieldsYear(int $_year, bool $_is_po = false): array
+    public static function getFieldsYear(int $_year, bool $_is_po = false): array<string, mixed>
     {
         $year = Request::input('year', 0);
         if (is_string($year)) {

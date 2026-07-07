@@ -13,7 +13,7 @@ class MessageInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component>
      */
-    public static function getInfolistSchema(): array
+    public static function getInfolistSchema(): array<string, mixed>
     {
         return [
             'parent_id' => TextEntry::make('parent_id'),

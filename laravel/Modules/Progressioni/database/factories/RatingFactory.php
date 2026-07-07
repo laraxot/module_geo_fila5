@@ -4,6 +4,9 @@ namespace Modules\Progressioni\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<\Modules\Progressioni\Models\Rating>
+ */
 class RatingFactory extends Factory
 {
     /**

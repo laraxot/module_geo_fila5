@@ -23,7 +23,7 @@ class MyLogResource extends XotBaseResource
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -40,7 +40,7 @@ class MyLogResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListMyLogs::route('/'),

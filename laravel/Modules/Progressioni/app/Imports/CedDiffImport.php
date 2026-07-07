@@ -10,26 +10,37 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 
 class CedDiffImport implements ToCollection
 {
+    /** @var array<int, mixed> */
     protected array $columns = [];
 
     /**
- * @param \Illuminate\Support\Collection<int, array> $rows
- */
-        public function collection(Collection $rows): void
+     * @param Collection<int, array<int, mixed>|Collection<int, mixed>> $rows
+     */
+    public function collection(Collection $rows): void
     {
         $firstRow = $rows->first();
-        if ($firstRow instanceof Collection || is_array($firstRow)) {
-            $this->columns = is_array($firstRow) ? $firstRow : $firstRow->toArray();
-        } else {
-            $this->columns = [];
+
+        if ($firstRow instanceof Collection) {
+            $this->columns = array_values($firstRow->toArray());
+
+            return;
         }
+
+        if (is_array($firstRow)) {
+            $this->columns = array_values($firstRow);
+
+            return;
+        }
+
+        $this->columns = [];
     }
 
-    /** @return array<mixed> */
-        public function getColumns(): array
+    /**
+     * @return array<int, array{name: string, type: string}>
+     */
+    public function getColumns(): array<string, mixed>
     {
-        $res = array_map(function ($column) {
-            /** @var string $column */
+        return array_map(static function ($column): array {
             $name = Str::of((string) $column)->slug('_')->toString();
 
             return [
@@ -37,7 +48,5 @@ class CedDiffImport implements ToCollection
                 'type' => 'string',
             ];
         }, $this->columns);
-
-        return $res;
     }
 }

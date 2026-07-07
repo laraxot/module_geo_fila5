@@ -17,7 +17,7 @@ class RatingMorphsTable extends XotBaseResourceTable
     /**
      * @return array<string, mixed>
      */
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'id' => TextColumn::make('id')
@@ -44,7 +44,7 @@ class RatingMorphsTable extends XotBaseResourceTable
     /**
      * @return array<string, mixed>
      */
-    public function getTableFilters(): array
+    public function getTableFilters(): array<string, Filter>
     {
         return [
             'type' => SelectFilter::make('ratingable_type')
@@ -59,7 +59,7 @@ class RatingMorphsTable extends XotBaseResourceTable
     /**
      * @return array<string, mixed>
      */
-    public function getTableActions(): array
+    public function getTableActions(): array<string, Action>
     {
         return [
             'edit' => EditAction::make(),
@@ -70,14 +70,14 @@ class RatingMorphsTable extends XotBaseResourceTable
     /**
      * @return array<string, mixed>
      */
-    public function getTableBulkActions(): array
+    public function getTableBulkActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteBulkAction::make(),
         ];
     }
 
-    public function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array<string, mixed>
     {
         return [
             'create' => CreateAction::make(),

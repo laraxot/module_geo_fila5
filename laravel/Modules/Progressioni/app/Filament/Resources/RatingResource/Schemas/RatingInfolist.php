@@ -13,7 +13,7 @@ class RatingInfolist extends BaseRatingInfolist
     /**
      * @return array<string, Component>
      */
-    public static function getInfolistSchema(): array
+    public static function getInfolistSchema(): array<string, mixed>
     {
         return [
             'extra_attributes.type' => TextEntry::make('extra_attributes.type'),

@@ -27,7 +27,7 @@ class ListRatings extends BaseListRatings
      * @return array<string, Action|ActionGroup>
      */
     #[Override]
-    public function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array<string, mixed>
     {
         /** @var array<string, Action|ActionGroup> $parentActions */
         $parentActions = parent::getTableHeaderActions();
@@ -78,7 +78,7 @@ class ListRatings extends BaseListRatings
      * @return array<string, Column>
      */
     #[Override]
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         // Column types are inferred by Filament v4
         /** @var array<string, Column> $cols */
@@ -99,7 +99,7 @@ class ListRatings extends BaseListRatings
      * @return array<string, Filter>
      */
     #[Override]
-    public function getTableFilters(): array
+    public function getTableFilters(): array<string, Filter>
     {
         return [
             'filter' => Filter::make('filter')
@@ -127,7 +127,7 @@ class ListRatings extends BaseListRatings
     /**
      * @return array<int, string>
      */
-    protected static function getYears(): array
+    protected static function getYears(): array<string, mixed>
     {
         $currentYear = Carbon::now()->year;
         $years = [];

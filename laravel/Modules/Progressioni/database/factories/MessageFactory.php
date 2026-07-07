@@ -5,6 +5,9 @@ namespace Modules\Progressioni\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Progressioni\Models\Message;
 
+/**
+ * @extends Factory<\Modules\Progressioni\Models\Message>
+ */
 class MessageFactory extends Factory
 {
     /**

@@ -28,7 +28,7 @@ class RatingsTable extends BaseRatingsTable
      * @return array<string, Action|ActionGroup>
      */
     #[Override]
-    public function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array<string, mixed>
     {
         /** @var array<string, Action|ActionGroup> $parentActions */
         $parentActions = parent::getTableHeaderActions();
@@ -75,7 +75,7 @@ class RatingsTable extends BaseRatingsTable
     /**
      * @return array<string, Column>
      */
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             ...parent::getTableColumns(),
@@ -103,7 +103,7 @@ class RatingsTable extends BaseRatingsTable
      * @return array<string, Filter>
      */
     #[Override]
-    public function getTableFilters(): array
+    public function getTableFilters(): array<string, Filter>
     {
         return [
             'filter' => Filter::make('filter')
@@ -131,7 +131,7 @@ class RatingsTable extends BaseRatingsTable
     /**
      * @return array<int, string>
      */
-    protected static function getYears(): array
+    protected static function getYears(): array<string, mixed>
     {
         $currentYear = Carbon::now()->year;
         $years = [];

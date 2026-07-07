@@ -12,7 +12,7 @@ class EditCoeff extends XotBaseEditRecord
 {
     protected static string $resource = CoeffResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteAction::make(),

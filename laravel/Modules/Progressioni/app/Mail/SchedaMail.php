@@ -66,7 +66,7 @@ class SchedaMail extends Mailable
      *
      * @return array<int, Attachment>
      */
-    public function attachments(): array
+    public function attachments(): array<string, mixed>
     {
         $path = app(MakePdfByRecord::class)->execute(record: $this->scheda, out: 'path');
 

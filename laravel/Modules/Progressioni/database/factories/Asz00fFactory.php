@@ -4,6 +4,9 @@ namespace Modules\Progressioni\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<\Modules\Progressioni\Models\Asz00f>
+ */
 class Asz00fFactory extends Factory
 {
     /**

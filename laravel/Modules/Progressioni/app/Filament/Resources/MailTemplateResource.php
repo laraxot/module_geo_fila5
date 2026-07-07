@@ -28,7 +28,7 @@ class MailTemplateResource extends NotifyBaseMailTemplateResource
      * @return array<string, PageRegistration>
      */
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             ...parent::getPages(),

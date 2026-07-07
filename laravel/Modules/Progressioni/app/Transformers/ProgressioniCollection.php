@@ -24,7 +24,7 @@ class ProgressioniCollection extends ResourceCollection
     /**
      * @return array<string, mixed>
      */
-    public function toArray($request): array
+    public function toArray($request): array<string, mixed>
     {
         // return parent::toArray($request);
         return [

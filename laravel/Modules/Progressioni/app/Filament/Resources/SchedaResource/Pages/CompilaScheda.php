@@ -51,7 +51,7 @@ class CompilaScheda extends XotBasePage
     */
 
     /** @return array<string, mixed> */
-        public function rules(): array
+        public function rules(): array<string, string|array>
     {
         return [
             // 'form_data.punt_progressione' => 'required|numeric|min:0|max:4',
@@ -61,10 +61,12 @@ class CompilaScheda extends XotBasePage
         ];
     }
 
+    /** @var array<string, string> */
     public array $messages = [
         // 'form_data.tot_presenza_periodo_plus_no_timbr.gte' => ':attribute: DEVONO ESSERE MAGGIORNI DELLA SOMMA DEI GIORNI DEI PERIODI',
     ];
 
+    /** @var array<string, string> */
     public array $validationAttributes = [
         // 'form_data.tot_presenza_periodo_plus_no_timbr' => 'Giorni Complessivi',
     ];
@@ -131,7 +133,7 @@ class CompilaScheda extends XotBasePage
         // $this->form_data['tot_presenza_periodo_plus_no_timbr'] = $this->getRecord()->tot_presenza_periodo_plus_no_timbr;
     }
 
-    protected function getViewData(): array
+    protected function getViewData(): array<string, mixed>
     {
         /*
         $this->form_data['tot_gg'] = collect($this->form_data['dettaglio'])
@@ -154,7 +156,7 @@ class CompilaScheda extends XotBasePage
  * @param array<string, mixed> $data
  * @return array<string, mixed>
  */
-        private function mutateFormDataBeforeFill(array $data): array
+        private function mutateFormDataBeforeFill(array $data): array<string, mixed>
     {
         return $data;
     }

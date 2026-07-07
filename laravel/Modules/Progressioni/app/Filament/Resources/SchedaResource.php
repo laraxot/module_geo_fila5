@@ -20,7 +20,7 @@ class SchedaResource extends BaseSchedaResource
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -65,14 +65,14 @@ class SchedaResource extends BaseSchedaResource
      * @return array<string, RelationManager>
      */
     #[Override]
-    public static function getRelations(): array
+    public static function getRelations(): array<string, mixed>
     {
         return [
         ];
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             ...parent::getPages(),

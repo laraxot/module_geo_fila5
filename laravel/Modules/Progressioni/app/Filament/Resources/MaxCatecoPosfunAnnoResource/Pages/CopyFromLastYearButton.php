@@ -51,7 +51,7 @@ class CopyFromLastYearButton
      * Recupera i record dell'anno precedente
      *
      * @param  class-string<Model>  $modelClass
-     * @return Collection<Model>
+     * @return Collection<int, Model>
      */
     protected function getRecordsFromLastYear(string $modelClass, string $yearField, int $lastYear): Collection
     {
@@ -61,7 +61,7 @@ class CopyFromLastYearButton
     /**
      * Copia i record per l'anno corrente
      *
-     * @param  Collection<Model>  $records
+     * @param  Collection<int, Model>  $records
      */
     protected function copyRecords(Collection $records, string $yearField, int $currentYear): void
     {

@@ -51,8 +51,9 @@ class RefreshHaDirittoAction
                 'value' => $item->value,
             ];
         });
+        /** @var Collection<int|string, mixed> $criteri_option */
         $criteri_option = Collection::make(
-            CriteriOption::where('anno', $record->anno)->get()->all()
+            CriteriOption::where('anno', $record->anno)->pluck('value', 'name')->all()
         );
 
         app(Check::class)->execute($record, $criteri_esclusione, $criteri_option);

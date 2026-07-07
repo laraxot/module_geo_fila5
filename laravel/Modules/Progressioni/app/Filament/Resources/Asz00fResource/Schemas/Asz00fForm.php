@@ -13,7 +13,7 @@ class Asz00fForm extends XotBaseResourceForm
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),

@@ -18,7 +18,7 @@ class ValutatoreResource extends XotBaseResource
     protected static ?string $model = Valutatore::class;
 
     #[Override]
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -41,14 +41,14 @@ class ValutatoreResource extends XotBaseResource
      * @return array<class-string<RelationManager>>
      */
     #[Override]
-    public static function getRelations(): array
+    public static function getRelations(): array<string, mixed>
     {
         return [
         ];
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListValutatores::route('/'),

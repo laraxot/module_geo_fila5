@@ -22,7 +22,7 @@ class Asz00fResource extends XotBaseResource
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -45,7 +45,7 @@ class Asz00fResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListAsz00fs::route('/'),
@@ -57,7 +57,7 @@ class Asz00fResource extends XotBaseResource
     /**
      * @return array<class-string>
      */
-    public static function getWidgets(): array
+    public static function getWidgets(): array<string, mixed>
     {
         return [
             Asz00fStatsOverview::class,

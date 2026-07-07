@@ -30,7 +30,11 @@ class ProgressioniResource extends XotBaseResource
 {
     protected static ?string $model = Progressioni::class;
 
-    public static function getXlsFields(array $filters): array
+    /**
+     * @param array<string, mixed> $filters
+     * @return array<int, string>
+     */
+    public static function getXlsFields(array $filters = []): array<string, mixed>
     {
         /** @var array<int, string> $fields */
         $fields = [
@@ -91,14 +95,14 @@ class ProgressioniResource extends XotBaseResource
         }
         */
 
-        return array_unique($fields);
+        return array_values(array_unique($fields));
     }
 
-    #[Override]
     /**
      * @return array<string, Component>
-     */
-    public static function getFormSchema(): array
+    */
+    #[Override]
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -234,7 +238,7 @@ class ProgressioniResource extends XotBaseResource
         ];
     }
 
-    // public static function getRelations(): array
+    // public static function getRelations(): array<string, mixed>
     // {
     //     return [
     //         PtvRelationManagers\Qua00fRelationManager::class,
@@ -243,7 +247,7 @@ class ProgressioniResource extends XotBaseResource
     //     ];
     // }
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             ...parent::getPages(),

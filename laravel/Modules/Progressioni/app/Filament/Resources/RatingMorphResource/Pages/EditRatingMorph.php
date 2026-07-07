@@ -12,7 +12,7 @@ class EditRatingMorph extends XotBaseEditRecord
 {
     protected static string $resource = RatingMorphResource::class;
 
-    protected function getActions(): array
+    protected function getActions(): array<string, mixed>
     {
         return [
             DeleteAction::make(),

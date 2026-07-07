@@ -17,7 +17,7 @@ class StabiDirigenteResource extends XotBaseResource
     protected static ?string $model = StabiDirigente::class;
 
     #[Override]
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -59,7 +59,7 @@ class StabiDirigenteResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListStabiDirigentes::route('/'),

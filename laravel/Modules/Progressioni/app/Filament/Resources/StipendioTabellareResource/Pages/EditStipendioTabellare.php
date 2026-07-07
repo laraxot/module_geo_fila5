@@ -12,7 +12,7 @@ class EditStipendioTabellare extends XotBaseEditRecord
 {
     protected static string $resource = StipendioTabellareResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteAction::make(),

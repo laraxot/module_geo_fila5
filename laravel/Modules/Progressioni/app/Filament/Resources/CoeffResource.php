@@ -21,7 +21,7 @@ class CoeffResource extends XotBaseResource
     /**
      * @return array<int, Component>
      */
-    public static function getFormSchema(): array
+    public static function getFormSchema(): array<string, mixed>
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -32,7 +32,7 @@ class CoeffResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array
+    public static function getPages(): array<string, mixed>
     {
         return [
             'index' => ListCoeffs::route('/'),

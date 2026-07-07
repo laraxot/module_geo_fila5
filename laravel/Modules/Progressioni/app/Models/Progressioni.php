@@ -540,7 +540,7 @@ class Progressioni extends BaseScheda
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected function casts(): array<string, mixed>
     {
         return [
             'qua2kd' => 'integer',

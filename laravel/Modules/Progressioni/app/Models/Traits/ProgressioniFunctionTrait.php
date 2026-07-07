@@ -31,6 +31,7 @@ trait ProgressioniFunctionTrait
      *
      * @param  string  $name  Option name to retrieve
      */
+    /** @return int|array<int, string>|string|Carbon|null */
     public function getOption(string $name): int|array|string|Carbon|null
     {
         $item = $this->criteriOptions()->firstWhere('name', $name);
@@ -86,7 +87,7 @@ trait ProgressioniFunctionTrait
      *
      * @return array<int, string> Array of tipo-codice pairs
      */
-    public function getListaTipoCodiceAspettative(): array
+    public function getListaTipoCodiceAspettative(): array<string, mixed>
     {
         $assenze = isset($this->assenze) ? $this->assenze : [];
 
@@ -125,7 +126,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkListaPropro(array $params): array
+    public function checkListaPropro(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -167,7 +168,8 @@ trait ProgressioniFunctionTrait
         return $res;
     }
     */
-    public function criteriEsclusioneFields(): array
+    /** @return array<int, string> */
+    public function criteriEsclusioneFields(): array<string, mixed>
     {
         return $this->criteriEsclusione
             ->filter(
@@ -188,7 +190,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkListaPosiz(array $params): array
+    public function checkListaPosiz(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -211,7 +213,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgPosiz1InSede(array $params): array
+    public function checkMinGgPosiz1InSede(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -234,7 +236,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgCatecoPosfunNoAsz(array $params): array
+    public function checkMinGgCatecoPosfunNoAsz(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -257,7 +259,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgPropro(array $params): array
+    public function checkMinGgPropro(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -280,7 +282,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgProproPosfun(array $params): array
+    public function checkMinGgProproPosfun(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -308,7 +310,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgAnno(array $params): array
+    public function checkMinGgAnno(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -333,7 +335,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkMinGgCatecoPosfunLavoratiInSede(array $params): array
+    public function checkMinGgCatecoPosfunLavoratiInSede(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -347,7 +349,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkListaProproPosfun(array $params): array
+    public function checkListaProproPosfun(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -370,7 +372,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkDisci(array $params): array
+    public function checkDisci(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];
@@ -399,7 +401,7 @@ trait ProgressioniFunctionTrait
      * @param array<string, mixed> $params
      * @return array<mixed>
      */
-    public function checkListaAszTipCodEsclusoSubito(array $params): array
+    public function checkListaAszTipCodEsclusoSubito(array $params): array<string, mixed>
     {
         $ha_diritto = 1;
         $motivo_arr = [];

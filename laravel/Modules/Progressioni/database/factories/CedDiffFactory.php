@@ -5,6 +5,9 @@ namespace Modules\Progressioni\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Progressioni\Models\CedDiff;
 
+/**
+ * @extends Factory<\Modules\Progressioni\Models\CedDiff>
+ */
 class CedDiffFactory extends Factory
 {
     /**

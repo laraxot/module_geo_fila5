@@ -680,6 +680,10 @@ class Scheda extends BaseScheda
      * @param array<string, mixed> $params
      * @return Collection<int, self>
      */
+    /**
+     * @param array{stabi?: int|string|null, repar?: int|string|null, anno?: int|string|null} $params
+     * @return Collection<int, self>
+     */
     public function stabi_dirigente_parz(array $params): Collection
     {
         $stabi = $params['stabi'] ?? null;
@@ -703,7 +707,7 @@ class Scheda extends BaseScheda
      *
      * @return array<int|string, string>
      */
-    public function stabi_opts(): array
+    public function stabi_opts(): array<string, mixed>
     {
         $opts = Repart::where('repar', 0)
             ->where('stabi', '>', 500)
@@ -725,6 +729,10 @@ class Scheda extends BaseScheda
      * Filter records based on parameters.
      *
      * @param  array  $params
+     */
+    /**
+     * @param array<string, mixed> $params
+     * @return Builder<self>
      */
     public static function filter(array $params): Builder
     {
@@ -809,6 +817,9 @@ class Scheda extends BaseScheda
     // ---------------- UPDATES ---------------------
     // ----------------------------------------------
 
+    /**
+     * @param array{anno?: int|string} $params
+     */
     public static function updateVincitori(array $params): void
     {
         extract($params);
@@ -844,6 +855,9 @@ class Scheda extends BaseScheda
     /**
      * { item_description }.
      */
+    /**
+     * @param array{anno: int|string} $params
+     */
     public static function updatePeso(array $params): void
     {
         extract($params);
@@ -867,6 +881,9 @@ class Scheda extends BaseScheda
         }
     }
 
+    /**
+     * @param array{where?: string, force?: int} $params
+     */
     public static function updateTotale(array $params): void
     {
         // totale aggiornato dall'edit per questioni di approssimazioni
@@ -897,6 +914,9 @@ class Scheda extends BaseScheda
         }
     }
 
+    /**
+     * @param array{anno: int|string} $params
+     */
     public static function updateEsperienzaAcquisita(array $params): void
     {
         $self = new self;
@@ -952,6 +972,9 @@ class Scheda extends BaseScheda
      * @param  array  $params
      *
      * @throws RuntimeException When required parameters are missing
+     */
+    /**
+     * @param array<string, mixed> $params
      */
     public static function updateFields(array $params = []): void
     {
@@ -1022,11 +1045,8 @@ class Scheda extends BaseScheda
                 if ($qua00f && $qua00f->get()->count() === 1) {
                     $firstRecord = $qua00f->first();
                     if ($firstRecord !== null) {
-                        /** @phpstan-ignore-next-line */
                         $obj->propro = $firstRecord->propro;
-                        /** @phpstan-ignore-next-line */
                         $obj->posfun = $firstRecord->posfun;
-                        /** @phpstan-ignore-next-line */
                         $obj->posiz = $firstRecord->posiz;
                     }
                 } else {

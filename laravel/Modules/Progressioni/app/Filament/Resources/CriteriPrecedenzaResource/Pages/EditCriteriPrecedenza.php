@@ -12,7 +12,7 @@ class EditCriteriPrecedenza extends XotBaseEditRecord
 {
     protected static string $resource = CriteriPrecedenzaResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteAction::make(),

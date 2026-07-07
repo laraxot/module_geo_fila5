@@ -33,7 +33,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
      * @return array<string, Action>
      */
     #[Override]
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'create' => CreateAction::make(),
@@ -76,7 +76,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
     }
 
     #[Override]
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'matricola' => TextColumn::make('matricola')->searchable()->sortable(),
@@ -104,7 +104,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
     }
 
     #[Override]
-    public function getTableFilters(): array
+    public function getTableFilters(): array<string, Filter>
     {
         return [
         ];
@@ -114,7 +114,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
      * @return array<string, Action|ActionGroup>
      */
     #[Override]
-    public function getTableActions(): array
+    public function getTableActions(): array<string, Action>
     {
         return [
             'view' => ViewAction::make()
@@ -131,7 +131,7 @@ class ListCedDiffs extends PtvBaseYearListRecords
      * @return array<string, BulkAction>
      */
     #[Override]
-    public function getTableBulkActions(): array
+    public function getTableBulkActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteBulkAction::make(),

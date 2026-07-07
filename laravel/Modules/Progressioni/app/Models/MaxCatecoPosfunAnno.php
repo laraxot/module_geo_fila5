@@ -67,9 +67,9 @@ class MaxCatecoPosfunAnno extends BaseModel
 
     // ------- relationship -------
     /**
-     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     * @return HasMany<Scheda, $this>
      */
-    ublic function schede(): HasMany
+    public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')

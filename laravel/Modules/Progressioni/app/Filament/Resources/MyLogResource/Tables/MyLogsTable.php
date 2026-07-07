@@ -16,14 +16,14 @@ class MyLogsTable extends XotBaseResourceTable
      *
      * @return array<string, Action>
      */
-    public function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array<string, mixed>
     {
         return [
             'create' => CreateAction::make(),
         ];
     }
 
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'id' => TextColumn::make('id')

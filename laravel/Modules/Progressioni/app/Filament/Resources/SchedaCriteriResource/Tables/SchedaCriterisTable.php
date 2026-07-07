@@ -12,7 +12,7 @@ class SchedaCriterisTable extends XotBaseResourceTable
     /**
      * @return array<string, mixed>
      */
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'id' => TextColumn::make('id')

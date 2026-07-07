@@ -21,7 +21,7 @@ class SchedasTable extends BaseSchedasTable
      * @return array<string, Column>
      */
     #[Override]
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'id' => TextColumn::make('id')
@@ -73,7 +73,7 @@ class SchedasTable extends BaseSchedasTable
      * @return array<string, Filter>
      */
     #[Override]
-    public function getTableFilters(): array
+    public function getTableFilters(): array<string, Filter>
     {
         return [];
     }
@@ -82,7 +82,7 @@ class SchedasTable extends BaseSchedasTable
      * @return array<string, BulkAction>
      */
     #[Override]
-    public function getTableBulkActions(): array
+    public function getTableBulkActions(): array<string, mixed>
     {
         /** @var array<string, mixed> $tableFilters */
         $tableFilters = $this->tableFilters ?? [];

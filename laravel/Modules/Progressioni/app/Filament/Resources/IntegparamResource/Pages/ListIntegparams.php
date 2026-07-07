@@ -23,7 +23,7 @@ class ListIntegparams extends XotBaseListRecords
      * @return array<string, Column>
      */
     #[Override]
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'ente' => TextColumn::make('ente')

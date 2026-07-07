@@ -14,7 +14,7 @@ class IntegparamInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component>
      */
-    public static function getInfolistSchema(): array
+    public static function getInfolistSchema(): array<string, mixed>
     {
         return [
             'dati_anagrafici' => Section::make('Dati Anagrafici')

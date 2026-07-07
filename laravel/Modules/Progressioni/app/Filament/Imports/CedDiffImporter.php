@@ -13,7 +13,7 @@ class CedDiffImporter extends Importer
 {
     protected static ?string $model = CedDiff::class;
 
-    public static function getColumns(): array
+    public static function getColumns(): array<string, mixed>
     {
         return [
             ImportColumn::make('matricola'),

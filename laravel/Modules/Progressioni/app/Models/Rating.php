@@ -51,7 +51,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static Builder|Rating whereTxt($value)
  * @method static Builder|Rating whereUpdatedAt($value)
  * @method static Builder|Rating whereUpdatedBy($value)
- * @method static Builder|Rating withExtraAttributes(array|string $attributes = [], mixed $value = null)
+ * @method static Builder|Rating withExtraAttributes(array<string, mixed>|string $attributes = [], mixed $value = null)
  *
  * @property-read Profile|null $creator
  * @property-read Model|\Eloquent $linkedTo

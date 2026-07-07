@@ -12,7 +12,7 @@ class EditCategoriaPropro extends XotBaseEditRecord
 {
     protected static string $resource = CategoriaProproResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'delete' => DeleteAction::make(),

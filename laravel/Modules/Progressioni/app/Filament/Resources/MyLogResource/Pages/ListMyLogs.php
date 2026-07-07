@@ -15,7 +15,7 @@ class ListMyLogs extends XotBaseListRecords
     protected static string $resource = MyLogResource::class;
 
     #[Override]
-    protected function getHeaderActions(): array
+    protected function getHeaderActions(): array<string, mixed>
     {
         return [
             'create' => CreateAction::make(),
@@ -26,7 +26,7 @@ class ListMyLogs extends XotBaseListRecords
     /**
      * @return array<string, mixed>
      */
-    public function getTableColumns(): array
+    public function getTableColumns(): array<string, Column>
     {
         return [
             'id' => TextColumn::make('id')
