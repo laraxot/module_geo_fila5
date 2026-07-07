@@ -181,6 +181,8 @@ class Place extends BaseModel implements HasGeolocation
 
     /**
      * Get the linked model.
+     *
+     * @return MorphTo<Model, $this>
      */
     public function linked(): MorphTo
     {
@@ -189,6 +191,8 @@ class Place extends BaseModel implements HasGeolocation
 
     /**
      * Get the place type.
+     *
+     * @return BelongsTo<PlaceType, $this>
      */
     public function placeType(): BelongsTo
     {
@@ -197,6 +201,8 @@ class Place extends BaseModel implements HasGeolocation
 
     /**
      * Get the address.
+     *
+     * @return BelongsTo<Address, $this>
      */
     public function address(): BelongsTo
     {
@@ -206,13 +212,13 @@ class Place extends BaseModel implements HasGeolocation
     #[\Override]
     public function getLatitude(): ?float
     {
-        /* @phpstan-ignore-line */ return $this->latitude;
+        return $this->latitude;
     }
 
     #[\Override]
     public function getLongitude(): ?float
     {
-        /* @phpstan-ignore-line */ return $this->longitude;
+        return $this->longitude;
     }
 
     #[\Override]

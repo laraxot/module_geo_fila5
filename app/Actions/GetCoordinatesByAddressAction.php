@@ -137,6 +137,13 @@ class GetCoordinatesByAddressAction
         );
     }
 
+    /**
+     * Extract coordinates from Bing response.
+     *
+     * @param array<string, mixed> $data
+     *
+     * @return array<int, float>|null
+     */
     private function extractBingCoordinates(array $data): ?array
     {
         $resourceSets = $data['resourceSets'] ?? null;
@@ -167,7 +174,7 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
-        return $coordinates;
+        return [(float) $coordinates[0], (float) $coordinates[1]];
     }
 
     /**

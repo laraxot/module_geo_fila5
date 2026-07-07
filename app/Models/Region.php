@@ -35,13 +35,14 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
+    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
     use HasXotFactory;
     use Sushi;
 
     /**
      * The factory class for this model.
      *
-     * @var class-string<Factory>
+     * @var class-string<Factory<Region>>
      */
     protected static $factory = RegionFactory::class;
 
@@ -52,11 +53,13 @@ class Region extends BaseModel
      */
     protected $keyType = 'integer';
 
+    /** @var array<string, string> */
     protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
     ];
 
+    /** @return array<mixed> */
     public function getRows(): array
     {
         $rows = Comune::select('regione->codice as id', 'regione->nome as name')
@@ -67,11 +70,13 @@ class Region extends BaseModel
         return $rows->toArray();
     }
 
+    /** @return HasMany<Province, $this> */
     public function provinces(): HasMany
     {
         return $this->hasMany(Province::class);
     }
 
+    /** @return array<mixed> */
     public static function getOptions(Get $get): array
     {
         return self::orderBy('name')

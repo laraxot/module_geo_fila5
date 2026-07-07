@@ -39,6 +39,7 @@ class Locality extends BaseModel
 {
     use Sushi;
 
+    /** @var array<string, string> */
     protected array $schema = [
         'region_id' => 'integer',
         'province_id' => 'integer',
@@ -47,6 +48,9 @@ class Locality extends BaseModel
         'postal_code' => 'json',
     ];
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
         $rows = Comune::select(
@@ -61,10 +65,13 @@ class Locality extends BaseModel
             ->get()
             ->map(static fn ($row) => $row);
 
-        /* @var array<int, array<string, mixed>> */
+        /** @var array<int, array<string, mixed>> */
         return $rows->toArray();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
@@ -76,14 +83,15 @@ class Locality extends BaseModel
             return [];
         }
 
-        $city = $get('locality');
-
         return self::where('region_id', $region)
             ->where('province_id', $province)
             ->pluck('name', 'id')
             ->toArray();
     }
 
+    /**
+     * @return array<mixed>
+     */
     public static function getPostalCodeOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
@@ -115,11 +123,11 @@ class Locality extends BaseModel
 
             $result = array_combine($postalCodes, $postalCodes);
 
-            /* @var array<string, string> $result */
+            /** @var array<string, string> $result */
             return $result;
         });
 
-        return $arr ?? [];
+        return $arr;
     }
 
     /**
