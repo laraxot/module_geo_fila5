@@ -18,6 +18,9 @@ class OauthRefreshTokenFactory extends Factory
 {
     protected $model = OauthRefreshToken::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

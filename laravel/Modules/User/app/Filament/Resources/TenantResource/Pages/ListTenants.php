@@ -22,6 +22,9 @@ class ListTenants extends XotBaseListRecords
      * Definisce le colonne della tabella per la lista tenant.
      */
     #[\Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
