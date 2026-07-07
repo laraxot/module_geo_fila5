@@ -707,7 +707,7 @@ class Scheda extends BaseScheda
      *
      * @return array<int|string, string>
      */
-    public function stabi_opts(): array<string, mixed>
+    public function stabi_opts(): array
     {
         $opts = Repart::where('repar', 0)
             ->where('stabi', '>', 500)
