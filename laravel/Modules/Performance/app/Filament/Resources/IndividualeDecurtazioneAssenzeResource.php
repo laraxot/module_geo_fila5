@@ -48,6 +48,9 @@ class IndividualeDecurtazioneAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -73,6 +76,9 @@ class IndividualeDecurtazioneAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -82,6 +88,9 @@ class IndividualeDecurtazioneAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -90,6 +99,9 @@ class IndividualeDecurtazioneAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [

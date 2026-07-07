@@ -4,6 +4,9 @@ namespace Modules\IndennitaResponsabilita\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ *  Factory<\Modules\IndennitaResponsabilita\Models\LettF>
+ */
 class LettFFactory extends Factory
 {
     /**
@@ -13,6 +16,8 @@ class LettFFactory extends Factory
 
     /**
      * Define the model's default state.
+     *
+     *  array<string, mixed>
      */
     public function definition(): array
     {

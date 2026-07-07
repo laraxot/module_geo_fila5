@@ -7,6 +7,9 @@ namespace Modules\IndennitaResponsabilita\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\IndennitaResponsabilita\Models\MyLog;
 
+/**
+ *  Factory<\Modules\IndennitaResponsabilita\Models\MyLog>
+ */
 class MyLogFactory extends Factory
 {
     /**
@@ -16,6 +19,8 @@ class MyLogFactory extends Factory
 
     /**
      * Define the model's default state.
+     *
+     *  array<string, mixed>
      */
     public function definition(): array
     {

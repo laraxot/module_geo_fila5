@@ -25,6 +25,9 @@ class OrganizzativaAssenzeResource extends XotBaseResource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @return array<string, mixed>
+     */
     #[Override]
     public static function getFormSchema(): array
     {
@@ -42,6 +45,9 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -58,6 +64,9 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -67,6 +76,9 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -75,6 +87,9 @@ class OrganizzativaAssenzeResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [
