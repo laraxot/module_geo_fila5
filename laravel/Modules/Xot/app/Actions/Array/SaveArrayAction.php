@@ -13,7 +13,7 @@ class SaveArrayAction
     /**
      * @param array $data
      */
-    public function execute(array<string, mixed> $data, string $filename, string $format = 'php'): bool
+    public function execute(array $data, string $filename, string $format = 'php'): bool
     {
         return match ($format) {
             'json' => app(SaveJsonArrayAction::class)->execute($data, $filename),

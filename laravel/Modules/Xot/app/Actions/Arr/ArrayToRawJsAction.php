@@ -27,7 +27,7 @@ class ArrayToRawJsAction
      *
      * @param array $array Array associativo (anche annidato); valori RawJs restano raw
      */
-    public function execute(array<string, mixed> $array): RawJs
+    public function execute(array $array): RawJs
     {
         $parts = [];
         foreach ($array as $key => $value) {

@@ -90,7 +90,7 @@ class OauthAccessTokenFactory extends Factory
      *
      * @param list<string> $scopes
      */
-    public function withScopes(array<string, mixed> $scopes): static
+    public function withScopes(array $scopes): static
     {
         return $this->state(fn (): array => [
             'scopes' => $scopes,

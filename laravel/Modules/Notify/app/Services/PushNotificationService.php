@@ -90,7 +90,7 @@ class PushNotificationService
      * @param  array  $data
      * @return array<string, array<string, mixed>>
      */
-    public function sendToDevices(array<string, mixed> $tokens, array $notification, array $data = []): array
+    public function sendToDevices(array $tokens, array $notification, array $data = []): array
     {
         $results = [];
 
@@ -155,7 +155,7 @@ class PushNotificationService
      * @param  array  $data
      * @return array<string, mixed>
      */
-    public function sendToAll(array<string, mixed> $notification, array $data = []): array
+    public function sendToAll(array $notification, array $data = []): array
     {
         $tokens = $this->getAllActiveTokens();
 
@@ -174,7 +174,7 @@ class PushNotificationService
      * @param  array  $notification
      * @param  array  $data
      */
-    public function scheduleNotification(array<string, mixed> $tokens, array $notification, array $data, DateTime $scheduleTime): string
+    public function scheduleNotification(array $tokens, array $notification, array $data, DateTime $scheduleTime): string
     {
         $jobId = uniqid('push_', true);
 
@@ -217,7 +217,7 @@ class PushNotificationService
      * @param  array  $data
      * @return array<string, mixed>
      */
-    public function sendWithTargeting(array<string, mixed> $criteria, array $notification, array $data = []): array
+    public function sendWithTargeting(array $criteria, array $notification, array $data = []): array
     {
         $tokens = $this->getTokensByCriteria($criteria);
 
@@ -444,7 +444,7 @@ class PushNotificationService
      * @param  list<string>  $tokens
      * @return array<string, list<string>>
      */
-    private function groupTokensByPlatform(array<string, mixed> $tokens): array
+    private function groupTokensByPlatform(array $tokens): array
     {
         $grouped = [];
 
@@ -512,7 +512,7 @@ class PushNotificationService
      * @param  array  $variables
      * @return array<string, mixed>
      */
-    private function processTemplate(array<string, mixed> $template, array $variables): array
+    private function processTemplate(array $template, array $variables): array
     {
         $notification = $template;
 
@@ -533,7 +533,7 @@ class PushNotificationService
      * @param  array  $criteria
      * @return list<string>
      */
-    private function getTokensByCriteria(array<string, mixed> $criteria): array
+    private function getTokensByCriteria(array $criteria): array
     {
         return [];
     }

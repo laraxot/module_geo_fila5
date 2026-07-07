@@ -16,7 +16,7 @@ class CreateUserAction
      *
      * @param array<string, mixed> $data
      */
-    public function execute(array<string, mixed> $data): User
+    public function execute(array $data): User
     {
         // Use app() to resolve the User model instance
         return app(User::class)->create($data);

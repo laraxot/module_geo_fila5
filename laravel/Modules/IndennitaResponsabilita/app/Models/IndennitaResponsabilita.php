@@ -206,7 +206,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @method static Builder|IndennitaResponsabilita whereValoreEconomicoCalcolato($value)
  * @method static Builder|IndennitaResponsabilita whereValutatoreId($value)
  * @method static Builder|IndennitaResponsabilita withDays(int $date_min, int $date_max)
- * @method BelongsToMany ratings()
+ * @method \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\Rating\Models\Rating, $this> ratings()
  * @property Profile|null $creator
  * @property string|null $codice_fiscale
  * @property string|null $inail
@@ -287,7 +287,7 @@ use Modules\Sigma\Models\Wstr01lx;
  * @property-read float|null $importo_stipendio_annuo
  * @property-read string|null $lista_propro
  * @property-read string|null $lista_propro_sup
- * @property-read Collection $my_rating
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaResponsabilita\Models\Rating> $my_rating
  * @property-read int|float $perc_p_time_daterange
  * @property-read float|null $perc_parttime_dalal
  * @property-read float|null $perc_parttimepond_anno
@@ -401,6 +401,9 @@ class IndennitaResponsabilita extends BaseScheda
     }
     */
 
+    /**
+     * @param  \Illuminate\Database\Eloquent\Builder<\Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita>  $query
+     */
     public function scopeIsCompiled(Builder $query): void
     {
         $query->whereHas('ratings', function ($query) {
@@ -408,6 +411,9 @@ class IndennitaResponsabilita extends BaseScheda
         });
     }
 
+    /**
+     * @param  \Illuminate\Database\Eloquent\Builder<\Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita>  $query
+     */
     public function scopeIsNotCompiled(Builder $query): void
     {
         $query->whereDoesntHave('ratings')

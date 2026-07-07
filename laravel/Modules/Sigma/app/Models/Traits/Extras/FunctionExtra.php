@@ -447,9 +447,9 @@ trait FunctionExtra
     /**
      * @param  array  $params
      */
-    public function ggInSedeTotByArray(array<string, mixed> $params): ?int
+    public function ggInSedeTotByArray(array $params): ?int
     {
-        /** @var array<string, mixed> $params */
+        /** @var array $params */
         $date_min = $params['date_min'] ?? null;
         $date_max = $params['date_max'] ?? null;
         $lista_propro = $params['lista_propro'] ?? null;
@@ -514,7 +514,7 @@ trait FunctionExtra
     /**
      * @param  array  $params
      */
-    public function ggFuoriSedeTot(array<string, mixed> $params): ?int
+    public function ggFuoriSedeTot(array $params): ?int
     {
         // These helper calculations are only valid on Anag instances,
         // which provide the required qua03f() relationship.
@@ -566,7 +566,7 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------
-    public function hhAssenzaInSedeTot(array<string, mixed> $params): int
+    public function hhAssenzaInSedeTot(array $params): int
     {
         // These helper calculations are only valid on Anag instances,
         // which provide the required asz00k1() relationship.
@@ -653,7 +653,7 @@ trait FunctionExtra
      *
      * @param  array  $params
      */
-    public function ggAssenzaFuoriSedeTot(array<string, mixed> $params): int
+    public function ggAssenzaFuoriSedeTot(array $params): int
     {
         return 0; // da fare
     }
@@ -664,7 +664,7 @@ trait FunctionExtra
      *
      * @param  array  $_params
      */
-    public function hhAssenzaFuoriSedeTot(array<string, mixed> $_params): int
+    public function hhAssenzaFuoriSedeTot(array $_params): int
     {
         return 0; // da fare
     }
@@ -868,7 +868,7 @@ trait FunctionExtra
 
         // $this->fixRep($params);
         // $this->fixQua($params);
-        /** @var array<string, mixed> $paramsTyped */
+        /** @var array $paramsTyped */
         $paramsTyped = $params;
         /** @var Collection<int, array<string, mixed>> $rows_coll */
         $rows_coll = Anag::rep00fQua00fAnnoCollection($paramsTyped);
@@ -1113,7 +1113,7 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------------------------------
-    public function addTableField(array<string, mixed> $params): void
+    public function addTableField(array $params): void
     {
         $table = $this->getTable();
         $conn = $this->getConnection();

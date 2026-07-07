@@ -150,7 +150,7 @@ trait SushiToJsons
      *
      * @return array<string, mixed>
      */
-    private function buildRowFromSchema(array<string, mixed> $schema, array $json): array
+    private function buildRowFromSchema(array $schema, array $json): array
     {
         /** @var array<string, mixed> $item */
         $item = [];

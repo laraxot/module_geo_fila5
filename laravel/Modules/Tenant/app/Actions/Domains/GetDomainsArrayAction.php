@@ -62,7 +62,7 @@ class GetDomainsArrayAction
      *
      * @return array<int, string>
      */
-    public function collapse(array<string, mixed> $data, string $keyPrefix = ''): array
+    public function collapse(array $data, string $keyPrefix = ''): array
     {
         $res = [];
         foreach ($data as $k0 => $v0) {

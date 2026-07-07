@@ -35,7 +35,7 @@ class ImportValutatoriAction extends Action
         return 'import_valutatori_';
     }
 
-    public function addFields(array<string, mixed> $fields): self
+    public function addFields(array $fields): self
     {
         $this->fields = array_merge($this->fields, $fields);
         /** @var array<int, Component> $formFields */
@@ -136,7 +136,7 @@ class ImportValutatoriAction extends Action
             });
     }
 
-    public function syncValutatore(array<string, mixed> $data, array $rows): void
+    public function syncValutatore(array $data, array $rows): void
     {
         $where = Arr::except($data, ['file', 'header_row']);
 

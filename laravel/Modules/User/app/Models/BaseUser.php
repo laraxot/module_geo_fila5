@@ -213,7 +213,7 @@ abstract class BaseUser extends Authenticatable implements FilamentUser, HasAuth
      */
     protected string $guard_name = 'web';
 
-    public function __construct(array<string, mixed> $attributes = [])
+    public function __construct(array $attributes = [])
     {
         // Concateno i fillable del parent con quelli della classe corrente
         // array_values() garantisce che sia un array indicizzato (list<string>)

@@ -35,7 +35,7 @@ class StabiReparAnno extends Component
     /**
      * @param  array{options: Collection}  $nav
      */
-    public function mount(array<string, mixed> $nav, int $year): void
+    public function mount(array $nav, int $year): void
     {
         $opts = $nav['options']->all();
         $opts = collect($opts)->map(static fn ($v, $k): array => ['label' => $v, 'id' => $k])->all();

@@ -37,7 +37,7 @@ class UserCalendarWidget extends XotBaseSchemaWidget
      *
      * @return array<int, array<string, mixed>>
      */
-    public function fetchEvents(array<string, mixed> $fetchInfo): array
+    public function fetchEvents(array $fetchInfo): array
     {
         $action = $this->getActionName(__FUNCTION__);
 

@@ -19,7 +19,7 @@ final class SmsData
      *
      * @param  array  $data
      */
-    public function __construct(array<string, mixed> $data = [])
+    public function __construct(array $data = [])
     {
         $this->from = SafeStringCastAction::cast($data['from'] ?? '');
         $this->recipient = SafeStringCastAction::cast($data['recipient'] ?? '');

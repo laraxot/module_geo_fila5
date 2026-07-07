@@ -49,7 +49,7 @@ class SaveTenantConfigAction
      *
      * @return array<string, mixed>
      */
-    private function arrayMergeRecursiveDistinct(array<string, mixed> $array1, array $array2): array
+    private function arrayMergeRecursiveDistinct(array $array1, array $array2): array
     {
         $merged = $array1;
 

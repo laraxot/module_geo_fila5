@@ -231,7 +231,7 @@ class C003Service
      * @param  array  $response
      * @return array<string, mixed>
      */
-    private function processE002Response(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processE002Response(array $response, RichiestaE002 $richiesta): array
     {
         $bodyRaw = $response['body'] ?? '{}';
         assert(is_string($bodyRaw));
@@ -250,7 +250,7 @@ class C003Service
      *
      * @return array<string, mixed>
      */
-    private function processSuccessResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processSuccessResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaOK = RispostaE002OK::fromArray($response);
 
@@ -272,7 +272,7 @@ class C003Service
      *
      * @return array<string, mixed>
      */
-    private function processErrorResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processErrorResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaKO = RispostaKO::fromArray($response);
 
@@ -290,7 +290,7 @@ class C003Service
     /**
      * Determina se la risposta è di successo
      */
-    private function isSuccessResponse(array<string, mixed> $response): bool
+    private function isSuccessResponse(array $response): bool
     {
         if (isset($response['listaSoggetti'])) {
             return true;
@@ -328,7 +328,7 @@ class C003Service
     /**
      * Estrae le informazioni del soggetto ente
      */
-    private function extractInfoSoggettoEnte(array<string, mixed> $infoSoggettoEnte): array
+    private function extractInfoSoggettoEnte(array $infoSoggettoEnte): array
     {
         $info = [];
 
@@ -389,7 +389,7 @@ class C003Service
     /**
      * Estrae i dati delle anomalie
      */
-    private function extractAnomalieData(array<string, mixed> $listaAnomalie): array
+    private function extractAnomalieData(array $listaAnomalie): array
     {
         return array_map(static fn ($anomalia) => TipoErroriAnomalia::fromArray((array) $anomalia)->toArray(), $listaAnomalie);
     }
@@ -397,7 +397,7 @@ class C003Service
     /**
      * Estrae i dati degli errori
      */
-    private function extractErroriData(array<string, mixed> $listaErrori): array
+    private function extractErroriData(array $listaErrori): array
     {
         return array_map(static fn ($errore) => TipoErroriAnomalia::fromArray((array) $errore)->toArray(), $listaErrori);
     }

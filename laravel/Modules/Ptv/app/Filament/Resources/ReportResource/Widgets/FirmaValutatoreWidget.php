@@ -111,7 +111,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
     }
     */
 
-    public function updateFilters(array<string, mixed> $newFilters = []): void
+    public function updateFilters(array $newFilters = []): void
     {
         dddx($newFilters);
     }

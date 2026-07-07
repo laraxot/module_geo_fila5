@@ -24,7 +24,7 @@ class TransArrayAction
      *
      * @return array<int|string, string>
      */
-    public function execute(array<string, mixed> $array, ?string $transKey): array
+    public function execute(array $array, ?string $transKey): array
     {
         if (null === $transKey) {
             $result = Arr::map($array, SafeStringCastAction::cast(...));

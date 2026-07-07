@@ -30,7 +30,7 @@ class AppointmentNotificationMail extends Mailable implements ShouldQueue
      *
      * @param  array  $notificationData
      */
-    public function __construct(array<string, mixed> $notificationData)
+    public function __construct(array $notificationData)
     {
         $this->notificationData = $notificationData;
     }

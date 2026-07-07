@@ -267,7 +267,7 @@ class SocialiteProviderSettingsPage extends XotBasePage
      *
      * @param array<string, mixed> $config
      */
-    private function writeSocialiteConfig(array<string, mixed> $config): void
+    private function writeSocialiteConfig(array $config): void
     {
         $path = storage_path('app/private/socialite-config.php');
 
@@ -292,7 +292,7 @@ class SocialiteProviderSettingsPage extends XotBasePage
      *
      * @param array<string, array<string, mixed>> $config
      */
-    private function updateSocialProviderActiveStates(array<string, mixed> $config): void
+    private function updateSocialProviderActiveStates(array $config): void
     {
         foreach ($config as $provider => $settings) {
             $active = $settings['enabled'] ?? false;

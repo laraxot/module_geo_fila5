@@ -69,7 +69,7 @@ class SnapshotFactory extends Factory
      *
      * @param  array  $state
      */
-    public function withState(array<string, mixed> $state): static
+    public function withState(array $state): static
     {
         return $this->state(fn (array $_attributes): array => [
             'state' => $state,

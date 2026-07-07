@@ -195,7 +195,7 @@ class SyncTranslationsAction
      *
      * @return array<string, mixed>
      */
-    private function filterStringKeyArray(array<string, mixed> $arr): array
+    private function filterStringKeyArray(array $arr): array
     {
         $out = [];
         foreach ($arr as $k => $v) {
@@ -215,7 +215,7 @@ class SyncTranslationsAction
      *
      * @return array<string, mixed> Traduzioni unite
      */
-    private function mergeTranslations(array<string, mixed> $source, array $target): array
+    private function mergeTranslations(array $source, array $target): array
     {
         $merged = $target;
 
@@ -259,7 +259,7 @@ class SyncTranslationsAction
      *
      * @return string Codice PHP
      */
-    private function arrayToPhp(array<string, mixed> $array, int $indent = 0): string
+    private function arrayToPhp(array $array, int $indent = 0): string
     {
         $content = '';
         $indentStr = str_repeat('    ', $indent);

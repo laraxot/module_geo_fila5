@@ -45,14 +45,14 @@ interface TaskInterface
      *
      * @param  array  $input
      */
-    public function store(array<string, mixed> $input): Task|bool;
+    public function store(array $input): Task|bool;
 
     /**
      * Updates the given task with the given data.
      *
      * @param  array  $input
      */
-    public function update(array<string, mixed> $input, Task $task): Task;
+    public function update(array $input, Task $task): Task;
 
     /**
      * Deletes the given task.

@@ -121,7 +121,7 @@ class SsoProvider extends BaseModel
      *
      * @return list<string>
      */
-    public function mapRoles(array<string, mixed> $samlRoles): array
+    public function mapRoles(array $samlRoles): array
     {
         $mapping = $this->role_mapping ?? [];
         $roles = [];

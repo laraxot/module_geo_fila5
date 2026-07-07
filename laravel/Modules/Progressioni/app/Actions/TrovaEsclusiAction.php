@@ -58,7 +58,7 @@ class TrovaEsclusiAction
         return '<h3>+Fatto</h3>';
     }
 
-    public function checkScheda(array<string, mixed> $params, int $year): array
+    public function checkScheda(array $params, int $year): array
     {
         if (! isset($params['criteri_esclusione'])) {
             $params['criteri_esclusione'] = CriteriEsclusione::where('anno', $year)
@@ -90,7 +90,7 @@ class TrovaEsclusiAction
      * @param  array{scheda: Scheda|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>}  $params
      * @return array{ha_diritto: int, motivo: string}
      */
-    public function criteriScheda(array<string, mixed> $params, int $year): array
+    public function criteriScheda(array $params, int $year): array
     {
         /** @var Scheda|\Modules\Progressioni\Models\Progressioni $scheda */
         $scheda = $params['scheda'];
@@ -150,7 +150,7 @@ class TrovaEsclusiAction
         return (string) $this->$func($parz, $scheda);
     }
 
-    public function checkMinGgRuolo(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinGgRuolo(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_ruolo)) {
@@ -164,7 +164,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinPerfIndCountLast3Years(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinPerfIndCountLast3Years(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_perf_ind_count_last_3_years)) {
@@ -178,7 +178,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgPosiz1InSede(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinGgPosiz1InSede(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_posiz_1_in_sede)) {
@@ -192,7 +192,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunNoAsz(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinGgCatecoPosfunNoAsz(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_cateco_posfun_no_asz)) {
@@ -206,7 +206,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunInSedeNoAsz(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinGgCatecoPosfunInSedeNoAsz(array $parz, Scheda $scheda): string
     {
         extract($parz);
         /*
@@ -227,14 +227,14 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgCatecoPosfunLavoratiInSede(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkMinGgCatecoPosfunLavoratiInSede(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkPresentiIlGiorno(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkPresentiIlGiorno(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
@@ -243,7 +243,7 @@ class TrovaEsclusiAction
 
     // ---
 
-    public function checkListaPropro(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkListaPropro(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_propro)) {
@@ -258,7 +258,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaPosiz(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkListaPosiz(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_posiz)) {
@@ -273,7 +273,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaProproPosfun(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkListaProproPosfun(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($lista_propro_posfun)) {
@@ -288,7 +288,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkDisci(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkDisci(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($disci)) {
@@ -302,7 +302,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkListaAszTipCodEsclusoSubito(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkListaAszTipCodEsclusoSubito(array $parz, Scheda $scheda): string
     {
         extract($parz);
 
@@ -348,21 +348,21 @@ class TrovaEsclusiAction
 
     // ---
 
-    public function checkMinGgPropro(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkMinGgPropro(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkMinGgProproPosfun(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkMinGgProproPosfun(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkMinGgAnno(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMinGgAnno(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($min_gg_anno)) {
@@ -379,7 +379,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgTempoDeterminato(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkMinGgTempoDeterminato(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
@@ -387,14 +387,14 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMinGgEffettuati(array<string, mixed> $parz, Scheda $_scheda): string
+    public function checkMinGgEffettuati(array $parz, Scheda $_scheda): string
     {
         extract($parz);
 
         return '';
     }
 
-    public function checkNoposizList(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkNoposizList(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($noposiz_list)) {
@@ -409,7 +409,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNoproproList(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkNoproproList(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($nopropro_list)) {
@@ -424,7 +424,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNoposfunList(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkNoposfunList(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($noposfun_list)) {
@@ -439,7 +439,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkNodisci1List(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkNodisci1List(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($nodisci1_list)) {
@@ -454,7 +454,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkMaxGgAssenzeAnno(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkMaxGgAssenzeAnno(array $parz, Scheda $scheda): string
     {
         extract($parz);
         if (! isset($max_gg_assenze_anno)) {
@@ -468,7 +468,7 @@ class TrovaEsclusiAction
         return '';
     }
 
-    public function checkDateMinAssunz(array<string, mixed> $parz, Scheda $scheda): string
+    public function checkDateMinAssunz(array $parz, Scheda $scheda): string
     {
         extract($parz);
 

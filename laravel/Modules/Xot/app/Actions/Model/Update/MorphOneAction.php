@@ -53,7 +53,7 @@ final class MorphOneAction
      *
      * @return array<string, mixed> The validated and prepared data
      */
-    private function validateAndPrepareData(array<string, mixed> $data): array
+    private function validateAndPrepareData(array $data): array
     {
         // Ensure the 'lang' key is set to the current locale if not provided
         if (! isset($data['lang'])) {

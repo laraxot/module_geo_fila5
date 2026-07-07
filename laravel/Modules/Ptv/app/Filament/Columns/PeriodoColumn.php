@@ -23,7 +23,7 @@ class PeriodoColumn extends GroupColumn
             ]);
     }
 
-    public function appendColumns(array<string, mixed> $columns): static
+    public function appendColumns(array $columns): static
     {
         $this->extraColumns = array_merge($this->extraColumns, $columns);
 

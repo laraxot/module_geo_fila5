@@ -48,7 +48,7 @@ class MorphToOneAction
      *
      * @return array<string, mixed> The prepared data array
      */
-    private function prepareData(array<string, mixed> $data): array
+    private function prepareData(array $data): array
     {
         // Ensure the 'lang' key is set to the current locale if not provided
         if (! isset($data['lang'])) {

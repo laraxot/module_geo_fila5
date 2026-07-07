@@ -69,7 +69,7 @@ class RegisterTenant extends BaseRegisterTenant
     /**
      * @param array<string, string|int|bool|null> $data
      */
-    protected function handleRegistration(array<string, mixed> $data): Model
+    protected function handleRegistration(array $data): Model
     {
         $tenantClass = XotData::make()->getTenantClass();
 

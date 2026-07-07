@@ -110,7 +110,7 @@ class SpatieEmail extends TemplateMailable
     /**
      * @param  array  $data
      */
-    public function mergeData(array<string, mixed> $data): self
+    public function mergeData(array $data): self
     {
         $this->data = array_merge($this->data, $data);
         $this->setAdditionalData($this->data);
@@ -165,7 +165,7 @@ class SpatieEmail extends TemplateMailable
     /**
      * @param  array  $attachment
      */
-    public function getAttachmentFromPath(array<string, mixed> $attachment): Attachment
+    public function getAttachmentFromPath(array $attachment): Attachment
     {
         /** @var string $path */
         $path = $attachment['path'];
@@ -186,7 +186,7 @@ class SpatieEmail extends TemplateMailable
     /**
      * @param  array  $attachment
      */
-    public function getAttachmentFromData(array<string, mixed> $attachment): Attachment
+    public function getAttachmentFromData(array $attachment): Attachment
     {
         $res = Attachment::fromData(static fn () => $attachment['data']);
         /** @var string|null $asRaw */
@@ -217,7 +217,7 @@ class SpatieEmail extends TemplateMailable
      *
      * @param  array<int, array<string, string>>  $attachments  Array of attachment data
      */
-    public function addAttachments(array<string, mixed> $attachments): self
+    public function addAttachments(array $attachments): self
     {
         $attachmentObjects = [];
 
