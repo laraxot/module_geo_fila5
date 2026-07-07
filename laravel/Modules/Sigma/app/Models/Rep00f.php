@@ -449,7 +449,7 @@ class Rep00f extends BaseDateRangeModel
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      * @return Collection<string, array<string, mixed>>
      */
     public static function stabiReparOfYearCollection(array $params): Collection

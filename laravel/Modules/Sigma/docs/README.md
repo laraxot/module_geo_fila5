@@ -27,6 +27,111 @@ Sigma HR system integration module for the Laraxot ecosystem: data import/export
 - **PHPInsights**: Style migliorato dopo Pint (verificato con `composer.lock` copiato temporaneamente nel modulo per bypassare un bug noto del tool quando analizza una sotto-directory).
 - **Pest**: `./vendor/bin/pest Modules/Sigma/tests` → **3 test, tutti passano** (non richiedono DB).
 
+## Quick Start - Integration
+
+### Basic Data Import
+
+```php
+// Import HR data from external system
+$action = new \Modules\Sigma\Actions\WebService\ImportJsonAction();
+$result = $action->execute([
+    'source' => 'external_hr_system',
+    'data' => $jsonPayload,
+    'format' => 'standard_hr_schema'
+]);
+
+// Sync payroll data
+$syncAction = new \Modules\Sigma\Actions\WebService\SyncModelAction();
+$syncAction->handle($model, $payload);
+```
+
+## Architecture Overview
+
+Sigma integrates external HR systems (payroll, employee data) into Laraxot:
+
+**Data Flow**:
+```
+External HR System (CSV/JSON/API)
+    |
+    v
+ImportJsonAction (WebService/Parser)
+    |
+    +---> DataTransformer (schema conversion)
+    |
+    +---> Bulk Sync (PDO for performance)
+    |
+    v
+Sigma Models (Anagrafica, Buste, Presenze, etc.)
+    |
+    v
+Performance/Progressioni modules (downstream dependents)
+```
+
+**Key Components**:
+- **ImportJsonAction**: Parse and validate external data
+- **SyncModelAction**: Sync single model with transactions
+- **Accessor Delegation**: Split complex attr logic (calculation vs persistence)
+- **PDO Bulk Operations**: Performance optimization for large datasets
+
+## Key Actions & Models
+
+### Primary Actions
+
+| Action | Location | Purpose |
+|--------|----------|---------|
+| `ImportJsonAction` | `app/Actions/WebService/` | Bulk import from HR system |
+| `SyncModelAction` | `app/Actions/WebService/` | Sync single model instance |
+| `SyncAnagrafica` | `app/Actions/` | Sync employee master data |
+| `CalculateBudget` | `app/Actions/` | Compute payroll budgets |
+
+### Core Models
+
+| Model | Table | Purpose |
+|-------|-------|---------|
+| `Anagrafica` | `sigma_anagrafica` | Employee master record |
+| `Buste` | `sigma_buste` | Payroll records |
+| `Presenze` | `sigma_presenze` | Attendance tracking |
+| `MatrEnte` | `sigma_matr_ente` | Org structure/departments |
+
+## Common Patterns
+
+### 1. Accessor Delegation Pattern
+
+Split attribute access into two methods:
+```php
+// Cached/persisted version
+getSomeValueAttribute() { return $this->cache['attr']; }
+
+// Pure calculation
+getSomeValue() { return $this->calculate(); }
+```
+See: [accessor-delegation-complete-guide.md](./accessor-delegation-complete-guide.md)
+
+### 2. PDO Bulk Operations
+
+Use raw PDO for large imports to avoid ORM overhead:
+```php
+$pdo->exec("INSERT INTO anagrafica (...) VALUES (...), (...), (...)")
+```
+
+### 3. Checksum Validation
+
+Verify data integrity during sync (see [architecture-rules.md](./architecture-rules.md))
+
+## FAQ
+
+**Q: Why not use Eloquent for bulk imports?**
+A: PDO is 10-100x faster for large datasets (10K+ rows). ORM overhead becomes prohibitive.
+
+**Q: How does Sigma differ from Activity module?**
+A: Sigma handles HR data *ingestion* from external systems. Activity logs *changes* to Laraxot models.
+
+**Q: Can multiple modules depend on Sigma data?**
+A: Yes. Performance, Progressioni, and User all read from Sigma models but don't write to them.
+
+**Q: How is data validation handled?**
+A: See `ImportJsonAction::validate()` and architecture-rules.md for schema validation strategy.
+
 ## Dove iniziare
 
 - [Wiki locale](./wiki/index.md)

@@ -122,7 +122,7 @@ trait FunctionExtra
 
     /**
      * @param  Builder<Qua00f>|Relation<Qua00f, *, *>  $query
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     private static function applyQua00fCoalesceTotSelectFromArray(Builder|Relation $query, array $params): void
     {
@@ -445,7 +445,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     public function ggInSedeTotByArray(array $params): ?int
     {
@@ -512,7 +512,7 @@ trait FunctionExtra
 
     // ---------------------------------------------------------------------------------------------
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     public function ggFuoriSedeTot(array $params): ?int
     {
@@ -651,7 +651,7 @@ trait FunctionExtra
      * Stub method for giorni assenza fuori sede.
      * TODO: Implement actual calculation when business logic is defined.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     public function ggAssenzaFuoriSedeTot(array $params): int
     {
@@ -662,7 +662,7 @@ trait FunctionExtra
      * Stub method for ore assenza fuori sede.
      * TODO: Implement actual calculation when business logic is defined.
      *
-     * @param  array<string, mixed>  $_params
+     * @param  array  $_params
      */
     public function hhAssenzaFuoriSedeTot(array $_params): int
     {
@@ -671,7 +671,7 @@ trait FunctionExtra
 
     // ---------------------------------------------------------------------------------------------
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      * @return Collection<int, array<string, mixed>>
      */
     public static function rep00fQua00fAnnoCollection(array $params): Collection

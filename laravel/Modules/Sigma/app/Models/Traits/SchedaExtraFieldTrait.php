@@ -636,9 +636,9 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
-    public function ggAssenzaFuoriSedeTot(array<string, mixed> $params): int
+    public function ggAssenzaFuoriSedeTot(array $params): int
     {
         return $this->anag?->ggAssenzaFuoriSedeTot($params) ?? 0;
     }
@@ -647,9 +647,9 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
-    public function hhAssenzaFuoriSedeTot(array<string, mixed> $params): int
+    public function hhAssenzaFuoriSedeTot(array $params): int
     {
         return $this->anag?->hhAssenzaFuoriSedeTot($params) ?? 0;
     }
@@ -658,7 +658,7 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggInSedeTot() or returns null.
      *
-     * @param  GgFilterData|array<string, mixed>  $data
+     * @param  GgFilterData|array  $data
      */
     public function ggInSedeTot($data): ?int
     {
@@ -675,9 +675,9 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggFuoriSedeTot() or returns null.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
-    public function ggFuoriSedeTot(array<string, mixed> $params): ?int
+    public function ggFuoriSedeTot(array $params): ?int
     {
         return $this->anag?->ggFuoriSedeTot($params);
     }
@@ -686,7 +686,7 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaInSedeTot() or returns 0.
      *
-     * @param  GgFilterData|array<string, mixed>  $data
+     * @param  GgFilterData|array  $data
      */
     public function ggAssenzaInSedeTot($data): int
     {
@@ -703,9 +703,9 @@ trait SchedaExtraFieldTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaInSedeTot() or returns 0.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
-    public function hhAssenzaInSedeTot(array<string, mixed> $params): int
+    public function hhAssenzaInSedeTot(array $params): int
     {
         return $this->anag?->hhAssenzaInSedeTot($params) ?? 0;
     }

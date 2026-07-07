@@ -299,7 +299,7 @@ OR
     /**
      * Calcola giorni assenza nel periodo specificato.
      *
-     * @param  array<string, mixed>|null  $params  Parametri con date_min, date_max, lista_propro, posfun
+     * @param  array|null  $params  Parametri con date_min, date_max, lista_propro, posfun
      * @return float Giorni calcolati
      *
      * @throws \Exception Se date_max non è definito

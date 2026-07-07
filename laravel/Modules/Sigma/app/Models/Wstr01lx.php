@@ -204,7 +204,7 @@ class Wstr01lx extends BaseModel
      *
      * @param  array{timbr: Collection<int, self>}  $params
      */
-    public function durata(array<string, mixed> $params): float
+    public function durata(array $params): float
     {
         if (! isset($params['timbr']) || ! $params['timbr'] instanceof Collection) {
             throw new Exception('Parameter "timbr" must be a Collection');
