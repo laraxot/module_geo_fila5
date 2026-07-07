@@ -72,7 +72,7 @@ class Asz00fStatsOverview extends XotBaseStatsOverviewWidget
     /**
      * @param  list<int>  $values
      */
-    private function formatHeadValue(array<string, mixed> $values): string
+    private function formatHeadValue(array $values): string
     {
         if ($values === []) {
             return '—';
@@ -84,7 +84,7 @@ class Asz00fStatsOverview extends XotBaseStatsOverviewWidget
     /**
      * @param  list<int>  $values
      */
-    private function formatTailValues(array<string, mixed> $values): string
+    private function formatTailValues(array $values): string
     {
         if (count($values) <= 1) {
             return '';

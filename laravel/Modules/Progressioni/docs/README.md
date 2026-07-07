@@ -29,6 +29,136 @@ Career progression management module for the Laraxot ecosystem: promotions, sala
 - **PHPInsights**: punteggio Style passato da 74.7 a 88 pts dopo Pint. Architecture resta basso (~59 pts) principalmente per la regola "classes must be final or abstract", non applicata perché impatterebbe l'intera gerarchia dei model/Filament Resources del modulo (rischio regressione su estendibilità/mock nei test).
 - **Pest**: `./vendor/bin/pest Modules/Progressioni/tests` esegue (dopo il fix del mock rotto) ma la maggior parte dei test falla con `LogicException: bootIfNotBooted ... while it is being booted` — problema di infrastruttura test pre-esistente (assenza DB sqlite di test), non introdotto né risolto in questa sessione per rispetto della regola "mai toccare il DB in modo distruttivo/migrate". Non sono stati aggiunti nuovi test dedicati per le due micro-correzioni sopra (rimozione codice morto, nessun cambio di comportamento osservabile).
 
+## Quick Start - Workflows
+
+### Create Progression Year
+
+```php
+use Modules\Progressioni\Models\Progressioni;
+
+// Create new progression year
+$prog = Progressioni::create([
+    'year' => 2024,
+    'status' => 'draft',
+    'allocation_budget' => 50000
+]);
+
+// Update winners after evaluation
+$prog->updateVincitori(['winners_by_category' => [...]]);
+```
+
+### Bulk Refresh Records
+
+```php
+use Modules\Progressioni\Actions\RefreshByYearAction;
+
+// Refresh all progression records for year
+$action = app(RefreshByYearAction::class);
+$action->execute($year);
+```
+
+## Architecture & Data Flow
+
+Progressioni manages career advancement and salary increases:
+
+**Entity Relationships**:
+```
+Progressioni (year-based progression program)
+    |
+    +---> Scheda (progression evaluation form per employee)
+    |         |
+    |         +---> CriteriProgression (evaluation criteria)
+    |         |
+    |         +---> Peso (weighted scoring)
+    |
+    +---> EsclusionGroup (exclusion rules)
+    |
+    v
+Filament Resources (UI for evaluation & winners selection)
+```
+
+**Key Workflows**:
+1. Create progression year with budget and criteria
+2. Employees fill Scheda (evaluation form)
+3. System calculates scores via Peso model
+4. Admin selects winners based on ranking
+5. HR approves and salary increases applied
+
+**Dependencies**:
+- **Sigma** (reads employee data for ranking)
+- **Performance** (uses performance scores in evaluation)
+- **User** (evaluator assignment)
+
+## Key Models & Resources
+
+### Core Models
+
+| Model | Purpose |
+|-------|---------|
+| `Progressioni` | Yearly progression program |
+| `Scheda` | Individual progression evaluation |
+| `CriteriProgression` | Evaluation criteria definitions |
+| `Peso` | Weighted scoring model |
+| `EsclusionGroup` | Exclusion rules & exemptions |
+
+### Key Actions
+
+| Action | Purpose |
+|--------|---------|
+| `RefreshByYearAction` | Recalculate scores for all schede |
+| `TrovaEsclusiAction` | Apply exclusion rules |
+| `CompileSchedaAction` | Fill scheda with data |
+| `UpdateVincitoriAction` | Mark progression winners |
+
+### Filament Resources
+
+| Resource | Purpose |
+|----------|---------|
+| `SchedaResource` | Edit progression evaluations |
+| `ProgressioniResource` | Manage progression programs |
+| `CriteriProgressionResource` | Define evaluation criteria |
+
+## Common Patterns
+
+### 1. Filament Infolist Display
+
+Show read-only progression data:
+```php
+Infolist\Entries\TextEntry::make('year')
+    ->label('Progression Year')
+    ->formatStateUsing(fn($state) => "Year $state")
+```
+See: [filament-infolist-pattern.md](./filament-infolist-pattern.md)
+
+### 2. Scheda Compilation
+
+Auto-fill scheda from employee data:
+```php
+$action = app(CompileSchedaAction::class);
+$action->handle($scheda);
+```
+
+### 3. STI Pattern with Parental
+
+Filter schede by organization hierarchy (see [filament-resource-wire-assenza.md](./filament-resource-wire-assenza.md))
+
+## FAQ
+
+**Q: What's a Scheda?**
+A: Individual progression evaluation form filled annually. Contains criteria scores, evaluator notes, and computed ranking.
+
+**Q: How are winners selected?**
+A: Ranked by score, then filtered by budget availability. Admin can manually override rankings.
+
+**Q: Can employees be excluded?**
+A: Yes, via EsclusionGroup rules (probation, contract type, etc.). See TrovaEsclusiAction.
+
+**Q: What happens to salary after selection?**
+A: Application tier (HR system) applies increase. Progressioni stores decision only.
+
+**Q: How often do progressions run?**
+A: Usually once per year. Multiple progression programs per year are supported.
+
 ## Dove iniziare
 
 - [Wiki locale](./wiki/index.md)

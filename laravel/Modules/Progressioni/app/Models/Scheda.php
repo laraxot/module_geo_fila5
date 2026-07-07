@@ -561,9 +561,9 @@ class Scheda extends BaseScheda
     /**
      * Validate the model data.
      *
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
-    public function validate(array<string, mixed> $data): Validator
+    public function validate(array $data): Validator
     {
         $rules = [
             'cognome' => 'required|string|max:50',
@@ -677,10 +677,10 @@ class Scheda extends BaseScheda
     /**
      * Get stabi_dirigente_parz data.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      * @return Collection<int, self>
      */
-    public function stabi_dirigente_parz(array<string, mixed> $params): Collection
+    public function stabi_dirigente_parz(array $params): Collection
     {
         $stabi = $params['stabi'] ?? null;
         $repar = $params['repar'] ?? null;
@@ -724,7 +724,7 @@ class Scheda extends BaseScheda
     /**
      * Filter records based on parameters.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     public static function filter(array $params): Builder
     {
@@ -767,9 +767,9 @@ class Scheda extends BaseScheda
      *
      * Non usare il nome `peso()`: riservato alla relazione HasOne verso `Pesi` (SchedaTrait, CompilaScheda).
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
-    public function resolveCoeffPesoFromParams(array<string, mixed> $params): int
+    public function resolveCoeffPesoFromParams(array $params): int
     {
         extract($params);
 
@@ -949,7 +949,7 @@ class Scheda extends BaseScheda
     /**
      * Update fields based on parameters.
      *
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      *
      * @throws RuntimeException When required parameters are missing
      */
@@ -1120,7 +1120,7 @@ class Scheda extends BaseScheda
     // end content_PDF
 
     // ------------------------------------------------------------------------------------
-    public function ggInSedeTotByArray(array<string, mixed> $params): ?int
+    public function ggInSedeTotByArray(array $params): ?int
     {
         $criteri = $this->criteriEsclusione;
         if (! $criteri) {
