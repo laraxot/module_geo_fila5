@@ -28,6 +28,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - [github-issue-ptv-criteri-year-load-refactor-body.md](github-issue-ptv-criteri-year-load-refactor-body.md) — body issue `module_ptv_fila5`
 - [module-theme-github-issues-manifest.md](module-theme-github-issues-manifest.md) — elenco issue meta/ridondanza su repo modulo/tema (batch 2026-05-26)
 - [dependabot-pr-merge-log.md](dependabot-pr-merge-log.md) — sweep merge PR Dependabot su remote `laraxot` (aggiornare con `bashscripts/ci/dependabot-merge-module-prs.sh`)
+- [phpstan-modules-current.md](phpstan-modules-current.md) — sessione corrente: PHPStan zero su `Modules`, gate residui non PHPStan
 
 ## Collegamenti
 

@@ -22,44 +22,33 @@ trait EnteMatrAnnoRelationship
      */
     public function qua00fYear(): HasMany
     {
-        /** @var string $sql */
+        $anno = (int) ($this->anno ?? 0);
         $sql = '(
-		('.$this->anno.' between year(qua2kd) and year(qua2ka) )or
-		('.$this->anno.' >= year(qua2kd) and qua2ka=0)
+		(? between year(qua2kd) and year(qua2ka) )or
+		(? >= year(qua2kd) and qua2ka=0)
 		)';
 
-        /** @var int $inizioanno */
-        $inizioanno = ($this->anno * 10000) + 101;
-        /** @var int $fineanno */
-        $fineanno = ($this->anno * 10000) + 1231;
+        $inizioanno = ($anno * 10000) + 101;
+        $fineanno = ($anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
         /** @var HasMany<Qua00f, static> $relation */
         $relation = $this->hasMany(Qua00f::class, 'matr', $this->matrField());
 
         return $relation
-            ->selectRaw('ente,matr,propro,posfun,posiz
+            ->selectRaw(
+                'ente,matr,propro,posfun,posiz
 				,if(oree=0,36,oree) as oree
 				,if(oret=0,36,oret) as oret
-				,if(qua2kd<'
-            .$inizioanno
-            .','
-            .$inizioanno
-            .',qua2kd) as qua2kd
-				,if(qua2ka=0,'
-            .$fineanno
-            .',qua2ka) as qua2ka
-				,datediff(if(qua2ka=0,'
-            .$fineanno
-            .',qua2ka),if(qua2kd<'
-            .$inizioanno
-            .','
-            .$inizioanno
-            .',qua2kd))+1 as giorni
-				')
+				,if(qua2kd<?,?,qua2kd) as qua2kd
+				,if(qua2ka=0,?,qua2ka) as qua2ka
+				,datediff(if(qua2ka=0,?,qua2ka),if(qua2kd<?,?,qua2kd))+1 as giorni
+				',
+                [$inizioanno, $inizioanno, $fineanno, $fineanno, $inizioanno, $inizioanno],
+            )
             ->whereRaw('quaann=""')
             ->where('ente', $this->{$this->enteField()})
-            ->whereRaw($sql);
+            ->whereRaw($sql, [$anno, $anno]);
     }
 
     /**
@@ -67,38 +56,27 @@ trait EnteMatrAnnoRelationship
      */
     public function Sto00fYear(): HasMany
     {
-        /** @var string $sql */
+        $anno = (int) ($this->anno ?? 0);
         $sql = '(
-		('.$this->anno.' between year(st2kas) and year(st2kdi) )or
-		('.$this->anno.' >= year(st2kas) and st2kdi=0)
+		(? between year(st2kas) and year(st2kdi) )or
+		(? >= year(st2kas) and st2kdi=0)
 	)';
-        /** @var int $inizioanno */
-        $inizioanno = ($this->anno * 10000) + 101;
-        /** @var int $fineanno */
-        $fineanno = ($this->anno * 10000) + 1231;
+        $inizioanno = ($anno * 10000) + 101;
+        $fineanno = ($anno * 10000) + 1231;
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
         return $this->hasMany(Sto00f::class, 'matr', $this->matrField())
-            ->selectRaw('ente,matr
-				,if(st2kas<'
-            .$inizioanno
-            .','
-            .$inizioanno
-            .',st2kas) as dal
-				,if(st2kdi=0,'
-            .$fineanno
-            .',st2kdi) as al
-				,datediff(if(st2kdi=0,'
-            .$fineanno
-            .',st2kdi),if(st2kas<'
-            .$inizioanno
-            .','
-            .$inizioanno
-            .',st2kas))+1 as giorni
-				')
+            ->selectRaw(
+                'ente,matr
+				,if(st2kas<?,?,st2kas) as dal
+				,if(st2kdi=0,?,st2kdi) as al
+				,datediff(if(st2kdi=0,?,st2kdi),if(st2kas<?,?,st2kas))+1 as giorni
+				',
+                [$inizioanno, $inizioanno, $fineanno, $fineanno, $inizioanno, $inizioanno],
+            )
             ->whereRaw('stann=""')
             ->where('ente', $this->{$this->enteField()})
-            ->whereRaw($sql);
+            ->whereRaw($sql, [$anno, $anno]);
     }
 
     /**
@@ -111,6 +89,6 @@ trait EnteMatrAnnoRelationship
         return $this->hasMany(Asz00k1::class, 'matr', $this->matrField())
             ->where('ente', $this->{$this->enteField()})
             ->whereRaw('aszann=""')
-            ->whereRaw((string) $this->anno.' between year(asz2kd) and year(asz2ka) ');
+            ->whereRaw('? between year(asz2kd) and year(asz2ka) ', [(int) ($this->anno ?? 0)]);
     }
 }

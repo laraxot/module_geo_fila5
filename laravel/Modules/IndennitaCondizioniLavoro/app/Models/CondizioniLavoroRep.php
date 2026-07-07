@@ -16,6 +16,7 @@ use Modules\Sigma\Models\Qua00f;
 use Modules\Sigma\Models\Qua03f;
 use Modules\Sigma\Models\Rep00f;
 use Modules\Sigma\Models\Sto00f;
+use Modules\Sigma\Models\Traits\Concerns\HasEnteMatrRelationHelpers;
 use Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator;
 use Modules\Sigma\Models\Traits\Relationships\EnteMatrRelationship;
 use Modules\Sigma\Models\Traits\SigmaModelTrait;
@@ -144,6 +145,7 @@ class CondizioniLavoroRep extends Model
     // !!!
     use EnteMatrMutator; // ??
     use EnteMatrRelationship;
+    use HasEnteMatrRelationHelpers;
     use SigmaModelTrait;
 
     // use function \Modules\Sigma\Models\Traits\Mutators\EnteMatrMutator\getCognomeAttribute as getCognomeAttribute;
@@ -160,6 +162,16 @@ class CondizioniLavoroRep extends Model
     public string $from_field = 'rep2kd';
 
     public string $to_field = 'rep2ka';
+
+    public function matrField(): string
+    {
+        return 'matr';
+    }
+
+    public function enteField(): string
+    {
+        return 'ente';
+    }
 
     protected function rangeFromField(): string
     {

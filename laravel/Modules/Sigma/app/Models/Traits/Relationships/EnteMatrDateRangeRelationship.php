@@ -91,34 +91,27 @@ trait EnteMatrDateRangeRelationship
         $dalInt = (int) $dal;
         $alInt = (int) $al;
 
-        // @phpstan-ignore parameterByRef.type
         $sql = '(
-		('.$dalInt.' between qua2kd and qua2ka ) or
-		('.$dalInt.' >= year(qua2kd) and qua2ka=0) or
-		('.$alInt.' between qua2kd and qua2ka ) or
-		('.$alInt.' between qua2kd and qua2ka ) or
-		(qua2kd between '.$dalInt.' and '.$alInt.' )
+		(? between qua2kd and qua2ka ) or
+		(? >= year(qua2kd) and qua2ka=0) or
+		(? between qua2kd and qua2ka ) or
+		(? between qua2kd and qua2ka ) or
+		(qua2kd between ? and ? )
 		)';
 
         // @phpstan-ignore-next-line - Template type TDeclaringModel on HasMany is not covariant
         return $this->hasManyByEnteMatr(Qua00f::class)
-            // @phpstan-ignore argument.type, parameterByRef.type
-            ->selectRaw('ente,matr,propro,posfun,posiz,disci1,codqua
+            ->selectRaw(
+                'ente,matr,propro,posfun,posiz,disci1,codqua
                 ,cont,tipco,ruolo
 				,if(oree=0,36,oree) as oree
 				,if(oret=0,36,oret) as oret
 
-				,datediff(if(qua2ka=0 or qua2ka>'
-            .$alInt
-            .','
-            .$alInt
-            .',qua2ka),if(qua2kd<'
-            .$dalInt
-            .','
-            .$dalInt
-            .',qua2kd))+1 as giorni
-				')
+				,datediff(if(qua2ka=0 or qua2ka>?, ?, qua2ka),if(qua2kd<?,?,qua2kd))+1 as giorni
+				',
+                [$alInt, $alInt, $dalInt, $dalInt],
+            )
             ->whereRaw('quaann=""')
-            ->whereRaw($sql);
+            ->whereRaw($sql, [$dalInt, $dalInt, $alInt, $alInt, $dalInt, $alInt]);
     }
 }

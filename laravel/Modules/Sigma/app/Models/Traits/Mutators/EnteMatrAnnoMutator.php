@@ -12,7 +12,6 @@ trait EnteMatrAnnoMutator
 {
     protected function getPercPTimeYearAttribute(mixed $_value): int|float
     {
-        /** @var HasMany<Qua00f, $this> $rows */
         $rows = $this->qua00fYear();
         $array = $rows->get()->toArray();
 
@@ -48,8 +47,8 @@ trait EnteMatrAnnoMutator
 
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
-        /** @var HasMany<Qua00f, $this> $rows */
         $rows = $this->qua00f()
+            ->getQuery()
             ->withDays($date_min, $date_max)
             ->withPercPtime()
             ->having('days', '>', 0)
@@ -98,10 +97,10 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var HasMany<Asz00k1, $this> $aszRelation */
         $aszRelation = $this->asz00k1();
         /** @var Collection<int, Asz00k1> $collection */
         $collection = $aszRelation
+            ->getQuery()
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->withDays($date_min, $date_max)
@@ -138,7 +137,6 @@ trait EnteMatrAnnoMutator
      */
     protected function getGgPTimeVertYearAttribute(mixed $_value): int|float
     {
-        /** @var HasMany<Asz00k1, $this> $aszRelation */
         $aszRelation = $this->asz00k1Year();
         $asz = $aszRelation
             ->where('asztip', 505)
@@ -165,10 +163,10 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
 
-        /** @var HasMany<Asz00k1, $this> $aszRelation */
         $aszRelation = $this->asz00k1();
         /** @var Collection<int, Asz00k1> $collection */
         $collection = $aszRelation
+            ->getQuery()
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->withDays($date_min, $date_max)
@@ -209,6 +207,7 @@ trait EnteMatrAnnoMutator
         $date_max = ($this->anno * 10000) + 1231;
         $date_min = ($this->anno * 10000) + 101;
         $rows = $this->qua00f()
+            ->getQuery()
             ->withDays($date_min, $date_max)
             ->withPercPtime()
             ->having('days', '>', 0)

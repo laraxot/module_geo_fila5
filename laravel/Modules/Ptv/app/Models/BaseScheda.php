@@ -70,6 +70,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property int|null $disci1
  * @property Anag|null $anag
  * @property object|null $maxCatecoPosfun
+ * @property object|null $peso
  * @property object|null $pesi
  * @property object|null $stipendioTabellare
  * @property Collection<int, Individuale> $performanceIndividuale

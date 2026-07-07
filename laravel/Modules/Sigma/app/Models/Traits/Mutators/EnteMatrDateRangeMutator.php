@@ -161,12 +161,14 @@ trait EnteMatrDateRangeMutator
         $date_max_int_typed = $date_max_int;
 
         $rows = $this->qua00f()
+            ->getQuery()
             ->withDays($date_min_int_typed, $date_max_int_typed)
             ->withPercPtime()
             ->having('days', '>', 0)
             ->get();
         $perc = 0.0;
         $peso = 0.0;
+        /** @var \Illuminate\Database\Eloquent\Model $row */
         foreach ($rows as $row) {
             // Proprietà dinamiche aggiunte da withDays() e withPercPtime()
             $percPtimeRaw = $row->getAttribute('perc_ptime');
@@ -242,6 +244,7 @@ trait EnteMatrDateRangeMutator
         $date_max_int_typed = $date_max_int;
 
         $value = $this->asz00k1()
+            ->getQuery()
             ->where('asztip', 505)
             ->where('aszcod', 97)
             ->withDays($date_min_int_typed, $date_max_int_typed)
@@ -272,6 +275,7 @@ trait EnteMatrDateRangeMutator
         $date_max_int_typed = $date_max_int;
 
         $value = $this->qua00f()
+            ->getQuery()
             ->withDays($date_min_int_typed, $date_max_int_typed)
             ->get()
             ->sum('days');

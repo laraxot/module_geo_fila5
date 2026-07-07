@@ -222,7 +222,7 @@ trait EnteMatrMutator
             return null;
         }
 
-        $row = Codici::where('tipo', 10)->where('codice', $ana02f->titstu)->first();
+        $row = Codici::where('tipo', 10)->where('codice', $ana02f->getAttribute('titstu'))->first();
         if (! \is_object($row)) {
             return null;
         }

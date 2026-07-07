@@ -59,7 +59,10 @@ trait SchedaHelper
         ];
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag->ggFuoriSedeTot($parz);
+        $result = $this->anag->ggFuoriSedeTot($parz);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getGgPresenzaAnno(): ?int
@@ -87,7 +90,10 @@ trait SchedaHelper
         $data = GgFilterData::from($parz);
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag->ggInSedeTot($data) ?? 0;
+        $result = $this->anag->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result ?? 0;
     }
 
     protected function getGgAssenzaAnno(): ?int
@@ -117,7 +123,10 @@ trait SchedaHelper
             return 0;
         }
 
-        return $this->anag->ggAssenzaInSedeTot($data);
+        $result = $this->anag->ggAssenzaInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getPtime(): ?float
@@ -127,38 +136,29 @@ trait SchedaHelper
             return null;
         }
 
+        $dal = (int) $this->dal;
+        $al = (int) ($this->al ?? 0);
+
         // Query periodi part-time con percentuali
         $qua00f = $this->qua00f()
-            ->selectRaw('
+            ->getQuery()
+            ->selectRaw(
+                <<<'SQL'
                 if(oree=0,36,oree) as oree,
                 if(oret=0,36,oret) as oret,
                 if(oree=0,36,oree)/if(oret=0,36,oret) as perc,
                 qua2kd,
-                if(qua2kd>'
-            .$this->dal
-            .',qua2kd,'
-            .$this->dal
-            .') as dal,
+                if(qua2kd > ?, qua2kd, ?) as dal,
                 qua2ka,
-                if(qua2ka>'
-            .$this->al
-            .' or qua2ka=0,'
-            .$this->al
-            .',qua2ka) as al,
+                if(qua2ka > ? or qua2ka = 0, ?, qua2ka) as al,
                 greatest(datediff(
-                    if(qua2ka>'
-            .$this->al
-            .' or qua2ka=0,'
-            .$this->al
-            .',qua2ka),
-                    if(qua2kd>'
-            .$this->dal
-            .',qua2kd,'
-            .$this->dal
-            .')
-                )+1,0) as dur
-            ')
-            ->ofRangeDate((int) ($this->dal ?? 0), (int) ($this->al ?? 0))
+                    if(qua2ka > ? or qua2ka = 0, ?, qua2ka),
+                    if(qua2kd > ?, qua2kd, ?)
+                ) + 1, 0) as dur
+                SQL,
+                [$dal, $dal, $al, $al, $al, $al, $dal, $dal]
+            )
+            ->ofRangeDate($dal, $al)
             ->get();
 
         // Calcolo somma ponderata
@@ -217,7 +217,10 @@ trait SchedaHelper
             return 0;
         }
 
-        return $this->anag->ggInSedeTot($data) ?? 0;
+        $result = $this->anag->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result ?? 0;
     }
 
     protected function getGgAsz(): ?int
@@ -395,7 +398,10 @@ trait SchedaHelper
         $data = GgFilterData::from($parz);
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag->ggAssenzaInSedeTot($data);
+        $result = $this->anag->ggAssenzaInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getGgAszFuoriSede(): ?int
@@ -422,7 +428,10 @@ trait SchedaHelper
         ];
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag->ggAssenzaFuoriSedeTot($parz);
+        $result = $this->anag->ggAssenzaFuoriSedeTot($parz);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getGgAszCateco(): int
@@ -461,7 +470,10 @@ trait SchedaHelper
         $data = GgFilterData::from($parz);
 
         // Calcolo puro delegato ad anagrafica
-        return $this->anag->ggAssenzaInSedeTot($data);
+        $result = $this->anag->ggAssenzaInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     protected function getValutatoreId(): ?int
@@ -555,7 +567,9 @@ trait SchedaHelper
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ];
         $data = GgFilterData::from($parz);
-        $value = $this->anag->ggAssenzaInSedeTot($data);
+        $result = $this->anag->ggAssenzaInSedeTot($data);
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }
@@ -577,10 +591,12 @@ trait SchedaHelper
             // ---
         }
 
-        return $this->qua00f
+        $first = $this->qua00f
             ->where('qua2kd', $this->qua2kd)
-            ->first()
-            ->propro;
+            ->first();
+
+        /** @var int|null */
+        return $first?->propro;
     }
 
     public function getGgCatecoPosfun(): ?int
@@ -624,7 +640,10 @@ trait SchedaHelper
 
         // $parz['value'] = $value;
         // dddx($parz);
-        return $this->anag->ggInSedeTot($data);
+        $result = $this->anag->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     public function getGgCateco(): ?int
@@ -658,7 +677,10 @@ trait SchedaHelper
         ];
         $data = GgFilterData::from($parz);
 
-        return $this->anag->ggInSedeTot($data);
+        $result = $this->anag->ggInSedeTot($data);
+
+        /** @var int|null */
+        return $result;
     }
 
     public function getGgAszCatecoPosfunFuoriSede(): ?int
@@ -682,13 +704,16 @@ trait SchedaHelper
         }
         // dddx($categoria->lista_propro);
         // $criteri = $this->criteriEsclusione;
-        $value = $this->anag->ggFuoriSedeTot([
+        $result = $this->anag->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro,
             'lista_propro_sup' => $categoria->lista_propro_sup,
             // 'posfun'=>$this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
+
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }
@@ -709,13 +734,16 @@ trait SchedaHelper
         if ($categoria == null) {
             return null;
         }
-        $value = $this->anag->ggFuoriSedeTot([
+        $result = $this->anag->ggFuoriSedeTot([
             'lista_propro' => $categoria->lista_propro,
             'lista_propro_sup' => $categoria->lista_propro_sup,
             'posfun' => $this->posfun,
             'date_min' => $this->criteriOptionsArr('data_presenza_dal'),
             'date_max' => $this->criteriOptionsArr('data_presenza_al'),
         ]);
+
+        /** @var int|null $value */
+        $value = $result;
 
         return intval($value);
     }

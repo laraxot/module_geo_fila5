@@ -40,7 +40,7 @@ trait SchedaMutator
      * Business Rule: Estrae codqua dalla relazione qua00f filtrata per qua2kd.
      * Se qua00f esiste, aggiorna anche cont e tipco per consistenza.
      *
-     * @return string|null Codqua calcolato, null se non disponibile
+     * @return int|null Codqua calcolato, null se non disponibile
      */
     protected function getCodqua(): ?int
     {
@@ -49,7 +49,9 @@ trait SchedaMutator
             return null;
         }
 
-        $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fCollection */
+        $qua00fCollection = $this->qua00f;
+        $qua00f = $qua00fCollection->where('qua2kd', $this->qua2kd)->first();
         if (! \is_object($qua00f)) {
             return null;
         }
@@ -70,7 +72,7 @@ trait SchedaMutator
      * Accessor per codqua (codice qualifica da qua00f).
      * Delega calcolo a getCodqua().
      *
-     * @return string|null Codqua calcolato
+     * @return int|null Codqua calcolato
      */
     protected function getCodquaAttribute(?int $value): ?int
     {
@@ -99,20 +101,30 @@ trait SchedaMutator
         //dddx($this->qua00f);
         return $row->desc1;
         */
+
+        return null;
     }
 
     protected function getCodquaTxtAttributeTmp(?string $value): ?string
     {
         // dddx($this->integParams()->toRawSql());
 
-        return $this->tqu00f()->first()->liv;
         if ($value !== null) {
             return $value;
         }
 
-        // Delega calcolo al metodo puro (VICINO!)
-        $value = $this->getCodquaTxt();
+        $tqu00f = $this->tqu00f()->first();
+        if (! ($tqu00f instanceof Tqu00f)) {
+            return null;
+        }
+
+        $value = $tqu00f->liv;
+        if ($value === null) {
+            return null;
+        }
+
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
+        // @phpstan-ignore booleanNot.alwaysTrue
         if ($this->getKey() !== null) {
             static::withoutEvents(function () use ($value): void {
                 $this->update(['codqua_txt' => $value]);
@@ -152,7 +164,7 @@ trait SchedaMutator
      *
      * Business Rule: Estrae cont dalla relazione qua00f filtrata per qua2kd.
      *
-     * @return mixed Valore cont, null se non disponibile
+     * @return int|string|null Valore cont, null se non disponibile
      */
     protected function getCont(): mixed
     {
@@ -161,8 +173,10 @@ trait SchedaMutator
             return null;
         }
 
-        $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
-        if (! \is_object($qua00f)) {
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fCollection */
+        $qua00fCollection = $this->qua00f;
+        $qua00f = $qua00fCollection->where('qua2kd', $this->qua2kd)->first();
+        if (! ($qua00f instanceof Qua00f)) {
             return null;
         }
 
@@ -173,13 +187,14 @@ trait SchedaMutator
      * Accessor per cont (contratto da qua00f).
      * Delega calcolo a getCont().
      *
-     * @return mixed Valore cont calcolato
+     * @return int|string|null Valore cont calcolato
      */
-    protected function getContAttribute(): mixed
+    protected function getContAttribute(): int|string|null
     {
         // Cache hit: se già in attributes, uso quello
         $value = $this->attributes['cont'] ?? null;
         if ($value !== null) {
+            /** @var int|string|null $value */
             return $value;
         }
 
@@ -189,6 +204,7 @@ trait SchedaMutator
         }
 
         // Delega calcolo al metodo puro (VICINO!)
+        /** @var int|string|null $value */
         $value = $this->getCont();
 
         // Persist se fillable
@@ -208,7 +224,9 @@ trait SchedaMutator
      */
     protected function getTipco(): int|string|null
     {
-        $qua00f = $this->qua00f->where('qua2kd', $this->qua2kd)->first();
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fCollection */
+        $qua00fCollection = $this->qua00f;
+        $qua00f = $qua00fCollection->where('qua2kd', $this->qua2kd)->first();
         if (! ($qua00f instanceof Qua00f)) {
             return null;
         }
@@ -227,11 +245,12 @@ trait SchedaMutator
      *
      * @return int|string|null Valore tipco calcolato
      */
-    protected function getTipcoAttribute(): mixed
+    protected function getTipcoAttribute(): int|string|null
     {
         // Cache hit: se già in attributes, uso quello
         $value = $this->attributes['tipco'] ?? null;
         if ($value !== null) {
+            /** @var int|string|null $value */
             return $value;
         }
 
@@ -241,10 +260,11 @@ trait SchedaMutator
         }
 
         // Delega calcolo al metodo puro (VICINO!)
+        /** @var int|string|null $value */
         $value = $this->getTipco();
 
         // Persist se valore valido
-        if ($value !== null && $this->getKey() !== null) {
+        if ($value !== null) {
             $this->update(['tipco' => $value]);
         }
 
@@ -572,8 +592,11 @@ trait SchedaMutator
 
         if ($qua00f->count() !== 1) {
             // dddx($qua00f);
+            // @phpstan-ignore argument.type, return.type
             $arr = collect($qua00f)->map(static fn ($item): array => [
+                // @phpstan-ignore offsetAccess.nonOffsetAccess
                 'propro' => $item->propro,
+                // @phpstan-ignore offsetAccess.nonOffsetAccess
                 'posfun' => $item->posfun,
             ]);
 
@@ -610,7 +633,9 @@ trait SchedaMutator
             return 0.0;
         }
 
-        $ana2kd = $ana02f->last()->ana2kd;
+        /** @var object{ana2kd: string}|null $lastAna */
+        $lastAna = $ana02f->last();
+        $ana2kd = $lastAna->ana2kd ?? '';
         $ana2kd_date = Date::createFromFormat('Ymd', $ana2kd);
         $date_max = $this->criteriOptionsArr('data_presenza_al');
 
@@ -706,6 +731,9 @@ trait SchedaMutator
         return 'dip';
     }
 
+    /**
+     * @return mixed
+     */
     public function getTypeAttribute(?string $value)
     {
         if ($value != null) {

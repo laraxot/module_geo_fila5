@@ -38,11 +38,9 @@ trait EnteStabiMutator
 
         $value = $this->getStabi();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
-        if ($this->getKey() !== null) {
-            static::withoutEvents(function () use ($value): void {
-                $this->update(['stabi' => $value]);
-            });
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['stabi' => $value]);
+        });
 
         return $value;
     }
@@ -72,11 +70,9 @@ trait EnteStabiMutator
 
         $value = $this->getRepar();
         // ✅ Livello 4: Persisto AUTOMATICAMENTE con ActivityLog-Safe
-        if ($this->getKey() !== null) {
-            static::withoutEvents(function () use ($value): void {
-                $this->update(['repar' => $value]);
-            });
-        }
+        static::withoutEvents(function () use ($value): void {
+            $this->update(['repar' => $value]);
+        });
 
         return $value;
     }

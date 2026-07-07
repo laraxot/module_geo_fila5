@@ -1091,8 +1091,10 @@ trait SchedaTrait
             // ---
         }
 
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Qua00f> $qua00fCollection */
+        $qua00fCollection = $this->qua00f;
         /** @var int|null $propro */
-        $propro = $this->qua00f
+        $propro = $qua00fCollection
             ->where('qua2kd', $this->qua2kd)
             ->first()
             ?->propro;
@@ -1995,6 +1997,7 @@ trait SchedaTrait
         if ($this->propro == null) {
             return null;
         }
+        /** @var \Illuminate\Database\Eloquent\Model|null $pesi */
         $pesi = $this->peso;
         if (! \is_object($pesi) || ! isset($pesi->peso_esperienza_acquisita)) {
             return null;
