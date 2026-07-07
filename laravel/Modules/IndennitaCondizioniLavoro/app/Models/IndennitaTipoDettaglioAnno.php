@@ -28,7 +28,7 @@ use Route;
  * @property Carbon|null $created_at
  * @property string|null $updated_by
  * @property string|null $created_by
- * @property-read array $indennita_tipo_opts
+ * @property-read array<int|string, string> $indennita_tipo_opts
  * @property-read IndennitaTipo|null $indennitaTipo
  * @method static Builder|IndennitaTipoDettaglioAnno newModelQuery()
  * @method static Builder|IndennitaTipoDettaglioAnno newQuery()
@@ -84,12 +84,18 @@ class IndennitaTipoDettaglioAnno extends BaseModel
     }
 
     // -------- relationship ------
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo, $this>
+     */
     public function indennitaTipo(): HasOne
     {
         return $this->hasOne(IndennitaTipo::class, 'id', 'indennita_tipo_id');
     }
 
     // ------ mutators ----
+    /**
+     * @return array<int|string, string>
+     */
     public function getIndennitaTipoOptsAttribute(?string $value): array
     {
         return IndennitaTipo::all()->pluck('nome', 'id')->toArray();

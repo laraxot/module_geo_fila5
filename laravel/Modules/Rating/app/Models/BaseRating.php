@@ -35,7 +35,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder|BaseRating newModelQuery()
  * @method static Builder|BaseRating newQuery()
  * @method static Builder|BaseRating query()
- * @method static Builder|BaseRating withExtraAttributes(array|string $attributes = [], mixed $value = null)
+ * @method static Builder|BaseRating withExtraAttributes(array<string, mixed>|string $attributes = [], mixed $value = null)
  *
  * @property int             $id
  * @property int             $user_id

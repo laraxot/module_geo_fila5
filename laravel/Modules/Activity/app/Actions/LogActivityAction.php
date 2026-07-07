@@ -21,7 +21,7 @@ class LogActivityAction
     use QueueableAction;
 
     /**
-     * @param  array|null  $properties
+     * @param  array<string, mixed>|null  $properties
      */
     public function __construct(
         public string $type,

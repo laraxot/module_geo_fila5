@@ -14,7 +14,7 @@ class ReplicateIndennita
     use QueueableAction;
 
     /**
-     * @param  array|null  $data
+     * @param  array<string, mixed>|null  $data
      */
     public function execute(?array $data): void
     {

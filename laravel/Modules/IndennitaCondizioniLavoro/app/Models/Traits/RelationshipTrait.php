@@ -33,6 +33,9 @@ trait RelationshipTrait
     use EnteMatrRelationship;
 
     
+    /**
+     * @return \Illuminate\Support\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio>
+     */
     public function getIndennitaTipoDettaglioAllAttribute(): Collection
     {
         $anno = is_numeric($this->anno) ? (int) $this->anno : (int) date('Y');
@@ -40,6 +43,9 @@ trait RelationshipTrait
         return IndennitaTipoDettaglio::whereRaw('? between dal and al', [$anno])->get();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\StabiDirigente, $this>
+     */
     public function stabiDirigente(): HasOne
     {
         return $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')->where('repar', $this->repar);

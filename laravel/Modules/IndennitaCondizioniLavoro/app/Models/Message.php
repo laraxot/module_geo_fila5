@@ -51,7 +51,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Builder|Message whereType($value)
  * @method static Builder|Message whereUpdatedAt($value)
  * @method static Builder|Message whereUpdatedBy($value)
- * @method static Builder|Message withGlobalScopes(array $scopes)
+ * @method static Builder|Message withGlobalScopes(array<int|string, mixed> $scopes)
  * @method static Builder|Message withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @property int|null $user_id
  * @property string|null $post_type

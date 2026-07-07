@@ -50,8 +50,6 @@ class ListStabiDirigentes extends BaseListStabiDirigentes
 
     /**
      * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
-     *
-     * @phpstan-ignore method.childReturnType
      */
     #[Override]
     protected function getHeaderActions(): array

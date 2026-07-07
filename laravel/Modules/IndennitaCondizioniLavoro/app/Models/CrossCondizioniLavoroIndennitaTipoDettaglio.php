@@ -41,11 +41,17 @@ class CrossCondizioniLavoroIndennitaTipoDettaglio extends BasePivot
     // protected $dates=['created_at','updated_at'];
 
     // --- relationship ---
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro, $this>
+     */
     public function condizioniLavoro(): HasOne
     {
         return $this->hasOne(CondizioniLavoro::class, 'id', 'condizioni_lavoro_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function indennitaTipoDettaglio(): HasOne
     {
         return $this->hasOne(IndennitaTipoDettaglio::class, 'id', 'indennita_tipo_dettaglio_id');

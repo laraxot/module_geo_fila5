@@ -99,7 +99,7 @@ use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
  * @property int|null $gg_parttimevert
  * @property mixed $gg_parttimevert_dalal
  * @property mixed $gg_presenza_dalal
- * @property \Illuminate\Support\Collection $indennita_tipo_dettaglio_all
+ * @property \Illuminate\Support\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $indennita_tipo_dettaglio_all
  * @property mixed $last_data_assunz
  * @property int|float $perc_p_time_daterange
  * @property int|float $perc_p_time_year
@@ -298,6 +298,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
     }
     */
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function tipoDettaglio(): BelongsToMany
     {
         // /*
@@ -312,6 +315,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
         // return $this->belongsToManyX(IndennitaTipoDettaglio::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function indennitaTipoDettaglio(): BelongsToMany
     {
         $cross = 'condizioni_lavoro_x_indennita_tipo_dettaglio';
@@ -359,6 +365,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
         return $tot * $ptime;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Sigma\Models\Repart, $this>
+     */
     public function reparts(): HasMany
     {
         return $this->hasMany(Repart::class, 'stabi', 'stabi')
@@ -464,6 +473,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
      * 2. Se NULL, delego il calcolo a un metodo separato
      * 3. Mantengo l'accessore pulito e leggibile
      */
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo>
+     */
     public function getAllIndennitaTipoAttribute(?Collection $value): Collection
     {
         // ✅ Livello 4: Controllo se il valore esiste già dal DB
@@ -479,6 +491,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
      * Calcola all_indennita_tipo.
      *
      * Metodo separato per il calcolo complesso.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo>
      */
     protected function calculateAllIndennitaTipo(): Collection
     {
@@ -663,6 +678,9 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
 
     // --------- function -----------
 
+    /**
+     * @param array<string, mixed> $params
+     */
     public static function populate(array $params): void
     {
         // $params=array_merge(getRouteParameters(),$params);

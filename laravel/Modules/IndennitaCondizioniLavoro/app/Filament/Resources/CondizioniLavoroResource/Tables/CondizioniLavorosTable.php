@@ -70,7 +70,7 @@ class CondizioniLavorosTable extends XotBaseResourceTable
                         return '';
                     }
 
-                    /** @var Collection $state */
+                    /** @var Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $state */
                     return $state->pluck('indennitaTipo.nome')->implode(','.PHP_EOL.PHP_EOL.'');
                 })
                 ->wrap()
@@ -80,7 +80,7 @@ class CondizioniLavorosTable extends XotBaseResourceTable
                         return null;
                     }
 
-                    /** @var Collection $state */
+                    /** @var Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $state */
                     return $state->map(function ($item): string {
                         if (! is_object($item)) {
                             return '';
@@ -104,7 +104,7 @@ class CondizioniLavorosTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int, \Filament\Tables\Filters\SelectFilter>
      */
     public function getTableFilters(): array
     {

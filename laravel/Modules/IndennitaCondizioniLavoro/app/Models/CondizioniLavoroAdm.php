@@ -116,7 +116,7 @@ use Override;
  * @property-read mixed $gg_parttimevert_dalal
  * @property-read mixed $gg_presenza_dalal
  * @property-read string|null $inail
- * @property-read \Illuminate\Support\Collection $indennita_tipo_dettaglio_all
+ * @property-read \Illuminate\Support\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $indennita_tipo_dettaglio_all
  * @property-read mixed $last_data_assunz
  * @property-read int|float $perc_p_time_daterange
  * @property-read int|float $perc_p_time_year
@@ -205,6 +205,9 @@ class CondizioniLavoroAdm extends CondizioniLavoro
     }
     */
     // --- relationships ---
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     #[Override]
     public function indennitaTipoDettaglio(): BelongsToMany
     {

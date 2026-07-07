@@ -50,7 +50,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return '';
                     }
 
-                    /** @var Collection $state */
+                    /** @var Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $state */
                     return $state->pluck('indennitaTipo.nome')->implode(','.PHP_EOL.PHP_EOL.'');
                 })
                 ->wrap()
@@ -60,7 +60,7 @@ class ListCondizioniLavoros extends XotBaseListRecords
                         return null;
                     }
 
-                    /** @var Collection $state */
+                    /** @var Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $state */
                     return $state->map(function ($item): string {
                         if (! is_object($item)) {
                             return '';

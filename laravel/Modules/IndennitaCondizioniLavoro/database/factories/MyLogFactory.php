@@ -7,6 +7,9 @@ namespace Modules\IndennitaCondizioniLavoro\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\IndennitaCondizioniLavoro\Models\MyLog;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\IndennitaCondizioniLavoro\Models\MyLog>
+ */
 class MyLogFactory extends Factory
 {
     /**

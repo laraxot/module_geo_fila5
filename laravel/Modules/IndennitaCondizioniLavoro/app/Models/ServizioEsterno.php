@@ -87,14 +87,14 @@ use Modules\Sigma\Models\Contracts\EnteMatrFieldsContract;
  * @property-read int|null $asz00k1_count
  * @property-read Collection<int, Asz00k1> $asz00k1Year
  * @property-read int|null $asz00k1_year_count
- * @property-read Collection $all_indennita_tipo
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo> $all_indennita_tipo
  * @property-read string $from_field
  * @property-read int|float $gg_p_time_vert_year
  * @property-read mixed $gg_parttimevert_anno
  * @property-read int|null $gg_parttimevert
  * @property-read mixed $gg_parttimevert_dalal
  * @property-read mixed $gg_presenza_dalal
- * @property-read \Illuminate\Support\Collection $indennita_tipo_dettaglio_all
+ * @property-read \Illuminate\Support\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio> $indennita_tipo_dettaglio_all
  * @property-read mixed $last_data_assunz
  * @property-read int|float $perc_p_time_daterange
  * @property-read int|float $perc_p_time_year
@@ -253,13 +253,18 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
 
     // ------ relationship ----------
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Sigma\Models\Rep00f, $this>
+     */
     public function reparts(): HasMany
     {
-        // @phpstan-ignore-next-line
         return $this->hasMany(Rep00f::class, 'repar', 'repar')
             ->where('repst1', $this->stabi);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Trasferte\Models\FuoriSedeDip, $this>
+     */
     public function trasferte(): HasMany
     {
         $relatedClass = 'Modules\Trasferte\Models\FuoriSedeDip';
@@ -273,6 +278,9 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
             ->where('ente', $this->ente);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function indennitaTipoDettaglio(): BelongsToMany
     {
         $cross = 'servizio_esterno_x_indennita_tipo_dettaglio';
@@ -284,6 +292,9 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
             ->withTimestamps();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function tipoDettaglio(): BelongsToMany
     {
         $cross = 'servizio_esterno_x_indennita_tipo_dettaglio';
@@ -363,6 +374,9 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
         return is_numeric($codqua) ? (string) $codqua : (is_string($codqua) ? $codqua : '---');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo>
+     */
     public function getAllIndennitaTipoAttribute(mixed $value): Collection
     {
         return IndennitaTipo::all();
@@ -569,6 +583,9 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
 
     // --------- function -----------
 
+    /**
+     * @param array<string, mixed> $params
+     */
     public static function populate(array $params): void
     {
         // $params=array_merge(getRouteParameters(),$params);

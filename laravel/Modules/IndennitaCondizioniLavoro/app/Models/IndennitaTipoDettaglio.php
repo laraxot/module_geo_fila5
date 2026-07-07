@@ -60,6 +60,9 @@ class IndennitaTipoDettaglio extends BaseModel
     ];
 
     // /--- relationship ---
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo, $this>
+     */
     public function indennitaTipo(): HasOne
     {
         return $this->hasOne(IndennitaTipo::class, 'id', 'indennita_tipo_id');

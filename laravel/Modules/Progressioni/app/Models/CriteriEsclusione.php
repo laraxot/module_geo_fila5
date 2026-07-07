@@ -5,21 +5,16 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
-use Modules\Ptv\Models\BaseCriteriEsclusione;
 use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\CriteriEsclusione as PtvCriteriEsclusione;
 use Modules\Ptv\Models\Profile;
-use Webmozart\Assert\Assert;
 
 /**
- * Modules\Progressioni\Models\CriteriEsclusione.
- *
  * @property int $id
  * @property bool $is_enabled
  * @property string|null $name
@@ -32,74 +27,63 @@ use Webmozart\Assert\Assert;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $deleter
+ * @property-read Profile|null $updater
+ * @property-read EloquentCollection<int, Scheda> $schede
+ * @property-read int|null $schede_count
+ * @property-read EloquentCollection<int, CriteriOption> $criteriOptions
+ * @property-read int|null $criteri_options_count
  *
  * @method static CriteriEsclusioneFactory factory($count = null, $state = [])
- * @method static Builder|CriteriEsclusione newModelQuery()
- * @method static Builder|CriteriEsclusione newQuery()
- * @method static Builder|CriteriEsclusione query()
- * @method static Builder|CriteriEsclusione whereAnno($value)
- * @method static Builder|CriteriEsclusione whereCreatedAt($value)
- * @method static Builder|CriteriEsclusione whereCreatedBy($value)
- * @method static Builder|CriteriEsclusione whereFieldName($value)
- * @method static Builder|CriteriEsclusione whereId($value)
- * @method static Builder|CriteriEsclusione whereName($value)
- * @method static Builder|CriteriEsclusione whereOp($value)
- * @method static Builder|CriteriEsclusione whereType($value)
- * @method static Builder|CriteriEsclusione whereUpdatedAt($value)
- * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
- * @method static Builder|CriteriEsclusione whereValue($value)
- *
- * @mixin Builder<self>
- *
- * @property-read Profile|null $creator
- * @property-read Collection<int, CriteriOption> $criteriOptions
- * @property-read int|null $criteri_options_count
- * @property-read Profile|null $deleter
- * @property-read Collection<int, Scheda> $schede
- * @property-read int|null $schede_count
- * @property-read Profile|null $updater
- *
- * @method static Builder<static>|CriteriEsclusione whereIsEnabled($value)
+ * @method static Builder<static>|CriteriEsclusione query()
+ * @method static Builder<static>|CriteriEsclusione whereAnno($value)
  *
  * @mixin \Eloquent
  */
-class CriteriEsclusione extends BaseCriteriEsclusione 
+class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusioneContract
 {
     protected $connection = 'progressione';
 
-    /**
-     * Get the related scheda.
-     *
-     * @return HasMany<Scheda, $this>
-     */
+    /** @return HasMany<Scheda, $this> */
     public function schede(): HasMany
     {
-        $schedaClass = Str::of(static::class)
-            ->beforeLast('\\')
-            ->append('\\Scheda')
-            ->toString();
-
-        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
-        Assert::subclassOf($modelClass, Model::class);
-
-        /** @var class-string<Model> $modelClass */
-        return $this->hasMany($modelClass, 'anno', 'anno');
+        return $this->hasMany(Scheda::class, 'anno', 'anno');
     }
 
-    /**
-     * Get the scheda collection.
-     *
-     * @return Collection<int, Scheda>
-     */
-    public function getSchedaCollection(): Collection
+    /** @return EloquentCollection<int, Scheda> */
+    public function getSchedaCollection(): EloquentCollection
     {
         return $this->schede()->get();
     }
 
-    public function criteriOptionsCollection(): \Illuminate\Support\Collection
+    /** @return HasMany<CriteriOption, $this> */
+    public function criteriOptions(): HasMany
     {
-        return \Illuminate\Support\Collection::make(
-            $this->criteriOptions()->get()->toArray()
-        );
+        return $this->hasMany(CriteriOption::class, 'anno', 'anno');
     }
-} // end class
+
+    /** @return Collection<int|string, mixed> */
+    public function criteriOptionsCollection(): Collection
+    {
+        return $this->criteriOptions()
+            ->get()
+            ->mapWithKeys(static function (CriteriOption $item): array {
+                $value = $item->value;
+
+                if ($item->type === 'list' && is_string($value)) {
+                    $value = explode(',', $value);
+                }
+
+                if ($item->type === 'int') {
+                    $value = (int) $value;
+                }
+
+                if ($item->type === 'date' && is_string($value) && $value !== '') {
+                    $value = Carbon::parse($value);
+                }
+
+                return [(string) $item->name => $value];
+            });
+    }
+}

@@ -28,19 +28,31 @@ class CompilaCondizioniLavoro extends XotBaseResourcePage
 
     protected string $view = 'indennitacondizionilavoro::admin.condizioni_lavoro.compila.page';
 
+    /**
+     * @var array<string, mixed>
+     */
     public array $form_data = [
 
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     public array $rules = [
         'form_data.tot_gg' => 'numeric',
         'form_data.dettaglio.*.pivot.gg' => 'lte:form_data.tot_presenza_periodo_plus_no_timbr',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     public array $messages = [
         'form_data.tot_presenza_periodo_plus_no_timbr.gte' => ':attribute: DEVONO ESSERE MAGGIORNI DELLA SOMMA DEI GIORNI DEI PERIODI',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     public array $validationAttributes = [
         'form_data.tot_presenza_periodo_plus_no_timbr' => 'Giorni Complessivi',
     ];
@@ -147,6 +159,11 @@ class CompilaCondizioniLavoro extends XotBaseResourcePage
         return [];
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     private function mutateFormDataBeforeFill(array $data): array
     {
         return $data;

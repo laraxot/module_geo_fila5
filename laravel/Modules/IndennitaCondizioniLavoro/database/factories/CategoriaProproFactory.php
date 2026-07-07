@@ -6,6 +6,9 @@ namespace Modules\IndennitaCondizioniLavoro\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\IndennitaCondizioniLavoro\Models\CategoriaPropro>
+ */
 class CategoriaProproFactory extends Factory
 {
     /**

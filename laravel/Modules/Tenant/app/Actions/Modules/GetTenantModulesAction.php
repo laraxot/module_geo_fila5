@@ -34,7 +34,7 @@ class GetTenantModulesAction
     }
 
     /**
-     * @param  array  $json
+     * @param  array<string, bool>  $json
      *
      * @return array<int, string>
      */

@@ -90,7 +90,7 @@ trait SushiToJson
 
         $normalizedData = $this->normalizeJsonItems($typedData);
         $schema = $this->getSchema();
-        /** @var array $schemaArray */
+        /** @var array<string, mixed> $schemaArray */
         $schemaArray = $schema;
         $form = $this->normalizeSchemaFields($schemaArray);
 
@@ -359,7 +359,7 @@ trait SushiToJson
             return;
         }
 
-        /** @var array $modelArray */
+        /** @var array<string, mixed> $modelArray */
         $modelArray = $model->toArray();
         $existingData[$index] = $modelArray;
         $model->saveToJson($existingData);
@@ -404,7 +404,7 @@ trait SushiToJson
                 continue;
             }
 
-            /** @var array $normalizedItem */
+            /** @var array<string, mixed> $normalizedItem */
             $normalizedItem = [];
             foreach ($item as $key => $value) {
                 $stringKey = is_string($key) ? $key : (string) $key;
@@ -421,7 +421,7 @@ trait SushiToJson
     }
 
     /**
-     * @param  array $schema
+     * @param  array<string, mixed> $schema
      * @return array<string, mixed>
      */
     protected function normalizeSchemaFields(array $schema): array
@@ -431,7 +431,7 @@ trait SushiToJson
 
     /**
      * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array $form
+     * @param  array<string, mixed> $form
      * @return array<int, array<string, mixed>>
      */
     protected function completeSchemaFields(array $normalizedData, array $form): array

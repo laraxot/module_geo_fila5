@@ -14,7 +14,7 @@ class SaveTenantConfigAction
     use QueueableAction;
 
     /**
-     * @param  array  $data
+     * @param  array<string, mixed>  $data
      */
     public function execute(string $name, array $data): void
     {
@@ -44,8 +44,8 @@ class SaveTenantConfigAction
     }
 
     /**
-     * @param  array  $array1
-     * @param  array  $array2
+     * @param  array<string, mixed>  $array1
+     * @param  array<string, mixed>  $array2
      *
      * @return array<string, mixed>
      */

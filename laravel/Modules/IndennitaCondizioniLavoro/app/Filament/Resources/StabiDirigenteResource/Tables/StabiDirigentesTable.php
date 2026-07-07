@@ -20,9 +20,7 @@ use function Safe\date;
 class StabiDirigentesTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
-     *
-     * @phpstan-ignore method.childReturnType
+     * @return array<int|string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
      */
     public function getTableHeaderActions(): array
     {

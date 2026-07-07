@@ -57,77 +57,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin \Eloquent
  */
-class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
+class CriteriEsclusione extends BaseCriteriEsclusione
 {
-    protected $fillable = ['id', 'name', 'field_name', 'op', 'value', 'type', 'anno'];
-
-    protected $table = 'criteri_esclusione';
-
-    // -------------------------
-
-    public function schede(): HasMany
-    {
-        $schedaClass = Str::of(static::class)
-            ->beforeLast('\\')
-            ->append('\\Scheda')
-            ->toString();
-
-        $modelClass = class_exists($schedaClass) ? $schedaClass : Scheda::class;
-        Assert::classExists($modelClass);
-        Assert::subclassOf($modelClass, Model::class);
-
-        /** @var class-string<Model> $modelClass */
-        return $this->hasMany($modelClass, 'anno', 'anno');
-    }
-
-    public function getSchedaCollection(): EloquentCollection
-    {
-        return $this->schede()->get();
-    }
-
-    public function criteriOptions(): HasMany
-    {
-        $class = Str::of(static::class)->beforeLast('\\')->append('\\CriteriOption')->toString();
-        Assert::classExists($class);
-        Assert::subclassOf($class, Model::class);
-
-        /** @var class-string<Model> $class */
-        return $this->hasMany($class, 'anno', 'anno');
-    }
-
-    public function criteriOptionsCollection(): Collection
-    {
-        $criteriOption = $this
-            ->criteriOptions
-            ->map(function ($item) {
-                $value = '';
-                /** @phpstan-ignore-next-line */
-                switch ($item->type) {
-                    case 'list':
-                        /** @phpstan-ignore-next-line */
-                        $value = explode(',', $item->value);
-                        break;
-                    case 'int':
-                        $value = intval($value);
-                        break;
-                    case 'date':
-                        $value = $item->value;
-                        if ($value != null) {
-                            $value = Carbon::parse($value);
-                        }
-                        break;
-                    default:
-                        /** @phpstan-ignore-next-line */
-                        dddx($item->type);
-                        break;
-                }
-                /** @phpstan-ignore-next-line */
-                $item->value_real = $value;
-
-                return $item;
-            })
-            ->pluck('value_real', 'name');
-
-        return $criteriOption;
-    }
+    
 } // end class

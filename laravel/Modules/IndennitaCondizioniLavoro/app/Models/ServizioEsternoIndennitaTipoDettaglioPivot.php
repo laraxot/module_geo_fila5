@@ -50,16 +50,25 @@ class ServizioEsternoIndennitaTipoDettaglioPivot extends BasePivot
 
     // --- relationship ---
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno, $this>
+     */
     public function servizioEsterno(): HasOne
     {
         return $this->hasOne(ServizioEsterno::class, 'id', 'servizio_esterno_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function indennitaTipoDettaglio(): HasOne
     {
         return $this->hasOne(IndennitaTipoDettaglio::class, 'id', 'indennita_tipo_dettaglio_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoro, $this>
+     */
     public function condizioniLavoro(): HasOne
     {
         return $this->hasOne(CondizioniLavoro::class, 'matr', 'servizio_esterno_id');

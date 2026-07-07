@@ -145,8 +145,8 @@ trait SushiToJsons
     }
 
     /**
-     * @param  array  $schema
-     * @param  array  $json
+     * @param  array<string, mixed>  $schema
+     * @param  array<string, mixed>  $json
      *
      * @return array<string, mixed>
      */

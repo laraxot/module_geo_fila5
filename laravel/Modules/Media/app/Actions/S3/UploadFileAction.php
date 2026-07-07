@@ -17,7 +17,7 @@ class UploadFileAction extends BaseS3Action
     /**
      * Upload a file to S3
      *
-     * @param  array  $options
+     * @param  array<string, mixed>  $options
      * @return array<string, mixed>
      */
     public function execute(string $localFilePath, string $destinationFilePath, array $options = []): array

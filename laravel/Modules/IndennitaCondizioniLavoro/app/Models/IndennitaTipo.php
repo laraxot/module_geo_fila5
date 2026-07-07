@@ -48,6 +48,9 @@ class IndennitaTipo extends BaseModel
 
     protected $fillable = ['id', 'nome', 'svocfi' /* , 'anno' */];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     */
     public function dettaglio(): HasMany
     {
         $route_current = Route::current();

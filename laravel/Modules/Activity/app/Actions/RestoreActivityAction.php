@@ -14,9 +14,7 @@ class RestoreActivityAction
     use QueueableAction;
 
     /**
-     * Esegue il ripristino di un record basandosi sui dati di un'attività.
-     *
-     * @param  array  $oldProperties
+     * @param  array<string, mixed>  $oldProperties
      */
     public function execute(Model $record, array $oldProperties): void
     {

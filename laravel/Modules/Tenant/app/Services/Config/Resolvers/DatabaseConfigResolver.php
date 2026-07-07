@@ -21,7 +21,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array  $extraConf
+     * @param  array<string, mixed>  $extraConf
      *
      * @return array<string, mixed>
      */
@@ -46,8 +46,8 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array  $extraConf
-     * @param  array  $originalConf
+     * @param  array<string, mixed>  $extraConf
+     * @param  array<string, mixed>  $originalConf
      */
     private function resolveDefaultConnection(array $extraConf, array $originalConf): ?string
     {
@@ -57,7 +57,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array  $extraConf
+     * @param  array<string, mixed>  $extraConf
      *
      * @return array<string, mixed>
      */
