@@ -94,7 +94,7 @@ class IndennitaTipoDettaglioAnno extends BaseModel
 
     // ------ mutators ----
     /**
-     * @return array<int|string, string>
+     * @return array<int, string|null>
      */
     public function getIndennitaTipoOptsAttribute(?string $value): array
     {

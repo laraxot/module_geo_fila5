@@ -206,7 +206,7 @@ class CondizioniLavoroAdm extends CondizioniLavoro
     */
     // --- relationships ---
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this, \Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroIndennitaTipoDettaglioPivot, 'pivot'>
      */
     #[Override]
     public function indennitaTipoDettaglio(): BelongsToMany

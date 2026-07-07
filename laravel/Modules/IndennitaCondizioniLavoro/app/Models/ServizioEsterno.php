@@ -263,23 +263,21 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Trasferte\Models\FuoriSedeDip, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno, $this>
      */
     public function trasferte(): HasMany
     {
         $relatedClass = 'Modules\Trasferte\Models\FuoriSedeDip';
         if (! class_exists($relatedClass)) {
-            // Return a dummy relation or handle it safely for ide-helper
             return $this->hasMany(self::class, 'id', 'id')->whereRaw('1=0');
         }
 
-        // @phpstan-ignore-next-line argument.templateType (modulo Trasferte opzionale)
         return $this->hasMany($relatedClass, 'matr', 'matr')
             ->where('ente', $this->ente);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this, \Modules\IndennitaCondizioniLavoro\Models\ServizioEsternoIndennitaTipoDettaglioPivot, 'pivot'>
      */
     public function indennitaTipoDettaglio(): BelongsToMany
     {
@@ -293,7 +291,7 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this, \Modules\IndennitaCondizioniLavoro\Models\ServizioEsternoIndennitaTipoDettaglioPivot, 'pivot'>
      */
     public function tipoDettaglio(): BelongsToMany
     {

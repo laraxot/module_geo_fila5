@@ -85,6 +85,7 @@ trait SushiToJson
                 continue;
             }
 
+            /** @var array<string, mixed> $item */
             $typedData[] = ConfigStringKeyFilter::onlyStringKeys($item);
         }
 

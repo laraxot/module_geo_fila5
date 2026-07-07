@@ -141,6 +141,7 @@ trait SushiToJsons
             return null;
         }
 
+        /** @var array<string, mixed> $json */
         return $this->buildRowFromSchema($schema, $json);
     }
 

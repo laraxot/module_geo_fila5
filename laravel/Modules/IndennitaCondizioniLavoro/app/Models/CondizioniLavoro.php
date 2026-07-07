@@ -299,7 +299,7 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
     */
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this, \Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroIndennitaTipoDettaglioPivot, 'pivot'>
      */
     public function tipoDettaglio(): BelongsToMany
     {
@@ -316,7 +316,7 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\Modules\IndennitaCondizioniLavoro\Models\IndennitaTipoDettaglio, $this, \Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroIndennitaTipoDettaglioPivot, 'pivot'>
      */
     public function indennitaTipoDettaglio(): BelongsToMany
     {
@@ -474,6 +474,8 @@ class CondizioniLavoro extends BaseModel implements DateRangeFieldsContract, Ent
      * 3. Mantengo l'accessore pulito e leggibile
      */
     /**
+     * @param  \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo>|null  $value
+     *
      * @return \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaCondizioniLavoro\Models\IndennitaTipo>
      */
     public function getAllIndennitaTipoAttribute(?Collection $value): Collection

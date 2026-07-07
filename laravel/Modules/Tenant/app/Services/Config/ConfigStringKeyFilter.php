@@ -37,6 +37,7 @@ final class ConfigStringKeyFilter
             $merged = array_replace_recursive($merged, self::onlyStringKeys($config));
         }
 
+        /** @var array<string, mixed> $merged */
         return self::onlyStringKeys($merged);
     }
 }
