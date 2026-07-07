@@ -71,7 +71,6 @@ expect()->extend('toBeTenant', fn () => expect($this->value)->toBeInstanceOf(Ten
 beforeEach(function (): void {
     $this->baseModel = new class extends BaseModel { ... };
 });
-
 test('...', function (): void {
     expect($this->baseModel)->...  // PHPStan error
 });
@@ -101,7 +100,6 @@ beforeEach(function (): void {
     $this->testDirectory = storage_path('tests/sushi-json');
     $this->testJsonPath = $this->testDirectory.'/test_sushi.json';
 });
-```
 
 **PHPStan Issue**: Cannot recognize dynamically assigned properties in test context
 
@@ -114,11 +112,9 @@ beforeEach(function (): void {
 
 ## Recommendations
 
-1. **Complete TenantBusinessLogicTest**: Either create the missing models (`TenantDomain`, `TenantSetting`, `TenantSubscription`) or rewrite tests to use existing models only
-
-2. **Refactor Integration Tests**: Convert `beforeEach()`/`setUp()` instance properties to local variables or use helper functions
-
-3. **Review Sushi Pattern**: The Sushi-based tests have complex setup - consider if this pattern is necessary or can be simplified
+1. **Complete remaining 24 errors** by refactoring integration tests
+2. **OR** move to next module and return to Tenant later
+3. **Create missing models** for TenantBusinessLogicTest
 
 ## Files Modified
 
@@ -127,14 +123,6 @@ beforeEach(function (): void {
 3. ✅ `tests/Feature/TenantBusinessLogicTest.php` - Skipped (renamed to `.skip`)
 4. ✅ `tests/Feature/README.md` - Created documentation
 5. ✅ `tests/Unit/Models/BaseModelTest.php` - Removed beforeEach
-
-## Next Steps
-
-1. Complete remaining 24 errors by refactoring integration tests
-2. OR move to next module and return to Tenant later
-3. Create missing models for TenantBusinessLogicTest
-
----
 
 ## Scoped-Analysis False Positives (2026-07-07)
 
@@ -166,7 +154,7 @@ so they never actually silenced `trait.unused` and served no purpose.
 
 `phpstan.neon` ignores this identifier project-wide. It legitimately matches
 `env()` calls outside `config/` in `Modules/User`, `Modules/Notify`,
-`Modules/Media`, `Modules/Xot` — none of which are in Job/IndennitaCondizioniLavoro/Tenant.
+`Modules/Media`, `Modules/Xot` — none of which are in Job, IndennitaCondizioniLavoro/Tenant.
 When the scan is limited to these 3 modules, the ignore rule has nothing to
 match and PHPStan reports it as an unmatched ignored-error pattern.
 
@@ -176,3 +164,5 @@ lives in `phpstan.neon`, which must not be touched. This is a residual, expected
 side effect of scoping the analysis, not a defect.
 
 *Last Updated: 2026-07-07*
+
+NOTE: Per evitare problemi di tipizzazione PHPStan con helper che accettano array generici, usa sempre `@var array<string, mixed>` sui parametri locali prima di passarli a helper con firme di tipo sigillate.

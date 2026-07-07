@@ -42,11 +42,14 @@ trait HasRatingsTrait
     /**
      * Get ratings for this model.
      *
-     * @return MorphToMany<Rating, static>
+     * @return MorphToMany<Rating, $this>
      */
     public function ratings(): MorphToMany
     {
-        return $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph');
+        /** @var MorphToMany<Rating, static> $result */
+        $result = $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph');
+
+        return $result;
     }
 
     /**
@@ -59,7 +62,8 @@ trait HasRatingsTrait
         $relatedClass = $this->getRatingClass();
         $userId = (int) Auth::id();
 
-        return $this->hasMany($relatedClass, 'related_type', 'post_type')
+        /** @var HasMany<BaseRating, static> $result */
+        $result = $this->hasMany($relatedClass, 'related_type', 'post_type')
             ->selectRaw(
                 'ratings.*,
                 count(value) as rating_count,
@@ -75,6 +79,8 @@ trait HasRatingsTrait
                 }
             )->groupBy('ratings.id')
             ->with('post');
+
+        return $result;
     }
 
     /**
@@ -101,8 +107,11 @@ trait HasRatingsTrait
      */
     public function myRatings(): MorphToMany
     {
-        return $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph')
+        /** @var MorphToMany<Rating, static> $result */
+        $result = $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph')
             ->wherePivot('user_id', (string) Auth::id());
+
+        return $result;
     }
 
     // ----- mutators -----

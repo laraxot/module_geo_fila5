@@ -138,7 +138,10 @@ trait ProgressioniRelationshipTrait
             ->orderBy('ptime', 'desc');
     }
 
-    /** @return MorphMany<MyLog, $this> */
+    /**
+     * @return MorphMany<MyLog, $this>
+     * @phpstan-ignore-next-line method.childReturnType - $this vs static covariance issue
+     */
     public function myLogs(): MorphMany
     {
         return $this->morphMany(MyLog::class, 'model');
