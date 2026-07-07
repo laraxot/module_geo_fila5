@@ -117,6 +117,8 @@ Common traits for:
 - Eliminates need for static resolver utilities
 - Best practice for extending framework classes
 
+**Refactoring History**: [refactor-panelmixin.md](./refactor-panelmixin.md) — Details of resolver elimination and mixin adoption
+
 ---
 
 ## Testing
