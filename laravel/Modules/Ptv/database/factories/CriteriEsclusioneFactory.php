@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Database\Factories;
 
-/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\CriteriEsclusione> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\CriteriEsclusione;
 
+/** @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Ptv\Models\CriteriEsclusione> */
 class CriteriEsclusioneFactory extends Factory
 {
     /**

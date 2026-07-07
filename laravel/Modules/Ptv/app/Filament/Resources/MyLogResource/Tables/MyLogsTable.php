@@ -57,7 +57,7 @@ class MyLogsTable extends XotBaseResourceTable
     public function getTableFilters(): array
     {
         return [
-            SelectFilter::make('tbl')
+            'tbl' => SelectFilter::make('tbl')
                 ->options(function (): array {
                     /** @var array<string, string> $tables */
                     $tables = MyLog::distinct('tbl')
@@ -69,7 +69,7 @@ class MyLogsTable extends XotBaseResourceTable
                     return $tables;
                 }),
 
-            SelectFilter::make('note')
+            'note' => SelectFilter::make('note')
                 ->options([
                     'sendMailLettF' => 'Invio Mail Lettera F',
                     'sendMailLettI' => 'Invio Mail Lettera I',

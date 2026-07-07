@@ -6,7 +6,7 @@ namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
@@ -45,45 +45,29 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
 {
     protected $connection = 'progressione';
 
-    /** @return HasMany<Scheda, $this> */
-    public function schede(): HasMany
-    {
-        return $this->hasMany(Scheda::class, 'anno', 'anno');
-    }
-
-    /** @return EloquentCollection<int, Scheda> */
-    public function getSchedaCollection(): EloquentCollection
-    {
-        return $this->schede()->get();
-    }
-
-    /** @return HasMany<CriteriOption, $this> */
-    public function criteriOptions(): HasMany
-    {
-        return $this->hasMany(CriteriOption::class, 'anno', 'anno');
-    }
-
-    /** @return Collection<int|string, mixed> */
+    /** @return Collection<string, mixed> */
     public function criteriOptionsCollection(): Collection
     {
-        return $this->criteriOptions()
-            ->get()
-            ->mapWithKeys(static function (CriteriOption $item): array {
-                $value = $item->value;
+        return $this->criteriOptions->mapWithKeys(
+            static function (Model $item): array {
+                $type = $item->getAttribute('type');
+                $value = $item->getAttribute('value');
+                $name = $item->getAttribute('name');
 
-                if ($item->type === 'list' && is_string($value)) {
+                if ($type === 'list' && is_string($value)) {
                     $value = explode(',', $value);
                 }
 
-                if ($item->type === 'int') {
-                    $value = (int) $value;
+                if ($type === 'int') {
+                    $value = is_numeric($value) ? (int) (string) $value : 0;
                 }
 
-                if ($item->type === 'date' && is_string($value) && $value !== '') {
+                if ($type === 'date' && is_string($value) && $value !== '') {
                     $value = Carbon::parse($value);
                 }
 
-                return [(string) $item->name => $value];
-            });
+                return is_string($name) ? [$name => $value] : [];
+            }
+        );
     }
 }

@@ -116,6 +116,9 @@ class Wgiu03f extends BaseModel
     }
 
     // ------------- RELATIONSHIPS ------------------
+    /**
+     * @return HasOne<Codici, $this>
+     */
     public function codici(): HasOne
     {
         return $this->hasOne(Codici::class, 'tipo', 'lecod1')->where('codice', $this->lecod2);

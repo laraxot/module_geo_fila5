@@ -78,7 +78,7 @@ use stdClass;
  * @property-read bool $diritto_buonopasto
  * @property-read float $durata
  * @property-read float $durata_pomeriggio
- * @property-read Collection $pause
+ * @property-read Collection<int, stdClass> $pause
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Wmen00f> $wmen00f
  * @property-read int|null $wmen00f_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Wstr01lx> $wstr01lx
@@ -239,11 +239,17 @@ class Wstr02f extends BaseModel
     }
 
     // ----------relationship-----------
+    /**
+     * @return HasOne<Anag, $this>
+     */
     public function anag(): HasOne
     {
         return $this->hasOneByEnteMatr(Anag::class);
     }
 
+    /**
+     * @return HasMany<Wstr01lx, $this>
+     */
     public function wstr01lx(): HasMany
     {
         return $this->hasMany(Wstr01lx::class, 'wtmatr', $this->matrField())
@@ -253,6 +259,9 @@ class Wstr02f extends BaseModel
             ->where('wtdata', $this->stdata);
     }
 
+    /**
+     * @return HasMany<Wmen00f, $this>
+     */
     public function wmen00f(): HasMany
     {
         return $this->hasMany(Wmen00f::class, 'mnmatr', $this->matrField())

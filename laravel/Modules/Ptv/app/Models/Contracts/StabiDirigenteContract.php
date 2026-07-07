@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Database\Factories\StabiDirigenteFactory;
@@ -32,28 +33,31 @@ use Modules\Ptv\Database\Factories\StabiDirigenteFactory;
  * @property mixed $repart
  *
  * @method static StabiDirigenteFactory factory(...$parameters)
- * @method static Builder<static> newModelQuery()
- * @method static Builder<static> newQuery()
- * @method static Builder<static> query()
- * @method static Builder<static> whereAnno($value)
- * @method static Builder<static> whereBudget($value)
- * @method static Builder<static> whereCreatedAt($value)
- * @method static Builder<static> whereCreatedBy($value)
- * @method static Builder<static> whereEnte($value)
- * @method static Builder<static> whereId($value)
- * @method static Builder<static> whereMatr($value)
- * @method static Builder<static> whereNomeDiri($value)
- * @method static Builder<static> whereNomeDiriPlus($value)
- * @method static Builder<static> whereNomeStabi($value)
- * @method static Builder<static> wherePostId($value)
- * @method static Builder<static> wherePostType($value)
- * @method static Builder<static> whereRepar($value)
- * @method static Builder<static> whereStabi($value)
- * @method static Builder<static> whereUpdatedAt($value)
- * @method static Builder<static> whereUpdatedBy($value)
- * @method static Builder<static> whereValutatoreId($value)
+ * @method static Builder<Model> newModelQuery()
+ * @method static Builder<Model> newQuery()
+ * @method static Builder<Model> query()
+ * @method static Builder<Model> whereAnno($value)
+ * @method static Builder<Model> whereBudget($value)
+ * @method static Builder<Model> whereCreatedAt($value)
+ * @method static Builder<Model> whereCreatedBy($value)
+ * @method static Builder<Model> whereEnte($value)
+ * @method static Builder<Model> whereId($value)
+ * @method static Builder<Model> whereMatr($value)
+ * @method static Builder<Model> whereNomeDiri($value)
+ * @method static Builder<Model> whereNomeDiriPlus($value)
+ * @method static Builder<Model> whereNomeStabi($value)
+ * @method static Builder<Model> wherePostId($value)
+ * @method static Builder<Model> wherePostType($value)
+ * @method static Builder<Model> whereRepar($value)
+ * @method static Builder<Model> whereStabi($value)
+ * @method static Builder<Model> whereUpdatedAt($value)
+ * @method static Builder<Model> whereUpdatedBy($value)
+ * @method static Builder<Model> whereValutatoreId($value)
  */
 interface StabiDirigenteContract
 {
+    /**
+     * @return HasMany<Model, Model>
+     */
     public function schede(): HasMany;
 }

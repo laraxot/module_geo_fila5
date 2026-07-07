@@ -13,6 +13,7 @@ class RepartCollection extends ResourceCollection
      * Transform the resource collection into an array.
      *
      * @param  Request  $request
+     * @return array<string, mixed>
      */
     #[\Override]
     public function toArray($request): array

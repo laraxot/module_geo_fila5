@@ -326,10 +326,6 @@ class Qua00f extends BaseDateRangeModel
     }
 
     // ------ SCOPES --------
-    /**
-     * @param  Builder<self>  $query
-     * @return Builder<self>
-     */
     protected function scopeOfYear(Builder $query, ?int $year): Builder
     {
         return $query->where(static function (Builder $q) use ($year): void {
@@ -338,10 +334,6 @@ class Qua00f extends BaseDateRangeModel
         });
     }
 
-    /**
-     * @param  Builder<self>  $query
-     * @return Builder<self>
-     */
     protected function scopeOfEnteYear(Builder $query, ?int $ente, ?int $year): Builder
     {
         return $query
@@ -387,7 +379,7 @@ class Qua00f extends BaseDateRangeModel
      * Filter records by posiz field.
      *
      * @param  Builder<self>  $query
-     * @param  array|int|string|null  $posiz
+     * @param  array<int|string, mixed>|int|string|null  $posiz
      * @return Builder<self>
      */
     protected function scopeOfPosiz(Builder $query, array|int|string|null $posiz): Builder
@@ -693,7 +685,7 @@ class Qua00f extends BaseDateRangeModel
     }
 
     /**
-     * @param  array|null  $params
+     * @param  array<string, mixed>|null  $params
      */
     public function giorni_propro_posfun(?array $params = null): int|float
     {
@@ -854,7 +846,7 @@ class Qua00f extends BaseDateRangeModel
     }
 
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      * @return \Illuminate\Support\Collection<string, array<string, mixed>>
      */
     public static function posizioniEconomicheOfYearCollection(array $params): \Illuminate\Support\Collection

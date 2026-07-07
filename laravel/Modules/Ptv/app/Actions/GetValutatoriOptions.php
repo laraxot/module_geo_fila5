@@ -56,7 +56,7 @@ class GetValutatoriOptions
         /** @var class-string<Model> $modelClass */
         $modelClass = $stabiDiriClass;
 
-        /** @var Builder $query */
+        /** @var Builder<Model> $query */
         $query = $modelClass::whereIn('stabi', $stabis)
             ->where('anno', $anno)
             ->whereRaw('valutatore_id = id');

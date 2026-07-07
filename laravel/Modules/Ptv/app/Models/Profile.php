@@ -169,8 +169,8 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property-read Profile|null $deleter
  *
  * @method static Builder<static>|Profile byUuid(string $uuid)
- * @method static Builder<static>|Profile childrenWith(array $relations)
- * @method static Builder<static>|Profile childrenWithCount(array $relations)
+ * @method static Builder<static>|Profile childrenWith(array<int, string> $relations)
+ * @method static Builder<static>|Profile childrenWithCount(array<int, string> $relations)
  *
  * @mixin \Eloquent
  */

@@ -37,7 +37,7 @@ use Parental\HasParent;
 class OrganizzativasTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableHeaderActions(): array
     {
@@ -107,7 +107,7 @@ class OrganizzativasTable extends XotBaseResourceTable
     }
 
     /**
-     *  array<string, BaseFilter>
+     * @return array<string, \Filament\Tables\Filters\BaseFilter>
      */
     public function getTableFilters(): array
     {

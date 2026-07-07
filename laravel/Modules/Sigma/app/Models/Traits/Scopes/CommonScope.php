@@ -37,6 +37,10 @@ trait CommonScope
      */
     abstract public function annFieldName(): string;
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     protected function scopeOfQuarter(Builder $query, ?int $quarter, ?int $year): Builder
     {
         if ($quarter === null || $year === null) {
@@ -63,6 +67,10 @@ trait CommonScope
             ->where($toField, '<=', (int) $to->format('Ymd'));
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     protected function scopeOfFourMonthPeriod(Builder $query, ?int $fourMonthPeriod, ?int $year): Builder
     {
         if ($fourMonthPeriod === null || $year === null) {
@@ -91,6 +99,9 @@ trait CommonScope
 
     /**
      * Scope per filtrare per anno.
+     *
+     * @param  Builder<static>  $query
+     * @return Builder<static>
      */
     protected function scopeOfYear(Builder $query, ?int $year): Builder
     {
@@ -112,6 +123,10 @@ trait CommonScope
         });
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     protected function scopeOfEnteYear(Builder $query, ?int $ente, ?int $year): Builder
     {
         if ($ente === null || $year === null) {
@@ -124,6 +139,10 @@ trait CommonScope
         return $this->scopeOfYear($query, $year);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     protected function scopeOfEnte(Builder $query, ?int $ente): Builder
     {
         if ($ente === null) {
@@ -133,6 +152,10 @@ trait CommonScope
         return $query->where('ente', $ente);
     }
 
+    /**
+     * @param  Builder<static>  $query
+     * @return Builder<static>
+     */
     protected function scopeOfDate(Builder $query, ?int $date): Builder
     {
         if ($date === null) {
@@ -154,6 +177,8 @@ trait CommonScope
     /**
      * @param  int|null  $date_start  Start date in Ymd format
      * @param  int|null  $date_end  End date in Ymd format (0 means no end date)
+     * @param  Builder<static>  $query
+     * @return Builder<static>
      */
     protected function scopeOfRangeDate(Builder $query, ?int $date_start, ?int $date_end): Builder
     {

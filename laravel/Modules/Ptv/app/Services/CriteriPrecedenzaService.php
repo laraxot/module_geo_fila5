@@ -10,7 +10,7 @@ use Modules\Progressioni\Models\CriteriPrecedenza;
 class CriteriPrecedenzaService
 {
     /**
-     * Undocumented function.
+     * @return list<object{type: string, name: string|null, label: string|null}>
      */
     public static function getFieldsYear(int|string|null $year, bool $_is_po = false): array
     {

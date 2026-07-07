@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Filament\Resources;
 
 use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Get;
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Section;
 use Illuminate\Support\Arr;
 use Modules\Performance\Actions\HasExcellenceByYearAction;

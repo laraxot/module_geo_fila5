@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Limitk1;
 
+/**
+ * @extends Factory<Limitk1>
+ */
 class Limitk1Factory extends Factory
 {
     /**

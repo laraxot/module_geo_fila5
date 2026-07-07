@@ -7,4 +7,5 @@ namespace Modules\Ptv\Models\Traits\Scopes;
 /*
  * Undocumented trait.
  */
+// @phpstan-ignore trait.unused
 trait ProfileScope {}

@@ -9,11 +9,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use RuntimeException;
 
-/*
+/**
  * Undocumented trait.
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasCriteriValutazione
 {
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function criteriValutazione(): HasMany
     {
         $myclass = static::class;

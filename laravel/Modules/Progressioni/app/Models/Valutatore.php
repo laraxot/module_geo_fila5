@@ -6,7 +6,6 @@ namespace Modules\Progressioni\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Ptv\Models\Profile;
 use Modules\Ptv\Models\Valutatore as PtvValutatore;
@@ -36,18 +35,6 @@ use Override;
 class Valutatore extends PtvValutatore
 {
     protected $connection = 'progressione';
-
-    /** @return HasMany<Scheda, $this> */
-    public function schede(): HasMany
-    {
-        return $this->hasMany(Scheda::class, 'valutatore_id', 'id');
-    }
-
-    /** @return HasMany<Scheda, $this> */
-    public function benificiariProgressione(): HasMany
-    {
-        return $this->schede()->where('benificiario_progressione', 1);
-    }
 
     #[Override]
     public function getNomeStabiAttribute($value): ?string

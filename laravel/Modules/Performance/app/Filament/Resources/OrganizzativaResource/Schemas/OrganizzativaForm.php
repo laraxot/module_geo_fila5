@@ -13,6 +13,7 @@ use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
+use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Modules\Xot\Filament\Actions\Form\FieldRefreshAction;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
@@ -39,7 +40,10 @@ class OrganizzativaForm extends XotBaseResourceForm
                                 return;
                             }
 
-                            $validatedCriteriEsclusione = $criteriEsclusione->where('value', '!=', 0);
+                            $validatedCriteriEsclusione = $criteriEsclusione
+                                ->where('value', '!=', 0)
+                                ->filter(static fn (mixed $criterio): bool => $criterio instanceof CriteriEsclusioneContract)
+                                ->values();
                             if (! $record instanceof Model || ! method_exists($record, 'getCriteriOptions')) {
                                 return;
                             }
@@ -49,6 +53,11 @@ class OrganizzativaForm extends XotBaseResourceForm
                                 return;
                             }
 
+                            if ($validatedCriteriEsclusione->isEmpty()) {
+                                return;
+                            }
+
+                            // @phpstan-ignore-next-line
                             app(Check::class)->execute($record, $validatedCriteriEsclusione, $validatedCriteriOption);
                         }),
                 ])

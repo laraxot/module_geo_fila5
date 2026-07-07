@@ -12,6 +12,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ImportAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Progressioni\Filament\Imports\CedDiffImporter;
 use Modules\Progressioni\Models\CedDiff;

@@ -58,7 +58,7 @@ trait FunctionExtra
     }
 
     /**
-     * @param  array<int|string, mixed>|Collection  $items
+     * @param  array<int|string, mixed>|Collection<int|string, mixed>  $items
      * @return array<int, array<string, mixed>>
      */
     private static function normalizeRowList(array|Collection $items): array
@@ -122,7 +122,7 @@ trait FunctionExtra
 
     /**
      * @param  Builder<Qua00f>|Relation<Qua00f, *, *>  $query
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     private static function applyQua00fCoalesceTotSelectFromArray(Builder|Relation $query, array $params): void
     {
@@ -334,6 +334,9 @@ trait FunctionExtra
         return 'COALESCE(sum(greatest(datediff('.$alTyped.','.$dalTyped.')+1,0)),0)';
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function getCoalesceDateRangeByArray(array $params): string
     {
         $date_min = $params['date_min'] ?? null;
@@ -445,11 +448,10 @@ trait FunctionExtra
     }
 
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function ggInSedeTotByArray(array $params): ?int
     {
-        /** @var array $params */
         $date_min = $params['date_min'] ?? null;
         $date_max = $params['date_max'] ?? null;
         $lista_propro = $params['lista_propro'] ?? null;
@@ -512,7 +514,7 @@ trait FunctionExtra
 
     // ---------------------------------------------------------------------------------------------
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function ggFuoriSedeTot(array $params): ?int
     {
@@ -566,6 +568,9 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public function hhAssenzaInSedeTot(array $params): int
     {
         // These helper calculations are only valid on Anag instances,
@@ -651,7 +656,7 @@ trait FunctionExtra
      * Stub method for giorni assenza fuori sede.
      * TODO: Implement actual calculation when business logic is defined.
      *
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function ggAssenzaFuoriSedeTot(array $params): int
     {
@@ -662,7 +667,7 @@ trait FunctionExtra
      * Stub method for ore assenza fuori sede.
      * TODO: Implement actual calculation when business logic is defined.
      *
-     * @param  array  $_params
+     * @param  array<string, mixed>  $_params
      */
     public function hhAssenzaFuoriSedeTot(array $_params): int
     {
@@ -671,7 +676,7 @@ trait FunctionExtra
 
     // ---------------------------------------------------------------------------------------------
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      * @return Collection<int, array<string, mixed>>
      */
     public static function rep00fQua00fAnnoCollection(array $params): Collection
@@ -711,7 +716,7 @@ trait FunctionExtra
             }
 
             $repItems = self::normalizeRowList($v['rep']);
-            $quaItems = self::normalizeRowList($v['qua']);
+            $quaItems = self::normalizeRowList($v['qua']->all());
 
             foreach ($repItems as &$rep) {
                 if (! \is_array($rep)) {
@@ -846,6 +851,9 @@ trait FunctionExtra
 
     // end function
     // ---------------------------------------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function updateFieldQuaRepForm(array $params): void
     {
         if (! isset($params['ente'])) {
@@ -868,7 +876,6 @@ trait FunctionExtra
 
         // $this->fixRep($params);
         // $this->fixQua($params);
-        /** @var array $paramsTyped */
         $paramsTyped = $params;
         /** @var Collection<int, array<string, mixed>> $rows_coll */
         $rows_coll = Anag::rep00fQua00fAnnoCollection($paramsTyped);
@@ -1113,6 +1120,9 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public function addTableField(array $params): void
     {
         $table = $this->getTable();

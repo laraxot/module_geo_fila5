@@ -7,6 +7,7 @@ namespace Modules\Ptv\Casts;
 use Carbon\Carbon;
 use Spatie\LaravelData\Casts\Cast;
 use Spatie\LaravelData\Casts\Uncastable;
+use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Support\Creation\CreationContext;
 use Spatie\LaravelData\Support\DataProperty;
 
@@ -25,7 +26,8 @@ class DateStringToIntCast implements Cast
      * Converte il valore in un intero nel formato YYYYMMDD.
      *
      * @param  mixed  $value  Valore da convertire (stringa data, intero, o null)
-     * @param  array  $properties
+     * @param  array<string, mixed>  $properties
+     * @param  CreationContext<\Spatie\LaravelData\Data>  $context
      * @return int|null|Uncastable Intero nel formato YYYYMMDD, null, o Uncastable se non può essere convertito
      */
     public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed

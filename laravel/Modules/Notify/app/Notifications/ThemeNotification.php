@@ -20,7 +20,7 @@ class ThemeNotification extends Notification implements ShouldQueue
     public array $attachments;
 
     /**
-     * @param  array  $view_params
+     * @param  array<string, mixed>  $view_params
      */
     public function __construct(
         public string $name,

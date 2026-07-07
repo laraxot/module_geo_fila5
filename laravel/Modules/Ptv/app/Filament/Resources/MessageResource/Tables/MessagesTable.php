@@ -32,7 +32,7 @@ class MessagesTable extends XotBaseResourceTable
     public function getTableFilters(): array
     {
         return [
-            SelectFilter::make('anno')
+            'anno' => SelectFilter::make('anno')
                 ->options([
                     '2023' => '2023',
                     '2024' => '2024',

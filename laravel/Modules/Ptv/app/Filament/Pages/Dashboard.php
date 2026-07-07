@@ -22,10 +22,13 @@ class Dashboard extends XotBaseDashboard
         return 'Here you will see an overview of your tasks.';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getWidgets(): array
     {
         return [
-            AdminWidgets::class,
+            'admin' => AdminWidgets::class,
         ];
     }
 }

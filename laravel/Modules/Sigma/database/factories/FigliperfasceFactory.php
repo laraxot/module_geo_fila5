@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Figliperfasce;
 
+/**
+ * @extends Factory<Figliperfasce>
+ */
 class FigliperfasceFactory extends Factory
 {
     /**

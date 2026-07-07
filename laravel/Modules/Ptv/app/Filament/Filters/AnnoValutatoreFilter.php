@@ -78,8 +78,12 @@ class AnnoValutatoreFilter extends Filter
                     return $query->where('id', 0);
                 }
 
-                if ($data['valutatore_id'] == null && method_exists(profile(), 'isSuperAdmin') && profile()->isSuperAdmin()) {
-                    unset($data['valutatore_id']);
+                if ($data['valutatore_id'] == null) {
+                    /** @var object|null $profile */
+                    $profile = function_exists('profile') ? \profile() : null;
+                    if ($profile !== null && method_exists($profile, 'isSuperAdmin') && $profile->isSuperAdmin()) {
+                        unset($data['valutatore_id']);
+                    }
                 }
 
                 if (isset($data['valutatore_id']) && $data['valutatore_id'] == null) {

@@ -30,12 +30,10 @@ class RepartPolicy
 
         /** @var object{perm_type?: int} $perm */
         $perm = $permRaw;
-        // @phpstan-ignore-next-line - Dynamic property access on object
         if (! isset($perm->perm_type) || ! is_numeric($perm->perm_type)) {
             return null;
         }
 
-        // @phpstan-ignore-next-line - Dynamic property access on object
         $permType = (int) $perm->perm_type;
         if ($permType < 5) {
             return null;

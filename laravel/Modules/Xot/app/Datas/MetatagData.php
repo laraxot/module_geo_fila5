@@ -393,7 +393,7 @@ class MetatagData extends Data implements Wireable
     /**
      * Get the default Filament colors configuration.
      *
-     * @return array<string, array<int|string, int|string>|string>
+     * @return array<string, array<int, string>|string>
      */
     public function getFilamentColors(): array
     {

@@ -27,6 +27,7 @@ class FirmaValutatoreWidget extends XotBaseWidget
 
     public ?string $anno = '';
 
+    /** @var array<string, mixed>|null */
     public ?array $data = [];
 
     protected string $view = 'ptv::filament.widgets.firma_valutatore';
@@ -119,6 +120,9 @@ class FirmaValutatoreWidget extends XotBaseWidget
         dddx($newFilters);
     }
 
+    /**
+     * @param array<string, mixed>|null $filters
+     */
     #[On('valutatoreIdUpdated')]
     public function valutatoreIdUpdated(?array $filters = []): void
     {
@@ -167,6 +171,9 @@ class FirmaValutatoreWidget extends XotBaseWidget
         $this->form->fill($data);
     }
 
+    /**
+     * @param array<string, mixed>|null $filters
+     */
     #[On('filters-updated')]
     public function filtersUpdated(?array $filters = []): void
     {

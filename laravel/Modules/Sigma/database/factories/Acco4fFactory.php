@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Acco4f;
 
+/**
+ * @extends Factory<Acco4f>
+ */
 class Acco4fFactory extends Factory
 {
     /**

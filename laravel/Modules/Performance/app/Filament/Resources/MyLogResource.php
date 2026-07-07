@@ -84,7 +84,7 @@ class MyLogResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int, \Filament\Actions\EditAction>
      */
     public function getTableActions(): array
     {
@@ -95,7 +95,7 @@ class MyLogResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int, \Filament\Actions\DeleteBulkAction>
      */
     public function getTableBulkActions(): array
     {

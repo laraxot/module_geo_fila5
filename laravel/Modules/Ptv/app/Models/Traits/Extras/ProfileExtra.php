@@ -7,4 +7,5 @@ namespace Modules\Ptv\Models\Traits\Extras;
 /*
  * Undocumented trait.
  */
+// @phpstan-ignore trait.unused
 trait ProfileExtra {}

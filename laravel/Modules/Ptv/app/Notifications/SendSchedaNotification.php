@@ -28,6 +28,9 @@ class SendSchedaNotification extends Notification
         $this->filename = $filename;
     }
 
+    /**
+     * @return array<int, string>
+     */
     public function via(): array
     {
         return ['mail'];

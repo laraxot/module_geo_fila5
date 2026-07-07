@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Cor03f;
 
+/**
+ * @extends Factory<Cor03f>
+ */
 class Cor03fFactory extends Factory
 {
     /**

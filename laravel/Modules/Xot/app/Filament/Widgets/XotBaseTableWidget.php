@@ -24,7 +24,7 @@ abstract class XotBaseTableWidget extends FilamentTableWidget
     /**
      * Ascolta evento di aggiornamento filtri.
      *
-     * @param array $filters
+     * @param array<string, mixed> $filters
      */
     #[On('filterUpdate')]
     public function updateFilters(array $filters): void

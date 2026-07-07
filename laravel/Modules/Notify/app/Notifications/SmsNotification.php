@@ -34,7 +34,7 @@ class SmsNotification extends Notification implements ShouldQueue
      * Create a new notification instance.
      *
      * @param  string|SmsData  $content  The content of the SMS or SmsData object
-     * @param  array  $config  Configuration options including provider
+     * @param  array<string, mixed>  $config  Configuration options including provider
      */
     public function __construct(string|SmsData $content, array $config = [])
     {

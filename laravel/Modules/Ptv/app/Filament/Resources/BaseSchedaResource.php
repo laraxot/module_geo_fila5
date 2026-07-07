@@ -46,6 +46,7 @@ abstract class BaseSchedaResource extends XotBaseResource
                                 return;
                             }
 
+                            /** @var \Illuminate\Support\Collection<int, \Modules\Ptv\Models\Contracts\CriteriEsclusioneContract> $validatedCriteriEsclusione */
                             $validatedCriteriEsclusione = $criteriEsclusione->where('value', '!=', 0);
                             if (! $record instanceof Model || ! method_exists($record, 'getCriteriOptions')) {
                                 return;
@@ -109,6 +110,9 @@ abstract class BaseSchedaResource extends XotBaseResource
         return $schema;
     }
 
+    /**
+     * @return array<string, \Filament\Forms\Components\TextInput>
+     */
     public static function getFormSchemaCriteri(SchedaContract $record): array
     {
         $schema = [];

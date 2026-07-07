@@ -68,7 +68,7 @@ class CriteriEsclusionesTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int|string, \Filament\Actions\BulkAction>
      */
     public function getTableBulkActions(): array
     {

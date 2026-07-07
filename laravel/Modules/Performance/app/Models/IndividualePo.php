@@ -191,11 +191,11 @@ use Parental\HasParent;
  *
  * @method static Builder|IndividualePo newModelQuery()
  * @method static Builder|IndividualePo newQuery()
- * @method static Builder|BaseIndividualeModel ofDate(int $date)
- * @method static Builder|BaseIndividualeModel ofEnteYear(int $ente, int $year)
- * @method static Builder|BaseIndividualeModel ofQuarter(int $quarter, int $year)
- * @method static Builder|BaseIndividualeModel ofRangeDate(int $date_start, int $date_end)
- * @method static Builder|BaseIndividualeModel ofYear(int $year)
+ * @method static Builder<self>|BaseIndividualeModel<self> ofDate(int $date)
+ * @method static Builder<self>|BaseIndividualeModel<self> ofEnteYear(int $ente, int $year)
+ * @method static Builder<self>|BaseIndividualeModel<self> ofQuarter(int $quarter, int $year)
+ * @method static Builder<self>|BaseIndividualeModel<self> ofRangeDate(int $date_start, int $date_end)
+ * @method static Builder<self>|BaseIndividualeModel<self> ofYear(int $year)
  * @method static Builder|IndividualePo query()
  * @method static Builder|IndividualePo whereAl($value)
  * @method static Builder|IndividualePo whereAnno($value)
@@ -292,8 +292,8 @@ use Parental\HasParent;
  * @method static Builder|IndividualePo whereTotalePunteggio($value)
  * @method static Builder|IndividualePo whereUpdatedAt($value)
  * @method static Builder|IndividualePo whereUpdatedBy($value)
- * @method static Builder|BaseIndividualeModel withDays(int $date_min, int $date_max)
- * @method static Builder|BaseIndividualeModel withTotPunt()
+ * @method static Builder<self>|BaseIndividualeModel<self> withDays(int $date_min, int $date_max)
+ * @method static Builder<self>|BaseIndividualeModel<self> withTotPunt()
  *
  * @property int|null $assenze_aggiornate Flag per tracciamento aggiornamento assenze, vedi pipeline individuale
  * @property-read Profile|null $creator
@@ -400,8 +400,8 @@ use Parental\HasParent;
  * @property-read int|null $qua00f_year_count
  * @property-read IndividualePo|null $stipendioTabellare
  *
- * @method static Builder<static>|IndividualePo childrenWith(array $relations)
- * @method static Builder<static>|IndividualePo childrenWithCount(array $relations)
+ * @method static Builder<static>|IndividualePo childrenWith(array<int, mixed> $relations)
+ * @method static Builder<static>|IndividualePo childrenWithCount(array<int, mixed> $relations)
  * @method static \Modules\Performance\Database\Factories\IndividualePoFactory factory($count = null, $state = [])
  * @method static Builder<static>|IndividualePo whereCategoriaEcoval($value)
  * @method static Builder<static>|IndividualePo wherePosfunval($value)
@@ -456,6 +456,9 @@ class IndividualePo extends Individuale
         'updated_at',
     ];
     */
+    /**
+     * @return HasMany<self, $this>
+     */
     public function mails(): HasMany
     {
         $stabi = request()->input('stabi', '');

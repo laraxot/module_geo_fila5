@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Filament\Resources\MyLogResource\Tables;
 
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 

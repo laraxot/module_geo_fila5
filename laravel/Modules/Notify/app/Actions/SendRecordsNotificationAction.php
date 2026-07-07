@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Datas\SendNotificationBulkResultData;
+use Modules\Notify\Enums\ChannelEnum;
 use Modules\Xot\Actions\Cast\SafeEloquentCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -38,7 +39,7 @@ class SendRecordsNotificationAction
      * Process notifications for selected records.
      *
      * @param  Collection<int, Model>  $records  Selected records (e.g., Clients).
-     * @param  array  $channels  I canali selezionati: 'mail', 'sms', 'whatsapp'
+     * @param  array<int, ChannelEnum|string>  $channels  I canali selezionati: 'mail', 'sms', 'whatsapp'
      * @return SendNotificationBulkResultData Risultato con successCount, errorCount, errors, totalProcessed
      */
     public function execute(
@@ -65,9 +66,10 @@ class SendRecordsNotificationAction
                 $errorCount += \count($channels);
                 $recordName = $this->getRecordName($record);
                 foreach ($channels as $channelItem) {
+                    $channel = $channelItem instanceof ChannelEnum ? $channelItem->value : $channelItem;
                     $errors->push([
                         'record' => $recordName,
-                        'channel' => $channelItem,
+                        'channel' => $channel,
                         'error' => $e->getMessage(),
                     ]);
                 }

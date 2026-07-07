@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Fatturl1;
 
+/**
+ * @extends Factory<Fatturl1>
+ */
 class Fatturl1Factory extends Factory
 {
     /**

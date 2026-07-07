@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Ced08l2;
 
+/**
+ * @extends Factory<Ced08l2>
+ */
 class Ced08l2Factory extends Factory
 {
     /**

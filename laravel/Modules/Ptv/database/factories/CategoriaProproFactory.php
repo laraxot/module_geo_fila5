@@ -2,10 +2,10 @@
 
 namespace Modules\Ptv\Database\Factories;
 
-/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\CategoriaPropro> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\CategoriaPropro;
 
+/** @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Ptv\Models\CategoriaPropro> */
 class CategoriaProproFactory extends Factory
 {
     /**

@@ -6,9 +6,11 @@ The `php artisan ide-helper:models -W` command was reporting an error in the `In
 
 ## Solution
 ### 1. Robust Relation Handling
-Updated `ServizioEsterno::trasferte()` to check if the related class exists before returning the relation:
+Updated `ServizioEsterno::trasferte()` to resolve the related model class before returning the relation:
 - Used `class_exists()` to safely detect if `Modules\Trasferte\Models\FuoriSedeDip` is available.
-- If the class is missing, it returns an empty `hasMany` relation to prevent `ide-helper` from crashing or reporting errors.
+- Checked the optional class with `is_subclass_of(..., Model::class)` before using it in `hasMany()`.
+- If the class is missing, it falls back to `self::class` so the relation keeps a concrete Eloquent model class and PHPStan can infer `HasMany<Model, $this>`.
+- Keep the `class-string<Model>` PHPDoc on a resolver method, not as an inline `@var` override.
 
 ### 2. Standardized Eloquent Relations
 - Replaced `belongsToManyX` with standard `belongsToMany` in `ServizioEsterno` for `indennitaTipoDettaglio` and `tipoDettaglio`. This improves compatibility with automated tools like `ide-helper` while maintaining the exact same behavior via the `using()` and `withPivot()` methods.

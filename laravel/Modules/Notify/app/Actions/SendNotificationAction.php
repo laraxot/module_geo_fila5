@@ -21,9 +21,9 @@ class SendNotificationAction
     use QueueableAction;
 
     /**
-     * @param  array  $data
-     * @param  array  $channels
-     * @param  array  $options
+     * @param  array<string, mixed>  $data
+     * @param  list<string>  $channels
+     * @param  array<string, mixed>  $options
      *
      * @throws Exception
      */
@@ -71,8 +71,8 @@ class SendNotificationAction
 
     /**
      * @param  array{subject: string, body_html: string|null, body_text: string|null}  $compiled
-     * @param  array  $data
-     * @param  array  $options
+     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>  $options
      *
      * @throws Exception
      */
@@ -94,7 +94,7 @@ class SendNotificationAction
 
     /**
      * @param  array{subject: string, body_html: string|null, body_text: string|null}  $compiled
-     * @param  array  $options
+     * @param  array<string, mixed>  $options
      *
      * @throws Exception
      */
@@ -129,8 +129,8 @@ class SendNotificationAction
 
     /**
      * @param  array{subject: string, body_html: string|null, body_text: string|null}  $compiled
-     * @param  array  $data
-     * @param  array  $options
+     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>  $options
      */
     protected function sendDatabase(
         Model $recipient,
@@ -168,7 +168,7 @@ class SendNotificationAction
 
     /**
      * @param  array{subject: string, body_html: string|null, body_text: string|null}  $compiled
-     * @param  array  $options
+     * @param  array<string, mixed>  $options
      *
      * @throws Exception
      */

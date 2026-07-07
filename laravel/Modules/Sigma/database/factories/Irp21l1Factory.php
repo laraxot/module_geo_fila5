@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Irp21l1;
 
+/**
+ * @extends Factory<Irp21l1>
+ */
 class Irp21l1Factory extends Factory
 {
     /**

@@ -17,6 +17,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 ## Handoff attivi
 
 - [prompt-start-refactor.md](prompt-start-refactor.md) — refactor `bashscripts/tools/prompts/start.txt`: deduplica, bootstrap, lock e gate qualita'
+- [prompt-start-aggiunte.md](prompt-start-aggiunte.md) — aggiunte a `start.txt`: prompt modulari, ponytail, context-mode, BMAD agents
 - [handoff-scheda-peso-homonym.md](handoff-scheda-peso-homonym.md) — fix `Scheda::peso()` su CompilaScheda (ArgumentCountError)
 - [handoff-asz-relationship-revert.md](handoff-asz-relationship-revert.md) — revert bypass `Asz00k1::query()` → `$scheda->asz()`
 - [handoff-phpstan-modules-zero.md](handoff-phpstan-modules-zero.md) — bootstrap 2026-06-15: PHPStan 0 su tutti i moduli

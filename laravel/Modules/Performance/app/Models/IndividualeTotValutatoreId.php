@@ -107,7 +107,9 @@ class IndividualeTotValutatoreId extends BaseModel
         ];
     }
 
-    // Relazione valutatore opzionale
+    /**
+     * @return BelongsTo<Valutatore, $this>
+     */
     public function valutatore(): BelongsTo
     {
         return $this->belongsTo(Valutatore::class);

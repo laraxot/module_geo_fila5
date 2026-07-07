@@ -207,6 +207,9 @@ class Asz00k1 extends BaseDateRangeModel
 
     // -------------------------------------------------------------------------
 
+    /**
+     * @return HasOne<Codici, $this>
+     */
     public function codici(): HasOne
     {
         // echo $obj->toSql();
@@ -290,6 +293,9 @@ OR
         });
     }
 
+    /**
+     * @param  Builder<self>  $query
+     */
     protected function scopeOfListaTipoCodice(Builder $query, string $lista_tipo_codice): void
     {
         $query->whereRaw('find_in_set(concat(asztip,"-",aszcod), ?)', [$lista_tipo_codice]);
@@ -299,7 +305,7 @@ OR
     /**
      * Calcola giorni assenza nel periodo specificato.
      *
-     * @param  array|null  $params  Parametri con date_min, date_max, lista_propro, posfun
+     * @param  array<string, mixed>|null  $params  Parametri con date_min, date_max, lista_propro, posfun
      * @return float Giorni calcolati
      *
      * @throws \Exception Se date_max non è definito
@@ -385,6 +391,9 @@ OR
         return $value;
     }
 
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function hhDecimal(?array $params = null): float
     {
         if ($params === null) {
@@ -520,6 +529,10 @@ OR
     }
 
     // ------ SCOPES --------
+    /**
+     * @param  Builder<self>  $query
+     * @return Builder<self>
+     */
     protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
     {
         if ($date_min === null || $date_max === null) {
@@ -532,6 +545,11 @@ OR
         );
     }
 
+    /**
+     * @param  Builder<self>  $query
+     * @param  array<int, string>|string  $lista_codici
+     * @return Builder<self>
+     */
     protected function scopeOfCodici(Builder $query, array|string $lista_codici): Builder
     {
         if (\is_array($lista_codici)) {

@@ -6,6 +6,7 @@ namespace Modules\Ptv\Actions\Scheda;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
+use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -38,11 +39,17 @@ class TrovaEsclusiByModelClassYearAction
             return;
         }
 
+        /** @var \Illuminate\Support\Collection<int, CriteriEsclusioneContract> $validatedCriteriEsclusione */
+        $validatedCriteriEsclusione = $criteriEsclusione
+            ->filter(static fn (mixed $criterio): bool => $criterio instanceof CriteriEsclusioneContract)
+            ->values()
+            ->toBase();
+
         foreach ($rows as $row) {
             if (! $row instanceof SchedaContract) {
                 continue;
             }
-            app(Check::class)->execute($row, $criteriEsclusione, $criteriOption);
+            app(Check::class)->execute($row, $validatedCriteriEsclusione, $criteriOption);
         }
     }
 }

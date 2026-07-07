@@ -195,6 +195,14 @@ public function calculateWeightedScore(): float
 
 ## Type Patterns
 
+### Pattern riusabili emersi da PHPStan modulo Progressioni
+
+- Per passare collection a servizi Ptv tipizzati su contratti, costruire una nuova `Collection<int, Contract>` tramite helper privato con `@return` esplicito. Evitare oggetti anonimi e array shape quando il servizio richiede modelli/contratti reali.
+- Per override di relazioni Eloquent ereditate da classi Ptv, rispettare la generic PHPDoc del metodo base. Se il metodo base risolve gia' il model del modulo tramite namespace, preferire l'ereditarieta' invece di ridefinire la relazione concreta.
+- Per `pluck('value', 'name')->all()` dichiarato `array<string, mixed>`, filtrare le chiavi non stringa con `mapWithKeys()` prima di restituire l'array.
+- Per metodi che promettono union strette (`int|string|array<int,string>|Carbon|null`), normalizzare il valore prima del return e convertire gli array in liste di stringhe.
+- Per filtri Filament, il PHPDoc deve descrivere il tipo realmente restituito (`SelectFilter` se l'array contiene solo `SelectFilter`), senza allargare a classi base non compatibili con le generic invarianti.
+
 ### Collection Typing
 ```php
 // Use proper generics

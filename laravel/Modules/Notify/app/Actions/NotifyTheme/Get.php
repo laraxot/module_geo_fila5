@@ -18,7 +18,7 @@ class Get
     use QueueableAction;
 
     /**
-     * @param  array  $view_params
+     * @param  array<string, mixed>  $view_params
      */
     public function execute(string $name, string $type, array $view_params): NotifyThemeData
     {

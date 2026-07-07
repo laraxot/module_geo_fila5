@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Acp01f;
 
+/**
+ * @extends Factory<Acp01f>
+ */
 class Acp01fFactory extends Factory
 {
     /**

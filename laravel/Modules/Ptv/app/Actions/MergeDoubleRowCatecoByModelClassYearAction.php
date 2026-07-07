@@ -20,7 +20,7 @@ class MergeDoubleRowCatecoByModelClassYearAction
             return;
         }
 
-        /** @var Builder $query */
+        /** @var Builder<Model> $query */
         $query = $modelClass::where([$fieldName => $year]);
         $rows = $query->get();
 

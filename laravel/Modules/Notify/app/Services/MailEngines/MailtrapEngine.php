@@ -45,7 +45,7 @@ class MailtrapEngine
     }
 
     /**
-     * @param  array  $vars
+     * @param  array<string, mixed>  $vars
      */
     public function setLocalVars(array $vars): self
     {

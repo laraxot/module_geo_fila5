@@ -15,6 +15,9 @@ interface CanThemeNotificationContract
     /**
      * @param  array  $view_params
      */
+    /**
+     * @param  array<string, mixed>  $view_params
+     */
     public function getNotificationData(string $name, array $view_params = []): NotificationData;
 
     public function getModel(): Model;
@@ -31,6 +34,9 @@ interface CanThemeNotificationContract
 
     /**
      * @param  array  $data
+     */
+    /**
+     * @param  array<string, mixed>  $data
      */
     public function increase(string $what, array $data): void;
 }

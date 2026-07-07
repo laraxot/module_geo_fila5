@@ -129,3 +129,15 @@ app(SomeAction::class)->execute($tableFilters);
 | `phpstan-bootstrap.php` | Aggiunto `require_once` per caricare lo stub |
 
 *ultimo aggiornamento scan: 2026-06-18*
+
+## scan 2026-07-07
+
+**comando:** `cd laravel && ./vendor/bin/phpstan analyse Modules/IndennitaCondizioniLavoro --no-progress --error-format=table`  
+**esito codice:** 0 errori nel modulo; resta solo ignore stale in `phpstan.neon` (`larastan.noEnvCallsOutsideOfConfig`), modificabile solo dall'utente.
+
+| file | fix |
+|------|-----|
+| `IndennitaTipoDettaglioAnno.php` | `pluck()` normalizzato con loop tipizzato e guard `is_string()` per restituire `array<int|string, string|null>` |
+| `ServizioEsterno.php` | relazione opzionale verso modulo Trasferte risolta con `class-string<Model>` dinamico unico, evitando branch con generic `HasMany` divergenti |
+
+Pattern: quando una relazione punta a un modulo opzionale, scegliere una sola variabile `class-string<Model>` validata con `class_exists()` + `is_subclass_of()` e passarla a `hasMany()`.

@@ -211,6 +211,9 @@ class Qua03f extends BaseDateRangeModel
     }
 
     // -------------------------------------------------------------------------
+    /**
+     * @return HasOne<Tqu00f, $this>
+     */
     public function Tqu00f(): HasOne
     {
         return $this->hasOne(Tqu00f::class, 'propro', 'q3pro')->where('posfun', $this->q3fun);
@@ -222,6 +225,9 @@ class Qua03f extends BaseDateRangeModel
     }
 
     // /------------------------------------------
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function giorni(?array $params = null): int
     {
         if ($params === null) {
@@ -251,6 +257,9 @@ class Qua03f extends BaseDateRangeModel
     }
 
     // ---------------------------------------------------------
+    /**
+     * @param  array<int|string, mixed>|null  $params
+     */
     public function gg(?array $params = null): int
     {
         if ($params === null) {

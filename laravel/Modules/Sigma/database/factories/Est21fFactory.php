@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Est21f;
 
+/**
+ * @extends Factory<Est21f>
+ */
 class Est21fFactory extends Factory
 {
     /**

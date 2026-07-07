@@ -127,11 +127,17 @@ class Valutatore extends BaseModel
     }
 
     // ----- relationship ---
+    /**
+     * @return HasOne<Repart, $this>
+     */
     public function repart(): HasOne
     {
         return $this->hasOne(Repart::class, 'stabi', 'stabi')->where('repar', $this->repar)->where('ente', 90);
     }
 
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
@@ -147,11 +153,17 @@ class Valutatore extends BaseModel
         return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
+    /**
+     * @return HasOne<self, $this>
+     */
     public function boss(): HasOne
     {
         return $this->hasOne(self::class, 'valutatore_id', 'id');
     }
 
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function benificiariProgressione(): HasMany
     {
         return $this->schede()->where('benificiario_progressione', 1);

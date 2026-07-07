@@ -74,6 +74,9 @@ trait MassExtra
         return $model;
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateCognomeNome(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -126,6 +129,9 @@ trait MassExtra
 
     // end massUpdateCognomeNome
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateCategoriaEco(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -170,6 +176,9 @@ trait MassExtra
 
     // end function
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdatePosizTxt(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -208,6 +217,9 @@ trait MassExtra
 
     // end function
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateStabiTxtReparTxt(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -255,11 +267,17 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGInSede(array $params): void
     {
         self::massUpdateGGInSedeQua00f($params);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGInSedeQua00f(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -362,6 +380,9 @@ trait MassExtra
     // -----------------------------------------------------------------------------
 
     // -----------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function date_diff_sql(string $field_dal, string $field_al, array $params): string
     {
         $dal = $field_dal;
@@ -383,6 +404,9 @@ trait MassExtra
 
     // -----------------------------------------------------------------------------
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGPosizInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -460,6 +484,9 @@ trait MassExtra
 
     // end function
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAnnoInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -529,6 +556,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAssenzeAnnoInSede(array $params): void
     {
         $params['umi'] = 'G';
@@ -540,6 +570,9 @@ trait MassExtra
     }
 
     // --------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateHHAssenzeAnnoInSede(array $params): void
     {
         $params['umi'] = 'O';
@@ -550,6 +583,9 @@ trait MassExtra
         self::massUpdateUMIAssenzeAnnoInSede($params);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateUMIAssenzeAnnoInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -639,6 +675,9 @@ trait MassExtra
 
     // -------------------------------------------------------------------
     // ------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -721,6 +760,9 @@ trait MassExtra
 
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -800,6 +842,9 @@ trait MassExtra
     // end function
 
     // ----------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoPosfunInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -892,6 +937,9 @@ trait MassExtra
     }
 
     // ----------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -973,6 +1021,9 @@ trait MassExtra
     }
 
     // --------------------------------------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoPosfunFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1063,6 +1114,9 @@ trait MassExtra
     // --------------------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGNOCatEcoInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1086,6 +1140,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGNOCatEcoFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1109,6 +1166,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGNOCatEcoPosfunInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1132,6 +1192,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGNOCatEcoPosfunFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1155,6 +1218,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativeInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1223,6 +1289,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativeFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1239,6 +1308,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativeCatEcoPondInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1428,6 +1500,9 @@ trait MassExtra
         $connTyped->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativeCatEcoPondFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1548,6 +1623,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoNoPosfunInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1573,6 +1651,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGCatEcoNoPosfunFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1599,6 +1680,9 @@ trait MassExtra
     }
 
     // in anag.old c'e' una altra funzione capire quale dellle 2
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativePondInSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1618,6 +1702,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateGGAspettativePondFuoriSede(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1638,6 +1725,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdatePosfunval(array $params): void
     {
         $instance = self::getConcreteInstance();
@@ -1653,6 +1743,9 @@ trait MassExtra
         $conn->statement($sql);
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function massUpdateCategoriaEcoval(array $params): void
     {
         $instance = self::getConcreteInstance();

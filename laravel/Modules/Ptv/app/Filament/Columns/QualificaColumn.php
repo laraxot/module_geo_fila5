@@ -10,6 +10,9 @@ use Modules\UI\Filament\Tables\Columns\GroupColumn;
 
 class QualificaColumn extends GroupColumn
 {
+    /**
+     * @var array<string, Column>
+     */
     protected array $extraColumns = [];
 
     public static function make(?string $name = null): static
@@ -27,7 +30,7 @@ class QualificaColumn extends GroupColumn
     }
 
     /**
-     * @param  array<string, mixed>  $columns
+     * @param  array<string, Column>  $columns
      */
     public function appendColumns(array $columns): static
     {
@@ -42,6 +45,9 @@ class QualificaColumn extends GroupColumn
         return $this->schema($form);
     }
 
+    /**
+     * @return array<string, Column>
+     */
     protected static function getSchema(): array
     {
         return [

@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Wstr02c;
 
+/**
+ * @extends Factory<Wstr02c>
+ */
 class Wstr02cFactory extends Factory
 {
     /**

@@ -35,6 +35,9 @@ use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
 /**
  * @template TEntity as object
  *
+ * @use \Modules\Performance\Models\Traits\FunctionTrait<self>
+ * @use \Modules\Performance\Models\Traits\MutatorTrait<self>
+ *
  * @property int $id
  * @property int $ente
  * @property int|null $matr
@@ -175,6 +178,10 @@ use Modules\Sigma\Models\Traits\Mutators\EnteMatrDateRangeMutator;
  */
 abstract class BaseIndividualeModel extends BaseScheda
 {
+    /**
+     * @use FunctionTrait<static>
+     * @use MutatorTrait<static>
+     */
     use FunctionTrait, HasCriteriValutazione, \Modules\Progressioni\Models\Traits\ConvertedTrait, MutatorTrait, RelationshipTrait, SchedaTrait, SigmaModelTrait, Updater {
         SchedaTrait::ggInSedeTot insteadof SigmaModelTrait;
         SchedaTrait::ggFuoriSedeTot insteadof SigmaModelTrait;
@@ -237,14 +244,11 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     * @return HasMany<Individuale, static>
+     * @return HasMany<Individuale, $this>
      */
     public function cards(): HasMany
     {
-        // @phpstan-ignore-next-line
-        return $this->hasMany(Individuale::class, 'matr', 'matr')
-            ->where('ente', $this->ente)
-            ->where('anno', $this->anno);
+        return $this->hasMany(Individuale::class, 'matr', 'matr');
     }
 
     /**
@@ -257,7 +261,7 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     * @return BelongsTo<StabiDirigente, static>
+     * @return BelongsTo<StabiDirigente, $this>
      */
     public function valutatore(): BelongsTo
     {
@@ -276,11 +280,11 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     * @return HasMany<CriteriOption, static>
+     * @return HasMany<CriteriOption, $this>
      */
+    // @phpstan-ignore-next-line
     public function criteriOptions(): HasMany
     {
-        // @phpstan-ignore-next-line
         return $this->hasMany(CriteriOption::class, 'anno', 'anno');
     }
 
@@ -343,6 +347,9 @@ abstract class BaseIndividualeModel extends BaseScheda
         $this->attributes['motivo'] = $value;
     }
 
+    /**
+     * @return \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option>
+     */
     public function getCriteriOptionsRoot(): Collection
     {
         $criteri = $this->options()->where('parent_id', 0)->where('name', 'criterio')->get();

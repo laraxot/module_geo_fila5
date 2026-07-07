@@ -18,7 +18,7 @@ class GetWorkersByYear
     /**
      * Undocumented function.
      *
-     * @return DataCollection<RepQuaYearData>
+     * @return DataCollection<int|string, RepQuaYearData>
      */
     public function execute(?string $year): DataCollection
     {
@@ -104,10 +104,14 @@ class GetWorkersByYear
             // }
         }
 
+        /** @var array<int, mixed> $ris2 */
+        /** @var array<int, mixed> $ris2 */
         $ris2 = [];
         foreach ($ris as $ri) {
             if (isset($ri['merge'])) {
-                $ris2 = array_merge_recursive($ris2, $ri['merge']);
+                foreach ($ri['merge'] as $mergeRow) {
+                    $ris2[] = $mergeRow;
+                }
             }
         }
 

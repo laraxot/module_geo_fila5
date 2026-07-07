@@ -98,6 +98,15 @@ class IndennitaTipoDettaglioAnno extends BaseModel
      */
     public function getIndennitaTipoOptsAttribute(?string $value): array
     {
-        return IndennitaTipo::all()->pluck('nome', 'id')->toArray();
+        $options = [];
+        foreach (IndennitaTipo::query()->pluck('nome', 'id') as $id => $nome) {
+            if (! is_int($id) && ! is_string($id)) {
+                continue;
+            }
+
+            $options[$id] = is_string($nome) || $nome === null ? $nome : null;
+        }
+
+        return $options;
     }
 }

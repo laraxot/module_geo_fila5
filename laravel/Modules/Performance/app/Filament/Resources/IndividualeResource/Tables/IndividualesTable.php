@@ -36,7 +36,7 @@ use Parental\HasParent;
 class IndividualesTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableHeaderActions(): array
     {
@@ -105,7 +105,7 @@ class IndividualesTable extends XotBaseResourceTable
     }
 
     /**
-     *  array<string, BaseFilter>
+     * @return array<string, \Filament\Tables\Filters\BaseFilter>
      */
     public function getTableFilters(): array
     {

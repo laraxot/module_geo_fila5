@@ -59,6 +59,9 @@ class RepQuaYearData extends Data implements Wireable
 
     /**
      * ---.
+     *
+     * @param  array<int, mixed>  $data
+     * @return DataCollection<int|string, static>
      */
     public static function collection(array $data): DataCollection
     {

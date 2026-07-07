@@ -39,6 +39,10 @@ class IndividualePoResource extends IndividualeResource
         ];
     }
 
+    /**
+     * @param array{stabi_repar_anno?: array{anno?: int|string}} $data
+     * @return list<string|null>
+     */
     #[Override]
     public static function getXlsFields(array $data): array
     {
@@ -62,8 +66,13 @@ class IndividualePoResource extends IndividualeResource
         $trans = trans($transKey);
 
         foreach ($criteri as $criterio) {
-            $fields[] = $criterio->nome;
-            Arr::set($trans, 'fields.'.$criterio->nome, $criterio->label);
+            $nome = $criterio->nome;
+            if (! is_string($nome) || $nome === '') {
+                continue;
+            }
+
+            $fields[] = $nome;
+            Arr::set($trans, 'fields.'.$nome, $criterio->label);
         }
         app(SaveTransAction::class)->execute($transKey, $trans);
         $fields[] = 'excellence';

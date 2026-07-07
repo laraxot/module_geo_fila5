@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Asz02l2;
 
+/**
+ * @extends Factory<Asz02l2>
+ */
 class Asz02l2Factory extends Factory
 {
     /**

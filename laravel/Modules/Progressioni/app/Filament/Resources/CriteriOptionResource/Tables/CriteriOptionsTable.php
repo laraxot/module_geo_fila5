@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Filament\Resources\CriteriOptionResource\Tables;
 
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class CriteriOptionsTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, mixed>
+     * @return array<string, Column>
      */
-    /**
-    * @return array<string, Column>
-    */
     public function getTableColumns(): array
     {
         return [

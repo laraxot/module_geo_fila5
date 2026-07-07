@@ -58,9 +58,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder<static>|NotificationTemplate newQuery()
  * @method static Builder<static>|NotificationTemplate query()
  * @method static Builder<static>|NotificationTemplate whereJsonContainsLocale(string $column, string $locale, ?mixed $value, string $operand = '=')
- * @method static Builder<static>|NotificationTemplate whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
+ * @method static Builder<static>|NotificationTemplate whereJsonContainsLocales(string $column, array<int, string> $locales, ?mixed $value, string $operand = '=')
  * @method static Builder<static>|NotificationTemplate whereLocale(string $column, string $locale)
- * @method static Builder<static>|NotificationTemplate whereLocales(string $column, array $locales)
+ * @method static Builder<static>|NotificationTemplate whereLocales(string $column, array<int, string> $locales)
  *
  * @property-read ProfileContract|null $deleter
  * @property string|null $updated_by
@@ -171,7 +171,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Compile the template with the given data.
      *
-     * @param  array  $data  The data to compile the template with
+     * @param  array<string, mixed>  $data  The data to compile the template with
      * @return array{subject: string, body_html: string|null, body_text: string|null}
      */
     public function compile(array $data = []): array
@@ -190,7 +190,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Check if the notification should be sent based on conditions.
      *
-     * @param  array  $data  The data to check conditions against
+     * @param  array<string, mixed>  $data  The data to check conditions against
      */
     public function shouldSend(array $data = []): bool
     {
@@ -211,7 +211,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Preview the template with the given data.
      *
-     * @param  array  $data  Additional data to merge with preview data
+     * @param  array<string, mixed>  $data  Additional data to merge with preview data
      * @return array{subject: string, body_html: string|null, body_text: string|null}
      */
     public function preview(array $data = []): array
@@ -297,7 +297,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
     /**
      * Set the GrapesJS data.
      *
-     * @param  array  $data
+     * @param  array<string, mixed>  $data
      */
     public function setGrapesJSData(array $data): self
     {
@@ -361,7 +361,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
      * Compile a string template with the given data.
      *
      * @param  string|null  $template  The template to compile
-     * @param  array  $data  The data to compile with
+     * @param  array<string, mixed>  $data  The data to compile with
      */
     protected function compileString(?string $template, array $data): ?string
     {

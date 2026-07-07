@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Alianz31122008tutti;
 
+/**
+ * @extends Factory<Alianz31122008tutti>
+ */
 class Alianz31122008tuttiFactory extends Factory
 {
     /**

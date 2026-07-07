@@ -72,7 +72,7 @@ class ImportCsvAction
     /**
      * Get table columns excluding certain fields.
      *
-     * @return array<ColumnData>
+     * @return array<int, ColumnData>
      */
     private function getTableColumns(Builder $conn, string $tbl): array
     {
@@ -96,7 +96,7 @@ class ImportCsvAction
     /**
      * Prepare fields for the SQL query.
      *
-     * @param array $columns
+     * @param array<int, ColumnData> $columns
      *
      * @return array<string>
      */
@@ -111,7 +111,7 @@ class ImportCsvAction
     /**
      * Build the SQL query for importing data.
      *
-     * @param array $columns
+     * @param array<int, ColumnData> $columns
      */
     private function buildSql(string $path, string $db, string $tbl, string $fieldsUpList, array $columns): string
     {
@@ -143,7 +143,7 @@ class ImportCsvAction
     /**
      * Transform columns into ColumnData objects.
      *
-     * @param array $columns
+     * @param array<int, string> $columns
      *
      * @return array<ColumnData>
      *

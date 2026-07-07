@@ -13,6 +13,9 @@ class TrovaEsclusiAction
 
     public int $year;
 
+    /**
+     * @param BaseIndividualeModel<object> $model
+     */
     public function check(string $name, string $value, BaseIndividualeModel $model): string
     {
         $action = new GetHaDirittoMotivoAction;

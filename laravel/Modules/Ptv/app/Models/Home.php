@@ -7,6 +7,7 @@ namespace Modules\Ptv\Models;
 // --- TRAITS ---
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Ptv\Database\Factories\HomeFactory;
 use Modules\Xot\Models\Traits\WidgetTrait;
 use Sushi\Sushi;
@@ -20,9 +21,9 @@ use Sushi\Sushi;
  * @property string|null $icon_src
  * @property string|null $created_by
  * @property string|null $updated_by
- * @property Collection $containerWidgets
+ * @property Collection<int, Model> $containerWidgets
  * @property int|null $container_widgets_count
- * @property Collection $widgets
+ * @property Collection<int, Model> $widgets
  * @property int|null $widgets_count
  *
  * @method static HomeFactory factory($count = null, $state = [])
@@ -54,7 +55,7 @@ class Home extends BaseModel
     /**
      * Undocumented variable.
      *
-     * @var array
+     * @var array<int, array<string, string>>
      */
     protected $rows = [
         [

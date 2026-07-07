@@ -29,10 +29,15 @@ use Modules\UI\Filament\Tables\Columns\GroupColumn;
  */
 class QuaColumn extends GroupColumn
 {
+    /**
+     * @var array<string, Column>
+     */
     protected array $extraColumns = [];
 
     /**
      * Get the default schema for qualification information
+     *
+     * @return array<string, Column>
      */
     protected static function getSchema(): array
     {
@@ -96,7 +101,7 @@ class QuaColumn extends GroupColumn
 
     /**
      * Append additional columns to the qualification schema
-     * @param  array<string, mixed>  $columns
+     * @param  array<string, Column>  $columns
      */
     public function appendColumns(array $columns): static
     {

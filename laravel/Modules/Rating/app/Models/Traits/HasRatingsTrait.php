@@ -79,6 +79,10 @@ trait HasRatingsTrait
 
     /**
      * Scope a query to only include popular users.
+     *
+     * @param Builder<$this> $query
+     *
+     * @return Builder<$this>
      */
     public function scopeWithRating(Builder $query): Builder
     {
@@ -93,7 +97,7 @@ trait HasRatingsTrait
     /**
      * Get my ratings for this model.
      *
-     * @return MorphToMany<Rating, static>
+     * @return MorphToMany<Rating, $this>
      */
     public function myRatings(): MorphToMany
     {
@@ -102,7 +106,9 @@ trait HasRatingsTrait
     }
 
     // ----- mutators -----
-    // *
+    /**
+     * @return Collection<int|string, mixed>
+     */
     public function getMyRatingAttribute(): Collection
     {
         $myRatings = $this->myRatings;
@@ -171,6 +177,8 @@ trait HasRatingsTrait
 
     /**
      * @param array<string, mixed> $where
+     *
+     * @return Collection<int, mixed>
      */
     public function syncRatingsWhere(array $where): Collection
     {
@@ -182,7 +190,10 @@ trait HasRatingsTrait
         $rating_ids = $ratings->modelKeys();
         $this->ratings()->sync($rating_ids);
 
-        return $this->ratings;
+        /** @var Collection<int, mixed> $result */
+        $result = $this->ratings;
+
+        return $result;
     }
 
     // */

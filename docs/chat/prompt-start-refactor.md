@@ -28,3 +28,12 @@ Aggiornato `bashscripts/tools/prompts/start.txt`.
   - Aggiunta regola dipendenza moduli: `Xot ← UI ← Geo, …`
   - Aggiunta riga vietato: `use Modules\Geo\*` dentro `Modules/UI/`
 - **Esito gate**: 13 pass, 1 fail (Folio semantic dirs — preesistente), 7 warn.
+
+## Sessione 2026-07-07
+
+- **Issue audit**: aperta `provtv/base_ptv_fila5#185`.
+- **Aggiornato** `bashscripts/tools/prompts/start.txt`:
+  - aggiunta sezione stile risposta italiano/sintetico/conciso;
+  - resi espliciti issue audit GitHub, Skills Index e standard Markdown;
+  - rafforzato divieto `persist*` su metodi dominio;
+  - rimossa riga utente finita in coda al prompt.

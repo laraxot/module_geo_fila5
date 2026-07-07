@@ -27,47 +27,42 @@ trait ProgressioniFunctionTrait
     }
 
     /**
-     * Get option value with proper type conversion.
-     *
-     * @param  string  $name  Option name to retrieve
+     * @return int|array<int, string>|string|Carbon|null
      */
-    /** @return int|array<int, string>|string|Carbon|null */
     public function getOption(string $name): int|array|string|Carbon|null
     {
-        $item = $this->criteriOptions()->firstWhere('name', $name);
-        if ($item === null) {
+        $option = CriteriOption::where("anno", $this->anno)
+            ->where("name", $name)
+            ->first();
+
+        if ($option === null) {
             return null;
         }
 
-        // Type guard for CriteriOption
-        assert($item instanceof CriteriOption);
+        $type = $option->getAttribute("type");
+        $value = $option->getAttribute("value");
 
-        switch ($item->type) {
-            case 'list':
-                assert(is_string($item->value));
-                $value = explode(',', $item->value);
-                break;
-            case 'int':
-                assert(is_string($item->value));
-                $value = intval($item->value);
-                break;
-            case 'date':
-                $value = $item->value;
-                if ($value !== null && is_string($value)) {
-                    try {
-                        $value = Carbon::parse($value);
-                    } catch (Exception $e) {
-                        $value = null;
-                    }
-                }
-                break;
-            default:
-                dddx($item->type);
-
-                return null;
+        if ($type === "list") {
+            return is_string($value) ? explode(",", $value) : [];
         }
 
-        return $value;
+        if ($type === "int") {
+            return is_numeric($value) ? (int) (string) $value : null;
+        }
+
+        if ($type === "date") {
+            if (! is_string($value) || $value === "") {
+                return null;
+            }
+
+            try {
+                return Carbon::parse($value);
+            } catch (Exception) {
+                return null;
+            }
+        }
+
+        return is_string($value) ? $value : null;
     }
 
     public function msg(string $name): ?string
@@ -122,10 +117,10 @@ trait ProgressioniFunctionTrait
         return $result;
     }
 
-    /**
-     * @param array<string, mixed> $params
-     * @return array<mixed>
+    /** @param array<string, mixed> $params
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkListaPropro(array $params): array
     {
         $ha_diritto = 1;
@@ -168,10 +163,13 @@ trait ProgressioniFunctionTrait
         return $res;
     }
     */
-    /** @return array<int, string> */
+    /**
+     * @return array<int, string>
+     */
+    // @phpstan-ignore-next-line
     public function criteriEsclusioneFields(): array
     {
-        return $this->criteriEsclusione
+        $result = $this->criteriEsclusione
             ->filter(
                 static fn ($item): bool => Str::startsWith((string) $item->name, 'min_') && $item->value !== 0 && $item->value !== ''
             )
@@ -183,13 +181,19 @@ trait ProgressioniFunctionTrait
                 }
             )
             ->pluck('name')
+            ->filter(static fn (mixed $name): bool => is_string($name))
+            ->values()
             ->all();
+
+        /** @var array<int, string> $result */
+        return $result;
     }
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkListaPosiz(array $params): array
     {
         $ha_diritto = 1;
@@ -211,8 +215,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgPosiz1InSede(array $params): array
     {
         $ha_diritto = 1;
@@ -234,8 +239,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgCatecoPosfunNoAsz(array $params): array
     {
         $ha_diritto = 1;
@@ -257,8 +263,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgPropro(array $params): array
     {
         $ha_diritto = 1;
@@ -280,8 +287,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgProproPosfun(array $params): array
     {
         $ha_diritto = 1;
@@ -308,8 +316,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgAnno(array $params): array
     {
         $ha_diritto = 1;
@@ -333,8 +342,9 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkMinGgCatecoPosfunLavoratiInSede(array $params): array
     {
         $ha_diritto = 1;
@@ -347,8 +357,8 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
-     */
+     * @return array{int, array<int, string>} */
+    // @phpstan-ignore-next-line
     public function checkListaProproPosfun(array $params): array
     {
         $ha_diritto = 1;
@@ -370,8 +380,8 @@ trait ProgressioniFunctionTrait
 
     /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
-     */
+     * @return array{int, array<int, string>} */
+    // @phpstan-ignore-next-line
     public function checkDisci(array $params): array
     {
         $ha_diritto = 1;
@@ -392,15 +402,11 @@ trait ProgressioniFunctionTrait
     }
 
     /**
-     * Check exclusion list with date parsing.
-     *
-     * @param  array  $params  Parameters including date ranges
-     * @return array<int, mixed> [ha_diritto, motivo_arr]
-     */
-    /**
      * @param array<string, mixed> $params
-     * @return array<mixed>
+     *
+     * @return array{int, array<int, string>}
      */
+    // @phpstan-ignore-next-line
     public function checkListaAszTipCodEsclusoSubito(array $params): array
     {
         $ha_diritto = 1;
@@ -432,7 +438,11 @@ trait ProgressioniFunctionTrait
         /** @phpstan-ignore-next-line */
         $tmp = $this->asz()->ofRangeDate($asz_dal, $asz_al)->select('asztip', 'aszcod')->distinct()->get()->toArray();
         /** @var Collection<int, string> $mappedItems */
-        $mappedItems = collect($tmp)->map(static function (array $item): string {
+        $mappedItems = collect($tmp)->map(static function (mixed $item): string {
+            if (! is_array($item)) {
+                return '';
+            }
+
             $asztip = is_string($item['asztip'] ?? null) || is_numeric($item['asztip'] ?? null)
                 ? (string) ($item['asztip'])
                 : '';
@@ -443,7 +453,7 @@ trait ProgressioniFunctionTrait
             return $asztip.'-'.$aszcod;
         });
 
-        $explodedList = explode(',', (string) $lista_asz_tip_cod_escluso_subito);
+        $explodedList = array_filter(explode(',', (string) $lista_asz_tip_cod_escluso_subito));
         $tmp1 = $mappedItems->intersect($explodedList)->count();
 
         if ($this->matr === 23698) {

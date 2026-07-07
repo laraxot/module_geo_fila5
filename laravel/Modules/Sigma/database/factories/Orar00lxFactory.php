@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Orar00lx;
 
+/**
+ * @extends Factory<Orar00lx>
+ */
 class Orar00lxFactory extends Factory
 {
     /**

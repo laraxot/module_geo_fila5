@@ -118,10 +118,10 @@ trait RelationshipTrait
 
     /**
      * Anagrafica relationship.
-     * Note: This returns BelongsTo, but BaseScheda::anag() returns HasOne.
-     * This is a known architectural issue documented in docs/anag-relationship-conflict-resolution.md
      *
-     * @phpstan-ignore-next-line method.childReturnType - BelongsTo is semantically correct for child models
+     * BelongsTo is semantically correct because child models hold the `matr` foreign key.
+     *
+     * @return BelongsTo<Anag, $this>
      */
     public function anag(): BelongsTo
     {

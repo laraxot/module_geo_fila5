@@ -65,6 +65,9 @@ abstract class BaseCriteriEsclusione extends BaseModel implements CriteriEsclusi
 
     // -------------------------
 
+    /**
+     * @return HasMany<Model, Model>
+     */
     public function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
@@ -76,15 +79,33 @@ abstract class BaseCriteriEsclusione extends BaseModel implements CriteriEsclusi
         Assert::classExists($modelClass);
         Assert::subclassOf($modelClass, Model::class);
 
-        /** @var class-string<Model> $modelClass */
-        return $this->hasMany($modelClass, 'anno', 'anno');
+        // Passed through a Model-typed parameter (rather than calling $this->hasMany()
+        // directly) so the relation's declaring side matches the interface's
+        // HasMany<Model, Model> contract: TDeclaringModel is invariant, and $this here
+        // is dynamically resolved per-module (see Str::of(static::class) above).
+        return self::buildSchedeRelation($this, $modelClass);
     }
 
+    /**
+     * @param  class-string<Model>  $modelClass
+     * @return HasMany<Model, Model>
+     */
+    private static function buildSchedeRelation(Model $declaringModel, string $modelClass): HasMany
+    {
+        return $declaringModel->hasMany($modelClass, 'anno', 'anno');
+    }
+
+    /**
+     * @return EloquentCollection<int, Model>
+     */
     public function getSchedaCollection(): EloquentCollection
     {
         return $this->schede()->get();
     }
 
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function criteriOptions(): HasMany
     {
         $class = Str::of(static::class)->beforeLast('\\')->append('\\CriteriOption')->toString();

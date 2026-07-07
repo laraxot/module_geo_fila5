@@ -59,8 +59,8 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Role withoutPermission($permissions)
  * @method static Builder|Role whereDescription($value)
  * @method static Builder|Role whereDisplayName($value)
- * @method static static       firstOrCreate(array $attributes, array $values = [])
- * @method static static       updateOrCreate(array $attributes, array $values = [])
+ * @method static static       firstOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
+ * @method static static       updateOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $deleter

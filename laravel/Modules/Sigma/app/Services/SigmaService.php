@@ -23,6 +23,9 @@ class SigmaService
 {
     public static bool $usecookie = true;
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function getTblsHtml(array $params): Renderable
     {
         extract($params);
@@ -42,7 +45,8 @@ class SigmaService
     }
 
     /**
-     * Undocumented function.
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>|string
      */
     public static function syncTable(array $params): string|array
     {
@@ -158,6 +162,9 @@ class SigmaService
         return ['n_rows' => $n_rows];
     }
 
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function downloadSigmaFile(array $params): string
     {
         // echo '<pre>'; print_r($params); echo '</pre>';
@@ -209,7 +216,6 @@ class SigmaService
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file); // da controllare
             curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file); // da controllare
         }
-        // @phpstan-ignore notEqual.alwaysFalse
         if ($refer !== '') {
             curl_setopt($ch, CURLOPT_REFERER, $refer);
         }

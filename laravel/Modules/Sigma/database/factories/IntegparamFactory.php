@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Integparam;
 
+/**
+ * @extends Factory<Integparam>
+ */
 class IntegparamFactory extends Factory
 {
     /**

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 interface MorphToOneRelationContract
 {
     /**
-     * @param array $attributes
+     * @param array<string, mixed> $attributes
      */
     public function create(array $attributes): Model;
 }

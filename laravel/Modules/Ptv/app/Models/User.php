@@ -86,8 +86,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property-read Collection<int, OauthToken> $tokens
  * @property-read int|null $tokens_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWith(array $relations)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWithCount(array $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWith(array<int, string> $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User childrenWithCount(array<int, string> $relations)
  * @method static \Modules\Ptv\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()

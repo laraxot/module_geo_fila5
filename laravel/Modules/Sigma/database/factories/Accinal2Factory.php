@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Accinal2;
 
+/**
+ * @extends Factory<Accinal2>
+ */
 class Accinal2Factory extends Factory
 {
     /**

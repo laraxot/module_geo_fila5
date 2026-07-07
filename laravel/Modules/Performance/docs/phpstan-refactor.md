@@ -21,3 +21,12 @@ Collegamenti: [README del modulo](./README.md) e documentazione dei criteri valu
   `FunctionTrait::criteriOptionsArr insteadof SchedaTrait;`
   in modo da usare sempre la versione specializzata Performance e risolvere il conflitto a runtime e per PHPStan.
 - **Risultato**: il fatal scompare, `phpstan analyse Modules/Performance --memory-limit=-1` torna a 0 errori, mantenendo coerente il comportamento del calcolo dei criteri rispetto alla logica descritta in questo modulo.
+
+## Pattern PHPStan riusabili
+
+- Tipizzare sempre gli array pubblici con chiavi e valori: `array<string, mixed>`, `array<int, string>` o array shape dedicate.
+- Per action/servizi che accettano una scheda Performance generica usare `BaseIndividualeModel<object>` quando il modello concreto non cambia la logica.
+- Per trait generic applicati a modelli Eloquent dichiarare il bind vicino al `use`: `@use TraitName<static>`.
+- Nelle relazioni Eloquent usare `$this` come secondo parametro generic quando il builder appartiene al record corrente: `HasMany<RelatedModel, $this>`.
+- In `getTableActions()` e `getTableBulkActions()` mantenere `array<int|string, ...>` se si estende `parent::...`, perché le azioni standard possono avere chiavi stringa.
+- Nei PHPDoc Filament importare `Action`, `ActionGroup` e `BulkAction` oppure usare FQCN assoluti; i namespace relativi producono falsi `class.notFound`.

@@ -136,6 +136,43 @@ beforeEach(function (): void {
 
 ---
 
-*Last Updated: 2025-10-13*
-*Progress: 71% complete (24 errors remaining)*
-*Module Status: Partial completion - major issues resolved*
+## Scoped-Analysis False Positives (2026-07-07)
+
+Running `phpstan analyse Modules/Job Modules/IndennitaCondizioniLavoro Modules/Tenant`
+(a subset of `paths: Modules/` in `phpstan.neon`) surfaces two errors that are not
+real defects in this module, only artifacts of limiting the scan to 3 modules:
+
+### 1. `trait.unused` on `SushiToPhpArray`
+
+**File**: `app/Models/Traits/SushiToPhpArray.php`
+
+The trait's only real consumer is `Modules\User\Models\SocialProvider` (outside the
+scanned scope), so PHPStan cannot see it is used and reports `trait.unused`
+(confirmed as expected behaviour by https://phpstan.org/blog/how-phpstan-analyses-traits:
+trait usage is only detected within the analysed path set).
+
+**Fix**: added `/** @phpstan-ignore trait.unused */` above the trait declaration,
+matching the identical, pre-existing pattern already used on the sibling trait
+`SushiToCsv.php` (whose only consumer, `Modules\Sigma\Models\WebService`, is
+likewise outside the scanned scope).
+
+**Cleanup**: removed `tests/Fixtures/Traits/{SushiToPhpArrayPhpstanProbe,
+SushiToCsvPhpstanProbe, SushiToJsonsPhpstanProbe, TenantPhpstanProbeModel}.php`.
+These were dead "probe" classes (banned pattern per repo policy) that referenced
+the traits only from `tests/`, a path excluded from analysis in `phpstan.neon` —
+so they never actually silenced `trait.unused` and served no purpose.
+
+### 2. `larastan.noEnvCallsOutsideOfConfig` reported as unmatched
+
+`phpstan.neon` ignores this identifier project-wide. It legitimately matches
+`env()` calls outside `config/` in `Modules/User`, `Modules/Notify`,
+`Modules/Media`, `Modules/Xot` — none of which are in Job/IndennitaCondizioniLavoro/Tenant.
+When the scan is limited to these 3 modules, the ignore rule has nothing to
+match and PHPStan reports it as an unmatched ignored-error pattern.
+
+**Not fixable within this module set**: there is no `env()` call outside config
+in Job, IndennitaCondizioniLavoro, or Tenant to "fix", and the ignore rule itself
+lives in `phpstan.neon`, which must not be touched. This is a residual, expected
+side effect of scoping the analysis, not a defect.
+
+*Last Updated: 2026-07-07*

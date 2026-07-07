@@ -24,10 +24,15 @@ use Modules\UI\Filament\Tables\Columns\GroupColumn;
  */
 class WorkerColumn extends GroupColumn
 {
+    /**
+     * @var array<string, Column>
+     */
     protected array $extraColumns = [];
 
     /**
      * Get the default schema for worker information
+     *
+     * @return array<string, Column>
      */
     protected static function getSchema(): array
     {
@@ -71,6 +76,8 @@ class WorkerColumn extends GroupColumn
 
     /**
      * Append additional columns to the worker schema
+     *
+     * @param  array<string, Column>  $columns
      */
     public function appendColumns(array $columns): static
     {

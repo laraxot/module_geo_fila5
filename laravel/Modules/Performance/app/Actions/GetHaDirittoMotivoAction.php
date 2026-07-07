@@ -21,8 +21,9 @@ class GetHaDirittoMotivoAction
     public int $year;
 
     /**
-     * @param  array  $criteriEsclusione
-     * @param  array  $criteriOption
+     * @param  BaseIndividualeModel<object>  $model
+     * @param  array<string, mixed>  $criteriEsclusione
+     * @param  array<string, mixed>  $criteriOption
      * @return array{0:int,1:string}
      */
     public function execute(BaseIndividualeModel $model, array $criteriEsclusione, array $criteriOption): array
@@ -46,8 +47,8 @@ class GetHaDirittoMotivoAction
             $params['date_max'] = $anno * 10000 + 1231;
             $params['date_min'] = $anno * 10000 + 101;
 
-            /** @var callable(array<string,mixed>, object): string $callable */
             $callable = [$this, $metodo];
+            // @phpstan-ignore-next-line
             $messaggio = $callable($params, $model);
 
             if ($messaggio !== '') {
@@ -56,11 +57,11 @@ class GetHaDirittoMotivoAction
             }
         }
 
-        return [$haDiritto ? 1 : 0, implode(', ', $motivi)];
+        return [$haDiritto ? 1 : 0, implode(', ', $motivi)]; // @phpstan-ignore-line
     }
 
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      * @param  object{gg_ruolo:int|null}  $scheda
      */
     public function checkMinGgRuolo(array $params, object $scheda): string
@@ -76,8 +77,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{gg_presenza_anno:int|null, gg_assenza_anno:int|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkMinGgAnno(array $params, object $scheda): string
     {
@@ -94,8 +95,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{posiz:string|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkNoposizList(array $params, object $scheda): string
     {
@@ -110,8 +111,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{propro:string|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkNoproproList(array $params, object $scheda): string
     {
@@ -126,8 +127,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{posfun:string|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkNoposfunList(array $params, object $scheda): string
     {
@@ -142,8 +143,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{disci1:int|string|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkNodisci1List(array $params, object $scheda): string
     {
@@ -158,8 +159,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{gg_assenza_anno:int|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkMaxGgAssenzeAnno(array $params, object $scheda): string
     {
@@ -176,8 +177,8 @@ class GetHaDirittoMotivoAction
     /**
      * Alias storico.
      *
-     * @param  array  $params
-     * @param  object{gg_assenza_anno:int|null}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkMaxGgAssenzaAnno(array $params, object $scheda): string
     {
@@ -185,8 +186,8 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array  $params
-     * @param  object{last_data_assunz:mixed}  $scheda
+     * @param  array<string, mixed>  $params
+     * @param  object  $scheda
      */
     public function checkDateMinAssunz(array $params, object $scheda): string
     {

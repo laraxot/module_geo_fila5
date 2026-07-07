@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Ana00k2;
 
+/**
+ * @extends Factory<Ana00k2>
+ */
 class Ana00k2Factory extends Factory
 {
     /**

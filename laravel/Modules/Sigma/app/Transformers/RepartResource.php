@@ -19,20 +19,14 @@ class RepartResource extends Resource
      * Transform the resource into an array.
      *
      * @param  Request  $request
+     * @return array<int, mixed>|Arrayable<string, mixed>|JsonSerializable
      */
     #[\Override]
     public function toArray($request): array|Arrayable|JsonSerializable
     {
-        /*
-         * return [
-         * 'type'          => $this->post_type,
-         * 'id'            => (string)$this->id,
-         * 'attributes'    => $attributes,
-         * 'links'         => [
-         * //'self' => route('articles.show', ['article' => $this->id]),
-         * ],
-         * ];
-         */
-        return parent::toArray($request);
+        /** @var array<int, mixed>|Arrayable<string, mixed>|JsonSerializable $result */
+        $result = parent::toArray($request);
+
+        return $result;
     }
 }

@@ -17,7 +17,7 @@ final class SmsData
     /**
      * Create a new SmsData instance.
      *
-     * @param  array  $data
+     * @param  array<string, mixed>  $data
      */
     public function __construct(array $data = [])
     {
@@ -29,7 +29,7 @@ final class SmsData
     /**
      * Named constructor for convenience.
      *
-     * @param  array  $data
+     * @param  array<string, mixed>  $data
      */
     public static function from(array $data): self
     {

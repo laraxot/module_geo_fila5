@@ -508,6 +508,7 @@ class Individuale extends BaseIndividualeModel
         ];
     }
 
+    /** @var array<string, class-string> */
     protected array $childTypes = [
         'po' => IndividualePo::class,
         'dip' => IndividualeDip::class,

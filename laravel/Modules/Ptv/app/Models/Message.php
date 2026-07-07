@@ -36,27 +36,27 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Builder|Message tree($maxDepth = null)
  * @method static Builder|Message treeOf((Model|callable) $constraint, $maxDepth = null)
  * @method static Builder|Message whereDepth($operator, $value = null)
- * @method static Builder|Message withGlobalScopes(array $scopes)
+ * @method static Builder|Message withGlobalScopes(array<string, \Closure> $scopes)
  * @method static Builder|Message withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  *
- * @property-read Collection|Message[] $ancestors The model's recursive parents.
+ * @property-read Collection<int, Message> $ancestors The model's recursive parents.
  * @property-read int|null $ancestors_count
- * @property-read Collection|Message[] $ancestorsAndSelf The model's recursive parents and itself.
+ * @property-read Collection<int, Message> $ancestorsAndSelf The model's recursive parents and itself.
  * @property-read int|null $ancestors_and_self_count
- * @property-read Collection|Message[] $bloodline The model's ancestors, descendants and itself.
+ * @property-read Collection<int, Message> $bloodline The model's ancestors, descendants and itself.
  * @property-read int|null $bloodline_count
- * @property-read Collection|Message[] $childrenAndSelf The model's direct children and itself.
+ * @property-read Collection<int, Message> $childrenAndSelf The model's direct children and itself.
  * @property-read int|null $children_and_self_count
- * @property-read Collection|Message[] $descendants The model's recursive children.
+ * @property-read Collection<int, Message> $descendants The model's recursive children.
  * @property-read int|null $descendants_count
- * @property-read Collection|Message[] $descendantsAndSelf The model's recursive children and itself.
+ * @property-read Collection<int, Message> $descendantsAndSelf The model's recursive children and itself.
  * @property-read int|null $descendants_and_self_count
- * @property-read Collection|Message[] $parentAndSelf The model's direct parent and itself.
+ * @property-read Collection<int, Message> $parentAndSelf The model's direct parent and itself.
  * @property-read int|null $parent_and_self_count
  * @property-read Message|null $rootAncestor The model's topmost parent.
- * @property-read Collection|Message[] $siblings The parent's other children.
+ * @property-read Collection<int, Message> $siblings The parent's other children.
  * @property-read int|null $siblings_count
- * @property-read Collection|Message[] $siblingsAndSelf All the parent's children.
+ * @property-read Collection<int, Message> $siblingsAndSelf All the parent's children.
  * @property-read int|null $siblings_and_self_count
  *
  * @method static Collection<int, static> all($columns = ['*'])

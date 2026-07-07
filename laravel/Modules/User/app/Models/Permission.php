@@ -42,8 +42,8 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static Builder<static>|Permission whereUpdatedBy($value)
  * @method static Builder<static>|Permission withoutPermission($permissions)
  * @method static Builder<static>|Permission withoutRole($roles, $guard = null)
- * @method static static                     firstOrCreate(array $attributes, array $values = [])
- * @method static static                     updateOrCreate(array $attributes, array $values = [])
+ * @method static static                     firstOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
+ * @method static static                     updateOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $deleter

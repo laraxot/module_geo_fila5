@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Repa2f;
 
+/**
+ * @extends Factory<Repa2f>
+ */
 class Repa2fFactory extends Factory
 {
     /**

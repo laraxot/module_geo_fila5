@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection as SupportCollection;
@@ -153,6 +154,10 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         return 'anno';
     }
 
+    /**
+     * @param Builder<\Illuminate\Database\Eloquent\Model> $query
+     * @return Builder<\Illuminate\Database\Eloquent\Model>
+     */
     protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
     {
         if ($date_min === null || $date_max === null) {
@@ -189,9 +194,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Get avversari with the same category.
      *
-     * @return HasMany
+     * @return HasMany<static, $this>
      */
-    public function avversariCategoriaEco()
+    public function avversariCategoriaEco(): HasMany
     {
         return $this->hasMany(static::class, 'valutatore_id', 'valutatore_id')
             ->where('anno', $this->anno)
@@ -214,9 +219,11 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Anagrafica relationship.
      *
-     * @return HasOne
+     * Child models may override with BelongsTo when they hold the foreign key.
+     *
+     * @return HasOne<Anag, $this>|BelongsTo<Anag, $this>
      */
-    public function anag()
+    public function anag(): HasOne|BelongsTo
     {
         return $this->hasOne(Anag::class, 'matr', 'matr');
     }
@@ -247,9 +254,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Stipendio tabellare relationship.
      *
-     * @return HasOne
+     * @return HasOne<static, $this>
      */
-    public function stipendioTabellare()
+    public function stipendioTabellare(): HasOne
     {
         // This is a placeholder implementation - the actual relationship may vary
         return $this->hasOne(static::class);
@@ -397,9 +404,9 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Criteri options relationship.
      *
-     * @return HasMany
+     * @return HasMany<static, $this>
      */
-    public function criteriOptions()
+    public function criteriOptions(): HasMany
     {
         // This is a placeholder implementation - the actual relationship may vary
         return $this->hasMany(static::class);
@@ -417,6 +424,10 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
         ]);
     }
 
+    /**
+     * @var array<int, string>
+     */
+    /** @var array<int, string> */
     protected array $schemalessAttributes = [
         // 'calculated_data',
     ];
@@ -444,10 +455,11 @@ abstract class BaseScheda extends BaseModel implements SchedaContract
     /**
      * Scope a query to interact with calculated_data schemaless attribute.
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
-     *
      * @see Modules/IndennitaResponsabilita/docs/schemaless-attributes.md#errore-5-tipo-di-ritorno-errato-per-scope-metodi-basescheda
+     */
+    /**
+     * @param Builder<\Illuminate\Database\Eloquent\Model> $query
+     * @return Builder<\Illuminate\Database\Eloquent\Model>
      */
     public function scopeWithCalculatedData(Builder $query): Builder
     {

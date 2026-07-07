@@ -101,6 +101,9 @@ abstract class BaseStabiDirigente extends BaseModel
     }
 
     // ----- relationship ---
+    /**
+     * @return HasOne<Repart, $this>
+     */
     public function repart(): HasOne
     {
         return $this->hasOne(Repart::class, 'stabi', 'stabi')
@@ -108,6 +111,9 @@ abstract class BaseStabiDirigente extends BaseModel
             ->where('ente', 90);
     }
 
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function schedas(): HasMany
     {
         $schedaClass = Str::of(static::class)
@@ -123,6 +129,9 @@ abstract class BaseStabiDirigente extends BaseModel
         return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
+    /**
+     * @return HasMany<Model, $this>
+     */
     public function benificiariProgressione(): HasMany
     {
         return $this->schedas()->where('benificiario_progressione', 1);

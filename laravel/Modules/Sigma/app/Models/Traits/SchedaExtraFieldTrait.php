@@ -27,6 +27,8 @@ use Modules\Sigma\Models\Traits\Scopes\SchedaScope;
  * @property float $percparttime
  * @property int $giorni_parttimevert
  * @property int $giorni_presenza
+ *
+ * @phpstan-ignore trait.unused
  */
 trait SchedaExtraFieldTrait
 {

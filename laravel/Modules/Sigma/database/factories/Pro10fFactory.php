@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Pro10f;
 
+/**
+ * @extends Factory<Pro10f>
+ */
 class Pro10fFactory extends Factory
 {
     /**

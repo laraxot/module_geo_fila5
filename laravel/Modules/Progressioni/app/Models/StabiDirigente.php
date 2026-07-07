@@ -49,9 +49,4 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return $this->hasMany(Scheda::class, 'valutatore_id', 'id');
     }
 
-    /** @return HasMany<Scheda, $this> */
-    public function benificiariProgressione(): HasMany
-    {
-        return $this->schede()->where('benificiario_progressione', 1);
-    }
 }

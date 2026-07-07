@@ -59,6 +59,10 @@ class IndividualeAssenze extends BaseModel
     ];
     */
 
+    /**
+     * @param array<string, mixed> $params
+     * @return Builder<static>
+     */
     public static function filter(array $params): Builder
     {
         $query = static::query();

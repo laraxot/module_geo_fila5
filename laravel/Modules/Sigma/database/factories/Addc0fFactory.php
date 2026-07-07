@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Addc0f;
 
+/**
+ * @extends Factory<Addc0f>
+ */
 class Addc0fFactory extends Factory
 {
     /**

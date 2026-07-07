@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Tipmok1;
 
+/**
+ * @extends Factory<Tipmok1>
+ */
 class Tipmok1Factory extends Factory
 {
     /**

@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Filament\Columns;
 
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 
 class PeriodoColumn extends GroupColumn
 {
+    /**
+     * @var array<string, Column>
+     */
     protected array $extraColumns = [];
 
     public static function make(?string $name = null): static
@@ -23,7 +27,7 @@ class PeriodoColumn extends GroupColumn
     }
 
     /**
-     * @param  array<string, mixed>  $columns
+     * @param  array<string, Column>  $columns
      */
     public function appendColumns(array $columns): static
     {
@@ -38,6 +42,9 @@ class PeriodoColumn extends GroupColumn
         return $this->schema($form);
     }
 
+    /**
+     * @return array<int, Column>
+     */
     protected function getSchema(): array
     {
         return [

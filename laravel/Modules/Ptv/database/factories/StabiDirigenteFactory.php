@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Database\Factories;
 
-/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\StabiDirigente> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\StabiDirigente;
 
+/** @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Ptv\Models\StabiDirigente> */
 class StabiDirigenteFactory extends Factory
 {
     /**

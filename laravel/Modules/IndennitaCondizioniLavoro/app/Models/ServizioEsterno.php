@@ -267,14 +267,21 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
      */
     public function trasferte(): HasMany
     {
-        $relatedClass = 'Modules\Trasferte\Models\FuoriSedeDip';
-        if (! class_exists($relatedClass)) {
-            return $this->hasMany(self::class, 'id', 'id')->whereRaw('1=0');
+        return $this->hasMany(self::trasferteRelatedClass(), 'matr', 'matr')
+            ->where('ente', $this->ente);
+    }
+
+    /**
+     * @return class-string<Model>
+     */
+    private static function trasferteRelatedClass(): string
+    {
+        $trasfertaClass = 'Modules\Trasferte\Models\FuoriSedeDip';
+        if (class_exists($trasfertaClass) && is_subclass_of($trasfertaClass, Model::class)) {
+            return $trasfertaClass;
         }
 
-        /** @var class-string<\Illuminate\Database\Eloquent\Model> $relatedClass */
-        return $this->hasMany($relatedClass, 'matr', 'matr')
-            ->where('ente', $this->ente);
+        return self::class;
     }
 
     /**

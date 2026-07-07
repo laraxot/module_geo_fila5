@@ -14,6 +14,8 @@ trait TquRelationship
 {
     /**
      * Undocumented function.
+     *
+     * @return HasOne<Tqu00f, $this>
      */
     public function tqu00f(): HasOne
     {

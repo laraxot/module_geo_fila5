@@ -6,12 +6,15 @@ namespace Modules\Ptv\Models\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
 
 /**
- * Undocumented interface.
+ * Contratto per i criteri di esclusione Eloquent.
+ *
+ * @phpstan-require-extends Model
  *
  * @property int $id
  * @property string|null $name
@@ -26,30 +29,36 @@ use Modules\Progressioni\Database\Factories\CriteriEsclusioneFactory;
  * @property string|null $updated_by
  *
  * @method static CriteriEsclusioneFactory factory($count = null, $state = [])
- * @method static Builder<static> newModelQuery()
- * @method static Builder<static> newQuery()
- * @method static Builder<static> query()
- * @method static Builder<static> whereAnno($value)
- * @method static Builder<static> whereCreatedAt($value)
- * @method static Builder<static> whereCreatedBy($value)
- * @method static Builder<static> whereFieldName($value)
- * @method static Builder<static> whereId($value)
- * @method static Builder<static> whereName($value)
- * @method static Builder<static> whereOp($value)
- * @method static Builder<static> whereType($value)
- * @method static Builder<static> whereUpdatedAt($value)
- * @method static Builder<static> whereUpdatedBy($value)
- * @method static Builder<static> whereValue($value)
+ * @method static Builder<Model> newModelQuery()
+ * @method static Builder<Model> newQuery()
+ * @method static Builder<Model> query()
+ * @method static Builder<Model> whereAnno($value)
+ * @method static Builder<Model> whereCreatedAt($value)
+ * @method static Builder<Model> whereCreatedBy($value)
+ * @method static Builder<Model> whereFieldName($value)
+ * @method static Builder<Model> whereId($value)
+ * @method static Builder<Model> whereName($value)
+ * @method static Builder<Model> whereOp($value)
+ * @method static Builder<Model> whereType($value)
+ * @method static Builder<Model> whereUpdatedAt($value)
+ * @method static Builder<Model> whereUpdatedBy($value)
+ * @method static Builder<Model> whereValue($value)
  */
 interface CriteriEsclusioneContract
 {
     /**
      * Ottiene la relazione HasMany delle schede associate al criterio.
      */
+    /**
+     * @return HasMany<Model, Model>
+     */
     public function schede(): HasMany;
 
     /**
      * Ottiene la collezione iterabile delle schede per la verifica criteri.
+     */
+    /**
+     * @return Collection<int, Model>
      */
     public function getSchedaCollection(): Collection;
 

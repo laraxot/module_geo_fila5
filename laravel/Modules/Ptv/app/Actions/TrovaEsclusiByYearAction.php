@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
+use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Modules\Ptv\Models\Contracts\SchedaContract;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -115,10 +116,18 @@ class TrovaEsclusiByYearAction
                 continue;
             }
 
-            /** @var Collection<int|string, mixed> $validatedCriteriOption */
-            $validatedCriteriOption = $criteri_option;
+            /** @var Collection<int, CriteriEsclusioneContract> $validatedCriteriEsclusione */
+            $validatedCriteriEsclusione = $criteri_esclusione
+                ->filter(static fn (mixed $criterio): bool => $criterio instanceof CriteriEsclusioneContract)
+                ->values()
+                ->toBase();
 
-            app(Check::class)->execute($row, $criteri_esclusione, $validatedCriteriOption);
+            /** @var Collection<string, mixed> $validatedCriteriOption */
+            $validatedCriteriOption = $criteri_option->mapWithKeys(
+                static fn (mixed $value, mixed $key): array => is_string($key) ? [$key => $value] : []
+            );
+
+            app(Check::class)->execute($row, $validatedCriteriEsclusione, $validatedCriteriOption);
         }
     }
 }

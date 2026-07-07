@@ -11,6 +11,7 @@ use Modules\Xot\Actions\Module\GetModuleNameByModelClassAction;
 /*
  * Undocumented trait.
  */
+// @phpstan-ignore trait.unused
 trait HasStabiDirigente
 {
     public function stabiDirigente(): HasMany

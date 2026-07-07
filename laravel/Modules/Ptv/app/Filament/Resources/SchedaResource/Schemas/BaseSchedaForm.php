@@ -45,6 +45,7 @@ abstract class BaseSchedaForm extends XotBaseResourceForm
                                 return;
                             }
 
+                            /** @var \Illuminate\Support\Collection<int, \Modules\Ptv\Models\Contracts\CriteriEsclusioneContract> $validatedCriteriEsclusione */
                             $validatedCriteriEsclusione = $criteriEsclusione->where('value', '!=', 0);
                             if (! $record instanceof Model || ! method_exists($record, 'getCriteriOptions')) {
                                 return;

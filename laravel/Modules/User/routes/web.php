@@ -15,7 +15,7 @@ require 'socialite.php';
 try {
     if (class_exists(XotData::class)) {
         $xotData = XotData::make();
-        if ($xotData->register_pub_theme ?? false) {
+        if ($xotData->register_pub_theme) {
             // require 'web_tall.php';
         } else {
             Route::get('/login', static fn () => redirect('/admin/login'))->name('login');

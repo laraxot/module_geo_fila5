@@ -6,6 +6,8 @@ namespace Modules\Sigma\Models\Traits\Accessors;
 
 /**
  * GgAccessor - Accessor per campi gg_* (giorni).
+ *
+ * @phpstan-ignore trait.unused
  */
 trait GgAccessor
 {

@@ -14,10 +14,13 @@ use Webmozart\Assert\Assert;
 
 class SelectValutatore extends XotBaseSelect
 {
+    /** @var Closure|array<string, mixed> */
     public Closure|array $where = [];
 
     /**
      * Imposta le condizioni per la query
+     *
+     * @param Closure|array<string, mixed> $where
      */
     public function where(Closure|array $where): static
     {
@@ -26,11 +29,25 @@ class SelectValutatore extends XotBaseSelect
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    /**
+     * @return array<string, mixed>
+     */
     public function getWhere(): array
     {
         Assert::isArray($res = $this->evaluate($this->where));
+        /** @var array<string, mixed> $res */
 
-        return $res;
+        $where = [];
+        foreach ($res as $key => $value) {
+            if (is_string($key)) {
+                $where[$key] = $value;
+            }
+        }
+
+        return $where;
     }
 
     protected function setUp(): void

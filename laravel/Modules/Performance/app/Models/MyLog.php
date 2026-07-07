@@ -18,7 +18,7 @@ use function Safe\unserialize;
  * @property string|null $tbl
  * @property int|null $id_approvaz
  * @property string|null $note
- * @property array|null $data
+ * @property array<string, mixed>|null $data
  * @property string|null $datemod
  * @property string|null $handle
  * @property Carbon|null $created_at

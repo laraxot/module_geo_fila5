@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Gapstaf;
 
+/**
+ * @extends Factory<Gapstaf>
+ */
 class GapstafFactory extends Factory
 {
     /**

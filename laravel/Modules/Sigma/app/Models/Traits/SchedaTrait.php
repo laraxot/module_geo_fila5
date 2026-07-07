@@ -176,7 +176,7 @@ trait SchedaTrait
 
         // */
         /**
-         * @var array
+         * @var array<string, mixed> $models
          */
         $models = config('xra.model');
         $post_type = collect($models)->search(static::class);
@@ -738,7 +738,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function ggAssenzaFuoriSedeTot(array $params): int
     {
@@ -752,7 +752,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaFuoriSedeTot() or returns 0.
      *
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function hhAssenzaFuoriSedeTot(array $params): int
     {
@@ -766,7 +766,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggInSedeTot() or returns null.
      *
-     * @param  GgFilterData|array  $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggInSedeTot(GgFilterData|array $data): ?int
     {
@@ -789,7 +789,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggFuoriSedeTot() or returns null.
      *
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function ggFuoriSedeTot(array $params): ?int
     {
@@ -803,7 +803,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->ggAssenzaInSedeTot() or returns 0.
      *
-     * @param  GgFilterData|array  $data
+     * @param  GgFilterData|array<string, mixed>  $data
      */
     public function ggAssenzaInSedeTot(GgFilterData|array $data): int
     {
@@ -826,7 +826,7 @@ trait SchedaTrait
      * Public method for trait conflict resolution.
      * Delegates to anag->hhAssenzaInSedeTot() or returns 0.
      *
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public function hhAssenzaInSedeTot(array $params): int
     {

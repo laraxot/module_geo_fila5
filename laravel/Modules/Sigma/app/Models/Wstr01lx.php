@@ -110,6 +110,9 @@ class Wstr01lx extends BaseModel
     }
 
     // ------------------------------------
+    /**
+     * @return HasOne<Anag, $this>
+     */
     public function anag(): HasOne
     {
         return $this->hasOneByEnteMatr(Anag::class);

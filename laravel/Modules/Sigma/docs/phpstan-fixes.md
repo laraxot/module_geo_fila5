@@ -205,6 +205,41 @@ Le correzioni mantengono **piena compatibilità** con:
 
 ## Test e Validazione
 
+## Pattern riusabili per `missingType.*`
+
+### Scope Eloquent
+
+Usare generics PHPDoc su `Builder`:
+
+```php
+/**
+ * @param  Builder<static>  $query
+ * @return Builder<static>
+ */
+protected function scopeOfYear(Builder $query, ?int $year): Builder
+```
+
+Nei trait condivisi da un modello base con override nei figli, verificare prima gli override: `Builder` non e' covariante, quindi un generic sul trait puo' generare incompatibilita' con metodi concreti gia' tipizzati.
+
+### Array parametrici
+
+Gli array devono dichiarare almeno il value type:
+
+```php
+/** @param array<string, mixed> $params */
+public static function run(array $params): void
+```
+
+Per shape note, preferire la shape:
+
+```php
+/** @param array{anno?: int|string, where?: string} $params */
+```
+
+### Ignore PHPStan
+
+Rimuovere `@phpstan-ignore-next-line` quando la riga non produce piu' errori. Gli ignore residui devono essere specifici per identificatore e motivati.
+
 ### Verifica Funzionamento
 ```bash
 # Test PHPStan modulo specifico
@@ -359,5 +394,3 @@ public function asz00k1Year(): HasMany
 *Ultimo aggiornamento: 25 Novembre 2025*
 *Autore: Claude Code Assistant*
 *Status: PHPStan Level 10 - 0 errori nei trait Sigma*
-
-

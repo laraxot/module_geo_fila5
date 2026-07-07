@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Worar01l;
 
+/**
+ * @extends Factory<Worar01l>
+ */
 class Worar01lFactory extends Factory
 {
     /**

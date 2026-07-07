@@ -27,6 +27,9 @@ trait SchedaRelationship
     use EnteStabiRelationship; // Relazioni ente+stabi
     use TquRelationship; // Relazioni TQU
 
+    /**
+     * @phpstan-ignore-next-line missingType.generics
+     */
     public function categoriaPropro(): HasOne
     {
         $class = static::class;
@@ -43,6 +46,9 @@ trait SchedaRelationship
         .'",lista_propro)');
     }
 
+    /**
+     * @phpstan-ignore-next-line missingType.generics
+     */
     public function stabiDirigente(): HasOne
     {
         $class = static::class;
@@ -76,6 +82,9 @@ trait SchedaRelationship
      *
      * return $row;
      * }
+     */
+    /**
+     * @phpstan-ignore-next-line missingType.generics
      */
     public function valutatore(): BelongsTo
     {

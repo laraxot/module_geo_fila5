@@ -16,6 +16,7 @@ class GetValutatoriOptionsByWhere
     use QueueableAction;
 
     /**
+     * @param  array<string, mixed>  $where
      * @return array<string, string>
      */
     public function execute(string $name, array $where): array
@@ -55,7 +56,7 @@ class GetValutatoriOptionsByWhere
         /** @var class-string<Model> $modelClass */
         $modelClass = $stabiDiriClass;
 
-        /** @var Builder $query */
+        /** @var Builder<Model> $query */
         $query = $modelClass::query()
             ->whereIn('stabi', $stabis)
             ->where($where)

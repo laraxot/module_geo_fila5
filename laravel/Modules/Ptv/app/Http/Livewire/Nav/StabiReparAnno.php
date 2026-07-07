@@ -12,8 +12,10 @@ use Modules\Xot\Actions\GetViewAction;
 
 class StabiReparAnno extends Component
 {
+    /** @var array<int, array{label: string, id: int}> */
     public array $select_opts = [];
 
+    /** @var array<int, array{label: string, id: int}> */
     public array $select_opt_subs = [];
 
     /**
@@ -33,7 +35,7 @@ class StabiReparAnno extends Component
     public $year;
 
     /**
-     * @param  array{options: Collection}  $nav
+     * @param  array{options: Collection<int, string>}  $nav
      */
     public function mount(array $nav, int $year): void
     {

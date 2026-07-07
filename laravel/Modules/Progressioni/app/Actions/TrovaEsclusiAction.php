@@ -134,10 +134,13 @@ class TrovaEsclusiAction
     /** @return array<string, mixed> */
     public function criteriOptions(int $year): array
     {
-        return CriteriOption::where('anno', $year)
+        $options = CriteriOption::where('anno', $year)
             ->get()
-            ->pluck('value', 'name')
-            ->all();
+            ->pluck('value', 'name');
+
+        return $options->mapWithKeys(
+            static fn (mixed $value, mixed $key): array => is_string($key) ? [$key => $value] : []
+        )->all();
     }
 
     public function check(string $criterio_name, mixed $criterio_value, Scheda $scheda, int $year): string

@@ -349,6 +349,10 @@ class Rep00f extends BaseDateRangeModel
     }
 
     // --------- SCOPES --------------
+    /**
+     * @param  Builder<self>  $query
+     * @return Builder<self>
+     */
     protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
     {
         if ($date_min === null || $date_max === null) {
@@ -361,10 +365,6 @@ class Rep00f extends BaseDateRangeModel
         );
     }
 
-    /**
-     * @param  Builder<self>  $query
-     * @return Builder<self>
-     */
     protected function scopeOfYear(Builder $query, ?int $year): Builder
     {
         if ($year === null) {
@@ -377,10 +377,6 @@ class Rep00f extends BaseDateRangeModel
         });
     }
 
-    /**
-     * @param  Builder<self>  $query
-     * @return Builder<self>
-     */
     protected function scopeOfDate(Builder $query, ?int $date): Builder
     {
         if ($date === null) {
@@ -393,10 +389,6 @@ class Rep00f extends BaseDateRangeModel
         });
     }
 
-    /**
-     * @param  Builder<self>  $query
-     * @return Builder<self>
-     */
     protected function scopeOfEnteYear(Builder $query, ?int $ente, ?int $year): Builder
     {
         if ($ente === null || $year === null) {
@@ -449,7 +441,7 @@ class Rep00f extends BaseDateRangeModel
     }
 
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      * @return Collection<string, array<string, mixed>>
      */
     public static function stabiReparOfYearCollection(array $params): Collection

@@ -11,6 +11,8 @@ class CriteriValutazioneService
 {
     /**
      * Undocumented function.
+     *
+     * @return array<int, object>
      */
     public static function getFieldsYear(int $_year, bool $is_po = false): array
     {
@@ -34,6 +36,9 @@ class CriteriValutazioneService
         return $data;
     }
 
+    /**
+     * @return array<int, object>
+     */
     public static function getFieldsYearPostType(int $year, string $post_type): array
     {
         // $year = (int)\Request::input('year');

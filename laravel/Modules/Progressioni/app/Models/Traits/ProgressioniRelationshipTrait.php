@@ -47,10 +47,10 @@ trait ProgressioniRelationshipTrait
         return $this->hasMany(CriteriEsclusione::class, 'anno', 'anno');
     }
 
-    /** @return HasMany<CriteriOption, $this> */
+    /** @return HasMany<static, $this> */
     public function criteriOptions(): HasMany
     {
-        return $this->hasMany(CriteriOption::class, 'anno', 'anno');
+        return $this->hasMany(static::class, 'anno', 'anno');
     }
 
     /** @return HasMany<Message, $this> */
@@ -120,10 +120,10 @@ trait ProgressioniRelationshipTrait
             ->where('ente', $this->ente);
     }
 
-    /** @return HasOne<StipendioTabellare, $this> */
+    /** @return HasOne<static, $this> */
     public function stipendioTabellare(): HasOne
     {
-        return $this->hasOne(StipendioTabellare::class, 'propro', 'propro')
+        return $this->hasOne(static::class, 'propro', 'propro')
             ->where('posfun', $this->posfunval)
             ->where('anno', $this->anno)
             ->orderBy('ptime', 'desc');

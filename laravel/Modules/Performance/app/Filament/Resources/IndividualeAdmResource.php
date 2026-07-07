@@ -217,6 +217,7 @@ class IndividualeAdmResource extends BaseSchedaResource
         ];
     }
 
+    /** @return array<int, string> */
     public static function getXlsFields(): array
     {
         return [

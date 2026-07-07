@@ -27,6 +27,7 @@ class FirmaStabiReparWidget extends XotBaseWidget
 {
     // Temporarily removed InteractsWithPageFilters due to trait collision
 
+    /** @var array<string, mixed>|null */
     public ?array $data = [];
 
     protected string $view = 'ptv::filament.widgets.firma_stabi_repar';
@@ -122,7 +123,7 @@ class FirmaStabiReparWidget extends XotBaseWidget
     }
 
     /**
-     * @param  array|null  $filters
+     * @param  array<string, mixed>|null  $filters
      */
     #[On('filters-updated')]
     public function filtersUpdated(?array $filters = []): void

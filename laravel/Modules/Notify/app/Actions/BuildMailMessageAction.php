@@ -19,7 +19,7 @@ class BuildMailMessageAction
     use QueueableAction;
 
     /**
-     * @param  array  $view_params
+     * @param  array<string, mixed>  $view_params
      * @param  DataCollection<int, AttachmentData>|null  $dataCollection
      */
     public function execute(

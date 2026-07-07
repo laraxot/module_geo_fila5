@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Ali11;
 
+/**
+ * @extends Factory<Ali11>
+ */
 class Ali11Factory extends Factory
 {
     /**

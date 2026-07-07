@@ -160,6 +160,9 @@ class Sto00f extends BaseDateRangeModel
         ]);
     }
 
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function giorni(?array $params = null): int
     {
         if ($params === null) {
@@ -192,6 +195,9 @@ class Sto00f extends BaseDateRangeModel
         return (int) ($st2kdi->diffInDays($st2kas, true) + 1);
     }
 
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function gg(?array $params = null): int
     {
         if ($params === null) {

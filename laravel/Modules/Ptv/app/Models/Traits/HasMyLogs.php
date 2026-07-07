@@ -7,11 +7,16 @@ namespace Modules\Ptv\Models\Traits;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 
-/*
+/**
  * Undocumented trait.
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasMyLogs
 {
+    /**
+     * @return MorphMany<Model, $this>
+     */
     public function myLogs(): MorphMany
     {
         $class = static::class;

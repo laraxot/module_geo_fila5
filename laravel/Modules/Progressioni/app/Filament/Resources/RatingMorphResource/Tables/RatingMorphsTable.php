@@ -8,6 +8,7 @@ use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
@@ -15,11 +16,8 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 class RatingMorphsTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, mixed>
+     * @return array<string, Column>
      */
-    /**
-    * @return array<string, Column>
-    */
     public function getTableColumns(): array
     {
         return [

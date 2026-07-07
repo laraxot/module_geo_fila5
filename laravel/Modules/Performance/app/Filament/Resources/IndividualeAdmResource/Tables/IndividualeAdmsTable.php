@@ -34,7 +34,7 @@ use function Safe\date;
 class IndividualeAdmsTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableHeaderActions(): array
     {

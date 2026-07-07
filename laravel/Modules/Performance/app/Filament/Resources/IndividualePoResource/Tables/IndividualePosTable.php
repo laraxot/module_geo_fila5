@@ -103,7 +103,7 @@ class IndividualePosTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int|string, \Filament\Actions\Action|\Filament\Actions\ActionGroup>
      */
     public function getTableActions(): array
     {

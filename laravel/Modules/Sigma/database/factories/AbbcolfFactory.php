@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Abbcolf;
 
+/**
+ * @extends Factory<Abbcolf>
+ */
 class AbbcolfFactory extends Factory
 {
     /**

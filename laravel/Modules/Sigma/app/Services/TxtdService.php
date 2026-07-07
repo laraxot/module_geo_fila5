@@ -15,6 +15,9 @@ use function Safe\preg_replace;
 
 class TxtdService
 {
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public static function toArray(string $file_txtd): array
     {
         $handle = fopen($file_txtd, 'r');
@@ -31,7 +34,7 @@ class TxtdService
             }
 
             $riga++;
-            // @phpstan-ignore argument.type
+            /** @var list<string> $data */
             $row = array_map(trim(...), $data);
             $row = array_map(strtolower(...), $row);
             if ($riga === 2) {
@@ -97,6 +100,10 @@ class TxtdService
     }
 
     // --------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<int, string>
+     */
     public static function getFieldsNames(array $params): array
     {
         // ✅ FIX PHPStan: Accesso esplicito invece di extract()
@@ -132,6 +139,9 @@ class TxtdService
     }
 
     // --------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public static function createTable(array $params): string
     {
         $filenameParam = $params['filename'] ?? null;

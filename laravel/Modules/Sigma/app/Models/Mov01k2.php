@@ -100,6 +100,9 @@ class Mov01k2 extends BaseModel
     public $timestamps = false;
 
     // ------------- RELATIONSHIPS ------------------
+    /**
+     * @return HasOne<Codici, $this>
+     */
     public function codici(): HasOne
     {
         return $this->hasOne(Codici::class, 'tipo', 'mo1tip')->where('codice', $this->mo1cod);
@@ -108,6 +111,10 @@ class Mov01k2 extends BaseModel
     // ------------ MUTATORS -----------------
 
     // ------------- FUNCTIONS ------------------
+    /**
+     * @param  array<string, mixed>  $params
+     * @return Builder<static>
+     */
     public static function filter1(array $params): Builder
     {
         $giorno = $params['giorno'] ?? null;

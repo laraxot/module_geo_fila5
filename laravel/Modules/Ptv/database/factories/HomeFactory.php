@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Database\Factories;
 
-/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\Home> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\Home;
 
+/** @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Ptv\Models\Home> */
 class HomeFactory extends Factory
 {
     /**

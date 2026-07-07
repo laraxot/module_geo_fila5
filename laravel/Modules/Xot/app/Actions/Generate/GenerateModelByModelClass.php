@@ -100,7 +100,7 @@ class GenerateModelByModelClass
     }
 
     /**
-     * @param array $replaces
+     * @param array<string, string> $replaces
      */
     public function setCustomReplaces(array $replaces): self
     {

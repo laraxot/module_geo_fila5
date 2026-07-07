@@ -7,11 +7,16 @@ namespace Modules\Ptv\Models\Traits;
 use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Support\Str;
 
-/*
+/**
  * Undocumented trait.
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasValutatore
 {
+    /**
+     * @return Relations\BelongsTo<\Illuminate\Database\Eloquent\Model, $this>
+     */
     public function valutatore(): Relations\BelongsTo
     {
         $static_class = static::class;

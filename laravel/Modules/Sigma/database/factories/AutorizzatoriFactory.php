@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Autorizzatori;
 
+/**
+ * @extends Factory<Autorizzatori>
+ */
 class AutorizzatoriFactory extends Factory
 {
     /**

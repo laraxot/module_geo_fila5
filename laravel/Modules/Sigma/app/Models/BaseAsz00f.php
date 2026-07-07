@@ -195,6 +195,9 @@ abstract class BaseAsz00f extends BaseDateRangeModel
         return 'aszann';
     }
 
+    /**
+     * @return HasOne<Codici, $this>
+     */
     public function codici(): HasOne
     {
         // echo $obj->toSql();
@@ -216,6 +219,10 @@ abstract class BaseAsz00f extends BaseDateRangeModel
     }
 
     // ------ SCOPES --------
+    /**
+     * @param  Builder<self>  $query
+     * @return Builder<self>
+     */
     protected function scopeWithDays(Builder $query, ?int $date_min, ?int $date_max): Builder
     {
         if ($date_min === null || $date_max === null) {
@@ -228,6 +235,11 @@ abstract class BaseAsz00f extends BaseDateRangeModel
         );
     }
 
+    /**
+     * @param  Builder<self>  $query
+     * @param  array<int, string>|string  $lista_codici
+     * @return Builder<self>
+     */
     protected function scopeOfCodici(Builder $query, array|string $lista_codici = []): Builder
     {
         if (\is_array($lista_codici)) {

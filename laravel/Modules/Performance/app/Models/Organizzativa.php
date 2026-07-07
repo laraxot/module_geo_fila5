@@ -518,6 +518,9 @@ class Organizzativa extends BaseIndividualeModel
             ->implode(',');
     }
 
+    /**
+     * @return HasMany<Asz00k1, $this>
+     */
     public function aszEff(): HasMany
     {
         $lista_codici_aspettative = $this->listaCodiciAspettative();
@@ -552,7 +555,7 @@ class Organizzativa extends BaseIndividualeModel
     }
 
     /**
-     * @return HasMany<Individuale, static>
+     * @return HasMany<Individuale, $this>
      */
     public function cards(): HasMany
     {
@@ -580,11 +583,10 @@ class Organizzativa extends BaseIndividualeModel
     }
 
     /**
-     * @return HasMany<CriteriOption, static>
+     * @return HasMany<CriteriOption, $this>
      */
     public function criteriOptions(): HasMany
     {
-        // @phpstan-ignore-next-line
         return $this->hasMany(CriteriOption::class, 'anno', 'anno');
     }
 
@@ -599,11 +601,10 @@ class Organizzativa extends BaseIndividualeModel
     }
 
     /**
-     * @return HasMany<Option, static>
+     * @return HasMany<Option, $this>
      */
     public function options(): HasMany
     {
-        // @phpstan-ignore-next-line
         return $this->hasMany(Option::class, 'anno', 'anno');
     }
 }

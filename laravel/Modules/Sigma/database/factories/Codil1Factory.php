@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Codil1;
 
+/**
+ * @extends Factory<Codil1>
+ */
 class Codil1Factory extends Factory
 {
     /**

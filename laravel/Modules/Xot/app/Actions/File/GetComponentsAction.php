@@ -52,8 +52,8 @@ class GetComponentsAction
                 $content = File::get($components_json),
                 '['.__LINE__.']['.class_basename(static::class).']',
             );
-            $decoded = json_decode($content, false);
-            /** @var array<int, mixed> $comps */
+            $decoded = json_decode($content, true);
+            /** @var array<int, array<string, mixed>> $comps */
             $comps = is_array($decoded) ? array_values($decoded) : [];
 
             return ComponentFileData::collection($comps);

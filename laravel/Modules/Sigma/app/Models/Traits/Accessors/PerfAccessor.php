@@ -6,6 +6,8 @@ namespace Modules\Sigma\Models\Traits\Accessors;
 
 /**
  * PerfAccessor - Accessor per performance (perf_ind_*).
+ *
+ * @phpstan-ignore trait.unused
  */
 trait PerfAccessor
 {

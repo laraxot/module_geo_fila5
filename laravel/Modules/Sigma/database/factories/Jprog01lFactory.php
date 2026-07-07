@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Jprog01l;
 
+/**
+ * @extends Factory<Jprog01l>
+ */
 class Jprog01lFactory extends Factory
 {
     /**

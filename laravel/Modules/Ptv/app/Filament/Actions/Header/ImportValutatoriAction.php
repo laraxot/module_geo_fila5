@@ -24,6 +24,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ImportValutatoriAction extends Action
 {
+    /** @var array<string, Component> */
     public array $fields = [];
 
     public string $stabiDirigenteModel;
@@ -36,7 +37,7 @@ class ImportValutatoriAction extends Action
     }
 
     /**
-     * @param  array<string, mixed>  $fields
+     * @param  array<string, Component>  $fields
      */
     public function addFields(array $fields): self
     {
@@ -62,6 +63,9 @@ class ImportValutatoriAction extends Action
         return $this;
     }
 
+    /**
+     * @return array<int|string, Component>
+     */
     protected function getFormFields(): array
     {
         return [
@@ -92,6 +96,7 @@ class ImportValutatoriAction extends Action
             ->icon('heroicon-o-arrow-up-tray')
             ->schema($formFields)
             ->action(function (array $data): void {
+                /** @var array<string, mixed> $data */
                 $file = isset($data['file']) && is_string($data['file']) ? $data['file'] : '';
                 if ($file === '') {
                     return;
@@ -131,7 +136,15 @@ class ImportValutatoriAction extends Action
                     }
                 }
 
-                $this->syncValutatore($data, $rows);
+                /**  array<string, mixed> $validatedData */
+                $validatedData = [];
+                foreach ($data as $key => $value) {
+                    if (is_string($key)) {
+                        $validatedData[$key] = $value;
+                    }
+                }
+
+                $this->syncValutatore($validatedData, $rows);
             })
             ->after(function () {
                 // Force garbage collection to prevent memory leaks
@@ -141,7 +154,7 @@ class ImportValutatoriAction extends Action
 
     /**
      * @param  array<string, mixed>  $data
-     * @param  array  $rows
+     * @param  array<int, array<string, mixed>>  $rows
      */
     public function syncValutatore(array $data, array $rows): void
     {

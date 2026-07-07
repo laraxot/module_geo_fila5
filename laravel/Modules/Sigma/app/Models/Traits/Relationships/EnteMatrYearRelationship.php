@@ -12,6 +12,8 @@ use Modules\Sigma\Models\Qua00f;
  * @phpstan-require-implements EnteMatrFieldsContract
  *
  * @property int|null $anno
+ *
+ * @phpstan-ignore trait.unused
  */
 trait EnteMatrYearRelationship
 {

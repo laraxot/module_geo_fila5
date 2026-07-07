@@ -6,4 +6,7 @@ namespace Modules\Sigma\Models\Traits\Extras;
 
 // ------- services -------
 
+/**
+ * @phpstan-ignore trait.unused
+ */
 trait CommonExtra {}

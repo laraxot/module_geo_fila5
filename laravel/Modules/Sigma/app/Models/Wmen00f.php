@@ -121,6 +121,9 @@ class Wmen00f extends BaseModel
     }
 
     // ----------relationship--------
+    /**
+     * @return HasMany<Wstr01lx, $this>
+     */
     public function wstr01lx(): HasMany
     {
         return $this->hasMany(Wstr01lx::class, 'wtmatr', 'mnmatr')
@@ -129,6 +132,9 @@ class Wmen00f extends BaseModel
             ->where('wtdata', $this->mndata->format('Ymd'));
     }
 
+    /**
+     * @return HasMany<Wstr02f, $this>
+     */
     public function wstr02f(): HasMany
     {
         return $this->hasMany(Wstr02f::class, 'w2matr', 'mnmatr')

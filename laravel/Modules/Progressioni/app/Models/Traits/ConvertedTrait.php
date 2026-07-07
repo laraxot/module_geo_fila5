@@ -6,7 +6,6 @@ namespace Modules\Progressioni\Models\Traits;
 
 // ----- models------
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\Progressioni\Models\Scheda;
 
 // ----- services -----
 
@@ -58,21 +57,21 @@ trait ConvertedTrait
     }
 
     /**
-     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     * @return HasMany<static, $this>
      */
     public function avversari(): HasMany
     {
-        return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')
+        return $this->hasMany(static::class, 'valutatore_id', 'valutatore_id')
             ->where('anno', $this->anno)
             ->where('ha_diritto', 1);
     }
 
     /**
-     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     * @return HasMany<static, $this>
      */
     public function avversariCategoriaEco(): HasMany
     {
-        return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')
+        return $this->hasMany(static::class, 'valutatore_id', 'valutatore_id')
             ->where('anno', $this->anno)
             ->where('ha_diritto', 1)
             ->where('categoria_eco', $this->categoria_eco);

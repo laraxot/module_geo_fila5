@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Corregf;
 
+/**
+ * @extends Factory<Corregf>
+ */
 class CorregfFactory extends Factory
 {
     /**

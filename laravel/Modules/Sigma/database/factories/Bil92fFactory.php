@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Bil92f;
 
+/**
+ * @extends Factory<Bil92f>
+ */
 class Bil92fFactory extends Factory
 {
     /**

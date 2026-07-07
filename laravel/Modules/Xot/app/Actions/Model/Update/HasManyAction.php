@@ -40,7 +40,7 @@ class HasManyAction
     /**
      * Determine if the update is a direct update.
      *
-     * @param array $data
+     * @param array<string, mixed> $data
      */
     private function isDirectUpdate(array $data): bool
     {
@@ -73,7 +73,7 @@ class HasManyAction
                 continue;
             }
 
-            /** @var array $itemData */
+            /** @var array<string, mixed> $itemData */
             $itemData = array_merge($item, [
                 $updateData->foreignKey => $updateData->parentKey,
             ]);
@@ -94,7 +94,7 @@ class HasManyAction
     /**
      * Clean up orphaned records after batch update.
      *
-     * @param array $updatedIds
+     * @param array<int, int|string> $updatedIds
      */
     private function cleanupOrphanedRecords(
         RelationData $relationDTO,

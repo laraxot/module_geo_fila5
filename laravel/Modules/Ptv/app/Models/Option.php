@@ -95,7 +95,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option tree($maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option treeOf((Model|callable) $constraint, $maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option whereDepth($operator, $value = null)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array $scopes)
+ * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array<string, \Closure> $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  *
  * @property-read Profile|null $deleter
@@ -137,12 +137,18 @@ class Option extends BaseModel
         return 'preso';
     }
 
+    /**
+     * @return HasMany<static, static>
+     */
     public function sons(): HasMany
     {
         // return $this->hasMany(static::class, 'parent_id', 'id');
         return $this->children();
     }
 
+    /**
+     * @return HasMany<static, static>
+     */
     public function fillSons(): HasMany
     {
         $sons = $this->sons();

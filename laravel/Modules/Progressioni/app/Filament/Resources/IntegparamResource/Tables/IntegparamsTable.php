@@ -6,6 +6,7 @@ namespace Modules\Progressioni\Filament\Resources\IntegparamResource\Tables;
 
 use Carbon\Carbon;
 use Exception;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
@@ -13,11 +14,8 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 class IntegparamsTable extends XotBaseResourceTable
 {
     /**
-     * @return array<string, mixed>
+     * @return array<string, Column>
      */
-    /**
-    * @return array<string, Column>
-    */
     public function getTableColumns(): array
     {
         return [

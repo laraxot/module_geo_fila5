@@ -158,6 +158,9 @@ class Qua00k1 extends BaseModel
 
     public $timestamps = false;
 
+    /**
+     * @return HasOne<Tqu00f, $this>
+     */
     public function Tqu00f(): HasOne
     {
         return $this->hasOne(Tqu00f::class, 'propro', 'propro')
@@ -169,6 +172,9 @@ class Qua00k1 extends BaseModel
     }
 
     // ---------------------------------------------------------------------
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public static function last_qua00f(?array $params = null): ?self
     {
         if ($params === null) {
@@ -187,6 +193,9 @@ class Qua00k1 extends BaseModel
     }
 
     // /------------------------------------------
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function giorni(?array $params = null): int
     {
         if ($params === null) {
@@ -215,6 +224,9 @@ class Qua00k1 extends BaseModel
         return (int) ($al->diffInDays($carbon, true) + 1);
     }
 
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function giorni_propro(?array $params = null): int
     {
         if ($params === null) {
@@ -237,6 +249,9 @@ class Qua00k1 extends BaseModel
         return 0;
     }
 
+    /**
+     * @param  array<string, mixed>|null  $params
+     */
     public function giorni_propro_posfun(?array $params = null): int
     {
         if ($params === null) {

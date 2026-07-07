@@ -96,6 +96,9 @@ trait FunctionTrait
         return $trovaEsclusiAction->check($name, (string) $value, $this);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection<int, \Modules\Performance\Models\Option>
+     */
     public function optionsCriteriOrdered(): \Illuminate\Support\Collection
     {
         $criteri = $this->options->where('name', 'criterio')->where('parent_id', 0)->sortBy('pos');

@@ -89,7 +89,7 @@ use Modules\Ptv\Models\Profile;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option tree($maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option treeOf((Model|callable) $constraint, $maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option whereDepth($operator, $value = null)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array $scopes)
+ * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withGlobalScopes(array<int, mixed> $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Option withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @property-read Profile|null $deleter
  * @property-read \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Option> $fillSons

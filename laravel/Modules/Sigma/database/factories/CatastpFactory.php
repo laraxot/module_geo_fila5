@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Catastp;
 
+/**
+ * @extends Factory<Catastp>
+ */
 class CatastpFactory extends Factory
 {
     /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Traits;
 
+// @phpstan-ignore trait.unused
 trait PanelTrait
 {
     public function lavoratoreFields(): array

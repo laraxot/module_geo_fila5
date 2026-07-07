@@ -20,7 +20,7 @@ class RecordNotification extends Notification implements ShouldQueue
     /** @var array<string, mixed> */
     public array $data = [];
 
-    /** @var array<int, array<string, string>> */
+    /** @var array<int, array{path?: string, data?: mixed, as?: string|null, mime?: string|null}> */
     public array $attachments = [];
 
     protected Model $record;
@@ -132,6 +132,9 @@ class RecordNotification extends Notification implements ShouldQueue
      * @param  array  $data  Additional data to merge
      * @return $this
      */
+    /**
+     * @param  array<string, mixed>  $data
+     */
     public function mergeData(array $data): self
     {
         $this->data = array_merge($this->data, $data);
@@ -142,7 +145,7 @@ class RecordNotification extends Notification implements ShouldQueue
     /**
      * Add attachments to the notification.
      *
-     * @param  array<int, array<string, string>>  $attachments  Array of attachment data
+     * @param  array<int, array{path?: string, data?: mixed, as?: string|null, mime?: string|null}>  $attachments  Array of attachment data
      * @return $this
      */
     public function addAttachments(array $attachments): self

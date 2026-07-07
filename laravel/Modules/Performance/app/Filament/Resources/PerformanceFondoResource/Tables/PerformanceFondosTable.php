@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Performance\Filament\Resources\PerformanceFondoResource\Tables;
 
+use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Performance\Filament\Actions\Table\IndividualeSpreadMoneyAction;
 use Modules\Performance\Filament\Actions\Table\OrganizzativaSpreadMoneyAction;
@@ -72,7 +74,7 @@ class PerformanceFondosTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableActions(): array
     {

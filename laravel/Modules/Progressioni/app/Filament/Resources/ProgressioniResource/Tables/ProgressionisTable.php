@@ -11,6 +11,7 @@ use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Tables;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -123,8 +124,8 @@ class ProgressionisTable extends XotBaseResourceTable
     }
 
     /**
-    * @return array<string, Filter>
-    */
+     * @return array<int, SelectFilter>
+     */
     public function getTableFilters(): array
     {
         return [

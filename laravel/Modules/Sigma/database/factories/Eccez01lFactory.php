@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Eccez01l;
 
+/**
+ * @extends Factory<Eccez01l>
+ */
 class Eccez01lFactory extends Factory
 {
     /**

@@ -2,10 +2,10 @@
 
 namespace Modules\Ptv\Database\Factories;
 
-/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\User> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\User;
 
+/** @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Ptv\Models\User> */
 class UserFactory extends Factory
 {
     /**

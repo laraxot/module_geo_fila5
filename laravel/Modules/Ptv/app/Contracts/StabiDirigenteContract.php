@@ -6,11 +6,11 @@ namespace Modules\Ptv\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 
-/** @template TModel */
 interface StabiDirigenteContract
 {
     /**
      * @param  array<string, mixed>  $attributes
+     * @return static
      */
     public static function firstOrCreate(array $attributes): self;
 
@@ -21,7 +21,7 @@ interface StabiDirigenteContract
 
     /**
      * @param  array<string, mixed>  $conditions
-     * @return Builder<TModel>
+     * @return Builder<\Illuminate\Database\Eloquent\Model>
      */
     public function where(array $conditions): Builder;
 }

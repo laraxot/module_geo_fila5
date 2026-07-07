@@ -171,21 +171,33 @@ class IndividualePesi extends BaseModel
                $this->peso_qualita_prestazione;
     }
 
+    /**
+     * @return HasMany<Individuale, $this>
+     */
     public function individuale(): HasMany
     {
         return $this->hasMany(Individuale::class, 'type', 'type');
     }
 
+    /**
+     * @return HasMany<IndividualePo, $this>
+     */
     public function individualePo(): HasMany
     {
         return $this->hasMany(IndividualePo::class, 'type', 'type');
     }
 
+    /**
+     * @return HasMany<IndividualeRegionale, $this>
+     */
     public function individualeRegionale(): HasMany
     {
         return $this->hasMany(IndividualeRegionale::class, 'type', 'type');
     }
 
+    /**
+     * @return HasMany<IndividualeAdm, $this>
+     */
     public function individualeAdm(): HasMany
     {
         return $this->hasMany(IndividualeAdm::class, 'type', 'type');

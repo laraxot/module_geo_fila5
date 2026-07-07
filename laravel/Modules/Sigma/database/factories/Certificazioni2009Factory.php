@@ -5,6 +5,9 @@ namespace Modules\Sigma\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Sigma\Models\Certificazioni2009;
 
+/**
+ * @extends Factory<Certificazioni2009>
+ */
 class Certificazioni2009Factory extends Factory
 {
     /**

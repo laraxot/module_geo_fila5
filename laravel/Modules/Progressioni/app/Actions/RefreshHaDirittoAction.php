@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Progressioni\Actions;
 
 use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Modules\Progressioni\Models\CriteriOption;
 use Modules\Progressioni\Models\Progressioni;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
+use Modules\Ptv\Models\Contracts\CriteriEsclusioneContract;
 use Spatie\QueueableAction\QueueableAction;
 
 class RefreshHaDirittoAction
@@ -43,19 +43,24 @@ class RefreshHaDirittoAction
             ->success()
             ->send();
 
-        // Get the full collections for the Check action and convert to Support\Collection
-        /** @var Collection<int, Model&object{name: string, value: mixed}> $criteri_esclusione */
-        $criteri_esclusione = Collection::make($record->criteriEsclusione->all())->map(function ($item) {
-            return (object) [
-                'name' => $item->name,
-                'value' => $item->value,
-            ];
-        });
-        /** @var Collection<int|string, mixed> $criteri_option */
+        $criteri_esclusione = $this->criteriEsclusioneForCheck($record);
         $criteri_option = Collection::make(
             CriteriOption::where('anno', $record->anno)->pluck('value', 'name')->all()
         );
 
         app(Check::class)->execute($record, $criteri_esclusione, $criteri_option);
+    }
+
+    /**
+     * @return Collection<int, CriteriEsclusioneContract>
+     */
+    private function criteriEsclusioneForCheck(Progressioni $record): Collection
+    {
+        $items = new Collection();
+        foreach ($record->criteriEsclusione as $item) {
+            $items->push($item);
+        }
+
+        return $items->values();
     }
 }

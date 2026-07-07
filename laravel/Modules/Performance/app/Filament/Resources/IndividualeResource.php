@@ -112,8 +112,8 @@ class IndividualeResource extends BaseSchedaResource
     }
 
     /**
-     *  array{stabi_repar_anno?: array{anno?: int|string}} $data
-     *  array<int, string>
+     * @param array{stabi_repar_anno?: array{anno?: int|string}} $data
+     * @return list<string|null>
      */
     public static function getXlsFields(array $data): array
     {
@@ -150,8 +150,13 @@ class IndividualeResource extends BaseSchedaResource
         $trans = trans($transKey);
 
         foreach ($criteri as $criterio) {
-            $fields[] = $criterio->nome;
-            Arr::set($trans, 'fields.'.$criterio->nome, $criterio->label);
+            $nome = $criterio->nome;
+            if (! is_string($nome) || $nome === '') {
+                continue;
+            }
+
+            $fields[] = $nome;
+            Arr::set($trans, 'fields.'.$nome, $criterio->label);
         }
         app(SaveTransAction::class)->execute($transKey, $trans);
         $fields[] = 'excellence';

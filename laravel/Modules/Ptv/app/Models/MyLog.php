@@ -26,7 +26,7 @@ use function Safe\unserialize;
  * @property string|null $note
  * @property string|null $obj
  * @property string|null $act
- * @property array|null $data
+ * @property array<array-key, mixed>|null $data
  * @property string|null $datemod
  * @property string|null $handle
  * @property string|null $post_type
