@@ -20,7 +20,7 @@ class MakePdf
      *
      * @param  array<string, mixed>  $data
      */
-    public function execute(array $data): string|BinaryFileResponse
+    public function execute(array<string, mixed> $data): string|BinaryFileResponse
     {
         [$anno, $valutatoreId] = $this->resolveFilters($data);
         $rows = $this->buildRows($anno, $valutatoreId);
@@ -44,7 +44,7 @@ class MakePdf
      * @param  array<string, mixed>  $data
      * @return array{0: int|null, 1: int|null}
      */
-    private function resolveFilters(array $data): array
+    private function resolveFilters(array<string, mixed> $data): array
     {
         $filters = [];
         if (isset($data['anno/valutatore']) && is_array($data['anno/valutatore'])) {

@@ -62,7 +62,7 @@ class DatiSalvati implements ShouldBroadcast
      * @param  array<string, mixed>  $against
      * @return array<string, mixed>
      */
-    private function diffChanged(array $from, array $against): array
+    private function diffChanged(array<string, mixed> $from, array $against): array
     {
         $changed = [];
 

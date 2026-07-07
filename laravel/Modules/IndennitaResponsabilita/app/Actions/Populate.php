@@ -18,7 +18,7 @@ class Populate
      *
      * @param  array<string, mixed>  $data
      */
-    public function execute(array $data): void
+    public function execute(array<string, mixed> $data): void
     {
         /** @var int|string|null $annoRaw */
         $annoRaw = $data['anno'] ?? null;
