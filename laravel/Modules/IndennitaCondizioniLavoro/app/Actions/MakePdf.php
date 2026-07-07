@@ -16,7 +16,7 @@ class MakePdf
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>|null  $data
+     * @param  array|null  $data
      */
     public function execute(?array $data): StreamedResponse
     {
