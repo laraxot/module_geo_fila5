@@ -22,7 +22,7 @@ class ListAsz00fs extends XotBaseListRecords
     /**
      * @return array<class-string>
      */
-    public function getHeaderWidgets(): array<string, mixed>
+    public function getHeaderWidgets(): array
     {
         return [
             Asz00fStatsOverview::class,
@@ -33,7 +33,10 @@ class ListAsz00fs extends XotBaseListRecords
      * @return array<string, Column>
      */
     #[Override]
-    public function getTableColumns(): array<string, Column>
+    /**
+    * @return array<string, Column>
+    */
+    public function getTableColumns(): array
     {
         return app(Asz00fsTable::class)->getTableColumns();
     }
@@ -42,7 +45,10 @@ class ListAsz00fs extends XotBaseListRecords
      * @return array<string, Filter>
      */
     #[Override]
-    public function getTableFilters(): array<string, Filter>
+    /**
+    * @return array<string, Filter>
+    */
+    public function getTableFilters(): array
     {
         return [
             'ricerca' => Filter::make('ricerca')

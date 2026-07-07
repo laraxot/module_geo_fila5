@@ -12,7 +12,7 @@ class CriteriPrecedenzaService
     /**
      * @return array<int, object{name: string|null, label: string|null, type: string}>
      */
-    public static function getFieldsYear(int|string|null $year, bool $_is_po = false): array<string, mixed>
+    public static function getFieldsYear(int|string|null $year, bool $_is_po = false): array
     {
         if (is_null($year)) {
             $year = Request::input('year', 0);
@@ -45,7 +45,7 @@ class CriteriPrecedenzaService
      * @param  bool  $is_po  Whether to include PO-specific fields
      * @return array<int, string> Array of field names
      */
-    public static function getFieldsNamesYear(int $year, bool $is_po = false): array<string, mixed>
+    public static function getFieldsNamesYear(int $year, bool $is_po = false): array
     {
         $fields = self::getFieldsYear($year, $is_po);
         $data = [];

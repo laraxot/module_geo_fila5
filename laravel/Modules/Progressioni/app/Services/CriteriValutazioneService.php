@@ -12,7 +12,7 @@ class CriteriValutazioneService
     /**
      * @return array<int, object{name: string|null, label: string|null, type: string}>
      */
-    public static function getFieldsYear(int $_year, bool $_is_po = false): array<string, mixed>
+    public static function getFieldsYear(int $_year, bool $_is_po = false): array
     {
         $year = Request::input('year', 0);
         if (is_string($year)) {

@@ -14,7 +14,7 @@ class EsclusiExtraForm extends XotBaseResourceForm
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         return [
             'id' => TextInput::make('id')->disabled(),

@@ -12,7 +12,7 @@ class EditCriteriValutazione extends XotBaseEditRecord
 {
     protected static string $resource = CriteriValutazioneResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

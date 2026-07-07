@@ -12,7 +12,7 @@ class EditValutatore extends XotBaseEditRecord
 {
     protected static string $resource = ValutatoreResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

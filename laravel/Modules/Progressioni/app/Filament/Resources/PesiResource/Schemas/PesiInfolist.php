@@ -13,7 +13,7 @@ class PesiInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component>
      */
-    public static function getInfolistSchema(): array<string, mixed>
+    public static function getInfolistSchema(): array
     {
         return [
             'id' => TextEntry::make('id')

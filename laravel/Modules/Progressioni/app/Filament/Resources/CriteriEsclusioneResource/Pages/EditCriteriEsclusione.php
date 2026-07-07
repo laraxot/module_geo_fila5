@@ -12,7 +12,7 @@ class EditCriteriEsclusione extends XotBaseEditRecord
 {
     protected static string $resource = CriteriEsclusioneResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

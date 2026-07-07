@@ -31,7 +31,7 @@ class SchedaPdfNotification extends Notification
      *
      * @return array<int, string>
      */
-    public function via(mixed $notifiable): array<string, mixed>
+    public function via(mixed $notifiable): array
     {
         return ['mail'];
     }
@@ -57,7 +57,7 @@ class SchedaPdfNotification extends Notification
      *
      * @return array<string, mixed>
      */
-    public function toArray(mixed $notifiable): array<string, mixed>
+    public function toArray(mixed $notifiable): array
     {
         return [
         ];

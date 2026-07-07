@@ -22,7 +22,7 @@ class IntegparamResource extends XotBaseResource
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         return [
             'dati_anagrafici' => Section::make('Dati Anagrafici')

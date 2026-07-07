@@ -12,7 +12,7 @@ class EditMyLog extends XotBaseEditRecord
 {
     protected static string $resource = MyLogResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

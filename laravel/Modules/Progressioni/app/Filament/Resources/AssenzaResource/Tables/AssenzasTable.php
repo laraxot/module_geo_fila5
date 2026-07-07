@@ -13,7 +13,10 @@ class AssenzasTable extends XotBaseResourceTable
     /**
      * @return array<string, Column>
      */
-    public function getTableColumns(): array<string, Column>
+    /**
+    * @return array<string, Column>
+    */
+    public function getTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id')

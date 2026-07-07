@@ -17,7 +17,7 @@ class StipendioTabellareResource extends XotBaseResource
     protected static ?string $model = StipendioTabellare::class;
 
     #[Override]
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -59,7 +59,7 @@ class StipendioTabellareResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array<string, mixed>
+    public static function getPages(): array
     {
         return [
             'index' => ListStipendioTabellares::route('/'),

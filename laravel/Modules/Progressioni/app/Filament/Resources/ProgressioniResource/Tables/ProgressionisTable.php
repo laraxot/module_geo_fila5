@@ -41,7 +41,7 @@ class ProgressionisTable extends XotBaseResourceTable
      *
      * @return array<string, Action>
      */
-    public function getTableHeaderActions(): array<string, mixed>
+    public function getTableHeaderActions(): array
     {
         /** @var array<string, mixed> $tableFilters */
         $tableFilters = $this->tableFilters ?? [];
@@ -65,7 +65,10 @@ class ProgressionisTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableColumns(): array<string, Column>
+    /**
+    * @return array<string, Column>
+    */
+    public function getTableColumns(): array
     {
         return [
             'id' => TextColumn::make('id'),
@@ -119,7 +122,10 @@ class ProgressionisTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableFilters(): array<string, Filter>
+    /**
+    * @return array<string, Filter>
+    */
+    public function getTableFilters(): array
     {
         return [
             SelectFilter::make('anno/valutatore')
@@ -173,7 +179,10 @@ class ProgressionisTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableActions(): array<string, Action>
+    /**
+    * @return array<string, Action>
+    */
+    public function getTableActions(): array
     {
         // Types are inferred by Filament v4
         return [
@@ -183,7 +192,7 @@ class ProgressionisTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableBulkActions(): array<string, mixed>
+    public function getTableBulkActions(): array
     {
         // Types are inferred by Filament v4
         return [

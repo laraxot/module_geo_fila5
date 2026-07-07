@@ -62,7 +62,7 @@ class TrovaEsclusiAction
  * @param array<string, mixed> $params
  * @return array<mixed>
  */
-    public function checkScheda(array $params, int $year): array<string, mixed>
+    public function checkScheda(array $params, int $year): array
     {
         if (! isset($params['criteri_esclusione'])) {
             $params['criteri_esclusione'] = CriteriEsclusione::where('anno', $year)
@@ -94,7 +94,7 @@ class TrovaEsclusiAction
      * @param  array{scheda: Scheda|\Modules\Progressioni\Models\Progressioni, criteri_esclusione: array<int|string, mixed>, criteri_option: array<int|string, mixed>}  $params
      * @return array{ha_diritto: int, motivo: string}
      */
-    public function criteriScheda(array $params, int $year): array<string, mixed>
+    public function criteriScheda(array $params, int $year): array
     {
         /** @var Scheda|\Modules\Progressioni\Models\Progressioni $scheda */
         $scheda = $params['scheda'];
@@ -132,7 +132,7 @@ class TrovaEsclusiAction
     }
 
     /** @return array<string, mixed> */
-    public function criteriOptions(int $year): array<string, mixed>
+    public function criteriOptions(int $year): array
     {
         return CriteriOption::where('anno', $year)
             ->get()

@@ -24,7 +24,7 @@ class ProgressioniResource extends Resource
     /**
      * @return array<string, mixed>
      */
-    public function toArray($request): array<string, mixed>
+    public function toArray($request): array
     {
         // return parent::toArray($request);
         return [

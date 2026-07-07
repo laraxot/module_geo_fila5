@@ -34,7 +34,7 @@ class ProgressioniResource extends XotBaseResource
      * @param array<string, mixed> $filters
      * @return array<int, string>
      */
-    public static function getXlsFields(array $filters = []): array<string, mixed>
+    public static function getXlsFields(array $filters = []): array
     {
         /** @var array<int, string> $fields */
         $fields = [
@@ -102,7 +102,7 @@ class ProgressioniResource extends XotBaseResource
      * @return array<string, Component>
     */
     #[Override]
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -238,7 +238,7 @@ class ProgressioniResource extends XotBaseResource
         ];
     }
 
-    // public static function getRelations(): array<string, mixed>
+    // public static function getRelations(): array
     // {
     //     return [
     //         PtvRelationManagers\Qua00fRelationManager::class,
@@ -247,7 +247,7 @@ class ProgressioniResource extends XotBaseResource
     //     ];
     // }
     #[Override]
-    public static function getPages(): array<string, mixed>
+    public static function getPages(): array
     {
         return [
             ...parent::getPages(),

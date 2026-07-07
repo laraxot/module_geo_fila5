@@ -12,7 +12,7 @@ class EditRating extends BaseEditRating
 {
     protected static string $resource = RatingResource::class;
 
-    protected function getActions(): array<string, mixed>
+    protected function getActions(): array
     {
         return [
             DeleteAction::make(),

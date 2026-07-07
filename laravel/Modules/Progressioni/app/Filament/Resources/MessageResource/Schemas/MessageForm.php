@@ -17,7 +17,7 @@ class MessageForm extends XotBaseResourceForm
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         // Types are inferred by Filament v4
         return [
@@ -61,7 +61,7 @@ class MessageForm extends XotBaseResourceForm
     /**
      * @return array<string, string>
      */
-    protected static function getTypeOptions(): array<string, mixed>
+    protected static function getTypeOptions(): array
     {
         $model = MessageResource::getModel();
         $existingTypes = $model::query()

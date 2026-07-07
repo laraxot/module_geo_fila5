@@ -32,7 +32,7 @@ class ShowMailSendedAt
     /**
      * @return list<string>
      */
-    private function collectSendMailTimestamps(Scheda|Progressioni|null $scheda): array<string, mixed>
+    private function collectSendMailTimestamps(Scheda|Progressioni|null $scheda): array
     {
         if ($scheda === null) {
             return [];

@@ -12,7 +12,7 @@ class EditPesi extends XotBaseEditRecord
 {
     protected static string $resource = PesiResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

@@ -26,7 +26,7 @@ class CedDiffsTable extends XotBaseResourceTable
      *
      * @return array<string, Action>
      */
-    public function getTableHeaderActions(): array<string, mixed>
+    public function getTableHeaderActions(): array
     {
         return [
             'create' => CreateAction::make(),
@@ -61,7 +61,10 @@ class CedDiffsTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableColumns(): array<string, Column>
+    /**
+    * @return array<string, Column>
+    */
+    public function getTableColumns(): array
     {
         return [
             'matricola' => TextColumn::make('matricola')->searchable()->sortable(),
@@ -88,7 +91,10 @@ class CedDiffsTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableActions(): array<string, Action>
+    /**
+    * @return array<string, Action>
+    */
+    public function getTableActions(): array
     {
         return [
             'view' => ViewAction::make()
@@ -101,7 +107,7 @@ class CedDiffsTable extends XotBaseResourceTable
         ];
     }
 
-    public function getTableBulkActions(): array<string, mixed>
+    public function getTableBulkActions(): array
     {
         return [
             'delete' => DeleteBulkAction::make(),

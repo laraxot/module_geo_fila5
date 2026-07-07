@@ -17,7 +17,7 @@ class ViewIntegparam extends XotBaseViewRecord
 {
     protected static string $resource = IntegparamResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'edit' => EditAction::make(),
@@ -31,7 +31,7 @@ class ViewIntegparam extends XotBaseViewRecord
      * @return array<int|string, Component>
      */
     #[Override]
-    protected function getInfolistSchema(): array<string, mixed>
+    protected function getInfolistSchema(): array
     {
         return [
             Section::make('Dati Anagrafici')

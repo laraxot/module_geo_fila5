@@ -25,7 +25,7 @@ class Asz00fStatsOverview extends XotBaseStatsOverviewWidget
      * @return array<Stat>
      */
     #[Override]
-    protected function getStats(): array<string, mixed>
+    protected function getStats(): array
     {
         $stats = app(GetAsz00fActiveStatsAction::class)->execute();
 

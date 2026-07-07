@@ -21,7 +21,7 @@ class MaxCatecoPosfunAnnoResource extends XotBaseResource
     /**
      * @return array<string, Component>
      */
-    public static function getFormSchema(): array<string, mixed>
+    public static function getFormSchema(): array
     {
         return [
             'id' => TextInput::make('id')->disabled(),
@@ -36,7 +36,7 @@ class MaxCatecoPosfunAnnoResource extends XotBaseResource
     }
 
     #[Override]
-    public static function getPages(): array<string, mixed>
+    public static function getPages(): array
     {
         return [
             'index' => ListMaxCatecoPosfunAnnos::route('/'),

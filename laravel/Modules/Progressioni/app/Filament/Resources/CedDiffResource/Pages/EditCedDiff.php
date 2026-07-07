@@ -12,7 +12,7 @@ class EditCedDiff extends XotBaseEditRecord
 {
     protected static string $resource = CedDiffResource::class;
 
-    protected function getHeaderActions(): array<string, mixed>
+    protected function getHeaderActions(): array
     {
         return [
             'delete' => DeleteAction::make(),

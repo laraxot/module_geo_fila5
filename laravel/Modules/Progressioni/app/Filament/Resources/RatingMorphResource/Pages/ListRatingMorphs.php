@@ -23,7 +23,10 @@ class ListRatingMorphs extends XotBaseListRecords
     /**
      * @return array<string, mixed>
      */
-    public function getTableColumns(): array<string, Column>
+    /**
+    * @return array<string, Column>
+    */
+    public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
         return [
@@ -50,7 +53,10 @@ class ListRatingMorphs extends XotBaseListRecords
     /**
      * @return array<string, mixed>
      */
-    public function getTableFilters(): array<string, Filter>
+    /**
+    * @return array<string, Filter>
+    */
+    public function getTableFilters(): array
     {
         return [
             'type' => SelectFilter::make('ratingable_type')
@@ -66,7 +72,10 @@ class ListRatingMorphs extends XotBaseListRecords
     /**
      * @return array<string, mixed>
      */
-    public function getTableActions(): array<string, Action>
+    /**
+    * @return array<string, Action>
+    */
+    public function getTableActions(): array
     {
         return [
             'edit' => EditAction::make(),
@@ -78,7 +87,7 @@ class ListRatingMorphs extends XotBaseListRecords
     /**
      * @return array<string, mixed>
      */
-    public function getTableBulkActions(): array<string, mixed>
+    public function getTableBulkActions(): array
     {
         return [
             'delete' => DeleteBulkAction::make(),
@@ -86,7 +95,7 @@ class ListRatingMorphs extends XotBaseListRecords
     }
 
     #[Override]
-    public function getTableHeaderActions(): array<string, mixed>
+    public function getTableHeaderActions(): array
     {
         return [
             'create' => CreateAction::make(),

@@ -38,7 +38,7 @@ class CedDiffImport implements ToCollection
     /**
      * @return array<int, array{name: string, type: string}>
      */
-    public function getColumns(): array<string, mixed>
+    public function getColumns(): array
     {
         return array_map(static function ($column): array {
             $name = Str::of((string) $column)->slug('_')->toString();
