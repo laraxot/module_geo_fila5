@@ -10,10 +10,7 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TimePicker;
 use Filament\Infolists\Components\Entry;
-<<<<<<< HEAD
-=======
 use Filament\Panel;
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
 use Filament\Support\Components\Component;
 use Filament\Support\Facades\FilamentColor;
 use Filament\Tables\Columns\Column;
@@ -27,15 +24,6 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Modules\Xot\Console\Commands\GenerateFilamentResources;
 use Modules\Xot\Datas\XotData;
-<<<<<<< HEAD
-use Modules\Xot\Support\PaDesignColors;
-use Modules\Xot\View\Composers\XotComposer;
-
-use function Safe\realpath;
-
-use Webmozart\Assert\Assert;
-
-=======
 use Modules\Xot\Mixins\PanelMixin;
 use Modules\Xot\Support\PaDesignColors;
 use Modules\Xot\View\Composers\XotComposer;
@@ -43,7 +31,6 @@ use Webmozart\Assert\Assert;
 
 use function Safe\realpath;
 
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
 /**
  * Class XotServiceProvider.
  */
@@ -68,10 +55,7 @@ class XotServiceProvider extends XotBaseServiceProvider
         $this->registerPaFilamentColors();
         $this->registerXotLivewireComponents();
         $this->registerProviders();
-<<<<<<< HEAD
-=======
         $this->registerFilamentPanelMacros();
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
     }
 
     #[\Override]
@@ -83,14 +67,11 @@ class XotServiceProvider extends XotBaseServiceProvider
         // $this->registerExceptionHandlersRepository();
         // $this->extendExceptionHandler();
         $this->registerCommands();
-<<<<<<< HEAD
-=======
     }
 
     public function registerFilamentPanelMacros(): void
     {
         Panel::mixin(new PanelMixin());
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
     }
 
     public function registerProviders(): void

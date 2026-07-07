@@ -19,10 +19,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Modules\User\Filament\Pages\MyProfilePage;
 use Modules\Xot\Actions\Filament\GetModulesNavigationItems;
-<<<<<<< HEAD
-=======
 use Modules\Xot\Actions\Filament\GetPanelsNavigationItems;
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
 use Modules\Xot\Actions\Panel\ApplyMetatagToPanelAction;
 use Modules\Xot\Filament\Pages\MainDashboard;
 
@@ -101,14 +98,8 @@ abstract class XotBaseMainPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
-<<<<<<< HEAD
-        $navs = app(GetModulesNavigationItems::class)->execute();
-=======
-        $navs = array_merge(
-            app(GetModulesNavigationItems::class)->execute(),
-            app(GetPanelsNavigationItems::class)->execute(),
-        );
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
+        $navs = app(GetPanelsNavigationItems::class)->execute();
+        
         $panel->navigationItems($navs);
 
         // Temporaneamente disabilitato per debug tenancy

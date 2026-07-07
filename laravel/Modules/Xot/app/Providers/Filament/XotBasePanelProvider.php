@@ -58,10 +58,7 @@ abstract class XotBasePanelProvider extends PanelProvider
             // ->tenant($teamClass)
             // ->tenant($teamClass,ownershipRelationship:'users')
             // ->tenant($teamClass)
-<<<<<<< HEAD
-=======
             ->icons(['navigation' => 'heroicon-o-cube'])
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)
             ->id($moduleLow.'::admin')
             ->path($moduleLow.'/admin')
             // Configure Filament discovery for module components (unconditional; dirs are expected to exist)

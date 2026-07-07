@@ -171,8 +171,5 @@ _docs/
 *~REMOTE
 *.orig
 *.rej
-<<<<<<< HEAD
 *~headagentdb.rvf
-=======
 *~head
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)

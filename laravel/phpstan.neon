@@ -57,7 +57,7 @@ parameters:
         #- ./Modules/Europa/*
         #- ./Modules/Gdpr/*
         #- ./Modules/Inail/*
-        #- ./Modules/Incentivi/*
+        - ./Modules/Incentivi/*
         #- ./Modules/IndennitaCondizioniLavoro/*
         #- ./Modules/IndennitaResponsabilita/*
         #- ./Modules/Job/*
@@ -68,7 +68,7 @@ parameters:
         #- ./Modules/Mensa/*
         #- ./Modules/MobilitaVolontaria/*
         #- ./Modules/Notify/*
-        #- ./Modules/Pdnd/*
+        - ./Modules/Pdnd/*
         #- ./Modules/Performance/*
         #- ./Modules/Prenotazioni/*
         #- ./Modules/PresenzeAssenze/*
