@@ -138,7 +138,7 @@ class TestSmtpPage extends XotBasePage
         Assert::isArray($mail_config = config('mail'));
         Assert::isArray($smtpConfig = Arr::get($mail_config, 'mailers.smtp'));
 
-        // Convertiamo l'array generico in un array<string, mixed>
+        // Convertiamo l'array generico in un array
         $typedConfig = [];
         foreach ($smtpConfig as $key => $value) {
             if (is_string($key)) {

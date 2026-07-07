@@ -13,7 +13,7 @@ use Modules\Notify\Datas\NotificationData;
 interface CanThemeNotificationContract
 {
     /**
-     * @param  array<string, mixed>  $view_params
+     * @param  array  $view_params
      */
     public function getNotificationData(string $name, array $view_params = []): NotificationData;
 
@@ -30,7 +30,7 @@ interface CanThemeNotificationContract
     public function sendSmsCallback();
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
     public function increase(string $what, array $data): void;
 }

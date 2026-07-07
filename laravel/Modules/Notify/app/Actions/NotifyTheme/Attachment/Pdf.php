@@ -20,7 +20,7 @@ class Pdf
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $view_params
+     * @param  array  $view_params
      */
     public function execute(string $post_type, array $view_params): AttachmentData
     {

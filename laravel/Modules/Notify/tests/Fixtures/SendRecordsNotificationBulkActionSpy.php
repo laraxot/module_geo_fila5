@@ -14,7 +14,7 @@ final class SendRecordsNotificationBulkActionSpy
 
     /**
      * @param  EloquentCollection<int, Model>  $records
-     * @param  array<int, string>  $channels
+     * @param  array  $channels
      */
     public function execute(EloquentCollection $records, string $templateSlug, array $channels): void
     {

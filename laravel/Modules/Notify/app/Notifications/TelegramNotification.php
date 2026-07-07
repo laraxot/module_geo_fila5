@@ -30,7 +30,7 @@ class TelegramNotification extends Notification implements ShouldQueue
      * Create a new notification instance.
      *
      * @param  string  $message  Il messaggio da inviare tramite Telegram
-     * @param  array<string, mixed>  $options  Opzioni aggiuntive per la notifica
+     * @param  array  $options  Opzioni aggiuntive per la notifica
      */
     public function __construct(string $message, array $options = [])
     {

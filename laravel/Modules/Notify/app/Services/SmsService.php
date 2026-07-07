@@ -58,9 +58,9 @@ class SmsService
     /**
      * Sets local variables and merges them with the vars array.
      *
-     * @param  array<string, mixed>  $vars
+     * @param  array  $vars
      */
-    public function setLocalVars(array<string, mixed> $vars): self
+    public function setLocalVars(array $vars): self
     {
         foreach ($vars as $k => $v) {
             $this->{$k} = $v;
@@ -73,9 +73,9 @@ class SmsService
     /**
      * Unisce le variabili con quelle esistenti.
      *
-     * @param  array<string, mixed>  $vars
+     * @param  array  $vars
      */
-    public function mergeVars(array<string, mixed> $vars): self
+    public function mergeVars(array $vars): self
     {
         $this->vars = array_merge($this->vars, $vars);
 

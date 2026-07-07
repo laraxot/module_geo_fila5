@@ -26,7 +26,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array<string, mixed>  $envConfig
+     * @param  array  $envConfig
      */
     protected function mergeNotifyCompanyConfig(array $envConfig): void
     {
@@ -42,7 +42,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array<string, mixed>  $envConfig
+     * @param  array  $envConfig
      */
     protected function mergeNotifyMailLayoutConfig(array $envConfig): void
     {
@@ -65,7 +65,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array<string, mixed>  $envConfig
+     * @param  array  $envConfig
      */
     protected function mergeChannelConfig(string $channel, array $envConfig): void
     {

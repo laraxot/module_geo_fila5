@@ -129,10 +129,10 @@ class RecordNotification extends Notification implements ShouldQueue
     /**
      * Merge additional data with record attributes for placeholder replacement.
      *
-     * @param  array<string, mixed>  $data  Additional data to merge
+     * @param  array  $data  Additional data to merge
      * @return $this
      */
-    public function mergeData(array<string, mixed> $data): self
+    public function mergeData(array $data): self
     {
         $this->data = array_merge($this->data, $data);
 
@@ -145,7 +145,7 @@ class RecordNotification extends Notification implements ShouldQueue
      * @param  array<int, array<string, string>>  $attachments  Array of attachment data
      * @return $this
      */
-    public function addAttachments(array<string, mixed> $attachments): self
+    public function addAttachments(array $attachments): self
     {
         $this->attachments = array_merge($this->attachments, $attachments);
 

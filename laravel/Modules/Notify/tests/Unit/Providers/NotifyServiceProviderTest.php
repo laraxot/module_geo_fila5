@@ -15,7 +15,7 @@ test('notify service provider boot sets fallback recipient when configured', fun
     app()->instance(ResolveTenantConfigValueAction::class, new class
     {
         /**
-         * @param  string|int|array<string, mixed>|null  $default
+         * @param  string|int|array|null  $default
          * @return array<string, string>
          */
         public function execute(string $key, string|int|array|null $default = null): array
@@ -34,7 +34,7 @@ test('notify service provider boot skips alwaysTo when fallback is missing', fun
     app()->instance(ResolveTenantConfigValueAction::class, new class
     {
         /**
-         * @param  string|int|array<string, mixed>|null  $default
+         * @param  string|int|array|null  $default
          * @return array<empty, empty>
          */
         public function execute(string $key, string|int|array|null $default = null): array

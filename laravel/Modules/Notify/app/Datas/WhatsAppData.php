@@ -19,8 +19,8 @@ class WhatsAppData extends Data
      * @param  string  $body  Contenuto testuale del messaggio
      * @param  string|null  $from  Numero di telefono del mittente (opzionale, può essere definito nella configurazione)
      * @param  list<string>|null  $media
-     * @param  array<string, mixed>|null  $buttons
-     * @param  array<string, mixed>|null  $template
+     * @param  array|null  $buttons
+     * @param  array|null  $template
      * @param  string  $type  Tipo di messaggio: 'text', 'media', 'template', ecc.
      */
     public function __construct(

@@ -24,7 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property array<string, mixed>|null $metadata
  *
  * @method static Builder<static> where(string $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static static|null find(mixed $id, array<int, string>|string $columns = ['*'])
+ * @method static static|null find(mixed $id, array|string $columns = ['*'])
  *
  * @property string $id
  * @property string $title

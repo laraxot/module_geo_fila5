@@ -16,7 +16,7 @@ use Modules\Xot\Actions\Cast\SafeEloquentCastAction;
 uses(\Modules\Notify\Tests\TestCase::class);
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeDummyRecordForNotify(array $attributes = []): Model
 {
@@ -25,7 +25,7 @@ function makeDummyRecordForNotify(array $attributes = []): Model
         protected $guarded = [];
 
         /**
-         * @param  array<string, mixed>  $attributes
+         * @param  array  $attributes
          */
         public function __construct(array $attributes = [])
         {

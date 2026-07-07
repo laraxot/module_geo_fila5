@@ -20,7 +20,7 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeDummySendNotificationRecipient(array $attributes = []): Model
 {
@@ -31,7 +31,7 @@ function makeDummySendNotificationRecipient(array $attributes = []): Model
         protected $guarded = [];
 
         /**
-         * @param  array<string, mixed>  $attributes
+         * @param  array  $attributes
          */
         public function __construct(array $attributes = [])
         {

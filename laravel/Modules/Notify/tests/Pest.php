@@ -23,7 +23,7 @@ use function Safe\file_get_contents;
  */
 
 /**
- * @param  array<string, mixed>  $where
+ * @param  array  $where
  */
 function assertNotifyTableHas(string $table, array $where): void
 {
@@ -37,7 +37,7 @@ function assertNotifyTableHas(string $table, array $where): void
 }
 
 /**
- * @param  array<string, mixed>  $where
+ * @param  array  $where
  */
 function assertNotifyTableMissing(string $table, array $where): void
 {
@@ -108,7 +108,7 @@ function assertReflectionTypeName(?\ReflectionType $type, string $expected): voi
 }
 
 /**
- * @param  list<string>|array<int, string>  $haystack
+ * @param  list<string>|array  $haystack
  */
 function assertListContains(string $needle, array $haystack): void
 {
@@ -170,7 +170,7 @@ function notifyReflectionSource(\ReflectionClass $reflection): string
 }
 
 /**
- * @param  array<mixed, mixed>|null  $array
+ * @param  array|null  $array
  */
 function notifyArrayGet(?array $array, int|string ...$keys): mixed
 {
@@ -219,7 +219,7 @@ function notifyFreshTypeSettings(\Modules\Notify\Models\NotificationType $type):
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function createNotification(array $attributes = []): Notification
 {
@@ -227,7 +227,7 @@ function createNotification(array $attributes = []): Notification
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeNotification(array $attributes = []): Notification
 {
@@ -235,7 +235,7 @@ function makeNotification(array $attributes = []): Notification
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function createMailTemplate(array $attributes = []): MailTemplate
 {
@@ -243,7 +243,7 @@ function createMailTemplate(array $attributes = []): MailTemplate
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeMailTemplate(array $attributes = []): MailTemplate
 {

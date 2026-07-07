@@ -105,7 +105,7 @@ class NotifyTheme extends BaseModel
     ];
 
     /**
-     * @param  array<string, mixed>|null  $value
+     * @param  array|null  $value
      * @return array<string, mixed>
      */
     public function getLogoAttribute(?array $value): array

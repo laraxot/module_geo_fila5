@@ -9,7 +9,7 @@ use Modules\Notify\Models\NotificationTemplate;
 final class NotifyNotificationTemplateProxy extends NotificationTemplate
 {
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
     public function exposedCompileString(?string $template, array $data): ?string
     {

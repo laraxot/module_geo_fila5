@@ -26,7 +26,7 @@ class SendAppointmentNotificationAction
      *
      * @param  mixed  $appointment  L'appuntamento a cui si riferisce la notifica
      * @param  string  $type  Il tipo di notifica (confermato, annullato, promemoria, ecc.)
-     * @param  array<string, mixed>  $additionalData  Dati aggiuntivi per la notifica
+     * @param  array  $additionalData  Dati aggiuntivi per la notifica
      */
     public function execute(
         mixed $appointment,

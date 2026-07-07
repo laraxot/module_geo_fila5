@@ -17,9 +17,9 @@ final class SmsData
     /**
      * Create a new SmsData instance.
      *
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
-    public function __construct(array<string, mixed> $data = [])
+    public function __construct(array $data = [])
     {
         $this->from = SafeStringCastAction::cast($data['from'] ?? '');
         $this->recipient = SafeStringCastAction::cast($data['recipient'] ?? '');
@@ -29,7 +29,7 @@ final class SmsData
     /**
      * Named constructor for convenience.
      *
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
     public static function from(array $data): self
     {

@@ -28,9 +28,9 @@ class AppointmentNotificationMail extends Mailable implements ShouldQueue
     /**
      * Crea una nuova istanza del messaggio.
      *
-     * @param  array<string, mixed>  $notificationData
+     * @param  array  $notificationData
      */
-    public function __construct(array<string, mixed> $notificationData)
+    public function __construct(array $notificationData)
     {
         $this->notificationData = $notificationData;
     }

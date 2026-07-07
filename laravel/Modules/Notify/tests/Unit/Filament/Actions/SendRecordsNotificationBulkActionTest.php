@@ -17,7 +17,7 @@ use PHPUnit\Framework\Assert;
 uses(\Modules\Notify\Tests\TestCase::class);
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeDummyNotifyBulkModel(array $attributes = []): Model
 {
@@ -26,7 +26,7 @@ function makeDummyNotifyBulkModel(array $attributes = []): Model
         protected $guarded = [];
 
         /**
-         * @param  array<string, mixed>  $attributes
+         * @param  array  $attributes
          */
         public function __construct(array $attributes = [])
         {

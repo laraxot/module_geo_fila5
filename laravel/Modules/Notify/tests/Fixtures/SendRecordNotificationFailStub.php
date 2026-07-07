@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 final class SendRecordNotificationFailStub
 {
     /**
-     * @param  array<int, string>  $channels
+     * @param  array  $channels
      */
     public function execute(Model $record, string $templateSlug, array $channels): void
     {
